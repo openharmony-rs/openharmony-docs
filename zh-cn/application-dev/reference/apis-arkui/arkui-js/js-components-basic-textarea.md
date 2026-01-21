@@ -69,7 +69,7 @@
 
 | 名称                        | 参数                                       | 描述                                       |
 | ------------------------- | ---------------------------------------- | ---------------------------------------- |
-| change                    | {&nbsp;text:&nbsp;newText,&nbsp;lines:&nbsp;textLines,&nbsp;height:&nbsp;textHeight&nbsp;} | 输入内容发生变化时触发该事件，通过参数获取输入内容、行数和行高。<br/>从API Version 5开始，改变value属性值不会触发该回调。 |
+| change                    | {&nbsp;text:&nbsp;newText,&nbsp;lines:&nbsp;textLines,&nbsp;height:&nbsp;textHeight&nbsp;} | 输入内容发生变化时触发该事件，通过参数获取输入内容、行数和行高。<br/>从API version 5开始，改变value属性值不会触发该回调。 |
 | translate<sup>5+</sup>    | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现翻译按钮，点击翻译按钮之后，触发该回调，返回选中的文本内容。 |
 | share<sup>5+</sup>        | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现分享按钮，点击分享按钮之后，触发该回调，返回选中的文本内容。 |
 | search<sup>5+</sup>       | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现搜索按钮，点击搜索按钮之后，触发该回调，返回选中的文本内容。 |

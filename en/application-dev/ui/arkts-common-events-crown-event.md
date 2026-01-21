@@ -29,7 +29,9 @@ To enable a component to obtain information such as the rotation angle, use the 
 
     Use APIs such as [focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable), [defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9), and [focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9) to ensure that the target component can receive focus. For details about focus control, see [Focus Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md).
     
-    ```ts
+    <!-- @[text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
     Text(this.message)
       .fontSize(20)
       .fontColor(Color.White)
@@ -43,55 +45,66 @@ To enable a component to obtain information such as the rotation angle, use the 
 
     To receive a crown event, you need to register a crown event callback. When a crown event is triggered, the callback function is executed.
 
-    ```ts
-    .onDigitalCrown((event: CrownEvent) => {})
+    <!-- @[onDigitalCrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    .onDigitalCrown((event: CrownEvent) => {
+    // ···
+    })
     ```
 3. Understand event fields.
 
     The crown event provides the timestamp, rotation angular velocity, rotation angle, and crown action. To prevent the event from bubbling up, use [stopPropagation](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#crownevent).
 
-    ```ts
+    <!-- @[stopPropagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
     event.stopPropagation();
     this.message = "CrownEvent\n\n" + JSON.stringify(event);
-    console.debug("action:%d, angularVelocity:%f, degree:%f, timestamp:%f",
-    event.action, event.angularVelocity, event.degree, event.timestamp);
+    hilog.debug(0x0000, 'Tag',
+      "action:%{public}d, angularVelocity:%{public}f, degree:%{public}f, timestamp:%{public}f",
+      event.action, event.angularVelocity, event.degree, event.timestamp);
     ```
 
 **Example**
 
-```ts
-// xxx.ets
-@Entry
-@Component
-struct CityList {
-  @State message: string = "onDigitalCrown";
-
-  build() {
-    Column() {
-      Row(){
-        Stack() {
-          Text(this.message)
-            .fontSize(20)
-            .fontColor(Color.White)
-            .backgroundColor("#262626")
-            .textAlign(TextAlign.Center)
-            .focusable(true)
-            .focusOnTouch(true)
-            .defaultFocus(true)
-            .borderWidth(2)
-            .width(223).height(223)
-            .borderRadius(110)
-            .onDigitalCrown((event: CrownEvent) => {
-              event.stopPropagation();
-              this.message = "CrownEvent\n\n" + JSON.stringify(event);
-              console.debug("action:%d, angularVelocity:%f, degree:%f, timestamp:%f",
-                event.action, event.angularVelocity, event.degree, event.timestamp);
-            })
-        }.width("100%").height("100%")
-      }.width("100%").height("100%")
-    }
-  }
-}
-```
+ <!-- [crown_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+ 
+ ``` TypeScript
+ // xxx.ets
+ @Entry
+ @Component
+ struct Index {
+   @State message: string = 'onDigitalCrown';
+ 
+   build() {
+     Column() {
+       Row() {
+         Stack() {
+           Text(this.message)
+             .fontSize(20)
+             .fontColor(Color.White)
+             .backgroundColor("#262626")
+             .textAlign(TextAlign.Center)
+             .focusable(true)
+             .focusOnTouch(true)
+             .defaultFocus(true)
+             .borderWidth(2)
+             .width(223)
+             .height(223)
+             .borderRadius(110)
+             .onDigitalCrown((event: CrownEvent) => {
+               event.stopPropagation();
+               this.message = "CrownEvent\n\n" + JSON.stringify(event);
+               hilog.debug(0x0000, 'Tag',
+                 "action:%{public}d, angularVelocity:%{public}f, degree:%{public}f, timestamp:%{public}f",
+                 event.action, event.angularVelocity, event.degree, event.timestamp);
+             })
+         }.width("100%").height("100%")
+       }.width("100%").height("100%")
+     }
+   }
+ }
+ ```
 
 ![crown.gif](../reference/apis-arkui/arkui-ts/figures/crown.gif)

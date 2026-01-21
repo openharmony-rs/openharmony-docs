@@ -97,6 +97,7 @@ addAllowedBluetoothDevices(admin: Want, deviceIds: Array\<string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -150,6 +151,7 @@ removeAllowedBluetoothDevices(admin: Want, deviceIds: Array\<string>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -262,6 +264,8 @@ addDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                |
@@ -312,6 +316,8 @@ removeDisallowedBluetoothDevices(admin: Want, deviceIds: Array&lt;string&gt;): v
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -430,6 +436,7 @@ turnOnBluetooth(admin: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -479,6 +486,7 @@ turnOffBluetooth(admin: Want): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -527,6 +535,8 @@ addDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Array
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -579,6 +589,8 @@ removeDisallowedBluetoothProtocols(admin: Want, accountId: number, protocols: Ar
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 

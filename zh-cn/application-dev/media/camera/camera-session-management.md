@@ -11,6 +11,7 @@
 在会话中，可以完成以下功能：
 
 - 配置相机的输入流和输出流。相机在拍摄前，必须完成输入输出流的配置。
+
   配置输入流即添加设备输入，对用户而言，相当于选择设备的某一相机拍摄；配置输出流，即选择数据将以什么形式输出。当应用需要实现拍照时，输出流应配置为预览流和拍照流，预览流的数据将显示在XComponent组件上，拍照流的数据将通过ImageReceiver接口的能力保存到相册中。
 
 - 添加闪光灯、调整焦距等配置。具体支持的配置及接口说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
@@ -57,12 +58,13 @@
    ```
 
 4. 使能。向会话中添加相机的输入流和输出流，调用[addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)添加相机的输入流；调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加相机的输出流。以下示例代码以添加预览流previewOutput和拍照流photoOutput为例，即当前模式支持拍照和预览。
-     调用VideoSession中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)和[start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)方法提交相关配置，并启动会话。
 
-     > **说明：**
-     >
-     > 在调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加相机的输出流前，可通过[canAddOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#canaddoutput11)判断当前相机输出流是否可以添加到session中。
-     > 相机输入流cameraInput创建流程请参考[设备输入](camera-device-input.md)，相机预览输出流previewOutput和拍照输出流photoOutput创建流程请分别参考[预览](camera-preview.md)和[拍照](camera-shooting.md)。
+   调用VideoSession中的[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)和[start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)方法提交相关配置，并启动会话。
+
+   > **说明：**
+   >
+   > 在调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加相机的输出流前，可通过[canAddOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#canaddoutput11)判断当前相机输出流是否可以添加到session中。
+   > 相机输入流cameraInput创建流程请参考[设备输入](camera-device-input.md)，相机预览输出流previewOutput和拍照输出流photoOutput创建流程请分别参考[预览](camera-preview.md)和[拍照](camera-shooting.md)。
      
    ```ts
    async function startSession(videoSession: camera.VideoSession, cameraInput: camera.CameraInput, previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput): Promise<void> {

@@ -236,7 +236,7 @@ function test(dataSource: DataSource[]) {
 
 **[Description]**
 
-For readability, code lines should no be too long.
+For readability, code lines should not be too long.
 
 The line width requirement encourages you to shorten method and variable names, reduce nesting, and write concise comments to improve code readability.
 

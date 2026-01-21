@@ -12,7 +12,7 @@
 This file declares the functions related to the matrix in the drawing module.
 
 <!--RP1-->
-**Sample**: [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
+**Sample**: [NDKAPIDrawing (API Version 20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **File to include**: <native_drawing/drawing_matrix.h>
 
@@ -62,12 +62,17 @@ This file declares the functions related to the matrix in the drawing module.
 | [bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixisidentity) | Checks whether an **OH_Drawing_Matrix** object is an identity matrix. |
 | [void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixdestroy) | Destroys an **OH_Drawing_Matrix** object and reclaims the memory occupied by the object.|
 | [OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)](#oh_drawing_matrixpreconcat) | Left-multiplies matrix a by matrix b.|
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixIsAffine(const OH_Drawing_Matrix* matrix, bool* isAffine)](#oh_drawing_matrixisaffine) | Checks whether the existing matrix is an affine matrix, which includes transformations such as translation, rotation, and scaling.|
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixPreSkew(OH_Drawing_Matrix* matrix, float kx, float ky, float px, float py)](#oh_drawing_matrixpreskew) | Left multiplies the current matrix by a matrix constructed based on (px, py) and (kx, ky).|
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixRectStaysRect(const OH_Drawing_Matrix* matrix, bool* isRectStaysRect)](#oh_drawing_matrixrectstaysrect) | Checks whether the rectangle remains rectangular after being mapped by the current matrix. This condition is met when the matrix is an identity matrix or contains only affine transformations such as translation, scaling, and rotation by 90 degrees.|
+| [OH_Drawing_ErrorCode OH_Drawing_MatrixSetSinCos(OH_Drawing_Matrix* matrix, float sinValue, float cosValue, float px, float py)](#oh_drawing_matrixsetsincos) | Sets the matrix to rotate around the rotation center (px, py) with the specified sine and cosine values.|
+| [void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixdestroy) | Destroys an **OH_Drawing_Matrix** object and reclaims the memory occupied by the object.|
 
 ## Enum Description
 
 ### OH_Drawing_ScaleToFit
 
-```
+```c
 enum OH_Drawing_ScaleToFit
 ```
 
@@ -89,7 +94,7 @@ Defines an enum for the matrix scaling modes.
 
 ### OH_Drawing_MatrixCreate()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreate(void)
 ```
 
@@ -109,7 +114,7 @@ Creates an **OH_Drawing_Matrix** object.
 
 ### OH_Drawing_MatrixCopy()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCopy(const OH_Drawing_Matrix* matrix)
 ```
 
@@ -136,7 +141,7 @@ Creates a copy of a matrix object.
 
 ### OH_Drawing_MatrixCreateRotation()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreateRotation(float deg, float x, float y)
 ```
 
@@ -165,7 +170,7 @@ Creates an **OH_Drawing_Matrix** with the rotation attribute.<br>The matrix is o
 
 ### OH_Drawing_MatrixCreateScale()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreateScale(float sx, float sy, float px, float py)
 ```
 
@@ -195,7 +200,7 @@ Creates an **OH_Drawing_Matrix** with the scale attribute.<br>The matrix is obta
 
 ### OH_Drawing_MatrixCreateTranslation()
 
-```
+```c
 OH_Drawing_Matrix* OH_Drawing_MatrixCreateTranslation(float dx, float dy)
 ```
 
@@ -223,7 +228,7 @@ Creates an **OH_Drawing_Matrix** with the translation attribute.<br>The matrix i
 
 ### OH_Drawing_MatrixSetMatrix()
 
-```
+```c
 void OH_Drawing_MatrixSetMatrix(OH_Drawing_Matrix* matrix, float scaleX, float skewX, float transX,float skewY, float scaleY, float transY, float persp0, float persp1, float persp2)
 ```
 
@@ -253,7 +258,7 @@ Sets matrix parameters for an **OH_Drawing_Matrix** object.<br>This API may retu
 
 ### OH_Drawing_MatrixSetRectToRect()
 
-```
+```c
 bool OH_Drawing_MatrixSetRectToRect(OH_Drawing_Matrix* matrix, const OH_Drawing_Rect* src,const OH_Drawing_Rect* dst, OH_Drawing_ScaleToFit stf)
 ```
 
@@ -283,7 +288,7 @@ Scales a matrix to map a source rectangle to a destination rectangle.<br>This AP
 
 ### OH_Drawing_MatrixPreRotate()
 
-```
+```c
 void OH_Drawing_MatrixPreRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)
 ```
 
@@ -307,7 +312,7 @@ Premultiplies this matrix by a matrix that is derived from an identity matrix af
 
 ### OH_Drawing_MatrixPreScale()
 
-```
+```c
 void OH_Drawing_MatrixPreScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)
 ```
 
@@ -334,7 +339,7 @@ This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](c
 
 ### OH_Drawing_MatrixPreTranslate()
 
-```
+```c
 void OH_Drawing_MatrixPreTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 ```
 
@@ -357,7 +362,7 @@ Premultiplies this matrix by a matrix that is derived from an identity matrix af
 
 ### OH_Drawing_MatrixPostRotate()
 
-```
+```c
 void OH_Drawing_MatrixPostRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)
 ```
 
@@ -381,7 +386,7 @@ Post multiplies this matrix by a matrix that is derived from an identity matrix 
 
 ### OH_Drawing_MatrixPostScale()
 
-```
+```c
 void OH_Drawing_MatrixPostScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)
 ```
 
@@ -406,7 +411,7 @@ Post multiplies a matrix by an identity matrix that scales with the factor (sx, 
 
 ### OH_Drawing_MatrixPostTranslate()
 
-```
+```c
 void OH_Drawing_MatrixPostTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 ```
 
@@ -429,7 +434,7 @@ Post multiplies this matrix by a matrix that is derived from an identity matrix 
 
 ### OH_Drawing_MatrixReset()
 
-```
+```c
 void OH_Drawing_MatrixReset(OH_Drawing_Matrix* matrix)
 ```
 
@@ -450,7 +455,7 @@ Resets a matrix to an identity matrix.<br>This API may return an error code. For
 
 ### OH_Drawing_MatrixConcat()
 
-```
+```c
 void OH_Drawing_MatrixConcat(OH_Drawing_Matrix* total, const OH_Drawing_Matrix* a,const OH_Drawing_Matrix* b)
 ```
 
@@ -473,7 +478,7 @@ Multiplies two matrices to produce a new matrix.<br>This API may return an error
 
 ### OH_Drawing_MatrixGetAll()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_MatrixGetAll(OH_Drawing_Matrix* matrix, float value[9])
 ```
 
@@ -501,7 +506,7 @@ Obtains all element values of a matrix.
 
 ### OH_Drawing_MatrixGetValue()
 
-```
+```c
 float OH_Drawing_MatrixGetValue(OH_Drawing_Matrix* matrix, int index)
 ```
 
@@ -529,7 +534,7 @@ Obtains a matrix value of a given index, which ranges from 0 to 8.<br>This API m
 
 ### OH_Drawing_MatrixRotate()
 
-```
+```c
 void OH_Drawing_MatrixRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)
 ```
 
@@ -553,7 +558,7 @@ Sets this matrix as an identity matrix and rotates it by a given degree around t
 
 ### OH_Drawing_MatrixTranslate()
 
-```
+```c
 void OH_Drawing_MatrixTranslate(OH_Drawing_Matrix* matrix, float dx, float dy)
 ```
 
@@ -576,7 +581,7 @@ Sets a matrix as an identity matrix and translates it by a given distance (dx, d
 
 ### OH_Drawing_MatrixScale()
 
-```
+```c
 void OH_Drawing_MatrixScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)
 ```
 
@@ -601,7 +606,7 @@ Sets a matrix as an identity matrix and scales it with the factor (sx, sy) at th
 
 ### OH_Drawing_MatrixInvert()
 
-```
+```c
 bool OH_Drawing_MatrixInvert(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* inverse)
 ```
 
@@ -629,7 +634,7 @@ Inverts a matrix and returns the result.<br>This API may return an error code. F
 
 ### OH_Drawing_MatrixSetPolyToPoly()
 
-```
+```c
 bool OH_Drawing_MatrixSetPolyToPoly(OH_Drawing_Matrix* matrix, const OH_Drawing_Point2D* src,const OH_Drawing_Point2D* dst, uint32_t count)
 ```
 
@@ -659,7 +664,7 @@ Generates a transformation matrix by setting source points and destination point
 
 ### OH_Drawing_MatrixMapPoints()
 
-```
+```c
 void OH_Drawing_MatrixMapPoints(const OH_Drawing_Matrix* matrix, const OH_Drawing_Point2D* src,OH_Drawing_Point2D* dst, int count)
 ```
 
@@ -683,7 +688,7 @@ Maps a source point array to a destination point array by means of matrix transf
 
 ### OH_Drawing_MatrixMapRect()
 
-```
+```c
 bool OH_Drawing_MatrixMapRect(const OH_Drawing_Matrix* matrix, const OH_Drawing_Rect* src, OH_Drawing_Rect* dst)
 ```
 
@@ -712,7 +717,7 @@ Maps a rectangle to the smallest rectangle that can enclose the vertices to whic
 
 ### OH_Drawing_MatrixIsEqual()
 
-```
+```c
 bool OH_Drawing_MatrixIsEqual(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* other)
 ```
 
@@ -740,7 +745,7 @@ Checks whether two **OH_Drawing_Matrix** objects are equal.<br>This API may retu
 
 ### OH_Drawing_MatrixIsIdentity()
 
-```
+```c
 bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)
 ```
 
@@ -767,7 +772,7 @@ Checks whether an **OH_Drawing_Matrix** object is an identity matrix.<br>An iden
 
 ### OH_Drawing_MatrixDestroy()
 
-```
+```c
 void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)
 ```
 
@@ -784,12 +789,12 @@ Destroys an **OH_Drawing_Matrix** object and reclaims the memory occupied by the
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to an **OH_Drawing_Font** object.|
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to an **OH_Drawing_Matrix** object.|
 
 
 ### OH_Drawing_MatrixPreConcat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)
 ```
 
@@ -813,3 +818,109 @@ Left-multiplies matrix a by matrix b.
 | Type| Description|
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns an execution result.<br>**OH_DRAWING_SUCCESS**: Left multiplication successful.<br>OH_DRAWING_ERROR_INCORRECT_PARAMETER: Incorrect input parameter, that is **rect** or **other** is empty.|
+
+### OH_Drawing_MatrixIsAffine()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_MatrixIsAffine(const OH_Drawing_Matrix* matrix, bool* isAffine)
+```
+
+**Description**
+
+Checks whether the existing matrix is an affine matrix, which includes transformations such as translation, rotation, and scaling.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object.|
+| bool* isAffine | Whether the existing matrix is an affine matrix. It is used as an output parameter. **true** means yes; **false** otherwise.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **matrix** or **isAffine** is a null pointer.|
+
+### OH_Drawing_MatrixPreSkew()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_MatrixPreSkew(OH_Drawing_Matrix* matrix, float kx, float ky, float px, float py)
+```
+
+**Description**
+
+Left multiplies the current matrix by a matrix constructed based on (px, py) and (kx, ky).
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object.|
+| float kx | Tilt on the X axis.|
+| float ky | Tilt on the Y axis.|
+| float px | X-coordinate of the tilt center.|
+| float py | Y-coordinate of the tilt center.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **matrix** is a null pointer.|
+
+### OH_Drawing_MatrixRectStaysRect()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_MatrixRectStaysRect(const OH_Drawing_Matrix* matrix, bool* isRectStaysRect)
+```
+
+**Description**
+
+Checks whether the rectangle remains rectangular after being mapped by the current matrix. This condition is met when the matrix is an identity matrix or contains only affine transformations such as translation, scaling, and rotation by 90 degrees.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object.|
+| bool* isRectStaysRect | Whether a rectangle stays a rectangle after being mapped by a matrix. It is used as an output parameter.<br>**true** means yes; **false** otherwise.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **matrix** or **isRectStaysRect** is a null pointer.|
+
+### OH_Drawing_MatrixSetSinCos()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_MatrixSetSinCos(OH_Drawing_Matrix* matrix, float sinValue, float cosValue, float px, float py)
+```
+
+**Description**
+
+Sets the matrix to rotate around the rotation center (px, py) with the specified sine and cosine values.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md)* matrix | Pointer to the [OH_Drawing_Matrix](capi-drawing-oh-drawing-matrix.md) object.|
+| float sinValue | Sine value of the rotation angle.|
+| float cosValue | Cosine value of the rotation angle.|
+| float px | X-axis coordinate of the rotation center.|
+| float py | Y-axis coordinate of the rotation center.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **matrix** is a null pointer.|

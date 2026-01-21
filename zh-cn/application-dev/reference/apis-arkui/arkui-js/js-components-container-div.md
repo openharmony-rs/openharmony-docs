@@ -46,7 +46,7 @@
 | align-items<sup>6+</sup>       | string         | -            | 否   | 设置容器中元素交叉轴上的对齐方式：<br/>-&nbsp;stretch：Flex容器内容在交叉轴方向被拉伸到与容器相同的高度或宽度；<br/>-&nbsp;flex-start：Flex布局容器内元素向交叉轴起点对齐；<br/>-&nbsp;flex-end：Flex布局容器内元素向交叉轴终点对齐；<br/>-&nbsp;center：Flex布局容器内元素在交叉轴居中对齐；<br/>-&nbsp;baseline：如Flex布局纵向排列，则该值与'flex-start'等效。横向布局时，内容元素存在文本时按照文本基线对齐，否则底部对齐。 |
 | scrollbar-color<sup>6+</sup>   | &lt;color&gt;  | -            | 否   | 设置滚动条的颜色。                                           |
 | scrollbar-width<sup>6+</sup>   | &lt;length&gt; | -            | 否   | 设置滚动条的宽度。                                           |
-| overscroll-effect<sup>6+</sup> | string         | -            | 否   | 设置滚动边缘效果，可选值为：<br/>-&nbsp;spring：弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹；<br/>-&nbsp;fade：渐隐物理动效，滑动到边缘后展示一个波浪形的渐隐，根据速度和滑动距离的变化渐隐也会发送一定的变化；<br/>-&nbsp;none：滑动到边缘后无效果 |
+| overscroll-effect<sup>6+</sup> | string         | -            | 否   | 设置滚动边缘效果，可选值为：<br/>-&nbsp;spring：弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。<br/>-&nbsp;fade：渐隐物理动效，滑动到边缘后展示一个波浪形的渐隐，根据速度和滑动距离的变化渐隐也会发生一定的变化。<br/>-&nbsp;none：滑动到边缘后无效果。 |
 
 
 ## 事件

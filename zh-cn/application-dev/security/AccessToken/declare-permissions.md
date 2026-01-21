@@ -11,7 +11,7 @@
 
 ## 在配置文件中声明权限
 
-应用必须在module.json5配置文件的requestPermissions标签中声明权限。
+应用必须在[module.json5配置文件](../../quick-start/module-configuration-file.md)的requestPermissions标签中声明权限。
 
 | 属性 | 含义 | 数据类型 | 取值范围 |
 | -------- | -------- | -------- | -------- |
@@ -21,9 +21,13 @@
 
 > **说明：**
 >
-> 已在子模块中申请的权限无需在主项目中重复添加，权限将在整个应用中生效。
+> 在多HAP场景下，已在[entry](../../quick-start/hap-package.md)模块中声明的权限，无需在[feature](../../quick-start/hap-package.md)模块中重复添加，权限将在整个应用中生效。
+> 
+> 同理，在[feature](../../quick-start/hap-package.md)模块中已声明的权限，在[entry](../../quick-start/hap-package.md)模块也无需重复添加。
 
 ## 声明样例
+
+在[module.json5配置文件](../../quick-start/module-configuration-file.md)的requestPermissions标签中声明权限。
 
 > **说明：**
 >

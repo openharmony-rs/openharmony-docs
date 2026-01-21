@@ -9,6 +9,7 @@
 ## Overview
 
 The motion and orientation sensors, such as an accelerometer and a gyroscope, can monitor the motion status and orientation change (such as rotation and tilt) of the device.
+
 Through the W3C standards-compliant API, the **Web** component can access the sensor data to implement richer user interaction features. For example, in a web application, you can use an accelerometer to identify the motion mode and instruct the user to exercise, and use a gyroscope to capture the tilt and rotation of the device in the hand of the player, implementing game experience without button control.
 
 To access the motion and orientation sensors, invoke the following W3C standards-compliant APIs in JavaScript:
@@ -30,10 +31,10 @@ To use the preceding APIs, you need to declare the corresponding sensor permissi
 ```json
     "requestPermissions":[
       {
-        "name": "ohos.permission.ACCELEROMETER" // Accelerometer permission
+        "name" : "ohos.permission.ACCELEROMETER" // Accelerometer permission
       },
       {
-        "name": "ohos.permission.GYROSCOPE"      // Gyroscope permission
+        "name" : "ohos.permission.GYROSCOPE"     // Gyroscope permission
       }
     ]
 ```
@@ -234,12 +235,12 @@ When the **Web** component is connected to a motion or orientation sensor, confi
    <div id="dcontent" class="dcontent">
        <h3>Motion and orientation:</h3>
        <ul class="dlist">
-           <li><button type="button" onclick="getAccelerometer()">Accelerometer</button></li>;
+           <li><button type="button" onclick="getAccelerometer()">Accelerometer</button></li>
            <li><button type="button" onclick="getGyroscope()">Gyroscope</button></li>
-           <li><button type="button" onclick="getAbsoluteOrientationSensor()">Device (absolute) orientation</button></li>;
-           <li><button type="button" onclick="listenDeviceMotionEvent()">Device motion event</button></li>;
-           <li><button type="button" onclick="listenDeviceOrientationEvent()">Device orientation event</button></li>;
-           <li><button type="button" onclick="listenDeviceOrientationEvent2()">Device (absolute) orientation event</button></li>;
+           <li><button type="button" onclick="getAbsoluteOrientationSensor()">Device Orientation (Absolute)</button></li>
+           <li><button type="button" onclick="listenDeviceMotionEvent()">Device Motion Event</button></li>
+           <li><button type="button" onclick="listenDeviceOrientationEvent()">Device Orientation Event</button></li>
+           <li><button type="button" onclick="listenDeviceOrientationEvent2()">Device Orientation Event (Absolute)</button></li>
        </ul>
    </div>
    </body>

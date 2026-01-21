@@ -66,13 +66,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             }
-
-            class EventDown {
-              KeyEvent: inputEventClient.KeyEvent | null = null
-            }
-
-            let eventDown: EventDown = { KeyEvent: backKeyDown }
-            inputEventClient.injectEvent(eventDown);
+            inputEventClient.injectEvent({ KeyEvent: backKeyDown });
 
             let backKeyUp: inputEventClient.KeyEvent = {
               isPressed: false,
@@ -80,13 +74,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             };
-
-            class EventUp {
-              KeyEvent: inputEventClient.KeyEvent | null = null
-            }
-
-            let eventUp: EventUp = { KeyEvent: backKeyUp }
-            inputEventClient.injectEvent(eventUp);
+            inputEventClient.injectEvent({ KeyEvent: backKeyUp });
           } catch (error) {
             console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -346,7 +334,7 @@ struct Index {
             }
 
             let touchEventUpData: TouchEvent = {
-              action: 1,
+              action: 3,
               sourceType: 0,
               touch: touchEvent,
               touches: [],

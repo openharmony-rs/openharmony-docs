@@ -57,7 +57,7 @@ The APIs can be used to check the support for a DRM solution, create a media key
 
 ### MediaKeySystem_Callback()
 
-```
+```c
 typedef  Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)
 ```
 
@@ -85,7 +85,7 @@ Defines the callbacks for media key system events. It does not provide a MediaKe
 
 ### OH_MediaKeySystem_Callback()
 
-```
+```c
 typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)
 ```
 
@@ -114,7 +114,7 @@ Defines the callbacks for media key system events. It provides a MediaKeySystem 
 
 ### OH_MediaKeySystem_SetCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)
 ```
 
@@ -140,7 +140,7 @@ Sets a media key system event callback.
 
 ### OH_MediaKeySystem_GetMediaKeySystems()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *infos, uint32_t *count)
 ```
 
@@ -166,7 +166,7 @@ Obtains the name and ID list of DRM solutions supported by the device.
 
 ### OH_MediaKeySystem_IsSupported()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported(const char *name)
 ```
 
@@ -192,7 +192,7 @@ Checks whether the device supports the specified DRM solution.
 
 ### OH_MediaKeySystem_IsSupported2()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 ```
 
@@ -218,7 +218,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 ### OH_MediaKeySystem_IsSupported3()
 
-```
+```c
 bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType,DRM_ContentProtectionLevel contentProtectionLevel)
 ```
 
@@ -245,7 +245,7 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 ### OH_MediaKeySystem_Create()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKeySystem)
 ```
 
@@ -271,7 +271,7 @@ Creates a MediaKeySystem instance.
 
 ### OH_MediaKeySystem_SetConfigurationString()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySystem,const char *configName, const char *value)
 ```
 
@@ -298,7 +298,7 @@ Sets a configuration item in the form of a string.
 
 ### OH_MediaKeySystem_GetConfigurationString()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySystem,const char *configName, char *value, int32_t valueLen)
 ```
 
@@ -326,7 +326,7 @@ Obtains the value of a configuration item in the form of a string.
 
 ### OH_MediaKeySystem_SetConfigurationByteArray()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetConfigurationByteArray(MediaKeySystem *mediaKeySystem,const char *configName, uint8_t *value, int32_t valueLen)
 ```
 
@@ -354,7 +354,7 @@ Sets a configuration item in the form of an array.
 
 ### OH_MediaKeySystem_GetConfigurationByteArray()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetConfigurationByteArray(MediaKeySystem *mediaKeySystem,const char *configName, uint8_t *value, int32_t *valueLen)
 ```
 
@@ -382,7 +382,7 @@ Obtains the value of a configuration item in the form of an array.
 
 ### OH_MediaKeySystem_GetStatistics()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetStatistics(MediaKeySystem *mediaKeySystem, DRM_Statistics *statistics)
 ```
 
@@ -408,7 +408,7 @@ Obtains the metrics of a media key system.
 
 ### OH_MediaKeySystem_GetMaxContentProtectionLevel()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetMaxContentProtectionLevel(MediaKeySystem *mediaKeySystem,DRM_ContentProtectionLevel *contentProtectionLevel)
 ```
 
@@ -434,7 +434,7 @@ Obtains the maximum content protection level supported by the device.
 
 ### OH_MediaKeySystem_SetMediaKeySystemCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_SetMediaKeySystemCallback(MediaKeySystem *mediaKeySystem,MediaKeySystem_Callback callback)
 ```
 
@@ -460,7 +460,7 @@ Sets a media key system event callback.
 
 ### OH_MediaKeySystem_CreateMediaKeySession()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_CreateMediaKeySession(MediaKeySystem *mediaKeySystem,DRM_ContentProtectionLevel *level, MediaKeySession **mediaKeySession)
 ```
 
@@ -487,7 +487,7 @@ Creates a MediaKeySession instance.
 
 ### OH_MediaKeySystem_GenerateKeySystemRequest()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GenerateKeySystemRequest(MediaKeySystem *mediaKeySystem, uint8_t *request,int32_t *requestLen, char *defaultUrl, int32_t defaultUrlLen)
 ```
 
@@ -516,7 +516,7 @@ Generates a request to obtain a device certificate.
 
 ### OH_MediaKeySystem_ProcessKeySystemResponse()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_ProcessKeySystemResponse(MediaKeySystem *mediaKeySystem,uint8_t *response, int32_t responseLen)
 ```
 
@@ -543,7 +543,7 @@ Processes the response to a previously generated device certificate request.
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyIds()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyIds(MediaKeySystem *mediaKeySystem,DRM_OfflineMediakeyIdArray *offlineMediaKeyIds)
 ```
 
@@ -569,7 +569,7 @@ Obtains the list of offline media key IDs, which are used to manage offline medi
 
 ### OH_MediaKeySystem_GetOfflineMediaKeyStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetOfflineMediaKeyStatus(MediaKeySystem *mediaKeySystem,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, DRM_OfflineMediaKeyStatus *status)
 ```
 
@@ -597,7 +597,7 @@ Obtains the status of an offline media key.
 
 ### OH_MediaKeySystem_ClearOfflineMediaKeys()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_ClearOfflineMediaKeys(MediaKeySystem *mediaKeySystem,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)
 ```
 
@@ -624,7 +624,7 @@ Clears offline media keys with the specified IDs.
 
 ### OH_MediaKeySystem_GetCertificateStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_GetCertificateStatus(MediaKeySystem *mediaKeySystem,DRM_CertificateStatus *certStatus)
 ```
 
@@ -650,7 +650,7 @@ Obtains the status of a device certificate.
 
 ### OH_MediaKeySystem_Destroy()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySystem_Destroy(MediaKeySystem *mediaKeySystem)
 ```
 

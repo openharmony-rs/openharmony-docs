@@ -113,7 +113,7 @@ const age = resultSet.getColumnName(2);
 
 goTo(offset:number): boolean
 
-向前或向后转至结果集的指定行，相对于其当前位置偏移。
+向前或向后移至结果集的指定行，相对于其当前位置偏移。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

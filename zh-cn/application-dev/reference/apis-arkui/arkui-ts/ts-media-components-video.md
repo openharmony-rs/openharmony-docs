@@ -12,7 +12,7 @@
 >
 >  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。<br/>
 >  Video组件只提供简单的视频播放功能，无法支撑复杂的视频播控场景。复杂开发场景推荐使用[AVPlayer](../../apis-media-kit/arkts-apis-media-AVPlayer.md)播控API和[XComponent](ts-basic-components-xcomponent.md)组件开发。<br/>
->  Video组件在使用expandSafeArea扩展到安全区域时，组件视频显示内容区域不支持扩展。
+>  Video组件在使用expandSafeArea扩展安全区域时，组件视频显示内容区域不支持扩展。
 
 ## 权限列表
 
@@ -96,7 +96,7 @@ muted(value: boolean)
 
 > **说明：**
 >
-> Video组件在未设置静音的情况下，起播瞬间会抢占音频焦点。若用户想设置静音播放不抢占其他音频焦点，应保证静音设置在开始播放视频之前。
+> Video组件在未设置静音的情况下，启播瞬间会抢占音频焦点。若用户想设置静音播放不抢占其他音频焦点，应保证静音设置在开始播放视频之前。
 
 ### autoPlay
 
@@ -175,7 +175,9 @@ loop(value: boolean)
 enableAnalyzer(enable: boolean)
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+
 使能后，视频播放暂停时自动进入分析状态，开始分析当前画面帧，视频继续播放后自动退出分析状态。
+
 不能和[overlay](ts-universal-attributes-overlay.md)属性同时使用，两者同时设置时[overlay](ts-universal-attributes-overlay.md)中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。
 
 >**说明：**
@@ -337,7 +339,7 @@ onPrepared(callback: Callback\<PreparedInfo>)
 
 | 参数名   | 类型   | 必填 | 说明                       |
 | -------- | ------ | ---- | -------------------------- |
-| callback | Callback\<[PreparedInfo](#preparedinfo18对象说明)> | 是   | 当前视频的时长。 |
+| callback | Callback\<[PreparedInfo](#preparedinfo18对象说明)> | 是   | 视频准备完成时的回调函数。 |
 
 ### onSeeking
 
@@ -353,7 +355,7 @@ onSeeking(callback: Callback\<PlaybackInfo>)
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| callback   | Callback\<[PlaybackInfo](#playbackinfo18对象说明)> | 是   | 当前视频播放的进度。 |
+| callback   | Callback\<[PlaybackInfo](#playbackinfo18对象说明)> | 是   | 操作进度条过程时的回调函数。 |
 
 ### onSeeked
 
@@ -369,7 +371,7 @@ onSeeked(callback: Callback\<PlaybackInfo>)
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| callback   | Callback\<[PlaybackInfo](#playbackinfo18对象说明)> | 是   | 当前视频播放的进度。 |
+| callback   | Callback\<[PlaybackInfo](#playbackinfo18对象说明)> | 是   | 操作进度条完成后的回调函数。 |
 
 ### onUpdate
 
@@ -385,7 +387,7 @@ onUpdate(callback: Callback\<PlaybackInfo>)
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| callback   | Callback\<[PlaybackInfo](#playbackinfo18对象说明)> | 是   | 当前视频播放的进度。 |
+| callback   | Callback\<[PlaybackInfo](#playbackinfo18对象说明)> | 是   | 播放进度变化时的回调函数。 |
 
 ### onFullscreenChange
 
@@ -401,7 +403,7 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 
 | 参数名     | 类型    | 必填 | 说明                                                  |
 | ---------- | ------- | ---- | ----------------------------------------------------- |
-| callback | Callback\<[FullscreenInfo](#fullscreeninfo18对象说明)> | 是   | 当前视频是否进入全屏播放状态。 |
+| callback | Callback\<[FullscreenInfo](#fullscreeninfo18对象说明)> | 是   | 在全屏播放与非全屏播放状态之间切换时的回调函数。 |
 
 ## FullscreenInfo<sup>18+</sup>对象说明
 
@@ -544,7 +546,7 @@ setCurrentTime(value: number)
 
 | 参数名   | 类型   | 必填   | 说明           |
 | ----- | ------ | ---- | -------------- |
-| value | number | 是    | 视频播放进度位置。<br>取值范围：[0, [duration](ts-media-components-video.md#preparedinfo18对象说明)]<br>单位：秒<br/>从API version 8开始，支持设置视频的跳转模式，详见[setCurrentTime<sup>8+</sup>](#setcurrenttime8)。|
+| value | number | 是    | 视频播放进度位置。<br>取值范围：[0, [duration](ts-media-components-video.md#preparedinfo18对象说明)]<br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。<br>单位：秒<br/>从API version 8开始，支持设置视频的跳转模式，详见[setCurrentTime<sup>8+</sup>](#setcurrenttime8)。|
 
 ### requestFullscreen
 
@@ -590,7 +592,7 @@ setCurrentTime(value: number, seekMode: SeekMode)
 
 | 参数名      | 类型     | 必填   | 说明           |
 | -------- | -------- | ---- | -------------- |
-| value    | number   | 是    | 视频播放进度位置。<br>取值范围：[0, [duration](ts-media-components-video.md#preparedinfo18对象说明)]<br>单位：秒 |
+| value    | number   | 是    | 视频播放进度位置。<br>取值范围：[0, [duration](ts-media-components-video.md#preparedinfo18对象说明)]<br>当设置value大于duration时，进度跳转至最后；当设置value小于0时，不会进行进度跳转。<br>单位：秒 |
 | seekMode | [SeekMode](#seekmode8枚举说明) | 是    | 跳转模式。          |
 
 ## SeekMode<sup>8+</sup>枚举说明
@@ -858,7 +860,7 @@ struct VideoObject {
 
   build() {
     Column() {
-      Text("ImageFit.Contain").fontSize(12)
+      Text('ImageFit.Contain').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -870,7 +872,7 @@ struct VideoObject {
         .objectFit(ImageFit.Contain) // 设置视频填充模式为ImageFit.Contain
         .margin(5)
 
-      Text("ImageFit.Fill").fontSize(12)
+      Text('ImageFit.Fill').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -882,7 +884,7 @@ struct VideoObject {
         .objectFit(ImageFit.Fill) // 设置视频填充模式为ImageFit.Fill
         .margin(5)
 
-      Text("ImageFit.START").fontSize(12)
+      Text('ImageFit.START').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -908,12 +910,12 @@ struct VideoObject {
 @Entry
 @Component
 struct VideoErrorComponent {
-  @State videoSrc: string = "video.mp4"; // 传入不存在的视频资源路径。
+  @State videoSrc: string = 'video.mp4'; // 传入不存在的视频资源路径。
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
   @State showFirstFrame: boolean = false;
   controller: VideoController = new VideoController();
-  @State errorMessage: string = "";
+  @State errorMessage: string = '';
 
   build() {
     Column() {
@@ -934,8 +936,8 @@ struct VideoErrorComponent {
       // 传入不存在的视频资源路径，预期："code is 103602, message is Not a valid source"。
       Text(this.errorMessage)
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .backgroundColor('rgb(213,213,213)')
   }
 }

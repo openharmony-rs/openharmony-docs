@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The **uiExtension** module provides APIs for the EmbeddedUIExtensionAbility (or UIExtensionAbility) to obtain the host application window information or the information about the corresponding **EmbeddedComponent**<!--Del--> (or **UIExtensionComponent**)<!--DelEnd--> component.
+The **uiExtension** module provides APIs for the [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md) (or [UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)) to obtain the host application window information or the information about the corresponding [EmbeddedComponent](./arkui-ts/ts-container-embedded-component.md)<!--Del--> (or [UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md))<!--DelEnd--> component.
 
 > **NOTE**
 >
@@ -15,7 +15,7 @@ The **uiExtension** module provides APIs for the EmbeddedUIExtensionAbility (or 
 
 ## Modules to Import
 
-```
+```ts
 import { uiExtension } from '@kit.ArkUI';
 ```
 
@@ -221,7 +221,7 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
 | type     | string                | Yes  | Event type. The value is fixed at **'windowSizeChange'**, indicating the component (**EmbeddedComponent** or **UIExtensionComponent**) size change events.|
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (EmbeddedComponent or UIExtensionComponent). If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[window.Size](arkts-apis-window-i.md#size7)> | No  | Callback used to return the size of the current component (**EmbeddedComponent** or **UIExtensionComponent**). If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -263,7 +263,7 @@ Subscribes to position and size change events of the component (**EmbeddedCompon
 | Name  | Type                          | Mandatory| Description                                                    |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | Yes  | Event type. The value is fixed at **'rectChange'**, indicating the rectangle change event for the component (**EmbeddedComponent** or **UIExtensionComponent**).|
-| reasons  | number                         | Yes  | Reason why the position and size of the component (**EmbeddedComponent** or **UIExtensionComponent**) change. For details about the values, see [RectChangeReason](#rectchangereason14).
+| reasons  | number                         | Yes  | Reason why the position and size of the component (**EmbeddedComponent** or **UIExtensionComponent**) change. For details about the values, see [RectChangeReason](#rectchangereason14).|
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | Yes| Callback used to return the current rectangle change values and the reason for the change of the component (**EmbeddedComponent** or **UIExtensionComponent**).|
 
 **Error codes**
@@ -369,7 +369,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
 
 **Example:**
 
@@ -388,6 +388,86 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     };
     // Create a subwindow.
     extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+      .then((subWindow: window.Window) => {
+        subWindow.setUIContent('pages/Index', (err, data) =>{
+          if (err && err.code != 0) {
+            return;
+          }
+          subWindow?.resize(300, 300, (err, data)=>{
+            if (err && err.code != 0) {
+              return;
+            }
+            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+              if (err && err.code != 0) {
+                return;
+              }
+              subWindow?.showWindow((err, data) => {
+                if (err && err.code == 0) {
+                  console.info(`The subwindow has been shown!`);
+                } else {
+                  console.error(`Failed to show the subwindow!`);
+                }
+              });
+            });
+          });
+        });
+      }).catch((error: BusinessError) => {
+        console.error(`Create subwindow failed. Cause code: ${error.code}, message: ${error.message}`);
+      })
+  }
+}
+```
+
+### createSubWindowWithOptions<sup>23+</sup>
+
+createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
+
+Creates a subwindow under this **WindowProxy** instance. By setting **followCreatorLifecycle**, you can control whether the subwindow follows the lifecycle of its creator component (**EmbeddedComponent** or **UIExtensionComponent**). This API uses a promise to return the result.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description          |
+| ------ | ------ | ---- | -------------- |
+| name   | string | Yes  | Name of the subwindow.|
+| subWindowConfig | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | Yes  | Parameters used for creating the subwindow. |
+| followCreatorLifecycle | boolean | Yes  | Whether the subwindow follows the lifecycle of its creator component (**EmbeddedComponent** or **UIExtensionComponent**). **true**: The subwindow is hidden when the component is hidden, and is displayed when the component is displayed. **false**: The visibility of the subwindow does not change with the component.|
+
+**Return value**
+
+| Type                            | Description                                            |
+| -------------------------------- | ------------------------------------------------ |
+| Promise&lt;[window.Window](arkts-apis-window-Window.md)&gt; | Promise used to return the subwindow created.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | ------------------------------ |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+
+**Example:**
+
+```ts
+// ExtensionProvider.ts
+import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends EmbeddedUIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionWindow = session.getUIExtensionWindowProxy();
+    const subWindowConfig: window.SubWindowOptions = {
+      title: 'This is a subwindow',
+      decorEnabled: true
+    };
+    // Create a subwindow.
+    extensionWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) =>{
           if (err && err.code != 0) {
@@ -446,8 +526,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
-| 1300002  | This window state is abnormal. |
+| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.   |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
 
 **Example:**
@@ -548,7 +628,7 @@ Provides the values and reasons returned when the rectangle (position and size) 
 
 ## Example
 
-This example shows how to use all the available APIs in the EmbeddedUIExtensionAbility. The bundle name of the sample application is **com.example.embeddeddemo**, and the EmbeddedUIExtensionAbility to start is **ExampleEmbeddedAbility**.
+This example shows how to use all the available APIs in the [EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md). The bundle name of the sample application is **com.example.embeddeddemo**, and the EmbeddedUIExtensionAbility to start is **ExampleEmbeddedAbility**.
 
 - The EntryAbility (UIAbility) of the sample application loads the **pages/Index.ets** file, whose content is as follows:
 

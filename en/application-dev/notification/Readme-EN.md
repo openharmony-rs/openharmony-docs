@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-- [Introduction to Notification Kit](notification-overview.md)
+- [About This Kit](notification-overview.md)
 - [Requesting Notification Authorization](notification-enable.md)
 - [Managing the Notification Badge](notification-badge.md)
 - [Managing Notification Slots](notification-slot.md)
@@ -29,6 +29,8 @@
   - [Cross-Device Notification Management (for System Applications Only)](notification-distributed-notdistributed-sys.md)
   <!--DelEnd-->
   - [Clearing Repeated Notifications Across Devices](notification-distributed-messageid.md)
-- ExtensionAbility for Notification Subscription<!--notification-subscriber-extension-ability-->
+- ExtensionAbility for Notification Subscription<!--notification-subscriber-extension-->
   - [ExtensionAbility Overview for Notification Subscription](notification-subscriber-extension-ability.md)
   - [Developing the ExtensionAbility for Notification Subscription](notification-subscriber-extension-ability-development-steps.md)
+<!--RP1--><!--RP1End-->
+<!--RP2--><!--RP2End-->

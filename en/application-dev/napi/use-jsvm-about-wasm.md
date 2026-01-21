@@ -10,7 +10,9 @@
 ## Introduction
 
 JSVM-API provides APIs for compiling the WebAssembly (Wasm) bytecode, optimizing Wasm functions, and serializing and deserializing Wasm caches.
+
 **Permission requirements**: To run the Wasm APIs, the application must have the JIT permission. For details about how to apply for the permission, see [Requesting the JIT Permission](jsvm-apply-jit-profile.md).
+
 **Running restrictions**: In the current JSVM version, all functional modules of WebAssembly are disabled in Secure Shield mode. You need to evaluate application compatibility based on the restrictions. For details, see [JSVM-API Secure Shield Mode](jsvm-secure-shield-mode.md).
 
 ## Basic Concepts
@@ -225,6 +227,6 @@ const char *srcCallNative = R"JS(wasmDemo())JS";
 ```
 <!-- @[jsvm_wasm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/webassembly/src/main/cpp/hello.cpp) -->
 Expected result:
-```
+```txt
 JSVM resultInt: 975178312
 ```

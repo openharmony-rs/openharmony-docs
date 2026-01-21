@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct VkSurfaceCreateInfoOHOS {...} VkSurfaceCreateInfoOHOS
+```
+
 ## Overview
 
 The struct describes the parameters required for creating a Vulkan surface.
@@ -23,7 +27,7 @@ The struct describes the parameters required for creating a Vulkan surface.
 
 | Name                            | Description|
 |--------------------------------| -- |
-| VkStructureType sType          | Struct type.|
-| const void* pNext              | Pointer to the next-level struct.|
-| VkSurfaceCreateFlagsOHOS flags | Reserved flag type.|
+| VkStructureType sType          | Struct type. The value must be **VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS**.|
+| const void* pNext              | Pointer to the next struct in the chain. The value must be nullptr.|
+| VkSurfaceCreateFlagsOHOS flags | Reserved flags. The value must be **0**.|
 | [OHNativeWindow](capi-vulkan-nativewindow.md)* window     | Pointer to an OHNativeWindow instance.|

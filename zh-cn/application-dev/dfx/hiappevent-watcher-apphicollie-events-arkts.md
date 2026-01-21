@@ -22,7 +22,7 @@
 
 ### 添加事件观察者
 
-为确保开发阶段顺利接收事件回调，建议采取以下方案：创建新的Native C++工程，在ArkTs代码中实现订阅，并通过C++代码构造故障注入以触发任务执行超时事件。
+为确保开发阶段顺利接收事件回调，建议采取以下方案：创建新的Native C++工程，在ArkTS代码中实现订阅，并通过C++代码构造故障注入以触发任务执行超时事件。
 
 1. 新建Native C++工程，目录结构如下：
 
@@ -169,23 +169,24 @@
 
    ```typescript
    import testNapi from 'libentry.so';
+
    @Entry
-     @Component
-     struct Index {
-       @State message: string = 'Hello World';
-      
-       build() {
-         Row() {
-           Column() {
-             Button("TestHiCollieTimerNdk")
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-               .onClick(testNapi.TestHiCollieTimerNdk);  //添加点击事件，触发TestHiCollieTimerNdk方法。
-           }
-           .width('100%')
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+
+     build() {
+       Row() {
+         Column() {
+           Button("TestHiCollieTimerNdk")
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(testNapi.TestHiCollieTimerNdk);  //添加点击事件，触发TestHiCollieTimerNdk方法。
          }
-         .height('100%')
+         .width('100%')
        }
+       .height('100%')
+     }
    }
    ```
 

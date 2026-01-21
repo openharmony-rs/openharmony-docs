@@ -10,7 +10,7 @@ The module provides APIs for image processing. You can use the APIs to create a 
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.multimedia.image (Image Processing)](arkts-apis-image.md).
 
@@ -114,5 +114,56 @@ async function CreatePictureTest(context: Context) {
   }).catch((error : BusinessError) => {
     console.error('Failed to pack the image. And the error is: ' + error);
   })
+}
+```
+
+## ImageSource<sup>6+</sup>
+
+Provides APIs to obtain image information.
+
+Before calling any API in ImageSource, you must use [image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource) to create an ImageSource instance.
+
+All APIs in ImageSource cannot be called concurrently.
+
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+### isJpegProgressive<sup>22+</sup>
+
+isJpegProgressive(): Promise\<boolean>
+
+Checks whether a JPEG image is progressive. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
+**Returns**
+
+| Type              | Description             |
+| ------------------ | ----------------- |
+|Promise\<boolean> | Promise object. The value **true** indicates that the JPEG image is progressive, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| Error Code| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 7600201      | Bad source.|
+| 7600202      | Unsupported MIME type.|
+
+**Example**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function IsJpegProgressive(imageSource : image.ImageSource) {
+  imageSource.isJpegProgressive()
+    .then((isProgressive: boolean) => {
+      console.info("isJpegProgressive: " + isProgressive);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to obtain the jpeg image isprogressive error.code is ${error.code}, message is ${error.message}`);
+    })
 }
 ```

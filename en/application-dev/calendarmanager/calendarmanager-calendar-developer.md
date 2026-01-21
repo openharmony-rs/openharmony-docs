@@ -1,10 +1,10 @@
 # Calendar Management
 
-<!--Kit: Calendar Kit-->	
-<!--Subsystem: Applications-->	
-<!--Owner: @qq_42718467-->	
-<!--Designer: @huangxinwei-->	
-<!--Tester: @z30055209-->	
+<!--Kit: Calendar Kit-->
+<!--Subsystem: Applications-->
+<!--Owner: @qq_42718467-->
+<!--Designer: @huangxinwei-->
+<!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
 Calendar is used to store and manage personal or team events. Users can easily view, edit, and share event information on the calendar.

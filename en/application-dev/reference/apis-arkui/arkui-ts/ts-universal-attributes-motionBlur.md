@@ -6,11 +6,11 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-You can apply a motion blur effect to a component being scaled or moved. This effect must be used together with the **onFinish** parameter of **AnimateParam**.
+You can apply a motion blur effect to a component being scaled or moved. This effect must be used together with the **onFinish** parameter of [AnimateParam](ts-explicit-animation.md#animateparam).
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>  This feature is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## motionBlur
 
@@ -18,17 +18,19 @@ motionBlur(value: MotionBlurOptions): T
 
 Applies a motion blur effect to the component being scaled or moved.
 
-1. Do not use this API in intra-component transitions, shared element transitions, implicit element transitions, or particle animations. Doing so may cause unexpected results.
-
-2. The **radius** parameter of **motionBlur** must be set to **0** for the initial state. Otherwise, there may be unexpected results during a cold start.
-
-3. This API must be used together with the **onFinish** parameter of **AnimateParam**. Its **radius** parameter must be set to **0** when the animation ends; otherwise, there may be unexpected results.
-
-4. When using this API, do not frequently change the blur radius of the same component; otherwise, there may be unexpected results. For example, if you frequently click the image in the example, the blur effect may not work sometimes.
-
-5. To avoid unexpected results, make sure the coordinates of the motion blur anchor point are the same as those of the animation scaling anchor point.
-
-6. To avoid unexpected results, set the blur radius to a value less than 1.
+> **NOTE**
+>
+> - Do not use this API in intra-component transitions, shared element transitions, implicit element transitions, or particle animations. Doing so may cause unexpected results.
+>
+> - The **radius** parameter of **motionBlur** must be set to **0** for the initial state. Otherwise, there may be unexpected results during a cold start.
+>
+> - This API must be used together with the **onFinish** parameter of **AnimateParam**. Its **radius** parameter must be set to **0** when the animation ends; otherwise, there may be unexpected results.
+>
+> - When using this API, do not frequently change the blur radius of the same component; otherwise, there may be unexpected results. For example, if you frequently click the image in the example, the blur effect may not work sometimes.
+>
+> - To avoid unexpected results, make sure the coordinates of the motion blur anchor point are the same as those of the animation scaling anchor point.
+>
+> - To avoid unexpected results, set the blur radius to a value less than 1.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -115,44 +117,42 @@ import { curves } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct MotionBlurTest {
-  @State widthSize: number = 400;
-  @State heightSize: number = 320;
-  @State flag: boolean = true;
-  @State radius: number = 0;
-  @State x: number = 0;
-  @State y: number = 0;
+struct motionBlurTest {
+  @State widthSize: number = 300
+  @State heightSize: number = 240
+  @State flag: boolean = true
+  @State radius: number = 0
+  @State x: number = 0.5
+  @State y: number = 0.5
 
   build() {
     Column() {
       Column() {
-        // Replace $r("app.media.testImg") with the image resource file you use.
-        Image($r('app.media.testImg'))
+        // Replace $r('app.media.test') with the image resource file you use.
+        Image($r('app.media.test'))
           .width(this.widthSize)
           .height(this.heightSize)
+          .scale({ x: this.flag ? 1 : 0.8,y: this.flag ? 1 : 0.8 ,centerX: "50%", centerY: "50%" })
           .onClick(() => {
-            this.radius = 5;
+            this.radius = 50;
             this.x = 0.5;
             this.y = 0.5;
-            if (this.flag) {
-              this.widthSize = 100;
-              this.heightSize = 80;
-            } else {
-              this.widthSize = 400;
-              this.heightSize = 320;
-            }
             this.flag = !this.flag;
           })
           .animation({
-            duration: 2000,
-            curve: curves.springCurve(10, 1, 228, 30),
+            duration: 2000, // Animation playback time.
+            iterations:1, // Animation playback iterations.
+            playMode:PlayMode.Alternate, // Animation playback mode: plays forward on odd-numbered iterations (1st, 3rd, 5th...) and reverse on even-numbered iterations (2nd, 4th, 6th...).
+            curve: curves.springCurve(10, 1, 228, 30), // Animation curve.
             onFinish: () => {
               this.radius = 0;
-            }
+              console.info("onFinish")
+            },
           })
           .motionBlur({ radius: this.radius, anchor: { x: this.x, y: this.y } })
       }
-    }.width('100%').margin({ top: 5 })
+    }.width('100%')
+    .margin({ top: 50 })
   }
 }
 ```

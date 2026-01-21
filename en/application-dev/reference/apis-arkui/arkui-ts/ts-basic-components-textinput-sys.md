@@ -16,6 +16,8 @@ The **TextInput** component provides single-line text input.
 
 ## InputType
 
+Sets the single-line text input box type.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                                | Value| Description                                      |

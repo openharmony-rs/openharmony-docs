@@ -56,19 +56,23 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 ```
 
-### napi_open_handle_scope and napi_close_handle_scope
+### napi_open_handle_scope<br>napi_close_handle_scope
 
 Use **napi_open_handle_scope** to create a context and use **napi_close_handle_scope** to close the context. You can use these two APIs to manage the **napi_value** lifecycle of an ArkTS object, which prevents the object from being incorrectly garbage-collected.  
+
 Note that the API supports only the single-layer nested scope structure. There is only one active scope at any time, and all newly created handles will be associated with that scope. Scopes must be closed in the reverse order of opening. In addition, all scopes created in the native method must be closed before the method returns.
 
 For details about the code of lifecycle management, see:
+
 [Lifecycle Management](napi-guidelines.md#lifecycle-management) 
+
 For details about the code of typical incorrect usage, see:
+
 [Typical Error Scenarios](napi-faq-about-stability.md#what-are-the-typical-error-scenarios-of-lifecycle-related-development-between-napi_open_handle_scope-and-napi_close_handle_scope)
 
 CPP code:
 
-<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 // napi_open_handle_scope, napi_close_handle_scope
@@ -91,7 +95,7 @@ static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
     napi_close_handle_scope(env, scope);
     // The value of result is 'handleScope'.
     return result;
-    // result has left the scope. If it is used, stability problems may occur.
+    // result has left the scope. If it is used, stability problems may occur. To use objects outside the scope, you are advised to use the napi_open_escapable_handle_scope APIs.
 }
 
 static napi_value HandleScope(napi_env env, napi_callback_info info)
@@ -148,7 +152,7 @@ try {
 ```
 
 
-The scope of the framework layer is embedded in the end-to-end process of accessing native code from ArkTS. That is, the scope is opened when the native method is called and closed when the native method ends. The lifecycle of the created ArkTS object ends when the call ends, and no memory leak occurs. The calling is as follows:
+The framework layer defines the API mapping table between the ArkTS and native sides in the core initialization function **Init**. When the ArkTS side accesses the native function through the API in the mapping table, the framework layer automatically adds the scope. You do not need to add the **napi_open_handle_scope** and **napi_close_handle_scope** APIs to manage the lifecycle of ArkTS objects. That is, the scope is automatically opened when the native function is called and automatically closed when the native function ends. The lifecycle of the ArkTS object created in the native function ends when the native function returns, and no memory leak occurs. The following example defines the **NewObject** function. (You do not need to add **napi_open_handle_scope** and **napi_close_handle_scope** to define the function in the API mapping table to manage the life cycle of the ArkTS object.)
 ```cpp
 // Open the scope before calling NewObject.
 napi_value NewObject(napi_env env, napi_callback_info info)
@@ -165,14 +169,27 @@ napi_value NewObject(napi_env env, napi_callback_info info)
     napi_create_string_utf8(env, "Hello from Node-API!", NAPI_AUTO_LENGTH, &value);
     // Set the property on the object.
     napi_set_property(env, object, name, value);
+    // After the result leaves the scope, the object handle is released, and the object returned to ArkTS is managed by ArkTS.
     return object;
 }
 // The framework layer closes the scope after the NewObject function call ends.
+
+// Core initialization function.
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // Define the API mapping table.
+    napi_property_descriptor desc[] = {
+        { "newObject", nullptr, NewObject, nullptr, nullptr, nullptr, napi_default, nullptr }
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
 ```
 
 ### napi_open_escapable_handle_scope, napi_close_escapable_handle_scope, and napi_escape_handle
 
 Use **napi_open_escapable_handle_scope** to open an escapable scope, which allows the declared values in the scope to be returned to the parent scope. The scope must be closed using **napi_close_escapable_handle_scope**. Use **napi_escape_handle** to promote the lifecycle of an ArkTS object so that it is valid for the lifetime of the parent scope.
+
 These APIs are helpful for managing ArkTS objects more flexibly in C/C++, especially when passing cross-scope values.
 
 CPP code:

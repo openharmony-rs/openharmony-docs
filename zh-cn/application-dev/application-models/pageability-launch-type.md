@@ -20,7 +20,7 @@
 
 应用开发者可在config.json配置文件中通过“launchType”配置启动模式。示例如下：
 
-```json
+```json5
 {
   "module": {
     ...

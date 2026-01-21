@@ -12,7 +12,7 @@
 
 > **说明：**
 >
-> 从API version 11开始使用。
+> 从API version 11开始支持。
 >
 > 从API version 12开始，wrapBuilder支持在原子化服务中使用。
 >
@@ -110,7 +110,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 自定义组件`IndexItem`使用ForEach进行不同\@Builder函数的渲染，可以使用`builderArr`声明的wrapBuilder数组来实现不同的\@Builder函数的效果。整体代码会更加整洁。
 
-<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) -->
+<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -129,23 +129,20 @@ function yourBuilder(value: string, size: number) {
 
 const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(myBuilder0), wrapBuilder(yourBuilder)];
 
-
 @Entry
 @Component
 struct IndexItem {
   @Builder
   IndexItem() {
     ForEach(builderArr, (item: WrappedBuilder<[string, number]>) => {
-      item.builder('Hello World', 30)
-    }
-
-    )
+      item.builder('Hello World', 30);
+    })
   }
 
   build() {
     Row() {
       Column() {
-        this.IndexItem()
+        this.IndexItem();
       }
       .width('100%')
     }

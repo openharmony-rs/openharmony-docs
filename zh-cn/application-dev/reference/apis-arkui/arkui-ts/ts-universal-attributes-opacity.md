@@ -63,7 +63,7 @@ opacity(opacity: Optional\<number | Resource>): T
 
 ## 示例
 
-该示例主要显示通过opacity设置组件的不透明度。
+该示例主要显示通过[opacity](#opacity)设置组件的不透明度。
 
 ```ts
 // xxx.ets

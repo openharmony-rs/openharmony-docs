@@ -524,8 +524,8 @@ class C {
   }
 }
 
-let s: C = new C(-2); 	//抛出异常
-let t: C = { value: -2 };	//ArkTS不支持
+let s: C = new C(-2);   //抛出异常
+let t: C = { value: -2 }; //ArkTS不支持
 ```
 
 如果允许使用`C`来标注object literal的类型，变量`t`会导致行为的二义性。ArkTS禁止通过object literal绕过这一行为。
@@ -1306,9 +1306,12 @@ console.info(t.createController()!.value);
 
 ArkTS不支持`globalThis`。一方面无法为`globalThis`添加静态类型，只能通过查找方式访问其属性，导致额外性能开销。另一方面，无法为`globalThis`的属性标记类型，无法保证操作的安全性和高性能。
 
-1. 建议按照业务逻辑根据`import/export`语法实现数据在不同模块的传递。
+> **说明：**
+>
+> 1. 建议按照业务逻辑根据`import/export`语法实现数据在不同模块的传递。
+> 
+> 2. 必要情况下，可以通过构造的**单例对象**来实现全局对象的功能。（不能在har中定义单例对象，har在打包时会在不同的hap中打包两份，无法实现单例。）
 
-2. 必要情况下，可以通过构造的**单例对象**来实现全局对象的功能。(**说明：** 不能在har中定义单例对象，har在打包时会在不同的hap中打包两份，无法实现单例。)
 
 **构造单例对象**
 
@@ -1660,11 +1663,11 @@ class Test {
 
 2.对于对象类型（包括函数类型）`A`，如果不确定如何初始化，建议按照以下方式之一进行初始化：
 
-​	方式(i)  `prop: A | null = null`
+​ 方式(i)  `prop: A | null = null`
 
-​	方式(ii) `prop?: A`
+​ 方式(ii) `prop?: A`
 
-​	方式三(iii) `prop： A | undefined = undefined`
+​ 方式三(iii) `prop： A | undefined = undefined`
 
 - 从性能角度看，`null`类型仅用于编译期的类型检查，不会影响虚拟机性能。而`undefined | A`被视为联合类型，运行时可能产生额外开销。
 - 从代码可读性、简洁性的角度来说，`prop?:A`是`prop： A | undefined = undefined`的语法糖，**推荐使用可选属性的写法**。

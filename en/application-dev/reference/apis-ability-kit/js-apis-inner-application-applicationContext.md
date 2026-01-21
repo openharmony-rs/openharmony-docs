@@ -24,7 +24,7 @@ import { common } from '@kit.AbilityKit';
 
 on(type: 'abilityLifecycle', callback: AbilityLifecycleCallback): number
 
-Registers a listener for the lifecycle of a UIAbility within the application. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Registers a listener for the lifecycle of a UIAbility within the application. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -112,7 +112,7 @@ export default class EntryAbility extends UIAbility {
 
 off(type: 'abilityLifecycle', callbackId: number,  callback: AsyncCallback\<void>): void
 
-Unregisters a listener for the lifecycle of a UIAbility within the application. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Unregisters a listener for the lifecycle of a UIAbility within the application. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -165,7 +165,7 @@ export default class EntryAbility extends UIAbility {
 
 off(type: 'abilityLifecycle', callbackId: number): Promise\<void>
 
-Unregisters a listener for the lifecycle of a UIAbility within the application. This API uses a promise to return the result. It can be called only by the main thread.
+Unregisters a listener for the lifecycle of a UIAbility within the application. This API uses a promise to return the result. It can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -217,7 +217,7 @@ export default class MyAbility extends UIAbility {
 
 on(type: 'environment', callback: EnvironmentCallback): number
 
-Registers a listener for system environment changes. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Registers a listener for system environment changes. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -285,7 +285,7 @@ export default class EntryAbility extends UIAbility {
 
 off(type: 'environment', callbackId: number,  callback: AsyncCallback\<void>): void
 
-Unregisters the listener for system environment changes. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Unregisters the listener for system environment changes. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -337,7 +337,7 @@ export default class EntryAbility extends UIAbility {
 
 off(type: 'environment', callbackId: number): Promise\<void\>
 
-Unregisters the listener for system environment changes. This API uses a promise to return the result. It can be called only by the main thread.
+Unregisters the listener for system environment changes. This API uses a promise to return the result. It can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -388,7 +388,7 @@ export default class MyAbility extends UIAbility {
 
 on(type: 'applicationStateChange', callback: ApplicationStateChangeCallback): void
 
-Registers a listener for application process state changes. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Registers a listener for application process state changes. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -444,7 +444,7 @@ export default class MyAbility extends UIAbility {
 
 off(type: 'applicationStateChange', callback?: ApplicationStateChangeCallback): void
 
-Unregisters the listener for application process state changes. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Unregisters the listener for application process state changes. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -589,7 +589,7 @@ export default class MyAbility extends UIAbility {
 
 killAllProcesses(): Promise\<void\>
 
-Kills all processes of this application. The application will not execute the normal lifecycle when exiting. This API uses a promise to return the result. It can be called only by the main thread.
+Kills all processes of this application. The application will not execute the normal lifecycle when exiting. This API uses a promise to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -631,7 +631,7 @@ export default class MyAbility extends UIAbility {
 
 killAllProcesses(clearPageStack: boolean): Promise\<void\>
 
-Kills all processes of this application. The application will not execute the normal lifecycle when exiting. This API uses a promise to return the result. It can be called only by the main thread.
+Kills all processes of this application. The application will not execute the normal lifecycle when exiting. This API uses a promise to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -681,7 +681,7 @@ export default class MyAbility extends UIAbility {
 
 killAllProcesses(callback: AsyncCallback\<void\>): void
 
-Kills all processes of this application. The application will not execute the normal lifecycle when exiting. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Kills all processes of this application. The application will not execute the normal lifecycle when exiting. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 > **NOTE**
 >
@@ -726,7 +726,7 @@ export default class MyAbility extends UIAbility {
 
 setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
-Sets the dark/light color mode for the application. This API can be called only by the main thread.
+Sets the dark/light color mode for the application. This API can be called only on the main thread.
 
 > **NOTE**
 >
@@ -766,9 +766,9 @@ export default class MyAbility extends UIAbility {
         return;
       }
       console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+      let applicationContext = this.context.getApplicationContext();
+      applicationContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
     });
-    let applicationContext = this.context.getApplicationContext();
-    applicationContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
   }
 }
 ```
@@ -777,7 +777,7 @@ export default class MyAbility extends UIAbility {
 
 setLanguage(language: string): void
 
-Sets the language for the application. This API can be called only by the main thread.
+Sets the language for the application. This API can be called only on the main thread.
 
 > **NOTE**
 >
@@ -827,7 +827,7 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(): Promise\<void\>
 
-Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses a promise to return the result. It can be called only on the main thread.
 
 
 > **NOTE**
@@ -870,7 +870,7 @@ export default class MyAbility extends UIAbility {
 
 clearUpApplicationData(callback: AsyncCallback\<void\>): void
 
-Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only by the main thread.
+Clears up all data in the application file path and revokes the permissions that the application has requested from users. This API uses an asynchronous callback to return the result. It can be called only on the main thread.
 
 
 > **NOTE**
@@ -1039,7 +1039,7 @@ export default class MyAbility extends UIAbility {
 
 setFont(font: string): void
 
-Sets the font for this application. This API can be called only by the main thread.
+Sets the font for this application. This API can be called only on the main thread.
 
 > **NOTE**
 >
@@ -1101,7 +1101,7 @@ struct Index {
 
 setSupportedProcessCache(isSupported : boolean): void
 
-Sets whether the current application's process supports resource caching, so that the cached process resources can be reused when the application is started again. This API can be called only by the main thread.
+Sets whether the current application's process supports resource caching, so that the cached process resources can be reused when the application is started again. This API can be called only on the main thread.
 
 This setting applies only to the current process instance and does not affect others. If the application process instance is terminated, the previously set state will not be preserved and must be reset.
 
@@ -1157,7 +1157,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 setFontSizeScale(fontSizeScale: number): void
 
-Sets the scale ratio for the font size of this application. This API can be called only by the main thread.
+Sets the scale ratio for the font size of this application. This API can be called only on the main thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -1193,7 +1193,7 @@ export default class MyAbility extends UIAbility {
 
 getCurrentInstanceKey(): string
 
-Obtains the unique instance ID of this application. This API can be called only by the main thread.
+Obtains the unique instance ID of this application. This API can be called only on the main thread.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1240,7 +1240,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 getAllRunningInstanceKeys(): Promise\<Array\<string>>;
 
-Obtains the unique instance IDs of all multi-instances of this application. This API uses a promise to return the result. It can be called only by the main thread.
+Obtains the unique instance IDs of all multi-instances of this application. This API uses a promise to return the result. It can be called only on the main thread.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1284,7 +1284,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 getAllWindowStages(): Promise\<Array\<window.WindowStage>>
 
-Obtains all WindowStage objects in the current application process. This API uses a promise to return the result. It can be called only by the main thread.
+Obtains all WindowStage objects in the current application process. This API uses a promise to return the result. It can be called only on the main thread.
 
 This API is used to manage multiple windows in an application that contains several UIAbility components, for example, managing the states of different WindowStage objects, or synchronizing state or data between multiple windows within the same application.
 

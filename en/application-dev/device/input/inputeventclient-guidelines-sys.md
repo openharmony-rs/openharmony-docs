@@ -47,7 +47,7 @@ struct Index {
               keyCode: 2,
               keyDownDuration: 0,
               isIntercepted: false
-            }// Home key pressing event
+            }// Home key pressing event.
 
             class EventDown {
               KeyEvent: inputEventClient.KeyEvent | null = null

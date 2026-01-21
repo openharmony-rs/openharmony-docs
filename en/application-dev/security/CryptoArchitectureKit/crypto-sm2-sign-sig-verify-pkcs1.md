@@ -38,9 +38,11 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // The plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+
   async function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = "SM2_256|SM3";
     let signer = cryptoFramework.createSign(signAlg);
@@ -49,6 +51,7 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
     let signData = await signer.sign(input2);
     return signData;
   }
+
   async function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = "SM2_256|SM3";
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -58,6 +61,7 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
     console.info("verify result is " + res);
     return res;
   }
+
   async function main() {
     let keyGenAlg = "SM2_256";
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
@@ -77,9 +81,11 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // The plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+
   function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = "SM2_256|SM3";
     let signer = cryptoFramework.createSign(signAlg);
@@ -88,6 +94,7 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
     let signData = signer.signSync(input2);
     return signData;
   }
+
   function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = "SM2_256|SM3";
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -97,6 +104,7 @@ For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify
     console.info("verify result is " + res);
     return res;
   }
+
   function main() {
     let keyGenAlg = "SM2_256";
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);

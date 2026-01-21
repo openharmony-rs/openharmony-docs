@@ -17,3 +17,4 @@
 <!--Del-->
 - [划词服务](selectionInput/Readme-CN.md)<!--selectioninput-->
 <!--DelEnd-->
+- [电源管理](powermgr/Readme-CN.md)<!--powermgr-->

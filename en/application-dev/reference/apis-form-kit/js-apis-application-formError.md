@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 The **formError** module provides error codes for widgets.
@@ -11,7 +11,7 @@ The **formError** module provides error codes for widgets.
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This module is deprecated since API version 9. You are advised to use [Form Error Codes](errorcode-form.md) instead.
+> - This module is deprecated since API version 9. You are advised to use [Widget Error Codes](errorcode-form.md) instead.
 
 ## Modules to Import
 

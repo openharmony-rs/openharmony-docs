@@ -29,7 +29,9 @@
 
 ## 选择合适的UIExtensionAbility进程模型
 [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)支持多实例，每个嵌入式显示对应一个UIExtensionAbility实例。多实例场景下默认是多进程，可配置多进程模型。
+
 当应用中存在多个UIExtensionAbility实例，这些实例可以为多个独立进程，也可以共用同一个进程，还可以分为多组、同组实例共用同一个进程。通过[module.json5](../quick-start/module-configuration-file.md)配置文件中的extensionProcessMode字段，即可为选择对应的进程模型，三种模型对比如下：
+
 | 进程模型 | extensionProcessMode字段配置 | 说明 |
 | --------| --------| --------|
 | 同一bundle中所有UIExtensionAbility共进程 |bundle| UIExtensionAbility实例之间的通信无需跨IPC通信；实例之间的状态不独立，会存在相互影响。|
@@ -140,7 +142,9 @@ struct Index {
 ![uiextension-bundle-example](figures/uiextability-bundle-example.png)
 
 采用该进程模型，进程名格式为：
+
 process name [{bundleName}：{UIExtensionAbility的类型}]
+
 例如，process name [com.ohos.intentexecutedemo:xxx]。
 
 **图3** 进程模型展示
@@ -252,7 +256,9 @@ struct Index {
 ![uiextability-type-example](figures/uiextability-type-example.png)
 
 采用该进程模型，进程名格式为：
+
 process name [{bundleName}：{UIExtensionAbility名}]
+
 例如，process name [com.ohos.intentexecutedemo:xxx]。
 
 **图6** 进程模型展示
@@ -365,7 +371,9 @@ struct Index {
 ![uiextability-instance-example](figures/uiextability-instance-example.png)
 
 采用该进程模型，进程名格式为：
+
 process name [{bundleName}：{UIExtensionAbility的类型}: {实例后缀}]
+
 例如，process name [com.ohos.intentexecutedemo:xxx:n]。
 
 **图9** 进程模型展示
@@ -507,6 +515,7 @@ UIExtensionAbility通过[UIExtensionContext](../reference/apis-ability-kit/js-ap
 ## 开发UIExtensionAbility使用方
 
 开发者可以在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的页面中通过[UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)容器加载自己应用内的[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+
 如在首页文件：pages/Index.ets中添加如下内容。
 
 ```ts

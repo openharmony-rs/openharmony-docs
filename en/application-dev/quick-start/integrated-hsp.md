@@ -18,7 +18,8 @@ Multiple applications in a group can use the same dynamic shared package. To red
 
 ## Constraints
 - The integrated HSP is only available for the [stage model](application-package-structure-stage.md).
-- Only integrated HSP of API version 12 or later is supported. You should set the **useNormalizedOHMUrl** field to **true** in the project-level [build-profile.json5](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app) file.
+- The integrated HSP only works with API version 12 or later.
+- The integrated HSP must use the standardized OHMUrl format. Set the **useNormalizedOHMUrl** field to **true** in the [project-level build-profile.json5 file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app).
 
 ## Development Instructions
 1. Project configuration for creators: Set the **useNormalizedOHMUrl** field to **true** in the project-level **build-profile.json5** file to configure the integrated HSP.

@@ -9,6 +9,9 @@
 
 - ArkTS APIs<!--arkgraphics-arkts-->
   - [@ohos.effectKit (Image Effects)](js-apis-effectKit.md)
+  <!--Del-->
+  - [@ohos.effectKit (Image Effect) (System API)](js-apis-effectKit-sys.md)
+  <!--DelEnd-->
   - [@ohos.graphics.colorSpaceManager (Color Space Management)](js-apis-colorSpaceManager.md)
   - [@ohos.graphics.sendableColorSpaceManager (Sendable Color Space Management)](js-apis-sendableColorSpaceManager.md)
   - [@ohos.graphics.common2D (Common Data Types of 2D Graphics)](js-apis-graphics-common2D.md)
@@ -17,7 +20,7 @@
     - [Module Description](arkts-apis-graphics-drawing.md)
     - [Class (Brush)](arkts-apis-graphics-drawing-Brush.md)
     - [Class (Canvas)](arkts-apis-graphics-drawing-Canvas.md)
-    - [Class (ClorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
+    - [Class (ColorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
     - [Class (Font)](arkts-apis-graphics-drawing-Font.md)
     - [Class (ImageFilter)](arkts-apis-graphics-drawing-ImageFilter.md)
     - [Class (Lattice)](arkts-apis-graphics-drawing-Lattice.md)
@@ -75,11 +78,13 @@
     - [drawing_gpu_context.h](capi-drawing-gpu-context-h.md)
     - [drawing_image.h](capi-drawing-image-h.md)
     - [drawing_image_filter.h](capi-drawing-image-filter-h.md)
+    - [drawing_lattice.h](capi-drawing-lattice-h.md)
     - [drawing_mask_filter.h](capi-drawing-mask-filter-h.md)
     - [drawing_matrix.h](capi-drawing-matrix-h.md)
     - [drawing_memory_stream.h](capi-drawing-memory-stream-h.md)
     - [drawing_path.h](capi-drawing-path-h.md)
     - [drawing_path_effect.h](capi-drawing-path-effect-h.md)
+    - [drawing_path_iterator.h](capi-drawing-path-iterator-h.md)
     - [drawing_pen.h](capi-drawing-pen-h.md)
     - [drawing_pixel_map.h](capi-drawing-pixel-map-h.md)
     - [drawing_point.h](capi-drawing-point-h.md)
@@ -118,6 +123,7 @@
     - [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)
     - [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md)
     - [OH_NativeBuffer_Planes](capi-oh-nativebuffer-oh-nativebuffer-planes.md)
+    - [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)
     - [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md)
     - [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md)
     - [DisplaySoloist_ExpectedRateRange](capi-nativedisplaysoloist-displaysoloist-expectedraterange.md)
@@ -150,7 +156,6 @@
     - [Rect](capi-nativewindow-rect.md)
     - [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md)
     - [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md)
-    - [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)
     - [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)
     - [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)
     - [NativePixelMap_](capi-drawing-nativepixelmap-.md)
@@ -175,6 +180,8 @@
     - [OH_Drawing_Region](capi-drawing-oh-drawing-region.md)
     - [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md)
     - [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)
+    - [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md)
+    - [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md)
     - [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md)
     - [OH_Drawing_Point](capi-drawing-oh-drawing-point.md)
     - [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)
@@ -214,3 +221,4 @@
 - Error Codes<!--arkgraphics-arkts-errcode-->
   - [colorSpaceManager Error Codes](errorcode-colorspace-manager.md)
   - [Drawing and Display Error Codes](errorcode-drawing.md)
+<!--no_check-->

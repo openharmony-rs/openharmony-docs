@@ -2,13 +2,17 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_AccessibilityElementInfoList ArkUI_AccessibilityElementInfoList
+```
+
 ## Overview
 
-Provides an encapsulated **ArkUI_AccessibilityElementInfoList** instance.
+Provides a **List** instance of encapsulated [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md).
 
 **Since**: 13
 

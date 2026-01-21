@@ -1,10 +1,9 @@
 # @ohos.app.form.formBindingData (卡片数据绑定类)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 卡片数据绑定模块提供卡片数据绑定的能力。包括FormBindingData对象的创建、相关信息的描述。
 
@@ -107,7 +106,7 @@ struct Index {
       };
       formBindingData.createFormBindingData(createFormBindingDataParam);
     } catch (error) {
-      console.error(`catch error, error: ${JSON.stringify(error)}`);
+      console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
     }
   }
 

@@ -241,7 +241,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    const char* mimetype = nullptr;
    uint8_t *codecConfig = nullptr;
    size_t bufferSize = 0;
-   int32_t trackType;
+   int32_t trackType = -1;
    for (uint32_t index = 0; index < (static_cast<uint32_t>(trackCount)); index++) {
       // 获取轨道信息，用户可通过该接口获取对应轨道级别属性，具体支持信息参考附表 2。
       OH_AVFormat *trackFormat = OH_AVSource_GetTrackFormat(source, index);
@@ -249,6 +249,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
          printf("get track format failed");
          return;
       }
+      // 获取轨道类型, 不支持的类型不会修改trackType的值。
+      // 注意trackType初始值建议设为非有效值（如-1），避免误用。
       if (!OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType)) {
          printf("get track type from track format failed");
          return;
@@ -418,10 +420,10 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 ### 文件级别属性支持范围
 
 > **说明：**
-> 正常解析时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解析异常，无法获取数据。
-> 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考[icu4c](../../reference/native-lib/icu4c.md)。
-> 
-> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
+> - 正常解析时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解析异常，无法获取数据。
+> - 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考[icu4c](../../reference/native-lib/icu4c.md)。
+> - 从API version 23开始，部分OGG格式资源，如OH_MD_KEY_TITLE、OH_MD_KEY_ARTIST和OH_MD_KEY_ALBUM存在于轨道属性中，可从轨道级别属性中获取。
+> - 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
 **表1** 文件级别属性支持范围
 | 名称 | 描述 |

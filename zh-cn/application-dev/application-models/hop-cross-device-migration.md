@@ -82,7 +82,6 @@
     
     3. 返回迁移结果：开发者可以通过`onContinue()`回调的返回值决定是否支持此次迁移，接口返回值详见[AbilityConstant.OnContinueResult](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#oncontinueresult)。
     
-    &nbsp;
     `onContinue()`接口传入的`wantParam`参数中，有部分字段由系统预置，开发者可以使用这些字段用于业务处理。同时，应用在保存自己的`wantParam`参数时，也应注意不要使用同样的key值，避免被系统覆盖导致数据获取异常。详见下表：
     
     | 字段|含义|
@@ -369,7 +368,9 @@ export default class MigrationAbility extends UIAbility {
 
 ### 支持同应用中不同Ability跨端迁移
 一般情况下，跨端迁移的双端是同Ability之间，但有些应用在不同设备类型下的同一个业务Ability名称不同（即异Ability），为了支持该场景下的两个Ability之间能够完成迁移，可以通过在[module.json5](../quick-start/module-configuration-file.md)文件的abilities标签中配置迁移类型continueType进行关联。
+
 需要迁移的两个Ability的continueType字段取值必须保持一致，示例如下：
+
    > **说明：**
    >
    > continueType在本应用中要保证唯一，字符串以字母、数字和下划线组成，最大长度127个字节，不支持中文。
@@ -657,7 +658,7 @@ export default class MigrationAbility extends UIAbility {
   >
   > 自API 12起，由于直接使用[跨设备文件访问](../file-management/file-access-across-devices.md)实现文件的迁移难以获取文件同步完成的时间，为了保证更高的成功率，文件数据的迁移不建议继续通过该方式实现，推荐使用分布式数据对象携带资产的方式进行。开发者此前通过跨设备文件访问实现的文件迁移依然生效。
 
-#### 基础数据的迁移
+**基础数据的迁移**
 
 使用分布式数据对象，需要在源端[onContinue()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncontinue)接口中进行数据保存，并在对端的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)/[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)接口中进行数据恢复。
 
@@ -819,7 +820,7 @@ export default class MigrationAbility extends UIAbility {
 }
 ```
 
-#### 文件资产的迁移
+**文件资产的迁移**
 
 对于图片、文档等文件类数据，需要先将其转换为[资产`commonType.Asset`](../reference/apis-arkdata/js-apis-data-commonType.md#asset)类型，再封装到分布式数据对象中进行迁移。迁移实现方式与普通的分布式数据对象类似，下例中仅针对区别部分进行说明。
 
@@ -946,6 +947,34 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG: string = '[MigrationAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
+// 数据对象定义
+class ParentObject {
+  mother: string
+  father: string
+
+  constructor(mother: string, father: string) {
+    this.mother = mother
+    this.father = father
+  }
+}
+
+class SourceObject {
+  name: string | undefined
+  age: number | undefined
+  isVis: boolean | undefined
+  parent: ParentObject | undefined
+  attachment: commonType.Asset | undefined // 新增资产属性
+
+  constructor(name: string | undefined, age: number | undefined, isVis: boolean | undefined,
+              parent: ParentObject | undefined, attachment: commonType.Asset | undefined) {
+    this.name = name
+    this.age = age
+    this.isVis = isVis
+    this.parent = parent
+    this.attachment = attachment;
+  }
+}
+
 export default class MigrationAbility extends UIAbility {
   d_object?: distributedDataObject.DataObject;
 
@@ -988,7 +1017,7 @@ export default class MigrationAbility extends UIAbility {
 ```ts
 // 导入模块
 import { distributedDataObject, commonType } from '@kit.ArkData';
-import { UIAbility } from '@kit.AbilityKit';
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 // 数据对象定义
 class SourceObject {
@@ -1005,7 +1034,7 @@ export default class MigrationAbility extends UIAbility {
   d_object?: distributedDataObject.DataObject;
 
   // 该函数用于将资产数组转为Record
-  GetAssetsWapper(assets: commonType.Assets): Record<string, commonType.Asset> {
+  GetAssetsWrapper(assets: commonType.Assets): Record<string, commonType.Asset> {
     let wrapper: Record<string, commonType.Asset> = {}
     let num: number = assets.length;
     for (let i: number = 0; i < num; i++) {
@@ -1042,7 +1071,7 @@ export default class MigrationAbility extends UIAbility {
     assets.push(attachment2);
 
     // 将资产数组转为Record Object，并用于创建分布式数据对象
-    let assetsWrapper: Object = this.GetAssetsWapper(assets);
+    let assetsWrapper: Object = this.GetAssetsWrapper(assets);
     let source: SourceObject = new SourceObject("jack", assetsWrapper);
     this.d_object = distributedDataObject.create(this.context, source);
 

@@ -11,21 +11,23 @@
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
-```
+``` ts
 import { AtomicServiceNavigation } from '@kit.ArkUI';
 ```
 
 ## 子组件
 
 可以包含子组件。
-从API Version 10开始，推荐使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)进行页面路由。
+
+从API version 10开始，推荐使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)进行页面路由。
+
 ## AtomicServiceNavigation
 
-```
+``` ts
 AtomicServiceNavigation({
     navPathStack?: NavPathStack,
     navigationContent: Callback<void>,
@@ -40,7 +42,7 @@ AtomicServiceNavigation({
     minContentWidth?: Dimension,
     sideBarOptions?: sideBarOptions,
     sideBarContent?: Callback<void>,
-    menus?:	CustomBuilder | Array<NavigationMenuItem>,
+    menus?: CustomBuilder | Array<NavigationMenuItem>,
     stateChangeCallback?: Callback<boolean>,
     modeChangeCallback?: Callback<NavigationMode>
 })

@@ -32,9 +32,11 @@ The USB serial port service consists of two phases:
 - Transmit and receive data.
 
   Transmitting data:
+
   The application layer sends data. → The driver transmits the data to the device through the USB channel. → The device parses the data and sends the data to the serial port device through the physical serial port.
   
   Receiving data:
+  
   The device receives the data from the physical serial port. → The device packages and uploads data to the USB host. → The driver receives and stores data in the serial port buffer. → The application layer reads the data.
 
  

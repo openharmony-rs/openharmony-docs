@@ -11,280 +11,220 @@
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 ## 1300001 Repeated Operation
-**Error Message**
-
+**Error Message**<br>
 Repeated operation.
 
-**Description**
-
+**Description**<br>
 This error code is reported when a repeated operation is performed.
 
-**Possible Causes**
-1. The window has been created.
+**Possible Causes**<br>
+1. The window has been created.<br>
 2. The window is in the current state.
 
-**Solution**
-
+**Solution**<br>
 Before creating a window, check whether the window has been created or is in the current state.
 
 ## 1300002 Abnormal Window State
-**Error Message**
-
+**Error Message**<br>
 This window state is abnormal.
 
-**Description**
-
+**Description**<br>
 This error code is reported when you operate a window in an abnormal state, for example, a window that is not created yet or has been destroyed.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 The window to operate is not created or has been destroyed.
 
-**Solution**
-
+**Solution**<br>
 Operate the window that exists.
 
 ## 1300003 Abnormal Window Manager Service
-**Error Message**
-
+**Error Message**<br>
 This window manager service works abnormally.
 
-**Description**
-
+**Description**<br>
 This error code is reported when the window manager service is abnormal.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 The internal services of the window are not started normally.
 
-**Solution**
-
+**Solution**<br>
 Try again later or restart the device.
 
 ## 1300004 Unauthorized Operation
-**Error Message**
-
+**Error Message**<br>
 Unauthorized operation.
 
-**Description**
-
+**Description**<br>
 This error code is reported when the API does not have the required permissions to operate an object.
 
-**Possible Causes**
+**Possible Causes**<br>
+1. The window object of another process is operated.
+2. The window type is not supported.
 
-The window object of another process is operated.
-
-**Solution**
-
-Check whether unauthorized operations are performed on the object of another process. If yes, delete the operations.
+**Solution**<br>
+1. Ensure that you are interacting only with windows created within your own process. If you are referencing windows from other processes, remove those references or calls.
+2. Ensure that the related operations are consistent with the supported window type.
 
 ## 1300005 Abnormal WindowStage
-**Error Message**
-
+**Error Message**<br>
 This window stage is abnormal.
 
-**Description**
-
+**Description**<br>
 This error code is reported when you operate a WindowStage in the abnormal state, for example, a WindowStage that has been destroyed.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 The WindowStage is not created or has been destroyed.
 
-**Solution**
-
+**Solution**<br>
 Before operating a WindowStage, check whether it exists.
 
 ## 1300006 Abnormal Window Context
-**Error Message**
-
+**Error Message**<br>
 This window context is abnormal.
 
-**Description**
-
+**Description**<br>
 This error code is reported when you operate a window context in the abnormal state, for example, a window context that has been destroyed.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 The window context has been destroyed when being operated.
 
-**Solution**
-
+**Solution**<br>
 Before operating the window context, check whether it exists.
 
 <!--Del-->
 ## 1300007 Application Startup Failure by WindowExtensionAbility
 
-**Error Message**
-
+**Error Message**<br>
 Failed to start the ability.
 
-**Description**
-
+**Description**<br>
 This error code is reported when a WindowExtensionAbility fails to start an application.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 Incorrect parameters are passed into the API used by the WindowExtensionAbility to start the application.
 
-**Solution**
-
+**Solution**<br>
 Pass in the correct parameters.
 <!--DelEnd-->
 
 <!--Del-->
 ## 1300008 Display Device Exception
 
-**Error Message**
-
+**Error Message**<br>
 The display device is abnormal.
 
-**Description**
-
+**Description**<br>
 This error code is reported when the display device is abnormal.
 
-**Possible Causes**
-
-1. The display device is not ready.
-2. The display device is removed.
+**Possible Causes**<br>
+1. The display device is not ready.<br>
+2. The display device is removed.<br>
 3. The display device is damaged.
 
-**Solution**
-
+**Solution**<br>
 Ensure that the display device is normal.
 <!--DelEnd-->
 
 ## 1300009 Invalid Parent Window
 
-**Error Message**
+**Error Message**<br>The parent window is invalid.
 
-The parent window is invalid.
+**Description**<br>This error code is reported when the parent window is invalid.
 
-**Description**
-
-This error code is reported when the parent window is invalid.
-
-**Possible Causes**
-
-1. No parent window is bound.
+**Possible Causes**<br>
+1. No parent window is bound.<br>
 2. The parent window bound is abnormal. For example, the parent window has been destroyed.
 
-**Solution**
-
-1. Ensure that the subwindow is bound to the parent window.
+**Solution**<br>
+1. Ensure that the subwindow is bound to the parent window.<br>
 2. Ensure that the status of the parent window is normal.
 
 ## 1300010 Unsupported Operation in the Current Window Mode
 
-**Error Message**
+**Error Message**<br>The operation in the current window status is invalid.
 
-The operation in the current window status is invalid.
+**Description**<br>This error code is reported when the operation is not supported in the current window mode.
 
-**Description**
-
-This error code is reported when the operation is not supported in the current window mode.
-
-**Possible Causes**
-
-1. Perform the move operation in the full-screen or split-screen window.
+**Possible Causes**<br>
+1. Perform the move operation in the full-screen or split-screen window.<br>
 2. Perform the resize operation in the full-screen or split-screen window.
 
-**Solution**
-
-1. Do not move the full-screen or split-screen window.
+**Solution**<br>
+1. Do not move the full-screen or split-screen window.<br>
 2. Do not resize the full-screen or split-screen window.
 
 ## 1300011 Failure in Destroying a PiP Window
 
-**Error Message**
-
+**Error Message**<br>
 Failed to destroy the PiP window.
 
-**Description**
-
+**Description**<br>
 This error code is reported when destroying a PiP window fails.
 
-**Possible Causes**
+**Possible Causes**<br>
+The pointer to the PiP window is null.<br>
 
-The pointer to the PiP window is null.
-
-**Solution**
-
+**Solution**<br>
 No action is required.
 
 ## 1300012 Abnormal PiP Window Status
 
-**Error Message**
-
+**Error Message**<br>
 The PiP window state is abnormal.
 
-**Description**
-
+**Description**<br>
 This error code is reported when the PiP window status is abnormal.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 The PiP window status is abnormal.
 
-**Solution**
-
+**Solution**<br>
 No action is required.
 
 ## 1300013 Failure in Creating a PiP Window
 
-**Error Message**
-
+**Error Message**<br>
 Failed to create the PiP window.
 
-**Description**
-
+**Description**<br>
 This error code is reported when creating a PiP window fails.
 
-**Possible Causes**
-
-1. Incorrect parameters are passed in to create the PiP window.
+**Possible Causes**<br>
+1. Incorrect parameters are passed in to create the PiP window.<br>
 2. Attempt to start PiP in a non-full-screen window.
 
-**Solution**
-
-1. Correct the input parameters.
+**Solution**<br>
+1. Correct the input parameters.<br>
 2. Do not start PiP in a non-full-screen window.
 
 ## 1300014 PiP Internal Error
 
-**Error Message**
-
+**Error Message**<br>
 PiP internal error.
 
-**Description**
-
+**Description**<br>
 This error code is reported when an internal error occurs in PiP.
 
-**Possible Causes**
+**Possible Causes**<br>
 1. The window on which the PiP feature depends is abnormal or empty.
 2. The PiP controller is abnormal.
 
-**Solution**
-
+**Solution**<br>
 No action is required.
 
 ## 1300015 Repeated PiP Operations
 
-**Error Message**
-
+**Error Message**<br>
 Repeated PiP operation.
 
-**Description**
-
+**Description**<br>
 This error code is reported when a repeated PiP operation is performed.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 The PiP window has been started or closed.
 
-**Solution**
-
-Do not start or stop PiP repeatedly.
+**Solution**<br>
+Do not start or stop PiP repeatedly.<br>
 
 ## 1300016 Parameter Verification Error
 
@@ -362,7 +302,7 @@ This error code is reported when parameters are incorrect. For example, the para
 
 4. Check whether any mandatory parameter is not passed.
 
-   For details about the floating ball parameters, see [FloatingBallParams](js-apis-floatingBall.md#floatingballparams).
+For details about the floating ball parameters, see [FloatingBallParams](js-apis-floatingBall.md#floatingballparams).
 
 ## 1300020 Failure in Creating a Floating Ball Window
 
@@ -567,103 +507,79 @@ Updating floating balls based on static templates is not supported.
 Delete any existing floating balls based on static templates and create new ones.
 
 ## 1001 Window Null Pointer Exception<sup>(deprecated)</sup>
-**Error Message**
-
+**Error Message**<br>
 A window null pointer occurs.
 
-**Description**
-
+**Description**<br>
 This error code is reported when you operate a window pointed to by a null pointer.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 A null pointer is used.
 
-**Solution**
-
+**Solution**<br>
 Operate the window that exists.
 
 ## 1002 Invalid Window Type<sup>(deprecated)</sup>
-**Error Message**
-
+**Error Message**<br>
 This window type is invalid.
 
-**Description**
-
+**Description**<br>
 This error code is reported when the window type is invalid.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 An invalid window type is used. For details about valid window types, see [WindowType](arkts-apis-window-e.md#windowtype7).
 
-**Solution**
-
+**Solution**<br>
 Use a window type supported.
 
 ## 1003 Invalid Window Parameter<sup>(deprecated)</sup>
-**Error Message**
-
+**Error Message**<br>
 This window parameter is invalid.
 
-**Description**
-
+**Description**<br>
 This error code is reported when a window parameter is invalid.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 Invalid parameters are passed in.
 
-**Solution**
-
+**Solution**<br>
 Correct the parameters.
 
 ## 1004 Ability Service Exception<sup>(deprecated)</sup>
-**Error Message**
-
+**Error Message**<br>
 This system ability service works abnormally.
 
-**Description**
-
+**Description**<br>
 This error code is reported when the ability service is abnormal.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 When the window is destroyed, the proxy fails to be initialized.
 
-**Solution**
-
+**Solution**<br>
 Restart the device and try again.
 
 ## 1005 IPC Failure<sup>(deprecated)</sup>
-**Error Message**
-
+**Error Message**<br>
 This window IPC failed.
 
-**Description**
-
+**Description**<br>
 This error code is reported when IPC fails.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 The window parameters fail to be transferred.
 
-**Solution**
-
+**Solution**<br>
 Before operating a window, ensure that the client and server services in the window are normal.
 
 ## 1007 Application Startup Failure by WindowExtensionAbility<sup>(deprecated)</sup>
-**Error Message**
-
+**Error Message**<br>
 Failed to start the ability.
 
-**Description**
-
+**Description**<br>
 This error code is reported when a WindowExtensionAbility fails to start an application.
 
-**Possible Causes**
-
+**Possible Causes**<br>
 Incorrect parameters are passed into the API used by the WindowExtensionAbility to start the application.
 
-**Solution**
-
+**Solution**<br>
 Pass in the correct parameters.

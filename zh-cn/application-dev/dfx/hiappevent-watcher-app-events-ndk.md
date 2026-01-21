@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-HiAppEvent提供了事件订阅接口，用于获取应用的事件。
+HiAppEvent提供了事件订阅接口，用于订阅并接收应用产生的事件。
 
 ## 接口说明
 
@@ -32,39 +32,52 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 
 ### 步骤一：新建工程及编译配置
 
-1. 获取该示例工程依赖的jsoncpp文件，
-   从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
-   新建Native C++工程，并将jsoncpp导入工程，目录结构如下：
+1. 将示例工程依赖的jsoncpp库文件复制到新建工程中。
 
+   打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，并点击“下载当前目录”，下载EventSub工程文件。
+   
+   新建一个Native C++工程。从解压后的EventSub文件夹中拷贝jsoncpp库文件（entry/libs和entry/src/main/cpp/thirdparty整个目录）到新建的工程中，得到的目录结构如下：
    ```text
    entry
+   ├── libs        // 自行创建文件夹,放入相关的三方库
    └── src
-       └── main
-           ├── cpp
-           │   ├── CMakeLists.txt
-           │   ├── json
-           │   │   ├── json-forwards.h
-           │   │   └── json.h
-           │   ├── jsoncpp.cpp
-           │   ├── napi_init.cpp
-           │   └── types
-           │       └── libentry
-           │           ├── Index.d.ts
-           │           └── oh-package.json5
-           └── ets
-               ├── entryability
-               │   └── EntryAbility.ets
-               └── pages
-                   └── Index.ets
+       ├── main
+       │   ├── cpp
+       │   │   ├── CMakeLists.txt       // 导入so链接
+       │   │   ├── napi_init.cpp        // 功能函数，观察者定义
+       │   │   ├── thirdparty    // 自行创建文件夹,放入相关的三方库
+       │   │   │   └── jsoncpp
+       │   │   └── types
+       │   │       └── libentry
+       │   │           ├── Index.d.ts        // 定义ArkTS接口
+       │   │           └── oh-package.json5
+       │   ├── ets
+       │   │   ├── entryability
+       │   │   │   └── EntryAbility.ets    // 新增接口调用
+       │   │   ├── entrybackupability
+       │   │   │   └── EntryBackupAbility.ets
+       │   │   └── pages
+       │   │       └── Index.ets        // 主页
    ```
+   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.6.tar.gz)。
 
-2. 编辑“CMakeLists.txt”文件，添加源文件和动态库。
+2. 编辑“CMakeLists.txt”文件，添加所需的源文件和动态库。
 
    ```cmake
-   # 新增jsoncpp.cpp(解析订阅事件中的json字符串)源文件
-   add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
+   set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
+   set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
+   # 检查是否存在entry/build目录
+   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
+   # 解压jsoncpp-1.9.6.tar.gz到entry/build，得到jsoncpp头文件的目录
+   execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
+       WORKING_DIRECTORY ${DEST_DIR})
+
+   add_library(entry SHARED napi_init.cpp)
    # 新增动态库依赖libhiappevent_ndk.z.so和libhilog_ndk.z.so(日志输出)
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   # 新增三方库依赖libjsoncpp.so(解析订阅事件中的json字符串)
+   target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
+   target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```
 
 3. 编辑“napi_init.cpp”文件，导入依赖的文件并定义LOG_TAG：
@@ -73,10 +86,10 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
    
    ``` C++
    #include "napi/native_api.h"
-   #include "json/json.h"
-   #include "hilog/log.h"
+   // 根据工程中三方库jsoncpp的位置适配引用json.h的路径
+   #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
    #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
+   #include "hilog/log.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"

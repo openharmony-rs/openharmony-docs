@@ -12,13 +12,15 @@ LauncherAbilityInfo信息，通过接口[innerBundleManager.getLauncherAbilityIn
 >
 > 本模块首批接口从API version 8 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
->从API Version 9开始，该模块不再维护，建议使用[bundleManager-LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)替代。
+>从API version 9开始，该模块不再维护，建议使用[bundleManager-LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)替代。
 >
 > 本模块为系统接口。
 
 ## LauncherAbilityInfo<sup>(deprecated)<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager-LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[bundleManager-LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)替代。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 

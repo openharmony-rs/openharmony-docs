@@ -30,7 +30,7 @@ import { collections } from '@kit.ArkTS';
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ------ | ---- | ---- | ----------------|
 | buffer | ArrayBuffer | 是   | 否  | ArkTS Uint8ClampedArray底层使用的buffer。|
-| byteLength | number | 是   | 否   | ArkTS Uint8ClampedArray的所占的字节数。|
+| byteLength | number | 是   | 否   | ArkTS Uint8ClampedArray所占的字节数。|
 | byteOffset | number | 是   | 否   | ArkTS Uint8ClampedArray距离其ArrayBuffer起始位置的偏移。|
 | length | number | 是   | 否  | ArkTS Uint8ClampedArray元素个数。|
 | BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Uint8ClampedArray中每个元素所占用的字节数。|

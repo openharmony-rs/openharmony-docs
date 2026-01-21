@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 输入法框架服务提供了切换输入法应用的API，支持切换输入法、切换输入法和子类型、切换当前输入法的子类型。
@@ -40,10 +40,10 @@
    ``` TypeScript
    // 设置监听子类型事件，改变输入法应用界面
    inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-     if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+     if (inputMethodSubtype.id === 'InputMethodExtAbility') {
        AppStorage.setOrCreate('subtypeChange', 0);
      }
-     if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+     if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
        AppStorage.setOrCreate('subtypeChange', 1);
      }
    });

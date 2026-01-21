@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_NativeAnimateAPI_1
+```
+
 ## Overview
 
 Declares the native animation APIs provided by ArkUI.
@@ -31,7 +35,7 @@ Declares the native animation APIs provided by ArkUI.
 
 ### animateTo()
 
-```
+```c
 int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, ArkUI_ContextCallback* update,ArkUI_AnimateCompleteCallback* complete)
 ```
 
@@ -61,7 +65,7 @@ Defines an explicit animation.
 
 ### keyframeAnimateTo()
 
-```
+```c
 int32_t (*keyframeAnimateTo)(ArkUI_ContextHandle context, ArkUI_KeyframeAnimateOption* option)
 ```
 
@@ -85,7 +89,7 @@ Defines a keyframe animation.
 
 ### createAnimator()
 
-```
+```c
 ArkUI_AnimatorHandle (*createAnimator)(ArkUI_ContextHandle context, ArkUI_AnimatorOption* option)
 ```
 
@@ -109,7 +113,7 @@ Creates an animator object.
 
 ### disposeAnimator()
 
-```
+```c
 void (*disposeAnimator)(ArkUI_AnimatorHandle animatorHandle)
 ```
 

@@ -28,7 +28,7 @@
 
 mailto协议标准格式如下：
 
-```
+``` txt
 mailto:someone@example.com?key1=value1&key2=value2
 ```
 
@@ -61,12 +61,13 @@ mailto:someone@example.com?key1=value1&key2=value2
 网页中的超链接需要满足mailto协议。示例如下：
 
 
-```
+``` html
 <a href="mailto:support@example.com?subject=Product Inquiry&body=I am interested in...">联系我们</a>
 ```
 实际开发时，需要将邮箱地址替换为真实的邮箱，邮件内容可以根据需要进行配置。
 
 实现效果如下：
+
 ![image](figures/mailto-html.gif)
 
 ### 从应用拉起
@@ -95,6 +96,7 @@ struct Index {
 ```
 
 实现效果如下：
+
 ![image](figures/mailto-app.gif)
 
 ## 目标方开发步骤

@@ -36,7 +36,7 @@ The file declares the enums used for audio codec channel layouts.
 
 ### AudioChannelSet
 
-```
+```c
 enum AudioChannelSet : uint64_t
 ```
 
@@ -107,7 +107,7 @@ Enumerates the audio channels. Each channel is mapped to a variable of int64.
 
 ### AudioChannelLayout
 
-```
+```c
 enum AudioChannelLayout : uint64_t
 ```
 

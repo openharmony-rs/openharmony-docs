@@ -15,7 +15,7 @@
 <!--RP1-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| default | 默认设备类型，详情参考[标准系统开发板](../../device-dev/dev-board-on-the-master.md#标准系统开发板)。 | 对象 | 可缺省，缺省值为空。 |
+| default | 默认设备类型，详情参考[标准系统开发板](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/dev-board-on-the-master.md#标准系统开发板)。 | 对象 | 可缺省，缺省值为空。 |
 | tablet | 标识平板特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
 | tv | 标识智慧屏特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
 | car | 标识车机特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |

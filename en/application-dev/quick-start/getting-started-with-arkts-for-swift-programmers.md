@@ -9,7 +9,7 @@
 
 ArkTS is a new programming language that brings new development experience and opportunities to developers familiar with Swift. It inherits the features of modern languages in terms of syntax and programming paradigms, and is deeply optimized for the ecosystem. Understanding the differences and commonalities between Swift and ArkTS can help you quickly get started with application development and avoid common programming pitfalls.
 
-This topic compares ArkTS with Swift from the perspective of basic syntax, language structure, and type system. For details, see [Introduction to ArkTS](./introduction-to-arkts.md).
+This topic compares ArkTS with Swift from the perspective of basic syntax, language structure, and type system. For details, see [About This Kit](./introduction-to-arkts.md).
 
 ## Exploring the Differences Between Swift and ArkTS
 

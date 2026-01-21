@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_VisibleAreaEventOptions ArkUI_VisibleAreaEventOptions
+```
+
 ## Overview
 
 Defines the parameters for visible area change events.

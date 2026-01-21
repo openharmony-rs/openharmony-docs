@@ -1,9 +1,9 @@
 # qrcode开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 生成并显示二维码，具体用法请参考[qrcode](../reference/apis-arkui/arkui-js/js-components-basic-qrcode.md)。
@@ -43,7 +43,7 @@
 
 ## 设置组件类型
 
-通过设置qrcode的type属性来选择按钮类型，如定义qrcode为矩形二维码、圆形二维码。
+通过设置qrcode的type属性来选择二维码类型，如定义qrcode为矩形二维码、圆形二维码。
 
 
 ```html

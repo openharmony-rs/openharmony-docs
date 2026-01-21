@@ -1,4 +1,10 @@
 # native_color_space_manager.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xubo233-->
+<!--Designer: @dizuo1-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 ## Overview
 
@@ -45,7 +51,7 @@ This file declares the functions for creating and using a color space.
 
 ### ColorSpaceName
 
-```
+```c
 enum ColorSpaceName
 ```
 
@@ -67,8 +73,8 @@ Defines an enum for the color space names.
 | BT601_SMPTE_C = 8 | Color space based on ITU-R BT.601.|
 | BT2020_HLG = 9 | Color space based on ITU-R BT.2020.|
 | BT2020_PQ = 10 | Color space based on ITU-R BT.2020.|
-| P3_HLG = 11 | Color space with the color primaries of P3_D65, the transfer characteristics of Hybrid Log-Gamma (HLG), and the color range of FULL.|
-| P3_PQ = 12 | Color space with the color primaries of P3_D65, the transfer characteristics of Perceptual Quantizer (PQ), and the color range of FULL.|
+| P3_HLG = 11 | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of Full.|
+| P3_PQ = 12 | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of Full.|
 | ADOBE_RGB_LIMIT = 13 | Color space with the color primaries of ADOBE_RGB, the transfer characteristics of ADOBE_RGB, and the color range of LIMIT.|
 | DISPLAY_P3_LIMIT = 14 | Color space with the color primaries of P3_D65, the transfer characteristics of SRGB, and the color range of LIMIT.|
 | SRGB_LIMIT = 15 | Color space with the color primaries of SRGB, the transfer characteristics of SRGB, and the color range of LIMIT.|
@@ -83,10 +89,10 @@ Defines an enum for the color space names.
 | LINEAR_SRGB = 24 | Color space with the color primaries of SRGB and the transfer characteristic of LINEAR.|
 | LINEAR_BT709 = LINEAR_SRGB | Color space with the color primaries of BT.709 and the transfer characteristic of LINEAR.|
 | LINEAR_BT2020 = 25 | Color space with the color primaries of BT.2020 and the transfer characteristic of LINEAR.|
-| DISPLAY_SRGB = SRGB | Color space with the color primaries of SRGB, the transfer characteristics of SRGB, and the color range of FULL.|
-| DISPLAY_P3_SRGB = DISPLAY_P3 | Color space with the color primaries of P3_D65, the transfer characteristics of SRGB, and the color range of FULL.|
-| DISPLAY_P3_HLG = P3_HLG | Color space with the color primaries of P3_D65, the transfer characteristics of Hybrid Log-Gamma (HLG), and the color range of FULL.|
-| DISPLAY_P3_PQ = P3_PQ | Color space with the color primaries of P3_D65, the transfer characteristics of Perceptual Quantizer (PQ), and the color range of FULL.|
+| DISPLAY_SRGB = SRGB | Color space with the color primaries of SRGB, the transfer characteristics of SRGB, and the color range of Full.|
+| DISPLAY_P3_SRGB = DISPLAY_P3 | Color space with the color primaries of P3_D65, the transfer characteristics of SRGB, and the color range of Full.|
+| DISPLAY_P3_HLG = P3_HLG | Color space with the color primaries of P3_D65, the transfer characteristics of HLG, and the color range of Full.|
+| DISPLAY_P3_PQ = P3_PQ | Color space with the color primaries of P3_D65, the transfer characteristics of PQ, and the color range of Full.|
 | CUSTOM = 5 | Custom color space.|
 
 
@@ -94,7 +100,7 @@ Defines an enum for the color space names.
 
 ### OH_NativeColorSpaceManager_CreateFromName()
 
-```
+```c
 OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)
 ```
 
@@ -121,7 +127,7 @@ Creates an **OH_NativeColorSpaceManager** instance based on a color space name.<
 
 ### OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma()
 
-```
+```c
 OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)
 ```
 
@@ -149,7 +155,7 @@ Creates an **OH_NativeColorSpaceManager** instance based on the color primaries 
 
 ### OH_NativeColorSpaceManager_Destroy()
 
-```
+```c
 void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
@@ -170,7 +176,7 @@ Destroys an **OH_NativeColorSpaceManager** instance.
 
 ### OH_NativeColorSpaceManager_GetColorSpaceName()
 
-```
+```c
 int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
@@ -197,7 +203,7 @@ Obtains the color space name.
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 
-```
+```c
 WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
@@ -224,7 +230,7 @@ Obtains the white points.
 
 ### OH_NativeColorSpaceManager_GetGamma()
 
-```
+```c
 float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 

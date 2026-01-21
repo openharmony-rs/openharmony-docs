@@ -33,7 +33,7 @@ The file declares the common media types.
 
 ### OH_Core_HdrType
 
-```
+```c
 enum OH_Core_HdrType
 ```
 

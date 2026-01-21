@@ -762,7 +762,7 @@ let reminderId: number = 1;
 reminderAgentManager.getExcludeDates(reminderId).then((dates) => {
   console.info("getExcludeDates promise length: " + dates.length);
   for (let i = 0; i < dates.length; i++) {
-	console.info("getExcludeDates promise date is: " + dates[i].toString());
+    console.info("getExcludeDates promise date is: " + dates[i].toString());
   }
 }).catch((err: BusinessError) => {
   console.error("promise err code:" + err.code + " message:" + err.message);
@@ -821,6 +821,49 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 });
 ```
 
+## reminderAgentManager.cancelReminderOnDisplay<sup>23+</sup>
+
+cancelReminderOnDisplay(reminderId: number): Promise\<void>
+
+Cancels the notification card displayed in the notification center with the agent reminder data retained. For example, for a daily repeating reminder, calling this API removes the card from the notification center, but the reminder will be triggered again the next day according to its schedule.
+
+**System capability**: SystemCapability.Notification.ReminderAgent
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                              |
+| ---------- | ------ | ---- | ---------------------------------- |
+| reminderId | number | Yes  | ID of the agent-powered reminder to be canceled. The reminder ID is returned when the [publishReminder](#reminderagentmanagerpublishreminder) API is called.|
+
+**Return value**
+
+| Type                  | Description                             |
+| ---------------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md).
+
+| ID| Error Message                    |
+| -------- | ---------------------------- |
+| 1700003  | The reminder does not exist. |
+| 1700007  | If the input parameter is not valid parameter. |
+
+**Example**
+
+```ts
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let reminderId: number = 1;
+reminderAgentManager.cancelReminderOnDisplay(reminderId).then(() => {
+  console.info("cancel display reminder  succeed");
+}).catch((err: BusinessError) => {
+  console.error("promise err code:" + err.code + " message:" + err.message);
+});
+```
+
 ## ActionButtonType
 
 Enumerates the types of buttons displayed for a reminder.
@@ -854,6 +897,7 @@ Enumerates the audio playback channels for the custom prompt tone.
 | -------- | -------- | -------- |
 | RING_CHANNEL_ALARM | 0 | Alarm channel.|
 | RING_CHANNEL_MEDIA | 1 | Media channel.|
+| RING_CHANNEL_NOTIFICATION<sup>23+</sup> | 2 | Notification slot.|
 
 
 ## ActionButton

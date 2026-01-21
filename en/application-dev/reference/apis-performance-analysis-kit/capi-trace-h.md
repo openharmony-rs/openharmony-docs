@@ -9,7 +9,7 @@
 
 ## Overview
 
-Defines APIs of the HiTraceMeter and HiTraceChain modules for performance tracing and distributed tracing.<br>The vertical bar (\|) is used as the separator in user-mode trace format. Therefore, the string parameters passed by the HiTraceMeter APIs must exclude this character to avoid trace parsing exceptions.<br>The maximum length of a user-mode trace is 512 characters. Excess characters will be truncated.
+Defines APIs of the **HiTraceMeter** and **HiTraceChain** modules for performance tracing and distributed tracing.<br> The vertical bar (\|) is used as the separator in user-mode trace format. Therefore, the string parameters passed by the HiTraceMeter APIs must exclude this character to avoid trace parsing exceptions.<br> The maximum length of a user-mode trace is 512 characters. Excess characters will be truncated.
 
 **File to include**: <hitrace/trace.h>
 
@@ -42,40 +42,43 @@ Defines APIs of the HiTraceMeter and HiTraceChain modules for performance tracin
 
 ### Functions
 
-| Name| Description|
-| -- | -- |
-| [HiTraceId OH_HiTrace_BeginChain(const char *name, int flags)](#oh_hitrace_beginchain) | Starts tracing.<br> If the current thread's TLS does not contain a valid HiTrace ID, this function generates one, stores it in TLS, and returns it.<br> If the current thread's TLS already contains a valid HiTrace ID, this function does not start tracing and returns an invalid HiTrace ID with all property values being 0.<br>|
-| [void OH_HiTrace_EndChain()](#oh_hitrace_endchain) | Stops tracing.<br> Stops tracing and sets the HiTrace ID in the TLS of the current thread to invalid.<br>|
-| [HiTraceId OH_HiTrace_GetId()](#oh_hitrace_getid) |  <br> Obtains the HiTrace ID in the TLS of the current thread.<br>|
-| [void OH_HiTrace_SetId(const HiTraceId *id)](#oh_hitrace_setid) |  <br> Sets the given HiTrace ID to the TLS of the current thread. If the given HiTrace ID is invalid, no operation is performed.<br>|
-| [void OH_HiTrace_ClearId(void)](#oh_hitrace_clearid) |  <br> Clears the HiTrace ID in the current thread's TLS.<br>|
-| [HiTraceId OH_HiTrace_CreateSpan(void)](#oh_hitrace_createspan) | Creates a trace span.<br> Specifically, create a **HiTraceId**, use the **chainId** and **spanId** in the TLS of the current thread to initialize the **chainId** and **parentSpanId** of the **HiTraceId**, generate a new **spanId** for the **HiTraceId**, and return the **HiTraceId**.<br>|
-| [void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId *id, const char *fmt, ...)](#oh_hitrace_tracepoint) | Adds a trace point for the HiTraceMeter logging.<br>When type is set to CS (client sends) or SC (server receives), HiTraceMeter starts tracing.<br>When type is set to CC (client receives) or SS (server sends), HiTraceMeter stops tracing.<br>When type is set to **GENERAL**, HiTraceMeter does not trace.<br>When type is set to CS or CC, the information trace points must be used together.<br>When type is set to SC or SS, the information trace points must be used together.<br>Otherwise, the start and end trace points of HiTraceMeter cannot match each other.|
-| [void OH_HiTrace_InitId(HiTraceId *id)](#oh_hitrace_initid) | Initializes a **HiTraceId**.|
-| [void OH_HiTrace_IdFromBytes(HiTraceId *id, const uint8_t *pIdArray, int len)](#oh_hitrace_idfrombytes) | Creates a **HiTraceId** based on a byte array.|
-| [bool OH_HiTrace_IsIdValid(const HiTraceId *id)](#oh_hitrace_isidvalid) | Checks whether the **HiTraceId** is valid.|
-| [bool OH_HiTrace_IsFlagEnabled(const HiTraceId *id, HiTrace_Flag flag)](#oh_hitrace_isflagenabled) | Checks whether the trace flag is enabled for the **HiTraceId**.|
-| [void OH_HiTrace_EnableFlag(const HiTraceId *id, HiTrace_Flag flag)](#oh_hitrace_enableflag) | Enables the trace flag specified in **HiTraceId**.|
-| [int OH_HiTrace_GetFlags(const HiTraceId *id)](#oh_hitrace_getflags) | Obtains the trace flag set in **HiTraceId**.|
-| [void OH_HiTrace_SetFlags(HiTraceId *id, int flags)](#oh_hitrace_setflags) | Sets the trace flag to [HiTraceId](capi-hitrace-hitraceid.md).|
-| [uint64_t OH_HiTrace_GetChainId(const HiTraceId *id)](#oh_hitrace_getchainid) | Obtains the trace chain ID in **HiTraceId**.|
-| [void OH_HiTrace_SetChainId(HiTraceId *id, uint64_t chainId)](#oh_hitrace_setchainid) | Sets the trace chain ID in **HiTraceId**.|
-| [uint64_t OH_HiTrace_GetSpanId(const HiTraceId *id)](#oh_hitrace_getspanid) | Obtains the span ID in **HiTraceId**.|
-| [void OH_HiTrace_SetSpanId(HiTraceId *id, uint64_t spanId)](#oh_hitrace_setspanid) | Sets the span ID in **HiTraceId**.|
-| [uint64_t OH_HiTrace_GetParentSpanId(const HiTraceId *id)](#oh_hitrace_getparentspanid) | Obtains the parent span ID in **HiTraceId**.|
-| [void OH_HiTrace_SetParentSpanId(HiTraceId *id, uint64_t parentSpanId)](#oh_hitrace_setparentspanid) | Sets the **ParentSpanId** in a **HiTraceId** instance.|
-| [int OH_HiTrace_IdToBytes(const HiTraceId* id, uint8_t* pIdArray, int len)](#oh_hitrace_idtobytes) | Converts **HiTraceId** into a byte array for cache or communication.|
-| [void OH_HiTrace_StartTrace(const char *name)](#oh_hitrace_starttrace) | Marks the start of a synchronous trace.<br> This API is used with **OH_HiTrace_FinishTrace()** in pairs.<br> The two APIs can be nested. The stack data structure is used for matching during trace parsing.<br> Since API version 19, you are advised to use the **OH_HiTrace_StartTraceEx()** API to specify the trace output level.<br>|
-| [void OH_HiTrace_FinishTrace(void)](#oh_hitrace_finishtrace) | Marks the end of a synchronous trace.<br> This API must be used with **OH_HiTrace_StartTrace()** in pairs. During trace parsing, the system matches it with the latest **OH_HiTrace_StartTrace()** API in the service process.<br> Since API version 19, you are advised to use the **OH_HiTrace_FinishTraceEx()** API to specify the trace output level.<br>|
-| [void OH_HiTrace_StartAsyncTrace(const char *name, int32_t taskId)](#oh_hitrace_startasynctrace) | Marks the start of an asynchronous trace.<br> This API is used to start tracing before an asynchronous operation. The start and end of an asynchronous trace do not occur in sequence. Therefore, a unique task ID is required to identify them.<br> It must be used with **OH_HiTrace_FinishAsyncTrace()** in pairs. The start and end identified by the same name and task ID constitute an asynchronous trace task.<br> If multiple trace tasks with the same name need to be performed at the same time or a trace task needs to be performed multiple times concurrently, different task IDs must be specified.<br> If the trace tasks with the same name are not performed at the same time, the same **taskId** can be used.<br> Since API version 19, you are advised to use the **OH_HiTrace_StartAsyncTraceEx()** API to specify the trace output level and category.<br>|
-| [void OH_HiTrace_FinishAsyncTrace(const char *name, int32_t taskId)](#oh_hitrace_finishasynctrace) | Marks the end of an asynchronous trace.<br> This API is called in the callback function after an asynchronous trace is complete.<br> It is used with **OH_HiTrace_StartAsyncTrace()** in pairs. Its name and task ID must be the same as those of **OH_HiTrace_StartAsyncTrace()**.<br> Since API version 19, you are advised to use the **OH_HiTrace_FinishAsyncTraceEx()** API to specify the trace output level.<br>|
-| [void OH_HiTrace_CountTrace(const char *name, int64_t count)](#oh_hitrace_counttrace) | Traces the value change of an integer variable based on its name.<br> This API can be executed for multiple times to trace the value change of a given integer variable at different time points.<br> Since API version 19, you are advised to use the **OH_HiTrace_CountTraceEx()** API to specify the trace output level.<br>|
-| [void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char *name, const char *customArgs)](#oh_hitrace_starttraceex) | Marks the start of a synchronous trace task with the trace output level specified.<br> This API is used with **OH_HiTrace_FinishTraceEx()** in pairs.<br> The two APIs can be nested. The stack data structure is used for matching during trace parsing.<br>|
-| [void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level)](#oh_hitrace_finishtraceex) | Marks the end of a synchronous trace task with the trace output level specified.<br> It must be used with **OH_HiTrace_StartTraceEx()** in pairs. Its level must be the same as those of **OH_HiTrace_StartTraceEx()**.<br> During trace data parsing, the system matches it with the **OH_HiTrace_StartTraceEx()** API recently invoked in the service process.<br>|
-| [void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char *name, int32_t taskId, const char *customCategory, const char *customArgs)](#oh_hitrace_startasynctraceex) | Marks the start of an asynchronous trace task with the trace output level specified.<br> This API is used to start tracing before an asynchronous operation. The start and end of an asynchronous trace do not occur in sequence. Therefore, a unique task ID is required to identify them.<br> It is used with **OH_HiTrace_FinishAsyncTraceEx()** in pairs. The start and end identified by the same name and task ID constitute an asynchronous trace task.<br> If multiple trace tasks with the same name need to be performed at the same time or a trace task needs to be performed multiple times concurrently, different task IDs must be specified.<br> If the trace tasks with the same name are not performed at the same time, the same **taskId** can be used.<br> Task IDs of different processes does not interfere with each other.<br>|
-| [void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char *name, int32_t taskId)](#oh_hitrace_finishasynctraceex) | Marks the end of an asynchronous trace task with the trace output level specified.<br> This API is used to stop tracing after an asynchronous operation is complete, for example, in a callback function.<br> It is used with **OH_HiTrace_StartAsyncTraceEx()** in pairs. Its level, name and task ID must be the same as those of **OH_HiTrace_StartAsyncTraceEx()**.<br>|
-| [void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char *name, int64_t count)](#oh_hitrace_counttraceex) | Marks an integer variable trace task with the trace output level specified.|
-| [bool OH_HiTrace_IsTraceEnabled(void)](#oh_hitrace_istraceenabled) | Checks whether trace capture is enabled for an application.|
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [typedef void (\*OH_HiTrace_TraceEventListener)(bool traceStatus)](#oh_hitrace_traceeventlistener) | OH_HiTrace_TraceEventListener | Defines a callback to listen for whether the trace capture is enabled.|
+| [HiTraceId OH_HiTrace_BeginChain(const char *name, int flags)](#oh_hitrace_beginchain) | - | Starts tracing.<br> If the current thread's TLS does not contain a valid HiTrace ID, this function generates one, stores it in TLS, and returns it.<br> If the current thread's TLS already contains a valid HiTrace ID, this function does not start tracing and returns an invalid HiTrace ID with all property values being 0.<br>|
+| [void OH_HiTrace_EndChain()](#oh_hitrace_endchain) | - | Stops tracing.<br> Stops tracing and sets the HiTrace ID in the TLS of the current thread to invalid.<br>|
+| [HiTraceId OH_HiTrace_GetId()](#oh_hitrace_getid) | - |  <br> Obtains the HiTrace ID in the TLS of the current thread.<br>|
+| [void OH_HiTrace_SetId(const HiTraceId *id)](#oh_hitrace_setid) | - |  <br> Sets the given HiTrace ID to the TLS of the current thread. If the given HiTrace ID is invalid, no operation is performed.<br>|
+| [void OH_HiTrace_ClearId(void)](#oh_hitrace_clearid) | - |  <br> Clears the HiTrace ID in the current thread's TLS.<br>|
+| [HiTraceId OH_HiTrace_CreateSpan(void)](#oh_hitrace_createspan) | - | Creates a trace span.<br> Specifically, create a **HiTraceId**, use the **chainId** and **spanId** in the TLS of the current thread to initialize the **chainId** and **parentSpanId** of the **HiTraceId**, generate a new **spanId** for the **HiTraceId**, and return the **HiTraceId**.<br>|
+| [void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId *id, const char *fmt, ...)](#oh_hitrace_tracepoint) | - | Adds a trace point for the HiTraceMeter logging.<br> When **type** is set to **HITRACE_TP_CS** and **HITRACE_TP_SR**, the HiTraceMeter tracing starts. When **type** is set to **HITRACE_TP_CR** and **HITRACE_TP_SS**, the HiTraceMeter tracing ends. When **type** is set to **HITRACE_TP_GENERAL**, the HiTraceMeter tracing does not start.<br> The tracing points of **HITRACE_TP_CS** and **HITRACE_TP_CR** must be used in pairs; the tracing points of **HITRACE_TP_SR** and **HITRACE_TP_SS** must be used in pairs. Otherwise, the start and end trace points of HiTraceMeter cannot match each other.<br>|
+| [void OH_HiTrace_InitId(HiTraceId *id)](#oh_hitrace_initid) | - | Initializes a **HiTraceId**.|
+| [void OH_HiTrace_IdFromBytes(HiTraceId *id, const uint8_t *pIdArray, int len)](#oh_hitrace_idfrombytes) | - | Creates a **HiTraceId** based on a byte array.|
+| [bool OH_HiTrace_IsIdValid(const HiTraceId *id)](#oh_hitrace_isidvalid) | - | Checks whether the **HiTraceId** is valid.|
+| [bool OH_HiTrace_IsFlagEnabled(const HiTraceId *id, HiTrace_Flag flag)](#oh_hitrace_isflagenabled) | - | Checks whether the trace flag is enabled for the **HiTraceId**.|
+| [void OH_HiTrace_EnableFlag(const HiTraceId *id, HiTrace_Flag flag)](#oh_hitrace_enableflag) | - | Enables the trace flag specified in **HiTraceId**.|
+| [int OH_HiTrace_GetFlags(const HiTraceId *id)](#oh_hitrace_getflags) | - | Obtains the trace flag set in **HiTraceId**.|
+| [void OH_HiTrace_SetFlags(HiTraceId *id, int flags)](#oh_hitrace_setflags) | - | Sets the trace flag to [HiTraceId](capi-hitrace-hitraceid.md).|
+| [uint64_t OH_HiTrace_GetChainId(const HiTraceId *id)](#oh_hitrace_getchainid) | - | Obtains the trace chain ID in **HiTraceId**.|
+| [void OH_HiTrace_SetChainId(HiTraceId *id, uint64_t chainId)](#oh_hitrace_setchainid) | - | Sets the trace chain ID in **HiTraceId**.|
+| [uint64_t OH_HiTrace_GetSpanId(const HiTraceId *id)](#oh_hitrace_getspanid) | - | Obtains the span ID in **HiTraceId**.|
+| [void OH_HiTrace_SetSpanId(HiTraceId *id, uint64_t spanId)](#oh_hitrace_setspanid) | - | Sets the span ID in **HiTraceId**.|
+| [uint64_t OH_HiTrace_GetParentSpanId(const HiTraceId *id)](#oh_hitrace_getparentspanid) | - | Obtains the parent span ID in **HiTraceId**.|
+| [void OH_HiTrace_SetParentSpanId(HiTraceId *id, uint64_t parentSpanId)](#oh_hitrace_setparentspanid) | - | Sets the **ParentSpanId** in a **HiTraceId** instance.|
+| [int OH_HiTrace_IdToBytes(const HiTraceId* id, uint8_t* pIdArray, int len)](#oh_hitrace_idtobytes) | - | Converts **HiTraceId** into a byte array for cache or communication.|
+| [void OH_HiTrace_StartTrace(const char *name)](#oh_hitrace_starttrace) | - | Marks the start of a synchronous trace.<br> This API is used with **OH_HiTrace_FinishTrace()** in pairs.<br> The two APIs can be nested. The stack data structure is used for matching during trace parsing.<br> Since API version 19, you are advised to use the **OH_HiTrace_StartTraceEx()** API to specify the trace output level.<br>|
+| [void OH_HiTrace_FinishTrace(void)](#oh_hitrace_finishtrace) | - | Marks the end of a synchronous trace.<br> This API must be used with **OH_HiTrace_StartTrace()** in pairs. During trace parsing, the system matches it with the latest **OH_HiTrace_StartTrace()** API in the service process.<br> Since API version 19, you are advised to use the **OH_HiTrace_FinishTraceEx()** API to specify the trace output level.<br>|
+| [void OH_HiTrace_StartAsyncTrace(const char *name, int32_t taskId)](#oh_hitrace_startasynctrace) | - | Marks the start of an asynchronous trace.<br> This API is used to start tracing before an asynchronous operation. The start and end of an asynchronous trace do not occur in sequence. Therefore, a unique task ID is required to identify them.<br> It must be used with **OH_HiTrace_FinishAsyncTrace()** in pairs. The start and end identified by the same name and task ID constitute an asynchronous trace task.<br> If multiple trace tasks with the same name need to be performed at the same time or a trace task needs to be performed multiple times concurrently, different task IDs must be specified.<br> If the trace tasks with the same name are not performed at the same time, the same **taskId** can be used.<br> Since API version 19, you are advised to use the **OH_HiTrace_StartAsyncTraceEx()** API to specify the trace output level and category.<br>|
+| [void OH_HiTrace_FinishAsyncTrace(const char *name, int32_t taskId)](#oh_hitrace_finishasynctrace) | - | Marks the end of an asynchronous trace.<br> This API is called in the callback function after an asynchronous trace is complete.<br> It is used with **OH_HiTrace_StartAsyncTrace()** in pairs. Its name and task ID must be the same as those of **OH_HiTrace_StartAsyncTrace()**.<br> Since API version 19, you are advised to use the **OH_HiTrace_FinishAsyncTraceEx()** API to specify the trace output level.<br>|
+| [void OH_HiTrace_CountTrace(const char *name, int64_t count)](#oh_hitrace_counttrace) | - | Traces the value change of an integer variable based on its name.<br> This API can be executed for multiple times to trace the value change of a given integer variable at different time points.<br> Since API version 19, you are advised to use the **OH_HiTrace_CountTraceEx()** API to specify the trace output level.<br>|
+| [void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char *name, const char *customArgs)](#oh_hitrace_starttraceex) | - | Marks the start of a synchronous trace task with the trace output level specified.<br> This API is used with **OH_HiTrace_FinishTraceEx()** in pairs.<br> The two APIs can be nested. The stack data structure is used for matching during trace parsing.<br>|
+| [void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level)](#oh_hitrace_finishtraceex) | - | Marks the end of a synchronous trace task with the trace output level specified.<br> It must be used with **OH_HiTrace_StartTraceEx()** in pairs. Its level must be the same as those of **OH_HiTrace_StartTraceEx()**.<br> During trace data parsing, the system matches it with the **OH_HiTrace_StartTraceEx()** API recently invoked in the service process.<br>|
+| [void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char *name, int32_t taskId, const char *customCategory, const char *customArgs)](#oh_hitrace_startasynctraceex) | - | Marks the start of an asynchronous trace task with the trace output level specified.<br> This API is used to start tracing before an asynchronous operation. The start and end of an asynchronous trace do not occur in sequence. Therefore, a unique task ID is required to identify them.<br> It is used with **OH_HiTrace_FinishAsyncTraceEx()** in pairs. The start and end identified by the same name and task ID constitute an asynchronous trace task.<br> If multiple trace tasks with the same name need to be performed at the same time or a trace task needs to be performed multiple times concurrently, different task IDs must be specified.<br> If the trace tasks with the same name are not performed at the same time, the same **taskId** can be used.<br> Task IDs of different processes does not interfere with each other.<br>|
+| [void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char *name, int32_t taskId)](#oh_hitrace_finishasynctraceex) | - | Marks the end of an asynchronous trace task with the trace output level specified.<br> This API is used to stop tracing after an asynchronous operation is complete, for example, in a callback function.<br> It is used with **OH_HiTrace_StartAsyncTraceEx()** in pairs. Its level, name and task ID must be the same as those of **OH_HiTrace_StartAsyncTraceEx()**.<br>|
+| [void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char *name, int64_t count)](#oh_hitrace_counttraceex) | - | Marks an integer variable trace task with the trace output level specified.|
+| [bool OH_HiTrace_IsTraceEnabled(void)](#oh_hitrace_istraceenabled) | - | Checks whether trace capture is enabled for an application.|
+| [int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback)](#oh_hitrace_registertracelistener) | - | Registers a callback to notify whether the application trace capture is enabled. This API uses a synchronous callback to return the result.<br> After the registration is successful, the callback is executed immediately. Subsequent callbacks are executed when the application trace capture status changes.<br> Callbacks are stored in the application process. A maximum of 10 callbacks can be registered in a process.<br> If the callback contains time-consuming operations, the registration or unregistration will be blocked (waiting for the callback execution to complete) when the callback is executed.<br> Therefore, you are advised not to register or unregister callbacks containing time-consuming operations in the main thread of the application to avoid application freeze.|
+| [int32_t OH_HiTrace_UnregisterTraceListener(int32_t index)](#oh_hitrace_unregistertracelistener) | - | Unregisters the callback used to notify whether the application trace capture is enabled.<br> You can use this function to unregister the callback function associated with the callback index returned by [OH_HiTrace_RegisterTraceListener](capi-trace-h.md#oh_hitrace_registertracelistener).|
 
 ## Enum Description
 
@@ -209,6 +212,24 @@ Enumerates the HiTrace output levels. The trace output level lower than the thre
 
 ## Function Description
 
+### OH_HiTrace_TraceEventListener()
+
+```c
+typedef void (*OH_HiTrace_TraceEventListener)(bool traceStatus)
+```
+
+**Description**
+
+Defines a callback to listen for whether the trace capture is enabled.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| bool traceStatus | Whether the trace capture is enabled for the current application.<br> The value **true** indicates that the trace capture is enabled, and **false** indicates the opposite.|
+
 ### OH_HiTrace_BeginChain()
 
 ```c
@@ -222,7 +243,6 @@ Starts tracing.<br> If the current thread's TLS does not contain a valid HiTrace
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -259,7 +279,7 @@ HiTraceId OH_HiTrace_GetId()
 
 **Description**
 
- <br>Obtains the HiTrace ID in the TLS of the current thread.<br>
+ <br> Obtains the HiTrace ID in the TLS of the current thread.<br>
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
@@ -279,12 +299,11 @@ void OH_HiTrace_SetId(const HiTraceId *id)
 
 **Description**
 
- <br>Sets the given HiTrace ID to the TLS of the current thread. If the given HiTrace ID is invalid, no operation is performed.<br>
+ <br> Sets the given HiTrace ID to the TLS of the current thread. If the given HiTrace ID is invalid, no operation is performed.<br>
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -334,12 +353,11 @@ void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_T
 
 **Description**
 
-Adds a trace point for the HiTraceMeter logging.<br>When type is set to CS (client sends) or SC (server receives), HiTraceMeter starts tracing.<br>When type is set to CC (client receives) or SS (server sends), HiTraceMeter stops tracing.<br>When type is set to **GENERAL**, HiTraceMeter does not trace.<br>When type is set to CS or CC, the information trace points must be used together.<br>When type is set to SC or SS, the information trace points must be used together.<br>Otherwise, the start and end trace points of HiTraceMeter cannot match each other.
+Adds a trace point for the HiTraceMeter logging.<br> When **type** is set to **HITRACE_TP_CS** and **HITRACE_TP_SR**, the HiTraceMeter tracing starts. When **type** is set to **HITRACE_TP_CR** and **HITRACE_TP_SS**, the HiTraceMeter tracing ends. When **type** is set to **HITRACE_TP_GENERAL**, the HiTraceMeter tracing does not start.<br> The tracing points of **HITRACE_TP_CS** and **HITRACE_TP_CR** must be used in pairs; the tracing points of **HITRACE_TP_SR** and **HITRACE_TP_SS** must be used in pairs. Otherwise, the start and end trace points of HiTraceMeter cannot match each other.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -364,7 +382,6 @@ Initializes a **HiTraceId**.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -384,7 +401,6 @@ Creates a **HiTraceId** based on a byte array.
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -407,7 +423,6 @@ Checks whether the **HiTraceId** is valid.
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -434,7 +449,6 @@ Checks whether the trace flag is enabled for the **HiTraceId**.
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -463,7 +477,6 @@ Enables the trace flag specified in **HiTraceId**.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -484,7 +497,6 @@ Obtains the trace flag set in **HiTraceId**.
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -512,7 +524,6 @@ Sets the trace flag to [HiTraceId](capi-hitrace-hitraceid.md).
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -533,7 +544,6 @@ Obtains the trace chain ID in **HiTraceId**.
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -561,7 +571,6 @@ Sets the trace chain ID in **HiTraceId**.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -582,7 +591,6 @@ Obtains the span ID in **HiTraceId**.
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -610,7 +618,6 @@ Sets the span ID in **HiTraceId**.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -631,7 +638,6 @@ Obtains the parent span ID in **HiTraceId**.
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -659,7 +665,6 @@ Sets the **ParentSpanId** in a **HiTraceId** instance.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -680,7 +685,6 @@ Converts **HiTraceId** into a byte array for cache or communication.
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -709,7 +713,6 @@ Marks the start of a synchronous trace.<br> This API is used with **OH_HiTrace_F
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -745,7 +748,6 @@ Marks the start of an asynchronous trace.<br> This API is used to start tracing 
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -766,7 +768,6 @@ Marks the end of an asynchronous trace.<br> This API is called in the callback f
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -789,7 +790,6 @@ Traces the value change of an integer variable based on its name.<br> This API c
 
 **Since**: 10
 
-
 **Parameters**
 
 | Name| Description|
@@ -809,14 +809,13 @@ Marks the start of a synchronous trace task with the trace output level specifie
 
 **Since**: 19
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | Trace output level.|
 | const char *name | Name of a synchronous trace.|
-| const char *customArgs | Key-value pair. Use commas (,) to separate multiple key-value pairs, for example, "key1=value1,key2=value2".|
+| const char *customArgs | Key-value pair. Use commas (,) to separate multiple key-value pairs, for example, **"key1=value1,key2=value2"**.|
 
 ### OH_HiTrace_FinishTraceEx()
 
@@ -829,7 +828,6 @@ void OH_HiTrace_FinishTraceEx(HiTrace_Output_Level level)
 Marks the end of a synchronous trace task with the trace output level specified.<br> It must be used with **OH_HiTrace_StartTraceEx()** in pairs. Its level must be the same as those of **OH_HiTrace_StartTraceEx()**.<br> During trace data parsing, the system matches it with the **OH_HiTrace_StartTraceEx()** API recently invoked in the service process.<br>
 
 **Since**: 19
-
 
 **Parameters**
 
@@ -849,7 +847,6 @@ Marks the start of an asynchronous trace task with the trace output level specif
 
 **Since**: 19
 
-
 **Parameters**
 
 | Name| Description|
@@ -858,7 +855,7 @@ Marks the start of an asynchronous trace task with the trace output level specif
 | const char *name | Name of the asynchronous trace.|
 | int32_t taskId | ID of the asynchronous trace.|
 | const char *customCategory | Custom category name, which is used to collect asynchronous trace data of the same type.|
-| const char *customArgs | Key-value pair. Use commas (,) to separate multiple key-value pairs, for example, "key1=value1,key2=value2".|
+| const char *customArgs | Key-value pair. Use commas (,) to separate multiple key-value pairs, for example, **"key1=value1,key2=value2"**.|
 
 ### OH_HiTrace_FinishAsyncTraceEx()
 
@@ -871,7 +868,6 @@ void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char *name,
 Marks the end of an asynchronous trace task with the trace output level specified.<br> This API is used to stop tracing after an asynchronous operation is complete, for example, in a callback function.<br> It is used with **OH_HiTrace_StartAsyncTraceEx()** in pairs. Its level, name and task ID must be the same as those of **OH_HiTrace_StartAsyncTraceEx()**.<br>
 
 **Since**: 19
-
 
 **Parameters**
 
@@ -892,7 +888,6 @@ void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char *name, int64
 Marks an integer variable trace task with the trace output level specified.
 
 **Since**: 19
-
 
 **Parameters**
 
@@ -919,3 +914,59 @@ Checks whether trace capture is enabled for an application.
 | Type| Description|
 | -- | -- |
 | bool | When it is enabled, **true** is returned;<br> when it is disabled or stopped, **false** is returned. In this case, calling the HiTraceMeter API does not take effect.|
+
+### OH_HiTrace_RegisterTraceListener()
+
+```c
+int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback)
+```
+
+**Description**
+
+Registers a callback to notify whether the application trace capture is enabled. This API uses a synchronous callback to return the result.
+
+After the registration is successful, the callback is executed immediately. Subsequent callbacks are executed when the application trace capture status changes.
+
+Callbacks are stored in the application process. A maximum of 10 callbacks can be registered in a process.
+
+If the callback contains time-consuming operations, the registration or unregistration will be blocked (waiting for the callback execution to complete) when the callback is executed.
+
+Therefore, you are advised not to register or unregister callbacks containing time-consuming operations in the main thread of the application to avoid application freeze.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_HiTrace_TraceEventListener](capi-trace-h.md#oh_hitrace_traceeventlistener) callback | Registered callback.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Callback registration status.<br> >= **0**: The registration is successful. The callback index for unregistration is returned. The index ranges from 0 to 9.<br> **-1**: The maximum number of callbacks has been reached.<br> **-2**: Invalid parameter. The parameter is not of the **TraceEventListener** type.|
+
+### OH_HiTrace_UnregisterTraceListener()
+
+```c
+int32_t OH_HiTrace_UnregisterTraceListener(int32_t index)
+```
+
+**Description**
+
+Unregisters the callback used to notify whether the application trace capture is enabled.<br> You can use this function to unregister the callback function associated with the callback index returned by [OH_HiTrace_RegisterTraceListener](capi-trace-h.md#oh_hitrace_registertracelistener).
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| int32_t index | Index of the registered callback.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Callback unregistration status.<br> **0**: Unregistration succeeded.<br> **-1**: The callback corresponding to the index is not registered.<br> **-2**: Invalid index. The index value is not within the range of 0 to 9.|

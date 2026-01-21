@@ -524,8 +524,8 @@ class C {
   }
 }
 
-let s: C = new C(-2); 	// An exception is thrown.
-let t: C = { value: -2 };	// Not supported by ArkTS.
+let s: C = new C(-2);   // An exception is thrown.
+let t: C = { value: -2 }; // Not supported by ArkTS.
 ```
 
 In the preceding example, if **C** can be used to specify the object literal type, the variable **t** in the code will cause ambiguity of behavior. In light of this, ArkTS does not allow for object literal type annotation that may cause this issue.
@@ -1304,11 +1304,14 @@ console.info(t.createController()!.value);
 
 ## arkts-no-globalthis
 
-ArkTS does not support **globalThis** for two reasons:<br> (1) A static type cannot be added for **globalThis**. As a result, the properties of **globalThis** can be accessed only through search, which causes extra performance overhead.<br> (2) Type annotation is not available for properties of **globalThis**. As a result, the security and performance of operations on these properties cannot be ensured.
+ArkTS does not support **globalThis** for two reasons:<br> - A static type cannot be added to **globalThis**. As a result, the properties of **globalThis** can be accessed only through search, which causes extra performance overhead.<br> - Type annotation is not available for properties of **globalThis**. As a result, the security and performance of operations on these properties cannot be ensured.
 
-1. You are advised to transfer data between modules based on the service logic and import/export syntax.
+> **NOTE**
+>
+> 1. You are advised to transfer data between modules based on the service logic and import/export syntax.
+> 
+> 2. If necessary, you can construct a singleton object to implement the function of a global object. (Do not define the singleton in a HAR as it will be duplicated into different HAPs during packaging, breaking the singleton guarantee.)
 
-2. If necessary, you can construct a singleton object to implement the function of a global object. (**Note**: The singleton object cannot be defined in a HAR file, which packages two copies in different HAP files and therefore cannot implement singleton objects.)
 
 Construct a singleton object.
 
@@ -1660,11 +1663,11 @@ class Test {
 
 2. For object type (including function type) **A**, if you are not sure how to initialize it, you are advised to initialize it in one of the following ways:
 
-​	Mode (i): **prop: A | null = null**
+​ Mode (i): **prop: A | null = null**
 
-​	Mode (ii): **prop?:A**
+​ Mode (ii): **prop?:A**
 
-​	Mode 3 (iii): **prop: A | undefined = undefined**
+​ Mode 3 (iii): **prop: A | undefined = undefined**
 
 - From the perspective of performance, the **null** type is used only for type check during compilation and has no impact on VM performance. In contrast, **undefined | A** is treated as a union type and may result in additional overhead at runtime.
 - In terms of code readability and simplicity, **prop?:A** is the syntax sugar of **prop: A | undefined = undefined**. You are advised to use optional properties.
@@ -1917,7 +1920,7 @@ if (a) {
 
 **Reason for change**
 
-For primitive types, a value can be assigned based on the service logic, for example, **0**, **''**, and **false**.
+For primitive types, a value such as **0**, **''**, or **false** can be assigned based on the service logic.
 
 For object types, you can change the type to a union type consisting of **null** and assign **null** to the type. In this case, when using the object type, you need to perform the non-null check.
 
@@ -2267,7 +2270,7 @@ function deepCopy(obj: object): object {
 
 ### Using State Variables Outside of Structs
 
-The struct is different from the class. Therefore, avoid passing **this** as a parameter to the outside of the struct. Otherwise, the instance reference cannot be released and memory leakage may occur. You are advised to pass the state variable object outside the struct and modify the object properties to trigger UI re-render.
+The struct is different from the class. Therefore, avoid passing **this** as a parameter to the outside of the struct. Otherwise, the instance reference cannot be released and a memory leak may occur. You are advised to pass the state variable object outside the struct and modify the object properties to trigger UI re-render.
 
 **Not recommended**
 

@@ -13,7 +13,7 @@
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
-| Reader  | 此类的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例。 |
+| Reader  | 此类的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例，其中SIM2从API version 22开始支持。 |
 | Session | 此类的实例表示在某个SE Reader实例上创建连接会话。 |
 | Channel | 此类的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。   |
 
@@ -418,7 +418,7 @@ try {
 ```
 ## Reader
 
-Reader的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例。通过[SEService.getReaders](#seservicegetreaders)获取Reader实例。
+Reader的实例表示该设备支持的SE，如果支持eSE、SIM和SIM2，则返回3个实例，其中SIM2从API version 22开始支持。通过[SEService.getReaders](#seservicegetreaders)获取Reader实例。
 
 ### Reader.getName
 

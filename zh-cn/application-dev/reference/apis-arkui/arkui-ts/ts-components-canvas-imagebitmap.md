@@ -188,7 +188,7 @@ struct Demo {
 
 > **说明：**
 >
-> DevEco Studio的预览器不支持显示在worker线程中绘制的内容。
+> DevEco Studio的预览器不支持显示在Worker线程中绘制的内容。
 
 ```ts
 import { worker } from '@kit.ArkTS';

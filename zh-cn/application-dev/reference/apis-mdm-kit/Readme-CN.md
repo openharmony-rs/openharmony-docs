@@ -43,5 +43,7 @@
   - [@ohos.enterprise.usbManager（USB管理）(系统接口)](js-apis-enterprise-usbManager-sys.md)
   - [@ohos.enterprise.wifiManager（Wi-Fi管理）(系统接口)](js-apis-enterprise-wifiManager-sys.md)
   <!--DelEnd-->
+  - application<!--mdm-arkts-application-->
+    - [EnterpriseAdminExtensionContext(企业设备管理扩展能力上下文环境)](js-apis-application-EnterpriseAdminExtensionContext.md)
 - 错误码<!--mdm-arkts-errcode-->
   - [企业设备管理错误码](errorcode-enterpriseDeviceManager.md)

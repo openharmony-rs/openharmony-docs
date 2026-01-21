@@ -1,4 +1,4 @@
-# Introduction to ArkData
+# About This Kit
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @widecode-->

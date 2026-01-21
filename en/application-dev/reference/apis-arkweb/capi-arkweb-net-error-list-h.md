@@ -32,7 +32,7 @@ The **arkweb_error_code.h** file declares the error codes of the ArkWeb network 
 
 ### ArkWeb_NetError
 
-```
+```c
 enum ArkWeb_NetError
 ```
 

@@ -35,6 +35,8 @@ For details about the supported system events, detection principles, and fields 
 
 [Application Killed Event Overview](hiappevent-watcher-app-killed-events.md)
 
+[ArkWeb Fling Jank Event Overview](hiappevent-watcher-web-fling-jank-events.md)
+
 <!--RP1-->
 <!--RP1End-->
 

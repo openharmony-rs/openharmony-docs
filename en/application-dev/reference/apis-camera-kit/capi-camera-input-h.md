@@ -50,7 +50,7 @@ The file declares the camera input concepts.
 
 ### OH_CameraInput_OnError()
 
-```
+```c
 typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
 ```
 
@@ -81,7 +81,7 @@ Defines the callback defined in the [CameraInput_Callbacks](capi-oh-camera-camer
 
 ### OH_CameraInput_RegisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_RegisterCallback(Camera_Input* cameraInput, CameraInput_Callbacks* callback)
 ```
 
@@ -107,7 +107,7 @@ Registers a callback to listen for camera input events.
 
 ### OH_CameraInput_UnregisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_UnregisterCallback(Camera_Input* cameraInput, CameraInput_Callbacks* callback)
 ```
 
@@ -133,7 +133,7 @@ Unregisters the callback used to listen for camera input events.
 
 ### OH_CameraInput_Open()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 ```
 
@@ -154,11 +154,11 @@ Opens a camera.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict.<br>         **CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict.<br>         **CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CameraInput_OpenSecureCamera()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint64_t* secureSeqId)
 ```
 
@@ -180,11 +180,11 @@ Opens a camera in secure mode.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict.<br>         **CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict.<br>         **CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CameraInput_OpenConcurrentCameras()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput, Camera_ConcurrentType type)
 ```
 
@@ -206,11 +206,11 @@ Opens the camera based on the specified concurrency type.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict.<br>         **CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_CONFLICT_CAMERA**: The camera cannot be used due to a conflict.<br>         **CAMERA_DEVICE_DISABLED**: The camera is disabled due to security reasons.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CameraInput_Close()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_Close(Camera_Input* cameraInput)
 ```
 
@@ -231,11 +231,11 @@ Closes a camera.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CameraInput_Release()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_Release(Camera_Input* cameraInput)
 ```
 
@@ -258,11 +258,11 @@ Either this function or [OH_CameraInput_Close](capi-camera-input-h.md#oh_camerai
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CameraInput_IsPhysicalCameraOrientationVariable()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input* cameraInput, bool* isVariable)
 ```
 
@@ -288,7 +288,7 @@ Checks whether the physical camera orientation is adjustable in different fold s
 
 ### OH_CameraInput_GetPhysicalCameraOrientation()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* cameraInput, uint32_t* orientation)
 ```
 
@@ -314,7 +314,7 @@ Obtains the physical camera orientation in the current fold state of the device.
 
 ### OH_CameraInput_UsePhysicalCameraOrientation()
 
-```
+```c
 Camera_ErrorCode OH_CameraInput_UsePhysicalCameraOrientation(Camera_Input* cameraInput, bool isUsed)
 ```
 
@@ -336,4 +336,4 @@ Enables or disables the use of the physical camera orientation.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|

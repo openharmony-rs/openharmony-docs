@@ -1,4 +1,4 @@
-# Introduction to Audio Kit
+# About This Kit
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->

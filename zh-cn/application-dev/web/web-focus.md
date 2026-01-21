@@ -147,19 +147,19 @@ struct WebComponent {
 
 ## Web组件内H5元素焦点控制
 - W3C标准事件focus，前端感知网页获焦
-```
+```js
 addEventListener("focus", (event) => {});
 
 onfocus = (event) => {};
 ```
 - W3C标准事件blur，前端感知网页失焦
-```
+```js
 addEventListener("blur", (event) => {});
 
 onblur = (event) => {};
 ```
 - W3C autofocus，表示元素应在页面加载时或其所属的 `dialog` 显示时被聚焦
-```
+```js
 <input name="q" autofocus />
 ```
 在文档或对话框中，最多只能有一个元素具有 autofocus 属性。若应用于多个元素，第一个元素将获得焦点。

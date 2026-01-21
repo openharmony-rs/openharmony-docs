@@ -34,4 +34,3 @@
 - Error Codes<!--sensor-service-arkts-errcode-->
   - [Sensor Error Codes](errorcode-sensor.md)
   - [Vibrator Error Codes](errorcode-vibrator.md)
-

@@ -32,7 +32,6 @@ Signature verification example:
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +

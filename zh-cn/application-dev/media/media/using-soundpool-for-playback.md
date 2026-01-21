@@ -87,7 +87,6 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
-    import { fileIo as fs } from '@kit.CoreFileKit';
 
     private soundId: number = 0;
     // 获取当前组件所在Ability的Context，以通过Context获取应用文件路径。
@@ -187,7 +186,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/SoundPool/SoundPoolArkTS)，并将示例工程的资源复制到对应目录。
 
-    ```
+    ```txt
     SoundPoolArkTS
     entry/src/main/ets/
     └── pages

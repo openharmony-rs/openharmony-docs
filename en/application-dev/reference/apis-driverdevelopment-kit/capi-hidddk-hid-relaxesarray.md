@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_RelAxesArray {...} Hid_RelAxesArray
+```
+
 ## Overview
 
 Defines an array of relative coordinates.

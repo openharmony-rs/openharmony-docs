@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Different input devices generate distinct types of basic events, which are triggered only when users interact with specific hardware or tools. These events can be categorized based on the source device and the tool used to initiate the interaction.
 
@@ -26,4 +26,7 @@ In many cases, the input device and tool may be the same. For example, the mouse
 
 [Keyboard input events](./arkts-interaction-development-guide-keyboard.md): explains keyboard-generated events and usage patterns.
 
+[Gamepad input events](./arkts-interaction-development-guide-gamepad.md): explains gamepad-generated events and usage patterns.
+
 [Crown input events](./arkts-common-events-crown-event.md): explains crown-generated events and usage patterns.
+<!--no_check-->

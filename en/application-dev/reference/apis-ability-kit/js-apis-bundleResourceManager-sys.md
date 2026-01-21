@@ -615,7 +615,7 @@ Obtains the launcher ability resource information of each application correspond
 
 | Name       | Type                                                        | Mandatory| Description                                                        |
 | ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| optionsList   | Array\<[BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions)> | Yes  | Parameters of the applications to query. **bundleName**, **moduleName**, and **abilityName** are mandatory. If **appIndex** is not specified, the default value **0** is used.|
+| optionsList   | Array\<[BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions)> | Yes  | Parameters of the applications to query.<br>**bundleName**, **moduleName**, and **abilityName** are mandatory parameters.<br>Value range of **appIndex**: [0, 5]. The default value is **0** if not specified.<br>**userId** is an invalid parameter. It does not need to be passed, and will not take effect if passed.|
 | resourceFlags | number                                                       | Yes  | Resource information flags, which indicate the type of resource information to obtain. The value is an enumerated value of [ResourceFlag](#resourceflag), excluding [ResourceFlag](#resourceflag).GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL and [ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY.|
 
 **Return value**
@@ -631,11 +631,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                            |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission denied.                                   |
-| 202      | Permission denied, non-system app called system api. |
-| 17700001 | The specified bundleName is not found.               |
-| 17700002 | The specified moduleName is not existed.             |
-| 17700003 | The specified abilityName is not existed.            |
-| 17700061 | AppIndex not in valid range or not found.            |
+| 202      | Permission denied. A non-system application is not allowed to call a system API. |
+| 801      | Capability not supported. |
+| 17700001 | The specified bundle is not found.  |
+| 17700002 | The specified module is not found.  |
+| 17700003 | The specified ability is not found. |
+| 17700061 | The specified app index is invalid. |
 
 **Example**
 

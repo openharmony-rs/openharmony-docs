@@ -65,6 +65,7 @@ let request: backgroundTaskManager.EfficiencyResourcesRequest = {
     reason: "apply",
     isPersist: true,
     isProcess: false,
+    cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU // The application's background task runs on the small CPU core. This parameter is supported since API version 23.
 };
 try {
     backgroundTaskManager.applyEfficiencyResources(request);
@@ -155,6 +156,277 @@ try {
 }
 ```
 
+## backgroundTaskManager.setBackgroundTaskState<sup>22+</sup>
+
+setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
+
+Sets the authorization information of a continuous task.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.SET_BACKGROUND_TASK_STATE
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name    | Type     | Mandatory  | Description                   |
+| ------- | ------- | ---- |-----------------------|
+| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | Yes   | Required authorization information, including the user ID, application bundle name, and application clone ID.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+
+| ID | Error Message            |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 202 | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    // Update the parameters based on the actual situation.
+    let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
+        userId: 100,
+        bundleName: 'com.example.continuoustask',
+        appIndex: 0,
+        authResult: backgroundTaskManager.UserAuthResult.DENIED
+    };
+    backgroundTaskManager.setBackgroundTaskState(backgroundTaskStateInfo);
+    console.info('Operation setBackgroundTaskState succeeded.');
+} catch (error) {
+    console.error(`Operation setBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+## backgroundTaskManager.getBackgroundTaskState<sup>22+</sup>
+
+getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
+
+Obtains the authorization information of a continuous task.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.SET_BACKGROUND_TASK_STATE
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name    | Type     | Mandatory  | Description                   |
+| ------- | ------- | ---- |-----------------------|
+| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | Yes   | Required authorization information, including the user ID, application bundle name, and application clone ID.|
+
+**Return value**
+
+| Type                                           | Description         |
+|-----------------------------------------------|-------------|
+|  [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | Authorization result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+
+| ID | Error Message            |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 202 | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    // Update the parameters based on the actual situation.
+    let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
+        userId: 100,
+        bundleName: 'com.example.continuoustask',
+        appIndex: 0
+    };
+    let auth = backgroundTaskManager.getBackgroundTaskState(backgroundTaskStateInfo);
+    console.info('Operation getBackgroundTaskState succeeded. data: ' + JSON.stringify(auth));
+} catch (error) {
+    console.error(`Operation getBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+## backgroundTaskManager.obtainAllContinuousTasks<sup>23+</sup>
+
+obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
+
+Obtains all continuous task information, including the task ID and type. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.GET_BACKGROUND_TASK_INFO
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type                                           | Description         |
+|-----------------------------------------------|-------------|
+|  Promise&lt;[ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)[]&gt; | Promise that returns all continuous task information.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+
+| ID  | Error Message|
+| --------- | ------- |
+| 201 | Permission denied. |
+| 202 | Not System App. |
+| 9800004 | System service operation failed. |
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    // If no continuous task is requested, an empty array is obtained.
+    backgroundTaskManager.obtainAllContinuousTasks().then((res: backgroundTaskManager.ContinuousTaskInfo[]) => {
+        console.info(`Operation obtainAllContinuousTasks succeeded. data: ` + JSON.stringify(res));
+    }).catch((error: BusinessError) => {
+        console.error(`Operation obtainAllContinuousTasks failed. code is ${error.code} message is ${error.message}`);
+    });
+} catch (error) {
+    console.error(`Operation obtainAllContinuousTasks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+## backgroundTaskManager.subscribeContinuousTaskState<sup>23+</sup>
+
+subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
+
+Registers a callback to listen for the continuous task change events.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.GET_BACKGROUND_TASK_INFO
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name    | Type     | Mandatory  | Description                   |
+| ------- | ------- | ---- |-----------------------|
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | Yes   | Background task listener that listens for continuous task state changes, including start, update and stop events.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+
+| ID  | Error Message|
+|---------| ------- |
+| 201     | Permission denied. |
+| 202     | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+    }
+}
+
+try {
+    backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+    console.info('Operation subscribeContinuousTaskState succeeded');
+} catch (error) {
+    console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+## backgroundTaskManager.unsubscribeContinuousTaskState<sup>23+</sup>
+
+unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
+
+Unregisters the callback for continuous task changes.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.GET_BACKGROUND_TASK_INFO
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name    | Type     | Mandatory  | Description                   |
+| ------- | ------- | ---- |-----------------------|
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | Yes   | Background task listener that listens for continuous task state changes, including start, update and stop events.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+
+| ID  | Error Message|
+|---------| ------- |
+| 201     | Permission denied. |
+| 202     | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+    }
+}
+
+try {
+    backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
+    console.info('Operation unsubscribeContinuousTaskState succeeded');
+} catch (error) {
+    console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
 ## BackgroundMode
 
 Enumerates the continuous task modes.
@@ -181,6 +453,7 @@ Describes the parameters for requesting efficiency resources.
 | isPersist       | boolean | No   | Yes   | Whether the resource is permanently held. The default value is **false**.<br>- **true**: The resource is permanently held.<br>- **false**: The resource is held for a limited period of time.|
 | isProcess       | boolean | No   | Yes   | Whether the request is initiated by a process. The default value is **false**.<br>- **true**: The request is initiated by a process.<br>- **false**: The request is initiated by an application.        |
 | reason          | string  | No   | No   | Reason for requesting the resource.               |
+| cpuLevel<sup>23+</sup> | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23) | No   | Yes   | CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the CPU resource size. The system allocates the specified CPU resources to the application during the idle time of load (for example, when the screen is off).|
 
 ## ResourceType
 
@@ -204,7 +477,7 @@ Enumerates the efficiency resource types.
 
 ## EfficiencyResourcesInfo<sup>20+</sup>
 
-Efficiency resource information.
+Defines the efficiency resource information.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -219,6 +492,21 @@ Efficiency resource information.
 | reason                         | string  | No   | No   | Reason for requesting the resource.      |
 | uid                            | number  | No   | No   | Application UID.    |
 | pid                            | number  | No   | No   | Application PID.  |
+| cpuLevel<sup>23+</sup>         | [EfficiencyResourcesCpuLevel](#efficiencyresourcescpulevel23)  | No   | Yes   |  CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the CPU resource size. The system allocates the specified CPU resources to the application during the idle time of load (for example, when the screen is off).|
+
+## EfficiencyResourcesCpuLevel<sup>23+</sup>
+
+Defines the CPU level of the efficiency resource.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+
+**System API**: This is a system API.
+
+| Name                     | Value | Description                   |
+| ------------------------ | ---- | ---------------------  |
+| SMALL_CPU | 0 | The background task runs on small CPU cores. This level caters to lightweight background tasks with a relatively low CPU frequency.|
+| MEDIUM_CPU | 1 | The background task can run on medium CPU cores at maximum. The system determines whether to run the task on small or medium CPU cores based on load. This level balances performance and energy efficiency, and is applicable to scenarios requiring complex task processing with a high CPU frequency.|
+| LARGE_CPU | 2 | The background task can run on large CPU cores at maximum. The system determines whether to run the task on small, medium, or large CPU cores based on load. This level delivers ultimate performance, and is applicable to scenarios requiring heavy-load task processing with the highest CPU frequency.|
 
 ## BackgroundTaskMode<sup>21+</sup>
 
@@ -231,3 +519,138 @@ Defines the main type of a continuous task.
 | Name                    | Value | Description                   |
 | ------------------------ | ---- | --------------------- |
 | MODE_ALLOW_WIFI_AWARE           | 7         | WLAN-related services.           |
+
+## BackgroundTaskStateInfo<sup>22+</sup>
+
+Defines the authorization information of a continuous task.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+| Name| Type                                 | Read-Only  | Optional| Description     |
+|--|-------------------------------------| ---- |----|---------|
+| userId | number                              | No   | No | User ID.  |
+| bundleName | string                              | No   | No | Application bundle name.  |
+| appIndex | number                              | No   | No | Index of an application clone.|
+| authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | No   | Yes | Authorization result.  |
+
+## BackgroundTaskSubscriber<sup>23+</sup>
+
+Represents a listener object used to listen for background task state changes.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+### onContinuousTaskStart<sup>23+</sup>
+
+onContinuousTaskStart(info: ContinuousTaskInfo): void
+
+Called when a continuous task starts.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type     | Mandatory  | Description               |
+|------| ------- | ---- |-------------------|
+| info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | Yes   | Continuous task callback information, including the task ID and type.|
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+
+private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+    }
+}
+```
+
+### onContinuousTaskUpdate<sup>23+</sup>
+
+onContinuousTaskUpdate(info: ContinuousTaskInfo): void
+
+Called when a continuous task is updated.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type     | Mandatory  | Description               |
+|------| ------- | ---- |-------------------|
+| info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | Yes   | Continuous task callback information, including the task ID and type.|
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+
+private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+    }
+}
+```
+
+### onContinuousTaskStop<sup>23+</sup>
+
+onContinuousTaskStop(info: ContinuousTaskInfo): void
+
+Called when a continuous task stops.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type     | Mandatory  | Description               |
+|------| ------- | ---- |-------------------|
+| info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | Yes   | Continuous task callback information, including the task ID and type.|
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+
+private backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = {
+    onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+    },
+    onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+        console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+    }
+}
+```

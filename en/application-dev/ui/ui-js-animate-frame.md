@@ -81,7 +81,7 @@ export default {
       }
       var elapsed = timestamp - this.startTime;
         if (elapsed < 500) {
-          console.log('callback step timestamp: ' + timestamp);
+          console.info('callback step timestamp: ' + timestamp);
           this.animation = requestAnimationFrame(this.step);
         }
       } else {
@@ -99,7 +99,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001267767877](figures/en-us_image_0000001267767877.gif)
+![en-us_image_0000001174756860](figures/en-us_image_0000001174756860.gif)
 
 > **NOTE**
 >
@@ -189,7 +189,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001223127740](figures/en-us_image_0000001223127740.gif)
+![en-us_image_0000001220316655](figures/en-us_image_0000001220316655.gif)
 
 > **NOTE**
 >

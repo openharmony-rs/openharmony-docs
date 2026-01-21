@@ -8,7 +8,7 @@
 
 用户首选项为应用提供Key-Value键值型的数据处理能力，支持应用持久化轻量级数据，并对其修改和查询。
 
-数据存储采用键值对形式，键为字符串类型，值可为数字、字符、布尔类型及其对应的数组。
+数据存储采用键值对形式，键为字符串类型，值可为数字、字符串、布尔类型及其对应的数组。
 
 用户首选项的持久化文件存储在[preferencesDir](../../application-models/application-context-stage.md#获取应用文件路径)路径下，创建preferences对象前，需要保证preferencesDir路径可读写。持久化文件存储路径中的[加密等级](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)会影响文件的可读写状态，路径访问限制详见[应用文件目录与应用文件路径](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。
 

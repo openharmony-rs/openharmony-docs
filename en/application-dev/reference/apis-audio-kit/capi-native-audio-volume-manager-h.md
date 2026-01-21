@@ -51,7 +51,7 @@ You can call the functions to create an audio volume manager.
 
 ### OH_AudioVolumeManager_OnStreamVolumeChangeCallback()
 
-```
+```c
 typedef void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)(void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi)
 ```
 
@@ -73,7 +73,7 @@ Defines the prototype of the volume change callback function, which is passed in
 
 ### OH_AudioVolumeManager_OnRingerModeChangeCallback()
 
-```
+```c
 typedef void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)(void *userData, OH_AudioRingerMode ringerMode)
 ```
 
@@ -93,7 +93,7 @@ Defines the prototype of the ringer mode change callback function, which is pass
 
 ### OH_AudioManager_GetAudioVolumeManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioVolumeManager(OH_AudioVolumeManager **volumeManager)
 ```
 
@@ -118,7 +118,7 @@ Obtains an OH_AudioVolumeManager instance.
 
 ### OH_AudioVolumeManager_GetMaxVolumeByUsage()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, int32_t *maxVolumeLevel)
 ```
 
@@ -145,7 +145,7 @@ Obtains the maximum volume level of an audio stream of a specified usage type.
 
 ### OH_AudioVolumeManager_GetMinVolumeByUsage()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, int32_t *minVolumeLevel)
 ```
 
@@ -172,7 +172,7 @@ Obtains the minimum volume level of an audio stream of a specified usage type.
 
 ### OH_AudioVolumeManager_GetVolumeByUsage()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, int32_t *volumeLevel)
 ```
 
@@ -199,7 +199,7 @@ Obtains the system volume level of an audio stream of a specified usage type.
 
 ### OH_AudioVolumeManager_IsMuteByUsage()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, bool *muted)
 ```
 
@@ -226,7 +226,7 @@ Checks whether an audio stream of a specified usage type is muted.
 
 ### OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback, void *userData)
 ```
 
@@ -254,7 +254,7 @@ Registers the volume change callback function.
 
 ### OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback)
 ```
 
@@ -280,7 +280,7 @@ Unregisters the volume change callback function.
 
 ### OH_AudioVolumeManager_GetRingerMode()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager *volumeManager, OH_AudioRingerMode *ringerMode)
 ```
 
@@ -306,7 +306,7 @@ Obtains the ringer mode in use.
 
 ### OH_AudioVolumeManager_RegisterRingerModeChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnRingerModeChangeCallback callback, void *userData)
 ```
 
@@ -333,7 +333,7 @@ Registers the ringer mode change callback function.
 
 ### OH_AudioVolumeManager_UnregisterRingerModeChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnRingerModeChangeCallback callback)
 ```
 

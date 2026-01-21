@@ -22,6 +22,8 @@ createPicture(mainPixelmap : PixelMap): Picture
 
 Creates a Picture object based on a main PixelMap.
 
+Images occupy a large amount of memory. When you finish using a Picture instance, call [release](./arkts-apis-image-Picture.md#release13) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -69,6 +71,8 @@ async function CreatePicture(context: Context) {
 createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 
 Creates a Picture object from a MessageSequence object.
+
+Images occupy a large amount of memory. When you finish using a Picture instance, call [release](./arkts-apis-image-Picture.md#release13) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -154,6 +158,8 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<Pi
 
 Creates a PixelMap object with the default BGRA_8888 format and specified pixel properties. This API uses a promise to return the result.
 
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -191,6 +197,8 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: As
 
 Creates a PixelMap object with the default BGRA_8888 format and specified pixel properties. This API uses an asynchronous callback to return the result.
 
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -225,6 +233,8 @@ async function CreatePixelMap() {
 createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
 
 Creates a PixelMap object with the specified properties and memory type. By default, the BGRA_8888 format is used to process data. This API uses a promise to return the result.
+
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -273,6 +283,8 @@ async function CreatePixelMapUseAllocator() {
 createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 
 Creates a PixelMap object from a MessageSequence object.
+
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -368,6 +380,8 @@ createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 
 Creates a PixelMap object based on the surface ID and region information. The size of the region is specified by [Region](arkts-apis-image-i.md#region8).size. This API uses a promise to return the result.
 
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > For foldable devices, during switching between folded and unfolded states, the API call may fail because of the built-in rotation angle of the surface. You need to adjust the width and height to match the rotation angle. You are advised to use [image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15).
@@ -418,6 +432,8 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
 Creates a PixelMap object based on the surface ID and region information. This API returns the result synchronously. The size of the region is specified by [Region](arkts-apis-image-i.md#region8).size.
 
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > For foldable devices, during switching between folded and unfolded states, the API call may fail because of the built-in rotation angle of the surface. You need to adjust the width and height to match the rotation angle. In such cases, [image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15) is recommended.
@@ -463,6 +479,8 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
 Creates a PixelMap object from a surface ID. This API uses a promise to return the result.
 
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -507,6 +525,8 @@ createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
 Creates a PixelMap object from a surface ID. This API returns the result synchronously.
 
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -545,6 +565,8 @@ async function CreatePixelMapFromSurfaceSync(surfaceId: string) {
 createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMap
 
 Creates a PixelMap object with the specified properties. By default, the BGRA_8888 format is used to process data. This API returns the result synchronously.
+
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -586,6 +608,8 @@ createPixelMapSync(options: InitializationOptions): PixelMap
 
 Creates a PixelMap object with the specified pixel properties. This API returns the result synchronously.
 
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -622,6 +646,8 @@ function CreatePixelMapSync() {
 createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptions, allocatorType?: AllocatorType): PixelMap
 
 Creates a PixelMap object with the specified properties and memory type. By default, the BGRA_8888 format is used to process data. This API returns the result synchronously.
+
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -666,6 +692,8 @@ createPixelMapUsingAllocatorSync(param: InitializationOptions, allocatorType?: A
 
 Creates a PixelMap object with the specified pixel properties. This API returns the result synchronously.
 
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -705,6 +733,8 @@ function CreatePixelMapSync() {
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback\<void>): void
 
 Converts a non-premultiplied alpha of a PixelMap to a premultiplied one and stores the converted data to a target PixelMap. This API uses an asynchronous callback to return the result.
+
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -761,6 +791,8 @@ async function CreatePremultipliedPixelMap() {
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 Converts a non-premultiplied alpha of a PixelMap to a premultiplied one and stores the converted data to a target PixelMap. This API uses a promise to return the result.
+
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -820,6 +852,8 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallb
 
 Converts a premultiplied alpha of a PixelMap to a non-premultiplied one and stores the converted data to a target PixelMap. This API uses an asynchronous callback to return the result.
 
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -875,6 +909,8 @@ async function CreateUnpremultipliedPixelMap() {
 createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 Converts a premultiplied alpha of a PixelMap to a non-premultiplied one and stores the converted data to a target PixelMap. This API uses a promise to return the result.
+
+Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -934,6 +970,7 @@ createImageSource(uri: string): ImageSource
 
 Creates an ImageSource instance based on a given URI.
 
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -965,6 +1002,8 @@ async function CreateImageSource(context : Context) {
 createImageSource(uri: string, options: SourceOptions): ImageSource
 
 Creates an ImageSource instance based on a given URI.
+
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1002,6 +1041,8 @@ createImageSource(fd: number): ImageSource
 
 Creates an ImageSource instance based on a given file descriptor.
 
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
@@ -1036,6 +1077,8 @@ async function CreateImageSource(context : Context) {
 createImageSource(fd: number, options: SourceOptions): ImageSource
 
 Creates an ImageSource instance based on a given file descriptor.
+
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1076,6 +1119,8 @@ createImageSource(buf: ArrayBuffer): ImageSource
 
 Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12).
 
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -1108,6 +1153,8 @@ async function CreateImageSource() {
 createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
 Creates an ImageSource instance based on buffers. The data passed by **buf** must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12).
+
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1143,6 +1190,8 @@ async function CreateImageSource() {
 createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
 
 Creates an ImageSource instance based on the raw file descriptor of an image resource file.
+
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1184,6 +1233,8 @@ async function CreateImageSource(context : Context) {
 CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 Creates an ImageSource instance in incremental mode based on buffers. Such an instance does not support reading or writing of Exif information.
+
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 The ImageSource instance created in incremental mode supports the following capabilities (applicable to synchronous, callback, and promise modes):
 
@@ -1240,6 +1291,8 @@ CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 Creates an ImageSource instance in incremental mode based on buffers. Such an instance does not support reading or writing of Exif information.
 
 The capabilities supported by the ImageSource instance created by this API are the same as those supported by the instance created by [CreateIncrementalSource(buf: ArrayBuffer): ImageSource](#imagecreateincrementalsource9).
+
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](./arkts-apis-image-ImageSource.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -1312,6 +1365,8 @@ createImagePacker(): ImagePacker
 
 Creates an ImagePacker instance.
 
+Images occupy a large amount of memory. When you finish using an ImagePacker instance, call [release](./arkts-apis-image-ImagePacker.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Multimedia.Image.ImagePacker
@@ -1357,7 +1412,9 @@ async function GetImagePackerSupportedFormats() {
 
 createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureType): AuxiliaryPicture
 
-Creates an AuxiliaryPicture instance based on the ArrayBuffer image data, auxiliary picture size, and auxiliary picture type.
+Creates an AuxiliaryPicture instance based on the ArrayBuffer image data, auxiliary picture size, and auxiliary picture type. This API accepts only continuous pixel data in BGRA format and will create an auxiliary picture in RGBA format.
+
+Images occupy a large amount of memory. When you finish using an AuxiliaryPicture instance, call [release](./arkts-apis-image-AuxiliaryPicture.md#release13) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -1412,6 +1469,8 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 
 Creates an ImageReceiver instance by specifying the image size, format, and capacity. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
 
+Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](./arkts-apis-image-ImageReceiver.md#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
 **Parameters**
@@ -1451,6 +1510,8 @@ let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageF
 createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator
 
 Creates an ImageCreator instance by specifying the image size, format, and capacity.
+
+Images occupy a large amount of memory. When you finish using an ImageCreator instance, call [release](./arkts-apis-image-ImageCreator.md) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageCreator
 
@@ -1493,6 +1554,8 @@ createImageReceiver(width: number, height: number, format: number, capacity: num
 
 Creates an ImageReceiver instance by specifying the image width, height, format, and capacity. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
 
+Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](./arkts-apis-image-ImageReceiver.md#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > This API is supported since API version 9 and is deprecated since API version 11. You are advised to use [createImageReceiver](#imagecreateimagereceiver11) instead.
@@ -1525,6 +1588,8 @@ let receiver: image.ImageReceiver = image.createImageReceiver(8192, 8192, image.
 createImageCreator(width: number, height: number, format: number, capacity: number): ImageCreator
 
 Creates an ImageCreator instance by specifying the image width, height, format, and capacity.
+
+Images occupy a large amount of memory. When you finish using an ImageCreator instance, call [release](./arkts-apis-image-ImageCreator.md) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 > **NOTE**
 >

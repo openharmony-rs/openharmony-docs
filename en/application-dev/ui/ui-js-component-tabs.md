@@ -1,17 +1,17 @@
 # tabs Development
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @@jiangdayuan-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **&lt;tabs&gt;** component is a common UI component for navigation. It allows quick access to different functions of an app. For details, see [tabs](../reference/apis-arkui/arkui-js/js-components-container-tabs.md).
+The **\<tabs>** component is a common UI component for navigation. It allows quick access to different functions of an app. For details, see [tabs](../reference/apis-arkui/arkui-js/js-components-container-tabs.md).
 
 
 ## Creating Tabs
 
-Create a **&lt;tabs&gt;** component in the .hml file under **pages/index**.
+Create a **\<tabs>** component in the .hml file under **pages/index**.
 
 ```html
 <!-- xxx.hml -->
@@ -53,12 +53,12 @@ Create a **&lt;tabs&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001223287676](figures/en-us_image_0000001223287676.gif)
+![en-us_image_0000001165191390](figures/en-us_image_0000001165191390.gif)
 
 
 ## Setting Styles
 
-Set the background color, border, and tab-content layout of the **&lt;tabs&gt;** component.
+Set the background color, border, and tab-content layout of the tabs.
 ```html
 <!-- xxx.hml -->
 <div class="container">
@@ -107,12 +107,12 @@ Set the background color, border, and tab-content layout of the **&lt;tabs&gt;**
 }
 ```
 
-![en-us_image_0000001267767857](figures/en-us_image_0000001267767857.gif)
+![en-us_image_0000001163388642](figures/en-us_image_0000001163388642.gif)
 
 
 ## Displaying the Tab Index
 
-Add the **change** event for the **&lt;tabs&gt;** component to display the index of the current tab after tab switching.
+Add the **change** event for the **\<tabs>** component to display the index of the current tab after tab switching.
 
 ```html
 <!-- xxx.hml -->
@@ -146,26 +146,26 @@ export default {
 }
 ```
 
-![en-us_image_0000001222807772](figures/en-us_image_0000001222807772.gif)
+![en-us_image_0000001163228638](figures/en-us_image_0000001163228638.gif)
 
 
 > **NOTE**
 >
-> A **&lt;tabs&gt;** can wrap at most one [**&lt;tab-bar&gt;**](../reference/apis-arkui/arkui-js/js-components-container-tab-bar.md)  and at most one [**&lt;tab-content&gt;**](../reference/apis-arkui/arkui-js/js-components-container-tab-content.md).
+> The **tabs** child component supports only one [\<tab-bar>](../reference/apis-arkui/arkui-js/js-components-container-tab-bar.md) and one [\<tab-content>](../reference/apis-arkui/arkui-js/js-components-container-tab-content.md).
 
 
 ## Example Scenario
 
 In this example, you can switch between tabs and the active tab has the title text in red with an underline below.
 
-Use the **&lt;tabs&gt;**, **&lt;tab-bar&gt;**, and **&lt;tab-content&gt;** components to implement tab switching. Then define the arrays and attributes. Add the **change** event to change the attribute values in the arrays so that the active tab has a different font color and an underline.
+Use the **\<tabs>**, **\<tab-bar>**, and **\<tab-content>** components to implement tab switching. Then define the arrays and attributes. Add the **change** event to change the attribute values in the arrays so that the active tab has a different font color and an underline.
 
 ```html
 <!-- xxx.hml -->
 <div class="container">
   <tabs onchange="changeTabactive">
     <tab-content>
-      <div class="item-container" for="datas.list">
+      <div class="item-container" for="data.list">
         <div if="{{$item.title=='List1'?true:false}}">
           <image src="common/images/bg-tv.jpg" style="object-fit: contain;"> </image>
         </div>
@@ -178,7 +178,7 @@ Use the **&lt;tabs&gt;**, **&lt;tab-bar&gt;**, and **&lt;tab-content&gt;** compo
       </div>
     </tab-content>
     <tab-bar class="tab_bar mytabs" mode="scrollable">
-      <div class="tab_item" for="datas.list">
+      <div class="tab_item" for="data.list">
         <text style="color: {{$item.color}};">{{$item.title}}</text>
         <div class="underline-show" if="{{$item.show}}"></div>
         <div class="underline-hide" if="{{!$item.show}}"></div>
@@ -226,11 +226,10 @@ background-color:#F1F3F5;
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   data() {
     return {
-      datas: {
+      data: {
         color_normal: '#878787',
         color_active: '#ff4500',
         show: true,
@@ -254,13 +253,13 @@ export default {
     }
   },
   changeTabactive (e) {
-    for (let i = 0; i < this.datas.list.length; i++) {
-      let element = this.datas.list[i];
+    for (let i = 0; i < this.data.list.length; i++) {
+      let element = this.data.list[i];
       element.show = false;
-      element.color = this.datas.color_normal;
+      element.color = this.data.color_normal;
       if (i === e.index) {
         element.show = true;
-        element.color = this.datas.color_active;
+        element.color = this.data.color_active;
       }
     }
   }

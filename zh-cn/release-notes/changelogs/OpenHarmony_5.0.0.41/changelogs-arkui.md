@@ -211,7 +211,7 @@ borderImage中的边框外延距离（outset属性）在无需绘制的区域不
 
 **变更的接口/组件**
 
-通用接口。
+[borderImage](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-border-image.md#borderimage)的outset属性。
 
 **适配指导**
 
@@ -260,7 +260,7 @@ CanvasRenderingContext2D和OffscreenCanvasRenderingContext2D的fillText和stroke
 
 示例：
 
-```
+```ts
 // xxx.ets
 @Entry
 @Component

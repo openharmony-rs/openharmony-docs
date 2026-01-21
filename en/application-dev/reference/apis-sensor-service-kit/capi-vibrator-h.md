@@ -34,7 +34,7 @@ Declares the APIs for starting or stopping vibration.
 
 ### OH_Vibrator_PlayVibration()
 
-```
+```c
 int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute)
 ```
 
@@ -61,7 +61,7 @@ Controls the vibrator to vibrate continuously for a given duration.
 
 ### OH_Vibrator_PlayVibrationCustom()
 
-```
+```c
 int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription, Vibrator_Attribute vibrateAttribute)
 ```
 
@@ -88,7 +88,7 @@ Configure the vibrator to vibrate with the custom sequence.
 
 ### OH_Vibrator_Cancel()
 
-```
+```c
 int32_t OH_Vibrator_Cancel()
 ```
 

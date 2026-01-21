@@ -22,7 +22,7 @@ Since API version 21, the ArkTS APIs are supported to subscribe to task executio
 
 ### Adding an Event Watcher
 
-To ensure that event callbacks can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTs code, and use C++ code to construct fault injection to trigger task execution timeout events.
+To ensure that event callbacks can be successfully received in the development phase, you are advised to create a native C++ project, implement subscription in the ArkTS code, and use C++ code to construct fault injection to trigger task execution timeout events.
 
 1. Create a native C++ project. The directory structure is as follows:
 
@@ -169,23 +169,24 @@ To ensure that event callbacks can be successfully received in the development p
 
    ```typescript
    import testNapi from 'libentry.so';
+
    @Entry
-     @Component
-     struct Index {
-       @State message: string = 'Hello World';
-      
-       build() {
-         Row() {
-           Column() {
-             Button("TestHiCollieTimerNdk")
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-               .onClick(testNapi.TestHiCollieTimerNdk);  // Add a click event to trigger the TestHiCollieTimerNdk method.
-           }
-           .width('100%')
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+
+     build() {
+       Row() {
+         Column() {
+           Button("TestHiCollieTimerNdk")
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(testNapi.TestHiCollieTimerNdk);  // Add a click event to trigger the TestHiCollieTimerNdk method.
          }
-         .height('100%')
+         .width('100%')
        }
+       .height('100%')
+     }
    }
    ```
 

@@ -105,6 +105,7 @@ export default class EntryAbility extends UIAbility {
 ```
 在具体的Index.ets中可以通过getContext接口获取Context上下文，本示例返回的Context类型为UIAbilityContext。
 
+<!--deprecated_code_no_check-->
 ```ts
 //pages/Index.ets
 @Entry

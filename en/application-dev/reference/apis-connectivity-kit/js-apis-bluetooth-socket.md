@@ -428,6 +428,7 @@ try {
 ## socket.on('sppRead')
 
 on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;): void
+
 Subscribes to socket read request events. This API can be used on both the client and server. After this API is called, the subscribed callback is invoked when data sent by the peer end is received.
 
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.

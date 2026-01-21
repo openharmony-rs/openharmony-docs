@@ -132,7 +132,7 @@ struct Index {
 
 hasIrEmitter(): Promise&lt;boolean&gt;
 
-查询设备是否配备红外发射器。
+查询设备是否配备红外发射器。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 

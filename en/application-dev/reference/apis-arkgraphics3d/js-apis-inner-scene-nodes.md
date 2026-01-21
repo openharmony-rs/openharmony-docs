@@ -400,8 +400,8 @@ A spotlight emits a conical beam of light in a specific direction, with the inte
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| innerAngle<sup>22+</sup> | number | No| Yes| Angle from the center of the spotlight to the start of the decay, corresponding to the semi-apex angle of the cone, within which the light intensity does not decay with angle. It is represented in radians. The default value is **0**. The value must be greater than or equal to **0** and less than or equal to **outerAngle**.|
-| outerAngle<sup>22+</sup> | number | No| Yes| Angle from the center of the spotlight to the end of the decay, corresponding to the semi-apex angle of the cone, beyond which there is no light intensity. It is represented in radians. The default value is **PI/4**. The value must be greater than or equal to **innerAngle** and less than or equal to **PI/2**.|
+| innerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the start of the decay, corresponding to the semi-apex angle of the cone, within which the light intensity does not decay with angle. It is represented in radians. The default value is **0**. The value must be greater than or equal to **0** and less than or equal to **outerAngle**.|
+| outerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the end of the decay, corresponding to the semi-apex angle of the cone, beyond which there is no light intensity. It is represented in radians. The default value is **PI/4**. The value must be greater than or equal to **innerAngle** and less than or equal to **PI/2**.|
 
 > **NOTE**
 > 
@@ -555,5 +555,77 @@ function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
   }
   node.position = eye;
   node.rotation = Mul(q, 0.5 / Math.sqrt(t));
+}
+```
+
+### getViewMatrix<sup>23+</sup>
+getViewMatrix(): Mat4x4
+
+Obtains the view matrix of the camera.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | View matrix of the camera.|
+
+**Example**
+```ts
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
+
+function GetViewMatrix(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+    .then(async (result: Scene) => {
+      if (!result.root) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
+      // Create a camera.
+      let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      camera.enabled = true;
+      // Set the camera view.
+      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
+      // Obtain the view matrix of the camera.
+      let viewMatrix: Mat4x4 = camera.getViewMatrix();
+    });
+}
+```
+
+### getProjectionMatrix<sup>23+</sup>
+getProjectionMatrix(): Mat4x4
+
+Obtains the projection matrix of the camera.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | Projection matrix of the camera.|
+
+**Example**
+```ts
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
+
+function GetProjectionMatrix(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+    .then(async (result: Scene) => {
+      if (!result.root) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
+      // Create a camera.
+      let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      camera.enabled = true;
+      // Set the camera view.
+      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
+      // Obtain the projection matrix of the camera.
+      let projectionMatrix: Mat4x4 = camera.getProjectionMatrix();
+    });
 }
 ```

@@ -11,6 +11,7 @@
 [HiAppEvent](js-apis-hiviewdfx-hiappevent.md)订阅崩溃、应用冻屏事件时，只有当应用下次启动后才能接收上一次的事件。如果应用无法启动或长时间未打开，则存在故障无法及时上报的局限性。
 
 本模块作为该场景的补充。在应用实现FaultLogExtensionAbility后，当应用发生崩溃或冻屏时，系统服务预计会在30分钟后拉起FaultLogExtensionAbility。
+
 开发者可在[onFaultReportReady](#onfaultreportready)中订阅并处理故障事件。
 
 > **说明：**
@@ -112,8 +113,7 @@ FaultLogExtensionAbility回调。系统服务通知FaultLogExtensionAbility可�
 | Kit名称 | 模块名称 |
 | ------- | ------- |
 | AVSessionKit | [@ohos.multimedia.avsession (媒体会话管理)](../apis-avsession-kit/arkts-apis-avsession.md) |
-| AbilityKit | [@ohos.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-EmbeddableUIAbilityContext.md) |
-| ArkUI | [@ohos.multimedia.cameraLibrary (媒体库模块)](../apis-arkui/js-apis-mediaquery.md) |
+| AbilityKit | [@ohos.UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) |
 | ArkUI | [@ohos.window (窗口)](../apis-arkui/arkts-apis-window.md) |
 | AudioKit | [@ohos.multimedia.audio (音频管理)](../apis-audio-kit/arkts-apis-audio.md) |
 | BackgroundTasksKit | [@ohos.backgroundTaskManager (后台任务管理)](../apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md) |

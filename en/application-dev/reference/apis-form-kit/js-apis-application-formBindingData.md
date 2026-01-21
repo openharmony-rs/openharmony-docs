@@ -1,10 +1,9 @@
 # @ohos.application.formBindingData (formBindingData)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 The **FormBindingData** module provides APIs for widget data binding. You can use the APIs to create a **FormBindingData** object and obtain related information.
 
@@ -15,7 +14,7 @@ The **FormBindingData** module provides APIs for widget data binding. You can us
 ## Modules to Import
 
 ```ts
-import formBindingData from '@ohos.application.formBindingData';
+import { formBindingData } from '@kit.FormKit';
 ```
 
 ## FormBindingData

@@ -389,11 +389,11 @@ Invalid SSL peer certificate or SSH remote key.
 
 **可能原因**
 
-无法校验服务器身份，有可能是证书过期了。
+无法校验服务器身份，例如证书过期。
 
 **处理步骤**
 
-检查证书有效性。
+建议参考[tls客户端证书验证流程](../../network/http-request.md#tls客户端证书验证流程)自排查问题原因。
 
 ## 2300061 无法识别或错误的HTTP编码格式
 

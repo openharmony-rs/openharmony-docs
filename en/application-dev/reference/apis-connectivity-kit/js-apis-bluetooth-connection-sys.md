@@ -38,7 +38,7 @@ Pairs a trusted device whose address is obtained in a non-Bluetooth scan mode (s
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the device to pair, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to pair, for example, XX:XX:XX:XX:XX:XX.|
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Transport mode used for pairing with a remote device.<br>- If the Bluetooth Classic (BR/EDR) or Bluetooth Low Energy (BLE) mode is used, pass in **TRANSPORT_BR_EDR** or **TRANSPORT_LE**.<br>- If you are not sure which transport mode is used, pass in **TRANSPORT_DUAL**<sup>20+</sup> or **TRANSPORT_UNKNOWN**<sup>20+</sup>. The Bluetooth subsystem will decide the transport mode based on the actual situation.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
@@ -91,7 +91,7 @@ Pairs a trusted device whose address is obtained in a non-Bluetooth scan mode (s
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the device to pair, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to pair, for example, XX:XX:XX:XX:XX:XX.|
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | Yes   | Transport mode used for pairing with a remote device.<br>- If the Bluetooth Classic (BR/EDR) or Bluetooth Low Energy (BLE) mode is used, pass in **TRANSPORT_BR_EDR** or **TRANSPORT_LE**.<br>- If you are not sure which transport mode is used, pass in **TRANSPORT_DUAL**<sup>20+</sup> or **TRANSPORT_UNKNOWN**<sup>20+</sup>. The Bluetooth subsystem will decide the transport mode based on the actual situation.|
 
 **Return value**
@@ -146,7 +146,7 @@ Cancels a paired device. This API uses an asynchronous callback to return the re
 
 | Name     | Type    | Mandatory  | Description                                   |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | Yes   | Address of the device to cancel, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to cancel, for example, XX:XX:XX:XX:XX:XX.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -194,7 +194,7 @@ Cancels a paired device. This API uses a promise to return the result.
 
 | Name     | Type    | Mandatory  | Description                                   |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | Yes   | Address of the device to cancel, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to cancel, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
@@ -250,7 +250,7 @@ Cancels the pairing of a device. This API uses an asynchronous callback to retur
 
 | Name     | Type    | Mandatory  | Description                                   |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | Yes   | Address of the device to cancel, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to cancel, for example, XX:XX:XX:XX:XX:XX.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -295,7 +295,7 @@ Cancels the pairing of a device. This API uses a promise to return the result.
 
 | Name     | Type    | Mandatory  | Description                                   |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | Yes   | Address of the device to cancel, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to cancel, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
@@ -439,7 +439,7 @@ Disconnects all connected profiles for a remote device. This API uses an asynchr
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the target remote device, for example, XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to disconnect, for example, XX:XX:XX:XX:XX:XX.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -490,7 +490,7 @@ Disconnects all connected profiles for a remote device. This API uses a promise 
 
 | Name     | Type    | Mandatory  | Description                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | Yes   | Address of the target remote device, for example, XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device to disconnect, for example, XX:XX:XX:XX:XX:XX.|
 
 **Return value**
 
@@ -905,6 +905,7 @@ Enumerates control types.
 | VIBRATE | 1 | Vibration|
 | FLASH | 2 | Flash|
 | LOCK | 3 | Lock|
+| ERASE | 4 | Erase|
 
 
 ## ControlTypeValue<sup>15+</sup>

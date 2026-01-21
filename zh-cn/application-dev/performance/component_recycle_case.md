@@ -37,73 +37,71 @@
 反例：
 
 ```ts
-@Entry
-@Component
-struct lessEmbeddedComponent {
-  aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-  }
-
-  build() {
-    Column() {
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
-          ListItem() {
-            OneMomentNoBuilder({moment: moment})
-          }
-        }, (moment: FriendMoment) => moment.id)
-      }
-      .cachedCount(Constants.CACHED_COUNT)
-    }
-  }
-}
-
 @Reusable
 @Component
 export struct OneMomentNoBuilder {
-  @Prop moment: FriendMoment;
-    
-  // 无需对@Prop修饰的变量进行aboutToReuse赋值，因为这些变量是由父组件传递给子组件的。如果在子组件中重新赋值这些变量，会导致重用的组件的内容重新触发状态刷新，从而降低组件的复用性能。
+  @ObjectLink moment: FriendMoment;
+
   build() {
-    // ...
-    // 在复用组件中嵌套使用自定义组件
-    Row() {
-        InteractiveButton({
-          imageStr: $r('app.media.ic_share'),
-          text: $r('app.string.friendMomentsPage_share')
-        })
-        Blank()
-        InteractiveButton({
-          imageStr: $r('app.media.ic_thumbsup'),
-          text: $r('app.string.friendMomentsPage_thumbsup')
-        })
-        Blank()
-        InteractiveButton({
-          imageStr: $r('app.media.ic_message'),
-          text: $r('app.string.friendMomentsPage_message')
-        })
+    Column() {
+      // ...
+      Row() {
+        Image($r('app.media.share'))
+          .width(24)
+          .height(24)
+          .autoResize(false)
+
+        Row() {
+          InteractiveButton({
+            imageStr: $r('app.media.heart'),
+            text: `${this.moment.share.heart}`
+          })
+          InteractiveButton({
+            imageStr: $r('app.media.star'),
+            text: `${this.moment.share.star}`
+          })
+          InteractiveButton({
+            imageStr: $r('app.media.ellipsis_message'),
+            text: `${this.moment.share.message}`
+          })
+        }
+        .justifyContent(FlexAlign.End)
+        .layoutWeight(1)
+      }
+      .width(Constants.LAYOUT_MAX)
+      .padding({
+        left: 12,
+        top: 8,
+        bottom: 12,
+        right: 29.75
+      })
     }
-    // ...
+    .backgroundColor(Color.White)
+    .width(Constants.LAYOUT_MAX)
+    .borderRadius(16)
   }
 }
 
 @Component
 export struct InteractiveButton {
-  @State imageStr: ResourceStr;
-  @State text: ResourceStr;
-
-  // 嵌套的组件中也需要实现aboutToReuse来进行UI的刷新
-  aboutToReuse(params: Record<string, Object>): void {
-    this.imageStr = params.imageStr as ResourceStr;
-    this.text = params.text as ResourceStr;
-  }
-
+  // ...
   build() {
     Row() {
       Image(this.imageStr)
+        .width(24)
+        .height(24)
+        .objectFit(ImageFit.Contain)
+        .autoResize(false)
       Text(this.text)
+        .fontSize(12)
+        .fontWeight(FontWeight.Medium)
+        .fontColor(Color.Black)
+        .lineHeight(16)
+        .opacity(0.9)
+        .margin({ left: 2 })
     }
     .alignItems(VerticalAlign.Center)
+    .margin({ left: 12 })
   }
 }
 
@@ -118,68 +116,76 @@ export struct InteractiveButton {
 正例：
 
 ```ts
-@Entry
-@Component
-struct lessEmbeddedComponent {
-  aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-  }
-
-  build() {
-    Column() {
-      TopBar()
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
-          ListItem() {
-            OneMoment({moment: moment})
-          }
-        }, (moment: FriendMoment) => moment.id)
-      }
-      .cachedCount(Constants.CACHED_COUNT)
-    }
-  }
-}
-
 @Reusable
 @Component
 export struct OneMoment {
-  @Prop moment: FriendMoment;
+  @ObjectLink moment: FriendMoment;
 
   build() {
-    // ...
-    // 使用@Builder，可以减少自定义组件创建和渲染的耗时
-    Row() {
-        interactiveButton({
-          imageStr: $r('app.media.ic_share'),
-          text: $r('app.string.friendMomentsPage_share')
-        })
-        Blank()
-        interactiveButton({
-          imageStr: $r('app.media.ic_thumbsup'),
-          text: $r('app.string.friendMomentsPage_thumbsup')
-        })
-        Blank()
-        interactiveButton({
-          imageStr: $r('app.media.ic_message'),
-          text: $r('app.string.friendMomentsPage_message')
-        })
-    }
-    // ...
-  }
-}
+    Column() {
+      // ...
 
-class Temp {
-  imageStr: ResourceStr = '';
-  text: ResourceStr = '';
+      Row() {
+        Image($r('app.media.share'))
+          .width(24)
+          .height(24)
+          .autoResize(false)
+        // 使用@Builder，可以减少自定义组件创建和渲染的耗时
+        Row() {
+          interactiveButton({
+            imageStr: $r('app.media.heart'),
+            text: `${this.moment.share.heart}`
+          })
+          interactiveButton({
+            imageStr: $r('app.media.star'),
+            text: `${this.moment.share.star}`
+          })
+          interactiveButton({
+            imageStr: $r('app.media.ellipsis_message'),
+            text: `${this.moment.share.message}`
+          })
+        }
+        .justifyContent(FlexAlign.End)
+        .layoutWeight(1)
+      }
+      .width(Constants.LAYOUT_MAX)
+      .padding({
+        left: 12,
+        top: 8,
+        bottom: 12,
+        right: 29.75
+      })
+    }
+    .backgroundColor(Color.White)
+    .width(Constants.LAYOUT_MAX)
+    .borderRadius(16)
+  }
 }
 
 @Builder
 export function interactiveButton($$: Temp) {
+  // 此处使用$$来进行按引用传递，让@Builder感知到数据变化，进行UI刷新
   Row() {
-    // 此处使用$$来进行按引用传递，让@Builder感知到数据变化，进行UI刷新
     Image($$.imageStr)
+      .width(24)
+      .height(24)
+      .objectFit(ImageFit.Contain)
+      .autoResize(false)
     Text($$.text)
+      .fontSize(12)
+      .fontWeight(FontWeight.Medium)
+      .fontColor(Color.Black)
+      .lineHeight(16)
+      .opacity(0.9)
+      .margin({ left: 2 })
   }
+  .alignItems(VerticalAlign.Center)
+  .margin({ left: 12 })
+}
+
+class Temp {
+  public imageStr: ResourceStr = '';
+  public text: ResourceStr | string = '';
 }
 ```
 
@@ -204,46 +210,17 @@ export function interactiveButton($$: Temp) {
 反例：
 
 ```ts
-@Component
-export struct LessEmbeddedComponent {
-  aboutToAppear(): void {
-    momentData.getFriendMomentFromRawfile();
-  }
-
-  build() {
-    Column() {
-      Text('use nothing')
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
-          ListItem() {
-            OneMomentNoModifier({ color: moment.color })
-              .onClick(() => {
-                console.log(`my id is ${moment.id}`);
-              })
-          }
-        }, (moment: FriendMoment) => moment.id)
-      }
-      .width("100%")
-      .height("100%")
-      .cachedCount(5)
-    }
-  }
-}
-
 @Reusable
 @Component
 export struct OneMomentNoModifier {
-  @State color: string | number | Resource = "";
-
-  aboutToReuse(params: Record<string, Object>): void {
-    this.color = params.color as number;
-  }
+  // ...
 
   build() {
     Column() {
-      Text('这是标题')
-        Text('这是内部文字')
-          .fontColor(this.color)// 此处使用属性直接进行刷新，会造成Text所有属性都刷新
+      // ...
+      Column() {
+        Text('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+          .fontColor(this.color) // 此处使用属性直接进行刷新，会造成Text所有属性都刷新
           .textAlign(TextAlign.Center)
           .fontStyle(FontStyle.Normal)
           .fontSize(13)
@@ -257,11 +234,22 @@ export struct OneMomentNoModifier {
           .borderWidth(1)
           .borderColor(Color.Pink)
           .borderStyle(BorderStyle.Solid)
-          .alignRules({
-            'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
-            'left': { 'anchor': 'image', 'align': HorizontalAlign.End }
-          })
+      }
+      .borderRadius(16)
+      .margin({ top: 14 })
+      .padding({
+        left: 16,
+        right: 16,
+        top: 8,
+        bottom: 8
+      })
+      .backgroundColor('#0D000000')
     }
+    .alignItems(HorizontalAlign.Start)
+    .margin({
+      left: 16,
+      right: 16
+    })
   }
 }
 ```
@@ -284,9 +272,9 @@ export struct OneMomentNoModifier {
 import { AttributeUpdater } from "@kit.ArkUI";
 
 export class MyTextUpdater extends AttributeUpdater<TextAttribute> {
-  private color: string | number | Resource = "";
+  private color: string | number | Resource | Color = '';
 
-  constructor(color: string | number | Resource) {
+  constructor(color: string | number | Resource | Color) {
     super();
     this.color = color;
   }
@@ -296,68 +284,46 @@ export class MyTextUpdater extends AttributeUpdater<TextAttribute> {
   }
 }
 
-@Component
-export struct UpdaterComponent {
-  aboutToAppear(): void {
-    momentData.getFriendMomentFromRawfile();
-  }
-
-  build() {
-    Column() {
-      Text('use MyTextUpdater')
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
-          ListItem() {
-            OneMomentNoModifier({ color: moment.color })
-              .onClick(() => {
-                console.log(`my id is ${moment.id}`);
-              })
-          }
-        }, (moment: FriendMoment) => moment.id)
-      }
-      .cachedCount(5)
-    }
-  }
-}
-
 @Reusable
 @Component
-export struct OneMomentNoModifier {
-  color: string | number | Resource = "";
-  textUpdater: MyTextUpdater | null = null;
-
-  aboutToAppear(): void {
-    this.textUpdater = new MyTextUpdater(this.color);
-  }
-
-  aboutToReuse(params: Record<string, Object>): void {
-    this.color = params.color as string;
-    this.textUpdater?.attribute?.fontColor(this.color);
-  }
+export struct OneMoment {
+  // ...
 
   build() {
     Column() {
-      Text('这是标题')
-      Text('这是内部文字')
-        .attributeModifier(this.textUpdater) // 采用attributeUpdater来对需要更新的fontColor属性进行精准刷新，避免不必要的属性刷新。
-        .textAlign(TextAlign.Center)
-        .fontStyle(FontStyle.Normal)
-        .fontSize(13)
-        .lineHeight(30)
-        .opacity(0.6)
-        .margin({ top: 10 })
-        .fontWeight(30)
-        .clip(false)
-        .backgroundBlurStyle(BlurStyle.NONE)
-        .foregroundBlurStyle(BlurStyle.NONE)
-        .borderWidth(1)
-        .borderColor(Color.Pink)
-        .borderStyle(BorderStyle.Solid)
-        .alignRules({
-          'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
-          'left': { 'anchor': 'image', 'align': HorizontalAlign.End }
+      // ...
+      Column() {
+        Text('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+          .attributeModifier(this.textUpdater) // 采用attributeUpdater来对需要更新的fontColor属性进行精准刷新，避免不必要的属性刷新。
+          .textAlign(TextAlign.Center)
+          .fontStyle(FontStyle.Normal)
+          .fontSize(13)
+          .lineHeight(30)
+          .opacity(0.6)
+          .margin({ top: 10 })
+          .fontWeight(30)
+          .clip(false)
+          .backgroundBlurStyle(BlurStyle.NONE)
+          .foregroundBlurStyle(BlurStyle.NONE)
+          .borderWidth(1)
+          .borderColor(Color.Pink)
+          .borderStyle(BorderStyle.Solid)
+      }
+      .borderRadius(16)
+        .margin({ top: 14 })
+        .padding({
+          left: 16,
+          right: 16,
+          top: 8,
+          bottom: 8
         })
+        .backgroundColor('#0D000000')
     }
+    .alignItems(HorizontalAlign.Start)
+      .margin({
+        left: 16,
+        right: 16
+      })
   }
 }
 ```
@@ -396,28 +362,6 @@ export struct OneMomentNoModifier {
 反例：
 
 ```ts
-@Entry
-@Component
-struct lessEmbeddedComponent {
-  aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-  }
-
-  build() {
-    Column() {
-      TopBar()
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
-          ListItem() {
-            OneMoment({moment: moment})
-          }
-        }, (moment: FriendMoment) => moment.id)
-      }
-      .cachedCount(Constants.CACHED_COUNT)
-    }
-  }
-}
-
 @Reusable
 @Component
 export struct OneMoment {
@@ -464,29 +408,6 @@ export class FriendMoment {
 正例：
 
 ```ts
-@Entry
-@Component
-struct lessEmbeddedComponent {
-  @State momentData: FriendMomentsData = new FriendMomentsData();
-  aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-  }
-
-  build() {
-    Column() {
-      TopBar()
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
-          ListItem() {
-            OneMoment({moment: moment})
-          }
-        }, (moment: FriendMoment) => moment.id)
-      }
-      .cachedCount(Constants.CACHED_COUNT)
-    }
-  }
-}
-
 @Reusable
 @Component
 export struct OneMoment {
@@ -546,29 +467,6 @@ export class FriendMoment {
 反例：
 
 ```ts
-@Entry
-@Component
-struct LessEmbeddedComponent {
-  @State momentData: FriendMomentsData = new FriendMomentsData();
-  aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-  }
-
-  build() {
-    Column() {
-      TopBar()
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
-          ListItem() {
-            OneMoment({moment: moment})
-          }
-        }, (moment: FriendMoment) => moment.id)
-      }
-      .cachedCount(Constants.CACHED_COUNT)
-    }
-  }
-}
-
 @Reusable
 @Component
 export struct OneMoment {
@@ -624,29 +522,6 @@ export class FriendMoment {
 正例：
 
 ```ts
-@Entry
-@Component
-struct LessEmbeddedComponent {
-  @State momentData: FriendMomentsData = new FriendMomentsData();
-  aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-  }
-
-  build() {
-    Column() {
-      TopBar()
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
-          ListItem() {
-            OneMoment({moment: moment})
-          }
-        }, (moment: FriendMoment) => moment.id)
-      }
-      .cachedCount(Constants.CACHED_COUNT)
-    }
-  }
-}
-
 @Reusable
 @Component
 export struct OneMoment {
@@ -706,50 +581,58 @@ export class FriendMoment {
 反例：
 
 ```ts
-@Entry
 @Component
-struct withoutReuseId {
-  aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-  }
+struct WithoutReuseId {
+  // ...
 
   build() {
     Column() {
-      TopBar()
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
+      List({ space: this.LIST_SPACE }) {
+        LazyForEach(this.momentData, (moment: FriendMoment) => {
           ListItem() {
             // 此处的复用组件，只有一个reuseId，为组件的名称。但是该复用组件中又存在if else重新创建组件的逻辑
-            TrueOneMoment({ moment: moment, sum: this.sum, fontSize: moment.size })
+            OneMoment({ moment: moment })
           }
         }, (moment: FriendMoment) => moment.id)
       }
-      .cachedCount(Constants.CACHED_COUNT) 
+      .cachedCount(this.LIST_CACHE_COUNT)
+      .margin({ top: 8 })
+      .width(Constants.LAYOUT_MAX)
+      .height(Constants.LAYOUT_MAX)
     }
   }
 }
 
 @Reusable
 @Component
-export struct TrueOneMoment {
-  @Prop moment: FriendMoment;
-  @State sum: number = 0;
-  @State fontSize: number | Resource = $r('app.integer.list_history_userText_fontSize');
-
-  aboutToReuse(params: ESObject): void {
-    this.fontSize = params.fontSize as number;
-    this.sum = params.sum as number;
-  }
+export struct OneMoment {
+  @ObjectLink moment: FriendMoment
 
   build() {
     Column() {
-      if (this.moment.image) {
-        FalseOneMoment({ moment: this.moment, sum: this.sum, fontSize: this.moment.size })
-      } else {
-        OneMoment({ moment: this.moment, sum: this.sum, fontSize: this.moment.size })
+      // ...
+
+      if (this.moment.image !== '') {
+        Flex({ wrap: FlexWrap.Wrap }) {
+          Image($r(this.moment.image))
+            .width(Constants.LAYOUT_MAX)
+            .height('27.5%')
+            .borderRadius(16)
+          Image($r(this.moment.image))
+            .width(Constants.LAYOUT_MAX)
+            .height('27.5%')
+            .borderRadius(16)
+            .margin({ top: 10 })
+        }
+        .width(Constants.LAYOUT_MAX)
+        .margin({ top: 14 })
       }
     }
-    .width('100%')
+    .justifyContent(FlexAlign.Start)
+    .margin({
+      left: 16,
+      right: 16
+    })
   }
 }
 ```
@@ -763,53 +646,61 @@ export struct TrueOneMoment {
 正例：
 
 ```ts
-@Entry
 @Component
-struct withoutReuseId {
-  aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-  }
+struct WithReuseId {
+  // ...
 
   build() {
     Column() {
-      TopBar()
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
+      List({ space: this.LIST_SPACE }) {
+        LazyForEach(this.momentData, (moment: FriendMoment) => {
           ListItem() {
-            // 使用不同的reuseId标记，保证TrueOneMoment中各个子组件在复用时，不重新创建
-            TrueOneMoment({ moment: moment, sum: this.sum, fontSize: moment.size })
-              .reuseId((moment.image !=='' ?'withImage' : 'noImage'))
+            // 使用不同的reuseId标记，保证OneMoment中各个子组件在复用时，不重新创建
+            OneMoment({ moment: moment })
+              .reuseId((moment.image !== '') ? 'withImage_id' : 'noImage_id')
           }
         }, (moment: FriendMoment) => moment.id)
       }
-      .cachedCount(Constants.CACHED_COUNT) 
+      .cachedCount(this.LIST_CACHE_COUNT)
+      .margin({ top: 8 })
+      .width(Constants.LAYOUT_MAX)
+      .height(Constants.LAYOUT_MAX)
     }
   }
 }
 
 @Reusable
 @Component
-export struct TrueOneMoment {
-  @Prop moment: FriendMoment;
-  @State sum: number = 0;
-  @State fontSize: number | Resource = $r('app.integer.list_history_userText_fontSize');
-
-  aboutToReuse(params: ESObject): void {
-    this.fontSize = params.fontSize as number;
-    this.sum = params.sum as number;
-  }
+export struct OneMoment {
+  @ObjectLink moment: FriendMoment;
 
   build() {
     Column() {
-      if (this.moment.image) {
-        FalseOneMoment({ moment: this.moment, sum: this.sum, fontSize: this.moment.size })
-      } else {
-        OneMoment({ moment: this.moment, sum: this.sum, fontSize: this.moment.size })
+      // ...
+
+      if (this.moment.image !== '') {
+        Flex({ wrap: FlexWrap.Wrap }) {
+          Image($r(this.moment.image))
+            .width(Constants.LAYOUT_MAX)
+            .height('27.5%')
+            .borderRadius(16)
+          Image($r(this.moment.image))
+            .width(Constants.LAYOUT_MAX)
+            .height('27.5%')
+            .borderRadius(16)
+            .margin({ top: 10 })
+        }
+        .width(Constants.LAYOUT_MAX)
+        .margin({ top: 14 })
       }
     }
-    .width('100%')
+    .justifyContent(FlexAlign.Start)
+    .margin({
+      left: 16,
+      right: 16
+    })
   }
-}   
+}
 ```
 
 上述正例的操作中，通过不同的reuseId来标识需要复用的组件，省去走if删除重创的逻辑，提高组件复用的效率和性能。
@@ -831,16 +722,14 @@ export struct TrueOneMoment {
 反例：
 
 ```ts
-@Entry
 @Component
-struct withFuncParam {
-  aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-  }
+struct WithFuncParam {
+  // ...
+
   // 真实场景的函数中可能存在未知的耗时操作逻辑，此处用循环函数模拟耗时操作
   countAndReturn(): number {
     let temp: number = 0;
-    for (let index = 0; index < 100000; index++) {
+    for (let index = 0; index < this.MOCK_ASYNC_DEFAULT_NUM; index++) {
       temp += index;
     }
     return temp;
@@ -848,9 +737,8 @@ struct withFuncParam {
 
   build() {
     Column() {
-      TopBar()
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
+      List({ space: this.LIST_SPACE }) {
+        LazyForEach(this.momentData, (moment: FriendMoment) => {
           ListItem() {
             OneMoment({
               moment: moment,
@@ -859,26 +747,10 @@ struct withFuncParam {
           }
         }, (moment: FriendMoment) => moment.id)
       }
-      .cachedCount(Constants.CACHED_COUNT) 
-    }
-  }
-}
-
-@Reusable
-@Component
-export struct OneMoment {
-  @Prop moment: FriendMoment;
-  @State sum: number = 0;
-
-  aboutToReuse(params: Record<string, Object>): void {
-    this.sum = params.sum as number;
-  }
-
-  build() {
-    Column() {
-      // ...
-      Text(`${this.moment.userName} （${this.moment.id} / ${this.sum}）`)
-      // ...
+      .cachedCount(this.LIST_CACHE_COUNT)
+      .margin({ top: 8 })
+      .width(Constants.LAYOUT_MAX)
+      .height(Constants.LAYOUT_MAX)
     }
   }
 }
@@ -893,20 +765,20 @@ export struct OneMoment {
 正例：
 
 ```ts
-@Entry
 @Component
-struct withFuncParam {
+struct WithoutFuncParam {
   @State sum: number = 0;
-    
+  // ...
+
   aboutToAppear(): void {
-    getFriendMomentFromRawfile();
-    // 执行该异步函数
-    this.countAndRecord();
+    this.momentData.getFriendMomentFromRawFile();
+    this.countAndReturn();
   }
+
   // 真实场景的函数中可能存在未知的耗时操作逻辑，此处用循环函数模拟耗时操作
-  async countAndRecord() {
+  async countAndReturn(): Promise<void> {
     let temp: number = 0;
-    for (let index = 0; index < 100000; index++) {
+    for (let index = 0; index < this.MOCK_ASYNC_DEFAULT_NUM; index++) {
       temp += index;
     }
     // 将结果放入状态变量中
@@ -915,9 +787,8 @@ struct withFuncParam {
 
   build() {
     Column() {
-      TopBar()
-      List({ space: ListConstants.LIST_SPACE }) {
-        LazyForEach(momentData, (moment: FriendMoment) => {
+      List({ space: this.LIST_SPACE }) {
+        LazyForEach(this.momentData, (moment: FriendMoment) => {
           ListItem() {
             // 子组件的传参通过状态变量进行
             OneMoment({
@@ -927,26 +798,10 @@ struct withFuncParam {
           }
         }, (moment: FriendMoment) => moment.id)
       }
-      .cachedCount(Constants.CACHED_COUNT) 
-    }
-  }
-}
-
-@Reusable
-@Component
-export struct OneMoment {
-  @Prop moment: FriendMoment;
-  @State sum: number = 0;
-
-  aboutToReuse(params: Record<string, Object>): void {
-    this.sum = params.sum as number;
-  }
-
-  build() {
-    Column() {
-      // ...
-      Text(`${this.moment.userName} （${this.moment.id} / ${this.sum}）`)
-      // ...
+      .cachedCount(this.LIST_CACHE_COUNT)
+      .margin({ top: 8 })
+      .width(Constants.LAYOUT_MAX)
+      .height(Constants.LAYOUT_MAX)
     }
   }
 }
@@ -963,3 +818,7 @@ export struct OneMoment {
 ![noFuncParam](./figures/component_recycle_case/noFuncParam.png)
 
 所以，Trace数据证明，避免使用函数/方法作为复用组件创建时的入参，可以减少重复执行入参中的函数所带来的性能消耗。
+
+## 示例代码
+
+[组件复用性能优化指导示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/ComponentReuse)

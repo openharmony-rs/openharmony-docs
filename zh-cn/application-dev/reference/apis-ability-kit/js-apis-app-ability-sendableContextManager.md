@@ -550,7 +550,7 @@ workerPort.onmessage = (e: MessageEvents) => {
   let object: SendableObject = e.data;
   let sendableContext: sendableContextManager.SendableContext = object.sendableContext;
   if (object.contextName == 'EntryAbilityContext') {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'convert to uiability context.');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'convert to UIAbility context.');
     try {
       let context: common.UIAbilityContext = sendableContextManager.convertToUIAbilityContext(sendableContext);
       // 获取context后获取沙箱路径
@@ -592,7 +592,7 @@ setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): voi
 
 **示例：**
 
-主线程启用[Context](./js-apis-inner-application-context.md)中[EventHub](./js-apis-inner-application-eventHub.md)的跨线程通信能力，并将Context转换为[SenableContext](js-apis-inner-application-sendableContext.md)后发送到[Worker](../apis-arkts/js-apis-worker.md)线程。
+主线程启用[Context](./js-apis-inner-application-context.md)中[EventHub](./js-apis-inner-application-eventHub.md)的跨线程通信能力，并将Context转换为[SendableContext](js-apis-inner-application-sendableContext.md)后发送到[Worker](../apis-arkts/js-apis-worker.md)线程。
 
 ```ts
 import { common, sendableContextManager } from '@kit.AbilityKit';

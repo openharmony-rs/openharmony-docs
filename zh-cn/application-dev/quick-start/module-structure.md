@@ -167,7 +167,6 @@ metadata对象示例：
   "parameters" : [{
     "name" : "a test for metadata parameter",
     "type" : "Float",
-    // "$string:parameters_description"为文件资源索引值
     "description" : "$string:parameters_description"
   }],
   "results" : [{
@@ -193,9 +192,9 @@ metadata对象示例：
 | 平板 | tablet | - |
 | 智慧屏 | tv | - |
 | 智能手表 | wearable | 系统能力较丰富的手表，具备电话功能。 |
-| 运动表 | litewearable | - |
+| 运动表 | liteWearable | - |
 | 车机 | car | - |
-| 默认设备 | default | 默认设备类型，详情参考[标准系统开发板](../../device-dev/dev-board-on-the-master.md#标准系统开发板)。 |
+| 默认设备 | default | 默认设备类型，详情参考[标准系统开发板](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/dev-board-on-the-master.md#标准系统开发板)。 |
 | 2in1 | 2in1 | 即PC设备，主要交互方式以多窗口、多任务及键盘鼠标操作为主，充分发挥设备的生产力属性。|
 <!--RP2End-->
 
@@ -244,9 +243,6 @@ metadata对象示例：
 ```json
 {
   "module":{
-
-    // ...
-
     "abilities": [{
       "icon": "$media:icon",
       "label": "Login",
@@ -256,9 +252,6 @@ metadata对象示例：
         "uris": []
       }]
     }],
-
-    // ...
-
   }
 }
 ```
@@ -273,13 +266,13 @@ metadata对象示例：
       * 桌面查询时不返回应用信息，不会在桌面上显示对应的入口图标和标签。
   * 配置文件（config.json）中abilities配置中未设置入口图标
     * 该应用没有隐藏图标的特权
-      * 系统将使用系统默认图标作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到应用管理中对应的应用详情页面（参考下图）。
+      * 系统将使用系统默认图标作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到应用管理中对应的应用详情页面（参考图1）。
       * 系统将使用应用的包名作为入口标签，并显示在桌面上。
     * 该应用具有隐藏图标的特权
       * 桌面查询时不返回应用信息，不会在桌面上显示对应的入口图标和标签。
 * HAP中不包含Page类型的PageAbility
   * 该应用没有隐藏图标的特权
-    * 系统将使用系统默认图标作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到应用管理中对应的应用详情页面（参考下图）。
+    * 系统将使用系统默认图标作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到应用管理中对应的应用详情页面（参考图1）。
     * 系统将使用应用的包名作为入口标签，并显示在桌面上。
   * 该应用具有隐藏图标的特权
     * 桌面查询时不返回应用信息，不会在桌面上显示对应的入口图标和标签。
@@ -306,9 +299,7 @@ abilities示例：
   {
     "name": ".EntryAbility",
     "description": "test main ability",
-    // $media:ic_launcher 为媒体类资源
     "icon": "$media:ic_launcher",
-    // $string:example 为字符串类资源
     "label": "$string:example",
     "launchType": "multiton",
     "orientation": "unspecified",
@@ -516,7 +507,6 @@ shortcuts示例：
 "shortcuts": [
   {
     "shortcutId": "id",
-    // $string:shortcut 为配置的字符串资源值
     "label": "$string:shortcut",
     "intents": [
       {

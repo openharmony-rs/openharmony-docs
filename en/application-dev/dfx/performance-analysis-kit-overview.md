@@ -1,4 +1,4 @@
-# Introduction to Performance Analysis Kit
+# About This Kit
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->

@@ -80,15 +80,32 @@
      hilog.info(0x0000, 'testTag', 'Network available, NetId is ' + data.netId);
      // ...
    });
-   
+     
    // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户
    conn.on('netUnavailable', (data: void) => {
      hilog.info(0x0000, 'testTag', 'Network unavailable, data is ' + JSON.stringify(data));
      // ...
    });
+   // 订阅网络能力变化事件，如果当前指定网络的能力发生变化，通过on_netCapabilitiesChange通知用户
+   conn.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netCapabilitiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // 订阅网络连接信息变化事件，如果当前指定网络的连接信息发生变化，通过on_netConnectionPropertiesChange通知用户
+   conn.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netConnectionPropertiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // 订阅网络丢失事件，如果当前处于连接状态的指定网络断开，通过on_netLost通知用户
+   conn.on('netLost', (data: connection.NetHandle) => {
+     hilog.info(0x0000, 'testTag', 'Network netLost, data is ' + JSON.stringify(data));
+     // ...
+   });
    ```
 
-5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
+5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会触发netAvailable事件的回调；当网络从连接到断开时，会触发netLost事件的回调；当网络连接信息变化时（例如linkAddresses增加V6地址），会触发netConnectionPropertiesChange事件回调；当网络能力发生变化时（例如网络的连通性发生变化），会触发netCapabilitiesChange回调。
 
    <!-- @[notification_network_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    

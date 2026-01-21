@@ -34,7 +34,7 @@ The file declares the common basic audio data structs. It defines the types of t
 
 ### OH_AudioCommon_Result
 
-```
+```c
 enum OH_AudioCommon_Result
 ```
 
@@ -57,7 +57,7 @@ Enumerates the audio operation results.
 
 ### OH_AudioScene
 
-```
+```c
 enum OH_AudioScene
 ```
 
@@ -76,7 +76,7 @@ Enumerates the audio scenes.
 
 ### OH_AudioRingerMode
 
-```
+```c
 enum OH_AudioRingerMode
 ```
 

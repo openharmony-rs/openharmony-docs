@@ -89,7 +89,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
    startup_config.json文件示例如下：
 
-   ```json
+   ```json5
    {
      "startupTasks": [
        // 启动任务
@@ -122,7 +122,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
    startup_config.json文件示例如下：
 
-   ```json
+   ```json5
    {
      "startupTasks": [
        {
@@ -211,7 +211,7 @@ AppStartup提供了一种简单高效的应用启动方式，可以支持任务�
 
    startup_config.json文件示例如下：
 
-   ```json
+   ```json5
    {
      "startupTasks": [
        // 启动任务
@@ -511,7 +511,8 @@ import { startupManager } from '@kit.AbilityKit';
 @Entry
 @Component
 struct Index {
-  @State message: ResourceStr = $r('app.string.manual_mode'); // $r('app.string.manual_mode')为开发者自定义资源
+  // 请将$r('app.string.manual_mode')替换为实际资源文件，在本示例中该资源文件的value值为"手动模式"
+  @State message: ResourceStr = $r('app.string.manual_mode');
   @State startParams1: Array<string> = ['StartupTask_006'];
   @State startParams2: Array<string> = ['libentry_006'];
 
@@ -572,7 +573,7 @@ struct Index {
 
 1. 对[定义启动任务配置](#定义启动任务配置)步骤中的startup_config.json文件进行修改，增加StartupTask_004任务和libentry_006任务的matchRules配置。
 
-    ```json
+    ```json5
     {
       "startupTasks": [
         {

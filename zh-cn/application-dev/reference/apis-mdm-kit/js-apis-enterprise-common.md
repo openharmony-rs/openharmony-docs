@@ -35,6 +35,7 @@ import { common } from '@kit.MDMKit';
 ## ApplicationInstance
 
 应用的实例数据。
+
 该接口目前在[addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22)、[removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22)、[addFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddfreezeexemptedapps22)、[removeFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremovefreezeexemptedapps22)接口中作为入参使用。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -48,7 +49,8 @@ import { common } from '@kit.MDMKit';
 ## InstallationResult
 
 应用安装结果。
-该对象目前在[EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonmarketappinstallresult22)作为回调入参使用。
+
+该对象目前在[EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#onmarketappinstallresult22)作为回调入参使用。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -67,3 +69,17 @@ import { common } from '@kit.MDMKit';
 | ----------- | -------- | ------------------------------- |
 | SUCCESS | 0  | 应用安装成功。|
 | FAIL | -1  | 应用安装失败。|
+
+## EnterpriseAdminExtensionContext<sup>23+</sup>
+
+type EnterpriseAdminExtensionContext = _EnterpriseAdminExtensionContext.default
+
+EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-EnterpriseAdminExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+
+**系统能力**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_EnterpriseAdminExtensionContext.default](js-apis-application-EnterpriseAdminExtensionContext.md) | EnterpriseAdminExtensionAbility组件的上下文。 |

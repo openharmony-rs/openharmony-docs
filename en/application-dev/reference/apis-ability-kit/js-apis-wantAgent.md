@@ -134,7 +134,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data: _WantAgent) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
 });
 ```
 
@@ -166,9 +166,9 @@ let wantAgentObj: _WantAgent;
 
 // getWantAgent callback
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj = data;
+        wantAgentObj = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -267,7 +267,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data: _WantAgent) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgentObj = data;
     if (wantAgentObj) {
         wantAgent.getBundleName(wantAgentObj).then((data) => {
@@ -293,7 +293,7 @@ Obtains the user ID of a WantAgent object. This API uses an asynchronous callbac
 
 | Name    | Type                   | Mandatory| Description                               |
 | -------- | ----------------------- | ---- | ----------------------------------- |
-| agent    | WantAgent               | Yes  | WantAgent object.                      |
+| agent    | WantAgent               | Yes  | **WantAgent** object.                      |
 | callback | AsyncCallback\<number\> | Yes  | Callback used to return the user ID.|
 
 **Example**
@@ -307,9 +307,9 @@ let wantAgentObj: _WantAgent;
 
 // getWantAgent callback
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj = data;
+        wantAgentObj = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -408,7 +408,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgentObj = data;
     if (wantAgentObj) {
         wantAgent.getUid(wantAgentObj).then((data) => {
@@ -447,9 +447,9 @@ let wantAgentObj: _WantAgent;
 
 // getWantAgent callback
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj = data;
+        wantAgentObj = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -549,7 +549,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgentObj = data;
     if (wantAgentObj) {        
         wantAgent.cancel(wantAgentObj).then((data) => {
@@ -590,9 +590,9 @@ let wantAgentObj: _WantAgent;
 
 // getWantAgent callback
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj = data;
+        wantAgentObj = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -651,7 +651,7 @@ Checks whether two WantAgent objects are equal to determine whether the same ope
 | Name      | Type                    | Mandatory| Description                                   |
 | ---------- | ------------------------ | ---- | --------------------------------------- |
 | agent      | WantAgent                | Yes  | The first WantAgent object.                          |
-| otherAgent | WantAgent                | Yes  | The second WantAgent object.                          |
+| otherAgent | WantAgent                | Yes  | WantAgent object.                          |
 | callback   | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. **true** if the two WantAgent objects are equal, **false** otherwise.|
 
 **Example**
@@ -666,9 +666,9 @@ let wantAgentObj2: _WantAgent;
 
 // getWantAgent callback
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgentObj1 = data;
+        wantAgentObj1 = data;
         wantAgentObj2 = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
@@ -727,7 +727,7 @@ Checks whether two WantAgent objects are equal to determine whether the same ope
 | Name      | Type     | Mandatory| Description         |
 | ---------- | --------- | ---- | ------------- |
 | agent      | WantAgent | Yes  | The first WantAgent object.|
-| otherAgent | WantAgent | Yes  | The second WantAgent object.|
+| otherAgent | WantAgent | Yes  | WantAgent object.|
 
 **Return value**
 
@@ -770,7 +770,7 @@ wantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgentObj1 = data;
     wantAgentObj2 = data;
     if (data) {

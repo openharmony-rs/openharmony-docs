@@ -17,9 +17,9 @@ This topic uses the following to identify the use of generics:<br>
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are deprecated since API version 9. You are advised to use [@ohos.util.ArrayList](js-apis-arraylist.md).
+> - The APIs provided by this module are deprecated since API version 9. You are advised to use [@ohos.util.ArrayList](js-apis-arraylist.md).
 
 ## Modules to Import
 
@@ -302,8 +302,7 @@ vector.removeByRange(2,4);
 
 ### replaceAllElements
 
-replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector&lt;T&gt;) => T,
-thisArg?: Object): void
+replaceAllElements(callbackFn: (value: T, index?: number, vector?: Vector&lt;T&gt;) => T, thisArg?: Object): void
 
 Replaces all elements in this Vector with new elements, and returns the new ones.
 
@@ -340,8 +339,7 @@ vector.replaceAllElements((value : number) : number => {
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, vector?: Vector&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, vector?: Vector&lt;T&gt;) => void, thisArg?: Object): void
 
 Uses a callback to traverse the elements in this Vector and obtain their position indexes.
 

@@ -17,7 +17,7 @@
 
 ## Modules to Import
 
-```
+```ts
 import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 ```
 

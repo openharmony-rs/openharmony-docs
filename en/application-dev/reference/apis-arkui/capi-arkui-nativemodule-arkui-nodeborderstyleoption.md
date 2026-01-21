@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption
+```
+
 ## Overview
 
 Defines a struct for the node border style configuration.

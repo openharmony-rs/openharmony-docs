@@ -339,7 +339,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
     };
     let fetchResult: sendablePhotoAccessHelper.FetchResult<sendablePhotoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
     if (fetchResult === undefined) {
-      console.error('requsetSourcePromise fetchResult is undefined');
+      console.error('requestSourcePromise fetchResult is undefined');
       return;
     }
     let photoAsset: sendablePhotoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();

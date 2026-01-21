@@ -79,7 +79,7 @@ struct WebComponent {
 
 ## Setting the Web Page Layout in the Viewport
 
-Use **viewport-fit**, which is an attribute of the **\<meta name="viewport">** tag, to set the layout of a web page in the viewport. The setting method is as follows:
+Use **viewport-fit**, which is an attribute of the `<meta name="viewport">` tag, to set the layout of a web page in the viewport. The setting method is as follows:
 
 ```html
 <meta name='viewport' content='viewport-fit=cover'>

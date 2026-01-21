@@ -61,7 +61,7 @@ Represents the base class providing overridable methods for [PixelMap](../apis-i
 
 getPixelMap(): image.PixelMap
 
-Obtains this **pixelMap** object.
+Obtains this **PixelMap** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -167,7 +167,7 @@ drawable.load().then((result: DrawableDescriptorLoadedResult) => {
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
-Implements a **PixelMapDrawableDescriptor** object , which can be created by passing in a **pixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
 
 ### constructor<sup>12+</sup>
 
@@ -510,6 +510,64 @@ struct Index {
 }
 ```
 
+### setBlendMode<sup>23+</sup>
+
+setBlendMode(mode: drawing.BlendMode): void
+
+Sets the blend mode of **LayeredDrawableDescriptor**. If this API is called for multiple times on the same **LayeredDrawableDescriptor** object, only the last call before the drawing completion takes effect. This API does not support dynamic switching. The default drawing order of **LayeredDrawableDescriptor** is background, mask, and foreground. After the blend mode is set, the drawing order changes to background, foreground, and mask. If the specified value is invalid, the default drawing order is used.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type             | Mandatory | Description                                      |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| mode | [drawing.BlendMode](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)  | Yes  | Blend mode.|
+
+**Example**
+
+```ts
+import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { drawing } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State drawableDescriptor: DrawableDescriptor | undefined = undefined;
+
+  private setBlendMode(blendMode: drawing.BlendMode): DrawableDescriptor | undefined {
+    let resManager = this.getUIContext().getHostContext()?.resourceManager;
+    // Replace $r('app.media.drawable') with the layered icon file you use.
+    let drawable: DrawableDescriptor | undefined = resManager?.getDrawableDescriptor($r('app.media.drawable').id);
+    if (!drawable) {
+      return undefined;
+    }
+    let layeredDrawableDescriptor = drawable as LayeredDrawableDescriptor;
+    layeredDrawableDescriptor.setBlendMode(blendMode);
+    return layeredDrawableDescriptor;
+  }
+
+  aboutToAppear(): void {
+    this.drawableDescriptor = this.setBlendMode(drawing.BlendMode.SRC_OVER);
+  }
+
+  build() {
+    RelativeContainer() {
+      if (this.drawableDescriptor) {
+        Image(this.drawableDescriptor)
+          .width(100)
+          .height(100)
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## AnimationOptions<sup>12+</sup>
 
 Provides the configuration options for animation playback, including the playback duration, number of playback times, and autoplay behavior.
@@ -611,7 +669,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** instance.
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | ResourceStr \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
+| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
 | options   | [AnimationOptions](#animationoptions12) | No  | Animation playback configuration.|
 
 **Example**
@@ -746,7 +804,7 @@ struct Example {
 
 ## AnimationController<sup>21+</sup>
 
-Implements an animation controller object. Provides animation playback control and status query APIs.
+Implements an animation controller object. It provides APIs for playing, stopping, resuming, and pausing animations, as well as querying the status.
 
 ### start<sup>21+</sup>
 
@@ -910,7 +968,7 @@ Obtains the current animation playback status.
 
 | Type            | Description                              |
 | ---------------- | -----------------------------------|
-| [AnimationStatus](./arkui-ts/ts-appendix-enums.md#animationstatus) | Current animation state:  initial, running, paused, or stopped.|
+| [AnimationStatus](./arkui-ts/ts-appendix-enums.md#animationstatus) | Current animation state: initial, running, paused, or stopped.|
 
 **Example**
 

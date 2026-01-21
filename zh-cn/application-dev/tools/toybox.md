@@ -29,6 +29,7 @@ toybox的执行方式有两种：
 - 直接执行 [command] [arguments...]
 
 其中 [command] 可被替换为toybox支持的任意命令（可通过输入不带参数的toybox命令查询）。
+
 [arguments...] 为[command]所需要的参数。
 
 <!--RP1-->
@@ -317,7 +318,9 @@ toybox的执行方式有两种：
 toybox存在大量操作文件和进程的命令，如果调用者缺少对被操作对象的权限，就会报错。
 1. 权限缺失。请检查被操作的文件，以及所属文件夹的读、写、执行权限，确认自己是否有权限执行。
 2. SELinux拦截。可以在内核日志中搜索"avc: denied"关键字。
+
 例子：
+
 如果出现类似avc: denied { xxx } for comm="ls" xxxxxx的日志，表示命令ls触发了SELinux拦截。
 
 <!--RP3-->
@@ -326,12 +329,17 @@ toybox存在大量操作文件和进程的命令，如果调用者缺少对被�
 
 ### 其他Linux标准报错
 toybox大部分命令为对内核的调用，出错时会通过perror打印Linux内核错误码对应的文本。
+
 常见的错误有："File exists"/"Not a directory"/"Read-only file system"等。
+
 这些为Linux标准错误，可以参考Linux相关资料查询报错原因。请根据具体报错，检查命令的参数或者命令的格式是否出现错误。
 
 例子：
+
 试图在只读文件系统中进行创建文件的操作，会有报错"Read-only file system"。
+
 cat可以打印文件内容，如果试图cat一个目录，会有报错 "Is a directory"。
+
 试图用ls命令查看一个不存在的文件或目录，会有报错"No such file or directory"。
 
 ### 命令与toybox描述不符合
@@ -339,9 +347,10 @@ cat可以打印文件内容，如果试图cat一个目录，会有报错 "Is a d
 
 1. 实际调用的是shell的实现而非toybox。
 
-对于time/test/pwd/realpath/ulimit/kill等命令，shell会直接使用自己的实现。
-此时如果想要调用toybox命令，请使用"toybox [command] [arguments...]"的格式。
+   对于time/test/pwd/realpath/ulimit/kill等命令，shell会直接使用自己的实现。
+
+   此时如果想要调用toybox命令，请使用"toybox [command] [arguments...]"的格式。
 
 2. 设备未将该命令配置给toybox，而是有另外的实现。
 
-此时如果想要调用toybox命令，请使用"toybox [command] [arguments...]"的格式。
+   此时如果想要调用toybox命令，请使用"toybox [command] [arguments...]"的格式。

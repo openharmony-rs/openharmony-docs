@@ -167,6 +167,7 @@ parent.onmessage = (message) => {
 <!-- @[connect_with_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/workers/worker.ts) -->
 
 worker相关开发配置和流程参考以下链接：
+
 [使用Worker进行线程间通信](../arkts-utils/worker-introduction.md)
 
 ### napi_add_async_cleanup_hook

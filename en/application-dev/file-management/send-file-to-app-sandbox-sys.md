@@ -5,7 +5,7 @@
 <!--Owner: @wangfenging -->
 <!--Designer: @liveery; @zl_startup-->
 <!--Tester: @liuhaonan2-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 
 During the development and debugging process of an application, you may need to push files to the application sandbox directory for intra-application access or for testing purposes. You can use either of the following methods to push files:

@@ -37,3 +37,21 @@ Defines the array of record types that map file property names to their values.
 | Type| Description|
 | ---- | ---- |
 | Record\<string, [MemberType](#membertype)\>[] | Array of record types that map file property names to their values.|
+
+## OperationValueType<sup>22+</sup>
+
+type OperationValueType = number | string | boolean  
+
+Defines the values needed for matching different predicates.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Type                   | Description                         |
+| ---------------------- | -------------------------------- |
+| number    | Used for numeric fields. It can be any value.|
+| string    | Used for string fields. It can be any value.|
+| boolean   | Used for boolean fields.|

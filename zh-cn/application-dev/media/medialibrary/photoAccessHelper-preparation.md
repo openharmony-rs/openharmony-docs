@@ -18,7 +18,9 @@
 2. 通过getUIContext().getHostContext()获取应用上下文。
 3. 获取相册管理模块实例。
 
-```ts
+<!-- @[photo_access_helper_preperation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 
@@ -31,7 +33,7 @@ struct Index {
 
   build() {
     Row() {
-      Button("example").onClick(async () => {
+      Button('example').onClick(async () => {
         let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
       }).width('100%')

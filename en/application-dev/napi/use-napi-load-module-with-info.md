@@ -45,7 +45,9 @@ napi_status napi_load_module_with_info(napi_env env, const char* path, const cha
 
 ## Exception Scenarios
 1. When no file is found in the package or the **build-profile.json5** configuration is incorrect during module loading, the error code **napi_generic_failure** is returned and an error log is printed.
-![napi_load_module_with_info](figures/napi_load_module_with_info.png)
+
+   ![napi_load_module_with_info](figures/napi_load_module_with_info.png)
+
 2. The module loading fails due to unexpected behavior on the system side, and **cppcrash** is thrown.
 
 ## How to Use

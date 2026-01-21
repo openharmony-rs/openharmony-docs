@@ -69,8 +69,9 @@ HiAppEvent associates application events based on the event domain and event nam
 |Main thread jank event|   Supported |   Supported  |   Supported  |
 |Task execution timeout event|   Supported |   Not supported  |   Supported  |
 |Application killed event|   Supported |   Supported  |   Supported  |
-|Time-consuming launch event|   Not supported |   Not supported  |   Not supported  |
-|Scrolling frame loss event|   Not supported |   Not supported  |   Not supported  |
+|Time-consuming launch event|   Not supported |   Supported  |   Not supported  |
+|Scrolling frame loss event|   Not supported |   Supported  |   Not supported  |
 |High CPU usage event|   Not supported |   Not supported  |   Supported  |
 |Battery usage statistics event|   Not supported |   Not supported  |   Supported  |
 |Audio jank event|   Not supported |   Not supported  |   Not supported  |
+|ArkWeb scrolling frame loss event|   Supported |   Supported  |   Supported  |

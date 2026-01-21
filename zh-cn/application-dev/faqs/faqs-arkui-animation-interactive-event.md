@@ -84,7 +84,7 @@ TextInput获取焦点会弹出输入法，失去焦点就会关闭软键盘，�
 
 **代码示例**
 
-```
+```ts
 build() {
   Column() {
     TextInput()
@@ -104,7 +104,7 @@ build() {
 
 **代码示例**
 
-```
+```ts
 @Entry
 @Component
 struct Index {
@@ -114,15 +114,15 @@ struct Index {
         .width(100)
         .backgroundColor('#f00')
         .onClick(() => {
-          console.log("Button onClick");
+          console.info("Button onClick");
         })
         .onTouch((e) => {
-          console.log("Button onTouch");
+          console.info("Button onTouch");
           e.stopPropagation();
         })
     }
     .onTouch(() => {
-      console.log("Row onTouch");
+      console.info("Row onTouch");
     })
   }
 }
@@ -153,7 +153,7 @@ struct Index {
 
 **代码示例**
 
-```
+```ts
 // Index.ets
 @Entry
 @Component
@@ -172,7 +172,7 @@ struct PageTransition1 {
 }
 ```
 
-```
+```ts
 // Page1.ets
 @Entry
 @Component
@@ -207,7 +207,7 @@ struct PageTransition2 {
 
 **代码示例**
 
-```
+```ts
 @Entry
 @Component
 struct ComponentTransition {

@@ -74,7 +74,7 @@ struct MyComponent {
 
 1. 使用状态管理V2装饰器。
 
-   Repeat推荐和状态管理V2装饰器配合使用（[懒加载](./arkts-new-rendering-control-repeat.md#循环渲染能力说明)模式下只支持和状态管理V2装饰器配合使用）。如果之前使用的是状态管理V1装饰器，需要修改为状态管理V2装饰器。
+   Repeat推荐和状态管理V2装饰器配合使用（[懒加载](./arkts-new-rendering-control-repeat.md#懒加载能力说明)模式下只支持和状态管理V2装饰器配合使用）。如果之前使用的是状态管理V1装饰器，需要修改为状态管理V2装饰器。
 
    ```ts
    // 迁移前 - LazyForEach
@@ -157,7 +157,7 @@ struct MyComponent {
 
 4. 配置懒加载功能。
 
-   Repeat具有[懒加载](./arkts-new-rendering-control-repeat.md#循环渲染能力说明)和[全量加载](./arkts-new-rendering-control-repeat.md#关闭懒加载)两种模式。
+   Repeat具有[懒加载和全量加载](./arkts-new-rendering-control-repeat.md#懒加载能力说明)两种模式。
    
    - 全量加载模式渲染所有子节点（对标[ForEach](./arkts-rendering-control-foreach.md)）。
    - 懒加载模式动态渲染屏幕区域和预加载区域内的子节点（需要与容器组件配合使用，对标LazyForEach）。
@@ -506,7 +506,7 @@ struct ChildComponent {
 
 **迁移Repeat**
 
-Repeat需要和状态管理V2一起使用，状态管理V2提供了[@ObserveV2和@Trace](../state-management/arkts-new-observedV2-and-trace.md)装饰器对子属性进行深度观测。迁移时，需要将@Observe和@ObjectLink装饰器迁移至@ObserveV2和@Trace装饰器。
+Repeat需要和状态管理V2一起使用，状态管理V2提供了[@ObservedV2和@Trace](../state-management/arkts-new-observedV2-and-trace.md)装饰器对子属性进行深度观测。迁移时，需要将@Observed和@ObjectLink装饰器迁移至@ObservedV2和@Trace装饰器。
 
 迁移后的示例如下所示。
 
@@ -1076,7 +1076,7 @@ Repeat本身具备组件复用能力，同时也支持与状态管理V2的[@Reus
 1. 直接使用Repeat自身的复用能力。
 2. 使用@ReusableV2装饰器提供的复用能力。
 
-需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 19开始支持关闭自身复用能力）。
+需要注意的是，Repeat默认使能自身的复用能力，且优先级高于@ReusableV2装饰器。若要使用@ReusableV2装饰器，需要先手动关闭Repeat自身的复用能力（@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持[关闭自身复用能力](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)）。
 
 **示例7 - 迁移方案1：使用Repeat自身的复用能力**
 

@@ -24,7 +24,9 @@ import { resourceManager } from '@kit.LocalizationKit';
 ## 使用说明
 
 从API version 9开始，Stage模型支持通过Context获取资源管理resourceManager对象，无需再导入模块。
+
 FA模型仍需要先导入模块，再调用[getResourceManager](#resourcemanagergetresourcemanager)接口获取资源管理对象。 
+
 Stage模型下Context的引用方法请参考[Stage模型的Context详细介绍](../../application-models/application-context-stage.md)。
 
 ```ts
@@ -59,7 +61,7 @@ getResourceManager(callback: AsyncCallback&lt;ResourceManager&gt;): void
 <!--code_no_check_fa-->
 ```js
 import resourceManager from '@ohos.resourceManager';
-//FA模型请使用上述方式导入模块
+// FA模型请使用上述方式导入模块
 
 export default {
     onCreate() {
@@ -103,7 +105,7 @@ getResourceManager(bundleName: string, callback: AsyncCallback&lt;ResourceManage
 <!--code_no_check_fa-->
 ```js
 import resourceManager from '@ohos.resourceManager';
-//FA模型请使用上述方式导入模块
+// FA模型请使用上述方式导入模块
 
 // 'com.example.testapp'仅作示例，请替换为实际应用包名
 const BUNDLE_NAME = 'com.example.testapp';
@@ -148,7 +150,7 @@ getResourceManager(): Promise&lt;ResourceManager&gt;
 <!--code_no_check_fa-->
 ```js
 import resourceManager from '@ohos.resourceManager';
-//FA模型请使用上述方式导入模块
+// FA模型请使用上述方式导入模块
 
 export default {
     onCreate() {
@@ -193,7 +195,7 @@ getResourceManager(bundleName: string): Promise&lt;ResourceManager&gt;
 <!--code_no_check_fa-->
 ```js
 import resourceManager from '@ohos.resourceManager';
-//FA模型请使用上述方式导入模块
+// FA模型请使用上述方式导入模块
 
 // 'com.example.testapp'仅作示例，请替换为实际应用包名
 const BUNDLE_NAME = 'com.example.testapp';
@@ -427,7 +429,7 @@ getStringSync(resId: number): string
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -494,7 +496,7 @@ getStringSync(resId: number, ...args: Array<string | number>): string
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -559,7 +561,7 @@ getStringByNameSync(resName: string): string
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -626,7 +628,7 @@ getStringByNameSync(resName: string, ...args: Array<string | number>): string
 | 9001008  | Failed to format the resource obtained based on the resource Name. |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -686,7 +688,7 @@ getStringValue(resId: number, callback: _AsyncCallback&lt;string&gt;): void
 | 9001006  | The resource is referenced cyclically.         |
 
 **示例Stage：** 
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -750,7 +752,7 @@ getStringValue(resId: number): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -807,7 +809,7 @@ getStringByName(resName: string, callback: _AsyncCallback&lt;string&gt;): void
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -871,7 +873,7 @@ getStringByName(resName: string): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -933,7 +935,7 @@ getStringArrayValueSync(resId: number): Array&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1002,7 +1004,7 @@ getStringArrayByNameSync(resName: string): Array&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1066,7 +1068,7 @@ getStringArrayValue(resId: number, callback: _AsyncCallback&lt;Array&lt;string&g
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1135,7 +1137,7 @@ getStringArrayValue(resId: number): Promise&lt;Array&lt;string&gt;&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1198,7 +1200,7 @@ getStringArrayByName(resName: string, callback: _AsyncCallback&lt;Array&lt;strin
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1267,7 +1269,7 @@ getStringArrayByName(resName: string): Promise&lt;Array&lt;string&gt;&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -1343,7 +1345,7 @@ getIntPluralStringValueSync(resId: number, num: number, ...args: Array<string | 
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -1427,7 +1429,7 @@ getIntPluralStringByNameSync(resName: string, num: number, ...args: Array<string
 | 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -1511,7 +1513,7 @@ getDoublePluralStringValueSync(resId: number, num: number, ...args: Array<string
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -1595,7 +1597,7 @@ getDoublePluralStringByNameSync(resName: string, num: number, ...args: Array<str
 | 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -2924,7 +2926,7 @@ getBoolean(resId: number): boolean
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/boolean.json
 {
   "boolean": [
@@ -2989,7 +2991,7 @@ getBooleanByName(resName: string): boolean
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/boolean.json
 {
   "boolean": [
@@ -3054,7 +3056,7 @@ getNumber(resId: number): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/integer.json
 {
   "integer": [
@@ -3066,7 +3068,7 @@ getNumber(resId: number): number
 }
 ```
 
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/float.json
 {
   "float": [
@@ -3146,7 +3148,7 @@ getNumberByName(resName: string): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/integer.json
 {
   "integer": [
@@ -3158,7 +3160,7 @@ getNumberByName(resName: string): number
 }
 ```
 
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/float.json
 {
   "float": [
@@ -3237,7 +3239,7 @@ getColorSync(resId: number) : number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3303,7 +3305,7 @@ getColorByNameSync(resName: string) : number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3363,7 +3365,7 @@ getColor(resId: number, callback: _AsyncCallback&lt;number&gt;): void
 | 9001006  | The resource is referenced cyclically.         |
 
 **示例Stage：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3427,7 +3429,7 @@ getColor(resId: number): Promise&lt;number&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3487,7 +3489,7 @@ getColorByName(resName: string, callback: _AsyncCallback&lt;number&gt;): void
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/color.json
 {
   "color": [
@@ -3551,7 +3553,7 @@ getColorByName(resName: string): Promise&lt;number&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/color.json
 {
   "color": [
@@ -5053,7 +5055,7 @@ getStringSync(resource: Resource): string
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -5126,7 +5128,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -5191,7 +5193,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/string.json
 {
   "string": [
@@ -5390,7 +5392,7 @@ getStringArrayValueSync(resource: Resource): Array&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -5459,7 +5461,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;str
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -5533,7 +5535,7 @@ getStringArrayValue(resource: Resource): Promise&lt;Array&lt;string&gt;&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/strarray.json
 {
   "strarray": [
@@ -6434,7 +6436,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6521,7 +6523,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6605,7 +6607,7 @@ getPluralStringValueSync(resId: number, num: number): string
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6651,7 +6653,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 >
 > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 >
-> 从API version 10开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
+> 从API version 10开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)或[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6684,7 +6686,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6767,7 +6769,7 @@ getPluralStringByNameSync(resName: string, num: number): string
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6839,7 +6841,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback&lt;str
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6916,7 +6918,7 @@ getPluralStringValue(resId: number, num: number): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -6961,7 +6963,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&l
 >
 > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 >
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)或[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6989,7 +6991,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback&l
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -7041,7 +7043,7 @@ getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
 >
 > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 >
-> 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)或[getIntPluralStringByNameSync](#getintpluralstringbynamesync18)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -7074,7 +7076,7 @@ getPluralStringValue(resource: Resource, num: number): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -7151,7 +7153,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback&lt;
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -7227,7 +7229,7 @@ getPluralStringByName(resName: string, num: number): Promise&lt;string&gt;
 | 9001006  | The resource is referenced cyclically.                       |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/plural.json
 {
   "plural": [
@@ -7272,7 +7274,7 @@ getPluralString(resId: number, num: number): Promise&lt;string&gt;
 >
 > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getPluralStringValue](#getpluralstringvaluedeprecated-1)替代。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7314,7 +7316,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback&lt;string&gt
 >
 > 中文环境下，字符串不区分单复数；其他语言环境下，字符串区分单复数，具体规则参考[语言单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)。
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[getIntPluralStringValueSync](#getintpluralstringvaluesync18)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getPluralStringValue](#getpluralstringvaluedeprecated)替代。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -7381,7 +7383,7 @@ getBoolean(resource: Resource): boolean
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/boolean.json
 {
   "boolean": [
@@ -7451,7 +7453,7 @@ getNumber(resource: Resource): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/integer.json
 {
   "integer": [
@@ -7523,7 +7525,7 @@ getColorSync(resource: Resource): number
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/color.json
 {
   "color": [
@@ -7588,7 +7590,7 @@ getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/color.json
 {
   "color": [
@@ -7658,7 +7660,7 @@ getColor(resource: Resource): Promise&lt;number&gt;
 | 9001006  | The resource is referenced cyclically.            |
 
 **示例：**
-```json
+```json5
 // 资源文件路径: src/main/resources/base/element/color.json
 {
   "color": [
@@ -8038,7 +8040,7 @@ try {
 
 - 示例代码中用到的'app.string.test'文件内容如下：
 
-  ```json
+  ```json5
   // 资源文件路径: src/main/resources/base/element/string.json
   {
     "string": [
@@ -8050,7 +8052,7 @@ try {
   }
   ```
 
-  ```json
+  ```json5
   // 资源文件路径: src/main/resources/base/element/string.json
   {
     "string": [
@@ -8064,7 +8066,7 @@ try {
 
 - 示例代码中用到的'app.strarray.test'文件内容如下：
 
-  ```json
+  ```json5
   // 资源文件路径: src/main/resources/base/element/strarray.json
   {
     "strarray": [
@@ -8081,7 +8083,7 @@ try {
   ```
 
 - 示例代码中用到的'app.plural.test'文件内容如下：
-  ```json
+  ```json5
   // 资源文件路径: src/main/resources/base/element/plural.json
   {
     "plural": [
@@ -8104,7 +8106,7 @@ try {
 
 - 示例代码中用到的'app.plural.format_test'文件内容如下：
 
-  ```json
+  ```json5
   // 资源文件路径: src/main/resources/base/element/plural.json
   {
     "plural": [
@@ -8126,7 +8128,7 @@ try {
   ```
 
 - 示例代码中用到的'app.boolean.boolean_test'文件内容如下：
-  ```json
+  ```json5
   // 资源文件路径: src/main/resources/base/element/boolean.json
   {
     "boolean": [
@@ -8139,7 +8141,7 @@ try {
   ```
 
 - 示例代码中用到的"integer_test"和"float_test"文件内容如下：
-  ```json
+  ```json5
   // 资源文件路径: src/main/resources/base/element/integer.json
   {
     "integer": [
@@ -8151,7 +8153,7 @@ try {
   }
   ```
 
-  ```json
+  ```json5
   // 资源文件路径: src/main/resources/base/element/float.json
   {
     "float": [
@@ -8163,7 +8165,7 @@ try {
   }
   ```
 - 示例代码中用到的'app.color.test'文件内容如下：
-  ```json
+  ```json5
   // 资源文件路径: src/main/resources/base/element/color.json
   {
     "color": [

@@ -33,8 +33,8 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_POWER_DISCONNECTED = "usual.event.POWER_DISCONNECTED" | Indicates the common event that the device is disconnected from the external power supply.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_SCREEN_OFF = "usual.event.SCREEN_OFF" | Indicates the common event that the device screen is off and the device is sleeping.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_SCREEN_ON = "usual.event.SCREEN_ON" | Indicates the common event that the device screen is on and the device is in interactive state.<br>**Since**: 12|
-| static const char * const COMMON_EVENT_ENTER_HIBERNATE = "usual.event.ENTER_HIBERNATE" | Indicates that the device is about to enter the hibernation mode.<br>**Since**: 15|
-| static const char * const COMMON_EVENT_EXIT_HIBERNATE = "usual.event.EXIT_HIBERNATE" | Indicates that the device exits the hibernation mode.<br>**Since**: 15|
+| static const char * const COMMON_EVENT_ENTER_HIBERNATE = "usual.event.ENTER_HIBERNATE" | Indicates the common event that the device is about to enter the hibernation mode.<br>**Since**: 15|
+| static const char * const COMMON_EVENT_EXIT_HIBERNATE = "usual.event.EXIT_HIBERNATE" | Indicates the common event that the device exits the hibernation mode.<br>**Since**: 15|
 | static const char * const COMMON_EVENT_THERMAL_LEVEL_CHANGED = "usual.event.THERMAL_LEVEL_CHANGED" | Indicates the common event that the device's thermal level has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_TIME_TICK = "usual.event.TIME_TICK" | Indicates the common event that the system time has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_TIME_CHANGED = "usual.event.TIME_CHANGED" | Indicates the common event that the system time has been set.<br>**Since**: 12|
@@ -65,7 +65,7 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_WIFI_AP_STA_LEAVE = "usual.event.wifi.WIFI_HS_STA_LEAVE" | Indicates the common event that a client has disconnected from the Wi-Fi hotspot of the current device.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_WIFI_MPLINK_STATE_CHANGE = "usual.event.wifi.mplink.STATE_CHANGE" | Indicates the common event that the state of MPLINK (an enhanced Wi-Fi feature) has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_WIFI_P2P_CONN_STATE = "usual.event.wifi.p2p.CONN_STATE_CHANGE" | Indicates the common event that the Wi-Fi P2P connection state has changed.<br>**Since**: 12|
-| static const char * const COMMON_EVENT_WIFI_P2P_STATE_CHANGED = "usual.event.wifi.p2p.STATE_CHANGE" | Indicates the common event that the Wi-Fi P2P state has changed, such as to enabled or disabled.<br>**Since**: 12|
+| static const char * const COMMON_EVENT_WIFI_P2P_STATE_CHANGED = "usual.event.wifi.p2p.STATE_CHANGE" | Indicates the common event that the Wi-Fi P2P state has changed to enabled or disabled.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_WIFI_P2P_PEERS_STATE_CHANGED = "usual.event.wifi.p2p.DEVICES_CHANGE" | Indicates the common event that the state of the Wi-Fi P2P peer device has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED = "usual.event.wifi.p2p.PEER_DISCOVERY_STATE_CHANGE" | Indicates the common event that the Wi-Fi P2P discovery state has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_WIFI_P2P_CURRENT_DEVICE_STATE_CHANGED = "usual.event.wifi.p2p.CURRENT_DEVICE_CHANGE" | Indicates the common event that the state of the Wi-Fi P2P local device has changed.<br>**Since**: 12|
@@ -82,7 +82,7 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_USB_PORT_CHANGED = "usual.event.hardware.usb.action.USB_PORT_CHANGED" | Indicates the common event that the USB port state of the user device has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_USB_DEVICE_ATTACHED = "usual.event.hardware.usb.action.USB_DEVICE_ATTACHED" | Indicates the common event that a USB device has been attached when the user device functions as a USB host.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_USB_DEVICE_DETACHED = "usual.event.hardware.usb.action.USB_DEVICE_DETACHED" | Indicates the common event that a USB device has been detached when the user device functions as a USB host.<br>**Since**: 12|
-| static const char * const COMMON_EVENT_AIRPLANE_MODE_CHANGED = "usual.event.AIRPLANE_MODE" | Indicates the common event that the airplane mode of the device has changed.<br>**Since**: 12|
+| static const char * const COMMON_EVENT_AIRPLANE_MODE_CHANGED = "usual.event.AIRPLANE_MODE" | Indicates the common event that the airplane mode of a device has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_SPLIT_SCREEN = "common.event.SPLIT_SCREEN" | Indicates the common event of screen splitting.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_QUICK_FIX_APPLY_RESULT = "usual.event.QUICK_FIX_APPLY_RESULT" | Indicates the common event that a quick fix is applied to an application.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_QUICK_FIX_REVOKE_RESULT = "usual.event.QUICK_FIX_REVOKE_RESULT" | Indicates the common event that a quick fix is revoked.<br>**Since**: 12|
@@ -95,6 +95,8 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_SCREEN_LOCKED = "usual.event.SCREEN_LOCKED" | Indicates the common event that the screen has been locked.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_HTTP_PROXY_CHANGE = "usual.event.HTTP_PROXY_CHANGE" | Indicates the common event that the HTTP proxy configuration has changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_CONNECTIVITY_CHANGE = "usual.event.CONNECTIVITY_CHANGE" | Indicates the common event that the network connection state has changed.<br>**Since**: 12|
-| static const char * const COMMON_EVENT_MINORSMODE_ON = "usual.event.MINORSMODE_ON" | Indicates that the minor mode is enabled.<br>**Since**: 12|
+| static const char * const COMMON_EVENT_MINORSMODE_ON = "usual.event.MINORSMODE_ON" | Indicates the common event that the minor mode is enabled.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_MINORSMODE_OFF = "usual.event.MINORSMODE_OFF" | Indicates the common event that the minor mode is disabled.<br>**Since**: 12|
-| static const char * const COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED = "usual.event.MANAGED_BROWSER_POLICY_CHANGED" | Indicates that the browser hosting policy has been changed.<br>**Since**: 15|
+| static const char * const COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED = "usual.event.MANAGED_BROWSER_POLICY_CHANGED" | Indicates the common event that the browser hosting policy has been changed.<br>**Since**: 15|
+| static const char* const COMMON_EVENT_TABLET_MODE_CHANGED = "usual.event.TABLET_MODE_CHANGED" | Indicates the common event that the tablet mode of a device has been changed.<br>**Since**: 23|
+| static const char* const COMMON_EVENT_LID_STATE_CHANGED = "usual.event.LID_STATE_CHANGED" | Indicates the common event that the lid state of a device has been changed.<br>**Since**: 23|

@@ -4,7 +4,7 @@
 <!--Owner: @oh_create_jiawei-->
 <!--Designer: @oh_create_jiawei-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ```c
 typedef struct CloudDisk_PathInfo {...} CloudDisk_PathInfo

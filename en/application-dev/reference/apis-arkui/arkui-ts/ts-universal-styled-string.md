@@ -1340,7 +1340,7 @@ struct styled_string_process_demo {
   fontStyleAttr1: TextStyle = new TextStyle({ fontColor: Color.Blue });
   fontStyleAttr2: TextStyle = new TextStyle({ fontColor: Color.Orange });
   // Create a readable and writable styled string object: mutableStyledString1.
-  mutableStyledString1: MutableStyledString = new MutableStyledString ("45-minute workout");
+  mutableStyledString1: MutableStyledString = new MutableStyledString("45-minute workout");
   // Create the mutableStyledString2 object whose input parameters contain strings and styles.
   mutableStyledString2: MutableStyledString = new MutableStyledString("test hello world", [{
     start: 0,
@@ -2940,11 +2940,11 @@ struct styled_string_process_demo {
     Column() {
       Scroll(this.scroller) {
         Column() {
-          Text ('Styled string with supportSvg2: false')
+          Text('Styled string with supportSvg2: false')
           Text(undefined, { controller: this.controller1 })
             .draggable(true)
             .fontSize(30)
-          Text ('Styled string with supportSvg2: true')
+          Text('Styled string with supportSvg2: true')
           Text(undefined, { controller: this.controller })
             .draggable(true)
             .fontSize(30)

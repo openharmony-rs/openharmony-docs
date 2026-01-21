@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 The **FormExtensionAbility** module provides lifecycle callbacks invoked when a widget is created, destroyed, or updated.
@@ -78,7 +78,7 @@ import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
-    console.log(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
+    console.info(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
     let dataObj1: Record<string, string> = {
       'temperature': '11c',
       'time': '11:00'
@@ -116,7 +116,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onCastToNormalForm(formId: string) {
     // Called to notify the widget provider that a temporary widget has been converted to a normal one. You need to perform operations as required.
-    console.log(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
+    console.info(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
   }
 };
 ```

@@ -143,11 +143,11 @@ enum Http_ResponseCode
 | OH_HTTP_OK = 200 | 请求成功。 |
 | OH_HTTP_CREATED = 201 | 成功请求并创建新资源。 |
 | OH_HTTP_ACCEPTED = 202 | 请求已被接受但尚未完全处理。 |
-| OH_HTTP_NOT_AUTHORITATIVE = 203 | 请求成功。但是有未授权信息。 |
+| OH_HTTP_NON_AUTHORITATIVE_INFO = 203 | 请求成功。但是有未授权信息。 |
 | OH_HTTP_NO_CONTENT = 204 | 服务器处理成功，但未返回内容。 |
 | OH_HTTP_RESET = 205 | 重置内容。 |
 | OH_HTTP_PARTIAL = 206 | 服务器成功处理了部分GET请求。 |
-| OH_HTTP_MULT_CHOICE = 300 | 多种选择。 |
+| OH_HTTP_MULTI_CHOICE = 300 | 多种选择。 |
 | OH_HTTP_MOVED_PERM = 301 | 请求的资源已永久移动到新的URI，返回信息将包含新的URI。浏览器将自动重定向到新的URI。 |
 | OH_HTTP_MOVED_TEMP = 302 | 临时重定向。 |
 | OH_HTTP_SEE_OTHER = 303 | 查看其他地址。请求的资源已移动到新的URL，客户端应使用GET方法访问该URL。 |
@@ -167,9 +167,9 @@ enum Http_ResponseCode
 | OH_HTTP_LENGTH_REQUIRED = 411 | 服务器无法处理客户端发送的不带Content Length的请求信息。 |
 | OH_HTTP_PRECON_FAILED = 412 | 向客户端请求信息的前提条件不正确。 |
 | OH_HTTP_ENTITY_TOO_LARGE = 413 | 请求被拒绝，因为请求的实体太大，服务器无法处理。 |
-| OH_HTTP_REQ_TOO_LONG = 414 | 请求的URI超过了服务器能够解析的长度，服务器无法处理。 |
+| OH_HTTP_REQUEST_TOO_LONG = 414 | 请求的URI超过了服务器能够解析的长度，服务器无法处理。 |
 | OH_HTTP_UNSUPPORTED_TYPE = 415 | 服务器无法处理请求的格式。 |
-| OH_HTTP_RANGE_NOT_SATISFIABLE = 416 | 请求的范围无法满足。 |
+| OH_HTTP_RANGE_NOT_MET = 416 | 请求的范围无法满足。 |
 | OH_HTTP_INTERNAL_ERROR = 500 | 内部服务器错误，无法完成请求。 |
 | OH_HTTP_NOT_IMPLEMENTED = 501 | 服务器不支持请求的功能，无法完成请求。 |
 | OH_HTTP_BAD_GATEWAY = 502 | 充当网关或代理的服务器从远程服务器收到无效请求。 |
@@ -209,7 +209,7 @@ HTTP协议版本号枚举定义。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HTTP_NONE = 0 | 跟随crul的协议版本选择。 |
+| OH_HTTP_NONE = 0 | 跟随curl的协议版本选择。 |
 | OH_HTTP1_1 | HTTP1.1版本。 |
 | OH_HTTP2 | HTTP2版本。 |
 | OH_HTTP3 | HTTP3版本。 |

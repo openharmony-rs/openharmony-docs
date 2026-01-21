@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ## 简介
-近场通信(Near Field Communication，NFC)是一种短距高频的无线电技术，在13.56MHz频率运行，通信距离一般在10厘米距离内。HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，电子设备上的应用程序模拟NFC卡片和NFC读卡器通信，实现NFC刷卡业务。
+近场通信(Near Field Communication，NFC)是一种短距高频的无线电技术，在13.56MHz频率运行，通信距离一般在10厘米距离内。HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，电子设备上的应用程序模拟NFC卡片和NFC读卡器通信，实现NFC刷卡业务。从API version 22开始支持OFFHOST(Off Host Card Emulation)，称为基于安全单元的卡模拟，卡由设备中的一个单独芯片(称为安全单元)进行模拟。无线运营商部分SIM卡也包含安全单元。
 
 ## 场景介绍
 应用程序模拟NFC卡片，和NFC读卡器通信完成NFC刷卡业务。从使用场景上，可以分成HCE应用前台刷卡和HCE应用后台刷卡。
@@ -16,6 +16,8 @@
 前台刷卡是指在触碰NFC读卡器之前，用户明确想使用在电子设备上打开特定的应用程序和NFC读卡器进行刷卡操作。当用户打开应用程序在前台，并且进入应用的刷卡页面时，电子设备触碰NFC读卡器后，会把刷卡交易数据分发给前台应用。若应用切换至后台或退出运行时，前台优先分发规则也随即被暂停。
 - HCE应用后台刷卡<br>
 后台刷卡是指不打开特定的HCE应用程序，当电子设备触碰NFC读卡器时，根据NFC读卡器选择的应用ID（Applet ID，AID，参考ISO/IEC 7816-4规范）匹配到HCE应用程序，并自动和匹配的HCE应用程序通信完成刷卡交易。如果NFC读卡器选择的应用ID，匹配到多个HCE应用程序时，说明存在冲突，需要用户打开指定的HCE应用，重新靠近NFC读卡器触发刷卡。
+
+安全单元模拟NFC卡片，和NFC读卡器完成NFC刷卡业务。要模拟的卡片通过应用配置到安全单元中，当电子设备触碰到NFC读卡器时，数据不经过设备CPU处理，而是直接发送到安全单元，完成刷卡。
 
 ## HCE应用刷卡的约束条件
 1. 基于刷卡安全性考虑，不论HCE应用是前台方式还是后台方式刷卡，均不支持电子设备在灭屏或熄屏状态下的HCE刷卡操作。<br>
@@ -299,4 +301,53 @@ export default class EntryAbility extends UIAbility {
     hceService.off('hceCmd', hceCommandCb);
   }
 }
+```
+
+### OFFHOST应用刷卡
+1. 在module.json5文件中声明OFFHOST特定的action，声明应用能够处理的AID，声明安全单元。
+2. 将OFFHOST应用设置为默认付款应用。
+
+> **说明**
+>
+> - 从 API version 22开始支持OFFHOST能力。
+> - 当前只支持payment类型的AID。
+> - 当前只支持SIM作为安全单元。
+
+```ts
+"abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ts",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "ohos.want.action.home",
+
+              // actions必须包含"ohos.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE"
+              "ohos.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE"
+            ]
+          }
+        ]
+        // 根据业务需要至少定义一个Payment类型的AID，可以定义多个
+        "metadata": [
+          {
+            "name": "payment-aid",
+            "value": "A0000000031010" // 定义Payment类型的AID，需要修改为正确的AID
+          },
+           {
+             "name": "secureElement",
+             "value": "SIM" // 定义secureElement
+            },
+        ]
+      }
+    ]
 ```

@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This topic describes tools for inspecting the UI hierarchy and profiling performance, designed to enhance development efficiency and optimize the developer experience.
 
@@ -89,7 +89,7 @@ Assuming that the active window ID is 90, use the following commands:
        - **variable assignment affects elmtIds**: components refreshed when the state variable changes, for example, **Text[6]**.
        - **Dependent elements**: components associated with the state variable and its synchronization objects.
    - **Registered Element IDs**: custom components and their child components declared in **build()**.
-   - **Dirty Registered Element IDs**: list of dirty nodes marked for re-rendering within the custom component. When a state variable changes, its associated components are marked as "dirty" and scheduled for re-rendering in the next rendering frame. These dirty components are re-rendered and the list is cleared during frame processing. During manual dump operations, the **Dirty Registered Element IDs** list typically appears empty because, given the frame intervals of most current devices, it is difficult to capture the dirty node list between frames.
+   - **Dirty Registered Element IDs**: list of dirty nodes marked for re-rendering within the custom component. When a state variable changes, its associated components are marked as "dirty" and scheduled for re-rendering in the next rendering frame. These dirty components are re-rendered and the list is cleared during frame processing. During manual dump operations, the **Dirty Registered Element IDs** list is typically empty because, given the frame intervals of most current devices, it is difficult to capture the dirty node list between two consecutive frames.
   ```ts
   --------------------ViewPUInfo--------------------
   [-dumpAll, viewId=4, isRecursive=true]

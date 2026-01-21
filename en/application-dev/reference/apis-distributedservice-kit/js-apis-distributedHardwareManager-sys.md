@@ -23,12 +23,14 @@ import { hardwareManager } from '@kit.DistributedServiceKit';
 
 Represents the distributed hardware information.
 
+**Required permissions**: ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
+
 **System capability**: SystemCapability.DistributedHardware.DistributedHardwareFWK
 
-| Name        | Type                                               | Mandatory| Description                                                        |
-| ------------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type         | [DistributedHardwareType](#distributedhardwaretype) | Yes  | Type of the distributed hardware.<br>**Required permissions**: ohos.permission.ACCESS_DISTRIBUTED_HARDWARE|
-| srcNetworkId | string                                              | No  | Source device. If this parameter is not specified, it indicates all source devices.<br>**Required permissions**: ohos.permission.ACCESS_DISTRIBUTED_HARDWARE|
+| Name        | Type                                               | Read-Only| Optional| Description                                                        |
+| ------------ | --------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| type         | [DistributedHardwareType](#distributedhardwaretype) | No  | No  | Type of the distributed hardware.|
+| srcNetworkId | string                                              | No  | Yes  | Source device. If this parameter is not specified, it indicates all source devices.|
 
 ## DistributedHardwareType
 
@@ -93,7 +95,7 @@ Pauses the distributed hardware service on the controlled device. This API uses 
 
   ```ts
   import { hardwareManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let description: hardwareManager.HardwareDescriptor = {
@@ -147,7 +149,7 @@ Resumes the distributed hardware service on the controlled device. This API uses
 
   ```ts
   import { hardwareManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let description: hardwareManager.HardwareDescriptor = {
@@ -203,7 +205,7 @@ Stops the distributed hardware service on the controlled device. This API uses a
 
   ```ts
   import { hardwareManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   try {
     let description: hardwareManager.HardwareDescriptor = {

@@ -30,6 +30,6 @@ import { constant } from '@kit.ConnectivityKit';
 
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
-| UNKNOWN<sup>11+</sup> | 0    | 未知。<br/>此接口为系统接口。  |
-| ALLOWED<sup>11+</sup> | 1    | 允许。<br/>此接口为系统接口。  |
-| REJECTED<sup>11+</sup> | 2    | 拒绝。<br/>此接口为系统接口。 |
+| UNKNOWN | 0    | 未知。<br/>此接口为系统接口。  |
+| ALLOWED | 1    | 允许。<br/>此接口为系统接口。  |
+| REJECTED | 2    | 拒绝。<br/>此接口为系统接口。 |

@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-An axis event is triggered when a component is scrolled via the mouse wheel or two-finger sliding on a touchpad in a specific direction (axis). "Axis" refers to a direction in a two-dimensional coordinate system, categorized into horizontal (x-axis) and vertical (y-axis) directions.
+An axis event is triggered when the pointer from a device like a mouse or touchpad is within a component's area, and an action such as scrolling the wheel or sliding two fingers along a specific direction (axis) on the touchpad is performed. "Axis" refers to a direction in a two-dimensional coordinate system, categorized into horizontal (x-axis) and vertical (y-axis) directions.
 
 >  **NOTE**
 >
@@ -16,7 +16,7 @@ An axis event is triggered when a component is scrolled via the mouse wheel or t
 
 onAxisEvent(event: Callback\<AxisEvent>): T
 
-Triggered when the mouse wheel is scrolled or two fingers slide on the touchpad.
+Triggered by mouse wheel scrolling, a two-finger sliding gesture, or a pinch gesture on the touchpad.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
@@ -132,7 +132,7 @@ Checks whether this axis event contains the specified axis type.
 
 ## Example
 
-This example shows how to set up an axis event on a button. When the user scrolls the mouse wheel over the button, the event parameters are captured and displayed. Starting from API version 21, this example uses [axisPinch](./ts-gesture-customize-judge.md#baseevent8) and [getPinchAxisScaleValue](#getpinchaxisscalevalue21) to obtain the two-finger pinch scale ratio. Starting from API version 22, this example uses [hasAxis](#hasaxis22) to determine whether the axis event contains the specified axis type.
+This example shows how to set up an axis event on a button. When the user scrolls the mouse wheel over the button, the event parameters are captured and displayed. Starting from API version 21, this example uses [axisPinch](./ts-gesture-customize-judge.md#properties) and [getPinchAxisScaleValue](#getpinchaxisscalevalue21) to obtain the two-finger pinch scale ratio. Starting from API version 22, this example uses [hasAxis](#hasaxis22) to determine whether the axis event contains the specified axis type.
 
 ```ts
 // xxx.ets

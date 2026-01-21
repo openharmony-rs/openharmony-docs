@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 该模块提供最近访问列表插入、移除、查询等常用能力。
 
@@ -13,6 +13,7 @@
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 > - 当前只支持文件管理器调用。
+> - 本模块接口从API version 23开始废弃。不建议使用以下接口。
 
 ## 导入模块
 

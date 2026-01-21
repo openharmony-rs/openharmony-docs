@@ -877,6 +877,58 @@ try {
 }
 ```
 
+## getLatency<sup>23+</sup>
+
+getLatency(type: AudioLatencyType): number
+
+获取当前音频路由的预估时延。
+
+> **说明：**
+>
+> - 无线连接的音频设备，时延估算会存在误差，结果仅供参考。
+> - 由于时延未计入实时缓冲区，建议仅在音频播放开始时获取，避免频繁调用，否则可能因路由切换而阻塞该接口调用。
+> - 音频输出到硬件后的音画同步建议使用[getAudioTimestampInfo](#getaudiotimestampinfo19)或[getAudioTimestampInfoSync](#getaudiotimestampinfosync19)完成。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| type | [AudioLatencyType](arkts-apis-audio-e.md#audiolatencytype23) | 是 | 获取的时延类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 返回音频时延，单位为毫秒。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted in release state. |
+| 6800301 | System internal error, like audio service error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const latency: number = audioRenderer.getLatency(audio.AudioLatencyType.LATENCY_TYPE_ALL);
+  console.info(`Current audio latency: ${latency}ms`);
+} catch (err) {
+  const error = err as BusinessError;
+  console.error(`Failed to get latency. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getBufferSize<sup>8+</sup>
 
 getBufferSize(callback: AsyncCallback\<number>): void
@@ -1673,6 +1725,8 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 > - 本接口允许在AudioRenderer创建后随时调用，系统会记录应用设置的默认本机内置发声设备。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
 
 **参数：**
 

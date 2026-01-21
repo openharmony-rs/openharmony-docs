@@ -98,7 +98,7 @@ Add the **min**, **max**, **value**, **step**, and **mode** attributes to set th
 
 > **NOTE**
 >
-> Set the **mode** attribute to specify the slider style. It can be set to:
+> The **mode** attribute indicates the slider style. The options are as follows:
 >
 > - **outset**: The slider is on the sliding bar.
 >

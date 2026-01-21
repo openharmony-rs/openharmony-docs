@@ -544,7 +544,7 @@ try {
 
 on(type: 'ringerModeChange', callback: Callback\<AudioRingMode>): void
 
-监听铃声模式变化事件（当[铃声模式](arkts-apis-audio-e.md#audioringmode)发生变化时触发）。使用callback异步回调。
+监听铃声模式变化事件（当[AudioRingMode](arkts-apis-audio-e.md#audioringmode)发生变化时触发）。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 

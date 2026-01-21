@@ -465,8 +465,7 @@ console.info("result:", result);  // result: true
 
 ### replaceAllElements
 
-replaceAllElements(callbackFn: (value: T, index?: number, list?: List&lt;T&gt;) => T,
-thisArg?: Object): void
+replaceAllElements(callbackFn: (value: T, index?: number, list?: List&lt;T&gt;) => T, thisArg?: Object): void
 
 Replaces all elements in this List with new elements, and returns the new ones.
 
@@ -519,8 +518,7 @@ console.info("result:", list.get(2));  // result: 10
 
 ### forEach
 
-forEach(callbackFn: (value: T, index?: number, List?: List&lt;T&gt;) => void,
-thisArg?: Object): void
+forEach(callbackFn: (value: T, index?: number, List?: List&lt;T&gt;) => void, thisArg?: Object): void
 
 Uses a callback to traverse each element in the **List** instance.
 
@@ -532,7 +530,7 @@ Uses a callback to traverse each element in the **List** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback function.|
+| callbackFn | function | Yes| Callback used to return the result.|
 | thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
 
 callbackFn parameters
@@ -571,7 +569,7 @@ list.forEach((value: number, index: number) => {
 
 ### sort
 
-sort(comparator: (firstValue: T, secondValue: T) => number): void
+sort(comparator: ListComparatorFn\<T\>): void
 
 Sorts elements in this List.
 
@@ -583,14 +581,7 @@ Sorts elements in this List.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| comparator | function | Yes| Callback invoked for sorting.|
-
-comparator
-
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| firstValue | T | Yes| Previous element.|
-| secondValue | T | Yes| Next element.|
+| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt22) | Yes| Callback used to return the result.<br> There has been a compatibility change since API version 22. In API version 21 and earlier versions, the type is `(firstValue: T, secondValue: T) => number`.|
 
 **Error codes**
 
@@ -935,3 +926,26 @@ while(!temp.done) {
 // value: 5
 // value: 4
 ```
+
+### ListComparatorFn\<T\><sup>22+</sup>
+
+type ListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
+
+Callback function of the **sort** method in List.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| firstValue | T | Yes| The first element to be sorted.|
+| secondValue | T | Yes| The second element to be sorted.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| number | Value returned by the callback function. The List can maintain the order of elements based on the custom comparison rules.|

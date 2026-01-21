@@ -62,6 +62,8 @@ struct Parent {
 }
 ```
 
+上述代码中so的实现可参考<!--RP1-->[Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)<!--RP1End-->。
+
 ### addFrameNode<sup>12+</sup>
 
 addFrameNode(node: FrameNode): void

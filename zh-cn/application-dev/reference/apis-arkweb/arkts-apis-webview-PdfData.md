@@ -14,7 +14,7 @@ createPdf函数输出数据流类。
 >
 > - 本Class首批接口从API version 14开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 >
 > - 在网页生成PDF过程中，返回的是数据流，由PdfData类封装。
 

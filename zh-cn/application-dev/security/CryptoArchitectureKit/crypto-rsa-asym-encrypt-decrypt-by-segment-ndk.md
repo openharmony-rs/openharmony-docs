@@ -35,9 +35,10 @@
 
 3. 多次调用[OH_CryptoAsymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_final)，传入密文，获取解密后的数据。
 
-- 异步方法示例：
 
-```C++
+<!-- @[rsa_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/rsa/RSAEncryptDecrypt.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 #include <algorithm>
 #include <vector>
@@ -119,7 +120,7 @@ static std::vector<uint8_t> doTestRsaDec(OH_CryptoKeyPair *keyPair, std::vector<
     return decryptText;
 }
 
-static OH_Crypto_ErrCode doTestRsaEncLongMessage()
+OH_Crypto_ErrCode doTestRsaEncLongMessage()
 {
     OH_CryptoAsymKeyGenerator *keyGen = nullptr;
     OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("RSA1024", &keyGen);

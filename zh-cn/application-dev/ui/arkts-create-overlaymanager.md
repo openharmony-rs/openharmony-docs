@@ -19,7 +19,7 @@
 * OverlayManager上节点安全区域内外的绘制方式与Page一致，键盘避让方式与Page一致。
 * 推荐使用AppStorage存储与OverlayManager相关的属性，以避免页面切换时属性值变化导致业务错误。
 * 当使用API version 19以下版本时，OverlayManager不支持侧滑（左滑/右滑）关闭，需在[onBackPress](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)中添加OverlayManager关闭的逻辑。API 19及以上版本可通过配置[OverlayManagerOptions](../reference/apis-arkui/arkts-apis-uicontext-i.md#overlaymanageroptions15)中的enableBackPressedEvent属性设置OverlayManager是否响应侧滑手势。
-* OverlayManager中的事件机制优先被WrappedBuilder装饰的组件接收。若需实现浮层底部接收事件，可通过设置hitTestBehavior为HitTestMode.Transparent将事件传递至底层。
+* OverlayManager中的事件机制优先被[WrappedBuilder](state-management/arkts-wrapBuilder.md)装饰的组件接收。若需实现浮层底部接收事件，可通过设置[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent将事件传递至底层。
 
 ## 设置浮层
 
@@ -65,7 +65,7 @@ export struct OverlayManagerComponent {
   @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 30 };
 
   build() {
-    // ···
+    // ...
       Column({ space: 10 }) {
         Button('Increment componentContentIndex:' + this.componentContentIndex)
           .onClick(() => {
@@ -137,7 +137,7 @@ export struct OverlayManagerComponent {
       }
       .width('100%')
       .height('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -282,7 +282,7 @@ export struct OverlayManagerWithOrder {
   @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 80 };
 
   build() {
-    // ···
+    // ...
       Row() {
         Column({ space: 5 }) {
           Button('Open Top-Level Dialog Box')
@@ -313,7 +313,7 @@ export struct OverlayManagerWithOrder {
           })
         }.width('100%')
       }
-    // ···
+      // ...
   }
 }
 ```

@@ -29,7 +29,7 @@ type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
 | 类型 | 说明 |
 | -------- |  -------- |
-| [_WorkSchedulerExtensionContext](js-apis-inner-application-WorkSchedulerExtensionContext.md)|  WorkSchedulerExtension的上下文环境。 |
+| [_WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)|  WorkSchedulerExtension的上下文环境。 |
 
 ## WorkSchedulerExtensionAbility
 
@@ -39,7 +39,7 @@ type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-inner-application-WorkSchedulerExtensionContext.md)  | 否 | 否 | WorkSchedulerExtension的上下文环境，继承自ExtensionContext。 |
+| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)  | 否 | 否 | WorkSchedulerExtension的上下文环境，继承自ExtensionContext。 |
 
 ### onWorkStart
 

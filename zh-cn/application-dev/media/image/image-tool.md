@@ -8,11 +8,11 @@
 
 Image Kit提供图片Exif信息的读取与编辑能力。
 
-Exif（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。当前支持JPEG、PNG、HEIF、WEBP<sup>23+</sup>格式，且需要图片包含Exif信息。
+Exif（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。当前支持JPEG、PNG、HEIF、WEBP<sup>23+</sup>、DNG<sup>23+</sup>格式，且需要图片包含Exif信息。
 
 在图库等应用中，需要查看或修改数码照片的Exif信息。当摄像机的手动镜头参数无法自动写入到Exif信息中，或者相机断电等原因会导致拍摄时间出错时，可手动修改错误的Exif数据。
 
-OpenHarmony目前仅支持对部分Exif信息的查看和修改，具体支持的范围请参见：[Exif信息](../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。
+OpenHarmony目前仅支持对部分Exif信息的查看和修改，具体支持的范围请参见：[Exif信息](../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7)。需要注意的是，DNG格式图片仅支持读取Exif信息，不支持修改。
 
 ## 开发步骤
 

@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要由系统时间和系统时区功能组成。开发者可以设置、获取系统时间及系统时区。
 
@@ -25,6 +25,10 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 获取自Unix纪元以来经过的时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -36,7 +40,7 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -67,6 +71,10 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 获取自Unix纪元以来经过的时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -77,7 +85,7 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -108,6 +116,10 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自Unix纪元以来经过的时间，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -124,7 +136,7 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -153,6 +165,10 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -164,7 +180,7 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -195,6 +211,10 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -205,7 +225,7 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -236,6 +256,10 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自系统启动以来经过的时间，不包括深度睡眠时间，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -252,7 +276,7 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -281,6 +305,10 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -292,7 +320,7 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -323,6 +351,10 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 获取自系统启动以来经过的时间，包括深度睡眠时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -333,7 +365,7 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -364,6 +396,10 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 获取自系统启动以来经过的时间，包括深度睡眠时间，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -380,7 +416,7 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -409,6 +445,10 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 获取当前系统日期，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[如何将时间格式的字符串string转换为Date对象](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -419,7 +459,7 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -450,6 +490,10 @@ getDate(): Promise&lt;Date&gt;
 
 获取当前系统日期，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[如何将时间格式的字符串string转换为Date对象](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/faqs-arkui-arkts.md#如何将时间格式的字符串string转换为date对象api-9)中的`new Date()`方法替代，`new Date()`返回`Date`实例对象。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **返回值：**
@@ -460,7 +504,7 @@ getDate(): Promise&lt;Date&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -489,6 +533,10 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 获取系统时区，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTimezone](js-apis-date-time.md#systemdatetimegettimezone)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **参数：**
@@ -499,7 +547,7 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -530,6 +578,10 @@ getTimezone(): Promise&lt;string&gt;
 
 获取系统时区，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTimezone](js-apis-date-time.md#systemdatetimegettimezone-1)替代。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **返回值：**
@@ -540,7 +592,7 @@ getTimezone(): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -569,6 +621,10 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 设置系统时间，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
@@ -582,7 +638,7 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -615,6 +671,10 @@ setTime(time : number) : Promise&lt;void&gt;
 
 设置系统时间，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
@@ -633,7 +693,7 @@ setTime(time : number) : Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -664,6 +724,10 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 
 设置系统日期，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
@@ -677,7 +741,7 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -709,6 +773,10 @@ setDate(date: Date): Promise&lt;void&gt;
 
 设置系统日期，使用Promise异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
@@ -727,7 +795,7 @@ setDate(date: Date): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -757,6 +825,10 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 设置系统时区，使用callback异步回调。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
 **系统能力：** SystemCapability.MiscServices.Time
@@ -770,7 +842,7 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -801,6 +873,10 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 
 使用Promise异步回调设置系统时区。
 
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃。
+
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
 **系统能力：** SystemCapability.MiscServices.Time
@@ -819,7 +895,7 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[时间时区错误码](./errorcode-time.md)。
+以下错误码的详细介绍请参见[时间时区服务错误码](./errorcode-time.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |

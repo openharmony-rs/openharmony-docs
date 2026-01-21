@@ -1,4 +1,4 @@
-# Introduction to Image Kit
+# About This Kit
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->

@@ -28,5 +28,5 @@ Defines options for initializing a JavaScript VM.
 | -- | -- |
 | const intptr_t* externalReferences | (Optional) A raw address array with a **nullptr** at the end in the embedder, which can be matched with the VM during serialization and can be used for deserialization. This array and its contents must remain valid throughout the lifecycle of the VM instance.|
 | int* argc | VM flag. If **removeFlags** is **true**, the identified flags are removed from **(argc, argv)**. Note that these flags are now only available to V8 VMs. They are mainly used for development. Do not use these flags in the production environment, as they may not take effect if the VM's configuration differs from the development environment.|
-| char** argv | argv.|
-| bool removeFlags | Whether to remove the identified flags from **(argc, argv)**. If this parameter is set to **true**, the identified flags will be removed.|
+| char** argv | Double pointer to argv.|
+| bool removeFlags | Whether to remove flags. If this parameter is set to **true**, the identified flags are removed from **(argc, argv)**. If this parameter is set to **false**, the identified flags are not removed from **(argc, argv)**.|

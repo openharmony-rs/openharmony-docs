@@ -18,7 +18,7 @@ Declares the BASE DDK APIs used by the USB host to access USB devices.
 
 **Since**: 12
 
-**Related module**: [BaseDdk](capi-baseddk.md)
+**Related module**: [Ddk](capi-baseddk.md)
 
 ## Summary
 
@@ -35,7 +35,7 @@ Declares the BASE DDK APIs used by the USB host to access USB devices.
 
 ### OH_DDK_CreateAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem **ashmem)
 ```
 
@@ -62,7 +62,7 @@ Creates an **Ashmem** object. To prevent resource leakage, call **OH_DDK_Destroy
 
 ### OH_DDK_MapAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 ```
 
@@ -84,11 +84,11 @@ Maps the created **Ashmem** object to the user space. Call **OH_DDK_UnmapAshmem*
 
 | Type| Description|
 | -- | -- |
-| [DDK_RetCode](capi-ddk-types-h.md#ddk_retcode) | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode): The API call is successful.<br>         [DDK_NULL_PTR](capi-ddk-types-h.md#ddk_retcode): The input **ashmem** is a null pointer.<br>         [DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode): The file descriptor of the **Ashmem** object is invalid.<br>         [DDK_INVALID_OPERATION] (capi-ddk-types-h.md#ddk_retcode): The attempt to call MapAshmem fails.|
+| [DDK_RetCode](capi-ddk-types-h.md#ddk_retcode) | [DDK_SUCCESS](capi-ddk-types-h.md#ddk_retcode): The API call is successful.<br>         [DDK_NULL_PTR](capi-ddk-types-h.md#ddk_retcode): The input **ashmem** is a null pointer.<br>         [DDK_FAILURE](capi-ddk-types-h.md#ddk_retcode): The file descriptor of the **Ashmem** object is invalid.<br>         [DDK_INVALID_OPERATION](capi-ddk-types-h.md#ddk_retcode): The attempt to call MapAshmem fails.|
 
 ### OH_DDK_UnmapAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)
 ```
 
@@ -113,7 +113,7 @@ Unmaps an **Ashmem** object.
 
 ### OH_DDK_DestroyAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)
 ```
 

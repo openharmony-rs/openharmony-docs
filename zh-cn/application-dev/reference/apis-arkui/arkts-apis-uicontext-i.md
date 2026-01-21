@@ -76,11 +76,11 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 | ------ | ---- | ---------- |---------- |---------- |
 |  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |否  |  否       |手势事件对象。 |
 
-## SwiperContentInfo<sup>23+</sup>
+## SwiperContentInfo<sup>22+</sup>
 
 Swiper组件的内容区信息。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,13 +88,13 @@ Swiper组件的内容区信息。
 | --------- | ---- | ----- | ---- | ----------------------- |
 | id        | string  | 否 | 否 | Swiper组件的id。 |
 | uniqueId  | number  | 否 | 否 | Swiper组件的唯一标识符。 |
-| swiperItemInfos   | Array\<[SwiperItemInfo](#swiperiteminfo23)\> | 否 | 否 | 当前处于显示状态的Swiper子组件的信息。 |
+| swiperItemInfos   | Array\<[SwiperItemInfo](#swiperiteminfo22)\> | 否 | 否 | 当前处于显示状态的Swiper子组件的信息。 |
 
-## SwiperItemInfo<sup>23+</sup>
+## SwiperItemInfo<sup>22+</sup>
 
 Swiper子组件的信息。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

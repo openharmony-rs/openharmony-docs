@@ -121,13 +121,13 @@ HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安�
 
 ## 导入模块
 
-```
+```js
 // 适用于除轻量级智能穿戴产品之外其它设备
 import { cardEmulation } from '@kit.ConnectivityKit';
 ```
 
 <!--code_no_check_fa-->
-```
+```js
 // 轻量级智能穿戴设备
 import cardEmulation from '@ohos.nfc.cardEmulation';
 ```
@@ -276,6 +276,12 @@ isDefaultService(elementName: ElementName, type: CardType): boolean
 | elementName | [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | 是    | 所属应用声明NFC卡模拟能力的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。 |
 | type        | [CardType](#cardtype9)                   | 是    | 卡模拟业务类型。目前只支持默认支付应用查询。   |
 
+**返回值：**
+
+| **类型**  | **说明**                               |
+| ------- | ------------------------------------ |
+| boolean | true: 是默认支付应用，&nbsp;false: 不是默认支付应用。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[NFC错误码](errorcode-nfc.md)。
@@ -285,13 +291,6 @@ isDefaultService(elementName: ElementName, type: CardType): boolean
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
-
-**返回值：**
-
-| **类型**  | **说明**                               |
-| ------- | ------------------------------------ |
-| boolean | true: 是默认支付应用，&nbsp;false: 不是默认支付应用。 |
-
 
 **示例：**
 ```js

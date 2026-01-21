@@ -19,8 +19,8 @@
 ## 规格说明
 | 支持的本地密钥操作 | API级别 | 说明 |
 | ---- | ---- | ---- |
-| [生成密钥](huks-key-generation-overview.md) | 23+ | 支持生成群组密钥。 |
-| [导入密钥](huks-key-import-overview.md) | 23+ | 支持导入群组密钥。 |
+| [密钥生成](huks-key-generation-overview.md) | 23+ | 支持生成群组密钥。 |
+| [密钥导入](huks-key-import-overview.md) | 23+ | 支持导入群组密钥。 |
 | [加密/解密](huks-encryption-decryption-overview.md) | 23+ | 支持使用群组密钥进行加密/解密。 |
 | [签名/验签](huks-signing-signature-verification-overview.md) | 23+ | 支持使用群组密钥进行签名/验签。 |
 | [密钥协商](huks-key-agreement-overview.md) | 23+ | 支持使用群组密钥进行密钥协商。 |

@@ -20,7 +20,7 @@ In the stage model, a window stage or window can use the **loadContent** API to 
 
 In the following API examples, you must first use [getUIContext()](arkts-apis-window-Window.md#getuicontext10) in **@ohos.window** to obtain a **UIContext** instance, and then call the APIs using the obtained instance. Alternatively, you can obtain a **UIContext** instance through the built-in method [getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext) of the custom component. In this document, the **UIContext** instance is represented by **uiContext**.
 
-### setDynamicDimming<sup>12+<sup>
+### setDynamicDimming<sup>12+</sup>
 
 setDynamicDimming(id: string, value: number): void
 
@@ -63,90 +63,11 @@ struct Index {
 ```
 ![api-switch-overview](../apis-arkui/figures/dynamicDinning.gif)
 
-### animateToImmediately<sup>12+</sup>
-
-animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
-
-Implements immediate delivery of an explicit animation through a **UIContext** object. When multiple property animations are loaded at once, you can call this API to immediately execute the transition animation for state changes caused by the specified closure function.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type                                      | Mandatory  | Description                                   |
-| ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam) | Yes   | Animation settings.                          |
-| processor | Callback&lt;void&gt;                              | Yes   | Closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function.|
-
-**Example**
-
-This example shows how to use **animateToImmediately** to implement immediate delivery of an explicit animation through a **UIContext** object.
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct AnimateToImmediatelyExample {
-  @State widthSize: number = 250
-  @State heightSize: number = 100
-  @State opacitySize: number = 0
-  private flag: boolean = true
-  uiContext: UIContext | null | undefined = this.getUIContext();
-
-  build() {
-    Column() {
-      Column()
-        .width(this.widthSize)
-        .height(this.heightSize)
-        .backgroundColor(Color.Green)
-        .opacity(this.opacitySize)
-      Button('change size')
-        .margin(30)
-        .onClick(() => {
-          if (this.flag) {
-            this.uiContext?.animateToImmediately({
-              delay: 0,
-              duration: 1000
-            }, () => {
-              this.opacitySize = 1
-            })
-            this.uiContext?.animateTo({
-              delay: 1000,
-              duration: 1000
-            }, () => {
-              this.widthSize = 150
-              this.heightSize = 60
-            })
-          } else {
-            this.uiContext?.animateToImmediately({
-              delay: 0,
-              duration: 1000
-            }, () => {
-              this.widthSize = 250
-              this.heightSize = 100
-            })
-            this.uiContext?.animateTo({
-              delay: 1000,
-              duration: 1000
-            }, () => {
-              this.opacitySize = 0
-            })
-          }
-          this.flag = !this.flag
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-![animateToImmediately](figures/animateToImmediately.gif)
-
 ### freezeUINode<sup>18+</sup>
 
 freezeUINode(id: string, isFrozen: boolean): void
 
-Sets the frozen state of a component by ID to prevent the component from being marked as dirty and triggering layout update.
+Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -213,14 +134,14 @@ struct Index {
         })
         .onWillShow(() => {
           // When the TabContent with id 'tab2' is shown, set the freeze state of the node with id 'tab1' to true.
-          // Change the width of the Column node in the tab1 node based on the state variable. The frozen state of the tab1 node is true. The marking is terminated when the dirty state is marked to the TabContent, and the layout is not triggered.
+          // Change the width of the Column node in the tab1 node based on the state variable. Because tab1 is in frozen state, dirty state marking stops at the TabContent level, and no layout update will be triggered.
           this.getUIContext().freezeUINode('tab1', true);
           this.columnWidth1 = '50%';
           // Configure a delayed task.
           setTimeout(() => {
             // Set the freeze state of the node with id 'tab1' to false, re-triggering marking and layout.
             this.getUIContext().freezeUINode('tab1', false);
-            // Update the width of the Column node in the tab1 node based on the state variable and set this.columnWidth1 to '20%'.
+            // Update the width of the Column node in the tab1 node through the state variable: Set this.columnWidth1 to '20%'.
             this.columnWidth1 = '20%';
           }, 5000)
         })
@@ -234,7 +155,7 @@ struct Index {
         .tabBar('yellow')
         .id('tab3')
         .onWillHide(() => {
-          // Set the frozen state of the tab3 node to true when the TabContent with the id tab3 is hidden.
+          // Set the freeze state of the node with id 'tab3' to true when the TabContent is hidden.
           this.getUIContext().freezeUINode('tab3', true);
         })
         .onWillShow(() => {
@@ -264,7 +185,7 @@ struct Index {
 
 freezeUINode(uniqueId: number, isFrozen: boolean): void
 
-You can use uniqueId to set the frozen state of a component to prevent the component from being marked as dirty and triggering layout update.
+Sets whether to freeze a specific component by **uniqueId** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -274,7 +195,7 @@ You can use uniqueId to set the frozen state of a component to prevent the compo
 
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
-| uniqueId | number | Yes| Unique ID of a component.|
+| uniqueId | number | Yes| Unique ID of the component.|
 | isFrozen | boolean | Yes| Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>Default value: **false**.|
 
 **Error codes**
@@ -347,7 +268,7 @@ struct Index {
           this.getUIContext().freezeUINode(uniqueId, true);
           this.columnWidth1 = '50%';
 
-          // Set a delayed task.
+          // Configure a delayed task.
           setTimeout(() => {
             // Set the freeze state of the node with id 'tab1' to false, re-triggering marking and layout.
             this.getUIContext().freezeUINode(uniqueId, false);
@@ -520,16 +441,17 @@ Captures a snapshot of the area between two specified components. This API uses 
 
 | Type                           | Description      |
 | -------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Promise used to return the result.|
+| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Result of the snapshot.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID | Error Message               |
 | ------ | ------- |
-| 202     | The caller is not a system application. |
+| 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **Example**
 
@@ -580,3 +502,47 @@ struct SnapshotExample {
 ```
 
 ![en-us_image_getWithRange](figures/en-us_image_getWithRange.gif)
+
+### recycleInvisibleImageMemory<sup>23+</sup>
+
+recycleInvisibleImageMemory(enabled: boolean): void
+
+Sets the memory reclamation switch for invisible **Image** components. ([Component visibility](../../../application-dev/ui/arkts-manage-components-visibility.md) refers to the display status of a component on the screen.) After this feature is enabled, the image memory resources held by the **Image** component will be automatically reclaimed when the system is idle (for example, when the application is running in the background) if the component is not involved in rendering. This reduces the memory usage of the application. When the component is involved in rendering again, the related image resources will be reloaded as required.
+
+This API is mainly used for optimization in memory-sensitive scenarios, such as scenarios where there are a large number of images, pages are frequently switched between the foreground and background, or the component visibility changes significantly.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description|
+| -------- | ------- | ---- | ---- |
+| enabled  | boolean | Yes  | Whether to enable memory reclamation for invisible **Image** components.<br>The value **true** means to enable memory reclamation and the image memory resources are automatically released when the **Image** component is invisible;<br>**false** means to disable memory reclamation and the image memory resources are still retained when the **Image** component is invisible.<br>The default value is **false**. If **undefined** is passed, the default value is used.|
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct ImageRecycleSample {
+  build() {
+    Column({ space: 12 }) {
+      Button('Enable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(true)
+        })
+
+      Button('Disable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(false)
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```

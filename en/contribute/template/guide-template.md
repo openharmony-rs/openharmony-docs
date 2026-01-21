@@ -262,7 +262,7 @@ _Provide links (generally Gitee links) to the released sample code, codelabs, an
 
 The following sample is provided to help you better understand how to develop abilities:
 
-- [Intra-UIAbility and Inter-UIAbility Page Redirection (ArkTS)](https://gitee.com/openharmony/codelabs/tree/master/Ability/StageAbility)
+- [Intra-UIAbility and Inter-UIAbility Page Redirection (ArkTS)](https://gitcode.com/openharmony/codelabs/tree/master/Ability/StageAbility)
 
 
 ## Setting Up the Environment
@@ -306,13 +306,13 @@ _Describe the procedure for setting up the development environment. If there is 
 
 2. Run the following command to install the tool installation package:
    
-   ```
+   ```txt
    xxxxx
    ```
 
 3. Run the following command to check whether the tool is successfully installed.
    
-   ```
+   ```txt
    xxxxx
    ```
 
@@ -411,7 +411,7 @@ _Mandatory._
      - *Error prevention/correction information. Provide guidance for preventing, locating, or rectifying typical problems that may occur in the development process.* *This type of information can be provided in "How to Develop" or "FAQs", depending on the content amount.*
 
 - _Standardization_
-  - _Provide both logically and syntactically correct sample code and write it in a standard manner. Anonymize sensitive information, such as mobile numbers, ID cards, and account names, for example, 186\*\*\*\*\*\*\*\*. Use private IP addresses or a corresponding format, for example, xx.xx.xx.xx and www.example.com, rather than real IP addresses and domain names._
+  - _Anonymize sensitive information, such as mobile numbers, ID cards, and account names, for example, 186\*\*\*\*\*\*\*\*. Use private IP addresses or a corresponding format, for example, xx.xx.xx.xx and www.example.com, rather than real IP addresses and domain names._
   - _Provide code that complies with the code indentation requirements. Do not use the Tab key to indent code. Instead, use four spaces, to avoid incorrect display._
 
 **[Example (Excerpt)]**

@@ -7,6 +7,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+Describes the style of a typeface, such as SimSun or KaiTi.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -14,8 +16,6 @@
 > - This module uses the physical pixel unit, px.
 >
 > - The module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
-
-Describes the style of a typeface, such as SimSun or KaiTi.
 
 ## Modules to Import
 
@@ -259,4 +259,52 @@ class TextRenderNode extends RenderNode {
     canvas.drawTextBlob(textBlob, 60, 100);
   }
 }
+```
+
+## isBold<sup>23+</sup>
+
+isBold(): boolean
+
+Checks whether the font is bold.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Returns**
+
+| Type  | Description                |
+| ------ | -------------------- |
+| boolean | Check result. **true** if the font is bold; **false** otherwise.|
+
+**Example**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+let typeface = font.getTypeface();
+let result = typeface.isBold();
+```
+
+## isItalic<sup>23+</sup>
+
+isItalic(): boolean
+
+Checks whether the font is italic.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Returns**
+
+| Type  | Description                |
+| ------ | -------------------- |
+| boolean | Check result. **true** if the font is italic; **false** otherwise.|
+
+**Example**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+const font = new drawing.Font();
+let typeface = font.getTypeface();
+let result = typeface.isItalic();
 ```

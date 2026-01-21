@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_NativeDialog* ArkUI_NativeDialogHandle
+```
+
 ## Overview
 
 Defines the handle to the custom dialog box controller of ArkUI on the native side.

@@ -8,13 +8,15 @@
 
 You can use \@Local, a variable decorator in state management V2, to observe the variable changes in custom components decorated by \@ComponentV2.
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md).
+Before reading this document, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2). For details about common problems, see [In-Component State Management FAQs](./arkts-state-management-faq-inner-component.md).
 
 >**NOTE**
 >
 > The \@Local decorator is supported since API version 12.
 >
 > This decorator can be used in atomic services since API version 12.
+>
+> This decorator can be used in ArkTS widgets since API version 23.
 
 ## Overview
 
@@ -34,17 +36,21 @@ Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-c
 
 In state management V1, the [\@State decorator](arkts-state.md) is used to define basic state variables within components. While these variables are typically used as internal state of components, their design presents a critical limitation: \@State decorated variables can be initialized externally, which means there is no guarantee their initial values will match the component's internal definitions. This creates potential inconsistencies in component state management.
 
-```ts
+<!-- @[Local_V1_State_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalV1StateDecorator.ets) -->
+
+``` TypeScript
 class ComponentInfo {
-  name: string;
-  count: number;
-  message: string;
+  public name: string;
+  public count: number;
+  public message: string;
+
   constructor(name: string, count: number, message: string) {
     this.name = name;
     this.count = count;
     this.message = message;
   }
 }
+
 @Component
 struct Child {
   @State componentInfo: ComponentInfo = new ComponentInfo('Child', 1, 'Hello World'); // componentInfo provided by the parent component will override this initial value.
@@ -55,12 +61,13 @@ struct Child {
     }
   }
 }
+
 @Entry
 @Component
 struct Index {
   build() {
     Column() {
-      Child({componentInfo: new ComponentInfo('Unknown', 0, 'Error')})
+      Child({ componentInfo: new ComponentInfo('Unknown', 0, 'Error') })
     }
   }
 }
@@ -89,25 +96,29 @@ Variables decorated by \@Local are observable. When a decorated variable changes
 
 - When the decorated variable is of boolean, string, or number type, value changes to the variable can be observed.
 
-  ```ts
+  <!-- @[Local_Observe_Changes_Type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesType.ets) -->
+  
+  ``` TypeScript
   @Entry
   @ComponentV2
   struct Index {
+    // Number of clicks.
     @Local count: number = 0;
     @Local message: string = 'Hello';
     @Local flag: boolean = false;
+  
     build() {
       Column() {
         Text(`${this.count}`)
         Text(`${this.message}`)
         Text(`${this.flag}`)
         Button('change Local')
-          .onClick(()=>{
+          .onClick(() => {
             // For variables of primitive types, @Local can observe value changes to variables.
             this.count++;
             this.message += ' World';
             this.flag = !this.flag;
-        })
+          })
       }
     }
   }
@@ -115,25 +126,32 @@ Variables decorated by \@Local are observable. When a decorated variable changes
 
 - When \@Local is used to decorate a variable of the class object type, only changes to the overall assignment of the class object can be observed. Direct observation of changes to class member property assignments is not supported. Observing class member properties requires the [\@ObservedV2](arkts-new-observedV2-and-trace.md) and [\@Trace](arkts-new-observedV2-and-trace.md) decorators. Note that before API version 19, \@Local cannot be used with class instance objects decorated by [\@Observed](./arkts-observed-and-objectlink.md). Since from API version 19, partial mixed usage of state management V1 and V2 is supported, allowing \@Local and \@Observed to be used together. For details, see [Mixing Use of State Management V1 and V2](../state-management/arkts-v1-v2-mixusage.md).
 
-    ```ts
+    <!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
+    
+    ``` TypeScript
     class RawObject {
-      name: string;
+      public name: string;
+    
       constructor(name: string) {
         this.name = name;
       }
     }
+    
     @ObservedV2
     class ObservedObject {
-      @Trace name: string;
+      @Trace public name: string;
+    
       constructor(name: string) {
         this.name = name;
       }
     }
+    
     @Entry
     @ComponentV2
     struct Index {
       @Local rawObject: RawObject = new RawObject('rawObject');
       @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+    
       build() {
         Column() {
           Text(`${this.rawObject.name}`)
@@ -143,14 +161,14 @@ Variables decorated by \@Local are observable. When a decorated variable changes
               // Changes to the overall assignment of the class object can be observed.
               this.rawObject = new RawObject('new rawObject');
               this.observedObject = new ObservedObject('new observedObject');
-          })
+            })
           Button('change name')
             .onClick(() => {
               // @Local does not support observation of changes to class member property assignments. Therefore, value changes of rawObject.name cannot be observed.
               this.rawObject.name = 'new rawObject name';
               // The name property of ObservedObject is decorated by @Trace. Therefore, value changes of observedObject.name can be observed.
               this.observedObject.name = 'new observedObject name';
-          })
+            })
         }
       }
     }
@@ -158,12 +176,14 @@ Variables decorated by \@Local are observable. When a decorated variable changes
 
 - When @Local is used to decorate an array of a primitive type, changes to both the entire array and individual array items can be observed.
 
-    ```ts
+    <!-- @[Local_Observe_Changes_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesArray.ets) -->
+    
+    ``` TypeScript
     @Entry
     @ComponentV2
     struct Index {
-      @Local numArr: number[] = [1,2,3,4,5];  // @Local decorated 1D array
-      @Local dimensionTwo: number[][] = [[1,2,3],[4,5,6]]; // @Local decorated 2D array
+      @Local numArr: number[] = [1, 2, 3, 4, 5]; // @Local decorated 1D array
+      @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]]; // @Local decorated 2D array
     
       build() {
         Column() {
@@ -181,40 +201,47 @@ Variables decorated by \@Local are observable. When a decorated variable changes
             })
           Button('change whole array') // Button 2: replaces the entire array.
             .onClick(() => {
-              this.numArr = [5,4,3,2,1];
-              this.dimensionTwo = [[7,8,9],[0,1,2]];
+              this.numArr = [5, 4, 3, 2, 1];
+              this.dimensionTwo = [[7, 8, 9], [0, 1, 2]];
             })
         }
       }
     }
     ```
-    
+  
 - When \@Local is used to decorate a nested class or object array, changes of lower-level object properties cannot be observed. Observation of these lower-level object properties requires use of \@ObservedV2 and \@Trace decorators.
 
-  ```ts
+  <!-- @[Local_Observe_Changes_DeepObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDeepObject.ets) -->
+  
+  ``` TypeScript
   @ObservedV2
   class Region {
-    @Trace x: number;
-    @Trace y: number;
+    @Trace public x: number;
+    @Trace public y: number;
+  
     constructor(x: number, y: number) {
       this.x = x;
       this.y = y;
     }
   }
+  
   @ObservedV2
   class Info {
-    @Trace region: Region;
-    @Trace name: string;
+    @Trace public region: Region;
+    @Trace public name: string;
+  
     constructor(name: string, x: number, y: number) {
       this.name = name;
       this.region = new Region(x, y);
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local infoArr: Info[] = [new Info('Ocean', 28, 120), new Info('Mountain', 26, 20)];
     @Local originInfo: Info = new Info('Origin', 0, 0);
+  
     build() {
       Column() {
         ForEach(this.infoArr, (info: Info) => {
@@ -224,9 +251,10 @@ Variables decorated by \@Local are observable. When a decorated variable changes
           }
         })
         Row() {
-            Text(`Origin name: ${this.originInfo.name}`)
-            Text(`Origin region: ${this.originInfo.region.x}-${this.originInfo.region.y}`)
+          Text(`Origin name: ${this.originInfo.name}`)
+          Text(`Origin region: ${this.originInfo.region.x}-${this.originInfo.region.y}`)
         }
+  
         Button('change infoArr item')
           .onClick(() => {
             // Because the name property is decorated by @Trace, it can be observed.
@@ -250,7 +278,7 @@ Variables decorated by \@Local are observable. When a decorated variable changes
 
 - When \@Local is used to decorate a variable of a built-in type, changes caused by both variable reassignment and API calls can be observed.
 
-  | Type | Change-Triggering API                                             |
+  | Type | APIs That Can Be Observed                                             |
   | ----- | ------------------------------------------------------------ |
   | Array | push, pop, shift, unshift, splice, copyWithin, fill, reverse, sort |
   | Date  | setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds |
@@ -261,7 +289,7 @@ Variables decorated by \@Local are observable. When a decorated variable changes
 
 The \@Local decorator has the following constraints:
 
-- \@Local can be used only in custom components decorated by [\@ComponentV2](arkts-new-componentV2.md).
+- The \@Local decorator can be used only in custom components decorated with the [\@ComponentV2](./arkts-create-custom-components.md#componentv2) decorator.
 
   ```ts
   @ComponentV2
@@ -299,7 +327,7 @@ The \@Local decorator has the following constraints:
 
 The following table compares the usage and functionality of \@Local and \@State.
 
-|                    | \@State                      | \@Local                         |
+| Usage| \@State                      | \@Local                         |
 | ------------------ | ---------------------------- | --------------------------------- |
 | Feature              | None.                         | None.                      |
 | Initialization from the parent component        | Optional.                 | Not allowed.          |
@@ -312,64 +340,104 @@ The following table compares the usage and functionality of \@Local and \@State.
 
 When a class object and its properties are decorated by \@ObservedV2 and \@Trace, properties in the class object can be observed. However, value changes of the class object itself cannot be observed and do not initiate UI re-renders. In this case, you can use \@Local to decorate the object to observe the changes.
 
-```ts
+<!-- @[Local_Use_Case_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseObject.ets) -->
+
+``` TypeScript
 @ObservedV2
 class Info {
-  @Trace name: string;
-  @Trace age: number;
+  @Trace public name: string;
+  @Trace public age: number;
+
   constructor(name: string, age: number) {
     this.name = name;
     this.age = age;
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   info: Info = new Info('Tom', 25);
   @Local localInfo: Info = new Info('Tom', 25);
+
   build() {
-    Column() {
-      Text(`info: ${this.info.name}-${this.info.age}`) // Text1
-      Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) // Text2
-      Button('change info&localInfo')
-        .onClick(() => {
-          this.info = new Info('Lucy', 18); // Text1 is not updated.
-          this.localInfo = new Info('Lucy', 18); // Text2 is updated.
-      })
+    Row() {
+      Column() {
+        Text(`info: ${this.info.name}-${this.info.age}`) // Text1
+          .margin(10)
+        Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) //Text2
+          .margin(10)
+        Button('change info&localInfo')
+          .onClick(() => {
+            this.info = new Info('Lucy', 18); // Text1 is not updated.
+            this.localInfo = new Info('Lucy', 18); // Text2 is updated.
+          })
+          .margin(10)
+      }
+      .width('100%')
     }
+    .height('100%')
   }
 }
 ```
+![local-object](figures/local-object.gif)
 
 ### Decorating Variables of the Array Type
 
 When the decorated object is of the **Array** type, the following can be observed: (1) complete array reassignment; (2) array item changes caused by calling **push**, **pop**, **shift**, **unshift**, **splice**, **copyWithin**, **fill**, **reverse**, or **sort**.
 
-```ts
+<!-- @[Local_Use_Case_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseArray.ets) -->
+
+``` TypeScript
+class Fruit {
+  public name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
 @Entry
 @ComponentV2
 struct Index {
-  @Local count: number[] = [1,2,3];
+  @Local fruits: Fruit[] = [new Fruit('apple'), new Fruit('banana')]; // @Local decorated variables of the Array type.
 
   build() {
     Row() {
       Column() {
-        ForEach(this.count, (item: number) => {
-          Text(`${item}`).fontSize(30)
-          Divider()
+        ForEach(this.fruits, (item: Fruit) => {
+          Text(`${item.name}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init array').onClick(() => {
-          this.count = [9,8,7];
-        })
-        Button('push').onClick(() => {
-          this.count.push(0);
-        })
-        Button('reverse').onClick(() => {
-          this.count.reverse();
-        })
-        Button('fill').onClick(() => {
-          this.count.fill(6);
-        })
+        // Reassign the value of the array, triggering UI update.
+        Button('Reset array')
+          .onClick(() => {
+            this.fruits = [new Fruit('strawberry'), new Fruit('blueberry')];
+          })
+          .width(300)
+          .margin(10)
+        //Add an element to the array, triggering UI update.
+        Button('Push element')
+          .onClick(() => {
+            this.fruits.push(new Fruit('cherry'));
+          })
+          .width(300)
+          .margin(10)
+        // Reverse the array elements, triggering UI update.
+        Button('Reverse array')
+          .onClick(() => {
+            this.fruits.reverse();
+          })
+          .width(300)
+          .margin(10)
+        //Use the same element to fill the array, triggering UI update.
+        Button('Fill array')
+          .onClick(() => {
+            this.fruits.fill(new Fruit('apple'));
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -378,82 +446,121 @@ struct Index {
 }
 ```
 
-
+![local-array](figures/local-array.gif)
 
 ### Decorating Variables of the Date Type
 
 When the decorated object is of the **Date** type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**.
 
-```ts
+<!-- @[Local_Use_Case_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseDate.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct DatePickerExample {
   @Local selectedDate: Date = new Date('2021-08-08'); // @Local decorated Date object
 
   build() {
-    Column() {
-      Button('set selectedDate to 2023-07-08') // Button 1: updates the date by creating an object.
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate = new Date('2023-07-08');
-        })
-      Button('increase the year by 1') // Button 2: increases the year by 1.
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1') // Button 3: increases the month by 1.
-        .onClick(() => {
-          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1') // Button 4: increases the date by 1.
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.selectedDate
-      })
-    }.width('100%')
+    Row() {
+      Column() {
+        // Reassign a new Date object to selectedDate, triggering UI update.
+        Button('set selectedDate to 2023-07-08')
+          .onClick(() => {
+            this.selectedDate = new Date('2023-07-08');
+          })
+          .margin(10)
+          .width(300)
+        // Call the setFullYear API of Date to change the year, triggering UI update.
+        Button('increase the year by 1')
+          .onClick(() => {
+            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+          })
+          .margin(10)
+          .width(300)
+        // Call the setMonth API of Date to change the month, triggering UI update.
+        Button('increase the month by 1')
+          .onClick(() => {
+            this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+          })
+          .margin(10)
+          .width(300)
+        // Call the setDate API of Date to change the date, triggering UI update.
+        Button('increase the day by 1')
+          .onClick(() => {
+            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+          })
+          .margin(10)
+          .width(300)
+        DatePicker({
+          start: new Date('1970-1-1'),
+          end: new Date('2100-1-1'),
+          selected: this.selectedDate
+        }).margin(20)
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 }
 ```
+
+![local-date](figures/local-date.gif)
 
 ### Decorating Variables of the Map Type
 
 When the decorated object is of the **Map** type, the following changes can be observed: (1) complete **Map** object reassignment; (2) changes caused by calling **set**, **clear**, or **delete**.
 
-```ts
+<!-- @[Local_Use_Case_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseMap.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct MapSample {
-  @Local message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]); // @Local decorated Map object
+  @Local fruits: Map<string, number> = new Map([['apple', 1], ['banana', 2]]); // @Local decorated variables of the Map type.
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => { // Iterate over the key-value pairs of the Map object and render the UI.
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
-          Divider()
+        ForEach(Array.from(this.fruits.entries()), (item: [string, number]) => {
+          Text(`key: ${item[0]}, value: ${item[1]}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init map').onClick(() => { // Button 1: resets the Map object to its initial state.
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick(() => { // Button 2: adds a key-value pair (4, "d").
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick(() => { // Button 3: clears the Map object.
-          this.message.clear();
-        })
-        Button('replace key 0').onClick(() => { // Button 4: updates or adds the key-value pair with key 0.
-          this.message.set(0, 'aa');
-        })
-        Button('delete key 0').onClick(() => { // Button 5: deletes the key-value pair whose key is 0.
-          this.message.delete(0);
-        })
+        // Add a key-value pair, triggering UI update.
+        Button('Set entry cherry')
+          .onClick(() => {
+            this.fruits.set('cherry', 3);
+          })
+          .width(300)
+          .margin(10)
+        // Update a key-value pair, triggering UI update.
+        Button('Update entry apple')
+          .onClick(() => {
+            this.fruits.set('apple', 4);
+          })
+          .width(300)
+          .margin(10)
+        // Delete a key-value pair, triggering UI update.
+        Button('Delete entry apple')
+          .onClick(() => {
+            this.fruits.delete('apple');
+          })
+          .width(300)
+          .margin(10)
+        // Reassign values to the entire Map, triggering UI update.
+        Button('Reset map')
+          .onClick(() => {
+            this.fruits = new Map([['strawberry', 9], ['blueberry', 8]]);
+          })
+          .width(300)
+          .margin(10)
+        // Clear the values of the entire Map, triggering UI update.
+        Button('Clear map')
+          .onClick(() => {
+            this.fruits.clear();
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -461,36 +568,56 @@ struct MapSample {
   }
 }
 ```
+![local-map](figures/local-map.gif)
 
 ### Decorating Variables of the Set Type
 
 When the decorated object is of the **Set** type, the following changes can be observed: (1) complete **Set** object reassignment; (2) changes caused by calling **add**, **clear**, or **delete**.
 
-```ts
+<!-- @[Local_Use_Case_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseSet.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct SetSample {
-  @Local message: Set<number> = new Set([0, 1, 2, 3, 4]);
+  @Local fruits: Set<string> = new Set(['apple', 'banana']); // @Local decorated variables of the Set type.
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, number]) => { // Iterate over the key-value pairs of the Set object and render the UI.
-          Text(`${item[0]}`).fontSize(30)
-          Divider()
+        ForEach(Array.from(this.fruits.entries()), (item: [number, number]) => {
+          Text(`${item[0]}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init set').onClick(() => { // Button 1: updates the Set object to its initial state.
-          this.message = new Set([0, 1, 2, 3, 4]);
-        })
-        Button('set new one').onClick(() => { // Button 2: adds element 5.
-          this.message.add(5);
-        })
-        Button('clear').onClick(() => { // Button 3: clears the Set object.
-          this.message.clear();
-        })
-        Button('delete the first one').onClick(() => { // Button 4: deletes element 0.
-          this.message.delete(0);
-        })
+        // New element, triggering UI update
+        Button('Add element')
+          .onClick(() => {
+            this.fruits.add('cherry');
+          })
+          .width(300)
+          .margin(10)
+        // Delete an element, triggering UI update.
+        Button('Delete element apple')
+          .onClick(() => {
+            this.fruits.delete('apple');
+          })
+          .width(300)
+          .margin(10)
+        // Reassign values to the entire Set, triggering UI update.
+        Button('Reset set')
+          .onClick(() => {
+            this.fruits = new Set(['strawberry', 'blueberry']);
+          })
+          .width(300)
+          .margin(10)
+        // Clear the values of the entire Set, triggering UI update.
+        Button('Clear set')
+          .onClick(() => {
+            this.fruits.clear();
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -498,98 +625,56 @@ struct SetSample {
   }
 }
 ```
+![local-set](figures/local-set.gif)
 
 ### Decorating Variables of the Union Type
 
 \@Local supports **null**, **undefined**, and union types. In the following example, **count** is of the **number | undefined** type. Clicking the buttons to change the type of **count** will trigger UI re-rendering.
 
-```ts
+<!-- @[Local_Use_Case_Join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseJoin.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
   @Local count: number | undefined = 10; // @Local decorated variable of the union type
 
   build() {
-    Column() {
-      Text(`count(${this.count})`)
-      Button('change to undefined') // Button 1: sets count to undefined.
-        .onClick(() => {
-          this.count = undefined;
-        })
-      Button('change to number') // Button 2: updates count to number 10.
-        .onClick(() => {
-          this.count = 10;
-      })
+    Row() {
+      Column() {
+        Text(`count: ${this.count}`)
+        // Change the union variable from number to undefined, triggering the UI update.
+        Button('change to undefined')
+          .onClick(() => {
+            this.count = undefined;
+          })
+          .width(300)
+          .margin(10)
+        // Change the union variable from undefined to number, triggering the UI update.
+        Button('change to number')
+          .onClick(() => {
+            this.count = 10;
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
     }
+    .height('100%')
   }
 }
 ```
+![local-union](figures/local-union.gif)
 
 ## FAQs
-
-### Repeated Assignment of Complex Type Constants to State Variables Triggers Re-rendering
-
-```ts
-@Entry
-@ComponentV2
-struct Index {
-  list: string[][] = [['a'], ['b'], ['c']];
-  @Local dataObjFromList: string[] = this.list[0];
-
-  @Monitor('dataObjFromList')
-  onStrChange(monitor: IMonitor) {
-    console.info('dataObjFromList has changed');
-  }
-
-  build() {
-    Column() {
-      Button('change to self').onClick(() => {
-        // The new value is the same as the locally initialized value.
-        this.dataObjFromList = this.list[0];
-      })
-    }
-  }
-}
-```
-
-In the preceding example, every time the **Button('change to self')** component is clicked, assigning the same constant of type Array to a state variable of type Array triggers UI re-rendering. This is because in state management V2, a proxy is added to variables of the Date, Map, Set, and Array type decorated with state variable decorators, such as @Trace and @Local, to observe changes caused by API calls. 
-When **list[0]** is reassigned, **dataObjFromList** is already of type Proxy, while **list[0]** is of type Array. Due to the type mismatch, the assignment and re-rendering are triggered.
-To avoid unnecessary assignments and re-renders, use [UIUtils.getTarget()](./arkts-new-getTarget.md) to obtain the original value and compare it with the new value. If they are the same, skip the assignment.
-
-Example of using **UIUtils.getTarget()**:
-
-```ts
-import { UIUtils } from '@kit.ArkUI';
-
-@Entry
-@ComponentV2
-struct Index {
-  list: string[][] = [['a'], ['b'], ['c']];
-  @Local dataObjFromList: string[] = this.list[0];
-
-  @Monitor('dataObjFromList')
-  onStrChange(monitor: IMonitor) {
-    console.info('dataObjFromList has changed');
-  }
-
-  build() {
-    Column() {
-      Button('change to self').onClick(() => {
-        // Obtain the original value and compare it with the new value.
-        if (UIUtils.getTarget(this.dataObjFromList) !== this.list[0]) {
-          this.dataObjFromList = this.list[0];
-        }
-      })
-    }
-  }
-}
-```
 
 ### Using animateTo Failed in State Management V2
 
 In the following scenario, [animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) cannot be directly used in state management V2.
 
-```ts
+<!-- @[Local_Question_V2_animateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV2animateTo.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -629,28 +714,30 @@ In the above code, the expected animation effect is as follows: The green rectan
 
 ![arkts-new-local-animateTo-1](figures/arkts-new-local-animateTo-1.gif)
 
-Follow the method below to achieve the expected display effect temporarily.
+Since API version 22, you can use the [applySync APIs](./arkts-new-applySync-flushUpdates-flushUIUpdates.md) to achieve the expected display effect.
 
-```ts
+<!-- @[Local_Question_Expected_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionExpectedEffect.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct Index {
   @Local w: number = 50; // Width.
   @Local h: number = 50; // Height.
   @Local message: string = 'Hello';
-  
+
   build() {
     Column() {
       Button('change size')
         .margin(20)
         .onClick(() => {
           // Values are changed additionally before the animation is executed.
-          this.w = 100;
-          this.h = 100;
-          this.message = 'Hello World';
-          animateToImmediately({
-            duration: 0
-          }, () => {
+          UIUtils.applySync(() => {
+            this.w = 100;
+            this.h = 100;
+            this.message = 'Hello World';
           })
           this.getUIContext().animateTo({
             duration: 1000
@@ -671,6 +758,6 @@ struct Index {
 }
 ```
 
-Use [animateToImmediately](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md) with **duration** of **0** to apply the additional modifications and then execute the original animation to achieve the expected effect.
+The principle is as follows: Use the **applySync** API to synchronously update the status variables changes in the closure function, and then execute the original animation to achieve the expected effect.
 
 ![arkts-new-local-animateTo-2](figures/arkts-new-local-animateTo-2.gif)

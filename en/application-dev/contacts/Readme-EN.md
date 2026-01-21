@@ -6,5 +6,5 @@
 <!--Designer: @yanghaoqian-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
-- [Contacts Kit Development](contacts-intro.md)
+- [About This Kit](contacts-intro.md)
 - [Using the Picker for Contact Management](contacts-addcontactviaui.md)

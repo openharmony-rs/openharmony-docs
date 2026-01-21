@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArcSwiper是弧形轮播组件，在圆形屏幕场景下使用，提供弧形轮播显示能力。具体用法请参考[ArcSwiper](../reference/apis-arkui/arkui-ts/ts-container-arcswiper.md)。
@@ -153,7 +153,7 @@ ArcSwiper支持滑动手指、点击导航点、旋转表冠和控制控制器�
   }
   ```
 
-  ![controller](figures/arcswiper_controll.gif)
+  ![controller](figures/arcswiper_control.gif)
 
 - 旋转表冠翻页。
 
@@ -359,3 +359,4 @@ export struct ArcSwiperSideSlip {
   }
 }
 ```
+![onGestureRecognizerJudgeBegin](figures/arcswiper_onGestureRecognizerJudgeBegin.gif)

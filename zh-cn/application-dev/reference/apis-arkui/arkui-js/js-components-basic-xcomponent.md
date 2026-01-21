@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
   > **说明：**
-  > 该组件从API Version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+  > 该组件从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
   用于显示写入了EGL/OpenGLES或媒体数据的组件。
 
@@ -59,8 +59,8 @@
 ```html
 <!-- xxx.hml -->
 <div style="height: 500px; width: 500px; flex-direction: column; justify-content: center; align-items: center;">
-	<text id = 'camera' class = 'title'>camera_display</text>
-	<xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
+    <text id = 'camera' class = 'title'>camera_display</text>
+    <xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
 </div>
 ```
 

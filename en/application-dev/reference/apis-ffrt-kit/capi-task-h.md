@@ -57,7 +57,7 @@ The **task.h** file declares the task APIs in C.
 
 ### ffrt_task_attr_init()
 
-```
+```c
 FFRT_C_API int ffrt_task_attr_init(ffrt_task_attr_t* attr)
 ```
 
@@ -82,7 +82,7 @@ Initializes a task attribute.
 
 ### ffrt_task_attr_set_name()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_name(ffrt_task_attr_t* attr, const char* name)
 ```
 
@@ -102,7 +102,7 @@ Sets a task name.
 
 ### ffrt_task_attr_get_name()
 
-```
+```c
 FFRT_C_API const char* ffrt_task_attr_get_name(const ffrt_task_attr_t* attr)
 ```
 
@@ -127,7 +127,7 @@ Obtains a task name.
 
 ### ffrt_task_attr_destroy()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_destroy(ffrt_task_attr_t* attr)
 ```
 
@@ -146,7 +146,7 @@ Destroys a task attribute.
 
 ### ffrt_task_attr_set_qos()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)
 ```
 
@@ -166,7 +166,7 @@ Sets the task QoS.
 
 ### ffrt_task_attr_get_qos()
 
-```
+```c
 FFRT_C_API ffrt_qos_t ffrt_task_attr_get_qos(const ffrt_task_attr_t* attr)
 ```
 
@@ -191,7 +191,7 @@ Obtains the task QoS.
 
 ### ffrt_task_attr_set_delay()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_us)
 ```
 
@@ -213,7 +213,7 @@ After the scheduling delay is set, the input and output dependencies of the task
 
 ### ffrt_task_attr_get_delay()
 
-```
+```c
 FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr)
 ```
 
@@ -238,7 +238,7 @@ Obtains the task delay time.
 
 ### ffrt_task_attr_set_queue_priority()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_queue_priority(ffrt_task_attr_t* attr, ffrt_queue_priority_t priority)
 ```
 
@@ -258,7 +258,7 @@ Sets the task priority in the queue.
 
 ### ffrt_task_attr_get_queue_priority()
 
-```
+```c
 FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_task_attr_t* attr)
 ```
 
@@ -283,7 +283,7 @@ Obtains the task priority in the queue.
 
 ### ffrt_task_attr_set_stack_size()
 
-```
+```c
 FFRT_C_API void ffrt_task_attr_set_stack_size(ffrt_task_attr_t* attr, uint64_t size)
 ```
 
@@ -303,7 +303,7 @@ Sets the task stack size.
 
 ### ffrt_task_attr_get_stack_size()
 
-```
+```c
 FFRT_C_API uint64_t ffrt_task_attr_get_stack_size(const ffrt_task_attr_t* attr)
 ```
 
@@ -328,7 +328,7 @@ Obtains the task stack size.
 
 ### ffrt_this_task_update_qos()
 
-```
+```c
 FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)
 ```
 
@@ -353,7 +353,7 @@ Updates the task QoS.
 
 ### ffrt_this_task_get_qos()
 
-```
+```c
 FFRT_C_API ffrt_qos_t ffrt_this_task_get_qos(void)
 ```
 
@@ -371,7 +371,7 @@ Obtains the task QoS.
 
 ### ffrt_this_task_get_id()
 
-```
+```c
 FFRT_C_API uint64_t ffrt_this_task_get_id(void)
 ```
 
@@ -389,7 +389,7 @@ Obtains the ID of this task.
 
 ### ffrt_alloc_auto_managed_function_storage_base()
 
-```
+```c
 FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_t kind)
 ```
 
@@ -414,7 +414,7 @@ Applies for memory for the task execution function struct.
 
 ### ffrt_submit_base()
 
-```
+```c
 FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps,const ffrt_task_attr_t* attr)
 ```
 
@@ -436,7 +436,7 @@ Submits a task.
 
 ### ffrt_submit_h_base()
 
-```
+```c
 FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps,const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 ```
 
@@ -464,7 +464,7 @@ Submits a task, and obtains the task handle.
 
 ### ffrt_submit_f()
 
-```
+```c
 FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps,const ffrt_task_attr_t* attr)
 ```
 
@@ -492,7 +492,7 @@ Submits a task. It is a simplified wrapper of **ffrt_submit_base**. This API ass
 
 ### ffrt_submit_h_f()
 
-```
+```c
 FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps,const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 ```
 
@@ -526,7 +526,7 @@ Submits a task, and obtains the task handle. It is a simplified wrapper of **ffr
 
 ### ffrt_task_handle_inc_ref()
 
-```
+```c
 FFRT_C_API uint32_t ffrt_task_handle_inc_ref(ffrt_task_handle_t handle)
 ```
 
@@ -551,7 +551,7 @@ Increases the number of task handle references.
 
 ### ffrt_task_handle_dec_ref()
 
-```
+```c
 FFRT_C_API uint32_t ffrt_task_handle_dec_ref(ffrt_task_handle_t handle)
 ```
 
@@ -576,7 +576,7 @@ Decreases the number of task handle references.
 
 ### ffrt_task_handle_destroy()
 
-```
+```c
 FFRT_C_API void ffrt_task_handle_destroy(ffrt_task_handle_t handle)
 ```
 
@@ -595,7 +595,7 @@ Destroys a task handle.
 
 ### ffrt_wait_deps()
 
-```
+```c
 FFRT_C_API void ffrt_wait_deps(const ffrt_deps_t* deps)
 ```
 
@@ -614,7 +614,7 @@ Waits until the dependent tasks are complete.
 
 ### ffrt_wait()
 
-```
+```c
 FFRT_C_API void ffrt_wait(void)
 ```
 

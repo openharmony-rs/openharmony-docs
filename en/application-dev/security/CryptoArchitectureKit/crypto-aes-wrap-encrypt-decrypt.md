@@ -17,7 +17,7 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
    
    In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
 
-2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **AES-128-WRAP** to create a **Cipher** instance of the AES-128-WRAP type for encryption.
+2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance of the AES128-WRAP type for encryption.
 
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In the **Cipher.init** API, set **opMode** to **CryptoMode.ENCRYPT_MODE** (encryption), **key** to **SymKey** (the key for encryption), and **params** to **IvParamsSpec**.
 
@@ -25,7 +25,7 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
 
 **Decryption**
 
-1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **AES-128-WRAP** to create a **Cipher** instance of the AES-128-WRAP type for decryption.
+1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance of the AES128-WRAP type for decryption.
 
 2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In the **Cipher.init** API, set **opMode** to **CryptoMode.DECRYPT_MODE** (decryption), **key** to **SymKey** (the key for decryption), and **params** to **IvParamsSpec**.
 
@@ -44,7 +44,7 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
   }
 
   function genIvParamsSpec() {
-    let ivBlob = generateRandom(16);
+    let ivBlob = generateRandom(8);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
       algName: "IvParamsSpec",
       iv: ivBlob
@@ -54,14 +54,14 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
   let iv = genIvParamsSpec();
   // Encrypt the message.
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
-    let cipher = cryptoFramework.createCipher('AES-128-WRAP');
+    let cipher = cryptoFramework.createCipher('AES128-WRAP');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, iv);
     let cipherData = await cipher.doFinal(plainText);
     return cipherData;
   }
   // Decrypt the message.
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
-    let decoder = cryptoFramework.createCipher('AES-128-WRAP');
+    let decoder = cryptoFramework.createCipher('AES128-WRAP');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, iv);
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
@@ -107,7 +107,7 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
   }
 
   function genIvParamsSpec() {
-    let ivBlob = generateRandom(16);
+    let ivBlob = generateRandom(8);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
       algName: "IvParamsSpec",
       iv: ivBlob
@@ -117,14 +117,14 @@ For details, see [AES-WRAP encryption and decryption algorithm specifications](c
   let iv = genIvParamsSpec();
   // Encrypt the message.
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
-    let cipher = cryptoFramework.createCipher('AES-128-WRAP');
+    let cipher = cryptoFramework.createCipher('AES128-WRAP');
     cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, iv);
     let cipherData = cipher.doFinalSync(plainText);
     return cipherData;
   }
   // Decrypt the message.
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
-    let decoder = cryptoFramework.createCipher('AES-128-WRAP');
+    let decoder = cryptoFramework.createCipher('AES128-WRAP');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, iv);
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;

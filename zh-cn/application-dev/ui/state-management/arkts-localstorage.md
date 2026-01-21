@@ -312,7 +312,7 @@ struct Parent {
 
 - ChildOne组件中，Text绑定的storagePropTwo 依旧显示47。
 
-<!-- @[localtorage_page_two_sigle_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSigleSYN.ets) -->
+<!-- @[localtorage_page_two_single_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSingleSYN.ets) -->
 
 ``` TypeScript
 // 创建新实例并使用给定对象初始化

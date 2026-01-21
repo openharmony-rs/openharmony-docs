@@ -77,7 +77,7 @@ The file declares the APIs for image encoding.
 
 ### IMAGE_PACKER_DYNAMIC_RANGE
 
-```
+```c
 enum IMAGE_PACKER_DYNAMIC_RANGE
 ```
 
@@ -97,7 +97,7 @@ Enumerates the dynamic range for encoding.
 
 ### OH_PackingOptions_Create()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)
 ```
 
@@ -122,7 +122,7 @@ Creates the pointer to an OH_PackingOptions struct.
 
 ### OH_PackingOptions_GetMimeType()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_MimeType *format)
 ```
 
@@ -148,7 +148,7 @@ Obtains the MIME type.
 
 ### OH_PackingOptions_GetMimeTypeWithNull()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options,Image_MimeType *format)
 ```
 
@@ -174,7 +174,7 @@ Obtains the MIME type in the packing options. The output **format.data** is term
 
 ### OH_PackingOptions_SetMimeType()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options,Image_MimeType *format)
 ```
 
@@ -200,7 +200,7 @@ Sets the MIME type.
 
 ### OH_PackingOptions_GetQuality()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options,uint32_t *quality)
 ```
 
@@ -226,7 +226,7 @@ Obtains the encoding quality.
 
 ### OH_PackingOptions_SetQuality()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options,uint32_t quality)
 ```
 
@@ -252,7 +252,7 @@ Sets the encoding quality.
 
 ### OH_PackingOptions_GetNeedsPackProperties()
 
-```
+```c
  Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *options,bool *needsPackProperties)
 ```
 
@@ -278,7 +278,7 @@ Obtains the **needsPackProperties** parameter in the OH_PackingOptions struct.
 
 ### OH_PackingOptions_SetNeedsPackProperties()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *options,bool needsPackProperties)
 ```
 
@@ -304,7 +304,7 @@ Sets the **needsPackProperties** parameter in the OH_PackingOptions struct.
 
 ### OH_PackingOptions_GetDesiredDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *options, int32_t* desiredDynamicRange)
 ```
 
@@ -330,7 +330,7 @@ Obtains the desired dynamic range during encoding.
 
 ### OH_PackingOptions_SetDesiredDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *options, int32_t desiredDynamicRange)
 ```
 
@@ -356,7 +356,7 @@ Sets the desired dynamic range during encoding.
 
 ### OH_PackingOptions_Release()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)
 ```
 
@@ -381,7 +381,7 @@ Releases the pointer to an OH_PackingOptions struct.
 
 ### OH_PackingOptionsForSequence_Create()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_Create(OH_PackingOptionsForSequence **options)
 ```
 
@@ -406,7 +406,7 @@ Creates the pointer to an OH_PackingOptionsForSequence struct.
 
 ### OH_PackingOptionsForSequence_SetFrameCount()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_SetFrameCount(OH_PackingOptionsForSequence *options,uint32_t frameCount)
 ```
 
@@ -432,7 +432,7 @@ Sets the number of frames for image sequence encoding.
 
 ### OH_PackingOptionsForSequence_GetFrameCount()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_GetFrameCount(OH_PackingOptionsForSequence *options,uint32_t *frameCount)
 ```
 
@@ -458,7 +458,7 @@ Obtains the number of frames for image sequence encoding.
 
 ### OH_PackingOptionsForSequence_SetDelayTimeList()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_SetDelayTimeList(OH_PackingOptionsForSequence *options,int32_t *delayTimeList, size_t delayTimeListLength)
 ```
 
@@ -485,7 +485,7 @@ Sets the delay time array for image sequence encoding.
 
 ### OH_PackingOptionsForSequence_GetDelayTimeList()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_GetDelayTimeList(OH_PackingOptionsForSequence *options,int32_t *delayTimeList, size_t delayTimeListLength)
 ```
 
@@ -512,7 +512,7 @@ Obtains the delay time array for image sequence encoding.
 
 ### OH_PackingOptionsForSequence_SetDisposalTypes()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_SetDisposalTypes(OH_PackingOptionsForSequence *options,uint32_t *disposalTypes, size_t disposalTypesLength)
 ```
 
@@ -539,7 +539,7 @@ Sets the disposal type array for image sequence encoding.
 
 ### OH_PackingOptionsForSequence_GetDisposalTypes()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_GetDisposalTypes(OH_PackingOptionsForSequence *options,uint32_t *disposalTypes, size_t disposalTypesLength)
 ```
 
@@ -566,7 +566,7 @@ Obtains the disposal type array for image sequence encoding.
 
 ### OH_PackingOptionsForSequence_SetLoopCount()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_SetLoopCount(OH_PackingOptionsForSequence *options, uint32_t loopCount)
 ```
 
@@ -592,7 +592,7 @@ Sets the number of loops for image sequence encoding. The value range is [0, 655
 
 ### OH_PackingOptionsForSequence_GetLoopCount()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_GetLoopCount(OH_PackingOptionsForSequence *options, uint32_t *loopCount)
 ```
 
@@ -618,7 +618,7 @@ Obtains the number of loops for image sequence encoding.
 
 ### OH_PackingOptionsForSequence_Release()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_Release(OH_PackingOptionsForSequence *options)
 ```
 
@@ -643,7 +643,7 @@ Releases the pointer to an OH_PackingOptionsForSequence struct.
 
 ### OH_ImagePackerNative_Create()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_Create(OH_ImagePackerNative **imagePacker)
 ```
 
@@ -668,7 +668,7 @@ Creates the pointer to an OH_ImagePackerNative struct.
 
 ### OH_ImagePackerNative_PackToDataFromImageSource()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_ImageSourceNative *imageSource, uint8_t *outData, size_t *size)
 ```
 
@@ -697,7 +697,7 @@ Encodes an image source into data in a given format.
 
 ### OH_ImagePackerNative_PackToDataFromPixelmap()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_PixelmapNative *pixelmap, uint8_t *outData, size_t *size)
 ```
 
@@ -726,7 +726,7 @@ Encodes a PixelMap into data in a given format.
 
 ### OH_ImagePackerNative_PackToDataFromPicture()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_PictureNative *picture, uint8_t *outData, size_t *size)
 ```
 
@@ -755,7 +755,7 @@ Encodes a picture into data in a given format.
 
 ### OH_ImagePackerNative_PackToDataFromPixelmapSequence()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePackerNative *imagePacker,OH_PackingOptionsForSequence *options, OH_PixelmapNative **pixelmapSequence,size_t sequenceLength, uint8_t *outData, size_t *outDataSize)
 ```
 
@@ -785,7 +785,7 @@ Encodes a PixelMap sequence into data.
 
 ### OH_ImagePackerNative_PackToFileFromImageSource()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_ImageSourceNative *imageSource, int32_t fd)
 ```
 
@@ -813,7 +813,7 @@ Encodes an image source into a file.
 
 ### OH_ImagePackerNative_PackToFileFromPixelmap()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_PixelmapNative *pixelmap, int32_t fd)
 ```
 
@@ -841,7 +841,7 @@ Encodes a PixelMap into a file.
 
 ### OH_ImagePackerNative_PackToFileFromPicture()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToFileFromPicture(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_PictureNative *picture, int32_t fd)
 ```
 
@@ -869,7 +869,7 @@ Encodes a picture into a file.
 
 ### OH_ImagePackerNative_PackToFileFromPixelmapSequence()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmapSequence(OH_ImagePackerNative *imagePacker,OH_PackingOptionsForSequence *options, OH_PixelmapNative **pixelmapSequence, size_t sequenceLength, int32_t fd)
 ```
 
@@ -898,7 +898,7 @@ Encodes a PixelMap sequence into a file.
 
 ### OH_ImagePackerNative_GetSupportedFormats()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_GetSupportedFormats(Image_MimeType **supportedFormats, size_t *length)
 ```
 
@@ -924,7 +924,7 @@ Obtains the supported image formats that can be encoded.
 
 ### OH_ImagePackerNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_Release(OH_ImagePackerNative *imagePacker)
 ```
 

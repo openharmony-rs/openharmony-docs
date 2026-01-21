@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 Scene-based widgets support special effects. For example, you can choose to extend the animation beyond the widget rendering area to create an "overflow" effect.
 
@@ -57,7 +57,9 @@ The following figure shows the timing diagram in interval-based and time-specifi
 ![live-form-overflow-rule.png](figures/live-form-overflow-rule.png)
 
 Example: On a device, a 2×2 widget measures 158vp × 158vp. Referring to the figure above:
+
 1. AD = 158vp, AB = 158vp, IJ = 158 × 1.5 = 237vp, IL = 158 × 1.5 = 237vp
+
 2. Points I and A are horizontally 39.5vp apart and vertically 39.5vp apart.
 
 Thus, with A as the origin (X-axis positive to the right, Y-axis positive downward), the valid coordinates for point E in Figure 5 can be (-20, -20). The valid lengths for sides EF and EH can both be 200vp.

@@ -16,7 +16,7 @@ The **renderFit** attribute sets how the final state of a component's content is
 
 renderFit(fitMode: RenderFit): T
 
-Sets how the final state of the component's content is rendered during its width and height animation process.
+Sets how the final state of the component's content is rendered during its width and height animation process. If it is not set via this API, the content size at the end of the animation is maintained, and the content always remains top-left aligned with the component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -28,7 +28,7 @@ Sets how the final state of the component's content is rendered during its width
 
 | Name | Type                           | Mandatory| Description                                                        |
 | ------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| fitMode | [RenderFit](ts-appendix-enums.md#renderfit10) | Yes  | How the final state of the component's content is rendered during its width and height animation process.<br>If **renderFit** is not set, the default value **RenderFit.TOP_LEFT** is used.|
+| fitMode | [RenderFit](ts-appendix-enums.md#renderfit10) | Yes  | Sets how the final state of the component's content is rendered during its width and height animation process.|
 
 **Return value**
 
@@ -40,7 +40,7 @@ Sets how the final state of the component's content is rendered during its width
 
 renderFit(fitMode: Optional\<RenderFit>): T
 
-Sets how the final state of the component's content is rendered during its width and height animation process. Compared with [renderFit](#renderfit), this API supports the **undefined** type for the **fitMode** parameter.
+Sets how the final state of the component's content is rendered during its width and height animation process. If it is not set via this API, the content size at the end of the animation is maintained, and the content always remains top-left aligned with the component. Compared to [renderFit](#renderfit), this API supports the **undefined** type for the **fitMode** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -52,7 +52,7 @@ Sets how the final state of the component's content is rendered during its width
 
 | Name | Type                                      | Mandatory| Description                                                        |
 | ------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| fitMode | Optional\<[RenderFit](ts-appendix-enums.md#renderfit10)> | Yes  | How the final state of the component's content is rendered during its width and height animation process.<br>If **fitMode** is set to **undefined**, the default value is used, which is equivalent to **RenderFit.TOP_LEFT**.|
+| fitMode | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RenderFit](ts-appendix-enums.md#renderfit10)> | Yes  | Sets how the final state of the component's content is rendered during its width and height animation process.<br>If **fitMode** is set to **undefined**, the default value is used, which is equivalent to **RenderFit.TOP_LEFT**.|
 
 **Return value**
 

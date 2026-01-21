@@ -34,18 +34,20 @@ JS文件用来定义HML页面的业务逻辑，支持ECMA规范的JavaScript语�
 10. template strings
 
 - 模块声明
+
   使用import方法引入功能模块：
 
 
-  ```
+  ``` ts
   import router from '@ohos.router';
   ```
 
 - 代码引用
+
   使用import方法导入js代码：
 
 
-  ```
+  ``` ts
   import utils from '../../common/utils.js';
   ```
 

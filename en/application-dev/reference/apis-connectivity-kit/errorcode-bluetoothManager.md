@@ -154,6 +154,7 @@ An excessive number of scan channels have been activated by this application or 
 **Solution**
 
 If this application has never started a scan, you can turn Bluetooth off and then back on to release the scanning resources occupied by other applications.
+
 If this application has already started a scan on another channel, you can call the **stopScan** API to halt the scan. After the hardware resources are released, restart the current scan.
 
 ## 2900010
@@ -187,6 +188,7 @@ This error code is reported if the previous operation is not complete.
 **Possible Causes**
 
 The current operation is executed before the previous operation is complete. For example, the [readCharacteristicValue](js-apis-bluetooth-ble.md#readcharacteristicvalue) API is called when the current API call is still in progress.
+
 Other involved APIs are [writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue), [readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue), [writeDescriptorValue](js-apis-bluetooth-ble.md#writedescriptorvalue), [getRssiValue](js-apis-bluetooth-ble.md#getrssivalue), [setCharacteristicChangeNotification](js-apis-bluetooth-ble.md#setcharacteristicchangenotification) and [setCharacteristicChangeIndication](js-apis-bluetooth-ble.md#setcharacteristicchangeindication). A new API call will be blocked if the current API call is not yet complete.
 
 **Solution**
@@ -390,6 +392,24 @@ The GATT connection is not authorized.
 **Solution**
 
 Check whether the GATT connection is authorized.
+
+## 2901008
+
+**Error Message**
+
+GATT service is not found.
+
+**Description**
+
+The GATT service does not exist. Before obtaining the specified GATT service, ensure that the service has been added.
+
+**Possible Causes**
+
+The GATT service has not been added.
+
+**Solution**
+
+Call [addService](js-apis-bluetooth-ble.md#addservice) to add the service.
 
 ## 2901054
 

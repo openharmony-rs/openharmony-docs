@@ -142,7 +142,7 @@ import promptAction from '@ohos.promptAction';
 export default {
   search(e){
     promptAction.showToast({
-      message:  e.value,
+      message: e.value,
       duration: 3000,
     });
   },

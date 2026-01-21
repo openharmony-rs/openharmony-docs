@@ -626,6 +626,10 @@ Enables preview bandwidth compression.
 
 Before enabling this feature, you can call [isBandwidthCompressionSupported](#isbandwidthcompressionsupported23) to check whether the device supports preview bandwidth compression.
 
+> **NOTE**
+>
+> This function must be called prior to [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11). Otherwise, the preview output stream format will be affected.
+
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -642,6 +646,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID   | Error Message                                          |
 | -------- |----------------------------------------------- |
+| 7400102  | Operation not allowed. |
 | 7400103  | Session not config. |
 | 7400201  | Camera service fatal error. |
 

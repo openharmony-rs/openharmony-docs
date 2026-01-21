@@ -1,6 +1,6 @@
 # DRM Kit
 
-- [Introduction to DRM Kit](drm-overview.md)
+- [About This Kit](drm-overview.md)
 - [DRM Development (ArkTS)](drm-arkts-dev-guide.md)
 - [DRM Development (C/C++)](drm-c-dev-guide.md)
 <!--Del-->

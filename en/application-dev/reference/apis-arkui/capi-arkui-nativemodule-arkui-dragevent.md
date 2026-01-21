@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_DragEvent ArkUI_DragEvent
+```
+
 ## Overview
 
 Defines a struct for a drag event.

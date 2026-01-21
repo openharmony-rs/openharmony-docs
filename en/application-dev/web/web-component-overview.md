@@ -1,4 +1,4 @@
-# Introduction to ArkWeb
+# About This Kit
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
@@ -9,7 +9,7 @@
 ## When to Use
 
 ArkWeb provides **Web** components to display web page content in applications. You can use the components in the following scenarios:
-- Web page integration: Applications can use **Web** components to embed web page content to reduce development costs and improve development and operation efficiency. 
+- Web page integration: Applications can use **Web** components to embed web page content to reduce development costs and improve development and O&M efficiency.
 
 - Web browsing: Browser applications can use **Web** components to open third-party web pages, browse web pages in traceless mode, and set advertisement blocking.
 

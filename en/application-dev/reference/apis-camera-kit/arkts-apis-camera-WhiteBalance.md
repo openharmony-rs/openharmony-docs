@@ -110,7 +110,7 @@ setWhiteBalance(whiteBalance: number): void
 
 Sets a white balance value.
 
-Before the setting, run [isWhiteBalanceModeSupported](arkts-apis-camera-WhiteBalanceQuery.md#iswhitebalancemodesupported20) to check the white balance value range supported by the device.
+Before the setting, run [getWhiteBalanceRange](arkts-apis-camera-WhiteBalanceQuery.md#getwhitebalancerange20) to check the white balance value range supported by the device.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

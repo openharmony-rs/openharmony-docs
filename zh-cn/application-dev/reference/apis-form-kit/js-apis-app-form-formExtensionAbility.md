@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。
@@ -78,7 +78,7 @@ import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
-    console.log(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
+    console.info(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
     let dataObj1: Record<string, string> = {
       'temperature': '11c',
       'time': '11:00'
@@ -116,7 +116,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onCastToNormalForm(formId: string) {
     // 卡片提供方收到卡片使用方将临时卡片转常态卡片的通知时触发，开发者需根据实际需求做相应的处理
-    console.log(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
+    console.info(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
   }
 };
 ```
@@ -158,7 +158,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     formProvider.updateForm(formId, obj2).then(() => {
       console.info(`FormExtensionAbility context updateForm`);
     }).catch((error: BusinessError) => {
-      console.error(`FormExtensionAbility context updateForm failed, data: ${error}`);
+      console.error(`FormExtensionAbility context updateForm failed, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
     });
   }
 };
@@ -208,9 +208,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     for (let i: number = 0; i < keys.length; i++) {
       console.info(`FormExtensionAbility onChangeFormVisibility, key: ${keys[i]}, value= ${newStatus[keys[i]]}`);
       formProvider.updateForm(keys[i], obj2).then(() => {
-        console.info(`FormExtensionAbility context updateForm`);
+        console.info('FormExtensionAbility context updateForm');
       }).catch((error: BusinessError) => {
-        console.error(`Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+        console.error(`Operation updateForm failed. , code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       });
     }
   }
@@ -306,7 +306,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
     // 仅当前formExtensionAbility存活时更新配置才会触发此生命周期。
     // 需要注意：formExtensionAbility创建后10秒内无操作将会被清理。
-    console.info(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
+    console.info(`onConfigurationUpdate, config: ${newConfig?.language}`);
   }
 };
 ```

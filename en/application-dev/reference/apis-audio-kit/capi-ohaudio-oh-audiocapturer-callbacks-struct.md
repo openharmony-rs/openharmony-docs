@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks
 ```
 
@@ -49,7 +49,7 @@ Use the following callback types for substitute:
 
 ### OH_AudioCapturer_OnReadData()
 
-```
+```c
 int32_t (*OH_AudioCapturer_OnReadData)(OH_AudioCapturer* capturer,void* userData,void* buffer,int32_t length)
 ```
 
@@ -71,12 +71,12 @@ The callback function is used only to read audio data. Do not call AudioCapturer
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
 | void* userData | Pointer to the data storage area customized by the application.    |
-| void* buffer | Pointer to the playback data storage area, which is used by the application to fill in playback data.     |
+| void* buffer | Pointer to the captured data storage area, which is used by the application to read captured data.     |
 | int32_t length | Length of the buffer.    |
 
 ### OH_AudioCapturer_OnStreamEvent()
 
-```
+```c
 int32_t (*OH_AudioCapturer_OnStreamEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioStream_Event event)
 ```
 
@@ -100,7 +100,7 @@ Defines a function pointer to the callback function used to process audio record
 
 ### OH_AudioCapturer_OnInterruptEvent()
 
-```
+```c
 int32_t (*OH_AudioCapturer_OnInterruptEvent)(OH_AudioCapturer* capturer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)
 ```
 
@@ -126,7 +126,7 @@ Defines a function pointer to the callback function used to process audio record
 
 ### OH_AudioCapturer_OnError()
 
-```
+```c
 int32_t (*OH_AudioCapturer_OnError)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_Result error)
 ```
 

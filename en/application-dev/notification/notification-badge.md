@@ -35,7 +35,9 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
 
 1. Import the **NotificationManager** module.
 
-   ```ts
+   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->    
+   
+   ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -43,34 +45,40 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
    const TAG: string = '[PublishOperation]';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
-
+   
 2. Increase the count on the badge.
 
    When publishing a notification, pass the **badgeNumber** parameter in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). For details, see [Publishing a Text Notification](text-notification.md).
    
    In this example, the **setBadgeNumber** API is called to add a badge. This API is called after a new notification is published.
+
+   <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
-    ```ts
-    let badgeNumber: number = 9;
-    notificationManager.setBadgeNumber(badgeNumber).then(() => {
-      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
-    });
-    ```
+   ``` TypeScript
+   let badgeNumber: number = 9;
+   notificationManager.setBadgeNumber(badgeNumber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 3. Decrease the count on the badge.
 
    After a notification is read, the application needs to call the API to set the number of remaining unread notifications. The badge is then updated.
 
-    ```ts
-    let badgeNumber: number = 8;
-    notificationManager.setBadgeNumber(badgeNumber).then(() => {
-      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
-    });
-    ```
+   <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+   
+   ``` TypeScript
+   let badgeNumber: number = 8;
+   notificationManager.setBadgeNumber(badgeNumber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 ## FAQs
 
@@ -82,18 +90,22 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
 
     The sample code is as follows:
 
-    ```ts
+    <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+    
+    ``` TypeScript
     let badgeNumber: number = 10;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     badgeNumber = 11;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```
 
@@ -103,7 +115,9 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
 
     The sample code is as follows:
 
-    ```ts
+    <!-- @[update_badge_count_idempotent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
+    
+    ``` TypeScript
     let badgeNumber: number = 10;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
@@ -111,9 +125,11 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
       notificationManager.setBadgeNumber(badgeNumber).then(() => {
         hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
       }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+        hilog.error(DOMAIN_NUMBER, TAG,
+          `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
       });
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+      hilog.error(DOMAIN_NUMBER, TAG,
+        `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```

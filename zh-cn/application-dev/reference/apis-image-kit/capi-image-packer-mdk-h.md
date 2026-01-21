@@ -12,13 +12,13 @@
 
 编码过程如下：
 
-通过OH_ImagePacker_Create方法创建编码器实例对象。
+通过OH_ImagePacker_Create方法创建编码器对象。
 
-然后通过OH_ImagePacker_InitNative将编码器实例对象转换为编码器原生实例对象。
+然后通过OH_ImagePacker_InitNative将编码器对象转换为编码器原生对象。
 
 接下来用OH_ImagePacker_PackToData或者OH_ImagePacker_PackToFile将源以特定的编码选项编码进目标区域。
 
-最后通过OH_ImagePacker_Release释放编码器实例对象。
+最后通过OH_ImagePacker_Release释放编码器对象。
 
 **引用文件：** <multimedia/image_framework/image_packer_mdk.h>
 

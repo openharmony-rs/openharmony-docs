@@ -172,15 +172,3 @@ Allows a system service to enable distributed hardware resources.
 **Enable via ACL**: false
 
 **Valid since**: 11
-
-## ohos.permission.ACCESS_USER_ACCOUNT_INFO
-
-Allows a system application to access user account information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 18

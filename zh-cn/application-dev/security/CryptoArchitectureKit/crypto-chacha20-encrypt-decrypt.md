@@ -47,7 +47,10 @@
 
 - 异步方法示例：
 
-  ```ts
+  <!-- @[encrypt_decrypt_chacha20_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionAsync.ets) -->
+
+  ``` TypeScript
+
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -60,7 +63,7 @@
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
-      algName: "IvParamsSpec",
+      algName: 'IvParamsSpec',
       iv: ivBlob
     };
     return ivParamsSpec;
@@ -93,7 +96,7 @@
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159, 83,
         217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = await genSymKeyByData(keyData);
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = await encryptMessagePromise(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
@@ -109,9 +112,13 @@
   }
   ```
 
+
 - 同步方法示例：
 
-  ```ts
+  <!-- @[encrypt_decrypt_chacha20_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionSync.ets) -->
+
+  ``` TypeScript
+
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -124,11 +131,12 @@
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
-      algName: "IvParamsSpec",
+      algName: 'IvParamsSpec',
       iv: ivBlob
     };
     return ivParamsSpec;
   }
+
   let ivSpec = genIvParamsSpec();
 
   // 加密消息。
@@ -138,6 +146,7 @@
     let encryptUpdata = cipher.doFinalSync(plainText);
     return encryptUpdata;
   }
+
   // 解密消息。
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20');
@@ -145,6 +154,7 @@
     let decryptdata = decoder.updateSync(cipherText);
     return decryptdata;
   }
+
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
@@ -152,12 +162,13 @@
     console.info('convertKeySync success');
     return symKey;
   }
-  async function main() {
+
+  function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159, 83,
         217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = genSymKeyByData(keyData);
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = encryptMessage(symKey, plainText);
       let decryptText = decryptMessage(symKey, encryptText);

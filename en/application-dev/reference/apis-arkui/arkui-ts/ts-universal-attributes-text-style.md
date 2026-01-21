@@ -7,6 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 Provides capabilities for [TextInput](ts-basic-components-textinput.md) and [TextArea](ts-basic-components-textarea.md) components to obtain text and cursor information, insert and delete text, set character counters, and configure text decoration lines.
+
 Provides capabilities for the [Search](ts-basic-components-search.md) component to obtain text and cursor information, insert and delete text, and configure text decoration lines.
 
 >  **NOTE**
@@ -90,6 +91,7 @@ If the caret position cannot be obtained (for example, when the [TextInputContro
 addText(text: string, textOperationOptions?: TextContentControllerOptions): number
 
 Inserts text at a specified position in the editable content. If no position is specified, the text is appended to the end of the existing content.
+
 This API does not work when the text is being dragged.
 
 **addText** only affects the UI performance within the application and has no effect on the internal logic of the input method application. Therefore, avoid calling this API for preview text.
@@ -132,6 +134,7 @@ Binds or updates the styled placeholder string.
 deleteText(range?: TextRange): void
 
 Deletes text within a specified range in the editable content.
+
 This API does not work when the text is being dragged.
 
 **deleteText** only affects the UI performance within the application and has no effect on the internal logic of the input method application. Therefore, avoid calling this API for preview text.
@@ -172,6 +175,32 @@ Notifies the input method to clear the current preview text.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+### deleteBackward<sup>23+</sup>
+
+deleteBackward(): void
+
+Deletes the character before the text cursor in the text box bound to the basic controller. If some text has been selected using the mouse or keyboard before this function is called, the selected text will be deleted.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### scrollToVisible<sup>23+</sup>
+
+scrollToVisible(range?: TextRange): void
+
+Passes the start index and end index to the bound text input components (TextInput, TextArea, and Search), and scrolls the text within the specified range to the visible area.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description |
+| ------- | ------ | ---- | ----- |
+| range | [TextRange](ts-text-common.md#textrange12) | No   | Text range to be scrolled to the visible area, including the start and end positions of the text.<br>The start position must be less than or equal to the end position. Otherwise, the API call is invalid. If the start position is less than 0, it is considered as 0. If the end position is greater than the length of the entire text, it is considered as the length of the entire text.<br>If no range is specified, the entire text is used by default. If the start position is not specified, the default start position is 0. If the end position is not specified, the default end position is the length of the entire text.|
+
 ## InputCounterOptions<sup>11+</sup>
 
 Provides configuration options for the character counter.
@@ -181,7 +210,7 @@ Provides configuration options for the character counter.
 | Name  | Type   |     Read-Only   |     Optional   |     Description   |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | thresholdPercentage | number  | No| Yes| Threshold percentage for displaying the character counter. The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. When displayed, the character counter is in the following format: Number of characters that have been entered/Maximum number of characters allowed. It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. Value range: [1, 100]. If the value is not an integer, it is rounded down to the nearest integer. If the value exceeds the valid value range, the character counter is not displayed. If the value is **undefined**, the character counter is displayed, but this parameter has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| highlightBorder     | boolean | No | Yes| Whether to highlight the text box border and character counter subscript in red. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and **thresholdPercentage** is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. The value **true** (default) means to highlight the text box border and character counter subscript in red.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| highlightBorder     | boolean | No | Yes| Whether to highlight the text box border and character counter subscript in red. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and **thresholdPercentage** is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. If this parameter is **true**, the red border is displayed; if **false**, it is not displayed. (default) means to highlight the text box border and character counter subscript in red.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | counterTextColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter. When the input character count exceeds the maximum limit multiplied by the specified percentage, the counter displays the current count using this color. If **counterTextColor** is not set, the default gray color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | counterTextOverflowColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter when the maximum limit is exceeded. When the user input exceeds the maximum character count, both the counter text and border switch to this color to indicate overflow. If **counterTextOverflowColor** is not set, the default red color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
@@ -196,8 +225,8 @@ Describes the position of the caret relative to the text box.
 | Name  | Type   |     Read-Only   |     Optional   |     Description   |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | index | number | No| No| Index of the caret position.   |
-| x     | number | No| No| X-coordinate of the caret relative to the text box, in px.|
-| y     | number | No| No| Y-coordinate of the caret relative to the text box, in px.|
+| x     | number | No| No| X coordinate of the cursor relative to the text box, in px.|
+| y     | number | No| No| Y coordinate of the cursor relative to the text box, in px.|
 
 ## TextDecorationOptions<sup>12+</sup>
 
@@ -210,7 +239,7 @@ Provides the text decoration options.
 | Name  | Type   |     Read-Only   |     Optional   |     Description   |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | type  | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | No  | No| Type of the text decoration.|
-| color  |  [ResourceColor](ts-types.md#resourcecolor) | No  | Yes| Color of the text decoration.|
+| color  | &nbsp;[ResourceColor](ts-types.md#resourcecolor) | No  | Yes| Color of the text decoration.|
 | style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | No  | Yes| Style of the text decoration.|
 
 ## SelectionOptions<sup>12+</sup>

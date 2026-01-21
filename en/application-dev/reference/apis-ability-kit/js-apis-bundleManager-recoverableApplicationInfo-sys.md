@@ -35,5 +35,5 @@ Defines the information about a preinstalled application that can be restored af
 | labelId          | number                         | Yes  | No  | ID of the module label.    |
 | iconId           | number                         | Yes  | No  | ID of the module icon.   |
 | systemApp<sup>12+</sup>       | boolean                        | Yes  | No  | Whether the application is a system application. **true** if it is a system application, **false** otherwise. |
-| bundleType<sup>12+</sup>       |[BundleType](js-apis-bundleManager.md#bundletype)             | Yes  | No  | Bundle type.                               |
+| bundleType<sup>12+</sup>       |[bundleManager.BundleType](js-apis-bundleManager.md#bundletype)             | Yes  | No  | Bundle type.                               |
 | codePaths<sup>12+</sup>        | Array\<string>                 | Yes  | No  | Installation directory of the application.         |

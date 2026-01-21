@@ -43,6 +43,7 @@
 | [EVENT_APP_KILLED](#event_app_killed) "APP_KILLED"                                                         | 应用终止事件。<br>**起始版本：** 20      |
 | [EVENT_AUDIO_JANK_FRAME](#event_audio_jank_frame) "AUDIO_JANK_FRAME"                                       | 音频卡顿事件。<br>**起始版本：** 21      |
 | [DOMAIN_OS](#domain_os) "OS"                                                                               | OS作用域。<br>**起始版本：** 12        |
+| [EVENT_MAIN_THREAD_JANK_V2](#event_main_thread_jank_v2) "MAIN_THREAD_JANK_V2"                              | 用于设置主线程超时事件配置策略。<br>**起始版本：** 22    |
 
 ## 宏定义说明
 
@@ -237,4 +238,16 @@ CPU高负载事件。
 OS作用域。
 
 **起始版本：** 12
+
+### EVENT_MAIN_THREAD_JANK_V2
+
+```c
+#define EVENT_MAIN_THREAD_JANK_V2 "MAIN_THREAD_JANK_V2"
+```
+
+**描述**
+
+用于设置主线程超时事件配置策略。
+
+**起始版本：** 22
 

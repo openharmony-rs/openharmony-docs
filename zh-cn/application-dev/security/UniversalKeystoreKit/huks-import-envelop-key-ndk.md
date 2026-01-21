@@ -9,7 +9,11 @@
 
 从API 23开始支持[数字信封](./huks-key-import-overview.md#数字信封导入)特性。
 
-以数字信封导入RSA密钥和AES密钥为例。具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)，其中**数字信封导入密钥不支持DSA算法**。使用数字信封导入密钥需要使用tag，HUKS_TAG_UNWRAP_ALGORITHM_SUITE，该tag值为HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING。数字信封导入密钥时，如果是导入非对称密钥的密钥对，需要添加[OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA标签](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，并将公钥以X.509 DER格式封装填入该标签，且针对非对称密钥仅支持以密钥对形式导入。
+以数字信封导入RSA密钥和AES密钥为例。具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)，其中**数字信封导入密钥不支持DSA算法**。
+
+使用数字信封导入密钥需要使用[OH_HUKS_TAG_UNWRAP_ALGORITHM_SUITE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，该标签值为[OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_algsuite)。
+
+数字信封导入密钥时，如果是导入非对称密钥的密钥对，需要添加[OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)标签，并将公钥以X.509 DER格式封装填入该标签，且针对非对称密钥仅支持以密钥对形式导入。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -17,7 +21,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
 ## 开发步骤
 1. 业务方设备（设备A）生成SM4密钥，cipherSm4。
-2. 设备A使用生成的SM4密钥加密将导入密钥importKey，加密使用ECB/NoPadding模式，enImportKey=Encrypt(ciperSm4, importKey)。
+2. 设备A使用生成的SM4密钥加密将导入密钥importKey，加密使用ECB/NoPadding模式，enImportKey=Encrypt(cipherSm4, importKey)。
 3. 密钥导入方（设备B）导出SM2公钥，设备A接收该密钥。
 4. 设备A使用收到的SM2公钥加密生成的SM4密钥，enSm4=Encrypt(Sm2, cipherSm4)。
 5. 设备A将数字信封数据发送给设备B。
@@ -122,18 +126,18 @@ static napi_value EnvelopImportKey(napi_env env, napi_callback_info info) {
     struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
 
     // 使用sm2密钥加密
-    struct OH_Huks_ParamSet *sm2EnKeyParmSet = NULL;
-    ohResult = InitParamSet(&sm2EnKeyParmSet, gEnvelopEnSm2, sizeof(gEnvelopEnSm2) / sizeof(OH_Huks_Param));
+    struct OH_Huks_ParamSet *sm2EnKeyParamSet = NULL;
+    ohResult = InitParamSet(&sm2EnKeyParamSet, gEnvelopEnSm2, sizeof(gEnvelopEnSm2) / sizeof(OH_Huks_Param));
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         OH_Huks_FreeParamSet(&sm2GenerateKeyParamSet);
         napi_create_int32(env, ohResult.errorCode, &ret);
         return ret;
     }
 
-    ohResult = OH_Huks_InitSession(&gSm2KeyAlias, sm2EnKeyParmSet, &handleEncrypt, nullptr);
+    ohResult = OH_Huks_InitSession(&gSm2KeyAlias, sm2EnKeyParamSet, &handleEncrypt, nullptr);
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         OH_Huks_FreeParamSet(&sm2GenerateKeyParamSet);
-        OH_Huks_FreeParamSet(&sm2EnKeyParmSet);
+        OH_Huks_FreeParamSet(&sm2EnKeyParamSet);
         napi_create_int32(env, ohResult.errorCode, &ret);
         return ret;
     }
@@ -141,10 +145,10 @@ static napi_value EnvelopImportKey(napi_env env, napi_callback_info info) {
     static const uint32_t SM4_SIZE = 128;
     uint8_t cipher[SM4_SIZE] = {0};
     struct OH_Huks_Blob cipherSm4Data = {SM4_SIZE, cipher};
-    ohResult = OH_Huks_FinishSession(&handleEncrypt, sm2EnKeyParmSet, &gSm4Data, &cipherSm4Data);
+    ohResult = OH_Huks_FinishSession(&handleEncrypt, sm2EnKeyParamSet, &gSm4Data, &cipherSm4Data);
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         OH_Huks_FreeParamSet(&sm2GenerateKeyParamSet);
-        OH_Huks_FreeParamSet(&sm2EnKeyParmSet);
+        OH_Huks_FreeParamSet(&sm2EnKeyParamSet);
         napi_create_int32(env, ohResult.errorCode, &ret);
         return ret;
     }
@@ -184,7 +188,7 @@ static napi_value EnvelopImportKey(napi_env env, napi_callback_info info) {
     ohResult = InitParamSet(&rsaParamSet, rsaParams, sizeof(rsaParams) / sizeof(OH_Huks_Param));
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         OH_Huks_FreeParamSet(&sm2GenerateKeyParamSet);
-        OH_Huks_FreeParamSet(&sm2EnKeyParmSet);
+        OH_Huks_FreeParamSet(&sm2EnKeyParamSet);
         napi_create_int32(env, ohResult.errorCode, &ret);
         return ret;
     }
@@ -217,7 +221,7 @@ static napi_value EnvelopImportKey(napi_env env, napi_callback_info info) {
     OH_Huks_Blob rsaKeyAlias = {(uint32_t)sizeof(importAlias), importAlias};
     ohResult = OH_Huks_ImportWrappedKeyItem(&rsaKeyAlias, &gSm2KeyAlias, rsaParamSet, &importKeyBlob);
 
-    OH_Huks_FreeParamSet(&sm2EnKeyParmSet);
+    OH_Huks_FreeParamSet(&sm2EnKeyParamSet);
     OH_Huks_FreeParamSet(&sm2GenerateKeyParamSet);
     OH_Huks_FreeParamSet(&rsaParamSet);
 
@@ -309,7 +313,7 @@ static napi_value EnvelopImportKeyTest(napi_env env, napi_callback_info info)
     struct OH_Huks_Result ohResult;
     struct OH_Huks_ParamSet *sm2KeyData = NULL;
     struct OH_Huks_ParamSet *aesParamSet = NULL;
-    struct OH_Huks_ParamSet *sm2EnKeyParmSet = NULL;
+    struct OH_Huks_ParamSet *sm2EnKeyParamSet = NULL;
     napi_value ret;
 
     uint8_t aesAlias[] = "testAes";
@@ -328,16 +332,16 @@ static napi_value EnvelopImportKeyTest(napi_env env, napi_callback_info info)
     }
     uint8_t handleE[sizeof(uint64_t)] = {0};
     struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
-    ohResult = InitParamSet(&sm2EnKeyParmSet, gEnvelopEnSm2, sizeof(gEnvelopEnSm2) / sizeof(OH_Huks_Param));
+    ohResult = InitParamSet(&sm2EnKeyParamSet, gEnvelopEnSm2, sizeof(gEnvelopEnSm2) / sizeof(OH_Huks_Param));
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
         OH_Huks_FreeParamSet(&sm2GenerateKeyParamSet);
         napi_create_int32(env, ohResult.errorCode, &ret);
         return ret;
     }
 
-    ohResult = OH_Huks_InitSession(&gSm2KeyAlias, sm2EnKeyParmSet, &handleEncrypt, nullptr);
+    ohResult = OH_Huks_InitSession(&gSm2KeyAlias, sm2EnKeyParamSet, &handleEncrypt, nullptr);
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(&sm2EnKeyParmSet);
+        OH_Huks_FreeParamSet(&sm2EnKeyParamSet);
         OH_Huks_FreeParamSet(&sm2GenerateKeyParamSet);
         napi_create_int32(env, ohResult.errorCode, &ret);
         return ret;
@@ -345,9 +349,9 @@ static napi_value EnvelopImportKeyTest(napi_env env, napi_callback_info info)
     static const uint32_t SM4_SIZE = 128;
     uint8_t cipher[SM4_SIZE] = {0};
     struct OH_Huks_Blob cipherSm4Data = {SM4_SIZE, cipher};
-    ohResult = OH_Huks_FinishSession(&handleEncrypt, sm2EnKeyParmSet, &gSm4Data, &cipherSm4Data);
+    ohResult = OH_Huks_FinishSession(&handleEncrypt, sm2EnKeyParamSet, &gSm4Data, &cipherSm4Data);
     if (ohResult.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(&sm2EnKeyParmSet);
+        OH_Huks_FreeParamSet(&sm2EnKeyParamSet);
         OH_Huks_FreeParamSet(&sm2GenerateKeyParamSet);
         napi_create_int32(env, ohResult.errorCode, &ret);
         return ret;
@@ -374,7 +378,7 @@ static napi_value EnvelopImportKeyTest(napi_env env, napi_callback_info info)
 
     ohResult = OH_Huks_ImportWrappedKeyItem(&aesAliasBlob, &gSm2KeyAlias, aesParamSet, &importKeyBlob);
 
-    OH_Huks_FreeParamSet(&sm2EnKeyParmSet);
+    OH_Huks_FreeParamSet(&sm2EnKeyParamSet);
     OH_Huks_FreeParamSet(&sm2GenerateKeyParamSet);
     OH_Huks_FreeParamSet(&aesParamSet);
 

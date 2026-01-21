@@ -123,11 +123,11 @@ Virtual Set Size (VSS) indicates the size of the virtual memory of a process, in
 
 ### PSS
 
-Proportional Set Size (PSS) is a more accurate method of measuring memory usage. It allocates the memory consumed by shared libraries among all processes using them in proportion to their actual share.
+Proportional Set Size (PSS) indicates the total physical memory occupied by a process. PSS = Shared memory/Number of processes that use the shared memory + Private memory of the process
 
 ### RSS
 
-Resident Set Size (RSS) denotes the size of physical memory that is currently resident for a process.
+Resident Set Size (RSS) indicates the size of physical memory that is currently resident for a process.
 
 ### Dirty Pages
 

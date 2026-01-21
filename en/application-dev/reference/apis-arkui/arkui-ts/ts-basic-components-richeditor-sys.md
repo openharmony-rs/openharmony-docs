@@ -25,7 +25,7 @@ Defines the options for adding a builder span.
 | Name    | Type    | Mandatory  | Description                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | dragBackgroundColor<sup>18+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No   | Background color of the builder when it is dragged independently. If no valid value is specified, the default color is used. |
-| isDragShadowNeeded<sup>18+</sup> | boolean | No   | Whether to apply a shadow when the builder is dragged independently. If no valid value is specified, a shadow is applied. The value true means to apply a shadow, and false means the opposite.<br>Default value: **true**|
+| isDragShadowNeeded<sup>18+</sup> | boolean | No   | Whether to apply a shadow when the builder is dragged independently. If no valid value is specified, a shadow is applied. The value **true** means to apply a shadow, and **false** means the opposite.<br>Default value: **true**|
 
 ## RichEditorGesture<sup>11+</sup>
 
@@ -77,7 +77,7 @@ struct RichEditorExample {
 ```
 
 ### Example 2: Setting the Drag Preview and Drag Shadow for a Custom Layout
-In API version 18 and later versions, you can use the [dragBackgroundColor](#richeditorbuilderspanoptions11) and [isDragShadowNeeded](#richeditorbuilderspanoptions11) parameters in the addBuilderSpan API to set parameters for the drag preview and drag shadow for a custom layout.
+In API version 18 and later versions, you can use the [dragBackgroundColor](#richeditorbuilderspanoptions11) and [isDragShadowNeeded](#richeditorbuilderspanoptions11) parameters in the **addBuilderSpan** API to set parameters for the drag preview and drag shadow for a custom layout.
 
 ```ts
 // xxx.ets
@@ -132,4 +132,4 @@ struct richEditorNew03 {
   }
 }
 ```
-
+![StyledString](figures/builderspan_drag_config.gif)

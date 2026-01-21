@@ -15,7 +15,7 @@ WebNativeMessagingExtensionAbility provides the web native messaging capability 
 ## Modules to Import
 
 ```ts
-import WebNativeMessagingExtensionAbility from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility } from '@kit.ArkWeb';
 ```
 
 ## WebNativeMessagingExtensionAbility

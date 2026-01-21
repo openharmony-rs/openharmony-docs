@@ -1,5 +1,12 @@
 # WaterFlow高性能开发指导
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 背景
 
 瀑布流常用于展示图片信息，如多用于购物、资讯类应用。下面通过对[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)组件示例代码的逐步改造，介绍优化WaterFlow性能的方法。
@@ -16,19 +23,19 @@
           FlowItem() {
             Column() {
               Text("N" + item).fontSize(12).height('16')
-              Image('res/waterFlowTest (' + item % 5 + ').jpg')
+              Image('res/waterFlowTest (' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
                 .width('100%')
                 .layoutWeight(1)
             }
           }
           .width('100%')
-          // 提前设定FlowItem高度，避免自适应图片高度  
+          // 提前设定FlowItem高度，避免自适应图片高度  
           .height(this.itemHeightArray[item])
           .backgroundColor(this.colors[item % 5])
         }, (item: string) => item)
       }
-      .columnsTemplate("1fr 1fr")
+      .columnsTemplate("1fr 1fr")
       .columnsGap(10)
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
@@ -56,7 +63,7 @@
           FlowItem() {
             Column() {
               Text("N" + item).fontSize(12).height('16')
-              Image('res/waterFlowTest (' + item % 5 + ').jpg')
+              Image('res/waterFlowTest (' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
                 .width('100%')
                 .layoutWeight(1)
@@ -67,14 +74,14 @@
           .backgroundColor(this.colors[item % 5])
         }, (item: string) => item)
       }
-      // 触底加载数据  
+      // 触底加载数据  
       .onReachEnd(() => {
         console.info("onReachEnd");
         setTimeout(() => {
           this.dataSource.addNewItems(100);
         }, 1000);
       })
-      .columnsTemplate("1fr 1fr")
+      .columnsTemplate("1fr 1fr")
       .columnsGap(10)
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
@@ -113,14 +120,14 @@
           FlowItem() {
             Column() {
               Text("N" + item).fontSize(12).height('16')
-              Image('res/waterFlowTest (' + item % 5 + ').jpg')
+              Image('res/waterFlowTest (' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
                 .width('100%')
                 .layoutWeight(1)
             }
           }
           .onAppear(() => {
-            // 即将触底时提前增加数据  
+            // 即将触底时提前增加数据  
             if (item + 20 == this.dataSource.totalCount()) {
               this.dataSource.addNewItems(100);
             }
@@ -130,7 +137,7 @@
           .backgroundColor(this.colors[item % 5])
         }, (item: string) => item)
       }
-      .columnsTemplate("1fr 1fr")
+      .columnsTemplate("1fr 1fr")
       .columnsGap(10)
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
@@ -156,11 +163,11 @@
       WaterFlow() {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
-            // 使用可复用自定义组件  
+            // 使用可复用自定义组件  
             ResuableFlowItem({ item: item })
           }
           .onAppear(() => {
-            // 即将触底时提前增加数据  
+            // 即将触底时提前增加数据  
             if (item + 20 == this.dataSource.totalCount()) {
               this.dataSource.addNewItems(100);
             }
@@ -170,7 +177,7 @@
           .backgroundColor(this.colors[item % 5])
         }, (item: string) => item)
       }
-      .columnsTemplate("1fr 1fr")
+      .columnsTemplate("1fr 1fr")
       .columnsGap(10)
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
@@ -183,7 +190,7 @@
 struct ResuableFlowItem {
   @State item: number = 0;
 
-  // 从复用缓存中加入到组件树之前调用，可在此处更新组件的状态变量以展示正确的内容
+  // 从复用缓存中加入到组件树之前调用，可在此处更新组件的状态变量以展示正确的内容
   aboutToReuse(params) {
     this.item = params.item;
   }
@@ -191,7 +198,7 @@ struct ResuableFlowItem {
   build() {
     Column() {
       Text("N" + this.item).fontSize(12).height('16')
-      Image('res/waterFlowTest (' + this.item % 5 + ').jpg')
+      Image('res/waterFlowTest (' + this.item % 5 + ').jpg')
         .objectFit(ImageFit.Fill)
         .width('100%')
         .layoutWeight(1)
@@ -204,3 +211,7 @@ struct ResuableFlowItem {
 ## 总结
 
 WaterFlow配合LazyForEach渲染控制语法、提前加载数据和组件复用可以达到无限滚动场景性能最优效果。
+
+## 示例代码
+
+[WaterFlow](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/WaterFlow)

@@ -598,3 +598,71 @@ function unregisterMacroStatusChanged(videoSession: camera.VideoSession): void {
   videoSession.off('macroStatusChanged');
 }
 ```
+
+## onIsoInfoChange<sup>22+</sup>
+
+onIsoInfoChange(callback: Callback\<IsoInfo\>): void
+
+监听相机感光度（ISO）状态变化，通过注册回调函数获取最新ISO值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型                                      | 必填 | 说明                       |
+| -------- | ----------------------------------------- | ---- | ------------------------ |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | 是   | 回调函数，用于获取相机当前的ISO值。|
+
+
+**示例：**
+
+```ts
+
+function callback(isoInfo: camera.IsoInfo): void {
+  console.info(`Iso : ${isoInfo}`);
+}
+
+function registerIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.onIsoInfoChange(callback);
+}
+```
+
+## offIsoInfoChange<sup>22+</sup>
+
+offIsoInfoChange(callback?: Callback\<IsoInfo\>): void
+
+取消监听相机感光度（ISO）状态的变化。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型                                      | 必填 | 说明                       |
+| -------- | ----------------------------------------- | ---- | ------------------------ |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\>     | 否   | 回调函数，可选。<br>如果指定callback参数则注销该callback监听，callback不可是匿名函数。<br>如果未指定callback，则注销所有已存在的callback监听。|
+
+
+**示例：**
+
+```ts
+
+function callback(isoInfo: camera.IsoInfo): void {
+  console.info(`Iso : ${isoInfo}`);
+}
+
+function unregisterIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.offIsoInfoChange(callback);
+}
+
+function unregisterAllIsoInfoChanged(videoSession: camera.VideoSession): void {
+  videoSession.offIsoInfoChange();
+}
+```

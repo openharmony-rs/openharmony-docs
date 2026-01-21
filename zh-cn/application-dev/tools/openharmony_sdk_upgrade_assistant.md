@@ -1,4 +1,11 @@
 # OpenHarmony SDK 升级助手
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 ## 简介
 OpenHarmony SDK 升级助手，用于帮助开发者快速解决OpenHarmony应用SDK升级导致的API不兼容问题。</br>
 由于OpenHarmony SDK Beta版本不承诺API稳定性，在SDK升级后，可能存在API不兼容的问题，应用开发者对现在工程切换API版本后，需要适配API接口及其底层行为的变更，存在一定的升级成本；因此OpenHarmony提供了SDK升级助手，可以帮助开发者快速了解升级适配全貌，并通过工具提示快速适配升级，显著提高SDK升级效率。
@@ -70,11 +77,13 @@ OpenHarmony SDK 升级助手，用于帮助开发者快速解决OpenHarmony应�
 输入命令：npm install，之后进行构建：npm run build。构建成功之后，会在对应的工具文件夹下生成dist=>build=>api-diff.js和dist=>build=>api-collector.js。
 
 ![suap-diff](figures/suap-diff.png)
+
 ![suap-collect](figures/suap-collect.png)
 
 3.在本地磁盘的最后一个盘符，创建名为'updateCheck'文件夹，内部分别创建'api-diff'和'collect_application_api'文件夹。</br>将步骤3中的api-diff.js文件放置'api-diff'文件夹下，collect_application_api文件夹下libs文件夹以及api-collector.js放置在'collect_application_api'文件夹下。
 
 ![suap-diff-file](figures/suap-diff-file.png)
+
 ![suap-collect-file](figures/suap-collect-file.png)
 
 4.升级辅助工具源码clone下来之后，在idea上打开，需要配置gradle环境，并且在src同级目录下新建'build.gradle.kts'文件，将下面内容粘贴至文件中，刷新gradle，在idea右侧gradle工具栏即可运行项目和打包成插件。

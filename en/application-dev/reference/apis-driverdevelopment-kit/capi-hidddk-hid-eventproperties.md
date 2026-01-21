@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_EventProperties {...} Hid_EventProperties
+```
+
 ## Overview
 
 Defines a struct for the event properties of a device.

@@ -16,7 +16,7 @@ Shape clipping changes the visible portion of a component through clipping or ma
 
 clip(value: boolean): T
 
-Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container
+Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area beyond the current component is not cropped by default.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,7 +28,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to clip the areas of child components that extend beyond the current component's bounds.<br>Default value: **false**.<br>The value **true** means to clip the areas of child components that extend beyond the current component's bounds, and **false** means the opposite.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.|
+| value  | boolean | Yes  | Sets whether to crop the child component based on the edge outline of the current component.<br>The value **true** means to clip the areas of child components that extend beyond the current component's bounds, and **false** means the opposite.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.|
 
 **Return value**
 
@@ -40,7 +40,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 clip(clip: Optional\<boolean>): T
 
-Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container Compared with [clip<sup>12+</sup>](#clip12), this API supports the **undefined** type for the **clip** parameter.
+Sets whether to clip the areas of child components that extend beyond this component's bounds, that is, whether to perform clipping based on the edge contour of the parent container If this API is not used, the area beyond the current component is not cropped by default. Compared with [clip<sup>12+</sup>](#clip12), this function supports the undefined type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +52,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 | Name| Type              | Mandatory                                                        | Description|
 | ------ | ------------------ | ------------------------------------------------------------ | ---- |
-| clip   | Optional\<boolean> | Yes|  Whether to clip the areas of child components that extend beyond the current component's bounds.<br>Default value: **false**.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.<br>If **clip** is set to **undefined**, clipping is disabled, and child components are not clipped.   |
+| clip   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes| Sets whether to crop the child component based on the edge outline of the current component.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.<br>If **clip** is set to **undefined**, clipping is disabled, and child components are not clipped.   |
 
 **Return value**
 
@@ -68,7 +68,7 @@ Sets whether to clip this component based on the given shape.
 
 > **NOTE** 
 >
-> This API is supported since API version 7 and deprecated since API version 12. You are advised to use [clip](#clip12) and [clipShape](#clipshape12) instead.
+> This API is supported since API version 7 and deprecated since API version 12. You are advised to use [clipShape](#clipshape12) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -80,7 +80,7 @@ Sets whether to clip this component based on the given shape.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean \| [CircleAttribute](ts-drawing-components-circle.md) \| [EllipseAttribute](ts-drawing-components-ellipse.md) \| [PathAttribute](ts-drawing-components-path.md) \| [RectAttribute](ts-drawing-components-rect.md) | Yes  | Clip mode. If the value is a shape attribute, the component is clipped based on the specified shape. If the value is of the Boolean type, it specifies whether to clip the component based on the boundaries of the parent container.<br>Default value: **false**.<br>Note: If the value is a shape attribute, the clipped area can still respond to bound gesture events. If the value is of the Boolean type, the clipped area will not respond to bound gesture events.|
+| value  | boolean&nbsp;\|&nbsp;[CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) | Yes  | Clip mode. If the value is a shape attribute, the component is clipped based on the specified shape. If the value is of the Boolean type, it specifies whether to clip the component based on the boundaries of the parent container.<br>Default value: **false**.<br>Note: If the value is a shape attribute, the clipped area can still respond to bound gesture events. If the value is of the Boolean type, the clipped area will not respond to bound gesture events.|
 
 **Return value**
 
@@ -112,7 +112,7 @@ Clips this component according to the specified shape (which may include positio
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12) | Yes  | Shape (which may include position information) to clip the current component.<br>Note: The clipped area remains responsive to bound gesture events.|
+| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | Yes  | Shape (which may include position information) to clip the current component.<br>Note: The clipped area remains responsive to bound gesture events.|
 
 **Return value**
 
@@ -124,7 +124,7 @@ Clips this component according to the specified shape (which may include positio
 
 clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>): T
 
-Clips this component according to the specified shape (which may include position information). Compared with [clipShape<sup>12+</sup>](#clipshape12), this API supports the **undefined** type for the **shape** parameter.
+Clips this component according to the specified shape (which may include position information). Compared with [clipShape<sup>12+</sup>](#clipshape12), this function supports the undefined type.
 
 > **NOTE** 
 >
@@ -144,7 +144,7 @@ Clips this component according to the specified shape (which may include positio
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | Optional\<[CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12)> | Yes  | Shape (which may include position information) to clip the current component.<br>Note: The clipped area remains responsive to bound gesture events.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes  | Shape (which may include position information) to clip the current component.<br>Note: The clipped area remains responsive to bound gesture events.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
 
 **Return value**
 
@@ -242,7 +242,7 @@ Adds a mask to the component to indicate the progress.
 
 mask(mask: Optional\<ProgressMask>): T
 
-Adds a mask to the component to indicate the progress. Compared with [mask<sup>12+</sup>](#mask12), this API supports the **undefined** type for the **mask** parameter.
+Adds a mask to the component to indicate the progress. Compared with [mask<sup>12+</sup>](#mask12), this function supports the undefined type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -252,7 +252,7 @@ Adds a mask to the component to indicate the progress. Compared with [mask<sup>1
 
 | Name| Type                                                        | Mandatory| Description                            |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| mask | Optional\<[ProgressMask](#progressmask10)> | Yes| Mask to add to the component, which allows for dynamic adjustment of progress, maximum value, and color settings.<br>If **mask** is set to **undefined**, the component to revert to its original effect without the mask to indicate the progress.    |
+| mask | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ProgressMask](#progressmask10)> | Yes| Mask to add to the component, which allows for dynamic adjustment of progress, maximum value, and color settings.<br>If **mask** is set to **undefined**, the component to revert to its original effect without the mask to indicate the progress.    |
 
 **Return value**
 
@@ -268,7 +268,7 @@ Adds a mask of the specified shape to the component.
 
 > **NOTE** 
 >
-> This API is supported since API version 7 and deprecated since API version 12. You are advised to use [mask](#mask12) and [maskShape](#maskshape12) instead.
+> This API is supported since API version 7 and deprecated since API version 12. You are advised to use [maskShape](#maskshape12) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -280,7 +280,7 @@ Adds a mask of the specified shape to the component.
 
 | Name| Type                                                        | Mandatory| Description                            |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleAttribute](ts-drawing-components-circle.md) \| [EllipseAttribute](ts-drawing-components-ellipse.md) \| [PathAttribute](ts-drawing-components-path.md) \| [RectAttribute](ts-drawing-components-rect.md) \| [ProgressMask](#progressmask10)<sup>10+</sup> | Yes  | Mask of the specified shape to add to the component.|
+| value  | [CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) \|&nbsp;[ProgressMask](#progressmask10)<sup>10+</sup> | Yes  | Mask of the specified shape to add to the component.|
 
 **Return value**
 
@@ -304,7 +304,7 @@ Adds a mask of the specified shape to the component.
 
 | Name| Type                                                        | Mandatory| Description                            |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12) | Yes  | Mask of the specified shape to add to the component.|
+| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | Yes  | Mask of the specified shape to add to the component.|
 
 **Return value**
 
@@ -316,7 +316,7 @@ Adds a mask of the specified shape to the component.
 
 maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>): T
 
-Adds a mask of the specified shape to the component. Compared with [maskShape<sup>12+</sup>](#maskshape12), this API supports the **undefined** type for the **shape** parameter.
+Adds a mask of the specified shape to the component. Compared with [maskShape<sup>12+</sup>](#maskshape12), this function supports the undefined type.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -328,7 +328,7 @@ Adds a mask of the specified shape to the component. Compared with [maskShape<su
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | Optional\<[CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12)> | Yes  | Mask of the specified shape to add to the component.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes  | Mask of the specified shape to add to the component.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
 
 **Return value**
 
@@ -398,7 +398,7 @@ Updates the color of the progress mask.
 
 enableBreathingAnimation(value: boolean): void
 
-Sets whether to enable the breathing animation when the progress indicator is full. By default, the breathing animation is disabled.
+Sets whether to enable the breathing animation when the progress indicator is full. If this interface is not set, the breathing halo animation is disabled by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -408,12 +408,14 @@ Sets whether to enable the breathing animation when the progress indicator is fu
 
 | Name| Type                                  | Mandatory| Description        |
 | ------ | ------------------------------------------ | ---- | ---------------- |
-| value  | boolean | Yes  | Whether to enable the breathing animation. The value **true** means to enable the breathing animation, and **false** means the opposite. Default value: **false**.|
+| value  | boolean | Yes  | Whether to enable the breathing halo animation.<br>true: The breathing halo animation is enabled.<br>false: The breathing halo animation is disabled.|
 
 
 ## Example
 
 ### Example 1: Using Different Clipping Attributes
+
+In this example, [clipShape](#clipshape12), [clip](#clip12), and [maskShape](#maskshape12) are used to crop and mask an image.
 
 ```ts
 // xxx.ets
@@ -459,7 +461,9 @@ struct ClipAndMaskExample {
 
 ![clipAndMask](figures/clipAndMask.PNG)
 
-### Example 2: Clipping and Masking with Animation
+### Example 2: Implementing a Component Mask
+
+In this example, [mask](#mask12) is used to mask an image.
 
 ```ts
 @Entry

@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-```
+```c
 typedef struct {...} ArkWeb_ComponentAPI
 ```
 
@@ -42,7 +42,7 @@ Defines a native component API.
 
 ### onControllerAttached()
 
-```
+```c
 void (*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 
@@ -60,7 +60,7 @@ Triggered when a controller is attached to the **Web** component.
 
 ### onPageBegin()
 
-```
+```c
 void (*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 
@@ -78,7 +78,7 @@ Triggered when the web page starts to be loaded. This callback is called only fo
 
 ### onPageEnd()
 
-```
+```c
 void (*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 
@@ -96,7 +96,7 @@ Triggered when the web page loading is finished. This callback is called only fo
 
 ### onDestroy()
 
-```
+```c
 void (*onDestroy)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 

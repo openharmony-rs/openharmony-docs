@@ -52,7 +52,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
 **Example**
 
-1. Start vibration based on the preset effect.
+1. Trigger vibration with a preset effect.
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -78,14 +78,14 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
            }, (error: BusinessError) => {
              if (error) {
                console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-			   return;
+         return;
              }
              console.info('Succeed in starting vibration');
           
            });
          } catch (err) {
            let e: BusinessError = err as BusinessError;
-		   console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+       console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
          }
        }
      })
@@ -95,7 +95,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
    }
    ```
 
-2. Start vibration according to the custom vibration configuration file.
+2. Trigger vibration according to a custom vibration configuration file.
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -211,7 +211,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
 **Example**
 
-1. Start vibration based on the preset effect.
+1. Trigger vibration with a preset effect.
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -237,14 +237,14 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
            }, (error: BusinessError) => {
              if (error) {
                console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-			         return;
+               return;
              }
              console.info('Succeed in starting vibration');
           
            });
          } catch (err) {
            let e: BusinessError = err as BusinessError;
-		       console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+           console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
          }
        }
      })
@@ -254,7 +254,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
    }
    ```
 
-2. Start vibration according to the custom vibration configuration file.
+2. Trigger vibration according to a custom vibration configuration file.
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -400,7 +400,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
    }
    ```
 
-2. Stop vibration with the preset effect.
+2. Stop preset vibration.
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -513,7 +513,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
    }
    ```
 
-2. Stop vibration with the preset effect.
+2. Stop preset vibration.
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -1157,8 +1157,8 @@ Defines the vibrator information.
 | deviceId            | number  | No | No | Device ID.    |
 | vibratorId          | number  | No | No | Vibrator ID.    |
 | deviceName          | string  | No | No | Device name.    |
-| isHdHapticSupported | boolean | No | No | Whether HD vibration is supported.|
-| isLocalVibrator     | boolean | No | No | Whether the device is a local device. |
+| isHdHapticSupported | boolean | No | No | Whether HD vibration is supported. The value **true** indicates that HD vibration is supported, and the value **false** indicates the opposite.|
+| isLocalVibrator     | boolean | No | No | Whether the device is a local device. The value **true** indicates that the device is a local device, and the value **false** indicates the opposite.|
 
 
 ## vibrator.isHdHapticSupported<sup>12+</sup>
@@ -1242,23 +1242,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
    // Use try catch to capture possible exceptions.
    try {
      let pointsMe: vibrator.VibratorCurvePoint[] = [
-	     { time: 0, intensity: 0, frequency: -7 },
-	     { time: 42, intensity: 1, frequency: -6 },
-	     { time: 128, intensity: 0.94, frequency: -4 },
-	     { time: 217, intensity: 0.63, frequency: -14 },
-	     { time: 763, intensity: 0.48, frequency: -14 },
-	     { time: 1125, intensity: 0.53, frequency: -10 },
-	     { time: 1503, intensity: 0.42, frequency: -14 },
-	     { time: 1858, intensity: 0.39, frequency: -14 },
-	     { time: 2295, intensity: 0.34, frequency: -17 },
-	     { time: 2448, intensity: 0.21, frequency: -14 },
-	     { time: 2468, intensity: 0, frequency: -21 }
+       { time: 0, intensity: 0, frequency: -7 },
+       { time: 42, intensity: 1, frequency: -6 },
+       { time: 128, intensity: 0.94, frequency: -4 },
+       { time: 217, intensity: 0.63, frequency: -14 },
+       { time: 763, intensity: 0.48, frequency: -14 },
+       { time: 1125, intensity: 0.53, frequency: -10 },
+       { time: 1503, intensity: 0.42, frequency: -14 },
+       { time: 1858, intensity: 0.39, frequency: -14 },
+       { time: 2295, intensity: 0.34, frequency: -17 },
+       { time: 2448, intensity: 0.21, frequency: -14 },
+       { time: 2468, intensity: 0, frequency: -21 }
      ] // No less than four VibratorCurvePoint objects must be set. The maximum value is 16.
      let param: vibrator.ContinuousParam = {
-	     intensity: 97,
-	     frequency: 34,
-	     points:pointsMe,
-	     index: 0
+       intensity: 97,
+       frequency: 34,
+       points:pointsMe,
+       index: 0
      }
      builder.addContinuousEvent(0, 2468, param);
      console.info(`addContinuousEvent builder is ${builder.build()}`);
@@ -1307,9 +1307,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
    // Use try catch to capture possible exceptions.
    try {
      let param: vibrator.TransientParam = {
-	     intensity: 80,
-	     frequency: 70,
-	     index: 0
+       intensity: 80,
+       frequency: 70,
+       index: 0
      }
      builder.addTransientEvent(0, param);
      console.info(`addTransientEvent builder is ${builder.build()}`);
@@ -1342,9 +1342,9 @@ Constructor used to create a **VibratorPattern** object, which determines the vi
    let builder = new vibrator.VibratorPatternBuilder();
    try {
      let param: vibrator.TransientParam = {
-	     intensity: 80,
-	     frequency: 70,
-	     index: 0
+       intensity: 80,
+       frequency: 70,
+       index: 0
      }
      builder.addTransientEvent(0, param);
      console.info(`addTransientEvent builder is ${builder.build()}`);
@@ -1354,17 +1354,17 @@ Constructor used to create a **VibratorPattern** object, which determines the vi
    }
    try {
      vibrator.startVibration({
-	     type: "pattern",
-	     pattern: builder.build()
+       type: "pattern",
+       pattern: builder.build()
      }, {
-	   usage: "alarm", // The switch control is subject to the selected type.
+     usage: "alarm", // The switch control is subject to the selected type.
      }, (error) => {
-	   if (error) {
-	     let e: BusinessError = error as BusinessError;
-	     console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
-	   } else {
-	     console.info(`vibrate success`);
-	   }
+     if (error) {
+       let e: BusinessError = error as BusinessError;
+       console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
+     } else {
+       console.info(`vibrate success`);
+     }
      });
    } catch(error) {
      let e: BusinessError = error as BusinessError;
@@ -1438,7 +1438,7 @@ Represents vibration of the specified duration.
 | Name    | Type  | Read-Only| Optional| Description                                                       |
 | -------- | ------ | ---- | ---- | ----------------------------------------------------------- |
 | type     | 'time' | No  | No  | The value is **time**, indicating vibration of the specified duration.                     |
-| duration | number | No  | No  | Vibration duration, in ms. The value range is (0,1800000].|
+| duration | number | No  | No  | Vibration duration, in ms. The value range is (0,1800000]. The maximum vibration duration varies with devices due to different component protection design specifications of drivers provided by different vendors. It is recommended that a single vibration duration be less than or equal to 10s to maximize user experience.|
 
 ## VibratePreset<sup>9+</sup>
 
@@ -1607,7 +1607,7 @@ vibrate(duration: number): Promise&lt;void&gt;
 
 Triggers vibration with the specified duration. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup> instead.
+This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -1617,7 +1617,7 @@ This API is deprecated since API version 9. You are advised to use [vibrator.sta
 
 | Name  | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| duration | number | Yes  | Vibration duration, in ms. The value range is (0,1800000].|
+| duration | number | Yes  | Vibration duration, in ms. The value range is (0,1800000]. The maximum vibration duration varies with devices due to different component protection design specifications of drivers provided by different vendors. It is recommended that a single vibration duration be less than or equal to 10s to maximize user experience.|
 
 **Return value**
 
@@ -1644,7 +1644,7 @@ vibrate(duration: number, callback?: AsyncCallback&lt;void&gt;): void
 
 Triggers vibration with the specified duration. This API uses an asynchronous callback to return the result.
 
-This API is deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup> instead.
+This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -1654,7 +1654,7 @@ This API is deprecated since API version 9. You are advised to use [vibrator.sta
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| duration | number                    | Yes  | Vibration duration, in ms. The value range is (0,1800000].|
+| duration | number                    | Yes  | Vibration duration, in ms. The value range is (0,1800000]. The maximum vibration duration varies with devices due to different component protection design specifications of drivers provided by different vendors. It is recommended that a single vibration duration be less than or equal to 10s to maximize user experience.|
 | callback | AsyncCallback&lt;void&gt; | No  | Callback used to return the result. If the vibration starts, **err** is **undefined**; otherwise, **err** is an error object.  |
 
 **Example**
@@ -1679,7 +1679,7 @@ vibrate(effectId: EffectId): Promise&lt;void&gt;
 
 Triggers vibration with the specified effect. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup> instead.
+This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -1717,7 +1717,7 @@ vibrate(effectId: EffectId, callback?: AsyncCallback&lt;void&gt;): void
 
 Triggers vibration with the specified effect. This API uses an asynchronous callback to return the result.
 
-This API is deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup> instead.
+This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -1751,7 +1751,7 @@ stop(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 Stops vibration in the specified mode. This API uses a promise to return the result.
 
-This API is deprecated since API version 9. You are advised to use [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup> instead.
+This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -1798,7 +1798,7 @@ stop(stopMode: VibratorStopMode, callback?: AsyncCallback&lt;void&gt;): void
 
 Stops vibration in the specified mode. This API uses an asynchronous callback to return the result.
 
-This API is deprecated since API version 9. You are advised to use [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup> instead.
+This API is supported since API version 8 and deprecated since API version 9. You are advised to use [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup> instead.
 
 **Required permissions**: ohos.permission.VIBRATE
 

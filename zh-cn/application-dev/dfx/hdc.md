@@ -412,6 +412,7 @@ $ hdc -s 127.0.0.1:8710 list targets
 **连接步骤**
 
 1. 服务器配置
+
    服务器通过USB连接对应hdc设备后，执行以下命令：
 
    ```shell
@@ -423,6 +424,7 @@ $ hdc -s 127.0.0.1:8710 list targets
    ```
 
 2. 客户端连接
+
    客户端可以连通服务器IP地址，满足条件后执行以下命令：
 
    ```shell
@@ -1644,9 +1646,11 @@ MacOS环境：
 解决方法如下：
 
 1. 排查具有自带hdc功能的软件进程。
+
    如果存在自带hdc的软件（DevEco Studio、DevEco Testing），请关闭这些软件后再执行hdc相关命令。
 
 2. 查询hdc端口情况。
+
    以设置OHOS_HDC_SERVER_PORT为8710端口为例，不同平台的查询命令如下：
 
    Unix：
@@ -1796,7 +1800,9 @@ hdc文件传输命令执行出现乱码，如使用file recv从设备端发送�
 1. 同时按下Win+R键，启动运行工具，在输入栏中输入regedit以打开注册表；
 
 2. 注册表地址栏输入以下内容并按下回车
+
    计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography\Protect\Providers\df9d8cd0-1501-11d1-8c7a-00c04fc297eb；
+   
 
 3. 右键新建DWORD(32位)值(D)，新增值名称为ProtectionPolicy 值为 1 （16进制），然后点击确定；
 
@@ -2158,6 +2164,7 @@ Invalid bundle name: bundlename.
 **处理步骤**
 
 - 场景一：确认命令指定包名的应用已安装到设备上。
+
   执行hdc shell "bm dump -a | grep bundlename"查询对应包名的应用是否已安装到设备上，预期返回信息为 bundlename；
 
   以应用名com.example.myapplication为例，查询命令如下：

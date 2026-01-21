@@ -611,7 +611,7 @@ struct Index{
       .width("100%")
       .height("100%")
       .onClick(()=>{
-      console.log(`id:${this.getUIContext()?.getId()}`);
+      console.info(`id:${this.getUIContext()?.getId()}`);
     })
   }
 }
@@ -743,13 +743,13 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
-## animateToImmediately<sup>22+</sup>
+## animateToImmediately<sup>23+</sup>
 
 animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
 通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1276,7 +1276,7 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 
 >  **说明：**
 >
->  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showAlertDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>  不支持在输入法类型窗口中使用子窗（[showInSubWindow](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) 为true）的showAlertDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1325,6 +1325,7 @@ struct Index {
   }
 }
 ```
+![showAlertDialog](figures/showAlertDialog.gif)
 
 ## showActionSheet
 
@@ -1395,6 +1396,7 @@ struct Index {
   }
 }
 ```
+![showActionSheet](figures/showActionSheet.gif)
 
 ## showDatePickerDialog
 
@@ -2685,7 +2687,7 @@ struct Index {
 ```
 ## getWindowId<sup>23+</sup>
 
-getWindowId(): number | undefiend
+getWindowId(): number | undefined
 
 获取当前应用实例所属的窗口ID。
 
@@ -2716,7 +2718,7 @@ struct Index {
 
   aboutToAppear() {
     const windowId = this.getUIContext().getWindowId();
-    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId);
   }
 
   build() {
@@ -3968,7 +3970,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setImageCacheCount<sup>22+</sup>
+## setImageCacheCount<sup>23+</sup>
 
 setImageCacheCount(value: number): void
 
@@ -3978,7 +3980,7 @@ setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-ar
 
 setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4014,7 +4016,7 @@ struct Index {
 }
 ```
 
-## setImageRawDataCacheSize<sup>22+</sup>
+## setImageRawDataCacheSize<sup>23+</sup>
 
 setImageRawDataCacheSize(value: number): void
 
@@ -4022,7 +4024,7 @@ setImageRawDataCacheSize(value: number): void
 
 setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4077,3 +4079,130 @@ getMagnifier(): Magnifier
 **示例：**
 
 参考[Magnifier](arkts-apis-uicontext-magnifier.md)的[bind](arkts-apis-uicontext-magnifier.md#bind)接口示例。
+
+## setCustomKeyboardContinueFeature<sup>23+</sup>
+
+setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
+
+设置自定义键盘之间切换时，是否接续。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| feature | [CustomKeyboardContinueFeature](arkts-apis-uicontext-e.md#customkeyboardcontinuefeature23) | 是 | 自定义键盘之间切换时是否接续。<br/> 默认值：CustomKeyboardContinueFeature.DISABLED，即不接续。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { CustomKeyboardContinueFeature } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct Index {
+  controller: TextInputController = new TextInputController();
+  controller2: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+  @State inputValue2: string = '';
+  @State supportAvoidance: boolean = true;
+  @State isValue: CustomKeyboardContinueFeature = CustomKeyboardContinueFeature.DISABLED;
+  @State str: string = '否';
+
+  // 自定义键盘组件
+  @Builder
+  CustomKeyboardBuilder() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue = this.inputValue.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(213, 213, 213)').height(300)
+  }
+
+  // 自定义键盘组件
+  @Builder
+  CustomKeyboardBuilder2() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller2.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue2 = this.inputValue2.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue2 += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(227, 248, 249)').height(150)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Button('是否接续：' + this.str).onClick(() => {
+          if (this.isValue == CustomKeyboardContinueFeature.ENABLED) {
+            this.isValue = CustomKeyboardContinueFeature.DISABLED
+            this.str = '否'
+          } else {
+            this.isValue = CustomKeyboardContinueFeature.ENABLED
+            this.str = '是'
+          }
+          this.getUIContext().setCustomKeyboardContinueFeature(this.isValue);
+        }).fontSize(20).width('80%').key('button')
+
+        TextInput({
+          placeholder: 'TextInput1 bind CustomKeyboardBuilder',
+          controller: this.controller,
+          text: this.inputValue
+        })// 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+        TextInput({
+          placeholder: 'TextInput2 bind CustomKeyboardBuilder2',
+          controller: this.controller2,
+          text: this.inputValue2
+        })// 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder2(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+      }
+    }
+  }
+}
+```
+
+![customKeyboardContinueFeature](arkui-ts/figures/customKeyboardContinueFeature.gif)

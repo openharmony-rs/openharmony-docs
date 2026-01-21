@@ -91,7 +91,7 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
 
 3. In the **entry > src > main > cpp > napi_init.cpp** file, use HiTraceChain to trace multi-thread tasks. The sample code is as follows:
 
-   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->   
+   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include <thread>
@@ -205,7 +205,7 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
    
    In the **entry > src > main > ets > pages > Index.ets** file, call the **Add** method in the button click event. The sample code is as follows:
    
-   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';

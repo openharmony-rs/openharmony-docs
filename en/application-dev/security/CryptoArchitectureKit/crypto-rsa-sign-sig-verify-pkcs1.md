@@ -15,7 +15,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
    
    In addition to the example in this topic, [RSA](crypto-asym-key-generation-conversion-spec.md#rsa) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an RSA asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
 
-2. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) with the string parameter **'RSA1024|PKCS1|SHA256'** to create a **Sign** instance. The key type is RSA1024, the padding mode is **PKCS1**, and the MD algorithm is **SHA256**.
+2. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) with the string parameter **'RSA1024|PKCS1|SHA256'** to create a **Sign** instance. The asymmetric key type is **RSA1024**, the padding mode is **PKCS1**, and the MD algorithm is **SHA256**.
 
 3. Call [Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3) to initialize the **Sign** instance with the private key (**PriKey**).
 
@@ -35,6 +35,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
 2. Call [Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5) to initialize the **Verify** instance using the public key (**PubKey**).
 
 3. Call [Verify.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-5) to pass in the data to be verified.
+
    Currently, the amount of data to be passed in by a single **update()** is not limited. You can determine how to pass in data based on the data size.
 
    - If a small amount of data is to be verified, call **Verify.verify()** immediately after **Verify.init()**.
@@ -47,9 +48,11 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // The plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+
   async function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = "RSA1024|PKCS1|SHA256";
     let signer = cryptoFramework.createSign(signAlg);
@@ -58,6 +61,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     let signData = await signer.sign(input2);
     return signData;
   }
+
   async function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = "RSA1024|PKCS1|SHA256";
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -67,6 +71,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     console.info("verify result is " + res);
     return res;
   }
+
   async function main() {
     let keyGenAlg = "RSA1024";
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
@@ -86,9 +91,11 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // The plaintext is split into input1 and input2.
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+
   function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = "RSA1024|PKCS1|SHA256";
     let signer = cryptoFramework.createSign(signAlg);
@@ -97,6 +104,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     let signData = signer.signSync(input2);
     return signData;
   }
+
   function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = "RSA1024|PKCS1|SHA256";
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -106,6 +114,7 @@ For details about the algorithm specifications, see [RSA](crypto-sign-sig-verify
     console.info("verify result is " + res);
     return res;
   }
+
   function main() {
     let keyGenAlg = "RSA1024";
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);

@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **NotificationInfo** module describes the content shared with third-party wearables.
+The **NotificationInfo** module describes the notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.
 
 > **NOTE**
 >
@@ -23,6 +23,6 @@ The **NotificationInfo** module describes the content shared with third-party we
 | content | [NotificationExtensionContent](js-apis-inner-notification-notificationExtensionContent.md) | Yes| No| Notification content.|
 | bundleName | string | Yes| No| Name of the bundle that creates the notification.|
 | appName | string | Yes| Yes| Name of the application that creates the notification.|
-| deliveryTime | long | Yes| Yes| Timestamp (in milliseconds) when the notification is published.|
+| deliveryTime | number | Yes| Yes| Timestamp (in milliseconds) when the notification is published.|
 | groupName | string | Yes| Yes| Notification group name, which is left empty by default.|
-| appIndex | int | Yes| No| Index of the application clone that creates the notification. It takes effect only for application clones.|
+| appIndex | number | Yes| No| Index of the application clone that creates the notification. It takes effect only for application clones.|

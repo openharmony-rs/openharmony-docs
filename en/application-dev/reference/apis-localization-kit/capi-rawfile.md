@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides functions related to rawfiles, including searching for, reading, and closing rawfiles.
+Provides the function of operating rawfile directories and rawfiles. You can use the APIs to traverse, open, search for, read, and close raw files.
 
 **Since**: 8
 ## Files

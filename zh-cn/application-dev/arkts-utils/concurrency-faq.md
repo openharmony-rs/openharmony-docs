@@ -13,6 +13,7 @@
 1. **taskpool.execute接口是否调用**。
 
    taskpool.execute被调用时，Hilog会打印TaskPool调用态日志（Task Allocation: taskId:）。
+
    如果发现没有该维测日志表明taskpool.execute实际未调用，应用需排查taskpool.execute之前的其他业务逻辑是否执行完成。
 
    ```ts
@@ -56,6 +57,7 @@
 2. **TaskPool任务是否被执行**。
 
    调用taskpool.execute接口会打印TaskPool**调用态日志**（Task Allocation: taskId:）。 
+   
    定位到目标任务对应的Task Allocation: taskId:日志后，在日志中搜索taskId后跟随的Id号，正常情况会打印**执行态日志**（Task Perform: name:）和**结束态日志**（Task PerformTask End: taskId:）。
 
    1.  如果只有调用态日志，没有执行态日志。可能是由于先执行的TaskPool任务阻塞了TaskPool工作线程，导致TaskPool工作线程不可用，后执行的TaskPool任务无法执行。应用可以排查自身业务逻辑，或者通过trace进一步定位。
@@ -219,7 +221,7 @@ TaskPool第一次执行任务慢，间隔几百毫秒，原因是子线程反序
 
    ```ts
    // API version 20之前版本
-   [ecmascript] Unsupport serialize object type: 
+   [ecmascript] Unsupported serialize object type: 
    [ecmascript] ValueSerialize: serialize data is incomplete
 
    // API version 20及之后版本
@@ -236,7 +238,7 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 1. 应用在启动TaskPool任务时，在Concurrent函数中传入线程间通信不支持的对象类型，导致抛出入参序列化失败异常。  
 **解决方案**：应用需要查看[线程间通信对象](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)排查Concurrent函数入参。
 
-2. 应用在启动TaskPool任务时，抛出入参序列化失败异常，同时Hilog打印错误日志Unsupport serialize object type: Proxy（API version 20及之后版本打印错误日志：Serialize error: Serialize don't support object type: Proxy）。基于错误日志可知应用在Concurrent函数中传入代理对象，排查代码发现入参使用了@State装饰器，导致原对象实际上变为Proxy代理对象，代理对象不属于线程间通信支持的对象类型。  
+2. 应用在启动TaskPool任务时，抛出入参序列化失败异常，同时Hilog打印错误日志Unsupported serialize object type: Proxy（API version 20及之后版本打印错误日志：Serialize error: Serialize don't support object type: Proxy）。基于错误日志可知应用在Concurrent函数中传入代理对象，排查代码发现入参使用了@State装饰器，导致原对象实际上变为Proxy代理对象，代理对象不属于线程间通信支持的对象类型。  
 **解决方案**：TaskPool不支持@State、@Prop等装饰器修饰的复杂类型，具体内容可见[TaskPool注意事项](taskpool-introduction.md#taskpool注意事项)。应用需要去掉@State装饰器。
 
 3. 应用执行TaskPool任务时，抛出返回结果序列化失败异常，排查代码发现Concurrent函数返回结果是不支持的序列化类型。
@@ -397,6 +399,46 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 2. 应用查看JS异常栈发现运行this.g = g赋值语句时，抛出类型不一致异常。排查代码后发现属性g使用了@State装饰器，导致原对象变为Proxy代理对象，造成定义类型与传入类型不一致。  
 **解决方案**：去掉@State装饰器
 
+3. 自定义Sendable类继承collections.Array，并重写构造函数。在实例化该类后调用slice函数时，抛出类型不一致异常。原因是调用slice函数时，collections.Array内部会创建新的SendableArray。构造函数的入参是新数组长度，类型为number。由于ans是string类型，而在构造函数中使用number类型的入参对ans赋值，在Sendable类中不允许使用number类型对string类型赋值，因此抛出异常。
+
+   ``` ts
+   // Index.ets: 在Index页面新增以下代码
+   import { collections } from '@kit.ArkTS'
+   
+   @Sendable
+   export class collectionsArray extends collections.Array<string> {
+     ans: string = 'test';
+     constructor(heldValue: string) {
+       super();
+       this.ans = heldValue;
+     }
+   } 
+   let arr = new collectionsArray("test");
+   arr.slice(1) 
+   ```
+
+   **解决方案**： 对属性的赋值使用独立接口。
+
+   ``` ts
+   // Index.ets: 在Index页面新增以下代码
+   import { collections } from '@kit.ArkTS'
+   
+   @Sendable
+   export class collectionsArray extends collections.Array<string> {
+     ans: string = 'test';
+     constructor() {
+       super();
+     }
+   
+     set(str: string) {
+       this.ans = str;
+     }
+   } 
+   let arr = new collectionsArray();
+   arr.slice(1) 
+   arr.set("success")
+   ```
+
 ### 新增属性异常
 
 **问题现象**
@@ -415,7 +457,7 @@ JS异常：TypeError: Cannot add property in prevent extensions
 **解决方案**：规格限制，暂不支持合并同名Sendable class和namespace。
 
 2. 应用在HAR中使用Sendable特性时，抛出新增属性异常。查看JS异常栈，发现异常代码行定位在js文件，而Sendable特性不支持在js文件中使用，导致抛出非预期的异常。  
-**解决方案**：在HAR中使用Sendable特性时，[配置tsHAR](../quick-start/har-package.md#编译生成ts文件)。
+**解决方案**：在HAR中使用Sendable特性时，[配置UseTsHar](sendable-constraints.md#在har包中的使用规则)。
 
 3. 应用在Local Test单元测试或预览器中使用Sendable特性时，抛出新增属性异常。由于Sendable特性暂不支持在Local Test和预览器中使用，导致抛出非预期的异常。  
 **解决方案**：规格限制，暂不支持。

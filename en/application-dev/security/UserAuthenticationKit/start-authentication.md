@@ -250,6 +250,9 @@ Initiate facial authentication at ATL3 or higher, and enable the device unlock r
 
 Start the user authentication widget in modal application mode.
 
+> **NOTE**
+> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10) is configured), and if other windows need to be displayed after the authentication result is received, the application should obtain the flag message for releasing the widget pop-up window first, and subscribe to the widget release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#on20) API.
+
 <!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript

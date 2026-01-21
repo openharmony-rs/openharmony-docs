@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_RectShape ArkUI_RectShapeOption
+```
+
 ## Overview
 
 Defines a struct for the rectangle shape configuration.

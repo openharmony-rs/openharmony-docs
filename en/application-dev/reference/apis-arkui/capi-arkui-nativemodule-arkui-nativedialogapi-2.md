@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_NativeDialogAPI_2
+```
+
 ## Overview
 
 Provides a collection of native-side custom dialog box APIs provided by ArkUI.
@@ -38,7 +42,7 @@ Provides a collection of native-side custom dialog box APIs provided by ArkUI.
 
 ### setKeyboardAvoidDistance()
 
-```
+```c
 int32_t (*setKeyboardAvoidDistance)(ArkUI_NativeDialogHandle handle, float distance, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -68,7 +72,7 @@ Distance between the dialog box and the keyboard after keyboard avoidance is app
 
 ### setLevelMode()
 
-```
+```c
 int32_t (*setLevelMode)(ArkUI_NativeDialogHandle handle, ArkUI_LevelMode levelMode)
 ```
 
@@ -98,7 +102,7 @@ Sets the display level of a dialog box.
 
 ### setLevelUniqueId()
 
-```
+```c
 int32_t (*setLevelUniqueId)(ArkUI_NativeDialogHandle handle, int32_t uniqueId)
 ```
 
@@ -128,7 +132,7 @@ Sets the ID of the node under the dialog box's display level.
 
 ### setImmersiveMode()
 
-```
+```c
 int32_t (*setImmersiveMode)(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMode immersiveMode)
 ```
 

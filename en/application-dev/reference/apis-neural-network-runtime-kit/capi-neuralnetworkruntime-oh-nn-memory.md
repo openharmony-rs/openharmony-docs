@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NN_Memory {...} OH_NN_Memory
+```
+
 ## Overview
 
 Defines the memory structure.

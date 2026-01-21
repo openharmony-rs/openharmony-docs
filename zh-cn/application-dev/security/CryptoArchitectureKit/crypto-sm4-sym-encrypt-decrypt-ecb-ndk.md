@@ -48,12 +48,16 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取解密后的数据。
 
-```c++
+<!-- @[crypt_decrypt_sm4_ecb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_ecb_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+// ...
 
-static OH_Crypto_ErrCode doTestSm4Ecb() {
+OH_Crypto_ErrCode doTestSm4Ecb()
+{
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
     OH_CryptoSymCipher *decCtx = nullptr;
@@ -64,9 +68,8 @@ static OH_Crypto_ErrCode doTestSm4Ecb() {
     Crypto_DataBlob outUpdate = {.data = nullptr, .len = 0};
     Crypto_DataBlob decUpdate = {.data = nullptr, .len = 0};
 
-    // 随机生成对称密钥。
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
+    // 随机生成对称密钥
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -74,13 +77,13 @@ static OH_Crypto_ErrCode doTestSm4Ecb() {
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    // 创建参数。
+    // 创建参数
     ret = OH_CryptoSymCipherParams_Create(&params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
 
-    // 加密操作。
+    // 加密操作
     ret = OH_CryptoSymCipher_Create("SM4_128|ECB|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -94,7 +97,7 @@ static OH_Crypto_ErrCode doTestSm4Ecb() {
         goto end;
     }
 
-    // 解密操作。
+    // 解密操作
     ret = OH_CryptoSymCipher_Create("SM4_128|ECB|PKCS7", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -107,7 +110,7 @@ static OH_Crypto_ErrCode doTestSm4Ecb() {
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    // 释放资源。
+    // 释放资源
 end:
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);
@@ -119,3 +122,4 @@ end:
     return ret;
 }
 ```
+

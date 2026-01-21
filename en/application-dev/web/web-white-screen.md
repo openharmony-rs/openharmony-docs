@@ -179,7 +179,7 @@ If a white screen issue persists after the network and permission configurations
     <!DOCTYPE html>
     <html>
     <head>
-  	  <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
     <body>
       <script crossorigin src="./js/script.js"></script>
@@ -268,28 +268,28 @@ If a white screen issue persists after the network and permission configurations
         <title>Demo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
         <script>
-  		  function getFile() {
-  			  var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
-          // Use the file protocol to access the local JS file through XMLHttpRequest.
-  			  var xmlHttpReq = new XMLHttpRequest();
-  			  xmlHttpReq.onreadystatechange = function(){
-  			      console.info("readyState:" + xmlHttpReq.readyState);
-  			      console.info("status:" + xmlHttpReq.status);
-  				  if(xmlHttpReq.readyState == 4){
-  				      if (xmlHttpReq.status == 200) {
-                    // If the path list is set on eTS, resources can be obtained.
-  				          const element = document.getElementById('text');
-                            element.textContent = "load " + file + " success";
-  				      } else {
+            function getFile() {
+              var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
+              // Use the file protocol to access the local JS file through XMLHttpRequest.
+              var xmlHttpReq = new XMLHttpRequest();
+              xmlHttpReq.onreadystatechange = function(){
+              console.info("readyState:" + xmlHttpReq.readyState);
+              console.info("status:" + xmlHttpReq.status);
+              if(xmlHttpReq.readyState == 4){
+                if (xmlHttpReq.status == 200) {
+                   // If the path list is set on eTS, resources can be obtained.
+                  const element = document.getElementById('text');
+                  element.textContent = "load " + file + " success";
+                } else {
                     // If the path list is not set on eTS, a CORS error is triggered.
-  				          const element = document.getElementById('text');
-                            element.textContent = "load " + file + " failed";
-  				      }
-  				  }
-  			  }
-  			  xmlHttpReq.open("GET", file);
-  			  xmlHttpReq.send(null);
-  		  }
+                    const element = document.getElementById('text');
+                    element.textContent = "load " + file + " failed";
+                  }
+              }
+            }
+            xmlHttpReq.open("GET", file);
+            xmlHttpReq.send(null);
+          }
         </script>
     </head>
 
@@ -324,6 +324,7 @@ If a white screen issue persists after the network and permission configurations
 
 ## Resolving White Screen Issues Caused by Complex Layout and Rendering Modes
 If a page uses a complex layout or rendering mode, pay attention to its application scenarios and constraints. Improper use of the layout or rendering mode may cause layout disorder or white screen.
+
 The **Web** component provides two rendering modes, which can be adapted to different container sizes as required. For details, see [Rendering Modes of the Web Component](web-render-mode.md). Pay attention to the following points:
 - In asynchronous rendering mode (renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).ASYNC_RENDER), the width and height of a **Web** component cannot exceed 7,680 px (physical pixels). Otherwise, a white screen is displayed.
 
@@ -402,7 +403,7 @@ The following figure shows the key points contained during the **Web** component
 | event_message: commit navigation in main frame, routing_id: 4, url: *** | The navigation is committed to the child process.|
 | RenderFrameImpl::CommitNavigation,<br> event_message: page load start | The child process receives the commit message.|
 | NWebHandlerDelegate::OnNavigationEntryCommitted,<br> event_message: Commit source_id xxx | The main process receives **DidCommitNavigation**.|
-| event_message: load_timing_info errpr_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|
+| event_message: load_timing_info error_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|
 | event_message: MarkFirstContentfulPaint| The tag identifies an element with displayable content.|
 | NWebHandlerDelegate::OnPageVisible| The first frame is displayed.|
 | NWebHandlerDelegate::OnFirstContentfulPaint| The first frame content is displayed.|

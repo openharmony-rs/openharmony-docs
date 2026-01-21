@@ -18,7 +18,6 @@ You can refer to the corresponding development guide and samples based on your d
 - [Using Image_NativeModule to Decode Pictures](../../media/image/image-source-picture-c.md)
 - [Using Image_NativeModule to Receive Images](../../media/image/image-receiver-c.md)
 - [Using Image_NativeModule for PixelMap Operations](../../media/image/pixelmap-c.md)
-- [Using Image_NativeModule to Process Image Information](../../media/image/image-info-c.md)
 - [Using Image_NativeModule to Encode Images](../../media/image/image-packer-c.md)
 - [Using Image_NativeModule to Encode Pictures](../../media/image/image-packer-picture-c.md)
 

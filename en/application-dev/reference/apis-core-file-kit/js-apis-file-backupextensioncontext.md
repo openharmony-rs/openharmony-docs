@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 **BackupExtensionContext** is the context of **BackupExtension** and inherits from **ExtensionContext**.
 
@@ -37,7 +37,7 @@ import  { BackupExtensionContext } from '@kit.CoreFileKit';
 **Example**
 
 ```ts
-import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
 import { contextConstant } from '@kit.AbilityKit';
 
 export default class MyBackupExtAbility extends BackupExtensionAbility {

@@ -74,7 +74,7 @@ Display of child components in the **Stack** container when **zIndex** is not se
 
 Display of child components in the **Stack** container when **zIndex** is set
 
-![zindex.png](figures/zindex.png)
+![zindex.PNG](figures/zindex.png)
 
 ### Example 2: Dynamically Modifying the zIndex Attribute
 

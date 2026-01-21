@@ -6,10 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Rotation transition animations are designed to create seamless visual transitions when the screen display orientation changes. There are two approaches to choose from:
-
-- [Rotation transition animation with layout switching](#rotation-transition-animation-with-layout-switching): This animation is your go-to solution for an out-of-the-box implementation experience. It can be achieved by simply configuring automatic rotation (or setting the window display orientation) in the **module.json5** file.
-- [Rotation transition animation with opacity changing](#rotation-transition-animation-with-opacity-changing): This animation adds a touch of sophistication with fade-in and fade-out effects for components during screen rotations. It requires additional setup beyond the **module.json5** configuration, including the preparation of two sets of visuals.
+Rotation transition animations are designed to create seamless visual transitions when the screen display orientation changes. There are two approaches to choose from:<br> [Rotation transition animation with layout switching](#rotation-transition-animation-with-layout-switching): This animation is your go-to solution for an out-of-the-box implementation experience. It can be achieved by simply configuring automatic rotation (or setting the window display orientation) in the **module.json5** file.<br> [Rotation transition animation with opacity changing](#rotation-transition-animation-with-opacity-changing): This animation adds a touch of sophistication with fade-in and fade-out effects for components during screen rotations. It requires additional setup beyond the **module.json5** configuration, including the preparation of two sets of visuals.
 
 ## Rotation Transition Animation with Layout Switching
 
@@ -17,14 +14,15 @@ The rotation transition animation with layout switching is crafted to synchroniz
 
 This animation is activated once the user rotates the screen.
 
-```ts
-// xx.ets
+<!-- @[rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template1/Index.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct rotation {
-
   build() {
     Stack() {
+      // Replace $r('app.media.tree') with the actual resource file.
       Image($r('app.media.tree'))
         .position({ x: 0, y: 0 })
         .size({ width: 100, height: 100 })
@@ -36,7 +34,8 @@ struct rotation {
 }
 ```
 
-To enable this animation, add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
+
+Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.
 ```json
 "orientation": "auto_rotation",
 ```
@@ -49,8 +48,9 @@ The rotation transition animation with layout switching ensures a seamless trans
 
 The rotation transition animation with opacity changing is activated upon changes in the screen display orientation. It applies a default opacity transition to components that are added or removed during the rotation, allowing for an elegant appearance and disappearance of components. This feature listens for window rotation events and switches the visual effects of components within these events. If the root nodes of the disappearing and appearing views have not been set with a transition effect, it will automatically apply a default opacity transition (that is, [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10).OPACITY), creating a smooth fade-in and fade-out effect.
 
-```ts
-// xx.ets
+<!-- @[rotation_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template2/Index.ets) -->
+
+``` TypeScript
 import { display } from '@kit.ArkUI';
 
 @Entry
@@ -65,20 +65,22 @@ struct rotation {
 
       // Switch the component's visual effect when the screen display orientation changes.
       if (this.myOrientation == display.Orientation.PORTRAIT || this.myOrientation == display.Orientation.PORTRAIT_INVERTED) {
+        // Replace $r('app.media.sky') with the actual resource file.
         Image($r('app.media.sky'))
           .size({ width: 100, height: 100 })
           .id('image1')
 
-          // You can also implement opacity changes for rotation transition animations by setting TransitionEffect.OPACITY.
-          // .transition(TransitionEffect.OPACITY)
+        // You can also implement opacity changes for rotation transition animations by setting TransitionEffect.OPACITY.
+        // .transition(TransitionEffect.OPACITY)
       } else {
+        // Replace $r('app.media.tree') with the actual resource file.
         Image($r('app.media.tree'))
           .position({ x: 0, y: 0 })
           .size({ width: 200, height: 200 })
           .id('image2')
-          
-          // You can also implement opacity changes for rotation transition animations by setting TransitionEffect.OPACITY.
-          // .transition(TransitionEffect.OPACITY)
+
+        // You can also implement opacity changes for rotation transition animations by setting TransitionEffect.OPACITY.
+        // .transition(TransitionEffect.OPACITY)
       }
     }
     .backgroundColor(Color.White)
@@ -87,12 +89,18 @@ struct rotation {
 }
 ```
 
-Listen for the **windowsSizeChange** event to manage the transitions. For example, you can add logic in the **onWindowStageCreate** API of the **EntryAbility.ets** file to obtain the screen display orientation.
-```ts
-onWindowStageCreate(windowStage: window.WindowStage): void {
+Listen for the **windowsSizeChange** event to manage the transitions. For example, you can add processing logic to the [onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) method in the **EntryAbility.ets** file to obtain the display orientation of the screen.
+<!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN = 0x0000;
+const TAG: string = 'EntryAbility';
+// ···
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // ···
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
     let mainWindow: window.Window;
     try {
       mainWindow = windowStage.getMainWindowSync();
@@ -100,11 +108,11 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
       AppStorage.setOrCreate('orientation', displayClass.orientation);
       // Listen for the windowsSizeChange event, which is triggered when the screen is rotated.
       mainWindow.on('windowSizeChange', (data) => {
-        console.info('Succeeded in enabling the listener for window size changes. Data: ' + JSON.stringify(data));
+        hilog.info(DOMAIN, TAG, 'Succeeded in enabling the listener for window size changes. Data: ' + data);
         let displayClass: display.Display | null = null;
         try {
           displayClass = display.getDefaultDisplaySync();
-          console.info('display orientation is ' + JSON.stringify(displayClass.orientation));
+          hilog.info(DOMAIN, TAG, 'display orientation is ' + displayClass.orientation);
           // Obtain the screen display orientation.
           AppStorage.set('orientation', displayClass.orientation);
         } catch {
@@ -112,18 +120,21 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
         }
       })
     } catch {
-      hilog.error(0x0000, 'testTag', '%{public}s', 'error');
+      hilog.error(DOMAIN, TAG, '%{public}s', 'error');
       return;
     }
+    // ···
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(DOMAIN, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
+      hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
     });
-}
+  }
+
+// ···
 ```
 
 Add **"orientation": "auto_rotation"** to the **abilities** list in the **module.json5** file of the project.

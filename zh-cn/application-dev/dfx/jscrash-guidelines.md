@@ -3,7 +3,7 @@
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @wanghuan2025-->
 <!--Designer: @Maplestory91-->
-<!--Tester: @yufeifei-->
+<!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
 ## 简介
@@ -57,11 +57,11 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 |---|---|---|---|---|
 | Device info | 设备信息 | 8 | 是 | - |
 | Build info | 版本信息 | 8 | 是 | - |
-| DeviceDebuggable | 设备是否可调试 | 23 | 是 | - |
+| DeviceDebuggable | 设备的系统版本是否可调试，和开发者选项无关 | 23 | 是 | - |
 | Fingerprint | 故障特征，聚类同类问题的哈希值 | 8 | 是 | - |
 | Timestamp | 时间戳 | 8 | 是 | - |
 | Module name | 包名/进程名 | 8 | 是 | - |
-| ReleaseType | 标识应用打包时使用的SDK的发布类型，具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。 | 23 | 是 | - |
+| ReleaseType | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 | 23 | 是 | - |
 | CpuAbi | 二进制接口类型 | 23 | 是 | - |
 | Version | hap版本 | 8 | 是 | - |
 | VersionCode | 版本编码 | 8 | 是 | - |
@@ -79,16 +79,17 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | HybridStack | CPP和JS之间跨语言的故障堆栈 | 22 | 否 | ARM 64位系统下，若Stacktrace为JS栈时，则包含此字段，至多显示256层。 |
 | SubmitterStacktrace | 提交者线程栈 | 20 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**[libuv](../reference/native-lib/libuv.md)和[ffrt](../reference/apis-ffrt-kit/capi-ffrt.md)提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | HiLog | 故障之前打印的流水日志，最多1000行 | 20 | 是 | - |
+| AsyncStack | Promise异步栈 | 23 | 否 | ARM 64位系统下，若开启Promise异步栈开关，则包含此字段。 |
 
 以下是JS Crash崩溃日志规格。
 ```text
 Device info:XXX <- 设备信息
 Build info:XXX-XXXX X.X.X.XX(XXXXXXXX) <- 版本信息
-DeviceDebuggable:No <- 设备是否可调试
+DeviceDebuggable:No <- 设备的系统版本是否可调试
 Fingerprint:ed1811f3f5ae13c7262b51aab73ddd01df95b2c64466a204e0d70e6461cf1697 <- 故障特征
 Timestamp:XXXX-XX-XX XX:XX:XX.XXX <- 时间戳
 Module name:com.example.myapplication <- 包名/进程名
-ReleaseType:Release <- 标识应用打包时使用的SDK的发布类型
+ReleaseType:release <- 应用的版本类型
 CpuAbi:arm64-v8a <- 二进制接口类型
 Version:1.0.0 <- hap版本
 VersionCode:1000000 <- 版本编码
@@ -306,3 +307,60 @@ at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 CPP代码调用栈详细说明[CPP异常代码调用栈格式规范](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 JS代码调用栈详细说明[JS异常代码调用栈格式规范](#异常代码调用栈格式)。
+
+### Promise异步栈
+
+Promise异步栈功能默认关闭。从API version 23起，在ARM 64位系统下，可通过如下方式开启该功能，开启后整机生效：
+```cmd
+hdc shell param set persist.ark.properties 0x80105c
+hdc shell reboot
+```
+
+关闭Promise异步栈功能：
+```cmd
+hdc shell param set persist.ark.properties 0x105c
+hdc shell reboot
+```
+
+Promise异步任务中抛出的异常默认不会导致JS Crash，但可以通过[ErrorManager unhandledRejection](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获Rejected Promise后，主动将异常抛出，从而触发JS Crash。
+
+在启用Promise异步栈功能的情况下，当Promise任务中抛出异常并导致JS Crash时，JS Crash日志中会展示Promise异步任务创建时的栈信息。
+
+JS Crash日志中的Promise异步栈格式如下：
+
+```text
+Stacktrace:
+...
+HybridStack:
+...
+AsyncStack: <- 功能开启后，展示Promise异步任务创建时的栈信息
+    submitter#00: <- 每次异步任务创建都对应一个submitter，每个submitter中栈的最大回溯层数为48
+    #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #01 pc 000000000020ba3c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #02 pc 0000000000dfd330 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+    #03 pc 00000000004533d8 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis1Imm8V8V8StwCopy+388)
+    #04 at bar entry (entry/src/main/ets/pages/Index.ets:36:29)
+    #05 at foo entry (entry/src/main/ets/pages/Index.ets:33:3)
+    #06 pc 000000000083bf64 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #07 pc 00000000007f42f8 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #08 pc 00000000007e8e88 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #09 pc 0000000000dfcebc /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+484)
+    #10 pc 0000000000dfcd18 /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+64)
+    ...
+    submitter#01: <- 多个submitter表示存在异步嵌套的场景，submitter的最大支持数量为8
+    #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #01 pc 0000000000ad9e4c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #02 pc 0000000000dfaa8c /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+44)
+    #03 pc 0000000000518bcc /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+68)
+    #04 at foo entry (entry/src/main/ets/pages/Index.ets:32:3)
+    #05 at anonymous entry (entry/src/main/ets/pages/Index.ets:23:11)
+    #06 pc 0000000000801f5c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #07 pc 0000000000803470 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+548)(e0c4624849e028140f5bff13122863b7)
+    #08 pc 0000000000ad79e8 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    #09 pc 0000000000e98440 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    #10 pc 00000000013208a0 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    ...
+
+HiLog:
+...
+```

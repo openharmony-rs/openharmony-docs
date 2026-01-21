@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **fileAccess** module provides a framework for accessing and operating user files based on [extension](../../application-models/extensionability-overview.md). This module interacts with a variety of file management services, such as the storage management service, and provides a set of unified file access and management APIs for system applications. The storage management service manages both the directories of the built-in storage and resources on external devices, such as shared disks, USB flash drives, and SD cards.
 
@@ -615,6 +615,7 @@ Provides a **FileAccessHelper** object.
 getRoots() : Promise&lt;RootIterator&gt;
 
 Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses a promise to return
+
 a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
 
 **System API**: This is a system API.
@@ -635,7 +636,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
+```ts
 async function getRoots() {
   let rootIterator: fileAccess.RootIterator;
   let rootinfos: Array<fileAccess.RootInfo> = [];
@@ -662,13 +663,14 @@ async function getRoots() {
     console.error("getRoots failed, errCode:" + error.code + ", errMessage:" + error.message);
   }
 }
-  ```
+```
 
 ### getRoots
 
 getRoots(callback:AsyncCallback&lt;RootIterator&gt;) : void
 
 Obtains information about the device root nodes of the file management services associated with the **Helper** object. This API uses an asynchronous callback to return
+
 a **RootIterator** object. You can use [next](#next-1) to return [RootInfo](#rootinfo).
 
 **System API**: This is a system API.

@@ -514,6 +514,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility.
 
 This function cannot be called on the main thread of an application, but can be called on the main thread of a [child process](capi-childprocess.md) created by the application.
+
 If it is called on the main thread of the application, error code **ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED** is returned.
 
 **Required permissions**: ohos.permission.NDK_START_SELF_UI_ABILITY

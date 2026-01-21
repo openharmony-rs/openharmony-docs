@@ -12,7 +12,7 @@
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> 从API Version 9开始，该模块不再维护，建议使用[@ohos.bundle.bundleManager](js-apis-bundleManager.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用[@ohos.bundle.bundleManager](js-apis-bundleManager.md)替代。
 
 ## 导入模块
 
@@ -31,7 +31,9 @@ import bundle from '@ohos.bundle';
 
 ## bundle.getApplicationInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-2)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-2)替代。<!--DelEnd-->
 
 getApplicationInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<ApplicationInfo>
 
@@ -81,7 +83,9 @@ bundle.getApplicationInfo(bundleName, bundleFlags, userId)
 
 ## bundle.getApplicationInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)替代。<!--DelEnd-->
 
 getApplicationInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
 
@@ -126,7 +130,9 @@ bundle.getApplicationInfo(bundleName, bundleFlags, userId, (err, data) => {
 
 ## bundle.getApplicationInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-1)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo-1)替代。<!--DelEnd-->
 
 
 getApplicationInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<ApplicationInfo>): void
@@ -171,7 +177,9 @@ bundle.getApplicationInfo(bundleName, bundleFlags, (err, data) => {
 
 ## bundle.getAllBundleInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-2)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-2)替代。<!--DelEnd-->
 
 getAllBundleInfo(bundleFlag: BundleFlag, userId?: number): Promise\<Array\<BundleInfo\>\>
 
@@ -217,7 +225,9 @@ bundle.getAllBundleInfo(bundleFlag, userId)
 
 ## bundle.getAllBundleInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-1)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo-1)替代。<!--DelEnd-->
 
 
 getAllBundleInfo(bundleFlag: BundleFlag, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
@@ -257,7 +267,9 @@ bundle.getAllBundleInfo(bundleFlag, (err, data) => {
 
 ## bundle.getAllBundleInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getAllBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfo)替代。<!--DelEnd-->
 
 
 getAllBundleInfo(bundleFlag: BundleFlag, userId: number, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
@@ -299,7 +311,9 @@ bundle.getAllBundleInfo(bundleFlag, userId, (err, data) => {
 
 ## bundle.getBundleInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)替代。
 
 
 getBundleInfo(bundleName: string, bundleFlags: number, options?: BundleOptions): Promise\<BundleInfo>
@@ -352,7 +366,9 @@ bundle.getBundleInfo(bundleName, bundleFlags, options)
 
 ## bundle.getBundleInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-1)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14-1)替代。
 
 getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
@@ -395,7 +411,9 @@ bundle.getBundleInfo(bundleName, bundleFlags, (err, data) => {
 
 ## bundle.getBundleInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)替代。
 
 getBundleInfo(bundleName: string, bundleFlags: number, options: BundleOptions, callback: AsyncCallback\<BundleInfo>): void
 
@@ -442,7 +460,9 @@ bundle.getBundleInfo(bundleName, bundleFlags, options, (err, data) => {
 
 ## bundle.getAllApplicationInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-2)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-2)替代。<!--DelEnd-->
 
 getAllApplicationInfo(bundleFlags: number, userId?: number): Promise\<Array\<ApplicationInfo\>\>
 
@@ -488,7 +508,9 @@ bundle.getAllApplicationInfo(bundleFlags, userId)
 
 ## bundle.getAllApplicationInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo)替代。<!--DelEnd-->
 
 getAllApplicationInfo(bundleFlags: number, userId: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
 
@@ -530,7 +552,9 @@ bundle.getAllApplicationInfo(bundleFlags, userId, (err, data) => {
 
 ## bundle.getAllApplicationInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-1)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getAllApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetallapplicationinfo-1)替代。<!--DelEnd-->
 
 getAllApplicationInfo(bundleFlags: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
 
@@ -569,7 +593,9 @@ bundle.getAllApplicationInfo(bundleFlags, (err, data) => {
 
 ## bundle.getBundleArchiveInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo-1)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo-1)替代。<!--DelEnd-->
 
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number) : Promise\<BundleInfo>
 
@@ -610,7 +636,9 @@ bundle.getBundleArchiveInfo(hapFilePath, bundleFlags)
 
 ## bundle.getBundleArchiveInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getBundleArchiveInfo](js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo)替代。<!--DelEnd-->
 
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>) : void
 
@@ -647,7 +675,9 @@ bundle.getBundleArchiveInfo(hapFilePath, bundleFlags, (err, data) => {
 
 ## bundle.getAbilityInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo-2)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo-2)替代。<!--DelEnd-->
 
 getAbilityInfo(bundleName: string, abilityName: string): Promise\<AbilityInfo>
 
@@ -695,7 +725,9 @@ bundle.getAbilityInfo(bundleName, abilityName)
 
 ## bundle.getAbilityInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo)替代。<!--DelEnd-->
 
 getAbilityInfo(bundleName: string, abilityName: string, callback: AsyncCallback\<AbilityInfo>): void
 
@@ -738,7 +770,9 @@ bundle.getAbilityInfo(bundleName, abilityName, (err, data) => {
 
 ## bundle.getAbilityLabel<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel-1)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel-1)替代。<!--DelEnd-->
 
 getAbilityLabel(bundleName: string, abilityName: string): Promise\<string>
 
@@ -786,7 +820,9 @@ bundle.getAbilityLabel(bundleName, abilityName)
 
 ## bundle.getAbilityLabel<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getAbilityLabel](js-apis-bundleManager-sys.md#bundlemanagergetabilitylabel)替代。<!--DelEnd-->
 
 getAbilityLabel(bundleName: string, abilityName: string, callback : AsyncCallback\<string>): void
 
@@ -829,7 +865,9 @@ bundle.getAbilityLabel(bundleName, abilityName, (err, data) => {
 
 ## bundle.isAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1)替代。<!--DelEnd-->
 
 isAbilityEnabled(info: AbilityInfo): Promise\<boolean>
 
@@ -871,7 +909,9 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 
 ## bundle.isAbilityEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[isAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled)替代。<!--DelEnd-->
 
 isAbilityEnabled(info : AbilityInfo, callback : AsyncCallback\<boolean>): void
 
@@ -909,7 +949,9 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 
 ## bundle.isApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled-1)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled-1)替代。<!--DelEnd-->
 
 isApplicationEnabled(bundleName: string): Promise\<boolean>
 
@@ -949,7 +991,9 @@ bundle.isApplicationEnabled(bundleName)
 
 ## bundle.isApplicationEnabled<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[isApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagerisapplicationenabled)替代。<!--DelEnd-->
 
 isApplicationEnabled(bundleName: string, callback : AsyncCallback\<boolean>): void
 
@@ -984,7 +1028,9 @@ bundle.isApplicationEnabled(bundleName, (err, data) => {
 
 ## bundle.queryAbilityByWant<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12)替代。<!--DelEnd-->
 
 queryAbilityByWant(want: Want, bundleFlags: number, userId?: number): Promise\<Array\<AbilityInfo\>\>
 
@@ -1040,7 +1086,9 @@ bundle.queryAbilityByWant(want, bundleFlags, userId)
 
 ## bundle.queryAbilityByWant<sup>deprecated<sup>
 
-> 从API version 9开始不再维护。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12)替代。<!--DelEnd-->
 
 queryAbilityByWant(want: Want, bundleFlags: number, userId: number, callback: AsyncCallback\<Array\<AbilityInfo\>\>): void
 
@@ -1089,7 +1137,9 @@ bundle.queryAbilityByWant(want, bundleFlags, userId, (err, data) => {
 
 ## bundle.queryAbilityByWant<sup>deprecated<sup>
 
-> 从API version 9开始不再维护。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[queryAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryabilityinfo12)替代。<!--DelEnd-->
 
 queryAbilityByWant(want: Want, bundleFlags: number, callback: AsyncCallback\<Array\<AbilityInfo\>\>): void
 
@@ -1138,7 +1188,9 @@ bundle.queryAbilityByWant(want, bundleFlags, (err, data) => {
 
 ## bundle.getLaunchWantForBundle<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-2)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-2)替代。<!--DelEnd-->
 
 getLaunchWantForBundle(bundleName: string): Promise\<Want>
 
@@ -1181,7 +1233,9 @@ bundle.getLaunchWantForBundle(bundleName)
 
 ## bundle.getLaunchWantForBundle<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，替代接口仅向系统应用开放。<!--Del-->建议使用[bundleManager.getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-1)替代。<!--DelEnd-->
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，替代接口仅向系统应用开放。<!--Del-->建议使用[getLaunchWantForBundle](js-apis-bundleManager-sys.md#bundlemanagergetlaunchwantforbundle-1)替代。<!--DelEnd-->
 
 getLaunchWantForBundle(bundleName: string, callback: AsyncCallback\<Want>): void
 
@@ -1221,7 +1275,9 @@ bundle.getLaunchWantForBundle(bundleName, (err, data) => {
 
 ## bundle.getNameForUid<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14-1)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14-1)替代。
 
 getNameForUid(uid: number): Promise\<string>
 
@@ -1258,9 +1314,11 @@ bundle.getNameForUid(uid)
   })
 ```
 
-## bundle.getNameForUid<sup>8+</sup> <sup>deprecated<sup>
+## bundle.<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getBundleNameByUid](js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14)替代。
 
 getNameForUid(uid: number, callback: AsyncCallback\<string>) : void
 
@@ -1296,7 +1354,9 @@ bundle.getNameForUid(uid, (err, data) => {
 
 ## bundle.getAbilityIcon<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9)替代。
 
 getAbilityIcon(bundleName: string, abilityName: string): Promise\<image.PixelMap>
 
@@ -1343,7 +1403,9 @@ bundle.getAbilityIcon(bundleName, abilityName)
 
 ## bundle.getAbilityIcon<sup>8+</sup> <sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[resourceManager.getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9)替代。
 
 getAbilityIcon(bundleName: string, abilityName: string, callback: AsyncCallback\<image.PixelMap>): void
 
@@ -1386,7 +1448,10 @@ bundle.getAbilityIcon(bundleName, abilityName, (err, data) => {
 ```
 
 ## InstallErrorCode<sup>deprecated<sup>
-> 从API version 9开始不再维护，建议使用[errorcode-bundle](errorcode-bundle.md)替代。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[errorcode-bundle](errorcode-bundle.md)替代。
 
  **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -1415,7 +1480,9 @@ bundle.getAbilityIcon(bundleName, abilityName, (err, data) => {
 
 ## BundleFlag<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.BundleFlag](js-apis-bundleManager.md#bundleflag)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager.BundleFlag](js-apis-bundleManager.md#bundleflag)替代。
 
 包信息标志，指示需要获取的包信息的内容。
 
@@ -1441,7 +1508,10 @@ bundle.getAbilityIcon(bundleName, abilityName, (err, data) => {
 | GET_ALL_APPLICATION_INFO                        | 0xFFFF0000 | 获取应用所有的信息。              |
 
 ## BundleOptions<sup>deprecated<sup>
-> 从API version 9开始不再维护，不推荐使用。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，暂无替代接口。
 
 查询选项，包含userId。
 
@@ -1453,7 +1523,9 @@ bundle.getAbilityIcon(bundleName, abilityName, (err, data) => {
 
 ## AbilityType<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.AbilityType](js-apis-bundleManager.md#abilitytype)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager.AbilityType](js-apis-bundleManager.md#abilitytype)替代。
 
 Ability组件类型。
 
@@ -1468,7 +1540,9 @@ Ability组件类型。
 
 ## DisplayOrientation<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.DisplayOrientation](js-apis-bundleManager.md#displayorientation)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager.DisplayOrientation](js-apis-bundleManager.md#displayorientation)替代。
 
 屏幕显示方向。
 
@@ -1482,7 +1556,9 @@ Ability组件类型。
 | FOLLOW_RECENT | 无   | 屏幕方向--紧跟上一个组件。 |
 ## LaunchMode<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.LaunchType](js-apis-bundleManager.md#launchtype)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager.LaunchType](js-apis-bundleManager.md#launchtype)替代。
 
 Ability组件的启动模式。
 
@@ -1494,7 +1570,10 @@ Ability组件的启动模式。
 | STANDARD  | 1    | Ability有多个实例。   |
 
 ## AbilitySubType<sup>deprecated<sup>
-> 从API version 9开始不再维护，不推荐使用。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，暂无替代接口。
 
 Ability组件的子类型。
 
@@ -1506,7 +1585,10 @@ Ability组件的子类型。
 | CA          | 1    | Ability子类型是带有 UI 的服务。 |
 
 ## ColorMode<sup>deprecated<sup>
-> 从API version 9开始不再维护，不推荐使用。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，暂无替代接口。
 
 应用、卡片等的颜色模式。
 
@@ -1521,7 +1603,9 @@ Ability组件的子类型。
 
 ## GrantStatus<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[bundleManager.PermissionGrantState](js-apis-bundleManager.md#permissiongrantstate)替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager.PermissionGrantState](js-apis-bundleManager.md#permissiongrantstate)替代。
 
 权限授予状态。
 

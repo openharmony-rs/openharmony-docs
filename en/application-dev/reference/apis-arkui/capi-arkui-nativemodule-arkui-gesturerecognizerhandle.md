@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
+```
+
 ## Overview
 
 Defines the gesture recognizer handle array.

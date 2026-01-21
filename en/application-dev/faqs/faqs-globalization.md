@@ -14,8 +14,8 @@
 Call **getRawFileContent** of the **ResourceManager** module to obtain the data in the XML file, and then use **String.fromCharCode** to convert the data to the string type.
 
 **Example**
-
-```
+<!--code_no_check-->
+```js
 resourceManager.getRawFileContent('test.xml', (error, value) => {
   if (error != null) {
     console.log("error is " + error);
@@ -38,8 +38,8 @@ resourceManager.getRawFileContent('test.xml', (error, value) => {
 The stage model allows an application to obtain a **ResourceManager** object based on **context** and call its resource management APIs without first importing the required bundle. This mode does not apply to the FA model.
 
 **Example**
-
-```
+<!--code_no_check-->
+```js
 const context = getContext(this) as any
 context 
   .resourceManager
@@ -122,7 +122,7 @@ In the form_config.json file, `$` cannot be used to reference constants.
 
 1. Create the following XML file in the rawfile directory:
 
-   ```
+   ```xml
    <?xml version="1.0" encoding="utf-8"?>
    <user>
        <name>Jacky</name>
@@ -131,29 +131,29 @@ In the form_config.json file, `$` cannot be used to reference constants.
    ```
 
 2. Use **resourceManager.getRawFileContent** to obtain the byte arrays of the XML file.
-
-```
-import resourceManager from '@ohos.resourceManager';
-import xml from '@ohos.xml';
-export default {
-    onCreate() {
-        resourceManager.getResourceManager((error, res) => {
-            if (error != null) {
-                console.log("error is " + error);
-                return
-            }
-            res.getRawFileContent("test.xml", (error, value) => {
-                if (error != null) {
-                    console.log("error is " + error);
-                    return
-                }
-                let arrayBuffer = value.buffer; // unit8Array
-                var xmpParser = new xml.XmlPullParser(arrayBuffer);
-                var tagName = ""
-                //do something
-                console.log("parse xml finished");
-            })
-        })
-    }
-};
-```
+   <!--code_no_check-->
+   ```js
+   import resourceManager from '@ohos.resourceManager';
+   import xml from '@ohos.xml';
+   export default {
+       onCreate() {
+           resourceManager.getResourceManager((error, res) => {
+               if (error != null) {
+                   console.log("error is " + error);
+                   return
+               }
+               res.getRawFileContent("test.xml", (error, value) => {
+                   if (error != null) {
+                       console.log("error is " + error);
+                       return
+                   }
+                   let arrayBuffer = value.buffer; // unit8Array
+                   var xmpParser = new xml.XmlPullParser(arrayBuffer);
+                   var tagName = ""
+                   //do something
+                   console.log("parse xml finished");
+               })
+           })
+       }
+   };
+   ```

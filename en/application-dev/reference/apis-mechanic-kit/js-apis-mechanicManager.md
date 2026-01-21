@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @saga2025-->
 <!--Tester: @zhaodengqi-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @hu-zhiqiong-->
 
 The **mechanicManager** module provides the mechanic device interaction capabilities, such as listening for the device connection status, tracking control, and listening for the tracking status.
 

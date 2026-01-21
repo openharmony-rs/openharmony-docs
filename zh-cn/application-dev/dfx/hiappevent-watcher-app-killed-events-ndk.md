@@ -142,8 +142,8 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    }
    
    static napi_value Leak(napi_env env, napi_callback_info info) {
-   	std::thread t1(NativeLeak);
-   	t1.detach();
+    std::thread t1(NativeLeak);
+    t1.detach();
        return {};
    }
    ```
@@ -198,7 +198,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
     > **说明：**
     >
-    > 根据日志报错内容，可查看具体[终止原因](./hiappevent-watcher-app-killed-events.md)。
+    > 根据日志报错内容，可查看具体[应用终止事件介绍](./hiappevent-watcher-app-killed-events.md#事件字段说明)。
 
 10. 移除事件观察者：
 

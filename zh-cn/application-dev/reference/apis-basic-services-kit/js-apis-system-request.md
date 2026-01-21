@@ -1,4 +1,10 @@
 # @system.request (上传下载)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Request-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 system.request部件主要给应用提供上传下载文件的基础能力。
 
@@ -11,8 +17,8 @@ system.request部件主要给应用提供上传下载文件的基础能力。
 ## 导入模块
 
 
-```
-import request from '@system.request';
+```js
+import { Request } from '@kit.BasicServicesKit';
 ```
 
 ## request.upload<sup>(deprecated)</sup>
@@ -23,6 +29,10 @@ upload(options: UploadRequestOptions): void
 
 **系统能力**：SystemCapability.MiscServices.Upload
 
+> **说明：**
+>
+> 从API version 3 开始支持，从API version 9 开始废弃，建议使用[request.uploadFile](js-apis-request.md#requestuploadfile9)替代。
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -32,7 +42,7 @@ upload(options: UploadRequestOptions): void
 **示例：**
 
   ```js
-  import request, { UploadRequestOptions } from '@system.request';
+  import  { Request, UploadRequestOptions, UploadResponse } from '@kit.BasicServicesKit';
 
   let uploadRequestOptions: UploadRequestOptions = {
     url: 'http://www.path.com',
@@ -47,22 +57,22 @@ upload(options: UploadRequestOptions): void
       name: "name123",
       value: "123"
     }],
-    success: (data: object) => {
-      console.info(' upload success, code:' + JSON.stringify(data));
+    success: (data: UploadResponse) => {
+      console.info('Succeeded in uploading, code:' + JSON.stringify(data.code));
     },
-    fail: (data:string, code:number) => {
-      console.info(' upload fail data: ' + data + 'code: ' + code);
+    fail: (data: string, code: number) => {
+      console.info('Failed to upload, data: ' + data + 'code: ' + code);
     },
     complete: () => {
-      console.info(' upload complete');
+      console.info('Upload complete');
     }
   }
 
   try {
-    request.upload(uploadRequestOptions);
-    console.info('upload start ');
+    Request.upload(uploadRequestOptions);
+    console.info('Start Upload');
   } catch (err) {
-    console.info(' upload err:' + err);
+    console.error('Failed to upload, err:' + err);
   }
   ```
 
@@ -71,7 +81,11 @@ upload(options: UploadRequestOptions): void
 
 **系统能力**：SystemCapability.MiscServices.Upload
 
+> **说明：**
+>
+> 从API version 3 开始支持，从API version 9 开始废弃，建议使用[UploadConfig](js-apis-request.md#uploadconfig)替代。
 
+**参数：**
   | 名称 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | url | string | 是 | 上传服务器地址。 |
@@ -147,29 +161,29 @@ download(options: DownloadRequestOptions): void
 **示例：**
 
   ```js
-  import request, { DownloadRequestOptions } from '@system.request';
+  import  { Request, DownloadResponse, DownloadRequestOptions } from '@kit.BasicServicesKit';
 
   let downloadRequestOptions: DownloadRequestOptions = {
     url: 'http://www.path.com',
-    filename: 'requestSystenTest',
+    filename: 'requestSystemTest',
     header: "",
-    description: 'this is requeSystem download response',
-    success: (data:object) => {
-      console.info(' download success, code:' + JSON.stringify(data));
+    description: 'this is requestSystem download response',
+    success: (data: DownloadResponse) => {
+      console.info('Succeeded in downloading, code:' + JSON.stringify(data));
     },
-    fail: (data:string, code:number) => {
-      console.info(' download fail data: ' + data + 'code: ' + code);
+    fail: (data: string, code: number) => {
+      console.info('Failed to download, data: ' + data + 'code: ' + code);
     },
     complete: () => {
-      console.info(' download complete');
+      console.info('Download complete');
     }
   }
 
   try {
-    request.download(downloadRequestOptions);
-    console.info('download start ');
+    Request.download(downloadRequestOptions);
+    console.info('Start download');
   } catch(err) {
-    console.info(' download err:' + err);
+    console.error('Failed to download, err:' + err);
   }
   ```
 
@@ -178,6 +192,11 @@ download(options: DownloadRequestOptions): void
 
 **系统能力**：SystemCapability.MiscServices.Download
 
+> **说明：**
+>
+> 从API version 3 开始支持，从API version 9 开始废弃，建议使用[UploadConfig](js-apis-request.md#uploadconfig)替代。
+
+**参数：**
   | 名称 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | url | string | 是 | 资源地址。 |
@@ -225,22 +244,22 @@ onDownloadComplete(options: OnDownloadCompleteOptions): void
 **示例：**
 
   ```js
-  import request, { OnDownloadCompleteOptions } from '@system.request';
+  import  { Request, OnDownloadCompleteOptions, OnDownloadCompleteResponse } from '@kit.BasicServicesKit';
 
   let onDownloadCompleteOptions: OnDownloadCompleteOptions = {
     token: 'token-index',
-    success: (data:object) => {
-      console.info(' download success, code:' + JSON.stringify(data));
+    success: (data: OnDownloadCompleteResponse) => {
+      console.info('Succeeded in downloading, uri:' + JSON.stringify(data.uri));
     },
-    fail: (data:string, code:number) => {
-      console.info(' download fail data: ' + data + 'code: ' + code);
+    fail: (data: string, code: number) => {
+      console.info('Failed to download, data: ' + data + 'code: ' + code);
     },
     complete: () => {
-      console.info(' download complete');
+      console.info('Download complete');
     }
   }
 
-  request.onDownloadComplete(onDownloadCompleteOptions);
+  Request.onDownloadComplete(onDownloadCompleteOptions);
   ```
 
 

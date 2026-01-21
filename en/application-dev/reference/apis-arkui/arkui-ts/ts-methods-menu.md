@@ -68,7 +68,7 @@ struct Index {
       .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
       .onDragStart(()=>{
         // Close the menu when the component is dragged.
-        ContextMenu.close() // You are advised to use this.getUIContext().getContextMenuController().close().
+        ContextMenu.close() // You are advised to use this.getUIContext().getContextMenuController().close() to obtain the UI context.
       })
     }
     .width('100%')

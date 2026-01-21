@@ -5,7 +5,7 @@
 <!--Owner: @wangfenging -->
 <!--Designer: @liveery; @zl_startup-->
 <!--Tester: @liuhaonan2-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 
 开发者在应用开发调试时，可能需要向应用沙箱下推送一些文件以期望在应用内访问或测试，此时有两种方式：

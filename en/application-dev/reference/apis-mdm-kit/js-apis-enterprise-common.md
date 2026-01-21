@@ -35,7 +35,8 @@ Enumerates enterprise device management policies.
 ## ApplicationInstance
 
 Defines application instance data.
-It is used as an input parameter in the [addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22), [removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22), [addFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddfreezeexemptedapps22), and [removeFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremovefreezeexemptedapps22) APIs.
+
+It is used as an input parameter in the [addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22), [removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22), [addFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddfreezeexemptedapps22), [removeFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremovefreezeexemptedapps22), [setAbilityDisabled](./js-apis-enterprise-applicationManager.md#applicationmanagersetabilitydisabled23) and [isAbilityDisabled](./js-apis-enterprise-applicationManager.md#applicationmanagerisabilitydisabled23) APIs.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -48,6 +49,7 @@ It is used as an input parameter in the [addUserNonStopApps](./js-apis-enterpris
 ## InstallationResult
 
 An object that holds the application installation result.
+
 This object is used as a callback parameter in [EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonmarketappinstallresult22).
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager

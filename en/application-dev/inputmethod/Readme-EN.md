@@ -3,10 +3,10 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
-- [Introduction to IME Kit](ime-kit-intro.md)
+- [About This Kit](ime-kit-intro.md)
 - [Implementing an Input Method Application](inputmethod-application-guide.md)
 - [Using the Input Method in a Custom Edit Box](use-inputmethod-in-custom-edit-box.md)
 - [Switching Between Input Methods](switch-inputmethod-guide.md)

@@ -74,7 +74,7 @@ The **type_def.h** file declares the common types.
 
 ### ffrt_queue_priority_t
 
-```
+```c
 enum ffrt_queue_priority_t
 ```
 
@@ -93,7 +93,7 @@ Enumerates the task priority types.
 
 ### ffrt_qos_default_t
 
-```
+```c
 enum ffrt_qos_default_t
 ```
 
@@ -113,7 +113,7 @@ Enumerates the task QoS types.
 
 ### ffrt_storage_size_t
 
-```
+```c
 enum ffrt_storage_size_t
 ```
 
@@ -135,7 +135,7 @@ Enumerates the storage sizes available for different types of structs.
 
 ### ffrt_function_kind_t
 
-```
+```c
 enum ffrt_function_kind_t
 ```
 
@@ -152,7 +152,7 @@ Task type.
 
 ### ffrt_dependence_type_t
 
-```
+```c
 enum ffrt_dependence_type_t
 ```
 
@@ -169,7 +169,7 @@ Enumerates the dependency types.
 
 ### ffrt_error_t
 
-```
+```c
 enum ffrt_error_t
 ```
 
@@ -190,7 +190,7 @@ Enumerates the FFRT error codes.
 
 ### ffrt_mutex_type
 
-```
+```c
 enum ffrt_mutex_type
 ```
 
@@ -208,7 +208,7 @@ Enumerates the mutex types. **ffrt_mutex_normal** indicates a normal mutex, **ff
 
 ### qos_default
 
-```
+```c
 enum qos_default
 ```
 
@@ -231,7 +231,7 @@ Enumerates the task QoS types.
 
 ### ffrt_function_t()
 
-```
+```c
 typedef void(*ffrt_function_t)(void*)
 ```
 
@@ -243,7 +243,7 @@ Defines the type of the pointer to a task execution function.
 
 ### ffrt_poller_cb()
 
-```
+```c
 typedef void (*ffrt_poller_cb)(void* data, uint32_t event)
 ```
 
@@ -255,7 +255,7 @@ Defines the poller callback function.
 
 ### ffrt_timer_cb()
 
-```
+```c
 typedef void (*ffrt_timer_cb)(void* data)
 ```
 

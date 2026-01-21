@@ -17,7 +17,7 @@ For details about the supported encoding capabilities, see [AVCodec Supported Fo
 
 - Audio recording
 
-  Record PCM data, encode it into the desired format, and then [multiplex](audio-video-muxer.md) it in the target file format.
+  Record PCM data, encode it into the desired format, and then [multiplex](audio-video-muxer.md) it into an audio file in the desired format.
 - Audio editing
 
   Export edited PCM data, encode it into the corresponding audio format, and then [multiplex](audio-video-muxer.md) it into a file.
@@ -55,7 +55,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 ### How to Develop
 
-1. Add the header files.
+1. Add the required header files.
 
     ```cpp
     #include <multimedia/player_framework/native_avcodec_audiocodec.h>
@@ -123,7 +123,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    > **NOTE**
    >
-   > You are not advised to perform time-consuming operations in the callback.
+   > Do not call the encoder APIs or perform time-consuming operations in the callbacks.
 
     ```cpp
     // Implement the OH_AVCodecOnError callback function.
@@ -390,10 +390,10 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    To continue encoding, you must call **OH_AudioCodec_Start()** again.
 
-   You need to call **OH_AudioCodec_Flush()** in the following cases:
+   Usage:
 
-   * The EOS of the file is reached.
-   * An error with **OH_AudioCodec_IsValid** set to **true** (indicating that the execution can continue) occurs.
+   * To use the same encoder configuration after **AVCODEC_BUFFER_FLAGS_EOS** of the output buffer is set, call **OH_AudioCodec_Flush()** to refresh the encoder.
+   * If a recoverable error occurs during the execution (**OH_AudioCodec_IsValid()** returns **true**), you can call **OH_AudioCodec_Flush()** to refresh the encoder and then call **OH_AudioCodec_Start()** to start encoding again.
 
     ```c++
     // Refresh the encoder.
@@ -410,7 +410,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 10. (Optional) Call **OH_AudioCodec_Reset()** to reset the encoder.
 
-    After **OH_AudioCodec_Reset()** is called, the encoder returns to the initialized state. To continue encoding, you must call **OH_AudioCodec_Configure()** and then **OH_AudioCodec_Start()**.
+    After **OH_AudioCodec_Reset()** is called, the encoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the encoder and then call **OH_AudioCodec_Start()** to start encoding again. Obtain the input and output buffers again after the encoder is started.
 
     ```c++
     // Reset the encoder.
@@ -427,7 +427,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 11. Call **OH_AudioCodec_Stop()** to stop the encoder.
 
-    After the encoder is stopped, you can call **Start** to start it again. If you have passed specific data in the previous **Start** for the encoder, you must pass it again.
+    After the encoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. The input and output buffers obtained before the encoder is stopped cannot be reused. You must obtain them again after the encoder is started.
 
     ```c++
     // Stop the encoder.

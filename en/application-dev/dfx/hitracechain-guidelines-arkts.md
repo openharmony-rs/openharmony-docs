@@ -50,7 +50,7 @@ The **async**/**await** and **promise**/**then** asynchronous tasks support auto
 
 2. In the **entry/src/main/ets/pages/index.ets** file, use HiTraceChain to trace asynchronous tasks. The complete code is as follows:
 
-   <!-- @[hitracechain_arkts_sample_code_a](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_A/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[hitracechain_arkts_sample_code_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_A/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -234,7 +234,7 @@ The **async**/**await** and **promise**/**then** asynchronous tasks support auto
 
 2. In the **entry/src/main/ets/pages/index.ets** file of the project, use HiTraceChain to trace asynchronous tasks. The complete code is as follows:
 
-   <!-- @[hitracechain_arkts_sample_code_b](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_B/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[hitracechain_arkts_sample_code_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sample_B/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';

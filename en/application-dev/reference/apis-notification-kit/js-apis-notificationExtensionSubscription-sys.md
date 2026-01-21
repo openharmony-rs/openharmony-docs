@@ -35,7 +35,7 @@ Obtains all applications that have requested the [ohos.permission.SUBSCRIBE_NOTI
 
 **Return value**
 
-| Type    | Description       |
+| Type    | Description       | 
 | ------- |-----------|
 | Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise used to return the applications that have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission and implemented [NotificationSubscriberExtensionAbility](./js-apis-notificationSubscriberExtensionAbility.md).       |
 
@@ -45,8 +45,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied.     |
-| 202      | Not system application to call the interface.                                      |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                    |
 
@@ -64,7 +64,7 @@ notificationExtensionSubscription.getAllSubscriptionBundles().then((data) => {
 
 getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
-Obtains the enabling state of the **Allow access to notification on this device** switch for a specified application. This API uses a promise to return the result.
+Obtains the enabling state of the **Allow access to notifications on this device** switch of a specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -80,9 +80,9 @@ Obtains the enabling state of the **Allow access to notification on this device*
 
 **Return value**
 
-| Type    | Description       |
+| Type    | Description       | 
 | ------- |-----------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the device notification access for the target application is enabled, and **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the device notification access is enabled, and **false** indicates the opposite.| 
 
 **Error codes**
 
@@ -90,8 +90,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |
-| 202      | Not system application to call the interface.                                      |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 | 1600022  | The specified bundle is invalid.                          |
@@ -119,7 +119,7 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
 
 setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void\>
 
-Sets the enabling state of the **Allow access to notification on this device** switch for a specified application. This API uses a promise to return the result.
+Sets the enabling state of the **Allow access to notifications on this device** switch for a specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -146,8 +146,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |
-| 202      | Not system application to call the interface.                                      |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 | 1600022  | The specified bundle is invalid.                          |
@@ -171,7 +171,7 @@ notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then((
 
 getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[]\>
 
-Obtains applications (**targetBundle**) with device notification access granted by the user. This API uses a promise to return the result.
+Obtains the applications that are allowed to access device notifications. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -189,7 +189,7 @@ Obtains applications (**targetBundle**) with device notification access granted 
 
 | Type    | Description       |
 | ------- |-----------|
-| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise used to return the result.       |
+| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise used to return the applications obtained.       |
 
 **Error codes**
 
@@ -222,7 +222,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).the
 
 setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOption[], enabled:boolean): Promise\<void\>
 
-Sets the enabling state of device notification access for the specified application (**targetBundle**). This API uses a promise to return the result.
+Sets the enabling state of device notification access for the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -240,7 +240,7 @@ Sets the enabling state of device notification access for the specified applicat
 
 **Return value**
 
-| Type    | Description       |
+| Type    | Description       | 
 | ------- |-----------|
 | Promise\<void\> | Promise that returns no value.|
 
@@ -251,7 +251,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 201      | Permission denied. |
-| 202      | Not system application to call the interface.  |
+| 202      | Not system application to call the interface. |
 | 1600001  | Internal error. |
 | 1600003  | Failed to connect to the service. |
 | 1600022  | The specified bundle is invalid. |

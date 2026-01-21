@@ -8,13 +8,13 @@
 
 Create a more gorgeous look for a component by applying a color gradient effect to it.
 
->  **NOTE**
+> **NOTE**
 >
-> The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> Color gradients are considered part of the component's content and are drawn above the background.
+> - Color gradients are considered part of the component's content and are drawn above the background.
 >
-> Color gradients do not support explicit width and height animations. When the width or height of a component is animated with a color gradient, the gradient will jump straight to the final size.
+> - Color gradients do not support explicit width and height animations. When the width or height of a component is animated with a color gradient, the gradient will jump straight to the final size.
 
 ## linearGradient
 
@@ -56,7 +56,7 @@ Creates a linear gradient. Compared to [linearGradient](#lineargradient), this A
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | Optional\<[LinearGradientOptions](#lineargradientoptions18)> | Yes  | Linear gradient.<br>If **options** is **undefined**, the linear gradient is disabled.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LinearGradientOptions](#lineargradientoptions18)>| Yes  | Linear gradient.<br>If **options** is **undefined**, the linear gradient is disabled.|
 
 **Return value**
 
@@ -80,9 +80,9 @@ Defines the linear gradient parameters.
 
 | Name                                      | Type                                                        | Read-Only| Optional| Description                                                        |
 | ------------------------------------------ | ------------------------------------------------------------ | ---- | ---- |------------------------------------------------------------ |
-| angle<sup>7+</sup>                                      | number \| string                                   | No| Yes  | Start angle of the linear gradient. When the angle is 0 degrees, the gradient direction is from bottom to top (that is, 0 o'clock direction). A positive value indicates a clockwise rotation from the origin, (0, 0).<br> Value range: (-∞, +∞). Positive values indicate clockwise rotation, and negative values indicate counterclockwise rotation.<br>Default value: **180**<br>When specified as a string, valid values are pure numbers or numbers followed by units: "deg" (degrees), "rad" (radians), "grad" (gradians), or "turn" (turns). Examples: "90", "90deg", "1.57rad".<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| angle<sup>7+</sup>                                      | number&nbsp;\|&nbsp;string                                   | No| Yes  | Start angle of the linear gradient. When the angle is 0 degrees, the gradient direction is from bottom to top (that is, 0 o'clock direction). A positive value indicates a clockwise rotation from the origin, (0, 0).<br> Value range: (-∞, +∞). Positive values indicate clockwise rotation, and negative values indicate counterclockwise rotation.<br>Default value: **180**<br>When specified as a string, valid values are pure numbers or numbers followed by units: "deg" (degrees), "rad" (radians), "grad" (gradians), or "turn" (turns). Examples: "90", "90deg", "1.57rad".<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 | direction<sup>7+</sup>                                  | [GradientDirection](ts-appendix-enums.md#gradientdirection)  | No| Yes  | Direction of the linear gradient. It does not take effect when **angle** is set to a non-undefined value. **GradientDirection.None** uses the default direction. <br>Default value: **GradientDirection.Bottom**.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| [colors](#radialgradientoptions18)<sup>7+</sup> | Array&lt;[[ResourceColor](ts-types.md#resourcecolor), number]&gt; | No| No  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. **ResourceColor** represents the color. **number** represents the stop position of the color, with a range of [0, 1.0]. Values less than 0 are treated as **0**, and values greater than 1.0 are treated as **1.0**. **0** indicates the start of the gradient; **1.0** indicates the end. To achieve multi-color gradients, the **number** parameters in the array should be set in ascending order. If a later number is less than a previous one, it is treated as equal to the previous value.<br> Default value: **[]**, meaning no gradient effect.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| colors<sup>7+</sup> | Array&lt;[[ResourceColor](ts-types.md#resourcecolor),&nbsp;number]&gt; | No| No  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. **ResourceColor** represents the color. **number** represents the stop position of the color, with a range of [0, 1.0]. Values less than 0 are treated as **0**, and values greater than 1.0 are treated as **1.0**. **0** indicates the start of the gradient; **1.0** indicates the end. To achieve multi-color gradients, the **number** parameters in the array should be set in ascending order. If a later number is less than a previous one, it is treated as equal to the previous value.<br> Default value: **[]**, meaning no gradient effect.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 | repeating<sup>7+</sup>                                  | boolean                                                      | No| Yes | Whether the colors are repeated.<br>Default value: **false**.<br>**true**: The colors are repeated.<br>**false**: The colors are not repeated.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 
 ## sweepGradient
@@ -125,7 +125,7 @@ Creates a sweep gradient. Compared to [sweepGradient](#sweepgradient), this API 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | Optional\<[SweepGradientOptions](#sweepgradientoptions18)> | Yes  | Sweep gradient.<br>If **options** is **undefined**, the sweep gradient is disabled.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[SweepGradientOptions](#sweepgradientoptions18)>| Yes  | Sweep gradient.<br>If **options** is **undefined**, the sweep gradient is disabled.|
 
 **Return value**
 
@@ -150,11 +150,11 @@ Defines the sweep gradient parameters.
 | Name                                      | Type                                                        | Read-Only| Optional| Description                                                        |
 | ------------------------------------------ | ------------------------------------------------------------ | ---- | ---- |------------------------------------------------------------- |
 | center<sup>7+</sup>                                    | [[Length](./ts-types.md#length), Length]                     | No| No  | Center of the sweep gradient, that is, the coordinates relative to the upper left corner of the current component.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.          |
-| start<sup>7+</sup>                                     | number \| string                                   | No| Yes  | Start point of the sweep gradient. <br>Default value: **0**.<br>When specified as a string, valid values are pure numbers or numbers followed by units: "deg" (degrees), "rad" (radians), "grad" (gradians), or "turn" (turns). Examples: "90", "90deg", "1.57rad". The value is limited to 0-360 degrees after unit conversion. Values less than 0 degrees are treated as 0 degrees; values greater than 360 degrees are treated as 360 degrees.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                           |
-| end<sup>7+</sup>                                       | number \| string                                   | No| Yes | End point of the sweep gradient. <br>Default value: **0**.<br>When specified as a string, valid values are pure numbers or numbers followed by units: "deg" (degrees), "rad" (radians), "grad" (gradians), or "turn" (turns). Examples: "90", "90deg", "1.57rad". The value is limited to 0-360 degrees after unit conversion. Values less than 0 degrees are treated as 0 degrees; values greater than 360 degrees are treated as 360 degrees.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                           |
-| rotation<sup>7+</sup>                                   | number \| string                                   | No| Yes  | Rotation angle of the sweep gradient. Default value: **0**.<br>When specified as a string, valid values are pure numbers or numbers followed by units: "deg" (degrees), "rad" (radians), "grad" (gradians), or "turn" (turns). Examples: "90", "90deg", "1.57rad". The value is limited to 0-360 degrees after unit conversion. Values less than 0 degrees are treated as 0 degrees; values greater than 360 degrees are treated as 360 degrees.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                             |
-| colors<sup>7+</sup> | Array&lt;[[ResourceColor](ts-types.md#resourcecolor), number]&gt; | No| No  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| metricsColors<sup>20+</sup> | Array&lt;[[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12), number]&gt; | No| Yes  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. When specified, **metricsColors** overrides **colors**. The color gamut attributes must be consistent across color stops. The value is considered invalid if mixed color gamut attributes are detected. The default value is transparent.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| start<sup>7+</sup>                                     | number&nbsp;\|&nbsp;string                                   | No| Yes  | Start point of the sweep gradient. <br>Default value: **0**.<br>When specified as a string, valid values are pure numbers or numbers followed by units: "deg" (degrees), "rad" (radians), "grad" (gradians), or "turn" (turns). Examples: "90", "90deg", "1.57rad". The value is limited to 0 to 360 degrees after unit conversion. Values less than 0 degrees are treated as 0 degrees; values greater than 360 degrees are treated as 360 degrees.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                           |
+| end<sup>7+</sup>                                       | number&nbsp;\|&nbsp;string                                   | No| Yes | End point of the sweep gradient. <br>Default value: **0**.<br>When specified as a string, valid values are pure numbers or numbers followed by units: "deg" (degrees), "rad" (radians), "grad" (gradians), or "turn" (turns). Examples: "90", "90deg", "1.57rad". The value is limited to 0 to 360 degrees after unit conversion. Values less than 0 degrees are treated as 0 degrees; values greater than 360 degrees are treated as 360 degrees.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                           |
+| rotation<sup>7+</sup>                                   | number&nbsp;\|&nbsp;string                                   | No| Yes  | Rotation angle of the sweep gradient. Default value: **0**.<br>When specified as a string, valid values are pure numbers or numbers followed by units: "deg" (degrees), "rad" (radians), "grad" (gradians), or "turn" (turns). Examples: "90", "90deg", "1.57rad". The value is limited to 0 to 360 degrees after unit conversion. Values less than 0 degrees are treated as 0 degrees; values greater than 360 degrees are treated as 360 degrees.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                             |
+| colors<sup>7+</sup> | Array&lt;[[ResourceColor](ts-types.md#resourcecolor),&nbsp;number]&gt; | No| No  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. **ResourceColor** indicates the color. **number** represents the stop position of the color, with a range of [0, 1.0]. Values less than 0 are treated as **0**, and values greater than 1.0 are treated as **1.0**. **0** indicates the start of the gradient; **1.0** indicates the end. To achieve multi-color gradients, the **number** parameters in the array should be set in ascending order. If a later number is less than a previous one, it is treated as equal to the previous value.<br> Default value: **[]**, meaning no gradient effect.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| metricsColors<sup>20+</sup> | Array&lt;[[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12),&nbsp;number]&gt; | No| Yes  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped. When specified, **metricsColors** overrides **colors**. The color gamut attributes must be consistent across color stops. The value is considered invalid if mixed color gamut attributes are detected. The default value is transparent.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | repeating<sup>7+</sup>                                 | boolean                                                      | No| Yes  | Whether the colors are repeated.<br>Default value: **false**.<br>**true**: The colors are repeated.<br>**false**: The colors are not repeated.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.                      |
 
 >  **NOTE**
@@ -191,7 +191,7 @@ Creates a radial gradient.
 
 radialGradient(options: Optional\<RadialGradientOptions>): T
 
-Creates a radial gradient. Compared with [radialGradient](#radialgradient), this API supports the **undefined** type for the **options** parameter.
+Creates a radial gradient. Compared to [radialGradient](#radialgradient), this API supports the **undefined** type for the **options** parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -204,7 +204,7 @@ Creates a radial gradient. Compared with [radialGradient](#radialgradient), this
 
 | Name    | Type                                        | Mandatory                            | Description                              |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
-| options | Optional\<[RadialGradientOptions](#radialgradientoptions18)> | Yes| Radial gradient.<br>If **options** is **undefined**, the radial gradient is disabled.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[RadialGradientOptions](#radialgradientoptions18)>| Yes| Radial gradient.<br>If **options** is **undefined**, the radial gradient is disabled.|
 
 **Return value**
 
@@ -228,9 +228,9 @@ Defines the radial gradient parameters.
 
 | Name     | Type                                                        | Read-Only| Optional| Description                                                  |
 | --------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------ |
-| center<sup>7+</sup>    |  [[Length](./ts-types.md#length), Length]               | No| No  | Center of the radial gradient, that is, the coordinates relative to the upper left corner of the current component.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.     |
+| center<sup>7+</sup>    | &nbsp;[[Length](./ts-types.md#length), Length]               | No| No  | Center of the radial gradient, that is, the coordinates relative to the upper left corner of the current component.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.     |
 | radius<sup>7+</sup>    | [Length](./ts-types.md#length)                                  | No| No  | Radius of the radial gradient.<br>Value range: [0, +∞). A value less than 0 is treated as **0**. If the value is **undefined**, the system adaptively determines the gradient radius.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.          |
-| colors<sup>7+</sup>    | Array&lt;[[ResourceColor](ts-types.md#resourcecolor), number]&gt; | No| No  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.<br> Default value: **[]**, meaning no gradient effect.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| colors<sup>7+</sup>    | Array&lt;[[ResourceColor](ts-types.md#resourcecolor),&nbsp;number]&gt; | No| No  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.<br> Default value: **[]**, meaning no gradient effect.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 | repeating<sup>7+</sup> | boolean                                                     | No| Yes  | Whether the colors are repeated. Default value: **false**.<br>**true**: The colors are repeated.<br>**false**: The colors are not repeated.<br> **Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.            |
 
 >  **NOTE**
@@ -244,7 +244,7 @@ Defines the radial gradient parameters.
 
 ### Example 1: Creating a Linear Gradient
 
-This example demonstrates how to create a linear gradient using **linearGradient**.
+This example demonstrates how to create a linear color gradient using [linearGradient](#lineargradient).
 
 ```ts
 // xxx.ets
@@ -281,7 +281,7 @@ struct ColorGradientExample {
 
 ### Example 2: Creating a Sweep Gradient
 
-This example demonstrates how to create a sweep gradient that changes color based on a rotation angle using **sweepGradient**.
+This example demonstrates how to create a sweep color gradient using [sweepGradient](#sweepgradient).
 
 ```ts
 // To set the P3 color gamut, use the setColorSpace API in ets/entryability/EntryAbility.ets to set the current window to a wide color gamut.
@@ -344,7 +344,7 @@ struct ColorGradientExample {
 
 ### Example 3: Creating a Radial Gradient
 
-This example demonstrates how to create a radial gradient using **radialGradient**.
+This example demonstrates how to create a radial color gradient using [radialGradient](#radialgradient).
 
 ```ts
 // xxx.ets

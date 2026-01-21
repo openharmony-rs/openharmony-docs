@@ -70,9 +70,10 @@ The following is a simple example to illustrate how to implement gesture binding
 The following introduces how to create different types of gestures:
 
 - Tap gesture
+
   Triggers a callback when the component is tapped. You can specify the number of taps required and the number of fingers needed.
 
-    <!-- @[create_tap_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_tap_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // Obtain the set of native gesture APIs.
@@ -84,8 +85,9 @@ The following introduces how to create different types of gestures:
 
 
 - Pan gesture
+
   Triggers a callback when the user performs a pan gesture on the component. You can specify the required number of fingers, pan direction, and pan distance (in px).
-    <!-- @[create_pan_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_pan_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // Obtain the set of native gesture APIs.
@@ -97,9 +99,10 @@ The following introduces how to create different types of gestures:
 
 
 - Long press gesture
+
   Triggers a callback when the user long presses the component. You can specify the number of fingers, hold-down time in milliseconds, and repeatability.
 
-    <!-- @[create_long_press_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_long_press_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // Obtain the set of native gesture APIs.
@@ -112,9 +115,10 @@ The following introduces how to create different types of gestures:
 
 
 - Pinch gesture
+
   Triggers a callback when the user pinches the component. You can specify the number of fingers (at least 2) and the pinch distance (in px).
 
-    <!-- @[create_pinch_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_pinch_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // Obtain the set of native gesture APIs.
@@ -127,9 +131,10 @@ The following introduces how to create different types of gestures:
 
 
 - Rotation gesture
+
   Triggers a callback when the user rotates the component. You can specify the number of fingers (at least 2) and angle.
 
-    <!-- @[create_rotation_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_rotation_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // Obtain the set of native gesture APIs.
@@ -142,9 +147,10 @@ The following introduces how to create different types of gestures:
 
 
 - Swipe gesture
+
   Triggers a callback when a swipe gesture is detected on the component. You can specify the required number of fingers (at least 1), swipe direction, and minimum velocity (in px/s).
 
-    <!-- @[create_swiper_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+  <!-- @[create_swiper_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // Obtain the set of native gesture APIs.

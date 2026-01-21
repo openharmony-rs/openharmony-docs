@@ -64,14 +64,13 @@ The file declares the basic data structure of OHAudio.
 | [typedef void (\*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)](#oh_audiorenderer_outputdevicechangecallback) | OH_AudioRenderer_OutputDeviceChangeCallback | Defines a pointer to the callback invoked when the audio capturer device changes.|
 | [typedef void (\*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)](#oh_audiorenderer_onmarkreachedcallback) | OH_AudioRenderer_OnMarkReachedCallback | Defines a pointer to the callback invoked when the mark position is reached.|
 | [typedef int32_t (\*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)](#oh_audiorenderer_writedatawithmetadatacallback) | OH_AudioRenderer_WriteDataWithMetadataCallback | Defines a function pointer to the callback used to write audio data and metadata.|
-| [typedef OH_AudioData_Callback_Result (\*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallback) | OH_AudioRenderer_OnWriteDataCallback | Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.<br> **audioDataSize** can be set by {@link #OH_AudioStreamBuilder_SetFrameSizeInCallback}.|
-| [typedef int32_t (\*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallbackadvanced) | OH_AudioRenderer_OnWriteDataCallbackAdvanced | Defines a function pointer to the callback used to write audio data. Unlike **OH_AudioRenderer_OnWriteDataCallback**, this function allows the application to fill data of the length ranging [0, audioDataSize].<br> Here, **audioDataSize** refers to the length of the callback buffer. The caller notifies the system of the length of the data written through the return value.<br> If the return value is 0, the callback thread sleeps for a period of time.<br> Otherwise, the system may immediately initiate the next callback.|
+| [typedef OH_AudioData_Callback_Result (\*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallback) | OH_AudioRenderer_OnWriteDataCallback | Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.<br> The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).|
 
 ## Enum Description
 
 ### OH_AudioStream_Result
 
-```
+```c
 enum OH_AudioStream_Result
 ```
 
@@ -91,7 +90,7 @@ Enumerates the audio operation results.
 
 ### OH_AudioStream_Type
 
-```
+```c
 enum OH_AudioStream_Type
 ```
 
@@ -108,7 +107,7 @@ Enumerates the audio stream types.
 
 ### OH_AudioStream_SampleFormat
 
-```
+```c
 enum OH_AudioStream_SampleFormat
 ```
 
@@ -128,7 +127,7 @@ Enumerates the sampling formats of audio streams.
 
 ### OH_AudioStream_EncodingType
 
-```
+```c
 enum OH_AudioStream_EncodingType
 ```
 
@@ -146,7 +145,7 @@ Enumerates the encoding types of audio streams.
 
 ### OH_AudioStream_Usage
 
-```
+```c
 enum OH_AudioStream_Usage
 ```
 
@@ -175,7 +174,7 @@ Enumerates the usage scenarios of an audio renderer, that is, usage scenarios of
 
 ### OH_AudioStream_LatencyMode
 
-```
+```c
 enum OH_AudioStream_LatencyMode
 ```
 
@@ -192,7 +191,7 @@ Enumerates the latency modes of audio streams.
 
 ### OH_AudioStream_DirectPlaybackMode
 
-```
+```c
 enum OH_AudioStream_DirectPlaybackMode
 ```
 
@@ -210,7 +209,7 @@ Enumerates the direct playback modes of audio streams.
 
 ### OH_AudioStream_VolumeMode
 
-```
+```c
 enum OH_AudioStream_VolumeMode
 ```
 
@@ -227,7 +226,7 @@ Enumerates the volume modes of audio streams.
 
 ### OH_AudioStream_State
 
-```
+```c
 enum OH_AudioStream_State
 ```
 
@@ -249,7 +248,7 @@ Enumerates the audio stream states.
 
 ### OH_AudioStream_SourceType
 
-```
+```c
 enum OH_AudioStream_SourceType
 ```
 
@@ -273,7 +272,7 @@ Enumerates the usage scenarios of an audio capturer, that is, usage scenarios of
 
 ### OH_AudioStream_Event
 
-```
+```c
 enum OH_AudioStream_Event
 ```
 
@@ -291,7 +290,7 @@ Enumerates the audio stream events.
 
 ### OH_AudioInterrupt_ForceType
 
-```
+```c
 enum OH_AudioInterrupt_ForceType
 ```
 
@@ -312,7 +311,7 @@ This type specifies whether the audio interruption operation is forcibly perform
 
 ### OH_AudioInterrupt_Hint
 
-```
+```c
 enum OH_AudioInterrupt_Hint
 ```
 
@@ -341,7 +340,7 @@ You can determine whether the operation is forcibly performed by the system base
 
 ### OH_AudioInterrupt_Mode
 
-```
+```c
 enum OH_AudioInterrupt_Mode
 ```
 
@@ -358,7 +357,7 @@ Enumerates the audio interruption modes.
 
 ### OH_AudioStream_AudioEffectMode
 
-```
+```c
 enum OH_AudioStream_AudioEffectMode
 ```
 
@@ -375,7 +374,7 @@ Enumerates the audio effect modes.
 
 ### OH_AudioStream_FastStatus
 
-```
+```c
 enum OH_AudioStream_FastStatus
 ```
 
@@ -392,7 +391,7 @@ Enumerates the low-latency statuses.
 
 ### OH_AudioStream_DeviceChangeReason
 
-```
+```c
 enum OH_AudioStream_DeviceChangeReason
 ```
 
@@ -413,7 +412,7 @@ Enumerates the reasons for audio stream device changes.
 
 ### OH_AudioStream_PrivacyType
 
-```
+```c
 enum OH_AudioStream_PrivacyType
 ```
 
@@ -431,7 +430,7 @@ Enumerates the privacy types of an audio stream. The privacy type specifies whet
 
 ### OH_AudioData_Callback_Result
 
-```
+```c
 enum OH_AudioData_Callback_Result
 ```
 
@@ -451,7 +450,7 @@ Enumerates the audio data callback results.
 
 ### OH_AudioRenderer_OutputDeviceChangeCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)
 ```
 
@@ -471,7 +470,7 @@ Defines a pointer to the callback invoked when the audio capturer device changes
 
 ### OH_AudioRenderer_OnMarkReachedCallback()
 
-```
+```c
 typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)
 ```
 
@@ -491,7 +490,7 @@ Defines a pointer to the callback invoked when the mark position is reached.
 
 ### OH_AudioRenderer_WriteDataWithMetadataCallback()
 
-```
+```c
 typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)
 ```
 
@@ -520,7 +519,7 @@ Defines a function pointer to the callback used to write audio data and metadata
 
 ### OH_AudioRenderer_OnWriteDataCallback()
 
-```
+```c
 typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)
 ```
 
@@ -552,36 +551,3 @@ The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_Set
 | Type| Description|
 | -- | -- |
 | [OH_AudioData_Callback_Result](#oh_audiodata_callback_result) | **AUDIO_DATA_CALLBACK_RESULT_INVALID**: The audio data callback result is invalid, and the audio data will not be played.<br>         **AUDIO_DATA_CALLBACK_RESULT_VALID**: The audio data callback result is valid, and the audio data will be played.|
-
-### OH_AudioRenderer_OnWriteDataCallbackAdvanced()
-
-```
-typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)
-```
-
-**Description**
-
-Defines a function pointer to the callback used to write audio data. Unlike **OH_AudioRenderer_OnWriteDataCallback**, this function allows the application to fill data of the length ranging [0, audioDataSize].
-
-Here, **audioDataSize** refers to the length of the callback buffer. The caller notifies the system of the length of the data written through the return value.
-
-If the return value is 0, the callback thread sleeps for a period of time.
-
-Otherwise, the system may immediately initiate the next callback.
-
-**Since**: 20
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to the instance for which the callback occurs.|
-|  void* userData | Pointer to the application data passed through the callback.|
-|  void* audioData | Pointer to the audio data to be filled by the application.|
-|  int32_t audioDataSize | Length of the audio data, in bytes.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Actual length of valid audio data filled by the application. The return value must be in the range of [0, audioDataSize].<br> If the return value is less than 0, the system adjusts it to 0. If the return value is greater than **audioDataSize**, the system adjusts it to **audioDataSize**.<br> Note that the return value must be an integer multiple of the size of a single sampling point.<br> For example, for audio data in stereo s16 format, it must be an integer multiple of 4 (216/8).<br> Failure to do so may result in playback noise.|

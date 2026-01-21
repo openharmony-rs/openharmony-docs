@@ -404,7 +404,7 @@ For details about the error codes, see [Time and Time Zone Service Error Codes](
 
 | ID| Error Message                                                                                                   |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 13000002    | Location NTP time of the system is invalid.                                                           |
+| 13000002    | updateNtpTime() is not called successfully.                                                           |
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 
 **Example**

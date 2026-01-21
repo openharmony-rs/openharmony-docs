@@ -6,13 +6,17 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Params
+```
+
 ## Overview
 
 Defines the USB serial port parameters for the USB SERIAL DDK.
 
 **Since**: 18
 
-**Related module**: [SerialDdk](capi-serialddk.md)
+**Related module**: [USBSerialDDK](capi-serialddk.md)
 
 **Header file:** [usb_serial_types.h](capi-usb-serial-types-h.md)
 

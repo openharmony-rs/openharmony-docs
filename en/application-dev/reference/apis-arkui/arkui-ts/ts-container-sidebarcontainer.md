@@ -3,14 +3,14 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **SideBarContainer** component contains a sidebar and content area as its child components. The sidebar is the first child component and can be shown or hidden as needed. The content area is the second child component.
 
 >  **NOTE**
 >
->  This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 
 ## Child Components
@@ -22,7 +22,7 @@ Supported
 >  - Allowed child component types: built-in and custom components, excluding rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)).
 >  - This component must contain two child components.
 >  - If there are three or more child components, only the first and second child components are displayed. If there is only one child component, the sidebar is displayed, and the content area is blank.
->  - When the focus moves to the SideBarContainer, the focus moves to the content area and then to the sidebar.
+>  - When the focus is moved to the sidebar container, the focus is first moved to the content area and then to the sidebar.
 
 ## APIs
 
@@ -48,11 +48,11 @@ Enumerates the types of sidebars in a container.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Description|
-| -------- | -------- |
-| Embed | The sidebar is embedded in the component and displayed side by side with the content area.<br>If the size of the container remains unchanged, the sidebar will be displayed, and the content area will be reduced. If the sidebar is hidden, the content area will be expanded.<br>If the component size is less than the value of minContentWidth plus the value of minSideBarWidth and showSideBar is not set, the sidebar is automatically hidden.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation.<br> The user can bring out the sidebar in Overlay mode by clicking the control button.|
-| Overlay | The sidebar is displayed above the content area, which does not affect the size of the content area.|
-| AUTO<sup>10+</sup> | The sidebar is displayed in Embed mode when the component size is greater than or equal to the sum of **minSideBarWidth** and **minContentWidth**<br>and in Overlay mode otherwise.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation. If the calculation result is less than 600 vp, 600 vp will be used as the breakpoint value for mode switching.|
+| Name| Value| Description|
+| -------- | -------- |-------- |
+| Embed | 0 |The sidebar is embedded in the component and displayed side by side with the content area.<br>If the size of the overall container remains unchanged, displaying the sidebar will reduce the content area, and hiding the sidebar will expand the content area.<br>If the component size is less than the value of [minContentWidth](#mincontentwidth10) plus [minSideBarWidth](#minsidebarwidth) and **showSideBar** is not set, the sidebar is automatically hidden.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation.<br> The user can bring out the sidebar in Overlay mode by clicking the control button.|
+| Overlay | 1 |The sidebar is overlaid on top of the content area, without affecting the size of the content area.|
+| AUTO<sup>10+</sup> | 2 |The sidebar is displayed in Embed mode when the component size is greater than or equal to the sum of **minSideBarWidth** and **minContentWidth**<br>and in Overlay mode otherwise.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation. If the calculation result is less than 600 vp, 600 vp will be used as the breakpoint value for mode switching.|
 
 ## Attributes
 
@@ -110,7 +110,7 @@ Specifies whether to display the sidebar control button.
 
 > **NOTE**
 >
-> The sidebar display or hiding animation is triggered when the sidebar is switched on or off by using the control button.
+> The sidebar display or hiding animation is triggered when the sidebar is displayed or hidden by clicking the sidebar control button.
 
 ### sideBarWidth
 
@@ -206,7 +206,7 @@ Sets the maximum width of the sidebar. If a value less than 0 is set, the defaul
 
 maxSideBarWidth(value: Length)
 
-Sets the maximum width of the sidebar. If a value less than 0 is set, the default value is used. The value cannot exceed the width of the sidebar container. If the specified value exceeds the sidebar container width, the container width is used instead.
+Sets the maximum width of the sidebar. If a value less than 0 is set, the default value is used. The value cannot exceed the width of the sidebar container. If the specified value exceeds the sidebar container width, the container width is used instead. Compared with maxSideBarWidth](#maxsidebarwidth), this API supports percentage strings and other [pixel units](ts-pixel-units.md) for the **value** parameter.
 
 **maxSideBarWidth**, whether it is specified or kept at the default value, takes precedence over **maxWidth** of the sidebar child components.
 
@@ -268,7 +268,7 @@ Sets the divider style.
 
 | Name| Type                                                     | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DividerStyle](#dividerstyle10) \| null | Yes  | Divider style.<br>- **DividerStyle** (default): The divider is displayed.<br>- **null** or **undefined**: No action is taken, and the divider style remains consistent with the default.<br>**NOTE**<br>In API version 11 and earlier versions, **null** results in the divider not being displayed.|
+| value  | [DividerStyle](#dividerstyle10)&nbsp;\|&nbsp;null | Yes  | Divider style.<br>- **DividerStyle** (default): The divider is displayed.<br>- **null** or **undefined**: No action is taken, and the divider style remains consistent with the default.<br>**NOTE**<br>In API version 11 and earlier versions, **null** results in the divider not being displayed.|
 
 ### minContentWidth<sup>10+</sup>
 
@@ -284,10 +284,10 @@ when the component size is decreased, the content area is shrunk until its width
 
 until its width reaches the value defined by **minSideBarWidth**; if the component size is further decreased, then:
 
-- If **autoHide** is set to **false**, while respecting the **minSideBarWidth** and **minContentWidth** settings, the content area has its content clipped.
+- If [autoHide](#autohide9) is set to **false**, while respecting the [minSideBarWidth](#minsidebarwidth) and **minContentWidth** settings, the content area has its content clipped.
 - If **autoHide** is set to **true**, the sidebar is hidden first, and then the content area is shrunk. After its width reaches the value defined by **minContentWidth**, the content area has its content clipped.
 
-**minContentWidth**, whether it is specified or kept at the default value, takes precedence over **minSideBarWidth** and **sideBarWidth** of the sidebar.
+minContentWidth takes precedence over the [maxSideBarWidth](#maxsidebarwidth) and sideBarWidth attributes of the sidebar. If **minContentWidth** is not set, the default value takes precedence over the values of **minSideBarWidth** and **maxSideBarWidth**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -313,11 +313,11 @@ Describes the style of the sidebar control button.
 | top | number | No| Yes| Spacing between the sidebar control button and the top of the container.<br>Default value: **48vp**<br>Unit: vp.<br>Value range: [0, +∞).|
 | width | number | No| Yes| Width of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp.<br>Value range: [0, +∞).|
 | height | number | No| Yes| Height of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp.<br>Value range: [0, +∞).|
-| icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18)| No| Yes| Icons of the sidebar control button.|
+| icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18) | No| Yes| Icons of the sidebar control button.|
 
 ## ButtonIconOptions<sup>18+</sup>
 
-Describes the icons of the sidebar control button.
+Icons of the sidebar control button.
 
 > **NOTE**
 >
@@ -329,9 +329,9 @@ Describes the icons of the sidebar control button.
 
 | Name      | Type                          | Read-Only| Optional| Description                                       |
 | --------- | ------------------------------- | ---- | ---- | ------------------------------------------ |
-| shown<sup>8+</sup>     | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource) | No| No  | Icon of the control button when the sidebar is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
-| hidden<sup>8+</sup>    | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource) | No| No  | Icon of the control button when the sidebar is hidden.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
-| switching<sup>8+</sup> | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource) | No| Yes  | Icon of the control button when the sidebar is switching between the shown and hidden states.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| shown<sup>8+</sup>     | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| No  | Icon of the control button when the sidebar is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
+| hidden<sup>8+</sup>    | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| No  | Icon of the control button when the sidebar is hidden.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
+| switching<sup>8+</sup> | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes  | Icon of the control button when the sidebar is switching between the shown and hidden states.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 > **NOTE**
 >
@@ -345,10 +345,10 @@ Enumerates the positions of the sidebar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Description|
-| -------- | -------- |
-| Start | The sidebar is on the left side of the container.|
-| End | The sidebar is on the right side of the container.|
+| Name| Value| Description|
+| -------- | ---- | -------- |
+| Start | 0 | The sidebar is on the left side of the container.|
+| End | 1 | The sidebar is on the right side of the container.|
 
 ## DividerStyle<sup>10+</sup>
 
@@ -360,18 +360,18 @@ Sets the divider style.
 
 | Name       | Type     | Read-Only| Optional| Description                                    |
 | ----------- | ------------- | ---- | ---- | ---------------------------------------- |
-| strokeWidth | [Length](ts-types.md#length)        | No| No  | Stroke width of the divider.<br>Default value: 1 vp<br>Value range: [0, +∞).<br>**NOTE**<br>Percentage values are not supported. The priority of this attribute is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). If the value of this attribute is greater than that of **height**, cropping is performed based on the **height** settings. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
+| strokeWidth | [Length](ts-types.md#length)        | No| No  | Stroke width of the divider.<br>Default value: **1vp**<br>Value range: [0, +∞).<br>**NOTE**<br>Percentage values are not supported. The priority of this attribute is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). If the value of this attribute is greater than that of **height**, cropping is performed based on the **height** settings. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
 | color       | [ResourceColor](ts-types.md#resourcecolor) | No| Yes  | Color of the divider.<br>Default value: **#000000, 3%**  |
-| startMargin | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the top of the sidebar.<br>The default value is **0**.<br>Value range: [0, +∞)|
-| endMargin   | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the bottom of the sidebar.<br>The default value is **0**.<br>Value range: [0, +∞)|
+| startMargin | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the top of the sidebar.<br>Default value: **0**<br>Value range: [0, +∞)|
+| endMargin   | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the bottom of the sidebar.<br>Default value: **0**<br>Value range: [0, +∞)|
 >  **NOTE**
 >
 >  The settings of the [universal size attributes](ts-universal-attributes-size.md) **width** and **height** do not take effect for the sidebar child component.
 >  The settings do not take effect for the sidebar content area either. By default, the sidebar content area takes up the remaining space of the sidebar container.
 >
->  If the **showSideBar** attribute is not set, the sidebar's visibility is subject to its size.
+>  If the [showSideBar](#showsidebar) attribute is not set, the sidebar's visibility is subject to its size.
 >
->  - If the size is less than the sum of **minSideBarWidth** and **minContentWidth**, the sidebar is not displayed by default.
+>  - If the size is less than the sum of [minSideBarWidth](#minsidebarwidth) and [minContentWidth](#mincontentwidth10), the sidebar is not displayed by default.
 >  - If the size is greater than or equal to the sum of **minSideBarWidth** and **minContentWidth**, the sidebar is displayed by default.
 
 ## Events
@@ -386,11 +386,9 @@ Triggered when the status of the sidebar switches between shown and hidden.
 
 This event is triggered when any of the following conditions is met:
 
-1. The value of **showSideBar** changes.
-
-2. The **showSideBar** attribute adapts to behavior changes.
-
-3. The **autoHide** API is triggered when the divider is dragged.
+1. The value of the **showSideBar** attribute changes.
+2. The adaptation of the **showSideBar** attribute changes.
+3. [autoHide](#autohide9) is triggered upon divider dragging.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -412,6 +410,7 @@ This example demonstrates how to use the **SideBarContainer** component and impl
 @Entry
 @Component
 struct SideBarContainerExample {
+  // Replace $r("app.media.icon") with the image resource file you use.
   normalIcon: Resource = $r("app.media.icon");
   selectedIcon: Resource = $r("app.media.icon");
   @State arr: number[] = [1, 2, 3];
@@ -444,6 +443,7 @@ struct SideBarContainerExample {
     }
     .controlButton({
       icons: {
+        // Replace $r('app.media.drawer') with the image resource file you use.
         hidden: $r('app.media.drawer'),
         shown: $r('app.media.drawer'),
         switching: $r('app.media.drawer')

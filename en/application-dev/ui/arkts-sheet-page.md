@@ -33,16 +33,16 @@ The modal sheet provides lifecycle callbacks to notify the application of its li
 
 The priority of operations during scrolling in the content area of a modal sheet is as follows:
 
-1. 1. Content at the top and content that cannot be scrolled
+1. Content at the top and content that cannot be scrolled
 
    Swiping up: The modal sheet will attempt to expand upwards. If no expansion is possible, the content will scroll.
 
    Swiping down: The modal sheet will attempt to contract downwards. If no contraction is possible, the panel will close.
-2. 2. Content in the middle (scrollable both up and down)
+2. Content in the middle (scrollable both up and down)
 
    Swiping up or down: The content will scroll until it reaches the top or bottom of the panel.
 
-3. 3. Content at the bottom (scrollable)
+3. Content at the bottom (scrollable)
 
    Swiping up: The content area will display a rebound effect without changing the panel position.
 
@@ -93,6 +93,7 @@ struct SheetDemo {
         scrollBackward: NestedScrollMode.SELF_FIRST,
       })
 
+      // Replace $r('app.string.tSheetBuilder_text1') with the actual resource file. In this example, the value in the resource file is "Non-scrolling area."
       Text($r('app.string.tSheetBuilder_text1'))
         .width('100%')
         .backgroundColor(Color.Gray)
@@ -111,6 +112,7 @@ struct SheetDemo {
         .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
           detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
           preferType: SheetType.BOTTOM,
+          // Replace $r('app.string.tSheetBuilder_text2') with the actual resource file. In this example, the value in the resource file is "Nested Scrolling Scenario."
           title: { title: $r('app.string.tSheetBuilder_text2') },
         })
     }.width('100%').height('100%')
@@ -167,6 +169,7 @@ struct OnWillDismiss_Dismiss {
           // Step 2: Implement the secondary confirmation interaction, using an AlertDialog component to prompt the user for confirmation.
           this.getUIContext().showAlertDialog(
             {
+              // Replace $r('app.string.bindContentCover_label2') with the actual resource file. In this example, the value in the resource file is "Example 2 (Custom Transition Animation)."
               message: $r('app.string.bindContentCover_label2'),
               autoCancel: true,
               alignment: DialogAlignment.Bottom,
@@ -256,6 +259,7 @@ struct SheetTransitionExample {
   @Builder
   myBuilder() {
     Column() {
+      // Replace $r('app.string.bindSheetCmd_label10') with the actual resource file. In this example, the value in the resource file is "Toggle enableHoverMode."
       Button($r('app.string.bindSheetCmd_label10'))
         .margin(10)
         .fontSize(20)
@@ -263,6 +267,7 @@ struct SheetTransitionExample {
           this.enableHoverMode = !this.enableHoverMode;
         })
 
+      // Replace $r('app.string.bindSheetCmd_label11') with the actual resource file. In this example, the value in the resource file is "Toggle hoverModeArea."
       Button($r('app.string.bindSheetCmd_label11'))
         .margin(10)
         .fontSize(20)
@@ -271,7 +276,7 @@ struct SheetTransitionExample {
             HoverModeAreaType.BOTTOM_SCREEN : HoverModeAreaType.TOP_SCREEN;
         })
 
-      Button('Close Sheet')
+      Button('close modal')
         .margin(10)
         .fontSize(20)
         .onClick(() => {
@@ -284,6 +289,7 @@ struct SheetTransitionExample {
 
   build() {
     Column() {
+      //Replace $r('app.string.bindSheetCmd_label9') with the actual resource file. In this example, the value in the resource file is "Open Sheet."
       Button($r('app.string.bindSheetCmd_label9'))
         .onClick(() => {
           this.isShow = true;
@@ -307,4 +313,3 @@ struct SheetTransitionExample {
 
 
 ![sheetOne](figures/sheetOne.PNG)
-<!--no_check-->

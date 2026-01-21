@@ -1,5 +1,12 @@
 # 在线短视频流畅切换
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 简介
 为了帮助开发者解决在应用中在线短视频快速切换时容易出现快速切换播放时延过长的问题，将提供对应场景的解决方案。
 
@@ -361,3 +368,7 @@ LazyForEach数据懒加载可以通过设置cachedCount属性来指定缓存数�
 [容器组件：Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)
 
 [基础组件：Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)
+
+## 示例代码
+
+[实现流畅切换短视频](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/SmoothSwitchShortVideos)

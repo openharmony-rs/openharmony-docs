@@ -12,7 +12,7 @@
 >
 > 本模块首批接口从API version 8 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API Version 9开始，该模块不再维护，建议使用[@ohos.bundle.distributedBundleManager](js-apis-distributedBundleManager-sys.md)替代。
+> 从API version 9开始，该模块不再维护，建议使用[@ohos.bundle.distributedBundleManager](js-apis-distributedBundleManager-sys.md)替代。
 >
 > 本模块为系统接口。
 
@@ -36,7 +36,9 @@ SystemCapability.BundleManager.DistributedBundleFramework
 
 ## distributedBundle.getRemoteAbilityInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[getRemoteAbilityInfo(@ohos.bundle.distributedBundleManager)](js-apis-distributedBundleManager-sys.md)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo)替代。
 
 getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback&lt;RemoteAbilityInfo&gt;): void
 
@@ -65,7 +67,9 @@ SystemCapability.BundleManager.DistributedBundleFramework
 
 ## distributedBundle.getRemoteAbilityInfo<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[getRemoteAbilityInfo(@ohos.bundle.distributedBundleManager)](js-apis-distributedBundleManager-sys.md)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo)替代。
 
 getRemoteAbilityInfo(elementName: ElementName): Promise&lt;RemoteAbilityInfo&gt;
 
@@ -97,7 +101,9 @@ SystemCapability.BundleManager.DistributedBundleFramework
 
 ## distributedBundle.getRemoteAbilityInfos<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[getRemoteAbilityInfo(@ohos.bundle.distributedBundleManager)](js-apis-distributedBundleManager-sys.md)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo)替代。
 
 getRemoteAbilityInfos(elementNames: Array&lt;ElementName&gt;, callback: AsyncCallback&lt;Array&lt;RemoteAbilityInfo&gt;&gt;): void
 
@@ -126,7 +132,9 @@ SystemCapability.BundleManager.DistributedBundleFramework
 
 ## distributedBundle.getRemoteAbilityInfos<sup>deprecated<sup>
 
-> 从API version 9开始不再维护，建议使用[getRemoteAbilityInfo(@ohos.bundle.distributedBundleManager)](js-apis-distributedBundleManager-sys.md)替代。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getRemoteAbilityInfo](js-apis-distributedBundleManager-sys.md#distributedbundlemanagergetremoteabilityinfo)替代。
 
 getRemoteAbilityInfos(elementNames: Array&lt;ElementName&gt;): Promise&lt;Array&lt;RemoteAbilityInfo&gt;&gt;
 

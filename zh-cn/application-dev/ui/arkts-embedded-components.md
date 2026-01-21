@@ -37,6 +37,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
   EmbeddedComponent组件支持[通用属性](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)，且宽高默认值和最小值均为10vp；
   
   不支持如下与宽高相关的属性：
+  
   "constraintSize"、"aspectRatio"、"layoutWeight"、"flexBasis"、"flexGrow"和"flexShrink"。
 
 - 事件调用

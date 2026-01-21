@@ -150,7 +150,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 2. 自定义拖拽预览和背板图。
 
-   创建[pixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置pixelMap的宽高等各项属性。设置Image节点的[dragPreviewOption](../reference/apis-arkui/capi-drag-and-drop-h.md#函数)，可用于设置跟手图的圆角、角标等。
+   创建[pixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置pixelMap的宽高等各项属性。设置Image节点的[ArkUI_DragPreviewOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragpreviewoption.md)，可用于设置跟手图的圆角、角标等。
 
    <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
    
@@ -239,7 +239,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 4. 处理NODE_ON_DRAG_START事件。
 
-   在NODE_ON_DRAG_START事件中，应用可以执行起拖阶段所需的操作，通常涉及处理起拖过程的数据。例如，创建UdmfRecord，将用于拖拽图片所需的数据 imageUri以fileUri类型添加到[UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中，接着将UdmfRecord设置到[udmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)中，最后将UdmfData设置到[DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md)中。
+   在NODE_ON_DRAG_START事件中，应用可以执行起拖阶段所需的操作，通常涉及处理起拖过程的数据。例如，创建OH_UdmfRecord，将用于拖拽图片所需的数据 imageUri以fileUri类型添加到[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中，接着将OH_UdmfRecord设置到[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)中，最后将OH_UdmfData设置到[DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md)中。
 
    <!-- @[drag_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
@@ -266,7 +266,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 5. 处理NODE_ON_DROP事件。
 
-   在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用<database/udmf/udmf_meta.h>头文件，获取[udmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
+   在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用<database/udmf/udmf_meta.h>头文件，获取[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
 
    <!-- @[on_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
    
@@ -487,7 +487,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    ```
 3. 起拖阶段设置。
 
-   在NODE_ON_TOUCH_INTERCEPT事件中，需要对DragAction进行相关设置。为了主动发起拖拽，需要创建[pixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置[dragPreviewOption](../reference/apis-arkui/capi-drag-and-drop-h.md#函数)和跟手点，并将拖拽过程中的文本数据设置到DragAction中。
+   在NODE_ON_TOUCH_INTERCEPT事件中，需要对DragAction进行相关设置。为了主动发起拖拽，需要创建[pixelMap](../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)，设置[ArkUI_DragPreviewOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragpreviewoption.md)和跟手点，并将拖拽过程中的文本数据设置到DragAction中。
 
    <!-- @[set_dragAction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/forthmodule.h) -->
    

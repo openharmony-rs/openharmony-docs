@@ -7,6 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 为[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)组件提供获取文本和光标信息、插入和删除文本、设置计数器以及文本装饰线的能力。
+
 为[Search](ts-basic-components-search.md)组件提供获取文本和光标信息、插入和删除文本以及设置文本装饰线的能力。
 
 >  **说明：**
@@ -35,7 +36,7 @@ getTextContentRect(): RectResult
 
 | 类型       | 说明       |
 | -------------------  | -------- |
-| [RectResult](ts-universal-attributes-on-child-touch-test.md#rectresult) | 获取已编辑文本内容区域相对组件的位置和大小。 |
+| [RectResult](ts-universal-attributes-on-child-touch-test.md#rectresult) | 获取已编辑文本内容区域相对组件的位置和大小。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 > **说明：**
 >
@@ -58,7 +59,7 @@ getTextContentLineCount(): number
 
 | 类型  | 说明       |
 | ----- | -------- |
-| number| 已编辑文本内容行数。 |
+| number| 已编辑文本内容行数。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### getCaretOffset<sup>11+</sup>
 
@@ -76,7 +77,7 @@ getCaretOffset(): CaretOffset
 
 | 类型                      | 说明               |
 | ----------------------- | ---------------- |
-| [CaretOffset](#caretoffset11对象说明) | 光标相对输入框的位置。 |
+| [CaretOffset](#caretoffset11对象说明) | 光标相对输入框的位置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 > **说明：**
 >
@@ -90,6 +91,7 @@ getCaretOffset(): CaretOffset
 addText(text: string, textOperationOptions?: TextContentControllerOptions): number
 
 在已编辑文本的指定位置插入文本，默认插入至文本末尾。
+
 拖拽文本的状态下不生效。
 
 `addText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不推荐在预上屏状态下调用。
@@ -132,6 +134,7 @@ setStyledPlaceholder(styledString: StyledString): void
 deleteText(range?: TextRange): void
 
 删除已编辑文本的指定区域的内容。
+
 拖拽文本的状态下不生效。
 
 `deleteText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不推荐在预上屏状态下调用。
@@ -160,7 +163,7 @@ getSelection(): TextRange
 
 | 类型                      | 说明               |
 | ----------------------- | ---------------- |
-| [TextRange](ts-text-common.md#textrange12) | 文本当前的选择范围，未选中返回光标位置。 |
+| [TextRange](ts-text-common.md#textrange12) | 文本当前的选择范围，未选中返回光标位置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### clearPreviewText<sup>17+</sup>
 
@@ -182,6 +185,22 @@ deleteBackward(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+### scrollToVisible<sup>23+</sup>
+
+scrollToVisible(range?: TextRange): void
+
+将起始索引与结束索引传递给与其绑定的输入框（TextInput、TextArea、Search）组件，并将此范围内的文字滚动到可视区域。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| range | [TextRange](ts-text-common.md#textrange12) | 否    | 滚动到可视区域的文本范围，包括文本起始位置和终止位置。<br>起始位置应小于等于结束位置，否则接口调用无效。起始位置小于0视为0，结束位置大于全文长度视为全文长度。<br>未指定范围时，默认为全部文本。未指定起始位置，默认起始位置为0；未指定结束位置，默认结束位置为全文长度。 |
+
 ## InputCounterOptions<sup>11+</sup>对象说明
 
 计数器的配置项。
@@ -192,8 +211,8 @@ deleteBackward(): void
 | -------- | ------- | ----------- | ----------- | ----------- |
 | thresholdPercentage | number  | 否 | 是 | thresholdPercentage是可输入字符数占最大字符限制的百分比值。字符计数器显示的样式为当前输入字符数/最大字符数。当输入字符数大于最大字符数乘百分比值时，显示字符计数器。thresholdPercentage值的有效值区间为[1,100]，数值为小数时，向下取整，如果设置的number超出有效值区间内，不显示字符计数器。thresholdPercentage设置为undefined，显示字符计数器，但此参数不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | highlightBorder     | boolean | 否  | 是 | 如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。如果用户设置显示字符计数器同时thresholdPercentage参数数值在有效区间内，那么当输入字符数超过最大字符数时，边框和计数器下标将变成红色。如果此参数为true，则显示红色边框，参数为false则不显示。计数器默认显示红色边框。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| counterTextColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 设置组件中字符计数器的文本颜色。当用户输入字符数大于最大字符数乘百分比值时，计数器会显示当前输入的字符数，并且计数器的颜色为counterTextColor指定的颜色。如果不设置counterTextColor，则计数器的颜色为默认颜色，默认颜色为灰色。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| counterTextOverflowColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 设置组件中字符计数器在溢出时的文本颜色。当用户输入的字符数超过计数器最大长度时，计数器的文本颜色和边框的颜色会切换为counterTextOverflowColor指定的颜色，以提醒用户输入已超出限制。如果不设置counterTextOverflowColor，则计数器和边框在溢出时的文本颜色为默认颜色，默认颜色为红色。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| counterTextColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 设置组件中字符计数器的文本颜色。当用户输入字符数大于最大字符数乘百分比值时，计数器会显示当前输入的字符数，并且计数器的文本颜色为counterTextColor指定的颜色。如果不设置counterTextColor，则计数器的文本颜色为默认颜色，默认颜色为灰色。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| counterTextOverflowColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 设置组件中字符计数器在溢出时的文本颜色。当用户输入的字符数超过计数器最大长度时，计数器的文本颜色和边框的颜色会切换为counterTextOverflowColor指定的颜色，以提醒用户输入已超出限制。如果不设置counterTextOverflowColor，则计数器和边框在溢出时的文本颜色为默认颜色，默认颜色为红色。<br/>**说明：**<br/>当设置了[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)的highlightBorder属性时，边框颜色才会被同步更改。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ## CaretOffset<sup>11+</sup>对象说明
 
@@ -206,8 +225,8 @@ deleteBackward(): void
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | index | number | 否 | 否 | 光标所在位置的索引值。    |
-| x     | number | 否 | 否 | 光标相对输入框的x坐标位值，单位px。 |
-| y     | number | 否 | 否 | 光标相对输入框的y坐标位值，单位px。 |
+| x     | number | 否 | 否 | 光标相对输入框的x坐标值，单位px。 |
+| y     | number | 否 | 否 | 光标相对输入框的y坐标值，单位px。 |
 
 ## TextDecorationOptions<sup>12+</sup>对象说明
 

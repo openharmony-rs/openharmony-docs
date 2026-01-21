@@ -63,7 +63,7 @@
 
 1. 从元能力的Ability的onCreate回调参数中获取终止原因。具体为LaunchParam启动参数中的LastExitReason字段，请参考[元能力LastExitReason章节](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitreason)。
 
-2. 通过HiAppEvent订阅APP_KILLED事件。订阅方式请参考[HiAppEvent章节](hiappevent-watcher-app-killed-events.md)。
+2. 通过HiAppEvent订阅APP_KILLED事件。订阅方式请参考[应用终止事件](hiappevent-watcher-app-killed-events.md)。
 
 ## 分析思路和分析步骤
 

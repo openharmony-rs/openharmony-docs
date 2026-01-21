@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoAsymKeyGenerator OH_CryptoAsymKeyGenerator
+```
+
 ## Overview
 
 Defines a struct for an asymmetric key generator.

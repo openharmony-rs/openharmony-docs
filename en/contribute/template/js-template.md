@@ -26,14 +26,15 @@ For a property or interface table, if a tag has the same value for all the items
 | d.ts Tag| Description| Document Field|
 | ---------- | ---- | ------- |
 | @since | Version description| 1. Use the greater-than sign (>) followed by a space to indent the description about the initial version of the module. Unless otherwise marked, all APIs in the module have the same initial version.<br>2. When introducing an API to an existing module, use the `<sup>` tag to mark its earliest version. The format is `<sup>versionNumber+</sup>`, for example, `<sup>7+</sup>`.  <br>  <br> When introducing a property to an existing module, suffix the `<sup>` tag to the new property name, for example, `newProperty<sup>7+</sup>`.<br>When introducing a method to an existing module, suffix the `<sup>` tag to the method name, for example, `sim.getSimIccId<sup>7+</sup>`. The same rule applies to new interfaces, classes, and enums.<br>Due to the rectification of anonymous objects, the version number of the outer element of some APIs is later than that of the inner element. To avoid any confusion for developers, a uniform explanation should be added in the **Interface Description** section: To standardize the definition of anonymous objects, the element definitions have been modified in API version *XX*. The initial version information of the historical anonymous objects has been retained, which may result in the outer element's @since version number being later than the inner element's version number. However, this does not affect the use of the API.|
-| @deprecated | Deprecated description| Do not delete the deprecated content from the document. Instead, suffix `deprecated` as a superscript to the content, and use the greater-than sign (>) to introduce the initial version and deprecated version.<br>Example: abandonmentMethod<sup>(deprecated)</sup><br>> This API is supported since API version 4 and deprecated since API version 7. You are advised to use [newMethod]\(#newmethod) instead.|
-| @FAModelOnly / @StageModelOnly | Model restriction description| **Model restriction**: This API can be used only in the FA model. **Model restriction**: This API can be used only in the stage model.|
+| @deprecated | Deprecated description| Do not delete the deprecated content from the document. Instead, suffix `deprecated` as a superscript to the content, and use the greater-than sign (>) to introduce the initial version and deprecated version.<br>Example: abandonmentMethod<sup>(deprecated)</sup><br>> **NOTE**<br>> This API is supported since API version 4 and deprecated since API version 7. You are advised to use [newMethod]\(#newmethod) instead.<br>If the content within the table is deprecated, you do not need to use reference syntax. Just explain it directly in the body text. Examples:<br> Note: This API is supported since API version 4 and deprecated since API version 7. You are advised to use [newMethod]\(#newmethod) instead.|
+| @FAModelOnly / @StageModelOnly | Model restriction description| **Model restriction**: This API can be used only in the FA model.<br> **Model restriction**: This API can be used only in the stage model.|
 | @form | Widget capability description| **Widget capability**: Since API version *x*, this feature is supported in ArkTS widgets.|
 | @atomicservice | Atomic service description| **Atomic service API**: This API can be used in atomic services since API version *x*.|
 | @systemapi | System API description| **System API**: This is a system API.|
 | @syscap | System capability description| **System capability**: SystemCapability.*A.B*|  1. If only one permission is required for using the API, use the following format:<br>    **Required permissions**: ohos.permission.examplePermission<br>2. If multiple permissions are required for using the API, provide the permissions with **and** or **or** in the following format:<br>    **Required permissions**: ohos.permission.examplePermissionA and ohos.permission.examplePermissionB<br>    **Required permissions**: ohos.permission.examplePermissionA or ohos.permission.examplePermissionB|
 | @permission | Permission description|  1. If only one permission is required for using the API, use the following format:<br>    **Required permissions**: ohos.permission.examplePermission<br>2. If multiple permissions are required for using the API, provide the permissions with **and** or **or** in the following format:<br>    **Required permissions**: ohos.permission.examplePermissionA and ohos.permission.examplePermissionB<br>    **Required permissions**: ohos.permission.examplePermissionA or ohos.permission.examplePermissionB<br>3. When there is a version change involved, follow the current version's permission requirement after **Required permissions**, and describe the historical version's permission requirement in a new line as a list. Example:<br>**Required permissions**: ohos.permission.A<br>- ohos.permission.A and ohos.permission.B for API x-(y-1)<br>- ohos.permission.A from API y<br>4. When permissions are required only in certain fixed scenarios, follow the @permission in the .d.ts file consistently after **Required permissions**, and then supplement with a situation description. There are two types of situations. When the situation is relatively simple, use parentheses to add a description. When the situation is more complex, use a new line for the description.<br>Example 1:<br> **Required permissions**: ohos.permission.A (required only when the window type is **AA**.)<br>Example 2:<br> **Required permissions**: ohos.permission.A<br>- When the application is in situation xx, ohos.permission.B is also required.<br>- When the application is in situation yy, no permission is required.|
 | @extends | Inheritance|  If the tag is carried or the extends relationship exists but the tag is not carried, clearly state the following information: *ExampleA* inherits from *ExampleB* (provide the link of *ExampleB*).|
+| @DecoratorName| Decorator| If a class, interface, or property is annotated with a decorator, the relevant description must clearly indicate "Decorator: @DecoratorName", for example, **Decorator**: @Sendable.|
 
 The following describes the instructions for writing a specific API reference document.
 
@@ -112,12 +113,14 @@ import { call } from '@kit.TelephonyKit';
 > - A read-only property is marked with `readonly` in d.ts files. If it has a limited number of values with special meanings, enumerate the values or provide a link to the corresponding enum.
 >
 > - For an optional property, if only fixed fields are supported, describe them. A property defined with a question mark (?) is optional.
+>
+> - If a property is annotated with a decorator, the relevant description must clearly indicate "Decorator".
 
 **System capability**: SystemCapability.*A.B* (This part is mandatory.)
 
 | Name            | Type                                     | Read Only| Optional| Description                                      |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| pluggedType      | [BatteryPluggedType]\(#batterypluggedtype) | Yes  | No  | Charger type of the current device.            |
+| pluggedType      | [BatteryPluggedType]\(#batterypluggedtype) | Yes  | No  | Charger type of the current device.<br>**Decorator**: @Trance            |
 | isBatteryPresent | boolean                                   | Yes  | No  | Whether the battery is supported or present.|
 
 ## Constants
@@ -282,10 +285,14 @@ Describe the method. For details, see the fourth and fifth points in "Writing In
 >
 > - If the class or interface contains both properties and methods, write the properties above the methods. Write their actual names in separate level-3 headings.
 >    If the API contains only properties, you do not need to create a level-3 heading. Instead, use a table to display the properties.
+>
+> - If a property is annotated with a decorator, the relevant description must clearly indicate "Decorator".
 
 Describe the class or interface. If there are usage restrictions, describe them as well, for example, whether there is a prerequisite and whether an instance needs to be created by using any method.
 
-### Properties in Classes/Interfaces
+**Decorator**: @Sendable
+
+### Properties
 
 > *Writing Instructions*
 >
@@ -383,10 +390,85 @@ Provide the logic for obtaining the actual value of this type. Example: The valu
 | aaa | string | Yes| Describes the property.| 
 | bbb | number | No| Describes the property.| 
 
+## FAQs for API Reference Writing
+### Q1: How do I write a parent module with secondary modules?
+> Requirements for writing a parent module with level-2 modules:
+>
+> 1. Clearly define the functionality and purpose of the module in the module overview.
+>
+> 2. Provide the API level and other related information according to the requirements for an API module.
+>
+> 3. List the level-2 modules contained in the module by section, provide definitions and functionality descriptions for each level-2 module (ensure consistency with the overviews on the sub-module pages), and link to the level-2 modules.
+>
+> 4. For each section, provide the @syscap field defined in the d.ts file. The toolchain uses this field to add the device-type attribute to the topic.
+>
+> The following is an example.
+####  @ohos.arkui.node 
+The **Node** module provides level-2 module APIs of custom nodes to export and use.
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> Custom nodes are not available in DevEco Studio Previewer.
+
+##### BuilderNode
+
+The [BuilderNode](./js-apis-arkui-builderNode.md#buildernode) module provides APIs for creating a BuilderNode – a custom node that can be used to mount built-in components. Avoid mounting a BuilderNode as a child node to other custom nodes.<br>
+**System capability**: ohos.xxx
+
+##### FrameNode
+
+The [FrameNode](./js-apis-arkui-frameNode.md#framenode) module provides APIs for a FrameNode, which represents an entity node in the component tree. It can be used by a [NodeController](./js-apis-arkui-nodeController.md#nodecontroller) to mount a [BuilderNode](./js-apis-arkui-builderNode.md#buildernode) (that holds the to FrameNode) to a [\<NodeContainer>](arkui-ts/ts-basic-components-nodecontainer.md#nodecontainer) or mount a [RenderNode](./js-apis-arkui-renderNode.md#rendernode) to another FrameNode.<br>
+**System capability**: ohos.xxx
+
+### Question 2: Where should I place SysCap if a class inherits from another and only one module is imported?
+>
+> The declaration format is as follows: [EmbeddableUIAbilityContext.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/application/EmbeddableUIAbilityContext.d.ts). The following is an example:<br>
+>
+
+#### EmbeddableUIAbilityContext
+
+EmbeddableUIAbilityContext provides the context environment for the [EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md) that needs to save states. It inherits from [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md).<br>
+EmbeddableUIAbilityContext provides the necessary configurations and methods for managing EmbeddableUIAbilities and ServiceExtensionAbilities, such as starting an EmbeddableUIAbility, terminating an EmbeddableUIAbility to which the current EmbeddableUIAbilityContext belongs, and starting, terminating, connecting to, or disconnecting from a ServiceExtensionAbility.
+
+> **NOTE**
+>
+>  - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>  - The APIs of this module must be used in the main thread, but not in child threads such as Worker and TaskPool.
+
+##### Modules to Import
+
+```ts
+import { common } from '@kit.AbilityKit';
+```
+**Model restriction**: This API can be used only in the stage model.<br>
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core<br>
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+### Problem 3: How do I document an API with a known issue?
+>
+> 1. Describe the known issue in the release notes.
+>
+> 2. In the "API Description" section of the API reference, use the following fixed phrase to describe the known issue with the API: "This API has known issues. For details, see Known Issues.""
+>
+> 3. After the bug of the API is fixed, search for the above fixed phrase in all documents related to the API and remove it.
+>
+#### getStringSync
+
+getStringSync(resId: number, ...args: Array<string | number>): string
+
+Obtains a string based on the specified resource ID and formats the string based on **args**. This API returns the result synchronously.
+This API has known issues. For details, see "Known Issues" (linked to the known issues in the Release Notes).
+
+
 ## Change History
 
 | Change Description                                                                | Date        |
 | ----------------------------------------------------------------------- | ------------ |
+| Revised the description of the @deprecated tag and added the writing method in the table.| 2025/12/03 |
+| Added the writing method of classes, interfaces, and properties modified with decorators.| 2025/09/19|
+| Added the "FAQs for API Reference Writing" section to provide the API reference writing method and common problems in special scenarios.| 2025/07/22|
 | Streamlined the standard wording for Promise\<void>. New content should use the new wording. There is no need to actively revise existing content if it already conveys the intended meaning.	| 2025/06/10 |
 | Added a standard wording for "Explanation of the @since version number for anonymous object rectification."| 2025/06/03 |
 | Optimized the writing standards for permissions to cover various types of permission descriptions and meet the requirements of scanning tools.| 2025/03/12 |

@@ -1,9 +1,9 @@
 # OH_Scan
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Print-->	
-<!--Owner: @guoshengbang-->	
-<!--Designer: @Q-haosu-->	
-<!--Tester: @Q-haosu-->	
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @Q-haosu-->
+<!--Tester: @Q-haosu-->
 <!--Adviser: @fang-jinxu-->
 
 ## 概述

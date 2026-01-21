@@ -6,7 +6,7 @@
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct {...} ArkUI_ContextCallback
 ```
 
@@ -39,7 +39,7 @@ Defines the event callback type.
 
 ### callback()
 
-```
+```c
 void (*callback)(void* userData)
 ```
 

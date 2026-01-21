@@ -10,7 +10,7 @@ A date picker dialog box is a dialog box that allows users to select a date from
 
 >  **NOTE**
 >
-> - The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](../arkts-apis-uicontext-uicontext.md).
 >
@@ -28,7 +28,7 @@ Shows a date picker dialog box.
 
 > **NOTE**
 > 
-> This API is deprecated since API version 18. You are advised to use [showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog) in [UIContext](../arkts-apis-uicontext-uicontext.md) instead.
+>  This API is supported since API version 8 and deprecated since API version 18. You are advised to use [showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog) instead. **showDatePickerDialog** can be called only after a [UIContext](../arkts-apis-uicontext-uicontext.md) instance is obtained.
 >
 > Since API version 10, you can use the [showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog) API in [UIContext](../arkts-apis-uicontext-uicontext.md), which ensures that the date picker dialog box is shown in the intended UI instance.
 
@@ -87,7 +87,7 @@ Inherited from [DatePickerOptions](ts-basic-components-datepicker.md#datepickero
 | enableHoverMode<sup>14+</sup>     | boolean | No | Yes | Whether to respond when the device is in semi-folded mode.<br>- **true**: Respond when the device is in semi-folded mode.<br>- **false**: Do not respond when the device is in semi-folded mode.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No | Yes | Display area of the dialog box when the device is in semi-folded mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | enableHapticFeedback<sup>18+</sup> | boolean | No | Yes | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**NOTE**<br>1. Whether this parameter takes effect after being set to **true** depends on hardware support.<br>2. To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]|
-| canLoop<sup>20+</sup> | boolean | No| Yes| Whether to enable loop scrolling.<br>Default value: **true**.<br>**NOTE**<br>**true**: Loop scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>**false**: Loop scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| canLoop<sup>20+</sup> | boolean | No| Yes| Whether to enable cyclic scrolling.<br>Default value: **true**.<br>**NOTE**<br>**true**: Cyclic scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>**false**: Cyclic scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## LunarSwitchStyle<sup>14+</sup>
 
@@ -120,16 +120,16 @@ This example demonstrates how to set the display time using **showTime**, **useM
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             showTime: true,
             useMilitaryTime: false,
@@ -137,25 +137,25 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // Save the date settings when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             },
             onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
+              console.info('DatePickerDialog:onCancel()');
             },
             onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
+              console.info('DatePickerDialog:onDateChange()' + value.toString());
             },
             onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
+              console.info('DatePickerDialog:onDidAppear()');
             },
             onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
+              console.info('DatePickerDialog:onDidDisappear()');
             },
             onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
+              console.info('DatePickerDialog:onWillAppear()');
             },
             onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
+              console.info('DatePickerDialog:onWillDisappear()');
             }
           })
         })
@@ -175,16 +175,16 @@ In this example, **disappearTextStyle**, **textStyle**, **selectedTextStyle**, *
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             disappearTextStyle: { color: '#297bec', font: { size: '20fp', weight: FontWeight.Bold } },
             textStyle: { color: Color.Black, font: { size: '18fp', weight: FontWeight.Normal } },
@@ -216,25 +216,25 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // Save the date settings when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             },
             onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
+              console.info('DatePickerDialog:onCancel()');
             },
             onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
+              console.info('DatePickerDialog:onDateChange()' + value.toString());
             },
             onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
+              console.info('DatePickerDialog:onDidAppear()');
             },
             onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
+              console.info('DatePickerDialog:onDidDisappear()');
             },
             onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
+              console.info('DatePickerDialog:onWillAppear()');
             },
             onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
+              console.info('DatePickerDialog:onWillDisappear()');
             }
           });
         })
@@ -257,16 +257,16 @@ This example demonstrates how to set the layout area of a dialog box when the de
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             showTime: true,
             useMilitaryTime: false,
@@ -276,25 +276,25 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // Save the date settings when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             },
             onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
+              console.info('DatePickerDialog:onCancel()');
             },
             onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
+              console.info('DatePickerDialog:onDateChange()' + value.toString());
             },
             onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
+              console.info('DatePickerDialog:onDidAppear()');
             },
             onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
+              console.info('DatePickerDialog:onDidDisappear()');
             },
             onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
+              console.info('DatePickerDialog:onWillAppear()');
             },
             onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
+              console.info('DatePickerDialog:onWillDisappear()');
             },
             enableHoverMode: true,
             hoverModeArea: HoverModeAreaType.TOP_SCREEN
@@ -305,7 +305,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialog_HoverMode.gif)
 
 ### Example 4: Setting the Dialog Box Position
 
@@ -316,23 +316,23 @@ This example demonstrates how to set the position of a dialog box using **alignm
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             alignment: DialogAlignment.Center,
             offset: { dx: 20, dy: 0 },
             onDateAccept: (value: Date) => {
               // Save the date settings when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -341,7 +341,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialogDemo4.png)
 
 ### Example 5: Setting the Mask Area
 
@@ -352,16 +352,16 @@ This example demonstrates how to set the mask area using **maskRect**.
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             maskRect: {
               x: 30,
@@ -372,7 +372,7 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // Save the date settings when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -381,7 +381,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialogDemo5.png)
 
 ### Example 6: Setting the Background
 
@@ -392,16 +392,16 @@ This example demonstrates how to set the dialog box background using **backgroun
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             backgroundColor: 'rgb(204, 226, 251)',
             backgroundBlurStyle: BlurStyle.NONE,
@@ -409,7 +409,7 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // Save the date settings when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -418,7 +418,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialogDemo6.png)
 
 ### Example 7: Switching Between Gregorian and Lunar Calendars
 
@@ -429,38 +429,38 @@ This example demonstrates how to set the date picker dialog box to display eithe
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-11-09');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             lunar: false,
             onDateAccept: (value: Date) => {
               // Save the date settings when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
 
-      Button("Lunar DatePickerDialog")
+      Button('Lunar DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             lunar: true,
             lunarSwitch: true,
             onDateAccept: (value: Date) => {
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -469,7 +469,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialogDemo7.gif)
 
 ### Example 8: Setting Display of Month and Day Columns
 
@@ -480,22 +480,22 @@ This example demonstrates how to configure the **mode** parameter to display onl
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-10-13');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             mode: DatePickerMode.MONTH_AND_DAY,
             onDateAccept: (value: Date) => {
               // Save the date settings when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -504,11 +504,11 @@ struct DatePickerDialogExample {
 }
 ```
 
+![DataPickerDialog](figures/DatePickerDialogDemo8.gif)
 
+### Example 9: Setting Cyclic Scrolling
 
-### Example 9: Setting Loop Scrolling
-
-This example demonstrates how to set whether to enable loop scrolling using **canLoop**, available since API version 20.
+This example demonstrates how to set whether to enable cyclic scrolling using **canLoop**, available since API version 20.
 
 ```ts
 // xxx.ets
@@ -516,28 +516,28 @@ This example demonstrates how to set whether to enable loop scrolling using **ca
 @Component
 struct DatePickerDialogExample {
   @State isLoop: boolean = true;
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2009-12-31');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             canLoop: this.isLoop,
             onDateAccept: (value: Date) => {
               // Save the date settings when the OK button is touched. In this way, when the date picker dialog box is displayed again, the selected date is the date last confirmed.
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
 
       Row() {
-        Text('Loop scrolling').fontSize(20)
+        Text('Cyclic scrolling').fontSize(20)
         Toggle({ type: ToggleType.Switch, isOn: true })
           .onChange((isOn: boolean) => {
             this.isLoop = isOn;
@@ -548,7 +548,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![TextPickerDialog](figures/DatePickerDialogDemo9.gif)
 
 ### Example 10: Customizing the Background Blur Effect
 
@@ -558,18 +558,18 @@ This example demonstrates how to customize the background blur effect by configu
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
       Image($r('app.media.bg'))
       Column() {
-        Button("DatePickerDialog")
+        Button('DatePickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showDatePickerDialog({
-              start: new Date("2000-1-1"),
-              end: new Date("2100-12-31"),
+              start: new Date('2000-01-01'),
+              end: new Date('2100-12-31'),
               selected: this.selectedDate,
               backgroundColor: undefined,
               backgroundBlurStyle: BlurStyle.Thin,
@@ -587,7 +587,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialog_BackgroundBlurStyleOptions.png)
 
 ### Example 11: Customizing the Background Effect
 
@@ -597,18 +597,19 @@ This example demonstrates how to customize the background effect by configuring 
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-1-1");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // Replace $r('app.media.bg') with the image resource file you use.
       Image($r('app.media.bg'))
       Column() {
-        Button("DatePickerDialog")
+        Button('DatePickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showDatePickerDialog({
-              start: new Date("2000-1-1"),
-              end: new Date("2100-12-31"),
+              start: new Date('2000-01-01'),
+              end: new Date('2100-12-31'),
               selected: this.selectedDate,
               backgroundColor: undefined,
               backgroundBlurStyle: BlurStyle.Thin,
@@ -627,4 +628,5 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialog_BackgroundEffect.png)
+<!--no_check-->

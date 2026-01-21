@@ -13,7 +13,6 @@
 
 可信执行环境（Trusted Execution Environment），简称TEE，是存在于智能手机、平板或任意移动设备主处理器中的一个安全区域，确保各种敏感数据在一个可信环境中被存储、处理和受到保护。TEE为授权安全软件，也称为“可信应用”提供一个安全的执行环境，通过实施保护、保密性、完整性和数据访问权限确保端到端的安全。
 
-
 ## 密钥材料格式
 
 针对不同密码算法的密钥对、公钥、私钥，HUKS为其密钥材料定义了一套格式，该格式在密钥导入、导出等场景使用。
@@ -30,7 +29,7 @@
 
 其中，密钥算法的值取自枚举类[HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)。
 
-```
+```ts
 let rsa2048KeyPairMaterial = new Uint8Array([
     0x01, 0x00, 0x00, 0x00, // 密钥算法：huks.HuksKeyAlg.HUKS_ALG_RSA = 1
     0x00, 0x08, 0x00, 0x00, // 密钥大小（比特）：2048
@@ -107,7 +106,7 @@ let rsa2048KeyPairMaterial = new Uint8Array([
 
 如下是一个DER编码的ECC公钥：
 
-```
+```ts
 let eccP256PubKey = new Uint8Array([
     0x30, 0x59, 0x30, 0x13, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02, 0x01, 0x06, 0x08, 0x2a,
     0x86, 0x48, 0xce, 0x3d, 0x03, 0x01, 0x07, 0x03, 0x42, 0x00, 0x04, 0xc0, 0xfe, 0x1c, 0x67, 0xde,
@@ -128,7 +127,7 @@ let eccP256PubKey = new Uint8Array([
 
 ![priKey](figures/priKey.png)
 
-```
+```ts
 let rsa2048PrivateKeyMaterial = new Uint8Array([
     0x01, 0x00, 0x00, 0x00, // 密钥算法：huks.HuksKeyAlg.HUKS_ALG_RSA = 1
     0x00, 0x08, 0x00, 0x00, // 密钥大小（比特）：2048

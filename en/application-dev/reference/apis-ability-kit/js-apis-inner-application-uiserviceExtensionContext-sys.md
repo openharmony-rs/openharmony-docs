@@ -15,7 +15,7 @@ UIServiceExtensionContext provides access to a [UIServiceExtensionAbility](js-ap
 >
 >  - The initial APIs of this module are supported since API version 14. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >  - The APIs of this module can be used only in the stage model.
->  - The APIs of this module must be used in the main thread, but not in child threads such as Worker and TaskPool.
+>  - The APIs of this module must be used on the main thread, but not on child threads such as Worker and TaskPool.
 >  - The APIs provided by this module are system APIs.
 
 ## Modules to Import
@@ -144,10 +144,6 @@ Terminates this [UIServiceExtensionAbility](js-apis-app-ability-uiServiceExtensi
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error codes**
-
-N/A
-
 **Example**
 
 ```ts
@@ -228,15 +224,15 @@ struct SubIndex {
             let startWant: Record<string, Object> = {
               'sceneType': 1,
               'email': [encodeURI('xxx@example.com'),
-                encodeURI('xxx@example.com')], // Email address of the recipient. Multiple values are separated by commas (,). The array content is URL encoded using encodeURI().
+                encodeURI('xxx@example.com')], // Email address of the recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
               'cc': [encodeURI('xxx@example.com'),
-                encodeURI('xxx@example.com')], // Email address of the CC recipient. Multiple values are separated by commas (,). The array content is URL encoded using encodeURI().
+                encodeURI('xxx@example.com')], // Email address of the CC recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
               'bcc': [encodeURI('xxx@example.com'),
-                encodeURI('xxx@example.com')], // Email address of the BCC recipient. Multiple values are separated by commas (,). The array content is URL encoded using encodeURI().
-              'subject': encodeURI('Email subject'), // Email subject. The content is URL encoded using encodeURI().
-              'body': encodeURI('Email body'), // Email body. The content is URL encoded using encodeURI().
-              'ability.params.stream': [encodeURI('Attachment URI 1'),
-                encodeURI('Attachment URI 2')], // Attachment URIs. Multiple values are separated by commas (,). The array content is URL encoded using encodeURI().
+                encodeURI('xxx@example.com')], // Email address of the BCC recipient. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
+              'subject': encodeURI ('email subject'), // Email subject, which is URL-encoded using the **encodeURI()** method.
+              'body': encodeURI ('email body'), // Email body, which is URL-encoded using the **encodeURI()** method.
+              'ability.params.stream': [encodeURI ('attachment uri1'),
+                encodeURI ('attachment uri2') ], // Attachment URI. Multiple values are separated by commas (,). The array content is URL-encoded using the **encodeURI()** method.
               'ability.want.params.uriPermissionFlag': 1
             };
             let abilityStartCallback: common.AbilityStartCallback = {
@@ -310,6 +306,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000006   | Cross-user operations are not allowed.         |
 | 16000008   | The crowdtesting application expires.        |
 | 16000011   | The context does not exist.         |
+| 16000013   | The application is controlled by EDM.       |
 | 16000050   | Internal error.        |
 | 16000053   | The ability is not on the top of the UI.        |
 | 16000055   | Installation-free timed out.         |
@@ -321,8 +318,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// The client needs to import idl_service_ext_proxy.ts provided by the server to the local project.
-import IdlServiceExtProxy from '../IdlServiceExt/idl_service_ext_proxy';
 
 const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -337,54 +332,39 @@ let want: Want = {
 let options: common.ConnectOptions = {
   onConnect(elementName, remote: rpc.IRemoteObject): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
-    if (remote === null) {
-      hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
-      return;
-    }
-    let serviceExtProxy: IdlServiceExtProxy = new IdlServiceExtProxy(remote);
-    // Communication is carried out by API calling, without exposing RPC details.
-    serviceExtProxy.processData(1, (errorCode: number, retVal: number) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `processData, errorCode: ${errorCode}, retVal: ${retVal}`);
-    });
-    serviceExtProxy.insertDataToMap('theKey', 1, (errorCode: number) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `insertDataToMap, errorCode: ${errorCode}`);
-    })
   },
   onDisconnect(elementName): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
   },
   onFailed(code: number): void {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+    hilog.info(DOMAIN_NUMBER, TAG, `onFailed callback, ${code}`);
   }
 };
+
 @Entry
 @Component
 struct Page_UIServiceExtensionAbility {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
           }
           .onClick(() => {
-            let context: common.UIServiceExtensionContext = this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
+            let context: common.UIServiceExtensionContext =
+              this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
             // The ID returned after the connection is set up must be saved. The ID will be used for disconnection.
             connectionId = context.connectServiceExtensionAbility(want, options);
             // The background service is connected.
             this.getUIContext().getPromptAction().showToast({
-              message: $r('app.string.SuccessfullyConnectBackendService')
+              message: 'SuccessfullyConnectBackendService'
             });
             // connectionId = context.connectAbility(want, options);
             hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```
@@ -433,36 +413,34 @@ const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let connectionId: number;
+
 @Entry
 @Component
 struct Page_UIServiceExtensionAbility {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
           }
           .onClick(() => {
-            let context: common.UIServiceExtensionContext = this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
+            let context: common.UIServiceExtensionContext =
+              this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
             // connectionId is returned when connectServiceExtensionAbility is called and needs to be manually maintained.
             context.disconnectServiceExtensionAbility(connectionId).then(() => {
               hilog.info(DOMAIN_NUMBER, TAG, 'disconnectServiceExtensionAbility success');
               // The background service is disconnected.
               this.getUIContext().getPromptAction().showToast({
-                message: $r('app.string.SuccessfullyDisconnectBackendService')
+                message: 'SuccessfullyDisconnectBackendService'
               });
-            }).catch((error: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG, 'disconnectServiceExtensionAbility failed');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG,
+                `disconnectServiceExtensionAbility failed, err code: ${err.code}, err msg: ${err.message}`);
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```

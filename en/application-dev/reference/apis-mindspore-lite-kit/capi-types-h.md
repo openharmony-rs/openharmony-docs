@@ -45,7 +45,7 @@ Provides the model file types and device types supported by MindSpore Lite.
 
 ### OH_AI_ModelType
 
-```
+```c
 enum OH_AI_ModelType
 ```
 
@@ -62,7 +62,7 @@ Defines model file types.
 
 ### OH_AI_DeviceType
 
-```
+```c
 enum OH_AI_DeviceType
 ```
 
@@ -82,7 +82,7 @@ Defines the supported device types.
 
 ### OH_AI_NNRTDeviceType
 
-```
+```c
 enum OH_AI_NNRTDeviceType
 ```
 
@@ -101,7 +101,7 @@ Defines NNRt device types.
 
 ### OH_AI_PerformanceMode
 
-```
+```c
 enum OH_AI_PerformanceMode
 ```
 
@@ -121,7 +121,7 @@ Defines performance modes of the NNRt device.
 
 ### OH_AI_Priority
 
-```
+```c
 enum OH_AI_Priority
 ```
 
@@ -140,7 +140,7 @@ Defines NNRt inference task priorities.
 
 ### OH_AI_OptimizationLevel
 
-```
+```c
 enum OH_AI_OptimizationLevel
 ```
 
@@ -160,7 +160,7 @@ Defines training optimization levels.
 
 ### OH_AI_QuantizationType
 
-```
+```c
 enum OH_AI_QuantizationType
 ```
 

@@ -19,10 +19,10 @@ Linear containers optimize data access speed, enabling operations such as adding
 | ArrayList | Dynamic array, which occupies a contiguous block of memory. This type is recommended for frequent element access.|
 | List | Singly linked list, where memory can be non-contiguous. This type is recommended for frequent insertions and deletions when using a singly linked list.|
 | LinkedList | Doubly linked list, where memory can be non-contiguous. This type is recommended for frequent insertions and deletions when using a doubly linked list.|
-| Deque | Double-ended queue, which allows element operations at both ends and occupies a contiguous block of memory. This type is recommended for frequent access and manipulation of head and tail elements.
-| Queue | Queue, which inserts elements at the tail and removes them from the head, and occupies a contiguous block of memory. This type is suitable for First In First Out (FIFO) scenarios.
+| Deque | Double-ended queue, which allows element operations at both ends and occupies a contiguous block of memory. This type is recommended for frequent access and manipulation of head and tail elements.|
+| Queue | Queue, which inserts elements at the tail and removes them from the head, and occupies a contiguous block of memory. This type is suitable for First In First Out (FIFO) scenarios.|
 | Stack | Stack, which allows insertions and deletions only at one end, and occupies a contiguous block of memory. It is applicable to first-in-last-out scenarios.|
-| Vector | Dynamic array, which occupies a contiguous block of memory. This type is no longer maintained; use ArrayList instead.
+| Vector | Dynamic array, which occupies a contiguous block of memory. This type is no longer maintained; use ArrayList instead.|
 
 ## ArrayList
 
@@ -98,7 +98,7 @@ You can use the **get**/**set** APIs to modify the stored elements. Common APIs 
 | Modifying elements| set(index:number, element: T) | Modifies the element at the specified index.|
 | Modifying elements| list[index] = element | Modifies the element at the specified index. If the index is out of range (index < 0 or index >= list.length) or the array is sparse (there are unassigned indexes), undefined behavior may occur.|
 | Removing elements| remove(element: T) | Removes the first matching element.|
-| Removing elements| removeByIndex(index:number) | Deletes the element at the specified index.|
+| Removing elements| removeByIndex(index:number) | Removes the element at the specified index.|
 
 ## Deque
 

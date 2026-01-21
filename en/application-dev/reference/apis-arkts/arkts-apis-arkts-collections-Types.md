@@ -71,8 +71,7 @@ Defines the ArkTS Array reduction function, which is used by the **some** and **
 | boolean | Result of the reduction function, indicating whether the current element meets the test condition. The value **true** means that the current element or a previous element meets the condition, and **false** means that no element meets the condition.|
 
 ## ArrayReduceCallback<sup>18+</sup>
-type ArrayReduceCallback<AccType, ElementType, ArrayType> =
-    (previousValue: AccType, currentValue: ElementType, currentIndex: number, array: ArrayType) => AccType
+type ArrayReduceCallback<AccType, ElementType, ArrayType> = (previousValue: AccType, currentValue: ElementType, currentIndex: number, array: ArrayType) => AccType
 
 Defines the ArkTS Array reduction function, which is used by the **reduceRight** API of the Array class.
 

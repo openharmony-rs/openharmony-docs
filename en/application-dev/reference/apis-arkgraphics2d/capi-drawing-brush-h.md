@@ -12,7 +12,7 @@
 This file declares the functions related to the brush in the drawing module.
 
 <!--RP1-->
-**Sample**: [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
+**Sample**: [NDKAPIDrawing (API Version 20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **File to include**: <native_drawing/drawing_brush.h>
 
@@ -59,7 +59,7 @@ This file declares the functions related to the brush in the drawing module.
 
 ### OH_Drawing_BrushCreate()
 
-```
+```c
 OH_Drawing_Brush* OH_Drawing_BrushCreate(void)
 ```
 
@@ -79,7 +79,7 @@ Creates an **OH_Drawing_Brush** object.
 
 ### OH_Drawing_BrushCopy()
 
-```
+```c
 OH_Drawing_Brush* OH_Drawing_BrushCopy(OH_Drawing_Brush* brush)
 ```
 
@@ -106,7 +106,7 @@ Copies an existing [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) object t
 
 ### OH_Drawing_BrushDestroy()
 
-```
+```c
 void OH_Drawing_BrushDestroy(OH_Drawing_Brush* brush)
 ```
 
@@ -127,7 +127,7 @@ Destroys an **OH_Drawing_Brush** object and reclaims the memory occupied by the 
 
 ### OH_Drawing_BrushIsAntiAlias()
 
-```
+```c
 bool OH_Drawing_BrushIsAntiAlias(const OH_Drawing_Brush* brush)
 ```
 
@@ -154,7 +154,7 @@ Checks whether anti-aliasing is enabled for a brush. Anti-aliasing makes the pix
 
 ### OH_Drawing_BrushSetAntiAlias()
 
-```
+```c
 void OH_Drawing_BrushSetAntiAlias(OH_Drawing_Brush* brush, bool antiAlias)
 ```
 
@@ -176,7 +176,7 @@ Enables or disables anti-aliasing for a brush. Anti-aliasing makes the pixels ar
 
 ### OH_Drawing_BrushGetColor()
 
-```
+```c
 uint32_t OH_Drawing_BrushGetColor(const OH_Drawing_Brush* brush)
 ```
 
@@ -203,7 +203,7 @@ Obtains the color of a brush. The color is used by the brush to fill in a shape.
 
 ### OH_Drawing_BrushSetColor()
 
-```
+```c
 void OH_Drawing_BrushSetColor(OH_Drawing_Brush* brush, uint32_t color)
 ```
 
@@ -225,7 +225,7 @@ Sets the color for a brush. The color is used by the brush to fill in a shape.<b
 
 ### OH_Drawing_BrushGetAlpha()
 
-```
+```c
 uint8_t OH_Drawing_BrushGetAlpha(const OH_Drawing_Brush* brush)
 ```
 
@@ -252,7 +252,7 @@ Obtains the alpha value of a brush. This value is used by the alpha channel when
 
 ### OH_Drawing_BrushSetAlpha()
 
-```
+```c
 void OH_Drawing_BrushSetAlpha(OH_Drawing_Brush* brush, uint8_t alpha)
 ```
 
@@ -274,7 +274,7 @@ Sets the alpha value for a brush. This value is used by the alpha channel when t
 
 ### OH_Drawing_BrushSetShaderEffect()
 
-```
+```c
 void OH_Drawing_BrushSetShaderEffect(OH_Drawing_Brush* brush, OH_Drawing_ShaderEffect* shaderEffect)
 ```
 
@@ -296,7 +296,7 @@ Sets the shader effect for a brush.<br>This API may return an error code. For de
 
 ### OH_Drawing_BrushSetShadowLayer()
 
-```
+```c
 void OH_Drawing_BrushSetShadowLayer(OH_Drawing_Brush* brush, OH_Drawing_ShadowLayer* shadowLayer)
 ```
 
@@ -318,7 +318,7 @@ Sets the shadow layer for a brush. The shadow layer effect takes effect only whe
 
 ### OH_Drawing_BrushSetFilter()
 
-```
+```c
 void OH_Drawing_BrushSetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filter)
 ```
 
@@ -340,7 +340,7 @@ Sets the filter [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) for a bru
 
 ### OH_Drawing_BrushGetFilter()
 
-```
+```c
 void OH_Drawing_BrushGetFilter(OH_Drawing_Brush* brush, OH_Drawing_Filter* filter)
 ```
 
@@ -362,7 +362,7 @@ Obtains the [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) object from t
 
 ### OH_Drawing_BrushSetBlendMode()
 
-```
+```c
 void OH_Drawing_BrushSetBlendMode(OH_Drawing_Brush* brush, OH_Drawing_BlendMode blendMode)
 ```
 
@@ -384,7 +384,7 @@ Sets a blender for a brush. The blender implements the specified blend mode.<br>
 
 ### OH_Drawing_BrushReset()
 
-```
+```c
 void OH_Drawing_BrushReset(OH_Drawing_Brush* brush)
 ```
 
@@ -406,7 +406,7 @@ Resets a brush to the initial state. All configured attributes are cleared.<br>T
 
 ### OH_Drawing_BrushSetColor4f()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushSetColor4f(OH_Drawing_Brush* brush, float a, float r, float g, float b,OH_NativeColorSpaceManager* colorSpaceManager)
 ```
 
@@ -437,7 +437,7 @@ Sets a color for this brush. The color will be used by the brush to fill in a sh
 
 ### OH_Drawing_BrushGetAlphaFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushGetAlphaFloat(const OH_Drawing_Brush* brush, float* a)
 ```
 
@@ -464,7 +464,7 @@ Obtains the alpha value of the brush color.
 
 ### OH_Drawing_BrushGetRedFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushGetRedFloat(const OH_Drawing_Brush* brush, float* r)
 ```
 
@@ -491,7 +491,7 @@ Obtains the red component of the brush color.
 
 ### OH_Drawing_BrushGetGreenFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushGetGreenFloat(const OH_Drawing_Brush* brush, float* g)
 ```
 
@@ -518,7 +518,7 @@ Obtains the green component of the brush color.
 
 ### OH_Drawing_BrushGetBlueFloat()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_BrushGetBlueFloat(const OH_Drawing_Brush* brush, float* b)
 ```
 

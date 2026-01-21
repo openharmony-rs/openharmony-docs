@@ -1,4 +1,4 @@
-# @ohos.update (Update)
+# @ohos.update (Update) (System API)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Update-->
 <!--Owner: @RainyDay_005; @huangsiping3-->
@@ -40,6 +40,12 @@ Obtains an **OnlineUpdater** object.
 | ----------- | --------------------------- | ---- | ------ |
 | upgradeInfo | [UpgradeInfo](#upgradeinfo) | Yes   | **OnlineUpdater** object information.|
 
+**Return value**
+
+| Type                 | Description  |
+| ------------------- | ---- |
+| [Updater](#updater) | **OnlineUpdater** object.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -47,12 +53,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-
-**Return value**
-
-| Type                 | Description  |
-| ------------------- | ---- |
-| [Updater](#updater) | **OnlineUpdater** object.|
 
 **Example**
 
@@ -79,6 +79,12 @@ Obtains a **Restorer** object for restoring factory settings.
 
 **System capability**: SystemCapability.Update.UpdateService
 
+**Return value**
+
+| Type                   | Description    |
+| --------------------- | ------ |
+| [Restorer](#restorer) | **Restorer** object for restoring factory settings.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -86,13 +92,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-
-**Return value**
-
-| Type                   | Description    |
-| --------------------- | ------ |
-| [Restorer](#restorer) | **Restorer** object for restoring factory settings.|
-
 
 **Example**
 
@@ -112,6 +111,12 @@ Obtains a **LocalUpdater** object.
 
 **System capability**: SystemCapability.Update.UpdateService
 
+**Return value**
+
+| Type                           | Description    |
+| ----------------------------- | ------ |
+| [LocalUpdater](#localupdater) | **LocalUpdater** object.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -119,13 +124,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-
-**Return value**
-
-| Type                           | Description    |
-| ----------------------------- | ------ |
-| [LocalUpdater](#localupdater) | **LocalUpdater** object.|
-
 
 **Example**
 
@@ -1404,7 +1402,6 @@ updater.terminateUpgrade().then(() => {
 });
 ```
 
-
 ### on
 on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): void
 
@@ -1419,6 +1416,13 @@ Enables listening for update events. This API uses an asynchronous callback to r
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | Yes   | Event information.|
 | taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | Yes   | Event callback.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID      | Error Message                                                 |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -1447,6 +1451,13 @@ Disables listening for update events. This API uses an asynchronous callback to 
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | Yes   | Event information.|
 | taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | No   | Event callback.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID      | Error Message                                                 |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -1467,7 +1478,7 @@ updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
 
 factoryReset(callback: AsyncCallback\<void>): void
 
-Restores the scale to its factory settings. This API uses an asynchronous callback to return the result.
+Restores a device to its factory settings. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
@@ -1501,7 +1512,7 @@ restorer.factoryReset((err) => {
 
 factoryReset(): Promise\<void>
 
-Restores the scale to its factory settings. This API uses a promise to return the result.
+Restores a device to its factory settings. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Update.UpdateService
 
@@ -1532,6 +1543,44 @@ restorer.factoryReset().then(() => {
   console.info(`factoryReset success`);
 }).catch((err: BusinessError) => {
   console.error(`factoryReset error ${JSON.stringify(err)}`);
+});
+```
+
+### forceFactoryReset<sup>23+</sup>
+
+forceFactoryReset(): Promise\<void>
+
+Forcibly restores a device to its factory settings. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Update.UpdateService
+
+**Required permissions**: ohos.permission.FORCE_FACTORY_RESET
+
+**Return value**
+
+| Type            | Description                        |
+| -------------- | -------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
+
+| ID      | Error Message                                                 |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+restorer.forceFactoryReset().then(() => {
+  console.info(`forceFactoryReset success`);
+}).catch((err: BusinessError) => {
+  console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1726,6 +1775,13 @@ Enables listening for update events. This API uses an asynchronous callback to r
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | Yes   | Event information.|
 | taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | Yes   | Event callback.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID      | Error Message                                                 |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -1756,6 +1812,13 @@ Disables listening for update events. This API uses an asynchronous callback to 
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | Yes   | Event information.|
 | taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | No   | Event callback.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID      | Error Message                                                 |
+| -------  | ---------------------------------------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
@@ -1842,7 +1905,7 @@ Represents a version component.
 | size            | number                              | No| No| Size of the update package, in bytes.   |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | No| No| Effective mode.    |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | No| No| Information about the version description file.|
-| otaMode<sup>20+</sup> | [OtaMode](#otamode20)                 | No| Yes| OTA mode.    |
+| otaMode<sup>22+</sup> | [OtaMode](#otamode22)                 | No| Yes| OTA mode.    |
 
 ## DescriptionOptions
 
@@ -2036,7 +2099,7 @@ Represents an update file.
 
 ## UpgradeTaskCallback
 
-(eventInfo: EventInfo): void
+type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 Represents an event callback.
 
@@ -2099,7 +2162,7 @@ Enumerates effective modes.
 | LIVE          | 2    | Live update. |
 | LIVE_AND_COLD | 3    | Hybrid live and cold update.|
 
-## OtaMode<sup>20+</sup>
+## OtaMode<sup>22+</sup>
 
 Enumerates update modes.
 

@@ -7,7 +7,7 @@
 <!--Tester: @yhl0101; @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-- [Introduction to ArkGraphics 2D](arkgraphics2D-introduction.md)
+- [About This Kit](arkgraphics2D-introduction.md)
 - Using Variable Frame Rates<!--displaysync-->
   - [Introduction to Variable Frame Rates](displaysync-overview.md)
   - [Requesting Frame Rates for Animations](displaysync-animation.md)
@@ -57,9 +57,9 @@
     - [Drawing and Displaying Complex Text (C/C++)](complex-text-c.md)
     - [Drawing and Displaying Custom Text (C/C++)](text-custom-c.md)
   - [Text Development FAQs](text-faqs.md)
-- [Native Buffer Development (C/C++)](native-buffer-guidelines.md)
-- [Native Image Development (C/C++)](native-image-guidelines.md)
-- [Native Vsync Development (C/C++)](native-vsync-guidelines.md)
-- [Native Window Development (C/C++)](native-window-guidelines.md)
+- [NativeBuffer Development (C/C++)](native-buffer-guidelines.md)
+- [NativeImage Development (C/C++)](native-image-guidelines.md)
+- [NativeVsync Development (C/C++)](native-vsync-guidelines.md)
+- [NativeWindow Development (C/C++)](native-window-guidelines.md)
 - [GPU/CPU Memory Access Sync (C/C++)](native-fence-guidelines.md)
 - [Graphic Development Terms](graphic-term.md)

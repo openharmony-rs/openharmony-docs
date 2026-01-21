@@ -52,7 +52,7 @@ Human Interface Device Profile，即人机接口协议，为传统蓝牙设计�
 HID over GATT Profile，基于低功耗蓝牙的GATT协议实现的[HID](#hid)规范，将传统[HID](#hid)功能移植到[BLE](#ble)设备上复用，兼容键盘、鼠标、自拍杆等[BLE](#ble)设备的[HID](#hid)交互逻辑。
 ## L
 ### L2CAP
-Logical Link Control and Adaptation Protocal，即逻辑链路控制和适配协议。可支持上层协议和应用的多种传输需求，提供面向连接和无连接的数据服务，并提供多路复用，分段和重组操作。
+Logical Link Control and Adaptation Protocol，即逻辑链路控制和适配协议。可支持上层协议和应用的多种传输需求，提供面向连接和无连接的数据服务，并提供多路复用，分段和重组操作。
 ## M
 ### MAP
 Message Access Profile，即消息访问协议。可用于实现蓝牙设备间的消息同步，支持短信、邮件等数据传输。该协议定义了2种角色：[MCE](#mce)和[MSE](#mse)。

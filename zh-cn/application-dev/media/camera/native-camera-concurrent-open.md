@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 
-从API version 18开始支持多摄同开，即应用可同时开启前置和后置相机进行拍照和录像。
+从API version 18开始支持多摄同开，即应用同时开启前置/后置相机进行预览和录像（前置/后置相机同时拍照功能待开放）。
 
 >**说明：**
 >
@@ -34,7 +34,6 @@
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -82,7 +81,7 @@
    }
    ```
 
-4. 获取对应的并发能力集。通过[OH_CameraManager_GetCameraConcurrentInfos](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos)方法，获取[Camera_ConcurrentInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-concurrentinfo.md)相机并发能力集对象数组，数组包含了前置和后置同时开启的相机在指定多摄同开模式下支持的相机模式和相机输出能力。
+4. 获取对应的并发能力集。通过[OH_CameraManager_GetCameraConcurrentInfos](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameraconcurrentinfos)方法，获取[Camera_ConcurrentInfo](../../reference/apis-camera-kit/capi-oh-camera-camera-concurrentinfo.md)相机并发能力集对象数组，数组包含了前置和后置同时开启的相机在指定多摄同开模式下支持的相机模式和相机输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。
 
    ```c++
    void GetSupportedOutputCapability(Camera_Manager *cameraManager, Camera_Device *cameras)

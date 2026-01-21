@@ -107,8 +107,7 @@ struct WebComponent {
 
 ## Listening for Page Zoom Scale Changes
 
-The application can listen for page zoom scale changes through the [onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9) API.
-This API event corresponds to the gesture event (zoom with two fingers). **event.newScale** corresponds to the web page attribute **visualViewport.scale**.
+The application can listen for page zoom scale changes through the [onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9) API. This API event corresponds to the gesture event (zoom with two fingers). **event.newScale** corresponds to the web page attribute **visualViewport.scale**.
 
 <!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) -->
 
@@ -223,7 +222,7 @@ struct WebComponent {
 
 You can call the **onScaleChange** API to obtain the current page zoom scale, and then call the **zoom** API to zoom in or out the page to the specified scale. You can calculate the input parameter of **zoom** based on **pageFactor** and **targetFactor** as follows:
 
-```
+```TypeScript
 factor = 100 * targetFactor / pageFactor
 ```
 

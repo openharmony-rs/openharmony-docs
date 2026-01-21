@@ -10,15 +10,15 @@ You can set state-specific styles for components.
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  Since API version 11, you can also dynamically set component attributes through [attributeModifier](./ts-universal-attributes-attribute-modifier.md).
+> - Since API version 11, you can also dynamically set component attributes through [attributeModifier](./ts-universal-attributes-attribute-modifier.md).
 >
->  Polymorphic styles only support [universal attributes](ts-component-general-attributes.md). If a polymorphic style does not take effect, the attribute you are modifying might be a private attribute of the component, for example, [fontColor](./ts-universal-attributes-text-style.md) or [backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18) of the [TextInput](./ts-basic-components-textinput.md) component. In this case, you can use **attributeModifier** to dynamically set these component-specific attributes.
+> - Polymorphic styles only support [universal attributes](ts-component-general-attributes.md). If a polymorphic style does not take effect, the attribute you are modifying might be a private attribute of the component, for example, **fontColor** or [backgroundColor](./ts-universal-attributes-background.md#backgroundcolor18) of the [TextInput](./ts-basic-components-textinput.md) component. In this case, you can use **attributeModifier** to dynamically set these component-specific attributes.
 >
->  Currently, the implementation of polymorphic styles relies on the refresh mechanism of custom component nodes. Since the builder does not have an independent custom parent node and cannot directly trigger refresh, polymorphic styles cannot be applied directly within the builder. The recommended solution is to encapsulate the polymorphic styles into a custom component and place this component within the @Builder to indirectly achieve the polymorphic style effect. For details about the sample code, see [Example 3: Setting Polymorphic Styles for the Builder Component](#example-3-setting-polymorphic-styles-for-the-builder-component).
+> - Currently, the implementation of polymorphic styles relies on the refresh mechanism of custom component nodes. Since the builder does not have an independent custom parent node and cannot directly trigger refresh, polymorphic styles cannot be applied directly within the builder. The recommended solution is to encapsulate the polymorphic styles into a custom component and place this component within the @Builder to indirectly achieve the polymorphic style effect. For details about the sample code, see [Example 3: Setting Polymorphic Styles for the Builder Component](#example-3-setting-polymorphic-styles-for-the-builder-component).
 >  
->  Polymorphic styles for the focused state are only applied when [focus activation](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is enabled.
+> - Polymorphic styles for the focused state are only applied when [focus activation](../../../ui/arkts-common-events-focus-event.md#basic-concepts) is enabled.
 
 ## stateStyles
 
@@ -56,12 +56,12 @@ Sets the state-specific styles for the component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| normal | any | No| Yes| Style of the component when being stateless. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| pressed | any | No| Yes| Style of the component in the pressed state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| disabled | any | No| Yes| Style of the component in the disabled state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| focused | any | No| Yes| Style of the component in the focused state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| clicked | any | No| Yes| Style of the component in the clicked state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| selected<sup>10+</sup> | object | No| Yes| Style of the component in the selected state. Only style code blocks decorated with @style is accepted.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| normal | any | No| Yes| Style of the component when being stateless. Only style code blocks modified by [@Styles](../../../ui/state-management/arkts-style.md) can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| pressed | any | No| Yes| Style of the component in the pressed state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| disabled | any | No| Yes| Style of the component in the disabled state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| focused | any | No| Yes| Style of the component in the focused state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| clicked | any | No| Yes| Style of the component in the clicked state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| selected<sup>10+</sup> | object | No| Yes| Style of the component in the selected state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
 
 **Notes about the selected state:**
 
@@ -138,6 +138,7 @@ struct StyleExample {
         .fontSize(14)
         .fontColor(Color.White)
         .opacity(0.5)
+        // stateStyles sets the style of the component in its normal state.
         .stateStyles({
           normal: this.normalStyles,
         })
@@ -154,6 +155,7 @@ struct StyleExample {
         .opacity(1)
         .fontSize(14)
         .fontColor(Color.White)
+        // stateStyles sets the style of the component in its pressed state.
         .stateStyles({
           pressed: this.pressedStyles,
         })
@@ -171,6 +173,7 @@ struct StyleExample {
         .fontSize(14)
         .fontColor(Color.White)
         .enabled(this.isEnable)
+        // stateStyles sets the style of the component in its disabled state.
         .stateStyles({
           disabled: this.disabledStyles,
         })

@@ -134,7 +134,7 @@
 
   ![zh-cn_image_0000001562700425](figures/zh-cn_image_0000001562700425.png)
 
-- FlexWrap. Wrap：换行，每一行子元素按照主轴方向排列。
+- FlexWrap.Wrap：换行，每一行子元素按照主轴方向排列。
 
 
   <!-- @[FlexWrapWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrap.ets) -->
@@ -152,7 +152,7 @@
 
   ![zh-cn_image_0000001511740468](figures/zh-cn_image_0000001511740468.png)
 
-- FlexWrap. WrapReverse：换行，每一行子元素按照主轴反方向排列。
+- FlexWrap.WrapReverse：换行，每一行子元素按照主轴反方向排列。
 
 
   <!-- @[FlexWrapWrapReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrapReverse.ets) -->

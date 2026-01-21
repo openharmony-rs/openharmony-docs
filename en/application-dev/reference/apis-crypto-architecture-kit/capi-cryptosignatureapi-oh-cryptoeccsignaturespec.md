@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoEccSignatureSpec OH_CryptoEccSignatureSpec
+```
+
 ## Overview
 
 Defines a struct for ECC signing specifications.

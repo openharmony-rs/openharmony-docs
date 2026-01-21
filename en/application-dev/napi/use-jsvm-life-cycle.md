@@ -9,6 +9,7 @@
 ## Introduction
 
 In JSVM-API, **JSVM_Value** is an abstract data type that represents a JavaScript (JS) value of any type, which includes the basic type (such as number, string, or Boolean) and the composite type (such as array, function, or object).
+
 The **JSVM_Value** lifecycle is related to the lifecycle of the JS value. After the JS value is garbage collected, the **JSVM_Value** is no longer valid. Do not use **JSVM_Value** when the JS value does not exist.
 
 Scope is used to manage the **JSVM_Value** lifecycle in the framework layer. You can use **OH_JSVM_OpenHandleScope** to create a scope and use **OH_JSVM_CloseHandleScope** to destroy a scope. By creating a **JSVM_Value** in a scope, you can ensure that the **JSVM_Value** is automatically released when the scope ends. This helps prevent memory leaks.
@@ -99,13 +100,14 @@ const char *srcCallNative = "HandleScopeFor()";
 <!-- @[oh_jsvm_open_handle_scope_and_oh_jsvm_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openhandlescope/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM HandleScopeFor: success
 ```
 
 ### OH_JSVM_OpenEscapableHandleScope, OH_JSVM_CloseEscapableHandleScope, and OH_JSVM_EscapeHandle
 
 Call **OH_JSVM_OpenEscapableHandleScope** to create an escapable handle scope, which allows the declared values in a scope to be returned to its parent scope. <br>Call **OH_JSVM_CloseEscapableHandleScope** to close the created scope. Call **OH_JSVM_EscapeHandle** to promote the lifecycle of the passed-in JS object to its parent scope.
+
 These APIs are helpful for managing JS objects more flexibly in C/C++, especially when passing cross-scope values.
 
 CPP code:
@@ -163,7 +165,7 @@ const char *srcCallNative = "escapableHandleScopeTest()";
 
 Expected result:
 
-```
+```txt
 JSVM EscapableHandleScopeTest: success
 ```
 
@@ -251,14 +253,16 @@ const char *srcCallNative = "useReference()";
 
 Expected result:
 
-```
+```txt
 JSVM OH_JSVM_ReferenceRef, count = 2.
 JSVM OH_JSVM_ReferenceUnref, count = 1.
 JSVM UseReference success
 ```
 
 ### OH_JSVM_AddFinalizer
+
 Call **OH_JSVM_AddFinalizer** to add the **JSVM_Finalize** callback to a JS object. The callback will be invoked when the JS object is garbage-collected. **OH_JSVM_AddFinalizer** is usually used to release the native object associated with a JS object. If the input parameter is not a JS object, the call will fail and return an error code.
+
 The Finalizer method cannot be canceled after being registered. If it is not executed before **OH_JSVM_DestroyEnv** is called, it will be executed when **OH_JSVM_DestroyEnv** is called.
 
 CPP code:

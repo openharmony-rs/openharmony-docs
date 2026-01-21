@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-```
+```c
 typedef struct {...} ArkWeb_ControllerAPI
 ```
 
@@ -49,7 +49,7 @@ Defines a native controller API. Before calling this API, you are advised to use
 
 ### runJavaScript()
 
-```
+```c
 void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascriptObject)
 ```
 
@@ -66,7 +66,7 @@ Injects a JavaScript script.
 
 ### registerJavaScriptProxy()
 
-```
+```c
 void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)
 ```
 
@@ -83,7 +83,7 @@ Injects a JavaScript object with the window. Synchronous APIs of this object can
 
 ### deleteJavaScriptRegister()
 
-```
+```c
 void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 ```
 
@@ -100,7 +100,7 @@ Deletes a specific application JavaScript object that is registered with the win
 
 ### refresh()
 
-```
+```c
 void (*refresh)(const char* webTag)
 ```
 
@@ -116,7 +116,7 @@ Refreshes the web page. The page stack is cleared during the refresh. As a resul
 
 ### registerAsyncJavaScriptProxy()
 
-```
+```c
 void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)
 ```
 
@@ -133,7 +133,7 @@ Injects a JavaScript object with the window. Asynchronous APIs of this object ca
 
 ### createWebMessagePorts()
 
-```
+```c
 ArkWeb_WebMessagePortPtr* (*createWebMessagePorts)(const char* webTag, size_t* size)
 ```
 
@@ -156,7 +156,7 @@ Creates a post message port.
 
 ### destroyWebMessagePorts()
 
-```
+```c
 void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)
 ```
 
@@ -173,7 +173,7 @@ Destroys a message port.
 
 ### postWebMessage()
 
-```
+```c
 ArkWeb_ErrorCode (*postWebMessage)(const char* webTag, const char* name, ArkWeb_WebMessagePortPtr* webMessagePorts, size_t size, const char* url)
 ```
 
@@ -199,7 +199,7 @@ Sends a message port to the HTML page.
 
 ### getLastJavascriptProxyCallingFrameUrl()
 
-```
+```c
 const char* (*getLastJavascriptProxyCallingFrameUrl)()
 ```
 
@@ -217,7 +217,7 @@ Obtains the URL of the last frame that calls **JavaScriptProxy**. This function 
 
 ### registerJavaScriptProxyEx()
 
-```
+```c
 void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject,const char* permission)
 ```
 
@@ -237,7 +237,7 @@ Injects a JavaScript object with the window. Synchronous APIs of this object can
 
 ### registerAsyncJavaScriptProxyEx()
 
-```
+```c
 void (*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObject* proxyObject, const char* permission)
 ```
 

@@ -115,6 +115,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
 ## napi_call_function
 
 Use **napi_call_function** to call an ArkTS function from a C/C++ addon.
+
 Note: The length of **argv** passed to **napi_call_function** must be greater than or equal to the number of **argc** declarations, and each element must be initialized to **nullptr**.
 
 CPP code:

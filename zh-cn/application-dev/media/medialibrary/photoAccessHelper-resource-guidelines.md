@@ -13,7 +13,7 @@
 > - 在进行功能开发前，请查阅[开发准备](photoAccessHelper-preparation.md)，了解如何获取相册管理模块实例和如何申请相册管理模块功能开发相关权限。
 > - 文档中使用到photoAccessHelper的地方，默认为使用[开发准备](photoAccessHelper-preparation.md)中获取的对象，如果未添加此段代码，报photoAccessHelper未定义的错误，请自行添加。
 
-为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。示例采用Promise函数，更多方式可以查阅[API参考](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
+为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。示例采用Promise函数，更多方式可以查阅[模块描述](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
 
 ## 获取指定媒体资源
 
@@ -22,23 +22,28 @@
 应用通过调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1)获取媒体资源，并传入[FetchOptions](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions)对象指定检索条件。如无特别说明，文档中涉及的待获取的资源均视为已经预置且在数据库中存在相应数据。如出现获取资源为空的情况，请确认文件是否已预置，数据库中是否存在该文件的数据。
 
 > **注意：**
-> 使用[PhotoAccessHelper.PhotoKeys.URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys)做查询条件时，仅支持使用[DataSharePredicates.equalTo](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)的方式。
+> 使用[PhotoAccessHelper.PhotoKeys](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys).URI做查询条件时，仅支持使用[DataSharePredicates.equalTo](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)的方式。
 
 如果只想获取某个位置的对象（如第一个、最后一个、指定索引等），可以通过[FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md)中的接口获取。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块读权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
 - 导入[dataSharePredicates](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md)模块。
 
 ### 指定媒体文件名获取图片或视频资源
 
 下面以查询文件名为'test.jpg'的图片资源为例。
 
-```ts
+<!-- @[get_media_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/getmediaresourceability/GetMediaResourceAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
+
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -48,12 +53,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.displayName : ' + photoAsset.displayName);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('getAssets failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -67,7 +75,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块读权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
 - 导入[dataSharePredicates](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md)模块。
 
 参考以下示例，获取图片的文件描述符fd后，需要解码为统一的PixelMap，以便在应用中进行图片显示或图片处理，具体请参考[图片解码](../image/image-decoding.md)。
@@ -81,10 +89,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
 4. 调用PhotoAsset.getThumbnail获取图片的缩略图的[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
-```ts
+<!-- @[get_media_thumbnails](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/getmediathumbnailsability/GetMediaThumbnailsAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -94,7 +106,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.displayName : ' + photoAsset.displayName);
     let size: image.Size = { width: 720, height: 720 };
@@ -102,8 +115,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let imageInfo: image.ImageInfo = await pixelMap.getImageInfo()
     console.info('getThumbnail successful, pixelMap ImageInfo size: ' + JSON.stringify(imageInfo.size));
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('getThumbnail failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -116,7 +131,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块读写权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'。
 
 ### 创建图片或视频资源（仅向系统应用开放）
 
@@ -164,7 +179,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'和'ohos.permission.READ_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'和'ohos.permission.READ_IMAGEVIDEO'。
 
 下面以重命名标题为'oldTestPhoto'的图片为例。
 
@@ -176,13 +191,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 4. 调用[MediaAssetChangeRequest.setTitle](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#settitle11)接口将图片重命名。
 5. 调用[PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)接口将修改的图片属性更新到数据库中完成修改。
 
-```ts
+<!-- @[rename_media](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/renamemediaability/RenameMediaAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
+// ...
+
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  predicates.equalTo(photoAccessHelper.PhotoKeys.TITLE, 'oldTestPhoto')
+  predicates.equalTo(photoAccessHelper.PhotoKeys.TITLE, 'test')
   let fetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: ['title'],
     predicates: predicates
@@ -190,14 +209,18 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let newTitle: string = 'newTestPhoto';
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = 
+      new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
     assetChangeRequest.setTitle(newTitle);
     await phAccessHelper.applyChanges(assetChangeRequest);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error(`rename failed with error: ${err.code}, ${err.message}`);
+    // ...
   }
 }
 ```
@@ -211,7 +234,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'和'ohos.permission.READ_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'和'ohos.permission.READ_IMAGEVIDEO'。
 
 下面以将文件检索结果中第一个文件放入回收站为例。
 
@@ -222,9 +245,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片，即要放入回收站的图片对象。
 4. 调用[MediaAssetChangeRequest.deleteAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#deleteassets11)接口将文件放入回收站。
 
-```ts
+<!-- @[move_media_to_recycle_bin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/movemediatorecyclebinability/MoveMediaToRecycleBinAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -234,12 +261,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   };
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error(`deleteAssets failed with error: ${err.code}, ${err.message}`);
+    // ...
   }
 }
 ```

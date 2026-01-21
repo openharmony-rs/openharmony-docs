@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The ArkUI framework offers a comprehensive set of APIs for handling input events from various peripherals. Beyond basic input handling, ArkUI also provides advanced APIs for responding to normalized user interactions such as gestures, drag and drop, and focus management.
 
@@ -14,7 +14,7 @@ Compared with raw input events, gestures are the preferred method for handling u
 
 [Input Devices and Events](arkts-interaction-development-guide-raw-input-event.md): covers raw input events from different devices and how to process them.
 
-[Implementing Gesture Response](arkts-interaction-development-guide-support-gesture.md): demonstrates how to implement gesture-based interactions.
+[Implementing Gesture Responses](arkts-interaction-development-guide-support-gesture.md): explains how to handle standardized gesture interactions.
 
 [Supporting Unified Drag-and-Drop](arkts-common-events-drag-event.md): guides you through implementing consistent drag and drop behavior across devices.
 

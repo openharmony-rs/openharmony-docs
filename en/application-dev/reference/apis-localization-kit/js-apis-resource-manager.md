@@ -57,7 +57,7 @@ Obtains the **ResourceManager** object of this application. This API uses an asy
 
 **Example**
 <!--code_no_check_fa-->
-  ```js
+```js
 import resourceManager from '@ohos.resourceManager';
 // Use this method to import the module in the FA model.
 
@@ -80,7 +80,7 @@ export default {
         });
     }
 };
-  ```
+```
 
 ## resourceManager.getResourceManager
 
@@ -101,7 +101,7 @@ Obtains the **ResourceManager** object of the specified application. This API us
 
 **Example**
 <!--code_no_check_fa-->
-  ```js
+```js
 import resourceManager from '@ohos.resourceManager';
 // Use this method to import the module in the FA model.
 
@@ -126,7 +126,7 @@ export default {
         });
     }
 };
-  ```
+```
 
 ## resourceManager.getResourceManager
 
@@ -146,7 +146,7 @@ Obtains the **ResourceManager** object of this application. This API uses a prom
 
 **Example**
 <!--code_no_check_fa-->
-  ```js
+```js
 import resourceManager from '@ohos.resourceManager';
 // Use this method to import the module in the FA model.
 
@@ -165,7 +165,7 @@ export default {
         });
     }
 };
-  ```
+```
 
 ## resourceManager.getResourceManager
 
@@ -191,7 +191,7 @@ Obtains the **ResourceManager** object of the specified application. This API us
 
 **Example**
 <!--code_no_check_fa-->
-  ```js
+```js
 import resourceManager from '@ohos.resourceManager';
 // Use this method to import the module in the FA model.
 
@@ -213,7 +213,7 @@ export default {
         });
     }
 };
-  ```
+```
 
 ## resourceManager.getSysResourceManager<sup>20+</sup>
 
@@ -240,24 +240,24 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001009  | Failed to access the system resource. which is not mapped to application sandbox, This error code will be thrown. |
 
 **Example**
-  ```js
+```js
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let systemResourceManager = resourceManager.getSysResourceManager();
-    // Replace 'sys.string.ohos_lab_vibrate' with the actual resource.
-    systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
-      let str = value;
-    }).catch((error: BusinessError) => {
-      console.error(`systemResourceManager getStringValue promise error: ${error}`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSysResourceManager failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  let systemResourceManager = resourceManager.getSysResourceManager();
+  // Replace 'sys.string.ohos_lab_vibrate' with the actual resource.
+  systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
+    let str = value;
+  }).catch((error: BusinessError) => {
+    console.error(`systemResourceManager getStringValue promise error: ${error}`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getSysResourceManager failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ## Direction
 
@@ -427,18 +427,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -456,7 +456,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringSync<sup>10+</sup>
 
@@ -494,18 +494,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -523,7 +523,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringByNameSync<sup>9+</sup>
 
@@ -559,18 +559,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -588,7 +588,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringByNameSync<sup>10+</sup>
 
@@ -626,18 +626,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001008  | Failed to format the resource obtained based on the resource Name. |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -655,7 +655,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringValue<sup>9+</sup>
 
@@ -686,18 +686,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.         |
 
 **Example (stage)**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -714,7 +714,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringValue<sup>9+</sup>
 
@@ -750,18 +750,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -776,7 +776,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringByName<sup>9+</sup>
 
@@ -807,18 +807,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -835,7 +835,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringByName<sup>9+</sup>
 
@@ -871,18 +871,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -897,7 +897,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringArrayValueSync<sup>10+</sup>
 
@@ -933,22 +933,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -966,7 +966,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringArrayByNameSync<sup>10+</sup>
 
@@ -1002,22 +1002,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1035,7 +1035,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getStringArrayValue<sup>9+</sup>
 
@@ -1066,22 +1066,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1099,7 +1099,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getStringArrayValue<sup>9+</sup>
 
@@ -1135,22 +1135,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1167,7 +1167,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getStringArrayByName<sup>9+</sup>
 
@@ -1198,22 +1198,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1231,7 +1231,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getStringArrayByName<sup>9+</sup>
 
@@ -1267,22 +1267,22 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1299,7 +1299,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getIntPluralStringValueSync<sup>18+</sup>
 
@@ -1343,27 +1343,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1383,7 +1383,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getIntPluralStringByNameSync<sup>18+</sup>
 
@@ -1427,27 +1427,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1467,7 +1467,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDoublePluralStringValueSync<sup>18+</sup>
 
@@ -1511,27 +1511,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1551,7 +1551,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDoublePluralStringByNameSync<sup>18+</sup>
 
@@ -1595,27 +1595,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001008  | Failed to format the resource obtained based on the resource name. |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1635,7 +1635,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentSync<sup>10+</sup>
 
@@ -1671,7 +1671,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1696,7 +1696,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByNameSync<sup>10+</sup>
 
@@ -1732,7 +1732,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1757,7 +1757,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContent<sup>9+</sup>
 
@@ -1787,7 +1787,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1810,7 +1810,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContent<sup>10+</sup>
 
@@ -1841,7 +1841,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1863,7 +1863,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContent<sup>9+</sup>
 
@@ -1898,7 +1898,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1918,7 +1918,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContent<sup>10+</sup>
 
@@ -1954,7 +1954,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1974,7 +1974,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByName<sup>9+</sup>
 
@@ -2004,7 +2004,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2026,7 +2026,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByName<sup>10+</sup>
 
@@ -2057,7 +2057,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2079,7 +2079,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByName<sup>9+</sup>
 
@@ -2114,7 +2114,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2134,7 +2134,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaByName<sup>10+</sup>
 
@@ -2170,7 +2170,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2190,7 +2190,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64Sync<sup>10+</sup>
 
@@ -2226,7 +2226,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2251,7 +2251,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByNameSync<sup>10+</sup>
 
@@ -2287,7 +2287,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2312,7 +2312,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64<sup>9+</sup>
 
@@ -2342,7 +2342,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2364,7 +2364,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64<sup>10+</sup>
 
@@ -2395,7 +2395,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2417,7 +2417,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64<sup>9+</sup>
 
@@ -2452,7 +2452,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2472,7 +2472,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaContentBase64<sup>10+</sup>
 
@@ -2508,7 +2508,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2528,7 +2528,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByName<sup>9+</sup>
 
@@ -2558,7 +2558,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2580,7 +2580,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByName<sup>10+</sup>
 
@@ -2615,7 +2615,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2637,7 +2637,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByName<sup>9+</sup>
 
@@ -2672,7 +2672,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2692,7 +2692,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getMediaBase64ByName<sup>10+</sup>
 
@@ -2728,7 +2728,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2748,7 +2748,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDrawableDescriptor<sup>10+</sup>
 
@@ -2785,7 +2785,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { DrawableDescriptor } from '@kit.ArkUI';
@@ -2818,7 +2818,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDrawableDescriptorByName<sup>10+</sup>
 
@@ -2855,7 +2855,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001004  | No matching resource is found based on the resource name.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { DrawableDescriptor } from '@kit.ArkUI';
@@ -2888,7 +2888,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getBoolean<sup>9+</sup>
 
@@ -2924,18 +2924,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/boolean.json
-  {
-    "boolean": [
-      {
-        "name": "boolean_test",
-        "value": true
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/boolean.json
+{
+  "boolean": [
+    {
+      "name": "boolean_test",
+      "value": true
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2953,7 +2953,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getBooleanByName<sup>9+</sup>
 
@@ -2989,18 +2989,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/boolean.json
-  {
-    "boolean": [
-      {
-        "name": "boolean_test",
-        "value": true
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/boolean.json
+{
+  "boolean": [
+    {
+      "name": "boolean_test",
+      "value": true
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3018,7 +3018,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getNumber<sup>9+</sup>
 
@@ -3054,30 +3054,30 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/integer.json
-  {
-    "integer": [
-      {
-        "name": "integer_test",
-        "value": 100
-      }
-    ]
-  }
-  ```
+```json
+// Resource file path: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
 
-  ```json
-  // Resource file path: src/main/resources/base/element/float.json
-  {
-    "float": [
-      {
-        "name": "float_test",
-        "value": "30.6vp"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/float.json
+{
+  "float": [
+    {
+      "name": "float_test",
+      "value": "30.6vp"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
@@ -3109,7 +3109,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 
 ### getNumberByName<sup>9+</sup>
@@ -3146,30 +3146,30 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/integer.json
-  {
-    "integer": [
-      {
-        "name": "integer_test",
-        "value": 100
-      }
-    ]
-  }
-  ```
+```json
+// Resource file path: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
 
-  ```json
-  // Resource file path: src/main/resources/base/element/float.json
-  {
-    "float": [
-      {
-        "name": "float_test",
-        "value": "30.6vp"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/float.json
+{
+  "float": [
+    {
+      "name": "float_test",
+      "value": "30.6vp"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
@@ -3201,7 +3201,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getColorSync<sup>10+</sup>
 
@@ -3237,18 +3237,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3266,7 +3266,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 
 ### getColorByNameSync<sup>10+</sup>
@@ -3303,18 +3303,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3332,7 +3332,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getColor<sup>10+</sup>
 
@@ -3363,18 +3363,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.         |
 
 **Example (stage)**
-  ```json
-  // Resource file path: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3391,7 +3391,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getColor<sup>10+</sup>
 
@@ -3427,18 +3427,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3455,7 +3455,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 
 ### getColorByName<sup>10+</sup>
@@ -3487,18 +3487,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3515,7 +3515,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getColorByName<sup>10+</sup>
 
@@ -3551,18 +3551,18 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
+```json
+// Resource file path: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3579,7 +3579,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getRawFileContentSync<sup>10+</sup>
 
@@ -3613,7 +3613,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3629,7 +3629,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFileContent<sup>9+</sup>
 
@@ -3658,7 +3658,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3680,7 +3680,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFileContent<sup>9+</sup>
 
@@ -3714,7 +3714,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3734,7 +3734,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFileListSync<sup>10+</sup>
 
@@ -3772,7 +3772,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3791,7 +3791,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFileList<sup>10+</sup>
 
@@ -3824,7 +3824,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.       |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3842,7 +3842,7 @@ export default class EntryAbility extends UIAbility {
         });
     }
 }
-  ```
+```
 
 ### getRawFileList<sup>10+</sup>
 
@@ -3880,7 +3880,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3898,7 +3898,7 @@ export default class EntryAbility extends UIAbility {
             });
     }
 }
-  ```
+```
 
 ### getRawFdSync<sup>10+</sup>
 
@@ -3936,7 +3936,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3952,7 +3952,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFd<sup>9+</sup>
 
@@ -3985,7 +3985,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4010,7 +4010,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getRawFd<sup>9+</sup>
 
@@ -4048,7 +4048,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4071,7 +4071,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### closeRawFdSync<sup>10+</sup>
 
@@ -4099,7 +4099,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4119,7 +4119,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
-  ```
+```
 
 ### closeRawFd<sup>9+</sup>
 
@@ -4148,7 +4148,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4172,7 +4172,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
-  ```
+```
 
 ### closeRawFd<sup>9+</sup>
 
@@ -4206,7 +4206,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4225,7 +4225,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
-  ```
+```
 
 ### getConfigurationSync<sup>10+</sup>
 
@@ -4244,7 +4244,7 @@ Obtains the device configuration. This API returns the result synchronously.
 | [Configuration](#configuration) | Device configuration.|
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
@@ -4258,7 +4258,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getConfiguration
 
@@ -4277,7 +4277,7 @@ Obtains the device configuration. This API uses an asynchronous callback to retu
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[Configuration](#configuration)&gt; | Yes   | Callback used to return the device configuration.|
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4298,7 +4298,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getConfiguration
 
@@ -4317,7 +4317,7 @@ Obtains the device configuration. This API uses a promise to return the result.
 | Promise&lt;[Configuration](#configuration)&gt; | Promise used to return the device configuration.|
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4336,7 +4336,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDeviceCapabilitySync<sup>10+</sup>
 
@@ -4355,7 +4355,7 @@ Obtains the device capability. This API returns the result synchronously.
 | [DeviceCapability](#devicecapability) | Device capability.|
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
@@ -4369,7 +4369,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDeviceCapability
 
@@ -4388,7 +4388,7 @@ Obtains the device capability. This API uses an asynchronous callback to return 
 | callback | [_AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[DeviceCapability](#devicecapability)&gt; | Yes   | Callback used to return the device capability.|
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4409,7 +4409,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getDeviceCapability
 
@@ -4428,7 +4428,7 @@ Obtains the device capability. This API uses a promise to return the result.
 | Promise&lt;[DeviceCapability](#devicecapability)&gt; | Promise used to return the device capability.|
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4447,7 +4447,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### addResource<sup>10+</sup>
 
@@ -4479,7 +4479,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001010  | Invalid overlay path.            |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4496,7 +4496,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### removeResource<sup>10+</sup>
 
@@ -4528,7 +4528,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001010  | Invalid overlay path.            |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4545,7 +4545,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getLocales<sup>11+</sup>
 
@@ -4578,7 +4578,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4610,7 +4610,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getSymbol<sup>11+</sup>
 
@@ -4646,7 +4646,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4664,7 +4664,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 
 ### getSymbolByName<sup>11+</sup>
@@ -4701,7 +4701,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4719,7 +4719,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### isRawDir<sup>12+</sup>
 
@@ -4753,7 +4753,7 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001005  | Invalid relative path.          |
 
 **Example**
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4778,7 +4778,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getOverrideResourceManager<sup>12+</sup>
 
@@ -4814,7 +4814,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4833,7 +4833,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### getOverrideConfiguration<sup>12+</sup>
 
@@ -4853,7 +4853,7 @@ Obtains the configuration of differentiated resources. This API returns the resu
 
 **Example**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4872,7 +4872,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### updateOverrideConfiguration<sup>12+</sup>
 
@@ -4900,7 +4900,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
@@ -4919,7 +4919,7 @@ export default class EntryAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ### release<sup>(deprecated)</sup>
 
@@ -4936,13 +4936,13 @@ Releases a **ResourceManager** object. This API is not supported currently.
 **System capability**: SystemCapability.Global.ResourceManager
 
 **Example**
-  ```ts
-  try {
-    this.context.resourceManager.release();
-  } catch (error) {
-    console.error("release error is " + error);
-  }
-  ```
+```ts
+try {
+  this.context.resourceManager.release();
+} catch (error) {
+  console.error("release error is " + error);
+}
+```
 
 ### getString<sup>(deprecated)</sup>
 
@@ -4964,17 +4964,17 @@ Obtains a string based on the specified resource ID. This API uses an asynchrono
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;string&gt; | Yes   | Callback used to return the obtained string.|
 
 **Example**
-  ```ts
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getString($r('app.string.test').id, (error: Error, value: string) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let str = value;
-          }
-      });
-  });
-  ```
+```ts
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getString($r('app.string.test').id, (error: Error, value: string) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let str = value;
+        }
+    });
+});
+```
 
 
 ### getString<sup>(deprecated)</sup>
@@ -5002,17 +5002,17 @@ Obtains a string based on the specified resource ID. This API uses a promise to 
 | Promise&lt;string&gt; | Promise used to return the obtained string.|
 
 **Example**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getString($r('app.string.test').id).then((value: string) => {
-          let str = value;
-      }).catch((error: BusinessError) => {
-          console.error("getstring promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getString($r('app.string.test').id).then((value: string) => {
+        let str = value;
+    }).catch((error: BusinessError) => {
+        console.error("getstring promise error is " + error);
+    });
+});
+```
 ### getStringSync<sup>(deprecated)</sup>
 
 getStringSync(resource: Resource): string
@@ -5053,36 +5053,36 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.string.test').id
-  };
-  try {
-    let testStr = this.context.resourceManager.getStringSync(resource);
-    console.info(`getStringSync, result: ${testStr}`);
-    // Print the output result: getStringSync, result: I'm a test string resource.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+try {
+  let testStr = this.context.resourceManager.getStringSync(resource);
+  console.info(`getStringSync, result: ${testStr}`);
+  // Print the output result: getStringSync, result: I'm a test string resource.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getStringSync<sup>(deprecated)</sup>
 
@@ -5126,36 +5126,36 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.string.test').id
-  };
-  try {
-    let testStr = this.context.resourceManager.getStringSync(resource, "format string", 10, 98.78);
-    console.info(`getStringSync, result: ${testStr}`);
-    // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+try {
+  let testStr = this.context.resourceManager.getStringSync(resource, "format string", 10, 98.78);
+  console.info(`getStringSync, result: ${testStr}`);
+  // Print the output result: getStringSync, result: I'm a format string, format int: 10, format float: 98.78.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getStringSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getStringValue<sup>(deprecated)</sup>
 
 getStringValue(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
@@ -5191,35 +5191,35 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.string.test').id
-  };
-  this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
-    if (error != null) {
-      console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getStringValue, result: ${value}`);
-      // Print the output result: getStringValue, result: I'm a test string resource.
+```json
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
     }
-  });
-  ```
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
+  if (error != null) {
+    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringValue, result: ${value}`);
+    // Print the output result: getStringValue, result: I'm a test string resource.
+  }
+});
+```
 
 ### getStringValue<sup>(deprecated)</sup>
 
@@ -5261,24 +5261,24 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.string.test').id
-  };
-  this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
-    if (error != null) {
-      console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getStringValue, result: ${value}`);
-      // Print the output result: getStringValue, result: I'm a test string resource.
-    }
-  });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.string.test').id
+};
+this.context.resourceManager.getStringValue(resource, (error: BusinessError, value: string) => {
+  if (error != null) {
+    console.error(`callback getStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringValue, result: ${value}`);
+    // Print the output result: getStringValue, result: I'm a test string resource.
+  }
+});
+```
 
 ### getStringArray<sup>(deprecated)</sup>
 
@@ -5300,17 +5300,17 @@ Obtains a string array based on the specified resource ID. This API uses an asyn
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the obtained string array.|
 
 **Example**
-  ```ts
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getStringArray($r('app.strarray.test').id, (error: Error, value: Array<string>) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let strArray = value;
-          }
-      });
-  });
-  ```
+```ts
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getStringArray($r('app.strarray.test').id, (error: Error, value: Array<string>) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let strArray = value;
+        }
+    });
+});
+```
 
 
 ### getStringArray<sup>(deprecated)</sup>
@@ -5338,17 +5338,17 @@ Obtains a string array based on the specified resource ID. This API uses a promi
 | Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained string array.|
 
 **Example**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-       mgr.getStringArray($r('app.strarray.test').id).then((value: Array<string>) => {
-          let strArray = value;
-      }).catch((error: BusinessError) => {
-          console.error("getStringArray promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+      mgr.getStringArray($r('app.strarray.test').id).then((value: Array<string>) => {
+        let strArray = value;
+    }).catch((error: BusinessError) => {
+        console.error("getStringArray promise error is " + error);
+    });
+});
+```
 
 ### getStringArrayValueSync<sup>(deprecated)</sup>
 
@@ -5390,40 +5390,40 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.strarray.test').id
-  };
-  try {
-    let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync(resource);
-    console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
-    // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.strarray.test').id
+};
+try {
+  let strArray: Array<string> = this.context.resourceManager.getStringArrayValueSync(resource);
+  console.info(`getStringArrayValueSync, result: ${strArray[0]}`);
+  // Print the output result: getStringArrayValueSync, result: I'm one of the array's values.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getStringArrayValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getStringArrayValue<sup>(deprecated)</sup>
 
 getStringArrayValue(resource: Resource, callback: _AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -5459,39 +5459,39 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.strarray.test').id
-  };
-  this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError, value: Array<string>) => {
-    if (error != null) {
-      console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getStringArrayValue, result: ${value[0]}`);
-      // Print the output result: getStringArrayValue, result: I'm one of the array's values.
+```json
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
     }
-  });
-  ```
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.strarray.test').id
+};
+this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError, value: Array<string>) => {
+  if (error != null) {
+    console.error(`callback getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getStringArrayValue, result: ${value[0]}`);
+    // Print the output result: getStringArrayValue, result: I'm one of the array's values.
+  }
+});
+```
 
 ### getStringArrayValue<sup>(deprecated)</sup>
 
@@ -5533,39 +5533,39 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/strarray.json
-  {
-    "strarray": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "value": "I'm one of the array's values."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/strarray.json
+{
+  "strarray": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "value": "I'm one of the array's values."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.strarray.test').id
-  };
-  this.context.resourceManager.getStringArrayValue(resource)
-    .then((value: Array<string>) => {
-      console.info(`getStringArrayValue, result: ${value[0]}`);
-      // Print the output result: getStringArrayValue, result: I'm one of the array's values.
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.strarray.test').id
+};
+this.context.resourceManager.getStringArrayValue(resource)
+  .then((value: Array<string>) => {
+    console.info(`getStringArrayValue, result: ${value[0]}`);
+    // Print the output result: getStringArrayValue, result: I'm one of the array's values.
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getStringArrayValue failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 
 ### getMedia<sup>(deprecated)</sup>
 
@@ -5587,17 +5587,17 @@ Obtains media file content based on the specified resource ID. This API uses an 
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;Uint8Array&gt; | Yes   | Callback used to return the media file content.|
 
 **Example**
-  ```ts
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getMedia($r('app.media.test').id, (error: Error, value: Uint8Array) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let media = value;
-          }
-      });
-  });
-  ```
+```ts
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMedia($r('app.media.test').id, (error: Error, value: Uint8Array) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let media = value;
+        }
+    });
+});
+```
 
 ### getMedia<sup>(deprecated)</sup>
 
@@ -5624,17 +5624,17 @@ Obtains media file content based on the specified resource ID. This API uses a p
 | Promise&lt;Uint8Array&gt; | Promise used to return the media file content.|
 
 **Example**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getMedia($r('app.media.test').id).then((value: Uint8Array) => {
-          let media = value;
-      }).catch((error: BusinessError) => {
-          console.error("getMedia promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMedia($r('app.media.test').id).then((value: Uint8Array) => {
+        let media = value;
+    }).catch((error: BusinessError) => {
+        console.error("getMedia promise error is " + error);
+    });
+});
+```
 
 ### getMediaContentSync<sup>(deprecated)</sup>
 
@@ -5677,31 +5677,31 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentSync(resource); // Default screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
-  }
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentSync(resource); // Default screen density
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
+}
 
-  try {
-    this.context.resourceManager.getMediaContentSync(resource, 120); // Specified screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  this.context.resourceManager.getMediaContentSync(resource, 120); // Specified screen density
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContent<sup>(deprecated)</sup>
 
@@ -5737,29 +5737,29 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContent(resource, (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContent(resource, (error: BusinessError, value: Uint8Array) => {
+    if (error != null) {
+      console.error("error is " + error);
+    } else {
+      let media = value;
+    }
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContent<sup>(deprecated)</sup>
 
@@ -5796,29 +5796,29 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContent(resource, 120, (error: BusinessError, value: Uint8Array) => {
-      if (error != null) {
-        console.error(`callback getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContent(resource, 120, (error: BusinessError, value: Uint8Array) => {
+    if (error != null) {
+      console.error(`callback getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+    } else {
+      let media = value;
+    }
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`callback getMediaContent failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContent<sup>(deprecated)</sup>
 
@@ -5859,27 +5859,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContent(resource).then((value: Uint8Array) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error("getMediaContent promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContent(resource).then((value: Uint8Array) => {
+    let media = value;
+  }).catch((error: BusinessError) => {
+    console.error("getMediaContent promise error is " + error);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContent<sup>(deprecated)</sup>
 
@@ -5921,27 +5921,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContent(resource, 120).then((value: Uint8Array) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContent(resource, 120).then((value: Uint8Array) => {
+    let media = value;
+  }).catch((error: BusinessError) => {
+    console.error(`promise getMediaContent failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`promise getMediaContent failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaBase64<sup>(deprecated)</sup>
 
@@ -5963,17 +5963,17 @@ Obtains an image's Base64 code based on the specified resource ID. This API uses
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;string&gt; | Yes   | Callback used to return the Base64 code of the image.|
 
 **Example**
-  ```ts
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getMediaBase64($r('app.media.test').id, ((error: Error, value: string) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let media = value;
-          }
-      });
-  });
-  ```
+```ts
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMediaBase64($r('app.media.test').id, ((error: Error, value: string) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let media = value;
+        }
+    });
+});
+```
 
 
 ### getMediaBase64<sup>(deprecated)</sup>
@@ -6001,17 +6001,17 @@ Obtains an image's Base64 code based on the specified resource ID. This API uses
 | Promise&lt;string&gt; | Promise used to return the Base64 code of the image.|
 
 **Example**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getMediaBase64($r('app.media.test').id).then((value: string) => {
-          let media = value;
-      }).catch((error: BusinessError) => {
-          console.error("getMediaBase64 promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getMediaBase64($r('app.media.test').id).then((value: string) => {
+        let media = value;
+    }).catch((error: BusinessError) => {
+        console.error("getMediaBase64 promise error is " + error);
+    });
+});
+```
 ### getMediaContentBase64Sync<sup>(deprecated)</sup>
 
 getMediaContentBase64Sync(resource: Resource, density?: number): string
@@ -6052,31 +6052,31 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64Sync(resource); // Default screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
-  }
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64Sync(resource); // Default screen density
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
+}
 
-  try {
-    this.context.resourceManager.getMediaContentBase64Sync(resource, 120); // Specified screen density
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  this.context.resourceManager.getMediaContentBase64Sync(resource, 120); // Specified screen density
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getMediaContentBase64Sync failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getMediaContentBase64<sup>(deprecated)</sup>
 
 getMediaContentBase64(resource: Resource, callback: _AsyncCallback&lt;string&gt;): void
@@ -6111,29 +6111,29 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64(resource, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error("error is " + error);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64(resource, (error: BusinessError, value: string) => {
+    if (error != null) {
+      console.error("error is " + error);
+    } else {
+      let media = value;
+    }
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContentBase64<sup>(deprecated)</sup>
 
@@ -6170,29 +6170,29 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64(resource, 120, (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error(`callback getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        let media = value;
-      }
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64(resource, 120, (error: BusinessError, value: string) => {
+    if (error != null) {
+      console.error(`callback getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
+    } else {
+      let media = value;
+    }
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`callback getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContentBase64<sup>(deprecated)</sup>
 
@@ -6233,27 +6233,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64(resource).then((value: string) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error("getMediaContentBase64 promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64(resource).then((value: string) => {
+    let media = value;
+  }).catch((error: BusinessError) => {
+    console.error("getMediaContentBase64 promise error is " + error);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getMediaContentBase64<sup>(deprecated)</sup>
 
@@ -6295,27 +6295,27 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.test').id
-  };
-  try {
-    this.context.resourceManager.getMediaContentBase64(resource, 120).then((value: string) => {
-      let media = value;
-    }).catch((error: BusinessError) => {
-      console.error(`promise getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.test').id
+};
+try {
+  this.context.resourceManager.getMediaContentBase64(resource, 120).then((value: string) => {
+    let media = value;
+  }).catch((error: BusinessError) => {
+    console.error(`promise getMediaContentBase64 failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`promise getMediaContentBase64 failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getDrawableDescriptor<sup>(deprecated)</sup>
 
 getDrawableDescriptor(resource: Resource, density?: number, type?: number): DrawableDescriptor
@@ -6357,38 +6357,38 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001002  | No matching resource is found based on the resource ID.         |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { DrawableDescriptor } from '@kit.ArkUI';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { DrawableDescriptor } from '@kit.ArkUI';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.media.icon').id
-  };
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource, 120);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
-  try {
-    let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource, 0, 1);
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.media.icon').id
+};
+try {
+  let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource);
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+}
+try {
+  let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource, 120);
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+}
+try {
+  let drawableDescriptor:DrawableDescriptor = this.context.resourceManager.getDrawableDescriptor(resource, 0, 1);
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getDrawableDescriptor failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getIntPluralStringValueSync<sup>(deprecated)</sup>
 
@@ -6434,48 +6434,48 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.format_test').id
-  };
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.format_test').id
+};
 
-  try {
-    // If num is 1, the single/plural type is one in the English environment.
-    // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-    let pluralStr = this.context.resourceManager.getIntPluralStringValueSync(resource, 1, 1, "basket", 0.3);
-    console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
-    // Print the output result: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getIntPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  // If num is 1, the single/plural type is one in the English environment.
+  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+  let pluralStr = this.context.resourceManager.getIntPluralStringValueSync(resource, 1, 1, "basket", 0.3);
+  console.info(`getIntPluralStringValueSync, result: ${pluralStr}`);
+  // Print the output result: getIntPluralStringValueSync, result: There is 1 apple in the basket, the total amount is 0.3 kg.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getIntPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getDoublePluralStringValueSync<sup>(deprecated)</sup>
 
@@ -6521,48 +6521,48 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001007  | Failed to format the resource obtained based on the resource ID. |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "format_test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "There is %d apple in the %s, the total amount is %f kg."
-          },
-          {
-            "quantity": "other",
-            "value": "There are %d apples in the %s, the total amount is %f kg."
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "format_test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "There is %d apple in the %s, the total amount is %f kg."
+        },
+        {
+          "quantity": "other",
+          "value": "There are %d apples in the %s, the total amount is %f kg."
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.format_test').id
-  };
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.format_test').id
+};
 
-  try {
-    // If num is 2.1, the single/plural type is other in the English environment.
-    // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
-    let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
-    console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
-    // Print the output result: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getDoublePluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  // If num is 2.1, the single/plural type is other in the English environment.
+  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is other is obtained.
+  let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
+  console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
+  // Print the output result: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getDoublePluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getPluralStringValueSync<sup>(deprecated)</sup>
 
@@ -6605,41 +6605,41 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // If num is 1, the single/plural type is one in the English environment.
-    // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-    let pluralValue = this.context.resourceManager.getPluralStringValueSync($r('app.plural.test').id, 1);
-    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
-    // Print the output result: getPluralStringValueSync, result: 1 apple
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  // If num is 1, the single/plural type is one in the English environment.
+  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+  let pluralValue = this.context.resourceManager.getPluralStringValueSync($r('app.plural.test').id, 1);
+  console.info(`getPluralStringValueSync, result: ${pluralValue}`);
+  // Print the output result: getPluralStringValueSync, result: 1 apple
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getPluralStringValueSync<sup>(deprecated)</sup>
 
@@ -6651,7 +6651,7 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 >
 > Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 >
-> This API is supported since API version 10 and is deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
+> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) or [getIntPluralStringByNameSync](#getintpluralstringbynamesync18) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6684,47 +6684,47 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.test').id
-  };
-  try {
-    // If num is 1, the single/plural type is one in the English environment.
-    // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-    let pluralValue = this.context.resourceManager.getPluralStringValueSync(resource, 1);
-    console.info(`getPluralStringValueSync, result: ${pluralValue}`);
-    // Print the output result: getPluralStringValueSync, result: 1 apple
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.test').id
+};
+try {
+  // If num is 1, the single/plural type is one in the English environment.
+  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+  let pluralValue = this.context.resourceManager.getPluralStringValueSync(resource, 1);
+  console.info(`getPluralStringValueSync, result: ${pluralValue}`);
+  // Print the output result: getPluralStringValueSync, result: 1 apple
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getPluralStringValueSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getPluralStringByNameSync<sup>(deprecated)</sup>
 
@@ -6767,41 +6767,41 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    // If num is 1, the single/plural type is one in the English environment.
-    // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-    let pluralValue = this.context.resourceManager.getPluralStringByNameSync("test", 1);
-    console.info(`getPluralStringByNameSync, result: ${pluralValue}`);
-    // Print the output result: getPluralStringByNameSync, result: 1 apple
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getPluralStringByNameSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  // If num is 1, the single/plural type is one in the English environment.
+  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+  let pluralValue = this.context.resourceManager.getPluralStringByNameSync("test", 1);
+  console.info(`getPluralStringByNameSync, result: ${pluralValue}`);
+  // Print the output result: getPluralStringByNameSync, result: 1 apple
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getPluralStringByNameSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getPluralStringValue<sup>(deprecated)</sup>
 
@@ -6839,41 +6839,41 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // If num is 1, the single/plural type is one in the English environment.
-  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-  this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
-    (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        console.info(`getPluralStringValue, result: ${value}`);
-        // Print the output result: getPluralStringValue, result: 1 apple
-      }
-    });
-  ```
+// If num is 1, the single/plural type is one in the English environment.
+// The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
+  (error: BusinessError, value: string) => {
+    if (error != null) {
+      console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+    } else {
+      console.info(`getPluralStringValue, result: ${value}`);
+      // Print the output result: getPluralStringValue, result: 1 apple
+    }
+  });
+```
 
 ### getPluralStringValue<sup>(deprecated)</sup>
 
@@ -6916,40 +6916,40 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // If num is 1, the single/plural type is one in the English environment.
-  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-  this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
-    .then((value: string) => {
-      console.info(`getPluralStringValue, result: ${value}`);
-      // Print the output result: getPluralStringValue, result: 1 apple
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+// If num is 1, the single/plural type is one in the English environment.
+// The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
+  .then((value: string) => {
+    console.info(`getPluralStringValue, result: ${value}`);
+    // Print the output result: getPluralStringValue, result: 1 apple
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 
 ### getPluralStringValue<sup>(deprecated)</sup>
 
@@ -6961,7 +6961,7 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 >
 > Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 >
-> This API is supported since API version 9 and is deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) or [getIntPluralStringByNameSync](#getintpluralstringbynamesync18) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -6989,47 +6989,47 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.test').id
-  };
-  // If num is 1, the single/plural type is one in the English environment.
-  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-  this.context.resourceManager.getPluralStringValue(resource, 1,
-    (error: BusinessError, value: string) => {
-      if (error != null) {
-        console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-      } else {
-        console.info(`getPluralStringValue, result: ${value}`);
-        // Print the output result: getPluralStringValue, result: 1 apple
-      }
-    });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.test').id
+};
+// If num is 1, the single/plural type is one in the English environment.
+// The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+this.context.resourceManager.getPluralStringValue(resource, 1,
+  (error: BusinessError, value: string) => {
+    if (error != null) {
+      console.error(`callback getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+    } else {
+      console.info(`getPluralStringValue, result: ${value}`);
+      // Print the output result: getPluralStringValue, result: 1 apple
+    }
+  });
+```
 
 ### getPluralStringValue<sup>(deprecated)</sup>
 
@@ -7041,7 +7041,7 @@ Obtains singular/plural strings based on the specified quantity and resource obj
 >
 > Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 >
-> This API is supported since API version 9 and is deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) or [getIntPluralStringByNameSync](#getintpluralstringbynamesync18) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -7074,46 +7074,46 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.plural.test').id
-  };
-  // If num is 1, the single/plural type is one in the English environment.
-  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-  this.context.resourceManager.getPluralStringValue(resource, 1)
-    .then((value: string) => {
-      console.info(`getPluralStringValue, result: ${value}`);
-      // Print the output result: getPluralStringValue, result: 1 apple
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.plural.test').id
+};
+// If num is 1, the single/plural type is one in the English environment.
+// The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+this.context.resourceManager.getPluralStringValue(resource, 1)
+  .then((value: string) => {
+    console.info(`getPluralStringValue, result: ${value}`);
+    // Print the output result: getPluralStringValue, result: 1 apple
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getPluralStringValue failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 
 ### getPluralStringByName<sup>(deprecated)</sup>
 
@@ -7151,40 +7151,40 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  // If num is 1, the single/plural type is one in the English environment.
-  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-  this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessError, value: string) => {
-    if (error != null) {
-      console.error(`callback getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getPluralStringByName, result: ${value}`);
-      // Print the output result: getPluralStringByName, result: 1 apple
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
     }
-  });
-  ```
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// If num is 1, the single/plural type is one in the English environment.
+// The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessError, value: string) => {
+  if (error != null) {
+    console.error(`callback getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getPluralStringByName, result: ${value}`);
+    // Print the output result: getPluralStringByName, result: 1 apple
+  }
+});
+```
 
 ### getPluralStringByName<sup>(deprecated)</sup>
 
@@ -7227,40 +7227,40 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.                       |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/plural.json
-  {
-    "plural": [
-      {
-        "name": "test",
-        "value": [
-          {
-            "quantity": "one",
-            "value": "%d apple"
-          },
-          {
-            "quantity": "other",
-            "value": "%d apples"
-          }
-        ]
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/plural.json
+{
+  "plural": [
+    {
+      "name": "test",
+      "value": [
+        {
+          "quantity": "one",
+          "value": "%d apple"
+        },
+        {
+          "quantity": "other",
+          "value": "%d apples"
+        }
+      ]
+    }
+  ]
+}
+```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  // If num is 1, the single/plural type is one in the English environment.
-  // The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
-  this.context.resourceManager.getPluralStringByName("test", 1)
-    .then((value: string) => {
-      console.info(`getPluralStringByName, result: ${value}`);
-      // Print the output result: getPluralStringByName, result: 1 apple
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+// If num is 1, the single/plural type is one in the English environment.
+// The quantity field in the resource file indicates the single/plural type. Therefore, the string whose quantity is one is obtained.
+this.context.resourceManager.getPluralStringByName("test", 1)
+  .then((value: string) => {
+    console.info(`getPluralStringByName, result: ${value}`);
+    // Print the output result: getPluralStringByName, result: 1 apple
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getPluralStringByName failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 
 ### getPluralString<sup>(deprecated)</sup>
 
@@ -7272,7 +7272,7 @@ Obtains singular/plural strings based on the specified quantity and resource ID.
 >
 > Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 >
-> This API is supported since API version 6 and is deprecated since API version 9. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [getPluralStringValue](#getpluralstringvaluedeprecated-1) instead.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -7291,17 +7291,17 @@ Obtains singular/plural strings based on the specified quantity and resource ID.
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getPluralString($r("app.plural.test").id, 1).then((value: string) => {
-          let str = value;
-      }).catch((error: BusinessError) => {
-          console.error("getPluralString promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getPluralString($r("app.plural.test").id, 1).then((value: string) => {
+        let str = value;
+    }).catch((error: BusinessError) => {
+        console.error("getPluralString promise error is " + error);
+    });
+});
+```
 
 
 ### getPluralString<sup>(deprecated)</sup>
@@ -7314,7 +7314,7 @@ Obtains singular/plural strings based on the specified quantity and resource ID.
 >
 > Strings distinguish between singular and plural forms in all languages except Chinese. For details, see [Language Plural Rules](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html).
 >
-> This API is supported since API version 6 and is deprecated since API version 9. You are advised to use [getIntPluralStringValueSync](#getintpluralstringvaluesync18) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [getPluralStringValue](#getpluralstringvaluedeprecated) instead.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -7328,19 +7328,19 @@ Obtains singular/plural strings based on the specified quantity and resource ID.
 
 **Example**
 
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getPluralString($r("app.plural.test").id, 1, (error: Error, value: string) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let str = value;
-          }
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getPluralString($r("app.plural.test").id, 1, (error: Error, value: string) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let str = value;
+        }
+    });
+});
+```
 ### getBoolean<sup>(deprecated)</sup>
 
 getBoolean(resource: Resource): boolean
@@ -7381,36 +7381,36 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/boolean.json
-  {
-    "boolean": [
-      {
-        "name": "boolean_test",
-        "value": true
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/boolean.json
+{
+  "boolean": [
+    {
+      "name": "boolean_test",
+      "value": true
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.boolean.boolean_test').id
-  };
-  try {
-    let boolTest = this.context.resourceManager.getBoolean(resource);
-    console.info(`getBoolean, result: ${boolTest}`);
-    // Print the output result: getBoolean, result: true
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getBoolean failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.boolean.boolean_test').id
+};
+try {
+  let boolTest = this.context.resourceManager.getBoolean(resource);
+  console.info(`getBoolean, result: ${boolTest}`);
+  // Print the output result: getBoolean, result: true
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getBoolean failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getNumber<sup>(deprecated)</sup>
 
 getNumber(resource: Resource): number
@@ -7451,38 +7451,38 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/integer.json
-  {
-    "integer": [
-      {
-        "name": "integer_test",
-        "value": 100
-      }
-    ]
-  }
-  ```
+```json
+// Resource file path: src/main/resources/base/element/integer.json
+{
+  "integer": [
+    {
+      "name": "integer_test",
+      "value": 100
+    }
+  ]
+}
+```
 
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.integer.integer_test').id
-  };
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.integer.integer_test').id
+};
 
-  try {
-    let intValue = this.context.resourceManager.getNumber(resource);
-    console.info(`getNumber, int value: ${intValue}`);
-    // Print the output result: getNumber, int value: 100
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  let intValue = this.context.resourceManager.getNumber(resource);
+  console.info(`getNumber, int value: ${intValue}`);
+  // Print the output result: getNumber, int value: 100
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getNumber failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getColorSync<sup>(deprecated)</sup>
 
 getColorSync(resource: Resource): number
@@ -7523,36 +7523,36 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.color.test').id
-  };
-  try {
-    let colorValue = this.context.resourceManager.getColorSync(resource);
-    console.info(`getColorSync, result: ${colorValue}`);
-    // Print the output result: getColorSync, result: 4294967295
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getColorSync failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.color.test').id
+};
+try {
+  let colorValue = this.context.resourceManager.getColorSync(resource);
+  console.info(`getColorSync, result: ${colorValue}`);
+  // Print the output result: getColorSync, result: 4294967295
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getColorSync failed, error code: ${code}, message: ${message}.`);
+}
+```
 ### getColor<sup>(deprecated)</sup>
 
 getColor(resource: Resource, callback: _AsyncCallback&lt;number&gt;): void
@@ -7588,35 +7588,35 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.color.test').id
-  };
-  this.context.resourceManager.getColor(resource, (error: BusinessError, value: number) => {
-    if (error != null) {
-      console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
-    } else {
-      console.info(`getColor, result: ${value}`);
-      // Print the output result: getColor, result: 4294967295
+```json
+// Resource file path: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
     }
-  });
-  ```
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.color.test').id
+};
+this.context.resourceManager.getColor(resource, (error: BusinessError, value: number) => {
+  if (error != null) {
+    console.error(`callback getColor failed, error code: ${error.code}, message: ${error.message}.`);
+  } else {
+    console.info(`getColor, result: ${value}`);
+    // Print the output result: getColor, result: 4294967295
+  }
+});
+```
 
 ### getColor<sup>(deprecated)</sup>
 
@@ -7658,35 +7658,35 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/color.json
-  {
-    "color": [
-      {
-        "name": "test",
-        "value": "#FFFFFF"
-      }
-    ]
-  }
-  ```
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```json
+// Resource file path: src/main/resources/base/element/color.json
+{
+  "color": [
+    {
+      "name": "test",
+      "value": "#FFFFFF"
+    }
+  ]
+}
+```
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('app.color.test').id
-  };
-  this.context.resourceManager.getColor(resource)
-    .then((value: number) => {
-      console.info(`getColor, result: ${value}`);
-      // Print the output result: getColor, result: 4294967295
-    })
-    .catch((error: BusinessError) => {
-      console.error(`promise getColor failed, error code: ${error.code}, message: ${error.message}.`);
-    });
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('app.color.test').id
+};
+this.context.resourceManager.getColor(resource)
+  .then((value: number) => {
+    console.info(`getColor, result: ${value}`);
+    // Print the output result: getColor, result: 4294967295
+  })
+  .catch((error: BusinessError) => {
+    console.error(`promise getColor failed, error code: ${error.code}, message: ${error.message}.`);
+  });
+```
 ### getSymbol<sup>(deprecated)</sup>
 getSymbol(resource: Resource): number
 
@@ -7726,25 +7726,25 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001006  | The resource is referenced cyclically.            |
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let resource: resourceManager.Resource = {
-    bundleName: "com.example.myapplication",
-    moduleName: "entry",
-    id: $r('sys.symbol.message').id
-  };
-  try {
-    let symbolValue = this.context.resourceManager.getSymbol(resource);
-    console.info(`getSymbol, result: ${symbolValue}`);
-    // Print the output result: getSymbol, result: 983183
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+let resource: resourceManager.Resource = {
+  bundleName: "com.example.myapplication",
+  moduleName: "entry",
+  id: $r('sys.symbol.message').id
+};
+try {
+  let symbolValue = this.context.resourceManager.getSymbol(resource);
+  console.info(`getSymbol, result: ${symbolValue}`);
+  // Print the output result: getSymbol, result: 983183
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getSymbol failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ### getRawFile<sup>(deprecated)</sup>
 
@@ -7766,19 +7766,19 @@ Obtains the content of a rawfile in the **resources/rawfile** directory. This AP
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;Uint8Array&gt; | Yes   | Callback used to return the rawfile content.|
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getRawFile("test.txt", (error: Error, value: Uint8Array) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let rawFile = value;
-          }
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getRawFile("test.txt", (error: Error, value: Uint8Array) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let rawFile = value;
+        }
+    });
+});
+```
 
 
 ### getRawFile<sup>(deprecated)</sup>
@@ -7806,17 +7806,17 @@ Obtains the content of a rawfile in the **resources/rawfile** directory. This AP
 | Promise&lt;Uint8Array&gt; | Promise used to return the rawfile content.|
 
 **Example**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getRawFile("test.txt").then((value: Uint8Array) => {
-          let rawFile = value;
-      }).catch((error: BusinessError) => {
-          console.error("getRawFile promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getRawFile("test.txt").then((value: Uint8Array) => {
+        let rawFile = value;
+    }).catch((error: BusinessError) => {
+        console.error("getRawFile promise error is " + error);
+    });
+});
+```
 
 
 ### getRawFileDescriptor<sup>(deprecated)</sup>
@@ -7839,21 +7839,21 @@ Obtains the fd of the rawfile in the **resources/rawfile** directory. This API u
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;[RawFileDescriptor](#rawfiledescriptor9)&gt; | Yes   | Callback used to return the obtained fd.|
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getRawFileDescriptor("test.txt", (error: Error, value: resourceManager.RawFileDescriptor) => {
-          if (error != null) {
-              console.error("error is " + error);
-          } else {
-              let fd = value.fd;
-              let offset = value.offset;
-              let length = value.length;
-          }
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getRawFileDescriptor("test.txt", (error: Error, value: resourceManager.RawFileDescriptor) => {
+        if (error != null) {
+            console.error("error is " + error);
+        } else {
+            let fd = value.fd;
+            let offset = value.offset;
+            let length = value.length;
+        }
+    });
+});
+```
 
 ### getRawFileDescriptor<sup>(deprecated)</sup>
 
@@ -7880,19 +7880,19 @@ Obtains the fd of the rawfile in the **resources/rawfile** directory. This API u
 | Promise&lt;[RawFileDescriptor](#rawfiledescriptor9)&gt; | Promise used to return the obtained fd.|
 
 **Example**
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.getRawFileDescriptor("test.txt").then((value: resourceManager.RawFileDescriptor) => {
-          let fd = value.fd;
-          let offset = value.offset;
-          let length = value.length;
-      }).catch((error: BusinessError) => {
-          console.error("getRawFileDescriptor promise error is " + error);
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.getRawFileDescriptor("test.txt").then((value: resourceManager.RawFileDescriptor) => {
+        let fd = value.fd;
+        let offset = value.offset;
+        let length = value.length;
+    }).catch((error: BusinessError) => {
+        console.error("getRawFileDescriptor promise error is " + error);
+    });
+});
+```
 
 ### closeRawFileDescriptor<sup>(deprecated)</sup>
 
@@ -7908,25 +7908,23 @@ Closes the fd of the rawfile in the **resources/rawfile** directory. This API us
 
 **Parameters**
 
-
-
 | Name     | Type                       | Mandatory  | Description         |
 | -------- | ------------------------- | ---- | ----------- |
 | path     | string                    | Yes   | Path of the rawfile.|
 | callback | [AsyncCallback](#asynccallbackdeprecated)&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.closeRawFileDescriptor("test.txt", (error: Error) => {
-          if (error != null) {
-              console.error("error is " + error);
-          }
-      });
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.closeRawFileDescriptor("test.txt", (error: Error) => {
+        if (error != null) {
+            console.error("error is " + error);
+        }
+    });
+});
+```
 
 ### closeRawFileDescriptor<sup>(deprecated)</sup>
 
@@ -7953,13 +7951,13 @@ Closes the fd of the rawfile in the **resources/rawfile** directory. This API us
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
-  ```ts
-  import { resourceManager } from '@kit.LocalizationKit';
+```ts
+import { resourceManager } from '@kit.LocalizationKit';
 
-  resourceManager.getResourceManager((error, mgr) => {
-      mgr.closeRawFileDescriptor("test.txt");
-  });
-  ```
+resourceManager.getResourceManager((error, mgr) => {
+    mgr.closeRawFileDescriptor("test.txt");
+});
+```
 
 ## resourceManager.getSystemResourceManager<sup>(deprecated)</sup>
 
@@ -7993,23 +7991,23 @@ For details about the error codes, see [Resource Manager Error Codes](errorcode-
 | 9001009  | Failed to access the system resource. which is not mapped to application sandbox, This error code will be thrown. |
 
 **Example**
-  ```js
+```js
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let systemResourceManager = resourceManager.getSystemResourceManager();
-    systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
-      let str = value;
-    }).catch((error: BusinessError) => {
-      console.error("systemResourceManager getStringValue promise error is " + error);
-    });
-  } catch (error) {
-    let code = (error as BusinessError).code;
-    let message = (error as BusinessError).message;
-    console.error(`getSystemResourceManager failed, error code: ${code}, message: ${message}.`);
-  }
-  ```
+try {
+  let systemResourceManager = resourceManager.getSystemResourceManager();
+  systemResourceManager.getStringValue($r('sys.string.ohos_lab_vibrate').id).then((value: string) => {
+    let str = value;
+  }).catch((error: BusinessError) => {
+    console.error("systemResourceManager getStringValue promise error is " + error);
+  });
+} catch (error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.error(`getSystemResourceManager failed, error code: ${code}, message: ${message}.`);
+}
+```
 
 ## AsyncCallback<sup>(deprecated)</sup>
 
@@ -8040,139 +8038,139 @@ Defines an asynchronous callback that carries an error parameter and asynchronou
 
 - Content of the **app.string.test** file:
 
-    ```json
-    // Resource file path: src/main/resources/base/element/string.json
-    {
-      "string": [
-        {
-          "name": "test",
-          "value": "I'm a test string resource."
-        }
-      ]
-    }
-    ```
+  ```json
+  // Resource file path: src/main/resources/base/element/string.json
+  {
+    "string": [
+      {
+        "name": "test",
+        "value": "I'm a test string resource."
+      }
+    ]
+  }
+  ```
 
-    ```json
-    // Resource file path: src/main/resources/base/element/string.json
-    {
-      "string": [
-        {
-          "name": "test",
-          "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
-        }
-      ]
-    }
-    ```
+  ```json
+  // Resource file path: src/main/resources/base/element/string.json
+  {
+    "string": [
+      {
+        "name": "test",
+        "value": "I'm a %1$s, format int: %2$d, format float: %3$f."
+      }
+    ]
+  }
+  ```
 
 - Content of the **app.strarray.test** file:
 
-    ```json
-    // Resource file path: src/main/resources/base/element/strarray.json
-    {
-      "strarray": [
-        {
-          "name": "test",
-          "value": [
-            {
-              "value": "I'm one of the array's values."
-            }
-          ]
-        }
-      ]
-    }
-    ```
+  ```json
+  // Resource file path: src/main/resources/base/element/strarray.json
+  {
+    "strarray": [
+      {
+        "name": "test",
+        "value": [
+          {
+            "value": "I'm one of the array's values."
+          }
+        ]
+      }
+    ]
+  }
+  ```
 
 - Content of the **app.plural.test** file:
-    ```json
-    // Resource file path: src/main/resources/base/element/plural.json
-    {
-      "plural": [
-        {
-          "name": "test",
-          "value": [
-            {
-              "quantity": "one",
-              "value": "%d apple"
-            },
-            {
-              "quantity": "other",
-              "value": "%d apples"
-            }
-          ]
-        }
-      ]
-    }
-    ```
+  ```json
+  // Resource file path: src/main/resources/base/element/plural.json
+  {
+    "plural": [
+      {
+        "name": "test",
+        "value": [
+          {
+            "quantity": "one",
+            "value": "%d apple"
+          },
+          {
+            "quantity": "other",
+            "value": "%d apples"
+          }
+        ]
+      }
+    ]
+  }
+  ```
 
 - Content of the **app.plural.format_test** file:
 
-    ```json
-    // Resource file path: src/main/resources/base/element/plural.json
-    {
-      "plural": [
-        {
-          "name": "format_test",
-          "value": [
-            {
-              "quantity": "one",
-              "value": "There is %d apple in the %s, the total amount is %f kg."
-            },
-            {
-              "quantity": "other",
-              "value": "There are %d apples in the %s, the total amount is %f kg."
-            }
-          ]
-        }
-      ]
-    }
-    ```
+  ```json
+  // Resource file path: src/main/resources/base/element/plural.json
+  {
+    "plural": [
+      {
+        "name": "format_test",
+        "value": [
+          {
+            "quantity": "one",
+            "value": "There is %d apple in the %s, the total amount is %f kg."
+          },
+          {
+            "quantity": "other",
+            "value": "There are %d apples in the %s, the total amount is %f kg."
+          }
+        ]
+      }
+    ]
+  }
+  ```
 
 - Content of the **app.boolean.boolean_test** file:
-    ```json
-    // Resource file path: src/main/resources/base/element/boolean.json
-    {
-      "boolean": [
-        {
-          "name": "boolean_test",
-          "value": true
-        }
-      ]
-    }
-    ```
+  ```json
+  // Resource file path: src/main/resources/base/element/boolean.json
+  {
+    "boolean": [
+      {
+        "name": "boolean_test",
+        "value": true
+      }
+    ]
+  }
+  ```
 
 - Content of the **integer_test** and **float_test** files:
-    ```json
-    // Resource file path: src/main/resources/base/element/integer.json
-    {
-      "integer": [
-        {
-          "name": "integer_test",
-          "value": 100
-        }
-      ]
-    }
-    ```
+  ```json
+  // Resource file path: src/main/resources/base/element/integer.json
+  {
+    "integer": [
+      {
+        "name": "integer_test",
+        "value": 100
+      }
+    ]
+  }
+  ```
 
-    ```json
-    // Resource file path: src/main/resources/base/element/float.json
-    {
-      "float": [
-        {
-          "name": "float_test",
-          "value": "30.6vp"
-        }
-      ]
-    }
-    ```
+  ```json
+  // Resource file path: src/main/resources/base/element/float.json
+  {
+    "float": [
+      {
+        "name": "float_test",
+        "value": "30.6vp"
+      }
+    ]
+  }
+  ```
 - Content of the **app.color.test** file:
-    ```json
-    // Resource file path: src/main/resources/base/element/color.json
-    {
-      "color": [
-        {
-          "name": "test",
-          "value": "#FFFFFF"
-        }
-      ]
-    }
-    ```
+  ```json
+  // Resource file path: src/main/resources/base/element/color.json
+  {
+    "color": [
+      {
+        "name": "test",
+        "value": "#FFFFFF"
+      }
+    ]
+  }
+  ```

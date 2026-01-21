@@ -57,7 +57,7 @@ The APIs can be used to generate media key requests, process responses to media 
 
 ### MediaKeySession_EventCallback()
 
-```
+```c
 typedef  Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)
 ```
 
@@ -85,7 +85,7 @@ Defines the callback used to listen for media key session events, for example, k
 
 ### MediaKeySession_KeyChangeCallback()
 
-```
+```c
 typedef  Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable)
 ```
 
@@ -111,7 +111,7 @@ Defines the callback used to listen for media key change events.
 
 ### OH_MediaKeySession_EventCallback()
 
-```
+```c
 typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)
 ```
 
@@ -140,7 +140,7 @@ Defines the callback used to listen for media key session events.
 
 ### OH_MediaKeySession_KeyChangeCallback()
 
-```
+```c
 typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo,bool newKeysAvailable)
 ```
 
@@ -167,7 +167,7 @@ Defines the callback used to listen for media key change events.
 
 ### OH_MediaKeySession_GenerateMediaKeyRequest()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKeySession,DRM_MediaKeyRequestInfo *info, DRM_MediaKeyRequest *mediaKeyRequest)
 ```
 
@@ -194,7 +194,7 @@ Generates a media key request.
 
 ### OH_MediaKeySession_ProcessMediaKeyResponse()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKeySession,uint8_t *response, int32_t responseLen, uint8_t *offlineMediaKeyId, int32_t *offlineMediaKeyIdLen)
 ```
 
@@ -223,7 +223,7 @@ Processes the response to a media key request.
 
 ### OH_MediaKeySession_CheckMediaKeyStatus()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySession,DRM_MediaKeyStatus *mediaKeyStatus)
 ```
 
@@ -249,7 +249,7 @@ Checks the status of a media key.
 
 ### OH_MediaKeySession_ClearMediaKeys()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_ClearMediaKeys(MediaKeySession *mediaKeySession)
 ```
 
@@ -274,7 +274,7 @@ Clears media keys.
 
 ### OH_MediaKeySession_GenerateOfflineReleaseRequest()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_GenerateOfflineReleaseRequest(MediaKeySession *mediaKeySession,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseRequest,int32_t *releaseRequestLen)
 ```
 
@@ -303,7 +303,7 @@ Generates a request to release offline media keys.
 
 ### OH_MediaKeySession_ProcessOfflineReleaseResponse()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_ProcessOfflineReleaseResponse(MediaKeySession *mediaKeySession,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen, uint8_t *releaseResponse,int32_t releaseResponseLen)
 ```
 
@@ -332,7 +332,7 @@ Processes the response to a request for releasing offline media keys.
 
 ### OH_MediaKeySession_RestoreOfflineMediaKeys()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKeySession,uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)
 ```
 
@@ -359,7 +359,7 @@ Restores offline media keys.
 
 ### OH_MediaKeySession_GetContentProtectionLevel()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaKeySession,DRM_ContentProtectionLevel *contentProtectionLevel)
 ```
 
@@ -385,7 +385,7 @@ Obtains the content protection level of a media key session.
 
 ### OH_MediaKeySession_RequireSecureDecoderModule()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *mediaKeySession,const char *mimeType, bool *status)
 ```
 
@@ -412,7 +412,7 @@ Checks whether secure decoding is required.
 
 ### OH_MediaKeySession_SetMediaKeySessionCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *mediaKeySession,MediaKeySession_Callback *callback)
 ```
 
@@ -438,7 +438,7 @@ Sets a media key session event callback.
 
 ### OH_MediaKeySession_SetCallback()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession,OH_MediaKeySession_Callback *callback)
 ```
 
@@ -464,7 +464,7 @@ Sets a media key session event callback.
 
 ### OH_MediaKeySession_Destroy()
 
-```
+```c
 Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)
 ```
 

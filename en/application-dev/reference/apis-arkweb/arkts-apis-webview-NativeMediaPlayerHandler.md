@@ -6,8 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Implements a **NativeMediaPlayerHandler** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback.
-The application uses this object to report the player status to the ArkWeb engine.
+Implements a **NativeMediaPlayerHandler** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback. The application uses this object to report the player status to the ArkWeb engine.
 
 > **NOTE**
 >
@@ -15,7 +14,7 @@ The application uses this object to report the player status to the ArkWeb engin
 >
 > - The initial APIs of this interface are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## handleStatusChanged<sup>12+</sup>
 

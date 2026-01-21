@@ -32,7 +32,7 @@ This API is asynchronous and does not support concurrent calls.
 
 > **NOTE**
 >
-> - This API is deprecated since API version 18. You are advised to use [registerFont](arkts-apis-uicontext-font.md#registerfont) instead on the obtained [Font](arkts-apis-uicontext-font.md) object.
+> - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [registerFont](arkts-apis-uicontext-font.md#registerfont) instead. Before calling this API, you need to obtain the [Font](arkts-apis-uicontext-font.md) object using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **registerFont** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
 > - Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
@@ -142,9 +142,9 @@ You are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist) instead on the obtained [Font](arkts-apis-uicontext-font.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getSystemFontList](arkts-apis-uicontext-font.md#getsystemfontlist) instead. Before calling this API, you need to obtain the [Font](arkts-apis-uicontext-font.md) object using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **getSystemFontList** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
-> Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
+> - Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -194,9 +194,9 @@ Obtains information about a system font based on the font name.
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getFontByName](arkts-apis-uicontext-font.md#getfontbyname) instead on the obtained [Font](arkts-apis-uicontext-font.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [getFontByName](arkts-apis-uicontext-font.md#getfontbyname) instead. Before calling this API, you need to obtain the [Font](arkts-apis-uicontext-font.md) object using the [getFont](arkts-apis-uicontext-uicontext.md#getfont) method in [UIContext](arkts-apis-uicontext-uicontext.md). Directly using **getFontByName** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context).
 >
-> Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
+> - Since API version 10, you can use the [getFont](arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

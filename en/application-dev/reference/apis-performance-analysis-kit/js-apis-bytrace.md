@@ -10,12 +10,12 @@
 The **bytrace** module implements performance tracing for processes.
 
 > **NOTE**
-> - The APIs of this module are no longer maintained since API version 8. You are advised to use [`@ohos.hiTraceMeter`](js-apis-hitracemeter.md).
+> - The APIs provided by this module are deprecated since API version 8. You are advised to use the new APIs [@ohos.hiTraceMeter](js-apis-hitracemeter.md) instead.
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
-```js
+```ts
 import { bytrace } from '@kit.PerformanceAnalysisKit';
 ```
 
@@ -26,6 +26,7 @@ startTrace(name: string, taskId: number, expectedTime?: number): void
 Marks the start of a timeslice trace task.
 
 > **NOTE**
+>
 > If multiple trace tasks with the same name need to be performed at the same time or a trace task needs to be performed multiple times concurrently, different task IDs must be specified in **startTrace**. If the trace tasks with the same name are not performed at the same time, the same task ID can be used. For details, see the bytrace.finishTrace example.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
@@ -36,12 +37,12 @@ Marks the start of a timeslice trace task.
 | -------- | -------- | -------- | -------- |
 | name | string | Yes| Name of a timeslice trace task.|
 | taskId | number | Yes| ID of a timeslice trace task.|
-| expectedTime | number | No| Expected duration of the trace, in ms. Optional. By default, this parameter is left blank.|
+| expectedTime | number | No| Expected duration of the trace, in ms. This parameter is optional and is left blank by default.|
 
 
 **Example**
 
-```js
+```ts
 bytrace.startTrace("myTestFunc", 1);
 bytrace.startTrace("myTestFunc", 1, 5); // The expected duration of the trace is 5 ms.
 ```
@@ -52,7 +53,8 @@ finishTrace(name: string, taskId: number): void
 
 Marks the end of a timeslice trace task.
 
-> **NOTE**<br>
+> **NOTE**
+>
 > To stop a trace task, the values of name and task ID in **finishTrace** must be the same as those in **startTrace**.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
@@ -64,14 +66,13 @@ Marks the end of a timeslice trace task.
 | name | string | Yes| Name of a timeslice trace task.|
 | taskId | number | Yes| ID of a timeslice trace task.|
 
-
 **Example**
 
-```js
+```ts
 bytrace.finishTrace("myTestFunc", 1);
 ```
 
-```
+```ts
 // Start trace tasks with the same name concurrently.
 bytrace.startTrace("myTestFunc", 1);
 // Service flow...
@@ -82,7 +83,7 @@ bytrace.finishTrace("myTestFunc", 1);
 bytrace.finishTrace("myTestFunc", 2);
 ```
 
-```
+```ts
 // Start trace tasks with the same name in serial mode.
 bytrace.startTrace("myTestFunc", 1);
 // Service flow...
@@ -102,6 +103,7 @@ Defines a numeric variable that indicates the number of timeslice trace tasks.
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 
 **Parameters:**
+
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | name | string | Yes| Name of the numeric variable.|
@@ -109,10 +111,10 @@ Defines a numeric variable that indicates the number of timeslice trace tasks.
 
 **Example**
 
-```js
+```ts
 let traceCount = 3;
 bytrace.traceByValue("myTestCount", traceCount);
 traceCount = 4;
 bytrace.traceByValue("myTestCount", traceCount);
-// Service flow
+// Service flow...
 ```

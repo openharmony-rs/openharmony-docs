@@ -1,4 +1,12 @@
 # 使用ArkUI的FrameNode扩展实现动态布局类框架
+
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 简介
 在特定的节假日或活动节点，应用通常需要推送相应主题或内容到首页，但又不希望通过程序更新方式来实现。因此，一般会采用动态布局类框架。动态布局类框架是一种动态生成原生组件树的轻量级框架，可以根据运营需求，在无需重新上架应用的情况下也可以动态地向用户推送新内容。该框架使用了类似于CSS的语法，通过设置不同的样式属性来控制视图的位置、大小、对齐方式等。本文将介绍如何使用ArkUI的FrameNode扩展来实现动态布局类框架，并探讨其带来的性能收益。
 ## ArkUI的声明式扩展在动态框架对接场景下的优势
@@ -22,9 +30,13 @@
 图三
 
 ![图三](./figures/imperative_dynamic_layouts.gif)
+
 ### ArkUI的声明式扩展使用
+
 一个简化的动态布局类框架的DSL一般会使用JSON、XML等数据交换格式来描述UI，下面使用JSON为例进行说明。
+
 本案例相关核心字段含义如下表所示：
+
 | 标签     | 含义                                                                      |
 |---------|---------------------------------------------------------------------------|
 | type    |描述UI组件的类型，通常与原生组件存在一一对应的关系，也可能是框架基于原生能力封装的某种组件。|
@@ -32,396 +44,411 @@
 | css     |描述UI组件的布局特性。                                                          |
 
 1. 定义视频首页UI描述数据如下：
-```json
-{
-  "type": "Column",
-  "css": {
-    "width": "100%"
-  },
-  "children": [
+
+    ```json
     {
-      "type": "Row",
-      "css": {
-        "width": "100%",
-        "padding": {
-          "left": 15,
-          "right": 15
-        },
-        "margin": {
-          "top": 5,
-          "bottom": 5
-        },
-        "justifyContent": "FlexAlign.SpaceBetween"
-      },
-      "children": [
-        {
-          "type": "Text",
-          "css": {
-            "fontSize": 24,
-            "fontColor": "#ffffff"
-          },
-          "content": "首页"
-        },
-        {
-          "type": "Image",
-          "css": {
-            "width": 24,
-            "height": 24
-          },
-          "content": "app.media.search"
-        }
-      ]
-    },
-    {
-      "type": "Swiper",
+      "type": "Column",
       "css": {
         "width": "100%"
       },
       "children": [
         {
-          "type": "Image",
+          "type": "Row",
           "css": {
-            "height": "40%",
+            "width": "100%",
+            "padding": {
+              "left": 15,
+              "right": 15
+            },
+            "margin": {
+              "top": 5,
+              "bottom": 5
+            },
+            "justifyContent": "FlexAlign.SpaceBetween"
+          },
+          "children": [
+            {
+              "type": "Text",
+              "css": {
+                "fontSize": 24,
+                "fontColor": "#ffffff"
+              },
+              "content": "首页"
+            },
+            {
+              "type": "Image",
+              "css": {
+                "width": 24,
+                "height": 24
+              },
+              "content": "app.media.search"
+            }
+          ]
+        },
+        {
+          "type": "Swiper",
+          "css": {
             "width": "100%"
           },
-          "content": "app.media.movie1"
+          "children": [
+            {
+              "type": "Image",
+              "css": {
+                "height": "40%",
+                "width": "100%"
+              },
+              "content": "app.media.movie1"
+            },
+            {
+              "type": "Image",
+              "css": {
+                "height": "40%",
+                "width": "100%"
+              },
+              "content": "app.media.movie2"
+            },
+            {
+              "type": "Image",
+              "css": {
+                "height": "40%",
+                "width": "100%"
+              },
+              "content": "app.media.movie3"
+            }
+          ]
         },
         {
-          "type": "Image",
+          "type": "Row",
           "css": {
-            "height": "40%",
-            "width": "100%"
+            "width": "100%",
+            "padding": {
+              "left": 15,
+              "right": 15
+            },
+            "margin": {
+              "top": 15,
+              "bottom": 15
+            },
+            "justifyContent": "FlexAlign.SpaceBetween"
           },
-          "content": "app.media.movie2"
+          "children": [
+            {
+              "type": "Text",
+              "css": {
+                "width": 75,
+                "height": 40,
+                "borderRadius": 60,
+                "fontColor": "#000000",
+                "backgroundColor": "#ffffff"
+              },
+              "content": "精选"
+            },
+            {
+              "type": "Text",
+              "css": {
+                "width": 75,
+                "height": 40,
+                "borderRadius": 60,
+                "fontColor": "#000000",
+                "backgroundColor": "#808080"
+              },
+              "content": "电视剧"
+            },
+            {
+              "type": "Text",
+              "css": {
+                "width": 75,
+                "height": 40,
+                "borderRadius": 60,
+                "fontColor": "#000000",
+                "backgroundColor": "#808080"
+              },
+              "content": "电影"
+            },
+            {
+              "type": "Text",
+              "css": {
+                "width": 75,
+                "height": 40,
+                "borderRadius": 60,
+                "fontColor": "#000000",
+                "backgroundColor": "#808080"
+              },
+              "content": "综艺"
+            }
+          ]
         },
         {
-          "type": "Image",
+          "type": "Row",
           "css": {
-            "height": "40%",
-            "width": "100%"
+            "width": "100%",
+            "padding": {
+              "left": 15,
+              "right": 15
+            },
+            "margin": {
+              "top": 5,
+              "bottom": 5
+            },
+            "justifyContent": "FlexAlign.SpaceBetween"
           },
-          "content": "app.media.movie3"
-        }
-      ]
-    },
-    {
-      "type": "Row",
-      "css": {
-        "width": "100%",
-        "padding": {
-          "left": 15,
-          "right": 15
+          "children": [
+            {
+              "type": "Text",
+              "css": {
+                "fontSize": 24,
+                "fontColor": "#ffffff"
+              },
+              "content": "每日推荐"
+            },
+            {
+              "type": "Text",
+              "css": {
+                "fontSize": 20,
+                "fontColor": "#ffffff",
+                "opacity": 0.5
+              },
+              "content": "更多"
+            }
+          ]
         },
-        "margin": {
-          "top": 15,
-          "bottom": 15
-        },
-        "justifyContent": "FlexAlign.SpaceBetween"
-      },
-      "children": [
         {
+          "type": "Row",
+          "css": {
+            "width": "100%",
+            "padding": {
+              "left": 15,
+              "right": 15
+            },
+            "margin": {
+              "top": 5,
+              "bottom": 5
+            },
+            "justifyContent": "FlexAlign.SpaceBetween"
+          },
+          "children": [
+            {
+              "type": "Column",
+              "css": {
+                "alignItems": "HorizontalAlign.Start"
+              },
+              "children": [
+                {
+                  "type": "Image",
+                  "css": {
+                    "height": 120,
+                    "width": 170,
+                    "borderRadius": 10
+                  },
+                  "content": "app.media.movie4"
+                },
+                {
+                  "type": "Text",
+                  "css": {
+                    "fontColor": "#ffffff"
+                  },
+                  "content": "电影1"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "css": {
+                "alignItems": "HorizontalAlign.Start"
+              },
+              "children": [
+                {
+                  "type": "Image",
+                  "css": {
+                    "height": 120,
+                    "width": 170,
+                    "borderRadius": 10
+                  },
+                  "content": "app.media.movie5"
+                },
+                {
+                  "type": "Text",
+                  "css": {
+                    "fontColor": "#ffffff"
+                  },
+                  "content": "电影2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "refreshImage",
           "type": "Text",
           "css": {
-            "width": 75,
+            "width": 180,
             "height": 40,
             "borderRadius": 60,
-            "fontColor": "#000000",
-            "backgroundColor": "#ffffff"
-          },
-          "content": "精选"
-        },
-        {
-          "type": "Text",
-          "css": {
-            "width": 75,
-            "height": 40,
-            "borderRadius": 60,
-            "fontColor": "#000000",
-            "backgroundColor": "#808080"
-          },
-          "content": "电视剧"
-        },
-        {
-          "type": "Text",
-          "css": {
-            "width": 75,
-            "height": 40,
-            "borderRadius": 60,
-            "fontColor": "#000000",
-            "backgroundColor": "#808080"
-          },
-          "content": "电影"
-        },
-        {
-          "type": "Text",
-          "css": {
-            "width": 75,
-            "height": 40,
-            "borderRadius": 60,
-            "fontColor": "#000000",
-            "backgroundColor": "#808080"
-          },
-          "content": "综艺"
-        }
-      ]
-    },
-    {
-      "type": "Row",
-      "css": {
-        "width": "100%",
-        "padding": {
-          "left": 15,
-          "right": 15
-        },
-        "margin": {
-          "top": 5,
-          "bottom": 5
-        },
-        "justifyContent": "FlexAlign.SpaceBetween"
-      },
-      "children": [
-        {
-          "type": "Text",
-          "css": {
-            "fontSize": 24,
-            "fontColor": "#ffffff"
-          },
-          "content": "每日推荐"
-        },
-        {
-          "type": "Text",
-          "css": {
-            "fontSize": 20,
             "fontColor": "#ffffff",
-            "opacity": 0.5
+            "backgroundColor": "#0000FF"
           },
-          "content": "更多"
+          "content": "刷新"
         }
       ]
-    },
-    {
-      "type": "Row",
-      "css": {
-        "width": "100%",
-        "padding": {
-          "left": 15,
-          "right": 15
-        },
-        "margin": {
-          "top": 5,
-          "bottom": 5
-        },
-        "justifyContent": "FlexAlign.SpaceBetween"
-      },
-      "children": [
-        {
-          "type": "Column",
-          "css": {
-            "alignItems": "HorizontalAlign.Start"
-          },
-          "children": [
-            {
-              "type": "Image",
-              "css": {
-                "height": 120,
-                "width": 170,
-                "borderRadius": 10
-              },
-              "content": "app.media.movie4"
-            },
-            {
-              "type": "Text",
-              "css": {
-                "fontColor": "#ffffff"
-              },
-              "content": "电影1"
-            }
-          ]
-        },
-        {
-          "type": "Column",
-          "css": {
-            "alignItems": "HorizontalAlign.Start"
-          },
-          "children": [
-            {
-              "type": "Image",
-              "css": {
-                "height": 120,
-                "width": 170,
-                "borderRadius": 10
-              },
-              "content": "app.media.movie5"
-            },
-            {
-              "type": "Text",
-              "css": {
-                "fontColor": "#ffffff"
-              },
-              "content": "电影2"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "refreshImage",
-      "type": "Text",
-      "css": {
-        "width": 180,
-        "height": 40,
-        "borderRadius": 60,
-        "fontColor": "#ffffff",
-        "backgroundColor": "#0000FF"
-      },
-      "content": "刷新"
     }
-  ]
-}
-```
+    ```
+
 2. 定义相应数据结构用于接收UI描述数据，如下：
-```ts
-class VM {
-  type?: string;
-  content?: string;
-  css?: ESObject;
-  children?: VM[];
-  id?: string;
-}
-```
+
+    ```ts
+    class VM {
+      type?: string;
+      content?: string;
+      css?: ESObject;
+      children?: VM[];
+      id?: string;
+    }
+    ```
+
 3. 自定义DSL解析逻辑，且使用carouselNodes保存轮播图节点，方便后续操作节点更新，如下：
-```ts
-// 存储图片节点，方便后续直接操作节点
-let carouselNodes: typeNode.Image[] = [];
 
-/**
- * 自定义DSL解析逻辑，将UI描述数据解析为组件
- *
- * @param vm
- * @param context
- * @returns
- */
-function FrameNodeFactory(vm: VM, context: UIContext): FrameNode | null {
-  if (vm.type === "Column") {
-    let node = typeNode.createNode(context, "Column");
-    setColumnNodeAttr(node, vm.css);
-    vm.children?.forEach(kid => {
-      let child = FrameNodeFactory(kid, context);
-      node.appendChild(child);
-    });
-    return node;
-  } else if (vm.type === "Row") {
-    let node = typeNode.createNode(context, "Row");
-    setRowNodeAttr(node, vm.css);
-    vm.children?.forEach(kid => {
-      let child = FrameNodeFactory(kid, context);
-      node.appendChild(child);
-    });
-    return node;
-  } else if (vm.type === "Swiper") {
-    let node = typeNode.createNode(context, "Swiper");
-    node.attribute.width(vm.css.width);
-    node.attribute.height(vm.css.height);
-    vm.children?.forEach(kid => {
-      let child = FrameNodeFactory(kid, context);
-      node.appendChild(child);
-    });
-    return node;
-  } else if (vm.type === "Image") {
-    let node = typeNode.createNode(context, "Image");
-    node.attribute.width(vm.css.width);
-    node.attribute.height(vm.css.height);
-    node.attribute.borderRadius(vm.css.borderRadius);
-    node.attribute.objectFit(ImageFit.Fill);
-    node.initialize($r(vm.content));
-    carouselNodes.push(node);
-    return node;
-  } else if (vm.type === "Text") {
-    let node = typeNode.createNode(context, "Text");
-    node.attribute.fontSize(vm.css.fontSize);
-    node.attribute.width(vm.css.width);
-    node.attribute.height(vm.css.height);
-    node.attribute.width(vm.css.width);
-    node.attribute.borderRadius(vm.css.borderRadius);
-    node.attribute.backgroundColor(vm.css.backgroundColor);
-    node.attribute.fontColor(vm.css.fontColor);
-    node.attribute.opacity(vm.css.opacity);
-    node.attribute.textAlign(TextAlign.Center);
-    // 使用id来标识特殊节点，方便抽出来单独操作
-    if (vm.id === 'refreshImage') {
-      // 因为frameNode暂时没有Button组件，因此使用Text代替，给该组件绑定点击事件
-      node.attribute.onClick(() => {
-        carouselNodes[1].initialize($r('app.media.movie6'));
-        carouselNodes[2].initialize($r('app.media.movie7'));
-        carouselNodes[3].initialize($r('app.media.movie8'));
-        carouselNodes[4].initialize($r('app.media.movie9'));
-        carouselNodes[5].initialize($r('app.media.movie10'));
-        node.attribute.visibility(Visibility.Hidden);
-      })
+    ```ts
+    // 存储图片节点，方便后续直接操作节点
+    let carouselNodes: typeNode.Image[] = [];
+    
+    /**
+     * 自定义DSL解析逻辑，将UI描述数据解析为组件
+     *
+     * @param vm
+     * @param context
+     * @returns
+     */
+    function FrameNodeFactory(vm: VM, context: UIContext): FrameNode | null {
+      if (vm.type === "Column") {
+        let node = typeNode.createNode(context, "Column");
+        setColumnNodeAttr(node, vm.css);
+        vm.children?.forEach(kid => {
+          let child = FrameNodeFactory(kid, context);
+          node.appendChild(child);
+        });
+        return node;
+      } else if (vm.type === "Row") {
+        let node = typeNode.createNode(context, "Row");
+        setRowNodeAttr(node, vm.css);
+        vm.children?.forEach(kid => {
+          let child = FrameNodeFactory(kid, context);
+          node.appendChild(child);
+        });
+        return node;
+      } else if (vm.type === "Swiper") {
+        let node = typeNode.createNode(context, "Swiper");
+        node.attribute.width(vm.css.width);
+        node.attribute.height(vm.css.height);
+        vm.children?.forEach(kid => {
+          let child = FrameNodeFactory(kid, context);
+          node.appendChild(child);
+        });
+        return node;
+      } else if (vm.type === "Image") {
+        let node = typeNode.createNode(context, "Image");
+        node.attribute.width(vm.css.width);
+        node.attribute.height(vm.css.height);
+        node.attribute.borderRadius(vm.css.borderRadius);
+        node.attribute.objectFit(ImageFit.Fill);
+        node.initialize($r(vm.content));
+        carouselNodes.push(node);
+        return node;
+      } else if (vm.type === "Text") {
+        let node = typeNode.createNode(context, "Text");
+        node.attribute.fontSize(vm.css.fontSize);
+        node.attribute.width(vm.css.width);
+        node.attribute.height(vm.css.height);
+        node.attribute.width(vm.css.width);
+        node.attribute.borderRadius(vm.css.borderRadius);
+        node.attribute.backgroundColor(vm.css.backgroundColor);
+        node.attribute.fontColor(vm.css.fontColor);
+        node.attribute.opacity(vm.css.opacity);
+        node.attribute.textAlign(TextAlign.Center);
+        // 使用id来标识特殊节点，方便抽出来单独操作
+        if (vm.id === 'refreshImage') {
+          // 因为frameNode暂时没有Button组件，因此使用Text代替，给该组件绑定点击事件
+          node.attribute.onClick(() => {
+            carouselNodes[1].initialize($r('app.media.movie6'));
+            carouselNodes[2].initialize($r('app.media.movie7'));
+            carouselNodes[3].initialize($r('app.media.movie8'));
+            carouselNodes[4].initialize($r('app.media.movie9'));
+            carouselNodes[5].initialize($r('app.media.movie10'));
+            node.attribute.visibility(Visibility.Hidden);
+          })
+        }
+        node.initialize(vm.content);
+        return node;
+      }
+      return null;
     }
-    node.initialize(vm.content);
-    return node;
-  }
-  return null;
-}
+    
+    function setColumnNodeAttr(node: typeNode.Column, css: ESObject) {
+      node.attribute.width(css.width);
+      node.attribute.height(css.height);
+      node.attribute.backgroundColor(css.backgroundColor);
+      if (css.alignItems === "HorizontalAlign.Start") {
+        node.attribute.alignItems(HorizontalAlign.Start);
+      }
+    }
+    
+    function setRowNodeAttr(node: typeNode.Row, css: ESObject) {
+      node.attribute.width(css.width);
+      if (css.padding !== undefined) {
+        node.attribute.padding(css.padding as Padding);
+      }
+      if (css.margin !== undefined) {
+        node.attribute.margin(css.margin as Padding);
+      }
+      node.attribute.justifyContent(FlexAlign.SpaceBetween);
+    }
+    ```
 
-function setColumnNodeAttr(node: typeNode.Column, css: ESObject) {
-  node.attribute.width(css.width);
-  node.attribute.height(css.height);
-  node.attribute.backgroundColor(css.backgroundColor);
-  if (css.alignItems === "HorizontalAlign.Start") {
-    node.attribute.alignItems(HorizontalAlign.Start);
-  }
-}
-
-function setRowNodeAttr(node: typeNode.Row, css: ESObject) {
-  node.attribute.width(css.width);
-  if (css.padding !== undefined) {
-    node.attribute.padding(css.padding as Padding);
-  }
-  if (css.margin !== undefined) {
-    node.attribute.margin(css.margin as Padding);
-  }
-  node.attribute.justifyContent(FlexAlign.SpaceBetween);
-}
-```
 4. 使用NodeContainer组件嵌套ArkUI的FrameNode扩展和ArkUI的声明式语法，如下：
-```ts
-/**
- * 继承NodeController，用于绘制组件树
- */
-class ImperativeController extends NodeController {
-  makeNode(uiContext: UIContext): FrameNode | null {
-    return FrameNodeFactory(data, uiContext);
-  }
-}
 
-@Entry
-@Component
-struct ImperativePage {
-  controller: ImperativeController = new ImperativeController();
-
-  build() {
-    Column() {
-      NodeContainer(this.controller)
+    ```ts
+    /**
+     * 继承NodeController，用于绘制组件树
+     */
+    class ImperativeController extends NodeController {
+      makeNode(uiContext: UIContext): FrameNode | null {
+        return FrameNodeFactory(data, uiContext);
+      }
     }
-    .height('100%')
-    .width('100%')
-    .backgroundColor(Color.Black)
-  }
-}
-```
+    
+    @Entry
+    @Component
+    struct ImperativePage {
+      controller: ImperativeController = new ImperativeController();
+    
+      build() {
+        Column() {
+          NodeContainer(this.controller)
+        }
+        .height('100%')
+        .width('100%')
+        .backgroundColor(Color.Black)
+      }
+    }
+    ```
+
 ## 性能对比
+
 下面以场景示例中的两种方案实现，通过DevEcho Studio的profile工具抓取Trace进行性能分析比对。
+
 1. 声明式前端开发模式下刷新图片资源场景的完成时延为9.8ms（根据设备和场景不同，数据会有差异，本数据仅供参考），如图四所示。
 
-图四
-![图四](./figures/imperative_dynamic_layouts_trace_1.png)
+    图四
+    ![图四](./figures/imperative_dynamic_layouts_trace_1.png)
 
 2. FrameNode扩展模式下刷新图片资源场景的完成时延为7.6ms（根据设备和场景不同，数据会有差异，本数据仅供参考），如图五所示。
 
-图五
-![图五](./figures/imperative_dynamic_layouts_trace_2.png)
+    图五
+    ![图五](./figures/imperative_dynamic_layouts_trace_2.png)
+
 ## 总结
+
 综上所述，在动态布局类场景下，相对于声明式写法，使用ArkUI的FrameNode扩展更具有优势，能缩短响应时延,带来的性能收益更高。因此对于需要使用动态布局类框架的场景，建议优先使用ArkUI的FrameNode扩展来实现。
 
+## 示例代码
+
+[使用ArkUI的FrameNode扩展实现动态布局类框架](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ImperativeDynamicLayouts)

@@ -10,7 +10,7 @@
 >
 > - The initial APIs of this module are supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## WebMessage
 
@@ -41,8 +41,7 @@ For details about the sample code, see [removeProxyOverride](./arkts-apis-webvie
 
 type CreateNativeMediaPlayerCallback = (handler: NativeMediaPlayerHandler, mediaInfo: MediaInfo) => NativeMediaPlayerBridge
 
-Defines a **CreateNativeMediaPlayerCallback** object used as a parameter of the [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12) callback.
-This object is used to create a player to take over media playback of the web page.
+Defines a **CreateNativeMediaPlayerCallback** object used as a parameter of the [onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12) callback. This object is used to create a player to take over media playback of the web page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

@@ -19,12 +19,15 @@
 ## 提升启动速度
 
 对于使用JSVM的应用启动场景，我们可以区分冷热启动用于分别进行不同的优化。
+
 首先是冷启动，是没有任何profile或者cache可以用于优化的场景，通常是首次启动；
+
 热启动则是已经充分预热，在多次启动之后获取了足量用于优化的cache的场景。
 
 ### 减少 JS 引擎层的开销
 
 引擎层的开销很大程度上来源于编译。通过合理调整调用JSVM-API时传入的选项，可以降低主线程上JS引擎的编译开销。
+
 以下面的编译接口为例，其中eagerCompile这个参数的开关可以调控编译行为，通过在不同的启动场景打开这个选项可以实现优化效果。
 
 ```cpp
@@ -71,14 +74,14 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,
 
 - 将生成code cache必需的前置编译也放到新增的线程上，这样编译选项可以分开使用：生成code cache打开`eager compile`，冷启动运行则关闭，这样做的缺点是可能进一步提高运行时的峰值资源占用，优点是code cache生成和运行可以完全解耦，不再需要考虑生成code cache的时间点。该流程的伪代码如下所示
 
-```
+```cpp
 async_create_code_cache() {
   compile_with_eager_compile();
   create_code_cache();
   save_code_cache();
 }
 
-...
+
 
 if (has_code_cache) {
   evaluate_script_with_code_cache();
@@ -91,14 +94,14 @@ if (has_code_cache) {
 
 - 在启动过程中的所有路径运行完之后，再启动新线程生成code cache，这样不必使用`eager compile`也能获取足量的code cache，同时保证热启动性能不受影响，这样做的缺点是生成code cache的时间点受限，优点是峰值资源占用相对更少，且不必生成过量的code cache导致io变慢。这个流程可以用如下所示的伪代码来表示
 
-```
+```cpp
 async_create_code_cache() {
   compile_with_out_eager_compile();
   create_code_cache();
   save_code_cache();
 }
 
-...
+
 
 if (has_code_cache) {
   evaluate_script_with_code_cache();
@@ -106,7 +109,7 @@ if (has_code_cache) {
   evaluate_script_without_code_cache();
 }
 
-...
+
 
 if (script_run_completed) {
   start_thread(async_create_code_cache());

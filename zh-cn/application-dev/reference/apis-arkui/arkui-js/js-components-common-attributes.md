@@ -20,7 +20,7 @@
 | class                     | string  | -     | 否    | 组件的样式类，用于引用样式表。                          |
 | ref                       | string  | -     | 否    | 用来指定指向子元素或子组件的引用信息，该引用将注册到父组件的$refs&nbsp;属性对象上。 |
 | disabled                  | boolean | false | 否    | 当前组件是否被禁用，在禁用场景下，组件将无法响应用户交互。设置为true时，组件不响应交互事件。设置为false时，组件响应交互事件。            |
-| data                      | string  | -     | 否    | 给当前组件设置data属性，进行相应的数据存储和读取。JS文件中：<br/>-&nbsp;在事件回调中使用&nbsp;e.target.attr.data&nbsp;读取数据，e为事件回调函数入参。<br/>-&nbsp;使用`$element`或者`$refs`获取DOM元素后，通过attr.data&nbsp;进行访问。<br/>从API&nbsp;Version&nbsp;6&nbsp;开始，建议使用data-\*。 |
+| data                      | string  | -     | 否    | 给当前组件设置data属性，进行相应的数据存储和读取。JS文件中：<br/>-&nbsp;在事件回调中使用&nbsp;e.target.attr.data&nbsp;读取数据，e为事件回调函数入参。<br/>-&nbsp;使用`$element`或者`$refs`获取DOM元素后，通过attr.data&nbsp;进行访问。<br/>从API&nbsp;version&nbsp;6&nbsp;开始，建议使用data-\*。 |
 | data-\*<sup>6+</sup>      | string  | -     | 否    | 给当前组件设置data-\*属性，进行相应的数据存储和读取。大小写不敏感，如data-A和data-a默认相同。JS文件中：<br/>-&nbsp;在事件回调中使用&nbsp;e.target.dataSet.a读取数据，e为事件回调函数入参。<br/>-&nbsp;使用`$element`或者`$refs`获取DOM元素后，通过dataSet.a进行访问。 |
 | click-effect<sup>5+</sup> | string  | -     | 否    | 通过这个属性可以设置组件的弹性点击效果，当前支持如下三种效果：<br/>-&nbsp;spring-small：建议小面积组件设置，缩放(90%)。<br/>-&nbsp;spring-medium：建议中面积组件设置，缩放(95%)。<br/>-&nbsp;spring-large：建议大面积组件设置，缩放(95%)。 |
 | dir<sup>6+</sup>          | string  | auto  | 否    | 设置元素布局模式，支持设置rtl、ltr和auto三种属性值：<br/>-&nbsp;rtl：使用从右往左布局模式。<br/>-&nbsp;ltr：使用从左往右布局模式。<br/>-&nbsp;auto：跟随系统语言环境。 |
@@ -47,12 +47,12 @@
 <!-- xxx.hml -->
 <div id="container">
     <button class="btn" type="capsule" value="toggleDisplay" onclick="toggleDisplay"></button>
-	<list class="list">
-		<list-item for="{{ array }}" class="listItem">
-			<text class="text" onclick="toggleShow" show="{{ visible }}"
+    <list class="list">
+        <list-item for="{{ array }}" class="listItem">
+            <text class="text" onclick="toggleShow" show="{{ visible }}"
                   if="{{ display }}">{{ $item.value }}</text>
-		</list-item>
-	</list>
+        </list-item>
+    </list>
 </div>
 ```
 
@@ -85,7 +85,7 @@
 ```js
 // xxx.js
 export default {
-	data: {
+    data: {
         visible: true,
         display: true,
         title: "",

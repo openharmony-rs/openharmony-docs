@@ -26,7 +26,7 @@
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| typedef enum [GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode)[GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode) | 此枚举定义游戏控制器的错误码。 | 
+| typedef enum [GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode) [GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode) | 此枚举定义游戏控制器的错误码。 | 
 
 
 ### 枚举

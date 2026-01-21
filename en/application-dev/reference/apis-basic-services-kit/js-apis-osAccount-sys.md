@@ -1,4 +1,4 @@
-# @ohos.account.osAccount (System Account  Management) (System API)
+# @ohos.account.osAccount (System Account Management) (System API)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->
@@ -7,7 +7,7 @@
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
 
-The **osAccount** module provides basic capabilities for managing system (OS) accounts, including adding, deleting, querying, setting, subscribing to, and enabling a system account.
+The osAccount module provides basic capabilities for managing system (OS) accounts, including adding, deleting, querying, setting, subscribing to, and enabling a system account.
 
 > **NOTE**
 >
@@ -135,7 +135,7 @@ Activates a system account. This API uses a promise to return the result.
   }
   ```
 
-### activateOsAccount<sup>21+</sup>
+### activateOsAccount<sup>23+</sup>
 
 activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 
@@ -1744,9 +1744,9 @@ Subscribes to the switchover between a foreground system account and a backgroun
 
 **System API**: This is a system API.
 
-**Note**: The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1755,7 +1755,7 @@ Subscribes to the switchover between a foreground system account and a backgroun
 | Name  | Type                      | Mandatory| Description                                                        |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'switching'                 | Yes  | Event type. The value **switching** indicates that the switchover between a foreground system account and a background account is being performed.|
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | Yes  | Callback to be invoked when a system account is switching between the foreground and background. The source and target system account IDs are subscribed to.<br>Note: Since API version 21, the optional field **displayId** is available, indicating the ID of the logical display where the switch event occurs.   |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | Yes  | Callback to be invoked when a system account is switching between the foreground and background. The source and target system account IDs are subscribed to.<br>Note: Since API version 23, the optional field **displayId** is available, indicating the ID of the logical display where the switch event occurs.   |
 
 **Error codes**
 
@@ -1763,7 +1763,6 @@ Subscribes to the switchover between a foreground system account and a backgroun
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1794,9 +1793,9 @@ Unsubscribes from the switchover between a foreground system account and a backg
 
 **System API**: This is a system API.
 
-**Note**: The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1813,7 +1812,6 @@ Unsubscribes from the switchover between a foreground system account and a backg
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1839,9 +1837,9 @@ Subscribes to the end of a switchover between a foreground system account and a 
 
 **System API**: This is a system API.
 
-**Note**: The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1850,7 +1848,7 @@ Subscribes to the end of a switchover between a foreground system account and a 
 | Name  | Type                      | Mandatory| Description                                                        |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | type     | 'switched'                 | Yes  | Event type. The value **switched** indicates that the switchover between a foreground system account and a background system account is complete.|
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | Yes  | Callback to be invoked when a system account is switched between the foreground and background. The source and target system account IDs are subscribed to.<br>Note: Since API version 21, the optional field **displayId** is available, indicating the ID of the logical display where the switch event occurs.   |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | Yes  | Callback to be invoked when a system account is switched between the foreground and background. The source and target system account IDs are subscribed to.<br>Note: Since API version 23, the optional field **displayId** is available, indicating the ID of the logical display where the switch event occurs.   |
 
 **Error codes**
 
@@ -1858,7 +1856,6 @@ Subscribes to the end of a switchover between a foreground system account and a 
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1889,9 +1886,9 @@ Unsubscribes from the end of a switchover between a foreground system account an
 
 **System API**: This is a system API.
 
-**Note**: The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 21.
-
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since API version 23.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1908,7 +1905,6 @@ Unsubscribes from the end of a switchover between a foreground system account an
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1925,6 +1921,102 @@ Unsubscribes from the end of a switchover between a foreground system account an
     console.error(`off exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### onConstraintChanged<sup>23+</sup>
+onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChangeInfo&gt;): void
+
+Subscribes to one or more constraint change events of the system account to which the caller belongs. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name    | Type                  | Mandatory| Description     |
+| --------  | ---------------------- | ---- | -------- |
+| constraints  | string[] | Yes  | List of [constraints](js-apis-osAccount.md#constraints) to be subscribed to.|
+| callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | Yes  | Callback used to listen for the constraint change events.|
+
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message              |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | One or more constraints are invalid. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let constraint: string = 'constraint.wifi';
+const callback:Callback<osAccount.ConstraintChangeInfo> = (data: osAccount.ConstraintChangeInfo): void => {
+  console.info(`ConstraintChangeInfo received, constraint: ${data.constraint} isEnabled: ${data.isEnabled}`);
+};
+
+try {
+  accountManager.onConstraintChanged([constraint], callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### offConstraintChanged<sup>23+</sup>
+offConstraintChanged(callback?: Callback&lt;ConstraintChangeInfo&gt;): void
+
+Unsubscribes from constraint change events associated with the specified callback. If no callback is specified, this API unsubscribes from all subscription records.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name    | Type                  | Mandatory| Description     |
+| --------  | ---------------------- | ---- | -------- |
+| callback | Callback&lt;[ConstraintChangeInfo](#constraintchangeinfo23)&gt;  | No  | Callback used to listen for the constraint change events.<br>The default value is **undefined**, indicating that all subscription records are unsubscribed.<br>If this parameter is not **undefined**, the subscription records associated with the callback are unsubscribed.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message              |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let constraint: string = 'constraint.wifi';
+const callback:Callback<osAccount.ConstraintChangeInfo> = (data: osAccount.ConstraintChangeInfo): void => {
+  console.info(`ConstraintChangeInfo received, constraint: ${data.constraint} isEnabled: ${data.isEnabled}`);
+};
+
+try {
+  accountManager.onConstraintChanged([constraint], callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+
+try {
+  accountManager.offConstraintChanged(callback);
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`offConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### getBundleIdForUid<sup>9+</sup>
 
@@ -2118,7 +2210,7 @@ Checks whether the current process belongs to the main system account. This API 
 
 ### isMainOsAccount<sup>9+</sup>
 
-isMainOsAccount(): Promise&lt;boolean&gt;;
+isMainOsAccount(): Promise&lt;boolean&gt;
 
 Checks whether the current process belongs to the main system account. This API uses a promise to return the result.
 
@@ -2160,7 +2252,7 @@ Checks whether the current process belongs to the main system account. This API 
   }
   ```
 
-### getForegroundOsAccountLocalId<sup>21+</sup>
+### getForegroundOsAccountLocalId<sup>23+</sup>
 
 getForegroundOsAccountLocalId(displayId: number): Promise&lt;number&gt;
 
@@ -2214,7 +2306,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-### getForegroundOsAccountDisplayId<sup>21+</sup>
+### getForegroundOsAccountDisplayId<sup>23+</sup>
 
 getForegroundOsAccountDisplayId(localId: number): Promise&lt;number&gt;
 
@@ -2322,7 +2414,7 @@ Obtains the constraint source information of a system account. This API uses an 
 
 ### getOsAccountConstraintSourceTypes<sup>9+</sup>
 
-getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;;
+getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;
 
 Obtains the constraint source information of a system account. This API uses a promise to return the result.
 
@@ -2377,7 +2469,7 @@ Obtains the constraint source information of a system account. This API uses a p
 
 ### getOsAccountType<sup>12+</sup>
 
-getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;;
+getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
 Obtains the type of a specified system account. This API uses a promise to return the result.
 
@@ -2521,7 +2613,7 @@ A constructor used to create an instance for user authentication.
 
 ### getVersion<sup>8+</sup>
 
-getVersion(): number;
+getVersion(): number
 
 Obtains a version number.
 
@@ -2551,7 +2643,7 @@ Obtains a version number.
 
 ### getAvailableStatus<sup>8+</sup>
 
-getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number;
+getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 
 Obtains the available status of the authentication capability corresponding to the specified authentication type and trust level.
 
@@ -2583,6 +2675,7 @@ Obtains the available status of the authentication capability corresponding to t
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or authTrustLevel. |
+| 12300117 | PIN is expired. |
 
 **Example**
 
@@ -2630,6 +2723,7 @@ Obtains the executor property based on the request. This API uses an asynchronou
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **Example**
 
@@ -2662,7 +2756,7 @@ Obtains the executor property based on the request. This API uses an asynchronou
 
 ### getProperty<sup>8+</sup>
 
-getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;;
+getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 
 Obtains the executor property based on the request. This API uses a promise to return the result.
 
@@ -2694,6 +2788,7 @@ Obtains the executor property based on the request. This API uses a promise to r
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **Example**
 
@@ -2724,7 +2819,7 @@ Obtains the executor property based on the request. This API uses a promise to r
 
 ### getPropertyByCredentialId<sup>14+</sup>
 
-getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyType&gt;): Promise&lt;ExecutorProperty&gt;;
+getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyType&gt;): Promise&lt;ExecutorProperty&gt;
 
 Obtains the specified property information of the associated executor based on the credential ID. This API uses a promise to return the result.
 
@@ -2753,9 +2848,9 @@ Obtains the specified property information of the associated executor based on t
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid keys. |
+| 12300020 | Device hardware abnormal. |
 | 12300102 | The credential does not exist. |
 
 **Example**
@@ -2853,7 +2948,7 @@ Sets the property for the initialization algorithm. This API uses an asynchronou
 
 ### setProperty<sup>8+</sup>
 
-setProperty(request: SetPropertyRequest): Promise&lt;void&gt;;
+setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 
 Sets the property for the initialization algorithm. This API uses a promise to return the result.
 
@@ -2910,7 +3005,7 @@ Sets the property for the initialization algorithm. This API uses a promise to r
 
 ### prepareRemoteAuth<sup>12+</sup>
 
-prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;;
+prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 
 Prepares for remote authentication. This API uses a promise to return the result.
 
@@ -2938,7 +3033,6 @@ Prepares for remote authentication. This API uses a promise to return the result
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported. |
@@ -2972,7 +3066,7 @@ Prepares for remote authentication. This API uses a promise to return the result
 
 ### auth<sup>8+</sup>
 
-auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
+auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
 Performs authentication of the current user. 
 
@@ -3003,7 +3097,6 @@ Performs authentication of the current user.
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300013 | Network exception. |
@@ -3080,7 +3173,6 @@ Starts user authentication based on the specified challenge value, authenticatio
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType, authTrustLevel or options. |
 | 12300003 | Account not found. |
@@ -3129,7 +3221,7 @@ Starts user authentication based on the specified challenge value, authenticatio
 
 ### authUser<sup>8+</sup>
 
-authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
+authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array
 
 Performs authentication of the specified user. This API uses an asynchronous callback to return the result.
 
@@ -3161,7 +3253,6 @@ Performs authentication of the specified user. This API uses an asynchronous cal
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300003 | Account not found. |
@@ -4143,7 +4234,6 @@ No permission is required since API version 11. Use the SDK of the latest versio
 
 | ID| Error Message                    |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -4202,7 +4292,6 @@ No permission is required since API version 11. Use the SDK of the latest versio
 
 | ID| Error Message                    |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -4711,7 +4800,7 @@ Obtains the service access token of a domain account. This API uses a promise to
 
 ### isAuthenticationExpired<sup>12+</sup>
 
-isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;;
+isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 
 Checks whether the authentication of a domain account has expired. This API uses a promise to return the result.
 
@@ -4917,11 +5006,13 @@ Adds credential information, including the credential type, subtype, and token (
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
+| 12300020 | Device hardware abnormal. |
+| 12300090 | Cross-device capability not supported. |
+| 12300091 | Cross-device communication failed. |
 | 12300101 | The token is invalid. |
 | 12300106 | The authentication type is not supported. |
 | 12300109 | The authentication, enrollment, or update operation is canceled. |
@@ -5249,8 +5340,8 @@ Obtains authentication information. This API uses an asynchronous callback to re
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
+| 12300020 | Device hardware abnormal. |
 
 **Example**
 
@@ -5297,9 +5388,9 @@ Obtains authentication information of the specified type. This API uses an async
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **Example**
 
@@ -5324,7 +5415,7 @@ Obtains authentication information of the specified type. This API uses an async
 
 ### getAuthInfo<sup>8+</sup>
 
-getAuthInfo(authType?: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;;
+getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 
 Obtains authentication information. This API uses a promise to return the result.
 
@@ -5338,7 +5429,7 @@ Obtains authentication information. This API uses a promise to return the result
 
 | Name   | Type                               | Mandatory| Description     |
 | -------- | ----------------------------------- | ---- | -------- |
-| authType | [AuthType](#authtype8)              | No  | Authentication type. By default, this parameter is left blank, which means to obtain information about all authentication types.|
+| authType | [AuthType](#authtype8)              | Yes  | Authentication type, which indicates that information about all authentication types is obtained.|
 
 **Return value**
 
@@ -5352,9 +5443,9 @@ Obtains authentication information. This API uses a promise to return the result
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
+| 12300020 | Device hardware abnormal. |
 
 **Example**
 
@@ -5404,10 +5495,10 @@ Obtains authentication information. This API uses a promise to return the result
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid options. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 
 **Example**
 
@@ -5462,10 +5553,10 @@ Obtains the ID of the enrolled credential based on the credential type and accou
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300003 | Account not found. |
+| 12300020 | Device hardware abnormal. |
 | 12300102 | The credential does not exist. |
 | 12300106 | The authentication type is not supported. |
 
@@ -5615,7 +5706,7 @@ Provides callbacks for PIN operations.
 
 ### onSetData<sup>8+</sup>
 
-onSetData: (authSubType: AuthSubType, data: Uint8Array) => void;
+onSetData(authSubType: AuthSubType, data: Uint8Array): void
 
 **System API**: This is a system API.
 
@@ -5662,7 +5753,7 @@ Provides callbacks for credential inputers.
 
 ### onGetData<sup>8+</sup>
 
-onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) => void;
+onGetData: (authSubType: AuthSubType, callback: IInputData, options: GetInputDataOptions) => void
 
 Called to notify the caller that data is obtained.
 
@@ -5706,7 +5797,7 @@ Provides callbacks for user authentication.
 
 ### onResult<sup>8+</sup>
 
-onResult: (result: number, extraInfo: AuthResult) => void;
+onResult: (result: number, extraInfo: AuthResult) => void
 
 Called to return the result code and authentication result.
 
@@ -5734,7 +5825,7 @@ Called to return the result code and authentication result.
 
 ### onAcquireInfo?<sup>8+</sup>
 
-onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void;
+onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 Called to acquire identity authentication information.
 
@@ -5774,7 +5865,7 @@ Provides callbacks for IDM.
 
 ### onResult<sup>8+</sup>
 
-onResult: (result: number, extraInfo: RequestResult) => void;
+onResult: (result: number, extraInfo: RequestResult) => void
 
 Called to return the result code and request result information.
 
@@ -5802,7 +5893,7 @@ Called to return the result code and request result information.
 
 ### onAcquireInfo?<sup>8+</sup>
 
-onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void;
+onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 Called to acquire IDM information.
 
@@ -6230,7 +6321,20 @@ Defines the event that indicates the start or end of a foreground-background sys
 | ----------- | ------ | ---- | ---- | ---------- |
 | fromAccountId | number | No| No| ID of the source system account.|
 | toAccountId | number | No| No| ID of the target system account.|
-| displayId<sup>21+</sup> | number | No| Yes| ID of the logical display where the switchover occurs. The default value is **0**.|
+| displayId<sup>23+</sup> | number | No| Yes| ID of the logical display where the switchover occurs. The default value is **0**.|
+
+## ConstraintChangeInfo<sup>23+</sup>
+
+Defines the constraint change information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name     | Type  | Read-Only| Optional| Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| constraint | string | No| No| [Constraint](js-apis-osAccount.md#constraints) that has been changed.|
+| isEnabled | boolean | No| No| Enabling state of the changed constraint. The default value is **false**.<br>The value **true** indicates that the target constraint is enabled, and **false** indicates the opposite.|
 
 ## CreateOsAccountOptions<sup>12+</sup>
 
@@ -6253,10 +6357,6 @@ Represents a set of optional parameters for creating a system account bound to t
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Account.OsAccount
-
-| Name     | Type  | Read-Only | Optional  | Description      |
-| ----------- | ------ | ---- | ---- | ---------- |
-| shortName | string | No| No  | Short name of the account (used as the name of the personal folder).<br>**The short name cannot**:<br>1. Contain any of the following characters: \< \>\| : " * ? / \\<br>2. Contain any of the following: . or ..<br>3. Exceed 255 characters.|
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
@@ -6328,7 +6428,7 @@ Represents a set of optional parameters for [onGetData](#ongetdata8).
 
 ## CredentialChangeInfo<sup>23+</sup>
 
-Indicates credential change information.
+Defines the credential change information.
 
 **System API**: This is a system API.
 
@@ -6339,7 +6439,7 @@ Indicates credential change information.
 | changeType      | [CredentialChangeType](#credentialchangetype23) | No| No | Credential change type.    |
 | isSilent | boolean | No| No | Whether the change is silent. A silent change is automatically initiated by the system in the background.|
 | credentialType      | [AuthType](#authtype8) | No| No | Credential type.    |
-| accountId | int | No| No | System account ID.|
+| accountId | number | No| No | System account ID.|
 | addedCredentialId   | Uint8Array | No| Yes | Credential ID. An ID is returned when a credential is added or updated. which is **undefined** by default.  |
 | deletedCredentialId | Uint8Array | No| Yes | Credential ID. An ID is returned when a credential is deleted or updated. which is **undefined** by default.  |
 

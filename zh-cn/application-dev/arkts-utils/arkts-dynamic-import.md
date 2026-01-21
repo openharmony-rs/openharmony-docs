@@ -5,9 +5,9 @@
 <!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
 <!--Designer: @ctw-ian-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
-动态import支持条件延迟加载，支持部分反射功能，可以提升页面的加载速度；动态import支持加载HSP模块/HAR模块/OHPM包/Native库等，并且HAR模块间只有变量动态import时还可以进行模块解耦。
+动态import支持条件延迟加载，支持部分反射功能，可以提升页面的加载速度；动态import支持加载HSP模块/HAR模块/OHPM包/Native库等，并且HAR模块之间可通过变量动态import来访问彼此导出的内容，可避免编译期强依赖，实现模块解耦。
 
 ## 技术适用场景介绍
 应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态import代替[静态import](../quick-start/introduction-to-arkts.md#导入)。下面是可能会需要动态import的场景：
@@ -76,7 +76,9 @@ import('harlibrary').then((ns:ESObject) => {
 ```
 
 ## 动态import实现方案介绍
+
 动态import根据入参是常量或变量，分为动态import常量表达式和动态import变量表达式两大特性规格。
+
 以下是动态import支持的规格列表：
 
 | 动态import场景 | 动态import详细分类             | 说明                                                     |
@@ -298,6 +300,7 @@ import('harlibrary').then((ns:ESObject) => {
 ### 动态import变量表达式
 
 DevEco Studio中模块间的依赖关系通过oh-package.json5中的dependencies字段进行配置。dependencies列表中所有的模块默认都会进行安装（本地模块）或下载（远程模块），但是不会默认参与编译。HAP/HSP编译时会以入口文件（一般为Index.ets/Index.ts）开始搜索依赖关系，搜索到的模块或文件才会加入编译。
+
 在编译期，静态import和常量动态import可以被打包工具rollup及其插件识别解析，加入依赖树中，参与编译流程，最终生成方舟字节码。但是，如果是变量动态import，该变量值可能需要进行运算或外部传入才能得到，在编译态无法解析其内容，也就无法加入编译。为了将这部分模块/文件加入编译，还需要额外增加一个runtimeOnly的buildOption配置，用于指定动态import的变量实际的模块名或文件路径。
 
 **1. runtimeOnly字段schema配置格式**
@@ -332,6 +335,7 @@ import(filePath).then((obj: ESObject) => {
 ```
 
 "runtimeOnly"的"packages"：用于配置本模块变量动态import其他模块名，要求与dependencies中配置的名字一致。
+
 "runtimeOnly"的"sources"：用于配置本模块变量动态import自己的文件路径，路径相对于当前build-profile.json5文件。
 
 **2. 使用实例**

@@ -87,9 +87,9 @@
 
    ```ts
    function isDeferredImageDeliveryEnabled(photoOutput: camera.PhotoOutput): boolean {
-   	 let isEnabled: boolean = false;
+     let isEnabled: boolean = false;
      if (photoOutput !== null) {
-   	   isEnabled = photoOutput.isDeferredImageDeliveryEnabled(camera.DeferredDeliveryImageType.PHOTO);
+       isEnabled = photoOutput.isDeferredImageDeliveryEnabled(camera.DeferredDeliveryImageType.PHOTO);
      }
      console.info(`isDeferredImageDeliveryEnabled isEnabled: ${isEnabled}`);
      return isEnabled;

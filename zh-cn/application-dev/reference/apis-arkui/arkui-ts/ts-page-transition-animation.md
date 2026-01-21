@@ -104,6 +104,8 @@ onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
 ## PageTransitionOptions对象说明
 
+退场/进场动效的参数。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -236,12 +238,13 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 | type | [RouteType](#routetype枚举说明) | 是 |  页面转场类型。 |
 | progress | number | 是 | 转场进度。progress从0变化到1。 |
 
- ## RouteType枚举说明
+## RouteType枚举说明
+
+页面转场类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 
 | 名称 | 值 | 说明                                                         |
 | ---- | ---- | -------------------------------------------------------- |
@@ -250,6 +253,8 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 | Pop  | 2 | 重定向指定页面。从PageB回退到之前的页面PageA。对于PageB，指定RouteType为None或者Pop的PageTransitionExit组件样式生效，对于PageA，指定RouteType为None或者Pop的PageTransitionEnter组件样式生效。 |
 
 ## SlideEffect枚举说明
+
+页面转场时的滑入滑出效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 | 接口名                                              | 描述                                         |
 | --------------------------------------------------- | -------------------------------------------- |
@@ -84,8 +84,8 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    }
    
    static napi_value Leak(napi_env env, napi_callback_info info) {
-   	std::thread t1(NativeLeak);
-   	t1.detach();
+    std::thread t1(NativeLeak);
+    t1.detach();
        return {};
    }
    ```

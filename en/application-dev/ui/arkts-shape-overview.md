@@ -4,13 +4,13 @@
 <!--Owner: @sd-wu; @hehongyang3-->
 <!--Designer: @sunbees; @CCFFWW-->
 <!--Tester: @liuli0427; @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 There are two methods for drawing geometric shapes: (1) by directly drawing them using the [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md) component; (2) by clipping a component into a geometric shape using the shape clipping attribute [clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12).
 
 ## When to Use
 
-| Method|Usage Scenario |
+| Method|Use Case |
 | ----------| ----------------------------------- |
 | [Drawing geometric shapes (Shape)](arkts-geometric-shape-drawing.md)| Create components of a specified shape and draw geometric graphics directly on the page.|
 | [Shape clipping (clipShape)](arkts-clip-shape.md)| Clip a component into a specified geometric shape.|

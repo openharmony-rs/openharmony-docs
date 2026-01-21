@@ -286,6 +286,68 @@ function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): v
 }
 ```
 
+## onPhotoAvailable<sup>23+</sup>
+
+onPhotoAvailable(callback: Callback\<PhotoEx\>): void
+
+注册监听全质量图和未压缩图。使用callback异步回调。
+
+> **说明：**
+>
+> 注册监听接口时，不支持在该接口监听的回调方法里调用[offPhotoAvailable](#offphotoavailable23)注销回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型      | 必填 | 说明                                  |
+| -------- | ---------- | --- | ------------------------------------ |
+| callback | Callback\<[PhotoEx](arkts-apis-camera-PhotoEx.md)\> | 是   | 回调函数，用于监听全质量图和未压缩图上报事件。 |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(photoEx: camera.PhotoEx): void {
+  let picture: image.Image | image.Picture = photoEx.main;
+}
+
+function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.onPhotoAvailable(callback);
+}
+```
+
+## offPhotoAvailable<sup>23+</sup>
+
+offPhotoAvailable(callback?: Callback\<PhotoEx\>): void
+
+注销监听全质量图和未压缩图。使用callback异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[PhotoEx](arkts-apis-camera-PhotoEx.md)\> | 否  | 回调函数，如果指定参数则取消对应callback，callback对象不可是匿名函数，否则取消所有callback。 |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { image } from '@kit.ImageKit';
+
+function callback(photoEx: camera.PhotoEx): void {
+  let picture: image.Image | image.Picture = photoEx.main;
+}
+
+function unRegisterPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): void {
+  photoOutput.offPhotoAvailable(callback);
+}
+```
+
 ## on('captureStartWithInfo')<sup>11+</sup>
 
 on(type: 'captureStartWithInfo', callback: AsyncCallback\<CaptureStartInfo\>): void
@@ -1065,9 +1127,8 @@ getPhotoRotation(deviceDegree: number): ImageRotation
 
 获取拍照旋转角度。
 
-- 设备自然方向：设备默认使用方向，手机为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度，手机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-- 屏幕显示方向：需要屏幕显示的图片左上角为第一个像素点为坐标原点。锁屏时与自然方向一致。
+- 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
+- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -1083,7 +1144,7 @@ getPhotoRotation(deviceDegree: number): ImageRotation
 
 |      类型      | 说明        |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 获取拍照旋转角度。若接口调用失败，返回undefined。 |
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 返回拍照旋转角度。若接口调用失败，返回undefined。 |
 
 **错误码：**
 
@@ -1113,6 +1174,53 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : nu
 }
 ```
 
+## getPhotoRotation<sup>23+</sup>
+
+getPhotoRotation(): ImageRotation
+
+获取拍照旋转角度。
+
+- 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
+- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+|      类型      | 说明        |
+| -------------  |-----------|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 返回拍照旋转角度。若接口调用失败，返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID   | 错误信息                         |
+|---------|------------------------------|
+| 7400201 | Camera service fatal error.  |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testGetPhotoRotation(photoOutput: camera.PhotoOutput): camera.ImageRotation {
+  let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    photoRotation = photoOutput.getPhotoRotation();
+    console.info(`Photo rotation is: ${photoRotation}`);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The photoOutput.getPhotoRotation call failed. error code: ${err.code}`);
+  }
+  return photoRotation;
+}
+```
 
 ## on('captureStart')<sup>(deprecated)</sup>
 
@@ -1215,6 +1323,7 @@ isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPriorit
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { camera } from '@kit.CameraKit';
+
 let photoOutput: camera.PhotoOutput;
 
 function isPhotoQualityPrioritizationSupported(qualityPrioritization: camera.PhotoQualityPrioritization): boolean {
@@ -1261,6 +1370,7 @@ setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { camera } from '@kit.CameraKit';
+
 let photoOutput: camera.PhotoOutput;
 
 function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualityPrioritization): void {

@@ -14,7 +14,7 @@ Implements a **WebStorage** object to manage the Web SQL database and HTML5 Web 
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 >
 > - You must load the **Web** component before calling the APIs in **WebStorage**.
 >

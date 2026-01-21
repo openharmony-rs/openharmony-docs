@@ -33,7 +33,7 @@ Declares tensor data formats.
 
 ### OH_AI_Format
 
-```
+```c
 enum OH_AI_Format
 ```
 

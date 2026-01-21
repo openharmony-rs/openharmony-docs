@@ -12,13 +12,15 @@ The module provides APIs for you to install, uninstall, and recover bundles on d
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.bundle.installer.install](js-apis-installer-sys.md) instead.
+> The APIs of this module have been deprecated since API version 9. You are advised to use [@ohos.bundle.installer.install](js-apis-installer-sys.md) instead.
 >
 > The APIs provided by this module are system APIs.
 
 ## BundleInstaller.install<sup>(deprecated)<sup>
 
-This API is deprecated since API version 9. You are advised to use [@ohos.bundle.installer.install](js-apis-installer-sys.md#bundleinstallerinstall) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [@ohos.bundle.installer.install](js-apis-installer-sys.md#bundleinstallerinstall) instead.
 
 install(bundleFilePaths: Array&lt;string&gt;, param: InstallParam, callback: AsyncCallback&lt;InstallStatus&gt;): void;
 
@@ -71,7 +73,9 @@ bundleInstall.getBundleInstaller().then(installer => {
 
 ## BundleInstaller.uninstall<sup>(deprecated)<sup>
 
-This API is deprecated since API version 9. You are advised to use [uninstall](js-apis-installer-sys.md#bundleinstalleruninstall) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [uninstall](js-apis-installer-sys.md#bundleinstalleruninstall) instead.
 
 uninstall(bundleName: string, param: InstallParam, callback: AsyncCallback&lt;InstallStatus&gt;): void;
 
@@ -123,7 +127,9 @@ bundleInstall.getBundleInstaller().then(installer => {
 ```
 ## BundleInstaller.recover<sup>(deprecated)<sup>
 
-This API is deprecated since API version 9. You are advised to use [recover](js-apis-installer-sys.md#bundleinstallerrecover) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [recover](js-apis-installer-sys.md#bundleinstallerrecover) instead.
 
 recover(bundleName: string, param: InstallParam, callback: AsyncCallback&lt;InstallStatus&gt;): void;
 
@@ -176,13 +182,15 @@ bundleInstall.getBundleInstaller().then(installer => {
 
 ## InstallParam<sup>(deprecated)<sup>
 
-This API is deprecated since API version 9. You are advised to use [InstallParam](js-apis-installer-sys.md#installparam) instead.
+> **NOTE**
+>
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [InstallParam](js-apis-installer-sys.md#installparam) instead.
 
 Describes the parameters required for bundle installation, recovery, or uninstall.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework
+ **System capability**: SystemCapability.BundleManager.BundleFramework
 
-**System API**: This is a system API.
+ **System API**: This is a system API.
 
 | Name       | Type   | Read-Only| Optional| Description              |
 | ----------- | ------- | ---- | ---- | ------------------ |
@@ -194,14 +202,14 @@ Describes the parameters required for bundle installation, recovery, or uninstal
 
 Describes the bundle installation or uninstall status.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework
+ **System capability**: SystemCapability.BundleManager.BundleFramework
 
-**System API**: This is a system API.
+ **System API**: This is a system API.
 
 | Name         | Type                                                        | Read-Only| Optional| Description                                                        |
 | ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | status        | bundle.[InstallErrorCode](js-apis-Bundle.md#installerrorcodedeprecated) | No  | No  | Installation or uninstall error code. The value must be defined in [InstallErrorCode](js-apis-Bundle.md#installerrorcodedeprecated).|
-| statusMessage | string                                                       | No  | No  | Installation or uninstall status message.  <br>**SUCCESS**: Installation succeeded.<br>**STATUS_INSTALL_FAILURE**: Installation failed (no installation file exists).<br>**STATUS_INSTALL_FAILURE_ABORTED**: Installation aborted.<br>**STATUS_INSTALL_FAILURE_INVALID**: Invalid installation parameter.<br>**STATUS_INSTALL_FAILURE_CONFLICT**: Installation conflict. (The basic information of the application to update is inconsistent with that of the existing application.)<br>**STATUS_INSTALL_FAILURE_STORAGE**: Failed to store the bundle information.<br>**STATUS_INSTALL_FAILURE_INCOMPATIBLE**: Installation incompatibility. (A downgrade occurs or the signature information is incorrect.)<br>**STATUS_UNINSTALL_FAILURE**: Uninstall failed. (The application to be uninstalled is not found.)<br>**STATUS_UNINSTALL_FAILURE_ABORTED**: Uninstall aborted. (This error code is not in use.)<br>**STATUS_UNINSTALL_FAILURE_ABORTED**: Uninstall conflict. (Failed to uninstall a system application or end the application process.)<br>**STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT**: Installation failed. (Download timed out.)<br>**STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED**: Installation failed. (Download failed.)<br>**STATUS_RECOVER_FAILURE_INVALID**: Failed to restore the pre-installed application.<br>**STATUS_ABILITY_NOT_FOUND**: Ability not found.<br>**STATUS_BMS_SERVICE_ERROR**: BMS service error.<br>**STATUS_FAILED_NO_SPACE_LEFT**: Insufficient device space.<br>**STATUS_GRANT_REQUEST_PERMISSIONS_FAILED**: Application authorization failed.<br>**STATUS_INSTALL_PERMISSION_DENIED**: No installation permission.<br>**STATUS_UNINSTALL_PERMISSION_DENIED**: No uninstall permission.|
+| statusMessage | string                                                       | No  | No  | Installation or uninstall status message.  <br> **SUCCESS**: Installation succeeded.<br> **STATUS_INSTALL_FAILURE**: Installation failed (no installation file exists).<br> **STATUS_INSTALL_FAILURE_ABORTED**: Installation aborted.<br> **STATUS_INSTALL_FAILURE_INVALID**: Invalid installation parameter.<br> **STATUS_INSTALL_FAILURE_CONFLICT**: Installation conflict. (The basic information of the new version is inconsistent with that of the currently installed application.)<br> **STATUS_INSTALL_FAILURE_STORAGE**: Failed to store the bundle information.<br> **STATUS_INSTALL_FAILURE_INCOMPATIBLE**: Installation incompatible. (Commonly occurs during an unsupported version downgrade or due to incorrect signature information.)<br> **STATUS_UNINSTALL_FAILURE**: Uninstall failed. (The application to be uninstalled is not found.)<br> **STATUS_UNINSTALL_FAILURE_ABORTED**: Uninstall aborted. (This error code is not in use.)<br> **STATUS_UNINSTALL_FAILURE_ABORTED**: Uninstall conflict. (Failed to uninstall a system application or end the application process.)<br> **STATUS_INSTALL_FAILURE_DOWNLOAD_TIMEOUT**: Installation failed. (Download timed out.)<br> **STATUS_INSTALL_FAILURE_DOWNLOAD_FAILED**: Installation failed. (Download failed.)<br> **STATUS_RECOVER_FAILURE_INVALID**: Failed to restore the pre-installed application.<br> **STATUS_ABILITY_NOT_FOUND**: Ability not found.<br> **STATUS_BMS_SERVICE_ERROR**: BMS service error.<br> **STATUS_FAILED_NO_SPACE_LEFT**: Insufficient device space.<br> **STATUS_GRANT_REQUEST_PERMISSIONS_FAILED**: Application authorization failed.<br> **STATUS_INSTALL_PERMISSION_DENIED**: No installation permission.<br> **STATUS_UNINSTALL_PERMISSION_DENIED**: No uninstall permission.|
 
 ## Obtaining the Sandbox Path
 For the FA model, the sandbox path of a bundle can be obtained using the APIs in [Context](js-apis-inner-app-context.md). For the stage model, the sandbox path can be obtained using the property in [Context](js-apis-inner-application-uiAbilityContext-sys.md#uiabilitycontext). The following describes how to obtain the sandbox path.

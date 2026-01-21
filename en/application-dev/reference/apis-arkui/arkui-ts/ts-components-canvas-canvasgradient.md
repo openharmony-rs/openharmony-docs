@@ -51,12 +51,12 @@ This example shows how to add a color stop using **addColorStop**. Colors in RGB
         Canvas(this.context)
           .width('100%')
           .height('100%')
-          .backgroundColor('#ffff00')
+          .backgroundColor('rgb(213,213,213)')
           .onReady(() => {
             let grad = this.context.createLinearGradient(50, 0, 300, 100)
-            grad.addColorStop(0.0, '#ff0000')
-            grad.addColorStop(0.5, '#ffffff')
-            grad.addColorStop(1.0, '#00ff00')
+            grad.addColorStop(0.0, 'rgb(39,135,217)')
+            grad.addColorStop(0.5, 'rgb(255,238,240)')
+            grad.addColorStop(1.0, 'rgb(23,169,141)')
             this.context.fillStyle = grad
             this.context.fillRect(0, 0, 400, 400)
           })
@@ -90,7 +90,7 @@ Adds a color stop for the **CanvasGradient** object based on the specified offse
 
 **Error codes**
 
-For details about the following error codes, see [Canvas Component Error Codes](../errorcode-canvas.md).
+For details about the error codes, see [Canvas Component Error Codes](../errorcode-canvas.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -104,7 +104,7 @@ For details about the following error codes, see [Canvas Component Error Codes](
 **Example**
 
 Sets the gradient breakpoint value of a specified color gamut, including the offset and color. Set the color gamut mode of the window to wide color gamut. For details, see [setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9).
-  ```ts
+```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ColorMetrics } from '@kit.ArkUI'

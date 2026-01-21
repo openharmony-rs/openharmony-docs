@@ -32,7 +32,7 @@ The file declares the DRM error codes.
 
 ### Drm_ErrCode
 
-```
+```c
 enum Drm_ErrCode
 ```
 

@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ArkTS provides conditional rendering capabilities that allow you to dynamically display different UI content based on application state using **if**, **else**, and **else if** statements.
+ArkTS supports conditional rendering, allowing you to display different content based on the application state using **if**, **else**, and **else if** statements.
 
 > **NOTE**
 >
@@ -41,10 +41,12 @@ Condition expressions can include TypeScript expressions. However, expressions w
 
 ### Basic Conditional Rendering with if
 
-```ts
+<!-- @[render_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfRendering.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct MyComponent {
+struct IfExample {
   @State count: number = 0;
 
   build() {
@@ -80,11 +82,13 @@ Each branch of the **if** statement includes a build function. Each of such buil
 
 In this example, when **count** increases from 0 to 1, the condition **if (this.count > 0)** becomes true, executing the branch's build function to create and add a **Text** component to the parent **Column**. If **count** changes back to 0 later, then the **Text** component will be removed from the **Column** component. Since there is no **else** branch, no new build function will be executed.
 
-### if/else with Child Component State Management
+### if/else Statements and Child Component States
 
 This example demonstrates **if/else** statements with child components containing [\@State](../state-management/arkts-state.md) decorated variables.
 
-```ts
+<!-- @[render_if_else](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfElseRendering.ets) -->
+
+``` TypeScript
 @Component
 struct CounterView {
   @State counter: number = 0;
@@ -112,9 +116,9 @@ struct MainView {
   build() {
     Column() {
       if (this.toggle) {
-        CounterView({ label: 'CounterView #positive' })
+        CounterView({ label: 'CounterView #positive' });
       } else {
-        CounterView({ label: 'CounterView #negative' })
+        CounterView({ label: 'CounterView #negative' });
       }
       Button(`toggle ${this.toggle}`)
         .onClick(() => {
@@ -127,13 +131,13 @@ struct MainView {
 }
 ```
 
-Initial rendering: creates **CounterView** child component with label **"CounterView \#positive"** and initial **counter** value **0**.
+Initial rendering: creates **CounterView** child component with label **'CounterView \#positive'** and initial **counter** value **0**.
 
-**Modification to the counter variable of CounterView**: re-renders the existing **CounterView** component (with label **"CounterView #positive"**) while preserving the state variable value.
+**Modification to the counter variable of CounterView**: re-renders the existing **CounterView** component (with label **'CounterView \#positive'**) while preserving the state variable value.
 
 **MainView.toggle change to false**: updates the **if** statement, causing the following:
-1. Removal of the old **CounterView** instance (label: **"CounterView \#positive"**).
-2. Creation of a new **CounterView** instance (label: **"CounterView \#negative"**) with **counter** reset to **0**.
+1. Removal of the old **CounterView** instance (**label**: **'CounterView \#positive'**).
+2. Creation of a new **CounterView** instance (**label**: **'CounterView \#negative'**) with **counter** reset to **0**.
 
 > **NOTE**
 >
@@ -141,9 +145,11 @@ Initial rendering: creates **CounterView** child component with label **"Counter
 
 The following example shows the required modifications if the value of **counter** needs to be preserved when the **if** condition changes:
 
-```ts
+<!-- @[render_keep_counter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/KeepCounter.ets) -->
+
+``` TypeScript
 @Component
-struct CounterView {
+struct KeepCounterView {
   @Link counter: number;
   label: string = 'unknown';
 
@@ -164,16 +170,16 @@ struct CounterView {
 
 @Entry
 @Component
-struct MainView {
+struct KeepMainView {
   @State toggle: boolean = true;
   @State counter: number = 0;
 
   build() {
     Column() {
       if (this.toggle) {
-        CounterView({ counter: $counter, label: 'CounterView #positive' })
+        KeepCounterView({ counter: $counter, label: 'CounterView #positive' });
       } else {
-        CounterView({ counter: $counter, label: 'CounterView #negative' })
+        KeepCounterView({ counter: $counter, label: 'CounterView #negative' });
       }
       Button(`toggle ${this.toggle}`)
         .onClick(() => {
@@ -186,16 +192,18 @@ struct MainView {
 }
 ```
 
-Here, the \@State decorated variable **counter** is owned by the parent component. Therefore, it is not destroyed when a **CounterView** component instance is destroyed. The **CounterView** component references the state through the [\@Link](../state-management/arkts-link.md) decorator. The state must be moved from a child to its parent (or parent of parent) to avoid losing it when the conditional content (or repeated content) is destroyed.
+Here, the \@State decorated variable **counter** is owned by the parent component. Therefore, it is not destroyed when the **KeepCounterView** component instance is destroyed. The **KeepCounterView** component references the state through the [\@Link](../state-management/arkts-link.md) decorator. The state must be moved from a child to its parent (or parent of parent) to avoid losing it when the conditional content (or repeated content) is destroyed.
 
 ### Nested Conditional Statements
 
 Nested conditional statements maintain the same rendering rules without affecting parent component constraints.
 
-```ts
+<!-- @[render_nested_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/NestedIf.ets) -->
+
+``` TypeScript
 @Entry
 @Component
-struct MyComponent {
+struct NestedIf {
   @State toggle: boolean = false;
   @State toggleColor: boolean = false;
 

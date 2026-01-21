@@ -18,7 +18,7 @@
   - [查询关键资产(ArkTS)](asset-js-query.md)
   - [查询需要用户认证的关键资产(ArkTS)](asset-js-query-auth.md)
   - [管理群组关键资产(ArkTS)](asset-js-group-access-control.md)
-  - [同步（备份恢复）关键资产](asset-js-sync.md)
+  - [同步（备份恢复）关键资产(ArkTS)](asset-js-sync.md)
   <!--Del-->
   - [操作指定用户空间下的关键资产(仅对系统应用开放)(ArkTS)](asset-as-user-sys.md)
   <!--DelEnd-->

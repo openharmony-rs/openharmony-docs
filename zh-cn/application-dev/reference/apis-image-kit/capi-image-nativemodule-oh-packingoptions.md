@@ -12,7 +12,7 @@ typedef struct OH_PackingOptions OH_PackingOptions
 
 ## 概述
 
-OH_PackingOptions是native层封装的图像编码选项结构体，OH_PackingOptions结构体不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。
+OH_PackingOptions是native层封装的图像编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。
 
 创建PackingOptions结构体的对象使用[OH_PackingOptions_Create](capi-image-packer-native-h.md#oh_packingoptions_create)函数。
 

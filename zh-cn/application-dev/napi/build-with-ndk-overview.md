@@ -1,7 +1,12 @@
 # NDK工程构建概述
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @liyiming13-->
+<!--Designer: @liyiming13-->
+<!--Tester: @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
-
-OpenHarmony NDK默认使用CMake作为构建系统，随包提供了符合OpenHarmony工具链的基础配置文件[ohos.toolchain.cmake](#ohostoolchaincmake简介)，用于预定义CMake变量来简化开发者配置。
+OpenHarmony NDK默认使用CMake作为构建系统，随包提供了符合OpenHarmony工具链的基础配置文件<!--RP2-->ohos.toolchain.cmake<!--RP2End-->，用于预定义CMake变量来简化开发者配置。
 
 
 常用的NDK工程构建方式有：
@@ -19,7 +24,7 @@ OpenHarmony NDK默认使用CMake作为构建系统，随包提供了符合OpenHa
 
 本章节将通过具体示例介绍如何在Native工程中使用NDK，以及如何编写CMake脚本来构建NDK工程。
 
-
+<!--RP1-->
 ## ohos.toolchain.cmake简介
 
 ohos.toolchain.cmake是OpenHarmony NDK提供给CMake的toolchain脚本，里面预定义了编译OpenHarmony应用需要设置的编译参数，如交叉编译设备的目标、C++运行时库的链接方式等；这些参数在调用CMake命令时，可以从命令行传入，来改变默认编译链接行为。此文件中的常用参数见下表。
@@ -35,3 +40,4 @@ ohos.toolchain.cmake是OpenHarmony NDK提供给CMake的toolchain脚本，里面�
 - --target={arch}-linux-ohos参数，通知编译器生成相应架构下符合OpenHarmony ABI的二进制文件。
 
 - --sysroot={ndk_root}/sysroot参数，告知编译器OpenHarmony系统头文件的所在位置。
+<!--RP1End-->

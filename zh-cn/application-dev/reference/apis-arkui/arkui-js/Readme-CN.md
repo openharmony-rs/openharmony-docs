@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-- 组件通用信息<!--js-full-universal-comp-infor-->
+- 组件通用信息<!--js-full-universal-comp-inform-->
   - [通用属性](js-components-common-attributes.md)
   - [通用样式](js-components-common-styles.md)
   - [通用事件](js-components-common-events.md)

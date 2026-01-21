@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## When to Use
@@ -19,24 +19,31 @@ To implement consistent immersive experience, a communication mechanism between 
 ## Access Guide
 1. The foreground application [sets the immersive mode for the text box](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#keyboardappearance15). The sample code is as follows:
 
-<!-- @[input_case_input_KeyboardAppearance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
-
-``` TypeScript
-      TextArea({placeholder: 'Immersive mode'})
-        .keyboardAppearance(KeyboardAppearance.IMMERSIVE)
-
-      TextArea({placeholder: 'Non-immersive mode'})
-        .keyboardAppearance(KeyboardAppearance.NONE_IMMERSIVE)
-```
+   <!-- @[input_case_input_KeyboardAppearance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
+   
+   ``` TypeScript
+   TextArea({placeholder: 'Immersive mode'})
+     .keyboardAppearance(KeyboardAppearance.IMMERSIVE)
+   
+   TextArea({placeholder: 'Non-immersive mode'})
+     .keyboardAppearance(KeyboardAppearance.NONE_IMMERSIVE)
+   ```
 
 
 2. The input method application [subscribes to the text box attribute change event](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oneditorattributechanged10) and detects the immersive mode desired by the foreground application through the **immersiveMode** field in the **EditorAttribute** callback. The sample code is as follows:
 
-<!-- @[input_case_input_immersiveModeeditorAttributeChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
-```
+   <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Check whether the immersive mode is used. If the immersive mode is used, select the immersive mode.
+   inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+     console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
+     if (attr.immersiveMode == 1) {
+       this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+       console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
+     }
+   })
+   ```
 
 
 3. The input method application [sets the immersive mode](../reference/apis-ime-kit/js-apis-inputmethodengine.md#setimmersivemode15).
@@ -47,17 +54,15 @@ To implement consistent immersive experience, a communication mechanism between 
 
    The following sample code shows how to set the immersive mode. You must first use [createPanel](../reference/apis-ime-kit/js-apis-inputmethodengine.md#createpanel10) to obtain a panel instance, and then call the **setImmersiveMode** API using the obtained instance.
    
-<!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    // Check whether the immersive mode is used. If the immersive mode is used, select the immersive mode.
-    // [Start input_case_input_immersiveModeeditorAttributeChanged]
-    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
-      // [End input_case_input_immersiveModeeditorAttributeChanged]
-      console.log('recv editorAttributeChanged, immersiveMode: ', JSON.stringify(attr.immersiveMode));
-      if (attr.immersiveMode == 1) {
-        this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
-        console.log('recv editorAttributeChanged, panel:', JSON.stringify(this.panel?.getImmersiveMode()));
-      }
-    })
-```
+   <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Check whether the immersive mode is used. If the immersive mode is used, select the immersive mode.
+   inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+     console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
+     if (attr.immersiveMode == 1) {
+       this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+       console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
+     }
+   })
+   ```

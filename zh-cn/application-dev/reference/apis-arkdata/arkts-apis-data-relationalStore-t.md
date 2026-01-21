@@ -90,3 +90,31 @@ type ModifyTime = Map<PRIKeyType, UTCTime>
 | 类型                                                    | 说明                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | Map<[PRIKeyType](#prikeytype10), [UTCTime](#utctime10)> | 键表示是数据库表某一行的主键，值表示该行的最后修改时间，用UTC格式表示。 |
+
+## RowData<sup>23+</sup>
+
+type RowData = Array\<ValueType>
+
+用于表示数据库表中的某一行数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 类型              | 说明                           |
+| ---------------- | ---------------------------- |
+| Array<[ValueType](#valuetype)> | 表示[ValueType](#valuetype)类型的数组。 |
+
+## RowsData<sup>23+</sup>
+
+type RowsData = Array\<RowData>
+
+用于表示数据库表中的多行数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 类型              | 说明                           |
+| ---------------- | ---------------------------- |
+| Array<[RowData](#rowdata23)> | 表示[RowData](#rowdata23)类型的数组。 |

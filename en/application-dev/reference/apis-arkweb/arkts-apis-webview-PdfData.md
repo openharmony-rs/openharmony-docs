@@ -14,7 +14,7 @@ Implements the output data stream class of **createPdf()**.
 >
 > - The initial APIs of this class are supported since API version 14.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 >
 > - When a PDF file is generated on a web page, a data stream is returned, which is encapsulated by the **PdfData** class.
 

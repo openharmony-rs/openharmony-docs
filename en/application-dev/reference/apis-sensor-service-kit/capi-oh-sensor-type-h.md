@@ -74,7 +74,7 @@ Declares the common sensor attributes.
 
 ### Sensor_Type
 
-```
+```c
 enum Sensor_Type
 ```
 
@@ -86,25 +86,25 @@ Enumerates the sensor types.
 
 | Enum Item| Description|
 | -- | -- |
-| SENSOR_TYPE_ACCELEROMETER = 1 | Acceleration sensor.|
-| SENSOR_TYPE_GYROSCOPE = 2 | Gyroscope sensor.|
-| SENSOR_TYPE_AMBIENT_LIGHT = 5 | Ambient light sensor.|
-| SENSOR_TYPE_MAGNETIC_FIELD = 6 | Magnetic field sensor.|
-| SENSOR_TYPE_BAROMETER = 8 | Barometer sensor|
-| SENSOR_TYPE_HALL = 10 | Hall effect sensor.|
-| SENSOR_TYPE_PROXIMITY = 12 | Proximity sensor.|
-| SENSOR_TYPE_ORIENTATION = 256 | Orientation sensor.|
-| SENSOR_TYPE_GRAVITY = 257 | Gravity sensor.|
-| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | Linear acceleration sensor.|
-| SENSOR_TYPE_ROTATION_VECTOR = 259 | Rotation vector sensor.|
-| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | Game rotation vector sensor|
-| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | Pedometer detection sensor.|
-| SENSOR_TYPE_PEDOMETER = 266 | Pedometer sensor.|
-| SENSOR_TYPE_HEART_RATE = 278 | Heart rate sensor.|
+| SENSOR_TYPE_ACCELEROMETER = 1 | Acceleration sensor.<br>**Since**: 11|
+| SENSOR_TYPE_GYROSCOPE = 2 | Gyroscope sensor.<br>**Since**: 11|
+| SENSOR_TYPE_AMBIENT_LIGHT = 5 | Ambient light sensor.<br>**Since**: 11|
+| SENSOR_TYPE_MAGNETIC_FIELD = 6 | Magnetic field sensor.<br>**Since**: 11|
+| SENSOR_TYPE_BAROMETER = 8 | Barometer sensor<br>**Since**: 11|
+| SENSOR_TYPE_HALL = 10 | Hall effect sensor.<br>**Since**: 11|
+| SENSOR_TYPE_PROXIMITY = 12 | Proximity sensor.<br>**Since**: 11|
+| SENSOR_TYPE_ORIENTATION = 256 | Orientation sensor.<br>**Since**: 11|
+| SENSOR_TYPE_GRAVITY = 257 | Gravity sensor.<br>**Since**: 11|
+| SENSOR_TYPE_LINEAR_ACCELERATION = 258 | Linear acceleration sensor.<br>**Since**: 13|
+| SENSOR_TYPE_ROTATION_VECTOR = 259 | Rotation vector sensor.<br>**Since**: 11|
+| SENSOR_TYPE_GAME_ROTATION_VECTOR = 262 | Game rotation vector sensor<br>**Since**: 13|
+| SENSOR_TYPE_PEDOMETER_DETECTION = 265 | Pedometer detection sensor.<br>**Since**: 11|
+| SENSOR_TYPE_PEDOMETER = 266 | Pedometer sensor.<br>**Since**: 11|
+| SENSOR_TYPE_HEART_RATE = 278 | Heart rate sensor.<br>**Since**: 11|
 
 ### Sensor_Result
 
-```
+```c
 enum Sensor_Result
 ```
 
@@ -116,14 +116,14 @@ Enumerates the sensor result codes.
 
 | Enum Item| Description|
 | -- | -- |
-| SENSOR_SUCCESS = 0 | Operation success.|
-| SENSOR_PERMISSION_DENIED = 201 | Permission verification failed.|
-| SENSOR_PARAMETER_ERROR = 401 | An error occurs during parameter verification. For example, a mandatory parameter is not passed in, or the parameter type passed in is incorrect.|
-| SENSOR_SERVICE_EXCEPTION = 14500101 | The sensor service is abnormal.|
+| SENSOR_SUCCESS = 0 | Operation success.<br>**Since**: 11|
+| SENSOR_PERMISSION_DENIED = 201 | Permission verification failed.<br>**Since**: 11|
+| SENSOR_PARAMETER_ERROR = 401 | An error occurs during parameter verification. For example, a mandatory parameter is not passed in, or the parameter type passed in is incorrect.<br>**Since**: 11|
+| SENSOR_SERVICE_EXCEPTION = 14500101 | The sensor service is abnormal.<br>**Since**: 11|
 
 ### Sensor_Accuracy
 
-```
+```c
 enum Sensor_Accuracy
 ```
 
@@ -135,23 +135,23 @@ Enumerates the accuracy levels of data reported by a sensor.
 
 | Enum Item| Description|
 | -- | -- |
-| SENSOR_ACCURACY_UNRELIABLE = 0 | The sensor data is unreliable. It is possible that the sensor does not contact with the device to measure.|
-| SENSOR_ACCURACY_LOW = 1 | The sensor data is at a low accuracy level. The data must be calibrated based on the environment before being used.|
-| SENSOR_ACCURACY_MEDIUM = 2 | The sensor data is at a medium accuracy level. You are advised to calibrate the data based on the environment before using it.|
-| SENSOR_ACCURACY_HIGH = 3 | The sensor data is at a high accuracy level. The data can be used directly.|
+| SENSOR_ACCURACY_UNRELIABLE = 0 | The sensor data is unreliable. It is possible that the sensor does not contact with the device to measure.<br>**Since**: 11|
+| SENSOR_ACCURACY_LOW = 1 | The sensor data is at a low accuracy level. The data must be calibrated based on the environment before being used.<br>**Since**: 11|
+| SENSOR_ACCURACY_MEDIUM = 2 | The sensor data is at a medium accuracy level. You are advised to calibrate the data based on the environment before using it.<br>**Since**: 11|
+| SENSOR_ACCURACY_HIGH = 3 | The sensor data is at a high accuracy level. The data can be used directly.<br>**Since**: 11|
 
 
 ## Function Description
 
 ### OH_Sensor_CreateInfos()
 
-```
+```c
 Sensor_Info **OH_Sensor_CreateInfos(uint32_t count)
 ```
 
 **Description**
 
-Creates an instance array using the given number. For details, see [Sensor_Info](capi-sensor-sensor-info.md).
+Creates an instance array using a given number. For details, see [Sensor_Info](capi-sensor-sensor-info.md).
 
 **Since**: 11
 
@@ -169,7 +169,7 @@ Creates an instance array using the given number. For details, see [Sensor_Info]
 
 ### OH_Sensor_DestroyInfos()
 
-```
+```c
 int32_t OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count)
 ```
 
@@ -190,11 +190,11 @@ Destroys the sensor instance array and reclaims the memory. For details, see [Se
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorInfo_GetName()
 
-```
+```c
 int32_t OH_SensorInfo_GetName(Sensor_Info* sensor, char *sensorName, uint32_t *length)
 ```
 
@@ -216,11 +216,11 @@ Obtains the sensor name.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorInfo_GetVendorName()
 
-```
+```c
 int32_t OH_SensorInfo_GetVendorName(Sensor_Info* sensor, char *vendorName, uint32_t *length)
 ```
 
@@ -242,11 +242,11 @@ Obtains the sensor's vendor name.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorInfo_GetType()
 
-```
+```c
 int32_t OH_SensorInfo_GetType(Sensor_Info* sensor, Sensor_Type *sensorType)
 ```
 
@@ -267,11 +267,11 @@ Obtains the sensor type.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorInfo_GetResolution()
 
-```
+```c
 int32_t OH_SensorInfo_GetResolution(Sensor_Info* sensor, float *resolution)
 ```
 
@@ -292,11 +292,11 @@ Obtains the sensor resolution.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorInfo_GetMinSamplingInterval()
 
-```
+```c
 int32_t OH_SensorInfo_GetMinSamplingInterval(Sensor_Info* sensor, int64_t *minSamplingInterval)
 ```
 
@@ -317,11 +317,11 @@ Obtains the minimum data reporting interval of a sensor.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorInfo_GetMaxSamplingInterval()
 
-```
+```c
 int32_t OH_SensorInfo_GetMaxSamplingInterval(Sensor_Info* sensor, int64_t *maxSamplingInterval)
 ```
 
@@ -342,11 +342,11 @@ Obtains the maximum data reporting interval of a sensor.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorEvent_GetType()
 
-```
+```c
 int32_t OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorType)
 ```
 
@@ -367,11 +367,11 @@ Obtains the sensor type.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorEvent_GetTimestamp()
 
-```
+```c
 int32_t OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestamp)
 ```
 
@@ -392,11 +392,11 @@ Obtains the timestamp of sensor data.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorEvent_GetAccuracy()
 
-```
+```c
 int32_t OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *accuracy)
 ```
 
@@ -417,11 +417,11 @@ Obtains the accuracy of sensor data.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorEvent_GetData()
 
-```
+```c
 int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t *length)
 ```
 
@@ -443,11 +443,11 @@ Obtains sensor data. The data length and content depend on the sensor type. The 
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_Sensor_CreateSubscriptionId()
 
-```
+```c
 Sensor_SubscriptionId *OH_Sensor_CreateSubscriptionId(void)
 ```
 
@@ -461,11 +461,11 @@ Creates a [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) instance
 
 | Type| Description|
 | -- | -- |
-| [Sensor_SubscriptionId *](capi-sensor-sensor-subscriptionid.md) | Pointer to the [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) instance if the operation is successful; NULL otherwise.|
+| [Sensor_SubscriptionId *](capi-sensor-sensor-subscriptionid.md) | Pointer to the [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) instance if the operation is successful; **NULL** otherwise.|
 
 ### OH_Sensor_DestroySubscriptionId()
 
-```
+```c
 int32_t OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)
 ```
 
@@ -485,11 +485,11 @@ Destroys a [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) instanc
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorSubscriptionId_GetType()
 
-```
+```c
 int32_t OH_SensorSubscriptionId_GetType(Sensor_SubscriptionId* id, Sensor_Type *sensorType)
 ```
 
@@ -510,11 +510,11 @@ Obtains the sensor type.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorSubscriptionId_SetType()
 
-```
+```c
 int32_t OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_Type sensorType)
 ```
 
@@ -539,7 +539,7 @@ Sets the sensor type.
 
 ### OH_Sensor_CreateSubscriptionAttribute()
 
-```
+```c
 Sensor_SubscriptionAttribute *OH_Sensor_CreateSubscriptionAttribute(void)
 ```
 
@@ -553,17 +553,17 @@ Creates a [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribut
 
 | Type| Description|
 | -- | -- |
-| [Sensor_SubscriptionAttribute *](capi-sensor-sensor-subscriptionattribute.md) | Pointer to the [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) instance if the operation is successful; NULL otherwise.|
+| [Sensor_SubscriptionAttribute *](capi-sensor-sensor-subscriptionattribute.md) | Pointer to the [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) instance if the operation is successful; **NULL** otherwise.|
 
 ### OH_Sensor_DestroySubscriptionAttribute()
 
-```
+```c
 int32_t OH_Sensor_DestroySubscriptionAttribute(Sensor_SubscriptionAttribute *attribute)
 ```
 
 **Description**
 
-Destroys the [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) instance and reclaims the memory.
+Destroys a [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) instance and reclaims the memory.
 
 **Since**: 11
 
@@ -581,7 +581,7 @@ Destroys the [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattri
 
 ### OH_SensorSubscriptionAttribute_SetSamplingInterval()
 
-```
+```c
 int32_t OH_SensorSubscriptionAttribute_SetSamplingInterval(Sensor_SubscriptionAttribute* attribute, const int64_t samplingInterval)
 ```
 
@@ -602,11 +602,11 @@ Sets the sensor data reporting interval.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorSubscriptionAttribute_GetSamplingInterval()
 
-```
+```c
 int32_t OH_SensorSubscriptionAttribute_GetSamplingInterval(Sensor_SubscriptionAttribute* attribute, int64_t *samplingInterval)
 ```
 
@@ -627,11 +627,11 @@ Obtains the sensor data reporting interval.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### Sensor_EventCallback()
 
-```
+```c
 typedef void (*Sensor_EventCallback)(Sensor_Event *event)
 ```
 
@@ -641,9 +641,15 @@ Defines the callback function used to report sensor data.
 
 **Since**: 11
 
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [Sensor_Event](capi-sensor-sensor-event.md)* event | Pointer to the sensor data information.|
+
 ### OH_Sensor_CreateSubscriber()
 
-```
+```c
 Sensor_Subscriber *OH_Sensor_CreateSubscriber(void)
 ```
 
@@ -657,11 +663,11 @@ Creates a [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [Sensor_Subscriber *](capi-sensor-sensor-subscriber.md) | Pointer to the [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) instance if the operation is successful; NULL otherwise.|
+| [Sensor_Subscriber *](capi-sensor-sensor-subscriber.md) | Pointer to the [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) instance if the operation is successful; **NULL** otherwise.|
 
 ### OH_Sensor_DestroySubscriber()
 
-```
+```c
 int32_t OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)
 ```
 
@@ -685,7 +691,7 @@ Destroys a [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) instance and re
 
 ### OH_SensorSubscriber_SetCallback()
 
-```
+```c
 int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sensor_EventCallback callback)
 ```
 
@@ -706,11 +712,11 @@ Sets a callback function to report sensor data.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|
 
 ### OH_SensorSubscriber_GetCallback()
 
-```
+```c
 int32_t OH_SensorSubscriber_GetCallback(Sensor_Subscriber* subscriber, Sensor_EventCallback *callback)
 ```
 
@@ -731,4 +737,4 @@ Obtains the callback function used to report sensor data.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise. The error code can be:|
+| int32_t | **SENSOR_SUCCESS** if the operation is successful; an error code defined in [Sensor_Result](capi-oh-sensor-type-h.md#sensor_result) otherwise.|

@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-约定外部密钥管理扩展（例如Ukey）中使用resourceId唯一标识资源。该resourceId目前支持通过[查询证书操作](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)返回。每个证书链对应1个resourceId。应用拿到resourceId后，需要[打开资源](huks-open-close-resource-ndk.md)，然后才可以进行后续密钥操作。操作完成后[关闭资源](huks-open-close-resource-ndk.md)。
+约定外部密钥管理扩展（例如Ukey）中使用resourceId唯一标识资源。该resourceId目前支持通过[查询证书操作](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)返回。每个证书链对应1个resourceId。应用拿到resourceId后，需要[打开资源](huks-open-close-resource-ndk.md#打开资源)，然后才可以进行后续密钥操作。操作完成后[关闭资源](huks-open-close-resource-ndk.md#关闭资源)。
 
 > **说明：**
 >

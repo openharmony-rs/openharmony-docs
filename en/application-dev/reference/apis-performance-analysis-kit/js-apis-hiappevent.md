@@ -72,7 +72,8 @@ Writes event information to the event file of the current day. This API uses an 
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base'
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let eventParams: Record<string, number | string> = {
   "int_data": 100,
@@ -81,11 +82,11 @@ let eventParams: Record<string, number | string> = {
 hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams, (err: BusinessError) => {
   if (err) {
     // Event writing error: Write the event to the event file after the invalid parameters in the event are ignored, or stop writing the event if the event verification fails.
-    console.error(`failed to write event, code=${err.code}`);
+    hilog.error(0x0000, 'hiAppEvent', `failed to write event, code: ${err.code}, message: ${err.message}`);
     return;
   }
   // Event writing success
-  console.log(`success to write event`);
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
 });
 ```
 
@@ -115,7 +116,8 @@ Writes event information to the event file of the current day. This API uses a p
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base'
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let eventParams: Record<string, number | string> = {
   "int_data": 100,
@@ -123,10 +125,10 @@ let eventParams: Record<string, number | string> = {
 };
 hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams).then(() => {
   // Event writing success
-  console.log(`success to write event`);
+  hilog.info(0x0000, 'hiAppEvent', `success to write event`);
 }).catch((err: BusinessError) => {
   // Event writing error: Write the event to the event file after the invalid parameters in the event are ignored, or stop writing the event if the event verification fails.
-  console.error(`failed to write event, code=${err.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `code: ${err.code}, message: ${err.message}`);
 });
 ```
 

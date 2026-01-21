@@ -11,7 +11,7 @@ The following figure shows the package structure of an application developed bas
 
 >
 > **NOTE**
-> It is the only application development model supported by API version 8 and earlier. Now, the stage model is recommended for application development.
+> The FA application development model is supported in API version 8 and earlier. Now, the stage model is recommended for application development.
 >
 
 

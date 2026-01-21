@@ -15,7 +15,7 @@ HUKS提供了接口供应用查询指定密钥是否存在。
 
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
-2. 初始化密钥属性集。用于查询时指定[密钥的属性TAG](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，当查询单个密钥时，TAG字段可传空。
+2. 初始化密钥属性集。用于查询时指定密钥的属性，查询单个密钥或者非群组密钥，可传空。
 
 3. 调用接口[hasKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukshaskeyitem11)，查询密钥是否存在。
 

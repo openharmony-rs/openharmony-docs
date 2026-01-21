@@ -23,16 +23,16 @@
 
 以下Node-API接口主要用于string值的创建和获取，使用场景如下：
 
-| 接口 | 描述 |
-| -------- | -------- |
-| napi_get_value_string_utf8 | 需要将ArkTS的字符类型的数据转换为utf8编码的字符时使用这个函数。 |
-| napi_create_string_utf8 | 需要通过UTF8编码的C字符串创建ArkTS string值时使用这个函数。 |
-| napi_get_value_string_utf16 | 需要将ArkTS的字符类型的数据转换为utf16编码的字符时使用这个函数。 |
-| napi_create_string_utf16 | 需要通过UTF16编码的C字符串创建ArkTS string值时使用这个函数。 |
-| napi_get_value_string_latin1 | 需要将ArkTS的字符类型的数据转换为ISO-8859-1编码的字符时使用这个函数。 |
-| napi_create_string_latin1 | 需要通过ISO-8859-1编码的字符串创建ArkTS string值时使用这个函数。 |
-| napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
-| napi_create_external_string_ascii | 需要通过外部ASCII编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
+| 接口 | 描述 | 起始支持版本 |
+| -------- | -------- | -------- |
+| napi_get_value_string_utf8 | 需要将ArkTS的字符类型的数据转换为utf8编码的字符时使用这个函数。 | 10 |
+| napi_create_string_utf8 | 需要通过UTF8编码的C字符串创建ArkTS string值时使用这个函数。 | 10 |
+| napi_get_value_string_utf16 | 需要将ArkTS的字符类型的数据转换为utf16编码的字符时使用这个函数。 | 10 |
+| napi_create_string_utf16 | 需要通过UTF16编码的C字符串创建ArkTS string值时使用这个函数。 | 10 |
+| napi_get_value_string_latin1 | 需要将ArkTS的字符类型的数据转换为ISO-8859-1编码的字符时使用这个函数。 | 10 |
+| napi_create_string_latin1 | 需要通过ISO-8859-1编码的字符串创建ArkTS string值时使用这个函数。 | 10 |
+| napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 | 22 |
+| napi_create_external_string_ascii | 需要通过外部ASCII编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 | 22 |
 
 ## 使用示例
 
@@ -347,7 +347,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public
 
 cpp部分代码
 
-<!-- @[napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 // 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
@@ -410,7 +410,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public
 
 cpp部分代码
 
-<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 // 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现

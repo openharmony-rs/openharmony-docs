@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **matrix4** module provides APIs for matrix transformation. You can use these APIs to translate, rotate, and scale images.
+This module provides APIs for matrix transformation. You can use these APIs to translate, rotate, and scale images.
 
 > **NOTE**
 >
@@ -714,7 +714,7 @@ Copies this matrix object.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.copy](#copy) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.copy](#copy) instead.
 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -766,7 +766,7 @@ Inverts this matrix object.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.invert](#invert) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.invert](#invert) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -784,7 +784,7 @@ Combines the effects of two matrices to generate a new matrix object.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.combine](#combine) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.combine](#combine) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -808,7 +808,7 @@ Translates this matrix object along the x, y, and z axes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.translate](#translate) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.translate](#translate) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -832,7 +832,7 @@ Scales this matrix object along the x, y, and z axes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.scale](#scale) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.scale](#scale) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -856,7 +856,7 @@ Rotates this matrix object along the x, y, and z axes.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.rotate](#rotate) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.rotate](#rotate) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -880,7 +880,7 @@ Applies the current transformation effect to a coordinate point.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [Matrix4Transit.transformPoint](#transformpoint) instead.
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [Matrix4Transit.transformPoint](#transformpoint) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

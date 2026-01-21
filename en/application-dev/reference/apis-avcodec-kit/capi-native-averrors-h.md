@@ -33,7 +33,7 @@ The file declares the error codes used by the media framework.
 
 ### OH_AVErrCode
 
-```
+```c
 enum OH_AVErrCode
 ```
 

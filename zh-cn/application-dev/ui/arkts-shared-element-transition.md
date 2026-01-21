@@ -41,10 +41,10 @@
 import { common } from '@kit.AbilityKit';
 
 class PostData {
-  // 图片使用Resource资源，需用户自定义
+  // 请将$r('app.media.flower')替换为实际资源文件
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -57,24 +57,33 @@ struct Index {
   // 数组中图片均使用Resource资源，需用户自定义
   private allPostData: PostData[] = [
     {
+      // 请将$r('app.media.flower')替换为实际资源文件
       avatar: $r('app.media.flower'),
       name: 'Alice',
-      // 'app.string.shareTransition_text1'资源文件中的value值为'天气晴朗'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text1'),
+      // 请将$r('app.string.shareTransition_text1')替换为实际资源文件，在本示例中该资源文件的value值为"天气晴朗"
+      message: $r('app.string.shareTransition_text1'),
+      // 请将$r('app.media.spring')替换为实际资源文件
+      // 请将$r('app.media.tall_tree')替换为实际资源文件
       images: [$r('app.media.spring'), $r('app.media.tall_tree')]
     },
     {
+      // 请将$r('app.media.sunset_sky')替换为实际资源文件
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // 'app.string.shareTransition_text2'资源文件中的value值为'你好世界'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text2'),
+      // 请将$r('app.string.shareTransition_text2')替换为实际资源文件，在本示例中该资源文件的value值为"你好世界"
+      message: $r('app.string.shareTransition_text2'),
+      // 请将$r('app.media.island')替换为实际资源文件
       images: [$r('app.media.island')]
     },
     {
+      // 请将$r('app.media.tall_tree')替换为实际资源文件
       avatar: $r('app.media.tall_tree'),
       name: 'Carl',
-      // 'app.string.shareTransition_text3'资源文件中的value值为'万物生长'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text3'),
+      // 请将$r('app.string.shareTransition_text3')替换为实际资源文件，在本示例中该资源文件的value值为"万物生长"
+      message: $r('app.string.shareTransition_text3'),
+      // 请将$r('app.media.flower')替换为实际资源文件
+      // 请将$r('app.media.sunset_sky')替换为实际资源文件
+      // 请将$r('app.media.spring')替换为实际资源文件
       images: [$r('app.media.flower'), $r('app.media.sunset_sky'), $r('app.media.spring')]
     }];
 
@@ -145,7 +154,7 @@ export default struct Post {
       // 展开态下组件增加的内容
       if (this.isExpand) {
         Column() {
-          // 'app.string.shareTransition_text1'资源文件中的value值为'评论区'
+          // 请将$r('app.string.shareTransition_text4')替换为实际资源文件，在本示例中该资源文件的value值为"评论区"
           Text($r('app.string.shareTransition_text4'))
           // 对评论区文本添加出现消失转场效果
             .transition(TransitionEffect.OPACITY
@@ -191,7 +200,7 @@ export default struct Post {
 
 ### 结合Stack使用
 
-可以利用Stack内后定义组件在最上方的特性控制组件在跨节点迁移后位z序最高，以展开收起卡片的场景为例，实现步骤为：
+可以利用Stack内后定义组件在最上方的特性控制组件在跨节点迁移后位置顺序最高，以展开收起卡片的场景为例，实现步骤为：
 
 - 展开卡片时，获取节点A的位置信息，将其中的组件迁移到与节点A位置一致的节点B处，节点B的层级高于节点A。
 
@@ -446,10 +455,10 @@ function postBuilder(data: Data) {
         .width(80)
         .height(80)
       Column() {
-        // 'shareTransition_text5'资源文件中的value值为'点击展开 Item '
+        // 请在resources\base\element\string.json文件中配置name为'shareTransition_text5'，value为非空字符串的资源
         Text((context as common.UIAbilityContext)?.resourceManager.getStringByNameSync('shareTransition_text5') + data.item)
           .fontSize(20)
-        // 'app.string.shareTransition_text6'资源文件中的value值为'共享元素转场'
+        // 请将$r('app.string.shareTransition_text6')替换为实际资源文件，在本示例中该资源文件的value值为"共享元素转场"
         Text($r('app.string.shareTransition_text6'))
           .fontSize(12)
           .fontColor(0x909399)
@@ -465,7 +474,7 @@ function postBuilder(data: Data) {
     // 展开后显示细节内容
     if (data.isExpand) {
       Row() {
-        // 'app.string.shareTransition_text7'资源文件中的value值为'展开态'
+        // 请将$r('app.string.shareTransition_text7')替换为实际资源文件，在本示例中该资源文件的value值为"展开态"
         Text($r('app.string.shareTransition_text7'))
           .fontSize(28)
           .fontColor(0x909399)
@@ -587,7 +596,7 @@ export const deleteNode = (id: string) => {
 
 - 由全屏状态返回到缩略图时，触发由PageTwo至PageOne的自定义转场动画，即PageTwo的共享元素组件从全屏状态做动画到原PageOne的缩略图状态，转场结束后共享元素组件从PageTwo被迁移回PageOne。
 
-```
+```txt
 ├──entry/src/main/ets                 // 代码区
 │  ├──CustomTransition
 │  │  ├──AnimationProperties.ets      // 一镜到底转场动画封装
@@ -742,7 +751,7 @@ export struct PageOne {
       Stack() {
         Column({ space: 20 }) {
           Row({ space: 10 }) {
-            // 图片使用Resource资源，需用户自定义
+            // 请将$r('app.media.avatar')替换为实际资源文件
             Image($r('app.media.avatar'))
               .size({ width: 50, height: 50 })
               .borderRadius(25)
@@ -752,7 +761,7 @@ export struct PageOne {
           }
           .justifyContent(FlexAlign.Start)
 
-          // 'app.string.shareTransition_text2'资源文件中的value值为'你好世界'
+          // 请将$r('app.string.shareTransition_text2')替换为实际资源文件，在本示例中该资源文件的value值为"你好世界"
           Text($r('app.string.shareTransition_text2'))
 
           NodeContainer(this.myNodeController)
@@ -836,7 +845,7 @@ export struct PageTwo {
           Column({ space: 20 }) {
             NodeContainer(this.myNodeController);
             if (this.animationProperties.showDetailContent) {
-              // 'app.string.shareTransition_text8'资源文件中的value值为'展开态内容'
+              // 请将$r('app.string.shareTransition_text8')替换为实际资源文件，在本示例中该资源文件的value值为"展开态内容"
               Text($r('app.string.shareTransition_text8'))
                 .fontSize(20)
                 .transition(TransitionEffect.OPACITY)
@@ -1179,8 +1188,8 @@ export class WindowUtils {
 // 程序入口处的onWindowStageCreate增加对窗口宽高等的抓取
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1200,7 +1209,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // ···
+    // ...
     // 获取窗口宽高
     WindowUtils.window = windowStage.getMainWindowSync();
     WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
@@ -1271,7 +1280,6 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');
@@ -1298,7 +1306,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
 function cardBuilder() {
-  // 图片使用Resource资源，需用户自定义
+  // 请将$r('app.media.card')替换为实际资源文件
   Image($r('app.media.card'))
     .width('100%')
     .id('card')
@@ -1381,7 +1389,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 
 - 还可以配合一镜到底动画，给初始界面图片也增加一个从透明到出现的动画，使得动效更为流畅。
 
-```
+```txt
 ├──entry/src/main/ets                 // 代码区
 │  ├──entryability
 │  │  └──EntryAbility.ets             // 程序入口类
@@ -1664,7 +1672,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
 function flowerBuilder() {
-  // 图片使用Resource资源，需用户自定义
+  // 请将$r('app.media.longevity_flower')替换为实际资源文件
   Image($r('app.media.longevity_flower'))
   // 避免第一次加载图片时图片闪烁
     .syncLoad(true);
@@ -1808,8 +1816,8 @@ export class WindowUtils {
 // 程序入口处的onWindowStageCreate增加对窗口宽高等的抓取
 
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { display, window } from '@kit.ArkUI';
 import { WindowUtils } from '../utils/WindowUtils';
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1829,7 +1837,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
-    // ···
+    // ...
     // 获取窗口宽高
     WindowUtils.window = windowStage.getMainWindowSync();
     WindowUtils.windowWidthPx = WindowUtils.window.getWindowProperties().windowRect.width;
@@ -1900,7 +1908,6 @@ export default class EntryAbility extends UIAbility {
       AppStorage.setOrCreate('currentBreakpoint', this.currentBreakPoint);
     }
   }
-
   onWindowStageDestroy(): void {
     // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');
@@ -1945,7 +1952,7 @@ struct IfElseGeometryTransition {
   build() {
     Stack({ alignContent: Alignment.Center }) {
       if (this.isShow) {
-        // 图片使用Resource资源，需用户自定义
+        // 请将$r('app.media.spring')替换为实际资源文件
         Image($r('app.media.spring'))
           .autoResize(false)
           .clip(true)
@@ -1963,7 +1970,7 @@ struct IfElseGeometryTransition {
         // 套多层容器为了说明相对布局约束传递
         Column() {
           Column() {
-            // 图片使用Resource资源，需用户自定义
+            // 请将$r('app.media.sunset_sky')替换为实际资源文件
             Image($r('app.media.sunset_sky'))
               .size({ width: '100%', height: '100%' })
           }
@@ -2006,10 +2013,10 @@ struct IfElseGeometryTransition {
 import { common } from '@kit.AbilityKit';
 
 class PostData {
-  // 图片使用Resource资源，需用户自定义
+  // 请将$r('app.media.flower')替换为实际资源文件
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -2024,24 +2031,33 @@ struct Index {
   // 数组中图片均使用Resource资源，需用户自定义
   private allPostData: PostData[] = [
     {
+      // 请将$r('app.media.flower')替换为实际资源文件
       avatar: $r('app.media.flower'),
       name: 'Alice',
-      // 'app.string.shareTransition_text1'资源文件中的value值为'天气晴朗'
-      message:this.context.resourceManager.getStringByNameSync('shareTransition_text1'),
+      // 请将$r('app.string.shareTransition_text1')替换为实际资源文件，在本示例中该资源文件的value值为"天气晴朗"
+      message: $r('app.string.shareTransition_text1'),
+      // 请将$r('app.media.spring')替换为实际资源文件
+      // 请将$r('app.media.tall_tree')替换为实际资源文件
       images: [$r('app.media.spring'), $r('app.media.tall_tree')]
     },
     {
+      // 请将$r('app.media.sunset_sky')替换为实际资源文件
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // 'app.string.shareTransition_text2'资源文件中的value值为'你好世界'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text2'),
+      // 请将$r('app.string.shareTransition_text2')替换为实际资源文件，在本示例中该资源文件的value值为"你好世界"
+      message: $r('app.string.shareTransition_text2'),
+      // 请将$r('app.media.island')替换为实际资源文件
       images: [$r('app.media.island')]
     },
     {
+      // 请将$r('app.media.tall_tree')替换为实际资源文件
       avatar: $r('app.media.tall_tree'),
       name: 'Carl',
-      // 'app.string.shareTransition_text3'资源文件中的value值为'万物生长'
-      message:this.context.resourceManager.getStringByNameSync('shareTransition_text3'),
+      // 请将$r('app.string.shareTransition_text3')替换为实际资源文件，在本示例中该资源文件的value值为"万物生长"
+      message: $r('app.string.shareTransition_text3'),
+      // 请将$r('app.media.flower')替换为实际资源文件
+      // 请将$r('app.media.sunset_sky')替换为实际资源文件
+      // 请将$r('app.media.spring')替换为实际资源文件
       images: [$r('app.media.flower'), $r('app.media.sunset_sky'), $r('app.media.spring')]
     }];
 
@@ -2086,7 +2102,7 @@ struct Index {
           TransitionEffect.OPACITY.animation({ duration: 0 })
         ))
 
-      // 'app.string.shareTransition_text11'资源文件中的value值为'你好，我是'
+      // 请在resources\base\element\string.json文件中配置name为'shareTransition_text11'，value为非空字符串的资源
       Text(this.context.resourceManager.getStringByNameSync('shareTransition_text11') + this.allPostData[index].name)
       // 对文本添加出现转场效果
         .transition(TransitionEffect.asymmetric(

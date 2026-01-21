@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NNModel OH_NNModel
+```
+
 ## Overview
 
 Defines the model handle.

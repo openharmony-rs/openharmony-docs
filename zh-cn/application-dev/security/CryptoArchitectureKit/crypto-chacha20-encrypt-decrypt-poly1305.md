@@ -36,6 +36,7 @@
     > doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
 
 5. 读取[Poly1305ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#poly1305paramsspec22).authTag作为解密的认证信息。
+
    在Poly1305模式下，需要从加密后的数据中取出末尾16字节，作为解密时初始化的认证信息。
 
 **解密**
@@ -50,7 +51,10 @@
 
 - 异步方法示例：
 
-  ```ts
+  <!-- @[encrypt_decrypt_chacha20_poly1305_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionAsync.ets) -->
+
+  ``` TypeScript
+
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -69,13 +73,13 @@
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; 
+    };
     // Poly1305的authTag在加密时从doFinal结果中获取，在解密时填入init函数的params参数中。
     let poly1305ParamsSpec: cryptoFramework.Poly1305ParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "Poly1305ParamsSpec"
+      algName: 'Poly1305ParamsSpec'
     };
     return poly1305ParamsSpec;
   }
@@ -115,7 +119,7 @@
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159,
         83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = await genSymKeyByData(keyData);
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = await encryptMessagePromise(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
@@ -131,9 +135,13 @@
   }
   ```
 
+
 - 同步方法示例：
 
-  ```ts
+  <!-- @[encrypt_decrypt_chacha20_poly1305_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionSync.ets) -->
+
+  ``` TypeScript
+
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
 
@@ -152,13 +160,13 @@
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; 
+    };
     // Poly1305的authTag在加密时从doFinal结果中获取，在解密时填入init函数的params参数中。
     let poly1305ParamsSpec: cryptoFramework.Poly1305ParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "Poly1305ParamsSpec"
+      algName: 'Poly1305ParamsSpec'
     };
     return poly1305ParamsSpec;
   }
@@ -198,7 +206,7 @@
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159,
         83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = genSymKeyByData(keyData);
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = encryptMessage(symKey, plainText);
       let decryptText = decryptMessage(symKey, encryptText);

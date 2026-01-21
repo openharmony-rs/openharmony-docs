@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **NavDestination** is the root container of a destination page and represents the content area of the [Navigation](ts-basic-components-navigation.md) component.
@@ -14,13 +14,13 @@
 >
 > - Since API version 11, this component supports the safe area attribute by default, with the default attribute value being **expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])**. You can override this attribute to change the default behavior. In earlier versions, you need to use the [expandSafeArea](ts-universal-attributes-expand-safe-area.md) attribute to implement the safe area feature.
 >
-> - The **NavDestination** component must be used in conjunction with the **Navigation** component to act as the root node for the navigation destination page. When used alone, it can only function as a standard container component and does not possess any routing-related attributes or capabilities.
+> - The **NavDestination** component must be used in conjunction with the **Navigation** component to act as the root node for the navigation destination page. When used alone, it can only function as a standard container component and does not possess any routing-related attributes or capabilities such as **ignoreLayoutSafeArea**.
 >
-> - If the lifecycle of an intermediate page in the routing stack changes, the lifecycle callbacks (**onWillShow**, **onShown**, **onHidden**, **onWillDisappear**) of the top **Destination** in the stack both before and after the navigation will be triggered last in the sequence.
+> - If the lifecycle of an intermediate page in the routing stack changes, the lifecycle callbacks (**onWillShow**, **onShown**, **onHidden**, **onWillDisappear**) of the top **NavDestination** in the stack both before and after the navigation will be triggered last in the sequence.
 >
 > - If no main title or subtitle is set for **NavDestination** and there is no back button, the title bar is not displayed.
 >
-> - Do not apply the [zIndex](ts-universal-attributes-z-order.md#zindex) attribute to a **NavDestination** component. This will override the system-defined stacking order and may cause display anomalies.
+> - Avoid setting layout-related attributes such as the position and size. They may result in display issues on the page. For example, do not apply the [zIndex](ts-universal-attributes-z-order.md#zindex) attribute to a **NavDestination** component. This will override the system-defined stacking order and may cause display anomalies.
 
 ## Child Components
 
@@ -44,15 +44,14 @@ Creates the root container for a subpage in [Navigation](ts-basic-components-nav
 
 The [universal attributes](ts-component-general-attributes.md) are supported.
 
-Avoid setting layout-related attributes such as the position and size. They may result in display issues on the page.
 
 ### title
 
 title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource, options?: NavigationTitleOptions)
 
-Sets the page title. When the title string is too long: (1) If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped with an ellipsis (...); (2) If a subtitle is set, the subtitle is scaled down and then clipped with an ellipsis (...).
+Sets the page title. When the title string is too long: (1) If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped with an ellipsis (...) if it is still overlong. (2) If a subtitle is set, the subtitle is scaled down and then truncated with an ellipsis (...) if it is still overlong.
 
->**NOTE**
+> **NOTE**
 >
 > This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
@@ -64,7 +63,7 @@ Sets the page title. When the title string is too long: (1) If no subtitle is se
 
 | Name| Type                                                        | Mandatory| Description      |
 | ------ | ------------------------------------------------------------ | ---- | ---------- |
-| value  | string \| [CustomBuilder](ts-types.md#custombuilder8) \| [NavDestinationCommonTitle](#navdestinationcommontitle) \| [NavDestinationCustomTitle](#navdestinationcustomtitle) \| [Resource<sup>14+</sup>](ts-types.md#resource)  | Yes  | Page title.|
+| value  | string&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavDestinationCommonTitle](#navdestinationcommontitle)&nbsp;\|&nbsp;[NavDestinationCustomTitle](#navdestinationcustomtitle)&nbsp;\|&nbsp;[Resource<sup>14+</sup>](ts-types.md#resource)  | Yes  | Page title.|
 | options<sup>12+</sup> | [NavigationTitleOptions](ts-basic-components-navigation.md#navigationtitleoptions11) | No  | Title bar options.|
 
 ### hideTitleBar
@@ -106,9 +105,11 @@ toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomBuilder, opt
 
 Sets the content of the toolbar. If this API is not called, the toolbar remains hidden.
 
->**NOTE**
+> **NOTE**
 >
-> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+>
+> - The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -118,12 +119,8 @@ Sets the content of the toolbar. If this API is not called, the toolbar remains 
 
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| toolbarParam |  Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;  \| [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar.<br>When configured with Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;, the toolbar follows the rules below:<br>- Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>- In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed under an automatically generated **More** icon. In landscape mode, the behavior of the toolbar is determined by the display mode: (1) If the display mode is [Split](ts-basic-components-navigation.md#navigationmode9), the toolbar follows the same rules as in portrait mode. (2) If the display mode is [Stack](ts-basic-components-navigation.md#navigationmode9), the toolbar must be used together with Array&lt;[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](ts-types.md#custombuilder8), the toolbar does not follow the above rules, except for evenly distributing items at the bottom of the toolbar.|
+| toolbarParam | &nbsp;Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar.<br>When configured with Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;, the toolbar follows the rules below:<br>- Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>- In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed under an automatically generated **More** icon. In landscape mode, the behavior of the toolbar is determined by the display mode: (1) If the display mode is [Split](ts-basic-components-navigation.md#navigationmode9), the display will remain the same as in portrait mode. (2) If the display mode is [Stack](ts-basic-components-navigation.md#navigationmode9), the toolbar must be used together with Array&lt;[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; of the [menus](#menus12) attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](ts-types.md#custombuilder8), the toolbar does not follow the above rules.|
 | options      | [NavigationToolbarOptions](ts-basic-components-navigation.md#navigationtoolbaroptions11) | No  | Toolbar options.                                                |
-
-> **NOTE**
->
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
 ### hideToolBar<sup>13+</sup>
 
@@ -168,9 +165,11 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 
 Sets the icon of the back button on the title bar.
 
->**NOTE**
+> **NOTE**
 >
-> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+>
+> - The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -180,11 +179,7 @@ Sets the icon of the back button on the title bar.
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [SymbolGlyphModifier<sup>12+</sup>](ts-universal-attributes-attribute-modifier.md)  | Yes  | Icon of the back button on the title bar.|
-
-> **NOTE**
->
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
+| value  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier<sup>12+</sup>](ts-universal-attributes-attribute-modifier.md)  | Yes  | Icon of the back button on the title bar.|
 
 ### backButtonIcon<sup>19+</sup>
 
@@ -194,7 +189,9 @@ Sets the icon and accessibility text for the back button on the title bar.
 
 > **NOTE**
 >
-> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+>
+> - The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -204,12 +201,8 @@ Sets the icon and accessibility text for the back button on the title bar.
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| icon  | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)  | Yes  | Icon of the back button on the title bar.|
+| icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)  | Yes  | Icon of the back button on the title bar.|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Accessibility text for the back button.<br>Default value: **back** when the system language is English.|
-
-> **NOTE**
->
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
 ### menus<sup>12+</sup>
 
@@ -217,9 +210,11 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
 Sets the menu items in the upper right corner of the page. If this attribute is not set, no menu item is displayed. When the value type is Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt;, the menu shows a maximum of three icons in portrait mode and a maximum of five icons in landscape mode, with excess icons (if any) placed under the automatically generated **More** icon.
 
->**NOTE**
+> **NOTE**
 >
-> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 14.
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 14.
+>
+> - The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -229,11 +224,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; \| [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Menu items in the upper right corner of the page.|
-
-> **NOTE**
->
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
+| value  | Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | Yes  | Menu items in the upper right corner of the page.|
 
 ### menus<sup>19+</sup>
 
@@ -243,7 +234,9 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 > **NOTE**
 >
-> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+>
+> - The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -253,18 +246,23 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| items  | Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; \| [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Menu items in the upper right corner of the page.|
+| items  | Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | Yes  | Menu items in the upper right corner of the page.|
 | options | [NavigationMenuOptions](ts-basic-components-navigation.md#navigationmenuoptions19) | No  | Optional settings for menu items in the upper right corner of the page.|
-
-> **NOTE**
->
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
 
 ### ignoreLayoutSafeArea<sup>12+</sup>
 
 ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;)
 
 Ignores the layout safe area by allowing the component to extend into the non-safe areas of the screen.
+
+> **NOTE**
+>   
+> - Prerequisites for the **ignoreLayoutSafeArea** attribute to take effect:  
+> When **LayoutSafeAreaType.SYSTEM** is set, the component can extend into the non-safe area if its boundaries overlap with the non-safe area.
+>   
+> - If the component extends into the non-safe area, events triggered within that area (such as click events) might be intercepted by the system. This allows the system to prioritize responses to system components such as the status bar.
+>
+> - To allow a component to extend into non-safe areas, the title bar and toolbar must be hidden or set to [STACK](ts-basic-components-navigation.md#barstyle12) mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -277,22 +275,19 @@ Ignores the layout safe area by allowing the component to extend into the non-sa
 | types  | Array <[LayoutSafeAreaType](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)> | No  | Types of non-safe areas to extend into.<br>Default value:<br>[LayoutSafeAreaType.SYSTEM] |
 | edges  | Array <[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)> | No  | Edges for expanding the safe area.<br> Default value:<br>[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]|
 
->  **NOTE**
->   
->  Prerequisites for the **ignoreLayoutSafeArea** attribute to take effect:  
->  When **LayoutSafeAreaType.SYSTEM** is set, the component can extend into the non-safe area if its boundaries overlap with the non-safe area. For example, if the device's status bar is 100 high, the component must have an absolute vertical offset between 0 and 100 to extend into the non-safe area. 
->   
->  If the component extends into the non-safe area, events triggered within that area (such as click events) might be intercepted by the system. This allows the system to prioritize responses to system components such as the status bar.
-
 ### systemBarStyle<sup>12+</sup>
 
 systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 Sets the style of the system status bar when this **NavDestination** page is displayed in the **Navigation** component.
 
->**NOTE**
+> **NOTE**
 >
-> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+> - The setting takes effect only when the **NavDestination** component is used in conjunction with the **Navigation** component.
+>
+> - For other usage restrictions, see the description of [systemBarStyle](ts-basic-components-navigation.md#systembarstyle12) for the **Navigation** component.
+>
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -303,11 +298,6 @@ Sets the style of the system status bar when this **NavDestination** page is dis
 | Name| Type        | Mandatory| Description              |
 | ------ | -------------- | ---- | ------------------ |
 | style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | Yes  | Style of the system status bar.|
-
-> **NOTE**
->
-> 1. The setting takes effect only when the **NavDestination** component is used in conjunction with the **Navigation** component.
-> 2. For other usage restrictions, see the description of [systemBarStyle](ts-basic-components-navigation.md#systembarstyle12) for the **Navigation** component.
 
 ### systemTransition<sup>14+</sup>
 systemTransition(type: NavigationSystemTransitionType)
@@ -330,6 +320,10 @@ recoverable(recoverable: Optional&lt;boolean&gt;)
 
 Sets whether the **NavDestination** component is recoverable. If set to recoverable, when the application process exits unexpectedly and restarts, the **NavDestination** component will be automatically re-created. To use this feature, ensure that the [recoverable](ts-basic-components-navigation.md#recoverable14) attribute is set for the **Navigation** component associated with the **NavDestination** component.
 
+> **NOTE**
+>
+> This API must be used together with the [recoverable](./ts-basic-components-navigation.md#recoverable14) API of **Navigation**.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -338,10 +332,6 @@ Sets whether the **NavDestination** component is recoverable. If set to recovera
 | ------ | -------------- | ---- | ------------------ |
 | recoverable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether the **NavDestination** component is recoverable. By default, it is not recoverable.<br>Default value: **false**.<br>**true**: The **NavDestination** component is recoverable.<br>**false**: The **NavDestination** component is not recoverable.|
 
->  **NOTE**
->
-> This API must be used together with the [recoverable](./ts-basic-components-navigation.md#recoverable14) API of **Navigation**.
-
 ### bindToScrollable<sup>14+</sup>
 bindToScrollable(scrollers: Array&lt;Scroller&gt;)
 
@@ -349,7 +339,11 @@ Binds the **NavDestination** component with a scrollable container, which can be
 
 > **NOTE**
 >
-> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> - The connection between the scrolling actions and the animations for showing or hiding the title bar and toolbar of the **NavDestination** component takes effect only when the title bar or toolbar is visible.
+>
+> - If a **NavDestination** component is bound to multiple scrollable containers, scrolling in any of these containers triggers the display or hiding animations of the title bar and toolbar. Specifically, when any scrollable container reaches either the bottom or the top, the display animation for the title bar and toolbar is triggered without delay. As such, to ensure the optimal user experience, avoid triggering scroll events of multiple scrollable containers simultaneously.
+>
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -361,11 +355,6 @@ Binds the **NavDestination** component with a scrollable container, which can be
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | scrollers | Array<[Scroller](./ts-container-scroll.md#scroller)> | Yes  | Controller of the target scrollable container.|
 
-> **NOTE**
->
-> - The connection between the scrolling actions and the animations for showing or hiding the title bar and toolbar of the **NavDestination** component takes effect only when the title bar or toolbar is visible.
-> - If a **NavDestination** component is bound to multiple scrollable containers, scrolling in any of these containers triggers the display or hiding animations of the title bar and toolbar. Specifically, when any scrollable container reaches either the bottom or the top, the display animation for the title bar and toolbar is triggered without delay. As such, to ensure the optimal user experience, avoid triggering scroll events of multiple scrollable containers simultaneously.
-
 ### bindToNestedScrollable<sup>14+</sup>
 bindToNestedScrollable(scrollInfos: Array&lt;NestedScrollInfo&gt;)
 
@@ -373,7 +362,11 @@ Binds the **NavDestination** component with a nested scrollable container, which
 
 > **NOTE**
 >
-> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> - The connection between the scrolling actions and the animations for showing or hiding the title bar and toolbar of the **NavDestination** component takes effect only when the title bar or toolbar is visible.
+>
+> - If a **NavDestination** component is bound to multiple scrollable containers, scrolling in any of these containers triggers the display or hiding animations of the title bar and toolbar. Specifically, when any scrollable container reaches either the bottom or the top, the display animation for the title bar and toolbar is triggered without delay. As such, to ensure the optimal user experience, avoid triggering scroll events of multiple scrollable containers simultaneously.
+>
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -384,11 +377,6 @@ Binds the **NavDestination** component with a nested scrollable container, which
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | scrollInfos | Array<[NestedScrollInfo](#nestedscrollinfo14)> | Yes  | Controller of the target nested scrollable containers.|
-
-> **NOTE**
->
-> - The connection between the scrolling actions and the animations for showing or hiding the title bar and toolbar of the **NavDestination** component takes effect only when the title bar or toolbar is visible.
-> - If a **NavDestination** component is bound to multiple scrollable containers, scrolling in any of these containers triggers the display or hiding animations of the title bar and toolbar. Specifically, when any scrollable container reaches either the bottom or the top, the display animation for the title bar and toolbar is triggered without delay. As such, to ensure the optimal user experience, avoid triggering scroll events of multiple scrollable containers simultaneously.
 
 ### hideBackButton<sup>15+</sup>
 
@@ -414,7 +402,9 @@ Sets a custom transition animation for the **NavDestination** component.
 
 > **NOTE**
 >
-> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+>
+> - If both this attribute and [systemTransition](#systemtransition14) are set, whichever is set later takes effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -426,15 +416,20 @@ Sets a custom transition animation for the **NavDestination** component.
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | delegate  | [NavDestinationTransitionDelegate](#navdestinationtransitiondelegate15) | Yes  | Delegate function for custom animations of the **NavDestination** component.|
 
-> **NOTE**
->
-> If both this attribute and [systemTransition](#systemtransition14) are set, whichever is set later takes effect.
-
 ### preferredOrientation<sup>19+</sup>
 
 preferredOrientation(orientation: Optional&lt;Orientation&gt;)
 
 Sets the display orientation for the **NavDestination** component. After the transition to the NavDestination, the system also switches the application's main window to the specified display orientation.
+
+> **NOTE**
+>
+> - This attribute is effective only if the following conditions are all met:
+>   1. The **NavDestination** component belongs to the application's main window page, and the main window is a full-screen window.
+>   2. The **Navigation** container containing the **NavDestination** component occupies the entire application page area.
+>   3. The type of **NavDestination** is [NavDestinationMode](#navdestinationmode11).STANDARD.
+>
+> - The actual effect of setting the display orientation depends on the specific device support. For details, see [setPreferredOrientation](../arkts-apis-window-Window.md#setpreferredorientation9-1).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -446,20 +441,21 @@ Sets the display orientation for the **NavDestination** component. After the tra
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | orientation  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[Orientation](#orientation19)&gt; | Yes  | Display orientation to set.|
 
-> **NOTE**
->
-> This attribute is effective only if the following conditions are all met:
-> 1. The **NavDestination** component belongs to the application's main window page, and the main window is a full-screen window.
-> 2. The **Navigation** container containing the **NavDestination** component occupies the entire application page area.
-> 3. The type of **NavDestination** is [NavDestinationMode](#navdestinationmode11).STANDARD.
->
-> The actual effect of setting the display orientation depends on the specific device support. For details, see [setPreferredOrientation](../arkts-apis-window-Window.md#setpreferredorientation9-1).
-
 ### enableStatusBar<sup>19+</sup>
 
 enableStatusBar(enabled: Optional&lt;boolean&gt;, animated?: boolean)
 
 Sets whether to show or hide the system status bar when entering this **NavDestination** component.
+
+> **NOTE**
+>
+> - This attribute is effective only if the following conditions are all met:
+>   1. The **NavDestination** component belongs to the application's main window page, and the main window is a full-screen window.
+>   2. The **Navigation** container containing the **NavDestination** component occupies the entire page area.
+>   3. The **NavDestination** component occupies the entire **Navigation** container.
+>   4. The type of **NavDestination** is [NavDestinationMode](#navdestinationmode11).STANDARD.
+>
+> - The actual effect of setting the system status bar depends on the specific device support. For details, see [setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -472,31 +468,11 @@ Sets whether to show or hide the system status bar when entering this **NavDesti
 | enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether to show or hide the system status bar when entering the current **NavDestination** component.<br>**true**: Show the system status bar.<br>**false**: Hide the system status bar.|
 | animated  | boolean | No  | Whether to animate the visibility change of the system status bar. Default value: **false**.<br>**true**: Animate the visibility change of the system status bar.<br>**false**: Do not animate the visibility change of the system status bar.|
 
-> **NOTE**
->
-> This attribute is effective only if the following conditions are all met:
-> 1. The **NavDestination** component belongs to the application's main window page, and the main window is a full-screen window.
-> 2. The **Navigation** container containing the **NavDestination** component occupies the entire page area.
-> 3. The **NavDestination** component occupies the entire **Navigation** container.
-> 4. The type of **NavDestination** is [NavDestinationMode](#navdestinationmode11).STANDARD.
->
-> The actual effect of setting the system status bar depends on the specific device support. For details, see [setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11).
-
 ### enableNavigationIndicator<sup>19+</sup>
 
 enableNavigationIndicator(enabled: Optional&lt;boolean&gt;)
 
 Sets whether to show or hide the system navigation bar when entering this **NavDestination** component.
-
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description                                                        |
-| ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether to show or hide the system navigation bar when entering the current **NavDestination** component.<br>**true**: Show the system navigation bar.<br>**false**: Hide the system navigation bar.|
 
 > **NOTE**
 >
@@ -507,6 +483,16 @@ Sets whether to show or hide the system navigation bar when entering this **NavD
 > 4. The type of **NavDestination** is [NavDestinationMode](#navdestinationmode11).STANDARD.
 >
 > The actual effect of setting the system navigation bar depends on the specific device support. For details, see [setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11).
+
+**Atomic service API**: This API can be used in atomic services since API version 19.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                        |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | Yes  | Whether to show or hide the system navigation bar when entering the current **NavDestination** component.<br>**true**: Show the system navigation bar.<br>**false**: Hide the system navigation bar.|
 
 ## NavDestinationMode<sup>11+</sup>
 
@@ -538,7 +524,7 @@ Type of the system transition animation.
 | SLIDE_RIGHT<sup>15+</sup> | 6 | Right-slide type system transition animation.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | SLIDE_BOTTOM<sup>15+</sup> | 7 | Bottom-slide type system transition animation.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
-**NOTE**
+> **NOTE**
 >
 > System transition animations for the title bar and content area can be configured separately.
 > 
@@ -588,7 +574,7 @@ Triggered when the navigation destination page is hidden. Starting from API vers
 
 onWillAppear(callback: Callback\<void>)
 
-Triggered when the navigation destination is about to be mounted. The routing stack can be modified in the callback, and the modification takes effect in the current frame.
+Called when the **NavDestination** component is about to be mounted. The routing stack can be modified in the callback, and the modification takes effect in the current frame.
 
 >**NOTE**
 >
@@ -602,13 +588,13 @@ Triggered when the navigation destination is about to be mounted. The routing st
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | Yes  | Triggered when the navigation destination is about to be mounted. The routing stack can be modified in the callback, and the modification takes effect in the current frame.|
+| callback   |  Callback\<void>   | Yes  | Called when the **NavDestination** component is about to be mounted. The routing stack can be modified in the callback, and the modification takes effect in the current frame.|
 
 ### onWillShow<sup>12+</sup>
 
 onWillShow(callback: Callback\<void>)
 
-Triggered when the navigation destination is about to be displayed.
+Called when the **NavDestination** component is about to display.
 
 >**NOTE**
 >
@@ -622,13 +608,13 @@ Triggered when the navigation destination is about to be displayed.
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | Yes  | Triggered when the navigation destination is about to be displayed.|
+| callback   |  Callback\<void>   | Yes  | Called when the **NavDestination** component is about to display.|
 
 ### onWillHide<sup>12+</sup>
 
 onWillHide(callback: Callback\<void>)
 
-Triggered when the navigation destination is about to be hidden.
+Called when the **NavDestination** component is about to be hidden.
 
 >**NOTE**
 >
@@ -642,13 +628,13 @@ Triggered when the navigation destination is about to be hidden.
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | Yes  | Triggered when the navigation destination is about to be hidden.|
+| callback   |  Callback\<void>   | Yes  | Called when the **NavDestination** component is about to be hidden.|
 
 ### onWillDisappear<sup>12+</sup>
 
 onWillDisappear(callback: Callback\<void>)
 
-Triggered when the navigation destination is about to be unmounted (or when the transition animation, if any, is about to start).
+Called when the the **NavDestination** component is about to be unmounted (or when the transition animation, if any, is about to start).
 
 >**NOTE**
 >
@@ -662,13 +648,13 @@ Triggered when the navigation destination is about to be unmounted (or when the 
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | Yes  | Triggered when the navigation destination is about to be unmounted (or when the transition animation, if any, is about to start).|
+| callback   |  Callback\<void>   | Yes  | Called when the the **NavDestination** component is about to be unmounted (or when the transition animation, if any, is about to start).|
 
 ### onBackPressed<sup>10+</sup>
 
-onBackPressed(callback: () =&gt; boolean)
+onBackPressed(callback:&nbsp;()&nbsp;=&gt;&nbsp;boolean)
 
-Triggered when the back button is pressed. This callback takes effect when content exists in the navigation controller bound to the **Navigation** component.
+This callback takes effect when content exists in the navigation controller bound to the **Navigation** component. Triggered when the back button is pressed.
 
 The value **true** means that the back button logic is overridden, and **false** means that the previous page is displayed.
 
@@ -680,11 +666,11 @@ The value **true** means that the back button logic is overridden, and **false**
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |   () =&gt; boolean   | Yes  | This callback takes effect when content exists in the navigation controller bound to the **Navigation** component. Triggered when the back button is pressed.|
+| callback   |  &nbsp;()&nbsp;=&gt;&nbsp;boolean   | Yes  | This callback takes effect when content exists in the navigation controller bound to the **Navigation** component. Triggered when the back button is pressed.|
 
 ### onReady<sup>11+</sup>
 
-onReady(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>)
+onReady(callback:&nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>)
 
 Triggered when the **NavDestination** component is about to build a child component.
 
@@ -700,11 +686,11 @@ Triggered when the **NavDestination** component is about to build a child compon
 
 | Name  | Type                | Mandatory| Description                                      |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |   [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>   | Yes  | Triggered when the **NavDestination** component is about to build a child component.|
+| callback   |  &nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>   | Yes  | Triggered when the **NavDestination** component is about to build a child component.|
 
 ### onResult<sup>15+</sup>
 
-onResult(callback: Optional\<Callback\<ESObject\>\>)
+onResult(callback:&nbsp;Optional\<Callback\<ESObject\>\>)
 
 Triggered when the **NavDestination** component returns.
 
@@ -723,7 +709,7 @@ Triggered when the **NavDestination** component returns.
 
 ### onActive<sup>17+</sup>
 
-onActive(callback: Optional\<Callback\<NavDestinationActiveReason\>\>)
+onActive(callback:&nbsp;Optional\<Callback\<NavDestinationActiveReason\>\>)
 
 Triggered when the **NavDestination** component becomes active (on top of the stack and operable, with no special components blocking it). For details, see [Example 5](#example-5-handling-navdestination-onactive-and-oninactive-lifecycle-events).
 
@@ -742,7 +728,7 @@ Triggered when the **NavDestination** component becomes active (on top of the st
 
 ### onInactive<sup>17+</sup>
 
-onInactive(callback:  Optional\<Callback\<NavDestinationActiveReason\>\>)
+onInactive(callback: &nbsp;Optional\<Callback\<NavDestinationActiveReason\>\>)
 
 Triggered when the **NavDestination** component becomes inactive (not on top of the stack and inoperable, or on top but blocked by special components). For details, see [Example 5](#example-5-handling-navdestination-onactive-and-oninactive-lifecycle-events).
 
@@ -761,13 +747,15 @@ Triggered when the **NavDestination** component becomes inactive (not on top of 
 
 ### onNewParam<sup>19+</sup>
 
-onNewParam(callback:  Optional\<Callback\<ESObject\>\>)
+onNewParam(callback: &nbsp;Optional\<Callback\<ESObject\>\>)
 
 Triggered when a **NavDestination** page that already exists in the stack is moved to the top using [launchMode.MOVE_TO_TOP_SINGLETON](./ts-basic-components-navigation.md#launchmode12) or [launchMode.POP_TO_SINGLETON](./ts-basic-components-navigation.md#launchmode12).
 
 > **NOTE**
 >
-> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> - This callback is not triggered by [replacePath](./ts-basic-components-navigation.md#replacepath11) or [replaceDestination](./ts-basic-components-navigation.md#replacedestination18).
+>
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -777,10 +765,6 @@ Triggered when a **NavDestination** page that already exists in the stack is mov
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ---- | ---------------- |
 |callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| Yes| Callback triggered by **onNewParam**, with the parameter being the data passed to the target page during navigation.|
-
-> **NOTE**
->
-> This callback is not triggered by [replacePath](./ts-basic-components-navigation.md#replacepath11) or [replaceDestination](./ts-basic-components-navigation.md#replacedestination18).
 
 ## NavDestinationCommonTitle
 
@@ -835,7 +819,7 @@ Obtains the routing configuration of the current **NavDestination** component.
 
 | Type| Description|
 | --- | --- |
-| [RouteMapConfig](#routemapconfig12) \| undefined | Routing configuration of the current page.<br> **undefined**, returned when the page is not configured through the route table.|
+| [RouteMapConfig](#routemapconfig12) \| undefined | Routing configuration of the current page.<br> **undefined** is returned when the page is not configured through the route table.|
 
 
 ## RouteMapConfig<sup>12+</sup>
@@ -867,7 +851,7 @@ Provides the information about the nested scrollable containers.
 
 ### NavDestinationActiveReason<sup>17+</sup>
 
-Enumerates the reasons why the activation state of the **NavDestination** component changes.
+Enumerates reasons for the activation state changes of the **NavDestination** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
@@ -875,12 +859,12 @@ Enumerates the reasons why the activation state of the **NavDestination** compon
 
 | Name  | Value| Description                                    |
 | ---- | -- | ---------------------------------------- |
-| TRANSITION | 0   | The activation state changes through page navigation.                      |
-| CONTENT_COVER | 1   | The activation state changes due to the opening or closing of a modal page. |
-| SHEET | 2   | The activation state changes due to the opening or closing of a sheet.|
-| DIALOG | 3   | The activation state changes due to the opening or closing of a custom dialog box.|
-| OVERLAY | 4   | The activation state changes due to the opening or closing of an overlay using **OverlayManager**.|
-| APP_STATE | 5   | The activation state changes due to switching between foreground and background states of the application.|
+| TRANSITION | 0   | Activation state changes due to page navigation.                      |
+| CONTENT_COVER | 1   | Activation state changes due to the opening or closing of a modal page. |
+| SHEET | 2   | Activation state changes due to the opening or closing of a sheet.|
+| DIALOG | 3   | Activation state changes due to the opening or closing of a custom dialog box.|
+| OVERLAY | 4   | Activation state changes due to the opening or closing of an overlay using **OverlayManager**.|
+| APP_STATE | 5   | Activation state changes due to switching between foreground and background states of the application.|
 
 ### VisibilityChangeReason<sup>21+</sup>
 
@@ -893,7 +877,7 @@ Enumerates reasons for **NavDestination** visibility changes.
 | Name  | Value| Description                                    |
 | ---- | -- | ---------------------------------------- |
 | TRANSITION | 0   | Visibility changes due to page navigation.                      |
-| CONTENT_COVER | 1   | Visibility changes due to enabling or disabling of the full-screen modal mode. |
+| CONTENT_COVER | 1   | Visibility changes due to the opening or closing of a modal page. |
 | APP_STATE | 2   | Visibility changes due to switching between the foreground and background states.|
 
 ## NavDestinationTransition<sup>15+</sup>
@@ -1017,7 +1001,7 @@ struct MyPageOne {
         symbolIcon: new SymbolGlyphModifier($r('sys.symbol.phone_badge_star'))
       }
     ], { backgroundColor: Color.Orange, barStyle: BarStyle.STACK })
-    // Bind the NavDestination component to nested scrollable containers.
+    // Bind the component to nested scrollable containers.
     .bindToNestedScrollable([{ parent: this.scrollScroller, child: this.listScroller }])
   }
 }
@@ -1058,7 +1042,7 @@ struct MyPageTwo {
         symbolIcon: new SymbolGlyphModifier($r('sys.symbol.phone_badge_star'))
       }
     ], { backgroundColor: Color.Orange, barStyle: BarStyle.STACK })
-    // Bind the NavDestination component to a scrollable container.
+    // Bind the component to a scrollable container.
     .bindToScrollable([this.listScroller])
   }
 }
@@ -1137,6 +1121,16 @@ struct NavDest {
   stack: NavPathStack = new NavPathStack();
   @State translateY: string = '0';
 
+  @Builder
+  titleBuilder() {
+    Text(this.name)
+      .fontSize(20)
+      .height(55)
+      .fontWeight(FontWeight.Bold)
+      .width('100%')
+      .padding({ left: 16, right: 16 })
+  }
+
   build() {
     NavDestination() {
       Column() {
@@ -1150,7 +1144,7 @@ struct NavDest {
       }
       .size({ width: '100%', height: '100%' })
     }
-    .title(this.name)
+    .title(this.titleBuilder)
     .translate({ y: this.translateY })
     .onReady((context) => {
       this.name = context.pathInfo.name;
@@ -1473,8 +1467,11 @@ struct HomeBody {
 }
 ```
 ![navdestination_fade](figures/navdestination_fade_transition.gif)
+
 ![navdestination_explode](figures/navdestination_explode_transition.gif)
+
 ![navdestination_slide_bottom](figures/navdestination_slide_bottom_transition.gif)
+
 ![navdestination_slide_right](figures/navdestination_slide_right_transition.gif)
 
 ### Example 4: Configuring Display Orientation and Status Bar and Navigation Bar Visibility

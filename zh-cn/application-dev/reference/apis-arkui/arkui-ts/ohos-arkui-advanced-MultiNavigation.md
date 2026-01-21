@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
@@ -18,7 +18,7 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 
 ## 导入模块
 
-```
+```ts
 import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 ```
 
@@ -377,7 +377,7 @@ moveToTop(name: string, animated?: boolean): number
 > 
 > 1)当找到的是最上层主页或者全屏页，此时不做任何处理；
 > 
-> 2)当找到的是最上层主页对应的详情页，则会将对应的的详情页移到栈顶；
+> 2)当找到的是最上层主页对应的详情页，则会将对应的详情页移到栈顶；
 > 
 > 3)当找到的是非最上层的主页，则会将主页和对应所有详情页移到栈顶，详情页相对栈关系不变；
 > 
@@ -414,7 +414,7 @@ moveIndexToTop(index: number, animated?: boolean): void
 > 
 > 1)当找到的是最上层主页或者全屏页，此时不做任何处理；
 > 
-> 2)当找到的是最上层主页对应的详情页，则会将对应的的详情页移到栈顶；
+> 2)当找到的是最上层主页对应的详情页，则会将对应的详情页移到栈顶；
 > 
 > 3)当找到的是非最上层的主页，则会将主页和对应所有详情页移到栈顶，详情页相对栈关系不变；
 > 

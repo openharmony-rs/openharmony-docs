@@ -14,7 +14,7 @@ Implements a **WebContextMenuParam** object, which is displayed after the user c
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>9+</sup>
 
@@ -112,7 +112,7 @@ Checks whether image content exists.
 
 getMediaType(): ContextMenuMediaType
 
-Obtains the media types that trigger the context menu.
+Obtains the media type of this web page element.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -224,7 +224,7 @@ Obtains the height of a preview image.
 
 getContextMenuMediaType(): ContextMenuDataMediaType
 
-Obtains the media types that trigger the context menu (enhanced type obtaining capability).
+Obtains the type of the web page element that the user taps when the context menu event is reported.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

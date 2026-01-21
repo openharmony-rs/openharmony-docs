@@ -80,7 +80,7 @@ The notification feature is not enabled for the application.
 
 **Solution**
 
-Enable notification for the application in the notification settings.
+Enable notification for the application in notification settings.
 
 ## 1600005 Notification Slot Disabled
 
@@ -98,10 +98,11 @@ The notification slot is disabled or has not been added.
 
 **Solution**
 
-1. Access the notification settings and check whether the application has the notification slot. If no, add it.
+1. Access notification settings and check whether the application has the notification slot. If no, add it.
 
 2. Make sure the notification slot is enabled.
 
+<!--Del-->
 ## 1600006 Notification Deletion Failed
 
 **Error Message**
@@ -119,6 +120,7 @@ The notification attribute **isUnremovable** is set to true.
 **Solution**
 
 Enable notification deletion. For details, see [NotificationRequest](./js-apis-inner-notification-notificationRequest.md).
+<!--DelEnd-->
 
 ## 1600007 Notification Not Found
 
@@ -192,6 +194,7 @@ The distributed database could not be operated or the distributed API could not 
 
 Verify the distributed connection.
 
+<!--Del-->
 ## 1600011 Failed to Read Template Configuration
 
 **Error Message**
@@ -209,6 +212,7 @@ The template configuration file is lost in the system.
 **Solution**
 
 Check for the template configuration file: /system/etc/notification_template/external.json.
+<!--DelEnd-->
 
 ## 1600012 Insufficient Memory Space
 
@@ -301,6 +305,7 @@ The notification version for this update is outdated.
 
 Check the notification version.
 
+<!--Del-->
 ## 1600017 No Configured Proxy Relationship
 
 **Error Message**
@@ -318,6 +323,7 @@ No corresponding proxy relationship is configured.
 **Solution**
 
 Check the proxy relationship configuration.
+<!--DelEnd-->
 
 ## 1600018 Notification Settings Page Already Displayed
 
@@ -337,6 +343,7 @@ The notification settings page has been displayed.
 
 Check whether the notification settings page is displayed.
 
+<!--Del-->
 ## 1600019 No Configuration Information for a Do Not Disturb Profile
 
 **Error Message**
@@ -354,6 +361,7 @@ No configuration information corresponding to the Do Not Disturb profile ID exis
 **Solution**
 
 Check whether the queried Do Not Disturb profile ID is correct.
+<!--DelEnd-->
 
 ## 1600020 Applications in the Permission Control List Is Not Allowed to Publish Notifications
 
@@ -373,6 +381,7 @@ The application is restricted by the enterprise-customized devices.
 
 The application is under permission control of [Enterprise Device Manager](../../mdm/mdm-kit-intro.md) and it cannot exit the permission control list automatically.
 
+<!--Del-->
 ## 1600021 Cross-Device Communication Timeout
 
 **Error Message**
@@ -390,7 +399,9 @@ Device connection error.
 **Solution**
 
 Make sure that devices (for example, mobile phone and the watch) are properly connected.
+<!--DelEnd-->
 
+<!--Del-->
 ## 1600022 Invalid Bundle Information
 
 **Error Message**
@@ -408,6 +419,7 @@ The specified bundle name does not exist.
 **Solution**
 
 Check whether the bundle information is correct.
+<!--DelEnd-->
 
 ## 1600023 NotificationSubscriberExtensionAbility Not Implemented
 
@@ -427,6 +439,7 @@ The [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-no
 
 Create a NotificationSubscriberExtensionAbility for the application. For details about how to configure the extension ability, see [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) in [ExtensionAbility Component](../../application-models/extensionability-overview.md).
 
+<!--Del-->
 ## 1600024 Custom Ringtones Not Configured
 
 **Error Message**
@@ -444,3 +457,64 @@ Custom ringtones are not configured for the specified application.
 **Solution**
 
 Check whether custom ringtones are configured for the specified application.
+<!--DelEnd-->
+
+<!--Del-->
+## 1600025 Geofencing Disabled
+
+**Error Message**
+
+Geofencing disabled.
+
+**Description**
+
+This error code is reported when geofencing is disabled.
+
+**Possible Causes**
+
+Geofencing is disabled.
+
+**Solution**
+
+Enable geofencing in notification settings.
+<!--DelEnd-->
+
+<!--Del-->
+## 1600026 Location Disabled
+
+**Error Message**
+
+The location switch is off.
+
+**Description**
+
+This error code is reported when the location service is disabled, which is required for geofence registration.
+
+**Possible Causes**
+
+The location service is disabled. As a result, continuous location updates, one-shot location requests, and geofencing are unavailable.
+
+**Solution**
+
+Prompt the user to enable the location service.
+<!--DelEnd-->
+
+<!--Del-->
+## 1600027 Awareness & suggestions Switch of the Location Service Disabled
+
+**Error Message**
+
+The "Awareness & suggestions" switch of the location-based service is off.
+
+**Description**
+
+This error code is reported when the **Awareness & suggestions** switch of the location service is disabled, as enabling this switch is a prerequisite for geofence registration.
+
+**Possible Causes**
+
+The **Awareness & suggestions** switch is disabled in the system settings path: **Settings** > **Privacy & security** > **Location** > **System services**.
+
+**Solution**
+
+Go to **Settings** > **Privacy & security** > **Location** > **System services** (scroll to the bottom of the screen) and enable the **Awareness & suggestions** switch.
+<!--DelEnd-->

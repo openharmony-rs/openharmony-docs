@@ -137,6 +137,22 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，IMAGE或者VIDEO。  |
 | subtype  | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否 | 是 | 图片或者视频的文件子类型[PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)，不传入时默认为DEFAULT。  |
 
+## CreationSetting<sup>23+</sup>
+
+保存图片或视频到媒体库时的配置项，包括保存的文件名、文件类型和其他相关参数。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称               | 类型    | 只读 | 可选 | 说明                                                         |
+| ------------------ | ------- | ---- | ---- | ----- |
+| title              | string  | 否 | 是 | 图片或者视频的标题。<br>不传入时由系统生成，参数规格如下：<br>- 不应包含扩展名。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ]<br>- 由于文件名由标题 + 扩展名组成，文件名字符串长度范围为[1, 255]，因此请注意标题长度不宜过长。  |
+| fileNameExtension  | string  | 否 | 否 | 文件扩展名，例如'jpg'。  |
+| photoType          | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)  | 否 | 否 | 创建的媒体文件类型[PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)，包含IMAGE或VIDEO。  |
+
 ## PhotoAssetChangeInfo<sup>20+</sup>
 
 媒体资产（图片/视频）信息。

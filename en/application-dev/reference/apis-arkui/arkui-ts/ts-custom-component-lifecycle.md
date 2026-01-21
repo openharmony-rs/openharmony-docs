@@ -29,7 +29,7 @@ The **build()** function is used to define the declarative UI description of a c
 
 aboutToAppear?(): void
 
-Triggered after a new instance of the custom component is created and before its **build()** function is executed. You can change state variables in **aboutToAppear**. The change will take effect when you execute the **build()** function next time. The **aboutToAppear** lifecycle callback of a custom component with a [custom layout](./ts-custom-component-layout.md) is invoked during the layout process.
+Invoked after a new instance of the custom component is created and before its **build()** function is executed. You can change state variables in **aboutToAppear**. The change will take effect when you execute the **build()** function next time. The **aboutToAppear** lifecycle callback of a custom component with a [custom layout](./ts-custom-component-layout.md) is invoked during the layout process.
 
 > **NOTE**
 >
@@ -46,7 +46,7 @@ Triggered after a new instance of the custom component is created and before its
 
 onDidBuild?(): void
 
-Triggered after the **build()** function of the custom component is executed. You can use this callback for actions that do not directly affect the UI, such as tracking data reporting.
+Invoked after the **build()** function of the custom component is executed. You can use this callback for actions that do not directly affect the UI, such as tracking data reporting.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -72,7 +72,7 @@ Invoked when this component is about to disappear. Do not change state variables
 
 onPageShow?(): void
 
-Triggered each time a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is displayed, including scenarios such as route navigation and the application returning to the foreground.
+Invoked each time a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is displayed, including scenarios such as route navigation and the application returning to the foreground.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -82,7 +82,7 @@ Triggered each time a router-managed page (a custom component decorated with [\@
 
 onPageHide?(): void
 
-Triggered each time a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is hidden, including scenarios such as route navigation and the application moving to the background.
+Invoked each time a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)) is hidden, including scenarios such as route navigation and the application moving to the background.
 
 > **NOTE**
 >
@@ -96,7 +96,7 @@ Triggered each time a router-managed page (a custom component decorated with [\@
 
 onBackPress?(): void | boolean
 
-Triggered when a user clicks the back button on a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)). The value **true** means that the page executes its own return logic, and **false** (default) means that the default return logic is used.
+Invoked when a user clicks the back button on a router-managed page (a custom component decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)). The value **true** means that the page executes its own return logic, and **false** (default) means that the default return logic is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -146,7 +146,7 @@ struct IndexComponent {
 
 onNewParam?(param: ESObject): void
 
-This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack. Triggered when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9).
+Invoked when a page in the routing stack is moved to the top of the stack in [single-instance mode](../js-apis-router.md#routermode9). This callback takes effect only for custom components decorated with [\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry) within the [router](../js-apis-router.md) page stack.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -622,7 +622,7 @@ Defines the transition animation to play when the user accesses this page or is 
 
 onFormRecycle?(): string
 
-Triggered when the widget is recycled. The widget provider can return the data to be saved by the widget manager. This data is passed back to the widget provider using the [onFormRecover](#onformrecover11) API when the widget is recovered.
+Invoked when the widget is recycled. The widget provider can return the data to be saved by the widget manager. This data is passed back to the widget provider using the [onFormRecover](#onformrecover11) API when the widget is recovered.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -687,7 +687,7 @@ struct WidgetCard {
 
 onFormRecover?(statusData: string): void
 
-Triggered when the widget is recovered. The widget provider can obtain the data saved by the widget manager during widget recycling. This data can be saved to the widget manager using the [onFormRecycle](#onformrecycle11) callback.
+Invoked when the widget is recovered. The widget provider can obtain the data saved by the widget manager during widget recycling. This data can be saved to the widget manager using the [onFormRecycle](#onformrecycle11) callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

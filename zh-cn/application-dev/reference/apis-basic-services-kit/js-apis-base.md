@@ -16,8 +16,14 @@
 
 ## 导入模块
 
-```
+ArkTS示例： 
+```typescript
 import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.BasicServicesKit';
+```
+JS示例：
+
+```typescript
+import base from '@ohos.base';
 ```
 
 ## Callback
@@ -87,12 +93,7 @@ AsyncCallback\<T, E = void> {
 
 ## BusinessError
 
-BusinessError\<T = void> extends Error {
-
-code: number;
-
-data?: T;
-}
+BusinessError\<T = void> extends Error { code: number; data?: T; }
 
 错误参数。
 

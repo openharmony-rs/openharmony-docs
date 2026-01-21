@@ -36,7 +36,7 @@
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位为ms。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
-| release_type | string | 标识应用打包时使用的SDK的发布类型。具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API version 23开始支持 |
+| release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |

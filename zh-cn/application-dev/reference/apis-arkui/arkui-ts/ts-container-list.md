@@ -36,6 +36,7 @@ List的预加载是指除了加载显示区域可见区域外子组件外，还�
 ## 子组件
 
 仅支持[ListItem](ts-container-listitem.md)、[ListItemGroup](ts-container-listitemgroup.md)子组件和自定义组件。自定义组件在List下使用时，建议使用ListItem或ListItemGroup作为自定组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+
 支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
 > **说明：**
@@ -652,13 +653,31 @@ syncLoad(enable: boolean)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enable   | boolean | 是   | 是否同步加载List区域内所有子组件。<br/>true表示同步加载，false表示异步加载。默认值：true。<br/>**说明：** <br/>设置为false时，在首次显示、不带动画scrollToIndex跳转场景，若当帧布局耗时超过50ms，会将List区域内尚未布局的子组件延后到下一帧进行布局。 |
 
+### editModeOptions<sup>23+</sup>
+
+editModeOptions(options?: EditModeOptions)
+
+配置编辑模式选项参数。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options| [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明)  | 否   | 编辑模式选项。|
+
 ### editMode<sup>(deprecated)</sup>
 
 editMode(value: boolean)
 
 设置当前List组件是否处于可编辑模式。可参考[示例3](#示例3设置编辑模式)实现删除选中的list项。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -667,6 +686,24 @@ editMode(value: boolean)
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | value  | boolean | 是   | 当前List组件是否处于可编辑模式。<br/>默认值：false，当前List组件不处于可编辑模式。 |
+
+### supportEmptyBranchInLazyLoading<sup>23+</sup>
+
+supportEmptyBranchInLazyLoading(supported: boolean | undefined)
+
+设置当前List组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。未设置时不支持空分支节点。此属性初次赋值后不支持更新，所以赋值后无法在支持空分支、不支持空分支行为之间切换。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                                               |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| supported  | boolean \| undefined | 是   | 当前List组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
 
 ## ListItemAlign<sup>9+</sup>枚举说明
 
@@ -923,7 +960,7 @@ onItemMove(event: (from: number, to: number) => boolean)
 
 ### onItemDragStart<sup>8+</sup>
 
-onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => ((() => any) \| void))
+onItemDragStart(event: OnItemDragStartCallback)
 
 开始拖拽列表元素时触发。
 
@@ -941,8 +978,7 @@ onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => ((() => any) 
 
 | 参数名    | 类型                                                      | 必填 | 说明                   |
 | --------- | --------------------------------------------------------- | ---- | ---------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。         |
-| itemIndex | number                                                    | 是   | 被拖拽列表元素索引值。 |
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | 是   | 列表元素拖拽开始时触发的回调。<br> API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。|
 
 ### onItemDragEnter<sup>8+</sup>
 
@@ -1041,7 +1077,9 @@ onItemDelete(event: (index: number) => boolean)
 
 当List组件在编辑模式时，点击ListItem右边出现的删除按钮时触发。
 
-从API version 9开始废弃不再使用，无替代接口。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1062,7 +1100,9 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](#scrollstate�
 
 列表滑动时触发。
 
-从API version 12开始废弃不再使用，推荐使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1151,7 +1191,7 @@ getItemRectInGroup(index: number, indexInGroup: number): RectResult
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 ### getVisibleListContentInfo<sup>14+</sup>
 
 getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
@@ -1191,7 +1231,7 @@ getVisibleListContentInfo(x: number, y: number): VisibleListContentInfo
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |The controller not bound to component.|
+| 100004   |Controller not bound to a component.|
 ### scrollToItemInGroup<sup>11+</sup>
 
 scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align?: ScrollAlign): void
@@ -1218,7 +1258,7 @@ scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 ### closeAllSwipeActions<sup>11+</sup>
 
@@ -1244,7 +1284,7 @@ closeAllSwipeActions(options?: CloseSwipeActionOptions): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to component.                               |
+| 100004   | Controller not bound to a component.                               |
 
 > **说明：**
 >
@@ -1439,6 +1479,13 @@ export class ListDataSource implements IDataSource {
     }
   }
 
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    });
+  }
+
   // 通知控制器数据删除
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
@@ -1463,6 +1510,10 @@ export class ListDataSource implements IDataSource {
   public insertItem(index: number, data: number): void {
     this.list.splice(index, 0, data);
     this.notifyDataAdd(index);
+  }
+
+  public reloadData(): void {
+    this.notifyDataReload();
   }
 }
 ```
@@ -1592,7 +1643,7 @@ import { ListDataSource } from './ListDataSource';
 @Entry
 @Component
 struct ListExample {
-  arr: ListDataSource=new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   @State editFlag: boolean = false;
 
   build() {
@@ -1618,6 +1669,7 @@ struct ListExample {
                     if (index != undefined) {
                       console.info(this.arr.getData(index) + 'Delete');
                       this.arr.deleteItem(index);
+                      this.arr.reloadData();
                       console.info(JSON.stringify(this.arr));
                       this.editFlag = false;
                     }
@@ -1625,7 +1677,7 @@ struct ListExample {
                 }
               }
             }
-          }, (item: number) => item.toString())
+          }, (item: number, index: number) => item.toString() + index.toString())
         }.width('90%')
         .scrollBar(BarState.Off)
         .friction(0.6)
@@ -1752,21 +1804,21 @@ struct ListExample {
       .scrollBar(BarState.On)
       .childrenMainSize(this.listChildrenSize)
       .alignListItem(ListItemAlign.Center)
-      Row(){
+      Row({ space: 18 }) {
         Button() { Text('item size + 50') }.onClick(()=>{
           this.listChildrenSize.childDefaultSize += 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('item size - 50') }.onClick(()=>{
           if (this.listChildrenSize.childDefaultSize === 0) {
             return;
           }
           this.listChildrenSize.childDefaultSize -= 50;
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
         Button() { Text('scrollTo (0, 310)') }.onClick(()=>{
           // 310: 跳转到item 1顶部与List顶部平齐的位置。
           // 如果不设置childrenMainSize，item高度不一致时scrollTo会不准确。
           this.scroller.scrollTo({ xOffset: 0, yOffset: 310 })
-        }).height('50%').width('30%')
+        }).height('50%').width('30%').backgroundColor(0xADD8E6)
       }.height('20%')
     }
   }
@@ -2194,6 +2246,9 @@ struct ForEachSort {
 
 从API version 22开始，该示例展示了List组件支持基于断点配置lanes效果。
 
+ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -2293,3 +2348,327 @@ struct ListExample {
 ```
 
 ![list_contentStartOffset](figures/listContentSize.gif)
+
+### 示例15（在两个列表之间实现拖拽功能）
+
+该示例通过OnItemDragStart等事件实现了ListItem在两个List组件间的拖拽效果。
+
+```ts
+// xxx.ets
+@ObservedV2
+class ListData {
+  @Trace public title: string = '';
+  @Trace public data: string[] = [];
+
+  constructor(title: string, data: string[]) {
+    this.title = title;
+    this.data = data;
+  }
+}
+
+class DraggingData {
+  public data?: string;
+}
+
+@ComponentV2
+struct DraggableList {
+  @Require @Param data: string[];
+  @Require @Param draggingData: DraggingData;
+
+  @Builder
+  ItemBuilder(data: string, size: SizeOptions, event: ItemDragInfo): void {
+    Stack() {
+      Text(data)
+    }
+    .backgroundColor(Color.White)
+    .borderRadius(4)
+    .size(size)
+  }
+
+  viewWidth: number = 0;
+  lastInsertIndex: number = 0;
+  scroller: Scroller = new Scroller();
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.data, (item: string) => {
+        ListItem() {
+          Text(item)
+        }
+        .width('100%')
+        .height('10%')
+        .margin(10)
+        .backgroundColor(Color.White)
+        .borderRadius(4)
+        .aspectRatio(1)
+      }, (item: string) => item)
+    }
+    .width('50%')
+    .layoutWeight(1)
+    .padding(10)
+    .onItemDragStart((event: ItemDragInfo, itemIndex: number) => {
+      let rect = this.scroller.getItemRect(itemIndex);
+      let size: SizeOptions = {
+        width: rect.width,
+        height: rect.height
+      };
+      this.lastInsertIndex = itemIndex;
+      this.draggingData.data = this.data[itemIndex];
+      this.data.splice(itemIndex, 1);
+
+      return this.ItemBuilder(this.draggingData.data, size, event);
+    })
+    .onItemDragEnter((event: ItemDragInfo) => {
+      console.info('Item drag enter at position:', event.x, event.y);
+    })
+    .onItemDragMove((event: ItemDragInfo, itemIndex: number, insertIndex: number) => {
+      if (this.lastInsertIndex != insertIndex){
+        console.info('insertIndex change from ', this.lastInsertIndex, 'to', insertIndex);
+        this.lastInsertIndex = insertIndex;
+      }
+    })
+    .onItemDragLeave((event: ItemDragInfo, itemIndex: number) => {
+      console.info('Item ' + itemIndex + ' drag leave at position:', event.x, event.y);
+    })
+    .onItemDrop((event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => {
+      if (!isSuccess) {
+        this.draggingData.data = undefined;
+        return;
+      }
+      if (insertIndex >= 0) {
+        this.data.splice(insertIndex, 0, this.draggingData.data!);
+      }
+      this.draggingData.data = undefined;
+    })
+    .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+      this.viewWidth = newValue.width as number;
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local data: ListData[] = [
+    new ListData('A', ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8']),
+    new ListData('B', ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8']),
+  ]
+  @Local draggingData: DraggingData = new DraggingData();
+
+  build() {
+    Stack() {
+      Row() {
+        DraggableList({ data: this.data[0].data, draggingData: this.draggingData })
+        DraggableList({ data: this.data[1].data, draggingData: this.draggingData })
+      }
+    }
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![OnItemDrag](figures/listOnItemDrag.gif)
+
+### 示例16（实现ListItemGroup中点击项的居中效果）
+
+该示例使用[scrollToItemInGroup](#scrolltoitemingroup11)接口，实现了点击[ListItemGroup](./ts-container-listitemgroup.md)中的[ListItem](./ts-container-listitem.md)时将其居中的效果。
+
+``` ts
+import { util } from '@kit.ArkTS';
+
+class Contact {
+  key: string = util.generateRandomUUID(true);
+  name: string;
+  icon: Resource;
+
+  constructor(name: string, icon: Resource) {
+    this.name = name;
+    this.icon = icon;
+  }
+}
+
+class ContactsGroup {
+  title: string = '';
+  contacts: Array<object> | null = null;
+  key: string = '';
+}
+
+@Entry
+@Component
+struct ContactsList {
+  private scroller: ListScroller = new ListScroller();
+  private contactsGroups: ContactsGroup[] = [
+    {
+      title: 'A',
+      contacts: [
+        new Contact('艾佳', $r('app.media.icon')),  // $r('app.media.icon')需要替换为开发者所需的图像资源文件
+        new Contact('安安', $r('app.media.icon')),
+        new Contact('Angela', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    {
+      title: 'B',
+      contacts: [
+        new Contact('白叶', $r('app.media.icon')),
+        new Contact('伯明', $r('app.media.icon'))
+        // ...
+      ],
+      key: util.generateRandomUUID(true)
+    } as ContactsGroup,
+    // ...
+  ]
+
+  @Builder
+  itemHead(text: string) {
+    Text(text)
+      .fontSize(20)
+      .backgroundColor('#fff1f3f5')
+      .width('100%')
+      .padding(5)
+  }
+
+  build() {
+    List({ scroller: this.scroller }) {
+      ForEach(this.contactsGroups, (item: ContactsGroup, index: number) => {
+        ListItemGroup({ header: this.itemHead(item.title) }) {
+          ForEach(item.contacts, (contact: Contact, subIndex: number) => {
+            ListItem() {
+              Row() {
+                Image(contact.icon)
+                  .width(40)
+                  .height(40)
+                  .margin(10)
+                Text(contact.name).fontSize(20)
+              }
+              .width('100%')
+              .justifyContent(FlexAlign.Start)
+              .margin(10)
+            }
+            .gesture(
+              TapGesture({ count: 1 })
+                .onAction((event: GestureEvent) => {
+                  if (event) {
+                    const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
+                    console.info('第', index + 1, '个ListItemGroup的第', subIndex + 1, '个ListItem的 x:', itemRect.x,
+                      ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
+                    this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
+                  }
+                })
+            )
+          }, (contact: Contact) => JSON.stringify(contact))
+        }
+        .divider({ strokeWidth: 4 })
+        .width('100%')
+      }, (item: ContactsGroup) => JSON.stringify(item))
+    }
+    .onScrollFrameBegin((offset: number, state: ScrollState) => {
+      console.info('List scrollFrameBegin offset: ' + offset + ' state: ' + state.toString());
+      return { offsetRemain: offset };
+    })
+  }
+}
+```
+
+![scrollToItemInGroup](figures/scrollToItemInGroup.gif)
+
+### 示例17（设置多选聚拢动画）
+
+该示例通过打开List多选聚拢动画开关，实现了在ListItem上[长按弹出菜单](ts-universal-attributes-menu.md#bindcontextmenu8)时聚拢显示范围内被选中的ListItem。
+
+从API version 23开始，List组件新增[编辑模式选项](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State isSelected: boolean[] = [];
+  selectedCount: number = 0;
+
+  @Styles
+  normalStyles(): void {
+    .opacity(1.0)
+  }
+
+  @Styles
+  selectStyles(): void {
+    .opacity(0.4)
+  }
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 10; i++) {
+      this.isSelected.push(false);
+    }
+  }
+
+  @Builder
+  MenuBuilder() {
+    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Text('menu item 1')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+      Divider().height(10)
+      Text('menu item 2')
+        .fontSize(18)
+        .width(120)
+        .height(50)
+        .textAlign(TextAlign.Center)
+    }.width(100)
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      List({ space: 10 }) {
+        LazyForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text(item.toString())
+                .fontSize(16)
+                .backgroundColor(Color.White)
+                .width('100%')
+                .height(50)
+                .textAlign(TextAlign.Center)
+            }
+            .selected(this.isSelected[item])
+            // 设置多选显示效果
+            .stateStyles({
+              normal: this.normalStyles,
+              selected: this.selectStyles
+            })
+            .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+              { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+            .onClick(() => {
+              this.isSelected[item] = !this.isSelected[item];
+              console.info(`item:${item}, this.isSelected[item]:${this.isSelected[item]}`)
+              if (this.isSelected[item]) {
+                ++this.selectedCount;
+              } else {
+                --this.selectedCount;
+              }
+            })
+        }, (item: number) => item.toString())
+      }
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: () => {
+          return this.selectedCount;
+        }
+      })
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+    }.width('100%').margin({ top: 5 }).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![listMultiselectAnimation](figures/listMultiselectAnimation.gif)

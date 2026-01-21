@@ -35,6 +35,8 @@ setLocationPolicy(admin: Want, policy: LocationPolicy): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)。
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |

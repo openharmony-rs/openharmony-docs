@@ -1,4 +1,4 @@
-# Introduction to Universal Keystore Kit
+# About This Kit
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->

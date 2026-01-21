@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**Path2D** allows you to describe a path through an existing path. This path can be drawn through the **stroke** API of **Canvas**.
+**Path2D** allows you to describe a path through an existing path. This path can be drawn through the [stroke](js-components-canvas-canvasrenderingcontext2d.md#stroke) API of **Canvas**.
 
 >  **NOTE**
 >

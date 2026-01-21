@@ -35,7 +35,7 @@ Provides the status codes of MindSpore Lite.
 
 ### OH_AI_CompCode
 
-```
+```c
 enum OH_AI_CompCode
 ```
 
@@ -56,7 +56,7 @@ Defines MindSpore component codes.
 
 ### OH_AI_Status
 
-```
+```c
 enum OH_AI_Status
 ```
 

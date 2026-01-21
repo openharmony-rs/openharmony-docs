@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoPrivKey OH_CryptoPrivKey
+```
+
 ## Overview
 
 Defines a struct for a private key.

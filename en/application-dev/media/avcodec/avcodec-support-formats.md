@@ -15,6 +15,9 @@ The capabilities for encoding and decoding audio and video, as well as for multi
 Currently, the following decoding capabilities are supported:
 | Video Decoding Type      | MIME Type for Video Decoding Format  |
 | --------------------- | ---------------- |
+| MSVIDEO1<sup>22+</sup>| [OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| WMV3<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WMV3](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| MJPEG<sup>22+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MJPEG](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 | MPEG2 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG2](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 | MPEG4 | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG4](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 | H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
@@ -67,6 +70,8 @@ If the system does not support the required decoding capability, the decoder ins
 
 The decoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
+Starting from API version 23, TWINVQ, ILBC, and TRUEHD are introduced.
+
 For details about the development guide, see [Audio Decoding](audio-decoding.md).
 
 ### Audio Encoding
@@ -92,10 +97,10 @@ For details about the development guide, see [Audio Encoding](audio-encoding.md)
 The following formats are supported:
 | Media Format | Container Format                     | Track Format                     |
 | -------- | :----------------------------| :----------------------------|
-| Audio/Video    | mp4                        |<!--RP4-->Video track: AVC (H.264), MPEG4<br>Audio track: AAC, MPEG (MP3), ALAC<sup>22+</sup><br>Subtitle track: WEBVTT<br>Auxiliary track: AUXL (such as audio raw information and video depth information)<br>Timed metadata track: time-related description information, such as frame-level maintenance and debugging information and sensor information.<!--RP4End-->|
-| Audio/Video    | fmp4                       |<!--RP5-->Video track: AVC (H.264)<br>Audio track: AAC, MPEG (MP3)<!--RP5End-->|
-| Audio/Video    | mkv                        |<!--RP6-->Video track: AVC (H.264), MSVIDEO1<sup>22+</sup><br>Audio track: AAC, MPEG(MP3), OPUS, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>, ALAC<sup>22+</sup><!--RP6End-->|
-| Audio/Video    | mpeg-ts                    |<!--RP7-->Video track: AVC (H.264), MPEG2, MPEG4<br>Audio track: AAC, MPEG (MP3)<!--RP7End-->|
+| Audio/Video    | mp4                        |<!--RP4-->Video track: AVC (H.264), MPEG4<br>Audio track: AAC, MPEG(MP3), ALAC<sup>22+</sup>, TRUEHD<sup>23+</sup><br>Subtitle track: WEBVTT<br>Auxiliary track: AUXL (such as audio raw information and video depth information)<br>Timed metadata track: time-related description information, such as frame-level maintenance and debugging information and sensor information.<!--RP4End-->|
+| Audio/Video    | fmp4                       |<!--RP5-->Video track: AVC (H.264)<br>Audio track: AAC, MPEG (MP3), TRUEHD<sup>23+</sup><!--RP5End-->|
+| Audio/Video    | mkv                        |<!--RP6-->Video track: AVC (H.264), MSVIDEO1<sup>22+</sup><br>Audio track: AAC, MPEG(MP3), OPUS, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>, ALAC<sup>22+</sup>, TRUEHD<sup>23+</sup><!--RP6End-->|
+| Audio/Video    | mpeg-ts                    |<!--RP7-->Video track: AVC (H.264), MPEG2, MPEG4<br>Audio track: AAC, MPEG (MP3), TRUEHD<sup>23+</sup><!--RP7End-->|
 | Audio/Video    | flv                        |<!--RP8-->Video track: AVC (H.264)<br>Audio track: AAC<!--RP8End-->|
 | Audio/Video    | mpeg-ps                    |Video track: AVC (H.264), MPEG2<br>Audio track: MPEG (MP2, MP3)|
 | Audio/Video    | avi                        |Video track: H.263, AVC(H.264), MPEG2, MPEG4, MJPEG<sup>22+</sup>, MSVIDEO1<sup>22+</sup><br>Audio track: AAC, MPEG (MP2, MP3), PCM, GSM_MS<sup>22+</sup>, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>|

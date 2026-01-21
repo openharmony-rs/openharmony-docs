@@ -366,7 +366,7 @@ startProfiling(filename: string): void
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [hidebug.startJsCpuProfiling](#hidebugstartjscpuprofiling9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hidebug.startJsCpuProfiling](#hidebugstartjscpuprofiling9) instead.
 
 Starts the VM profiling method. **startProfiling(filename: string)** and **stopProfiling()** are called in pairs. **startProfiling(filename: string)** always occurs before **stopProfiling()**. You are advised not to call either of these methods repeatedly. Otherwise, an exception may occur.
 
@@ -396,7 +396,7 @@ stopProfiling(): void
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [hidebug.stopJsCpuProfiling](#hidebugstopjscpuprofiling9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hidebug.stopJsCpuProfiling](#hidebugstopjscpuprofiling9) instead.
 
 Stops the VM profiling method. **stopProfiling()** and **startProfiling(filename: string)** are called in pairs. **startProfiling(filename: string)** always occurs before **stopProfiling()**. You are advised not to call either of these methods repeatedly. Otherwise, an exception may occur.
 
@@ -420,7 +420,7 @@ dumpHeapData(filename: string): void
 
 > **NOTE**
 > 
-> This API is deprecated since API version 9. You are advised to use [hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9).
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9) instead.
 
 Dumps the VM heap data and generates the **filename.heapsnapshot** file.
 

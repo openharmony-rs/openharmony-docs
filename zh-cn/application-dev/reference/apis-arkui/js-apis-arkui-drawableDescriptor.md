@@ -669,7 +669,7 @@ AnimatedDrawableDescriptor的构造函数。
 
 | 参数名     | 类型              | 必填  | 说明                                       |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 是   | 动图资源地址或者[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象构成的的数组。<br/> ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://\<bundleName>/\<sandboxPath>），BASE64字符串。 |
+| src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | 是   | 动图资源地址或者[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象构成的数组。<br/> ResourceStr当前支持的范围：应用资源Resource，沙箱路径（file://\<bundleName>/\<sandboxPath>），BASE64字符串。 |
 | options   | [AnimationOptions](#animationoptions12) | 否   | 动画控制参数。 |
 
 **示例：**

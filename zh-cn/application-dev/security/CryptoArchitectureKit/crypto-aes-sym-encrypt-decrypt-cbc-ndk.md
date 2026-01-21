@@ -44,27 +44,29 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 调用[OH_CryptoSymKeyGenerator_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy)、[OH_CryptoSymCipher_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy)、[OH_CryptoSymKey_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy)、[OH_Crypto_FreeDataBlob](../../reference/apis-crypto-architecture-kit/capi-crypto-common-h.md#oh_crypto_freedatablob)释放申请的内存，销毁对象。
 
-```c++
+<!-- @[cbc_encrypt_decrypt_aes_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_cbc_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestAesCbc()
+OH_Crypto_ErrCode doTestAesCbc()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
     OH_CryptoSymCipher *decCtx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
     OH_CryptoSymCipherParams *params = nullptr;
-    Crypto_DataBlob encData = {.data = nullptr, .len = 0};
-    Crypto_DataBlob decData = {.data = nullptr, .len = 0};
+    Crypto_DataBlob outUpdate = {.data = nullptr, .len = 0};
+    Crypto_DataBlob decUpdate = {.data = nullptr, .len = 0};
     char *plainText = const_cast<char *>("this is test!");
     Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
-    uint8_t iv[16] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4, 3, 1, 0, 10}; // 示例代码iv值，开发者可使用安全随机数生成。
+    uint8_t iv[16] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4, 3, 1, 0, 10}; // iv使用安全随机数生成
     Crypto_DataBlob ivBlob = {.data = iv, .len = sizeof(iv)};
-    // 生成对称密钥。
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
+    // 生成对称密钥
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -72,19 +74,18 @@ static OH_Crypto_ErrCode doTestAesCbc()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    
-    // 创建参数对象。
+
+    // 设置参数
     ret = OH_CryptoSymCipherParams_Create(&params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    // 设置参数。
-    ret = OH_CryptoSymCipherParams_SetParam(params, CRYPTO_IV_DATABLOB, &ivBlob); // CBC模式只需要设置iv。
+    ret = OH_CryptoSymCipherParams_SetParam(params, CRYPTO_IV_DATABLOB, &ivBlob);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    
-    // 加密。
+
+    // 加密
     ret = OH_CryptoSymCipher_Create("AES128|CBC|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -93,21 +94,21 @@ static OH_Crypto_ErrCode doTestAesCbc()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Final(encCtx, &msgBlob, &encData);
+    ret = OH_CryptoSymCipher_Final(encCtx, &msgBlob, &outUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    
-    // 解密。
+
+    // 解密
     ret = OH_CryptoSymCipher_Create("AES128|CBC|PKCS7", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params); // 解密使用的params与加密时相同。
+    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Final(decCtx, &encData, &decData);
+    ret = OH_CryptoSymCipher_Final(decCtx, &outUpdate, &decUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -118,8 +119,8 @@ end:
     OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    OH_Crypto_FreeDataBlob(&encData);
-    OH_Crypto_FreeDataBlob(&decData);
+    OH_Crypto_FreeDataBlob(&outUpdate);
+    OH_Crypto_FreeDataBlob(&decUpdate);
     return ret;
 }
 ```

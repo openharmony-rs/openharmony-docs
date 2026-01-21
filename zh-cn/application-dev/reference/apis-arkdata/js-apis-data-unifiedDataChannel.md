@@ -412,15 +412,13 @@ let types = unifiedData.getTypes();
 
 描述统一数据对象的数据摘要，包括数据类型和大小。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| summary   | Record<string, number> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 |
-| totalSize | number | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。 |
-| overview<sup>22+</sup>   | Record<string, number> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。 |
+| summary   | Record<string, number> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| totalSize | number | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| overview<sup>22+</sup>   | Record<string, number> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 

@@ -41,7 +41,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：该接口仅在Phone和Tablet设备上生效，在其他设备上返回801错误码。
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
@@ -99,7 +99,7 @@ struct Index {
 
 on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
-订阅应用快捷键。获取满足条件的组合按键输入事件，使用Callback异步回调。
+订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -159,7 +159,7 @@ struct Index {
 
 off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptions&gt;): void
 
-取消订阅应用快捷键。
+取消订阅应用快捷键。使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -341,9 +341,16 @@ struct Index {
         .onClick(() => {
           try {
             // 取消指定回调函数
-            inputConsumer.off('keyPressed', (event: KeyEvent) => {
+            let options: inputConsumer.KeyPressedConfig = {
+              key: 16,
+              action: 1,
+              isRepeat: false,
+            }
+            let callback = (event: KeyEvent) => {
               console.info(`Unsubscribe success ${JSON.stringify(event)}`);
-            });
+            }
+            inputConsumer.on('keyPressed', options, callback);
+            inputConsumer.off('keyPressed', callback);
             // 取消当前已订阅的所有回调函数
             inputConsumer.off("keyPressed");
           } catch (error) {

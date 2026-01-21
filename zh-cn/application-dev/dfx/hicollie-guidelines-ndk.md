@@ -10,6 +10,10 @@
 
 用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为[应用冻屏](appfreeze-guidelines.md)。本文面向开发者介绍HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死事件的能力。
 
+> **说明：**
+>
+> 在非主线程使用相关接口。
+
 ## 接口说明
 
 | 接口名 | 描述 |
@@ -17,7 +21,7 @@
 | OH_HiCollie_Init_StuckDetection | 注册应用业务线程卡死的周期性检测任务。用户实现回调函数, 用于定时检测业务线程卡死情况。<br/>默认检测时间：3s上报BUSSINESS_THREAD_BLOCK_3S告警事件，6s上报BUSSINESS_THREAD_BLOCK_6S卡死事件。 |
 | OH_HiCollie_Init_StuckDetectionWithTimeout | 注册应用业务线程卡死的周期性检测任务。用户实现回调函数, 用于定时检测业务线程卡死情况。<br/>开发者可以设置卡死检测时间，可设置的时间范围：[3, 15]，单位：s。<br/>说明：从API version 18开始，支持该接口。 |
 | OH_HiCollie_Init_JankDetection | 注册应用业务线程卡顿检测的回调函数。<br/>线程卡顿监控功能需要开发者实现两个卡顿检测回调函数，分别放在业务线程处理事件的前后。作为插桩函数，监控业务线程处理事件执行情况。 |
-| OH_HiCollie_Report | 上报应用业务线程卡死事件，生成卡死故障日志，辅助定位应用卡死问题。<br/>先调用OH_HiCollie_Init_StuckDetection或OH_HiCollie_Init_StuckDetectionWithTimeout接口，初始化检测的task；<br/>如果task任务超时，结合业务逻辑，调用OH_HiCollie_Report接口上报卡死事件。 |
+| OH_HiCollie_Report | 上报应用业务线程卡死事件，生成卡死故障日志，辅助定位应用卡死问题。<br/>先调用OH_HiCollie_Init_StuckDetection或OH_HiCollie_Init_StuckDetectionWithTimeout接口，初始化检测的task。<br/>如果task任务超时，结合业务逻辑，调用OH_HiCollie_Report接口上报卡死事件。 |
 
 API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiCollie](../reference/apis-performance-analysis-kit/capi-hicollie-h.md)。
 
@@ -26,13 +30,14 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 1. 业务线程卡顿OH_HiCollie_Init_JankDetection故障规格，请参考[主线程超时事件检测原理](hiappevent-watcher-mainthreadjank-events.md#检测原理)。
 
 2. 业务线程卡死故障：
+   
    （1）OH_HiCollie_Init_StuckDetection检测原理：应用的watchdog线程会周期性进行业务线程判活检测。当判活检测超过3s没有被执行，上报BUSSINESS_THREAD_BLOCK_3S线程告警事件；超过6s依然没有被执行，会上报BUSSINESS_THREAD_BLOCK_6S线程卡死事件。两个事件根据系统匹配规则生成appfreeze故障日志。
 
    （2）OH_HiCollie_Init_StuckDetectionWithTimeout检测原理：应用的watchdog线程会周期性进行业务线程判活检测。当判活检测超过stuckTimeout时间没有被执行，上报BUSSINESS_THREAD_BLOCK_3S告警事件；超过stuckTimeout \* 2时间，依然没有被执行，会上报BUSSINESS_THREAD_BLOCK_6S线程卡死事件。两个事件匹配生成appfreeze故障日志。
 
 ## 日志规格
 
-1. 业务线程卡死故障日志以appfreeze-开头，生成在“设备/data/log/faultlog/faultlogger/”路径下。该日志文件名格式为“appfreeze-应用包名-应用UID-秒级时间”。具体规格可参考[应用冻屏（AppFreeze）日志规格](appfreeze-guidelines.md#日志规格)。
+1. 业务线程卡死故障日志以appfreeze-开头，生成在“设备/data/log/faultlog/faultlogger/”路径下。该日志文件名格式为“appfreeze-应用包名-应用UID-毫秒级时间”。具体规格可参考[应用冻屏（AppFreeze）日志规格](appfreeze-guidelines.md#日志规格)。
 
 2. OH_HiCollie_Init_StuckDetection日志规格，请参考[主线程超时事件日志规格](apptask-timeout-guidelines.md#日志规格)。
 
@@ -181,7 +186,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    #undef LOG_TAG
    #define LOG_TAG "StruckTest"
    
-   // 自定义休眠时间，模拟卡死场景
+   // 自定义阻塞时间，模拟卡死场景，单位：s
    const int64_t BLOCK_TIME = 3; 
    // 设置应用线程执行任务情况标志位, true-正常，false-卡死
    std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
@@ -373,6 +378,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    ```
 
 4. 将TestHiCollieNdk注册为ArkTS接口。
+   
    （1）OH_HiCollie_Init_JankDetection示例，编辑“index.d.ts”文件，定义ArkTS接口：
 
    ```typescript
@@ -458,6 +464,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程。
 
 7. 在DevEco Studio的底部，切换到“Log”窗口，过滤自定义的LOG_TAG。
+   
    （1）点击“testHiCollieJankNdk”按钮。
 
    此时窗口将显示通过OH_HiCollie_Init_JankDetection接口获取的应用业务线程采样栈的超时信息。可以通过订阅hiappevent获取对应的事件，参见[订阅主线程超时事件](hiappevent-watcher-mainthreadjank-events-arkts.md)。

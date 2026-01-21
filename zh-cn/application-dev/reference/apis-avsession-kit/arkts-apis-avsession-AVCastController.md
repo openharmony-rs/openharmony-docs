@@ -6,12 +6,12 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+在投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 10开始支持。
-
-在投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 
 ## 导入模块
 
@@ -1689,7 +1689,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlGenericError'。 |
+| type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlGenericError'。 |
 | callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -1843,7 +1843,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlParsingError'。 |
+| type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlParsingError'。 |
 | callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
@@ -1915,7 +1915,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 	取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
+| type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
 | callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**

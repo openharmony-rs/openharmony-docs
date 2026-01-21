@@ -608,14 +608,14 @@ struct Index {
       Text(this.message)
         .fontSize(24)
         .fontWeight(FontWeight.Bold)
-      Button ('Subscribe to Screen Pixel Density Changes')
+      Button('Subscribe to Screen Pixel Density Changes')
         .margin({ bottom: 10 })
         .onClick(() => {
           this.message = 'Listener registered';
           // Add event listeners.
           this.getUIContext().getUIObserver().on('densityUpdate', this.densityUpdateCallback);
         })
-      Button ('Unsubscribe from Screen Pixel Density Changes')
+      Button('Unsubscribe from Screen Pixel Density Changes')
         .onClick(() => {
           this.message = 'Listener not registered';
           // Remove event listeners.
@@ -2428,13 +2428,13 @@ Unregisters previously registered window size layout breakpoint change listeners
 
 See the example for [on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22).
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
 
 Listens for content switching events of the **Swiper** component. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2442,7 +2442,7 @@ Listens for content switching events of the **Swiper** component. This API uses 
 
 | Name  | Type                         | Mandatory| Description                                                        |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
 
 **Example**
 
@@ -2496,13 +2496,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 Unregister the listener for content switching events of the **Swiper** component.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2510,19 +2510,19 @@ Unregister the listener for content switching events of the **Swiper** component
 
 | Name  | Type                        | Mandatory| Description                                                        |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
 
 **Example**
 
-See the example for the [onSwiperContentUpdate](#onswipercontentupdate23) API.
+See the example for the [onSwiperContentUpdate](#onswipercontentupdate22) API.
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<SwiperContentInfo\>): void
 
 Listens for content switching events of a specific **Swiper** component identified by its ID. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2531,7 +2531,7 @@ Listens for content switching events of a specific **Swiper** component identifi
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Information about the target **Swiper** component.                                  |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\>  | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\>  | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
 
 **Example**
 
@@ -2586,13 +2586,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<SwiperContentInfo\>): void
 
 Unregister the listener for content switching events of a specific **Swiper** component identified by its ID.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2601,8 +2601,8 @@ Unregister the listener for content switching events of a specific **Swiper** co
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Information about the target **Swiper** component.                                  |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
 
 **Example**
 
-See the example for the [onSwiperContentUpdate](#onswipercontentupdate23-1) API.
+See the example for the [onSwiperContentUpdate](#onswipercontentupdate22-1) API.

@@ -35,6 +35,8 @@ HiAppEvent能够订阅应用事件和系统事件。
 
 [应用终止事件介绍](hiappevent-watcher-app-killed-events.md)
 
+[ArkWeb抛滑丢帧事件介绍](hiappevent-watcher-web-fling-jank-events.md)
+
 <!--RP1-->
 <!--RP1End-->
 

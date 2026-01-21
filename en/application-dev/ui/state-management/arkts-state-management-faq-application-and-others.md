@@ -1,0 +1,480 @@
+# In-App State Management and Other FAQs
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--Designer: @s10021109-->
+<!--Tester: @zhangwenhan12-->
+<!--Adviser: @zhang_yixin13-->
+
+This section describes the common problems of in-app state management and other common problems.
+
+## Error Reported When the ArkUI Decorator Is Used in Concurrent Threads
+
+### Lazy Loading of Files Containing Decorators
+
+The state manager decorator can be used only in the UI thread and cannot be used in the [multithreaded concurrency](../../arkts-utils/multi-thread-concurrency-overview.md) where the ArkUI framework is not loaded. The concurrent thread does not load the complete ArkUI framework logic. Therefore, the status management decorator defined in the framework is not loaded to the concurrent thread. If the status management decorator is used in concurrent threads, **ReferenceError: xxx is not defined** is displayed. In the following example, although the concurrent thread does not use the class decorated by [\@Observed](./arkts-observed-and-objectlink.md), the error information of **ReferenceError: Observed is not defined** is still printed. This is because when the concurrent thread parses the file dependency layer by layer, the file is finally loaded to the **Observed.ets** file that defines the \@Observed decorator. As a result, this error is triggered.
+
+**Incorrect Usage**
+
+<!-- @[lazy_import_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/LazyImportNeg.ets
+import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button('New Worker')
+      .onClick(() => {
+        // Create a Worker object.
+        const newWorker = new worker.ThreadWorker('../workers/LazyImportWorkerNeg.ets');
+
+        // Register the onmessage callback to capture the message sent by the Worker thread through the workerPort.postMessage API. This callback is executed in the host thread.
+        newWorker.onmessage = (e: MessageEvents) => {
+          let data: string = e.data;
+          console.info('newWorker onmessage is: ', data);
+        };
+
+        // Register the onAllErrors callback to capture global exceptions generated during the onmessage callback, timer callback, and file execution of the Worker thread. This callback is executed in the host thread.
+        newWorker.onAllErrors = (err: ErrorEvent) => {
+          console.error('workerInstance onAllErrors message is: ' + err.message);
+        };
+
+        // Register the onmessageerror callback. When the Worker object receives a message that cannot be serialized, this callback is invoked and executed in the host thread.
+        newWorker.onmessageerror = () => {
+          console.error('workerInstance onmessageerror');
+        };
+
+        // Register the onexit callback. When the Worker object is destroyed, this callback is invoked and executed in the host thread.
+        newWorker.onexit = (e: number) => {
+          // When the Worker object exits normally, the code is 0. When the Worker object exits abnormally, the code is 1.
+          console.info('workerInstance onexit code is: ', e);
+        };
+
+        // Send a message to the Worker thread.
+        newWorker.postMessage('[Main] message from the main thread');
+      })
+  }
+}
+```
+
+<!-- @[lazy_import_worker_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/LazyImportWorkerNeg.ets) --> 
+
+``` TypeScript
+// src/main/ets/workers/LazyImportWorkerNeg.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+import { testWithoutObserved } from '../pages/LazyImportFuncNeg';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+// Register the onmessage callback. When the Worker thread receives a message from the host thread through the postMessage interface, this callback is invoked and executed in the Worker thread.
+workerPort.onmessage = (e: MessageEvents) => {
+  // Call the testWithoutObserved function.
+  testWithoutObserved();
+  let data: string = e.data;
+  console.info('workerPort onmessage is: ', data);
+
+  // Send a message to the host thread.
+  workerPort.postMessage('[Worker] message from the workerPort');
+};
+
+// Register the onmessageerror callback. When the Worker object receives a message that cannot be serialized, this callback is invoked and executed in the Worker thread.
+workerPort.onmessageerror = () => {
+  console.error('workerPort onmessageerror');
+};
+
+// Register the onerror callback. When an exception occurs during the execution of the Worker thread, this callback is invoked and executed in the Worker thread.
+workerPort.onerror = (err: ErrorEvent) => {
+  console.error('workerPort onerror err is: ', err.message);
+};
+```
+
+<!-- @[lazy_import_function_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportFuncNeg.ets) --> 
+
+``` TypeScript
+// src/main/ets/pages/LazyImportFuncNeg.ets
+import { innerTest } from './LazyImportObservedNeg';
+
+export function testWithObserved(): void {
+  innerTest();
+  console.info('ImportObserved::testWithObserved call');
+}
+
+export function testWithoutObserved(): void {
+  console.info('ImportObserved::testWithoutObserved call');
+}
+```
+
+<!-- @[lazy_import_observed_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportObservedNeg.ets) --> 
+
+``` TypeScript
+// src/main/ets/pages/LazyImportObservedNeg.ets
+export function innerTest(): void {
+  console.info('Observed::innerTest call');
+}
+
+@Observed
+export class Person {
+  public name: string;
+  public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+```
+
+You can use [lazy import](../../arkts-utils/arkts-lazy-import.md) to lazily load the file that contains the decorator. The subthread does not load the file.
+
+**Correct Usage**
+
+<!-- @[lazy_import_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportPos.ets) --> 
+
+``` TypeScript
+// src/main/ets/pages/LazyImportPos.ets
+import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button('New Worker')
+      .onClick(() => {
+        // Create a Worker object.
+        const newWorker = new worker.ThreadWorker('../workers/LazyImportWorkerPos.ets');
+
+        // Register the onmessage callback to capture the message sent by the Worker thread through the workerPort.postMessage API. This callback is executed in the host thread.
+        newWorker.onmessage = (e: MessageEvents) => {
+          let data: string = e.data;
+          console.info('newWorker onmessage is: ', data);
+        };
+
+        // Register the onAllErrors callback to capture global exceptions generated during the onmessage callback, timer callback, and file execution of the Worker thread. This callback is executed in the host thread.
+        newWorker.onAllErrors = (err: ErrorEvent) => {
+          console.error('workerInstance onAllErrors message is: ' + err.message);
+        };
+
+        // Register the onmessageerror callback. When the Worker object receives a message that cannot be serialized, this callback is invoked and executed in the host thread.
+        newWorker.onmessageerror = () => {
+          console.error('workerInstance onmessageerror');
+        };
+
+        // Register the onexit callback. When the Worker object is destroyed, this callback is invoked and executed in the host thread.
+        newWorker.onexit = (e: number) => {
+          // When the Worker object exits normally, the code is 0. When the Worker object exits abnormally, the code is 1.
+          console.info('workerInstance onexit code is: ', e);
+        };
+
+        // Send a message to the Worker thread.
+        newWorker.postMessage('[Main] message from the main thread');
+      })
+  }
+}
+```
+
+<!-- @[lazy_import_worker_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/LazyImportWorkerPos.ets) -->
+
+``` TypeScript
+// src/main/ets/workers/LazyImportWorkerPos.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+import { testWithoutObserved } from '../pages/LazyImportFuncPos';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+// Register the onmessage callback. When the Worker thread receives a message from the host thread through the postMessage interface, this callback is invoked and executed in the Worker thread.
+workerPort.onmessage = (e: MessageEvents) => {
+  // Call the testWithoutObserved function.
+  testWithoutObserved();
+  let data: string = e.data;
+  console.info('workerPort onmessage is: ', data);
+
+  // Send a message to the host thread.
+  workerPort.postMessage('[Worker] message from the workerPort');
+};
+
+// Register the onmessageerror callback. When the Worker object receives a message that cannot be serialized, this callback is invoked and executed in the Worker thread.
+workerPort.onmessageerror = () => {
+  console.error('workerPort onmessageerror');
+};
+
+// Register the onerror callback. When an exception occurs during the execution of the Worker thread, this callback is invoked and executed in the Worker thread.
+workerPort.onerror = (err: ErrorEvent) => {
+  console.error('workerPort onerror err is: ', err.message);
+};
+```
+
+<!-- @[lazy_import_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportFuncPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/LazyImportFuncPos.ets
+// Use lazy import to lazy load the file that contains the decorator.
+import lazy { innerTest } from './LazyImportObservedPos';
+
+export function testWithObserved(): void {
+  innerTest();
+  console.info('ImportObserved::testWithObserved call');
+}
+
+export function testWithoutObserved(): void {
+  console.info('ImportObserved::testWithoutObserved call');
+}
+```
+
+<!-- @[lazy_import_observed_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportObservedPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/LazyImportObservedPos.ets
+export function innerTest(): void {
+  console.info('Observed::innerTest call');
+}
+
+@Observed
+export class Person {
+  public name: string;
+  public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+```
+
+### Isolation of the Decorator Usage
+
+The status management decorator is defined in the file where the function called in the subthread is located. During loading, the status management decorator is also loaded to the corresponding file, and a **ReferenceError** is reported. The called function and the definition of the state manager decorator exist in the same file. Therefore, lazy loading cannot solve this problem. In this case, you can remove the called function from the file and define it separately.
+
+**Incorrect Usage**
+
+<!-- @[decorator_use_isolation_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/DecUseIsolationNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/DecUseIsolationNeg.ets
+import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button('New Worker')
+      .onClick(() => {
+        // Create a Worker object.
+        const newWorker = new worker.ThreadWorker('../workers/UseIsolationWorkerNeg.ets');
+
+        // Register the onmessage callback to capture the message sent by the Worker thread through the workerPort.postMessage API. This callback is executed in the host thread.
+        newWorker.onmessage = (e: MessageEvents) => {
+          let data: string = e.data;
+          console.info('newWorker onmessage is: ', data);
+        };
+
+        // Register the onAllErrors callback to capture global exceptions generated during the onmessage callback, timer callback, and file execution of the Worker thread. This callback is executed in the host thread.
+        newWorker.onAllErrors = (err: ErrorEvent) => {
+          console.error('workerInstance onAllErrors message is: ' + err.message);
+        };
+
+        // Register the onmessageerror callback. When the Worker object receives a message that cannot be serialized, this callback is invoked and executed in the host thread.
+        newWorker.onmessageerror = () => {
+          console.error('workerInstance onmessageerror');
+        };
+
+        // Register the onexit callback. When the Worker object is destroyed, this callback is invoked and executed in the host thread.
+        newWorker.onexit = (e: number) => {
+          // When the Worker object exits normally, the code is 0. When the Worker object exits abnormally, the code is 1.
+          console.info('workerInstance onexit code is: ', e);
+        };
+
+        // Send a message to the Worker thread.
+        newWorker.postMessage('[Main] message from the main thread');
+      })
+  }
+}
+```
+
+<!-- @[use_isolation_worker_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/UseIsolationWorkerNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/workers/UseIsolationWorkerNeg.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+import { testWithObserved } from '../pages/UseIsolationFuncNeg';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+// Register the onmessage callback. When the Worker thread receives a message from the host thread through the postMessage interface, this callback is invoked and executed in the Worker thread.
+workerPort.onmessage = (e: MessageEvents) => {
+  // Call the testWithObserved function.
+  testWithObserved();
+  let data: string = e.data;
+  console.info('workerPort onmessage is: ', data);
+
+  // Send a message to the host thread.
+  workerPort.postMessage('[Worker] message from the workerPort');
+};
+
+// Register the onmessageerror callback. When the Worker object receives a message that cannot be serialized, this callback is invoked and executed in the Worker thread.
+workerPort.onmessageerror = () => {
+  console.error('workerPort onmessageerror');
+};
+
+// Register the onerror callback. When an exception occurs during the execution of the Worker thread, this callback is invoked and executed in the Worker thread.
+workerPort.onerror = (err: ErrorEvent) => {
+  console.error('workerPort onerror err is: ', err.message);
+};
+```
+
+<!-- @[use_isolation_function_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationFuncNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationFuncNeg.ets
+import { innerTest } from './UseIsolationObservedNeg';
+
+export function testWithObserved(): void {
+  innerTest();
+  console.info('ImportObserved::testWithObserved call');
+}
+
+export function testWithoutObserved(): void {
+  console.info('ImportObserved::testWithoutObserved call');
+}
+```
+
+<!-- @[use_isolation_observed_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationObservedNeg.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationObservedNeg.ets
+export function innerTest(): void {
+  console.info('Observed::innerTest call');
+}
+
+@Observed
+export class Person {
+  public name: string;
+  public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+```
+
+**Correct Usage**
+
+<!-- @[decorator_use_isolation_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/DecUseIsolationPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/DecUseIsolationPos.ets
+import { ErrorEvent, worker, MessageEvents } from '@kit.ArkTS';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button('New Worker')
+      .onClick(() => {
+        // Create a Worker object.
+        const newWorker = new worker.ThreadWorker('../workers/UseIsolationWorkerPos.ets');
+
+        // Register the onmessage callback to capture the message sent by the Worker thread through the workerPort.postMessage API. This callback is executed in the host thread.
+        newWorker.onmessage = (e: MessageEvents) => {
+          let data: string = e.data;
+          console.info('newWorker onmessage is: ', data);
+        };
+
+        // Register the onAllErrors callback to capture global exceptions generated during the onmessage callback, timer callback, and file execution of the Worker thread. This callback is executed in the host thread.
+        newWorker.onAllErrors = (err: ErrorEvent) => {
+          console.error('workerInstance onAllErrors message is: ' + err.message);
+        };
+
+        // Register the onmessageerror callback. When the Worker object receives a message that cannot be serialized, this callback is invoked and executed in the host thread.
+        newWorker.onmessageerror = () => {
+          console.error('workerInstance onmessageerror');
+        };
+
+        // Register the onexit callback. When the Worker object is destroyed, this callback is invoked and executed in the host thread.
+        newWorker.onexit = (e: number) => {
+          // When the Worker object exits normally, the code is 0. When the Worker object exits abnormally, the code is 1.
+          console.info('workerInstance onexit code is: ', e);
+        };
+
+        // Send a message to the Worker thread.
+        newWorker.postMessage('[Main] message from the main thread');
+      })
+  }
+}
+```
+
+<!-- @[use_isolation_worker_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/UseIsolationWorkerPos.ets) -->
+
+``` TypeScript
+// src/main/ets/workers/UseIsolationWorkerPos.ets
+import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+import { testWithObserved } from '../pages/UseIsolationFuncPos';
+
+const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+
+// Register the onmessage callback. When the Worker thread receives a message from the host thread through the postMessage interface, this callback is invoked and executed in the Worker thread.
+workerPort.onmessage = (e: MessageEvents) => {
+  // Call the testWithObserved function.
+  testWithObserved();
+  let data: string = e.data;
+  console.info('workerPort onmessage is: ', data);
+
+  // Send a message to the host thread.
+  workerPort.postMessage('[Worker] message from the workerPort');
+};
+
+// Register the onmessageerror callback. When the Worker object receives a message that cannot be serialized, this callback is invoked and executed in the Worker thread.
+workerPort.onmessageerror = () => {
+  console.error('workerPort onmessageerror');
+};
+
+// Register the onerror callback. When an exception occurs during the execution of the Worker thread, this callback is invoked and executed in the Worker thread.
+workerPort.onerror = (err: ErrorEvent) => {
+  console.error('workerPort onerror err is: ', err.message);
+};
+```
+
+<!-- @[use_isolation_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationFuncPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationFuncPos.ets
+import { innerTest } from './UseIsolationAdditionPos';
+
+export function testWithObserved(): void {
+  innerTest();
+  console.info('ImportObserved::testWithObserved call');
+}
+
+export function testWithoutObserved(): void {
+  console.info('ImportObserved::testWithoutObserved call');
+}
+```
+
+<!-- @[use_isolation_addition_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationAdditionPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationAdditionPos.ets
+// Split the function and use the decorator for isolation.
+export function innerTest(): void {
+  console.info('Addition::innerTest call');
+}
+```
+
+<!-- @[use_isolation_observed_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationObservedPos.ets) -->
+
+``` TypeScript
+// src/main/ets/pages/UseIsolationObservedPos.ets
+@Observed
+export class Person {
+  public name: string;
+  public age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+```

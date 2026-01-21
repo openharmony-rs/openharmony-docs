@@ -13,7 +13,7 @@ The instances of the following types are mentioned in this topic:
 
 | Type   | Description                                          |
 | ------- | ---------------------------------------------- |
-| Reader  | SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned.|
+| Reader  | SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned. SIM2 is supported since API version 22.|
 | Session | Session created on an SE **Reader** instance.|
 | Channel | Channel set up by a **Session** instance. The channel can be a basic channel or a logical channel.  |
 
@@ -205,11 +205,12 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let seService: omapi.SEService;
 function seStateOnCb(data: omapi.ServiceState) {
-    console.log("omapi.on ServiceState: ", data);
+    hilog.info(0x0000, 'testTag', 'omapi.on ServiceState: %{public}s', JSON.stringify(data));
 }
 
 function seStateOffCb(data: omapi.ServiceState) {
-    console.log("omapi.off ServiceState: ", data);
+    hilog.info(0x0000, 'testTag', 'omapi.off ServiceState: %{public}s', JSON.stringify(data));
+
 }
 
 function secureElementDemo() {
@@ -227,14 +228,14 @@ function secureElementDemo() {
         omapi.on('stateChanged', seStateOnCb);
     } catch (error) {
         if (error as BusinessError) {
-            console.error(`omapi on error catch Code: ${(error as BusinessError).code}, ` + `message: ${(error as BusinessError).message}`);
+            hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         }
     }
     try{
         omapi.off('stateChanged', seStateOffCb);
     } catch (error) {
         if (error as BusinessError) {
-            console.error(`omapi off error catch Code: ${(error as BusinessError).code}, ` + `message: ${(error as BusinessError).message}`);
+            hilog.error(0x0000, 'testTag', 'omapi off error %{public}s', JSON.stringify(error));
         }
     }
 }
@@ -417,7 +418,7 @@ try {
 ```
 ## Reader
 
-A Reader instance indicates the SEs supported by a device. If eSE, SIM, and SIM2 are supported, three instances will be returned. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
+Obtains the SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned. SIM2 is supported since API version 22. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
 
 ### Reader.getName
 
@@ -435,7 +436,7 @@ Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** 
 
 **Error codes**
 
-For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
+For details about error codes, see [NFC Error Codes](errorcode-nfc.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -584,7 +585,7 @@ let reader : omapi.Reader;
 // Initialize seReaders before using it.
 function secureElementDemo() {
     try {
-        reader = seReaders[0]; //  Set the expected reader (eSE, SIM, or SIM2).
+        reader = seReaders[0]; // Set the expected reader (eSE, SIM, or SIM2).
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));

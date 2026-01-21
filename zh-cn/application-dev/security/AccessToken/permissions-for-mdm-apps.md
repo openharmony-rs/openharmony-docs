@@ -679,3 +679,33 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：23
+
+## ohos.permission.ENTERPRISE_READ_LOG
+
+允许MDM应用收集系统日志。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：23
+
+## ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
+
+允许已激活的MDM应用解除自身的激活状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：23

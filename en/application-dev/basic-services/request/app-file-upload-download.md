@@ -24,125 +24,123 @@ You can use **uploadFile()** in [ohos.request](../../reference/apis-basic-servic
 
 The following sample code shows how to upload cache files to the server in two ways:
 
-<!-- @[request_upload_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
+<!-- @[request_upload_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
 
 ``` TypeScript
-  async requestUploadFile(fileName: string, callback: (progress: number, isSuccess: boolean) => void,
-    context: common.UIAbilityContext) {
-    // Obtain the application file path.
-    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-    let url = await urlUtils.getUrl(context);
-    let cacheDir = context.cacheDir;
+async requestUploadFile(fileName: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  // Obtain the application file path.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+  let url = await urlUtils.getUrl(context);
+  let cacheDir = context.cacheDir;
 
-    // Create an application file locally.
-    try {
-      let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-      fs.writeSync(file.fd, 'upload file test');
-      fs.closeSync(file);
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
+  // Create an application file locally.
+  try {
+    let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fs.writeSync(file.fd, 'upload file test');
+    fs.closeSync(file);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
+  }
+
+  // Configure the upload task.
+  let files: request.File[] = [
+  // "internal://cache" in uri corresponds to the cacheDir directory.
+    {
+      filename: fileName,
+      name: 'test',
+      uri: 'internal://cache/' + fileName,
+      type: 'txt'
     }
+  ]
+  let data: request.RequestData[] = [{ name: 'name', value: 'value' }];
+  let uploadConfig: request.UploadConfig = {
+    url: url,
+    header: {
+      'key1': 'value1',
+      'key2': 'value2'
+    },
+    method: 'POST',
+    files: files,
+    data: data
+  }
 
-    // Configure the upload task.
-    let files: request.File[] = [
-    // "internal://cache" in uri corresponds to the cacheDir directory.
+  // Upload the created application file to the network server.
+  try {
+    request.uploadFile(context, uploadConfig)
+      .then((uploadTask: request.UploadTask) => {
+        uploadTask.on('complete', (taskStates: Array<request.TaskState>) => {
+          for (let i = 0; i < taskStates.length; i++) {
+            logger.info(TAG, `upload complete taskState: ${JSON.stringify(taskStates[i])}`);
+          }
+          callback(100, true);
+        });
+      })
+      .catch((err: BusinessError) => {
+        logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
+      })
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
+  }
+}
+```
+
+
+<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
+<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
+
+``` TypeScript
+async requestAgentUpload(fileName: string, callback: (progress: number, isSucceed: boolean) => void,
+  context: common.UIAbilityContext) {
+  // Obtain the application file path.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+  let url = await urlUtils.getUrl(context);
+  let cacheDir = context.cacheDir;
+
+  let attachments: request.agent.FormItem[] = [{
+    name: 'test',
+    value: [
       {
         filename: fileName,
-        name: 'test',
-        uri: 'internal://cache/' + fileName,
-        type: 'txt'
-      }
+        path: cacheDir + '/' + fileName,
+      },
     ]
-    let data: request.RequestData[] = [{ name: 'name', value: 'value' }];
-    let uploadConfig: request.UploadConfig = {
-      url: url,
-      header: {
-        'key1': 'value1',
-        'key2': 'value2'
-      },
-      method: 'POST',
-      files: files,
-      data: data
-    }
-
-    // Upload the created application file to the network server.
-    try {
-      request.uploadFile(context, uploadConfig)
-        .then((uploadTask: request.UploadTask) => {
-          uploadTask.on('complete', (taskStates: Array<request.TaskState>) => {
-            for (let i = 0; i < taskStates.length; i++) {
-              logger.info(TAG, `upload complete taskState: ${JSON.stringify(taskStates[i])}`);
-            }
-            callback(100, true);
-          });
-        })
-        .catch((err: BusinessError) => {
-          logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
-        })
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
-    }
-  }
-
-```
-
-
-<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
-
-``` TypeScript
-  async requestAgentUpload(fileName: string, callback: (progress: number, isSucceed: boolean) => void,
-    context: common.UIAbilityContext) {
-    // Obtain the application file path.
-    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-    let url = await urlUtils.getUrl(context);
-    let cacheDir = context.cacheDir;
-
-    let attachments: request.agent.FormItem[] = [{
-      name: 'test',
-      value: [
-        {
-          filename: fileName,
-          path: cacheDir + '/' + fileName,
-        },
-      ]
-    }];
-    let config: request.agent.Config = {
-      action: request.agent.Action.UPLOAD,
-      url: url,
-      mode: request.agent.Mode.FOREGROUND,
-      overwrite: true,
-      method: 'POST',
-      headers: {
-        'key1': 'value1',
-        'key2': 'value2'
-      },
-      data: attachments
-    };
-    request.agent.create(context, config).then((task: request.agent.Task) => {
-      task.start((err: BusinessError) => {
-        if (err) {
-          logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
-          return;
-        }
-      });
-      task.on('progress', async (progress) => {
-        logger.info(TAG, `Request upload status ${progress.state}, uploaded ${progress.processed}`);
-      })
-      task.on('completed', async () => {
-        logger.info(TAG, `Request upload completed`);
-        callback(100, true);
-        // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
-        request.agent.remove(task.tid);
-      })
-    }).catch((err: BusinessError) => {
-      logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
+  }];
+  let config: request.agent.Config = {
+    action: request.agent.Action.UPLOAD,
+    url: url,
+    mode: request.agent.Mode.FOREGROUND,
+    overwrite: true,
+    method: 'POST',
+    headers: {
+      'key1': 'value1',
+      'key2': 'value2'
+    },
+    data: attachments
+  };
+  request.agent.create(context, config).then((task: request.agent.Task) => {
+    task.start((err: BusinessError) => {
+      if (err) {
+        logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
+        return;
+      }
     });
-  }
-
+    task.on('progress', async (progress) => {
+      logger.info(TAG, `Request upload status ${progress.state}, uploaded ${progress.processed}`);
+    })
+    task.on('completed', async () => {
+      logger.info(TAG, `Request upload completed`);
+      callback(100, true);
+      // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
+      request.agent.remove(task.tid);
+    })
+  }).catch((err: BusinessError) => {
+    logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
+  });
+}
 ```
-
 
 ## Downloading Network Resource Files to an Application Directory
 
@@ -156,84 +154,82 @@ You can use **downloadFile()** in [ohos.request](../../reference/apis-basic-serv
 
 The following sample code shows how to download network resource files to the application file directory in two ways:
 
-<!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
+<!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
+<!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
 ``` TypeScript
-  async requestDownloadFile(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
-    context: common.UIAbilityContext) {
-    // Obtain the application file path.
-    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-    let filesDir = context.cacheDir;
-    let filePath = filesDir + '/' + fileName;
-    this.clearExistFile(filePath);
-    try {
-      await request.downloadFile(context, {
-        url: url,
-        filePath: filePath,
-      }).then((downloadTask: request.DownloadTask) => {
-        downloadTask.on('complete', () => {
-          // Obtain the file status information, including the file size.
-          let fileStat = fileIo.statSync(filePath);
-          let fileSize = fileStat.size;
-          logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
-          callback(100, true);
-        })
-      }).catch((err: BusinessError) => {
-        logger.error(TAG, `downloadFile error, code=${err.code}, message=${err.message}`);
-      });
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      logger.error(TAG, `downloadFile catch error, code=${err.code}, message=${err.message}`);
-    }
-  }
-
-```
-
-
-<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
-
-``` TypeScript
-  async requestAgentDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
-    context: common.UIAbilityContext) {
-    // Obtain the application file path.
-    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-    let filesDir = context.cacheDir;
-
-    let config: request.agent.Config = {
-      action: request.agent.Action.DOWNLOAD,
+async requestDownloadFile(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  // Obtain the application file path.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+  let filesDir = context.cacheDir;
+  let filePath = filesDir + '/' + fileName;
+  this.clearExistFile(filePath);
+  try {
+    await request.downloadFile(context, {
       url: url,
-      saveas: fileName,
-      gauge: true,
-      overwrite: true,
-      network: request.agent.Network.WIFI,
-    };
-    await request.agent.create(context, config).then((task: request.agent.Task) => {
-      task.start((error: BusinessError) => {
-        if (error) {
-          logger.error(TAG, `start agent download task error, code=${error.code}, message=${error.message}`);
-          return;
-        }
-      });
-      task.on('progress', async (progress) => {
-        logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
-      })
-      task.on('completed', async () => {
-        logger.info(TAG, `Request download completed`);
-        let filePath = filesDir + '/' + fileName;
+      filePath: filePath,
+    }).then((downloadTask: request.DownloadTask) => {
+      downloadTask.on('complete', () => {
         // Obtain the file status information, including the file size.
         let fileStat = fileIo.statSync(filePath);
         let fileSize = fileStat.size;
         logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
         callback(100, true);
-        request.agent.remove(task.tid);
       })
     }).catch((err: BusinessError) => {
-      logger.error(TAG, `download agent task catch error, code=${err.code}, message=${err.message}`);
+      logger.error(TAG, `downloadFile error, code=${err.code}, message=${err.message}`);
     });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `downloadFile catch error, code=${err.code}, message=${err.message}`);
   }
-
+}
 ```
 
+<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
+<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
+
+``` TypeScript
+async requestAgentDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  // Obtain the application file path.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+  let filesDir = context.cacheDir;
+
+  let config: request.agent.Config = {
+    action: request.agent.Action.DOWNLOAD,
+    url: url,
+    saveas: fileName,
+    gauge: true,
+    overwrite: true,
+    network: request.agent.Network.WIFI,
+  };
+  await request.agent.create(context, config).then((task: request.agent.Task) => {
+    task.start((error: BusinessError) => {
+      if (error) {
+        logger.error(TAG, `start agent download task error, code=${error.code}, message=${error.message}`);
+        return;
+      }
+    });
+    task.on('progress', async (progress) => {
+      logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+    })
+    task.on('completed', async () => {
+      logger.info(TAG, `Request download completed`);
+      let filePath = filesDir + '/' + fileName;
+      // Obtain the file status information, including the file size.
+      let fileStat = fileIo.statSync(filePath);
+      let fileSize = fileStat.size;
+      logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+      callback(100, true);
+      request.agent.remove(task.tid);
+    })
+  }).catch((err: BusinessError) => {
+    logger.error(TAG, `download agent task catch error, code=${err.code}, message=${err.message}`);
+  });
+}
+```
 
 ## Downloading Network Resource Files to the User File
 You can use the [request.agent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10) API of [ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md) to download network resource files to the specified user file directory.
@@ -246,103 +242,33 @@ You can use the [request.agent](../../reference/apis-basic-services-kit/js-apis-
 
 Call the [save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save) API of [DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) to save a document and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the document.
 
-<!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
+<!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
+<!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 
 ``` TypeScript
-  async docFileAgentTask(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
-    context: common.UIAbilityContext) {
-    // Create a documentSaveOptions instance.
-    try {
-      const documentSaveOptions = new picker.DocumentSaveOptions();
-      // (Optional) Name of the file to save. The default value is empty.
-      documentSaveOptions.newFileNames = [fileName];
-      // (Optional) Type of the document to save. The value is in ['Description|File name extensions'] format. To save all files, use 'All files (*.*)|.*'. If there are multiple file name extensions (a maximum of 100 extensions can be filtered), the first one is used by default. If this parameter is not specified, no extension is filtered by default.
-      documentSaveOptions.fileSuffixChoices = ['Document|.txt', '.pdf'];
-      let uri: string = '';
-      // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-      const documentViewPicker = new picker.DocumentViewPicker(context);
-      await documentViewPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
-        uri = documentSaveResult[0];
-        logger.info(TAG, `DocumentViewPicker.save to file succeed and uri is ${uri}`);
-      }).catch((err: BusinessError) => {
-        logger.error(TAG, `documentViewPicker.save error, code=${err.code}, message=${err.message}`);
-      })
-      if (uri != '') {
-        let config: request.agent.Config = {
-          action: request.agent.Action.DOWNLOAD,
-          url: url,
-          // The saveas field specifies the URI of the file saved by DocumentViewPicker.
-          saveas: uri,
-          gauge: true,
-          // The overwrite field must be set to true.
-          overwrite: true,
-          network: request.agent.Network.WIFI,
-          // The mode field must be set to request.agent.Mode.FOREGROUND.
-          mode: request.agent.Mode.FOREGROUND,
-        };
-        try {
-          await request.agent.create(context, config).then((task: request.agent.Task) => {
-            task.start((err: BusinessError) => {
-              if (err) {
-                logger.error(TAG, `start download task error, code=${err.code}, message=${err.message}`);
-                return;
-              }
-            });
-            task.on('progress', async (progress) => {
-              logger.info(TAG, `download status ${progress.state}, downloaded ${progress.processed}`);
-            })
-            task.on('completed', async (progress) => {
-              logger.info(TAG, `download completed ${JSON.stringify(progress)}`);
-              callback(100, true);
-              // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
-              request.agent.remove(task.tid);
-            })
-          }).catch((err: BusinessError) => {
-            logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
-          });
-        } catch (error) {
-          let err: BusinessError = error as BusinessError;
-          logger.error(TAG, `Failed to create a download task, code=${err.code}, message=${err.message}`);
-        }
-      }
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      logger.error(TAG, `Failed to create a documentSaveOptions, code=${err.code}, message=${err.message}`);
-      return;
-    }
-  }
-
-```
-
-
-### Downloading Audios
-
-Call the [save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3) API of [AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) to save an audio and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the audio.
-
-<!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets)-->
-
-``` TypeScript
-  async audioFileAgentTask(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
-    context: common.UIAbilityContext) {
-    // Create a documentSaveOptions instance.
-    const audioSaveOptions = new picker.AudioSaveOptions();
+async docFileAgentTask(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  // Create a documentSaveOptions instance.
+  try {
+    const documentSaveOptions = new picker.DocumentSaveOptions();
     // (Optional) Name of the file to save. The default value is empty.
-    audioSaveOptions.newFileNames = [fileName];
-
+    documentSaveOptions.newFileNames = [fileName];
+    // (Optional) Type of the document to save. The value is in ['Description|File name extensions'] format. To save all files, use 'All files (*.*)|.*'. If there are multiple file name extensions (a maximum of 100 extensions can be filtered), the first one is used by default. If this parameter is not specified, no extension is filtered by default.
+    documentSaveOptions.fileSuffixChoices = ['Document|.txt', '.pdf'];
     let uri: string = '';
     // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-    const audioViewPicker = new picker.AudioViewPicker(context);
-    await audioViewPicker.save(audioSaveOptions).then((audioSelectResult: Array<string>) => {
-      uri = audioSelectResult[0];
-      logger.info(TAG, `AudioViewPicker.save to file succeed and uri is ${uri}`);
+    const documentViewPicker = new picker.DocumentViewPicker(context);
+    await documentViewPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
+      uri = documentSaveResult[0];
+      logger.info(TAG, `DocumentViewPicker.save to file succeed and uri is ${uri}`);
     }).catch((err: BusinessError) => {
-      logger.error(TAG, `Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+      logger.error(TAG, `documentViewPicker.save error, code=${err.code}, message=${err.message}`);
     })
     if (uri != '') {
       let config: request.agent.Config = {
         action: request.agent.Action.DOWNLOAD,
         url: url,
-        // The saveas field specifies the URI of the file saved by AudioViewPicker.
+        // The saveas field specifies the URI of the file saved by DocumentViewPicker.
         saveas: uri,
         gauge: true,
         // The overwrite field must be set to true.
@@ -352,115 +278,75 @@ Call the [save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save
         mode: request.agent.Mode.FOREGROUND,
       };
       try {
-        request.agent.create(context, config).then((task: request.agent.Task) => {
+        await request.agent.create(context, config).then((task: request.agent.Task) => {
           task.start((err: BusinessError) => {
             if (err) {
-              logger.error(TAG, `Failed to start the download task, Code: ${err.code}  message: ${err.message}`);
+              logger.error(TAG, `start download task error, code=${err.code}, message=${err.message}`);
               return;
             }
           });
           task.on('progress', async (progress) => {
-            logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+            logger.info(TAG, `download status ${progress.state}, downloaded ${progress.processed}`);
           })
           task.on('completed', async (progress) => {
-            logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+            logger.info(TAG, `download completed ${JSON.stringify(progress)}`);
             callback(100, true);
             // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
             request.agent.remove(task.tid);
           })
         }).catch((err: BusinessError) => {
-          logger.error(TAG, `Failed to create a download task, code=${err.code}, message=${err.message}`);
+          logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
         });
       } catch (error) {
         let err: BusinessError = error as BusinessError;
-        logger.error(TAG, `Failed to create a audio download task, code=${err.code}, message=${err.message}`);
+        logger.error(TAG, `Failed to create a download task, code=${err.code}, message=${err.message}`);
       }
     }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Failed to create a documentSaveOptions, code=${err.code}, message=${err.message}`);
+    return;
   }
-
+}
 ```
 
+### Downloading Audios
 
-### Downloading Images or Videos
+Call the [save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3) API of [AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) to save an audio and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the audio.
 
-Call the [createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2) API of [PhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md) to create a media file and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the media file.
-
-Permission required: [ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)
-
-[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo) is a [restricted permission](../../security/AccessToken/restricted-permissions.md) of the [system_basic](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) level. If the normal-level application needs to request this permission, its APL level must be declared as system_basic or higher. In addition, you should [request the user_grant permission from users](../../security/AccessToken/request-user-authorization.md).
-
-<!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)-->
+<!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets)-->
 
 ``` TypeScript
-  async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: boolean) => void,
-    context: common.UIAbilityContext) {
-    let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
-    bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA;
-    // Obtain accessTokenID of the application.
-    let tokenID = -1;
+async audioFileAgentTask(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  // Create a documentSaveOptions instance.
+  const audioSaveOptions = new picker.AudioSaveOptions();
+  // (Optional) Name of the file to save. The default value is empty.
+  audioSaveOptions.newFileNames = [fileName];
+
+  let uri: string = '';
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+  const audioViewPicker = new picker.AudioViewPicker(context);
+  await audioViewPicker.save(audioSaveOptions).then((audioSelectResult: Array<string>) => {
+    uri = audioSelectResult[0];
+    logger.info(TAG, `AudioViewPicker.save to file succeed and uri is ${uri}`);
+  }).catch((err: BusinessError) => {
+    logger.error(TAG, `Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+  })
+  if (uri != '') {
+    let config: request.agent.Config = {
+      action: request.agent.Action.DOWNLOAD,
+      url: url,
+      // The saveas field specifies the URI of the file saved by AudioViewPicker.
+      saveas: uri,
+      gauge: true,
+      // The overwrite field must be set to true.
+      overwrite: true,
+      network: request.agent.Network.WIFI,
+      // The mode field must be set to request.agent.Mode.FOREGROUND.
+      mode: request.agent.Mode.FOREGROUND,
+    };
     try {
-      await bundleManager.getBundleInfoForSelf(bundleFlags).then((data) => {
-        logger.info(TAG, `Request getBundleInfoForSelf successfully. Data: ${JSON.stringify(data)}`);
-        tokenID = data.appInfo.accessTokenId;
-      }).catch((err: BusinessError) => {
-        logger.error(TAG, `GetBundleInfoForSelf failed, code=${err.code}, message=${err.message}`);
-      });
-    } catch (err) {
-      let message = (err as BusinessError).message;
-      logger.error(`GetBundleInfoForSelf failed: ${message}`);
-    }
-
-    let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-    let grant = true;
-    // Check whether the application has the required permission. This API uses a promise to return the result.
-    await atManager.checkAccessToken(tokenID, 'ohos.permission.WRITE_IMAGEVIDEO')
-      .then((data: abilityAccessCtrl.GrantStatus) => {
-        logger.info(TAG, `Request checkAccessToken success, data->${JSON.stringify(data)}`);
-        if (data != abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
-          grant = false;
-        }
-      })
-      .catch((err: BusinessError) => {
-        logger.error(TAG, `CheckAccessToken fail, code=${err.code}, message=${err.message}`);
-      });
-
-    if (!grant) {
-      // Display a dialog box for the user to grant the required permission. This API uses an asynchronous callback to return the result.
-      await atManager.requestPermissionsFromUser(context, ['ohos.permission.WRITE_IMAGEVIDEO'])
-        .then((data: PermissionRequestResult) => {
-          logger.info(TAG, `Request grant: ${JSON.stringify(data)}`);
-          logger.info(TAG, `Request grant permissions: ${data.permissions}`);
-          logger.info(TAG, `Request grant authResults: ${data.authResults}`);
-          logger.info(TAG, `Request grant dialogShownResults: ${data.dialogShownResults}`);
-        }).catch((err: BusinessError) => {
-          logger.error(TAG, `Grant error, code=${err.code}, message=${err.message}`);
-        });
-    }
-
-    try {
-      let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
-      let extension: string = 'jpg';
-      let options: photoAccessHelper.CreateOptions = {
-        title: 'media'
-      }
-      // Obtain a PhotoAccessHelper instance, which can be used for accessing and modifying media files in an album.
-      let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-      // Create an image or video asset with the specified file type, file name extension, and options. This API uses a promise to return the result.
-      let uri: string = await phAccessHelper.createAsset(photoType, extension, options);
-      logger.info(TAG, `Request createAsset uri ${uri}`);
-
-      let config: request.agent.Config = {
-        action: request.agent.Action.DOWNLOAD,
-        url: url,
-        // The saveas field specifies the URI of the file saved by PhotoAccessHelper.
-        saveas: uri,
-        gauge: true,
-        // The overwrite field must be set to true.
-        overwrite: true,
-        network: request.agent.Network.WIFI,
-        // The mode field must be set to request.agent.Mode.FOREGROUND.
-        mode: request.agent.Mode.FOREGROUND,
-      };
       request.agent.create(context, config).then((task: request.agent.Task) => {
         task.start((err: BusinessError) => {
           if (err) {
@@ -478,14 +364,121 @@ Permission required: [ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessTok
           request.agent.remove(task.tid);
         })
       }).catch((err: BusinessError) => {
-        logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
+        logger.error(TAG, `Failed to create a download task, code=${err.code}, message=${err.message}`);
       });
     } catch (error) {
       let err: BusinessError = error as BusinessError;
-      logger.error(TAG, `Failed to create a media download task, code=${err.code}, message=${err.message}`);
+      logger.error(TAG, `Failed to create a audio download task, code=${err.code}, message=${err.message}`);
     }
   }
+}
+```
 
+
+### Downloading Images or Videos
+
+Call the [createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2) API of [PhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md) to create a media file and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the media file.
+
+Permission required: [ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)
+
+[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo) is a [restricted permission](../../security/AccessToken/restricted-permissions.md) of the [system_basic](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) level. If the normal-level application needs to request this permission, its APL level must be declared as system_basic or higher. In addition, you should [request the user_grant permission from users](../../security/AccessToken/request-user-authorization.md).
+
+<!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)-->
+
+``` TypeScript
+async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA;
+  // Obtain accessTokenID of the application.
+  let tokenID = -1;
+  try {
+    await bundleManager.getBundleInfoForSelf(bundleFlags).then((data) => {
+      logger.info(TAG, `Request getBundleInfoForSelf successfully. Data: ${JSON.stringify(data)}`);
+      tokenID = data.appInfo.accessTokenId;
+    }).catch((err: BusinessError) => {
+      logger.error(TAG, `GetBundleInfoForSelf failed, code=${err.code}, message=${err.message}`);
+    });
+  } catch (err) {
+    let message = (err as BusinessError).message;
+    logger.error(`GetBundleInfoForSelf failed: ${message}`);
+  }
+
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let grant = true;
+  // Check whether the application has the required permission. This API uses a promise to return the result.
+  await atManager.checkAccessToken(tokenID, 'ohos.permission.WRITE_IMAGEVIDEO')
+    .then((data: abilityAccessCtrl.GrantStatus) => {
+      logger.info(TAG, `Request checkAccessToken success, data->${JSON.stringify(data)}`);
+      if (data != abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
+        grant = false;
+      }
+    })
+    .catch((err: BusinessError) => {
+      logger.error(TAG, `CheckAccessToken fail, code=${err.code}, message=${err.message}`);
+    });
+
+  if (!grant) {
+    // Display a dialog box for the user to grant the required permission. This API uses an asynchronous callback to return the result.
+    await atManager.requestPermissionsFromUser(context, ['ohos.permission.WRITE_IMAGEVIDEO'])
+      .then((data: PermissionRequestResult) => {
+        logger.info(TAG, `Request grant: ${JSON.stringify(data)}`);
+        logger.info(TAG, `Request grant permissions: ${data.permissions}`);
+        logger.info(TAG, `Request grant authResults: ${data.authResults}`);
+        logger.info(TAG, `Request grant dialogShownResults: ${data.dialogShownResults}`);
+      }).catch((err: BusinessError) => {
+        logger.error(TAG, `Grant error, code=${err.code}, message=${err.message}`);
+      });
+  }
+
+  try {
+    let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let options: photoAccessHelper.CreateOptions = {
+      title: 'media'
+    }
+    // Obtain a PhotoAccessHelper instance, which can be used for accessing and modifying media files in an album.
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    // Create an image or video asset with the specified file type, file name extension, and options. This API uses a promise to return the result.
+    let uri: string = await phAccessHelper.createAsset(photoType, extension, options);
+    logger.info(TAG, `Request createAsset uri ${uri}`);
+
+    let config: request.agent.Config = {
+      action: request.agent.Action.DOWNLOAD,
+      url: url,
+      // The saveas field specifies the URI of the file saved by PhotoAccessHelper.
+      saveas: uri,
+      gauge: true,
+      // The overwrite field must be set to true.
+      overwrite: true,
+      network: request.agent.Network.WIFI,
+      // The mode field must be set to request.agent.Mode.FOREGROUND.
+      mode: request.agent.Mode.FOREGROUND,
+    };
+    request.agent.create(context, config).then((task: request.agent.Task) => {
+      task.start((err: BusinessError) => {
+        if (err) {
+          logger.error(TAG, `Failed to start the download task, Code: ${err.code}  message: ${err.message}`);
+          return;
+        }
+      });
+      task.on('progress', async (progress) => {
+        logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+      })
+      task.on('completed', async (progress) => {
+        logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+        callback(100, true);
+        // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
+        request.agent.remove(task.tid);
+      })
+    }).catch((err: BusinessError) => {
+      logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Failed to create a media download task, code=${err.code}, message=${err.message}`);
+  }
+}
 ```
 
 
@@ -495,77 +488,76 @@ You can use the APIs of the [ohos.request](../../reference/apis-basic-services-k
 
 The following sample code shows how to configure the speed and timeout of a download task:
 
-<!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets)-->
+<!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets)-->
 
 ``` TypeScript
-  async speedLimitDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
-    context: common.UIAbilityContext) {
-    // Obtain the application file path.
-    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-    let filesDir = context.cacheDir;
+async speedLimitDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  // Obtain the application file path.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+  let filesDir = context.cacheDir;
 
-    let config: request.agent.Config = {
-      action: request.agent.Action.DOWNLOAD,
-      url: url,
-      saveas: fileName,
-      gauge: true,
-      overwrite: true,
-      network: request.agent.Network.WIFI,
-      // Rules for setting the minimum speed limit:
-      // 1. If the task speed is lower than the specified value (for example, 16 × 1024 B/s) for a specified period (for example, 10s), the task fails.
-      // 2. Conditions for resetting the timer:
-      //    - The speed at any given second is below the minimum speed limit.
-      //    - The task is resumed after being paused.
-      //    - The task is restarted after being stopped.
-      minSpeed: {
-        speed: 16 * 1024,
-        duration: 10
-      },
-      // Rules for setting timeout:
-      // 1. connectionTimeout:
-      //    - If the time required for establishing a single connection exceeds the specified duration (for example, 60s), the task fails.
-      //    - The timer is started independently for each connection (not accumulated).
-      // 2. totalTimeout:
-      //    - If the total task duration (including connection and transmission time) exceeds the specified duration (for example, 120s), the task fails.
-      //    - The duration is not counted if the task is paused and is accumulated after the task is resumed.
-      // 3. Conditions for resetting the timer: The timer is reset when the task fails or stops.
-      timeout: {
-        connectionTimeout: 60,
-        totalTimeout: 120,
-      }
-    };
-    request.agent.create(context, config).then((task: request.agent.Task) => {
-      // Set the maximum task speed.
-      task.setMaxSpeed(10 * 1024 * 1024).then(() => {
-        logger.info(TAG, `Succeeded in setting the max speed of the task. result: ${task.tid}`);
-      }).catch((err: BusinessError) => {
-        logger.error(TAG, `Failed to set the max speed of the task, code=${err.code}, message=${err.message}`);
-      });
-      task.start((err: BusinessError) => {
-        if (err) {
-          logger.error(TAG, `Failed to start the download task, code=${err.code}, message=${err.message}`);
-          return;
-        }
-      });
-      task.on('progress', async (progress) => {
-        logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
-      })
-      task.on('completed', async () => {
-        logger.info(TAG, `Request download completed`);
-        // Obtain the file status information, including the file size.
-        let filePath = filesDir + '/' + fileName;
-        // Obtain the file status information, including the file size.
-        let fileStat = fileIo.statSync(filePath);
-        let fileSize = fileStat.size;
-        logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
-        callback(100, true);
-        request.agent.remove(task.tid);
-      })
+  let config: request.agent.Config = {
+    action: request.agent.Action.DOWNLOAD,
+    url: url,
+    saveas: fileName,
+    gauge: true,
+    overwrite: true,
+    network: request.agent.Network.WIFI,
+    // Rules for setting the minimum speed limit:
+    // 1. If the task speed is lower than the specified value (for example, 16 × 1024 B/s) for a specified period (for example, 10s), the task fails.
+    // 2. Conditions for resetting the timer:
+    //    - The speed at any given second is below the minimum speed limit.
+    //    - The task is resumed after being paused.
+    //    - The task is restarted after being stopped.
+    minSpeed: {
+      speed: 16 * 1024,
+      duration: 10
+    },
+    // Rules for setting timeout:
+    // 1. connectionTimeout:
+    //    - If the time required for establishing a single connection exceeds the specified duration (for example, 60s), the task fails.
+    //    - The timer is started independently for each connection (not accumulated).
+    // 2. totalTimeout:
+    //    - If the total task duration (including connection and transmission time) exceeds the specified duration (for example, 120s), the task fails.
+    //    - The duration is not counted if the task is paused and is accumulated after the task is resumed.
+    // 3. Conditions for resetting the timer: The timer is reset when the task fails or stops.
+    timeout: {
+      connectionTimeout: 60,
+      totalTimeout: 120,
+    }
+  };
+  request.agent.create(context, config).then((task: request.agent.Task) => {
+    // Set the maximum task speed.
+    task.setMaxSpeed(10 * 1024 * 1024).then(() => {
+      logger.info(TAG, `Succeeded in setting the max speed of the task. result: ${task.tid}`);
     }).catch((err: BusinessError) => {
-      logger.error(TAG, `Failed to create a download task, Code: ${err.code}, message: ${err.message}`);
+      logger.error(TAG, `Failed to set the max speed of the task, code=${err.code}, message=${err.message}`);
     });
-  }
-
+    task.start((err: BusinessError) => {
+      if (err) {
+        logger.error(TAG, `Failed to start the download task, code=${err.code}, message=${err.message}`);
+        return;
+      }
+    });
+    task.on('progress', async (progress) => {
+      logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+    })
+    task.on('completed', async () => {
+      logger.info(TAG, `Request download completed`);
+      // Obtain the file status information, including the file size.
+      let filePath = filesDir + '/' + fileName;
+      // Obtain the file status information, including the file size.
+      let fileStat = fileIo.statSync(filePath);
+      let fileSize = fileStat.size;
+      logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+      callback(100, true);
+      request.agent.remove(task.tid);
+    })
+  }).catch((err: BusinessError) => {
+    logger.error(TAG, `Failed to create a download task, Code: ${err.code}, message: ${err.message}`);
+  });
+}
 ```
 
 
@@ -615,93 +607,92 @@ The [wantAgent](../../reference/apis-basic-services-kit/js-apis-request.md#reque
 
 The following sample code shows how to create a download task with the **wantAgent** parameter.
 
-<!-- @[want_agent_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UploadAndDownload/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/WantAgentDownload.ets)-->
+<!-- @[want_agent_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/WantAgentDownload.ets)-->
 
 ``` TypeScript
-  async wantAgentDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
-    context: common.UIAbilityContext) {
-    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+async wantAgentDownload(url: string, fileName: string, callback: (progress: number, isSuccess: boolean) => void,
+  context: common.UIAbilityContext) {
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 
-    // Create a wantAgentInfo object to define the operation to be performed after the notification is tapped.
-    let wantAgentInfo: wantAgent.WantAgentInfo = {
-      wants: [
-        {
-          deviceId: '',
-          bundleName: 'com.samples.uploaddownloadguide', // Use the actual bundle name.
-          abilityName: 'EntryAbility', // Use the actual ability name.
-          action: '',
-          entities: [],
-          uri: '',
-          parameters: {} // Pass in custom parameters.
-        }
-      ],
-      actionType: wantAgent.OperationType.START_ABILITY,
-      requestCode: 0,
-      wantAgentFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG]
-    };
-
-    // Obtain the WantAgent instance.
-    let wantAgentInstance: WantAgent;
-    try {
-      wantAgentInstance = await wantAgent.getWantAgent(wantAgentInfo);
-    } catch (error) {
-      logger.error(TAG, `Failed to get WantAgent, Code: ${error.code}  message: ${error.message}`);
-      return;
-    }
-
-    let filesDir = context.cacheDir;
-    // Create a download task configuration, including the wantAgent parameter.
-    let config: request.agent.Config = {
-      action: request.agent.Action.DOWNLOAD,
-      url: url, // Use the actual download address.
-      title: 'Download task notification title',
-      description: 'Download task notification description',
-      mode: request.agent.Mode.BACKGROUND,
-      overwrite: true,
-      method: 'GET',
-      saveas: fileName,
-      network: request.agent.Network.ANY,
-      gauge: true,
-      notification: {
-        visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
-        wantAgent: wantAgentInstance,
+  // Create a wantAgentInfo object to define the operation to be performed after the notification is tapped.
+  let wantAgentInfo: wantAgent.WantAgentInfo = {
+    wants: [
+      {
+        deviceId: '',
+        bundleName: 'com.samples.uploaddownloadguide', // Use the actual bundle name.
+        abilityName: 'EntryAbility', // Use the actual ability name.
+        action: '',
+        entities: [],
+        uri: '',
+        parameters: {} // Pass in custom parameters.
       }
-    };
+    ],
+    actionType: wantAgent.OperationType.START_ABILITY,
+    requestCode: 0,
+    wantAgentFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG]
+  };
 
-    // Create and start a download task.
-    try {
-      request.agent.create(context, config).then((task: request.agent.Task) => {
-        task.start((err: BusinessError) => {
-          if (err) {
-            logger.error(TAG, `Failed to start the download task, Code: ${err.code}  message: ${err.message}`);
-            return;
-          }
-        });
-        task.on('progress', async (progress) => {
-          logger.error(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
-        })
-        task.on('completed', async (progress) => {
-          console.warn('Request download completed, ' + JSON.stringify(progress));
-          logger.error(TAG, `Request download completed, ${JSON.stringify(progress)}`);
-          // Obtain the file status information, including the file size.
-          let filePath = filesDir + '/' + fileName;
-          // Obtain the file status information, including the file size.
-          let fileStat = fileIo.statSync(filePath);
-          let fileSize = fileStat.size;
-          logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
-          callback(100, true);
-          // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
-          request.agent.remove(task.tid);
-        })
-      }).catch((err: BusinessError) => {
-        logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
-    }
+  // Obtain the WantAgent instance.
+  let wantAgentInstance: WantAgent;
+  try {
+    wantAgentInstance = await wantAgent.getWantAgent(wantAgentInfo);
+  } catch (error) {
+    logger.error(TAG, `Failed to get WantAgent, Code: ${error.code}  message: ${error.message}`);
+    return;
   }
 
+  let filesDir = context.cacheDir;
+  // Create a download task configuration, including the wantAgent parameter.
+  let config: request.agent.Config = {
+    action: request.agent.Action.DOWNLOAD,
+    url: url, // Use the actual download address.
+    title: 'Download task notification title',
+    description: 'Download task notification description',
+    mode: request.agent.Mode.BACKGROUND,
+    overwrite: true,
+    method: 'GET',
+    saveas: fileName,
+    network: request.agent.Network.ANY,
+    gauge: true,
+    notification: {
+      visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
+      wantAgent: wantAgentInstance,
+    }
+  };
+
+  // Create and start a download task.
+  try {
+    request.agent.create(context, config).then((task: request.agent.Task) => {
+      task.start((err: BusinessError) => {
+        if (err) {
+          logger.error(TAG, `Failed to start the download task, Code: ${err.code}  message: ${err.message}`);
+          return;
+        }
+      });
+      task.on('progress', async (progress) => {
+        logger.error(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+      })
+      task.on('completed', async (progress) => {
+        console.warn('Request download completed, ' + JSON.stringify(progress));
+        logger.error(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+        // Obtain the file status information, including the file size.
+        let filePath = filesDir + '/' + fileName;
+        // Obtain the file status information, including the file size.
+        let fileStat = fileIo.statSync(filePath);
+        let fileSize = fileStat.size;
+        logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+        callback(100, true);
+        // This method requires the user to manage the task lifecycle. After the task is complete, call the remove method to release the task object.
+        request.agent.remove(task.tid);
+      })
+    }).catch((err: BusinessError) => {
+      logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
+  }
+}
 ```
 
 

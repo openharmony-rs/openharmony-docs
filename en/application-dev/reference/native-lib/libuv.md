@@ -5,7 +5,6 @@
 <!--Designer: @huangke11-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
-
 ## Introduction
 
 [libuv](http://libuv.org/) is a cross-platform library that implements asynchronous I/O based on event loops. It applies to network programming and file system operations. It is one of the core libraries of Node.js and has been widely used by other software projects.
@@ -24,7 +23,7 @@ To use libuv capabilities, include the following header file:
 
 Add the following dynamic link library to **CMakeLists.txt**:
 
-```
+```txt
 libuv.so
 ```
 
@@ -50,7 +49,7 @@ If you are familiar with libuv and can handle memory management and multithreadi
 
 ## Current Problems and Solutions
 
-According to the existing mechanism, only one event loop can exist in a thread. To ensure proper running of the main event loop of the system application, the main event loop listens for the FD events in the JS environment and executes uv_run only when an FD event is reported. As a result, certain functions that depend on the **uvloop** event cannot take effect.
+According to the existing mechanism, only one event loop can exist in a thread. To ensure proper running of the main event loop of the system application, the main event loop listens for the FD events in the JS environment and executes **uv_run** only when an FD event is reported. As a result, certain functions that depend on the **uvloop** event cannot take effect.
 
 Common scenarios and solutions are as follows:
 
@@ -140,7 +139,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```
 
 Add the following code to the **index.d.ts** file:
-```
+```ts
 export const test:() => number;
 ```
 
@@ -231,7 +230,7 @@ export const test:() => number;
 
 ### Scenario 2: The libuv API does not work when throwing an FD event to the main loop of the application from the native side.
 
-The main loop of the application receives only FD events, and executes **uv_run** only after **backend_fd** in **uvloop** is triggered. That means **uv_run** will never be executed if no FD event is triggered when **uv** APIs are called in the main loop of the application. As a result, calling libuv APIs does not take effect.
+The main loop of the application receives only FD events, and executes **uv_run** only after **backend_fd** in **uvloop** is triggered. That means **uv_run** will never be executed if no FD event is triggered when libuv APIs are called in the main loop of the application. As a result, calling libuv APIs does not take effect.
 
 **Example (incorrect)**
 
@@ -340,7 +339,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 Add the following code to **index.d.ts**:
 
-```
+```ts
 export const testClose:() => number;
 ```
 
@@ -462,7 +461,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```
 Add the following code to **index.d.ts**:
 
-```
+```ts
 export const testClose:() => number;
 ```
 
@@ -528,7 +527,7 @@ When you want to pass a callback from any child thread to the application main t
 
 The equivalent Node-API interfaces are [napi_threadsafe_function](../../napi/use-napi-thread-safety.md) APIs.
 
-The related Node-API interfaces are as follows:
+ The related Node-API interfaces are as follows:
 
 ```cpp
 /**
@@ -793,7 +792,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 Add the following code to **index.d.ts**:
 
-```
+```ts
 export const testTimerAsync:() => number;
 export const testTimerAsyncSend:() => number;
 ```
@@ -920,7 +919,6 @@ void uv_close(uv_handle_t* handle, uv_close_cb close_cb)
 ```
 
 Where:
-
   - **handle**: pointer to the handle to close.
   - **close_cb**: function used to process the handle. This function is used to perform operations such as memory management.
 
@@ -1132,7 +1130,7 @@ void async_cb(uv_async_t* handle)
 static napi_value TestTimerAsync(napi_env env, napi_callback_info info)
 {
     uv_loop_t* loop = nullptr;
-	napi_get_uv_event_loop(env, &loop);
+    napi_get_uv_event_loop(env, &loop);
     uv_async_init(loop, async, async_cb);
     return 0;
 }
@@ -1176,7 +1174,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 
 Add the following code to **index.d.ts**:
 
-```
+```ts
 export const testTimerAsync:() => number;
 export const testTimerAsyncSend:() => number;
 ```
@@ -1199,17 +1197,16 @@ Initializes a handle.
 
 - **async_cb**: callback to be invoked.
 
-This API returns **0** if the operation is successful; returns an error code if the operation fails.
+  This API returns **0** if the operation is successful; returns an error code if the operation fails.
 
 ```cpp
 int uv_async_send(uv_async_t* handle)
 ```
 
 Wakes up the event loop and calls the async handle's callback.
-
 - **handle**: pointer to the handle for inter-thread communication.
 
-This API returns **0** if the operation is successful; returns an error code if the operation fails.
+  This API returns **0** if the operation is successful; returns an error code if the operation fails.
 > **NOTE**
 >
 > - **uv_async_t** remains active after **uv_async_init** is called till it is closed by **uv_close**.
@@ -1266,7 +1263,7 @@ The sample code describes only a simple scenario. The procedure is as follows:
 
 As indicated by the following information, each time **uv_async_send** is called, the main thread executes the callback.
 
-```
+```txt
 0th:subThread triggered
 ohos async print
 1th:subThread triggered
@@ -1307,7 +1304,9 @@ Initializes a work request which will run the given **work_cb** in a thread from
 
 - **after_work_cb**: callback to be executed by the loop thread.
 
-Note: **after work_cb** is called after **work_cb** is complete. It is triggered by an FD event triggered by **uv_async_send(loop->wq_async)** and executed in the next iteration of the loop thread. The **uv_work_t** lifecycle ends only when **after_work_cb** is executed.
+> **NOTE**
+>
+> **after work_cb** is called after **work_cb** is complete. It is triggered by an FD event triggered by **uv_async_send(loop->wq_async)** and executed in the next iteration of the loop thread. The **uv_work_t** lifecycle ends only when **after_work_cb** is executed.
 
 **Submitting Asynchronous Tasks**
 
@@ -1322,6 +1321,7 @@ In OpenHarmony, **uv_queue_work()** in a UI thread works as follows: Throw **wor
 In special cases, for example, in memory-sensitive cases, the same request can be used repeatedly when:
 
 - The sequence of the same type of tasks is ensured.
+
 - The request can be successfully released when **uv_queue_work** is called the last time.
 
 ```C
@@ -1351,7 +1351,7 @@ uv_queue_work(loop, work, [](uv_work_t* work) {
 
 Currently, libuv threads are used in the main thread, JS Worker thread, TaskWorker thread in the Taskpool, and IPC thread of OpenHarmony. Except the main thread, which uses **eventhandler** as the main loop, other threads use the **UV_RUN_DEFAULT** mode in libuv as the event main loop of the calling thread to execute tasks. In the main thread, **eventhandler** triggers task execution by an FD event. **eventhandler** listens for **backend_fd** in **uv_loop**. Once an FD event is triggered in the loop, **eventhandler** calls **uv_run** to execute tasks in libuv.
 
-As a result, all the uv APIs that are not triggered by an FD event in the main thread are not responded in a timely manner. The uv APIs on the JS worker threads work as expected.
+As a result, all the libuv APIs that are not triggered by an FD event in the main thread are not responded in a timely manner. The libuv APIs on the JS worker threads work as expected.
 
 In addition, in the application main thread, all asynchronous tasks are eventually executed through libuv. However, in the current system, the libuv thread pool has been incorporated to the FFRT. Any asynchronous task thrown to the libuv thread will be scheduled by the FFRT thread. The callbacks of the application main thread are also inserted into the **eventhandler** queue by **PostTask()**. This means that after the async task in an FFRT thread is complete, the callback of the main thread is not triggered by **uv_async_send**. The following figure shows the process.
 
@@ -1408,7 +1408,7 @@ The following types of requests can be processed as expected in the application 
 - uv_fs_t
 
     All asynchronous APIs provided by the file class can work as expected in the application main thread. Common APIs include the following:
-
+    
     ```cpp
     /**
     * @brief Reads a file asynchronously.
@@ -1509,7 +1509,7 @@ The following types of requests can be processed as expected in the application 
                        int flags,
                        uv_fs_cb cb);
     ```
-
+    
 - uv_getaddrinfo_t
 
      Function prototype:

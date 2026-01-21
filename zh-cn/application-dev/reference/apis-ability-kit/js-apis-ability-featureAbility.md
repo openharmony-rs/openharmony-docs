@@ -71,7 +71,7 @@ featureAbility.startAbility(
     if (error && error.code !== 0) {
       console.error(`startAbility fail, error: ${JSON.stringify(error)}`);
     } else {
-      console.log(`startAbility success, data: ${JSON.stringify(data)}`);
+      console.info(`startAbility success, data: ${JSON.stringify(data)}`);
     }
   }
 );
@@ -219,7 +219,7 @@ featureAbility.startAbilityForResult(
     if (error && error.code !== 0) {
       console.error(`startAbilityForResult fail, error: ${JSON.stringify(error)}`);
     } else {
-      console.log(`startAbilityForResult success, data: ${JSON.stringify(data)}`);
+      console.info(`startAbilityForResult success, data: ${JSON.stringify(data)}`);
     }
   }
 );
@@ -431,7 +431,7 @@ featureAbility.hasWindowFocus((error, data) => {
   if (error && error.code !== 0) {
     console.error(`hasWindowFocus fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`hasWindowFocus success, data: ${JSON.stringify(data)}`);
+    console.info(`hasWindowFocus success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -489,7 +489,7 @@ featureAbility.getWant((error, data) => {
   if (error && error.code !== 0) {
     console.error(`getWant fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`getWant success, data: ${JSON.stringify(data)}`);
+    console.info(`getWant success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -548,7 +548,7 @@ context.getBundleName((error, data) => {
   if (error && error.code !== 0) {
     console.error(`getBundleName fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`getBundleName success, data: ${JSON.stringify(data)}`);
+    console.info(`getBundleName success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -655,10 +655,10 @@ let connectId = featureAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`featureAbilityTest ConnectAbility onFailed errCode : ${code}`);
@@ -698,10 +698,10 @@ let connectId = featureAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`featureAbilityTest ConnectAbility onFailed errCode : ${code}`);
@@ -713,7 +713,7 @@ featureAbility.disconnectAbility(connectId, (error) => {
   if (error && error.code !== 0) {
     console.error(`disconnectAbility fail, connectId: ${connectId}, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`disconnectAbility success， connectId: ${connectId}`);
+    console.info(`disconnectAbility success， connectId: ${connectId}`);
   }
 });
 ```
@@ -755,10 +755,10 @@ let connectId = featureAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId : ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`featureAbilityTest ConnectAbility onFailed errCode : ${code}`);
@@ -767,7 +767,7 @@ let connectId = featureAbility.connectAbility(
 );
 
 featureAbility.disconnectAbility(connectId).then(() => {
-  console.log('disconnectAbility success');
+  console.info('disconnectAbility success');
 }).catch((error: BusinessError)=>{
   console.error(`featureAbilityTest result errCode : ${error.code}`);
 });
@@ -802,7 +802,7 @@ featureAbility.getWindow((error: BusinessError, data: window.Window) => {
   if (error && error.code !== 0) {
     console.error(`getWindow fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`getWindow success, data: ${typeof(data)}`);
+    console.info(`getWindow success, data: ${typeof(data)}`);
   }
 });
 ```
@@ -832,7 +832,7 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 featureAbility.getWindow().then((data: window.Window) => {
-  console.log(`getWindow success, data: ${typeof(data)}`);
+  console.info(`getWindow success, data: ${typeof(data)}`);
 }).catch((error: BusinessError)=>{
   console.error(`getWindow fail, error: ${JSON.stringify(error)}`);
 });

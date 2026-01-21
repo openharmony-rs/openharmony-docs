@@ -50,7 +50,7 @@ The domain account can be authenticated by password. You can use [auth](../../re
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
         console.info('auth resultCode = ' + resultCode);
         console.info('auth authResult = ' + JSON.stringify(authResult));
-		// ···
+		// ...
 
       }
     };
@@ -86,7 +86,7 @@ If the domain account password is unavailable, display a dialog box to authentic
       onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
         console.info('authWithPopup resultCode = ' + resultCode);
         console.info('authWithPopup authResult = ' + JSON.stringify(authResult));
-		// ···
+		// ...
       }
     }
 ```
@@ -102,6 +102,6 @@ If the domain account password is unavailable, display a dialog box to authentic
     } catch (e) {
       const err = e as BusinessError;
       console.error(`authWithPopup exception = ${err.message}`);
-	// ···
+	// ...
     }
 ```

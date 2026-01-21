@@ -10,9 +10,9 @@ You can bind a floating tooltip to a component. The tooltip automatically appear
 
 >  **NOTE**
 >
->  This feature is supported since API version 19. Updates will be marked with a superscript to indicate their earliest API version.
+>  - This feature is supported since API version 19. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  Currently, this feature supports only external mouse devices, styluses, and touchpads as pointers.
+>  - Currently, this feature supports only external mouse devices, styluses, and touchpads as pointers.
 
 ## bindTips
 bindTips(message: TipsMessageType, options?: TipsOptions): T
@@ -21,7 +21,7 @@ Binds a tooltip to the component.
 
 > **NOTE**
 >
-> If the **enable** attribute of the bound component is set to **false**, the tooltip can still be displayed.
+> If the universal attribute [enable](ts-universal-attributes-enable.md#enabled) of the component bound to **bindTips** is set to **false**, a floating tooltip can still be displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -32,7 +32,7 @@ Binds a tooltip to the component.
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | message|  [TipsMessageType](#tipsmessagetype)                                                     | Yes  | Content of the tooltip message.|
-| options  | [TipsOptions](#tipsoptions) | No  | Parameters of the tooltip.<br>Default value:<br>{<br>appearingTime: 700,<br>disappearingTime: 300,<br>appearingTimeWithContinuousOperation: 300,<br>disappearingTimeWithContinuousOperation: 0, enableArrow: true,<br>arrowPointPosition: ArrowPointPosition.CENTER,<br>arrowWidth: 16,arrowHeight: 8vp,<br>showAtAnchor: TipsAnchorType.TARGET<br>} |
+| options  | [TipsOptions](#tipsoptions) | No  | Parameters of the tooltip.<br>Default value:<br>{<br>appearingTime: 700,<br>disappearingTime: 300,<br>appearingTimeWithContinuousOperation: 300,<br>disappearingTimeWithContinuousOperation: 0, enableArrow: true,<br>arrowPointPosition: ArrowPointPosition.CENTER,<br>arrowWidth: 16,arrowHeight: 8,<br>showAtAnchor: TipsAnchorType.TARGET<br>} |
 
 **Return value**
 
@@ -52,11 +52,11 @@ Defines the parameters of the tooltip.
 | disappearingTime                 |   number   | No  | Yes | Delay before the tooltip disappears. The maximum delay is 4000 ms. Values exceeding 4000 ms are capped at 4000 ms.<br>Default value: **300**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | appearingTimeWithContinuousOperation    |     number   | No  | Yes | Delay before the tooltip appears when multiple tooltips are displayed consecutively. The maximum delay is 4000 ms. Values exceeding 4000 ms are capped at 4000 ms.<br>Default value: **300**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | disappearingTimeWithContinuousOperation |     number   | No  | Yes | Delay before the tooltip disappears when multiple tooltips are displayed consecutively. The maximum delay is 4000 ms. Values exceeding 4000 ms are capped at 4000 ms.<br>Default value: **0**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| enableArrow        | boolean                                                      | No  | Yes | Whether to display the tooltip arrow. The value **true** means to display the tooltip arrow, and **false** means the opposite.<br>Default value: **true**.<br>**NOTE**<br>If the available space on the screen is insufficient, the tooltip will cover part of the component and the arrow will not be displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| enableArrow        | boolean                                                      | No  | Yes | Whether to display the tooltip arrow.<br>Default value: **true**.<br>**true**: yes. **false**: no.<br>**NOTE**<br>If the available space on the screen is insufficient, the tooltip will cover part of the component and the arrow will not be displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | No  | Yes | Position of the tooltip arrow relative to its parent component. Available positions are **Start**, **Center**, and **End**, in both vertical and horizontal directions. These positions are within the parent component area and do not exceed its boundaries or cover rounded corners.<br>Default value: **ArrowPointPosition.CENTER**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | arrowWidth           | [Dimension](ts-types.md#dimension10)                  | No  | Yes | Width of the tooltip arrow. If the set width exceeds the length of the edge minus twice the tooltip's corner radius, the arrow is not drawn.<br>Default value: **16**.<br>Unit: vp.<br>**NOTE**<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | arrowHeight          | [Dimension](ts-types.md#dimension10)                  | No  | Yes | Height of the tooltip arrow.<br>Default value: **8**.<br>Unit: vp.<br>**NOTE**<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | No  | Yes | Anchor type of the tooltip<br>Default value: **TipsAnchorType.TARGET**.<br>**NOTE**<br>If the anchor type of the tooltip is **CURSOR**, the tooltip does not display an arrow.<br>**Atomic service API**: This API can be used in atomic services since API version 20.   |
+| showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | No  | Yes | Anchor type of the tooltip.<br>Default value: **TipsAnchorType.TARGET**.<br>**NOTE**<br>If the anchor type of the tooltip is **TipsAnchorType.CURSOR**, the tooltip does not display an arrow.<br>**Atomic service API**: This API can be used in atomic services since API version 20.   |
 
 ## TipsMessageType
 

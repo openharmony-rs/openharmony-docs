@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoSign OH_CryptoSign
+```
+
 ## Overview
 
 Defines a struct for signing.

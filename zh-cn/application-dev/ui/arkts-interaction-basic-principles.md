@@ -108,13 +108,14 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
    @Entry
    @Component
    struct FocusOnclickExample {
-     @State text: string = ''
-     @State number:number = 0
+     @State text: string = '';
+     @State number:number = 0;
    
      build() {
        Column() {
          Text(this.text)
            .margin({bottom:20})
+         // 请将$r('app.string.button')替换为实际资源文件，在本示例中该资源文件的value值为"按钮"
          Button($r('app.string.button'))
            .responseRegion([
              {
@@ -132,7 +133,7 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
            ])
            .onClick(() => {
              this.number++;
-             this.text = 'button' + this.number + 'clicked'
+             this.text = 'button' + this.number + 'clicked';
            })
            .width(200)
        }.width('100%').justifyContent(FlexAlign.Center)
@@ -142,7 +143,7 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
 
    上面的代码可以将按钮切分成了3部分，中间40%的区域不响应点击，而两侧的剩下部分可响应。
 
-   ![response region](figures/interaction-basic-respose-region-01.png)
+   ![response region](figures/interaction-basic-response-region-01.png)
 
 2. 触摸测试控制
 

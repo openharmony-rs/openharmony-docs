@@ -36,6 +36,17 @@ type ProfileConnectionState = constant.ProfileConnectionState
 | ------------------- | ------------------- |
 | [constant.ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | 蓝牙设备的profile连接状态。 |
 
+## BluetoothAddress<sup>23+</sup>
+
+type BluetoothAddress = common.BluetoothAddress
+
+描述蓝牙设备地址信息的参数结构，包括地址与地址类型。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 蓝牙设备的地址信息。 |
 
 ## ble.createGattServer
 
@@ -98,11 +109,10 @@ createGattClientDevice(deviceId: string): GattClientDevice
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -139,11 +149,10 @@ getConnectedBLEDevices(): Array&lt;string&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let result: Array<string> = ble.getConnectedBLEDevices();
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -188,11 +197,10 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 **示例：**
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let result: Array<string> = ble.getConnectedBLEDevices(ble.BleProfile.GATT_CLIENT);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -235,17 +243,23 @@ startBLEScan(filters: Array&lt;ScanFilter&gt;, options?: ScanOptions): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.ConnectivityKit';
 function onReceiveEvent(data: Array<ble.ScanResult>) {
     console.info('BLE scan device find result = '+ JSON.stringify(data));
 }
 try {
     ble.on("BLEDeviceFind", onReceiveEvent);
+    let addressInfo : common.BluetoothAddress = {
+        address:"XX:XX:XX:XX:XX:XX",
+        addressType:common.BluetoothAddressType.REAL,
+        rawAddressType:common.BluetoothRawAddressType.PUBLIC
+    }
     let scanFilter: ble.ScanFilter = {
-            deviceId:"XX:XX:XX:XX:XX:XX",
-            name:"test",
-            serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"
-        };
+        deviceId:"XX:XX:XX:XX:XX:XX",
+        address:addressInfo, // 使用address时不需要重复设置deviceId
+        name:"test",
+        serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"
+    };
     let scanOptions: ble.ScanOptions = {
     interval: 500,
     dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
@@ -253,7 +267,7 @@ try {
     }
     ble.startBLEScan([scanFilter],scanOptions);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -288,11 +302,10 @@ stopBLEScan(): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     ble.stopBLEScan();
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -306,7 +319,9 @@ startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?
 - 同步接口，不要和API version 11的[ble.stopAdvertising](#blestopadvertising11)搭配使用。
 
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
+
+- 当应用使用[AdvertiseData](#advertisedata)中的advertiseName字段时，需要申请[ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -338,7 +353,6 @@ startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -369,16 +383,18 @@ try {
     let advData: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+ 	    advertiseName:"testName" // 需申请ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME权限
     };
     let advResponse: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+ 	    advertiseName:"testName" // 需申请ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME权限
     };
     ble.startAdvertising(setting, advData ,advResponse);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -413,11 +429,10 @@ stopAdvertising(): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     ble.stopAdvertising();
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -432,7 +447,9 @@ startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback&l
 - 从API version 15开始，应用可多次调用，支持发起多路广播，每一路广播通过不同的ID标识管理。
 - 当应用不再需要该广播时，需调用API version 11开始支持的[ble.stopAdvertising](#blestopadvertising11)完全停止该广播，不要与API version 10开始支持的[ble.stopAdvertising](#blestopadvertising)混用。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
+
+- 当使用[AdvertiseData](#advertisedata)中的advertiseName字段时，需要同步申请[ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -461,7 +478,6 @@ startAdvertising(advertisingParams: AdvertisingParams, callback: AsyncCallback&l
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -492,12 +508,14 @@ try {
     let advData: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+        advertiseName:"testName" // 需申请ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME权限
     };
     let advResponse: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+        advertiseName:"testName" // 需申请ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME权限
     };
     let advertisingParams: ble.AdvertisingParams = {
         advertisingSettings: setting,
@@ -515,7 +533,7 @@ try {
         }
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -530,7 +548,9 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 - 从API version 15开始，应用可多次调用，支持发起多路广播，每一路广播通过不同的ID标识管理。
 - 当应用不再需要该广播时，需调用API version 11开始支持的[ble.stopAdvertising](#blestopadvertising11-1)完全停止该广播，不要与API version 10开始支持的[ble.stopAdvertising](#blestopadvertising)混用。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME)
+
+- 当使用[AdvertiseData](#advertisedata)中的advertiseName字段时，需要同步申请[ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -564,7 +584,6 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -595,12 +614,14 @@ try {
     let advData: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+ 	    advertiseName:"testName" // 需申请ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME权限
     };
     let advResponse: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+ 	    advertiseName:"testName" // 需申请ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME权限
     };
     let advertisingParams: ble.AdvertisingParams = {
         advertisingSettings: setting,
@@ -614,7 +635,7 @@ try {
             advHandle = outAdvHandle;
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -657,7 +678,6 @@ enableAdvertising(advertisingEnableParams: AdvertisingEnableParams, callback: As
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -723,7 +743,7 @@ try {
         }
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -771,7 +791,6 @@ enableAdvertising(advertisingEnableParams: AdvertisingEnableParams): Promise&lt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -836,7 +855,7 @@ try {
             console.info("enable success");
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -878,7 +897,6 @@ disableAdvertising(advertisingDisableParams: AdvertisingDisableParams, callback:
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -941,7 +959,7 @@ try {
         }
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -988,7 +1006,6 @@ disableAdvertising(advertisingDisableParams: AdvertisingDisableParams): Promise&
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -1050,7 +1067,7 @@ try {
             console.info("enable success");
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1092,7 +1109,6 @@ stopAdvertising(advertisingId: number, callback: AsyncCallback&lt;void&gt;): voi
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -1152,7 +1168,7 @@ try {
         }
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1200,7 +1216,6 @@ stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -1259,7 +1274,7 @@ try {
             console.info("enable success");
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -4188,7 +4203,7 @@ let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:X
 try {
     gattClient.on('serviceChange', ServiceChangedEvent);
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -4233,7 +4248,7 @@ let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:X
 try {
     gattClient.off('serviceChange', ServiceChangedEvent);
 } catch (err) {
-    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+    console.error(`errCode: ${(err as BusinessError).code}, errMessage: ${(err as BusinessError).message}`);
 }
 ```
 
@@ -4283,7 +4298,7 @@ try {
 
 updateConnectionParam(param: ConnectionParam): Promise&lt;void&gt;
 
-向对端设备发起连接参数更新请求，调用成功后可以切换与对端数据传输速度。
+向对端设备发起连接参数更新请求，调用成功后可以切换与对端数据传输速度。使用Promise异步回调。
 - 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 - 不调用该接口时，默认连接参数类型为[ble.ConnectionParam.BALANCED](#connectionparam22)。
 
@@ -4751,7 +4766,8 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 
 | 名称       | 类型        | 只读 | 可选   | 说明                                 |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | 否 | 否    | 扫描到的蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>基于信息安全考虑，此处获取的设备地址为虚拟MAC地址。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
+| deviceId | string      | 否 | 否    | 扫描到的蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。<br>基于信息安全考虑，若应用开启扫描时没有在[ScanFilter](#scanfilter)中配置[实际MAC地址类型](./js-apis-bluetooth-common.md#bluetoothaddresstype)的地址，则此处获取的设备地址为[虚拟MAC地址](./js-apis-bluetooth-common.md#bluetoothaddresstype)。<br>- 若和该设备地址配对成功后，该地址不会变更。<br>- 若该设备重启蓝牙开关，重新获取到的虚拟地址会立即变更。<br>- 若取消配对，蓝牙子系统会根据该地址的实际使用情况，决策后续变更时机；若其他应用正在使用该地址，则不会立刻变更。<br>- 若要持久化保存该地址，可使用[access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
+| address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 是 | 扫描到的蓝牙设备地址信息，包括地址与地址类型。|
 | rssi     | number      | 否 | 否    | 扫描到的设备信号强度，单位：dBm。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | data     | ArrayBuffer | 否 | 否    | 扫描到的设备发送的原始未解析的广播报文内容。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | deviceName | string | 否 | 否    | 扫描到的设备名称，从原始数据data字段中解析而来，在蓝牙协议中广播数据类型为0x09。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -4781,7 +4797,9 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 
 ## AdvertiseData
 
-描述BLE广播报文数据内容，也可以用作回复扫描请求的广播报文数据内容。当前只支持传统广播，因此报文最大长度为31个字节。若超出最大长度（31个字节）限制，会导致启动广播失败。若携带了所有参数，尤其是携带了蓝牙设备名称，需要注意广播报文长度。
+描述BLE广播报文数据内容，也可以用作回复扫描请求的广播报文数据内容。当前只支持传统广播，因此报文最大长度为31个字节。若超出最大长度（31个字节）限制，会导致启动广播失败。
+
+- 若携带了所有参数，尤其是携带了广播名称（通过includeDeviceName或advertiseName进行设置），需要注意广播报文长度。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -4790,9 +4808,9 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 | serviceUuids    | Array&lt;string&gt;                      | 否 | 否    | 要携带的服务UUID。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | manufactureData | Array&lt;[ManufactureData](#manufacturedata)&gt; | 否 | 否    | 要携带的制造商数据内容。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。           |
 | serviceData     | Array&lt;[ServiceData](#servicedata)&gt; | 否 | 否    | 要携带的服务数据内容。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。               |
-| includeDeviceName | boolean     | 否 | 是    | 是否携带蓝牙设备名称。true表示携带，false表示不携带，默认值为false。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。        |
+| includeDeviceName | boolean     | 否 | 是    | 是否携带本机的设备名称作为广播名称。<br>true表示携带，false表示不携带，默认值为false。<br>若应用需要自定义广播名称，可通过advertiseName进行设置。本参数不可与advertiseName同时使用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。        |
 | includeTxPower<sup>18+</sup> | boolean     | 否    | 是    | 是否携带广播发送功率。<br>true表示携带广播发送功率，false表示不携带广播发送功率，默认值为false。<br>携带该值后，广播报文长度将多占用3个字节。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。      |
-
+| advertiseName<sup>23+</sup> | string     | 否    | 是    | 要携带的自定义广播名称。<br>不可与includeDeviceName同时使用。<br>**需要权限**：[ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。      |
 
 ## AdvertisingParams<sup>11+</sup>
 
@@ -4871,23 +4889,23 @@ GATT描述符结构定义，是特征值[BLECharacteristic](#blecharacteristic)�
 
 扫描BLE广播的过滤条件，只有符合该条件的广播报文才会上报。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 | 名称                                     | 类型    | 只读 | 可选  | 说明                                                         |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| deviceId                                 | string      | 否 | 是    | 过滤该BLE设备地址的广播报文。例如："XX:XX:XX:XX:XX:XX"。           |
-| name                                     | string      | 否 | 是    | 过滤该BLE设备名称的广播报文。                                        |
-| serviceUuid                              | string      | 否 | 是    | 过滤包含该服务UUID的广播报文。例如：00001888-0000-1000-8000-00805f9b34fb。 |
-| serviceUuidMask             | string      | 否 | 是     | 搭配serviceUuid过滤器使用，可设置过滤部分服务UUID。例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。 |
-| serviceSolicitationUuid     | string      | 否 | 是     | 过滤包含该服务请求UUID的广播报文。例如：00001888-0000-1000-8000-00805F9B34FB。 |
-| serviceSolicitationUuidMask | string      | 否 | 是     | 搭配serviceSolicitationUuid过滤器使用，可设置过滤部分服务请求UUID。例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。 |
-| serviceData                 | ArrayBuffer | 否 | 是     | 过滤包含该服务数据的广播报文。例如：[0x90,0x00,0xF1,0xF2]。 |
-| serviceDataMask             | ArrayBuffer | 否 | 是     | 搭配serviceData过滤器使用，可设置过滤部分服务数据。例如：[0xFF,0xFF,0xFF,0xFF]。 |
-| manufactureId               | number      | 否 | 是     | 过滤包含该制造商标识符的广播报文。例如：0x0006。                 |
-| manufactureData             | ArrayBuffer | 否 | 是     | 搭配manufactureId过滤器使用，过滤包含该制造商数据的广播报文。例如：[0x1F,0x2F,0x3F]。 |
-| manufactureDataMask         | ArrayBuffer | 否 | 是     | 搭配manufactureData过滤器使用，可设置过滤部分制造商数据。例如：[0xFF,0xFF,0xFF]。 |
+| deviceId                                 | string      | 否 | 是    | 过滤该BLE设备地址的广播报文。例如："XX:XX:XX:XX:XX:XX"。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
+| address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | 否 | 是 | 过滤该BLE设备地址和地址类型的广播报文。<br>与deviceId相比，本参数支持同时指定BLE设备地址和地址类型来对BLE广播报文进行过滤。<br>若deviceId与本参数同时指定，本参数生效，deviceId不生效。|
+| name                                     | string      | 否 | 是    | 过滤该BLE设备名称的广播报文。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。    |
+| serviceUuid                              | string      | 否 | 是    | 过滤包含该服务UUID的广播报文，serviceUuid通常在外围设备的广播报文中携带，表示外围设备支持的服务UUID。例如：00001888-0000-1000-8000-00805f9b34fb。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| serviceUuidMask             | string      | 否 | 是     | 搭配serviceUuid过滤器使用，可设置过滤部分服务UUID。例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| serviceSolicitationUuid     | string      | 否 | 是     | 过滤包含该服务请求UUID的广播报文，serviceSolicitationUuid通常在中心设备的广播报文中携带，表示中心设备希望搜索到的服务UUID。例如：00001888-0000-1000-8000-00805F9B34FB。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| serviceSolicitationUuidMask | string      | 否 | 是     | 搭配serviceSolicitationUuid过滤器使用，可设置过滤部分服务请求UUID。例如：FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| serviceData                 | ArrayBuffer | 否 | 是     | 过滤包含该服务数据的广播报文。例如：[0x90,0x00,0xF1,0xF2]。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| serviceDataMask             | ArrayBuffer | 否 | 是     | 搭配serviceData过滤器使用，可设置过滤部分服务数据。例如：[0xFF,0xFF,0xFF,0xFF]。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| manufactureId               | number      | 否 | 是     | 过滤包含该制造商标识符的广播报文。例如：0x0006。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| manufactureData             | ArrayBuffer | 否 | 是     | 搭配manufactureId过滤器使用，过滤包含该制造商数据的广播报文。例如：[0x1F,0x2F,0x3F]。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| manufactureDataMask         | ArrayBuffer | 否 | 是     | 搭配manufactureData过滤器使用，可设置过滤部分制造商数据。例如：[0xFF,0xFF,0xFF]。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| rssiThreshold<sup>23+</sup>    | number      | 否 | 是     | 过滤信号强度大于或等于该信号强度门限值的广播报文，蓝牙协议上规定可设置范围为[-128, 127]，建议设置[-90, 127]范围内的门限值。 <br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 
 
 ## ScanOptions

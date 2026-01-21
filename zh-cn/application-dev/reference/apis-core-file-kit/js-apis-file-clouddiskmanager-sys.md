@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @zhuangzhuang-->
 <!--Designer: @wang_zhangjun; @zhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块是为系统文件管理应用提供获取三方网盘注册的同步根信息的能力。
 
@@ -72,7 +72,7 @@ SyncFolderAccessor的构造函数，用于获取SyncFolderAccessor类的实例�
 
 getAllSyncFolders(): Promise&lt;Array&lt;SyncFolder&gt;&gt;
 
-注册同步根信息。使用Promise异步回调。
+获取所有注册的同步根信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 

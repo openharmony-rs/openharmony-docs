@@ -13,36 +13,46 @@
 此处以不同帧率改变文件组件字体大小为例，来模拟不同UI绘制帧率的效果。
 
 1. 导入模块。
-
-   ```ts
+   <!-- @[display_sync_by_ui_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
    import { displaySync } from '@kit.ArkGraphics2D';
    ```
 
 2. 定义和构建DisplaySync对象。
-
-   ```ts
+   <!-- @[display_sync_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
    @Entry
    @Component
    struct Index {
-     // 定义两个DisplaySync变量，未初始化
+     // ...
+   
      private backDisplaySyncSlow: displaySync.DisplaySync | undefined = undefined;
      private backDisplaySyncFast: displaySync.DisplaySync | undefined = undefined;
+     // ...
    }
    ```
 
 3. 定义两个文本组件。
-
-   ```ts
+   <!-- @[display_sync_create_text_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
    @State drawFirstSize: number = 25;
    @State drawSecondSize: number = 25;
-   @Builder doSomeRenderFirst() {
-    Text('30')
-      .fontSize(this.drawFirstSize)
+   
+   // ...
+   
+   @Builder
+   doSomeRenderFirst() {
+     Text('30')
+       .fontSize(this.drawFirstSize)
    }
    
-   @Builder doSomeRenderSecond() {
-    Text('60')
-      .fontSize(this.drawSecondSize)
+   @Builder
+   doSomeRenderSecond() {
+     Text('60')
+       .fontSize(this.drawSecondSize)
    }
    ```
 
@@ -51,38 +61,40 @@
    > **说明：**
    >
    > 订阅函数运行于UI主线程，故涉及UI线程的耗时操作不应运行于订阅函数中，以免影响性能。
-
-   ```ts
+   <!-- @[display_sync_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
    CreateDisplaySyncSlow() {
-       let range : ExpectedFrameRateRange = { // 创建和配置帧率参数
-         expected: 30, // 设置期望绘制帧率为30hz
-         min: 0, // 配置帧率范围
-         max: 120 // 配置帧率范围
-       };
+     let range: ExpectedFrameRateRange = {
+       expected: 30,
+       min: 0,
+       max: 120
+     };
    
-       let draw30 = (intervalInfo: displaySync.IntervalInfo) => { // 订阅回调函数，字体大小在25到150之间变化
-         if (this.isBigger_30) {
-           this.drawFirstSize += 1;
-           if (this.drawFirstSize > 150) {
-             this.isBigger_30 = false;
-           }
-         } else {
-           this.drawFirstSize -= 1;
-           if (this.drawFirstSize < 25) {
-             this.isBigger_30 = true;
-           }
+     let draw30 = (intervalInfo: displaySync.IntervalInfo) => {
+       if (this.isBigger_30) {
+         this.drawFirstSize += 1;
+         if (this.drawFirstSize > 150) {
+           this.isBigger_30 = false;
          }
-       };
+       } else {
+         this.drawFirstSize -= 1;
+         if (this.drawFirstSize < 25) {
+           this.isBigger_30 = true;
+         }
+       }
+     };
    
-       this.backDisplaySyncSlow = displaySync.create(); // 创建DisplaySync实例
-       this.backDisplaySyncSlow.setExpectedFrameRateRange(range); // 设置帧率
-       this.backDisplaySyncSlow.on("frame", draw30); // 订阅frame事件和注册订阅函数
+     this.backDisplaySyncSlow = displaySync.create();
+     this.backDisplaySyncSlow.setExpectedFrameRateRange(range);
+     this.backDisplaySyncSlow.on("frame", draw30);
    }
    ```
 
 5. 开始每帧回调。
-
-   ```ts
+   <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
    Button('Start')
      .id('CustomDrawStart')
      .fontSize(14)
@@ -90,28 +102,30 @@
      .margin({ bottom: 10, left: 5 })
      .fontColor(Color.White)
      .onClick((): void => {
-         if (this.backDisplaySyncSlow == undefined) {
-           this.CreateDisplaySyncSlow();
-         }
-         if (this.backDisplaySyncFast == undefined) {
-           this.CreateDisplaySyncFast();
-         }
-         if (this.backDisplaySyncSlow) {
-           this.backDisplaySyncSlow.start();
-         }
-         if (this.backDisplaySyncFast) {
-           this.backDisplaySyncFast.start();
-         }
-       })
-       .width('20%')
-       .height(40)
-       .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+       if (this.backDisplaySyncSlow == undefined) {
+         this.CreateDisplaySyncSlow();
+       }
+       if (this.backDisplaySyncFast == undefined) {
+         this.CreateDisplaySyncFast();
+       }
+       if (this.backDisplaySyncSlow) {
+         this.backDisplaySyncSlow.start();
+       }
+       if (this.backDisplaySyncFast) {
+         this.backDisplaySyncFast.start();
+       }
+     })
+     .width('20%')
+     .height(40)
+     .shadow(ShadowStyle.OUTER_DEFAULT_LG)
    ```
 
    > **说明：**
    >
    > 创建的DisplaySync实例在start使能后需要aboutToDisappear函数中进行stop操作并置空，避免内存泄漏问题。
-   ```ts
+   <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
    aboutToDisappear() {
      if (this.backDisplaySyncSlow) {
        this.backDisplaySyncSlow.stop();
@@ -125,8 +139,9 @@
    ```
 
 6. 结束每帧回调。
-
-   ```ts
+   <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
    Button('Stop')
      .id('CustomDrawStop')
      .fontSize(14)
@@ -135,10 +150,10 @@
      .fontColor(Color.White)
      .onClick((): void => {
        if (this.backDisplaySyncSlow) {
-           this.backDisplaySyncSlow.stop();
+         this.backDisplaySyncSlow.stop();
        }
        if (this.backDisplaySyncFast) {
-           this.backDisplaySyncFast.stop();
+         this.backDisplaySyncFast.stop();
        }
      })
      .width('20%')
@@ -146,163 +161,8 @@
      .shadow(ShadowStyle.OUTER_DEFAULT_LG)
    ```
 
-## 完整示例
-```ts
-import { displaySync } from '@kit.ArkGraphics2D';
-
-@Entry
-@Component
-struct Index {
-  @State drawFirstSize: number = 25;
-  @State drawSecondSize: number = 25;
-  private backDisplaySyncSlow: displaySync.DisplaySync | undefined = undefined;
-  private backDisplaySyncFast: displaySync.DisplaySync | undefined = undefined;
-  private isBigger_30:boolean = true;
-  private isBigger_60:boolean = true;
-
-  @Builder doSomeRenderFirst() {
-    Text('30')
-      .fontSize(this.drawFirstSize)
-  }
-
-  @Builder doSomeRenderSecond() {
-    Text('60')
-      .fontSize(this.drawSecondSize)
-  }
-
-  CreateDisplaySyncSlow() {
-    // 定义期望绘制帧率
-    let range : ExpectedFrameRateRange = {
-      expected: 30,
-      min: 0,
-      max: 120
-    };
-
-    let draw30 = (intervalInfo: displaySync.IntervalInfo) => {
-      if (this.isBigger_30) {
-        this.drawFirstSize += 1;
-        if (this.drawFirstSize > 150) {
-          this.isBigger_30 = false;
-        }
-      } else {
-        this.drawFirstSize -= 1;
-        if (this.drawFirstSize < 25) {
-          this.isBigger_30 = true;
-        }
-      }
-    };
-
-    this.backDisplaySyncSlow = displaySync.create(); // 创建DisplaySync实例
-    this.backDisplaySyncSlow.setExpectedFrameRateRange(range); // 设置帧率
-    this.backDisplaySyncSlow.on("frame", draw30); // 订阅frame事件和注册订阅函数
-  }
-
-  CreateDisplaySyncFast() {
-    // 定义期望绘制帧率
-    let range : ExpectedFrameRateRange = {
-      expected: 60,
-      min: 0,
-      max: 120
-    };
-
-    let draw60 = (intervalInfo: displaySync.IntervalInfo) => {
-      if (this.isBigger_60) {
-        this.drawSecondSize += 1;
-        if (this.drawSecondSize > 150) {
-          this.isBigger_60 = false;
-        }
-      } else {
-        this.drawSecondSize -= 1;
-        if (this.drawSecondSize < 25) {
-          this.isBigger_60 = true;
-        }
-      }
-
-    };
-
-    this.backDisplaySyncFast= displaySync.create(); // 创建DisplaySync实例
-    this.backDisplaySyncFast.setExpectedFrameRateRange(range); // 设置帧率
-    this.backDisplaySyncFast.on("frame", draw60); // 订阅frame事件和注册订阅函数
-  }
-
-  aboutToDisappear() {
-    if (this.backDisplaySyncSlow) {
-      this.backDisplaySyncSlow.stop(); // DisplaySync失能关闭
-      this.backDisplaySyncSlow = undefined; // 实例置空
-    }
-    if (this.backDisplaySyncFast) {
-      this.backDisplaySyncFast.stop(); // DisplaySync失能关闭
-      this.backDisplaySyncFast = undefined; // 实例置空
-    }
-  }
-
-  build() {
-    Column() {
-      Row() {
-        this.doSomeRenderFirst();
-      }
-      .height('40%')
-
-      Row() {
-        this.doSomeRenderSecond();
-      }
-      .height('40%')
-
-      Row() {
-        Button('Start')
-          .id('CustomDrawStart')
-          .fontSize(14)
-          .fontWeight(500)
-          .margin({ bottom: 10, left: 5 })
-          .fontColor(Color.White)
-          .onClick((): void => {
-            if (this.backDisplaySyncSlow == undefined) {
-              this.CreateDisplaySyncSlow();
-            }
-            if (this.backDisplaySyncFast == undefined) {
-              this.CreateDisplaySyncFast();
-            }
-            if (this.backDisplaySyncSlow) {
-              this.backDisplaySyncSlow.start(); // DisplaySync使能开启
-            }
-            if (this.backDisplaySyncFast) {
-              this.backDisplaySyncFast.start(); // DisplaySync使能开启
-            }
-          })
-          .width('20%')
-          .height(40)
-          .shadow(ShadowStyle.OUTER_DEFAULT_LG)
-
-        Button('Stop')
-          .id('CustomDrawStop')
-          .fontSize(14)
-          .fontWeight(500)
-          .margin({ bottom: 10, left: 5 })
-          .fontColor(Color.White)
-          .onClick((): void => {
-            if (this.backDisplaySyncSlow) {
-              this.backDisplaySyncSlow.stop(); // DisplaySync失能关闭
-            }
-            if (this.backDisplaySyncFast) {
-              this.backDisplaySyncFast.stop(); // DisplaySync失能关闭
-            }
-          })
-          .width('20%')
-          .height(40)
-          .shadow(ShadowStyle.OUTER_DEFAULT_LG)
-      }
-      .width('100%')
-      .justifyContent(FlexAlign.Center)
-      .shadow(ShadowStyle.OUTER_DEFAULT_SM)
-      .alignItems(VerticalAlign.Bottom)
-      .layoutWeight(1)
-    }
-  }
-}
-```
-
 <!--RP1-->
 ## 相关实例
 
-- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/DisplaySync)
+- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/DisplaySync)
 <!--RP1End-->

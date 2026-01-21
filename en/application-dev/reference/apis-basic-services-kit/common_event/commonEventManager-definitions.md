@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-This document provides a list of common events defined by the system.
+This topic provides a list of common events defined by the system.
 Common event types are defined in [Support](../js-apis-commonEventManager.md#support) of the **ohos.commonEventManager** module.
 
 
@@ -1204,7 +1204,7 @@ When the configuration information of the system global proxy or HTTP proxy on v
 
 ## Telephony Kit
 
-This document lists the common system events provided by the telephony subsystem to applications.
+This topic lists the common system events provided by the telephony subsystem to applications.
 
 ### COMMON_EVENT_SIM_STATE_CHANGED<sup>10+</sup>
 
@@ -1262,10 +1262,10 @@ When the signal information of the device is updated, the event notification ser
 
 
 ## AppGallery Kit
-This document lists the common system events provided by the AppGallery Kit to applications.
+This topic lists the common system events provided by the AppGallery Kit to applications.
 
 ### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+</sup>
-Indicates the privacy signature result.
+Indicates the privacy state has been changed.
 When a user clicks **Agree** in a privacy dialog box, the event notification service is triggered to publish this event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -1274,7 +1274,26 @@ When a user clicks **Agree** in a privacy dialog box, the event notification ser
 
 **Value**: "usual.event.PRIVACY_STATE_CHANGED"
 
+## Multimodalinput Kit
+This topic lists the common system events provided by the Multimodalinput Kit to applications.
 
+### COMMON_EVENT_TABLET_MODE_CHANGED<sup>23+<sup>
+
+Indicates that the tablet mode of a device (such as a tablet with bracket) has been changed.
+When the tablet mode of a device has been changed, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Value**: "usual.event.TABLET_MODE_CHANGED"
+
+### COMMON_EVENT_LID_STATE_CHANGED<sup>23+<sup>
+
+Indicates that the lid state of a device (such as a laptop) has been changed.
+When the lid state of a device has been changed, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Value**: "usual.event.LID_STATE_CHANGED"
 
 ## Reserved Common Event
 
@@ -1568,7 +1587,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_USB_ACCESSORY_ATTACHED
 
-(Reserved, not supported yet) Indicates that a USB accessory was attached.
+Indicates the common event that a USB accessory has been attached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1579,7 +1598,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_USB_ACCESSORY_DETACHED
 
-(Reserved, not supported yet) Indicates the common event that a USB accessory was detached.
+Indicates the common event that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 

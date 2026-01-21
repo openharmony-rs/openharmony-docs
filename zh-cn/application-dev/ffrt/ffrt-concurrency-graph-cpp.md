@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -153,7 +153,7 @@ Fibonacci(5) is 5
 
 示例中将`fibonacci(x-1)`和`fibonacci(x-2)`作为两个任务提交给FFRT，在两个任务完成之后将结果进行累加。虽然单个任务只是拆分成两个子任务，但是子任务又可以继续进行拆分，因此整个计算图的并行度是非常高的。
 
-各个任务在FFRT内部形成了一颗调用树：
+各个任务在FFRT内部形成了一棵调用树：
 
 ![image](figures/ffrt_figure2.png)
 

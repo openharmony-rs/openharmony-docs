@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The **ArcButton** component is supported since API version 18. The **ArcButton** component represents an arc button specifically designed for circular screens. It offers various button styles, such as emphasized, normal, and warning, tailored for watch UIs. For details, see [ArcButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md).
+Supported since API version 18, the **ArcButton** component represents an arc button specifically designed for circular screens. It offers various button styles, such as emphasized, normal, and warning, tailored for watch UIs. For details, see [ArcButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md).
 
 
 ## Creating a Button
@@ -173,15 +173,18 @@ To run this sample code, wearable device support is required. In the project con
 ``` TypeScript
 import { LengthMetrics, LengthUnit, ArcButton, ArcButtonOptions, ArcButtonStyleMode } from '@kit.ArkUI';
 
+const BRIGHT_NESS_VALUE = 30;
+const BRIGHT_NESS_VALUE_DEFAULT = 50;
+
 @Entry
 @ComponentV2
 struct BrightnessPage {
-  @Local brightnessValue: number = 30;
-  private defaultBrightnessValue: number = 50;
+  @Local brightnessValue: number = BRIGHT_NESS_VALUE;
+  private defaultBrightnessValue: number = BRIGHT_NESS_VALUE_DEFAULT;
 
   build() {
     RelativeContainer() {
-      // Replace $r('app.string.Reset') with the resource file you use.
+      // Replace $r('app.string.Brightness') with the actual resource file. In this example, the value in the resource file is "Set brightness."
       Text($r('app.string.Brightness'))
         .fontColor(Color.White)
         .id('id_brightness_set_text')
@@ -222,7 +225,7 @@ struct BrightnessPage {
 
       ArcButton({
         options: new ArcButtonOptions({
-          // Replace $r('app.string.Reset') with the resource file you use.
+          // Replace $r('app.string.Reset') with the actual resource file. In this example, the value in the resource file is "Reset."
           label: $r('app.string.Reset'),
           styleMode: ArcButtonStyleMode.EMPHASIZED_LIGHT,
           fontSize: new LengthMetrics(19, LengthUnit.FP),

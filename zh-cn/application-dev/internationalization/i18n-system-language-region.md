@@ -20,25 +20,29 @@
 接口具体使用方法和说明请参考[System](../reference/apis-localization-kit/js-apis-i18n.md#system9)的API接口文档。
 
 1. 导入模块。
-   ```ts
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   
+   ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    ```
-   <!-- [import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
 
 2. 使用场景。
 - 获取系统语言、系统地区、系统区域。
 
-   ```ts
+   <!-- @[get_system_language_and_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   
+   ``` TypeScript
    // 获取系统语言
    let systemLanguage = i18n.System.getSystemLanguage();  // systemLanguage为当前系统语言
-
+   
    // 获取系统地区
    let systemRegion = i18n.System.getSystemRegion();  // systemRegion为当前系统地区
-
+   
    // 获取系统区域
    let systemLocale: Intl.Locale = i18n.System.getSystemLocaleInstance();  // systemLocale为当前系统区域
-
+   
    // 通过监听公共事件COMMON_EVENT_LOCALE_CHANGED可以感知系统语言、系统地区或系统区域变化
    let subscriber: commonEventManager.CommonEventSubscriber; // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -61,12 +65,11 @@
        console.error(`CreateSubscriber failed, code is ${err.code}, message is ${err.message}`);
      });
    ```
-   <!-- [get_system_language_and_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
 
 <!--Del-->
 - 设置系统语言、系统地区。
 
-   ```ts
+   ``` TypeScript
    // 设置系统当前语言为'zh-Hans'
    try {
      i18n.System.setSystemLanguage('zh-Hans');
@@ -74,7 +77,7 @@
      let err: BusinessError = error as BusinessError;
      console.error(`call System.setSystemLanguage failed, error code: ${err.code}, message: ${err.message}.`);
    }
-
+   
    // 设置系统当前地区为'CN'
    try {
      i18n.System.setSystemRegion('CN');
@@ -83,5 +86,4 @@
      console.error(`call System.setSystemRegion failed, error code: ${err.code}, message: ${err.message}.`);
    }
    ```
-   <!-- [set_system_language_and_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
 <!--DelEnd-->

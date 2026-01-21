@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_RenderNode* ArkUI_RenderNodeHandle
+```
+
 ## Overview
 
 Defines a render node pointer.

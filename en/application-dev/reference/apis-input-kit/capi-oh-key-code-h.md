@@ -33,7 +33,7 @@ Defines key codes of the key device.
 
 ### Input_KeyCode
 
-```
+```c
 enum Input_KeyCode
 ```
 
@@ -389,7 +389,7 @@ Enumerates the key codes.
 | KEYCODE_BTN_7 = 3107 | Button 7<br>**Since**: 22|
 | KEYCODE_BTN_8 = 3108 | Button 8<br>**Since**: 22|
 | KEYCODE_BTN_9 = 3109 | Button 9<br>**Since**: 22|
-| KEYCODE_DAGGER_CLICK = 3211 | Single tapping the smart watch's X-TAP sensor<br>**Since**: 18|	
-| KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | Double tapping the smart watch's X-TAP sensor<br>**Since**: 18|	
-| KEYCODE_DAGGER_LONG_PRESS = 3213 | Long-pressing the smart watch's X-TAP sensor<br>**Since**: 18|
+| KEYCODE_DAGGER_CLICK = 3211 | Single tapping the smart watch's X-TAP sensor<br>**Since**: 22|
+| KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | Double tapping the smart watch's X-TAP sensor<br>**Since**: 22|
+| KEYCODE_DAGGER_LONG_PRESS = 3213 | Long-pressing the smart watch's X-TAP sensor<br>**Since**: 22|
 | KEYCODE_DIV = 3220 | Left button of the smart watch<br>**Since**: 22|

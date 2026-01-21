@@ -282,10 +282,10 @@ Sends a message from the host thread to the Worker thread. In the message, a [Se
 
 **Parameters**
 
-| Name | Type                                     | Mandatory| Description                                                        |
+| Name| Type| Mandatory| Description|
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message   | Object	     | Yes  | Data to be sent to the Worker thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types). If data needs to be shared, see [Sendable Data Types](../../arkts-utils/arkts-sendable.md#sendable-data-types).|
-| transfer  | ArrayBuffer[] | No  | ArrayBuffer instance holding an array of objects for which the ownership is transferred to the Worker thread. After the transfer, the objects are available only in the Worker thread. The array cannot be null. The default value is an empty array.|
+| message | Object | Yes| Data to be sent to the Worker thread. The data object must be sequenceable. For details about the supported parameter types, see [Sequenceable Data Types](#sequenceable-data-types). If data needs to be shared, see [Sendable Data Types](../../arkts-utils/arkts-sendable.md#sendable-data-types).|
+| transfer | ArrayBuffer[] | No| ArrayBuffer instance holding an array of objects for which the ownership is transferred to the Worker thread. After the transfer, the objects are available only in the Worker thread. The array cannot be null. The default value is an empty array.|
 
 **Error codes**
 
@@ -1114,10 +1114,10 @@ Sends a message from the Worker thread to the host thread. In the message, a [Se
 
 **Parameters**
 
-| Name | Type                                     | Mandatory| Description                                                        |
+| Name| Type| Mandatory| Description|
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| message   | Object	     | Yes  | Data to be sent to the host thread. The data object must be sequenceable or sendable. For details about the supported sequenceable types, see [Sequenceable Data Types](#sequenceable-data-types). For details about the supported sendable types, see [Sendable Data Types](../../arkts-utils/arkts-sendable.md#sendable-data-types).|
-| transfer  | ArrayBuffer[] | No  | ArrayBuffer instance holding an array of objects for which the ownership is transferred to the host thread. After the transfer, the objects are available only in the host thread. The array cannot be null. The default value is an empty array.|
+| message | Object | Yes| Data to be sent to the host thread. The data object must be sequenceable or sendable. For details about the supported sequenceable types, see [Sequenceable Data Types](#sequenceable-data-types). For details about the supported sendable types, see [Sendable Data Types](../../arkts-utils/arkts-sendable.md#sendable-data-types).|
+| transfer | ArrayBuffer[] | No| ArrayBuffer instance holding an array of objects for which the ownership is transferred to the host thread. After the transfer, the objects are available only in the host thread. The array cannot be null. The default value is an empty array.|
 
 **Error codes**
 

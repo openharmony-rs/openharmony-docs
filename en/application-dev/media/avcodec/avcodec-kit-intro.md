@@ -1,4 +1,4 @@
-# Introduction to AVCodec Kit
+# About This Kit
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->

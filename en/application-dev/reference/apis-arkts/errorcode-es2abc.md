@@ -30,6 +30,7 @@ The compiler cannot parse a syntax structure in the source file. The error infor
 1. The code contains invalid or incomplete syntax, for example, missing brackets, spelling errors, and incorrect structure nesting.
 2. The code uses language features that are not supported by the current version.
 3. The keyword or syntax structure cannot be identified due to spelling errors.
+4. Encryption software may exist in the environment and modify the file encoding format.
 
 **Solution**
 
@@ -37,6 +38,7 @@ The compiler cannot parse a syntax structure in the source file. The error infor
 2. Fix syntax errors, for example, add missing brackets or keywords.
 3. Use the syntax check tool of DevEco Studio to detect syntax errors.
 4. If the new syntax feature is used, ensure that the current compiler version supports the feature.
+5. If encryption software is used, stop it and recompile the code.
 
 ## 10706001 Specification Error
 

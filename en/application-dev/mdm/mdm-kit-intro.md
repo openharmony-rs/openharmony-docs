@@ -1,4 +1,4 @@
-# Introduction to MDM Kit
+# About This Kit
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->

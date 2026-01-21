@@ -6,12 +6,16 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+The **AuxiliaryPicture** class is used to read or write auxiliary picture data of an image and obtain auxiliary picture information of an image. The supported types of auxiliary pictures can be found in [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13).
+
+Before calling any API in AuxiliaryPicture, you must create an AuxiliaryPicture instance using [image.createAuxiliaryPicture](arkts-apis-image-f.md#imagecreateauxiliarypicture13) or [getAuxiliaryPicture](./arkts-apis-image-Picture.md#getauxiliarypicture13) in Picture.
+
+Images occupy a large amount of memory. When you finish using an AuxiliaryPicture instance, call [release](#release13) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 13.
-
-The auxiliary picture is generally used to assist the main picture in displaying special information, so that the image includes richer information. The AuxiliaryPicture class is used to read or write auxiliary picture data of an image and obtain auxiliary picture information of an image. Before calling any API in AuxiliaryPicture, you must use [createAuxiliaryPicture](arkts-apis-image-f.md#imagecreateauxiliarypicture13) to create a AuxiliaryPicture object.
 
 ## Modules to Import
 
@@ -326,6 +330,10 @@ async function SetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
 release():void
 
 Releases this AuxiliaryPicture object. No value is returned.
+
+Images occupy a large amount of memory. When you finish using an AuxiliaryPicture instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

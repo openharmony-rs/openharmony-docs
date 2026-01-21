@@ -23,6 +23,7 @@ XML还可以作为消息传递格式，用于分布式系统中不同节点的�
 ## 开发步骤
 
 XML模块提供`XmlSerializer`及`XmlDynamicSerializer`类来生成XML数据，使用`XmlSerializer`需传入固定长度的`ArrayBuffer`或`DataView`对象作为输出缓冲区，用于存储序列化后的XML数据。
+
 `XmlDynamicSerializer`类动态扩容，程序根据实际生成的数据大小自动创建`ArrayBuffer`。
 
 调用不同的方法写入不同的内容，如startElement(name: string)写入元素开始标记，setText(text: string)写入标签值。

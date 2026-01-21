@@ -35,67 +35,67 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 1. 引入模块。
 
-    ```ts
-    import { xml, util } from '@kit.ArkTS'; // 需要使用util模块函数对文本编码
-    ```
+   ```ts
+   import { xml, util } from '@kit.ArkTS'; // 需要使用util模块函数对文本编码
+   ```
 
 2. 对XML文本编码后调用XmlPullParser。
 
    可以基于ArrayBuffer创建XmlPullParser对象，也可以基于DataView创建XmlPullParser对象（两种创建方式返回结果无区别）。
 
-    ```ts
-    let strXml: string =
-    '<?xml version="1.0" encoding="utf-8"?>' +
-      '<note importance="high" logged="true">' +
-      '<title>Play</title>' +
-      '<lens>Work</lens>' +
-      '</note>';
-    let textEncoder: util.TextEncoder = new util.TextEncoder();
-    let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
-    // 方式1：基于ArrayBuffer构造XmlPullParser对象
-    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```ts
+   let strXml: string =
+   '<?xml version="1.0" encoding="utf-8"?>' +
+     '<note importance="high" logged="true">' +
+     '<title>Play</title>' +
+     '<lens>Work</lens>' +
+     '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
+   // 方式1：基于ArrayBuffer构造XmlPullParser对象
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
    
-    // 方式2：基于DataView构造XmlPullParser对象
-    // let dataView: DataView = new DataView(arrBuffer.buffer as object as ArrayBuffer);
-    // let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(dataView, 'UTF-8');
-    ```
+   // 方式2：基于DataView构造XmlPullParser对象
+   // let dataView: DataView = new DataView(arrBuffer.buffer as object as ArrayBuffer);
+   // let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(dataView, 'UTF-8');
+   ```
 
 3. 自定义回调函数，本例直接打印出标签及标签值。
 
-    ```ts
-    function func(name: string, value: string): boolean {
-      if (name == 'note') {
-        console.info(name);
-      }
-      if (value == 'Play' || value == 'Work') {
-        console.info('    ' + value);
-      }
-      if (name == 'title' || name == 'lens') {
-        console.info('  ' + name);
-      }
-      return true; //true:继续解析 false:停止解析
-    }
-    ```
+   ```ts
+   function func(name: string, value: string): boolean {
+     if (name == 'note') {
+       console.info(name);
+     }
+     if (value == 'Play' || value == 'Work') {
+       console.info('    ' + value);
+     }
+     if (name == 'title' || name == 'lens') {
+       console.info('  ' + name);
+     }
+     return true; //true:继续解析 false:停止解析
+   }
+   ```
 
 4. 设置解析选项，调用parseXml函数。
 
-    ```ts
-    let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
-    xmlParser.parseXml(options);
-    ```
+   ```ts
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   ```
 
-	输出结果如下所示：
+   输出结果如下所示： 
 
-	```txt
-	note
-	  title
-	    Play
-	  title
-	  lens
-	    Work
-	  lens
-	note
-	```
+   ```txt
+   note
+     title
+       Play
+     title
+     lens
+       Work
+     lens
+   note
+   ```
 
 
 
@@ -104,43 +104,43 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 1. 引入模块。
 
-    ```ts
-    import { xml, util } from '@kit.ArkTS'; // 使用util模块对文本编码
-    ```
+   ```ts
+   import { xml, util } from '@kit.ArkTS'; // 使用util模块对文本编码
+   ```
 
 2. 对XML文本编码后调用XmlPullParser。
 
-    ```ts
-    let strXml: string =
-      '<?xml version="1.0" encoding="utf-8"?>' +
-        '<note importance="high" logged="true">' +
-        '    <title>Play</title>' +
-        '    <title>Happy</title>' +
-        '    <lens>Work</lens>' +
-        '</note>';
-    let textEncoder: util.TextEncoder = new util.TextEncoder();
-    let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
-    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-    ```
+   ```ts
+   let strXml: string =
+     '<?xml version="1.0" encoding="utf-8"?>' +
+       '<note importance="high" logged="true">' +
+       '    <title>Play</title>' +
+       '    <title>Happy</title>' +
+       '    <lens>Work</lens>' +
+       '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```
 
 3. 自定义回调函数，示例直接打印出属性及属性值。
 
-    ```ts
-    let str: string = '';
-    function func(name: string, value: string): boolean {
-      str += name + ' ' + value + ' ';
-      return true; // true:继续解析 false:停止解析
-    }
-    ```
+   ```ts
+   let str: string = '';
+   function func(name: string, value: string): boolean {
+     str += name + ' ' + value + ' ';
+     return true; // true:继续解析 false:停止解析
+   }
+   ```
 
 4. 设置解析选项，调用parseXml函数。
 
-    ```ts
-    let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func};
-    xmlParser.parseXml(options);
-    console.info(str); // 打印所有属性及其值
-    ```
-
+   ```ts
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   console.info(str); // 打印所有属性及其值
+   ```
+ 
    输出结果如下所示：
    ```txt
    importance high logged true // note节点的属性及属性值
@@ -151,52 +151,52 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
 
 1. 引入模块。
 
-    ```ts
-    import { xml, util } from '@kit.ArkTS'; // 使用util模块函数对文本编码
-    ```
+   ```ts
+   import { xml, util } from '@kit.ArkTS'; // 使用util模块函数对文本编码
+   ```
 
 2. 对XML文本编码后调用XmlPullParser。
 
-    ```ts
-    let strXml: string =
-      '<?xml version="1.0" encoding="utf-8"?>' +
-      '<note importance="high" logged="true">' +
-      '<title>Play</title>' +
-      '</note>';
-    let textEncoder: util.TextEncoder = new util.TextEncoder();
-    let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
-    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-    ```
+   ```ts
+   let strXml: string =
+     '<?xml version="1.0" encoding="utf-8"?>' +
+     '<note importance="high" logged="true">' +
+     '<title>Play</title>' +
+     '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // 对数据进行编码，防止中文字符乱码
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```
 
 3. 自定义回调函数，示例直接打印元素事件类型及元素深度。
 
-    ```ts
-    let str: string = '';
-    function func(name: xml.EventType, value: xml.ParseInfo): boolean {
-      str = name + ' ' + value.getDepth(); // getDepth 获取元素在XML文档中的当前深度
-      console.info(str);
-      return true; // true:继续解析 false:停止解析
-    }
-    ```
+   ```ts
+   let str: string = '';
+   function func(name: xml.EventType, value: xml.ParseInfo): boolean {
+     str = name + ' ' + value.getDepth(); // getDepth 获取元素在XML文档中的当前深度
+     console.info(str);
+     return true; // true:继续解析 false:停止解析
+   }
+   ```
 
 4. 设置解析选项，调用parseXml函数。
 
-     ```ts
-     let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func};
-     xmlParser.parseXml(options);
-     ```
+   ```ts
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   ```
 
    输出结果如下所示：
 
-	```txt
-	 0 0 // 0：<?xml version="1.0" encoding="utf-8"?> 对应事件类型START_DOCUMENT值为0  0：起始深度为0
-	 2 1 // 2：<note importance="high" logged="true"> 对应事件类型START_TAG值为2  1：深度为1
-	 2 2 // 2：<title>对应事件类型START_TAG值为2  2：深度为2
-	 4 2 // 4：Play对应事件类型TEXT值为4  2：深度为2
-	 3 2 // 3：</title>对应事件类型END_TAG值为3  2：深度为2
-	 3 1 // 3：</note>对应事件类型END_TAG值为3  1：深度为1（与<note对应>）
-	 1 0 // 1：对应事件类型END_DOCUMENT值为1  0：深度为0
-	```
+   ```txt
+   0 0 // 0：<?xml version="1.0" encoding="utf-8"?> 对应事件类型START_DOCUMENT值为0  0：起始深度为0
+   2 1 // 2：<note importance="high" logged="true"> 对应事件类型START_TAG值为2  1：深度为1
+   2 2 // 2：<title>对应事件类型START_TAG值为2  2：深度为2
+   4 2 // 4：Play对应事件类型TEXT值为4  2：深度为2
+   3 2 // 3：</title>对应事件类型END_TAG值为3  2：深度为2
+   3 1 // 3：</note>对应事件类型END_TAG值为3  1：深度为1（与<note对应>）
+   1 0 // 1：对应事件类型END_DOCUMENT值为1  0：深度为0
+   ```
 
 
 

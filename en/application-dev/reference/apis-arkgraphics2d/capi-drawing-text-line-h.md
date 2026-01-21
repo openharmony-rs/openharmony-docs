@@ -13,6 +13,8 @@ This file declares the capabilities for obtaining the character position in a te
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -47,7 +49,7 @@ This file declares the capabilities for obtaining the character position in a te
 
 ### OH_Drawing_TypographyGetTextLines()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_TypographyGetTextLines(OH_Drawing_Typography* typography)
 ```
 
@@ -74,7 +76,7 @@ Obtains the array of text lines in a typography object. This array contains one 
 
 ### OH_Drawing_DestroyTextLines()
 
-```
+```c
 void OH_Drawing_DestroyTextLines(OH_Drawing_Array* lines)
 ```
 
@@ -95,7 +97,7 @@ Releases the memory occupied by a text line array.
 
 ### OH_Drawing_DestroyTextLine()
 
-```
+```c
 void OH_Drawing_DestroyTextLine(OH_Drawing_TextLine* line)
 ```
 
@@ -116,7 +118,7 @@ Releases the memory occupied by a text line object. This is applicable only to t
 
 ### OH_Drawing_GetTextLineByIndex()
 
-```
+```c
 OH_Drawing_TextLine* OH_Drawing_GetTextLineByIndex(OH_Drawing_Array* lines, size_t index)
 ```
 
@@ -144,7 +146,7 @@ Obtains the text line object with the specified index in a text line array.
 
 ### OH_Drawing_TextLineGetGlyphCount()
 
-```
+```c
 double OH_Drawing_TextLineGetGlyphCount(OH_Drawing_TextLine* line)
 ```
 
@@ -171,7 +173,7 @@ Obtains the number of glyphs in a text line object.
 
 ### OH_Drawing_TextLineGetTextRange()
 
-```
+```c
 void OH_Drawing_TextLineGetTextRange(OH_Drawing_TextLine* line, size_t* start, size_t* end)
 ```
 
@@ -194,7 +196,7 @@ Obtains the range of the text in a text line object in the entire paragraph.
 
 ### OH_Drawing_TextLineGetGlyphRuns()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_TextLineGetGlyphRuns(OH_Drawing_TextLine* line)
 ```
 
@@ -221,7 +223,7 @@ Obtains the array of glyph runs in a text line object.
 
 ### OH_Drawing_DestroyRuns()
 
-```
+```c
 void OH_Drawing_DestroyRuns(OH_Drawing_Array* runs)
 ```
 
@@ -242,7 +244,7 @@ Releases the memory occupied by a glyph run array.
 
 ### OH_Drawing_GetRunByIndex()
 
-```
+```c
 OH_Drawing_Run* OH_Drawing_GetRunByIndex(OH_Drawing_Array* runs, size_t index)
 ```
 
@@ -270,7 +272,7 @@ Obtains the glyph run object with the specified index in a glyph run array.
 
 ### OH_Drawing_TextLinePaint()
 
-```
+```c
 void OH_Drawing_TextLinePaint(OH_Drawing_TextLine* line, OH_Drawing_Canvas* canvas, double x, double y)
 ```
 
@@ -294,7 +296,7 @@ Paints a text line on the canvas with the coordinate point (x, y) as the upper l
 
 ### OH_Drawing_TextLineCreateTruncatedLine()
 
-```
+```c
 OH_Drawing_TextLine* OH_Drawing_TextLineCreateTruncatedLine(OH_Drawing_TextLine* line, double width, int mode,const char* ellipsis)
 ```
 
@@ -324,13 +326,13 @@ Creates a truncated text line object.
 
 ### OH_Drawing_TextLineGetTypographicBounds()
 
-```
+```c
 double OH_Drawing_TextLineGetTypographicBounds(OH_Drawing_TextLine* line, double* ascent, double* descent,double* leading)
 ```
 
 **Description**
 
-Obtains the typographic boundary of a text line object. The typographic boundary is related to the font and font size used for typography, but not the characters within the text.<br>For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundaries include the spaces at the beginning and end of the line. Similarly, the strings "j" and "E" have identical typographic boundaries, which are independent of the characters themselves.
+Obtains the typographic boundary of a text line object. The typographic boundary is related to the font and font size used for typography, but not the characters within the text.<br>For example, for the string " a b " (which has a space before "a" and a space after "b"), the typographic boundary encompasses the spaces at the beginning and end. Similarly, the strings "j" and "E" have identical typographic boundaries, which are independent of the characters themselves.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -354,7 +356,7 @@ Obtains the typographic boundary of a text line object. The typographic boundary
 
 ### OH_Drawing_TextLineGetImageBounds()
 
-```
+```c
 OH_Drawing_Rect* OH_Drawing_TextLineGetImageBounds(OH_Drawing_TextLine* line)
 ```
 
@@ -381,7 +383,7 @@ Obtains the image boundary of a text line object. The image boundary, equivalent
 
 ### OH_Drawing_TextLineGetTrailingSpaceWidth()
 
-```
+```c
 double OH_Drawing_TextLineGetTrailingSpaceWidth(OH_Drawing_TextLine* line)
 ```
 
@@ -408,7 +410,7 @@ Obtains the width of the spaces at the end of a text line object.
 
 ### OH_Drawing_TextLineGetStringIndexForPosition()
 
-```
+```c
 int32_t OH_Drawing_TextLineGetStringIndexForPosition(OH_Drawing_TextLine* line, OH_Drawing_Point* point)
 ```
 
@@ -436,7 +438,7 @@ Obtains the index of a character at the specified position in a text line object
 
 ### OH_Drawing_TextLineGetOffsetForStringIndex()
 
-```
+```c
 double OH_Drawing_TextLineGetOffsetForStringIndex(OH_Drawing_TextLine* line, int32_t index)
 ```
 
@@ -464,7 +466,7 @@ Obtains the offset of a character with the specified index in a text line object
 
 ### Drawing_CaretOffsetsCallback()
 
-```
+```c
 typedef bool (*Drawing_CaretOffsetsCallback)(double offset, int32_t index, bool leadingEdge)
 ```
 
@@ -493,7 +495,7 @@ Defines a custom callback used to receive the offset and index of each character
 
 ### OH_Drawing_TextLineEnumerateCaretOffsets()
 
-```
+```c
 void OH_Drawing_TextLineEnumerateCaretOffsets(OH_Drawing_TextLine* line, Drawing_CaretOffsetsCallback callback)
 ```
 
@@ -515,7 +517,7 @@ Enumerates the offset and index of each character in a text line object and pass
 
 ### OH_Drawing_TextLineGetAlignmentOffset()
 
-```
+```c
 double OH_Drawing_TextLineGetAlignmentOffset(OH_Drawing_TextLine* line, double alignmentFactor, double alignmentWidth)
 ```
 

@@ -18,7 +18,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { uiExtensionHost } from '@kit.ArkUI';
 ```
 
@@ -356,6 +356,88 @@ export default class EntryAbility extends UIExtensionAbility {
     };
     // 创建子窗口
     extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowOpts)
+      .then((subWindow: window.Window) => {
+        subWindow.setUIContent('pages/Index', (err, data) =>{
+          if (err && err.code != 0) {
+            return;
+          }
+          subWindow?.resize(300, 300, (err, data)=>{
+            if (err && err.code != 0) {
+              return;
+            }
+            subWindow?.moveWindowTo(100, 100, (err, data)=>{
+              if (err && err.code != 0) {
+                return;
+              }
+              subWindow?.showWindow((err, data) => {
+                if (err && err.code == 0) {
+                  console.info(`The subwindow has been shown!`);
+                } else {
+                  console.error(`Failed to show the subwindow!`);
+                }
+              });
+            });
+          });
+        });
+      }).catch((error: BusinessError) => {
+        console.error(`Create subwindow failed: ${JSON.stringify(error)}`);
+      })
+  }
+}
+```
+
+### createSubWindowWithOptions<sup>22+</sup>
+
+createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
+
+创建该UIExtensionHostWindowProxy实例下的子窗口，可通过设置followCreatorLifecycle，决定子窗是否跟随组件（EmbeddedComponent或UIExtensionComponent）的生命周期，使用Promise异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| name   | string | 是   | 子窗口的名字。 |
+| subWindowConfig | [window.SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | 是 | 子窗口参数。 |
+| followCreatorLifecycle | boolean | 是   | 子窗生命周期是否跟组件（EmbeddedComponent或UIExtensionComponent）保持同步。true表示该组件隐藏时，子窗隐藏，该组件显示时子窗显示，false表示子窗的显隐不跟随该组件变化。|
+
+**返回值：**
+
+| 类型                             | 说明                                             |
+| -------------------------------- | ------------------------------------------------ |
+| Promise&lt;[window.Window](arkts-apis-window-Window.md)&gt; | Promise对象。返回当前UIExtensionHostWindowProxy下创建的子窗口对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+
+**示例：**
+
+```ts
+// ExtensionProvider.ts
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    const extensionHostWindow = session.getUIExtensionHostWindowProxy();
+    const subWindowConfig: window.SubWindowOptions = {
+      title: 'This is a subwindow',
+      decorEnabled: true
+    };
+    // 创建子窗口
+    extensionHostWindow.createSubWindowWithOptions('subWindowForHost', subWindowConfig, true)
       .then((subWindow: window.Window) => {
         subWindow.setUIContent('pages/Index', (err, data) =>{
           if (err && err.code != 0) {

@@ -2,9 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
+```
 
 ## Overview
 
@@ -31,7 +35,7 @@ Registers callbacks for the surface lifecycle and touch event.
 
 ### OnSurfaceCreated()
 
-```
+```c
 void (*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -47,11 +51,11 @@ Invoked when a surface is created.
 | Name                               | Description|
 |------------------------------------| -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | Pointer to an [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance.|
-| void* window                       | Handle to the **NativeWindow** instance.|
+| void* window                       | Handle to the **NativeWindow** instance.<br>The **NativeWindow** instance obtained through the **XComponent** lifecycle callback is held by the system side with a reference count. After the **OnSurfaceDestroyed** callback is triggered, the reference count is decreased by one. After the reference count reaches zero, the **NativeWindow** instance will be released.|
 
 ### OnSurfaceChanged()
 
-```
+```c
 void (*OnSurfaceChanged)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -71,7 +75,7 @@ Invoked when the surface changes.
 
 ### OnSurfaceDestroyed()
 
-```
+```c
 void (*OnSurfaceDestroyed)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -91,7 +95,7 @@ Invoked when the surface is destroyed.
 
 ### DispatchTouchEvent()
 
-```
+```c
 void (*DispatchTouchEvent)(OH_NativeXComponent* component, void* window)
 ```
 

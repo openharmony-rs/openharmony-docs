@@ -238,7 +238,9 @@ A 32-bit unsigned integer, divided into three parts.
 | 24 - 31      | `reserved`       | `uint8_t`        | Reserved field for internal use by the Ark bytecode file.                          |
 
 
-#### FunctionKind
+
+**FunctionKind**
+
 
 | **Name**          | **Value**| **Description**  |
 | ------------------------ | ------------ | ---------------- |
@@ -396,11 +398,15 @@ Contains mappings between program counters of the method and the line/column num
 | `line_number_program_idx` | `uleb128`        | An index that points to a position in [LineNumberProgramIndex](#linenumberprogramindex). The value of the position is an offset pointing to the line number program. The length of **Line number program** is variable and ends with the **END_SEQUENCE** operation code.|
 
 
-#### Constant Pool
+
+**Constant pool**
+
 A structure within **DebugInfo** for storing constants. Many methods have similar line number programs, differing only in variable names, variable types, and file names. To eliminate redundancy in these programs, all referenced constants are stored in the constant pool. During program interpretation, the state machine maintains a pointer to the constant pool. When interpreting an instruction that requires a constant parameter, the state machine reads the value from the position pointed to by the constant pool pointer and then increments the pointer.
 
 
-#### State Machine
+
+**State machine**
+
 Generates [DebugInfo](#debuginfo) information. It contains the following registers.
 
 | **Name**   | **Initial Value**                                            | **Description**                                              |
@@ -413,7 +419,9 @@ Generates [DebugInfo](#debuginfo) information. It contains the following registe
 | `constant_pool_ptr` | Start address of the constant pool in [DebugInfo](#debuginfo).| Pointer to the current constant value.                                      |
 
 
-#### Line Number Program
+
+**Line number program**
+
 Consists of instructions, each containing a single-byte operation code and optional parameters. Depending on the operation code, the parameter values may be encoded within the instruction (called instruction parameters) or retrieved from the constant pool (called constant pool parameters).
 
 | **Operation Code** | **Value**| **Instruction Parameter**  | **Constant Pool Parameters**   | **Parameter Description**| **Description** |

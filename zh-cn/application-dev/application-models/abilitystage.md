@@ -15,7 +15,7 @@ AbilityStage拥有[onCreate()](../reference/apis-ability-kit/js-apis-app-ability
 
 - onCreate()生命周期回调：在开始加载对应Module的第一个应用组件（如[UIAbility组件](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)或具体扩展能力的[ExtensionAbility组件](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)）实例之前会先创建AbilityStage，并在AbilityStage创建完成之后执行其onCreate()生命周期回调。AbilityStage模块提供在Module加载的时候，通知开发者，可以在此进行该Module的初始化（如资源预加载、线程创建等）。
 
-- onAcceptWant()事件回调：UIAbility[指定实例模式（specified）](uiability-launch-type.md#specified启动模式)启动时候触发的事件回调，具体使用请参见[UIAbility启动模式综述](uiability-launch-type.md)。
+- onAcceptWant()事件回调：UIAbility[指定实例模式（specified）](uiability-launch-type.md#specified启动模式)启动时触发的事件回调，具体使用请参见[UIAbility启动模式综述](uiability-launch-type.md)。
 
 - onConfigurationUpdate()事件回调：当系统环境变量（例如系统语言、深浅色等）发生变更时触发的事件回调，配置项均定义在[Configuration](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)类中。
 
@@ -95,11 +95,11 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
       let envCallback: EnvironmentCallback = {
         onConfigurationUpdated(config) {
           console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
-          let language = config.language; //应用程序的当前语言
-          let colorMode = config.colorMode; //深浅色模式
-          let direction = config.direction; //屏幕方向
-          let fontSizeScale = config.fontSizeScale; //字体大小缩放比例
-          let fontWeightScale = config.fontWeightScale; //字体粗细缩放比例
+          let language = config.language; // 应用程序的当前语言
+          let colorMode = config.colorMode; // 深浅色模式
+          let direction = config.direction; // 屏幕方向
+          let fontSizeScale = config.fontSizeScale; // 字体大小缩放比例
+          let fontWeightScale = config.fontWeightScale; // 字体粗细缩放比例
         },
         onMemoryLevel(level) {
           console.info(`onMemoryLevel level: ${level}`);

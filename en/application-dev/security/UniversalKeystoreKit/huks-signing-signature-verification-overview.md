@@ -9,6 +9,8 @@
 
 To ensure data integrity and non-repudiation, you can use the generated or imported key to perform signing and signature verification.
 
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
+
 ## Supported Algorithms
 
 The following table lists the supported specifications for signing and signature verification.
@@ -51,3 +53,4 @@ Before implementing the specifications for mini-system devices, determine whethe
 <!--RP1--><!--RP1End-->
 
 <!--RP2--><!--RP2End-->
+<!--no_check-->

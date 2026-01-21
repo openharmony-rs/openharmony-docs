@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-When an application performs image decoding, it needs to allocate the corresponding memory. This guide describes different types of memory and how to allocate them.
+When an application decodes images, it must allocate the necessary memory for the decoding process. This guide describes different types of memory and how to allocate them.
 
 The application obtains a PixelMap through the decoding API and passes it to the **Image** component for display.
 
-When the PixelMap is large and uses shared memory, the RenderService main thread will experience a longer texture upload time, leading to lag. The zero-copy feature of DMA memory provided by the graphics side can avoid the time cost of texture upload when the system renders images.
+If the PixelMap consumes a significant amount of memory and relies on shared memory, the RenderScript main thread may face an extended texture upload time, leading to noticeable lag. To mitigate this, the graphics subsystem offers a Direct Memory Access (DMA) zero-copy feature, which helps eliminate this overhead during image rendering.
 
 ## Memory Types
 
@@ -54,7 +54,7 @@ DMA_ALLOC is used in the following scenarios:
 
 - Decoding HDR images.
 - Decoding HEIF images.
-- Decoding JPEG images, when the original image's width and height are both between 1024 pixels and 8192 pixels, [pixelFormat](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md) is [PIXEL_FORMAT_RGBA_8888](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format) or [PIXEL_FORMAT_NV21](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format), and the hardware is not busy (concurrency is 3).
+- Decoding JPEG images, when the original image's width and height are both between 1024 pixels and 8192 pixels, [PIXEL_FORMAT](../../reference/apis-image-kit/capi-pixelmap-native-h.md#pixel_format) is **PIXEL_FORMAT_RGBA_8888** or **PIXEL_FORMAT_NV21**, and the number of concurrent tasks in the system does not exceed 3.
 - Decoding images in other formats. The value of [desiredSize](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md) must be greater than or equal to 512 * 512 pixels (consider the original image size if **desiredSize** is not set), and the width must be a multiple of 64.
 
 In all other cases, SHARE_MEMORY is used.
@@ -100,114 +100,167 @@ The sample code for obtaining and operating the stride by the C APIs is as follo
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage_packer.so libpixelmap.so)
 ```
 
-```C++
-#include <cstring>
-#include <multimedia/image_framework/image/image_common.h>
-#include <multimedia/image_framework/image/pixelmap_native.h>
-#include <multimedia/image_framework/image/image_source_native.h>
+> **NOTE**
+>
+> Certain APIs are supported only in API version 20 or later. You should select an appropriate API version during development.
 
-struct PixelmapInfo {
-    uint32_t width = 0;
-    uint32_t height = 0;
-    uint32_t rowStride = 0;
-    int32_t pixelFormat = 0;
-    uint32_t byteCount = 0;
-    uint32_t allocationByteCount = 0;
-};
+1. Create the **GetJsResult** function to process the NAPI return value.
 
-static void GetPixelmapInfo(OH_PixelmapNative *pixelmap, PixelmapInfo *info) {
-    OH_Pixelmap_ImageInfo *srcInfo = nullptr;
-    OH_PixelmapImageInfo_Create(&srcInfo);
-    OH_PixelmapNative_GetImageInfo(pixelmap, srcInfo);
-    OH_PixelmapImageInfo_GetWidth(srcInfo, &info->width);
-    OH_PixelmapImageInfo_GetHeight(srcInfo, &info->height);
-    OH_PixelmapImageInfo_GetRowStride(srcInfo, &info->rowStride);
-    OH_PixelmapImageInfo_GetPixelFormat(srcInfo, &info->pixelFormat);
-    OH_PixelmapImageInfo_Release(srcInfo);
-    return;
-}
+   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   // Process the NAPI return value.
+   napi_value GetJsResult(napi_env env, int result)
+   {
+       napi_value resultNapi = nullptr;
+       napi_create_int32(env, result, &resultNapi);
+       return resultNapi;
+   }
+   ```
 
-static void GetPixelmapAddrInfo(OH_PixelmapNative *pixelmap, PixelmapInfo *info) {
-    OH_PixelmapNative_GetByteCount(pixelmap, &info->byteCount);
-    OH_PixelmapNative_GetAllocationByteCount(pixelmap, &info->allocationByteCount);
-    return;
-}
+2. Obtain and operate the stride value.
 
-int32_t GetPixelFormatBytes(int32_t pixelFormat) {
-    switch (pixelFormat) {
-        case 2: // PIXEL_FORMAT_RGB_565
-            return 2;
-        case 3: // PIXEL_FORMAT_RGBA_8888
-        case 4: // PIXEL_FORMAT_BGRA_8888
-            return 4;
-        case 5: // PIXEL_FORMAT_RGB_888
-            return 3;
-        case 6: // PIXEL_FORMAT_ALPHA_8
-            return 1;
-        case 7: // PIXEL_FORMAT_RGBA_F16
-            return 8; // 16-bit floating-point number per channel, four channels: 4 * 2 bytes = 8 bytes
-        case 8: // PIXEL_FORMAT_NV21
-        case 9: // PIXEL_FORMAT_NV12'
-            // NV21 and NV12 are YUV 4:2:0 semi-planar formats:
-            // - The Y component occupies width × height bytes (1 byte per pixel).
-            // - The UV components are interleaved (UV or VU) and occupy width × height / 2 bytes.
-            // - Total bytes = width × height × 1.5
-            // The return type of the function is int32_t, and the function cannot return a decimal number. Therefore, 2 is returned after rounding up.
-            // Although the actual average number of bytes per pixel is 1.5, returning 2 ensures secure memory allocation and avoids overflows. The trade-off is that you need to handle the stride carefully.
-            return 2; // Semi-planar YUV, use 2 as approximate per-byte-per-pixel
-        case 10: // PIXEL_FORMAT_RGBA_1010102
-            return 4;
-        case 11: // PIXEL_FORMAT_YCBCR_P010
-        case 12: // PIXEL_FORMAT_YCRCB_P010
-            return 2; // 10-bit YUV format, usually aligned to 16 bits (2 bytes)
-        default: // PIXEL_FORMAT_UNKNOWN or unsupported
-            return 0;
-    }
-}
+   <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->     
+   
+   ``` C++
+   #include <cstring>
+   #include <hilog/log.h>
+   #include <multimedia/image_framework/image/image_common.h>
+   #include <multimedia/image_framework/image/pixelmap_native.h>
+   #include <multimedia/image_framework/image/image_source_native.h>
+   // ...
+   
+   // Return the number of bytes per pixel based on the pixel format.
+   int32_t GetPixelFormatBytes(int32_t pixelFormat)
+   {
+       switch (pixelFormat) {
+           case PIXEL_FORMAT_RGB_565:
+               return 2; // 2 bytes per pixel.
+           case PIXEL_FORMAT_RGBA_8888:
+           case PIXEL_FORMAT_BGRA_8888:
+               return 4; // 4 bytes per pixel.
+           case PIXEL_FORMAT_RGB_888:
+               return 3; // 3 bytes per pixel.
+           case PIXEL_FORMAT_ALPHA_8:
+               return 1; // 1 byte per pixel.
+           case PIXEL_FORMAT_RGBA_F16:
+               return 8; // 8 bytes per pixel (since there are 16-bit floating-point number per channel and 4 channels in total).
+           case PIXEL_FORMAT_NV21:
+           case PIXEL_FORMAT_NV12:
+               // The NV21 and NV12 formats are YUV 4:2:0 semi-planar formats. 2 is returned as the number of bytes per pixel.
+               return 2; // 2 bytes per pixel (simplified processing).
+           case PIXEL_FORMAT_RGBA_1010102:
+               return 4; // 4 bytes per pixel.
+           case PIXEL_FORMAT_YCBCR_P010:
+           case PIXEL_FORMAT_YCRCB_P010:
+               return 2; // 2 bytes per pixel.
+           default:
+               return 0; // If the pixel format is unknown, 0 is returned.
+       }
+   }
+   
+   struct PixelmapInfo {
+       uint32_t width = 0;
+       uint32_t height = 0;
+       uint32_t rowStride = 0;
+       int32_t pixelFormat = 0;
+       uint32_t byteCount = 0;
+       uint32_t allocationByteCount = 0;
+   };
+   
+   static void GetPixelmapInfo(OH_PixelmapNative *pixelmap, PixelmapInfo *info)
+   {
+       OH_Pixelmap_ImageInfo *srcInfo = nullptr;
+       OH_PixelmapImageInfo_Create(&srcInfo);
+       OH_PixelmapNative_GetImageInfo(pixelmap, srcInfo);
+       OH_PixelmapImageInfo_GetWidth(srcInfo, &info->width);
+       OH_PixelmapImageInfo_GetHeight(srcInfo, &info->height);
+       OH_PixelmapImageInfo_GetRowStride(srcInfo, &info->rowStride);
+       OH_PixelmapImageInfo_GetPixelFormat(srcInfo, &info->pixelFormat);
+       OH_PixelmapImageInfo_Release(srcInfo);
+       srcInfo = nullptr;
+       return;
+   }
+   
+   static void GetPixelmapAddrInfo(OH_PixelmapNative *pixelmap, PixelmapInfo *info)
+   {
+       OH_PixelmapNative_GetByteCount(pixelmap, &info->byteCount);
+       OH_PixelmapNative_GetAllocationByteCount(pixelmap, &info->allocationByteCount);
+       return;
+   }
+   
+   void DataCopy(OH_PixelmapNative *pixelmap, OH_ImageSourceNative* imageSource, OH_DecodingOptions *options,
+                 IMAGE_ALLOCATOR_TYPE allocatorType)
+   {
+       PixelmapInfo srcInfo;
+       GetPixelmapInfo(pixelmap, &srcInfo);
+       GetPixelmapAddrInfo(pixelmap, &srcInfo);
+   
+       void *pixels = nullptr;
+       OH_PixelmapNative_AccessPixels(pixelmap, &pixels);
+       OH_PixelmapNative *newPixelmap = nullptr;
+       OH_ImageSourceNative_CreatePixelmap(imageSource, options, &newPixelmap);
+       uint32_t dstRowStride = srcInfo.width * GetPixelFormatBytes(srcInfo.pixelFormat);
+       void *newPixels = nullptr;
+       OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
+       uint8_t *src = reinterpret_cast<uint8_t *>(pixels);
+       uint8_t *dst = reinterpret_cast<uint8_t *>(newPixels);
+       uint32_t dstSize = srcInfo.byteCount;
+       uint32_t rowSize;
+       if (allocatorType == IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA) {
+           rowSize = srcInfo.rowStride;
+       } else {
+           rowSize = dstRowStride;
+       }
+       for (uint32_t i = 0; i < srcInfo.height; ++i) {
+           if (dstSize >= dstRowStride) {
+               std::copy(src, src + dstRowStride, dst);
+           } else {
+               break;
+           }
+           src += rowSize;
+           dst += dstRowStride;
+           dstSize -= dstRowStride;
+       }
+       OH_PixelmapNative_UnaccessPixels(newPixelmap);
+       OH_PixelmapNative_UnaccessPixels(pixelmap);
+       OH_DecodingOptions_Release(options);
+       options = nullptr;
+       OH_ImageSourceNative_Release(imageSource);
+       imageSource = nullptr;
+       OH_PixelmapNative_Release(pixelmap);
+       pixelmap = nullptr;
+       OH_PixelmapNative_Release(newPixelmap);
+       newPixelmap = nullptr;
+   }
+   
+   napi_value TestStrideWithAllocatorType(napi_env env, napi_callback_info info)
+   {
+       napi_value argValue[1] = {nullptr};
+       size_t argCount = 1;
+       if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < 1 ||
+           argValue[0] == nullptr) {
+           OH_LOG_ERROR(LOG_APP, "CreateImageSource napi_get_cb_info failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       
+       const size_t maxPathLength = 1024;
+       char filePath[maxPathLength];
+       size_t pathSize = maxPathLength;
+       napi_get_value_string_utf8(env, argValue[0], filePath, maxPathLength, &pathSize);
+   
+       OH_ImageSourceNative* imageSource = nullptr;
+       Image_ErrorCode image_ErrorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &imageSource);
+       OH_DecodingOptions *options = nullptr;
+       OH_DecodingOptions_Create(&options);
+       IMAGE_ALLOCATOR_TYPE allocatorType = IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA;  // Use DMA to create a PixelMap.
+       OH_PixelmapNative *pixelmap = nullptr;
+       image_ErrorCode = OH_ImageSourceNative_CreatePixelmapUsingAllocator(imageSource, options, allocatorType, &pixelmap);
+       DataCopy(pixelmap, imageSource, options, allocatorType);
+       return GetJsResult(env, image_ErrorCode);
+   }
+   ```
 
-OH_PixelmapNative* TestStrideWithAllocatorType() {
-    char* filePath = const_cast<char *>("/data/storage/el2/base/haps/entry/files/test.jpg");
-    size_t filePathSize = 1024;
-    OH_ImageSourceNative* imageSource = nullptr;
-    Image_ErrorCode image_ErrorCode = OH_ImageSourceNative_CreateFromUri(filePath, filePathSize, &imageSource);
-    OH_DecodingOptions *options = nullptr;
-    OH_DecodingOptions_Create(&options);
-    IMAGE_ALLOCATOR_TYPE allocatorType = IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA;  // Use DMA to create a PixelMap.
-    OH_PixelmapNative *pixelmap = nullptr;
-    image_ErrorCode = OH_ImageSourceNative_CreatePixelmapUsingAllocator(imageSource, options, allocatorType, &pixelmap);
-    PixelmapInfo srcInfo;
-    GetPixelmapInfo(pixelmap, &srcInfo);
-    GetPixelmapAddrInfo(pixelmap, &srcInfo);
-
-    void *pixels = nullptr;
-    OH_PixelmapNative_AccessPixels(pixelmap, &pixels);
-    OH_PixelmapNative *newPixelmap = nullptr;
-    OH_ImageSourceNative_CreatePixelmap(imageSource, options, &newPixelmap);
-    uint32_t dstRowStride = srcInfo.width * GetPixelFormatBytes(srcInfo.pixelFormat);
-    void *newPixels = nullptr;
-    OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
-    uint8_t *src = reinterpret_cast<uint8_t *>(pixels);
-    uint8_t *dst = reinterpret_cast<uint8_t *>(newPixels);
-    uint32_t dstSize = srcInfo.byteCount;
-    uint32_t rowSize;
-    if (allocatorType == IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA) { 
-        rowSize = srcInfo.rowStride; 
-    } else {
-        rowSize = dstRowStride;
-    }
-    for (uint32_t i = 0; i < srcInfo.height; ++i) {
-        memcpy(dst, src, dstRowStride);
-        src += rowSize;
-        dst += dstRowStride;
-        dstSize -= dstRowStride;
-    }
-    OH_PixelmapNative_UnaccessPixels(newPixelmap);
-    OH_PixelmapNative_UnaccessPixels(pixelmap);
-    OH_DecodingOptions_Release(options);
-    OH_ImageSourceNative_Release(imageSource);
-    return newPixelmap;
-}
-```
 
 ## Memory Restrictions for Decoding a Single Image
 
@@ -218,7 +271,7 @@ The image framework imposes a 2 GB memory limit for decoding a single image. Pro
 Applications can use [onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) to listen for system memory changes.
 
 The calculation rule for PixelMap memory allocation is as follows:
-```
+```TypeScript
 pixels_size (pixel memory size) = stride (image pixel storage width) * height (image pixel height)
 ```
 

@@ -26,6 +26,7 @@ OpenHarmony支持可变帧率能力，开发者通过使用可变帧率接口，
 
 ## 运作机制
 可变帧率为应用开发中的动画组件、XComponent组件、UI绘制等提供一种基础帧率配置和能力。
+
 开发者通过设置有效的期望绘制帧率后，系统会收集设置的请求帧率，进行决策和分发，在渲染管线上进行分频，尽量能够满足开发者的期望帧率。
 
 ![可变帧率原理图](./figures/displaysync-architecture.jpg)
@@ -40,4 +41,4 @@ OpenHarmony支持可变帧率能力，开发者通过使用可变帧率接口，
 
 针对可变帧率的开发，有以下相关实例可供参考：
 
-- [DisplaySync分级管控（ArkTS）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/DisplaySync)
+- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/DisplaySync)

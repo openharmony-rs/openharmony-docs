@@ -33,12 +33,12 @@
 ## 引入ICU4C国际化能力
 
 如果开发者需要使用ICU4C相关功能，请按需要添加对应的头文件。本模块头文件需要添加unicode目录前缀，例如：
-```
+```c
 #include <unicode/uloc.h>
 ```
 
-其次在CMakeList.txt中添加以下动态库:
-```
+其次在CMakeLists.txt中添加以下动态库:
+```c
 libicu.so
 ```
 
