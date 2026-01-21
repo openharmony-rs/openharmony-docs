@@ -1140,11 +1140,11 @@ This API cannot be used to start the UIAbility with the launch type set to [spec
 
 > **NOTE**
 >
-> - In cross-device scenarios, the caller and the target must belong to the same application.
+> - In cross-device scenarios, the caller and the callee must belong to the same application.
 >
-> - For a successful launch in the same device scenario, the caller and target must be different applications and have the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission (available only for system applications).
+> - In same-device scenarios, the caller and the callee must belong to different applications, and the caller must have the ohos.permission.ABILITY_BACKGROUND_COMMUNICATION permission (available only for system applications).
 >
-> - If the caller is running in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is required (available only for system applications). For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
+> - In addition, if the application needs to call this API in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is required (available only for system applications). For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1197,78 +1197,124 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-Start a UIAbility in the background.
+The following code demonstrates that the caller launches the callee to the background, sends a message to the callee after successfully obtaining the Caller object, and then releases the Caller object.
 
 ```ts
-import { UIAbility, Caller, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { Caller, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { rpc } from '@kit.IPCKit';
+
+const DOMAIN = 0x0000;
+const LOG_TAG = 'TEST_TAG';
+
+class TestParcelable implements rpc.Parcelable {
+  age: number = 0;
+  name: string = '';
+  marshalling(dataOut: rpc.MessageSequence): boolean {
+    dataOut.writeInt(this.age);
+    dataOut.writeString(this.name);
+    return true;
+  }
+  unmarshalling(dataIn: rpc.MessageSequence): boolean {
+    this.age = dataIn.readInt();
+    this.name = dataIn.readString();
+    return true;
+  }
+}
 
 export default class EntryAbility extends UIAbility {
-  onForeground() {
+  async onForeground() {
     let caller: Caller;
-    // Start a UIAbility in the background by not passing parameters.
+    // Start the ability in the background.
     let wantBackground: Want = {
       bundleName: 'com.example.myapplication',
-      moduleName: 'entry',
       abilityName: 'EntryAbility',
-      deviceId: ''
     };
 
     try {
-      this.context.startAbilityByCall(wantBackground)
-        .then((obj: Caller) => {
-          // Carry out normal service processing.
-          caller = obj;
-          console.info('startAbilityByCall succeed');
-        }).catch((err: BusinessError) => {
-        // Process service logic errors.
-        console.error(`startAbilityByCall failed, code is ${err.code}, message is ${err.message}`);
-      });
+      caller = await this.context.startAbilityByCall(wantBackground);
+      await caller.call('TEST_CALL', new TestParcelable());
+      caller.release();
     } catch (err) {
       // Process input parameter errors.
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`startAbilityByCall failed, code is ${code}, message is ${message}`);
+      hilog.error(DOMAIN, LOG_TAG, `startAbilityByCall failed ${err}`);
     }
   }
 }
 ```
 
-Start a UIAbility in the foreground.
+The following code demonstrates that the callee registers a listener after being launched and unregisters the listener when destroyed.
 
 ```ts
-import { UIAbility, Caller, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { rpc } from '@kit.IPCKit';
+
+const DOMAIN = 0x0000;
+const LOG_TAG = 'TEST_TAG';
+
+class TestParcelable implements rpc.Parcelable {
+  age: number = 0;
+  name: string = '';
+  marshalling(dataOut: rpc.MessageSequence): boolean {
+    dataOut.writeInt(this.age);
+    dataOut.writeString(this.name);
+    return true;
+  }
+  unmarshalling(dataIn: rpc.MessageSequence): boolean {
+    this.age = dataIn.readInt();
+    this.name = dataIn.readString();
+    return true;
+  }
+}
 
 export default class EntryAbility extends UIAbility {
-  onForeground() {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN, LOG_TAG, '%{public}s', 'Ability onCreate');
+    // Register a listener.
+    this.callee.on('TEST_CALL', (data: rpc.MessageSequence) => {
+      let recv = new TestParcelable();
+      data.readParcelable(recv);
+      recv.age++;
+      return recv;
+    });
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN, LOG_TAG, '%{public}s', 'Ability onDestroy');
+    // Unregisters the listener.
+    this.callee.off('TEST_CALL');
+  }
+}
+```
+
+The following code demonstrates the scenario where the caller launches the callee to the foreground.
+
+```ts
+import { Caller, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const LOG_TAG = 'TEST_TAG';
+
+export default class EntryAbility extends UIAbility {
+  async onForeground() {
     let caller: Caller;
-    // Start an ability in the foreground with ohos.aafwk.param.callAbilityToForeground in parameters set to true.
+    // Launch the UIAbility to the foreground and set 'ohos.aafwk.param.callAbilityToForeground' in parameters to true.
     let wantForeground: Want = {
       bundleName: 'com.example.myapplication',
-      moduleName: 'entry',
       abilityName: 'EntryAbility',
-      deviceId: '',
       parameters: {
         'ohos.aafwk.param.callAbilityToForeground': true
       }
     };
 
     try {
-      this.context.startAbilityByCall(wantForeground)
-        .then((obj: Caller) => {
-          // Carry out normal service processing.
-          caller = obj;
-          console.info('startAbilityByCall succeed');
-        }).catch((err: BusinessError) => {
-        // Process service logic errors.
-        console.error(`startAbilityByCall failed, code is ${err.code}, message is ${err.message}`);
-      });
+      caller = await this.context.startAbilityByCall(wantForeground);
+      caller.release();
     } catch (err) {
       // Process input parameter errors.
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`startAbilityByCall failed, code is ${code}, message is ${message}`);
+      hilog.error(DOMAIN, LOG_TAG, `startAbilityByCall failed ${err}`);
     }
   }
 }

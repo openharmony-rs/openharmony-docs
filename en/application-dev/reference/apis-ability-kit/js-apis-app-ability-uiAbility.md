@@ -952,7 +952,7 @@ export default class MyAbility extends UIAbility {
 
 ## Caller
 
-A Caller UIAbility (which must be a system application) can use [startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to start a Callee UIAbility (which can be a third-party application). After the target UIAbility is started successfully, a Caller object is returned to the caller for communication.
+A Caller UIAbility can use the [startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall) API to start the target Callee UIAbility. After the target UIAbility is started successfully, a Caller object is returned to the caller for communication.
 
 ### call
 

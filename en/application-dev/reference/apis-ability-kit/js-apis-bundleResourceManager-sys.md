@@ -521,7 +521,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                             |
 | -------- | ------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api.|
+| 202 | Permission denied, non-system app called system api. |
 | 17700001 | The specified bundleName is not found. |
 | 17700061 | AppIndex not in valid range or not found. |
 
