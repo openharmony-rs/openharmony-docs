@@ -11152,16 +11152,16 @@ try {
 
 | 名称                          | 类型      | 只读 | 可选 | 说明               |
 |-----------------------------|---------|----|----|------------------|
-| sensorName                  | string  | 是  | 否  | 传感器名称。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
-| vendorName                  | string  | 是  | 否  | 传感器供应商。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23          |
-| firmwareVersion             | string  | 是  | 否  | 传感器固件版本。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
-| hardwareVersion             | string  | 是  | 否  | 传感器硬件版本。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
-| sensorId                    | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是  | 否  | 传感器类型id。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
-| maxRange                    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是  | 否  | 传感器测量范围的最大值。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23     |
-| minSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 是  | 否  | 允许的最小采样周期。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23       |
-| maxSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 是  | 否  | 允许的最大采样周期。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23       |
-| precision                   | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是  | 否  | 传感器精度。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23           |
-| power                       | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是  | 否  | 传感器功率的估计值，单位：mA。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| sensorName                  | string  | 是  | 否  | 传感器名称。|
+| vendorName                  | string  | 是  | 否  | 传感器供应商。         |
+| firmwareVersion             | string  | 是  | 否  | 传感器固件版本。  |
+| hardwareVersion             | string  | 是  | 否  | 传感器硬件版本。   |
+| sensorId                    | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是  | 否  | 传感器类型id。   |
+| maxRange                    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是  | 否  | 传感器测量范围的最大值。    |
+| minSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 是  | 否  | 允许的最小采样周期。  |
+| maxSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 是  | 否  | 允许的最大采样周期。     |
+| precision                   | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是  | 否  | 传感器精度。  |
+| power                       | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是  | 否  | 传感器功率的估计值，单位：mA。 |
 | sensorIndex<sup>19+</sup>   | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是  | 是  | 传感器索引。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23           |
 | deviceId<sup>19+</sup>      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是  | 是  | 设备ID。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
 | deviceName<sup>19+</sup>    | string  | 是  | 是  | 设备名称。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
