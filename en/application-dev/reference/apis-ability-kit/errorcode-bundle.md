@@ -491,7 +491,7 @@ An API is called to obtain the overlayModuleInfo object based on the target modu
 The specified module is configured with the overlay feature.
 
 **Solution**<br>
-Check whether the specified module is configured with the overlay feature.
+Check whether the module is configured with the overlay feature.
 <!--Del-->
 ## 17700035 Application Contains Only Modules with the Overlay Feature
 
@@ -706,8 +706,7 @@ Failed to install the HAP because an enterprise normal/MDM bundle cannot be inst
 The current device prohibits the installation of enterprise MDM applications or standard enterprise applications.
 
 **Possible Causes**<br>
-The current device does not allow the installation of applications with the following two distribution types in the [profile signing file](../../security/app-provision-structure.md): **enterprise_mdm** (enterprise MDM application) and **enterprise_normal** (standard enterprise application).
-For details about the distribution types, see [ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
+The current device does not allow the installation of applications with the following two distribution types in the [profile signing file](../../security/app-provision-structure.md): **enterprise_mdm** (enterprise MDM application) and **enterprise_normal** (standard enterprise application). For details about the distribution types, see [ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
 
 **Solution**<br>
 Change the distribution type in the profile signing file.
