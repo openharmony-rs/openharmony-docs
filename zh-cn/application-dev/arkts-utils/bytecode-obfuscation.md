@@ -230,6 +230,11 @@ let params = obj1['ohos.want.action.home'];
 
 <!-- @[optionExample_enableToplevelObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
 
+``` TypeScript
+// 混淆前：
+let count = 0;
+```
+
 若配置该选项，那么所有的顶层作用域的名称都会被混淆，除了下面场景：
 
 * 在未开启`-enable-export-obfuscation`选项的情况下,被`import/export`直接导入或导出的名称不会被混淆。
