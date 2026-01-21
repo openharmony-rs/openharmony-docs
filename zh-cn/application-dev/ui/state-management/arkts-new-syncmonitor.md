@@ -329,6 +329,41 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 - \@SyncMonitor可以监听深层属性的变化，该深层属性需要被@Trace装饰。
   
   <!-- @[monitor_two_layer_variables_in_observedv2_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorTwoLayerVariablesInObservedV2Class.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  @ObservedV2
+  class Inner {
+    @Trace public num: number = 0;
+  }
+  
+  @ObservedV2
+  class Outer {
+    public inner: Inner = new Inner();
+  
+    @SyncMonitor('inner.num')
+    onChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s',
+        `inner.num change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+    }
+  }
+  
+  @Entry
+  @ComponentV2
+  struct Index {
+    outer: Outer = new Outer();
+  
+    build() {
+      Column() {
+        Button('change num')
+          .onClick(() => {
+            this.outer.inner.num = 100; // 能够触发onChange方法
+          })
+      }
+    }
+  }
+  ```
 
 - 在继承类场景下，可以在继承链中对同一个属性进行多次监听，父子类中定义的\@SyncMonitor回调均会被调用。
 
