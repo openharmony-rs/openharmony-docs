@@ -263,7 +263,7 @@ export default class EntryAbility extends UIAbility {
 
 > **说明：**
 > 
-> - 在支持[自由多窗](window-terminology.md#自由多窗模式)的设备上，存在窗口容器，窗口容器包括窗口应用内容区域和装饰栏/标题栏区域。调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
+> - 在支持[自由多窗](window-terminology.md#自由多窗模式)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
 > 
 > - 在2in1和Tablet设备上可以调用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置容器透明，在其他设备上暂不支持设置容器背景色。
 
