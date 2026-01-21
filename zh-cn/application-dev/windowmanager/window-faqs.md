@@ -363,7 +363,7 @@ Orientation是显示设备当前显示的方向枚举，具体包括以下四种
 
 > **说明：**
 > 
-> 通过[setPreferredOrientation](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略为LANDSCAPE，此时通过以上步骤获取到的[Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)属性为反向横屏（即LANDSCAPE_INVERTED），这是因为窗口的方向与屏幕的方向定义不一致。开发者也可以通过[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)来获取转换结果。
+> 通过[setPreferredOrientation](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略为LANDSCAPE，此时通过以上步骤获取到的[Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)属性为反向横屏（即LANDSCAPE_INVERTED），这是因为窗口的方向与屏幕的方向定义不一致。
 
 示例代码如下所示：
 
