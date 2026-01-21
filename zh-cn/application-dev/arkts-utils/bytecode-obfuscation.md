@@ -45,27 +45,8 @@ ArkGuard支持基础的名称混淆功能，不支持控制混淆、数据混淆
 
 假设ArkGuard支持配置指定类型的白名单，配置类A1作为白名单，类A1的属性prop1在白名单中，而A2中的prop1属性不在白名单中。此时，a2作为参数被传入test函数中，调用prop1属性时会导致功能异常。
 
-```typescript
-// example.ts
-// 混淆前
-class A1 {
-    prop1: string = '';
-}
+<!-- @[example_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
 
-class A2 {
-    prop1: string = '';
-}
-
-function test(input: A1) {
-    console.info(input.prop1);
-}
-
-let a2 = new A2();
-a2.prop1 = 'prop a2';
-test(a2);
-```
-
-<!-- @[example_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
 
 ```typescript
 // 混淆后
@@ -215,16 +196,14 @@ TestA.i;
 ```
 
 根据上述配置，下面例子中的"firstName"和"personAge"混淆效果如下：
-```ts
-// 混淆前：
-let person = {"firstName": "abc"};
-person["personAge"] = 22;
-```
-<!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
+
+<!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
+
 
 ``` TypeScript
-let person = {"firstName": "abc"};
-person["personAge"] = 22;
+// 混淆后：
+let person = {"a": "abc"};
+person["b"] = 22;
 ```
 
 **使用该选项时，需要注意以下事项：**
@@ -248,11 +227,9 @@ let params = obj1['ohos.want.action.home'];
 ### -enable-toplevel-obfuscation
 
 开启顶层作用域名称混淆，效果如下：
-```ts
-// 混淆前：
-let count = 0;
-```
-<!-- @[optionExample_enableToplevelObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
+
+<!-- @[optionExample_enableToplevelObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
+
 
 ```ts
 // 混淆后：
@@ -269,13 +246,9 @@ let s = 0;
 ### -enable-export-obfuscation
 
 开启直接导入或导出的名称混淆，效果如下：
-```ts
-// 混淆前：
-namespace ns {
-    export type customT = string;
-}
-```
-<!-- @[optionExample_enableExportObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
+
+<!-- @[optionExample_enableExportObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
+
 
 ```ts
 // 混淆后：
@@ -295,14 +268,9 @@ namespace ns {
 ### -enable-filename-obfuscation
 
 开启文件/文件夹名称混淆，效果如下：
-```ts
-// 混淆前：
-import * as m from '../test1/test2';
-import { foo } from '../test1/test2';
-const module = import('../test1/test2');
-```
 
-<!-- @[optionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
+<!-- @[optionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
+
 
 ```ts
 // 混淆后：
@@ -330,14 +298,9 @@ const module = import('../a/b');
 删除不必要的空格符和所有的换行符。
 
 若配置该选项，所有代码会被压缩到一行。效果如下：
-```ts
-// 混淆前：
-class TestA {
-    static prop1: number = 0;
-}
-TestA.prop1;
-```
-<!-- @[optionExample_compact](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
+
+<!-- @[optionExample_compact](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
+
 
 ```ts
 // 混淆后：
@@ -351,13 +314,9 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 ### -remove-log
 
 删除对console.*语句的调用，要求console.*语句返回值未被调用，效果如下：
-```ts
-// 混淆前：
-if (flag) {
-    console.info("hello");
-}
-```
-<!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
+
+<!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
+
 
 ```ts
 // 混淆后：
