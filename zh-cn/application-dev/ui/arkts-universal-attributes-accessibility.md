@@ -8,13 +8,37 @@
 
 ## 概述
 
+无障碍服务是一套以“全场景无障碍访问”为核心目标的解决方案。其中屏幕朗读功能可通过语音反馈将应用界面元素与内容转化为语音输出，助力视障或弱视用户无需视觉即可顺畅访问应用信息、导航界面等；
 ArkUI提供了丰富的无障碍能力，使开发者能够创建可访问的应用界面，满足视觉、听觉、运动和认知障碍等用户的需求。
+组件的[无障碍属性](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md)变化时，会触发辅助工具（如屏幕朗读）重新读取组件信息、无障碍服务重新扫描组件树、状态播报、虚拟节点动态更新等响应，这些机制确保辅助工具能及时感知并适配变化，为障碍用户提供连贯的体验。
 
-组件的[无障碍属性](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md)变化时，会触发辅助工具重新读取组件信息、无障碍服务重新扫描组件树、状态播报、虚拟节点动态更新等响应，这些机制确保辅助工具（如屏幕朗读）能及时感知并适配变化，为障碍用户提供连贯的体验。
+## 适用范围
+  * 覆盖所有用户交互场景（如按钮点击、文本浏览、图表交互、动态内容更新）；
+  * 基于ArkUI框架开发的鸿蒙应用（含手机、平板、2in1等多设备形态）。
+
+## 无障碍与辅助工具（如屏幕朗读）
+
+辅助工具是鸿蒙系统的核心辅助技术，让视觉障碍用户无需查看屏幕即可操作设备。当辅助工具启用时，它依赖开发者设置的无障碍属性，通过音频播报组件详情————包括组件类型、文本内容、操作结果及当前状态。
+
+一个辅助应用具备无障碍能力的前提：所有可交互UI组件均能正确设置无障碍信息。组件要实现无障碍需满足三点：
+
+  1. 可被无障碍服务识别（可自定义[accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)控制）；
+  2. 提供准确地描述信息（通过[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)、[accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription)等属性实现）；
+  3. 正确传递状态与行为（通过[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)、[accessibilityRole](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityrole18)等属性实现）；
+
+ArkUI的无障碍机制确保：当组件属性发生变化时，辅助工具会及时重新读取信息、扫描组件树、播报状态更新并动态刷新虚拟节点，为用户维持连贯性体验。
+
+## 为什么要适配辅助工具？
+
+  1. 拓宽用户覆盖边界：适配辅助工具的应用，能精准触达数百万依赖辅助技术的视障、弱视等障碍用户，打破数字适用壁垒，让产品受众覆盖更全面；
+  2. 契合合规与设计规范：适配辅助工具是遵循全球无障碍设计标准的核心举措，既符合各国数字包容相关法规要求，也契合现代产品“人人可用”的设计理念；
+  3. 践行社会责任与品牌价值：适配辅助工具本质是促进数字公平的具体行动，彰显品牌尊重所有用户、助力无障碍环境建设的责任担当，提升品牌好感度；
+  4. 优化全用户群体体验：适配过程中的核心优化（如清晰地元素描述、合理地焦点顺序、达标对比度），不仅服务占该用户，让普通用户在复杂场景（如强光环境、单手操作）下获得更流畅的使用体验；
+  5. 低侵入性适配不影响核心体验：适配辅助工具无需改动应用核心逻辑或UI设计，ArkUI的无障碍属性仅添加轻量级功能，在实现无障碍支持的同时，完全保留产品的创新两点与视觉风格。
 
 ## 设置无障碍分组
 
-accessibilityGroup属性，用于设置是否启用无障碍分组。若启用，则该组件及其所有子组件将作为一个整体处理，无障碍服务不再单独处理各子组件。accessibilityGroup属性支持以下值：
+[accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup)属性，用于设置是否启用无障碍分组。若启用，则该组件及其所有子组件将作为一个整体处理，无障碍服务不再单独处理各子组件。accessibilityGroup属性支持以下值：
 
 - false（默认）：不启用无障碍分组。
 
@@ -33,7 +57,7 @@ Column() {
 
 ## 设置无障碍重要性
 
-accessibilityLevel属性表示组件的无障碍重要性，用于控制组件是否能被无障碍服务识别，支持以下值：
+[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)属性表示组件的无障碍重要性，用于控制组件是否能被无障碍服务识别，支持以下值：
 
 - "auto"（默认）：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。
 
@@ -57,9 +81,10 @@ Column() {
 
 ## 设置无障碍文本
 
-accessibilityText属性用于为无文本内容的组件提供朗读文本。若组件已有文本，则优先播报无障碍文本。
+[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)属性用于为无文本内容的组件提供朗读文本。若组件已有文本，则优先播报无障碍文本。
 
-支持字符串或资源引用。
+- 支持字符串或资源引用。
+- 默认值：“”。
 
 这里以Column组件为例，设置其无障碍文本为“分组”：
 
@@ -77,7 +102,10 @@ Column() {
 
 ## 设置无障碍说明
 
-accessibilityDescription属性用于提供更详细的组件说明，播报时紧随文本内容之后。
+accessibilityDescription属性用于提供更详细的组件说明，帮助用户理解将要执行的操作及结果。例如组件状态当前不可使用的原因，系统默认的新手提醒不能表达的含义等场景。该信息在文本内容播报之后播报，并且如果当前控件有默认的新手提醒（如支持点击的组件，默认新手提醒为：单指双击即可执行）时，accessibilityDescription会替代系统的新手提醒，即仅播报accessibilityDescription。
+
+- 支持字符串或资源引用。
+- 默认值：“”。
 
 这里以Column组件为例，设置其无障碍说明为“分组”：
 
