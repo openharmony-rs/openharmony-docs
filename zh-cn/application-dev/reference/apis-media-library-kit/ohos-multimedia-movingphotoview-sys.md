@@ -57,6 +57,8 @@
 | STANDARD            | 2      | 允许图像内容动态单位限制在标准范围内，显示SDR效果，需要使用的解码格式UNKNOWN或者RGBA_8888。|
 
 ## MovingPhotoViewAttribute
+
+定义动态照片的属性函数。
   
 ### setPlaybackStrategy<sup>23+</sup>
 
@@ -86,7 +88,7 @@ setPlaybackStrategy(strategy: media.PlaybackStrategy): MovingPhotoViewAttribute
 
 **示例：**
 
-系统应用设置动态照片解码格式、HDR效果格式和边播边处理策略。
+系统应用可以同时设置动态照片解码格式、HDR效果格式和边播边处理策略。
 
 ```ts
 // 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档
