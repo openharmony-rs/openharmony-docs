@@ -1,0 +1,25 @@
+<!--Table: 20%；20%；20%；40%-->
+| 名称 | 描述 |
+| -- | -- |
+| int32_t posX | 窗口的x轴，单位为px，该参数为整数。 |
+| int32_t posY | 窗口的y轴，单位为px，该参数为整数。 |
+| uint32_t width | 窗口的宽度，单位为px，该参数为整数。 |
+| uint32_t height | 窗口的高度，单位为px，该参数为整数。 |
+
+
+<!--Table: auto; auto; auto; 40% -->
+| 名称 | 描述 |
+| -- | -- |
+| int32_t posX | 窗口的x轴，单位为px，该参数为整数。 |
+| int32_t posY | 窗口的y轴，单位为px，该参数为整数。 |
+| uint32_t width | 窗口的宽度，单位为px，该参数为整数。 |
+| uint32_t height | 窗口的高度，单位为px，该参数为整数。 |
+
+
+<!--Table: 20%; auto; 10%; auto -->
+| 名称 | 描述 |
+| -- | -- |
+| int32_t posX | 窗口的x轴，单位为px，该参数为整数。 |
+| int32_t posY | 窗口的y轴，单位为px，该参数为整数。 |
+| uint32_t width | 窗口的宽度，单位为px，该参数为整数。 |
+| uint32_t height | 窗口的高度，单位为px，该参数为整数。 |
