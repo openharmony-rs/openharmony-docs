@@ -2473,6 +2473,10 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 
 删除值后执行后续操作，这些操作由开发者自行实现。本接口会在删除操作时被调用，如[get<sup>9+</sup>](#get9)、[put<sup>9+</sup>](#put9)、[remove<sup>9+</sup>](#remove9)、[clear<sup>9+</sup>](#clear9)、[updateCapacity<sup>9+</sup>](#updatecapacity9)接口。
 
+> **说明：**
+>
+> 若此回调方法在[clear<sup>9+</sup>](#clear9)、[updateCapacity<sup>9+</sup>](#updatecapacity9)接口调用之后触发执行，传入的key和value参数类型为MapIterator，可参照示例二进行后续操作。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -2494,7 +2498,7 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
-**示例：**
+**示例一：**
 
 ```ts
 class ChildLRUCache<K, V> extends util.LRUCache<K, V> {
@@ -2517,6 +2521,61 @@ let lru = new ChildLRUCache<number, number>(2);
 lru.put(1, 1);
 lru.put(2, 2);
 lru.put(3, 3);
+```
+
+**示例二：**
+
+```ts
+class TestClass {
+  str:string = '';
+  constructor(input: string) {
+    this.str = input;
+  }
+}
+
+class ChildLRUCache extends util.LRUCache<string, TestClass> {
+  constructor(capacity?: number) {
+    super(capacity);
+  }
+
+  afterRemoval(isEvict: boolean, key: string, value: TestClass, newValue: TestClass): void {
+    if(value.toString().indexOf('[object Map Iterator]') >= 0) {
+      console.info('调用clear进入');
+      console.info('isEvict = ' + isEvict);
+      const keysIterator = (key as ESObject as IterableIterator<string>);
+      const valuesIterator = (value as ESObject as IterableIterator<TestClass>);
+
+      let keyEntry = keysIterator.next();
+      let valueEntry = valuesIterator.next();
+      while (!keyEntry.done && !valueEntry.done) {
+        console.info(`key = ${keyEntry.value}, valueStr = ${valueEntry.value.str}`);
+        keyEntry = keysIterator.next();
+        valueEntry = valuesIterator.next();
+      }
+    } else {
+      console.info('调用put进入');
+      console.info('isEvict = ' + isEvict);
+      console.info('key = ' + key + '  valueStr = ' + value.str);
+    }
+  }
+}
+let test1 = new TestClass('testA');
+let test2 = new TestClass('testB');
+let test3 = new TestClass('testC');
+let lru = new ChildLRUCache(2);
+lru.put('aa', test1);
+lru.put('bb', test2);
+lru.put('cc', test3);    // 删除'aa'键值对
+lru.clear();             // 清空整个缓冲区
+/*
+输出结果：调用put进入
+         isEvict = true
+         key = aa  valueStr = testA
+         调用clear进入
+         isEvict = false
+         key = bb, valueStr = testB
+         key = cc, valueStr = testC
+*/
 ```
 
 ### contains<sup>9+</sup>

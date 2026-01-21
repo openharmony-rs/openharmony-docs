@@ -293,7 +293,7 @@ Obtains the user ID of a WantAgent object. This API uses an asynchronous callbac
 
 | Name    | Type                   | Mandatory| Description                               |
 | -------- | ----------------------- | ---- | ----------------------------------- |
-| agent    | WantAgent               | Yes  | **WantAgent** object.                      |
+| agent    | WantAgent               | Yes  | WantAgent object.                      |
 | callback | AsyncCallback\<number\> | Yes  | Callback used to return the user ID.|
 
 **Example**

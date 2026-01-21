@@ -225,7 +225,7 @@ formObserver.on('formRemove', bundleName, callback);
 
 ## off('formRemove')
 
-off(type: "formRemove", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
 取消订阅卡片删除事件。使用callback异步回调，返回当前删除卡片的信息。
 
@@ -359,7 +359,7 @@ formObserver.on('notifyVisible', bundleName, callback);
 
 ## off('notifyVisible')
 
- off(type: "notifyVisible", hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
+ off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
 取消订阅通知卡片可见的事件。使用callback异步回调。
 
@@ -496,7 +496,7 @@ formObserver.on('notifyInvisible', bundleName, callback);
 
 ## off('notifyInvisible')
 
- off(type: "notifyInvisible", hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo>&gt;): void
+ off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo>&gt;): void
 
 取消订阅通知卡片不可见事件。使用callback异步回调。
 
@@ -1163,7 +1163,7 @@ formObserver.on('router', hostBundleName, callback);
 
 ## off('router')<sup>11+</sup>
 
- off(type: "router", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+ off(type: 'router', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
 取消订阅卡片router事件。使用callback异步回调，返回触发router事件的卡片信息。
 
@@ -1278,7 +1278,7 @@ formObserver.on('message', hostBundleName, callback);
 
 ## off('message')<sup>11+</sup>
 
- off(type: "message", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+ off(type: 'router', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
 取消订阅卡片message事件。使用callback异步回调，返回触发message事件的卡片的信息。
 
@@ -1393,7 +1393,7 @@ formObserver.on('call', hostBundleName, callback);
 
 ## off('call')<sup>11+</sup>
 
- off(type: "call", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
+ off(type: 'router', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
 取消订阅卡片call事件。使用callback异步回调，返回触发call事件的卡片信息。
 

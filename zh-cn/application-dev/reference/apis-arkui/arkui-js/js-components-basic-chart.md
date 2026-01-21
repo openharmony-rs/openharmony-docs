@@ -30,7 +30,7 @@
 | type                           | string                                   | line | 否    | 设置图表类型（不支持动态修改），可选项有：<br/>-&nbsp;bar：柱状图。<br/>-&nbsp;line：线形图。<br/>-&nbsp;gauge：量规图。<br/>-&nbsp;progress<sup>5+</sup>：进度类圆形图表。<br/>-&nbsp;loading<sup>5+</sup>：加载类圆形图表。<br/>-&nbsp;rainbow<sup>5+</sup>：占比类圆形图表。 |
 | options                        | ChartOptions                             | -    | 否    | 图表参数设置，柱状图和线形图必须设置参数，量规图不生效。可以设置x轴、y轴的最小值、最大值、刻度数、是否显示，线条宽度、是否平滑等。（不支持动态修改） |
 | datasets                       | Array&lt;ChartDataset&gt;                | -    | 否    | 数据集合，柱状图和线形图必须设置数据集合，量规图不生效。可以设置多条数据集及其背景色。 |
-| segments<sup>5+</sup>          | DataSegment&nbsp;\|&nbsp;Array&lt;DataSegment&gt; | -    | 否    | 进度类、加载类和占比类圆形图表使用的数据结构。<br/>DataSegment针对进度类和加载类圆形图表使用，<br/>Array&lt;DataSegment&gt;针对占比类图标使用，DataSegment最多9个。 |
+| segments<sup>5+</sup>          | DataSegment&nbsp;\|&nbsp;Array&lt;DataSegment&gt; | -    | 否    | 进度类、加载类和占比类圆形图表使用的数据结构。<br/>DataSegment针对进度类和加载类圆形图表使用，<br/>Array&lt;DataSegment&gt;针对占比类图表使用，DataSegment最多9个。 |
 | effects<sup>5+</sup>           | boolean                                  | true | 否    | 是否开启占比类、进度类圆形图表特效。<br/>默认值：true，表示开启占比类、进度类圆形图表特效。                       |
 | animationduration<sup>6+</sup> | number                                   | 3000 | 否    | 设置占比类圆形图表展开动画时长，单位为ms。                   |
 
@@ -104,7 +104,7 @@
 | description  | string        | -        | 否    | 表示当前点的注释内容。                              |
 | textLocation | string        | -        | 否    | 可选值为top，bottom，none。分别表示注释的绘制位置位于点的上方，下方，以及不绘制。 |
 | textColor    | &lt;color&gt; | \#000000 | 否    | 表示注释文字的颜色。                               |
-| lineDash     | string        | solid    | 否    | 表示绘制当前线段虚线的样式。“dashed，&nbsp;5，&nbsp;5”表示纯虚线，绘制5px的实线后留5px的空白。“solid”表示绘制实线。 |
+| lineDash     | string        | solid    | 否    | 表示绘制当前线段虚线的样式。“dashed,&nbsp;5,&nbsp;5”表示纯虚线，绘制5px的实线后留5px的空白。“solid”表示绘制实线。 |
 | lineColor    | &lt;color&gt; | \#000000 | 否    | 表示绘制当前线段的颜色。此颜色不设置会默认使用整体的strokeColor。   |
 
 **表9** DataSegment<sup>5+</sup>
