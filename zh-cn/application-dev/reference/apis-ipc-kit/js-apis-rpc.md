@@ -9696,7 +9696,8 @@ static setCallingIdentity(identity: string): boolean
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   class Stub extends rpc.RemoteObject {
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       let callingIdentity = rpc.IPCSkeleton.resetCallingIdentity();
       hilog.info(0x0000, 'testTag', 'RpcServer: callingIdentity is ' + callingIdentity);
       let ret = rpc.IPCSkeleton.setCallingIdentity(callingIdentity);
@@ -9851,7 +9852,7 @@ ArkTS-Dyn示例：
     constructor(descriptor: string) {
       super(descriptor);
     }
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
       option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
@@ -9893,7 +9894,7 @@ ArkTS-Sta示例：
     constructor(descriptor: string) {
       super(descriptor);
     }
-  onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
       option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
@@ -10282,7 +10283,8 @@ ArkTS-Dyn示例：
       super(descriptor);
     }
 
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
         return true;
@@ -10303,7 +10305,8 @@ ArkTS-Sta示例：
       super(descriptor);
     }
 
-    onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
         return true;
@@ -10326,7 +10329,8 @@ ArkTS-Dyn示例：
       super(descriptor);
     }
 
-    async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): Promise<boolean> {
+    async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
       } else {
@@ -10350,7 +10354,8 @@ ArkTS-Sta示例：
       super(descriptor);
     }
 
-    async onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): Promise<boolean> {
+    async onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
       } else {
@@ -10377,16 +10382,17 @@ ArkTS-Dyn示例：
     }
 
     onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-       if (code === 1) {
-          hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-          return true;
-       } else {
-          hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-          return false;
-       }
+      if (code === 1) {
+        hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+        return true;
+      } else {
+        hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+        return false;
+      }
     }
-      // 同时调用仅会执行onRemoteMessageRequest
-    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    // 同时调用仅会执行onRemoteMessageRequest
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
       } else {
@@ -10407,17 +10413,19 @@ ArkTS-Sta示例：
       super(descriptor);
     }
 
-    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-       if (code === 1) {
-          hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-          return true;
-       } else {
-          hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-          return false;
-       }
+    onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel,
+      option: rpc.MessageOption): boolean {
+      if (code === 1) {
+        hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
+        return true;
+      } else {
+       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
+        return false;
+      }
     }
-      // 同时调用仅会执行onRemoteMessageRequest
-    onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption): boolean | Promise<boolean> {
+    // 同时调用仅会执行onRemoteMessageRequest
+    onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+      option: rpc.MessageOption): boolean | Promise<boolean> {
       if (code === 1) {
         hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
       } else {
@@ -10538,7 +10546,7 @@ ArkTS-Sta示例：
     constructor(descriptor: string) {
       super(descriptor);
     }
-  onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
       option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
@@ -10576,7 +10584,7 @@ ArkTS-Dyn示例：
     constructor(descriptor: string) {
       super(descriptor);
     }
-  onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
       option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
@@ -10599,7 +10607,7 @@ ArkTS-Sta示例：
     constructor(descriptor: string) {
       super(descriptor);
     }
-  onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
+    onRemoteMessageRequest(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence,
       option: rpc.MessageOption): boolean | Promise<boolean> {
       // 根据业务实际逻辑，进行相应处理
       return true;
