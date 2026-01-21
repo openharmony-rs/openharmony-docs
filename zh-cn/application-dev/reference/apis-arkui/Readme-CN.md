@@ -193,6 +193,7 @@
       - [拖拽控制](arkui-ts/ts-universal-attributes-drag-drop.md)
       - [拖拽排序](arkui-ts/ts-universal-attributes-drag-sorting.md)
       - [悬浮态效果](arkui-ts/ts-universal-attributes-hover-effect.md)
+      - [点击音效](arkui-ts/ts-universal-attributes-click-sound.md)
       - 触摸交互控制<!--touch-interactions-->
         - [触摸热区设置](arkui-ts/ts-universal-attributes-touch-target.md)
         - [触摸测试控制](arkui-ts/ts-universal-attributes-hit-test-behavior.md)
