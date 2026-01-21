@@ -721,6 +721,49 @@ struct DocSampleArrayMultiPath {
 
 <!-- @[wildcard_monitor_object_property_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/WildcardMonitorObjectPropertyChange.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+@ObservedV2
+class ClassA {
+  @Trace public propA : number = 8;
+  @Trace public propB : number = 99;
+
+  constructor(a : number, b: number) {
+    this.propA = a;
+    this.propB = b;
+  }
+}
+
+@Entry
+@ComponentV2 struct DocSampleClass {
+  @Local cls : ClassA = new ClassA(100, 100);
+
+  @SyncMonitor('cls.*')
+  onClsChanged(m :IMonitor) {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `### onClsChanged, dirty: ${m.dirty.toString()}`);
+  }
+
+  build() {
+    Column() {
+      Divider()
+      Button(`#1 Change propA ${this.cls.propA}: +=1;`)
+        .onClick(() => {
+          this.cls.propA += 1;
+        })
+      Button(`#2 Change propB ${this.cls.propB}: +=1`)
+        .onClick(() => {
+          this.cls.propB += 1;
+        })
+      Button(`#3 Assign class object`)
+        .onClick(() => {
+          this.cls = new ClassA(-200, -200);
+        })
+    }
+    .border({ style: BorderStyle.Solid, width: 2, color: Color.Green })
+  }
+}
+```
+
 点击按钮#1或#2（更新被监听对象`cls`的属性）时，`m.dirty`的值将相同，包含`m.dirty==['cls.*']`。框架无法准确告知是哪个属性触发了监听函数的执行。
 
 对于按钮#3（给`cls`属性赋予新对象），框架会将`cls`传递给脏属性数组，即`m.dirty==['cls.*']`。
