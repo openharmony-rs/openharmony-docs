@@ -110,7 +110,7 @@ export struct CreateRichEditor {
               this.controllerNoStyledString.addTextSpan(
                 /**
                  * 请将$r('app.string.CreateRichEditor_Text_2')替换为实际资源文件，
-                 * 在本示例中该资源文件的value值为"需创建不使用属性字符串构建的RichEditor组件。"
+                 * 在本示例中该资源文件的value值为"创建不使用属性字符串构建的RichEditor组件。"
                  */
                 $r('app.string.CreateRichEditor_Text_2'), {
                 style: {
