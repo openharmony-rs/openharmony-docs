@@ -301,6 +301,15 @@ const module = import('../test1/test2');
 
 <!-- @[optionExample_compact](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
 
+``` TypeScript
+// test.ts
+// 混淆前：
+class TestA {
+  static prop1: number = 0;
+}
+TestA.prop1;
+```
+
 
 > **注意**：
 >
