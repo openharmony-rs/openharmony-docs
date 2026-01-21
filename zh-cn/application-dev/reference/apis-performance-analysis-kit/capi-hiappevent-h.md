@@ -75,7 +75,7 @@ HiAppEvent模块的应用事件打点函数定义。在执行应用事件打点�
 | [int OH_HiAppEvent_SetWatcherOnTrigger(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnTrigger onTrigger)](#oh_hiappevent_setwatcherontrigger) | - | 用于设置监听器onTrigger回调的接口。<br> 如果未设置OnReceive回调或已将其设置为nullptr，则将保存观察者接收到的应用事件。当保存的应用事件满足onTrigger回调的触发条件时，将调用onTrigger回调。 |
 | [int OH_HiAppEvent_SetWatcherOnReceive(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnReceive onReceive)](#oh_hiappevent_setwatcheronreceive) | - | 用于设置监听器onReceive回调函数的接口。当监听器监听到相应事件后，onReceive回调函数将被调用。 |
 | [int OH_HiAppEvent_TakeWatcherData(HiAppEvent_Watcher* watcher, uint32_t eventNum, OH_HiAppEvent_OnTake onTake)](#oh_hiappevent_takewatcherdata) | - | 用于获取监听器收到后保存的事件。 |
-| [int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)](#oh_hiappevent_addwatcher) | - | 添加监听器的接口，监听器开始监听系统消息。 |
+| [int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)](#oh_hiappevent_addwatcher) | - | 添加监听器的接口，监听器开始监听系统消息。<br>**注意**：OH_HiAppEvent_AddWatcher接口涉及I/O操作。在对性能敏感的业务场景中，开发者应根据实际需要确定该接口是在主线程还是在子线程中调用。<br>如果选择在子线程中调用OH_HiAppEvent_AddWatcher，需要确保该子线程在整个接口使用周期内不会被销毁，以免影响接口的正常工作。<br>订阅接口OH_HiAppEvent_AddWatcher传入的名称name是唯一的，相同的name，后一次调用会覆盖前一次的订阅。 |
 | [int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher* watcher)](#oh_hiappevent_removewatcher) | - | 移除监听器的接口，监听器停止监听系统消息。注意：该接口仅仅使监听器停止监听系统消息，并未销毁该监听器，该监听器依然常驻内存，直至调用OH_HiAppEvent_DestroyWatcher接口，内存才会释放。 |
 | [void OH_HiAppEvent_ClearData()](#oh_hiappevent_cleardata) | - | 清除所有监视器保存的所有事件。 |
 | [HiAppEvent_Processor* OH_HiAppEvent_CreateProcessor(const char* name)](#oh_hiappevent_createprocessor) | - | 创建一个用于处理app事件上报的处理者。<br>**注意**：创建的处理者不再使用后，必须通过[OH_HiAppEvent_DestroyProcessor](#oh_hiappevent_destroyprocessor)接口进行销毁。 |
@@ -902,6 +902,14 @@ int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)
 **描述**
 
 添加监听器的接口，监听器开始监听系统消息。
+
+> **注意：**
+>
+> OH_HiAppEvent_AddWatcher接口涉及I/O操作。在对性能敏感的业务场景中，开发者应根据实际需要确定该接口是在主线程还是在子线程中调用。
+>
+> 如果选择在子线程中调用OH_HiAppEvent_AddWatcher，需要确保该子线程在整个接口使用周期内不会被销毁，以免影响接口的正常工作。
+>
+> 订阅接口OH_HiAppEvent_AddWatcher传入的名称name是唯一的，相同的name，后一次调用会覆盖前一次的订阅。
 
 **起始版本：** 12
 

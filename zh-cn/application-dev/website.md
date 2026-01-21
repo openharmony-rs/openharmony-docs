@@ -4543,6 +4543,7 @@
             - [@ohos.wallpaper (壁纸)(系统接口)](reference/apis-basic-services-kit/js-apis-wallpaper-sys.md)
             - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)](reference/apis-basic-services-kit/js-apis-WallpaperExtensionAbility-sys.md)
             - [@ohos.systemTimer (系统定时器)(系统接口)](reference/apis-basic-services-kit/js-apis-system-timer-sys.md)
+            - [@ohos.intelligentScene (情景模式)](reference/apis-basic-services-kit/js-apis-intelligentScene.md)
             <!--DelEnd-->
           - 已停止维护的接口<!--basic-services-arkts-dep-->
             - [系统公共事件定义](reference/apis-basic-services-kit/common_event/commonEvent-definitions.md)
@@ -4630,6 +4631,7 @@
           - [设置数据项错误码](reference/apis-basic-services-kit/errorcode-settings.md)
           <!--Del-->
           - [划词服务错误码](reference/apis-basic-services-kit/errorcode-selection.md)
+          - [情景模式错误码](reference/apis-basic-services-kit/errorcode-intelligentScene.md)
           <!--DelEnd-->
       - Function Flow Runtime Kit（任务并发调度服务）<!--function-flow-runtime-api-->
         - C API<!--function-flow-runtime-c-->
@@ -5155,6 +5157,7 @@
           - [Interface (CameraInput)](reference/apis-camera-kit/arkts-apis-camera-CameraInput.md)
           - [Interface (CameraManager)](reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)
           - [Interface (CameraOutput)](reference/apis-camera-kit/arkts-apis-camera-CameraOutput.md)
+          - [Interface (CapturePhoto)](reference/apis-camera-kit/arkts-apis-camera-CapturePhoto.md)
           - [Interface (ColorManagement)](reference/apis-camera-kit/arkts-apis-camera-ColorManagement.md)
           - [Interface (ColorManagementQuery)](reference/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md)
           - [Interface (ControlCenter)](reference/apis-camera-kit/arkts-apis-camera-ControlCenter.md)
@@ -5167,7 +5170,6 @@
           - [Interface (MacroQuery)](reference/apis-camera-kit/arkts-apis-camera-MacroQuery.md)
           - [Interface (MetadataOutput)](reference/apis-camera-kit/arkts-apis-camera-MetadataOutput.md)
           - [Interface (Photo)](reference/apis-camera-kit/arkts-apis-camera-Photo.md)
-          - [Interface (CapturePhoto)](reference/apis-camera-kit/arkts-apis-camera-CapturePhoto.md)
           - [Interface (PhotoOutput)](reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md)
           - [Interface (PhotoSession)](reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md)
           - [Interface (PreviewOutput)](reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md)
