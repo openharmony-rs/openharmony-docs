@@ -47,6 +47,26 @@ ArkGuard支持基础的名称混淆功能，不支持控制混淆、数据混淆
 
 <!-- @[example_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
 
+``` TypeScript
+// example.ts
+// 混淆前：
+class A1 {
+  prop1: string = '';
+}
+
+class A2 {
+  prop1: string = '';
+}
+
+function test(input: A1) {
+  console.info(input.prop1);
+}
+
+let a2 = new A2();
+a2.prop1 = 'prop a2';
+test(a2);
+```
+
 
 综上所述，开发者应了解这种语言差异带来的混淆效果差异，并尽量使用不重复的名称，以使在各种场景下的混淆效果更好。
 
