@@ -44,26 +44,8 @@ ArkGuard支持名称混淆、代码压缩和注释删除的基础混淆功能，
 假设ArkGuard支持配置指定类型的白名单。配置类A1作为白名单，A1的属性prop1在白名单中，而A2的prop1属性不在白名单中。a2作为参数传入test函数，并在test函数内访问其属性。混淆前，可以正常访问prop1属性；混淆后，A1的属性prop1未被混淆，但A2的prop1属性被混淆，导致test函数中访问prop1属性时功能异常
 因此，ArkGuard不支持针对特定类型的精确保留配置。
 
-```typescript
-// 混淆前
-// example.ts
-class A1 {
-  prop1: string = '';
-}
+<!-- @[example_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->  
 
-class A2 {
-  prop1: string = '';
-}
-
-function test(input: A1) {
-  console.info(input.prop1);
-}
-
-let a2 = new A2();
-a2.prop1 = 'prop a2';
-test(a2);
-```
-<!-- @[example_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
 
 ```typescript
 // 混淆后
@@ -150,21 +132,15 @@ test(a2);
 
 配置该选项后，开启属性名称混淆，效果如下：
 
-  ```
-  // 混淆前：
-  class TestA {
-    static prop1: number = 0;
-  }
-  TestA.prop1;
-  ```
-  <!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
-  
+  <!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->  
+
+
   ``` TypeScript
-  // 混淆前：
+  // 混淆后：
   class TestA {
-    static prop1: number = 0;
+    static i: number = 0;
   }
-  TestA.prop1;
+  TestA.i;
   ```
 
 配置该选项后，所有属性名将被混淆，以下场景除外：
@@ -222,13 +198,9 @@ test(a2);
   ```
 
 根据上述配置，`exampleName`和`exampleAge`的混淆效果如下：
-  ```ts
-  // 混淆前：
-  // example.ts
-  let person = {"exampleName": "abc"};
-  person["exampleAge"] = 22;
-  ```
-  <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+
+  <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+
 
   ```ts
   // 混淆后：
@@ -236,6 +208,7 @@ test(a2);
   let person = {"a": "abc"};
   person["b"] = 22;
   ```
+
 **使用该选项时，需要注意以下事项：**
 
 1. 如果代码里面有字符串属性名包含特殊字符（除了`a-z、A-Z、0-9、_`之外的字符），例如`let obj = {"\n": 123, "": 4, " ": 5}`，建议不要开启`-enable-string-property-obfuscation`选项，因为可能无法通过[-keep-property-name](#-keep-property-name)来保留这些名称。
@@ -266,12 +239,9 @@ test(a2);
 > 开启该选项后，在需要[手动配置白名单的场景中](#-keep-global-name)，请将对应的顶层作用域名称配置到白名单中。
 
 开启顶层作用域名称混淆，效果如下：
-  ```ts
-  // 混淆前：
-  let count = 0;
-  ```
 
-  <!-- @[optionExample_enableToplevelObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @[optionExample_enableToplevelObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+
 
   ```ts
   // 混淆后：
@@ -288,14 +258,9 @@ test(a2);
 ### -enable-export-obfuscation
 
 开启直接导入或导出的名称混淆，效果如下：
-  ```
-  // 混淆前：
-  namespace ns {
-    export type customT = string;
-  }
-  ```
 
-  <!-- @[optionExample_enableExportObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @[optionExample_enableExportObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+
 
   ```
   // 混淆后：
@@ -325,7 +290,9 @@ test(a2);
   export function foo () {}
   ```
 
-  <!-- @[optionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @[optionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+
+
 
   ```ts
   // example.ts
@@ -359,15 +326,9 @@ test(a2);
 删除在代码中不参与语法结构、不影响程序运行的空格符和所有的换行符。
 
 配置该选项后，所有代码会被压缩到一行。效果如下：
-  ```
-  // 混淆前：
-  class TestA {
-    static prop1: number = 0;
-  }
-  TestA.prop1;
-  ```
 
-  <!-- @[optionExample_compact](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  <!-- @[optionExample_compact](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+
 
   ```
   // 混淆后：
@@ -403,14 +364,9 @@ test(a2);
 ### -remove-log
 
 删除对console.*语句的调用，要求console.*语句的返回值未被使用。效果如下：
-  ```ts
-  // 混淆前：
-  function add(a: number, b: number) {
-    console.info("result", a + b);
-    return a + b;
-  }
-  ```
-  <!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+
+  <!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+
 
   ```ts
   // 混淆后：
