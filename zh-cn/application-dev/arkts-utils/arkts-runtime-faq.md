@@ -419,3 +419,41 @@ let res = arr3.map(x => x).flat();
 >
 > 上述demo中部分语法，如 "3 in px", "delete px[2]", "Reflect.deleteProperty"，在ets文件中不可用。
 
+### JSON.stringify的replacer函数中数组索引的key类型与EcmaScript规范定义不一致
+
+JSON.stringify的replacer函数中，对于数组索引key的类型，ArkTS当前实现是采用保持数字类型不变，但是按照EcmaScript规范，应当转为string类型。
+
+```ts
+// test1.js
+{
+  let arr = [10, 20, 30, 40];
+  function replacer(key, value) {
+    if (key === "2") {
+        return value * 2;
+    }
+    return value;
+  }
+  console.info(JSON.stringify(arr, replacer));
+  // 实际输出：[10,20,30,40]
+}
+```
+
+规避方案：若业务逻辑依赖于key必须为string类型，可在replacer函数内部对数字类型的key进行显式转换。示例如下：
+
+```ts
+// test1.js
+{
+  let arr = [10, 20, 30, 40];
+  function replacer(key, value) {
+    if (typeof key === "number") {
+      key = String(key);
+    }
+    if (key === "2") {
+        return value * 2;
+    }
+    return value;
+  }
+  console.info(JSON.stringify(arr, replacer));
+  // 实际输出：[10,20,60,40]
+}
+```
