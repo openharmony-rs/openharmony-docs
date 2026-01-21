@@ -142,7 +142,7 @@ enum Asset_ResultCode
 | ASSET_SERVICE_UNAVAILABLE = 24000001 | 表示关键资产服务不可用。 |
 | ASSET_NOT_FOUND = 24000002 | 表示未找到关键资产。 |
 | ASSET_DUPLICATED = 24000003 | 表示关键资产已存在。 |
-| ASSET_ACCESS_DENIED = 24000004 | 表示拒绝访问。 |
+| ASSET_ACCESS_DENIED = 24000004 | 表示访问被拒绝。 |
 | ASSET_STATUS_MISMATCH = 24000005 | 表示锁屏状态不匹配。 |
 | ASSET_OUT_OF_MEMORY = 24000006 | 表示系统内存不足。 |
 | ASSET_DATA_CORRUPTED = 24000007 | 表示关键资产损坏。 |

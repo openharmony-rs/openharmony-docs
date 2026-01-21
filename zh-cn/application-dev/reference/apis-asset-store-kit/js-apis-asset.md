@@ -972,7 +972,7 @@ type AssetMap = Map\<Tag, Value>
 | SERVICE_UNAVAILABLE | 24000001    |关键资产服务不可用。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | NOT_FOUND | 24000002    |未找到关键资产。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | DUPLICATED | 24000003    |关键资产已存在。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| ACCESS_DENIED | 24000004    |拒绝访问。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+| ACCESS_DENIED | 24000004    |访问被拒绝。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | STATUS_MISMATCH | 24000005    |锁屏状态不匹配。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | OUT_OF_MEMORY | 24000006    |系统内存不足。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | DATA_CORRUPTED | 24000007    |关键资产损坏。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|

@@ -58,7 +58,7 @@ The asset already exists.
 1. 先调用[asset.remove](js-apis-asset.md#assetremove)删除同别名的关键资产，再调用[asset.add](js-apis-asset.md#assetadd)重新写入。
 2. 调用[asset.add](js-apis-asset.md#assetadd)时，指定参数asset.Tag.CONFLICT_RESOLUTION的值为asset.ConflictResolution.OVERWRITE。
 
-## 24000004 拒绝访问
+## 24000004 访问被拒绝
 
 **错误信息**
 
