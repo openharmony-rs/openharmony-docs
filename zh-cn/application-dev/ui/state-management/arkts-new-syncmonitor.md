@@ -186,6 +186,36 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 - \@SyncMonitor监听的变量需要被\@Local、\@Param、\@Provider、\@Consumer、\@Computed装饰，未被状态变量装饰器装饰的变量在变化时无法被监听。\@SyncMonitor可以同时监听多个状态变量，这些变量名之间用','隔开。
 
    <!-- @[monitor_multiple_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorMultipleVariables.ets) -->
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   @Entry
+   @ComponentV2
+   struct Index {
+     @Local message: string = 'Hello World';
+     @Local name: string = 'Tom';
+     @Local age: number = 24;
+   
+     @SyncMonitor('message', 'name')
+     onStrChange(monitor: IMonitor) {
+       monitor.dirty.forEach((path: string) => {
+         hilog.info(0xFF00, 'testTag', '%{public}s',
+           `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+       });
+     }
+   
+     build() {
+       Column() {
+         Button('change string')
+           .onClick(() => {
+             this.message += '!';
+             this.name = 'Jack';
+           })
+       }
+     }
+   }
+   ```
 
 - \@SyncMonitor监听的状态变量为类对象时，仅能监听对象整体的变化。监听类属性的变化需要类属性被\@Trace装饰，无法监听非状态变量的变化。
   
