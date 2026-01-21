@@ -248,6 +248,13 @@ let count = 0;
 
 <!-- @[optionExample_enableExportObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
 
+``` TypeScript
+// 混淆前：
+namespace ns {
+  export type customT = string;
+}
+```
+
 
 若配置该选项，那么非顶层作用域中导入或导出的名称会被混淆。
 **若想混淆顶层作用域中导入或导出的名称，需要在已配置`-enable-toplevel-obfuscation`的基础上使用。**
