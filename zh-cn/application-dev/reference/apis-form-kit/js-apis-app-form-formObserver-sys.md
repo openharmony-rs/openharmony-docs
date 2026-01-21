@@ -56,7 +56,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formAdd', callback);
 ```
 
-## onFormAdd<sup>22+</sup>
+## onFormAdd<sup>23+</sup>
 
  onFormAdd(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -68,7 +68,7 @@ formObserver.on('formAdd', callback);
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -91,10 +91,9 @@ formObserver.on('formAdd', callback);
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -160,7 +159,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formAdd', bundleName, callback);
 ```
 
-## onFormAdd<sup>22+</sup>
+## onFormAdd<sup>23+</sup>
 
 onFormAdd(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -172,7 +171,7 @@ onFormAdd(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFo
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -196,10 +195,9 @@ onFormAdd(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFo
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -271,7 +269,7 @@ formObserver.off('formAdd', bundleName, callback);
 > - on('formAdd', bundleName, callback)与off('formAdd', bundleName, callback)相对应；
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## offFormAdd<sup>22+</sup>
+## offFormAdd<sup>23+</sup>
 
 offFormAdd(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -283,7 +281,7 @@ offFormAdd(hostBundleName?: string, observerCallback?: Callback\<formInfo.Runnin
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -307,10 +305,9 @@ offFormAdd(hostBundleName?: string, observerCallback?: Callback\<formInfo.Runnin
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -379,7 +376,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formRemove', callback);
 ```
 
-## onFormRemove<sup>22+</sup>
+## onFormRemove<sup>23+</sup>
 
  onFormRemove(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -391,7 +388,7 @@ formObserver.on('formRemove', callback);
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -414,10 +411,9 @@ formObserver.on('formRemove', callback);
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -483,7 +479,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formRemove', bundleName, callback);
 ```
 
-## onFormRemove<sup>22+</sup>
+## onFormRemove<sup>23+</sup>
 
 onFormRemove(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -495,7 +491,7 @@ onFormRemove(hostBundleName: string, observerCallback: Callback\<formInfo.Runnin
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -519,10 +515,9 @@ onFormRemove(hostBundleName: string, observerCallback: Callback\<formInfo.Runnin
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -593,7 +588,7 @@ formObserver.off('formRemove', bundleName, callback);
 > - on('formRemove', bundleName, callback)与off('formRemove', bundleName, callback)相对应；
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## offFormRemove<sup>22+</sup>
+## offFormRemove<sup>23+</sup>
 
 offFormRemove(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -605,7 +600,7 @@ offFormRemove(hostBundleName?: string, observerCallback?: Callback\<formInfo.Run
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -629,10 +624,9 @@ offFormRemove(hostBundleName?: string, observerCallback?: Callback\<formInfo.Run
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -704,7 +698,7 @@ formObserver.on('notifyVisible', callback);
 
 ```
 
-## onNotifyVisible<sup>22+</sup>
+## onNotifyVisible<sup>23+</sup>
 
 onNotifyVisible(observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
@@ -718,7 +712,7 @@ onNotifyVisible(observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>)
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -741,10 +735,9 @@ onNotifyVisible(observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>)
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -812,7 +805,7 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyVisible', bundleName, callback);
 ```
 
-## onNotifyVisible<sup>22+</sup>
+## onNotifyVisible<sup>23+</sup>
 
 onNotifyVisible(hostBundleName: string, observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
@@ -826,7 +819,7 @@ onNotifyVisible(hostBundleName: string, observerCallback: Callback\<Array\<formI
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -851,10 +844,9 @@ onNotifyVisible(hostBundleName: string, observerCallback: Callback\<Array\<formI
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -926,7 +918,7 @@ formObserver.off('notifyVisible', bundleName, callback);
 > - on('notifyVisible', bundleName, callback)与off('notifyVisible', bundleName, callback)相对应；
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## offNotifyVisible<sup>22+</sup>
+## offNotifyVisible<sup>23+</sup>
 
 offNotifyVisible(hostBundleName?: string, observerCallback?: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
@@ -938,7 +930,7 @@ offNotifyVisible(hostBundleName?: string, observerCallback?: Callback\<Array\<fo
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -962,10 +954,9 @@ offNotifyVisible(hostBundleName?: string, observerCallback?: Callback\<Array\<fo
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -1036,7 +1027,7 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyInvisible', callback);
 ```
 
-## onNotifyInvisible<sup>22+</sup>
+## onNotifyInvisible<sup>23+</sup>
 
  onNotifyInvisible(observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
@@ -1050,7 +1041,7 @@ formObserver.on('notifyInvisible', callback);
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1073,10 +1064,9 @@ formObserver.on('notifyInvisible', callback);
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -1144,7 +1134,7 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyInvisible', bundleName, callback);
 ```
 
-## onNotifyInvisible<sup>22+</sup>
+## onNotifyInvisible<sup>23+</sup>
 
 onNotifyInvisible(hostBundleName: string, observerCallback: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
@@ -1158,7 +1148,7 @@ onNotifyInvisible(hostBundleName: string, observerCallback: Callback\<Array\<for
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1182,10 +1172,9 @@ onNotifyInvisible(hostBundleName: string, observerCallback: Callback\<Array\<for
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -1257,7 +1246,7 @@ formObserver.off('notifyInvisible', bundleName, callback);
 > - on('notifyInvisible', bundleName, callback)与off('notifyInvisible', bundleName, callback)相对应；
 > - 订阅（on）只能由自己对应的取消订阅接口（off）取消。
 
-## offNotifyInvisible<sup>22+</sup>
+## offNotifyInvisible<sup>23+</sup>
 
 offNotifyInvisible(hostBundleName?: string, observerCallback?: Callback\<Array\<formInfo.RunningFormInfo\>\>): void
 
@@ -1269,7 +1258,7 @@ offNotifyInvisible(hostBundleName?: string, observerCallback?: Callback\<Array\<
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1293,10 +1282,9 @@ offNotifyInvisible(hostBundleName?: string, observerCallback?: Callback\<Array\<
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -1335,7 +1323,7 @@ getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1382,18 +1370,20 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
 
 try {
   formObserver.getRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
-    console.info('testTag',`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
-    console.info('testTag',`getRunningFormInfos callback, data:${JSON.stringify(data)}`);
+    if (data !== undefined) {
+      for (let runningFormInfo of data) {
+        console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
+      }
+    }
     if (data.length === 0) {
       console.info('testTag', 'formObserverStaticTest001 getRunningFormInfos no data');
     } else {
@@ -1401,7 +1391,8 @@ try {
         formObserver.getRunningFormInfoById(data[0].formId, (error: BusinessError<void> | null,
           data: formInfo.RunningFormInfo | undefined) => {
           if (error?.code !== 0) {
-            console.info('testTag', `formObserverStaticTest001 callback error, code:${error?.code}`);
+            console.error('testTag',
+              `formObserverStaticTest001 callback error, code: ${error?.code}  message: ${error?.message}`);
           } else {
             console.info('testTag', `formObserverStaticTest001 callback success`);
           }
@@ -1414,10 +1405,9 @@ try {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
     console.error(`getRunningFormInfos error, code: ${code}, message: ${message}`);
-    console.info('testTag',`getRunningFormInfos callback error, code:${code}`);
   });
 } catch (err: Error) {
-  console.info('testTag', `getRunningFormInfos error, code: ${err?.code}, error message: ${err?.message}`);
+  console.error('testTag', `getRunningFormInfos error, code: ${err?.code}, error message: ${err?.message}`);
 }
 ```
 
@@ -1433,7 +1423,7 @@ getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1481,19 +1471,22 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base'
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos((error: BusinessError | null, data: formInfo.RunningFormInfo[] | undefined) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      if (data !== undefined) {
+        for (let runningFormInfo of data) {
+          console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
+        }
+      }
     }
   }, true, 'com.example.ohos.formjsdemo');
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1510,7 +1503,7 @@ getRunningFormInfos(hostBundleName?: string):  Promise&lt;Array&lt;formInfo.Runn
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1560,18 +1553,19 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base'
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos('com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    for (let runningFormInfo of data) {
+      console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
+    }
   }).catch((err) => {
-    let error=err as BusinessError;
+    let error = err as BusinessError;
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
-} catch(error) {
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1588,7 +1582,7 @@ getRunningFormInfos(isUnusedIncluded: boolean, hostBundleName?: string):  Promis
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1639,18 +1633,29 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base'
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let formInstanceFilter: formInfo.FormProviderFilter = {
+  bundleName: "com.example.formprovide",
+  abilityName: "EntryFormAbility",
+  formName: "widget",
+  moduleName: "entry"
+}
 try {
-  formObserver.getRunningFormInfos(true, 'com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
-  }).catch((err) => {
-    let error=err as BusinessError;
-    console.error(`error, code: ${error.code}, message: ${error.message}`);
-  });
-} catch(error) {
+  formObserver.getRunningFormInfosByFilter(formInstanceFilter,
+    (error: BusinessError | null, data: formInfo.RunningFormInfo[] | undefined) => {
+      if (error) {
+        console.error(`error, code: ${error.code}, message: ${error.message}`);
+      } else {
+        if (data !== undefined) {
+          for (let runningFormInfo of data) {
+            console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
+          }
+        }
+      }
+    });
+} catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
@@ -1669,7 +1674,7 @@ getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter): Pr
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1726,10 +1731,9 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -1745,7 +1749,7 @@ try {
     }).catch((error: Error) => {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
-    hilog.error(DOMAIN, TAG, `formObserverStaticTest009 promise error, code: ${code}`);
+    hilog.error(DOMAIN, TAG, `formObserverStaticTest009 promise error, code: ${code} message: ${message}`);
   });
 } catch (error: BusinessError) {
   hilog.error(DOMAIN, TAG, 'formObserverStaticTest009 catch error');
@@ -1766,7 +1770,7 @@ getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter, cal
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1820,29 +1824,30 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-const DOMAIN: int = 0x0000;
-const TAG: string = 'testTag formAgentTest';
-
+let formInstanceFilter: formInfo.FormProviderFilter = {
+  bundleName: "com.example.formprovide",
+  abilityName: "EntryFormAbility",
+  formName: "widget",
+  moduleName: "entry"
+}
 try {
-  let formProviderFilter: formInfo.FormProviderFilter = {
-    bundleName: 'com.example.demoForm',
-    formName: 'widget'
-  };
-  formObserver.getRunningFormInfosByFilter(formProviderFilter, (error: BusinessError<void> | null,
-    data: Array<formInfo.RunningFormInfo> | undefined) => {
-    if (error?.code !== 0) {
-      console.info('testTag', `formObserverStaticTest010 callback error, code:${error?.code}`);
-    } else {
-      console.info('testTag', `formObserverStaticTest010 callback success`);
-    }
-  });
-} catch (error: BusinessError) {
-  hilog.error(DOMAIN, TAG, 'formObserverStaticTest010 catch error');
+  formObserver.getRunningFormInfosByFilter(formInstanceFilter,
+    (error: BusinessError | null, data: formInfo.RunningFormInfo[] | undefined) => {
+      if (error) {
+        console.error(`error, code: ${error.code}, message: ${error.message}`);
+      } else {
+        if (data != undefined) {
+          for (let runningFormInfo of data) {
+            console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
+          }
+        }
+      }
+    });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1860,7 +1865,7 @@ getRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningFormInfo&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1912,10 +1917,9 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -1924,14 +1928,15 @@ try {
   formObserver.getRunningFormInfos((error: BusinessError<void> | null,
     data: formInfo.RunningFormInfo[] | undefined) => {
     if (error?.code !== 0) {
-      console.info('testTag',
-        `formObserverStaticTest002 getRunningFormInfos callback error, code:${error?.code}`);
-      console.info('testTag',`getRunningFormInfos error, code: ${error?.code}`);
+      console.error('testTag', `getRunningFormInfos error, code: ${error?.code} message: ${error?.message}`);
     } else {
-      console.info('testTag',`formObserver getRunningFormInfos callback, data: ${JSON.stringify(data)}`);
-      console.info('testTag',`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      if (data != undefined) {
+        for (let runningFormInfo of data) {
+          console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
+        }
+      }
       if (data === undefined || data.length === 0) {
-        console.info('testTag', 'formObserverStaticTest002 getRunningFormInfos callback no data');
+        console.error('testTag', 'formObserverStaticTest002 getRunningFormInfos callback no data');
       } else {
         try {
           formObserver.getRunningFormInfoById(data[0].formId).then((data) => {
@@ -1939,17 +1944,18 @@ try {
           }).catch((error: Error) => {
             let code = (error as BusinessError).code;
             let message = (error as BusinessError).message;
-            hilog.error(DOMAIN, TAG, `formObserverStaticTest002 promise error, code: ${code}`);
+            hilog.error(DOMAIN, TAG, `formObserverStaticTest002 promise error, code: ${code} message: ${message}`);
           });
           console.info('testTag', 'formObserverStaticTest002 getRunningFormInfoById success');
         } catch (error: BusinessError) {
-          hilog.error(DOMAIN, TAG, 'formObserverStaticTest002 catch error');
+          hilog.error(DOMAIN, TAG,
+            `formObserverStaticTest002 catch error, code: ${error.code} message: ${error.message}`);
         }
       }
     }
   });
 } catch (err: Error) {
-  console.info('testTag', `getRunningFormInfos error code: ${err?.code}, error message: ${err?.message}`);
+  console.error('testTag', `getRunningFormInfos error code: ${err?.code}, error message: ${err?.message}`);
 }
 ```
 
@@ -1967,7 +1973,7 @@ getRunningFormInfoById(formId: string, isUnusedIncluded: boolean): Promise&lt;fo
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2020,19 +2026,22 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
 
 try {
   formObserver.getRunningFormInfos(true).then((data: formInfo.RunningFormInfo[]) => {
-    console.info('testTag',`formObserver getRunningFormInfos, data:${JSON.stringify(data)}`);
+    if (data !== undefined) {
+      for (let runningFormInfo of data) {
+        console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
+      }
+    }
     if (data.length === 0) {
-      console.info('testTag', 'formObserverStaticTest003 getRunningFormInfos no data');
+      console.error('testTag', 'formObserverStaticTest003 getRunningFormInfos no data');
     } else {
       try {
         formObserver.getRunningFormInfoById(data[0].formId, true).then((data) => {
@@ -2040,21 +2049,21 @@ try {
         }).catch((error: Error) => {
           let code = (error as BusinessError).code;
           let message = (error as BusinessError).message;
-          hilog.error(DOMAIN, TAG, `formObserverStaticTest003 promise error, code: ${code}`);
+          hilog.error(DOMAIN, TAG, `formObserverStaticTest003 promise error, code: ${code} message: ${message}`);
         });
         console.info('testTag', 'formObserverStaticTest003 getRunningFormInfoById success');
       } catch (error: BusinessError) {
-        hilog.error(DOMAIN, TAG, 'formObserverStaticTest003 catch error');
+        hilog.error(DOMAIN, TAG,
+          `formObserverStaticTest003 catch error, code: ${error.code} message: ${error.message}`);
       }
     }
   }).catch((error: Error) => {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
     console.error(`getRunningFormInfos error, code: ${code}, message: ${message}`);
-    console.info('testTag',`getRunningFormInfos callback error, code:${code}`);
   });
 } catch (err: Error) {
-  console.info('testTag', `getRunningFormInfos error，code: ${err?.code}, error message: ${err?.message}`);
+  console.error('testTag', `getRunningFormInfos error，code: ${err?.code}, error message: ${err?.message}`);
 }
 ```
 
@@ -2072,7 +2081,7 @@ getRunningFormInfoById(formId: string, callback: AsyncCallback&lt;formInfo.Runni
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2121,42 +2130,45 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
 
 try {
   formObserver.getRunningFormInfos().then((data: formInfo.RunningFormInfo[]) => {
-    console.info('testTag',`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
-    console.info('testTag',`getRunningFormInfos callback, data:${JSON.stringify(data)}`);
+    if (data !== undefined) {
+      for (let runningFormInfo of data) {
+        console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
+      }
+    }
     if (data.length === 0) {
-      console.info('testTag', 'formObserverStaticTest001 getRunningFormInfos no data');
+      console.error('testTag', 'formObserverStaticTest001 getRunningFormInfos no data');
     } else {
       try {
         formObserver.getRunningFormInfoById(data[0].formId, (error: BusinessError<void> | null,
           data: formInfo.RunningFormInfo | undefined) => {
           if (error?.code !== 0) {
-            console.info('testTag', `formObserverStaticTest001 callback error, code:${error?.code}`);
+            console.error('testTag',
+              `formObserverStaticTest001 callback error, code:${error?.code} message:${error?.message}`);
           } else {
             console.info('testTag', `formObserverStaticTest001 callback success`);
           }
         });
       } catch (error: BusinessError) {
-        hilog.error(DOMAIN, TAG, 'formObserverStaticTest001 catch error');
+        hilog.error(DOMAIN, TAG,
+          `formObserverStaticTest001 catch error, code:${error?.code} message:${error?.message}`);
       }
     }
   }).catch((error: Error) => {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
     console.error(`getRunningFormInfos error, code: ${code}, message: ${message}`);
-    console.info('testTag',`getRunningFormInfos callback error, code:${code}`);
   });
 } catch (err: Error) {
-  console.info('testTag', `getRunningFormInfos error, code: ${err?.code}, error message: ${err?.message}`);
+  console.error('testTag', `getRunningFormInfos error, code: ${err?.code}, error message: ${err?.message}`);
 }
 ```
 
@@ -2174,7 +2186,7 @@ getRunningFormInfoById(formId: string, isUnusedIncluded: boolean, callback: Asyn
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2224,10 +2236,9 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -2236,32 +2247,36 @@ try {
   formObserver.getRunningFormInfos((error: BusinessError<void> | null,
     data: formInfo.RunningFormInfo[] | undefined) => {
     if (error?.code !== 0) {
-      console.info('testTag',
-        `formObserverStaticTest004 getRunningFormInfos callback error, code:${error?.code}`);
-      console.info('testTag',`getRunningFormInfos error, code: ${error?.code}`);
+      console.error('testTag',
+        `formObserverStaticTest004 getRunningFormInfos callback error, code:${error?.code} message:${error?.message} `);
     } else {
-      console.info(`formObserver getRunningFormInfos callback, data: ${JSON.stringify(data)}`);
+      if (data !== undefined) {
+        for (let runningFormInfo of data) {
+          console.info(`formObserver getRunningFormInfos, hostBundleName : ${runningFormInfo.hostBundleName}`);
+        }
+      }
       if (data === undefined || data.length === 0) {
-        console.info('testTag', 'formObserverStaticTest004 getRunningFormInfos callback no data');
+        console.error('testTag', 'formObserverStaticTest004 getRunningFormInfos callback no data');
       } else {
         try {
           formObserver.getRunningFormInfoById(data[0].formId, true,
             (error: BusinessError<void> | null, data: formInfo.RunningFormInfo | undefined) => {
               if (error?.code !== 0) {
-                console.info('testTag',
-                  `formObserverStaticTest004 getRunningFormInfoById callback error, code:${error?.code}`);
+                console.error('testTag',
+                  `formObserverStaticTest004 getRunningFormInfoById callback error, code:${error?.code} message:${error?.message}`);
               } else {
                 console.info('testTag', `formObserverStaticTest004 getRunningFormInfoById callback success`);
               }
             });
         } catch (error: BusinessError) {
-          hilog.error(DOMAIN, TAG, 'formObserverStaticTest004 getRunningFormInfoById catch error');
+          hilog.error(DOMAIN, TAG,
+            `formObserverStaticTest004 getRunningFormInfoById catch error, code:${error?.code} message:${error?.message}`);
         }
       }
     }
   }, true);
-} catch (err: Error) {
-  console.info('testTag', `getRunningFormInfos error code: ${err?.code}, error message: ${err?.message}`);
+} catch (err: BusinessError) {
+  console.error('testTag', `getRunningFormInfos error code: ${err?.code}, error message: ${err?.message}`);
 }
 ```
 
@@ -2306,7 +2321,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('router', callback);
 ```
 
-## onRouter<sup>22+</sup>
+## onRouter<sup>23+</sup>
 
 onRouter(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2318,7 +2333,7 @@ onRouter(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2341,10 +2356,9 @@ onRouter(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -2408,7 +2422,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('router', hostBundleName, callback);
 ```
 
-## onRouter<sup>22+</sup>
+## onRouter<sup>23+</sup>
 
 onRouter(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2420,7 +2434,7 @@ onRouter(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFor
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2444,10 +2458,9 @@ onRouter(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFor
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -2511,7 +2524,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('router', hostBundleName, callback);
 ```
 
-## offRouter<sup>22+</sup>
+## offRouter<sup>23+</sup>
 
 offRouter(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2523,14 +2536,14 @@ offRouter(hostBundleName?: string, observerCallback?: Callback\<formInfo.Running
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br>填写该参数时，与注册时填写bundleName的on接口对应。<br>缺省则订阅所有卡片使用方点击router类型卡片的事件，与注册时未填写bundleName的on接口相对应。 |
-| observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回触发router事件的卡片信息。缺省时，表示注销对应bundleName下已注册事件回调。<br>需与对应on('router')的callback一致。 |
+| observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回触发router事件的卡片信息。缺省时，表示注销对应bundleName下已注册事件回调。<br>需与对应onRouter的callback一致。 |
 
 **错误码：**
 
@@ -2547,10 +2560,9 @@ offRouter(hostBundleName?: string, observerCallback?: Callback\<formInfo.Running
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -2612,7 +2624,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('message', callback);
 ```
 
-## onMessage<sup>22+</sup>
+## onMessage<sup>23+</sup>
 
 onMessage(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2624,7 +2636,7 @@ onMessage(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2647,10 +2659,9 @@ onMessage(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -2714,7 +2725,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('message', hostBundleName, callback);
 ```
 
-## onMessage<sup>22+</sup>
+## onMessage<sup>23+</sup>
 
 onMessage(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2726,7 +2737,7 @@ onMessage(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFo
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2750,10 +2761,9 @@ onMessage(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFo
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -2817,50 +2827,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('message', hostBundleName, callback);
 ```
 
-## off('message')<sup>11+</sup>
-
-off(type: "message", hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
-
-取消订阅卡片message事件。使用callback异步回调，返回触发message事件的卡片的信息。
-
-**需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
-
-**系统能力：** SystemCapability.Ability.Form
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 11
-
-**参数：**
-
-| 参数名           | 类型                                                         | 必填 | 说明                                                         |
-| ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type             | string                                                       | 是   | 填写'message'，表示取消订阅卡片的message事件。               |
-| hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br>填写该参数时，与注册时填写bundleName的on接口对应。<br>缺省则取消订阅所有卡片使用方的点击事件，与注册时未填写bundleName的on接口相对应。 |
-| observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回触发message事件的卡片的信息。缺省时，表示注销对应已注册事件回调。<br>需与对应on('message')的callback一致。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 202      | The application is not a system application.                 |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-
-**示例：**
-
-```ts
-import { formInfo, formObserver } from '@kit.FormKit';
-
-let hostBundleName: string = 'ohos.samples.FormApplication';
-let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Unregister form Message event Listening.' + JSON.stringify(data));
-};
-formObserver.off('message', hostBundleName, callback);
-```
-
-## offMessage<sup>22+</sup>
+## offMessage<sup>23+</sup>
 
 offMessage(hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void
 
@@ -2872,14 +2839,14 @@ offMessage(hostBundleName?: string, observerCallback?: Callback<formInfo.Running
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br>填写该参数时，与注册时填写bundleName的on接口对应。<br>缺省则取消订阅所有卡片使用方的点击事件，与注册时未填写bundleName的on接口相对应。 |
-| observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回触发message事件的卡片的信息。缺省时，表示注销对应已注册事件回调。<br>需与对应on('message')的callback一致。 |
+| observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回触发message事件的卡片的信息。缺省时，表示注销对应已注册事件回调。<br>需与对应onMessage的callback一致。 |
 
 **错误码：**
 
@@ -2896,10 +2863,9 @@ offMessage(hostBundleName?: string, observerCallback?: Callback<formInfo.Running
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -2961,7 +2927,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('call', callback);
 ```
 
-## onCall<sup>22+</sup>
+## onCall<sup>23+</sup>
 
 onCall(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -2973,7 +2939,7 @@ onCall(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2996,10 +2962,9 @@ onCall(observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -3014,7 +2979,7 @@ try {
   formObserver.offCall(hostBundleName, observerCallback);
   console.info('testTag', 'formObserverStaticTest011 formObserver off success');
 } catch (error: BusinessError) {
-  hilog.error(DOMAIN, TAG, `formObserverStaticTest011 catch error, code:${error.code}`);
+  hilog.error(DOMAIN, TAG, `formObserverStaticTest011 catch error, code: ${error.code} message: ${error.message}`);
 }
 ```
 
@@ -3061,7 +3026,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('call', hostBundleName, callback);
 ```
 
-## onCall<sup>22+</sup>
+## onCall<sup>23+</sup>
 
 onCall(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -3073,7 +3038,7 @@ onCall(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormI
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3097,10 +3062,9 @@ onCall(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormI
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -3115,7 +3079,7 @@ try {
   formObserver.offCall(hostBundleName, observerCallback);
   console.info('testTag', 'formObserverStaticTest012 formObserver off success');
 } catch (error: BusinessError) {
-  hilog.error(DOMAIN, TAG, `formObserverStaticTest012 catch error, code:${error.code}`);
+  hilog.error(DOMAIN, TAG, `formObserverStaticTest012 catch error, code: ${error.code} message: ${error.message}`);
 }
 ```
 
@@ -3162,7 +3126,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('call', hostBundleName, callback);
 ```
 
-## offCall<sup>22+</sup>
+## offCall<sup>23+</sup>
 
 offCall(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFormInfo\>): void
 
@@ -3174,14 +3138,14 @@ offCall(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFo
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br>填写该参数时，与注册时填写bundleName的on接口对应。<br>缺省则取消订阅所有卡片使用方的点击事件，与注册时未填写bundleName的on接口相对应。 |
-| observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回触发call事件的卡片信息。缺省时，表示注销对应已注册事件回调。<br>需与对应on('call')的callback一致。 |
+| observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回触发call事件的卡片信息。缺省时，表示注销对应已注册事件回调。<br>需与对应onCall的callback一致。 |
 
 **错误码：**
 
@@ -3198,10 +3162,9 @@ offCall(hostBundleName?: string, observerCallback?: Callback\<formInfo.RunningFo
 ```ts
 'use static'
 
-import formInfo from '@ohos.app.form.formInfo';
-import formObserver from '@ohos.app.form.formObserver';
-import { BusinessError } from '@ohos.base';
-import hilog from '@ohos.hilog';
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -3216,6 +3179,6 @@ try {
   formObserver.offCall(hostBundleName, observerCallback);
   console.info('testTag', 'formObserverStaticTest011 formObserver off success');
 } catch (error: BusinessError) {
-  hilog.error(DOMAIN, TAG, `formObserverStaticTest011 catch error, code:${error.code}`);
+  hilog.error(DOMAIN, TAG, `formObserverStaticTest011 catch error, code: ${error.code} message: ${error.message}`);
 }
 ```

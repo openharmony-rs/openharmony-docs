@@ -28,7 +28,7 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -86,10 +86,10 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formAgent from '@ohos.app.form.formAgent';
-import Want from '@ohos.app.ability.Want';
-import { BusinessError, RecordData } from '@ohos.base'
-import hilog from '@ohos.hilog';
+import { formAgent } from '@kit.FormKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
@@ -104,9 +104,10 @@ let want: Want = {
   } as Record<string, RecordData>
 };
 try {
-  formAgent.requestPublishForm(want, (error: BusinessError|null, data: string|undefined) => {
+  formAgent.requestPublishForm(want, (error: BusinessError | null, data: string | undefined) => {
     if (error?.code !== 0) {
-      hilog.error(DOMAIN, TAG, `formAgent requestPublishForm callback error, code: ${error?.code}, message: ${error?.message})`);
+      hilog.error(DOMAIN, TAG,
+        `formAgent requestPublishForm callback error, code: ${error?.code}, message: ${error?.message})`);
       return;
     }
     console.info('testTag', `formAgent requestPublishForm callback success`);
@@ -132,7 +133,7 @@ requestPublishForm(want: Want): Promise&lt;string&gt;
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -193,10 +194,10 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formAgent from '@ohos.app.form.formAgent';
-import Want from '@ohos.app.ability.Want';
-import { BusinessError, RecordData } from '@ohos.base'
-import hilog from '@ohos.hilog';
+import { formAgent } from '@kit.FormKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN: int = 0x0000;
 const TAG: string = 'testTag formAgentTest';
