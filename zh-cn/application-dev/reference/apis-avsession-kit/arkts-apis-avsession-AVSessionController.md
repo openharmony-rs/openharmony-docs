@@ -1150,7 +1150,7 @@ sendCommonCommand(command: string, args: Record\<string, Object>, callback: Asyn
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。                     |
 
 > **说明：**
-
+>
 > 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **错误码：**
