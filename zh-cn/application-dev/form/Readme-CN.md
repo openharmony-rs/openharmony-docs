@@ -58,6 +58,7 @@
       - [场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)
   - [ArkTS卡片适配常见问题](arkts-ui-widget-adapt-faq.md)
       <!--DelEnd-->
+  - [ArkTS卡片适配常见问题](arkts-ui-widget-adapt-faq.md)
 - JS卡片开发<!--form-js-ui-->
   - [JS卡片概述](js-ui-widget-overview.md)
   - [JS卡片开发指导（Stage模型）](js-ui-widget-development.md)
