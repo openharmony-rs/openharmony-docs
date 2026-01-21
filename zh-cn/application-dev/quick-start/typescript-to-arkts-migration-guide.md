@@ -1809,7 +1809,7 @@ ArkTS不支持解构赋值。可使用其他替代方法，例如，使用临时
 
 **TypeScript**
 
-<!-- @[no_destructAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructAssignment.ts) -->    
+<!-- @[no_destructAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructAssignment.ts) -->       
 
 **ArkTS**
 
@@ -2944,6 +2944,7 @@ export class Point {
 import * as Pt from 'module1'
 
 let p = Pt.Point.origin
+```
 
 ### 不支持ambient module声明
 
