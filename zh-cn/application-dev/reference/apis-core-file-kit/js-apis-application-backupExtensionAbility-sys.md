@@ -25,9 +25,9 @@ getBackupInfo(): string
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本**： 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本**： 23
 
 **返回值：**
 
@@ -57,9 +57,9 @@ getBackupCompatibilityInfo(extInfo: string): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本**： 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -109,9 +109,9 @@ getRestoreCompatibilityInfo(extInfo: string): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS-Dyn起始版本**： 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
