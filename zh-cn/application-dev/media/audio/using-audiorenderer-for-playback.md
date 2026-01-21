@@ -32,36 +32,38 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
 1. 配置音频渲染参数并创建AudioRenderer实例，音频渲染参数的详细信息可以查看[AudioRendererOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendereroptions8)。
 
-    ```ts
-    import { audio } from '@kit.AudioKit';
+   <!-- @[create_audiorender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
-    let audioStreamInfo: audio.AudioStreamInfo = {
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
-      channels: audio.AudioChannel.CHANNEL_2, // 通道。
-      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
-      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
-    };
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
 
-    let audioRendererInfo: audio.AudioRendererInfo = {
-      usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
-      rendererFlags: 0 // 音频渲染器标志。
-    };
+   let audioStreamInfo: audio.AudioStreamInfo = {
+     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+     channels: audio.AudioChannel.CHANNEL_2, // 通道。
+     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+   };
 
-    let audioRendererOptions: audio.AudioRendererOptions = {
-      streamInfo: audioStreamInfo,
-      rendererInfo: audioRendererInfo
-    };
+   let audioRendererInfo: audio.AudioRendererInfo = {
+     usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+     rendererFlags: 0 // 音频渲染器标志。
+   };
 
-    audio.createAudioRenderer(audioRendererOptions, (err, data) => {
-      if (err) {
-        console.error(`Invoke createAudioRenderer failed, code is ${err.code}, message is ${err.message}`);
-        return;
-      } else {
-        console.info('Invoke createAudioRenderer succeeded.');
-        let audioRenderer = data;
-      }
-    });
-    ```
+   let audioRendererOptions: audio.AudioRendererOptions = {
+     streamInfo: audioStreamInfo,
+     rendererInfo: audioRendererInfo
+   };
+
+   audio.createAudioRenderer(audioRendererOptions, (err, data) => {
+     if (err) {
+       console.error(`Invoke createAudioRenderer failed, code is ${err.code}, message is ${err.message}`);
+       return;
+     } else {
+       console.info('Invoke createAudioRenderer succeeded.');
+       let audioRenderer = data;
+     }
+   });
+   ```
 
 2. 调用on('writeData')方法，订阅监听音频数据写入回调，推荐使用API version 12支持返回回调结果的方式。
 
@@ -73,7 +75,9 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > - 在无法填满回调所需长度数据的情况下，建议开发者返回audio.AudioDataCallbackResult.INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回audio.AudioDataCallbackResult.VALID。
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
-     ```ts
+     <!-- @[init_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+
+     ``` TypeScript
      import { audio } from '@kit.AudioKit';
      import { BusinessError } from '@kit.BasicServicesKit';
      import { fileIo as fs } from '@kit.CoreFileKit';
@@ -124,7 +128,9 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
      > - 在写数据回调中，避免与耗时业务耦合或等待其他业务操作，例如写数据时不要等待UI绘制。否则，可能会导致数据传输不及时，从而产生卡顿现象。
 
-     ```ts
+     <!-- @[audiosession_checkisactivated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+
+     ``` TypeScript
      import { BusinessError } from '@kit.BasicServicesKit';
      import { fileIo as fs } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
@@ -156,47 +162,53 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
 
 3. 调用start()方法进入running状态，开始渲染音频。
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[render_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
-    audioRenderer.start((err: BusinessError) => {
-      if (err) {
-        console.error(`Renderer start failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Renderer start success.');
-      }
-    });
-    ```
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   audioRenderer.start((err: BusinessError) => {
+     if (err) {
+       console.error(`Renderer start failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('Renderer start success.');
+     }
+   });
+   ```
 
 4. 调用stop()方法停止渲染。
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[render_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
-    audioRenderer.stop((err: BusinessError) => {
-      if (err) {
-        console.error(`Renderer stop failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Renderer stopped.');
-      }
-    });
-    ```
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   audioRenderer.stop((err: BusinessError) => {
+     if (err) {
+       console.error(`Renderer stop failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('Renderer stopped.');
+     }
+   });
+   ```
 
 5. 调用release()方法销毁实例，释放资源。
 
     应用需根据实际业务需求合理使用AudioRenderer实例，按需创建并及时释放，避免占用过多音频资源导致异常。
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[render_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
-    audioRenderer.release((err: BusinessError) => {
-      if (err) {
-        console.error(`Renderer release failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Renderer released.');
-      } 
-    });
-    ```
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   audioRenderer.release((err: BusinessError) => {
+     if (err) {
+       console.error(`Renderer release failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info('Renderer released.');
+     } 
+   });
+   ```
 
 ### 选择正确的StreamUsage
 
@@ -225,7 +237,9 @@ AudioRenderer支持枚举类型AudioSamplingRate中定义的所有采样率。
 
 下面展示了使用AudioRenderer渲染音频文件的示例代码。
 
-```ts
+<!-- @[render_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -379,90 +393,6 @@ async function release() {
         console.info('Renderer release success.');
       }
     });
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Scroll() {
-      Column() {
-        Row() {
-          Column() {
-            Text('初始化').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            initArguments(context);
-            init();
-          });
-
-          Column() {
-            Text('开始播放').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            start();
-          });
-        }
-
-        Row() {
-          Column() {
-            Text('暂停播放').fontSize(16).margin({ top: 12 });
-          }
-          .id('audio_effect_manager_card')
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            pause();
-          });
-
-          Column() {
-            Text('停止播放').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            stop();
-          });
-        }
-
-        Row() {
-          Column() {
-            Text('释放资源').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .id('audio_volume_card')
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            release();
-          });
-        }
-        .padding(12)
-      }
-      .height('100%')
-      .width('100%')
-      .backgroundColor('#F1F3F5');
-    }
   }
 }
 ```

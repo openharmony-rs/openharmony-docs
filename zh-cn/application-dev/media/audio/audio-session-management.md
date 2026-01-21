@@ -31,9 +31,9 @@
 
 使用OHAudio开发请参考：[获取音频会话管理器](using-ohaudio-for-session.md#获取音频会话管理器)。
 
-```ts
-import { audio } from '@kit.AudioKit';
+<!-- @[get_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
 let audioManager = audio.getAudioManager();
 let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
 ```
@@ -163,48 +163,53 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
 下面展示了使用AudioSession修改焦点策略的示例代码。
 
-```ts
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+<!-- @[all_sessionprocess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
 let audioManager = audio.getAudioManager();
-// 创建音频会话管理器。
 let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
-// 设置音频并发模式。
-let strategy: audio.AudioSessionStrategy = {
-  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
-};
+// ...
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  };
 
-// 激活音频会话。
-audioSessionManager.activateAudioSession(strategy).then(() => {
-  console.info('Succeeded in activating audio session.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
-});
-
-// 查询音频会话是否已激活。
-let isActivated = audioSessionManager.isAudioSessionActivated();
-
-// 监听音频会话停用事件。
-audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
-  console.info(`Succeeded in using on function. AudioSessionDeactivatedEvent: ${JSON.stringify(audioSessionDeactivatedEvent)}`);
-});
-
-if (isActivated) {
-  // 音频会话激活后，应用在此处正常执行音频播放、暂停、停止、释放等操作即可。 
-}
-
-// 取消监听音频会话停用事件。
-audioSessionManager.off('audioSessionDeactivated');
-
-// 停用音频会话。
-audioSessionManager.deactivateAudioSession().then(() => {
-  console.info('Succeeded in deactivating audio session.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to deactivate audio session. Code: ${err.code}, message: ${err.message}`);
-});
+  // 激活AudioSession，即抢占焦点
+  audioSessionManager.activateAudioSession(strategy).then(() => {
+    console.info('Succeeded in doing activateAudioSession.');
+    if (globalLogUpdate) {
+      globalLogUpdate('Succeeded in doing activateAudioSession.', false);
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to activateAudioSession. Code: ${err.code}, message: ${err.message}`);
+    if (globalLogUpdate) {
+      globalLogUpdate(`Failed to activateAudioSession. Code: ${err.code}, message: ${err.message}`, true);
+    }
+  });
+  let isActivated = audioSessionManager.isAudioSessionActivated();
+  // ...
+  audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio
+  .AudioSessionDeactivatedEvent) => {
+    console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+    if (globalCallbackUpdate) {
+      globalCallbackUpdate(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason}`);
+    }
+  });
+  // ...
+  // 结束AudioSession，即释放焦点
+  audioSessionManager.deactivateAudioSession().then(() => {
+    console.info('Succeeded in doing deactivateAudioSession.');
+    if (globalLogUpdate) {
+      globalLogUpdate('Succeeded in doing deactivateAudioSession.', false);
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to deactivateAudioSession. Code: ${err.code}, message: ${err.message}`);
+    if (globalLogUpdate) {
+      globalLogUpdate(`Failed to deactivateAudioSession. Code: ${err.code}, message: ${err.message}`, true);
+    }
+  });
+  // ...
+  audioSessionManager.off('audioSessionDeactivated');
 ```
-
 ## 使用音频会话申请焦点策略
 
 当应用需要启动多个音频流并保证流程连续性时，可通过AudioSession申请焦点，确保多音频流播放的连续性。
@@ -299,24 +304,24 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
      switch (audioSessionStateChangedEvent.stateChangeHint) {
        case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE:
          // 此分支表示系统已将音频流暂停，应用需切换至音频暂停状态。
-         // 临时失去焦点：AudioSession会停用并释放焦点，同时停止应用所有音频流的播放。因此，当应用收到Resume回调后，需要重新激活AudioSession并恢复需要继续播放的音频流。
+         // 临时失去焦点：其他音频流释放音频焦点后，本音频流会收到resume事件，可继续播放。
          break;
        case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_RESUME:
          // 此分支表示系统解除AudioSession焦点的暂停操作。
          break;
        case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_STOP:
          // 此分支表示系统已将音频流停止（永久失去焦点），为保持状态一致，应用需切换至音频暂停状态。
-         // 永久失去焦点：AudioSession会停用并释放焦点，同时停止应用所有音频流的播放。后续不会再收到音频焦点事件，恢复播放需用户主动触发。
+         // 永久失去焦点：后续不会再收到音频焦点事件，恢复播放需用户主动触发。
          break;
        case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP:
-         // 此分支表示由于长时间无音频流播放，系统已将AudioSession停止（永久失去焦点），应用需切换至音频停止状态。
+         // 此分支表示由于长时间无音频流播放，系统已将AudioSession停止（永久失去焦点），应用需切换至音频暂停状态。
          // 永久失去焦点：后续不会再收到音频焦点事件，恢复播放需用户主动触发。
          break;
        case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_DUCK:
-         // 此分支表示系统已将应用所有播放音频流音量降低（默认降到正常音量的20%）。
+         // 此分支表示系统已将音频音量降低（默认降到正常音量的20%）。
          break;
        case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
-         // 此分支表示系统已将应用所有播放音频流音量恢复正常。
+         // 此分支表示系统已将音频音量恢复正常。
          break;
        default:
          break;
@@ -348,74 +353,89 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
 
 下面展示了使用AudioSession申请焦点策略的示例代码。
 
-```ts
+<!-- @[all_focusprocess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 
-// 应用根据业务场景设置适合自己的音频会话场景，激活AudioSession时，系统会根据应用选择的音频会话场景申请对应的音频焦点。
-audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_MEDIA);
+// ...
 
-// 设置音频会话策略。
-let strategy: audio.AudioSessionStrategy = {
-  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS;
-};
-
-// 激活AudioSession。
-audioSessionManager.activateAudioSession(strategy).then(() => {
-  console.info('Succeeded in activating audio session.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
-});
-
-// 监听AudioSession焦点和状态变化事件。
 let audioSessionStateChangedCallback = (audioSessionStateChangedEvent: audio.AudioSessionStateChangedEvent) => {
   console.info(`hint of audioSessionStateChanged: ${audioSessionStateChangedEvent.stateChangeHint} `);
+
+  // ...
 
   switch (audioSessionStateChangedEvent.stateChangeHint) {
     case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE:
       // 此分支表示系统已将音频流暂停，应用需切换至音频暂停状态。
-      // 临时失去焦点：AudioSession会停用并释放焦点，同时停止应用所有音频流的播放。因此，当应用收到Resume回调后，需要重新激活AudioSession并恢复需要继续播放的音频流。
+      // 临时失去焦点：其他音频流释放音频焦点后，本音频流会收到resume事件，可继续播放。
       break;
     case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_RESUME:
       // 此分支表示系统解除AudioSession焦点的暂停操作。
       break;
     case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_STOP:
       // 此分支表示系统已将音频流停止（永久失去焦点），为保持状态一致，应用需切换至音频暂停状态。
-      // 永久失去焦点：AudioSession会停用并释放焦点，同时停止应用所有音频流的播放。后续不会再收到音频焦点事件，恢复播放需用户主动触发。
+      // 永久失去焦点：后续不会再收到音频焦点事件，恢复播放需用户主动触发。
       break;
     case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP:
-      // 此分支表示由于长时间无音频流播放，系统已将AudioSession停止（永久失去焦点），应用需切换至音频停止状态。
+      // 此分支表示由于长时间无音频流播放，系统已将AudioSession停止（永久失去焦点），应用需切换至音频暂停状态。
       // 永久失去焦点：后续不会再收到音频焦点事件，恢复播放需用户主动触发。
       break;
     case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_DUCK:
-      // 此分支表示系统已将应用所有播放音频流音量降低（默认降到正常音量的20%）。
+      // 此分支表示系统已将音频音量降低（默认降到正常音量的20%）。
       break;
     case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
-      // 此分支表示系统已将应用所有播放音频流音量恢复正常。
+      // 此分支表示系统已将音频音量恢复正常。
       break;
     default:
       break;
   }
 };
-audioSessionManager.on('audioSessionStateChanged', audioSessionStateChangedCallback);
 
-// 查询音频会话是否已激活。
-let isActivated = audioSessionManager.isAudioSessionActivated();
+let audioManager = audio.getAudioManager();
+let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+// ...
+  audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_MEDIA);
+  // ...
+  // 激活AudioSession，即抢占焦点
+  audioSessionManager.activateAudioSession(strategy).then(() => {
+    console.info('Succeeded in doing activateAudioSession.');
+    if (globalLogUpdate) {
+      globalLogUpdate('Succeeded in doing activateAudioSession.', false);
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to activateAudioSession. Code: ${err.code}, message: ${err.message}`);
+    if (globalLogUpdate) {
+      globalLogUpdate(`Failed to activateAudioSession. Code: ${err.code}, message: ${err.message}`, true);
+    }
+  });
+  let isActivated = audioSessionManager.isAudioSessionActivated();
+  if (!isActivated) {
+    console.error(`session is not activated.`);
+  } else {
+    console.info('session is activated.');
+  }
 
-if (isActivated) {
-  // 音频会话激活后，应用在此处正常执行音频播放、暂停、停止、释放等操作即可。
-  // 根据实际业务，应用可以启动多个AudioRenderer音频播放流。此处启动的音频播放流不再持有焦点，统一由AudioSession管理。
-  // 如果存在多条音频流同时播放，需要特别注意AudioSession停用时机（停用AudioSession时会同时释放应用所有音频播放流）。
+  audioSessionManager.on('audioSessionStateChanged', audioSessionStateChangedCallback);
+  audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio
+  .AudioSessionDeactivatedEvent) => {
+    console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
+    if (globalCallbackUpdate) {
+      globalCallbackUpdate(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason}`);
+    }
+  });
 }
-
-
-// 业务结束，取消监听AudioSession焦点和状态变化事件。
-audioSessionManager.off('audioSessionStateChanged', audioSessionStateChangedCallback);
-
-// 停用AudioSession，即释放焦点并停用该应用正在播放的所有音频流。
-audioSessionManager.deactivateAudioSession().then(() => {
-  console.info('Succeeded in deactivating audio session.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to deactivate audio session. Code: ${err.code}, message: ${err.message}`);
-});
+// 根据实际业务，可以启动多个AudioRenderer等音频播放。
+// ...
+  // 结束AudioSession，即释放焦点
+  audioSessionManager.deactivateAudioSession().then(() => {
+    console.info('Succeeded in doing deactivateAudioSession.');
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to deactivateAudioSession. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+  // ...
+  audioSessionManager.off('audioSessionStateChanged', audioSessionStateChangedCallback);
 ```

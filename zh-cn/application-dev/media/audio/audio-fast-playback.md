@@ -28,6 +28,9 @@
 开发者通过调用[OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode)，设置[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)来决定音频流使用的模式。
 
 设置低时延模式开发示例：
+
+<!-- @[OH_AudioStreamBuilder_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
 ```cpp
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
@@ -68,6 +71,9 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 开发音频播放功能的示例代码请参考：[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
 
 设置数据回调函数示例：
+
+<!-- @[Render_SetRendererWriteDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
 ```cpp
 // 自定义写入数据函数。
 static OH_AudioData_Callback_Result MyOnWriteData(
@@ -84,6 +90,7 @@ static OH_AudioData_Callback_Result MyOnWriteData(
 OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData;
 OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
 ```
+
 - 为避免音频卡顿，禁止在回调方法OH_AudioRenderer_OnWriteData中执行耗时操作。
 - 为保证OH_AudioRenderer_OnWriteData与流状态控制逻辑独立正常运行，禁止在OH_AudioRenderer_OnWriteData回调方法中调用音频流控制接口。
 
