@@ -200,6 +200,12 @@ test(a2);
 根据上述配置，`exampleName`和`exampleAge`的混淆效果如下：
 
   <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+  
+  ``` TypeScript
+  // example.ts
+  let person = {"exampleName": "abc"};
+  person["exampleAge"] = 22;
+  ```
 
 
 **使用该选项时，需要注意以下事项：**
