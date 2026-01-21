@@ -58,7 +58,7 @@ The asset already exists.
 1. 先调用[asset.remove](js-apis-asset.md#assetremove)删除同别名的关键资产，再调用[asset.add](js-apis-asset.md#assetadd)重新写入。
 2. 调用[asset.add](js-apis-asset.md#assetadd)时，指定参数asset.Tag.CONFLICT_RESOLUTION的值为asset.ConflictResolution.OVERWRITE。
 
-## 24000004 拒绝访问关键资产
+## 24000004 访问被拒绝
 
 **错误信息**
 
@@ -178,7 +178,7 @@ Calling the Bundle Manager service failed.
 
 查看错误信息，排查包管理服务异常原因。
 
-## 24000012 账号系统异常
+## 24000012 账号系统服务异常
 
 **错误信息**
 
