@@ -422,6 +422,11 @@ if (flag) {
 
 <!-- @[highlight_comma_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+const arr = [1, 2, 3]; // 数组初始化中的逗号后面加个空格，逗号前面不加空格
+myFunc(bar1, foo1, baz); // 函数的多个参数之间的逗号后加个空格，逗号前面不加空格
+```
+
 
 ### 建议字符串使用单引号
 
