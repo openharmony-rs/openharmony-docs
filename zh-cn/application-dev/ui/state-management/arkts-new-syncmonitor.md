@@ -95,36 +95,8 @@ struct CompV2 {
 
 \@SyncMonitor将调用其回调3次，分别对应从0到1、1到3和3到6的变化。
 
-```typescript
-import { hilog } from '@kit.PerformanceAnalysisKit';
+ <!-- @[compare_syncmonitor_with_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/CompareSyncMonitorWithMonitor.ets) -->
 
-@Entry
-@ComponentV2
-struct DocSampleArraySum {
-  @Local sum: number = 0;
-  arr: Array<number> = [1, 2, 3];
-  @SyncMonitor('sum')
-  syncSumMonitor(info: IMonitor) {  
-    let path = info.dirty[0];
-    hilog.info(0xFF00, 'SyncMonitor', '%{public}s', `${path} changed from ${info.value(path)?.before} to ${info.value(path)?.now}`);
-  }
-  @Monitor('sum')
-  asyncSumMonitor(info: IMonitor) {
-    let path = info.dirty[0];
-    hilog.info(0xFF00, 'Monitor', '%{public}s', `${path} changed from ${info.value(path)?.before} to ${info.value(path)?.now}`);
-  }
-
-  build() {
-    Column() {
-      Button('Calculate a sum')
-        .onClick(() => {  // 修改sum时，syncSumMonitor会回调3次，asyncSumMonitor只回调1次。
-          this.sum = 0;
-          this.arr.forEach((element) => this.sum += element);
-        })
-    }
-  }
-}
-```
 日志输出:
 ```typescript
 SyncMonitor - sum changed from 0 to 1
@@ -182,228 +154,27 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 - \@SyncMonitor监听的变量需要被\@Local、\@Param、\@Provider、\@Consumer、\@Computed装饰，未被状态变量装饰器装饰的变量在变化时无法被监听。\@SyncMonitor可以同时监听多个状态变量，这些变量名之间用','隔开。
 
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  @Entry
-  @ComponentV2
-  struct Index {
-    @Local message: string = 'Hello World';
-    @Local name: string = 'Tom';
-    @Local age: number = 24;
-  
-    @SyncMonitor('message', 'name')
-    onStrChange(monitor: IMonitor) {
-      monitor.dirty.forEach((path: string) => {
-        hilog.info(0xFF00, 'testTag', '%{public}s',
-          `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
-      });
-    }
-  
-    build() {
-      Column() {
-        Button('change string')
-          .onClick(() => {
-            this.message += '!';
-            this.name = 'Jack';
-          })
-      }
-    }
-  }
-  ```
+   <!-- @[monitor_multiple_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorMultipleVariables.ets) -->
 
 - \@SyncMonitor监听的状态变量为类对象时，仅能监听对象整体的变化。监听类属性的变化需要类属性被\@Trace装饰，无法监听非状态变量的变化。
   
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  class Info {
-    public name: string;
-    public age: number;
-  
-    constructor(name: string, age: number) {
-      this.name = name;
-      this.age = age;
-    }
-  }
-  
-  @Entry
-  @ComponentV2
-  struct Index {
-    @Local info: Info = new Info('Tom', 25);
-  
-    @SyncMonitor('info')
-    infoChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `info change`);
-    }
-  
-    build() {
-      Column() {
-        Text(`name: ${this.info.name}, age: ${this.info.age}`)
-        Button('change info')
-          .onClick(() => {
-            this.info = new Info('Lucy', 18); // 能够监听到
-          })
-      }
-    }
-  }
-  ```
+    <!-- @[monitor_object_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorObjectVariable.ets) -->
 
 ### 在\@ObservedV2装饰的类中使用\@SyncMonitor
 
 使用\@SyncMonitor监听的属性发生变化时，会触发\@SyncMonitor的回调方法。
 
 - \@SyncMonitor监听的对象属性需要被\@Trace装饰，未被\@Trace装饰的属性的变化无法被监听。\@SyncMonitor可以同时监听多个属性，这些属性之间用','隔开。
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  @ObservedV2
-  class Info {
-    @Trace public name: string = 'Tom';
-    @Trace public region: string = 'North';
-    @Trace public job: string = 'Teacher';
-    public age: number = 25;
-  
-    // name被@Trace装饰，能够监听变化
-    @SyncMonitor('name')
-    onNameChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s',
-        `name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-    }
-  
-    // age未被@Trace装饰，不能监听变化
-    @SyncMonitor('age')
-    onAgeChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s',
-        `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-    }
-  
-    // region与job均被@Trace装饰，能够监听变化
-    @SyncMonitor('region', 'job')
-    onChange(monitor: IMonitor) {
-      monitor.dirty.forEach((path: string) => {
-        hilog.info(0xFF00, 'testTag', '%{public}s',
-          `${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
-      })
-    }
-  }
-  
-  @Entry
-  @ComponentV2
-  struct Index {
-    info: Info = new Info();
-  
-    build() {
-      Column() {
-        Button('change name')
-          .onClick(() => {
-            this.info.name = 'Jack'; // 能够触发onNameChange方法
-          })
-        Button('change age')
-          .onClick(() => {
-            this.info.age = 26; // 不能够触发onAgeChange方法
-          })
-        Button('change region')
-          .onClick(() => {
-            this.info.region = 'South'; // 能够触发onChange方法
-          })
-        Button('change job')
-          .onClick(() => {
-            this.info.job = 'Driver'; // 能够触发onChange方法
-          })
-      }
-    }
-  }
-  ```
+   
+   <!-- @[monitor_variables_in_observedv2_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorVariablesInObservedV2Class.ets) -->
 
 - \@SyncMonitor可以监听深层属性的变化，该深层属性需要被@Trace装饰。
   
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  @ObservedV2
-  class Inner {
-    @Trace public num: number = 0;
-  }
-  
-  @ObservedV2
-  class Outer {
-    public inner: Inner = new Inner();
-  
-    @SyncMonitor('inner.num')
-    onChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s',
-        `inner.num change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-    }
-  }
-  
-  @Entry
-  @ComponentV2
-  struct Index {
-    outer: Outer = new Outer();
-  
-    build() {
-      Column() {
-        Button('change num')
-          .onClick(() => {
-            this.outer.inner.num = 100; // 能够触发onChange方法
-          })
-      }
-    }
-  }
-  ```
+  <!-- @[monitor_two_layer_variables_in_observedv2_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorTwoLayerVariablesInObservedV2Class.ets) -->
 
 - 在继承类场景下，可以在继承链中对同一个属性进行多次监听，父子类中定义的\@SyncMonitor回调均会被调用。
 
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  @ObservedV2
-  class Base {
-    @Trace public name: string;
-  
-    // 基类监听name属性
-    @SyncMonitor('name')
-    onBaseNameChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `Base Class name change`);
-    }
-  
-    constructor(name: string) {
-      this.name = name;
-    }
-  }
-  
-  @ObservedV2
-  class Derived extends Base {
-    // 继承类监听name属性
-    @SyncMonitor('name')
-    onDerivedNameChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `Derived Class name change`);
-    }
-  
-    constructor(name: string) {
-      super(name);
-    }
-  }
-  
-  @Entry
-  @ComponentV2
-  struct Index {
-    derived: Derived = new Derived('AAA');
-  
-    build() {
-      Column() {
-        Button('change name')
-          .onClick(() => {
-            this.derived.name = 'BBB'; // onDerivedNameChange方法会调用，父类的onBaseNameChange也会回调
-          })
-      }
-    }
-  }
-  ```
+  <!-- @[monitor_variable_base_derived_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorVariableInBaseDerivedClass.ets) -->
 
 ### 通用监听能力
 
@@ -413,171 +184,16 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 - \@SyncMonitor可以观察由调用内置类型`Map`，`Date`和`Set`的API引起的变化，例如，如果调用`set`、`add`、`delete`修改数据集合，则将执行监听函数。`Map`和`Set`中对应key的变化，不会执行监听函数，框架会打印错误日志。
 
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  @ObservedV2
-  class Info {
-    @Trace public name: string;
-    @Trace public age: number;
-  
-    constructor(name: string, age: number) {
-      this.name = name;
-      this.age = age;
-    }
-  }
-  
-  @ObservedV2
-  class ArrMonitor {
-    @Trace public dimensionTwo: number[][] = [[1, 1, 1], [2, 2, 2], [3, 3, 3]];
-    @Trace public dimensionThree: number[][][] = [[[1], [2], [3]], [[4], [5], [6]], [[7], [8], [9]]];
-    @Trace public infoArr: Info[] = [new Info('Jack', 24), new Info('Lucy', 18)];
-  
-    // dimensionTwo为二维简单类型数组，且被@Trace装饰，能够观测里面的元素变化
-    @SyncMonitor('dimensionTwo.0.0', 'dimensionTwo.1.1')
-    onDimensionTwoChange(monitor: IMonitor) {
-      monitor.dirty.forEach((path: string) => {
-        hilog.info(0xFF00, 'testTag', '%{public}s',
-          `dimensionTwo path: ${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
-      })
-    }
-  
-    // dimensionThree为三维简单类型数组，且被@Trace装饰，能够观测里面的元素变化
-    @SyncMonitor('dimensionThree.0.0.0', 'dimensionThree.1.1.0')
-    onDimensionThreeChange(monitor: IMonitor) {
-      monitor.dirty.forEach((path: string) => {
-        hilog.info(0xFF00, 'testTag', '%{public}s',
-          `dimensionThree path: ${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
-      })
-    }
-  
-    // Info类中属性name、age均被@Trace装饰，能够监听到变化
-    @SyncMonitor('infoArr.0.name', 'infoArr.1.age')
-    onInfoArrPropertyChange(monitor: IMonitor) {
-      monitor.dirty.forEach((path: string) => {
-        hilog.info(0xFF00, 'testTag', '%{public}s',
-          `infoArr path:${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
-      })
-    }
-  
-    // infoArr被@Trace装饰，能够监听到infoArr整体赋值的变化
-    @SyncMonitor('infoArr')
-    onInfoArrChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `infoArr whole change`);
-    }
-  
-    // 能够监听到infoArr的长度变化
-    @SyncMonitor('infoArr.length')
-    onInfoArrLengthChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `infoArr length change`);
-    }
-  }
-  
-  @Entry
-  @ComponentV2
-  struct Index {
-    arrMonitor: ArrMonitor = new ArrMonitor();
-  
-    build() {
-      Column() {
-        Button('Change dimensionTwo')
-          .onClick(() => {
-            // 能够触发onDimensionTwoChange方法
-            this.arrMonitor.dimensionTwo[0][0]++;
-            this.arrMonitor.dimensionTwo[1][1]++;
-          })
-        Button('Change dimensionThree')
-          .onClick(() => {
-            // 能够触发onDimensionThreeChange方法
-            this.arrMonitor.dimensionThree[0][0][0]++;
-            this.arrMonitor.dimensionThree[1][1][0]++;
-          })
-        Button('Change info property')
-          .onClick(() => {
-            // 能够触发onInfoArrPropertyChange方法
-            this.arrMonitor.infoArr[0].name = 'Tom';
-            this.arrMonitor.infoArr[1].age = 19;
-          })
-        Button('Change whole infoArr')
-          .onClick(() => {
-            // 能够触发onInfoArrChange、onInfoArrPropertyChange、onInfoArrLengthChange方法
-            this.arrMonitor.infoArr = [new Info('Cindy', 8)];
-          })
-        Button('Push new info to infoArr')
-          .onClick(() => {
-            // 能够触发onInfoArrPropertyChange、onInfoArrLengthChange方法
-            this.arrMonitor.infoArr.push(new Info('David', 50));
-          })
-      }
-    }
-  }
-  ```
+<!-- @[monitor_variables_in_multidimensional_arrays](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorVariablesInMultidimensionalArrays.ets) -->
 
 - 对象整体改变，但监听的属性不变时，不触发\@SyncMonitor回调。
 
   下面的示例按照Step1-Step2-Step3的顺序点击，表现为代码注释中的行为。
 
   如果只点击Step2或Step3，改变name、age的值，此时会触发onNameChange和onAgeChange方法。
-  
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  @ObservedV2
-  class Info {
-    @Trace public person: Person;
-  
-    @SyncMonitor('person.name')
-    onNameChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s',
-        `name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-    }
-  
-    @SyncMonitor('person.age')
-    onAgeChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s',
-        `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-    }
-  
-    constructor(name: string, age: number) {
-      this.person = new Person(name, age);
-    }
-  }
-  
-  @ObservedV2
-  class Person {
-    @Trace public name: string;
-    @Trace public age: number;
-  
-    constructor(name: string, age: number) {
-      this.name = name;
-      this.age = age;
-    }
-  }
-  
-  @Entry
-  @ComponentV2
-  struct Index {
-    info: Info = new Info('Tom', 25);
-  
-    build() {
-      Column() {
-        Button('Step1: Only change name')
-          .onClick(() => {
-            this.info.person = new Person('Jack', 25); // 能够触发onNameChange方法，不触发onAgeChange方法
-          })
-        Button('Step2: Only change age')
-          .onClick(() => {
-            this.info.person = new Person('Jack', 18); // 能够触发onAgeChange方法，不触发onNameChange方法
-          })
-        Button('Step3: Change name and age')
-          .onClick(() => {
-            this.info.person = new Person('Lucy', 19); // 能够触发onNameChange、onAgeChange方法
-          })
-      }
-    }
-  }
-  ```
+
+<!-- @[monitor_entire_object_change_but_property_no_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorEntireObjectChangeButPropertyNoChange.ets) -->
+
 
 - 在一次事件中多次改变被\@SyncMonitor监听的属性，\@SyncMonitor回调将在该属性每次改变时被调用。
 
@@ -704,48 +320,7 @@ struct DocSampleArrayMultiPath {
 
 ### 被观察属性变更或对象赋值时，监听函数自动执行
 
-```typescript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-@ObservedV2
-class ClassA {
-  @Trace propA : number = 8;
-  @Trace propB : number = 99;
-
-  constructor(a : number, b: number) {
-    this.propA = a;
-    this.propB = b;
-  }
-}
-
-@Entry
-@ComponentV2 struct DocSampleClass {
-  @Local cls : ClassA = new ClassA(100, 100);
-
-  @SyncMonitor('cls.*')
-  onClsChanged(m :IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `### onClsChanged, dirty: ${m.dirty.toString()}`);
-  }
-
-  build() {
-    Column() {
-      Divider()
-      Button(`#1 Change propA ${this.cls.propA}: +=1;`)
-        .onClick(() => {
-          this.cls.propA += 1;
-        })
-      Button(`#2 Change propB ${this.cls.propB}: +=1`)
-        .onClick(() => {
-          this.cls.propB += 1;
-        })
-      Button(`#3 Assign class object`)
-        .onClick(() => {
-          this.cls = new ClassA(-200, -200);
-        })
-    }
-    .border({ style: BorderStyle.Solid, width: 2, color: Color.Green })
-  }
-}
-```
+<!-- @[wildcard_monitor_object_property_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/WildcardMonitorObjectPropertyChange.ets) -->
 
 点击按钮#1或#2（更新被监听对象`cls`的属性）时，`m.dirty`的值将相同，包含`m.dirty==['cls.*']`。框架无法准确告知是哪个属性触发了监听函数的执行。
 
@@ -766,67 +341,8 @@ class ClassA {
 
 同步监听的观察路径：`@SyncMonitor('arrayOrPerson.*')`
 
-```typescript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-@ObservedV2
-class Person {
-  @Trace firstName: string;
-  @Trace lastName: string;
-  constructor(first: string = 'no first', last: string = 'no last') {
-    this.firstName = first;
-    this.lastName = last;
-  }
-}
+<!-- @[wildcard_monitor_array_item_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/WildcardMonitorArrayItemChange.ets) -->
 
-@ObservedV2
-class ArrayOfPerson extends Array<Person> {}
-
-@Entry
-@ComponentV2
-struct DocSampleArray {
-  @Local arrayOrPerson: ArrayOfPerson =
-    [new Person('Adrian'), new Person('Andrew'), new Person('Aaliyah'), new Person('Amir'), new Person('Angel')];
-
-  @SyncMonitor('arrayOrPerson.*')
-  arrayOfPersonMonitor(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `### SyncMonitor dirty: ${monitor.dirty.toString()}`);
-  }
-
-  build() {
-    Column() {
-      Button('#1 arrayOfPerson.push')
-        .onClick(() => {
-          this.arrayOrPerson.push(new Person('Austin'));
-        })
-      Button('#2 arrayOfPerson.splice(0,1,P)')
-        .onClick(() => {
-          this.arrayOrPerson.splice(0, 1, new Person('Addison'));
-        })
-      Button('#3 arrayOfPerson.assign new [1]')
-        .onClick(() => {
-          this.arrayOrPerson[1] = new Person('Amari');
-        })
-      Button('#4 arrayOfPerson shift')
-        .onClick(() => {
-          this.arrayOrPerson.shift();
-        })
-      Button('#5 arrayOfPerson length change')
-        .onClick(() => {
-          this.arrayOrPerson.length = this.arrayOrPerson.length +1;
-        })
-      Button('#6 arrayOfPerson  = new Array')
-        .onClick(() => {
-          this.arrayOrPerson = new ArrayOfPerson(new Person('Adrian'), new Person('Andrew'))
-        })
-      Button('#7 arrayOfPerson [1] last name')
-        .onClick(() => {
-          this.arrayOrPerson[1].lastName += '~'
-        })
-    }
-  }
-}
-
-```
 当按下按钮1-6时，监听函数会被触发:
 
 ```typescript
@@ -837,67 +353,7 @@ struct DocSampleArray {
 
 ### 嵌套被观察对象属性更改时，监听函数会执行
 
-```typescript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-@ObservedV2
-class Person {
-  @Trace firstName: string = 'first';
-  @Trace lastName: string = 'last';
-}
-@ObservedV2
-class Class1 {
-  @Trace person: Person = new Person();
-}
-@ObservedV2
-class Class0 {
-  @Trace class1: Class1 = new Class1();
-}
-
-@Entry
-@ComponentV2
-export struct DocSampleNestedClass {
-  @Local class0 : Class0 | number = new Class0();
-
-  @SyncMonitor('class0.class1.person.*')
-  onPersonChange(info: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s', '### onPersonChange, dirty: ' + info.dirty.toString());
-  }
-
-  build() {
-    Column() {
-      Button('#1 Class0 = new Class')
-        .onClick(() => {
-          this.class0 = new Class0();
-        })
-      Button('#2 Class0 = new Class, keep Class1')
-        .onClick(() => {
-          let newClass0 = new Class0();
-          newClass0.class1.person = (this.class0 as Class0).class1.person;
-          this.class0 = newClass0;
-        })
-      Button('#3 Class0.class1 = new Class1')
-        .onClick(() => {
-          (this.class0 as Class0).class1 = new Class1();
-        })
-      Button('#4 Class0.class1.person = new Person')
-        .onClick(() => {
-          (this.class0 as Class0).class1.person = new Person();
-        })
-      Button('#5 Class0....person.last update')
-        .onClick(() => {
-          if (typeof (this.class0) === 'object') {
-            (this.class0 as Class0).class1.person.lastName += '+';
-          } else {
-          }
-        })
-      Button('#6 Class0 toggle number <=> new Class0')
-        .onClick(() => {
-          this.class0 = (typeof (this.class0) === 'object') ? 500 : new Class0();
-        })
-    }
-  }
-}
-```
+<!-- @[wildcard_monitor_nested_object_property_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/WildcardMonitorNestedObjectPropertyChange.ets) -->
 
 启动应用程序。当按下按钮`#1 Class0 = new Class`时，由于因为`Person`对象已更改，监听函数将被触发。
 
@@ -947,121 +403,7 @@ export struct DocSampleNestedClass {
 
 在以下例子中，有两个\@SyncMonitor监听的路径分别为：`topArray.1.*`和`topArray.*`。
 
-```typescript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@ObservedV2
-class Person {
-  @Trace firstName: string = 'first';
-  @Trace lastName: string = 'last';
-  constructor(first: string = 'no first', last: string = 'no last') {
-    this.firstName = first;
-    this.lastName = last;
-  }
-}
-
-@ObservedV2
-class ArrayOfPerson extends Array<Person> {}
-
-@ObservedV2
-class TopArray extends Array<ArrayOfPerson> {}
-
-@Entry
-@ComponentV2
-struct DocSampleArrayOfArrays {
-  @Local topArray: TopArray = this.makeNewTopArray();
-
-  @SyncMonitor('topArray.1.*')
-  topArrayMonitor1Star(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `TopArray[1]: ${monitor.dirty.toString()}`);
-  }
-
-  @SyncMonitor('topArray.*')
-  topArrayMonitorStar(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `TopArray: ${monitor.dirty.toString()}`);
-  }
-
-  makeNewTopArray(): TopArray {
-    return new TopArray(
-      new ArrayOfPerson(new Person('Adrian'), new Person('Andrew'), new Person('Aaliyah'), new Person('Amir'), new Person('Angel')),
-      new ArrayOfPerson(new Person('Carter'), new Person('Charlie'), new Person('Cooper'), new Person('Cole'), new Person('Callie')),
-      new ArrayOfPerson(new Person('Danile'), new Person('Dasy'), new Person('Dawson'), new Person('Dana'), new Person('Dalton'))
-    );
-  }
-
-  build() {
-    Column() {
-      Text('Array of Arrays')
-        .fontSize(30)
-
-      // 因为脏的路径中包含'topArray.1'，会触发路径为'topArray.1.*'的@SyncMonitor的回调
-      // 因为脏的路径中包含'topArray'，会触发路径为'topArray.*'的@SyncMonitor的回调
-      Button('topArray = new TopArray')
-        .onClick(() => {
-          this.topArray = this.makeNewTopArray();
-        })
-
-      // 因为脏路径被包含在'topArray.1.*'中，会触发路径为'topArray.1.*'的@SyncMonitor的回调
-      // 因为脏路径没被包含在'topArray.*'中，不会触发路径为'topArray.*'的@SyncMonitor的回调
-      Button('topArray[1][0] = new Person')
-        .onClick(() => {
-          this.topArray[1][0] = new Person();
-        })
-
-      // 不会触发路径为 'topArray.1.*'的@SyncMonitor的回调
-      // 不会触发路径为'topArray.*'的@SyncMonitor的回调
-      Button('topArray[0][1] = new Person')
-        .onClick(() => {
-          this.topArray[0][1] = new Person();
-        })
-
-      // 因为脏路径被包含在'topArray.1.*'中，会触发路径为'topArray.1.*'的@SyncMonitor的回调
-      // 因为脏路径没被包含在'topArray.*'中，不会触发路径为'topArray.*'的@SyncMonitor的回调
-      Button('topArray[1].push')
-        .onClick(() => {
-          this.topArray[1].push(new Person());
-        })
-
-      // 因为脏的路径中包含'topArray.1'，会触发路径为'topArray.1.*'的@SyncMonitor的回调
-      // 因为脏的路径中包含'topArray.*'，会触发路径为'topArray.*'的@SyncMonitor的回调
-      Button('topArray.shift (size>2)')
-        .onClick(() => {
-          this.topArray.shift();
-        })
-
-      // 不会触发路径为'topArray.1.*的@SyncMonitor的回调
-      // 因为脏的路径中包含'topArray.*'，会触发路径为'topArray.*'的@SyncMonitor的回调
-      Button('topArray[0] = new ArrayOfPerson')
-        .onClick(() => {
-          this.topArray[0] = new ArrayOfPerson(new Person(), new Person());
-        })
-
-      // 不会触发路径为'topArray.1.*的@SyncMonitor的回调
-      // 不会触发路径为'topArray.*'的@SyncMonitor的回调
-      Button('topArray[1][0].last update')
-        .onClick(() => {
-          this.topArray[1][0].lastName += '~';
-        })
-
-      // 不会触发路径为'topArray.1.*'的@SyncMonitor的回调
-      // 因为脏的路径中包含'topArray'，会触发路径为'topArray.*'的@SyncMonitor的回调
-      Button('topArray = new TopArray, keep [1]')
-        .onClick(() => {
-          let newTop = this.makeNewTopArray();
-          newTop[1] = this.topArray[1];
-          this.topArray = newTop;
-        })
-
-      // 不会触发路径为'topArray.1.*'的@SyncMonitor的回调
-      // 因为脏的路径中包含'topArray.*'，会触发路径为'topArray.*'的@SyncMonitor的回调
-      Button('topArray.push, +0, +1')
-        .onClick(() => {
-          this.topArray.push(new ArrayOfPerson(new Person(), new Person()));
-        })
-    }
-  }
-}
-```
+<!-- @[wildcard_monitor_array_first_item_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/WildcardMonitorArrayFirstItemChange.ets) -->
 
 ## 限制条件
 
@@ -1069,39 +411,7 @@ struct DocSampleArrayOfArrays {
 
 - 不建议在一个类中对同一个属性进行多次\@SyncMonitor的监听。当一个类中存在对一个属性的多次监听时，只有最后一个定义的监听方法会生效。
   
-  ``` TypeScript
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  
-  @ObservedV2
-  class Info {
-    @Trace public name: string = 'Tom';
-  
-    @SyncMonitor('name')
-    onNameChange(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `onNameChange`);
-    }
-  
-    @SyncMonitor('name')
-    onNameChangeDuplicate(monitor: IMonitor) {
-      hilog.info(0xFF00, 'testTag', '%{public}s', `onNameChangeDuplicate`);
-    }
-  }
-  
-  @Entry
-  @ComponentV2
-  struct Index {
-    info: Info = new Info();
-  
-    build() {
-      Column() {
-        Button('change name')
-          .onClick(() => {
-            this.info.name = 'Jack'; // 仅会触发onNameChangeDuplicate方法
-          })
-      }
-    }
-  }
-  ```
+  <!-- @[monitor_the_same_variable_two_times](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorTheSameVariableTwoTimes.ets) -->
 
 - 当@SyncMonitor传入多个路径参数时，以参数的全拼接结果判断是否重复监听。全拼接时会在参数间加空格，以区分不同参数。例如，`'ab', 'c'`的全拼接结果为`'ab c'`，`'a', 'bc'`的全拼接结果为`'a bc'`，二者全拼接不相等。以下示例中，`SyncMonitor 1`、`SyncMonitor 2`与`SyncMonitor 3`都监听了name属性的变化。由于`SyncMonitor 2`与`SyncMonitor 3`的入参全拼接相等（都为`'name position'`），因此`SyncMonitor 2`不生效，仅`SyncMonitor 3`生效。当name属性变化时，将同时触发onNameAgeChange与onNamePositionChangeDuplicate方法。但请注意，`SyncMonitor 2`与`SyncMonitor 3`的写法仍然被视作在一个类中对同一个属性进行多次@SyncMonitor的监听，这是不建议的。
 
@@ -1296,81 +606,7 @@ struct Index {
 
 当\@SyncMonitor定义在\@ComponentV2装饰的自定义组件中时，\@SyncMonitor会在状态变量初始化完成之后生效，并在组件销毁时失效。
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@ObservedV2
-class Info {
-  @Trace public message: string = 'not initialized';
-
-  constructor() {
-    hilog.info(0xFF00, 'testTag', '%{public}s', 'in constructor message change to initialized');
-    this.message = 'initialized';
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Param info: Info = new Info();
-
-  @SyncMonitor('info.message')
-  onMessageChange(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s',
-      `Child message change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-  }
-
-  aboutToAppear(): void {
-    this.info.message = 'Child aboutToAppear';
-  }
-
-  aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', 'Child aboutToDisappear');
-    this.info.message = 'Child aboutToDisappear';
-  }
-
-  build() {
-    Column() {
-      Text('Child')
-      Button('change message in Child')
-        .onClick(() => {
-          this.info.message = 'Child click to change Message';
-        })
-    }
-    .borderColor(Color.Red)
-    .borderWidth(2)
-
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  @Local info: Info = new Info();
-  @Local flag: boolean = false;
-
-  @SyncMonitor('info.message')
-  onMessageChange(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s',
-      `Index message change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-  }
-
-  build() {
-    Column() {
-      Button('show/hide Child')
-        .onClick(() => {
-          this.flag = !this.flag
-        })
-      Button('change message in Index')
-        .onClick(() => {
-          this.info.message = 'Index click to change Message';
-        })
-      if (this.flag) {
-        Child({ info: this.info })
-      }
-    }
-  }
-}
-```
+<!-- @[effective_and_ineffective_times_of_variable_monitoring](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/EffectiveAndIneffectiveTimesOfVariableMonitoring.ets) -->
 
 在上面的例子中，可以通过创建和销毁Child组件来观察定义在自定义组件中的\@SyncMonitor的生效和失效时机。推荐按如下顺序进行操作：
 
@@ -1386,7 +622,6 @@ struct Index {
 ### 类中\@SyncMonitor对变量监听的生效及失效时间
 
 当\@SyncMonitor定义在\@ObservedV2装饰的类中时，\@SyncMonitor会在类的实例创建完成后生效，在类的实例销毁时失效。
-
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1738,43 +973,7 @@ struct Index {
 
 将myAge变为状态变量：
 
-
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@ObservedV2
-class Info {
-  public name: string = 'John';
-  @Trace public age: number = 24;
-
-  // 给myAge添加@Computed成为状态变量
-  @Computed
-  get myAge() {
-    return this.age;
-  }
-
-  // 监听@Computed装饰的getter访问器
-  @SyncMonitor('myAge')
-  onPropertyChange() {
-    hilog.info(0xFF00, 'testTag', '%{public}s', 'age changed');
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  info: Info = new Info();
-
-  build() {
-    Column() {
-      Button('change age')
-        .onClick(() => {
-          this.info.age = 25; // 状态变量age改变
-        })
-    }
-  }
-}
-```
+<!-- @[monitor_computed_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorComputedVariable.ets) -->
 
 或直接监听状态变量本身：
 
@@ -1837,43 +1036,4 @@ struct Index {
 
 \@SyncMonitor可以监听变量从可访问变为不可访问或从不可访问变为可访问的变化。在下面的例子中，点击三个Button，均会触发`onChange`的回调。
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@ObservedV2
-class User {
-  @Trace public age: number = 10;
-}
-
-@Entry
-@ComponentV2
-struct Page {
-  @Local user: User | undefined | null = new User();
-
-  @SyncMonitor('user.age')
-  onChange(mon: IMonitor) {
-    mon.dirty.forEach((path: string) => {
-      hilog.info(0xFF00, 'testTag', '%{public}s',
-        `onChange: User property ${path} change from ${mon.value(path)?.before} to ${mon.value(path)?.now}`);
-    });
-  }
-
-  build() {
-    Column() {
-      Text(`User age ${this.user?.age}`).fontSize(20)
-      Button('set user to undefined').onClick(() => {
-        // age：可访问 -> 不可访问
-        this.user = undefined;
-      })
-      Button('set user to User').onClick(() => {
-        // age：不可访问 ->可访问
-        this.user = new User();
-      })
-      Button('set user to null').onClick(() => {
-        // age：可访问->不可访问
-        this.user = null;
-      })
-    }
-  }
-}
-```
+<!-- @[monitor_variable_from_accessible_to_inaccessible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorVariableFromAccessibleToInaccessible.ets) -->
