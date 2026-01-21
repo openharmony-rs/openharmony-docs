@@ -8,7 +8,7 @@
 
 导航点组件，提供圆点导航点以及数字导航点两种导航点样式。
 
-将原[Swiper](ts-container-swiper.md)组件中的[Indicator](ts-container-swiper.md#indicator)已有的能力作为一个单独组件提供给开发者使用。开发者可以不依赖Swiper组件单独显示导航点，也可以通过IndicatorComponentController与Swiper组件绑定使用。
+将原[Swiper](ts-container-swiper.md)组件中的[indicator](ts-container-swiper.md#indicator)已有的能力作为一个单独组件提供给开发者使用。开发者可以不依赖Swiper组件单独显示导航点，也可以通过IndicatorComponentController与Swiper组件绑定使用。
 
 当多个导航点组件和同一个Swiper绑定时，只有最后一个导航点组件能成功和Swiper绑定。
 
@@ -233,7 +233,7 @@ changeIndex(index: number, useAnimation?: boolean): void
 ## 示例
 
 ### 示例1（圆点单独导航点与Swiper绑定使用）
-该示例通过[Swiper](ts-container-swiper.md)组件的[Indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了圆点单独导航点与Swiper的交互。
+该示例通过[Swiper](ts-container-swiper.md)组件的[indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了圆点单独导航点与Swiper的交互。
 ```ts
 @Entry
 @Component
@@ -296,7 +296,7 @@ struct DotIndicatorDemo {
 
 ### 示例2（数字单独导航点与Swiper绑定使用）
 
-该示例通过[Swiper](ts-container-swiper.md)组件的[Indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了数字单独导航点与Swiper的交互。
+该示例通过[Swiper](ts-container-swiper.md)组件的[indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了数字单独导航点与Swiper的交互。
 
 ```ts
 @Entry
