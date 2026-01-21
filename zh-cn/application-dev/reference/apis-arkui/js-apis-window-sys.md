@@ -1655,6 +1655,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 **示例：**
 
 ```ts
+import { rpc } from '@kit.IPCKit';
 import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1670,7 +1671,9 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   onRequest(want: Want, startId: number) {
     console.info('onRequest');
     let config: window.Configuration = {
-      name: "test", windowType: window.WindowType.TYPE_DIALOG, ctx: this.context
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
     };
     try {
       window.createWindow(config, (err: BusinessError, data) => {
@@ -1740,6 +1743,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 **示例：**
 
 ```ts
+import { rpc } from '@kit.IPCKit';
 import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1755,7 +1759,9 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
   onRequest(want: Want, startId: number) {
     console.info('onRequest');
     let config: window.Configuration = {
-      name: "test", windowType: window.WindowType.TYPE_DIALOG, ctx: this.context
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
     };
     try {
       window.createWindow(config, (err: BusinessError, data) => {
