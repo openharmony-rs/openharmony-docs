@@ -328,6 +328,14 @@ test(a2);
 配置该选项后，所有代码会被压缩到一行。效果如下：
 
   <!-- @[optionExample_compact](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
+  
+  ``` TypeScript
+  // 混淆前：
+  class TestA {
+    static prop1: number = 0;
+  }
+  TestA.prop1;
+  ```
 
 
 >**注意**：
