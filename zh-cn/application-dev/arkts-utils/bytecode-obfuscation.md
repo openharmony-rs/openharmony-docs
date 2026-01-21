@@ -67,6 +67,24 @@ a2.prop1 = 'prop a2';
 test(a2);
 ```
 
+```
+// 混淆后
+class A1 {
+    prop1: string = '';
+}
+
+class A2 {
+    a: string = '';
+}
+
+function test(input: A1) {
+    console.info(input.prop1);
+}
+
+let a2 = new A2();
+a2.a = 'prop a2';
+test(a2);
+```
 
 综上所述，开发者应了解这种语言差异带来的混淆效果差异，并尽量使用不重复的名称，以使在各种场景下的混淆效果更好。
 
@@ -235,6 +253,11 @@ let params = obj1['ohos.want.action.home'];
 let count = 0;
 ```
 
+```
+// 混淆后：
+let s = 0;
+```
+
 若配置该选项，那么所有的顶层作用域的名称都会被混淆，除了下面场景：
 
 * 在未开启`-enable-export-obfuscation`选项的情况下,被`import/export`直接导入或导出的名称不会被混淆。
@@ -255,6 +278,12 @@ namespace ns {
 }
 ```
 
+```
+// 混淆后：
+namespace ns {
+    export type h = string;
+}
+```
 
 若配置该选项，那么非顶层作用域中导入或导出的名称会被混淆。
 **若想混淆顶层作用域中导入或导出的名称，需要在已配置`-enable-toplevel-obfuscation`的基础上使用。**
@@ -278,6 +307,12 @@ import { foo } from '../test1/test2';
 const module = import('../test1/test2');
 ```
 
+```
+// 混淆后：
+import * as m from '../a/b';
+import { foo } from '../a/b';
+const module = import('../a/b');
+```
 
 若配置该选项，那么所有的文件/文件夹名称都会被混淆，除了下面场景：
 
@@ -310,6 +345,10 @@ class TestA {
 TestA.prop1;
 ```
 
+```
+// 混淆后：
+class TestA { static prop1: number = 0; } TestA.prop1;
+```
 
 > **注意**：
 >
@@ -328,6 +367,11 @@ if (flag) {
 }
 ```
 
+```
+// 混淆后：
+if (flag) {
+}
+```
 
 若配置该选项，以下场景中的console.*语句会被删除：
 
