@@ -255,7 +255,9 @@ class Task {
     this.isFinished = isFinished;
   }
 }
+
 const DOMAIN = 0x0000;
+
 @Entry
 @Component
 struct ParentComponent {
@@ -269,23 +271,32 @@ struct ParentComponent {
 
   onTaskAChanged(changedPropertyName: string): void {
     // 请将$r('app.string.watch_text12')替换为实际资源文件，在本示例中该资源文件的value值为"观测到父组件任务属性变化:"
-    hilog.info(DOMAIN, resource.resourceToString($r('app.string.watch_text12')), changedPropertyName);
+    hilog.info(DOMAIN, this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text12').id), changedPropertyName);
   }
 
   onTaskBChanged(changedPropertyName: string): void {
     // 请将$r('app.string.watch_text12')替换为实际资源文件，在本示例中该资源文件的value值为"观测到父组件任务属性变化:"
-    hilog.info(DOMAIN, resource.resourceToString($r('app.string.watch_text12')), changedPropertyName);
+    hilog.info(DOMAIN, this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text12').id), changedPropertyName);
   }
 
   build() {
     Column() {
       // 请将$r('app.string.watch_text7')替换为实际资源文件，在本示例中该资源文件的value值为"已完成"
       // 请将$r('app.string.watch_text8')替换为实际资源文件，在本示例中该资源文件的value值为"未完成"
-      Text(`${this.type1} ${this.taskA.isFinished ? resource.resourceToString($r('app.string.watch_text7')) : resource.resourceToString($r('app.string.watch_text8'))}`)
-      Text(`${this.type2} ${this.taskB.isFinished ? resource.resourceToString($r('app.string.watch_text7')) : resource.resourceToString($r('app.string.watch_text8'))}`)
+      Text(`${this.type1} ${this.taskA.isFinished ? this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
+        this.getUIContext()
+          .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+      Text(`${this.type2} ${this.taskB.isFinished ? this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
+        this.getUIContext()
+          .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
       ChildComponent({ taskA: this.taskA, taskB: this.taskB })
       // 请将$r('app.string.watch_text9')替换为实际资源文件，在本示例中该资源文件的value值为"切换任务状态"
-      Button(resource.resourceToString($r('app.string.watch_text9')))
+      Button(this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text9').id))
         .onClick(() => {
           this.taskB = new Task(!this.taskB.isFinished);
           this.taskA = new Task(!this.taskA.isFinished);
@@ -306,20 +317,28 @@ struct ChildComponent {
 
   onObjectLinkTaskChanged(changedPropertyName: string): void {
     // 请将$r('app.string.watch_text13')替换为实际资源文件，在本示例中该资源文件的value值为"观测到子组件@ObjectLink关联的任务属性变化:"
-    hilog.info(DOMAIN, resource.resourceToString($r('app.string.watch_text13')), changedPropertyName);
+    hilog.info(DOMAIN, this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text13').id), changedPropertyName);
   }
 
   onLinkTaskChanged(changedPropertyName: string): void {
     // 请将$r('app.string.watch_text14')替换为实际资源文件，在本示例中该资源文件的value值为"观测到子组件@Link关联的任务属性变化:"
-    hilog.info(DOMAIN, resource.resourceToString($r('app.string.watch_text14')), changedPropertyName);
+    hilog.info(DOMAIN, this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text14').id), changedPropertyName);
   }
 
   build() {
     Column() {
       // 请将$r('app.string.watch_text7')替换为实际资源文件，在本示例中该资源文件的value值为"已完成"
       // 请将$r('app.string.watch_text8')替换为实际资源文件，在本示例中该资源文件的value值为"未完成"
-      Text(`${this.type1} ${this.taskA.isFinished ? resource.resourceToString($r('app.string.watch_text7')) : resource.resourceToString($r('app.string.watch_text8'))}`)
-      Text(`${this.type2} ${this.taskB.isFinished ? resource.resourceToString($r('app.string.watch_text7')) : resource.resourceToString($r('app.string.watch_text8'))}`)
+      Text(`${this.type1} ${this.taskA.isFinished ? this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
+        this.getUIContext()
+          .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+      Text(`${this.type2} ${this.taskB.isFinished ? this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
+        this.getUIContext()
+          .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
     }
   }
 }
