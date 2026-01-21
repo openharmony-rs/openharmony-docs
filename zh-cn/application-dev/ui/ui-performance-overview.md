@@ -18,7 +18,8 @@
 性能优化的过程中使用数据而非直觉指导优化方向是提升优化效率的关键。当前DevEco Studio中提供了两个性能分析工具，可以进行UI的性能分析，帮助我们高效的进行性能问题定位：
 1. CPU Profiler：用于在运行过程中抓取trace和调用栈对耗时点进行分析，使用方法可以参考<!--RP1-->[CPU Profiler的使用指导](../performance/application-performance-analysis.md)<!--RP1End-->分析的思路可以参考<!--RP2-->[常用Trace的含义](../performance/common-trace-using-instructions.md)<!--RP2End-->。
 2. ArkUI Inspector：用于可视化的展示UI组件树，分析UI的布局层次和参数，使用方法可以参考<!--RP3-->[ArkUI Inspector使用说明](../performance/arkUI-inspector.md)<!--RP3End-->。
-在分析性能问题的过程中，应当先通过CPU Profiler工具发现实际的性能瓶颈点，再针对性的进行优化。
+
+   在分析性能问题的过程中，应当先通过CPU Profiler工具发现实际的性能瓶颈点，再针对性的进行优化。
 
 ### 惰性加载优先
 推迟非可视区域的资源消耗可有效的加快应用启动和页面的切换速度。ArkUI提供了[LazyForEach](rendering-control/arkts-rendering-control-lazyforeach.md)组件，便于应用实现数据的懒加载。

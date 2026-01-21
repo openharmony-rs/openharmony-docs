@@ -19,10 +19,10 @@ A click is a common gesture that can be easily implemented using the [onClick](.
 @Entry
 @Component
 export struct OnClickGesture {
-  private judgeCount: number = 0
+  private judgeCount: number = 0;
 
   increaseJudgeGuard(): void {
-    this.judgeCount++
+    this.judgeCount++;
   }
 
   build() {
@@ -34,15 +34,15 @@ export struct OnClickGesture {
             .height('50%')
             .backgroundColor(Color.Grey)
             .onClick (() => { // 1. A click event is registered on the child component. Normally, clicking the child component triggers its own click handler first.
-              console.info('Clicked on child')
-              this.increaseJudgeGuard()
+              console.info('Clicked on child');
+              this.increaseJudgeGuard();
             })
             .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
               // 3. When the tap count is a multiple of 5, reject the tap gesture on the child component, allowing the parent component's tap gesture to respond instead.
               if (this.judgeCount % 5 == 0 && gestureInfo.type == GestureControl.GestureType.CLICK) {
-                return GestureJudgeResult.REJECT
+                return GestureJudgeResult.REJECT;
               } else {
-                return GestureJudgeResult.CONTINUE
+                return GestureJudgeResult.CONTINUE;
               }
             })
         }
@@ -53,8 +53,8 @@ export struct OnClickGesture {
         .gesture(
           TapGesture() // 2. A tap gesture is registered on the parent component. Normally, tapping inside the child area gives priority to the child's click event.
             .onAction(() => {
-              console.info('Clicked on parent')
-              this.increaseJudgeGuard()
+              console.info('Clicked on parent');
+              this.increaseJudgeGuard();
             }))
       }
       .height('100%')
@@ -62,7 +62,7 @@ export struct OnClickGesture {
       .justifyContent(FlexAlign.Center)
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.singlegesture_Index_Click_title') with the string resource file you use.
+    // Replace $r('app.string.singlegesture_Index_Click_title') with the actual resource file. In this example, the value in the resource file is "onClick."
     .title($r('app.string.singlegesture_Index_Click_title'))
   }
 }
@@ -80,7 +80,7 @@ TapGesture(value?: TapGestureParameters)
 
 The tap gesture supports single-tap and multi-tap. For detailed parameter definitions, see [TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md).
 
-<!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->
+<!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->   
 
 ``` TypeScript
 @Entry
@@ -103,7 +103,7 @@ export struct Tap {
                 }))
           Text(this.value)
         }
-        .height(200)
+        .height(300)
         .width(250)
         .padding(20)
         .border({ width: 3 })
@@ -114,6 +114,7 @@ export struct Tap {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.singlegesture_TapGesture_title') with the actual resource file. In this example, the value in the resource file is "TapGesture."
     .title($r('app.string.singlegesture_TapGesture_title'))
   }
 }
@@ -172,6 +173,7 @@ export struct LongPress {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.singlegesture_LongPressGesture_title') with the actual resource file. In this example, the value in the resource file is "LongPress."
     .title($r('app.string.singlegesture_LongPressGesture_title'))
   }
 }
@@ -191,10 +193,11 @@ PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: numb
 A pan gesture triggers a pan gesture event. The gesture is recognized when the pan distance reaches the minimum pan distance (default: 5 vp). For detailed parameter definitions, see [PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md).
 
 The following example implements a simple volume control slider. The callback of the pan gesture processes volume increase or decrease logic for different input sources.
+
 Five input modes are supported:
-1. One-finger vertical swipe on the touchscreen.
+1. One-finger vertical swipe on the screen.
 2. Mouse drag with the left button pressed.
-3. Mouse wheel scrolling.
+3. Scrolling by mouse wheel.
 4. One-finger vertical swipe on the touchpad.
 5. Two-finger vertical swipe on the touchpad.
 
@@ -227,14 +230,14 @@ export struct VolumeControlDemo {
     this.currentVolume = Math.min(
       this.MAX_VOLUME,
       Math.max(this.MIN_VOLUME, this.currentVolume + delta)
-    )
+    );
   }
 
   build() {
     NavDestination() {
       Column() {
         Row() {
-          // Replace $r('app.string.video') with the string resource file you use.
+          // Replace $r('app.string.video') with the actual resource file. In this example, the value in the resource file is "Volume."
           Text($r('app.string.video'))
           Text(`: ${this.currentVolume}`).fontSize(20)
         }.margin(10)
@@ -275,7 +278,7 @@ export struct VolumeControlDemo {
       .padding(20)
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.singlegesture_Index_Pancom_title') with the string resource file you use.
+    // Replace $r('app.string.singlegesture_Index_Pancom_title') with the actual resource file. In this example, the value in the resource file is "PanGesture."
     .title($r('app.string.singlegesture_Index_Pancom_title'))
   }
 }
@@ -287,11 +290,11 @@ export struct VolumeControlDemo {
 
 >**NOTE**
 >
->Most swipeable components, such as **List**, **Grid**, **Scroll**, and **Tab**, allow for swiping through the pan gesture. If you bind the [pan gesture](#pan-gesture-pangesture) or [swipe gesture](#swipe-gesture-swipegesture) to a child of these components, competition for gesture recognition will result.
+> - Most swipeable components, such as **List**, **Grid**, **Scroll**, and **Tab**, allow for swiping through the pan gesture. If you bind the [pan gesture](#pan-gesture-pangesture) or [swipe gesture](#swipe-gesture-swipegesture) to a child of these components, competition for gesture recognition will result.
 >
->If a pan gesture is bound to a child component, the child component will respond to the recognized pan gesture instead of the parent. To make the parent respond, you must either adjust the gesture binding approach, have the child forward the gesture event to the parent, or modify the **distance** parameter of the pan gesture on both parent and child to make the swiping more sensitive. If the swipe gesture is bound to a child component, to allow the parent component to respond to gestures, you must modify the parameters of **PanGesture** and **SwipeGesture**, since the swipe gesture and pan gesture are recognized under different conditions.
+> - If a pan gesture is bound to a child component, the child component will respond to the recognized pan gesture instead of the parent. To make the parent respond, you must either adjust the gesture binding approach, have the child forward the gesture event to the parent, or modify the **distance** parameter of the pan gesture on both parent and child to make the swiping more sensitive. If the swipe gesture is bound to a child component, to allow the parent component to respond to gestures, you must modify the parameters of **PanGesture** and **SwipeGesture**, since the swipe gesture and pan gesture are recognized under different conditions.
 >
->An inappropriate value can lead to slow response or lagging.
+> - An inappropriate value can lead to slow response or lagging.
 
 
 ## Pinch Gesture (PinchGesture)
@@ -355,6 +358,7 @@ export struct Pinch {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.singlegesture_PinchGesture_title') with the actual resource file. In this example, the value in the resource file is "PinchGesture."
     .title($r('app.string.singlegesture_PinchGesture_title'))
   }
 }
@@ -424,6 +428,7 @@ export struct Rotation {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.singlegesture_RotationGesture_title') with the actual resource file. In this example, the value in the resource file is "RotationGesture."
     .title($r('app.string.singlegesture_RotationGesture_title'))
   }
 }
@@ -485,6 +490,7 @@ export struct Swipe {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.singlegesture_SwipeGesture_title') with the actual resource file. In this example, the value in the resource file is "SwipeGesture."
     .title($r('app.string.singlegesture_SwipeGesture_title'))
   }
 }

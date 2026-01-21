@@ -30,7 +30,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) | OH_AVBuffer | 为媒体内存接口定义native层对象。 |
-| [OH_NativeBuffer](capi-core-oh-nativebuffer.md) | OH_NativeBuffer | 为图形内存接口定义native层对象。 |
+| [OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer.md) | OH_NativeBuffer | 为图形内存接口定义native层对象。 |
 
 ### 函数
 
@@ -312,6 +312,6 @@ OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBuffer](capi-core-oh-nativebuffer.md) * | 如果成功，则返回OH_NativeBuffer实例的指针，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1.输入的buffer为空指针。<br> 2.OH_AVBuffer结构校验失败。<br> 3.出现内部错误。 |
+| [OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer.md) * | 如果成功，则返回OH_NativeBuffer实例的指针，如果失败，则返回NULL。<br> 可能的失败原因：<br> 1.输入的buffer为空指针。<br> 2.OH_AVBuffer结构校验失败。<br> 3.出现内部错误。 |
 
 

@@ -18,7 +18,7 @@
 
 ## 子组件
 
-仅支持[GridItem](ts-container-griditem.md)子组件和自定义组件。自定义组件在Grid下使用时，建议使用GridItem作为自定组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+仅支持[GridItem](ts-container-griditem.md)子组件和自定义组件。自定义组件在Grid下使用时，建议使用GridItem作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
 
 支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
@@ -99,7 +99,7 @@ columnsTemplate('repeat(auto-fit, track-size)')是设置最小列宽值为track-
 
 columnsTemplate('repeat(auto-fill, track-size)')是设置固定列宽值为track-size，自动计算列数。
 
-columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用columnsGap为最小列间距，自动计算列数和实际列间距。
+columnsTemplate('repeat(auto-stretch, track-size)')是设置固定列宽值为track-size，使用columnsGap作为最小列间距，自动计算列数和实际列间距。
 
 其中repeat、auto-fit、auto-fill、auto-stretch为关键字。track-size为列宽，支持的单位包括px、vp、%或有效数字，默认单位为vp，track-size至少包括一个有效列宽。<br/>
 auto-fit模式和auto-stretch模式只支持track-size为一个有效列宽值，并且auto-stretch模式中的track-size只支持px、vp和有效数字，不支持%。auto-fill模式支持一个或多个有效列宽，如columnsTemplate('repeat(auto-fill, 20)')、columnsTemplate('repeat(auto-fill, 20 80px)')。
@@ -3036,13 +3036,35 @@ struct GridExample {
 
 从API version 23开始，Grid组件新增[编辑模式选项](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
 ```ts
 // xxx.ets
+import { GridDataSource } from './GridDataSource';
+
 @Entry
 @Component
 struct GridExample {
-  numbers1: string[] = ['0', '1', '2'];
-  numbers2: string[] = ['0', '1', '2'];
+  numbers: GridDataSource = new GridDataSource(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
+  @State isSelected: boolean[] = [];
+  selectedCount: number = 0;
+
+  @Styles
+  normalStyles(): void {
+    .opacity(1.0)
+  }
+
+  @Styles
+  selectStyles(): void {
+    .opacity(0.4)
+  }
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 9; i++) {
+      this.isSelected.push(false);
+    }
+  }
 
   @Builder
   MenuBuilder() {
@@ -3061,37 +3083,43 @@ struct GridExample {
     }.width(100)
   }
 
-  @Builder
-  MyPreview() {
-    Column() {
-      Image($r('app.media.startIcon'))
-        .width(200)
-        .height(200)
-    }
-  }
-
   build() {
     Column({ space: 5 }) {
       Text('Grid')
       Grid() {
-        ForEach(this.numbers1, (day: string) => {
-          ForEach(this.numbers1, (day: string) => {
-            GridItem() {
-              Text(day)
-                .fontSize(16)
-                .backgroundColor(0xF9CF93)
-                .width('100%')
-                .height('100%')
-                .textAlign(TextAlign.Center)
+        LazyForEach(this.numbers, (day: string, index: number) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .selected(this.isSelected[index])
+          // 设置多选显示效果
+          .stateStyles({
+            normal: this.normalStyles,
+            selected: this.selectStyles
+          })
+          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+            { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+          .onClick(() => {
+            this.isSelected[index] = !this.isSelected[index];
+            console.info(`item:${index}, this.isSelected[item]:${this.isSelected[index]}`)
+            if (this.isSelected[index]) {
+              ++this.selectedCount;
+            } else {
+              --this.selectedCount;
             }
-            // 设置GridItem为选中状态
-            .selected(true)
-            .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
-              { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
-          }, (day: string) => day)
+          })
         }, (day: string) => day)
       }
-      .editModeOptions({ enableGatherSelectedItemsAnimation: true })
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: () => {
+          return this.selectedCount;
+        }
+      })
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
       .columnsGap(10)

@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 A page serves as a visual interaction unit composed of layouts, components, and interaction logic. It encapsulates specific functional logic and information presentation, forming the core interface medium for user-application interaction. A complete application typically comprises multiple pages. Both the **Navigation** component and @ohos.router module support page navigation within applications.
@@ -36,7 +36,7 @@ In the ArkUI component tree hierarchy, pages that were originally managed by the
 | Scenario                                     | Navigation                            | Router                                 |
 | --------------------------------------------- | ------------------------------------- | -------------------------------------- |
 | One-time development for multi-device deployment                                     | Supported (The Auto mode is provided to automatically adapt to single- or double-column layout.)   | Not supported                                |
-| Navigation to a specific page                                 | pushPath & pushDestination            | pushUrl & pushNameRoute               |
+| Navigation to a specific page                                 | **pushPath** and **pushDestination**           | **pushUrl** and **pushNameRoute**              |
 | Navigation to a page within an HSP                                | Supported                                 | Supported                                  |
 | Navigation to a page within a HAR                                | Supported                                 | Supported                                  |
 | Passing parameters during navigation                                     | Supported                                 | Supported                                 |
@@ -47,19 +47,19 @@ In the ArkUI component tree hierarchy, pages that were originally managed by the
 | Return to a previous page                                     | Supported                                 | Supported                                  |
 | Passing parameters on returning to a previous page                                 | Supported                                 | Supported                                  |
 | Returning to a specific route                                 | Supported                                 | Supported                                  |
-| Dialog box for returning to a previous page                                 | Supported, implemented through route interception               | showAlertBeforeBackPage              |
-| Route replacement                                     | replacePath & replacePathByName       | replaceUrl & replaceNameRoute          |
-| Clearing the navigation stack                                   | clear                                 | clear                                  |
-| Removing specific routes from the navigation stack                                 | removeByIndexes & removeByName        | Not supported                                |
+| Dialog box for returning to a previous page                                 | Supported, implemented through route interception               | **showAlertBeforeBackPage**             |
+| Route replacement                                     | **replacePath** and **replacePathByName**      | **replaceUrl** and **replaceNameRoute**         |
+| Clearing the navigation stack                                   | **clear**                                | **clear**                                 |
+| Removing specific routes from the navigation stack                                 | **removeByIndexes** and **removeByName**       | Not supported                                |
 | Transition animation                                     | Supported                                 | Supported                                  |
 | Custom transition animation                               | Supported                                 | Supported, with limited animation types                    |
 | Disabling transition animation                                 | Supported, with global or one-time settings                       | Supported, by setting **duration** in the **pageTransition** API to **0**|
 | Shared element animation with **geometryTransition**               | Supported through sharing between **NavDestination** components       | Not supported                                |
-| Listening for page lifecycle                             | UIObserver.on('navDestinationUpdate') | UIObserver.on('routerPageUpdate')      |
+| Listening for page lifecycle                             | **UIObserver.on('navDestinationUpdate')**| **UIObserver.on('routerPageUpdate')**     |
 | Obtaining a page stack object                               | Supported                                 | Not supported                                |
 | Route interception                                     | Supported through **setInterception**     | Not supported                                |
-| Route stack information query                               | Supported                                 | getState() & getLength()               |
-| Move operations within the navigation stack                               | moveToTop & moveIndexToTop            | Not supported                                |
+| Route stack information query                               | Supported                                 | **getState()** and **getLength()**              |
+| Move operations within the navigation stack                               | **moveToTop** and **moveIndexToTop**           | Not supported                                |
 | Immersive pages                                   | Supported                                 | Not supported; requires window configuration              |
 | Setting the title bar and toolbar| Supported                                 | Not supported                                |
 | Modal nested routing                                 | Supported                                 | Not supported                                |

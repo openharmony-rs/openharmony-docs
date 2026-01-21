@@ -108,6 +108,7 @@
 | 音视频     | 3g2<sup>22+</sup>                        |视频轨：H.263、AVC(H.264)、MPEG4<br>音频轨：AAC、AMR(amrnb、amrwb)|
 | 音视频     | m4v<sup>22+</sup>                        |<!--RP12-->视频轨：AVC(H.264)、MPEG4<!--RP12End--><br>音频轨：AAC、ALAC、AC3|
 | 音视频     | wmv<sup>22+</sup>                        |视频轨：AVC(H.264)、WMV3<br>音频轨：WMAV1、WMAV2、WMAPRO|
+| 音视频     | rm<sup>23+</sup>、rmvb<sup>23+</sup>                        |视频轨：RV30、RV40<br>音频轨：AAC、AC3、COOK|
 | 音频       | m4a                        |<!--RP9-->音频轨：AAC、ALAC<sup>22+</sup><!--RP9End-->|
 | 音频       | aac                        |音频轨：AAC|
 | 音频       | mp3                        |音频轨：MPEG(MP3)|
@@ -117,6 +118,7 @@
 | 音频       | amr                        |音频轨：AMR(amrnb、amrwb)|
 | 音频       | ape                        |音频轨：APE|
 | 音频       | wma<sup>22+</sup>                        |音频轨：AC3、WMAV1、WMAV2、Vorbis、Flac、AMR(amrnb、amrwb)、AAC、MPEG(MP2、MP3)、GSM_MS、G711mu、G711a、PCM、ADPCM_G722、ADPCM_G726、ADPCM_IMA_WAV、ADPCM_MS、ADPCM_YAMAHA、DVAUDIO<sup>23+</sup>、DTS<sup>23+</sup>|
+| 音频       | dts<sup>23+</sup>          |音频轨：DTS|
 | 外挂字幕   | srt                        |字幕轨：SRT|
 | 外挂字幕   | webvtt                     |字幕轨：WEBVTT|
 

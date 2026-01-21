@@ -1,7 +1,7 @@
 # native_interface_focus.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -44,7 +44,7 @@ Declares APIs for focus management, mainly used for actively transferring focus,
 
 ### ArkUI_KeyProcessingMode
 
-```
+```c
 enum ArkUI_KeyProcessingMode
 ```
 
@@ -65,7 +65,7 @@ Enumerates the key event processing priority modes.
 
 ### OH_ArkUI_FocusRequest()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 ```
 
@@ -91,7 +91,7 @@ Requests focus for a specific node.
 
 ### OH_ArkUI_FocusClear()
 
-```
+```c
 void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 ```
 
@@ -111,7 +111,7 @@ Clears the focus to the root container node.
 
 ### OH_ArkUI_FocusActivate()
 
-```
+```c
 void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool isAutoInactive)
 ```
 
@@ -133,7 +133,7 @@ Sets the focus activation state for the current page. When activated, the focuse
 
 ### OH_ArkUI_FocusSetAutoTransfer()
 
-```
+```c
 void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTransfer)
 ```
 
@@ -154,7 +154,7 @@ Configures the focus transfer behavior when pages are switched.
 
 ### OH_ArkUI_FocusSetKeyProcessingMode()
 
-```
+```c
 void OH_ArkUI_FocusSetKeyProcessingMode(ArkUI_ContextHandle uiContext, ArkUI_KeyProcessingMode mode)
 ```
 

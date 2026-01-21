@@ -11,7 +11,7 @@ Unified drag and drop refers to a data transfer interaction triggered by a mouse
 ## Basic Concepts
 
 * Drag operation: an operation that begins when a user selects a draggable component, continues when the user drags the component on the screen, and ends when the user releases the component on a droppable component.
-* Drag preview: a visual representation of the data being dragged. You can customize it using [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) or [DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) of [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart), or by using the universal attribute [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11).
+* Drag preview (background): a visual representation of the data being dragged. You can customize it using [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) or [DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) of [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart), or by using the universal attribute [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11).
 * Drag data: data being transferred, encapsulated using the UDMF API [UnifiedData](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) to ensure data consistency and security.
 * Drag source: component that initiates the drag operation and provides data, typically with characteristics for responding to dragging.
 * Drop target: component that can receive and process drag data, and is able to perform corresponding actions based on the data being dropped.
@@ -101,7 +101,7 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
 
 1. Make the component draggable.
 
-   Set the **draggable** attribute to **true** and configure the **onDragStart** callback function. In the callback, use UDMF to set drag data and return a custom drag preview.
+   Set the **draggable** attribute to **true** and set the **onDragStart** callback function. In the callback function, you can use UDMF to set the drag data and return the custom drag preview.
 
    <!-- @[module_draggable_head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
@@ -112,12 +112,12 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
-   // Replace $r('app.media.app_icon') with the image resource file you use.
+   // Replace $r('app.media.app_icon') with the actual resource file.
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
      .draggable(true)
-     // ···
+     // ...
      .onDragStart((event) => {
        let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
        // Replace 'resources/base/media/app_icon.png' with the image resource file you use.
@@ -175,29 +175,29 @@ The following example uses the [Image](../reference/apis-arkui/arkui-ts/ts-basic
    ``` TypeScript
    @Builder
    pixelMapBuilder() {
-    Column() {
-      // Replace $r('app.media.startIcon') with the image resource file you use.
-      Image($r('app.media.startIcon'))
-        .width(120)
-        .height(120)
-        // ···
-    }
+     Column() {
+       // Replace $r('app.media.startIcon') with the actual resource file.
+       Image($r('app.media.startIcon'))
+         .width(120)
+         .height(120)
+         // ...
+     }
    }
    
-   // ···
+   // ...
    
    // Use the createFromBuilder API of componentSnapshot to capture a snapshot of a custom builder.
    private getComponentSnapshot(): void {
-    this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
-      this.pixelMapBuilder()
-    },
-      (error: Error, pixmap: image.PixelMap) => {
-        if (error) {
-          hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
-          return;
-        }
-        this.pixmap = pixmap;
-      })
+     this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
+       this.pixelMapBuilder();
+     },
+       (error: Error, pixmap: image.PixelMap) => {
+         if (error) {
+           hilog.error(DOMAIN, TAG, '%{public}s', JSON.stringify(error));
+           return;
+         }
+         this.pixmap = pixmap;
+       });
    }
    ```
 
@@ -332,9 +332,8 @@ import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
 const DOMAIN = 0x0000;
-const TAG = 'DefaultDragError: '
+const TAG = 'DefaultDragError: ';
 
 @Entry
 @Component
@@ -348,11 +347,11 @@ export struct DefaultDrag {
   @Builder
   pixelMapBuilder() {
     Column() {
-      // Replace $r('app.media.startIcon') with the image resource file you use.
+      // Replace $r('app.media.startIcon') with the actual resource file.
       Image($r('app.media.startIcon'))
         .width(120)
         .height(120)
-        // ···
+        // ...
     }
   }
 
@@ -388,7 +387,7 @@ export struct DefaultDrag {
   // Use the createFromBuilder API of componentSnapshot to capture a snapshot of a custom builder.
   private getComponentSnapshot(): void {
     this.getUIContext().getComponentSnapshot().createFromBuilder(() => {
-      this.pixelMapBuilder()
+      this.pixelMapBuilder();
     },
       (error: Error, pixmap: image.PixelMap) => {
         if (error) {
@@ -396,104 +395,105 @@ export struct DefaultDrag {
           return;
         }
         this.pixmap = pixmap;
-      })
+      });
   }
 
 
   build() {
-    // ···
-    Row() {
-      Column() {
-        Text('start Drag')
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
+    // ...
         Row() {
-          // Replace $r('app.media.app_icon') with the image resource file you use.
-          Image($r('app.media.app_icon'))
-            .width(100)
-            .height(100)
-            .draggable(true)
-            .margin({ left: 15 })
-            .visibility(this.imgState)
-            // Bind a parallel gesture to trigger a custom long press gesture.
-            .parallelGesture(LongPressGesture().onAction(() => {
-              this.getUIContext()
-                .getPromptAction()
-                .showToast({ duration: 100, message: 'Long press gesture trigger' });
-            }))
-            .onDragStart((event) => {
-              let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-              data.imageUri = 'common/pic/img.png';
-              let unifiedData = new unifiedDataChannel.UnifiedData(data);
-              event.setData(unifiedData);
+          Column() {
+            Text('start Drag')
+              .fontSize(18)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              // Replace $r('app.media.app_icon') with the actual resource file.
+              Image($r('app.media.app_icon'))
+                .width(100)
+                .height(100)
+                .draggable(true)
+                .margin({ left: 15 })
+                .visibility(this.imgState)
+                // Bind a parallel gesture to trigger a custom long press gesture.
+                .parallelGesture(LongPressGesture().onAction(() => {
+                  this.getUIContext()
+                    .getPromptAction()
+                    .showToast({ duration: 100, message: 'Long press gesture trigger' });
+                }))
+                .onDragStart((event) => {
+                  let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+                  // Replace 'resources/base/media/app_icon.png' with the image resource file you use.
+                  data.imageUri = 'resources/base/media/app_icon.png';
+                  let unifiedData = new unifiedDataChannel.UnifiedData(data);
+                  event.setData(unifiedData);
 
-              let dragItemInfo: DragItemInfo = {
-                pixelMap: this.pixmap,
-                extraInfo: 'this is extraInfo',
-              };
-              // The custom drag preview is returned in onDragStart.
-              return dragItemInfo;
-            })
-            // Prepare a custom drag preview in advance.
-            .onPreDrag((preDragStatus: PreDragStatus) => {
-              if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
-                this.getComponentSnapshot();
-              }
-            })
-            .onDragEnd((event) => {
-              // The result value obtained from onDragEnd is set in onDrop of the drop target.
-              if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-              } else if (event.getResult() === DragResult.DRAG_FAILED) {
-                this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-              }
-            })
-        }
+                  let dragItemInfo: DragItemInfo = {
+                    pixelMap: this.pixmap,
+                    extraInfo: 'this is extraInfo',
+                  };
+                  // The custom drag preview is returned in onDragStart.
+                  return dragItemInfo;
+                })
+                // Prepare a custom drag preview in advance.
+                .onPreDrag((preDragStatus: PreDragStatus) => {
+                  if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
+                    this.getComponentSnapshot();
+                  }
+                })
+                .onDragEnd((event) => {
+                  // The result value obtained from onDragEnd is set in onDrop of the drop target.
+                  if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+                  } else if (event.getResult() === DragResult.DRAG_FAILED) {
+                    this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+                  }
+                })
+            }
 
-        Text('Drag Target Area')
-          .fontSize(20)
+            Text('Drag Target Area')
+              .fontSize(20)
+              .width('100%')
+              .height(40)
+              .margin(10)
+              .backgroundColor('#008888')
+            Row() {
+              Image(this.targetImage)
+                .width(this.imageWidth)
+                .height(this.imageHeight)
+                .draggable(true)
+                .margin({ left: 15 })
+                .border({ color: Color.Black, width: 1 })// Set the drag badge display type to MOVE (no badge shown).
+                .onDragMove((event) => {
+                  event.setResult(DragResult.DROP_ENABLED);
+                  event.dragBehavior = DragBehavior.COPY;
+                })
+                .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
+                  uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
+                .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+                .onDrop((dragEvent?: DragEvent) => {
+                  // Obtain the drag data.
+                  this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+                    let records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
+                    let rect: Rectangle = event.getPreviewRect();
+                    this.imageWidth = Number(rect.width);
+                    this.imageHeight = Number(rect.height);
+                    this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+                    this.imgState = Visibility.None;
+                    // Explicitly set the result to successful, and then pass this value to onDragEnd of the drag source.
+                    event.setResult(DragResult.DRAG_SUCCESSFUL);
+                  });
+                })
+            }
+          }
           .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Row() {
-          Image(this.targetImage)
-            .width(this.imageWidth)
-            .height(this.imageHeight)
-            .draggable(true)
-            .margin({ left: 15 })
-            .border({ color: Color.Black, width: 1 })// Set the drag badge display type to MOVE (no badge shown).
-            .onDragMove((event) => {
-              event.setResult(DragResult.DROP_ENABLED)
-              event.dragBehavior = DragBehavior.COPY
-            })
-            .allowDrop([uniformTypeDescriptor.UniformDataType.HYPERLINK,
-              uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-            .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-            .onDrop((dragEvent?: DragEvent) => {
-              // Obtain the drag data.
-              this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-                let records: unifiedDataChannel.UnifiedRecord[] = event.getData().getRecords();
-                let rect: Rectangle = event.getPreviewRect();
-                this.imageWidth = Number(rect.width);
-                this.imageHeight = Number(rect.height);
-                this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-                this.imgState = Visibility.None;
-                // Explicitly set the result to successful, and then pass this value to onDragEnd of the drag source.
-                event.setResult(DragResult.DRAG_SUCCESSFUL);
-              })
-            })
+          .height('100%')
         }
+        .height('100%')
       }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-    // ···
+      // ...
 }
 ```
 
@@ -572,23 +572,23 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    ``` TypeScript
    @State previewData: DragItemInfo[] = [];
    @State isSelectedGrid: boolean[] = [];
-   // ···
-   .onClick(() => {
-     this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-     if (this.isSelectedGrid[idx]) {
-       // ···
-       let gridItemName = 'grid' + idx;
-       // Call the get API in componentSnapshot to obtain the component snapshot pixel map on selection.
-       this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
-         this.pixmap = pixmap;
-         this.previewData[idx] = {
-           pixelMap: this.pixmap
-         }
-       })
-     } else {
-       // ···
-     }
-   })
+   // ...
+             .onClick(() => {
+               this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+               if (this.isSelectedGrid[idx]) {
+                 // ...
+                 let gridItemName = 'grid' + idx;
+                 // Call the get API in componentSnapshot to obtain the component snapshot pixel map on selection.
+                 this.getUIContext().getComponentSnapshot().get(gridItemName, (error: Error, pixmap: image.PixelMap) => {
+                   this.pixmap = pixmap;
+                   this.previewData[idx] = {
+                     pixelMap: this.pixmap
+                   };
+                 });
+               } else {
+                 // ...
+               }
+             })
    ```
 
 3. Set the multi-select display effects.
@@ -600,19 +600,19 @@ The following uses **Grid** as an example to describe the basic procedure for mu
     ``` TypeScript
     @Styles
     normalStyles(): void {
-      .opacity(1.0)
+      .opacity(1.0);
     }
     
     @Styles
     selectStyles(): void {
-      .opacity(0.4)
+      .opacity(0.4);
     }
     
-    // ···
-    .stateStyles({
-      normal: this.normalStyles,
-      selected: this.selectStyles
-    })
+    // ...
+              .stateStyles({
+                normal: this.normalStyles,
+                selected: this.selectStyles
+              })
     ```
 
 4. Adapt the number badge.
@@ -623,20 +623,20 @@ The following uses **Grid** as an example to describe the basic procedure for mu
     
     ``` TypeScript
     @State numberBadge: number = 0;
-    // ···
-    .onClick(() => {
-      this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
-      if (this.isSelectedGrid[idx]) {
-        // ···
-        this.numberBadge++;
-        // ···
-      } else {
-        this.numberBadge--;
-        // ···
-      }
-    })
-    // Set the numberBadge parameter in dragPreviewOptions for the number badge in multi-select scenarios.
-    .dragPreviewOptions({ numberBadge: this.numberBadge })
+    // ...
+              .onClick(() => {
+                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
+                if (this.isSelectedGrid[idx]) {
+                  // ...
+                  this.numberBadge++;
+                  // ...
+                } else {
+                  this.numberBadge--;
+                  // ...
+                }
+              })
+              // Set the numberBadge parameter in dragPreviewOptions for the number badge in multi-select scenarios.
+              .dragPreviewOptions({ numberBadge: this.numberBadge })
     ```
 
 **Sample Code**
@@ -742,11 +742,12 @@ build() {
 When you need to create custom drop animations, you can disable the default system animations. Since API version 18, ArkUI provides the [executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18) API, which allows you to define your own drop animations. The following provides step-by-step instructions using the **Image** component as an example, along with key points to keep in mind during development.
 
 1. Configure drag and drop settings for the component.
+
    Set **draggable** to **true** and configure callbacks such as **onDragStart** and **onDragEnd**.
    <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
    
    ``` TypeScript
-   // Replace $r('app.media.app_icon') with the image resource file you use.
+   // Replace $r('app.media.app_icon') with the actual resource file.
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
@@ -756,7 +757,7 @@ When you need to create custom drop animations, you can disable the default syst
      .onDragStart((event) => {
      })
      .onDragEnd((event) => {
-       // ···
+       // ...
      })
    ```
 
@@ -814,15 +815,14 @@ When you need to create custom drop animations, you can disable the default syst
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// ···
-
+// ...
 const DOMAIN = 0x0000;
-const TAG = 'DropAnimationExampleTag'
+const TAG = 'DropAnimationExampleTag';
 
 @Entry
 @Component
 export struct DropAnimationExample {
-  // ···
+  // ...
   @State targetImage: string = '';
   @State imageWidth: number = 100;
   @State imageHeight: number = 100;
@@ -833,14 +833,14 @@ export struct DropAnimationExample {
         this.imageWidth = 200;
         this.imageHeight = 200;
         this.imgState = Visibility.None;
-      })
-    }
+      });
+    };
 
   build() {
-    // ···
+    // ...
       Row() {
         Column() {
-          // Replace $r('app.media.app_icon') with the image resource file you use.
+          // Replace $r('app.media.app_icon') with the actual resource file.
           Image($r('app.media.app_icon'))
             .width(100)
             .height(100)
@@ -884,7 +884,7 @@ export struct DropAnimationExample {
             this.imageHeight = Number(rect.height);
             this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
             dragEvent.useCustomDropAnimation = true;
-            dragEvent.executeDropAnimation(this.customDropAnimation)
+            dragEvent.executeDropAnimation(this.customDropAnimation);
           })
           .width(this.imageWidth)
           .height(this.imageHeight)
@@ -893,7 +893,7 @@ export struct DropAnimationExample {
         .margin({ left: '5%' })
       }
       .height('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -1091,7 +1091,7 @@ struct GridEts {
 
   build() {
     Column({ space: 5 }) {
-      // The value in the app.string.Select_All resource file is 'Select All.'
+      // Replace $r('app.string.Select_All') with the actual resource file. In this example, the value in the resource file is "Select All."
       Button($r('app.string.Select_All'))
         .onClick(() => {
           for (let i = 0; i < this.isSelectedGrid.length; i++) {
@@ -1208,7 +1208,7 @@ struct GridEts {
 }
 ```
 
-
+![patchDataProcess](figures/patchDataProcess.gif)
 
 
 ## Spring Loading (Hover Detection) Support
@@ -1221,7 +1221,7 @@ This feature is particularly useful in the following scenarios:
 - File management: Dragging a file over a folder automatically expands it.
 - Home screen launcher: Hovering a file over an application icon automatically launches the application.
 
-Beyond view transitions, spring loading can also activate specific UI elements. For example, when a user drags text and hovers it over a button, a text boxcan be activated. The user can then move the dragged text into this text box and release it to display search results, enabling efficient one-handed operation.
+Beyond view transitions, spring loading can also activate specific UI elements. For example, when a user drags text and hovers it over a button, a text box can be activated. The user can then move the dragged text into this text box and release it to display search results, enabling efficient one-handed operation.
 
 ![drag spring loading example](figures/drag_springloading-01.png)
 
@@ -1317,15 +1317,15 @@ The following example demonstrates how to implement the device search functional
   ``` TypeScript
   build() {
     Column() {
-      // ···
+      // ...
         Column() {
-          // The value in the app.string.DoubleClick_Text resource file is 'Double-click to select and drag text: \n     DeviceName'.
+          // Replace $r('app.string.DoubleClick_Text') with the actual resource file. In this example, the value in the resource file is "Double-click to select and drag text: \n     DeviceName."
           Text($r('app.string.DoubleClick_Text'))
             .fontSize(30)
             .copyOption(CopyOptions.InApp) // Enable text selection and dragging when copyOption is enabled.
         }.padding({ bottom: 30 })
   
-        // The value in the app.string.Search_Device resource file is 'Search Devices.'
+        // Replace $r('app.string.Search_Device') with the actual resource file. In this example, the value in the resource file is "Search Devices."
         Button($r('app.string.Search_Device'))
           .width('80%')
           .height('80vp')
@@ -1333,10 +1333,10 @@ The following example demonstrates how to implement the device search functional
           .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
             detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
             preferType: SheetType.BOTTOM,
-            // The value in the app.string.Search_Device resource file is 'Search Devices.'
+            // Replace $r('app.string.Search_Device') with the actual resource file. In this example, the value in the resource file is "Search Devices."
             title: { title: $r('app.string.Search_Device') },
           })
-      // ···
+          // ...
     }.width('100%').height('100%')
     .justifyContent(FlexAlign.Center)
   }
@@ -1353,12 +1353,12 @@ The following example demonstrates how to implement the device search functional
   SheetBuilder() {
     Column() {
       // Text box
-      // The value in the app.string.Push_Here resource file is 'Drag text here'.
+      // Replace $r('app.string.Push_Here') with the actual resource file. In this example, the value in the resource file is "Drag text here."
       TextInput({ placeholder: $r('app.string.Push_Here') })
         .width('80%')
         .borderWidth(1)
         .borderColor(Color.Black)
-        // ···
+        // ...
         .onChange((value: string) => {
           if (value.length == 0) {
             this.isSearchDone = false;
@@ -1369,7 +1369,7 @@ The following example demonstrates how to implement the device search functional
         })
       if (this.isSearchDone) {
         Text(this.searchResult).fontSize(20)
-        // ···
+        // ...
       }
     }.width('100%').height('100%')
   }
@@ -1436,14 +1436,14 @@ The following example demonstrates how to implement the device search functional
 import { dragController } from '@kit.ArkUI';
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
 
-// ···
+// ...
 
 @Entry
 @ComponentV2
 export struct SpringLoadingPage {
-  context1 = this.getUIContext().getHostContext()
+  context1 = this.getUIContext().getHostContext();
   @Local isShowSheet: boolean = false;
-  // The value in the app.string.Select_Result resource file is 'Search results:\n  Device 1\n  Device 2\n  Device 3\n ...'
+  // Replace $r('app.string.Select_Result') with the actual resource file. In this example, the value of the resource file is "Search results:\n  Device 1\n  Device 2\n  Device 3\n ...".
   private searchResult: string = this.context1?.resourceManager.getStringSync($r('app.string.Select_Result').id)!;
   @Local isSearchDone: boolean = false;
   private reminderColor: Color = Color.Green;
@@ -1454,7 +1454,7 @@ export struct SpringLoadingPage {
   SheetBuilder() {
     Column() {
       // Text box
-      // The value in the app.string.Push_Here resource file is 'Drag text here'.
+      // Replace $r('app.string.Push_Here') with the actual resource file. In this example, the value in the resource file is "Drag text here."
       TextInput({ placeholder: $r('app.string.Push_Here') })
         .width('80%')
         .borderWidth(1)
@@ -1513,7 +1513,7 @@ export struct SpringLoadingPage {
         // The visual feedback is already provided in onDragEnter. When the spring loading state is entered, restore the UI to prompt the user to remain stationary.
         this.buttonBackgroundColor = this.normalColor;
       }
-    // ···
+      // ...
       return;
     }
     if (context.state == dragController.DragSpringLoadingState.UPDATE) {
@@ -1523,34 +1523,34 @@ export struct SpringLoadingPage {
       } else {
         this.buttonBackgroundColor = this.normalColor;
       }
-    // ···
+      // ...
       return;
     }
     // Handle completion: Trigger view transition.
     if (context.state == dragController.DragSpringLoadingState.END) {
       this.isShowSheet = true;
-    // ···
+      // ...
       return;
     }
     // Handle cancellation: Restore the UI.
     if (context.state == dragController.DragSpringLoadingState.CANCEL) {
       this.buttonBackgroundColor = this.normalColor;
-    // ···
+      // ...
       return;
     }
   }
 
   build() {
     Column() {
-    // ···
+      // ...
         Column() {
-          // The value in the app.string.DoubleClick_Text resource file is 'Double-click to select and drag text: \n     DeviceName'.
+          // Replace $r('app.string.DoubleClick_Text') with the actual resource file. In this example, the value in the resource file is "Double-click to select and drag text: \n     DeviceName."
           Text($r('app.string.DoubleClick_Text'))
             .fontSize(30)
             .copyOption(CopyOptions.InApp) // Enable text selection and dragging when copyOption is enabled.
         }.padding({ bottom: 30 })
 
-        // The value in the app.string.Search_Device resource file is 'Search Devices.'
+        // Replace $r('app.string.Search_Device') with the actual resource file. In this example, the value in the resource file is "Search Devices."
         Button($r('app.string.Search_Device'))
           .width('80%')
           .height('80vp')
@@ -1558,24 +1558,24 @@ export struct SpringLoadingPage {
           .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
             detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
             preferType: SheetType.BOTTOM,
-            // The value in the app.string.Search_Device resource file is 'Search Devices.'
+            // Replace $r('app.string.Search_Device') with the actual resource file. In this example, the value in the resource file is "Search Devices."
             title: { title: $r('app.string.Search_Device') },
           })
           .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
           .backgroundColor(this.buttonBackgroundColor)
           .onDragEnter(() => {
             // Change the button color when dragged text enters the area.
-            this.buttonBackgroundColor = this.reminderColor
+            this.buttonBackgroundColor = this.reminderColor;
           })
           .onDragLeave(() => {
             // Restore the original color when text leaves the area.
-            this.buttonBackgroundColor = this.normalColor
+            this.buttonBackgroundColor = this.normalColor;
           })
           .onDragSpringLoading(null)
           .onDragSpringLoading((context: SpringLoadingContext) => {
             this.handleSpringLoading(context);
           })
-        // ···
+        // ...
     }.width('100%').height('100%')
     .justifyContent(FlexAlign.Center)
   }
@@ -1584,6 +1584,6 @@ export struct SpringLoadingPage {
 ```
 
 
-
+![drag spring loading sample gif](figures/spring-loading-record.gif)
 
 <!--RP1--><!--RP1End-->

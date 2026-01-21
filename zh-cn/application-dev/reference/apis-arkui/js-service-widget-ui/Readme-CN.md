@@ -14,7 +14,7 @@
   - [多语言支持](js-service-widget-multiple-languages.md)
   - [版本兼容适配](js-service-widget-version-compatibility.md)
   - [设置主题样式](js-service-widget-theme.md)
-- 组件通用信息<!--card-comp-universal-comp-infor-->
+- 组件通用信息<!--card-comp-universal-comp-inform-->
   - [通用属性](js-service-widget-common-attributes.md)
   - [通用样式](js-service-widget-common-styles.md)
   - [通用事件](js-service-widget-common-events.md)

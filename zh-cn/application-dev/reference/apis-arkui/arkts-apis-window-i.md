@@ -95,7 +95,7 @@
 | width  | number   | 否   | 否   | 矩形区域的宽度，单位为px，该参数应为整数。 |
 | height | number   | 否   | 否   | 矩形区域的高度，单位为px，该参数应为整数。 |
 
-## RectInVp<sup>23+</sup>
+## RectInVP<sup>23+</sup>
 
 窗口矩形区域，单位为vp。
 
@@ -143,10 +143,10 @@
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
 | visible    | boolean       | 否   | 否   | 避让区域是否可见。true表示可见；false表示不可见。 |
-| leftRect   | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。 |
-| topRect    | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。 |
-| rightRect  | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。 |
-| bottomRect | [RectInVp](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区，单位为vp。 |
+| leftRect   | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的左侧的矩形区，单位为vp。 |
+| topRect    | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的顶部的矩形区，单位为vp。 |
+| rightRect  | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的右侧的矩形区，单位为vp。 |
+| bottomRect | [RectInVP](#rectinvp23) | 否   | 否   | 中心位于窗口的两条对角线的底部的矩形区，单位为vp。 |
 
 ## UIEnvWindowAvoidAreaInfoPX<sup>23+</sup>
 
@@ -438,6 +438,7 @@
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。 |
+| needAnimation<sup>23+</sup> | boolean | 否 | 是 | 是否启用窗口创建动效。<br>传入true时，跟随系统默认动效。传入false时，表示关闭窗口创建动效，仅在[自由窗口状态](../../windowmanager/window-terminology.md#自由窗口)的情况下生效。<br>此参数不填时，默认为undefined，跟随系统默认动效。<br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## Callback<sup>15+</sup>
 

@@ -31,11 +31,13 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       // Clip the image using a circle with a diameter of 280 px.
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '280px', height: '280px' }))
         .width('500px').height('280px')
 
       // Clip the image using a circle with a diameter of 350 px.
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new CircleShape({ width: '350px', height: '350px' }))
         .width('500px').height('370px')
@@ -62,10 +64,12 @@ import { EllipseShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '280px', height: '200px' }))
         .width('500px').height('400px')
 
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new EllipseShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -92,10 +96,12 @@ import { RectShape } from '@kit.ArkUI';
 struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '200px', height: '200px' }))
         .width('500px').height('400px')
 
+      // Replace $r('app.media.background') with the actual resource file.
       Image($r('app.media.background'))
         .clipShape(new RectShape({ width: '380px', height: '280px' }))
         .width('500px').height('400px')
@@ -123,6 +129,7 @@ struct ClipShapeExample {
   build() {
     Column({ space: 15 }) {
       Row() {
+        // Replace $r('app.media.background') with the actual resource file.
         Image($r('app.media.background'))
           .clipShape(new PathShape({ commands: 'M0 0 H400 V200 H0 Z' }))
           .width('500px').height('300px')

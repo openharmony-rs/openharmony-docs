@@ -56,9 +56,7 @@
       - [拉起指定应用概述](app-startup-overview.md)
       - [（可选）使用canOpenLink判断应用是否可访问](canopenlink.md)
       - [使用Deep Linking实现应用间跳转](deep-linking-startup.md)
-      <!--Del-->
       - [使用App Linking实现应用间跳转](app-linking-startup.md)
-      <!--DelEnd-->
       - [显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)
       - [应用链接说明](app-uri-config.md)
     - 拉起指定类型的应用<!--specified-type-app-redirection-->
@@ -168,6 +166,6 @@
     - [Storage接口切换](storage-switch.md)
 <!--DelEnd-->
 - Native子进程开发指导<!--native-childprocess-development-->
-    - [创建Native子进程](capi_nativechildprocess_development_guideline.md)
+    - [创建Native子进程](capi-nativechildprocess-development-guideline.md)
     - [获取Native子进程退出信息](capi-nativechildprocess-exit-info.md)
 - [Ability Kit术语](ability-terminology.md)

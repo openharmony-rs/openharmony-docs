@@ -33,6 +33,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 ### 步骤一：新建工程及编译配置
 
 1. 将示例工程依赖的jsoncpp库文件复制到新建工程中。
+
    打开链接[HiAppEvent示例工程EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub)，并点击“下载当前目录”，下载EventSub工程文件。
    
    新建一个Native C++工程。从解压后的EventSub文件夹中拷贝jsoncpp库文件（entry/libs和entry/src/main/cpp/thirdparty整个目录）到新建的工程中，得到的目录结构如下：
@@ -81,15 +82,14 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[H
 
 3. 编辑“napi_init.cpp”文件，导入依赖的文件并定义LOG_TAG：
 
-   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    #include "napi/native_api.h"
    // 根据工程中三方库jsoncpp的位置适配引用json.h的路径
    #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
-   #include "hilog/log.h"
    #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
+   #include "hilog/log.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"

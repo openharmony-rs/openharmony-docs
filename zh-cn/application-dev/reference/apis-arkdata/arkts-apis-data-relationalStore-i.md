@@ -88,6 +88,7 @@
 | autoSync | boolean | 否 | 否 | 该值为true时，表示该表支持自动同步和手动同步；该值为false时，表示该表只支持手动同步，不支持自动同步。 |
 | asyncDownloadAsset<sup>18+</sup> | boolean | 否 | 是 | 表示当前数据库在端云同步时，同步或异步下载资产。true表示优先下载完所有数据后，使用异步任务下载资产；false表示同步下载资产；默认值为false。 |
 | enableCloud<sup>18+</sup> | boolean | 否 | 是 | 表示当前数据库是否允许端云同步。true表示允许端云同步；false表示不允许端云同步。默认值为true。 |
+| tableType<sup>23+</sup> |  [DistributedTableType](arkts-apis-data-relationalStore-e.md#distributedtabletype23)  | 否 | 是 | 分布式表类型。DEVICE_COLLABORATION表示设备协作表；SINGLE_VERSION表示单版本表。跨设备数据同步时，默认值为DEVICE_COLLABORATION；端云数据同步时，默认值为SINGLE_VERSION，不支持DEVICE_COLLABORATION。 |
 
 ## Statistic<sup>10+</sup>
 

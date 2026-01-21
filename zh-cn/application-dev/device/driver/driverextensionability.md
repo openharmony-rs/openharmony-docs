@@ -44,7 +44,7 @@
    const REQUEST_CODE = 99; // 与扩展外设客户端约定请求码。
    ```
 
-5. 打开DriverExtAbility.ets文件，导入[RPC通信模块](../../reference/apis-ipc-kit/js-apis-rpc.md)，重载onRemoteMessageRequest()方法，接收应用传递过来的消息，并将处理的结果返回给应用。REQUEST_CODE用于校验应用发送的服务请求码。
+5. 打开DriverExtAbility.ets文件，导入[@ohos.rpc (RPC通信)](../../reference/apis-ipc-kit/js-apis-rpc.md)，重载onRemoteMessageRequest()方法，接收应用传递过来的消息，并将处理的结果返回给应用。REQUEST_CODE用于校验应用发送的服务请求码。
 
    <!-- @[driver_service_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
    
@@ -188,7 +188,7 @@
 
 ## 扩展设备能力
 
-扩展外设管理目前提供了HID DDK、USB DDK、USB Serial DDK和SCSI Peripheral DDK四种能力，用于扩展外设专项驱动的开发。具体使用方法，请参考：
+扩展外设管理目前提供了HidDdk、UsbDdk、USBSerialDDK和ScsiPeripheralDDK四种能力，用于扩展外设专项驱动的开发。具体使用方法，请参考：
 
 * [开发适用HID协议的设备驱动](hid-ddk-guidelines.md)
 * [开发适用USB协议的设备驱动](usb-ddk-guidelines.md)
@@ -210,7 +210,7 @@
 - ohos.permission.ACCESS_DDK_DRIVERS（API version 18及以上版本，需要申请此权限。）
 
   1. 在module.json5配置文件的requestPermissions标签中[声明权限](../../security/AccessToken/declare-permissions.md)。
-  2. HarmonyAppProvision配置文件中，修改acls字段，跨级别申请权限，可参考[申请使用受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。
+  2. HarmonyAppProvision配置文件中，修改acls字段，跨级别申请权限，可参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。
   3. 在HarmonyAppProvision配置文件（即SDK目录下的“Sdk/openharmony/_{Version} _/toolchains /lib/UnsgnedReleasedProfileTemplate.json”文件）中，配置当前客户需要连接的驱动服务端的bundleName，如果存在多个服务端，多个服务端的bundleName以逗号分隔。
 
       具体配置方法如下：
@@ -222,5 +222,5 @@
       }
       ```
 
-自动签名方法： 请参考[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
+自动签名方法： 请参考[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
 <!--RP1End-->

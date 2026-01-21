@@ -659,7 +659,7 @@ Starting from API version 21, configuring the startup task scheduling phase is s
 
 For example, the home page of an application needs to obtain feed stream data through network requests, and you want this task to run concurrently with the AbilityStage module loading on an asynchronous thread. Assuming the network request task is StartupTask_004 defined in [Defining Startup Task Configuration](#defining-startup-task-configuration), the development procedure is as follows:
 
-  1. Configure the task to be scheduled before the AbilityStage module loads. In the **startupconfig.json** file, set the **schedulerPhase** field of StartupTask_004 to **preAbilityStageLoad**.
+  1. Configure the task to be scheduled before the AbilityStage module loads. In the **startup_config.json** file, set the **schedulerPhase** field of StartupTask_004 to **preAbilityStageLoad**.
   2. Configure the task to execute concurrently with AbilityStage module loading on an asynchronous thread. Set the **runOnThread** field of StartupTask_004 to **taskPool** and the **waitOnMainThread** field to **false**.
 
   ```json

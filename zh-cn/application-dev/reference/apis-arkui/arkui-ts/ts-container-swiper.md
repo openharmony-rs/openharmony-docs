@@ -614,7 +614,7 @@ indicatorStyle(value?: IndicatorStyle)
 
 > **说明：** 
 >
-> 从API version 8开始支持，从API version 10开始废弃，无替代接口。可以使用[Indicator](#indicator10)、[DigitIndicator](#digitindicator10)和[DotIndicator](#dotindicator10)设置导航点样式。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[indicator](#indicator)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -102,7 +102,7 @@ int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 调用接口成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接hid_ddk服务失败或者调用方不是设备的创建者。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能的原因: 1.设备ID小于0;<br>         2.入参length长度超过7; 3.入参items为空指针。<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 对应设备的注入为空。<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode) 对应设备不存在。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 调用接口成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接hid_ddk服务失败或者调用方不是设备的创建者。<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode) 参数校验失败。可能的原因: 1.设备ID小于0;<br>         2.入参length长度超过7; 3.入参items为空指针。<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 对应设备的注入为空。|
 
 ### OH_Hid_DestroyDevice()
 
@@ -366,7 +366,7 @@ int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo)
 | 参数项                                                         | 描述 |
 |-------------------------------------------------------------| -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev                                       | 设备操作句柄。 |
-| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md) *rawDevInfo | 设备原始信息，包含供应商ID、产品ID和总线类型。 |
+| [Hid_RawDevInfo](capi-hidddk-hid-rawdevinfo.md) *rawDevInfo | 设备原始信息，包含厂商ID、产品ID和总线类型。 |
 
 **返回：**
 

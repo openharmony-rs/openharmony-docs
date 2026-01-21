@@ -9,12 +9,15 @@
 
 从API 23开始支持[数字信封](huks-key-import-overview.md#数字信封导入)特性。
 
-以数字信封导入RSA密钥和AES密钥为例。具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)，其中**数字信封导入密钥不支持DSA算法**。使用数字信封导入密钥需要使用tag，HUKS_TAG_UNWRAP_ALGORITHM_SUITE，该tag值为HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING。数字信封导入密钥时，如果是导入非对称密钥的密钥对，需要添加[OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA标签](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，并将公钥以X.509 DER格式封装填入该标签，且针对非对称密钥仅支持以密钥对形式导入。
+以数字信封导入RSA密钥和AES密钥为例。具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)，其中**数字信封导入密钥不支持DSA算法**。
 
+使用数字信封导入密钥需要使用[HUKS_TAG_UNWRAP_ALGORITHM_SUITE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)标签，该标签值为[HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksunwrapsuite9)。
+
+数字信封导入密钥时，如果是导入非对称密钥的密钥对，需要添加[HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)标签，并将公钥以X.509 DER格式封装填入该标签，且针对非对称密钥仅支持以密钥对形式导入。
 
 ## 开发步骤
 1. 业务方设备（设备A）生成SM4密钥，cipherSm4。
-2. 设备A使用生成的SM4密钥加密将导入密钥importKey，加密使用ECB/NoPadding模式，enImportKey=Encrypt(ciperSm4, importKey)。
+2. 设备A使用生成的SM4密钥加密将导入密钥importKey，加密使用ECB/NoPadding模式，enImportKey=Encrypt(cipherSm4, importKey)。
 3. 密钥导入方（设备B）导出SM2公钥，设备A接收该密钥。
 4. 设备A使用收到的SM2公钥加密生成的SM4密钥，enSm4=Encrypt(Sm2, cipherSm4)。
 5. 设备A将数字信封数据发送给设备B。

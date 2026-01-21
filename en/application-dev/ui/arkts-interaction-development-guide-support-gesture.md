@@ -12,7 +12,7 @@ When a user action matches the predefined characteristics of a gesture, the syst
 
 | Gesture                                                                                                                                                    | Operation Feature                                                                                     | Triggering Example                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [TapGesture](#intervention-in-gesture-processing)             | Quick press and release (≤ 300 ms by default).                                                          | Tap with a finger or stylus on a touchscreen; left-click with a mouse; single tap on a touchpad.                                                                          |
+| [TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)             | Quick press and release (≤ 300 ms by default).                                                          | Tap with a finger or stylus on a touchscreen; left-click with a mouse; single tap on a touchpad.                                                                          |
 | [LongPressGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md) | Press and hold for a sustained duration.                                                                       | Long press with a finger or stylus; hold down the left mouse button; long press on a touchpad.                                                                                |
 | [PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)             | Press and drag (displacement-based movement).                                                                           | Drag with a finger or stylus; move the mouse while holding the left button; swipe with two fingers on a touchpad; scroll the mouse wheel over a scrollable component.|
 | [PinchGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md)         | Pinch inward or outward using two fingers.                                                             | Pinch gesture on touchscreen or touchpad; scroll the mouse wheel while holding **Ctrl** over a pinch-enabled component.                  |
@@ -49,6 +49,7 @@ Pan A and Pan B are defined with different threshold conditions. Pan B is on a c
 ![Scenario 3](figures/gesture-senario-03.png)
 
 The gesture that matches the actual user operation is triggered.
+
 Example: If the user lifts their finger before the pan gesture threshold is met, a tap gesture is recognized instead.
 
 

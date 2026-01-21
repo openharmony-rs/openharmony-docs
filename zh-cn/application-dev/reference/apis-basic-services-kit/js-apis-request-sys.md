@@ -3,7 +3,7 @@
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
 request部件主要给应用提供上传下载文件、后台传输代理的基础能力。

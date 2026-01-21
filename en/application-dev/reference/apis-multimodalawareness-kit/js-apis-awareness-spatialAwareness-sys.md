@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.spatialAwareness (Spatial Awareness)
+# @ohos.multimodalAwareness.spatialAwareness (Spatial Awareness) (System API)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->

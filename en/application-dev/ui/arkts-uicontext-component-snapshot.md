@@ -6,10 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 ## Overview
-Component snapshot is the capability to generate a pixel map ([PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)) from the rendering result of a component node tree within an application. It supports two approaches:
-
-- Taking a snapshot of a component that is already attached to the UI tree
-- Taking a snapshot of an offline component implemented using **Builder** or **ComponentContent**.
+Component snapshot is the capability to generate a pixel map ([PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)) from the rendering result of a component node tree within an application. It supports two approaches:<br>Taking a snapshot of a component that is already attached to the UI tree<br>Taking a snapshot of an offline component implemented using **Builder** or **ComponentContent**.
 
 > **NOTE**
 >
@@ -29,7 +26,7 @@ The snapshot captures only the most recent frame. If you trigger a component upd
 
 
 ### Taking a Snapshot of an Offline Component
-Offline components are components that are encapsulated using Builder or ComponentContent but have not yet been attached to the tree. To take snapshots of them, use [createFromBuilder](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1) or, starting from API version 18, [createFromComponent](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfromcomponent18).
+Offline components are components that are encapsulated using **Builder** or **ComponentContent** but have not yet been attached to the tree. To take snapshots of them, use [createFromBuilder](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1). Since API version 18, you can also use [createFromComponent](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#createfromcomponent18) to take snapshots of offline components.
 
 Since offline components do not participate in actual rendering, taking snapshots of them takes longer because the system must first perform offline construction, layout, and resource loading. Snapshots taken before these operations complete may return unexpected results. Therefore, it is usually necessary to set a sufficient delay to ensure the system completes these operations. For image resources, set the [syncLoad](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#syncload8) attribute of the **Image** component to **true** to force synchronous loading. This ensures images are loaded, downloaded, and decoded during offline component construction, allowing the image pixels to be correctly displayed during the snapshot process.
 
@@ -59,11 +56,11 @@ export struct ScrollSnapshot {
   // Scroll distance per step
   private scrollHeight: number = 0;
 
-// ···
+  // ...
   build() {
-    // ···
+    // ...
         Stack() {
-        // ···
+          // ...
           // 1.1 Bind the scroll controller and configure a unique component ID using .id.
           List({ space: 12, scroller: this.scroller }) {
               LazyForEach(this.dataSource, (item: number) => {
@@ -72,7 +69,7 @@ export struct ScrollSnapshot {
               }
             }, (item: number) => item.toString())
           }
-        // ···
+          // ...
           .id(LIST_ID)
           // 1.2 Obtain the scroll offset through a callback.
           .onDidScroll(() => {
@@ -84,7 +81,7 @@ export struct ScrollSnapshot {
             this.listComponentHeight = newValue.height as number;
             this.scrollHeight = this.listComponentHeight;
           })
-        // ···
+          // ...
     }
   }
 }
@@ -234,7 +231,7 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
         fileIo.closeSync(file.fd);
         Logger.info(TAG, `Succeeded in packToFile`);
         this.getUIContext().getPromptAction().showToast({
-          // Replace $r('app.string.save_album_success') with the resource file you use.
+          // Replace $r('app.string.save_album_success') with the actual resource file. In this example, the value in the resource file is "Saved to album."
           message: $r('app.string.save_album_success'),
           duration: 1800
         })
@@ -242,7 +239,7 @@ async saveSnapshot(result: SaveButtonOnClickResult): Promise<void> {
         Logger.error(TAG, `Failed to packToFile. Error code is ${error.code}, message is ${error.message}`);
       });
     }
-  // ···
+    // ...
   } catch (err) {
     let error = err as BusinessError;
     Logger.error(TAG, `saveSnapshot err, errCode: ${error.code}, error mesage: ${error.message}`);

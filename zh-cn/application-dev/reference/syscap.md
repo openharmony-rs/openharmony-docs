@@ -67,7 +67,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 // syscap.json
 {
     "devices": {
-        "general": [            // 每一个典型设备对应一个syscap支持能力集，可配置多个典型设备
+        "general": [            // 每一个典型设备对应一个SysCap支持能力集，可配置多个典型设备
             "default",
             "car"
         ],
@@ -79,13 +79,13 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
             }
         ]
     },
-    "development": {             // addedSysCaps内的syscap集合与devices中配置的各设备支持的syscap集合的并集共同构成联想能力集
+    "development": {             // addedSysCaps内的SysCap集合与devices中配置的各设备支持的SysCap集合的并集共同构成联想能力集
         "addedSysCaps": [
             "SystemCapability.Location.Location.Lite"
         ]
     },
     "production": {              // 用于生成rpcid，慎重添加，可能导致应用无法分发到目标设备上
-        "addedSysCaps": [],      // devices中配置的各设备支持的syscap集合的交集，添加addedSysCaps集合再除去removedSysCaps集合，共同构成要求能力集
+        "addedSysCaps": [],      // devices中配置的各设备支持的SysCap集合的交集，添加addedSysCaps集合再除去removedSysCaps集合，共同构成要求能力集
         "removedSysCaps": []     // 当该要求能力集为某设备的子集时，应用才可被分发到该设备上
     }
 }
@@ -112,7 +112,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
 - ArkTS API
 
-  - 方法1：OpenHarmony定义了API canIUse帮助开发者来判断该设备是否支持某个特定的syscap。
+  - 方法1：OpenHarmony定义了API canIUse帮助开发者来判断该设备是否支持某个特定的SysCap。
 
     ```ts
     if (canIUse("SystemCapability.ArkUI.ArkUI.Full")) {

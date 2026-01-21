@@ -101,7 +101,7 @@ arkOptions/tscConfig中maxFlowDepth字段展示。
       {
          instancePath: 'app.products[0].buildOption.arkOptions.tscConfig.maxFlowDepth',
          keyword: 'maximum',
-         params: { comparision: '<=', limit: 65535 },
+         params: { comparison: '<=', limit: 65535 },
          message: 'must be <= 65535',
          location: 'D:/工程名/build-profile.json5:行号:列号'
       }

@@ -93,9 +93,8 @@ static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
     napi_get_named_property(env, obj, "key", &result);
     // 关闭句柄作用域，自动释放在该作用域内创建的对象句柄
     napi_close_handle_scope(env, scope);
-    // 此处的result能够得到值“handleScope”
-    return result;
     // result已经离开scope的作用域，继续使用可能会存在稳定性问题，如果需要在作用域外使用对象，建议使用napi_open_escapable_handle_scope系列接口
+    return nullptr;
 }
 
 static napi_value HandleScope(napi_env env, napi_callback_info info)
@@ -210,15 +209,14 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
     napi_value value = nullptr;
     napi_create_string_utf8(env, "Test napi_escapable_handle_scope", NAPI_AUTO_LENGTH, &value);
     napi_set_named_property(env, obj, "key", value);
-    // 调用napi_escape_handle将对象逃逸到作用域之外
-    napi_value escapedObj = nullptr;
-    napi_escape_handle(env, scope, obj, &escapedObj);
+    napi_value prop = nullptr;
+    napi_get_named_property(env, obj, "key", &prop);
+    // 调用napi_escape_handle将属性值逃逸到作用域之外
+    napi_value result = nullptr;
+    napi_escape_handle(env, scope, prop, &result);
     // 关闭可逃逸的句柄作用域，清理资源
     napi_close_escapable_handle_scope(env, scope);
-    // 在获取逃逸后的obj：escapedObj的属性并返回，此处也能够得到“napi_escapable_handle_scope”
-    napi_value result = nullptr;
-    // 为了验证逃逸的实现，可以在此处获取obj的属性，此处会得到“undefined”
-    napi_get_named_property(env, escapedObj, "key", &result);
+    // 逃逸后的result可以在作用域外继续使用
     return result;
 }
 ```

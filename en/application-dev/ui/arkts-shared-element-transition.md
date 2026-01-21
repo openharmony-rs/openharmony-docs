@@ -41,10 +41,10 @@ Below is the complete sample code and effect.
 import { common } from '@kit.AbilityKit';
 
 class PostData {
-  // Customize the image resource path as needed.
+  // Replace $r('app.media.flower') with the actual resource file.
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -57,24 +57,33 @@ struct Index {
   // Customize the image resource paths in the array as needed.
   private allPostData: PostData[] = [
     {
+      // Replace $r('app.media.flower') with the actual resource file.
       avatar: $r('app.media.flower'),
       name: 'Alice',
-      // The value in the 'app.string.shareTransition_text1' resource file is 'It is sunny.'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text1'),
+      // Replace $r('app.string.shareTransition_text1') with the actual resource file. In this example, the value in the resource file is "Weather is fine."
+      message: $r('app.string.shareTransition_text1'),
+      // Replace $r('app.media.spring') with the actual resource file.
+      // Replace $r('app.media.tall_tree') with the actual resource file.
       images: [$r('app.media.spring'), $r('app.media.tall_tree')]
     },
     {
+      // Replace $r('app.media.sunset_sky') with the actual resource file.
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // The value in the 'app.string.shareTransition_text2' resource file is 'Hello World.'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text2'),
+      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello World."
+      message: $r('app.string.shareTransition_text2'),
+      // Replace $r('app.media.island') with the actual resource file.
       images: [$r('app.media.island')]
     },
     {
+      // Replace $r('app.media.tall_tree') with the actual resource file.
       avatar: $r('app.media.tall_tree'),
       name: 'Carl',
-      // The value in the 'app.string.shareTransition_text3' resource file is 'Everything grows.'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text3'),
+      // Replace $r('app.string.shareTransition_text3') with the actual resource file. In this example, the value in the resource file is "All things grow."
+      message: $r('app.string.shareTransition_text3'),
+      // Replace $r('app.media.flower') with the actual resource file.
+      // Replace $r('app.media.sunset_sky') with the actual resource file.
+      // Replace $r('app.media.spring') with the actual resource file.
       images: [$r('app.media.flower'), $r('app.media.sunset_sky'), $r('app.media.spring')]
     }];
 
@@ -145,7 +154,7 @@ export default struct Post {
       // Additional content for the expanded state
       if (this.isExpand) {
         Column() {
-          // The value in the 'app.string.shareTransition_text1' resource file is 'Comments.'
+          // Replace $r('app.string.shareTransition_text4') with the actual resource file. In this example, the value in the resource file is "Comments."
           Text($r('app.string.shareTransition_text4'))
           // Apply enter/exit transition effects to the text in the comments area.
             .transition(TransitionEffect.OPACITY
@@ -446,10 +455,10 @@ function postBuilder(data: Data) {
         .width(80)
         .height(80)
       Column() {
-        // The value in the 'shareTransition_text5' resource file is 'Click to expand Item.'
+        // Configure the resource whose name is 'shareTransition_text5' and value is a non-empty string in the resources\base\element\string.json file.
         Text((context as common.UIAbilityContext)?.resourceManager.getStringByNameSync('shareTransition_text5') + data.item)
           .fontSize(20)
-        // The value in the 'app.string.shareTransition_text6' resource file is 'Shared element transition.'
+        // Replace $r('app.string.shareTransition_text6') with the actual resource file. In this example, the value in the resource file is "Shared element transition."
         Text($r('app.string.shareTransition_text6'))
           .fontSize(12)
           .fontColor(0x909399)
@@ -465,7 +474,7 @@ function postBuilder(data: Data) {
     // Display detailed content in expanded state.
     if (data.isExpand) {
       Row() {
-        // The value in the 'app.string.shareTransition_text7' resource file is 'Expanded.'
+        // Replace $r('app.string.shareTransition_text7') with the actual resource file. In this example, the value in the resource file is "Expanded."
         Text($r('app.string.shareTransition_text7'))
           .fontSize(28)
           .fontColor(0x909399)
@@ -587,7 +596,7 @@ The following is the procedure for implementing the expanding and collapsing of 
 
 - When returning to the thumbnail from the full-screen state, a custom transition animation from **PageTwo** to **PageOne** is triggered, animating the shared element from full-screen to the thumbnail state on **PageOne**, and the component is migrated back to **PageOne** after the transition.
 
-```
+```txt
 ├──entry/src/main/ets                 // Code directory
 │  ├──CustomTransition
 │  │  ├──AnimationProperties.ets      // Encapsulation of shared element transition animation
@@ -742,7 +751,7 @@ export struct PageOne {
       Stack() {
         Column({ space: 20 }) {
           Row({ space: 10 }) {
-            // Customize the image resource path as needed.
+            // Replace $r('app.media.avatar') with the actual resource file.
             Image($r('app.media.avatar'))
               .size({ width: 50, height: 50 })
               .borderRadius(25)
@@ -752,7 +761,7 @@ export struct PageOne {
           }
           .justifyContent(FlexAlign.Start)
 
-          // The value in the 'app.string.shareTransition_text2' resource file is 'Hello World.'
+          // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello World."
           Text($r('app.string.shareTransition_text2'))
 
           NodeContainer(this.myNodeController)
@@ -836,7 +845,7 @@ export struct PageTwo {
           Column({ space: 20 }) {
             NodeContainer(this.myNodeController);
             if (this.animationProperties.showDetailContent) {
-              // The value in the 'app.string.shareTransition_text8' resource file is 'Expanded content'.
+              // Replace $r('app.string.shareTransition_text8') with the actual resource file. In this example, the value in the resource file is "Expanded content."
               Text($r('app.string.shareTransition_text8'))
                 .fontSize(20)
                 .transition(TransitionEffect.OPACITY)
@@ -939,7 +948,7 @@ export class CustomTransition {
 
 <!-- -->
 ```ts
-// Add the {"routerMap": "$profile:route_map"} configuration to the project configuration file module.json5.
+// Configure {"routerMap": "$profile:route_map"} in the project configuration file module.json5.
 // route_map.json
 {
   "routerMap": [
@@ -1298,7 +1307,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
 function cardBuilder() {
-  // Customize the image resource path as needed.
+  // Replace $r('app.media.card') with the actual resource file.
   Image($r('app.media.card'))
     .width('100%')
     .id('card')
@@ -1381,7 +1390,7 @@ To implement a shared element transition to a sheet when an image is clicked:
 
 - Enhance with additional animation: Optionally, add an animation to the initial image that transitions from transparent to visible to smooth the overall effect.
 
-```
+```txt
 ├──entry/src/main/ets                 // Code directory
 │  ├──entryability
 │  │  └──EntryAbility.ets             // Entry point class
@@ -1664,7 +1673,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 @Builder
 function flowerBuilder() {
-  // Customize the image resource path as needed.
+  // Replace $r('app.media.longevity_flower') with the actual resource file.
   Image($r('app.media.longevity_flower'))
   // Prevent flickering of the image during the first load.
     .syncLoad(true);
@@ -1945,7 +1954,7 @@ struct IfElseGeometryTransition {
   build() {
     Stack({ alignContent: Alignment.Center }) {
       if (this.isShow) {
-        // Customize the image resource path as needed.
+        // Replace $r('app.media.spring') with the actual resource file.
         Image($r('app.media.spring'))
           .autoResize(false)
           .clip(true)
@@ -1963,7 +1972,7 @@ struct IfElseGeometryTransition {
         // The multiple levels of containers here are used to demonstrate passing of relative layout constraints.
         Column() {
           Column() {
-            // Customize the image resource path as needed.
+            // Replace $r('app.media.sunset_sky') with the actual resource file.
             Image($r('app.media.sunset_sky'))
               .size({ width: '100%', height: '100%' })
           }
@@ -2006,10 +2015,10 @@ By combining **geometryTransition** with a modal transition API, you can impleme
 import { common } from '@kit.AbilityKit';
 
 class PostData {
-  // Customize the image resource path as needed.
+  // Replace $r('app.media.flower') with the actual resource file.
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -2024,24 +2033,33 @@ struct Index {
   // Customize the image resource paths in the array as needed.
   private allPostData: PostData[] = [
     {
+      // Replace $r('app.media.flower') with the actual resource file.
       avatar: $r('app.media.flower'),
       name: 'Alice',
-      // The value in the 'app.string.shareTransition_text1' resource file is 'It is sunny.'
-      message:this.context.resourceManager.getStringByNameSync('shareTransition_text1'),
+      // Replace $r('app.string.shareTransition_text1') with the actual resource file. In this example, the value in the resource file is "Weather is fine."
+      message: $r('app.string.shareTransition_text1'),
+      // Replace $r('app.media.spring') with the actual resource file.
+      // Replace $r('app.media.tall_tree') with the actual resource file.
       images: [$r('app.media.spring'), $r('app.media.tall_tree')]
     },
     {
+      // Replace $r('app.media.sunset_sky') with the actual resource file.
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // The value in the 'app.string.shareTransition_text2' resource file is 'Hello World.'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text2'),
+      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello World."
+      message: $r('app.string.shareTransition_text2'),
+      // Replace $r('app.media.island') with the actual resource file.
       images: [$r('app.media.island')]
     },
     {
+      // Replace $r('app.media.tall_tree') with the actual resource file.
       avatar: $r('app.media.tall_tree'),
       name: 'Carl',
-      // The value in the 'app.string.shareTransition_text3' resource file is 'Everything grows.'
-      message:this.context.resourceManager.getStringByNameSync('shareTransition_text3'),
+      // Replace $r('app.string.shareTransition_text3') with the actual resource file. In this example, the value in the resource file is "All things grow."
+      message: $r('app.string.shareTransition_text3'),
+      // Replace $r('app.media.flower') with the actual resource file.
+      // Replace $r('app.media.sunset_sky') with the actual resource file.
+      // Replace $r('app.media.spring') with the actual resource file.
       images: [$r('app.media.flower'), $r('app.media.sunset_sky'), $r('app.media.spring')]
     }];
 
@@ -2086,7 +2104,7 @@ struct Index {
           TransitionEffect.OPACITY.animation({ duration: 0 })
         ))
 
-      // The value in the 'app.string.shareTransition_text11' resource file is 'Hello, this is.'
+      // Configure the resource whose name is 'shareTransition_text11' and value is a non-empty string in the resources\base\element\string.json file.
       Text(this.context.resourceManager.getStringByNameSync('shareTransition_text11') + this.allPostData[index].name)
       // Apply a transition effect to the text.
         .transition(TransitionEffect.asymmetric(
@@ -2173,6 +2191,6 @@ export default struct Post {
 
 After a profile picture on the home page is clicked, the corresponding profile page is displayed in a modal, and there is a shared element transition between the profile pictures on the two pages.
 
-
+![en-us_image_0000001597320327](figures/en-us_image_0000001597320327.gif)
 
 <!--RP1--><!--RP1End-->

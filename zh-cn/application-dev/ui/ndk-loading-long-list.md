@@ -26,6 +26,7 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/capi-arkui-nativemodule-arkui-
 - 设置了NodeAdapter属性的节点，不再支持addChild等直接添加子组件的接口。子组件完全由NodeAdapter管理，使用属性方法设置NodeAdapter时，会判断父组件是否已经存在子节点，如果父组件已经存在子节点，则设置NodeAdapter操作失败，返回错误码。
 
 - NodeAdapter通过相关事件通知开发者按需生成组件，类似组件事件机制，开发者使用NodeAdapter时要注册[事件监听器](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver)，在监听器事件中处理逻辑，相关事件通过[ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)定义。另外NodeAdapter不会主动释放不在屏幕内显示的组件对象，开发者需要在[NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)事件中进行组件对象的释放，或者进行缓存复用。下图展示了典型列表滑动场景下的事件触发机制：
+
   ![zh-cn_image_0000001949769409](figures/zh-cn_image_0000001949769409.png)
 
 
@@ -36,7 +37,7 @@ NDK提供了[NodeAdapter](../reference/apis-arkui/capi-arkui-nativemodule-arkui-
 <!-- @[Lazy_loading_of_text_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
 
 ``` C
-// ArkUIListItemAdapter
+// ArkUIListItemAdapter.h
 // 用于文本列表懒加载功能代码。
 
 #ifndef MYAPPLICATION_ARKUILISTITEMADAPTER_H
@@ -142,14 +143,18 @@ private:
 
     void OnAdapterEvent(ArkUI_NodeAdapterEvent *event)
     {
+        // 获取事件类型
         auto type = OH_ArkUI_NodeAdapterEvent_GetType(event);
         switch (type) {
+            // Adapter需要添加新元素时获取新元素的唯一标识符
             case NODE_ADAPTER_EVENT_ON_GET_NODE_ID:
                 OnNewItemIdCreated(event);
                 break;
+            // Adapter需要添加新元素时获取新元素的内容
             case NODE_ADAPTER_EVENT_ON_ADD_NODE_TO_ADAPTER:
                 OnNewItemAttached(event);
                 break;
+            // Adapter将元素移除
             case NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER:
                 OnItemDetached(event);
                 break;
@@ -177,7 +182,7 @@ private:
             auto textItem = std::dynamic_pointer_cast<ArkUITextNode>(recycledItem->GetChildren().back());
             textItem->SetTextContent(data_[index]);
             handle = recycledItem->GetHandle();
-            // ···
+            // ...
             // 释放缓存池的引用。
             cachedItems_.pop();
         } else {
@@ -193,7 +198,7 @@ private:
             listItem->AddChild(textNode);
             // 创建ListItem划出菜单。
             auto swipeNode = std::make_shared<ArkUITextNode>();
-            // ···
+            // ...
             swipeNode->RegisterOnClick([this, data = data_[index]](ArkUI_NodeEvent *event) {
                 auto it = std::find(data_.begin(), data_.end(), data);
                 if (it != data_.end()) {
@@ -284,7 +289,7 @@ private:
            nativeModule_->setAttribute(handle_, NODE_LIST_NODE_ADAPTER, &item);
            adapter_ = adapter;
        }
-       // ···
+       // ...
    protected:
        void OnNodeEvent(ArkUI_NodeEvent *event) override
        {
@@ -401,16 +406,17 @@ private:
    ``` C
    // ArkUIListNode.h
    // 提供列表组件的封装。
-   // ···
+   // ...
    class ArkUIListNode : public ArkUINode {
-       // ···
+   public:
+       // ...
        void ScrollTo(float offset)
        {
            ArkUI_NumberValue value[] = {{.f32 = 0}, {.f32 = offset}, {.f32 = 0}};
            ArkUI_AttributeItem Item = {.value = value, .size = 3};
            nativeModule_->setAttribute(handle_, NODE_SCROLL_OFFSET, &Item);
        }
-       // ···
+       // ...
    };
    ```
 2. 控制列表滚动到指定元素。 
@@ -419,16 +425,17 @@ private:
    ``` C
    // ArkUIListNode.h
    // 提供列表组件的封装。
-   // ···
+   // ...
    class ArkUIListNode : public ArkUINode {
-       // ···
+   public:
+       // ...
        void ScrollToIndex(int32_t index)
        {
            ArkUI_NumberValue value[] = {{.i32 = index}};
            ArkUI_AttributeItem Item = {.value = value, .size = 1};
            nativeModule_->setAttribute(handle_, NODE_LIST_SCROLL_TO_INDEX, &Item);
        }
-       // ···
+       // ...
    };
    ```
 
@@ -438,16 +445,17 @@ private:
    ``` C
    // ArkUIListNode.h
    // 提供列表组件的封装。
-   // ···
+   // ...
    class ArkUIListNode : public ArkUINode {
-       // ···
+   public:
+       // ...
        void ScrollBy(float offset)
        {
            ArkUI_NumberValue value[] = {{.f32 = 0}, {.f32 = offset}};
            ArkUI_AttributeItem Item = {.value = value, .size = 2};
            nativeModule_->setAttribute(handle_, NODE_SCROLL_BY, &Item);
        }
-       // ···
+       // ...
    };
    ```
 ## ListItem横划删除 
@@ -468,9 +476,11 @@ private:
            : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_LIST_ITEM)) {}
        ~ArkUIListItemNode() override
        {
+           // 销毁ListItemSwipeActionOption实例
            if (swipeAction_) {
                OH_ArkUI_ListItemSwipeActionOption_Dispose(swipeAction_);
            }
+           // 销毁ListItemSwipeActionItem实例
            if (swipeItem_) {
                OH_ArkUI_ListItemSwipeActionItem_Dispose(swipeItem_);
            }
@@ -478,9 +488,13 @@ private:
        void SetSwiperAction(std::shared_ptr<ArkUINode> node)
        {
            swipeContent_ = node;
+           // 创建ListItemSwipeActionItem接口设置的配置项
            swipeItem_ = OH_ArkUI_ListItemSwipeActionItem_Create();
+           // 设置ListItemSwipeActionItem的布局内容
            OH_ArkUI_ListItemSwipeActionItem_SetContent(swipeItem_, node->GetHandle());
+           // 创建ListItemSwipeActionOption接口设置的配置项
            swipeAction_ = OH_ArkUI_ListItemSwipeActionOption_Create();
+           // 设置ListItemSwipeActionItem的右侧（垂直布局）或下方（横向布局）布局内容
            OH_ArkUI_ListItemSwipeActionOption_SetEnd(swipeAction_, swipeItem_);
            ArkUI_AttributeItem Item = {.object = swipeAction_};
            nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_SWIPE_ACTION, &Item);
@@ -500,10 +514,10 @@ private:
    <!-- @[Item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
    
    ``` C
-   // ArkUIListItemAdapter
-   // ···
+   // ArkUIListItemAdapter.h
+   // ...
    class ArkUIListItemAdapter {
-       // ···
+       // ...
        // 需要新的Item显示在可见区域。
        void OnNewItemAttached(ArkUI_NodeAdapterEvent *event)
        {
@@ -560,17 +574,17 @@ private:
            // 设置需要展示的元素。
            OH_ArkUI_NodeAdapterEvent_SetItem(event, handle);
        }
-       // ···
+       // ...
    };
    ```
 3. ArkUIListItemAdapter中新增RemoveItem，用于删除数据源并且调用OH_ArkUI_NodeAdapter_RemoveItem接口通知框架刷新UI。
    <!-- @[Remove_Item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemAdapter.h) -->
    
    ``` C
-   // ArkUIListItemAdapter
-   // ···
+   // ArkUIListItemAdapter.h
+   // ...
    class ArkUIListItemAdapter {
-       // ···
+       // ...
        void RemoveItem(size_t  index)
        {
            // 删除第index个数据。
@@ -581,7 +595,7 @@ private:
            // 更新新的数量。
            OH_ArkUI_NodeAdapter_SetTotalNodeCount(handle_, data_.size());
        }
-       // ···
+       // ...
    };
    ```
 ## 使用分组列表 
@@ -604,18 +618,22 @@ private:
        void SetHeader(std::shared_ptr<ArkUINode> node)
        {
            if (node) {
+               // 创建一个属性项，把节点的句柄放进去，并设置头部
                ArkUI_AttributeItem Item = { .object = node->GetHandle() };
                nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_HEADER, &Item);
            } else {
+               // 如果传入的是空指针（nullptr），说明要移除已有的头部
                nativeModule_->resetAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_HEADER);
            }
        }
        void SetFooter(std::shared_ptr<ArkUINode> node)
        {
            if (node) {
+               // 创建一个属性项，把节点的句柄放进去，并设置尾部
                ArkUI_AttributeItem Item = { .object= node->GetHandle() };
                nativeModule_->setAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_FOOTER, &Item);
            } else {
+               // 如果传入的是空指针（nullptr），说明要移除已有的尾部
                nativeModule_->resetAttribute(handle_, NODE_LIST_ITEM_GROUP_SET_FOOTER);
            }
        }
@@ -648,16 +666,16 @@ private:
    ``` C
    // ArkUIListNode.h
    // 提供列表组件的封装。
-   // ···
+   // ...
    class ArkUIListNode : public ArkUINode {
-       // ···
+       // ...
        void SetSticky(ArkUI_StickyStyle style)
        {
            ArkUI_NumberValue value[] = {{.i32 = style}};
            ArkUI_AttributeItem item = {value, 1};
            nativeModule_->setAttribute(handle_, NODE_LIST_STICKY, &item);
        }
-       // ···
+       // ...
    };
    ```
 3. List组件下使用ListItemGroup实现分组列表界面。

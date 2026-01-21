@@ -24,7 +24,7 @@ Not supported
 
 LoadingProgress()
 
-Creates a loading progress component.
+Creates a **LoadingProgress** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -103,7 +103,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   |    Read Only   |    Optional   |  Description             |
+| Name | Type   |    Read-Only   |    Optional   |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | enableLoading | boolean | No| No|Whether to show the loading animation.<br>Default value: **true**. **true**: Show the loading animation. **false**: Do not show the loading animation.|
 

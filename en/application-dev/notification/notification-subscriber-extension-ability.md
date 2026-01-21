@@ -25,7 +25,7 @@
 1. This sample is only supported on smartphones and tablets with standard systems.
 2. This sample uses the stage model and SDK 6.0.2.54 (API version 22).
 3. This sample can be compiled and run only in DevEco Studio 6.0.0 beta5 (build version: 6.0.0.848, built on September 12, 2025).
-4. The third-party wearable application should request the [ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission (system_basic level). A high-level permission signature is also required.
+4. The third-party wearable application should request the [ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission (system_basic level).
 
 ### Working Principles
 <img src="figures/notification_subscription_extension_ability.png" width="70%">

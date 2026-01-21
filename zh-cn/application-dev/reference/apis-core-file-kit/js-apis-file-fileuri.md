@@ -57,7 +57,7 @@ constructor是FileUri的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明|
 | -------- | -------- | -------- |--------|
-| uriOrPath | string | 是 | URI或路径。URI类型：<br/>-&nbsp; 应用沙箱URI：file://\<bundleName>/\<sandboxPath> <br/>-&nbsp; 公共目录文件类URI：file://docs/storage/Users/currentUser/\<publicPath> <br/>-&nbsp; 公共目录媒体类URI：file://media/\<mediaType>/IMG_DATATIME_ID/\<displayName> |
+| uriOrPath | string | 是 | URI或路径。URI类型：<br/>-&nbsp; 应用沙箱URI：file://\<bundleName>/\<sandboxPath> <br/>-&nbsp; 公共目录文件类URI：file://docs/storage/Users/currentUser/\<publicPath> <br/>-&nbsp; 公共目录媒体类URI：file://media/\<mediaType>/IMG_DATETIME_ID/\<displayName> |
 
 **错误码：**
 

@@ -1,4 +1,4 @@
-# 标准C++库
+# c++标准库
 
 <!--Kit: Standard Libraries-->
 <!--Subsystem: arkcompiler-->

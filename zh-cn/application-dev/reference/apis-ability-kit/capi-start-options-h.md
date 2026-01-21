@@ -878,7 +878,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibility(Abilit
 | 参数项 | 描述 |
 | -- | -- |
 | [AbilityRuntime_StartOptions](capi-abilityruntime-startoptions.md) *startOptions | StartOptions结构体。 |
-| [bilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) &startVisibility | 获取到的显示模式。取值范围参见AbilityRuntime_StartVisibility。 |
+| [AbilityRuntime_StartVisibility](capi-context-constant-h.md#abilityruntime_startvisibility) &startVisibility | 获取到的显示模式。取值范围参见AbilityRuntime_StartVisibility。 |
 
 **返回：**
 
@@ -947,7 +947,7 @@ void demo()
         data[i] = i + 1;
     }
 
-    //创建参数结构体实例，并设置参数
+    // 创建参数结构体实例，并设置参数
     OH_Pixelmap_InitializationOptions *createOpts = nullptr;
     OH_PixelmapInitializationOptions_Create(&createOpts);
     OH_PixelmapInitializationOptions_SetWidth(createOpts, 6);
@@ -955,7 +955,7 @@ void demo()
     OH_PixelmapInitializationOptions_SetPixelFormat(createOpts, PIXEL_FORMAT_RGBA_8888);
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_UNKNOWN);
 
-    //创建Pixelmap实例
+    // 创建Pixelmap实例
     OH_PixelmapNative *startWindowIcon = nullptr;
     Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &startWindowIcon);
     if (errCode != IMAGE_SUCCESS) {

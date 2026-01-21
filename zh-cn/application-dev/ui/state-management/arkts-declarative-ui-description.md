@@ -57,7 +57,8 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
   ```
 
 - 变量或表达式可以用于参数赋值，表达式结果类型必须符合参数要求。
-    例如，设置变量或表达式来构造Image和Text组件的参数。
+
+  例如，设置变量或表达式来构造Image和Text组件的参数。
 
   <!-- @[segment4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
   
@@ -106,6 +107,7 @@ ArkTS以声明方式组合和扩展组件来描述应用程序的UI，同时还�
   ```
 
 - 对于系统组件，ArkUI还为其属性预定义了一些枚举类型供开发者调用，枚举类型可以作为参数传递，但必须满足参数类型要求。
+
   例如，可以按以下方式配置Text组件的颜色和字体样式。
 
   <!-- @[segment8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->

@@ -112,6 +112,8 @@ getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMa
 
 合成HDR图像并返回HDR图像的PixelMap，支持传入合成参数（如PixelMapFormat等）。使用Promise异步回调。
 
+调用该接口的Picture对象中必须包含主图、增益图和元数据。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

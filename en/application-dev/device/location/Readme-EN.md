@@ -6,5 +6,4 @@
 - [Obtaining Device Location Information (ArkTS)](location-guidelines.md)
 - [Geocoding and Reverse Geocoding (ArkTS)](geocode-guidelines.md)
 - [Geofencing (ArkTS)](geofence-guidelines.md)
-- [FenceExtensionAbility](fenceExtensionAbility.md)
 - [Samples](app-samples.md)

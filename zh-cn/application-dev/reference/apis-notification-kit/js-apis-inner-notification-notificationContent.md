@@ -91,7 +91,7 @@
 | -------------- | -------------------------------------------- | ---- | --- |------------------------------------|
 | briefText      | string                                       |  否  | 否  | 通知概要内容，是对通知内容的总结（不可为空字符串，大小不超过1024字节，超出部分会被截断）。 |
 | expandedTitle  | string                                       |  否  | 否  | 通知展开时的标题（不可为空字符串，大小不超过1024字节，超出部分会被截断）。    |
-| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  否  | 否  | 通知的图片内容(图像像素的总字节数不能超过2MB)。|
+| picture        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) |  否  | 否  | 通知的图片内容（图像像素的总字节数不能超过2MB）。|
 
 
 ## NotificationSystemLiveViewContent

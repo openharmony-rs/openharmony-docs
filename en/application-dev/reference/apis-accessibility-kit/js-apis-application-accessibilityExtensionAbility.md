@@ -297,7 +297,7 @@ Called when the **AccessibilityExtensionAbility** is enabled and connected to th
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. The substitute API is available only for system applications.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -321,7 +321,7 @@ Called when the **AccessibilityExtensionAbility** is disabled and disconnected f
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. The substitute API is available only for system applications.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -345,7 +345,7 @@ Called when an event that matches the specified bundle and event type occurs. In
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. The substitute API is available only for system applications.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -378,7 +378,7 @@ Called when a physical key is pressed. In this API, you can determine whether to
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. The substitute API is available only for system applications.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -391,7 +391,7 @@ Called when a physical key is pressed. In this API, you can determine whether to
 **Return value**
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| boolean | Returns **true** if the event is consumed and will not be transferred; returns **false** otherwise.|
+| boolean | Returns **true** if the event is consumed and will not be transferred; returns **false** if the event is not consumed and will be transferred.|
 
 **Example**
 

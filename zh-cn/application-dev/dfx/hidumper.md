@@ -653,7 +653,7 @@ $ hidumper -s RenderService -a "h"
 -------------------------------[ability]-------------------------------
 
 ----------------------------------RenderService----------------------------------
------- Graphic2D--RenderSerice ------
+------ Graphic2D--RenderService ------
 Usage:
 gles                          |inquire gpu info
 h                             |help text for the tool

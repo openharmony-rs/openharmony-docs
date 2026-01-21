@@ -724,7 +724,7 @@ activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, coo
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 20900001 | Operation failed. |
+| 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status.|
 
 **示例**：
 
@@ -1392,7 +1392,7 @@ try {
 
 > **说明：**
 >
-> 从API version 10开始不再维护。建议使用[CooperateMessage](#cooperatemessage11)替代
+> 从API version 10开始不再维护。建议使用[CooperateState](#cooperatestate11)替代
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
 

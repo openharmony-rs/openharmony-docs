@@ -10,6 +10,7 @@
 ## When to Use
 
 This document describes how to use native RawFile APIs to manage raw file directories and files in OpenHarmony. You can use the APIs to perform operations such as traversing a file list and opening, searching for, reading, and closing raw files. 
+
 The APIs ended with **64** are new APIs. These APIs can be used to open rawfiles larger than 2 GB. For details, see [Rawfile](../reference/apis-localization-kit/capi-rawfile.md). The development procedure is the same for the API ended with **64** and the one does not. For example, you can use **OH_ResourceManager_OpenRawFile** and **OH_ResourceManager_OpenRawFile64** in the same way.
 
 ## Available APIs
@@ -377,72 +378,71 @@ After the project is created, the **cpp** directory is created in the project di
    Example: Obtain a **resourceManager** object for intra-package resources within the application.
 
 	<!-- @[native_rawfile_guide_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/ets/pages/Index.ets) -->
- 
- ``` TypeScript
- import { util } from '@kit.ArkTS';
- import { resourceManager } from '@kit.LocalizationKit';
- import { hilog } from '@kit.PerformanceAnalysisKit';
- import testNapi from 'libentry.so'  // Import the libentry.so file.
- 
- const DOMAIN = 0x0000;
- const TAG = '[Sample_rawfile]';
- 
- @Entry
- @Component
- struct Index {
-   @State message: string = 'Hello World';
-   private resMgr = this.getUIContext().getHostContext()?.resourceManager; // Obtain the resourceManager object for intra-package resources within the application.
-   @State rawfileListMsg: string = 'FileList = ';
-   @State retMsg: string = 'isRawDir = ';
-   @State rawfileContentMsg: string = 'RawFileContent = ';
-   @State rawfileDescriptorMsg: string = 'RawFileDescriptor.length = ';
- 
-   build() {
-     Row() {
-       Column() {
-         Text(this.message)
-           .id('hello_world')
-           .fontSize(30)
-           .fontWeight(FontWeight.Bold)
-           .onClick(async () => {
-             // Pass in the JS resource object and the relative path of the rawfile.
-             let rawFileList: Array<String> = testNapi.getFileList(this.resMgr, '');
-             this.rawfileListMsg = 'FileList = ' + rawFileList;
-             hilog.info(DOMAIN, TAG, this.rawfileListMsg);
- 
-             // Replace 'subrawfile' with the actual resource.
-             let ret: boolean = testNapi.isRawDir(this.resMgr, 'subrawfile');
-             this.retMsg = 'isRawDir = ' + ret;
-             hilog.info(DOMAIN, TAG, this.retMsg);
- 
-             // Pass in the JS resource object and the relative path of the rawfile.
-             // Replace 'rawfile1.txt' with the actual resource.
-             let rawfileArray: Uint8Array = testNapi.getRawFileContent(this.resMgr, 'rawfile1.txt');
-             // Convert Uint8Array to a string.
-             let textDecoder: util.TextDecoder = new util.TextDecoder();
-             let rawfileContent: string = textDecoder.decodeToString(rawfileArray);
-             this.rawfileContentMsg = 'RawFileContent = ' + rawfileContent;
-             hilog.info(DOMAIN, TAG, this.rawfileContentMsg);
- 
-             // Pass in the JS resource object and the rawfile name.
-             // Replace 'rawfile1.txt' with the actual resource.
-             let rawfileDescriptor: resourceManager.RawFileDescriptor =
-               testNapi.getRawFileDescriptor(this.resMgr, 'rawfile1.txt');
-             this.rawfileDescriptorMsg = 'RawFileDescriptor.length = ' + rawfileDescriptor.length;
-             hilog.info(DOMAIN, TAG, this.rawfileDescriptorMsg);
-           })
-         Text(this.rawfileListMsg).id('get_file_list').fontSize(30);
-         Text(this.retMsg).id('is_raw_dir').fontSize(30);
-         Text(this.rawfileContentMsg).id('get_raw_file_content').fontSize(30);
-         Text(this.rawfileDescriptorMsg).id('get_raw_file_descriptor').fontSize(30);
-       }
-       .width('100%')
-     }
-     .height('100%')
-   }
- }
- 
- ```
+    
+    ``` TypeScript
+    import { util } from '@kit.ArkTS';
+    import { resourceManager } from '@kit.LocalizationKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import testNapi from 'libentry.so'; // Import the libentry.so file.
+    
+    const DOMAIN = 0x0000;
+    const TAG = '[Sample_rawfile]';
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      private resMgr = this.getUIContext().getHostContext()?.resourceManager; // Obtain the resourceManager object for intra-package resources within the application.
+      @State rawfileListMsg: string = 'FileList = ';
+      @State retMsg: string = 'isRawDir = ';
+      @State rawfileContentMsg: string = 'RawFileContent = ';
+      @State rawfileDescriptorMsg: string = 'RawFileDescriptor.length = ';
+    
+      build() {
+        Row() {
+          Column() {
+            Text(this.message)
+              .id('hello_world')
+              .fontSize(30)
+              .fontWeight(FontWeight.Bold)
+              .onClick(async () => {
+                // Pass in the JS resource object and the relative path of the rawfile.
+                let rawFileList: Array<String> = testNapi.getFileList(this.resMgr, '');
+                this.rawfileListMsg = 'FileList = ' + rawFileList;
+                hilog.info(DOMAIN, TAG, this.rawfileListMsg);
+    
+                // Replace 'sub_rawfile' with the actual resource.
+                let ret: boolean = testNapi.isRawDir(this.resMgr, 'sub_rawfile');
+                this.retMsg = 'isRawDir = ' + ret;
+                hilog.info(DOMAIN, TAG, this.retMsg);
+    
+                // Pass in the JS resource object and the relative path of the rawfile.
+                // Replace 'rawfile1.txt' with the actual resource.
+                let rawfileArray: Uint8Array = testNapi.getRawFileContent(this.resMgr, 'rawfile1.txt');
+                // Convert Uint8Array to a string.
+                let textDecoder: util.TextDecoder = new util.TextDecoder();
+                let rawfileContent: string = textDecoder.decodeToString(rawfileArray);
+                this.rawfileContentMsg = 'RawFileContent = ' + rawfileContent;
+                hilog.info(DOMAIN, TAG, this.rawfileContentMsg);
+    
+                // Pass in the JS resource object and the rawfile name.
+                // Replace 'rawfile1.txt' with the actual resource.
+                let rawfileDescriptor: resourceManager.RawFileDescriptor =
+                  testNapi.getRawFileDescriptor(this.resMgr, 'rawfile1.txt');
+                this.rawfileDescriptorMsg = 'RawFileDescriptor.length = ' + rawfileDescriptor.length;
+                hilog.info(DOMAIN, TAG, this.rawfileDescriptorMsg);
+              })
+            Text(this.rawfileListMsg).id('get_file_list').fontSize(30);
+            Text(this.retMsg).id('is_raw_dir').fontSize(30);
+            Text(this.rawfileContentMsg).id('get_raw_file_content').fontSize(30);
+            Text(this.rawfileDescriptorMsg).id('get_raw_file_descriptor').fontSize(30);
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
 
 ##  
 

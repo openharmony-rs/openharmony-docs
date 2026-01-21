@@ -112,7 +112,7 @@ UIAbility配置中缺少startWindowIcon属性配置，需要在module.json5中ab
 
 **代码示例**
 
-```
+```json5
 {
   "module": {
     // do something
@@ -175,7 +175,7 @@ Failure[INSTALL_FAILED_SIZE_TOO_LARGE] error while deploying hap？
 
 使用\@ohos.systemDateTime接口：
 
-```
+```ts
 try {
   systemDateTime.getCurrentTime(true, (error, time) => {
     if (error) {
@@ -266,7 +266,7 @@ DevEco Studio默认下载是public-sdk。
 
 示例：
 
-```
+```ts
 let want = {
     deviceId: "", // deviceId为空表示本设备
     bundleName: "com.example.myapplication",
@@ -277,9 +277,9 @@ let want = {
 }
 // context为意图拉起的FA模型的AbilityContext
 context.startAbility(want).then(() => {
-    ...
+  // ...
 }).catch((err) => {
-    ...
+  // ...
 })
 ```
 
@@ -312,7 +312,7 @@ JS/ArkTS跳转时, startAbility报错
 
 一般用startAbility，实现如下：
 
-```
+```ts
 import featureAbility from '@ohos.ability.featureAbility'
 function onStartRemoteAbility() {
 console.info('onStartRemoteAbility begin');
@@ -367,7 +367,7 @@ console.info('onStartRemoteAbility end');
 
 参考如下代码实现，示例：
 
-```
+```ts
 this.context.startAbility(
 {
   action: "action.settings.app.info",
@@ -384,7 +384,7 @@ this.context.startAbility(
 
 **代码示例**
 
-```
+```ts
 import common from '@ohos.app.ability.common';
 
 @Entry
@@ -406,7 +406,7 @@ struct AbilityContextTest {
           .fontSize(20)
           .onClick(() => {
             this.UIAbilityInfo = JSON.stringify(this.UIAbilityContext.abilityInfo)
-            console.log(`ContextDemo abilityInfo = ${this.UIAbilityInfo}`)
+            console.info(`ContextDemo abilityInfo = ${this.UIAbilityInfo}`)
           })
       }
       .width('100%')
@@ -427,7 +427,7 @@ struct AbilityContextTest {
 
 启动后台长时任务需要在module.json5文件中配置长时任务权限ohos.permission.KEEP_BACKGROUND_RUNNING、同时为需要使用长时任务的ability声明相应的后台模式类型。
 
-```
+```json5
 "module": {
     "abilities": [
         {

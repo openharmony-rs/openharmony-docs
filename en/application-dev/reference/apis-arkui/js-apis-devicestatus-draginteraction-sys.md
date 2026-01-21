@@ -43,7 +43,7 @@ Defines the data summary of the dragged object.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Drag
 
-| Name          | Type           | Read-Only| 	Optional| Description                          |
+| Name          | Type           | Read-Only| Optional| Description                          |
 | ---------      | -------------- | ---- | ---- | ------------------------     |
 | dataType     | string          | No  | No  | Type of the dragged object.|
 | dataSize       | number         | No  | No  | Data length of the dragged object.|

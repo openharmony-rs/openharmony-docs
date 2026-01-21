@@ -137,7 +137,7 @@ export struct CreateToastExample {
   private uiContext: UIContext = this.getUIContext();
   private promptAction: PromptAction = this.uiContext.getPromptAction();
   build() {
-    // ···
+    // ...
       Column() {
         Button('Show toast').fontSize(20)
           .onClick(() => {
@@ -153,7 +153,7 @@ export struct CreateToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```
@@ -182,7 +182,7 @@ export struct OpenCloseToastExample {
   private promptAction: PromptAction = this.uiContext.getPromptAction();
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('Open Toast')
           .height(100)
@@ -215,7 +215,7 @@ export struct OpenCloseToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```

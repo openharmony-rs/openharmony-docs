@@ -70,7 +70,7 @@
      }
      let previewOutput: camera.PreviewOutput | undefined = undefined;
      try {
-       //previewProfilesArray要选择与步骤二设置宽高比一致的previewProfile配置信息，此处选择数组第一项仅供接口使用示例参考。
+       // previewProfilesArray要选择与步骤二设置宽高比一致的previewProfile配置信息，此处选择数组第一项仅供接口使用示例参考。
        previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
      } catch (error) {
        let err = error as BusinessError;

@@ -18,9 +18,9 @@
 ### 基本概念
 
   在进行分布式相机开发前，建议开发者查看下列章节，了解相关功能操作：
-  - [应用跨设备连接](abilityconnectmanager-guidelines.md)
+  - [跨设备连接UIAbility开发指南](abilityconnectmanager-guidelines.md)
   - [相机管理](../media/camera/camera-device-management.md)
-  - [申请相关权限](../media/camera/camera-preparation.md)
+  - [申请相机开发的权限](../media/camera/camera-preparation.md)
   - [会话管理](../media/camera/camera-session-management.md)
   - [拍照](../media/camera/camera-shooting.md)
   - [录像](../media/camera/camera-recording.md)
@@ -38,7 +38,7 @@
   1. 安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在5.0及以上。
   2. 将public-SDK更新到API 16或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->。
   3. 用USB线缆将两台调测设备（设备A和设备B）连接到PC。
-  4. 打开设备A和设备B的Wifi并连接到同一个接入点上，互相识别，连接并组网。连接组网的具体操作可参见[创建会话并连接](abilityconnectmanager-guidelines.md#开发步骤)。
+  4. 打开设备A和设备B的Wifi并连接到同一个接入点上，互相识别，连接并组网。连接组网的具体操作可参见[开发步骤](abilityconnectmanager-guidelines.md#开发步骤)。
 
 
 ### 检验环境是否搭建成功

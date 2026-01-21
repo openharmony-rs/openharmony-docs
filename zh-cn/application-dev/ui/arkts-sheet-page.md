@@ -210,6 +210,7 @@ struct OnWillDismiss_Dismiss {
 ## 屏蔽部分关闭行为
 
 由于声明了onWillDismiss接口，半模态的关闭行为都需要dismiss处理。可以通过if等逻辑自定义处理关闭逻辑。
+
 下述示例显示半模态页面只在下滑的时候关闭。
 
 ```ts
@@ -221,6 +222,7 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 ```
 
 同理可以结合`onWillSpringBackWhenDismiss`接口实现更好的下滑体验。
+
 类比`onWillDismiss`，在声明了`onWillSpringBackWhenDismiss`后，半模态下滑时的回弹操作需要使用 `SpringBackAction.springBack()`处理，无此逻辑则不会回弹。
 
 具体代码如下，在半模态下滑的时候无需回弹。

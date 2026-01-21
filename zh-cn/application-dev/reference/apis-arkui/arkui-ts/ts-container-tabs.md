@@ -1,8 +1,8 @@
 # Tabs
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,9 +10,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
+>  - 该组件从API version 11开始，支持安全区域避让特性，其[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性的默认值为expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])。开发者可通过重写该属性覆盖默认行为。对于API version 11之前的版本，则需配合expandSafeArea属性手动实现安全区域避让。
 
 
 ## 子组件
@@ -262,7 +262,7 @@ animationMode(mode: Optional\<AnimationMode\>)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| mode  | Optional\<[AnimationMode](#animationmode12枚举说明)\> | 是   | 点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。<br/>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[AnimationMode](#animationmode12枚举说明)\> | 是   | 点击TabBar页签或调用TabsController的changeIndex接口时切换TabContent的动画形式。<br/>默认值：AnimationMode.CONTENT_FIRST，表示在点击TabBar页签或调用TabsController的changeIndex接口切换TabContent时，先加载目标页内容，再开始切换动画。|
 
 ### barPosition<sup>9+</sup>
 
@@ -415,7 +415,7 @@ edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
 
 | 参数名 | 类型                                          | 必填 | 说明                                         |
 | ------ | --------------------------------------------- | ---- | -------------------------------------------- |
-| edgeEffect  | Optional&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt; | 是   | 边缘滑动效果。<br/>默认值：EdgeEffect.Spring |
+| edgeEffect  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt; | 是   | 边缘滑动效果。<br/>默认值：EdgeEffect.Spring |
 
 ### barBackgroundEffect<sup>18+</sup>
 
@@ -447,7 +447,7 @@ pageFlipMode(mode: Optional\<PageFlipMode>)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | Optional\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>默认值：PageFlipMode.CONTINUOUS |
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | 是   | 鼠标滚轮翻页模式。<br/>默认值：PageFlipMode.CONTINUOUS |
 
 ### cachedMaxCount<sup>19+</sup>
 
@@ -756,6 +756,10 @@ onSelected(event: Callback\<number>)
 
 4. 通过页签处点击触发。
 
+> **说明：**
+>
+> onSelected回调中不可通过[TabsOptions](#tabsoptions15)的index设置当前显示页的索引，不可调用TabsController.changeIndex()方法。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -765,10 +769,6 @@ onSelected(event: Callback\<number>)
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前选中元素的索引。 |
-
-> **说明：**
->
-> onSelected回调中不可通过TabsOptions的index设置当前显示页的索引，不可调用TabsController.changeIndex()方法。
 
 ### onUnselected<sup>18+</sup>
 
@@ -1053,7 +1053,7 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 
 | 参数名   | 类型   | 必填   | 说明                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | Optional\<Array\<number>> | 是 | 需预加载的子节点的下标数组。<br/>默认值：空数组。 |
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | 是 | 需预加载的子节点的下标数组。<br/>默认值：空数组。 |
 
 **返回值：** 
 
@@ -2436,7 +2436,9 @@ struct TabsExample {
 
 ### 示例15（页签超出TabBar区域显示）
 
-从API version 15开始，本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的clip属性实现页签超出tabBar区域显示效果。
+该示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的clip属性实现页签超出tabBar区域显示效果。
+
+从API version 15开始，在TabsOptions中新增了barModifier接口。
 
 ```ts
 // xxx.ets
@@ -2526,7 +2528,9 @@ struct TabsBarModifierExample {
 
 ### 示例16（页签对齐布局）
 
-从API version 15开始，本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的align属性实现页签对齐布局效果。
+本示例通过使用[TabsOptions](#tabsoptions15)中的barModifier设置tabBar的align属性实现页签对齐布局效果。
+
+从API version 15开始，在TabsOptions中新增了barModifier接口。
 
 ```ts
 // xxx.ets
@@ -2627,9 +2631,11 @@ struct TabsBarModifierExample {
 
 ![tabs16](figures/tabs_barModifier_align.gif)
 
-### 示例17（Tabs与TabBar联动切换）
+### 示例17（Tabs与TabBar同步切换）
 
-从API version 18开始，该示例通过[onSelected](#onselected18)接口，实现了Tabs与TabBar联动切换。
+该示例通过[onSelected](#onselected18)接口，实现了Tabs与TabBar的同步切换。
+
+从API version 18开始，新增了onSelected接口。
 
 ```ts
 // xxx.ets
@@ -2704,7 +2710,9 @@ struct TabsExample {
 
 ### 示例18（释放Tabs子组件）
 
-从API version 19开始，该示例通过设置[cachedMaxCount](#cachedmaxcount19)属性，实现了Tabs子组件的释放。
+该示例通过设置[cachedMaxCount](#cachedmaxcount19)属性，实现了Tabs子组件的释放。
+
+从API version 18开始，新增了cachedMaxCount接口。
 
 ```ts
 @Entry
@@ -2758,7 +2766,9 @@ struct MyComponent {
 
 ### 示例19（设置TabBar背景模糊效果）
 
-该示例分别通过barBackgroundBlurStyle和[barBackgroundEffect](#barbackgroundeffect18)（从API version 18开始）设置TabsBar页签栏的背景模糊效果。
+该示例分别通过[barBackgroundBlurStyle](#barbackgroundblurstyle18)和[barBackgroundEffect](#barbackgroundeffect18)设置TabsBar页签栏的背景模糊样式和效果。
+
+从API version 18开始，新增了barBackgroundBlurStyle和barBackgroundEffect接口。
 
 ```ts
 // xxx.ets
@@ -2823,11 +2833,11 @@ struct TabsExample {
   }
 }
 ```
-![tabs19](figures/tabBar_backgroud.png)
+![tabs19](figures/tabBar_background.png)
 
 ### 示例20（设置边缘滑动效果）
 
-该示例通过edgeEffect实现不同边缘滑动效果。
+该示例通过[edgeEffect](#edgeeffect12)实现了不同的边缘回弹效果。
 
 ```ts
 // xxx.ets
@@ -2883,7 +2893,9 @@ struct TabsExample {
 
 ### 示例21（Tabs设置翻页动画曲线）
 
-该示例展示了如何通过[animationCurve](#animationcurve20)（从API version 20开始）接口设置Tabs翻页动画曲线，并结合animationDuration设置翻页动画的时长。
+该示例展示了如何通过[animationCurve](#animationcurve20)接口设置Tabs翻页动画曲线，并结合animationDuration设置翻页动画的时长。
+
+从API version 20开始，新增了animationCurve接口。
 
 ```ts
 import { curves } from '@kit.ArkUI';
@@ -2908,7 +2920,7 @@ struct TabsExample {
     'cubicBezierCurve(0.25, 0.1, 0.25, 1.0)'
   ];
   @State curveIndex: number = 0;
-  private datas: TabsItemType[] = [
+  private data: TabsItemType[] = [
     { text: '1', backgroundColor: '#004AAF' },
     { text: '2', backgroundColor: '#2787D9' },
     { text: '3', backgroundColor: '#D5D5D5' },
@@ -2920,7 +2932,7 @@ struct TabsExample {
   build() {
     Column({ space: 2 }) {
       Tabs({ controller: this.tabsController }) {
-        ForEach(this.datas, (item: TabsItemType, index: number) => {
+        ForEach(this.data, (item: TabsItemType, index: number) => {
           TabContent() {
           }
           .tabBar(item.text)

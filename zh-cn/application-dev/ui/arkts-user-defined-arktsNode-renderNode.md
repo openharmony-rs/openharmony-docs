@@ -803,7 +803,7 @@ export struct SetLabel {
 
 ## 查询当前RenderNode是否解除引用
 
-前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。
+前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。在ArkUI框架中，前端节点是在ArkTS代码层面创建的节点，负责与开发者交互；后端节点是在ArkUI框架底层维护的实体节点，负责具体逻辑的处理。
 
 从API version 20开始，使用[isDisposed](../reference/apis-arkui/js-apis-arkui-renderNode.md#isdisposed20)接口查询当前RenderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 

@@ -1,9 +1,9 @@
-# Navigation Transition Animation
+# Transition Animation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) provides default transition animations, as well as custom transition animations and shared element transition animations.
@@ -69,7 +69,7 @@ You can implement shared element transitions between **NavDestination** componen
    NavDestination() {
      Column() {
        // ...
-       // Replace $r('app.media.startIcon') with the resource file you use.
+       // Replace $r('app.media.startIcon') with the actual resource file.
        Image($r('app.media.startIcon'))
          .geometryTransition('sharedId')
          .width(100)
@@ -84,7 +84,7 @@ You can implement shared element transitions between **NavDestination** componen
    // Set id of the destination page.
    NavDestination() {
      Column() {
-       // Replace $r('app.media.startIcon') with the resource file you use.
+       // Replace $r('app.media.startIcon') with the actual resource file.
        Image($r('app.media.startIcon'))
          .geometryTransition('sharedId')
          .width(200)

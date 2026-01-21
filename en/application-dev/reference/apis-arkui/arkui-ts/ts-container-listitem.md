@@ -47,7 +47,7 @@ Creates a **ListItem** component.
 
 This API is deprecated since API version 10. You are advised to use [ListItem<sup>10+</sup>](#listitem10) instead.
 
-**Widget capability**: Since API version 9, this API is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,7 +99,7 @@ selectable(value: boolean)
 
 Sets whether the list item is selectable for multiselect. This attribute takes effect only when mouse frame selection is enabled for the parent **List** container.
 
-**Widget capability**: Since API version 9, this API is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -227,7 +227,7 @@ Defines **ListItem** component configuration options.
 
 | Name | Type                                 | Read-Only| Optional| Description                                                        |
 | ----- | ----------------------------------------- | ---- | -- | ------------------------------------------------------------ |
-| style | [ListItemStyle](#listitemstyle10) | No  | Yes| Style of the list item.<br>Default value: **ListItemStyle.NONE**<br>If this parameter is set to **ListItemStyle.NONE**, no style is applied.<br>When **ListItemStyle.CARD** is used, you are advised to pair it with **ListItemGroupStyle.CARD** from [ListItemGroup](ts-container-listitemgroup.md) to apply the default card style.<br>In the card style, the default specifications for a list item are as follows: a height of 48 vp, a width of 100%, and horizontal padding of 8 vp on both the left and right sides. If you want to implement an adaptive height for the list item, you can set the **height** attribute to **undefined**.<br>In the card style, the default focus, hover, press, selected, and disable styles are provided for the list items.<br>**NOTE**<br>If ListItemStyle.CARD is set, the listDirection attribute of List must be Axis.Vertical. If the listDirection attribute is set to Axis.Horizontal, the display will be disordered. The default value of alignListItem is ListItemAlign.Center, indicating that the items are centered.|
+| style | [ListItemStyle](#listitemstyle10) | No  | Yes| Style of the list item.<br>Default value: **ListItemStyle.NONE**<br>If this parameter is set to **ListItemStyle.NONE**, no style is applied.<br>When **ListItemStyle.CARD** is used, you are advised to pair it with **ListItemGroupStyle.CARD** from [ListItemGroup](ts-container-listitemgroup.md) to apply the default card style.<br>In the card style, the default specifications for a list item are as follows: a height of 48 vp, a width of 100%, and horizontal padding of 8 vp on both the left and right sides. If you want to implement an adaptive height for the list item, you can set the **height** attribute to **undefined**.<br>The card style provides default focus, hover, press, selected, and disabled states for list items.<br>**NOTE**<br>When **ListItemStyle.CARD** is set, the **listDirection** attribute of **List** must be **Axis.Vertical**. If **listDirection** is set to **Axis.Horizontal**, the display will be disordered. The default value of **alignListItem** is **ListItemAlign.Center**, which centers the items vertically.|
 
 ## ListItemStyle<sup>10+</sup>
 
@@ -264,7 +264,7 @@ onSelect(event: (isSelected: boolean) =&gt; void)
 
 Triggered when the selected state of the list item for multiselect changes.
 
-**Widget capability**: Since API version 9, this API is supported in ArkTS widgets.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -274,11 +274,11 @@ Triggered when the selected state of the list item for multiselect changes.
 
 | Name    | Type   | Mandatory| Description                                                        |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| isSelected | boolean | Yes  | Returns **true** if the list item is selected for multselect; returns **false** otherwise.|
+| isSelected | boolean | Yes  | Returns **true** if the list item is selected for multi-select; returns **false** otherwise.|
 
 ## ListItemSwipeActionManager<sup>21+</sup>
 
-Implements the manager of the swipe action menu for the list item.
+Implements the swipe action menu manager for list items.
 
 ### expand<sup>21+</sup>
 expand(node: FrameNode, direction: ListItemSwipeActionDirection): void

@@ -687,7 +687,7 @@ try {
     if (certUri === undefined) {
         console.error("The result of install user trusted certificate is undefined.");
     } else {
-        console.info("Successed to install user trusted certificate.");
+        console.info("Succeeded to install user trusted certificate.");
     }
 } catch (error) {
     console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);

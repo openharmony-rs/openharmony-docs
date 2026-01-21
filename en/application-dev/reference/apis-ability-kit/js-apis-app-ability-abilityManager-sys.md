@@ -71,7 +71,7 @@ import { abilityManager, Configuration, ConfigurationConstant } from '@kit.Abili
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const config: Configuration = {
-  language: 'Zh-Hans',                 // Simplified Chinese.
+  language: 'Zh-Hans',                 // Simplified Chinese
   colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // Light theme.
   direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // Vertical direction.
   screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is sdpi.
@@ -136,7 +136,7 @@ import { abilityManager, Configuration, ConfigurationConstant } from '@kit.Abili
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const config: Configuration = {
-  language: 'Zh-Hans',                 // Simplified Chinese.
+  language: 'Zh-Hans',                 // Simplified Chinese
   colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // Light theme.
   direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // Vertical direction.
   screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is sdpi.
@@ -1380,7 +1380,7 @@ Obtains the rule for launching an [EmbeddableUIAbility](js-apis-app-ability-embe
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on phones, tablets, and TVs. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on phones and tablets. On other devices, it returns the error code 801.
 
 **Parameters**
 

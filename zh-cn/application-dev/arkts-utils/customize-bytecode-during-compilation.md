@@ -36,27 +36,27 @@
    }
    ```
 
-2. 使用c语言编译工具（这里使用g++）编译动态库。
+2. 使用C语言编译工具（这里使用g++）编译动态库。
 
    Windows平台：
 
-   ```
+   ```bash
    g++ --shared -o example.dll example.cpp
    ```
 
    Linux平台：
 
-   ```
+   ```bash
    g++ --shared -o example.so example.cpp
    ```
 
    Mac平台：
 
-   ```
+   ```bash
    g++ --shared -o example.so example.cpp
    ```
 
-3. 在DevEco Studio中配置build-profile.json5的transformLib选项（以windows环境为例）。
+3. 在DevEco Studio中配置build-profile.json5的transformLib选项（以Windows环境为例）。
 
    选项中配置的路径为步骤2生成的链接库文件在项目中的路径（这里是dll目录下）。
 

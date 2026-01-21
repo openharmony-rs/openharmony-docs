@@ -79,7 +79,7 @@ Declares a set of custom dialog box APIs of ArkUI on the native side.
 | [int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* options, ArkUI_HoverModeAreaType hoverModeAreaType)](#oh_arkui_customdialog_sethovermodearea) | - | Sets the default display area of a dialog box in hover mode.|
 | [int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOptions* options, void* userData, void (\*callback)(ArkUI_DialogDismissEvent* event))](#oh_arkui_customdialog_registeronwilldismisscallback) | - | Registers a callback for the dismissal event of a custom dialog box.|
 | [int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (\*callback)(void* userData))](#oh_arkui_customdialog_registeronwillappearcallback) | - | Registers a callback to be invoked when the specified custom dialog box is about to appear.|
-| [int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (\*callback)(void* userData))](#oh_arkui_customdialog_registerondidappearcallback) | - | Registers a callback to be invoked when the specifiedcustom dialog box appears.|
+| [int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (\*callback)(void* userData))](#oh_arkui_customdialog_registerondidappearcallback) | - | Registers a callback to be invoked when the specified custom dialog box appears.|
 | [int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (\*callback)(void* userData))](#oh_arkui_customdialog_registeronwilldisappearcallback) | - | Registers a callback to be invoked when the specified custom dialog box is about to disappear.|
 | [int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (\*callback)(void* userData))](#oh_arkui_customdialog_registerondiddisappearcallback) | - | Registers a callback to be invoked when the specified custom dialog box disappears.|
 | [int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_DialogState* state)](#oh_arkui_customdialog_getstate) | - | Obtains the state of a dialog box.|
@@ -90,7 +90,7 @@ Declares a set of custom dialog box APIs of ArkUI on the native side.
 
 ### ArkUI_DismissReason
 
-```
+```c
 enum ArkUI_DismissReason
 ```
 
@@ -104,13 +104,13 @@ Enumerates the actions for triggering closure of the dialog box.
 | Value| Description|
 | -- | -- |
 | DIALOG_DISMISS_BACK_PRESS = 0 | Touching the system-defined Back button or pressing the Esc key.|
-| DIALOG_DISMISS_TOUCH_OUTSIDE | Touching the mask.|
-| DIALOG_DISMISS_CLOSE_BUTTON | Touching the Close button.|
-| DIALOG_DISMISS_SLIDE_DOWN | Sliding down.|
+| DIALOG_DISMISS_TOUCH_OUTSIDE = 1 | Touching the mask.|
+| DIALOG_DISMISS_CLOSE_BUTTON = 2 | Touching the Close button.|
+| DIALOG_DISMISS_SLIDE_DOWN = 3 | Sliding down.|
 
 ### ArkUI_LevelMode
 
-```
+```c
 enum ArkUI_LevelMode
 ```
 
@@ -123,12 +123,12 @@ Enumerates the display level modes of the dialog box.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_LEVEL_MODE_OVERLAY = 0 | The dialog box is displayed on top of all other application content.|
-| ARKUI_LEVEL_MODE_EMBEDDED | The dialog box is embedded within the application's page content.|
+| ARKUI_LEVEL_MODE_OVERLAY = 0 | The dialog box is displayed above all other application content.|
+| ARKUI_LEVEL_MODE_EMBEDDED = 1 | The dialog box is embedded within the application's page content.|
 
 ### ArkUI_ImmersiveMode
 
-```
+```c
 enum ArkUI_ImmersiveMode
 ```
 
@@ -142,11 +142,11 @@ Enumerates the display areas of the embedded dialog box overlay.
 | Value| Description|
 | -- | -- |
 | ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | The dialog box overlay follows the layout constraints of its parent node.|
-| ARKUI_IMMERSIVE_MODE_EXTEND | The dialog box overlay can extend to cover the status bar and navigation bar for a more immersive look.|
+| ARKUI_IMMERSIVE_MODE_EXTEND = 1 | The dialog box overlay can extend to cover the status bar and navigation bar for a more immersive look.|
 
 ### ArkUI_DialogState
 
-```
+```c
 enum ArkUI_DialogState
 ```
 
@@ -160,18 +160,18 @@ Enumerates the dialog box status.
 | Value| Description|
 | -- | -- |
 | DIALOG_UNINITIALIZED = 0 | State before the controller is bound to the dialog box.|
-| DIALOG_INITIALIZED | State after the controller is bound to the dialog box.|
-| DIALOG_APPEARING | State during the dialog box appearance animation.|
-| DIALOG_APPEARED | State after the dialog display appearance ends.|
-| DIALOG_DISAPPEARING | State during the dialog box disappearance animation.|
-| DIALOG_DISAPPEARED | State after the dialog box disappearance animation ends.|
+| DIALOG_INITIALIZED = 1 | State after the controller is bound to the dialog box.|
+| DIALOG_APPEARING = 2 | State during the dialog box appearance animation.|
+| DIALOG_APPEARED = 3 | State after the dialog display appearance ends.|
+| DIALOG_DISAPPEARING = 4 | State during the dialog box disappearance animation.|
+| DIALOG_DISAPPEARED = 5 | State after the dialog box disappearance animation ends.|
 
 
 ## Function Description
 
 ### ArkUI_OnWillDismissEvent()
 
-```
+```c
 typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 ```
 
@@ -196,7 +196,7 @@ Defines a pointer to the callback invoked when the dialog box is closed.
 
 ### OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss()
 
-```
+```c
 void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)
 ```
 
@@ -217,7 +217,7 @@ Sets whether to block the system behavior of dismissing a dialog box.
 
 ### OH_ArkUI_DialogDismissEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)
 ```
 
@@ -243,7 +243,7 @@ Obtains the pointer to user data in a dialog box dismiss event object.
 
 ### OH_ArkUI_DialogDismissEvent_GetDismissReason()
 
-```
+```c
 int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)
 ```
 
@@ -269,7 +269,7 @@ Obtains the dismissal reason from a dialog box dismiss event object.
 
 ### OH_ArkUI_CustomDialog_OpenDialog()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))
 ```
 
@@ -296,7 +296,7 @@ Displays a custom dialog box.
 
 ### OH_ArkUI_CustomDialog_UpdateDialog()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))
 ```
 
@@ -323,7 +323,7 @@ Updates a custom dialog box.
 
 ### OH_ArkUI_CustomDialog_CloseDialog()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 ```
 
@@ -349,7 +349,7 @@ Closes a custom dialog box.
 
 ### OH_ArkUI_CustomDialog_CreateOptions()
 
-```
+```c
 ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)
 ```
 
@@ -375,7 +375,7 @@ Creates options for a custom dialog.
 
 ### OH_ArkUI_CustomDialog_DisposeOptions()
 
-```
+```c
 void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 ```
 
@@ -395,7 +395,7 @@ Destroys custom dialog box options.
 
 ### OH_ArkUI_CustomDialog_SetLevelMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, ArkUI_LevelMode levelMode)
 ```
 
@@ -426,7 +426,7 @@ Sets the display level of the dialog box.
 
 ### OH_ArkUI_CustomDialog_SetLevelUniqueId()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* options, int32_t uniqueId)
 ```
 
@@ -457,7 +457,7 @@ Sets the ID of the node under the dialog box's display level.
 
 ### OH_ArkUI_CustomDialog_SetImmersiveMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMode immersiveMode)
 ```
 
@@ -484,7 +484,7 @@ Sets the display area of the embedded dialog box overlay.
 
 ### OH_ArkUI_CustomDialog_SetBackgroundColor()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* options, uint32_t backgroundColor)
 ```
 
@@ -511,7 +511,7 @@ Sets the background color of a dialog box.
 
 ### OH_ArkUI_CustomDialog_SetCornerRadius()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options, float topLeft, float topRight, float bottomLeft, float bottomRight)
 ```
 
@@ -541,7 +541,7 @@ Sets the corner radius for a custom dialog box.
 
 ### OH_ArkUI_CustomDialog_SetBorderWidth()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -572,7 +572,7 @@ Sets the border width of a dialog box.
 
 ### OH_ArkUI_CustomDialog_SetBorderColor()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)
 ```
 
@@ -602,7 +602,7 @@ Sets the border color of the dialog box.
 
 ### OH_ArkUI_CustomDialog_SetBorderStyle()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options, int32_t top, int32_t right, int32_t bottom, int32_t left)
 ```
 
@@ -632,7 +632,7 @@ Sets the border style of a dialog box.
 
 ### OH_ArkUI_CustomDialog_SetWidth()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float width, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -660,7 +660,7 @@ Sets the width of the dialog box background.
 
 ### OH_ArkUI_CustomDialog_SetHeight()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, float height, ArkUI_LengthMetricUnit unit)
 ```
 
@@ -688,7 +688,7 @@ Sets the height of the dialog box background.
 
 ### OH_ArkUI_CustomDialog_SetShadow()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkUI_ShadowStyle shadow)
 ```
 
@@ -715,7 +715,7 @@ Sets the shadow of the dialog box background.
 
 ### OH_ArkUI_CustomDialog_SetCustomShadow()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* customShadow)
 ```
 
@@ -742,7 +742,7 @@ Sets the shadow of the dialog box background.
 
 ### OH_ArkUI_CustomDialog_SetBackgroundBlurStyle()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* options, ArkUI_BlurStyle blurStyle)
 ```
 
@@ -769,7 +769,7 @@ Sets the background blur style of the dialog box.
 
 ### OH_ArkUI_CustomDialog_SetAlignment()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, int32_t alignment, float offsetX, float offsetY)
 ```
 
@@ -798,7 +798,7 @@ Sets the alignment mode of a dialog box.
 
 ### OH_ArkUI_CustomDialog_SetModalMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)
 ```
 
@@ -825,7 +825,7 @@ Sets the modal mode for a custom dialog box.
 
 ### OH_ArkUI_CustomDialog_SetAutoCancel()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)
 ```
 
@@ -852,7 +852,7 @@ Specifies whether to allow users to touch the mask to dismiss the custom dialog 
 
 ### OH_ArkUI_CustomDialog_SetSubwindowMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)
 ```
 
@@ -879,7 +879,7 @@ Sets whether to display the dialog box in a subwindow.
 
 ### OH_ArkUI_CustomDialog_SetMask()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)
 ```
 
@@ -907,7 +907,7 @@ Sets the mask for a custom dialog box.
 
 ### OH_ArkUI_CustomDialog_SetKeyboardAvoidMode()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* options, ArkUI_KeyboardAvoidMode keyboardAvoidMode)
 ```
 
@@ -934,7 +934,7 @@ Sets the keyboard avoidance mode of a dialog box.
 
 ### OH_ArkUI_CustomDialog_SetHoverModeEnabled()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* options, bool enabled)
 ```
 
@@ -961,7 +961,7 @@ Sets whether to enable the hover mode for a dialog box.
 
 ### OH_ArkUI_CustomDialog_SetHoverModeArea()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* options, ArkUI_HoverModeAreaType hoverModeAreaType)
 ```
 
@@ -988,7 +988,7 @@ Sets the default display area of a dialog box in hover mode.
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(ArkUI_DialogDismissEvent* event))
 ```
 
@@ -1016,7 +1016,7 @@ Registers a callback for the dismissal event of a custom dialog box.
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1044,14 +1044,14 @@ Registers a callback to be invoked when the specified custom dialog box is about
 
 ### OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
 **Description**
 
 
-Registers a callback to be invoked when the specifiedcustom dialog box appears.
+Registers a callback to be invoked when the specified custom dialog box appears.
 
 **Since**: 19
 
@@ -1072,7 +1072,7 @@ Registers a callback to be invoked when the specifiedcustom dialog box appears.
 
 ### OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1100,7 +1100,7 @@ Registers a callback to be invoked when the specified custom dialog box is about
 
 ### OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogOptions* options, void* userData, void (*callback)(void* userData))
 ```
 
@@ -1128,7 +1128,7 @@ Registers a callback to be invoked when the specified custom dialog box disappea
 
 ### OH_ArkUI_CustomDialog_GetState()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_DialogState* state)
 ```
 
@@ -1155,7 +1155,7 @@ Obtains the state of a dialog box.
 
 ### OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundBlurStyleOptions)
 ```
 
@@ -1182,7 +1182,7 @@ Sets the background blur effect for a dialog box.
 
 ### OH_ArkUI_CustomDialog_SetBackgroundEffect()
 
-```
+```c
 int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* options, const ArkUI_AttributeItem* backgroundEffect)
 ```
 

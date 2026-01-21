@@ -171,15 +171,19 @@ struct TestExample {
     .height('100%')
     .onAccessibilityHoverTransparent((event?: TouchEvent) => {
       if (event) {
+        // Triggered on finger press.
         if (event.type === TouchType.HOVER_ENTER) {
           this.eventType = 'HOVER_ENTER';
         }
+        // Triggered on touch move.
         if (event.type === TouchType.HOVER_MOVE) {
           this.eventType = 'HOVER_MOVE';
         }
+        // Triggered on hand raise.
         if (event.type === TouchType.HOVER_EXIT) {
           this.eventType = 'HOVER_EXIT';
         }
+        // Cancel the current event.
         if (event.type === TouchType.HOVER_CANCEL) {
           this.eventType = 'HOVER_CANCEL';
         }

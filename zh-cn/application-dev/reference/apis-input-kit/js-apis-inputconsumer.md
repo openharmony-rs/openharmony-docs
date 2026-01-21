@@ -99,7 +99,7 @@ struct Index {
 
 on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
-订阅应用快捷键。获取满足条件的组合按键输入事件，使用Callback异步回调。
+订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -159,7 +159,7 @@ struct Index {
 
 off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;HotkeyOptions&gt;): void
 
-取消订阅应用快捷键。
+取消订阅应用快捷键。使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 

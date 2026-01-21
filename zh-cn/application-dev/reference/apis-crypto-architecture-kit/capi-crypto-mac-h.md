@@ -39,11 +39,11 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)](#oh_cryptomac_create) | 根据给定的算法名称创建MAC实例。<br> 注意：创建的资源必须通过[OH_CryptoMac_Destroy](#oh_cryptomac_destroy)销毁。 |
+| [OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)](#oh_cryptomac_create) | 根据给定的算法名称创建MAC实例。<br> 注意：创建的资源必须通过[OH_CryptoMac_Destroy](capi-crypto-mac-h.md#oh_cryptomac_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType type, const Crypto_DataBlob *value)](#oh_cryptomac_setparam) | 设置MAC参数。 |
 | [OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *key)](#oh_cryptomac_init) | 使用对称密钥初始化MAC实例。 |
 | [OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *in)](#oh_cryptomac_update) | 更新MAC实例。 |
-| [OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)](#oh_cryptomac_final) | 完成MAC操作。 |
+| [OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)](#oh_cryptomac_final) | 完成MAC操作。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)](#oh_cryptomac_getlength) | 获取MAC长度。 |
 | [void OH_CryptoMac_Destroy(OH_CryptoMac *ctx)](#oh_cryptomac_destroy) | 销毁MAC实例。 |
 
@@ -77,10 +77,9 @@ OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)
 
 **描述**
 
-根据给定的算法名称创建MAC实例。<br> 注意：创建的资源必须通过[OH_CryptoMac_Destroy](#oh_cryptomac_destroy)销毁。
+根据给定的算法名称创建MAC实例。<br> 注意：创建的资源必须通过[OH_CryptoMac_Destroy](capi-crypto-mac-h.md#oh_cryptomac_destroy)销毁。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -107,13 +106,12 @@ OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType t
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoMac](capi-cryptomacapi-oh-cryptomac.md) *ctx | MAC实例。 |
-| [CryptoMac_ParamType](#cryptomac_paramtype) type | MAC参数类型。 |
+| [CryptoMac_ParamType](capi-crypto-mac-h.md#cryptomac_paramtype) type | MAC参数类型。 |
 | [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | MAC参数。 |
 
 **返回：**
@@ -134,7 +132,6 @@ OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *ke
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -150,9 +147,9 @@ OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *ke
 
 **参考：**
 
-[OH_CryptoMac_Update](#oh_cryptomac_update)
+[OH_CryptoMac_Update](capi-crypto-mac-h.md#oh_cryptomac_update)
 
-[OH_CryptoMac_Final](#oh_cryptomac_final)
+[OH_CryptoMac_Final](capi-crypto-mac-h.md#oh_cryptomac_final)
 
 
 ### OH_CryptoMac_Update()
@@ -166,7 +163,6 @@ OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *
 更新MAC实例。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -183,9 +179,9 @@ OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *
 
 **参考：**
 
-[OH_CryptoMac_Init](#oh_cryptomac_init)
+[OH_CryptoMac_Init](capi-crypto-mac-h.md#oh_cryptomac_init)
 
-[OH_CryptoMac_Final](#oh_cryptomac_final)
+[OH_CryptoMac_Final](capi-crypto-mac-h.md#oh_cryptomac_final)
 
 
 ### OH_CryptoMac_Final()
@@ -196,10 +192,9 @@ OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)
 
 **描述**
 
-完成MAC操作。
+完成MAC操作。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -216,9 +211,9 @@ OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)
 
 **参考：**
 
-[OH_CryptoMac_Init](#oh_cryptomac_init)
+[OH_CryptoMac_Init](capi-crypto-mac-h.md#oh_cryptomac_init)
 
-[OH_CryptoMac_Update](#oh_cryptomac_update)
+[OH_CryptoMac_Update](capi-crypto-mac-h.md#oh_cryptomac_update)
 
 
 ### OH_CryptoMac_GetLength()
@@ -232,7 +227,6 @@ OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)
 获取MAC长度。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -258,7 +252,6 @@ void OH_CryptoMac_Destroy(OH_CryptoMac *ctx)
 销毁MAC实例。
 
 **起始版本：** 20
-
 
 **参数：**
 

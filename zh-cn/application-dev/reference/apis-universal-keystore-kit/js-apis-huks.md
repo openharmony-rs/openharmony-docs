@@ -537,6 +537,12 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
+<!--RP6-->
+> **说明：** 
+>
+> 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
+<!--RP6End-->
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                          |
@@ -665,6 +671,12 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 **需要权限**：ohos.permission.ATTEST_KEY，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
+
+<!--RP6-->
+> **说明：** 
+>
+> 在使用非匿名证书密钥证明时生成的证书链可能包含设备标识符（具体实现需向厂商确认），如包含设备标识符，其使用、留存、销毁由开发者决定，建议开发者在其隐私声明中对其使用目的、留存策略和销毁方式进行说明。
+<!--RP6End-->
 
 **参数：**
 
@@ -1994,11 +2006,11 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
 | 12000021 | the Ukey PIN is locked. |
 | 12000023 | the Ukey PIN not authenticated. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -2089,11 +2101,11 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
 | 12000021 | the Ukey PIN is locked. |
 | 12000023 | the Ukey PIN not authenticated. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2136,11 +2148,11 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000017 | The key with same alias is already exist. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
 | 12000021 | the Ukey PIN is locked. |
 | 12000023 | the Ukey PIN not authenticated. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2233,11 +2245,11 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000017 | The key with same alias is already exist. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
 | 12000021 | the Ukey PIN is locked. |
 | 12000023 | the Ukey PIN not authenticated. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 ## huks.abortSession<sup>9+</sup>
 
@@ -2269,10 +2281,10 @@ abortSession终止密钥操作。使用callback异步回调。
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000014 | memory is insufficient. |
 | 12000020 | the provider operation failed. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 **示例：**
 
@@ -2374,10 +2386,10 @@ abortSession终止密钥操作。使用Promise异步回调。
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or Ukey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
+| 12000018 | the group id specified by the access group tag is invalid. |
 | 12000014 | memory is insufficient. |
 | 12000020 | the provider operation failed. |
 | 12000024 | the provider or Ukey is busy. |
-| 12000018 | the group id specified by the access group tag is invalid. |
 
 **示例：**
 
@@ -2779,17 +2791,15 @@ API version 8-11系统能力为SystemCapability.Security.Huks.Extension；从API
 
 表示导入加密密钥的算法套件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Security.Huks.Core
 
 API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API version 12开始为SystemCapability.Security.Huks.Core
 
 | 名称                                           | 值   | 说明                                                  |
 | ---------------------------------------------- | ---- | ----------------------------------------------------- |
-| HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING | 1    | 导入加密密钥时，X25519密钥协商后使用AES-256 GCM加密。 |
-| HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING   | 2    | 导入加密密钥时，ECDH密钥协商后使用AES-256 GCM加密。   |
-| HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING<sup>23+</sup> | 5    | 导入加密密钥时，使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。|
+| HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING | 1    | 导入加密密钥时，X25519密钥协商后使用AES-256 GCM加密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING   | 2    | 导入加密密钥时，ECDH密钥协商后使用AES-256 GCM加密。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING<sup>23+</sup> | 5    | 导入加密密钥时，使用临时SM4密钥加密导入密钥，使用已导入HUKS的SM2密钥加密SM4密钥。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## HuksImportKeyType<sup>9+</sup>
 
@@ -4049,7 +4059,7 @@ huks Handle结构体。
 > **说明：**
 >
 > - 从API version 8开始，从API version 9开始废弃，建议使用[HuksReturnResult<sup>9+</sup>](#huksreturnresult9)替代。
-> - errorCode的具体信息，请参考[错误码文档](errorcode-huks.md)。
+> - errorCode的具体信息，请参考[HUKS错误码](errorcode-huks.md)。
 
 | 名称 | 类型                                | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |

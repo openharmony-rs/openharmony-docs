@@ -966,4 +966,5 @@ struct FreezeBuildNode {
 ```
 
 点击`change`，改变message的值，当前正在显示的TabContent组件中@Monitor注册的方法onMessageChange被触发。未显示的TabContent中的BuilderNode节点下组件的@Monitor方法onMessageChange也被触发，并没有被冻结。
+
 ![builderNode.gif](figures/builderNode.gif)

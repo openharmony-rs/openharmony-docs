@@ -14,9 +14,9 @@ You only need to perform operations in [Defining Resource Files](#defining-resou
 
 ## Defining Resource Files
 
-Resource files store application content in multiple languages. This framework uses JSON files to store resource definitions. Place the resource file of each locale in the **i18n** directory described in [File Organization](js-framework-file.md). Resource files are named in *language-script-region***.json** format. For example, the resource file for Hong Kong Chinese in the traditional script is named **zh-Hant-HK**. You can omit the region, for example, **zh-CN** for simplified Chinese, or omit both the script and region, for example, **zh** for Chinese.  
+Resource files store application content in multiple languages. This framework uses JSON files to store resource definitions. Place the resource file of each locale in the **i18n** directory described in [File Organization](js-framework-file.md). Resource files are named in ***language-script-region*.json** format. For example, the resource file for Hong Kong Chinese in the traditional script is named **zh-Hant-HK**. You can omit the region, for example, **zh-CN** for simplified Chinese, or omit both the script and region, for example, **zh** for Chinese.  
 
-```
+``` json
 language[-script-region].json
 ```
 
@@ -94,7 +94,8 @@ The following example takes **en-US.json** and **ar-AE.json** as examples:
 Multi-language syntax used on application development pages (including simple formatting and singular-plural formatting) can be used in **.hml** or **.js** files.
 
 - Simple formatting
-  Use the **$t** function to reference to resources of different locales. The **$t** function is available for both **.hml** and **.js** files. The system displays content based on a resource file path specified via **$t** and the specified resource file whose locale matches the current system language.
+
+  Use the `$t` function to reference to resources of different locales. The `$t` function is available for both **.hml** and **.js** files. The system displays content based on a resource file path specified via `$t` and the specified resource file whose locale matches the current system language.
 
   Table 2 Simple formatting
 
@@ -107,7 +108,7 @@ Multi-language syntax used on application development pages (including simple fo
   | Parameter  | Type         | Mandatory| Description                                                        |
   | ------ | ------------- | ---- | ------------------------------------------------------------ |
   | path   | string        | Yes  | Path of the language resource key.                                                  |
-  | params | Array \| Object | No  | Content used to replace placeholders during runtime. There are two types of placeholders available:<br>- Named placeholder, for example, **{name}**. The actual content must be of the object type, for example, **$t('strings.object', {name:'Hello world'})**.<br> - Digit placeholder, for example, **{0}**. The actual content must be of the array type, for example, **$t('strings.array', ['Hello world']**.|
+  | params | Array \| Object | No  | Content used to replace placeholders during runtime. There are two types of placeholders available:<br>- Named placeholder, for example, **{name}**. The actual content must be of the object type, for example, `$t('strings.object', {name:'Hello world'})`.<br> - Digit placeholder, for example, **{0}**. The actual content must be of the array type, for example, `$t('strings.array', ['Hello world']`.|
 
 - Example code for simple formatting
   ```html

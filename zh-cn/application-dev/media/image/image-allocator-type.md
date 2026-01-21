@@ -1,4 +1,4 @@
-# 申请图片解码内存(ArkTS)
+# 图片解码内存优化(ArkTS)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->

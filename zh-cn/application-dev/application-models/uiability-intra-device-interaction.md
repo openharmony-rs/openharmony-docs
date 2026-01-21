@@ -250,7 +250,7 @@
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-                const RESULT_CODE: number = 1001; //FuncAbilityA返回的结果
+                const RESULT_CODE: number = 1001; // FuncAbilityA返回的结果
                 let abilityResult: common.AbilityResult = {
                   resultCode: RESULT_CODE,
                   want: {
@@ -695,11 +695,11 @@ const DOMAIN_NUMBER: number = 0xFF00;
 struct Page_UIAbilityComponentsInteractive {
   build() {
     Column() {
-      //...
+      // ...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -724,11 +724,11 @@ struct Page_UIAbilityComponentsInteractive {
             });
           })
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
-    //...
+    // ...
   }
 }
 ```

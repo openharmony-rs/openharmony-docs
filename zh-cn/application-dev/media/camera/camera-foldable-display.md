@@ -38,7 +38,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       }
 
       async loadXComponent() {
-        //初始化XComponent。
+        // 初始化XComponent。
       }
 
       build() {
@@ -440,7 +440,7 @@ struct Index {
       return;
     }
 
-    //创建会话。
+    // 创建会话。
     try {
       let session = this.mCameraManager.createSession(camera.SceneMode.NORMAL_PHOTO);
       if (!session) {

@@ -677,7 +677,7 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
 2. （可选）如果需要在停止UIAbility时，清理任务中心的相关任务（即不保留最近任务列表中的快照），需要在[module.json5](../../quick-start/module-configuration-file.md)配置文件中将removeMissionAfterTerminate字段取值配置为true。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -754,7 +754,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 2. （可选）如果需要在停止UIAbility时，清理任务中心的相关任务（即不保留最近任务列表中的快照），需要在[module.json5](../../quick-start/module-configuration-file.md)配置文件中将removeMissionAfterTerminate字段取值配置为true。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -1134,17 +1134,17 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
-该接口用于获取[Caller](./js-apis-app-ability-uiAbility.md#caller)通信对象，以便于与[callee](./js-apis-app-ability-uiAbility.md#callee)进行通信。如果指定UIAbility未启动，则会将UIAbility启动至前台或后台。使用Promise异步回调。仅支持在主线程调用。
+该接口用于获取[Caller](./js-apis-app-ability-uiAbility.md#caller)通信对象，以便于与[Callee](./js-apis-app-ability-uiAbility.md#callee)进行通信。如果指定UIAbility未启动，则会将UIAbility启动至前台或后台。使用Promise异步回调。仅支持在主线程调用。
 
 该接口不支持拉起启动模式为[specified模式](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility。
 
 > **说明：**
 >
-> - 跨设备场景下，调用方与目标方必须为同一应用，且具备ohos.permission.DISTRIBUTED_DATASYNC权限，才能启动成功。
+> - 跨设备场景下，调用方与目标方必须为同一应用。
 >
-> - 同设备场景下，调用方与目标方必须为不同应用，且具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请），才能启动成功。
+> - 同设备场景下，要求调用方与目标方为不同应用，且调用方具备ohos.permission.ABILITY_BACKGROUND_COMMUNICATION权限（该权限仅系统应用可申请）。
 >
-> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 此外如果应用需要在后台调用该接口，需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1197,78 +1197,124 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 
 **示例：**
 
-后台启动：
+下面代码展示的是，调用方启动目标方到后台，获取Caller成功后发消息到目标方，然后释放Caller对象。
 
 ```ts
-import { UIAbility, Caller, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { Caller, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { rpc } from '@kit.IPCKit';
+
+const DOMAIN = 0x0000;
+const LOG_TAG = 'TEST_TAG';
+
+class TestParcelable implements rpc.Parcelable {
+  age: number = 0;
+  name: string = '';
+  marshalling(dataOut: rpc.MessageSequence): boolean {
+    dataOut.writeInt(this.age);
+    dataOut.writeString(this.name);
+    return true;
+  }
+  unmarshalling(dataIn: rpc.MessageSequence): boolean {
+    this.age = dataIn.readInt();
+    this.name = dataIn.readString();
+    return true;
+  }
+}
 
 export default class EntryAbility extends UIAbility {
-  onForeground() {
+  async onForeground() {
     let caller: Caller;
-    // 后台启动Ability，不配置parameters
+    // 后台启动Ability
     let wantBackground: Want = {
       bundleName: 'com.example.myapplication',
-      moduleName: 'entry',
       abilityName: 'EntryAbility',
-      deviceId: ''
     };
 
     try {
-      this.context.startAbilityByCall(wantBackground)
-        .then((obj: Caller) => {
-          // 执行正常业务
-          caller = obj;
-          console.info('startAbilityByCall succeed');
-        }).catch((err: BusinessError) => {
-        // 处理业务逻辑错误
-        console.error(`startAbilityByCall failed, code is ${err.code}, message is ${err.message}`);
-      });
+      caller = await this.context.startAbilityByCall(wantBackground);
+      await caller.call('TEST_CALL', new TestParcelable());
+      caller.release();
     } catch (err) {
       // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`startAbilityByCall failed, code is ${code}, message is ${message}`);
+      hilog.error(DOMAIN, LOG_TAG, `startAbilityByCall failed ${err}`);
     }
   }
 }
 ```
 
-前台启动：
+下面代码展示，目标方启动后注册监听，销毁时取消监听。
 
 ```ts
-import { UIAbility, Caller, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { rpc } from '@kit.IPCKit';
+
+const DOMAIN = 0x0000;
+const LOG_TAG = 'TEST_TAG';
+
+class TestParcelable implements rpc.Parcelable {
+  age: number = 0;
+  name: string = '';
+  marshalling(dataOut: rpc.MessageSequence): boolean {
+    dataOut.writeInt(this.age);
+    dataOut.writeString(this.name);
+    return true;
+  }
+  unmarshalling(dataIn: rpc.MessageSequence): boolean {
+    this.age = dataIn.readInt();
+    this.name = dataIn.readString();
+    return true;
+  }
+}
 
 export default class EntryAbility extends UIAbility {
-  onForeground() {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(DOMAIN, LOG_TAG, '%{public}s', 'Ability onCreate');
+    // 注册监听
+    this.callee.on('TEST_CALL', (data: rpc.MessageSequence) => {
+      let recv = new TestParcelable();
+      data.readParcelable(recv);
+      recv.age++;
+      return recv;
+    });
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN, LOG_TAG, '%{public}s', 'Ability onDestroy');
+    // 取消监听
+    this.callee.off('TEST_CALL');
+  }
+}
+```
+
+下面代码展示，调用方启动目标方到前台场景。
+
+```ts
+import { Caller, UIAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+const LOG_TAG = 'TEST_TAG';
+
+export default class EntryAbility extends UIAbility {
+  async onForeground() {
     let caller: Caller;
-    // 前台启动Ability，将parameters中的'ohos.aafwk.param.callAbilityToForeground'配置为true
+    // 启动UIAbility到前台，将parameters中的'ohos.aafwk.param.callAbilityToForeground'配置为true
     let wantForeground: Want = {
       bundleName: 'com.example.myapplication',
-      moduleName: 'entry',
       abilityName: 'EntryAbility',
-      deviceId: '',
       parameters: {
         'ohos.aafwk.param.callAbilityToForeground': true
       }
     };
 
     try {
-      this.context.startAbilityByCall(wantForeground)
-        .then((obj: Caller) => {
-          // 执行正常业务
-          caller = obj;
-          console.info('startAbilityByCall succeed');
-        }).catch((err: BusinessError) => {
-        // 处理业务逻辑错误
-        console.error(`startAbilityByCall failed, code is ${err.code}, message is ${err.message}`);
-      });
+      caller = await this.context.startAbilityByCall(wantForeground);
+      caller.release();
     } catch (err) {
       // 处理入参错误异常
-      let code = (err as BusinessError).code;
-      let message = (err as BusinessError).message;
-      console.error(`startAbilityByCall failed, code is ${code}, message is ${message}`);
+      hilog.error(DOMAIN, LOG_TAG, `startAbilityByCall failed ${err}`);
     }
   }
 }
@@ -1884,7 +1930,7 @@ showAbility(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -1984,7 +2030,7 @@ hideAbility(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -2540,6 +2586,8 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名   | 类型                                     | 必填 | 说明                     |
@@ -2625,6 +2673,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -2830,7 +2880,7 @@ setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 
@@ -2939,7 +2989,7 @@ revokeDelegator(): Promise&lt;void&gt;
     >
     >  - 当UIAbility是通过[startAbilityByCall](#startabilitybycall)启动时，系统会忽略在[module.json5](../../quick-start/module-configuration-file.md)配置文件标签中配置的abilitySrcEntryDelegator和abilityStageSrcEntryDelegator。
     >  - abilityStageSrcEntryDelegator指定的ModuleName不能与当前ModuleName相同。
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -3030,7 +3080,7 @@ startAppServiceExtensionAbility(want: Want): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3110,7 +3160,7 @@ stopAppServiceExtensionAbility(want: Want): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3186,7 +3236,7 @@ connectAppServiceExtensionAbility(want: Want, callback: ConnectOptions): number
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3269,7 +3319,7 @@ disconnectAppServiceExtensionAbility(connection: number): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3568,6 +3618,8 @@ setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 > setMissionWindowIcon<!--Del-->、[setMissionIcon](./js-apis-inner-application-uiAbilityContext-sys.md#setmissionicon)<!--DelEnd-->和[setAbilityInstanceInfo](./js-apis-inner-application-uiAbilityContext.md#setabilityinstanceinfo15)之间不存在调用优先级关系。当多个接口被依次调用时，后一次调用的接口所设置的图标信息将覆盖之前调用接口所设置的内容，最终生效的图标以最后一次调用的接口为准。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

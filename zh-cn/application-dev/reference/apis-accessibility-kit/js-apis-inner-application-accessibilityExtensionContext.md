@@ -33,6 +33,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 节点元素具备的属性名称及属性值类型信息。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
@@ -797,6 +799,8 @@ axContext.injectGestureSync(gesturePath);
 ## AccessibilityElement<sup>9+</sup>
 
 无障碍节点元素, 在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement() ](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement() ](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 

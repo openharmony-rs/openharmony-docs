@@ -285,7 +285,7 @@ export struct SwiperPageSwitchMethod {
 }
 ```
 
-![controll](figures/controll.gif)
+![control](figures/control.gif)
 
 
 ## 轮播方向
@@ -734,7 +734,7 @@ export struct SwiperIgnoreComponentSize {
 }
 ```
 
-![controll](figures/indicator_space.gif)
+![indicator_space](figures/indicator_space.gif)
 
 ## 保持可见内容位置不变
 
@@ -838,7 +838,7 @@ export struct SwiperVisibleContentPosition {
 }
 ```
 
-![controll](figures/maintainVisibleContentPosition_true.gif)
+![maintainVisibleContentPosition_true](figures/maintainVisibleContentPosition_true.gif)
 
 ## 相关实例
 

@@ -89,7 +89,7 @@ If no size is set for the cross axis of the **List** component, the size of the 
 
 By default, the main axis of the **List** component runs in the vertical direction. This means that you can create a vertical scrolling list without the need to manually set the list direction.
 
-To create a horizontal scrolling list, set the **listDirection** attribute to **Axis.Horizontal**. The default value of **listDirection** is **Axis.Vertical**.
+To create a horizontal scrolling list, set the [listDirection](../reference/apis-arkui/arkui-ts/ts-container-list.md#listdirection) attribute to **Axis.Horizontal**. The default value of **listDirection** is **Axis.Vertical**.
 
 
 <!-- @[build_a_horizontal_scrolling_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListLayout.ets) -->
@@ -147,7 +147,7 @@ export struct ListLayout {
 
 For example, if the **lanes** attribute is set to **{ minLength: 200, maxLength: 300 }** for a vertical list, then:
 
-- When the list width is 300 vp, the list contains one column, because **minLength** is 200 vp.
+- When the list width is 300 vp, the list contains one column because **minLength** is 200 vp.
 
 - When the list width changes to 400 vp, which is twice that of the **minLength** value, the list is automatically adapted to two-column.
 
@@ -221,19 +221,19 @@ export struct DataInList {
     // ···
           List() {
             ListItem() {
-              // The value in the app.string.city_beijing resource file is 'Beijing'.
+              // The value in the app.string.city_beijing resource file is 'Beijing.'
               Text($r('app.string.city_beijing'))
                 .fontSize(24)
             }
 
             ListItem() {
-              // The value in the app.string.city_hangzhou resource file is 'Hangzhou'.
+              // The value in the app.string.city_hangzhou resource file is 'Hangzhou.'
               Text($r('app.string.city_hangzhou'))
                 .fontSize(24)
             }
 
             ListItem() {
-              // The value in the app.string.city_shanghai resource file is 'Shanghai'.
+              // The value in the app.string.city_shanghai resource file is 'Shanghai.'
               Text($r('app.string.city_shanghai'))
                 .fontSize(24)
             }
@@ -266,7 +266,7 @@ List() {
         .height(40)
         .margin(10)
 
-      The value in the // app.string.peopleOne resource file is 'Tom'.
+      // The value in the app.string.peopleOne resource file is 'Tom.'
       Text($r('app.string.peopleOne'))
         .fontSize(20)
     }
@@ -280,7 +280,7 @@ List() {
         .height(40)
         .margin(10)
 
-      // The value in the app.string.peopleTwo resource file is 'Tracy'.
+      // The value in the app.string.peopleTwo resource file is 'Tracy.'
       Text($r('app.string.peopleTwo'))
         .fontSize(20)
     }
@@ -372,7 +372,7 @@ A divider separates UI items to make them easier to identify. In the following f
 
 ![en-us_image_0000001511580960](figures/en-us_image_0000001511580960.png)
 
-To add dividers between list items, use the [divider](../reference/apis-arkui/arkui-ts/ts-container-list.md#divider) attribute together with the following style attributes:<br> **strokeWidth** and **color**: stroke width and color of the diver, respectively.
+To add dividers between list items, use the [divider](../reference/apis-arkui/arkui-ts/ts-container-list.md#divider) attribute together with the following style attributes:<br> **strokeWidth** and **color**: stroke width and color of the divider, respectively.
 
 **startMargin** and **endMargin**: distance between the divider and the start edge and end edge of the list, respectively.
 
@@ -639,7 +639,7 @@ export struct StickyHeaderList {
   }
 
   build() {
-    // ···
+    // ...
           List() {
             // Lazy-load the ListItemGroup components. contactsGroups is the data set of contacts and titles of multiple groups.
             LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
@@ -648,7 +648,10 @@ export struct StickyHeaderList {
                 if (itemGroup.contacts) {
                   LazyForEach(new ContactsGroupDataSource(itemGroup.contacts), (item: Contact) => {
                     ListItem() {
-                    // ···
+                      Row() {
+                        Image(item.icon).width(40).height(40).margin(10)
+                        Text(item.name).fontSize(20)
+                      }.width('100%').justifyContent(FlexAlign.Start)
                     }
                   }, (item: Contact) => JSON.stringify(item))
                 }
@@ -656,7 +659,7 @@ export struct StickyHeaderList {
             }, (itemGroup: ContactsGroup) => JSON.stringify(itemGroup))
           }
           .sticky(StickyStyle.Header) // Set a sticky title.
-        // ···
+          // ...
   }
 }
 ```
@@ -675,7 +678,7 @@ When the **List** component is initialized, you can use the **scroller** paramet
 To start with, create a **Scroller** object **listScroller**.
 
    <!-- @[create_private_list_scroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ControlledScrollPositionList.ets) -->
-   
+
    ``` TypeScript
    private listScroller: Scroller = new Scroller();
    ```
@@ -689,13 +692,13 @@ Then, use **listScroller** to initialize the **scroller** parameter to bind it w
 Stack({ alignContent: Alignment.Bottom }) {
   // Use listScroller to initialize the scroller parameter to bind it with the List component.
   List({ space: 20, scroller: this.listScroller }) {
-  // ···
+    // ...
   }
 
   Button() {
-  // ···
+    // ...
   }
-  // ···
+  // ...
   .onClick(() => {
     // Specify where e to jump when the specific button is clicked, which is the top of the list in this example.
     this.listScroller.scrollToIndex(0);
@@ -725,26 +728,26 @@ When the list scrolls, the **selectedIndex** value of the letter to highlight in
 const alphabets = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
   'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-// ···
+// ...
 
 @Entry
 @Component
 export struct ResponsiveScrollPositionList {
   @State selectedIndex: number = 0;
   private listScroller: Scroller = new Scroller();
-// ···
+  // ...
 
   build() {
-    // ···
+    // ...
           Stack({ alignContent: Alignment.End }) {
             // Use the List component to handle scroll position changes.
             // Use listScroller to initialize the scroller parameter to bind it with the List component.
             List({ scroller: this.listScroller }) {
-            // ···
+              // ...
             }
             .onScrollIndex((firstIndex: number) => {
               // Recalculate the value of this.selectedIndex in the alphabetical index bar based on the index of the item to which the list has scrolled.
-            // ···
+              // ...
             })
 
             // AlphabetIndexer component
@@ -754,7 +757,7 @@ export struct ResponsiveScrollPositionList {
                 this.listScroller.scrollToIndex(index);
               })
           }
-        // ···
+          // ...
   }
 }
 ```
@@ -841,7 +844,7 @@ ListItem() {
     position: BadgePosition.RightTop,
     style: { badgeSize: 16, badgeColor: '#FA2A2D' }
   }) {
-  // ···
+    // ...
   }
 }
 ```
@@ -977,11 +980,11 @@ The process of implementing the addition feature is as follows:
      }
    
      build() {
-       // ···
+       // ...
          Column(
-           // ···
+           // ...
          ) {
-           // ···
+           // ...
                Row() {
                  if (this.isEditMode) {
                    Text('X')
@@ -991,13 +994,13 @@ The process of implementing the addition feature is as follows:
                      })
                      .margin({ left: 20, right: 20 })
                  } else {
-                   // The value in the app.string.TodoItem resource file is 'To-Do'.
+                   // The value in the app.string.TodoItem resource file is 'To-Do.'
                    Text($r('app.string.TodoItem'))
                      .fontSize(36)
                      .margin({ left: 40 })
                    Blank()
                    Text('+')// Provide an entry for adding a list item, that is, add a click event for the add button.
-                   // ···
+                   // ...
                      .onClick(() => {
                        this.getUIContext().showTextPickerDialog({
                          range: this.availableThings,
@@ -1010,7 +1013,7 @@ The process of implementing the addition feature is as follows:
                        })
                      })
                  }
-               // ···
+                 // ...
    
                List({ space: 10 }) {
                  ForEach(this.toDoData, (toDoItem: ToDo) => {
@@ -1026,7 +1029,7 @@ The process of implementing the addition feature is as follows:
                }
              }
            }
-           // ···
+           // ...
      }
    }
    ```
@@ -1043,6 +1046,7 @@ As shown below, when the user long presses a list item to enter the deletion mod
 The process of implementing the deletion feature is as follows:
 
 1. Generally, the deletion feature is available only after the list enters the editing mode. Therefore, the entry to the editing mode needs to be provided.
+
    In this example, by listening for the long press event of a list item, the list enters the editing mode when the user long presses a list item.
 
    <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
@@ -1083,6 +1087,7 @@ The process of implementing the deletion feature is as follows:
    ```
 
 2. Respond to the user's selection and record the list items to be deleted.
+
    In this to-do list example, the list items are selected or unselected according to the user's selection.
 
    <!-- @[structural_references](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
@@ -1144,7 +1149,7 @@ The process of implementing the deletion feature is as follows:
    <!-- @[implement_deletion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DeleteListItem.ets) -->
    
    ``` TypeScript
-   // The value in the app.string.delete resource file is 'Delete'.
+   // The value in the app.string.delete resource file is 'Delete.'
    Button($r('app.string.delete'))
    // ···
      .onClick(() => {
@@ -1226,40 +1231,40 @@ The process of implementing the collapsing and expanding effect of list items is
        {
          index: 0,
          name: 'basicInfo',
-         // The value in the app.string.Personal_Basic_Information resource file is 'Basic personal information'.
+         // The value in the app.string.Personal_Basic_Information resource file is 'Basic personal information.'
          label: $r('app.string.Personal_Basic_Information'),
          children: [
            {
              index: 0,
-             // The value in the app.string.nick_name resource file is 'Nickname'.
+             // The value in the app.string.nick_name resource file is 'Nickname.'
              name: $r('app.string.nick_name'),
              label: 'xxxx',
              type: 'Text'
            },
            {
              index: 1,
-             // The value in the app.string app.string.avatar resource file is 'Profile picture'.
+             // The value in the app.string.avatar resource file is 'Profile picture.'
              name: $r('app.string.avatar'),
              label: $r('sys.media.ohos_user_auth_icon_face'),
              type: 'Image'
            },
            {
              index: 2,
-             // The value in the app.string app.string.age resource file is 'Age'.
+             // The value in the app.string.age resource file is 'Age.'
              name: $r('app.string.age'),
              label: 'xxxx',
              type: 'Text'
            },
            {
              index: 3,
-             // The value in the app.string.birthday resource file is 'Gender'.
+             // The value in the app.string.birthday resource file is 'Gender.'
              name: $r('app.string.birthday'),
              label: 'xxxxxxxxx',
              type: 'Text'
            },
            {
              index: 4,
-             // The value in the app.string.gender resource file is "
+             // The value in the app.string.gender resource file is ''.
              name: $r('app.string.gender'),
              label: 'xxxxxxxx',
              type: 'Text'
@@ -1269,35 +1274,35 @@ The process of implementing the collapsing and expanding effect of list items is
        {
          index: 1,
          name: 'equipInfo',
-         // The value in the app.string.Device_Information resource file is "Device information".
+         // The value in the app.string.Device_Information resource file is "Device information."
          label: $r('app.string.Device_Information'),
          children: []
        },
        {
          index: 2,
          name: 'appInfo',
-         // The value in the app.string.Application_usage_information resource file is 'App usage'.
+         // The value in the app.string.Application_usage_information resource file is 'App usage.'
          label: $r('app.string.Application_usage_information'),
          children: []
        },
        {
          index: 3,
          name: 'uploadInfo',
-         // The value in the app.string.data_you_voluntarily_uploaded resource file is 'Data you actively upload'.
+         // The value in the app.string.data_you_voluntarily_uploaded resource file is 'Data you actively upload.'
          label: $r('app.string.data_you_voluntarily_uploaded'),
          children: []
        },
        {
          index: 4,
          name: 'tradeInfo',
-         // The value in the app.string.Trading_and_asset_information resource file is 'Transactions & assets'.
+         // The value in the app.string.Trading_and_asset_information resource file is 'Transactions & assets.'
          label: $r('app.string.Trading_and_asset_information'),
          children: []
        },
        {
          index: 5,
          name: 'otherInfo',
-         // The value in the app.string.Other_materials resource file is 'Other materials'.
+         // The value in the app.string.Other_materials resource file is 'Other materials.'
          label: $r('app.string.Other_materials'),
          children: []
        },
@@ -1409,17 +1414,32 @@ In certain scenarios, you may want a list to automatically scroll upward when ne
    <!-- @[construct_list_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListChatRoom.ets) -->
    
    ``` TypeScript
+   @Builder
+   MessageItem(message: Message) {
+     Column() {
+       Text(`${message.sender}: ${message.content}`)
+         .fontSize(16)
+         .textAlign(TextAlign.Start)
+         .padding(10)
+         .backgroundColor(message.sender === 'system' ? '#F0F0F0' : '#E6F3FF')
+         .borderRadius(8)
+     }
+     .width('100%')
+     .alignItems(HorizontalAlign.Start)
+     .margin({ bottom: 8 })
+   }
+
    @State messages: Message[] = [];
    
    aboutToAppear(): void {
      const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-     // The value in the app.string.welcome_live_room resource file is 'Welcome to the live stream'.
+     // The value in the app.string.welcome_live_room resource file is 'Welcome to the live stream.'
      const welcomeLiveRoom = context.resourceManager.getStringByNameSync('welcome_live_room');
-     // The value in the app.string.system resource file is 'System'.
+     // The value in the app.string.system resource file is 'System.'
      const system = context.resourceManager.getStringByNameSync('system');
      // The value in the app.string.hello_everyone resource file is 'Hello everyone!'
      const helloEveryone = context.resourceManager.getStringByNameSync('hello_everyone');
-     // The value in the app.string.anchors resource file is 'Host'.
+     // The value in the app.string.anchors resource file is 'Host.'
      const anchors = context.resourceManager.getStringByNameSync('anchors');
      this.messages = [
        { id: 1, content: welcomeLiveRoom, sender: system },
@@ -1428,7 +1448,7 @@ In certain scenarios, you may want a list to automatically scroll upward when ne
    }
    
    build() {
-     // ···
+     // ...
            Column() {
              // Chat message area.
              List({ space: 10 }) {
@@ -1442,11 +1462,11 @@ In certain scenarios, you may want a list to automatically scroll upward when ne
              .layoutWeight(1) // Occupy the remaining space.
              .alignListItem(ListItemAlign.Center)
    
-             // ···
+             // ...
            }
            .width('100%')
            .height('100%')
-         // ···
+           // ...
    }
    ```
 
@@ -1456,7 +1476,7 @@ Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arku
 
   **Figure 26** Custom scroll positioning effects
 
-
+![onWillStopDragging](figures/onWillStopDragging.gif)
 
 1. Define the news item data structure.
 
@@ -1484,11 +1504,11 @@ Since API version 20, scrollable components ([Grid](../reference/apis-arkui/arku
    
    ``` TypeScript
    @State newsData: Array<News> = [
-     // The value in the app.string.new_title resource file is 'Headline'.
+     // The value in the app.string.new_title resource file is 'Headline.'
      // The value in the app.string.new_short resource file is 'Short news content for quick browsing.'
      new News('1', $r('app.string.new_title'), $r('app.string.new_short'), 'short'),
      new News('2', $r('app.string.new_title'), $r('app.string.new_short'), 'short'),
-     // The value in the app.string.new_long resource file is 'Another brief news item.'
+     // The value in the app.string.new_long resource file is 'Long news content for full browsing.'
      new News('3', $r('app.string.new_title'), $r('app.string.new_long'), 'long'),
      new News('4', $r('app.string.new_title'), $r('app.string.new_short'), 'short'),
      new News('5', $r('app.string.new_title'), $r('app.string.new_long'), 'long'),
@@ -1568,12 +1588,22 @@ The edge effect refers to the visual and interactive feedback when users scroll 
 
 When the **List** content area occupies at least one full screen, the default edge effect is spring, as shown below.
 
+  **Figure 27** Spring edge effect
 
+![edge_effect_spring](figures/edge_effect_spring.gif)
 
 If **.edgeEffect(EdgeEffect.None)** is used, the List component displays no edge effect, as shown below.
 
+  **Figure 28** No edge effect
+
+![edge_effect_none](figures/edge_effect_none.gif)
 
 Since API version 18, **List** supports configuring edge effects for individual sides. For example, **.edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })** applies the spring effect only to the start edge.
 
+  **Figure 29** Single-side edge effect
+
+![edge_effect_spring_start](figures/edge_effect_spring_start.gif)
 
 Note: By default, the **List** component can produce a bounce effect only when there is more than one screen of content. To produce a bounce effect when there is less than one screen of content, configure **.edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true })**.
+
+<!--RP2--><!--RP2End-->

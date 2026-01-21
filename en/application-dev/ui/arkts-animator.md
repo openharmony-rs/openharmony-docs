@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The frame animation allows you to adjust your animation properties on each frame, thanks to its per-frame callback. By leveraging the **onFrame** callback, you can dynamically set property values on each frame, creating smooth and natural animations. For details about the frame animation APIs, see [@ohos.animator (Animator)](../reference/apis-arkui/js-apis-animator.md).
+The frame animation allows you to adjust your animation properties on each frame, thanks to its per-frame callback. By leveraging the **onFrame** callback of [AnimatorResult](../reference/apis-arkui/js-apis-animator.md#animatorresult), you can dynamically set property values on each frame, creating smooth and natural animations. For details about the frame animation APIs, see [@ohos.animator (Animator)](../reference/apis-arkui/js-apis-animator.md).
 
 Compared with the property animation, the frame animation offers the benefits of real-time visibility into the animation process and allows you to modify UI values on the fly. In addition, it provides high responsiveness to events and can be paused as needed. However, it is worth noting that the frame animation may not be as performant as the property animation. Therefore, where the property animation meets the requirements, you are advised to use the property animation APIs. For details, see [Implementing Property Animation](./arkts-attribute-animation-apis.md). The table below provides a comparison between the property animation and frame animation.
 
@@ -115,17 +115,17 @@ To create a simple animator and print the current interpolation value in each fr
      }
      // Invoked when the animation is canceled.
      this.animatorOptions.onCancel = () => {
-       // The value in the $r('app.string.cancel') resource file is 'Canceled'.
+       // Replace $r('app.string.cancel') with the actual resource file. In this example, the value in the resource file is "Canceled."
        this.animatorStatus = $r('app.string.cancel');
      }
      // Invoked when the animation finishes playing.
      this.animatorOptions.onFinish = () => {
-       // The value in the $r('app.string.complete') resource file is 'Finished'.
+       // Replace $r('app.string.complete') with the actual resource file. In this example, the value in the resource file is "Finished."
        this.animatorStatus = $r('app.string.complete');
      }
      // Invoked when the animation repeats.
      this.animatorOptions.onRepeat = () => {
-       // The value in the $r('app.string .repeat') resource file is 'Animation repeating'.
+       // The value in the 'repeat' resource file is 'Animation repeating.'
        hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
      }
    }
@@ -136,21 +136,21 @@ To create a simple animator and print the current interpolation value in each fr
    <!-- @[animator_template4_buttons_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
    
    ``` TypeScript
-   // The value in the $r('app.string.play') resource file is 'Play'.
+   // Replace $r('app.string.play') with the actual resource file. In this example, the value in the resource file is "Play."
    Button($r('app.string.play')).onClick(() => {
      this.animatorOptions?.play();
-     // The value in the $r('app.string.playing') resource file is 'Playing'.
+     // Replace $r('app.string.playing') with the actual resource file. In this example, the value in the resource file is "Playing."
      this.animatorStatus = $r('app.string.playing');
    }).width(80).height(35)
-   // The value in the $r('app.string.reset') resource file is 'Reset'.
+   // Replace $r('app.string.reset') with the actual resource file. In this example, the value in the resource file is "Reset."
    Button($r('app.string.reset')).onClick(() => {
      this.translateX = 0;
      this.translateY = 0;
    }).width(80).height(35)
-   // The value in the $r('app.string.pause') resource file is 'Pause'.
+   // Replace $r('app.string.pause') with the actual resource file. In this example, the value in the resource file is "Pause."
    Button($r('app.string.pause')).onClick(() => {
      this.animatorOptions?.pause();
-     // The value in the $r('app.string.pause') resource file is 'Pause'.
+     // Replace $r('app.string.pause') with the actual resource file. In this example, the value in the resource file is "Pause."
      this.animatorStatus = $r('app.string.pause');
    }).width(80).height(35)
    ```
@@ -183,7 +183,7 @@ struct Index {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   private manager = this.context.resourceManager;
   @State animatorResult: AnimatorResult | undefined = undefined;
-  // The value in the 'create' resource file is 'Create'.
+  // The value in the 'create' resource file is 'Create.'
   @State animatorStatus: string = 'create';
   begin: number = 0;
   end: number = 300;
@@ -213,15 +213,15 @@ struct Index {
       }
     }
     this.animatorResult.onCancel = () => {
-      // The value in the 'cancel' resource file is 'Cancel'.
+      // The value in the 'cancel' resource file is 'Canceled.'
       this.animatorStatus = 'cancel';
     }
     this.animatorResult.onFinish = () => {
-      // The value in the 'complete' resource file is 'Finish'.
+      // The value in the 'complete' resource file is 'Finished.'
       this.animatorStatus = 'complete';
     }
     this.animatorResult.onRepeat = () => {
-      // The value in the 'repeat' resource file is 'Animation repeating'.
+      // The value in the 'repeat' resource file is 'Animation repeating.'
       hilog.info(DOMAIN, TAG, this.manager.getStringByNameSync('repeat'));
     }
   }
@@ -233,21 +233,21 @@ struct Index {
   build() {
     Column() {
       Column({ space: 30 }) {
-        // The value in the $r('app.string.play') resource file is 'Play'.
+        // Replace $r('app.string.play') with the actual resource file. In this example, the value in the resource file is "Play."
         Button($r('app.string.play')).onClick(() => {
           this.animatorResult?.play();
-          // The value in the 'playing' resource file is 'Playing'.
+          // The value in the 'playing' resource file is 'Playing.'
           this.animatorStatus = 'playing';
         }).width(80).height(35)
-        // The value in the $r('app.string.reset') resource file is 'Reset'.
+        // Replace $r('app.string.reset') with the actual resource file. In this example, the value in the resource file is "Reset."
         Button($r('app.string.reset')).onClick(() => {
           this.translateX = 0;
           this.translateY = 0;
         }).width(80).height(35)
-        // The value in the $r('app.string.pause') resource file is 'Pause'.
+        // Replace $r('app.string.pause') with the actual resource file. In this example, the value in the resource file is "Pause."
         Button($r('app.string.pause')).onClick(() => {
           this.animatorResult?.pause();
-          // The value in the 'pause' resource file is 'Pause'.
+          // The value in the 'pause' resource file is 'Pause.'
           this.animatorStatus = 'pause';
         }).width(80).height(35)
       }.width('100%').height('25%')

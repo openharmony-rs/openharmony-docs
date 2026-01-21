@@ -146,8 +146,6 @@ SysCap，全称SystemCapability，即系统能力，指操作系统中每一个�
 - SystemCapability.FileManagement.PhotoAccessHelper.Core
 - SystemCapability.FileManagement.UserFileManager.Core
 - SystemCapability.FileManagement.UserFileManager.DistributedCore
-- SystemCapability.Multimedia.MediaLibrary.Core
-- SystemCapability.Multimedia.MediaLibrary.DistributedCore
 - SystemCapability.Sensors.MiscDevice
 - SystemCapability.ArkCompiler.JSVM
 - SystemCapability.ArkUI.ArkUI.Napi

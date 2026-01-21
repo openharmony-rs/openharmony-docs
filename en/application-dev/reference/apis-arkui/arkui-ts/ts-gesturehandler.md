@@ -28,7 +28,7 @@ Sets the tag for the gesture handler.
 
 **Parameters**
 
-| Name| Type| Mandatory|Description                                       |
+| Name| Type| Mandatory|Description                                        |
 | ----  | ------  | ------|---------------------------------- |
 | tag   | string  | Yes|Gesture handler tag.|
 
@@ -50,7 +50,7 @@ Sets the event input sources supported by the gesture handler.
 
 **Parameters**
 
-| Name| Type| Mandatory|Description                                       |
+| Name| Type| Mandatory|Description                                        |
 | ----  | ------  | ------|---------------------------------- |
 | types   | Array\<[SourceTool](ts-gesture-settings.md#sourcetool9)>  | Yes|Supported input source types.|
 
@@ -88,7 +88,7 @@ Constructor used to create a tap gesture handler instance.
 
 **Parameters**
 
-| Name | Type                                                        | Mandatory| Description              |
+| Name | Type                                                        | Mandatory| Description               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options | [TapGestureHandlerOptions](#tapgesturehandleroptions) | No  | Parameters of the tap gesture handler.|
 
@@ -104,7 +104,7 @@ Sets the callback for successful tap gesture recognition.
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked upon successful tap gesture recognition.|
 
@@ -118,15 +118,14 @@ Sets the callback for successful tap gesture recognition.
 
 Provides the parameters of the tap gesture handler. Inherits from [BaseHandlerOptions](#basehandleroptions15).
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name        | Type                                 | Read-Only| Optional| Description                 |
 | ------------ | -------------------------------------|------ | ---- | -------------------- |
-| count | number | No| Yes| Number of consecutive taps. If the value is less than 1 or is not set, the default value is used.<br>Default value: **1**.<br>Value range: [0, +∞).<br>**NOTE**<br>1. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>2. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.|
-| fingers | number | No| Yes| Number of fingers required to trigger a tap. The value ranges from 1 to 10. If the value is less than 1 or is not set, the default value is used.<br>Default value: **1**.<br>**NOTE**<br>1. If the value is greater than 1, the tap gesture will fail to be recognized when the number of fingers pressing the screen within 300 ms of the first finger's being pressed is less than the required number, or when the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required number.<br>2. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.|
+| count | number | No| Yes| Number of consecutive taps. If the value is less than 1 or is not set, the default value is used.<br>Default value: **1**.<br>Value range: [0, +∞).<br>**NOTE**<br>1. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>2. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| fingers | number | No| Yes| Number of fingers required to trigger a tap. The value ranges from 1 to 10. If the value is less than 1 or is not set, the default value is used.<br>Default value: **1**.<br>**NOTE**<br>1. If the value is greater than 1, the tap gesture will fail to be recognized when the number of fingers pressing the screen within 300 ms of the first finger's being pressed is less than the required number, or when the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required number.<br>2. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | isFingerCountLimited<sup>15+</sup> | boolean | No| Yes| Whether to enforce the exact number of fingers touching the screen. **true**: Enforce the exact number of fingers touching the screen. **false**: Do not enforce the exact number of fingers touching the screen. With the value **true**, the gesture recognition fails if the number of fingers touching the screen does not match the configured value of **fingers**.<br>In multi-tap events (where the **count** parameter is greater than 1), each tap must have the same number of fingers as the configured value; otherwise, the gesture recognition fails.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| distanceThreshold<sup>23+</sup> | number | No| Yes| Movement threshold for the tap gesture. If the value is less than or equal to 0 or is not set, the default value is used.<br>Default value: 2^31-1<br>Unit: vp.<br>**NOTE**<br>If the finger movement exceeds the preset movement threshold, the gesture recognition fails. If the default threshold is used during initialization and the finger moves beyond the component's touch target, the tap gesture recognition fails.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## LongPressGestureHandler
 
@@ -145,7 +144,7 @@ Constructor used to create a long press gesture handler instance.
 **Parameters**
 
 
-| Name | Type                                                        | Mandatory| Description              |
+| Name | Type                                                        | Mandatory| Description               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options | [LongPressGestureHandlerOptions](#longpressgesturehandleroptions) | No  | Parameters of the long press gesture handler.|
 
@@ -161,7 +160,7 @@ Sets the callback for successful long press gesture recognition.
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked upon successful long press gesture recognition.|
 
@@ -183,7 +182,7 @@ Sets the callback for long press gesture recognition completion. This callback i
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked when long press gesture recognition completes.|
 
@@ -205,7 +204,7 @@ Sets the callback for long press gesture cancellation. This callback is triggere
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)\<void> | Yes| Callback invoked when the long press gesture is cancelled.|
 
@@ -227,7 +226,7 @@ Sets the callback for long press gesture cancellation. This callback is triggere
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked when the long press gesture is cancelled. This callback returns gesture event information.|
 
@@ -248,7 +247,7 @@ Provides the parameters of the long press gesture handler. Inherits from [BaseHa
 | fingers | number | No| Yes| Minimum number of fingers to trigger a long press gesture. The value ranges from 1 to 10.<br>Default value: **1**.<br>Value range: [1, 10].<br> **NOTE**<br>If a finger moves more than 15 px after being pressed, the gesture recognition fails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | repeat | boolean | No| Yes| Whether to continuously trigger the event callback. The value **true** means to continuously trigger the event callback, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | duration | number | No| Yes| Minimum hold-down time, in ms.<br>Default value: **500**.<br>**NOTE**<br>Value range: [0, +∞). If the value is less than or equal to 0, the default value **500** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| isFingerCountLimited<sup>15+</sup> | boolean | No| Yes| Whether to enforce the exact number of fingers touching the screen. **true**: Enforce the exact number of fingers touching the screen. **false**: Do not enforce the exact number of fingers touching the screen. With the value **true**, the gesture recognition fails if the number of fingers touching the screen does not match the configured value of **fingers**.<br>For gestures that have already been successfully recognized, changes in the number of fingers touching the screen will not trigger the **repeat** event. However, if the number of fingers touching the screen returns to the configured minimum number, the [onAction](ts-basic-gestures-longpressgesture.md#events) event can be triggered. The [onActionEnd](ts-basic-gestures-longpressgesture.md#events) event can also be triggered regardless of the finger count.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| isFingerCountLimited<sup>15+</sup> | boolean | No| Yes| Whether to enforce the exact number of fingers touching the screen. **true**: Enforce the exact number of fingers touching the screen. **false**: Do not enforce the exact number of fingers touching the screen. With the value **true**, the gesture recognition fails if the number of fingers touching the screen does not match the configured value of **fingers**.<br>For gestures that have already been successfully recognized, changes in the number of fingers touching the screen will not trigger the **repeat** event. However, if the number of fingers touching the screen returns to the configured minimum number, the [onAction](ts-basic-gestures-longpressgesture.md#onaction) event can be triggered. The [onActionEnd](ts-basic-gestures-longpressgesture.md#onactionend) event can also be triggered regardless of the finger count.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | allowableMovement<sup>22+</sup> | number | No| Yes| Maximum movement distance recognized by the long press gesture recognizer, in px.<br>Default value: **15**.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value **15** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## PanGestureHandler
@@ -268,7 +267,7 @@ Constructor used to create a pan gesture handler instance.
 **Parameters**
 
 
-| Name | Type                                                        | Mandatory| Description              |
+| Name | Type                                                        | Mandatory| Description               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options | [PanGestureHandlerOptions](#pangesturehandleroptions) | No  | Parameters of the pan gesture handler.|
 
@@ -284,7 +283,7 @@ Sets the callback for successful pan gesture recognition.
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked upon successful pan gesture recognition.|
 
@@ -306,7 +305,7 @@ Sets the callback for pan gesture movement updates. The callback is triggered wh
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked during pan gesture movement.<br>If **fingerList** contains multiple fingers, this callback updates the location information of only one finger each time.|
 
@@ -328,7 +327,7 @@ Sets the callback for pan gesture recognition completion. This callback is trigg
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked when pan gesture recognition completes.|
 
@@ -350,7 +349,7 @@ Sets the callback for pan gesture cancellation. This callback is triggered when 
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)\<void> | Yes| Callback invoked when the pan gesture is cancelled.|
 
@@ -372,7 +371,7 @@ Sets the callback for pan gesture cancellation. This callback is triggered when 
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked when the pan gesture is cancelled. Gesture event information is returned.|
 
@@ -390,7 +389,7 @@ Provides the parameters of the pan gesture handler. Inherits from [BaseHandlerOp
 
 | Name        | Type                             | Read-Only| Optional| Description                 |
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
-| fingers | number | No| Yes| Minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10.<br>Default value: **1**.<br>Value range: [1, 10].<br>**Note**:<br>If the value is less than 1 or is not set, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| fingers | number | No| Yes| Minimum number of fingers to trigger a pan gesture. The value ranges from 1 to 10.<br>Default value: **1**.<br>Value range: [1, 10].<br>**NOTE**<br>If the value is less than 1 or is not set, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | direction | [PanDirection](./ts-basic-gestures-pangesture.md#pandirection)| No| Yes| Pan direction. The value supports the AND (&amp;) and OR (\|) operations.<br>Default value: **PanDirection.All**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | distance | number | No| Yes| Minimum pan distance to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>**NOTE**<br>If a pan gesture and a [tab](ts-container-tabs.md) swipe occur at the same time, set **distance** to **1** to make the gesture more easily recognizable.<br>Value range: [0, +∞).<br>If the value specified is less than 0, the default value is used.<br>Since API version 19, the default value is **8**, in vp, for the stylus.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | distanceMap<sup>19+</sup> |  Map<[SourceTool](ts-gesture-settings.md#sourcetool9), number> | No| Yes| Minimum pan distance for different input sources to trigger the gesture, in vp.<br>Default value: **8** for the stylus and **5** for other input sources.<br>Value range: [0, +∞).<br>If the value specified is less than 0, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
@@ -411,7 +410,7 @@ Constructor used to create a swipe gesture handler instance.
 
 **Parameters**
 
-| Name | Type                                                        | Mandatory| Description              |
+| Name | Type                                                        | Mandatory| Description               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options | [SwipeGestureHandlerOptions](#swipegesturehandleroptions) | No  | Parameters of the swipe gesture handler.|
 
@@ -427,7 +426,7 @@ Sets the callback for successful swipe gesture recognition.
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked upon successful swipe gesture recognition.|
 
@@ -469,7 +468,7 @@ Constructor used to create a pinch gesture handler instance.
 **Parameters**
 
 
-| Name | Type                                                        | Mandatory| Description              |
+| Name | Type                                                        | Mandatory| Description               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options | [PinchGestureHandlerOptions](#pinchgesturehandleroptions) | No  | Parameters of the pinch gesture handler.|
 
@@ -485,7 +484,7 @@ Sets the callback for successful pinch gesture recognition.
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked upon successful pinch gesture recognition.|
 
@@ -507,7 +506,7 @@ Sets the callback for pinch gesture movement updates. The callback is triggered 
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked during pinch gesture movement.|
 
@@ -529,7 +528,7 @@ Sets the callback for pinch gesture recognition completion. This callback is tri
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked when pinch gesture recognition completes.|
 
@@ -551,7 +550,7 @@ Sets the callback for pinch gesture cancellation. This callback is triggered whe
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)\<void> | Yes| Callback invoked when the pinch gesture is cancelled. No gesture event information is returned.|
 
@@ -573,7 +572,7 @@ Sets the callback for pinch gesture cancellation. This callback is triggered whe
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked when the pinch gesture is cancelled. Gesture event information is returned.|
 
@@ -614,7 +613,7 @@ Constructor used to create a rotation gesture handler instance.
 **Parameters**
 
 
-| Name | Type                                                        | Mandatory| Description              |
+| Name | Type                                                        | Mandatory| Description               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options | [RotationGestureHandlerOptions](#rotationgesturehandleroptions) | No  | Parameters of the rotation gesture handler.|
 
@@ -630,7 +629,7 @@ Sets the callback for successful rotation gesture recognition.
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked upon successful rotation gesture recognition.|
 
@@ -652,7 +651,7 @@ Sets the callback for rotation gesture movement updates. The callback is trigger
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked during rotation gesture movement.|
 
@@ -674,7 +673,7 @@ Sets the callback for rotation gesture recognition completion. This callback is 
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked when rotation gesture recognition completes.|
 
@@ -696,7 +695,7 @@ Sets the callback for rotation gesture cancellation. This callback is triggered 
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)\<void> | Yes| Callback invoked when the rotation gesture is cancelled. No gesture event information is returned.|
 
@@ -718,7 +717,7 @@ Sets the callback for rotation gesture cancellation. This callback is triggered 
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent)> | Yes| Callback invoked when the rotation gesture is cancelled. Gesture event information is returned.|
 
@@ -758,7 +757,7 @@ Constructor used to create a gesture group handler instance.
 
 **Parameters**
 
-| Name | Type                                                        | Mandatory| Description              |
+| Name | Type                                                        | Mandatory| Description               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options | [GestureGroupGestureHandlerOptions](#gesturegroupgesturehandleroptions) | No  | Parameters of the gesture group handler.|
 
@@ -774,7 +773,7 @@ Sets the cancellation callback for the gesture group handler. The callback is tr
 
 **Parameters**
 
-| Name| Type                             | Mandatory| Description                |
+| Name| Type                             | Mandatory| Description                 |
 | ------ | --------------------------------- | ---- | -------------------- |
 | event  | [Callback](./ts-types.md#callback12)\<void> | Yes| Callback invoked when the gesture group is cancelled.|
 
@@ -794,8 +793,8 @@ Provides the parameters of the gesture group handler.
 
 | Name        | Type                              | Read-Only   | Optional| Description                 |
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
-| mode    | [GestureMode](./ts-combined-gestures.md#gesturemode)                        | No| No  | Recognition mode of combined gestures.<br>Default value: **GestureMode.Sequence**.     |
-| gestures | [GestureHandler](#gesturehandlert)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[] | No| No  | Gesture group.<br>**NOTE**<br>To add both tap and double-tap gestures for a component, add two TapGestures, with the tap gesture added after the double-tap gesture.|
+| mode    | [GestureMode](./ts-combined-gestures.md#gesturemode)                        | No| No  | Recognition mode of [combined gestures](ts-combined-gestures.md).<br>Default value: **GestureMode.Sequence**.     |
+| gestures | [GestureHandler](#gesturehandlert)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[] | No| No  | Gesture group.<br>**NOTE**<br>To add both single-tap and double-tap gestures for a component, add two [TapGesture](ts-basic-gestures-tapgesture.md) instances as the [combined gestures](ts-combined-gestures.md), with the double-tap gesture preceding the single-tap gesture. The gestures will not work correctly if this order is reversed.|
 
 ## GesturePriority
 

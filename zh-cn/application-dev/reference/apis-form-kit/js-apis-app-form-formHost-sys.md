@@ -2374,7 +2374,7 @@ struct CardExample {
 
 ## clearRouterProxy<sup>11+</sup>
 
-clearRouterProxy(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
+clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 清除卡片跳转代理。使用callback异步回调。
 
@@ -2386,7 +2386,7 @@ clearRouterProxy(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;;      | 是   | 卡片标识数组。                                               |
+| formIds  | Array&lt;string&gt;      | 是   | 卡片标识数组。                                               |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，当指定卡片取消router跳转代理成功时，error为undefined；否则抛出异常。 |
 
 **错误码：**
@@ -2423,7 +2423,7 @@ try {
 
 ## clearRouterProxy<sup>11+</sup>
 
-clearRouterProxy(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
+clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 清除卡片跳转代理。使用Promise异步回调。
 
@@ -2476,7 +2476,7 @@ try {
 ```
 ## setFormsRecyclable<sup>11+</sup>
 
-setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
+setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 设置卡片可回收。使用callback异步回调。
 
@@ -2490,7 +2490,7 @@ setFormsRecyclable(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;;      | 是   | 卡片标识数组。                                               |
+| formIds  | Array&lt;string&gt;      | 是   | 卡片标识数组。                                               |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，当设置卡片可回收成功时，error为undefined；否则抛出异常。 |
 
 **错误码：**
@@ -2526,7 +2526,7 @@ try {
 
 ## setFormsRecyclable<sup>11+</sup>
 
-setFormsRecyclable(formIds:Array&lt;string&gt;): Promise&lt;void&gt;
+setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 设置卡片可回收。使用Promise异步回调。
 
@@ -2580,7 +2580,7 @@ try {
 ```
 ## recoverForms<sup>11+</sup>
 
-recoverForms(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
+recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 恢复卡片。使用callback异步回调。
 
@@ -2594,7 +2594,7 @@ recoverForms(formIds:Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): 
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| formIds  | Array&lt;string&gt;;      | 是   | 卡片标识数组。                                               |
+| formIds  | Array&lt;string&gt;      | 是   | 卡片标识数组。                                               |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，当恢复卡片成功时，error为undefined；否则抛出异常。 |
 
 **错误码：**
@@ -2826,7 +2826,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formId: string = '12400633174999288';
-  let res: formInfo.PublishFormResult = {code: formInfo.PublishFormErrorCode.SUCCESS, message: ''};
+  let res: formInfo.PublishFormResult = { code: formInfo.PublishFormErrorCode.SUCCESS, message: '' };
   formHost.setPublishFormResult(formId, res);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2840,8 +2840,6 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 通知卡片管控状态更新。使用Promise异步回调。
 
 卡片管控状态是指，应用使能了应用锁管控，对应应用的卡片也会跟随使能应用锁管控，此时卡片页面会使用加锁的蒙板样式遮罩卡片。在管控状态下，操作和使用卡片需要输入加锁时设置的密码。
-
-**模型约束**: 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.REQUIRE_FORM
 
@@ -2867,7 +2865,6 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
 | 202      | caller is not a system app.                 |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
 | 16501000 | An internal functional error occurred.                       |
@@ -2884,13 +2881,12 @@ let formId: string = '12400633174999288';
 let isLocked: boolean = true;
 
 try {
-  formHost.updateFormLockedState(this.formId, this.isLocked).then(() => {
+  formHost.updateFormLockedState(formId, isLocked).then(() => {
     console.info(`formHost updateFormLockedState success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
-
 ```
 
 ## formHost.on('formOverflow')<sup>20+</sup>
@@ -3015,7 +3011,7 @@ try {
 
 ## formHost.off('changeSceneAnimationState')<sup>20+</sup>
 
-off(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.changeSceneAnimationState&gt;): void
+off(type: 'changeSceneAnimationState', callback?: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
 取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。使用callback异步回调。
 
@@ -3089,7 +3085,12 @@ try {
     // 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
     return new Promise<formInfo.Rect>((resolve: Function) => {
       console.info(`formHost on getFormRect, formId is ${formId}`);
-      let formRect: formInfo.Rect = {left: 0, top: 0, width: 0, height: 0};
+      let formRect: formInfo.Rect = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      };
       resolve(formRect);
     })
   });
@@ -3177,7 +3178,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   let newDimension = formInfo.FormDimension.Dimension_1_2;
-  let newRect: formInfo.Rect = {left: 1, top: 2, width: 100, height: 100};
+  let newRect: formInfo.Rect = {
+    left: 1,
+    top: 2,
+    width: 100,
+    height: 100
+  };
   formHost.updateFormSize(formId, newDimension, newRect);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);

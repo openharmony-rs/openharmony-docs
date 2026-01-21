@@ -4118,7 +4118,7 @@ wideViewModeAccess(wideViewModeAccess: boolean)
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 10开始废弃，并且不再提供新的接口作为替代。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[metaViewport<sup>12+</sup>](#metaviewport12)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

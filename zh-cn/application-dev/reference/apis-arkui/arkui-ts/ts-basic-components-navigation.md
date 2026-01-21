@@ -1855,7 +1855,7 @@ Navigation分割线颜色及上下边距。
 
 | 名称      | 类型                                       | 只读 | 可选 | 说明      |
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
-| color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#33182431，灰色。  |
+| color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#33000000，灰色。  |
 | startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
 | endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
 

@@ -40,14 +40,14 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsymCipher **ctx)](#oh_cryptoasymcipher_create) | 根据给定的算法名称创建非对称加密。<br> 注意：创建的资源必须通过[OH_CryptoAsymCipher_Destroy](#oh_cryptoasymcipher_destroy)销毁。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsymCipher **ctx)](#oh_cryptoasymcipher_create) | 根据给定的算法名称创建非对称加密。<br> 注意：创建的资源必须通过[OH_CryptoAsymCipher_Destroy](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_CipherMode mode, OH_CryptoKeyPair *key)](#oh_cryptoasymcipher_init) | 初始化非对称加密。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptoasymcipher_final) | 完成非对称加密。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptoasymcipher_final) | 完成非对称加密。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [void OH_CryptoAsymCipher_Destroy(OH_CryptoAsymCipher *ctx)](#oh_cryptoasymcipher_destroy) | 销毁非对称加密上下文。 |
-| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Ciphertext, OH_CryptoSm2CiphertextSpec **spec)](#oh_cryptosm2ciphertextspec_create) | 创建SM2密文规格。<br> 注意：创建的资源必须通过[OH_CryptoSm2CiphertextSpec_Destroy](#oh_cryptosm2ciphertextspec_destroy)销毁。 |
-| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_getitem) | 获取SM2密文规格中的指定项。 |
+| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Ciphertext, OH_CryptoSm2CiphertextSpec **spec)](#oh_cryptosm2ciphertextspec_create) | 创建SM2密文规格。<br> 注意：创建的资源必须通过[OH_CryptoSm2CiphertextSpec_Destroy](capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_destroy)销毁。 |
+| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_getitem) | 获取SM2密文规格中的指定项。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)](#oh_cryptosm2ciphertextspec_setitem) | 设置SM2密文规格中的指定项。 |
-| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *spec, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_encode) | 将SM2密文规格编码为DER格式密文。 |
+| [OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *spec, Crypto_DataBlob *out)](#oh_cryptosm2ciphertextspec_encode) | 将SM2密文规格编码为DER格式密文。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)](#oh_cryptosm2ciphertextspec_destroy) | 销毁SM2密文规格。 |
 
 ## 枚举类型说明
@@ -82,10 +82,9 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsym
 
 **描述**
 
-根据给定的算法名称创建非对称加密。<br> 注意：创建的资源必须通过[OH_CryptoAsymCipher_Destroy](#oh_cryptoasymcipher_destroy)销毁。
+根据给定的算法名称创建非对称加密。<br> 注意：创建的资源必须通过[OH_CryptoAsymCipher_Destroy](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_destroy)销毁。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -112,7 +111,6 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_Ciph
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -129,21 +127,20 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Init(OH_CryptoAsymCipher *ctx, Crypto_Ciph
 
 **参考：**
 
-[OH_CryptoAsymCipher_Final](#oh_cryptoasymcipher_final)
+[OH_CryptoAsymCipher_Final](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_final)
 
 
 ### OH_CryptoAsymCipher_Final()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in,Crypto_DataBlob *out)
+OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Crypto_DataBlob *in, Crypto_DataBlob *out)
 ```
 
 **描述**
 
-完成非对称加密。
+完成非对称加密。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -161,7 +158,7 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Final(OH_CryptoAsymCipher *ctx, const Cryp
 
 **参考：**
 
-[OH_CryptoAsymCipher_Init](#oh_cryptoasymcipher_init)
+[OH_CryptoAsymCipher_Init](capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_init)
 
 
 ### OH_CryptoAsymCipher_Destroy()
@@ -188,10 +185,9 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Cipherte
 
 **描述**
 
-创建SM2密文规格。<br> 注意：创建的资源必须通过[OH_CryptoSm2CiphertextSpec_Destroy](#oh_cryptosm2ciphertextspec_destroy)销毁。
+创建SM2密文规格。<br> 注意：创建的资源必须通过[OH_CryptoSm2CiphertextSpec_Destroy](capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_destroy)销毁。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -209,22 +205,21 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Cipherte
 ### OH_CryptoSm2CiphertextSpec_GetItem()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec,CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)
+OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *out)
 ```
 
 **描述**
 
-获取SM2密文规格中的指定项。
+获取SM2密文规格中的指定项。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 20
-
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | SM2密文规格。 |
-| [CryptoSm2CiphertextSpec_item](#cryptosm2ciphertextspec_item) item | SM2密文规格项。 |
+| [CryptoSm2CiphertextSpec_item](capi-crypto-asym-cipher-h.md#cryptosm2ciphertextspec_item) item | SM2密文规格项。 |
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | 输出数据。 |
 
 **返回：**
@@ -236,7 +231,7 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_GetItem(OH_CryptoSm2CiphertextSpec 
 ### OH_CryptoSm2CiphertextSpec_SetItem()
 
 ```c
-OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec,CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)
+OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec *spec, CryptoSm2CiphertextSpec_item item, Crypto_DataBlob *in)
 ```
 
 **描述**
@@ -245,13 +240,12 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_SetItem(OH_CryptoSm2CiphertextSpec 
 
 **起始版本：** 20
 
-
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoSm2CiphertextSpec](capi-cryptoasymcipherapi-oh-cryptosm2ciphertextspec.md) *spec | SM2密文规格。 |
-| [CryptoSm2CiphertextSpec_item](#cryptosm2ciphertextspec_item) item | SM2密文规格项。 |
+| [CryptoSm2CiphertextSpec_item](capi-crypto-asym-cipher-h.md#cryptosm2ciphertextspec_item) item | SM2密文规格项。 |
 | [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | 输入数据。 |
 
 **返回：**
@@ -268,10 +262,9 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Encode(OH_CryptoSm2CiphertextSpec *
 
 **描述**
 
-将SM2密文规格编码为DER格式密文。
+将SM2密文规格编码为DER格式密文。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -297,7 +290,6 @@ void OH_CryptoSm2CiphertextSpec_Destroy(OH_CryptoSm2CiphertextSpec *spec)
 销毁SM2密文规格。
 
 **起始版本：** 20
-
 
 **参数：**
 

@@ -152,7 +152,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
 
-在API version 9-13，针对网络、服务器等数据流异常，接口上报5400103；从API version 14开始，对应错误细化为错误码5411001-5411011。
+在API version 9-13，针对网络、服务器等数据流异常，接口上报5400103；从API version 14开始，对应错误细化为错误码5411001-5411012。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -176,6 +176,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 5411009  | IO SSL connect fail.     |
 | 5411010  | IO SSL server cert untrusted.    |
 | 5411011  | IO unsupported request.      |
+| 5411012  | Http cleartext traffic is not permitted.      |
 
 **示例：**
 
@@ -1130,6 +1131,8 @@ getCurrentPresentationTimestamp() : number
 获取当前播放位置，可以在播放（playing）/暂停（paused）/完成（completed）状态调用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 

@@ -243,6 +243,8 @@ let res = str.replace(/^/, "abc");
 1. 使用[errorManager.on()](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)捕获到Async函数产生的unhandledrejection事件，再通过编写errorManager.on()注册的回调函数，来进行异常处理操作。
 
    ```ts
+   import { errorManager } from '@kit.AbilityKit';
+
    errorManager.on("unhandledRejection", (a:ESObject, b:Promise<ESObject>) => {
       console.info("Async test", a);
    })
@@ -292,7 +294,7 @@ console.info("res[0] is: ", res[0].toString());
 
 ### ArkUI使用场景
 
-ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、@Local）装饰的Array添加一层代理，用于观测API调用产生的变化。如果状态修饰器与Array组合，并且调用Array.flatMap，会出现如下问题。
+ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、@Local）装饰的Array添加一层代理，用于观测API调用产生的变化。如果状态装饰器与Array组合，并且调用Array.flatMap，会出现如下问题。
 
 以状态管理V2为例：
 

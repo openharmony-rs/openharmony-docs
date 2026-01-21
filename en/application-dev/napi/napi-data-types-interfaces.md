@@ -852,6 +852,28 @@ napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)
 napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
 ```
 
+**napi_create_external_string_utf16**
+
+```cpp
+napi_status napi_create_external_string_utf16(napi_env env,
+                                              const char16_t* str,
+                                              size_t length,
+                                              napi_finalize_callback finalize_callback,
+                                              void* finalize_hint,
+                                              napi_value* result);
+```
+
+**napi_create_external_string_ascii**
+
+```cpp
+napi_status napi_create_external_string_ascii(napi_env env,
+                                              const char* str,
+                                              size_t length,
+                                              napi_finalize_callback finalize_callback,
+                                              void* finalize_hint,
+                                              napi_value* result);
+```
+
 **napi_create_strong_sendable_reference**
 
 ```c

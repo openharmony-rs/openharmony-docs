@@ -4437,7 +4437,7 @@ stopScan(): Promise&lt;void&gt;
 
 Stops an ongoing BLE scan. This API uses a promise to return the result.<br>
 - This API works for a scan initiated by calling [startScan](#startscan15).<br>
-- Call this API to stop the Bluetooth scan if device discovery is no longer needed.
+- Call this API to stop the scanning if BLE device scanning is no longer needed.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -4871,23 +4871,22 @@ Represents the service data in the BLE advertising packet data.
 
 Defines the scan filters for BLE advertising packet data. Only advertising packets that meet the filter criteria are reported.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 | Name                                    | Type   | Read-Only| Optional | Description                                                        |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
-| deviceId                                 | string      | No| Yes   | BLE device address. Example: XX:XX:XX:XX:XX:XX          |
-| name                                     | string      | No| Yes   | BLE device name.                                       |
-| serviceUuid                              | string      | No| Yes   | Service UUID, for example, 00001888-0000-1000-8000-00805f9b34fb.|
-| serviceUuidMask             | string      | No| Yes    | Service UUID mask. This parameter can be used with **serviceUuid** to filter specific service UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF|
-| serviceSolicitationUuid     | string      | No| Yes    | Service solicitation UUID, for example, 00001888-0000-1000-8000-00805F9B34FB.|
-| serviceSolicitationUuidMask | string      | No| Yes    | Service solicitation UUID mask. This parameter can be used with **serviceSolicitationUuid** to filter specific service solicitation UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF|
-| serviceData                 | ArrayBuffer | No| Yes    | Service data, for example, [0x90,0x00,0xF1,0xF2].|
-| serviceDataMask             | ArrayBuffer | No| Yes    | Service data mask. This parameter can be used with **serviceData** to filter specific service data. Example: [0xFF,0xFF,0xFF,0xFF]|
-| manufactureId               | number      | No| Yes    | Manufacturer ID, for example, 0x0006.                |
-| manufactureData             | ArrayBuffer | No| Yes    | Manufacturer data. This parameter can be used with **manufactureId** to filter specific manufacturers. Example: [0x1F,0x2F,0x3F]|
-| manufactureDataMask         | ArrayBuffer | No| Yes    | Manufacturer data mask. This parameter can be used with **manufactureData** to filter specific manufacturer data. Example: [0xFF,0xFF,0xFF]|
+| deviceId                                 | string      | No| Yes   | BLE device address. Example: XX:XX:XX:XX:XX:XX<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| name                                     | string      | No| Yes   | BLE device name.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
+| serviceUuid                              | string      | No| Yes   | Service UUID. This parameter is usually carried in the broadcast packets of a peripheral device, indicating the service UUID supported by the peripheral device. for example, 00001888-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceUuidMask             | string      | No| Yes    | Service UUID mask. This parameter can be used with **serviceUuid** to filter specific service UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceSolicitationUuid     | string      | No| Yes    | Service solicitation UUID. This parameter is usually carried in the broadcast packets of a central device, indicating the UUID of the service that the central device wants to search for. for example, 00001888-0000-1000-8000-00805F9B34FB.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceSolicitationUuidMask | string      | No| Yes    | Service solicitation UUID mask. This parameter can be used with **serviceSolicitationUuid** to filter specific service solicitation UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceData                 | ArrayBuffer | No| Yes    | Service data, for example, [0x90,0x00,0xF1,0xF2].<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceDataMask             | ArrayBuffer | No| Yes    | Service data mask. This parameter can be used with **serviceData** to filter specific service data. Example: [0xFF,0xFF,0xFF,0xFF]<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| manufactureId               | number      | No| Yes    | Manufacturer ID, for example, 0x0006.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| manufactureData             | ArrayBuffer | No| Yes    | Manufacturer data. This parameter can be used with **manufactureId** to filter specific manufacturers. Example: [0x1F,0x2F,0x3F]<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| manufactureDataMask         | ArrayBuffer | No| Yes    | Manufacturer data mask. This parameter can be used with **manufactureData** to filter specific manufacturer data. Example: [0xFF,0xFF,0xFF]<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| rssiThreshold<sup>23+</sup>    | number      | No| Yes    | RSSI threshold. The value range can be [–128, 127] according to the Bluetooth protocol. You are advised to set a value in the range of [–90, 127].<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 
 ## ScanOptions

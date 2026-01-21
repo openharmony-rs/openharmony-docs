@@ -17,7 +17,7 @@
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type                                  | Read-Only| Optional| Description|
+| Name| Type                                  | Read Only| Optional| Description|
 | ------ | ------------------------------------------ | ---- | ---- | -------- |
 | width  | [Length](ts-types.md#length)               | No  | Yes| Caret size. It cannot be set in percentage.<br>Default value: **'2vp'**.|
 | color  | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Caret color.<br>Default value: **'#ff007dff'**.|
@@ -130,7 +130,7 @@ Describes the position and affinity of a glyph.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type                  | Read-Only| Optional| Description                     |
+| Name     | Type                  | Read Only| Optional| Description                     |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
 | position  | number                | No  | No  | Index of the glyph relative to the paragraph. The value is an integer. |
 | affinity  | [Affinity](#affinity12) | No  | No  | Affinity of the position.            |
@@ -147,24 +147,26 @@ Defines the unique identifier for a custom menu item. It is used to identify men
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name          | Type             | Read-Only  | Optional | Description    |
+| Name          | Type             | Read Only  | Optional | Description    |
 | ------------ |---------------------| ---- | ---- | ------ |
-| CUT  | [TextMenuItemId](#textmenuitemid12) |  Yes |  No| ID for the cut menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| COPY  | [TextMenuItemId](#textmenuitemid12) |  Yes |  No | ID for the paste menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| PASTE | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the paste menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the select-all menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the collaboration service menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No  | ID for the camera input menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the menu item involving text enhancement features, such as polishing, summary extraction, and formatting, for selected text. This menu item requires foundation model capabilities to work.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the translate menu item, which provides translation services for selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the share menu item, which launches a window for sharing the selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the search menu item, which launches a browser to search the selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the URL menu item. It provides a redirection service for the selected URL, launching a browser search or application page.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the email menu item. It provides a redirection service for the selected email address, launching the email application.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the phone call menu item. It provides a redirection service for the selected phone number, launching the phone dialer page.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the navigation menu item. It provides a redirection service for the selected address, launching the map application.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the event creation menu item. It provides a redirection service for the selected date and time, launching the page for creating a calendar event.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the AI assistant menu item, which provides AI query capabilities for the selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| CUT  | [TextMenuItemId](#textmenuitemid12) |  Yes |  No| ID for the default cut menu item. It is a level-1 menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| COPY  | [TextMenuItemId](#textmenuitemid12) |  Yes |  No | ID for the default copy menu item. It is a level-1 menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| PASTE | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the default paste menu item. It is a level-1 menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the default select-all menu item. It is a level-1 menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the collaboration service menu item. It is a level-1 menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No  | ID for the camera input menu item. It is a level-1 menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the menu item involving text enhancement features, such as polishing, summary extraction, and formatting, for selected text. It is a level-1 menu item. This menu item requires foundation model capabilities to work.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the translate menu item. It is a level-1 menu item. ID for the translate menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the share menu item. It is a level-1 menu item. ID for the share menu item, which launches a window for sharing the selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the search menu item. It is a level-1 menu item. ID for the search menu item, which launches a browser to search the selected text.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the URL menu item. It is a level-1 menu item. Redirection service for the selected URL, launching a browser search or application page.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the email menu item. It is a level-1 menu item. Redirection service for the selected email address, launching the email application.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the phone call menu item. It is a level-1 menu item. Redirection service for the selected phone number, launching the phone dialer page.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the navigation menu item. It is a level-1 menu item. Redirection service for the selected address, launching the map application.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the event creation menu item. It is a level-1 menu item. Redirection service for the selected date and time, launching the page for creating a calendar event.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the AI assistant menu item, which provides AI query capabilities for the selected text. It is a level-1 menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the autofill menu item. It is a level-1 menu item. When a menu item is tapped, the secondary menu item **Password Vault** is displayed. This menu item is supported exclusively for the [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), and [RichEditor](ts-basic-components-richeditor.md) components.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes   | No   | ID for the password vault menu item. It is a level-2 menu item. After this menu item is tapped, the password vault app is started. The app provides the capability of automatically filling in account passwords. Only [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), or [RichEditor](ts-basic-components-richeditor.md) is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
 ### of
 
 static of(id: ResourceStr): TextMenuItemId
@@ -213,7 +215,7 @@ Checks whether this **TextMenuItemId** object is the same as another **TextMenuI
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type                             | Read-Only| Optional| Description  |
+| Name | Type                             | Read Only| Optional| Description  |
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
 | content | [ResourceStr](ts-types.md#resourcestr) | No  | No| Menu name.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | icon | [ResourceStr](ts-types.md#resourcestr) | No  | Yes| Menu icon.<br>Online images are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -230,7 +232,7 @@ Checks whether this **TextMenuItemId** object is the same as another **TextMenuI
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type  | Read-Only| Optional  | Description |
+| Name | Type  | Read Only| Optional  | Description |
 | ------- | ------ | ---- | ----- | ----- |
 | onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | No| Yes | Triggered before the menu is displayed after the text selection area changes. Menu data can be configured within this callback.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -238,7 +240,7 @@ Checks whether this **TextMenuItemId** object is the same as another **TextMenuI
 
 onCreateMenu(menuItems: Array\<TextMenuItem>): Array\<TextMenuItem>
 
-Triggered when the menu is being created. Menu data can be configured within this callback.
+Triggered when the menu is being created. Menu data can be configured within this callback. The input parameters and return values contain only level-1 menu items.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -270,7 +272,7 @@ Triggered when the specified menu item is clicked.
 
 | Name | Type                             | Mandatory| Description  |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| menuItem | [TextMenuItem](#textmenuitem12) | Yes  | Menu item.|
+| menuItem | [TextMenuItem](#textmenuitem12) | Yes  | Menu item.<br>**NOTE**<br>From API version 23, for a level-1 menu item that can have a level-2 menu, for example, autofill, only the default system logic is executed. User-defined logic is not executed.|
 | range | [TextRange](#textrange12) | Yes  | Selected text.|
 
 **Return value**
@@ -283,7 +285,7 @@ Triggered when the specified menu item is clicked.
 
 type OnPrepareMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMenuItem\>
 
-Represents the callback triggered before the menu is displayed after the text selection area changes. Menu data can be configured within this callback.
+Triggered before the menu is displayed after the text selection area changes. Menu data can be configured within this callback. The input parameters and return values contain only level-1 menu items.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -309,7 +311,7 @@ Defines the text range.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | -- | -- | -- | -- | -- |
 | start | number | No| Yes| Start index.|
 | end | number | No| Yes| End index.|
@@ -330,7 +332,7 @@ Represents the callback triggered when the content in the text box changes.
 | -- | -- | -- | -- |
 | value | string | Yes| Text displayed in the text box.|
 | previewText | [PreviewText](#previewtext12) | No| Information about the preview text, including its start position and text content.|
-| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15) | No| Information about the text change, including the selection range before and after the change, the text content before the change, and the preview text information.|
+| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15) | No| Information about the text change, including the selection range, the text content on the screen, and the preview text content.|
 
 ## TextDataDetectorType<sup>11+</sup>
 
@@ -407,7 +409,7 @@ Enumerates the appearance modes of the keyboard.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                         | Read-Only| Optional| Description                                                        |
+| Name   | Type                         | Read Only| Optional| Description                                                        |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | insertOffset  | number | No  | No| Position of the inserted text.|
 | insertValue  | string | No  | No  | Content of the inserted text.|
@@ -430,13 +432,13 @@ This configuration is only available for the [Text](ts-basic-components-text.md)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type | Read-Only| Optional| Description |
+| Name| Type | Read Only| Optional| Description |
 | ------ | -------- | ---- | ---- | ------------------------------------------- |
 | types   | [TextDataDetectorType](ts-text-common.md#textdatadetectortype11)[] | No| No | Entity types for text recognition. Values **null** and **[]** indicate that all types of entities can be recognized.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onDetectResultUpdate   | Callback\<string> | No| Yes | Callback invoked when text recognition succeeds.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | No| Yes  | Entity color when text recognition succeeds.<br>Default value: **'#ff0a59f7'**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| No| Yes  | Style of the entity decoration when text recognition succeeds.<br>Default value:<br>{<br> type: TextDecorationType.Underline,<br> color: same as the entity<br> style: TextDecorationStyle.SOLID <br>}<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enablePreviewMenu<sup>20+</sup>   | boolean | No| Yes  | Whether to enable the preview menu displayed when long-pressing recognized text. The value **true** means to enable the preview menu, and **false** means the opposite.<br>Default value: **false**.<br>When [copyOptions](ts-basic-components-richeditor.md#copyoptions) is set to **None**, even if **enablePreviewMenu** is set to **true**, long-pressing AI entities will not display the preview menu.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| No| Yes  | Style of the entity decoration when text recognition succeeds.<br>Default value:<br>{<br>&nbsp;type:&nbsp;TextDecorationType.Underline,<br>&nbsp;color: same as the entity<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>}<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| enablePreviewMenu<sup>20+</sup>   | boolean | No| Yes  | Whether to enable the preview menu displayed when long-pressing recognized text. The value **true** means to enable the preview menu, and **false** means the opposite.<br>Default value: **false**.<br>When [copyOptions](ts-basic-components-richeditor.md#copyoptions) is set to **None**, even if **enablePreviewMenu** is set to **true**, long-pressing AI entities will not display the preview menu.<br>**Device behavior differences**: This parameter is supported on phones, tablets, PCs/2-in-1 devices, and wearables, but does not work on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## PreviewText<sup>12+</sup>
 
@@ -446,7 +448,7 @@ Preview text.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type                                            | Read-Only| Optional| Description                                                    |
+| Name    | Type                                            | Read Only| Optional| Description                                                    |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
 | offset | number | No  | No| Start position of the preview text.|
 | value    | string         | No  | No  | Content of the preview text.        |
@@ -461,7 +463,7 @@ Defines the font settings.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type                                            | Read-Only| Optional| Description                                                    |
+| Name    | Type                                            | Read Only| Optional| Description                                                    |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
 | enableVariableFontWeight | boolean | No| Yes | Whether to enable variable font weight adjustment. This parameter serves as the input for the [fontWeight](./ts-basic-components-text.md#fontweight12) API. When the **weight** value in **fontWeight** is a non-hundred value within the [100, 900] range, **enableVariableFontWeight** controls whether this **weight** value is applied.<br>Default value: **false**.<br>**true**: Enable variable font weight adjustment. If the **weight** value is an integer within the [100, 900] range, it is applied as the font weight.<br>**false**: Disable variable font weight adjustment. If the **weight** value is an integer multiple of 100 within the [100, 900] range, it is used as the font weight. If the **weight** value is not an integer multiple of 100, the font weight defaults to 400.|
 
@@ -490,7 +492,7 @@ Defines the listener for changes of the styled string text content.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | -- | -- | -- | -- | -- |
 | onWillChange | Callback<[StyledStringChangeValue](#styledstringchangevalue12), boolean> | No| Yes| Callback invoked when text is about to change.|
 | onDidChange | [OnDidChangeCallback](#ondidchangecallback12) | No| Yes| Callback invoked when text is changed.|
@@ -503,7 +505,7 @@ Describes the text changes of the styled string.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | -- | -- | -- | -- | -- |
 | range | [TextRange](#textrange12) | No| No| Range of the styled string to be replaced in the original string.|
 | replacementString | [StyledString](ts-universal-styled-string.md#styledstring) | No| No| Styled string used for replacement.|
@@ -522,7 +524,7 @@ Enumerates automatic capitalization modes. This only provides API capabilities; 
 | NONE | 0 | Default state; automatic capitalization is disabled.|
 | WORDS | 1 | Automatic capitalization is applied per word: The first character of each word is capitalized, others are lowercase.|
 | SENTENCES | 2 | Automatic capitalization is applied per sentence: The first character of each sentence is capitalized, others are lowercase.|
-| ALL_CHARACTERS | 3 | Automatic capitalization is applied to all characters.|
+| ALL_CHARACTERS | 3 | Automatic capitalization applied to all characters.|
 
 ## TextBaseController<sup>12+</sup>
 
@@ -534,7 +536,7 @@ Defines a text selection controller.
 
 ### setSelection<sup>12+</sup>
 
-setSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void
+setSelection(selectionStart:&nbsp;number, selectionEnd:&nbsp;number, options?:&nbsp;SelectionOptions): void
 
 Sets the range of content selection. The selected content is highlighted.
 
@@ -678,7 +680,7 @@ Obtains the preview text.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [PreviewText](#previewtext12) | Preview text.|.
+| [PreviewText](#previewtext12) | Preview text.|
 
 ## StyledStringController<sup>12+</sup>
 
@@ -726,7 +728,7 @@ Provides the text decoration information returned by the backend.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type                             | Read-Only| Optional| Description  |
+| Name | Type                             | Read Only| Optional| Description  |
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
 | type | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | No  | No| Type of the text decoration.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | color | [ResourceColor](ts-types.md#resourcecolor) | No  | No  | Color of the text decoration.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -799,7 +801,7 @@ Enumerates the rectangle height styles.
 
 | Type                             | Description  |
 | --------------------------------- | --------------------------------- |
-| [RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | Rectangle height style enum.|
+| [RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | Rectangle height style.|
 
 ## RectWidthStyle<sup>14+</sup>
 
@@ -813,7 +815,7 @@ Enumerates the rectangle width styles.
 
 | Type                             | Description  |
 | --------------------------------- | --------------------------------- |
-| [RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | Rectangle width style enum.|
+| [RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | Rectangle width style.|
 
 ## TextChangeOptions<sup>15+</sup>
 
@@ -823,7 +825,7 @@ Provides information about the text before and after a change, including the sel
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
+| Name   | Type                                                   | Read Only| Optional| Description                                                   |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | rangeBefore  | [TextRange](#textrange12) | No  | No| Selection range before the change.|
 | rangeAfter  | [TextRange](#textrange12) | No  | No  | Selection range after the change.|
@@ -838,7 +840,7 @@ Provides detailed information of text changes, including preview text.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
+| Name   | Type                                                   | Read Only| Optional| Description                                                   |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | content  | string | No  | No| Current text content.|
 | previewText  | [PreviewText](#previewtext12) | No  | Yes  | Preview text.|
@@ -865,7 +867,7 @@ Provides the options for customizing the context menu on selection.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
+| Name   | Type                                                   | Read Only| Optional| Description                                                   |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | showMode  | [TextMenuShowMode](#textmenushowmode16) | No  | Yes| Menu display mode.<br>Default value: **TextMenuShowMode.DEFAULT**|
 
@@ -891,7 +893,7 @@ Displays a linear gradient. **LinearGradientStyle** inherits from [ShaderStyle](
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type  | Read-Only| Optional  | Description |
+| Name | Type  | Read Only| Optional  | Description |
 | ------- | ------ | ---- | ----- | ----- |
 | options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18) | No| No | Options for displaying a linear gradient.|
 
@@ -925,7 +927,7 @@ Displays a radial gradient. **RadialGradientStyle** inherits from [ShaderStyle](
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
+| Name   | Type                                                   | Read Only| Optional| Description                                                   |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | options | [RadialGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#radialgradientoptions18) | No | No| Options for displaying a radial gradient.|
 
@@ -959,7 +961,7 @@ Displays a solid color. **ColorShaderStyle** inherits from [ShaderStyle](#shader
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
+| Name   | Type                                                   | Read Only| Optional| Description                                                   |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | color | [ResourceColor](ts-types.md#resourcecolor) | No | No | Options for displaying a solid color.|
 
@@ -983,13 +985,31 @@ A constructor used to create a **ColorShaderStyle** object.
 
 Defines the input method client type bound to an input component.
 
+### Properties
+
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                                                   | Read-Only| Optional| Description                                                   |
+| Name   | Type                                                   | Read Only| Optional| Description                                                   |
 | ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | nodeId  | number | No | No| Unique ID of the current input component. The value must be greater than or equal to 0.|
+
+### setExtraConfig<sup>22+</sup>
+
+setExtraConfig(config: InputMethodExtraConfig): void
+
+Sets the extension information for an input method.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description              |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| config  | [InputMethodExtraConfig](#inputmethodextraconfig22) | Yes  | Extension information of the input method.|
 
 ## MaxLinesOptions<sup>20+</sup>
 
@@ -999,7 +1019,7 @@ Configures the display effect of the **TextArea** component when the text exceed
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name             | Type   | Read-Only| Optional | Description                                                        |
+| Name             | Type   | Read Only| Optional | Description                                                        |
 | ------------------- | ------- | ------- | ------- | ------------------------------------------------------------ |
 | overflowMode | [MaxLinesMode](#maxlinesmode20)  | No | Yes| Non-inline mode of the **TextArea** component. When the text exceeds the set value of **maxLines** (maximum number of lines), a scroll effect is enabled. This requires simultaneous configuration of [textOverflow](ts-basic-components-textarea.md#textoverflow12), and **MaxLinesMode** takes effect only when **textOverflow** is set to **None** or **Clip**. By default, **MaxLinesMode** is set to **Clip**, indicating that text is clipped when it exceeds the value of **maxLines**.|
 
@@ -1026,7 +1046,7 @@ Configures the line spacing of text and whether it applies only between lines.
 
 **Parameters**
 
-| Name| Type                                                        | Read-Only| Optional| Description            |
+| Name| Type                                                        | Read Only| Optional| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---- | ---------------- |
 | onlyBetweenLines  | boolean | No  | Yes| Whether line spacing applies only between lines.<br>**true**: Line spacing applies only between lines; no extra spacing is added above the first line or below the last line. **false**: Extra line spacing is added both above the first line and below the last line.<br>Default value: **false**.|
 
@@ -1069,7 +1089,7 @@ Implements a flip animation for numeric text. It applies only to positive intege
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                                      | Type                                                        | Read-Only| Optional| Description                                                        |
+| Name                                      | Type                                                        | Read Only| Optional| Description                                                        |
 | ------------------------------------------ | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | flipDirection                             | [FlipDirection](#flipdirection20)    | No  | Yes| Direction of the flip animation.<br>Default value: **FlipDirection.DOWN**.|
 | enableBlur                                 | boolean                              | No  | Yes| Whether to enable the blur effect for the flip animation.<br>Default value: **false**.<br>**true**: Enable the blur effect.<br>**false**: Disable the blur effect.|
@@ -1098,7 +1118,7 @@ Defines the options of the numeric flip animation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                                      | Type                                                        | Read-Only| Optional| Description                                                        |
+| Name                                      | Type                                                        | Read Only| Optional| Description                                                        |
 | ------------------------------------------ | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | flipDirection                              | [FlipDirection](#flipdirection20)    | No  | Yes| Direction of the flip animation.<br>Default value: **FlipDirection.DOWN**.|
 | enableBlur                                 | boolean                              | No  | Yes| Whether to enable the blur effect for the flip animation.<br>Default value: **false**.<br>**true**: Enable the blur effect.<br>**false**: Disable the blur effect.|
@@ -1122,9 +1142,21 @@ Defines the text layout options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | constraintWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | No| Yes| Layout width of the measured text. If not set, the width is the maximum width occupied by a single-line layout.|
+
+## SelectedDragPreviewStyle<sup>23+</sup>
+
+Describes the drag preview style for text being dragged.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| color | [ResourceColor](ts-types.md#resourcecolor)  | No| Yes| Drag preview style for text being dragged.<br>The default style follows the theme. When the default theme is used, the drag preview is white in light color mode and black in dark color mode.|
 
 ## TextContentAlign<sup>21+</sup>
 
@@ -1142,13 +1174,45 @@ Enumerates the vertical alignment directions of the text content area.
 
 ## TextDirection<sup>22+</sup>
 
-Defines the text direction.
-
-**Atomic service API**: This API can be used in atomic services since API version 22.
+Enumerates the text directions.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name                  | Value | Description                 |
 | --------------------- | -------  | ------------------- |
-| LTR                   | 0  | From left to right.|
-| RTL                | 1  | From right to left.|
+| LTR                   | 0  | From left to right.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| RTL                   | 1  | From right to left.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| DEFAULT<sup>23+</sup> | 2  | Follows the component layout direction.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| AUTO<sup>23+</sup>    | 3  | Depends on the actual text content. For right-to-left (RTL) scripts (such as Tibetan and Uyghur), the text is displayed from right to left. For left-to-right (LTR) scripts (such as Chinese and English), the text is displayed from left to right.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+
+## InputMethodExtraConfig<sup>22+</sup>
+
+type InputMethodExtraConfig = InputMethodExtraConfig
+
+Represents the extension information of an input method.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type                             | Description  |
+| --------------------------------- | --------------------------------- |
+| [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | Extension information of an input method.|
+
+## AccessibilitySpanOptions<sup>23+</sup>
+
+Provides accessibility settings for the span.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read Only| Optional| Description|
+| ------ | ---------- | ---- | ------------------ | ------------------ |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected.<br>Default value: **''**<br>If the value is **undefined**, the default value is used.|
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone.<br>Default value: **''**<br>If the value is **undefined**, the default value is used.|
+| accessibilityLevel | string | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: The component's recognizability is determined jointly by accessibility services and ArkUI.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>The default value is **"auto"**.<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When accessibilityLevel is set to **"auto"**, the component's recognizability depends on the following factors:<br>1. The accessibility service internally determines whether the component can be recognized.<br>2. If the parent component's **accessibilityGroup** property has **isGroup** set to **true**, the accessibility service will not focus on its child components, making them unrecognizable.<br>3. If the parent component's **accessibilityLevel** is set to **"no-hide-descendants"**, the component will not be recognized by accessibility services.|

@@ -291,7 +291,7 @@ export default {
 }
 ```
 
-优化渲染优化：show方法。当show为真时，节点正常渲染；当为假时，仅仅设置display样式为none。
+渲染优化：show方法。当show为真时，节点正常渲染；当为假时，仅仅设置display样式为none。
 
 
 ```html

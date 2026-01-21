@@ -21,7 +21,7 @@ CryptoExtensionAbility可以隔离底层硬件（Ukey驱动）厂商实现差异
 
 CryptoExtensionAbility主要实现以下能力：
 
-1. 设备管理，单个ExtensionAbility实现，支持多个Ukey。
+1. 设备管理，支持单个ExtensionAbility连接多个Ukey，最大连接数量限制为10个。
 2. 句柄管理，针对同一个Ukey资源（例如容器下的密钥），支持应用维度句柄资源管理。
    - 支持多个OpenHarmony应用，打开同一个Ukey密钥资源。例如：OpenHarmony应用1，打开容器A后， OpenHarmony应用2，也可以再次打开容器A。
    - 支持多个OpenHarmony应用，操作同一个Ukey密钥资源。例如：OpenHarmony应用1操作容器A中的私钥签名后，OpenHarmony应用2也验证PIN码后，也可以操作容器A中的私钥进行签名，两者互不影响。

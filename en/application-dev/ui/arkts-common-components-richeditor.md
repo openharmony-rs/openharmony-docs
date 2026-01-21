@@ -40,29 +40,29 @@ Compared with using controller APIs for content style updates, this approach off
 <!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
 
 ``` TypeScript
-  fontStyle: TextStyle = new TextStyle({
-    fontColor: Color.Pink
-  })
-  // Define a text style object.
+fontStyle: TextStyle = new TextStyle({
+  fontColor: Color.Pink
+})
+// Define a text style object.
 
-  mutableStyledString: MutableStyledString =
-    // Replace $r('app.string.CreateRichEditor_Text_1') with the resource file you use.
-    new MutableStyledString(resource.resourceToString($r('app.string.CreateRichEditor_Text_1')),
-    [{
-      start: 0,
-      length: 5,
-      styledKey: StyledStringKey.FONT,
-      styledValue: this.fontStyle
-    }])
-  // Create a styled string.
+mutableStyledString: MutableStyledString =
+  // Replace $r('app.string.CreateRichEditor_Text_1') with the actual resource file. In this example, the value in the resource file is "Create a RichEditor component using a styled string."
+  new MutableStyledString(resource.resourceToString($r('app.string.CreateRichEditor_Text_1')),
+  [{
+    start: 0,
+    length: 5,
+    styledKey: StyledStringKey.FONT,
+    styledValue: this.fontStyle
+  }])
+// Create a styled string.
 
-  controller: RichEditorStyledStringController = new RichEditorStyledStringController();
-  options: RichEditorStyledStringOptions = { controller: this.controller };
-// ···
-          RichEditor(this.options)
-            .onReady(() => {
-              this.controller.setStyledString(this.mutableStyledString);
-            })
+controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+options: RichEditorStyledStringOptions = { controller: this.controller };
+// ...
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.setStyledString(this.mutableStyledString);
+          })
 ```
 
 ![alt text](figures/richeditor_image_stylestringoptions.gif)
@@ -79,15 +79,16 @@ Use the RichEditor(value: [RichEditorOptions](../reference/apis-arkui/arkui-ts/t
 export struct CreateRichEditor {
   controllerNoStyledString: RichEditorController = new RichEditorController();
   optionsNoStyledString: RichEditorOptions = { controller: this.controllerNoStyledString };
-// ···
+  // ...
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // ···
+        // ...
           RichEditor(this.optionsNoStyledString)
             .onReady(() => {
               this.controllerNoStyledString.addTextSpan(
-                // Replace $r('app.string.CreateRichEditor_Text_2') with the resource file you use.
+                /* Replace $r('app.string.CreateRichEditor_Text_2') with the actual resource file.
+                 In this example, the value in the resource file is "Create a RichEditor component without using a styled string." */
                 resource.resourceToString($r('app.string.CreateRichEditor_Text_2')), {
                 style: {
                   fontColor: Color.Black,
@@ -95,14 +96,14 @@ export struct CreateRichEditor {
                 }
               })
             })
-        // ···
+        // ...
       }
       .width('100%')
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.Create_RichEditor_Component_title') with the resource file you use.
+    // Replace $r('app.string.Create_RichEditor_Component_title') with the actual resource file. In this example, the value in the resource file is "Create a RichEditor component."
     .title($r('app.string.Create_RichEditor_Component_title'))
   }
 }
@@ -132,10 +133,10 @@ export struct AddTextContent {
   options: RichEditorOptions = { controller: this.controller };
 
   build() {
-    // ···
+    // ...
             RichEditor(this.options)
               .onReady(() => {
-                // Replace $r('app.string.AddTextContent_Text_1') with the resource file you use.
+                // Replace $r('app.string.AddTextContent_Text_1') with the actual resource file. In this example, the value in the resource file is "Click the button to add text here."
                 this.controller.addTextSpan(resource.resourceToString($r('app.string.AddTextContent_Text_1')), {
                   style: {
                     fontColor: Color.Black,
@@ -149,17 +150,17 @@ export struct AddTextContent {
               })
               .width(300)
               .margin(10)
-            // Replace $r('app.string.AddTextContent_Button_1') with the resource file you use.
+            // Replace $r('app.string.AddTextContent_Button_1') with the actual resource file. In this example, the value in the resource file is "addTextSpan."
             Button($r('app.string.AddTextContent_Button_1'), {
               buttonStyle: ButtonStyleMode.NORMAL
             })
               .height(30)
               .fontSize(13)
               .onClick(() => {
-                // Replace $r('app.string.AddTextContent_Text_2') with the resource file you use.
+                // Replace $r('app.string.AddTextContent_Text_2') with the actual resource file. In this example, the value of the resource file is "Add text."
                 this.controller.addTextSpan(resource.resourceToString($r('app.string.AddTextContent_Text_2')))
               })
-            // ···
+            // ...
   }
 }
 ```
@@ -177,34 +178,35 @@ If the component is focused and the cursor is blinking, adding image content via
 <!-- @[richEditor_addImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddImageContent.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-            // Replace $r('app.string.xxx') with the resource file you use.
-            RichEditor(this.options)
-              .onReady(() => {
-                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddImageContent_Text_1')), {
-                  style: {
-                    fontColor: Color.Black,
-                    fontSize: 15
-                  }
-                })
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+         RichEditor(this.options)
+            .onReady(() => {
+              // Replace $r('app.string.AddImageContent_Text_1') with the actual resource file. In this example, the value in the resource file is "Click the button to add an image here."
+              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddImageContent_Text_1')), {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
               })
-              .width(300)
-              .height(100)
-            Button($r('app.string.AddImageContent_Button_1'), {
-              buttonStyle: ButtonStyleMode.NORMAL
             })
-              .height(30)
-              .fontSize(13)
-              .onClick(() => {
-                // Replace $r('app.media.xxx') with the resource file you use.
-                this.controller.addImageSpan($r('app.media.startIcon'), {
-                  imageStyle: {
-                    size: ['57px', '57px']
-                  }
-                })
+            .width(300)
+            .height(100)
+          // Replace $r('app.string.AddImageContent_Button_1') with the actual resource file. In this example, the value in the resource file is "addImageSpan."
+          Button($r('app.string.AddImageContent_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              // Replace $r('app.media.xxx') with the actual resource file.
+              this.controller.addImageSpan($r('app.media.startIcon'), {
+                imageStyle: {
+                  size: ['57px', '57px']
+                }
               })
+            })
 ```
 
 ![alt text](figures/richeditor_image_add_image.gif)
@@ -220,35 +222,37 @@ With this API, you can specify the addition position using [RichEditorBuilderSpa
 <!-- @[richEditor_addBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddBuilderDecoratorContent.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-  private myBuilder: CustomBuilder = undefined;
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+private myBuilder: CustomBuilder = undefined;
 
-  @Builder
-  TextBuilder() {
-    Row() {
-      Image($r('app.media.startIcon')).width(50).height(50).margin(16)
-      Column() {
-        // Replace $r('app.string.XXX') with the resource file you use.
-        Text($r('app.string.AddBuilderDecoratorContent_Text_1')).fontWeight(FontWeight.Bold).fontSize(16)
-        Text($r('app.string.AddBuilderDecoratorContent_Text_2')).fontColor('#8a8a8a').fontSize(12)
-      }.alignItems(HorizontalAlign.Start)
-    }.backgroundColor('#f4f4f4')
-    .borderRadius('20')
-    .width(220)
-  }
-// ···
-            Button($r('app.string.AddBuilderDecoratorContent_Button_1'), {
-              buttonStyle: ButtonStyleMode.NORMAL
+@Builder
+TextBuilder() {
+  Row() {
+    Image($r('app.media.startIcon')).width(50).height(50).margin(16)
+    Column() {
+      // Replace $r('app.string.AddBuilderDecoratorContent_Text_1') with the actual resource file. In this example, the value in the resource file is "Text.txt."       
+      Text($r('app.string.AddBuilderDecoratorContent_Text_1')).fontWeight(FontWeight.Bold).fontSize(16)
+      // Replace $r('app.string.AddBuilderDecoratorContent_Text_2') with the actual resource file. In this example, the value in the resource file is "123.45 KB."
+      Text($r('app.string.AddBuilderDecoratorContent_Text_2')).fontColor('#8a8a8a').fontSize(12)
+    }.alignItems(HorizontalAlign.Start)
+  }.backgroundColor('#f4f4f4')
+  .borderRadius('20')
+  .width(220)
+}
+// ...
+          // Replace $r('app.string.AddBuilderDecoratorContent_Button_1') with the actual resource file. In this example, the value in the resource file is "addBuilderSpan."
+          Button($r('app.string.AddBuilderDecoratorContent_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              this.myBuilder = () => {
+                this.TextBuilder()
+              }
+              this.controller.addBuilderSpan(this.myBuilder)
             })
-              .height(30)
-              .fontSize(13)
-              .onClick(() => {
-                this.myBuilder = () => {
-                  this.TextBuilder()
-                }
-                this.controller.addBuilderSpan(this.myBuilder)
-              })
 ```
 
 ![alt text](figures/richeditor_image_add_builder_span2.0.gif)
@@ -264,34 +268,35 @@ Currently, gestures, copying, and dragging are not supported for the symbol cont
 <!-- @[richEditor_addSymbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-            // Replace $r('app.string.xxx') with the resource file you use.
-            RichEditor(this.options)
-              .onReady(() => {
-                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddSymbolSpanContent_Text_1')), {
-                  style: {
-                    fontColor: Color.Black,
-                    fontSize: 15
-                  }
-                })
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+          RichEditor(this.options)
+            .onReady(() => {
+              // Replace $r('app.string.AddSymbolSpanContent_Text_1') with the actual resource file. In this example, the value in the resource file is "Click the button to add a symbol here."
+              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddSymbolSpanContent_Text_1')), {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
               })
-              .width(300)
-              .height(100)
-            Button($r('app.string.AddSymbolSpanContent_Button_1'), {
-              buttonStyle: ButtonStyleMode.NORMAL
             })
-              .height(30)
-              .fontSize(13)
-              .onClick(() => {
-                // Replace $r('sys.symbol.basketball_fill') with the resource file you use.
-                this.controller.addSymbolSpan($r('sys.symbol.basketball_fill'), {
-                  style: {
-                    fontSize: 30
-                  }
-                })
+            .width(300)
+            .height(100)
+          // Replace $r('app.string.AddSymbolSpanContent_Button_1') with the actual resource file. In this example, the value in the resource file is "addSymbolSpan."
+          Button($r('app.string.AddSymbolSpanContent_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              // Replace $r('sys.symbol.basketball_fill') with the resource file you use.
+              this.controller.addSymbolSpan($r('sys.symbol.basketball_fill'), {
+                style: {
+                  fontSize: 30
+                }
               })
+            })
 ```
 
 ![alt text](figures/richeditor_image_add_SymbolSpan.gif)
@@ -309,43 +314,44 @@ This API is useful for obtaining and checking existing content styles, such as i
 <!-- @[richEditor_getSpans](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/GetGraphicInfoInComponent.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-  infoShowController: RichEditorController = new RichEditorController();
-  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-  // Create two RichEditor components.
-// ···
-            RichEditor(this.options)
-              .onReady(() => {
-                this.controller.addTextSpan(
-                  // Replace $r('app.string.GetGraphicInfoInComponent_Text_1') with the resource file you use.
-                  resource.resourceToString($r('app.string.GetGraphicInfoInComponent_Text_1')), {
-                  style: {
-                    fontColor: Color.Black,
-                    fontSize: 15
-                  }
-                })
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+// Create two RichEditor components.
+// ...
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.addTextSpan(
+                // Replace $r('app.string.GetGraphicInfoInComponent_Text_1') with the actual resource file. In this example, the value in the resource file is "Click the button to obtain the span information."
+                resource.resourceToString($r('app.string.GetGraphicInfoInComponent_Text_1')), {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
               })
-              .width(300)
-              .height(50)
-            // Replace $r('app.string.GetGraphicInfoInComponent_Text_1') with the resource file you use.
-            Text($r('app.string.GetGraphicInfoInComponent_Text_1')).fontSize(10).fontColor(Color.Gray).width(300);
-            RichEditor(this.infoShowOptions)
-              .width(300)
-              .height(50)
-            Button($r('app.string.GetGraphicInfoInComponent_Button_1'), {
-              buttonStyle: ButtonStyleMode.NORMAL
+            })
+            .width(300)
+            .height(50)
+          // Replace $r('app.string.GetGraphicInfoInComponent_Text_1') with the actual resource file. In this example, the value in the resource file is "Click the button to obtain the span information."
+          Text($r('app.string.GetGraphicInfoInComponent_Text_1')).fontSize(10).fontColor(Color.Gray).width(300);
+          RichEditor(this.infoShowOptions)
+            .width(300)
+            .height(50)
+          // Replace $r('app.string.GetGraphicInfoInComponent_Button_1') with the actual resource file. In this example, the value in the resource file is "getSpans."
+          Button($r('app.string.GetGraphicInfoInComponent_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+            })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              this.infoShowController.addTextSpan(JSON.stringify(this.controller.getSpans()), {
+                style: {
+                  fontColor: Color.Gray,
+                  fontSize: 10
+                }
               })
-              .height(30)
-              .fontSize(13)
-              .onClick(() => {
-                this.infoShowController.addTextSpan(JSON.stringify(this.controller.getSpans()), {
-                  style: {
-                    fontColor: Color.Gray,
-                    fontSize: 10
-                  }
-                })
-              })
+            })
 ```
 
 ![alt text](figures/richeditor_image_getspan.gif)
@@ -359,22 +365,22 @@ Placeholder text provides useful guidance, helping users navigate the applicatio
 <!-- @[richEditor_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-        // Replace $r('app.string.SetAttributes_Text_6') with the resource file you use.
-        RichEditor(this.options)
-          .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_6')), {
-            fontColor: Color.Gray,
-            font: {
-              size: 15,
-              weight: FontWeight.Normal,
-              family: 'HarmonyOS Sans',
-              style: FontStyle.Normal
-            }
-          })
-          .width(300)
-          .height(50)
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+      RichEditor(this.options)
+        // Replace $r('app.string.SetAttributes_Text_6') with the actual resource file. In this example, the value of the resource file is "This is the prompt text...".
+        .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_6')), {
+          fontColor: Color.Gray,
+          font: {
+            size: 15,
+            weight: FontWeight.Normal,
+            family: 'HarmonyOS Sans',
+            style: FontStyle.Normal
+          }
+        })
+        .width(300)
+        .height(50)
 ```
 
 ![alt text](figures/richeditor_image_placeholder.gif)
@@ -386,16 +392,16 @@ You can set the maximum number of characters allowed in the **RichEditor** compo
 <!-- @[richEditor_maxLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-        // Replace $r('app.string.SetAttributes_Text_8') with the resource file you use.
-        RichEditor(this.options)
-          .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_8')))
-          .maxLength(7)
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+      RichEditor(this.options)
+        // Replace $r('app.string.SetAttributes_Text_8') with the actual resource file. In this example, the value in the resource file is "Maximum number of characters: 7."
+        .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_8')))
+        .maxLength(7)
 ```
 
-
+![max Length](figures/RichEditor_maxLength.gif)
 
 ## Adding Event Callbacks
 
@@ -420,7 +426,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 // ...
         RichEditor(this.options)
           .onReady(() => {
-            // Replace $r('app.string.AddEvent_Text_5') with the resource file you use.
+            // Replace $r('app.string.AddEvent_Text_5') with the actual resource file. In this example, the value in the resource file is "Trigger a callback before the graphic and text changes within the component.\nAfter the graphic and text changes, trigger a callback."
             this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_5')), {
               style: {
                 fontColor: Color.Black,
@@ -429,7 +435,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
             })
           })
           .onWillChange((value: RichEditorChangeValue) => {
-            // Replace $r('app.string.AddEvent_Text_6') with the resource file you use.
+            //Replace $r('app.string.AddEvent_Text_6') with the actual resource file. In this example, the value in the resource file is "Before the graphic and text changes within the component, trigger a callback:".
             this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_6')) +
             JSON.stringify(value), {
               style: {
@@ -440,7 +446,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
             return true;
           })
           .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
-            // Replace $r('app.string.AddEvent_Text_7') with the resource file you use.
+            //Replace $r('app.string.AddEvent_Text_7') with the actual resource file. In this example, the value in the resource file is "\nAfter the graphic and text changes, trigger a callback:\n rangeBefore."
             this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
             JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeBefore), {
               style: {
@@ -451,7 +457,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
           })
           .width(300)
           .height(50);
-        // Replace $r('app.string.AddEvent_Text_4') with the resource file you use.
+        // Replace $r('app.string.AddEvent_Text_4') with the actual resource file. In this example, the value in the resource file is "View callback content:".
         Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
         RichEditor(this.infoShowOptions)
           .width(300)
@@ -473,50 +479,50 @@ Components constructed with [RichEditorStyledStringOptions](../reference/apis-ar
 <!-- @[richEditor_eventInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
 
-  infoShowController: RichEditorController = new RichEditorController();
-  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ···
-          // Replace $r('app.string.xxx') with the resource file you use.
-          RichEditor(this.options)
-            .onReady(() => {
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_8')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+// ...
+        // Replace $r('app.string.xxx') with the resource file you use.
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_8')), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
             })
-            .aboutToIMEInput((value: RichEditorInsertValue) => {
-              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_9')) +
-              JSON.stringify(value), {
-                style: {
-                  fontColor: Color.Gray,
-                  fontSize: 10
-                }
-              })
-              return true;
+          })
+          .aboutToIMEInput((value: RichEditorInsertValue) => {
+            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_9')) +
+            JSON.stringify(value), {
+              style: {
+                fontColor: Color.Gray,
+                fontSize: 10
+              }
             })
-            .onDidIMEInput((value: TextRange) => {
-              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_10')) +
-              JSON.stringify(value), {
-                style: {
-                  fontColor: Color.Gray,
-                  fontSize: 10
-                }
-              })
+            return true;
+          })
+          .onDidIMEInput((value: TextRange) => {
+            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_10')) +
+            JSON.stringify(value), {
+              style: {
+                fontColor: Color.Gray,
+                fontSize: 10
+              }
             })
-            .width(300)
-            .height(50)
-          Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
-          RichEditor(this.infoShowOptions)
-            .width(300)
-            .height(70)
+          })
+          .width(300)
+          .height(50)
+        Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(70)
 ```
 
-
+![alt text](figures/richeditor_image_aboutToIMEInput4.gif)
 
 ### Adding a Callback Triggered Before Paste Completion
 
@@ -574,18 +580,21 @@ struct on_cut_copy_paste {
 
   build() {
     Column() {
-      // Replace $r('app.string.xxx') with the resource file you use.
       ComponentCard({
+        // Replace $r('app.string.Add_Event_title_5') with the actual resource file. In this example, the value in the resource file is "Add a callback triggered before pasting completes."
         title: $r('app.string.Add_Event_title_5'),
+        // Replace $r('app.string.Add_Event_title_5_desc') with the actual resource file. In this example, the value in the resource file is "Use the onPaste callback to add custom processing before pasting completes."
         description: $r('app.string.Add_Event_title_5_desc')
       }) {
         Column({ space: 3 }) {
           RichEditor(this.options)
             .onReady(() => {
+              // Replace $r('app.string.AddEvent_Text_11') with the actual resource file. In this example, the value in the resource file is "Copying and pasting the text can trigger the callback."
               this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_11')),
                 { style: { fontColor: Color.Black, fontSize: 15 } })
             })
             .onPaste((event) => {
+              //Replace $r('app.string.AddEvent_Text_12') with the actual resource file. In this example, the value in the resource file is "Trigger the onPaste callback\n."
               this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_12')),
                 { style: { fontColor: Color.Gray, fontSize: 10 } })
               if (event != undefined && event.preventDefault) {
@@ -595,6 +604,7 @@ struct on_cut_copy_paste {
             })
             .width(300)
             .height(50);
+          // Replace $r('app.string.AddEvent_Text_4') with the actual resource file. In this example, the value in the resource file is "View callback content:".
           Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
           RichEditor(this.infoShowOptions)
             .width(300)
@@ -617,35 +627,36 @@ You can use this API to override the default cut behavior, which is limited to p
 <!-- @[richEditor_eventCut](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
 
-  infoShowController: RichEditorController = new RichEditorController();
-  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ···
-          // Replace $r('app.string.xxx') with the resource file you use.
-          RichEditor(this.options)
-            .onReady(() => {
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_13')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+// ...
+        RichEditor(this.options)
+          .onReady(() => {
+            // Replace $r('app.string.AddEvent_Text_13') with the actual resource file. In this example, the value in the resource file is "Copying and pasting the text can trigger the callback."
+            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_13')), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
             })
-            .onCut(() => {
-              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_14')), {
-                style: {
-                  fontColor: Color.Gray,
-                  fontSize: 10
-                }
-              })
+          })
+          .onCut(() => {
+            // Replace $r('app.string.AddEvent_Text_14') with the actual resource file. In this example, the value in the resource file is "Trigger the onCut callback\n."
+            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_14')), {
+              style: {
+                fontColor: Color.Gray,
+                fontSize: 10
+              }
             })
-            .width(300)
-            .height(70)
-          RichEditor(this.infoShowOptions)
-            .width(300)
-            .height(70)
+          })
+          .width(300)
+          .height(70)
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(70)
 ```
 
 ### Adding a Callback Triggered Before Copy Completion
@@ -659,35 +670,36 @@ The component's default copy behavior is limited to plain text and cannot handle
 <!-- @[richEditor_eventCopy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
 
-  infoShowController: RichEditorController = new RichEditorController();
-  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ···
-          // Replace $r('app.string.xxx') with the resource file you use.
-          RichEditor(this.options)
-            .onReady(() => {
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_15')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+// ...
+        RichEditor(this.options)
+          .onReady(() => {
+            // Replace $r('app.string.AddEvent_Text_15') with the actual resource file. In this example, the value in the resource file is "Copying and pasting the text can trigger the callback."
+            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_15')), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
             })
-            .onCopy(() => {
-              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_16')), {
-                style: {
-                  fontColor: Color.Gray,
-                  fontSize: 10
-                }
-              })
+          })
+          .onCopy(() => {
+            // Replace $r('app.string.AddEvent_Text_16') with the actual resource file. In this example, the value in the resource file is "Trigger the onCopy callback\n."
+            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_16')), {
+              style: {
+                fontColor: Color.Gray,
+                fontSize: 10
+              }
             })
-            .width(300)
-            .height(50)
-          RichEditor(this.infoShowOptions)
-            .width(300)
-            .height(70)
+          })
+          .width(300)
+          .height(50)
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(70)
 ```
 
 ![alt text](figures/richeditor_image_oncut_paste_copy.gif)
@@ -702,27 +714,27 @@ You can configure interaction element properties through APIs to respond to chan
 
 You can set the caret and selection handle colors in the text box using the [caretColor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#caretcolor12) API.
 
-This feature allows for a more distinct visual representation of the caret and text selection, which can significantly aid users in navigating through complex UI that incorporate various input fields. It also improves the user experience by allowing the caret color to match the overall style of the application page.
+This feature allows for a more distinct visual representation of the caret and text selection, which can significantly aid users in navigating through complex UI that incorporate various input fields. It also improves user experience by allowing the caret color to match the overall style of the application page.
 
 <!-- @[richEditor_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-        // Replace $r('app.string.SetAttributes_Text_5') with the resource file you use.
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_5')), {
-              style: {
-                fontColor: Color.Black,
-                fontSize: 15
-              }
-            })
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+      RichEditor(this.options)
+        .onReady(() => {
+          // Replace $r('app.string.SetAttributes_Text_5') with the actual resource file. In this example, the value in the resource file is "The component has set the caret handle color."
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_5')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
           })
-          .caretColor(Color.Orange)
-          .width(300)
-          .height(300)
+        })
+        .caretColor(Color.Orange)
+        .width(300)
+        .height(300)
 ```
 
 ![alt text](figures/richeditor_image_caretcolor.gif)
@@ -736,40 +748,40 @@ This callback enables real‑time listening of selection changes. Typical use ca
 <!-- @[richEditor_eventSelectChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
 
-  infoShowController: RichEditorController = new RichEditorController();
-  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ···
-          // Replace $r('app.string.xxx') with the string resource file you use.
-          RichEditor(this.options)
-            .onReady(() => {
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_2')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+// ...
+        // Replace $r('app.string.xxx') with the actual resource file.
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_2')), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
             })
-            .onSelectionChange((value: RichEditorRange) => {
-              this.infoShowController.addTextSpan('\n' + resource.resourceToString($r('app.string.AddEvent_Text_3')) +
-              value.start + ',' + value.end + ')', {
-                style: {
-                  fontColor: Color.Gray,
-                  fontSize: 10
-                }
-              })
+          })
+          .onSelectionChange((value: RichEditorRange) => {
+            this.infoShowController.addTextSpan('\n' + resource.resourceToString($r('app.string.AddEvent_Text_3')) +
+            value.start + ',' + value.end + ')', {
+              style: {
+                fontColor: Color.Gray,
+                fontSize: 10
+              }
             })
-            .width(300)
-            .height(50)
-          Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
-          RichEditor(this.infoShowOptions)
-            .width(300)
-            .height(70)
+          })
+          .width(300)
+          .height(50)
+        Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(70)
 ```
 
-
+![alt text](figures/richeditor_image_onSelectionChange.gif)
 
 ### Setting the Text Selection Range
 
@@ -782,30 +794,30 @@ If this API is called when the text box is not focused, the selection effect is 
 <!-- @[richEditor_selection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/BackplaneHighlighting.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-            RichEditor(this.options)
-              .onReady(() => {
-                // Replace $r('app.string.BackplaneHighlighting_Text_1') with the resource file you use.
-                this.controller.addTextSpan(resource.resourceToString($r('app.string.BackplaneHighlighting_Text_1')), {
-                  style: {
-                    fontColor: Color.Black,
-                    fontSize: 15
-                  }
-                })
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+          RichEditor(this.options)
+            .onReady(() => {
+              // Replace $r('app.string.BackplaneHighlighting_Text_1') with the actual resource file. In this example, the value in the resource file is "Click the button to select the text at position 0 to 2 here."
+              this.controller.addTextSpan(resource.resourceToString($r('app.string.BackplaneHighlighting_Text_1')), {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
               })
-              .width(300)
-              .height(60)
-            // Replace $r('app.string.BackplaneHighlighting_Button_1') with the resource file you use.
-            Button($r('app.string.BackplaneHighlighting_Button_1'), {
-              buttonStyle: ButtonStyleMode.NORMAL
             })
-              .height(30)
-              .fontSize(13)
-              .onClick(() => {
-                this.controller.setSelection(0, 2)
-              })
+            .width(300)
+            .height(60)
+          // Replace $r('app.string.BackplaneHighlighting_Button_1') with the actual resource file. In this example, the value in the resource file is "setSelection(0,2)."
+          Button($r('app.string.BackplaneHighlighting_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              this.controller.setSelection(0, 2)
+            })
 ```
 
 ![alt text](figures/richeditor_image_set_selection.gif)
@@ -816,7 +828,7 @@ You can configure the text selection menu through APIs.
 
 ### Managing Selected Menu Items
 
-The [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback is triggered before the menu is displayed when the rich text selection range changes. You can configure menu data within this callback.
+When the rich text selection range changes, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback is triggered before the menu is displayed. You can configure menu data within this callback.
 
 <!-- @[richEditor_prepareMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
@@ -834,7 +846,7 @@ struct PrepareMenu {
       TextMenuItemId.AI_WRITER
     ]
     const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)));
-    // Replace $r('app.media.xxx') with the resource file you use.
+    // Replace $r('app.media.xxx') with the actual resource file.
     let item1: TextMenuItem = {
       content: 'create1',
       icon: $r('app.media.startIcon'),
@@ -867,7 +879,7 @@ struct PrepareMenu {
   }
 
   onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
-    // Replace $r('app.media.xxx') with the resource file you use.
+    // Replace $r('app.media.xxx') with the actual resource file.
     let item1: TextMenuItem = {
       content: 'prepare1_' + this.endIndex,
       icon: $r('app.media.startIcon'),
@@ -885,9 +897,11 @@ struct PrepareMenu {
 
   build() {
     Column() {
-      // Replace $r('app.string.xxx') with the resource file you use.
       ComponentCard({
+        // Replace $r('app.string.Set_Attributes_title_13') with the actual resource file. In this example, the value in the resource file is "Manage selected menu items."
         title: $r('app.string.Set_Attributes_title_13'),
+        /* Replace $r('app.string.Set_Attributes_title_13_desc') with the actual resource file. In this example,
+         the value in the resource file is "When the rich text selection range changes, the onPrepareMenu callback is triggered before the menu is displayed. You can configure menu data within this callback."
         description: $r('app.string.Set_Attributes_title_13_desc')
       }) {
         RichEditor(this.options)
@@ -908,7 +922,7 @@ struct PrepareMenu {
 }
 ```
 
-
+![alt text](figures/richeditor_on_prepare_menu.gif)
 
 ### Disabling System Service Menu Items
 
@@ -939,9 +953,9 @@ export struct DisableSystemServiceMenu {
   }
 
   build() {
-    // ···
+    // ...
           RichEditor(this.options).onReady(() => {
-            // Replace $r('app.string.Demo_richEditor') with the resource file you use.
+            // Replace $r('app.string.Demo_richEditor') with the actual resource file. In this example, the value in the resource file is "This is a RichEditor."
             this.controller.addTextSpan($r('app.string.Demo_richEditor'),
               {
                 style:
@@ -960,11 +974,12 @@ export struct DisableSystemServiceMenu {
                 return false;
               }
             })
-        // ···
+          // ...
   }
 }
 ```
 
+![RichEditor_disable_system_service_menuItems](figures/RichEditor_disable_system_service_menuItems.gif)
 
 Use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to hide specified system-provided service menu items from the text selection menu.
 
@@ -994,10 +1009,10 @@ export struct DisableMenuItem {
   }
 
   build() {
-    // ···
+    // ...
           RichEditor(this.options)
             .onReady(() => {
-              // Replace $r('app.string.Demo_richEditor') with the resource file you use.
+              // Replace $r('app.string.Demo_richEditor') with the actual resource file. In this example, the value in the resource file is "This is a RichEditor."
               this.controller.addTextSpan($r('app.string.Demo_richEditor'), {
                 style: {
                   fontSize: 30
@@ -1014,12 +1029,12 @@ export struct DisableMenuItem {
                 return false;
               }
             })
-        // ···
+          // ...
   }
 }
 ```
 
-
+  ![alt text](figures/richEditor_disable_menuItems.gif)
 
 ### Setting the Custom Context Menu on Text Selection
 
@@ -1039,13 +1054,15 @@ private theme: SelectionMenuTheme = defaultTheme;
 
 build() {
   Column() {
-    // Replace $r('app.string.xxx') with the resource file you use.
     ComponentCard({
+      // Replace $r('app.string.Set_Attributes_title_1') with the actual resource file. In this example, the value in the resource file is "Set custom context menu on text selection."
       title: $r('app.string.Set_Attributes_title_1'),
+      // Replace $r('app.string.Set_Attributes_title_1_desc') with the actual resource file. In this example, the value in the resource file is "Set custom context menu on text selection using bindSelectionMenu."
       description: $r('app.string.Set_Attributes_title_1_desc'),
     }) {
       RichEditor(this.options)
         .onReady(() => {
+          // Replace $r('app.string.SetAttributes_Text_4') with the actual resource file. In this example, the value in the resource file is "The component has a custom menu that can be triggered by long pressing."
           this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_4')), {
             style: {
               fontColor: Color.Black,
@@ -1070,20 +1087,22 @@ SystemMenu() {
   Column() {
     Menu() {
       if (this.controller) {
-        // Replace $r('app.string.xxx') with the resource file you use.
         MenuItemGroup() {
           MenuItem({
             startIcon: this.theme.cutIcon,
+            // Replace $r('app.string.SetAttributes_Text_1') with the actual resource file. In this example, the value in the resource file is "Cut."
             content: resource.resourceToString($r('app.string.SetAttributes_Text_1')),
             labelInfo: 'Ctrl+X'
           })
           MenuItem({
             startIcon: this.theme.copyIcon,
+            // Replace $r('app.string.SetAttributes_Text_2') with the actual resource file. In this example, the value in the resource file is "Copy."
             content: resource.resourceToString($r('app.string.SetAttributes_Text_2')),
             labelInfo: 'Ctrl+C'
           })
           MenuItem({
             startIcon: this.theme.pasteIcon,
+            // Replace $r('app.string.SetAttributes_Text_3') with the actual resource file. In this example, the value in the resource file is "Paste."
             content: resource.resourceToString($r('app.string.SetAttributes_Text_3')),
             labelInfo: 'Ctrl+V'
           })
@@ -1114,24 +1133,25 @@ This API controls the text display area to prevent overly long content from disr
 <!-- @[richEditor_maxLines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-        // Replace $r('app.string.SetAttributes_Text_7') with the resource file you use.
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
-              {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
-          })
-          .maxLines(2)
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+      /*Replace $r('app.string.SetAttributes_Text_7') with the actual resource file. In this example,
+       the value in the resource file is "The maximum number of lines is set.\nExcess content will be displayed in scrolling mode.\nExceeds 1 line\nExceeds 2 lines\nExceeds 3 lines\nExceeds 4 lines." */
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
+            {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
+            })
+        })
+        .maxLines(2)
 ```
 
-
+![max lines](figures/RichEditor_maxLines.gif)
 
 ## Setting the Style
 
@@ -1146,40 +1166,40 @@ This allows you to deliver a personalized writing experience. For example, you m
 <!-- @[richEditor_setTypingStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetUserPresetTextStyles.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-            RichEditor(this.options)
-              .onReady(() => {
-                // Replace $r('app.string.SetUserPresetTextStyles_Text_1') with the resource file you use.
-                this.controller.addTextSpan(resource.resourceToString($r('app.string.SetUserPresetTextStyles_Text_1')),
-                  {
-                    style: {
-                      fontColor: Color.Black,
-                      fontSize: 15
-                    }
-                  })
-              })
-              .width(300)
-              .height(60)
-            // Replace $r('app.string.SetUserPresetTextStyles_Button_1') with the resource file you use.
-            Button($r('app.string.SetUserPresetTextStyles_Button_1'), {
-              buttonStyle: ButtonStyleMode.NORMAL
-            })
-              .height(30)
-              .fontSize(13)
-              .onClick(() => {
-                this.controller.setTypingStyle({
-                  fontWeight: 'medium',
-                  fontColor: Color.Pink,
-                  fontSize: 15,
-                  fontStyle: FontStyle.Italic,
-                  decoration: {
-                    type: TextDecorationType.Underline,
-                    color: Color.Gray
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+          RichEditor(this.options)
+            .onReady(() => {
+              // Replace $r('app.string.SetUserPresetTextStyles_Text_1') with the actual resource file. In this example, the value in the resource file is "Click the button to change the preset typing style."
+              this.controller.addTextSpan(resource.resourceToString($r('app.string.SetUserPresetTextStyles_Text_1')),
+                {
+                  style: {
+                    fontColor: Color.Black,
+                    fontSize: 15
                   }
                 })
+            })
+            .width(300)
+            .height(60)
+          // Replace $r('app.string.SetUserPresetTextStyles_Button_1') with the actual resource file. In this example, the value in the resource file is "setTypingStyle."
+          Button($r('app.string.SetUserPresetTextStyles_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              this.controller.setTypingStyle({
+                fontWeight: 'medium',
+                fontColor: Color.Pink,
+                fontSize: 15,
+                fontStyle: FontStyle.Italic,
+                decoration: {
+                  type: TextDecorationType.Underline,
+                  color: Color.Gray
+                }
               })
+            })
 ```
 
 ![alt text](figures/richeditor_image_setTypingStyle.gif)
@@ -1193,27 +1213,27 @@ Applying text decoration can highlight key information, indicate text status, an
 <!-- @[richEditor_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-        RichEditor(this.options)
-          .onReady(() => {
-            // Replace $r('app.string.Demo_oneText') with the resource file you use.
-            this.controller.addTextSpan($r('app.string.Demo_oneText'), {
-              style: {
-                fontSize: 25,
-                decoration: {
-                  type: TextDecorationType.LineThrough,
-                  color: Color.Blue,
-                  // Set the thickness of the decoration line to 6 times the default.
-                  thicknessScale: 6
-                }
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+      RichEditor(this.options)
+        .onReady(() => {
+          // Replace $r('app.string.Demo_oneText') with the actual resource file. In this example, the value in the resource file is "A piece of preset text."
+          this.controller.addTextSpan($r('app.string.Demo_oneText'), {
+            style: {
+              fontSize: 25,
+              decoration: {
+                type: TextDecorationType.LineThrough,
+                color: Color.Blue,
+                // Set the thickness of the decoration line to 6 times the default.
+                thicknessScale: 6
               }
-            })
+            }
           })
+        })
 ```
 
-
+![RichEditor_decoration](figures/RichEditor_decoration.jpg)
 
 Use the **enableMultiType** property in [DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20) to apply multiple decoration lines simultaneously, such as an underline and a strikethrough.
 
@@ -1223,12 +1243,12 @@ This API is useful in complex scenarios that require diverse text decoration. Fo
 
 ``` TypeScript
 RichEditor({ controller: this.styledStringController });
-// Replace $r('app.string.Demo_SetStyledStringButton') with the resource file you use.
+// Replace $r('app.string.Demo_SetStyledStringButton') with the actual resource file. In this example, the value in the resource file is "Multiple decoration lines."
 Button($r('app.string.Demo_SetStyledStringButton'))
   .fontSize(20)
   .onClick(() => {
     let mutString: MutableStyledString = new MutableStyledString(
-      // Replace $r('app.string.Demo_styledString') with the resource file you use.
+      // Replace $r('app.string.Demo_styledString') with the actual resource file. In this example, the value in the resource file is "Rich text with multiple decoration lines."
       resource.resourceToString($r('app.string.Demo_styledString')), [
       {
         start: 0,
@@ -1267,7 +1287,7 @@ Button($r('app.string.Demo_SetStyledStringButton'))
   })
 ```
 
-
+![RichEditor_decoration_multi_type](figures/RichEditor_decoration_multi_type.jpg)
 
 ### Setting Vertical Alignment
 
@@ -1278,33 +1298,33 @@ This API optimizes layouts containing multiple elements. When component content 
 <!-- @[richEditor_textVerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-        RichEditor(this.options)
-          .onReady(() => {
-            // Replace $r('app.media.startIcon') with the resource file you use.
-            this.controller.addImageSpan($r('app.media.startIcon'), {
-              imageStyle: {
-                size: [100, 100]
-              }
-            })
-            // Replace $r('app.string.Demo_verticalAlignString') with the resource file you use.
-            this.controller.addTextSpan($r('app.string.Demo_verticalAlignString'), {
-              style: {
-                fontColor: Color.Pink,
-                fontSize: '32'
-              },
-              paragraphStyle: {
-                textAlign: TextAlign.Start,
-                textVerticalAlign: TextVerticalAlign.CENTER,
-                leadingMargin: 16
-              }
-            })
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+      RichEditor(this.options)
+        .onReady(() => {
+          // Replace $r('app.media.startIcon') with the actual resource file.
+          this.controller.addImageSpan($r('app.media.startIcon'), {
+            imageStyle: {
+              size: [100, 100]
+            }
           })
+          // Replace $r('app.string.Demo_verticalAlignString') with the actual resource file. In this example, the value in the resource file is "This is a rich text with the vertical alignment effect."
+          this.controller.addTextSpan($r('app.string.Demo_verticalAlignString'), {
+            style: {
+              fontColor: Color.Pink,
+              fontSize: '32'
+            },
+            paragraphStyle: {
+              textAlign: TextAlign.Start,
+              textVerticalAlign: TextVerticalAlign.CENTER,
+              leadingMargin: 16
+            }
+          })
+        })
 ```
 
-
+![RichEditor_text_vertical_align](figures/RichEditor_text_vertical_align.jpg)
 
 ### Enabling Automatic Spacing Between Chinese and Western Characters
 
@@ -1315,24 +1335,24 @@ This API optimizes text layout and improves readability within the component. Wh
 <!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
 ``` TypeScript
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-// ···
-          // Replace $r('app.string.Demo_autoSpacingString') with the resource file you use.
-          RichEditor(this.options)
-            .onReady(() => {
-              this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
+        RichEditor(this.options)
+          .onReady(() => {
+            // Replace $r('app.string.Demo_autoSpacingString') with the actual resource file. In this example, the value in the resource file is "Auto Spacing between Chinese and Western Characters."
+            this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
+              {
+                style:
                 {
-                  style:
-                  {
-                    fontColor: Color.Orange,
-                    fontSize: 20
-                  }
-                })
-            })
-            .enableAutoSpacing(this.enableAutoSpace)
+                  fontColor: Color.Orange,
+                  fontSize: 20
+                }
+              })
+          })
+          .enableAutoSpacing(this.enableAutoSpace)
 ```
 
-
+![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
 
 <!--RP1--><!--RP1End-->

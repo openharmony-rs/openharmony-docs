@@ -12,7 +12,7 @@ The size change event is triggered whenever the component's size changes.
 >
 >  The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >  
->  The width and height returned by this event are the width and height of the component after drawing, which may be different from the width and height set for the component.
+>  The width and height returned by this event represent the component's post-rendering size, which may differ from the preset width and height values of the component.
 
 ## onSizeChange
 
@@ -22,9 +22,9 @@ Triggered when the component size changes due to layout updates.
 
 >**NOTE**
 >
-> 1. This API is triggered when the layout changes. Due to the calculation precision, the return value may be slightly different from the actual physical size.
+> 1. This API is triggered upon layout changes. Due to calculation precision limitations, the return value may deviate slightly from the actual physical size.
 >
-> 2. onSizeChange is a synchronous callback triggered during the layout process. If the state variable is directly changed in onSizeChange, it may be included in the animation closure. Specifically, the animation compares the layout before the animation with the layout after the animation closure. If the onSizeChange callback is triggered synchronously in the layout before the animation, the changes made in the onSizeChange callback are included in the animation process together with the changes in the animation closure. To avoid this problem, you can use [setTimeOut](../../../reference/common/js-apis-timer.md#settimeout) or [postFrameCallback](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#postframecallback12) with a delay of 0 in onSizeChange to delay the UI processing logic to asynchronous execution.
+> 2. **onSizeChange** is a synchronous callback triggered during the layout process. Directly modifying state variables within **onSizeChange** may cause the changes to be included in the animation closure. Specifically, animations compare the layout state before the animation starts with the state after the animation closure is executed. If the **onSizeChange** callback is triggered synchronously during the pre-animation layout phase, the changes made in this callback will be processed as part of the animation, along with the changes in the animation closure. To avoid this issue, you can use [setTimeout](../../../reference/common/js-apis-timer.md#settimeout) or [postFrameCallback](../../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#postframecallback12) (with a 0 ms delay) inside **onSizeChange** to defer the UI processing logic to asynchronous execution.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 

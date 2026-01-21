@@ -1340,7 +1340,7 @@ struct styled_string_process_demo {
   fontStyleAttr1: TextStyle = new TextStyle({ fontColor: Color.Blue });
   fontStyleAttr2: TextStyle = new TextStyle({ fontColor: Color.Orange });
   // Create a readable and writable styled string object: mutableStyledString1.
-  mutableStyledString1: MutableStyledString = new MutableStyledString ("45-minute workout");
+  mutableStyledString1: MutableStyledString = new MutableStyledString("45-minute workout");
   // Create the mutableStyledString2 object whose input parameters contain strings and styles.
   mutableStyledString2: MutableStyledString = new MutableStyledString("test hello world", [{
     start: 0,

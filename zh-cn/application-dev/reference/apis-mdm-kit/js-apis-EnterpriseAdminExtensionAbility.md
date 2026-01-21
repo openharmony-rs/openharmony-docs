@@ -23,7 +23,19 @@
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 ```
 
-## EnterpriseAdminExtensionAbility.onAdminEnabled
+## EnterpriseAdminExtensionAbility
+
+企业设备管理扩展能力组件，是设备管理应用必备组件。当开发者为企业开发设备管理应用时，需继承EnterpriseAdminExtensionAbility，在EnterpriseAdminExtensionAbility实例中实现MDM业务逻辑，EnterpriseAdminExtensionAbility实现了系统管理状态变化通知功能，并定义了管理应用激活、去激活、应用安装、卸载事件等回调接口。
+
+### 属性
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| context<sup>23+</sup> | [EnterpriseAdminExtensionContext](js-apis-application-EnterpriseAdminExtensionContext.md) | 否 | 否 | EnterpriseAdminExtensionAbility的上下文。继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。|
+
+### onAdminEnabled
 
 onAdminEnabled(): void
 
@@ -45,7 +57,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAdminDisabled
+### onAdminDisabled
 
 onAdminDisabled(): void
 
@@ -67,7 +79,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onBundleAdded
+### onBundleAdded
 
 onBundleAdded(bundleName: string): void
 
@@ -96,7 +108,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onBundleAdded<sup>14+</sup>
+### onBundleAdded<sup>14+</sup>
 
 onBundleAdded(bundleName: string, accountId: number): void
 
@@ -127,7 +139,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onBundleRemoved
+### onBundleRemoved
 
 onBundleRemoved(bundleName: string): void
 
@@ -156,7 +168,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onBundleRemoved<sup>14+</sup>
+### onBundleRemoved<sup>14+</sup>
 
 onBundleRemoved(bundleName: string, accountId: number): void
 
@@ -187,7 +199,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAppStart
+### onAppStart
 
 onAppStart(bundleName: string): void
 
@@ -216,7 +228,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAppStop
+### onAppStop
 
 onAppStop(bundleName: string): void
 
@@ -244,7 +256,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 };
 ```
-## EnterpriseAdminExtensionAbility.onSystemUpdate
+### onSystemUpdate
 
 onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo): void
 
@@ -274,7 +286,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onStart
+### onStart
 
 onStart(): void
 
@@ -297,7 +309,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAccountAdded<sup>18+</sup>
+### onAccountAdded<sup>18+</sup>
 
 onAccountAdded(accountId: number): void
 
@@ -325,7 +337,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAccountSwitched<sup>18+</sup>
+### onAccountSwitched<sup>18+</sup>
 
 onAccountSwitched(accountId: number): void
 
@@ -353,7 +365,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onAccountRemoved<sup>18+</sup>
+### onAccountRemoved<sup>18+</sup>
 
 onAccountRemoved(accountId: number): void
 
@@ -381,7 +393,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onKioskModeEntering<sup>20+</sup>
+### onKioskModeEntering<sup>20+</sup>
 
 onKioskModeEntering(bundleName: string, accountId: number): void
 
@@ -412,7 +424,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onKioskModeExiting<sup>20+</sup>
+### onKioskModeExiting<sup>20+</sup>
 
 onKioskModeExiting(bundleName: string, accountId: number): void
 
@@ -441,7 +453,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onMarketAppInstallResult<sup>22+</sup>
+### onMarketAppInstallResult<sup>22+</sup>
 
 onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void
 
@@ -470,7 +482,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onDeviceAdminEnabled<sup>23+</sup>
+### onDeviceAdminEnabled<sup>23+</sup>
 
 onDeviceAdminEnabled(bundleName: string): void
 
@@ -497,7 +509,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onDeviceAdminDisabled<sup>23+</sup>
+### onDeviceAdminDisabled<sup>23+</sup>
 
 onDeviceAdminDisabled(bundleName: string): void
 
@@ -641,6 +653,68 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   */
   onKeyEvent(keyEvent: systemManager.KeyEvent): void {
     console.info(`Succeeded in calling onKeyEvent callback, key event:${JSON.stringify(keyEvent)}`);
+  }
+};
+```
+
+## EnterpriseAdminExtensionAbility.onLogCollected<sup>23+</sup>
+
+onLogCollected(result: common.Result): void
+
+通过[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口成功创建日志收集任务后，当日志收集完成时，将触发该回调。回调中包含日志收集结果。
+
+> **说明：**
+> 
+> 日志收集成功时，必须在应用的EnterpriseAdminExtensionAbility中访问沙箱目录（/data/edm/log）获取日志，获取日志方式参考下列示例代码。应用取走日志后，建议调用[systemManager.finishLogCollected](./js-apis-enterprise-systemManager.md#systemmanagerfinishlogcollected23)删除已收集到的日志。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| result | [common.Result](./js-apis-enterprise-common.md#result) | 是    | 日志收集结果。 |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { EnterpriseAdminExtensionAbility, common, systemManager } from '@kit.MDMKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  /**
+   * MDM应用调用systemManager.startCollectLog接口启动日志收集任务后，将触发该回调函数，回调携带日志收集结果。
+   * 若result为common.Result.SUCCESS，表示日志收集成功。请取走日志，并调用systemManager.finishLogCollected删除已收集到的日志。
+   * 若result为common.Result.FAIL，表示日志收集失败。
+   */
+  onLogCollected(result: common.Result): void {
+    console.info(`Succeeded in calling onLogCollected callback, result:${result}`);
+    if (result === common.Result.SUCCESS) {
+      let filesDir = '/data/edm/log';
+      // 应用沙箱路径，需根据实际情况进行替换
+      let targetPath = this.context.tempDir;
+      try {
+          let files: string[] = fs.listFileSync(filesDir);
+          // 从/data/edm/log沙箱目录取走日志
+          files.forEach(value => {
+             fs.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
+          });
+          let wantTemp: Want = {
+              // 需根据实际情况进行替换
+              bundleName: 'com.example.myapplication',
+              abilityName: 'EnterpriseAdminAbility'
+          };
+          systemManager.finishLogCollected(wantTemp);
+      } catch (error) {
+          Logger.info("onLogCollected", "error: " + JSON.stringify(error))
+      }
+    }
+    if (result === common.Result.FAIL) {
+      Logger.error("onLogCollected", "Failed to collect log.")
+    }
   }
 };
 ```

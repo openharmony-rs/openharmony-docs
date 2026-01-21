@@ -33,9 +33,9 @@ Defines APIs for MD algorithms.
 
 | Name| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)](#oh_cryptodigest_create) | Creates an MD instance based on the given algorithm name.|
+| [OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)](#oh_cryptodigest_create) | Creates an MD instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_DigestCrypto_Destroy](capi-crypto-digest-h.md#oh_digestcrypto_destroy).|
 | [OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *in)](#oh_cryptodigest_update) | Updates MD data.|
-| [OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)](#oh_cryptodigest_final) | Implements MD calculation.|
+| [OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)](#oh_cryptodigest_final) | Implements MD calculation.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)](#oh_cryptodigest_getlength) | Obtains the length of an MD.|
 | [const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)](#oh_cryptodigest_getalgoname) | Obtains the name of an MD algorithm.|
 | [void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)](#oh_digestcrypto_destroy) | Destroys an MD instance.|
@@ -50,16 +50,15 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 **Description**
 
-Creates an MD instance based on the given algorithm name.
+Creates an MD instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_DigestCrypto_Destroy](capi-crypto-digest-h.md#oh_digestcrypto_destroy).
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer to the algorithm used to generate the MD instance.<br> For example, **'SHA256'**.|
+| const char *algoName | Pointer to the algorithm used to generate the MD instance.<br> For example, **SHA256**.|
 | [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) **ctx | Pointer to the MD instance created.|
 
 **Returns**
@@ -79,7 +78,6 @@ OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *
 Updates MD data.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -107,10 +105,9 @@ OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *o
 
 **Description**
 
-Implements MD calculation.
+Implements MD calculation.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -142,7 +139,6 @@ Obtains the length of an MD.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -153,7 +149,7 @@ Obtains the length of an MD.
 
 | Type| Description|
 | -- | -- |
-| uint32_t | Digest length.<br>        If the input parameter **ctx** is **NULL**, **401** is returned. In other cases, **0** is returned.|
+| uint32_t | MD length.<br>        If the input parameter **ctx** is **NULL**, **401** is returned. In other cases, **0** is returned.|
 
 ### OH_CryptoDigest_GetAlgoName()
 
@@ -166,7 +162,6 @@ const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)
 Obtains the name of an MD algorithm.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -191,7 +186,6 @@ void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)
 Destroys an MD instance.
 
 **Since**: 12
-
 
 **Parameters**
 

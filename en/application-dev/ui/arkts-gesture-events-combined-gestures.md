@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-A combined gesture is a combination of multiple single gestures. Its recognition mode is subject to [GestureMode](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#gesturemode) passed in **GestureGroup**. Three recognition modes are supported: [sequential recognition](#sequential-recognition), [parallel recognition](#parallel-recognition), and [exclusive recognition](#exclusive-recognition).
+A combined gesture is a combination of multiple single gestures. Its recognition mode is subject to [GestureMode](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#gesturemode) passed in [GestureGroup](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#apis). Three recognition modes are supported: [sequential recognition](#sequential-recognition), [parallel recognition](#parallel-recognition), and [exclusive recognition](#exclusive-recognition).
 
 ```ts
 GestureGroup(mode:GestureMode, gesture:GestureType[])
@@ -21,7 +21,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 ## Sequential Recognition
 
-For sequential recognition, the value of **GestureMode** is **Sequence**. In this gesture recognition mode, gestures are recognized in the order in which they were registered until they are all recognized successfully. If any of the registered gestures fails to be recognized, subsequent gestures will also fail. Only the last gesture recognized responds to the **onActionEnd** event.
+For sequential recognition, the value of **GestureMode** is **Sequence**. In this gesture recognition mode, gestures are recognized in the order in which they were registered until they are all recognized successfully. If any of the registered gestures fails to be recognized, subsequent gestures will also fail. Only the last gesture recognized responds to the [onActionEnd](../reference/apis-arkui/arkui-ts/ts-gesturehandler.md#onactionend) event.
 
 In the following example, the combined gestures for continuous recognition are the long press gesture and pan gesture.
 
@@ -154,13 +154,13 @@ For example, if the tap gesture and the double-tap gesture are bound to the **Co
 
 >**NOTE**
 >
->After a tap gesture and a double-tap gesture are combined for parallel recognition, when taps are performed in an area, the tap gesture and the double-tap gesture are recognized at the same time.
+> - After a tap gesture and a double-tap gesture are combined for parallel recognition, when taps are performed in an area, the tap gesture and the double-tap gesture are recognized at the same time.
 >
->When there is only a single tap, the tap gesture is recognized, but the double-tap gesture fails to be recognized.
+> - When there is only a single tap, the tap gesture is recognized, but the double-tap gesture fails to be recognized.
 >
->When there are two taps and the interval between the two taps is within a specified period (300 ms by default), two tap events and one double-tap event are triggered.
+> - When there are two taps and the interval between the two taps is within a specified period (300 ms by default), two tap events and one double-tap event are triggered.
 >
->When there are two taps, but the interval between the two taps exceeds the specified time, two tap events are triggered but the double-tap event is not triggered.
+> - When there are two taps, but the interval between the two taps exceeds the specified time, two tap events are triggered but the double-tap event is not triggered.
 
 
 ## Exclusive Recognition
@@ -209,11 +209,11 @@ For example, when both the tap gesture and double-tap gesture are bound to a **C
 
 >**NOTE**
 >
->After a tap gesture and a double-tap gesture are combined for exclusive recognition, when taps are performed in an area, the tap gesture and the double-tap gesture are recognized at the same time.
+> - After a tap gesture and a double-tap gesture are combined for exclusive recognition, when taps are performed in an area, the tap gesture and the double-tap gesture are recognized at the same time.
 >
->When there is only a single tap, the tap gesture is recognized, but the double-tap gesture fails to be recognized.
+> - When there is only a single tap, the tap gesture is recognized, but the double-tap gesture fails to be recognized.
 >
->When there are two taps, the gesture response depends on the order of gesture binding. If you bind the tap gesture first, followed by the double-tap gesture, the tap gesture will be recognized on the first tap, causing the double-tap gesture to fail. Even if the second tap is performed within the specified time, the double-tap gesture event is not responded to. Instead, another tap gesture event is triggered. Conversely, if you bind the double-tap gesture first, it will be recognized without triggering the tap gesture.
+> - When there are two taps, the gesture response depends on the order of gesture binding. If you bind the tap gesture first, followed by the double-tap gesture, the tap gesture will be recognized on the first tap, causing the double-tap gesture to fail. Even if the second tap is performed within the specified time, the double-tap gesture event is not responded to. Instead, another tap gesture event is triggered. Conversely, if you bind the double-tap gesture first, it will be recognized without triggering the tap gesture.
 
 ## Example Scenario
 

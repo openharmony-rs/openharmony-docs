@@ -936,7 +936,7 @@ try {
 
 setBluetoothScanMode(mode: ScanMode, duration: number): void
 
-Sets the Bluetooth scan mode, which determines whether the local device can be connected or discovered.
+Sets the Bluetooth scan mode, which determines whether the local device can be connected or discovered. This API is used together with the [onScanModeChange](#connectiononscanmodechange23) API to listen for Bluetooth scan mode change events in real time.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -979,7 +979,7 @@ try {
 
 getBluetoothScanMode(): ScanMode
 
-Obtains the Bluetooth scan mode.
+Obtains the Bluetooth scan mode. This API is used together with the [onScanModeChange](#connectiononscanmodechange23) API to listen for Bluetooth scan mode change events in real time.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1677,6 +1677,86 @@ try {
     connection.off('discoveryResult', onReceiveEvent);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
+## connection.onScanModeChange<sup>23+</sup>
+
+onScanModeChange(callback: Callback&lt;ScanMode&gt;): void
+
+Subscribes to Bluetooth scan mode change events. This API uses an asynchronous callback to return the result. If such events are subscribed to, after the current Bluetooth scan mode is changed by calling [setBluetoothScanMode](#connectionsetbluetoothscanmode), the callback containing the latest scan mode will be received.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                              |
+| -------- | ---------------------------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | Yes   | Callback used to return the latest Bluetooth scan mode.|
+
+**Error codes**
+
+For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.              |
+
+**Example**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.onScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+
+## connection.offScanModeChange<sup>23+</sup>
+
+offScanModeChange(callback?: Callback&lt;ScanMode&gt;): void
+
+Unsubscribes from Bluetooth scan mode change events.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[ScanMode](#scanmode)&gt; | No   | Callback for the unsubscription notification.<br>If this parameter is passed, the value must be the same as that in [connection.onScanModeChange](#connectiononscanmodechange23). If this parameter is not passed, all callbacks for the Bluetooth scan mode change will be unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+function ScanModeChangeEvent(scanMode: connection.ScanMode) {
+    console.info(`Scan mode has changed, new mode: ${scanMode}`);
+}
+try {
+    connection.offScanModeChange(ScanModeChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 

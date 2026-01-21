@@ -27,7 +27,7 @@ on(event: InnerEvent, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -61,7 +61,7 @@ on(eventId: string, callback:  Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -90,7 +90,7 @@ on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -133,7 +133,7 @@ once(event: InnerEvent, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -166,7 +166,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -195,7 +195,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -240,7 +240,7 @@ off(eventId: number): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -265,7 +265,7 @@ off(eventId: string): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -290,7 +290,7 @@ off(eventId: number, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -322,7 +322,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -354,7 +354,7 @@ off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -402,7 +402,7 @@ emit(event: InnerEvent, data?: EventData): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -441,7 +441,7 @@ emit(eventId: string, data?: EventData): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -475,7 +475,7 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -516,7 +516,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -555,7 +555,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -597,7 +597,7 @@ getListenerCount(eventId: number | string): number
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -624,7 +624,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**:  `SystemCapability.Notification.Emitter`
+**系统能力**： `SystemCapability.Notification.Emitter`
 
 | 名称      | 值    | 说明                                                |
 | --------- | ---- | --------------------------------------------------- |
@@ -639,7 +639,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 | 名称     | 类型                        | 只读 | 可选 | 说明                                 |
 | -------- | ------------------------------- | ---- | ---- | ------------------------------ |
@@ -652,7 +652,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 | 名称 | 类型           | 只读 | 可选 | 说明           |
 | ---- | ------------------ | ---- | ---- | -------------- |
@@ -664,7 +664,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 | 名称     | 类型                            | 只读 | 可选 | 说明           |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
@@ -676,7 +676,7 @@ let count = emitter.getListenerCount("eventId");
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 | 名称     | 类型                            | 只读 | 可选 | 说明           |
 | -------- | ------------------------------- | ---- | ---- | -------------- |
@@ -685,7 +685,7 @@ let count = emitter.getListenerCount("eventId");
 
 ## Emitter<sup>22+</sup>
 
-该功能支持在同一进程的同一Emitter类实例中,跨不同线程或同一线程内发送和处理事件。它能够实现持续订阅事件、单次订阅事件、取消订阅事件以及将事件发送到事件队列。
+该功能支持在同一进程的同一Emitter类实例中，跨不同线程或同一线程内发送和处理事件。它能够实现持续订阅事件、单次订阅事件、取消订阅事件以及将事件发送到事件队列。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -716,7 +716,7 @@ on(eventId: string, callback:  Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -747,7 +747,7 @@ on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -792,7 +792,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -823,7 +823,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -870,7 +870,7 @@ off(eventId: string): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -896,7 +896,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -929,7 +929,7 @@ off<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -978,7 +978,7 @@ emit(eventId: string, data?: EventData): void
 
 **原子化服务API：** 从API version 22开始支持原子化服务。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -1013,7 +1013,7 @@ emit<T\>(eventId: string, data?: GenericEventData<T\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -1057,7 +1057,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 
 **原子化服务API：** 从API version 22开始支持原子化服务。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -1097,7 +1097,7 @@ emit<T\>(eventId: string, options: Options, data?: GenericEventData<T\>): void
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 
@@ -1141,7 +1141,7 @@ getListenerCount(eventId: string): number
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**系统能力**: `SystemCapability.Notification.Emitter`
+**系统能力**：`SystemCapability.Notification.Emitter`
 
 **参数：**
 

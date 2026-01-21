@@ -1,18 +1,26 @@
 # Console
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @yao_dashuai-->
+<!--Designer: @yao_dashuai-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 The **console** module provides a simple debugging console, which is similar to the JavaScript console provided by the browser.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## console.debug
 
-debug(message: string, ...arguments: any[]): void
+static debug(message: string, ...arguments: any[]): void
 
 Prints debugging information in formatted output mode.
 
-This API can be used in ArkTS widgets since API version 9.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,11 +45,13 @@ console.debug('count:'); // Print the message only.
 
 ## console.log
 
-log(message: string, ...arguments: any[]): void
+static log(message: string, ...arguments: any[]): void
 
 Prints log information in formatted output mode.
 
-This API can be used in ArkTS widgets since API version 9.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,11 +76,13 @@ console.log('count:'); // Print the message only.
 
 ## console.info
 
-info(message: string, ...arguments: any[]): void
+static info(message: string, ...arguments: any[]): void
 
 Prints log information in formatted output mode. This API is the alias of **console.log ()**.
 
-This API can be used in ArkTS widgets since API version 9.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,11 +107,13 @@ console.info('count:'); // Print the message only.
 
 ## console.warn
 
-warn(message: string, ...arguments: any[]): void
+static warn(message: string, ...arguments: any[]): void
 
 Prints warning information in formatted output mode.
 
-This API can be used in ArkTS widgets since API version 9.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,11 +138,13 @@ console.warn('warn:'); // Print the message only.
 
 ## console.error
 
-error(message: string, ...arguments: any[]): void
+static error(message: string, ...arguments: any[]): void
 
 Prints error information in formatted output mode.
 
-This API can be used in ArkTS widgets since API version 9.
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,7 +154,6 @@ This API can be used in ArkTS widgets since API version 9.
 | ------- | ------ | ---- | ----------- |
 | message | string | Yes   | Error information to be printed.|
 | arguments | any[] | No   | Arguments in the message or other information to be printed.|
-
 
 **Example**
 
@@ -154,7 +169,7 @@ console.error('error:'); // Print the message only.
 
 ## console.assert<sup>10+</sup>
 
-assert(value?: Object, ...arguments: Object[]): void
+static assert(value?: Object, ...arguments: Object[]): void
 
 Prints assertion information.
 
@@ -167,13 +182,21 @@ Prints assertion information.
 | Name    | Type    | Mandatory  | Description         |
 | ------- | ------ | ---- | ----------- |
 | value | Object | No   | Result value. If **value** is **false** or left blank, the output starting with "Assertion failed" is printed. If **value** is **true**, no information is printed.|
-| arguments | Object | No   | Other information to be printed when **value** is **false**. If this parameter is left blank, other information is not printed.|
+| arguments | Object | No   | Other information to be printed when **value** is **false**. If this parameter is left blank, no information is printed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
 ```js
 console.assert(true, 'does nothing');  // Do not print error information as value is true.
-console.assert(2% 1 == 0,'does nothing');  // Do not print error information as value is true.
+console.assert(2 % 1 == 0, 'does nothing');  // Do not print error information as value is true.
 
 console.assert(false, 'console %s work', 'didn\'t');
 // Assertion failed: console didn't work
@@ -184,7 +207,7 @@ console.assert();
 
 ## console.count<sup>10+</sup>
 
-count(label?: string): void
+static count(label?: string): void
 
 Maintains an internal counter. When this counter is invoked, its label name and the corresponding call count are printed.
 
@@ -198,6 +221,13 @@ Maintains an internal counter. When this counter is invoked, its label name and 
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Counter label name. The default value is **default**.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 
@@ -218,7 +248,7 @@ console.count()
 
 ## console.countReset<sup>10+</sup>
 
-countReset(label?: string): void
+static countReset(label?: string): void
 
 Resets a counter based on the specified label name.
 
@@ -232,6 +262,14 @@ Resets a counter based on the specified label name.
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Counter label name. The default value is **default**.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
 **Example**
 
 ```js
@@ -244,7 +282,7 @@ console.count('abc');
 
 ## console.dir<sup>10+</sup>
 
-dir(dir?: Object): void
+static dir(dir?: Object): void
 
 Prints content of the specified object.
 
@@ -280,10 +318,9 @@ console.dir(a);
 console.dir(); // No information is printed.
 ```
 
-
 ## console.dirxml<sup>10+</sup>
 
-dirxml(...arguments: Object[]): void 
+static dirxml(...arguments: Object[]): void 
 
 Displays an interactive tree of the descendant elements of the specified XML element. This API is implemented by calling **console.log()** internally. It does not produce any XML elements. The usage method is the same as that of **console.log()**.
 
@@ -295,7 +332,7 @@ Displays an interactive tree of the descendant elements of the specified XML ele
 
 | Name    | Type    | Mandatory  | Description         |
 | ------- | ------ | ---- | ----------- |
-| arguments | Object | Yes   | Information to be printed.|
+| arguments | Object | No   | Information to be printed. If this parameter is left blank, no information is printed.|
 
 **Example**
 
@@ -311,9 +348,10 @@ console.dirxml('count:');
 
 ## console.group<sup>10+</sup>
 
-group(...arguments: Object[]): void
+static group(...arguments: Object[]): void
 
 Increases the indentation of subsequent lines by two spaces.
+
 If the information to be printed is provided, the information is printed without extra indentation.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -324,26 +362,25 @@ If the information to be printed is provided, the information is printed without
 
 | Name    | Type    | Mandatory  | Description         |
 | ------- | ------ | ---- | ----------- |
-| arguments | Object | No   | Information to be printed.|
+| arguments | Object | No   | Information to be printed. If this information is omitted, only two spaces are printed.|
 
 **Example**
 
 ```js
-console.log("outter");
+console.info("outter");
 // outter
 console.group();
-console.log("level 1");
+console.info("level 1");
 //   level 1
 console.group("in level1");
 //   in level1
-console.log("level 2");
+console.info("level 2");
 //     level 2
 ```
 
-
 ## console.groupCollapsed<sup>10+</sup>
 
-groupCollapsed(...arguments: Object[]): void
+static groupCollapsed(...arguments: Object[]): void
 
 Creates a new inline group in collapsed mode. The usage and function of this API are the same as those of **console.group()**.
 
@@ -355,8 +392,7 @@ Creates a new inline group in collapsed mode. The usage and function of this API
 
 | Name    | Type    | Mandatory  | Description         |
 | ------- | ------ | ---- | ----------- |
-| arguments | Object | No   | Information to be printed.|
-
+| arguments | Object | No   | Information to be printed. If this information is omitted, only two spaces are printed.|
 
 **Example**
 
@@ -364,17 +400,17 @@ Creates a new inline group in collapsed mode. The usage and function of this API
 console.groupCollapsed("outter");
 // outter
 console.groupCollapsed();
-console.log("level 1");
+console.info("level 1");
 //   level 1
 console.groupCollapsed("in level1");
 //   in level1
-console.log("level 2");
+console.info("level 2");
 //     level 2
 ```
 
 ## console.groupEnd<sup>10+</sup>
 
-groupEnd(): void
+static groupEnd(): void
 
 Reduces the indentation of subsequent lines by two spaces.
 
@@ -382,24 +418,22 @@ Reduces the indentation of subsequent lines by two spaces.
 
 **System capability**: SystemCapability.Utils.Lang
 
-
 **Example**
 
 ```js
-console.log("outter");
+console.info("outter");
 // outter
 console.group();
-console.log("level 1");
+console.info("level 1");
 //   level 1
 console.groupEnd();
-console.log("outter");
+console.info("outter");
 // outter
 ```
 
-
 ## console.table<sup>10+</sup>
 
-table(tableData?: Object): void
+static table(tableData?: Object): void
 
 Prints data in a table.
 
@@ -438,7 +472,7 @@ console.table({ a: [1, 2, 3, 4, 5], b: 5, c: { e: 5 } });
 
 ## console.time<sup>10+</sup>
 
-time(label?: string): void
+static time(label?: string): void
 
 Starts a timer to track the duration of an operation. You can use **console.timeEnd()** to close the timer and print the elapsed time (in ms).
 
@@ -452,6 +486,14 @@ Starts a timer to track the duration of an operation. You can use **console.time
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Timer label. The default value is **default**.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
 **Example**
 
 ```js
@@ -460,7 +502,7 @@ console.time('abc');
 
 ## console.timeEnd<sup>10+</sup>
 
-timeEnd(label?: string): void
+static timeEnd(label?: string): void
 
 Stops the timer started by calling **console.time()** and prints the elapsed time (in ms).
 
@@ -474,6 +516,14 @@ Stops the timer started by calling **console.time()** and prints the elapsed tim
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Timer label. The default value is **default**.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+
 **Example**
 
 ```js
@@ -484,7 +534,7 @@ console.timeEnd('abc');
 
 ## console.timeLog<sup>10+</sup>
 
-timeLog(label?: string, ...arguments: Object[]): void
+static timeLog(label?: string, ...arguments: Object[]): void
 
 Prints the elapsed time and other data parameters for the timer started by **console.time()**.
 
@@ -498,6 +548,14 @@ Prints the elapsed time and other data parameters for the timer started by **con
 | ------- | ------ | ---- | ----------- |
 | label | string | No   | Timer label. The default value is **default**.|
 | arguments | Object | No   | Logs to be printed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **Example**
 

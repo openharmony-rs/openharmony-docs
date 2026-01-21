@@ -71,7 +71,7 @@ Constructs an **OffscreenCanvas** object for creating an offscreen canvas object
 
 The following attributes are supported.
 
-| Name  | Type  | Read Only| Optional| Description|
+| Name  | Type  | Read-Only| Optional| Description|
 | ------ | ------ | ------ | ------- | ---- |
 | width  | number | No |  No | Width of the offscreen canvas.<br>Default unit: vp|
 | height | number | No |  No | Height of the offscreen canvas.<br>Default unit: vp|

@@ -763,6 +763,46 @@ CONFIG
 ```
 命令中使用了malloc_disable参数用于过滤nativeheap抓栈的数据；添加的restrace_tag参数中没有"RES_GPU_CL_IMAGE", 则不抓取OpenCL image类型的GPU内存分配栈。
 
+
+从API version 23开始支持抓取指定进程创建napi_ref的调用栈，不会抓取弱引用。
+
+```shell
+$ hiprofiler_cmd \
+  -c - \
+  -t 30 \
+  -s \
+  -k \
+<<CONFIG
+request_id: 1
+session_config {
+  buffers {
+  pages: 16384
+  }
+}
+plugin_configs {
+  plugin_name: "nativehook"
+  sample_interval: 5000
+  config_data {
+  save_file: false
+  smb_pages: 16384
+  max_stack_depth: 20
+  pid: 11237
+  string_compressed: true
+  fp_unwind: true
+  blocked: true
+  callframe_compress: true
+  record_accurately: true
+  offline_symbolization: true
+  startup_mode: false
+  statistics_interval: 10
+  malloc_disable: true
+  memtrace_enable: true
+  restrace_tag: "RES_ARK_GLOBAL_HANDLE"
+  }
+}
+CONFIG
+```
+
 ## 常见问题
 
 ### 调优出现异常

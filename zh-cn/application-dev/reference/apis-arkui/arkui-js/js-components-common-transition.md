@@ -25,7 +25,7 @@
 | --------------------------------- | ------ | -------- | ---------------------------------------- |
 | shared-transition-effect          | string | exchange | 配置共享元素转场时的入场样式。<br/>-&nbsp;exchange（默认值）：源页面元素移动到目的页元素位置，并进行适当缩放。<br/>-&nbsp;static：目的页元素位置不变，用户可配置透明度动画。当前仅跳转目标页配置的static效果生效。 |
 | shared-transition-name            | string | -        | 转场时，目的页配置的样式优先生效。该样式用于配置共享元素的动画效果，一个由@keyframes定义的动画序列，支持transform和透明度动画。若共享元素效果与自定义的动画冲突，以自定义动画为准。 |
-| shared-transition-timing-function | string | friction | 转场时，目的页配置的样式优先生效。该属性定义了共享元素转场时的差值曲线。若不配置，默认使用friction曲线。 |
+| shared-transition-timing-function | string | friction | 转场时，目的页配置的样式优先生效。该属性定义了共享元素转场时的插值曲线。若不配置，默认使用friction曲线。 |
 
 
 ### 注意事项

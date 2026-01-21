@@ -94,6 +94,8 @@ getVolumeGroupManagerSync(groupId: number\): AudioVolumeGroupManager
 
 获取音频组音量管理器实例。同步返回结果。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **参数：**
@@ -137,6 +139,8 @@ getAppVolumePercentage(): Promise<number\>
 
 获取应用的音量（范围为0到100）。使用Promise异步回调。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **返回值：**
@@ -160,6 +164,8 @@ audioVolumeManager.getAppVolumePercentage().then((value: number) => {
 setAppVolumePercentage(volume: number\): Promise<void\>
 
 设置应用的音量（范围为0到100）。使用Promise异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -280,7 +286,7 @@ audioVolumeManager.off('volumeChange', volumeChangeCallback);
 
 on(type: 'appVolumeChange', callback: Callback\<VolumeEvent>): void
 
-监听当前应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
+监听当前应用的应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -313,7 +319,7 @@ audioVolumeManager.on('appVolumeChange', (volumeEvent: audio.VolumeEvent) => {
 
 off(type: 'appVolumeChange', callback?: Callback\<VolumeEvent>): void
 
-取消监听当前应用应用级音量变化事件。使用callback异步回调。
+取消监听当前应用的应用级音量变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -321,7 +327,7 @@ off(type: 'appVolumeChange', callback?: Callback\<VolumeEvent>): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                 | 是   | 事件回调类型，支持的事件为'appVolumeChange'，当取消监听当前应用应用级音量变化事件时，触发该事件。 |
+| type     | string                                 | 是   | 事件回调类型，支持的事件为'appVolumeChange'，当取消监听当前应用的应用级音量变化事件时，触发该事件。 |
 | callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
 
 **错误码：**
@@ -355,6 +361,8 @@ audioVolumeManager.off('appVolumeChange', appVolumeChangeCallback);
 getVolumeByStream(streamUsage: StreamUsage): number
 
 获取指定音频流的音量。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -400,6 +408,8 @@ getMinVolumeByStream(streamUsage: StreamUsage): number
 
 获取指定音频流的最小音量。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **参数：**
@@ -443,6 +453,8 @@ try {
 getMaxVolumeByStream(streamUsage: StreamUsage): number
 
 获取指定音频流的最大音量。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 

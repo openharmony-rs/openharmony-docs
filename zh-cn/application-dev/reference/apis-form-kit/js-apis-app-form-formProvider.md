@@ -482,8 +482,9 @@ closeFormEditAbility(isMainPage?: boolean): void
 
 | 错误码ID    | 错误信息 |
 |----------| -------- |
-| 801      | CCapability not supported due to limited device capabilities. |
+| 801      | Capability not supported due to limited device capabilities. |
 | 16500050 | IPC connection error. |
+| 16501015 | Cannot close the widget editing page opened by other apps. |
 
 **示例：**
 
@@ -513,7 +514,12 @@ struct Page {
         })
         .onClick(() => {
           console.info(`${TAG} onClick.....`);
-          formProvider.closeFormEditAbility();
+          try {
+            formProvider.closeFormEditAbility();
+            console.info(`${TAG} close FormEditAbility success.`);
+          } catch (error) {
+            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+          }
         })
     }
     .height('100%')

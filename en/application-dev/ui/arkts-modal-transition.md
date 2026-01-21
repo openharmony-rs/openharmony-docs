@@ -618,17 +618,17 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct ModalTransitionWithIf {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // Replace $r('app.string.modal_transition_text29') with the actual resource file. In this example, the value in the resource file is "Bluetooth".
+  // Replace $r('app.string.modal_transition_text29') with the actual resource file. In this example, the value in the resource file is "Bluetooth."
   private listArr: ResourceStr[] = ['WLAN', $r('app.string.modal_transition_text29'),
-    // Replace $r('app.string.modal_transition_text30') with the actual resource file. In this example, the value in the resource file is "Personal hotspot".
+    // Replace $r('app.string.modal_transition_text30') with the actual resource file. In this example, the value in the resource file is "Personal hotspot."
     $r('app.string.modal_transition_text30'),
-    // Replace $r('app.string.modal_transition_text31') with the actual resource file. In this example, the value in the resource file is "Connect and share".
+    // Replace $r('app.string.modal_transition_text31') with the actual resource file. In this example, the value in the resource file is "Connect and share."
     $r('app.string.modal_transition_text31')];
-  // Replace $r('app.string.modal_transition_text32') with the actual resource file. In this example, the value in the resource file is "Projection".
+  // Replace $r('app.string.modal_transition_text32') with the actual resource file. In this example, the value in the resource file is "Projection."
   private shareArr: ResourceStr[] = [$r('app.string.modal_transition_text32'),
-    // Replace $r('app.string.modal_transition_text33') with the actual resource file. In this example, the value in the resource file is "Print".
+    // Replace $r('app.string.modal_transition_text33') with the actual resource file. In this example, the value in the resource file is "Print."
     $r('app.string.modal_transition_text33'), 'VPN',
-    // Replace $r('app.string.modal_transition_text34') with the actual resource file. In this example, the value in the resource file is "Private DNS".
+    // Replace $r('app.string.modal_transition_text34') with the actual resource file. In this example, the value in the resource file is "Private DNS."
     $r('app.string.modal_transition_text34'), 'NFC'];
   // Step 1: Define a state variable to control page display.
   @State isShowShare: boolean = false;
@@ -644,7 +644,7 @@ struct ModalTransitionWithIf {
     Stack() {
       Column() {
         Column() {
-          // Replace $r('app.string.modal_transition_text35') with the actual resource file. In this example, the value in the resource file is "Set".
+          // Replace $r('app.string.modal_transition_text35') with the actual resource file. In this example, the value in the resource file is "Settings."
           Text($r('app.string.modal_transition_text35'))
             .fontSize(28)
             .fontColor(0x333333)
@@ -652,7 +652,7 @@ struct ModalTransitionWithIf {
         .width('90%')
         .padding({ top: 30, bottom: 15 })
         .alignItems(HorizontalAlign.Start)
-        // Replace $r('app.string.modal_transition_text36') with the actual resource file. In this example, the value in the resource file is "Enter keyword to search."
+        // Replace $r('app.string.modal_transition_text36') with the actual resource file. In this example, the value in the resource file is "Search by keyword."
         TextInput({ placeholder: $r('app.string.modal_transition_text36') })
           .width('90%')
           .height(40)
@@ -705,6 +705,7 @@ struct ModalTransitionWithIf {
             .width('100%')
             .onClick(() => {
               // Step 5: Change the state variable to display the modal view.
+              // Configure the resource whose name is 'modal_transition_text37' and value is a non-empty string in the resources\base\element\string.json file.
               if (item.slice(-2) === this.context.resourceManager.getStringByNameSync('modal_transition_text37')) {
                 this.shareFunc();
               }
@@ -736,7 +737,7 @@ struct ModalTransitionWithIf {
               .onClick(() => {
                 this.shareFunc();
               })
-              // Replace $r('app.string.modal_transition_text31') with the actual resource file. In this example, the value in the resource file is "Connect and share".
+              // Replace $r('app.string.modal_transition_text31') with the actual resource file. In this example, the value in the resource file is "Connect and share."
               Text($r('app.string.modal_transition_text31'))
                 .fontSize(28)
                 .fontColor(0x333333)

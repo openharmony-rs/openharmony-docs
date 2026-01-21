@@ -31,6 +31,7 @@ Implements a **NodeController** instance to manage the bound [NodeContainer](ark
 abstract makeNode(uiContext : UIContext): FrameNode | null
 
 Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component bound to this **NodeController** instance is created. This callback returns a node, which will be mounted to the **NodeContainer**.
+
 This callback can also be invoked through the **rebuild()** method of **NodeController**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.

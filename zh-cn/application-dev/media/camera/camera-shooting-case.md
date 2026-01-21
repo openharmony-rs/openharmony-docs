@@ -44,7 +44,7 @@ function setPhotoOutputCb(photoOutput: camera.PhotoOutput): void {
     console.error('photoOutput is null');
     return;
   }
-  //设置回调之后，调用photoOutput的capture方法，就会将拍照的buffer回传到回调中。
+  // 设置回调之后，调用photoOutput的capture方法，就会将拍照的buffer回传到回调中。
   photoOutput?.on('photoAvailable', (err: BusinessError, photo: camera.Photo): void => {
     console.info('getPhoto start');
     console.error(`err: ${err}`);
@@ -182,10 +182,10 @@ async function cameraShootingCase(context: Context, surfaceId: string): Promise<
       return;
     }
 
-    //调用上面的回调函数来保存图片。
+    // 调用上面的回调函数来保存图片。
     setPhotoOutputCb(resources.photoOutput);
 
-    //创建会话。
+    // 创建会话。
     let photoSession = cameraManager.createSession(camera.SceneMode.NORMAL_PHOTO);
     if (!photoSession) {
       console.error('photoSession is null');

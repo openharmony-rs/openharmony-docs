@@ -8,9 +8,11 @@
 
 设置组件的[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)类型。在ArkUI开发框架中，处理触屏事件和鼠标事件时，会在事件触发前进行按压点与组件响应热区的触摸测试，以收集需响应事件的组件。基于测试结果，框架会分发相应的事件。hitTestBehavior属性用于设置不同的触摸测试响应模式，影响触摸测试收集结果及后续事件分发。具体影响参考[HitTestMode](./ts-appendix-enums.md#hittestmode9)枚举说明。影响[点击事件](ts-universal-events-click.md)、[触摸事件](ts-universal-events-touch.md)、[拖拽事件](ts-universal-events-drag-drop.md)、[鼠标事件](ts-universal-mouse-key.md)、[轴事件](ts-universal-events-axis.md)、[悬浮事件](ts-universal-events-hover.md)、[无障碍悬浮事件](ts-universal-accessibility-hover-event.md)和[手势事件](ts-gesture-settings.md)的分发。
 
->  **说明：**
->  - 从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->  - 当Stack组件中有多个节点触摸区域重叠时，如两个节点，默认只会对显示在最上层的节点做触摸测试，若需要显示在下层的节点触发触摸测试，请给显示在上层的节点设置hitTestBehavior为HitTestMode.Transparent。
+> **说明：**
+>
+> - 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当Stack组件中有多个节点触摸区域重叠时，如果最上层节点的子组件命中，则默认只会对显示在最上层的节点做触摸测试。此时只有给显示在最上层的节点设置hitTestBehavior为HitTestMode.Transparent时，才能使显示在下层的节点触发触摸测试。
 
 ## hitTestBehavior
 
@@ -205,6 +207,52 @@ struct BlockDescendants {
     .onTouch((event) => {
       console.info('HitTestMode grandfather stack touched type: ' + (event as TouchEvent).type);
     })
+  }
+}
+```
+
+### 示例4（Stack组件中多节点重合时的触摸测试效果）
+
+该示例演示了在Stack组件中存在多节点触摸区域重叠时的触摸测试效果。此时设置[HitTestMode](./ts-appendix-enums.md#hittestmode9)为None时，重叠的背景区域无法响应触摸测试；只有设置为Transparent时，背景区域才能响应触摸测试。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State @Watch('onModeChange') mode: number = HitTestMode.None;
+  @State modeStr: string = 'None';
+
+  onModeChange() {
+    this.modeStr = this.mode === HitTestMode.None ? 'None' : 'Transparent';
+  }
+
+  build() {
+    Stack() {
+      Column()
+        .height('100%')
+        .width('100%')
+        .onTouch(() => {
+          console.info('background hit test!')
+        })
+      Stack() {
+        // 点击按钮进行触摸测试
+        Button('HitTest')
+        // 点击按钮切换不同的触摸测试模式
+        Button('HitTestMode: ' + this.modeStr)
+          .margin({ top: 100 })
+          .onClick(() => {
+            this.mode = this.mode === HitTestMode.None ?
+              HitTestMode.Transparent : HitTestMode.None;
+          })
+      }
+      .height('100%')
+      .width('100%')
+      // 只有上层节点的HitTestMode设置为Transparent时，下层节点才能响应触摸测试
+      .hitTestBehavior(this.mode)
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```

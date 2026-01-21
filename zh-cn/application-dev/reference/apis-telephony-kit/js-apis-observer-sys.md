@@ -60,7 +60,7 @@ on\(type: \'cellInfoChange\', callback: Callback\<Array\<CellInformation\>\>\): 
 import { radio } from '@kit.TelephonyKit';
 
 observer.on('cellInfoChange', (data: Array<radio.CellInformation>) => {
-    console.log("on cellInfoChange, data:" + JSON.stringify(data));
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -108,7 +108,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellInfoChange', options, (data: Array<radio.CellInformation>) => {
-    console.log("on cellInfoChange, data:" + JSON.stringify(data));
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -153,7 +153,7 @@ off\(type: \'cellInfoChange\', callback?: Callback\<Array\<CellInformation\>\>\)
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.CellInformation>) => void = (data: Array<radio.CellInformation>) => {
-    console.log("on cellInfoChange, data:" + JSON.stringify(data));
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
 }
 observer.on('cellInfoChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。

@@ -106,18 +106,20 @@ struct ImageExample {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
-          // Replace the image with a locally available image file.
+          // Replace $r('app.media.startIcon') with the actual resource file.
           Image($r('app.media.startIcon'))
             .width(110)
             .height(110)
             .border({ width: 1 })
             .id('IMAGE_ID')
         }
+        .id('ROW_ID')
       }
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -136,14 +138,14 @@ struct ImageExample {
     let offFuncDraw = onDrawComplete; // Bind to the current JS object.
     let offFuncDrawChildren = onDrawChildrenComplete; // Bind to the current JS object.
 
-    this.listener.on('layout', funcLayout);
-    this.listener.on('draw', funcDraw);
-    this.listener.on('drawChildren', funcDrawChildren);
+    this.listenerForImage.on('layout', funcLayout);
+    this.listenerForImage.on('draw', funcDraw);
+    this.listenerForRow.on('drawChildren', funcDrawChildren);
 
     // Unregister callbacks through the handle. You should decide when to call these APIs.
-    // this.listener.off('layout', OffFuncLayout)
-    // this.listener.off('draw', OffFuncDraw)
-    // this.listener.off('drawChildren', OffFuncDrawChildren)
+    // this.listenerForImage.off('layout', offFuncLayout)
+    // this.listenerForImage.off('draw', offFuncDraw)
+    // this.listenerForRow.off('drawChildren', offFuncDrawChildren)
   }
 }
 ```

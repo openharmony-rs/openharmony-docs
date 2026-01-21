@@ -101,7 +101,7 @@
 | [int OH_UdmfProperty_SetShareOption(OH_UdmfProperty* pThis, Udmf_ShareOption option)](#oh_udmfproperty_setshareoption) | - | 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的设备内适用范围[Udmf_ShareOption](capi-udmf-h.md#udmf_shareoption)参数。 |
 | [int OH_UdmfProperty_SetExtrasIntParam(OH_UdmfProperty* pThis, const char* key, int param)](#oh_udmfproperty_setextrasintparam) | - | 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的附加整型参数。 |
 | [int OH_UdmfProperty_SetExtrasStringParam(OH_UdmfProperty* pThis, const char* key, const char* param)](#oh_udmfproperty_setextrasstringparam) | - | 设置数据属性[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)的附加字符串参数。 |
-| [OH_UdmfOptions* OH_UdmfOptions_Create()](#oh_udmfoptions_create) | - | 创建指向[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
+| [OH_UdmfOptions* OH_UdmfOptions_Create()](#oh_udmfoptions_create) | - | 创建指向[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。当不再需要使用指针时，请使用[OH_UdmfOptions_Destroy](capi-udmf-h.md#oh_udmfoptions_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdmfOptions_Destroy(OH_UdmfOptions* pThis)](#oh_udmfoptions_destroy) | - | 销毁指向[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。 |
 | [const char* OH_UdmfOptions_GetKey(OH_UdmfOptions* pThis)](#oh_udmfoptions_getkey) | - | 从数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中获取数据的唯一标识符信息。 |
 | [int OH_UdmfOptions_SetKey(OH_UdmfOptions* pThis, const char* key)](#oh_udmfoptions_setkey) | - | 设置数据操作选项[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例中的数据的唯一标识符内容参数。 |
@@ -1797,7 +1797,7 @@ OH_UdmfOptions* OH_UdmfOptions_Create()
 
 **描述**
 
-创建指向[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。
+创建指向[OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)实例的指针。当不再需要使用指针时，请使用[OH_UdmfOptions_Destroy](capi-udmf-h.md#oh_udmfoptions_destroy)销毁实例对象，否则会导致内存泄漏。
 
 **起始版本：** 20
 

@@ -2066,7 +2066,7 @@ import {X} from './a';
 注解不支持类型Typescript中的合并，否则会出现编译报错。
 ```typescript
 namespace ns {
-  @interface MataInfo { // 编译错误：注解必须定义在顶层作用域
+  @interface MetaInfo { // 编译错误：注解必须定义在顶层作用域
     // ...
   }
 }

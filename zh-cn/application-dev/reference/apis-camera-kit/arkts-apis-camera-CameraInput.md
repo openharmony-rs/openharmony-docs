@@ -326,7 +326,7 @@ off(type: 'error', camera: CameraDevice, callback?: ErrorCallback): void
 | -------- | -------------------------------- | --- | ------------------------------------------- |
 | type     | string                           | 是   | 监听事件，固定为'error'，CameraInput对象创建成功可监听。相机设备出错情况下可触发该事件并返回结果，比如设备不可用或者冲突等返回对应错误信息。 |
 | camera   | [CameraDevice](arkts-apis-camera-i.md#cameradevice)    | 是   | CameraDevice对象。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。 |
 
 **示例：**
 
@@ -423,5 +423,91 @@ function usePhysicalCameraOrientation(cameraInput: camera.CameraInput, isUsed: b
     let err = error as BusinessError;
     console.error(`The usePhysicalCameraOrientation call failed. error code: ${err.code}`);
   }
+}
+```
+
+## on('cameraOcclusionDetection')<sup>23+</sup>
+
+on(type: 'cameraOcclusionDetection', callback: AsyncCallback\<CameraOcclusionDetectionResult\>): void
+
+监听CameraInput的镜头遮挡或脏污事件，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型                                                                                                          | 必填 | 说明                                                                                                     |
+| -------- |-------------------------------------------------------------------------------------------------------------| --- |--------------------------------------------------------------------------------------------------------|
+| type     | string                                                                                                      | 是   | 监听事件，固定为'cameraOcclusionDetection'，CameraInput对象创建成功可监听。相机镜头被遮挡或有脏污可触发该事件并返回结果。 |
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](arkts-apis-camera-i.md#cameraocclusiondetectionresult23)\> | 是   | 回调函数，用于获取结果。返回遮挡状态。                                                                                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError, result: camera.CameraOcclusionDetectionResult): void {
+  if (err !== undefined && err.code !== 0) {
+      console.error('cameraOcclusionDetection with errorCode = ' + err.code);
+      return;
+  }
+  if (!result) {
+      console.error(`cameraOcclusionDetection result: undefined`);
+      return;
+  }
+  console.info(`onCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
+  console.info(`onCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
+}
+
+function registerCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+  cameraInput.on('cameraOcclusionDetection', callback);
+}
+```
+
+## off('cameraOcclusionDetection')<sup>23+</sup>
+
+off(type: 'cameraOcclusionDetection', callback?: AsyncCallback\<CameraOcclusionDetectionResult\>): void
+
+注销监听CameraInput的镜头遮挡或脏污事件。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型                              | 必填 | 说明                                                                                                     |
+| -------- | -------------------------------- | --- |--------------------------------------------------------------------------------------------------------|
+| type     | string                           | 是   | 监听事件，固定为'cameraOcclusionDetection'，CameraInput对象创建成功可监听。相机镜头被遮挡或有脏污可触发该事件并返回结果。 |
+| callback | AsyncCallback\<[CameraOcclusionDetectionResult](arkts-apis-camera-i.md#cameraocclusiondetectionresult23)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。                                            |
+
+**示例：**
+
+```ts
+function callback(err: BusinessError, result: camera.CameraOcclusionDetectionResult): void {
+  if (err !== undefined && err.code !== 0) {
+      console.error('cameraOcclusionDetection with errorCode = ' + err.code);
+      return;
+  }
+  if (!result) {
+      console.error(`cameraOcclusionDetection result: undefined`);
+      return;
+  }
+  console.info(`onCameraOcclusionDetection isCameraOccluded: ${result.isCameraOccluded}`);
+  console.info(`onCameraOcclusionDetection isCameraLensDirty: ${result.isCameraLensDirty}`);
+}
+
+function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+    cameraInput.off('cameraOcclusionDetection', callback);
+}
+
+function unregisterAllCameraOcclusionDetection(cameraInput: camera.CameraInput): void {
+    cameraInput.off('cameraOcclusionDetection');
 }
 ```

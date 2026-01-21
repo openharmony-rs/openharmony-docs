@@ -765,7 +765,7 @@ ImageEffect_ErrorCode OH_ImageEffect_Start(OH_ImageEffect *imageEffect)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。<br>         EFFECT_ERROR_PARAM_INVALID：入参为空指针。<br>         EFFECT_INPUT_OUTPUT_NOT_SUPPORTED：待处理输入、输出图像数据类型不一致。<br>         EFFECT_COLOR_SPACE_NOT_MATCH：输入、输出图像色彩空间不配置。<br>         EFFECT_ALLOCATE_MEMORY_FAILED：内存申请失败。 |
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | EFFECT_SUCCESS：方法调用成功。<br>         EFFECT_ERROR_PARAM_INVALID：入参为空指针。<br>         EFFECT_INPUT_OUTPUT_NOT_SUPPORTED：待处理输入、输出图像数据类型不一致。<br>         EFFECT_COLOR_SPACE_NOT_MATCH：输入、输出图像色彩空间不匹配。<br>         EFFECT_ALLOCATE_MEMORY_FAILED：内存申请失败。 |
 
 ### OH_ImageEffect_Stop()
 
