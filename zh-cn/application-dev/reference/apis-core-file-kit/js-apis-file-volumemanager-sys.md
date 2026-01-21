@@ -26,8 +26,6 @@ getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
-**系统接口**：该接口为系统接口。
-
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
@@ -87,8 +85,6 @@ getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Volume
-
-**系统接口**：该接口为系统接口。
 
 **ArkTS-Dyn起始版本**：9
 
