@@ -107,4 +107,4 @@ enableOfflineCache(boolean: enable): void
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| enable | [boolean](arkts-apis-media-e.md#avmimetypes23) | 否   | 是否开启流媒体落盘缓存。 |
+| enable | [boolean] | 否   | 是否开启流媒体落盘缓存。 |
