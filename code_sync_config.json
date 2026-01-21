@@ -26054,7 +26054,7 @@
 				"functions":[
 					{
 						"end_line":80,
-						"name":"localtorage_page_one_double_syn",
+						"name":"localStorage_page_one_double_syn",
 						"start_line":16
 					}
 				]
@@ -26068,7 +26068,7 @@
 				"functions":[
 					{
 						"end_line":43,
-						"name":"localtorage_page_two_way_syn",
+						"name":"localStorage_page_two_way_syn",
 						"start_line":15
 					}
 				]
@@ -26078,7 +26078,7 @@
 				"functions":[
 					{
 						"end_line":95,
-						"name":"localtorage_page_four_state_variable_syn",
+						"name":"localStorage_page_four_state_variable_syn",
 						"start_line":15
 					}
 				]
@@ -26098,7 +26098,7 @@
 				"functions":[
 					{
 						"end_line":44,
-						"name":"localtorage_page_five_share",
+						"name":"localStorage_page_five_share",
 						"start_line":15
 					}
 				]
@@ -26108,7 +26108,7 @@
 				"functions":[
 					{
 						"end_line":55,
-						"name":"localtorage_page_five_share2",
+						"name":"localStorage_page_five_share2",
 						"start_line":15
 					}
 				]
@@ -26118,7 +26118,7 @@
 				"functions":[
 					{
 						"end_line":58,
-						"name":"localtorage_page_six_local_storage",
+						"name":"localStorage_page_six_local_storage",
 						"start_line":15
 					}
 				]
@@ -26128,7 +26128,7 @@
 				"functions":[
 					{
 						"end_line":53,
-						"name":"localtorage_page_six_local_storageA",
+						"name":"localStorage_page_six_local_storageA",
 						"start_line":15
 					}
 				]
@@ -26138,7 +26138,7 @@
 				"functions":[
 					{
 						"end_line":57,
-						"name":"localtorage_page_six_local_storageB",
+						"name":"localStorage_page_six_local_storageB",
 						"start_line":15
 					}
 				]
@@ -26148,7 +26148,7 @@
 				"functions":[
 					{
 						"end_line":159,
-						"name":"localtorage_page_my_navigation",
+						"name":"localStorage_page_my_navigation",
 						"start_line":15
 					}
 				]
@@ -26158,7 +26158,7 @@
 				"functions":[
 					{
 						"end_line":80,
-						"name":"localtorage_page_local_storage_link",
+						"name":"localStorage_page_local_storage_link",
 						"start_line":15
 					}
 				]
@@ -26168,7 +26168,7 @@
 				"functions":[
 					{
 						"end_line":52,
-						"name":"localtorage_local_date_sample",
+						"name":"localStorage_local_date_sample",
 						"start_line":15
 					}
 				]
@@ -26178,7 +26178,7 @@
 				"functions":[
 					{
 						"end_line":51,
-						"name":"localtorage_local_map_sample",
+						"name":"localStorage_local_map_sample",
 						"start_line":15
 					}
 				]
@@ -26188,7 +26188,7 @@
 				"functions":[
 					{
 						"end_line":52,
-						"name":"localtorage_local_set_sample",
+						"name":"localStorage_local_set_sample",
 						"start_line":15
 					}
 				]
@@ -26198,7 +26198,7 @@
 				"functions":[
 					{
 						"end_line":45,
-						"name":"localtorage_change_local_set_sample",
+						"name":"localStorage_change_local_set_sample",
 						"start_line":15
 					}
 				]
@@ -26208,7 +26208,7 @@
 				"functions":[
 					{
 						"end_line":52,
-						"name":"localtorage_page_two_single_syn",
+						"name":"localStorage_page_two_single_syn",
 						"start_line":15
 					}
 				]
