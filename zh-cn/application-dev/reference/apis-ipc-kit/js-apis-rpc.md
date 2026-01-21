@@ -2061,7 +2061,7 @@ ArkTS-Sta示例：
   try {
     let data = rpc.MessageSequence.create();
     data.writeIntArray([100, 111, 112]);
-    let array: Array<int> = new Array(3);
+    let array: Array<int> = new Array<int>(3);
     data.readIntArray(array);
     hilog.info(0x0000, 'testTag', 'readIntArray is  ' + array);
   } catch (error) {
@@ -2525,7 +2525,7 @@ ArkTS-Sta示例：
   try {
     let data = rpc.MessageSequence.create();
     data.writeDoubleArray([11.1, 12.2, 13.3]);
-    let array: Array<double> = new Array(3);
+    let array: Array<double> = new Array<double>(3);
     data.readDoubleArray(array);
     hilog.info(0x0000, 'testTag', 'readDoubleArray is ' + array);
   } catch (error) {
