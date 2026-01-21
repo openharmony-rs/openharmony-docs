@@ -735,6 +735,13 @@ const increasedByOne2: number[] = numbers.map(num => num + 1);
 
 <!-- @[assignValues_expressions_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+// 在控制性判断中赋值不易理解
+if (isFoo = false) {
+  // ...
+}
+```
+
 **【正例】**
 
 <!-- @[assignValues_expressions_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
