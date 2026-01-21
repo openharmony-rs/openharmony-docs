@@ -69,6 +69,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_VIDEO_VP9 | VP9视频编解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_VP8 | VP8视频编解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_RV30 | RV30视频编解码器的MIME类型。<br>从API version 23开始支持。 |
+| OH_AVCODEC_MIMETYPE_VIDEO_RV40 | RV40视频编解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_WVC1 | WVC1视频编解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO | DVVIDEO（Digital Video）视频编解码器的MIME类型。支持DV NTSC、DV PAL与DVCPRO HD。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO | RAWVIDEO视频编解码器的MIME类型。<br>从API version 23开始支持。 |
