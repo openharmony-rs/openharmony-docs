@@ -44,7 +44,7 @@ ArkTS-Dyn: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;numb
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -161,7 +161,7 @@ ArkTS-Dyn: closeProxyChannel(channelId:&nbsp;number):&nbsp;void</br>ArkTS-Sta: c
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -221,7 +221,7 @@ ArkTS-Dyn: sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;</br>
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -422,7 +422,7 @@ onReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&nb
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveData')](#proxychannelmanageronreceivedata)。
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -486,7 +486,7 @@ offReceiveData(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;DataInfo&gt;):&n
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveData')](#proxychannelmanageroffreceivedata)。
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -675,7 +675,7 @@ onChannelStateChange(channelId:&nbsp;int, callback:&nbsp;Callback&lt;ChannelStat
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('channelStateChange')
 ](#proxychannelmanageronchannelstatechange)。
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -740,7 +740,7 @@ offChannelStateChange(channelId:&nbsp;int, callback?:&nbsp;Callback&lt;ChannelSt
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('channelStateChange')
 ](#proxychannelmanageroffchannelstatechange)。
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -796,7 +796,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 | 名称       | 类型                                       | 只读   | 可选   | 说明       |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
@@ -811,7 +811,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 | 名称       | 类型                                       | 只读   | 可选   | 说明       |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
@@ -827,7 +827,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 | 名称       | 类型                                       | 只读   | 可选   | 说明       |
 | --------- | ---------------------------------------- | ---- | ---- | -------- |
@@ -842,7 +842,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 | 名称       | 值                                       | 说明       |
 | --------- | ---------------------------------------- |  -------- |
@@ -859,7 +859,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS_Sta起始版本**：23
+**ArkTS-Sta起始版本**：23
 
 | 名称       | 值                                       | 说明       |
 | --------- | ---------------------------------------- |  -------- |
