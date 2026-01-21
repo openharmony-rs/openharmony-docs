@@ -96,6 +96,37 @@ struct CompV2 {
 \@SyncMonitor将调用其回调3次，分别对应从0到1、1到3和3到6的变化。
 
  <!-- @[compare_syncmonitor_with_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/CompareSyncMonitorWithMonitor.ets) -->
+ 
+ ``` TypeScript
+ import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
+ @Entry
+ @ComponentV2
+ struct DocSampleArraySum {
+   @Local sum: number = 0;
+   arr: Array<number> = [1, 2, 3];
+   @SyncMonitor('sum')
+   syncSumMonitor(info: IMonitor) {
+     let path = info.dirty[0];
+     hilog.info(0xFF00, 'SyncMonitor', '%{public}s', `${path} changed from ${info.value(path)?.before} to ${info.value(path)?.now}`);
+   }
+   @Monitor('sum')
+   asyncSumMonitor(info: IMonitor) {
+     let path = info.dirty[0];
+     hilog.info(0xFF00, 'Monitor', '%{public}s', `${path} changed from ${info.value(path)?.before} to ${info.value(path)?.now}`);
+   }
+ 
+   build() {
+     Column() {
+       Button('Calculate a sum')
+         .onClick(() => {  // 修改sum时，syncSumMonitor会回调3次，asyncSumMonitor只回调1次。
+           this.sum = 0;
+           this.arr.forEach((element) => this.sum += element);
+         })
+     }
+   }
+ }
+ ```
 
 日志输出:
 ```typescript
