@@ -93,7 +93,7 @@
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { socket } from '@kit.ConnectivityKit'
-   import util from '@kit.ArkTS'; 
+   import { util } from '@kit.ArkTS'; 
    
    const DOMAIN = 0x0000;
    class TransferInfo {
