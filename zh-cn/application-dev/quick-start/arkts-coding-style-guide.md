@@ -733,7 +733,7 @@ const increasedByOne2: number[] = numbers.map(num => num + 1);
 
 **【反例】**
 
-<!-- @[assignValues_expressions_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
+<!-- @[assignValues_expressions_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
