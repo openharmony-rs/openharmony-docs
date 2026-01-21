@@ -2456,6 +2456,50 @@ let result = connection.getDnsUnicode("www.example.com", connection.ConversionPr
 console.info(result);  // 预期结果：www.example.com
 ```
 
+## connection.createVlanInterface<sup>23+</sup>
+
+createVlanInterface(ifName: string, vlanId: int): Promise<void>
+
+在对应网卡上创建vlan。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | 是 | 要创建vlan的网卡名。 |
+| vlanId | int | 是 | vlanId。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+|  | 返回转换结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.示例.com
+let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+console.info(result);  // 预期结果：www.example.com
+```
+
 ## NetConnection
 
 网络连接的句柄。
