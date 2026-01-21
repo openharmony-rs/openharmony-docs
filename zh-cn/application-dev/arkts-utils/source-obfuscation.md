@@ -233,6 +233,12 @@ test(a2);
   person["exampleAge"] = 22;
   ```
 
+  ```
+  // 混淆后：
+  // example.ts
+  let person = {"a": "abc"};
+  person["b"] = 22;
+  ```
 
 **使用该选项时，需要注意以下事项：**
 
