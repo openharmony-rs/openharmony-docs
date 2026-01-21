@@ -45,7 +45,7 @@
 
 在CMake脚本中链接动态库：
 
-```
+```CMake
 target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffer.so libnative_media_core.so) 
 ```
 
