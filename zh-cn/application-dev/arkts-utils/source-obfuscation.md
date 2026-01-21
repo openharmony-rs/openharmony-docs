@@ -113,6 +113,14 @@ ArkGuard支持名称混淆、代码压缩和注释删除的基础混淆功能，
 配置该选项后，开启属性名称混淆，效果如下：
 
   <!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+  
+  ``` TypeScript
+  // 混淆前：
+  class TestA {
+    static prop1: number = 0;
+  }
+  TestA.prop1;
+  ```
 
 
 配置该选项后，所有属性名将被混淆，以下场景除外：
