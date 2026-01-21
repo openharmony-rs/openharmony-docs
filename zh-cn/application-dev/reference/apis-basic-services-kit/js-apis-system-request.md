@@ -1,4 +1,10 @@
 # @system.request (上传下载)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Request-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @fang-jinxu-->
 
 system.request部件主要给应用提供上传下载文件的基础能力。
 
@@ -11,8 +17,8 @@ system.request部件主要给应用提供上传下载文件的基础能力。
 ## 导入模块
 
 
-```
-import request from '@system.request';
+```js
+import { Request } from '@kit.BasicServicesKit';
 ```
 
 ## request.upload<sup>(deprecated)</sup>
@@ -32,7 +38,7 @@ upload(options: UploadRequestOptions): void
 **示例：**
 
   ```js
-  import request, { UploadRequestOptions } from '@system.request';
+  import  { Request, UploadRequestOptions, UploadResponse } from '@kit.BasicServicesKit';
 
   let uploadRequestOptions: UploadRequestOptions = {
     url: 'http://www.path.com',
@@ -47,10 +53,10 @@ upload(options: UploadRequestOptions): void
       name: "name123",
       value: "123"
     }],
-    success: (data: object) => {
-      console.info(' upload success, code:' + JSON.stringify(data));
+    success: (data: UploadResponse) => {
+      console.info(' upload success, code:' + JSON.stringify(data.code));
     },
-    fail: (data:string, code:number) => {
+    fail: (data: string, code: number) => {
       console.info(' upload fail data: ' + data + 'code: ' + code);
     },
     complete: () => {
@@ -59,7 +65,7 @@ upload(options: UploadRequestOptions): void
   }
 
   try {
-    request.upload(uploadRequestOptions);
+    Request.upload(uploadRequestOptions);
     console.info('upload start ');
   } catch (err) {
     console.info(' upload err:' + err);
@@ -147,17 +153,17 @@ download(options: DownloadRequestOptions): void
 **示例：**
 
   ```js
-  import request, { DownloadRequestOptions } from '@system.request';
+  import  { Request, DownloadResponse, DownloadRequestOptions } from '@kit.BasicServicesKit';
 
   let downloadRequestOptions: DownloadRequestOptions = {
     url: 'http://www.path.com',
-    filename: 'requestSystenTest',
+    filename: 'requestSystemTest',
     header: "",
-    description: 'this is requeSystem download response',
-    success: (data:object) => {
-      console.info(' download success, code:' + JSON.stringify(data));
+    description: 'this is requestSystem download response',
+    success: (data: DownloadResponse) => {
+      console.info(' download success, token:' + JSON.stringify(data.token));
     },
-    fail: (data:string, code:number) => {
+    fail: (data: string, code: number) => {
       console.info(' download fail data: ' + data + 'code: ' + code);
     },
     complete: () => {
@@ -166,7 +172,7 @@ download(options: DownloadRequestOptions): void
   }
 
   try {
-    request.download(downloadRequestOptions);
+    Request.download(downloadRequestOptions);
     console.info('download start ');
   } catch(err) {
     console.info(' download err:' + err);
@@ -225,14 +231,14 @@ onDownloadComplete(options: OnDownloadCompleteOptions): void
 **示例：**
 
   ```js
-  import request, { OnDownloadCompleteOptions } from '@system.request';
+  import  { Request, OnDownloadCompleteOptions, OnDownloadCompleteResponse } from '@kit.BasicServicesKit';
 
   let onDownloadCompleteOptions: OnDownloadCompleteOptions = {
     token: 'token-index',
-    success: (data:object) => {
-      console.info(' download success, code:' + JSON.stringify(data));
+    success: (data: OnDownloadCompleteResponse) => {
+      console.info(' download success, uri:' + JSON.stringify(data.uri));
     },
-    fail: (data:string, code:number) => {
+    fail: (data: string, code: number) => {
       console.info(' download fail data: ' + data + 'code: ' + code);
     },
     complete: () => {
@@ -240,7 +246,7 @@ onDownloadComplete(options: OnDownloadCompleteOptions): void
     }
   }
 
-  request.onDownloadComplete(onDownloadCompleteOptions);
+  Request.onDownloadComplete(onDownloadCompleteOptions);
   ```
 
 
