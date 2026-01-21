@@ -368,6 +368,53 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 - 在继承类场景下，可以在继承链中对同一个属性进行多次监听，父子类中定义的\@SyncMonitor回调均会被调用。
 
   <!-- @[monitor_variable_base_derived_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorVariableInBaseDerivedClass.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  @ObservedV2
+  class Base {
+    @Trace public name: string;
+  
+    // 基类监听name属性
+    @SyncMonitor('name')
+    onBaseNameChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s', `Base Class name change`);
+    }
+  
+    constructor(name: string) {
+      this.name = name;
+    }
+  }
+  
+  @ObservedV2
+  class Derived extends Base {
+    // 继承类监听name属性
+    @SyncMonitor('name')
+    onDerivedNameChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s', `Derived Class name change`);
+    }
+  
+    constructor(name: string) {
+      super(name);
+    }
+  }
+  
+  @Entry
+  @ComponentV2
+  struct Index {
+    derived: Derived = new Derived('AAA');
+  
+    build() {
+      Column() {
+        Button('change name')
+          .onClick(() => {
+            this.derived.name = 'BBB'; // onDerivedNameChange方法会调用，父类的onBaseNameChange也会回调
+          })
+      }
+    }
+  }
+  ```
 
 ### 通用监听能力
 
