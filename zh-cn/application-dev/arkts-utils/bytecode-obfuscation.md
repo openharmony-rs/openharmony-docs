@@ -270,6 +270,14 @@ namespace ns {
 
 <!-- @[optionExample_enableFilenameObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
 
+``` TypeScript
+// 混淆前：
+import * as m from '../test1/test2';
+import { foo } from '../test1/test2';
+// ...
+const module = import('../test1/test2');
+```
+
 
 若配置该选项，那么所有的文件/文件夹名称都会被混淆，除了下面场景：
 
