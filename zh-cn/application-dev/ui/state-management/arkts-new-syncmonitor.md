@@ -1766,6 +1766,43 @@ struct Index {
 
 <!-- @[monitor_computed_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorComputedVariable.ets) -->
 
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@ObservedV2
+class Info {
+  public name: string = 'John';
+  @Trace public age: number = 24;
+
+  // 给myAge添加@Computed成为状态变量
+  @Computed
+  get myAge() {
+    return this.age;
+  }
+
+  // 监听@Computed装饰的getter访问器
+  @SyncMonitor('myAge')
+  onPropertyChange() {
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'age changed');
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  info: Info = new Info();
+
+  build() {
+    Column() {
+      Button('change age')
+        .onClick(() => {
+          this.info.age = 25; // 状态变量age改变
+        })
+    }
+  }
+}
+```
+
 或直接监听状态变量本身：
 
 ``` TypeScript
