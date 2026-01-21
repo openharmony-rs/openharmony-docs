@@ -715,7 +715,7 @@ libace_napi.z.so
 |FUNC|napi_wrap_sendable_with_size | 包裹一个native实例到ArkTS对象中并指定大小。|12|
 |FUNC|napi_unwrap_sendable | 获取ArkTS对象包裹的native实例。|12|
 |FUNC|napi_remove_wrap_sendable | 移除并获取ArkTS对象包裹的native实例，移除后回调将不再触发，需手动delete释放内存。|12|
-|FUNC|napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。|18|
+|FUNC|napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。|18|
 |FUNC|napi_create_ark_context|创建一个新的运行时上下文环境。|20|
 |FUNC|napi_switch_ark_context|切换到指定的运行时上下文环境。|20|
 |FUNC|napi_destroy_ark_context|销毁通过接口napi_create_ark_context创建的一个上下文环境。|20|
@@ -1441,7 +1441,7 @@ napi_status napi_wrap_enhance(napi_env env,
 
 **描述：**
 
-在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行，如果异步执行，则回调函数必须是线程安全的。
+在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。
 
 **参数：**
 
@@ -1457,7 +1457,7 @@ napi_status napi_wrap_enhance(napi_env env,
 
 - [in] finalize_hint：[可选]上下文提示，会传递给回调函数。
 
-- [in] native_binding_size：[可选]绑定的native实例的大小。
+- [in] native_binding_size：[可选]绑定的native实例的大小，运行时根据传入的大小将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。
 
 - [out] result：[可选]接收ArkTS对象引用的指针。
 
