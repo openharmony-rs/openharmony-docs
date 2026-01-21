@@ -51,6 +51,8 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 
 创建UIPickerComponent容器，其选中项由options参数中的selectedIndex属性值决定。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -64,6 +66,8 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 ## UIPickerComponentOptions对象说明
 
 UIPickerComponent容器的参数说明。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -82,6 +86,8 @@ UIPickerComponent容器的参数说明。
 canLoop(isLoop: Optional\<boolean>)
 
 设置选项列是否可循环滚动。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -108,6 +114,8 @@ enableHapticFeedback(enable: Optional\<boolean>)
 ]
 ```
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -123,6 +131,8 @@ enableHapticFeedback(enable: Optional\<boolean>)
 selectionIndicator(style: Optional\<PickerIndicatorStyle>)
 
 设置选中项指示器的样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -150,6 +160,8 @@ onChange(callback: Optional\<OnUIPickerComponentCallback>)
 > 
 > 选中项区域可通过设置[selectionIndicator](#selectionindicator)进行标识。如果设置选中项指示器为背景，则背景区域即为选中项区域。如果设置选中项指示器为分割线，则上下分割线的中心线内的区域为选中项区域。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -166,6 +178,8 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 选择器滑动停止时，触发该事件。选择器滑动停止指某次行为触发的滑动动画完全结束。如果某次滑动动画还未结束时又触发了新的滑动动画，则不属于滑动停止。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -179,6 +193,8 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 ## PickerIndicatorStyle对象说明
 
 选中项指示器样式的参数说明。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -198,6 +214,8 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 设置选中项指示器的类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该类型支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -212,6 +230,8 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 type OnUIPickerComponentCallback = (selectedIndex: number) => void
 
 定义[onChange](#onchange)和[onScrollStop](#onscrollstop)事件的回调类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

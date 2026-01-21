@@ -1288,6 +1288,8 @@ Obtains all WindowStage objects in the current application process. This API use
 
 This API is used to manage multiple windows in an application that contains several UIAbility components, for example, managing the states of different WindowStage objects, or synchronizing state or data between multiple windows within the same application.
 
+ **Atomic service API**: This API can be used in atomic services since API version 23.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Return value**
