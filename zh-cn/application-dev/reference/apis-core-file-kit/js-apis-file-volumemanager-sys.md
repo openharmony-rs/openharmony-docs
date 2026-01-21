@@ -418,8 +418,6 @@ getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
-**系统接口**：该接口为系统接口。
-
 **ArkTS-Dyn起始版本**：9
 
 **ArkTS-Sta起始版本**：23
@@ -487,8 +485,6 @@ getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Volume
-
-**系统接口**：该接口为系统接口。
 
 **ArkTS-Dyn起始版本**：9
 
