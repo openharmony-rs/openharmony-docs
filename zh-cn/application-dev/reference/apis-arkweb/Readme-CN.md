@@ -29,6 +29,8 @@
     - [Class (WebSchemeHandlerRequest)](arkts-apis-webview-WebSchemeHandlerRequest.md)
     - [Class (WebSchemeHandlerResponse)](arkts-apis-webview-WebSchemeHandlerResponse.md)
     - [Class (WebStorage)](arkts-apis-webview-WebStorage.md)  
+    - [Class (UserAgentBrandVersion)](arkts-apis-webview-UserAgentBrandVersion.md)
+    - [Class (UserAgentMetadata)](arkts-apis-webview-UserAgentMetadata.md)
     - [Interface (BackForwardList)](arkts-apis-webview-BackForwardList.md)
     - [Interface (NativeMediaPlayerBridge)](arkts-apis-webview-NativeMediaPlayerBridge.md)
     - [Interface (NativeMediaPlayerHandler)](arkts-apis-webview-NativeMediaPlayerHandler.md)

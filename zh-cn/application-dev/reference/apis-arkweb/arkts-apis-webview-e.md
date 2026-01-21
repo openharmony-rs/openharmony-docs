@@ -517,3 +517,25 @@ Web软键盘自动控制模式。
 | ------------------------------- | - | ---------- |
 | PARTIAL | 0 | 部分站点隔离，即在同一个Render进程内加载新站点。 |
 | STRICT  | 1 | 严格站点隔离，跨站点的Iframe将切换到新的渲染进程。 |
+
+## UserAgentFormFactor<sup>24+</sup>
+
+用户设备形态。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称         | 值 | 说明                              |
+| ------------ | -- |--------------------------------- |
+| AUTOMOTIVE  | 'Automotive' |车机，字符串类型。|
+| DESKTOP       | 'Desktop' |PC，字符串类型。|
+| MOBILE       | 'Mobile' |手机，字符串类型。|
+| EINK      | 'EInk' |墨水屏，字符串类型。|
+| TABLET | 'Tablet' |平板，字符串类型。|
+| WATCH        | 'Watch' |手表，字符串类型|
+| XR        | 'XR' |VR+AR设备，字符串类型|
