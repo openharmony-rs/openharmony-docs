@@ -24,7 +24,7 @@
 
 ### 实现打印扩展能力
 1. 新建工程目录
-   在工程 entry Module 对应的 ets 目录 (./entry/src/main/ets)下，新建目录及 ArkTs 文件。例如新建一个目录并命名为 PrintExtensionAbility，在 PrintExtensionAbility 目录下，新建一个 ArkTs 文件并命名为 MyPrintExtension.ets，用以实现打印扩展能力接口。
+   在工程entry Module对应的ets目录 (./entry/src/main/ets)下，新建目录及ArkTs文件。例如新建一个目录并命名为PrintExtensionAbility，在PrintExtensionAbility目录下，新建一个ArkTs文件并命名为MyPrintExtension.ets，用以实现打印扩展能力接口。
 
 2. 打开 MyPrintExtension.ets 文件，导入模块。
    ```ts
