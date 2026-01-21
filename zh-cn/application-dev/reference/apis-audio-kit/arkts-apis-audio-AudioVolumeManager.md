@@ -94,6 +94,8 @@ getVolumeGroupManagerSync(groupId: number\): AudioVolumeGroupManager
 
 获取音频组音量管理器实例。同步返回结果。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **参数：**
@@ -135,6 +137,8 @@ try {
 
 getAppVolumePercentage(): Promise<number\>
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 获取应用的音量（范围为0到100）。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
@@ -160,6 +164,8 @@ audioVolumeManager.getAppVolumePercentage().then((value: number) => {
 setAppVolumePercentage(volume: number\): Promise<void\>
 
 设置应用的音量（范围为0到100）。使用Promise异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -356,6 +362,8 @@ getVolumeByStream(streamUsage: StreamUsage): number
 
 获取指定音频流的音量。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **参数：**
@@ -400,6 +408,8 @@ getMinVolumeByStream(streamUsage: StreamUsage): number
 
 获取指定音频流的最小音量。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **参数：**
@@ -443,6 +453,8 @@ try {
 getMaxVolumeByStream(streamUsage: StreamUsage): number
 
 获取指定音频流的最大音量。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 

@@ -710,7 +710,7 @@ class MyFrameNode extends FrameNode {
           y: this.uiContext.vp2px(this.offsetY)
         });
         let layoutPosition = child.getLayoutPosition();
-        hilog.info(0x0000, `child position: ${JSON.stringify(layoutPosition)}`, 'isClicked');
+        hilog.info(0x0000, 'testTag', `child position: ${JSON.stringify(layoutPosition)}`);
       }
     }
     this.setLayoutPosition(position);

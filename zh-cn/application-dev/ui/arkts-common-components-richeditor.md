@@ -40,29 +40,48 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 <!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
 
 ``` TypeScript
-fontStyle: TextStyle = new TextStyle({
-  fontColor: Color.Pink
-})
-// 定义字体样式对象
+@Entry
+@Component
+export struct CreateRichEditor {
+  // ...
+  fontStyle: TextStyle = new TextStyle({
+    fontColor: Color.Pink
+  })
+  // 定义字体样式对象
+  mutableStyledString: MutableStyledString =
+    // 请将$r('app.string.CreateRichEditor_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"创建使用属性字符串构建的RichEditor组件。"
+    new MutableStyledString(this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.CreateRichEditor_Text_1').id),
+    [{
+      start: 0,
+      length: 5,
+      styledKey: StyledStringKey.FONT,
+      styledValue: this.fontStyle
+    }])
+  // 创建属性字符串
 
-mutableStyledString: MutableStyledString =
-  // 请将$r('app.string.CreateRichEditor_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"创建使用属性字符串构建的RichEditor组件。"
-  new MutableStyledString(resource.resourceToString($r('app.string.CreateRichEditor_Text_1')),
-  [{
-    start: 0,
-    length: 5,
-    styledKey: StyledStringKey.FONT,
-    styledValue: this.fontStyle
-  }])
-// 创建属性字符串
-
-controller: RichEditorStyledStringController = new RichEditorStyledStringController();
-options: RichEditorStyledStringOptions = { controller: this.controller };
-// ...
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.setStyledString(this.mutableStyledString);
-          })
+  controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+  options: RichEditorStyledStringOptions = { controller: this.controller };
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column({ space: 3 }) {
+          // ...
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.setStyledString(this.mutableStyledString);
+            })
+        }
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.Create_RichEditor_Component_title')替换为实际资源文件，在本示例中该资源文件的value值为"创建RichEditor组件"
+    .title($r('app.string.Create_RichEditor_Component_title'))
+  }
+}
 ```
 
 ![alt text](figures/richeditor_image_stylestringoptions.gif)
@@ -84,18 +103,23 @@ export struct CreateRichEditor {
     NavDestination() {
       Column({ space: 12 }) {
         // ...
+        Column({ space: 3 }) {
+          // ...
           RichEditor(this.optionsNoStyledString)
             .onReady(() => {
               this.controllerNoStyledString.addTextSpan(
-                /* 请将$r('app.string.CreateRichEditor_Text_2')替换为实际资源文件，
-                 在本示例中该资源文件的value值为"需创建不使用属性字符串构建的RichEditor组件。" */
-                resource.resourceToString($r('app.string.CreateRichEditor_Text_2')), {
+                /**
+                 * 请将$r('app.string.CreateRichEditor_Text_2')替换为实际资源文件，
+                 * 在本示例中该资源文件的value值为"创建不使用属性字符串构建的RichEditor组件。"
+                 */
+                $r('app.string.CreateRichEditor_Text_2'), {
                 style: {
                   fontColor: Color.Black,
                   fontSize: 15
                 }
               })
             })
+        }
         // ...
       }
       .width('100%')

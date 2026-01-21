@@ -342,8 +342,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 | 名称                    | 值     | 说明      |
 | ----------------------- | ---------------- | ---------------- |
-| LOADING  | - | 加载中。 |
-| PROGRESSING | - | 进度更新中。 |
+| LOADING  | 'LOADING' | 加载中。 |
+| PROGRESSING | 'PROGRESSING' | 进度更新中。 |
 
 ## 事件
 
