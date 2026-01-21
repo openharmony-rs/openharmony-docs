@@ -365,39 +365,14 @@ let pointY = 0;
 ```
 
 ### 空格应该突出关键字和重要信息，避免不必要的空格
-<!-- @[highlight_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
-``` TypeScript
-if (flag) {
-  // ...
-} else { // else 与其前面的大括号 } 之间增加空格。
-  // ...
-}
-```
 **【级别】建议**
 
 **【描述】**
-<!-- @[highlight_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
-``` TypeScript
-function foo() { // 函数声明时，左大括号 { 之前加个空格
-  // ...
-}
-// ...
-  bar('attr', { // 左大括号前加个空格
-    age: '1 year',
-    sbreed: 'Bernese Mountain Dog',
-  });
-```
 空格应该突出关键字和重要信息。总体建议如下：
 1.   `if`, `for`, `while`, `switch`等关键字与左括号`(`之间加空格。
 2.   在函数定义和调用时，函数名称与参数列表的左括号`(`之间不加空格。
-<!-- @[highlight_comma_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-const arr = [1, 2, 3]; // 数组初始化中的逗号后面加个空格，逗号前面不加空格
-myFunc(bar1, foo1, baz); // 函数的多个参数之间的逗号后加个空格，逗号前面不加空格
-```
 4.   任何打开大括号(`{`)之前加空格，有两个例外：
 a)   在作为函数的第一个参数或数组中的第一个元素时，对象之前不用加空格，例如：`foo({ name: 'abc' })`。
 b)   在模板中，不用加空格，例如：`abc${name}`。
@@ -409,21 +384,11 @@ b)   在模板中，不用加空格，例如：`abc${name}`。
 
 **【反例】**
 
-<!-- @[single_quotation_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-let message1 = 'world';
-console.info(message1);
-```
+<!-- @[highlight_keywords_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-<!-- @[single_quotation_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-let message2 = 'world';
-console.info(message2);
-```
+<!-- @[highlight_keywords_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【反例】**
 
@@ -451,45 +416,12 @@ if (flag) {
 
 **【正例】**
 
-<!-- @[many_properties_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-interface I {
-  name: string
-  age: number
-  value: number
-  sum: number
-  foo: boolean
-  bar: boolean
-}
-
-let obj1: I = { name: 'tom', age: 16, value: 1, sum: 2, foo: true, bar: false }
-```
+<!-- @[highlight_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 **【正例】**
 
-<!-- @[many_properties_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[highlight_comma_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
-``` TypeScript
-interface I {
-  name: string
-  age: number
-  value: number
-  sum: number
-  foo: boolean
-  bar: boolean
-}
-
-// ...
-let obj2: I = {
-  name: 'tom',
-  age: 16,
-  value: 1,
-  sum: 2,
-  foo: true,
-  bar: false
-}
-```
 
 ### 建议字符串使用单引号
 
@@ -780,21 +712,6 @@ for (let i = 0; i < numbers.length; i++) {
   increasedByOne1.push(numbers[i] + 1);
 }
 ```
-<!-- @[finally_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-function foo4() {
-  try {
-    // ...
-    return 1;
-  } catch (err) {
-    // ...
-    return 2;
-  } finally {
-    return 3;
-  }
-}
-```
 **【正例】**
 
 <!-- @[array_methods_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
@@ -804,21 +721,6 @@ const numbers = [1, 2, 3, 4, 5];
 // ...
 // better: 使用map方法是更好的方式
 const increasedByOne2: number[] = numbers.map(num => num + 1);
-```
-<!-- @[finally_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-function foo5() {
-  try {
-    // ...
-    return 1;
-  } catch (err) {
-    // ...
-    return 2;
-  } finally {
-    console.info('XXX!');
-  }
-}
 ```
 ### 不要在控制性条件表达式中执行赋值操作
 
@@ -831,26 +733,8 @@ function foo5() {
 
 **【反例】**
 
-<!-- @[noESObject_lib_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
+<!-- @[assignValues_expressions_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
 
-``` TypeScript
-// lib.ets
-export interface I {
-  sum: number
-}
-
-export function getObject1(value: number): I {
-  let obj: I = { sum: value };
-  return obj
-}
-```
-<!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-import { getObject1 } from './lib'
-// ...
-let obj1: I = getObject1(123);
-```
 **【正例】**
 
 <!-- @[assignValues_expressions_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
@@ -860,27 +744,6 @@ const isFoo = false; // 在上面赋值，if条件判断中直接使用
 if (isFoo) {
   // ...
 }
-```
-<!-- @[noESObject_lib_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
-
-``` TypeScript
-// lib.ets
-export interface I {
-  sum: number
-}
-
-// ...
-export function getObject2(value: number): I {
-  let obj: I = { sum: value };
-  return obj
-}
-```
-<!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-import { getObject2, I } from './lib'
-// ...
-let obj2: I = getObject2(123);
 ```
 
 **【级别】要求**
@@ -907,12 +770,7 @@ function foo4() {
 }
 ```
 
-<!-- @[use_T[]_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-let x: Array<number> = [1, 2, 3];
-let y: Array<string> = ['a', 'b', 'c'];
-```
+**【正例】**
 
 <!-- @[finally_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
@@ -928,13 +786,6 @@ function foo5() {
     console.info('XXX!');
   }
 }
-```
-
-<!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
-
-``` TypeScript
-let x: Array<number> = [1, 2, 3];
-let y: Array<string> = ['a', 'b', 'c'];
 ```
 
 **【级别】建议**
