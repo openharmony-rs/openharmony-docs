@@ -7,8 +7,6 @@
 开发者指南见：[ArkTS-Dyn LazyForEach开发者指南](../../../ui/state-management/arkts-rendering-control-lazyforeach.md)。
 在大量子组件的场景下，LazyForEach与缓存列表项、动态预加载、组件复用等方法配合使用，可以进一步提升滑动帧率并降低应用内存占用。最佳实践请参考[优化长列表加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)。
 
-ArkTS-Sta迁移指导见：[ArkTS-Sta LazyForEach组件迁移规范](../../../ui/state-management/arkts-sta-rendering-control-lazyforeach.md)。
-
 ## 导入模块
 
 ```ts
@@ -350,9 +348,11 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 ## ArkTS-Sta的写法示例
 
-**ArkTS-Sta**
+LazyForEach长列表渲染示例代码：
 
 ```ts
+'use static'
+
 import { Entry, Component, Column, Text, List, ListItem, LazyForEach, IDataSource, DataChangeListener, Button, ClickEvent } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -438,10 +438,15 @@ struct LazyForEachPage {
 }
 ```
 
+运行效果：
+
+![lazyforeach_sta_demo](./figures/lazyforeach_sta_demo.jpeg)
+
 批量数据修改场景。开发者在使用`onDatasetChange()`批量修改数据源时，单次`DataOperation`需要转换为具体的类型。见如下代码片段：
 
 ```ts
-/** ArkTS-Sta */
+'use static'
+
 import { LazyForEach, IDataSource, DataChangeListener } from '@ohos.arkui.component';
 // 如果需要使用listener.onDatasetChange()进行批量数据修改，可以按需import下列DataOperation
 import { DataOperation, DataOperationType, DataAddOperation, DataDeleteOperation, DataChangeOperation, DataMoveOperation, DataExchangeOperation, DataReloadOperation } from '@ohos.arkui.component';

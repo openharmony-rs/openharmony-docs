@@ -8,8 +8,6 @@ ForEach基于数组类型数据进行循环渲染。
 
 开发者指南见：[ArkTS-Dyn ForEach开发者指南](../../../ui/state-management/arkts-rendering-control-foreach.md)。
 
-ArkTS-Sta迁移指导见：[ArkTS-Sta ForEach组件迁移规范](../../../ui/state-management/arkts-sta-rendering-control-foreach.md)。
-
 ## 导入模块
 
 ```ts
