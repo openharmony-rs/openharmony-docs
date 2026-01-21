@@ -48,11 +48,11 @@
 | [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) | 通知订阅拓展能力，用于发送通知数据到三方穿戴设备。 | 是 | 否 |
 | [PartnerAgentExtensionAbility](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) | 基于蓝牙通信技术，提供设备发现与设备下线的通知功能。 | 是 | 否 |
 | [PhotoEditorExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-photoEditorExtensionAbility.md) | 照片编辑扩展能力，提供给应用实现图片编辑的垂域服务能力。 | 是 | 否 |
-|<!--DelRow--> [AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md) | 自动填充扩展能力，提供用户应用的免密登录功能。 | 否 | 否 |
+|<!--DelRow--> [AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)| 自动填充扩展能力，提供用户应用的免密登录功能。 | 否 | 否 |
 | [VpnExtensionAbility](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md) | VPN扩展能力，提供三方VPN创建、销毁等生命周期回调。 | 是 | 否 |
 | [FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md) | 表单编辑扩展能力，用于卡片统一编辑，由卡片应用拓展并由桌面拉起。 | 是 | 否 |
 | [LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) | 动态卡片扩展能力，提供3D Live卡片功能，由应用实现3D卡片效果并由卡片使用方拉起。 | 是 | 否 |
-| <!--DelRow-->[UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md) | UI服务扩展能力，在PC上提供带前台窗口的服务。 | 否 | 否 |
+|<!--DelRow-->[UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md) | UI服务扩展能力，在PC上提供带前台窗口的服务。 | 否 | 否 |
 <!--RP2--><!--RP2End-->
 
 > **说明：**
