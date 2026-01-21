@@ -66,8 +66,8 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 | 视频MPEG4 Part2编解码器的MIME类型。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | 视频MPEG2编解码器的MIME类型。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_AV1 | AV1视频编解码器的MIME类型。<br>从API version 23开始支持。 |
-| OH_AVCODEC_MIMETYPE_VIDEO_VP9 | VP8视频编解码器的MIME类型。<br>从API version 23开始支持。 |
-| OH_AVCODEC_MIMETYPE_VIDEO_VP8 | VP9视频编解码器的MIME类型。<br>从API version 23开始支持。 |
+| OH_AVCODEC_MIMETYPE_VIDEO_VP9 | VP9视频编解码器的MIME类型。<br>从API version 23开始支持。 |
+| OH_AVCODEC_MIMETYPE_VIDEO_VP8 | VP8视频编解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_RV30 | RV30视频编解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_WVC1 | WVC1视频编解码器的MIME类型。<br>从API version 23开始支持。 |
 | OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO | RAWVIDEO视频编解码器的MIME类型。<br>从API version 23开始支持。 |
