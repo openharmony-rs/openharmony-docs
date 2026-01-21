@@ -782,7 +782,7 @@ struct Index {
 }
 ```
 
-## isDesktopLyricSupported<sup>23+</sup>
+## avSession.isDesktopLyricSupported<sup>23+</sup>
 
 isDesktopLyricSupported(): Promise\<boolean>
 
