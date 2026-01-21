@@ -62,7 +62,7 @@
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) -->
+<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -90,7 +90,7 @@ struct Parent {
 
   build() {
     Column() {
-      // this.showChild为true，创建Child子组件，执行Child aboutToAppear
+      // this.showChild为true，创建Child子组件，执行Child aboutToAppear和Child onDidBuild。
       if (this.showChild) {
         Child()
       }
@@ -98,8 +98,8 @@ struct Parent {
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
-          // 更改this.showChild为false，删除Child子组件，执行Child aboutToDisappear
-          // 更改this.showChild为true，添加Child子组件，执行Child aboutToAppear
+          // 更改this.showChild为false，删除Child子组件，执行Child aboutToDisappear。
+          // 更改this.showChild为true，添加Child子组件，执行Child aboutToAppear和Child onDidBuild。
           this.showChild = !this.showChild;
         })
     }
