@@ -1,4 +1,4 @@
-# OHNativeWindow
+# NativeWindow
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
