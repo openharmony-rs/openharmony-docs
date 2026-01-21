@@ -243,8 +243,6 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 **示例：**
 
-**示例：**
-
   ArkTS-Dyn示例：
 
   ```ts
