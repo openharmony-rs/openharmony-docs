@@ -418,6 +418,17 @@ if (flag) {
 
 <!-- @[highlight_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+function foo() { // 函数声明时，左大括号 { 之前加个空格
+  // ...
+}
+// ...
+  bar('attr', { // 左大括号前加个空格
+    age: '1 year',
+    sbreed: 'Bernese Mountain Dog',
+  });
+```
+
 **【正例】**
 
 <!-- @[highlight_comma_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
