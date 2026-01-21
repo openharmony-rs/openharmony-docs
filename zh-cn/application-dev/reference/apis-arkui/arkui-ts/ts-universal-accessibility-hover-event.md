@@ -59,23 +59,19 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 
 继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent对象说明8)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
 
 | 名称              | 类型       | 必填 | 说明      |
 | --------------- | ---------- | ------- | ------- |
-| type             | [AccessibilityHoverType](#accessibilityhovertype) | 否 | 无障碍悬浮动作。                |
-| x                      | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于当前组件左上角的x轴坐标。<br/>单位：vp<br/> |
-| y                      | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于当前组件左上角的y轴坐标。<br/>单位：vp<br/> |
-| windowX                | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用窗口左上角的x轴坐标。<br/>单位：vp<br/> |
-| windowY                | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/> |
-| displayX               | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/> |
-| displayY               | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/> |
+| type             | [AccessibilityHoverType](#accessibilityhovertype) | 否 | 无障碍悬浮动作。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| x                      | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于当前组件左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| y                      | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于当前组件左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| windowX                | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用窗口左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| windowY                | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX               | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY               | ArkTS-Dyn: number <br>ArkTS-Sta: double                         | 否 | 手指位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 手指位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 手指位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## AccessibilityHoverType
 

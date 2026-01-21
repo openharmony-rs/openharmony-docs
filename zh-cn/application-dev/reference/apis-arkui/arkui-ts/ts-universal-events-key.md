@@ -140,6 +140,9 @@ ArkTS-Sta: onKeyEventDispatch(event: Callback\<KeyEvent, boolean> | undefined): 
 | intentionCode<sup>10+</sup>           | [IntentionCode](../../apis-input-kit/js-apis-intentioncode.md) | 按键对应的意图。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22       |
 | getModifierKeyState<sup>12+</sup> | (Array&lt;string&gt;) => boolean | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\|'Alt'\|'Shift'。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22|
 | unicode<sup>14+</sup>                              | ArkTS-Dyn: number<br/>ArkTS-Sta: long          | 按键的unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的unicode码值。 <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 22|
+| isNumLockOn<sup>19+</sup>                          | boolean          |NumLock是否锁定。<br/>true表示NumLock锁定；false表示NumLock解锁。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 24|
+| isCapsLockOn<sup>19+</sup>                               | boolean         |  CapsLock是否锁定。<br/>true表示CapsLock锁定；false表示CapsLock解锁。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 24|
+| isScrollLockOn<sup>19+</sup>                               | boolean        | ScrollLock是否锁定。<br/>true表示ScrollLock锁定；false表示ScrollLock解锁。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 24| 
 
 **错误码**：
 

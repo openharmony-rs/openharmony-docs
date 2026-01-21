@@ -111,19 +111,17 @@ ArkTS-Sta: onGestureJudgeBegin(callback: ((gestureInfo: GestureInfo, event: Base
 
 | 名称      | 类型                                      |    必填   | 描述         |
 | ---------  | ----------------------------------------  | ----|  -----------|
-| fingerList<sup>11+</sup> | [FingerInfo[]](ts-gesture-settings.md#fingerinfo对象说明8) | 是 | 触发事件的所有手指信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| fingerInfos<sup>20+</sup> | [FingerInfo[]](ts-gesture-settings.md#fingerinfo对象说明8) | 否 | 参与触发事件的所有有效触点信息。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| fingerList | [FingerInfo[]](ts-gesture-settings.md#fingerinfo对象说明8) | 是 | 触发事件的所有手指信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
+| fingerInfos<sup>20+</sup> | [FingerInfo[]](ts-gesture-settings.md#fingerinfo对象说明8) | 否 | 参与触发事件的所有有效触点信息。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
 
 ## TapGestureEvent对象说明
 继承于[BaseGestureEvent](#basegestureevent对象说明)。可将该对象作为[onGestureJudgeBegin](#ongesturejudgebegin)的event参数来传递。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 类型      | 必填                                | 说明         |
 | ---------  | --- | -------------------------------------  | -----------|
-| tapLocation<sup>20+</sup>  | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20对象说明) | 否 | 获取点击手势的坐标信息。<br/>取值范围：[0, +∞)<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| tapLocation<sup>20+</sup>  | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20对象说明) | 否 | 获取点击手势的坐标信息。<br/>取值范围：[0, +∞)<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23|
 
 ## LongPressGestureEvent对象说明
 继承于[BaseGestureEvent](#basegestureevent对象说明)。可将该对象作为[onGestureJudgeBegin](#ongesturejudgebegin)的event参数来传递。

@@ -55,6 +55,8 @@ ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined)
 | rawDeltaX<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 相对于先前上报的鼠标指针位置的X轴偏移量。当鼠标指针处于屏幕边缘时，该值可能小于两次上报的X坐标之差。<br/>单位：vp<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
 | rawDeltaY<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 相对于先前上报的鼠标指针位置的Y轴偏移量。<br/>单位：vp<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
 | pressedButtons<sup>15+</sup> | MouseButton[] | 所有鼠标上按着的按钮集合。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 鼠标位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 鼠标位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## 示例
 

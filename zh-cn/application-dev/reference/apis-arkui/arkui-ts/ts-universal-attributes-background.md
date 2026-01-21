@@ -42,26 +42,34 @@ background(builder: CustomBuilder, options?: { align?: Alignment }): T
 
 ## background<sup>20+</sup>
 
-background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions): T
+ArkTS-Dyn: background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions): T
+
+ArkTS-Sta: background(content: CustomBuilder | ResourceColor | undefined, options?: BackgroundOptions): this
 
 设置组件背景。与[background<sup>10+</sup>](#background10)相比，content参数新增了对[ResourceColor](ts-types.md#resourcecolor)类型的支持，并新增了背景向父组件的安全区扩展的能力。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
 | 参数名  | 类型                                                 | 必填 | 说明                                                         |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| content | [CustomBuilder](ts-types.md#custombuilder8) \| [ResourceColor](ts-types.md#resourcecolor)        | 是   | 自定义背景。                                                 |
+| content |ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ResourceColor](ts-types.md#resourcecolor) \| undefiend        | 是   | 自定义背景。<br/>undefined: 组件的背景将被清除。                                                |
 | options | [BackgroundOptions](#backgroundoptions20对象说明) | 否   | 设置自定义背景选项。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this| 返回当前组件。 |
 
 >  **说明：**
 >
