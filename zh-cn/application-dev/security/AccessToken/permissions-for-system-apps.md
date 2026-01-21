@@ -17,6 +17,42 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
+## ohos.permission.RUNNING_LOCK
+
+允许应用获取运行锁，保证应用在后台的持续运行。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：7
+
+## ohos.permission.SET_WALLPAPER
+
+允许应用设置壁纸。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：7
+
+## ohos.permission.MODIFY_AUDIO_SETTINGS
+
+允许应用修改音频设置。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：8
+
 ## ohos.permission.RECEIVER_STARTUP_COMPLETED
 
 允许应用订阅开机广播。
@@ -3992,7 +4028,7 @@
 
 **ACL使能**：true
 
-**起始版本**：12
+**起始版本**：13
 
 ## ohos.permission.START_RESTORE_NOTIFICATION
 

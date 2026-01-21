@@ -101,8 +101,9 @@
      public info: notificationExtensionSubscription.NotificationInfo | undefined
      public cancelHashCodes: Array<string> | undefined
    }
-   
-   class SppClientManager {
+
+    // Spp means Serial Port Profile   
+    class SppClientManager {
      private clientNumber: number = -1;
      private peerDevice: string = '';
    
@@ -141,15 +142,15 @@
          return;
        }
        hilog.info(DOMAIN, 'testTag', `prepare sending data to client ${this.clientNumber}`);
-       const textEncoder = new util.TextEncoder();
-       const uint8Array = textEncoder.encodeInto(jsonStr);
+       const textEncoder:util.TextEncoder = new util.TextEncoder();
+       const uint8Array: Uint8Array = textEncoder.encodeInto(jsonStr);
        const arrayBuffer = uint8Array.buffer;
    
        socket.sppWrite(this.clientNumber, arrayBuffer);
-       hilog.info(DOMAIN, 'testTag', `sending success size：${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
+       hilog.info(DOMAIN, 'testTag', `sending success size:${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
      }
    
-     public sendNotificationData(notificationInfo: extensionSubscription.NotificationInfo) {
+     public sendNotificationData(notificationInfo: notificationExtensionSubscription.NotificationInfo) {
        let info: TransferInfo = {
          type: 'publish',
          info: notificationInfo,
@@ -236,7 +237,7 @@
        }
      }
    
-     // Called back when notifications is cancelled.
+     // Called back when notifications are cancelled.
      onCancelMessages(hashCodes: Array<string>): void {
        hilog.info(DOMAIN, 'testTag', `on cancel message ${JSON.stringify(hashCodes)}`)
        notificationExtensionSubscription.getSubscribeInfo()

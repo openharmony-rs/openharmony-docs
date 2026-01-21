@@ -11,9 +11,9 @@
 
 >  **说明：**
 > 
-> 从API version 22开始，该组件不再维护，推荐使用组件[Swiper](ts-container-swiper.md)，请参考[示例2](#示例2使用swiper替代stepper)。
+> - 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](ts-container-swiper.md)替代。详细示例请参考[示例2](#示例2使用swiper替代stepper)。
 >
-> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -26,6 +26,10 @@
 Stepper(value?: { index?: number })
 
 创建步骤导航器组件。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[index](ts-container-swiper.md#index)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -44,11 +48,15 @@ Stepper(value?: { index?: number })
 
 ## 事件
 
-### onFinish
+### onFinish<sup>(deprecated)</sup>
 
 onFinish(callback: () => void)
 
-步骤导航器最后一个[StepperItem](ts-basic-components-stepperitem.md)的[nextLabel](ts-basic-components-stepperitem.md#nextlabel)被点击时，并且[ItemState](ts-basic-components-stepperitem.md#itemstate枚举说明)属性为Normal时，触发该回调。
+步骤导航器最后一个[StepperItem](ts-basic-components-stepperitem.md)的[nextLabel](ts-basic-components-stepperitem.md#nextlabeldeprecated)被点击时，并且[ItemState](ts-basic-components-stepperitem.md#itemstate枚举说明)属性为Normal时，触发该回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[onChange](ts-container-swiper.md#onchange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -60,11 +68,15 @@ onFinish(callback: () => void)
 | -------- | -------------------  | ---- | ------------------------------------------ |
 | callback   |  &nbsp;()&nbsp;=&gt;&nbsp;void   | 是   | 步骤导航器最后一个StepperItem的nextLabel被点击时，并且ItemState属性为Normal时，触发该回调。|
 
-### onSkip
+### onSkip<sup>(deprecated)</sup>
 
 onSkip(callback:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
-当前显示的[StepperItem](ts-basic-components-stepperitem.md)状态为ItemState.Skip时，[nextLabel](ts-basic-components-stepperitem.md#nextlabel)被点击时触发该回调。
+当前显示的[StepperItem](ts-basic-components-stepperitem.md)状态为ItemState.Skip时，[nextLabel](ts-basic-components-stepperitem.md#nextlabeldeprecated)被点击时触发该回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[onChange](ts-container-swiper.md#onchange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -76,11 +88,15 @@ onSkip(callback:&nbsp;()&nbsp;=&gt;&nbsp;void)
 | -------- | -------------------  | ---- | ------------------------------------------ |
 | callback   |  &nbsp;()&nbsp;=&gt;&nbsp;void   | 是   | 当前显示的StepperItem状态为ItemState.Skip时，nextLabel被点击时触发该回调。|
 
-### onChange
+### onChange<sup>(deprecated)</sup>
 
 onChange(callback:&nbsp;(prevIndex:&nbsp;number,&nbsp;index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-点击当前StepperItem的[prevLabel](ts-basic-components-stepperitem.md#prevlabel)进行步骤切换时触发该回调；或点击当前StepperItem的[nextLabel](ts-basic-components-stepperitem.md#nextlabel)，当前页面不为步骤导航器最后一个StepperItem且[ItemState](ts-basic-components-stepperitem.md#itemstate枚举说明)属性为Normal时，触发该回调。
+点击当前StepperItem的[prevLabel](ts-basic-components-stepperitem.md#prevlabeldeprecated)进行步骤切换时触发该回调；或点击当前StepperItem的[nextLabel](ts-basic-components-stepperitem.md#nextlabeldeprecated)，当前页面不为步骤导航器最后一个StepperItem且[ItemState](ts-basic-components-stepperitem.md#itemstate枚举说明)属性为Normal时，触发该回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[onChange](ts-container-swiper.md#onchange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -93,11 +109,15 @@ onChange(callback:&nbsp;(prevIndex:&nbsp;number,&nbsp;index:&nbsp;number)&nbsp;=
 | prevIndex | number | 是   | 切换前的步骤页索引值。<br/>取值范围：[0, +∞) |
 | index     | number | 是   | 切换后的步骤页（前一页或者下一页）索引值。<br/>取值范围：[0, +∞) |
 
-### onNext
+### onNext<sup>(deprecated)</sup>
 
 onNext(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-点击StepperItem的[nextLabel](ts-basic-components-stepperitem.md#nextlabel)切换下一步骤时，当前页面不为步骤导航器最后一个StepperItem且[ItemState](ts-basic-components-stepperitem.md#itemstate枚举说明)属性为Normal时，触发该回调。
+点击StepperItem的[nextLabel](ts-basic-components-stepperitem.md#nextlabeldeprecated)切换下一步骤时，当前页面不为步骤导航器最后一个StepperItem且[ItemState](ts-basic-components-stepperitem.md#itemstate枚举说明)属性为Normal时，触发该回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[onChange](ts-container-swiper.md#onchange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -110,11 +130,15 @@ onNext(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;
 | index        | number | 是   | 当前步骤页索引值。 |
 | pendingIndex | number | 是   | 下一步骤页索引值。 |
 
-### onPrevious
+### onPrevious<sup>(deprecated)</sup>
 
 onPrevious(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-点击StepperItem的[prevLabel](ts-basic-components-stepperitem.md#prevlabel)切换上一步骤时触发该回调。
+点击StepperItem的[prevLabel](ts-basic-components-stepperitem.md#prevlabeldeprecated)切换上一步骤时触发该回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[onChange](ts-container-swiper.md#onchange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
