@@ -28416,6 +28416,10 @@
 			},
 			{
 				"file_name":"harmonyos_samples/guide-snippets/master/ArkWebKit/ArkWebMenu/entry/src/main/ets/pages/WebScanQRCode.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"HarmonyOS_Samples/guide-snippets/master/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebScanQRCode.ets",
 				"functions":[
 					{
 						"end_line":135,
