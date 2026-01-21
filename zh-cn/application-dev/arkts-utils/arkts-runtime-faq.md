@@ -21,6 +21,15 @@ console.info('res = ' + res);
 // 期望输出: res = ♂。
 // 实际输出: res = /♂/。
 ```
+
+规避方案：暂无。
+
+> **说明：**
+> 
+> 正则匹配\b（单词边界）遇到某些ASCII编码之外的字符时，会将其当成ASCII字符来处理，从而将不是单词边界匹配识别成单词边界。
+
+### 正则运算对于先行断言((?=pattern)或(?!pattern)) 嵌套在后行断言((?<=pattern)或(?<!pattern))内部的场景与预期不一致
+
 <!-- @[test_lookbehindWithNestedLookahead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
 ``` TypeScript
@@ -28,12 +37,10 @@ console.info(`res:${'abcdef'.match(/(?<=ab(?=c)cd)ef/)}`);
 // 期望输出: res:ef。
 // 实际输出: res:null。
 ```
-规避方案：暂无。
-> **说明：**
-> 
-> 正则匹配\b（单词边界）遇到某些ASCII编码之外的字符时，会将其当成ASCII字符来处理，从而将不是单词边界匹配识别成单词边界。
 
-### 正则运算对于先行断言((?=pattern)或(?!pattern)) 嵌套在后行断言((?<=pattern)或(?<!pattern))内部的场景与预期不一致
+规避方案：使用/(?<=abcd)ef/代替/(?<=ab(?=c)cd)ef/。
+
+### 正则运算对于大小写的处理与预期不一致
 
 <!-- @[test_regexIgnoreCaseCaseFolding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
@@ -44,9 +51,10 @@ console.info('res = ' + res);
 // 实际输出: res = false。
 ```
 
-规避方案：使用/(?<=abcd)ef/代替/(?<=ab(?=c)cd)ef/。
+规避方案：暂无。
 
-### 正则运算对于大小写的处理与预期不一致
+### 正则运算/()/ug匹配时lastIndex与预期不一致
+
 <!-- @[test_regexLastIndexWithEmptyGroupInGlobalUnicodeMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
 ``` TypeScript
@@ -59,13 +67,6 @@ console.info('u.lastIndex = ' + u.lastIndex);
 // 期望输出: u.lastIndex = 0。
 // 实际输出: u.lastIndex = 1。
 ```
-<!-- @[test_regexIgnoreCaseCaseFolding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
-
-规避方案：暂无。
-
-### 正则运算/()/ug匹配时lastIndex与预期不一致
-
-<!-- @[test_regexLastIndexWithEmptyGroupInGlobalUnicodeMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
 规避方案：暂无。
 
@@ -444,4 +445,41 @@ let res = arr3.map(x => x).flat();
 >
 > 上述demo中部分语法，如 "3 in px", "delete px[2]", "Reflect.deleteProperty"，在ets文件中不可用。
 
-  
+### JSON.stringify的replacer函数中数组索引的key类型与EcmaScript规范定义不一致
+
+JSON.stringify的replacer函数中，对于数组索引key的类型，ArkTS当前实现是采用保持数字类型不变，但是按照EcmaScript规范，应当转为string类型。
+
+```ts
+// test1.js
+{
+  let arr = [10, 20, 30, 40];
+  function replacer(key, value) {
+    if (key === "2") {
+        return value * 2;
+    }
+    return value;
+  }
+  console.info(JSON.stringify(arr, replacer));
+  // 实际输出：[10,20,30,40]
+}
+```
+
+规避方案：若业务逻辑依赖于key必须为string类型，可在replacer函数内部对数字类型的key进行显式转换。示例如下：
+
+```ts
+// test1.js
+{
+  let arr = [10, 20, 30, 40];
+  function replacer(key, value) {
+    if (typeof key === "number") {
+      key = String(key);
+    }
+    if (key === "2") {
+        return value * 2;
+    }
+    return value;
+  }
+  console.info(JSON.stringify(arr, replacer));
+  // 实际输出：[10,20,60,40]
+}
+```
