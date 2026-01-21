@@ -220,6 +220,41 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 - \@SyncMonitor监听的状态变量为类对象时，仅能监听对象整体的变化。监听类属性的变化需要类属性被\@Trace装饰，无法监听非状态变量的变化。
   
     <!-- @[monitor_object_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorObjectVariable.ets) -->
+    
+    ``` TypeScript
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    class Info {
+      public name: string;
+      public age: number;
+    
+      constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+      }
+    }
+    
+    @Entry
+    @ComponentV2
+    struct Index {
+      @Local info: Info = new Info('Tom', 25);
+    
+      @SyncMonitor('info')
+      infoChange(monitor: IMonitor) {
+        hilog.info(0xFF00, 'testTag', '%{public}s', `info change`);
+      }
+    
+      build() {
+        Column() {
+          Text(`name: ${this.info.name}, age: ${this.info.age}`)
+          Button('change info')
+            .onClick(() => {
+              this.info = new Info('Lucy', 18); // 能够监听到
+            })
+        }
+      }
+    }
+    ```
 
 ### 在\@ObservedV2装饰的类中使用\@SyncMonitor
 
