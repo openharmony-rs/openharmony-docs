@@ -1865,3 +1865,44 @@ struct Index {
 \@SyncMonitor可以监听变量从可访问变为不可访问或从不可访问变为可访问的变化。在下面的例子中，点击三个Button，均会触发`onChange`的回调。
 
 <!-- @[monitor_variable_from_accessible_to_inaccessible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorVariableFromAccessibleToInaccessible.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@ObservedV2
+class User {
+  @Trace public age: number = 10;
+}
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local user: User | undefined | null = new User();
+
+  @SyncMonitor('user.age')
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      hilog.info(0xFF00, 'testTag', '%{public}s',
+        `onChange: User property ${path} change from ${mon.value(path)?.before} to ${mon.value(path)?.now}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`User age ${this.user?.age}`).fontSize(20)
+      Button('set user to undefined').onClick(() => {
+        // age：可访问 -> 不可访问
+        this.user = undefined;
+      })
+      Button('set user to User').onClick(() => {
+        // age：不可访问 ->可访问
+        this.user = new User();
+      })
+      Button('set user to null').onClick(() => {
+        // age：可访问->不可访问
+        this.user = null;
+      })
+    }
+  }
+}
+```
