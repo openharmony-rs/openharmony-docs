@@ -10159,7 +10159,7 @@ static clearBlanklessLoadingCache(keys?: Array\<string\>): void
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| keys | Array\<string\> | 否 | 清除Blankless优化方案页面的key值列表，key值为[getBlanklessInfoWithKey](#getblanklessinfowithkey20)中指定过的。<br>默认值：所有Blankless优化方案缓存的页面key列表。<br>合法取值范围：长度不超过2048，key列表长度<=100。key和加载页面时输入给ArkWeb的相同。<br>非法值设置行为：key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
+| keys | Array\<string\> | 否 | 清除Blankless优化方案页面的key值列表，key值为[getBlanklessInfoWithKey](#getblanklessinfowithkey20)中指定过的。<br>默认值：所有Blankless优化方案缓存的页面key列表。<br>合法取值范围：长度不超过2048，key列表长度<=100。key和加载页面时输入给ArkWeb的相同。<br>非法值设置行为：传入undefined/null会抛出异常错误码401；key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
 
 **错误码：**
 
