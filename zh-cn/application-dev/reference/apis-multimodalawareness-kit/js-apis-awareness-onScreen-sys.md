@@ -275,6 +275,8 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
 
 **示例**：
 
+ArkTS-Dyn示例:
+
    ```ts
    import { onScreen } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -290,6 +292,27 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
          console.error("get page content failed, errCode = " + err.code);
       });
    } catch (err) {
+      console.error('get page content failed, errCode = ' + err.code);
+   }
+   ```
+
+ArkTS-Sta示例:
+
+   ```ts
+   import { onScreen } from '@kit.MultimodalAwarenessKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   let options: onScreen.ContentOptions = {
+      contentUnderstand: true,
+      pageLink: true
+   };
+   try {
+      onScreen.getPageContent(options).then((pageContent: onScreen.PageContent) => {
+         console.info("get page content succeed, bundleName = " + pageContent.bundleName);
+      }).catch((err: BusinessError): void => {
+         console.error("get page content failed, errCode = " + err.code);
+      });
+   } catch (err: BusinessError) {
       console.error('get page content failed, errCode = ' + err.code);
    }
    ```
@@ -330,6 +353,8 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
 
 **示例**：
 
+ArkTS-Dyn示例:
+
    ```ts
    import { onScreen } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -365,6 +390,23 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
          console.error('invoke failed, errCode = ' + err.code);
       }
    }
+   ```
+
+ArkTS-Sta示例:
+
+   ```ts
+   import { onScreen } from '@kit.MultimodalAwarenessKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   let controlEvent: onScreen.ControlEvent = {
+      windowId:1,
+      sessionId:1,
+      eventType:onScreen.EventType.SCROLL_TO_HOOK,
+      hookId:1
+   }
+   onScreen.sendControlEvent(controlEvent).then(() => {
+      console.info("屏上感知发送成功");
+   });
    ```
 
 ## onScreen.subscribe<sup>23+</sup>
