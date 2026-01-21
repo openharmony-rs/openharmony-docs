@@ -42,7 +42,7 @@ ArkTS-Sta: getErrorCode(): int
 
 | 类型     | 说明          |
 | ------ | ----------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回加载资源的错误码。错误码的含义可以参考[WebNetErrorList](arkts-apis-netErrorList.md) |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回加载资源的错误码。错误码的含义可以参考[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)。 |
 
 ## getErrorInfo
 
