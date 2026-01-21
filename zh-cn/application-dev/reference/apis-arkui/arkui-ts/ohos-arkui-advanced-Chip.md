@@ -373,7 +373,7 @@ struct Index {
         allowClose: false,
         enabled: true,
         backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
-        borderRadius: $r('sys.float.ohos_id_corner_radius_button')，
+        borderRadius: $r('sys.float.ohos_id_corner_radius_button'),
         minFontScale: 0.2,
         maxFontScale: 2,
         padding: {
