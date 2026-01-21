@@ -1867,7 +1867,7 @@ Navigation自定义标题。
 
 > **说明：**
 >
-> 为了简化表示，可以将`组件宽度 - minContentWidth - 分割线宽度 (1vp)`称为calcNavBarWidth。
+> 为了简化表示，可以将`组件宽度 - minContentWidth - 分割线宽度 (1px)`称为calcNavBarWidth。
 
 ## NavigationOperation<sup>11+</sup>枚举说明
 
