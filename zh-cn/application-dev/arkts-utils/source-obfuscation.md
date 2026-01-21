@@ -240,6 +240,11 @@ test(a2);
 开启顶层作用域名称混淆，效果如下：
 
   <!-- @[optionExample_enableToplevelObfuscation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+  
+  ``` TypeScript
+  // 混淆前：
+  let count = 0;
+  ```
 
 
 配置该选项后，所有顶层作用域的名称都会被混淆，以下场景除外：
