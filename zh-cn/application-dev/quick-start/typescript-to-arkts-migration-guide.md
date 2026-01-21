@@ -1811,6 +1811,14 @@ ArkTS不支持解构赋值。可使用其他替代方法，例如，使用临时
 
 <!-- @[no_destructAssignment_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoDestructAssignment.ts) -->       
 
+``` TypeScript
+let [one, two] = [1, 2]; // 此处需要分号。
+[one, two] = [two, one];
+
+let head, tail;
+[head, ...tail] = [1, 2, 3, 4];
+```
+
 **ArkTS**
 
 <!-- @[no_destructAssignment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoDestructAssignment.ets) -->   
