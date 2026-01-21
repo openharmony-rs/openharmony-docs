@@ -322,7 +322,7 @@ enum ArkUI_NodeAttributeType
 | NODE_MARGIN_PERCENT = 74 | 外间距属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：<br> 1：上下左右四个位置的外间距值相等。<br> .value[0].f32：外间距数值，单位为百分比；<br> 2：分别指定上下左右四个位置的外间距值。<br> .value[0].f32：上外间距数值，单位为百分比；<br> .value[1].f32：右外间距数值，单位为百分比；<br> .value[2].f32：下外间距数值，单位为百分比；<br> .value[3].f32：左外间距数值，单位为百分比；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：上外间距数值，单位为百分比；<br> .value[1].f32：右外间距数值，单位为百分比；<br> .value[2].f32：下外间距数值，单位为百分比；<br> .value[3].f32：左外间距数值，单位为百分比； |
 | NODE_GEOMETRY_TRANSITION = 75 | 组件内隐式共享元素转场，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0]?.i32：参数类型为1或者0。共享元素绑定的2个组件，针对出场元素未进行删除时是否要继续参与共享元素动画，默认为false，不参与保持原始位置不动。 <br> .string 用于设置绑定关系，id置""清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：参数类型为1或者0。共享元素绑定的2个组件，针对出场元素未进行删除时是否要继续参与共享元素动画，默认未false，不参与保持原始位置不动。 <br> .string 用于设置绑定关系，id置""清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。|
 | NODE_RELATIVE_LAYOUT_CHAIN_MODE = 76 | 指定以该组件为链头所构成的链的参数，支持属性设置、属性重置和属性获取接口。仅当父容器为RelativeContainer时生效。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 <br> .value[1].i32：链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].i32：链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 <br> .value[1].i32：链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。|
-| NODE_RENDER_FIT = 77 | 设置宽高动画过程中的组件内容填充方式，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md)枚举值。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md)枚举值。 |
+| NODE_RENDER_FIT = 77 | 设置宽高动画过程中的组件内容填充方式，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md#arkui_renderfit)枚举值。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md#arkui_renderfit)枚举值。 |
 | NODE_OUTLINE_COLOR = 78 | 外描边颜色属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> 1: .value[0].u32：统一设置四条边的边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> 2: .value[0].u32：设置上侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[1].u32：设置右侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[2].u32：设置下侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[3].u32：设置左侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].u32：设置上侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[1].u32：设置右侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[2].u32：设置下侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[3].u32：设置左侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
 | NODE_SIZE = 79 | 设置高宽尺寸，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：宽度数值，单位为vp；<br> .value[1].f32：高度数值，单位为vp；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：宽度数值，单位为vp；<br> .value[1].f32：高度数值，单位为vp；|
 | NODE_RENDER_GROUP = 80 | 设置当前组件和子组件是否先整体离屏渲染绘制后再与父控件融合绘制，支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0].i32：参数类型为1表示当前组件与子组件需要先整体离屏渲染绘制后再与父控件融合绘制，参数类型为0表示不需要整体离屏渲染绘制后再与父控件融合绘制。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：参数类型为1表示当前组件与子组件完成整体离屏渲染绘制，参数类型为0表示当前组件与子组件未完成整体离屏渲染绘制。 |
@@ -3685,7 +3685,7 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(Ar
 
 **参数:**
 
-| 名称 | 描述 |
+| 参数项 | 描述 |
 | -------- | -------- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标节点。  |
 | float* ratios | 阈值数组，表示组件的可见区域。 |
@@ -3713,9 +3713,9 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(
 
 **参数:**
 
-| 名称 | 描述 |
+| 参数项 | 描述 |
 | -------- | -------- |
-| node | 目标节点。  |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标节点。  |
 
 **返回：**
 
@@ -3822,7 +3822,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodeevent.md) currentNode | 指定节点。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) currentNode | 指定节点。 |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) localPosition | 点在指定节点坐标系中的坐标，单位：px。 |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* windowPosition | 指向接收转换后坐标（位于当前窗口坐标系中，单位：px）的指针。 |
 
@@ -3852,7 +3852,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodeevent.md) targetNode | 目标节点。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) targetNode | 目标节点。 |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) windowPosition | 点在当前窗口坐标系中的坐标，单位：px。 |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* localPosition | 指向接收转换后坐标（位于目标节点坐标系中，单位：px）的指针。 |
 
