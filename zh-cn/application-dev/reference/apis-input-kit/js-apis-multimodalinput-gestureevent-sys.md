@@ -13,7 +13,7 @@
 ## 导入模块
 
 ```js
-import { Touch } from '@kit.InputKit';
+import { Touch , SwipeInward } from '@kit.InputKit';
 ```
 
 ## TouchGestureEvent
@@ -50,3 +50,19 @@ import { Touch } from '@kit.InputKit';
 | PINCH_CLOSED | 4   | 多指捏合。       |
 | PINCH_OPENED | 5   | 多指张开。       |
 | GESTURE_END | 6   | 手势结束。       |
+
+## SwipeInward<sup>12+</sup>
+
+向内滑动事件。
+
+**系统能力**：SystemCapability.MultimodalInput.Input.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
+| 名称        | 类型  | 说明             |
+| ----------- | --- | --------------- |
+| type      | [ActionType](js-apis-multimodalinput-gestureevent.md#ActionType)   |        表示向内滑动事件的类型，固定为 SwipeInward。     |
+| x       | ArkTS-Dyn: number<br/>ArkTS-Sta: int   |    滑动事件触发点的横坐标，单位为像素。      |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: int   |     滑动事件触发点的纵坐标，单位为像素。     |
