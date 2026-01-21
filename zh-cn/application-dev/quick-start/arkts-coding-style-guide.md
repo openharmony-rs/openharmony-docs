@@ -390,6 +390,18 @@ b)   在模板中，不用加空格，例如：`abc${name}`。
 
 <!-- @[highlight_keywords_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+  // if 和左括号之间加一个空格
+  if (isJedi) {
+    fight();
+  }
+  // ...
+// 函数名fight和左括号 ( 之间不加空格
+function fight(): void {
+  console.info('Swooosh!');
+}
+```
+
 **【反例】**
 
 <!-- @[highlight_else_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
