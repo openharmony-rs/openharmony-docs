@@ -452,7 +452,7 @@ export struct ContentPageNoAndTabLinkage {
   **图13** 支持开发者自定义页面切换拦截事件 
 
 ![TabsChange3](figures/TabsChange3.gif)
-<!--Del-->
+
 ## 支持适老化
 
 在适老化大字体场景下，底部页签提供大字体弹窗显示内容。当组件识别到大字体时，基于设置的文字和图标等内容，构建长按提示弹窗。当用户长按弹窗后，滑动到下一个页签位置时，使用新页签的弹窗提示内容替换上一个页签提示内容，抬手关闭弹窗并切换到对应TabContent内容页。
@@ -463,6 +463,7 @@ export struct ContentPageNoAndTabLinkage {
 
 **图14** 在适老化场景下通过长按底部页签显示适老化弹窗。
 
+<!--RP2-->
 ![适老化弹窗](figures/tabs11.png)
 
 <!-- @[age_friendly_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/AgeFriendlyTabs.ets) -->
@@ -623,7 +624,7 @@ export struct AgeFriendlyTabs {
   }
 }
 ```
-<!--DelEnd-->
+<!--RP2End-->
 
 ## 控制页面缓存数
 
