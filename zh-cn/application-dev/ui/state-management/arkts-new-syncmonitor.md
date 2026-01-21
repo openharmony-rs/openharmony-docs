@@ -412,6 +412,40 @@ struct DocSampleArrayMultiPath {
 - 不建议在一个类中对同一个属性进行多次\@SyncMonitor的监听。当一个类中存在对一个属性的多次监听时，只有最后一个定义的监听方法会生效。
   
   <!-- @[monitor_the_same_variable_two_times](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SyncMonitor/entry/src/main/ets/pages/MonitorTheSameVariableTwoTimes.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  @ObservedV2
+  class Info {
+    @Trace public name: string = 'Tom';
+  
+    @SyncMonitor('name')
+    onNameChange(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s', `onNameChange`);
+    }
+  
+    @SyncMonitor('name')
+    onNameChangeDuplicate(monitor: IMonitor) {
+      hilog.info(0xFF00, 'testTag', '%{public}s', `onNameChangeDuplicate`);
+    }
+  }
+  
+  @Entry
+  @ComponentV2
+  struct Index {
+    info: Info = new Info();
+  
+    build() {
+      Column() {
+        Button('change name')
+          .onClick(() => {
+            this.info.name = 'Jack'; // 仅会触发onNameChangeDuplicate方法
+          })
+      }
+    }
+  }
+  ```
 
 - 当@SyncMonitor传入多个路径参数时，以参数的全拼接结果判断是否重复监听。全拼接时会在参数间加空格，以区分不同参数。例如，`'ab', 'c'`的全拼接结果为`'ab c'`，`'a', 'bc'`的全拼接结果为`'a bc'`，二者全拼接不相等。以下示例中，`SyncMonitor 1`、`SyncMonitor 2`与`SyncMonitor 3`都监听了name属性的变化。由于`SyncMonitor 2`与`SyncMonitor 3`的入参全拼接相等（都为`'name position'`），因此`SyncMonitor 2`不生效，仅`SyncMonitor 3`生效。当name属性变化时，将同时触发onNameAgeChange与onNamePositionChangeDuplicate方法。但请注意，`SyncMonitor 2`与`SyncMonitor 3`的写法仍然被视作在一个类中对同一个属性进行多次@SyncMonitor的监听，这是不建议的。
 
