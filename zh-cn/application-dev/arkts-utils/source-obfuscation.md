@@ -369,6 +369,14 @@ test(a2);
 删除对console.*语句的调用，要求console.*语句的返回值未被使用。效果如下：
 
   <!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
+  
+  ``` TypeScript
+  // 混淆前：
+  function add(a: number, b: number) {
+    console.info("result", a + b);
+    return a + b;
+  }
+  ```
 
 
 若配置该选项，以下场景中的console.*语句将被删除。
