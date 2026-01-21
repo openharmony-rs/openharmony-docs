@@ -28,7 +28,7 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[injectEvent](#inputeventclientinjectevent22)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[injectEvent](#inputeventclientinjectevent23)。
 
 **ArkTS-Dyn起始版本**：8
 
@@ -95,7 +95,7 @@ struct Index {
 }
 ```
 
-## inputEventClient.injectEvent<sup>22+</sup>
+## inputEventClient.injectEvent<sup>23+</sup>
 
 injectEvent(keyEvent: KeyEventInfo): void
 

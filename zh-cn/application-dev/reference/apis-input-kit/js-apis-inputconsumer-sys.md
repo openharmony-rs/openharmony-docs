@@ -29,7 +29,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#inputconsumeronkey22)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#inputconsumeronkey23)。
 
 **ArkTS-Dyn起始版本**：8
 
@@ -142,7 +142,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#inputconsumeroffkey22)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#inputconsumeroffkey23)。
 
 **ArkTS-Dyn起始版本**：8
 

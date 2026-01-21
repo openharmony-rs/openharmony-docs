@@ -464,7 +464,7 @@ on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[onChange](#inputdeviceonchange22)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onChange](#inputdeviceonchange23)。
 
 **ArkTS-Dyn起始版本**：9
 
@@ -585,7 +585,7 @@ off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
-**相关接口**: 该接口对应的ArkTS-Sta接口是[offChange](#inputdeviceoffchange22)。
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offChange](#inputdeviceoffchange23)。
 
 **ArkTS-Dyn起始版本**：9
 
