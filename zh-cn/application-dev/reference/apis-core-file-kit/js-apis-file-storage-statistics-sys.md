@@ -34,15 +34,15 @@ ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
 **参数：**
 
-  | 参数名     | 类型   | 必填 | 说明 |
-  | ---------- | ------ | ---- | ---- |
-  | volumeUuid | string | 是   | 卷设备uuid。 |
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| volumeUuid | string | 是   | 卷设备uuid。 |
 
 **返回值：**
 
-  | 类型                  | 说明             |
-  | --------------------- | ---------------- |
-  |  ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回指定卷设备的总空间大小（单位为Byte）。 |
+| 类型                  | 说明             |
+| --------------------- | ---------------- |
+|  ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回指定卷设备的总空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -59,41 +59,41 @@ ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
+```ts
+import volumemanager from "@ohos.file.volumeManager";
+import { BusinessError } from '@ohos.base';
 
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
-    let uuid: string = volumes[0].uuid;
-    storageStatistics.getTotalSizeOfVolume(uuid).then((totalSize: number) => {
-      console.info("getTotalSizeOfVolume successfully:" + totalSize);
-    }).catch((err: BusinessError) => {
-      console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(err));
-    });
+volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  let uuid: string = volumes[0].uuid;
+  storageStatistics.getTotalSizeOfVolume(uuid).then((totalSize: number) => {
+    console.info("getTotalSizeOfVolume successfully:" + totalSize);
   }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+    console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(err));
   });
-  ```
+}).catch((err: BusinessError) => {
+  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
+```ts
+import volumemanager from "@ohos.file.volumeManager";
+import { BusinessError } from '@ohos.base';
 
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
-    let uuid: string = volumes[0].uuid;
-    storageStatistics.getTotalSizeOfVolume(uuid).then((totalSize: long) => {
-      console.info("getTotalSizeOfVolume successfully:" + totalSize);
-    }).catch((err: BusinessError) => {
-      console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(err));
-    });
-  }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  let uuid: string = volumes[0].uuid;
+  storageStatistics.getTotalSizeOfVolume(uuid).then((totalSize: long) => {
+    console.info("getTotalSizeOfVolume successfully:" + totalSize);
+  }).catch((err: BusinessError): void => {
+    console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(err));
   });
-  ```
+}).catch((err: BusinessError): void => {
+  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getTotalSizeOfVolume
 
@@ -115,10 +115,10 @@ ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;l
 
 **参数：**
 
-  | 参数名     | 类型                                 | 必填 | 说明                       |
-  | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | volumeUuid | string                               | 是   | 卷设备uuid。                       |
-  | callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;   | 是   | 获取指定卷设备总空间之后的回调。 |
+| 参数名     | 类型                                 | 必填 | 说明                       |
+| ---------- | ------------------------------------ | ---- | -------------------------- |
+| volumeUuid | string                               | 是   | 卷设备uuid。                       |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;   | 是   | 获取指定卷设备总空间之后的回调。 |
 
 **错误码：**
 
@@ -135,47 +135,47 @@ ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;l
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
+```ts
+import volumemanager from "@ohos.file.volumeManager";
+import { BusinessError } from '@ohos.base';
 
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
-    let uuid: string = volumes[0].uuid;
-    storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, totalSize: number) => {
-      if (error) {
-        console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(error));
-      } else {
-        // do something
-        console.info("getTotalSizeOfVolume successfully:" + totalSize);
-      }
-    });
-  }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  let uuid: string = volumes[0].uuid;
+  storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, totalSize: number) => {
+    if (error) {
+      console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getTotalSizeOfVolume successfully:" + totalSize);
+    }
   });
-  ```
+}).catch((err: BusinessError) => {
+  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
+```ts
+import volumemanager from "@ohos.file.volumeManager";
+import { BusinessError } from '@ohos.base';
 
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
-    let uuid: string = volumes[0].uuid;
-    storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, totalSize: long) => {
-      if (error) {
-        console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(error));
-      } else {
-        // do something
-        console.info("getTotalSizeOfVolume successfully:" + totalSize);
-      }
-    });
-  }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  let uuid: string = volumes[0].uuid;
+  storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, totalSize: long): void => {
+    if (error) {
+      console.error("getTotalSizeOfVolume failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getTotalSizeOfVolume successfully:" + totalSize);
+    }
   });
-  ```
+}).catch((err: BusinessError): void => {
+  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getFreeSizeOfVolume
 
@@ -197,15 +197,15 @@ ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
 **参数：**
 
-  | 参数名     | 类型   | 必填 | 说明 |
-  | ---------- | ------ | ---- | ---- |
-  | volumeUuid | string | 是   | 卷设备uuid。 |
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| volumeUuid | string | 是   | 卷设备uuid。 |
 
 **返回值：**
 
-  | 类型                  | 说明               |
-  | --------------------- | ------------------ |
-  | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt;  | Promise对象，返回指定卷的可用空间大小（单位为Byte）。 |
+| 类型                  | 说明               |
+| --------------------- | ------------------ |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt;  | Promise对象，返回指定卷的可用空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -222,41 +222,41 @@ ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
+```ts
+import volumemanager from "@ohos.file.volumeManager";
+import { BusinessError } from '@ohos.base';
 
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
-    let uuid: string = volumes[0].uuid;
-    storageStatistics.getFreeSizeOfVolume(uuid).then((freeSize: number) => {
-      console.info("getFreeSizeOfVolume successfully:" + number);
-    }).catch((err: BusinessError) => {
-      console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(err));
-    });
+volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  let uuid: string = volumes[0].uuid;
+  storageStatistics.getFreeSizeOfVolume(uuid).then((freeSize: number) => {
+    console.info("getFreeSizeOfVolume successfully:" + number);
   }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+    console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(err));
   });
-  ```
+}).catch((err: BusinessError) => {
+  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
+```ts
+import volumemanager from "@ohos.file.volumeManager";
+import { BusinessError } from '@ohos.base';
 
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
-    let uuid: string = volumes[0].uuid;
-    storageStatistics.getFreeSizeOfVolume(uuid).then((freeSize: long) => {
-      console.info("getFreeSizeOfVolume successfully:" + freeSize);
-    }).catch((err: BusinessError) => {
-      console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(err));
-    });
-  }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  let uuid: string = volumes[0].uuid;
+  storageStatistics.getFreeSizeOfVolume(uuid).then((freeSize: long) => {
+    console.info("getFreeSizeOfVolume successfully:" + freeSize);
+  }).catch((err: BusinessError): void => {
+    console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(err));
   });
-  ```
+}).catch((err: BusinessError): void => {
+  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getFreeSizeOfVolume
 
@@ -278,10 +278,10 @@ ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;lo
 
 **参数：**
 
-  | 参数名     | 类型                                 | 必填 | 说明                         |
-  | ---------- | ------------------------------------ | ---- | ---------------------------- |
-  | volumeUuid | string                               | 是   | 卷设备uuid。                         |
-  | callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;       | 是   | 获取指定卷可用空间之后的回调。 |
+| 参数名     | 类型                                 | 必填 | 说明                         |
+| ---------- | ------------------------------------ | ---- | ---------------------------- |
+| volumeUuid | string                               | 是   | 卷设备uuid。                         |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;       | 是   | 获取指定卷可用空间之后的回调。 |
 
 **错误码：**
 
@@ -298,47 +298,47 @@ ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;lo
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
+```ts
+import volumemanager from "@ohos.file.volumeManager";
+import { BusinessError } from '@ohos.base';
 
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
-    let uuid: string = volumes[0].uuid;
-    storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, freeSize: number) => {
-      if (error) {
-        console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(error));
-      } else {
-        // do something
-        console.info("getFreeSizeOfVolume successfully: " + freeSize);
-      }
-    });
-  }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  let uuid: string = volumes[0].uuid;
+  storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, freeSize: number) => {
+    if (error) {
+      console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getFreeSizeOfVolume successfully: " + freeSize);
+    }
   });
-  ```
+}).catch((err: BusinessError) => {
+  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
+```ts
+import volumemanager from "@ohos.file.volumeManager";
+import { BusinessError } from '@ohos.base';
 
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
-    let uuid: string = volumes[0].uuid;
-    storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, freeSize: long) => {
-      if (error) {
-        console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(error));
-      } else {
-        // do something
-        console.info("getFreeSizeOfVolume successfully: " + freeSize);
-      }
-    });
-  }).catch((err: BusinessError) => {
-    console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  let uuid: string = volumes[0].uuid;
+  storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, freeSize: long) => {
+    if (error) {
+      console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(error));
+    } else {
+      // do something
+      console.info("getFreeSizeOfVolume successfully: " + freeSize);
+    }
   });
-  ```
+}).catch((err: BusinessError): void => {
+  console.error("getAllVolumes failed with error:" + JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getBundleStats<sup>9+</sup>
 
@@ -360,16 +360,16 @@ ArkTS-Sta: getBundleStats(packageName: string, index?: int): Promise&lt;BundleSt
 
 **参数：**
 
-  | 参数名      | 类型   | 必填 | 说明     |
-  | ----------- | ------ | ---- | -------- |
-  | packageName | string | 是   | 应用包名。 |
-  | index<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
+| 参数名      | 类型   | 必填 | 说明     |
+| ----------- | ------ | ---- | -------- |
+| packageName | string | 是   | 应用包名。 |
+| index<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
 
 **返回值：**
 
-  | 类型                                       | 说明                       |
-  | ------------------------------------------ | -------------------------- |
-  | Promise&lt;[Bundlestats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise对象，返回指定卷上的应用存储数据的空间大小（单位为Byte）。 |
+| 类型                                       | 说明                       |
+| ------------------------------------------ | -------------------------- |
+| Promise&lt;[Bundlestats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise对象，返回指定卷上的应用存储数据的空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -386,61 +386,60 @@ ArkTS-Sta: getBundleStats(packageName: string, index?: int): Promise&lt;BundleSt
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-  import storageStatistics from "@ohos.file.storageStatistics";
-  import { BusinessError } from '@ohos.base';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+```ts
+import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
+import storageStatistics from "@ohos.file.storageStatistics";
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let bundleName = "com.example.myapplication";
-  let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
-  try {
-    let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
-    hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
 
-    let packageName:string = bundleName;
-    let index:number = resourceInfo.appIndex;
-    storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
-      hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
-    });
-  
-  } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', message);
-  }
-  ```
+  let packageName:string = bundleName;
+  let index:number = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
+    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+  });
 
-  ArkTS-Sta示例：
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', message);
+}
+```
 
-  ```ts
-  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-  import storageStatistics from "@ohos.file.storageStatistics";
-  import { BusinessError } from '@ohos.base';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Sta示例：
 
-  let bundleName = "com.example.myapplication";
-  let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
-  try {
-    let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
-    hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+```ts
+import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
+import storageStatistics from "@ohos.file.storageStatistics";
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-    let packageName:string = bundleName;
-    let index:int = resourceInfo.appIndex;
-    storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
-      hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
-    });
-  
-  } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', message);
-  }
-  ```
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+  let packageName:string = bundleName;
+  let index:int = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
+    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+  }).catch((err: BusinessError): void => {
+    hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+  });
+
+} catch (err: BusinessError) {
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', err);
+}
+```
 
 ## storageStatistics.getBundleStats<sup>9+</sup>
 
@@ -462,11 +461,11 @@ ArkTS-Sta: getBundleStats(packageName: string, callback: AsyncCallback&lt;Bundle
 
 **参数：**
 
-  | 参数名   | 类型                                                      | 必填 | 说明                                 |
-  | -------- | --------------------------------------------------------- | ---- | ------------------------------------ |
-  | packageName | string | 是   | 应用包名。 |
-  | callback | AsyncCallback&lt;[Bundlestats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | 是   | 获取指定卷上的应用存储数据的空间大小之后的回调。 |
-  | index<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
+| 参数名   | 类型                                                      | 必填 | 说明                                 |
+| -------- | --------------------------------------------------------- | ---- | ------------------------------------ |
+| packageName | string | 是   | 应用包名。 |
+| callback | AsyncCallback&lt;[Bundlestats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | 是   | 获取指定卷上的应用存储数据的空间大小之后的回调。 |
+| index<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 分身应用的索引号，默认值为0（表示未分身的主应用）。分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)接口获得。|
 
 **错误码：**
 
@@ -483,65 +482,64 @@ ArkTS-Sta: getBundleStats(packageName: string, callback: AsyncCallback&lt;Bundle
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-  import storageStatistics from "@ohos.file.storageStatistics";
-  import { BusinessError } from '@ohos.base';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+```ts
+import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
+import storageStatistics from "@ohos.file.storageStatistics";
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  let bundleName = "com.example.myapplication";
-  let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
-  try {
-    let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
-    hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
 
-    let packageName:string = bundleName;
-    let index:number = resourceInfo.appIndex;
-    storageStatistics.getBundleStats(packageName, (err: BusinessError, BundleStats: storageStatistics.BundleStats) => {
-      if (err) {
-        hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
-      } else {
-        hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
-      }
-    }, index);
-  
-  } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
-  }
-  ```
+  let packageName:string = bundleName;
+  let index:number = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, (err: BusinessError, BundleStats: storageStatistics.BundleStats) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+    } else {
+      hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+    }
+  }, index);
 
-  ArkTS-Sta示例：
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
+}
+```
 
-  ```ts
-  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-  import storageStatistics from "@ohos.file.storageStatistics";
-  import { BusinessError } from '@ohos.base';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+ArkTS-Sta示例：
 
-  let bundleName = "com.example.myapplication";
-  let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
-  try {
-    let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
-    hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+```ts
+import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
+import storageStatistics from "@ohos.file.storageStatistics";
+import { BusinessError } from '@ohos.base';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-    let packageName:string = bundleName;
-    let index:int = resourceInfo.appIndex;
-    storageStatistics.getBundleStats(packageName, (err: BusinessError, BundleStats: storageStatistics.BundleStats) => {
-      if (err) {
-        hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
-      } else {
-        hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
-      }
-    }, index);
-  
-  } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
-  }
-  ```
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+
+  let packageName:string = bundleName;
+  let index:int = resourceInfo.appIndex;
+  storageStatistics.getBundleStats(packageName, (err: BusinessError, BundleStats: storageStatistics.BundleStats): void => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
+    } else {
+      hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
+    }
+  }, index);
+
+} catch (err: BusinessError) {
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', err);
+}
+```
 
 ## storageStatistics.getSystemSize<sup>9+</sup>
 
@@ -563,9 +561,9 @@ ArkTS-Sta: getSystemSize(): Promise&lt;long&gt;
 
 **返回值：**
 
-  | 类型                  | 说明             |
-  | --------------------- | ---------------- |
-  | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回系统数据的空间大小（单位为Byte）。 |
+| 类型                  | 说明             |
+| --------------------- | ---------------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回系统数据的空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -581,27 +579,27 @@ ArkTS-Sta: getSystemSize(): Promise&lt;long&gt;
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  storageStatistics.getSystemSize().then((systemSize: number) => {
-    console.info("getSystemSize successfully:" + systemSize);
-  }).catch((err: BusinessError) => {
-    console.error("getSystemSize failed with error:" + JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+storageStatistics.getSystemSize().then((systemSize: number) => {
+  console.info("getSystemSize successfully:" + systemSize);
+}).catch((err: BusinessError) => {
+  console.error("getSystemSize failed with error:" + JSON.stringify(err));
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  storageStatistics.getSystemSize().then((systemSize: long) => {
-    console.info("getSystemSize successfully:" + systemSize);
-  }).catch((err: BusinessError) => {
-    console.error("getSystemSize failed with error:" + JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+storageStatistics.getSystemSize().then((systemSize: long) => {
+  console.info("getSystemSize successfully:" + systemSize);
+}).catch((err: BusinessError): void => {
+  console.error("getSystemSize failed with error:" + JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getSystemSize<sup>9+</sup>
 
@@ -623,9 +621,9 @@ ArkTS-Sta: getSystemSize(callback: AsyncCallback&lt;long&gt;): void
 
 **参数：**
 
-  | 参数名     | 类型                                 | 必填 | 说明                       |
-  | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | callback   |  ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;   | 是   | 获取系统数据的空间大小之后的回调。 |
+| 参数名     | 类型                                 | 必填 | 说明                       |
+| ---------- | ------------------------------------ | ---- | -------------------------- |
+| callback   |  ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;   | 是   | 获取系统数据的空间大小之后的回调。 |
 
 **错误码：**
 
@@ -641,33 +639,33 @@ ArkTS-Sta: getSystemSize(callback: AsyncCallback&lt;long&gt;): void
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  storageStatistics.getSystemSize((error: BusinessError, systemSize: number) => {
-    if (error) {
-      console.error("getSystemSize failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getSystemSize successfully:" + systemSize);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+storageStatistics.getSystemSize((error: BusinessError, systemSize: number) => {
+  if (error) {
+    console.error("getSystemSize failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getSystemSize successfully:" + systemSize);
+  }
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  storageStatistics.getSystemSize((error: BusinessError, systemSize: long) => {
-    if (error) {
-      console.error("getSystemSize failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getSystemSize successfully:" + systemSize);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+storageStatistics.getSystemSize((error: BusinessError, systemSize: long) => {
+  if (error) {
+    console.error("getSystemSize failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getSystemSize successfully:" + systemSize);
+  }
+});
+```
 
 ## storageStatistics.getUserStorageStats<sup>9+</sup>
 
@@ -687,9 +685,9 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 
 **返回值：**
 
-  | 类型                  | 说明             |
-  | --------------------- | ---------------- |
-  | Promise&lt;[StorageStats](#storagestats9)&gt; | Promise对象，返回当前用户各类别存储空间大小（单位为Byte）。 |
+| 类型                  | 说明             |
+| --------------------- | ---------------- |
+| Promise&lt;[StorageStats](#storagestats9)&gt; | Promise对象，返回当前用户各类别存储空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -705,14 +703,14 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.StorageStats) => {
-    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-  }).catch((err: BusinessError) => {
-    console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.StorageStats) => {
+  console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+}).catch((err: BusinessError) => {
+  console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getUserStorageStats<sup>9+</sup>
 
@@ -732,9 +730,9 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 **参数：**
 
-  | 参数名     | 类型                                 | 必填 | 说明                       |
-  | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | callback   | AsyncCallback&lt;[StorageStats](#storagestats9)&gt; | 是   | 返回用户各类别存储空间大小之后的回调。 |
+| 参数名     | 类型                                 | 必填 | 说明                       |
+| ---------- | ------------------------------------ | ---- | -------------------------- |
+| callback   | AsyncCallback&lt;[StorageStats](#storagestats9)&gt; | 是   | 返回用户各类别存储空间大小之后的回调。 |
 
 **错误码：**
 
@@ -750,17 +748,17 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
-    if (error) {
-      console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
+  if (error) {
+    console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+  }
+});
+```
 
 ## storageStatistics.getUserStorageStats<sup>9+</sup>
 
@@ -782,15 +780,15 @@ ArkTS-Sta: getUserStorageStats(userId: long): Promise&lt;StorageStats&gt;
 
 **参数：**
 
-  | 参数名     | 类型   | 必填 | 说明 |
-  | ---------- | ------ | ---- | ---- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 用户id。|
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 用户id。|
 
 **返回值：**
 
-  | 类型                  | 说明             |
-  | --------------------- | ---------------- |
-  | Promise&lt;[StorageStats](#storagestats9)&gt; | Promise对象，返回指定用户各类别存储空间大小（单位为Byte）。 |
+| 类型                  | 说明             |
+| --------------------- | ---------------- |
+| Promise&lt;[StorageStats](#storagestats9)&gt; | Promise对象，返回指定用户各类别存储空间大小（单位为Byte）。 |
 
 **错误码：**
 
@@ -807,29 +805,29 @@ ArkTS-Sta: getUserStorageStats(userId: long): Promise&lt;StorageStats&gt;
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  let userId: number = 100;
-  storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
-    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-  }).catch((err: BusinessError) => {
-    console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+let userId: number = 100;
+storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
+  console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+}).catch((err: BusinessError) => {
+  console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  let userId: long = 100;
-  storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
-    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-  }).catch((err: BusinessError):void => {
-    console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+let userId: long = 100;
+storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
+  console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+}).catch((err: BusinessError): void => {
+  console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getUserStorageStats<sup>9+</sup>
 
@@ -851,10 +849,10 @@ ArkTS-Sta: getUserStorageStats(userId: long, callback: AsyncCallback&lt;StorageS
 
 **参数：**
 
-  | 参数名     | 类型                                 | 必填 | 说明                       |
-  | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 用户id。 |
-  | callback   | AsyncCallback&lt;[StorageStats](#storagestats9)&gt; | 是   | 返回指定用户各类别存储空间大小之后的回调。 |
+| 参数名     | 类型                                 | 必填 | 说明                       |
+| ---------- | ------------------------------------ | ---- | -------------------------- |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 用户id。 |
+| callback   | AsyncCallback&lt;[StorageStats](#storagestats9)&gt; | 是   | 返回指定用户各类别存储空间大小之后的回调。 |
 
 **错误码：**
 
@@ -871,35 +869,35 @@ ArkTS-Sta: getUserStorageStats(userId: long, callback: AsyncCallback&lt;StorageS
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  let userId: number = 100;
-  storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
-    if (error) {
-      console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+let userId: number = 100;
+storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
+  if (error) {
+    console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+  }
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@ohos.base';
-  let userId: long = 100;
-  storageStatistics.getUserStorageStats(userId, (error, storageStats) => {
-    if (error) {
-      console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@ohos.base';
+let userId: long = 100;
+storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats): void => {
+  if (error) {
+    console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+  }
+});
+```
 
 ## StorageStats<sup>9+</sup>
 
@@ -966,10 +964,10 @@ ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;voi
 
 **参数：**
 
-  | 参数名     | 类型                                 | 必填 | 说明                       |
-  | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。                       |
-  | stats   | [ExtBundleStats](#extbundlestats23) | 是   | 系统应用或系统服务的空间占用详情。 |
+| 参数名     | 类型                                 | 必填 | 说明                       |
+| ---------- | ------------------------------------ | ---- | -------------------------- |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。                       |
+| stats   | [ExtBundleStats](#extbundlestats23) | 是   | 系统应用或系统服务的空间占用详情。 |
 
 **返回值：**
 
@@ -994,40 +992,40 @@ ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;voi
 ArkTS-Dyn示例：
 
 ```ts
-  import { storageStatistics } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
-  let extBundleStats: storageStatistics.ExtBundleStats = {
-    businessName: 'com.example.storagedemo',
-    size: 10000,
-    flag: true
-  }
-  storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
-    console.info("setExtBundleStats successfully");
-  }).catch((err: BusinessError) => {
-    console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
-  });
-  ```
+let userId: number = 100;
+let extBundleStats: storageStatistics.ExtBundleStats = {
+  businessName: 'com.example.storagedemo',
+  size: 10000,
+  flag: true
+}
+storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
+  console.info("setExtBundleStats successfully");
+}).catch((err: BusinessError) => {
+  console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
 
 ArkTS-Sta示例：
 
-  ```ts
-  import { storageStatistics } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: int = 100;
-  let extBundleStats: storageStatistics.ExtBundleStats = {
-    businessName: 'com.example.storagedemo',
-    size: 10000,
-    flag: true
-  }
-  storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
-    console.info("setExtBundleStats successfully");
-  }).catch((err) => {
-    console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
-  });
-  ```
+let userId: int = 100;
+let extBundleStats: storageStatistics.ExtBundleStats = {
+  businessName: 'com.example.storagedemo',
+  size: 10000,
+  flag: true
+}
+storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
+  console.info("setExtBundleStats successfully");
+}).catch((err: BusinessError): void => {
+  console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
 
 ## storageStatistics.getExtBundleStats<sup>23+</sup>
 
@@ -1051,16 +1049,16 @@ ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtB
 
 **参数：**
 
-  | 参数名     | 类型                                 | 必填 | 说明                       |
-  | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。|
-  | businessName | string | 是   | 系统应用包名或系统服务名称。 |
+| 参数名     | 类型                                 | 必填 | 说明                       |
+| ---------- | ------------------------------------ | ---- | -------------------------- |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。|
+| businessName | string | 是   | 系统应用包名或系统服务名称。 |
 
 **返回值：**
 
-  | 类型                  | 说明             |
-  | --------------------- | ---------------- |
-  | Promise&lt;[ExtBundleStats](#ExtBundleStats23)&gt; | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
+| 类型                  | 说明             |
+| --------------------- | ---------------- |
+| Promise&lt;[ExtBundleStats](#ExtBundleStats23)&gt; | Promise对象，返回指定用户、指定系统应用包名或系统服务名称的空间占用详情。 |
 
 **错误码：**
 
@@ -1079,32 +1077,32 @@ ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtB
 ArkTS-Dyn示例：
 
 ```ts
-  import { storageStatistics } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
-  let businessName: string = 'com.example.storagedemo';
-  storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
-    console.info("getExtBundleStats successfully.");
-  }).catch((err: BusinessError) => {
-    console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
-  });
-  ```
+let userId: number = 100;
+let businessName: string = 'com.example.storagedemo';
+storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
+  console.info("getExtBundleStats successfully.");
+}).catch((err: BusinessError) => {
+  console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
 
 ArkTS-Sta示例：
 
-  ```ts
-  import { storageStatistics } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: int = 100;
-  let businessName: string = 'com.example.storagedemo';
-  storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
-    console.info("getExtBundleStats successfully.");
-  }).catch((err) => {
-    console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
-  });
-  ```
+let userId: int = 100;
+let businessName: string = 'com.example.storagedemo';
+storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: storageStatistics.ExtBundleStats) => {
+  console.info("getExtBundleStats successfully.");
+}).catch((err: BusinessError): void => {
+  console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
 
 ## storageStatistics.getAllExtBundleStats<sup>23+</sup>
 
@@ -1128,15 +1126,15 @@ ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats
 
 **参数：**
 
-  | 参数名     | 类型                                 | 必填 | 说明                       |
-  | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。                       |
+| 参数名     | 类型                                 | 必填 | 说明                       |
+| ---------- | ------------------------------------ | ---- | -------------------------- |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户id。                       |
 
 **返回值：**
 
-  | 类型                  | 说明             |
-  | --------------------- | ---------------- |
-  | Promise&lt;Array&lt;[ExtBundleStats](#extbundlestats23)&gt;&gt; | Promise对象，返回指定用户下所有系统应用或系统服务的空间占用详情。 |
+| 类型                  | 说明             |
+| --------------------- | ---------------- |
+| Promise&lt;Array&lt;[ExtBundleStats](#extbundlestats23)&gt;&gt; | Promise对象，返回指定用户下所有系统应用或系统服务的空间占用详情。 |
 
 **错误码：**
 
@@ -1155,34 +1153,34 @@ ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats
 ArkTS-Dyn示例：
 
 ```ts
-  import { storageStatistics } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
-  storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageStatistics.ExtBundleStats[]) => {
-    console.info("getAllExtBundleStats successfully");
-  }).catch((err: BusinessError) => {
-    console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
-  });
-  ```
+let userId: number = 100;
+storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageStatistics.ExtBundleStats[]) => {
+console.info("getAllExtBundleStats successfully");
+}).catch((err: BusinessError) => {
+console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
 
 ArkTS-Sta示例：
 
-  ```ts
-  import { storageStatistics } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: int = 100;
-  storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageStatistics.ExtBundleStats[]) => {
-    console.info("getAllExtBundleStats successfully");
-  }).catch((err) => {
-    console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
-  });
-  ```
-  
-  ## UserdataDirInfo<sup>23+</sup>
-  
-  用户设备中/data目录下的空间占用详情。
+let userId: int = 100;
+storageStatistics.getAllExtBundleStats(userId).then((bundleStatsList: storageStatistics.ExtBundleStats[]) => {
+console.info("getAllExtBundleStats successfully");
+}).catch((err: BusinessError): void => {
+console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
+
+## UserdataDirInfo<sup>23+</sup>
+
+用户设备中/data目录下的空间占用详情。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
 
@@ -1237,13 +1235,13 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
 **示例：**
 
-  ```ts
-  import { storageStatistics } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  storageStatistics.listUserdataDirInfo().then((dirInfos: storageStatistics.UserdataDirInfo[]) => {
-    console.info("listUserdataDirInfo successfully.");
-  }).catch((err) => {
-    console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
-  });
-  ```
+storageStatistics.listUserdataDirInfo().then((dirInfos: storageStatistics.UserdataDirInfo[]) => {
+console.info("listUserdataDirInfo successfully.");
+}).catch((err) => {
+console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
