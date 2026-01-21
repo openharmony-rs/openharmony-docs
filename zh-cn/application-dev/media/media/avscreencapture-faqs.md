@@ -13,7 +13,7 @@
 
 可能原因：录屏过程中，点击“不允许”、在通知栏停止录屏和通话打断录屏后，未释放资源。
 
-解决方法：在录屏过程中因为状态改变导致录屏停止后，需要在[状态回调](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)中，对录屏资源进行异步释放。
+解决方法：在录屏过程中因为状态改变导致的录屏停止，需要在[OH_AVScreenCapture_SetStateCallback()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)（状态回调）中，对录屏资源进行异步释放。
 
 录屏会话限制策略：
 
