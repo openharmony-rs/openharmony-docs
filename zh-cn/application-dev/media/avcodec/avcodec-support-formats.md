@@ -29,6 +29,7 @@
 | RV30<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV30](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | RV40<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV40](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | WVC1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WVC1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| DVVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | RAWVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MPEG1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP14--> <!--RP14End-->
