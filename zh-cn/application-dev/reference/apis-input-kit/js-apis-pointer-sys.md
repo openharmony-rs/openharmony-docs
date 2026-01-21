@@ -474,7 +474,7 @@ ArkTS-Sta: getPointerSpeedSync(): int
 
 | 参数                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 返回鼠标移动速度。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回鼠标移动速度。 |
 
 **错误码**：
 
@@ -1329,7 +1329,9 @@ struct Index {
 
 ## pointer.setMouseScrollRows<sup>10+</sup>
 
-setMouseScrollRows(rows: number): Promise&lt;void&gt;
+ArkTS-Dyn: setMouseScrollRows(rows: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setMouseScrollRows(rows: int): Promise&lt;void&gt;
 
 设置鼠标滚动行数，使用Promise异步方式返回结果。
 
