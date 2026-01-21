@@ -35,6 +35,7 @@
 | [OHIPCParcel](capi-nativewindow-ohipcparcel.md) | OHIPCParcel | 提供对IPC序列化对象的访问功能。 |
 | [NativeWindow](capi-nativewindow-nativewindow.md) | OHNativeWindow | 提供对OHNativeWindow的访问功能。 |
 | [NativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) | OHNativeWindowBuffer | 提供对OHNativeWindowBuffer的访问功能。 |
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) | OH_NativeBuffer | 提供对OH_NativeBuffer的访问功能。 |
 
 ### 枚举
 

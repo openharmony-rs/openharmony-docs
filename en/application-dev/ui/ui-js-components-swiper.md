@@ -3,16 +3,16 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The **&lt;swiper&gt;** component is a sliding container used to switch between child components. For details, see [swiper](../reference/apis-arkui/arkui-js/js-components-container-swiper.md).
+The **\<swiper>** component is a sliding container used to switch between child components. For details, see [swiper](../reference/apis-arkui/arkui-js/js-components-container-swiper.md).
 
 
-## Creating a &lt;swiper&gt; Component
+## Creating a \<swiper> Component
 
-Create a **&lt;swiper&gt;** component in the .hml file under **pages/index**.
+Create a **\<swiper>** component in the .hml file under **pages/index**.
 
 ```html
 <!-- xxx.hml-->
@@ -59,17 +59,17 @@ text{
 ```
 
 
-![en-us_image_0000001232003028](figures/en-us_image_0000001232003028.gif)
+![en-us_image_0000001181495038](figures/en-us_image_0000001181495038.gif)
 
 
 > **NOTE**
 >
-> The **&lt;swiper&gt;** component supports child components except **&lt;list&gt;**.
+> The **\<swiper>** component supports child components except **\<list>**.
 
 
 ## Adding Attributes
 
-When **loop** is set to **false**, the **autoplay** attribute is added to the **&lt;swiper&gt;** component and the autoplay interval (**interval**) is set. The component automatically switches between child components and stops at the last one. Add the **digital** attribute to enable the digital navigation point and set **scrolleffect** to **fade**.
+When **loop** is set to **false**, the **autoplay** attribute is added to the **\<swiper>** component and the autoplay interval (**interval**) is set. The component automatically switches between child components and stops at the last one. Add the **digital** attribute to enable the indicator of the digit style and set **scrolleffect** to **fade**.
 
 
 ```html
@@ -125,14 +125,14 @@ text{
 > **NOTE**
 > - The **digital** attribute takes effect only when the **indicator** attribute is set to **true**.
 >
-> - The **loop** attribute takes effect only when there are two or more child components in the **&lt;swiper&gt;** component.
+> - The **loop** attribute takes effect only when there are two or more child components in the **\<swiper>** component.
 >
 > - The **scrolleffect** attribute takes effect only when the **loop** attribute value is set to **false**.
 
 
 ## Setting Styles
 
-Set the width and height of the **&lt;swiper&gt;** component, the indicator's size (**indicator-size**), color (**indicator-color**), relative position (**indicator-top**), and color when it is selected (**indicator-selected-color**).
+Set the width and height of the **\<swiper>** component, the navigation point indicator's size (**indicator-size**), color (**indicator-color**), relative position (**indicator-top**), and color when it is selected (**indicator-selected-color**).
 
 
 ```html
@@ -274,7 +274,7 @@ export default{
     promptAction.showToast({duration:2000,message:"current index:"+e.index});
   },
   finish(){
-    promptAction.showToast({duration:2000,message:"The switchover ends"});
+    promptAction.showToast({duration:2000,message:"The switchover ends."});
   },
   selectChange(e){
     this.$element('swiper').swipeTo({index: Number(e.newValue)});
@@ -288,12 +288,12 @@ export default{
 }
 ```
 
-![en-us_image_0000001231843128](figures/en-us_image_0000001231843128.gif)
+![en-us_image_0000001227016767](figures/en-us_image_0000001227016767.gif)
 
 
 ## Example Scenario
 
-Use the **&lt;swiper&gt;** component to create an image carousel and a thumbnail module at the bottom of the carousel. After a thumbnail is clicked, the **swipeTo** method is called to switch to the corresponding image.
+Use the **\<swiper>** component to create an image carousel and a thumbnail module at the bottom of the carousel. After a thumbnail is clicked, the **swipeTo** method is called to switch to the corresponding image.
 
 
 ```html
@@ -305,7 +305,7 @@ Use the **&lt;swiper&gt;** component to create an image carousel and a thumbnail
     </div>
   </swiper>
   <div class="content">
-    <div class="content_item {{index == $idx?'actived':''}}" for="item in list" onclick="imageTo({{$idx}})">
+    <div class="content_item {{index == $idx?'activated':''}}" for="item in list" onclick="imageTo({{$idx}})">
       <image src="{{item.src}}"></image>
     </div>
   </div>
@@ -341,7 +341,7 @@ swiper{
   padding: 5px;
   transform: scale(0.5);
 }
-.actived{
+.activated{
   transform: scale(1);
   border: 1px solid #b20937ea;
 }
@@ -350,7 +350,6 @@ swiper{
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   data:{
     index: 0,
@@ -370,4 +369,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001231843132](figures/en-us_image_0000001231843132.gif)
+![en-us_image_0000001263359599](figures/en-us_image_0000001263359599.gif)

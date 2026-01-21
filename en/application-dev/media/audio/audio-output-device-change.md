@@ -110,7 +110,7 @@ The examples in each of the following steps are code snippets. You can click the
     }	
   ```
 
-### AudioSessionManager sample
+### AudioSessionManager Sample
 
   ```ts
   import { audio } from '@kit.AudioKit';

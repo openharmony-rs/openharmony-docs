@@ -1431,11 +1431,9 @@
           - [应用文件上传下载](basic-services/request/app-file-upload-download.md)
         - 压缩与解压<!--compress-->
           - [压缩与解压](basic-services/compress/deflate-and-inflate.md)
-        <!--Del-->
         - 划词服务<!--selectioninput-->
-          - [划词服务子系统概述](basic-services/selectionInput/selection-services-intro-sys.md)
-          - [实现一个划词扩展能力](basic-services/selectionInput/selection-services-application-guide-sys.md)
-        <!--DelEnd-->
+          - [划词服务概述](basic-services/selectionInput/selection-services-intro.md)
+          - [实现一个划词扩展能力](basic-services/selectionInput/selection-services-application-guide.md)
         - 电源管理<!--powermgr-->
           - 运行锁使用指南<!--powermgr-->
             - [阻止系统闲时进入睡眠开发指南](basic-services/powermgr/runningLock/runningLock-dev.md)
@@ -3750,6 +3748,8 @@
           - [Class (WebSchemeHandlerRequest)](reference/apis-arkweb/arkts-apis-webview-WebSchemeHandlerRequest.md)
           - [Class (WebSchemeHandlerResponse)](reference/apis-arkweb/arkts-apis-webview-WebSchemeHandlerResponse.md)
           - [Class (WebStorage)](reference/apis-arkweb/arkts-apis-webview-WebStorage.md)
+          - [Class (UserAgentBrandVersion)](reference/apis-arkweb/arkts-apis-webview-UserAgentBrandVersion.md)
+          - [Class (UserAgentMetadata)](reference/apis-arkweb/arkts-apis-webview-UserAgentMetadata.md)
           - [Class (VerifyPinHandler)](reference/apis-arkweb/arkts-basic-components-web-VerifyPinHandler.md)
           - [Interface (BackForwardList)](reference/apis-arkweb/arkts-apis-webview-BackForwardList.md)
           - [Interface (NativeMediaPlayerBridge)](reference/apis-arkweb/arkts-apis-webview-NativeMediaPlayerBridge.md)
@@ -4496,15 +4496,15 @@
             - [@ohos.request (上传下载)](reference/apis-basic-services-kit/js-apis-request.md)
             - [@ohos.request.cacheDownload (缓存下载)](reference/apis-basic-services-kit/js-apis-request-cacheDownload.md)
             - [@ohos.zlib (Zip模块)](reference/apis-basic-services-kit/js-apis-zlib.md)
+            - [@ohos.selectionInput.SelectionExtensionAbility (划词扩展能力)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)
+            - [@ohos.selectionInput.SelectionExtensionContext (划词扩展上下文)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionContext.md)
+            - [@ohos.selectionInput.selectionManager (划词管理)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md)
+            - [@ohos.selectionInput.SelectionPanel (划词面板)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionPanel.md)
             <!--Del-->
             - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)(系统接口)](reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility-sys.md)
             - [@ohos.print (打印)(系统接口)](reference/apis-basic-services-kit/js-apis-print-sys.md)
             - [@ohos.scan (扫描)(系统接口)](reference/apis-basic-services-kit/js-apis-scan-sys.md)
             - [@ohos.request (上传下载)(系统接口)](reference/apis-basic-services-kit/js-apis-request-sys.md)
-            - [@ohos.selectionInput.SelectionExtensionAbility (划词扩展能力)(系统接口)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)
-            - [@ohos.selectionInput.SelectionExtensionContext (划词扩展上下文)(系统接口)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionContext-sys.md)
-            - [@ohos.selectionInput.selectionManager (划词管理)(系统接口)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md)
-            - [@ohos.selectionInput.SelectionPanel (划词面板)(系统接口)](reference/apis-basic-services-kit/js-apis-selectionInput-selectionPanel-sys.md)
             <!--DelEnd-->
           - 进程线程通信<!--process-thread-communi-arkts-->
             - [系统定义的公共事件](reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md)
@@ -5157,6 +5157,7 @@
           - [Interface (CameraInput)](reference/apis-camera-kit/arkts-apis-camera-CameraInput.md)
           - [Interface (CameraManager)](reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)
           - [Interface (CameraOutput)](reference/apis-camera-kit/arkts-apis-camera-CameraOutput.md)
+          - [Interface (CapturePhoto)](reference/apis-camera-kit/arkts-apis-camera-CapturePhoto.md)
           - [Interface (ColorManagement)](reference/apis-camera-kit/arkts-apis-camera-ColorManagement.md)
           - [Interface (ColorManagementQuery)](reference/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md)
           - [Interface (ControlCenter)](reference/apis-camera-kit/arkts-apis-camera-ControlCenter.md)
@@ -5169,7 +5170,6 @@
           - [Interface (MacroQuery)](reference/apis-camera-kit/arkts-apis-camera-MacroQuery.md)
           - [Interface (MetadataOutput)](reference/apis-camera-kit/arkts-apis-camera-MetadataOutput.md)
           - [Interface (Photo)](reference/apis-camera-kit/arkts-apis-camera-Photo.md)
-          - [Interface (PhotoEx)](reference/apis-camera-kit/arkts-apis-camera-PhotoEx.md)
           - [Interface (PhotoOutput)](reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md)
           - [Interface (PhotoSession)](reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md)
           - [Interface (PreviewOutput)](reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md)

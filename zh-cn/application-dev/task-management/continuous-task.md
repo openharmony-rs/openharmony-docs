@@ -113,7 +113,7 @@
 
    在[module.json5配置文件](../quick-start/module-configuration-file.md)中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
    
-   ```json
+   ``` json5
    "module": {
        "abilities": [
            {
@@ -564,7 +564,7 @@
 
    在config.json文件中配置长时任务权限ohos.permission.KEEP_BACKGROUND_RUNNING，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。同时，为需要使用长时任务的ServiceAbility声明相应的长时任务类型。
    
-   ```json
+   ``` json5
    "module": {
        "package": "com.example.myapplication",
        "abilities": [

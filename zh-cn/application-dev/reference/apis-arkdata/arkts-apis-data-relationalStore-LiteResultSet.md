@@ -49,8 +49,8 @@ getColumnNames(): Array\<string>
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -103,8 +103,8 @@ getColumnIndex(columnName: string): number
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -159,9 +159,9 @@ getColumnName(columnIndex: number): string
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -216,10 +216,10 @@ getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted. |
+| 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
 | 14800013     | ResultSet is empty or column index is out of bounds.                                        |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
 | 14800026     | SQLite: The database is out of memory.                       |
@@ -282,10 +282,10 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted. |
+| 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
 | 14800013     | ResultSet is empty or column index is out of bounds.                                        |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
 | 14800026     | SQLite: The database is out of memory.                       |
@@ -342,9 +342,9 @@ goToNextRow(): boolean
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -400,7 +400,7 @@ getValue(columnIndex: number): ValueType
 |-----------|---------|
 | 14800012  | ResultSet is empty or pointer index is out of bounds.       |
 | 14800013  | ResultSet is empty or column index is out of bounds.   |
-| 14800014  | The RdbStore or ResultSet is already closed.       |
+| 14800014  | The target instance is already closed.       |
 
 **示例：**
 
@@ -452,7 +452,7 @@ getBlob(columnIndex: number): Uint8Array
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -506,7 +506,7 @@ getString(columnIndex: number): string
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -561,7 +561,7 @@ getLong(columnIndex: number): number
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -608,13 +608,13 @@ getDouble(columnIndex: number): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -666,7 +666,7 @@ getAsset(columnIndex: number): Asset
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -718,7 +718,7 @@ getAssets(columnIndex: number): Assets
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -761,9 +761,9 @@ getRow(): ValuesBucket
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -811,9 +811,9 @@ getCurrentRowData(): RowData
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -869,9 +869,9 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -944,9 +944,9 @@ getRowsData(maxCount: number, position?: number): Promise\<RowsData>
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -1027,10 +1027,10 @@ isColumnNull(columnIndex: number): boolean
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------- |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |

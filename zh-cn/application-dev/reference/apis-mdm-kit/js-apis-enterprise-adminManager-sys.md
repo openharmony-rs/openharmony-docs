@@ -1437,6 +1437,55 @@ try {
 }
 ```
 
+## adminManager.setDelegatedPolicies<sup>20+</sup>
+   
+setDelegatedPolicies(bundleName: string, accountId: number, policies: Array&lt;string&gt;): void
+
+委托其他应用来设置设备的管控策略。被委托的其他应用需申请委托策略对应接口所需权限。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_DELEGATED_POLICY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| bundleName | String                  | 是    | 将要被委托的管理应用的包名。被委托应用的分发类型需为enterprise_normal和enterprise_mdm，可以通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的BundleInfo，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。        |
+| accountId         | number                              | 是    | 用户ID，指定具体用户，取值范围：大于等于0。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) |
+| policies |  Array&lt;string&gt;                   | 是   | [委托策略列表](./js-apis-enterprise-adminManager.md#可委托策略列表)。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                               |
+| ------- | ----------------------------------------------------- |
+| 9200009 | Failed to grant the permission to the application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { adminManager } from '@kit.MDMKit';
+import { common, Want } from '@kit.AbilityKit';
+
+// 需根据实际情况进行替换
+let bundleName = 'com.example.myapplication';
+let userId = 100;
+let policies: Array<string> = ["disabled_hdc"];
+
+try {
+  adminManager.setDelegatedPolicies(bundleName, userId, policies);
+  console.info(`Succeeded in setting delegated policies.`);
+} catch (error) {
+  console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## EnterpriseInfo
 
 设备管理应用的企业信息。

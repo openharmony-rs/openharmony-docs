@@ -86,7 +86,7 @@ struct Index {
 
   ArkWeb gestures are generated after the **Web** component receives touch events. You can use either of the following methods to judge ArkWeb gestures:
   1. Do not send touch events to the **Web** component. For details, see [Hit Testing](../ui/arkts-interaction-basic-principles.md#hit-testing).
-  2. Send the **TouchCancel** event to the **Web** component. For details, see [OH_ArkUI_TouchRecognizer_CancelTouch](../reference/apis-arkui/capi-native-gesture-h.md#functions).
+  2. Send the **TouchCancel** event to the **Web** component. For details about the C APIs, see [OH_ArkUI_TouchRecognizer_CancelTouch](../reference/apis-arkui/capi-native-gesture-h.md#functions). For details about the sample, see <!--RP1-->[NdkGestureSetting](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkGestureSetting)<!--RP1End-->.
 
 
 ## FAQs
