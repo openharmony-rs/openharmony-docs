@@ -46,6 +46,26 @@ ArkGuard支持名称混淆、代码压缩和注释删除的基础混淆功能，
 
 <!-- @[example_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->  
 
+``` TypeScript
+// 混淆前：
+// example.ts
+class A1 {
+  prop1: string = '';
+}
+
+class A2 {
+  prop1: string = '';
+}
+
+function test(input: A1) {
+  console.info(input.prop1);
+}
+
+let a2 = new A2();
+a2.prop1 = 'prop a2';
+test(a2);
+```
+
 
 综上所述，开发者应了解语言差异对混淆效果的影响，尽量使用不重复的名称，优化混淆效果。
 
