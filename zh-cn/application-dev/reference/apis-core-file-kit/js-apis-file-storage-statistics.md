@@ -28,9 +28,9 @@ getCurrentBundleStats(): Promise&lt;BundleStats&gt;
 
 **返回值：**
 
-  | 类型                                        | 说明                       |
-  | ------------------------------------------ | -------------------------- |
-  | Promise&lt;[BundleStats](#bundlestats9)&gt; | Promise对象，返回指定卷上的应用存储空间大小（单位为Byte）。      |
+| 类型                                        | 说明                       |
+| ------------------------------------------ | -------------------------- |
+| Promise&lt;[BundleStats](#bundlestats9)&gt; | Promise对象，返回指定卷上的应用存储空间大小（单位为Byte）。      |
 
 **错误码：**
 
@@ -44,14 +44,14 @@ getCurrentBundleStats(): Promise&lt;BundleStats&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
-    console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
-  }).catch((err: BusinessError) => {
-    console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
+  console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
+}).catch((err: BusinessError) => {
+  console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getCurrentBundleStats<sup>9+</sup>
 
@@ -67,9 +67,9 @@ getCurrentBundleStats(callback: AsyncCallback&lt;BundleStats&gt;): void
 
 **参数：**
 
-  | 参数名    | 类型                                                       | 必填  | 说明                                 |
-  | -------- | --------------------------------------------------------- | ---- | ------------------------------------ |
-  | callback | AsyncCallback&lt;[BundleStats](#bundlestats9)&gt;          | 是   | 获取指定卷上的应用存储空间大小之后的回调。        |
+| 参数名    | 类型                                                       | 必填  | 说明                                 |
+| -------- | --------------------------------------------------------- | ---- | ------------------------------------ |
+| callback | AsyncCallback&lt;[BundleStats](#bundlestats9)&gt;          | 是   | 获取指定卷上的应用存储空间大小之后的回调。        |
 
 **错误码：**
 
@@ -83,17 +83,17 @@ getCurrentBundleStats(callback: AsyncCallback&lt;BundleStats&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: storageStatistics.BundleStats) => {
-    if (error) {
-      console.error("getCurrentBundleStats failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getCurrentBundleStats successfully:" + JSON.stringify(bundleStats));
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: storageStatistics.BundleStats) => {
+  if (error) {
+    console.error("getCurrentBundleStats failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getCurrentBundleStats successfully:" + JSON.stringify(bundleStats));
+  }
+});
+```
 
 ## storageStatistics.getTotalSize<sup>15+</sup>
 
@@ -126,28 +126,28 @@ ArkTS-Sta: getTotalSize(): Promise&lt;long&gt;
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getTotalSize().then((totalSize: number) => {
-    console.info("getTotalSize successfully:" + JSON.stringify(totalSize));
-  }).catch((err: BusinessError) => {
-    console.error("getTotalSize failed with error:"+ JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getTotalSize().then((totalSize: number) => {
+  console.info("getTotalSize successfully:" + JSON.stringify(totalSize));
+}).catch((err: BusinessError) => {
+  console.error("getTotalSize failed with error:"+ JSON.stringify(err));
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let totalSize: long = 0;
-  storageStatistics.getTotalSize().then((totalSize) => {
-    console.info("getTotalSize successfully:" + totalSize);
-  }).catch((err: BusinessError):void => {
-    console.error("getTotalSize failed with error:"+ JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let totalSize: long = 0;
+storageStatistics.getTotalSize().then((totalSize) => {
+  console.info("getTotalSize successfully:" + totalSize);
+}).catch((err: BusinessError):void => {
+  console.error("getTotalSize failed with error:"+ JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getTotalSize<sup>15+</sup>
 
@@ -181,35 +181,35 @@ ArkTS-Sta: getTotalSize(callback: AsyncCallback&lt;long&gt;): void
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getTotalSize((error: BusinessError, totalSize: number) => {
-    if (error) {
-      console.error("getTotalSize failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getTotalSize successfully:" + totalSize);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getTotalSize((error: BusinessError, totalSize: number) => {
+  if (error) {
+    console.error("getTotalSize failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getTotalSize successfully:" + totalSize);
+  }
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let error: BusinessError = {};
-  let totalSize: long = 0;
-  storageStatistics.getTotalSize((error, totalSize) => {
-    if (error) {
-      console.error("getTotalSize failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getTotalSize successfully:" + totalSize);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let error: BusinessError = {};
+let totalSize: long = 0;
+storageStatistics.getTotalSize((error, totalSize) => {
+  if (error) {
+    console.error("getTotalSize failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getTotalSize successfully:" + totalSize);
+  }
+});
+```
 
 ## storageStatistics.getTotalSizeSync<sup>15+</sup>
 
@@ -242,31 +242,30 @@ ArkTS-Sta: getTotalSizeSync(): int
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  try {
-    let totalSize = storageStatistics.getTotalSizeSync();
-    console.info("getTotalSizeSync successfully:" + JSON.stringify(totalSize));
-  } catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error("getTotalSizeSync failed with error:" + JSON.stringify(error));
-  }
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let totalSize = storageStatistics.getTotalSizeSync();
+  console.info("getTotalSizeSync successfully:" + JSON.stringify(totalSize));
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error("getTotalSizeSync failed with error:" + JSON.stringify(error));
+}
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  try {
-    let totalSize = storageStatistics.getTotalSizeSync();
-    console.info("getTotalSizeSync successfully:" + JSON.stringify(totalSize));
-  } catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error("getTotalSizeSync failed with error:" + JSON.stringify(error));
-  }
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let totalSize = storageStatistics.getTotalSizeSync();
+  console.info("getTotalSizeSync successfully:" + JSON.stringify(totalSize));
+} catch (err: BusinessError) {
+  console.error("getTotalSizeSync failed with error:" + JSON.stringify(err));
+}
+```
 
 ## storageStatistics.getFreeSize<sup>15+</sup>
 
@@ -299,28 +298,28 @@ ArkTS-Sta: getFreeSize(): Promise&lt;long&gt;
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getFreeSize().then((totalSize: number) => {
-    console.info("getFreeSize successfully:" + JSON.stringify(totalSize));
-  }).catch((err: BusinessError) => {
-    console.error("getFreeSize failed with error:" + JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getFreeSize().then((totalSize: number) => {
+  console.info("getFreeSize successfully:" + JSON.stringify(totalSize));
+}).catch((err: BusinessError) => {
+  console.error("getFreeSize failed with error:" + JSON.stringify(err));
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let totalSize: long = 0;
-  storageStatistics.getFreeSize().then((totalSize) => {
-    console.info("getFreeSize successfully:" + totalSize);
-  }).catch((err: BusinessError):void => {
-    console.error("getFreeSize failed with error:" + JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let totalSize: long = 0;
+storageStatistics.getFreeSize().then((totalSize) => {
+  console.info("getFreeSize successfully:" + totalSize);
+}).catch((err: BusinessError): void => {
+  console.error("getFreeSize failed with error:" + JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getFreeSize<sup>15+</sup>
 
@@ -354,35 +353,35 @@ ArkTS-Sta: getFreeSize(callback: AsyncCallback&lt;long&gt;): void
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getFreeSize((error: BusinessError, totalSize: number) => {
-    if (error) {
-      console.error("getFreeSize failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getFreeSize successfully:" + number);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getFreeSize((error: BusinessError, totalSize: number) => {
+  if (error) {
+    console.error("getFreeSize failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getFreeSize successfully:" + number);
+  }
+});
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let error: BusinessError = {};
-  let totalSize: long = 0;
-  storageStatistics.getFreeSize((error, totalSize) => {
-    if (error) {
-      console.error("getFreeSize failed with error:" + JSON.stringify(error));
-    } else {
-      // do something
-      console.info("getFreeSize successfully:" + totalSize);
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+let error: BusinessError = {};
+let totalSize: long = 0;
+storageStatistics.getFreeSize((error: BusinessError, totalSize: number): void => {
+  if (error) {
+    console.error("getFreeSize failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getFreeSize successfully:" + totalSize);
+  }
+});
+```
 
 ## storageStatistics.getFreeSizeSync<sup>15+</sup>
 
@@ -415,33 +414,33 @@ ArkTS-Sta: getFreeSizeSync(): long
 
 **示例：**
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let freeSize = storageStatistics.getFreeSizeSync();
-    console.info("getFreeSizeSync successfully:" + JSON.stringify(freeSize));
-  } catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error("getFreeSizeSync failed with error:" + JSON.stringify(error));
-  }
-  ```
+try {
+  let freeSize = storageStatistics.getFreeSizeSync();
+  console.info("getFreeSizeSync successfully:" + JSON.stringify(freeSize));
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error("getFreeSizeSync failed with error:" + JSON.stringify(error));
+}
+```
 
-  ArkTS-Sta示例：
+ArkTS-Sta示例：
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    let freeSize = storageStatistics.getFreeSizeSync();
-    console.info("getFreeSizeSync successfully:" + JSON.stringify(freeSize));
-  } catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error("getFreeSizeSync failed with error:" + JSON.stringify(error));
-  }
-  ```
+try {
+  let freeSize = storageStatistics.getFreeSizeSync();
+  console.info("getFreeSizeSync successfully:" + JSON.stringify(freeSize));
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error("getFreeSizeSync failed with error:" + JSON.stringify(error));
+}
+```
 
 ## BundleStats<sup>9+</sup>
 
