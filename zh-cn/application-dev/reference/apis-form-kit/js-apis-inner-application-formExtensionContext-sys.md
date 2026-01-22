@@ -222,7 +222,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         console.info('----------- onDisconnect -----------')
       },
       onFailed(code) {
-        console.error('----------- onFailed -----------')
+        console.error(`onFailed, code: ${code}`)
       }
     };
 
