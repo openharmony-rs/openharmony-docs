@@ -654,6 +654,8 @@ onChangeWithAttribute(displayAttributeOption: Array&lt;string&gt;, callback: Cal
 
 开启显示设备指定属性变化的监听。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**
@@ -1759,6 +1761,8 @@ promise.then((data: Array<display.Display>) => {
 getRoundedCorner(): Array\<RoundedCorner\>
 
 获取屏幕的圆角信息。屏幕圆角信息由产品配置决定，只有配置了屏幕圆角半径的物理屏幕才能返回圆角信息，否则返回空数组，虚拟屏同样返回空数组。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
