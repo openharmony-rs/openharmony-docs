@@ -2,7 +2,7 @@
 
 ## 概述
 
-ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层级组件之间传递、同步数据的机制。从API version 22开始，支持在ArkTS-Sta的UI组件中渲染和响应ArkTS-Dyn的动态数据和[@Observed](../ui/state-management/arkts-observed-and-objectlink.md)装饰的数据的变化。
+ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层级组件之间传递、同步数据的机制。从API version 23开始，支持在ArkTS-Sta的UI组件中渲染和响应ArkTS-Dyn的动态数据和[@Observed](../ui/state-management/arkts-observed-and-objectlink.md)装饰的数据的变化。
 
 
 ## 使用限制
@@ -171,7 +171,7 @@ export struct objectLinkSample {
 
 > **说明：**
 >
-> 从API version 22开始，在ArkTS-Sta中支持使用ArkTS-Dyn中\@Observed装饰的类中Map类型的成员变量。
+> 从API version 23开始，在ArkTS-Sta中支持使用ArkTS-Dyn中\@Observed装饰的类中Map类型的成员变量。
 
 在下面示例中，memberMap类型为Map\<number, string\>，点击Button改变memberMap的值，视图会随之刷新。
 ```TypeScript
@@ -295,7 +295,7 @@ struct MapSample {
 
 > **说明：**
 >
-> 从API version 22开始，在ArkTS-Sta中支持使用ArkTS-Dyn中\@Observed装饰的类中Set类型的成员变量。
+> 从API version 23开始，在ArkTS-Sta中支持使用ArkTS-Dyn中\@Observed装饰的类中Set类型的成员变量。
 
 在下面示例中，memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 ```TypeScript

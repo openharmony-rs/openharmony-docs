@@ -2,7 +2,7 @@
 
 ## 概述
 
-ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层级组件之间传递、同步数据的机制。从API version 22开始，支持在ArkTS-Dyn的UI组件中渲染和响应ArkTS-Sta的静态数据和[@Observed](../ui/state-management-static/arkts-static-observed-and-objectlink.md)装饰的数据的变化。
+ArkUI的组件间数据交互能力是支持父子组件、兄弟组件、跨层级组件之间传递、同步数据的机制。从API version 23开始，支持在ArkTS-Dyn的UI组件中渲染和响应ArkTS-Sta的静态数据和[@Observed](../ui/state-management-static/arkts-static-observed-and-objectlink.md)装饰的数据的变化。
 
 
 ## 使用限制

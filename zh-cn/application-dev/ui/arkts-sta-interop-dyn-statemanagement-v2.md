@@ -2,7 +2,7 @@
 
 ## 概述
 
-ArkTS-Sta使用ArkTS-Dyn管理组件拥有的状态，涉及状态管理V2交互的场景主要包括：
+从API version 23开始，ArkTS-Sta使用ArkTS-Dyn管理组件拥有的状态，涉及状态管理V2交互的场景主要包括：
 
 1. ArkTS-Dyn子组件通过ArkTS-Sta父组件初始化状态数据并进行状态绑定。
 
