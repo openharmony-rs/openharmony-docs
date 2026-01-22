@@ -36,6 +36,10 @@ ArkUI的无障碍机制确保：当组件属性发生变化时，辅助工具会
   4. 优化全用户群体体验：适配过程中的核心优化（如清晰地元素描述、合理地焦点顺序、达标对比度），不仅服务占该用户，让普通用户在复杂场景（如强光环境、单手操作）下获得更流畅的使用体验；
   5. 低侵入性适配不影响核心体验：适配辅助工具无需改动应用核心逻辑或UI设计，ArkUI的无障碍属性仅添加轻量级功能，在实现无障碍支持的同时，完全保留产品的创新两点与视觉风格。
 
+## 提升屏幕朗读无障碍体验
+
+辅助工具依赖组件的“语义描述”识别元素用途，具体的场景适配可参考：[提升屏幕朗读无障碍体验](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/improve-screen-reader-experience)。
+
 ## 设置无障碍分组
 
 [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup)属性，用于设置是否启用无障碍分组。若启用，则该组件及其所有子组件将作为一个整体处理，无障碍服务不再单独处理各子组件。accessibilityGroup属性支持以下值：
