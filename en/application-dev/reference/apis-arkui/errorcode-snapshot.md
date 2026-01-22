@@ -50,7 +50,7 @@ Use the asynchronous API corresponding to the current snapshot API.
 
 **Error Message**
 
-The provided color space or dynamic range mode is not supported.
+Unsupported color space or dynamic range mode in snapshot options.
 
 **Symptom**
 
@@ -68,7 +68,7 @@ Change the color space or dynamic range mode to a supported value.
 
 **Error Message**
 
-The isAuto parameter of the color space or dynamic range mode is set to true for offscreen node snapshot.
+isAuto(true) is not supported for offscreen node snapshots.
 
 **Symptom**
 

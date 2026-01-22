@@ -842,7 +842,7 @@ Specifies whether to allow users to touch the mask to dismiss the custom dialog 
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| bool autoCancel | Whether to allow users to touch the mask to dismiss the dialog box. The value **true** means to allow users to do so, and **false** means the opposite.<br>Default value: **true**.|
+| bool autoCancel | Whether to allow users to touch the mask to dismiss the dialog box. The value **true** means to allow users to do so, and **false** means the opposite.<br>Default value: **true**|
 
 **Returns**
 
@@ -1062,7 +1062,7 @@ Registers a callback to be invoked when the specified custom dialog box appears.
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
 | void* userData | Pointer to user data.|
-| callback | Event callback when the dialog box appears.|
+| callback | Event callback after the dialog box appears.|
 
 **Returns**
 
