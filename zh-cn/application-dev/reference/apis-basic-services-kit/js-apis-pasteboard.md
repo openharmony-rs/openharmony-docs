@@ -639,6 +639,8 @@ cancel(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 @Entry
@@ -671,6 +673,53 @@ struct PasteboardTest {
                 console.error('Failed to get PasteData. Cause: ' + err.message);
               })
           })
+        }
+      }
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import pasteboard from '@ohos.pasteboard'
+import { Entry, Component,RelativeContainer,Column ,Button} from '@ohos.arkui.component';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri} from '@kit.CoreFileKit';
+
+@Entry
+@Component
+struct PasteboardTest {
+  build() {
+    RelativeContainer() {
+      Column() {
+        Column() {
+          Button("Copy txt")
+            .onClick(async ()=>{
+              let text = "test";
+              let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
+              let systemPasteboard = pasteboard.getSystemPasteboard();
+              await systemPasteboard.setData(pasteData);
+              let signal = new pasteboard.ProgressSignal;
+              let progressListenerInfo = (progress: pasteboard.ProgressInfo) => {
+                console.info('progressListener success, progress:' + progress.progress);
+                signal.cancel();
+              };
+              let destPath: string = '/data/storage/el2/base/files/';
+              let destUri : string = fileUri.getUriFromPath(destPath);
+              let params: pasteboard.GetDataParams = {
+                destUri: destUri,
+                fileConflictOptions: pasteboard.FileConflictOptions.OVERWRITE,
+                progressIndicator: pasteboard.ProgressIndicator.DEFAULT,
+                progressListener: progressListenerInfo,
+              };
+              systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
+                console.error('getDataWithProgress succ');
+              }).catch((err: BusinessError): void => {
+                console.error('Failed to get PasteData. Cause: ' + err.message);
+              })
+            })
         }
       }
     }
@@ -868,6 +917,8 @@ getData(type: string): Promise&lt;ValueType&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -885,6 +936,29 @@ record.getData(pasteboard.MIMETYPE_TEXT_URI).then((value: pasteboard.ValueType) 
     let uri = value as string;
     console.info('Success to get text/uri value. value is: ' + uri);
 }).catch((err: BusinessError) => {
+    console.error('Failed to get text/uri value. Cause: ' + err.message);
+});
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let html = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"utf-8\">\n" + "<title>HTML-PASTEBOARD_HTML</title>\n" + "</head>\n" + "<body>\n" + "    <h1>HEAD</h1>\n" + "    <p></p>\n" + "</body>\n" + "</html>";
+let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'dataability:///com.example.myapplication1/user.txt');
+record.addEntry(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+record.addEntry(pasteboard.MIMETYPE_TEXT_HTML, html);
+record.getData(pasteboard.MIMETYPE_TEXT_PLAIN).then((value: pasteboard.ValueType) => {
+    let textPlainContent = value as string;
+    console.info('Success to get text/plain value. value is: ' + textPlainContent);
+}).catch((err: BusinessError): void => {
+    console.error('Failed to get text/plain value. Cause: ' + err.message);
+});
+record.getData(pasteboard.MIMETYPE_TEXT_URI).then((value: pasteboard.ValueType) => {
+    let uri = value as string;
+    console.info('Success to get text/uri value. value is: ' + uri);
+}).catch((err: BusinessError): void => {
     console.error('Failed to get text/uri value. Cause: ' + err.message);
 });
 ```
@@ -1134,6 +1208,8 @@ getPrimaryPixelMap(): image.PixelMap
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { image } from '@kit.ImageKit';
 
@@ -1149,6 +1225,26 @@ let opt: image.InitializationOptions = {
 image.createPixelMap(buffer, opt).then((pixelMap: image.PixelMap) => {
     let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_PIXELMAP, pixelMap);
     let PixelMap: image.PixelMap = pasteData.getPrimaryPixelMap();
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+
+let buffer = new ArrayBuffer(128);
+let realSize: image.Size = { height: 3, width: 5 };
+let opt: image.InitializationOptions = {
+  size: realSize,
+  pixelFormat: image.PixelMapFormat.RGBA_8888,
+  editable: true,
+  alphaType: image.AlphaType.OPAQUE,
+  scaleMode: image.ScaleMode.CENTER_CROP
+};
+image.createPixelMap(buffer, opt).then((pixelMap: image.PixelMap) => {
+  let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_PIXELMAP, pixelMap);
+  let PixelMap: image.PixelMap = pasteData.getPrimaryPixelMap();
 });
 ```
 
@@ -1635,6 +1731,8 @@ pasteStart(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1647,6 +1745,23 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
     pasteData.pasteStart();
     console.log(`using data: ${pasteData.getPrimaryText()}`);
     pasteData.pasteComplete();
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+systemPasteboard.getData((err: BusinessError | null, pasteData: pasteboard.PasteData | undefined) => {
+    if (err!) {
+        console.error('Failed to get PasteData. Cause: ' + err!.message);
+        return;
+    }
+    pasteData!.pasteStart();
+    console.info(`using data: ${pasteData!.getPrimaryText()}`);
+    pasteData!.pasteComplete();
 });
 ```
 
@@ -1664,6 +1779,8 @@ pasteComplete(): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1676,6 +1793,23 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
     pasteData.pasteStart();
     console.log(`using data: ${pasteData.getPrimaryText()}`);
     pasteData.pasteComplete();
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+systemPasteboard.getData((err: BusinessError | null, pasteData: pasteboard.PasteData | undefined) => {
+  if (err!) {
+    console.error('Failed to get PasteData. Cause: ' + err!.message);
+    return;
+  }
+  pasteData!.pasteStart();
+  console!.info(`using data: ${pasteData!.getPrimaryText()}`);
+  pasteData!.pasteComplete();
 });
 ```
 
@@ -2782,12 +2916,26 @@ isRemoteData(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 try {
     let result: boolean = systemPasteboard.isRemoteData();
     console.info(`Succeeded in checking the RemoteData. Result: ${result}`);
 } catch (err) {
+    console.error('Failed to check the RemoteData. Cause:' + err.message);
+};
+```
+
+ArkTS-Sta示例:
+
+```ts
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+try {
+    let result: boolean = systemPasteboard.isRemoteData();
+    console.info(`Succeeded in checking the RemoteData. Result: ${result}`);
+} catch (err: BusinessError ) {
     console.error('Failed to check the RemoteData. Cause:' + err.message);
 };
 ```
@@ -2987,6 +3135,8 @@ setDataSync(data: PasteData): void
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
@@ -2996,6 +3146,19 @@ try {
 } catch (err) {
     console.error('Failed to set PasteData. Cause:' + err.message);
 };  
+```
+
+ArkTS-Sta示例:
+
+```ts
+let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+try {
+    systemPasteboard.setDataSync(pasteData);
+    console.info('Succeeded in setting PasteData.');
+} catch (err: BusinessError) {
+    console.error('Failed to set PasteData. Cause:' + err.message);
+};
 ```
 
 ### hasDataSync<sup>11+</sup>
@@ -3071,6 +3234,8 @@ getUnifiedData(): Promise&lt;unifiedDataChannel.UnifiedData&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
@@ -3086,6 +3251,26 @@ systemPasteboard.getUnifiedData().then((data) => {
     }
 }).catch((err: BusinessError) => {
     console.error('Failed to get UnifiedData. Cause: ' + err.message);
+});
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+systemPasteboard.getUnifiedData().then((data) => {
+  let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
+  for (let j = 0; j < records.length; j++) {
+    if (records[j].getType() === uniformTypeDescriptor.UniformDataType.PLAIN_TEXT.toString()) {
+      let text = records[j].getValue() as uniformDataStruct.PlainText;
+      console.info(`${j + 1}.${text.textContent}`);
+    }
+  }
+}).catch((err: Error) => {
+  console.error('Failed to get UnifiedData. Cause: ' + err.message);
 });
 ```
 
@@ -3172,6 +3357,8 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
@@ -3190,6 +3377,28 @@ systemPasteboard.setUnifiedData(data).then((data: void) => {
     console.info('Succeeded in setting UnifiedData.');
 }).catch((err: BusinessError) => {
     console.error('Failed to setUnifiedData. Cause: ' + err.message);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+
+let plainText : uniformDataStruct.PlainText = {
+  uniformDataType: uniformTypeDescriptor.UniformDataType.PLAIN_TEXT,
+  textContent : 'PLAINTEXT_CONTENT',
+}
+let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
+let data = new unifiedDataChannel.UnifiedData();
+data.addRecord(record);
+
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+systemPasteboard.setUnifiedData(data).then(() => {
+  console.info('Succeeded in setting UnifiedData.');
+}).catch((err: Error) => {
+  console.error('Failed to setUnifiedData. Cause: ' + err.message);
 });
 ```
 
@@ -3224,6 +3433,8 @@ setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
 
@@ -3243,6 +3454,26 @@ try {
     console.info('Succeeded in setting UnifiedData.');
 } catch (err) {
     console.error('Failed to set UnifiedData. Cause:' + err.message);
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { unifiedDataChannel } from '@kit.ArkData';
+
+let plainTextData = new unifiedDataChannel.UnifiedData();
+let plainText = new unifiedDataChannel.PlainText();
+
+plainText.textContent = 'delayTextContent';
+plainTextData.addRecord(plainText);
+
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+try {
+  systemPasteboard.setUnifiedDataSync(plainTextData);
+  console.info('Succeeded in setting UnifiedData.');
+} catch (err: BusinessError) {
+  console.error('Failed to set UnifiedData. Cause:' + err.message);
 };
 ```
 
@@ -3377,6 +3608,8 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { pasteboard } from '@kit.BasicServicesKit'
 
@@ -3394,6 +3627,29 @@ systemPasteboard.detectPatterns(patterns).then((data: Array<pasteboard.Pattern>)
       };
     } else {
       console.info("Not all needed patterns detected, no need to get data.");
+    }
+});
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { pasteboard } from '@kit.BasicServicesKit'
+
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let patterns: Array<pasteboard.Pattern> = [pasteboard.Pattern.URL, pasteboard.Pattern.EMAIL_ADDRESS];
+
+systemPasteboard.detectPatterns(patterns).then((data: Array<pasteboard.Pattern>) => {
+    if (patterns.sort().join('')==data.sort().join('')) {
+        console.info('All needed patterns detected, next get data');
+        try {
+            let result: pasteboard.PasteData = systemPasteboard.getDataSync();
+            console.info('Succeeded in getting PasteData.');
+        } catch (err: BusinessError) {
+            console.error('Failed to get PasteData. Cause:' + err.message);
+        };
+    } else {
+        console.info("Not all needed patterns detected, no need to get data.");
     }
 });
 ```
@@ -3475,6 +3731,8 @@ getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
 @Entry
@@ -3502,6 +3760,45 @@ struct PasteboardTest {
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
                 console.error('getDataWithProgress succ');
               }).catch((err: BusinessError) => {
+                console.error('Failed to get PasteData. Cause: ' + err.message);
+              })
+          })
+        }
+      }
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+@Entry
+@Component
+struct PasteboardTest {
+ build() {
+   RelativeContainer() {
+     Column() {
+       Column() {
+         Button("Copy txt")
+           .onClick(async ()=>{
+              let text = "test";
+              let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, text);
+              let systemPasteboard = pasteboard.getSystemPasteboard();
+        	  await systemPasteboard.setData(pasteData);
+              let ProgressListener = (progress: pasteboard.ProgressInfo) => {
+    		    console.log('progressListener success, progress:' + progress.progress);
+              }
+              let params: pasteboard.GetDataParams = {
+                destUri: '/data/storage/el2/base/haps/entry/files/dstFile.txt',
+                fileConflictOptions: pasteboard.FileConflictOptions.OVERWRITE,
+                progressIndicator: pasteboard.ProgressIndicator.DEFAULT,
+                progressListener: ProgressListener
+              };
+              systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
+                console.error('getDataWithProgress succ');
+              }).catch((err: BusinessError): void => {
                 console.error('Failed to get PasteData. Cause: ' + err.message);
               })
           })
@@ -3566,4 +3863,60 @@ try {
 } catch (err) {
     console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
 };
+```
+
+### UpdateCallback <sup>22+</sup>
+
+type UpdateCallback = () => void
+
+表示剪贴板内容变更的回调
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
+
+onRemoteUpdate(callback: UpdateCallback): void
+
+订阅跨设备剪贴板内容变化事件，当远端设备系统剪贴板中内容变化时触发用户程序的回调。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [UpdateCallback](#updatecallback-22) | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
+
+**示例：**
+
+```ts
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The remote pasteboard has changed.');
+};
+systemPasteboard.onRemoteUpdate(listener);
+```
+
+### offRemoteUpdate(callback?: UpdateCallback)<sup>22+</sup>
+
+offRemoteUpdate(callback?: UpdateCallback): void
+
+取消订阅跨设备剪贴板内容变化事件。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                      |
+| -------- | -------- | -------- |---------------------------------------------------------|
+| callback | [UpdateCallback](#updatecallback-22) | 否 | 远端设备剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有远端监听回调，否则表示清除指定远端监听回调。|
+
+**示例：**
+
+```ts
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The remote pasteboard has changed.');
+};
+systemPasteboard.offRemoteUpdate(listener);
 ```
