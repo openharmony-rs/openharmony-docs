@@ -33875,7 +33875,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateVerifyCertchainObject.ets",
 				"functions":[
 					{
-						"end_line":124,
+						"end_line":125,
 						"name":"certificate_chain_object_creation_and_validation",
 						"start_line":16
 					}
@@ -33890,7 +33890,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/VerifyCertchainBySystemca.ets",
 				"functions":[
 					{
-						"end_line":156,
+						"end_line":157,
 						"name":"verify-certchain-by-systemca",
 						"start_line":16
 					}
@@ -36939,7 +36939,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAes/entry/src/main/cpp/types/project/aes_gcm_segment_encryption_decryption.cpp",
 				"functions":[
 					{
-						"end_line":146,
+						"end_line":148,
 						"name":"gcm_seg_encrypt_decrypt_aes_symkey",
 						"start_line":16
 					}
@@ -37264,7 +37264,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/ecc/Promise.ets",
 				"functions":[
 					{
-						"end_line":120,
+						"end_line":117,
 						"name":"specify_parameter_generate_ecc_keypair",
 						"start_line":16
 					}
@@ -38704,7 +38704,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_segment_signature/rsa_pkcs1_segment_signature_asynchronous.ets",
 				"functions":[
 					{
-						"end_line":99,
+						"end_line":76,
 						"name":"pkcs1_seg_verify_rsa_keypair_sign_async",
 						"start_line":16
 					}
@@ -39059,7 +39059,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_gcm_seg_encryption_decryption.cpp",
 				"functions":[
 					{
-						"end_line":144,
+						"end_line":146,
 						"name":"crypt_decrypt_sm4_gcm_seg",
 						"start_line":16
 					}
