@@ -160,6 +160,10 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
 获取堆内存分配的调用栈信息（通过malloc、mmap、calloc或realloc等基础库函数分配堆内存的调用栈），包括跨语言堆内存分配信息（如在ArkTS语言中调用napi分配native堆内存），还能展示内存泄漏未释放堆内存调用栈信息。
 
+> **注意：**
+>
+>[应用加密](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/code-protect)后只能回native栈，不能回JS栈。
+
 **参数介绍**
 
 | 参数名字 | 类型 | 参数含义 | 详细介绍 | 
@@ -169,7 +173,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | process_name | string | 需要进行内存调优的进程名 | 和/proc/节点下的进程名一致。 | 
 | startup_mode | bool | 是否抓取进程启动阶段内存。默认不抓取启动阶段内存。 | 记录进程孵化启动到调优结束这个期间内堆内存分配的信息。 | 
 | js_stack_report | int | 是否开启跨语言回栈。<br/>0：不抓取js栈。<br/>1：开启抓取js栈。 | 为方舟环境提供跨语言回栈功能。 | 
-| malloc_free_matching_interval | int | 匹配间隔，单位：s，指在相应时间间隔内，将malloc和free进行匹配。匹配到的就不进行落盘。 | 在匹配间隔内，分配并释放了的调用栈不被记录，减少了抓栈服务进程的开销。此参数设置的值大于0时，就不能将statistics_interval参数设置为true。 | 
+| malloc_free_matching_interval | int | 匹配间隔，单位：s，指在相应时间间隔内，将malloc和free进行匹配。匹配到的就不进行落盘。 | 在匹配间隔内，分配并释放了的调用栈不被记录，减少了抓栈服务进程的开销。此参数设置的值大于0时，需同步将statistics_interval参数设置为0。 |
 | offline_symbolization | bool | 是否开启离线符号化。<br/>true：使用离线符号化。<br/>false：使用在线符号化。 | 使用离线符号化时，根据IP匹配符号的操作在网页端（smartperf）完成，优化了native daemon的性能，减少了调优时的进程卡顿。但离线符号化会将符号表写入trace文件，导致文件大小比在线符号化时更大。 |
 | sample_interval | int | 采样大小。 | 设置此参数时开启采样模式。采样模式下对于malloc size小于采样大小进行概率性统计。调用栈分配内存大小越大，出现次数越高，被统计的几率越大。 | 
 | restrace_tag | string | 需要抓取的GPU图形内存的类型 | 可重复添加。当前仅支持设置为"RES_GPU_VK"、"RES_GPU_GLES_BUFFER"、"RES_GPU_GLES_IMAGE"、"RES_GPU_CL_BUFFER"和"RES_GPU_CL_IMAGE"，用于指定抓取vulkan、OpenGLES、OpenCL、image和buffer类型的GPU内存分配栈。<br/>**说明**：从API version 21开始，支持该参数。|
