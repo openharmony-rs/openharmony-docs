@@ -5176,3 +5176,19 @@ Allows an application to query and configure user identity authentication polici
 **Enable via ACL**: true
 
 **Valid since**: 18
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+
+Allows a system application to start the preview panel for adding application widgets to the home screen.
+
+With this permission, the system application can help users add the widgets to distribute to the home screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 20
