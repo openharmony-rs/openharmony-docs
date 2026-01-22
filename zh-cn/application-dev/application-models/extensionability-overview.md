@@ -50,9 +50,9 @@
 | [PhotoEditorExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-photoEditorExtensionAbility.md) | 照片编辑扩展能力，提供给应用实现图片编辑的功能。 | 是 | 否 |
 |<!--DelRow-->[AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)| 自动填充扩展能力，提供用户应用的免密登录功能。 | 否 | 否 |
 | [VpnExtensionAbility](../reference/apis-network-kit/js-apis-VpnExtensionAbility.md) | VPN扩展能力，提供三方VPN创建、销毁等生命周期回调。 | 是 | 否 |
-| [FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md) | 表单编辑扩展能力，用于卡片统一编辑，由卡片应用拓展并由桌面拉起。 | 是 | 否 |
+| [FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md) | 表单编辑扩展能力，提供由桌面拉起卡片并统一编辑的能力。 | 是 | 否 |
 | [LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) | 动态卡片扩展能力，提供3D Live卡片功能，由应用实现3D卡片效果并由卡片使用方拉起。 | 是 | 否 |
-|<!--DelRow-->[UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)| UI服务扩展能力，在PC上提供带前台窗口的服务。 | 否 | 否 |
+|<!--DelRow-->[UIServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)| UI服务扩展能力，在PC/2in1上提供带前台窗口的服务。 | 否 | 否 |
 <!--RP2--><!--RP2End-->
 
 > **说明：**
