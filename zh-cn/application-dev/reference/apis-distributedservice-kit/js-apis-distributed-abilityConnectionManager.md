@@ -348,11 +348,13 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 获取指定会话中对端应用信息。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[getPeerInfoById](#abilityConnectionManagergetPeerInfoById23)。
+
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -376,8 +378,6 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -387,7 +387,39 @@ let sessionId = 100;
 const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
 ```
 
-ArkTS-Sta示例：
+## abilityConnectionManager.getPeerInfoById<sup>23+</sup>
+
+getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;null
+
+获取指定会话中对端应用信息。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名       | 类型                                       | 必填   | 说明       |
+| --------- | ---------------------------------------- | ---- | -------- |
+| sessionId | number  | 是    | 协同会话ID。   |
+
+**返回值：**
+
+| 类型                  | 说明               |
+| ------------------- | ---------------- |
+| [PeerInfo](js-apis-distributed-abilityconnectionmanager#peerinfo) \| null | 若存在对应peerInfo，则返回接收端的协作应用信息。若sessionId未找到，则查询失败，返回null。|
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例：**
 
 ```ts
 import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
