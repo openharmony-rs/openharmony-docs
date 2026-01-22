@@ -687,12 +687,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos('com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    console.info('formObserver getRunningFormInfos success.');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -739,12 +739,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos(true, 'com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    console.info('formObserver getRunningFormInfos success.');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1117,7 +1117,7 @@ try {
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Router event listening in registered form.' + JSON.stringify(data));
+  console.info(`Router event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('router', callback);
 ```
@@ -1156,7 +1156,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Router event listening in registered form.' + JSON.stringify(data));
+  console.info(`Router event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('router', hostBundleName, callback);
 ```
@@ -1195,7 +1195,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Unregister form router event Listening.' + JSON.stringify(data));
+  console.info(`Unregister form router event Listening. ID: ${data.formId}`);
 };
 formObserver.off('router', hostBundleName, callback);
 ```
@@ -1232,7 +1232,7 @@ formObserver.off('router', hostBundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Message event listening in registered form.' + JSON.stringify(data));
+  console.info(`Message event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('message', callback);
 ```
@@ -1271,7 +1271,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Message event listening in registered form.' + JSON.stringify(data));
+  console.info(`Message event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('message', hostBundleName, callback);
 ```
@@ -1310,7 +1310,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Unregister form Message event Listening.' + JSON.stringify(data));
+  console.info(`Unregister form Message event Listening. ID: ${data.formId}`);
 };
 formObserver.off('message', hostBundleName, callback);
 ```
@@ -1347,7 +1347,7 @@ formObserver.off('message', hostBundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Call event listening in registered form.' + JSON.stringify(data));
+  console.info(`Call event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('call', callback);
 ```
@@ -1386,7 +1386,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Call event listening in registered form.' + JSON.stringify(data));
+  console.info(`Call event listening in registered form. ID: ${data.formId}`);
 };
 formObserver.on('call', hostBundleName, callback);
 ```
@@ -1425,7 +1425,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info('Unregister form Call event Listening.' + JSON.stringify(data));
+  console.info(`Unregister form Call event Listening. ID: ${data.formId}`);
 };
 formObserver.off('call', hostBundleName, callback);
 ```
