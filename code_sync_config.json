@@ -39546,5 +39546,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/arkts-json.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets",
+				"functions":[
+					{
+						"end_line":47,
+						"name":"json_nesting_method1",
+						"start_line":16
+					},
+					{
+						"end_line":66,
+						"name":"json_nesting_method2",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingBigInts.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"containing_bigInt",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingBigIntObjects.ets",
+				"functions":[
+					{
+						"end_line":28,
+						"name":"bigInt_object_method1",
+						"start_line":16
+					},
+					{
+						"end_line":49,
+						"name":"bigInt_object_method2",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingFloatingPointNumbers.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"float_number",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
