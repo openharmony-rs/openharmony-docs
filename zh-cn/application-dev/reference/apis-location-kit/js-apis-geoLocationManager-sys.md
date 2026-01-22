@@ -195,7 +195,6 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 | -------- | -------- | -------- |
 | WIFI  | 1 | 表示WiFi扫描信息。<br> **系统接口**：此接口为系统接口。|
 | BLUETOOTH | 2 | 表示蓝牙扫描信息。<br> **系统接口**：此接口为系统接口。|
-| CELLULAR<sup>23+</sup> | 3 | 表示蜂窝小区信息。<br> **系统接口**：此接口为系统接口。|
 
 
 ## LocationIconStatus<sup>12+</sup>
