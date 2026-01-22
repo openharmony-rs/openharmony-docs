@@ -2633,7 +2633,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int, callback: AsyncCallback\<void>): 
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是    |鼠标移动速度，范围1-20，默认为10，大于最大值就设置为最大值，小于最小值就设置为最小值。  |
+| speed | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6，大于最大值就设置为最大值，小于最小值就设置为最小值。  |
 | callback | AsyncCallback\<void> | 是    | 回调函数。 |
 
 **错误码**：
