@@ -2462,7 +2462,7 @@ struct Index {
 
 flushState(): void
 
-Updates the ReactiveBuilderNode based on the provided parameters. If the bound parameters used in the builder function encapsulated by the [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md) object in ReactiveBuilderNode are class instances decorated by the V1 decorator (such as @Observed), you need to manually call this API to update data after the data of this class changes. If the bound parameters are class instances decorated by the V2 decorator (such as @ObservedV2), the data can be automatically updated without manual calling.
+Updates the ReactiveBuilderNode based on the provided parameters. If the bound parameters used in the **builder** function encapsulated by the [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md) object in **ReactiveBuilderNode** are class instances decorated by the V1 decorator (such as @Observed), you need to manually call this API to update data after the data of this class changes. If the bound parameters are class instances decorated by the V2 decorator (such as @ObservedV2), the data can be automatically updated without manual calling.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2513,7 +2513,7 @@ struct Index {
       Scroll() {
         Column({ space: 12 }) {
           // Create ReactiveBuilderNode using the V2 decorator.
-          Button('Binding parameters are decorated with the V2 decorator').onClick(
+          Button('Bound parameters are decorated by the V2 decorator').onClick(
             () => {
               let node =
                 new ReactiveBuilderNode<[Binding<number>]>(this.getUIContext());
@@ -2527,7 +2527,7 @@ struct Index {
               this.content.addFrameNode(node.getFrameNode());
             })
           // Create ReactiveBuilderNode using the V1 decorator.
-          Button('Binding parameters are decorated with the V1 decorator').onClick(
+          Button('Bound parameters are decorated by the V1 decorator').onClick(
             () => {
               this.node1 =
                 new ReactiveBuilderNode<[Binding<number>]>(this.getUIContext());
