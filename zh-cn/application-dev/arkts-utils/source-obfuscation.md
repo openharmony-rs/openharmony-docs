@@ -404,12 +404,8 @@ test(a2);
 删除编译生成的声明文件中的JsDoc注释，效果如下：
 
 混淆前：
-  ```ts
-  /**
-   * @todo
-   */
-  declare let count: number;
-  ```  
+  <!-- @[optionExample_removeComments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
+
 混淆后：
   ```ts
   declare let count: number;
