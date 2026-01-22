@@ -11,7 +11,7 @@ makeObserved接口可以将[Array](#makeobserved与array配合使用)、[Map](#m
 在静态语言上下文中使用时，需要导入UIUtils工具：
 
 ```ts
-import { UIUtils } from '@ohos.arkui.stateManagement';
+import { UIUtils } from '@kit.ArkUI';
 ```
 
 ## 支持类型和观察变化
@@ -39,8 +39,8 @@ makeObserved支持以下类型的变量：
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-  import { UIUtils } from '@ohos.arkui.stateManagement';
+  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
+  import { UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -65,8 +65,8 @@ makeObserved支持以下类型的变量：
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-  import { UIUtils } from '@ohos.arkui.stateManagement';
+  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
+  import { UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -94,8 +94,8 @@ makeObserved支持以下类型的变量：
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-  import { State, UIUtils } from '@ohos.arkui.stateManagement';
+  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
+  import { State, UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -128,7 +128,7 @@ makeObserved支持以下类型的变量：
   - 不支持非对象类型：返回自身，不做处理。
 
   ```ts
-  import { UIUtils } from '@ohos.arkui.stateManagement';
+  import { UIUtils } from '@kit.ArkUI';
   let res1 = UIUtils.makeObserved(2); // 非对象类型入参，实际无作用，返回2
   let res2 = UIUtils.makeObserved(undefined); // 非对象类型入参，实际无作用，返回undefined
   let res3 = UIUtils.makeObserved(null); // 非对象类型入参，实际无作用，返回null
@@ -137,7 +137,7 @@ makeObserved支持以下类型的变量：
 - makeObserved传入Array、Map、Set、Date以及interface字面量之外的其他对象类型变量将不做处理。
 
   ```ts
-  import { UIUtils } from '@ohos.arkui.stateManagement';
+  import { UIUtils } from '@kit.ArkUI';
   @ObservedV2
   class Info {
     @Trace id: number = 0;
@@ -156,8 +156,8 @@ makeObserved支持以下类型的变量：
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { UIUtils } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { UIUtils } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -187,8 +187,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
-import { UIUtils } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
+import { UIUtils } from '@kit.ArkUI';
 @Entry
 @Component
 struct MapSample {
@@ -227,8 +227,8 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
-import { UIUtils } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
+import { UIUtils } from '@kit.ArkUI';
 @Entry
 @Component
 struct SetSample {
@@ -263,8 +263,8 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { UIUtils } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { UIUtils } from '@kit.ArkUI';
 @Entry
 @Component
 struct DateExample {
@@ -298,8 +298,8 @@ struct DateExample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-import { UIUtils } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
+import { UIUtils } from '@kit.ArkUI';
 interface Info {
   name: string,
   age: number

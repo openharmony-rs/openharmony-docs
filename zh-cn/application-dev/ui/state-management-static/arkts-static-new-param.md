@@ -18,7 +18,7 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-import { Param } from '@ohos.arkui.stateManagement';
+import { Param } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -26,9 +26,9 @@ import { Param } from '@ohos.arkui.stateManagement';
 | \@Param变量装饰器  | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无                                                           |
-| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰array类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#联合类型)。 |
 | 初始化规则         | **定义本地默认值时：**<br/>- 支持从父组件传入变量（含undefined类型），此时优先使用传入值进行初始化。<br/>- 若父组件未传值，则使用本地默认值进行初始化。<br/>**未定义本地默认值时：**<br/>必须从父组件传入变量进行初始化。 |
-| 同步规则           | **在子组件使用时：**<br>- 与父组件中传入的状态变量数据源（即\@Local或\@Param装饰的变量）进行同步。<br/>- 当父组件传入的变量改变时（含undefined类型）会更新\@Param。<br/>**在父组件使用时：**<br/>- 可以初始化子组件的\@Param变量。<br/>- \@Param变量的变化会同步给子组件的\@Param变量。 |
+| 同步规则           | **在子组件使用时：**<br>- 与父组件中传入的状态变量数据源（即[\@Local](./arkts-static-new-local.md)或\@Param装饰的变量）进行同步。<br/>- 当父组件传入的变量改变时（含undefined类型）会更新\@Param。<br/>**在父组件使用时：**<br/>- 可以初始化子组件的\@Param变量。<br/>- \@Param变量的变化会同步给子组件的\@Param变量。 |
 
 ## 观察变化
 
@@ -39,8 +39,8 @@ import { Param } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-  import { Local, Param, Require } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+  import { Local, Param, Require } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
@@ -87,8 +87,8 @@ import { Param } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-  import { Local, Param, ObservedV2, Trace, Require } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+  import { Local, Param, ObservedV2, Trace, Require } from '@kit.ArkUI';
   class RawObject {
     name: string;
     constructor(name: string) {
@@ -149,8 +149,8 @@ import { Param } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-  import { Local, Param, Require } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+  import { Local, Param, Require } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
@@ -214,8 +214,8 @@ import { Param } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@ohos.arkui.component';
-  import { Local, Param, Require } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@kit.ArkUI';
+  import { Local, Param, Require } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -281,8 +281,8 @@ import { Param } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent } from '@ohos.arkui.component';
-  import { Local, Param, Require } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, ClickEvent } from '@kit.ArkUI';
+  import { Local, Param, Require } from '@kit.ArkUI';
   @ComponentV2
   struct ChildComponent {
     @Param param1: string = 'Initialize local';
@@ -317,8 +317,8 @@ import { Param } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@ohos.arkui.component';
-  import { Local, Param, ObservedV2, Trace, Require } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@kit.ArkUI';
+  import { Local, Param, ObservedV2, Trace, Require } from '@kit.ArkUI';
   @ObservedV2
   class Info {
     @Trace name: string;
@@ -372,8 +372,8 @@ import { Param } from '@ohos.arkui.stateManagement';
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, ForEach, Button, Text, ClickEvent } from '@ohos.arkui.component';
-import { Local, Param, ObservedV2, Trace, Require } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, ForEach, Button, Text, ClickEvent } from '@kit.ArkUI';
+import { Local, Param, ObservedV2, Trace, Require } from '@kit.ArkUI';
 @ObservedV2
 class Region {
   @Trace x: number;
@@ -441,8 +441,8 @@ struct SubComponent {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local, Param, Require } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { Local, Param, Require } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {
@@ -487,8 +487,8 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Button, Text, ClickEvent } from '@ohos.arkui.component';
-import { Local, Param } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Button, Text, ClickEvent } from '@kit.ArkUI';
+import { Local, Param } from '@kit.ArkUI';
 @ComponentV2
 struct DateComponent {
   @Param selectedDate: Date = new Date('2024-01-01');
@@ -540,8 +540,8 @@ struct ParentComponent {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local, Param } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
+import { Local, Param } from '@kit.ArkUI';
 @ComponentV2
 struct Child {
   @Param value: Map<number, string> = new Map<number, string>()
@@ -595,8 +595,8 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local, Param } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
+import { Local, Param } from '@kit.ArkUI';
 @ComponentV2
 struct Child {
   @Param message: Set<number> = new Set<number>()
@@ -647,8 +647,8 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local, Param } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { Local, Param } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {

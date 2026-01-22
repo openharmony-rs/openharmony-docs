@@ -15,7 +15,7 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-import { Local } from '@ohos.arkui.stateManagement';
+import { Local } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -23,7 +23,7 @@ import { Local } from '@ohos.arkui.stateManagement';
 | \@Local变量装饰器  | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无                                                           |
-| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰array类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#联合类型)。 |
 | 初始化规则         | 仅能本地初始化，不支持从父组件传入初始化。                   |
 | 同步规则           | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>**在父组件使用时：**<br/>- 可以初始化子组件的[\@Param](./arkts-static-new-param.md)变量。<br/>- \@Local变量的变化会同步给子组件的\@Param变量。 |
 
@@ -36,8 +36,8 @@ import { Local } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-  import { Local } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+  import { Local } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
@@ -61,13 +61,13 @@ import { Local } from '@ohos.arkui.stateManagement';
   }
   ```
 
-- 当装饰类对象时，仅能观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化。对类成员属性的观察依赖\@ObservedV2与\@Trace装饰器。
+- 当装饰类对象时，仅能观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化。对类成员属性的观察依赖[\@ObservedV2与\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰器。
 
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-  import { Local, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+  import { Local, ObservedV2, Trace } from '@kit.ArkUI';
   class RawObject {
     name: string;
     constructor(name: string) {
@@ -113,8 +113,8 @@ import { Local } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-  import { Local } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+  import { Local } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct Index {
@@ -158,8 +158,8 @@ import { Local } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@ohos.arkui.component';
-  import { Local } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column, Text, ClickEvent, Button } from '@kit.ArkUI';
+  import { Local } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -193,8 +193,8 @@ import { Local } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, Component, ComponentV2 } from '@ohos.arkui.component';
-  import { Local } from '@ohos.arkui.stateManagement';
+  import { Entry, Component, ComponentV2 } from '@kit.ArkUI';
+  import { Local } from '@kit.ArkUI';
   @Entry
   @ComponentV2
   struct MyComponent {
@@ -215,8 +215,8 @@ import { Local } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
   
-  import { Entry, ComponentV2, Column } from '@ohos.arkui.component';
-  import { Local } from '@ohos.arkui.stateManagement';
+  import { Entry, ComponentV2, Column } from '@kit.ArkUI';
+  import { Local } from '@kit.ArkUI';
   @ComponentV2
   struct ChildComponent {
     @Local message: string = 'Hello World';
@@ -251,8 +251,8 @@ import { Local } from '@ohos.arkui.stateManagement';
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { Local, ObservedV2, Trace } from '@kit.ArkUI';
 @ObservedV2
 class Info {
   @Trace name: string;
@@ -288,8 +288,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { Local } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {
@@ -324,8 +324,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { Local } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct DateExample {
@@ -366,8 +366,8 @@ struct DateExample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
+import { Local } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct MapSample {
@@ -411,8 +411,8 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
+import { Local } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct SetSample {
@@ -452,8 +452,8 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { Local } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {

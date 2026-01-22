@@ -9,7 +9,7 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-import { Link } from '@ohos.arkui.stateManagement';
+import { Link } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -17,7 +17,7 @@ import { Link } from '@ohos.arkui.stateManagement';
 | \@Link变量装饰器   | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无。                                                         |
-| 允许装饰的变量类型  | 支持Object、class、string、number、boolean、enum、interface等基本类型。<br/>支持[Array](#装饰数组类型变量)、Date、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。<br/>支持null、undefined以及[联合类型](#link支持联合类型)。 |
+| 允许装饰的变量类型  | 支持Object、class、string、number、boolean、enum、interface等基本类型。<br/>支持[Array](#装饰数组类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。<br/>支持null、undefined以及[联合类型](#link支持联合类型)。 |
 | 初始化规则         | 禁止本地初始化。使用父组件传入的变量进行初始化。                                         |
 | 同步规则           | **在子组件使用时：**<br/>与父组件[\@State](./arkts-static-state.md)、\@Link、[\@PropRef](./arkts-static-propref.md)、[\@Provide、\@Consume](./arkts-static-provide-and-consume.md)、[\@ObjectLink](./arkts-static-observed-and-objectlink.md)、[\@StorageLink](./arkts-static-appstorage.md#storagelink)、[\@StoragePropRef](./arkts-static-appstorage.md#storagepropref)、[\@LocalStorageLink](./arkts-static-localstorage.md#localstoragelink)和[\@LocalStoragePropRef](./arkts-static-localstorage.md#localstoragepropref)建立双向绑定。允许父组件中\@State、\@Link、\@PropRef、\@Provide、\@Consume、\@ObjectLink、\@StorageLink、\@StoragePropRef、\@LocalStorageLink和\@LocalStoragePropRef装饰变量初始化子组件\@Link。<br/>**在父组件使用时：**<br/>可用于初始化常规变量、\@State、\@Link、\@PropRef、\@Provide。 |
 
@@ -29,57 +29,7 @@ import { Link } from '@ohos.arkui.stateManagement';
 
 - 当装饰的对象是Array时，可以观察到数组添加、删除、更新数组单元的变化，示例请参考[装饰数组类型变量](#装饰数组类型变量)。
 
-- 当装饰的对象是Date时，可以观察到Date的整体赋值，以及通过调用`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`方法更新其属性。
-
-  ```ts
-  'use static'
-
-  import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
-  import { State, Link } from '@ohos.arkui.stateManagement';
-  
-  @Component
-  struct DateComponent {
-    @Link selectedDate: Date;
-  
-    build() {
-      Column() {
-        Text(`${this.selectedDate}`)
-        Button('child increase the year by 1')
-          .onClick((e: ClickEvent) => {
-            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-          })
-        Button('child increace the day by 1')
-          .onClick((e: ClickEvent) => {
-            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-          })
-        Button('child update the new date')
-          .onClick((e: ClickEvent) => {
-            this.selectedDate = new Date('2023-09-09');
-          })
-      }
-    }
-  }
-  @Entry
-  @Component
-  struct ParentComponent {
-    @State parentSelectedDate: Date = new Date('2021-08-08');
-  
-    build() {
-      Column() {
-        Text(`${this.parentSelectedDate}`)
-        Button('parent increase the month by 1')
-          .onClick((e: ClickEvent) => {
-            this.parentSelectedDate.setMonth(this.parentSelectedDate.getMonth() + 1);
-          })
-        Button('parent update the new date')
-          .onClick((e: ClickEvent) => {
-            this.parentSelectedDate = new Date('2023-07-07');
-          })
-        DateComponent({ selectedDate:this.parentSelectedDate })
-      }
-    }
-  }
-  ```
+- 当装饰的对象是Date时，可以观察到Date的整体赋值，以及通过调用`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`方法更新其属性。详见[装饰Date类型变量](#装饰date类型变量)。
 
 - 当装饰的变量是Map时，可以观察到Map整体的赋值，以及通过调用Map的`set`、`clear`、`delete`接口更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
@@ -89,9 +39,9 @@ import { Link } from '@ohos.arkui.stateManagement';
 
   ```ts
   'use static'
-
-  import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-  import { State, Link } from '@ohos.arkui.stateManagement';
+  
+  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
+  import { State, Link } from '@kit.ArkUI';
   
   interface Info {
     name: string;
@@ -130,7 +80,7 @@ import { Link } from '@ohos.arkui.stateManagement';
   
 ## 限制条件
 
-1. \@Link装饰器不能在\@Entry装饰的自定义组件中使用。
+1. \@Link装饰器不能在[\@Entry](./arkts-static-create-component.md#entry)装饰的自定义组件中使用。
 2. \@Link装饰的变量禁止在本地初始化，否则编译期会报错。
 
     ```ts
@@ -152,8 +102,8 @@ import { Link } from '@ohos.arkui.stateManagement';
     ```ts
     'use static'
 
-    import { Entry, Component, Column, Text } from '@ohos.arkui.component';
-    import { State, Link } from '@ohos.arkui.stateManagement';
+    import { Entry, Component, Column, Text } from '@kit.ArkUI';
+    import { State, Link } from '@kit.ArkUI';
     
     class Info {
       info: string = 'Hello';
@@ -198,8 +148,8 @@ import { Link } from '@ohos.arkui.stateManagement';
     ```ts
     'use static'
 
-    import { Entry, Component, Column, Text } from '@ohos.arkui.component';
-    import { State, Link } from '@ohos.arkui.stateManagement';
+    import { Entry, Component, Column, Text } from '@kit.ArkUI';
+    import { State, Link } from '@kit.ArkUI';
     
     class Info {
       info: string = 'Hello';
@@ -235,9 +185,9 @@ import { Link } from '@ohos.arkui.stateManagement';
   
     ```ts
     'use static'
-
-    import { Entry, Component, Column, Text } from '@ohos.arkui.component';
-    import { State, Link } from '@ohos.arkui.stateManagement';
+    
+    import { Entry, Component, Column, Text } from '@kit.ArkUI';
+    import { State, Link } from '@kit.ArkUI';
     
     class Info {
       info: string = 'Hello';
@@ -272,9 +222,9 @@ import { Link } from '@ohos.arkui.stateManagement';
     
     ```ts
     'use static'
-
-    import { Entry, Component, Column, Text } from '@ohos.arkui.component';
-    import { State, Link } from '@ohos.arkui.stateManagement';
+    
+    import { Entry, Component, Column, Text } from '@kit.ArkUI';
+    import { State, Link } from '@kit.ArkUI';
     
     class Info {
       info: string = 'Hello';
@@ -305,8 +255,8 @@ import { Link } from '@ohos.arkui.stateManagement';
     }
     ```
 5. \@Link不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
-从API version 23开始，添加对\@Link装饰Function与() => void类型变量的校验，编译期会报错。
-    
+   从API version 23开始，添加对\@Link装饰Function与() => void类型变量的校验，编译期会报错。
+   
 ## 使用场景
 
 ### 装饰简单类型变量
@@ -316,8 +266,8 @@ import { Link } from '@ohos.arkui.stateManagement';
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
-import { State, Link } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
+import { State, Link } from '@kit.ArkUI';
 
 @Component
 struct Child {
@@ -374,8 +324,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, ForEach, Text } from '@ohos.arkui.component';
-import { State, Link } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Button, ClickEvent, ForEach, Text } from '@kit.ArkUI';
+import { State, Link } from '@kit.ArkUI';
 @Component
 struct Child {
   @Link items: number[];
@@ -418,8 +368,8 @@ struct Parent {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, Button, ClickEvent, ForEach, Text, Divider } from '@ohos.arkui.component';
-import { State, Link } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Row, Column, Button, ClickEvent, ForEach, Text, Divider } from '@kit.ArkUI';
+import { State, Link } from '@kit.ArkUI';
 @Component
 struct Child {
   @Link value: Map<number, string>;
@@ -474,8 +424,8 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, Button, ClickEvent, ForEach, Text, Divider } from '@ohos.arkui.component';
-import { State, Link } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Row, Column, Button, ClickEvent, ForEach, Text, Divider } from '@kit.ArkUI';
+import { State, Link } from '@kit.ArkUI';
 
 @Component
 struct Child {
@@ -521,17 +471,71 @@ struct SetSample {
 }
 ```
 
+### 装饰Date类型变量
+
+在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
+import { State, Link } from '@kit.ArkUI';
+
+@Component
+struct DateComponent {
+  @Link selectedDate: Date;
+
+  build() {
+    Column() {
+      Text(`${this.selectedDate}`)
+      Button('child increase the year by 1')
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+        })
+      Button('child increace the day by 1')
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      Button('child update the new date')
+        .onClick((e: ClickEvent) => {
+          this.selectedDate = new Date('2023-09-09');
+        })
+    }
+  }
+}
+@Entry
+@Component
+struct ParentComponent {
+  @State parentSelectedDate: Date = new Date('2021-08-08');
+
+  build() {
+    Column() {
+      Text(`${this.parentSelectedDate}`)
+      Button('parent increase the month by 1')
+        .onClick((e: ClickEvent) => {
+          this.parentSelectedDate.setMonth(this.parentSelectedDate.getMonth() + 1);
+        })
+      Button('parent update the new date')
+        .onClick((e: ClickEvent) => {
+          this.parentSelectedDate = new Date('2023-07-07');
+        })
+      DateComponent({ selectedDate:this.parentSelectedDate })
+    }
+  }
+}
+```
+
 ### 使用双向同步机制更改本地其他变量
 
-通过\@Watch可以在双向同步时更改本地变量。
+通过[\@Watch](./arkts-static-watch.md)可以在双向同步时更改本地变量。
 
 以下示例中，在\@Link的\@Watch回调中修改\@State装饰的状态变量memberMessage，实现父子组件间的变量同步。但是在本地修改\@State装饰的变量memberMessage不会影响到父组件中的变量改变。
 
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
-import { State, Link, Watch } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
+import { State, Link, Watch } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -581,8 +585,8 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
-import { State, Link } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
+import { State, Link } from '@kit.ArkUI';
 
 @Component
 struct Child {

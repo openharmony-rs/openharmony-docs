@@ -16,7 +16,7 @@
 在静态上下文中使用时，需导入装饰器：
 
 ```ts
-import { PropRef } from '@ohos.arkui.stateManagement';
+import { PropRef } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -37,8 +37,8 @@ import { PropRef } from '@ohos.arkui.stateManagement';
   ```ts
   'use static'
 
-  import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-  import { State, PropRef } from '@ohos.arkui.stateManagement';
+  import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+  import { State, PropRef } from '@kit.ArkUI';
   @Entry
   @Component
   struct Index {
@@ -114,8 +114,8 @@ import { PropRef } from '@ohos.arkui.stateManagement';
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { State, PropRef } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { State, PropRef } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -221,8 +221,8 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { State, PropRef } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { State, PropRef } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -257,8 +257,8 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { State, PropRef } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { State, PropRef } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -293,8 +293,8 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { State, PropRef } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { State, PropRef } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -335,8 +335,8 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { State, PropRef } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { State, PropRef } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {

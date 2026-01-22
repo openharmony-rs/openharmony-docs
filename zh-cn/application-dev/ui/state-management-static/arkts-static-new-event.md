@@ -1,12 +1,12 @@
 # \@Event装饰器：规范组件输出
 
-开发者可以使用\@Event装饰器实现子组件向父组件要求更新\@Param装饰变量的能力。
+开发者可以使用\@Event装饰器实现子组件向父组件要求更新[\@Param](./arkts-static-new-param.md)装饰变量的能力。
 
 使用\@Event装饰回调方法是一种规范，表明子组件需要传入更新数据源的回调。
 
 ## 概述
 
-\@Param装饰的变量在本地无法更改，而使用\@Event装饰器装饰回调方法并进行调用，可以实现更改数据源的变量，再通过\@Local的同步机制，将修改同步回\@Param，以此达到主动更新\@Param装饰变量的效果。
+\@Param装饰的变量在本地无法更改，而使用\@Event装饰器装饰回调方法并进行调用，可以实现更改数据源的变量，再通过[\@Local](./arkts-static-new-local.md)的同步机制，将修改同步回\@Param，以此达到主动更新\@Param装饰变量的效果。
 
 \@Event用于装饰组件的输出方法：
 
@@ -19,7 +19,7 @@
 在静态语言上下文中使用时，需导入装饰器：
 
 ```ts
-import { Event } from '@ohos.arkui.stateManagement';
+import { Event } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -32,7 +32,7 @@ import { Event } from '@ohos.arkui.stateManagement';
 
 ## 限制条件
 
-\@Event只能用在\@ComponentV2装饰的自定义组件中。当装饰非方法类型的变量时，不会有任何作用。
+\@Event只能用在[\@ComponentV2](./arkts-static-componentv2.md)装饰的自定义组件中。当装饰非方法类型的变量时，不会有任何作用。
 
 ```ts
 @ComponentV2
@@ -55,8 +55,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent, Color } from '@ohos.arkui.component';
-import { Local, Param, Event } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, Button, ClickEvent, Color } from '@kit.ArkUI';
+import { Local, Param, Event } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -111,8 +111,8 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, ClickEvent } from '@ohos.arkui.component';
-import { Local, Param, Event } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, ClickEvent } from '@kit.ArkUI';
+import { Local, Param, Event } from '@kit.ArkUI';
 
 @ComponentV2
 struct Child {

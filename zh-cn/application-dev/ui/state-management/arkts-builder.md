@@ -1606,7 +1606,7 @@ struct ReusableChildTwoPage {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, Prop } from '@kit.ArkUI';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State } from '@kit.ArkUI';
 
 // 引用传递类型是interface才能触发UI刷新。
 interface Tmp {
@@ -1911,7 +1911,7 @@ struct Single {
 ```ts
 'use static'
 
-import { Entry, Text, TextAttribute, Column, ComponentV2, Button, ButtonAttribute, ClickEvent, Row, Color, CommonMethod, Margin, HorizontalAlign, Builder, TextAlign, FlexAlign, applyStyles, UIUtils, Binding, MutableBinding, State, ObservedV2, Prop, Trace, Local } from '@kit.ArkUI';
+import { Entry, Text, TextAttribute, Column, ComponentV2, Button, ButtonAttribute, ClickEvent, Row, Color, CommonMethod, Margin, HorizontalAlign, Builder, TextAlign, FlexAlign, applyStyles, UIUtils, Binding, MutableBinding, State, ObservedV2, Trace, Local } from '@kit.ArkUI';
 
 @ObservedV2
 class ClassA {

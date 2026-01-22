@@ -19,7 +19,7 @@ PersistentStorage的存储路径在应用第一个ability启动时就已确定�
 在静态上下文中使用时，需导入PersistentStorage：
 
 ```ts
-import { PersistentStorage } from '@ohos.arkui.stateManagement';
+import { PersistentStorage } from '@kit.ArkUI';
 ```
 
 ## 限制条件
@@ -86,8 +86,8 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { PersistentStorage, StorageLink, State } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
+import { PersistentStorage, StorageLink, State } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -141,7 +141,7 @@ struct Index {
 ```ts
 'use static'
 
-import { PersistentStorage, AppStorage } from '@ohos.arkui.stateManagement';
+import { PersistentStorage, AppStorage } from '@kit.ArkUI';
 
 let aProp = AppStorage.setOrCreate('aProp', 47);
 PersistentStorage.persistProp('aProp', 48);
@@ -158,7 +158,7 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 ```ts
 'use static'
 
-import { PersistentStorage, AppStorage } from '@ohos.arkui.stateManagement';
+import { PersistentStorage, AppStorage } from '@kit.ArkUI';
 
 PersistentStorage.persistProp('aProp', 48);
 if (AppStorage.get('aProp') > 50) {
@@ -177,8 +177,8 @@ if (AppStorage.get('aProp') > 50) {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
+import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -243,8 +243,8 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
+import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -300,8 +300,8 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
+import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -367,8 +367,8 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
+import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -434,8 +434,8 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
+import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
 
 interface JsonSerializable {
   toJson(): jsonx.JsonElement;

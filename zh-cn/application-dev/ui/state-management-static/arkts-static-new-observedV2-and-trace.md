@@ -20,7 +20,7 @@
 在静态语言上下文中使用时，需要导入装饰器。
 
 ```ts
-import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { ObservedV2, Trace } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -48,8 +48,8 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+   import { ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Son {
@@ -80,8 +80,8 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+   import { ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Father {
@@ -111,8 +111,8 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+   import { ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Manager {
@@ -151,8 +151,8 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+   import { ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Person {
@@ -189,7 +189,7 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
    }
    ```
 
-- \@ObservedV2、\@Trace不能与\@Observed、\@Track混合使用。
+- \@ObservedV2、\@Trace不能与[\@Observed](./arkts-static-observed-and-objectlink.md)、[\@Track](./arkts-static-track.md)混合使用。
 
    ```ts
    @Observed
@@ -233,15 +233,15 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 
 在下面的嵌套类场景中，Pencil类是Son类中最里层的类，Pencil类被\@ObservedV2装饰且属性length被\@Trace装饰，此时length的变化能够被观测到。
 
-\@Trace装饰器与现有状态管理框架的\@Track与\@State装饰器的能力不同，@Track使class具有属性级更新的能力，但并不具备深度观测的能力；而\@State只能观测到对象本身以及第一层的变化，对于多层嵌套场景只能通过封装自定义组件，搭配\@Observed和\@ObjectLink来实现观测。
+\@Trace装饰器与现有状态管理框架的\@Track与[\@State](./arkts-static-state.md)装饰器的能力不同，@Track使class具有属性级更新的能力，但并不具备深度观测的能力；而\@State只能观测到对象本身以及第一层的变化，对于多层嵌套场景只能通过封装自定义组件，搭配[\@Observed和\@ObjectLink](./arkts-static-observed-and-objectlink.md)来实现观测。
 
 点击Button('change length')，length是被\@Trace装饰的属性，它的变化可以触发关联的UI组件，即UINode (1)的刷新，并输出"id: 1 renderTimes: x"的日志，其中x根据点击次数依次增长。
 
 ```ts
 'use static'
 
-import { Button, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { Button, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+import { ObservedV2, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Pencil {
@@ -292,8 +292,8 @@ struct Page {
 ```ts
 'use static'
 
-import { Button, Column, ComponentV2, Entry, FontWeight, Row, Text } from '@ohos.arkui.component';
-import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { Button, Column, ComponentV2, Entry, FontWeight, Row, Text } from '@kit.ArkUI';
+import { ObservedV2, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class GrandFather {
@@ -551,8 +551,8 @@ struct Index {
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@ohos.arkui.component';
-   import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@kit.ArkUI';
+   import { ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -610,8 +610,8 @@ struct Index {
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@ohos.arkui.component';
-   import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@kit.ArkUI';
+   import { ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -663,8 +663,8 @@ struct Index {
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, DatePicker, Divider, Entry } from '@ohos.arkui.component';
-   import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, DatePicker, Divider, Entry } from '@kit.ArkUI';
+   import { ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -719,8 +719,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button } from '@ohos.arkui.component';
-import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, ComponentV2, Button } from '@kit.ArkUI';
+import { Trace, ObservedV2, Local } from '@kit.ArkUI';
 
 @ObservedV2
 class Source {
@@ -759,8 +759,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button } from '@ohos.arkui.component'
-import { Trace, ObservedV2, Local } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, ComponentV2, Button } from '@kit.ArkUI'
+import { Trace, ObservedV2, Local } from '@kit.ArkUI'
 
 @ObservedV2
 class Source {

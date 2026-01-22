@@ -19,8 +19,7 @@
     ```ts
     'use static'
     
-    import { Entry, ComponentV2 } from '@ohos.arkui.component';
-    import { Local } from '@ohos.arkui.stateManagement';
+    import { Entry, ComponentV2, Local } from '@kit.ArkUI';
     
     @ComponentV2 // 装饰器
     struct Index { // struct声明的数据结构

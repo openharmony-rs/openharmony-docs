@@ -10,7 +10,7 @@
 
 \@Monitor装饰器用于监听状态变量修改，使得状态变量具有深度监听的能力：
 
-- \@Monitor装饰器支持在\@ComponentV2装饰的自定义组件中使用，未被状态变量装饰器[\@Local](./arkts-static-new-local.md)、[\@Param](./arkts-static-new-param.md)、[\@Provider、\@Consumer](./arkts-static-new-provider-and-consumer.md)、[\@Computed](./arkts-static-new-computed.md)装饰的变量无法被\@Monitor监听到变化。
+- \@Monitor装饰器支持在[\@ComponentV2](./arkts-static-componentv2.md)装饰的自定义组件中使用，未被状态变量装饰器[\@Local](./arkts-static-new-local.md)、[\@Param](./arkts-static-new-param.md)、[\@Provider、\@Consumer](./arkts-static-new-provider-and-consumer.md)、[\@Computed](./arkts-static-new-computed.md)装饰的变量无法被\@Monitor监听到变化。
 
 - \@Monitor装饰器支持在类中与[\@ObservedV2、\@Trace](./arkts-static-new-observedV2-and-trace.md)配合使用，不允许在未被\@ObservedV2装饰的类中使用\@Monitor装饰器。未被\@Trace装饰的属性无法被\@Monitor监听到变化。
 - 当观测的属性变化时，\@Monitor装饰器定义的回调方法将被调用。判断属性是否变化使用的是严格相等（===），当严格相等判断的结果是false（即不相等）的情况下，就会触发\@Monitor的回调。当在一次事件中多次改变同一个属性时，将会使用初始值和最终值进行比较以判断是否变化。
@@ -22,7 +22,7 @@
 在静态上下文中使用时，需导入装饰器：
 
 ```ts
-import { Monitor } from '@ohos.arkui.stateManagement';
+import { Monitor } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -47,8 +47,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry } from '@ohos.arkui.component';
-   import { Local, IMonitor, Monitor } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Entry } from '@kit.ArkUI';
+   import { Local, IMonitor, Monitor } from '@kit.ArkUI';
    @Entry
    @ComponentV2
    struct Index {
@@ -78,8 +78,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { Local, IMonitor, Monitor } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+   import { Local, IMonitor, Monitor } from '@kit.ArkUI';
    
    class Info {
      name: string;
@@ -126,8 +126,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { Local, IMonitor, Monitor, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+   import { Local, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -267,8 +267,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry } from '@ohos.arkui.component';
-   import { IMonitor, Monitor, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Entry } from '@kit.ArkUI';
+   import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -365,8 +365,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry } from '@ohos.arkui.component';
-   import { IMonitor, Monitor, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Entry } from '@kit.ArkUI';
+   import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -420,8 +420,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry } from '@ohos.arkui.component';
-   import { IMonitor, Monitor, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { Button, Column, ComponentV2, Entry } from '@kit.ArkUI';
+   import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Frequence {
@@ -464,7 +464,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { IMonitor, Monitor, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    enum ENUM {
      T2 = 't2' // enum枚举值
    };
@@ -537,15 +537,15 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 
   ```ts
   'use static'
-
+  
   import { Column, ComponentV2, Entry, Local, Param, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
-
+  
   @ObservedV2
   class UserV2 {
     @Trace name: string = 'Tom';
     age: number = 1;
   }
-
+  
   @Entry
   @ComponentV2
   struct Index {
@@ -553,7 +553,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
     @Param name: string = 'Tom';
     @Local user: UserV2 = new UserV2();
     age: number = 24;
-
+  
     // 编译成功
     @Monitor(['user'])
     onUserChange(monitor: IMonitor) {
@@ -570,26 +570,26 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
       }
     }
   }
-    ```
+  ```
   
 - 在被\@ObservedV2装饰的类中，或在被\@ComponentV2装饰的自定义组件中使用\@Monitor装饰器时，\@Monitor监听的变量必须是已存在的变量，否则会导致编译报错。
 
   ```ts
   'use static'
-
+  
   import { Column, ComponentV2, Entry, Local, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
-
+  
   @ObservedV2 
   class UserV2 {
     @Trace name: string = 'Tom';
     age: number = 1;
   }
-
+  
   @ObservedV2
   class Info {
     @Trace age: number = 25;
     @Trace user: UserV2 = new UserV2();
-
+  
     // age1不存在，会导致编译报错
     @Monitor(['age1'])
     onAgeChange(monitor: IMonitor) {
@@ -602,31 +602,31 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
       console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
   }
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local message: string = 'Hello world';
     @Local user: UserV2 = new UserV2();
-
+  
     // user1不存在，会导致编译报错
     @Monitor(['user1'])  
     onUserChange(monitor: IMonitor): void {
       console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     } 
-
+  
     // user.age1不存在，会导致编译报错
     @Monitor(['user.age1'])  
     onUserAgeChange(monitor: IMonitor): void {
       console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
-
+  
     build() {
       Column() {
       }
     }
   }
-    ```
+  ```
 
 ## \@Monitor与\@Watch对比
 
@@ -652,8 +652,8 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 ```ts
 'use static'
 
-import { Button, Color, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-import { IMonitor, Monitor, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { Button, Color, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Info {

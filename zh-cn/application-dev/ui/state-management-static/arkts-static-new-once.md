@@ -1,6 +1,6 @@
 # \@Once：初始化同步一次
 
-使用\@Once装饰器搭配\@Param装饰器，可以实现仅从外部初始化一次且不接受后续同步变化的能力。
+使用\@Once装饰器搭配[\@Param](./arkts-static-new-param.md)装饰器，可以实现仅从外部初始化一次且不接受后续同步变化的能力。
 
 ## 概述
 
@@ -14,7 +14,7 @@
 在静态语言上下文中使用时，需导入装饰器：
 
 ```ts
-import { Once } from '@ohos.arkui.stateManagement';
+import { Once } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -28,7 +28,7 @@ import { Once } from '@ohos.arkui.stateManagement';
 
 ## 限制条件
 
-- \@Once仅在\@ComponentV2装饰的自定义组件中与\@Param搭配使用。
+- \@Once仅在[\@ComponentV2](./arkts-static-componentv2.md)装饰的自定义组件中与\@Param搭配使用。
 
   ```ts
   @ComponentV2
@@ -62,8 +62,8 @@ import { Once } from '@ohos.arkui.stateManagement';
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local, Param, Once } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { Local, Param, Once } from '@kit.ArkUI';
 
 @ComponentV2
 struct ChildComponent {
@@ -94,13 +94,13 @@ struct MyComponent {
 
 ### 本地修改\@Param变量
 
-当\@Once与\@Param结合使用时，可以解除\@Param本地不可修改的限制，并能够触发UI刷新。此时，使用\@Param和\@Once的效果类似于\@Local，但\@Param和\@Once还能接收外部传入的初始值。
+当\@Once与\@Param结合使用时，可以解除\@Param本地不可修改的限制，并能够触发UI刷新。此时，使用\@Param和\@Once的效果类似于[\@Local](./arkts-static-new-local.md)，但\@Param和\@Once还能接收外部传入的初始值。
 
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { Local, Param, Once, ObservedV2, Trace, Require } from '@ohos.arkui.stateManagement';
+import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { Local, Param, Once, ObservedV2, Trace, Require } from '@kit.ArkUI';
 
 @ObservedV2
 class Info {

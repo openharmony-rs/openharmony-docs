@@ -11,7 +11,7 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-import { Track } from '@ohos.arkui.stateManagement';
+import { Track } from '@kit.ArkUI';
 ```
 
 ## class属性级更新说明
@@ -21,8 +21,8 @@ import { Track } from '@ohos.arkui.stateManagement';
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, Text } from '@ohos.arkui.component';
-import { Observed, State } from '@ohos.arkui.stateManagement';
+import { Button, Column, Component, Entry, Text } from '@kit.ArkUI';
+import { Observed, State } from '@kit.ArkUI';
 
 @Observed
 class Info {
@@ -113,8 +113,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, FontWeight, Row, Text } from '@ohos.arkui.component';
-import { State, Track, Observed } from '@ohos.arkui.stateManagement';
+import { Button, Column, Component, Entry, FontWeight, Row, Text } from '@kit.ArkUI';
+import { State, Track, Observed } from '@kit.ArkUI';
 
 class LogTrack {
   @Track str1: string;
@@ -194,7 +194,7 @@ struct AddLog {
 
 ## 限制条件
 
-- \@Track使用在\@ComponentV2的UI中，不会引起运行时报错，但依旧不会刷新。
+- \@Track使用在[\@ComponentV2](./arkts-static-componentv2.md)的UI中，不会引起运行时报错，但依旧不会刷新。
 
 - 建议开发者不要混用包含\@Track的class对象和不包含\@Track的class对象，如联合类型中、类继承等。
 
@@ -212,8 +212,8 @@ struct AddLog {
 ```ts
 'use static'
 
-import { Column, Component, Entry, FontWeight, Row, Text } from '@ohos.arkui.component';
-import { State, Track } from '@ohos.arkui.stateManagement';
+import { Column, Component, Entry, FontWeight, Row, Text } from '@kit.ArkUI';
+import { State, Track } from '@kit.ArkUI';
 
 class Log {
   @Track logInfo: string;

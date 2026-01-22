@@ -40,7 +40,7 @@ import { Provide, Consume } from '@kit.ArkUI';
 | \@Provide变量装饰器 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数          | alias：别名，常量字符串，可选。<br/>如果指定了别名，则通过别名来绑定变量；如果未指定别名，则通过变量名绑定变量。<br/>指定别名方法为：\@Provide({ alias: 'aliasName' })。<br/>allowOverride：是否允许重写，boolean类型，可选。<br/>如果指定allowOverride为true，则别名与属性名可以被重写，即可以存在同名的\@Provide变量。<br/>未指定时使用默认值false。示例见[\@Provide支持allowOverride参数](#provide支持allowoverride参数)。 |
-| 允许装饰的变量类型  | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型  | Object、class、string、number、boolean、enum、interface等基本类型以及Array、[Date](#装饰date变量类型)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#\@provide和\@consume支持联合类型)。 |
 | 初始化规则          | 必须定义本地默认值。<br/>支持从父组件传入变量（含undefined类型），此时优先使用传入值进行初始化。<br/>若父组件未传值，则使用本地默认值进行初始化。 |
 | 同步规则            | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@Provide初始化时，仅作为初始值，后续变量的变化不会同步至\@Provide。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、[\@PropRef](./arkts-static-propref.md)、\@Provide。<br/>\@Provide变量的变化会同步给子组件的\@Link、\@PropRef变量。<br/>与后代子组件中别名匹配的\@Consume变量双向同步 |
 
@@ -61,56 +61,7 @@ import { Provide, Consume } from '@kit.ArkUI';
 
 - 当装饰数组时，可以观察到数组本身的赋值、添加、删除和更新。
 
-- 当装饰Date时，可以观察到Date整体的赋值，并通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。
-
-  ```ts
-  'use static'
-
-  import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
-  import { Provide, Consume } from '@ohos.arkui.stateManagement';
-  @Component
-  struct Child {
-    @Consume selectedDate: Date;
-
-    build() {
-      Column() {
-        Text(`Provide: ${this.selectedDate}`)
-        Button('child increase the day by 1')
-          .onClick((e: ClickEvent) => {
-            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-          })
-        Button('child update the new date')
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.selectedDate = new Date('2023-09-09');
-          })
-      }
-    }
-  }
-
-  @Entry
-  @Component
-  struct Parent {
-    @Provide selectedDate: Date = new Date('2021-08-08');
-
-    build() {
-      Column() {
-        Text(`Provide: ${this.selectedDate}`)
-        Button('parent increase the day by 1')
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-          })
-        Button('parent update the new date')
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.selectedDate = new Date('2023-07-07');
-          })
-        Child()
-      }
-    }
-  }
-  ```
+- 当装饰Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。详见[装饰Date类型变量](#装饰date类型变量)。
 
 - 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete`更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
@@ -120,9 +71,9 @@ import { Provide, Consume } from '@kit.ArkUI';
 
   ```ts
   'use static'
-
-  import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-  import { Provide, Consume } from '@ohos.arkui.stateManagement';
+  
+  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
+  import { Provide, Consume } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -175,8 +126,8 @@ import { Provide, Consume } from '@kit.ArkUI';
    ```ts
    'use static'
 
-   import { Entry, Component, Column, Text } from '@ohos.arkui.component';
-   import { Provide, Consume } from '@ohos.arkui.stateManagement';
+   import { Entry, Component, Column, Text } from '@kit.ArkUI';
+   import { Provide, Consume } from '@kit.ArkUI';
    @Component
    struct Child {
      @Consume message: string;
@@ -205,8 +156,8 @@ import { Provide, Consume } from '@kit.ArkUI';
    ```ts
    'use static'
 
-   import { Entry, Component, Column, Text } from '@ohos.arkui.component';
-   import { Provide, Consume } from '@ohos.arkui.stateManagement';
+   import { Entry, Component, Column, Text } from '@kit.ArkUI';
+   import { Provide, Consume } from '@kit.ArkUI';
    @Component
    struct Child {
      @Consume num: number;
@@ -250,25 +201,25 @@ import { Provide, Consume } from '@kit.ArkUI';
 
    ```ts
    'use static'
-
+   
    import { Entry, Component, Column, Text } from '@kit.ArkUI';
    import { Provide, Consume, State } from '@kit.ArkUI';
-
+   
    @Component
    struct Child {
       // 错误用法，info不存在对应的@Provide装饰的变量，且没有指定初始值。
      @Consume info: number;
-
+   
      build() {
        Text(`info value is ${this.info}`)
      }
    }
-
+   
    @Entry
    @Component
    struct Parent {
      @State message: string = 'Hello';
-
+   
      build() {
        Column() {
         Text(`Parent message is ${this.message}`)
@@ -282,25 +233,25 @@ import { Provide, Consume } from '@kit.ArkUI';
 
    ```ts
    'use static'
-
+   
    import { Entry, Component, Column, Text } from '@kit.ArkUI';
    import { Provide, Consume, State } from '@kit.ArkUI';
-
+   
    @Component
    struct Child {
       // 正确用法，指定默认值。
      @Consume info: number = 1;
-
+   
      build() {
        Text(`info value is ${this.info}`)
      }
    }
-
+   
    @Entry
    @Component
    struct Parent {
      @State message: string = 'Hello';
-
+   
      build() {
        Column() {
         Text(`Parent message is ${this.message}`)
@@ -320,8 +271,8 @@ import { Provide, Consume } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@ohos.arkui.component';
-import { Provide, Consume } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@kit.ArkUI';
+import { Provide, Consume } from '@kit.ArkUI';
 @Component
 struct ContentComponent {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Index内的@Provide装饰的变量
@@ -374,8 +325,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row, Divider, ForEach } from '@ohos.arkui.component';
-import { Provide, Consume } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent, Row, Divider, ForEach } from '@kit.ArkUI';
+import { Provide, Consume } from '@kit.ArkUI';
 @Component
 struct Child {
   @Consume message: Map<number, string>;
@@ -406,7 +357,6 @@ struct Child {
   }
 }
 
-
 @Entry
 @Component
 struct MapSample {
@@ -434,8 +384,8 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row, Divider, ForEach } from '@ohos.arkui.component';
-import { Provide, Consume } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent, Row, Divider, ForEach } from '@kit.ArkUI';
+import { Provide, Consume } from '@kit.ArkUI';
 @Component
 struct Child {
   @Consume message: Set<number>;
@@ -463,7 +413,6 @@ struct Child {
   }
 }
 
-
 @Entry
 @Component
 struct SetSample {
@@ -484,6 +433,59 @@ struct SetSample {
 }
 ```
 
+### 装饰Date类型变量
+
+以下示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
+
+```typescript
+'use static'
+
+import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
+import { Provide, Consume } from '@kit.ArkUI';
+@Component
+struct Child {
+  @Consume selectedDate: Date;
+
+  build() {
+    Column() {
+      Text(`Provide: ${this.selectedDate}`)
+      Button('child increase the day by 1')
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      Button('child update the new date')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate = new Date('2023-09-09');
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @Provide selectedDate: Date = new Date('2021-08-08');
+
+  build() {
+    Column() {
+      Text(`Provide: ${this.selectedDate}`)
+      Button('parent increase the day by 1')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+      Button('parent update the new date')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate = new Date('2023-07-07');
+        })
+      Child()
+    }
+  }
+}
+```
+
 ### \@Provide和\@Consume支持联合类型
 
 @Provide和@Consume支持联合类型（包括undefined和null）。以下示例中，count类型为`string | undefined`，当点击Ancestors组件中的Button改变count的属性或类型时，Child组件也会对应刷新。
@@ -491,8 +493,8 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@ohos.arkui.component';
-import { Provide, Consume } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@kit.ArkUI';
+import { Provide, Consume } from '@kit.ArkUI';
 @Component
 struct Child {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内@Provide装饰的变量
@@ -557,8 +559,8 @@ struct MyComponent {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@ohos.arkui.component';
-import { Provide, Consume } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent, Row } from '@kit.ArkUI';
+import { Provide, Consume } from '@kit.ArkUI';
 @Component
 struct GrandSon {
   // @Consume装饰的变量通过相同的属性名绑定其祖先内的@Provide装饰的变量
