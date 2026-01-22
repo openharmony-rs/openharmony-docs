@@ -1,4 +1,4 @@
-# 使用SoundPlayer开发系统音效播放功能
+# Using SoundPlayer for System Sound Effect Playback
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -6,25 +6,25 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，支持系统音效播放。
+System sound effect playback is supported starting from API version 23.
 
-SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，比如在开始拍照、开始录像或结束录像时播放提示音。
+**SoundPlayer** provides system sound effect playback functionality, which is suitable for camera prompt sounds, such as playing prompt sounds when starting to take a photo, starting to record a video, or ending a video recording.
 
-## 支持的音效类型
+## Supported Sound Effect Types
 
-支持的音效类型[SystemSoundType](../../reference/apis-audio-kit/js-apis-systemSoundManager.md#systemsoundtype)信息如下表所示。可通过`systemSoundManager.SystemSoundType.PHOTO_SHUTTER`等具体类型，作为[load](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#load)、[play](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#play)或[unload](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#unload)方法的入参。
+The following table describes the supported [sound effect types](../../reference/apis-audio-kit/js-apis-systemSoundManager.md#systemsoundtype). Specific types like **systemSoundManager.SystemSoundType.PHOTO_SHUTTER** can be used as input parameters for the [load](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#load), [play](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#play), or [unload](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#unload) methods.
 
-| 播放音效类型 | 值 | 说明 | 
+| Sound Effect Type| Value| Description| 
 | -------- | -------- | -------- |
-| PHOTO_SHUTTER | 0 | 拍照音效。 | 
-| VIDEO_RECORDING_BEGIN | 1 | 视频录制开始音效。 | 
-| VIDEO_RECORDING_END | 2 | 视频录制结束音效。 |
+| PHOTO_SHUTTER | 0 | Camera shutter sound.| 
+| VIDEO_RECORDING_BEGIN | 1 | Video recording start sound.| 
+| VIDEO_RECORDING_END | 2 | Video recording end sound.|
 
-## 开发步骤
+## How to Develop
 
-以下各步骤示例为片段代码，可通过点击示例代码右下方的链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer)。
+The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer).
 
-1. 在调用SystemSoundPlayer的接口前，需要先通过[createSystemSoundPlayer](../../reference/apis-audio-kit/js-apis-systemSoundManager.md#systemsoundmanagercreatesystemsoundplayer)创建实例。
+1. Before calling any of the **SystemSoundPlayer** APIs, you need to create an instance through [createSystemSoundPlayer](../../reference/apis-audio-kit/js-apis-systemSoundManager.md#systemsoundmanagercreatesystemsoundplayer).
 
    <!-- @[sound_player_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
@@ -32,7 +32,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
    import { systemSoundManager } from '@kit.AudioKit';
    // ...
    
-   // SystemSoundPlayer object.
+   // SystemSoundPlayer object
    let systemSoundPlayer: systemSoundManager.SystemSoundPlayer | null = null;
    
    // ...
@@ -44,7 +44,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
      });
    ```
 
-2. 调用[load](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#load)接口，加载指定类型音效资源。
+2. Call the [load](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#load) API to load the sound effect resource of a specified type.
 
    <!-- @[sound_player_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
@@ -52,7 +52,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
    import { systemSoundManager } from '@kit.AudioKit';
    // ...
    
-   // 音效类型。
+   // Sound effect type
    let systemSoundType: systemSoundManager.SystemSoundType = systemSoundManager.SystemSoundType.PHOTO_SHUTTER;
    
    // ...
@@ -63,7 +63,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
      });
    ```
 
-3. 调用[play](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#play)接口，播放已加载的音效资源。
+3. Call the [play](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#play) API to play the loaded sound effect resource.
 
    <!-- @[sound_player_play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
@@ -71,7 +71,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
    import { systemSoundManager } from '@kit.AudioKit';
    // ...
    
-   // 音效类型。
+   // Sound effect type
    let systemSoundType: systemSoundManager.SystemSoundType = systemSoundManager.SystemSoundType.PHOTO_SHUTTER;
    
    // ...
@@ -82,7 +82,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
      });
    ```
 
-4. 调用[unload](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#unload)接口，卸载之前已加载的音效资源。
+4. Call the [unload](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#unload) API to unload the sound effect resource.
 
    <!-- @[sound_player_unload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
@@ -90,7 +90,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
    import { systemSoundManager } from '@kit.AudioKit';
    // ...
    
-   // 音效类型。
+   // Sound effect type
    let systemSoundType: systemSoundManager.SystemSoundType = systemSoundManager.SystemSoundType.PHOTO_SHUTTER;
    
    // ...
@@ -101,7 +101,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
      });
    ```
 
-5. 调用[release](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#release)接口，释放系统音效播放器。
+5. Call the [release](../../reference/apis-audio-kit/js-apis-inner-multimedia-systemSoundPlayer.md#release) API to release the system sound effect player.
 
    <!-- @[sound_player_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/SystemSoundPlayer/entry/src/main/ets/pages/SoundPlayer.ets) -->
    
@@ -111,3 +111,4 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
    }).catch((err: BusinessError) => {
      console.error(`Failed to call the release method. Code: ${err.code}, message: ${err.message}`);
    });
+   ```

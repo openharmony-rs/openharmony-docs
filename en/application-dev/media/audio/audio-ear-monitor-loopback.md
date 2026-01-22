@@ -26,7 +26,7 @@ The system automatically chooses the input and output devices. If these devices 
 
 Using AudioLoopback for audio monitoring involves querying the monitoring capability with [isAudioLoopbackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isaudioloopbacksupported20), creating an AudioLoopback instance, setting the volume, listening for status changes, and enabling/disabling audio loopback. This guide walks you through the process of enabling audio monitoring using AudioLoopback, with a focus on how to use AudioLoopback for audio monitoring. You are advised to read this in conjunction with the [AudioLoopback](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md) API documentation.
 
-The figure below shows the status changes of the AudioLoopback. After an AudioLoopback instance is created, different APIs can be called to switch the AudioLoopback to different states and trigger the required behavior.
+The following figure shows the status changes of **AudioLoopback**. After an instance is created, you can call the corresponding method to enter the specified state to implement the corresponding behavior.
 
 If an API is called when the AudioLoopback is not in the given state, the system may throw an exception or generate other undefined behavior. Therefore, you are advised to check the AudioLoopback state before triggering state transition.
 
@@ -34,241 +34,330 @@ If an API is called when the AudioLoopback is not in the given state, the system
 
 ![AudioLoopback status change](figures/audioloopback-status-change.png)
 
-The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#onstatuschange20) API can be used to listen for AudioLoopback status changes. For details about the value and description of each status, see [AudioLoopbackStatus](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackstatus20).
+The [on('statusChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#onstatuschange20) API can be used to listen for **AudioLoopback** status changes. For details about the value and description of each status, see [AudioLoopbackStatus](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackstatus20).
 
 ### How to Develop
+
+  The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS).
 
 1. Query the audio monitoring capability and create an AudioLoopback instance. For details about the AudioLoopback mode, see [AudioLoopbackMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackmode20).
 
    > **NOTE**
-   >
+   > 
    > You must request the ohos.permission.MICROPHONE permission for audio monitoring. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
-   ```ts
-    import { audio } from '@kit.AudioKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    
-    let mode: audio.AudioLoopbackMode = audio.AudioLoopbackMode.HARDWARE;
-    let audioLoopback: audio.AudioLoopback;
-    let isSupported = audio.getAudioManager().getStreamManager().isAudioLoopbackSupported(mode);
-    if (isSupported) {
-      audio.createAudioLoopback(mode).then((loopback) => {
-        audioLoopback = loopback;
-        console.info('Invoke createAudioLoopback succeeded.');
-      }).catch((err: BusinessError) => {
-        console.error(`Invoke createAudioLoopback failed, code is ${err.code}, message is ${err.message}.`);
-      });
-    }
+   <!-- @[create_AudioLoopback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit'; // Import the audio module.
+   import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
+   // ...
+   let mode: audio.AudioLoopbackMode = audio.AudioLoopbackMode.HARDWARE;
+   let audioLoopback: audio.AudioLoopback | undefined = undefined;
+   // ...
+     let isSupported = audio.getAudioManager().getStreamManager().isAudioLoopbackSupported(mode);
+     if (isSupported) {
+       audio.createAudioLoopback(mode).then((loopback) => {
+         console.info('Invoke createAudioLoopback succeeded.');
+         // ...
+         audioLoopback = loopback;
+       }).catch((err: BusinessError) => {
+         console.error(`Invoke createAudioLoopback failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       });
+     } else {
+       console.error('Audio loopback is unsupported.');
+       // ...
+     }
    ```
 
 2. Call [getStatus](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getstatus20) to obtain the current audio loopback status.
 
-    > **NOTE**
-    >
-    > The audio loopback status is affected by factors such as audio focus, low-latency control, and capturer and renderer devices.
+   > **NOTE**
+   > 
+   > The audio loopback status is affected by factors such as audio focus, low-latency control, and capturer and renderer devices.
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioLoopback.getStatus().then((status: audio.AudioLoopbackStatus) => {
-      console.info(`getStatus success, status is ${status}.`);
-    }).catch((err: BusinessError) => {
-      console.error(`getStatus failed, code is ${err.code}, message is ${err.message}.`);
-    })
+   <!-- @[get_Status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
+   // ...
+       audioLoopback.getStatus().then((status: audio.AudioLoopbackStatus) => {
+         console.info(`getStatus success, status is ${status}.`);
+         // ...
+       }).catch((err: BusinessError) => {
+         console.error(`getStatus failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       })
    ```
 
 3. Call [setVolume](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setvolume20) to set the audio loopback volume.
 
-    > **NOTE**
-    > - Setting the volume before enabling audio loopback will take effect after successful activation of audio loopback.
-    > - Setting the volume after enabling audio loopback will take effect immediately.
-    > - If the volume is not set before enabling audio loopback, the default volume of 0.5 is used upon activation of audio loopback.
+   > **NOTE**
+   > 
+   > - Setting the volume before enabling audio loopback will take effect after successful activation of audio loopback.
+   > - Setting the volume after enabling audio loopback will take effect immediately.
+   > - If the volume is not set before enabling audio loopback, the default volume of 0.5 is used upon activation of audio loopback.
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioLoopback.setVolume(0.5).then(() => {
-      console.info('setVolume success.');
-    }).catch((err: BusinessError) => {
-      console.error(`setVolume failed, code is ${err.code}, message is ${err.message}.`);
-    });
+   <!-- @[set_Volume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
+   // ...
+       try {
+         await audioLoopback.setVolume(volume);
+         console.info(`Invoke setVolume ${volume} succeeded.`);
+         // ...
+       } catch (err) {
+         console.error(`Invoke setVolume failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       }
    ```
 
 4. Call [setReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setreverbpreset21) to set the reverb mode for audio loopback. This API is available from API version 21.
 
-    > **NOTE**
-    > - If you set the reverb mode before enabling loopback, the setting takes effect after audio loopback is successfully enabled.
-    > - If you set the reverb mode after enabling loopback, the setting takes effect immediately.
-    > - If you do not set the reverb mode before enabling loopback, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is used upon activation of audio loopback.
+   > **NOTE**
+   > 
+   > - If you set the reverb mode before enabling loopback, the setting takes effect after audio loopback is successfully enabled.
+   > - If you set the reverb mode after enabling loopback, the setting takes effect immediately.
+   > - If you do not set the reverb mode before enabling loopback, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is used upon activation of audio loopback.
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      audioLoopback.setReverbPreset(audio.AudioLoopbackReverbPreset.THEATER);
-    } catch (err) {
-      console.error(`setReverbPreset :ERROR: ${err}`);
-    }
+   <!-- @[set_ReverbPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
+   // ...
+       try {
+         audioLoopback.setReverbPreset(preset);
+         console.info(`setReverbPreset( ${preset} succeeded.`);
+         // ...
+         currentReverbPreset = audioLoopback.getReverbPreset(); // Obtain the current reverb mode to prevent setting failures.
+       } catch (err) {
+         console.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       }
    ```
 
 5. Call [getReverbPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getreverbpreset21) to obtain the current reverb mode of audio loopback. This API is available from API version 21.
 
-    > **NOTE**
-    >
-    > If no reverb mode has been set, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is returned.
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      let reverbPreset = audioLoopback.getReverbPreset();
-    } catch (err) {
-      console.error(`getReverbPreset:ERROR: ${err}`);
-    }
+   > **NOTE**
+   > 
+   > If no reverb mode has been set, the default mode [THEATER](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackreverbpreset21) is returned.
+
+   <!-- @[get_ReverbPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
+   // ...
+       try {
+         let reverbPreset = audioLoopback.getReverbPreset();
+       } catch (err) {
+         console.error(`getReverbPreset:ERROR: ${err}`);
+         // ...
+       }
    ```
 
 6. Call [setEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#setequalizerpreset21) to set the equalizer type for audio loopback. This API is available from API version 21.
 
-    > **NOTE**
-    > - If you set the equalizer type before enabling loopback, the setting takes effect after audio loopback is successfully enabled.
-    > - If you set the equalizer type after enabling loopback, the setting takes effect immediately.
-    > - If you do not set the equalizer type before enabling loopback, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is used upon activation of audio loopback.
+   > **NOTE**
+   > 
+   > - If you set the equalizer type before enabling loopback, the setting takes effect after audio loopback is successfully enabled.
+   > - If you set the equalizer type after enabling loopback, the setting takes effect immediately.
+   > - If you do not set the equalizer type before enabling loopback, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is used upon activation of audio loopback.
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      audioLoopback.setEqualizerPreset(audio.AudioLoopbackEqualizerPreset.FULL);
-    } catch (err) {
-      console.error(`setEqualizerPreset :ERROR: ${err}`);
-    }
+   <!-- @[set_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   try {
+     audioLoopback.setEqualizerPreset(audio.AudioLoopbackEqualizerPreset.FULL);
+   } catch (err) {
+     console.error(`setEqualizerPreset :ERROR: ${err}`);
+   }
    ```
 
 7. Call [getEqualizerPreset](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#getequalizerpreset21) to obtain the current equalizer type of audio loopback. This API is available from API version 21.
 
-    > **NOTE**
-    >
-    > If no equalizer type has been set, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is returned.
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    try {
-      let reverbPreset = audioLoopback.getEqualizerPreset();
-    } catch (err) {
-      console.error(`getEqualizerPreset:ERROR: ${err}`);
-    }
+   > **NOTE**
+   > 
+   > If no equalizer type has been set, the default mode [FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21) is returned.
+
+   <!-- @[get_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
+   // ...
+       try {
+         let equalizerPreset = audioLoopback.getEqualizerPreset();
+       } catch (err) {
+         console.error(`getEqualizerPreset:ERROR: ${err}`);
+         // ...
+       }
    ```
 
 8. Call [enable](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#enable20) to enable or disable audio loopback.
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioLoopback.enable(true).then((isSuccess) => {
-      if (isSuccess) {
-        console.info('enable success.');
-      } else {
-        console.info('enable failed.');
-      }
-    }).catch((err: BusinessError) => {
-      console.error(`enable failed, code is ${err.code}, message is ${err.message}.`);
-    });
-
-    audioLoopback.enable(false).then((isSuccess) => {
-      if (isSuccess) {
-        console.info('disable success.');
-      } else {
-        console.info('disable failed.');
-      }
-    }).catch((err: BusinessError) => {
-      console.error(`disable failed, code is ${err.code}, message is ${err.message}.`);
-    });
+   <!-- @[enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
+   // ...
+   // Set a listener and enable audio loopback.
+   async function enable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     if (audioLoopback !== undefined) {
+       try {
+         let status = await audioLoopback.getStatus();
+         if (status == audio.AudioLoopbackStatus.AVAILABLE_IDLE) {
+           // Register a listener.
+           audioLoopback.on('statusChange', statusChangeCallback);
+           // Enable audio loopback.
+           let success = await audioLoopback.enable(true);
+           if (success) {
+             console.info('Invoke enable succeeded');
+             // ...
+           } else {
+             status = await audioLoopback.getStatus();
+             statusChangeCallback(status);
+           }
+         } else {
+           statusChangeCallback(status);
+         }
+       } catch (err) {
+         console.error(`Invoke enable failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       }
+     } else {
+       console.error('Audio loopback not created.');
+       // ...
+     }
+   }
+   
+   // Disable audio loopback and unregister the listener.
+   async function disable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     if (audioLoopback !== undefined) {
+       try {
+         let status = await audioLoopback.getStatus();
+         if (status == audio.AudioLoopbackStatus.AVAILABLE_RUNNING) {
+           // Disable audio loopback.
+           let success = await audioLoopback.enable(false);
+           if (success) {
+             console.info('Invoke disable succeeded');
+             // ...
+             // Unregister the listener.
+             audioLoopback.off('statusChange', statusChangeCallback);
+           } else {
+             status = await audioLoopback.getStatus();
+             statusChangeCallback(status);
+           }
+         } else {
+           statusChangeCallback(status);
+         }
+       } catch (err) {
+         console.error(`Invoke disable failed, code is ${err.code}, message is ${err.message}.`);
+         // ...
+       }
+     } else {
+       console.error('Audio loopback not created.');
+       // ...
+     }
+   }
    ```
 
 ### Complete Sample Code
 
 The following example demonstrates how to use AudioLoopback to enable low-latency audio monitoring:
 
-```ts
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { common } from '@kit.AbilityKit';
+<!-- @[all_audioLoopback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit'; // Import the audio module.
+import { BusinessError } from '@kit.BasicServicesKit'; // Import BusinessError.
+import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // Import UIAbilityContext.
 
 const TAG = 'AudioLoopbackDemo';
-
 let mode: audio.AudioLoopbackMode = audio.AudioLoopbackMode.HARDWARE;
 let audioLoopback: audio.AudioLoopback | undefined = undefined;
 let currentReverbPreset: audio.AudioLoopbackReverbPreset = audio.AudioLoopbackReverbPreset.THEATER;
 let currentEqualizerPreset: audio.AudioLoopbackEqualizerPreset = audio.AudioLoopbackEqualizerPreset.FULL;
+// ...
 
-let statusChangeCallback = (status: audio.AudioLoopbackStatus) => {
-  if (status == audio.AudioLoopbackStatus.UNAVAILABLE_DEVICE) {
-    console.info('Audio loopback status is: UNAVAILABLE_DEVICE');
-  } else if (status == audio.AudioLoopbackStatus.UNAVAILABLE_SCENE) {
-    console.info('Audio loopback status is: UNAVAILABLE_SCENE');
-  } else if (status == audio.AudioLoopbackStatus.AVAILABLE_IDLE) {
-    console.info('Audio loopback status is: AVAILABLE_IDLE');
-  } else if (status == audio.AudioLoopbackStatus.AVAILABLE_RUNNING) {
-    console.info('Audio loopback status is: AVAILABLE_RUNNING');
-  }
-};
+// ...
 
 // Query the capability and create an instance.
-function init() {
+function init(updateCallback?: (msg: string, isError: boolean) => void): void {
   let isSupported = audio.getAudioManager().getStreamManager().isAudioLoopbackSupported(mode);
   if (isSupported) {
     audio.createAudioLoopback(mode).then((loopback) => {
       console.info('Invoke createAudioLoopback succeeded.');
+      // ...
       audioLoopback = loopback;
     }).catch((err: BusinessError) => {
       console.error(`Invoke createAudioLoopback failed, code is ${err.code}, message is ${err.message}.`);
+      // ...
     });
   } else {
     console.error('Audio loopback is unsupported.');
+    // ...
   }
 }
 
 // Set the volume for audio loopback.
-async function setVolume(volume: number) {
+async function setVolume(volume: number, updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioLoopback !== undefined) {
     try {
       await audioLoopback.setVolume(volume);
       console.info(`Invoke setVolume ${volume} succeeded.`);
+      // ...
     } catch (err) {
       console.error(`Invoke setVolume failed, code is ${err.code}, message is ${err.message}.`);
+      // ...
     }
   } else {
     console.error('Audio loopback not created.');
+    // ...
   }
 }
 
 // Set the reverb mode for audio loopback.
-async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset) {
+async function setReverbPreset(preset: audio.AudioLoopbackReverbPreset, updateCallback?: (msg: string,
+  isError: boolean) => void): Promise<void> {
   if (audioLoopback !== undefined) {
     try {
       audioLoopback.setReverbPreset(preset);
       console.info(`setReverbPreset( ${preset} succeeded.`);
+      // ...
       currentReverbPreset = audioLoopback.getReverbPreset(); // Obtain the current reverb mode to prevent setting failures.
     } catch (err) {
       console.error(`setReverbPreset( failed, code is ${err.code}, message is ${err.message}.`);
+      // ...
     }
   } else {
     console.error('Audio loopback not created.');
+    // ...
   }
 }
 
 // Set the equalizer type for audio loopback.
-async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset) {
+async function setEqualizerPreset(preset: audio.AudioLoopbackEqualizerPreset, updateCallback?:
+  (msg: string, isError: boolean) => void): Promise<void> {
   if (audioLoopback !== undefined) {
     try {
       audioLoopback.setEqualizerPreset(preset);
       console.info(`setEqualizerPreset ${preset} succeeded.`);
+      // ...
       currentEqualizerPreset = audioLoopback.getEqualizerPreset(); // Obtain the current equalizer type to prevent setting failures.
     } catch (err) {
       console.error(`setEqualizerPreset failed, code is ${err.code}, message is ${err.message}.`);
+      // ...
     }
   } else {
     console.error('Audio loopback not created.');
+    // ...
   }
 }
 
 // Set a listener and enable audio loopback.
-async function enable() {
+async function enable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioLoopback !== undefined) {
     try {
       let status = await audioLoopback.getStatus();
@@ -279,6 +368,7 @@ async function enable() {
         let success = await audioLoopback.enable(true);
         if (success) {
           console.info('Invoke enable succeeded');
+          // ...
         } else {
           status = await audioLoopback.getStatus();
           statusChangeCallback(status);
@@ -288,14 +378,16 @@ async function enable() {
       }
     } catch (err) {
       console.error(`Invoke enable failed, code is ${err.code}, message is ${err.message}.`);
+      // ...
     }
   } else {
     console.error('Audio loopback not created.');
+    // ...
   }
 }
 
 // Disable audio loopback and unregister the listener.
-async function disable() {
+async function disable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioLoopback !== undefined) {
     try {
       let status = await audioLoopback.getStatus();
@@ -304,6 +396,7 @@ async function disable() {
         let success = await audioLoopback.enable(false);
         if (success) {
           console.info('Invoke disable succeeded');
+          // ...
           // Unregister the listener.
           audioLoopback.off('statusChange', statusChangeCallback);
         } else {
@@ -315,12 +408,11 @@ async function disable() {
       }
     } catch (err) {
       console.error(`Invoke disable failed, code is ${err.code}, message is ${err.message}.`);
+      // ...
     }
   } else {
     console.error('Audio loopback not created.');
+    // ...
   }
 }
 ```
-
-### Sample of Low-Latency Audio Loopback
-For details, see [Enabling Low-Latency Audio Loopback Using AudioLoopback](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio).
