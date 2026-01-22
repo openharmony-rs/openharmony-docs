@@ -36,7 +36,7 @@ import { relationalStore } from '@kit.ArkData';
 | 14800000  | Inner error. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800025  | SQLite: A table in the database is locked. |
@@ -5134,7 +5134,7 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[], call
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5217,7 +5217,7 @@ getModifyTime(table: string, columnName: string, primaryKeys: PRIKeyType[]): Pro
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5288,7 +5288,7 @@ beginTransaction(): void
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5361,7 +5361,7 @@ ArkTS-Sta: beginTrans(): Promise&lt;long&gt;
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5534,7 +5534,7 @@ commit(): void
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5609,7 +5609,7 @@ ArkTS-Sta: commit(txId: long): Promise&lt;void&gt;
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5696,7 +5696,7 @@ rollBack(): void
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5780,7 +5780,7 @@ ArkTS-Sta: rollback(txId: long): Promise&lt;void&gt;
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5876,7 +5876,7 @@ backup(destName:string, callback: AsyncCallback&lt;void&gt;): void
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -5942,7 +5942,7 @@ backup(destName:string): Promise&lt;void&gt;
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6018,7 +6018,7 @@ restore(srcName:string, callback: AsyncCallback&lt;void&gt;): void
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -6084,7 +6084,7 @@ restore(srcName:string): Promise&lt;void&gt;
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -8656,7 +8656,7 @@ ArkTS-Sta: cleanDirtyData(table: string, cursor: long, callback: AsyncCallback&l
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -8716,7 +8716,7 @@ cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 | 14800011  | Failed to open the database because it is corrupted.   |
 | 14800014  | The RdbStore or ResultSet is already closed.       |
 | 14800015  | The database does not respond.      |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.     |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied.           |
 | 14800024  | SQLite: The database file is locked.        |
@@ -8784,7 +8784,7 @@ ArkTS-Sta: cleanDirtyData(table: string, cursor?: long): Promise&lt;void&gt;
 | 14800011  | Failed to open the database because it is corrupted.   |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond.   |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.   |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied.          |
 | 14800024  | SQLite: The database file is locked.      |
@@ -8875,7 +8875,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond.                 |
 | 14800016  | The database alias already exists.                |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -8971,7 +8971,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 | 14800016  | The database alias already exists.                |
 | 14801001  | The operation is supported in the stage model only.                 |
 | 14801002  | Invalid data group ID.                |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -9138,7 +9138,7 @@ ArkTS-Sta: detach(attachName: string, waitTime?: int): Promise&lt;int&gt;
 | 14800011  | Failed to open the database because it is corrupted.         |
 | 14800014  | The RdbStore or ResultSet is already closed.        |
 | 14800015  | The database does not respond.         |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.            |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.       |
 | 14800023  | SQLite: Access permission denied.           |
 | 14800024  | SQLite: The database file is locked.        |
@@ -9221,7 +9221,7 @@ lockRow(predicates: RdbPredicates): Promise&lt;void&gt;
 | 14800014  | The RdbStore or ResultSet is already closed.                                                                              |
 | 14800015  | The database does not respond.                                                                        |
 | 14800018  | No data meets the condition.                                                                 |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                                                       |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.                                                 |
 | 14800023  | SQLite: Access permission denied.                                                            |
 | 14800024  | SQLite: The database file is locked.                                                         |
@@ -9308,7 +9308,7 @@ unlockRow(predicates: RdbPredicates): Promise&lt;void&gt;
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond.                 |
 | 14800018  | No data meets the condition.                |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -9391,7 +9391,7 @@ queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promis
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800014  | The RdbStore or ResultSet is already closed. |
 | 14800015  | The database does not respond.                 |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |

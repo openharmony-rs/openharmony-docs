@@ -211,9 +211,9 @@ ArkTS-Sta: getColumnName(columnIndex: int): string
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -295,8 +295,8 @@ ArkTS-Sta: getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
 | 14800011     | Failed to open the database because it is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
-| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800013     | Column index is out of bounds.                                        |
+| 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
 | 14800026     | SQLite: The database is out of memory.                       |
@@ -394,8 +394,8 @@ ArkTS-Sta: getColumnTypeSync(columnIdentifier: int | string): ColumnType
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
 | 14800011     | Failed to open the database because it is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
-| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800013     | Column index is out of bounds.                                        |
+| 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
 | 14800026     | SQLite: The database is out of memory.                       |
@@ -562,8 +562,8 @@ ArkTS-Sta: getValue(columnIndex: int): ValueType
 | **错误码ID** | **错误信息**     |
 |-----------|---------|
 | 14800012  | ResultSet is empty or pointer index is out of bounds.       |
-| 14800013  | ResultSet is empty or column index is out of bounds.   |
-| 14800014  | The RdbStore or ResultSet is already closed.       |
+| 14800013  | Column index is out of bounds.   |
+| 14800014  | The target instance is already closed.       |
 
 **示例：**
 
@@ -637,8 +637,8 @@ ArkTS-Sta: getBlob(columnIndex: int): Uint8Array
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -714,8 +714,8 @@ ArkTS-Sta: getString(columnIndex: int): string
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -792,8 +792,8 @@ ArkTS-Sta: getLong(columnIndex: int): long
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -868,8 +868,8 @@ ArkTS-Sta: getDouble(columnIndex: int): double
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -943,8 +943,8 @@ ArkTS-Sta: getAsset(columnIndex: int): Asset
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -1018,8 +1018,8 @@ ArkTS-Sta: getAssets(columnIndex: int): Assets
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -1489,8 +1489,8 @@ ArkTS-Sta: isColumnNull(columnIndex: int): boolean
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
 | 14800011  | Failed to open the database because it is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800026  | SQLite: The database is out of memory. |
