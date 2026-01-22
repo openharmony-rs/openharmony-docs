@@ -2,7 +2,7 @@
 
 ## 概述
 
-从API version 22开始，支持在ArkTS-Dyn中使用[ArkTS-Sta](../quick-start/arkts-interop-overview.md)自定义组件。
+从API version 23开始，支持在ArkTS-Dyn中使用[ArkTS-Sta](../quick-start/arkts-interop-overview.md)自定义组件。
 
 
 ## 使用限制
@@ -143,10 +143,37 @@ struct Index {
     Column() {
       // 直接使用ArkTS-Sta自定义组件
       ChildComponentV1()
-      ChildComponentV2()
 
       // 也可以将ArkTS-Sta自定义组件封装在ArkTS-Dyn自定义组件中嵌套使用
       MainPage()
+
+      IndexV2()
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Component
+struct MainPage {
+  build() {
+    Column() {
+      // 使用ArkTS-Sta自定义组件
+      ChildComponentV1()
+    }
+    .width('100%')
+  }
+}
+
+@ComponentV2
+struct IndexV2 {
+  build() {
+    Column() {
+      // 直接使用ArkTS-Sta自定义组件
+      ChildComponentV2()
+
+      // 也可以将ArkTS-Sta自定义组件封装在ArkTS-Dyn自定义组件中嵌套使用
+      MainPageV2()
     }
     .width('100%')
     .height('100%')
@@ -154,11 +181,10 @@ struct Index {
 }
 
 @ComponentV2
-struct MainPage {
+struct MainPageV2 {
   build() {
     Column() {
       // 使用ArkTS-Sta自定义组件
-      ChildComponentV1()
       ChildComponentV2()
     }
     .width('100%')

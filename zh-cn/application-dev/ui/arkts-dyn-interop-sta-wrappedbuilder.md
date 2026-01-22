@@ -2,7 +2,7 @@
 
 ## 概述
 
-从API version 22开始，支持在ArkTS-Dyn中使用ArkTS-Sta的[WrappedBuilder对象](./state-management/arkts-wrapBuilder.md)。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中封装全局[\@Builder](./state-management/arkts-builder.md)的场景。
+从API version 23开始，支持在ArkTS-Dyn中使用ArkTS-Sta的[WrappedBuilder对象](./state-management/arkts-wrapBuilder.md)。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中封装全局[\@Builder](./state-management/arkts-builder.md)的场景。
 
 
 ## 限制条件

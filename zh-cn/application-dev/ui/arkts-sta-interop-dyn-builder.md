@@ -2,7 +2,7 @@
 
 ## 概述
 
-从API version 22开始，支持在ArkTS-Sta中使用ArkTS-Dyn自定义构建函数([\@Builder](./state-management/arkts-builder.md))。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中使用@Builder自定义构建函数的场景。
+从API version 23开始，支持在ArkTS-Sta中使用ArkTS-Dyn自定义构建函数([\@Builder](./state-management/arkts-builder.md))。适用于[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)中使用@Builder自定义构建函数的场景。
 
 
 ## 使用限制

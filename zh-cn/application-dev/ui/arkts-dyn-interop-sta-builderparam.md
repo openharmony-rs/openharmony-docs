@@ -2,7 +2,7 @@
 
 ## 概述
 
-从API version 22开始，支持在ArkTS-Dyn中使用[\@Builder](./state-management/arkts-builder.md)函数初始化ArkTS-Sta自定义组件的\@BuilderParam成员属性。
+从API version 23开始，支持在ArkTS-Dyn中使用[\@Builder](./state-management/arkts-builder.md)函数初始化ArkTS-Sta自定义组件的\@BuilderParam成员属性。
 
 在阅读本文档前，建议阅读：[\@BuilderParam](./state-management/arkts-builderparam.md#装饰器使用说明)。
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-从API version 22开始，支持在[ArkTS-Sta](../quick-start/arkts-interop-overview.md)中使用ArkTS-Dyn自定义组件。
+从API version 23开始，支持在[ArkTS-Sta](../quick-start/arkts-interop-overview.md)中使用ArkTS-Dyn自定义组件。
 
 在互操作场景下，[占位组件](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
 
@@ -101,7 +101,7 @@ export struct ChildComponent {
 
 @ComponentV2
 export struct ChildComponentV2 {
-  message: string = 'Hello World!';
+  message: string = 'Hello WorldV2!';
 
   build() {
     Column() {
@@ -148,6 +148,31 @@ struct Index {
     Column() {
       // 直接使用ArkTS-Dyn自定义组件
       ChildComponent()
+
+      // 也可以将ArkTS-Dyn自定义组件封装在ArkTS-Sta自定义组件中嵌套使用
+      MainPage()
+
+      IndexV2()
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Component
+struct MainPage {
+  build() {
+    Column() {
+      ChildComponent()
+    }
+  }
+}
+
+@ComponentV2
+struct IndexV2 {
+  build() {
+    Column() {
+      // 直接使用ArkTS-Dyn自定义组件
       ChildComponentV2()
 
       // 也可以将ArkTS-Dyn自定义组件封装在ArkTS-Sta自定义组件中嵌套使用
@@ -162,7 +187,6 @@ struct Index {
 struct MainPageV2 {
   build() {
     Column() {
-      ChildComponent()
       ChildComponentV2()
     }
   }
