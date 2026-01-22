@@ -4806,7 +4806,7 @@
 				"functions":[
 					{
 						"end_line":46,
-						"name":"web_DataDetector_Hightlighting",
+						"name":"web_DataDetector_Highlighting",
 						"start_line":15
 					}
 				]
@@ -28420,10 +28420,14 @@
 			},
 			{
 				"file_name":"HarmonyOS_Samples/guide-snippets/master/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebScanQRCode.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets",
 				"functions":[
 					{
-						"end_line":135,
-						"name":"web_Scan_QR_code",
+						"end_line":125,
+						"name":"web_Save_Image",
 						"start_line":15
 					}
 				]
