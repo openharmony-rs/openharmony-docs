@@ -113,17 +113,16 @@ deleteForm(formId: string): Promise&lt;void&gt;
 
 ```ts
 import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formId: string = '12400633174999288';
   formHost.deleteForm(formId).then(() => {
     console.info('formHost deleteForm success');
   }).catch((error: BusinessError) => {
-    console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
+    console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1075,18 +1074,17 @@ getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): 
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllFormsInfo((error: BusinessError, data: formInfo.FormInfo[]) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info('formHost getAllFormsInfo success.');
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1122,16 +1120,15 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
+    console.info('formHost getAllFormsInfo success.');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1170,18 +1167,17 @@ getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.Fo
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', (error: BusinessError, data: formInfo.FormInfo[]) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info('formHost getFormsInfo success.');
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1221,18 +1217,17 @@ getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: BusinessError, data: formInfo.FormInfo[]) => {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info('formHost getFormsInfo success.');
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1277,16 +1272,15 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info('formHost getFormsInfo success.');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1330,7 +1324,6 @@ getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.Form
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
   bundleName: 'ohos.samples.FormApplication',
@@ -1339,12 +1332,12 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info('formHost getFormsInfo success.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1382,7 +1375,6 @@ deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;numb
 
 ```ts
 import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formIds: string[] = new Array('12400633174999288', '12400633174999289');
@@ -1390,11 +1382,11 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+      console.info(`formHost deleteInvalidForms, data: ${data}`);
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1437,17 +1429,16 @@ deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
 ```ts
 import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let formIds: string[] = new Array('12400633174999288', '12400633174999289');
   formHost.deleteInvalidForms(formIds).then((data: number) => {
-    console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+    console.info(`formHost deleteInvalidForms, data: ${data}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1504,11 +1495,11 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormState, data: ${data.formState}`);
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1567,12 +1558,12 @@ let want: Want = {
 };
 try {
   formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-    console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+    console.info(`formHost acquireFormState, data: ${data.formState}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2105,7 +2096,6 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 
 ```ts
 import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let formId: string = '12400633174999288';
 try {
@@ -2113,11 +2103,11 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
+      console.info('formHost acquireFormData success.');
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2227,10 +2217,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct CardExample {
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State formId: number = 0;
   @State fwidth: number = 420;
   @State fheight: number = 280;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   build() {
     Column() {
@@ -2247,12 +2237,12 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.info(`testTag form info : ${JSON.stringify(form)}`);
+          console.info('testTag onAcquired.');
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
-              console.info(`formHost recv router event, want: ${JSON.stringify(want)}`);
+              console.info('formHost recv router event.');
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
                 console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
@@ -2261,7 +2251,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error(`formHost setRouterProxy, code: ${e.code}, message: ${e.message}`);
           }
         })
     }
@@ -2326,10 +2316,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct CardExample {
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State formId: number = 0;
   @State fwidth: number = 420;
   @State fheight: number = 280;
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   build() {
     Column() {
@@ -2346,12 +2336,12 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.info(`testTag form info : ${JSON.stringify(form)}`);
+          console.info('testTag onAcquired.');
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
             formHost.setRouterProxy(formIds, (want: Want) => {
-              console.info(`formHost recv router event, want: ${JSON.stringify(want)}`);
+              console.info('formHost recv router event.');
               // 卡片使用方自己处理跳转
               this.context.startAbility(want, (err: BusinessError) => {
                 console.info(`formHost startAbility error, code: ${err.code}, message: ${err.message}`);
@@ -2362,7 +2352,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error(`formHost setRouterProxy, code: ${e.code}, message: ${e.message}`);
           }
         })
     }
