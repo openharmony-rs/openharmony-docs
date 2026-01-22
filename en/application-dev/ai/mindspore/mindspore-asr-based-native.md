@@ -856,11 +856,4 @@ After you tap the **Play Audio** button on the device screen, the sample audio f
 | :-----------------------: | :-----------------------: |
 | ![asr1](figures/asr1.png) | ![asr2](figures/asr2.png) |
 
-
-## Related Samples
-
-The following sample is provided to help you better understand how to develop speech recognition applications using MindSpore Lite:
-
-- [MindSpore Lite ASR Application Development Based on Native APIs (C/C++) (API 14)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)
-
 <!--RP1--><!--RP1End-->
