@@ -32,7 +32,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
    import { systemSoundManager } from '@kit.AudioKit';
    // ...
    
-   // SystemSoundPlayer object.
+   // SystemSoundPlayer对象。
    let systemSoundPlayer: systemSoundManager.SystemSoundPlayer | null = null;
    
    // ...
@@ -111,3 +111,4 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
    }).catch((err: BusinessError) => {
      console.error(`Failed to call the release method. Code: ${err.code}, message: ${err.message}`);
    });
+   ```
