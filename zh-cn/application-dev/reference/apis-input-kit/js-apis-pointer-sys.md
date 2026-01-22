@@ -36,7 +36,7 @@ ArkTS-Sta: setPointerSpeed(speed: int, callback: AsyncCallback&lt;void&gt;): voi
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。   |
+| speed    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10，大于最大值就设置为最大值，小于最小值就设置为最小值。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码：**
@@ -130,7 +130,7 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10，大于最大值就设置为最大值，小于最小值就设置为最小值。 |
 
 **返回值**：
 
@@ -223,7 +223,7 @@ ArkTS-Sta: setPointerSpeedSync(speed: int): void
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10。 |
+| speed |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标移动速度，范围1-20，默认为10，大于最大值就设置为最大值，小于最小值就设置为最小值。 |
 
 **错误码**：
 
@@ -1253,7 +1253,7 @@ ArkTS-Sta: setMouseScrollRows(rows: int, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| rows     |  ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是    | 鼠标滚动行数，范围1-100，默认为3。   |
+| rows     |  ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是    | 鼠标滚动行数，范围1-100，默认为3，大于最大值就设置为最大值，小于最小值就设置为最小值。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码**：
@@ -1347,7 +1347,7 @@ ArkTS-Sta: setMouseScrollRows(rows: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rows  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标滚动行数，范围1-100，默认为3。 |
+| rows  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标滚动行数，范围1-100，默认为3，大于最大值就设置为最大值，小于最小值就设置为最小值。 |
 
 **返回值**：
 
@@ -2346,13 +2346,13 @@ struct Index {
           try {
             pointer.setTouchpadTapSwitch(true, (error: BusinessError<void> | null, data: undefined) => {
               if (error) {
-                console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadPinchSwitch success`);
+              console.log(`setTouchpadTapSwitch success`);
             });
           } catch (error) {
-            console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -2633,7 +2633,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int, callback: AsyncCallback\<void>): 
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| speed | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是    |speed代表光标移动速度。speed取值范围[1,11]，默认6。  |
+| speed | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 是    |鼠标移动速度，范围1-20，默认为10，大于最大值就设置为最大值，小于最小值就设置为最小值。  |
 | callback | AsyncCallback\<void> | 是    | 回调函数。 |
 
 **错误码**：
@@ -2725,7 +2725,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | speed代表光标移动速度。speed取值范围[1,11]，默认6。    |
+| speed| ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 鼠标移动速度。范围1-20，默认为10，大于最大值就设置为最大值，小于最小值就设置为最小值。    |
 
 **返回值**：
 
@@ -3005,7 +3005,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: Error) => {
+            pointer.setTouchpadPinchSwitch(true, (error: Error) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -3036,7 +3036,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: BusinessError<void> | null, data: undefined) => {
+            pointer.setTouchpadPinchSwitch(true, (error: BusinessError<void> | null, data: undefined) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -4014,7 +4014,7 @@ ArkTS-Sta: setPointerSize(size: int, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                        | 必填   | 说明                                    |
 | -------- | ------------------------- | ---- | ------------------------------------- |
-| size     | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1。   |
+| size     | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1，大于最大值就设置为最大值，小于最小值就设置为最小值。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，当设置成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -4107,7 +4107,7 @@ ArkTS-Sta: setPointerSize(size: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | TS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
+| size  | TS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1，大于最大值就设置为最大值，小于最小值就设置为最小值。 |
 
 **返回值**：
 
@@ -4198,7 +4198,7 @@ ArkTS-Sta: setPointerSizeSync(size: int): void
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| size  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1。 |
+| size  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 鼠标光标大小，范围为[1-7]，默认为1，大于最大值就设置为最大值，小于最小值就设置为最小值。 |
 
 **错误码**：
 
