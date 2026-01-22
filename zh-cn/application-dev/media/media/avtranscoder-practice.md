@@ -38,6 +38,8 @@
    ```ts
    // 创建Worker对象。
    private workerInstance?: worker.ThreadWorker;
+   @State currentProgress： number = 0;
+   
    this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
 
    // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，在宿主线程执行。
