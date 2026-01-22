@@ -217,7 +217,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 | textIndent | 设置首行文本缩进。 |
 | textOverflow | 控制文本超长处理方式。 |
 | textSelectable | 设置文本是否可选择。 |
-| textVerticalAlign | 设置文本在垂直方向的对齐方式。 |
+| textVerticalAlign | 设置文本段落在垂直方向的对齐方式。 |
 | wordBreak | 设置断行规则。 |
 
 下面对常用的接口进行举例说明。
@@ -837,12 +837,14 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
         onAppear: () => {
           // 请将$r('app.string.SelectMenu_Text_Ejected')替换为实际资源文件，在本示例中该资源文件的value值为"自定义选择菜单弹出时触发该回调"
           hilog.info(0x0000, 'Sample_TextComponent',
-            resource.resourceToString($r('app.string.SelectMenu_Text_Ejected')));
+            this.getUIContext()
+              .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Ejected').id));
         },
         onDisappear: () => {
           // 'SelectMenu_Text_Close'资源文件中的value值为'自定义选择菜单关闭时触发该回调'
           hilog.info(0x0000, 'Sample_TextComponent',
-            resource.resourceToString($r('app.string.SelectMenu_Text_Close')));
+            this.getUIContext()
+              .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Close').id));
         }
       })
     ```
@@ -910,20 +912,24 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
       if (menuItem.id.equals(TextMenuItemId.of('customMenu2'))) {
         // 请将$r('app.string.SelectMenu_Text_customMenu')替换为实际资源文件，在本示例中该资源文件的value值为"拦截 id: customMenu2 start:"
         hilog.info(0x0000, 'Sample_TextComponent',
-          resource.resourceToString($r('app.string.SelectMenu_Text_customMenu')) + textRange.start + '; end:' +
+          this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_customMenu')
+            .id) + textRange.start + '; end:' +
           textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.COPY)) {
         // 请将$r('app.string.SelectMenu_Text_copy')替换为实际资源文件，在本示例中该资源文件的value值为"拦截 COPY start:"
         hilog.info(0x0000, 'Sample_TextComponent',
-          resource.resourceToString($r('app.string.SelectMenu_Text_copy')) + textRange.start + '; end:' + textRange.end);
+          this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_copy').id) +
+          textRange.start + '; end:' + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
         // 请将$r('app.string.SelectMenu_Text_SelectionAll')替换为实际资源文件，在本示例中该资源文件的value值为"不拦截 SELECT_ALL start:"
         hilog.info(0x0000, 'Sample_TextComponent',
-          resource.resourceToString($r('app.string.SelectMenu_Text_SelectionAll')) + textRange.start + '; end:' +
+          this.getUIContext()
+            .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_SelectionAll').id) +
+          textRange.start + '; end:' +
           textRange.end);
         return false;
       }
@@ -1213,7 +1219,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 
 ## 实现热搜榜
 
-该示例通过maxLines、textOverflow、textAlign、constraintSize属性展示了热搜榜的效果。
+该示例通过[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)、[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)、[textAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textalign)、[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)属性展示了热搜榜的效果。
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
   

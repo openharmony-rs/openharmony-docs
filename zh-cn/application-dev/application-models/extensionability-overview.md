@@ -46,6 +46,7 @@
 | [FaultLogExtensionAbility](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md) | 提供故障延迟通知的能力。| 是 | 否 |
 | [WebNativeMessagingExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) | Web插件对接能力。提供插件对接native应用能力。 | 是 | 否 |
 | [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) | 通知订阅拓展能力，用于发送通知数据到三方穿戴设备。 | 是 | 否 |
+| [PartnerAgentExtensionAbility](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) | 基于蓝牙通信技术，提供设备发现与设备下线的通知功能。 | 是 | 否 |
 <!--RP2--><!--RP2End-->
 
 > **说明：**

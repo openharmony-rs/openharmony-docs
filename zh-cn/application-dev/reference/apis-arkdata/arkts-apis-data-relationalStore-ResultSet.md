@@ -1335,11 +1335,11 @@ import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 import { relationalStore } from '@kit.ArkData';
 import { taskpool } from '@kit.ArkTS';
-import type ctx from '@ohos.app.ability.common';
+import { common } from '@kit.AbilityKit';
 import { sendableRelationalStore } from '@kit.ArkData';
 
 @Concurrent
-async function getDataByName(name: string, context: ctx.UIAbilityContext) {
+async function getDataByName(name: string, context: common.UIAbilityContext) {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: "RdbTest.db",
     securityLevel: relationalStore.SecurityLevel.S3

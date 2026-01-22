@@ -10284,7 +10284,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: TransitionAnimation): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)模式下生效，用于给特定场景下的窗口增加转场动画。
+给特定场景下的窗口增加转场动画。
 
 当前只支持在应用主窗下使用。
 
@@ -10294,7 +10294,7 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -10368,7 +10368,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAnimation | undefined
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)模式下生效，用于获取特定场景下的窗口转场动画配置。
+获取特定场景下的窗口转场动画配置。
 
 当前只支持在应用主窗下使用。
 
@@ -10378,7 +10378,7 @@ getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAn
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 

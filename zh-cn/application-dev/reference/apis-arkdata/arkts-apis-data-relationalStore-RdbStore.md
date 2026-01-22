@@ -1726,7 +1726,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 | 类型                                                    | 说明                                            |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | Promise对象。如果操作成功，返回受影响的数据集。 |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise对象。如果操作成功，返回受影响的数据集。 |
 
 **错误码：**
 
@@ -2049,7 +2049,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 | 类型                                                    | 说明                                            |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | Promise对象。如果操作成功，返回受影响的数据集。 |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise对象。如果操作成功，返回受影响的数据集。 |
 
 **错误码：**
 
@@ -5911,7 +5911,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, cursor: number, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。
+清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5968,7 +5968,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的所有数据。
+清理云端删除的数据同步到本地后，未自动清理的所有数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

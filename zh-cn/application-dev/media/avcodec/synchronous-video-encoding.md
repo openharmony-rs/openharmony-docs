@@ -242,8 +242,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     // 异常处理。
                 }
                 // 获取新宽高。
-                bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_WIDTH, &width) &&
-                                 OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_HEIGHT, &height);
+                bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_WIDTH, &width) &&
+                                 OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_HEIGHT, &height);
                 if (!getIntRet) {
                     // 异常处理。
                 }
@@ -509,6 +509,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                 info.pts = 0;
                 // 输入最后一帧数据时，设置AVCODEC_BUFFER_FLAGS_EOS标识。
                 // info.flags = AVCODEC_BUFFER_FLAGS_EOS;
+                // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值如0（普通帧标识）。
+                info.flags = 0;
                 OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(buffer, &info);
                 if (setBufferRet != AV_ERR_OK) {
                     // 异常处理。

@@ -669,7 +669,7 @@ class Model {
 @Component
 struct EntryComponent {
   test() {
-    console.log('testTag test in my component');
+    console.info('testTag test in my component');
   }
 
   build() {

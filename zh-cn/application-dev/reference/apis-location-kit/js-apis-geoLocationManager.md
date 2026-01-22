@@ -3114,7 +3114,7 @@ getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
   try {
     geoLocationManager.getActiveFences().then((res) => {
       if (res) {
-        console.info("fence num:" + res.size());
+        console.info("fence num:" + res.size);
         for (const item of res) {
           console.info("data=" + JSON.stringify(item));
         }

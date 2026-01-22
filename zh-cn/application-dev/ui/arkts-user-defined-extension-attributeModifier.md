@@ -363,7 +363,6 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute  | [backgroundImage](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundimage18) | - | - |
   | CommonAttribute  | [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12) | - | - |
   | CommonAttribute  | [toolbar](../reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md#toolbar) | - | - |
-  | CommonAttribute  | [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) | - | - |
   | CommonAttribute  | [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup14) | - | - |
   | CommonAttribute  | [reuse](../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md#reuse) | - | - |
   | CommonAttribute  | [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13) | - | - |
@@ -420,6 +419,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute | [background](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#background10) | 10 | 20|
   | CommonAttribute  | [visualEffect](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#visualeffect) | 12 | 20 |
   | CommonAttribute | [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | 8 | 13 |
+  | CommonAttribute  | [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) | 17     | 23     |
   | CommonAttribute  | [onVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange) | 9     | 20     |
   | CommonAttribute  | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | 12       | 20    |
   | CommonAttribute  | [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12)    | 12                  | 20             |
