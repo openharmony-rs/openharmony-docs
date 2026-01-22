@@ -60,6 +60,8 @@ XML模块提供XmlPullParser类用于解析XML文本，输入为包含XML数据�
    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
    ```
 
+   <!-- @[parsingXML_xmlPullParser_method_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->   
+
 3. 自定义回调函数，本例直接打印出标签及标签值。
 
    <!-- @[parsingXML_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/XmlGenerationParsingAndConversion/XmlParsing/entry/src/main/ets/pages/ParsingTagsAndValues.ets) -->
