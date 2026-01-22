@@ -72,10 +72,10 @@ The following table lists the required permissions.
 | API Type| DDK Type| Permission|
 | --------- | --------- | --------- |
 | ArkTs-API | NA| ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER |
-| C-API     | USB DDK | ohos.permission.ACCESS_DDK_USB |
-| C-API     | HID DDK | ohos.permission.ACCESS_DDK_HID |
-| C-API     | USB Serial DDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
-| C-API     | SCSI Peripheral DDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
+| C-API     | UsbDdk | ohos.permission.ACCESS_DDK_USB |
+| C-API     | HidDdk | ohos.permission.ACCESS_DDK_HID |
+| C-API     | USBSerialDDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
+| C-API     | ScsiPeripheralDDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
 
 ## Associated Modules
 
@@ -86,7 +86,7 @@ The following table lists the associated modules you may use during development 
 | PerformanceAnalysisKit | Introduces {[hilog](../../dfx/hilog.md)} for log printing.| 
 | BasicServicesKit       | Introduces {[BusinessError](../../reference/apis-basic-services-kit/js-apis-base.md#businesserror)} to capture error information.|
 | IPCKit                 | Introduces {[rpc](../../reference/apis-ipc-kit/js-apis-rpc.md)} to implement inter-process communication between the driver and the client.|
-| AbilityKit             | Introduces {[want](../../reference/apis-ability-kit/js-apis-application-want.md)} for lifecycle management.|
+| AbilityKit             | Introduces {[@ohos.application.Want (Want)](../../reference/apis-ability-kit/js-apis-application-want.md)} for lifecycle management.|
 
 ## Driver Application Specifications
 1. Driver application definition
@@ -101,12 +101,12 @@ The following table lists the associated modules you may use during development 
 
 3. DriverExtensionAbility-based lifecycle management
 - ExtensionAbility is a general term of scenario-based service extension abilities, such as user-mode peripheral drivers, service widgets, and input methods.
-- The lifecycle of each ExtensionAbility is managed by its SA. The SA calls **connectAbility** to start the ExtensionAbility and drive the execution of the defined service APIs. When the service is complete, the SA calls **disconnectAbility** to disconnect the ExtensionAbility. The AMS then determines whether to destroy the ExtensionAbility and its associated process based on whether the ExtensionAbility has any active SA connections. In the user-mode driver development scenario, the system SA that manages the DriverExtensionAbility lifecycle is the driver extension SA.
+- The lifecycle of each ExtensionAbility is managed by its SA. The SA calls **connectAbility** to start the ExtensionAbility and drive the execution of the defined service APIs. When the service is complete, the SA calls **disconnectAbility** to disconnect the ExtensionAbility. The AMS then determines whether to destroy the ExtensionAbility and its associated process based on whether the ExtensionAbility has any active SA connections. In the user-mode driver development scenario, the system SA that manages the **DriverExtensionAbility** lifecycle is the driver extension SA.
 
-4. API access security control in DriverExtensionAbility
-- The system supports scenario-based extension abilities built on ExtensionAbility. DriverExtensionAbility is a type of ability designed to support the development of user-mode drivers.
-- DriverExtensionAbility can use only the APIs in ([Driver Development Kit (DDK)](https://gitcode.com/openharmony/docs/tree/master/en/application-dev/reference/apis-driverdevelopment-kit)) to control access to non-standard peripherals and implement data communication.
+4. API access security control in **DriverExtensionAbility**
+- The system supports scenario-based extension abilities built on ExtensionAbility. **DriverExtensionAbility** is a type of ability designed to support the development of user-mode drivers.
+- In **DriverExtensionAbility**, only the DDK ([docs/en/application-dev/reference/apis-driverdevelopment-kit · OpenHarmony/docs - AtomGit | GitCode](https://gitcode.com/openharmony/docs/tree/master/en/application-dev/reference/apis-driverdevelopment-kit)) APIs can be called to control access to non-standard peripherals and implement data communication.
 - Based on the security constraints and service scenarios in driver development, access to other ArkTS APIs is not allowed within DriverExtensionAbility, which is intended to prevent malicious behavior and data leakage.
 - Restricted access to ArkTS APIs in DriverExtensionAbility is implemented as follows:
   - During the initialization and creation of DriverExtensionAbility, system modules are loaded based on the list of ArkTS APIs that can be accessed by DriverExtensionAbility. If a restricted ArkTS API is called in DriverExtensionAbility during the operation process, the API call fails because the corresponding system module is not loaded during the initialization and creation process.
-- For the list of restricted ArkTS APIs, see the DriverExtension configuration in [Restricted ArkTS APIs](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json).
+- For the list of restricted ArkTS APIs in **DriverExtensionAbility**, see the **DriverExtension** configuration in [frameworks/native/ability/native/etc/extension_blocklist_config.json · OpenHarmony/ability_ability_runtime - AtomGit | GitCode](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json).

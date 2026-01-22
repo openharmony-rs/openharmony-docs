@@ -16,7 +16,7 @@ Before you get started, make necessary preparations by following instructions in
 
 ## Available APIs
 
-The following table describes the basic peripheral management capabilities. For details, see [API Reference](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md).
+The following table describes the basic peripheral management capabilities. For more details, see [@ohos.driver.deviceManager (Peripheral Management)](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md).
 
 **Table 1** APIs for basic peripheral management
 
@@ -27,7 +27,7 @@ The following table describes the basic peripheral management capabilities. For 
 | unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | Unbinds a peripheral device. This API uses a promise to return the result. It is supported since API version 18.                      |
 
 <!--Del-->
-The following table lists the APIs for extended peripheral management. For details, see [deviceManager API Reference](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md).
+The following table describes the system APIs for peripheral management. For details, see [@ohos.driver.deviceManager (Peripheral Management) (System API)](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md).
 
 **Table 2** APIs for extended peripheral management
 
@@ -218,5 +218,5 @@ You need to configure a signature file for your application to run on a device. 
       }
       ```
 
-Automatic signing: [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237)
+Automatic signing: For details, see [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237).
 <!--RP1End-->
