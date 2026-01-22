@@ -236,7 +236,7 @@ fadingEdge(enabled: Optional&lt;boolean&gt;, options?: FadingEdgeOptions): T
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enabled | Optional&lt;boolean&gt;                           | 是   | 是否开启边缘渐隐效果。设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt;                           | 是   | 是否开启边缘渐隐效果。设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
 | options | [FadingEdgeOptions](#fadingedgeoptions14对象说明) | 否   | 边缘渐隐参数对象。可以通过该对象定义边缘渐隐效果属性，比如设置渐隐长度。<br/>如果设置小于0的值则取默认值，默认长度为32vp。<br/>如果设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。 |
 
 **返回值：**
@@ -329,7 +329,7 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>): T
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensitivity | [Optional&lt;CrownSensitivity&gt;](ts-appendix-enums.md#crownsensitivity18) | 是   | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)&gt; | 是   | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
 
 **返回值：**
 
@@ -511,7 +511,7 @@ onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| handler | Optional&lt;[OnWillScrollCallback](#onwillscrollcallback12)&gt; | 是 | 滚动组件滑动前触发的回调。 |
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[OnWillScrollCallback](#onwillscrollcallback12)&gt; | 是 | 滚动组件滑动前触发的回调。 |
 
 **返回值：**
 

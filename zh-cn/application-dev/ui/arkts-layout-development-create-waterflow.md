@@ -91,7 +91,7 @@ build() {
 
 在此处应通过在数据末尾添加元素的方式来新增数据，不可直接修改dataArray后通过LazyForEach的[onDataReloaded](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)方法通知瀑布流重新加载数据。
 
-由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用[`onDatasetChange([{ type: DataOperationType.ADD, index: len, count: count }])`](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatasetchange12)通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
+由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用[onDataAdd](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondataadd8)通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
 
 ![](figures/waterflow-demo1.gif)
 
