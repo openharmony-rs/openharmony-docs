@@ -6,14 +6,15 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **说明：**
->
-> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本Interface首批接口从API version 12开始支持。
 
 视频转码管理类，用于视频转码。在调用AVTranscoder的方法前，需要先通过[createAVTranscoder()](arkts-apis-media-f.md#mediacreateavtranscoder12)构建一个AVTranscoder实例。
 
 视频转码demo可参考：[视频转码开发指导](../../media/media/using-avtranscoder-for-transcodering.md)
+
+> **说明：**
+>
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Interface首批接口从API version 12开始支持。
 
 ## 导入模块
 
@@ -34,7 +35,7 @@ import { media } from '@kit.MediaKit';
 
 prepare(config: AVTranscoderConfig): Promise\<void>
 
-异步方式进行视频转码的参数设置。通过Promise获取返回值。
+进行视频转码的参数设置。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -50,7 +51,7 @@ prepare(config: AVTranscoderConfig): Promise\<void>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<void> | 异步视频转码prepare方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -94,7 +95,7 @@ async function test() {
 
 start(): Promise\<void>
 
-异步方式开始视频转码。通过Promise获取返回值。
+开始视频转码。使用Promise异步回调。
 
 需要[prepare()](#prepare12)事件成功触发后，才能调用start方法。
 
@@ -106,7 +107,7 @@ start(): Promise\<void>
 
 | 类型           | 说明                                  |
 | -------------- | ------------------------------------- |
-| Promise\<void> | 异步开始视频转码方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -139,7 +140,7 @@ async function test() {
 
 pause(): Promise\<void>
 
-异步方式暂停视频转码。通过Promise获取返回值。
+暂停视频转码。使用Promise异步回调。
 
 需要[start()](#start12)事件成功触发后，才能调用pause方法，可以通过调用[resume()](#resume12)接口来恢复转码。
 
@@ -151,7 +152,7 @@ pause(): Promise\<void>
 
 | 类型           | 说明                                  |
 | -------------- | ------------------------------------- |
-| Promise\<void> | 异步暂停视频转码方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -184,7 +185,7 @@ async function test() {
 
 resume(): Promise\<void>
 
-异步方式恢复视频转码。通过Promise获取返回值。
+恢复视频转码。使用Promise异步回调。
 
 需要在[pause()](#pause12)事件成功触发后，才能调用resume方法。
 
@@ -196,7 +197,7 @@ resume(): Promise\<void>
 
 | 类型           | 说明                                  |
 | -------------- | ------------------------------------- |
-| Promise\<void> | 异步恢复视频转码方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -229,7 +230,7 @@ async function test() {
 
 cancel(): Promise\<void>
 
-异步方式取消视频转码。通过Promise获取返回值。
+取消视频转码。使用Promise异步回调。
 
 需要在[prepare()](#prepare12)、[start()](#start12)、[pause()](#pause12)或[resume()](#resume12)事件成功触发后，才能调用cancel方法。
 
@@ -241,7 +242,7 @@ cancel(): Promise\<void>
 
 | 类型           | 说明                                  |
 | -------------- | ------------------------------------- |
-| Promise\<void> | 异步取消视频转码方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -274,7 +275,7 @@ async function test() {
 
 release(): Promise\<void>
 
-异步方式释放视频转码资源。通过Promise获取返回值。
+释放视频转码资源。使用Promise异步回调。
 
 释放视频转码资源之后，该AVTranscoder实例不能再进行任何操作。
 
@@ -286,7 +287,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                                        |
 | -------------- | ------------------------------------------- |
-| Promise\<void> | 异步释放视频转码资源方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -318,7 +319,7 @@ async function test() {
 
 on(type:'progressUpdate', callback: Callback\<number\>):void
 
-注册转码进度更新事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
+注册转码进度更新事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。使用callback异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -329,7 +330,7 @@ on(type:'progressUpdate', callback: Callback\<number\>):void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 进度更新事件回调类型，支持的事件：'progressUpdate'，在转码过程中系统会自动触发此事件。 |
-| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 进度更新事件回调方法，progress: number，表示当前转码进度。 |
+| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 回调函数，返回进度更新事件回调方法，progress: number，表示当前转码进度。 |
 
 **示例：**
 
@@ -378,7 +379,7 @@ async function test() {
 
 on(type: 'error', callback: ErrorCallback): void
 
-注册AVtranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](#release12)退出转码操作。
+注册AVtranscoder的错误事件，该事件仅用于错误提示。如果AVTranscoder上报error事件，开发者需要通过[release()](#release12)退出转码操作。使用callback异步回调。
 
 开发者只能订阅一个错误事件的回调方法，当开发者重复订阅时，以最后一次订阅的回调接口为准。
 
@@ -391,7 +392,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 参数名   | 类型          | 必填 | 说明                                                         |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
 | type     | string        | 是   | 转码错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 转码错误事件回调方法。                                       |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，返回转码错误事件回调方法。                                       |
 
 **错误码：**
 
@@ -456,7 +457,7 @@ async function test() {
 
 on(type: 'complete', callback: Callback\<void>): void
 
-注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。
+注册转码完成事件，并通过注册的回调方法通知开发者。开发者只能注册一个进度更新事件的回调方法，当开发者重复注册时，以最后一次注册的回调接口为准。使用callback异步回调。
 
 当AVTranscoder上报complete事件时，当前转码操作已完成，开发者需要通过[release()](#release12)退出转码操作。
 
@@ -469,7 +470,7 @@ on(type: 'complete', callback: Callback\<void>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 完成事件回调类型，支持的事件：'complete'，在转码过程中系统会自动触发此事件。 |
-| callback | [Callback\<void>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 完成事件回调方法。 |
+| callback | [Callback\<void>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 回调函数，返回完成事件回调方法。 |
 
 **示例：**
 
