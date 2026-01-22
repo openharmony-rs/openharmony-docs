@@ -298,6 +298,10 @@ onCapturePhotoAvailable(callback: Callback\<CapturePhoto\>): void
 >
 > - 拍摄未压缩图（YUV）格式图片时，仅支持使用此接口注册监听。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **参数：**
@@ -326,6 +330,10 @@ function registerCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutpu
 offCapturePhotoAvailable(callback?: Callback\<CapturePhoto\>): void
 
 注销监听全质量图和未压缩图。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
