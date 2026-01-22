@@ -176,6 +176,8 @@ insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Prom
 
 向目标表中插入一行数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -248,6 +250,8 @@ if (store != undefined) {
 insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution): number
 
 向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -330,6 +334,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number
 向目标表中插入一组数据，使用Promise异步回调。
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
+
+单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -417,6 +423,8 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 向目标表中插入一组数据。
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
+
+单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -508,6 +516,8 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
+
+单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -608,6 +618,8 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
+
+单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -710,6 +722,8 @@ batchInsertWithReturning(table: string, values: Array\<ValuesBucket\>, config: R
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **模型约束：** 此接口仅在Stage模型下可用。
@@ -782,6 +796,8 @@ batchInsertWithReturningSync(table: string, values: Array\<ValuesBucket\>, confi
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
+
+单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1475,6 +1491,8 @@ querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): ResultSet
 
 根据指定条件查询数据库中的数据。对query同步接口获得的resultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
+单个字符串类型的字段大小上限为8MB，超过上限读取的结果会不符合预期，建议使用blob类型，其余类型的字段大小不受此规格约束。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -1619,6 +1637,8 @@ if (store != undefined) {
 querySqlSync(sql: string, args?: Array&lt;ValueType&gt;): ResultSet
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对query同步接口获得的resultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
+
+单个字符串类型的字段大小上限为8MB，超过上限读取的结果会不符合预期，建议使用blob类型，其余类型的字段大小不受此规格约束。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
