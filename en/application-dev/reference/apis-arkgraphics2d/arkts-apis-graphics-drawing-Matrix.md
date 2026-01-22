@@ -164,8 +164,8 @@ Sets the matrix to rotate around the rotation center (px, py) with the specified
 
 | Name        | Type                                      | Mandatory  | Description           |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
-| sinValue          | number                  | Yes   | Sine value of the rotation angle. Only if the sum of the squares of the sine and cosine values is 1, the rotation transformation is performed. Otherwise, the matrix may contain other transformations such as translation and scaling.         |
-| cosValue          | number                  | Yes   | Cosine value of the rotation angle. Only if the sum of the squares of the sine and cosine values is 1, the rotation transformation is performed. Otherwise, the matrix may contain other transformations such as translation and scaling.           |
+| sinValue          | number                  | Yes   | Sine value of the rotation angle. Only if the sum of the squares of the sine and cosine values is **1**, the rotation transformation is performed. Otherwise, the matrix may contain other transformations such as translation and scaling.         |
+| cosValue          | number                  | Yes   | Cosine value of the rotation angle. Only if the sum of the squares of the sine and cosine values is **1**, the rotation transformation is performed. Otherwise, the matrix may contain other transformations such as translation and scaling.           |
 | px          | number                  | Yes   | X coordinate of the rotation center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center to the right of the coordinate origin, while a negative value places the center to the left.    |
 | py          | number                  | Yes   | Y coordinate of the rotation center. The value is a floating point number. **0** indicates the coordinate origin. A positive value places the center below the coordinate origin, while a negative value places the center above the coordinate origin.   |
 
@@ -573,7 +573,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 for (let i = 0; i < 9; i++) {
@@ -608,7 +608,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -646,7 +646,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -683,7 +683,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -719,7 +719,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -749,7 +749,8 @@ Right-multiply the existing matrix by a skew transformation matrix.
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D"
+import { drawing } from "@kit.ArkGraphics2D"
+
 let matrix = new drawing.Matrix();
 matrix.postSkew(2.0, 1.0, 2.0, 1.0);
 ```
@@ -774,7 +775,8 @@ Left-multiply the existing matrix by a skew transformation matrix.
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D"
+import { drawing } from "@kit.ArkGraphics2D"
+
 let matrix = new drawing.Matrix();
 matrix.preSkew(2.0, 1.0, 2.0, 1.0);
 ```
@@ -802,7 +804,7 @@ Returns the average radius of the ellipse formed after a circle with the specifi
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D"
+import { drawing } from "@kit.ArkGraphics2D"
 
 let matrix = new drawing.Matrix();
 matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
@@ -838,7 +840,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -875,7 +877,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -895,7 +897,7 @@ Resets this matrix to an identity matrix.
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 matrix.postScale(2, 3, 4, 5);
@@ -934,7 +936,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import { drawing, common2D } from "@kit.ArkGraphics2D";
 
 let src: Array<common2D.Point> = [];
 src.push({x: 15, y: 20});
@@ -963,7 +965,7 @@ Obtains all element values of this matrix.
 **Example**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from "@kit.ArkGraphics2D";
 
 let matrix = new drawing.Matrix();
 console.info("matrix "+ matrix.getAll());
@@ -1003,7 +1005,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import { drawing, common2D } from "@kit.ArkGraphics2D";
 
 let dst: common2D.Rect = { left: 100, top: 20, right: 130, bottom: 60 };
 let src: common2D.Rect = { left: 100, top: 80, right: 130, bottom: 120 };
@@ -1033,7 +1035,7 @@ Sets this matrix to a transformation matrix that maps a source rectangle to a de
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| boolean | Check result. The value **true** means that the matrix can represent the mapping, and **false** means the opposite. If either the width or the height of the source rectangle is less than or equal to 0, the API returns **false** and sets the matrix to an identity matrix. If either the width or height of the destination rectangle is less than or equal to 0, the API returns **true** and sets the matrix to a matrix with all values 0, except for a perspective scaling coefficient of 1.|
+| boolean | Check result. The value **true** means that the matrix can represent the mapping, and **false** means the opposite. If either the width or the height of the source rectangle is less than or equal to 0, the API returns **false** and sets the matrix to an identity matrix. If either the width or height of the destination rectangle is less than or equal to 0, the API returns **true** and sets the matrix to a matrix with all values **0**, except for a perspective scaling coefficient of **1**.|
 
 **Error codes**
 
@@ -1046,7 +1048,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import { drawing, common2D } from "@kit.ArkGraphics2D";
 
 let src: common2D.Rect = { left: 100, top: 100, right: 300, bottom: 300 };
 let dst: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
@@ -1090,7 +1092,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import { drawing, common2D } from "@kit.ArkGraphics2D";
 
 let srcPoints: Array<common2D.Point> = [ {x: 10, y: 20}, {x: 200, y: 150} ];
 let dstPoints: Array<common2D.Point> = [{ x:0, y: 10 }, { x:300, y: 600 }];

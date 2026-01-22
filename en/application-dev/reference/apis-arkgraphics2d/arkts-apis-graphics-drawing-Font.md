@@ -316,7 +316,7 @@ Sets the font size.
 
 | Name  | Type  | Mandatory| Description            |
 | -------- | ------ | ---- | ---------------- |
-| textSize | number | Yes  | Font size. The value is a floating point number. If a negative number is passed in, the size is set to 0. If the size is 0, the text drawn will not be displayed.|
+| textSize | number | Yes  | Font size. The value is a floating point number. If a negative number is passed in, the size is set to **0**. If the size is **0**, the text drawn will not be displayed.|
 
 **Error codes**
 
@@ -502,7 +502,7 @@ Measures the width of a single character. If the typeface of the current font do
 
 | Name| Type               | Mandatory| Description       |
 | ------ | ------------------- | ---- | ----------- |
-| text   | string | Yes  | Single character to measure. The length of the string must be 1. |
+| text   | string | Yes  | Single character to measure. The length of the string must be **1**. |
 
 **Returns**
 
@@ -529,7 +529,7 @@ class DrawingRenderNode extends RenderNode {
     const canvas = context.canvas;
     const font = new drawing.Font();
     font.setSize(20);
-    let width = font.measureSingleCharacter ("Hello");
+    let width = font.measureSingleCharacter("H");
   }
 }
 ```
@@ -548,7 +548,7 @@ Measures the width of a single character with font features. If the typeface of 
 
 | Name| Type               | Mandatory| Description       |
 | ------ | ------------------- | ---- | ----------- |
-| text | string | Yes| Pointer to the single character to measure. The string size must be 1.|
+| text | string | Yes| Pointer to the single character to measure. The length of the string must be **1**.|
 | features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | Yes| Array of the font feature object. For an empty array, the preset font features in the TrueType Font (TTF) file are used.|
 
 **Returns**
@@ -577,7 +577,7 @@ class DrawingRenderNode extends RenderNode {
     font.setSize(20);
     let fontFeatures : Array<drawing.FontFeature> = [];
     fontFeatures.push({name: 'calt', value: 0});
-    let width = font.measureSingleCharacterWithFeatures("A", fontFeatures);
+    let width = font.measureSingleCharacterWithFeatures("H", fontFeatures);
   }
 }
 ```
@@ -1166,7 +1166,7 @@ Obtains the outline path of a glyph.
 **Example**
 
 ```ts
-import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -1174,7 +1174,7 @@ class DrawingRenderNode extends RenderNode {
     const canvas = context.canvas;
     let font = new drawing.Font();
     font.setSize(50)
-    let text: string = 'Hello'
+    let text: string = 'Hello';
     let glyphs: number[] = font.textToGlyphs(text);
     for (let index = 0; index < glyphs.length; index++) {
       let path: drawing.Path = font.createPathForGlyph(glyphs[index])
