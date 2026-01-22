@@ -153,7 +153,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    import testNapi from 'libentry.so';
    ```
 
-   <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[promise_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    testNapi.asyncWork(1024).then((result) => {
@@ -276,7 +276,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    let num2: number = 456;
    ```
 
-   <!-- @[callback_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[callback_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    nativeModule.asyncWork(num1, num2, (result) => {
@@ -308,7 +308,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
 2. Worker线程示例代码。
 
-   <!-- @[napi_create_async_work_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/workers/Worker.ets) -->
+   <!-- @[napi_create_async_work_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/workers/Worker.ets) -->  
    
    ``` TypeScript
    // entry/src/main/ets/workers/Worker.ets
