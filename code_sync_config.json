@@ -15606,7 +15606,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NativeEntry.cpp",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":52,
 						"name":"Cpp_NativeEntry",
 						"start_line":15
 					}
