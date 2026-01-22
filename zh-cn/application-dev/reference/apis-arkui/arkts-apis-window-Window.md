@@ -10688,6 +10688,8 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在仅在Phone和Tablet设备上生效，其他设备调用返回801错误码。
+
 **参数：**
 
 | 参数名   | 类型                          | 必填 | 说明                                                    |
