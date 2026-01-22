@@ -599,9 +599,11 @@ module.json5配置示例如下：
 
 ## 如何设置或取消水印
 
+<!--Del-->
 水印按照作用范围可分为如下3类：
 
 - 窗口级水印：可通过[setWaterMarkFlag()](../reference/apis-arkui/js-apis-window-sys.md#setwatermarkflag10)为当前窗口添加或删除安全水印标志。
+<!--DelEnd-->
 
 - 进程级水印：可通过[setWatermarkImageForAppWindows()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwatermarkimageforappwindows21)设置或取消应用进程级水印，针对当前应用进程的窗口生效，包括后续该进程新创建的窗口。
 
