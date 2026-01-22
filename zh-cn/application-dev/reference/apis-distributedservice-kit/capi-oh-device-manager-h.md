@@ -57,7 +57,8 @@ int32_t OH_DeviceManager_GetLocalDeviceName(char **localDeviceName, unsigned int
 ```c++
 #include "napi/native_api.h"
 #include "hilog/log.h"
-#include <distributedhardware/device_manager/·.h>
+#include <distributedhardware/device_manager/oh_device_manager.h>
+#include <distributedhardware/device_manager/oh_device_manager_err_code.h>
 static napi_value GetDeviceName(napi_env env, napi_callback_info info) {
     napi_value result = nullptr;
     napi_create_object(env, &result);
@@ -65,7 +66,7 @@ static napi_value GetDeviceName(napi_env env, napi_callback_info info) {
     unsigned int len = 0;
     // 将空字符串的地址传给接口
     int32_t ret = OH_DeviceManager_GetLocalDeviceName(&localDeviceName, len);
-    if (ret != 0) {
+    if (ret != ERR_OK) {
         OH_LOG_ERROR(LOG_APP, "ret:%{public}d", ret);
     }
 
