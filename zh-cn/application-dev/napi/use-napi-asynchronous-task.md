@@ -279,7 +279,7 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
    <!-- @[callback_call_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIAsynchronousTask/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
-   nativeModule.asyncWork(num1, num2, (result) => {
+   nativeModule.asyncWork(num1, num2, (result: number) => {
      hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
    });
    ```
