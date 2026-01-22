@@ -42,4 +42,4 @@ If this attribute is not set, the union effect of the ancestor **UnionEffectCont
 
 **Example**
 
-For details, see [UnionEffectContainer Example](ts-container-unioneffectcomponent-sys.md# Example).
+For details, see [UnionEffectContainer Example](ts-container-unioneffectcomponent-sys.md#example).

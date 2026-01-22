@@ -150,4 +150,3 @@ export struct VCard {
 }
 ```
 
-![SegmentButtonV2NewMaterial](figures/SegmentButtonV2NewMaterial.png)

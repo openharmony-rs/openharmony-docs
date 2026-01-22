@@ -38,7 +38,7 @@ Creates a shape fusion container component.
 
 | Name           | Type       | Mandatory  | Description                                    |
 | -------------- | ---------------------------------------- | ---- |  ---------------------------------------- |
-| options      | [UnionEffectContainerOptions](ts-universal-attributes-use-union-effect-sys.md#useunioneffect object description)| No   |  UnionEffectContainer constructor parameter, which is used to determine the degree of fusion of the collected shapes of descendant components.<br>Default value: {spacing: 0}              |
+| options      | [UnionEffectContainerOptions](ts-universal-attributes-use-union-effect-sys.md#useunioneffect)| No   |  UnionEffectContainer constructor parameter, which is used to determine the degree of fusion of the collected shapes of descendant components.<br>Default value: {spacing:0}              |
 
 ## UnionEffectContainerOptions object description
 
