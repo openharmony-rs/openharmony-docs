@@ -2010,7 +2010,7 @@ Requests the permission for [OH_Input_InjectKeyEvent](capi-oh-input-manager-h.md
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Result code. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success. The application waits for the user authorization result and returns the authorization status through a callback.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The callback parameter is empty.<br>      INPUT_DEVICE_NOT_SUPPORTED = 801: Function not supported.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Server error.<br>      INPUT_INJECTION_AUTHORIZING = 3900005: Permission being granted.<br>      INPUT_INJECTION_OPERATION_FREQUENT = 3900006: Repeated request. The application continuously requests permission authorization at an interval of no more than 3 seconds.<br>      INPUT_INJECTION_AUTHORIZED = 3900007: Permission granted.<br>      INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008: Permission granted to other applications.|
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | Result code. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success. The application waits for the user authorization result and returns the authorization status through a callback.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The callback parameter is empty.<br>      INPUT_DEVICE_NOT_SUPPORTED = 801: Function not supported.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Service error.<br>      INPUT_INJECTION_AUTHORIZING = 3900005: Permission being granted.<br>      INPUT_INJECTION_OPERATION_FREQUENT = 3900006: Repeated request. The application continuously requests permission authorization at an interval of no more than 3 seconds.<br>      INPUT_INJECTION_AUTHORIZED = 3900007: Permission granted.<br>      INPUT_INJECTION_AUTHORIZED_OTHERS = 3900008: Permission granted to other applications.|
 
 ### OH_Input_QueryAuthorizedStatus()
 
@@ -2035,7 +2035,7 @@ Queries the injection permission authorization status of the current application
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](capi-oh-input-manager-h.md#input_result) | Result code. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The status parameter is empty.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Server error.|
+| [Input_Result](capi-oh-input-manager-h.md#input_result) | Result code. For details, see [Input_Result](capi-oh-input-manager-h.md#input_result).<br>      INPUT_SUCCESS = 0: Operation success.<br>      INPUT_PARAMETER_ERROR = 401: Parameter error. The status parameter is empty.<br>      INPUT_SERVICE_EXCEPTION = 3800001: Service error.|
 
 ### OH_Input_CreateAxisEvent()
 
@@ -2604,6 +2604,8 @@ Adds a listener for key events.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2635,6 +2637,8 @@ This API can be called only when the screen recording scenario is in use. Otherw
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2663,6 +2667,8 @@ Adds a listener for touch input events.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2693,6 +2699,8 @@ Adds a listener for all types of axis events, which are defined in [InputEvent_A
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2721,6 +2729,8 @@ Adds a listener for the specified type of axis events, which are defined in [Inp
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2752,6 +2762,8 @@ Removes the listener for key events.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2780,6 +2792,8 @@ Removes the listener for mouse events.
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2810,6 +2824,8 @@ Removes the listener for touch events.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2839,6 +2855,8 @@ Removes the listener for all types of axis events.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2867,6 +2885,8 @@ Removes the listener for the specified type of axis events, which are defined in
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2898,6 +2918,8 @@ Adds an interceptor for key events. If multiple interceptors are added, only the
 
 **Required permission**: ohos.permission.INTERCEPT_INPUT_EVENT
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 
@@ -2927,6 +2949,8 @@ Adds an interceptor for input events, including mouse, touch, and axis events. I
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permission**: ohos.permission.INTERCEPT_INPUT_EVENT
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -2958,6 +2982,8 @@ Removes the interceptor for key events.
 
 **Required permission**: ohos.permission.INTERCEPT_INPUT_EVENT
 
+<!--RP2--><!--RP2End-->
+
 **Since**: 12
 
 **Return value**
@@ -2979,6 +3005,8 @@ Removes the interceptor for input events, including mouse, touch, and axis event
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Required permission**: ohos.permission.INTERCEPT_INPUT_EVENT
+
+<!--RP2--><!--RP2End-->
 
 **Since**: 12
 
@@ -3013,7 +3041,7 @@ Obtains the interval since the last system input event.
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Status code of the **OH_Input_GetIntervalSinceLastInput** function,<br>[INPUT_SUCCESS](#input_result) if the interval is obtained successfully; [INPUT_SERVICE_EXCEPTION](#input_result) if the interval fails to be obtained; [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect.|
+| [Input_Result](#input_result) | Status code of the **OH_Input_GetIntervalSinceLastInput** function,<br>[INPUT_SUCCESS](#input_result) if the interval is obtained successfully; [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal; [INPUT_PARAMETER_ERROR](#input_result) if the parameter is incorrect.|
 
 ### OH_Input_CreateHotkey()
 
@@ -4613,7 +4641,7 @@ The cursor may be switched back to the system style in the following cases: appl
 
 | Type| Description|
 | -- | -- |
-| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br> [INPUT_INVALID_WINDOWID](#input_result) if the window ID is invalid;<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br> [INPUT_SERVICE_EXCEPTION](#input_result) if a service exception occurs; Possible causes: 1. The horizontal or vertical coordinate of the custom mouse pointer's focus is greater than the width or height of the custom mouse pixel map. 2. The system service is abnormal. Try again.|
+| [Input_Result](#input_result) | Operation result:<br>  [INPUT_SUCCESS](#input_result) if the operation is successful;<br>  [INPUT_PARAMETER_ERROR](#input_result) if the parameter verification fails;<br> [INPUT_INVALID_WINDOWID](#input_result) if the window ID is invalid;<br>   [INPUT_DEVICE_NOT_SUPPORTED](#input_result) if the device is not supported;<br> [INPUT_SERVICE_EXCEPTION](#input_result) if the service is abnormal.|
 
 ### OH_Input_CursorInfo_Create()
 
