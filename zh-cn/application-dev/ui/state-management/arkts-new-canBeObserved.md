@@ -26,37 +26,40 @@ V1使用场景包括：@State、@Link、@Prop、@ObjectLink、@StorageLink、@Lo
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
 class StateUser {
   public name?: string;
+  public age?: number;
 
-  constructor(name?: string) {
+  constructor(name?: string, age?: number) {
     this.name = name ?? '';
+    this.age = age ?? 0;
   }
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
 @Entry
 @Component
 struct V1State {
-  @State stateUser: StateUser = new StateUser('Aki');
+  // V1组件中使用@State装饰对象时，会将该对象变成可被观察对象
+  @State stateUser: StateUser = new StateUser('James', 33);
 
   build() {
     Column({ space: 20 }) {
-
-      Child01({ stateUser: this.stateUser })
-
-      Child02({ stateUser: this.stateUser })
-
+      // 组件使用了可被观察对象的属性
+      Text('user name: ' + this.stateUser.name)
+      // 组件使用了可被观察对象的属性
+      Text('user age: ' + this.stateUser.age)
       Button('test')
         .onClick(() => {
-          // 开发者可以在任意页面中使用接口来判断当前对象是否为可被观察对象
+          // 开发者可以在任意页面中使用接口来判断当前对象是否为可被观察对象，并且可被获取对象关联的组件信息
           this.stateUser.test();
         })
 
@@ -65,41 +68,6 @@ struct V1State {
     .width('100%')
     .justifyContent(FlexAlign.Center)
     .alignItems(HorizontalAlign.Center)
-  }
-}
-
-@Component
-export struct Child01 {
-  @State stateUser: StateUser = new StateUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.stateUser.name)
-
-      Child03({ stateUser: this.stateUser })
-    }
-  }
-}
-
-@Component
-export struct Child02 {
-  @State stateUser: StateUser = new StateUser();
-
-  build() {
-    Column() {
-      Text('Child02 ' + this.stateUser.name)
-    }
-  }
-}
-
-@Component
-export struct Child03 {
-  @State stateUser: StateUser = new StateUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.stateUser.name)
-    }
   }
 }
 ```
@@ -176,6 +144,7 @@ export struct Child03 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -188,7 +157,7 @@ class PropUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -317,6 +286,7 @@ export struct Child03 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -329,7 +299,7 @@ class LinkUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -455,6 +425,7 @@ export struct Child03 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -467,7 +438,7 @@ class ObjectLinkUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -617,6 +588,7 @@ export struct Child03 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -629,7 +601,7 @@ class StorageLinkUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -767,6 +739,7 @@ export struct Child03 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -779,7 +752,7 @@ class StoragePropUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -916,6 +889,7 @@ export struct Child03 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -928,7 +902,7 @@ class LocalStorageLinkUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -1062,6 +1036,7 @@ export struct Child03 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -1074,7 +1049,7 @@ class LocalStoragePropUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -1207,6 +1182,7 @@ export struct Child03 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -1219,7 +1195,7 @@ class ProvideConsumeUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -1344,12 +1320,13 @@ built-in类型包含：Array、Map、Set、Date类型。
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
 // 提供判断对象是否为可被观察对象的方法
 function test(obj: object): void {
-  console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(obj))}`);
+  hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(obj))}`);
 }
 
 @Entry
@@ -1587,6 +1564,7 @@ export struct Child04 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -1599,7 +1577,7 @@ class ObservedV1User {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -1772,6 +1750,7 @@ class Test {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -1789,28 +1768,24 @@ class LocalUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
 @Entry
 @ComponentV2
 struct V2Local {
-  @Local localUser: LocalUser = new LocalUser('Goat', 35);
+  @Local localUser: LocalUser = new LocalUser('Michael', 29);
 
   build() {
     Column({ space: 20 }) {
-
       Text('index ' + this.localUser.name)
-
       Text('index ' + this.localUser.age)
-
       Button('test')
         .onClick(() => {
           // 开发者可以在任意页面中使用接口来判断当前对象是否为可被观察对象
           this.localUser.test();
         })
-
     }
     .height('100%')
     .width('100%')
@@ -1864,6 +1839,7 @@ struct V2Local {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -1881,7 +1857,7 @@ class ParamUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -2002,6 +1978,7 @@ export struct Child04 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -2019,7 +1996,7 @@ class ComputedUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -2172,6 +2149,7 @@ export struct Child04 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -2189,7 +2167,7 @@ class MonitorUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -2225,12 +2203,12 @@ export struct Child01 {
 
   @Monitor('monitorUser.name')
   onChild01NameChange(): void {
-    console.info(TAG, `onChild01NameChange`);
+    hilog.info(0x00, TAG, `onChild01NameChange`);
   }
 
   @Monitor('monitorUser.age')
   onChild01AgeChange(): void {
-    console.info(TAG, `onChild01AgeChange`);
+    hilog.info(0x00, TAG, `onChild01AgeChange`);
   }
 
   build() {
@@ -2246,7 +2224,7 @@ export struct Child02 {
 
   @Monitor('monitorUser.name')
   onChild02NameChange(): void {
-    console.info(TAG, `onChild02NameChange`);
+    hilog.info(0x00, TAG, `onChild02NameChange`);
   }
 
   build() {
@@ -2262,7 +2240,7 @@ export struct Child03 {
 
   @Monitor('monitorUser.age')
   onChild03AgeChange(): void {
-    console.info(TAG, `onChild03AgeChange`);
+    hilog.info(0x00, TAG, `onChild03AgeChange`);
   }
 
   build() {
@@ -2278,12 +2256,12 @@ export struct Child04 {
 
   @Monitor('monitorUser.name')
   onChild04NameChange(): void {
-    console.info(TAG, `onChild04NameChange`);
+    hilog.info(0x00, TAG, `onChild04NameChange`);
   }
 
   @Monitor('monitorUser.age')
   onChild04AgeChange(): void {
-    console.info(TAG, `onChild04AgeChange`);
+    hilog.info(0x00, TAG, `onChild04AgeChange`);
   }
 
   build() {
@@ -2342,6 +2320,7 @@ export struct Child04 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -2359,7 +2338,7 @@ class ProviderConsumerUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -2490,6 +2469,7 @@ export struct Child04 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -2504,7 +2484,7 @@ class MakeObservedUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -2636,12 +2616,13 @@ built-in类型包含：Array、Map、Set、Date类型。
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
 // 提供判断对象是否为可被观察对象的方法
 function test(obj: object): void {
-  console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(obj))}`);
+  hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(obj))}`);
 }
 
 @Entry
@@ -2915,6 +2896,7 @@ export struct Child04 {
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG = 'CanBeObserved';
 
@@ -2929,7 +2911,7 @@ class CompatibilityUser {
 
   // 在对象中提供判断该对象是否为可被观察对象的方法
   test(): void {
-    console.info(TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
+    hilog.info(0x00, TAG, `res: ${JSON.stringify(UIUtils.canBeObserved(this))}`);
   }
 }
 
@@ -2937,22 +2919,21 @@ class CompatibilityUser {
 @Component
 struct V1AndV2Compatibility {
   // 被enableV2Compatibility转换的V1对象必须是可被观察的V1对象
-  @State temp: CompatibilityUser = new CompatibilityUser('Galen', 43);
+  @State temp: CompatibilityUser = new CompatibilityUser('Thomas', 43);
   @State compatibilityUser: CompatibilityUser = UIUtils.enableV2Compatibility(this.temp);
 
   build() {
     Column({ space: 20 }) {
+      Text('V1 name: ' + this.compatibilityUser.name)
+      Text('V1 age: ' + this.compatibilityUser.age)
 
-      Child01({ compatibilityUser: this.compatibilityUser })
-
-      Child02({ compatibilityUser: this.compatibilityUser })
+      V2Child({ compatibilityUser: this.compatibilityUser })
 
       Button('test')
         .onClick(() => {
           // 开发者可以在任意页面中使用接口来判断当前对象是否为可被观察对象
           this.compatibilityUser.test();
         })
-
     }
     .height('100%')
     .width('100%')
@@ -2961,37 +2942,14 @@ struct V1AndV2Compatibility {
   }
 }
 
-@Component
-export struct Child01 {
-  @State compatibilityUser: CompatibilityUser = new CompatibilityUser();
-
-  build() {
-    Column() {
-      Text('Child01 ' + this.compatibilityUser.name)
-    }
-  }
-}
-
 @ComponentV2
-export struct Child02 {
+export struct V2Child {
   @Param compatibilityUser: CompatibilityUser = new CompatibilityUser();
 
   build() {
     Column() {
-      Text('Child02 ' + this.compatibilityUser.age)
-
-      Child03({ compatibilityUser: this.compatibilityUser })
-    }
-  }
-}
-
-@ComponentV2
-export struct Child03 {
-  @Param compatibilityUser: CompatibilityUser = new CompatibilityUser();
-
-  build() {
-    Column() {
-      Text('Child03 ' + this.compatibilityUser.name)
+      Text('V2Child name ' + this.compatibilityUser.name)
+      Text('V2Child age ' + this.compatibilityUser.age)
     }
   }
 }
