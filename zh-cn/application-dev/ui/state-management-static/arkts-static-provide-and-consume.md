@@ -41,7 +41,7 @@ import { Provide, Consume } from '@kit.ArkUI';
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数          | alias：别名，常量字符串，可选。<br/>如果指定了别名，则通过别名来绑定变量；如果未指定别名，则通过变量名绑定变量。<br/>指定别名方法为：\@Provide({ alias: 'aliasName' })。<br/>allowOverride：是否允许重写，boolean类型，可选。<br/>如果指定allowOverride为true，则别名与属性名可以被重写，即可以存在同名的\@Provide变量。<br/>未指定时使用默认值false。示例见[\@Provide支持allowOverride参数](#provide支持allowoverride参数)。 |
 | 允许装饰的变量类型  | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及联合类型。 |
-| 初始化规则          | 必须定义本地默认值。<br/>可以从父组件传入非undefined类型变量，此时使用该传入变量进行初始化。<br/>父组件未传入或传入undefined类型变量时，使用本地默认值进行初始化。 |
+| 初始化规则          | 必须定义本地默认值。<br/>支持从父组件传入变量（含undefined类型），此时优先使用传入值进行初始化。<br/>若父组件未传值，则使用本地默认值进行初始化。 |
 | 同步规则            | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@Provide初始化时，仅作为初始值，后续变量的变化不会同步至\@Provide。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、[\@PropRef](./arkts-static-propref.md)、\@Provide。<br/>\@Provide变量的变化会同步给子组件的\@Link、\@PropRef变量。<br/>与后代子组件中别名匹配的\@Consume变量双向同步 |
 
 | \@Consume变量装饰器 | 说明                                                         |

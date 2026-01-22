@@ -24,7 +24,7 @@ import { State } from '@ohos.arkui.stateManagement';
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无                                                           |
 | 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#state支持联合类型)。 |
-| 初始化规则         | 必须定义本地默认值。<br/>可以从父组件传入非undefined类型变量，此时使用该传入变量进行初始化。<br/>父组件未传入或传入undefined类型变量时，使用本地默认值进行初始化。 |
+| 初始化规则         | 必须定义本地默认值。<br/>支持从父组件传入变量（含undefined类型），此时优先使用传入值进行初始化。<br/>若父组件未传值，则使用本地默认值进行初始化。 |
 | 同步规则           | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@State初始化时，仅作为初始值，后续变量的变化不会同步至\@State。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、\@PropRef、[\@Provide](arkts-static-provide-and-consume.md)。<br/>\@State变量的变化会同步给子组件的\@Link、\@PropRef变量。 |
 
 ## 观察变化和行为表现
