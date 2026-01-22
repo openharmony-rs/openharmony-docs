@@ -752,6 +752,7 @@ for (let i = 0; i < numbers.length; i++) {
   increasedByOne1.push(numbers[i] + 1);
 }
 ```
+
 **【正例】**
 
 <!-- @[array_methods_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
@@ -762,6 +763,7 @@ const numbers = [1, 2, 3, 4, 5];
 // better: 使用map方法是更好的方式
 const increasedByOne2: number[] = numbers.map(num => num + 1);
 ```
+
 ### 不要在控制性条件表达式中执行赋值操作
 
 **【级别】要求**
@@ -793,10 +795,13 @@ if (isFoo) {
 }
 ```
 
+### 在`finally`代码块中，不要使用`return`、`break`、`continue`或抛出异常，避免`finally`块非正常结束
+
 **【级别】要求**
 
 **【描述】**
 
+### 在`finally`代码块中，不要使用`return`、`break`、`continue`或抛出异常，避免`finally`块非正常结束
 在`finally`代码块中，直接使用`return`、`break`、`continue`、`throw`语句或调用方法时未处理异常，会导致`finally`代码块无法正常结束。`finally`代码块异常结束会影响`try`或`catch`代码块中异常的抛出，也可能影响方法的返回值。因此，必须确保`finally`代码块正常结束。
 
 **【反例】**
@@ -834,6 +839,8 @@ function foo5() {
   }
 }
 ```
+
+### 避免使用`ESObject`
 
 **【级别】建议**
 
@@ -885,6 +892,7 @@ export function getObject2(value: number): I {
 <!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
+// app.ets
 import { getObject2, I } from './lib'
 // ...
 let obj2: I = getObject2(123);
@@ -912,6 +920,7 @@ let y: Array<string> = ['a', 'b', 'c'];
 <!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
+// 统一使用T[]语法
 let x: Array<number> = [1, 2, 3];
 let y: Array<string> = ['a', 'b', 'c'];
 ```
