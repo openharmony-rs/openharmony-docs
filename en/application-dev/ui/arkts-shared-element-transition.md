@@ -70,7 +70,7 @@ struct Index {
       // Replace $r('app.media.sunset_sky') with the actual resource file.
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello World."
+      // Replace $r('app.string.shareTransition_text2') with the actual resource file. In this example, the value in the resource file is "Hello, world."
       message: $r('app.string.shareTransition_text2'),
       // Replace $r('app.media.island') with the actual resource file.
       images: [$r('app.media.island')]
