@@ -34,7 +34,9 @@ import { proxyChannelManager } from '@kit.DistributedServiceKit';
 
 ## proxyChannelManager.openProxyChannel
 
-ArkTS-Dyn: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;</br>ArkTS-Sta: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;int&gt;
+ArkTS-Dyn: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;number&gt;
+
+ArkTS-Sta: openProxyChannel(channelInfo:&nbsp;ChannelInfo):&nbsp;Promise&lt;int&gt;
 
 打开代理通道，使用Promise异步回调返回结果。
 
@@ -151,7 +153,9 @@ struct Index {
 
 ## proxyChannelManager.closeProxyChannel
 
-ArkTS-Dyn: closeProxyChannel(channelId:&nbsp;number):&nbsp;void</br>ArkTS-Sta: closeProxyChannel(channelId:&nbsp;int):&nbsp;void
+ArkTS-Dyn: closeProxyChannel(channelId:&nbsp;number):&nbsp;void
+
+ArkTS-Sta: closeProxyChannel(channelId:&nbsp;int):&nbsp;void
 
 关闭已打开的代理通道。
 
@@ -211,7 +215,9 @@ struct Index {
 
 ## proxyChannelManager.sendData
 
-ArkTS-Dyn: sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;</br>ArkTS-Sta: sendData(channelId:int, data:ArrayBuffer):Promise&lt;void&gt;
+ArkTS-Dyn: sendData(channelId:number, data:ArrayBuffer):Promise&lt;void&gt;
+
+ArkTS-Sta: sendData(channelId:int, data:ArrayBuffer):Promise&lt;void&gt;
 
 向对端发送数据，使用Promise异步回调。
 
