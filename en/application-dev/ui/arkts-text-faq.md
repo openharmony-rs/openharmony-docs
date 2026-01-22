@@ -93,7 +93,7 @@ The sample code is as follows:
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     private manager = this.context.resourceManager;
   
-    // The value in the 'Text_Adaptive_Layout' resource file is 'Mixed Hello World! Chinese and English digits in multiple lines 1282378283 ~'.
+    // The value in the 'Text_Adaptive_Layout' resource file is 'Mixed Hello World! Chinese and English digits in multiple lines 1282378283!'.
     @State message: string = this.manager.getStringByNameSync('Text_Adaptive_Layout');
     @State fontSize: number = 25;
     build() {
@@ -521,6 +521,7 @@ struct TextExample8 {
 }
 ```
 
+![](figures/selectionAndBindMenuAndFont.gif)
 
 ### How do I Disable the Long Press Gesture on Text?
 
@@ -626,3 +627,4 @@ export struct CursorPersistsWhenTextInputIsCoveredExample {
 }
 ```
 
+![textInput_faq_show_handle](figures/textInput_faq_show_handle.gif)

@@ -1439,7 +1439,7 @@ struct FrameNodeTypeTest {
 
 flushState(): void
 
-Update ReactiveComponentContent. If the bound parameters used in the builder function encapsulated by the [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md) object in ReactiveComponentContent are class instances decorated by the V1 decorator (such as @Observed), you need to manually call this API to update data after the data of this class changes. If the bound parameters are class instances decorated by the V2 decorator (such as @ObservedV2), the data can be automatically updated without manual calling.
+Updates **ReactiveComponentContent**. If the bound parameters used in the **builder** function encapsulated by the [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md) object in **ReactiveComponentContent** are class instances decorated by the V1 decorator (such as @Observed), you need to manually call this API to update data after the data of this class changes. If the bound parameters are class instances decorated by the V2 decorator (such as @ObservedV2), the data can be automatically updated without manual calling.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1447,7 +1447,7 @@ Update ReactiveComponentContent. If the bound parameters used in the builder fun
 
 **Example**
 
-This example demonstrates the usage of the flushState API in ReactiveComponentContent. By comparing the data update mechanisms of the V1 and V2 decorators, it illustrates the state update strategies under different reactive solutions.
+This example demonstrates the usage of the **flushState** API in **ReactiveComponentContent**. By comparing the data update mechanisms of the V1 and V2 decorators, it illustrates the state update strategies under different reactive solutions.
 
 ```ts
 import {
@@ -1495,7 +1495,7 @@ struct Index {
       Scroll() {
         Column({ space: 12 }) {
           // Create ReactiveComponentContent using the V2 decorator.
-          Button('Binding parameters are decorated with the V2 decorator').onClick(
+          Button('Bound parameters are decorated by the V2 decorator').onClick(
             () => {
               let column = typeNode.createNode(this.getUIContext(), "Column");
               column.initialize();
@@ -1511,7 +1511,7 @@ struct Index {
             })
           
           // Create ReactiveComponentContent using the V1 decorator.
-          Button('Binding parameters are decorated with the V1 decorator').onClick(
+          Button('Bound parameters are decorated by the V1 decorator').onClick(
             () => {
               let column = typeNode.createNode(this.getUIContext(), "Column");
               column.initialize();
