@@ -889,7 +889,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |Network Kit                 | boolean          |否| Network Kit从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。 |
 |ArkWeb                    | boolean          |否| ArkWeb从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
 |Media Kit                    | boolean          |否|Media Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
-|Remote Communication Kit                    | boolean          |否| Remote Communication Ki从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
+|Remote Communication Kit                    | boolean          |否| Remote Communication Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
 
 ## HTTP拦截器
 
