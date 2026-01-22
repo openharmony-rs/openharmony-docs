@@ -6180,7 +6180,7 @@ try{
             return 1;
         }
     );
-} catch(err) {
+} catch (err) {
     console.error(`OnBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -6214,7 +6214,7 @@ offBadgeNumberQuery(): void
 ```ts
 try{
     notificationManager.offBadgeNumberQuery();
-} catch(err) {
+} catch (err) {
     console.error(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
