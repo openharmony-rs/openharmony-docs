@@ -28,13 +28,13 @@ Implements the proxy for the UIExtension host application window.
 
 hideNonSecureWindows(shouldHide: boolean): Promise\<void>
 
-Sets whether to hide insecure windows. This API uses a promise to return the result.
+Sets whether to hide non-secure windows. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> - An insecure window refers to a window that may block the [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md) (or [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md)) component, such as the global floating window, host sub-window, and dialog window created by the host (excluding the preceding types of windows created by system applications).
-> - When the **EmbeddedComponent** (or **UIExtensionComponent**) is used to present important information, you can hide insecure windows to prevent such information from being blocked. When the **EmbeddedComponent** (or **UIExtensionComponent**) is not displayed or is destroyed, the insecure windows are shown again.
-> - For PCs and 2-in-1 devices, when hideNonSecureWindows(true) is called, the global floating window in the insecure window is not hidden.
+> - A non-secure window refers to any window that may obstruct the [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md) or [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md), such as global floating windows, host subwindows, and dialog box windows created by the host application (excluding windows of these types created by system applications).
+> - When using the **EmbeddedComponent** or **UIExtensionComponent** to display sensitive information, call this API to hide non-secure windows and prevent information obstruction. Hidden non-secure windows will reappear when the **EmbeddedComponent** or **UIExtensionComponent** is hidden or destroyed.
+> - On PCs/2-in-1 devices, global floating windows within non-secure windows remain visible when **hideNonSecureWindows(true)** is called.
 
 **Required permissions**: ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
@@ -46,7 +46,7 @@ Sets whether to hide insecure windows. This API uses a promise to return the res
 
 | Name     | Type                     | Mandatory| Description      |
 | ----------- | ------------------------- | ---- | ---------- |
-| shouldHide  | boolean                   | Yes  | Whether to hide insecure windows. The value **true** means to hide insecure windows, and **false** means the opposite.|
+| shouldHide  | boolean                   | Yes  | Whether to hide non-secure windows. The value **true** means to hide non-secure windows, and **false** means the opposite.|
 
 **Return value**
 
@@ -74,7 +74,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // Hide insecure windows.
+    // Hide non-secure windows.
     extensionHostWindow.hideNonSecureWindows(true).then(()=> {
       console.info(`Succeeded in hiding the non-secure windows.`);
     }).catch((err: BusinessError)=> {
@@ -83,7 +83,7 @@ export default class EntryAbility extends UIExtensionAbility {
   }
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
-    // Unhide insecure windows.
+    // Unhide non-secure windows.
     extensionHostWindow.hideNonSecureWindows(false).then(()=> {
       console.info(`Succeeded in showing the non-secure windows.`);
     }).catch((err: BusinessError)=> {

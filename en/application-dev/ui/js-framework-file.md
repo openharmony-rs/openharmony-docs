@@ -90,4 +90,5 @@ Application resources can be accessed via an absolute or relative path. An absol
 
 | Format                                      |  File Type      |
 | ---------------------------------------- | ------------- |
-| H.264 AVC<br>Baseline Profile (BP) | .3gp<br>.mp4 |
+| H.264 AVC | .3gp |
+| Baseline Profile (BP) | .mp4 |

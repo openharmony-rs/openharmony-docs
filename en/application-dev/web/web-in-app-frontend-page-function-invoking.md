@@ -29,7 +29,7 @@ In the following example, when a user clicks the **runJavaScript** button on the
       var param = "param: JavaScript Hello World!";
       function htmlTestParam(param) {
           document.getElementById('text').style.color = 'green';
-          console.log(param);
+          console.info(param);
       }
       // Function without parameters.
       function htmlTest() {

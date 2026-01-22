@@ -18,7 +18,7 @@ Provides BASE DDK types and declares the macros, enums, and data structures requ
 
 **Since**: 12
 
-**Related module**: [BaseDdk](capi-baseddk.md)
+**Related module**: [Ddk](capi-baseddk.md)
 
 ## Summary
 
@@ -38,13 +38,13 @@ Provides BASE DDK types and declares the macros, enums, and data structures requ
 
 ### DDK_RetCode
 
-```
+```c
 enum DDK_RetCode
 ```
 
 **Description**
 
-Enumerates the error codes used in the basic DDK.
+Enumerates error codes used in the BASE DDK.
 
 **Since**: 12
 

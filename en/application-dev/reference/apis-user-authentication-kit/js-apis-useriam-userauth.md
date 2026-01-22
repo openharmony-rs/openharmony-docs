@@ -1326,7 +1326,7 @@ try {
 
 off : (name : AuthEventKey) => void
 
-Unsubscribes from the user authentication events of the specific type.
+Unsubscribes from the user authentication events of the specified type.
 
 > **NOTE**<br>
 >
@@ -2062,7 +2062,7 @@ Obtains an **Authenticator** instance for user authentication.
 
 > **NOTE**<br>
 >
-> This API is supported since API version 6 and deprecated since API version 8. Use [constructor](#constructordeprecated) instead.
+> This API is supported since API version 6 and deprecated since API version 8. Use [getAuthInstance](#userauthgetauthinstancedeprecated) instead.
 
 **System capability**: SystemCapability.UserIAM.UserAuth.Core
 
@@ -2085,7 +2085,7 @@ Provides APIs for managing the **Authenticator** object.
 
 > **NOTE**<br>
 >
-> This API is supported since API version 6 and deprecated since API version 8. Use [UserAuth](#userauthdeprecated) instead.
+> This API is supported since API version 6 and deprecated since API version 8. Use [AuthInstance](#authinstancedeprecated) instead.
 
 ### execute<sup>(deprecated)</sup>
 
@@ -2095,7 +2095,7 @@ Starts user authentication. This API uses an asynchronous callback to return the
 
 > **NOTE**<br>
 >
-> This API is supported since API version 6 and deprecated since API version 8. Use [auth](#authdeprecated) instead.
+> This API is supported since API version 6 and deprecated since API version 8. Use [start](#startdeprecated) instead.
 
 **Required permissions**: ohos.permission.ACCESS_BIOMETRIC
 
@@ -2133,7 +2133,7 @@ Starts user authentication. This API uses a promise to return the result.
 
 > **NOTE**<br>
 >
-> This API is supported since API version 6 and deprecated since API version 8. Use [auth](#authdeprecated) instead.
+> This API is supported since API version 6 and deprecated since API version 8. Use [start](#startdeprecated) instead.
 
 **Required permissions**: ohos.permission.ACCESS_BIOMETRIC
 

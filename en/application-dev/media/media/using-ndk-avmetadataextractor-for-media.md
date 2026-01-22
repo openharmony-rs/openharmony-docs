@@ -11,38 +11,38 @@ You can use the AVMetadataExtractor to obtain metadata from a raw media asset. T
 The full process of obtaining the metadata of a media asset includes creating an AVMetadataExtractor instance, setting resources, obtaining the metadata, and releasing the instance.
 
 ## How to Develop
-Link the dynamic libraries in the CMake script.
-```
+Link the dynamic library in the CMake script.
+```C++
 target_link_libraries(entry PUBLIC libavmetadata_extractor.so libace_napi.z.so )
 ```
 
 To use [OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md) APIs, include the following header file:
-```
+```C++
 #include <multimedia/player_framework/native_avformat.h>
 ```
 
-In addition, link the following dynamic libraries in the CMake script:
-```
+In addition, link the following dynamic library in the CMake script:
+```C++
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
 To use [OH_PixelmapNative_ConvertPixelmapNativeToNapi()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_convertpixelmapnativetonapi) to convert a nativePixelMap object into a PixelMapnapi object and use [OH_PixelmapNative_Release()](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release) to release the OH_PixelmapNative object, include the following header file:
-```
+```C++
 #include <multimedia/image_framework/image/pixelmap_native.h>
 ```
 
-In addition, link the following dynamic libraries in the CMake script:
-```
+In addition, link the following dynamic library in the CMake script:
+```C++
 target_link_libraries(entry PUBLIC libpixelmap.so libpixelmap_ndk.z.so)
 ```
 
 To use system logging, include the following header file:
-```
+```C++
 #include <hilog/log.h>
 ```
 
-In addition, link the following dynamic libraries in the CMake script:
-```
+In addition, link the following dynamic library in the CMake script:
+```C++
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 ```
 
@@ -58,7 +58,8 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/capi-avmetadataextract
     ```
 
 2. Call [OH_AVMetadataExtractor_SetFDSoucre()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource) to set the file descriptor of a media resource.
-   > - If different AVMetadataExtractor or [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md) instances need to operate the same resource, the file descriptor needs to be opened for multiple times. Therefore, do not share a file descriptor.
+
+   If different AVMetadataExtractor or [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md) instances need to operate the same resource, the file descriptor needs to be opened for multiple times. Therefore, do not share a file descriptor.
     ```c
     #include "napi/native_api.h"
     #include <multimedia/player_framework/avmetadata_extractor.h>
@@ -81,7 +82,8 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/capi-avmetadataextract
     ```
 
 3. Call [OH_AVMetadataExtractor_FetchMetadata()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchmetadata) to obtain metadata.
-   > - First, call **OH_AVFormat_Create()** to create an OH_AVFormat object and obtain the metadata by accessing the key-value pairs of the object. When the object is no longer required, call **OH_AVFormat_Destroy** to release the object to prevent memory leakage. For details, see [OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md).
+
+   First, call **OH_AVFormat_Create()** to create an OH_AVFormat object and obtain the metadata by accessing the key-value pairs of the object. When the object is no longer required, call **OH_AVFormat_Destroy** to release the object to prevent memory leakage. For details, see [OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md).
    ```c
    // Obtain the metadata.
    avErrCode = OH_AVMetadataExtractor_FetchMetadata(mainExtractor, avMetadata);
@@ -97,7 +99,8 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/capi-avmetadataextract
     ```
 
 5. For an audio resource, in addition to obtaining metadata such as the title and duration of the audio resource through the OH_AVFormat object, you can retrieve the album cover by calling [OH_AVMetadataExtractor_FetchAlbumCover()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchalbumcover).
-   > - When the object is no longer required, call **OH_PixelmapNative_Release** to release the object. For details, see [Image_NativeModule](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release).
+
+   When the object is no longer required, call **OH_PixelmapNative_Release** to release the object. For details, see [Image_NativeModule](../../reference/apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_release).
     ```c
     #include <multimedia/image_framework/image/pixelmap_native.h>
     #include <multimedia/player_framework/avmetadata_extractor.h>
@@ -120,7 +123,7 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/capi-avmetadataextract
 Refer to the sample project to obtain audio metadata and album cover.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorNDK), and copy its resources to the corresponding directories.
-    ```
+    ```txt
     AVMetadataExtractorNDK
     entry/src/main/ets/
     └── pages

@@ -739,8 +739,7 @@ media.createVideoPlayer().then((video: media.VideoPlayer) => {
 
 createAudioRecorder(): AudioRecorder
 
-Creates an AudioRecorder instance to control audio recording.
-Only one AudioRecorder instance can be created per device.
+Creates an AudioRecorder instance to control audio recording. Only one AudioRecorder instance can be created per device.
 
 > **NOTE**
 >

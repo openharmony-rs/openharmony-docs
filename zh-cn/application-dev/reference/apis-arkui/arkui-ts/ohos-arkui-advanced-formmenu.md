@@ -18,7 +18,7 @@
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 该组件不支持在Wearable设备上使用。
 >
@@ -84,7 +84,7 @@ AddFormMenuItem(
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
-| 名称            | 类型           | 只读|可选| 说明   
+| 名称 | 类型 | 只读 |可选| 说明 |
 | --------------- | ----------------- | ---- | ---- | ---- |
 | options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions对象说明) | 否   | 是  | 包含设置MenuItem的各项信息。|
 

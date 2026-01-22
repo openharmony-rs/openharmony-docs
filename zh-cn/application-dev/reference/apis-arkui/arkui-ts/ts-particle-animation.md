@@ -680,6 +680,8 @@ type Vector2T\<T> = Vector2T\<T>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | -- | -- | ---- |
 | shape      | [DisturbanceFieldShape](#disturbancefieldshape12) | 否 | 是  | 粒子场的区域形状。<br/>默认值：DisturbanceFieldShape.RECT  |
@@ -693,6 +695,8 @@ type Vector2T\<T> = Vector2T\<T>
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ------ | ------ | -- | -- | ---- |

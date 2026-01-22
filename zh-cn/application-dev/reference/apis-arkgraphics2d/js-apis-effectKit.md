@@ -720,7 +720,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -809,7 +809,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius, effectKit.TileMode.DECAL);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -886,7 +886,7 @@ function ImageInvert(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.invert();
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -983,7 +983,7 @@ function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.setColorMatrix(colorMatrix);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1070,7 +1070,7 @@ function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.brightness(bright);
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1151,7 +1151,7 @@ function ImageGrayscale(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.grayscale();
       }
       // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })

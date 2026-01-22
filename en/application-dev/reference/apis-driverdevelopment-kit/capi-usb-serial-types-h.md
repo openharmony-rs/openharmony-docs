@@ -8,7 +8,7 @@
 
 ## Overview
 
-Provides the enumerated variables, structures, and macros used in USB SERIAL DDK APIs.
+Provides the enum variables, structures, and macros used in USB Serial DDK APIs.
 
 **File to include**: <usb_serial/usb_serial_types.h>
 
@@ -18,7 +18,7 @@ Provides the enumerated variables, structures, and macros used in USB SERIAL DDK
 
 **Since**: 18
 
-**Related module**: [SerialDdk](capi-serialddk.md)
+**Related module**: [USBSerialDDK](capi-serialddk.md)
 
 ## Summary
 
@@ -26,28 +26,28 @@ Provides the enumerated variables, structures, and macros used in USB SERIAL DDK
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | __attribute__((aligned(8))) UsbSerial_Params | Defines the USB serial port parameters for the USB SERIAL DDK.|
-| [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md) | UsbSerial_DeviceHandle | Defines the data structures for the USB serial port device (opaque).|
+| [UsbSerial_Params](capi-serialddk-usbserial-params.md) | \_\_attribute\_\_((aligned(8))) UsbSerial_Params | Defines the USB serial port parameters for the USB Serial DDK.|
+| [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md) | UsbSerial_Device | Defines the data structures for the USB serial port device (opaque).|
 
 ### Enums
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [UsbSerial_DdkRetCode](#usbserial_ddkretcode) | UsbSerial_DdkRetCode | Defines the return codes used by the USB SERIAL DDK.|
-| [UsbSerial_FlowControl](#usbserial_flowcontrol) | UsbSerial_FlowControl | Defines the flow control mode for the USB SERIAL DDK.|
-| [UsbSerial_Parity](#usbserial_parity) | UsbSerial_Parity | Defines the enums of the parity parameter used by the USB SERIAL DDK.|
+| [UsbSerial_DdkRetCode](#usbserial_ddkretcode) | UsbSerial_DdkRetCode | Defines the return codes used by the USB Serial DDK.|
+| [UsbSerial_FlowControl](#usbserial_flowcontrol) | UsbSerial_FlowControl | Defines the flow control mode for the USB Serial DDK.|
+| [UsbSerial_Parity](#usbserial_parity) | UsbSerial_Parity | Defines the enums of the parity parameter used by the USB Serial DDK.|
 
 ## Enum Description
 
 ### UsbSerial_DdkRetCode
 
-```
+```c
 enum UsbSerial_DdkRetCode
 ```
 
 **Description**
 
-Defines the return codes used by the USB SERIAL DDK.
+Defines the return codes used by the USB Serial DDK.
 
 **Since**: 18
 
@@ -65,13 +65,13 @@ Defines the return codes used by the USB SERIAL DDK.
 
 ### UsbSerial_FlowControl
 
-```
+```c
 enum UsbSerial_FlowControl
 ```
 
 **Description**
 
-Defines the flow control mode for the USB SERIAL DDK.
+Defines the flow control mode for the USB Serial DDK.
 
 **Since**: 18
 
@@ -83,13 +83,13 @@ Defines the flow control mode for the USB SERIAL DDK.
 
 ### UsbSerial_Parity
 
-```
+```c
 enum UsbSerial_Parity
 ```
 
 **Description**
 
-Defines the enums of the parity parameter used by the USB SERIAL DDK.
+Defines the enums of the parity parameter used by the USB Serial DDK.
 
 **Since**: 18
 

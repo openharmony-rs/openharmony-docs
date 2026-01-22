@@ -24,7 +24,7 @@
 
 以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考[AccessibilityCapiSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)。对接完成后，在开启无障碍功能时，可使XComponent中的三方框架绘制组件接入，实现无障碍交互。
 
-1. 按照自定义渲染（XComponent）的[使用OH_ArkUI_SurfaceHolder管理Surface生命周期](napi-xcomponent-guidelines.md#使用oh_arkui_surfaceholder管理surface生命周期)场景创建前置工程。
+1. 按照自定义渲染（XComponent）的[使用OH_ArkUI_SurfaceHolder管理Surface生命周期](napi-xcomponent-guidelines.md#管理xcomponent持有surface的生命周期)场景创建前置工程。
 
 2. 获得无障碍接入provider并注册回调函数（以多实例场景为例）。
 
@@ -39,8 +39,7 @@
    // 完整实现请参考AccessibilityCapiSample。
    #include "AccessibilityManager.h"
    
-   // ···
-   // [StartExclude abilitycap_six_start]
+   // ...
    AccessibilityManager::AccessibilityManager()
    {
    //    多实例场景
@@ -79,7 +78,7 @@
        g_provider = provider;
    }
    
-   // ···
+   // ...
    ```
 
 3. 三方框架需要实现如下回调函数。
@@ -112,6 +111,7 @@
            if (!rootNode) {
                return OH_NATIVEXCOMPONENT_RESULT_FAILED;
            }
+           // 设置根节点信息
            OH_ArkUI_AccessibilityElementInfoSetElementId(rootNode, 0);
            OH_ArkUI_AccessibilityElementInfoSetParentId(rootNode, parentOfRoot);
            FakeWidget::Instance().fillAccessibilityElement(rootNode);
@@ -122,6 +122,7 @@
            rect.rightBottomX = NUMBER_THIRD;
            rect.rightBottomY = NUMBER_THIRD;
            ret = OH_ArkUI_AccessibilityElementInfoSetScreenRect(rootNode, &rect);
+           // 设置根节点不可被无障碍辅助服务所识别。
            OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
            auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
            int64_t childNodes[1024];
@@ -134,8 +135,10 @@
                int elementId = i + 1;
                childNodes[i] = elementId;
                auto child = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+               // 设置子节点信息。
                OH_ArkUI_AccessibilityElementInfoSetElementId(child, elementId);
                OH_ArkUI_AccessibilityElementInfoSetParentId(child, 0);
+               // 设置当前组件可被无障碍辅助服务所识别。
                OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(child, "yes");
                objects[i]->fillAccessibilityElement(child);
    
@@ -234,6 +237,7 @@
        ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId,
        ArkUI_AccessibilityElementInfo *elementInfo)
    {
+       // 查找下一个可聚焦的无障碍节点，三方框架需要在该方法中实现自己的查找策略，以下逻辑仅为示意过程。
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "FindNextFocusAccessibilityNode instanceId %{public}s "
                     "elementId: %{public}ld, requestId: %{public}d, direction: %{public}d",
@@ -331,16 +335,18 @@
        if (elementInfo == nullptr) {
            return;
        }
+       // 设置事件类型
        OH_ArkUI_AccessibilityEventSetEventType(eventInfo, eventType);
-   
+       // 设置事件对应的元素信息
        OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
        
        if (eventType == ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ANNOUNCE_FOR_ACCESSIBILITY && announcedText.size() > 0) {
+           // 给无障碍节点设置优先播报的无障碍文本
            OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(eventInfo, announcedText.data());
        }
    }
    
-   // ···
+   // ...
    
    void AccessibilityManager::SendAccessibilityAsyncEvent(ArkUI_AccessibilityElementInfo *elementInfo,
                                                           ArkUI_AccessibilityEventType eventType,
@@ -356,32 +362,36 @@
        // 3. 调用接口发送事件给OH侧
        OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
    }
-   // [EndExclude abilitycap_one_start]
-   // ···
+   // ...
    
    int32_t AccessibilityManager::ExecuteAccessibilityAction(const char* instanceId, int64_t elementId,
        ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
    {
+       // 三方框架需要实现执行无障碍节点行为的逻辑。
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "ExecuteAccessibilityAction instanceId %{public}s elementId: %{public}ld, "
                     "action: %{public}d, requestId: %{public}d",
                     instanceId, elementId, action, requestId);
        auto object = FakeWidget::Instance().GetChild(elementId);
+       // 传入的无障碍节点对象可能为空，需要做非空判断。
        if (!object) {
            return 0;
        }
+       // 获取无障碍节点element。
        auto announcedText = object->GetAnnouncedForAccessibility();
        auto element = OH_ArkUI_CreateAccessibilityElementInfo();
        OH_ArkUI_AccessibilityElementInfoSetElementId(element, elementId);
        const char *actionKey = "some_key";
        char *actionValue = nullptr;
        OH_ArkUI_FindAccessibilityActionArgumentByKey(actionArguments, actionKey, &actionValue);
+       // 根据action类型执行对应的行为。
        switch (action) {
            case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
                if (object) {
                    object->OnClick();
                    object->fillAccessibilityElement(element);
                }
+               // 向无障碍服务发送指定事件。
                AccessibilityManager::SendAccessibilityAsyncEvent(element,
                    ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED, announcedText);
                break;

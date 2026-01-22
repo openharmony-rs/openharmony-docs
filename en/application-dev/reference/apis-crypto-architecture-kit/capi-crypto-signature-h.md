@@ -106,7 +106,7 @@ Creates a **Verify** instance for signature verification.<br> Note: The created 
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer to the algorithm used to generate the **Verify** instance.<br> For example, **RSA1024\|PKCS1\|SHA256**.| | |
+| const char *algoName | Pointer to the algorithm used to generate the **Verify** instance.<br> For example, **RSA1024\|PKCS1\|SHA256**.|
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) **verify | Pointer to the **Verify** instance created.|
 
 **Returns**
@@ -348,7 +348,7 @@ Creates a signature instance based on the given algorithm name.<br> Note: The cr
 
 | Name| Description|
 | -- | -- |
-| const char *algoName | Pointer to the algorithm used to generate the signature instance.<br> For example, **RSA\|PKCS1\|SHA384** or **ECC\|SHA384**.| | | |
+| const char *algoName | Pointer to the algorithm used to generate the signature instance.<br> For example, **RSA\|PKCS1\|SHA384** or **ECC\|SHA384**.|
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) **sign | Pointer to the signature instance.|
 
 **Returns**

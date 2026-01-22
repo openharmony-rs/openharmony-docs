@@ -504,7 +504,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
-| 17700065 | The ability specified by want in the ShortcutInfo struct cannot be started.  |
+| 17700065 | The specified shortcut want in shortcut info is not supported to be started.  |
 
 **Example**
 

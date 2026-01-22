@@ -343,7 +343,7 @@ struct DragControllerPage {
       Button('多对象dragAction customBuilder拖拽').onTouch((event?: TouchEvent) => {
         if (event) {
           if (event.type == TouchType.Down) {
-            console.info("muti drag Down by listener");
+            console.info("multi drag Down by listener");
             this.customBuilders.push(() => { this.DraggingBuilder() });
             this.customBuilders.push(() => { this.DraggingBuilder() });
             this.customBuilders.push(() => { this.DraggingBuilder() });

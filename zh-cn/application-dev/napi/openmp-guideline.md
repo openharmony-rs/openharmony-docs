@@ -10,10 +10,10 @@ OpenHarmony NDK中提供了OpenMP的动态库和静态库文件，支持开发�
 
 ## 开发步骤
 
-### 1. 创建Native C++工程
+### 创建Native C++工程
 [创建NDK工程](./create-with-ndk.md)
 
-### 2. 添加依赖
+### 添加依赖
 
 OpenMP库的引入可以通过静态链接和动态链接两种方式实现。
 
@@ -64,7 +64,7 @@ target_link_libraries(entry PUBLIC libomp.so libace_napi.z.so libhilog_ndk.z.so)
 
 （3）打开Sdk安装目录，在“{Sdk安装目录}\{版本号}\openharmony\native\llvm\lib\aarch64-linux-ohos”目录下找到libomp.so动态库文件，并将其拷贝到工程目录entry/libs/arm64-v8a文件夹。
 
-### 3. 修改源文件
+### 修改源文件
 
 （1）修改entry/src/main/cpp/napi_init.cpp，引入omp.h头文件，并添加OmpTest函数。
 
@@ -150,7 +150,7 @@ struct Index {
 }
 ```
 
-### 4. 运行并校验结果
+### 运行并校验结果
 
 运行前请检查设备连接并配置好[Signature](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-signing-V5)信息。直接点击右上角运行按钮，应用启动后设备进入“Hello OpenMP”界面，点击“Hello OpenMP”标签，打开DevEco Studio下方“Log”查看页面，即可看到并行打印的“Hello OpenMP！”消息。
 

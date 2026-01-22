@@ -24,7 +24,7 @@ For details about the matching rules, see [Matching Rules of Explicit Want and I
 
 1. Configure the [querySchemes](../quick-start/module-configuration-file.md) field in the **module.json5** file of the entry module to declare the URL schemes.
 
-    ```json
+    ```json5
     {
       "module": {
         //...
@@ -56,7 +56,7 @@ For details about the matching rules, see [Matching Rules of Explicit Want and I
 ### Procedure for the Target Application
 Configure the [uris](../quick-start/module-configuration-file.md#skills) field in the **module.json5** file.
 
-```json
+```json5
 {
   "module": {
     //...

@@ -48,6 +48,7 @@ target_link_libraries(entry PUBLIC libavmetadata_extractor.so libnative_media_co
 ```
 
 You can use the APIs related to video frame retrieval by including the header files [avimage_generator.h](../../reference/apis-media-kit/capi-avimage-generator-h.md), [avimage_generator_base.h](../../reference/apis-media-kit/capi-avimage-generator-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md).
+
 Read [AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md) for the API reference.
 
 1. Call [OH_AVImageGenerator_Create()](../../reference/apis-media-kit/capi-avimage-generator-h.md#oh_avimagegenerator_create) to create an instance.

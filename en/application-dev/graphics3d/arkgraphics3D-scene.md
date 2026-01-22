@@ -86,7 +86,7 @@ A glTF model can contain key elements of a 3D scene, including the light, camera
 
 ## Creating and Managing a Camera
 
-As an important part of a 3D scene, a camera determines the projection process from the 3D scene to a 2D image. Key camera parameters, such as the near plane, far plane, and FoV, also pose an important impact on 3D rendering. You can set these camera parameters to control the rendering process, thereby achieving the desired rendering effect.
+As an important part of a 3D scene, a camera determines the projection process from the 3D scene to a 2D image. Key camera parameters, such as the near plane, far plane, and field of view (FoV), also pose an important impact on 3D rendering. You can set these camera parameters to control the rendering process, thereby achieving the desired rendering effect.
 
 ArkGraphics 3D provides flexible camera APIs, which allow you to dynamically create, configure, and control cameras as required.
 
@@ -121,7 +121,7 @@ ArkGraphics 3D provides flexible camera APIs, which allow you to dynamically cre
 
   3. Create a camera and configure camera parameters.
 
-     Call **SceneResourceFactory.createCamera()** to create a camera, and configure its enabled state, position, Field of View (FOV), and other parameters. The camera position affects the viewing distance of the scene, whereas the FOV determines the range of the scene visible in the view.
+     Call **SceneResourceFactory.createCamera()** to create a camera, and configure its enabled state, position, FoV, and other parameters. The camera position affects the viewing distance of the scene, whereas the FoV determines the range of the scene visible in the view.
 
      <!-- @[cam_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
      
@@ -165,7 +165,7 @@ ArkGraphics 3D provides flexible camera APIs, which allow you to dynamically cre
 
   5. Interact with the camera.
 
-     You can achieve interactive view control by setting the camera's position, rotation, scale, FOV, and other parameters. The following uses Z-axis control as an example, with similar logic for the X and Y axes.
+     You can achieve interactive view control by setting the camera's position, rotation, scale, FoV, and other parameters. The following uses Z-axis control as an example, with similar logic for the X and Y axes.
 
      <!-- @[cam_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
      

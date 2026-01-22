@@ -80,10 +80,27 @@
      hilog.info(0x0000, 'testTag', 'Network available, NetId is ' + data.netId);
      // ...
    });
-   
+     
    // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户
    conn.on('netUnavailable', (data: void) => {
      hilog.info(0x0000, 'testTag', 'Network unavailable, data is ' + JSON.stringify(data));
+     // ...
+   });
+   // 订阅网络能力变化事件，如果当前指定网络的能力发生变化，通过on_netCapabilitiesChange通知用户
+   conn.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netCapabilitiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // 订阅网络连接信息变化事件，如果当前指定网络的连接信息发生变化，通过on_netConnectionPropertiesChange通知用户
+   conn.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netConnectionPropertiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // 订阅网络丢失事件，如果当前处于连接状态的指定网络断开，通过on_netLost通知用户
+   conn.on('netLost', (data: connection.NetHandle) => {
+     hilog.info(0x0000, 'testTag', 'Network netLost, data is ' + JSON.stringify(data));
      // ...
    });
    ```

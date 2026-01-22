@@ -49,7 +49,7 @@ Declares the HID DDK functions for accessing an input device from the host.
 
 ### OH_Hid_CreateDevice()
 
-```
+```c
 int32_t OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEventProperties)
 ```
 
@@ -77,7 +77,7 @@ Creates a device.
 
 ### OH_Hid_EmitEvent()
 
-```
+```c
 int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t length)
 ```
 
@@ -102,11 +102,11 @@ Sends an event list to a device.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The API call is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode): The hid_ddk service connection fails or the caller is not the device creator.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The parameter check fails. Possible causes: 1. The device ID is less than 0.<br>         2. The length of the input parameter length exceeds 7 characters. 3. The input parameter items is a null pointer.<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The input device is a null pointer.<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode): The corresponding device does not exist.|
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The API call is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode): The hid_ddk service connection fails or the caller is not the device creator.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The parameter check fails. Possible causes: 1. The device ID is less than 0.<br>         2. The length of the input parameter **length** exceeds 7 characters. 3. The input parameter **items** is a null pointer.<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The input device is a null pointer.|
 
 ### OH_Hid_DestroyDevice()
 
-```
+```c
 int32_t OH_Hid_DestroyDevice(int32_t deviceId)
 ```
 
@@ -133,7 +133,7 @@ Destroys a device.
 
 ### OH_Hid_Init()
 
-```
+```c
 int32_t OH_Hid_Init(void)
 ```
 
@@ -153,7 +153,7 @@ Initializes an HID DDK.
 
 ### OH_Hid_Release()
 
-```
+```c
 int32_t OH_Hid_Release(void)
 ```
 
@@ -173,7 +173,7 @@ Releases an HID DDK.
 
 ### OH_Hid_Open()
 
-```
+```c
 int32_t OH_Hid_Open(uint64_t deviceId, uint8_t interfaceIndex, Hid_DeviceHandle **dev)
 ```
 
@@ -198,11 +198,11 @@ Opens the device specified by **deviceId** and **interfaceIndex**.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Memory allocation for the device fails.<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The I/O operation fails.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The input **dev** is empty.<br>         [HID_DDK_DEVICE_NOT_FOUND](capi-hid-ddk-types-h.md#hid_ddkerrcode): No device is found based on **deviceId** and **interfaceIndex**.|
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Memory allocation for the device fails.<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The I/O operation fails.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The **dev** parameter is empty.<br>         [HID_DDK_DEVICE_NOT_FOUND](capi-hid-ddk-types-h.md#hid_ddkerrcode): No device is found based on **deviceId** and **interfaceIndex**.|
 
 ### OH_Hid_Close()
 
-```
+```c
 int32_t OH_Hid_Close(Hid_DeviceHandle **dev)
 ```
 
@@ -225,11 +225,11 @@ Closes an HID device.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The I/O operation fails.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The dev parameter is empty.|
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The I/O operation fails.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The **dev** parameter is empty.|
 
 ### OH_Hid_Write()
 
-```
+```c
 int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint32_t *bytesWritten)
 ```
 
@@ -259,7 +259,7 @@ Writes reports to an HID device.
 
 ### OH_Hid_ReadTimeout()
 
-```
+```c
 int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, int timeout, uint32_t *bytesRead)
 ```
 
@@ -290,7 +290,7 @@ Reads reports from the HID device within the specified timeout interval.
 
 ### OH_Hid_Read()
 
-```
+```c
 int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint32_t *bytesRead)
 ```
 
@@ -320,7 +320,7 @@ Reads reports from the HID device. The blocking mode (that is, blocking remains 
 
 ### OH_Hid_SetNonBlocking()
 
-```
+```c
 int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonBlock)
 ```
 
@@ -348,7 +348,7 @@ Sets the device read mode to non-blocking mode.
 
 ### OH_Hid_GetRawInfo()
 
-```
+```c
 int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo)
 ```
 
@@ -376,7 +376,7 @@ Obtains the original device information.
 
 ### OH_Hid_GetRawName()
 
-```
+```c
 int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize)
 ```
 
@@ -405,7 +405,7 @@ Obtains the original device name.
 
 ### OH_Hid_GetPhysicalAddress()
 
-```
+```c
 int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bufSize)
 ```
 
@@ -434,7 +434,7 @@ Obtains the physical address of the HID device.
 
 ### OH_Hid_GetRawUniqueId()
 
-```
+```c
 int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize)
 ```
 
@@ -463,7 +463,7 @@ Obtains the original unique identifier of a device.
 
 ### OH_Hid_SendReport()
 
-```
+```c
 int32_t OH_Hid_SendReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, const uint8_t *data, uint32_t length)
 ```
 
@@ -493,7 +493,7 @@ Sends reports to the HID device.
 
 ### OH_Hid_GetReport()
 
-```
+```c
 int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t bufSize)
 ```
 
@@ -523,7 +523,7 @@ Obtains reports from the HID device.
 
 ### OH_Hid_GetReportDescriptor()
 
-```
+```c
 int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t bufSize, uint32_t *bytesRead)
 ```
 

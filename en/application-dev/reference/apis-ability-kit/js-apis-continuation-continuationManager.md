@@ -1127,7 +1127,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 unregister(token: number, callback: AsyncCallback\<void>): void
 
-Unregisters the continuation management service. This API uses an asynchronous callback to return the result.
+Unregisters the continuation management service by passing the token obtained during registration. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -1161,7 +1161,7 @@ Unregisters the continuation management service. This API uses an asynchronous c
 
 unregister(token: number): Promise\<void>
 
-Unregisters the continuation management service. This API uses a promise to return the result.
+Unregisters the continuation management service by passing the token obtained during registration. This API uses a promise to return the result.
 
 > **NOTE**
 > 
@@ -1200,7 +1200,7 @@ Unregisters the continuation management service. This API uses a promise to retu
 
 unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
-Unregisters the continuation management service. This API uses an asynchronous callback to return the result.
+Unregisters the continuation management service by passing the token obtained during registration. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > 
@@ -1253,7 +1253,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 unregisterContinuation(token: number): Promise\<void>
 
-Unregisters the continuation management service. This API uses a promise to return the result.
+Unregisters the continuation management service by passing the token obtained during registration. This API uses a promise to return the result.
 
 > **NOTE**
 > 

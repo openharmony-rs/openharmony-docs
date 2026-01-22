@@ -6,11 +6,11 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-To enhance the capability of the state management framework to store global UI status variables of applications, you are advised to use AppStorageV2.
+To enhance the capability of the state management framework to share the global UI state variables of applications, you are advised to use AppStorageV2.
 
 AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across abilities.
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [AppStorageV2 API reference](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2).
+Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [AppStorageV2-API](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2).
 
 >**NOTE**
 >
@@ -27,7 +27,7 @@ AppStorageV2 supports state sharing among multiple UIAbility instances in the [m
 
 ## How to Use
 
-- **connect**: creates or obtains stored data.
+- **connect**: creates or obtains the stored data.
 
 >**NOTE**
 >
@@ -56,9 +56,9 @@ For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Ma
 
 1. Only the class type is supported.
 
-2. This singleton must be used together with the UI thread only. Other threads, for example, @Sendable decorator is not supported.
+2. Must be used together with UI (UI thread) and cannot be used in other threads. For example, [@Sendable](../../arkts-utils/arkts-sendable.md) is not supported.
 
-3. Types such as **collections.Set** and **collections.Map** are not supported.
+3. The [collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md) and [collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md) types are not supported.
 
 4. Non-built-in types, such as [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md), NativePointer, and [ArrayList](../../reference/apis-arkts/js-apis-arraylist.md), are not supported.
 
@@ -70,13 +70,15 @@ For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Ma
 
 AppStorageV2 provides the **connect** API to enable data modification and synchronization. When modified data is decorated with @Trace, changes automatically trigger UI re-rendering. Note that the **remove** API only deletes data from AppStorageV2 without affecting already instantiated component data.
 
-```ts
+<!-- @[appStorageV2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets) -->    
+
+``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 class Message {
-  @Trace userID: number;
-  userName: string;
+  @Trace public userID: number;
+  public userName: string;
 
   constructor(userID?: number, userName?: string) {
     this.userID = userID ?? 1;
@@ -161,25 +163,28 @@ struct Child {
 ### Storing Data Between Two Pages
 
 Data page
-```ts
+<!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->    
+
+``` TypeScript
 // Data center.
 // Sample.ets
 @ObservedV2
 export class Sample {
-  @Trace p1: number = 0;
-  p2: number = 10;
+  @Trace public p1: number = 0;
+  public p2: number = 10;
 }
 ```
 
 Page 1
-```ts
-// Page1.ets
+<!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->    
+
+``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
-import { Sample } from '../Sample';
+import { Sample } from './Sample';
 
 @Entry
 @ComponentV2
-struct Page1 {
+struct PageOne {
   // Create a key-value pair with Sample as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
   @Local prop: Sample = AppStorageV2.connect(Sample, () => new Sample())!;
   pageStack: NavPathStack = new NavPathStack();
@@ -187,30 +192,30 @@ struct Page1 {
   build() {
     Navigation(this.pageStack) {
       Column() {
-        Button('Go to page2')
+        Button('Go to pageTwo')
           .onClick(() => {
-            this.pageStack.pushPathByName('Page2', null);
+            this.pageStack.pushPathByName('PageTwo', null);
           })
 
-        Button('Page1 connect the key Sample')
+        Button('PageOne connect the key Sample')
           .onClick(() => {
             // Create a key-value pair with Sample as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
             this.prop = AppStorageV2.connect(Sample, 'Sample', () => new Sample())!;
           })
 
-        Button('Page1 remove the key Sample')
+        Button('PageOne remove the key Sample')
           .onClick(() => {
             // After deletion from AppStorageV2, prop will no longer be associated with the value whose key is Sample.
             AppStorageV2.remove(Sample);
           })
 
-        Text(`Page1 add 1 to prop.p1: ${this.prop.p1}`)
+        Text(`PageOne add 1 to prop.p1: ${this.prop.p1}`)
           .fontSize(30)
           .onClick(() => {
             this.prop.p1++;
           })
 
-        Text(`Page1 add 1 to prop.p2: ${this.prop.p2}`)
+        Text(`PageOne add 1 to prop.p2: ${this.prop.p2}`)
           .fontSize(30)
           .onClick(() => {
             // The page is not re-rendered, but the value of p2 is changed.
@@ -227,18 +232,19 @@ struct Page1 {
 ```
 
 Page 2
-```ts
-// Page2.ets
+<!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->    
+
+``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
-import { Sample } from '../Sample';
+import { Sample } from './Sample';
 
 @Builder
-export function Page2Builder() {
-  Page2()
+export function PageTwoBuilder() {
+  PageTwo()
 }
-
+@Entry
 @ComponentV2
-struct Page2 {
+struct PageTwo {
   // Create a key-value pair with Sample as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
   @Local prop: Sample = AppStorageV2.connect(Sample, () => new Sample())!;
   pathStack: NavPathStack = new NavPathStack();
@@ -246,19 +252,19 @@ struct Page2 {
   build() {
     NavDestination() {
       Column() {
-        Button('Page2 connect the key Sample1')
+        Button('PageTwo connect the key Sample1')
           .onClick(() => {
             // Create a key-value pair with Sample1 as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
             this.prop = AppStorageV2.connect(Sample, 'Sample1', () => new Sample())!;
           })
 
-        Text(`Page2 add 1 to prop.p1: ${this.prop.p1}`)
+        Text(`PageTwo add 1 to prop.p1: ${this.prop.p1}`)
           .fontSize(30)
           .onClick(() => {
             this.prop.p1++;
           })
 
-        Text(`Page2 add 1 to prop.p2: ${this.prop.p2}`)
+        Text(`PageTwo add 1 to prop.p2: ${this.prop.p2}`)
           .fontSize(30)
           .onClick(() => {
             // The page is not re-rendered, but the value of p2 is changed, which is performed after re-initialization.
@@ -276,14 +282,16 @@ struct Page2 {
   }
 }
 ```
-When using **Navigation**, create a **route_map.json** file as shown below in the **src/main/resources/base/profile** directory, replacing the value of **pageSourceFile** with the actual path to **Page2**. Then, add **"routerMap": "$profile: route_map"** to the **module.json5** file.
+
+When using **Navigation**, create a **route_map.json** file as shown below in the **src/main/resources/base/profile** directory, replacing the value of **pageSourceFile** with the actual path to **PageTwo**. Then, add **"routerMap": "$profile: route_map"** to the **module.json5** file.
+
 ```json
 {
   "routerMap": [
     {
-      "name": "Page2",
-      "pageSourceFile": "src/main/ets/pages/Page2.ets",
-      "buildFunction": "Page2Builder",
+      "name": "PageTwo",
+      "pageSourceFile": "src/main/ets/pages/PageTwo.ets",
+      "buildFunction": "PageTwoBuilder",
       "data": {
         "description" : "AppStorageV2 example"
       }

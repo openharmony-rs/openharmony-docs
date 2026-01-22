@@ -16,7 +16,9 @@ For details about the supported decoding capabilities, see [AVCodec Supported Fo
 **When to Use**
 
 Asynchronous mode is generally recommended for most use cases. For details, see [Audio Decoding](audio-decoding.md). Synchronous mode can be used if you need to actively request buffers for frame delivery.
+
 Decoding an audio/video file into a PCM stream typically involves the following steps: [media data demultiplexing](audio-video-demuxer.md) -> audio decoding.
+
 This guide outlines the audio decoding process: inputting audio frames and decoding them into PCM streams.
 
 ## Development Guidelines

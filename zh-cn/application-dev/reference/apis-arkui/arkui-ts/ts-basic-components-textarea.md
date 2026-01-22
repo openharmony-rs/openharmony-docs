@@ -2443,7 +2443,7 @@ struct TextAreaExample {
 }
 ```
 
-![textAreaSetTextSelection](figures/textAreaSetTextSelection.gif)
+![textAreaSetTextSelection](figures/textAreaSetTextSelection.png)
 
 ### 示例19（设置文本描边）
 

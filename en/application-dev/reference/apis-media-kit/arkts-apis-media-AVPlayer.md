@@ -6,12 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The initial APIs of this interface are supported since API version 9.
-
 AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9) to create an AVPlayer instance.
+
+When using the AVPlayer instance, you are advised to register the following callbacks to proactively obtain status changes: [on('stateChange')](#onstatechange9): listens for AVPlayer state changes. [on('error')](#onerror9): listens for error events.
 
 Applications must properly manage AVPlayer instances according to their specific needs, creating and freeing them when necessary. Holding too many AVPlayer instances can lead to high memory usage, and in some cases, the system might terminate applications to free up resources.
 
@@ -19,10 +16,8 @@ For details about the audio and video playback demo, see [Audio Playback](../../
 
 > **NOTE**
 >
-> When using the AVPlayer instance, you are advised to register the following callbacks to proactively obtain status changes:
->
-> - [on('stateChange')](#onstatechange9): listens for AVPlayer state changes.
-> - [on('error')](#onerror9): listens for error events.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 9.
 
 ## Modules to Import
 
@@ -1381,7 +1376,7 @@ Checks whether the media source supports [seek](#seek9) in SEEK_CONTINUOUS mode 
 
 | Type          | Description                                      |
 | -------------- | ------------------------------------------ |
-| boolean | Check result for the support of the seek operation in SEEK_CONTINUOUS mode. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of the seek operation in SEEK_CONTINUOUS mode. **true** if supported, **false** otherwise. **true** if supported, **false** otherwise.|
 
 **Example**
 

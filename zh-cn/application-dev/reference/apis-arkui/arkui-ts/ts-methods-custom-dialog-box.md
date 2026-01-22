@@ -877,7 +877,7 @@ struct CustomDialogUser {
 
 ### 示例8（不使用keyboardAvoidDistance调整弹窗与软键盘的间距）
 
-该示例通过监听键盘变化，调整布局[margin](ts-universal-attributes-size.md#margin)的[bottom](ts-universal-attributes-size.md#padding)，实现与使用[keyboardAvoidDistance](#customdialogcontrolleroptions对象说明)调整弹窗与软键盘的间距一样的效果。
+该示例通过监听键盘变化，调整布局[margin](ts-universal-attributes-size.md#margin)的[bottom](ts-types.md#margin)，实现与使用[keyboardAvoidDistance](#customdialogcontrolleroptions对象说明)调整弹窗与软键盘的间距一样的效果。
 
 从API version 15开始，在CustomDialogControllerOptions中新增了keyboardAvoidDistance属性。
 

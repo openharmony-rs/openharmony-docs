@@ -66,7 +66,7 @@ addWatcher(watcher: Watcher): AppEventPackageHolder
 >
 > 如果选择在子线程中调用addWatcher，需要确保该子线程在整个接口使用周期内不会被销毁，以免影响接口的正常工作。
 >
-> 可参考[多线程并发概述](../../arkts-utils/multi-thread-concurrency-overview.md)，以实现在子线程中调用接口。
+> 可参考[Worker简介](../../arkts-utils/worker-introduction.md)，以实现在子线程中调用接口。
 >
 > 订阅接口addWatcher传入的名称name是唯一的，相同的name，后一次调用会覆盖前一次的订阅。
 
