@@ -51,7 +51,7 @@ Invoked when a surface is created.
 | Name                               | Description|
 |------------------------------------| -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | Pointer to an [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance.|
-| void* window                       | Handle to the **NativeWindow** instance.<br>The **NativeWindow** instance obtained through the **XComponent** lifecycle callback is held by the system side with a reference count. After the **OnSurfaceDestroyed** callback is triggered, the reference count is decreased by one. After the reference count reaches zero, the **NativeWindow** instance will be released.|
+| void* window                       | Handle to the **NativeWindow** instance.|
 
 ### OnSurfaceChanged()
 
@@ -71,7 +71,7 @@ Invoked when the surface changes.
 | Name| Description|
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | Pointer to an [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance.|
-|  void* window | Handle to the **NativeWindow** instance.|
+|  void* window | Handle to the **NativeWindow** instance.<br>The **NativeWindow** instance obtained through the **XComponent** lifecycle callback is held by the system side with a reference count. After the **OnSurfaceDestroyed** callback is triggered, the reference count is decreased by one. After the reference count reaches zero, the **NativeWindow** instance will be released.|
 
 ### OnSurfaceDestroyed()
 
