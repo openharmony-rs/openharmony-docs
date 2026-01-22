@@ -10,52 +10,48 @@
 
 The **XComponent** is a rendering component that can be used for EGL/OpenGL ES and media data output. It uses the held [NativeWindow](../graphics/native-window-guidelines.md) to render graphics and is typically employed to meet complex custom rendering needs, such as displaying camera preview streams and rendering game graphics. You can specify different rendering methods through the **type** field, which are [XComponentType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#xcomponenttype10).SURFACE and XComponentType.TEXTURE. For the SURFACE type, you display the custom drawing content on the screen separately. For the TEXTURE type, you combine custom drawing content with the content of the **XComponent** and display it on the screen.
 
-The **XComponent** provides a surface for custom drawing. To draw custom content on this Surface, you can use the [NativeWindow](../graphics/native-window-guidelines.md) API to allocate and submit graphics buffers. This process pushes your custom content to the surface, and the **XComponent** then integrates the surface into the UI and displays the result. By default, the surface matches the size and position of the **XComponent**. Yet, you can adjust its position and size using the [setXComponentSurfaceRect](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12) API if needed. The **XComponent** is responsible for creating the surface and notifying the application of surface-related information through callbacks. Applications can set the properties of the surface through dedicated APIs. It should be noted that the component itself has no awareness of the actual drawn content and does not provide direct rendering APIs.
+You can compare the XComponent component to a canvas. On the canvas, you can use various rendering technologies (such as OpenGL and Vulkan) to draw complex graphics. The XComponent component manages the canvas, including its position, size, and interaction events.
 
-The **XComponent** is mainly used in three scenarios.
+Currently, the **XComponent** component is mainly used in the following two scenarios:
 
-| Scenario               | Description                                     | Use Case                                       |
-|--------------------------------------|-----------------------------------------------|------------------------------------------------|
-| [Managing the surface lifecycle with XComponentController](#managing-the-surface-lifecycle-with-xcomponentcontroller) | The **XComponentController** on the ArkTS side obtains the **SurfaceId**, while lifecycle callbacks, touch events, mouse events, key events, and other callbacks are triggered on the ArkTS side.| Media playback scenarios such as video playback and camera preview, where the **SurfaceId** needs to be obtained on the ArkTS side and passed to the corresponding API.|
-| [Managing the surface lifecycle with OH_ArkUI_SurfaceHolder](#managing-the-surface-lifecycle-with-oh_arkui_surfaceholder) | The **OH_ArkUI_SurfaceHolder** instance is created based on the **ArkUI_NodeHandle** corresponding to the **XComponent**; lifecycle callbacks, event callbacks, accessibility and variable frame rate callbacks are all triggered on the native side.|  <br>1. Scenarios with complex interaction logic sensitive to performance loss from frequent cross-language calls.<br>2. Scenarios requiring control over the timing of surface lifecycle triggers.|
-| [Managing the surface lifecycle with NativeXComponent](#managing-the-surface-lifecycle-with-nativexcomponent) | The native layer is responsible for obtaining the native **XComponent** instance and registering the lifecycle callbacks of the **XComponent** along with touch, mouse, and key event callbacks.| Similar to the scenario for [managing the surface lifecycle with OH_ArkUI_SurfaceHolder](#managing-the-surface-lifecycle-with-oh_arkui_surfaceholder), but with less rich interaction event APIs; improper use may cause stability issues. **OH_ArkUI_SurfaceHolder** APIs are recommended instead.|
+| Type    | Scenario                        |
+| ------------ | -------------------------------- |
+| High-performance rendering  | Game graphics, 3D graphics, complex animations, and more.  |
+| Media data processing| Camera preview, video playback, and image processing|
 
 ## Constraints
 
 If your custom drawn content includes transparent elements, they will blend with the content below the surface. For example, if your content is fully transparent, the background of the **XComponent** is black, and the surface maintains its default size and position, the final display will be a black area.
 
-## Managing the Surface Lifecycle with XComponentController
+## XComponent rendering and display principles
 
-This scenario involves obtaining the **SurfaceId** on the ArkTS side, with layout information, lifecycle callbacks, and event callbacks (such as touch, mouse, and key event callbacks) all triggered on the ArkTS side before being optionally passed to the native side for processing. The development mainly involves the following use cases:
-- Use the **SurfaceId** obtained on the ArkTS side to call the **OH_NativeWindow_CreateNativeWindowFromSurfaceId** API on the native side to create a **NativeWindow** instance.
-- Use the **NativeWindow** instance with EGL APIs to develop custom drawing content, and allocate and submit buffers to the graphics queue.
-- Obtain lifecycle and event information on the ArkTS side and pass it to the native side for processing.
+XComponent holds a surface. You can call APIs such as [NativeWindow](../graphics/native-window-guidelines.md) to allocate and submit a buffer to the graphics queue, and then transfer the self-drawn content to the surface. The main process is as follows:
+
+The application requests a buffer to obtain an idle frame. → The application produces frame data. → The application calls FlushBuffer to submit the frame data to the buffer queue. → The system rendering side obtains the frame by calling AcquireBuffer. → The frame is rendered to the screen. → The system rendering side calls ReleaseBuffer to release the frame.
+
+After the preceding process is complete, the self-drawn content of the application can be displayed in the surface area held by XComponent. XComponent integrates the surface into the UI, and the displayed content is the self-drawn content sent by the developer. By default, the surface matches the size and position of the **XComponent**. Yet, you can adjust its position and size using the [setXComponentSurfaceRect](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12) API if needed. The **XComponent** is responsible for creating the surface and notifying the application of surface-related information through callbacks. Applications can set the properties of the surface through dedicated APIs. It should be noted that the component itself has no awareness of the actual drawn content and does not provide direct rendering APIs.
 
 > **NOTE**
 >
-> 1. **NativeWindow** instances are cached in a dictionary on the native side. Their keys must be globally unique, and they must be promptly removed from the dictionary when the corresponding **XComponent** component is destroyed.
->
-> 2. For the **XComponent** components of the TEXTURE or SURFACE type created using [typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12), due to their lifecycle differences from declarative components, the buffer size remains unset after component creation. Therefore, before starting to draw content, call the [OH_NativeWindow_NativeWindowHandleOpt](../reference/apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt) API to set the buffer size.
-> 
-> 3. During development with multiple **XComponent** components, make sure the keys used to cache resources on the Native side are unique. The two recommended key formats are as follows: **Id** + random number; **surfaceId**.
-> 
-> 4. A valid surface ID can be obtained only after the onSurfaceCreated callback is triggered.
+> The RequestBuffer and FlushBuffer operations mentioned in the main process are generally encapsulated by related APIs (such as the camera module, player module, and OpenGL APIs) in specific scenarios. Therefore, you only need to call these APIs as required, and do not need to directly operate the buffer queue.
 
-**Preview**
+## Creating an XComponent and Managing the Surface Lifecycle
 
-| Home page                                  | Star drawn                                        | Color changed                                               |
-|--------------------------------------|-----------------------------------------------|-----------------------------------------------------|
-| ![main](figures/main.png) | ![draw star](figures/drawStar.png) | ![change color](figures/changeColor.png) |
+To meet various requirements of developers, XComponent provides multiple creation modes and surface lifecycle management modes. The following describes these modes.
 
->**NOTE**
->
->1. Install the HAP and open the application.
->
->2. Touch **Draw Star** at the bottom of the page. A star is drawn.
->
->3. Touch the XComponent area (gray area on the page) to change the color of the star.
+### Creating an XComponent
 
-**lifecycle Callbacks**
+Currently, ArkUI provides three methods for creating UI components: using ./state-management/arkts-declarative-ui-description.md, using ./arkts-user-defined-arktsNode-frameNode.md, and using ./ndk-build-ui-overview.md.
+
+In general UI development scenarios, you are advised to use ArkTS declarative UI description to create XComponent. For details about the scenarios where ArkTS custom component nodes and NDK APIs are used to create UI components, see the related descriptions of the two methods.
+
+### Managing the Lifecycle of the Surface Held by XComponent
+
+As mentioned in the ./state-management/arkts-declarative-ui-description.md rendering principle, XComponent can display the content drawn by the application only when it holds a surface. Therefore, it is important to understand how to obtain the lifecycle of the surface held by XComponent.
+
+You are advised to use either of the following methods to obtain the lifecycle of the surface held by XComponent: using [XComponentController](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller) to manage the surface lifecycle in ArkTS, or using [OH_ArkUI_SurfaceHolder](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) to manage the surface lifecycle in native code.
+
+If you need to use encapsulated APIs in ArkTS for function development (such as camera preview and video playback) or if you are not sensitive to cross-language performance loss, you are advised to use XComponentController in ArkTS to manage the surface lifecycle. The lifecycle is triggered as follows:
 
 - onSurfaceCreated
 
@@ -81,517 +77,11 @@ This scenario involves obtaining the **SurfaceId** on the ArkTS side, with layou
 
   ![OnSurfaceDestroyed](./figures/onSurfaceDestroyed1.png)
 
-**Available APIs**
+For complex interaction logic that requires cross-language development, or when you need to control the creation and destruction of surfaces to achieve optimal rendering performance or meet service requirements, you are advised to use OH_ArkUI_SurfaceHolder on the native side to manage the surface lifecycle. The lifecycle triggering conditions are as follows:
 
-XComponentController on the ArkTS side
+- OnSurfaceCreated   
 
-| API                                                      | Description                                                        |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| getXComponentSurfaceId(): string                             | Obtains the ID of the surface associated with the **XComponent**.                               |
-| onSurfaceCreated(surfaceId: string): void                    | Called when the surface held by the **XComponent** is created.                   |
-| onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void | Called when the size of the surface held by the **XComponent** changes (including the initial size change upon creation).|
-| onSurfaceDestroyed(surfaceId: string): void                  | Called when the surface held by the **XComponent** is destroyed.                   |
-
-Native side
-
-| API                                                      | Description                                                        |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| int32_t OH_NativeWindow_CreateNativeWindowFromSurfaceId (uint64_t surfaceId, OHNativeWindow **window ) | Creates an **OHNativeWindow** instance based on a surface ID.                       |
-| void OH_NativeWindow_DestroyNativeWindow (OHNativeWindow* window) | Decreases the reference count of an **OHNativeWindow** instance by 1 and when the reference count reaches 0, destroys the instance.|
-
-**How to Develop**
-
-The following figure shows the core development process.
-
-![Development process](figures/XComponent-development-process.png)
-
-The following uses the SURFACE type as an example to describe how to use the **XComponent** to pass in **SurfaceId** on the ArkTS side, create a **NativeWindow** instance on the native side, then create an EGL/GLES environment, implement drawing graphics on the main page, and change the graphics color.
-
-1. Define the XComponent in the UI, declare the API in **cpp/types/libnativerender/Index.d.ts**, and implement the API on the native side.
-
-    <!-- @[xcomponent_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/types/libnativerender/Index.d.ts) -->
-
-    ``` TypeScript
-    // Function declarations defined in cpp/types/libnativerender/Index.d.ts
-    type XComponentContextStatus = {
-      hasDraw: boolean,
-      hasChangeColor: boolean,
-    };
-    export const SetSurfaceId: (id: BigInt) => any;
-    export const ChangeSurface: (id: BigInt, w: number, h: number) =>any;
-    export const DrawPattern: (id: BigInt) => any;
-    export const GetXComponentStatus: (id: BigInt) => XComponentContextStatus
-    export const ChangeColor: (id: BigInt) => any;
-    export const DestroySurface: (id: BigInt) => any;
-    ```
-
-    <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
-
-    ``` TypeScript
-    import nativeRender from 'libnativerender.so';
-
-    // Override XComponentController to set lifecycle callbacks.
-    class MyXComponentController extends XComponentController{
-      onSurfaceCreated(surfaceId: string): void {
-        console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
-        nativeRender.SetSurfaceId(BigInt(surfaceId));
-      }
-      onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-        console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
-        // Call ChangeSurface to draw content in onSurfaceChanged.
-        nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
-      }
-      onSurfaceDestroyed(surfaceId: string): void {
-        console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
-        nativeRender.DestroySurface(BigInt(surfaceId));
-      }
-    }
-    
-    @Entry
-    @Component
-    struct Index {
-      @State currentStatus: string = "index";
-      xComponentController: XComponentController = new MyXComponentController();
-      build() {
-        Column() {
-          // ···
-          // Define XComponent in an .ets file.
-          Column({ space: 10 }) {
-            XComponent({
-              type: XComponentType.SURFACE,
-              controller: this.xComponentController
-            })
-            Text(this.currentStatus)
-              .fontSize('24fp')
-              .fontWeight(500)
-          }
-          .onClick(() => {
-            let surfaceId = this.xComponentController.getXComponentSurfaceId();
-            nativeRender.ChangeColor(BigInt(surfaceId));
-            let hasChangeColor: boolean = false;
-            if (nativeRender.GetXComponentStatus(BigInt(surfaceId))) {
-              hasChangeColor = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasChangeColor;
-            }
-            if (hasChangeColor) {
-              this.currentStatus = "change color";
-            }
-          })
-          // ···
-          Row() {
-            Button('Draw Star')
-              .fontSize('16fp')
-              .fontWeight(500)
-              .margin({ bottom: 24 })
-              .onClick(() => {
-                let surfaceId = this.xComponentController.getXComponentSurfaceId();
-                nativeRender.DrawPattern(BigInt(surfaceId));
-                let hasDraw: boolean = false;
-                if (nativeRender.GetXComponentStatus(BigInt(surfaceId))) {
-                  hasDraw = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasDraw;
-                }
-                if (hasDraw) {
-                  this.currentStatus = "draw star";
-                }
-              })
-              .width('53.6%')
-              .height(40)
-          }
-          .width('100%')
-          .justifyContent(FlexAlign.Center)
-          .alignItems(VerticalAlign.Bottom)
-          .layoutWeight(1)
-        }
-        .width('100%')
-        .height('100%')
-      }
-    }
-    ```
-
-
-2. Register the Node-API module. For details, see [Node-API Development Specifications](../napi/napi-guidelines.md).
-
-    <!-- @[xcomponent_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/napi_init.cpp) -->
-
-    ``` C++
-    #include <hilog/log.h>
-
-    #include "common/common.h"
-    #include "manager/plugin_manager.h"
-
-    namespace NativeXComponentSample {
-    // In the napi_init.cpp file, use the Init method to register the target function to pass in the encapsulated C++ methods for the ArkTS method to call.
-    EXTERN_C_START
-    static napi_value Init(napi_env env, napi_value exports)
-    {
-        // ···
-        // Expose the SetSurfaceId(), ChangeSurface(), and DestroySurface() APIs to the ArkTS side.
-        // DrawPattern(),ChangeColor(),GetXComponentStatus()
-        napi_property_descriptor desc[] = {
-            {"ChangeColor", nullptr, PluginManager::ChangeColor,
-                nullptr, nullptr, nullptr, napi_default, nullptr},
-            {"SetSurfaceId", nullptr, PluginManager::SetSurfaceId,
-                nullptr, nullptr, nullptr, napi_default, nullptr},
-            {"ChangeSurface", nullptr, PluginManager::ChangeSurface,
-                nullptr, nullptr, nullptr, napi_default, nullptr},
-            {"GetXComponentStatus", nullptr, PluginManager::GetXComponentStatus,
-                nullptr, nullptr, nullptr, napi_default, nullptr},
-            {"DrawPattern", nullptr, PluginManager::DrawPattern,
-                nullptr, nullptr, nullptr, napi_default, nullptr},
-            {"DestroySurface", nullptr, PluginManager::DestroySurface,
-                nullptr, nullptr, nullptr, napi_default, nullptr}
-        };
-        if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
-            return nullptr;
-        }
-        return exports;
-    }
-    EXTERN_C_END
-    // Provide module descriptor configuration. You can modify parameters as needed.
-    static napi_module nativerenderModule = {
-        .nm_version = 1,
-        .nm_flags = 0,
-        .nm_filename = nullptr,
-        // Entry point function
-        .nm_register_func = Init,
-        // Module name
-        .nm_modname = "nativerender",
-        .nm_priv = ((void*)0),
-        .reserved = { 0 } };
-    } // namespace NativeXComponentSample
-    // The method decorated by __attribute__((constructor)) is automatically called by the system. The Node-API napi_module_register() is used to pass in the module descriptor configuration for module registration.
-    extern "C" __attribute__((constructor)) void RegisterModule(void)
-    {
-        napi_module_register(&NativeXComponentSample::nativerenderModule);
-    }
-    ```
-    
-3. Implement the preceding six registered functions on the native side: With **ChangeColor** and **DrawPattern**, use [OpenGL](https://developer.huawei.com/consumer/en/doc/harmonyos-references/opengl) to render a five-pointed star. With **ChangeSurface**, adjust the surface size based on the input **surfaceId**, **width**, and **height**. With **SetSurfaceId**, initialize the native window using the provided **surfaceId**. With **DestroySurface**, release resources associated with the surface. With **GetXComponentStatus**, obtain the XComponent status and return it to the ArkTS side.
-
-    <!-- @[xcomponent_define_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/manager/plugin_manager.h) -->
-
-    ``` C
-    // Define the PluginManager class.
-    class PluginManager {
-    public:
-        ~PluginManager();
-        static PluginRender* GetPluginRender(int64_t& id);
-        static napi_value ChangeColor(napi_env env, napi_callback_info info);
-        static napi_value DrawPattern(napi_env env, napi_callback_info info);
-        static napi_value SetSurfaceId(napi_env env, napi_callback_info info);
-        static napi_value ChangeSurface(napi_env env, napi_callback_info info);
-        static napi_value DestroySurface(napi_env env, napi_callback_info info);
-        static napi_value GetXComponentStatus(napi_env env, napi_callback_info info);
-    public:
-        static std::unordered_map<int64_t, PluginRender*> pluginRenderMap_;
-        static std::unordered_map<int64_t, OHNativeWindow*> windowMap_;
-    };
-    ```
-
-    <!-- @[xcomponent_render_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
-
-    ``` C++
-    void PluginRender::ChangeColor()
-    {
-        eglCore_->ChangeColor(hasChangeColor_);
-    }
-
-    void PluginRender::DrawPattern()
-    {
-        eglCore_->Draw(hasDraw_); // For details about the Draw implementation, see the "Native XComponent Scenario" section.
-    }
-
-    void PluginRender::InitNativeWindow(OHNativeWindow *window)
-    {
-        eglCore_->EglContextInit(window); // For details about the EglContextInit implementation, see the "Native XComponent Scenario" section.
-    }
-
-    void PluginRender::UpdateNativeWindowSize(int width, int height)
-    {
-        eglCore_->UpdateSize(width, height); // For details about the UpdateSize implementation, see the "Native XComponent Scenario" section.
-        if (!hasChangeColor_ && !hasDraw_) {
-            eglCore_->Background(); // For details about the Background implementation, see the "Native XComponent Scenario" section.
-        }
-    }
-
-    int32_t PluginRender::HasDraw()
-    {
-        return hasDraw_;
-    }
-
-    int32_t PluginRender::HasChangedColor()
-    {
-        return hasChangeColor_;
-    }
-    ```
-
-    <!-- @[xcomponent_manager_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
-    ``` C++
-    namespace {
-        // Parse the surfaceId passed from ArkTS. Here, surfaceId is a 64-bit integer value.
-        int64_t ParseId(napi_env env, napi_callback_info info)
-        {
-            if ((env == nullptr) || (info == nullptr)) {
-                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ParseId", "env or info is null");
-                return -1;
-            }
-            size_t argc = 1;
-            napi_value args[1] = {nullptr};
-            if (napi_ok != napi_get_cb_info(env, info, &argc, args, nullptr, nullptr)) {
-                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ParseId", "GetContext napi_get_cb_info failed");
-                return -1;
-            }
-            int64_t value = 0;
-            bool lossless = true;
-            if (napi_ok != napi_get_value_bigint_int64(env, args[0], &value, &lossless)) {
-                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ParseId", "Get value failed");
-                return -1;
-            }
-            return value;
-        }
-    }
-    // ···
-
-    PluginRender* PluginManager::GetPluginRender(int64_t& id)
-    {
-        if (pluginRenderMap_.find(id) != pluginRenderMap_.end()) {
-            return pluginRenderMap_[id];
-        }
-        return nullptr;
-    }
-
-    // Set SurfaceId and initialize NativeWindow based on SurfaceId.
-    napi_value PluginManager::SetSurfaceId(napi_env env, napi_callback_info info)
-    {
-        int64_t surfaceId = ParseId(env, info);
-        OHNativeWindow *nativeWindow;
-        PluginRender *pluginRender;
-        if (windowMap_.find(surfaceId) == windowMap_.end()) {
-            OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &nativeWindow);
-            windowMap_[surfaceId] = nativeWindow;
-        } else {
-            return nullptr;
-        }
-        if (pluginRenderMap_.find(surfaceId) == pluginRenderMap_.end()) {
-            pluginRender = new PluginRender(surfaceId);
-            pluginRenderMap_[surfaceId] = pluginRender;
-        }
-        pluginRender->InitNativeWindow(nativeWindow);
-        return nullptr;
-    }
-
-    // Destroy the surface.
-    napi_value PluginManager::DestroySurface(napi_env env, napi_callback_info info)
-    {
-        int64_t surfaceId = ParseId(env, info);
-        auto pluginRenderMapIter = pluginRenderMap_.find(surfaceId);
-        if (pluginRenderMapIter != pluginRenderMap_.end()) {
-            delete pluginRenderMapIter->second;
-            pluginRenderMap_.erase(pluginRenderMapIter);
-        }
-        auto windowMapIter = windowMap_.find(surfaceId);
-        if (windowMapIter != windowMap_.end()) {
-            OH_NativeWindow_DestroyNativeWindow(windowMapIter->second);
-            windowMap_.erase(windowMapIter);
-        }
-        return nullptr;
-    }
-
-    // Implement surface size changes based on the passed surfaceId, width, and height.
-    napi_value PluginManager::ChangeSurface(napi_env env, napi_callback_info info)
-    {
-        if ((env == nullptr) || (info == nullptr)) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "ChangeSurface: OnLoad env or info is null");
-            return nullptr;
-        }
-        int64_t surfaceId = 0;
-        size_t argc = 3;
-        napi_value args[3] = {nullptr};
-
-        if (napi_ok != napi_get_cb_info(env, info, &argc, args, nullptr, nullptr)) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "ChangeSurface: GetContext napi_get_cb_info failed");
-        }
-        bool lossless = true;
-        int index = 0;
-        if (napi_ok != napi_get_value_bigint_int64(env, args[index++], &surfaceId, &lossless)) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "ChangeSurface: Get value failed");
-        }
-        double width;
-        if (napi_ok != napi_get_value_double(env, args[index++], &width)) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "ChangeSurface: Get width failed");
-        }
-        double height;
-        if (napi_ok != napi_get_value_double(env, args[index++], &height)) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "ChangeSurface: Get height failed");
-        }
-        auto pluginRender = GetPluginRender(surfaceId);
-        if (pluginRender == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "ChangeSurface: Get pluginRender failed");
-            return nullptr;
-        }
-        pluginRender->UpdateNativeWindowSize(width, height);
-        return nullptr;
-    }
-
-    // Implement the feature of changing the color of the drawn graphics.
-    napi_value PluginManager::ChangeColor(napi_env env, napi_callback_info info)
-    {
-        int64_t surfaceId = ParseId(env, info);
-        auto pluginRender = GetPluginRender(surfaceId);
-        if (pluginRender == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "ChangeColor: Get pluginRender failed");
-            return nullptr;
-        }
-        pluginRender->ChangeColor(); // For details about the ChangeColor implementation, see the "Native XComponent Scenario" section.
-        return nullptr;
-    }
-
-    // Implement the EGL drawing logic.
-    napi_value PluginManager::DrawPattern(napi_env env, napi_callback_info info)
-    {
-        int64_t surfaceId = ParseId(env, info);
-        auto pluginRender = GetPluginRender(surfaceId);
-        if (pluginRender == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "DrawPattern: Get pluginRender failed");
-            return nullptr;
-        }
-        pluginRender->DrawPattern();
-        return nullptr;
-    }
-
-    // Obtain the XComponent status and return it to the ArkTS side.
-    napi_value PluginManager::GetXComponentStatus(napi_env env, napi_callback_info info)
-    {
-        int64_t surfaceId = ParseId(env, info);
-        auto pluginRender = GetPluginRender(surfaceId);
-        if (pluginRender == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: Get pluginRender failed");
-            return nullptr;
-        }
-        napi_value hasDraw;
-        napi_value hasChangeColor;
-        napi_status ret = napi_create_int32(env, pluginRender->HasDraw(), &(hasDraw));
-        if (ret != napi_ok) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: napi_create_int32 hasDraw_ error");
-            return nullptr;
-        }
-        ret = napi_create_int32(env, pluginRender->HasChangedColor(), &(hasChangeColor));
-        if (ret != napi_ok) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: napi_create_int32 hasChangeColor_ error");
-            return nullptr;
-        }
-        napi_value obj;
-        ret = napi_create_object(env, &obj);
-        if (ret != napi_ok) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN,
-                        "PluginManager", "GetXComponentStatus: napi_create_object error");
-            return nullptr;
-        }
-        ret = napi_set_named_property(env, obj, "hasDraw", hasDraw);
-        if (ret != napi_ok) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: napi_set_named_property hasDraw error");
-            return nullptr;
-        }
-        ret = napi_set_named_property(env, obj, "hasChangeColor", hasChangeColor);
-        if (ret != napi_ok) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "GetXComponentStatus: napi_set_named_property hasChangeColor error");
-            return nullptr;
-        }
-        return obj;
-    }
-    ```
-
-4. Configure the specific CMakeLists to use the CMake toolchain to compile the C++ source code into a dynamic link library file.
-
-    ```cmake
-    # Set the minimum CMake version.
-    cmake_minimum_required(VERSION 3.4.1)
-    # Project name
-    project(XComponent)
-    
-    set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-    add_definitions(-DOHOS_PLATFORM)
-    # Set the header file search directory.
-    include_directories(
-        ${NATIVERENDER_ROOT_PATH}
-        ${NATIVERENDER_ROOT_PATH}/include
-    )
-    # Add the **nativerender** dynamic library, with the **libnativerender.so** library file. Add the .cpp files.
-    add_library(nativerender SHARED
-        render/egl_core.cpp
-        render/plugin_render.cpp
-        manager/plugin_manager.cpp
-        napi_init.cpp
-    )
-    
-    find_library(
-        # Set the name of the path variable.
-        EGL-lib
-        # Set the name of the NDK library to search for.
-        EGL
-    )
-    
-    find_library(
-        # Set the name of the path variable.
-        GLES-lib
-        # Set the name of the NDK library to search for.
-        GLESv3
-    )
-    
-    find_library(
-        # Set the name of the path variable.
-        hilog-lib
-        # Set the name of the NDK library to search for.
-        hilog_ndk.z
-    )
-    
-    find_library(
-        # Set the name of the path variable.
-        libace-lib
-        # Set the name of the NDK library to search for.
-        ace_ndk.z
-    )
-    
-    find_library(
-        # Set the name of the path variable.
-        libnapi-lib
-        # Set the name of the NDK library to search for.
-        ace_napi.z
-    )
-    
-    find_library(
-        # Set the name of the path variable.
-        libuv-lib
-        # Set the name of the NDK library to search for.
-        uv
-    )
-    # Add the libraries to be linked.
-    target_link_libraries(nativerender PUBLIC
-        ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
-    ```
-
-For details about the preceding example, see <!--RP2-->[ArkTSXComponent (API12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)<!--RP2nd-->.
-
-## Managing the Surface Lifecycle with OH_ArkUI_SurfaceHolder
-
-Unlike the scenario where the surface lifecycle is managed with **XComponentController**, this scenario allows applications to create an **OH_ArkUI_SurfaceHolder** object based on the **ArkUI_NodeHandle** corresponding to the **XComponent** component. Through relevant APIs on the **OH_ArkUI_SurfaceHolder**, you can register surface lifecycle callbacks and implement **XComponent** capabilities such as accessibility and variable frame rate. In addition, listening for basic and gesture events on the **XComponent** component can be achieved using ArkUI NDK APIs through the **ArkUI_NodeHandle** object. For details, see [Listening for Component Events](./ndk-listen-to-component-events.md). The development mainly involves the following use cases:
-- For **XComponent** components created on the ArkTS side, you can pass the corresponding FrameNode to the native side to obtain an **ArkUI_NodeHandle** object. For **XComponent** components created on the native side, you can directly obtain the **ArkUI_NodeHandle** object. Then, call the **OH_ArkUI_SurfaceHolder_Create** API to create an **OH_ArkUI_SurfaceHolder** instance.
-- Register lifecycle and event callbacks using the **OH_ArkUI_SurfaceHolder** instance and obtain a **NativeWindow** instance.
-- Use the **NativeWindow** instance with EGL APIs to develop custom drawing content, and allocate and submit buffers to the graphics queue.
-
-**lifecycle Callbacks**
-
-- OnSurfaceCreated   	
-
-  Triggered when the surface of the XComponent component is created, the surface is ready, and either of the following conditions is met:
+  Triggering time: This callback is triggered when the XComponent is created and the surface is created, and either of the following conditions is met:
   1. The component is attached to the component tree with **autoInitialize = true**.
   2. The **OH_ArkUI_XComponent_Initialize** API is called.
 
@@ -614,6 +104,600 @@ Unlike the scenario where the surface lifecycle is managed with **XComponentCont
 
   ![OnSurfaceDestroyed](./figures/onSurfaceDestroyed2.png)
 
+### XComponent Development Paradigm
+
+The following five XComponent development paradigms are available, depending on the combination of [Creating an XComponent](#Creating an XComponent) and [Managing the Lifecycle of the Surface Held by an XComponent](#Managing the lifecycle of the surface held by an XComponent). Except that the XComponentController cannot be used to manage the lifecycle of the surface held by an XComponent created using the NDK API, the other paradigms are as follows:
+
+- Create a component using the declarative UI description in ArkTS and use XComponentController to manage the lifecycle of the surface.
+
+  <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
+
+  ``` TypeScript
+  import nativeRender from 'libnativerender.so';
+  
+  // Override XComponentController to set lifecycle callbacks.
+  class MyXComponentController extends XComponentController{
+    onSurfaceCreated(surfaceId: string): void {
+      console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
+      nativeRender.SetSurfaceId(BigInt(surfaceId));
+    }
+    onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
+      console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+      // Call ChangeSurface to draw content in onSurfaceChanged.
+      nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
+    }
+    onSurfaceDestroyed(surfaceId: string): void {
+      console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
+      nativeRender.DestroySurface(BigInt(surfaceId));
+    }
+  }
+  
+  @Entry
+  @Component
+  struct Index {
+    @State currentStatus: string = 'index';
+    xComponentController: XComponentController = new MyXComponentController();
+    build() {
+      Column() {
+        // ···
+        // Define XComponent in xxx.ets.
+        Column({ space: 10 }) {
+          XComponent({
+            type: XComponentType.SURFACE,
+            controller: this.xComponentController
+          })
+          Text(this.currentStatus)
+            .fontSize('24fp')
+            .fontWeight(500)
+        }
+        .onClick(() => {
+          let surfaceId = this.xComponentController.getXComponentSurfaceId();
+          nativeRender.ChangeColor(BigInt(surfaceId));
+          let hasChangeColor: boolean = false;
+          if (nativeRender.GetXComponentStatus(BigInt(surfaceId))) {
+            hasChangeColor = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasChangeColor;
+          }
+          if (hasChangeColor) {
+            this.currentStatus = "change color";
+          }
+        })
+        // ···
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+  
+- You can use the declarative UI description of ArkTS to create components and use OH_ArkUI_SurfaceHolders to manage the lifecycle of surfaces.
+
+  <!-- @[surface_holder_declarative_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
+
+  ``` typescript
+  import native from 'libnativerender.so';
+  
+  // ...
+  
+  @Component
+  export struct SurfaceHolderDeclarative {
+    @State currentStatus: string = 'init';
+    private xcNode: FrameNode | null = null;
+    build() {
+      NavDestination() {
+        // ...
+        Column({ space: 10 }) {
+          // Create a XComponent component.
+          XComponent({
+            type: XComponentType.SURFACE,
+          })
+            .id('XComponentSurfaceHolder')
+            .onAttach(() => {
+              this.xcNode = this.getUIContext().getAttachedFrameNodeById('XComponentSurfaceHolder');
+              if (!this.xcNode) {
+                return;
+              }
+              native.bindNode('XComponentSurfaceHolder', this.xcNode); // Call the Native side to obtain the SurfaceHolder and bind the surface lifecycle callback.
+            })
+            .onDetach(() => {
+              native.unbindNode('XComponentSurfaceHolder');
+              this.xcNode = null;
+            })
+        }
+        // ...
+      }
+    }
+  }
+  ```
+
+  <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  ``` c++
+  napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 2;
+      napi_value args[2] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+      std::string nodeId = value2String(env, args[0]);
+      ArkUI_NodeHandle handle;
+      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle); // Obtaining the nodeHandle
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain the SurfaceHolder.
+      nodeHandleMap_[nodeId] = handle;
+      surfaceHolderMap_[handle] = holder;
+      auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
+      callbackMap_[holder] = callback;
+      auto render = new EGLRender();
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Save the render in the holder.
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
+      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Register the SurfaceCallback callback.
+      // ...
+      return nullptr;
+  }
+  ```
+  
+- You can use the custom component node of ArkTS to create a component and use XComponentController to manage the lifecycle of the surface.
+  ``` typescript
+  // Override XComponentController to set lifecycle callbacks.
+  class MyXComponentController extends XComponentController {
+    onSurfaceCreated(surfaceId: string): void {
+      console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
+    }
+  
+    onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
+      console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    }
+  
+    onSurfaceDestroyed(surfaceId: string): void {
+      console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
+    }
+  }
+  
+  class MyNodeController extends NodeController {
+    public xComponent: typeNode.XComponent | undefined = undefined;
+    public xComponentId: string = 'xcp' + (new Date().getTime());
+    public node: FrameNode | undefined = undefined;
+    public column: typeNode.Column | undefined = undefined;
+    private xcController: MyXComponentController = new MyXComponentController();
+  
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.node = new FrameNode(uiContext);
+      this.column = typeNode.createNode(uiContext, 'Column')
+      this.column.initialize()
+        .width('100%')
+        .height('100%')
+      try {
+        this.node.appendChild(this.column);
+      } catch (error) {
+        console.error('Fail to append child: ', error);
+      }
+      // Create an XComponent node and bind it to the XComponentController.
+      this.xComponent =
+        typeNode.createNode(uiContext, 'XComponent', { type: XComponentType.SURFACE, controller: this.xcController });
+      this.xComponent.attribute
+      try {
+        this.column.appendChild(this.xComponent);
+      } catch (error) {
+        console.error('Fail to append child: ', error);
+      }
+      return this.node;
+    }
+  }
+  ```
+  
+- You can create a component using the ArkTS custom component node and use OH_ArkUI_SurfaceHolder to manage the lifecycle of the surface.
+  <!-- @[surface_holder_type_node_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderTypeNode.ets) -->
+  ``` typescript
+  import native from 'libnativerender.so';
+  import { FrameNode, NodeController, typeNode, UIContext } from '@kit.ArkUI';
+  
+  class MyNodeController extends NodeController {
+    // ...
+  
+    makeNode(uiContext: UIContext): FrameNode | null {
+      // ...
+      // Create an XComponent node.
+      this.xComponent = typeNode.createNode(uiContext, 'XComponent', { type: XComponentType.SURFACE });
+      this.xComponent.attribute
+        .id(this.xComponentId)
+        .focusable(true)
+        .focusOnTouch(true)
+      native.bindNode(this.xComponentId, this.xComponent) // Cross-language calling to the native side to bind the surface lifecycle callback.
+      // ...
+    }
+  
+    // ...
+  }
+  
+  // ...
+  
+  @Component
+  export struct SurfaceHolderTypeNode {
+    // ...
+    myNodeController: MyNodeController = new MyNodeController();
+  
+    build() {
+      NavDestination() {
+        Column() {
+          // ...
+          Column() {
+            if (this.isShow) {
+              NodeContainer(this.myNodeController)
+                .width(200)
+                .height(200)
+                .focusable(true)
+                .focusOnTouch(true)
+                .defaultFocus(true)
+            }
+          }.height(200)
+          // ...
+        }
+        .width('100%')
+      }
+    }
+  }
+  ```
+  
+  <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  ``` c++
+  napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 2;
+      napi_value args[2] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+      std::string nodeId = value2String(env, args[0]);
+      ArkUI_NodeHandle handle;
+      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle); // Obtaining the nodeHandle
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain the SurfaceHolder.
+      nodeHandleMap_[nodeId] = handle;
+      surfaceHolderMap_[handle] = holder;
+      auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
+      callbackMap_[holder] = callback;
+      auto render = new EGLRender();
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Save the render to the holder.
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
+      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Register the SurfaceCallback callback.
+      return nullptr;
+  }
+  ```
+  
+- Create a component using the NDK interface and use OH_ArkUI_SurfaceHolder to manage the lifecycle of the surface.
+  <!-- @[surface_holder_ndk_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets) -->
+  ``` typescript
+  @Component
+  export struct SurfaceHolderNDK {
+    @State currentStatus: string = 'init';
+    private nodeContent: NodeContent = new NodeContent();
+  
+    aboutToAppear(): void {
+      nativeNode.createNativeNode(this.nodeContent, 'SurfaceHolderNDK');
+      this.currentStatus = 'index'
+    }
+  
+    build() {
+      NavDestination() {
+        Column() {
+          // ...
+          Column({ space: 10 }) {
+            ContentSlot(this.nodeContent);
+            // ...
+          }
+          // ...
+        }
+        .width('100%')
+        .height('100%')
+      }
+    }
+  }
+  ```
+  
+  <!-- @[surface_holder_ndk_createNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  ``` c++
+  napi_value PluginManager::createNativeNode(napi_env env, napi_callback_info info)
+  {
+      // ...
+      ArkUI_NodeContentHandle nodeContentHandle_ = nullptr;
+      OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &nodeContentHandle_);
+      nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+          OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+      std::string tag = value2String(env, args[1]);
+      // ...
+      if (nodeAPI != nullptr && nodeAPI->createNode != nullptr && nodeAPI->addChild != nullptr) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "CreateNativeNode tag=%{public}s",
+                       tag.c_str());
+          auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
+            ArkUI_NodeContentHandle handle = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(event);
+            std::string *userData = reinterpret_cast<std::string *>(OH_ArkUI_NodeContent_GetUserData(handle));
+            if (!userData) {
+                return;
+            }
+            if (OH_ArkUI_NodeContentEvent_GetEventType(event) != NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW) {
+                return;
+            }
+            ArkUI_NodeHandle testNode;
+            if (userData->find("SurfaceHolder") == std::string::npos) {
+                // ...
+            } else {
+                // Create an XComponent component and use SurfaceHolder to manage the Surface lifecycle.
+                testNode = CreateNodeHandleUsingSurfaceHolder(*userData);
+            }
+            delete userData;
+            userData = nullptr;
+            OH_ArkUI_NodeContent_AddNode(handle, testNode);
+        };
+          OH_ArkUI_NodeContent_RegisterCallback(nodeContentHandle_, nodeContentEvent);
+      }
+      return nullptr;
+  }
+  ```
+
+  <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->    
+  
+  ``` C++
+  ArkUI_NodeHandle CreateNodeHandleUsingSurfaceHolder(const std::string &tag)
+  {
+      ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+      // ...
+      xc = nodeAPI->createNode(ARKUI_NODE_XCOMPONENT); // Create an XComponent node.
+      // ...
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(xc); // Obtain the SurfaceHolder.
+      PluginManager::surfaceHolderMap_[xc] = holder;
+      PluginManager::nodeHandleMap_[tag] = xc;
+      auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
+      PluginManager::callbackMap_[holder] = callback;
+      auto render = new EGLRender();
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Save the render to the holder.
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
+      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Add the SurfaceCallback callback.
+      if (!nodeAPI->addNodeEventReceiver(xc, onEvent)) { // Add an event listener and return the success code 0.
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
+      }
+      if (!nodeAPI->registerNodeEvent(xc, NODE_TOUCH_EVENT, 0, nullptr)) { // Use the C API to register the touch event and return the success code 0.
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "registerTouchEvent error");
+      }
+      nodeAPI->addChild(column, xc); // Mount the XComponent to the column.
+      return column;
+  }
+  ```
+## Migrating from OH_NativeXComponent to OH_ArkUI_SurfaceHolder
+
+Starting from API version 8, you can use the APIs related to the [OH_NativeXComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md) instance to listen to the lifecycle of the XComponent surface, obtain the NativeWindow instance, and listen to basic events, thereby implementing rendering, drawing, and interaction response. However, using the APIs related to OH_NativeXComponent has the following problems:
+
+- The lifecycle of an OH_NativeXComponent instance is closely related to the XComponent. If you still operate the OH_NativeXComponent instance after the XComponent is destroyed, the app may crash due to stability issues.
+- The interaction event APIs provided by OH_NativeXComponent are not rich enough. Only basic touch, mouse, and keyboard interaction APIs are provided. If you want to identify advanced gestures such as long press and drag, you need to write the identification logic by yourself.
+
+To solve the preceding problems, you are advised to use the APIs related to OH_ArkUI_SurfaceHolder instead of the APIs related to OH_NativeXComponent. The following uses the ArkTS declarative UI as an example to describe how to switch from using OH_NativeXComponent to using OH_ArkUI_SurfaceHolder to manage the surface lifecycle.
+
+### Component creation
+
+The main difference in component creation is that when using OH_NativeXComponent, you need to pass the id and libraryname attributes to obtain the corresponding OH_NativeXComponent instance on the native side. However, when using OH_ArkUI_SurfaceHolder to manage the surface lifecycle, you do not need to pass the id and libraryname attributes in the XComponent constructor. Instead, you need to directly pass the FrameNode node corresponding to the component to the native side for lifecycle binding and other settings.
+
+- OH_NativeXComponent
+  <!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
+  
+  ``` TypeScript
+  XComponent({
+    id: 'xcomponentId',
+    type: XComponentType.SURFACE,
+    libraryname: 'nativerender' // Use the id and libraryname attributes to obtain the NativeXComponent on the native side and bind the surface lifecycle.
+  })
+    .onLoad((xComponentContext) => {
+      this.xComponentContext = xComponentContext as XComponentContext;
+      this.currentStatus = 'index';
+    })
+    .onDestroy(() => {
+      console.info('onDestroy');
+    })
+    .id('xcomponent')
+  ```
+
+- OH_ArkUI_SurfaceHolder
+  <!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
+  
+  ``` TypeScript
+  XComponent({
+    type: XComponentType.SURFACE,
+  })
+    .id('XComponentSurfaceHolder')
+    .onAttach(() => {
+      this.xcNode = this.getUIContext().getAttachedFrameNodeById('XComponentSurfaceHolder');
+      if (!this.xcNode) {
+        return;
+      }
+      native.bindNode('XComponentSurfaceHolder', this.xcNode); // calls the native side to obtain the SurfaceHolder and bind the surface lifecycle callback.
+      this.currentStatus = 'index';
+    })
+    .onDetach(() => {
+      native.unbindNode('XComponentSurfaceHolder');
+      this.xcNode = null;
+    })
+  ```
+
+### Binding the surface lifecycle.
+
+The main difference between binding to the surface and binding to the lifecycle is that the APIs for registering lifecycle callbacks are different. The logic executed in the callback remains unchanged.
+
+- OH_NativeXComponent
+  <!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  void PluginManager::Export(napi_env env, napi_value exports)
+  {
+      if ((env == nullptr) || (exports == nullptr)) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: env or exports is null");
+          return;
+      }
+  
+      napi_value exportInstance = nullptr;
+      // Use the OH_NATIVE_XCOMPONENT_OBJ field to obtain the NativeXComponent instance.
+      if (napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance) != napi_ok) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_get_named_property fail");
+          return;
+      }
+  
+      OH_NativeXComponent *nativeXComponent = nullptr;
+      if (napi_unwrap(env, exportInstance, reinterpret_cast<void **>(&nativeXComponent)) != napi_ok) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_unwrap fail");
+          return;
+      }
+  
+      char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {'\0'};
+      uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
+      // Obtain the ID attribute from the NativeXComponent instance to map the ID to the XComponent component on ArkTS.
+      if (OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
+                       "Export: OH_NativeXComponent_GetXComponentId fail");
+          return;
+      }
+  
+      std::string id(idStr);
+      auto context = PluginManager::GetInstance();
+      if ((context != nullptr) && (nativeXComponent != nullptr)) {
+          context->SetNativeXComponent(id, nativeXComponent);
+          auto render = context->GetRender(id);
+          if (render != nullptr) {
+              // Register the surface lifecycle.
+              render->RegisterCallback(nativeXComponent);
+              render->Export(env, exports);
+          }
+      }
+  }
+  ```
+
+  <!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
+  
+  ``` C++
+  void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
+  {
+      renderCallback_.OnSurfaceCreated = OnSurfaceCreatedCB;
+      renderCallback_.OnSurfaceChanged = OnSurfaceChangedCB;
+      renderCallback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
+      // ...
+      OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_);
+      // ...
+  }
+  ```
+
+- OH_ArkUI_SurfaceHolder
+  <!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 2;
+      napi_value args[2] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+      std::string nodeId = value2String(env, args[0]);
+      ArkUI_NodeHandle handle;
+      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle); // Obtaining the nodeHandle
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain the SurfaceHolder.
+      nodeHandleMap_[nodeId] = handle;
+      surfaceHolderMap_[handle] = holder;
+      auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
+      callbackMap_[holder] = callback;
+      auto render = new EGLRender();
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Save the render to the holder.
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // Register the OnSurfaceCreated callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // Register the OnSurfaceChanged callback.
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // Register the OnSurfaceDestroyed callback.
+      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback); // Register the SurfaceCallback.
+      // ...
+      return nullptr;
+  }
+  ```
+
+### Obtaining the NativeWindow
+
+The differences in obtaining the NativeWindow are as follows:
+
+- OH_NativeXComponent
+
+  Obtain the NativeWindow from the parameter (void *window) returned by the lifecycle callback such as OnSurfaceCreated.
+
+  <!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  void OnSurfaceChangedCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  void OnSurfaceDestroyedCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  void DispatchTouchEventCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  ```
+
+- OH_ArkUI_SurfaceHolder
+
+  Call the OH_ArkUI_XComponent_GetNativeWindow API to obtain the NativeWindow from OH_ArkUI_SurfaceHolder.
+
+  <!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
+  {
+      auto window = OH_ArkUI_XComponent_GetNativeWindow(holder); // Obtain the **NativeWindow** instance.
+      // ...
+  }
+  ```
+
+### Listening to Interaction Events
+
+When using the OH_NativeXComponent mode to listen to interaction events, you can only use the related APIs of OH_NativeXComponent to listen to basic events such as touch, mouse, and key events. However, when using the APIs related to OH_ArkUI_SurfaceHolder, you can listen to advanced gestures such as long press and drag in addition to basic events.
+
+- OH_NativeXComponent
+
+  <!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
+  
+  ``` C++
+  renderCallback_.DispatchTouchEvent = DispatchTouchEventCB; // Register the touch event.
+  OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_);
+  mouseCallback_.DispatchMouseEvent = DispatchMouseEventCB;
+  mouseCallback_.DispatchHoverEvent = DispatchHoverEventCB;
+  OH_NativeXComponent_RegisterMouseEventCallback(nativeXComponent, &mouseCallback_); // Registering the mouse event
+  
+  OH_NativeXComponent_RegisterFocusEventCallback(nativeXComponent, OnFocusEventCB); // Register the focus event.
+  OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB); // Register the key event.
+  OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB); // Register the blur event.
+  ```
+
+- OH_ArkUI_SurfaceHolder
+
+  The following uses the touch event as an example. For details about the mouse, key, and more gestures, see [Listening to Component Events](./ndk-listen-to-component-events.md).
+
+  <!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  if (!nodeAPI->addNodeEventReceiver(handle, onEvent)) { // Add an event listener. The return code 0 indicates success.
+      OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
+  }
+  if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // Register the touch event using the C API. The return code 0 indicates success.
+      OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "registerTouchEvent error");
+  }
+  ```
+
+## Development Cases
+
+### Using NativeWindow on the Native Side for Rendering and Drawing
+
+The following is a complete example of using NativeWindow and EGL APIs for self-drawing. The main development scenarios are as follows:
+
+- For **XComponent** components created on the ArkTS side, you can pass the corresponding FrameNode to the native side to obtain an **ArkUI_NodeHandle** object. For **XComponent** components created on the native side, you can directly obtain the **ArkUI_NodeHandle** object. Then, call the **OH_ArkUI_SurfaceHolder_Create** API to create an **OH_ArkUI_SurfaceHolder** instance.
+- Register the corresponding lifecycle callback based on the OH_ArkUI_SurfaceHolder instance to obtain the NativeWindow instance.
+- Use the NativeWindow and EGL APIs to develop custom drawing content, and apply for and submit the buffer to the graphics queue.
+- The accessibility and variable frame rate capabilities of the XComponent are implemented through related APIs based on ArkUI_NodeHandle.
+- You can use the ArkUI NDK APIs to listen to basic events (such as click and touch) and gesture events (such as swipe and zoom) on the XComponent through the ArkUI_NodeHandle object. For details, see [Listening to Component Events](./ndk-listen-to-component-events.md).
 
 **Available APIs**
 
@@ -649,10 +733,11 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
 1. Define the **XComponent** on the UI.
 
     <!-- @[page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/ets/pages/PageThree.ets) -->
-
+    
     ``` TypeScript
     import native from 'libnativerender.so';
-    // ···
+    import { common } from '@kit.AbilityKit';
+    // ...
     @Component
     export struct PageThree {
       @State isShow: boolean = true;
@@ -661,10 +746,12 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
       @State expected: number = 60;
       needSoftKeyboard: boolean = false;
       @State needSoftKeyboardState: string = 'needSoftKeyboard=' + this.needSoftKeyboard;
-      @State text: string = 'Tap XComponent to hide the soft keyboard';
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      // Replace $r('app.string.pagethree_text1') with the actual resource file. In this example, the value of the resource file is "The XComponent soft keyboard disappears when you tap it with one finger."
+      @State text: ResourceStr = $r('app.string.pagethree_text1');
       controller: TextInputController = new TextInputController();
       myNodeController: MyNodeController = new MyNodeController();
-
+    
       build() {
         NavDestination() {
         Column() {
@@ -691,8 +778,9 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
                 .defaultFocus(true)
             }
           }.height(200)
-
-          Button('Create/Destroy').onClick(() => {
+    
+          // Replace $r('app.string.pagethree_text2') with the actual resource file. In this example, the value of the resource file is "Create/Destroy".
+          Button($r('app.string.pagethree_text2')).onClick(() => {
             this.isShow = !this.isShow;
           }).width('50%')
             .margin({
@@ -701,9 +789,10 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
               left: 12,
               right: 12
             })
-
+    
           Column() {
-            Text('Expected frame rate')
+            // Replace $r('app.string.pagethree_text3') with the actual resource file. In this example, the value of the resource file is "Expected frame rate:".
+            Text($r('app.string.pagethree_text3'))
               .textAlign(TextAlign.Start)
               .fontSize(15)
               .border({ width: 1 })
@@ -744,13 +833,15 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
             }).width('100%')
               .id('expectedSlider')
           }.backgroundColor('#F0FAFF')
-
+    
           Button(this.needSoftKeyboardState)
             .onClick(() => {
               this.needSoftKeyboard = !this.needSoftKeyboard;
               this.needSoftKeyboardState = 'needSoftKeyboard=' + this.needSoftKeyboard;
               native.setNeedSoftKeyboard(this.myNodeController.xComponentId, this.needSoftKeyboard);
-              this.text = this.needSoftKeyboard ? 'Tapping XComponent will not hide the keyboard' : 'Tap XComponent to hide the keyboard'
+              // Replace $r('app.string.pagethree_text4') with the actual resource file. In this example, the value of the resource file is "The XComponent soft keyboard does not disappear when you tap it with one finger."
+              // Replace $r('app.string.pagethree_text1') with the actual resource file. In this example, the value of the resource file is "The XComponent soft keyboard disappears when you tap it with one finger."
+              this.text = this.needSoftKeyboard ? $r('app.string.pagethree_text4') : $r('app.string.pagethree_text1')
             })
             .width('50%')
             .margin({
@@ -759,7 +850,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
               left: 12,
               right: 12
             })
-          // ···
+          // ...
         }
         .width('100%')
       }
@@ -882,11 +973,11 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
         std::string nodeId = value2String(env, args[0]);
         ArkUI_NodeHandle handle;
-        OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // Obtain the nodeHandle object.
-        OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain a SurfaceHolder object.
+        OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle); // Obtaining the nodeHandle
+        OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // Obtain the SurfaceHolder.
         nodeHandleMap_[nodeId] = handle;
         surfaceHolderMap_[handle] = holder;
-        auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback object.
+        auto callback = OH_ArkUI_SurfaceCallback_Create(); // Create a SurfaceCallback.
         callbackMap_[holder] = callback;
         auto render = new EGLRender();
         OH_ArkUI_SurfaceHolder_SetUserData(holder, render); // Store the render object in holder.
@@ -924,7 +1015,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         }
         node = nodeHandleMap_[nodeId];
         OH_ArkUI_XComponent_UnregisterOnFrameCallback(node); // Unregister the frame callback.
-        OH_ArkUI_AccessibilityProvider_Dispose(provider_);   // Dispose of the ArkUI_AccessibilityProvider object.
+        OH_ArkUI_AccessibilityProvider_Dispose(provider_); // Destroy the ArkUI_AccessibilityProvider.
         auto holder = surfaceHolderMap_[node];
         if (PluginManager::callbackMap_.count(holder)) {
             auto callback = PluginManager::callbackMap_[holder];
@@ -1053,102 +1144,102 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
     #include <EGL/egl.h>
     #include <EGL/eglext.h>
     #include <GLES3/gl3.h>
-
+    
     const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
-
+    
     /**
      * Program error.
      */
     const GLuint PROGRAM_ERROR = 0;
-
+    
     /**
      * Position error.
      */
     const GLint POSITION_ERROR = -1;
-
+    
     /**
      * Default x coordinate.
      */
     const int DEFAULT_X_POSITION = 0;
-
+    
     /**
      * Default y coordinate.
      */
     const int DEFAULT_Y_POSITION = 0;
-
+    
     /**
      * Default GL red value.
      */
     const GLfloat GL_RED_DEFAULT = 0.0;
-
+    
     /**
      * Default GL green value.
      */
     const GLfloat GL_GREEN_DEFAULT = 0.0;
-
+    
     /**
      * Default GL blue value.
      */
     const GLfloat GL_BLUE_DEFAULT = 0.0;
-
+    
     /**
      * GL alpha value.
      */
     const GLfloat GL_ALPHA_DEFAULT = 1.0;
-
+    
     /**
      * Pointer count.
      */
     const GLint POINTER_SIZE = 2;
-
+    
     /**
      * Triangle fan size.
      */
     const GLsizei TRIANGLE_FAN_SIZE = 4;
-
+    
     /**
      *  50%.
      */
     const float FIFTY_PERCENT = 0.5;
-
+    
     /**
      * Position handle name.
      */
     const char POSITION_NAME[] = "a_position";
-
+    
     // ···
-
+    
     /**
      * Background color #f4f4f4.
      */
     const GLfloat BACKGROUND_COLOR[] = {244.0f / 255, 244.0f / 255, 244.0f / 255, 1.0f};
-
+    
     // ···
-
+    
     /**
      * Draw color #7E8FFB.
      */
     const GLfloat DRAW_COLOR[] = {126.0f / 255, 143.0f / 255, 251.0f / 255, 1.0f};
-
+    
     /**
      * Change color #92D6CC.
      */
     const GLfloat CHANGE_COLOR[] = {146.0f / 255, 214.0f / 255, 204.0f / 255, 1.0f};
-
+    
     /**
      * Background area.
      */
     const GLfloat BACKGROUND_RECTANGLE_VERTICES[] = {-1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f, -1.0f, -1.0f};
-
+    
     const EGLint ATTRIB_LIST[] = {
         // Key, value.
         EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RED_SIZE, 8, EGL_GREEN_SIZE, 8, EGL_BLUE_SIZE, 8, EGL_ALPHA_SIZE, 8,
         EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
         // End.
         EGL_NONE};
-
+    
     const EGLint CONTEXT_ATTRIBS[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE};
-
+    
     /**
      * Vertex shader.
      */
@@ -1161,7 +1252,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
                                 "   gl_Position = a_position;            \n"
                                 "   v_color = a_color;                   \n"
                                 "}                                       \n";
-
+    
     /**
      * Fragment shader.
      */
@@ -1185,7 +1276,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
     #include <EGL/eglplatform.h>
     #include <GLES3/gl3.h>
     #include <string>
-
+    
     class EGLRender {
     public:
         bool SetUpEGLContext(void *window);
@@ -1193,10 +1284,10 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         void DrawStar(bool drawColor);
         void DestroySurface();
         // ···
-
+    
         std::string xcomponentId;
         EGLNativeWindowType eglWindow_;
-
+    
         EGLDisplay eglDisplay_ = EGL_NO_DISPLAY;
         EGLConfig eglConfig_ = EGL_NO_CONFIG_KHR;
         EGLSurface eglSurface_ = EGL_NO_SURFACE;
@@ -1204,7 +1295,7 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         GLuint program_;
         int width_ = 0;
         int height_ = 0;
-
+    
     private:
         GLint PrepareDraw();
         bool ExecuteDraw(GLint position, const GLfloat *color, const GLfloat shapeVertices[]);
@@ -1523,17 +1614,17 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.5.0)
     project(LCNXComponent2)
-
+    
     set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-
+    
     if(DEFINED PACKAGE_FIND_FILE)
         include(${PACKAGE_FIND_FILE})
     endif()
-
+    
     include_directories(${NATIVERENDER_ROOT_PATH}
                         ${NATIVERENDER_ROOT_PATH}/render
                         ${NATIVERENDER_ROOT_PATH}/manager)
-
+    
     add_library(nativerender SHARED
                 render/EGLRender.cpp
                 manager/plugin_manager.cpp
@@ -1544,42 +1635,42 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
         # Set the name of the NDK library to search for.
         EGL
     )
-
+    
     find_library(
         # Set the name of the path variable.
         GLES-lib
         # Set the name of the NDK library to search for.
         GLESv3
     )
-
+    
     find_library(
         # Set the name of the path variable.
         hilog-lib
         # Set the name of the NDK library to search for.
         hilog_ndk.z
     )
-
+    
     find_library(
         # Set the name of the path variable.
         libace-lib
         # Set the name of the NDK library to search for.
         ace_ndk.z
     )
-
+    
     find_library(
         # Set the name of the path variable.
         libnapi-lib
         # Set the name of the NDK library to search for.
         ace_napi.z
     )
-
+    
     find_library(
         # Set the name of the path variable.
         libuv-lib
         # Set the name of the NDK library to search for.
         uv
     )
-
+    
     target_link_libraries(nativerender PUBLIC ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
     ```
 
@@ -1587,1018 +1678,170 @@ This example shows how to create an **XComponent** of the SURFACE type on the Ar
 
     ![Figure](./figures/drawStar.jpeg)
 
-## Managing the Surface Lifecycle with NativeXComponent
+### Using SurfaceId for Rendering and Drawing in ArkTS
 
-Unlike the previous scenarios, this scenario involves using ArkUI NDK APIs on the native side to create XComponent components for custom rendering. The key steps include: creating components, obtaining **NativeXComponent** instances, registering lifecycle callbacks for the **XComponent** along with touch, mouse, and key event callbacks, obtaining **NativeWindow** instances through these callbacks, performing graphic rendering on **XComponent** components using OpenGL ES/EGL APIs, and finally mounting the display using **ContentSlot** placeholder components in the ArkTS layer. The development mainly involves the following use cases:
+The following is an example of using SurfaceId for rendering and drawing, and the main development scenarios:
 
-- Register the lifecycle and event callbacks of the **XComponent**.
-- Initialize the environment, obtain the current state, and respond to various events via these callbacks.
-- Use the **NativeWindow** instance with EGL APIs to develop custom drawing content, and allocate and submit buffers to the graphics queue.
-
-**Constraints**
-
-When constructing **XComponent** components, be sure to select the appropriate node type that meets your service requirements.
+- Create an XComponent in ArkTS and use XComponentController to manage the lifecycle of the surface.
+- Obtain the surface ID in the OnSurfaceCreated callback and pass it to the AVPlayer.
+- Use the surface ID to initialize the AVPlayer and set necessary information for it to play the video.
 
 > **NOTE**
 >
-> 1. **OH_NativeXComponent** instances are cached in a dictionary on the native side. Their keys must be globally unique, and they must be promptly removed from the dictionary when the corresponding **XComponent** component is destroyed.
->
-> 2. During development with multiple **XComponent** components, make sure the keys used to cache resources on the Native side are unique. The two recommended key formats are as follows: **Id** + random number; **surfaceId**.
-
-**lifecycle Callbacks**
-
-- OnSurfaceCreated   	
-
-  Triggering time: This callback is triggered after the XComponent is created and the surface is created.
-
-  ArkTS-side sequence
-
-  ![OnSurfaceCreated](./figures/onSurfaceCreated.png)
-
-- OnSurfaceChanged
-
-  Triggered after surface size changes trigger re-layout.
-
-  ArkTS-side sequence
-
-  ![OnSurfaceChanged](./figures/onSurfaceChanged.png)
-
-- OnSurfaceDestroyed
-
-  Triggered when the **XComponent** component is destroyed, which is consistent with the destruction timing of common ArkUI components.
-
-  ArkTS-side sequence
-
-  ![OnSurfaceDestroyed](./figures/onSurfaceDestroyed.png)
+> For more information about how to use the AVPlayer, see [AVPlayer](../reference/apis-media-kit/arkts-apis-media-AVPlayer.md).
 
 **Available APIs**
 
-| API                                                      | Description                                                        |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, char* id, uint64_t* size) | Obtains the ID of an **XComponent**.                                        |
-| OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, const void* window, uint64_t* width, uint64_t* height) | Obtains the size of the surface held by an **XComponent**.                         |
-| OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, const void* window, double* x, double* y) | Obtains the offset of the surface held by the **XComponent** relative to the upper left corner of its parent component.     |
-| OH_NativeXComponent_GetTouchEvent(OH_NativeXComponent* component, const void* window, OH_NativeXComponent_TouchEvent* touchEvent) | Obtains the touch event triggered by an **XComponent**. For details about the attribute values in **touchEvent**, see [OH_NativeXComponent_TouchEvent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchevent.md).|
-| OH_NativeXComponent_GetTouchPointToolType(OH_NativeXComponent* component, uint32_t pointIndex, OH_NativeXComponent_TouchPointToolType* toolType) | Obtains the tool type of an **XComponent** touch point.                            |
-| OH_NativeXComponent_GetTouchPointTiltX(OH_NativeXComponent* component, uint32_t pointIndex, float* tiltX) | Obtains the tilt of an **XComponent** touch point relative to the x-axis.                   |
-| OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, uint32_t pointIndex, float* tiltY) | Obtains the tilt of an **XComponent** touch point relative to the y-axis.                   |
-| OH_NativeXComponent_GetMouseEvent(OH_NativeXComponent* component, const void* window, OH_NativeXComponent_MouseEvent* mouseEvent) | Obtains the mouse event triggered by an **XComponent**.                            |
-| OH_NativeXComponent_RegisterCallback(OH_NativeXComponent* component, OH_NativeXComponent_Callback* callback) | Registers a lifecycle or touch event callback for an **OH_NativeXComponent** instance.     |
-| OH_NativeXComponent_RegisterMouseEventCallback(OH_NativeXComponent* component, OH_NativeXComponent_MouseEvent_Callback* callback) | Registers the mouse event callback for an **OH_NativeXComponent** instance.               |
-| OH_NativeXComponent_RegisterFocusEventCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, void* window)) | Registers the focus obtaining event callback for an **OH_NativeXComponent** instance.           |
-| OH_NativeXComponent_RegisterKeyEventCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, void* window)) | Registers the key event callback for an **OH_NativeXComponent** instance.               |
-| OH_NativeXComponent_RegisterBlurEventCallback(OH_NativeXComponent* component, void (\*callback)(OH_NativeXComponent* component, void* window)) | Registers the focus loss event callback for an **OH_NativeXComponent** instance.           |
-| OH_NativeXComponent_GetKeyEvent(OH_NativeXComponent* component, OH_NativeXComponent_KeyEvent\** keyEvent) | Obtains the key event triggered by an **XComponent**.                            |
-| OH_NativeXComponent_GetKeyEventAction(OH_NativeXComponent_KeyEvent* keyEvent, OH_NativeXComponent_KeyAction* action) | Obtains the action of a key event.                                        |
-| OH_NativeXComponent_GetKeyEventCode(OH_NativeXComponent_KeyEvent* keyEvent, OH_NativeXComponent_KeyCode* code) | Obtains the key code value of a key event.                                      |
-| OH_NativeXComponent_GetKeyEventSourceType(OH_NativeXComponent_KeyEvent* keyEvent, OH_NativeXComponent_EventSourceType* sourceType) | Obtains the input source type of a key event.                                  |
-| OH_NativeXComponent_GetKeyEventDeviceId(OH_NativeXComponent_KeyEvent* keyEvent, int64_t* deviceId) | Obtains the device ID of a key event.                                      |
-| OH_NativeXComponent_GetKeyEventTimestamp(OH_NativeXComponent_KeyEvent* keyEvent, int64_t* timestamp) | Obtains the timestamp of a key event.                                      |
-| OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName) | Obtains the native API set of a specified type.                          |
-| OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content) | Obtains a **NodeContent** object on the ArkTS side and maps it to an **ArkUI_NodeContentHandle** object on the native side.|
-| OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData) | Saves custom data to the specified **NodeContent** object.                         |
-| OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event) | Obtains the object that triggers the specified **NodeContent** event.                             |
-| OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content) | Obtains the custom data saved on the specified **NodeContent** object.                   |
-| OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeContentEvent* event) | Obtains the type of the specified **NodeContent** event.                         |
-| OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node) | Adds an ArkUI component node to the specified **NodeContent** object.          |
-| OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, ArkUI_NodeContentCallback callback) | Registers an event callback for the **NodeContent**.                                   |
-| OH_NativeXComponent_GetNativeXComponent(ArkUI_NodeHandle node) | Obtains a pointer of the **OH_NativeXComponent** type based on the specified component instance created by the native API.|
-| OH_NativeXComponent_GetHistoricalPoints(OH_NativeXComponent* component, const void* window, int32_t* size, OH_NativeXComponent_HistoricalPoint** historicalPoints ) | Obtains the historical touch point data for the touch event of an **OH_NativeXComponent** instance. Some input devices report touch points at very high frequencies (up to 1 ms intervals). However, since UI updates typically do not require such high-frequency updates, the system consolidates touch events and reports them once per frame. All touch points collected during the current frame are preserved as historical touch points for applications that need direct access to this raw data. For details about the specifications of historical touch points, see [Resampling and Historical Points](arkts-interaction-development-guide-touch-screen.md#resampling-and-historical-points).|
-
-> **NOTE**
->
-> The preceding APIs do not support cross-thread access.
->
-> When the XComponent is destroyed (after the **onSurfaceDestroyed** callback is triggered), the **OH_NativeXComponent** and window objects obtained through the preceding APIs will be released. If these object are used again, crashes may occur due to the use of dangling or null pointers.
+| API                                   | Description                                     |
+| ----------------------------------------- | ----------------------------------------- |
+| onSurfaceCreated(surfaceId: string): void | Called when the surface held by the **XComponent** is created.|
 
 **How to Develop**
 
-The following uses the SURFACE type as an example to describe how to use the **XComponent** to call the Node-API to create an EGL/GLES environment, implement drawing graphics on the main page, and change the graphics color. The following only contains the main steps. For details, see <!--RP4-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP4End-->.
-
-1. Define the **XComponent** on the UI.
-
-    <!-- @[page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/ets/pages/PageOne.ets) -->
-
-    ``` TypeScript
-    import nativeNode from 'libnativerender.so';
-    import {NodeContent} from '@kit.ArkUI';
-
-    // ···
-    @Component
-    export struct PageOne {
-      @State currentStatus: string = 'init';
-      private nodeContent: NodeContent = new NodeContent();
-      aboutToAppear():void{
-        // Create a node through the C API and add it to the nodeContent manager.
-        nativeNode.createNativeNode(this.nodeContent,'CreatNativeNode');
-      }
-
-      build() {
-        NavDestination() {
-            Column() {
-            Row() {
-                Text('Native XComponent Sample')
-                .fontSize('24fp')
-                .fontWeight(500)
-                .margin({
-                    left: 24,
-                    top: 12
-                })
-            }
-            .margin({ top: 24 })
-            .width('100%')
-            .height(56)
-
-            Column({ space: 10 }) {
-                // Display the native components stored in the nodeContent manager.
-                ContentSlot(this.nodeContent);
-                Column().height(20)
-                Text(this.currentStatus)
-                .fontSize('24fp')
-                .fontWeight(500)
-            }
-            .onClick(() => {
-                let hasChangeColor: boolean = false;
-                // Obtain the current drawing state.
-                if (nativeNode.getStatus()) {
-                hasChangeColor = nativeNode.getStatus().hasChangeColor;
-                }
-                if (hasChangeColor) {
-                this.currentStatus = 'change color';
-                }
-            })
-            .margin({
-                top: 27,
-                left: 12,
-                right: 12
-            })
-            .height('40%')
-            .width('90%')
-
-            Row() {
-                Button('Draw Star')
-                .fontSize('16fp')
-                .fontWeight(500)
-                .margin({ bottom: 24 })
-                .onClick(() => {
-                    // Call drawPattern to draw content.
-                    nativeNode.drawPattern();
-                    let hasDraw: boolean = false;
-                    // Obtain the current drawing state.
-                    if (nativeNode.getStatus()) {
-                        hasDraw = nativeNode.getStatus().hasDraw;
-                    }
-                    if (hasDraw) {
-                        this.currentStatus = 'draw star';
-                    }
-                })
-                .width('53.6%')
-                .height(40)
-            }
-            .width('100%')
-            .justifyContent(FlexAlign.Center)
-            .alignItems(VerticalAlign.Bottom)
-            .layoutWeight(1)
-            }
-            .width('100%')
-            .height('100%')
-        }
-      }
-    }
-    ```
-
-2. Register the Node-API module. For details, see [Node-API Development Specifications](../napi/napi-guidelines.md).
-
-    <!-- @[napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/napi_init.cpp) -->
-
-    ``` C++
-    #include <hilog/log.h>
-
-    #include "common/common.h"
-    #include "manager/plugin_manager.h"
-
-    namespace NativeXComponentSample {
-    // In the napi_init.cpp file, use the Init method to register the target function to pass in the encapsulated C++ methods for the ArkTS method to call.
-    EXTERN_C_START
-    static napi_value Init(napi_env env, napi_value exports)
-    {
-        // ···
-        // Expose APIs to the ArkTS side.
-        napi_property_descriptor desc[] = {
-            {"createNativeNode", nullptr, PluginManager::createNativeNode, nullptr, nullptr, nullptr,
-            napi_default, nullptr },
-            {"getStatus", nullptr, PluginManager::GetXComponentStatus, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
-            {"drawPattern", nullptr, PluginManager::NapiDrawPattern, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
-            // ···
-        };
-        if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
-            return nullptr;
-        }
-        // ···
-        return exports;
-    }
-    EXTERN_C_END
-
-    // Provide module descriptor configuration. You can modify parameters as needed.
-    static napi_module nativerenderModule = { .nm_version = 1,
-        .nm_flags = 0,
-        .nm_filename = nullptr,
-        // Entry point function
-        .nm_register_func = Init, // Specify the callback for when the corresponding module is loaded.
-        // Module name
-        .nm_modname = "nativerender", // Specify the module name, which must be consistent with the value of libraryname in the XComponent declaration on the ArkTS side.
-        .nm_priv = ((void*)0),
-        .reserved = { 0 } };
-
-    // The method decorated by __attribute__((constructor)) is automatically called by the system. The Node-API napi_module_register() is used to pass in the module descriptor configuration for module registration.
-    extern "C" __attribute__((constructor)) void RegisterModule(void)
-    {
-        napi_module_register(&nativerenderModule);
-    }
-    } // namespace NativeXComponentSample
-    ```
-
-3. Register the **XComponent** event callback and use the Node-API to implement it.
-
-    (1) Define the callbacks for the touch event of the **XComponent** component and for when a surface is successfully created, changed, or destroyed.
-
-    <!-- @[plugin_manager_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.h) -->
-
-    ``` C
-    // Define the PluginManager class in the header file.
-    class PluginManager {
-    public:
-        static OH_NativeXComponent_Callback callback_;
-        PluginManager();
-        ~PluginManager();
-
-        static PluginManager* GetInstance()
-        {
-            return &PluginManager::pluginManager_;
-        }
-        static napi_value createNativeNode(napi_env env, napi_callback_info info);
-        static napi_value GetXComponentStatus(napi_env env, napi_callback_info info);
-        static napi_value NapiDrawPattern(napi_env env, napi_callback_info info);
-        // ···
-        // CApi XComponent
-        void OnSurfaceChanged(OH_NativeXComponent* component, void* window);
-        void OnSurfaceDestroyed(OH_NativeXComponent* component, void* window);
-        void DispatchTouchEvent(OH_NativeXComponent* component, void* window);
-        void OnSurfaceCreated(OH_NativeXComponent* component, void* window);
-        // ···
-
-    private:
-        static PluginManager pluginManager_;
-
-        std::unordered_map<std::string, OH_NativeXComponent*> nativeXComponentMap_;
-        // ···
-        std::unordered_map<std::string, PluginManager*> pluginManagerMap_;
-
-    public:
-        EGLCore *eglcore_;
-        uint64_t width_;
-        uint64_t height_;
-        OH_NativeXComponent_TouchEvent touchEvent_;
-        static int32_t hasDraw_;
-        static int32_t hasChangeColor_;
-        // ···
-    };
-    ```
-
-    <!-- @[plugin_on_surface_created](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
-    ``` C++
-    // Define the OnSurfaceCreatedCB() function to encapsulate the initialization environment and drawing background.
-    void OnSurfaceCreatedCB(OH_NativeXComponent* component, void* window)
-    {
-        // ···
-        // Initialize the environment and draw the background.
-        auto *pluginManger = PluginManager::GetInstance();
-        pluginManger->OnSurfaceCreated(component, window);
-    }
-    ```
-
-    <!-- @[plugin_on_surface_changed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
-    ``` C++
-    // Define the OnSurfaceChangedCB() function.
-    void OnSurfaceChangedCB(OH_NativeXComponent* component, void* window)
-    {
-        // ···
-        auto *pluginManger = PluginManager::GetInstance();
-        // Encapsulate the OnSurfaceChanged method.
-        pluginManger->OnSurfaceChanged(component, window);
-    }
-    ```
-
-    <!-- @[plugin_on_surface_destroyed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
-    ``` C++
-    // Define the OnSurfaceDestroyedCB() function and encapsulate in it the Release() method in the PluginRender class for releasing resources.
-    void OnSurfaceDestroyedCB(OH_NativeXComponent* component, void* window)
-    {
-        // ···
-        auto *pluginManger = PluginManager::GetInstance();
-        pluginManger->OnSurfaceDestroyed(component, window);
-    }
-    ```
-
-    <!-- @[plugin_dispatch_touch_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
-    ``` C++
-    // Define the DispatchTouchEventCB() function, which is triggered to respond to a touch event.
-    void DispatchTouchEventCB(OH_NativeXComponent* component, void* window)
-    {
-        // ···
-        auto *pluginManger = PluginManager::GetInstance();
-        pluginManger->DispatchTouchEvent(component, window);
-    }
-    ```
-
-    (2) Define the **createNativeNode** API, which will be called by the **createNativeNode()** API exposed to the ArkTS side.
-
-    <!-- @[plugin_create_native_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
-    ``` C++
-    ArkUI_NodeHandle CreateNodeHandle(const std::string &tag)
-    {
-        ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-        ArkUI_NumberValue value[] = {480};
-        ArkUI_NumberValue value1[] = {{.u32 = 15}, {.f32 = 15}};
-        ArkUI_AttributeItem item = {value, 1, "changeSize"};
-        ArkUI_AttributeItem item1 = {value1, 2};
-        nodeAPI->setAttribute(column, NODE_WIDTH, &item);
-        value[0].f32 = COLUMN_MARGIN;
-        nodeAPI->setAttribute(column, NODE_MARGIN, &item);
-        // Create a XComponent component.
-        xc = nodeAPI->createNode(ARKUI_NODE_XCOMPONENT);
-        // Set XComponent attributes.
-        value[0].u32 = ARKUI_XCOMPONENT_TYPE_SURFACE;
-        nodeAPI->setAttribute(xc, NODE_XCOMPONENT_TYPE, &item);
-        nodeAPI->setAttribute(xc, NODE_XCOMPONENT_ID, &item);
-        nodeAPI->setAttribute(xc, NODE_XCOMPONENT_SURFACE_SIZE, &item1);
-        ArkUI_NumberValue focusable[] = {1};
-        focusable[0].i32 = 1;
-        ArkUI_AttributeItem focusableItem = {focusable, 1};
-        nodeAPI->setAttribute(xc, NODE_FOCUSABLE, &focusableItem);
-        ArkUI_NumberValue valueSize[] = {480};
-        ArkUI_AttributeItem itemSize = {valueSize, 1};
-        valueSize[0].f32 = XC_WIDTH;
-        nodeAPI->setAttribute(xc, NODE_WIDTH, &itemSize);
-        valueSize[0].f32 = XC_HEIGHT;
-        nodeAPI->setAttribute(xc, NODE_HEIGHT, &itemSize);
-        ArkUI_AttributeItem item2 = {value, 1, "ndkxcomponent"};
-        nodeAPI->setAttribute(xc, NODE_ID, &item2);
-        
-        auto *nativeXComponent = OH_NativeXComponent_GetNativeXComponent(xc);
-        if (!nativeXComponent) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "GetNativeXComponent error");
-            return column;
-        }
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "GetNativeXComponent success");
-        // Register XComponent callbacks.
-        OH_NativeXComponent_RegisterCallback(nativeXComponent, &PluginManager::callback_);
-        auto typeRet = nodeAPI->getAttribute(xc, NODE_XCOMPONENT_TYPE);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "xcomponent type: %{public}d",
-                    typeRet->value[0].i32);
-        auto idRet = nodeAPI->getAttribute(xc, NODE_XCOMPONENT_ID);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "xcomponent id: %{public}s",
-                    idRet->string);
-        nodeAPI->addChild(column, xc);
-        return column;
-    }
-
-    napi_value PluginManager::createNativeNode(napi_env env, napi_callback_info info)
-    {
-        if ((env == nullptr) || (info == nullptr)) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "CreateNativeNode env or info is null");
-            return nullptr;
-        }
-        size_t argCnt = 2;
-        napi_value args[2] = { nullptr, nullptr };
-        if (napi_get_cb_info(env, info, &argCnt, args, nullptr, nullptr) != napi_ok) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "CreateNativeNode napi_get_cb_info failed");
-        }
-        if (argCnt != ARG_CNT) {
-            napi_throw_type_error(env, NULL, "Wrong number of arguments");
-            return nullptr;
-        }
-        ArkUI_NodeContentHandle nodeContentHandle_ = nullptr;
-        OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &nodeContentHandle_);
-        nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1*>(
-            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")
-        );
-        std::string tag = value2String(env, args[1]);
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "tag=%{public}s", tag.c_str());
-        int32_t ret = OH_ArkUI_NodeContent_SetUserData(nodeContentHandle_, new std::string(tag));
-        if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "setUserData failed error=%{public}d", ret);
-        }
-        if (nodeAPI != nullptr && nodeAPI->createNode != nullptr && nodeAPI->addChild != nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                        "CreateNativeNode tag=%{public}s", tag.c_str());
-            auto nodeContentEvent = [](ArkUI_NodeContentEvent *event) {
-                ArkUI_NodeContentHandle handle = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(event);
-                std::string *userDate = reinterpret_cast<std::string*>(OH_ArkUI_NodeContent_GetUserData(handle));
-                if (OH_ArkUI_NodeContentEvent_GetEventType(event) == NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW) {
-                    ArkUI_NodeHandle testNode;
-                    if (userDate) {
-                        testNode = CreateNodeHandle(*userDate);
-                        delete userDate;
-                        userDate = nullptr;
-                    } else {
-                        testNode = CreateNodeHandle("noUserData");
-                    }
-                    OH_ArkUI_NodeContent_AddNode(handle, testNode);
-                }
-            };
-            OH_ArkUI_NodeContent_RegisterCallback(nodeContentHandle_, nodeContentEvent);
-        }
-        return nullptr;
-    }
-    ```
-
-    (3) Define the **NapiDrawPattern** API, which will be called by the **drawPattern()** API exposed to the ArkTS side.
-
-    <!-- @[plugin_draw_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-
-    ``` C++
-    napi_value PluginManager::NapiDrawPattern(napi_env env, napi_callback_info info)
-    {
-        // ···
-        // Obtain environment variables.
-        napi_value thisArg;
-        if (napi_get_cb_info(env, info, nullptr, nullptr, &thisArg, nullptr) != napi_ok) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "NapiDrawPattern: napi_get_cb_info fail");
-            return nullptr;
-        }
-
-        auto *pluginManger = PluginManager::GetInstance();
-        // Call the drawing API.
-        pluginManger->eglcore_->Draw(hasDraw_);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "PluginManager", "render->eglCore_->Draw() executed");
-        
-        return nullptr;
-    }
-    ```
-
-4. Initialize the environment, including initializing the available EGLDisplay, determining the available surface configuration, creating the rendering surface, and creating and associating the context.
-
-    <!-- @[native_update_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    void EGLCore::UpdateSize(int width, int height)
-    {
-        // width_ and height_ are defined in the header file.
-        width_ = width;
-        height_ = height;
-        if (width_ > 0) {
-            widthPercent_ = FIFTY_PERCENT * height_ / width_;
-        }
-    }
-    ```
-
-    <!-- @[native_create_context_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    bool EGLCore::EglContextInit(void* window, int width, int height)
-    {
-        // ···
-        UpdateSize(width, height);
-        eglWindow_ = static_cast<EGLNativeWindowType>(window);
-
-        // Initialize the display.
-        eglDisplay_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-        if (eglDisplay_ == EGL_NO_DISPLAY) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "eglGetDisplay: unable to get EGL display");
-            return false;
-        }
-        // Initialize the EGL.
-        EGLint majorVersion;
-        EGLint minorVersion;
-        if (!eglInitialize(eglDisplay_, &majorVersion, &minorVersion)) {
-            OH_LOG_Print(
-                LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "eglInitialize: unable to get initialize EGL display");
-            return false;
-        }
-
-        // Select the configuration.
-        const EGLint maxConfigSize = 1;
-        EGLint numConfigs;
-        if (!eglChooseConfig(eglDisplay_, ATTRIB_LIST, &eglConfig_, maxConfigSize, &numConfigs)) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "eglChooseConfig: unable to choose configs");
-            return false;
-        }
-        // Create an environment.
-        return CreateEnvironment();
-    }
-    ```
-
-    <!-- @[native_create_environment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    bool EGLCore::CreateEnvironment()
-    {
-        // Create a surface.
-        if (eglWindow_ == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "eglWindow_ is null");
-            return false;
-        }
-        eglSurface_ = eglCreateWindowSurface(eglDisplay_, eglConfig_, eglWindow_, NULL);
-        if (eglSurface_ == nullptr) {
-            OH_LOG_Print(
-                LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "eglCreateWindowSurface: unable to create surface");
-            return false;
-        }
-        // Create a context.
-        eglContext_ = eglCreateContext(eglDisplay_, eglConfig_, EGL_NO_CONTEXT, CONTEXT_ATTRIBS);
-        if (!eglMakeCurrent(eglDisplay_, eglSurface_, eglSurface_, eglContext_)) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "eglMakeCurrent failed");
-            return false;
-        }
-        // Create a program.
-        program_ = CreateProgram(VERTEX_SHADER, FRAGMENT_SHADER);
-        if (program_ == PROGRAM_ERROR) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "CreateProgram: unable to create program");
-            return false;
-        }
-        return true;
-    }
-    ```
-
-    <!-- @[native_create_program](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    GLuint EGLCore::CreateProgram(const char* vertexShader, const char* fragShader)
-    {
-        if ((vertexShader == nullptr) || (fragShader == nullptr)) {
-            OH_LOG_Print(
-                LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram: vertexShader or fragShader is null");
-            return PROGRAM_ERROR;
-        }
-
-        GLuint vertex = LoadShader(GL_VERTEX_SHADER, vertexShader);
-        if (vertex == PROGRAM_ERROR) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram vertex error");
-            return PROGRAM_ERROR;
-        }
-
-        GLuint fragment = LoadShader(GL_FRAGMENT_SHADER, fragShader);
-        if (fragment == PROGRAM_ERROR) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram fragment error");
-            return PROGRAM_ERROR;
-        }
-
-        GLuint program = glCreateProgram();
-        if (program == PROGRAM_ERROR) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram program error");
-            glDeleteShader(vertex);
-            glDeleteShader(fragment);
-            return PROGRAM_ERROR;
-        }
-
-        // These gl functions have no return value.
-        glAttachShader(program, vertex);
-        glAttachShader(program, fragment);
-        glLinkProgram(program);
-
-        GLint linked;
-        glGetProgramiv(program, GL_LINK_STATUS, &linked);
-        if (linked != 0) {
-            glDeleteShader(vertex);
-            glDeleteShader(fragment);
-            return program;
-        }
-
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "createProgram linked error");
-        GLint infoLen = 0;
-        glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLen);
-        if (infoLen > 1) {
-            char* infoLog = (char*)malloc(sizeof(char) * (infoLen + 1));
-            memset(infoLog, 0, infoLen + 1);
-            glGetProgramInfoLog(program, infoLen, nullptr, infoLog);
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "glLinkProgram error = %s", infoLog);
-            free(infoLog);
-            infoLog = nullptr;
-        }
-        glDeleteShader(vertex);
-        glDeleteShader(fragment);
-        glDeleteProgram(program);
-        return PROGRAM_ERROR;
-    }
-    ```
-
-    <!-- @[native_load_shader](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    GLuint EGLCore::LoadShader(GLenum type, const char* shaderSrc)
-    {
-        if ((type <= 0) || (shaderSrc == nullptr)) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "glCreateShader type or shaderSrc error");
-            return PROGRAM_ERROR;
-        }
-
-        GLuint shader = glCreateShader(type);
-        if (shader == 0) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "glCreateShader unable to load shader");
-            return PROGRAM_ERROR;
-        }
-
-        // These gl functions have no return value.
-        glShaderSource(shader, 1, &shaderSrc, nullptr);
-        glCompileShader(shader);
-
-        GLint compiled;
-        glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
-        if (compiled != 0) {
-            return shader;
-        }
-
-        GLint infoLen = 0;
-        glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-        if (infoLen <= 1) {
-            glDeleteShader(shader);
-            return PROGRAM_ERROR;
-        }
-
-        char* infoLog = (char*)malloc(sizeof(char) * (infoLen + 1));
-        if (infoLog != nullptr) {
-            memset(infoLog, 0, infoLen + 1);
-            glGetShaderInfoLog(shader, infoLen, nullptr, infoLog);
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "glCompileShader error = %s", infoLog);
-            free(infoLog);
-            infoLog = nullptr;
-        }
-        glDeleteShader(shader);
-        return PROGRAM_ERROR;
-    }
-    ```
-
-5. Implement the rendering function.
-
-   (1) Draw the background.
-
-    <!-- @[native_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    /**
-    * Background color #f4f4f4.
-    */
-    const GLfloat BACKGROUND_COLOR[] = {244.0f / 255, 244.0f / 255, 244.0f / 255, 1.0f};
-
-    /**
-    * Drawing pattern color #7E8FFB.
-    */
-    const GLfloat DRAW_COLOR[] = {126.0f / 255, 143.0f / 255, 251.0f / 255, 1.0f};
-
-    /**
-    * New drawing pattern color #92D6CC.
-    */
-    const GLfloat CHANGE_COLOR[] = {146.0f / 255, 214.0f / 255, 204.0f / 255, 1.0f};
-
-    /**
-    * Background rectangle vertices
-    */
-    const GLfloat BACKGROUND_RECTANGLE_VERTICES[] = {
-        -1.0f, 1.0f,
-        1.0f, 1.0f,
-        1.0f, -1.0f,
-        -1.0f, -1.0f};
-    ```
-
-    <!-- @[native_background](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    // Background color
-    void EGLCore::Background()
-    {
-        GLint position = PrepareDraw();
-        if (position == POSITION_ERROR) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Background get position failed");
-            return;
-        }
-
-        if (!ExecuteDraw(position, BACKGROUND_COLOR,
-                        BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Background execute draw failed");
-            return;
-        }
-
-        if (!FinishDraw()) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Background FinishDraw failed");
-            return;
-        }
-    }
-    ```
-
-    <!-- @[native_prepare_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    // Prepare for drawing and obtain the value of position. When the creation is successful, the value of position starts from 0.
-    GLint EGLCore::PrepareDraw()
-    {
-        if ((eglDisplay_ == nullptr) || (eglSurface_ == nullptr) || (eglContext_ == nullptr) ||
-            (!eglMakeCurrent(eglDisplay_, eglSurface_, eglSurface_, eglContext_))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "PrepareDraw: param error");
-            return POSITION_ERROR;
-        }
-
-        // These gl functions have no return value.
-        glViewport(DEFAULT_X_POSITION, DEFAULT_Y_POSITION, width_, height_);
-        glClearColor(GL_RED_DEFAULT, GL_GREEN_DEFAULT, GL_BLUE_DEFAULT, GL_ALPHA_DEFAULT);
-        glClear(GL_COLOR_BUFFER_BIT);
-        glUseProgram(program_);
-
-        return glGetAttribLocation(program_, POSITION_NAME);
-    }
-    ```
-
-    <!-- @[native_execute_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    // Draw a specified color in the specified area based on the input parameters.
-    bool EGLCore::ExecuteDraw(GLint position, const GLfloat* color, const GLfloat shapeVertices[], unsigned long vertSize)
-    {
-        if ((position > 0) || (color == nullptr) || (vertSize / sizeof(shapeVertices[0])) != SHAPE_VERTICES_SIZE) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ExecuteDraw: param error");
-            return false;
-        }
-
-        // These gl functions have no return value.
-        glVertexAttribPointer(position, POINTER_SIZE, GL_FLOAT, GL_FALSE, 0, shapeVertices);
-        glEnableVertexAttribArray(position);
-        glVertexAttrib4fv(1, color);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, TRIANGLE_FAN_SIZE);
-        glDisableVertexAttribArray(position);
-
-        return true;
-    }
-    ```
-
-    <!-- @[native_finish_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    // End the drawing operation.
-    bool EGLCore::FinishDraw()
-    {
-        // Forcibly flush the buffer.
-        glFlush();
-        glFinish();
-        return eglSwapBuffers(eglDisplay_, eglSurface_);
-    }
-    ```
-
-   (2) Draw the shape.
-
-    <!-- @[native_draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-    
-    ``` C++
-    void EGLCore::Draw(int& hasDraw)
-    {
-        flag_ = false;
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "EGLCore", "Draw");
-        GLint position = PrepareDraw();
-        if (position == POSITION_ERROR) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw get position failed");
-            return;
-        }
-    
-        // Draw the background.
-        if (!ExecuteDraw(position, BACKGROUND_COLOR,
-                         BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw background failed");
-            return;
-        }
-    
-        // Divide the star into five quadrilaterals and calculate the four vertices of one of the quadrilaterals.
-        GLfloat rotateX = 0;
-        GLfloat rotateY = FIFTY_PERCENT * height_;
-        GLfloat centerX = 0;
-        // Convert DEG(54° & 18°) to RAD
-        GLfloat centerY = -rotateY * (M_PI / 180 * 54) * (M_PI / 180 * 18);
-        // Convert DEG(18°) to RAD
-        GLfloat leftX = -rotateY * (M_PI / 180 * 18);
-        GLfloat leftY = 0;
-        // Convert DEG(18°) to RAD
-        GLfloat rightX = rotateY * (M_PI / 180 * 18);
-        GLfloat rightY = 0;
-    
-        // Determine the vertices for drawing the quadrilateral, which are represented by the percentages of the drawing area.
-        const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
-            rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-    
-        if (!ExecuteDrawStar(position, DRAW_COLOR, shapeVertices, sizeof(shapeVertices))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
-            return;
-        }
-    
-        // Convert DEG(72°) to RAD
-        GLfloat rad = M_PI / 180 * 72;
-        // Rotate four times
-        // Define NUM_4 in the egl_core.cpp file with a value of 4.
-        for (int i = 0; i < NUM_4; ++i) {
-            // Obtain the vertices for the other four quadrilaterals through rotation.
-            Rotate2d(centerX, centerY, &rotateX, &rotateY, rad);
-            Rotate2d(centerX, centerY, &leftX, &leftY, rad);
-            Rotate2d(centerX, centerY, &rightX, &rightY, rad);
-    
-            // Determine the vertices for drawing the quadrilateral, which are represented by the percentages of the drawing area.
-            const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
-                rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-    
-            // Draw the shape.
-            if (!ExecuteDrawStar(position, DRAW_COLOR, shapeVertices, sizeof(shapeVertices))) {
-                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
-                return;
-            }
-        }
-    
-        // End drawing.
-        if (!FinishDraw()) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw FinishDraw failed");
-            return;
-        }
-        hasDraw = 1;
-    
-        flag_ = true;
-    }
-    ```
-
-   (3) Change the colors, by drawing a new shape with the same size but different colors and replacing the original shape with the new shape.
-
-    <!-- @[native_change_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-    
-    ``` C++
-    void EGLCore::ChangeColor(int& hasChangeColor)
-    {
-        if (!flag_) {
-            return;
-        }
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor");
-        GLint position = PrepareDraw();
-        if (position == POSITION_ERROR) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor get position failed");
-            return;
-        }
-    
-        // Draw the background.
-        if (!ExecuteDraw(position, BACKGROUND_COLOR,
-                         BACKGROUND_RECTANGLE_VERTICES, sizeof(BACKGROUND_RECTANGLE_VERTICES))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor execute draw background failed");
-            return;
-        }
-    
-        // Determine the vertices for drawing the quadrilateral, which are represented by the percentages of the drawing area.
-        GLfloat rotateX = 0;
-        GLfloat rotateY = FIFTY_PERCENT * height_;
-        GLfloat centerX = 0;
-        // Convert DEG(54° & 18°) to RAD
-        GLfloat centerY = -rotateY * (M_PI / 180 * 54) * (M_PI / 180 * 18);
-        // Convert DEG(18°) to RAD
-        GLfloat leftX = -rotateY * (M_PI / 180 * 18);
-        GLfloat leftY = 0;
-        // Convert DEG(18°) to RAD
-        GLfloat rightX = rotateY * (M_PI / 180 * 18);
-        GLfloat rightY = 0;
-    
-        // Determine the vertices for drawing the quadrilateral, which are represented by the percentages of the drawing area.
-        const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
-            rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-    
-        // Use the new colors for drawing.
-        if (!ExecuteDrawNewStar(0, CHANGE_COLOR, shapeVertices, sizeof(shapeVertices))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
-            return;
-        }
-    
-        // Convert DEG(72°) to RAD
-        GLfloat rad = M_PI / 180 * 72;
-        // Rotate four times
-        // Define NUM_4 in the egl_core.cpp file with a value of 4.
-        for (int i = 0; i < NUM_4; ++i) {
-            // Obtain the vertices for the other four quadrilaterals through rotation.
-            Rotate2d(centerX, centerY, &rotateX, &rotateY, rad);
-            Rotate2d(centerX, centerY, &leftX, &leftY, rad);
-            Rotate2d(centerX, centerY, &rightX, &rightY, rad);
-            // Determine the vertices for drawing the quadrilateral, which are represented by the percentages of the drawing area.
-            const GLfloat shapeVertices[] = { centerX / width_, centerY / height_, leftX / width_, leftY / height_,
-                rotateX / width_, rotateY / height_, rightX / width_, rightY / height_ };
-    
-            // Use the new colors for drawing.
-            if (!ExecuteDrawNewStar(position, CHANGE_COLOR, shapeVertices, sizeof(shapeVertices))) {
-                OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Draw execute draw shape failed");
-                return;
-            }
-        }
-    
-        // End drawing.
-        if (!FinishDraw()) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ChangeColor FinishDraw failed");
-        }
-        hasChangeColor = 1;
-    }
-    // ···
-    bool EGLCore::ExecuteDrawNewStar(
-        GLint position, const GLfloat* color, const GLfloat shapeVertices[], unsigned long vertSize)
-    {
-        if ((position > 0) || (color == nullptr) || (vertSize / sizeof(shapeVertices[0])) != SHAPE_VERTICES_SIZE) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "ExecuteDraw: param error");
-            return false;
-        }
-    
-        // These gl functions have no return value.
-        glVertexAttribPointer(position, POINTER_SIZE, GL_FLOAT, GL_FALSE, 0, shapeVertices);
-        glEnableVertexAttribArray(position);
-        glVertexAttrib4fv(1, color);
-        glDrawArrays(GL_TRIANGLE_FAN, 0, TRIANGLE_FAN_SIZE);
-        glDisableVertexAttribArray(position);
-    
-        return true;
-    }
-    ```
-
-6. Release related resources.
-
-    Create the **Release()** method in the **EGLCore** class to release the resources requested during environment initialization, including the window display, rendering surface, and environment context.
-
-    <!-- @[native_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
-
-    ``` C++
-    void EGLCore::Release()
-    {
-        // Release the surface.
-        if ((eglDisplay_ == nullptr) || (eglSurface_ == nullptr) || (!eglDestroySurface(eglDisplay_, eglSurface_))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Release eglDestroySurface failed");
-        }
-        // Release the context.
-        if ((eglDisplay_ == nullptr) || (eglContext_ == nullptr) || (!eglDestroyContext(eglDisplay_, eglContext_))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Release eglDestroyContext failed");
-        }
-        // Release the display.
-        if ((eglDisplay_ == nullptr) || (!eglTerminate(eglDisplay_))) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "EGLCore", "Release eglTerminate failed");
-        }
-    }
-    ```
-
-7. Configure the specific CMakeLists to use the CMake toolchain to compile the C++ source code into a dynamic link library file.
-
-    ```CMake
-    # Set the minimum CMake version.
-    cmake_minimum_required(VERSION 3.4.1)
-    # Project name
-    project(XComponent)
-    
-    set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-    add_definitions(-DOHOS_PLATFORM)
-    # Set the header file search directory.
-    include_directories(
-        ${NATIVERENDER_ROOT_PATH}
-        ${NATIVERENDER_ROOT_PATH}/include
-    )
-    # Add the **nativerender** dynamic library, with the **libnativerender.so** library file. Add the .cpp files.
-    add_library(nativerender SHARED
-        render/egl_core.cpp
-        render/plugin_render.cpp
-        manager/plugin_manager.cpp
-        napi_init.cpp
-    )
-    
-    find_library(
-        EGL-lib
-        EGL
-    )
-    
-    find_library(
-        GLES-lib
-        GLESv3
-    )
-    
-    find_library(
-        hilog-lib
-        hilog_ndk.z
-    )
-    
-    find_library(
-        libace-lib
-        ace_ndk.z
-    )
-    
-    find_library(
-        libnapi-lib
-        ace_napi.z
-    )
-    
-    find_library(
-        libuv-lib
-        uv
-    )
-    # Add the libraries to be linked.
-    target_link_libraries(nativerender PUBLIC
-        ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
-    ```
-
-<!--RP1--><!--RP1End-->
+The following steps describe how to create an XComponent of the surface type in ArkTS, obtain the surface ID, and pass the surface ID to the AVPlayer to play the video.
+
+1. Create an XComponent and pass the XComponentController to it.
+   <!-- @[av_player_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->
+   ``` typescript
+   XComponent({ type: XComponentType.SURFACE, controller: this.videoXComponentController })
+   ```
+
+2. Register the onSurfaceCreated lifecycle in the XComponentController, obtain the surface ID, and pass the obtained surface ID and the information about the video source to be played to the AVPlayer.
+   <!-- @[av_player_xcomponent_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->
+   ``` typescript
+   class VideoXComponentController extends XComponentController {
+     private avPlayerController: AVPlayerController;
+   
+     constructor(avPlayerController: AVPlayerController) {
+       super();
+       this.avPlayerController = avPlayerController;
+     }
+   
+     onSurfaceCreated(surfaceId: string): void {
+       let source: VideoData = {
+         type: VideoDataType.RAW_FILE,
+         videoSrc: 'videoTest.mp4'
+       };
+       // Pass the surface ID and video source to AVPlayer.
+       this.avPlayerController.initAVPlayer(source, surfaceId);
+     }
+   }
+   ```
+
+3. The struct initializes an AVPlayer.
+   <!-- @[av_player_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/avplayertool/AVPlayerController.ets) -->
+   ``` typescript
+   public async initAVPlayer(source: VideoData, surfaceId: string) {
+     this.curSource = source;
+     if (source.seekTime) {
+       this.seekTime = source.seekTime;
+     }
+     if (source.isMuted) {
+       this.isMuted = source.isMuted
+     }
+     if (!this.curSource) {
+       return;
+     }
+     this.surfaceID = surfaceId; // Store the surface ID.
+     try {
+       this.avPlayer = await media.createAVPlayer();
+       this.setAVPlayerCallback();
+       // Set the video source based on the video file format.
+       switch (this.curSource.type) {
+         case VideoDataType.RAW_FILE:
+           let fileDescriptor = await this.context?.resourceManager.getRawFd(this.curSource.videoSrc);
+           this.avPlayer.fdSrc = fileDescriptor;
+           break;
+         case VideoDataType.URL:
+           this.avPlayer.url = this.curSource.videoSrc;
+           break;
+         case VideoDataType.RAW_M3U8_FILE:
+           // ...
+         case VideoDataType.RAW_MAP4_FILE:
+           // ...
+         default:
+           break;
+       }
+     } catch (err) {
+       hilog.error(CommonConstants.LOG_DOMAIN, TAG,
+         `InitPlayer failed, code is ${err.code}, message is ${err.message}`);
+     }
+   }
+   
+     private setAVPlayerCallback() {
+     if (!this.avPlayer) {
+       return;
+     }
+     this.avPlayer.on('durationUpdate', (time: number) => {
+       AppStorage.setOrCreate('DurationTime', time); // Update the total video duration.
+     });
+     this.avPlayer.on('timeUpdate', (time: number) => {
+       this.currentTime = time; // Update the current progress.
+       AppStorage.setOrCreate('CurrentTime', time);
+     });
+     this.avPlayer.on('error', (err: BusinessError) => {
+       if (!this.avPlayer) {
+         return;
+       }
+       hilog.error(CommonConstants.LOG_DOMAIN, TAG,
+         `Invoke avPlayer failed, code is ${err.code}, messasge is ${err.message}`);
+       this.avPlayer.reset().catch((err: BusinessError) => {
+         hilog.error(CommonConstants.LOG_DOMAIN, TAG,
+           `Reset failed, code is ${err.code}, message is ${err.message}`);
+       });
+     })
+     this.setStateChangeCallback();
+   }
+   
+     private setStateChangeCallback() {
+     if (!this.avPlayer) {
+       return;
+     }
+     this.avPlayer.on('stateChange', async (state) => {
+       if (!this.avPlayer) {
+         return;
+       }
+       switch (state) {
+         case 'idle':
+           hilog.info(CommonConstants.LOG_DOMAIN, TAG, `setAVPlayerCallback AVPlayer state idle called.`);
+           break;
+         case 'initialized':
+           this.avPlayer.surfaceId = this.surfaceID; // Set the surface ID, which is used as the canvas for carrying video images.
+           this.avPlayer.prepare().catch((err: BusinessError) => {
+             hilog.error(CommonConstants.LOG_DOMAIN, TAG,
+               `prepare failed, code is ${err.code}, message is ${err.message}`);
+           });
+           break;
+         case 'prepared':
+           // ...
+           // Implement automatic playback.
+           this.avPlayer.play().catch((err: BusinessError) => {
+             hilog.error(CommonConstants.LOG_DOMAIN, TAG, `play failed, code is ${err.code}, message is ${err.message}`);
+           })
+           break;
+         case 'playing':
+           this.isPlaying = true;
+           break;
+         case 'completed':
+           this.currentTime = 0;
+           break;
+         default:
+           break;
+       }
+     });
+   }
+   ```
+
+<!--RP1-->
+##  
+
+ 
+
+- [XComponent3D (API version 10) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent3D)
+- [OpenGL pyramid (API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkOpenGL)
+- [NativeXComponent (API version 19) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)
+
+ 
+
+- [ArkTSXComponent (API version 12) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)
+<!--RP1End-->

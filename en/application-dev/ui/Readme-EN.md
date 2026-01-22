@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy; @s10021109; @yangfan229-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-- [About This Kit](arkui-overview.md)
+- [Introduction to ArkUI](arkui-overview.md)
 - UI Development (ArkTS-based Declarative Development Paradigm)<!--arkts-ui-development-->
   - [UI Development (ArkTS-based Declarative Development Paradigm) Overview](arkts-ui-development-overview.md)
   - Basic Syntax of UI Paradigms<!--arkts-ui-paradigm-basic-syntax-->
@@ -17,28 +17,32 @@
       - [Custom Component Layout](state-management/arkts-page-custom-components-layout.md)
       - [Constraints on Access Modifiers of Custom Component Member Variables](state-management/arkts-custom-components-access-restrictions.md)
       - Custom Component Reuse<!--arkts-component-reusable-->
-        - [Custom Component Reuse V1](state-management/arkts-reusable.md)  
-        - [Custom Component Reuse V2](state-management/arkts-new-reusableV2.md)
+        - [\@Reusable Decorator: Reusing V1 Components](state-management/arkts-reusable.md)  
+        - [\@ReusableV2 Decorator: Reusing V2 Components](state-management/arkts-new-reusableV2.md)
       - Custom Component Freezing<!--arkts-component-freeze-->
-        - [Custom Component Freezing V1](state-management/arkts-custom-components-freeze.md)
+        - [V1 Custom Component Freezing](state-management/arkts-custom-components-freeze.md)
         - [Custom Component Freezing V2](state-management/arkts-custom-components-freezeV2.md)
     - UI Decorators<!--arkts-ui-decorator-->
-
+      - [UI Decorator Overview](state-management/arkts-decorator-overview.md)
     - Component Extension<!--arkts-extend-components-->
       - [Component Extension Overview](state-management/arkts-extend-components-overview.md)
       - [\@Builder Decorator: Custom Builder Function](state-management/arkts-builder.md)
       - [\@LocalBuilder Decorator: Maintaining Component Relationships](state-management/arkts-localBuilder.md)
       - [\@BuilderParam Decorator: Referencing the \@Builder Function](state-management/arkts-builderparam.md)
       - [wrapBuilder: Encapsulating Global @Builder](state-management/arkts-wrapBuilder.md)
+      - [mutableBuilder: Implementing Dynamic Update of Global @Builder](state-management/arkts-mutableBuilder.md)
       - [\@Styles Decorator: Defining Reusable Styles](state-management/arkts-style.md)
       - [\@Extend Decorator: Defining Extended Component Styles](state-management/arkts-extend.md)
       - [stateStyles: Applying Polymorphic Styles](state-management/arkts-statestyles.md)
       - [\@AnimatableExtend Decorator: Defining Animatable Properties](state-management/arkts-animatable-extend.md)
     - [\@Require Decorator: Validating Constructor Input Parameters](state-management/arkts-require.md)
   - UI Paradigm State Management<!--arkts-state-management-->
-    - [State Management Overview](state-management/arkts-state-management-overview.md)   
+    - [State Management Overview](state-management/arkts-state-management-overview.md)
+    - [State Management Terms](state-management/arkts-state-management-glossary.md)
+    - [State Management Principles](state-management/arkts-state-management-introduce.md)
+    - [Differences Between State Management V1 and V2 Update Mechanisms](state-management/arkts-v1-v2-update-difference.md)
     - [MVVM V1](state-management/arkts-mvvm.md)
-    - [MVVM V2](state-management/arkts-mvvm-V2.md)
+    - [MVVM V2](state-management/arkts-mvvm-v2.md)
     - State Management V1<!--arkts-state-management-v1-->
       - Component State Management<!--arkts-v1-component-state-management-->
         - [\@State Decorator: State Owned by Component](state-management/arkts-state.md)
@@ -74,6 +78,7 @@
       - [getTarget API: Obtaining Original Objects](state-management/arkts-new-getTarget.md)
       - [makeObserved API: Changing Unobservable Data to Observable Data](state-management/arkts-new-makeObserved.md)
       - [addMonitor and clearMonitor APIs: Dynamically Adding and Removing Listeners](state-management/arkts-new-addMonitor-clearMonitor.md)
+      - [applySync/flushUpdates/flushUIUpdates APIs: Synchronous Update](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
     - Syntax Sugar<!--arkts-state-management-syntactic-sugar-->
       - [$$ Syntax: Implementing Two-Way Synchronization for Built-in Components](state-management/arkts-two-way-sync.md)
       - [!! Syntax: Enabling Two-Way Binding](state-management/arkts-new-binding.md)
@@ -82,8 +87,15 @@
       - [Migration for Component State Variables](state-management/arkts-v1-v2-migration-inner-component.md)
       - [Migration for Data Object State Variables](state-management/arkts-v1-v2-migration-inner-class.md)
       - [Migration for In-Application State Variables and Related Scenarios](state-management/arkts-v1-v2-migration-application-and-others.md)
+      - [Migration for Component Reuse](state-management/arkts-v1-v2-migration-reusable.md)
+    - Mixed Use of State Management V1 and V2<!--v1v2-mixing-->
       - [Mixing Use of Custom Components](state-management/arkts-custom-component-mixed-scenarios.md)
       - [Mixing Use of State Management V1 and V2](state-management/arkts-v1-v2-mixusage.md)
+    - [State Management Development](state-management/arkts-state-management-faq.md)
+      - [In-Component State Management FAQs](state-management/arkts-state-management-faq-inner-component.md)
+      - [Data Object State Management FAQs](state-management/arkts-state-management-faq-inner-class.md)
+      - [In-App State Management and Other FAQs](state-management/arkts-state-management-faq-application-and-others.md)
+      - [Common Methods for Locating the Problem That Component Refresh Is Not Triggered When State Variables Change](state-management/troubleshooting-state-manage.md)
   - UI Paradigm Rendering Control<!--arkts-rendering-control-->
     - [Rendering Control Overview](rendering-control/arkts-rendering-control-overview.md)
     - [if/else: Conditional Rendering](rendering-control/arkts-rendering-control-ifelse.md)
@@ -92,9 +104,9 @@
     - [Repeat: Reusing Components for Repeated Content Rendering](rendering-control/arkts-new-rendering-control-repeat.md)
     - [Migrating from LazyForEach to Repeat](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
     - [ContentSlot: Enabling Hybrid Development](rendering-control/arkts-rendering-control-contentslot.md)
-  - Responsive Environment Variable<!--arkts-env-property-->
+  - Learning Responsive Environment Variables<!--arkts-env-property-->
     - [\@Env: Environment Variable](arkts-env-system-property.md)
-  - Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
+  - Setting Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
     - [Component Navigation (Navigation) (Recommended)](arkts-navigation-navigation.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
@@ -123,7 +135,7 @@
     - [Styled String (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [Text and Image Layout](arkts-text-image-layout.md)
     - [Soft Keyboard Management](arkts-manage-keyboard.md)
-  - Media Display<!--arkts-media-display-->
+  - Media Display <!--arkts-media-display-->
     - [Image Display (Image)](arkts-graphics-display.md)
     - [Video Playback (Video)](arkts-common-components-video-player.md)
     - [Creating a Swiper (Swiper)](arkts-layout-development-create-looping.md)
@@ -141,8 +153,8 @@
      - [Popup Window Overview](arkts-dialog-overview.md)
      - Dialog Boxes (Dialog)<!--arkts-use-dialogs-->
        - [Dialog Box Overview](arkts-base-dialog-overview.md)
-       - [Global Custom Dialog Box Independent of UI Components (openCustomDialog) (Recommended)](arkts-uicontext-custom-dialog.md)
-       - [Basic Custom Dialog Box (CustomDialog) (Not Recommended)](arkts-common-components-custom-dialog.md)
+       - [Global Custom Dialog Box Independent of UI Components (openCustomDialog)](arkts-uicontext-custom-dialog.md)
+       - [Basic Custom Dialog Box (CustomDialog)](arkts-common-components-custom-dialog.md)
        - [Fixed Style Dialog Box](arkts-fixes-style-dialog.md)
        - [Page-Level Dialog Box](arkts-embedded-dialog.md)
        - [Dialog Box Layer Management](arkts-dialog-levelorder.md)
@@ -361,3 +373,4 @@
     - [FAQs About Text Components](arkts-text-faq.md)
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->
+- [ArkUI Glossary](arkui-glossary.md)
