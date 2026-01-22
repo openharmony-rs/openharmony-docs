@@ -422,9 +422,9 @@ enum OH_Huks_ErrCode
 | OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 | 输入的参数无效。<br>**起始版本：** 20 |
 | OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 | 该项实体已存在。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | 提供者或Ukey内部执行失败。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | Pin码被锁定。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | Pin码错误。<br>**起始版本：** 22 |
-| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | Pin码未认证通过。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | PIN码被锁定。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | PIN码错误。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | PIN码未认证通过。<br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_BUSY = 12000024 | 提供者或Ukey中的资源正在被使用。 <br>**起始版本：** 22 |
 | OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | 资源超过限制。<br>**起始版本：** 22 |
 
