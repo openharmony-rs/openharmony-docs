@@ -4,11 +4,11 @@
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
 <!--Designer: @gcw_4D6e0BBd-->
-<!--Tester: @guoshengbang-->
+<!--Tester: @guoshengbang-->![image.png](https://raw.gitcode.com/user-images/assets/8966727/09c46a14-8ffd-499d-81c9-a417f4c13777/image.png 'image.png')
 <!--Adviser: @fang-jinxu-->
 
 ## 概述
-打印扩展能力是对OpenHarmony的系统打印功能的扩展，允许开发者以软件的方式模拟打印机行为，实现与上层应用的打印交互。通过该扩展能力，开发者可以实现特殊场景下的定制化打印逻辑，在统一框架下灵活开发差异化功能，提升解决方案的适应性与可维护性。
+打印扩展能力从API version 14开始支持。打印扩展能力是对系统打印功能的扩展，允许开发者以软件的方式模拟打印机行为，实现与上层应用的打印交互。通过该扩展能力，开发者可以实现特殊场景下的定制化打印逻辑，在统一框架下灵活开发差异化功能，提升解决方案的适应性与可维护性。
 
 ## 回调说明
 | 回调名称 | 回调描述 |
