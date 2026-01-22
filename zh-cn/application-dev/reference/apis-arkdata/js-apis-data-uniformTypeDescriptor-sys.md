@@ -54,8 +54,8 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 | ------------ | ------------------------------------------- |
 | 201          | Permission verification failed. The application does not have the permission required to call the API. |
 | 202          | Permission denied, non-system app called the system api. |
-| 20400002       |  The format of one or more type descriptors are invalid. |
-| 20400003       | The content of one or more type descriptors violate rules. |
+| 20400002       | The format of one or more typeDescriptors are invalid. |
+| 20400003       | The content of one or more typeDescriptors violate rules. |
 
 **示例：**
 
