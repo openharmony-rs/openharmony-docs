@@ -115,6 +115,8 @@ import { display } from '@kit.ArkUI';
 
 屏幕圆角类型枚举。
 
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称 | 值 | 说明 |
@@ -127,6 +129,8 @@ import { display } from '@kit.ArkUI';
 ## RoundedCorner<sup>23+</sup>
 
 屏幕圆角定义。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
