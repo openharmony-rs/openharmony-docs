@@ -7,13 +7,19 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-网络连接管理提供管理网络一些基础能力，包括获取默认激活的数据网络、获取所有激活数据网络列表、开启关闭飞行模式、获取网络能力信息等功能。
+网络连接管理提供管理网络一些基础能力，包括获取默认激活的网络、获取所有激活网络列表、获取网络能力信息等功能。
 
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 无特殊说明，接口默认不支持并发。
+
+> **名词解释：**
+>
+> - 默认网络：系统默认使用的网络。由系统决定，与应用是否指定网络无关，通常为WIFI /蜂窝/以太网/蓝牙其中之一。
+>
+> - 网络句柄（[NetHandle](#nethandle)）：网络的唯一标识。
 
 ## 导入模块
 
@@ -25,11 +31,11 @@ import { connection } from '@kit.NetworkKit';
 
 createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnection
 
-创建一个NetConnection对象，[netSpecifier](#netspecifier)指定关注的网络的各项特征；timeout是超时时间(单位是毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
+创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](#netspecifier)表示需要监听网络的网络特征；timeout是超时时间（单位：毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
 
->**注意：**
+>**说明：**
 >
->createNetConnection注册回调函数的数量不能超过2000（个），否则无法继续注册网络监听。
+>若需要监听网络状态，创建一个NetConnection对象后，还需调用[register](#register)注册指定网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -39,27 +45,36 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 
 | 参数名       | 类型                          | 必填 | 说明                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| netSpecifier | [NetSpecifier](#netspecifier) | 否   | 指定待关注网络的特征，缺省表示关注默认网络。                   |
-| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。 |
+| netSpecifier | [NetSpecifier](#netspecifier) | 否   | 需要监听网络的网络特征，缺省则表示监听默认网络。                   |
+| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当指定的网络不存在时，会尝试激活对应网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
 
 **返回值：**
 
 | 类型                            | 说明                 |
 | ------------------------------- | -------------------- |
-| [NetConnection](#netconnection) | 所关注的网络的句柄。 |
+| [NetConnection](#netconnection) | 需要监听的网络连接的句柄。 |
 
 **示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
 
-// 关注默认网络, 不需要传参。
+// 示例1：仅关注默认网络, 无需指定netSpecifier参数，timeout参数未传入说明未使用超时时间，此时timeout为0。
 let netConnection = connection.createNetConnection();
 
-// 关注蜂窝网络，需要传入相关网络特征，timeout参数未传入说明未使用超时时间，此时timeout为0。
+// 示例2：仅关注蜂窝网络，需要指定网络类型为蜂窝网络。
+let timeout = 1000;
 let netConnectionCellular = connection.createNetConnection({
   netCapabilities: {
     bearerTypes: [connection.NetBearType.BEARER_CELLULAR]
+  }
+}, timeout);
+
+// 示例3：关注蜂窝或Wi-Fi网络，需要指定网络类型为蜂窝网络和Wi-Fi网络。
+let netConnectionCellularAndWifi = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_CELLULAR,
+      connection.NetBearType.BEARER_WIFI]
   }
 });
 ```
@@ -68,7 +83,7 @@ let netConnectionCellular = connection.createNetConnection({
 
 getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
-获取系统默认使用的网络ID，使用callback异步回调。
+获取系统默认使用的网络句柄，包含网络ID。使用callback异步回调。
 
 > **说明：**
 >
@@ -76,9 +91,9 @@ getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 >
 >- 该接口的返回由系统决定，与应用是否指定网络无关。
 >
->- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
+>- 一般情况下优先级为：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
 >
->- NetHandle为网络唯一标识，当无网络可用时，返回0，该ID可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
+>- [NetHandle](#nethandle)为网络唯一标识，当无网络可用时，返回0。其可用于[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -90,7 +105,7 @@ getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
 | 参数名   | 类型                                    | 必填 | 说明                                                         |
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[NetHandle](#nethandle)> | 是   | 回调函数。当成功获取默认激活的数据网络时，error为undefined，data为默认激活的数据网络；否则为错误对象。 |
+| callback | AsyncCallback\<[NetHandle](#nethandle)> | 是   | 回调函数。当成功获取默认激活网络的网络句柄时，error为undefined，data为默认网络的网络句柄；否则为错误对象。 |
 
 **错误码：**
 
@@ -114,7 +129,7 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
     console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
     return;
   }
-  console.info("Succeeded to get data " + JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -122,7 +137,7 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 
 getDefaultNet(): Promise\<NetHandle>
 
-获取系统默认使用的网络ID，使用Promise异步回调。
+获取系统默认使用的网络句柄，包含网络ID。使用Promise异步回调。
 
 > **说明：**
 >
@@ -132,7 +147,7 @@ getDefaultNet(): Promise\<NetHandle>
 >
 >- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
 >
->- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
+>- [NetHandle](#nethandle)为网络唯一标识，当无网络可用时，返回0。其可用于[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -144,7 +159,7 @@ getDefaultNet(): Promise\<NetHandle>
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回默认激活的数据网络。 |
+| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回默认网络的网络句柄。 |
 
 **错误码：**
 
@@ -170,7 +185,7 @@ connection.getDefaultNet().then((data: connection.NetHandle) => {
 
 getDefaultNetSync(): NetHandle
 
-同步获取系统默认使用的网络ID。
+同步获取系统默认使用的网络句柄，包含网络ID。
 
 > **说明：**
 >
@@ -180,7 +195,7 @@ getDefaultNetSync(): NetHandle
 >
 >- 一般情况下，优先级：以太网（PC）|蓝牙（手表）> WIFI > 蜂窝，特殊情况以实际返回结果为准。
 >
->- NetHandle为网络唯一标识，当无网络可用时，返回0，该id可用于其他接口[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多其他网络信息。
+>- [NetHandle](#nethandle)为网络唯一标识，当无网络可用时，返回0。其可用于[getNetCapabilities](#connectiongetnetcapabilities)继续查询更多网络信息。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -192,7 +207,7 @@ getDefaultNetSync(): NetHandle
 
 | 类型      | 说明                               |
 | --------- | ---------------------------------- |
-| [NetHandle](#nethandle) | 以同步方式返回默认激活的数据网络。 |
+| [NetHandle](#nethandle) | 以同步方式返回默认网络的网络句柄。 |
 
 **错误码：**
 
@@ -276,7 +291,12 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 
 getDefaultHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
-获取网络默认的代理配置信息。如果设置了全局代理，则会返回全局代理配置信息。如果进程使用[setAppNet](#connectionsetappnet9)绑定到指定[NetHandle](#nethandle)对应的网络，则返回[NetHandle](#nethandle)对应网络的代理配置信息。在其它情况下，将返回默认网络的代理配置信息。使用callback方式作为异步方法。
+获取网络的默认代理配置信息。使用callback方式作为异步方法。
+
+> **说明：**
+>
+>- 如果设置了全局代理，则返回全局代理配置信息。
+>- 如果进程使用[setAppNet](#connectionsetappnet9)绑定到指定[NetHandle](#nethandle)对应的网络，则返回[NetHandle](#nethandle)对应网络的代理配置信息。在其它情况下，将返回默认网络的代理配置信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -284,7 +304,7 @@ getDefaultHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback<[HttpProxy](#httpproxy10)> | 是   | 回调函数。当成功获取网络默认的代理配置信息时，error为undefined，data为网络默认的代理配置信息；否则为错误对象。 |
+| callback | AsyncCallback<[HttpProxy](#httpproxy10)> | 是   | 回调函数。当成功获取网络的默认代理配置信息时，error为undefined，data为网络的默认代理配置信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -314,7 +334,12 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
 
 getDefaultHttpProxy(): Promise\<HttpProxy>
 
-获取网络默认的代理配置信息。如果设置了全局代理，则会返回全局代理配置信息。如果进程使用[setAppNet](#connectionsetappnet9)绑定到指定[NetHandle](#nethandle)对应的网络，则返回[NetHandle](#nethandle)对应网络的代理配置信息。在其它情况下，将返回默认网络的代理配置信息。使用Promise方式作为异步方法。
+获取网络默认的代理配置信息。使用Promise方式作为异步方法。
+
+> **说明：**
+>
+>- 如果设置了全局代理，则返回全局代理配置信息。
+>- 如果进程使用[setAppNet](#connectionsetappnet9)绑定到指定[NetHandle](#nethandle)对应的网络，则返回[NetHandle](#nethandle)对应网络的代理配置信息。在其它情况下，将返回默认网络的代理配置信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -350,7 +375,7 @@ connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
 
 getAppNet(callback: AsyncCallback\<NetHandle>): void
 
-异步获取App绑定的网络信息，使用callback方式作为异步方法。
+获取App绑定的网络句柄。使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -389,7 +414,7 @@ connection.getAppNet((error: BusinessError, data: connection.NetHandle) => {
 
 getAppNet(): Promise\<NetHandle>
 
-异步获取App绑定的网络信息，使用Promise方式作为异步方法。
+获取App绑定的网络信息。使用Promise方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -456,7 +481,7 @@ let netHandle = connection.getAppNetSync();
 
 setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
-将App异步绑定到特定的网络，绑定后App只能通过netHandle对应的网络访问网络，使用callback方式作为异步方法。
+将App绑定到特定的网络，绑定后App只能通过netHandle对应的网络访问网络。使用callback方式作为异步方法。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -466,7 +491,7 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 | 参数名    | 类型                    | 必填 | 说明                                                         |
 | --------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| netHandle | [NetHandle](#nethandle) | 是   | 数据网络的句柄。                                             |
+| netHandle | [NetHandle](#nethandle) | 是   | 网络句柄。                                             |
 | callback  | AsyncCallback\<void>    | 是   | 回调函数。当成功绑定App到指定网络时，error为undefined，否则为错误对象。|
 
 **错误码：**
