@@ -4,7 +4,7 @@
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
 <!--Designer: @gcw_4D6e0BBd-->
-<!--Tester: @guoshengbang-->![image.png](https://raw.gitcode.com/user-images/assets/8966727/09c46a14-8ffd-499d-81c9-a417f4c13777/image.png 'image.png')
+<!--Tester: @guoshengbang-->
 <!--Adviser: @fang-jinxu-->
 
 ## 概述
