@@ -632,7 +632,13 @@ function executeTask() {
 executeTask();
 ```
 
-<!-- @[define_sendableThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->     
+```ts
+// sendable.ets
+@Sendable
+export class SendableItem {
+  name: string = '';
+}
+```  
 
 <!-- @[define_normalItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ui.ets) -->
 
