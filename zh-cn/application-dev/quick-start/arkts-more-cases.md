@@ -2480,6 +2480,20 @@ export function foo(): any {
 
 <!-- @[ts_main_fix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/main1.ets) -->  
 
+``` TypeScript
+// main.ets
+import {foo} from './testa'
+interface I {}
+
+function f() {
+  let e0: ESObject = foo();
+  let e1: ESObject = foo();
+  let e2: number = 1;
+  let e3: I = {};
+  let e4: string = '';
+}
+```
+
 ## 拷贝
 
 ### 浅拷贝
