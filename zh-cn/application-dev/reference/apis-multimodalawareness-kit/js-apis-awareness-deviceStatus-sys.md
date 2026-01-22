@@ -27,8 +27,8 @@
 | 名称          | 类型                                      | 只读 | 可选 | 说明               |
 |---------------|-------------------------------------------|----|----|----------------------|
 | x             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 X 轴方向的旋转弧度|
-| z             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Y 轴方向的旋转弧度 |
-| y             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Z 轴方向的旋转弧度 |
+| y             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Y 轴方向的旋转弧度 |
+| z             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Z 轴方向的旋转弧度 |
 
 ## deviceStatus.getDeviceRotationRadian()
 
