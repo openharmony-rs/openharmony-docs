@@ -177,11 +177,11 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 | m32    | number | 是   | z轴平移值，单位px，单位矩阵默认为0。 |
 | m33    | number | 是   | 齐次坐标下生效，产生透视投影效果。   |
 
-**示例：**
+## 示例
 
-> **说明：**
->
-> 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的ComponentUtils对象。
+### 示例1（获取ComponentUtils对象）
+
+推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的ComponentUtils对象。
 
 ```ts
 import { matrix4, componentUtils } from '@kit.ArkUI';
