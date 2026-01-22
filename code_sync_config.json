@@ -39501,5 +39501,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/napi-define-sendable-object.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/Index.d.ets",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"export_myObject",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":190,
+						"name":"init_sendable",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":56,
+						"name":"load_nativeSendable",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/oh-package.json5",
+				"functions":[
+					{
+						"end_line":22,
+						"name":"define_libentry",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
