@@ -405,6 +405,13 @@ test(a2);
 
 混淆前：
   <!-- @[optionExample_removeComments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
+  
+  ``` TypeScript
+  /**
+   * @todo
+   */
+  declare let count1: number;
+  ```
 
 混淆后：
   ```ts
