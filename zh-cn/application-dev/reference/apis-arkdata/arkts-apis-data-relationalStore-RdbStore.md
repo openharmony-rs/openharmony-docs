@@ -8631,7 +8631,7 @@ ArkTS-Dyn: cleanDirtyData(table: string, cursor: number, callback: AsyncCallback
 
 ArkTS-Sta: cleanDirtyData(table: string, cursor: long, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。
+清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -8692,7 +8692,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的所有数据。
+清理云端删除的数据同步到本地后，未自动清理的所有数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
