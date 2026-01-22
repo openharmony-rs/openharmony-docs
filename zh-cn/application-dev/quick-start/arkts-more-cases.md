@@ -2452,8 +2452,6 @@ export function foo(): any {
 }
 ```
 
-**建议改法**
-
 <!-- @[ts_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/main.ets) -->  
 
 ``` TypeScript
@@ -2466,6 +2464,33 @@ function f() {
   let e2: ESObject = 1;
   let e3: ESObject = {};
   let e4: ESObject = '';
+}
+```
+
+**建议改法**
+
+<!-- @[ts_limited_es_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/testa.ts) -->  
+
+``` TypeScript
+// testa.ts
+export function foo(): any {
+  return null;
+}
+```
+
+<!-- @[limited_es_obj_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/main.ets) -->  
+
+``` TypeScript
+// main.ets
+import {foo} from './testa'
+interface I {}
+
+function f() {
+  let e0: object | null = foo();
+  let e1: Record<string, number> | null = foo();
+  let e2: number = 1;
+  let e3: I = {};
+  let e4: string = '';
 }
 ```
 
