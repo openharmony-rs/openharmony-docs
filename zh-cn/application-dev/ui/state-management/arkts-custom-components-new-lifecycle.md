@@ -20,10 +20,6 @@
 
 - [\@ComponentDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentdisappear)：该装饰器装饰的函数在自定义组件析构销毁之前执行。不建议在\@ComponentDisappear装饰的函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
 
-- [\@ComponentAttach](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentattach)：该装饰器装饰的函数在自定义组件完成挂载到主树后执行，开发者可以在此阶段实现一些不影响实际UI的功能，例如事件数据上报。
-
-- [\@ComponentDetach](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentdetach)：该装饰器装饰的函数在自定义组件完成从主树分离后执行。开发者可以在此阶段实现一些不影响实际UI的功能，例如初始化非状态变量数据。
-
 - [\@ComponentReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse)：当可复用的自定义组件从缓存中重新添加到节点树时调用该装饰器装饰的函数，以接收组件的构造入参。最后，\@ComponentReuse装饰的函数会递归遍历所有子组件，对每个完成复用的组件调用\@ComponentReuse装饰的函数。
 
 - [\@ComponentRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentrecycle)：当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用该装饰器装饰的函数。最后，\@ComponentRecycle装饰的函数会递归遍历所有子组件，对每个完成回收的组件调用\@ComponentRecycle装饰的函数。
@@ -50,17 +46,23 @@
 
 ## 限制条件
 
-1. \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear、\@ComponentAttach、\@ComponentDetach、\@ComponentReuse和\@ComponentRecycle只能在\@Component或者\@ComponentV2装饰的struct中使用，否则编译时会抛出警告。
+- \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear、\@ComponentReuse和\@ComponentRecycle只能在\@Component或者\@ComponentV2装饰的struct中使用，否则编译会报错。
 
-2. \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear、\@ComponentAttach、\@ComponentDetach和\@ComponentRecycle装饰的函数不能有入参，否则编译时会抛出警告。
+- \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear和\@ComponentRecycle装饰的函数不能有入参，否则编译会报错。
 
-3. 在@Component装饰的struct中，不允许在\@ComponentInit装饰的函数中改变状态变量，否则会导致运行时crash。在@ComponentV2装饰的struct中，允许在\@ComponentInit装饰的函数中改变状态变量。
+- 在\@Component装饰的struct中，\@ComponentReuse装饰的函数可以没有入参或者有一个入参，否则编译会报错。
 
-4. 在\@Component装饰的struct中，\@ComponentReuse装饰的函数可以没有入参或者有一个入参，否则编译时会抛出警告。
+- 在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参，否则编译会报错。
 
-5. 在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参，否则编译时会抛出警告。
-
-6. 使用[NavDestination](../arkts-navigation-architecture.md#navdestination子页面容器)的struct不触发上下主树的行为，所以\@ComponentAttach和\@ComponentDetach装饰的函数不会触发回调。
+- 新增生命周期装饰器装饰方法时，自定义组件对应事件发生时会回调该方法。新增生命周期装饰器建议单独使用，不与其他状态变量装饰器联合使用。比如生命周期装饰器和[\@Computed](./arkts-new-computed.md)联合使用时，生命周期装饰器不生效。
+  ```typescript
+  @Computed
+  @ComponentAppear
+  get sum() {
+    return 1 + 2 + 3; // 错误用法，生命周期装饰器装饰get方法不生效
+  }
+  ```
+- 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)
 
 ## 使用场景
 
@@ -68,7 +70,7 @@
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-``` TypeScript
+```typescript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { ComponentAppear, ComponentBuilt, ComponentDisappear } from '@kit.ArkUI';
 
@@ -160,7 +162,7 @@ struct Child {
 
 - 应用冷启动的初始化流程为：Parent myAppear --&gt; Parent build --&gt; Parent myBuilt --&gt; Child myAppear --&gt; Child build --&gt; Child myBuilt。此处体现了自定义组件懒展开特性，即Parent执行完myBuilt之后才会执行Child组件的myAppear。日志输出信息如下：
 
-```ts
+```text
 Parent myAppear
 Parent myBuilt
 Child myAppear
@@ -171,7 +173,7 @@ Child myBuilt
 
 - 如果点击Button按钮，更改show为false,或者直接退出应用，则会触发以下生命周期：Parent myDisappear --&gt; Child myDisappear，此处体现了自定义组件删除顺序也是从父到子。日志输出信息如下：
 
-```ts
+```text
 Parent myDisappear
 Child myDisappear
 ```
@@ -180,7 +182,7 @@ Child myDisappear
 
 - 如果showChild的默认值为false，则应用冷启动的初始化流程为：Parent myAppear --&gt; Parent build --&gt; Parent myBuilt。日志输出信息如下：
 
-```ts
+```text
 Parent myAppear
 Parent myBuilt
 ```
@@ -188,7 +190,7 @@ Parent myBuilt
 
 - 如果showChild的默认值为false，此时点击Button按钮，更改showChild为true，添加Child组件，添加流程为：Child myAppear --&gt; Child build --&gt; Child myBuilt。日志输出信息如下：
 
-```ts
+```text
 Child myAppear
 Child myBuilt
 ```
@@ -196,12 +198,12 @@ Child myBuilt
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-nest.png)
 
-### 自定义组件回收复用和上下主树
+### 自定义组件回收复用
 
-通过以下示例，来详细说明自定义组件在使用时，回收复用和上下主树的生命周期调用时序：
+通过以下示例，来详细说明自定义组件在使用时，回收复用的生命周期调用时序：
 
-```ts
-import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentAttach, ComponentDetach, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
+```typescript
+import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 export class Message {
@@ -256,16 +258,6 @@ struct Child {
   myBuilt() {
     this.label = 'myBuilt';
     hilog.info(0x0000, 'testTag', 'Child myBuilt');
-  }
-  @ComponentAttach
-  myAttach() {
-    this.label = 'myAttach';
-    hilog.info(0x0000, 'testTag', 'Child myAttach');
-  }
-  @ComponentDetach
-  myDetach() {
-    this.label = 'myDetach';
-    hilog.info(0x0000, 'testTag', 'Child myDetach');
   }
   @ComponentRecycle
   myRecycle() {
@@ -323,16 +315,6 @@ struct GrandChild {
     this.label = 'myBuilt';
     hilog.info(0x0000, 'testTag', 'GrandChild myBuilt');
   }
-  @ComponentAttach
-  myAttach() {
-    this.label = 'myAttach';
-    hilog.info(0x0000, 'testTag', 'GrandChild myAttach');
-  }
-  @ComponentDetach
-  myDetach() {
-    this.label = 'myDetach';
-    hilog.info(0x0000, 'testTag', 'GrandChild myDetach');
-  }
   @ComponentRecycle
   myRecycle() {
     this.label = 'myRecycle';
@@ -360,26 +342,22 @@ struct GrandChild {
 }
 ```
 
-以上示例中，Index页面包含自定义组件Child，Child组件包含自定义组件GrandChild。Child和GrandChild分别声明了各自的自定义组件生命周期装饰器装饰的函数（myInit / myAppear / myBuilt / myAttach / myDetach / myRecycle / myReuse / myDisappear）。
+以上示例中，Index页面包含自定义组件Child，Child组件包含自定义组件GrandChild。Child和GrandChild分别声明了各自的自定义组件生命周期装饰器装饰的函数（myInit / myAppear / myBuilt / myRecycle / myReuse / myDisappear）。
 
-- 应用冷启动的初始化流程为：Child myInit --&gt; Child myAppear --&gt; GrandChild myInit --&gt; Child myBuilt --&gt; Child myAttach --&gt;  GrandChild myAppear --&gt; GrandChild myBuilt --&gt; GrandChild myAttach。此处体现了自定义组件懒展开特性，即Child执行完myBuilt之后才会执行GrandChild组件的myAppear。日志输出信息如下：
+- 应用冷启动的初始化流程为：Child myInit --&gt; Child myAppear --&gt; GrandChild myInit --&gt; Child myBuilt --&gt; GrandChild myAppear --&gt; GrandChild myBuilt。此处体现了自定义组件懒展开特性，即Child执行完myBuilt之后才会执行GrandChild组件的myAppear。日志输出信息如下：
 
-```ts
+```text
 Child myInit
 Child myAppear
 GrandChild myInit
 Child myBuilt
-Child myAttach
 GrandChild myAppear
 GrandChild myBuilt
-GrandChild myAttach
 ```
 
-- 点击Button按钮，更改showChild为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myDetach和myRecycle函数。
+- 点击Button按钮，更改showChild为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
 
-```ts
-Child myDetach
-GrandChild myDetach
+```text
 Child myRecycle
 GrandChild myRecycle
 ```
@@ -388,7 +366,7 @@ GrandChild myRecycle
 
 CustomComponentLifecycleObserver用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
 
-```ts
+```typescript
 import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -453,12 +431,6 @@ export class MyObserver implements CustomComponentLifecycleObserver {
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
   }
-  aboutToAttach() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAttach');
-  }
-  aboutToDetach() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDetach');
-  }
   aboutToReuse(params?: Record<string, Object | undefined | null>) {
     // params存在时，为V1的复用；
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
@@ -482,27 +454,22 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
   // 向lifeCycle取消注册监听
   lifeCycle.removeObserver(observer);
 }
-
 ```
 
 在@ComponentDisappear装饰的函数中解除注册监听，所以监听器无法监听到aboutToDisappear。
 
 按两次Hello按钮，然后关闭程序，此时日志输出信息如下：
 
-```ts
+```text
 MyObserver aboutToAppear
 MyObserver onDidBuild
-MyObserver aboutToAttach
-MyObserver aboutToDetach
 MyObserver aboutToRecycle
 MyObserver aboutToReuse
-MyObserver aboutToAttach
-MyObserver aboutToDetach
 ```
 
 可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
 
-```ts
+```typescript
 Column() {
   Text('Hello World')
 }
@@ -524,7 +491,7 @@ Column() {
 
 aboutToAppear是自定义组件build之前执行，aboutToDisappear是自定义组件销毁前执行。但有时自定义组件没有build，就被销毁。为了执行一个完整的生命周期，aboutToDisappear会判断，该组件是否执行了aboutToAppear，如果没有执行便强制触发一次aboutToAppear。\@ComponentAppear装饰的函数和\@ComponentDisappear装饰的函数受状态机约束，\@ComponentDisappear装饰的函数不会误调用\@ComponentAppear装饰的函数。例子如下所示：
 
-```ts
+```typescript
 // Index.ets
 import { SwiperExample } from './SwiperPage';
 
@@ -567,7 +534,7 @@ struct Index {
 }
 ```
 
-```ts
+```typescript
 // SwiperPage.ets
 import { ComponentAppear, ComponentDisappear } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -669,7 +636,7 @@ export struct SwiperExample {
 启动程序后，先按start按钮，此时只有swipe缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
 日志输出信息如下：
 
-```ts
+```text
 SwiperPage:aboutToAppear 0
 SwiperPage:myAppear 0
 SwiperPage:aboutToAppear 11
@@ -684,7 +651,7 @@ SwiperPage:myAppear 2
 
 此时关闭程序，缓存的五个节点正常触发aboutToDisappear，但是非缓存的节点触发aboutToDisappear前，会强制触发aboutToAppear。无论是否是缓存节点，myDisappear不会误触发myAppear。
 
-```ts
+```text
 SwiperPage:myDisappear 0
 SwiperPage:aboutToDisappear 0
 SwiperPage:myDisappear 1
@@ -706,8 +673,8 @@ SwiperPage:aboutToDisappear 4
 
 自定义组件在BUILT状态时，即将转化为RECYCLED时，先调用aboutToRecycle后调用\@ComponentRecycle装饰的函数。
 
-```ts
-import { ComponentAppear, ComponentBuilt, ComponentAttach, ComponentReuse } from '@kit.ArkUI';
+```typescript
+import { ComponentAppear, ComponentBuilt, ComponentReuse } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -777,10 +744,6 @@ struct ReusableComp3 {
   myBuilt(): void {
     hilog.info(0x0000, 'testTag', 'ReusableComp3 myBuilt');
   }
-  @ComponentAttach
-  myAttach(): void {
-    hilog.info(0x0000, 'testTag', 'ReusableComp3 myAttach');
-  }
 
   build() {
     Text('B')
@@ -790,12 +753,11 @@ struct ReusableComp3 {
 
 按下a按钮，此时ReusableComp2进入回收状态，再按下b按钮，此时ReusableComp3第一次被创建，此时日志输出信息如下：
 
-```ts
+```text
 ReusableComp3 aboutToReuse
 ReusableComp3 aboutToAppear
 ReusableComp3 myAppear
 ReusableComp3 myBuilt
-ReusableComp3 myAttach
 ```
 
 ReusableComp3从未创建过，但按下b按钮后，ReusableComp3的aboutToReuse误调用，同时ReusableComp3的aboutToAppear和myBuilt被调用。而myReuse没有被误调用，这是因为myReuse受状态机约束，当组件不是RECYCLED状态时，不会执行myReuse。
