@@ -140,6 +140,7 @@ OH_Crypto_ErrCode doTestSm4GcmSeg()
         msgBlob.data += blockSize;
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
         cipherLen += outUpdate.len;
+        OH_Crypto_FreeDataBlob(&outUpdate);
     }
     if (rem > 0) {
         msgBlob.len = rem;
@@ -149,6 +150,7 @@ OH_Crypto_ErrCode doTestSm4GcmSeg()
         }
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
         cipherLen += outUpdate.len;
+        OH_Crypto_FreeDataBlob(&outUpdate);
     }
     ret = OH_CryptoSymCipher_Final(encCtx, nullptr, &tag);
     if (ret != CRYPTO_SUCCESS) {

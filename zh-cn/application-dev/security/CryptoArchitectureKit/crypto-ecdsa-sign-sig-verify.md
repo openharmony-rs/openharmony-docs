@@ -36,16 +36,16 @@
 - 异步方法示例：
 
   <!-- @[signature_verification_with_ecdsa_key_pair_ark_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_asynchronous.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 完整的明文被拆分为input1和input2
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
-
+  
   async function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = 'ECC256|SHA256';
     let signer = cryptoFramework.createSign(signAlg);
@@ -54,17 +54,17 @@
     let signData = await signer.sign(input2);
     return signData;
   }
-
+  
   async function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = 'ECC256|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
     await verifier.init(pubKey);
     await verifier.update(input1); // 如果明文较短，可以直接调用verify接口一次性传入
     let res = await verifier.verify(input2, signMessageBlob);
-    console.info('verify result is ' + res);
+    console.info('verify result: ' + res);
     return res;
   }
-
+  
   async function main() {
     let keyGenAlg = 'ECC256';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
@@ -72,9 +72,9 @@
     let signData = await signMessagePromise(keyPair.priKey);
     let verifyResult = await verifyMessagePromise(signData, keyPair.pubKey);
     if (verifyResult === true) {
-      console.info('verify success');
+      console.info('verify result: success.');
     } else {
-      console.error('verify failed');
+      console.error('verify result: failed.');
     }
   }
   ```
@@ -83,15 +83,15 @@
 - 同步方法示例：
 
   <!-- @[signature_verification_with_ecdsa_key_pair_ark_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 完整的明文被拆分为input1和input2
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
-
+  
   function signMessagePromise(priKey: cryptoFramework.PriKey) {
     let signAlg = 'ECC256|SHA256';
     let signer = cryptoFramework.createSign(signAlg);
@@ -100,17 +100,17 @@
     let signData = signer.signSync(input2);
     return signData;
   }
-
+  
   function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = 'ECC256|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
     verifier.initSync(pubKey);
     verifier.updateSync(input1); // 如果明文较短，可以直接调用verify接口一次性传入
     let res = verifier.verifySync(input2, signMessageBlob);
-    console.info('verify result is ' + res);
+    console.info('verify result: ' + res);
     return res;
   }
-
+  
   function main() {
     let keyGenAlg = 'ECC256';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
@@ -118,9 +118,9 @@
     let signData = signMessagePromise(keyPair.priKey);
     let verifyResult = verifyMessagePromise(signData, keyPair.pubKey);
     if (verifyResult === true) {
-      console.info('verify success');
+      console.info('verify result: success.');
     } else {
-      console.error('verify failed');
+      console.error('verify result: failed.');
     }
   }
   ```

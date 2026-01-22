@@ -137,7 +137,7 @@ function certChainValidatorSample(): void {
       console.error(`validate failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
       // 校验成功。
-      console.info('validate success');
+      console.info('validate result: success.');
     }
   });
 }
