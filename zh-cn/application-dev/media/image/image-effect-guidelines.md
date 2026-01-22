@@ -501,9 +501,9 @@ target_link_libraries(entry PUBLIC
   ```c++
   // 查询所有的Filter，需要主动进行资源释放。
   ImageEffect_FilterNames *filterNames = OH_EffectFilter_LookupFilters("Default");
-  
+
   // ...
-  
+
   // 释放FilterNames虚拟内存资源。
   OH_EffectFilter_ReleaseFilterNames();
   ```
