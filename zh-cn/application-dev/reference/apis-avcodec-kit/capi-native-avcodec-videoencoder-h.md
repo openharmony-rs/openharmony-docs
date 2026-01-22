@@ -250,7 +250,7 @@ OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallb
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | 指向视频编码实例的指针。 |
-| [OH_AVCodecCallback](capi-codecbase-oh-avcodecasynccallback.md) callback | 所有回调函数的集合。 |
+| [OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md) callback | 所有回调函数的集合。 |
 | void *userData | 开发者执行回调所依赖的数据。 |
 
 **返回：**
