@@ -92,3 +92,17 @@ let resourceLoader: media.MediaSourceLoader = {
 
 mediaSource.setMediaResourceLoaderDelegate(resourceLoader);
 ```
+
+## enableOfflineCache<sup>23+</sup>
+
+enableOfflineCache(enable: boolean): void
+
+是否在视频播放期间启用离线缓存。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                 |
+| -------- | -------- | ---- | -------------------- |
+| enable | boolean | 是   | 是否在视频播放期间启用离线缓存。true表示启用，false表示不启用。 |
