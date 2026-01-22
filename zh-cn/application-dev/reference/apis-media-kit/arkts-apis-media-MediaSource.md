@@ -95,11 +95,9 @@ mediaSource.setMediaResourceLoaderDelegate(resourceLoader);
 
 ## enableOfflineCache<sup>23+</sup>
 
-enableOfflineCache(boolean: enable): void
+enableOfflineCache(enable: boolean): void
 
-开启流媒体缓存到应用沙箱(默认为不开启)。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+设置是否在视频播放期间启用离线缓存(默认为不开启)。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -107,4 +105,4 @@ enableOfflineCache(boolean: enable): void
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| enable | [boolean] | 否   | 是否开启流媒体落盘缓存。 |
+| enable | [boolean] | 否   | 是否开启视频播放期间启用离线缓存。 |
