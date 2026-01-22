@@ -15,7 +15,7 @@
 在静态上下文中使用时，需要导入装饰器：
 
 ```ts
-import { ObjectLink, Observed } from '@ohos.arkui.stateManagement';
+import { ObjectLink, Observed } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -54,7 +54,7 @@ this.objLink= ...
 ```ts
 'use static'
 
-import { Observed } from '@ohos.arkui.statemanagement';
+import { Observed } from '@kit.ArkUI';
 
 class Child {
   public num: number;
@@ -102,7 +102,7 @@ this.parent.child.num = 5;
 
 ## 限制条件
 
-1. \@ObjectLink装饰器不能在\@Entry装饰的自定义组件中使用。
+1. \@ObjectLink装饰器不能在[\@Entry](./arkts-static-create-component.md#entry)装饰的自定义组件中使用。
 
 2. \@ObjectLink装饰的变量必须是class类型或interface字面量类型，否则会有编译时报错。
 
@@ -110,35 +110,35 @@ this.parent.child.num = 5;
 
     ```ts
     'use static'
-
-    import { Component, Text } from '@ohos.arkui.component';
-    import { ObjectLink, Observed } from '@ohos.arkui.stateManagement';
-
+    
+    import { Component, Text } from '@kit.ArkUI';
+    import { ObjectLink, Observed } from '@kit.ArkUI';
+    
     @Observed
     class Info {
       count: number;
-  
+    
       constructor(count: number) {
         this.count = count;
       }
     }
-  
+    
     class Test {
       msg: number;
-  
+    
       constructor(msg: number) {
         this.msg = msg;
       }
     }
-  
+    
     @Component
     struct Child {
       // 错误写法，count未指定类型，编译报错
       @ObjectLink count;
-  
+    
       // 正确写法
       @ObjectLink count: Info;
-
+    
       build() {
         Text(`${this.count.count}`)
       }
@@ -150,23 +150,23 @@ this.parent.child.num = 5;
     ```ts
     'use static'
 
-    import { Entry, Column, Component, Text } from '@ohos.arkui.component';
-    import { State, ObjectLink, Observed } from '@ohos.arkui.stateManagement';
+    import { Entry, Column, Component, Text } from '@kit.ArkUI';
+    import { State, ObjectLink, Observed } from '@kit.ArkUI';
 
     @Observed
     class Info {
       count: number;
-  
+    
       constructor(count: number) {
         this.count = count;
       }
     }
-  
+    
     @Component
     struct Child {
       // 错误写法，编译报错
       @ObjectLink count: Info = new Info(10);
-  
+    
       // 正确写法
       @ObjectLink count: Info;
 
@@ -195,22 +195,22 @@ this.parent.child.num = 5;
     ```ts
     'use static'
 
-    import { Column, Component, Text, Entry } from '@ohos.arkui.component';
-    import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
+    import { Column, Component, Text, Entry } from '@kit.ArkUI';
+    import { ObjectLink, Observed, State } from '@kit.ArkUI';
 
     @Observed
     class Info {
       count: number;
-  
+    
       constructor(count: number) {
         this.count = count;
       }
     }
-  
+    
     @Component
     struct Child {
       @ObjectLink num: Info;
-  
+    
       build() {
         Column() {
           Text(`num的值: ${this.num.count}`)
@@ -226,7 +226,7 @@ this.parent.child.num = 5;
     @Component
     struct Parent {
       @State num: Info = new Info(10);
-  
+    
       build() {
         Column() {
           Text(`count的值: ${this.num.count}`)
@@ -241,22 +241,22 @@ this.parent.child.num = 5;
     ```ts
     'use static'
 
-    import { Button, Column, Component, Text, Entry } from '@ohos.arkui.component';
-    import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
+    import { Button, Column, Component, Text, Entry } from '@kit.ArkUI';
+    import { ObjectLink, Observed, State } from '@kit.ArkUI';
 
     @Observed
     class Info {
       count: number;
-  
+    
       constructor(count: number) {
         this.count = count;
       }
     }
-  
+    
     @Component
     struct Child {
       @ObjectLink num: Info;
-  
+    
       build() {
         Column() {
           Text(`num的值: ${this.num.count}`)
@@ -267,12 +267,12 @@ this.parent.child.num = 5;
         }
       }
     }
-  
+    
     @Entry
     @Component
     struct Parent {
       @State num: Info = new Info(10);
-  
+    
       build() {
         Column() {
           Text(`count的值: ${this.num.count}`)
@@ -298,7 +298,7 @@ this.parent.child.num = 5;
     class Info {
       count: number = 99;
     }
-  
+    
     @Component
     struct Child {
       @ObjectLink count: Info;
@@ -360,23 +360,23 @@ this.parent.child.num = 5;
 
     ```ts
     'use static'
-
+    
     import { Entry, Column, Component, Text, State, ObjectLink, Observed } from '@kit.ArkUI';
-
+    
     @Observed
     class Info {
       count: number = 99;
     }
-
+    
     @Component
     struct Child {
       @ObjectLink count: Info;
-
+    
       build() {
         Text(`${this.count.count}`)
       }
     }
-
+    
     @Entry
     @Component
     struct Parent {
@@ -387,17 +387,17 @@ this.parent.child.num = 5;
           ['字面量', { count: 0 }],
           ['new', new Info()],
         ]);
-
+    
       build() {
         Column() {
           // 涉及容器组件Array，编译告警
           Child({ count: this.propInfoArray[0] });
           Child({ count: this.propInfoArray[1] });
-
+    
           // 涉及容器组件Set，编译告警
           Child({ count: Array.from(this.propInfoSet)[0] });
           Child({ count: Array.from(this.propInfoSet)[1] });
-
+    
           // 涉及容器组件Map，编译告警
           Child({ count: this.propInfoMap.get('字面量') });
           Child({ count: this.propInfoMap.get('new') });
@@ -413,8 +413,8 @@ this.parent.child.num = 5;
 ```ts
 'use static'
 
-import { Button, Column, Component, Text, Entry, TextAlign } from '@ohos.arkui.component';
-import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
+import { Button, Column, Component, Text, Entry, TextAlign } from '@kit.ArkUI';
+import { ObjectLink, Observed, State } from '@kit.ArkUI';
 
 @Observed
 class Book {
@@ -466,8 +466,8 @@ Book被\@Observed装饰，其属性的修改可以被观察到。所以点击But
 ```ts
 'use static'
 
-import { Button, Column, CommonMethod, Component, Entry, Text, TextAlign, TextAttribute } from '@ohos.arkui.component';
-import { Observed, State } from '@ohos.arkui.stateManagement';
+import { Button, Column, CommonMethod, Component, Entry, Text, TextAlign, TextAttribute } from '@kit.ArkUI';
+import { Observed, State } from '@kit.ArkUI';
 
 @Observed
 class Animal {
@@ -550,8 +550,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, Text, TextAlign } from '@ohos.arkui.component';
-import { Observed, ObjectLink, State } from '@ohos.arkui.stateManagement';
+import { Button, Column, Component, Entry, Text, TextAlign } from '@kit.ArkUI';
+import { Observed, ObjectLink, State } from '@kit.ArkUI';
 
 @Observed
 class Book {
@@ -622,8 +622,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, Text, TextAlign } from '@ohos.arkui.component';
-import { Observed, ObjectLink, State, UIUtils } from '@ohos.arkui.stateManagement';
+import { Button, Column, Component, Entry, Text, TextAlign } from '@kit.ArkUI';
+import { Observed, ObjectLink, State, UIUtils } from '@kit.ArkUI';
 
 interface Book {
   name: string;
@@ -687,13 +687,13 @@ struct Index {
 
 > **说明：**
 >
-> NextID是用来在ForEach循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。
+> NextID是用来在[ForEach](../state-management/arkts-rendering-control-foreach.md)循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。
 
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, ForEach, Row } from '@ohos.arkui.component';
-import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
+import { Button, Column, Component, Entry, ForEach, Row } from '@kit.ArkUI';
+import { ObjectLink, Observed, State } from '@kit.ArkUI';
 
 let NextID: number = 1;
 
@@ -805,8 +805,8 @@ struct Parent {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component';
-import { State, Observed } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, Button } from '@kit.ArkUI';
+import { State, Observed } from '@kit.ArkUI';
 
 @Observed
 class Source {
@@ -845,8 +845,8 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component'
-import { State, Observed } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, Component, Button } from '@kit.ArkUI'
+import { State, Observed } from '@kit.ArkUI'
 
 @Observed
 class Source {
@@ -890,15 +890,15 @@ struct Index {
 }
 ```
 
-## ObjectLink支持联合类型
+### ObjectLink支持联合类型
 
 \@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，在下面的示例中，count类型为Source | Data | undefined，点击父组件Parent中的Button改变count的属性或者类型，Child中也会对应刷新。
 
 ```ts
 'use static'
 
-import { Button, Column, Component, Entry, Text } from '@ohos.arkui.component';
-import { ObjectLink, Observed, State } from '@ohos.arkui.stateManagement';
+import { Button, Column, Component, Entry, Text } from '@kit.ArkUI';
+import { ObjectLink, Observed, State } from '@kit.ArkUI';
 
 @Observed
 class Source {

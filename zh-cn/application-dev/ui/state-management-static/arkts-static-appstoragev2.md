@@ -16,7 +16,7 @@ AppStorageV2是在应用UI启动时会被创建的单例。目的是提供应用
 >- [AppStorage](./arkts-static-appstorage.md)与AppStorageV2之间的数据互不共享。
 
 ```ts
-import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+import { AppStorageV2 } from '@kit.ArkUI';
 ```
 
 ## 使用说明
@@ -67,10 +67,10 @@ AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和�
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent, ComponentV2, Divider } from '@ohos.arkui.component';
-import { State, Link, LocalStorage, LocalStorageLink, Local, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
-import { PersistentStorage } from '@ohos.arkui.stateManagement';
-import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Row, Column, Component, Button, ClickEvent, ComponentV2, Divider } from '@kit.ArkUI';
+import { State, Link, LocalStorage, LocalStorageLink, Local, ObservedV2, Trace } from '@kit.ArkUI';
+import { PersistentStorage } from '@kit.ArkUI';
+import { AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 class Message {
@@ -165,7 +165,7 @@ struct Child {
 ```ts
 'use static'
 
-import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { ObservedV2, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 export class Sample {
@@ -180,10 +180,10 @@ export const ISampleType = Type.from<Sample>();
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent, ComponentV2, Divider, NavPathStack, Builder, ButtonType, NavigationMode, NavDestination, FontWeight, Navigation, NavPathInfo } from '@ohos.arkui.component';
-import { State, Link, LocalStorage, LocalStorageLink, Local, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
-import { PersistentStorage } from '@ohos.arkui.stateManagement';
-import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Row, Column, Component, Button, ClickEvent, ComponentV2, Divider, NavPathStack, Builder, ButtonType, NavigationMode, NavDestination, FontWeight, Navigation, NavPathInfo } from '@kit.ArkUI';
+import { State, Link, LocalStorage, LocalStorageLink, Local, ObservedV2, Trace } from '@kit.ArkUI';
+import { PersistentStorage } from '@kit.ArkUI';
+import { AppStorageV2 } from '@kit.ArkUI';
 import { Sample, ISampleType } from './Sample';
 import { Page2 } from './Page2';
 
@@ -257,10 +257,10 @@ struct Page1 {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent, ComponentV2, Divider, NavPathStack, Builder, ButtonType, NavigationMode, NavDestination, FontWeight, Navigation, NavPathInfo, NavDestinationContext } from '@ohos.arkui.component';
-import { State, Link, LocalStorage, LocalStorageLink, Local, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
-import { PersistentStorage } from '@ohos.arkui.stateManagement';
-import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Row, Column, Component, Button, ClickEvent, ComponentV2, Divider, NavPathStack, Builder, ButtonType, NavigationMode, NavDestination, FontWeight, Navigation, NavPathInfo, NavDestinationContext } from '@kit.ArkUI';
+import { State, Link, LocalStorage, LocalStorageLink, Local, ObservedV2, Trace } from '@kit.ArkUI';
+import { PersistentStorage } from '@kit.ArkUI';
+import { AppStorageV2 } from '@kit.ArkUI';
 import { Sample, ISampleType } from './Sample'
 
 @Builder

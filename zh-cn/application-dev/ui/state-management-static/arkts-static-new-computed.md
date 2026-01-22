@@ -15,7 +15,7 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-import { Computed } from '@ohos.arkui.stateManagement';
+import { Computed } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -25,7 +25,7 @@ import { Computed } from '@ohos.arkui.stateManagement';
 | 装饰器参数         | 无                                                     |
 | 允许装饰的类型     | getter访问器。                                          |
 | 初始化规则         | 禁止从父组件初始化。                                     |
-| 可初始化子组件     | \@Param。                                               |
+| 可初始化子组件     | [\@Param](./arkts-static-new-param.md)。                                               |
 | 被执行的时机       | \@Computed会在初次访问的时候初始化，触发\@Computed计算。</br>在\@Computed中计算的状态变量被改变时，计算属性会重新计算。 |
 | 是否允许赋值       | @Computed装饰的属性是只读的，不允许赋值，详情见[使用限制](#使用限制)。 |
 
@@ -34,7 +34,7 @@ import { Computed } from '@ohos.arkui.stateManagement';
 - \@Computed为方法装饰器，仅能装饰getter方法。
 
    ```ts
-   import { Computed } from '@ohos.arkui.stateManagement';
+   import { Computed } from '@kit.ArkUI';
 
    @Computed
    get fullName(): string { // 正确用法
@@ -51,8 +51,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
    ```ts
    'use static'
 
-   import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { Computed, Local } from '@ohos.arkui.stateManagement';
+   import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+   import { Computed, Local } from '@kit.ArkUI';
    
    @Entry
    @ComponentV2
@@ -90,8 +90,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
    ```ts
    'use static'
 
-   import { Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { Computed, Local } from '@ohos.arkui.stateManagement';
+   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+   import { Computed, Local } from '@kit.ArkUI';
    
    @Entry
    @ComponentV2
@@ -128,8 +128,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
    ```ts
    'use static'
 
-   import { Button, ClickEvent, Column, ColumnOptions, ComponentV2, Entry, Scroll, Text } from '@ohos.arkui.component';
-   import { Computed, Event, Local, Param } from '@ohos.arkui.stateManagement';
+   import { Button, ClickEvent, Column, ColumnOptions, ComponentV2, Entry, Scroll, Text } from '@kit.ArkUI';
+   import { Computed, Event, Local, Param } from '@kit.ArkUI';
 
    @ComponentV2
    struct Child {
@@ -171,7 +171,7 @@ import { Computed } from '@ohos.arkui.stateManagement';
    }
    ```
 
-- \@Computed为状态管理V2提供的能力，只能在\@ComponentV2和\@ObservedV2中使用。
+- \@Computed为状态管理V2提供的能力，只能在[\@ComponentV2](./arkts-static-componentv2.md)和[\@ObservedV2](./arkts-static-new-observedV2-and-trace.md)中使用。
 - 多个\@Computed一起使用时，警惕循环求解，以防止计算过程中的死循环。
 
    ```ts
@@ -198,9 +198,9 @@ import { Computed } from '@ohos.arkui.stateManagement';
 
    ```ts
    'use static'
-
-   import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, Text } from '@ohos.arkui.component';
-   import { Computed, Local } from '@ohos.arkui.stateManagement';
+   
+   import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, Text } from '@kit.ArkUI';
+   import { Computed, Local } from '@kit.ArkUI';
    
    @Entry
    @ComponentV2
@@ -244,9 +244,9 @@ import { Computed } from '@ohos.arkui.stateManagement';
 
    ```ts
    'use static'
-
-   import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@ohos.arkui.component';
-   import { Computed, ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+   
+   import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
+   import { Computed, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Name {
@@ -286,9 +286,9 @@ import { Computed } from '@ohos.arkui.stateManagement';
 
    ```ts
    'use static'
-
-   import { Button, ClickEvent, Column, ComponentV2, Entry, Row, Text } from '@ohos.arkui.component';
-   import { Computed, IMonitor, Local, ObservedV2, Monitor, Trace } from '@ohos.arkui.stateManagement';
+   
+   import { Button, ClickEvent, Column, ComponentV2, Entry, Row, Text } from '@kit.ArkUI';
+   import { Computed, IMonitor, Local, ObservedV2, Monitor, Trace } from '@kit.ArkUI';
    
    @Entry
    @ComponentV2
@@ -336,7 +336,7 @@ import { Computed } from '@ohos.arkui.stateManagement';
 
 ### \@Computed装饰的属性可以初始化\@Param
 下面的例子使用\@Computed初始化\@Param。
-- 点击`Button('-')`和`Button('+')`改变商品数量，`quantity`是被\@Trace装饰的，其改变时可以被观察到的。
+- 点击`Button('-')`和`Button('+')`改变商品数量，`quantity`是被[\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰的，其改变时可以被观察到的。
 - `quantity`的改变会触发`total`和`qualifiesForDiscount`重新计算，计算商品总价和是否可以享有优惠。
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
@@ -344,8 +344,8 @@ import { Computed } from '@ohos.arkui.stateManagement';
    'use static'
    
    import { Button, ClickEvent, Column, ComponentV2, Divider, Entry,
-            ForEach, HorizontalAlign, Row, Text } from '@ohos.arkui.component';
-   import { Computed, Local, ObservedV2, Param, Trace } from '@ohos.arkui.stateManagement';
+            ForEach, HorizontalAlign, Row, Text } from '@kit.ArkUI';
+   import { Computed, Local, ObservedV2, Param, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Article {

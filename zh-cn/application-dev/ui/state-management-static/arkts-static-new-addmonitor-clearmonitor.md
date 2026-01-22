@@ -23,8 +23,8 @@
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Entry, Column, Button } from '@ohos.arkui.component';
+import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
+import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -88,8 +88,8 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Entry, Column, Button } from '@ohos.arkui.component';
+import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
+import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -144,8 +144,8 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Entry, Column, Button } from '@ohos.arkui.component';
+import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
+import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -202,8 +202,8 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, IMonitorDecoratedVariable, IMonitor } from '@ohos.arkui.stateManagement';
-import { Entry, ComponentV2, Column, Button, Text } from '@ohos.arkui.component';
+import { UIUtils, Local, IMonitorDecoratedVariable, IMonitor } from '@kit.ArkUI';
+import { Entry, ComponentV2, Column, Button, Text } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -394,8 +394,8 @@ struct FreezeChild {
 ```typescript
 'use static'
 
-import { UIUtils, IMonitorDecoratedVariable, IMonitor, State } from '@ohos.arkui.stateManagement';
-import { Component, ComponentV2, Column, Text, Button, Entry, BusinessError } from '@ohos.arkui.component';
+import { UIUtils, IMonitorDecoratedVariable, IMonitor, State } from '@kit.ArkUI';
+import { Component, ComponentV2, Column, Text, Button, Entry, BusinessError } from '@kit.ArkUI';
 
 @Component
 struct Test {
@@ -445,8 +445,8 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Entry, Column, Button } from '@ohos.arkui.component';
+import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
+import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -501,8 +501,8 @@ struct Page {
 
 ```typescript
 'use static'
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Entry, Column, Button, Text } from '@ohos.arkui.component';
+import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
+import { ComponentV2, Entry, Column, Button, Text } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -568,8 +568,8 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable, Monitor } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Entry, Column, Button } from '@ohos.arkui.component';
+import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable, Monitor } from '@kit.ArkUI';
+import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -628,8 +628,8 @@ struct Page {
 
 ```typescript
 'use static'
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Entry, Column, Button, Text } from '@ohos.arkui.component';
+import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
+import { ComponentV2, Entry, Column, Button, Text } from '@kit.ArkUI';
 
 // class使用@ObservedV2修饰
 @ObservedV2
@@ -707,8 +707,8 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, IMonitorDecoratedVariable, IMonitor, ObservedV2, Local, Trace } from '@ohos.arkui.stateManagement';
-import { Entry, ComponentV2, Column, Button, Text } from '@ohos.arkui.component';
+import { UIUtils, IMonitorDecoratedVariable, IMonitor, ObservedV2, Local, Trace } from '@kit.ArkUI';
+import { Entry, ComponentV2, Column, Button, Text } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -771,8 +771,8 @@ struct Page {
 ```typescript
 'use static'
 
-import { Local, IMonitor, IMonitorDecoratedVariable, UIUtils } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Column, Text, Entry, Button } from '@ohos.arkui.component';
+import { Local, IMonitor, IMonitorDecoratedVariable, UIUtils } from '@kit.ArkUI';
+import { ComponentV2, Column, Text, Entry, Button } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -870,8 +870,8 @@ struct Page {
 ```typescript
 'use static'
 
-import { ObservedV2, Trace, Local, Param, Require, IMonitor, IMonitorDecoratedVariable, UIUtils } from '@ohos.arkui.stateManagement';
-import { ComponentV2, Column, Entry, Button, Text } from '@ohos.arkui.component';
+import { ObservedV2, Trace, Local, Param, Require, IMonitor, IMonitorDecoratedVariable, UIUtils } from '@kit.ArkUI';
+import { ComponentV2, Column, Entry, Button, Text } from '@kit.ArkUI';
 
 @ObservedV2
 class User {

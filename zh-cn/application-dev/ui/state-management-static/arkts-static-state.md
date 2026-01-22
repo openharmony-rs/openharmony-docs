@@ -15,7 +15,7 @@
 在静态语言上下文中使用时，需要导入装饰器：
 
 ```ts
-import { State } from '@ohos.arkui.stateManagement';
+import { State } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -23,7 +23,7 @@ import { State } from '@ohos.arkui.stateManagement';
 | \@State变量装饰器  | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无                                                           |
-| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#state支持联合类型)。 |
+| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及Array、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#state支持联合类型)。 |
 | 初始化规则         | 必须定义本地默认值。<br/>支持从父组件传入变量（含undefined类型），此时优先使用传入值进行初始化。<br/>若父组件未传值，则使用本地默认值进行初始化。 |
 | 同步规则           | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@State初始化时，仅作为初始值，后续变量的变化不会同步至\@State。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、\@PropRef、[\@Provide](arkts-static-provide-and-consume.md)。<br/>\@State变量的变化会同步给子组件的\@Link、\@PropRef变量。 |
 
@@ -42,7 +42,7 @@ import { State } from '@ohos.arkui.stateManagement';
   this.count = 1;
   ```
 
-- 当装饰class类型时，需要借助@Observed与@Track观测类属性，单独的@State仅能观测类整体的赋值。
+- 当装饰class类型时，需要借助[@Observed](./arkts-static-observed-and-objectlink.md)与[@Track](./arkts-static-track.md)观测类属性，单独的@State仅能观测类整体的赋值。
 
    ```ts
    'use static'
@@ -144,45 +144,7 @@ import { State } from '@ohos.arkui.stateManagement';
   this.title[0].value = 6;
   ```
 
-- 当装饰Date时，可以观察到Date的赋值，并通过调用`setFullYear`、`setMonth`、`setDate`、`setHours`、`setMinutes`、`setSeconds`、`setMilliseconds`、`setTime`、`setUTCFullYear`、`setUTCMonth`、`setUTCDate`、`setUTCHours`、`setUTCMinutes`、`setUTCSeconds`、`setUTCMilliseconds`接口更新Date的属性。
-
-  ```ts
-  'use static'
-
-  import { Entry, Component, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
-  import { State } from '@ohos.arkui.stateManagement';
-  @Entry
-  @Component
-  struct DateExample {
-    @State selectedDate: Date = new Date('2021-08-08');
-  
-    build() {
-      Column() {
-        Text(`${this.selectedDate}`)
-        Button('set selectedDate to 2023-07-08')
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.selectedDate = new Date('2023-07-08');
-          })
-        Button('increase the year by 1')
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-          })
-        Button('increase the month by 1')
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-          })
-        Button('increase the day by 1')
-          .margin(10)
-          .onClick((e: ClickEvent) => {
-            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-          })
-      }.width('100%')
-    }
-  }
-  ```
+- 当装饰Date时，可以观察到Date的赋值，以及通过调用Date的接口`setFullYear`、`setMonth`、`setDate`、`setHours`、`setMinutes`、`setSeconds`、`setMilliseconds`、`setTime`、`setUTCFullYear`、`setUTCMonth`、`setUTCDate`、`setUTCHours`、`setUTCMinutes`、`setUTCSeconds`、`setUTCMilliseconds`来更新Date的值。详见[装饰Date类型变量](#装饰date类型变量)。
 
 - 当装饰Map时，可以观察到Map整体的赋值，以及通过调用Map的接口`set`, `clear`, `delete`来更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
@@ -192,9 +154,9 @@ import { State } from '@ohos.arkui.stateManagement';
 
   ```ts
   'use static'
-
-  import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-  import { State } from '@ohos.arkui.stateManagement';
+  
+  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
+  import { State } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -247,8 +209,8 @@ import { State } from '@ohos.arkui.stateManagement';
 ```ts
 'use static'
 
-import { Entry, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Button, ClickEvent } from '@kit.ArkUI';
+import { State } from '@kit.ArkUI';
 @Entry
 @Component
 struct MyComponent {
@@ -349,6 +311,48 @@ struct SetSample {
 }
 ```
 
+### 装饰Date类型变量
+
+在下面的示例中，selectedDate类型为Date，点击Button改变其值，视图随之刷新。
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
+import { State } from '@kit.ArkUI';
+@Entry
+@Component
+struct DateExample {
+  @State selectedDate: Date = new Date('2021-08-08');
+
+  build() {
+    Column() {
+      Text(`${this.selectedDate}`)
+      Button('set selectedDate to 2023-07-08')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate = new Date('2023-07-08');
+        })
+      Button('increase the year by 1')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+        })
+      Button('increase the month by 1')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+        })
+      Button('increase the day by 1')
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+        })
+    }.width('100%')
+  }
+}
+```
+
 ### \@State支持联合类型
 
 \@State支持联合类型（包括undefined和null）。在下面的示例中，count类型为number | undefined，点击Button改变count的值或类型，视图会随之刷新。
@@ -356,8 +360,8 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { State } from '@kit.ArkUI';
 @Entry
 @Component
 struct MyComponent {

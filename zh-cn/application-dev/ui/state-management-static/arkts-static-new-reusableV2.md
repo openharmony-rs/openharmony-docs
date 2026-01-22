@@ -57,12 +57,12 @@ reuse、ReuseOptions、ReuseIdCallback的接口说明参考API文档：[**复用
 
 下文提到的描述对应关系如下表：
 
-| 描述       | 对应组件类型                         |
-| ---------- | ------------------------------------ |
-| V1普通组件 | @Component装饰的struct               |
-| V2普通组件 | @ComponentV2装饰的struct             |
-| V1复用组件 | @Reusable @Component装饰的struct     |
-| V2复用组件 | @ReusableV2 @ComponentV2装饰的struct |
+| 描述       | 对应组件类型                                                 |
+| ---------- | ------------------------------------------------------------ |
+| V1普通组件 | [@Component](./arkts-static-create-component.md)装饰的struct |
+| V2普通组件 | @ComponentV2装饰的struct                                     |
+| V1复用组件 | @Reusable @Component装饰的struct                             |
+| V2复用组件 | @ReusableV2 @ComponentV2装饰的struct                         |
 
 下面的表展示了V1和V2的混用支持关系，每行的含义为第一列作为父组件，能否将后面列的组件作为子组件。
 

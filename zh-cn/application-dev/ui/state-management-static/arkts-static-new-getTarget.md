@@ -9,7 +9,7 @@
 - 在静态语言上下文中使用时，需要导入UIUtils工具。
 
   ```ts
-  import { UIUtils } from '@ohos.arkui.stateManagement';
+  import { UIUtils } from '@kit.ArkUI';
   ```
 
 - 状态管理V1和V2会给状态变量装饰器（如[@State](arkts-static-state.md)、[@Local](arkts-static-new-local.md)）装饰或[makeObserved接口](arkts-static-new-makeObserved.md)转换后的Date、Map、Set、Array、interface字面量添加一层包装类用于观察属性变化与API调用，使用getTarget接口可以获取这些包装对象的原始对象。
@@ -22,7 +22,7 @@
 - getTarget传入参数必须是对象类型。传入非对象类型，如number、string、undefined、null，虽然在静态语言上下文中不会编译报错，但实际无作用，会直接返回传入内容。
 
   ```ts
-  import { UIUtils } from '@ohos.arkui.stateManagement';
+  import { UIUtils } from '@kit.ArkUI';
   let res = UIUtils.getTarget(2); // 非对象类型入参，实际无作用，返回传入内容
   let res1 = UIUtils.getTarget(undefined); // 传入undefined，实际无作用，返回undefined
   let res2 = UIUtils.getTarget(null); // 传入null，实际无作用，返回null
@@ -33,8 +33,8 @@
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text } from '@ohos.arkui.component';
-  import { State, Observed, UIUtils } from '@ohos.arkui.stateManagement';
+  import { Entry, Component, Column, Text } from '@kit.ArkUI';
+  import { State, Observed, UIUtils } from '@kit.ArkUI';
   @Observed
   class Info {
     name: string = 'Tom';
@@ -57,8 +57,8 @@
   ```ts
   'use static'
   
-  import { Text, Column, Component, Entry, Button, ClickEvent } from '@ohos.arkui.component';
-  import { State, UIUtils } from '@ohos.arkui.stateManagement';
+  import { Text, Column, Component, Entry, Button, ClickEvent } from '@kit.ArkUI';
+  import { State, UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
   }
@@ -101,8 +101,8 @@ UIUtils.getTarget(value) === value
 ```ts
 'use static'
 
-import { Text, Column, Component, Entry } from '@ohos.arkui.component';
-import { State, UIUtils } from '@ohos.arkui.stateManagement';
+import { Text, Column, Component, Entry } from '@kit.ArkUI';
+import { State, UIUtils } from '@kit.ArkUI';
 interface Info {
   name: string;
 }
