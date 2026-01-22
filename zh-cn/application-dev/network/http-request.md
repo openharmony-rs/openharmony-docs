@@ -865,11 +865,11 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
       }
     ],
     "component-config": {
-        "Request": true // 可选，自API 15开始支持该属性。此处配置为true，代表默认值为true。配置为true表示支持禁止明文传输，false表示不支持禁止明文传输。
-    	"Network Kit": true, // 可选，自API 15开始支持该属性。
-    	"ArkWeb": false // 可选，自API 20开始支持该属性。
-        "Media Kit": false // 可选，自API 23开始支持该属性。
-        "Remote Communication Kit": false // 可选，自API 23开始支持该属性。
+        "Request": true // 可选，自API version 15开始支持该属性。此处配置为true，代表默认值为true。配置为true表示支持禁止明文传输，false表示不支持禁止明文传输。
+    	"Network Kit": true, // 可选，自API version 15开始支持该属性。
+    	"ArkWeb": false // 可选，自API version 20开始支持该属性。
+        "Media Kit": false // 可选，自API version 23开始支持该属性。
+        "Remote Communication Kit": false // 可选，自API version 23开始支持该属性。
     }
   }
 }
