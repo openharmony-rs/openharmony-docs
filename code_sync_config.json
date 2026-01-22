@@ -36140,7 +36140,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1State.ets",
 				"functions":[
 					{
-						"end_line":94,
+						"end_line":62,
 						"name":"v1_state",
 						"start_line":16
 					}
@@ -36150,7 +36150,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1Prop.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":96,
 						"name":"v1_prop",
 						"start_line":16
 					}
@@ -36160,7 +36160,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1Link.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":94,
 						"name":"v1_link",
 						"start_line":16
 					}
@@ -36170,7 +36170,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1ObjectLink.ets",
 				"functions":[
 					{
-						"end_line":96,
+						"end_line":97,
 						"name":"v1_object_link",
 						"start_line":16
 					}
@@ -36180,7 +36180,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1StorageLink.ets",
 				"functions":[
 					{
-						"end_line":96,
+						"end_line":97,
 						"name":"v1_storage_link",
 						"start_line":16
 					}
@@ -36190,7 +36190,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1StorageProp.ets",
 				"functions":[
 					{
-						"end_line":96,
+						"end_line":97,
 						"name":"v1_storage_prop",
 						"start_line":16
 					}
@@ -36200,7 +36200,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1LocalStorageLink.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":96,
 						"name":"v1_local_storage_link",
 						"start_line":16
 					}
@@ -36210,7 +36210,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1LocalStorageProp.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":96,
 						"name":"v1_local_storage_prop",
 						"start_line":16
 					}
@@ -36220,7 +36220,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1ProvideAndConsume.ets",
 				"functions":[
 					{
-						"end_line":92,
+						"end_line":93,
 						"name":"v1_provide_and_consume",
 						"start_line":16
 					}
@@ -36230,7 +36230,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1BuiltIn.ets",
 				"functions":[
 					{
-						"end_line":139,
+						"end_line":140,
 						"name":"v1_built_in",
 						"start_line":16
 					}
@@ -36240,7 +36240,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1MakeV1Observed.ets",
 				"functions":[
 					{
-						"end_line":92,
+						"end_line":93,
 						"name":"v1_makeV1Observed",
 						"start_line":16
 					}
@@ -36250,7 +36250,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Local.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":61,
 						"name":"v2_local",
 						"start_line":16
 					}
@@ -36260,7 +36260,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Param.ets",
 				"functions":[
 					{
-						"end_line":110,
+						"end_line":111,
 						"name":"v2_param",
 						"start_line":16
 					}
@@ -36270,7 +36270,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Computed.ets",
 				"functions":[
 					{
-						"end_line":138,
+						"end_line":139,
 						"name":"v2_computed",
 						"start_line":16
 					}
@@ -36280,7 +36280,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Monitor.ets",
 				"functions":[
 					{
-						"end_line":138,
+						"end_line":139,
 						"name":"v2_monitor",
 						"start_line":16
 					}
@@ -36290,7 +36290,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2ProviderAndConsumer.ets",
 				"functions":[
 					{
-						"end_line":114,
+						"end_line":115,
 						"name":"v2_provider_and_consumer",
 						"start_line":16
 					}
@@ -36300,7 +36300,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2MakeObserved.ets",
 				"functions":[
 					{
-						"end_line":111,
+						"end_line":112,
 						"name":"v2_make_observed",
 						"start_line":16
 					}
@@ -36310,7 +36310,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2BuiltIn.ets",
 				"functions":[
 					{
-						"end_line":139,
+						"end_line":140,
 						"name":"v2_built_in",
 						"start_line":16
 					}
@@ -36320,7 +36320,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1AndV2Compatibility.ets",
 				"functions":[
 					{
-						"end_line":98,
+						"end_line":75,
 						"name":"v1_and_v2_compatibility",
 						"start_line":16
 					}
