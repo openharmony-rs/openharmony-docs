@@ -105,4 +105,4 @@ enableOfflineCache(enable: boolean): void
 
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
-| enable | boolean | 是   | 是否在视频播放期间启用离线缓存。true表示启用，false表示不启用。默认为false |
+| enable | boolean | 是   | 是否在视频播放期间启用离线缓存。true表示启用，false表示不启用。 |
