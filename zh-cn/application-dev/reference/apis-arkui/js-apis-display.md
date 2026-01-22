@@ -136,9 +136,9 @@ import { display } from '@kit.ArkUI';
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| type  | [CornerType](#cornertype23)   | 是   | 否   |圆角类型。 |
-| position  | [Position](#position20)   | 是   | 否   | 圆角圆心的坐标点。 |
-| radius    | number   | 是   | 否   | 圆角半径，单位为px。 |
+| type  | [CornerType](#cornertype23)   | 是   | 否   |圆角类型。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| position  | [Position](#position20)   | 是   | 否   | 圆角圆心的坐标点。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| radius    | number   | 是   | 否   | 圆角半径，单位为px。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FoldCreaseRegion<sup>10+</sup>
 
