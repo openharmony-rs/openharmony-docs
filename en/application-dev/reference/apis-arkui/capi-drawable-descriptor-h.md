@@ -29,7 +29,9 @@ Declares the APIs of **NativeDrawableDescriptor**.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | Defines a struct for the **DrawableDescriptor** object.|
+| [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) | - | Defines an **OH_PixelmapNative** object on the native side using Image Kit.|
 | [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | Defines a struct for the pointer to an **OH_PixelmapNative** object.|
+| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | - | Defines the ArkUI native component instance object.|
 | [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer type for an ArkUI native component instance object.|
 | [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | Defines the DrawableDescriptor animation controller object.|
 

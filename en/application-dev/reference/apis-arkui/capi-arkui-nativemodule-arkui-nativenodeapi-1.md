@@ -97,7 +97,7 @@ Creates a component based on [ArkUI_NodeType](capi-native-node-h.md#arkui_nodety
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the created component. If the component fails to be created, **NULL** is returned. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | Pointer to the created component. If the component fails to be created, **NULL** is returned. You need to manage the lifecycle of the returned component object pointer. Otherwise, issues such as Use After Free may cause process crashes or memory leaks. |
 
 ### disposeNode()
 
@@ -107,7 +107,7 @@ void (*disposeNode)(ArkUI_NodeHandle node)
 
 **Description**
 
-Disposes the component to which the specified pointer points.
+Disposes the component to which the specified pointer points. When calling this API on a non-main thread, special attention must be paid to the lifecycle of the component object to be destroyed. Improper lifecycle management may cause the application to crash; therefore, it is not recommended to call this API on non-main threads.
 
 **Parameters**
 
