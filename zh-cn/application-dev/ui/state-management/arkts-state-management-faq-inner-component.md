@@ -75,7 +75,7 @@ struct Index {
 
 上面示例的渲染过程为：
 
-1. 创建第一个Text组件，触发this.message改变，[标脏](./arkts-state-management-introduce.md#触发更新)第一个Text组件。
+1. 创建第一个Text组件，触发this.message改变，[标脏](./arkts-state-management-glossary.md#标脏mark-dirty)第一个Text组件。
 2. 创建第二个Text组件，触发this.message改变，标脏两个Text组件。
 3. 下一帧到来时，刷新脏系统组件。
 4. 刷新第一个Text组件，触发this.message改变，不会标脏自己，仅标脏第二个Text组件。
