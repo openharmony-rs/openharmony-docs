@@ -16,3 +16,4 @@
 - [压缩与解压](compress/Readme-CN.md)<!--compress-->
 - [划词服务](selectionInput/Readme-CN.md)<!--selectioninput-->
 - [电源管理](powermgr/Readme-CN.md)<!--powermgr-->
+- [打印](print/Readme-CN.md)<!--print-->
