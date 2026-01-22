@@ -57,7 +57,7 @@ Column() {
 
 ## 设置无障碍重要性
 
-[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)属性表示组件的无障碍重要性，用于控制组件是否能被无障碍服务识别，支持以下值：
+[accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)属性表示组件的无障碍重要性，用于控制组件是否能被无障碍服务识别，支持以下值：
 
 - "auto"（默认）：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。
 
@@ -81,12 +81,12 @@ Column() {
 
 ## 设置无障碍文本
 
-[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)属性用于为无文本内容的组件提供朗读文本。若组件已有文本，则优先播报无障碍文本。
-
+[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)属性用于为无文本内容的组件提供朗读文本，为纯视觉元素提供无障碍场景下的信息。建议设置的文本内容简洁达意，传递本组件的关键信息。例如为无文本的播放按钮提供“播放”功能描述。当组件已有文本内容，同时又设置了accessibilityText属性时，则仅播报无障碍文本。
+不建议在accessibilityText中添加冗长的信息，例如添加“单指双击即可播放”这种操作引导、“当前场景不支持”等状态信息。
 - 支持字符串或资源引用。
 - 默认值：“”。
 
-这里以Column组件为例，设置其无障碍文本为“分组”：
+这里以播放图标为例，设置其无障碍文本为“播放”：
 
 <!-- @[accessibility_text_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
@@ -102,12 +102,12 @@ Column() {
 
 ## 设置无障碍说明
 
-accessibilityDescription属性用于提供更详细的组件说明，帮助用户理解将要执行的操作及结果。例如组件状态当前不可使用的原因，系统默认的新手提醒不能表达的含义等场景。该信息在文本内容播报之后播报，并且如果当前控件有默认的新手提醒（如支持点击的组件，默认新手提醒为：单指双击即可执行）时，accessibilityDescription会替代系统的新手提醒，即仅播报accessibilityDescription。
+[accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription)属性用于提供更详细的组件说明，帮助用户理解将要执行的操作及结果。例如组件状态当前不可使用的原因，系统默认的新手提醒不能表达的含义等场景。该信息在文本内容播报之后播报，并且如果当前控件有默认的新手提醒（如支持点击的组件，默认新手提醒为：单指双击即可执行）时，accessibilityDescription会替代系统的新手提醒，即仅播报accessibilityDescription。
 
 - 支持字符串或资源引用。
 - 默认值：“”。
 
-这里以Column组件为例，设置其无障碍说明为“分组”：
+这里以button组件的播放场景为例，设置其无障碍说明为“单指双击即可播放”：
 
 <!-- @[accessibility_description_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
@@ -126,7 +126,7 @@ Column() {
 
 ## 设置无障碍虚拟子节点
 
-accessibilityVirtualNode属性，用于为自绘制组件添加虚拟无障碍节点，辅助工具会读取这些节点的信息而非实际显示内容。
+[accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11)属性，用于为自绘制组件添加虚拟无障碍节点，辅助工具会读取这些节点的信息而非实际显示内容。
 
 <!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
 
@@ -156,11 +156,11 @@ struct VirtualNodeExample {
 
 ## 设置无障碍节点是否被选中
 
-accessibilityChecked和accessibilitySelected是两个用于增强无障碍体验的属性，主要用于向屏幕朗读等辅助工具传达组件的选中状态。
+[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)和[accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13)是两个用于增强无障碍体验的属性，主要用于向屏幕朗读等辅助工具传达组件的选中状态。
 
 ### 在支持多选的情况下，设置无障碍节点是否被选中
 
-accessibilityChecked属性，用于表示组件在支持多选的情况下是否被勾选（如复选框、开关按钮等二态或三态组件），适用于需要明确“选中/未选中”语义的场景，支持以下值：
+[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)属性，用于表示组件在支持多选的情况下是否被勾选（如复选框、开关按钮等二态或三态组件），适用于需要明确“选中/未选中”语义的场景，支持以下值：
 
 - undefined（默认）：由系统自动判断（依赖组件自身的状态，如Toggle组件的isOn属性）。
 
@@ -188,7 +188,7 @@ Column() {
 
 ### 在支持单选的情况下，设置无障碍节点是否被选中
 
-accessibilitySelected属性，用于表示组件在支持单选的情况下是否被选择（如单选列表项、标签页等），适用于需要区分“当前选中项”的场景（如单选组、导航菜单），支持以下值：
+[accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13)属性，用于表示组件在支持单选的情况下是否被选择（如单选列表项、标签页等），适用于需要区分“当前选中项”的场景（如单选组、导航菜单），支持以下值：
 
 - undefined（默认）：由系统自动判断。
 
@@ -216,7 +216,7 @@ Column() {
 
 ### accessibilityChecked属性与accessibilitySelected属性的关键区别
 
-在ArkUI无障碍属性中，accessibilityChecked和accessibilitySelected均用于表示组件的状态，但二者应用场景与语义含义存在本质差异。以下是二者的对比：
+在ArkUI无障碍属性中，[accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13)和[accessibilitySelected](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityselected13)均用于表示组件的状态，但二者应用场景与语义含义存在本质差异。以下是二者的对比：
 
 | 属性    | accessibilityChecked     | accessibilitySelected |
 | ------- | ------------------------ | --------------------- |
