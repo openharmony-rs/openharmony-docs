@@ -97,7 +97,7 @@ params(value: object)
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[param](ts-basic-components-navigation.md#属性-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
