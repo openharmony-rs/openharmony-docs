@@ -5282,3 +5282,19 @@
 **ACL使能**：true
 
 **起始版本**：18
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+ 	
+允许系统应用拉起其他应用卡片添加到桌面的预览面板。
+
+获取该权限后，应用可以拉起其他应用卡片加桌预览面板，以引导用户将希望分发的卡片添加到桌面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**起始版本**：20
