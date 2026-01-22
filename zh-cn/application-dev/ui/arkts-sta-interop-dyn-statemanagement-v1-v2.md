@@ -145,9 +145,8 @@
 - 对ArkTS-Dyn子模块`dynamic_module/Index.ets`文件中的数据模型进行导出。
 
   ```TypeScript
-  'use static'
-
   // dynamic_module/Index.ets
+
   export { MainPage, Book } from './src/main/ets/components/MainPage';
   ```
 
@@ -167,7 +166,7 @@
   ```ts
   'use static'
   import { Entry, Text, Column, Component, Row, ComponentV2, State } from '@kit.ArkUI';
-  import { MainPage, Book } from 'library';
+  import { MainPage, Book } from 'dynamic_module';
 
   @Entry
   @Component
