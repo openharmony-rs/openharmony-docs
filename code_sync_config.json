@@ -39951,5 +39951,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/arkts-condition-variable-introduction.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/AsynchronousWaiting/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":83,
+						"name":"sendable_object",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
