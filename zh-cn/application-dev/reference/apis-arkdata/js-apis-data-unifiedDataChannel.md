@@ -1164,8 +1164,8 @@ let unifiedData = new unifiedDataChannel.UnifiedData(form);
 | -------- | -------- | -------- | -------- | -------- |
 | appId       | string | 否 | 否 | 图标对应的应用id。      |
 | appName     | string | 否 | 否 | 图标对应的应用名。       |
-| appIconId   | string | 否 | 否 | 图标的图片id。        |
-| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。    |
+| appIconId   | string | 否 | 否 | 图标的图片id。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>        |
+| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>    |
 | bundleName  | string | 否 | 否 | 图标对应的应用bundle名。 |
 | abilityName | string | 否 | 否 | 图标对应的应用ability名。 |
 
