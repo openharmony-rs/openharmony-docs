@@ -82,7 +82,7 @@ function add(x: number, y: number): number {
    **ArkTS示例：** ArkTS函数重载
 
    <!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
-
+   
    ``` TypeScript
    function foo(x: number): void;            /*  第一个函数定义。  */
    function foo(x: string): void;            /*  第二个函数定义。  */
@@ -96,7 +96,7 @@ function add(x: number, y: number): number {
 2. ArkTS可选参数使用`?`，如`function foo(name?: string)`，而非Swift的默认值语法。
 
    <!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
-
+   
    ``` TypeScript
    function foo2(name?: string) {}  /*  name为可选参数。  */
    // ...
@@ -262,6 +262,17 @@ const person: Person = {
 **ArkTS示例：**
 
 <!-- @[optional_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+interface Person {
+  name: string;
+  age?: number;  // age是可选属性。
+}
+
+const person: Person = {
+  name: 'Alice',
+};
+```
 
 ### 联合类型
 
