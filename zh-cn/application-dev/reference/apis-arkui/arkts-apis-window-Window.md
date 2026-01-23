@@ -9830,9 +9830,9 @@ setWindowShadowRadius(radius: number): void
 
 **设备行为差异：** 
 
-在<!--RP16-->OpenHarmony 5.1<!--RP16End-->之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
-从<!--RP16-->OpenHarmony 5.1<!--RP16End-->开始，该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+从OpenHarmony 5.1.0开始，该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -10692,7 +10692,7 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在仅在Phone和Tablet设备上生效，其他设备调用返回801错误码。
+**设备行为差异：** 该接口在Phone和Tablet设备可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
