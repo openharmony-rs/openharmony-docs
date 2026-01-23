@@ -38,4 +38,4 @@ IHwcEventCallback::OnHwcEvent([in] unsigned int devId, [in] unsigned int eventId
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。

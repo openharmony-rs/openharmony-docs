@@ -43,7 +43,7 @@ IDisplayComposer::DoCmdRequest([in] unsigned int devId, [in] unsigned int inEleC
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### GetDisplayConnectionType()
 
@@ -68,7 +68,7 @@ IDisplayComposer::GetDisplayConnectionType([in] unsigned int devId, [out] enum D
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### GetPanelPowerStatus()
 
@@ -93,7 +93,7 @@ IDisplayComposer::GetPanelPowerStatus([in] unsigned int devId, [out] enum PanelP
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### InitSMQInfo()
 
@@ -119,4 +119,4 @@ IDisplayComposer::InitSMQInfo([in] unsigned int devId, [in] SharedMemQueue< int 
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。

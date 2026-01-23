@@ -43,7 +43,7 @@ IMapper::AllocMem([in] struct AllocInfo info, [out] NativeBuffer handle)
 
 返回0，表示执行成功。
 
-返回其他值表示执行失败，具体错误码查看**DispErrCode**。
+返回其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### IsSupportAllocPassthrough()
 
@@ -67,7 +67,7 @@ IMapper::IsSupportAllocPassthrough([in] struct AllocInfo info)
 
 返回0，表示执行成功。
 
-返回其他值表示执行失败，具体错误码查看**DispErrCode**。
+返回其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### ReAllocMem()
 
@@ -93,4 +93,4 @@ IMapper::ReAllocMem([in] struct AllocInfo info, [in] NativeBuffer inHandle, [out
 
 返回0，表示执行成功。
 
-返回其他值表示执行失败，具体错误码查看**DispErrCode**。
+返回其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。

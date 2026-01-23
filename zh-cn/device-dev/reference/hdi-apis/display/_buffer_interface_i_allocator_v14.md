@@ -41,4 +41,4 @@ bufferhandle克隆接口。
 
 返回0，表示执行成功。
 
-返回其他值表示执行失败，具体错误码查看**DispErrCode**。
+返回其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。

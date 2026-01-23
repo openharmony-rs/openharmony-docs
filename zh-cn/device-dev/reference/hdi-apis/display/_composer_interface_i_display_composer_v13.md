@@ -50,7 +50,7 @@ IDisplayComposer::CommitTunnelLayer([in] unsigned int devId, [in] unsigned long 
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### GetSupportLayerType()
 
@@ -75,7 +75,7 @@ IDisplayComposer::GetSupportLayerType([in] unsigned int devId, [out] struct Laye
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### RegHwcEventCallback()
 
@@ -99,7 +99,7 @@ IDisplayComposer::RegHwcEventCallback([in] IHwcEventCallback cb)
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### SetTunnelLayerBuffer()
 
@@ -126,7 +126,7 @@ IDisplayComposer::SetTunnelLayerBuffer([in] unsigned int devId, [in] unsigned lo
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### SetTunnelLayerId()
 
@@ -150,7 +150,7 @@ IDisplayComposer::SetTunnelLayerId([in] unsigned int devId, [in] unsigned int la
 
 **返回：**
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### SetTunnelLayerPosition()
 
@@ -177,7 +177,7 @@ IDisplayComposer::SetTunnelLayerPosition([in] unsigned int devId, [in] unsigned 
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
 
 ### SetTunnelLayerProperty()
 
@@ -203,4 +203,4 @@ IDisplayComposer::SetTunnelLayerProperty([in] unsigned int devId, [in] unsigned 
 
 0表示执行成功。
 
-其他值表示执行失败，具体错误码查看**DispErrCode**。
+其他值表示执行失败，具体错误码查看[DispErrCode](_display_v10.md#disperrcode)。
