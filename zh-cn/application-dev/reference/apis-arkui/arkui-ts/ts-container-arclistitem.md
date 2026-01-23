@@ -68,7 +68,7 @@ autoScale(enable: Optional\<boolean>)
 
 | 参数名 | 类型               | 必填 | 说明                                        |
 | ------ | ------------------ | ---- | ------------------------------------------- |
-| enable | Optional\<boolean> | 是   | ArcListItem是否支持自动缩放显示，true表示支持自动缩放显示，false表示不支持自动缩放显示。<br/>默认值：true，支持自动缩放显示。 |
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | ArcListItem是否支持自动缩放显示，true表示支持自动缩放显示，false表示不支持自动缩放显示。<br/>默认值：true，支持自动缩放显示。 |
 
 ### swipeAction
 
@@ -84,7 +84,7 @@ swipeAction(options: Optional\<SwipeActionOptions>)
 
 | 参数名  | 类型                                                         | 必填 | 说明                    |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
-| options | [Optional\<SwipeActionOptions>](ts-container-listitem.md#swipeactionoptions9对象说明) | 是   | ArcListItem的划出组件。 |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9对象说明)&gt; | 是   | ArcListItem的划出组件。 |
 
 ## 示例
 
