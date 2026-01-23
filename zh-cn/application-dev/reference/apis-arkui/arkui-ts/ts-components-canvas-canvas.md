@@ -51,7 +51,7 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 | 参数名  | 类型  | 必填 | 说明 |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | context | [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) \| [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) | 是   | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](ts-drawingrenderingcontext.md)对象。<br>异常值null按无效值处理。 |
-| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 是   | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。<br>异常值null和undefined按[ImageAIOptions](ts-image-common.md#imageaioptions12)的默认值处理。 |
+| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 是   | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。<br>异常值null和undefined按[ImageAIOptions](ts-image-common.md#imageaioptions12)的默认值处理，默认取值为{ type: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT], aiController: new ImageAnalyzerController() }，即开启主体识别和文字识别功能。 |
 
 ## 属性
 
@@ -177,7 +177,8 @@ class MyCanvasModifier implements AttributeModifier<CanvasAttribute> {
   applyNormalAttribute(instance: CanvasAttribute): void {
     // 从（0，0）绘制一张宽高为200vp的图片
     instance.onReady(() => {
-      let image = new ImageBitmap("image.png")
+      // "resources/base/media/img.png"需要替换为开发者所需的图像资源文件
+      let image = new ImageBitmap("resources/base/media/img.png")
       this.context.drawImage(image, 0, 0, 200, 200)
     })
     // 设置开启组件AI分析功能，点击start后，长按触发AI识别功能
