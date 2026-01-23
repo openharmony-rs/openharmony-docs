@@ -160,7 +160,7 @@ getColumnName(columnIndex: number): string
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
@@ -218,7 +218,7 @@ getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
-| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
+| 14800013     | Column index is out of bounds.                                        |
 | 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
@@ -284,7 +284,7 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
 | 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
-| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
+| 14800013     | Column index is out of bounds.                                        |
 | 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
@@ -399,7 +399,7 @@ getValue(columnIndex: number): ValueType
 | **错误码ID** | **错误信息**     |
 |-----------|---------|
 | 14800012  | ResultSet is empty or pointer index is out of bounds.       |
-| 14800013  | ResultSet is empty or column index is out of bounds.   |
+| 14800013  | Column index is out of bounds.   |
 | 14800014  | The target instance is already closed.       |
 
 **示例：**
@@ -451,7 +451,7 @@ getBlob(columnIndex: number): Uint8Array
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
@@ -505,7 +505,7 @@ getString(columnIndex: number): string
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
@@ -560,7 +560,7 @@ getLong(columnIndex: number): number
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
@@ -613,7 +613,7 @@ getDouble(columnIndex: number): number
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
@@ -665,7 +665,7 @@ getAsset(columnIndex: number): Asset
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
@@ -717,7 +717,7 @@ getAssets(columnIndex: number): Assets
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
@@ -1029,7 +1029,7 @@ isColumnNull(columnIndex: number): boolean
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
+| 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
