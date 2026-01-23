@@ -67,7 +67,7 @@ a2.prop1 = 'prop a2';
 test(a2);
 ```
 
-```
+```typescript
 // 混淆后
 class A1 {
     prop1: string = '';
@@ -501,120 +501,127 @@ lastName
 **哪些属性名应该被保留?**
 1.如果代码中通过字符串拼接、变量访问或使用`defineProperty`方法来定义对象属性，则这些属性名应被保留。例如：
 
-<!-- @[jsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.js) -->       
+  <!-- @[jsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.js) -->       
 
-``` JavaScript
-// example.js
-let obj = {x0: 0, x1: 0, x2: 0};
-for (let i = 0; i <= 2; i++) {
-    console.info(obj['x' + i]); // x0, x1, x2应该被保留。
-}
+  ``` JavaScript
+  // example.js
+  let obj = {x0: 0, x1: 0, x2: 0};
+  for (let i = 0; i <= 2; i++) {
+      console.info(obj['x' + i]); // x0, x1, x2应该被保留。
+  }
 
-Object.defineProperty(obj, 'y', {}); // y应该被保留。
-Object.getOwnPropertyDescriptor(obj, 'y'); // y应该被保留。
-console.info(obj.y);
+  Object.defineProperty(obj, 'y', {}); // y应该被保留。
+  Object.getOwnPropertyDescriptor(obj, 'y'); // y应该被保留。
+  console.info(obj.y);
 
-obj.s1 = 'a';
-let key = 's1';
-console.info(obj[key]); // key对应的变量值s应该被保留。
+  obj.s1 = 'a';
+  let key = 's1';
+  console.info(obj[key]); // key对应的变量值s应该被保留。
 
-obj.t1 = 'b';
-console.info(obj['t' + '1']); // t1应该被保留。
-```
+  obj.t1 = 'b';
+  console.info(obj['t' + '1']); // t1应该被保留。
+  ```
 
-对于如下的字符串常量形式的属性调用，可以选择性保留：
+  对于如下的字符串常量形式的属性调用，可以选择性保留：
 
-<!-- @[optionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
+  <!-- @[optionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
 
-``` TypeScript
-// 混淆配置：
-// -enable-property-obfuscation
-// -enable-string-property-obfuscation
-obj2.t = "0";
-console.info(obj2['t']); // 此时，'t'会被正确混淆，t可以选择性保留。
+  ``` TypeScript
+  // 混淆配置：
+  // -enable-property-obfuscation
+  // -enable-string-property-obfuscation
+  obj2.t = "0";
+  console.info(obj2['t']); // 此时，'t'会被正确混淆，t可以选择性保留。
 
-obj2['v'] = "0";
-console.info(obj2['v']); // 此时，'v'会被正确混淆，v可以选择性保留。
-```
+  obj2['v'] = "0";
+  console.info(obj2['v']); // 此时，'v'会被正确混淆，v可以选择性保留。
+  ```
 
 2.对于间接导出的场景，例如`export MyClass`和`let a = MyClass; export {a};`，如果不想混淆它们的属性名，那么需要使用[保留选项](#保留选项)来保留这些属性名。另外，对于直接导出的类或对象的属性的属性名，例如下面例子中的`firstName`和`personAge`，如果不想混淆它们，那么也需要使用[保留选项](#保留选项)来保留这些属性名。
 
-<!-- @[optionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->            
+  <!-- @[optionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->            
 
-``` TypeScript
-// myclass.ts
-export class MyClass02 {
-  person = {firstName: "123", personAge: 100};
-}
-```
+  ``` TypeScript
+  // myclass.ts
+  export class MyClass02 {
+    person = {firstName: "123", personAge: 100};
+  }
+  ```
 
 3.在ArkTS/TS/JS文件中使用so库的API（例如示例中的foo）时，需手动保留API名称。
 
-<!-- @[dtsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->       
+  <!-- @[dtsOptionExample_keepPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->       
 
-``` TypeScript
-export const add: (a: number, b: number) => number;
-```
+  ``` TypeScript
+  export const add: (a: number, b: number) => number;
+  ```
 
-<!-- @[etsOptionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->      
+  <!-- @[etsOptionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->      
 
-``` TypeScript
-// test.ets
-import testNapi from 'libentry.so'
-// ...
-testNapi.add(2, 3); // add需要保留，示例如：-keep-property-name foo。
-```
+  ``` TypeScript
+  // test.ets
+  import testNapi from 'libentry.so'
+  // ...
+  testNapi.add(2, 3); // add需要保留，示例如：-keep-property-name foo。
+  ```
 
 4.JSON数据解析及对象序列化时，需要保留使用到的字段，例如：
 
-<!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->        
+  <!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->        
 
-``` TypeScript
-// 示例JSON文件结构(test.json)：
-/*
-{
-  "jsonProperty": "value",
-  "otherProperty": "value2"
-}
-*/
-import jsonData from './test.json';
-// ...
-let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留。
+  ``` TypeScript
+  // 示例JSON文件结构(test.json)：
+  /*
+  {
+    "jsonProperty": "value",
+    "otherProperty": "value2"
+  }
+  */
+  import jsonData from './test.json';
+  // ...
+  let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留。
 
-class jsonTest {
-  prop1: string = '';
-  prop2: number = 0
-}
+  class jsonTest {
+    prop1: string = '';
+    prop2: number = 0
+  }
 
-let obj = new jsonTest();
-const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留。
-```
+  let obj = new jsonTest();
+  const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留。
+  ```
 
 5.使用到的数据库相关的字段，需要手动保留。例如，数据库键值对类型（ValuesBucket）中的属性：
 
-<!-- @[optionExample_keepPropertyName4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
+  ```ts
+  const valueBucket: ValuesBucket = {
+      'ID1': ID1, // ID1应该被保留
+      'NAME1': name, // NAME1应该被保留
+      'AGE1': age, // AGE1应该被保留
+      'SALARY1': salary // SALARY1应该被保留
+  }
+  ```     
 
 6.源码中自定义装饰器修饰了成员变量、成员方法、参数，同时其源码编译的中间产物为js文件时（如编译release源码HAR或者源码包含@ts-ignore、@ts-nocheck），这些装饰器所在的成员变量/成员方法名称需要被保留。这是由于ts高级语法特性转换为js标准语法时，将上述装饰器所在的成员变量/成员方法名称硬编码为字符串常量。
 示例：
 
-<!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
+  <!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
 
-``` TypeScript
-function CustomDecorator(target: Object, propertyKey: string) {}
-function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
-function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
+  ``` TypeScript
+  function CustomDecorator(target: Object, propertyKey: string) {}
+  function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
+  function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
 
-class A {
-  // 1.成员变量装饰器。
-  @CustomDecorator
-  propertyName1: string = ""   // propertyName1 需要被保留。
-  // 2.成员方法装饰器。
-  @MethodDecorator
-  methodName1() {} // methodName1 需要被保留。
-  // 3.方法参数装饰器。
-  methodName2(@ParamDecorator param: string): void {} // methodName2 需要被保留。
-}
-```
+  class A {
+    // 1.成员变量装饰器。
+    @CustomDecorator
+    propertyName1: string = ""   // propertyName1 需要被保留。
+    // 2.成员方法装饰器。
+    @MethodDecorator
+    methodName1() {} // methodName1 需要被保留。
+    // 3.方法参数装饰器。
+    methodName2(@ParamDecorator param: string): void {} // methodName2 需要被保留。
+  }
+  ```
 
 ### -keep-global-name
 
@@ -646,42 +653,42 @@ export namespace Ns {
 
 1.在JavaScript中全局变量是`globalThis`的属性。如果在代码中使用`globalThis`去访问全局变量，那么该变量名应该被保留。
 
-示例：
+  示例：
 
-<!-- @[optionExample_keepGlobalName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
+  <!-- @[optionExample_keepGlobalName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
 
-``` TypeScript
-var a = 0;
-console.info(globalThis.a);  // a 应该被保留。
-function foo2(){}
-globalThis.foo2();           // foo2 应该被保留。
-var c = "0";
-console.info(c);             // c 可以被正确地混淆。
-function bar(){}
-bar();                      // bar 可以被正确地混淆。
-class MyClass {}
-let d = new MyClass();      // MyClass 可以被正确地混淆。
-```
+  ``` TypeScript
+  var a = 0;
+  console.info(globalThis.a);  // a 应该被保留。
+  function foo2(){}
+  globalThis.foo2();           // foo2 应该被保留。
+  var c = "0";
+  console.info(c);             // c 可以被正确地混淆。
+  function bar(){}
+  bar();                      // bar 可以被正确地混淆。
+  class MyClass {}
+  let d = new MyClass();      // MyClass 可以被正确地混淆。
+  ```
 
 2.当以命名导入的方式导入 so 库的 API时，若同时开启`-enable-toplevel-obfuscation`和`-enable-export-obfuscation`选项，需要手动保留API的名称。
 
-<!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+  <!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
 
-``` TypeScript
-// src/main/cpp/types/libentry/Index.d.ts。
-declare function testNapi2(): void;
-declare function testNapi3(): void;
-```
+  ``` TypeScript
+  // src/main/cpp/types/libentry/Index.d.ts。
+  declare function testNapi2(): void;
+  declare function testNapi3(): void;
+  ```
 
-<!-- @[etsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->         
+  <!-- @[etsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->         
 
-``` TypeScript
-// example.ets
-import { testNapi2, testNapi3 as myNapi } from 'libentry.so' // testNapi2 和 testNapi3 应该被保留。
-// ...
-testNapi2();
-myNapi();
-```
+  ``` TypeScript
+  // example.ets
+  import { testNapi2, testNapi3 as myNapi } from 'libentry.so' // testNapi2 和 testNapi3 应该被保留。
+  // ...
+  testNapi2();
+  myNapi();
+  ```
 
 ### -keep-file-name
 
@@ -696,45 +703,45 @@ entry
 **哪些文件名应该被保留?**
 1.在使用`require`引入文件路径时，由于`ArkTS`不支持[CommonJS](../arkts-utils/module-principle.md#commonjs模块)语法，因此这种情况下路径应该被保留。
 
-<!-- @[jsOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.js) -->         
+  <!-- @[jsOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.js) -->         
 
-``` JavaScript
-// example.js
-const module1 = require('./file1'); // file1 应该被保留。
-```
+  ``` JavaScript
+  // example.js
+  const module1 = require('./file1'); // file1 应该被保留。
+  ```
 
 2.对于动态导入的路径名，由于无法识别`import`函数中的参数是否为路径，因此这种情况下路径应该被保留。
 
-<!-- @[testOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/file2.ts) -->        
+  <!-- @[testOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/file2.ts) -->        
 
-``` TypeScript
-// file2.ts
-export function foo () {}
-```
+  ``` TypeScript
+  // file2.ts
+  export function foo () {}
+  ```
 
-<!-- @[optionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
+  <!-- @[optionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
 
-``` TypeScript
-// main.ts
-const moduleName = './file2'         // moduleName对应的路径名file2应该被保留。
-const module2 = import(moduleName)
-```
+  ``` TypeScript
+  // main.ts
+  const moduleName = './file2'         // moduleName对应的路径名file2应该被保留。
+  const module2 = import(moduleName)
+  ```
 
 3.在使用[跨包路由](../ui/arkts-navigation-cross-package.md)进行路由跳转时，传递给动态路由的路径应该被保留。动态路由提供系统路由表和自定义路由表两种方式。若采用自定义路由表进行跳转，配置白名单的方式与上述第二种动态引用场景一致。而若采用系统路由表进行跳转，则需要将模块下`resources/base/profile/route_map.json`文件中`pageSourceFile`字段对应的路径添加到白名单中。
 
-```json
-{
-  "routerMap": [
-    {
-      "name": "PageOne",
-      "pageSourceFile": "src/main/ets/pages/directory/PageOne.ets",  // 路径都应该被保留
-      "buildFunction": "PageOneBuilder",
-      "data": {
-        "description" : "this is PageOne"
+  ```json
+  {
+    "routerMap": [
+      {
+        "name": "PageOne",
+        "pageSourceFile": "src/main/ets/pages/directory/PageOne.ets",  // 路径都应该被保留
+        "buildFunction": "PageOneBuilder",
+        "data": {
+          "description" : "this is PageOne"
+        }
       }
-    }
-  ]
-}
+    ]
+  }
 ```
 
 ### -keep-dts
