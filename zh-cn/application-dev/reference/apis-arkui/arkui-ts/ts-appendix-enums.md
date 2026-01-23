@@ -1139,7 +1139,7 @@ type Nullable\<T> = T | undefined
 
 ## PresetFillType<sup>22+</sup>
 
-为不同响应式[断点规格](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
+为不同响应式[栅格容器断点](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
