@@ -276,17 +276,17 @@ import { UIUtils } from '@kit.ArkUI';
 - 不支持在@Computed装饰的getter方法中调用applySync、flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Computed`，错误码为[`140001`](../../reference/apis-arkui/errorcode-stateManagement.md#140001-applysyncflushupdatesflushuiupdates非法调用)。
   
   <!-- @[CallInComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInComputed.ets) -->
-
-  ```ts
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Page {
     @Local firstName: string = 'Hua';
     @Local lastName: string = 'Li';
     @Local count: number = 0;
-
+  
     @Computed
     get fullName() {
       // 在computed中调用applySync、flushUpdates、flushUIUpdates运行时报错
@@ -297,7 +297,7 @@ import { UIUtils } from '@kit.ArkUI';
       });
       return this.firstName + ' ' + this.lastName;
     }
-
+  
     build() {
       Column() {
         Text(`${this.fullName}`)
