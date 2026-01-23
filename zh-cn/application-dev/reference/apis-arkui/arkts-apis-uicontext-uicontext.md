@@ -1858,7 +1858,7 @@ getDragController(): DragController
 
 |类型|说明|
 |----|----|
-|[DragController](js-apis-arkui-dragController.md)| 获取DragController对象。|
+|[DragController](arkts-apis-uicontext-dragcontroller.md)| 获取DragController对象。|
 
 **示例：**
 
