@@ -15242,6 +15242,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/cpp/hello.cpp",
+				"functions":[
+					{
+						"end_line":474,
+						"name":"the_node_api_layer_code_for_the_data_channel_between_the_application_side_and_the_frontend_page",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
