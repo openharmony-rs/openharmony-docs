@@ -140,7 +140,7 @@ import { display } from '@kit.ArkUI';
 | ------ | -------- | ---- | ---- | ------------------ |
 | type  | [CornerType](#cornertype23)   | 是   | 否   |圆角类型。 |
 | position  | [Position](#position20)   | 是   | 否   | 圆角圆心的坐标点。 |
-| radius    | number   | 是   | 否   | 圆角半径，单位为px。|
+| radius    | number   | 是   | 否   | 圆角半径，单位为px。 |
 
 ## FoldCreaseRegion<sup>10+</sup>
 
