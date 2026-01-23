@@ -185,7 +185,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Device info | 设备信息 | 8 | 是 | - |
 | Build info | 版本信息 | 8 | 是 | - |
 | DeviceDebuggable | 设备的系统版本是否可调试，和开发者选项无关 | 23 | 是 | - |
-| Fingerprint | 故障特征，聚类同类问题的哈希值 | 8 | 是 | - |
+| Fingerprint | 故障特征，聚类同类问题的哈希值，不同日志该值相同表示为同一故障原因 | 8 | 是 | - |
 | Enabled app log configs | 使能的配置参数列表 | 20 | 否 | 仅用户配置时打印，详见[应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](#应用通过hiappevent设置崩溃日志配置参数场景日志规格)。 |
 | Module name | 模块名 | 8 | 是 | - |
 | ReleaseType | 应用的版本类型 | 23 | 否 | 仅在应用进程提供，release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 |
@@ -205,7 +205,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存状态 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[实现原理](#实现原理)。 |
 | Reason | 故障原因 | 8 | 是 | - |
-| LastFatalMessage | 应用记录的最后一条Fatal级日志 | 8 | 否 | 进程主动abort，hilog中打印包含最后一条Fatal日志时。 |
+| LastFatalMessage | Fatal消息 | 8 | 否 | 以下几种情况共用此字段：<br> 解析到不可靠的栈帧地址时输出的提示信息；<br> 因ABORT信号崩溃退出时保存最后一条FATAL级Hilog日志；<br>系统内部的维测信息；<br>应用通过[OH_HiDebug_SetCrashObj](hidebug-guidelines.md#添加维测信息到崩溃日志中)设置的字符串信息。|
 | Fault thread info | 故障线程信息 | 8 | 是 | - |
 | SubmitterStacktrace | 提交者线程栈 | 12 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**通过libuv和ffrt提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | Registers | 故障现场寄存器 | 8 | 是 | - |
@@ -708,6 +708,158 @@ Uid:0
 >
 > leaves foreground：应用在后台运行。
 
+## CppCrash聚类
+
+### 聚类简介
+
+应用程序在不同版本或同一版本的不同时间产生的Cpp Crash可能为同一原因，但在Cpp crash故障日志中生成的大部分信息会随版本、时间等因素变化，无法快速确定是否为重复问题；
+
+Cpp Crash故障信息包含系统侧和应用侧的调用栈，不利于应用开发者快速排查应用侧的问题。
+
+因此，为避免重复分析多份故障信息，提高应用故障问题的分析效率，需要对Cpp Crash故障信息进行聚类；
+
+同时，聚类也能帮助开发者对不同原因问题进行分类统计。
+
+### 聚类信息范围
+
+Cpp Crash故障日志信息中的故障线程信息表示业务线程发生故障时代码调用信息，相同的故障线程调用栈信息必然表示相同的故障原因。
+
+因此，将故障线程信息作为聚类范围是最为准确的，开发者可根据业务聚类的需求调整增加其他故障日志的信息。
+
+故障线程信息在Cpp Crash故障日志中从“Fault thread info:”开始，到“Registers:”结束，示例如下：
+
+```text
+...
+Fault thread info:
+Tid:10208, Name:crasher_cpp
+#00 pc 000e8400 /system/lib/ld-musl-arm.so.1(raise+176)(a40044d0acb68107cfc4adb5049c0725)
+#01 pc 00008cdc /data/storage/el1bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#02 pc 0005ae00 /system/lib/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)(bc1c64aabbe5c7d4db2282a6137443e1)
+#03 pc 00de3efc /system/lib/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#04 pc 00448dd4 /system/lib/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+372)
+#05 at triggerCrash (sample|sample|1.0.0|src/main/ets/pages/CppCrash.ts:49:25)
+#06 at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
+#07 pc 001e5c8c /system/lib/platformsdk/libark_jsruntime.so(ce0b05d90b9fae02e7abf8e9f1e5a0f3)
+...
+Registers:
+...
+```
+
+### 提取聚类信息
+
+故障线程信息，除线程名和线程号外，主要为调用栈信息，可以通过正则匹配筛选堆栈内容。
+
+由于系统或应用的版本不同，调用栈中会存在一些易变的信息（如行号、字节偏移、BuildID），因此需要对信息做提取和过滤操作。
+
+建议对每一帧栈帧，执行以下操作：
+
+**Native栈帧标准化：**
+
+| 原始栈帧内容 | 标准化后栈帧内容 |
+| ------------- | ---------------- |
+| #02 pc 0005ae00 /system/lib/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack\<true\>(panda::JsiRuntimeCallInfo*)+272)(bc1c64aabbe5c7d4db2282a6137443e1) | /system/lib/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack\<true\>(panda::JsiRuntimeCallInfo*)+272) |
+
+按以下步骤处理：
+
+a. 去除行号；
+
+b. 去除PC偏移和BuildID；
+
+c. 保留文件路径（如 `/system/lib/platformsdk/libace_napi.z.so`）；
+
+d. 保留函数完整签名（如 `panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)`，括号内的内容，含类名、函数名、参数，包括 `const`、参数类型等，若日志中已解析）。
+
+若Native栈帧存在仅有二进制文件名而没有函数名时，可选择保留PC的偏移值与文件路径：
+
+| 原始栈帧内容 | 标准化后栈帧内容 |
+| ------------- | ---------------- |
+| #01 pc 00008cdc /data/storage/el1bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a) | 00008cdc /data/storage/el1bundle/libs/arm64/libsample.so |
+
+**JS栈帧标准化：**
+
+| 原始栈帧内容 | 标准化后栈帧内容 |
+| ------------- | ---------------- |
+| #06 at onPageShow (sample\|sample\|1.0.0\|src/main/ets/pages/Index.ts:381:36) | onPageShow (sample\|sample\|1.0.0\|src/main/ets/pages/Index.ts:381:36) |
+
+按以下步骤处理：
+
+a. 去除行号；
+
+b. 保留函数名（如 `onPageShow`）；
+
+c. 保留文件路径、代码行号和列号（如 `src/main/ets/pages/Index.ts:381:36`）；
+
+d. 保留模块名、依赖模块名、版本号信息（如`sample|sample|1.0.0|`）。
+
+### 提取聚类特征
+
+经过标准化的栈帧可能仍然存在栈帧较多，不利于聚类后存储以及查询的情况，因此开发者需要根据业务情况制定聚类特征提取方法，将栈帧信息进一步简化为聚类特征。
+
+以下为推荐的聚类特征提取方法：
+
+**1. 过滤基础库与异常栈帧**
+
+即栈帧包含如下字段之一：
+
+```text
+libc.so
+libc++.so
+ld-musl-aarch64.so
+libc_fdleak_debug.so
+unknown
+watchdog
+kthread
+rdr_system_error
+libart.so
+__switch_to
+dump_backtrace
+show_stack
+dump_stack
+panic
+libace_napi.z.so
+libarkjs_runtime.z.so
+```
+
+**2. 过滤系统栈帧，筛选业务栈帧**
+
+系统库栈帧以“/system/lib”或“/system/lib64”为起始字符，系统栈帧格式示例：
+
+```text
+/system/lib/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack\<true\>(panda::JsiRuntimeCallInfo*)+272)
+```
+
+业务栈帧以“at”为起始字符，或包含“/data”、“/data/storage”子串。业务栈帧格式示例：
+
+JS栈帧默认为业务栈帧：
+
+```text
+onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
+```
+
+应用的Native栈帧：
+
+```text
+00008cdc /data/storage/el1bundle/libs/arm64/libsample.so
+```
+
+**3. 筛选部分关键栈帧**
+
+按照栈帧的顺序提取少量信息作为聚类特征，例如仅保留第一帧、第二帧和最后一帧信息作为特征信息。
+
+开发者可根据业务需求制定相应的筛选条件，保证特征信息在同一故障问题上一致即可。
+
+### 生成聚类特征
+
+最终生成的聚类特征是一个包含少量标准化栈帧的业务调用栈序列。
+
+| 原始故障线程栈 | 最终聚类特征（调用顺序从上到下）|
+| ----------- | ------------------- |
+| #00 pc 000e8400 /system/lib/ld-musl-arm.so.1<br>(raise+176)(a40044d0acb68107cfc4adb5049c0725)<br> #01 pc 00008cdc /data/storage/el1bundle/libs/arm64/libsample.so<br>(8b74cdc906ea6b2eba95d891bc91c72a)<br> #02 pc 0005ae00 /system/lib/platformsdk/libace_napi.z.so<br>(panda::JSValueRef ArkNativeFunctionCallBack\<true\>(panda::JsiRuntimeCallInfo*)+272)(bc1c64aabbe5c7d4db2282a6137443e1)<br> #03 pc 00de3efc /system/lib/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)<br> #04 pc 00448dd4 /system/lib/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+372)<br> #05 at triggerCrash (sample\|sample\|1.0.0\|src/main/ets/pages/CppCrash.ts:49:25)<br> #06 at onPageShow (sample\|sample\|1.0.0\|src/main/ets/pages/Index.ts:381:36)<br> #07 pc 001e5c8c /system/lib/platformsdk/libark_jsruntime.so(ce0b05d90b9fae02e7abf8e9f1e5a0f3) | 00008cdc /data/storage/el1bundle/libs/arm64/libsample.so<br> triggerCrash (sample\|sample\|1.0.0\|src/main/ets/pages/CppCrash.ts:49:25)<br> onPageShow (sample\|sample\|1.0.0\|src/main/ets/pages/Index.ts:381:36) |
+
+开发者通过比对多份故障日志提取出的聚类特征，对Cpp Crash故障问题进行分类统计。
+
+也可以参考当前故障日志中的Fingerprint字段，对聚类特征内容进行哈希运算生成故障特征标识值，再根据故障特征标识值对Cpp Crash故障问题进行分类统计。
+
 ## Cpp Crash常见问题
 
 ### 故障日志中调用栈出现中断
@@ -725,3 +877,6 @@ Uid:0
 **编译选项开启方法**
 
 以Cmake为例，在CMakeList.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
+
+<!--RP10-->
+<!--RP10End-->
