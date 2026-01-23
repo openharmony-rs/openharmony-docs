@@ -149,7 +149,7 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[on](#inputmonitoronmouse23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMouse](#inputmonitoronmouse23)。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -208,7 +208,7 @@ onMouse(receiver: Callback&lt;MouseEvent&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[onMouse](#inputmonitoronmouse9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronmouse9)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1025,7 +1025,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offPinch'<sup>23+</sup>
+## inputMonitor.offPinch<sup>23+</sup>
 
 offPinch(receiver?: Callback&lt;Pinch&gt;): void
 
@@ -2091,7 +2091,7 @@ off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch223)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPinch](#inputmonitoroffpinch23-1)。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -2173,7 +2173,7 @@ struct Index {
 }
 ```
 
-## inputMonitor.offPinch2<sup>23+</sup>
+## inputMonitor.offPinch<sup>23+</sup>
 
 offPinch(fingers: int, receiver?: Callback&lt;Pinch&gt;): void
 
