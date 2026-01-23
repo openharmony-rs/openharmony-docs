@@ -22,7 +22,7 @@
 
 ### AllocMem()
 
-```
+```idl
 IMapper::AllocMem([in] struct AllocInfo info, [out] NativeBuffer handle)
 ```
 
@@ -47,7 +47,7 @@ IMapper::AllocMem([in] struct AllocInfo info, [out] NativeBuffer handle)
 
 ### IsSupportAllocPassthrough()
 
-```
+```idl
 IMapper::IsSupportAllocPassthrough([in] struct AllocInfo info)
 ```
 
@@ -71,7 +71,7 @@ IMapper::IsSupportAllocPassthrough([in] struct AllocInfo info)
 
 ### ReAllocMem()
 
-```
+```idl
 IMapper::ReAllocMem([in] struct AllocInfo info, [in] NativeBuffer inHandle, [out] NativeBuffer outHandle)
 ```
 

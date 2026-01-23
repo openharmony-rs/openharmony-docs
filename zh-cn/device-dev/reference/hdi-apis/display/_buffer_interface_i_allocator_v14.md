@@ -20,7 +20,7 @@
 
 ### CloneDmaBufferHandle()
 
-```
+```idl
 IAllocator::CloneDmaBufferHandle([in] NativeBuffer inHandle, [out] NativeBuffer outHandle)
 ```
 

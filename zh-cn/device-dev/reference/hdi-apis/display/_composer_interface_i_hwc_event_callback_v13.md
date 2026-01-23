@@ -16,7 +16,7 @@
 
 ### OnHwcEvent()
 
-```
+```idl
 IHwcEventCallback::OnHwcEvent([in] unsigned int devId, [in] unsigned int eventId, [in] int[] eventData)
 ```
 

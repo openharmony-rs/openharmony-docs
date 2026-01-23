@@ -23,7 +23,7 @@
 | 名称 | 描述 |
 | -------- | -------- |
 | interface&nbsp;&nbsp;[IDisplayComposer](_composer_interface_i_display_composer_v13.md) | 显示合成接口声明。 |
-| interface&nbsp;&nbsp;[IHwcEventCallback](composer_interface_i_hwc_event_callback_v13.md) | 环境变化事件回调接口。 |
+| interface&nbsp;&nbsp;[IHwcEventCallback](_composer_interface_i_hwc_event_callback_v13.md) | 环境变化事件回调接口。 |
 
 ### 枚举
 
@@ -36,7 +36,7 @@
 
 ### LayerType
 
-```
+```idl
 enum LayerType : ohos.hdi.display.composer.v1_0.LayerType
 ```
 
@@ -52,7 +52,7 @@ enum LayerType : ohos.hdi.display.composer.v1_0.LayerType
 
 ### TunnelLayerProperty
 
-```
+```idl
 enum TunnelLayerProperty
 ```
 

@@ -19,7 +19,7 @@
 
 ### DoCmdRequest()
 
-```
+```idl
 IDisplayComposer::DoCmdRequest([in] unsigned int devId, [in] unsigned int inEleCnt, [in] struct HdifdInfo[] inFds, [out] unsigned int outEleCnt, [out] struct HdifdInfo[] outFds)
 ```
 
@@ -47,7 +47,7 @@ IDisplayComposer::DoCmdRequest([in] unsigned int devId, [in] unsigned int inEleC
 
 ### GetDisplayConnectionType()
 
-```
+```idl
 IDisplayComposer::GetDisplayConnectionType([in] unsigned int devId, [out] enum DisplayConnectionType outType)
 ```
 
@@ -72,7 +72,7 @@ IDisplayComposer::GetDisplayConnectionType([in] unsigned int devId, [out] enum D
 
 ### GetPanelPowerStatus()
 
-```
+```idl
 IDisplayComposer::GetPanelPowerStatus([in] unsigned int devId, [out] enum PanelPowerStatus status)
 ```
 
@@ -97,7 +97,7 @@ IDisplayComposer::GetPanelPowerStatus([in] unsigned int devId, [out] enum PanelP
 
 ### InitSMQInfo()
 
-```
+```idl
 IDisplayComposer::InitSMQInfo([in] unsigned int devId, [in] SharedMemQueue< int > request, [out] SharedMemQueue< int > reply)
 ```
 

@@ -16,7 +16,7 @@
 
 | 名称 | 描述 |
 | -------- | -------- |
-| [RegHwcEventCallback](#reghwceventcallback) ([in] [IHwcEventCallback](composer_interface_i_hwc_event_callback_v13.md) cb) | 注册环境变化时要调用的回调接口。 |
+| [RegHwcEventCallback](#reghwceventcallback) ([in] [IHwcEventCallback](_composer_interface_i_hwc_event_callback_v13.md) cb) | 注册环境变化时要调用的回调接口。 |
 | [GetSupportLayerType](#getsupportlayertype) ([in] unsigned int devId, [out] struct [LayerType](_composer_display_v13.md#layertype)[] types) | 返回支持的图层类型列表。 |
 | [SetTunnelLayerId](#settunnellayerid) ([in] unsigned int devId, [in] unsigned int layerId, [in] unsigned long tunnelId) | 设置隧道层的TunnelId。 |
 | [SetTunnelLayerProperty](#settunnellayerproperty) ([in] unsigned int devId, [in] unsigned int layerId, [in] unsigned int property) | 设置隧道层的隧道属性。 |
@@ -28,7 +28,7 @@
 
 ### CommitTunnelLayer()
 
-```
+```idl
 IDisplayComposer::CommitTunnelLayer([in] unsigned int devId, [in] unsigned long tunnelId, [out] HdifdParcelable releaseFence)
 ```
 
@@ -54,7 +54,7 @@ IDisplayComposer::CommitTunnelLayer([in] unsigned int devId, [in] unsigned long 
 
 ### GetSupportLayerType()
 
-```
+```idl
 IDisplayComposer::GetSupportLayerType([in] unsigned int devId, [out] struct LayerType[] types)
 ```
 
@@ -79,7 +79,7 @@ IDisplayComposer::GetSupportLayerType([in] unsigned int devId, [out] struct Laye
 
 ### RegHwcEventCallback()
 
-```
+```idl
 IDisplayComposer::RegHwcEventCallback([in] IHwcEventCallback cb)
 ```
 
@@ -103,7 +103,7 @@ IDisplayComposer::RegHwcEventCallback([in] IHwcEventCallback cb)
 
 ### SetTunnelLayerBuffer()
 
-```
+```idl
 IDisplayComposer::SetTunnelLayerBuffer([in] unsigned int devId, [in] unsigned long tunnelId, [in] NativeBuffer inHandle, [in] HdifdParcelable acquireFence)
 ```
 
@@ -130,7 +130,7 @@ IDisplayComposer::SetTunnelLayerBuffer([in] unsigned int devId, [in] unsigned lo
 
 ### SetTunnelLayerId()
 
-```
+```idl
 IDisplayComposer::SetTunnelLayerId([in] unsigned int devId, [in] unsigned int layerId, [in] unsigned long tunnelId)
 ```
 
@@ -154,7 +154,7 @@ IDisplayComposer::SetTunnelLayerId([in] unsigned int devId, [in] unsigned int la
 
 ### SetTunnelLayerPosition()
 
-```
+```idl
 IDisplayComposer::SetTunnelLayerPosition([in] unsigned int devId, [in] unsigned long tunnelId, [in] int x, [in] int y)
 ```
 
@@ -181,7 +181,7 @@ IDisplayComposer::SetTunnelLayerPosition([in] unsigned int devId, [in] unsigned 
 
 ### SetTunnelLayerProperty()
 
-```
+```idl
 IDisplayComposer::SetTunnelLayerProperty([in] unsigned int devId, [in] unsigned int layerId, [in] unsigned int property)
 ```
 

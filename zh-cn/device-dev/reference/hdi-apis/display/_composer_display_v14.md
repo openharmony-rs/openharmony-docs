@@ -35,7 +35,7 @@
 
 ### DisplayConnectionType
 
-```
+```idl
 enum DisplayConnectionType
 ```
 
@@ -53,7 +53,7 @@ enum DisplayConnectionType
 
 ### DisplayPropertyID
 
-```
+```idl
 enum DisplayPropertyID : ohos.hdi.display.composer.v1_2.DisplayPropertyID
 ```
 
@@ -71,7 +71,7 @@ enum DisplayPropertyID : ohos.hdi.display.composer.v1_2.DisplayPropertyID
 
 ### PanelPowerStatus
 
-```
+```idl
 enum PanelPowerStatus
 ```
 

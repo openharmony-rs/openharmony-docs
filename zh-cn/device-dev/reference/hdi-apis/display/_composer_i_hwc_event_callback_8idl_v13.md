@@ -18,4 +18,4 @@
 
 | 名称 | 描述 |
 | -------- | -------- |
-| interface&nbsp;&nbsp;[IHwcEventCallback](composer_interface_i_hwc_event_callback_v13.md) | 环境变化事件回调接口。 |
+| interface&nbsp;&nbsp;[IHwcEventCallback](_composer_interface_i_hwc_event_callback_v13.md) | 环境变化事件回调接口。 |
