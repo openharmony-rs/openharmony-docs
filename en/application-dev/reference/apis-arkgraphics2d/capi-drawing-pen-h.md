@@ -11,11 +11,13 @@
 This file declares functions related to the pen in the drawing module.
 
 <!--RP1-->
-**Sample**: [NDKAPIDrawing (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKAPIDrawing)<!--RP1End-->
+**Sample**: [NDKAPIDrawing (API Version 14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **File to include**: <native_drawing/drawing_pen.h>
 
 **Library**: libnative_drawing.so
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -66,16 +68,16 @@ This file declares functions related to the pen in the drawing module.
 | [bool OH_Drawing_PenGetFillPath(OH_Drawing_Pen* pen, const OH_Drawing_Path* src, OH_Drawing_Path* dst,const OH_Drawing_Rect* rect, const OH_Drawing_Matrix* matrix)](#oh_drawing_pengetfillpath) | Obtains the source path outline drawn using this pen and represents it using a destination path.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If any of **pen**, **src**, and **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_PenReset(OH_Drawing_Pen* pen)](#oh_drawing_penreset) | Resets a pen to the initial state.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, float r, float g, float b,OH_NativeColorSpaceManager* colorSpaceManager)](#oh_drawing_pensetcolor4f) | Sets the color for a pen, which is used to outline a shape.<br> The color is in ARGB format represented by floating-point numbers. The color space is specified by [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md).<br> If **colorSpaceManager** is a null pointer, the SRGB (standard red, green, and blue color space based on IEC 61966-2.1:1999) color space is used as the default value.|
-| [OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(const OH_Drawing_Pen* pen, float* a)](#oh_drawing_pengetalphafloat) | Obtains the alpha value of the pen color.|
-| [OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(const OH_Drawing_Pen* pen, float* r)](#oh_drawing_pengetredfloat) | Obtains the red component of the pen color.|
-| [OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(const OH_Drawing_Pen* pen, float* g)](#oh_drawing_pengetgreenfloat) | Obtains the green component of the pen color.|
-| [OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(const OH_Drawing_Pen* pen, float* b)](#oh_drawing_pengetbluefloat) | Obtains the blue component of the pen color.|
+| [OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(OH_Drawing_Pen* pen, float* a)](#oh_drawing_pengetalphafloat) | Obtains the alpha value of the pen color.|
+| [OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(OH_Drawing_Pen* pen, float* r)](#oh_drawing_pengetredfloat) | Obtains the red component of the pen color.|
+| [OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(OH_Drawing_Pen* pen, float* g)](#oh_drawing_pengetgreenfloat) | Obtains the green component of the pen color.|
+| [OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(OH_Drawing_Pen* pen, float* b)](#oh_drawing_pengetbluefloat) | Obtains the blue component of the pen color.|
 
 ## Enum Description
 
 ### OH_Drawing_PenLineCapStyle
 
-```
+```c
 enum OH_Drawing_PenLineCapStyle
 ```
 
@@ -93,7 +95,7 @@ Enumerates the line cap styles of a pen. The line cap style defines the style of
 
 ### OH_Drawing_PenLineJoinStyle
 
-```
+```c
 enum OH_Drawing_PenLineJoinStyle
 ```
 
@@ -114,7 +116,7 @@ Enumerates the line join styles of a pen. The line join style defines the shape 
 
 ### OH_Drawing_PenCreate()
 
-```
+```c
 OH_Drawing_Pen* OH_Drawing_PenCreate(void)
 ```
 
@@ -134,7 +136,7 @@ Creates an **OH_Drawing_Pen** object.
 
 ### OH_Drawing_PenCopy()
 
-```
+```c
 OH_Drawing_Pen* OH_Drawing_PenCopy(OH_Drawing_Pen* pen)
 ```
 
@@ -161,7 +163,7 @@ Creates a copy of the [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.<b
 
 ### OH_Drawing_PenDestroy()
 
-```
+```c
 void OH_Drawing_PenDestroy(OH_Drawing_Pen* pen)
 ```
 
@@ -182,7 +184,7 @@ Destroys an **OH_Drawing_Pen** object and reclaims the memory occupied by the ob
 
 ### OH_Drawing_PenIsAntiAlias()
 
-```
+```c
 bool OH_Drawing_PenIsAntiAlias(const OH_Drawing_Pen* pen)
 ```
 
@@ -209,7 +211,7 @@ Checks whether anti-aliasing is enabled for a pen. Anti-aliasing makes the pixel
 
 ### OH_Drawing_PenSetAntiAlias()
 
-```
+```c
 void OH_Drawing_PenSetAntiAlias(OH_Drawing_Pen* pen, bool antiAlias)
 ```
 
@@ -231,7 +233,7 @@ Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels arou
 
 ### OH_Drawing_PenGetColor()
 
-```
+```c
 uint32_t OH_Drawing_PenGetColor(const OH_Drawing_Pen* pen)
 ```
 
@@ -258,7 +260,7 @@ Obtains the color of a pen. The color is used by the pen to outline a shape.<br>
 
 ### OH_Drawing_PenSetColor()
 
-```
+```c
 void OH_Drawing_PenSetColor(OH_Drawing_Pen* pen, uint32_t color)
 ```
 
@@ -280,7 +282,7 @@ Sets the color for a pen. The color is used by the pen to outline a shape.<br>Th
 
 ### OH_Drawing_PenGetAlpha()
 
-```
+```c
 uint8_t OH_Drawing_PenGetAlpha(const OH_Drawing_Pen* pen)
 ```
 
@@ -307,7 +309,7 @@ Obtains the alpha value of a pen. This value is used by the alpha channel when t
 
 ### OH_Drawing_PenSetAlpha()
 
-```
+```c
 void OH_Drawing_PenSetAlpha(OH_Drawing_Pen* pen, uint8_t alpha)
 ```
 
@@ -329,7 +331,7 @@ Sets the alpha value for a pen. This value is used by the alpha channel when the
 
 ### OH_Drawing_PenGetWidth()
 
-```
+```c
 float OH_Drawing_PenGetWidth(const OH_Drawing_Pen* pen)
 ```
 
@@ -356,7 +358,7 @@ Obtains the thickness of a pen. This thickness determines the width of the outli
 
 ### OH_Drawing_PenSetWidth()
 
-```
+```c
 void OH_Drawing_PenSetWidth(OH_Drawing_Pen* pen, float width)
 ```
 
@@ -378,7 +380,7 @@ Sets the thickness for a pen. This thickness determines the width of the outline
 
 ### OH_Drawing_PenGetMiterLimit()
 
-```
+```c
 float OH_Drawing_PenGetMiterLimit(const OH_Drawing_Pen* pen)
 ```
 
@@ -405,7 +407,7 @@ Obtains the stroke miter limit of a polyline drawn by a pen. When the corner typ
 
 ### OH_Drawing_PenSetMiterLimit()
 
-```
+```c
 void OH_Drawing_PenSetMiterLimit(OH_Drawing_Pen* pen, float miter)
 ```
 
@@ -427,7 +429,7 @@ Sets the stroke miter limit for a polyline drawn by a pen. When the corner type 
 
 ### OH_Drawing_PenGetCap()
 
-```
+```c
 OH_Drawing_PenLineCapStyle OH_Drawing_PenGetCap(const OH_Drawing_Pen* pen)
 ```
 
@@ -454,7 +456,7 @@ Obtains the line cap style of a pen.<br>This API may return an error code. For d
 
 ### OH_Drawing_PenSetCap()
 
-```
+```c
 void OH_Drawing_PenSetCap(OH_Drawing_Pen* pen, OH_Drawing_PenLineCapStyle capStyle)
 ```
 
@@ -476,7 +478,7 @@ Sets the line cap style for a pen.<br>This API may return an error code. For det
 
 ### OH_Drawing_PenGetJoin()
 
-```
+```c
 OH_Drawing_PenLineJoinStyle OH_Drawing_PenGetJoin(const OH_Drawing_Pen* pen)
 ```
 
@@ -503,7 +505,7 @@ Obtains the line join style of a pen.<br>This API may return an error code. For 
 
 ### OH_Drawing_PenSetJoin()
 
-```
+```c
 void OH_Drawing_PenSetJoin(OH_Drawing_Pen* pen, OH_Drawing_PenLineJoinStyle joinStyle)
 ```
 
@@ -525,7 +527,7 @@ Sets the join style for this pen.<br>This API may return an error code. For deta
 
 ### OH_Drawing_PenSetShaderEffect()
 
-```
+```c
 void OH_Drawing_PenSetShaderEffect(OH_Drawing_Pen* pen, OH_Drawing_ShaderEffect* shaderEffect)
 ```
 
@@ -547,7 +549,7 @@ Sets the shader effect for this pen.<br>This API may return an error code. For d
 
 ### OH_Drawing_PenSetShadowLayer()
 
-```
+```c
 void OH_Drawing_PenSetShadowLayer(OH_Drawing_Pen* pen, OH_Drawing_ShadowLayer* shadowLayer)
 ```
 
@@ -569,7 +571,7 @@ Sets the shadow layer for a pen. The shadow layer effect takes effect only when 
 
 ### OH_Drawing_PenSetPathEffect()
 
-```
+```c
 void OH_Drawing_PenSetPathEffect(OH_Drawing_Pen* pen, OH_Drawing_PathEffect* pathEffect)
 ```
 
@@ -591,7 +593,7 @@ Sets the path effect for this pen.<br>This API may return an error code. For det
 
 ### OH_Drawing_PenSetFilter()
 
-```
+```c
 void OH_Drawing_PenSetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 ```
 
@@ -613,7 +615,7 @@ Sets a filter for a pen.<br>This API may return an error code. For details, call
 
 ### OH_Drawing_PenGetFilter()
 
-```
+```c
 void OH_Drawing_PenGetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 ```
 
@@ -635,7 +637,7 @@ Obtains the [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) object from t
 
 ### OH_Drawing_PenSetBlendMode()
 
-```
+```c
 void OH_Drawing_PenSetBlendMode(OH_Drawing_Pen* pen, OH_Drawing_BlendMode blendMode)
 ```
 
@@ -657,7 +659,7 @@ Sets a blender for a pen. The blender implements the specified blend mode.<br>Th
 
 ### OH_Drawing_PenGetFillPath()
 
-```
+```c
 bool OH_Drawing_PenGetFillPath(OH_Drawing_Pen* pen, const OH_Drawing_Path* src, OH_Drawing_Path* dst,const OH_Drawing_Rect* rect, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -688,7 +690,7 @@ Obtains the source path outline drawn using this pen and represents it using a d
 
 ### OH_Drawing_PenReset()
 
-```
+```c
 void OH_Drawing_PenReset(OH_Drawing_Pen* pen)
 ```
 
@@ -710,7 +712,7 @@ Resets a pen to the initial state.<br>This API may return an error code. For det
 
 ### OH_Drawing_PenSetColor4f()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, float r, float g, float b,OH_NativeColorSpaceManager* colorSpaceManager)
 ```
 
@@ -741,8 +743,8 @@ Sets the color for a pen, which is used to outline a shape.<br> The color is in 
 
 ### OH_Drawing_PenGetAlphaFloat()
 
-```
-OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(const OH_Drawing_Pen* pen, float* a)
+```c
+OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(OH_Drawing_Pen* pen, float* a)
 ```
 
 **Description**
@@ -757,7 +759,7 @@ Obtains the alpha value of the pen color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
+| [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
 | float* a | Alpha value of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
 **Returns**
@@ -768,8 +770,8 @@ Obtains the alpha value of the pen color.
 
 ### OH_Drawing_PenGetRedFloat()
 
-```
-OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(const OH_Drawing_Pen* pen, float* r)
+```c
+OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(OH_Drawing_Pen* pen, float* r)
 ```
 
 **Description**
@@ -784,7 +786,7 @@ Obtains the red component of the pen color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
+| [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
 | float* r | Red component of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
 **Returns**
@@ -795,8 +797,8 @@ Obtains the red component of the pen color.
 
 ### OH_Drawing_PenGetGreenFloat()
 
-```
-OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(const OH_Drawing_Pen* pen, float* g)
+```c
+OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(OH_Drawing_Pen* pen, float* g)
 ```
 
 **Description**
@@ -811,7 +813,7 @@ Obtains the green component of the pen color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
+| [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
 | float* g | Green component of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
 **Returns**
@@ -822,8 +824,8 @@ Obtains the green component of the pen color.
 
 ### OH_Drawing_PenGetBlueFloat()
 
-```
-OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(const OH_Drawing_Pen* pen, float* b)
+```c
+OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(OH_Drawing_Pen* pen, float* b)
 ```
 
 **Description**
@@ -838,7 +840,7 @@ Obtains the blue component of the pen color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
+| [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
 | float* b | Blue component of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
 **Returns**

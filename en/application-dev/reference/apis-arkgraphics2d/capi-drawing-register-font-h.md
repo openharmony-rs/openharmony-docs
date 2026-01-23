@@ -13,6 +13,8 @@ This file declares the functions related to the font manager in the drawing modu
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -31,7 +33,7 @@ This file declares the functions related to the font manager in the drawing modu
 
 ### OH_Drawing_RegisterFont()
 
-```
+```c
 uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection*, const char* fontFamily, const char* familySrc)
 ```
 
@@ -50,7 +52,7 @@ Registers a custom font with the font manager. The supported font file formats a
 | -- | -- |
 | [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* | Pointer to an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.|
 | const char* fontFamily | Pointer to the family name of the font to register.|
-| const char* familySrc | Pointer to the path of the font file.|
+| const char* familySrc | Pointer to the path of the font file to register.|
 
 **Returns**
 
@@ -60,7 +62,7 @@ Registers a custom font with the font manager. The supported font file formats a
 
 ### OH_Drawing_RegisterFontBuffer()
 
-```
+```c
 uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection*, const char* fontFamily, uint8_t* fontBuffer,size_t length)
 ```
 
@@ -90,7 +92,7 @@ Registers a font buffer with the font manager.
 
 ### OH_Drawing_UnregisterFont()
 
-```
+```c
 uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily)
 ```
 
@@ -98,7 +100,7 @@ uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, co
 
 Unregisters a custom font by font family name.
 
-- Unregistering a font that is currently in use may lead to text rendering exceptions (such as garbled characters or missing glyphs).
+Unregistering a font that is currently in use may lead to text rendering exceptions (such as garbled characters or missing glyphs).
 
 All typography objects using the unregistered font family should be destroyed and re-created.
 
