@@ -390,7 +390,6 @@ ArkTS-Dyn示例：
 
 ```ts
 import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-import storageStatistics from "@ohos.file.storageStatistics";
 import { BusinessError } from '@ohos.base';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -418,7 +417,6 @@ ArkTS-Sta示例：
 
 ```ts
 import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-import storageStatistics from "@ohos.file.storageStatistics";
 import { BusinessError } from '@ohos.base';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -486,7 +484,6 @@ ArkTS-Dyn示例：
 
 ```ts
 import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-import storageStatistics from "@ohos.file.storageStatistics";
 import { BusinessError } from '@ohos.base';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -505,7 +502,6 @@ try {
       hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
     }
   }, index);
-
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
@@ -516,7 +512,6 @@ ArkTS-Sta示例：
 
 ```ts
 import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-import storageStatistics from "@ohos.file.storageStatistics";
 import { BusinessError } from '@ohos.base';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -525,7 +520,6 @@ let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
   let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
   hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
-
   let packageName:string = bundleName;
   let index:int = resourceInfo.appIndex;
   storageStatistics.getBundleStats(packageName, (err: BusinessError, BundleStats: storageStatistics.BundleStats): void => {
@@ -583,6 +577,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 storageStatistics.getSystemSize().then((systemSize: number) => {
   console.info("getSystemSize successfully:" + systemSize);
 }).catch((err: BusinessError) => {
@@ -594,6 +589,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 storageStatistics.getSystemSize().then((systemSize: long) => {
   console.info("getSystemSize successfully:" + systemSize);
 }).catch((err: BusinessError): void => {
@@ -643,6 +639,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 storageStatistics.getSystemSize((error: BusinessError, systemSize: number) => {
   if (error) {
     console.error("getSystemSize failed with error:" + JSON.stringify(error));
@@ -657,6 +654,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 storageStatistics.getSystemSize((error: BusinessError, systemSize: long) => {
   if (error) {
     console.error("getSystemSize failed with error:" + JSON.stringify(error));
@@ -705,6 +703,7 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.StorageStats) => {
   console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
 }).catch((err: BusinessError) => {
@@ -750,6 +749,7 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
   if (error) {
     console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
@@ -809,6 +809,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 let userId: number = 100;
 storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
   console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
@@ -821,6 +822,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 let userId: long = 100;
 storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
   console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
@@ -873,6 +875,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 let userId: number = 100;
 storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
   if (error) {
@@ -888,6 +891,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@ohos.base';
+
 let userId: long = 100;
 storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats): void => {
   if (error) {
@@ -992,7 +996,6 @@ ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;voi
 ArkTS-Dyn示例：
 
 ```ts
-import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 100;
@@ -1011,7 +1014,6 @@ storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
 ArkTS-Sta示例：
 
 ```ts
-import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: int = 100;
@@ -1077,7 +1079,6 @@ ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtB
 ArkTS-Dyn示例：
 
 ```ts
-import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 100;
@@ -1092,7 +1093,6 @@ storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: sto
 ArkTS-Sta示例：
 
 ```ts
-import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: int = 100;
@@ -1153,7 +1153,6 @@ ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats
 ArkTS-Dyn示例：
 
 ```ts
-import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 100;
@@ -1167,7 +1166,6 @@ console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, messa
 ArkTS-Sta示例：
 
 ```ts
-import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: int = 100;
@@ -1236,7 +1234,6 @@ listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 **示例：**
 
 ```ts
-import { storageStatistics } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.listUserdataDirInfo().then((dirInfos: storageStatistics.UserdataDirInfo[]) => {
