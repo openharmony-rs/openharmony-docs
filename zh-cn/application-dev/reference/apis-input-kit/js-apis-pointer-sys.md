@@ -2346,13 +2346,13 @@ struct Index {
           try {
             pointer.setTouchpadTapSwitch(true, (error: BusinessError<void> | null, data: undefined) => {
               if (error) {
-                console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`setTouchpadTapSwitch success`);
+              console.log(`setTouchpadPinchSwitch success`);
             });
           } catch (error) {
-            console.error(`setTouchpadTapSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
         })
     }
@@ -3005,7 +3005,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadPinchSwitch(true, (error: Error) => {
+            pointer.setTouchpadTapSwitch(true, (error: Error) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -3036,7 +3036,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadPinchSwitch(true, (error: BusinessError<void> | null, data: undefined) => {
+            pointer.setTouchpadTapSwitch(true, (error: BusinessError<void> | null, data: undefined) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -4317,7 +4317,8 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例：
+
+ArkTS-Dyn示例:
 
 ```ts
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
@@ -4590,11 +4591,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerColor(0xF6C800, (error: Error | null) => {
-              if (error) {
-                console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-                return;
-              }
+            pointer.setPointerColor(0xF6C800).then(() => {
               console.log(`setPointerColor success`);
             });
           } catch (error) {
