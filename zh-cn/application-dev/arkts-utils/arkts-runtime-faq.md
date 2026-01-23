@@ -140,100 +140,35 @@ let reg3 = /a(?:x){0,1}$/;
 
 ### TypedArray.prototype.map触发内联缓存优化后，在回调中将数值number转为浮点数number与期望不一致
 
-```ts
-for(let i = 0; i < 1000; i++) {} // 触发内联缓存优化
-
-let arr = new Int32Array([1, 2, 3, 4, 5]);
-let result = arr.map(val => {
-   let res = (Math.pow(val, 1)) * 100;
-   return res;
-})
-
-console.info("result[0]:", result[0]);
-// 期望输出: result[0]:100
-// 实际输出: result[0]:104
-```
+<!-- @[test_int32ArrayMapIssue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->   
 
 规避方案：使用Array.from将TypedArray先转换为普通Array，再处理number。
 
-```ts
-let arr = new Int32Array([1, 2, 3, 4, 5]);
-
-let normalArr = Array.from(arr);
-let result = normalArr.map(val => {
-   let res = (Math.pow(val, 1)) * 100;
-   return res;
-});
-
-console.info("result[0]:", result[0]);
-// 输出: result[0]:100
-```
+<!-- @[test_int32ArrayMapWorkaround](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
 
 ### Number.parseFloat解析浮点数number类型非规格化数值与期望不一致
 
 parseFloat接口不支持对非规格化数进行解析。当输入字符串表示一个浮点数number类型的非规格化数，一律输出0。
 
-```ts
-console.info("testcase: ", parseFloat("5e-324"));
-// 期望输出: testcase: 5e-324
-// 实际输出: testcase: 0
-```
+<!-- @[test_parseFloatTinyNumber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
 
 规避方案：暂无，开发者应避免使用parseFloat接口对非规格化数进行解析。
 
 ### Set constructor入参为多维数组的解析与期望不一致
 
-```ts
-const arr1: number[] = [1, 2];
-const arr2: number[] = [3, 4];
-const set = new Set<number[]>([arr1, arr2]);
-console.info("res: ", JSON.stringify(Array.from(set)));
-// 期望输出: res: [[1,2],[3,4]]
-// 实际输出: res: [2,4]
-```
+<!-- @[test_setArrayFrom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
 
 规避方案：暂无，开发者应避免构造set时入参为多维数组。
 
 ### Object.entries处理Uint8Array与Uint16Array数组结果与期望不一致
 
-```ts
-// test1.js
-const typedArr = new Uint8Array([10, 20, 30]);
-try {
-   const result = Object.entries(typedArr);
-   console.info("no error throw");
-} catch(e) {
-   console.info(e);
-}
-// 期望输出：no error throw
-// 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
+<!-- @[testOne_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test1.js) -->  
 
-// test2.js
-const typedArr = new Uint16Array([10, 20, 30]);
-try {
-   const result = Object.entries(typedArr);
-   console.info("no error throw");
-} catch(e) {
-   console.info(e);
-}
-// 期望输出：no error throw
-// 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
-```
+<!-- @[testTwo_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test2.js) -->  
 
 规避方案：使用Array.from将TypedArray先转换为普通Array，再使用Object.entries。
 
-```ts
-// test1.js
-const typedArr = new Uint8Array([10, 20, 30]);
-try {
-   const normalArr1 = Array.from(typedArr);
-   const result = Object.entries(normalArr1);
-   console.info("no error throw");
-} catch(e) {
-   console.info(e);
-}
-// 输出：no error throw
-```
+<!-- @[testOne_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test1.js) -->  
 
 ### 字符串 `replace` 接口对于第一个参数为空字符串的场景与预期不一致
 
