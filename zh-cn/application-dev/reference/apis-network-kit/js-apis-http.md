@@ -2233,6 +2233,8 @@ httpRequest.request("EXAMPLE_URL", {
 ```
 ## PathPreference<sup>23+</sup>
 
+type PathPreference = 'auto' | 'primaryCelluar' | 'secondaryCelluar'
+
 HTTP请求指定特定网络的类型枚举。
 
 > **说明：**
