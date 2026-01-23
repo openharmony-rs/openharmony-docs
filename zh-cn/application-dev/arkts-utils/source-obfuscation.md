@@ -209,13 +209,15 @@ test(a2);
   let person1 = {exampleName: "aaa"};
   let name = person1.exampleName;
   ```
+
+  <!-- @[optionExample_enablePropertyObfuscation3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+
+  ``` TypeScript
   // 混淆前：
   // example.ts
   let person = {"exampleName": "abc"};
   person["exampleAge"] = 22;
   ```
-
-  <!-- @[optionExample_enablePropertyObfuscation3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
 
 * 注解成员名不会被混淆。例如，下面例子中的`authorName`和`revision`不会被混淆。
 
