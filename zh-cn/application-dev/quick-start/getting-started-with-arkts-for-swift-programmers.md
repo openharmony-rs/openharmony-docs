@@ -79,30 +79,30 @@ function add(x: number, y: number): number {
 
 1. ArkTS提供类型声明层面的多态，仅用于类型检查和文档提示，实际只有一个实现函数。
 
-**ArkTS示例：** ArkTS函数重载
+   **ArkTS示例：** ArkTS函数重载
 
-<!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
+   <!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
 
-``` TypeScript
-function foo(x: number): void;            /*  第一个函数定义。  */
-function foo(x: string): void;            /*  第二个函数定义。  */
-function foo(x: number | string): void {  /*  函数实现。       */
-}
-// ...
-  foo(123);     //  OK，使用第一个定义。
-  foo('aa'); // OK，使用第二个定义。
-```
+   ``` TypeScript
+   function foo(x: number): void;            /*  第一个函数定义。  */
+   function foo(x: string): void;            /*  第二个函数定义。  */
+   function foo(x: number | string): void {  /*  函数实现。       */
+   }
+   // ...
+     foo(123);     //  OK，使用第一个定义。
+     foo('aa'); // OK，使用第二个定义。
+   ```
 
 2. ArkTS可选参数使用`?`，如`function foo(name?: string)`，而非Swift的默认值语法。
 
-<!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
+   <!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
 
-``` TypeScript
-function foo2(name?: string) {}  /*  name为可选参数。  */
-// ...
-  foo2('hello');     //  OK，传入name参数。
-  foo2();     //  OK，不传name参数。
-```
+   ``` TypeScript
+   function foo2(name?: string) {}  /*  name为可选参数。  */
+   // ...
+     foo2('hello');     //  OK，传入name参数。
+     foo2();     //  OK，不传name参数。
+   ```
 
 ### 基础类库
 
