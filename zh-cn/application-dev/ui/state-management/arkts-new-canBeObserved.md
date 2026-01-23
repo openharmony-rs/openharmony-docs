@@ -716,6 +716,7 @@ Button('move')
   })
 ```
 
+
 返回结果：
 
 ``` json
@@ -789,25 +790,6 @@ Text('Font Size List')
     }
     hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
   })
-```
-
-返回结果如下，可知`this.styleList[i]`是可被观察对象，且有关联的UI组件，能正常刷新UI组件。
-
-``` json
-{
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@ObjectLink",
-		"stateVariableName": "textStyle",
-		"owningComponentOrClassName": "TextComponent",
-		"owningComponentId": 147,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 148
-		}]
-	}]
-}
 ```
 
 ### 数据重置导致UI不刷新使用场景
