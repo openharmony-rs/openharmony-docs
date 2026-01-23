@@ -2743,8 +2743,8 @@ struct styled_string_process_demo {
   controller: TextController = new TextController();
   controller1: TextController = new TextController();
   imageAttachment: ImageAttachment = new ImageAttachment({
-    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
-    resourceValue: $r("app.media.ice"),
+    // $r('app.media.ice')需要替换为开发者所需的图像资源文件。
+    resourceValue: $r('app.media.ice'),
     size: { width: 50, height: 50 },
     layoutStyle: { borderRadius: LengthMetrics.vp(10) },
     verticalAlign: ImageSpanAlignment.BASELINE,
@@ -2755,8 +2755,8 @@ struct styled_string_process_demo {
       drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN)
   })
   imageAttachment1: ImageAttachment = new ImageAttachment({
-    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
-    resourceValue: $r("app.media.ice"),
+    // $r('app.media.ice')需要替换为开发者所需的图像资源文件。
+    resourceValue: $r('app.media.ice'),
     size: { width: 50, height: 50 },
     layoutStyle: { borderRadius: LengthMetrics.vp(10) },
     verticalAlign: ImageSpanAlignment.BASELINE,
@@ -2808,8 +2808,8 @@ struct styled_string_process_demo {
   controller: TextController = new TextController();
   controller1: TextController = new TextController();
   imageAttachment: ImageAttachment = new ImageAttachment({
-    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
-    resourceValue: $r("app.media.ice"),
+    // $r('app.media.ice')需要替换为开发者所需的图像资源文件。
+    resourceValue: $r('app.media.ice'),
     size: { width: 50, height: 50 },
     layoutStyle: { borderRadius: LengthMetrics.vp(10) },
     verticalAlign: ImageSpanAlignment.BASELINE,
@@ -2820,8 +2820,8 @@ struct styled_string_process_demo {
       drawing.Tool.makeColorFromResourceColor(Color.Blue) as common2D.Color, drawing.BlendMode.SRC_IN)
   })
   imageAttachment1: ImageAttachment = new ImageAttachment({
-    // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
-    resourceValue: $r("app.media.ice"),
+    // $r('app.media.ice')需要替换为开发者所需的图像资源文件。
+    resourceValue: $r('app.media.ice'),
     size: { width: 50, height: 50 },
     layoutStyle: { borderRadius: LengthMetrics.vp(10) },
     verticalAlign: ImageSpanAlignment.BASELINE,

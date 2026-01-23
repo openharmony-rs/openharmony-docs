@@ -464,18 +464,18 @@ struct Index {
     Row() {
       Column() {
         Text('属性字符串不支持SVG2')
-        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        // $r('app.media.ice')需要替换为开发者所需的图像资源文件。
         Text() {
-          ImageSpan($r("app.media.ice"))
+          ImageSpan($r('app.media.ice'))
             .width(50)
             .height(50)
             .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
               drawing.Tool.makeColorFromResourceColor(Color.Blue), drawing.BlendMode.SRC_IN))
         }
         Text('属性字符串支持SVG2')
-        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        // $r('app.media.ice')需要替换为开发者所需的图像资源文件。
         Text() {
-          ImageSpan($r("app.media.ice"))
+          ImageSpan($r('app.media.ice'))
             .width(50)
             .height(50)
             .supportSvg2(true)
@@ -503,18 +503,18 @@ struct Index {
     Row() {
       Column() {
         Text('属性字符串不支持SVG2')
-        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        // $r('app.media.ice')需要替换为开发者所需的图像资源文件。
         Text() {
-          ImageSpan($r("app.media.ice"))
+          ImageSpan($r('app.media.ice'))
             .width(50)
             .height(50)
             .colorFilter(drawing.ColorFilter.createBlendModeColorFilter(
               drawing.Tool.makeColorFromResourceColor(Color.Blue) as common2D.Color, drawing.BlendMode.SRC_IN))
         }
         Text('属性字符串支持SVG2')
-        // $r("app.media.ice")需要替换为开发者所需的图像资源文件。
+        // $r('app.media.ice')需要替换为开发者所需的图像资源文件。
         Text() {
-          ImageSpan($r("app.media.ice"))
+          ImageSpan($r('app.media.ice'))
             .width(50)
             .height(50)
             .supportSvg2(true)
