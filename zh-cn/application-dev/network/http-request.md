@@ -882,7 +882,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |base-config                     | array          | 否| 指示应用程序范围的明文配置。优先级最低。 |
 |cleartextTrafficPermitted<sup>18+</sup>  | boolean          |否 | 明文HTTP是否允许。true表示允许，false表示不允许，默认为true。 |
 |domain-config                     | array          | 否|  指示每个域的明文配置。可以包含任意个item。每个item必须包含1个domains。若相同域存在规则冲突时，以匹配到的第一条为准。优先级次于component-config。 |
-|include-subdomains         | boolean         | 否| 配置为true时，name支持正则匹配。配置为false时，name不支持正则匹配。注意：域名配置每新增1000条，正则匹配新增延时约10到15毫秒。域名配置超过1万以上时，正则匹配会带来较高耗时。 |
+|include-subdomains         | boolean         | 否| 配置为true时，name支持正则匹配。配置为false时，name不支持正则匹配。注意：每增加1000条域名配置，正则匹配的延迟将增加大约10至15毫秒。当域名配置数量超过10000条时，正则匹配会带来较高耗时。 |
 |name         | string         | 否| 配置主域名。 |
 |component-config<sup>20+</sup>                    | array          |  否| 指示每个组件的明文配置。优先级最高。|
 |Request                    | boolean          |否| Request从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能 。true表示支持，false表示不支持，默认为true。|
