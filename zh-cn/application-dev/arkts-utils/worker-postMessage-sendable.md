@@ -13,6 +13,21 @@
 1. 在ets文件夹下新建文件夹Sendable，并准备一个Sendable类CopyEntry，封装克隆任务数据。
 
    <!-- @[copy_entry_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/Sendable/CopyEntry.ets) -->     
+   
+   ``` TypeScript
+   // CopyEntry.ets
+   @Sendable
+   export class CopyEntry {
+     // 克隆类型
+     type: string;
+     // 文件路径
+     filePath: string;
+     constructor(type: string, filePath: string) {
+       this.type = type;
+       this.filePath = filePath;
+     }
+   }
+   ```
 
 2. 创建两个Worker文件，DevEco Studio支持一键生成Worker，在对应的{moduleName}目录下任意位置，单击鼠标右键 &gt; New &gt; Worker，即可自动生成Worker的模板文件及配置信息。本文以创建“ParentWorker”（父Worker）和“ChildWorker”（子Worker）为例。父Worker负责分发克隆任务并判断任务全部完成后关闭子Worker与父Worker；子Worker负责接收任务并执行数据克隆操作，并在任务完成后通知父Worker。
   
