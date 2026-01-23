@@ -110,7 +110,7 @@ Key generator.
 
 | Name| Type  | Mandatory| Description |
 | ------ | ---------- | -------- | -------- |
-| keyGenerator  | (item: T, index: number) => string | Yes| Key generator.<br>**item**: data item in the **arr** array. It is optional.<br>**index**: index of a data item in the **arr** array.  It is optional.|
+| keyGenerator  | (item: T, index: number) => string | Yes| Key generator.<br>**item**: data item in the **arr** array. It is optional.<br>**index**: index of a data item in the **arr** array. It is optional.|
 
 **Example**
 ```ts
