@@ -91,7 +91,7 @@ setPlaybackStrategy(strategy: media.PlaybackStrategy): MovingPhotoViewAttribute
 系统应用可以同时设置动态照片解码格式、HDR效果格式和边播边处理策略。
 
 ```ts
-// 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档
+// 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档。
 // API version 21及之前版本导入方式：import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
 // API version 22及之后版本导入方式如下：
 import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController，PixelMapFormat, DynamicRangeMode } from '@kit.MediaLibraryKit';
