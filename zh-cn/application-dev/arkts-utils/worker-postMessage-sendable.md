@@ -18,7 +18,30 @@
   
    <!-- @[parent_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ParentWorker.ets) -->     
    
+   <!-- @[child_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ChildWorker.ets) -->   
+   
    ``` TypeScript
+   // ChildWorker.ets
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker} from '@kit.ArkTS'
+   import { CopyEntry } from '../Sendable/CopyEntry'
+   
+   const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+   
+   workerPort.onmessage = (e : MessageEvents) => {
+     let data = e.data as CopyEntry;
+     // 中间copy操作省略
+     console.info(data.filePath);
+     workerPort.postMessageWithSharedSendable('done');
+   }
+   
+   workerPort.onmessageerror = (e : MessageEvents) => {
+     console.error('onmessageerror:' + e.data);
+   }
+   
+   workerPort.onerror = (e : ErrorEvent) => {
+     console.error('onerror:' + e.message);
+   }
+   ```
    // ParentWorker.ets
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker, collections, ArkTSUtils } from '@kit.ArkTS'
    import { CopyEntry } from '../Sendable/CopyEntry'
