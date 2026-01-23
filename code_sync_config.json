@@ -25716,6 +25716,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/FreezeReuse.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"Freeze_and_Reuse",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -41043,6 +41053,111 @@
 						"end_line":290,
 						"name":"exception_handling_batter",
 						"start_line":278
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncUse.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"ApplySyncUse",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/FlushUpdatesUse.ets",
+				"functions":[
+					{
+						"end_line":64,
+						"name":"FlushUpdatesUse",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/FlushUIUpdatesUse.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"FlushUIUpdatesUse",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestApplySync.ets",
+				"functions":[
+					{
+						"end_line":58,
+						"name":"ApplySyncNestApplySync",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestOthers.ets",
+				"functions":[
+					{
+						"end_line":58,
+						"name":"ApplySyncNestOthers",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInComputed.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"CallInComputed",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInMonitor.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"CallInMonitor",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/AnimateToUse.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"AnimateToUse",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageUse.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"PageUse_PageOne",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageTransitionTwo.ets",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"PageUse_PageTwo",
+						"start_line":16
 					}
 				]
 			}
