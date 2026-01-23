@@ -492,9 +492,9 @@ maxLines(value: number)
 
 ### maxLines<sup>23+</sup>
 
-设置文本可显示的最大行数，可选设置超出最大行数的行为为滚动或截断。
-
 maxLines(value: int | undefined, options?: MaxLinesOptions)
+
+设置文本可显示的最大行数，可选设置超出最大行数的行为为滚动或截断。
 
 > **说明：**
 >
