@@ -40,6 +40,8 @@ ArkUI提供了丰富的无障碍能力，使开发者能够创建可访问的应
 
 <!--RP1--><!--RP1End-->
 
+## 设置无障碍分组
+
 [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup)属性，用于设置是否启用无障碍分组。若启用，则该组件及其所有子组件将作为一个整体处理，无障碍服务不再单独处理各子组件。accessibilityGroup属性支持以下值：
 
 - false（默认）：不启用无障碍分组。
