@@ -177,14 +177,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
-// 初始化入参。
+// 初始化入参
 let timesUs: number[] = [0];
 let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
 let param: media.PixelMapParams = {
   width: 300,
   height: 300
 };
-// 获取缩略图。
+// 获取缩略图
 let avMetadataExtractor = await media.createAVMetadataExtractor();
 if (avMetadataExtractor != null) {
   console.info('Succeeded in creating AVMetadataExtractor');
