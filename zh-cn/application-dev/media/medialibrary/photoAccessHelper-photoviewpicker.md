@@ -46,8 +46,8 @@
    const result = await photoViewPicker.select(photoSelectOptions);
                
    // 文件选择成功后，返回PhotoSelectResult结果集
-   console.log('选择成功，返回结果: ' + JSON.stringify(result));
-   console.log('选择的文件数量: ' + result.photoUris.length);
+   console.info('选择成功，返回结果: ' + JSON.stringify(result));
+   console.info('选择的文件数量: ' + result.photoUris.length);
          
    // 更新选中的URI列表
    this.selectedUris = result.photoUris;
@@ -58,7 +58,7 @@
          
    // 调用工具类处理结果
    this.processedItems = MediaLibraryPickerUtils.handleSelectResult(this.selectedUris);
-   console.log('处理后的结果数量: ' + this.processedItems.length);
+   console.info('处理后的结果数量: ' + this.processedItems.length);
    ```
 
    select返回的uri权限是只读权限，可以根据结果集中uri进行读取文件数据操作。注意不能在picker的回调里直接使用此uri进行打开文件操作，需要定义一个全局变量保存uri，类似使用一个按钮去触发打开文件。可参考[指定URI读取文件数据](#指定uri读取文件数据)。
