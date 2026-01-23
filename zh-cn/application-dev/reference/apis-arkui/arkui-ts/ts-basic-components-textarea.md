@@ -498,15 +498,15 @@ maxLines(value: int | undefined, options?: MaxLinesOptions)
 >
 > 配置textOverflow时：
 >
->     maxLines为文本可显示的最大行数，超出部分直接截断。
+> - maxLines为文本可显示的最大行数，超出部分直接截断。
 >
 > 未配置textOverflow时：
 >
->     内联模式（获焦状态）：内容超出maxLines时，文本支持滚动显示；
+> - 内联模式（获焦状态）：内容超出maxLines时，文本支持滚动显示；
 >
->     内联模式（非获焦状态）：maxLines不生效；
+> - 内联模式（非获焦状态）：maxLines不生效；
 >
->     非内联模式：文本按maxLines指定的行数截断。
+> - 非内联模式：文本按maxLines指定的行数截断。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
