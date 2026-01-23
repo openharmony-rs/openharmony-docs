@@ -413,14 +413,14 @@ struct Index {
 
 <!-- @[PageUse_PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageUse.ets) -->
 
-```ts
-// Index.ets
+``` TypeScript
+// PageUse.ets
 
 import { UIUtils, AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 export class Info {
-  @Trace name: string = '';
+  @Trace public name: string = '';
 }
 
 @Entry
@@ -446,6 +446,7 @@ struct SharedTransitionExample {
       });
       this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTransitionTwo' })
     })
+    // ...
   }
 }
 ```
