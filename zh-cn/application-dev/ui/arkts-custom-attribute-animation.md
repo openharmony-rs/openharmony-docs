@@ -217,13 +217,13 @@ struct AnimatedShape {
 }
 ```
 
-ArkTS1.2示例：
+静态ArkTS示例：
 
 ```ts
-import { Text, TextAttribute,Polyline,Curve, AnimatableArithmetic,PolylineAttribute, AnimatableExtend,Row,TabBarOptions,
-  Column,Padding, Resource,FontWeight, Stack, Entry, EffectEdge, Component, ClickEffectLevel, Button, animateTo, Color, LengthMetrics,
-  ShapePoint,TransitionEffect, ClickEvent, Builder, FlexAlign } from '@ohos.arkui.component';  // TextAttribute should be insert by ui-plugins
-import { State } from '@ohos.arkui.stateManagement'; // should be insert by ui-plugins
+'use static'
+import { Text, TextAttribute,Polyline,Curve, AnimatableArithmetic,PolylineAttribute, AnimatableExtend, Row, TabBarOptions,
+  Column,Padding, Resource,FontWeight, Stack, Entry, EffectEdge, Component, ClickEffectLevel, Button, Color, LengthMetrics,
+  ShapePoint,TransitionEffect, ClickEvent, Builder, FlexAlign, State } from '@kit.ArkUI';
 
 class Point {
   x: number
@@ -306,7 +306,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
 }
 
 @AnimatableExtend
-function animatableWidth(this: TextAttribute, width: number): this{
+function animatableWidth(this: TextAttribute, width: number): TextAttribute {
   this.width(width);
   return this
 }
@@ -339,7 +339,7 @@ class NumberClass implements AnimatableArithmetic<NumberClass> {
 }
 
 @AnimatableExtend
-function animatablePoints(this: PolylineAttribute, points: PointVector): this {
+function animatablePoints(this: PolylineAttribute, points: PointVector): PolylineAttribute {
   this.points(points.get() as Array<ShapePoint>)
   return this;
 }

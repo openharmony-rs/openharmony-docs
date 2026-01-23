@@ -490,7 +490,7 @@ class Dog extends Animal {
   }
 }
 
-function commonStyles(this: TextAttribute): this {
+function commonStyles(this: TextAttribute): TextAttribute {
   return this.width(320).margin(10).fontSize(30).textAlign(TextAlign.Center);
 }
 
