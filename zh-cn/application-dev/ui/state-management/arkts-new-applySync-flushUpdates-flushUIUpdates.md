@@ -137,22 +137,22 @@ import { UIUtils } from '@kit.ArkUI';
 - 上述的applySync、flushUpdates接口都会同步执行@Computed计算和@Monitor回调，这会使得在上述示例代码中，一次点击事件里触发了两次@Monitor回调，这可能会与开发者的预期不符，因此引入了flushUIUpdates接口，该接口仅用于同步刷新在调用该函数之前所有的UI节点，不会执行@Computed计算和@Monitor回调。
   
   <!-- @[FlushUIUpdatesUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/FlushUIUpdatesUse.ets) -->
-
-  ```ts
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local message: string = 'Hello';
-
+  
     @Monitor('message')
     onMessageChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       });
     }
-
+  
     build() {
       Column() {
         Text(`message: ${this.message}`)
@@ -163,16 +163,17 @@ import { UIUtils } from '@kit.ArkUI';
             // UIUtils.applySync(() => {
             //   this.message = 'Hello World';
             // })
-            
+  
             // test2：调用flushUpdates接口，日志打印两次
             // this.message = 'Hello World';
             // UIUtils.flushUpdates();
-            
+  
             // test3：调用flushUIUpdates接口，日志打印一次
             this.message = 'Hello World';
             UIUtils.flushUIUpdates();
             this.message = 'Hello ArkUI';
           })
+          // ...
       }
     }
   }
