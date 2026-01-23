@@ -104,7 +104,7 @@ static&nbsp;remove\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithAr
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| keyOrType | string \| TypeConstructorWithArgs\<T\> | 是   | 需要删除的key；如果指定的是type类型，删除的key为type的name。 |
+| keyOrType | string \| [TypeConstructorWithArgs](#typeconstructorwithargst)\<T\> | 是   | 需要删除的key；如果指定的是type类型，删除的key为type的name。 |
 
 >**说明：**
 >
