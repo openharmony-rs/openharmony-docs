@@ -67,12 +67,14 @@ accessibilityText属性用于为无文本内容的组件提供朗读文本。若
 
 ``` TypeScript
 Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
+  Image($r('app.media.play')) // 仅图标，无默认文本
+  .width(60)
+  .height(60)
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text12'))
+  .onClick(() => {
+      // 播放音频、视频的核心逻辑
+  })
 }
-.accessibilityGroup(true)
-  .accessibilityLevel('yes')
-  // 请将$r('app.string.UniversalAttributesAccessibility_text7')替换为实际资源文件，在本示例中该资源文件的value值为"分组"
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
 ```
 
 ## 设置无障碍说明
@@ -85,15 +87,16 @@ accessibilityDescription属性用于提供更详细的组件说明，播报时�
 
 ``` TypeScript
 Column() {
-  Text('HelloWorld')
-}
-.accessibilityGroup(true)
+  Button()
+  .width(120)
+  .height(40)
   .accessibilityLevel('yes')
-  // 请将$r('app.string.UniversalAttributesAccessibility_text7')替换为实际资源文件，在本示例中该资源文件的value值为"分组"
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  /* 请将$r('app.string.UniversalAttributesAccessibility_text8')替换为实际资源文件，
-     在本示例中该资源文件的value值为"Column组件可以被选中，播报的内容是“分组”" */
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text12'))
+  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text13'))
+  .onClick(() => {
+      // 播放音频、视频的核心逻辑
+  })
+}
 ```
 
 ## 设置无障碍虚拟子节点
