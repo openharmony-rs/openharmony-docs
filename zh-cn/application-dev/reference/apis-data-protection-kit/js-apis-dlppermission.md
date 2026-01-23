@@ -1419,7 +1419,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 将DLP文件解密生成明文文件。使用Promise异步回调。
 >**说明：**
 >
-> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。由企业服务器管控账号有权限解密DLP文件。
+> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。由企业服务器管控账号是否有权限解密DLP文件。
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
