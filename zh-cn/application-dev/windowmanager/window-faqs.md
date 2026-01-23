@@ -16,6 +16,11 @@
 
 ```ts
 // applicationA EntryAbility.ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common, Want, StartOptions } from '@kit.AbilityKit';
+
 export default class EntryAbility extends UIAbility {
 
     context = getConText(this) as common.UIAbilityContext;
