@@ -103,7 +103,7 @@ List(options?: [ListOptions](#listoptions18对象说明))
 
 > **说明：**
 >
-> List组件[通用属性clip](ts-universal-attributes-sharp-clipping.md)的默认值为true。
+> List组件通用属性[clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
 
 ### listDirection
 
