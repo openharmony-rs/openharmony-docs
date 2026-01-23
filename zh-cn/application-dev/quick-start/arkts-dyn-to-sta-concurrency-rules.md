@@ -1123,6 +1123,46 @@ function main() {
 }
 ```
 
+## Promise构造器中executor不能声明为async
+
+**规则：** `arkts-promise-executor-async-not-allowed`
+
+**规则解释：**
+
+Promise构造函数的executor函数不能声明为async。
+
+**变更原因：**
+
+ArkTS-Sta中，Promise构造函数的executor函数要求返回类型为void。当executor被声明为async时，其返回类型将被隐式转换为Promise\<T>，从而不满足构造函数的类型约束，导致在语义阶段直接报错。
+
+在ArkTS-Dyn中，不对executor的返回类型进行严格校验，由于其返回值不会被使用，因此这是允许的。
+
+**适配建议：**
+
+在ArkTS-Sta中，不应将Promise executor声明为async。当executor中需要执行异步逻辑时，需将异步操作提取到独立的async函数中。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+let p = new Promise<number>(async (resolve) => {
+    await new Promise<void>((resolveInner) => {setTimeout(()=>{resolveInner(undefined)}, 50)});
+    resolve(1);
+});
+```
+
+ArkTS-Sta
+
+```typescript
+let p = new Promise<number>((resolve) => {
+  async() => {
+    await new Promise<void>((resolveInner) => {setTimeout(()=>{resolveInner(undefined)}, 50)});
+    resolve(1);
+  }
+});
+```
+
 ## Promise\<void>构造器中只支持使用resolve(undefined)
 
 **规则：** `arkts-promise-with-void-type-need-undefined-as-resolve-arg`
