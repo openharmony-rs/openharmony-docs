@@ -23,3 +23,62 @@
 3. 在UI主线程页面，创建父Worker并准备克隆任务所需的数据，准备完成后将数据发送给父Worker。
 
    <!-- @[multi_worker_high_performance_communication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerPostMessageSendable.ets) -->   
+   
+   ``` TypeScript
+   // Index.ets
+   import { worker, collections } from '@kit.ArkTS';
+   import { CopyEntry } from '../Sendable/CopyEntry'
+   
+   function promiseCase() {
+     let p: Promise<void> = new Promise<void>((resolve: Function, reject: Function) => {
+       setTimeout(() => {
+         resolve();
+       }, 100);
+     });
+     return p;
+   }
+   
+   async function postMessageTest() {
+     let ss = new worker.ThreadWorker('entry/ets/workers/ParentWorker.ets');
+     let isTerminate = false;
+     ss.onexit = () => {
+       isTerminate = true;
+     }
+     let array = new collections.Array<CopyEntry>();
+     // 准备数据
+     for (let i = 0; i < 4; i++) {
+       if (i % 2 == 0) {
+         array.push(new CopyEntry('copy1', 'file://copy1.txt'));
+       } else {
+         array.push(new CopyEntry('copy2', 'file://copy2.txt'));
+       }
+     }
+     // 给Worker线程发送消息
+     ss.postMessageWithSharedSendable(array);
+     while (!isTerminate) {
+       await promiseCase();
+     }
+     console.info('Worker线程已退出');
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
+             .onClick(() => {
+               postMessageTest();
+               // ...
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
