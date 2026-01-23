@@ -194,7 +194,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
-        console.info(TAG, `fetchFrameByTime callback failed, error = ${JSON.stringify(err)}`);
+        console.info(`fetchFrameByTime callback failed, error = ${JSON.stringify(err)}`);
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
         pixelMap = frameInfo.image;
