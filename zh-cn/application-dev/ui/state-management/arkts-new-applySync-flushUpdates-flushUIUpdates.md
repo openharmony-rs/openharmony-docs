@@ -314,15 +314,15 @@ import { UIUtils } from '@kit.ArkUI';
 - 不支持在@Monitor回调函数中调用flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Monitor`，错误码为[`140002`](../../reference/apis-arkui/errorcode-stateManagement.md#140002-flushupdatesflushuiupdates非法调用)。
   
   <!-- @[CallInMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInMonitor.ets) -->
-
-  ```ts
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Page {
     @Local count: number = 0;
-
+  
     @Monitor('count')
     onCountChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
@@ -331,13 +331,15 @@ import { UIUtils } from '@kit.ArkUI';
       UIUtils.flushUpdates(); // 在monitor中调用flushUpdates会运行时报错
       UIUtils.flushUIUpdates(); // 在monitor中调用flushUIUpdates会运行时报错
     }
-
+  
     build() {
       Column() {
         Text(`${this.count}`)
-        Button('change count').onClick(() => {
+        Button('change count')
+          .onClick(() => {
           this.count++;
-        })
+          })
+          // ...
       }
     }
   }
