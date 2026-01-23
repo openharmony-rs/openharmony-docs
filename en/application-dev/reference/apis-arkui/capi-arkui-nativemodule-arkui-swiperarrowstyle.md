@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_SwiperArrowStyle ArkUI_SwiperArrowStyle
+```
+
 ## Overview
 
 Defines the arrow style for the **Swiper** component.

@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct ArkUI_TextPickerRangeContentArray ArkUI_TextPickerRangeContentArray
 ```
 

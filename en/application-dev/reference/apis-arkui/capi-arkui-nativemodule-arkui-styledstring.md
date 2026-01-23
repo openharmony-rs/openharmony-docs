@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_StyledString ArkUI_StyledString
+```
+
 ## Overview
 
 Defines a styled string object supported by the text component.

@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_KeyframeAnimateOption ArkUI_KeyframeAnimateOption
+```
+
 ## Overview
 
 Defines the keyframe animation parameter object.

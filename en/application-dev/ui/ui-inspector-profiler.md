@@ -20,9 +20,10 @@ The following parameters are available.
 - **r**: recursively displays element IDs of custom components and their child components from the root node. By default, only root node information is shown.
 - **viewId**: displays information for a specific custom component using its view ID.
 - **stateVariable**: displays state variable information, including associated components and synchronization objects. This command currently does not support recursive output (**r**).
-- **registerdElementIds**: displays element IDs of the current custom component.
+- **registeredElementIds**: displays element IDs of the current custom component.
 
 Example:
+
 The following example demonstrates a typical two-layer nested component structure using [\@State](./state-management/arkts-state.md) and [\@Link](./state-management/arkts-link.md) decorators. The commands above can be combined to display information such as the frontend component tree, state variables, and components affected by state variables.
 
 ```ts
@@ -66,15 +67,16 @@ struct GrandChild {
 ```
 
 Step 1: Obtain the ID of the currently active window.
-```
+``` shell
 hdc shell hidumper -s WindowManagerService -a '-a'
 ```
 
 Step 2: Execute commands to inspect state variable information.
+
 Assuming that the active window ID is 90, use the following commands:
 - Command 1: Recursively inspect all custom components from the root node:
 
-  ```
+  ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -r'
   ```
   
@@ -142,7 +144,7 @@ Assuming that the active window ID is 90, use the following commands:
   Total: 0
   ```
 - Command 2: Print state variable information for a specific custom component, for example, component ID 7:
-  ```
+  ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -viewId=7'
   ```
   The output is as follows.
@@ -204,7 +206,7 @@ Step 2: After recording, the ArkUI State lane shows trace points for state varia
 
 **Figure 1** ArkUI State lane recording process
 
-![UI-StateProfier1](figures/UI-StateProfier1.gif)
+![UI-StateProfiler1](figures/UI-StateProfiler1.gif)
 
 Step 3: Select a trace point to view triggering of component re-rendering and the time consumed for creation, measurement, and layout.
 

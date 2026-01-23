@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_SnapshotOptions ArkUI_SnapshotOptions
+```
+
 ## Overview
 
 Defines snapshot options.

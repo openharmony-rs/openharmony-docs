@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_ColorStop
+```
+
 ## Overview
 
 Defines the gradient color stop structure.

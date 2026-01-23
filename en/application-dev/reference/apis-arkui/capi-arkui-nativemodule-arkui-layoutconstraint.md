@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_LayoutConstraint ArkUI_LayoutConstraint
+```
+
 ## Overview
 
 Defines the size constraints of a component during component layout.

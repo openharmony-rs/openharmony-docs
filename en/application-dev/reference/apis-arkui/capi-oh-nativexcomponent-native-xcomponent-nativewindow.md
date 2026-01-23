@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct NativeWindow OHNativeWindow
+```
+
 ## Overview
 
 Provides an encapsulated **NativeWindow** instance.

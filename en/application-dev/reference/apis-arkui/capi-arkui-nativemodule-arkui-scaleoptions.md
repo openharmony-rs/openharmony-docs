@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_ScaleOptions
+```
+
 ## Overview
 
 Defines the scaling effect object for component transitions.
@@ -25,5 +29,5 @@ Defines the scaling effect object for component transitions.
 | float x | Scale factor along the x-axis.|
 | float y | Scale factor along the y-axis.|
 | float z | Scale factor along the z-axis (not effective for the current 2D graphics).|
-| float centerX | X-coordinate of the transformation center point.|
-| float centerY | Y-coordinate of the transformation center point.|
+| float centerX | X-coordinate of the center point, in vp.|
+| float centerY | Y-coordinate of the center point, in vp.|

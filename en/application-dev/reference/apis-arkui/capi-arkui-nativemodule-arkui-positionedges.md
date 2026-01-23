@@ -4,7 +4,11 @@
 <!--Owner: @zju_ljz-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct ArkUI_PositionEdges ArkUI_PositionEdges
+```
 
 ## Overview
 

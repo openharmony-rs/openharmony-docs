@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_AnimateCompleteCallback
+```
+
 ## Overview
 
 Defines the callback type for when the animation playback is complete.
@@ -22,8 +26,8 @@ Defines the callback type for when the animation playback is complete.
 
 | Name                                                                             | Description|
 |---------------------------------------------------------------------------------| -- |
-| [ArkUI_FinishCallbackType](capi-native-type-h.md#arkui_finishcallbacktype) type | Type of the **onFinish** callback.|
-| void* userData                                                                  | Custom type.|
+| [ArkUI_FinishCallbackType](capi-native-type-h.md#arkui_finishcallbacktype) type | Callback type for when the animation playback is complete.|
+| void* userData                                                                  | Custom data passed upon animation end callback.|
 
 
 ### Member Functions
@@ -36,7 +40,7 @@ Defines the callback type for when the animation playback is complete.
 
 ### callback()
 
-```
+```c
 void (*callback)(void* userData)
 ```
 

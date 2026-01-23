@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_CircleShape ArkUI_CircleShapeOption
+```
+
 ## Overview
 
 Defines a struct for the circle shape configuration.

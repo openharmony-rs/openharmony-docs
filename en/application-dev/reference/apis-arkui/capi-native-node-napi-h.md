@@ -55,7 +55,7 @@ Declares the functions used to convert FrameNodes on the ArkTS side into NodeHan
 
 ### OH_ArkUI_GetNodeHandleFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, ArkUI_NodeHandle* handle)
 ```
 
@@ -83,7 +83,7 @@ Obtains an **ArkUI_NodeHandle** object on the native side mapped from the **Fram
 
 ### OH_ArkUI_GetContextFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_ContextHandle* context)
 ```
 
@@ -111,7 +111,7 @@ Obtains a **UIContext** object on the ArkTS side and maps it to an **ArkUI_Conte
 
 ### OH_ArkUI_GetNodeContentFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)
 ```
 
@@ -129,7 +129,7 @@ Obtains a **NodeContent** object on the ArkTS side and maps it to an **ArkUI_Nod
 | -- | -- |
 | napi_env env | Pointer to the Node-API environment.|
 | napi_value value | **NodeContent** object created on the ArkTS side.|
-| content | Pointer to the **ArkUI_NodeContentHandle**.|
+| [ArkUI_NodeContentHandle](capi-arkui-nativemodule-arkui-nodecontent8h.md)* content | Pointer to the **ArkUI_NodeContentHandle**.|
 
 **Return value**
 
@@ -139,7 +139,7 @@ Obtains a **NodeContent** object on the ArkTS side and maps it to an **ArkUI_Nod
 
 ### OH_ArkUI_GetDrawableDescriptorFromNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)
 ```
 
@@ -167,7 +167,7 @@ Maps a **DrawableDescriptor** object on the ArkTS side to an **ArkUI_DrawableDes
 
 ### OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue()
 
-```
+```c
 int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)
 ```
 
@@ -195,7 +195,7 @@ Maps an $r resource object on the ArkTS side to an **ArkUI_DrawableDescriptor** 
 
 ### OH_ArkUI_GetNavigationId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -224,7 +224,7 @@ Obtains the ID of the **Navigation** component where the specified node is locat
 
 ### OH_ArkUI_GetNavDestinationName()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -253,7 +253,7 @@ Obtains the name of the **Navigation** component where the specified node is loc
 
 ### OH_ArkUI_GetNavStackLength()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)
 ```
 
@@ -280,7 +280,7 @@ Obtains the length of the navigation stack where the specified node is located.
 
 ### OH_ArkUI_GetNavDestinationNameByIndex()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int32_t index, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -310,7 +310,7 @@ Obtains the page name that matches the specified index in the navigation stack w
 
 ### OH_ArkUI_GetNavDestinationId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -339,7 +339,7 @@ Obtains the ID of the **NavDestination** component where the specified node is l
 
 ### OH_ArkUI_GetNavDestinationState()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)
 ```
 
@@ -366,7 +366,7 @@ Obtains the state of the **NavDestination** component where the specified node i
 
 ### OH_ArkUI_GetNavDestinationIndex()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* index)
 ```
 
@@ -393,7 +393,7 @@ Obtains the index of the **NavDestination** component where the specified node i
 
 ### OH_ArkUI_GetNavDestinationParam()
 
-```
+```c
 napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)
 ```
 
@@ -419,7 +419,7 @@ Obtains the parameters of the **NavDestination** component where the specified n
 
 ### OH_ArkUI_GetRouterPageIndex()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* index)
 ```
 
@@ -446,7 +446,7 @@ Obtains the index of the page where the specified node is located in the page st
 
 ### OH_ArkUI_GetRouterPageName()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -475,7 +475,7 @@ Obtains the name of the page where the specified node is located.
 
 ### OH_ArkUI_GetRouterPagePath()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -504,7 +504,7 @@ Obtains the path to the page where the specified node is located.
 
 ### OH_ArkUI_GetRouterPageState()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterPageState* state)
 ```
 
@@ -531,7 +531,7 @@ Obtains the state of the page where the specified node is located.
 
 ### OH_ArkUI_GetRouterPageId()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -560,7 +560,7 @@ Obtains the ID of the page where the specified node is located.
 
 ### OH_ArkUI_InitModuleForArkTSEnv()
 
-```
+```c
 ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)
 ```
 
@@ -586,7 +586,7 @@ Initializes ArkUI-related APIs for the specified context environment. This funct
 
 ### OH_ArkUI_NotifyArkTSEnvDestroy()
 
-```
+```c
 void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)
 ```
 
@@ -606,7 +606,7 @@ Notifies that the specified context environment has been destroyed. This functio
 
 ### OH_ArkUI_PostFrameCallback()
 
-```
+```c
 int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData,void (*callback)(uint64_t nanoTimestamp, uint32_t frameCount, void* userData))
 ```
 
@@ -622,11 +622,11 @@ Registers a callback function to be executed during the next frame rendering. Th
 
 | Name| Description|
 | -- | -- |
-| ArkUI_ContextHandle uiContext | **UIContext** object used to bind the instance.|
-|  void* userData | Custom event parameter, which is passed in the callback when the event is triggered.|
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | **UIContext** object used to bind the instance.|
+| void* userData | Custom event parameter, which is passed in the callback when the event is triggered.|
 | callback | Custom callback function.|
 | uint64_t nanoTimestamp | Timestamp of the frame signal.|
-|  uint32_t frameCount | Frame number.|
+| uint32_t frameCount | Frame number.|
 
 **Return value**
 
@@ -636,7 +636,7 @@ Registers a callback function to be executed during the next frame rendering. Th
 
 ### OH_ArkUI_PostIdleCallback()
 
-```
+```c
 int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,void (*callback)(uint64_t nanoTimeLeft, uint32_t frameCount, void* userData))
 ```
 
@@ -652,11 +652,11 @@ Registers a callback function that will be executed after the next frame renderi
 
 | Name| Description|
 | -- | -- |
-| ArkUI_ContextHandle uiContext | **UIContext** object used to bind the instance.|
-|  void* userData | Custom event parameter, which is passed in the callback when the custom callback is triggered.|
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | **UIContext** object used to bind the instance.|
+| void* userData | Custom event parameter, which is passed in the callback when the custom callback is triggered.|
 | callback | Custom callback function, which is executed when the remaining time until the next frame event exceeds 1 ms.|
 | uint64_t nanoTimeLeft | Remaining idle time before the next VSync signal.|
-|  uint32_t frameCount | Frame number.|
+| uint32_t frameCount | Frame number.|
 
 **Return value**
 
