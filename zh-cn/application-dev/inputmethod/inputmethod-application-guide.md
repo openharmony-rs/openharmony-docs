@@ -338,7 +338,7 @@
        if (this.isSpecialKeyPress || keyCode === KeyCode.KEYCODE_ALT_LEFT || keyCode === KeyCode.KEYCODE_ALT_RIGHT) {
          return false;
        }
-       let keyValue: string = GetHardKeyValue(keyCode, this.isShiftKeyHold());
+       let keyValue: string = getHardKeyValue(keyCode, this.isShiftKeyHold());
        if (keyValue === '') {
          this.inputHandle.addLog('onKeyDown: unknown keyCode');
          this.isSpecialKeyPress = true;
@@ -364,7 +364,7 @@
        }
    
        if (this.isSpecialKeyPress) {
-         let keyValue = GetHardKeyValue(keyCode, this.isShiftKeyHold());
+         let keyValue = getHardKeyValue(keyCode, this.isShiftKeyHold());
          if (!keyValue) {
            this.isSpecialKeyPress = true;
          }
