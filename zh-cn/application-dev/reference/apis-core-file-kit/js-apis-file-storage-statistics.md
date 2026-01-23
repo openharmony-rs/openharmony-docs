@@ -221,7 +221,7 @@ storageStatistics.getTotalSize((error, totalSize) => {
 
 ArkTS-Dyn: getTotalSizeSync(): number
 
-ArkTS-Sta: getTotalSizeSync(): int
+ArkTS-Sta: getTotalSizeSync(): long
 
 同步获取内置存储的总空间大小（单位为Byte）。
 
@@ -235,7 +235,7 @@ ArkTS-Sta: getTotalSizeSync(): int
 
 | 类型   | 说明                                   |
 | ------ | -------------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回内置存储的总空间大小（单位为Byte）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回内置存储的总空间大小（单位为Byte）。 |
 
 **错误码：**
 
