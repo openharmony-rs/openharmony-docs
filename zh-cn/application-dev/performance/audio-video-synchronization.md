@@ -101,7 +101,7 @@
 
 2. 音频启动前暂不做音画同步，视频帧直接送显。
 
-   音频未启动前，timestamp和framePostion返回结果为0。为避免出现卡顿等问题，暂不同步，视频帧直接送显。
+   音频未启动前，timestamp和framePosition返回结果为0。为避免出现卡顿等问题，暂不同步，视频帧直接送显。
     ```c++
     // 如果getTimeStamp方法报错, 则直接渲染音频
     if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {
