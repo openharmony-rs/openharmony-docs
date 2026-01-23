@@ -691,7 +691,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。<br>值为undefined时，开启识别。 |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启选中词文本识别；false：关闭选中词文本识别。<br/>值为undefined时，开启选中词文本识别。 |
 
 ### contentType<sup>12+</sup>
 
