@@ -15431,14 +15431,14 @@
 						"start_line":41
 					},
 					{
-						"end_line":58,
+						"end_line":60,
 						"name":"accessibility_text_group_start",
 						"start_line":49
 					},
 					{
-						"end_line":71,
+						"end_line":74,
 						"name":"accessibility_description_start",
-						"start_line":59
+						"start_line":61
 					},
 					{
 						"end_line":85,
@@ -15451,7 +15451,7 @@
 						"start_line":86
 					},
 					{
-						"end_line":132,
+						"end_line":135,
 						"name":"accessibility_text_start",
 						"start_line":16
 					}
