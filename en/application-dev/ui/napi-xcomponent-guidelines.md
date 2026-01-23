@@ -106,7 +106,7 @@ For complex interaction logic that requires cross-language development, or when 
 
 ### XComponent Development Paradigm
 
-The following five XComponent development paradigms are available, depending on the combination of [Creating an XComponent](#Creating an XComponent) and [Managing the Lifecycle of the Surface Held by an XComponent](#Managing the lifecycle of the surface held by an XComponent). Except that the XComponentController cannot be used to manage the lifecycle of the surface held by an XComponent created using the NDK API, the other paradigms are as follows:
+The following five XComponent development paradigms are available, depending on the combination of [Creating an XComponent](#creating-an-xcomponent) and [Managing the Lifecycle of the Surface Held by an XComponent](#managing-the-lifecycle-of-the-surface-held-by-xcomponent). Except that the XComponentController cannot be used to manage the lifecycle of the surface held by an XComponent created using the NDK API, the other paradigms are as follows:
 
 - Create a component using the declarative UI description in ArkTS and use XComponentController to manage the lifecycle of the surface.
 

@@ -1,21 +1,22 @@
-# ArkUI_ColorPropertyHandle
+# ArkUI_Node
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-
-```c
-typedef struct ArkUI_ColorProperty* ArkUI_ColorPropertyHandle
-```
+ 
+```c 
+struct ArkUI_Node 
+``` 
 
 ## Overview
 
-Defines a struct for the color property pointer.
+Defines the ArkUI native component instance object.
 
-**Since**: 20
+**Since**: 22
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_render.h](capi-native-render-h.md)
+**Header file**: [drawable_descriptor.h](capi-drawable-descriptor-h.md)
+ 
