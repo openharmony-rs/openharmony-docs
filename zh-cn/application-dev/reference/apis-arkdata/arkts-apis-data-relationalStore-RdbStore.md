@@ -130,7 +130,7 @@ ArkTS-Sta: insert(table: string, values: ValuesBucket, callback: AsyncCallback&l
 
 向目标表中插入一行数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -246,7 +246,7 @@ ArkTS-Sta: insert(table: string, values: ValuesBucket, conflict: ConflictResolut
 
 向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -364,7 +364,7 @@ ArkTS-Sta: insert(table: string, values: ValuesBucket): Promise&lt;long&gt;
 
 向目标表中插入一行数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -484,7 +484,7 @@ ArkTS-Sta: insert(table: string, values: ValuesBucket, conflict: ConflictResolut
 
 向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -605,7 +605,7 @@ ArkTS-Sta: insertSync(table: string, values: ValuesBucket, conflict?: ConflictRe
 
 向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -724,7 +724,7 @@ insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict
 
 传入Sendable数据，向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -806,7 +806,7 @@ ArkTS-Sta: batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callbac
 
 接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 从API version 20开始，支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)。
 
@@ -955,7 +955,7 @@ ArkTS-Sta: batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promis
 
 接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -1148,7 +1148,7 @@ ArkTS-Sta: batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): lo
 
 接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1307,7 +1307,7 @@ ArkTS-Sta: batchInsertWithConflictResolution(table: string, values: Array&lt;Val
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1464,7 +1464,7 @@ ArkTS-Sta: batchInsertWithConflictResolutionSync(table: string, values: Array&lt
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1619,7 +1619,7 @@ batchInsertWithReturning(table: string, values: Array\<ValuesBucket\>, config: R
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1721,7 +1721,7 @@ batchInsertWithReturningSync(table: string, values: Array\<ValuesBucket\>, confi
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
-单个字符串类型的字段大小上限为8MB，超过上限建议使用blob类型，其余类型的字段大小不受此规格约束。
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3336,8 +3336,6 @@ querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): ResultSet
 
 根据指定条件查询数据库中的数据。对query同步接口获得的resultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
-单个字符串类型的字段大小上限为8MB，超过上限读取的结果会不符合预期，建议使用blob类型，其余类型的字段大小不受此规格约束。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 12
@@ -4413,8 +4411,6 @@ let resultSet = await store.querySql(querySql, [vectorValue, 1 as long, vectorVa
 querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;): ResultSet
 
 根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对query同步接口获得的resultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
-
-单个字符串类型的字段大小上限为8MB，超过上限读取的结果会不符合预期，建议使用blob类型，其余类型的字段大小不受此规格约束。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
