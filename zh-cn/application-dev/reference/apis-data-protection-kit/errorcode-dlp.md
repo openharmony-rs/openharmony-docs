@@ -26,13 +26,13 @@ Invalid parameter value.
 
 2. 账号类型错误。
 
-3. aeskey或iv非法。
+3. aesKey或iv非法。
 
-4. 授权到期时间低于系统时间。
+4. 系统时间晚于授权到期时间。
 
 5. Fd小于0。
 
-6. tokenid等于0。
+6. tokenId等于0。
 
 7. 包名为空。
 
@@ -44,7 +44,6 @@ Invalid parameter value.
 
 请传入正确的参数。
 
-<!--Del-->
 ## 19100002 加解密出错
 
 **错误信息**
@@ -64,9 +63,7 @@ Credential service busy due to too many tasks or duplicate tasks.
 **处理步骤**
 
 请等待一段时间后重试。
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100003 加解密超时
 
 **错误信息**
@@ -84,9 +81,7 @@ DLP文件加解密时间超过10秒。
 **处理步骤**
 
 请等待一段时间后重试。
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100004 凭据服务错误
 
 **错误信息**
@@ -106,9 +101,7 @@ Credential service error.
 **处理步骤**
 
 请等待一段时间后重试，或者重启设备。
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100005 凭据认证服务器错误
 
 **错误信息**
@@ -128,7 +121,6 @@ Credential authentication server error.
 **处理步骤**
 
 请检查凭据认证服务器后重试。
-<!--DelEnd-->
 
 ## 19100006 非DLP沙箱应用
 
@@ -160,13 +152,12 @@ No permission to call this API, which is available only for non-DLP sandbox appl
 
 **可能原因**
 
-调用方不可以是DLP沙箱应用。
+调用方是DLP沙箱应用。
 
 **处理步骤**
 
 请确认调用场景后重试。
 
-<!--Del-->
 ## 19100008 非DLP文件
 
 **错误信息**
@@ -184,9 +175,7 @@ The file is not a DLP file.
 **处理步骤**
 
 请使用经过DLP加密的DLP文件。
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100009 操作DLP文件失败
 
 **错误信息**
@@ -212,7 +201,6 @@ Failed to operate the DLP file.
 step1：请确认访问权限。
 
 step2：请等待一段时间或重启后重试。
-<!--DelEnd-->
 
 <!--Del-->
 ## 19100010 只读DLP文件
@@ -280,7 +268,6 @@ System memory is insufficient.
 
 系统内存不足，请稍后重试，或者重启设备。
 
-<!--Del-->
 ## 19100013 用户无权限
 
 **错误信息**
@@ -298,9 +285,7 @@ The user does not have the permission.
 **处理步骤**
 
 请检查权限。
-<!--DelEnd-->
 
-<!--Del-->
 ## 19100014 账号未登录
 
 **错误信息**
@@ -318,7 +303,6 @@ Account not logged in.
 **处理步骤**
 
 请登录账号。
-<!--DelEnd-->
 
 <!--Del-->
 ## 19100015 系统需要升级
@@ -388,11 +372,11 @@ The application is not authorized.
 
 **可能原因**
 
-应用不在授信应用白名单中。
+应用不在授信应用名单中。
 
 **处理步骤**
 
-请设置授信应用白名单。
+请联系技术支持，接入授信应用名单。
 
 <!--Del-->
 ## 19100019 DLP文件已过期
@@ -528,7 +512,7 @@ A system error has occurred.
 
 2. 服务依赖的服务无法正常启动。
 
-3. IPC数据读写识别。
+3. IPC数据读写失败。
 
 4. 服务未初始化。
 
