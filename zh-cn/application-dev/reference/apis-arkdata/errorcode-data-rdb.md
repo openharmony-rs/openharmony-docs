@@ -101,7 +101,7 @@ ResultSet is empty or pointer index is out of bounds.
 
 **可能原因**
 
-结果集为空或结果集指定行号超出位置范围[0, m - 1]，m = resultsetV9.rowCount。
+结果集为空或结果集指定行号超出位置范围[0, m - 1]，m = ResultSet.rowCount。
 
 **处理步骤**
 
@@ -111,7 +111,7 @@ ResultSet is empty or pointer index is out of bounds.
 
 **错误信息**
 
-ResultSet is empty or column index is out of bounds.
+Column index is out of bounds.
 
 **错误描述**
 
@@ -119,16 +119,13 @@ ResultSet is empty or column index is out of bounds.
 
 **可能原因**
 
-1. 结果集为空。
-2. 结果集当前行号超出范围[0, m - 1]，m = resultsetV9.rowCount。
-3. 当前列号超出范围[0, n - 1]，n = resultsetV9.columnCount。
-4. 当前列数据类型接口不支持。
+1. 当前列号超出范围[0, n - 1]，n = ResultSet.columnCount。
+2. 当前列数据类型接口不支持。
 
 **处理步骤**
 
-1. 检查结果集是否为空。
-2. 检查结果集当前行号、列号是否超出范围。
-3. 检查当前列数据类型是否支持。
+1. 检查结果集当前列号是否超出范围。
+2. 检查当前列数据类型是否支持。
 
 ## 14800014 目标实例已关闭
 
