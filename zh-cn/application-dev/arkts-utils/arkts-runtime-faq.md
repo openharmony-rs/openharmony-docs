@@ -162,6 +162,19 @@ console.info('result[0]:', result[0]);
 
 <!-- @[test_int32ArrayMapWorkaround](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
 
+``` TypeScript
+let arr = new Int32Array([1, 2, 3, 4, 5]);
+
+let normalArr = Array.from(arr);
+let result = normalArr.map(val => {
+  let res = (Math.pow(val, 1)) * 100;
+  return res;
+});
+
+console.info('result[0]:', result[0]);
+// 输出: result[0]:100
+```
+
 ### Number.parseFloat解析浮点数number类型非规格化数值与期望不一致
 
 parseFloat接口不支持对非规格化数进行解析。当输入字符串表示一个浮点数number类型的非规格化数，一律输出0。
