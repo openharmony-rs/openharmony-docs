@@ -242,6 +242,19 @@ try {
 
 <!-- @[testOne_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test1.js) -->  
 
+``` JavaScript
+// test1.js
+const typedArr = new Uint8Array([10, 20, 30]);
+try {
+    const normalArr1 = Array.from(typedArr);
+    const result = Object.entries(normalArr1);
+    console.info('no error throw');
+} catch (e) {
+    console.info(e);
+}
+// 输出：no error throw
+```
+
 ### 字符串 `replace` 接口对于第一个参数为空字符串的场景与预期不一致
 
 在使用字符串replace接口时，如果第一个参数是空字符串，则直接返回原始字符串。
