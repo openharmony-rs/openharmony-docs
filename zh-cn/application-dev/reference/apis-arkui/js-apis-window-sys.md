@@ -1529,7 +1529,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | 是   | 目标窗口token值。 |
-| deathCallback | Callback&lt;void&gt;        | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;        | 是   | 目标窗口销毁监听。 |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -1612,7 +1612,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | 是   | 目标窗口token值。 |
-| deathCallback | Callback&lt;void&gt;        | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;        | 是   | 目标窗口销毁监听。 |
 
 **返回值：**
 
@@ -1698,7 +1698,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | 是   | 目标窗口RequestInfo值。 |
-| deathCallback | Callback&lt;void&gt;    | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;    | 是   | 目标窗口销毁监听。 |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -1769,7 +1769,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | 是   | 目标窗口RequestInfo值。 |
-| deathCallback | Callback&lt;void&gt;    | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;    | 是   | 目标窗口销毁监听。 |
 
 **返回值：**
 
