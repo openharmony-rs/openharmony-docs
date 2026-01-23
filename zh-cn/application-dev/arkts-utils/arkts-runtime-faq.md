@@ -144,6 +144,20 @@ let reg3 = /a(?:x){0,1}$/;
 
 <!-- @[test_int32ArrayMapIssue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->   
 
+``` TypeScript
+for(let i = 0; i < 1000; i++) {} // 触发内联缓存优化
+
+let arr = new Int32Array([1, 2, 3, 4, 5]);
+let result = arr.map(val => {
+  let res = (Math.pow(val, 1)) * 100;
+  return res;
+})
+
+console.info('result[0]:', result[0]);
+// 期望输出: result[0]:100
+// 实际输出: result[0]:104
+```
+
 规避方案：使用Array.from将TypedArray先转换为普通Array，再处理number。
 
 <!-- @[test_int32ArrayMapWorkaround](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
