@@ -1363,9 +1363,9 @@ ArkTS-Sta: caretColor(color: ResourceColor | undefined)
 
 ### contentTransition<sup>20+</sup>
 
-ArkTS-Dyn: isEditing(): contentTransition(transition: Optional\<ContentTransition>)
+ArkTS-Dyn: contentTransition(transition: Optional\<ContentTransition>)
 
-ArkTS-Sta: isEditing(): contentTransition(transition: ContentTransition | undefined)
+ArkTS-Sta: contentTransition(transition: ContentTransition | undefined)
 
 可以设置为数字翻牌动效[NumericTextTransition](../arkui-ts/ts-text-common.md#numerictexttransition20)。
 
