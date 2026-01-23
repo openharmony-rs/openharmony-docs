@@ -203,7 +203,12 @@ test(a2);
 
   <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->  
   
+  <!-- @[optionExample_enablePropertyObfuscation3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
+  
   ``` TypeScript
+  let person1 = {exampleName: "aaa"};
+  let name = person1.exampleName;
+  ```
   // 混淆前：
   // example.ts
   let person = {"exampleName": "abc"};
