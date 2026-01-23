@@ -500,7 +500,7 @@
 | [void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)](#oh_arkui_textpickerrangecontentarray_seticonatindex) | - | 指定TextPickerRangeContent数组指定位置的icon数据。 |
 | [void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textpickerrangecontentarray_settextatindex) | - | 指定TextPickerRangeContent数组指定位置的text数据。 |
 | [void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)](#oh_arkui_textpickerrangecontentarray_destroy) | - | 删除TextPickerRangeContent数组对象。 |
-| [ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)](#oh_arkui_textcascadepickerrangecontentarray_create) | - | 删除TextCascadePickerRangeContent数组对象。 |
+| [ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)](#oh_arkui_textcascadepickerrangecontentarray_create) | - | 创建TextCascadePickerRangeContent数组对象。 |
 | [void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_settextatindex) | - | 指定TextCascadePickerRangeContent数组指定位置的text数据。 |
 | [void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_setchildatindex) | - | 指定TextCascadePickerRangeContent数组指定位置的child数据。 |
 | [void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy (ArkUI_TextCascadePickerRangeContentArray* handle)](#oh_arkui_textcascadepickerrangecontentarray_destroy) | - | 删除TextCascadePickerRangeContent数组对象。 |
@@ -9648,8 +9648,7 @@ ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContent
 
 **描述：**
 
-
-删除TextCascadePickerRangeContent数组对象。
+创建TextCascadePickerRangeContent数组对象。
 
 **起始版本：** 19
 
