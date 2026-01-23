@@ -83,24 +83,24 @@ import { UIUtils } from '@kit.ArkUI';
 - flushUpdates接口用于同步刷新在调用该函数之前所有的状态变量修改，包括更新@Computed计算、@Monitor回调以及重新渲染UI节点。
   
   <!-- @[FlushUpdatesUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/FlushUpdatesUse.ets) -->
-
-  ```ts
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // 宽度
     @Local h: number = 50; // 高度
     @Local message: string = 'Hello';
-
+  
     @Monitor('message')
     onMessageChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       });
     }
-
+  
     build() {
       Column() {
         Button('change size')
@@ -111,7 +111,7 @@ import { UIUtils } from '@kit.ArkUI';
             this.h = 100;
             this.message = 'Hello World';
             UIUtils.flushUpdates();
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -120,6 +120,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.message = 'Hello ArkUI';
             });
           })
+          // ...
         Column() {
           Text(`${this.message}`)
         }
