@@ -453,11 +453,11 @@ struct SharedTransitionExample {
 
 <!-- @[PageUse_PageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageTransitionTwo.ets) -->
 
-```ts
+``` TypeScript
 // PageTransitionTwo.ets
 
 import { UIUtils, AppStorageV2 } from '@kit.ArkUI';
-import { Info } from './Index'
+import { Info } from './PageUse';
 
 @Entry
 @ComponentV2
@@ -475,6 +475,7 @@ struct PageBExample {
           });
           this.getUIContext().getRouter().back();
         })
+        // ...
     }
     .width('100%')
     .height('100%')
