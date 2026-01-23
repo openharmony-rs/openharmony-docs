@@ -121,6 +121,14 @@ console.info('JSON.stringify(res?.groups) = {\'b\':' + JSON.stringify(res[2]) + 
 
 <!-- @[test_beforeRegexAlternationOperator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
 
+``` TypeScript
+let reg = /a(?:|x)$/;
+let res = reg.exec('ax');
+console.info('JSON.stringify(res) = ' + JSON.stringify(res));
+// 期望输出: JSON.stringify(res) = ['ax']。
+// 实际输出: JSON.stringify(res) = null。
+```
+
 
 规避方案：使用reg2或reg3替换reg1。
 
