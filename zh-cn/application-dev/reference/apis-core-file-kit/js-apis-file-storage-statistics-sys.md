@@ -63,7 +63,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import volumemanager from "@ohos.file.volumeManager";
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
   let uuid: string = volumes[0].uuid;
@@ -81,7 +81,7 @@ ArkTS-Sta示例：
 
 ```ts
 import volumemanager from "@ohos.file.volumeManager";
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
   let uuid: string = volumes[0].uuid;
@@ -139,7 +139,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import volumemanager from "@ohos.file.volumeManager";
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
   let uuid: string = volumes[0].uuid;
@@ -160,7 +160,7 @@ ArkTS-Sta示例：
 
 ```ts
 import volumemanager from "@ohos.file.volumeManager";
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
   let uuid: string = volumes[0].uuid;
@@ -226,7 +226,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import volumemanager from "@ohos.file.volumeManager";
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
   let uuid: string = volumes[0].uuid;
@@ -244,7 +244,7 @@ ArkTS-Sta示例：
 
 ```ts
 import volumemanager from "@ohos.file.volumeManager";
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
   let uuid: string = volumes[0].uuid;
@@ -302,7 +302,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import volumemanager from "@ohos.file.volumeManager";
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
   let uuid: string = volumes[0].uuid;
@@ -323,7 +323,7 @@ ArkTS-Sta示例：
 
 ```ts
 import volumemanager from "@ohos.file.volumeManager";
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
   let uuid: string = volumes[0].uuid;
@@ -390,7 +390,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = "com.example.myapplication";
@@ -417,7 +417,7 @@ ArkTS-Sta示例：
 
 ```ts
 import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = "com.example.myapplication";
@@ -484,7 +484,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = "com.example.myapplication";
@@ -512,7 +512,7 @@ ArkTS-Sta示例：
 
 ```ts
 import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundleName = "com.example.myapplication";
@@ -576,7 +576,7 @@ ArkTS-Sta: getSystemSize(): Promise&lt;long&gt;
 ArkTS-Dyn示例：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getSystemSize().then((systemSize: number) => {
   console.info("getSystemSize successfully:" + systemSize);
@@ -588,7 +588,7 @@ storageStatistics.getSystemSize().then((systemSize: number) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getSystemSize().then((systemSize: long) => {
   console.info("getSystemSize successfully:" + systemSize);
@@ -638,7 +638,7 @@ ArkTS-Sta: getSystemSize(callback: AsyncCallback&lt;long&gt;): void
 ArkTS-Dyn示例：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getSystemSize((error: BusinessError, systemSize: number) => {
   if (error) {
@@ -653,7 +653,7 @@ storageStatistics.getSystemSize((error: BusinessError, systemSize: number) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getSystemSize((error: BusinessError, systemSize: long) => {
   if (error) {
@@ -702,7 +702,7 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.StorageStats) => {
   console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
@@ -748,7 +748,7 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
   if (error) {
@@ -808,7 +808,7 @@ ArkTS-Sta: getUserStorageStats(userId: long): Promise&lt;StorageStats&gt;
 ArkTS-Dyn示例：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 100;
 storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
@@ -821,7 +821,7 @@ storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatist
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: long = 100;
 storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
@@ -874,7 +874,7 @@ ArkTS-Sta: getUserStorageStats(userId: long, callback: AsyncCallback&lt;StorageS
 ArkTS-Dyn示例：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: number = 100;
 storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
@@ -890,7 +890,7 @@ storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStat
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId: long = 100;
 storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats): void => {
