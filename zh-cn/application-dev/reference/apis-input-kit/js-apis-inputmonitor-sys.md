@@ -208,7 +208,7 @@ onMouse(receiver: Callback&lt;MouseEvent&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('mouse')](#inputmonitoronmouse9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronmouse9)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -352,7 +352,7 @@ onMouse(rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('mouse')](#inputmonitoronmouse11)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#inputmonitoronmouse11)。
 
 **ArkTS-Sta起始版本：** 23
 
