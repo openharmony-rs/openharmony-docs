@@ -347,7 +347,7 @@ if (userCount > MAX_USER_COUNT ||
 
 **【反例】**
 
-```
+``` TypeScript
 let maxCount = 10, isCompleted = false;
 let pointX, pointY;
 pointX = 10; pointY = 0;
@@ -919,7 +919,7 @@ let y: Array<string> = ['a', 'b', 'c'];
 
 <!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
-```
+```TypeScript
 // 统一使用T[]语法
 let x: number[] = [1, 2, 3];
 let y: string[] = ['a', 'b', 'c'];
