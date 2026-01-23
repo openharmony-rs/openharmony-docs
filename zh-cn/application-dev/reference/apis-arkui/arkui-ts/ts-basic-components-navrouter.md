@@ -72,7 +72,7 @@ mode(mode: NavRouteMode)
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 13开始废弃，建议使用[NavPathStack](ts-basic-components-navigation.md#navpathstack10)替代。
+> 从API version 10开始支持，从API version 13开始废弃，建议使用[LaunchMode](ts-basic-components-navigation.md#launchmode12枚举说明)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
