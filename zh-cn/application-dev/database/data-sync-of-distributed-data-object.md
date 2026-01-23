@@ -529,7 +529,6 @@ export default class EntryAbility extends UIAbility {
     dataObject.setSessionId(sessionId);
   }
 }
-
 ```
 
 ## 相关实例
