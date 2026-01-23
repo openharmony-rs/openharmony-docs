@@ -28,24 +28,24 @@ import { UIUtils } from '@kit.ArkUI';
 - applySync接口用于同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed](./arkts-new-computed.md)计算、[@Monitor](./arkts-new-monitor.md)回调以及重新渲染UI节点。
   
   <!-- @[ApplySyncUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncUse.ets) -->
-
-  ```ts
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // 宽度
     @Local h: number = 50; // 高度
     @Local message: string = 'Hello';
-
+  
     @Monitor('message')
     onMessageChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       });
     }
-
+  
     build() {
       Column() {
         Button('change size')
@@ -57,7 +57,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.h = 100;
               this.message = 'Hello World';
             });
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -66,6 +66,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.message = 'Hello ArkUI';
             });
           })
+          // ...
         Column() {
           Text(`${this.message}`)
         }
