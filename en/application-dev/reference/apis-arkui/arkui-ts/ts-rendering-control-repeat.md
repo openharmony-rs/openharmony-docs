@@ -10,7 +10,7 @@
 > 
 > The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-**Repeat** is used to perform repeated rendering based on array data. Generally, it is used together with container components.
+**Repeat** performs iterative rendering based on array data and is typically used together with scrollable components.
 
 This document provides API parameter descriptions. For details about the component descriptions and usage guidelines, see [Repeat: Reusing Components for Repeated Content Rendering](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
 
@@ -62,7 +62,7 @@ In addition to the [drag-and-drop sorting](./ts-universal-attributes-drag-sortin
 
 each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
-Component generator. When the return value of **.templateId()** does not match any **.template()** type (that is, the current item does not match any defined template style), the data item is processed using **.each()**.
+Component generator. When the return value of [.templateId()](#templateid) does not match any [.template()](#template) type (that is, the current item does not match any defined template style), the data item is processed using **.each()**.
 
 > **NOTE**
 >
@@ -81,7 +81,7 @@ Component generator. When the return value of **.templateId()** does not match a
 
 | Name| Type  | Mandatory| Description|
 | ------ | ---------- | -------- | -------- |
-| repeatItem  | [RepeatItem](#repeatitemt)\<T\> | No| Repeat data item.|
+| itemGenerator  | (repeatItem: [RepeatItem\<T\>](#repeatitemt)) => void | Yes| Component generator.|
 
 **Example**
 ```ts
@@ -110,8 +110,7 @@ Key generator.
 
 | Name| Type  | Mandatory| Description |
 | ------ | ---------- | -------- | -------- |
-| item  | T | No| Data item in the **arr** array.|
-| index  | number | No| Index of the data item in the **arr** array.|
+| keyGenerator  | (item: T, index: number) => string | Yes| Key generator.<br>**item**: data item in the **arr** array. It is optional.<br>**index**: index of a data item in the **arr** array. It is optional.|
 
 **Example**
 ```ts
@@ -275,7 +274,7 @@ Defines a union type for **Repeat** data source parameters.
 
 > **NOTE**
 >
-> When the value of **totalCount** is greater than the value of **arr.length**, during the scrolling of the parent component container, the application needs to ensure that subsequent data is requested when the list is about to scroll to the end of the data source. You need to handle error scenarios (such as network delays) for data requests until all data sources are loaded; otherwise, scrolling exceptions may occur during list scrolling. For solutions, see [Handling Cases Where the totalCount Value Exceeds the Data Source Length](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md#handling-cases-where-the-totalcount-value-exceeds-the-data-source-length).
+> When the value of **totalCount** is greater than the value of **arr.length**, during the scrolling of the parent component container, the application needs to ensure that subsequent data is requested when the list is about to scroll to the end of the data source. You need to handle error scenarios (such as network delays) for data requests until all data sources are loaded; otherwise, scrolling exceptions may occur during list scrolling. For solutions, see [The totalCount Value Is Greater Than the Length of Data Source](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md#handling-cases-where-the-totalcount-value-exceeds-the-data-source-length).
 
 ### onLazyLoading<sup>19+</sup>: Precise Lazy Loading
 
@@ -299,7 +298,7 @@ Defines a union type for **Repeat** data source parameters.
 
 - When the return value is a non-natural number, **arr.length** is used as the return value and the list scrolls normally.
 - When the return value is greater that or equal to **0** and smaller than the value of **arr.length**, only data within the range of [0, *return value* - 1] is rendered.
-- When the return value is greater than **arr.length**, the data within the range of [0, *return value* - 1] is rendered. In this case, the scrollbar style changes based on the return value.
+- When the return value is greater than **arr.length**, the data within the range of [0, *return value* - 1] is rendered. The scrollbar style changes based on the return value.
 
 > **NOTE**
 >
@@ -352,15 +351,15 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| cachedCount | number | No| Yes | Maximum number of child component nodes that can be cached in the cache pool of the current template. Value range: [0, +∞). Default value: sum of the number of onscreen and preloaded nodes. When the number of onscreen and preloaded nodes increases, the value of **cachedCount** will increase accordingly. Note that the value of **cachedCount** does not decrease.|
+| cachedCount | number | No| Yes | Maximum number of child component nodes that can be cached in the cache pool of the current template. The value range is [0, +∞). The default value is the sum of the number of nodes in the display area of the container component and the number of nodes in the preloading area. When this sum increases (during the scrolling, when only part of the height of child components is within the display area), the value of **cachedCount** also increases accordingly. Note that the value of **cachedCount** does not decrease.|
 
-When **cachedCount** is set to the maximum number of nodes displayed on the screen for the current template, **Repeat** achieves maximum reuse efficiency. However, when no nodes of the current template are on the screen, the cache pool will not be released, and application memory usage will increase. Set the value based on your specific scenario. It is recommended that you set **cachedCount** to match the number of on-screen nodes. Yet, setting **cachedCount** to less than 2 is not recommended, as this may lead to the creation of new nodes during rapid scrolling and result in performance degradation.
+When **cachedCount** is set to the maximum number of nodes in the display area of the container component for the current template, **Repeat** achieves maximum reuse efficiency. If there are no nodes of the current template in the container component's display area, the cache list is not released, which increases application memory usage. You are advised to set **cachedCount** to the number of nodes within the container component's display area and adjust the value according to the actual situation. Yet, setting **cachedCount** to less than 2 is not recommended, as this may lead to the frequent node ceation during rapid scrolling and result in performance degradation.
 
 > **NOTE**
 > 
-> The **.cachedCount()** attribute of the scrolling container component and the **cachedCount** parameter of the **.template()** method of **Repeat** are used to balance performance and memory, but their meanings are different.
-> - **.cachedCount()** in scrollable container components (for example, **List** and **Grid**): indicates the preloaded nodes outside the visible range. These nodes exist in the component tree but are not visible. The container components render these off-screen nodes for performance benefits. However, **Repeat** treats these nodes as visible.
-> - **.cachedCount()** in **.template()**: indicates nodes that are treated as invisible by **Repeat**. These nodes are idle and are temporarily stored in the framework. You can update these nodes as required to implement reuse.
+> The **.cachedCount()** attribute of the scrollable container component and the **cachedCount** parameter of the **.template()** method of **Repeat** are used to balance performance and memory, but their meanings are different.
+> - **.cachedCount()** of the scrollable container component: size of the preloading area outside the display area of the container component. The child component nodes in this area are located in the component tree. The scrollable container component renders nodes in these preloading areas, improving the list scrolling performance.
+> - cachedCount in .template(): size of the cache pool for each template in the **Repeat** component. When rendering a new child component, **Repeat** checks whether there are available nodes in the cache pool for the corresponding template. If yes, the nodes are reused. If no, new nodes are created.
 
 **Example**
 ```ts
