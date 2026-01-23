@@ -204,7 +204,7 @@ import { distributedDataObject } from '@kit.ArkData';
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 业务数据定义
 class Data {
@@ -322,7 +322,6 @@ function getRemoteDeviceId() {
   }
   return deviceId;
 }
-
 ```
                
 
