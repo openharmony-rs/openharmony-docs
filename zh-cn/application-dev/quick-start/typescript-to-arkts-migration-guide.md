@@ -3237,6 +3237,17 @@ ArkTS不支持`as const`断言和字面量类型。在标准TypeScript中，`as 
 
 <!-- @[no_asConst_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAsConst.ts) -->   
 
+``` TypeScript
+// 'hello'类型
+let x = 'hello' as const;
+
+// 'readonly [10, 20]'类型
+let y = [10, 20] as const;
+
+// '{ readonly text: 'hello' }'类型
+let z = { text: 'hello' } as const;
+```
+
 **ArkTS**
 
 <!-- @[no_asConst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAsConst.ets) -->   
