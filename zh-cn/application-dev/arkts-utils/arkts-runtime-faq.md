@@ -225,6 +225,19 @@ try {
 
 <!-- @[testTwo_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test2.js) -->  
 
+``` JavaScript
+// test2.js
+const typedArr = new Uint16Array([10, 20, 30]);
+try {
+   const result = Object.entries(typedArr);
+   console.info('no error throw');
+} catch (e) {
+   console.info(e);
+}
+// 期望输出：no error throw
+// 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
+```
+
 规避方案：使用Array.from将TypedArray先转换为普通Array，再使用Object.entries。
 
 <!-- @[testOne_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test1.js) -->  
