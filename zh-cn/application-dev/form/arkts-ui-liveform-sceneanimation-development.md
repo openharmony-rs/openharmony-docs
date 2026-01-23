@@ -261,7 +261,7 @@
           Column() {
             // $r('app.string.liveform_click1')需要在相应的资源文件string.json中定义
             Text($r('app.string.liveform_click1'))
-              // $r('app.float.font_size')需开发者根据实际情况替换相应的资源或值
+            // $r('app.float.font_size')需开发者根据实际情况替换相应的资源或值
               .fontSize($r('app.float.font_size'))
               .fontWeight(FontWeight.Medium)
               // $r('sys.color.font_primary')需开发者根据实际情况替换相应的资源或值

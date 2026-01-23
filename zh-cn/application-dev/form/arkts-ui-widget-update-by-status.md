@@ -41,6 +41,7 @@
     <!-- @[widget_update_by_status_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets) -->
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets
     let storageUpdateByStatus = new LocalStorage();
     
     @Entry(storageUpdateByStatus)
@@ -157,6 +158,7 @@
     <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) -->
     
     ``` TypeScript
+    // entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts
     import { Want } from '@kit.AbilityKit';
     import { preferences } from '@kit.ArkData';
     import { BusinessError } from '@kit.BasicServicesKit';
