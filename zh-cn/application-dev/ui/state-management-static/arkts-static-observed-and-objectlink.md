@@ -399,8 +399,8 @@ this.parent.child.num = 5;
           Child({ count: Array.from(this.propInfoSet)[1] });
     
           // 涉及容器组件Map，编译告警
-          Child({ count: this.propInfoMap.get('字面量') });
-          Child({ count: this.propInfoMap.get('new') });
+          Child({ count: this.propInfoMap.get('字面量') as Info });
+          Child({ count: this.propInfoMap.get('new') as Info });
         }
       }
     }
