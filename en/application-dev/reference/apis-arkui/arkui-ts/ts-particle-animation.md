@@ -680,6 +680,8 @@ Defines the area information of the particle field.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name  | Type  | Read-Only| Optional| Description|
 | ------ | ------ | -- | -- | ---- |
 | shape      | [DisturbanceFieldShape](#disturbancefieldshape12) | No| Yes | Shape of the particle field.<br>Default value: DisturbanceFieldShape.RECT |
@@ -693,6 +695,8 @@ Parameter that describes the information about a particle disturbance field.
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name  | Type  | Read-Only| Optional| Description|
 | ------ | ------ | -- | -- | ---- |
@@ -1735,7 +1739,7 @@ struct ParticleExample {
                 shape: ParticleEmitterShape.RECTANGLE // Emitter shape.
               },
               color: {
-                range: [Color.White, Color.White], // Initial color range
+                range: [Color.White, Color.White], // initial color range
               },
               opacity: {
                 range: [1.0, 1.0],
