@@ -406,8 +406,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
   
     aboutToAppear(): void {
-      // 'common/image/image.png'需要替换为开发者所需的图像资源文件
-      let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+      // 'resources/base/media/image.png'需要替换为开发者所需的图像资源文件
+      let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
       ctx.drawImage(img, 0, 0, 100, 100);
       this.pixelMap = ctx.getPixelMap(0, 0, 150, 150);
     }
@@ -419,8 +419,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           .width(150)
           .height(150)
           .onClick(() => {
-            // 'common/image/image.png'需要替换为开发者所需的图像资源文件
-            let img: ImageBitmap = new ImageBitmap('common/image/image.png');
+            // 'resources/base/media/image.png'需要替换为开发者所需的图像资源文件
+            let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
             ctx.drawImage(img, 0, 0, 100, 100);
             this.pixelMap = ctx.getPixelMap(1, 1, 150, 150);
             this.myNodeController.rebuild();
