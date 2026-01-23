@@ -86,7 +86,7 @@ Enumerates the **TabContent** component states.
 
 ## NavDestinationInfo
 
-Information about the **NavDestination** component.
+Provides information about the **NavDestination** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,12 +150,12 @@ Provides the information contained in **RouterPageInfo**.
 
 | Name                | Type                                                  | Read-Only  | Optional| Description                                          |
 | -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
-| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | No| No  | Context of the router page that invokes the lifecycle callback.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| index                | number                                                  | No  | No  | Position of the router page that invokes the lifecycle callback, in the navigation stack.<br> Value range: [0, +∞)<br> **Atomic service API**: This API can be used in atomic services since API version 12.        |
-| name                 | string                                                  | No  | No  | Name of the page that invokes the lifecycle callback.<br> **Atomic service API**: This API can be used in atomic services since API version 12.          |
-| path                 | string                                                  | No  | No  | Path of the page that invokes the lifecycle callback.<br> **Atomic service API**: This API can be used in atomic services since API version 12.          |
-| state                | [RouterPageState](#routerpagestate)                     | No  | No  | State of the router page that invokes the lifecycle callback.<br> **Atomic service API**: This API can be used in atomic services since API version 12.          |
-| pageId<sup>12+</sup> | string                                                  | No  | No  | Unique ID of the router page that invokes the lifecycle callback.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
+| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | No| No  | Context of the router page that invokes the lifecycle callback.|
+| index                | number                                                  | No  | No  | Position of the router page that invokes the lifecycle callback, in the navigation stack.<br> Value range: [0, +∞)        |
+| name                 | string                                                  | No  | No  | Name of the page that invokes the lifecycle callback.   |
+| path                 | string                                                  | No  | No  | Path of the page that invokes the lifecycle callback.   |
+| state                | [RouterPageState](#routerpagestate)                     | No  | No  | State of the router page that invokes the lifecycle callback.   |
+| pageId<sup>12+</sup> | string                                                  | No  | No  | Unique ID of the router page that invokes the lifecycle callback. |
 
 ## DensityInfo<sup>12+</sup>
 
@@ -285,12 +285,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // Register a listener.
     uiObserver.on('navDestinationUpdate', (info) => {
       console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
   aboutToDisappear() {
+    // Unregister the listener.
     uiObserver.off('navDestinationUpdate');
   }
 
@@ -377,12 +379,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // Register a listener with the specified Navigation component ID.
     uiObserver.on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
       console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
   aboutToDisappear() {
+    // Unregister the listener.
     uiObserver.off('navDestinationUpdate', { navigationId: "testId" });
   }
 
@@ -544,12 +548,14 @@ struct Index {
       Row() {
         Button('UIObserver on')
           .onClick(() => {
+            // Register a listener.
             uiObserver.on('scrollEvent', (info) => {
               console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserver off')
           .onClick(() => {
+            // Unregister the listener.
             uiObserver.off('scrollEvent');
           })
       }
@@ -557,12 +563,14 @@ struct Index {
       Row() {
         Button('UIObserverWithId on')
           .onClick(() => {
+            // Register a listener with the specified component ID.
             uiObserver.on('scrollEvent', this.options, (info) => {
               console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserverWithId off')
           .onClick(() => {
+            // Unregister the listener.
             uiObserver.off('scrollEvent',this.options);
           })
       }
@@ -587,7 +595,7 @@ Subscribes to state changes of the page during routing.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'routerPageUpdate'**, which indicates the state change event of the page during routing.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
 | callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | Yes  | Callback used to return the result. If **pageInfo** is passed, the current page state is returned.                |
 
 **Example**
@@ -641,7 +649,7 @@ Unsubscribes from state changes of the page during routing.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'routerPageUpdate'**, which indicates the state change event of the page during routing.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
 | callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | No  | Target listener to unregister.                |
 
 **Example**
@@ -687,7 +695,7 @@ Listens for screen pixel density changes.
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. Set to **'densityUpdate'** for screen pixel density change events.|
 | context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target page scope.|
-| callback | Callback\<[DensityInfo](#densityinfo12)\>        | Yes  | Callback used to return the result. It provides information about the screen pixel density after the change.                |
+| callback | Callback\<[DensityInfo](#densityinfo12)\>        | Yes  | Callback used to return the result. It provides information about the changed screen pixel density.                |
 
 **Example**
 
@@ -956,7 +964,7 @@ Subscribes to **Navigation** component page switching events.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. Set to **'navDestinationSwitch'** for **Navigation** component page switching events.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switching events.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switching events.|
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the result. It provides page switching event information through **NavDestinationSwitchInfo**.                |
 
 **Example**
@@ -1082,7 +1090,7 @@ Unsubscribes from **Navigation** component page switching events.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. Set to **'navDestinationSwitch'** for **Navigation** component page switching events.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switching events.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switching events.|
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | No  | Target listener to unregister.                |
 
 **Example**
@@ -1104,7 +1112,7 @@ Subscribes to **Navigation** component page switching events. Compared with [uiO
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. Set to **'navDestinationSwitch'** for **Navigation** component page switching events.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switching events.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switching events.|
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | Yes  | Observer configuration options.  |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | Yes  | Callback used to return the result. It provides page switching event information through **NavDestinationSwitchInfo**.                |
 
@@ -1236,7 +1244,7 @@ Unsubscribes from **Navigation** component page switching events. Compared with 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. Set to **'navDestinationSwitch'** for **Navigation** component page switching events.|
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switching events.|
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | Context information, which is used to specify the target scope for page switching events.|
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | Yes  | Observer configuration options.  |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | No  | Target listener to unregister.                |
 
@@ -1275,10 +1283,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // Register a listener.
     uiObserver.on('tabContentUpdate', callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // Unregister the listeners.
     uiObserver.off('tabContentUpdate', callbackFunc);
   }
 
@@ -1363,10 +1373,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // Register a listener with the specified tab ID.
     uiObserver.on('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // Unregister the listeners.
     uiObserver.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 

@@ -167,7 +167,7 @@
    testNapi.registerWatcher();
    ```
 
-8. 编辑工程中的“entry > src > main > ets > pages> Index.ets”文件，添加一个Button控件onClick中实现主线程超时代码，示例代码如下：
+8. 编辑工程中的“entry > src > main > ets > pages> Index.ets”文件，添加一个Button按钮，并在其onClick函数中模拟触发主线程超时场景，示例代码如下：
 
    ```typescript
       Button("timeOut350")
@@ -179,7 +179,7 @@
       })
    ```
 
-9. 点击DevEco Studio界面中的运行按钮，运行应用工程，连续点击两次timeOut350按钮，会触发主线程超时事件。
+9. 点击DevEco Studio界面中的运行按钮，运行应用工程，可以快速点击2~3次timeOut350按钮，以触发主线程超时事件。
 
 ### 验证观察者是否订阅到主线程超时事件
 

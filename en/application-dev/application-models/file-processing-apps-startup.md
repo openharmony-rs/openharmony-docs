@@ -174,7 +174,7 @@ You can call [startAbility](../reference/apis-ability-kit/js-apis-inner-applicat
 
     ```ts
     // xxx.ets
-    import fs from '@ohos.file.fs';
+    import { fileIo } from '@kit.CoreFileKit';
     import { Want, AbilityConstant, UIAbility } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -188,7 +188,7 @@ You can call [startAbility](../reference/apis-ability-kit/js-apis-inner-applicat
             }
             try {
                 // Perform operations on the URI of the file as required. For example, open the URI to obtain the file object in read/write mode.
-                let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+                let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
                 console.info('Succeed to open file.');
             } catch (err) {
                 let error: BusinessError = err as BusinessError;

@@ -47,7 +47,7 @@
 
 2. 实现意图执行器。
 
-    开发标准意图无需开发者自行定义意图的大语言模型描述、意图参数定义和意图执行结果定义，根据"schema"字段和"intentVersion"字段匹配[附录：标准意图接入规范](insight-intent-access-specifications.md)中的标准意图。意图执行器需要从InsightIntentEntryExector\<T>类继承，实现onExecute()方法。
+    开发标准意图无需开发者自行定义意图的大语言模型描述、意图参数定义和意图执行结果定义，根据"schema"字段和"intentVersion"字段匹配[附录：标准意图接入规范](insight-intent-access-specifications.md)中的标准意图。意图执行器需要从InsightIntentEntryExecutor\<T>类继承，实现onExecute()方法。
 
     <!-- @[insight_intent_view_logistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ViewLogisticsImpl.ets) -->
     
@@ -109,7 +109,7 @@
 
 2. 实现意图执行器。
 
-    开发自定义意图需要开发者定义意图的大语言模型描述、意图搜索关键字、意图参数定义和意图执行结果定义。意图执行器需要从InsightIntentEntryExector\<T>类继承，实现onExecute()方法。
+    开发自定义意图需要开发者定义意图的大语言模型描述、意图搜索关键字、意图参数定义和意图执行结果定义。意图执行器需要从InsightIntentEntryExecutor\<T>类继承，实现onExecute()方法。
 
     <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
     

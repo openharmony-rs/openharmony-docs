@@ -6,15 +6,15 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+当前窗口实例，窗口管理器管理的基本单元。
+
+下列API示例中都需先使用[getLastWindow()](arkts-apis-window-f.md#windowgetlastwindow9)、[createWindow()](arkts-apis-window-f.md#windowcreatewindow9)、[findWindow()](arkts-apis-window-f.md#windowfindwindow9)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
-
-当前窗口实例，窗口管理器管理的基本单元。
-
-下列API示例中都需先使用[getLastWindow()](arkts-apis-window-f.md#windowgetlastwindow9)、[createWindow()](arkts-apis-window-f.md#windowcreatewindow9)、[findWindow()](arkts-apis-window-f.md#windowfindwindow9)中的任一方法获取到Window实例（windowClass），再通过此实例调用对应方法。
 
 ## 导入模块
 
@@ -6990,9 +6990,9 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported.       |
 
 **示例：**
 
@@ -7056,8 +7056,8 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
-| 1300003 | This window manager service works abnormally. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported. |
-| 1300004 | Unauthorized operation. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported.       |
 
 **示例：**
 
@@ -8355,7 +8355,7 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. |
 | 1300009 | The parent window is invalid. |
@@ -8405,7 +8405,7 @@ getParentWindow(): Window
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
 | 1300004 | Unauthorized operation. |
 | 1300009 | The parent window is invalid. |
 
@@ -9846,7 +9846,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: TransitionAnimation): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)模式下生效，用于给特定场景下的窗口增加转场动画。
+给特定场景下的窗口增加转场动画。
 
 当前只支持在应用主窗下使用。
 
@@ -9856,7 +9856,7 @@ setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: Tr
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -9930,7 +9930,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAnimation | undefined
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)模式下生效，用于获取特定场景下的窗口转场动画配置。
+获取特定场景下的窗口转场动画配置。
 
 当前只支持在应用主窗下使用。
 
@@ -9940,7 +9940,7 @@ getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAn
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用，在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -10009,6 +10009,8 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名       | 类型                          | 必填 | 说明                           |
@@ -10076,6 +10078,8 @@ getSubWindowZLevel(): number
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 

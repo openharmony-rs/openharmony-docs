@@ -18,12 +18,16 @@
 
 为使用低时延模式，开发者需要使用OHAudio进行音频开发，可参考[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)和[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。设置低时延模式开发示例：
 
+<!-- @[OH_AudioStreamBuilder_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
 ```cpp
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
 应用可以通过[GetLatencyMode](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getlatencymode)查询当前时延模式，开发示例：
+
+<!-- @[Render_CheckLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ```cpp
 OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer *renderer, OH_AudioStream_LatencyMode *latencyMode);

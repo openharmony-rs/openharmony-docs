@@ -1014,7 +1014,7 @@ Obtains the rule for launching an [EmbeddableUIAbility](js-apis-app-ability-embe
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on phones, tablets, and TVs. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

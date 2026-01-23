@@ -16,53 +16,61 @@
 
 开发者在使用OH_AudioWorkgroup的API前，需要先用[OH_AudioManager_GetAudioResourceManager](../../reference/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audiomanager_getaudioresourcemanager)获取OH_AudioResourceManager实例。
 
-  ```cpp
-  #include <ohaudio/native_audio_resource_manager.h>
+<!-- @[GetAudioResourceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-  OH_AudioResourceManager *resMgr;
-  OH_AudioManager_GetAudioResourceManager(&resMgr);
-  ```
+```cpp
+#include <ohaudio/native_audio_resource_manager.h>
+
+OH_AudioResourceManager *resMgr;
+OH_AudioManager_GetAudioResourceManager(&resMgr);
+```
 
 ### 创建音频工作组并将关键线程加入音频工作组
 
 开发者先使用[OH_AudioResourceManager_CreateWorkgroup](../../reference/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audioresourcemanager_createworkgroup)创建一个新的音频工作组，再使用[OH_AudioWorkgroup_AddCurrentThread](../../reference/apis-audio-kit/capi-native-audio-resource-manager-h.md#oh_audioworkgroup_addcurrentthread)将关键线程加入音频工作组。
 
-  ```cpp
-  #include <chrono>
+<!-- @[CreateWorkgroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-  int32_t tokenId;
-  OH_AudioWorkgroup *grp = nullptr;
+```cpp
+#include <chrono>
 
-  OH_AudioResourceManager_CreateWorkgroup(resMgr, "workgroup", &grp);
-  OH_AudioWorkgroup_AddCurrentThread(grp, &tokenId);
-  ```
+int32_t tokenId;
+OH_AudioWorkgroup *grp = nullptr;
+
+OH_AudioResourceManager_CreateWorkgroup(resMgr, "workgroup", &grp);
+OH_AudioWorkgroup_AddCurrentThread(grp, &tokenId);
+```
 
 ### 通知系统音频工作组的开始与结束
 
 当音频工作组开始一个工作周期时，开发者可以通知系统任务的开始时间和预期完成时间。在音频工作组完成当前周期内的工作时，开发者应再次通知系统任务已结束。
 
-  ```cpp
-  constexpr static uint64_t intervalMs = 20;
-  bool threadShouldRun = true;
+<!-- @[OH_AudioWorkgroup_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-  while (threadShouldRun) {
-    auto now = std::chrono::system_clock::now().time_since_epoch();
-    auto startTimeMs = std::chrono::duration_cast<std::chrono::milliseconds>(now).count();
+```cpp
+constexpr static uint64_t intervalMs = 20;
+bool threadShouldRun = true;
 
-    OH_AudioWorkgroup_Start(grp, startTimeMs, startTimeMs + intervalMs);
-    
-    // 应用音频数据处理。
+while (threadShouldRun) {
+  auto now = std::chrono::system_clock::now().time_since_epoch();
+  auto startTimeMs = std::chrono::duration_cast<std::chrono::milliseconds>(now).count();
 
-    OH_AudioWorkgroup_Stop(grp);
-  }
-  ```
+  OH_AudioWorkgroup_Start(grp, startTimeMs, startTimeMs + intervalMs);
+  
+  // 应用音频数据处理。
+
+  OH_AudioWorkgroup_Stop(grp);
+}
+```
 
 ### 工作组任务结束后进行清理
 
-  ```cpp
-  // 当线程已经不需要接入分组时，将其从工作组中移除。
-  OH_AudioWorkgroup_RemoveThread(grp, tokenId);
+<!-- @[OH_AudioWorkgroup_RemoveThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-  OH_AudioResourceManager_ReleaseWorkgroup(resMgr, grp);
-  grp = nullptr;
-  ```
+```cpp
+// 当线程已经不需要接入分组时，将其从工作组中移除。
+OH_AudioWorkgroup_RemoveThread(grp, tokenId);
+
+OH_AudioResourceManager_ReleaseWorkgroup(resMgr, grp);
+grp = nullptr;
+```

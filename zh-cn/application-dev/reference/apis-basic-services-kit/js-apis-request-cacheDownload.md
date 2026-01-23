@@ -3,8 +3,8 @@
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 request部件主要给应用提供上传下载文件、后台传输代理的基础能力。
 
@@ -383,7 +383,7 @@ getDownloadInfo(url: string): DownloadInfo | undefined
     // 在缓存下载完成后，获取缓存下载的信息。
     let downloadInfo = cacheDownload.getDownloadInfo("https://www.example.com");
     if (downloadInfo == undefined) {
-      console.info(`CacheDownload get download info undefined.`);
+      console.error(`CacheDownload get download info undefined.`);
     } else {
       console.info(`CacheDownload get download info : ${JSON.stringify(downloadInfo)}`);
     }
@@ -391,4 +391,3 @@ getDownloadInfo(url: string): DownloadInfo | undefined
     console.error(`Failed to get download info. err code: ${err.code}, err message: ${err.message}`);
   }
   ```
-

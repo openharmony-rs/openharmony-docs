@@ -84,7 +84,7 @@ Media playback applications must request a continuous task of the [AUDIO_PLAYBAC
 
 ### Setting Common Metadata
 
-The application can call **setAVMetadata()** to set AVSession metadata to the system so that the metadata can be displayed in the controller. The metadata includes the IDs of the current media asset (assetId), previous media asset (previousAssetId), and next media asset (nextAssetId), title, author, album, writer, and duration.
+The application can call **setAVMetadata()** to set AVSession metadata to the system so that the metadata can be displayed in the controller. The metadata includes but not limited to the IDs of the current media asset (**assetId**), previous media asset (**previousAssetId**), and next media asset (**nextAssetId**), title, author, album, writer, and duration.
 
 ```ts
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
@@ -181,6 +181,7 @@ struct Index {
 ### Display Tags of Media Assets
 
 The controller displays a special type identifier for long-duration media assets. Currently, only the Audio Vivid identifier is displayed.
+
 The application notifies the system of the display tag of the media asset through the AVMetadata during the access, and the controller displays the tag when the media asset is being played.
 
 ```ts
@@ -227,6 +228,7 @@ struct Index {
 ### Setting General State Information
 
 The application can call [setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10) to set the playback state information to the system so that the information can be displayed in the controller.
+
 Generally, the playback state information includes the playback state, position, speed, buffered time, loop mode, media item being played (activeItemId), custom media data (extras), and whether the media asset is favorited (isFavorite). It changes during the playback.
 
 ```ts
@@ -327,8 +329,7 @@ struct Index {
 }
 ```
 
-The controller calculates the playback progress based on the information set by the application. The application does not need to update the playback progress in real time.
-However, it needs to update the playback state when the following information changes to avid calculation errors:
+The system's playback control center calculates the playback progress automatically based on the information set by the application, and the application does not need to update the playback progress in real time. However, to avoid calculation errors, the application must update AVPlaybackState when the following states change:
 
 - state
 - position
@@ -357,6 +358,7 @@ Certain special processing is required when setting the progress bar.
 ## Registering Control Commands
 
 The application can register different control commands through **on()** to implement control operations in the controller.
+
 For details, see the [API reference](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplay10).
 > **NOTE**
 >
@@ -546,6 +548,7 @@ struct Index {
 For music applications, the controller displays control operations in loop mode by default. Currently, the system supports four fixed [loop modes](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#loopmode10),
 
 namely, shuffle, sequential playback, single loop, and playlist loop. After switching the loop mode as instructed, the application needs to report the new loop mode.
+
 Even if the application does not support the four fixed loop modes, it must report one of them to the system.
 
 Refer to the code snippet below:
@@ -671,6 +674,7 @@ Currently, the system does not provide APIs for proactively sending control noti
 
 Currently, the system does not provide APIs for listening for multimodal key events for applications. If an application needs to listen for media key events from Bluetooth and wired headsets, the application can register control commands with AVSession. AVSession provides the following two methods for implementation:
 - Method 1 (recommended)
+
   Integrate the media controller based on service requirements, [register the required control commands](#registering-control-commands), and implement the corresponding functionalities. AVSession listens for multimodal key events, converts them into AVSession control commands, and sends them to the application. The application does not need to differentiate between various key events. Instead, it processes the key events based on the callback of AVSession. Implementing play and pause functions through this method also adapts to the wear detection of Bluetooth headsets, with play and pause commands received upon wearing or removing both earpieces. Currently, the following AVSession control commands can be converted:
   | Control Command| Description  |
   | ------  | -------------------------|
@@ -737,6 +741,7 @@ struct Index {
 ```
 
 - Method 2
+
   Register the [HandleMediaKeyEvent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10) callback through AVSession. The callback directly forwards the [KeyEvent](../../reference/apis-input-kit/js-apis-keyevent.md). The application is required to identify the type of the key event and implement the corresponding functionalities. Currently, the following key events can be forwarded:
 
   | Key Type ([KeyCode](../../reference/apis-input-kit/js-apis-keycode.md#keycode))| Description  |

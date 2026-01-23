@@ -124,6 +124,8 @@ In effect, the **isStatusBarLightIcon** and **isNavigationBarLightIcon** attribu
 
 **Solution**
 
+Set to keep the screen always on.
+
 Obtain a **Window** instance, and call [setWindowKeepScreenOn](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) to keep the device screen always on.
 
 **Example**
@@ -174,8 +176,8 @@ Use **display.on** to listen for the orientation status changes.
 
 **Solution**
 
-- Abilty-level configuration: Set **EntryAbility** to **orientation** in the **module.json5** file. 
-- Dynamic setting: Use **window.setPreferredOrientation** to set the window orientation.
+1. Ability-level configuration: Set **EntryAbility** to **orientation** in the **module.json5** file. 
+2. Dynamic setting: Use **window.setPreferredOrientation** to set the window orientation.
 
 **Example**
 ```ts
@@ -251,8 +253,7 @@ struct ScreenTest {
 ```
 **References**
 
-[Setting the Window Orientation](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9)
-
+[Setting the Window Orientation](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9) 
 [Subscribing to Display Changes](../reference/apis-arkui/js-apis-display.md#displayonaddremovechange)
 
 ## Why can't a window instance be used to obtain the updated window size in the display.on('change') callback? (API version 10)
@@ -312,7 +313,7 @@ windowClass.on('avoidAreaChange', async (data) => {
 
 **Solution**
 
-For applications locked in landscape orientation, the **foldDisplayModeChange** event is triggered during device folding or unfolding. However, the **rotation** attribute of the Display instance has not been refreshed yet. The width and height retrieved via **getDefaultDisplaySync** correspond to the device's portrait orientation. To address this, you can use the **display.on('change')** API to track display device alterations and subsequently obtain the screen width and height through a Display instance within the callback function.
+For applications locked in landscape orientation, the **foldDisplayModeChange** event is triggered during device folding or unfolding. However, the **rotation** attribute of the Display instance has not been refreshed yet. The width and height retrieved via **getDefaultDisplaySync** correspond to the device's portrait orientation. To address this, you can use the **display.on('change')** API to track display device alterations and subsequently obtain the screen width and height through a **Display** instance within the callback function.
 
 **Example**
 

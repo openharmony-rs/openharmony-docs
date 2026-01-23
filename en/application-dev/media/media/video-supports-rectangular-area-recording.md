@@ -10,7 +10,9 @@
 ## Basic Concepts
 
 Starting from API version 20, you can capture a specified rectangular area of the screen during recording. This feature enhances the existing screen capture capability by allowing you to select a specific area to record. You can define this area by providing a screen capture ID (**displayId**) and the target capture area (**area**).
+
 Before implementing this feature, familiarize yourself with the following concepts:
+
 - Screen capture ID (**displayId**): ID of the screen where rectangular area capture will be performed.
 - Target capture area (**area**): coordinates and dimensions of the region to be captured, including the starting point (x, y) and the width and height of the rectangular area.
 

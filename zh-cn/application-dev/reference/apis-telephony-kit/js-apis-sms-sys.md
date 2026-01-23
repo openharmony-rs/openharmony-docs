@@ -89,7 +89,7 @@ sms.sendMms(context, mmsPars, async(err: BusinessError) =>{
       console.error(`sendMms fail, err : ${JSON.stringify(err)}`);
       return;
   }
-  console.log(`sendMms Success`);
+  console.info(`sendMms Success`);
 })
 ```
 
@@ -126,7 +126,7 @@ class EntryAbility extends UIAbility {
             console.error(`sendMms fail, err : ${JSON.stringify(err)}`);
             return;
         }
-        console.log(`sendMms Success`);
+        console.info(`sendMms Success`);
         })
     }
 }
@@ -201,7 +201,7 @@ let mmsPars: sms.MmsParams = {
 // 调用发送接口
 let promise = sms.sendMms(context, mmsPars);
 promise.then(() => {
-    console.log(`sendMms success`);
+    console.info(`sendMms success`);
 }).catch((err: BusinessError) => {
     console.error(`sendMms failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -237,7 +237,7 @@ class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
     let promise = sms.sendMms(this.context, mmsPars);
     promise.then(() => {
-        console.log(`sendMms success`);
+        console.info(`sendMms success`);
     }).catch((err: BusinessError) => {
         console.error(`sendMms failed, promise: err->${JSON.stringify(err)}`);
     });
@@ -315,7 +315,7 @@ sms.downloadMms(context, mmsPars, async(err: BusinessError) =>{
       console.error(`downloadMms fail, err : ${JSON.stringify(err)}`);
       return;
   }
-  console.log(`downloadMms Success`);
+  console.info(`downloadMms Success`);
 })
 ```
 
@@ -355,7 +355,7 @@ class EntryAbility extends UIAbility {
             console.error(`downloadMms fail, err : ${JSON.stringify(err)}`);
             return;
         }
-        console.log(`downloadMms Success`);
+        console.info(`downloadMms Success`);
         });
     }
 }
@@ -433,7 +433,7 @@ let mmsPars: sms.MmsParams = {
 // 调用发送接口
 let promise = sms.downloadMms(context, mmsPars);
 promise.then(() => {
-    console.log(`downloadMms success`);
+    console.info(`downloadMms success`);
 }).catch((err: BusinessError) => {
     console.error(`downloadMms failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -472,7 +472,7 @@ class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
     let promise = sms.downloadMms(this.context, mmsPars);
     promise.then(() => {
-        console.log(`downloadMms success`);
+        console.info(`downloadMms success`);
     }).catch((err: BusinessError) => {
         console.error(`downloadMms failed, promise: err->${JSON.stringify(err)}`);
     });
@@ -522,7 +522,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.setDefaultSmsSlotId(0, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}.`);
+    console.info(`callback: err->${JSON.stringify(err)}.`);
 });
 ```
 
@@ -573,7 +573,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.setDefaultSmsSlotId(0).then(() => {
-    console.log(`setDefaultSmsSlotId success.`);
+    console.info(`setDefaultSmsSlotId success.`);
 }).catch((err: BusinessError) => {
     console.error(`setDefaultSmsSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -622,7 +622,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let smscAddr: string = '+861xxxxxxxxxx';
 sms.setSmscAddr(slotId, smscAddr, (err: BusinessError) => {
-      console.log(`callback: err->${JSON.stringify(err)}`);
+      console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -675,7 +675,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let smscAddr: string = '+861xxxxxxxxxx';
 sms.setSmscAddr(slotId, smscAddr).then(() => {
-    console.log(`setSmscAddr success.`);
+    console.info(`setSmscAddr success.`);
 }).catch((err: BusinessError) => {
     console.error(`setSmscAddr failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -723,7 +723,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 sms.getSmscAddr(slotId, (err: BusinessError, data: string) => {
-      console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -774,7 +774,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 sms.getSmscAddr(slotId).then((data: string) => {
-    console.log(`getSmscAddr success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSmscAddr success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSmscAddr failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -822,7 +822,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let content: string = "long message";
 sms.splitMessage(content, (err: BusinessError, data: string[]) => {
-      console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -874,7 +874,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let content: string = "long message";
 let promise = sms.splitMessage(content);
 promise.then((data: string[]) => {
-    console.log(`splitMessage success, promise: data->${JSON.stringify(data)}`);
+    console.info(`splitMessage success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`splitMessage failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -926,7 +926,7 @@ let simMessageOptions: sms.SimMessageOptions = {
     status: sms.SimMessageStatus.SIM_MESSAGE_STATUS_READ
 };
 sms.addSimMessage(simMessageOptions, (err: BusinessError) => {
-      console.log(`callback: err->${JSON.stringify(err)}`);
+      console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -982,7 +982,7 @@ let simMessageOptions: sms.SimMessageOptions = {
     status: sms.SimMessageStatus.SIM_MESSAGE_STATUS_READ
 };
 sms.addSimMessage(simMessageOptions).then(() => {
-    console.log(`addSimMessage success.`);
+    console.info(`addSimMessage success.`);
 }).catch((err: BusinessError) => {
     console.error(`addSimMessage failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1031,7 +1031,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let msgIndex: number = 1;
 sms.delSimMessage(slotId, msgIndex, (err: BusinessError) => {
-      console.log(`callback: err->${JSON.stringify(err)}`);
+      console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -1085,7 +1085,7 @@ let slotId: number = 0;
 let msgIndex: number = 1;
 let promise = sms.delSimMessage(slotId, msgIndex);
 promise.then(() => {
-    console.log(`delSimMessage success.`);
+    console.info(`delSimMessage success.`);
 }).catch((err: BusinessError) => {
     console.error(`delSimMessage failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1138,7 +1138,7 @@ let updateSimMessageOptions: sms.UpdateSimMessageOptions = {
     smsc: "test"
 };
 sms.updateSimMessage(updateSimMessageOptions, (err: BusinessError) => {
-      console.log(`callback: err->${JSON.stringify(err)}`);
+      console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -1196,7 +1196,7 @@ let updateSimMessageOptions: sms.UpdateSimMessageOptions = {
 };
 let promise = sms.updateSimMessage(updateSimMessageOptions);
 promise.then(() => {
-    console.log(`updateSimMessage success.`);
+    console.info(`updateSimMessage success.`);
 }).catch((err: BusinessError) => {
     console.error(`updateSimMessage failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1243,7 +1243,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 sms.getAllSimMessages(slotId, (err: BusinessError, data: sms.SimShortMessage[]) => {
-      console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1295,7 +1295,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let promise = sms.getAllSimMessages(slotId);
 promise.then((data: sms.SimShortMessage[]) => {
-    console.log(`getAllSimMessages success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getAllSimMessages success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getAllSimMessages failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1348,7 +1348,7 @@ let cbConfigOptions: sms.CBConfigOptions = {
     ranType: sms.RanType.TYPE_GSM
 };
 sms.setCBConfig(cbConfigOptions, (err: BusinessError) => {
-      console.log(`callback: err->${JSON.stringify(err)}`);
+      console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -1406,7 +1406,7 @@ let cbConfigOptions: sms.CBConfigOptions = {
 };
 let promise = sms.setCBConfig(cbConfigOptions);
 promise.then(() => {
-    console.log(`setCBConfig success.`);
+    console.info(`setCBConfig success.`);
 }).catch((err: BusinessError) => {
     console.error(`setCBConfig failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1452,7 +1452,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 sms.getSmsSegmentsInfo(slotId, "message", false, (err: BusinessError, data: sms.SmsSegmentsInfo) => {
-      console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1503,7 +1503,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let promise = sms.getSmsSegmentsInfo(slotId, "message", false);
 promise.then((data: sms.SmsSegmentsInfo) => {
-    console.log(`getSmsSegmentsInfo success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSmsSegmentsInfo success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSmsSegmentsInfo failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1547,7 +1547,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 sms.isImsSmsSupported(slotId, (err: BusinessError, data: boolean) => {
-      console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1596,7 +1596,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let promise = sms.isImsSmsSupported(slotId);
 promise.then((data: boolean) => {
-    console.log(`isImsSmsSupported success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isImsSmsSupported success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isImsSmsSupported failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1638,7 +1638,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getImsShortMessageFormat((err: BusinessError, data: string) => {
-      console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1677,7 +1677,7 @@ import { sms } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getImsShortMessageFormat().then((data: string) => {
-    console.log(`getImsShortMessageFormat success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getImsShortMessageFormat success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getImsShortMessageFormat failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1721,12 +1721,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let mmsFilePathName: string = "filename";
 sms.decodeMms(mmsFilePathName, (err: BusinessError, data: sms.MmsInformation) => {
-      console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 
 const mmsPdu: Array<number> = [0x8c, 0x80, 0x98, 0x31, 0x00, 0x8d, 0x92, 0x89, 0x09, 0x80, 0x07, 0xea, 0x31, 0x30, 0x30, 0x38, 0x36, 0x00, 0x97, 0x07, 0xea, 0x31, 0x30, 0x30,0x31, 0x30, 0x00, 0x84, 0x74, 0x79, 0x70, 0x65, 0x00, 0x00];
 sms.decodeMms(mmsPdu, (err: BusinessError, data: sms.MmsInformation) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1775,7 +1775,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let mmsFilePathName: string = "filename";
 let promise = sms.decodeMms(mmsFilePathName);
 promise.then((data: sms.MmsInformation) => {
-    console.log(`decodeMms success, promise: data->${JSON.stringify(data)}`);
+    console.info(`decodeMms success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`decodeMms failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1783,7 +1783,7 @@ promise.then((data: sms.MmsInformation) => {
 const mmsPdu: Array<number> = [0x8c, 0x80, 0x98, 0x31, 0x00, 0x8d, 0x92, 0x89, 0x09, 0x80, 0x07, 0xea, 0x31, 0x30, 0x30, 0x38, 0x36, 0x00, 0x97, 0x07, 0xea, 0x31, 0x30, 0x30,0x31, 0x30, 0x00, 0x84, 0x74, 0x79, 0x70, 0x65, 0x00, 0x00];
 let promiseArr = sms.decodeMms(mmsPdu);
 promiseArr.then((data: sms.MmsInformation) => {
-    console.log(`decodeMms success, promise: data->${JSON.stringify(data)}`);
+    console.info(`decodeMms success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`decodeMms failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -1835,7 +1835,7 @@ let mmsInformation: sms.MmsInformation = {
     mmsType: mmsAcknowledgeInd
 };
 sms.encodeMms(mmsInformation, (err: BusinessError, data: number[]) => {
-      console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+      console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -1891,7 +1891,7 @@ let mmsInformation: sms.MmsInformation = {
     mmsType: mmsAcknowledgeInd
 };
 sms.encodeMms(mmsInformation).then((data: number[]) => {
-    console.log(`encodeMms success, promise: data->${JSON.stringify(data)}`);
+    console.info(`encodeMms success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`encodeMms failed, promise: err->${JSON.stringify(err)}`);
 });

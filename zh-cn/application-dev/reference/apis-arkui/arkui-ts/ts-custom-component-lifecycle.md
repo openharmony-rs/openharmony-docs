@@ -29,7 +29,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 
 aboutToAppear?(): void
 
-aboutToAppear函数在创建自定义组件的新实例后，在其build()函数执行前调用。允许在aboutToAppear函数中改变状态变量，更改将在后续执行build()函数中生效。实现[自定义布局](./ts-custom-component-layout.md)的自定义组件的aboutToAppear生命周期在布局过程中触发。
+aboutToAppear函数在创建自定义组件的新实例后，在其build()函数执行前调用。允许在aboutToAppear函数中改变[状态变量](../../../ui/state-management/arkts-state-management-glossary.md#状态变量state-variables)，更改将在后续执行build()函数中生效。实现[自定义布局](./ts-custom-component-layout.md)的自定义组件的aboutToAppear生命周期在布局过程中触发。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。
 
 > **说明：**
 >
@@ -46,7 +46,7 @@ aboutToAppear函数在创建自定义组件的新实例后，在其build()函数
 
 onDidBuild?(): void
 
-onDidBuild函数在自定义组件的build()函数执行后调用，开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
+onDidBuild函数在自定义组件的build()函数执行后调用，开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -56,7 +56,7 @@ onDidBuild函数在自定义组件的build()函数执行后调用，开发者可
 
 aboutToDisappear?(): void
 
-aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。
+aboutToDisappear函数在自定义组件析构销毁时执行。不允许在aboutToDisappear函数中改变状态变量，特别是\@Link变量的修改可能会导致应用程序行为不稳定。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。
 
 > **说明：**
 >
@@ -490,12 +490,12 @@ ThemeControl.setDefaultTheme(BlueColorsTheme);
 @Component
 struct IndexComponent {
   @State textColor: ResourceColor = $r('sys.color.font_primary');
-  @State columBgColor: ResourceColor = $r('sys.color.background_primary');
+  @State columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
+  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columnBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
-    this.columBgColor = theme.colors.backgroundPrimary;
+    this.columnBgColor = theme.colors.backgroundPrimary;
     console.info('IndexComponent onWillApplyTheme');
   }
 
@@ -524,7 +524,7 @@ struct IndexComponent {
       .width('100%')
       .height('25%')
       .borderRadius('10vp')
-      .backgroundColor(this.columBgColor)
+      .backgroundColor(this.columnBgColor)
     }
     .padding('16vp')
     .backgroundColor('#dcdcdc')
@@ -562,12 +562,12 @@ ThemeControl.setDefaultTheme(BlueColorsTheme);
 @ComponentV2
 struct IndexComponent {
   @Local textColor: ResourceColor = $r('sys.color.font_primary');
-  @Local columBgColor: ResourceColor = $r('sys.color.background_primary');
+  @Local columnBgColor: ResourceColor = $r('sys.color.background_primary');
 
-  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
+  // onWillApplyTheme中可获取当前组件上下文的Theme对象。此处在onWillApplyTheme中将状态变量textColor、columnBgColor，赋值为当前使用的Theme对象（BlueColorsTheme）中的配色。
   onWillApplyTheme(theme: Theme) {
     this.textColor = theme.colors.fontPrimary;
-    this.columBgColor = theme.colors.backgroundPrimary;
+    this.columnBgColor = theme.colors.backgroundPrimary;
     console.info('IndexComponent onWillApplyTheme');
   }
 
@@ -596,7 +596,7 @@ struct IndexComponent {
       .width('100%')
       .height('25%')
       .borderRadius('10vp')
-      .backgroundColor(this.columBgColor)
+      .backgroundColor(this.columnBgColor)
     }
     .padding('16vp')
     .backgroundColor('#dcdcdc')

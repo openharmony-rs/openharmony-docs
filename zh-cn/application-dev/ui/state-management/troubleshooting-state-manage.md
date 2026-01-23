@@ -187,7 +187,7 @@ struct Child {
 
   与状态管理V1不同，在状态管理V2观察普通类时，框架不会为其实例创建代理对象，因此无法通过getTarget来判断其是否为代理对象。开发者可以通过以下方式判断：
 
-  - 通过检查要观察的属性是否是[\@Trace](./arkts-track.md)装饰。
+  - 通过检查要观察的属性是否是[\@Trace](./arkts-new-observedV2-and-trace.md)装饰。
   - 观察ArkUI State泳道是否有状态变量变化信息上报，具体使用方法见[状态管理profiler调优能力](../ui-inspector-profiler.md#状态管理profiler调优能力)。
 - 内置类型（Built-in Types）：
 

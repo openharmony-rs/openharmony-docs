@@ -392,7 +392,7 @@ static makeObserved\<T extends object\>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| source | T    | 是   | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。</br>支持Array、Map、Set和Date。</br>支持collection.Array, collection.Set和collection.Map。</br>具体使用规则，详见[makeObserved接口：将非观察数据变为可观察数据](../../ui/state-management/arkts-new-makeObserved.md)。 |
+| source | T    | 是   | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。</br>支持Array、Map、Set和Date。</br>支持collections.Array, collections.Set和collections.Map。</br>具体使用规则，详见[makeObserved接口：将非观察数据变为可观察数据](../../ui/state-management/arkts-new-makeObserved.md)。 |
 
 **返回值：**
 
@@ -823,7 +823,7 @@ class ObservedClass {
   }
 
   constructor() {
-    // 给当前ObservedClass的实例this添加对属性name的监听回调this.onChange，且当前监听回调是同步监听
+    // 给当前ObservedClass的实例this添加对属性age的监听回调this.onChange，且当前监听回调是同步监听
     UIUtils.addMonitor(this, 'age', this.onChange);
   }
 }

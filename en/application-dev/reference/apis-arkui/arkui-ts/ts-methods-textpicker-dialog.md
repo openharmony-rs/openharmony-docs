@@ -28,7 +28,7 @@ Shows a text picker in the given settings.
 
 > **NOTE**
 > 
-> This API is deprecated since API version 18. You are advised to use [showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog) in [UIContext](../arkts-apis-uicontext-uicontext.md) instead.
+> This API is supported since API version 8 and deprecated since API version 18. You are advised to use [showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog) instead. **showTextPickerDialog** can be called only after a [UIContext](../arkts-apis-uicontext-uicontext.md) instance is obtained.
 >
 > Since API version 10, you can use the [showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog) API in [UIContext](../arkts-apis-uicontext-uicontext.md), which ensures that the text picker dialog box is shown in the intended UI instance.
 
@@ -52,7 +52,7 @@ Inherits from [TextPickerOptions](ts-basic-components-textpicker.md#textpickerop
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name| Type| Read-Only| Optional|  Description|
+| Name| Type| Read Only| Optional|  Description|
 | -------- | -------- | -------- |  -------- |  -------- |
 | defaultPickerItemHeight | number \| string | No| Yes| Height of the picker item. For the number type, the value range is [0, +∞). For the string type, only numeric string values, for example, **"56"**, are supported.<br>Default value: 56 vp (selected) and 36 vp (unselected). The set value applies to both selected and unselected items.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | disappearTextStyle<sup>10+</sup> | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | No| Yes| Text color, font size, and font weight of edge items (the second item above or below the selected item).<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -77,11 +77,11 @@ Inherits from [TextPickerOptions](ts-basic-components-textpicker.md#textpickerop
 | onWillAppear<sup>12+</sup> | () => void | No| Yes| Event callback when the dialog box is about to appear.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onAccept/onCancel/onChange/onScrollStop) > onWillDisappear > onDidDisappear.<br>2. You can set the callback event for changing the dialog box display effect in **onWillAppear**. The settings take effect next time the dialog box appears.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onWillDisappear<sup>12+</sup> | () => void | No| Yes| Event callback when the dialog box is about to disappear.<br>**NOTE**<br>1. The normal timing sequence is as follows: onWillAppear > onDidAppear > (onAccept/onCancel/onChange/onScrollStop) > onWillDisappear > onDidDisappear.<br>2. If the user closes the dialog box immediately after it appears, **onWillDisappear** is invoked before **onDidAppear**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | shadow<sup>12+</sup>              | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)| No | Yes | Shadow of the dialog box.<br>Default value on 2-in-1 devices: **ShadowStyle.OUTER_FLOATING_MD** when the dialog box is focused and **ShadowStyle.OUTER_FLOATING_SM** otherwise<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| enableHoverMode<sup>14+</sup>     | boolean | No | Yes | Whether to respond when the device is in semi-folded mode.<br>- **true**: Respond when the device is in semi-folded mode.<br>- **false**: Do not respond when the device is in semi-folded mode.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| enableHoverMode<sup>14+</sup>     | boolean | No | Yes | Whether to respond when the device is in semi-folded mode.<br>- **true**: Respond when the device is in semi-folded mode.<br>- **false**: Do not respond when the device is in semi-folded mode.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No | Yes | Display area of the dialog box when the device is in semi-folded mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | disableTextStyleAnimation<sup>15+</sup>   |  boolean | No | Yes | Whether to disable the animation effect of text style changes during scrolling.<br>- **true**: Disable the animation effect of text style changes.<br>- **false**: Do not disable the animation effect of text style changes.<br>Default value: **false**.<br>**NOTE**<br>When this API is used with **true**, there are no text style changes, including the font size, weight, and color, during scrolling, and all text is displayed in the style set by **defaultTextStyle**. If **defaultTextStyle** is not set, the default style of the [Text](ts-basic-components-text.md) component is used.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | defaultTextStyle<sup>15+</sup>   |  [TextPickerTextStyle](ts-basic-components-textpicker.md#textpickertextstyle15) | No | Yes | Style of the text items when the text style change animation during the scrolling process is disabled. It is effective only when **disableTextStyleAnimation** is **true**.<br>Default value: same as the default value of the [Text](ts-basic-components-text.md) component<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| onEnterSelectedArea<sup>18+</sup>   |  Callback\<[TextPickerResult](#textpickerresult)> | No | Yes |  Represents the callback triggered during the scrolling of the text picker when an item enters the divider area. Compared with the **onChange** event, this event is triggered earlier, specifically when the scroll distance of the current column exceeds half the height of the selected item, which indicates that the item has entered the divider area.<br>**NOTE**<br>In scenarios where the picker contains linked columns, the use of this callback is not recommended. The reason is that it identifies nodes where items enter the divider area during scrolling. However, items that change in response to the scrolling do not themselves scroll. As a result, the callback's return values will only reflect changes for the currently scrolling column, while other non-scrolling columns will remain unchanged.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| onEnterSelectedArea<sup>18+</sup>   |  Callback\<[TextPickerResult](#textpickerresult)> | No | Yes |  Represents the callback triggered during the scrolling of the text picker when an item enters the divider area. Compared to the **onChange** event, this event is triggered earlier, specifically when the scroll distance of the current column exceeds half the height of the selected item, which indicates that the item has entered the divider area.<br>**NOTE**<br>In scenarios where the picker contains linked columns, the use of this callback is not recommended. The reason is that it identifies nodes where items enter the divider area during scrolling. However, items that change in response to the scrolling do not themselves scroll. As a result, the callback's return values will only reflect changes for the currently scrolling column, while other non-scrolling columns will remain unchanged.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | enableHapticFeedback<sup>18+</sup> | boolean | No | Yes | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**NOTE**<br>1. Whether this parameter takes effect after being set to **true** depends on hardware support.<br>2. To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]|
 | selectedBackgroundStyle<sup>20+</sup> | [PickerBackgroundStyle](ts-basic-components-textpicker.md#pickerbackgroundstyle20) | No | Yes | Background color of the selected item.<br>Default value:<br>{ <br>color: $r('sys.color.comp_background_tertiary'),<br>borderRadius: $r('sys.float.corner_radius_level12')<br>}<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>|
 
@@ -95,7 +95,7 @@ Inherits from [TextPickerOptions](ts-basic-components-textpicker.md#textpickerop
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name| Type| Read-Only| Optional|  Description|
+| Name| Type| Read Only| Optional|  Description|
 | -------- | -------- | -------- |  -------- |  -------- |
 | defaultPickerItemHeight | number \| string | No| Yes| Height of the picker item. For the number type, the value range is [0, +∞). For the string type, only numeric string values, for example, **"56"**, are supported.<br>Default value: 56 vp (selected) and 36 vp (unselected). The set value applies to both selected and unselected items.|
 | acceptButtonStyle | [PickerDialogButtonStyle](ts-picker-common.md#pickerdialogbuttonstyle12) | No  | Yes  | Style of the accept button.<br>**NOTE**<br>1. In **acceptButtonStyle** and **cancelButtonStyle**, at most one **primary** field can be set to **true**. If both are set to **true**, the **primary** field will remain at the default value of **false**.<br>2. The default button height is 40 vp and remains fixed even in accessibility and large-font modes. In addition, even if the button style is set to [ROUNDED_RECTANGLE](ts-basic-components-button.md#buttontype), the displayed effect is still a capsule button ([Capsule](ts-basic-components-button.md#buttontype)).|
@@ -121,7 +121,7 @@ Inherits from [TextPickerOptions](ts-basic-components-textpicker.md#textpickerop
 | hoverModeArea       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No | Yes | Display area of the dialog box when the device is in semi-folded mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**|
 | disableTextStyleAnimation   |  boolean | No | Yes |  Whether to disable the animation effect of text style changes during scrolling.<br>- **true**: Disable the animation effect of text style changes.<br>- **false**: Do not disable the animation effect of text style changes.<br>Default value: **false**.<br>**NOTE**<br>When this API is used with **true**, there are no text style changes, including the font size, weight, and color, during scrolling, and all text is displayed in the style set by **defaultTextStyle**. If **defaultTextStyle** is not set, the default style of the [Text](ts-basic-components-text.md) component is used.|
 | defaultTextStyle   |  [TextPickerTextStyle](ts-basic-components-textpicker.md#textpickertextstyle15) | No | Yes |  Style of the text items when the text style change animation during the scrolling process is disabled. It is effective only when **disableTextStyleAnimation** is **true**.<br>Default value: same as the default value of the [Text](ts-basic-components-text.md) component|
-| onEnterSelectedArea   |  [Callback](ts-types.md#callback12)\<[TextPickerResult](#textpickerresult)> | No | Yes |  Represents the callback triggered during the scrolling of the text picker when an item enters the divider area. Compared with the **onChange** event, this event is triggered earlier, specifically when the scroll distance of the current column exceeds half the height of the selected item, which indicates that the item has entered the divider area.<br>**NOTE**<br>In scenarios where the picker contains linked columns, the use of this callback is not recommended. The reason is that it identifies nodes where items enter the divider area during scrolling. However, items that change in response to the scrolling do not themselves scroll. As a result, the callback's return values will only reflect changes for the currently scrolling column, while other non-scrolling columns will remain unchanged.|
+| onEnterSelectedArea   |  [Callback](ts-types.md#callback12)\<[TextPickerResult](#textpickerresult)> | No | Yes |  Represents the callback triggered during the scrolling of the text picker when an item enters the divider area. Compared to the **onChange** event, this event is triggered earlier, specifically when the scroll distance of the current column exceeds half the height of the selected item, which indicates that the item has entered the divider area.<br>**NOTE**<br>In scenarios where the picker contains linked columns, the use of this callback is not recommended. The reason is that it identifies nodes where items enter the divider area during scrolling. However, items that change in response to the scrolling do not themselves scroll. As a result, the callback's return values will only reflect changes for the currently scrolling column, while other non-scrolling columns will remain unchanged.|
 | enableHapticFeedback | boolean | No | Yes | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>**NOTE**<br>1. Whether this parameter takes effect after being set to **true** depends on hardware support.<br>2. To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]|
 | selectedBackgroundStyle | [PickerBackgroundStyle](ts-basic-components-textpicker.md#pickerbackgroundstyle20) | No | Yes | Background color of the selected item.<br>Default value:<br>{ <br>color: $r('sys.color.comp_background_tertiary'),<br>borderRadius: $r('sys.float.corner_radius_level12')<br>}|
 | disappearTextStyle | [TextPickerTextStyle](ts-basic-components-textpicker.md#textpickertextstyle15) | No| Yes| Style of edge items (the second item above or below the selected item), covering the following: text color, font size, font weight, maximum font size, minimum font size, text overflow mode.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>},<br>minFontSize: 0,<br>maxFontSize: 0,<br>overflow: TextOverflow.CLIP<br>} |
@@ -140,7 +140,7 @@ Represents the selection result of a **TextPicker** component.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | value | string \| string []<sup>10+</sup> | No| No| Text of the selected item.<br>**NOTE**<br>When the picker contains text only or both text and imagery, **value** indicates the text value of the selected item. (For a multi-column picker, **value** is of the array type.)<br>For an image list, **value** is empty.<br>The value cannot contain the following escape character: \\|
 | index | number \| number []<sup>10+</sup> | No| No| Index of the selected item in the range. The index is zero-based. (For a multi-column picker, **index** is of the array type.)|
@@ -162,47 +162,47 @@ This example demonstrates how to display a text picker dialog box when a button 
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
-              value: this.v,
+              value: this.selectedValue,
               defaultPickerItemHeight: 40,
               onAccept: (value: TextPickerResult) => {
                 // Set select to the index of the item selected when the OK button is touched. In this way, when the text picker dialog box is displayed again, the selected item is the one last confirmed.
                 this.select = value.index;
                 console.info(this.select + '');
                 // After OK is clicked, the selected item is displayed on the page.
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               },
               onCancel: () => {
-                console.info("TextPickerDialog:onCancel()");
+                console.info('TextPickerDialog:onCancel()');
               },
               onChange: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
               },
               onScrollStop: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onScrollStop()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
               },
               onDidAppear: () => {
-                console.info("TextPickerDialog:onDidAppear()");
+                console.info('TextPickerDialog:onDidAppear()');
               },
               onDidDisappear: () => {
-                console.info("TextPickerDialog:onDidDisappear()");
+                console.info('TextPickerDialog:onDidDisappear()');
               },
               onWillAppear: () => {
-                console.info("TextPickerDialog:onWillAppear()");
+                console.info('TextPickerDialog:onWillAppear()');
               },
               onWillDisappear: () => {
-                console.info("TextPickerDialog:onWillDisappear()");
+                console.info('TextPickerDialog:onWillDisappear()');
               }
             });
           })
@@ -226,12 +226,12 @@ In this example, **disappearTextStyle**, **textStyle**, **selectedTextStyle**, *
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -269,29 +269,29 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // After OK is clicked, the selected item is displayed on the page.
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               },
               onCancel: () => {
-                console.info("TextPickerDialog:onCancel()");
+                console.info('TextPickerDialog:onCancel()');
               },
               onChange: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
               },
               onScrollStop: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onScrollStop()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
               },
               onDidAppear: () => {
-                console.info("TextPickerDialog:onDidAppear()");
+                console.info('TextPickerDialog:onDidAppear()');
               },
               onDidDisappear: () => {
-                console.info("TextPickerDialog:onDidDisappear()");
+                console.info('TextPickerDialog:onDidDisappear()');
               },
               onWillAppear: () => {
-                console.info("TextPickerDialog:onWillAppear()");
+                console.info('TextPickerDialog:onWillAppear()');
               },
               onWillDisappear: () => {
-                console.info("TextPickerDialog:onWillDisappear()");
+                console.info('TextPickerDialog:onWillDisappear()');
               }
             });
           })
@@ -313,12 +313,12 @@ This example demonstrates how to set the layout area of a dialog box when the de
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -332,29 +332,29 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // After OK is clicked, the selected item is displayed on the page.
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               },
               onCancel: () => {
-                console.info("TextPickerDialog:onCancel()");
+                console.info('TextPickerDialog:onCancel()');
               },
               onChange: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onChange()' + JSON.stringify(value));
               },
               onScrollStop: (value: TextPickerResult) => {
-                console.info("TextPickerDialog:onScrollStop()" + JSON.stringify(value));
+                console.info('TextPickerDialog:onScrollStop()' + JSON.stringify(value));
               },
               onDidAppear: () => {
-                console.info("TextPickerDialog:onDidAppear()");
+                console.info('TextPickerDialog:onDidAppear()');
               },
               onDidDisappear: () => {
-                console.info("TextPickerDialog:onDidDisappear()");
+                console.info('TextPickerDialog:onDidDisappear()');
               },
               onWillAppear: () => {
-                console.info("TextPickerDialog:onWillAppear()");
+                console.info('TextPickerDialog:onWillAppear()');
               },
               onWillDisappear: () => {
-                console.info("TextPickerDialog:onWillDisappear()");
+                console.info('TextPickerDialog:onWillDisappear()');
               },
               enableHoverMode: true,
               hoverModeArea: HoverModeAreaType.TOP_SCREEN
@@ -379,12 +379,12 @@ This example demonstrates how to set the position of a dialog box using **alignm
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -397,8 +397,8 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // After OK is clicked, the selected item is displayed on the page.
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -421,12 +421,12 @@ This example demonstrates how to set the mask area using **maskRect**.
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -443,8 +443,8 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // After OK is clicked, the selected item is displayed on the page.
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -467,12 +467,12 @@ This example demonstrates how to set the dialog box background using **backgroun
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -486,8 +486,8 @@ struct TextPickerDialogExample {
                 this.select = value.index;
                 console.info(this.select + '');
                 // After OK is clicked, the selected item is displayed on the page.
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -500,9 +500,9 @@ struct TextPickerDialogExample {
 ![TextPickerDialog](figures/TextPickerDialogDemo6.png)
 
 
-### Example 7: Setting Loop Scrolling
+### Example 7: Setting Cyclic Scrolling
 
-This example demonstrates how to set whether to enable loop scrolling using **canLoop**.
+This example demonstrates how to set whether to enable cyclic scrolling using **canLoop**.
 
 ```ts
 // xxx.ets
@@ -511,26 +511,26 @@ This example demonstrates how to set whether to enable loop scrolling using **ca
 struct TextPickerDialogExample {
   private select: number | number[] = 0;
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
-  @State v: string = '';
+  @State selectedValue: string = '';
 
   build() {
     Row() {
       Column() {
-        Button("TextPickerDialog:" + this.v)
+        Button('TextPickerDialog:' + this.selectedValue)
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
-              value: this.v,
+              value: this.selectedValue,
               canLoop: false,
               onAccept: (value: TextPickerResult) => {
                 // Set select to the index of the item selected when the OK button is touched. In this way, when the text picker dialog box is displayed again, the selected item is the one last confirmed.
                 this.select = value.index;
                 console.info(this.select + '');
                 // After OK is clicked, the selected item is displayed on the page.
-                this.v = value.value as string;
-                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+                this.selectedValue = value.value as string;
+                console.info('TextPickerDialog:onAccept()' + JSON.stringify(value));
               }
             });
           })
@@ -546,6 +546,8 @@ struct TextPickerDialogExample {
 
 This example shows how to set the background style of the selected item by configuring **selectedBackgroundStyle**.
 
+Since API version 20, the **selectedBackgroundStyle** attribute is added for [TextPickerDialogOptions](#textpickerdialogoptions).
+
 ```ts
 // xxx.ets
 @Entry
@@ -555,7 +557,7 @@ struct TextPickerExample {
   build() {
     Column() {
       Row() {
-        Button("TextPickerDialog")
+        Button('TextPickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -567,7 +569,7 @@ struct TextPickerExample {
                   bottomLeft:15,
                   bottomRight:15
                 },
-                color: "FFC3C3C3"
+                color: 'FFC3C3C3'
               }
             })
           })
@@ -577,7 +579,7 @@ struct TextPickerExample {
 }
 ```
 
-
+![TextPickerDialog](figures/TextPickerDialogDemo8.gif)
 
 ### Example 9: Customizing the Background Blur Effect
 
@@ -591,9 +593,10 @@ struct TextPickerExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // Replace $r('app.media.bg') with the image resource file you use.
       Image($r('app.media.bg'))
       Column() {
-        Button("TextPickerDialog")
+        Button('TextPickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
@@ -615,7 +618,6 @@ struct TextPickerExample {
 ```
 
 
-
 ### Example 10: Customizing the Background Effect
 
 This example demonstrates how to customize the background effect by configuring [backgroundEffect](#textpickerdialogoptions). This functionality is supported since API version 19.
@@ -628,9 +630,10 @@ struct TextPickerExample {
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
+      // Replace $r('app.media.bg') with the image resource file you use.
       Image($r('app.media.bg'))
       Column() {
-        Button("TextPickerDialog")
+        Button('TextPickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({

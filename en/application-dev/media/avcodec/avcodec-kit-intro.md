@@ -8,6 +8,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 Audio and Video Codec (AVCodec) Kit provides capabilities such as audio/video encoding and decoding, media file multiplexing and demultiplexing, and media data input.
+
 For performance reasons, AVCodec Kit provides only C APIs.
 
 ## Capability Scope
@@ -24,7 +25,6 @@ For performance reasons, AVCodec Kit provides only C APIs.
 ## Highlights
 
 - Zero copy of internal data: During video decoding, the AVCodec provides an AVBuffer through a callback function. The application writes the sample data to be decoded to the AVBuffer. In this way, data in the AVCodec is directly sent to the decoder, rather than being copied from the memory.
-
 - Hardware acceleration for video codecs: H.264, H.265, and H.265 10-bit hardware codecs are supported.
 
 ## Basic Concepts
@@ -72,6 +72,7 @@ For performance reasons, AVCodec Kit provides only C APIs.
 - File multiplexing and demultiplexing
 
   During file multiplexing, an application sends an AVBuffer to the corresponding codec interface for multiplexing. The AVBuffer can be that output in the preceding encoding process or an AVBuffer created by the application. The AVBuffer must carry valid stream data and related time description.
+  
   During file demultiplexing, the application obtains the AVBuffer that carries stream data from the corresponding codec interface. The AVBuffer can be sent to the decoder for decoding.
 
   The following figure shows the file multiplexing and demultiplexing logic.

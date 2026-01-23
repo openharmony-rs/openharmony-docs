@@ -37,10 +37,10 @@ GridContainer(value?: GridContainerOptions)
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| columns | number \| 'auto' | No| Yes| Total number of columns in the current layout.<br>Default value: **'auto'**|
+| columns | number&nbsp;\|&nbsp;'auto' | No| Yes| Total number of columns in the current layout.<br>Default value: **'auto'**|
 | sizeType | SizeType | No| Yes| Device size type.<br>Default value: **SizeType.Auto**|
-| gutter | number \| string | No| Yes| Gutter of the grid layout. This parameter cannot be set to a percentage.|
-| margin | number \| string | No| Yes| Margin of the grid layout. This parameter cannot be set to a percentage.|
+| gutter | number&nbsp;\|&nbsp;string | No| Yes| Gutter of the grid layout. This parameter cannot be set to a percentage.|
+| margin | number&nbsp;\|&nbsp;string | No| Yes| Margin of the grid layout. This parameter cannot be set to a percentage.|
 
 ## SizeType
 

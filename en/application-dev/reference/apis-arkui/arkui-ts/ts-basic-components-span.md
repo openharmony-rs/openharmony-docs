@@ -61,7 +61,7 @@ Style and color of the text decorative line.
 
 | Name| Type     | Mandatory| Description    |
 | ------ | -------- | ---- | -------------- |
-| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decorative line.<br>Default value:<br>{<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>}<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
+| value  | [DecorationStyleInterface<sup>12+</sup>](ts-universal-styled-string.md#decorationstyleinterface) | Yes  | Style of the text decorative line.<br>Default value:<br>{<br>&nbsp;type:&nbsp;TextDecorationType.None,<br>&nbsp;color:&nbsp;Color.Black,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>}<br>**NOTE**<br>The **style** parameter cannot be used in widgets.|
 
 >  **NOTE**
 >
@@ -85,7 +85,7 @@ Letter spacing. A negative value tightens the spacing; a positive value loosens 
 
 | Name| Type    | Mandatory|  Description  |
 | ------ | ------- | ---- | -------------- |
-| value  | number \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Unit: [fp](ts-pixel-units.md)<br>The Resource type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Unit: [fp](ts-pixel-units.md)<br>The Resource type is supported since API version 20.|
 
 ### textCase
 
@@ -121,7 +121,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value: **'#e6182431'**.<br>Default value on wearable devices: **'#c5ffffff'**.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value: **'e6182431'**.<br>Default value on wearable devices: **'#c5ffffff'**.|
 
 ### fontSize
 
@@ -139,7 +139,7 @@ Sets the font size.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. The default font size is 16 fp. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported. Percentage values are not supported.<br>Default value on wearable devices: **15fp**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font size. If **fontSize** is of the number type, the unit fp is used. The default font size is 16 fp. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported. Percentage values are not supported.<br>Default value on wearable devices: **15fp**.|
 
 ### fontStyle
 
@@ -175,7 +175,7 @@ Sets the font weight. If the value is too large, the text may be clipped dependi
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| [ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings of the number type are supported, for example, **400**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**.<br>Default value: **FontWeight.Normal**<br>The Resource type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings of the number type are supported, for example, **400**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**.<br>Default value: **FontWeight.Normal**<br>The Resource type is supported since API version 20.|
 
 ### fontFamily
 
@@ -193,7 +193,7 @@ Sets the font family.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| [Resource](ts-types.md#resource) | Yes  | Font family.<br>Default font: **'HarmonyOS Sans'**<br>To specify multiple fonts, separate them with commas (,), and fonts are applied in priority order. Example: **'Arial, HarmonyOS Sans'**.|
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Font family.<br>Default font: **'HarmonyOS Sans'**<br>To specify multiple fonts, separate them with commas (,), and fonts are applied in priority order. Example: **'Arial, HarmonyOS Sans'**.|
 
 > **NOTE**
 >
@@ -203,7 +203,7 @@ Sets the font family.
 
 lineHeight(value: Length)
 
-Sets the line height for the text. When using the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
+Sets the line height for the text.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -213,7 +213,7 @@ Sets the line height for the text. When using the string type, numeric string va
 
 | Name| Type   | Mandatory| Description |
 | ------ | ------ | ---- | ---- |
-| value  | [Length](ts-types.md#length) | Yes  | Line height of the text.|
+| value  | [Length](ts-types.md#length) | Yes  | Line height of the text.<br> If the value is of the number type, the unit is fp. When using the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.|
 
 ### font<sup>10+</sup>
 
@@ -245,7 +245,7 @@ Text shadow. It supports input parameters in an array to implement multiple text
 
 | Name| Type| Mandatory| Description|
 | ------ | ----- | ---- | --- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \|  Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)>| Yes  | Text shadow.|
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)>| Yes  | Text shadow.|
 
 ## Events
 

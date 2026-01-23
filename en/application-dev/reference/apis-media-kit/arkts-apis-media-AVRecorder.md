@@ -186,6 +186,7 @@ avRecorder.prepare(avRecorderConfig).then(() => {
 getInputSurface(callback: AsyncCallback\<string>): void
 
 Obtains the surface required for recording. This API uses an asynchronous callback to return the result.
+
 The caller obtains the surface buffer from this surface and fills in the corresponding video data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.
@@ -232,6 +233,7 @@ avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise\<string>
 
 Obtains the surface required for recording. This API uses a promise to return the result.
+
 The caller obtains the surface buffer from this surface and fills in the corresponding video data.
 
 Note that the video data must carry the timestamp (in ns) and buffer size, and the start time of the timestamp must be based on the system startup time.

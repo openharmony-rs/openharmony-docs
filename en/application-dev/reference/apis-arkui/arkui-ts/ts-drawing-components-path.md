@@ -33,11 +33,11 @@ Path(options?: PathOptions)
 
 | Name                                            | Type        | Mandatory| Description                  |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
-| options  | [PathOptions](ts-drawing-components-path.md#pathoptions18) | No  | Options for path drawing.<br>Abnormal values undefined and null are processed as invalid values.|
+| options  | [PathOptions](ts-drawing-components-path.md#pathoptions18) | No  | Options for path drawing.<br>The **undefined** and **null** values are treated as invalid.|
 
 ## PathOptions<sup>18+</sup>
 
-Describes the options for path drawing.
+Describes the drawing attributes of the Path component.
 
 > **NOTE**
 >
@@ -111,7 +111,7 @@ Sets the opacity of the fill area. This attribute can be dynamically set using [
 
 | Name| Type                                                        | Mandatory| Description                          |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>The value range of the number format is [0.0, 1.0]. If the specified value is less than 0.0, the value is 0.0. If the specified value is greater than 1.0, the value is 1.0. Other abnormal values are processed as 1.0.<br>The string format supports the string format of the number format. The value range is the same as that of the number format.<br>The Resource format supports character strings in system resources or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>For the number type, the value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other value is treated as **1.0**.<br>The string format supports the string format of the number format. The value range is the same as that of the number format.<br>The Resource format supports character strings in system resources or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**.|
 
 ### stroke
 
@@ -129,7 +129,7 @@ Sets the stroke color. This attribute can be dynamically set using [attributeMod
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>Abnormal values undefined and null are processed based on the default value, and NaN and Infinity are processed based on Color.Black.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>Invalid values **undefined** and **null** are treated as the default value. The **NaN** and **Infinity** values are treated as **Color.Black**.|
 
 ### strokeDashArray
 
@@ -147,13 +147,13 @@ Sets the stroke dashes. This attribute can be dynamically set using [attributeMo
 
 | Name| Type            | Mandatory| Description                     |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the path outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
+| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the path outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp<br>The **undefined** and **null** values are invalid and treated as the default value.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
 
 ### strokeDashOffset
 
 strokeDashOffset(value: number | string)
 
-Sets the offset of the line drawing start point. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). An invalid value is handled as the default value.
+Sets the offset of the line drawing start point. A positive value shifts the start point to the left. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). An invalid value is handled as the default value.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -165,7 +165,7 @@ Sets the offset of the line drawing start point. This attribute can be dynamical
 
 | Name| Type                      | Mandatory| Description                                |
 | ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number \| string | Yes  | Line dash offset.<br>Default value: **0**<br>Default unit: vp<br>Abnormal values undefined and null are processed based on the default values. NaN and Infinity will cause strokeDashArray to become invalid.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Line dash offset.<br>Default value: **0**<br>Default unit: vp<br>The **undefined** and **null** values are treated as the default value. If set to **NaN** or **Infinity**, **strokeDashArray** has no effect.|
 
 ### strokeLineCap
 
@@ -183,7 +183,7 @@ Sets the style of end points of lines. This attribute can be dynamically set usi
 
 | Name| Type                                             | Mandatory| Description                                            |
 | ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Style of the end points of lines.<br>Default value: **LineCapStyle.Butt**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
+| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### strokeLineJoin
 
@@ -201,7 +201,7 @@ Sets the join style of lines. This attribute can be dynamically set using [attri
 
 | Name| Type                                               | Mandatory| Description                                              |
 | ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of lines.<br>Default value: **LineJoinStyle.Miter**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
+| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of lines.<br>Default value: **LineJoinStyle.Miter**<br>The **undefined**, **null**, **NaN**, and **Infinity** values are invalid and treated as the default value.|
 
 ### strokeMiterLimit
 
@@ -221,13 +221,13 @@ The value must be greater than or equal to 1.0. If the value is in the [0, 1) ra
 
 | Name| Type                      | Mandatory| Description                                          |
 | ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | number \| string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The abnormal values undefined, null, and NaN are processed based on the default values. Infinity causes the stroke failure.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>The **undefined**, **null**, and **NaN** values are treated as the default value. If set to **Infinity**, **stroke** has no effect.|
 
 ### strokeOpacity
 
 strokeOpacity(value: number | string | Resource)
 
-Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range of this attribute is [0.0, 1.0]. If the given value is less than 0.0, the value is 0.0. If the given value is greater than 1.0, the value is 1.0.
+Sets the stroke opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -239,7 +239,7 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 | Name| Type                                                        | Mandatory| Description                      |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: **1**<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: **1**<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
 
 ### strokeWidth
 
@@ -275,7 +275,7 @@ Sets whether to enable anti-aliasing. This attribute can be dynamically set usin
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: Anti-aliasing is enabled. **false**: Anti-aliasing is disabled.<br>Default value: **true**<br>The **undefined** and **null** values are treated as the default value.|
+| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: Anti-aliasing is enabled. **false**: Anti-aliasing is disabled.<br>Default value: **true**<br>The **undefined** and **null** values are invalid and treated as the default value.|
 
 ## SVG Path Syntax
 
@@ -283,10 +283,10 @@ The table below lists the supported SVG path commands.
 
 | Command  | Name                              | Parameter                                      | Description                                      |
 | ---- | -------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| M    | moveto                           | x: x-coordinate of the start point.<br>y: y-coordinate of the start point.                                   | Starts a new subpath at the given (x, y) coordinates. For example, M 0 0 indicates that the (0, 0) point is used as the start point of the new subpath.|
-| L    | lineto                           | x: x-coordinate of the end point of the line.<br>y: y-coordinate of the end point of the line.                                   | Draws a line from the current point to the given (x, y) coordinates. The coordinates become the new current point. For example, L 50 50 indicates that a line is drawn from the current point to (50, 50) and (50, 50) is used as the start point of the new subpath.|
-| H    | horizontal lineto                | x: x-coordinate of the end point of the horizontal line.                                       | Draws a horizontal line to the given X coordinate. Equivalent to an **L** command with the current Y coordinate. For example, if the current point is (100, 100), H 50 indicates that a line is drawn from the current point to (50, 100) and (50, 100) is used as the start point of the new subpath.|
-| V    | vertical lineto                  | y: y-coordinate of the end point of the vertical line.                                       | Draws a vertical line to the given Y coordinate. Equivalent to an **L** command with the current X coordinate. For example, if the current point is (100, 100), V 50 indicates that a line is drawn from the current point to (100, 50) and (100, 50) is used as the start point of the new subpath.|
+| M    | moveto                           | **x**: X-coordinate of the start point.<br>**y**: Y-coordinate of the start point.                                   | Starts a new subpath at the specified point (x, y). This point becomes the new current point.|
+| L    | lineto                           | **x**: X-coordinate of the end point of the line.<br>**y**:Y-coordinate of the end point of the line.                                   | Draws a straight line from the current point to (x, y). This end point becomes the new current point. For example, **L 50 50** draws a line to (50, 50).|
+| H    | horizontal lineto                | **x**: X-coordinate of the end point of the horizontal line.                                       | Draws a horizontal line to the given X coordinate. Equivalent to an **L** command with the current Y coordinate. For example, if the current point is (100, 100), H 50 indicates that a line is drawn from the current point to (50, 100) and (50, 100) is used as the start point of the new subpath.|
+| V    | vertical lineto                  | y: y-coordinate of the end point of the vertical line.                                       | Draws a vertical line to the given Y coordinate. Equivalent to an **L** command with the current X coordinate. For example, given a current point of (100, 100), the command **V 50** draws a vertical line to the point (100, 50) and then sets (100, 50) as the new current point.|
 | C    | curveto                          | x1: x-coordinate of the first control point.<br>y1: y-coordinate of the first control point.<br>x2: x-coordinate of the second control point.<br>y2: y-coordinate of the second control point.<br>x: x-coordinate of the end point.<br>y: y-coordinate of the end point.                       | Uses (x1, y1) as the control point of the curve start point and (x2, y2) as the control point of the curve end point to draw a cubic Bezier curve from the current point to (x, y). For example, C100 100 250 100 250 200 indicates that a cubic Bezier curve is drawn from the current point to (250, 200) and (250, 200) is used as the start point of the new subpath.|
 | S    | smooth curveto                   | x2: x-coordinate of the second control point.<br>y2: y-coordinate of the second control point.<br>x: x-coordinate of the end point.<br>y: y-coordinate of the end point.                             |(x2, y2) is used as the control point of the curve end point to draw a cubic Bezier curve from the current point to (x, y). If the previous command is **C** or **S**, the control point of the curve start point is the mapping of the control point of the curve end point in the previous command relative to the start point. For example, C100 100 250 100 250 200 S400 300 400 200 indicates that the start control point of the second cubic Bezier curve is (250, 300). If there is no previous command or the previous command is not **C** or **S**, the control point of the curve start point coincides with the current point.|
 | Q    | quadratic Belzier curve          | x1: x coordinate of the first control point.<br>y1: y coordinate of the first control point.<br>x: x coordinate of the end point.<br>y: y coordinate of the end point.                             | Uses (x1, y1) as the control point to draw a quadratic Bezier curve from the current point to (x, y). For example, Q400 50 600 300 indicates that a quadratic Bezier curve is drawn from the current point to (600, 300) and (600, 300) is used as the start point of the new subpath.|
@@ -294,7 +294,7 @@ The table below lists the supported SVG path commands.
 | A    | elliptical Arc                   | rx: x-axis radius of the ellipse.<br>ry: y-axis radius of the ellipse.<br>x-axis-rotation: rotation angle of the ellipse relative to the coordinate system.<br>large-arc-flag: indicates whether to draw a large arc (1) or a small arc (0).<br>sweep-flag: indicates whether to draw clockwise (1) or counterclockwise (0).<br>x: x coordinate of the end point.<br>y: y coordinate of the end point.| Draws an ellipse arc from the current point to (x, y). The size and direction of the ellipse are defined by two radii (rx, ry) and x-axis-rotation, indicating how the entire ellipse is rotated relative to the current coordinate system (in degrees). **large-arc-flag** and **sweep-flag** define how the arc is drawn.|
 | Z    | closepath                        | none                                     | Closes the current subpath by connecting the current path back to the initial point of the current subpath.            |
 
-For example, **commands('M0 20 L50 50 L50 100 Z')** defines a triangle that starts from position (0, 20), by drawing a line from point (0, 20) to point (50, 50), then a line from point (50, 50) to point (50, 100), and finally a line from point (50, 100) to point (0, 20).
+For example, the command string **commands('M0 20 L50 50 L50 100 Z')** defines a triangle: It starts at (0, 20), draws a line to (50, 50), then to (50, 100), and finally closes the path back to (0, 20).
 
 ## Example
 

@@ -28,6 +28,7 @@ Starting from API version 22, when you perform screen capture for an application
 ## How to Develop
 
 After an AVScreenCapture instance is created, different APIs can be called to switch the AVScreenCapture to different states and trigger the required behavior.
+
 If an API is called when the AVScreenCapture is not in the given state, the system may throw an exception or generate other undefined behavior. Therefore, you are advised to check the AVScreenCapture state before triggering state transition.
 
 **Linking the Dynamic Libraries in the CMake Script**

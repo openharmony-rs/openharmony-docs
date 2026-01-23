@@ -106,6 +106,8 @@ Invoked on a per-frame basis until the exit animation is complete, with the **pr
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name    | Type                                                        | Read-Only| Optional| Description                                                        |
@@ -149,6 +151,12 @@ Sets the slide-in and slide-out effects for page transitions.
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [SlideEffect](#slideeffect) | Yes  | Slide-in and slide-out effects for page transitions.|
 
+**Return value**
+
+| Type   | Description                     |
+| ------ | ------------------------ |
+| T | Current component. |
+
 ### translate
 
 translate(value: TranslateOptions): T
@@ -164,6 +172,12 @@ Sets the translation effect for page transitions.
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions) | Yes  | Translation effect for page transitions, specifying the start value for entrance and the end value for exit. When this parameter is set together with **slide**, the latter takes effect by default.<br>- **x**: translation distance along the x-axis.<br>- **y**: translation distance along the y-axis.<br>- **z**: translation distance along the y-axis.|
+
+**Return value**
+
+| Type   | Description                     |
+| ------ | ------------------------ |
+| T | Current component. |
 
 ### scale
 
@@ -181,6 +195,12 @@ Sets the scaling effect for page transitions.
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions) | Yes  | Scaling effect for page transitions, specifying the start value for entrance and the end value for exit.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>- **z**: scale factor along the z-axis.<br>- **centerX** and **centerY**: scaling center. The default values are both **"50%"**, meaning the center of the page is used as the scaling center by default.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.|
 
+**Return value**
+
+| Type   | Description                     |
+| ------ | ------------------------ |
+| T | Current component. |
+
 ### opacity
 
 opacity(value: number): T
@@ -196,6 +216,12 @@ Sets the starting opacity value for entrance or the ending opacity value for exi
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | number | Yes  | Starting opacity value for entrance or the ending opacity value for exit.<br>Value range: [0, 1]|
+
+**Return value**
+
+| Type   | Description                     |
+| ------ | ------------------------ |
+| T | Current component. |
 
 ## PageTransitionCallback<sup>18+</sup>
 
@@ -214,6 +240,8 @@ Represents the callback for page transition events.
 
  ## RouteType
 
+Sets the type of page transition.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -226,6 +254,8 @@ Represents the callback for page transition events.
 | None | The page is not redirected. The animation specified by **PageTransitionEnter** takes effect for page entrance, and the animation specified by **PageTransitionExit** takes effect for page exit.|
 
 ## SlideEffect
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

@@ -4018,7 +4018,7 @@ huks Handle结构体。
 > **说明：**
 >
 > - 从API version 8开始支持，从API version 9开始废弃，建议使用[HuksReturnResult<sup>9+</sup>](#huksreturnresult9)替代。
-> - errorCode的具体信息，请参考[错误码文档](errorcode-huks.md)。
+> - errorCode的具体信息，请参考[HUKS错误码](errorcode-huks.md)。
 
 | 名称 | 类型                                | 只读 | 可选 | 说明         |
 | ------ | ----------------------------------- | ---- | ---- | ------------ |

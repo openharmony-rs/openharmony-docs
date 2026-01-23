@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 > **说明：**
 >

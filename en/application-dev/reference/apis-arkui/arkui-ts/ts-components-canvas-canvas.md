@@ -60,7 +60,9 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 ### enableAnalyzer<sup>12+</sup>
 
 Sets whether to enable the AI image analyzer, which supports subject recognition, text recognition, and object lookup. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 For the settings to take effect, this attribute must be used together with [StartImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12) and [StopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12) of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).
+
 This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md#overlay) attribute. If they are set at the same time, the **CustomBuilder** attribute in **overlay** has no effect. This feature depends on device capabilities.
 
 >**NOTE**
@@ -105,7 +107,7 @@ When this event is triggered, the canvas is cleared. The width and height of the
 
 ### Example 1: Using APIs in CanvasRenderingContext2D
 
-This example describes how to use the APIs in **CanvasRenderingContext2D** for drawing on a canvas.
+This example describes how to use the APIs in [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md) for drawing on a canvas.
 
 ```ts
 // xxx.ets
@@ -134,7 +136,7 @@ struct CanvasExample {
 
 ### Example 2: Using APIs in DrawingRenderingContext
 
-This example describes how to use the APIs in **DrawingRenderingContext** for drawing on a canvas.
+This example demonstrates how to use the APIs in [DrawingRenderingContext](./ts-drawingrenderingcontext.md) for drawing on a canvas.
 
 ```ts
 // xxx.ets
@@ -163,7 +165,7 @@ struct CanvasExample {
 
 ### Example 3: Dynamically Setting Attributes and Methods of the Canvas Component Using attributeModifier
 
-This example demonstrates how to dynamically set the **enableAnalyzer** attribute and **onReady** method of the **Canvas** component using **attributeModifier**.
+This example demonstrates how to use [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set the [enableAnalyzer](#enableanalyzer12) attribute and [onReady](#onready) method of the **Canvas** component.
 
 ```ts
 // xxx.ets
