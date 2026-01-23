@@ -132,6 +132,7 @@
 - 调试和性能分析<!--debugging-profiling-->
   - [调试和性能分析概述](debug-performance-profiling-overview.md)
   - [C/C++内存错误检测](debug-asan.md)
+  - <!--RP2--><!--RP2-->
 - 硬件兼容性<!--hardware-compatibility-->
   - [硬件兼容性简介](hw-guide.md)
   - [OpenHarmony ABI](ohos-abi.md)
