@@ -122,6 +122,14 @@ jsonProperty
 
 <!-- @[export_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/export.ts) -->   
 
+``` TypeScript
+// 混淆前
+// export.ts
+export namespace NS {
+  export function foo() { }
+}
+```
+
 <!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
