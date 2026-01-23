@@ -563,11 +563,11 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 | -------- | ---------------------- |
 | 7700102  | Unsupported MIME type. |
 | 7700202  | Unsupported metadata.  |
+| 7700204  | Invalid parameter. Possible causes: 1. The index is negative. 2. The index is greater than or equal to the number of frames in the image.  |
 
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ReadImageMetadata(imageSourceObj : image.ImageSource) {
@@ -620,11 +620,11 @@ writeImageMetadata(imageMetadata: ImageMetadata): Promise\<void>
 | -------- | ---------------------- |
 | 7700102  | Unsupported MIME type. |
 | 7700202  | Unsupported metadata.  |
+| 7700204  | Invalid parameter. Possible causes: The imageSource object is released.  |
 
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function WriteImageMetadata(imageSourceObj : image.ImageSource) {

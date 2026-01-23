@@ -5356,6 +5356,20 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 **Since**: 22
 
+
+## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
+
+Allows a system application to access media sharing resources within the camera framework directory.
+
+**Permission level**：system_basic
+
+**Authorization mode**：system_grant
+
+**Enable via ACL**：true
+
+**Supported devices**：General
+
+**Since**：23
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 Allows an application that has accessed Cloud to manage cloud data.
@@ -5409,5 +5423,49 @@ Allows a system application to access secure access fence capability..
 **Enable via ACL**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablet | tv | car
+
+**Since**: 23
+
+## ohos.permission.ACCESS_MINI_SYSTEM
+ 	 
+Allows a system application to access the runtime capability framework.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 23
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+
+Allows a system application to start the preview panel for adding application widgets to the home screen.
+
+With this permission, the system application can help users add the widgets to distribute to the home screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 20
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
+
+Allows an application to add the WiseCard of other applications.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
 
 **Since**: 23

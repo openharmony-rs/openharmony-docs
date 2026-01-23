@@ -142,7 +142,7 @@ restool -i entry/src/main -j entry/src/main/module.json -p com.ohos.demo -o out 
 
 + Customize the **id_defined.json** file with the following content:
 
-```json
+```json5
 {
     "record" :
     [

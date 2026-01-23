@@ -492,3 +492,45 @@ The certificate does not exist.
 **处理步骤**
 
 检查卸载的证书是否存在。
+
+## 9201009 日志收集任务创建失败
+
+**错误信息**
+
+Collecting logs, please try again later.
+
+**错误描述**
+
+当企业设备管理创建日志收集任务失败时，会产生此错误码。
+
+**可能原因**
+
+当已有一个日志收集任务正在执行时，调用了[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
+
+**处理步骤**
+
+等前一个日志收集任务完成（即收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23)回调）后，再调用[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
+
+## 9201010 以太网网络接口配置失败
+
+**错误信息**
+
+Ethernet configuration failed. Ethernet device not connected.
+
+**错误描述**
+
+以太网配置失败，或以太网设备未连接。
+
+**可能原因**
+
+该错误码表示以太网配置失败，可能原因如下。
+
+1. 网卡未启用。
+2. 网卡名输入错误。
+3. 配置参数错误。
+
+**处理步骤**
+
+1. 检查网卡是否启用。
+2. 检查输入的网卡名是否正确。
+3. 检查配置的参数是否正确。

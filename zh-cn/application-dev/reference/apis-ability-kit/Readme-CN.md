@@ -221,10 +221,10 @@
       - [BundleResourceInfo (系统接口)](js-apis-bundleManager-BundleResourceInfo-sys.md)
       - [BusinessAbilityInfo (系统接口)](js-apis-bundleManager-businessAbilityInfo-sys.md)
       - [dispatchInfo (系统接口)](js-apis-bundleManager-dispatchInfo-sys.md)
-      - [LauncherAbilityResourceInfo (系统接口)](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md)
+      - [LauncherAbilityResourceInfo (系统接口)](js-apis-LauncherAbilityResourceInfo-sys.md)
       - [permissionDef (系统接口)](js-apis-bundleManager-permissionDef-sys.md)
       - [PluginBundleInfo (系统接口)](js-apis-bundleManager-pluginBundleInfo-sys.md)
-      - [recoverableApplicationInfo (系统接口)](js-apis-bundleManager-recoverableApplicationInfo-sys.md)
+      - [recoverableApplicationInfo (系统接口)](js-apis-recoverableApplicationInfo-sys.md)
       - [remoteAbilityInfo (系统接口)](js-apis-bundleManager-remoteAbilityInfo-sys.md)
       - [SharedBundleInfo (系统接口)](js-apis-bundleManager-sharedBundleInfo-sys.md)
       <!--DelEnd-->

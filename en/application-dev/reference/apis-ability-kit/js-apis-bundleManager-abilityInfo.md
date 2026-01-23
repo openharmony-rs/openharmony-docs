@@ -20,7 +20,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 ## AbilityInfo
 
-**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+ **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 | Name                 | Type                                                    | Read-Only| Optional| Description                                     |
 | --------------------- | -------------------------------------------------------- | ---- | ---- | ------------------------------------------ |
@@ -42,7 +42,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | readPermission        | string                                                   | Yes  | No  | Permission required for reading the ability data.<br>**Model restriction**: This API can be used only in the FA model.|
 | writePermission       | string                                                   | Yes  | No  | Permission required for writing data to the ability.<br>**Model restriction**: This API can be used only in the FA model.|
 | uri                   | string                                                   | Yes  | No  | URI of the ability.<br>**Model restriction**: This API can be used only in the FA model.|
-| deviceTypes           | Array\<string>                                           | Yes  | No  | Device types supported by the ability. The value is derived from that of [deviceTypes](../../quick-start/module-configuration-file.md#devicetypes) in the **modudle.json5** file.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| deviceTypes           | Array\<string>                                           | Yes  | No  | Device types supported by the ability. The value is derived from that of [deviceTypes](../../quick-start/module-configuration-file.md#devicetypes) in the **module.json5** file.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | applicationInfo       | [ApplicationInfo](js-apis-bundleManager-applicationInfo.md)     | Yes  | No  | Application information. The information can be obtained by passing in **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_ABILITY**, and **GET_BUNDLE_INFO_WITH_APPLICATION** to the **bundleFlags** parameter of [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | metadata              | Array\<[Metadata](js-apis-bundleManager-metadata.md)>           | Yes  | No  | Metadata of the ability. You can configure the system-defined parameters to use the capabilities provided by the system, for example, [shortcuts](../../quick-start/module-configuration-file.md#shortcuts) and [window metadata configuration](../../windowmanager/window-config-m.md). You can also customize the parameters and call [getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) to obtain the parameters by passing **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_ABILITY**, and **GET_BUNDLE_INFO_WITH_METADATA** to **bundleFlags**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | enabled               | boolean                                                  | Yes  | No  | Whether the ability is available, that is, whether it can be started or queried. **true** if available, **false** otherwise. If the ability is unavailable, you must call [getAbilityInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetabilityinfo20) with **AbilityFlag** set to **GET_ABILITY_INFO_WITH_DISABLE** to query the ability.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -57,9 +57,9 @@ import { bundleManager } from '@kit.AbilityKit';
 
 Describes the window size.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+ <br>**Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+ **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 | Name              | Type   | Read-Only| Optional| Description                              |
 | -------------------| ------- | ---- | ---- | ---------------------------------- |

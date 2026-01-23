@@ -14,18 +14,20 @@
 > 使用方使用集成态HSP时，需要采用使用方的签名文件对集成态HSP重新签名，且需要优先安装重新签名后的集成态HSP。
 
 ## 使用场景
-集团内部有多个应用，多个应用中都有一个相同的动态共享包（应用内HSP）。为了节约开发成本并实现代码和资源的共享，多个应用可以共用一个基建HSP（集成态HSP）。
+
+如果存在多个应用包含相同的基础能力，例如日志打印模块，为节约开发成本并实现代码和资源的共享，多个应用可以共用一个日志模块。此时，可以通过应用内HSP方式提供能力。由于应用内HSP的限制，每个应用在使用前都需要调整其bundleName，并使用当前应用的签名重新签名，构建一个新的HSP提供给当前应用使用。这意味着，每增加一个应用，就需要进行一次调整bundleName和重新签名的操作，导致签名和打包过程繁琐。
+而集成态HSP在DevEco Studio编译过程中，bundleName和重签名的动作会自动完成，开发者无需关注重复签名的操作，可以专注于功能业务的开发。
 
 ## 约束限制
 - 集成态HSP只支持[Stage模型](application-package-structure-stage.md)。
 - 从API version 12开始，支持使用集成态HSP。
-- 使用集成态HSP要求使用标准化的OHMUrl格式。需要在工程级的[build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)中，将useNormalizedOHMUrl字段设置为true。
+- 使用集成态HSP要求使用标准化的OHMUrl格式。需要在工程级的[build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)中，将[strictMode](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section13181758123312)下的useNormalizedOHMUrl字段设置为true。
 
 ## 开发使用说明
 
 ### 配置集成态HSP
 
-1. 集成态HSP-工程配置：配置工程级的build-profile.json5文件，将useNormalizedOHMUrl字段设置为true。
+1. 工程配置：配置工程级的build-profile.json5文件，将useNormalizedOHMUrl字段设置为true。
 
     <!-- @[integrated_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5) -->
     
@@ -55,7 +57,7 @@
     }
     ```
 
-2. 集成态HSP-模块配置：修改模块级构建配置文件[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile)，将integratedHsp配置项设置为true，指定构建的HSP模块为集成态HSP。
+2. 模块配置：修改模块级构建配置文件[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile)，将integratedHsp配置项设置为true，指定构建的HSP模块为集成态HSP。
 
     <!-- @[integrated_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/IntegratedHsp/library/build-profile.json5) -->
     
@@ -78,7 +80,7 @@
     ```
 
 
-3. 集成态HSP-打包配置（tgz包）。
+3. 打包配置（tgz包）。
 
     (1) 配置项目签名信息，详情请参见[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
 

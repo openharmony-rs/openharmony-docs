@@ -4060,7 +4060,6 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let data = rpc.MessageParcel.create();
-  let data = rpc.MessageParcel.create();
   let result = data.getCapacity();
   hilog.info(0x0000, 'testTag', 'capacity is ' + result);
 } catch (error) {
@@ -7483,7 +7482,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
   | 参数名  | 类型                                      | 必填 | 说明                                                                                   |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | number                                    | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageParcel](#messageparceldeprecated) | 是   | 保存待发送数据的MessageParcel对象。                                              |
   | reply   | [MessageParcel](#messageparceldeprecated) | 是   | 接收应答数据的MessageParcel对象。                                                      |
   | options | [MessageOption](#messageoption)           | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -7506,7 +7505,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
   | 参数名  | 类型                                 | 必填 | 说明                                                                                   |
   | ------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                               | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | number                               | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply   | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -7541,7 +7540,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
   | 参数名  | 类型                                      | 必填 | 说明                                                                                   |
   | ------- | ----------------------------------------  | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | number                                    | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageParcel](#messageparceldeprecated) | 是   | 保存待发送数据的MessageParcel对象。                                              |
   | reply   | [MessageParcel](#messageparceldeprecated) | 是   | 接收应答数据的MessageParcel对象。                                                      |
   | options | [MessageOption](#messageoption)           | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -7564,7 +7563,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
   | 参数名   | 类型                                 | 必填 | 说明                                                                                   |
   | -------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code     | number                               | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code     | number                               | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -7594,7 +7593,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| code     | number                                                       | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+| code     | number                                                       | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
 | data     | [MessageParcel](#messageparceldeprecated)                    | 是   | 保存待发送数据的MessageParcel对象。                    |
 | reply    | [MessageParcel](#messageparceldeprecated)                    | 是   | 接收应答数据的MessageParcel对象。                            |
 | options  | [MessageOption](#messageoption)                              | 是   | 本次请求的同异步模式，默认同步调用。                         |
@@ -7786,7 +7785,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
   | 参数名  | 类型                                      | 必填 | 说明                                                                                   |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | number                                    | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageParcel](#messageparceldeprecated) | 是   | 保存待发送数据的MessageParcel对象。                                              |
   | reply   | [MessageParcel](#messageparceldeprecated) | 是   | 接收应答数据的MessageParcel对象。                                                      |
   | options | [MessageOption](#messageoption)           | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -7881,7 +7880,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
   | 参数名  | 类型                                 | 必填 | 说明                                                                                   |
   | ------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                               | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | number                               | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply   | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -7994,7 +7993,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
   | 参数名  | 类型                                      | 必填 | 说明                                                                                   |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | number                                    | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageParcel](#messageparceldeprecated) | 是   | 保存待发送数据的MessageParcel对象。                                              |
   | reply   | [MessageParcel](#messageparceldeprecated) | 是   | 接收应答数据的MessageParcel对象。                                                      |
   | options | [MessageOption](#messageoption)           | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -8097,7 +8096,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
   | 参数名   | 类型                                 | 必填 | 说明                                                                                   |
   | -------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code     | number                               | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code     | number                               | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data     | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply    | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options  | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -8127,7 +8126,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| code     | number                                                       | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+| code     | number                                                       | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
 | data     | [MessageParcel](#messageparceldeprecated)                    | 是   | 保存待发送数据的MessageParcel对象。                    |
 | reply    | [MessageParcel](#messageparceldeprecated)                    | 是   | 接收应答数据的MessageParcel对象。                            |
 | options  | [MessageOption](#messageoption)                              | 是   | 本次请求的同异步模式，默认同步调用。                         |
@@ -9629,7 +9628,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
   | 参数名  | 类型                                      | 必填 | 说明                                                                                   |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | number                                    | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageParcel](#messageparceldeprecated) | 是   | 保存待发送数据的MessageParcel对象。                                              |
   | reply   | [MessageParcel](#messageparceldeprecated) | 是   | 接收应答数据的MessageParcel对象。                                                      |
   | options | [MessageOption](#messageoption)           | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -9689,7 +9688,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
   | 参数名  | 类型                                 | 必填 | 说明                                                                                   |
   | ------- | ------------------------------------ | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                               | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | number                               | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageSequence](#messagesequence9) | 是   | 保存待发送数据的MessageSequence对象。                                            |
   | reply   | [MessageSequence](#messagesequence9) | 是   | 接收应答数据的MessageSequence对象。                                                    |
   | options | [MessageOption](#messageoption)      | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -9770,7 +9769,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
   | 参数名  | 类型                                      | 必填 | 说明                                                                                   |
   | ------- | ----------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-  | code    | number                                    | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+  | code    | number                                    | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
   | data    | [MessageParcel](#messageparceldeprecated) | 是   | 保存待发送数据的MessageParcel对象。                                              |
   | reply   | [MessageParcel](#messageparceldeprecated) | 是   | 接收应答数据的MessageParcel对象。                                                      |
   | options | [MessageOption](#messageoption)           | 是   | 本次请求的同异步模式，默认同步调用。                                                   |
@@ -9840,7 +9839,7 @@ sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, 
 
 | 参数名        | 类型                                                  | 必填 | 说明                                                         |
 | ------------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| code          | number                                                | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+| code          | number                                                | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
 | data          | [MessageSequence](#messagesequence9)                  | 是   | 保存待发送数据的MessageSequence对象。                  |
 | reply         | [MessageSequence](#messagesequence9)                  | 是   | 接收应答数据的MessageSequence对象。                          |
 | options       | [MessageOption](#messageoption)                       | 是   | 本次请求的同异步模式，默认同步调用。                         |
@@ -9870,7 +9869,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 | 参数名        | 类型                                                         | 必填 | 说明                                                         |
 | ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| code          | number                                                       | 是   | 本次请求调用的消息码（1-16777215），由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
+| code          | number                                                       | 是   | 本次请求调用的消息码[1-16777215]，由通信双方确定。如果接口由IDL工具生成，则消息代码由IDL自动生成。 |
 | data          | [MessageParcel](#messageparceldeprecated)                    | 是   | 保存待发送数据的MessageParcel对象。                    |
 | reply         | [MessageParcel](#messageparceldeprecated)                    | 是   | 接收应答数据的MessageParcel对象。                            |
 | options       | [MessageOption](#messageoption)                              | 是   | 本次请求的同异步模式，默认同步调用。                         |
@@ -9988,44 +9987,6 @@ class TestRemoteObject extends rpc.RemoteObject {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
       return false;
     }
-    return true;
-  }
-}
-```
-
-  **同时重载onRemoteMessageRequest和onRemoteRequest方法异步处理请求示例：**
-
-```ts
-import { rpc } from '@kit.IPCKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  onRemoteRequest(code: number, data: rpc.MessageParcel, reply: rpc.MessageParcel, option: rpc.MessageOption): boolean {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteRequest is called');
-      return true;
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-  }
-  // 同时调用仅会执行onRemoteMessageRequest
-  async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): Promise<boolean> {
-    if (code === 1) {
-      hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
-    } else {
-      hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
-      return false;
-    }
-    await new Promise((resolve: (data: rpc.RequestResult) => void) => {
-      setTimeout(resolve, 100);
-    })
     return true;
   }
 }

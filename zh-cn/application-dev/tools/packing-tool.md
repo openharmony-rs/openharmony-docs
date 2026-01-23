@@ -54,7 +54,7 @@
 
 
     ```bash
-    java -jar app_packing_tool.jar --mode hap --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--hnp-path <path>]
+    java -jar app_packing_tool.jar --mode hap --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--hnp-path <path>] [--pkg-sdk-info-path <path>]
     ```
 
 - [FA模型](../../application-dev/application-models/application-models.md#应用模型概况)示例：
@@ -91,6 +91,7 @@
 | --hnp-path | 否 | NA | 指定native软件包文件路径，将native软件包打入HAP包内。 | NA |
 | --exist-src-path | 否 | NA | 指定增量打包时的源HAP包路径，该路径必须指向一个已存在的、有效的.hap文件。当--lib-path-retain配置为true时，打包工具会直接拷贝源HAP包中的libs目录，不再打包--lib-path指定的libs目录，该特性称为增量打包。当--lib-path-retain配置为false时，正常打包--lib-path指定的libs目录，该参数无效。当libs目录中so文件压缩耗时比较久时，使用增量打包可以提升打包速度。<br/>从API version 22开始支持该参数。 | 仅Stage模型生效。|
 | --lib-path-retain | 否 | boolean | 是否对libs目录做增量打包。为true时表示对libs目录做增量打包，直接拷贝--exist-src-path指向的源HAP中的libs目录，不再打包--lib-path指定的libs目录；为false时表示不做增量打包，打包--lib-path指向的目录。默认值为false。此参数必须与--exist-src-path配套使用，单独设置不生效。<br/>从API version 22开始支持该参数。 | 仅Stage模型生效。|
+| --pkg-sdk-info-path | 否         | NA            | pkgSdkInfo.json（构建产物中依赖的HAR的基本信息，包括模块名和版本）文件路径，文件名必须为pkgSdkInfo.json。<br/>从API version 23开始支持该参数。     | 仅Stage模型生效。  |
 
 ## HSP打包指令
 
@@ -102,7 +103,7 @@ HSP包实现了多个HAP对文件的共享，开发者可以使用打包工具�
 
 示例：
 ```bash
-java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>]
+java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--pkg-sdk-info-path <path>]
 ```
 
 **表3** HSP打包指令参数说明
@@ -125,6 +126,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | --pkg-context-path      | 否         | NA            | 可指定语境信息表文件路径，文件名必须为pkgContextInfo.json。当app.json5配置文件中bundleType取值不是appPlugin，且module.json5配置文件中requestPermissions取值包含"ohos.permission.kernel.SUPPORT_PLUGIN"时，该参数必填。 |
 | --exist-src-path | 否 | NA | 指定增量打包时的源HSP包路径，该路径必须指向一个已存在的、有效的.hsp文件。当--lib-path-retain配置为true时，打包工具会直接拷贝源HSP包中的libs目录，不再打包--lib-path指定的libs目录，该特性称为增量打包。当--lib-path-retain配置为false时，正常打包--lib-path指定的libs目录，该参数无效。当libs目录中so文件压缩耗时比较久时，使用增量打包可以提升打包速度。<br/>从API version 22开始支持该参数。 |
 | --lib-path-retain | 否 | boolean | 是否对libs目录做增量打包。为true时表示对libs目录做增量打包，直接拷贝--exist-src-path指向的源HSP中的libs目录，不再打包--lib-path指定的libs目录；为false时表示不做增量打包，打包--lib-path指向的目录。默认值为false。此参数必须与--exist-src-path配套使用，单独设置不生效。<br/>从API version 22开始支持该参数。|
+| --pkg-sdk-info-path | 否         | NA            | pkgSdkInfo.json（构建产物中依赖的HAR的基本信息，包括模块名和版本）文件路径，文件名必须为pkgSdkInfo.json。<br/>从API version 23开始支持该参数。     |
 
 ## App打包指令
 
@@ -148,7 +150,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 >
 > - module.json文件为DevEco Studio编译构建产物，其中的字段与配置文件的对应关系，请参考[表1 module.json与配置文件属性的对照表](packing-tool.md)。
 
-**打包App时的压缩规则：** 打包App时，对release模式的HAP、HSP包会进行压缩，对debug模式的HAP、HSP包不会压缩。
+**打包APP时的压缩规则：** 打包APP时，对release模式的HAP、HSP包会进行压缩，对debug模式的HAP、HSP包不会压缩。
 
 > **说明：** 
 > 
@@ -2167,6 +2169,7 @@ Compress file exception.
 **处理步骤**
 
 根据日志中“Error Message:”，确认异常信息。
+
 检查系统日志，确保文件系统和磁盘正常。
 
 ### 10014009 删除文件失败
@@ -2185,6 +2188,7 @@ File delete failed.
 **处理步骤**
 
 根据日志中“Error Message:”信息确认文件路径。
+
 确保文件当前不被其它进程占用，手动删除文件。
 
 ### 10015001 文件I/O异常
@@ -2337,6 +2341,7 @@ Check packageName invalid.
 **处理步骤**
 
 根据日志中“Error Message:”信息，确认存在问题的HAP或HSP。
+
 检查参与打包的HAP或HSP的module.json文件，确保module/package标签值不相同或者module/deviceType属性值集合不相交或者module/metadata/resource/distributionFilter属性值集合不相交。
 
 ### 10016006 检查HAP包无效
@@ -2593,14 +2598,14 @@ Normalize HSP bundleName and versionCode failed.
 
 **可能原因**
 
-1. HSP包的moduel.json文件不包含app标签。
+1. HSP包的module.json文件不包含app标签。
 2. HSP包的pack.info文件不包含summary标签。
 3. HSP包的pack.info文件不包含summary/app标签。
 4. HSP包的pack.info文件不包含summary/version标签。
 
 **处理步骤**
 
-1. 检查HSP包的moduel.json文件，确保包含app标签。
+1. 检查HSP包的module.json文件，确保包含app标签。
 2. 检查HSP包的pack.info文件，确保包含summary标签。
 3. 检查HSP包的pack.info文件，确保包含summary/app标签。
 4. 检查HSP包的pack.info文件，确保包含summary/version标签。
@@ -2727,6 +2732,7 @@ Add archive entry failed.
 **处理步骤**
 
 仅作告警提示，无需处理。
+
 根据“Error Message:”信息获取待打包空文件目录，确认该空文件符合打包预期。
 
 ### 10018005 打包libs目录异常

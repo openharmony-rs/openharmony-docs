@@ -1488,7 +1488,7 @@ Obtains the status information about a page by its index.
 
 | Name    | Type                             | Mandatory  | Description        |
 | ------- | ------------------------------- | ---- | ---------- |
-| index    | number | Yes  | Index of the target page.<br> Value range: [0, +∞)|
+| index    | number | Yes  | Index of the target page.<br> Value range: [1, +∞).|
 
 **Return value**
 

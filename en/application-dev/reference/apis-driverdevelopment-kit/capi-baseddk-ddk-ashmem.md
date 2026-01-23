@@ -16,7 +16,7 @@ Device memory map created by calling **OH_DDK_CreateAshmem**. A buffer using the
 
 **Since**: 12
 
-**Related module**: [BaseDdk](capi-baseddk.md)
+**Related module**: [Ddk](capi-baseddk.md)
 
 **Header file:** [ddk_types.h](capi-ddk-types-h.md)
 

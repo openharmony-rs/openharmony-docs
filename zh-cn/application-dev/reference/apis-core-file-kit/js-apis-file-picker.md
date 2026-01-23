@@ -140,7 +140,7 @@ struct Index {
 
 select(option?: DocumentSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。接口采用Promise异步返回形式，传入可选参数DocumentSelectOptions对象，返回选择文件的URI数组。
+通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。使用Promise异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -184,7 +184,7 @@ async function example07(context: common.UIAbilityContext) { // 需确保 contex
 
 select(option: DocumentSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。接口采用callback异步返回形式，传入参数DocumentSelectOptions对象，返回选择文件的URI数组。
+通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。使用callback异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -225,7 +225,7 @@ async function example08(context: common.UIAbilityContext) { // 需确保 contex
 
 select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。接口采用callback异步返回形式，返回选择文件的URI数组。
+通过选择模式拉起documentPicker界面，用户可以选择一个或多个文件。使用callback异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -264,7 +264,7 @@ async function example09(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option?: DocumentSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。接口采用Promise异步返回形式，传入可选参数DocumentSaveOptions对象，返回保存文件的URI数组。
+通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。使用Promise异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -309,7 +309,7 @@ async function example10(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option: DocumentSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。接口采用callback异步返回形式，传入参数DocumentSaveOptions对象，返回保存文件的URI数组。
+通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。使用callback异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -351,7 +351,7 @@ async function example11(context: common.UIAbilityContext) { // 需确保 contex
 
 save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。接口采用callback异步返回形式，返回保存文件的URI数组。
+通过保存模式拉起documentPicker界面，用户可以保存一个或多个文件。使用callback异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -509,7 +509,7 @@ let audioPicker = new picker.AudioViewPicker(); // 不推荐使用无参构造�
 
 select(option?: AudioSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。接口采用Promise异步返回形式，传入可选参数AudioSelectOptions对象，返回选择音频文件的URI数组。
+通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。使用Promise异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -553,7 +553,7 @@ async function example13(context: common.UIAbilityContext) { // 需确保 contex
 
 select(option: AudioSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。接口采用callback异步返回形式，传入参数AudioSelectOptions对象，返回选择音频文件的URI数组。
+通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -592,7 +592,7 @@ async function example14(context: common.UIAbilityContext) { // 需确保 contex
 
 select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。接口采用callback异步返回形式，返回选择音频文件的URI数组。
+通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。使用callback异步回调。
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
 **参数：**
@@ -628,7 +628,7 @@ async function example15(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option?: AudioSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
-通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。接口采用Promise异步返回形式，传入可选参数AudioSaveOptions对象，返回保存音频文件的URI数组。
+通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用Promise异步回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -673,7 +673,7 @@ async function example16(context: common.UIAbilityContext) { // 需确保 contex
 
 save(option: AudioSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。接口采用callback异步返回形式，传入参数AudioSaveOptions对象，返回保存音频文件的URI数组。
+通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -713,7 +713,7 @@ async function example17(context: common.UIAbilityContext) { // 需确保 contex
 
 save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。接口采用callback异步返回形式，返回保存音频文件的URI数组。
+通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
@@ -951,7 +951,7 @@ select(option?: PhotoSelectOptions): Promise&lt;PhotoSelectResult&gt;
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| Promise&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt; | Promise对象。返回photoPicker选择后的结果集。 <br>**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
+| Promise&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt; | Promise对象。返回photoPicker选择后的结果集。 <br>**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用接口[photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件URI介绍中的[媒体文件URI的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
 
 **示例：**
 
@@ -996,7 +996,7 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | option | [PhotoSelectOptions](#photoselectoptionsdeprecated) | 是   | photoPicker选择选项。 |
-| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | 是   | callback 返回photoPicker选择后的结果集。<br>**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
+| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | 是   | callback返回photoPicker选择后的结果集。<br>**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用接口[photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件URI介绍中的[媒体文件URI的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
 
 **示例：**
 
@@ -1042,7 +1042,7 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | 是   | callback 返回photoPicker选择后的结果集。<br>**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
+| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | 是   | callback返回photoPicker选择后的结果集。<br>**注意**：此接口返回的PhotoSelectResult对象中的photoUris只能通过临时授权的方式调用接口[photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件URI介绍中的[媒体文件URI的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。 |
 
 **示例：**
 
@@ -1248,7 +1248,7 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| photoUris        | Array&lt;string&gt;    | 否 | 否  | 返回图库选择后的媒体文件的uri数组。此uri数组只能通过临时授权的方式调用[photoAccessHelper.getAssets接口](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
+| photoUris        | Array&lt;string&gt;    | 否 | 否  | 返回图库选择后的媒体文件的URI数组。此URI数组只能通过临时授权的方式调用接口[photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件URI介绍中的[媒体文件URI的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
 | isOriginalPhoto        | boolean   | 否  | 否   | 返回图库选择后的媒体文件是否为原图。true为原图；false不是原图。<br>**说明**：从API version 9开始支持，从API version 18开始废弃。  |
 
 ## PhotoSaveOptions<sup>(deprecated)</sup>

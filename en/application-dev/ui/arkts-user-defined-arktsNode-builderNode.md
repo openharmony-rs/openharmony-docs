@@ -305,7 +305,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
     }
   }
   ```
-
+  
   ![en-us_image_update_BuilderNode](figures/en-us_image_update_BuilderNode.gif)
 
 ## Canceling the Reference to the Entity Node

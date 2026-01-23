@@ -23,8 +23,7 @@ Text可通过以下两种方式来创建：
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
   
   ``` TypeScript
-  // 请将$r('app.string.CreateText_Text_new')替换为实际资源文件，在本示例中该资源文件的value值为"我是一段文本"
-  Text($r('app.string.CreateText_Text_new'))
+  Text('我是一段文本')
   ```
 
 
@@ -217,7 +216,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 | textIndent | 设置首行文本缩进。 |
 | textOverflow | 控制文本超长处理方式。 |
 | textSelectable | 设置文本是否可选择。 |
-| textVerticalAlign | 设置文本在垂直方向的对齐方式。 |
+| textVerticalAlign | 设置文本段落在垂直方向的对齐方式。 |
 | wordBreak | 设置断行规则。 |
 
 下面对常用的接口进行举例说明。
@@ -837,12 +836,14 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
         onAppear: () => {
           // 请将$r('app.string.SelectMenu_Text_Ejected')替换为实际资源文件，在本示例中该资源文件的value值为"自定义选择菜单弹出时触发该回调"
           hilog.info(0x0000, 'Sample_TextComponent',
-            resource.resourceToString($r('app.string.SelectMenu_Text_Ejected')));
+            this.getUIContext()
+              .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Ejected').id));
         },
         onDisappear: () => {
           // 'SelectMenu_Text_Close'资源文件中的value值为'自定义选择菜单关闭时触发该回调'
           hilog.info(0x0000, 'Sample_TextComponent',
-            resource.resourceToString($r('app.string.SelectMenu_Text_Close')));
+            this.getUIContext()
+              .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Close').id));
         }
       })
     ```
@@ -910,20 +911,24 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
       if (menuItem.id.equals(TextMenuItemId.of('customMenu2'))) {
         // 请将$r('app.string.SelectMenu_Text_customMenu')替换为实际资源文件，在本示例中该资源文件的value值为"拦截 id: customMenu2 start:"
         hilog.info(0x0000, 'Sample_TextComponent',
-          resource.resourceToString($r('app.string.SelectMenu_Text_customMenu')) + textRange.start + '; end:' +
+          this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_customMenu')
+            .id) + textRange.start + '; end:' +
           textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.COPY)) {
         // 请将$r('app.string.SelectMenu_Text_copy')替换为实际资源文件，在本示例中该资源文件的value值为"拦截 COPY start:"
         hilog.info(0x0000, 'Sample_TextComponent',
-          resource.resourceToString($r('app.string.SelectMenu_Text_copy')) + textRange.start + '; end:' + textRange.end);
+          this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_copy').id) +
+          textRange.start + '; end:' + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
         // 请将$r('app.string.SelectMenu_Text_SelectionAll')替换为实际资源文件，在本示例中该资源文件的value值为"不拦截 SELECT_ALL start:"
         hilog.info(0x0000, 'Sample_TextComponent',
-          resource.resourceToString($r('app.string.SelectMenu_Text_SelectionAll')) + textRange.start + '; end:' +
+          this.getUIContext()
+            .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_SelectionAll').id) +
+          textRange.start + '; end:' +
           textRange.end);
         return false;
       }
@@ -981,6 +986,143 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
       }
     }
     ```
+
+### 屏蔽系统菜单回调和自定义扩展菜单
+
+从API version 12开始，支持通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)屏蔽系统菜单回调和自定义扩展菜单项。 
+
+  <!-- @[Custom_Block_Menus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomAndBlockMenus.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  export struct CustomAndBlockMenus {
+    private static readonly CREATE_MENU_ITEM_ID_1: string = 'create1';
+    private static readonly CREATE_MENU_ITEM_ID_2: string = 'create2';
+    private static readonly PREPARE_MENU_ITEM_ID: string = 'prepare1';
+    @State private text: string = 'Text editMenuOptions';
+    @State private endIndex: number = 0;
+    @State blockCallbackText: string = '';
+  
+    // 创建菜单项辅助方法
+    private createMenuItem(id: string, content: string): TextMenuItem {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+      return {
+        content: content,
+        icon: $r('app.media.startIcon'),
+        id: TextMenuItemId.of(id)
+      };
+    }
+  
+    // 查找菜单项索引
+    private findMenuItemIndex(menuItems: Array<TextMenuItem>, menuItemId: TextMenuItemId): number {
+      return menuItems.findIndex((item: TextMenuItem) => item.id.equals(menuItemId));
+    }
+  
+    // 创建菜单回调
+    private onCreateMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      const createItem1: TextMenuItem = this.createMenuItem(
+        CustomAndBlockMenus.CREATE_MENU_ITEM_ID_1,
+        'create1'
+      );
+  
+      const createItem2: TextMenuItem = this.createMenuItem(
+        CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2,
+        'create2'
+      );
+  
+      // 添加自定义菜单项
+      menuItems.push(createItem1);
+      menuItems.unshift(createItem2);
+  
+      // 移除不需要的系统菜单项
+      this.removeMenuItemById(menuItems, TextMenuItemId.AI_WRITER);
+      this.removeMenuItemById(menuItems, TextMenuItemId.TRANSLATE);
+  
+      return menuItems;
+    }
+  
+    // 移除指定菜单项
+    private removeMenuItemById(menuItems: Array<TextMenuItem>, menuItemId: TextMenuItemId): void {
+      const targetIndex: number = this.findMenuItemIndex(menuItems, menuItemId);
+      if (targetIndex !== -1) {
+        menuItems.splice(targetIndex, 1);
+      }
+    }
+  
+    // 菜单项点击回调
+    private onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange): boolean => {
+      const menuItemId: TextMenuItemId = menuItem.id;
+  
+      // 处理自定义菜单项
+      if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2))) {
+        let msg = '拦截 id: create2 start:' + textRange.start + '; end:' + textRange.end;
+        this.blockCallbackText = msg
+        return true;
+      }
+  
+      if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.PREPARE_MENU_ITEM_ID))) {
+        let msg = '拦截 id: prepare1 start:' + textRange.start + '; end:+' + textRange.end;
+        this.blockCallbackText = msg
+        return true;
+      }
+  
+      // 处理系统菜单项
+      if (menuItemId.equals(TextMenuItemId.COPY)) {
+        let msg = '拦截 COPY start:' + textRange.start + '; end:' + textRange.end;
+        this.blockCallbackText = msg
+        return true;
+      }
+  
+      if (menuItemId.equals(TextMenuItemId.SELECT_ALL)) {
+        let msg = '不拦截 SELECT_ALL start:' + textRange.start + '; end:' + textRange.end;
+        this.blockCallbackText = msg
+        return false;
+      }
+  
+      return false;
+    }
+    // 准备菜单回调
+    private onPrepareMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      const prepareItem: TextMenuItem = this.createMenuItem(
+        CustomAndBlockMenus.PREPARE_MENU_ITEM_ID,
+        `prepare1_${this.endIndex}`
+      );
+  
+      menuItems.unshift(prepareItem);
+      return menuItems;
+    }
+    // 编辑菜单选项
+    @State private editMenuOptions: EditMenuOptions = {
+      onCreateMenu: this.onCreateMenu,
+      onMenuItemClick: this.onMenuItemClick,
+      onPrepareMenu: this.onPrepareMenu
+    };
+    // 文本选择变化回调
+    private onTextSelectionChange = (selectionStart: number, selectionEnd: number): void => {
+      this.endIndex = selectionEnd;
+    }
+  
+    build() {
+      NavDestination() {
+        Column() {
+          Text(this.text)
+            .fontSize(20)
+            .copyOption(CopyOptions.LocalDevice)
+            .editMenuOptions(this.editMenuOptions)
+            .margin({ top: 100 })
+            .onTextSelectionChange(this.onTextSelectionChange)
+          Text(this.blockCallbackText).borderWidth(1)
+        }
+        .width('90%')
+        .margin('5%')
+      }
+    }
+  }
+  ```
+
+  ![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)
 
 ### 屏蔽系统服务类菜单
 
@@ -1213,7 +1355,7 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 
 ## 实现热搜榜
 
-该示例通过maxLines、textOverflow、textAlign、constraintSize属性展示了热搜榜的效果。
+该示例通过[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)、[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)、[textAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textalign)、[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)属性展示了热搜榜的效果。
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
   

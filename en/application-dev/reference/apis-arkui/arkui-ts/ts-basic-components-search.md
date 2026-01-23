@@ -134,7 +134,7 @@ The default font size on wearable devices is 18 fp.
 
 textAlign(value: TextAlign)
 
-Sets the text alignment mode in the search text box. Currently, the following alignment modes are supported: **TextAlign.Start**, **TextAlign.Center**, and **TextAlign.End**. **TextAlign.JUSTIFY** behaves the same as **TextAlign.Start**.
+Sets the text alignment mode in the search text box. Currently, the following alignment modes are supported: TextAlign.Start, TextAlign.Center, TextAlign.End, TextAlign.LEFT and TextAlign.RIGHT. **TextAlign.JUSTIFY** behaves the same as **TextAlign.Start**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -218,7 +218,7 @@ The default icon size on wearable devices is 18 fp.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CancelButtonOptions](#cancelbuttonoptions12) \| [CancelButtonSymbolOptions](#cancelbuttonsymboloptions12) | Yes  | Style of the Cancel button on the right.<br>Default value:<br>{<br>style: CancelButtonStyle.INPUT,<br>icon: {<br>size: '16vp',<br>color: '#99ffffff',<br>src: ' '<br>}<br>}<br>When **style** is set to **CancelButtonStyle.CONSTANT**, the Cancel button is always displayed.|
+| value  | [CancelButtonOptions](#cancelbuttonoptions12) \| [CancelButtonSymbolOptions](#cancelbuttonsymboloptions12) | Yes  | Style of the Cancel button on the right.<br>Default value:<br>{<br>style: CancelButtonStyle.INPUT,<br>icon:&nbsp;{<br>size: '16vp',<br>color: '#99ffffff',<br>src: ' '<br>}<br>}<br>When **style** is set to **CancelButtonStyle.CONSTANT**, the Cancel button is always displayed.|
 
 ### fontColor<sup>10+</sup>
 
@@ -406,7 +406,7 @@ Sets the text line height. If the value is less than or equal to **0**, the line
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Text line height.|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Text line height.|
 
 >  **NOTE**
 >  
@@ -426,7 +426,7 @@ Sets the color, type, and style of the text decorative line.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12) | Yes  | Text decorative line options.<br>Default value: {<br> type: TextDecorationType.None,<br> color: Color.Black,<br> style: TextDecorationStyle.SOLID <br>} |
+| value  | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12) | Yes  | Text decorative line options.<br>Default value: {<br>&nbsp;type:&nbsp;TextDecorationType.None,<br>&nbsp;color:&nbsp;Color.Black,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>} |
 
 >  **NOTE**
 >
@@ -452,7 +452,7 @@ This setting applies to every character, including those at line endings.
 
 | Name| Type                      | Mandatory| Description          |
 | ------ | -------------------------- | ---- | -------------- |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Letter spacing.<br>Unit: [fp](ts-pixel-units.md)|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Letter spacing.<br>Unit: [fp](ts-pixel-units.md)|
 
 ### fontFeature<sup>12+</sup>
 
@@ -502,7 +502,7 @@ Sets the background color of the selected text. If the opacity is not set, a 20%
 
 ### inputFilter<sup>12+</sup>
 
-inputFilter(value: ResourceStr, error?:  Callback< string >)
+inputFilter(value: ResourceStr, error?: &nbsp;Callback<&nbsp;string&nbsp;>)
 
 Sets the regular expression for input filtering. Only inputs that comply with the regular expression can be displayed. Other inputs are filtered out.
 
@@ -519,7 +519,7 @@ If **inputFilter** is set and the entered characters are not null, the filtering
 | Name| Type                                  | Mandatory| Description                              |
 | ------ | -------------------------------------- | ---- | ---------------------------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Regular expression.                      |
-| error  |  Callback< string >     | No  | Filtered-out content to return when regular expression matching fails.|
+| error  | &nbsp;Callback<&nbsp;string&nbsp;>     | No  | Filtered-out content to return when regular expression matching fails.|
 
 ### textIndent<sup>12+</sup>
 
@@ -557,7 +557,7 @@ If minFontSize is less than or equal to 0, the adaptive font size does not take 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Minimum font size.<br>Unit: [fp](ts-pixel-units.md)|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Minimum font size.<br>Unit: [fp](ts-pixel-units.md)|
 
 ### maxFontSize<sup>12+</sup>
 
@@ -579,7 +579,7 @@ If maxFontSize is less than or equal to 0 or maxFontSize is less than minFontSiz
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number \| string \| [Resource](ts-types.md#resource) | Yes  | Maximum font size.<br>Unit: [fp](ts-pixel-units.md)|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Maximum font size.<br>Unit: [fp](ts-pixel-units.md)|
 
 ### halfLeading<sup>18+</sup>
 
@@ -627,7 +627,7 @@ Sets the maximum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as 1. Abnormal values are ineffective by default.<br>After the maxFontScale attribute is set, the content of the search component can be zoomed in twice at most.<br>Before using this function, you need to configure the configuration.json and app.json5 files in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](#example-19-setting-the-minimum-and-maximum-font-scale-factors).|
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as 1. Abnormal values are ineffective by default.<br>After the maxFontScale attribute is set, the content of the search component can be zoomed in twice at most.<br>Before use, the **configuration.json** and **app.json5** files must be configured in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](#example-19-setting-the-minimum-and-maximum-font-scale-factors).|
 
 ### editMenuOptions<sup>12+</sup>
 
@@ -990,7 +990,7 @@ Invoked when the search icon, search button, or soft keyboard search button is c
 
 ### onChange
 
-onChange(callback: EditableTextOnChangeCallback)
+onChange(callback:&nbsp;EditableTextOnChangeCallback)
 
 Invoked when the input in the text box changes.
 
@@ -1087,7 +1087,7 @@ Invoked when the text content is scrolled.
 
 ### onEditChange<sup>12+</sup>
 
-onEditChange(callback: Callback< boolean >)
+onEditChange(callback:&nbsp;Callback<&nbsp;boolean&nbsp;>)
 
 Invoked when the input status changes. The text box is in the editing state when it has the caret placed in it, and is in the non-editing state otherwise.
 
@@ -1099,7 +1099,7 @@ Invoked when the input status changes. The text box is in the editing state when
 
 | Name   | Type                               | Mandatory| Description                |
 | --------- | ---------------------------------- | ---- | -------------------- |
-| callback |  Callback< boolean > | Yes  | Callback triggered when the editing state changes. Returns **true** if the component is in an editing state.|
+| callback | &nbsp;Callback<&nbsp;boolean&nbsp;> | Yes  | Callback triggered when the editing state changes. Returns **true** if the component is in an editing state.|
 
 ### onWillInsert<sup>12+</sup>
 
@@ -1121,7 +1121,7 @@ Invoked when text is about to be inserted.
 
 onDidInsert(callback: Callback\<InsertValue>)
 
-Invoked when text is inserted.
+Triggered when text is inserted.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2689,4 +2689,3 @@ struct SearchExample {
 ```
 
 ![searchscrolltovisible](figures/search_scroll_to_visible.gif)
-<!--no_check-->

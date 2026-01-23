@@ -18,7 +18,9 @@ ArkTS语言支持异步操作，现已增加异步任务的等待和唤醒功能
 
 [Sendable](arkts-sendable.md)共享对象在不同线程控制异步任务等待和唤醒的示例如下：
 
-```ts
+<!-- @[sendable_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/AsynchronousWaiting/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { ArkTSUtils, taskpool } from '@kit.ArkTS';
 
 @Concurrent
@@ -33,49 +35,51 @@ function notifyOne(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
 
 @Concurrent
 async function wait(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
-  await conditionVariable.wait();
-  console.info(`TaskPool Thread Wait: success`);
+  await conditionVariable.wait().then(() => {
+    console.info(`TaskPool Thread Wait: success`);
+  });
 }
 
 @Concurrent
 async function waitFor(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
-  await conditionVariable.waitFor(3000);
-  console.info(`TaskPool Thread WaitFor: success`);
+  await conditionVariable.waitFor(3000).then(() => {
+    console.info(`TaskPool Thread WaitFor: success`);
+  });
 }
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @State message: string | ResourceStr = $r('app.string.AsyncButton');
 
   build() {
     Row() {
       Column() {
-        Text(this.message)
-          .fontSize(50)
+        Button(this.message)
+          .fontSize(25)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            // 创建conditionVariable对象
+            // 创建conditionVariable对象。
             const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
-            // 将实例conditionVariable传递给wait线程
+            // 将实例conditionVariable传递给wait线程。
             taskpool.execute(wait, conditionVariable);
-            // 将实例conditionVariable传递给notifyAll线程，唤醒wait线程，日志输出"TaskPool Thread Wait: success"
+            // 将实例conditionVariable传递给notifyAll线程，唤醒wait线程，日志输出"TaskPool Thread Wait: success"。
             taskpool.execute(notifyAll, conditionVariable);
-            // 将实例conditionVariable传递给waitFor线程
+            // 将实例conditionVariable传递给waitFor线程。
             taskpool.execute(waitFor, conditionVariable);
-            // 将实例conditionVariable传递给notifyOne线程，唤醒waitFor线程，日志输出"TaskPool Thread WaitFor: success"
+            // 将实例conditionVariable传递给notifyOne线程，唤醒waitFor线程，日志输出"TaskPool Thread WaitFor: success"。
             taskpool.execute(notifyOne, conditionVariable);
 
-            // 创建有name的conditionVariable对象
+            // 创建有name的conditionVariable对象。
             const conditionVariableRequest: ArkTSUtils.locks.ConditionVariable =
-                ArkTSUtils.locks.ConditionVariable.request("Request1");
-            // 将实例conditionVariableRequest传递给wait线程
+              ArkTSUtils.locks.ConditionVariable.request('Request1');
+            // 将实例conditionVariableRequest传递给wait线程。
             taskpool.execute(wait, conditionVariableRequest);
-            // 将实例conditionVariableRequest传递给notifyAll线程，唤醒wait线程，日志输出"TaskPool Thread Wait: success"
+            // 将实例conditionVariableRequest传递给notifyAll线程，唤醒wait线程，日志输出"TaskPool Thread Wait: success"。
             taskpool.execute(notifyAll, conditionVariableRequest);
-            // 将实例conditionVariableRequest传递给waitFor线程
+            // 将实例conditionVariableRequest传递给waitFor线程。
             taskpool.execute(waitFor, conditionVariableRequest);
-            // 将实例conditionVariableRequest传递给notifyOne线程，唤醒waitFor线程，日志输出"TaskPool Thread WaitFor: success"
+            // 将实例conditionVariableRequest传递给notifyOne线程，唤醒waitFor线程，日志输出"TaskPool Thread WaitFor: success"。
             taskpool.execute(notifyOne, conditionVariableRequest);
           })
       }
@@ -85,3 +89,4 @@ struct Index {
   }
 }
 ```
+

@@ -322,7 +322,7 @@ enum ArkUI_NodeAttributeType
 | NODE_MARGIN_PERCENT = 74 | 外间距属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式有两种：<br> 1：上下左右四个位置的外间距值相等。<br> .value[0].f32：外间距数值，单位为百分比；<br> 2：分别指定上下左右四个位置的外间距值。<br> .value[0].f32：上外间距数值，单位为百分比；<br> .value[1].f32：右外间距数值，单位为百分比；<br> .value[2].f32：下外间距数值，单位为百分比；<br> .value[3].f32：左外间距数值，单位为百分比；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：上外间距数值，单位为百分比；<br> .value[1].f32：右外间距数值，单位为百分比；<br> .value[2].f32：下外间距数值，单位为百分比；<br> .value[3].f32：左外间距数值，单位为百分比； |
 | NODE_GEOMETRY_TRANSITION = 75 | 组件内隐式共享元素转场，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0]?.i32：参数类型为1或者0。共享元素绑定的2个组件，针对出场元素未进行删除时是否要继续参与共享元素动画，默认为false，不参与保持原始位置不动。 <br> .string 用于设置绑定关系，id置""清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：参数类型为1或者0。共享元素绑定的2个组件，针对出场元素未进行删除时是否要继续参与共享元素动画，默认未false，不参与保持原始位置不动。 <br> .string 用于设置绑定关系，id置""清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。|
 | NODE_RELATIVE_LAYOUT_CHAIN_MODE = 76 | 指定以该组件为链头所构成的链的参数，支持属性设置、属性重置和属性获取接口。仅当父容器为RelativeContainer时生效。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 <br> .value[1].i32：链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].i32：链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 <br> .value[1].i32：链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。|
-| NODE_RENDER_FIT = 77 | 设置宽高动画过程中的组件内容填充方式，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md)枚举值。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md)枚举值。 |
+| NODE_RENDER_FIT = 77 | 设置宽高动画过程中的组件内容填充方式，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md#arkui_renderfit)枚举值。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32 内容填充方式，使用[ArkUI_RenderFit](capi-native-type-h.md#arkui_renderfit)枚举值。 |
 | NODE_OUTLINE_COLOR = 78 | 外描边颜色属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> 1: .value[0].u32：统一设置四条边的边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> 2: .value[0].u32：设置上侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[1].u32：设置右侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[2].u32：设置下侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[3].u32：设置左侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].u32：设置上侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[1].u32：设置右侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[2].u32：设置下侧边框颜色，使用0xargb表示，如0xFFFF11FF。 <br> .value[3].u32：设置左侧边框颜色，使用0xargb表示，如0xFFFF11FF。 |
 | NODE_SIZE = 79 | 设置高宽尺寸，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：宽度数值，单位为vp；<br> .value[1].f32：高度数值，单位为vp；<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].f32：宽度数值，单位为vp；<br> .value[1].f32：高度数值，单位为vp；|
 | NODE_RENDER_GROUP = 80 | 设置当前组件和子组件是否先整体离屏渲染绘制后再与父控件融合绘制，支持属性设置，属性重置和属性获取。属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式： <br> .value[0].i32：参数类型为1表示当前组件与子组件需要先整体离屏渲染绘制后再与父控件融合绘制，参数类型为0表示不需要整体离屏渲染绘制后再与父控件融合绘制。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：参数类型为1表示当前组件与子组件完成整体离屏渲染绘制，参数类型为0表示当前组件与子组件未完成整体离屏渲染绘制。 |
@@ -452,8 +452,8 @@ enum ArkUI_NodeAttributeType
 | NODE_IMAGE_ORIENTATION = 4020 | 设置图像内容的显示方向。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：期望的图像内容显示方向[ArkUI_Orientation](capi-native-type-h.md#arkui_imagerotateorientation)，默认值为ARKUI_ORIENTATION_UP。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：期望的图像内容显示方向[ArkUI_Orientation](capi-native-type-h.md#arkui_imagerotateorientation)。<br>**起始版本：** 21 |
 | NODE_IMAGE_SUPPORT_SVG2 = 4021 | 通过启用SVG新解析能力开关设置SVG解析功能支持的范围，支持属性设置，属性重置，属性获取接口。Image组件创建后，不支持动态修改该属性的值。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否启用SVG新解析能力开关。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：是否启用SVG新解析能力开关。<br>**起始版本：** 21 |
 | NODE_IMAGE_CONTENT_TRANSITION = 4022 | 设置图像变化时的转场动效，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object：自定义转场动效，参数类型[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .object：自定义转场动效，参数类型[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)。<br>**起始版本：** 21 |
-| NODE_IMAGE_ALT_PLACEHOLDER  = 4023 | 支持加载过程中的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：表示image组件加载过程中的占位图地址。<br> .object：表示PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；.object参数和.string参数二选一，不可同时设置，不支持网络图片。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：表示image组件加载过程中的占位图地址。<br> .object：表示PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。 <br>**起始版本：** 22 |
-| NODE_IMAGE_ALT_ERROR  = 4024 | 支持加载失败时的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：表示image组件加载失败时的占位图地址。<br> .object：表示PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；.object参数和.string参数二选一，不可同时设置，不支持网络图片。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：表示image组件加载失败时的占位图地址。<br> .object：表示PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。 <br>**起始版本：** 22 |
+| NODE_IMAGE_ALT_PLACEHOLDER  = 4023 | 支持加载过程中的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：表示image组件加载过程中的占位图地址。<br> .object：表示PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；<br>.object参数和.string参数二选一，不可同时设置，不支持网络图片。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：表示image组件加载过程中的占位图地址。<br> .object：表示PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。 <br>**起始版本：** 22 |
+| NODE_IMAGE_ALT_ERROR  = 4024 | 支持加载失败时的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：表示image组件加载失败时的占位图地址。<br> .object：表示PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)；<br>.object参数和.string参数二选一，不可同时设置，不支持网络图片。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .string：表示image组件加载失败时的占位图地址。<br> .object：表示PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。 <br>**起始版本：** 22 |
 | NODE_IMAGE_ANTIALIASED = 4025 | 支持设置位图图片边缘抗锯齿的配置，支持属性设置，属性重置，属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示是否开启位图图片边缘抗锯齿，默认值：false。false表示不开启抗锯齿，true表示开启抗锯齿。与NODE_IMAGE_RESIZABLE一起使用时，该属性不生效。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].i32：表示是否开启位图图片边缘抗锯齿。false表示不开启抗锯齿，true表示开启抗锯齿。<br>**起始版本：** 23  |
 | NODE_TOGGLE_SELECTED_COLOR = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TOGGLE = 5000 | 组件打开状态的背景颜色属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：背景色数值，0xargb格式，形如 0xFFFF0000 表示红色。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：背景色数值，0xargb格式。 |
 | NODE_TOGGLE_SWITCH_POINT_COLOR = 5001 | Switch类型的圆形滑块颜色属性，支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：圆形滑块颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br> .value[0].u32：圆形滑块颜色数值，0xargb格式。 |
@@ -773,8 +773,8 @@ enum ArkUI_NodeAttributeType
 | NODE_IMAGE_ANIMATOR_FIXED_SIZE = 19004 | 设置图片大小是否固定为组件大小。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置图片大小是否固定为组件大小，1表示图片大小与组件大小一致。0表示每一张图片的width、height、top和left都要单独设置，默认值为1。<br>     属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：设置图片大小是否固定为组件大小，1表示图片大小与组件大小一致。0表示每一张图片的width、height、top和left都要单独设置。  |
 | NODE_IMAGE_ANIMATOR_FILL_MODE = 19005 | 设置帧动画在当前播放方向下，动画开始前和结束后的状态。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode)，默认值为ARKUI_ANIMATION_FILL_MODE_FORWARDS。 <br>     属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode)。  |
 | NODE_IMAGE_ANIMATOR_ITERATION = 19006 | 设置帧动画的播放次数。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：播放次数。 <br>     属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .value[0].i32：播放次数。   |
-| NODE_EMBEDDED_COMPONENT_WANT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_EMBEDDED_COMPONENT = 1016000 | 定义用于启动EmbeddedAbility的want。支持属性设置。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object: EmbeddedCompont的want参数。参数类型为[AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)。默认值为nullptr。 <br>**起始版本：** 20   |
-| NODE_EMBEDDED_COMPONENT_OPTION = 1016001 | EmbeddedCompont的选项。支持属性设置。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object: EmbeddedCompont的选项列表，参数类型为[ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)。<br>**起始版本：** 20   |
+| NODE_EMBEDDED_COMPONENT_WANT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_EMBEDDED_COMPONENT = 1016000 | 定义用于启动EmbeddedAbility的want。支持属性设置。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object: EmbeddedComponent的want参数。参数类型为[AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)。默认值为nullptr。 <br>**起始版本：** 20   |
+| NODE_EMBEDDED_COMPONENT_OPTION = 1016001 | EmbeddedComponent的选项。支持属性设置。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： <br> .object: EmbeddedComponent的选项列表，参数类型为[ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)。<br>**起始版本：** 20   |
 | NODE_PICKER_OPTION_SELECTED_INDEX = MAX_NODE_SCOPE_NUM * ARKUI_NODE_PICKER |定义选择器数据选择范围内默认选中项的索引。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].u32：索引值。<br>默认值：0。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].u32：索引值。<br>**起始版本：** 23   |
 | NODE_PICKER_ENABLE_HAPTIC_FEEDBACK = 1018001 |定义是否启用触感反馈。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].i32：是否启用触感反馈。<br>- true：表示启用反馈。<br>- false：表示不启用。<br>默认值：true，开启后，是否存在触控反馈取决于系统硬件支持情况。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].i32：是否启用反馈。<br>**起始版本：** 23   |
 | NODE_PICKER_CAN_LOOP = 1018002 |定义选择器是否支持滚动循环。支持属性设置，属性重置和属性获取接口。<br>属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].i32：是否支持滚动循环。<br>- true：表示支持滚动循环。<br>- false：表示不支持。<br>默认值：true。<br/>如果子组件的个数小于8个，无论设置为true还是false，都不会循环滚动。<br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>.value[0].i32：是否支持滚动循环。值为<b>true</b>表示支持滚动循环，<b>false</b>表示不支持。<br>**起始版本：** 23   |
@@ -1424,7 +1424,7 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 **描述：**
 
 
-注册Adapter相关回调事件。
+注册Adapter相关回调事件。在相关回调事件不需要之后，需要执行[OH_ArkUI_NodeAdapter_UnregisterEventReceiver](#oh_arkui_nodeadapter_unregistereventreceiver)接口注销相关回调事件。
 
 **起始版本：** 12
 
@@ -3685,7 +3685,7 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(Ar
 
 **参数:**
 
-| 名称 | 描述 |
+| 参数项 | 描述 |
 | -------- | -------- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标节点。  |
 | float* ratios | 阈值数组，表示组件的可见区域。 |
@@ -3713,9 +3713,9 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(
 
 **参数:**
 
-| 名称 | 描述 |
+| 参数项 | 描述 |
 | -------- | -------- |
-| node | 目标节点。  |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 目标节点。  |
 
 **返回：**
 
@@ -3767,9 +3767,9 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) context | UI实例对象指针。<br>  如果该值为null，则该功能适用于整个应用进程。|
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UI实例对象指针。<br>  如果该值为null，则该功能适用于整个应用进程。|
 | bool forceDark | 是否使用反色能力。取值为true：组件使用反色能力，取值为false：组件不使用反色能力。 |
-| [ArkUI_NodeType](#arkui_nodetype) | 指定使能反色能力生效组件的类型范围。<br>   ARKUI_NODE_UNDEFINED代表对所有组件类型生效。 |
+| [ArkUI_NodeType](#arkui_nodetype) nodeType | 指定使用反色能力生效组件范围。<br>   ARKUI_NODE_UNDEFINED代表对所有组件类型生效。 |
 | colorInvertFunc | 开发者自定义反色算法函数。<br> 如果该值为nullptr，则对组件使用系统默认反色算法，即三原色取反。 |
 
 **返回：**
@@ -3822,7 +3822,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodeevent.md) currentNode | 指定节点。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) currentNode | 指定节点。 |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) localPosition | 点在指定节点坐标系中的坐标，单位：px。 |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* windowPosition | 指向接收转换后坐标（位于当前窗口坐标系中，单位：px）的指针。 |
 
@@ -3852,7 +3852,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodeevent.md) targetNode | 目标节点。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) targetNode | 目标节点。 |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md) windowPosition | 点在当前窗口坐标系中的坐标，单位：px。 |
 | [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)* localPosition | 指向接收转换后坐标（位于目标节点坐标系中，单位：px）的指针。 |
 

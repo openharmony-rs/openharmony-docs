@@ -249,18 +249,20 @@ const p3: Sample = PersistenceV2.globalConnect({
   type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\>
   ): T | undefined
 
-将键值对数据储存在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`Date`，`collections.Array`, `collections.Map`, `collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
+将键值对数据储存在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`Date`，`collections.Array`, `collections.Map`, `collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18)|  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。 当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator。且集合项类型S必须与defaultSubCreator的返回类型相同。|
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18)|  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。 当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。|
 
 当开发者在`globalConnect`中使用`defaultSubCreator`选项时，必须要提供`defaultCreator`。且`defaultSubCreator`函数的返回类型必须与`defaultCreator`返回的集合项类型相同。
 当`globalConnect`持久化`Array<ClassA>`类型的数据时，开发者需要使用`defaultSubCreator`选项去告诉状态管理框架创建`ClassA`类的一个实例。如下是`globalConnect`持久化`Array<ClassA>`类型的数据的示例：
@@ -419,9 +421,11 @@ globalConnect参数类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 |名称   |类型    |只读   |可选    |说明      |
 |--------|------------|------------|-----------|--------------|
-|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认创建器`defaultCreator`，不提供默认创建器，会导致无法持久化容器类型数据。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。 |
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认创建器`defaultCreator`，不提供默认创建器，会导致无法持久化容器类型数据。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。如果提供defaultSubCreator，没有提供defaultCreator，会导致持久化失败。 |
 |defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |否   |是   |使用该集合项默认构造函数，用于持久化容器类数据。如果defaultSubCreator返回的是`undefined`或`null`，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
 
 如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
@@ -448,6 +452,65 @@ struct Page {
 }
 ```
 
+当`StorageDefaultCreator<S>`返回值为`undefined`或`null`时，持久化会失败。当`StorageDefaultCreator<S>`直接设置为`undefined`或`null`时,
+状态管理框架会按照原始的类型（如`Object`类型）进行持久化，但是会丢失`class`对象中的方法。在如下示例中，`StorageDefaultCreator<S>`直接被设置为`undefined`或`null`时，持久化过程中`ClassA`对象中的`report`方法将被丢失。
+
+```typescript
+import { PersistenceV2, UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@ObservedV2
+class ClassA {
+  @Trace public propA: string = '';
+  @Trace public propB: string = '';
+
+  public report(): string {
+    return `${this.propA} - ${this.propB}`;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Comp {
+  // 持久化顶层数据类型为`Array<ClassA>`的数据。
+  @Local arr: Array<ClassA> = PersistenceV2.globalConnect({
+    type: Array<ClassA>,
+    defaultCreator: () => UIUtils.makeObserved(new Array<ClassA>()),
+    // defaultSubCreator的返回的值被设置为`undefined`或`null` (defaultSubCreator: () => undefined)，持久化失败。
+    // defaultSubCreator被直接设置为`undefined`或`null` (defaultSubCreator: undefined))，持久化会丢失`ClassA`中的方法。
+    defaultSubCreator: undefined
+  })!;
+
+  aboutToAppear(): void {
+    if (this.arr.length) {
+      // 步骤3：再次进入应用，持久化过程中丢失`ClassA中`的方法，当调用`ClassA`对象中的`report`方法，会报`undefined is not callable`的错误。
+      hilog.info(0xFF00, 'testTag', '%{public}s', this.arr[0].report());
+    }
+  }
+  build() {
+    Column() {
+      Repeat(this.arr)
+        .each(ri => {
+          Row() {
+            Text(`propA '${ri.item.propA}'`)
+            Text(`propB '${ri.item.propB}'`)
+            Text(`report?.() '${ri.item.report?.()}'`)
+          }
+        })
+      // 步骤1：点击'add item'，显示`propA 'a' propB 'b'report?.'a' - 'b'`。
+      // 步骤2：关闭应用。
+      Button('add item')
+        .onClick(() => {
+          let temp: ClassA = new ClassA();
+          temp.propA = 'a';
+          temp.propB = 'b';
+          this.arr.push(temp);
+        })
+    }
+  }
+}
+```
+
 ## CollectionType<sup>23+</sup>
 
 type CollectionType\<S\> = Array\<S\> | Map\<string | number, S\> |
@@ -459,11 +522,16 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**返回值：**
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |
-| CollectionType\<S\>    | [Array, Map, Set, collection.Array, collection.Map及collection.Set](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)的联合类型。 |
+| Array\<S\>     | 表示值类型为Array类型。 |
+| Map\<string \| number, S\>     | 表示值类型为Map类型。 |
+|Set\<S\>     | 表示值类型为Set类型。 |
+|[collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<S\>     | 表示值类型为collections.Array类型。 |
+|[collections.Map](../apis-arkts/arkts-apis-arkts-collections-Map.md)\<string \| number, S\>     | 表示值类型为collections.Map类型。 |
+|[collections.Set](../apis-arkts/arkts-apis-arkts-collections-Set.md)\<S\>     | 表示值类型为collections.Set类型。 |
 
 ## ObservedResult<sup>23+</sup>
 
@@ -562,6 +630,53 @@ struct Index {
       Text(`UIUtils.getTarget(this.someClass) === nonObservedClass: ${UIUtils.getTarget(this.someClass) ===
         nonObservedClass}`) // true
     }
+  }
+}
+```
+
+### getLifecycle<sup>23+</sup>
+
+static getLifecycle\<T extends BaseCustomComponent\>(customComponent: T): CustomComponentLifecycle
+
+getLifecycle用于获取[自定义组件的生命周期](./arkui-ts/ts-custom-component-new-lifecycle.md)实例。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明     |
+| ------ | ---- | ---- | ------------ |
+| customComponent | T    | 是   | 自定义组件实例。 |
+
+**返回值：**
+
+| 类型 | 说明                                             |
+| ---- | ------------------------------------------------ |
+| [CustomComponentLifecycle](./arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycle)    | 自定义组件的生命周期实例。 |
+
+**示例：**
+
+```ts
+import { UIUtils, ComponentAppear } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State lifecycleState: number = -1;
+
+  @ComponentAppear
+  myAppear() {
+    // UIUtils.getLifecycle获得自定义组件的生命周期实例，getCurrentState查询自定义组件当前生命周期。
+    // 预期查询到的生命周期为CustomComponentLifecycleState.APPEARED = 1。
+    this.lifecycleState = UIUtils.getLifecycle(this).getCurrentState();
+  }
+
+  build() {
+    Text(`${this.lifecycleState}`)
   }
 }
 ```
@@ -715,7 +830,7 @@ static makeObserved\<T extends object\>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| source | T    | 是   | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。</br>支持Array、Map、Set和Date。</br>支持collection.Array, collection.Set和collection.Map。</br>具体使用规则，详见[makeObserved接口：将非观察数据变为可观察数据](../../ui/state-management/arkts-new-makeObserved.md)。 |
+| source | T    | 是   | 数据源对象。支持非@Observed和@ObservedV2装饰的class，JSON.parse返回的Object和@Sendable修饰的class。</br>支持Array、Map、Set和Date。</br>支持collections.Array, collections.Set和collections.Map。</br>具体使用规则，详见[makeObserved接口：将非观察数据变为可观察数据](../../ui/state-management/arkts-new-makeObserved.md)。 |
 
 **返回值：**
 
@@ -1146,7 +1261,7 @@ class ObservedClass {
   }
 
   constructor() {
-    // 给当前ObservedClass的实例this添加对属性name的监听回调this.onChange，且当前监听回调是同步监听
+    // 给当前ObservedClass的实例this添加对属性age的监听回调this.onChange，且当前监听回调是同步监听
     UIUtils.addMonitor(this, 'age', this.onChange);
   }
 }

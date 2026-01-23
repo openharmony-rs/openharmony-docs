@@ -70,10 +70,10 @@ Provides optional attributes for the selection area.
 | font                    | [Font](ts-types.md#font) | No| Yes| Text font of the drop-down list button. Default value: **{size: $r('sys.float.ohos_id_text_size_body1')}**|
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the selected item in the drop-down list box. Default value: **{fontColor: $r('sys.color.ohos_id_color_text_primary')}**  |
 | selectedOptionBgColor   | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of the selected item in the drop-down list box. Default value: **$r('sys.color.ohos_id_color_component_activated')** with the opacity of **$r('sys.color.ohos_id_alpha_highlight_bg')**|
-| selectedOptionFont      | [Font](ts-types.md#font) | No| Yes| Text font of the selected item in the drop-down list box. Default value: **{size: $r('sys.color.ohos_id_text_size_body1'), weight: FontWeight.Regular}**|
+| selectedOptionFont      | [Font](ts-types.md#font) | No| Yes| Text font of the selected item in the drop-down list box. Default value: **{size:&nbsp;$r('sys.color.ohos_id_text_size_body1'), weight:&nbsp;FontWeight.Regular}**|
 | selectedOptionFontColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the selected item in the drop-down list box. Default value: **$r('sys.color.ohos_id_color_text_primary_activated')**|
 | optionBgColor           | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of items in the drop-down list box. Default value: **Color.Transparent**|
-| optionFont              | [Font](ts-types.md#font) | No| Yes| Text font of items in the drop-down list box. Default value: **{size: $r('sys.float.ohos_id_text_size_body1'), weight: FontWeight.Regular}**|
+| optionFont              | [Font](ts-types.md#font) | No| Yes| Text font of items in the drop-down list box. Default value: **{size:&nbsp;$r('sys.float.ohos_id_text_size_body1'), weight:&nbsp;FontWeight.Regular}**|
 | optionFontColor         | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of items in the drop-down list box. Default value: **$r('sys.color.ohos_id_color_text_primary')**|
 | optionWidth             | [Dimension](ts-types.md#dimension10) \| [OptionWidthMode](ts-appendix-enums.md#optionwidthmode11) | No| Yes| Item width of the drop-down list box. This attribute cannot be set in percentage. **OptionWidthMode** is of the enum type and it determines whether the drop-down list box inherits the width of the drop-down list button. If an invalid value or a value less than the minimum width of 56 vp is set, the attribute does not take effect, and the option width uses the default value, which is two columns.|
 | optionHeight            | [Dimension](ts-types.md#dimension10) | No| Yes| Maximum height for items in the drop-down list box. This attribute cannot be set in percentage. The default maximum height is 80% of the available height of the screen. The maximum height set cannot exceed the default maximum height.|
@@ -113,13 +113,13 @@ Provides optional attributes for the search area.
 | maxLength                | number | No| Yes| Maximum number of characters in the text input. By default, there is no maximum number of characters. When the maximum number is reached, no more characters can be entered. Default value: **-1**. |
 | enterKeyType             | [EnterKeyType](ts-basic-components-textinput.md#enterkeytype)| No| Yes| Type of the Enter key. Default value: **EnterKeyType.Search**.  |
 | decoration               | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12) | No| Yes|  Text decorative line options. Default value: **{type: TextDecorationType.None, color: Color.Black, style: TextDecorationStyle.SOLID}**.  |
-| letterSpacing            | number \| string \| [Resource](ts-types.md#resource) | No| Yes| Letter spacing. A positive value causes characters to spread farther apart, and a negative value bring characters closer together. The value for floating point numbers is **0.0**, in units of px. If the input is not a number and cannot be parsed as a number, the default value will be used. |
+| letterSpacing            | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes| Letter spacing. A positive value causes characters to spread farther apart, and a negative value bring characters closer together. The value for floating point numbers is **0.0**, in units of px. If the input is not a number and cannot be parsed as a number, the default value will be used. |
 | fontFeature              | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Font feature, for example, monospaced digits.<br>Format: normal \| \<feature-tag-value\><br>Syntax for \<feature-tag-value\>: \<string\> \[ \<integer\> \| on \| off ]<br>There can be multiple **\<feature-tag-value\>** values, which are separated by commas (,).<br>For example, the input format for monospaced digits is "ss01" on. Default value: **undefined**.  |
 | selectedBackgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of the selected text. By default, a 20% opacity is applied.|
 | inputFilter              | [InputFilterParams](#inputfilterparams) | No| Yes| Regular expression for input filtering. Only inputs that comply with the regular expression can be displayed. Other inputs are filtered out. The specified regular expression can match single characters, but not strings. Default value: **undefined**.<br> - **value**: regular expression.<br> - **error**: Filtered-out content to return when regular expression matching fails.|
 | textIndent               | [Dimension](ts-types.md#dimension10) | No| Yes| Indent of the first line text. Default value: **0**.  |
-| minFontSize              | number \| string \| [Resource](ts-types.md#resource) | No| Yes| Minimum font size. For the setting to take effect, this attribute must be used together with **maxFontSize** or layout constraint settings. Default value: **undefined**.  |
-| maxFontSize              | number \| string \| [Resource](ts-types.md#resource) | No| Yes| Maximum font size. For the setting to take effect, this attribute must be used together with **minFontSize** or layout constraint settings. Default value: **undefined**.  |
+| minFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes| Minimum font size. For the setting to take effect, this attribute must be used together with **maxFontSize** or layout constraint settings. Default value: **undefined**.  |
+| maxFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes| Maximum font size. For the setting to take effect, this attribute must be used together with **minFontSize** or layout constraint settings. Default value: **undefined**.  |
 | editMenuOptions          | [EditMenuOptions](ts-text-common.md#editmenuoptions) | No| Yes| Extended options of the custom context menu on selection, including the text content, icon, and callback. Default value: **undefined**.  |
 | enablePreviewText        | boolean | No| Yes| Whether to enable preview text. The value **true** means to enable preview text. Default value: **true**.<br> Preview text of the input method should be enabled. Preview text is in a temporary state and does not support text interception. As such, it does not trigger **onWillInsert** and **onDidInsert** callbacks. |
 | enableHapticFeedback     | boolean | No| Yes| Whether to enable haptic feedback. The value **true** means to enable haptic feedback. Default value: **true**.  |
@@ -435,7 +435,9 @@ struct Index {
 
 ### Example 4: Binding the Search Callback Events to AtomicServiceSearch
 This example demonstrates how to use the **onWillInsert**, **onDidInsert**, **onWillDelete**, and **onDidDelete** APIs to implement insert and delete operations.
+
 The **onSubmit** API is used to submit content in the search area.
+
 The **onChange** API is used to listen for the content changes in the search area.
 
 ```ts
@@ -664,7 +666,7 @@ struct Index {
           };
         });
 
-      Button("Change search area style")
+      Button("Change Search Area Style")
         .width('100%')
         .type(ButtonType.Normal)
         .borderRadius(20)

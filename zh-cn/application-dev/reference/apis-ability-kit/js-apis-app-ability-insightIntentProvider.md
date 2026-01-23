@@ -73,19 +73,19 @@ export default class InsightIntentExecutorUI extends InsightIntentExecutor {
       },
     };
     try {
-      //设置意图执行结果的返回形式为延迟返回
+      // 设置意图执行结果的返回形式为延迟返回
       this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
     } catch (error) {
       let code = (error as BusinessError).code;
       let msg = (error as BusinessError).message;
       console.error(`testTag setReturnModeForUIExtensionAbility fail, error code: ${code}, error msg: ${msg}.`);
     }
-    //将意图实例的id通过localStorage传入目标页面中
+    // 将意图实例的id通过localStorage传入目标页面中
     let localStorageData: Record<string, number> = {
       'insightId': this.context.instanceId,
     };
     let storage: LocalStorage = new LocalStorage(localStorageData);
-    //通过pageLoader加载页面
+    // 通过pageLoader加载页面
     pageLoader.loadContent('pages/UIAbilityIndex', storage, (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
@@ -111,7 +111,7 @@ struct Index {
 
   build() {
     Column() {
-      //通过sendExecuteResult接口主动返回意图执行结果
+      // 通过sendExecuteResult接口主动返回意图执行结果
       Button('insightIntentProvider sendExecuteResult')
         .onClick(() => {
           try {
@@ -188,7 +188,7 @@ class PlayVideoResultDef {
   someInvalid2: string | null = null;
 }
 
-//播放视频
+// 播放视频
 @InsightIntentEntry({
   intentName: 'PlayVideo',
   domain: 'VideosDomain',
@@ -220,7 +220,7 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
     }
     let instanceId: number = this.context.instanceId;
     try {
-      //设置意图执行结果的返回形式为延迟返回
+      // 设置意图执行结果的返回形式为延迟返回
       this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
       console.info('testTag: setReturnModeForUIAbilityForeground success');
     } catch (error) {
@@ -230,12 +230,12 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
     }
 
     try {
-      //将意图实例的id通过localStorage传入目标页面中
+      // 将意图实例的id通过localStorage传入目标页面中
       let localStorageData: Record<string, number> = {
         'insightId': instanceId,
       };
       let storage: LocalStorage = new LocalStorage(localStorageData);
-      //通过pageLoader加载页面
+      // 通过pageLoader加载页面
       this.windowStage?.loadContent('pages/Index', storage);
       console.info('testTag', 'Succeeded in loading the content1')
     } catch (err) {
@@ -268,7 +268,7 @@ struct Index {
 
   build() {
     Column() {
-      //通过sendExecuteResult接口主动返回意图执行结果
+      // 通过sendExecuteResult接口主动返回意图执行结果
       Button('insightIntentProvider sendIntentResult')
         .onClick(() => {
           try {

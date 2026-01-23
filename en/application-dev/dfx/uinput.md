@@ -347,7 +347,7 @@ uinput -K -t Hello,World!
 
 ## Controlling the Injected Modifier Key Status
 
-You can enable or disable the capability of controlling the injected modifier key status. The following modifier keys are supported: **KEYCODE_ALT_LEFT**, **KEYCODE_ALT_RIGHT**, **KEYCODE_SHIFT_LEFT**, **KEYCODE_SHIFT_RIGHT**, **KEYCODE_CTRL_LEFT**, **KEYCODE_CTRL_RIGHT**, **KEYCODE_META_LEFT** and **KEYCODE_META_RIGHT**. For details, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
+Since API version 22, the capability of controlling the injected modifier key status can be enabled or disabled. The supported modifier keys include **KEYCODE_ALT_LEFT**, **KEYCODE_ALT_RIGHT**, **KEYCODE_SHIFT_LEFT**, **KEYCODE_SHIFT_RIGHT**, **KEYCODE_CTRL_LEFT**, **KEYCODE_CTRL_RIGHT**, **KEYCODE_META_LEFT** and **KEYCODE_META_RIGHT**. For details, see [Keycode](../reference/apis-input-kit/js-apis-keycode.md).
 
 ### Enabling the Capability of Controlling the Injected Modifier Key Status
 
@@ -474,7 +474,7 @@ uinput --stylus --drag <dx1> <dy1> <dx2> <dy2> [press time] [total time]
 
 **Example**
 ```bash
-# Simulate pressing the stylus at (100, 150) for 500 ms and dragging it to (100, 150) after 1100 ms.
+# Simulate pressing the stylus at (100, 150) for 500 ms and dragging it to (500, 300) after 1100 ms.
 uinput -S -g 100 150 500 300 500 1100
 ```
 

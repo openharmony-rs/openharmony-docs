@@ -9,7 +9,7 @@
 
 ## 接口说明
 
-分布式跟踪接口由HiTraceChain模块提供，详细API请参考[分布式跟踪ArkTS API](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md)。
+分布式跟踪接口由HiTraceChain模块提供，详细API请参考[@ohos.hiTraceChain (分布式跟踪)](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -32,7 +32,7 @@ HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考[�
 
 ### async/await和promise/then异步任务中使用HiTraceChain
 
-async/await和promise/then异步任务支持HiTraceChain自动传递，示例结合[应用事件订阅](hiappevent-watcher-app-events-arkts.md)和[HiTraceMeter性能跟踪](hitracemeter-guidelines-arkts.md)，说明分布式跟踪在ArkTS中的使用方法。
+async/await和promise/then异步任务支持HiTraceChain自动传递，示例结合[事件订阅（ArkTS）](hiappevent-watcher-app-events-arkts.md)和[使用HiTraceMeter跟踪性能（ArkTS）](hitracemeter-guidelines-arkts.md)，说明分布式跟踪在ArkTS中的使用方法。
 
 1. 在DevEco Studio中新建工程，选择“Empty Ability”，SDK版本选择19及以上（示例工程使用的HiTraceMeter接口从API version 19开始支持），工程的目录结构如下：
    ```txt

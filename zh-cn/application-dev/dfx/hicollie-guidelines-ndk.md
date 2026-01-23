@@ -10,6 +10,10 @@
 
 用户在使用应用时，如果出现点击无反应或应用无响应等情况，并且持续时间超过一定限制，就会被定义为[应用冻屏](appfreeze-guidelines.md)。本文面向开发者介绍HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死事件的能力。
 
+> **说明：**
+>
+> 在非主线程使用相关接口。
+
 ## 接口说明
 
 | 接口名 | 描述 |
@@ -17,7 +21,7 @@
 | OH_HiCollie_Init_StuckDetection | 注册应用业务线程卡死的周期性检测任务。用户实现回调函数, 用于定时检测业务线程卡死情况。<br/>默认检测时间：3s上报BUSSINESS_THREAD_BLOCK_3S告警事件，6s上报BUSSINESS_THREAD_BLOCK_6S卡死事件。 |
 | OH_HiCollie_Init_StuckDetectionWithTimeout | 注册应用业务线程卡死的周期性检测任务。用户实现回调函数, 用于定时检测业务线程卡死情况。<br/>开发者可以设置卡死检测时间，可设置的时间范围：[3, 15]，单位：s。<br/>说明：从API version 18开始，支持该接口。 |
 | OH_HiCollie_Init_JankDetection | 注册应用业务线程卡顿检测的回调函数。<br/>线程卡顿监控功能需要开发者实现两个卡顿检测回调函数，分别放在业务线程处理事件的前后。作为插桩函数，监控业务线程处理事件执行情况。 |
-| OH_HiCollie_Report | 上报应用业务线程卡死事件，生成卡死故障日志，辅助定位应用卡死问题。<br/>先调用OH_HiCollie_Init_StuckDetection或OH_HiCollie_Init_StuckDetectionWithTimeout接口，初始化检测的task；<br/>如果task任务超时，结合业务逻辑，调用OH_HiCollie_Report接口上报卡死事件。 |
+| OH_HiCollie_Report | 上报应用业务线程卡死事件，生成卡死故障日志，辅助定位应用卡死问题。<br/>先调用OH_HiCollie_Init_StuckDetection或OH_HiCollie_Init_StuckDetectionWithTimeout接口，初始化检测的task。<br/>如果task任务超时，结合业务逻辑，调用OH_HiCollie_Report接口上报卡死事件。 |
 
 API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiCollie](../reference/apis-performance-analysis-kit/capi-hicollie-h.md)。
 
@@ -33,7 +37,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 ## 日志规格
 
-1. 业务线程卡死故障日志以appfreeze-开头，生成在“设备/data/log/faultlog/faultlogger/”路径下。该日志文件名格式为“appfreeze-应用包名-应用UID-秒级时间”。具体规格可参考[应用冻屏（AppFreeze）日志规格](appfreeze-guidelines.md#日志规格)。
+1. 业务线程卡死故障日志以appfreeze-开头，生成在“设备/data/log/faultlog/faultlogger/”路径下。该日志文件名格式为“appfreeze-应用包名-应用UID-毫秒级时间”。具体规格可参考[应用冻屏（AppFreeze）日志规格](appfreeze-guidelines.md#日志规格)。
 
 2. OH_HiCollie_Init_StuckDetection日志规格，请参考[主线程超时事件日志规格](apptask-timeout-guidelines.md#日志规格)。
 
@@ -182,7 +186,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    #undef LOG_TAG
    #define LOG_TAG "StruckTest"
    
-   // 自定义休眠时间，模拟卡死场景
+   // 自定义阻塞时间，模拟卡死场景，单位：s
    const int64_t BLOCK_TIME = 3; 
    // 设置应用线程执行任务情况标志位, true-正常，false-卡死
    std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);

@@ -91,4 +91,4 @@ async function createController() {
 ```
 <!--DelEnd-->
 
-更多关于AVSessionManager的方法，可以参考[API文档](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。
+更多关于AVSessionManager的方法，请参考API文档：[模块描述](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。

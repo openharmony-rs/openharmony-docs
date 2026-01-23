@@ -148,21 +148,21 @@ HTML file to be loaded:
     ```
 3. Check whether the **List** and **Scroll** components scroll to the boundary.
 	
-	(1) Scroll to the top boundary: **scroller.currentOffset().yOffset <= 0**;
+	(1) The component scrolls to the top boundary: **scroller.currentOffset().yOffset <= 0**;
 		
-	(2) Scroll to the bottom boundary: **scroller.isAtEnd() == true**;
+	(2) The component scrolls to the bottom boundary: **scroller.isAtEnd() == true**;
 
 4. Check whether the **Web** component scrolls to the boundary.
 	
 	(1) Obtain the height, content height, and current scrolling offset of the **Web** component.
 	
-	(2) Scroll to the top boundary: **webController.getPageOffset().y == 0**;
+	(2) The component scrolls to the top boundary: **webController.getPageOffset().y == 0**;
 	
-	(3) Scroll to the bottom boundary: **webController.getPageOffset().y + this.webHeight >= webController.getPageHeight()**;
+	(3) The component scrolls to the bottom boundary: **webController.getPageOffset().y + this.webHeight >= webController.getPageHeight()**;
 	
 	(4) Height of the **Web** component: **webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight)**;
 	
-	(5) Height of the **Web** component window: **webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window. innerHeight')**;
+	(5) Height of the **Web** component window: **webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight')**;
 	
 	(6) Scrolling offset of the **Web** component: **webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20)**;
 5. Disable the scrolling feature of the **Scroll** component.

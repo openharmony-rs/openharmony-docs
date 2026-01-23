@@ -728,7 +728,7 @@ Sets the duration of a keyframe animation, in milliseconds.
 | Name| Description|
 | -- | -- |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md)* option | Keyframe animation parameters.|
-| int32_t value | Duration, in milliseconds.|
+| int32_t value | Duration of the keyframe animation, in ms.|
 | int32_t index | Index of the keyframe state segment.|
 
 **Return value**

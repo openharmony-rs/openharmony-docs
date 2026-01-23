@@ -109,7 +109,8 @@ enum OH_Rdb_ErrCode
 | RDB_E_SQLITE_CANT_OPEN = (E_BASE + 60)                       | SQLite错误码：无法打开数据库文件。<br>**起始版本：** 18     |
 | RDB_E_SQLITE_TOO_BIG = (E_BASE + 61)                         | SQLite错误码：TEXT或BLOB超出大小限制。<br>**起始版本：** 18 |
 | RDB_E_SQLITE_MISMATCH = (E_BASE + 62)                        | SQLite错误码：数据类型不匹配。<br>**起始版本：** 18         |
-| RDB_E_DATA_TYPE_NULL = (E_BASE + 63)                         | 表示存储数据为空。<br>**起始版本：** 18                     |
-| RDB_E_TYPE_MISMATCH = (E_BASE + 64)                          | 表示数据类型不匹配。<br>**起始版本：** 18                   |
-| RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65)                      | 表示SQLite错误码：SQLite约束。<br>**起始版本：** 18         |
-| RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66) | 表示订阅数量超过限制。<br>**起始版本：** 22 |
+| RDB_E_DATA_TYPE_NULL = (E_BASE + 63)                         | 存储数据为空。<br>**起始版本：** 18                     |
+| RDB_E_TYPE_MISMATCH = (E_BASE + 64)                          | 数据类型不匹配。<br>**起始版本：** 18                   |
+| RDB_E_SQLITE_CONSTRAINT = (E_BASE + 65)                      | SQLite错误码：SQLite约束。<br>**起始版本：** 18         |
+| RDB_E_SUB_LIMIT_REACHED = (E_BASE + 66) | 订阅数量超过限制。<br>**起始版本：** 22 |
+| RDB_E_SQLITE_ERROR = (E_BASE + 67) | SQLite错误码。可能原因：语法错误，例如表或列不存在。<br>**起始版本：** 23 |

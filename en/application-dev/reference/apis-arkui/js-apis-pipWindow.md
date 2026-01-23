@@ -12,7 +12,7 @@ The module provides basic APIs for manipulating Picture in Picture (PiP). For ex
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Before API version 20, PiP is supported only on phones and tablets. Starting from API version 20, PiP is supported on phones, PCs/2-in-1 devices, and tablets, while remaining unavailable on other devices.
+> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature was supported only on phones and tablets. Starting from <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP feature is supported on phones, PCs/2-in-1 devices, tablets, but is unavailable on all other devices.
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
@@ -903,6 +903,46 @@ try {
 }
 ```
 
+### isPiPActive<sup>23+</sup>
+isPiPActive(): Promise&lt;boolean&gt;
+
+Check whether the PiP window is active. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Return value**
+
+| Type                  | Description                 |
+|----------------------|---------------------|
+| Promise&lt;boolean&gt;  | Promise used to return the PiP window status. **true** is returned if the PiP window is visible, and **false** is returned if the PiP window is invisible (hidden in the sidebar). If this API is called when the PiP lifecycle is not [STARTED](#pipstate), **false** is always returned.|
+
+**Error codes**
+
+For details about the error codes, see [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message      |
+|-------|-------------------------------------------------------------------------------------------------------------|
+| 1300014    | PiP internal error.                                    |
+
+**Example**
+
+``` ts
+let pipActiveStatus: boolean | undefined = undefined;
+try {
+  let promise : Promise<boolean> | undefined = this.pipController?.isPiPActive();
+  promise?.then((data) => {
+    pipActiveStatus = data;
+    console.info('Succeeded in getting pip active status. activeStatus: ' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get pip active status. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to get pip active status. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ### on('stateChange')
 
 on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): void
@@ -918,7 +958,7 @@ Subscribes to PiP state events. To avoid potential memory leaks, you are advised
 | Name       | Type       | Mandatory  | Description                                                                                               |
 |------------|-----------|------|---------------------------------------------------------------------------------------------------|
 | type       | string    | Yes   | Event type. The event **'stateChange'** is triggered when the PiP state changes.                                                            |
-| callback   | function  | Yes   | Callback used to return the result, which includes the following information:<br>- **state**: [PiPState](#pipstate), indicating the new PiP state.<br>- **reason**: a string indicating the reason for the state change. |
+| callback   | function  | Yes   | Callback used to return the result, which includes the following information:<br>- **state**: [PiPState](#pipstate), indicating the new PiP state.<br>- **reason**: a string indicating the reason for the state change. <br>Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, the value of **reason** is always **0**, which can be ignored.<br>Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, **reason** indicates the reason for switching the current lifecycle. The options are as follows:<br>**"requestStart"**: An application calls the **startPip** API.<br>**"autoStart"**: The application is automatically started in PiP mode when it is switched to the background.<br>**"requestDelete"**: The application calls the **stopPip** API.<br>**"panelActionDelete"**: The user taps the close button in the PiP window.<br>**"dragDelete"**: The user drags the PiP window to delete.<br>**"panelActionRestore"**: The user taps the restore button in the PiP window (or taps the PiP window if there is no restore button) to restore the PiP window.<br>**"other"**: Other reasons, such as the current window or application's main window being closed due to the startup of a new PiP window.|
 
 **Example**
 
@@ -1253,5 +1293,3 @@ let callback = (activeStatus: boolean) => {
 }
 this.pipController.off('activeStatusChange', callback);
 ```
-
-<!--no_check-->

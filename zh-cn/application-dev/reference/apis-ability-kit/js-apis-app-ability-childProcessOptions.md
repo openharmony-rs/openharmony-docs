@@ -42,7 +42,7 @@ export default class DemoProcess extends ChildProcess {
   onStart(args?: ChildProcessArgs) {
     let entryParams = args?.entryParams;
     let fd = args?.fds?.key1;
-    //子进程代码逻辑
+    // 子进程代码逻辑
   }
 }
 ```

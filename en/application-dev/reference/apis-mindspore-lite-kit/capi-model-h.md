@@ -68,6 +68,7 @@ Provides model-related APIs for model creation and inference. These APIs are non
 | [OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_ModelType model_type, void *model_data,size_t *data_size, OH_AI_QuantizationType quantization_type,bool export_inference_only, char **output_tensor_name, size_t num)](#oh_ai_exportmodelbuffer) | - | Exports the memory cache of the training model. This API is used only for on-device training.                                                                                                                                                                                                                                |
 | [OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle model, OH_AI_ModelType model_type,const char *weight_file, bool is_inference,bool enable_fp16, char **changeable_weights_name,size_t num)](#oh_ai_exportweightscollaboratewithmicro) | - | Exports the weight file of the training model for micro inference. This API is used only for on-device training.                                                                                                                                                                                                                        |
 | [OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path)](#oh_ai_modelloadconfig) | - | Loads the model configuration file.|
+| [OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)](#oh_ai_modelpredictwithconfig) | - | Performs model inference. Different inference parameters can be set for each inference.|
 
 ## Function Description
 
@@ -864,4 +865,34 @@ Loads the model configuration file.
 
 | Type                                                   | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
+| OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | Status code enumerated by [OH_AI_Status](capi-status-h.md#oh_ai_status). The value **OH_AI_STATUS_SUCCESS** indicates that the operation is successful. If the operation fails, an error code is returned.|
+
+### OH_AI_ModelPredictWithConfig()
+
+```c
+OH_AI_API OH_AI_Status OH_AI_ModelPredictWithConfig(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs, OH_AI_TensorHandleArray *outputs, const char *config, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)
+															
+```
+
+**Description**
+
+Performs model inference. Different inference parameters can be set for each inference.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md) model | Pointer to the model object.|
+| [const OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) inputs | Tensor array structure corresponding to the model input.|
+| [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) *outputs | Pointer to the tensor array structure corresponding to the model output.|
+| const char *config | Model configuration file. The string length is subject to the file system.|
+| [const OH_AI_KernelCallBack](capi-model-h.md#oh_ai_kernelcallback) before | Callback function executed before model inference.|
+| after | Callback function executed after model inference.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
 | OH_AI_API [OH_AI_Status](capi-status-h.md#oh_ai_status) | Status code enumerated by [OH_AI_Status](capi-status-h.md#oh_ai_status). The value **OH_AI_STATUS_SUCCESS** indicates that the operation is successful. If the operation fails, an error code is returned.|

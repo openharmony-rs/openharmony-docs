@@ -10,11 +10,11 @@
 This topic describes how to obtain properties of a key. Before the operation, ensure that the key exists in HUKS.
 >**NOTE**<br>
 >
-> The mini-system devices do not support the operation for obtaining key properties.
+> <!--RP1-->The mini-system devices<!--RP1End--> do not allow for obtaining key properties.
 
 The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
-## Add the dynamic library in the CMake script.
+## Linking the Dynamic Library in the CMake Script
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
@@ -36,6 +36,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 #include "huks/native_huks_param.h"
 #include "napi/native_api.h"
 #include <cstring>
+
 OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
                             uint32_t paramCount)
 {
@@ -121,4 +122,3 @@ static napi_value GetKeyParamSet(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-<!--no_check-->

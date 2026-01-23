@@ -432,18 +432,19 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   }
   ```
 
-  <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-  ``` c++
+  <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->    
+  
+  ``` C++
   ArkUI_NodeHandle CreateNodeHandleUsingSurfaceHolder(const std::string &tag)
   {
-      ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN); // 创建Column节点
+      ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
       // ...
       xc = nodeAPI->createNode(ARKUI_NODE_XCOMPONENT); // 创建XComponent节点
       // ...
-      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(xc); // 获取 SurfaceHolder
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(xc); // 获取SurfaceHolder
       PluginManager::surfaceHolderMap_[xc] = holder;
       PluginManager::nodeHandleMap_[tag] = xc;
-      auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建 SurfaceCallback
+      auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建SurfaceCallback
       PluginManager::callbackMap_[holder] = callback;
       auto render = new EGLRender();
       OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // 将render保存在holder中
@@ -474,208 +475,217 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 组件创建过程中的主要差异在于使用OH_NativeXComponent需要传入id和libraryname属性以支持在Native侧获取对应的OH_NativeXComponent实例；而使用OH_ArkUI_SurfaceHolder管理Surface生命周期的XComponent不再需要在XComponent的构造参数中传入id和libraryname属性，而是直接将组件对应的FrameNode节点传递至Native侧进行生命周期绑定和其他设置。
 
-**OH_NativeXComponent：**
-<!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
-``` typescript
-XComponent({
-  id: 'xcomponentId',
-  type: XComponentType.SURFACE,
-  libraryname: 'nativerender' // 利用id和libraryname属性在Native侧获取NativeXcomponent并绑定Surface生命周期
-})
-  .onLoad((xComponentContext) => {
-    this.xComponentContext = xComponentContext as XComponentContext;
-    this.currentStatus = 'index';
+- OH_NativeXComponent
+  <!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
+  
+  ``` TypeScript
+  XComponent({
+    id: 'xcomponentId',
+    type: XComponentType.SURFACE,
+    libraryname: 'nativerender' // 利用id和libraryname属性在Native侧获取NativeXcomponent并绑定Surface生命周期
   })
-  .onDestroy(() => {
-    console.info('onDestroy');
-  })
-  .id('xcomponent')
-```
+    .onLoad((xComponentContext) => {
+      this.xComponentContext = xComponentContext as XComponentContext;
+      this.currentStatus = 'index';
+    })
+    .onDestroy(() => {
+      console.info('onDestroy');
+    })
+    .id('xcomponent')
+  ```
 
-**OH_ArkUI_SurfaceHolder：**
-<!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
-``` typescript
-XComponent({
-  type: XComponentType.SURFACE,
-})
-  .id('XComponentSurfaceHolder')
-  .onAttach(() => {
-    this.xcNode = this.getUIContext().getAttachedFrameNodeById('XComponentSurfaceHolder');
-    if (!this.xcNode) {
-      return;
-    }
-    native.bindNode('XComponentSurfaceHolder', this.xcNode); // 跨语言调用至Native侧获取SurfaceHolder并绑定Surface生命周期回调
+- OH_ArkUI_SurfaceHolder
+  <!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
+  
+  ``` TypeScript
+  XComponent({
+    type: XComponentType.SURFACE,
   })
-  .onDetach(() => {
-    native.unbindNode('XComponentSurfaceHolder');
-    this.xcNode = null;
-  })
-```
+    .id('XComponentSurfaceHolder')
+    .onAttach(() => {
+      this.xcNode = this.getUIContext().getAttachedFrameNodeById('XComponentSurfaceHolder');
+      if (!this.xcNode) {
+        return;
+      }
+      native.bindNode('XComponentSurfaceHolder', this.xcNode); // 跨语言调用至Native侧获取SurfaceHolder并绑定Surface生命周期回调
+      this.currentStatus = 'index';
+    })
+    .onDetach(() => {
+      native.unbindNode('XComponentSurfaceHolder');
+      this.xcNode = null;
+    })
+  ```
 
 ### 绑定Surface生命周期
 
 绑定Surface生命周期中的主要差异在于注册生命周期回调的接口不同，具体回调内执行的逻辑基本保持不变。
 
-**OH_NativeXComponent：**
-<!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
-void PluginManager::Export(napi_env env, napi_value exports)
-{
-    if ((env == nullptr) || (exports == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: env or exports is null");
-        return;
-    }
+- OH_NativeXComponent
+  <!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  void PluginManager::Export(napi_env env, napi_value exports)
+  {
+      if ((env == nullptr) || (exports == nullptr)) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: env or exports is null");
+          return;
+      }
+  
+      napi_value exportInstance = nullptr;
+      // 利用OH_NATIVE_XCOMPONENT_OBJ字段获取NativeXComponent实例
+      if (napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance) != napi_ok) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_get_named_property fail");
+          return;
+      }
+  
+      OH_NativeXComponent *nativeXComponent = nullptr;
+      if (napi_unwrap(env, exportInstance, reinterpret_cast<void **>(&nativeXComponent)) != napi_ok) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_unwrap fail");
+          return;
+      }
+  
+      char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {'\0'};
+      uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
+      // 从NativeXComponent实例中获取id属性用来和ArkTS侧的XComponent组件一一对应
+      if (OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+          OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
+                       "Export: OH_NativeXComponent_GetXComponentId fail");
+          return;
+      }
+  
+      std::string id(idStr);
+      auto context = PluginManager::GetInstance();
+      if ((context != nullptr) && (nativeXComponent != nullptr)) {
+          context->SetNativeXComponent(id, nativeXComponent);
+          auto render = context->GetRender(id);
+          if (render != nullptr) {
+              // 注册Surface生命周期
+              render->RegisterCallback(nativeXComponent);
+              render->Export(env, exports);
+          }
+      }
+  }
+  ```
 
-    napi_value exportInstance = nullptr;
-    // 利用OH_NATIVE_XCOMPONENT_OBJ字段获取NativeXComponent实例
-    if (napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance) != napi_ok) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_get_named_property fail");
-        return;
-    }
+  <!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
+  
+  ``` C++
+  void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
+  {
+      renderCallback_.OnSurfaceCreated = OnSurfaceCreatedCB;
+      renderCallback_.OnSurfaceChanged = OnSurfaceChangedCB;
+      renderCallback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
+      // ...
+      OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_);
+      // ...
+  }
+  ```
 
-    OH_NativeXComponent *nativeXComponent = nullptr;
-    if (napi_unwrap(env, exportInstance, reinterpret_cast<void **>(&nativeXComponent)) != napi_ok) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager", "Export: napi_unwrap fail");
-        return;
-    }
-
-    char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {'\0'};
-    uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
-    // 从NativeXComponent实例中获取id属性用来和ArkTS侧的XComponent组件一一对应
-    if (OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "PluginManager",
-                     "Export: OH_NativeXComponent_GetXComponentId fail");
-        return;
-    }
-
-    std::string id(idStr);
-    auto context = PluginManager::GetInstance();
-    if ((context != nullptr) && (nativeXComponent != nullptr)) {
-        context->SetNativeXComponent(id, nativeXComponent);
-        auto render = context->GetRender(id);
-        if (render != nullptr) {
-            // 注册Surface生命周期
-            render->RegisterCallback(nativeXComponent);
-            render->Export(env, exports);
-        }
-    }
-}
-```
-
-<!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
-``` c++
-void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
-{
-    renderCallback_.OnSurfaceCreated = OnSurfaceCreatedCB;
-    renderCallback_.OnSurfaceChanged = OnSurfaceChangedCB;
-    renderCallback_.OnSurfaceDestroyed = OnSurfaceDestroyedCB;
-    // ...
-    OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_);
-    // ...
-}
-```
-
-**OH_ArkUI_SurfaceHolder：**
-<!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
-napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    std::string nodeId = value2String(env, args[0]);
-    ArkUI_NodeHandle handle;
-    OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // 获取nodeHandle
-    OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // 获取SurfaceHolder
-    nodeHandleMap_[nodeId] = handle;
-    surfaceHolderMap_[handle] = holder;
-    auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建SurfaceCallback
-    callbackMap_[holder] = callback;
-    auto render = new EGLRender();
-    OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // 将render保存在holder中
-    OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // 注册OnSurfaceCreated回调
-    OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // 注册OnSurfaceChanged回调
-    OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // 注册OnSurfaceDestroyed回调
-    OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // 注册SurfaceCallback回调
-    // ...
-    return nullptr;
-}
-```
+- OH_ArkUI_SurfaceHolder
+  <!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 2;
+      napi_value args[2] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+      std::string nodeId = value2String(env, args[0]);
+      ArkUI_NodeHandle handle;
+      OH_ArkUI_GetNodeHandleFromNapiValue(env, args[1], &handle);             // 获取nodeHandle
+      OH_ArkUI_SurfaceHolder *holder = OH_ArkUI_SurfaceHolder_Create(handle); // 获取SurfaceHolder
+      nodeHandleMap_[nodeId] = handle;
+      surfaceHolderMap_[handle] = holder;
+      auto callback = OH_ArkUI_SurfaceCallback_Create(); // 创建SurfaceCallback
+      callbackMap_[holder] = callback;
+      auto render = new EGLRender();
+      OH_ArkUI_SurfaceHolder_SetUserData(holder, render);                                // 将render保存在holder中
+      OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(callback, OnSurfaceCreatedNative); // 注册OnSurfaceCreated回调
+      OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(callback, OnSurfaceChangedNative); // 注册OnSurfaceChanged回调
+      OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(callback, OnSurfaceDestroyedNative); // 注册OnSurfaceDestroyed回调
+      OH_ArkUI_SurfaceHolder_AddSurfaceCallback(holder, callback);                // 注册SurfaceCallback回调
+      // ...
+      return nullptr;
+  }
+  ```
 
 ### 获取NativeWindow方式
 
 获取NativeWindow方式的差异如下：
 
-**OH_NativeXComponent：**
+- OH_NativeXComponent
 
-在OnSurfaceCreated等生命周期回调返回的参数(即下面的void *window)中获取。
+  在OnSurfaceCreated等生命周期回调返回的参数(即下面的void *window)中获取。
 
-<!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
-void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window)
-{
-    // ...
-}
-void OnSurfaceChangedCB(OH_NativeXComponent *component, void *window)
-{
-    // ...
-}
-void OnSurfaceDestroyedCB(OH_NativeXComponent *component, void *window)
-{
-    // ...
-}
-void DispatchTouchEventCB(OH_NativeXComponent *component, void *window)
-{
-    // ...
-}
-```
+  <!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  void OnSurfaceChangedCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  void OnSurfaceDestroyedCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  void DispatchTouchEventCB(OH_NativeXComponent *component, void *window)
+  {
+      // ...
+  }
+  ```
 
-**OH_ArkUI_SurfaceHolder：**
+- OH_ArkUI_SurfaceHolder
 
-调用OH_ArkUI_XComponent_GetNativeWindow接口从OH_ArkUI_SurfaceHolder中获取。
+  调用OH_ArkUI_XComponent_GetNativeWindow接口从OH_ArkUI_SurfaceHolder中获取。
 
-<!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
-void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
-{
-    auto window = OH_ArkUI_XComponent_GetNativeWindow(holder); // 获取native window
-    // ...
-}
-```
+  <!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
+  {
+      auto window = OH_ArkUI_XComponent_GetNativeWindow(holder); // 获取native window
+      // ...
+  }
+  ```
 
 ### 监听交互事件
 
-使用OH_NativeXComponent方式进行交互事件的监听，只能使用OH_NativeXComponent上相关的接口监听触摸、鼠标、按键等基础事件。而使用OH_ArkUI_SurfaceHolder则可以通过OH_ArkUI_NodeHandle相关的接口除监听基础事件外还能监听长按、拖拽等高级手势。
+使用OH_NativeXComponent方式进行交互事件的监听，只能使用OH_NativeXComponent上相关的接口监听触摸、鼠标、按键等基础事件。而使用OH_ArkUI_SurfaceHolder相关的接口，除监听基础事件外还能监听长按、拖拽等高级手势。
 
-**OH_NativeXComponent：**
+- OH_NativeXComponent
 
-<!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
-``` c++
-renderCallback_.DispatchTouchEvent = DispatchTouchEventCB;
-OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_); // 注册触摸事件
+  <!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
+  
+  ``` C++
+  renderCallback_.DispatchTouchEvent = DispatchTouchEventCB; // 注册触摸事件
+  OH_NativeXComponent_RegisterCallback(nativeXComponent, &renderCallback_);
+  mouseCallback_.DispatchMouseEvent = DispatchMouseEventCB;
+  mouseCallback_.DispatchHoverEvent = DispatchHoverEventCB;
+  OH_NativeXComponent_RegisterMouseEventCallback(nativeXComponent, &mouseCallback_); // 注册鼠标事件
+  
+  OH_NativeXComponent_RegisterFocusEventCallback(nativeXComponent, OnFocusEventCB); // 注册获焦事件
+  OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB);  // 注册按键事件
+  OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB); // 注册失焦事件
+  ```
 
-mouseCallback_.DispatchMouseEvent = DispatchMouseEventCB;
-mouseCallback_.DispatchHoverEvent = DispatchHoverEventCB;
-OH_NativeXComponent_RegisterMouseEventCallback(nativeXComponent, &mouseCallback_); // 注册鼠标事件
+- OH_ArkUI_SurfaceHolder
 
-OH_NativeXComponent_RegisterFocusEventCallback(nativeXComponent, OnFocusEventCB); // 注册获焦事件
-OH_NativeXComponent_RegisterKeyEventCallback(nativeXComponent, OnKeyEventCB); // 注册按键事件
-OH_NativeXComponent_RegisterBlurEventCallback(nativeXComponent, OnBlurEventCB); // 注册失焦事件
-```
+  以下只以注册touch事件为例，鼠标、按键以及更多的手势请参考[监听组件事件](./ndk-listen-to-component-events.md)。
 
-**OH_ArkUI_SurfaceHolder：**
-
-以下只以注册touch事件为例，鼠标、按键以及更多的手势请参考[监听组件事件](./ndk-listen-to-component-events.md)。
-
-<!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
-``` c++
-if (!nodeAPI->addNodeEventReceiver(handle, onEvent)) { // 添加事件监听，返回成功码 0
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
-}
-if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C接口注册touch事件，返回成功码 0
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "registerTouchEvent error");
-}
-```
+  <!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  
+  ``` C++
+  if (!nodeAPI->addNodeEventReceiver(handle, onEvent)) { // 添加事件监听，返回成功码 0
+      OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "addNodeEventReceiver error");
+  }
+  if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C接口注册touch事件，返回成功码 0
+      OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "onBind", "registerTouchEvent error");
+  }
+  ```
 
 ## 开发示例
 
@@ -685,7 +695,7 @@ if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C
 
 - 在ArkTS侧创建的XComponent组件可以将其对应的FrameNode节点传递到Native侧以获取ArkUI_NodeHandle，或者在Native侧直接创建XComponent组件对应的ArkUI_NodeHandle，然后调用OH_ArkUI_SurfaceHolder_Create接口创建OH_ArkUI_SurfaceHolder实例。
 - 基于OH_ArkUI_SurfaceHolder实例注册相应的生命周期回调，获取NativeWindow实例。
-- 利用NativeWindow和EGL接口开发自定义绘制内容以及申请和提交Buffer到图形队列。
+- 利用NativeWindow和EGL接口开发自定义绘制内容，并申请提交Buffer到图形队列。
 - XComponent组件相关的无障碍、可变帧率等能力根据ArkUI_NodeHandle通过相关接口来实现。
 - XComponent组件上的基础事件（如点击、触摸）和手势事件（如滑动、缩放）可通过ArkUI_NodeHandle对象使用ArkUI NDK接口来监听，具体可参考[监听组件事件](./ndk-listen-to-component-events.md)。
 
@@ -1822,6 +1832,7 @@ if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C
    }
    ```
 
+<!--RP1-->
 ## 相关实例
 
 针对Native XComponent的使用，有以下相关实例可供参考：
@@ -1833,5 +1844,4 @@ if (!nodeAPI->registerNodeEvent(handle, NODE_TOUCH_EVENT, 0, nullptr)) { // 用C
 针对ArkTS XComponent的使用，有以下相关实例可供参考：
 
 - [ArkTSXComponent（API version 12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)
-
-<!--RP1--><!--RP1End-->
+<!--RP1End-->
