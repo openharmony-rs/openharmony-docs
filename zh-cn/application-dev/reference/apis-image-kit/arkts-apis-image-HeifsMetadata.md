@@ -49,8 +49,6 @@ static createInstance(): HeifsMetadata
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
 async function heifsMetadataCreateInstance(context: Context) {
   let heifsMetadata = image.HeifsMetadata.createInstance();
   if (heifsMetadata != undefined) {
@@ -96,10 +94,9 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
 
 function getFileFd(context: Context): number | undefined {
-  const filePath: string = context.cacheDir + '/exif.heic';  // 图片包含exif metadata。
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
   const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
@@ -158,10 +155,9 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
 
 function getFileFd(context: Context): number | undefined {
-  const filePath: string = context.cacheDir + '/exif.heic';  // 图片包含exif metadata。
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
   const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
@@ -209,10 +205,9 @@ getAllProperties(): Promise\<Record<string, string \| null>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
 
 function getFileFd(context: Context): number | undefined {
-  const filePath: string = context.cacheDir + '/exif.heic';  // 图片包含HeifsMetadata。
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
   const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
@@ -257,10 +252,9 @@ clone(): Promise\<HeifsMetadata>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
 
 function getFileFd(context: Context): number | undefined {
-  const filePath: string = context.cacheDir + '/exif.heic';  // 图片包含HeifsMetadata。
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
   const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
@@ -279,6 +273,108 @@ async function heifsMetadataClone(context: Context) {
     });
   } else {
     console.error('Metadata is null.');
+  }
+}
+```
+
+
+## getBlob<sup>23+</sup>
+
+getBlob(): Promise\<ArrayBuffer>
+
+以二进制数据的形式获取元数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型                  | 说明                                  |
+| --------------------- | ------------------------------------- |
+| Promise\<ArrayBuffer> | Promise对象，返回元数据的二进制数据。 |
+
+**示例：**
+
+```ts
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataGetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    let blob = await metaData.heifsMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("get blob success");
+    }
+  }
+}
+```
+
+## setBlob<sup>23+</sup>
+
+setBlob(blob: ArrayBuffer): Promise\<void>
+
+使用二进制数据替换当前元数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型        | 必填 | 说明                 |
+| ------ | ----------- | ---- | -------------------- |
+| blob   | ArrayBuffer | 是   | 要替换的二进制数据。 |
+
+**返回值：**
+
+| 类型           | 说明          |
+| -------------- | ------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600206  | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**示例：**
+
+```ts
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/heifs.heic';  // 图片包含HeifsMetadata。
+  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function heifsMetadataSetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
+  if (metaData != undefined && metaData.heifsMetadata != undefined) {
+    let blob = await metaData.heifsMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("get blob success");
+      metaData.heifsMetadata.setBlob(blob);
+    }
+    let new_blob = metaData.heifsMetadata.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
   }
 }
 ```

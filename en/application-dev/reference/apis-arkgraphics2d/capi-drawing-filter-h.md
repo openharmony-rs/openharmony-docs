@@ -15,6 +15,8 @@ This file declares the functions related to the filter in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -36,7 +38,7 @@ This file declares the functions related to the filter in the drawing module.
 
 ### OH_Drawing_FilterCreate()
 
-```
+```c
 OH_Drawing_Filter* OH_Drawing_FilterCreate(void)
 ```
 
@@ -56,7 +58,7 @@ Creates an **OH_Drawing_Filter** object.
 
 ### OH_Drawing_FilterSetImageFilter()
 
-```
+```c
 void OH_Drawing_FilterSetImageFilter(OH_Drawing_Filter* filter, OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -78,7 +80,7 @@ Sets an **OH_Drawing_ImageFilter** object for an **OH_Drawing_Filter** object.<b
 
 ### OH_Drawing_FilterSetMaskFilter()
 
-```
+```c
 void OH_Drawing_FilterSetMaskFilter(OH_Drawing_Filter* filter, OH_Drawing_MaskFilter* maskFilter)
 ```
 
@@ -100,7 +102,7 @@ Sets an **OH_Drawing_MaskFilter** object for an **OH_Drawing_Filter** object.<br
 
 ### OH_Drawing_FilterSetColorFilter()
 
-```
+```c
 void OH_Drawing_FilterSetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_ColorFilter* colorFilter)
 ```
 
@@ -122,7 +124,7 @@ Sets an **OH_Drawing_ColorFilter** object for an **OH_Drawing_Filter** object.<b
 
 ### OH_Drawing_FilterGetColorFilter()
 
-```
+```c
 void OH_Drawing_FilterGetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_ColorFilter* colorFilter)
 ```
 
@@ -144,7 +146,7 @@ Obtains an **OH_Drawing_ColorFilter** object from an **OH_Drawing_Filter** objec
 
 ### OH_Drawing_FilterDestroy()
 
-```
+```c
 void OH_Drawing_FilterDestroy(OH_Drawing_Filter* filter)
 ```
 

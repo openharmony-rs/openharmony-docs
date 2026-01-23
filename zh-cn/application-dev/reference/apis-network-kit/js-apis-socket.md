@@ -107,6 +107,12 @@ bind(address: NetAddress): Promise\<void\>
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
 | address | [NetAddress](#netaddress) | 是   | 本端地址信息，参考[NetAddress](#netaddress)。 |
 
+**返回值：**
+
+| 类型            | 说明                                       |
+|  -------------- |  ----------------------------------------- |
+| Promise\<void\> | Promise对象。无返回结果的Promise对象。|
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -116,11 +122,6 @@ bind(address: NetAddress): Promise\<void\>
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
 
-**返回值：**
-
-| 类型            | 说明                                       |
-|  -------------- |  ----------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。|
 
 **示例：**
 
@@ -275,6 +276,12 @@ send(options: UDPSendOptions): Promise\<void\>
 | ------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | options | [UDPSendOptions](#udpsendoptions) | 是   | UDPSocket发送参数，参考[UDPSendOptions](#udpsendoptions)。 |
 
+**返回值：**
+
+| 类型            | 说明                                           |
+|  -------------- |  --------------------------------------------- |
+| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[Socket错误码](errorcode-net-socket.md)和[通用错误码](../errorcode-universal.md)。
@@ -292,11 +299,6 @@ send(options: UDPSendOptions): Promise\<void\>
 | 2301212 | Socks5 serialization error.                    |
 | 2301213 | Socks5 deserialization error.                  |
 
-**返回值：**
-
-| 类型            | 说明                                           |
-|  -------------- |  --------------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -423,6 +425,12 @@ close(): Promise\<void\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**返回值：**
+
+| 类型            | 说明                                       |
+|  -------------- |  ----------------------------------------- |
+| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -430,12 +438,6 @@ close(): Promise\<void\>
 | 错误码ID | 错误信息                 |
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
-
-**返回值：**
-
-| 类型            | 说明                                       |
-|  -------------- |  ----------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -518,6 +520,12 @@ getState(): Promise\<SocketStateBase\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**返回值：**
+
+| 类型                                             | 说明                                       |
+|  ----------------------------------------------- |  ----------------------------------------- |
+| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取UDPSocket状态的结果。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -527,11 +535,6 @@ getState(): Promise\<SocketStateBase\>
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
 
-**返回值：**
-
-| 类型                                             | 说明                                       |
-|  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | 以Promise形式返回获取UDPSocket状态的结果。 |
 
 **示例：**
 
@@ -574,6 +577,12 @@ getSocketFd(): Promise\<number\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -583,11 +592,6 @@ getSocketFd(): Promise\<number\>
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
 
-**返回值：**
-
-| 类型                                             | 说明                                       |
-| ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -1704,6 +1708,14 @@ getSocketFd(): Promise\<number\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -1713,11 +1725,6 @@ getSocketFd(): Promise\<number\>
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
 
-**返回值：**
-
-| 类型                                             | 说明                                       |
-| ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -3273,6 +3280,12 @@ getSocketFd(): Promise\<number\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -3282,11 +3295,6 @@ getSocketFd(): Promise\<number\>
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
 
-**返回值：**
-
-| 类型                                             | 说明                                       |
-| ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -4150,6 +4158,12 @@ getSocketFd(): Promise\<number\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -4159,11 +4173,6 @@ getSocketFd(): Promise\<number\>
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
 
-**返回值：**
-
-| 类型                                             | 说明                                       |
-| ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -4796,7 +4805,7 @@ client.connect(connectOpt).then(() => {
 client.getSocketFd().then((data: number) => {
   console.info("fd: " + data);
 }).catch((err: Object) => {
-  console.error("getSocketFd faile: " + JSON.stringify(err));
+  console.error("getSocketFd failed: " + JSON.stringify(err));
 })
 ```
 
@@ -7165,7 +7174,7 @@ let twoWayNetAddr: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -7236,7 +7245,7 @@ let socks5Server: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -7365,7 +7374,7 @@ let twoWayNetAddr: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -7440,7 +7449,7 @@ let socks5Server: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8086,6 +8095,12 @@ send(data: string \| ArrayBuffer): Promise\<void\>
 | -------- | -----------------------------| ---- | ---------------|
 |   data   | string \| ArrayBuffer                       | 是   | 发送的数据内容。   |
 
+**返回值：**
+
+| 类型           | 说明                  |
+| -------------- | -------------------- |
+| Promise\<void\> | 以Promise形式返回,返回TLSSocket发送数据的结果。失败返回错误码，错误信息。 |
+
 **错误码：**
 
 | 错误码ID | 错误信息                                      |
@@ -8097,11 +8112,6 @@ send(data: string \| ArrayBuffer): Promise\<void\>
 | 2303506 | Failed to close the TLS connection.          |
 | 2300002 | System internal error.                       |
 
-**返回值：**
-
-| 类型           | 说明                  |
-| -------------- | -------------------- |
-| Promise\<void\> | 以Promise形式返回,返回TLSSocket发送数据的结果。失败返回错误码，错误信息。 |
 
 **示例：**
 
@@ -8219,7 +8229,7 @@ TLS安全相关操作。当本地证书cert和私钥key不为空时，开启双�
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | ca                    | string \| Array\<string\> | 否   | 是 | 服务端的ca证书，用于认证校验服务端的数字证书。默认为系统预置CA证书<sup>12+</sup>。最多支持设置1000本证书。 |
-| cert                  | string \| Array\<string\>           | 否   | 是 | 本地客户端的数字证书。从API Version 23开始支持传入数组，最多支持设置1000本证书。                 |
+| cert                  | string                                                              | 否   | 是 | 本地客户端的数字证书。                 |
 | key                   | string                                                  | 否   | 是 | 本地数字证书的私钥。                   |
 | password                | string                                                  | 否   | 是 | 读取私钥的密码。                      |
 | protocols             | [Protocol](#protocol9) \|Array\<[Protocol](#protocol9)\> | 否   | 是| TLS的协议版本，默认为"TLSv1.2"。                  |
@@ -8329,7 +8339,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8400,7 +8410,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8459,7 +8469,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8523,7 +8533,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8564,6 +8574,12 @@ getSocketFd(): Promise\<number\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -8573,11 +8589,6 @@ getSocketFd(): Promise\<number\>
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
 
-**返回值：**
-
-| 类型                                             | 说明                                       |
-| ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -8656,7 +8667,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8743,7 +8754,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8824,7 +8835,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8892,7 +8903,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8958,7 +8969,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9023,7 +9034,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9124,7 +9135,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9185,7 +9196,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9250,7 +9261,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9311,7 +9322,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9380,7 +9391,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9460,7 +9471,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9534,7 +9545,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9599,7 +9610,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9665,7 +9676,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9727,7 +9738,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9790,7 +9801,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9853,7 +9864,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9919,7 +9930,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9985,7 +9996,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10050,7 +10061,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10112,7 +10123,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10175,7 +10186,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10240,7 +10251,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10284,6 +10295,12 @@ getSocketFd(): Promise\<number\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**返回值：**
+
+| 类型                                             | 说明                                       |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -10293,11 +10310,6 @@ getSocketFd(): Promise\<number\>
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
 
-**返回值：**
-
-| 类型                                             | 说明                                       |
-| ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise对象，返回Socket的文件描述符。 |
 
 **示例：**
 
@@ -10373,7 +10385,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10441,7 +10453,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10513,7 +10525,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10572,7 +10584,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10636,7 +10648,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10696,7 +10708,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: ["xxxx"],
+  cert: "xxxx",
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,

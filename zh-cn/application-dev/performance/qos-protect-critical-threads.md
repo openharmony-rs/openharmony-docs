@@ -1,5 +1,12 @@
 # 高负载场景下线程优先级设置防止关键线程被打断
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 场景介绍
 
 在现代软件开发中，多线程或多进程的并发处理已成为常态。在多线程环境中，不同线程执行的任务具有不同的重要性和紧急程度。在高负载情况下，系统资源（如CPU时间）变得非常宝贵，此时如果关键线程（如UI渲染线程）因被其他非关键线程频频打断而得不到足够的资源和执行时间，从而无法确保其能够连续且及时地完成任务，则可能会导致画面卡顿、延迟等问题，影响用户体验。
@@ -135,7 +142,7 @@ void SetQoS(QoS_Level level) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "QoS", "the qos level after: %{public}d", queryLevelTwo);
         return;
     } else {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "querry qos level failed after reset.");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "query qos level failed after reset.");
         return;
     }
 }

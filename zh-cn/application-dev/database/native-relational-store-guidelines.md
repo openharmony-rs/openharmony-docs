@@ -34,7 +34,7 @@ RelationalStore提供了一套完整的对本地数据库进行管理的机制�
 
 | 接口名称 | 描述 |
 | -------- | -------- |
-| OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | 创建一个OH_Rdb_ConfigV2实例，并返回指向该实例的指针。 |
+| OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | 创建一个OH_Rdb_ConfigV2实例，并返回指向该实例的指针。使用完毕后需要调用OH_Rdb_DestroyConfig释放内存。 |
 | int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库文件路径。 |
 | int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库名称。 |
 | int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用包名。 |
@@ -57,9 +57,9 @@ RelationalStore提供了一套完整的对本地数据库进行管理的机制�
 | OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Rdb_Asset *value) | 把Rdb_Asset类型的数据放到指定的OH_VBucket对象中。 |
 | OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Rdb_Asset *value, uint32_t count) | 把Rdb_Asset数组类型的数据放到指定的OH_VBucket对象中。 |
 | OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, const char *columnName, OH_VObject *values) | 获取数据库指定表中指定列的数据的最后修改时间。 |
-| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | 创建一个OH_RDB_TransOptions实例，配置事务对象。 |
+| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | 创建一个OH_RDB_TransOptions实例，配置事务对象。使用完毕后需要调用OH_RdbTrans_DestroyOptions释放内存。 |
 | OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[], int len) | 根据指定的条件查询数据库中的数据。 |
-| OH_Data_Values *OH_Values_Create(void) | 创建OH_Data_Values实例。 |
+| OH_Data_Values *OH_Values_Create(void) | 创建OH_Data_Values实例。使用完毕后需要调用OH_Values_Destroy释放内存。 |
 | int OH_Data_Asset_SetName(Data_Asset *asset, const char *name) | 为资产类型数据设置名称。 |
 | int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri) | 为资产类型数据设置绝对路径。 |
 | int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path) | 为资产类型数据设置应用沙箱里的相对路径。 |

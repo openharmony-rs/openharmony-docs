@@ -12,20 +12,10 @@ A context menu displayed using [bindContextMenu](../reference/apis-arkui/arkui-t
 
 A context menu displayed using [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11), or **bindContextMenu** without a preview image configured, does not have a mask applied; in this case, it is non-modal.
 
-## Lifecycle
-
-| Name| Type| Description|
-| --- | --- | --- |
-| aboutToAppear  | () =>  void | Callback triggered when the menu is about to appear.|
-| onAppear | () =>  void | Callback invoked after the menu appears.|
-| aboutToDisappear | () =>  void | Callback triggered when the menu is about to disappear.|
-| onDisappear  | () =>  void | Callback invoked after the menu disappears.|
-
-
 
 ## Creating a Menu in the Default Style
 
-Use the **bindMenu** API to implement a menu. **bindMenu** responds to the click event of the bound component. When the bound component is clicked, the menu is displayed.
+Use the [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu) API to implement a menu. **bindMenu** responds to the click event of the bound component. When the bound component is clicked, the menu is displayed.
 
 <!-- @[create_default_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateDefaultMenu.ets) -->
 
@@ -54,8 +44,8 @@ If the default style does not meet requirements, you can use [@Builder](../../ap
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// Replace $r('app.media.xxx') with the image resource file you use.
 class Tmp {
+  // Replace $r('app.media.view_list_filled') with the actual resource file.
   public iconStr2: ResourceStr = $r('app.media.view_list_filled');
 
   set(val: Resource) {
@@ -67,11 +57,12 @@ class Tmp {
 @Component
 export struct BuilderCustomMenuExample {
   @State select: boolean = true;
+   // Replace $r('app.media.view_list_filled') with the actual resource file.
   private iconStr: ResourceStr = $r('app.media.view_list_filled');
   private iconStr2: ResourceStr = $r('app.media.view_list_filled');
-  // The value in the 'app.string.copy' resource file is "Copy."
+  // Replace $r('app.string.copy') with the actual resource file. In this example, the value in the resource file is "Copy."
   private copy: ResourceStr = $r('app.string.copy');
-  // The value in the 'app.string.paste' resource file is "Paste."
+  // Replace $r('app.string.paste') with the actual resource file. In this example, the value in the resource file is "Paste."
   private paste: ResourceStr = $r('app.string.paste');
 
   @Builder
@@ -85,7 +76,9 @@ export struct BuilderCustomMenuExample {
   @Builder
   MyMenu() {
     Menu() {
-      // The value in the 'app.string.menu_selection' resource file is "Menu Option."
+      // Replace $r('app.string.menu_selection') with the actual resource file. In this example, the value in the resource file is "Menu item."
+      // Replace $r('app.media.icon') with the actual resource file.
+      // Replace $r('app.media.arrow_right_filled') with the actual resource file.
       MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') }).enabled(false)
       MenuItem({
@@ -95,9 +88,9 @@ export struct BuilderCustomMenuExample {
         // When the builder parameter is set, it indicates that a submenu is bound to a menu item. When the user hovers the cursor over the menu item, the submenu is displayed.
         builder: this.SubMenu
       })
-      // The value in the 'app.string.menu_subtitle' resource file is "Subtitle."
+      // Replace $r('app.string.menu_subtitle') with the actual resource file. In this example, the value in the resource file is "Subtitle."
       MenuItemGroup({ header: $r('app.string.menu_subtitle') }) {
-        // The value in the 'app.string.menu_selection' resource file is "Menu Option."
+        // Replace $r('app.string.menu_selection') with the actual resource file. In this example, the value in the resource file is "Menu item."
         MenuItem({ content: $r('app.string.menu_selection') })
           .selectIcon(true)
           .selected(this.select)
@@ -106,7 +99,9 @@ export struct BuilderCustomMenuExample {
             let str: Tmp = new Tmp();
             str.set($r('app.media.icon'));
           })
-        // The value in the 'app.string.menu_selection' resource file is "Menu Option."
+        // Replace $r('app.string.menu_selection') with the actual resource file. In this example, the value in the resource file is "Menu item."
+        // Replace $r('app.media.view_list_filled') with the actual resource file.
+        // Replace $r('app.media.arrow_right_filled') with the actual resource file.
         MenuItem({
           startIcon: $r('app.media.view_list_filled'),
           content: $r('app.string.menu_selection'),
@@ -115,7 +110,8 @@ export struct BuilderCustomMenuExample {
         })
       }
 
-      // The value in the 'app.string.menu_selection' resource file is "Menu Option."
+      // Replace $r('app.string.menu_selection') with the actual resource file. In this example, the value in the resource file is "Menu item."
+      // Replace $r('app.media.arrow_right_filled') with the actual resource file.
       MenuItem({
         startIcon: this.iconStr2,
         content: $r('app.string.menu_selection'),
@@ -125,7 +121,7 @@ export struct BuilderCustomMenuExample {
   }
 
   build() {
-    // ···
+    // ...
   }
 }
 ```
@@ -143,7 +139,7 @@ Button('click for Menu')
 
 ## Creating a Context Menu Displayed Upon Right-clicking or Long Pressing
 
-Use the **bindContextMenu** API to customize the menu content and menu popup mode: right-click or long press. The menu items that are displayed using **bindContextMenu** are in an independent child window and can be displayed outside the application window.
+Use the [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8) API to customize the menu content and menu popup mode: right-click or long press. The menu items that are displayed using **bindContextMenu** are in an independent child window and can be displayed outside the application window.
 
 - Use @Builder to customize the menu content. The content configuration follows the same logic as the preceding section.
 - Check the menu popup mode and bind the component through the **bindContextMenu** attribute. In the example, the menu is displayed upon right-clicking.
@@ -191,11 +187,11 @@ Since API version 18, menus support center axis avoidance. Since API version 20,
 <!-- @[avoid_central_axis_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/SupportAvoidCentralAxisMenu.ets) -->
 
 ``` TypeScript
-// Replace $r('app.media.xxx') with the image resource file you use.
 @Entry
 @Component
 export struct SupportAvoidCentralAxisMenuExample {
   @State message: string = 'Hello World';
+  // Configure the resource whose name is 'xxx' and value is a non-empty string in the resources\base\element\string.json file.
   @State upScreen: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
   @State middleAxle: string =
@@ -206,6 +202,7 @@ export struct SupportAvoidCentralAxisMenuExample {
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('zone') as string;
   @State hoverModeStart: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('hoverMode_start') as string;
+  // Replace $r('app.media.startIcon') with the actual resource file.
   private iconStr: Resource = $r('app.media.startIcon');
   @State index: number = 0;
   @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
@@ -216,7 +213,7 @@ export struct SupportAvoidCentralAxisMenuExample {
   @Builder
   MyMenu1() {
     Menu() {
-      // The value in the 'app.string.menu_selection' resource file is "Menu Option."
+      // Replace $r('app.string.menu_selection') with the actual resource file. In this example, the value in the resource file is "Menu item."
       MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
@@ -322,7 +319,7 @@ export struct EventTransSubWindowMenuExample {
       .width('100%')
       .height('100%')
     }
-    // ···
+    // ...
   }
 
   @Builder
@@ -359,7 +356,6 @@ Since API version 20, menus can be displayed at specific positions relative to t
 <!-- @[bindComponent_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BindComponentMenu.ets) -->
 
 ``` TypeScript
-// Replace $r('app.media.xxx') with the image resource file you use.
 @Entry
 @Component
 export struct BindComponentMenuExample {
@@ -368,6 +364,7 @@ export struct BindComponentMenuExample {
     Column() {
       Menu() {
         MenuItemGroup() {
+          // Replace $r('app.media.app_icon') with the actual resource file.
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 1', labelInfo: '' })
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 2', labelInfo: '' })
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 3', labelInfo: '' })
@@ -396,7 +393,7 @@ export struct BindComponentMenuExample {
       .height('100%')
       .backgroundColor('#F5F5F5')
     }
-    // ···
+    // ...
   }
 }
 ```

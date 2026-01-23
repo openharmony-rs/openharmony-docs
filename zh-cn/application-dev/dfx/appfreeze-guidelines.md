@@ -127,7 +127,7 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 
 从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
 
-三种AppFreeze事件都包含以下几部分信息，具体解释如下：
+AppFreeze事件（THREAD_BLOCK_6S、 APP_INPUT_BLOCK）都包含以下几部分信息，具体解释如下：
 
 | 字段 | 说明 |
 | -------- | -------- |
@@ -184,14 +184,14 @@ mainHandler dump is:
  Total event size : 2
 ```
 
-三种AppFreeze事件都包含以下几部分信息，具体解释如下：
+AppFreeze事件（THREAD_BLOCK_6S、 APP_INPUT_BLOCK）都包含以下几部分信息，具体解释如下：
 
 | 主要信息字段 | 说明 |
 | -------- | -------- |
 | EVENTNAME | 组成卡死检测事件。 |
 | TIMESTAMP | 发生故障时上报事件的时刻，可以根据应用无响应检测能力点中说明的超时时间，在相应hilog流水日志中缩小查看日志的时间范围。 |
 | PID | 发生故障时候的pid。 |
-| UID | 故障进程UID。 |
+| UID | 发生故障时候的uid。 |
 | TID | 发生故障时候的tid。 |
 | PACKAGE_NAME | 应用进程包名。 |
 | PROCESS_NAME | 应用进程名。 |
@@ -331,7 +331,7 @@ pid context     request started max ready   free_async_space
 | xxx:xxx to xxx:xxx | 客户端进程号、线程号 to 服务端进程号、线程号。其中async表示异步，无async表示同步。 |
 | code | 客户端和服务端达成一致约束的业务码。 |
 | wait | 通信等待时长。 |
-| frz_state | 进程冻结状态。<br/>-1 未知<br/>1 默认<br/>2 正在向用户态发送binder状态信息<br/>3 走到了binder接收线程。 |
+| frz_state | 进程冻结状态。<br/>-1 未知；<br/>1 默认；<br/>2 正在向用户态发送binder状态信息；<br/>3 走到了binder接收线程。 |
 | ns | 客户端进程号、线程号 to 服务端进程号、线程号（非卓易通内进程显示-1）。 |
 | debug | IPC通信双方的信息补充。 |
 | active_code | 正在处理的异步消息code。 |
@@ -552,7 +552,7 @@ cpu3 Usage 23.5%, 1430MHZ 21.04%
 .......
 end time: 2021-01-01 20:06:00:888  <- 计算CPU使用率结束时间
 #ThreadInfos Tid: 2204, Name: com.example.freeze  <- 故障线程号，线程名
-SnapshotTime: 2021-01-01-20-05-58.292875  <- 获取主线程的时间
+SnapshotTime:2021-01-01-20-05-58.292875  <- 获取主线程的时间
 #00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72) <- 主线程调用栈
 #01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
 #02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
@@ -662,7 +662,7 @@ SnapshotTime: 2021-01-01-20-05-58.549685
 
 ### 聚类脚本说明
 
-该脚本的使用仅限于[appfreeze增强日志](#增强日志规格)。当日志内容过长、主线程堆栈存在多次重复时，用于提取业务栈聚类信息（业务栈内容、总出现次数及代表性完整堆栈等），更快定位问题。
+该脚本的使用仅限于[AppFreeze增强日志](#增强日志规格)。当日志内容过长、主线程堆栈存在多次重复时，用于提取业务栈聚类信息（业务栈内容、总出现次数及代表性完整堆栈等），更快定位问题。
 
 1.脚本功能
 
@@ -718,7 +718,7 @@ SnapshotTime: 2021-01-01-20-05-58.549685
 
    （3）output_dir不存在时脚本会自动创建（若脚本未实现自动创建，请提前建好目录）。
     
-   （4）该脚本不支持在DevEco Studio中执行，请在已按照的python环境下运行该脚本。
+   （4）该脚本不支持在DevEco Studio中执行，请在已安装的Python环境下运行该脚本。
 
 6.聚类脚本源码
 

@@ -152,7 +152,7 @@ try {
 ```
 
 
-The scope of the framework layer is embedded in the end-to-end process of accessing native code from ArkTS. That is, the scope is opened when the native method is called and closed when the native method ends. The lifecycle of the created ArkTS object ends when the call ends, and no memory leak occurs. The calling is as follows:
+The framework layer defines the API mapping table between the ArkTS and native sides in the core initialization function **Init**. When the ArkTS side accesses the native function through the API in the mapping table, the framework layer automatically adds the scope. You do not need to add the **napi_open_handle_scope** and **napi_close_handle_scope** APIs to manage the lifecycle of ArkTS objects. That is, the scope is automatically opened when the native function is called and automatically closed when the native function ends. The lifecycle of the ArkTS object created in the native function ends when the native function returns, and no memory leak occurs. The following example defines the **NewObject** function. (You do not need to add **napi_open_handle_scope** and **napi_close_handle_scope** to define the function in the API mapping table to manage the life cycle of the ArkTS object.)
 ```cpp
 // Open the scope before calling NewObject.
 napi_value NewObject(napi_env env, napi_callback_info info)
@@ -169,9 +169,21 @@ napi_value NewObject(napi_env env, napi_callback_info info)
     napi_create_string_utf8(env, "Hello from Node-API!", NAPI_AUTO_LENGTH, &value);
     // Set the property on the object.
     napi_set_property(env, object, name, value);
+    // After the result leaves the scope, the object handle is released, and the object returned to ArkTS is managed by ArkTS.
     return object;
 }
 // The framework layer closes the scope after the NewObject function call ends.
+
+// Core initialization function.
+static napi_value Init(napi_env env, napi_value exports)
+{
+    // Define the API mapping table.
+    napi_property_descriptor desc[] = {
+        { "newObject", nullptr, NewObject, nullptr, nullptr, nullptr, napi_default, nullptr }
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
 ```
 
 ### napi_open_escapable_handle_scope, napi_close_escapable_handle_scope, and napi_escape_handle

@@ -14,6 +14,7 @@
 
 
 以下示例基于[接入ArkTS页面](ndk-access-the-arkts-page.md)章节，补充相关事件监听。
+
 在ArkUITextNode对象中实现布局或者绘制送显完成事件注册逻辑。
 <!-- @[arkUITestNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUITextNode.h) -->
 

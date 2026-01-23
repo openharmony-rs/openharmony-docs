@@ -8,13 +8,13 @@
 
 ## 简介
 
-HID DDK（HID Driver Development Kit）是为开发者提供的HID设备驱动程序开发套件，支持开发者基于用户态，在应用层开发HID设备驱动。提供了一系列主机侧访问设备的接口，包括创建设备、向设备发送事件、销毁设备、打开关闭设备、读取写入报告、获取设备信息等。
+HidDdk（HID Driver Development Kit）是为开发者提供的HID设备驱动程序开发套件，支持开发者基于用户态，在应用层开发HID设备驱动。提供了一系列主机侧访问设备的接口，包括创建设备、向设备发送事件、销毁设备、打开关闭设备、读取写入报告、获取设备信息等。
 
-凡是采用USB总线，通过HID协议传输数据的设备，或者通过扩展外设驱动创建虚拟设备，来实现与非标设备的信息交互都可以使用HID DDK开发设备驱动。
+凡是采用USB总线，通过HID协议传输数据的设备，或者通过扩展外设驱动创建虚拟设备，来实现与非标设备的信息交互都可以使用HidDdk开发设备驱动。
 
 ### 基本概念
 
-在进行HID DDK开发前，开发者应了解以下基本概念：
+在进行HidDdk开发前，开发者应了解以下基本概念：
 
 - **HID**
 
@@ -26,19 +26,19 @@ HID DDK（HID Driver Development Kit）是为开发者提供的HID设备驱动�
 
 ### 实现原理
 
-非标外设应用通过扩展外设管理服务获取HID设备的ID，通过RPC将ID和要操作的动作下发给HID设备驱动应用，驱动应用通过调用HID DDK接口可创建、销毁HID设备，以及对HID设备发送事件，获取HID报文，解析报文等，DDK接口使用HDI服务将指令下发至内核驱动，内核驱动使用指令与设备通信。
+非标外设应用通过扩展外设管理服务获取HID设备的ID，通过RPC将ID和要操作的动作下发给HID设备驱动应用，驱动应用通过调用HidDdk接口可创建、销毁HID设备，以及对HID设备发送事件，获取HID报文，解析报文等，DDK接口使用HDI服务将指令下发至内核驱动，内核驱动使用指令与设备通信。
 
-**图1** HID DDK调用原理
+**图1** HidDdk调用原理
 
 ![HID_DDK原理图](figures/ddk-schematic-diagram.png)
 
 ## 约束与限制
 
-- HID DDK开放API支持非标HID类外设扩展驱动开发场景。
+- HidDdk开放API支持非标HID类外设扩展驱动开发场景。
 
-- HID DDK开放API仅允许DriverExtensionAbility生命周期内使用。
+- HidDdk开放API仅允许DriverExtensionAbility生命周期内使用。
 
-- 使用HID DDK开放API需要在module.json5中声明匹配的ACL权限，例如ohos.permission.ACCESS_DDK_HID。
+- 使用HidDdk开放API需要在module.json5中声明匹配的ACL权限，例如ohos.permission.ACCESS_DDK_HID。
 
 ## 接口说明
 
@@ -47,8 +47,8 @@ HID DDK（HID Driver Development Kit）是为开发者提供的HID设备驱动�
 | OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEventProperties) | 创建HID设备。请在设备使用完后使用OH_Hid_DestroyDevice销毁设备。 |
 | OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t length) | 向指定deviceId的HID设备发送事件。 |
 | OH_Hid_DestroyDevice(int32_t deviceId) | 销毁指定deviceId的HID设备。 |
-| int32_t OH_Hid_Init(void) | 初始化HID DDK。 |
-| int32_t OH_Hid_Release(void) | 释放HID DDK。 |
+| int32_t OH_Hid_Init(void) | 初始化HidDdk。 |
+| int32_t OH_Hid_Release(void) | 释放HidDdk。 |
 | int32_t OH_Hid_Open(uint64_t deviceId, uint8_t interfaceIndex, Hid_DeviceHandle **dev) | 打开deviceId和interfaceIndex指定的设备。 |
 | int32_t OH_Hid_Close(Hid_DeviceHandle **dev) | 关闭设备。 |
 | int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint32_t *bytesWritten) | 向设备写入报告。 |
@@ -63,13 +63,13 @@ HID DDK（HID Driver Development Kit）是为开发者提供的HID设备驱动�
 | int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t buffSize) | 获取设备报告。 |
 | int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t buffSize, uint32_t *bytesRead) | 获取设备报告描述符。 |
 
-详细的接口说明请参考[HID DDK](../../reference/apis-driverdevelopment-kit/capi-hidddk.md)。
+详细的接口说明请参考[HidDdk](../../reference/apis-driverdevelopment-kit/capi-hidddk.md)。
 
 ## 开发步骤
 
 ### HID基础驱动能力开发
 
-以下步骤描述了如何使用 **HID DDK**开发HID设备驱动：
+以下步骤描述了如何使用 **HidDdk**开发HID设备驱动：
 
 **添加动态链接库**
 
@@ -86,7 +86,7 @@ libhid.z.so
 
 1. 创建设备。
 
-   使用 **hid_ddk_api.h** 的 **OH_Hid_CreateDevice** 接口创建HID设备，成功返回设备deviceId，失败返回[错误码](../../reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md#hid_ddkerrcode)。
+   使用 **hid_ddk_api.h** 的 **OH_Hid_CreateDevice** 接口创建HID设备，成功返回设备deviceId，失败返回[Hid_DdkErrCode](../../reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md#hid_ddkerrcode)。
 
    <!-- @[driver_hid1_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
    
@@ -130,7 +130,7 @@ libhid.z.so
 
 3. 释放资源。
 
-  在所有请求处理完毕，程序退出前，使用 **hid_ddk_api.h** 的 **OH_Hid_DestroyDevice** 接口销毁HID设备。
+   在所有请求处理完毕，程序退出前，使用 **hid_ddk_api.h** 的 **OH_Hid_DestroyDevice** 接口销毁HID设备。
 
    <!-- @[driver_hid1_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
    
@@ -142,7 +142,7 @@ libhid.z.so
 
 ### HID报文通信驱动能力开发
 
-以下步骤描述了如何使用 **HID DDK** 开发HID报文通信驱动：
+以下步骤描述了如何使用 **HidDdk** 开发HID报文通信驱动：
 
 **添加动态链接库**
 
@@ -159,7 +159,7 @@ libhid.z.so
 
 1. 初始化DDK。
 
-   使用 **hid_ddk_api.h** 的 **OH_Hid_Init** 初始化HID DDK。
+   使用 **hid_ddk_api.h** 的 **OH_Hid_Init** 初始化HidDdk。
 
    <!-- @[driver_hid_report_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
    
@@ -174,7 +174,7 @@ libhid.z.so
 
 2. 打开设备。
 
-   初始化HID DDK后，使用 **hid_ddk_api.h** 的 **OH_Hid_Open** 打开HID设备。
+   初始化HidDdk后，使用 **hid_ddk_api.h** 的 **OH_Hid_Open** 打开HID设备。
 
    <!-- @[driver_hid_report_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
    
@@ -385,7 +385,7 @@ libhid.z.so
 
 8. 释放DDK。
 
-   在关闭HID设备后，使用 **hid_ddk_api.h** 的 **OH_Hid_Release** 释放HID DDK。
+   在关闭HID设备后，使用 **hid_ddk_api.h** 的 **OH_Hid_Release** 释放HidDdk。
 
    <!-- @[driver_hid_report_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    

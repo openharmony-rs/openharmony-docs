@@ -16,7 +16,7 @@ Low-power functionality is currently supported for external speakers, wired head
 
 ## Development Guidelines
 
-The low-power audio renderer provides the same APIs as the regular audio renderer. However, you should pay attention to the application data cycle and playback progress. For details about how to use the audio renderer, see [Using AudioRenderer for Audio Playback](using-audiorenderer-for-playback.md) and [Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md).
+The low-power audio renderer provides the same APIs as the regular audio renderer. However, you should pay attention to the application data cycle and playback progress. For details about how to use the audio renderer, see [Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md) and [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md).
 
 **Data cycle diagram**
 
@@ -47,9 +47,9 @@ During the data cycle, when data is quickly requested to fill the buffer, playba
     >- If a low-power renderer is started first, followed by a low-latency renderer, then the low-latency renderer is downgraded to a regular renderer.
     >- If a low-latency renderer is started first, followed by a low-power renderer, then the low-power renderer is downgraded to a regular renderer.
 
-4. Finishing writing application data does not mean it has been played. You need to call [getAudioTimestampInfo()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19) or [OH_AudioRenderer_GetAudioTimestampInfo()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo) to obtain the audio timestamp to determine the actual playback progress.
+4. Writing application data does not mean that the playback is complete. You need to call [getAudioTimestampInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19) or [OH_AudioRenderer_GetAudioTimestampInfo()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo) to obtain the audio timestamp to determine the actual playback progress.
 
     > - You are advised to call the API for obtaining the timestamp at an interval greater than 200 ms to avoid affecting the system performance.
-    > - After the application calls [flush()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#flush11) or [OH_AudioRenderer_Flush()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_flush), the amount of data played is reset to **0**.
+    > - After the application calls [flush](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#flush11) or [OH_AudioRenderer_Flush()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_flush), the amount of data played back will be reset to 0.
     > - Due to the system frame length and latency mechanism, the amount of data played is always less than the amount of data written.
     > - You can obtain the timestamp after finishing writing data. If the timestamp obtained remains unchanged for two cycles, playback is finished. You can also estimate the remaining playback duration based on the set speed. If the estimated duration exceeds the actual duration, playback is finished. For example, let the total written data amount be p<sub>1</sub>, obtain the timestamp p<sub>2</sub> after writing, the set speed be α where α>0, the audio sampling rate be f<sub>s</sub> where f<sub>s</sub>>0, and the remaining playable duration be t. The formula is as follows: ![formula_not_played_data_length](figures/formula_not_played_data_length.png)

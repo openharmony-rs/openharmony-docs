@@ -350,7 +350,7 @@ try {
 | -------- | -------- | -------- | -------- | -------- |
 | domain | string | 否 | 否 | 查询包含的事件领域。 |
 | names | string[] | 否 | 否 | 查询所包含的多个事件名称，每个查询规则对象包含多个系统事件名称。 |
-| condition<sup>10+</sup> | string | 否 | 是 | 事件的额外参数条件，格式：{"version":"V1","condition":{"and":[{"param":"参数","op":"操作符","value":"比较值"}]}} |
+| condition<sup>10+</sup> | string | 否 | 是 | 事件的额外参数条件，格式：{"version":"V1","condition":{"and":[{"param":"参数","op":"操作符","value":"比较值"}]}}。<br>参数：指定事件参数的键值。<br>操作符支持：=、!=、<、<=、>和>=。<br>支持在“and”数组中配置多个条件，查询结果取交集。 |
 
 ## Querier
 
@@ -427,6 +427,7 @@ try {
   let queryRules: hiSysEvent.QueryRule[] = [{
     domain: "RELIABILITY",
     names: ["STACK"],
+    condition: '{"version":"V1","condition":{"and":[{"param":"PID","op":"=","value":487},{"param":"PROCESS_NAME","op":"=","value":"syseventservice"}]}}'
   } as hiSysEvent.QueryRule];
   let querier: hiSysEvent.Querier = {
     onQuery: (infos: hiSysEvent.SysEventInfo[]) => {

@@ -12,9 +12,9 @@
 
 开发者可通过HiAppEvent接口订阅地址越界事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-- [订阅踩内存事件（ArkTS）](hiappevent-watcher-address-sanitizer-events-arkts.md)
+- [订阅地址越界事件（ArkTS）](hiappevent-watcher-address-sanitizer-events-arkts.md)
 
-- [订阅踩内存事件（C/C++）](hiappevent-watcher-address-sanitizer-events-ndk.md)
+- [订阅地址越界事件（C/C++）](hiappevent-watcher-address-sanitizer-events-ndk.md)
 
 > **说明：**
 >

@@ -13,7 +13,7 @@ You can use the APIs of this module to configure the concerned information, obta
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The current page contains only the system APIs of the current module. For details about other public APIs, see [AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md).
 
 ## How to Use
@@ -32,8 +32,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 ## Parameter<sup>20+</sup>
 
-Sets the parameter for a specific operation when the accessibility node element executes this operation.
-For details, see [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).
+Sets the parameter for a specific operation when the accessibility node element executes this operation. For details, see [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).
 
 **System API**: This is a system API.
 
@@ -56,8 +55,7 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 ## AccessibilityGrid<sup>20+</sup>
 
-Defines accessibility grid information.
-For details, see [AccessibilityElement.currentItem](#accessibilityelement12).
+Defines accessibility grid information. For details, see [AccessibilityElement.currentItem](#accessibilityelement).
 
 **System API**: This is a system API.
 
@@ -71,8 +69,7 @@ For details, see [AccessibilityElement.currentItem](#accessibilityelement12).
 
 ## AccessibilitySpan<sup>20+</sup>
 
-Defines the information about the hyperlink wrapped by the span tag.
-For details, see [AccessibilityElement.spans](#accessibilityelement12).
+Defines the information about the hyperlink wrapped by the span tag. For details, see [AccessibilityElement.spans](#accessibilityelement).
 
 **System API**: This is a system API.
 
@@ -132,7 +129,7 @@ Queries the return value type of the target accessibility nodes.
 
 | Name                 | Type    | Read-Only |Optional| Description                               |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
-| target | Array<[AccessibilityElement](#accessibilityelement12)> | No| No| Target accessibility nodes.|
+| target | Array<[AccessibilityElement](#accessibilityelement)> | No| No| Target accessibility nodes.|
 | result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | No| No| Type of the return value.|
 
 
@@ -723,7 +720,7 @@ Obtains the element that is currently focused. This API uses a promise to return
 **Return value**
 | Type                                | Description                   |
 | ----------------------------------- | ---------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)>| Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)>| Promise used to return the result.|
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
@@ -781,7 +778,7 @@ export default class AccessibilityManager {
 
 ## getRootInActiveWindow<sup>20+</sup>
 
-getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement12)>;
+getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement)>;
 
 Obtains the root element of an active window. This API uses a promise to return the result.
 
@@ -799,7 +796,7 @@ Obtains the root element of an active window. This API uses a promise to return 
 **Return value**
 | Type                                | Description                   |
 | ----------------------------------- | ---------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)>| Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)>| Promise used to return the result.|
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
@@ -858,7 +855,7 @@ export default class AccessibilityManager {
 
 ## getAccessibilityWindowsSync<sup>20+</sup>
 
-getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#accessibilityelement12)>
+getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#accessibilityelement)>
 
 Obtains the accessibility windows.
 
@@ -877,7 +874,7 @@ Obtains the accessibility windows.
 
 | Type                                | Description                   |
 | ----------------------------------- | ---------------------- |
-| Array\<[AccessibilityElement](#accessibilityelement12)> | List of windows.|
+| Array\<[AccessibilityElement](#accessibilityelement)> | List of windows.|
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Accessibility Error Codes](errorcode-accessibility.md).
@@ -935,7 +932,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityElement<sup>12+</sup>
+## AccessibilityElement
 
 Defines the accessibility node element. Before calling the APIs of **AccessibilityElement**, you should call [AccessibilityExtensionContext.getAccessibilityFocusedElement()](#getaccessibilityfocusedelement20) or [AccessibilityExtensionContext.getRootInActiveWindow()](#getrootinactivewindow20) to obtain an **AccessibilityElement** instance.
 
@@ -1136,7 +1133,7 @@ export default class AccessibilityManager {
 }
 ```
 
-### findElement('elementId')<sup>12+</sup>
+### findElement('elementId')
 
 findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>
 
@@ -1184,7 +1181,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 });
 ```
 
-### findElement('textType')<sup>12+</sup>
+### findElement('textType')
 
 findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
@@ -1395,7 +1392,7 @@ Obtains the parent element of an accessibility node. This API uses a promise to 
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1439,7 +1436,7 @@ Obtains the child elements of an element. This API uses a promise to return the 
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1483,7 +1480,7 @@ Obtains the root element of an active window. This API uses a promise to return 
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1532,7 +1529,7 @@ Finds elements based on the content. This API uses a promise to return the resul
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1593,7 +1590,7 @@ Finds elements based on the focus direction. This API uses a promise to return t
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1657,7 +1654,7 @@ Finds elements based on the hint text. This API uses a promise to return the res
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<Array\<[AccessibilityElement](#accessibilityelement12)>> | Promise used to return the result.|
+| Promise\<Array\<[AccessibilityElement](#accessibilityelement)>> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1723,7 +1720,7 @@ Finds elements based on element ID. This API uses a promise to return the result
 
 | Type                                     | Description                  |
 | ---------------------------------------- | --------------------- |
-| Promise\<[AccessibilityElement](#accessibilityelement12)> | Promise used to return the result.|
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise used to return the result.|
 
 **Error codes**
 
@@ -1816,7 +1813,7 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 })
 ```
 
-## ElementAttributeValues<sup>9+</sup>
+## ElementAttributeValues
 
 Provides attribute names and value types of a node element.
 

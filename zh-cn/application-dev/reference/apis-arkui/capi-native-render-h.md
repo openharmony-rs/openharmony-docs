@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供NativeRender接口的类型定义。
+提供NativeRender接口的类型定义。更多详细介绍请参考[构建渲染节点](../../ui/ndk-embed-render-components.md)。
 
 **引用文件：** <arkui/native_render.h>
 
@@ -20,7 +20,7 @@
 
 **相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
 
-**相关示例：** <!--RP1-->[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)<!--RP1End-->
+**相关示例：** <!--RP1-->[NativeRenderNodeSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)<!--RP1End-->
 
 ## 汇总
 

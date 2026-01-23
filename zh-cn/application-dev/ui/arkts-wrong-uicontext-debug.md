@@ -13,9 +13,11 @@
 出现以下异常或系统日志时，可能存在UIContext无效的问题：
 
 - 存在JS异常："Node Constructor error, param uiContext error"。
+
   产生该异常的原因通常是在[自定义节点](./arkts-user-defined-node.md)中使用了无效的UIContext，这可能导致后续UI操作被错误关联到该无效UIContext。
 
 - 存在实例状态更新时，上下文实例ID大于等于100000且小于1000000的日志：
+
   实例状态更新的日志格式为：
 
   `({currentId}:{trackedId}:{trackedReason})][{bundleName}][{moduleName}][{thisInstanceId}]: window {status}`

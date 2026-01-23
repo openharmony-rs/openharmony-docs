@@ -35,6 +35,10 @@ onCreate(want: Want): void
 
 在启动三方VPN进行初始化时回调。
 
+>  **说明：**
+>
+>  建议配对调用[onDestroy](#vpnextensionabilityondestroy)监听三方VPN的销毁，执行资源清理等操作。
+
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **参数**：

@@ -113,7 +113,7 @@ struct Index {
 
 saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>
 
-Saves an edited image, which is passed in through a PixelMap object. This API uses a promise to return the result.
+Saves the passed PixelMap object, which is an edited image. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 

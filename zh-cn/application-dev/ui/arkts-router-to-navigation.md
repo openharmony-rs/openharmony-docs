@@ -164,11 +164,11 @@ export struct PageOne {
 }
 ```
 
-每个子页也需要配置到系统配置文件`route_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
+每个子页也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
 
 ```json
-// 工程配置文件module.json5中配置 {"routerMap": "$profile:route_map"}
-// route_map.json
+// 工程配置文件module.json5中配置 {"routerMap": "$profile:router_map"}
+// router_map.json
 {
   "routerMap": [
     {
@@ -684,7 +684,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 ## 生命周期监听
 
-Router可以通过observer实现注册监听，接口定义请参考Router无感监听[observer.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11)。
+Router可以通过observer实现注册监听，接口定义请参考Router无感监听[uiObserver.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11)。
 
 
 <!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->

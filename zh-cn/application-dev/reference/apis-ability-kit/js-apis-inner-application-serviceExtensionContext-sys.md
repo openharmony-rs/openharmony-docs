@@ -2368,7 +2368,7 @@ class ServiceExtension extends ServiceExtensionAbility {
       moduleName: 'entry_test',
       parameters: {
         'bundleName': 'com.example.myapplication',
-        //与com.example.myapplication.UIExtAbility配置的type相同
+        // 与com.example.myapplication.UIExtAbility配置的type相同
         'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     };
@@ -2440,7 +2440,7 @@ class ServiceExtension extends ServiceExtensionAbility {
       moduleName: 'entry_test',
       parameters: {
         'bundleName': 'com.example.myapplication',
-        //与com.example.myapplication.UIExtAbility配置的type相同
+        // 与com.example.myapplication.UIExtAbility配置的type相同
         'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     };
@@ -2555,7 +2555,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
       });
     }
     catch (e) {
-      log(`exception occured, errCode ${JSON.stringify(e.code)}`);
+      log(`exception occurred, errCode ${JSON.stringify(e.code)}`);
     }
   }
 
@@ -2640,7 +2640,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     } catch (e) {
       let code = (e as BusinessError).code;
       let msg = (e as BusinessError).message;
-      log(`exception occured, errCode: ${code}, errMsg: ${msg}.`);
+      log(`exception occurred, errCode: ${code}, errMsg: ${msg}.`);
     }
   }
 

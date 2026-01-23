@@ -13,7 +13,9 @@ vibrator模块提供控制马达振动的能力，主要包含灯的列表查询
 
 > **说明：**
 >
-> - 该模块从API version 8开始不再维护，推荐使用新接口[@ohos.vibrator](js-apis-vibrator.md)。
+> - 模块维护策略：
+ >   - 对于Lite Wearable设备类型，该模块长期维护，正常使用。 
+ >   - 对于支持该模块的其他设备类型，该模块从API version 8开始不再维护，推荐使用新接口[@ohos.vibrator](js-apis-vibrator.md)。
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 该功能使用需要对应硬件支持，仅支持真机调试。
 
@@ -31,11 +33,11 @@ import { Vibrator } from '@kit.SensorServiceKit';
 
 触发设备振动。
 
+除Lite Wearable外，从API Version8开始，推荐使用[vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9)。
+
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice.Lite
-
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 **参数**：
 
@@ -70,8 +72,6 @@ Vibrator.vibrate(vibrateOptions);
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice.Lite
-
-**设备行为差异**：该接口在Lite Wearable中无效果，在其他设备类型中可正常调用。
 
 | 名称     | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |

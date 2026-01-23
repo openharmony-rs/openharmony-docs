@@ -10,7 +10,7 @@ A safe area refers to the display area that is not covered by system-defined non
 
 > **NOTE**
 >
-> This attribute is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.<br>
+> The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.<br>
 > The camera cutout area is not considered part of the non-safe area by default, and pages do not automatically avoid it.<br>
 > You can set the camera cutout area as a non-safe area since API version 12, so that content is not displayed in this area. To do so, add the following to the **module.json5** file:<br>
   "metadata": [<br>

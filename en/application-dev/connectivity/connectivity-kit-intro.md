@@ -10,7 +10,9 @@
 ## About This Kit
 
 Mobile devices have become an integral part of everyday life. For example, people listen to music with Bluetooth headphones, surf the Internet over Wi-Fi, and use their mobile phone as a transit pass or credit card.
+
 In these applications, NFC implements short-range interactions like payments and access control, Bluetooth provides basic wireless connections for devices, such as headphones, wearables, and peripheral devices, and Wi-Fi provides high-speed Internet access.
+
 You can use Connectivity Kit to design mobile applications to meet diverse user needs in their daily lives.
 
 ### Bluetooth
@@ -67,7 +69,7 @@ The WLAN system provides users with WLAN access (STA mode), peer-to-peer data tr
 The Near Field Communication (NFC) service provides functionalities such as NFC switch control, NFC tag reading and writing, and NFC card emulation.
 
 - NFC control<br>
-  The **nfc.controller** module provides APIs for enabling and disabling NFC. To call the APIs provided by this module, the application must have the **ohos.permission.MANAGE_SECURE_SETTINGS** permission, which is available only for system applications. That is, only system applications can enable or disable NFC. For details, see [@ohos.nfc.controller](../reference/apis-connectivity-kit/js-apis-nfcController.md).
+  The **nfc.controller** module provides APIs for enabling and disabling NFC. To call the APIs provided by this module, the application must have the ohos.permission.MANAGE_SECURE_SETTINGS permission, which is available only for system applications. That is, only system applications can enable or disable NFC. For details, see [@ohos.nfc.controller](../reference/apis-connectivity-kit/js-apis-nfcController.md).
 
 - NFC tag reading and writing<br>
   The **nfc.tag** module provides APIs for discovering NFC tags, dispatching NFC tags to applications, and enabling applications to read or write NFC tags. You need to declare the NFC tag read/write capability for your application in the specified format, so that the application can receive NFC tags dispatched. For details, see [@ohos.nfc.tag](../reference/apis-connectivity-kit/js-apis-nfcTag.md).

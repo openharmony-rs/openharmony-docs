@@ -56,10 +56,9 @@ Sets the tab navigation order of the component in sequential focus navigation wi
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| index  | number | Yes  | Tab navigation order of the component in sequential focus navigation with the **Tab** key. When components with positive **tabIndex** values are present, only these components are reachable through sequential focus navigation, and they are navigated cyclically in ascending order based on the **tabIndex** value. When components with positive **tabIndex** values are not present, those components with a **tabIndex** value of **0** are navigated based on the preset focus navigation rule.<br>The [UiExtension](../js-apis-arkui-uiExtension.md) component does not support **tabIndex**. As such, using **tabIndex** on [hierarchical pages](../../../ui/arkts-common-events-focus-event.md#basic-concepts) that contain **UiExtension** components may lead to disordered focus navigation.<br>- **tabIndex** >= 0: The component is focusable and can be reached through sequential keyboard navigation.<br>- **tabIndex** < 0 (usually **tabIndex** = -1): The component is focusable, but cannot be reached through sequential keyboard navigation.<br> **NOTE**<br> **tabIndex** and **focusScopeId** cannot be used together.
-|
+| Name| Type  | Mandatory| Description           |
+| ------ | ------ | ---- | ------------------------------------ |
+| index  | number | Yes  | Tab navigation order of the component in sequential focus navigation with the **Tab** key. When components with positive **tabIndex** values are present, only these components are reachable through sequential focus navigation, and they are navigated cyclically in ascending order based on the **tabIndex** value. When components with positive **tabIndex** values are not present, those components with a **tabIndex** value of **0** are navigated based on the preset focus navigation rule.<br>The [UiExtension](../js-apis-arkui-uiExtension.md) component does not support **tabIndex**. As such, using **tabIndex** on [hierarchical pages](../../../ui/arkts-common-events-focus-event.md#basic-concepts) that contain **UiExtension** components may lead to disordered focus navigation.<br>- **tabIndex** >= 0: The component is focusable and can be reached through sequential keyboard navigation.<br>- **tabIndex** < 0 (usually **tabIndex** = -1): The component is focusable, but cannot be reached through sequential keyboard navigation.<br> **NOTE**<br> **tabIndex** and **focusScopeId** cannot be used together.|
 
 **Return value**
 
@@ -172,6 +171,7 @@ Implements focus control.
 requestFocus(value: string): boolean
 
 Requests focus transfer to the specified component during the next frame rendering. This global API provides asynchronous focus control.
+
 For scenarios requiring immediate focus changes, it is recommended that you use the focus synchronization transfer API [requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12) in **FocusController**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -196,6 +196,8 @@ For scenarios requiring immediate focus changes, it is recommended that you use 
 
 ## FocusBoxStyle<sup>12+</sup>
 
+Sets the system focus box style for the component.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -210,7 +212,7 @@ For scenarios requiring immediate focus changes, it is recommended that you use 
 
 focusScopePriority(scopeId: string, priority?: FocusPriority): T
 
-Sets the focus priority of this component in a specified container. It must be used together with **focusScopeId**.
+Sets the focus priority of this component in a specified container. It must be used together with [focusScopeId](#focusscopeid12).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -230,6 +232,8 @@ Sets the focus priority of this component in a specified container. It must be u
 | T | Current component.|
 
 ### FocusPriority<sup>12+</sup>
+
+Sets the focus priority of a component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -541,27 +545,27 @@ struct RequestFocusExample {
     Column({ space:20 }){
       Row({space: 5}) {
         Button("id: " + this.idList[0] + " focusable(false)")
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[0])
           .focusable(false)
         Button("id: " + this.idList[1])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[1])
       }
       Row({space: 5}) {
         Button("id: " + this.idList[2])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[2])
         Button("id: " + this.idList[3])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[3])
       }
       Row({space: 5}) {
         Button("id: " + this.idList[4])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[4])
         Button("id: " + this.idList[5])
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .id(this.idList[5])
       }
       Row({space: 5}) {
@@ -577,7 +581,7 @@ struct RequestFocusExample {
             this.selectId = this.idList[index]
           })
         Button("RequestFocus")
-          .width(200).height(70).fontColor(Color.White)
+          .width(180).height(70).fontColor(Color.White)
           .onClick(() => {
             // You are advised to use this.getUIContext().getFocusController().requestFocus().
             let res = focusControl.requestFocus(this.selectId)      // Move the focus to the component specified by this.selectId.
@@ -596,6 +600,7 @@ struct RequestFocusExample {
 Diagrams:
 
 Press the **Tab** key to activate the focus state.
+
 Below shows how the UI behaves when you request focus for a component that does not exist.
 
 ![requestFocus1](figures/requestFocus1.png)
@@ -643,7 +648,7 @@ struct RequestFocusExample {
 
 ### Example 4: Setting Focus Group Traversal
 
-This example demonstrates how to set a component as the initial focus when its container gains focus by configuring [focusScopePriority](#focusscopeid12). Configuring [focusScopeId](#focusscopeid12) allows the bound container component to become a focus group.
+This example demonstrates how to set a component as the initial focus when its container gains focus by configuring [focusScopePriority](#focusscopepriority12). Configuring [focusScopeId](#focusscopeid12) allows the bound container component to become a focus group.
 
 ```ts
 // focusTest.ets
@@ -879,6 +884,7 @@ Pressing **Tab** moves the focus back to **button1**.
 ### Example 6: Setting Custom Focus Movement
 
 This example demonstrates how to implement custom focus movement logic using the [nextFocus](#nextfocus18) API, available since API version 18.
+
 Without [nextFocus](#nextfocus18) configured, the default focus navigation order using the **Tab** key is as follows: M -> A -> B -> C. After [nextFocus](#nextfocus18) is configured, the order changes to the following: M -> D -> F -> B.
 
 ```ts

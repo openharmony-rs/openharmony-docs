@@ -17,13 +17,20 @@
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPinAuthState> {
   let ret: huksExternalCrypto.HuksExternalPinAuthState = huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
   try {
     /* 1.构造查询PIN码状态参数 */
-    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\", \"index\":{\"key\":\"testKey\"}}";
+    const testResourceId = JSON.stringify({
+      providerName: "testProviderName",
+      bundleName: "com.example.cryptoapplication",
+      abilityName: "CryptoExtension",
+      index: {
+        key: "testKey"
+      } as ESObject
+    });
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
     /* 2.调用getUkeyPinAuthState */

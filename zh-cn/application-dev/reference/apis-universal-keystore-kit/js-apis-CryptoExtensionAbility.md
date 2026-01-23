@@ -59,7 +59,7 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | 名称 | 类型    | 只读 | 可选 | 说明  |
 | ------ | --------- | ---- | ---- | ------ |
 | purpose    | [certificateManager.CertificatePurpose](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)  | 否   | 否   | 表示证书链对应密钥的使用类型。 |
-| resourceId  | string | 否   | 否   | 资源ID。 |
+| resourceId  | string | 否   | 否   | 资源ID。JSON格式，能够映射到Ukey中的某个资源。 |
 | cert  | Uint8Array | 否   | 否   | 证书。 |
 
 ## HuksCryptoExtensionResult
@@ -70,13 +70,13 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 
 | 名称 | 类型  | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ------ |
-| resultCode  | int | 否   | 否   | 返回值的错误码。 |
+| resultCode  | number | 否   | 否   | 返回值的错误码。 |
 | handle  | string | 否   | 是   | 资源句柄。 |
-| authState  | int | 否   | 是   | 认证状态。 |
-| retryCount  | int | 否   | 是   | 重试次数。 |
+| authState  | number | 否   | 是   | 认证状态。 |
+| retryCount  | number | 否   | 是   | 重试次数。 |
 | certs  | Array<[HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo)> | 否   | 是   | 证书。 |
 | property  | Array<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 否   | 是   | 属性。 |
-| outData  | int | 否   | 是   | 返回的数据。 |
+| outData  | Uint8Array | 否   | 是   | 返回的数据。 |
 
 ## CryptoExtensionAbility.onOpenResource
 
@@ -113,7 +113,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -152,7 +152,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -194,7 +194,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -234,7 +234,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -274,7 +274,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -312,7 +312,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -330,7 +330,7 @@ onInitSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExte
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ----- | ---- | ------- |
 | handle | string                      | 是   | 资源句柄。|
-| params  | [HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| params  | [huks.HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
@@ -351,14 +351,14 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
 
 ## CryptoExtensionAbility.onUpdateSession
 
-onUpdateSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
+onUpdateSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 三段式密钥会话更新数据操作。使用Promise异步回调。
 
@@ -368,8 +368,8 @@ onUpdateSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoEx
 
 | 参数名   | 类型  | 必填 | 说明 |
 | -------- | ----- | ---- | ------|
-| handle | string | 是   | 资源句柄。   |
-| params  | [HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
+| initHandle | string | 是   | 资源句柄。   |
+| params  | [huks.HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。 |
 
 **返回值：**
 
@@ -391,14 +391,14 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
 
 ## CryptoExtensionAbility.onFinishSession
 
-onFinishSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
+onFinishSession(initHandle: string, params: huks.HuksOptions): Promise\<HuksCryptoExtensionResult>
 
 三段式密钥会话结束操作。使用Promise异步回调。
 
@@ -408,8 +408,8 @@ onFinishSession(handle: string, params: huks.HuksOptions): Promise\<HuksCryptoEx
 
 | 参数名   | 类型 | 必填 | 说明  |
 | -------- | -------- | ---- | --------- |
-| handle | string  | 是   | 资源句柄。 |
-| params  | [HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份可通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，还包括算法参数（算法类型、填充模式等）。 |
+| initHandle | string  | 是   | 资源句柄。 |
+| params  | [huks.HuksOptions](js-apis-huks.md#huksoptions)  | 是   | 传入的参数，应用身份可通过[HUKS_EXT_CRYPTO_TAG_UID](js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，还包括算法参数（算法类型、填充模式等）。 |
 
 **返回值：**
 
@@ -431,7 +431,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -472,7 +472,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```
@@ -512,7 +512,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
     };
 
     // ...
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
 }
 ```

@@ -63,6 +63,8 @@
    >
    > 1. 在onGetProperty中须实现导出公钥功能，以便上游业务使用PIN加密传输并完成PIN码认证。加密算法支持RSA、SM2等。当入参propertyId为SKF_ExportPublicKey时，返回的公钥信息采用JSON格式，包含以下4个必选字段，分别是publicKey（公钥数据）、algo（算法类型及密钥长度）、transformation（密码学操作参数，如填充模式）、size（公钥数据长度）。具体实现可参考下方示例代码中onGetProperty接口的相关部分。
    > 2. PIN认证状态需要做基于UID的隔离，在onAuthUkeyPin接口的入参params中会包含业务的UID信息（通过[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)可获取业务身份），可基于此做PIN认证状态隔离。
+   > 3. 接口函数的错误不支持自定义返回，不按接口定义方式返回会导致异常。
+   > 4. 在onExportCertificate的入参params中有[HUKS_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)参数。<br>其值含义如下：<br>0：默认用途。<br>1：用于查询所有凭据。<br>2：用于凭据签名。<br>3：用于凭据加密。
 
    ```ts
    import { huks, huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionCertInfo, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
@@ -132,7 +134,7 @@
        let emptyArray: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
        let result: HuksCryptoExtensionResult = {
          resultCode: -1,
-         properity: emptyArray
+         property: emptyArray
        };
 
        // 导出公钥
@@ -157,7 +159,7 @@
          // 4. 保存私钥，后续用于解密加密的数据
          let privKey = keyPair.priKey
          // 返回用来加密传pin的公钥和加密算法信息，详见导出公钥文档
-         result.properity = [
+         result.property = [
            { tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_EXTRA_DATA, value: info }
          ]
          return Promise.resolve(result);
@@ -171,7 +173,7 @@
          let driver: YourUKeyDriver = YourDriverInstance;
          res = driver.YourDriver_onGetProperty(...);
          result.resultCode = res.resultCode
-         result.properity = res.properity
+         result.property = res.property
        } catch (error) {
          // 场景：获取属性失败
          result.resultCode = res.resultCode

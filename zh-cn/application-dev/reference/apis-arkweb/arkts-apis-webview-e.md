@@ -367,8 +367,8 @@ Web页面场景下，全局滚动条模式。
 | ERR_CONTROLLER_NOT_INITED   | -3 | WebViewController未绑定组件。 |
 | ERR_KEY_NOT_MATCH   | -4 | 未匹配到key值，对于[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)需与[getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20)配套使用并且key值一致，否则返回该错误码。 |
 | ERR_SIGNIFICANT_CHANGE   | -5 | 当相似度较低时，系统会判定为跳变太大，[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)接口不会成功启用插帧。 |
-| ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的插帧持续时间超出范围。 |
-| ERR_EXPIRATION_TIME_OUT_OF_RANGE<sup>23+</sup>   | -7 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的历史帧失效时间超出范围。 |
+| ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的插帧持续时间超出范围。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ERR_EXPIRATION_TIME_OUT_OF_RANGE<sup>23+</sup>   | -7 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的历史帧失效时间超出范围。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## BlanklessFrameInterpolationState <sup>23+</sup>
 
@@ -439,3 +439,21 @@ Web软键盘自动控制模式。
 | NONE | 0 | 允许在跨站请求中携带cookie，但必须同时设置secure属性。 |
 | LAX | 1 | 允许特定的跨站请求携带cookie，如某些get请求的导航场景。 |
 | STRICT | 2 | 禁止在跨站请求中携带cookie。 |
+
+## UserAgentFormFactor<sup>24+</sup>
+
+用户设备形态。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值 | 说明                              |
+| ------------ | -- |--------------------------------- |
+| AUTOMOTIVE  | 'Automotive' |车机，字符串类型。|
+| DESKTOP       | 'Desktop' |PC，字符串类型。|
+| MOBILE       | 'Mobile' |手机，字符串类型。|
+| EINK      | 'EInk' |墨水屏，字符串类型。|
+| TABLET | 'Tablet' |平板，字符串类型。|
+| WATCH        | 'Watch' |手表，字符串类型|
+| XR        | 'XR' |VR+AR设备，字符串类型|

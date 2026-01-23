@@ -162,7 +162,7 @@ build() {
 	
 	(4) 获取Web组件自身高度：webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
 	
-	(5) 获取Web组件窗口高度：webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window. innerHeight');
+	(5) 获取Web组件窗口高度：webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
 	
 	(6) 获取Web组件的滚动偏移量：webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
 5. 如何让Scroll组件不滚动。

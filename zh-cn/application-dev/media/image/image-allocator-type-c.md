@@ -1,4 +1,4 @@
-# 申请图片解码内存(C/C++)
+# 图片解码内存优化(C/C++)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->

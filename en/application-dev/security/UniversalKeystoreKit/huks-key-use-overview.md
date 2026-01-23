@@ -26,12 +26,15 @@ The [Group Key](huks-group-key-overview.md) feature is supported since API versi
 HUKS operates data based on a key session. The general process is as follows:
 
 1. (Mandatory) Initialize a key session using [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9).
+
    You need to pass in the key alias and key operation parameters. A session handle will be returned after the initialization. The key operation parameters must contain the parameters required by the cipher algorithm, including the cipher algorithm, key size, key purpose, working mode, padding mode, hash mode, IV, NONCE, and AAD.
 
 2. (Optional) Process data by segment using [updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9).
+
    Process data by segment as required by the cryptographic algorithm in use or if the data to be processed exceeds 100 KB in size. Otherwise, skip this step.
 
 3. (Mandatory) Finish the key session using [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9).
+
    If the data is processes by segment, [huks.finishSession()] processes the last data segment and finishes the key session.
 
 You can use [abortSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksabortsession9) to abort the session if an error occurs in any of the preceding steps or the current key operation data is not required.
@@ -39,4 +42,3 @@ You can use [abortSession](../../reference/apis-universal-keystore-kit/js-apis-h
 > **NOTE**
 > - For devices with small memory, you are advised to split data based on the storage capability of the device and cyclically call [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) and [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9).
 > - The session duration refers to the interval between the [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) and [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9) calls. When the system memory is low, the system clears the timeout sessions. Therefore, the session duration should not be too long (not more than 1 minute).
-<!--no_check-->

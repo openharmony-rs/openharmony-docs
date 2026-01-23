@@ -673,3 +673,50 @@ static napi_value GetLatestParameter(napi_env env, napi_callback_info info)
     return result;
 }
 ```
+
+### OH_AbilityRuntime_ApplicationContextNotifyPageChanged
+
+```cpp
+AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(
+    const char* targetPageName, int32_t targetPageNameLength, int32_t windowId)
+```
+
+**Description**
+
+This API can be called only from third-party frameworks. Each time a third-party framework switches pages, it notifies the system of the target page information (including the target page path, the length of the target page path, and the window ID corresponding to the target page). The system can adjust or recover the page according to product policies.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char* targetPageName | Target page path.|
+| int32_t targetPageNameLength | Length of the target page path.|
+| int32_t windowId | [Window ID](../apis-arkui/arkts-apis-window-i.md#windowinfo18) corresponding to the target page.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | One of the following execution results:<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR: The operation is successful.<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID: The input parameter **targetPageName** is empty or the windowId is invalid.<br>**ABILITY_RUNTIME_ERROR_CODE_INTERNAL**: An internal error occurs.|
+
+**Example**
+```cpp
+#include "napi/native_api.h"
+#include "AbilityKit/ability_runtime/application_context.h"
+
+static bool NotifyPageChanged(napi_env env, napi_callback_info info)
+{
+    const char* testPageName = "https://home.taobao.com/homepage";
+    int32_t testPageNameLen = 32;
+    int32_t testWindowId = 12; // The sample value is for reference only. Use a valid window ID in actual development.
+    int32_t ret = OH_AbilityRuntime_ApplicationContextNotifyPageChanged(testPageName, testPageNameLen, testWindowId);
+
+    if (ret != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
+        // Handle exceptions.
+        return false;
+    }
+    return true;
+}
+```

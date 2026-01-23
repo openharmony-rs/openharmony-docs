@@ -48,7 +48,7 @@ dial\(phoneNumber: string, callback: AsyncCallback\<boolean\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.dial("138xxxxxxxx", (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -84,7 +84,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -124,7 +124,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
-    console.log(`dial success, promise: data->${JSON.stringify(data)}`);
+    console.info(`dial success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`dial fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -168,7 +168,7 @@ call.makeCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
         console.error(`makeCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`makeCall success`);
+        console.info(`makeCall success`);
     }
 });
 ```
@@ -214,7 +214,7 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall("138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -266,7 +266,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = this.getUIContext().getHostContext() as Context;
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall(context, "138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -295,7 +295,7 @@ call.hasCall((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`hasCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`hasCall success, data->${JSON.stringify(data)}`);
+        console.info(`hasCall success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -321,7 +321,7 @@ hasCall\(\): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hasCall().then(() => {
-    console.log(`hasCall success`);
+    console.info(`hasCall success`);
 }).catch((err: BusinessError) => {
     console.error(`hasCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -345,7 +345,7 @@ hasCallSync\(\): boolean
 
 ```ts
 let hasCall: boolean = call.hasCallSync();
-console.log(`hasCallSync success, has call is ` + hasCall);
+console.info(`hasCallSync success, has call is ` + hasCall);
 ```
 
 
@@ -372,7 +372,7 @@ call.getCallState((err: BusinessError, data: call.CallState) => {
     if (err) {
         console.error(`getCallState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallState success, data->${JSON.stringify(data)}`);
+        console.info(`getCallState success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -398,7 +398,7 @@ getCallState\(\): Promise\<CallState\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallState().then((data: call.CallState) => {
-    console.log(`getCallState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallState fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -422,7 +422,7 @@ getCallStateSync\(\): CallState
 
 ```ts
 let callState: call.CallState = call.getCallStateSync();
-console.log(`the call state is:` + callState);
+console.info(`the call state is:` + callState);
 ```
 
 ## call.hasVoiceCapability<sup>7+</sup>
@@ -441,7 +441,7 @@ hasVoiceCapability\(\): boolean
 
 ```ts
 let result: boolean = call.hasVoiceCapability();
-console.log(`hasVoiceCapability: ${JSON.stringify(result)}`);
+console.info(`hasVoiceCapability: ${JSON.stringify(result)}`);
 ```
 
 ## call.isEmergencyPhoneNumber<sup>7+</sup>
@@ -480,7 +480,7 @@ call.isEmergencyPhoneNumber("138xxxxxxxx", (err: BusinessError, data: boolean) =
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -524,7 +524,7 @@ call.isEmergencyPhoneNumber("112", options, (err: BusinessError, data: boolean) 
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -570,7 +570,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.EmergencyNumberOptions = {slotId: 1}
 call.isEmergencyPhoneNumber("138xxxxxxxx", options).then((data: boolean) => {
-    console.log(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isEmergencyPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -614,7 +614,7 @@ call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -661,7 +661,7 @@ call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -711,7 +711,7 @@ let options: call.NumberFormatOptions = {
     countryCode: "CN"
 }
 call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
-    console.log(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`formatPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -756,7 +756,7 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: str
     if (err) {
         console.error(`formatPhoneNumberToE164 fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -805,7 +805,7 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
-    console.log(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`formatPhoneNumberToE164 fail, promise: err->${JSON.stringify(err)}`);
 });

@@ -119,11 +119,12 @@ The system uses the following metrics to measure the biometric authentication ca
 - Spoof Acceptance Rate (SAR): percentage of times that a non-lived, previously recorded sample is accepted by a system.
 
 The lower the FAR, the higher the FRR, which increases the authentication security but also raises the likelihood of the authorized users being rejected by mistake, reducing convenience.
+
 Conversely, the higher FAR, the lower the FRR, which decreases the authentication security but increases convenience.
 
 | Authentication Trust Level| Metrics|
 | -------- | -------- |
-| ATL4 | FAR ≤ 0.001%, SAR ≤ 3% when FRR = 10%|
+| ATL4 | FAR ≤ 0.0001%, SAR ≤ 3% when FRR = 10%|
 | ATL3 | FAR ≤ 0.002%, SAR ≤ 7% when FRR = 10%|
 | ATL2 | FAR ≤ 0.002%, 7% < SAR ≤ 20% when FRR = 10%|
 | ATL1 | FAR ≤ 1%, 7% < SAR ≤ 20% when FRR = 10%|

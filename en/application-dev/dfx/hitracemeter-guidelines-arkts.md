@@ -49,7 +49,7 @@ HiTraceMeter APIs are classified into three types: synchronous timeslice tracing
   During trace parsing, different asynchronous traces are identified by the **name** and **taskId** parameters. These two APIs must be used in sequence as a pair, with the same **name** and **taskId** passed.
 
   Different **name** and **taskId** values must be used for different asynchronous processes. However, the same **name** and **taskId** values can be used if asynchronous processes do not occur at the same time.
-   
+
   If the API is called incorrectly, the trace file will appear abnormal in visualization tools such as SmartPerf.
 
 - Integer tracing APIs:
@@ -99,7 +99,7 @@ The following is an example of an ArkTS application that uses the HiTraceMeter A
 
 2. In the **entry/src/main/ets/pages/index.ets** file, use the HiTraceMeter API in the processing service of the text click event. The sample code is as follows:
 
-   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->   
+   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';

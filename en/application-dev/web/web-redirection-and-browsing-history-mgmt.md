@@ -14,7 +14,7 @@ When a user clicks a web page link on the frontend page, the **Web** component a
 
 To obtain network resources during page loading, configure the network access permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-  ```
+  ```JSON5
   "requestPermissions":[
       {
         "name" : "ohos.permission.INTERNET"

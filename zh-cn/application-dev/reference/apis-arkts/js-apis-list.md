@@ -581,7 +581,7 @@ sort(comparator: ListComparatorFn\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt22) | 是 | 回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
+| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt23) | 是 | 回调函数。<br> API version23开始发生兼容性变更，在API version22及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **错误码：**
 
@@ -927,13 +927,13 @@ while(!temp.done) {
 // value: 4
 ```
 
-### ListComparatorFn\<T\><sup>22+</sup>
+### ListComparatorFn\<T\><sup>23+</sup>
 
 type ListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
 
 List中sort方法的回调函数。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Indicator** component provides two types of navigation indicators: dot indicators and digit indicators.
@@ -63,11 +63,11 @@ Sets the style of the navigation indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| indicatorStyle  | [DotIndicator](ts-container-swiper.md#dotindicator10) \| [DigitIndicator](ts-container-swiper.md#digitindicator10) | Yes  | Style of the navigation indicator.<br> \- **DotIndicator**: dot style.<br> \- **DigitIndicator**: digit style.<br>  Default style: **DotIndicator**|
+| indicatorStyle  | [DotIndicator](ts-container-swiper.md#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](ts-container-swiper.md#digitindicator10)&nbsp;| Yes  | Style of the navigation indicator.<br> \- **DotIndicator**: dot style.<br> \- **DigitIndicator**: digit style.<br>  Default style: **DotIndicator**|
 
 > **NOTE**
 >
-> When **indicatorStyle** is set to **DotIndicator**, [maxDisplayCount](ts-container-swiper.md#maxdisplaycount12) does not take effect.
+> The **maxDisplayCount** property has no effect when the **DotIndicator** type (configured in **indicatorStyle**) is not bound to a **Swiper** component.
 
 ### count
 
@@ -233,8 +233,8 @@ Navigates to the specified indicator.
 ## Example
 
 ### Example 1: Using a Dot Indicator with a Swiper Component
-This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [Indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the dot indicator and the **Swiper** component.
-```
+This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the dot indicator and the **Swiper** component.
+```ts
 @Entry
 @Component
 struct DotIndicatorDemo {
@@ -296,9 +296,9 @@ struct DotIndicatorDemo {
 
 ### Example 2: Using a Digit Indicator with a Swiper Component
 
-This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [Indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the digit indicator and the **Swiper** component.
+This example binds the same [IndicatorComponentController](#indicatorcomponentcontroller) object to both the [indicator](ts-container-swiper.md#indicator) API of the [Swiper](ts-container-swiper.md) component and the [IndicatorComponent](#indicatorcomponent) constructor, enabling interaction between the digit indicator and the **Swiper** component.
 
-```
+```ts
 @Entry
 @Component
 struct DigitIndicatorDemo {

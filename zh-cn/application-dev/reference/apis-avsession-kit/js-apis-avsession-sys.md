@@ -492,7 +492,7 @@ startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-avSession.startAVPlayback("com.example.myapplication", "121278", "entry").then(() => {
+avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
   console.info('startAVPlayback : SUCCESS');
 }).catch((err: BusinessError) => {
   console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);

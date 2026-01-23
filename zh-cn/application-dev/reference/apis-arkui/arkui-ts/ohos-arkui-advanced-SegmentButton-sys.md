@@ -13,7 +13,7 @@
 >
 >- 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->- 该组件不支持在Wearable设备上使用。
+>- 该组件不支持在Wearable设备上使用。在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义。
 >
 >- 该组件仅支持2到5个按钮。
 >
@@ -37,29 +37,25 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray } fr
 
 **装饰器类型：** @Observed
 
-**系统接口：** 此接口为系统接口。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| backgroundSystemMaterial<sup>23+</sup> | uiMaterial.Material  | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。<br/>默认值：无材质效果|
+| backgroundSystemMaterial<sup>23+</sup> | [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material) | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。<br/>对于胶囊类多选按钮（即type为"capsule"且multiply为true），该属性不生效。<br/>默认值：无材质效果 <br>**系统接口：** 此接口为系统接口。|
 
 ## CommonSegmentButtonOptions
 
 用于定义分段按钮组件可自定义的属性。
 
-**系统接口：** 此接口为系统接口。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| backgroundSystemMaterial<sup>23+</sup> | uiMaterial.Material | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。<br/>默认值：无材质效果|
+| backgroundSystemMaterial<sup>23+</sup> | [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material) | 否 | 是 | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。<br/>对于胶囊类多选按钮（即type为"capsule"且multiply为true），该属性不生效。<br/>默认值：无材质效果 <br>**系统接口：** 此接口为系统接口。|
 
 
 ## 示例
@@ -95,7 +91,7 @@ struct IndexCl {
 
   build() {
     Stack() {
-      // 替换为真实图片
+      // 作为分段按钮的背景，其中('app.media.pic')需要替换为开发者所需的图片
       Image($r('app.media.pic'))
       Column() {
         SegmentButton({

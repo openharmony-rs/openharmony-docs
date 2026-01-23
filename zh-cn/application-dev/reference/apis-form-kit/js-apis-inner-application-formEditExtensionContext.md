@@ -57,8 +57,8 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
 **示例：**
 
 ```ts
-import { FormEditExtensionAbility } from '@kit.FormKit'
-import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
 
@@ -74,15 +74,14 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
         }
 
       }).then(data => {
-        console.info(TAG, `startSecondPage result want: ${JSON.stringify(data)}`)
+        console.info(TAG, `startSecondPage result want: ${data.resultCode}`)
       });
     } catch (e) {
-      console.error(TAG, `startSecondPage failed:${e}`)
+      console.error(TAG, `startSecondPage failed, code: ${e.code}, message: ${e.message}`)
       return
     }
   }
 }
-
 ```
 
 ### startUIAbility<sup>23+<sup>

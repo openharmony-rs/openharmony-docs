@@ -54,13 +54,13 @@ Popup windows can be categorized based on the level of user interaction required
 
 > **NOTE**
 >
-> A modal popup window can be converted to a non-modal one through specific attributes. For example, setting [isModal](../reference//apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam) to **false** for **AlertDialog** will change it from modal to non-modal. For more details on other popup windows, see the respective API references.
+> A modal popup window can be converted to a non-modal one through specific attributes. For example, setting the **isModal** attribute of [AlertDialogParam](../reference//apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam) to **false** for **AlertDialog** will change it from modal to non-modal. For more details on other popup windows, see the respective API references.
 >
 > Avoid calling popup window display APIs when the application runs in the background.
 >
 > System popup windows are managed by the system and do not support style customization for security reasons.
 >
-> When a system popup window is active, do not call non-system popup window display APIs (such as **openCustomDialog** of **promptAction** or **open** of **CustomDialogController**).
+> When a system popup window displays, call non-system popup window display APIs (such as [openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated) of [promptAction](../reference/apis-arkui/js-apis-promptAction.md) and [open](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open) of [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)) to disable the popup window display.
 
 ## Use Cases
 

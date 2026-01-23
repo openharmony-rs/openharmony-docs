@@ -14,7 +14,7 @@ Implements a **JsMessageExt** object that is returned after the [runJavaScriptEx
 >
 > - The initial APIs of this class are supported since API version 10.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## getType<sup>10+</sup>
 

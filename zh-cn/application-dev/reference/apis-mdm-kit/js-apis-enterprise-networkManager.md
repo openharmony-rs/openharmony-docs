@@ -550,8 +550,14 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-为设备添加防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
-添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。<br/>
+为设备添加防火墙过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
+
+添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。
+
 设备重启，将会清空防火墙过滤规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -601,7 +607,8 @@ let firewallRule: networkManager.FirewallRule = {
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
   "protocol": networkManager.Protocol.UDP,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 try {
@@ -616,7 +623,12 @@ try {
 
 removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
-移除设备防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+移除设备防火墙过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
+
 移除规则后如果不存在[Action](#action)为ALLOW规则后，会将[addFirewallRule](#networkmanageraddfirewallrule)添加的默认DENY规则清空。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -667,7 +679,8 @@ let firewallRule: networkManager.FirewallRule = {
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
   "protocol": networkManager.Protocol.UDP,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 // 移除指定的规则
@@ -691,7 +704,11 @@ try {
 
 getFirewallRules(admin: Want): Array\<FirewallRule>
 
-查询设备防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。
+查询设备防火墙过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -746,8 +763,14 @@ try {
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-为设备添加域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
-添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。<br/>
+为设备添加域名过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
+
+添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。
+
 设备重启，将会清空域名过滤规则。
 > **说明：**
 >
@@ -795,7 +818,8 @@ let domainFilterRule: networkManager.DomainFilterRule = {
   "domainName": "www.example.com",
   "appUid": "9696",
   "action": networkManager.Action.DENY,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 try {
@@ -810,7 +834,12 @@ try {
 
 removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
-移除设备域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+移除设备域名过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
+
 移除规则后如果不存在[Action](#action)为ALLOW规则后，会将[addDomainFilterRule](#networkmanageradddomainfilterrule)添加的默认DENY规则清空。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -856,7 +885,8 @@ let domainFilterRule: networkManager.DomainFilterRule = {
   "domainName": "www.example.com",
   "appUid": "9696",
   "action": networkManager.Action.DENY,
-  "family": 1
+  "family": 1,
+  "logType": networkManager.LogType.NFLOG
 };
 
 // 移除指定的规则
@@ -880,7 +910,11 @@ try {
 
 getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
-查询设备域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。
+查询设备域名过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -1395,6 +1429,7 @@ setEthernetConfig(admin: Want, networkInterface: string, config: InterfaceConfig
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200012  | Parameter verification failed. |
+| 9201010  | Ethernet configuration failed. Ethernet device not connected. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -1427,7 +1462,11 @@ try {
 
 ## FirewallRule
 
-防火墙过滤规则。从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+防火墙过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1443,10 +1482,15 @@ try {
 | action    | [Action](#action)       | 否   | 是 |接收或者丢弃数据包。<br/>添加防火墙过滤规则时必填；<br/>移除防火墙时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且srcAddr，destAddr，srcPort，destPort，appUid也必须传入空值。 |
 | protocol  | [Protocol](#protocol)   | 否   | 是 |网络协议。当值为ALL或者ICMP时，设置srcPort与destPort无效。 |
 | family<sup>22+</sup>    | number    | 否   | 是 |IP协议版本。支持取值为1或2，取值为1表示IPv4，取值为2表示IPv6。|
+| logType<sup>23+</sup> | [LogType](#logtype23) | 否 | 是 |日志类型，当前仅支持配置NFLOG类型，该参数仅支持PC/2in1设备。<br/>添加防火墙过滤规则时，此参数非必填。若填写，仅在丢弃或拒绝数据包时生效。<!--RP1--><!--RP1End--><br/>移除防火墙过滤规则时，当清空某条链时非必填，不影响整条链的清空；当移除单条规则时，是否填写必须与该规则一致，否则可能导致过滤规则已经移除，但是日志还在记录的问题；相同过滤规则移除时必须按添加时的顺序移除。<br/>获取防火墙过滤规则时，仅日志生效的场景可以获取到logType字段。|
 
 ## DomainFilterRule
 
-域名过滤规则。从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
+域名过滤规则。
+
+API version 21及之前版本，仅支持IPv4。从API version 22开始，支持IPv4和IPv6。
+
+从API version 23开始，支持[LogType](#logtype23)。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1458,6 +1502,7 @@ try {
 | action     | [Action](#action) | 否   | 是 |接收或者丢弃数据包。<br/>添加域名过滤规则时必填；<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且domainName，appUid也必须传入空值。 |
 | direction<sup>15+</sup> | [Direction](#direction) | 否 | 是 |规则链。<br/>添加域名过滤规则时非必填；当值设为输出链或输入链时，实际效果为输出链。设为转发链时，appUid需设置为空，否则会报401错误码。<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的[Direction](#direction)链，且domainName，appUid也必须传入空值。|
 | family<sup>22+</sup>    | number| 否   | 是 |IP协议版本。支持取值为1或2，取值为1表示IPv4，取值为2表示IPv6。|
+| logType<sup>23+</sup> | [LogType](#logtype23) | 否 | 是 |日志类型，当前仅支持配置NFLOG类型，该参数仅支持PC/2in1设备。<br/>添加域名过滤规则时，此参数非必填。若填写，仅在丢弃或拒绝数据包时生效。<!--RP2--><!--RP2End--><br/>移除域名过滤规则时，当清空某条链时非必填，不影响整条链的清空；当移除单条规则时，是否填写必须与该规则一致，否则可能导致过滤规则已经移除，但是日志还在记录的问题；相同过滤规则移除时必须按添加时的顺序移除。<br/>获取域名过滤规则时，仅日志生效的场景可以获取到logType字段。|
 
 ## Direction
 
@@ -1498,6 +1543,17 @@ try {
 | TCP  | 1    | 网络协议TCP。  |
 | UDP  | 2    | 网络协议UDP。  |
 | ICMP | 3    | 网络协议ICMP。 |
+
+## LogType<sup>23+</sup>
+
+日志类型。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+
+| 名称  | 值   | 说明                                  |
+| ----- | ---- | ------------------------------------- |
+| NFLOG | 0    | 内核Netfilter框架中的数据包日志功能。 |
 
 ## InterfaceConfig<sup>23+</sup>
 

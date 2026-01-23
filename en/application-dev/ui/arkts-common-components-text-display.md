@@ -23,7 +23,7 @@ You can create text in either of the following ways:
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.CreateText_Text_new' resource file is 'I am a piece of text'.
+  // Replace $r('app.string.CreateText_Text_new') with the actual resource file. In this example, the value in the resource file is "I am a piece of text."
   Text($r('app.string.CreateText_Text_new'))
   ```
 
@@ -49,7 +49,7 @@ You can create text in either of the following ways:
   <!-- @[create_a_text_in_another_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.module_desc' resource file is 'Module description'.
+  // Replace $r('app.string.module_desc') with the actual resource file. In this example, the value in the resource file is "Module description."
   Text($r('app.string.module_desc'))
     .baselineOffset(0)
     .fontSize(30)
@@ -71,11 +71,11 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 
 
   <!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-  
+
   ``` TypeScript
-  // The value in the 'app.string.TextSpan_textContent_text' resource file is 'I am Text'.
+  // Replace $r('app.string.TextSpan_textContent_text') with the actual resource file. In this example, the value in the resource file is "I am Text."
   Text($r('app.string.TextSpan_textContent_text')) {
-    // The value in the 'app.string.TextSpan_textContent_span' resource file is 'I am Span'.
+    // Replace $r('app.string.TextSpan_textContent_span') with the actual resource file. In this example, the value in the resource file is "I am Span."
     Span($r('app.string.TextSpan_textContent_span'))
   }
   .padding(10)
@@ -90,21 +90,21 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 
 
   <!-- @[create_span_with_lines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-  
+
   ``` TypeScript
   Text() {
-    // The value in the 'app.string.TextSpan_textContent_span_one' resource file is 'I am Span1'.
+    // Replace $r('app.string.TextSpan_textContent_span_one') with the actual resource file. In this example, the value in the resource file is "I am Span1."
     Span($r('app.string.TextSpan_textContent_span_one'))
       .fontSize(16)
       .fontColor(Color.Grey)
       .decoration({ type: TextDecorationType.LineThrough, color: Color.Red })
-    // The value in the 'app.string.TextSpan_textContent_span_two' resource file is 'I am Span2'.
+    // Replace $r('app.string.TextSpan_textContent_span_two') with the actual resource file. In this example, the value in the resource file is "I am Span2."
     Span($r('app.string.TextSpan_textContent_span_two'))
       .fontColor(Color.Blue)
       .fontSize(16)
       .fontStyle(FontStyle.Italic)
       .decoration({ type: TextDecorationType.Underline, color: Color.Black })
-    // The value in the 'app.string.TextSpan_textContent_span_three' resource file is 'I am Span3'.
+    // Replace $r('app.string.TextSpan_textContent_span_three') with the actual resource file. In this example, the value in the resource file is "I am Span3."
     Span($r('app.string.TextSpan_textContent_span_three'))
       .fontSize(16)
       .fontColor(Color.Grey)
@@ -137,7 +137,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 
 
   <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
-  
+
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -227,19 +227,19 @@ The following examples demonstrate usage of common APIs.
   <!-- @[custom_text_align](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.TextAlign_Start' resource file is 'Left aligned'.
+  // Replace $r('app.string.TextAlign_Start') with the actual resource file. In this example, the value in the resource file is "Left-aligned."
   Text($r('app.string.TextAlign_Start'))
     .width(300)
     .textAlign(TextAlign.Start)
     .border({ width: 1 })
     .padding(10)
-  // The value in the 'app.string.TextAlign_Center' resource file is 'Center aligned'.
+  // Replace $r('app.string.TextAlign_Center') with the actual resource file. In this example, the value in the resource file is "Center-aligned."
   Text($r('app.string.TextAlign_Center'))
     .width(300)
     .textAlign(TextAlign.Center)
     .border({ width: 1 })
     .padding(10)
-  // The value in the 'app.string.TextAlign_End' resource file is 'Right aligned'.
+  // Replace $r('app.string.TextAlign_End') with the actual resource file. In this example, the value in the resource file is "Right-aligned."
   Text($r('app.string.TextAlign_End'))
     .width(300)
     .textAlign(TextAlign.End)
@@ -445,7 +445,8 @@ The following examples demonstrate usage of common APIs.
   <!-- @[custom_the_size_of_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.CustomTextStyle_textContent_one_style' resource file is 'My maximum font size is 30, minimum font size is 5, width is 250, and maximum number of lines is 1'.
+  /* Replace $r('app.string.CustomTextStyle_textContent_one_style') with the actual resource file.
+   In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 5, width is 250, and maximum number of lines is 1." */
   Text($r('app.string.CustomTextStyle_textContent_one_style'))
     .width(250)
     .maxLines(1)
@@ -454,7 +455,8 @@ The following examples demonstrate usage of common APIs.
     .border({ width: 1 })
     .padding(10)
     .margin(5)
-  // The value in the 'app.string.CustomTextStyle_textContent_two_style' resource file is 'My maximum font size is 30, minimum font size is 5, width is 250, and maximum number of lines is 2'.
+  /* Replace $r('app.string.CustomTextStyle_textContent_two_style') with the actual resource file.
+   In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 5, width is 250, and maximum number of lines is 2." */
   Text($r('app.string.CustomTextStyle_textContent_two_style'))
     .width(250)
     .maxLines(2)
@@ -463,7 +465,8 @@ The following examples demonstrate usage of common APIs.
     .border({ width: 1 })
     .padding(10)
     .margin(5)
-  // The value in the 'app.string.CustomTextStyle_textContent_no_max' resource file is 'My maximum font size is 30, minimum font size is 15, width is 250, and line height is 50'.
+  /* Replace $r('app.string.CustomTextStyle_textContent_no_max') with the actual resource file.
+    In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 15, width is 250, and line height is 50." */
   Text($r('app.string.CustomTextStyle_textContent_no_max'))
     .width(250)
     .height(50)
@@ -472,7 +475,8 @@ The following examples demonstrate usage of common APIs.
     .border({ width: 1 })
     .padding(10)
     .margin(5)
-  // The value in the 'app.string.CustomTextStyle_textContent_high' resource file is 'My maximum font size is 30, minimum font size is 15, width is 250, and line height is 100'.
+  /* Replace $r('app.string.CustomTextStyle_textContent_high') with the actual resource file.
+    In this example, the value in the resource file is "My maximum font size is 30, minimum font size is 15, width is 250, and line height is 100." */
   Text($r('app.string.CustomTextStyle_textContent_high'))
     .width(250)
     .height(100)
@@ -519,7 +523,7 @@ The following examples demonstrate usage of common APIs.
   <!-- @[custom_the_text_by_copy_option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.CustomTextStyle_textContent_incopy' resource file is 'This text is copyable'.
+  // Replace $r('app.string.CustomTextStyle_textContent_incopy') with the actual resource file. In this example, the value in the resource file is "This text can be copied."
   Text($r('app.string.CustomTextStyle_textContent_incopy'))
     .fontSize(30)
     .copyOption(CopyOptions.InApp)
@@ -647,13 +651,12 @@ The following examples demonstrate usage of common APIs.
       NavDestination() {
       Column() {
         Row({ space: 20 }) {
-          // The value in the 'app.string.Enable_automatic_spacing' resource file is 'Enable automatic spacing'.
+          // Replace $r('app.string.Enable_automatic_spacing') with the actual resource file. In this example, the value in the resource file is "Enable automatic spacing."
           Button($r('app.string.Enable_automatic_spacing'))
             .onClick(() => this.enableSpacing = true)
             .backgroundColor(this.enableSpacing ? '#4CAF50' : '#E0E0E0')
             .fontColor(this.enableSpacing ? Color.White : Color.Black)
-  
-          // The value in the 'app.string.off_automatic_spacing' resource file is 'Disable automatic spacing'.
+          // Replace $r('app.string.off_automatic_spacing') with the actual resource file. In this example, the value in the resource file is "Disable automatic spacing."
           Button($r('app.string.off_automatic_spacing'))
             .onClick(() => this.enableSpacing = false)
             .backgroundColor(!this.enableSpacing ? '#F44336' : '#E0E0E0')
@@ -662,16 +665,16 @@ The following examples demonstrate usage of common APIs.
         .width('100%')
         .justifyContent(FlexAlign.Center)
         .margin({ top: 30, bottom: 20 })
-  
-        // The value in the 'app.string.Automatic_spacing_has_been_enabled' resource file is 'Current status: Automatic spacing enabled.'
-        // The value in the 'app.string.Automatic_spacing_has_been_turned_off' resource file is 'Current status: Automatic spacing disabled.'
+        // Replace $r('app.string.Automatic_spacing_has_been_enabled') with the actual resource file. In this example, the value in the resource file is "Current status: Automatic spacing enabled."
+        // Replace $r('app.string.Automatic_spacing_has_been_turned_off') with the actual resource file. In this example, the value in the resource file is "Current status: Automatic spacing disabled."
         Text(this.enableSpacing ? $r('app.string.Automatic_spacing_has_been_enabled') : $r('app.string.Automatic_spacing_has_been_turned_off'))
           .fontSize(16)
           .fontColor(this.enableSpacing ? '#4CAF50' : '#F44336')
           .margin({ bottom: 20 })
   
         // Set whether to enable automatic spacing between Chinese and English characters.
-        // The value in the 'app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing' resource file is 'Automatic Spacing Between Chinese and Western Characters'.
+        /* Replace $r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing') with the actual resource file.
+          In this example, the value in the resource file is "Automatic Spacing Between Chinese and Western Characters." */
         Text($r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'))
           .fontSize(24)
           .padding(15)
@@ -683,12 +686,12 @@ The following examples demonstrate usage of common APIs.
       .height('100%')
       .padding(20)
       }
-      // ···
+      // ...
     }
   }
   ```
 
-
+  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
 - Since API version 20, you can use [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20) to apply gradient color effects to text.
 
@@ -709,7 +712,7 @@ The following examples demonstrate usage of common APIs.
     build() {
       NavDestination() {
         Column({ space: 5 }) {
-          // The value in the 'app.string.direction_LeftTop' resource file is 'Linear gradient (top left direction)'.
+          // Replace $r('app.string.direction_LeftTop') with the actual resource file. In this example, the value in the resource file is "Linear gradient (top left direction)."
           Text($r('app.string.direction_LeftTop')).fontSize(18).width('90%').fontColor(0xCCCCCC)
             .margin({ top: 40, left: 40 })
           Text(this.message)
@@ -721,7 +724,7 @@ The following examples demonstrate usage of common APIs.
         .height('100%')
         .width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -733,7 +736,7 @@ The following examples demonstrate usage of common APIs.
 You can bind the **Text** component to the [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick), [onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch), or other universal events to respond to user operations.
 
   <!-- @[General_Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets) -->
-  
+
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -781,7 +784,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     <!-- @[text_VerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
     
     ``` TypeScript
-    // Replace $r('app.media.startIcon') with the image resource file you use.
+    // Replace $r('app.media.startIcon') with the actual resource file.
     Text() {
       Span('Hello')
         .fontSize(50)
@@ -806,13 +809,13 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     <!-- @[copy_Option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
     
     ``` TypeScript
-    // The value in the 'app.string.selected_menu' resource file is 'This is text used to demonstrate the selection menu.'
+    // Replace $r('app.string.selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to demonstrate the selection menu."
     Text($r('app.string.selected_menu'))
       .fontSize(30)
       .copyOption(CopyOptions.InApp)
     ```
 
-
+    ![Text_select_menu](figures/Text_select_menu.jpg)
 
   - Use the [bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11) attribute to bind a custom selection menu to the **Text** component.
 
@@ -826,13 +829,13 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     <!-- @[set_selection_menu_with_bindselectionmenu_sec](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
     
     ``` TypeScript
-    // The value in the 'app.string.show_selected_menu' resource file is 'This is text used to demonstrate the selection menu.'
+    // Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to demonstrate the selection menu."
     Text($r('app.string.show_selected_menu'), this.options)
       .fontSize(30)
       .copyOption(CopyOptions.InApp)
       .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK, {
         onAppear: () => {
-          // The value in the 'app.string.SelectMenu_Text_Ejected' resource file is 'This callback is triggered when the custom selection menu is displayed.'
+          // Replace $r('app.string.SelectMenu_Text_Ejected') with the actual resource file. In this example, the value in the resource file is "This callback is triggered when the custom selection menu is displayed."
           hilog.info(0x0000, 'Sample_TextComponent',
             resource.resourceToString($r('app.string.SelectMenu_Text_Ejected')));
         },
@@ -853,7 +856,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
       Column() {
         Menu() {
           MenuItemGroup() {
-            // Replace $r('app.media.app_icon') with the image resource file you use.
+            // Replace $r('app.media.app_icon') with the actual resource file.
             MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu One', labelInfo: '' })
               .onClick(() => {
                 // Use the closeSelectionMenu API to close the menu.
@@ -867,14 +870,14 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     }
     ```
 
-
+    ![text_bindselectionmenu](figures/text_bindselectionmenu.gif)
 
   - Customize menu items by configuring the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) attribute of the **Text** component. You can set the text content, icons, and callbacks for extended menu items.
 
     <!-- @[set_selection_menu_with_editmenuoptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
     
     ``` TypeScript
-    // The value in the 'app.string.show_selected_menu' resource file is 'This is text used to demonstrate the selection menu.'
+    // Replace $r('app.string.show_selected_menu') with the actual resource file. In this example, the value in the resource file is "This is text used to demonstrate the selection menu."
     Text($r('app.string.show_selected_menu'))
       .fontSize(20)
       .copyOption(CopyOptions.LocalDevice)
@@ -887,7 +890,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     
     ``` TypeScript
     // Define onCreateMenu and onMenuItemClick.
-    // Replace $r('app.media.app_icon') with the image resource file you use.
+    // Replace $r('app.media.app_icon') with the actual resource file.
     onCreateMenu = (menuItems: Array<TextMenuItem>) => {
       let item1: TextMenuItem = {
         content: 'customMenu1',
@@ -905,20 +908,20 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     }
     onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
       if (menuItem.id.equals(TextMenuItemId.of('customMenu2'))) {
-        // The value in the 'app.string.SelectMenu_Text_customMenu' resource file is 'Intercept id: customMenu2 start:'.
+        // Replace $r('app.string.SelectMenu_Text_customMenu') with the actual resource file. In this example, the value in the resource file is "Intercept id: customMenu2 start:".
         hilog.info(0x0000, 'Sample_TextComponent',
           resource.resourceToString($r('app.string.SelectMenu_Text_customMenu')) + textRange.start + '; end:' +
           textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.COPY)) {
-        // The value in the 'app.string.SelectMenu_Text_copy' resource file is 'Intercept COPY start:'.
+        // Replace $r('app.string.SelectMenu_Text_copy') with the actual resource file. In this example, the value in the resource file is "Intercept COPY start:".
         hilog.info(0x0000, 'Sample_TextComponent',
           resource.resourceToString($r('app.string.SelectMenu_Text_copy')) + textRange.start + '; end:' + textRange.end);
         return true;
       }
       if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-        // The value in the 'app.string.SelectMenu_Text_SelectionAll' resource file is 'Do not intercept SELECT_ALL start:'.
+        // Replace $r('app.string.SelectMenu_Text_SelectionAll') with the actual resource file. In this example, the value in the resource file is "Do not intercept SELECT_ALL start:".
         hilog.info(0x0000, 'Sample_TextComponent',
           resource.resourceToString($r('app.string.SelectMenu_Text_SelectionAll')) + textRange.start + '; end:' +
           textRange.end);
@@ -928,7 +931,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     };
     ```
 
-
+    ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
 ### Closing the Selection Menu
 
@@ -1004,7 +1007,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
       NavDestination() {
         Row() {
           Column() {
-            // The value in the 'app.string.Service_MenuItems_Text' resource file is 'This is a piece of text. Long press to display the text selection menu.'
+            // Replace $r('app.string.Service_MenuItems_Text') with the actual resource file. In this example, the value in the resource file is "This is a piece of text. Long press to display the text selection menu."
             Text($r('app.string.Service_MenuItems_Text'))
               .height(60)
               .fontStyle(FontStyle.Italic)
@@ -1024,12 +1027,12 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
         }
         .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
 
-
+  ![text_disable_system_service_menuItems](figures/text_disable_system_service_menuItems.jpg)
 
 - Since API version 20, use [disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) to disable specified system service menu items in the text selection menu.
 
@@ -1056,7 +1059,7 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
       NavDestination() {
         Row() {
           Column() {
-            // The value in the 'app.string.Service_MenuItems_Text' resource file is 'This is a piece of text. Long press to display the text selection menu.'
+            // Replace $r('app.string.Service_MenuItems_Text') with the actual resource file. In this example, the value in the resource file is "This is a piece of text. Long press to display the text selection menu."
             Text($r('app.string.Service_MenuItems_Text'))
               .height(60)
               .fontStyle(FontStyle.Italic)
@@ -1076,22 +1079,22 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
         }
         .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
   
 
-
+  ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
 
 ### Customizing the Default Menu Refresh Behavior
 
 Since API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback is triggered before the menu is displayed when the text selection range changes. You can configure menu data within this callback.
 
   <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->
-  
+
   ``` TypeScript
-  // Replace $r('app.media.xxx') with the image resource file you use.
+  // Replace $r('app.media.xxx') with the actual resource file.
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
   const DOMAIN = 0x0000;
@@ -1165,13 +1168,13 @@ Since API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-te
       .width('90%')
       .margin('5%')
       }
-      // ···
+      // ...
     }
   }
   ```
-  
 
 
+![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
 
 ## Configuring the AI Menu
 
@@ -1188,8 +1191,8 @@ The **Text** component enables AI menu display through the [enableDataDetector](
   <!-- @[set_ai_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/AIMenu.ets) -->
   
   ``` TypeScript
-  // The value in the 'app.string.AIMenu_Text_One' resource file is 'Phone number: (86) (755) ********'  ********  \n \n 'URL: ' 'www.********.com'
-  // \n \n Email: ***@example.com\n \n Address: XX District, XX City, XX Province \n \n Time: XX'
+  // The value in the 'app.string.AIMenu_Text_One' resource file is 'Phone number: (86) (755)  ********  \n \n URL: www.********.com
+  // \n \n Email: ***@example.com\n \n Address: XX District, XX City, XX Province \n \n Time: XX:XX, MM, DD, YYYY.'
   Text($r('app.string.AIMenu_Text_One'))
     .fontSize(16)
     .copyOption(CopyOptions.LocalDevice)
@@ -1203,7 +1206,6 @@ The **Text** component enables AI menu display through the [enableDataDetector](
     })
   ```
   
-
 - Use [dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11) to customize entity recognition styles. For details, see [TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11).
 - Use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to adjust the menu position. For implementation details, see [Example 12: Setting Custom Menu Extensions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-setting-custom-menu-extensions).
 <!--RP2--><!--RP2End-->
@@ -1213,7 +1215,7 @@ The **Text** component enables AI menu display through the [enableDataDetector](
 This example demonstrates how to implement a hot search list using the **maxLines**, **textOverflow**, **textAlign**, and **constraintSize** attributes.
 
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
-  
+
   ``` TypeScript
   import { ComponentCard } from '../../common/Card';
   
@@ -1223,18 +1225,18 @@ This example demonstrates how to implement a hot search list using the **maxLine
     build() {
       NavDestination() {
         Column({ space: 12 }) {
-          // ···
+          // ...
             Column() {
               Row() {
                 Text('1').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
-                // The value in the 'app.string.TextHotSearch_textContent_one' resource file is 'I am entry 1'.
+                // Replace $r('app.string.TextHotSearch_textContent_one') with the actual resource file. In this example, the value in the resource file is "I am entry 1."
                 Text($r('app.string.TextHotSearch_textContent_one'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
                   .maxLines(1)
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
                   .fontWeight(300)
-                // The value in the 'app.string.TextHotSearch_textContent_two' resource file is 'Top Hit'.
+                // Replace $r('app.string.TextHotSearch_textContent_two') with the actual resource file. In this example, the value in the resource file is "Top Hit."
                 Text($r('app.string.TextHotSearch_textContent_two'))
                   .margin({ left: 6 })
                   .textAlign(TextAlign.Center)
@@ -1249,7 +1251,8 @@ This example demonstrates how to implement a hot search list using the **maxLine
   
               Row() {
                 Text('2').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
-                // The value in the 'app.string.TextHotSearch_textContent_three' resource file is 'I am entry 2'.
+                /* Replace $r('app.string.TextHotSearch_textContent_three') with the actual resource file.
+                  In this example, the value in the resource file is "I am entry 2 I am entry 2 I am entry 2 I am entry 2 I am entry 2." */
                 Text($r('app.string.TextHotSearch_textContent_three'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1257,7 +1260,7 @@ This example demonstrates how to implement a hot search list using the **maxLine
                   .constraintSize({ maxWidth: 200 })
                   .maxLines(1)
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
-                // The value in the 'app.string.TextHotSearch_textContent_four' resource file is 'Hot'.
+                // Replace $r('app.string.TextHotSearch_textContent_four') with the actual resource file. In this example, the value in the resource file is "Hot."
                 Text($r('app.string.TextHotSearch_textContent_four'))
                   .margin({ left: 6 })
                   .textAlign(TextAlign.Center)
@@ -1272,7 +1275,7 @@ This example demonstrates how to implement a hot search list using the **maxLine
   
               Row() {
                 Text('3').fontSize(14).fontColor(Color.Orange).margin({ left: 10, right: 10 })
-                // The value in the 'app.string.TextHotSearch_textContent_five' resource file is 'I am entry 3'.
+                // Replace $r('app.string.TextHotSearch_textContent_five') with the actual resource file. In this example, the value in the resource file is "I am entry 3."
                 Text($r('app.string.TextHotSearch_textContent_five'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1280,7 +1283,7 @@ This example demonstrates how to implement a hot search list using the **maxLine
                   .maxLines(1)
                   .constraintSize({ maxWidth: 200 })
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
-                // The value in the 'app.string.TextHotSearch_textContent_four' resource file is 'Hot'.
+                // Replace $r('app.string.TextHotSearch_textContent_four') with the actual resource file. In this example, the value in the resource file is "Hot."
                 Text($r('app.string.TextHotSearch_textContent_four'))
                   .margin({ left: 6 })
                   .textAlign(TextAlign.Center)
@@ -1295,7 +1298,8 @@ This example demonstrates how to implement a hot search list using the **maxLine
   
               Row() {
                 Text('4').fontSize(14).fontColor(Color.Grey).margin({ left: 10, right: 10 })
-                // The value in the 'app.string.TextHotSearch_textContent_six' resource file is 'I am entry 4'.
+                /* Replace $r('app.string.TextHotSearch_textContent_six') with the actual resource file.
+                  In this example, the value in the resource file is "I am entry 4 I am entry 4 I am entry 4 I am entry 4 I am entry 4." */
                 Text($r('app.string.TextHotSearch_textContent_six'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1305,17 +1309,18 @@ This example demonstrates how to implement a hot search list using the **maxLine
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
               }.width('100%').margin(5)
             }.width('100%')
-          // ···
+          // ...
         }
         .width('100%')
         .height('100%')
         .padding({ left: 12, right: 12 })
       }
-      // ···
+      // ...
     }
   }
   ```
-  
+
 
 ![en-us_image_0000001562820805](figures/en-us_image_0000001562820805.png)
 <!--RP1--><!--RP1End-->
+<!--no_check-->

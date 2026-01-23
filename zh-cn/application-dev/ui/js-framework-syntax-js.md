@@ -14,6 +14,7 @@ JS文件用来定义HML页面的业务逻辑，支持ECMA规范的JavaScript语�
 支持ES6语法。
 
 - 模块声明
+
   使用import方法引入功能模块：
 
   ```js
@@ -21,6 +22,7 @@ JS文件用来定义HML页面的业务逻辑，支持ECMA规范的JavaScript语�
   ```
 
 - 代码引用
+
   使用import方法导入js代码：
 
   ```js
