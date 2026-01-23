@@ -36234,103 +36234,43 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1Prop.ets",
-				"functions":[
-					{
-						"end_line":96,
-						"name":"v1_prop",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1Link.ets",
-				"functions":[
-					{
-						"end_line":94,
-						"name":"v1_link",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1ObjectLink.ets",
-				"functions":[
-					{
-						"end_line":97,
-						"name":"v1_object_link",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1StorageLink.ets",
-				"functions":[
-					{
-						"end_line":97,
-						"name":"v1_storage_link",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1StorageProp.ets",
-				"functions":[
-					{
-						"end_line":97,
-						"name":"v1_storage_prop",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1LocalStorageLink.ets",
-				"functions":[
-					{
-						"end_line":96,
-						"name":"v1_local_storage_link",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1LocalStorageProp.ets",
-				"functions":[
-					{
-						"end_line":96,
-						"name":"v1_local_storage_prop",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1ProvideAndConsume.ets",
-				"functions":[
-					{
-						"end_line":93,
-						"name":"v1_provide_and_consume",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1BuiltIn.ets",
-				"functions":[
-					{
-						"end_line":140,
-						"name":"v1_built_in",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1MakeV1Observed.ets",
-				"functions":[
-					{
-						"end_line":93,
-						"name":"v1_makeV1Observed",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Local.ets",
@@ -36344,63 +36284,27 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Param.ets",
-				"functions":[
-					{
-						"end_line":111,
-						"name":"v2_param",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Computed.ets",
-				"functions":[
-					{
-						"end_line":139,
-						"name":"v2_computed",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2Monitor.ets",
-				"functions":[
-					{
-						"end_line":139,
-						"name":"v2_monitor",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2ProviderAndConsumer.ets",
-				"functions":[
-					{
-						"end_line":115,
-						"name":"v2_provider_and_consumer",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2MakeObserved.ets",
-				"functions":[
-					{
-						"end_line":112,
-						"name":"v2_make_observed",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V2BuiltIn.ets",
-				"functions":[
-					{
-						"end_line":140,
-						"name":"v2_built_in",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1AndV2Compatibility.ets",
@@ -36409,6 +36313,106 @@
 						"end_line":75,
 						"name":"v1_and_v2_compatibility",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/V1Track.ets",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"v1_track",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallError.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"case_a_b_call_error_increaseVolume",
+						"start_line":26
+					},
+					{
+						"end_line":46,
+						"name":"case_a_b_call_error_reduceVolume",
+						"start_line":40
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseABCallRight.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"case_a_b_call_right_increaseVolume",
+						"start_line":26
+					},
+					{
+						"end_line":46,
+						"name":"case_a_b_call_right_reduceVolume",
+						"start_line":40
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseControlCounterError.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"control_counter_error",
+						"start_line":65
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseControlCounterRight.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"control_counter_right",
+						"start_line":52
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayForEachError.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"array_foreach_error",
+						"start_line":48
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayForEachRight.ets",
+				"functions":[
+					{
+						"end_line":70,
+						"name":"array_foreach_right",
+						"start_line":58
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayObservedError.ets",
+				"functions":[
+					{
+						"end_line":85,
+						"name":"array_observed_error",
+						"start_line":68
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIUtilsCanBeObserved/entry/src/main/ets/pages/CaseArrayObservedRight.ets",
+				"functions":[
+					{
+						"end_line":88,
+						"name":"array_observed_right",
+						"start_line":71
 					}
 				]
 			}
