@@ -353,7 +353,7 @@ import { UIUtils } from '@kit.ArkUI';
 
 <!-- @[AnimateToUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/AnimateToUse.ets) -->
 
-```ts
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -397,6 +397,7 @@ struct Index {
           x: this.x,
           y: this.y
         })
+        // ...
     }
     .height('100%')
     .width('100%')
