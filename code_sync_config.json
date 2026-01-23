@@ -15016,7 +15016,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Common.ets",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":106,
 						"name":"manage_dynamic_webview_components_in_harmonyos_app",
 						"start_line":17
 					}
@@ -15026,7 +15026,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/ets/pages/Common.ets",
 				"functions":[
 					{
-						"end_line":113,
+						"end_line":127,
 						"name":"offline_web_component_builder_with_render_controller",
 						"start_line":16
 					}
