@@ -1051,7 +1051,7 @@ let t: typeof c = { value: 123 };
 <!-- @[no_type_query_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module1.ets) -->  
 
 ``` TypeScript
-// 文件名：module1.ets
+// module1.ets
 class C {
   public value: number = 0
 }
@@ -1062,7 +1062,7 @@ export { C }
 <!-- @[no_type_query_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module2.ets) -->  
 
 ``` TypeScript
-// 文件名：module2.ets
+// module2.ets
 import { C } from './module1'
 let t: C = { value: 123 };
 ```
