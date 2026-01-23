@@ -124,7 +124,7 @@ let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri�
 let id = 0;
 // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
+  console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
   id = value;
 }).catch((err: BusinessError) => {
   console.error(`Failed to register source ${err}`);
