@@ -35,7 +35,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 static makeEmpty(): common2D.Rect
 
-Creates a rectangle with the top, bottom, left, and right boundary coordinates all being 0.
+Creates a rectangle with the top, bottom, left, and right boundary coordinates all being **0**.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -48,7 +48,7 @@ Creates a rectangle with the top, bottom, left, and right boundary coordinates a
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeEmpty();
 ```
@@ -79,7 +79,7 @@ Creates a rectangle with specified top, bottom, left, and right boundaries.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 ```
@@ -108,7 +108,8 @@ Copies a rectangle.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let rect2 = drawing.RectUtils.makeCopy(rect);
 console.info('rect2.left:', rect2.left);
@@ -141,7 +142,8 @@ Obtains the width of a rectangle.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let width = drawing.RectUtils.getWidth(rect);
 console.info('width:', width);
@@ -170,7 +172,8 @@ Obtains the height of a rectangle.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let height = drawing.RectUtils.getHeight(rect);
 ```
@@ -198,7 +201,8 @@ Obtains the X coordinate of the rectangle center.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
 let x = drawing.RectUtils.centerX(rect);
 ```
@@ -226,7 +230,8 @@ Obtains the Y coordinate of the rectangle center.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(20, 30, 30, 40);
 let x = drawing.RectUtils.centerY(rect);
 ```
@@ -250,12 +255,13 @@ Checks whether a rectangle completely contains another rectangle.
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| boolean | Check result. **true** means yes; **false** otherwise. An empty rectangle does not contain any other rectangle.|
+| boolean | Whether a rectangle completely contains another rectangle. **true** means yes; **false** otherwise. An empty rectangle does not contain any other rectangle.|
 
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(0, 0, 40, 40);
 let isContains = drawing.RectUtils.contains(rect2, rect);
@@ -284,12 +290,13 @@ Checks whether a rectangle completely contains another rectangle (which is marke
 
 | Type   | Description                      |
 | ------- | ------------------------- |
-| boolean | Check result. **true** means yes; **false** otherwise. An empty rectangle does not contain any other rectangle.|
+| boolean | Whether a rectangle completely contains another rectangle defined by the coordinates of its upper left and lower right corners. **true** means yes; **false** otherwise. An empty rectangle does not contain any other rectangle.|
 
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
 let isContains = drawing.RectUtils.contains(rect, 10, 20, 30, 40);
 console.info('isContains :', isContains);
@@ -320,7 +327,8 @@ Checks whether a rectangle completely contains a specified point.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 100, 100);
 let isContains = drawing.RectUtils.contains(rect, 10, 20);
 console.info('isContains: ', isContains);
@@ -330,7 +338,7 @@ console.info('isContains: ', isContains);
 
 static inset(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
 
-Adds the values of the left, top, right, and bottom boundaries of a specified rectangle to the input values of the left, top, right, and bottom boundaries, respectively.
+Adds the input left, top, right, and bottom values to the left, top, right, and bottom boundaries of a specified rectangle, respectively.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -339,15 +347,16 @@ Adds the values of the left, top, right, and bottom boundaries of a specified re
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle object.|
-| left   | number | Yes  | Value to be added to the left boundary of the rectangle (X coordinate of the upper left corner of the rectangle). The value is a floating point number. 0 indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-| top    | number | Yes  | Value to be added to the top boundary of the rectangle (Y coordinate of the upper left corner of the rectangle). The value is a floating point number. 0 indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-| right  | number | Yes  | Value to be added to the right boundary of the rectangle (X coordinate of the lower right corner of the rectangle). The value is a floating point number. 0 indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
-| bottom | number | Yes  | Value to be added to the bottom boundary of the rectangle (Y coordinate of the lower right corner of the rectangle). The value is a floating point number. 0 indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
+| left   | number | Yes  | Value to be added to the left boundary of the rectangle (X coordinate of the upper left corner of the rectangle). The value is a floating point number. **0** indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
+| top    | number | Yes  | Value to be added to the top boundary of the rectangle (Y coordinate of the upper left corner of the rectangle). The value is a floating point number. **0** indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
+| right  | number | Yes  | Value to be added to the right boundary of the rectangle (X coordinate of the lower right corner of the rectangle). The value is a floating point number. **0** indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
+| bottom | number | Yes  | Value to be added to the bottom boundary of the rectangle (Y coordinate of the lower right corner of the rectangle). The value is a floating point number. **0** indicates that no operation is performed. A positive number indicates addition, and a negative number indicates subtraction.|
 
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 10, 20, 20);
 drawing.RectUtils.inset(rect, 10, -20, 30, 60);
 console.info('rect.left:', rect.left);
@@ -380,7 +389,8 @@ Calculates the intersection of two rectangles and updates the intersection resul
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 let isIntersect = drawing.RectUtils.intersect(rect, rect2);
@@ -415,7 +425,8 @@ Checks whether two rectangles intersect.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 let isIntersect = drawing.RectUtils.isIntersect(rect, rect2);
@@ -440,7 +451,8 @@ Calculates the union of two rectangles and updates the union result to the recta
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 let rect2 = drawing.RectUtils.makeLtrb(10, 10, 40, 40);
 drawing.RectUtils.union(rect, rect2);
@@ -473,7 +485,8 @@ Checks whether a rectangle is empty (the left boundary is greater than or equal 
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeEmpty();
 let isEmpty = drawing.RectUtils.isEmpty(rect);
 console.info('isEmpty :', isEmpty);
@@ -495,13 +508,14 @@ Translates a rectangle.
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangle to be translated.|
-| dx   | number | Yes   | Horizontal translation distance. The value is a floating point number. 0 indicates no translation. A negative value indicates translation to the left, and a positive value indicates translation to the right.|
-| dy    | number | Yes  | Vertical translation distance. The value is a floating point number. 0 indicates no translation. A negative value indicates translation upwards, and a positive value indicates translation downwards.|
+| dx   | number | Yes   | Horizontal translation distance. The value is a floating point number. **0** indicates no translation. A negative value indicates translation to the left, and a positive value indicates translation to the right.|
+| dy    | number | Yes  | Vertical translation distance. The value is a floating point number. **0** indicates no translation. A negative value indicates translation upwards, and a positive value indicates translation downwards.|
 
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(0, 0, 20, 20);
 drawing.RectUtils.offset(rect, 10, 20);
 console.info('rect.left:', rect.left);
@@ -529,7 +543,8 @@ Translates a rectangle to a specified position.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(20, 20, 40, 40);
 drawing.RectUtils.offsetTo(rect, 10, 20);
 console.info('rect.left:', rect.left);
@@ -556,7 +571,8 @@ Assigns the existing rectangle with another rectangle.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 20, 30, 40);
 let rect2 = drawing.RectUtils.makeEmpty();
 drawing.RectUtils.setRect(rect2, rect);
@@ -570,7 +586,7 @@ console.info('rect2.bottom: ', rect2.bottom);
 
 static setLtrb(rect: common2D.Rect, left: number, top: number, right: number, bottom: number): void
 
-Updates the top, bottom, left, and right boundary values of the existing rectangle using the input values of top, bottom, left, and right.
+Updates the top, bottom, left, and right boundary values of the existing rectangle using the input top, bottom, left, and right values, respectively.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -587,7 +603,8 @@ Updates the top, bottom, left, and right boundary values of the existing rectang
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeEmpty();
 drawing.RectUtils.setLtrb(rect, 10, 20, 30, 60);
 console.info('rect.left:', rect.left);
@@ -613,7 +630,8 @@ Sets the left, right, top, and bottom boundaries of the rectangle to **0**.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
 drawing.RectUtils.setEmpty(rect)
 console.info('rect.left:', rect.left);
@@ -641,7 +659,8 @@ If the rectangle is not reversed (that is, the left boundary is less than or equ
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(20, 40, 30, 30);
 drawing.RectUtils.sort(rect);
 console.info('rect.left:', rect.left);
@@ -674,7 +693,8 @@ Checks whether two rectangles are equal.
 **Example**
 
 ```ts
-import { drawing, common2D } from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
+
 let rect = drawing.RectUtils.makeLtrb(10, 20, 20, 30);
 let rect2 = drawing.RectUtils.makeEmpty();
 let isEqual = drawing.RectUtils.isEqual(rect, rect2);

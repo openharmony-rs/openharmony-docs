@@ -184,14 +184,14 @@ Applies fly-in and fly-out animations onto the component.
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
 | degree  | number         | Yes  | Degree of control over deformation of the fly-in and fly-out animations. The value range is [0, 1].<br>A value closer to 1 results in more obvious deformation.<br>If a value outside this range is provided, no fly-in and fly-out animations will be displayed.|
-| flyMode      | [FlyMode](#flymode) | Yes  | Scene mode of the fly-in and fly-out animations.<br>**BOTTOM** means that the fly-in and fly-out animations occur from the bottom of the screen,<br>and **TOP** means that the fly-in and fly-out animations occur from the top of the screen.|
+| flyMode      | [FlyMode](#flymode) | Yes  | Scene mode of the fly-in and fly-out animations.<br>**BOTTOM** means that the fly-in and fly-out animations occur from the bottom of the screen, and **TOP** means that the fly-in and fly-out animations occur from the top of the screen.|
 
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | **Filter** instance with the fly-in and fly-out animations.|
+| [Filter](#filter) | Returns a filter with the fly-in and fly-out animations.|
 
 **Error codes**
 
@@ -222,13 +222,14 @@ Applies the lens distortion effect onto the component.
 | distortionK  | number         | Yes  | Distortion coefficient, indicating the degree of lens distortion. The value range is [-1, 1]. A value less than -1 evaluates to the value **-1**. A value greater than 1 evaluates to the value **1**.|
 
 ![image_Add_Distort.png](./figures/image_Add_Distort.png)
+
 The preceding figure shows the rendering results when different distortion coefficients (-1, 0, 0.5, and 1) are applied onto an **Image** component. A negative distortion value results in a barrel distortion, whereas a positive value results in a pincushion distortion. As the distortion value approaches 0, the intensity of the distortion decreases, and at exactly 0, there is no distortion effect.
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | **Filter** instance with lens distortion effect.|
+| [Filter](#filter) | Returns a filter with the lens distortion effect.|
 
 **Error codes**
 
@@ -258,13 +259,13 @@ Applies a radial linear gradient blur effect to the component.
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
 | value  | number         | Yes  | Blur radius. A larger value indicates a higher blur degree. The value range is [0, 128]. A zero blur radius disables the blur effect. Negative values default to **0**, while values above **128** cap at **128**.|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)        | Yes  | Linear gradient parameters, which include **fractionStops** and **direction**.|
+| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientblur12)        | Yes  | Linear gradient parameters, which include **fractionStops** and **direction**.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Returns the filter with the radial linear gradient blur effect.|
+| [Filter](#filter) | Returns a filter with the radial linear gradient blur effect.|
 
 **Error codes**
 
@@ -314,7 +315,7 @@ Applies the Bézier curve deformation effect onto a component. This effect appli
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Returns the filter with the Bézier curve deformation effect.|
+| [Filter](#filter) | Returns a filter with the Bézier curve deformation effect.|
 
 **Error codes**
 
@@ -327,8 +328,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
-import { common2D } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -341,7 +341,7 @@ struct BezierWarpExample {
 
   build() {
     Column() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
         .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier))
     }
   }
@@ -360,16 +360,16 @@ Applies a color gradient effect to a component.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| colors  | Array\<[Color](#color20)>         | Yes  | Color array, which is a gradient of multiple colors. The array length ranges from 0 to 12. The value of each color must be greater than or equal to 0. If the array length is 0 or greater than 12, or if the array lengths of **colors**, **positions**, and **strengths** are different, no effect is produced.|
-| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | Yes  | Position array, which is the positions of colors. The array length ranges from 0 to 12. If the array length is 0 or greater than 12, or if the array lengths of **colors**, **positions**, and **strengths** are different, no effect is produced.|
-| strengths  | Array\<number>         | Yes  | Strength array, which is the diffusion strengths of colors. The array length ranges from 0 to 12. The value of each strength must be greater than or equal to 0. If the array length is 0 or greater than 12, or if the array lengths of **colors**, **positions**, and **strengths** are different, no effect is produced.|
+| colors  | Array\<[Color](#color20)>         | Yes  | Color array, which is a gradient of multiple colors. The array length ranges from 0 to 12. The value of each color must be greater than or equal to 0. If the array length is 0 or greater than 12, or the lengths of the **colors**, **positions**, and **strengths** arrays are inconsistent, no color gradient effect is displayed.|
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | Yes  | Position array, which is the positions of colors. The array length ranges from 0 to 12. If the array length is 0 or greater than 12, or the lengths of the **colors**, **positions**, and **strengths** arrays are inconsistent, no color gradient effect is displayed.|
+| strengths  | Array\<number>         | Yes  | Strength array, which is the diffusion strengths of colors. The array length ranges from 0 to 12. The value of each strength must be greater than or equal to 0. If the array length is 0 or greater than 12, or the lengths of the **colors**, **positions**, and **strengths** arrays are inconsistent, no color gradient effect is displayed.|
 | alphaMask  | [Mask](#mask20)         | No  | Mask alpha, which is the alpha display mask of colors. If this parameter is not set, the color gradient effect is applied to all component content by default.|
 
 **Return value**
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | **Filter** instance with color gradient effect.|
+| [Filter](#filter) | Returns a filter with the color gradient effect.|
 
 **Error codes**
 
@@ -430,7 +430,7 @@ Applies a 3D lighting effect to a component.
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [filter](#filter) | Returns the filter with the light effect on the content.|
+| [filter](#filter) | Returns a filter with the light effect on the content.|
 
 **Error codes**
 
@@ -457,7 +457,7 @@ struct Index {
     blue: 1,
     alpha: 1
   }
-  @State lightIntentsity2: number = 1
+  @State lightIntensity2: number = 1
 
   build() {
     Column() {
@@ -466,7 +466,7 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .foregroundFilter(uiEffect.createFilter().contentLight(this.point2, this.color2, this.lightIntentsity2))
+          .foregroundFilter(uiEffect.createFilter().contentLight(this.point2, this.color2, this.lightIntensity2))
       }
       .width('100%')
       .height('55%')
@@ -491,7 +491,7 @@ Detects the edge of the component content and adds an edge highlight effect.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| alpha  | number         | Yes  | Specifies the highlight alpha value of the edge. A larger value indicates more obvious edges. The value ranges from 0 to 1. The value **0** disables the edge highlight effect. Negative values default to **0**, while values above **1** cap at **1**.|
+| alpha  | number         | Yes  | Specifies the highlight alpha value of the edge. A larger value indicates more obvious edges. The value range is [0,1]. The value **0** disables the edge highlight effect. Negative values default to **0**, while values above **1** cap at **1**.|
 | color  | [Color](#color20) | No  | Highlight color of the edge. If this parameter is not set, the original color of the component content is used by default. If there is a value, the specified color is used. If this parameter is set to a value other than NULL, the alpha value in **Color** does not take effect, and only the RGB value takes effect.|
 | mask  | [Mask](#mask20) | No  | Specifies the highlight strength of the edge. If this parameter is not set, the edge highlight effect is applied to all component content by default.|
 | bloom  | boolean | No  | Specifies whether the edge glows. **true** (default): both the edge highlight and glow effects are applied; **false**: only the edge highlight effect is applied. If the image size is less than 16 x 16, the edge highlight effect is applied by default, and the glow effect is not applied. In this case, this parameter does not take effect.|
@@ -500,7 +500,7 @@ Detects the edge of the component content and adds an edge highlight effect.
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Returns the filter with the edge highlight and glow effects.|
+| [Filter](#filter) | Returns a filter with the edge highlight and glow effects.|
 
 **Error codes**
 
@@ -553,7 +553,7 @@ Applies a distortion effect to a component.
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Returns the **Filter** instance with the distortion effect.|
+| [Filter](#filter) | Returns a filter with the distortion effect.|
 
 **Error codes**
 
@@ -665,7 +665,7 @@ hdrBrightnessRatio(ratio: number): Filter
 
 Applies an HDR brightness effect to a component. Nesting is not recommended. Forcible nesting may cause overexposure.
 
-The brightness effect takes effect only when the HDR rendering pipeline is enabled. In some scenarios, HDR cannot be enabled even if the HDR rendering pipeline is triggered. For example, the device hardware do not support HDR.
+The brightness effect takes effect only when the HDR rendering pipeline is enabled. In some scenarios, HDR cannot be enabled even if the HDR rendering pipeline is triggered. For example, the device hardware does not support HDR.
 
 The maximum brightness ratio allowed is the value obtained by dividing the maximum brightness of the device by the SDR reference brightness of the device.
 
@@ -682,7 +682,7 @@ The maximum brightness ratio allowed is the value obtained by dividing the maxim
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Returns the filter with HDR brightness effect.|
+| [Filter](#filter) | Returns a filter with the HDR brightness effect.|
 
 **Error codes**
 
@@ -720,7 +720,7 @@ You are not advised to use this effect when the screen size changes, for example
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Returns the filter with transition effect.|
+| [Filter](#filter) | Returns a filter with the transition effect.|
 
 **Error codes**
 
@@ -797,7 +797,7 @@ Provides a lighting effect based on [Mask](#mask20) and parallel light for the c
 
 | Type             | Description                              |
 | ----------------- | --------------------------------- |
-| [Filter](#filter) | Returns the filter that mounts the lightning effect controlled by the displacement map.|
+| [Filter](#filter) | Returns the filter that mounts the lighting effect controlled by the displacement map.|
 
 **Error codes**
 
@@ -857,7 +857,7 @@ Provides a gradient blur effect based on [Mask](#mask20) for the component conte
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
 | radius  | number         | Yes  | Maximum blur radius. A larger value indicates a higher blur degree. The value range is [0, 128]. A zero blur radius disables the blur effect. Negative values default to **0**, while values above **128** cap at **128**.|
-| radiusMap  |  [Mask](#mask20)    | Yes  | Mask object that indicates the blur degree.|
+| radiusMap  |  [Mask](#mask20)    | Yes  | **Mask** object that indicates the blur degree.|
 
 **Return value**
 
@@ -956,7 +956,7 @@ Applies a blender to the component to change the background color of the compone
 
 | Type                         | Description                                              |
 | ----------------------------- | ------------------------------------------------- |
-| [VisualEffect](#visualeffect) | **VisualEffect** instance with the background color change effect.|
+| [VisualEffect](#visualeffect) | Returns a **VisualEffect** object with the background color change effect.|
 
 **Example**
 
@@ -1011,8 +1011,8 @@ struct Index {
   @State color1:common2D.Color = {
     red:1,green:1,blue:1,alpha:1
   }
-  @State lightIntentsity1:number = 1
-  @State bordrwidth:number = 20
+  @State lightIntensity1:number = 1
+  @State borderWidth:number = 20
 
   build() {
     Column() {
@@ -1025,8 +1025,8 @@ struct Index {
           .width('646px')
           .height('900px')
           .borderRadius(10)
-          .visualEffect(uiEffect.createEffect().borderLight(this.point1, this.color1, this.lightIntentsity1,
-            this.bordrwidth))
+          .visualEffect(uiEffect.createEffect().borderLight(this.point1, this.color1, this.lightIntensity1,
+            this.borderWidth))
       }
       .width('100%')
       .height('55%')
@@ -1107,6 +1107,96 @@ struct ColorGradientExample {
 }
 ```
 
+### liquidMaterial<sup>22+</sup>
+
+liquidMaterial(param: LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask, brightnessParam?: BrightnessParam): VisualEffect
+
+Applies a material effect to a component.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name         | Type                                                     | Mandatory| Description                                                        |
+| --------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| param           | [LiquidMaterialEffectParam](#liquidmaterialeffectparam22) | Yes  | Relevant variables required for the material, which are used to control material display. This parameter includes material toggle, refraction coefficient, reflection coefficient, and distortion coefficient.|
+| useEffectMask   | [Mask](#mask20)                                           | Yes  | Whether to use the blur cache. A **Mask** instance created with **createUseEffectMask(true)** enables the blur cache; a **Mask** instance created with **createUseEffectMask(false)** disables the blur cache.|
+| distortMask     | [Mask](#mask20)                                           | No  | Distortion texture required for the material distortion effect, which is determined by the image texture used for creating the **Mask** instance with **pixelMap**.<br>When the distortion coefficient of the material is not **0**, a texture must be preset for material distortion; otherwise, no distortion effect is applied.<br>When the distortion coefficient of the material is **0** or this parameter is not specified, no distortion effect is applied.|
+| brightnessParam | [BrightnessParam](#brightnessparam22)                     | No  | Adds a brightness effect to the material. The brightness effect is disabled by default.                    |
+
+**Return value**
+
+| Type                         | Description                            |
+| ----------------------------- | -------------------------------- |
+| [VisualEffect](#visualeffect) | Returns a **VisualEffect** object with the material effect.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+
+**Example**
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State distortProgress: number = 0.;
+  @State rippleProgress: number = 0.;
+  @State distortFactor: number = 0.;
+  @State materialFactor: number = 1.;
+  @State refractionFactor: number = 1.;
+  @State reflectionFactor: number = 1.;
+  @State tintColorR: number = 1.;
+  @State tintColorG: number = 1.;
+  @State tintColorB: number = 1.;
+  @State tintColorA: number = 1.;
+
+  private GetMaterialVisualEffect(): uiEffect.VisualEffect {
+    let effect: uiEffect.VisualEffect = uiEffect.createEffect();
+    effect.liquidMaterial({
+      enable: true,
+      distortProgress : this.distortProgress,
+      rippleProgress: this.rippleProgress,
+      distortFactor: this.distortFactor,
+      materialFactor : this.materialFactor,
+      refractionFactor : this.refractionFactor,
+      reflectionFactor: this.reflectionFactor,
+      tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+      ripplePosition: undefined,
+    },
+      uiEffect.Mask.createUseEffectMask(true),
+      );
+    return effect;
+  }
+
+  build() {
+    Stack() {
+      EffectComponent() {
+        Column()
+          .position({ x: 200 + 'px', y: 200 + 'px' })
+          .height(553 + 'px')
+          .width(553 + 'px')
+          .borderRadius(12)
+          .visualEffect(this.GetMaterialVisualEffect())
+      }
+      .backgroundEffect({
+        radius: 15,
+      }, { disableSystemAdaptation: true })
+      .width("100%").height("100%").align(Alignment.Center)
+    }
+    .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat)
+    .width("100%").height("100%").align(Alignment.Center)
+  }
+}
+```
+
 ## Blender<sup>13+</sup>
 
 type Blender = BrightnessBlender | HdrBrightnessBlender
@@ -1131,8 +1221,8 @@ A blender that can apply the brightness effect to a component. Before calling an
 
 | Name               | Type                       | Read Only| Optional| Description                                                             |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | number                     | No  | No  | Third-order coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
-| quadraticRate       | number                     | No  | No  | Second-order coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
+| cubicRate           | number                     | No  | No  | Cubic coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
+| quadraticRate       | number                     | No  | No  | Quadratic coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
 | linearRate          | number                     | No  | No  | Linear coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
 | degree              | number                     | No  | No  | Grayscale adjustment ratio.<br>The value range is [-20, 20].                           |
 | saturation          | number                     | No  | No  | Reference saturation for the brightness effect.<br>The value range is [0, 20].                           |
@@ -1162,13 +1252,49 @@ Describes a color in RGBA format.
 | blue  | number | Yes  | Yes  | B component (blue) of the color. The value must be greater than or equal to 0. Negative values are invalid.|
 | alpha | number | Yes  | Yes  | A component (alpha) of the color. The value must be greater than or equal to 0. Negative values are invalid.|
 
+## LiquidMaterialEffectParam<sup>22+</sup>
+
+Describes the parameters of the material and their respective purposes.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+| Name            | Type                            | Read Only| Optional| Description                                                        |
+| ---------------- | -------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| enable           | boolean                          | No  | No  | Whether to enable the material effect. **true** means yes; **false** otherwise.|
+| distortProgress  | number                           | No  | No  | Distortion effect progress. The value range is [0, 1]. Values less than **0** are clamped to **0**, and values greater than **1** are clamped to **1**.  A value of **0** indicates the start of distortion, while **1** indicates the end of distortion.|
+| distortFactor    | number                           | No  | No  | Distortion effect coefficient. The value is greater than or equal to 0. A value less than 0 indicates no distortion effect.        |
+| rippleProgress   | number                           | No  | No  | Ripple effect progress. The value is greater than or equal to 0. A value less than 0 indicates no ripple effect.        |
+| ripplePosition   | Array<[number, number]>          | No  | Yes  | Positions where the ripple effect takes effect. Each position in the array contains the x and y dimensions. A maximum of 10 position coordinates are supported. If more than 10 position coordinates are passed in, this parameter becomes invalid.|
+| refractionFactor | number                           | No  | No  | Refraction effect coefficient. The value range is [0, 10]. Values less than **0** are clamped to **0**, and values greater than **10** are clamped to **10**. A value of **0** indicates no refraction effect; the higher the value, the stronger the refraction intensity.|
+| reflectionFactor | number                           | No  | No  | Reflection coefficient. The value range is [0, 10]. Values less than **0** are clamped to **0**, and values greater than **10** are clamped to **10**. A value of **0** indicates no reflection effect; the higher the value, the stronger the reflection intensity.|
+| materialFactor   | number                           | No  | No  | Material coefficient. The value range is [0, 1]. Values less than **0** are clamped to **0**, and values greater than **1** are clamped to **1**. A value of **0** indicates no material effect, with the area filled with the tint color; the higher the value, the more prominent the material effect.|
+| tintColor        | [number, number, number, number] | No  | No  | Tint color overlaid on the material, where the four numbers correspond to RGBA respectively. The value range is [0, 1]. Values less than **0** are clamped to **0**, and values greater than **1** are clamped to **1**.|
+
+## BrightnessParam<sup>22+</sup>
+
+Describes the material brightness parameters.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+| Name         | Type                    | Read Only| Optional| Description                                                        |
+| ------------- | ------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| rate          | number                   | No  | No  | Linear coefficient for gray adjustment. The value range is [-1, 1]. Values less than **-1** are clamped to **-1**, and values greater than **1** are clamped to **1**. The higher the value, the stronger the grayscale adjustment effect.|
+| lightUpDegree | number                   | No  | No  | Grayscale adjustment ratio. The value range is [-1, 1]. Values less than **-1** are clamped to **-1**, and values greater than **1** are clamped to **1**. The higher the value, the stronger the grayscale adjustment effect.|
+| cubicCoeff    | number                   | No  | No  | Cubic coefficient for grayscale adjustment. The value range is [-1, 1]. Values less than **-1** are clamped to **-1**, and values greater than **1** are clamped to **1**. The higher the value, the stronger the grayscale adjustment effect.|
+| quadCoeff     | number                   | No  | No  | Quadratic coefficient for grayscale adjustment. The value range is [-1, 1]. Values less than **-1** are clamped to **-1**, and values greater than **1** are clamped to **1**. The higher the value, the stronger the grayscale adjustment effect.|
+| saturation    | number                   | No  | No  | Reference saturation for the brightness effect. The value range is [0, 1]. Values less than **0** are clamped to **0**, and values greater than **1** are clamped to **1**. The higher the value, the higher the reference saturation.|
+| posRgb        | [number, number, number] | No  | No  | Positive adjustment coefficient based on the reference saturation. The value range is [-1, 1]. Values less than **-1** are clamped to **-1**, and values greater than **1** are clamped to **1**. The higher the value, the higher the saturation.|
+| negRgb        | [number, number, number] | No  | No  | Negative adjustment coefficient based on the reference saturation. The value range is [-1, 1]. Values less than **-1** are clamped to **-1**, and values greater than **1** are clamped to **1**. The higher the value, the lower the saturation.|
+| fraction      | number                   | No  | No  | Blending ratio of the brightness effect. The value range is [0, 1]. Values less than **0** are clamped to **0**, and values greater than **1** are clamped to **1**. The higher the value, the weaker the brightness effect.|
+
+
 ## Mask<sup>20+</sup>
 Mask effect class, which is used as the input of [Filter](#filter) and [VisualEffect](#visualeffect).
 
 ### createRippleMask<sup>20+</sup>
 static createRippleMask(center: common2D.Point, radius: number, width: number, offset?: number): Mask
 
-Creates a mask instance of the ripple effect by specifying the center position, radius, and width of the ripple. The effect is determined by the input parameters.
+Creates a **Mask** instance of the ripple effect by specifying the center position, radius, and width of the ripple. The effect is determined by the input parameters.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1205,7 +1331,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ### createPixelMapMask<sup>20+</sup>
 static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect, fillColor?: Color): Mask
 
-Creates a mask instance with the scaling effect based on the drawing area of the [pixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)pixelMap, drawing area of the mount node, and color of the area outside the drawing area. The effect is determined by the input parameters.
+Creates a **Mask** instance with the scaling effect based on the drawing area of the [pixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md), drawing area of the mount node, and color of the area outside the drawing area. The effect is determined by the input parameters.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1214,16 +1340,16 @@ Creates a mask instance with the scaling effect based on the drawing area of the
 **Parameters**
 | Name | Type                                     | Mandatory| Description                      |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Image Overview](../../media/image/image-overview.md).  |
-| srcRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Area to be drawn on the PixelMap. The leftmost and topmost positions of the image correspond to position 0, and the rightmost and bottommost positions correspond to position 1. The value of a right position must be greater than that of a left position, and the value of a bottom position must be greater than that of a top position.|
-| dstRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Area to be drawn on the node where the mask is mounted on the PixelMap. The leftmost and topmost positions of the node correspond to position 0, and the rightmost and bottommost positions correspond to position 1. The value of a right position must be greater than that of a left position, and the value of a bottom position must be greater than that of a top position.|
-| fillColor | [Color](#color20) | No  |  Color of the area outside the PixelMap drawing area on the node. The value range of each element is [0, 1]. The default value is transparent. Negative values default to **0** and values above 1 cap at **1**.|
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** instance created by the **image** module. It can be obtained through image decoding or direct creation. For details, see [Image Overview](../../media/image/image-overview.md).  |
+| srcRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Area to be drawn on the **pixelMap**. The leftmost and topmost positions of the image correspond to position 0, and the rightmost and bottommost positions correspond to position 1. The value of a right position must be greater than that of a left position, and the value of a bottom position must be greater than that of a top position.|
+| dstRect | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Area to be drawn on the node where the mask is mounted on the **pixelMap**. The leftmost and topmost positions of the node correspond to position 0, and the rightmost and bottommost positions correspond to position 1. The value of a right position must be greater than that of a left position, and the value of a bottom position must be greater than that of a top position.|
+| fillColor | [Color](#color20) | No  |  Color of the area outside the **pixelMap** drawing area on the node. The value range of each element is [0, 1]. The default value is transparent. Negative values default to **0** and values above 1 cap at **1**.|
 
 **Return value**
 
 | Type                         | Description                                              |
 | ----------------------------- | ------------------------------------------------- |
-| [Mask](#mask20) | Returns a mask with the PixelMap scaling effect.|
+| [Mask](#mask20) | Returns a mask with the **pixelMap** scaling effect.|
 
 **Error codes**
 
@@ -1273,6 +1399,116 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   console.error('Failed to create pixelmap. code is ${error.code}, message is ${error.message}');
 })
 ```
+
+### createPixelMapMask<sup>22+</sup>
+
+static createPixelMapMask(pixelMap: image.PixelMap): Mask
+
+Creates a [Mask](#mask20) instance using the input **pixelMap**. This API does not perform scaling on the passed **pixelMap**.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** instance created by the **image** module. It can be obtained through image decoding or direct creation. For details, see [Image Overview](../../media/image/image-overview.md).|
+
+**Return value**
+
+| Type           | Description                    |
+| --------------- | ------------------------ |
+| [Mask](#mask20) | Returns a mask with **pixelMap**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+
+**Example**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  @State distortProgress: number = 0.;
+  @State rippleProgress: number = 0.;
+  @State distortFactor: number = 0.;
+  @State materialFactor: number = 1.;
+  @State refractionFactor: number = 1.;
+  @State reflectionFactor: number = 1.;
+  @State tintColorR: number = 1.;
+  @State tintColorG: number = 1.;
+  @State tintColorB: number = 1.;
+  @State tintColorA: number = 1.;
+  @State pixelMapDistort: image.PixelMap | undefined = this.getPixelMap();
+
+  private getPixelMap(): image.PixelMap | undefined {
+    try {
+      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      // this path should be created in local
+      const path: string = context.resourceDir + "/perlin_worley_noise_3d_64.bmp";
+      const imageSource: image.ImageSource = image.createImageSource(path);
+      if (!imageSource) {
+        return undefined;
+      }
+      const pixelMap: image.PixelMap = imageSource.createPixelMapSync();
+      imageSource.release();
+      return pixelMap;
+    } catch (err) {
+      return undefined;
+    }
+  }
+
+  private GetMaterialVisualEffect(): uiEffect.VisualEffect {
+    let effect: uiEffect.VisualEffect = uiEffect.createEffect();
+    effect.liquidMaterial({
+      enable: true,
+      distortProgress : this.distortProgress,
+      rippleProgress: this.rippleProgress,
+      distortFactor: this.distortFactor,
+      materialFactor : this.materialFactor,
+      refractionFactor : this.refractionFactor,
+      reflectionFactor: this.reflectionFactor,
+      tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+      ripplePosition: undefined,
+    },
+      uiEffect.Mask.createUseEffectMask(true),
+      uiEffect.Mask.createPixelMapMask (this.pixelMapDistort), // Example of using createImageMask.
+      );
+    return effect;
+  }
+
+  build() {
+    Stack() {
+      EffectComponent() {
+        Column()
+          .position({ x: 200 + 'px', y: 200 + 'px' })
+          .height(553 + 'px')
+          .width(553 + 'px')
+          .borderRadius(12)
+          .visualEffect(this.GetMaterialVisualEffect())
+      }
+      .backgroundEffect({
+        radius: 15,
+      }, { disableSystemAdaptation: true })
+      .width("100%").height("100%").align(Alignment.Center)
+    }
+    .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat) // the image should be created in local
+    .width("100%").height("100%").align(Alignment.Center)
+  }
+}
+```
+
 ### createRadialGradientMask<sup>20+</sup>
 static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY: number, values: Array<[number, number]>): Mask
 
@@ -1307,7 +1543,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
+import { uiEffect } from '@kit.ArkGraphics2D'
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -1315,7 +1551,7 @@ let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[
 struct RadialGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
@@ -1368,7 +1604,7 @@ let mask = uiEffect.Mask.createWaveGradientMask({x: 0.5, y: 0.5}, 0.01, 0.5, 0.1
 struct WaveGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
@@ -1378,6 +1614,94 @@ struct WaveGradientMaskExample {
   }
 }
 ```
+### createUseEffectMask<sup>22+</sup>
+
+static createUseEffectMask(useEffect: boolean): Mask
+
+Creates a use effect [Mask](#mask20) instance and sets whether it enables the blur cache.
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name   | Type   | Mandatory| Description                                                        |
+| --------- | ------- | ---- | ------------------------------------------------------------ |
+| useEffect | boolean | Yes  | Whether to enable the blur cache. **true** means the blur cache is enabled and the blur effect is displayed normally; **false** means the opposite.|
+
+**Return value**
+
+| Type           | Description                            |
+| --------------- | -------------------------------- |
+| [Mask](#mask20) | Returns a mask indicating whether to enable the blur cache.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+
+**Example**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  @State distortProgress: number = 0.;
+  @State rippleProgress: number = 0.;
+  @State distortFactor: number = 0.;
+  @State materialFactor: number = 1.;
+  @State refractionFactor: number = 1.;
+  @State reflectionFactor: number = 1.;
+  @State tintColorR: number = 1.;
+  @State tintColorG: number = 1.;
+  @State tintColorB: number = 1.;
+  @State tintColorA: number = 1.;
+
+  private GetMaterialVisualEffect(): uiEffect.VisualEffect {
+    let effect: uiEffect.VisualEffect = uiEffect.createEffect();
+    effect.liquidMaterial({
+        enable: true,
+        distortProgress : this.distortProgress,
+        rippleProgress: this.rippleProgress,
+        distortFactor: this.distortFactor,
+        materialFactor : this.materialFactor,
+        refractionFactor : this.refractionFactor,
+        reflectionFactor: this.reflectionFactor,
+        tintColor : [this.tintColorR, this.tintColorG, this.tintColorB, this.tintColorA],
+        ripplePosition: undefined,
+      },
+      uiEffect.Mask.createUseEffectMask(true), // Example of using useEffectMask.
+    );
+    return effect;
+  }
+
+  build() {
+    Stack() {
+      EffectComponent() {
+        Column()
+          .position({ x: 200 + 'px', y: 200 + 'px' })
+          .height(553 + 'px')
+          .width(553 + 'px')
+          .borderRadius(12)
+          .visualEffect(this.GetMaterialVisualEffect())
+      }
+      .backgroundEffect({
+        radius: 15,
+      }, { disableSystemAdaptation: true })
+      .width("100%").height("100%").align(Alignment.Center)
+    }
+    .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat)
+    .width("100%").height("100%").align(Alignment.Center)
+  }
+}
+```
+
 ## BrightnessBlenderParam
 Describes the parameters used for the brightness blender.
 
@@ -1387,8 +1711,8 @@ Describes the parameters used for the brightness blender.
 
 | Name               | Type                       | Read Only| Optional| Description                                                             |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | number                     | No  | No  | Third-order coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
-| quadraticRate       | number                     | No  | No  | Second-order coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
+| cubicRate           | number                     | No  | No  | Cubic coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
+| quadraticRate       | number                     | No  | No  | Quadratic coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
 | linearRate          | number                     | No  | No  | Linear coefficient for grayscale adjustment.<br>The value range is [-20, 20].                       |
 | degree              | number                     | No  | No  | Grayscale adjustment ratio.<br>The value range is [-20, 20].                           |
 | saturation          | number                     | No  | No  | Reference saturation for the brightness effect.<br>The value range is [0, 20].                           |

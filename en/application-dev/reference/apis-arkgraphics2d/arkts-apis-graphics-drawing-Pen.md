@@ -85,7 +85,7 @@ Sets the maximum ratio allowed between the sharp corner length of a polyline and
 
 | Name| Type   | Mandatory| Description             |
 | ------ | ------ | ---- | ---------------- |
-| miter  | number | Yes  | Maximum ratio of the sharp corner length of the polyline to the line width. A negative number is processed as 4.0 during drawing. Non-negative numbers take effect normally. The value is a floating point number.|
+| miter  | number | Yes  | Maximum ratio of the sharp corner length of the polyline to the line width. A negative number is processed as **4.0** during drawing. Non-negative numbers take effect normally. The value is a floating point number.|
 
 **Error codes**
 
@@ -139,7 +139,7 @@ Sets an image filter for this pen.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| filter    | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | Yes  |  Image filter. If null is passed in, the image filter effect of the pen will be cleared.|
+| filter    | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | Yes  |  Image filter. If **null** is passed in, the image filter effect of the pen will be cleared.|
 
 **Error codes**
 
@@ -287,8 +287,8 @@ Sets the color and standard color gamut for this pen. The difference between thi
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes  | Color in the ARGB format. The value of each color channel is a floating point number ranging from 0.0 to 1.0. Values above 1.0 default to 1.0, and values below 0.0 default to 0.0.|
-| colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | Yes  | Standard color gamut object. null indicates SRGB.|
+| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes  | Color in the ARGB format. The value of each color channel is a floating point number ranging from 0.0 to 1.0. Values above 1.0 default to **1.0**, and values below 0.0 default to **0.0**.|
+| colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | Yes  | Standard color gamut object. **null** indicates SRGB.|
 
 **Example**
 
@@ -542,7 +542,7 @@ let alpha = pen.getAlpha();
 
 ## setColorFilter
 
-setColorFilter(filter: ColorFilter) : void
+setColorFilter(filter: ColorFilter | null) : void
 
 Sets a color filter for this pen.
 
@@ -552,7 +552,7 @@ Sets a color filter for this pen.
 
 | Name| Type                       | Mandatory| Description        |
 | ------ | --------------------------- | ---- | ------------ |
-| filter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Yes  | Defines a color filter. If null is passed in, the color filter is cleared.|
+| filter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| null | Yes  | Defines a color filter. If **null** is passed in, the color filter is cleared.|
 
 **Error codes**
 
@@ -574,7 +574,7 @@ pen.setColorFilter(colorFilter);
 
 ## setMaskFilter<sup>12+</sup>
 
-setMaskFilter(filter: MaskFilter): void
+setMaskFilter(filter: MaskFilter | null): void
 
 Adds a mask filter for this pen.
 
@@ -584,7 +584,7 @@ Adds a mask filter for this pen.
 
 | Name| Type                      | Mandatory| Description     |
 | ------ | ------------------------- | ---- | --------- |
-| filter | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) | Yes  | Mask filter. If null is passed in, the mask filter is cleared.|
+| filter | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) \| null | Yes  | Mask filter. If **null** is passed in, the mask filter is cleared.|
 
 **Error codes**
 
@@ -614,7 +614,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setPathEffect<sup>12+</sup>
 
-setPathEffect(effect: PathEffect): void
+setPathEffect(effect: PathEffect | null): void
 
 Sets the path effect for this pen.
 
@@ -624,7 +624,7 @@ Sets the path effect for this pen.
 
 | Name | Type                      | Mandatory| Description        |
 | ------- | ------------------------- | ---- | ------------ |
-| effect  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) | Yes  | Implements a path effect. If null is passed in, the path filter is cleared.|
+| effect  | [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) \| null | Yes  | Implements a path effect. If **null** is passed in, the path filter is cleared.|
 
 **Error codes**
 
@@ -654,7 +654,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setShaderEffect<sup>12+</sup>
 
-setShaderEffect(shaderEffect: ShaderEffect): void
+setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 Sets the shader effect for this pen.
 
@@ -664,7 +664,7 @@ Sets the shader effect for this pen.
 
 | Name | Type                      | Mandatory| Description        |
 | ------- | ------------------------- | ---- | ------------ |
-| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | Yes  | **ShaderEffect** object. If null is passed in, the shader effect will be cleared.|
+| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| null | Yes  | **ShaderEffect** object. If **null** is passed in, the shader effect will be cleared.|
 
 **Error codes**
 
@@ -686,7 +686,7 @@ pen.setShaderEffect(shaderEffect);
 
 ## setShadowLayer<sup>12+</sup>
 
-setShadowLayer(shadowLayer: ShadowLayer): void
+setShadowLayer(shadowLayer: ShadowLayer | null): void
 
 Sets a shadow layer for this pen. The shadow layer effect takes effect only when text is drawn.
 
@@ -696,7 +696,7 @@ Sets a shadow layer for this pen. The shadow layer effect takes effect only when
 
 | Name | Type                      | Mandatory| Description     |
 | ------- | ------------------------- | ---- | --------- |
-| shadowLayer  | [ShadowLayer](arkts-apis-graphics-drawing-ShadowLayer.md) | Yes  | Implements a shadow layer. If null is passed in, the shadow layer is cleared.|
+| shadowLayer  | [ShadowLayer](arkts-apis-graphics-drawing-ShadowLayer.md) \| null | Yes  | Implements a shadow layer. If **null** is passed in, the shadow layer is cleared.|
 
 **Error codes**
 
