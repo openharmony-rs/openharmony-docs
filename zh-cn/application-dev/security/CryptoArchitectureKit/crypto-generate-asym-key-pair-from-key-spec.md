@@ -33,10 +33,10 @@
 
 - 以使用callback方式根据密钥参数生成RSA公钥为例：
   <!-- @[specify_parameter_generate_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/rsa/Callback.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   // RSA公钥密钥参数生成函数
   function genRsaPubKeySpec(nIn: bigint, eIn: bigint): cryptoFramework.RSAPubKeySpec {
     let rsaCommSpec: cryptoFramework.RSACommonParamsSpec = {
@@ -52,7 +52,7 @@
     };
     return rsaPubKeySpec;
   }
-
+  
   // 根据密钥参数构造RSA公钥规范对象
   function genRsa2048PubKeySpec() {
     let nIn =
@@ -64,16 +64,16 @@
     let eIn = BigInt('0x010001');
     return genRsaPubKeySpec(nIn, eIn);
   }
-
+  
   // 将RSA公钥规格与预期值进行比较
   function compareRsaPubKeyBySpec(rsaKeySpec: cryptoFramework.RSAPubKeySpec, n: bigint | string | number,
     e: bigint | string | number) {
     if (typeof n === 'string' || typeof e === 'string') {
-      console.error('type is string');
+      console.error('type: string');
       return false;
     }
     if (typeof n === 'number' || typeof e === 'number') {
-      console.error('type is number');
+      console.error('type: number');
       return false;
     }
     if (rsaKeySpec.params.n != n) {
@@ -84,14 +84,14 @@
     }
     return true;
   }
-
+  
   // 根据RSA公钥规格生成RSA公钥，获取密钥规格，并与预期值进行比较
   function rsaUsePubKeySpecGetCallback() {
     let rsaPubKeySpec = genRsa2048PubKeySpec();
     let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
     rsaGeneratorSpec.generatePubKey((error, key) => {
       if (error) {
-        console.error('generate pubKey error' + 'error code: ' + error.code + 'error message' + error.message);
+        console.error('generate pubKey failed, ' + 'error code: ' + error.code + 'error message' + error.message);
       }
       let pubKey = key;
       let nBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_N_BN);
@@ -144,11 +144,11 @@
   function compareRsaPubKeyBySpec(rsaKeySpec: cryptoFramework.RSAPubKeySpec, n: bigint | string | number,
     e: bigint | string | number) {
     if (typeof n === 'string' || typeof e === 'string') {
-      console.error('type is string');
+      console.error('type: string');
       return false;
     }
     if (typeof n === 'number' || typeof e === 'number') {
-      console.error('type is number');
+      console.error('type: number');
       return false;
     }
     if (rsaKeySpec.params.n != n) {
@@ -175,10 +175,10 @@
           console.info('n, e in the pubKey are same as the spec.');
         }
       } else {
-        console.error('get pub key result fail!');
+        console.error('get pub key result: fail!');
       }
     } catch (e) {
-      console.error(`get pub key result fail, ${e.code}, ${e.message}`);
+      console.error(`get pub key result failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -201,19 +201,19 @@
 
 - 以使用Promise方式根据密钥参数生成ECC密钥为例：
   <!-- @[specify_parameter_generate_ecc_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/ecc/Promise.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   // 打印bigint信息
   function showBigIntInfo(bnName: string, bnValue: bigint | string | number) {
     if (typeof bnValue === 'string') {
-      console.error('type is string');
+      console.error('type: string');
       return;
     }
     if (typeof bnValue === 'number') {
-      console.error('type is number');
+      console.error('type: number');
       return;
     }
     console.info(bnName + ':');
@@ -221,7 +221,7 @@
     console.info('. Hexadecimal: ' + bnValue.toString(16));
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
-
+  
   // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
@@ -244,7 +244,7 @@
     }
     return eccCommonSpec;
   }
-
+  
   // 打印ECC密钥规格
   function showEccSpecDetailInfo(key: cryptoFramework.PubKey | cryptoFramework.PriKey, keyType: string) {
     console.info('show detail of ' + keyType + ':');
@@ -279,12 +279,11 @@
         showBigIntInfo('--- pkY', pkY);
       }
     } catch (error) {
-      console.error('getAsyKeySpec error');
       let e: BusinessError = error as BusinessError;
-      console.error(`getAsyKeySpec failed, ${e.code}, ${e.message}`);
+      console.error(`getAsyKeySpec failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
-
+  
   // 根据EccCommonSpec实例生成ECC密钥对，获取密钥规格
   function testEccUseCommKeySpecGet() {
     try {
@@ -296,14 +295,12 @@
         showEccSpecDetailInfo(keyPair.pubKey, 'pubKey'); // 对公钥获取相关密钥参数属性
       }).catch((error: BusinessError) => {
         // 逻辑错误等异步异常在此捕获
-        console.error('generateComm error');
-        console.error('error code: ' + error.code + ', message is: ' + error.message);
+        console.error(`generateComm failed: errCode: ${error.code}, message: ${error.message}`);
       })
     } catch (error) {
       // 参数错误等同步异常在此捕获
-      console.error('testEccUseCommSpec error');
       let e: BusinessError = error as BusinessError;
-      console.error(`ecc comm spec failed, ${e.code}, ${e.message}`);
+      console.error(`ecc comm spec failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -311,17 +308,17 @@
 
 - 同步返回结果（调用方法[generateKeyPairSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypairsync12)）：
   <!-- @[specify_parameter_generate_ecc_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/ecc/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function showBigIntInfo(bnName: string, bnValue: bigint | string | number) {
     if (typeof bnValue === 'string') {
-      console.error('type is string');
+      console.error('type: string');
       return;
     }
     if (typeof bnValue === 'number') {
-      console.error('type is number');
+      console.error('type: number');
       return;
     }
     console.info(bnName + ':');
@@ -329,7 +326,7 @@
     console.info('. Hexadecimal: ' + bnValue.toString(16));
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
-
+  
   // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
@@ -352,7 +349,7 @@
     }
     return eccCommonSpec;
   }
-
+  
   // 打印ECC密钥规格
   function showEccSpecDetailInfo(key: cryptoFramework.PubKey | cryptoFramework.PriKey, keyType: string) {
     console.info('show detail of ' + keyType + ':');
@@ -387,10 +384,10 @@
         showBigIntInfo('--- pkY', pkY);
       }
     } catch (e) {
-      console.error(`getAsyKeySpec failed, ${e.code}, ${e.message}`);
+      console.error(`getAsyKeySpec failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
-
+  
   // 根据EccCommonSpec实例生成ECC密钥对，获取密钥规格
   function testEccUseCommKeySpecGetSync() {
     try {
@@ -401,11 +398,11 @@
         showEccSpecDetailInfo(keyPair.priKey, 'priKey'); // 对私钥获取相关密钥参数属性
         showEccSpecDetailInfo(keyPair.pubKey, 'pubKey'); // 对公钥获取相关密钥参数属性
       } else {
-        console.error('get key pair result fail!');
+        console.error('get key pair result: fail!');
       }
     } catch (e) {
       // 逻辑错误等异常在此捕获
-      console.error(`get key pair result fail, ${e.code}, ${e.message}`);
+      console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -461,10 +458,10 @@
 
 - 同步返回结果（调用方法[generateKeyPairSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypairsync12)）：
   <!-- @[specify_parameter_generate_sm2_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/sm2/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function genSM2KeyPairSpec() {
     let sm2CommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_sm2');
     let sm2KeyPairSpec: cryptoFramework.ECCKeyPairSpec = {
@@ -479,7 +476,7 @@
     };
     return sm2KeyPairSpec;
   }
-
+  
   function sm2TestSync() {
     let sm2KeyPairSpec = genSM2KeyPairSpec();
     let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(sm2KeyPairSpec);
@@ -489,10 +486,10 @@
         let sm2CurveName = keyPair.priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_CURVE_NAME_STR);
         console.info('ECC_CURVE_NAME_STR: ' + sm2CurveName); // NID_sm2
       } else {
-        console.error('get key pair result fail!');
+        console.error('get key pair result: fail!');
       }
     } catch (e) {
-      console.error(`get key pair result fail, ${e.code}, ${e.message}`);
+      console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```

@@ -22,10 +22,10 @@
 - 异步方法示例：
 
   <!-- @[use_x25519a_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Async.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   async function x25519Await() {
     // 假设此公私钥对数据为外部传入
     let pubKeyArray =
@@ -46,10 +46,10 @@
     let secret2 = await keyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
     // 两种协商的结果应当一致
     if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('x25519 success');
-      console.info('x25519 output is ' + secret1.data);
+      console.info('x25519 result: success.');
+      console.info('x25519 output: ' + secret1.data);
     } else {
-      console.error('x25519 result is not equal');
+      console.error('x25519 result is not equal.');
     }
   }
   ```
@@ -58,10 +58,10 @@
 - 同步方法示例：
 
   <!-- @[use_x25519a_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/X25519/X25519Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function x25519Await() {
     // 假设此公私钥对数据为外部传入
     let pubKeyArray =
@@ -82,10 +82,10 @@
     let secret2 = keyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
     // 两种协商的结果应当一致
     if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('x25519 success');
-      console.info('x25519 output is ' + secret1.data);
+      console.info('x25519 result: success.');
+      console.info('x25519 output: ' + secret1.data);
     } else {
-      console.error('x25519 result is not equal');
+      console.error('x25519 result is not equal.');
     }
   }
   ```

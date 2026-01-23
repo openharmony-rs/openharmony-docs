@@ -57,7 +57,7 @@
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     let symKey = await aesGenerator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
   
@@ -70,13 +70,13 @@
       let encryptText = await encryptMessagePromise(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
-        console.error('decrypt failed');
+        console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`AES ECB “${error}“, error code: ${error.code}`);
+      console.error(`AES ECB failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```
@@ -110,7 +110,7 @@
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     let symKey = aesGenerator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
   
@@ -123,13 +123,13 @@
       let encryptText = encryptMessage(symKey, plainText);
       let decryptText = decryptMessage(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
-        console.error('decrypt failed');
+        console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`AES ECB “${error}“, error code: ${error.code}`);
+      console.error(`AES ECB failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```

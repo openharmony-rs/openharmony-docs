@@ -48,10 +48,10 @@
     let secret2 = await eccKeyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
     // 两种协商的结果应当一致
     if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('ecdh success');
-      console.info('ecdh output is ' + secret1.data);
+      console.info('ecdh result: success.');
+      console.info('ecdh output: ' + secret1.data);
     } else {
-      console.error('ecdh result is not equal');
+      console.error('ecdh result is not equal.');
     }
   }
   ```
@@ -60,11 +60,11 @@
 - 同步方法示例：
 
   <!-- @[use_ecdh_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/EDCHSync.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function ecdhAwait() {
     // 假设此公私钥对数据为外部传入
     let pubKeyArray =
@@ -87,10 +87,10 @@
     let secret2 = eccKeyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
     // 两种协商的结果应当一致
     if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('ecdh success');
-      console.info('ecdh output is ' + secret1.data);
+      console.info('ecdh result: success.');
+      console.info('ecdh output: ' + secret1.data);
     } else {
-      console.error('ecdh result is not equal');
+      console.error('ecdh result is not equal.');
     }
   }
   ```

@@ -52,18 +52,18 @@
 - 异步方法示例：
 
   <!-- @[encrypt_decrypt_chacha20_poly1305_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionAsync.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genPoly1305ParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -83,9 +83,9 @@
     };
     return poly1305ParamsSpec;
   }
-
+  
   let poly1305Params = genPoly1305ParamsSpec();
-
+  
   // 加密消息。
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20|Poly1305');
@@ -103,7 +103,7 @@
     // poly1305模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = await decoder.doFinal(null);
     if (decryptData === null) {
-      console.info('poly1305 decrypt success, decryptData is null');
+      console.info('poly1305 decrypt result: success, decryptData is null.');
     }
     return decryptUpdata;
   }
@@ -111,7 +111,7 @@
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
     let symKey = await chacha20Generator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
   async function main() {
@@ -124,13 +124,13 @@
       let encryptText = await encryptMessagePromise(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```
@@ -139,18 +139,18 @@
 - 同步方法示例：
 
   <!-- @[encrypt_decrypt_chacha20_poly1305_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionSync.ets) -->
-
+  
   ``` TypeScript
-
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genPoly1305ParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -170,9 +170,9 @@
     };
     return poly1305ParamsSpec;
   }
-
+  
   let poly1305Params = genPoly1305ParamsSpec();
-
+  
   // 加密消息。
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20|Poly1305');
@@ -190,7 +190,7 @@
     // poly1305模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = decoder.doFinalSync(null);
     if (decryptData === null) {
-      console.info('poly1305 decrypt success, decryptData is null');
+      console.info('poly1305 decrypt result: success, decryptData is null.');
     }
     return decryptUpdata;
   }
@@ -198,7 +198,7 @@
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
     let symKey = chacha20Generator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
   function main() {
@@ -211,13 +211,13 @@
       let encryptText = encryptMessage(symKey, plainText);
       let decryptText = decryptMessage(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```

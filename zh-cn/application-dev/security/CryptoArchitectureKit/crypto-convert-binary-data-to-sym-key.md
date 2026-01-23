@@ -24,11 +24,11 @@
 - 以使用callback方式生成3DES密钥为例：
 
   <!-- @[generate_3des_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/3des/Callback.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   function genKeyMaterialBlob(): cryptoFramework.DataBlob {
     let arr = [
     0xba, 0x3d, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
@@ -37,7 +37,7 @@
     let keyMaterial = new Uint8Array(arr);
     return { data: keyMaterial };
   }
-
+  
   function testConvertSymKey() {
     // 创建SymKeyGenerator实例
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
@@ -47,7 +47,7 @@
       symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
         if (error) { // 如果业务逻辑执行失败，则callback的第一个参数返回错误信息，即异步抛出异常
           let e: BusinessError = error as BusinessError;
-          console.error(`convertKey error, ${e.code}, ${e.message}`);
+          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
           return;
         }
         console.info('key algName：' + key.algName);
@@ -57,7 +57,7 @@
       })
     } catch (error) { // 参数检查发现错误立即抛出异常
       let e: BusinessError = error as BusinessError;
-      console.error(`convertKey failed, ${e.code}, ${e.message}`);
+      console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -66,11 +66,11 @@
 - 同步方法（调用方法[convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12)）：
 
   <!-- @[generate_3des_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/3des/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   function genKeyMaterialBlob(): cryptoFramework.DataBlob {
     let arr = [
     0xba, 0x3d, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
@@ -79,7 +79,7 @@
     let keyMaterial = new Uint8Array(arr);
     return { data: keyMaterial };
   }
-
+  
   function testConvertSymKey() {
     // 创建SymKeyGenerator实例
     let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
@@ -89,7 +89,7 @@
       symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
         if (error) { // 如果业务逻辑执行失败，则callback的第一个参数返回错误信息，即异步抛出异常
           let e: BusinessError = error as BusinessError;
-          console.error(`convertKey error, ${e.code}, ${e.message}`);
+          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
           return;
         }
         console.info('key algName：' + key.algName);
@@ -99,7 +99,7 @@
       })
     } catch (error) { // 参数检查发现错误立即抛出异常
       let e: BusinessError = error as BusinessError;
-      console.error(`convertKey failed, ${e.code}, ${e.message}`);
+      console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
