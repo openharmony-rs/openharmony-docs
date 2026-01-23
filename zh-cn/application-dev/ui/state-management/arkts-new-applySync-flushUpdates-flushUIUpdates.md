@@ -26,24 +26,26 @@ import { UIUtils } from '@kit.ArkUI';
 ## 使用规则
 
 - applySync接口用于同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed](./arkts-new-computed.md)计算、[@Monitor](./arkts-new-monitor.md)回调以及重新渲染UI节点。
-
-  ```ts
+  
+  <!-- @[ApplySyncUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncUse.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // 宽度
     @Local h: number = 50; // 高度
     @Local message: string = 'Hello';
-
+  
     @Monitor('message')
     onMessageChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       });
     }
-
+  
     build() {
       Column() {
         Button('change size')
@@ -55,7 +57,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.h = 100;
               this.message = 'Hello World';
             });
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -64,6 +66,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.message = 'Hello ArkUI';
             });
           })
+          // ...
         Column() {
           Text(`${this.message}`)
         }
@@ -78,24 +81,26 @@ import { UIUtils } from '@kit.ArkUI';
   ![applySync-flushUpdates-flushUIUpdates](./figures/applySync-flushUpdates-flushUIUpdates.gif)
   
 - flushUpdates接口用于同步刷新在调用该函数之前所有的状态变量修改，包括更新@Computed计算、@Monitor回调以及重新渲染UI节点。
-
-  ```ts
+  
+  <!-- @[FlushUpdatesUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/FlushUpdatesUse.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // 宽度
     @Local h: number = 50; // 高度
     @Local message: string = 'Hello';
-
+  
     @Monitor('message')
     onMessageChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       });
     }
-
+  
     build() {
       Column() {
         Button('change size')
@@ -106,7 +111,7 @@ import { UIUtils } from '@kit.ArkUI';
             this.h = 100;
             this.message = 'Hello World';
             UIUtils.flushUpdates();
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -115,6 +120,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.message = 'Hello ArkUI';
             });
           })
+          // ...
         Column() {
           Text(`${this.message}`)
         }
@@ -129,22 +135,24 @@ import { UIUtils } from '@kit.ArkUI';
   ![applySync-flushUpdates-flushUIUpdates](./figures/applySync-flushUpdates-flushUIUpdates.gif)
   
 - 上述的applySync、flushUpdates接口都会同步执行@Computed计算和@Monitor回调，这会使得在上述示例代码中，一次点击事件里触发了两次@Monitor回调，这可能会与开发者的预期不符，因此引入了flushUIUpdates接口，该接口仅用于同步刷新在调用该函数之前所有的UI节点，不会执行@Computed计算和@Monitor回调。
-
-  ```ts
+  
+  <!-- @[FlushUIUpdatesUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/FlushUIUpdatesUse.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local message: string = 'Hello';
-
+  
     @Monitor('message')
     onMessageChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
         console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
       });
     }
-
+  
     build() {
       Column() {
         Text(`message: ${this.message}`)
@@ -155,16 +163,17 @@ import { UIUtils } from '@kit.ArkUI';
             // UIUtils.applySync(() => {
             //   this.message = 'Hello World';
             // })
-            
+  
             // test2：调用flushUpdates接口，日志打印两次
             // this.message = 'Hello World';
             // UIUtils.flushUpdates();
-            
+  
             // test3：调用flushUIUpdates接口，日志打印一次
             this.message = 'Hello World';
             UIUtils.flushUIUpdates();
             this.message = 'Hello ArkUI';
           })
+          // ...
       }
     }
   }
@@ -173,16 +182,18 @@ import { UIUtils } from '@kit.ArkUI';
 ## 限制条件
 
 - 在applySync闭包函数中嵌套调用applySync，内层的applySync将会被跳过并返回undefined，同时打印出警告信息`UIUtils.applySync will be skipped when called within another UIUtils.applySync. The inner UIUtils.applySync will return undefined`。
-
-  ```ts
+  
+  <!-- @[ApplySyncNestApplySync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestApplySync.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // 宽度
     @Local h: number = 50; // 高度
-
+  
     build() {
       Column() {
         Button('change size')
@@ -196,7 +207,7 @@ import { UIUtils } from '@kit.ArkUI';
                 this.h = 100;
               });
             });
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -204,6 +215,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.h = 200;
             });
           })
+          // ...
         Column() {
           Text('BOX')
         }
@@ -216,16 +228,18 @@ import { UIUtils } from '@kit.ArkUI';
   ```
 
 - 在applySync闭包函数中调用flushUpdates或flushUIUpdates接口将不起作用。同时打印出对应警告信息`UIUtils.flushUpdates will be skipped when called within UIUtils.applySync`/`UIUtils.flushUIUpdates will be skipped when called within UIUtils.applySync`。
-
-  ```ts
+  
+  <!-- @[ApplySyncNestOthers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestOthers.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // 宽度
     @Local h: number = 50; // 高度
-
+  
     build() {
       Column() {
         Button('change size')
@@ -239,7 +253,7 @@ import { UIUtils } from '@kit.ArkUI';
             });
             this.h = 100;
             UIUtils.flushUpdates(); //会生效
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -247,6 +261,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.h = 200;
             });
           })
+          // ...
         Column() {
           Text('BOX')
         }
@@ -259,17 +274,19 @@ import { UIUtils } from '@kit.ArkUI';
   ```
   
 - 不支持在@Computed装饰的getter方法中调用applySync、flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Computed`，错误码为[`140001`](../../reference/apis-arkui/errorcode-stateManagement.md#140001-applysyncflushupdatesflushuiupdates非法调用)。
-
-  ```ts
+  
+  <!-- @[CallInComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInComputed.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Page {
     @Local firstName: string = 'Hua';
     @Local lastName: string = 'Li';
     @Local count: number = 0;
-
+  
     @Computed
     get fullName() {
       // 在computed中调用applySync、flushUpdates、flushUIUpdates运行时报错
@@ -280,7 +297,7 @@ import { UIUtils } from '@kit.ArkUI';
       });
       return this.firstName + ' ' + this.lastName;
     }
-
+  
     build() {
       Column() {
         Text(`${this.fullName}`)
@@ -295,15 +312,17 @@ import { UIUtils } from '@kit.ArkUI';
   ```
 
 - 不支持在@Monitor回调函数中调用flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Monitor`，错误码为[`140002`](../../reference/apis-arkui/errorcode-stateManagement.md#140002-flushupdatesflushuiupdates非法调用)。
-
-  ```ts
+  
+  <!-- @[CallInMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInMonitor.ets) -->
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Page {
     @Local count: number = 0;
-
+  
     @Monitor('count')
     onCountChange(monitor: IMonitor) {
       monitor.dirty.forEach((path: string) => {
@@ -312,13 +331,15 @@ import { UIUtils } from '@kit.ArkUI';
       UIUtils.flushUpdates(); // 在monitor中调用flushUpdates会运行时报错
       UIUtils.flushUIUpdates(); // 在monitor中调用flushUIUpdates会运行时报错
     }
-
+  
     build() {
       Column() {
         Text(`${this.count}`)
-        Button('change count').onClick(() => {
+        Button('change count')
+          .onClick(() => {
           this.count++;
-        })
+          })
+          // ...
       }
     }
   }
@@ -330,7 +351,9 @@ import { UIUtils } from '@kit.ArkUI';
 
 状态管理V2的异步标脏逻辑与animateTo立即刷新脏节点的逻辑存在冲突，导致在@Monitor中触发animateTo时不显示动画。使用applySync接口同步刷新状态变量的改变能够实现预期效果，示例如下。
 
-```ts
+<!-- @[AnimateToUse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/AnimateToUse.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -374,6 +397,7 @@ struct Index {
           x: this.x,
           y: this.y
         })
+        // ...
     }
     .height('100%')
     .width('100%')
@@ -387,14 +411,16 @@ struct Index {
 
 在路由场景下设置[共享元素转场动效](../../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md#sharedtransition)，使用applySync接口可以使得转场时同步刷新name值，实现转场动效效果。在如下示例代码中，从Index页面向PageTransitionTwo页面跳转时，两个页面的id值不匹配，没有转场动效。从PageTransitionTwo页面返回Index页面时，两个页面的id值匹配，有转场动效。
 
-```ts
-// Index.ets
+<!-- @[PageUse_PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageUse.ets) -->
+
+``` TypeScript
+// PageUse.ets
 
 import { UIUtils, AppStorageV2 } from '@kit.ArkUI';
 
 @ObservedV2
 export class Info {
-  @Trace name: string = '';
+  @Trace public name: string = '';
 }
 
 @Entry
@@ -420,15 +446,18 @@ struct SharedTransitionExample {
       });
       this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTransitionTwo' })
     })
+    // ...
   }
 }
 ```
 
-```ts
+<!-- @[PageUse_PageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageTransitionTwo.ets) -->
+
+``` TypeScript
 // PageTransitionTwo.ets
 
 import { UIUtils, AppStorageV2 } from '@kit.ArkUI';
-import { Info } from './Index'
+import { Info } from './PageUse';
 
 @Entry
 @ComponentV2
@@ -446,6 +475,7 @@ struct PageBExample {
           });
           this.getUIContext().getRouter().back();
         })
+        // ...
     }
     .width('100%')
     .height('100%')
