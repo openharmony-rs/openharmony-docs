@@ -24,9 +24,17 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 >
 > 媒体变更请求必须在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)后才会生效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+### 属性
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于MediaChangeRequest类型校验。<br>如果类（如[MediaAssetsChangeRequest](js-apis-photoAccessHelper-sys.md#mediaassetschangerequest11)、[MediaAssetChangeRequest](arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md)或[MediaAlbumChangeRequest](arkts-apis-photoAccessHelper-MediaAlbumChangeRequest.md)）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
 ## CreateOptions
 
