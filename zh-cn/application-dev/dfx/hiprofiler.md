@@ -162,7 +162,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
 > **注意：**
 >
->[应用加密](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/code-protect)后只能回native栈，不能回JS栈。
+> [应用加密](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/code-protect)后只能回native栈，不能回JS栈。
 
 **参数介绍**
 
