@@ -390,9 +390,9 @@ ArkTS-Sta: textCase(value: TextCase | undefined)
 
 ### textContentAlign<sup>21+</sup>
 
-ArkTS-Dyn: isEditing(): textContentAlign(textContentAlign: Optional\<TextContentAlign>)
+ArkTS-Dyn: textContentAlign(textContentAlign: Optional\<TextContentAlign>)
 
-ArkTS-Sta: isEditing(): textContentAlign(textContentAlign: TextContentAlign | undefined)
+ArkTS-Sta: textContentAlign(textContentAlign: TextContentAlign | undefined)
 
 设置文本内容区在组件内的垂直对齐方式。
 
