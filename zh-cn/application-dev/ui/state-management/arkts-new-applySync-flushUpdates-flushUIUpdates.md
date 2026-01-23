@@ -184,16 +184,16 @@ import { UIUtils } from '@kit.ArkUI';
 - 在applySync闭包函数中嵌套调用applySync，内层的applySync将会被跳过并返回undefined，同时打印出警告信息`UIUtils.applySync will be skipped when called within another UIUtils.applySync. The inner UIUtils.applySync will return undefined`。
   
   <!-- @[ApplySyncNestApplySync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestApplySync.ets) -->
-
-  ```ts
+  
+  ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local w: number = 50; // 宽度
     @Local h: number = 50; // 高度
-
+  
     build() {
       Column() {
         Button('change size')
@@ -207,7 +207,7 @@ import { UIUtils } from '@kit.ArkUI';
                 this.h = 100;
               });
             });
-
+  
             this.getUIContext().animateTo({
               duration: 1000
             }, () => {
@@ -215,6 +215,7 @@ import { UIUtils } from '@kit.ArkUI';
               this.h = 200;
             });
           })
+          // ...
         Column() {
           Text('BOX')
         }
