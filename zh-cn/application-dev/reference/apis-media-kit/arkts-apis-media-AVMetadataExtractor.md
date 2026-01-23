@@ -177,8 +177,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
-let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
-
 // 初始化入参。
 let timesUs: number[] = [];
 let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
@@ -187,22 +185,18 @@ let param: media.PixelMapParams = {
   height: 300
 };
 // 获取缩略图。
-media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
- 	let pixelMap: image.PixelMap | undefined = undefined;
-    avMetadataExtractor = extractor;
+let avMetadataExtractor = await media.createAVMetadataExtractor();
+  if (avMetadataExtractor != null) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
         console.info(`fetchFrameByTime callback failed, error = ${JSON.stringify(err)}`);
+        return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        pixelMap = frameInfo.image;
+        let pixelMap = frameInfo.image;
       }});
-  } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
   }
-});
 ```
 
 ## cancelAllFetchFrames<sup>23+</sup>
