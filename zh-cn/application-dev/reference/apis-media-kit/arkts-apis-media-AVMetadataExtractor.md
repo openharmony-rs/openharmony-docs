@@ -186,7 +186,7 @@ let param: media.PixelMapParams = {
 };
 // 获取缩略图
 let avMetadataExtractor = await media.createAVMetadataExtractor();
-if (avMetadataExtractor != null) {
+if (avMetadataExtractor !== null) {
   console.info('Succeeded in creating AVMetadataExtractor');
   avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
     if (err) {
