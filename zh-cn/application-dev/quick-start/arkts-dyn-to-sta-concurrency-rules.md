@@ -1162,3 +1162,39 @@ let p2 = new Promise<void>((resolve, reject) => {
     setTimeout(() => {resolve(undefined)}, 10);
 })    
 ```
+
+## 函数返回类型为await Promise\<U>泛型类型时，需要使用Promise\<Awaited\<U>>类型作为返回类型
+
+**规则：** `arkts-promise-with-U-type-need-awaited-utility-type`
+
+**规则解释：**
+
+ArkTS-Sta中await Promise\<U>会去除所有Promise类型，这会导致实际返回类型和预期返回类型不匹配，此时需要使用Awaited工具类型对Promise进行处理。
+
+**变更原因：**
+
+ArkTS-Sta中引入Awaited工具类型用于解决Promise嵌套问题，U为泛型，可能为嵌套Promise类型。例如，当U为Promise<Promise<string>>时，await Promise\<U>返回类型为string，然而，返回值为Promise\<U>的async函数实际类型为Promise\<Promise\<Promise\<string>>>，导致string类型与实际类型不匹配，因此，需要将async函数返回值由Promise\<U>>修改为Promise\<Awaited\<U>>类型，以去除U类型中的所有的Promise嵌套。
+
+**适配建议：**
+
+所有return await Promise\<U>类型的async函数，应当使用Promise\<Awaited\<U>>类型作为返回类型。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+async function test<U>(func: () => Promise<U>): Promise<U> {
+  const result = await func();
+  return result;
+}
+```
+
+ArkTS-Sta
+
+```typescript
+async function test<U>(func: () => Promise<U>): Promise<Awaited<U>> {
+  const result = await func();
+  return result;
+}
+```
