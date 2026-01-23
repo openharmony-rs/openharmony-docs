@@ -194,6 +194,16 @@ console.info('testcase: ', result);
 
 <!-- @[test_setArrayFrom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
 
+``` TypeScript
+const arr1: number[] = [1, 2];
+const arr2: number[] = [3, 4];
+const set = new Set<number[]>([arr1, arr2]);
+let result = JSON.stringify(Array.from(set));
+console.info('res: ', result);
+// 期望输出: res: [[1,2],[3,4]]
+// 实际输出: res: [2,4]
+```
+
 规避方案：暂无，开发者应避免构造set时入参为多维数组。
 
 ### Object.entries处理Uint8Array与Uint16Array数组结果与期望不一致
