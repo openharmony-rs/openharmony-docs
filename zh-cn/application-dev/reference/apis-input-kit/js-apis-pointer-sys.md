@@ -4317,8 +4317,7 @@ struct Index {
 }
 ```
 
-
-ArkTS-Dyn示例:
+ArkTS-Sta示例:
 
 ```ts
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
@@ -4591,7 +4590,11 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerColor(0xF6C800).then(() => {
+            pointer.setPointerColor(0xF6C800, (error: Error | null) => {
+              if (error) {
+                console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
               console.log(`setPointerColor success`);
             });
           } catch (error) {
