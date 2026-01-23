@@ -6571,7 +6571,7 @@ type TriggerType = _TriggerType
  
 | 类型 | 说明 |
 | --- | --- |
-| [_TriggerType](js-apis-inner-notification-notificationRequest-sys.md#triggertype23) | 地理围栏触发类型。 |
+| [_TriggerType](js-apis-inner-notification-notificationRequest-sys.md#triggertype23) | 条件触发类型。 |
 
 ## Trigger <sup>23+</sup>
  
@@ -6587,7 +6587,7 @@ type Trigger = _Trigger
  	 
 | 类型 | 说明 |
 | --- | --- |
-| [_Trigger](js-apis-inner-notification-notificationRequest-sys.md#trigger23) | 条件类型。 |
+| [_Trigger](js-apis-inner-notification-notificationRequest-sys.md#trigger23) | 触发类型。 |
  
 ## Geofence <sup>23+</sup>
  
@@ -6603,7 +6603,7 @@ type Geofence = _Geofence
  
 | 类型 | 说明 |
 | --- | --- |
-| [_Geofence](js-apis-inner-notification-notificationRequest-sys.md#geofence23) | 地理围栏中心点经度条件类型。 |
+| [_Geofence](js-apis-inner-notification-notificationRequest-sys.md#geofence23) | 地理围栏配置信息。 |
  
 ## CoordinateSystemType <sup>23+</sup>
  
