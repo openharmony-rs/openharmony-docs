@@ -4317,7 +4317,7 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
