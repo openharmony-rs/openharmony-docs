@@ -466,7 +466,7 @@ try {
 
 ## appControl.deleteDisposedStatusSync<sup>10+</sup>
 
-deleteDisposedStatusSync(appId: string, appIndex:? number) : void
+deleteDisposedStatusSync(appId: string, appIndex?: number) : void
 
 以同步方法删除指定应用或分身应用的处置状态。成功返回null，失败抛出对应异常。
 
@@ -515,7 +515,7 @@ try {
 
 ## appControl.getDisposedRule<sup>11+</sup>
 
-getDisposedRule(appId: string, appIndex:? number): DisposedRule
+getDisposedRule(appId: string, appIndex?: number): DisposedRule
 
 获取指定应用或分身应用已设置的拦截规则。
 
@@ -570,7 +570,7 @@ try {
 
 ## appControl.setDisposedRule<sup>11+</sup>
 
-setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
+setDisposedRule(appId: string, rule: DisposedRule, appIndex?: number): void
 
 设置指定应用或分身应用的拦截规则。
 
@@ -729,7 +729,7 @@ struct Index {
 
 ## appControl.setUninstallDisposedRule<sup>15+</sup>
 
-setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex:? number): void
+setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex?: number): void
 
 设置指定应用或分身应用的卸载处置规则。
 
@@ -790,7 +790,7 @@ try {
 
 ## appControl.getUninstallDisposedRule<sup>15+</sup>
 
-getUninstallDisposedRule(appIdentifier: string, appIndex:? number): UninstallDisposedRule
+getUninstallDisposedRule(appIdentifier: string, appIndex?: number): UninstallDisposedRule
 
 获取指定应用或分身应用已设置的卸载处置规则。
 
@@ -845,7 +845,7 @@ try {
 
 ## appControl.deleteUninstallDisposedRule<sup>15+</sup>
 
-deleteUninstallDisposedRule(appIdentifier: string, appIndex:? number): void
+deleteUninstallDisposedRule(appIdentifier: string, appIndex?: number): void
 
 删除指定应用或分身应用的卸载处置规则。
 
