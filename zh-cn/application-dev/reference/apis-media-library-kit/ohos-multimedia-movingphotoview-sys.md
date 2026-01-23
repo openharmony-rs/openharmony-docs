@@ -100,7 +100,7 @@ import { media } from '@kit.MediaKit';
 let data: photoAccessHelper.MovingPhoto
 async function loading(context: Context) {
   try {
-    // 需要确保imageFileUri和videoFileUri对应的资源在应用沙箱存在
+    // 需要确保imageFileUri和videoFileUri对应的资源在应用沙箱存在。
     let imageFileUri = 'file://{bundleName}/data/storage/el2/base/haps/entry/files/xxx.jpg';
     let videoFileUri = 'file://{bundleName}/data/storage/el2/base/haps/entry/files/xxx.mp4';
     data = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
