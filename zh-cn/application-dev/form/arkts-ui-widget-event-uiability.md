@@ -80,6 +80,7 @@
     <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) -->
     
     ``` TypeScript
+    // entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
     import { BusinessError } from '@kit.BasicServicesKit';
