@@ -115,6 +115,8 @@ startAbilityByAdmin(admin: Want, want: Want): Promise\<void>
 ```ts
 import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 import { preferences } from '@kit.ArkData';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 /**
  * 企业设备管理扩展能力组件
