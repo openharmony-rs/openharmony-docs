@@ -341,11 +341,7 @@ function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profi
 
 ## getPreviewRotation<sup>12+</sup>
 
-getPreviewRotation(displayRotation?: int): ImageRotation
-
-> **说明**
->
-> 从API version 23开始，入参displayRotation为可选参数。
+getPreviewRotation(displayRotation?: number): ImageRotation
 
 获取预览旋转角度。
 
@@ -363,7 +359,7 @@ getPreviewRotation(displayRotation?: int): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| displayRotation | int  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。<br> 当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。 |
+| displayRotation | number  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。<br> 从API version 23开始，入参displayRotation为可选参数，当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。 |
 
 **返回值：**
 
