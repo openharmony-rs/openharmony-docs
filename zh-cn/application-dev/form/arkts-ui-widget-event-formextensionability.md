@@ -76,8 +76,8 @@
 
 - 在EntryFormAbility.ets中，导入相关模块
 
-    ```ets
-    //entry/src/main/ets/entryformability/EntryFormAbility.ts
+    ```TypeScript
+    // entry/src/main/ets/entryformability/EntryFormAbility.ts
     import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
     import { Configuration, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
