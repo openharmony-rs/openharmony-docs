@@ -1150,7 +1150,7 @@ getPhotoRotation(deviceDegree?: int): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | int | 否   | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。 |
+| deviceDegree | int | 否   | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。<br> 当不传入参数时，由系统获取displayRotation进行拍照旋转角度计算。 |
 
 **返回值：**
 
@@ -1183,43 +1183,8 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput, deviceDegree : nu
   }
   return photoRotation;
 }
-```
 
-## getPhotoRotation<sup>23+</sup>
-
-getPhotoRotation(): ImageRotation
-
-获取拍照旋转角度。
-
-- 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-|      类型      | 说明        |
-| -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 返回拍照旋转角度。若接口调用失败，返回undefined。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID   | 错误信息                         |
-|---------|------------------------------|
-| 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function testGetPhotoRotation(photoOutput: camera.PhotoOutput): camera.ImageRotation {
+function testGetPhotoRotationWithOutParam(photoOutput: camera.PhotoOutput): camera.ImageRotation {
   let photoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     photoRotation = photoOutput.getPhotoRotation();
@@ -1227,7 +1192,7 @@ function testGetPhotoRotation(photoOutput: camera.PhotoOutput): camera.ImageRota
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The photoOutput.getPhotoRotation call failed. error code: ${err.code}`);
+    console.error(`The photoOutput.testGetPhotoRotationWithOutParam call failed. error code: ${err.code}`);
   }
   return photoRotation;
 }
