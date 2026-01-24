@@ -93,3 +93,22 @@ The provided member must be a property name of PhotoKey.
 
 检查传入参数是否在PhotoKeys枚举范围之内。
 
+## 23800202 非法场景调用错误
+ 	 
+**错误信息**
+
+Invalid call context. Possible causes: 1. The API is called outside the photo browsing scenario. 2. The API is called when isMovingPhotoBadgeShown is already set to true.
+
+**错误描述**
+
+非法场景调用错误。
+
+**可能原因**
+
+1. 在非全图浏览场景下调用该接口。
+
+2. 在已经配置[BaseSelectOptions.isMovingPhotoBadgeShown](arkts-apis-photoAccessHelper-class.md#baseselectoptions)为true的情况下调用该接口。
+
+**处理步骤**
+
+检查接口[setMovingPhotoState](ohos-file-PhotoPickerComponent.md#setmovingphotostate23)的使用场景。
