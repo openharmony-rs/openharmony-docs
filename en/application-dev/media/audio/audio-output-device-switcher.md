@@ -16,7 +16,7 @@ Applications can use the [AVCastPicker](../../reference/apis-avsession-kit/ohos-
 
 ### Switching External Devices
 
-Call applications can use the [AVCastPicker](../avsession/using-switch-call-devices.md) component to switch the external output device.
+A call-type application can [use the call device switching component](../avsession/using-switch-call-devices.md) to switch the routing of external output devices.
 
 ### Switching Built-in Devices
 
@@ -31,8 +31,9 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
    > - AudioRenderer operates at the stream level. Therefore, the default audio output device set via this API take effect only for the current stream.
    > - This API has a lower priority than [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20) of AudioSessionManager. If [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20) of AudioSessionManager has been used to set the default audio output device, the settings made via this API does not take effect.
 
-   ```ts
-   import { audio } from '@kit.AudioKit';
+   <!-- @[set_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
+
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
 
    // Set the default output device to the device speaker.
@@ -42,7 +43,7 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
      console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
    });
 
-   // Set the default output device to the system's default output device, effectively canceling the application's default device setting.
+   // Set the default output device to the system's default output device (i.e., cancel the default device set by the application and let the system select the device).
    audioRenderer.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
      console.info('Succeeded in setting default output device.');
    }).catch((err: BusinessError) => {
@@ -56,7 +57,9 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
    >
    > AudioSessionManager operates at the application level. Therefore, calling this API to set the default audio output device takes effect for all applicable audio streams within the current application and overrides the default audio output device settings made via [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12) of AudioRenderer.
 
-   ```ts
+   <!-- @[setting_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
+
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';  // Import the audio module.
    import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -71,7 +74,7 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
      console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
    });
 
-   // Set the default output device to the system's default output device, effectively canceling the application's default device setting.
+   // Set the default output device to the system's default output device (i.e., cancel the default device set by the application and let the system select the device).
    audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
      console.info('Succeeded in setting default output device.');
    }).catch((err: BusinessError) => {

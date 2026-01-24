@@ -1,4 +1,4 @@
-# Introduction to Audio Focus and Audio Sessions
+# Introduction to Audio Focus
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -8,21 +8,21 @@
 
 When an application plays or records a sound, conflicts with other audio streams may occur, adversely affecting user experience. For example, when a video starts playing while music is playing in the background, users expect the music to pause to prioritize the video's audio. This is where audio focus comes into play. For applications that provide audio services, it is important to properly manage audio focus, which can significantly improve the audio experience of users.
 
-This topic outlines the system's audio focus strategy, detailing how applications can respond to focus changes. The system also provides an audio session mechanism, which allows applications to customize the focus strategy for its audio streams.
+This topic outlines the system's audio focus strategy, detailing how applications can respond to focus changes. The system also provides the [audio session management](audio-session-management.md) mechanism, allowing applications to customize the focus strategy for their audio streams.
 
 ## Audio Focus
 
 The system has a default [audio focus strategy](#audio-focus-strategy) that manages all playback and recording audio streams based on their types and the order in which they initiate.
 
-Applications must [request audio focus](#requesting-audio-focus) before starting playback or recording and [release it](#releasing-audio-focus) in time when the playback or recording is complete. During playback or recording, audio focus may be lost due to the intervention of other audio streams. In this case, the application needs to [take measures based on the focus changes](#handling-audio-focus-changes).
+Applications must [request audio focus](#requesting-audio-focus) before starting playback or recording and [release it](#releasing-audio-focus) in time when the playback or recording is complete. During audio playback or recording, audio focus may be lost due to the intervention of other audio streams. In this case, applications need to [handle audio focus changes](#handling-audio-focus-changes).
 
 To ensure a superior audio focus experience for users, applications should:
 
 - Before starting playback or recording, [select an appropriate audio stream type](using-right-streamusage-and-sourcetype.md) based on the specific use of the audio, by accurately setting [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) or [SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8).
 
-- During playback or recording, [listen for audio focus events](#handling-audio-focus-changes) and take measures when receiving such an event (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)).
+- During audio playback or recording, you need to monitor the audio focus to [handle audio focus change events](#handling-audio-focus-changes), and take corresponding measures when receiving an audio focus interruption event ([InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)).
 
-- To actively manage audio focus, call the APIs related to [AudioSession](#audio-session).
+- If an application intends to actively manage the audio focus, it can use the APIs related to [Audio Session Management](audio-session-management.md) for such operations.
 
 ### Requesting Audio Focus
 
@@ -32,21 +32,21 @@ For example, when an application [uses AudioRenderer for audio playback (ArkTs)]
 
 If the audio focus request is successful, the audio stream starts normally; otherwise, the audio stream fails to start.
 
-It is recommended that the application proactively [listen for audio focus events](#handling-audio-focus-changes). If the audio focus request is rejected, the application receives an audio focus event (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)).
+It is recommended that the application actively monitor audio focus to [handle audio focus change events](#handling-audio-focus-changes). Once an audio focus request is denied, the application will receive an audio focus event ([InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)).
 
-If an application wants to request focus just once and play several audio streams in a row without being interrupted, it can use the focus request API of [AudioSession](#audio-session).
+If an application wants to request focus just once and play several audio streams in a row without being interrupted, it can use the APIs related to [Audio Session Management](audio-session-management.md).
 
 **Special scenarios:**
 
-1. **Short sound playback**: If an application [uses SoundPool to play short sounds (ArkTS)](../media/using-soundpool-for-playback.md) and [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) is set to **Music**, **Movie**, or **AudioBook**, the concurrent mode is used by default when the focus is requested, and other audios are not affected.
+1. **Short sound playback**: If the application [uses SoundPool to play short sounds (ArkTS)](../media/using-soundpool-for-playback.md) and [StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage) is set to **Music**, **Movie**, or **AudioBook**, the concurrent mode is used by default when the focus is requested, and other audios are not affected.
 
-2. **Silent playback**: If an application starts to play audio (or video) in mute mode and intends to avoid affecting other audio during the mute phase, and then seeks audio focus with a standard strategy when unmuting, it can call APIs related to the silent concurrent playback mode. For details about the invoking of each function, please refer to:
+2. **Silent playback**: If an application starts to play audio (or video) in mute mode and intends to avoid affecting other audio during the mute phase, and then seeks audio focus with a standard strategy when unmuting, it can call APIs related to the silent concurrent playback mode. For details, see:
 
    - [setMediaMuted](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setmediamuted12) function: [Using AVPlayer to Play Audio (ArkTS)](../media/using-avplayer-for-playback.md)
 
    - [setSilentModeAndMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setsilentmodeandmixwithothers12) function: [Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md)
 
-   - [OH_AudioRenderer_SetSilentModeAndMixWithOthers](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setsilentmodeandmixwithothers) function: [(Recommended) Using OHAudio for Audio Playback (C/C++) ](using-ohaudio-for-playback.md)
+   - [OH_AudioRenderer_SetSilentModeAndMixWithOthers](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setsilentmodeandmixwithothers) function: [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md)
 
 ### Releasing Audio Focus
 
@@ -56,9 +56,9 @@ For example, when an application [uses AudioRenderer for audio playback (ArkTs)]
 
 After the audio focus is released, other audio streams (for example, streams with reduced volume or paused streams) affected by the audio stream will be resumed.
 
-If an application prefers not to release audio focus immediately when the audio stream stops, it can call the APIs related to [AudioSession](#audio-session) to delay the release.
+If an application prefers not to release audio focus immediately when the audio stream stops, it can call the APIs related to [Audio Session Management](audio-session-management.md) to delay the release.
 
-If an application has already requested focus by activating an [AudioSession](#audio-session), it should deactivate the audio session to release focus.
+If an application has already requested focus by activating [Audio Session Management](audio-session-management.md), it needs to terminate the **AudioSession** to release the focus.
 
 ### Audio Focus Strategy
 
@@ -76,7 +76,7 @@ Common audio focus scenarios are as follows:
 - When a VoiceCommunication stream starts playing, the Music stream that is playing will be paused. When the VoiceCommunication stream ends, the Music stream will receive a notification to resume the playback.
 - When a VoiceMessage stream starts playing, the Music stream that is playing will be paused. When the VoiceMessage stream ends, the Music stream will receive a notification to resume the playback.
 
-If the default audio focus strategy fails to meet specific scenario requirements, applications can use [AudioSession](#audio-session) to adjust the audio focus strategy used by their audio streams.
+If the default audio focus strategy cannot meet the requirements of specific scenarios, the application can leverage [Audio Session Management](audio-session-management.md) to adjust the audio focus strategy adopted by the audio streams of the current application.
 
 ### Audio Focus Mode
 
@@ -102,7 +102,7 @@ You can set the audio focus mode in one of the following ways:
 
 ### Handling Audio Focus Changes
 
-If another audio stream requests focus when an application is playing or recording audio, the system handles this situation based on the [focus strategy](#audio-focus-strategy). If the current audio stream encounters a focus change and requires operations such as pausing, resuming, ducking, and unducking, the system performs necessary operations and notifies the application through an audio focus event (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)).
+If another audio stream requests focus when an application is playing or recording audio, the system handles this situation based on the [audio focus strategy](#audio-focus-strategy). If the current audio stream encounters a focus change and requires operations such as pausing, resuming, ducking, and unducking, the system performs necessary operations and notifies the application through an audio focus event (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)).
 
 To maintain state consistency between the application and system and ensure a positive user experience, it is recommended that the application listen for audio focus events (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)) and respond appropriately to the event when focus changes.
 
@@ -114,11 +114,11 @@ The manners for listening for audio focus events vary according to the developme
 
 - If you [use AudioRenderer for audio playback (ArkTs)](using-audiorenderer-for-playback.md), call [on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9) to listen for [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9).
 
-- If you [use OHAudio for audio playback (C/C++)](using-ohaudio-for-playback.md), call [OH_AudioStreamBuilder_SetRendererCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback) to listen for [OH_AudioRenderer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md#oh_audiorenderer_oninterruptevent).
+- If you [use OHAudio for audio playback (C/C++)](using-ohaudio-for-playback.md), call [OH_AudioStreamBuilder_SetRendererCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrenderercallback) to listen for audio focus events (specified by [OH_AudioRenderer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md#oh_audiorenderer_oninterruptevent)).
 
 - If you [use AudioCapturer for audio recording (ArkTs)](using-audiocapturer-for-recording.md), call [on('audioInterrupt')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onaudiointerrupt10) to listen for [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9).
 
-- If you [use OHAudio for audio recording (C/C++)](using-ohaudio-for-recording.md), call [OH_AudioStreamBuilder_SetCapturerCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback) to listen for [OH_AudioCapturer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md#oh_audiocapturer_oninterruptevent).
+- If you [use OHAudio for audio recording (C/C++)](using-ohaudio-for-recording.md), call [OH_AudioStreamBuilder_SetCapturerCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturercallback) to listen for audio focus events (specified by [OH_AudioCapturer_OnInterruptEvent](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md#oh_audiocapturer_oninterruptevent)).
 
 When receiving an audio focus event (specified by [InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)), applications must perform corresponding processing based on the information in the event to maintain consistency with the system state and deliver a quality audio experience to users.
 
@@ -234,159 +234,3 @@ async function onAudioInterrupt(): Promise<void> {
   });
 }
 ```
-
-## Audio Session
-
-Applications may use AudioSession APIs to customize a focus strategy for its audio streams. During audio focus management carried out by the system, all audio streams of the application preferentially adhere to the strategy specified by the audio session as long as conditions permit.
-
-The AudioSession APIs are used to implement the following functions:
-
-- Once an application activates an audio session and specifies an [audio session strategy](#audio-session-strategy), all audio streams of the application preferentially use this strategy during focus management.
-
-  Typical scenario: When an application plays a short video, the background music is interrupted. The application expects that the background music can automatically resume after the application's audio stream stops. (In this scenario, the application needs to activate AudioSession before starting the audio stream and deactivate AudioSession after stopping the audio stream.)
-
-- When an audio session is in the activated state and all audio streams of the application are stopped, audio focus is not released immediately. The system retains focus until the audio session is deactivated or a new audio stream of the application requests focus.
-
-  Typical scenario: When the application plays multiple audio tracks consecutively, it may not want other affected background audio tracks to automatically resume during the gaps between the audio tracks. Instead, it aims to maintain the continuity of audio focus throughout the entire playback process. (This scenario requires the application to activate the audio session before the entire playback process begins and deactivate it after the entire playback process ends.)
-
-### Audio Session Usage Workflow
-
-The following figure demonstrates the usage workflow of AudioSession.
-
-![AudioSession status change](figures/audiosession-status-change.png)
-
-1. Before starting the audio service, obtain an AudioSessionManager instance.
-
-   For details, see [Obtaining an Audio Session Manager (ArkTS)](audio-session-management.md#obtaining-an-audio-session-manager) or [Obtaining an Audio Session Manager (C/C++)](using-ohaudio-for-session.md#obtaining-an-audio-session-manager).
-
-2. Activate an audio session for the application and specify [AudioSessionStrategy](#audio-session-strategy) as required.
-
-   For details, see [Activating an Audio Session (ArkTS)](audio-session-management.md#activating-an-audio-session) or [Activating an Audio Session (C/C++)](using-ohaudio-for-session.md#activating-an-audio-session).
-
-   > **NOTE**
-   >
-   > - The strategy passed for audio session activation is saved. This strategy is preferentially used during focus management of the audio stream of the application (for example, requesting or releasing focus).
-   > - An audio session can be activated repeatedly. During repeated activation, the saved strategy is updated, and the latest strategy is used in focus management.
-
-   An active audio session has the following features:
-   - If the application has no running audio streams, the system automatically deactivates the audio session after one minute.
-   - When the audio stream of the application stops and the application does not have other audio streams, focus is not released immediately. Instead, it is maintained in the silent wait state until the audio session is deactivated or the application requests focus with a new audio stream.
-
-3. The application normally starts the audio service such as playback or recording. The system requests audio focus when the audio stream starts. All audio streams of the application prioritize the strategy specified by the audio session during focus management.
-
-   > **NOTE**
-   > 
-   > Before requesting audio focus (for example, when starting audio playback or recording), the application must ensure that the audio session is activated. Otherwise, the custom focus strategy of the audio session does not take effect for the focus request. If the application uses asynchronous APIs, it is crucial to pay close attention to the timing of asynchronous operations.
-
-4. Deactivate the audio session after the audio service ends. The system releases audio focus when the audio stream stops and the audio session is deactivated.
-
-   The application must proactively stop the audio session after the audio service ends.
-
-   When the application deactivates an audio session, if all audio streams of the application have stopped (focus in maintained in the silent wait state), audio focus is released immediately. If the application still has an audio stream running, that audio stream holds focus until it stops.
-
-   For details, see [Deactivating an Audio Session (ArkTS)](audio-session-management.md#deactivating-an-audio-session) or [Deactivating an Audio Session (C/C++)](using-ohaudio-for-session.md#deactivating-an-audio-session).
-
-During the use of an audio session, it is recommended that the application [listen for audio session deactivation events](#listening-for-audio-session-deactivation-events). When the audio session is deactivated, the application receives such a notification when the [event](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessiondeactivatedevent12) is triggered.
-
-### Audio Session Strategy
-
-Before activating an audio session, an application must define its audio session strategy by setting an [audio concurrency mode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12).
-
-> **NOTE**
-> 
-> The priority order of audio concurrency strategies is **STOP** > **PAUSE** > **DUCK** > **PLAYBOTH**. A specified audio session strategy does not take effect if its priority is higher than that of the default concurrency strategy.
-
-The system presets the following four audio concurrency modes:
-
-- **CONCURRENCY_DEFAULT**: default [audio focus strategy](#audio-focus-strategy) of the system.
-
-- **CONCURRENCY_MIX_WITH_OTHERS**: concurrent playback with other audio streams.
-
-    **Typical scenarios**
-    - When an application plays music, it can be interrupted by other music or video. The application wants its audio stream to play concurrently with the interrupting music or video. (In this scenario, the application is required to activate AudioSession before starting the audio stream.)
-
-    - When an application records audio, it interrupts background music or video. The application wants its audio stream to play concurrently with the background music or video. (In this scenario, the application is required to activate AudioSession before starting the audio stream.)
-
-- **CONCURRENCY_DUCK_OTHERS**: concurrency with other audio streams and lowering their volume.
-
-    **Typical scenario**: When an application plays game sound effects, it plays concurrently with background music. The application wants its audio stream to play while lowering the volume of the background music. (In this scenario, the application is required to activate AudioSession before starting the audio stream.)
-
-- **CONCURRENCY_PAUSE_OTHERS**: pausing other audio streams and notifying them to resume after releasing focus.
-
-    **Typical scenario**: When an application plays a short-form video, it interrupts background music. The application wants the background music to automatically resume after its audio stream stops. (In this scenario, the application is required to activate AudioSession before starting the audio stream and deactivate AudioSession after stopping the audio stream).
-
-> **NOTE**
->
-> 1. When an application uses these modes through AudioSession, the system tries its best to meet the focus strategy. However, it cannot guarantee full compliance in all scenarios.
->
->    For example, in **CONCURRENCY_PAUSE_OTHERS** mode, if the current application initiates a Movie stream while requesting audio focus, any ongoing Music stream from other applications will be paused. However, if a VoiceCommunication stream from another application is playing, that VoiceCommunication stream will not be paused.
->
-> 2. The **CONCURRENCY_MIX_WITH_OTHERS** mode takes effect both when the current application requests focus and when other applications subsequently request focus. The **CONCURRENCY_DUCK_OTHERS** and **CONCURRENCY_PAUSE_OTHERS** modes take effect only when the current application requests focus. When other applications subsequently request focus, their concurrency mode takes precedence.
->
->    For example, in **CONCURRENCY_MIX_WITH_OTHERS** mode, the current application plays concurrently with other audio streams of the same type, regardless of the order in which focus was requested. In **CONCURRENCY_PAUSE_OTHERS** mode, the current application pauses other ongoing audio streams when it requests focus. However, when other applications subsequently request focus, they will follow their own concurrency mode, unaffected by the **CONCURRENCY_MIX_WITH_OTHERS** mode used by the current application.
-
-### Listening for Audio Session Deactivation Events
-
-It is recommended that applications listen for audio session deactivation events (AudioSessionDeactivatedEvent) when using an audio session. When the audio session is deactivated (not proactively), the application receives a notification. The application can handle it based on service requirements, for example, releasing resources or reactivating the audio session.
-
-For details, see [Using AudioSession to Manage Audio Focus (ArkTS)](audio-session-management.md) or [Using AudioSession to Manage Audio Focus (C/C++)](using-ohaudio-for-session.md).
-
-**AudioSessionDeactivatedEvent** contains the **AudioSessionDeactivatedReason** parameter. This parameter specifies the reason for the deactivation, which can be either of the following:
-
-- **DEACTIVATED_LOWER_PRIORITY**: All audio streams of the application are interrupted by other audio streams. As a result, focus is lost and the audio session is deactivated.
-
-- **DEACTIVATED_TIMEOUT**: The audio session is activated, but the application has no audio streams running. The audio session will be deactivated after one minute.
-
-   > **NOTE**
-   >
-   > When an audio session is deactivated due to a timeout, the audio stream that has been ducked by the audio session triggers the unduck operation, and the audio stream that is paused by the audio session triggers the stop operation.
-
-
-### Requesting Focus by Setting Audio Session Scene Parameters
-
-**This feature is supported since API version 20.**
-
-Applications can request focus through AudioSession to enhance the continuity of multi-audio stream playback, while retaining existing features.
-Typical use cases include:
-
-- When multiple short videos are playing in succession, frequent requests and releases of focus by multiple audio streams can cause audio leakage. Using AudioSession to request focus once can avoid the need for multiple audio streams to frequently request and release focus, thereby preventing audio leakage.
-- In VoIP call scenarios, it may be necessary to start ringtone, recording, and playback streams, which have different focus priorities and may be interrupted by audio streams from other applications. To maintain a continuous user experience, you can use AudioSession to request focus and avoid interruptions to the audio streams.
-- Applications using a player SDK to play audio streams does not hold an AudioRenderer object but wish to listen for focus changes.
-
-To request focus using AudioSession, first call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the scene parameters, and then call [activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12) to activate the audio session.
-
-The currently supported audio session scenes are as follows, and applications can choose them based on specific service scenarios.
-| Name                  | Value| Description     |
-| :--------------------- |:--|:--------|
-| AUDIO_SESSION_SCENE_MEDIA | 0 | Media audio session.    |
-| AUDIO_SESSION_SCENE_GAME | 1 | Game audio session.    |
-| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP voice call audio session.|
-
-**AudioSession Focus Effective Rules**
-- Requesting focus through AudioSession is only effective for playback streams and is ineffective for recording streams and some playback audio streams (such as **STREAM_USAGE_ALARM**, **STREAM_USAGE_NOTIFICATION**, and **STREAM_USAGE_ACCESSIBILITY**).
-- If the audio session is proactively ended or released due to a timeout, you need to configure **AudioSessionScene** and call **activateAudioSession** again to request focus.
-- If the audio session scene is dynamically modified during audio session activation, you need to call **activateAudioSession** again for the changes to take effect.
-- If the focus of the audio session is paused, all audio streams managed by it will also be paused.
-- The focus requested by the audio session is application-level. If an application contains different modules, coordination between modules is necessary to avoid unintended effects caused by one module using AudioSession to request focus while another module's audio stream is controlled by the audio session's focus.
-
-### Listening for Audio Session Focus State Change events
-
-**This feature is supported since API version 20.**
-
-The focus requested by AudioSession is equal to that requested by AudioRenderer. If other application audio streams request focus, the system handles the focus according to the [focus strategy](#audio-focus-strategy). If the system determines that the focus of the current audio session has changed and needs to perform operations such as pausing, resuming, lowering volume, or restoring volume, the system automatically executes the necessary actions and notifies the application through [AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20).
-
-To maintain consistency between the application and system states and ensure a good user experience, applications should listen for the audio session focus state change events and respond as necessary when the focus changes.
-
-> **NOTE**
->
-> If an application also listens for audio renderer focus events ([InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)), note the following:
-> 1. The application will receive callbacks for both audio session focus state changes and audio renderer focus changes. Handle these callbacks as needed.
-> 2. If the focus of the audio session is paused, only the audio session will receive the focus resume event when it is resumed, and the audio renderer will not receive the focus resume event.
-
-### Querying and Listening for Audio Output Devices Using AudioSession
-
-**This feature is supported since API version 20.**
-
-Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For details about the APIs, see [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md).
-
-For details about how to use the APIs, see [Querying and Listening for Audio Output Devices Using AudioSession](./audio-output-device-management.md#querying-and-listening-for-audio-output-devices-using-audiosession).

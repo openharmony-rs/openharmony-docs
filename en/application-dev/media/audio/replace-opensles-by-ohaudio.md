@@ -31,7 +31,9 @@ The table below lists the differences in the features supported by the APIs.
 
 ## Differences in Development Modes
 
-This section describes the differences between OHAudio and OpenSL ES APIs in development modes based on the development procedure of audio playback. The implementation of audio recording is similar.
+This section describes the differences between OHAudio and OpenSL ES APIs in development modes based on the development procedure of 
+
+audio playback. The implementation of audio recording is similar.
 
 ### Constructing Instances
 
@@ -40,7 +42,7 @@ OpenSL ES:
 Obtain an Engine object through the global interface, and construct an audio playback object based on the Engine object and the input and output parameters.
 
 ```cpp
-// Generate an Engine object.
+// Generate an Engine Interface object.
 SLEngineItf engine;
 // ...
 
