@@ -11465,7 +11465,7 @@ async function example(context: Context) {
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId<sup>18+</sup> | number  | 否   | 指定访问空间的Id。默认值为-1。<br>当需要作为[PhotoViewPicker.select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)的选择参数时，请申请ohos.permission.INTERACTA_CROSS_LOCAL_ACCOUNTS。<br>**系统接口**：此接口为系统接口。 |
+| userId<sup>18+</sup> | number  | 否   | 指定访问空间的Id。默认值为-1。<br>当需要作为[PhotoViewPicker.select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)的选择参数时，请申请ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。<br>**系统接口**：此接口为系统接口。 |
 
 **示例：**
 
