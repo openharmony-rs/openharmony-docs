@@ -341,13 +341,15 @@ function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profi
 
 ## getPreviewRotation<sup>12+</sup>
 
-getPreviewRotation(displayRotation: number): ImageRotation
+getPreviewRotation(displayRotation?: int): ImageRotation
 
 获取预览旋转角度。
 
 - 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
 - [屏幕旋转角度](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section15598121101615)：显示设备的屏幕顺时针旋转角度。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -357,7 +359,7 @@ getPreviewRotation(displayRotation: number): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| displayRotation | number  | 是   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。 |
+| displayRotation | int  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。 |
 
 **返回值：**
 
@@ -371,7 +373,6 @@ getPreviewRotation(displayRotation: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
