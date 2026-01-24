@@ -18,7 +18,7 @@
 2. 通过getUIContext().getHostContext()获取应用上下文。
 3. 获取相册管理模块实例。
 
-<!-- @[photo_access_helper_preperation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[photo_access_helper_preparation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';

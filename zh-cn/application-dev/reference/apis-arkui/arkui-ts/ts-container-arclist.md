@@ -88,7 +88,7 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensitivity | [Optional&lt;CrownSensitivity&gt;](ts-appendix-enums.md#crownsensitivity18) | 是   | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)&gt; | 是   | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
 
 ### space
 
@@ -104,7 +104,7 @@ space(space: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                               |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| space  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 列表子项之间的间距。<br/>默认值：LengthMetrics.vp(0)<br/>ArcList子组件的[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为None时不显示，但该子组件上下的space还会生效。 |
+| space  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 列表子项之间的间距。<br/>默认值：LengthMetrics.vp(0)<br/>ArcList子组件的[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为None时不显示，但该子组件上下的space还会生效。 |
 
 ### scrollBar
 
@@ -120,7 +120,7 @@ scrollBar(status: Optional\<BarState>)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                     |
 | ------ | ---------------------------------------------------- | ---- | ---------------------------------------- |
-| status | [Optional\<BarState>](ts-appendix-enums.md#barstate) | 是   | 滚动条状态。<br/>默认值：BarState.Auto |
+| status | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[BarState](ts-appendix-enums.md#barstate)&gt; | 是   | 滚动条状态。<br/>默认值：BarState.Auto |
 
 ### cachedCount
 
@@ -138,7 +138,7 @@ ArcList设置cachedCount后，显示区域外上下各会预加载并布局cache
 
 | 参数名 | 类型              | 必填 | 说明                                       |
 | ------ | ----------------- | ---- | ------------------------------------------ |
-| count  | Optional\<number> | 是   | ArcListItem的预加载数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br/>取值范围：[0, +∞) |
+| count  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | ArcListItem的预加载数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。<br/>取值范围：[0, +∞) |
 
 ### chainAnimation
 
@@ -158,7 +158,7 @@ chainAnimation(enable: Optional\<boolean>)
 
 | 参数名 | 类型               | 必填 | 说明                                                         |
 | ------ | ------------------ | ---- | ------------------------------------------------------------ |
-| enable | Optional\<boolean> | 是   | 是否启用链式联动动效。<br/>默认值：false，不启用链式联动。true，启用链式联动。 |
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否启用链式联动动效。<br/>默认值：false，不启用链式联动。true，启用链式联动。 |
 
 ### enableScrollInteraction
 
@@ -174,7 +174,7 @@ enableScrollInteraction(enable: Optional\<boolean>)
 
 | 参数名 | 类型               | 必填 | 说明                                |
 | ------ | ------------------ | ---- | ----------------------------------- |
-| enable | Optional\<boolean> | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true |
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true |
 
 ### fadingEdge
 
@@ -190,7 +190,7 @@ fadingEdge(enable: Optional&lt;boolean&gt;)
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable | Optional&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
 
 ### friction
 
@@ -206,7 +206,7 @@ friction(friction: Optional\<number>)
 
 | 参数名   | 类型              | 必填 | 说明                         |
 | -------- | ----------------- | ---- | ---------------------------- |
-| friction | Optional\<number> | 是   | 摩擦系数。<br/>默认值：0.8<br/>取值范围：(0, +∞) |
+| friction | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 摩擦系数。<br/>默认值：0.8<br/>取值范围：(0, +∞) |
 
 ### scrollBarWidth
 
@@ -222,7 +222,7 @@ scrollBarWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| width  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 滚动条的宽度。<br/>默认值：LengthMetrics.vp(24)<br/>最小值：LengthMetrics.vp(4)<br />单位：vp |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 滚动条的宽度。<br/>默认值：LengthMetrics.vp(24)<br/>最小值：LengthMetrics.vp(4)<br />单位：vp |
 
 ### scrollBarColor
 
@@ -238,7 +238,7 @@ scrollBarColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional\<ColorMetrics>](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置滚动条颜色。<br />默认值：ColorMetrics.numeric(0xA9FFFFFF) |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&gt; | 是   | 设置滚动条颜色。<br />默认值：ColorMetrics.numeric(0xA9FFFFFF) |
 
 ### flingSpeedLimit
 
@@ -254,7 +254,7 @@ flingSpeedLimit(speed: Optional\<number>)
 
 | 参数名 | 类型              | 必填 | 说明                            |
 | ------ | ----------------- | ---- | ------------------------------- |
-| speed  | Optional\<number> | 是   | 惯性滚动动效开始时的最大初始速度。<br/>默认值：9000<br/>单位：vp/s<br />取值范围：(0, +∞) |
+| speed  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 惯性滚动动效开始时的最大初始速度。<br/>默认值：9000<br/>单位：vp/s<br />取值范围：(0, +∞) |
 
 ### childrenMainSize
 
@@ -270,7 +270,7 @@ childrenMainSize(size: Optional\<ChildrenMainSize>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| size   | [Optional\<ChildrenMainSize>](ts-container-scrollable-common.md#childrenmainsize12对象说明) | 是   | 通过[ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12对象说明)对象向ArcList组件精确提供所有子组件在主轴方向的大小信息，能够确保ArcList组件在子组件主轴尺寸不统一、子组件的增删变动、以及使用[scrollToIndex](ts-container-scroll.md#scrolltoindex)等场景时，仍能保持其滑动位置的准确性。进而保证了[scrollTo](ts-container-scroll.md#scrollto)能够精准跳转至指定位置，[currentOffset](ts-container-scroll.md#currentoffset)或[offset](ts-container-scroll.md#offset23)准确反映当前的滑动位置，且内置滚动条能够实现平滑移动，避免任何跳跃或突变，从API version 23开始，新增offset接口。<br/> **说明：** <br/>提供的主轴方向大小必须与子组件实际在主轴方向的大小一致，子组件在主轴方向大小发生变化或进行增删操作时，必须通过调用ChildrenMainSize对象的方法来及时通知ArcList组件。 |
+| size   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12对象说明)&gt; | 是   | 通过[ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12对象说明)对象向ArcList组件精确提供所有子组件在主轴方向的大小信息，能够确保ArcList组件在子组件主轴尺寸不统一、子组件的增删变动、以及使用[scrollToIndex](ts-container-scroll.md#scrolltoindex)等场景时，仍能保持其滑动位置的准确性。进而保证了[scrollTo](ts-container-scroll.md#scrollto)能够精准跳转至指定位置，[currentOffset](ts-container-scroll.md#currentoffset)或[offset](ts-container-scroll.md#offset23)准确反映当前的滑动位置，且内置滚动条能够实现平滑移动，避免任何跳跃或突变，从API version 23开始，新增offset接口。<br/> **说明：** <br/>提供的主轴方向大小必须与子组件实际在主轴方向的大小一致，子组件在主轴方向大小发生变化或进行增删操作时，必须通过调用ChildrenMainSize对象的方法来及时通知ArcList组件。 |
 
 ## 事件
 
@@ -290,7 +290,7 @@ ArcList的边缘效果为弹簧效果时，在ArcList划动到边缘继续划动
 
 | 参数名  | 类型                                                         | 必填 | 说明                                            |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| handler | [Optional\<ArcScrollIndexHandler>](#arcscrollindexhandler) | 是   | 有子组件划入或划出ArcList显示区域时触发该回调。 |
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[ArcScrollIndexHandler](#arcscrollindexhandler)&gt; | 是   | 有子组件划入或划出ArcList显示区域时触发该回调。 |
 
 ### onReachStart
 
@@ -308,7 +308,7 @@ onReachStart(handler: Optional\<VoidCallback>)
 
 | 参数名  | 类型                                             | 必填 | 说明                     |
 | ------- | ------------------------------------------------ | ---- | ------------------------ |
-| handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | 是   | 列表到达起始位置时触发。 |
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[VoidCallback](ts-types.md#voidcallback12)&gt; | 是   | 列表到达起始位置时触发。 |
 
 ### onReachEnd
 
@@ -326,7 +326,7 @@ ArcList边缘效果为弹簧效果时，划动经过末尾位置时触发一次�
 
 | 参数名  | 类型                                             | 必填 | 说明                     |
 | ------- | ------------------------------------------------ | ---- | ------------------------ |
-| handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | 是   | 列表到达末尾位置时触发。 |
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[VoidCallback>](ts-types.md#voidcallback12)&gt; | 是   | 列表到达末尾位置时触发。 |
 
 ### onScrollStart
 
@@ -342,13 +342,13 @@ onScrollStart(handler: Optional\<VoidCallback>)
 
 | 参数名  | 类型                                             | 必填 | 说明                 |
 | ------- | ------------------------------------------------ | ---- | -------------------- |
-| handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | 是   | 列表滑动开始时触发。 |
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[VoidCallback](ts-types.md#voidcallback12)&gt; | 是   | 列表滑动开始时触发。 |
 
 ### onScrollStop
 
 onScrollStop(handler: Optional\<VoidCallback>)
 
-列表滑动停止时触发。手拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
+列表滑动停止时触发。手指拖动列表或列表的滚动条触发的滑动，手指离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -358,7 +358,7 @@ onScrollStop(handler: Optional\<VoidCallback>)
 
 | 参数名  | 类型                                             | 必填 | 说明                 |
 | ------- | ------------------------------------------------ | ---- | -------------------- |
-| handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | 是   | 列表滑动停止时触发。 |
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[VoidCallback](ts-types.md#voidcallback12)&gt; | 是   | 列表滑动停止时触发。 |
 
 ### onWillScroll
 
@@ -374,11 +374,11 @@ onWillScroll(handler: Optional\<OnWillScrollCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| handler | [Optional\<OnWillScrollCallback>](ts-container-scrollable-common.md#onwillscrollcallback12) | 是 | 列表滑动时每帧开始前触发的回调。 |
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[OnWillScrollCallback](ts-container-scrollable-common.md#onwillscrollcallback12)&gt; | 是 | 列表滑动时每帧开始前触发的回调。 |
 
 > **说明：** 
 > 
-> 调用[ScrollEdge](ts-container-scroll.md#scrolledge)和不带动画的[ScrollToIndex](ts-container-scroll.md#scrolltoindex)时，不触发onWillScroll。
+> 调用[scrollEdge](ts-container-scroll.md#scrolledge)和不带动画的[scrollToIndex](ts-container-scroll.md#scrolltoindex)时，不触发onWillScroll。
 
 ### onDidScroll
 onDidScroll(handler: Optional\<OnScrollCallback>)
@@ -393,7 +393,7 @@ onDidScroll(handler: Optional\<OnScrollCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| handler | [Optional\<OnScrollCallback>](ts-container-scrollable-common.md#onscrollcallback12) | 是 | 列表滑动时触发的回调。 |
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[OnScrollCallback](ts-container-scrollable-common.md#onscrollcallback12)&gt; | 是 | 列表滑动时触发的回调。 |
 
 ## ArkListOptions
 

@@ -34,10 +34,10 @@
 - 以使用callback方式生成RSA密钥对为例：
 
   <!-- @[bin_convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Callback.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function convertAsyKey() {
     let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     let pkVal =
@@ -51,10 +51,10 @@
     let pkBlob: cryptoFramework.DataBlob = { data: pkVal };
     rsaGenerator.convertKey(pkBlob, null, (err, keyPair) => {
       if (err) {
-        console.error(`convertKey failed, ${err.code}, ${err.message}`);
+        console.error(`convertKey failed: errCode: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('convertKey success');
+      console.info('convertKey result: success.');
     });
   }
   ```
@@ -63,10 +63,10 @@
 - 同步返回结果（调用方法[convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12)）：
 
   <!-- @[bin_convert_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function convertAsyKeySync() {
     let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     let pkVal =
@@ -81,10 +81,10 @@
     try {
       let keyPair = rsaGenerator.convertKeySync(pkBlob, null);
       if (keyPair != null) {
-        console.info('convertKeySync success');
+        console.info('convertKeySync result: success.');
       }
     } catch (e) {
-      console.error(`get key pair failed, ${e.code}, ${e.message}`);
+      console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -105,10 +105,10 @@
 - 使用callback方式生成ECC密钥对：
 
   <!-- @[bin_convert_ecc_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/ecc/Callback.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function convertEccAsyKey() {
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
@@ -123,10 +123,10 @@
     let generator = cryptoFramework.createAsyKeyGenerator('ECC256');
     generator.convertKey(pubKeyBlob, priKeyBlob, (error, data) => {
       if (error) {
-        console.error(`convertKey failed, ${error.code}, ${error.message}`);
+        console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
         return;
       }
-      console.info('convertKey success');
+      console.info('convertKey result: success.');
     });
   }
   ```
@@ -154,10 +154,10 @@
     try {
       let keyPair = generator.convertKeySync(pubKeyBlob, priKeyBlob);
       if (keyPair != null) {
-        console.info('convertKeySync success');
+        console.info('convertKeySync result: success.');
       }
     } catch (e) {
-      console.error(`get key pair failed, ${e.code}, ${e.message}`);
+      console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -194,10 +194,10 @@ async function main() {
     let generator = cryptoFramework.createAsyKeyGenerator('ECC256');
     generator.convertKey(pubBlob, skBlob, (error, data) => {
       if (error) {
-        console.error(`convertKey failed, ${error.code}, ${error.message}`);
+        console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
         return;
       }
-      console.info('convertKey success');
+      console.info('convertKey result: success.');
     });
   });
 }
@@ -219,10 +219,10 @@ async function main() {
 - 以使用callback方式生成SM2密钥对为例：
 
   <!-- @[bin_convert_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Callback.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function convertSM2AsyKey() {
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 129, 28, 207, 85, 1, 130, 45, 3, 66, 0,
@@ -238,10 +238,10 @@ async function main() {
     let generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
     generator.convertKey(pubKeyBlob, priKeyBlob, (error, data) => {
       if (error) {
-        console.error(`convertKey failed, ${error.code}, ${error.message}`);
+        console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
         return;
       }
-      console.info('convertKey success');
+      console.info('convertKey result: success.');
     });
   }
   ```
@@ -250,10 +250,10 @@ async function main() {
 - 同步返回结果（调用方法[convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12)）：
 
   <!-- @[bin_convert_sm2_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function convertSM2AsyKeySync() {
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 129, 28, 207, 85, 1, 130, 45, 3, 66, 0,
@@ -270,10 +270,10 @@ async function main() {
     try {
       let keyPair = generator.convertKeySync(pubKeyBlob, priKeyBlob);
       if (keyPair != null) {
-        console.info('convertKeySync success');
+        console.info('convertKeySync result: success.');
       }
     } catch (e) {
-      console.error(`get key pair failed, ${e.code}, ${e.message}`);
+      console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```

@@ -7437,9 +7437,17 @@ async function example(context: Context, assetUri: string) {
 
 批量资产变更请求。
 
+### 属性
+
 **系统接口**：此接口为系统接口。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)类型校验。<br>如果类（如MediaAssetsChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
 ### constructor<sup>11+</sup>
 
@@ -9338,8 +9346,6 @@ static createAnalysisAlbumRequest(context: Context, name: string, subtype: Album
 > 相册名的参数规格如下：
 > - 相册名字符串长度为[1, 255]。
 > - 不允许出现非法英文字符，包括：. .. \ / : * ? " ' ` < > | { } [ ]
-> - 英文字符不区分大小写。
-> - 不允许相册名重复命名。
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
 

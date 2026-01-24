@@ -130,6 +130,7 @@ test(a2);
 | 保留声明文件参数 | [`-keep-parameter-names`](#-keep-parameter-names) |
 | 合并依赖模块选项 | [`-enable-lib-obfuscation-options`](#-enable-lib-obfuscation-options) |
 | 通过注释在源码中标记白名单 | [`-use-keep-in-source`](#-use-keep-in-source) |
+| 保留对象字面量属性名称 | [`-keep-object-props`](#-keep-object-props) |
 
 ### 默认混淆
 
@@ -591,34 +592,41 @@ test(a2);
 
 在混淆配置文件中添加`-extra-options`前缀和选项，且前缀与选项之间不能包含其他内容。支持开启单个选项或同时开启多个选项。例如：
 
-单个选项：
+- 使用-extra-options前缀开启单个选项，有如下2种使用方式：
 
-```text
--extra-options
-strip-language-default
+  ```text
+  # 方式一
+  -extra-options
+  strip-language-default
 
--extra-options strip-language-default
-```
+  # 方式二
+  -extra-options strip-language-default
+  ```
 
-同时开启多个选项：
+- 使用-extra-options前缀同时开启多个选项，有如下5种使用方式：
 
-```text
--extra-options strip-language-default, strip-system-api-args, strip-not-compiled-module-name
+  ```text
+  # 方式一
+  -extra-options strip-language-default, strip-system-api-args, strip-not-compiled-module-name
 
--extra-options strip-language-default strip-system-api-args strip-not-compiled-module-name
+  # 方式二
+  -extra-options strip-language-default strip-system-api-args strip-not-compiled-module-name
 
--extra-options
-strip-language-default strip-system-api-args strip-not-compiled-module-name
+  # 方式三
+  -extra-options
+  strip-language-default strip-system-api-args strip-not-compiled-module-name
 
--extra-options
-strip-language-default
-strip-system-api-args
-strip-not-compiled-module-name
+  # 方式四
+  -extra-options
+  strip-language-default
+  strip-system-api-args
+  strip-not-compiled-module-name
 
--extra-options strip-language-default
--extra-options strip-system-api-args
--extra-options strip-not-compiled-module-name
-```
+  # 方式五
+  -extra-options strip-language-default
+  -extra-options strip-system-api-args
+  -extra-options strip-not-compiled-module-name
+  ```
 
 ### -keep-parameter-names
 从API version 18开始，支持保留声明文件中对外接口的参数名称。开启此选项后，有如下效果：
@@ -852,6 +860,86 @@ enum MyEnum {
   // @KeepSymbol
   'RED',
   BLUE
+}
+```
+
+### -keep-object-props
+
+从API version 23开始，支持使用-keep-object-props配置选项保留对象字面量中的属性名称和字符串属性名称。使用方法如下：
+
+- 仅开启属性混淆（-enable-property-obfuscation）时，配置保留对象字面量（-keep-object-props）选项后，对象字面量中的属性名称会被收集到白名单中，不会被混淆。
+
+- 同时开启属性混淆（-enable-property-obfuscation）和字符串属性混淆（-enable-string-property-obfuscation）时，配置保留对象字面量（-keep-object-props）选项后，对象字面量中的属性名称和字符串属性名称会被收集到白名单中，不会被混淆。  
+
+>**注意**
+>
+> 1. 当在开启属性混淆选项或者同时开启属性混淆和字符串属性混淆前提下，使用-keep-object-props选项才生效，否则不生效。
+
+**支持的场景**
+
+支持保留对象字面量的属性名称以及字符串属性名称。
+
+**示例**
+
+```typescript
+// example.ts
+const propertyObj = {
+    propertyKey1: 'value',
+    propertyKey2: {
+        propertyKey3: 'value'
+    }
+};
+const stringPropertyObj = {
+    'stringPropertyKey1': 'Alice',
+    'stringPropertyKey2': {
+        'stringPropertyKey3': 'additional data'
+    }
+};
+```
+
+1. 开启属性混淆时，如果配置了-keep-object-props选项，对于对象字面量中的属性名称，将不会被混淆。
+
+   混淆配置选项文件obfuscation-rules.txt如下：
+   ```text
+   -keep-object-props
+   -enable-property-obfuscation
+   ```
+
+   开启上述obfuscation-rules.txt配置文件的混淆选项后，示例代码中的属性名称propertyKey1、propertyKey2、propertyKey3将被收集到白名单中，不会被混淆。
+
+2. 开启属性混淆和字符串属性混淆时，如果配置了-keep-object-props选项，对于对象字面量中的属性名称和字符串属性名称，将不会被混淆。
+
+   混淆配置选项文件obfuscation-rules.txt如下：
+   ```text
+   -keep-object-props
+   -enable-property-obfuscation
+   -enable-string-property-obfuscation
+   ```
+
+   开启上述obfuscation-rules.txt配置文件的混淆选项后，示例代码中的属性名称propertyKey1、propertyKey2、propertyKey3以及字符串属性名称stringPropertyKey1、stringPropertyKey2、stringPropertyKey3将被收集到白名单中，不会被混淆。
+
+**不支持的场景**
+
+不支持非对象字面量的属性名场景。
+
+**示例**
+
+```typescript
+// example.ts
+// -keep-object-props不生效场景：typeLiteral1、typeLiteral2、typeLiteral3、typeLiteral4、typeLiteral5均不为对象字面量中的属性，开启属性混淆或者同时开启属性混淆和字符串属性混淆的前提下，即使开启-keep-object-props选项也会被混淆。
+interface TypeLiteralDemo {
+  typeLiteral1: {
+    typeLiteral2: number,
+    'typeLiteral3': string
+  },
+  typeLiteral4: string,
+  'typeLiteral5': string
+}
+
+// -keep-object-props不生效场景：Symbol.iterator、dynamic、Property均为复杂的计算属性，在开启属性混淆或者开启属性混淆和字符串属性混淆的前提下，开启-keep-object-props选项前后均不会被混淆。
+const complexComputedPropertyObj = {
+  [Symbol.iterator]: 'value',
+  ["dynamic" + "Property"]: 'value'
 }
 ```
 
@@ -1470,3 +1558,4 @@ a*
 | -keep-parameter-names | 保留声明文件参数 | 18 |
 | -enable-lib-obfuscation-options | 合并依赖模块选项 | 18 |
 | -use-keep-in-source          | 通过注释在源码中标记白名单 | 19 |
+| -keep-object-props          | 保留对象字面量属性名称 | 23 |

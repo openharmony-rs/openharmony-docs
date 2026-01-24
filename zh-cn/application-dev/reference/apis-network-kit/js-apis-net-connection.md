@@ -1495,7 +1495,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 | option | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型，默认值为FAMILY_TYPE_ALL。 |
 
 **返回值：**
@@ -1537,9 +1537,9 @@ connection.getAddressesByNameWithOptions("www.example.com", option).then((data: 
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 参数名 | 类型   | 必填 | 说明               |
-| ------ | ------ | ---- | ------------------ |
-| family   | [FamilyType](#familytype23) | 否   | 需要查询的具体IP地址类型，默认值为FAMILY_TYPE_ALL。 |
+| 名称 | 类型  | 只读 | 可选 | 说明               |
+| ------ | ------| ---- | ---- | ------------------ |
+| family   | [FamilyType](#familytype23) | 否 | 是   | 需要查询的具体IP地址类型，默认值为FAMILY_TYPE_ALL。 |
 
 ## FamilyType<sup>23+</sup>
 
@@ -2365,9 +2365,9 @@ let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
 console.info(`uid: ${uid}`);
 ```
 
-## connection.getDnsASCII<sup>23+</sup>
+## connection.getDnsAscii<sup>23+</sup>
 
-getDnsASCII(host: string, conversionProcess?: ConversionProcess): string
+getDnsAscii(host: string, flag?: ConversionProcess): string
 
 将Unicode编码形式的主机名转换为ASCII编码形式，并可通过可选的转换流程参数（conversionProcess）控制转换行为。
 
@@ -2385,7 +2385,7 @@ getDnsASCII(host: string, conversionProcess?: ConversionProcess): string
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
 | host | string | 是 | 要转换的主机名（host）。每个标签（点分隔的部分）长度不超过63字节。 |
-| conversionProcess | [ConversionProcess](#conversionprocess23) | 否 | 转换流程参数，默认值为NO_CONFIGURATION。 |
+| flag | [ConversionProcess](#conversionprocess23) | 否 | 转换流程参数，默认值为NO_CONFIGURATION。 |
 
 **返回值：**
 
@@ -2408,15 +2408,15 @@ getDnsASCII(host: string, conversionProcess?: ConversionProcess): string
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
-let result = connection.getDnsASCII("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
+let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // 预期结果：www.xn--fsq092h.com
-let result = connection.getDnsASCII("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info(result);  // 预期结果：www.example.com
 ```
 
 ## connection.getDnsUnicode<sup>23+</sup>
 
-getDnsUnicode(host: string, conversionProcess?: ConversionProcess): string
+getDnsUnicode(host: string, flag?: ConversionProcess): string
 
 使用Punycode编码方式，将ASCII编码形式的主机名转换为Unicode编码形式，并通过可选的conversionProcess参数控制转换行为。
 
@@ -2427,7 +2427,7 @@ getDnsUnicode(host: string, conversionProcess?: ConversionProcess): string
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ----------------- |
 | host | string | 是 | 要转换的主机名（host）。 |
-| conversionProcess | [ConversionProcess](#conversionprocess23) | 否 | 转换流程参数，默认值为NO_CONFIGURATION。 |
+| flag | [ConversionProcess](#conversionprocess23) | 否 | 转换流程参数，默认值为NO_CONFIGURATION。 |
 
 **返回值：**
 
@@ -3116,7 +3116,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | 是   | 需要解析的主机名。 |
+| host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
 | QueryOptions | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型。 |
 
 **返回值：**

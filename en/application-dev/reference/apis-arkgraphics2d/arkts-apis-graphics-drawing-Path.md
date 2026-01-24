@@ -187,7 +187,7 @@ Draws an arc to this path using angle arc mode. This mode first defines a rectan
 | x2       | number | Yes  | X coordinate of the lower right corner of the rectangle. The value is a floating point number.|
 | y2       | number | Yes  | Y coordinate of the lower right corner of the rectangle. The value is a floating point number.|
 | startDeg | number | Yes  | Start angle. The start direction (0°) of the angle is the positive direction of the X axis.|
-| sweepDeg | number | Yes  | Angle to sweep, in degrees. A positive number indicates a clockwise sweep, and a negative value indicates a counterclockwise swipe. The actual swipe degree is the modulo operation result of the input parameter by 360.|
+| sweepDeg | number | Yes  | Angle to sweep, in degrees. A positive value indicates a clockwise sweep, and a negative value indicates a counterclockwise sweep. The actual swipe degree is the modulo operation result of the input parameter by 360.|
 
 **Error codes**
 
@@ -504,9 +504,13 @@ path.rCubicTo(200, 0, 0, 200, -20, 0);
 addArc(rect: common2D.Rect, startAngle: number, sweepAngle: number): void
 
 Adds an arc to this path.
+
 When **startAngle** and **sweepAngle** meet the following conditions, an oval instead of an arc is added:
+
 1. The result of **startAngle** modulo 90 is close to 0.
+
 2. The value of **sweepAngle** is not in the range of (-360, 360).
+
 In other cases, this API adds an arc by applying the result of **sweepAngle** modulo 360 to the path.
 
 **System capability**: SystemCapability.Graphics.Drawing
@@ -517,7 +521,7 @@ In other cases, this API adds an arc by applying the result of **sweepAngle** mo
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes   | Rectangular boundary that encapsulates the oval including the arc.     |
 | startAngle   | number | Yes  | Start angle of the arc, in degrees. The value 0 indicates the positive direction of the X axis. The value is a floating point number.|
-| sweepAngle   | number | Yes  | Angle to sweep, in degrees. A positive number indicates a clockwise sweep, and a negative number indicates a counterclockwise sweep. The value is a floating point number.|
+| sweepAngle   | number | Yes  | Angle to sweep, in degrees. A positive value indicates a clockwise sweep, and a negative value indicates a counterclockwise sweep. The value is a floating point number.|
 
 **Error codes**
 
@@ -1313,7 +1317,7 @@ Obtains a transformation matrix at a specific position along the path, which rep
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| boolean | Result indicating whether the transformation matrix is obtained. The value **true** means that the listener for printer extension information change events is successfully unregistered, and **false** means the opposite.|
+| boolean | Whether the transformation matrix is obtained. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1550,7 +1554,7 @@ Checks whether the current path fill type is the inverse fill type. For example,
 
 | Type                 | Description          |
 | --------------------- | -------------- |
-| boolean | Check result. **true** if the current path fill type is the inverse fill type; **false** otherwise.|
+| boolean | Whether the current path fill type is the inverse fill type. **true** means yes; **false** otherwise.|
 
 **Example**
 
