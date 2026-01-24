@@ -8,22 +8,22 @@
 
 For scenarios involving concurrent playback of multiple audio streams, the system has preset a default [Audio Focus Strategy](audio-playback-concurrency.md#audio-focus-strategy), which enforces unified focus management for all audio streams (including playback and recording).
 
-When the default focus policy provided by the system fails to meet the application's requirements, the application can use the APIs provided by audio session management to manage the focus of audio streams within the application, customize the focus policy for audio streams, and adjust the timing of releasing focus for audio streams to meet specific needs. All sample codes in this document are in ArkTS. If you need to develop with OHAudio, refer to [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md).
+When the default focus strategy provided by the system fails to meet the application's requirements, the application can use the APIs provided by audio session management to manage the focus of audio streams within the application, customize the focus strategy for audio streams, and adjust the timing of releasing focus for audio streams to meet specific needs. All sample codes in this document are in ArkTS. If you need to develop with OHAudio, refer to [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md).
 
 Using audio session-related APIs enables the following functions:
 
-- When the system's default focus policy cannot meet the application's current needs, the application can [modify the focus policy using AudioSession](#modifying-the-focus-policy-using-audiosession) to adapt a focus policy suitable for itself.
+- When the system's default focus strategy cannot meet the application's current needs, the application can [modify the focus strategy using AudioSession](#modifying-the-focus-strategy-using-audiosession) to adapt a focus strategy suitable for itself.
 
   Typical scenario: When an application plays short videos, it interrupts background music. The application expects the background music to resume automatically after its own audio stream stops. This scenario requires the application to activate an **AudioSession** before starting the audio stream and deactivate it after the audio stream stops.
 
-- When an application needs to start multiple audio streams in a service process and ensure the integrity of the entire process, the application can [apply for a focus policy using AudioSession](#applying-for-a-focus-policy-using-audiosession) to adapt a focus policy suitable for its service scenario.
+- When an application needs to start multiple audio streams in a service process and ensure the integrity of the entire process, the application can [apply for a focus strategy using AudioSession](#applying-for-a-focus-strategy-using-audiosession) to adapt a focus strategy suitable for its service scenario.
 
   Typical scenario: When an application plays multiple audio files continuously, it does not want other interrupted background audio to resume automatically during the gaps between audio playback, and expects to maintain the continuity of audio focus throughout the playback process. This scenario requires the application to activate an **AudioSession** before the start of the entire playback process and deactivate it after the entire playback process ends).
 
 > **NOTE**
 >
-> - The priority of audio concurrency policies is: **STOP** > **PAUSE** > **DUCK** > **PLAYBOTH**. If the specified audio session policy has a higher priority than the default concurrency policy, the specified audio session policy will not take effect.
-> - The application must ensure that the audio session is activated before starting audio playback or recording; otherwise, the custom focus policy of the audio session will not take effect. If the application uses asynchronous APIs, special attention must be paid to the timing of asynchronous operations.
+> - The priority of audio concurrency policies is: **STOP** > **PAUSE** > **DUCK** > **PLAYBOTH**. If the specified audio session strategy has a higher priority than the default concurrency strategy, the specified audio session strategy will not take effect.
+> - The application must ensure that the audio session is activated before starting audio playback or recording; otherwise, the custom focus strategy of the audio session will not take effect. If the application uses asynchronous APIs, special attention must be paid to the timing of asynchronous operations.
 
 ## Obtaining an Audio Session Manager
 
@@ -65,16 +65,16 @@ The preset audio concurrency modes are as follows:
 
 > **NOTE**
 >
-> - When an application uses the above modes through **AudioSession**, the system will try to meet its focus policy but cannot guarantee fulfillment in all scenarios.
+> - When an application uses the above modes through **AudioSession**, the system will try to meet its focus strategy but cannot guarantee fulfillment in all scenarios.
 > - The **CONCURRENCY_MIX_WITH_OTHERS** mode takes effect both when the application applies for focus and when other applications apply for focus subsequently. The **CONCURRENCY_DUCK_OTHERS** and **CONCURRENCY_PAUSE_OTHERS** modes only take effect when the application applies for focus; when other applications apply for focus subsequently, the concurrency mode of the other applications is followed first.
 
-## Modifying the Focus Policy Using AudioSession
+## Modifying the Focus Strategy Using AudioSession
 
-When the system's default focus policy cannot meet the application's current needs, the application can modify the focus policy by specifying an [Audio Session Strategy](#audio-session-strategy) and then activating an **AudioSession**.
+When the system's default focus strategy cannot meet the application's current needs, the application can modify the focus strategy by specifying an [Audio Session Strategy](#audio-session-strategy) and then activating an **AudioSession**.
 
-After the **AudioSession** is successfully activated, new audio streams started by the application will follow the modified focus policy.
+After the **AudioSession** is successfully activated, new audio streams started by the application will follow the modified focus strategy.
 
-When the focus policy is modified using **AudioSession**, the **AudioSession** does not hold the focus. The focus is still held by each individual audio stream.
+When the focus strategy is modified using **AudioSession**, the **AudioSession** does not hold the focus. The focus is still held by each individual audio stream.
 
 For development with OHAudio, see [Using OHAudio for Audio Session (C/C++)](using-ohaudio-for-session.md).
 
@@ -98,7 +98,7 @@ The **AudioSessionDeactivatedEvent** contains the parameter **AudioSessionDeacti
 
    Call [activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12) to activate an **AudioSession**.
 
-   Specify the [audio session policy](#audio-session-policy) when activating the **AudioSession**. The strategy contains the **concurrencyMode** parameter, which is of the [AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12) type and is used to declare the audio concurrency strategy.
+   Specify the [audio session strategy](#audio-session-strategy) when activating the **AudioSession**. The strategy contains the **concurrencyMode** parameter, which is of the [AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12) type and is used to declare the audio concurrency strategy.
 
    ```ts
    import { audio } from '@kit.AudioKit';
@@ -147,7 +147,7 @@ The **AudioSessionDeactivatedEvent** contains the parameter **AudioSessionDeacti
 
    > **NOTE**
    >
-   > After the **AudioSession** is deactivated, new audio streams started by the application will follow the default focus policy.
+   > After the **AudioSession** is deactivated, new audio streams started by the application will follow the default focus strategy.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -161,7 +161,7 @@ The **AudioSessionDeactivatedEvent** contains the parameter **AudioSessionDeacti
 
 ### Sample Code
 
-The following shows the sample code for modifying the focus policy using **AudioSession**.
+The following shows the sample code for modifying the focus strategy using **AudioSession**.
 
 <!-- @[all_sessionprocess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
@@ -210,7 +210,7 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
   // ...
   audioSessionManager.off('audioSessionDeactivated');
 ```
-## Applying for a Focus Policy Using AudioSession
+## Applying for a Focus Strategy Using AudioSession
 
 When an application needs to start multiple audio streams and ensure the continuity of the process, it can apply for focus through an **AudioSession** to ensure the continuity of playback of multiple audio streams.
 
@@ -232,7 +232,7 @@ Typical usage scenarios are as follows:
 
 ### Audio Session Scene
 
-When you use **AudioSession** to apply for a focus policy, the system provides three audio session scenes. Before activating the **AudioSession**, you need to set the corresponding audio session scene through [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20). When the **AudioSession** is activated subsequently, the system will apply for the corresponding audio focus according to the audio session scene selected by the application.
+When you use **AudioSession** to apply for a focus strategy, the system provides three audio session scenes. Before activating the **AudioSession**, you need to set the corresponding audio session scene through [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20). When the **AudioSession** is activated subsequently, the system will apply for the corresponding audio focus according to the audio session scene selected by the application.
 
 | Name                  | Value| Description     |
 | :--------------------- |:--|:--------|
@@ -246,7 +246,7 @@ The focus applied for through **AudioSession** is equivalent to that applied for
 
 The application can listen for focus state changes of the **AudioSession** through [on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20). To maintain state consistency between the application and the system, the application should listen for the **AudioSession** focus state events and make necessary responses when the focus changes.
 
-[on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20) contains information about the [AudioSession deactivation event](#audiosession-deactivation-event). When [applying for a focus policy using AudioSession](#applying-for-a-focus-policy-using-audiosession), you do not need to listen for the **AudioSessionDeactivatedEvent**.
+[on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20) contains information about the [AudioSession deactivation event](#audiosession-deactivation-event). When [applying for a focus strategy using AudioSession](#applying-for-a-focus-strategy-using-audiosession), you do not need to listen for the **AudioSessionDeactivatedEvent**.
 
 > **NOTE**
 >
@@ -351,7 +351,7 @@ The application can listen for focus state changes of the **AudioSession** throu
 
 ### Sample Code
 
-The following shows the sample code for applying for a focus policy using **AudioSession**.
+The following shows the sample code for applying for a focus strategy using **AudioSession**.
 
 <!-- @[all_focusprocess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
