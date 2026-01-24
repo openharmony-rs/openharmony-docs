@@ -19,6 +19,7 @@
     <!-- @[widget_update_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets
     let storageUpdateRouter = new LocalStorage();
     
     @Entry(storageUpdateRouter)
