@@ -5616,9 +5616,7 @@ export default class EntryAbility extends UIAbility {
 
 ### setImageForRecent<sup>19+</sup>
 
-ArkTS-Dyn: setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
-
-ArkTS-Sta: setImageForRecent(imgResourceId: long, value: ImageFit): Promise&lt;void&gt;
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 设置应用在多任务中显示的图片，使用Promise异步回调。
 
@@ -5629,8 +5627,6 @@ ArkTS-Sta: setImageForRecent(imgResourceId: long, value: ImageFit): Promise&lt;v
 **系统能力**：SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 19
-
-**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
