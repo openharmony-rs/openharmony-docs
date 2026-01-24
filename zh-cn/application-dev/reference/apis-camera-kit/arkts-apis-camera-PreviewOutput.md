@@ -345,7 +345,7 @@ getPreviewRotation(displayRotation?: int): ImageRotation
 
 > **说明**
 >
-> 从api23开始，入参displayRotation为可选参数。
+> 从API version 23开始，入参displayRotation为可选参数。
 
 获取预览旋转角度。
 

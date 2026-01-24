@@ -1137,7 +1137,7 @@ getPhotoRotation(deviceDegree?: int): ImageRotation
 
 > **说明**
 >
-> 从api23开始，入参deviceDegree为可选参数。
+> 从API version 23开始，入参deviceDegree为可选参数。
 
 获取拍照旋转角度。
 
