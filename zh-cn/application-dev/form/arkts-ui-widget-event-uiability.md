@@ -142,6 +142,7 @@
     <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets
     let storageUpdateCall = new LocalStorage();
     
     @Entry(storageUpdateCall)
