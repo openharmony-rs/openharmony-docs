@@ -204,6 +204,7 @@
     <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -267,7 +268,6 @@
         } catch (error) {
           hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
         }
-        ;
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
