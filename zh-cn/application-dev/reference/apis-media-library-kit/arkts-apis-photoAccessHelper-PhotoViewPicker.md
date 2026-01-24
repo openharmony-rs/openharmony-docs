@@ -161,6 +161,7 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 | -------- | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 13900042      | Unknown error.         |
+| 23800151      |  Scene parameters validate failed, possible causes:1. An illegal enumeration value was passed to PhotoSelectOptions.globalMovingPhotoState. |
 
 **示例：**
 
