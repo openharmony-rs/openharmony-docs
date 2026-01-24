@@ -304,7 +304,7 @@ import { PersistenceV2, ConnectOptions } from '@kit.ArkUI';
 struct Page1 {
   // globalConnect支持持久化Map类型的数据
   @Local map: Map<number, number> = PersistenceV2.globalConnect({
-    type: Map<number, number>, defaultCreator: () => new Map<number, number>();
+    type: Map<number, number>, defaultCreator: () => new Map<number, number>()
   })!
   output: string[] = [];
 
