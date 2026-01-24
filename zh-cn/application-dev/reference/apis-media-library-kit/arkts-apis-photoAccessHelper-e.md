@@ -429,7 +429,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## GridLevel<sup>23+</sup>
  	  	 
-枚举，拉起picker后宫格列数档位。
+枚举类型，用于设置拉起picker后的宫格列数档位。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
     
@@ -438,8 +438,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
 | SPACIOUS |  0 |  宽松宫格档位，为标准宫格的列数减1。|
-| STANDARD |  1 |  标准宫格档位，在不同设备尺寸下的标准宫格列的数量是不一致，标准宫格列数为未配置时的列数。|
-| COMPACT |  2 |  紧密宫格档位，为标准宫格的列数加1。  |
+| STANDARD |  1 |  标准宫格档位下，不同设备尺寸对应的标准宫格列数各不相同，当未配置标准宫格列数时，系统将使用默认列数。|
+| COMPACT |  2 |  紧密宫格档位，为标准宫格的列数加1。 |
 
 
 ## GridPinchModeType<sup>23+</sup>
@@ -452,4 +452,4 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| FULL_FUNCTION_GRID |  0 |  宫格支持捏合，捏合后支持选中、点击进大图操纵。|
+| FULL_FUNCTION_GRID | 0 | 宫格支持捏合，捏合后支持选中、点击进大图操纵。|

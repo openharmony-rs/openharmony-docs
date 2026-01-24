@@ -649,7 +649,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 
  ## PickerError<sup>23+</sup>
  	 
-使用PhotoPickerComponent组件发生错误时的信息。
+使用PhotoPickerComponent组件发生错误时返回的错误的接口名称、错误码和错误描述。
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -659,7 +659,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | ---- | ------------------------------------------------ | ---- | ---- | ------ |
 | functionName | string | 否   | 否 |产生错误的接口名称。 |
 | errorCode | number | 否   | 否 | 错误码。 |
-| message | string | 否   | 否 | 错误信息。 |
+| message | string | 否   | 否 | 接口返回的具体错误描述信息。 |
 
 ## DataType
 

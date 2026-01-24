@@ -1270,7 +1270,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
  	 
 requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;RequestReadPermissionResult&gt;
 
-应用调用接口给未授权的uri进行授权。使用promise异步回调。返回授权后的结果，其中包含已创建并授予保存权限的uri列表和无效的uri列表。
+应用调用接口为未授权的URI授权。使用promise异步回调。返回授权结果，其中包含已创建并授予保存权限的URI列表以及无效的URI列表。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
   

@@ -67,7 +67,7 @@ PhotoSelectOptions extends BaseSelectOptions
 | isDestroyedWithNavigation<sup>23+</sup>       | boolean | 否   | 是 | 是否支持跟随[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation-1)销毁，true表示支持，false表示不支持，默认为false。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 | maxPhotoSelectNumber<sup>23+</sup> | number  | 否  | 是 |支持设置的图片最大的选择数量。单位：个。<br>受到最大选择总数的限制，最大值为500。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。                                     |
 | maxVideoSelectNumber<sup>23+</sup> | number  | 否  | 是 | 支持设置的视频最大的选择数量。单位：个。<br>受到系统中所有媒体文件最大选择总数的限制，最大值为500。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| isReturnToPhotoBrowserEnabled<sup>23+</sup>       | boolean | 否   | 是 | 在单选模式下，拍完照是否能自动跳转大图，true表示支持，false表示不支持，默认为false。<br>**注意：** 该参数配置为true时仅在[SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18)为BROWSER_MODE（大图预览模式）或者BROWSER_AND_SELECT_MODE（兼容模式）并且[BaseSelectOptions.isPreviewForSingleSelectionSupported](arkts-apis-photoAccessHelper-class.md#baseselectoptions)参数为true时生效。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
+| isReturnToPhotoBrowserEnabled<sup>23+</sup>       | boolean | 否   | 是 | 在单选模式下，拍完照是否能自动跳转到大图预览模式，true表示支持，false表示不支持，默认为false。<br>**注意：** 该参数配置为true时仅在[SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18)为BROWSER_MODE（大图预览模式）或者BROWSER_AND_SELECT_MODE（兼容模式）并且[BaseSelectOptions.isPreviewForSingleSelectionSupported](arkts-apis-photoAccessHelper-class.md#baseselectoptions)参数为true时生效。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 
 ## PhotoSelectResult
 

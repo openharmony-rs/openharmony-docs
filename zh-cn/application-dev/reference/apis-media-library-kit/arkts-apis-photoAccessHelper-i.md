@@ -240,11 +240,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## GridPinchMode<sup>23+</sup>
  	  	 
-picker内宫格捏合模式。
+picker内宫格的捏合模式。
     
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
-| ---- | ------- | ---- |  ---- | ----- |
+| ---- | ---- | ---- | ---- | ---- |
 | gridPinchModeType       | [GridPinchModeType](arkts-apis-photoAccessHelper-e.md#gridpinchmodetype23)  | 否 | 是 | 宫格捏合模式类型，配置即支持捏合功能，反之不支持捏合功能。 |
-| defaultGridLevel   | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23)  | 否 | 是 | 拉起picker后宫格档位，默认为STANDARD。  |
+| defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | 否 | 是 | 拉起picker后宫格档位，默认为STANDARD。 |
