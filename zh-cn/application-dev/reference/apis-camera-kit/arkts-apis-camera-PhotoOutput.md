@@ -1150,7 +1150,7 @@ getPhotoRotation(deviceDegree?: number): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | 否   | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。<br>从API version 23开始，入参deviceDegree为可选参数。当不传入参数时，由系统获取deviceDegree进行拍照旋转角度计算。 |
+| deviceDegree | number | 否   | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。<br>从API version 23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行拍照旋转角度计算。 |
 
 **返回值：**
 
