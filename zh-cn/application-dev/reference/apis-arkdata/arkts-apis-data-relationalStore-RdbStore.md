@@ -164,7 +164,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 };
 
 if (store != undefined) {
-  store.insert("EMPLOYEE", valueBucket1, (err: BusinessError, rowId: number) => {
+  store.insert("EMPLOYEE", valueBucket1, (err, rowId) => {
     if (err) {
       console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
       return;
@@ -280,7 +280,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 
 if (store != undefined) {
   store.insert("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE,
-    (err: BusinessError, rowId: number) => {
+    (err, rowId) => {
       if (err) {
         console.error(`Insert is failed, code is ${err.code}, message is ${err.message}`);
         return;
@@ -2995,23 +2995,26 @@ if (store != undefined) {
     if (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
-    } else if (resultSet) {
-      console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-      // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-      try {
-         while (resultSet.goToNextRow()) {
-          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
-        }
-      } catch (err) {
-        console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      } finally {
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        resultSet.close();
+    }
+    if (!resultSet) {
+      console.error('Query succeeded but resultSet is null');
+      return;
+    }
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+       while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
   });
 }
@@ -3058,23 +3061,26 @@ if (store != undefined) {
     if (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
-    } else if (resultSet) {
-      console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-      // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-      try {
-        while (resultSet.goToNextRow()) {
-          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
-        }
-      } catch (err) {
-        console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      } finally {
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        resultSet.close();
+    }
+    if (!resultSet) {
+      console.error('Query succeeded but resultSet is null');
+      return;
+    }
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
   });
 }
@@ -3588,23 +3594,26 @@ if (store != undefined && deviceId != undefined) {
   if (err) {
     console.error(`RemoteQuery failed, code is ${err.code}, message is ${err.message}`);
     return;
-  } else if (resultSet) {
-    try {
-      console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-      // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-      while (resultSet.goToNextRow()) {
-        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
-      }
-    } catch (err) {
-      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-    } finally {
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-      resultSet.close();
+  }
+  if (!resultSet) {
+    console.error('RemoteQuery succeeded but resultSet is null');
+    return;
+  }
+  try {
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    while (resultSet.goToNextRow()) {
+      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
     }
+  } catch (err) {
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  } finally {
+    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    resultSet.close();
   }
 });
 }
@@ -3790,23 +3799,26 @@ if (store != undefined) {
     if (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
-    } else if (resultSet) {
-      console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-      // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-      try {
-        while (resultSet.goToNextRow()) {
-          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
-        }
-      } catch (err) {
-        console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      } finally {
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        resultSet.close();
+    }
+    if (!resultSet) {
+      console.error('Query succeeded but resultSet is null');
+      return;
+    }
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
   });
 }
@@ -3871,23 +3883,26 @@ if (store != undefined) {
     if (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
       return;
-    } else if (resultSet) {
-      console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-      // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-      try {
-        while (resultSet.goToNextRow()) {
-          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
-        }
-      } catch (err) {
-        console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      } finally {
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        resultSet.close();
+    }
+    if (!resultSet) {
+      console.error('Query succeeded but resultSet is null');
+      return;
+    }
+    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
+    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
   });
 }
@@ -4327,7 +4342,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 if (store != undefined) {
   const SQL_CHECK_INTEGRITY = 'PRAGMA integrity_check';
   try {
-    await store.execute(SQL_CHECK_INTEGRITY);
+    let data = await store.execute(SQL_CHECK_INTEGRITY);
     console.info(`check result: ${data}`);
   } catch (err) {
     console.error(`check failed, code is ${err.code}, message is ${err.message}`);
@@ -4338,7 +4353,7 @@ if (store != undefined) {
 if (store != undefined) {
   const SQL_DELETE_TABLE = 'DELETE FROM test';
   try {
-    await store.execute(SQL_DELETE_TABLE);
+    let data = await store.execute(SQL_DELETE_TABLE);
     console.info(`delete result: ${data}`);
   } catch (err) {
     console.error(`delete failed, code is ${err.code}, message is ${err.message}`);
@@ -4349,7 +4364,7 @@ if (store != undefined) {
 if (store != undefined) {
   const SQL_DROP_TABLE = 'DROP TABLE test';
   try {
-    await store.execute(SQL_DROP_TABLE);
+    let data = await store.execute(SQL_DROP_TABLE);
     console.info(`drop result: ${data}`);
   } catch (err) {
     console.error(`drop failed, code is ${err.code}, message is ${err.message}`);
@@ -4637,9 +4652,12 @@ if (store != undefined) {
     if (err) {
       console.error(`getModifyTime failed, code is ${err.code}, message is ${err.message}`);
       return;
-    } else if (modifyTime) {
-      let size = modifyTime.size;
     }
+    if (!modifyTime) {
+      console.error('getModifyTime succeeded but modifyTime is null');
+      return;
+    }
+    let size = modifyTime.size;
   });
 }
 ```
@@ -5931,11 +5949,14 @@ if (store != undefined) {
     if (err) {
       console.error(`Sync failed, code is ${err.code}, message is ${err.message}`);
       return;
-    } else if (result) {
-      console.info('Sync done.');
-      for (let i = 0; i < result.length; i++) {
-        console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
-      }
+    }
+    if (!result) {
+      console.error('Sync succeeded but result is null');
+      return;
+    }
+    console.info('Sync done.');
+    for (let i = 0; i < result.length; i++) {
+      console.info(`device= ${result[i][0]}, status= ${result[i][1]}`);
     }
   });
 }
@@ -8590,9 +8611,12 @@ try {
       if (err) {
         console.error(`Query failed, code: ${err.code}, message: ${err.message}`);
         return;
-      } else if (resultSet) {
-        console.info(`ResultSet rowCount ${resultSet.rowCount}`);
       }
+      if (!resultSet) {
+        console.error('Query succeeded but resultSet is null');
+        return;
+      }
+      console.info(`ResultSet rowCount ${resultSet.rowCount}`);
     });
   }
 } catch (err) {
