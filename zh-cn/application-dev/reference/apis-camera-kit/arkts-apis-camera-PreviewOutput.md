@@ -343,6 +343,10 @@ function testGetActiveProfile(previewOutput: camera.PreviewOutput): camera.Profi
 
 getPreviewRotation(displayRotation?: int): ImageRotation
 
+> **说明**
+>
+> 从api23开始，入参displayRotation为可选参数。
+
 获取预览旋转角度。
 
 - 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
