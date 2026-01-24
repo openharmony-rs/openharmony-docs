@@ -1133,12 +1133,14 @@ function testGetActiveProfile(photoOutput: camera.PhotoOutput): camera.Profile |
 
 ## getPhotoRotation<sup>12+</sup>
 
-getPhotoRotation(deviceDegree: number): ImageRotation
+getPhotoRotation(deviceDegree?: int): ImageRotation
 
 获取拍照旋转角度。
 
 - 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -1148,7 +1150,7 @@ getPhotoRotation(deviceDegree: number): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | 是   | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。 |
+| deviceDegree | int | 否   | 设备旋转角度，单位度，取值范围：[0, 360]。<br>若入参超过该范围，则取入参除以360的余数。 |
 
 **返回值：**
 
@@ -1162,7 +1164,6 @@ getPhotoRotation(deviceDegree: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
