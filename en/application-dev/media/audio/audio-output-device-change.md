@@ -108,7 +108,7 @@ The audio device change information returned by [on('outputDeviceChangeWithInfo'
     }
   ```
 
-### AudioSessionManager sample
+### AudioSessionManager Sample
 
   ```ts
   import { audio } from '@kit.AudioKit';
