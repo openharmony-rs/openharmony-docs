@@ -380,7 +380,7 @@ int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInter
 | 参数项                                                              | 描述 |
 |------------------------------------------------------------------| -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | 需要被设置手势打断回调的ArkUI节点。 |
-| interrupter                                                      | 打断回调, info 返回手势打断数据。interrupter 返回 GESTURE_INTERRUPT_RESULT_CONTINUE, 手势正常进行；                                     返回 GESTURE_INTERRUPT_RESULT_REJECT 手势打断。 |
+| [ArkUI_GestureInterruptResult](./capi-native-gesture-h.md#arkui_gestureinterruptresult) (\*interrupter)([ArkUI_GestureInterruptInfo](./capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* info)     | 打断回调，info返回手势打断数据。interrupter返回GESTURE_INTERRUPT_RESULT_CONTINUE，手势正常进行；返回GESTURE_INTERRUPT_RESULT_REJECT，手势打断。设置此参数为nullptr时将取消注册回调函数。 |
 
 **返回：**
 
