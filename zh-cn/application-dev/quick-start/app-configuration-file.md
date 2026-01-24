@@ -60,7 +60,8 @@
       "com.ohos.screenshot",
       "com.ohos.note"
     ],
-    "startMode": "mainTask"
+    "startMode": "mainTask",
+    "buildVersion": "1"
   }
 }
 ```
