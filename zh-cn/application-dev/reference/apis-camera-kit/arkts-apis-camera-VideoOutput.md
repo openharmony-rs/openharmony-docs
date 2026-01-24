@@ -553,11 +553,7 @@ function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRe
 
 ## getVideoRotation<sup>12+</sup>
 
-getVideoRotation(deviceDegree?: int): ImageRotation
-
-> **说明**
->
-> 从API version 23开始，入参deviceDegree为可选参数。
+getVideoRotation(deviceDegree?: number): ImageRotation
 
 获取录像旋转角度。
 
@@ -574,7 +570,7 @@ getVideoRotation(deviceDegree?: int): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | int | 否   | 设备旋转角度，单位度，取值范围0-360。<br> 当不传入参数时，由系统获取deviceDegree进行录像旋转角度计算。 |
+| deviceDegree | number | 否   | 设备旋转角度，单位度，取值范围0-360。<br> 从API version 23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行录像旋转角度计算。 |
 
 **返回值：**
 
