@@ -359,7 +359,7 @@ getPreviewRotation(displayRotation?: int): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| displayRotation | int  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。 |
+| displayRotation | int  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。<br> 当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。 |
 
 **返回值：**
 
@@ -392,43 +392,8 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput, imageRotati
   }
   return previewRotation;
 }
-```
 
-## getPreviewRotation<sup>23+</sup>
-
-getPreviewRotation(): ImageRotation
-
-获取预览旋转角度。
-
-- 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-|      类型      | 说明        |
-| -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 返回预览旋转角度。若接口调用失败，返回undefined。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID   | 错误信息                         |
-|---------|------------------------------|
-| 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function testGetPreviewRotation(previewOutput: camera.PreviewOutput): camera.ImageRotation {
+function testGetPreviewRotationWithOutParam(previewOutput: camera.PreviewOutput): camera.ImageRotation {
   let previewRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
   try {
     previewRotation = previewOutput.getPreviewRotation();
@@ -436,7 +401,7 @@ function testGetPreviewRotation(previewOutput: camera.PreviewOutput): camera.Ima
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The previewOutput.getPreviewRotation call failed. error code: ${err.code}`);
+    console.error(`The previewOutput.testGetPreviewRotationWithOutParam call failed. error code: ${err.code}`);
   }
   return previewRotation;
 }
