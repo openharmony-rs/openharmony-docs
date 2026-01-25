@@ -8627,8 +8627,9 @@ startMoving(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ets/pages/Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -8637,26 +8638,6 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Blank('160')
-          .color(Color.Blue)
-          .onTouch((event: TouchEvent) => {
-            if (event.type === TouchType.Down) {
-              try {
-                let windowClass: window.Window = window.findWindow("subWindow");
-                if (!windowClass) {
-                  console.error('Failed to find window.');
-                  return;
-                }
-                windowClass.startMoving().then(() => {
-                  console.info('Succeeded in starting moving window.')
-                }).catch((err: BusinessError) => {
-                  console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
-                });
-              } catch (exception) {
-                console.error(`Failed to start moving window. Cause code: ${exception.code}, message: ${exception.message}`);
-              }
-            }
-          })
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
@@ -8741,8 +8722,9 @@ startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ets/pages/Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -8751,26 +8733,6 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Blank('160')
-          .color(Color.Blue)
-          .onTouch((event: TouchEvent) => {
-            if (event.type === TouchType.Down) {
-              try {
-                let windowClass: window.Window = window.findWindow("subWindow");
-                if (!windowClass) {
-                  console.error('Failed to find window.');
-                  return;
-                }
-                windowClass.startMoving(100, 50).then(() => {
-                  console.info('Succeeded in starting moving window.')
-                }).catch((err: BusinessError) => {
-                  console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
-                });
-              } catch (exception) {
-                console.error(`Failed to start moving window. Cause code: ${exception.code}, message: ${exception.message}`);
-              }
-            }
-          })
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
