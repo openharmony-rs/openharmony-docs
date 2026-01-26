@@ -20,19 +20,19 @@ formHost模块提供了卡片使用方相关接口的能力，包括对使用方
 import { formHost } from '@kit.FormKit';
 ```
 
-## addForm
+## addForm<sup>12+</sup>
 
 addForm(want: Want): Promise&lt;formInfo.RunningFormInfo&gt;
 
-创建卡片。使用Promise异步回调。
+添加主题卡片。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
 
-**系统接口：** 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -67,7 +67,7 @@ addForm(want: Want): Promise&lt;formInfo.RunningFormInfo&gt;
 ArkTS-Dyn示例：
 
 ```ts
-import { formHost } from '@kit.FormKit';
+import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
@@ -4154,7 +4154,7 @@ import formHost from '@ohos.app.form.formHost';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  formHost.onFormUninstall((formId: string) => {
+  formHost.offFormUninstall((formId: string) => {
     console.info(`formHost on formUninstall, formId: ${formId}`);
   });
 } catch (error) {
