@@ -56,14 +56,17 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 
-```c++
-#include <string.h>
+<!-- @[crypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_gcm_seg_encryption_decryption.cpp) -->
+
+``` C++
+#include <cstring>
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
 
 #define OH_CRYPTO_GCM_TAG_LEN 16
 #define OH_CRYPTO_MAX_TEST_DATA_LEN 128
-static OH_Crypto_ErrCode doTestSm4GcmSeg()
+
+OH_Crypto_ErrCode doTestSm4GcmSeg()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -91,8 +94,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
     Crypto_DataBlob cipherBlob;
 
     // Generate a key.
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -119,7 +121,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
         goto end;
     }
 
-    // Encrypt the message.
+    // Encrypt.
     ret = OH_CryptoSymCipher_Create("SM4_128|GCM|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -138,6 +140,7 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
         msgBlob.data += blockSize;
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
         cipherLen += outUpdate.len;
+        OH_Crypto_FreeDataBlob(&outUpdate);
     }
     if (rem > 0) {
         msgBlob.len = rem;
@@ -147,13 +150,14 @@ static OH_Crypto_ErrCode doTestSm4GcmSeg()
         }
         memcpy(&cipherText[cipherLen], outUpdate.data, outUpdate.len);
         cipherLen += outUpdate.len;
+        OH_Crypto_FreeDataBlob(&outUpdate);
     }
     ret = OH_CryptoSymCipher_Final(encCtx, nullptr, &tag);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    
-    // Decrypt the message.
+
+    // Decrypt.
     cipherBlob = {.data = reinterpret_cast<uint8_t *>(cipherText), .len = (size_t)cipherLen};
     msgBlob.data -= strlen(plainText) - rem;
     msgBlob.len = strlen(plainText);

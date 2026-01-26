@@ -21,9 +21,11 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
 
 - Example (using asynchronous APIs):
 
-  ```ts
+  <!-- @[use_dh_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/DH/DHAsync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   async function dhAwait() {
     let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
     // Randomly generate public-private key pair A.
@@ -37,20 +39,23 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
     let secret2 = await keyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
     // The two key agreement results should be the same.
     if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('DH success');
-      console.info('DH output is ' + secret1.data);
+      console.info('DH result: success.');
+      console.info('DH output: ' + secret1.data);
     } else {
-      console.error('DH result is not equal');
+      console.error('DH result is not equal.');
     }
   }
   ```
 
+
 - Example (using synchronous APIs):
 
-  ```ts
+  <!-- @[use_dh_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/DH/DHSync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
-  function dhAgreementSync() {
+  
+  function dhAwait() {
     let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
     // Randomly generate public-private key pair A.
     let keyPairA = keyGen.generateKeyPairSync();
@@ -63,10 +68,10 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
     let secret2 = keyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
     // The two key agreement results should be the same.
     if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('DH success');
-      console.info('DH output is ' + secret1.data);
+      console.info('DH result: success.');
+      console.info('DH output: ' + secret1.data);
     } else {
-      console.error('DH result is not equal');
+      console.error('DH result is not equal.');
     }
   }
   ```
