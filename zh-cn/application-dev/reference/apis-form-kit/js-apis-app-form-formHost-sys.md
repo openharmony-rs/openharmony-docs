@@ -2471,7 +2471,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
           }
         })
     }
@@ -2574,7 +2574,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
           }
         })
     }
@@ -3143,6 +3143,118 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 
+```
+
+## addForm<sup>12+</sup>
+
+addForm(want: Want): Promise&lt;formInfo.RunningFormInfo&gt;
+
+添加主题卡片。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.REQUIRE_FORM
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 查询卡片状态时携带的want信息。需要包含bundle名、ability名、module名、卡片名、卡片规格等。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo.md#runningforminfo20)&gt; | Promise对象。返回符合条件的卡片信息，包括卡片名称、尺寸等。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let want: Want = {
+    'bundleName': 'com.huawei.hmsapp.thememanager',
+    'abilityName': 'ThemeFaCardUIExtAbility',
+    'parameters': {
+      'ohos.extra.param.key.form_dimension': 4,
+      'ohos.extra.param.key.form_is_theme': true,
+      'ohos.extra.param.key.form_location': 0,
+      'ohos.extra.param.key.module_name': 'entry',
+      'ohos.extra.param.key.form_name': 'widget',
+      'themeFormId': '0',
+      'themeId': '2181824853'
+    }
+  };
+  formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formHost addForm, formId: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo } from '@kit.FormKit';
+import formHost from '@ohos.app.form.formHost';
+import Want from '@ohos.app.ability.Want';
+import { RecordData } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let wantParams: Record<String, RecordData> = {
+    'ohos.extra.param.key.form_dimension': 4,
+    'ohos.extra.param.key.form_is_theme': true,
+    'ohos.extra.param.key.form_location': 0,
+    'ohos.extra.param.key.module_name': 'entry',
+    'ohos.extra.param.key.form_name': 'widget',
+    'themeFormId': '0',
+    'themeId': '2181824853'
+  };
+  let want: Want = {
+    'bundleName': 'com.huawei.hmsapp.thememanager',
+    'abilityName': 'ThemeFaCardUIExtAbility',
+    'parameters': wantParams
+  }
+  formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formHost addForm, formId: ${data.formId}`);
+  }).catch((error: Error) => {
+    console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error: Error) {
+  console.error(`catch error, ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## formHost.on('formOverflow')<sup>20+</sup>
@@ -3949,5 +4061,101 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.onFormUninstall<sup>23+</sup>
+
+onFormUninstall(callback: Callback&lt;string&gt;): void
+
+订阅卡片卸载事件。使用callback异步回调。
+
+> **说明：**
+> 
+> 卡片卸载与卡片移除不同。当应用卸载时，对应的卡片会自动卸载。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | Callback&lt;string&gt; | 是 | 回调函数，返回卡片标识。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+
+try {
+  formHost.onFormUninstall((formId: string) => {
+    console.info(`formHost on formUninstall, formId: ${formId}`);
+  });
+} catch (error: Error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## formHost.offFormUninstall<sup>23+</sup>
+
+offFormUninstall(callback?: Callback&lt;string&gt;): void
+
+取消订阅卡片卸载事件。使用callback异步回调。
+
+> **说明：**
+> 
+> 卡片卸载与卡片移除不同。当应用卸载时，对应的卡片会自动卸载。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | Callback&lt;string&gt; | 否 | 回调函数，返回卡片标识。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+
+try {
+  formHost.offFormUninstall();
+} catch (error: Error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
