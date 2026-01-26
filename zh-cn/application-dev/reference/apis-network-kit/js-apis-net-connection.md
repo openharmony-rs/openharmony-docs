@@ -1520,8 +1520,8 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-let option: QueryOptions = {
-  family:connection.FAMILY_TYPE_IPV4
+let option: connection.QueryOptions = {
+  family: connection.FamilyType.FAMILY_TYPE_IPV4
 };
 connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
   console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
@@ -3148,7 +3148,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     return;
   }
   let host = "www.example.com";
-  let option: QueryOptions = {
+  let option: connection.QueryOptions = {
       family: connection.FamilyType.FAMILY_TYPE_IPV4
     };
   netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
