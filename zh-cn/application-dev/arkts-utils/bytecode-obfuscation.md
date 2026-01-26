@@ -525,14 +525,14 @@ lastName
   对于如下的字符串常量形式的属性调用，可以选择性保留：
 
   <!-- @[optionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
-
+  
   ``` TypeScript
   // 混淆配置：
   // -enable-property-obfuscation
   // -enable-string-property-obfuscation
   obj2.t = "0";
   console.info(obj2['t']); // 此时，'t'会被正确混淆，t可以选择性保留。
-
+  
   obj2['v'] = "0";
   console.info(obj2['v']); // 此时，'v'会被正确混淆，v可以选择性保留。
   ```
