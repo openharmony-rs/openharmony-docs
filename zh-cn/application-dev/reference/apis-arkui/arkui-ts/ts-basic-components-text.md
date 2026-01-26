@@ -3594,7 +3594,7 @@ struct TextNumberTransition {
 
 ### 示例24（文本内容区垂直对齐）
 
-该示例通过[textContentAlign](#textcontentalign21)属性展示了当文本内容区高度大于组件高度时文本内容区的垂直对齐。
+该示例通过[textContentAlign](#textcontentalign21)属性展示了当文本内容区高度大于组件高度时，以文本内容区中心对齐的垂直对齐效果。
 
 从API version 21开始，新增[textContentAlign](#textcontentalign21)属性。
 
