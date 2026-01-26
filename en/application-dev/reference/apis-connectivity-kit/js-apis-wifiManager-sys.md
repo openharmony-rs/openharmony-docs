@@ -81,7 +81,7 @@ Sets whether scan is always allowed.
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | Error Codes| Error Message|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -813,7 +813,7 @@ try {
 
 startWifiDetection(): void
 
-Starts Wi-Fi network detection.
+Starts Wi-Fi network detections.
 
 **System API**: This is a system API.
 
@@ -1056,7 +1056,7 @@ Checks whether WLAN hotspot operations are allowed under certain circumstances. 
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | Whether the hotspot supports dual band. The value **true** indicates dual band is supported, and the value **false** indicates the opposite.|
+  | boolean | Whether WLAN hotspot operations are allowed. The value **true** indicates WLAN hotspot operations are allowed, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1368,7 +1368,7 @@ Obtains the list of devices that are in the blocklist of the current WLAN hotspo
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | Error Codes| Error Message|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. |
@@ -1592,7 +1592,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1670,7 +1670,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1701,7 +1701,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
