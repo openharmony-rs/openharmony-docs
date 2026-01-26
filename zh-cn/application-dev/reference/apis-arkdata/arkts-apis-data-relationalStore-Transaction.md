@@ -2064,10 +2064,11 @@ let predicates4 = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates4.equalTo('NAME', 'Rose');
 
 if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
   try {
     const transaction = await store.createTransaction();
     try {
-      const resultSet = await transaction.query(predicates4, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
+      resultSet = await transaction.query(predicates4, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
       // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
       while (resultSet.goToNextRow()) {
@@ -2077,12 +2078,15 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-      resultSet.close();
       await transaction.commit();
     } catch (err) {
       await transaction.rollback();
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      if (resultSet) {
+        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+        resultSet.close();
+      }
     }
   } catch (err) {
     console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
@@ -2140,10 +2144,11 @@ let predicates5 = new relationalStore.RdbPredicates('EMPLOYEE');
 predicates5.equalTo('NAME', 'Rose');
 
 if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
   try {
     const transaction = await store.createTransaction();
     try {
-      let resultSet = transaction.querySync(predicates5, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
+      resultSet = transaction.querySync(predicates5, ['ID', 'NAME', 'AGE', 'SALARY', 'CODES']);
       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
       // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
       while (resultSet.goToNextRow()) {
@@ -2153,12 +2158,15 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-      resultSet.close();
       await transaction.commit();
     } catch (err) {
       await transaction.rollback();
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      if (resultSet) {
+        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+        resultSet.close();
+      }
     }
   } catch (err) {
     console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
@@ -2213,10 +2221,11 @@ querySql(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
 
 ```ts
 if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
   try {
     const transaction = await store.createTransaction();
     try {
-      const resultSet = await transaction.querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
+      resultSet = await transaction.querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
       console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
       // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
       while (resultSet.goToNextRow()) {
@@ -2226,12 +2235,15 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-      resultSet.close();
       await transaction.commit();
     } catch (err) {
       await transaction.rollback();
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      if (resultSet) {
+        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+        resultSet.close();
+      }
     }
   } catch (err) {
     console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
@@ -2286,6 +2298,7 @@ querySqlSync(sql: string, args?: Array&lt;ValueType&gt;): ResultSet
 
 ```ts
 if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
   try {
     const transaction = await store.createTransaction();
     try {
@@ -2299,12 +2312,15 @@ if (store != undefined) {
         const salary = resultSet.getDouble(resultSet.getColumnIndex('SALARY'));
         console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
       }
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-      resultSet.close();
       await transaction.commit();
     } catch (err) {
       await transaction.rollback();
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+    } finally {
+      if (resultSet) {
+        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+        resultSet.close();
+      }
     }
   } catch (err) {
     console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
@@ -2368,17 +2384,16 @@ async function queryWithoutRowCountExample(store : relationalStore.RdbStore) {
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-          resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        if (resultSet != undefined) {
+        await transaction.rollback();
+      } finally {
+        if (resultSet) {
+          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
           resultSet.close();
         }
-        await transaction.rollback();
       }
     } catch (err) {
       console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
@@ -2443,17 +2458,16 @@ async function queryWithoutRowCountSyncExample(store : relationalStore.RdbStore)
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-          resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        if (resultSet != undefined) {
+        await transaction.rollback();
+      } finally {
+        if (resultSet) {
+          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
           resultSet.close();
         }
-        await transaction.rollback();
       }
     } catch (err) {
       console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
@@ -2517,17 +2531,16 @@ async function querySqlWithoutRowCountExample(store : relationalStore.RdbStore) 
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-          resultSet.close();
         }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        if (resultSet != undefined) {
+        await transaction.rollback();
+      } finally {
+        if (resultSet) {
+          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
           resultSet.close();
         }
-        await transaction.rollback();
       }
     } catch (err) {
     console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
@@ -2591,17 +2604,15 @@ async function querySqlWithoutRowCountSyncExample(store : relationalStore.RdbSto
             const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
             console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
           }
-          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-          resultSet.close();
-        }
         await transaction.commit();
       } catch (err) {
         console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-        // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        if (resultSet != undefined) {
+        await transaction.rollback();
+      } finally {
+        if (resultSet) {
+          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
           resultSet.close();
         }
-        await transaction.rollback();
       }
     } catch (err) {
     console.error(`createTransaction failed, code is ${err.code}, message is ${err.message}`);
