@@ -1103,7 +1103,7 @@ let type: RecordData = {
     'y': {
         'xx': 0,
         'yy': {
-            'xxx': 'harmonyos',
+            'xxx': 'OH',
             'yyy': [
                 'arkui',
                 'ability',
