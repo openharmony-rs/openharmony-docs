@@ -56,7 +56,7 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 | onDeselect              | (uri: string) => void                                                            | 否   | - | 用户在Picker组件中取消勾选图片时产生的回调事件，同时也会将图片uri报给应用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                      |
 | onItemClicked           | (itemInfo: [ItemInfo](#iteminfo), clickType: [ClickType](#clicktype)) => boolean | 否   | - | 用户在picker组件中点击宫格产生的回调事件。<br>点击图片（缩略图宫格）时，返回值为true则勾选此图片，否则不响应勾选，URI不授权；点击相机宫格，返回值为true则拉起系统相机，否则不拉起相机，由应用自行处理。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                    |
 | onItemClickedNotify<sup>23+</sup> | [ItemClickedNotifyCallback](#itemclickednotifycallback23) | 否   | - | 用户在picker组件中点击宫格产生的回调事件。<br>应用可执行自身是否选中逻辑，需要配合addData方法一同使用，通过ADD_ITEM_CLICK_RESULT进行选中或不选中。若未设置选中结果，在2秒或PhotoPicker被关闭时取消授权。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
-| onPinchGridSwitched<sup>23+</sup>           | (gridLevel: [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23)) => void | 否   | - | 宫格捏合时产生的回调事件。仅在gridPinchModeType配置为FULL_FUNCTION_GRID下会被触发。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。   |
+| onPinchGridSwitched<sup>23+</sup>           | (gridLevel: [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23)) => void | 否   | - | 宫格捏合时产生的回调事件。仅在gridPinchModeType配置为FULL_FUNCTION_GRID下会被触发。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。   |
 | onEnterPhotoBrowser     | (photoBrowserInfo: [PhotoBrowserInfo](#photobrowserinfo)) => boolean             | 否   | - | 点击进入大图时产生的回调事件，将大图相关信息报给应用。不对返回值做特殊处理。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                     |
 | onExitPhotoBrowser      | (photoBrowserInfo: [PhotoBrowserInfo](#photobrowserinfo)) => boolean             | 否   | - | 退出大图时产生的回调事件，将大图相关信息报给应用。不对返回值做特殊处理。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                                                       |
 | onPickerControllerReady | () => void                                                                       | 否   | - | 当pickerController可用时产生的回调事件。<br>调用PickerController相关接口需在该回调后才能生效。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                               |
@@ -646,7 +646,21 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认为true。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
-| autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+
+## PickerError<sup>23+</sup>
+      
+使用PhotoPickerComponent组件发生错误时返回的错误的接口名称、错误码和错误描述。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 类型   | 只读 | 可选 | 说明   |
+| ---- | ------------------------------------------------ | ---- | ---- | ------ |
+| functionName | string | 否   | 否 |产生错误的接口名称。 |
+| errorCode | number | 否   | 否 | 错误码。 |
+| message | string | 否   | 否 | 接口返回的具体错误描述信息。 |
 
 ## DataType
 
