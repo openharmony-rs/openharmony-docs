@@ -1755,7 +1755,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.getData((err: BusinessError | null, pasteData: pasteboard.PasteData | undefined) => {
-    if (err!) {
+    if (err != null) {
         console.error('Failed to get PasteData. Cause: ' + err!.message);
         return;
     }
@@ -2931,6 +2931,7 @@ try {
 ArkTS-Sta示例:
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 try {
     let result: boolean = systemPasteboard.isRemoteData();
@@ -3151,6 +3152,7 @@ try {
 ArkTS-Sta示例:
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 try {
@@ -3269,7 +3271,7 @@ systemPasteboard.getUnifiedData().then((data) => {
       console.info(`${j + 1}.${text.textContent}`);
     }
   }
-}).catch((err: Error) => {
+}).catch((err: BusinessError): void => {
   console.error('Failed to get UnifiedData. Cause: ' + err.message);
 });
 ```
@@ -3397,7 +3399,7 @@ data.addRecord(record);
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.setUnifiedData(data).then(() => {
   console.info('Succeeded in setting UnifiedData.');
-}).catch((err: Error) => {
+}).catch((err: BusinessError): void => {
   console.error('Failed to setUnifiedData. Cause: ' + err.message);
 });
 ```
@@ -3461,6 +3463,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let plainTextData = new unifiedDataChannel.UnifiedData();
 let plainText = new unifiedDataChannel.PlainText();
@@ -3635,6 +3638,7 @@ ArkTS-Sta示例:
 
 ```ts
 import { pasteboard } from '@kit.BasicServicesKit'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 let patterns: Array<pasteboard.Pattern> = [pasteboard.Pattern.URL, pasteboard.Pattern.EMAIL_ADDRESS];
@@ -3877,7 +3881,7 @@ type UpdateCallback = () => void
 
 onRemoteUpdate(callback: UpdateCallback): void
 
-订阅跨设备剪贴板内容变化事件，当远端设备系统剪贴板中内容变化时触发用户程序的回调。
+订阅跨设备剪贴板内容变化事件，当远端设备系统剪贴板中内容变化时触发用户程序的回调。使用callback异步回调。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -3901,9 +3905,13 @@ systemPasteboard.onRemoteUpdate(listener);
 
 offRemoteUpdate(callback?: UpdateCallback): void
 
-取消订阅跨设备剪贴板内容变化事件。
+取消订阅跨设备剪贴板内容变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
