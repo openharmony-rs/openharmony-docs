@@ -388,6 +388,32 @@ ArkTS-Sta: textCase(value: TextCase | undefined)
 | ------ | ----------------------------------------- | ---- | ----------------------------------------- |
 | value  | ArkTS-Dyn: [TextCase](ts-appendix-enums.md#textcase) <br/> ArkTS-Sta: [TextCase](ts-appendix-enums.md#textcase) \| undefined | 是   | 文本大小写。<br />默认值：TextCase.Normal |
 
+### textContentAlign<sup>21+</sup>
+
+ArkTS-Dyn: textContentAlign(textContentAlign: Optional\<TextContentAlign>)
+
+ArkTS-Sta: textContentAlign(textContentAlign: TextContentAlign | undefined)
+
+设置文本内容区在组件内的垂直对齐方式。
+
+此接口可以在文本内容区高度大于组件高度时生效，确保文本内容区的对齐方式正确显示。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| textContentAlign  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)><br/>ArkTS-Sta: [TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21) \| undefined | 是   | 文本段落在垂直方向的对齐方式。<br/>undefined和异常值情况下，默认和align属性设置为Center效果一致。|
+
 ### fontColor
 
 ArkTS-Dyn: fontColor(value: ResourceColor)
@@ -931,6 +957,36 @@ fontFeature属性列表：
 >
 >  系统默认字体支持的liga连字：Th fb ff fb ffb ffh ffi ffk ffl fh fi fk。常导致Span、属性字符串的效果不符合预期，关闭liga连字特性可以规避。
 
+### lineHeightMultiple<sup>22+</sup>
+
+ArkTS-Dyn: lineHeightMultiple(value: number | undefined)
+
+ArkTS-Sta: lineHeightMultiple(value: double | undefined)
+
+使用倍数模式设置文本的行高。
+
+设置行高为入参（value）与字高（fontHeight）的乘积。
+
+> **说明：**
+>
+> 当和[lineHeight](ts-basic-components-text.md#lineheight)同时设置时，仅lineHeightMultiple生效。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 使用倍数行高的倍数数值。<br>取值范围：不小于0。<br/>设置的值不大于0时按0处理，设置为0时，使用默认行高高度，支持小数输入。<br/>值为undefined时，使用默认行高高度。 |
+
 ### lineSpacing<sup>12+</sup>
 
 ArkTS-Dyn: lineSpacing(value: LengthMetrics)
@@ -955,7 +1011,9 @@ ArkTS-Sta: lineSpacing(value: LengthMetrics | undefined)
 
 ### lineSpacing<sup>20+</sup>
 
-lineSpacing(value: LengthMetrics, options?: LineSpacingOptions)
+ArkTS-Dyn: lineSpacing(value: LengthMetrics, options?: LineSpacingOptions)
+
+ArkTS-Sta: lineSpacing(value: LengthMetrics | undefined, options?: LineSpacingOptions)
 
 设置文本的行间距。当不配置LineSpacingOptions时，首行上方和尾行下方默认会有行间距。
 
@@ -963,11 +1021,15 @@ lineSpacing(value: LengthMetrics, options?: LineSpacingOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 文本的行间距。设置值不大于0时，取默认值0。 |
+| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本的行间距。设置值不大于0时，取默认值0。<br/>值为undefined时，效果与传入0一致。 |
 | options  | [LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明) | 否   | 设置行间距配置项。<br/>默认值：{&nbsp;onlyBetweenLines:&nbsp;false&nbsp;} |
 
 ### privacySensitive<sup>12+</sup>
@@ -1221,9 +1283,35 @@ ArkTS-Sta: enableHapticFeedback(isEnabled: boolean | undefined)
 > ]
 > ```
 
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+
+当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
+
+需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启选中词文本识别；false：关闭选中词文本识别。<br/>值为undefined时，开启选中词文本识别。 |
+
 ### optimizeTrailingSpace<sup>20+</sup>
 
-optimizeTrailingSpace(optimize: Optional\<boolean>)
+ArkTS-Dyn: optimizeTrailingSpace(optimize: Optional\<boolean>)
+
+ArkTS-Sta: optimizeTrailingSpace(optimize: boolean | undefined)
 
 设置是否在文本布局过程中优化每行末尾的空格，可解决行尾空格影响对齐显示效果问题。
 
@@ -1241,11 +1329,15 @@ optimizeTrailingSpace(optimize: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| optimize         | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 是否优化每行末尾的空格。<br/>true表示优化末尾空格，false则不优化。<br/>默认值：false |
+| optimize         | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否优化每行末尾的空格。<br/>true表示优化末尾空格；false表示不优化末尾空格。<br>值为undefined时，不优化末尾空格。 |
 
 ### caretColor<sup>14+</sup>
 
@@ -1268,6 +1360,28 @@ ArkTS-Sta: caretColor(color: ResourceColor | undefined)
 | 参数名 | 类型                                       | 必填 | 说明                                   |
 | ------ | ------------------------------------------ | ---- | -------------------------------------- |
 | color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/> ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 文本选中手柄颜色。<br/>默认值：'#007DFF' |
+
+### contentTransition<sup>20+</sup>
+
+ArkTS-Dyn: contentTransition(transition: Optional\<ContentTransition>)
+
+ArkTS-Sta: contentTransition(transition: ContentTransition | undefined)
+
+可以设置为数字翻牌动效[NumericTextTransition](../arkui-ts/ts-text-common.md#numerictexttransition20)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                             | 必填 | 说明                                                       |
+| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| transition  | ArkTS-Dyn: Optional\<[ContentTransition](../arkui-ts/ts-text-common.md#contenttransition20)><br/>ArkTS-Sta: [ContentTransition](../arkui-ts/ts-text-common.md#contenttransition20) \| undefined | 是   | 文本动效属性。<br/>值为undefined时，无翻牌效果。 |
 
 ### selectedBackgroundColor<sup>14+</sup>
 
@@ -1317,7 +1431,9 @@ ArkTS-Sta: marqueeOptions(options: TextMarqueeOptions | undefined)
 
 ### enableAutoSpacing<sup>20+</sup>
 
-enableAutoSpacing(enabled: Optional\<boolean>)
+ArkTS-Dyn: enableAutoSpacing(enabled: Optional\<boolean>)
+
+ArkTS-Sta: enableAutoSpacing(enabled: boolean | undefined)
 
 设置是否开启中文与西文的自动间距。
 
@@ -1325,15 +1441,21 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启中文与西文的自动间距。<br/>true表示开启中文与西文的自动间距；false表示不开启中文与西文的自动间距。<br/>值为undefined时，不开启中文与西文的自动间距。 |
 
 ### shaderStyle<sup>20+</sup>
 
-shaderStyle(shader: ShaderStyle)
+ArkTS-Dyn: shaderStyle(shader: ShaderStyle)
+
+ArkTS-Sta: shaderStyle(shader: ShaderStyle | undefined)
 
 可以显示为径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)的效果，shaderStyle的优先级高于[fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor)和AI识别，纯色建议使用[fontColor](../arkui-ts/ts-basic-components-symbolSpan.md#fontcolor)。当center设置到组件范围外时，可将repeating设置为true查看现象。
 
@@ -1341,11 +1463,15 @@ shaderStyle(shader: ShaderStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                         | 必填                             | 说明                               |
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
-| shader | [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | 是 | 径向渐变或线性渐变或纯色。<br/>根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到Text文本上显示为渐变色效果。 |
+| shader | ArkTS-Dyn: [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20)<br/>ArkTS-Sta: [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) \| undefined | 是 | 径向渐变或线性渐变或纯色。<br/>根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到Text文本上显示为渐变色效果。<br/>**说明：** <br/>当设置为径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)时，若[RadialGradientOptions](./ts-universal-attributes-gradient-color.md#radialgradientoptions18对象说明)的center参数设置到组件范围外时，可将repeating参数设置为true，此时渐变效果会更明显。<br/>值为undefined时，无渐变效果。 |
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -1368,6 +1494,58 @@ ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
 | enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用，undefined表示禁用。|
+
+### minLineHeight<sup>22+</sup>
+
+minLineHeight(value: LengthMetrics | undefined)
+
+设置文本的最小行高，设置值不大于0时，取默认值0。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最小行高，不支持百分比。<br/>设置的值不大于0时按0处理。 <br/>值为undefined时，最小行高无限制。|
+
+### minLines<sup>22+</sup>
+
+ArkTS-Dyn: minLines(minLines: Optional\<number>)
+
+ArkTS-Sta: minLines(minLines: int | undefined)
+
+设置文本显示的最小行数。
+
+如果实际文本高度小于最小行数对应的高度，最后显示高度为最小行数对应的高度。
+
+与[maxLines](#maxlines)同时配置时，最小行高显示范围不会超过最大行高限制。
+
+如果文本设置了[constraintSize](ts-universal-attributes-size.md#constraintsize)，那么组件最后显示高度会在[constraintSize](ts-universal-attributes-size.md#constraintsize)约束内。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                      | 必填 | 说明                                                         |
+| ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
+| minLines  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number><br/>ArkTS-Sta: int \| undefined | 是   | 文本最小行数。<br>取值范围：[0, INT32_MAX]<br/>设置的值小于0时按0处理。<br/>值为undefined时，最小行数无限制。|
 
 ### includeFontPadding<sup>23+</sup>
 
@@ -1412,6 +1590,30 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 行高是否基于文字实际高度自适应，此接口只在行高小于文字实际高度时生效。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。<br/>undefined表示行高不基于文字实际高度自适应。 |
+
+### maxLineHeight<sup>22+</sup>
+
+maxLineHeight(value: LengthMetrics | undefined)
+
+设置文本的最大行高，设置值不大于0时，最大行高不受限制。
+
+maxLineHeight小于minLineHeight时，maxLineHeight按照minLineHeight属性的值生效。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---------------- |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;undefined | 是   | 文本的最大行高，不支持百分比。<br/>设置的值不大于0时按0处理，设置为0时，最大行高不受限制。<br/>值为undefined时，最大行高无限制。|
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
@@ -2369,8 +2571,11 @@ function MenuStyles() {
 
 ### 示例9（设置文本特性与行间距）
 
-该示例通过fontFeature、lineSpacing接口展示了设置文本特性与行间距的效果。
+该示例通过[fontFeature](#fontfeature12)、[lineSpacing](#linespacing12)接口展示了设置文本特性与行间距的效果，同时，配置[LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明)中的onlyBetweenLines属性，可以设置文本的行间距，是否仅在行与行之间生效。
 
+从API version 20开始，LineSpacingOptions新增onlyBetweenLines属性。
+
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -2419,6 +2624,72 @@ struct TextExample9 {
       Text('This is ss01 off: 0123456789')
         .fontFeature("\"ss01\" off")
         .style()
+    }.height(300).width(350).padding({ left: 35, right: 35, top: 35 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Flex, FlexDirection, ItemAlign, FlexAlign, LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample9 {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
+      Text('lineSpacing').fontSize(9).fontColor(0xCCCCCC)
+      // 设置文本行间距
+      Text('This is a context with no lineSpacing set.')
+        .lineSpacing(undefined)
+        .fontSize(12)
+        .border({ width: 1 })
+        .width('100%')
+      Text('This is a context with lineSpacing set to 20_px.')
+        .lineSpacing(LengthMetrics.px(20))
+        .fontSize(12)
+        .border({ width: 1 })
+        .width('100%')
+      Text('This is the context with lineSpacing set to 20_vp.')
+        .lineSpacing(LengthMetrics.vp(20))
+        .fontSize(12)
+        .border({ width: 1 })
+        .width('100%')
+      Text('This is the context with lineSpacing set to 20_fp.')
+        .lineSpacing(LengthMetrics.fp(20))
+        .fontSize(12)
+        .border({ width: 1 })
+        .width('100%')
+      Text('This is the context with lineSpacing set to 20_lpx.')
+        .lineSpacing(LengthMetrics.lpx(20))
+        .fontSize(12)
+        .border({ width: 1 })
+        .width('100%')
+      Text('This is the context with lineSpacing set to 100%.')
+        .lineSpacing(LengthMetrics.percent(1))
+        .fontSize(12)
+        .border({ width: 1 })
+        .width('100%')
+      Text('The line spacing of this context is set to 20_px, and the spacing is effective only between the lines.')
+        .lineSpacing(LengthMetrics.px(20), { onlyBetweenLines: true })
+        .fontSize(12)
+        .border({ width: 1 })
+        .width('100%')
+
+      Text('fontFeature').fontSize(9).fontColor(0xCCCCCC)
+      // 设置文本特性
+      Text('This is ss01 on : 0123456789')
+        .fontFeature("\"ss01\" on")
+        .fontSize(12)
+        .border({ width: 1 })
+        .width('100%')
+      Text('This is ss01 off: 0123456789')
+        .fontFeature("\"ss01\" off")
+        .fontSize(12)
+        .border({ width: 1 })
+        .width('100%')
     }.height(300).width(350).padding({ left: 35, right: 35, top: 35 })
   }
 }
@@ -2646,10 +2917,38 @@ struct TextExample13 {
 
 ### 示例14（设置中西文自动间距）
 
-该示例通过enableAutoSpacing属性设置中西文自动间距。
+该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
+
+从API version 20开始，新增[enableAutoSpacing](#enableautospacing20)属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct TextExample {
+  build() {
+    Row() {
+      Column() {
+        Text('开启中西文自动间距').margin(5)
+        Text('中西文Auto Spacing自动间距')
+          .enableAutoSpacing(true)
+        Text('关闭中西文自动间距').margin(5)
+        Text('中西文Auto Spacing自动间距')
+          .enableAutoSpacing(false)
+      }.height('100%')
+    }
+    .width('60%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Row } from '@kit.ArkUI';
 @Entry
 @Component
 struct TextExample {
@@ -2673,8 +2972,11 @@ struct TextExample {
 
 ### 示例15（文本颜色按线性或径向渐变）
 
-该示例通过shaderStyle接口实现了对Text控件显示为渐变色和纯色的功能。
+该示例通过[shaderStyle](#shaderstyle20)接口实现了对Text组件显示为渐变色和纯色的功能。
 
+从API version 20开始，新增[shaderStyle](#shaderstyle20)接口。
+
+ArkTS-Dyn示例：
 ```ts
 @Entry
 @Component
@@ -2736,11 +3038,77 @@ struct ShaderColorStyle {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, ColumnOptions, Component, State, Margin, LinearGradientOptions, RadialGradientOptions, Color, GradientDirection, RadialGradientStyle, LinearGradientStyle, ColorShaderStyle } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    } as LinearGradientOptions;
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    } as LinearGradientOptions;
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    } as RadialGradientOptions;
+  build() {
+    Column() {
+      Text('angle为45°的线性渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
+        .margin({ top: 40, left: 40 })
+      Text(this.message)
+        .fontSize(50)
+        .width('80%')
+        .height(50)
+        .shaderStyle(new LinearGradientStyle(this.linearGradientOptions1))
+      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
+        .margin({ top: 40, left: 40 })
+      Text(this.message)
+        .fontSize(50)
+        .width('80%')
+        .height(50)
+        .shaderStyle(new LinearGradientStyle(this.linearGradientOptions2))
+      Text('径向渐变').fontSize(18).width('90%').fontColor(0xCCCCCC)
+        .margin({ top: 40, left: 40 })
+      Text(this.message)
+        .fontSize(50)
+        .width('80%')
+        .height(50)
+        .shaderStyle(new RadialGradientStyle(this.radialGradientOptions))
+      Text('纯色').fontSize(18).width('90%').fontColor(0xCCCCCC)
+        .margin({ top: 40, left: 40 })
+      Text(this.message)
+        .fontSize(50)
+        .width('80%')
+        .height(50)
+        .shaderStyle(new ColorShaderStyle(Color.Blue))
+    }
+  }
+}
+```
+
 ![zh-cn_image_0000001219864149](figures/gradientcolor.png)
 
 ### 示例16（配置除去行尾空格）
 
-该示例通过optimizeTrailingSpace属性展示了文本如何配置除去行尾空格的效果，一般需要与对齐功能搭配使用，实际显示需要字体引擎支持。
+该示例通过[optimizeTrailingSpace](#optimizetrailingspace20)属性展示了文本如何配置除去行尾空格的效果，一般需要与对齐功能搭配使用，实际显示需要字体引擎支持。
+
+从API version 20开始，新增[optimizeTrailingSpace](#optimizetrailingspace20)属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -2759,6 +3127,34 @@ struct TextExample16 {
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
         .margin({ top: 20 })
+        .optimizeTrailingSpace(false)
+        .textAlign(TextAlign.Center)
+    }
+    .width("100%")
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, TextArea, Row, Margin, FontWeight, TextAlign } from '@kit.ArkUI';
+@Entry
+@Component
+struct TextExample16 {
+  build() {
+    Column() {
+      Text("Trimmed space enabled     ")
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .margin({ top: 20 } as Margin)
+        .optimizeTrailingSpace(true)
+        .textAlign(TextAlign.Center)
+      Text("Trimmed space disabled     ")
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .margin({ top: 20 } as Margin)
         .optimizeTrailingSpace(false)
         .textAlign(TextAlign.Center)
     }
@@ -3126,3 +3522,277 @@ struct TextExample {
 ```
 
 ![textTextDirection](figures/textTextDirection.PNG)
+
+### 示例23（文本翻牌动效）
+
+该示例通过[contentTransition](#contenttransition20)属性展示了数字翻牌效果。
+
+从API version 20开始，新增[contentTransition](#contenttransition20)属性。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextNumberTransition {
+  @State num: number = 98;
+  @State numberTransition: NumericTextTransition =
+    new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+
+  build() {
+    Column() {
+      Text(this.num + "")
+        .borderWidth(1)
+        .fontSize(40)
+        .contentTransition(this.numberTransition)
+      Button("change number")
+        .onClick(() => {
+          this.num++;
+        })
+        .margin(10)
+    }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, State, Button, ClickEvent, NumericTextTransition, FlipDirection, FlexAlign } from '@kit.ArkUI';
+@Entry
+@Component
+struct TextNumberTransition {
+  @State num: number = 98;
+  @State numberTransition: NumericTextTransition =
+    new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
+
+  build() {
+    Column() {
+      Text(this.num + "")
+        .borderWidth(1)
+        .fontSize(40)
+        .contentTransition(this.numberTransition)
+      Button("change number")
+        .onClick(() => {
+          this.num++;
+        })
+        .margin(10)
+    }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![Text_content_transition](figures/Text_content_transition.gif)
+
+### 示例24（文本内容区垂直对齐）
+
+该示例通过[textContentAlign](#textcontentalign21)属性展示了当文本内容区高度大于组件高度时，以文本内容区中心对齐的垂直对齐效果。
+
+从API version 21开始，新增[textContentAlign](#textcontentalign21)属性。
+
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct TextContentAlignExample {
+
+  build() {
+    Column() {
+      Row() {
+        Text('这是一段展示文字')
+          .fontSize(30)
+          .backgroundColor(Color.Gray)
+          .width('80%')
+          .height(20)
+          .textContentAlign(TextContentAlign.CENTER)
+      }.height('60%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, Component, Row, Color, TextContentAlign } from '@kit.ArkUI';
+@Entry
+@Component
+struct TextContentAlignExample {
+
+  build() {
+    Column() {
+      Row() {
+        Text('这是一段展示文字')
+          .fontSize(30)
+          .backgroundColor(Color.Gray)
+          .width('80%')
+          .height(20)
+          .textContentAlign(TextContentAlign.CENTER)
+      }.height('60%')
+    }
+  }
+}
+```
+
+![Text_Content_Align](figures/TextContentAlign.png)
+
+### 示例25（文本设置显示最小行数）
+
+该示例使用[minLines](#minlines22)属性设置文本显示的最小行数。
+
+从API version 22开始，新增[minLines](#minlines22)属性。
+
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct TextExample1 {
+  @State message1: string = 'Hello world!';
+  @State message2: string = 'The minimum number of lines displayed for this text setting is 1';
+
+  build() {
+    Column() {
+      Text(this.message1)
+        .minLines(3)
+        .fontSize(20)
+        .margin(10)
+        .width('95%')
+        .border({ width: 1 })
+      Text(this.message2)
+        .minLines(1)
+        .fontSize(20)
+        .margin(10)
+        .width('95%')
+        .border({ width: 1 })
+    }.height(100).width('90%').margin(10)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, Component, State } from '@kit.ArkUI';
+@Entry
+@Component
+struct TextExample1 {
+  @State message1: string = 'Hello world!';
+  @State message2: string = 'The minimum number of lines displayed for this text setting is 1';
+
+  build() {
+    Column() {
+      Text(this.message1)
+        .minLines(3)
+        .fontSize(20)
+        .margin(10)
+        .width('95%')
+        .border({ width: 1 })
+      Text(this.message2)
+        .minLines(1)
+        .fontSize(20)
+        .margin(10)
+        .width('95%')
+        .border({ width: 1 })
+    }.height(100).width('90%').margin(10)
+  }
+}
+```
+
+![textMinlines](figures/textMinlines.png)
+
+### 示例26（倍数行高和最大最小行高）
+
+该示例通过[lineHeightMultiple](#lineheightmultiple22)属性展示了使用倍数模式设置行高，同时通过[minLineHeight](#minlineheight22)和[maxLineHeight](#maxlineheight22)来设置最小和最大行高值。
+
+从API version 22开始，新增[lineHeightMultiple](#lineheightmultiple22)、[minLineHeight](#minlineheight22)和[maxLineHeight](#maxlineheight22)属性。
+
+ArkTS-Dyn示例：
+
+```ts
+import { LengthUnit } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello';
+
+  build() {
+    Scroll() {
+      Column() {
+        Row() {
+          Text(this.message)
+            .lineHeight(176)
+            .backgroundColor(0xffc0c0c0)
+            .fontSize(50)
+          Text(this.message)
+            .lineHeightMultiple(3)
+            .backgroundColor(0xffc0c0c0)
+            .fontSize(50)
+          Text(this.message)
+            .lineHeight(300)
+            .maxLineHeight({value:176,unit:LengthUnit.FP})
+            .backgroundColor(0xffc0c0c0)
+            .fontSize(50)
+          Text(this.message)
+            .lineHeight(10)
+            .minLineHeight({value:176,unit:LengthUnit.FP})
+            .backgroundColor(0xffc0c0c0)
+            .fontSize(50)
+        }
+      }
+    }.height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, Component, State, Row, Scroll, LengthMetrics, Color } from '@kit.ArkUI';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello';
+
+  build() {
+    Scroll() {
+      Column() {
+        Row() {
+          Text(this.message)
+            .lineHeight(176)
+            .backgroundColor(Color.Grey)
+            .fontSize(50)
+          Text(this.message)
+            .lineHeightMultiple(3)
+            .backgroundColor(Color.Grey)
+            .fontSize(50)
+          Text(this.message)
+            .lineHeight(300)
+            .maxLineHeight(LengthMetrics.fp(176))
+            .backgroundColor(Color.Grey)
+            .fontSize(50)
+          Text(this.message)
+            .lineHeight(10)
+            .minLineHeight(LengthMetrics.fp(176))
+            .backgroundColor(Color.Grey)
+            .fontSize(50)
+        }
+      }
+    }.height('100%')
+    .width('100%')
+  }
+}
+```
+
+![Text_line_height_multiple](figures/Text_lineHeightMultiple.png)

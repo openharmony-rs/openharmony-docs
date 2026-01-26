@@ -700,7 +700,7 @@ ArkTS-Sta: maxLines(value: int | undefined)
 
 ArkTS-Dyn: customKeyboard(value: CustomBuilder | ComponentContent, options?: KeyboardOptions)
 
-ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: KeyboardOptions)
+ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefined, options?: KeyboardOptions)
 
 设置自定义键盘。
 
@@ -718,19 +718,25 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContent | undefined, o
 
 当设置自定义键盘时，可以通过绑定[onKeyPrelme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名                | 类型                                        | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> <br/> ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) \| undefined | 是   | 自定义键盘。 |
+| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> <br/> ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContentBase](../js-apis-arkui-ComponentContent-static.md#componentcontentbase) \| undefined | 是   | 自定义键盘。<br/>值为undefined时，不设置自定义键盘。 |
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。                             |
 
 ### enableAutoFill<sup>11+</sup>
@@ -754,6 +760,30 @@ ArkTS-Sta: enableAutoFill(value: boolean | undefined)
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: boolean <br/> ArkTS-Sta: boolean \| undefined | 是   | 是否启用自动填充。<br/>true表示启用，false表示不启用。<br/>默认值：true |
+
+### enableSelectedDataDetector<sup>22+</sup>
+
+enableSelectedDataDetector(enable: boolean | undefined)
+
+设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
+
+当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
+
+需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：表示开启选中词文本识别；false：表示关闭选中词文本识别。<br/>值为undefined时，开启选中词文本识别。 |
 
 ### passwordRules<sup>11+</sup>
 
@@ -1350,7 +1380,9 @@ ArkTS-Sta: keyboardAppearance(appearance: KeyboardAppearance | undefined)
 
 ### strokeWidth<sup>20+</sup>
 
-strokeWidth(width: Optional\<LengthMetrics>)
+ArkTS-Dyn: strokeWidth(width: Optional\<LengthMetrics>)
+
+ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
 设置文本描边的宽度。
 
@@ -1358,15 +1390,21 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics的单位为px时，<br/>若设置值小于0，显示实心字；若大于0，显示空心字。<br/>默认值为0，不做描边处理。 |
+| width  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)><br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 文本描边的宽度。当LengthMetrics的单位为px时，<br/>若设置值小于0，显示实心字；若大于0，显示空心字。<br/>值为undefined时，不做描边处理。 |
 
 ### strokeColor<sup>20+</sup>
 
-strokeColor(color: Optional\<ResourceColor>)
+ArkTS-Dyn: strokeColor(color: Optional\<ResourceColor>)
+
+ArkTS-Sta: strokeColor(color: ResourceColor | undefined)
 
 设置文本描边的颜色。
 
@@ -1374,11 +1412,15 @@ strokeColor(color: Optional\<ResourceColor>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 描边颜色。默认值为字体颜色，设置异常值时取默认值。|
+| color  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ResourceColor](ts-types.md#resourcecolor)><br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 描边颜色。<br/>值为undefined时，默认为字体颜色，设置异常值时取字体颜色。|
 
 ### stopBackPress<sup>15+</sup>
 
@@ -1528,7 +1570,7 @@ ArkTS-Sta: enableAutoFillAnimation(enabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -1550,7 +1592,7 @@ ArkTS-Sta: enableAutoSpacing(enabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1650,17 +1692,17 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 | 名称                          |  值   | 说明                       |
 | ----------------------------- | ----- | --------------------------- |
-| Normal                        | - | 基本输入模式，无特殊限制。<br/>内联输入风格只支持InputType.Normal类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Password                      | - | 密码输入模式。<br/>密码显示小眼睛图标，默认输入文字短暂显示后变成圆点，从API version 12开始，特定设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Email                         | - | 邮箱地址输入模式。<br/>支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Number                        | - | 纯数字输入模式。<br/>不支持负数、小数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| PhoneNumber<sup>9+</sup>      | - | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NUMBER_PASSWORD<sup>11+</sup> | 8 | 纯数字密码输入模式。<br/>密码显示小眼睛图标，默认输入文字短暂显示后变成圆点，从API version 12开始，特定设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| USER_NAME<sup>11+</sup>       | 10 | 用户名输入模式。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| NEW_PASSWORD<sup>11+</sup>    | 11 | 新密码输入模式。<br/>密码显示小眼睛图标，默认输入文字短暂显示后变成圆点，从API version 12开始，特定设备上输入文字直接显示为圆点。在已启用密码保险箱的情况下，支持自动生成新密码。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| NUMBER_DECIMAL<sup>11+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。不支持负数小数，负数小数的数字输入模式请使用inputFilter实现。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| URL<sup>12+</sup>  | 13 | 带URL的输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| Normal                        | - | 基本输入模式，无特殊限制。<br/>内联输入风格只支持InputType.Normal类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| Password                      | - | 密码输入模式。<br/>密码显示小眼睛图标，默认输入文字短暂显示后变成圆点，从API version 12开始，特定设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Email                         | - | 邮箱地址输入模式。<br/>支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Number                        | - | 纯数字输入模式。<br/>不支持负数、小数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| PhoneNumber<sup>9+</sup>      | - | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| NUMBER_PASSWORD<sup>11+</sup> | 8 | 纯数字密码输入模式。<br/>密码显示小眼睛图标，默认输入文字短暂显示后变成圆点，从API version 12开始，特定设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
+| USER_NAME<sup>11+</sup>       | 10 | 用户名输入模式。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| NEW_PASSWORD<sup>11+</sup>    | 11 | 新密码输入模式。<br/>密码显示小眼睛图标，默认输入文字短暂显示后变成圆点，从API version 12开始，特定设备上输入文字直接显示为圆点。在已启用密码保险箱的情况下，支持自动生成新密码。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| NUMBER_DECIMAL<sup>11+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。不支持负数小数，负数小数的数字输入模式请使用inputFilter实现。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| URL<sup>12+</sup>  | 13 | 带URL的输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ContentType<sup>12+</sup>枚举说明
 
@@ -2079,19 +2121,36 @@ onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert
 
 ### onWillAttachIME<sup>20+</sup>
 
-onWillAttachIME(callback: Callback\<IMEClient>)
+ArkTS-Dyn: onWillAttachIME(callback: Callback\<IMEClient>)
 
-在输入框将要绑定输入法前触发该回调。
+ArkTS-Sta: onWillAttachIME(callback: Callback\<IMEClient> | undefined)
+
+在输入框将要绑定输入法前触发该回调。使用callback异步回调。
+
+<!--Del-->
+在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
+
+调用[IMEClient](ts-text-common.md#imeclient20对象说明)的setExtraConfig方法可以设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
+IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| callback  | Callback\<[IMEClient](ts-text-common.md#imeclient20对象说明)> | 是   | 在输入框将要绑定输入法前触发该回调。 |
+| callback  | ArkTS-Dyn: Callback\<[IMEClient](ts-text-common.md#imeclient20对象说明)><br/>ArkTS-Sta: Callback\<[IMEClient](ts-text-common.md#imeclient20对象说明)> \| undefined | 是   | 在输入框将要绑定输入法前触发该回调。<br/>值为undefined时，该回调不触发。 |
 
 ## TextInputController<sup>8+</sup>
 
@@ -2456,47 +2515,167 @@ struct TextInputExample {
 
 ### 示例3（设置自定义键盘）
 
-该示例通过customKeyboard属性实现了自定义键盘的功能。
+该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性分别将value中的入参类型设置为[CustomBuilder](ts-types.md#custombuilder8)和[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)，实现了自定义键盘的功能。
+
+从API version 22开始，[customKeyboard](#customkeyboard10)属性新增了入参类型[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)。
+
+ArkTS-Dyn示例:
 
 ```ts
 // xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+class BuilderParams {
+  inputValue: string;
+  controller: TextInputController;
+
+  constructor(inputValue: string, controller: TextInputController) {
+    this.inputValue = inputValue;
+    this.controller = controller;
+  }
+}
+@Builder
+function CustomKeyboardBuilder(builderParams: BuilderParams) {
+  Column() {
+    Row() {
+      Button('x').onClick(() => {
+        // 关闭自定义键盘
+        builderParams.controller.stopEditing();
+      }).margin(10)
+    }
+
+    Grid() {
+      ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+        GridItem() {
+          Button(item + "")
+            .width(110).onClick(() => {
+            builderParams.inputValue += item;
+          })
+        }
+      })
+    }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+  }.backgroundColor(Color.Gray)
+}
 @Entry
 @Component
 struct TextInputExample {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = "";
+  @State componentContent ?: ComponentContent<BuilderParams> = undefined;
+  @State builderParam: BuilderParams = new BuilderParams(this.inputValue, this.controller);
+  @State supportAvoidance: boolean = true;
 
-  // 自定义键盘组件
-  @Builder
-  CustomKeyboardBuilder() {
-    Column() {
-      Button('x').onClick(() => {
-        // 关闭自定义键盘
-        this.controller.stopEditing();
-      })
-      Grid() {
-        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
-          GridItem() {
-            Button(item + "")
-              .width(110).onClick(() => {
-              this.inputValue += item;
-            })
-          }
-        })
-      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
-    }.backgroundColor(Color.Gray)
+  aboutToAppear(): void {
+    // 创建ComponentContent
+    this.componentContent = new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
   }
-
-  build() {
+  build(){
     Column() {
-      TextInput({ controller: this.controller, text: this.inputValue })// 绑定自定义键盘
-        .customKeyboard(this.CustomKeyboardBuilder()).margin(10).border({ width: 1 }).height('48vp')
+      Text('Builder').margin(10).border({ width: 1 })
+      TextInput({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
+
+      Text('ComponentContent').margin(10).border({ width: 1 })
+      TextInput({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
     }
   }
 }
 ```
 
 ![customKeyboard](figures/textInputCustomKeyboard.png)
+
+ArkTS-Sta示例:
+
+```ts
+// xxx.ets
+import { Entry, Column, Row, Component, Button, TextInput, Color, KeyboardOptions, Grid, ForEach, GridItem,
+  Builder, CustomBuilder, TextInputController, Scroll, State,  } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  controller: TextInputController = new TextInputController();
+  controller2: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+  @State inputValue2: string = '';
+  @State str: string = '否';
+  // 自定义键盘组件
+  @Builder CustomKeyboardBuilder() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller.stopEditing();
+        })
+        Button('delete').onClick(() => {
+          this.inputValue = this.inputValue.slice(0, -1);
+        }).margin(10)
+      }
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: Int | string, index: Int) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue += item
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor(Color.Gray).height(300)
+  }
+
+  @Builder CustomKeyboardBuilder2() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller2.stopEditing();
+        })
+        Button('delete').onClick(() => {
+          this.inputValue2 = this.inputValue2.slice(0, -1);
+        }).margin(10)
+      }
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: Int | string, index: Int) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue2 += item
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor(Color.Blue).height(300)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        TextInput({
+          placeholder: 'TextInput1 bind CustomKeyboardBuilder',
+          controller: this.controller,
+          text: this.inputValue
+        })// 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder as CustomBuilder, { supportAvoidance: true } as KeyboardOptions)
+          .margin(10)
+          .border({ width: 1 })
+        TextInput({
+          placeholder: 'TextInput2 bind CustomKeyboardBuilder2',
+          controller: this.controller2,
+          text: this.inputValue2
+        })// 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder2 as CustomBuilder, { supportAvoidance: true } as KeyboardOptions)
+          .margin(10)
+          .border({ width: 1 })
+      }
+    }
+  }
+}
+```
+
+![customKeyboard](figures/TextInputCustomKeyboard2.gif)
 
 ### 示例4（设置右侧清除按钮样式）
 
@@ -3498,7 +3677,11 @@ struct TextInputExample {
 
 ### 示例20（设置文本描边）
 
-该示例通过strokeWidth和strokeColor属性设置文本的描边宽度及颜色。
+该示例通过[strokeWidth](#strokewidth20)和[strokeColor](#strokecolor20)属性设置文本的描边宽度及颜色。
+
+从API version 20开始，新增[strokeWidth](#strokewidth20)和[strokeColor](#strokecolor20)属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -3539,14 +3722,82 @@ struct TextInputExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, TextInput, Row, Margin, LengthMetrics, Color } from '@kit.ArkUI';
+@Entry
+@Component
+struct TextInputExample {
+  build() {
+    Row() {
+      Column() {
+        Text('stroke feature').fontSize(9).fontColor(0xCCCCCC)
+
+        TextInput({ text: 'Text without stroke' })
+          .width('100%')
+          .height(60)
+          .borderWidth(1)
+          .fontSize(40)
+        TextInput({ text: 'Text with stroke' })
+          .width('100%')
+          .height(60)
+          .borderWidth(1)
+          .fontSize(40)
+          .strokeWidth(LengthMetrics.px(-3.0))
+          .strokeColor(Color.Red)
+        TextInput({ text: 'Text with stroke' })
+          .width('100%')
+          .height(60)
+          .borderWidth(1)
+          .fontSize(40)
+          .strokeWidth(LengthMetrics.px(3.0))
+          .strokeColor(Color.Red)
+      }.height('90%')
+    }
+    .width('90%')
+    .margin(10)
+  }
+}
+```
+
 ![textInputSetStroke](figures/textInputSetStroke.png)
 
 ### 示例21（设置中西文自动间距）
 
-该示例通过enableAutoSpacing属性设置中西文自动间距。
+该示例通过[enableAutoSpacing](#enableautospacing20)属性设置中西文自动间距。
+
+从API version 20开始，新增[enableAutoSpacing](#enableautospacing20)属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
+@Entry
+@Component
+struct TextInputExample {
+  build() {
+    Row() {
+      Column() {
+        Text('开启中西文自动间距').margin(5)
+        TextInput({text: '中西文Auto Spacing自动间距'})
+          .enableAutoSpacing(true)
+        Text('关闭中西文自动间距').margin(5)
+        TextInput({text: '中西文Auto Spacing自动间距'})
+          .enableAutoSpacing(false)
+      }.height('100%')
+    }
+    .width('60%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, TextInput, Row, Margin } from '@kit.ArkUI';
 @Entry
 @Component
 struct TextInputExample {

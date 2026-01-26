@@ -189,7 +189,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 ArkTS-Dyn: fontWeight(value: number | FontWeight | ResourceStr)
 
-ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
+ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
 
@@ -197,17 +197,19 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string \| undefined | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持Resource类型。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br>值为undefined时，保持FontWeight.Normal效果。 <br>从API version 20开始，支持Resource类型。|
 
 ### fontFamily
 
@@ -623,3 +625,55 @@ struct SpanExample {
 
 ![SpanBaselineOffset](figures/SpanBaselineOffset.png)
 
+### 示例5（设置文本的字体粗细）
+
+该示例通过[fontWeight](#fontweight)属性展示了文本设置字体粗细的效果。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SpanExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+      // 文本字体粗细设置
+      Text('FontWeight').fontSize(15).fontColor(0xCCCCCC).margin({ top: 12 })
+      Text() {
+        Span('I am FontWeight-Lighter').fontSize(20)
+          .fontWeight(FontWeight.Lighter)
+      }
+      Text() {
+        Span('I am FontWeight-Bold').fontSize(20)
+          .fontWeight(FontWeight.Bold)
+      }
+    }.width('100%').padding({ left: 35, right: 35, top: 35 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Component, Column, Row, Text, Span, Flex, FlexDirection, ItemAlign, Padding, Margin, FontWeight } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SpanExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+      // 文本字体粗细设置
+      Text('FontWeight').fontSize(15).fontColor(0xCCCCCC).margin({ top: 12 } as Margin)
+      Text() {
+        Span('I am FontWeight-Lighter').fontSize(20)
+          .fontWeight(FontWeight.Lighter)
+      }
+      Text() {
+        Span('I am FontWeight-Bold').fontSize(20)
+          .fontWeight(FontWeight.Bold)
+      }
+    }.width('100%').padding({ left: 35, right: 35, top: 35 } as Padding)
+  }
+}
+```
+![SpanFontWeight](figures/span_fontWeight.png)
