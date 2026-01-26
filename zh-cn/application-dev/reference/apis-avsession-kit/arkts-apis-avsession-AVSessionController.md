@@ -1081,7 +1081,7 @@ sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | 是   | 需要设置的自定义控制命令的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的控制命令键值对。<br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
+| args | {[key: string]: Object} | 是   | 需要传递的控制命令键值对。<br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 
 **返回值：**
 
@@ -1143,7 +1143,7 @@ sendCommonCommand(command: string, args: {[key: string]: Object}, callback: Asyn
 | 参数名    | 类型                                  | 必填 | 说明                           |
 | ------- | ------------------------------------- | ---- | ------------------------------ |
 | command | string | 是   | 需要设置的自定义控制命令的名称。 |
-| args |   {[key: string]: Object} | 是   | 需要传递的控制命令键值对。 <br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
+| args |   {[key: string]: Object} | 是   | 需要传递的控制命令键值对。 <br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功，err为undefined，否则返回错误对象。                     |
 
 **错误码：**
@@ -1414,7 +1414,7 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise<[ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)\>   | Promise对象，返回远端分布式媒体提供方设置的自定义媒体数据包。<br>参数ExtraInfo支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。 |
+| Promise<[ExtraInfo](arkts-apis-avsession-t.md#extrainfo18)\>   | Promise对象，返回远端分布式媒体提供方设置的自定义媒体数据包。<br>参数ExtraInfo支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。 |
 
 **错误码：**
 
