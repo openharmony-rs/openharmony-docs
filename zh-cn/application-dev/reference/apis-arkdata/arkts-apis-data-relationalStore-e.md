@@ -363,7 +363,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下可用。
 
 | 名称                | 值   | 说明                                    |
 | ------------------ | --- | ---------------------------------------- |
