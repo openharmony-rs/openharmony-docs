@@ -34,6 +34,11 @@
     - [native_avmetadata.h](capi-native-avmetadata-h.md)
     - [native_avsession.h](capi-native-avsession-h.md)
     - [native_avsession_errors.h](capi-native-avsession-errors-h.md)
+    - [native_avcastcontroller.h](capi-native-avcastcontroller-h.md)
+    - [native_avplaybackstate.h](capi-native-avplaybackstate-h.md)
+    - [native_avqueueitem.h](capi-native-avqueueitem-h.md)
+    - [native_avsession_base.h](capi-native-avsession-base-h.md)
+    - [native_deviceinfo.h](capi-native-deviceinfo-h.md)
   - 结构体<!--avsession-struct-->
     - [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md)
     - [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md)
