@@ -98,9 +98,7 @@ try {
     deviceIds[i] = devices[i].networkId!;
   }
 } catch (err) {
-  let code = (err as BusinessError).code;
-  let message = (err as BusinessError).message;
-  console.error("createDeviceManager errCode:" + code + ",errMessage:" + message);
+  console.error("createDeviceManager errCode:" + err.code + ", errMessage:" + err.message);
 }
 
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");

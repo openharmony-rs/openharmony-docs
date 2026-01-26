@@ -83,7 +83,7 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
 
 relationalStore.getRdbStore(context, STORE_CONFIG, async (err: BusinessError, rdbStore: relationalStore.RdbStore) => {
   if (err) {
-    console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
     return;
   }
   console.info('Get RdbStore successfully.');
@@ -110,7 +110,7 @@ class EntryAbility extends UIAbility {
 
     relationalStore.getRdbStore(this.context, STORE_CONFIG, async (err: BusinessError, rdbStore: relationalStore.RdbStore) => {
       if (err) {
-        console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+        console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
         return;
       }
       console.info('Get RdbStore successfully.');
@@ -196,12 +196,12 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   securityLevel: relationalStore.SecurityLevel.S3
 };
 
-relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
-  store = rdbStore;
+try {
+  store = await relationalStore.getRdbStore(context, STORE_CONFIG);
   console.info('Get RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-});
+} catch (err) {
+  console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 Stage模型示例：
@@ -220,12 +220,12 @@ class EntryAbility extends UIAbility {
       securityLevel: relationalStore.SecurityLevel.S3
     };
 
-    relationalStore.getRdbStore(this.context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
-      store = rdbStore;
+    try {
+      store = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
       console.info('Get RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-    });
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+    }
   }
 }
 ```
@@ -240,11 +240,11 @@ deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&g
 
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -277,7 +277,7 @@ let context = featureAbility.getContext();
 
 relationalStore.deleteRdbStore(context, "RdbTest.db", (err: BusinessError) => {
   if (err) {
-    console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Delete RdbStore failed, code is ${err.code}, message is ${err.message}`);
     return;
   }
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
@@ -297,7 +297,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     relationalStore.deleteRdbStore(this.context, "RdbTest.db", (err: BusinessError) => {
       if (err) {
-        console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+        console.error(`Delete RdbStore failed, code is ${err.code}, message is ${err.message}`);
         return;
       }
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
@@ -318,11 +318,11 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 
 当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -358,13 +358,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 
-relationalStore.deleteRdbStore(context, "RdbTest.db").then(() => {
+try {
+  await relationalStore.deleteRdbStore(context, "RdbTest.db");
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
   // 及时将相关变量置空以释放资源。
   console.info('Delete RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
-});
+} catch (err) {
+  console.error(`Delete RdbStore failed, code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 Stage模型示例：
@@ -376,13 +377,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    relationalStore.deleteRdbStore(this.context, "RdbTest.db").then(() => {
+    try {
+      await relationalStore.deleteRdbStore(this.context, "RdbTest.db");
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
       // 及时将相关变量置空以释放资源。
       console.info('Delete RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
-    });
+    } catch (err) {
+      console.error(`Delete RdbStore failed, code is ${err.code}, message is ${err.message}`);
+    }
   }
 }
 ```
@@ -441,7 +443,7 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
 
 relationalStore.deleteRdbStore(context, STORE_CONFIG, (err: BusinessError) => {
   if (err) {
-    console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Delete RdbStore failed, code is ${err.code}, message is ${err.message}`);
     return;
   }
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
@@ -465,7 +467,7 @@ class EntryAbility extends UIAbility {
     };
     relationalStore.deleteRdbStore(this.context, STORE_CONFIG, (err: BusinessError) => {
       if (err) {
-        console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+        console.error(`Delete RdbStore failed, code is ${err.code}, message is ${err.message}`);
         return;
       }
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
@@ -534,13 +536,14 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   securityLevel: relationalStore.SecurityLevel.S3
 };
 
-relationalStore.deleteRdbStore(context, STORE_CONFIG).then(() => {
+try {
+  await relationalStore.deleteRdbStore(context, STORE_CONFIG);
   // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
   // 及时将相关变量置空以释放资源。
   console.info('Delete RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
-});
+} catch (err) {
+  console.error(`Delete RdbStore failed, code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 Stage模型示例：
@@ -556,13 +559,14 @@ class EntryAbility extends UIAbility {
       name: "RdbTest.db",
       securityLevel: relationalStore.SecurityLevel.S3
     };
-    relationalStore.deleteRdbStore(this.context, STORE_CONFIG).then(() => {
+    try {
+      await relationalStore.deleteRdbStore(this.context, STORE_CONFIG);
       // 数据库删除成功后，已初始化的RdbStore实例将无法继续使用。
       // 及时将相关变量置空以释放资源。
       console.info('Delete RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
-    });
+    } catch (err) {
+      console.error(`Delete RdbStore failed, code is ${err.code}, message is ${err.message}`);
+    }
   }
 }
 ```
@@ -610,9 +614,8 @@ export default class EntryAbility extends UIAbility {
         console.info('Get RdbStore successfully.');
         store = rdbStore;
         // 成功获取到 rdbStore 后执行后续操作
-      } catch (error) {
-        const err = error as BusinessError;
-        console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+      } catch (err) {
+        console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
       }
     } else {
       console.info("Vector database not supported on current platform.");

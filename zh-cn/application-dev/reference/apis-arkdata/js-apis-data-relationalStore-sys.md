@@ -173,7 +173,7 @@ const valueBucket3: ValuesBucket = {
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates, (err, rows) => {
+  store.update("EMPLOYEE", valueBucket1, predicates, (err, rows) => {
     if (err) {
       console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
       return;
@@ -309,11 +309,12 @@ const valueBucket3: ValuesBucket = {
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then(async (rows: number) => {
+  try {
+    let rows = await store.update("EMPLOYEE", valueBucket1, predicates);
     console.info(`Updated row count: ${rows}`);
-  }).catch((err: BusinessError) => {
+  } catch (err) {
     console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 }
 ```
 
@@ -338,11 +339,12 @@ const valueBucket1: ValuesBucket = {
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  store.update("EMPLOYEE", valueBucket1, predicates).then(async (rows: long) => {
+  try {
+    let rows = await store.update("EMPLOYEE", valueBucket1, predicates);
     console.info(`Updated row count: ${rows}`);
-  }).catch((err: Error) => {
+  } catch (err) {
     console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 }
 ```
 
@@ -402,24 +404,6 @@ ArkTS-Sta: delete(table: string, predicates: dataSharePredicates.DataSharePredic
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
-let predicates = new dataSharePredicates.DataSharePredicates();
-predicates.equalTo("NAME", "Lisa");
-if (store != undefined) {
-  (store as relationalStore.RdbStore).delete("EMPLOYEE", predicates, (err, rows) => {
-    if (err) {
-      console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
-      return;
-    }
-    console.info(`Delete rows: ${rows}`);
-  });
-}
-```
-
-ArkTS-Sta示例：
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
@@ -497,7 +481,6 @@ ArkTS-Sta: delete(table: string, predicates: dataSharePredicates.DataSharePredic
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -505,27 +488,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).delete("EMPLOYEE", predicates).then((rows: number) => {
+  try {
+    let rows = await store.delete("EMPLOYEE", predicates);
     console.info(`Delete rows: ${rows}`);
-  }).catch((err: BusinessError) => {
+  } catch (err) {
     console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let predicates = new dataSharePredicates.DataSharePredicates();
-predicates.equalTo("NAME", "Lisa");
-if (store != undefined) {
-  store.delete("EMPLOYEE", predicates).then((rows: long) => {
-    console.info(`Delete rows: ${rows}`);
-  }).catch((err: Error) => {
-    console.error(`Delete failed, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 }
 ```
 
@@ -567,16 +535,19 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, callba
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).query("EMPLOYEE", predicates, (err, resultSet) => {
+  store.query("EMPLOYEE", predicates, (err, resultSet) => {
     if (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    if (!resultSet) {
+      console.error('Query succeeded but resultSet is null');
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -590,33 +561,6 @@ if (store != undefined) {
     }
     // 释放数据集的内存
     resultSet.close();
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
-let predicates = new dataSharePredicates.DataSharePredicates();
-predicates.equalTo("NAME", "Rose");
-if (store != undefined) {
-  store.query("EMPLOYEE", predicates, (err: BusinessError | null, resultSet: relationalStore.ResultSet | undefined) => {
-    if (err) {
-      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      return;
-    }
-    console.info(`ResultSet column names: ${resultSet!.columnNames}, column count: ${resultSet!.columnCount}`);
-    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet!.goToNextRow()) {
-      const id = resultSet!.getLong(resultSet!.getColumnIndex("ID"));
-      const name = resultSet!.getString(resultSet!.getColumnIndex("NAME"));
-      const age = resultSet!.getLong(resultSet!.getColumnIndex("AGE"));
-      const salary = resultSet!.getDouble(resultSet!.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
-    }
-    // 释放数据集的内存
-    resultSet!.close();
   });
 }
 ```
@@ -660,16 +604,19 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).query("EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err, resultSet) => {
+  store.query("EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err, resultSet) => {
     if (err) {
       console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    if (!resultSet) {
+      console.error('Query succeeded but resultSet is null');
       return;
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
@@ -683,33 +630,6 @@ if (store != undefined) {
     }
     // 释放数据集的内存
     resultSet.close();
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-
-let predicates = new dataSharePredicates.DataSharePredicates();
-predicates.equalTo("NAME", "Rose");
-if (store != undefined) {
-  store.query("EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"], (err: BusinessError | null, resultSet: relationalStore.ResultSet | undefined) => {
-    if (err) {
-      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      return;
-    }
-    console.info(`ResultSet column names: ${resultSet!.columnNames}, column count: ${resultSet!.columnCount}`);
-    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet!.goToNextRow()) {
-      const id = resultSet!.getLong(resultSet!.getColumnIndex("ID"));
-      const name = resultSet!.getString(resultSet!.getColumnIndex("NAME"));
-      const age = resultSet!.getLong(resultSet!.getColumnIndex("AGE"));
-      const salary = resultSet!.getDouble(resultSet!.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
-    }
-    // 释放数据集的内存
-    resultSet!.close();
   });
 }
 ```
@@ -758,7 +678,6 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -766,7 +685,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).query("EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then((resultSet: relationalStore.ResultSet) => {
+  let resultSet: relationalStore.ResultSet | undefined;
+  try {
+    resultSet = await store.query("EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
     while (resultSet.goToNextRow()) {
@@ -776,37 +697,14 @@ if (store != undefined) {
       const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
       console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
     }
-    // 释放数据集的内存
-    resultSet.close();
-  }).catch((err: BusinessError) => {
+  } catch (err) {
     console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let predicates = new dataSharePredicates.DataSharePredicates();
-predicates.equalTo("NAME", "Rose");
-if (store != undefined) {
-  store.query("EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then((resultSet: relationalStore.ResultSet) => {
-    console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
-    // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+  } finally {
+    if (resultSet) {
+      // 释放数据集的内存
+      resultSet.close();
     }
-    // 释放数据集的内存
-    resultSet.close();
-  }).catch((err: Error) => {
-    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 }
 ```
 
@@ -858,7 +756,7 @@ let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.in("id", ["id1", "id2"]);
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
+  store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
     console.info(`progress: ${progressDetail.schedule}`);
   }, (err) => {
     if (err) {
@@ -884,7 +782,7 @@ let asset: relationalStore.Asset = {
 predicates.beginWrap().equalTo("id", "id1").and().equalTo("asset", asset).endWrap();
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
+  store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
     console.info(`progress: ${progressDetail.schedule}`);
   }, (err) => {
     if (err) {
@@ -901,7 +799,7 @@ ArkTS-Sta示例：
 
 ```ts
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-predicates.in("id", ["id1", "id2"]);
+predicates.inValues("id", ["id1", "id2"]);
 
 if (store != undefined) {
   store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
@@ -997,13 +895,14 @@ let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.in("id", ["id1", "id2"]);
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail.schedule}`);
-  }).then(() => {
+  try {
+    await store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail) => {
+      console.info(`progress: ${progressDetail.schedule}`);
+    });
     console.info('cloud sync succeeded');
-  }).catch((err: BusinessError) => {
+  } catch (err) {
     console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 };
 ```
 **示例2：指定资产下载**
@@ -1023,13 +922,14 @@ let asset: relationalStore.Asset = {
 predicates.beginWrap().equalTo("id", "id1").and().equalTo("asset", asset).endWrap();
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail.schedule}`);
-  }).then(() => {
-    console.info('Cloud sync succeeded');
-  }).catch((err: BusinessError) => {
-    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
-  });
+  try {
+    await store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail) => {
+      console.info(`progress: ${progressDetail.schedule}`);
+    });
+    console.info('cloud sync succeeded');
+  } catch (err) {
+    console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
+  }
 };
 ```
 
@@ -1040,16 +940,17 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-predicates.in("id", ["id1", "id2"]);
+predicates.inValues("id", ["id1", "id2"]);
 
 if (store != undefined) {
-  store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail.schedule}`);
-  }).then(() => {
+  try {
+    await store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail) => {
+      console.info(`progress: ${progressDetail.schedule}`);
+    });
     console.info('cloud sync succeeded');
-  }).catch((err: Error) => {
+  } catch (err) {
     console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 };
 ```
 **示例2：指定资产下载**
@@ -1069,13 +970,14 @@ let asset: relationalStore.Asset = {
 predicates.beginWrap().equalTo("id", "id1").and().equalTo("asset", asset).endWrap();
 
 if (store != undefined) {
-  store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail: relationalStore.ProgressDetails) => {
-    console.info(`progress: ${progressDetail.schedule}`);
-  }).then(() => {
-    console.info('Cloud sync succeeded');
-  }).catch((err: Error) => {
-    console.error(`cloudSync failed, code is ${err.code}, message is ${err.message}`);
-  });
+  try {
+    await store.cloudSync(relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, predicates, (progressDetail) => {
+      console.info(`progress: ${progressDetail.schedule}`);
+    });
+    console.info('cloud sync succeeded');
+  } catch (err) {
+    console.error(`cloud sync failed, code is ${err.code}, message is ${err.message}`);
+  }
 };
 ```
 
@@ -1135,7 +1037,6 @@ querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1143,39 +1044,22 @@ let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
 if (store != undefined) {
-  (store as relationalStore.RdbStore).querySharingResource(predicates, ['uuid', 'data']).then((resultSet) => {
-    if (!resultSet.goToFirstRow()) {
-      console.error(`resultSet error`);
-      return;
-    }
-    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-    console.info(`sharing resource: ${res}`);
-    sharingResource = res;
-  }).catch((err: BusinessError) => {
+  let resultSet: relationalStore.ResultSet | undefined;
+  try {
+    resultSet = await store.querySharingResource(predicates, ['uuid', 'data']);
+      if (!resultSet.goToFirstRow()) {
+        console.error(`resultSet error`);
+        return;
+      }
+      sharingResource = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+      console.info(`sharing resource: ${sharingResource}`);
+  } catch (err) {
     console.error(`query sharing resource failed, code is ${err.code}, message is ${err.message}`);
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let sharingResource: string;
-let predicates = new relationalStore.RdbPredicates('test_table');
-predicates.equalTo('data', 'data_test');
-if (store != undefined) {
-  store.querySharingResource(predicates, ['uuid', 'data']).then((resultSet: relationalStore.ResultSet) => {
-    if (!resultSet.goToFirstRow()) {
-      console.error(`resultSet error`);
-      return undefined;
+  } finally {
+    if (resultSet) {
+      resultSet.close();
     }
-    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-    console.info(`sharing resource: ${res}`);
-    sharingResource = res;
-  }).catch((err: Error) => {
-    console.error(`query sharing resource failed, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 }
 ```
 
@@ -1230,46 +1114,26 @@ querySharingResource(predicates: RdbPredicates, callback: AsyncCallback&lt;Resul
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
 if (store != undefined) {
-  (store as relationalStore.RdbStore).querySharingResource(predicates, (err, resultSet) => {
+  store.querySharingResource(predicates, (err, resultSet) => {
     if (err) {
       console.error(`sharing resource failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    if (!resultSet) {
+      console.error('sharing resource succeeded but resultSet is null');
       return;
     }
     if (!resultSet.goToFirstRow()) {
       console.error(`resultSet error`);
       return;
     }
-    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-    console.info(`sharing resource: ${res}`);
-    sharingResource = res;
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-let sharingResource: string;
-let predicates = new relationalStore.RdbPredicates('test_table');
-predicates.equalTo('data', 'data_test');
-if (store != undefined) {
-  store.querySharingResource(predicates, (err: BusinessError | null, resultSet: relationalStore.ResultSet | undefined) => {
-    if (err) {
-      console.error(`sharing resource failed, code is ${err.code}, message is ${err.message}`);
-      return;
-    }
-    if (!resultSet!.goToFirstRow()) {
-      console.error(`resultSet error`);
-      return;
-    }
-    const res = resultSet!.getString(resultSet!.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-    console.info(`sharing resource: ${res}`);
-    sharingResource = res;
+    sharingResource = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+    console.info(`sharing resource: ${sharingResource}`);
   });
 }
 ```
@@ -1326,50 +1190,29 @@ querySharingResource(predicates: RdbPredicates, columns: Array&lt;string&gt;, ca
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
 if (store != undefined) {
-  (store as relationalStore.RdbStore).querySharingResource(predicates, ['uuid', 'data'], (err, resultSet) => {
+  store.querySharingResource(predicates, ['uuid', 'data'], (err, resultSet) => {
     if (err) {
       console.error(`sharing resource failed, code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    if (!resultSet) {
+      console.error('sharing resource succeeded but resultSet is null');
       return;
     }
     if (!resultSet.goToFirstRow()) {
       console.error(`resultSet error`);
       return;
     }
-    const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-    console.info(`sharing resource: ${res}`);
-    sharingResource = res;
+    sharingResource = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
+    console.info(`sharing resource: ${sharingResource}`);
   });
 }
 ```
-
-ArkTS-Sta示例：
-```ts
-let sharingResource: string;
-let predicates = new relationalStore.RdbPredicates('test_table');
-predicates.equalTo('data', 'data_test');
-if (store != undefined) {
-  store.querySharingResource(predicates, ['uuid', 'data'], (err: BusinessError | null, resultSet: relationalStore.ResultSet | undefined) => {
-    if (err) {
-      console.error(`sharing resource failed, code is ${err.code}, message is ${err.message}`);
-      return;
-    }
-    if (!resultSet!.goToFirstRow()) {
-      console.error(`resultSet error`);
-      return;
-    }
-    const res = resultSet!.getString(resultSet!.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
-    console.info(`sharing resource: ${res}`);
-    sharingResource = res;
-  });
-}
-```
-
 
 ### lockCloudContainer<sup>12+</sup>
 
@@ -1407,29 +1250,16 @@ ArkTS-Sta: lockCloudContainer(): Promise&lt;int&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).lockCloudContainer().then((time: number) => {
-    console.info('lockCloudContainer succeeded time:' + time);
-  }).catch((err: BusinessError) => {
+  try {
+    let lockTime = await store.lockCloudContainer();
+    console.info('lockCloudContainer succeeded lockTime:' + lockTime);
+  } catch (err) {
     console.error(`lockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-if (store != undefined) {
-  store.lockCloudContainer().then((time: int) => {
-    console.info('lockCloudContainer succeeded time:' + time);
-  }).catch((err: Error) => {
-    console.error(`lockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 }
 ```
 
@@ -1463,29 +1293,16 @@ unlockCloudContainer(): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).unlockCloudContainer().then(() => {
+  try {
+    await store.unlockCloudContainer();
     console.info('unlockCloudContainer succeeded');
-  }).catch((err: BusinessError) => {
+  } catch (err) {
     console.error(`unlockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-if (store != undefined) {
-  store.unlockCloudContainer().then(() => {
-    console.info('unlockCloudContainer succeeded');
-  }).catch((err: Error) => {
-    console.error(`unlockCloudContainer failed, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 }
 ```
 
@@ -1538,30 +1355,16 @@ restore(): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
-  let promiseRestore = (store as relationalStore.RdbStore).restore();
-  promiseRestore.then(() => {
+  try {
+    await store.restore();
     console.info('Succeeded in restoring.');
-  }).catch((err: BusinessError) => {
+  } catch (err) {
     console.error(`Failed to restore, code is ${err.code}, message is ${err.message}`);
-  });
-}
-```
-
-ArkTS-Sta示例：
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-if (store != undefined) {
-  store.restore().then(() => {
-    console.info('Succeeded in restoring.');
-  }).catch((err: Error) => {
-    console.error(`Failed to restore, code is ${err.code}, message is ${err.message}`);
-  });
+  }
 }
 ```
 
@@ -1623,15 +1426,6 @@ ArkTS-Sta: getFloat32Array(columnIndex: int): Float32Array
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-let resultSet: relationalStore.ResultSet | undefined;
-if (resultSet != undefined) {
-  const id = (resultSet as relationalStore.ResultSet).getFloat32Array(0);
-}
-```
-
-ArkTS-Sta示例：
 ```ts
 let resultSet: relationalStore.ResultSet | undefined;
 if (resultSet != undefined) {
@@ -1684,7 +1478,6 @@ ArkTS-Sta: getFloat32Array(columnIndex: int): Float32Array
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
   try {
@@ -1697,19 +1490,5 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
   }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-try {
-  let resultSet: relationalStore.LiteResultSet | undefined;
-  resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
-  if (resultSet != undefined) {
-    resultSet.goToNextRow();
-    const name = resultSet.getFloat32Array(resultSet.getColumnIndex("FLOATARRAY"));
-  }
-} catch (err: BusinessError) {
-  console.error(`failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
