@@ -355,7 +355,7 @@ type GetLiveFormStatusCallback = () => Record&lt;string, string&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Record&lt;string, string&gt; | 返回卡片的状态信息。key为formID，value为卡片的状态信息。状态信息分为"INACTIVE"、"PAUSE"、"ACTIVE"。 |
+| Record&lt;string, string&gt; | 返回卡片的状态信息。key为formID，value为卡片的状态信息。状态信息有"INACTIVE"、"PAUSE"、"ACTIVE"。 |
 
 **错误码：**
 
