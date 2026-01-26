@@ -649,8 +649,6 @@ function GetViewMatrix(): void {
       // 创建相机
       let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
       camera.enabled = true;
-      // 设置相机视角
-      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
       // 获取相机的视图矩阵
       let viewMatrix: Mat4x4 = camera.getViewMatrix();
     });
@@ -686,8 +684,6 @@ function GetProjectionMatrix(): void {
       // 创建相机
       let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
       camera.enabled = true;
-      // 设置相机视角
-      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
       // 获取相机的投影矩阵
       let projectionMatrix: Mat4x4 = camera.getProjectionMatrix();
     });
