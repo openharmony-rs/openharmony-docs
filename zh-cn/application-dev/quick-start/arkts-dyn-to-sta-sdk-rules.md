@@ -987,7 +987,7 @@ class MyActivity implements Activity {
 **规则解释：**
 
 1. ArkTS-Sta下，不支持Object类型初始化为字面量。
-2. 由于ArkTS-Dyn的`any`会被修改为`undefined | null| Object`和ArkTS-Sta复用，所以也会出现这个问题。
+2. 由于ArkTS-Dyn的`any`会被修改为`undefined | null| Object`和ArkTS-Sta复用，因此也会出现此问题。
 
 **变更原因：**
 
@@ -1038,7 +1038,7 @@ let obj: Object = {
     'y': {
         'xx': 0,
         'yy': {
-            'xxx': 'harmonyos',
+            'xxx': 'OH',
             'yyy': [
                 'arkui',
                 'ability',
@@ -1119,9 +1119,9 @@ let v: number = getValue(type);
 
 **规则解释：**
 
-1. 开发者通过继承的方式使用，必须和父类interface一致，否则编译报错。
+1. 开发者通过继承的方式使用Interface的方法，必须和父类interface一致，否则编译报错。
 2. 方法类的API，父节点是interface，该方法为操作系统回调应用的方法，使用属性的方式定义。（例：fn:()=>void;）
-3. 方法类的API，父节点是interface，该方法为应用主动调用操作系统的方法，使用函数的方式定义。(例：fn():void;)
+3. 方法类的API，父节点是interface，该方法为应用主动调用操作系统的方法，使用函数的方式定义。（例：fn():void;）
 
 **变更原因：**
 
@@ -1173,7 +1173,7 @@ ArkTS-Sta
 ```
 // ArkTS-Sta API定义
 declare interface People {
-    getName(): string       //这里修改为成员方法
+    getName(): string       // 这里修改为成员方法
 }
 
 // ArkTS-Sta应用代码
