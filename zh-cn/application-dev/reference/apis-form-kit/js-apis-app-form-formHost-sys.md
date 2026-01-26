@@ -4101,14 +4101,13 @@ onFormUninstall(callback: Callback&lt;string&gt;): void
 'use static'
 
 import formHost from '@ohos.app.form.formHost';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.onFormUninstall((formId: string) => {
     console.info(`formHost on formUninstall, formId: ${formId}`);
   });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error: Error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -4151,13 +4150,10 @@ offFormUninstall(callback?: Callback&lt;string&gt;): void
 'use static'
 
 import formHost from '@ohos.app.form.formHost';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  formHost.offFormUninstall((formId: string) => {
-    console.info(`formHost on formUninstall, formId: ${formId}`);
-  });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+  formHost.offFormUninstall();
+} catch (error: Error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
