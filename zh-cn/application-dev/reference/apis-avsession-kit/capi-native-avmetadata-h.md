@@ -33,7 +33,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [AVMetadata_Result](#avmetadata_result) | AVMetadata_Result | 元数据操作的错误码。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMetadata_Result | 元数据操作的错误码。 |
 | [AVMetadata_SkipIntervals](#avmetadata_skipintervals) | AVMetadata_SkipIntervals | 表示session支持的快进快退时间间隔。 |
 | [AVMetadata_DisplayTag](#avmetadata_displaytag) | AVMetadata_DisplayTag | 应用媒体音源的特殊类型标识。 |
 
@@ -109,7 +109,7 @@ AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [AVMetadata_Result](capi-native-avmetadata-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
+| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br> AVMETADATA_ERROR_INVALID_PARAM：参数builder为nullptr。 |
 
 ### OH_AVMetadataBuilder_SetAssetId()
 
