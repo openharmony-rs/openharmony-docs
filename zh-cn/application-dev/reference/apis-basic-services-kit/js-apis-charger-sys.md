@@ -4,15 +4,22 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增，采用上角标单独标记接口的起始版本。
 >
->本模块为系统接口。
+> - 本模块为系统接口。
 
 
 ## 导入模块
 
-```js
+ArkTS-Dyn示例：
+```ts
 import {charger} from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import charger from '@ohos.charger';
 ```
 
 ## ChargeType
@@ -22,6 +29,10 @@ import {charger} from '@kit.BasicServicesKit';
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.PowerManager.BatteryManager.Core
+
+**ArkTS-Dyn起始版本:** 10
+
+**ArkTS-Sta起始版本:** 23
 
 | 名称       | 值  | 说明              |
 | -------- | ---- | ----------------- |
