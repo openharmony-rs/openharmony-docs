@@ -108,7 +108,7 @@ class EntryAbility extends UIAbility {
 
     const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize=icu zh_CN)";
     if (store != undefined) {
-      (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
+      store.executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
           return;
@@ -140,7 +140,7 @@ class EntryAbility extends UIAbility {
 
     const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts5(name, content, tokenize='customtokenizer')";
     if (store != undefined) {
-      (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
+      store.executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
           console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
           return;
@@ -180,7 +180,7 @@ export default class EntryAbility extends UIAbility {
     const sqlCreateTable =
       "CREATE VIRTUAL TABLE example USING fts5(name, content, tokenize='customtokenizer cut_mode short_words')";
     if (store != undefined) {
-      (store as relationalStore.RdbStore).executeSql(sqlCreateTable, (err) => {
+      store.executeSql(sqlCreateTable, (err) => {
         if (err) {
           console.error(`custom tokenizer example: ExecuteSql failed, code is ${err.code},message is ${err.message}`);
           return;
