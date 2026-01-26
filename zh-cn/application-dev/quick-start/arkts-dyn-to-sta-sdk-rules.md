@@ -1208,37 +1208,33 @@ class Person implements People {
 ArkTS-Sta语法关键字列表，API使用时需要避开语言关键词，以免编译报错。
 以下列表中加粗的部分是ArkTS-Sta新增关键字。
 
-| 关键字             |            |              |           |
-|-----------------| ---------- | ------------ | --------- |
-| **abstract**    | else       | **internal** | static    |
-| **as**          | enum       | let          | switch    |
-| **async**       | export     | **native**   | super     |
-| await           | extends    | new          | this      |
-| break           | false      | null         | throw     |
-| case            | final      | **overload** | true      |
-| class           | for        | **override** | try       |
-| const           | function   | **package**  | undefined |
-| **constructor** | if         | private      | while     |
-| continue        | implements | protected    |           |
-| default         | import     | public       |           |
-| do              | interface  | return       |           |
+| 原有1 | 原有2 | 原有3 | 原有4 | 新增 |
+|-------|-------|-------|-------|-------|
+| else | enum | static | private | **abstract** |
+| export | false | super | protected | **as** |
+| extends | final | this | public | **internal** |
+| break | for | true | return | **native** |
+| case | function | throw | switch | **overload** |
+| class | if | try | let | **override** |
+| const | implements | undefined | null | **package** |
+| continue | import | while | new | **constructor** |
+| default | interface | await | NA | NA |
+| do | async | NA | NA | NA |
 
-
-| **Any**     |            | **declare**   |
-| ----------- | ---------- | ------------- |
-| **bigint**  | BigInt     | in            |
-| **boolean** | Boolean    | instanceof    |
-| **byte**    | **Byte**   | **namespace** |
-| **char**    | **Char**   | **out**       |
-| **double**  | **Double** | **readonly**  |
-| **float**   | **Float**  | **type**      |
-| **int**     | **Int**    | typeof        |
-| **long**    | **Long**   |               |
-| **number**  | Number     |               |
-| **Object**  | object     |               |
-| **short**   | Short      |               |
-| **string**  | String     |               |
-| void        |            |               |
+| 原有     | 原有       | 新增         | 新增         |
+|----------|------------|--------------|--------------|
+| in       | instanceof | **Any**      | **declare**  |
+| void     | bigint     | **bigint**   | **boolean**  |
+| BigInt   | Boolean    | **byte**     | **char**     |
+| byte     | char       | **double**   | **float**    |
+| double   | float      | **int**      | **long**     |
+| int      | long       | **number**   | **short**    |
+| number   | Number     | **string**   | **Byte**     |
+| Object   | object     | **Char**     | **Double**   |
+| short    | Short      | **Float**    | **Int**      |
+| string   | String     | **Long**     | **namespace**|
+| typeof   | NA         | **Object**   | **out**      |
+| NA       | NA         | **readonly** | **type**     |
 
 **变更原因：**
 
