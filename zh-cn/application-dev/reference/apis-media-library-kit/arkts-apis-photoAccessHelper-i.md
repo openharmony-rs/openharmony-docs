@@ -241,7 +241,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ## GridPinchMode<sup>23+</sup>
  	  	 
 picker内宫格的捏合模式。
-    
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
