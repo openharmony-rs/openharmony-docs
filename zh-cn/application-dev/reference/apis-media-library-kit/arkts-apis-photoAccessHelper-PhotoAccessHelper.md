@@ -1323,6 +1323,7 @@ console.info('requestPhotoUrisReadPermissionExDemo.');
   }
 }
 ```
+
 ## getSupportedPhotoFormats<sup>18+</sup> 
 
 getSupportedPhotoFormats(photoType: PhotoType): Promise&lt;Array&lt;string&gt;&gt;
