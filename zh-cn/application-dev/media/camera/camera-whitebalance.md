@@ -30,12 +30,12 @@
             let mode: camera.WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
             status = session.isWhiteBalanceModeSupported(mode);
             if(status){
-            session.setWhiteBalanceMode(mode);
+               session.setWhiteBalanceMode(mode);
             }
             whiteBalanceMode = session.getWhiteBalanceMode();
          } catch (error) {
-         let err = error as BusinessError;
-         console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
+            let err = error as BusinessError;
+            console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
          }
          return status;
       }
