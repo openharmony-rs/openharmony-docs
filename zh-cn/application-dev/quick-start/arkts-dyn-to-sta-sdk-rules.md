@@ -885,7 +885,7 @@ that.parseXml(options);
 
 **规则解释：**
 
-在ArkTs-Sta中null/undefined需要显示声明。
+在ArkTS-Sta中null/undefined需要显示声明。
 
 **变更原因：**
 
