@@ -2621,8 +2621,8 @@ let gattServer: ble.GattServer = ble.createGattServer();
 let deviceId: string = 'XX:XX:XX:XX:XX:XX';
 try {
     let phyValue:ble.PhyValue = {
-        txPhy: BLE_PHY_1M,
-        rxPhy: BLE_PHY_1M
+        txPhy: ble.BlePhy.BLE_PHY_1M,
+        rxPhy: ble.BlePhy.BLE_PHY_1M
     };
     gattServer.setPhy(deviceId,phyValue);
 } catch (err) {
@@ -4626,8 +4626,8 @@ client端设置连接链路的物理通道类型。使用Promise异步回调。
 let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 try {
     let phyValue: ble.PhyValue = {
-        txPhy: BLE_PHY_1M,
-        rxPhy: BLE_PHY_1M
+        txPhy: ble.BlePhy.BLE_PHY_1M,
+        rxPhy: ble.BlePhy.BLE_PHY_1M
     }
     gattClient.setPhy(phyValue);
 } catch (err) {
