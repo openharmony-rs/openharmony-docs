@@ -3956,6 +3956,35 @@ ArkTS-Sta: createComponentObserver(id: string): inspector.ComponentObserver | un
 | ------------------------------------------------------------ | -------------------------------------------------- |
 | ArkTS-Dyn: [inspector.ComponentObserver](js-apis-arkui-inspector.md#componentobserver) <br/>ArkTS-Sta: [inspector.ComponentObserver](js-apis-arkui-inspector.md#componentobserver) \| undefined | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
 
+### createComponentObserver<sup>23+</sup>
+
+ArkTS-Dyn: createComponentObserver(id: string | number): inspector.ComponentObserver
+
+ArkTS-Sta: createComponentObserver(id: string | int): inspector.ComponentObserver
+
+注册组件布局和组件绘制送显完成回调通知。支持传入组件id或者节点UniqueID。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+| 参数名  | 类型     | 必填   | 说明      |
+| ---- | ------ | ---- | ------- |
+| id   | ArkTS-Dyn: string \| number<br/>ArkTS-Sta: string \| int | 是    | 类型为string时，为指定的组件id，该id通过通用属性[id](./arkui-ts/ts-universal-attributes-component-id.md#id)或者[key](./arkui-ts/ts-universal-attributes-component-id.md#key12)设置。类型为number时，为系统分配的唯一标识的节点UniqueID，UniqueID通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)获取。使用UniqueID创建监听句柄时，请确保UniqueID对应的节点已经存在，否则后续监听无法生效。number的范围为1~2147483647的整数。|
+
+**返回值：** 
+
+| 类型                                                         | 说明                                               |
+| ------------------------------------------------------------ | -------------------------------------------------- |
+| [inspector.ComponentObserver](js-apis-arkui-inspector.md#componentobserver) | 组件回调事件监听句柄，用于注册和取消注册监听回调。 |
+
 **示例：** 
 
 ArkTS-Dyn示例：
@@ -3992,6 +4021,9 @@ struct ImageExample {
     let onDrawChildrenComplete:()=>void=():void=>{
         // 用户自定义回调函数。
     }
+    let onLayoutChildrenComplete :()=>void=():void=> {
+      console.info('UIInspectorExample children layout')
+    }
     let FuncLayout = onLayoutComplete
     let FuncDraw = onDrawComplete
     let FuncDrawChildren = onDrawChildrenComplete
@@ -4002,6 +4034,9 @@ struct ImageExample {
     this.listener.on('layout', FuncLayout)
     this.listener.on('draw', FuncDraw)
     this.listener.on('drawChildren', FuncDrawChildren)
+    
+    let listenerForThis = this.getUIContext().getUIInspector().createComponentObserver(this.getUniqueId());
+    listenerForThis.onLayoutChildren(onLayoutChildrenComplete);
     
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
     // this.listener.off('layout', OffFuncLayout)
@@ -4047,6 +4082,9 @@ struct ImageExample {
     let onDrawChildrenComplete:()=>void=():void=>{
         // 用户自定义回调函数。
     }
+    let onLayoutChildrenComplete:()=>void=():void=> {
+      console.info('UIInspectorExample children layout')
+    }
     let FuncLayout = onLayoutComplete
     let FuncDraw = onDrawComplete
     let FuncDrawChildren = onDrawChildrenComplete
@@ -4057,6 +4095,9 @@ struct ImageExample {
     this.listener.onLayout(FuncLayout)
     this.listener.onDraw(FuncDraw)
     this.listener.onDrawChildren(onDrawChildrenComplete)
+    
+    let listenerForThis = this.getUIContext().getUIInspector().createComponentObserver(this.getUniqueId());
+    listenerForThis.onLayoutChildren(onLayoutChildrenComplete);
     
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
     // this.listener.offLayout(OffFuncLayout)

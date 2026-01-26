@@ -297,6 +297,54 @@ offDrawChildren(callback?: VoidCallback): void
 >
 > 推荐通过使用[UIContext](./js-apis-arkui-UIContext.md#uicontext)中的[getUIInspector](./js-apis-arkui-UIContext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](./js-apis-arkui-UIContext.md#uiinspector)对象。
 
+### onLayoutChildren<sup>23+</sup>
+
+ArkTS-Dyn: onLayoutChildren(callback: Callback\<void\>): void
+
+ArkTS-Sta: onLayoutChildren(callback: VoidCallback): void
+
+通过[ComponentObserver](#componentobserver)注册layoutChildren事件回调方法，当组件的子组件布局完成时会触发该回调方法。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | ArkTS-Dyn: Callback\<void\><br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 是   | 监听layoutChildren的回调。                                     |
+
+### offLayoutChildren<sup>23+</sup>
+
+ArkTS-Dyn: offLayoutChildren(callback?: Callback\<void\>): void
+
+ArkTS-Sta: offLayoutChildren(callback?: VoidCallback): void
+
+通过句柄向对应的查询条件取消注册回调，当组件的子组件布局完成时不再触发指定的回调。使用callback异步回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | ArkTS-Dyn: Callback\<void\><br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayoutChildren](#onlayoutchildren23)方法中的callback为相同对象时才能取消回调成功。 |
+
 ArkTS-Dyn示例：
 
 ```ts
