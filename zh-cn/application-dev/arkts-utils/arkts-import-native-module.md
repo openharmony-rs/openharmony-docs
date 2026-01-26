@@ -120,11 +120,11 @@ add(2, 3);
 > 不支持Native模块导出和导入同时使用命名空间。
 
 **反例：** 
-```ts
+``` TypeScript
 // test1.ets
 export * from 'libentry.so'
 ```
-```ts
+``` TypeScript
 // test2.ets
 import * as add from './test1'
 // 无法获取add对象
@@ -172,11 +172,11 @@ import('./DynamicExport').then((ns:ESObject) => {
 > 不支持动态加载时，导出文件使用命名空间。
 
 **反例：** 
-```ts
+``` TypeScript
 // test1.ets
 export * from 'libentry.so'
 ```
-```ts
+``` TypeScript
 // test2.ets
 import('./test1').then((ns:ESObject) => {
     // 无法获取ns对象
