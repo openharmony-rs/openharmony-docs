@@ -96,7 +96,7 @@ According to the workflow, the HUKS capability needs to be invoked when the digi
 - Use the SM2 public key exported from the peer end, use the NoPadding mode, and specify SM3 as the digest algorithm to encrypt the SM4 key generated on the local end.
 - Import a wrapped key.
 
-The [public key material](huks-concepts.md#public-key-material-format) returned by the key export API is encapsulated in X.509 format, and the key material returned by the API for importing encrypted keys is encapsulated in **Length<sub>Data</sub>-Data** format, which can be **[(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)** and **(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)]**.
+The public key material returned by the key export API is encapsulated in [X.509 format](huks-concepts.md#public-key-material-format). The key material returned by the API for importing encrypted keys is encapsulated in **Length<sub>Data</sub>-Data** format, for example, [(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)].
 
 > **NOTE**
 >
