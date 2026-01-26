@@ -177,32 +177,26 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
-let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
-
 // 初始化入参。
-let timesUs: number[] = [];
+let timesUs: number[] = [0];
 let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
 let param: media.PixelMapParams = {
   width: 300,
   height: 300
 };
 // 获取缩略图。
-media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
- 	let pixelMap: image.PixelMap | undefined = undefined;
-    avMetadataExtractor = extractor;
-    console.info('Succeeded in creating AVMetadataExtractor');
-    avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
-      if (err) {
-        console.info(TAG, `fetchFrameByTime callback failed, error = ${JSON.stringify(err)}`);
-      }
-      if (frameInfo != undefined && frameInfo.image != undefined) {
-        pixelMap = frameInfo.image;
-      }});
-  } else {
-    console.error(`Failed to create AVMetadataExtractor, error message:${error.message}`);
-  }
-});
+let avMetadataExtractor = await media.createAVMetadataExtractor();
+if (avMetadataExtractor !== null) {
+  console.info('Succeeded in creating AVMetadataExtractor');
+  avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+    if (err) {
+      console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
+      return;
+    }
+    if (frameInfo != undefined && frameInfo.image != undefined) {
+      let pixelMap = frameInfo.image;
+    }});
+}
 ```
 
 ## cancelAllFetchFrames<sup>23+</sup>
