@@ -509,6 +509,8 @@ city1
 |-------|--------|---------|
 |HAP/HSP|HSP|HSP和主模块是独立编译的，混淆后名称会不一致，因此都需要配置白名单|
 |HAP/HSP|本地HAR|本地HAR与主模块一起编译，混淆后名称一致|
+|HAP/HSP|三方库|三方库中导出的名称及其属性会被收集到白名单，因此导入和导出时都不会被混淆|
+
 HSP需要将给其他模块用的方法配置到白名单中。因为主模块里也需要配置相同的白名单，所以推荐将HSP配置了白名单的混淆文件（假设名称为hsp-white-list.txt）添加到依赖它的模块的混淆配置项里，即下图files字段里。
 
 ![bytecode-buildoptionset](figures/bytecode-buildoptionset.png)
