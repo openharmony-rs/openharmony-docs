@@ -987,7 +987,7 @@ class MyActivity implements Activity {
 **规则解释：**
 
 1. ArkTS-Sta下，不支持Object类型初始化为字面量。
-2. 由于ArkTS-Sta的any会被修改为`undefined | null| Object`和静态复用，所以也会出现这个问题。
+2. 由于动态的any会被修改为`undefined | null| Object`和静态复用，所以也会出现这个问题。
 
 **变更原因：**
 
