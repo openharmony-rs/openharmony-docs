@@ -780,7 +780,7 @@ Slider刻度点的无障碍文本信息映射集。
 
 | 名称                     | 类型        | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| stepsAccessibility | Map<number, [SliderStepItemAccessibility](#sliderstepitemaccessibility20)> | 否 | 是 | 用于设置刻度点提供辅助功能文本，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>Key取值范围：[0, INT32_MAX]，当Key设定为负数和小数时，设定项不生效。 <br/>默认值：{} |
+| stepsAccessibility | ArkTS-Dyn: Map<number, [SliderStepItemAccessibility](#sliderstepitemaccessibility20)><br/>ArkTS-Sta: Map<double, [SliderStepItemAccessibility](#sliderstepitemaccessibility20)> | 否 | 是 | 用于设置刻度点提供辅助功能文本，供屏幕阅读器等工具读取，增强无障碍功能。 <br/>Key取值范围：[0, INT32_MAX]，当Key设定为负数和小数时，设定项不生效。 <br/>默认值：{} |
 
 ## SliderBlockStyle<sup>10+</sup>对象说明
 
@@ -2046,3 +2046,141 @@ struct SliderExample {
 }
 ```
 ![slider_5](figures/slider_5.jpeg)
+
+### 示例6（滑动条设置刻度点无障碍文本）
+该示例实现了Slider组件通过[showSteps](#showsteps20)属性设置刻度点的无障碍文本信息。设置后，屏幕阅读器将以设置的无障碍内容进行朗读。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+class SliderBlockBorderColorModifier1 implements AttributeModifier<SliderAttribute>{
+  optionMaps:Map<number, SliderStepItemAccessibility> = new Map()
+    .set(1, {text : '123123'})
+    .set(2, {text : 'Slider无障碍文本'})
+    .set(3, {text : $r('app.string.stepItemText')})
+    .set(4, {text : '!@#$%^&*()'});
+  applyNormalAttribute(instance: SliderAttribute): void {
+    instance.showSteps(true, {stepsAccessibility: this.optionMaps})
+  }
+}
+@Entry
+@Component
+struct SliderExample {
+  @State show: boolean = true;
+  @State optionMaps:Map<number, SliderStepItemAccessibility> = new Map();
+  private  sliderModifier: SliderBlockBorderColorModifier1 =new SliderBlockBorderColorModifier1()
+  aboutToAppear(){
+    this.optionMaps.set(1, {text : '123123'})
+    this.optionMaps.set(2, {text : 'Slider无障碍文本'})
+    this.optionMaps.set(3, {text : $r('app.string.app_name')})
+    this.optionMaps.set(4, {text : '!@#$%^&*()'})
+    this.show = true;
+  }
+  build() {
+    Column({ space: 8 }) {
+      Text('This is an example for showSteps attribute').fontSize(15).fontColor(0x000000).margin(15).width('90%')
+      Row() {
+        Slider({
+          style: SliderStyle.InSet,
+          value: 20,
+          step: 10,
+          max: 50,
+          min: 0,
+          direction: Axis.Horizontal
+        })
+          .stepSize(8)
+          .stepColor(Color.Yellow)
+          .showSteps(true, {stepsAccessibility: this.optionMaps})
+      }.width('80%').height(100)
+      Divider()
+      Text('This is an example for showSteps attribute with modifier').fontSize(15).fontColor(0x000000).margin(15)
+        .width('90%')
+      Row() {
+        Slider({
+          style: SliderStyle.InSet,
+          value: 20,
+          step: 10,
+          max: 50,
+          min: 0,
+          direction: Axis.Horizontal
+        })
+          .stepSize(8)
+          .stepColor(Color.Yellow)
+          .attributeModifier(this.sliderModifier)
+      }.width('80%').height(100)
+      Divider()
+    }
+  }
+}
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import {  Entry,  AttributeModifier,  SliderAttribute,  SliderStepItemAccessibility,  Column,  Component,  Text,  Row,
+ Slider,  Divider,  $r,  SliderStyle,  Color,  Axis } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+class SliderBlockBorderColorModifier1 implements AttributeModifier<SliderAttribute>{
+  optionMaps:Map<double, SliderStepItemAccessibility> = new Map<double, SliderStepItemAccessibility>()
+    .set(1, {text : '123123'})
+    .set(2, {text : 'Slider无障碍文本'})
+    .set(3, {text : $r('app.string.app_name')})
+    .set(4, {text : '!@#$%^&*()'});
+  applyNormalAttribute(instance: SliderAttribute): void {
+    instance.showSteps(true, {stepsAccessibility: this.optionMaps})
+  }
+}
+@Entry
+@Component
+struct SliderExample {
+  @State show: boolean = true;
+  @State optionMaps:Map<double, SliderStepItemAccessibility> = new Map<double, SliderStepItemAccessibility>();
+  private  sliderModifier: SliderBlockBorderColorModifier1 =new SliderBlockBorderColorModifier1()
+  aboutToAppear(){
+    this.optionMaps.set(1, {text : '123123'})
+    this.optionMaps.set(2, {text : 'Slider无障碍文本'})
+    this.optionMaps.set(3, {text : $r('app.string.app_name')})
+    this.optionMaps.set(4, {text : '!@#$%^&*()'})
+    this.show = true;
+  }
+  build() {
+    Column() {
+      Text('This is an example for showSteps attribute').fontSize(15).fontColor(0x000000).margin(15).width('90%')
+      Row() {
+        Slider({
+          style: SliderStyle.InSet,
+          value: 20,
+          step: 10,
+          max: 50,
+          min: 0,
+          direction: Axis.Horizontal
+        })
+          .stepSize(8)
+          .stepColor(Color.Yellow)
+          .showSteps(true, {stepsAccessibility: this.optionMaps})
+      }.width('80%').height(100)
+      Divider()
+      Text('This is an example for showSteps attribute with modifier').fontSize(15).fontColor(0x000000).margin(15)
+        .width('90%')
+      Row() {
+        Slider({
+          style: SliderStyle.InSet,
+          value: 20,
+          step: 10,
+          max: 50,
+          min: 0,
+          direction: Axis.Horizontal
+        })
+          .stepSize(8)
+          .stepColor(Color.Yellow)
+          .attributeModifier(this.sliderModifier)
+      }.width('80%').height(100)
+      Divider()
+    }
+  }
+}
+```
+![slider_6](figures/slider_6.png)
