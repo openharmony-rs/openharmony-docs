@@ -242,6 +242,7 @@ test(a2);
   <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
   
   ``` TypeScript
+  // 混淆前：
   // example.ts
   let person = {"exampleName": "abc"};
   person["exampleAge"] = 22;
