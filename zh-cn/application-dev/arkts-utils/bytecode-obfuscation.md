@@ -557,7 +557,7 @@ lastName
   ```
 
   <!-- @[etsOptionExample_keepPropertyName1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ets) -->      
-
+  
   ``` TypeScript
   // test.ets
   import testNapi from 'libentry.so'
