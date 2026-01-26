@@ -199,7 +199,7 @@ let bundleName: string = '';
 try {
   metadataBinding.off('operationSubmitMetadata', bundleName, (evnet: number)=>{});
 } catch (error) {
-  console.error("unsubscript screenshot event" + error);
+  console.error("Unsubscribe screenshot event" + error);
 }
 ```
 
@@ -245,7 +245,7 @@ let bundleName: string = '';
 try {
   metadataBinding.offOperationSubmitMetadata(bundleName, (evnet: int)=>{});
 } catch (error) {
-  console.error("unsubscript screenshot event" + error);
+  console.error("Unsubscribe screenshot event" + error);
 }
 ```
 
