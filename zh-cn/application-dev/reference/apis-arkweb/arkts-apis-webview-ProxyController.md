@@ -165,8 +165,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 'use static'
-import { Web, Entry, Text, TextInput, Column, Component, Button, Row } from '@kit.ArkUI'
-import { State } from '@ohos.arkui.stateManagement'
+import { Web, Entry, Text, TextInput, Column, Component, Button, Row, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 

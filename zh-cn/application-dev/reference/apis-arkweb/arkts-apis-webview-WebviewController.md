@@ -2503,8 +2503,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 'use static'
-import { Entry, Text, Column, Component, Button, Web } from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, Component, Button, Web, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2683,8 +2682,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 // 使用ArrayBuffer入参，从文件中获取JavaScript脚本数据
-import { Entry, Text, Column, Component, Button, Web, UIContext, Context } from '@kit.ArkUI'
-import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, Component, Button, Web, UIContext, Context, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -2906,8 +2904,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 'use static'
-import { Entry, Text, Column, Component, Button, Web } from '@kit.ArkUI'
-import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, Component, Button, Web, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3072,8 +3069,7 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 // 使用ArrayBuffer入参，从文件中获取JavaScript脚本数据
-import { Entry, Text, Column, Component, Button, Web, UIContext, Context } from '@kit.ArkUI'
-import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, Component, Button, Web, UIContext, Context, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -8138,11 +8134,9 @@ ArkTS-Sta示例：
 ```ts
 // EntryAbility.ets
 'use static'
-import UIAbility from '@ohos.app.ability.UIAbility';
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import Want from '@ohos.app.ability.Want';
+import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 import { webview } from '@kit.ArkWeb';
-import { AppStorage } from '@ohos.arkui.stateManagement';
+import { AppStorage } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -10410,11 +10404,11 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 'use static'
-import print from '@ohos.print'
-import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
-import webview from "@ohos.web.webview";
-import { BusinessError, AsyncCallback } from '@ohos.base';
-import common from '@ohos.app.ability.common';
+import print from '@ohos.print';
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
 
 const myPrintAttributes: print.PrintAttributes = {
   copyNumber: 1 as int,
@@ -12242,8 +12236,7 @@ import { webview } from '@kit.ArkWeb';
 import { UIContext } from "@kit.ArkUI";
 import { AlertDialogParamWithButtons, AlertDialogButtonBaseOptions } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { PermissionRequestResult, common } from '@kit.AbilityKit';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
+import { PermissionRequestResult, common, abilityAccessCtrl } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -12471,13 +12464,9 @@ ArkTS-Sta示例：
   ```ts
   'use static'
   // EntryAbility.ets
-  import UIAbility from '@ohos.app.ability.UIAbility';
-  import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-  import Want from '@ohos.app.ability.Want';
-  import window from '@ohos.window';
-  import { BusinessError } from '@ohos.base'
-  import hilog from '@ohos.hilog'
-  import { UIContext, LocalStorage } from '@kit.ArkUI';
+  import { UIAbility, Want, AbilityConstant} from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { UIContext, LocalStorage, window } from '@kit.ArkUI';
 
   const localStorage: LocalStorage = new LocalStorage('uiContext');
 
@@ -12555,7 +12544,7 @@ ArkTS-Sta示例：
   import { UIContext, LocalStorage, WrappedBuilder, wrapBuilder, Builder } from '@kit.ArkUI';
   import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
   import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { WebBuilder } from "./PrecompileWebview";
   let storage : LocalStorage | undefined = undefined;
 
@@ -12666,7 +12655,7 @@ ArkTS-Sta示例：
   import { webview } from '@kit.ArkWeb';
   import { BuilderData } from "./DynamicComponent";
   import { Config, configs } from "./PrecompileConfig";
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   @Builder
   export function WebBuilder(data: BuilderData) {
@@ -12844,11 +12833,12 @@ ArkTS-Sta示例：
   ```ts
   'use static'
   // Index.ets
-  import { Button, Column, Entry, Component, State, NodeContainer, NodeController } from '@kit.ArkUI';
+  import { Button, Column, Entry, Component, State, NodeContainer } from '@kit.ArkUI';
+  import { NodeController } from '@ohos.arkui.node';
   import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@ohos.base';
-  import { createNode, BuilderData } from "./DynamicComponent"
-  import { businessWebview } from "./BusinessWebview"
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { createNode, BuilderData } from "./DynamicComponent";
+  import { businessWebview } from "./BusinessWebview";
   import { precompileWebview } from "./PrecompileWebview";
   @Entry
   @Component
@@ -13152,13 +13142,13 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ets
 'use static'
-import { Observed, State, AppStorage, ObjectLink } from '@ohos.arkui.stateManagement';
+import { Observed, State, AppStorage, ObjectLink } from '@kit.ArkUI';
 import { XComponent, XComponentType, XComponentController, Text, Alignment, Resource, ForEach, Area, XComponentOptions,
   TouchEvent, Stack, Entry, Color, Component, Column, Row, Button, VideoController, Builder, Web, wrapBuilder,
-  FrameNode, NodeContainer, FlexAlign } from "@ohos.arkui.component"
+  FrameNode, NodeContainer, FlexAlign } from '@kit.ArkUI';
 import { NodeController, NodeRenderType, BuilderNode } from '@ohos.arkui.node';
-import webview from '@ohos.web.webview';
-import { UIContext } from '@ohos.arkui.UIContext';
+import { webview } from '@kit.ArkWeb';
+import { UIContext } from '@kit.ArkUI';
 
 class ActualNativeMediaPlayerListener {
   handler: webview.NativeMediaPlayerHandler;
@@ -13597,13 +13587,10 @@ ArkTS-Sta示例：
   ```ts
   'use static'
   // EntryAbility.ets
-  import UIAbility from '@ohos.app.ability.UIAbility';
+  import { UIAbility, Want } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-  import Want from '@ohos.app.ability.Want';
-  import window from '@ohos.window';
-  import { BusinessError } from '@ohos.base'
-  import hilog from '@ohos.hilog'
-  import { UIContext, LocalStorage } from '@kit.ArkUI';
+  import { UIContext, LocalStorage, window } from '@kit.ArkUI';
 
   const localStorage: LocalStorage = new LocalStorage('uiContext');
 
@@ -13681,7 +13668,7 @@ ArkTS-Sta示例：
   import { UIContext, LocalStorage, WrappedBuilder, wrapBuilder, Builder } from '@kit.ArkUI';
   import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
   import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { WebBuilder } from "./InjectWebview";
 
   export class BuilderData {
@@ -13801,7 +13788,7 @@ ArkTS-Sta示例：
   import { webview } from '@kit.ArkWeb';
   import { resourceConfigs } from "./Resource";
   import { BuilderData } from "./DynamicComponent";
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   @Builder
   export function WebBuilder(data: BuilderData) {
@@ -14019,10 +14006,11 @@ ArkTS-Sta示例：
   'use static'
   // Index.ets
   import { webview } from '@kit.ArkWeb';
-  import { Button, Column, Entry, Component, State, NodeContainer, NodeController } from '@kit.ArkUI';
-  import { createNode, BuilderData } from "./DynamicComponent"
-  import { injectWebview } from "./InjectWebview"
-  import { businessWebview } from "./BusinessWebview"
+  import { Button, Column, Entry, Component, State, NodeContainer } from '@kit.ArkUI';
+  import { NodeController } from '@ohos.arkui.node';
+  import { createNode, BuilderData } from "./DynamicComponent";
+  import { injectWebview } from "./InjectWebview";
+  import { businessWebview } from "./BusinessWebview";
 
   @Entry
   @Component
@@ -14792,8 +14780,8 @@ ArkTS-Sta示例：
 ```ts
 // xxx.ts
 'use static'
-import { Entry, Component, Column, Row, Button, Web } from '@ohos.arkui.component'
-import { BusinessError } from '@ohos.base'
+import { Entry, Component, Column, Row, Button, Web } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -15004,10 +14992,10 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 import fs from '@ohos.file.fs';
-import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
-import webview from "@ohos.web.webview";
-import { BusinessError, AsyncCallback } from '@ohos.base';
-import common from '@ohos.app.ability.common';
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -15147,10 +15135,10 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 import fs from '@ohos.file.fs';
-import { Entry, Column, Component, Button, Web } from '@ohos.arkui.component';
-import webview from "@ohos.web.webview";
-import { BusinessError, AsyncCallback } from '@ohos.base';
-import common from '@ohos.app.ability.common';
+import { Entry, Column, Component, Button, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -15275,10 +15263,9 @@ ArkTS-Sta示例：
 // xxx.ets
 'use static'
 
-import { $rawfile, Web, Text, Row, Column, Component, Entry, OverScrollMode, FontWeight } from '@kit.ArkUI';
+import { $rawfile, Web, Text, Row, Column, Component, Entry, OverScrollMode, FontWeight, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component

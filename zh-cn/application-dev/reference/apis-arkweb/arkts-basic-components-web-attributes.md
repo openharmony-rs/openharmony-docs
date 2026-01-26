@@ -288,8 +288,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 ```ts
 'use static'
-import { Entry, Text, Column, Component, Button, Web, JavaScriptProxy, WebKeyboardAvoidMode } from '@kit.ArkUI'
-import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, Component, Button, Web, JavaScriptProxy, WebKeyboardAvoidMode, State } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1446,9 +1445,8 @@ ArkTS-Sta示例：
   // xxx.ets
   'use static'
 
-  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { Web, Column, Component, Entry, State } from '@kit.ArkUI';
   import { webview } from '@kit.ArkWeb';
-  import { State } from '@ohos.arkui.stateManagement';
 
   @Entry
   @Component
