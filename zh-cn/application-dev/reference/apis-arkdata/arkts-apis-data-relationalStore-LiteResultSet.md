@@ -1074,8 +1074,8 @@ async function closeExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.close();
     }
+  } catch (err) {
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
   }
-} catch (err) {
-  console.error(`failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
