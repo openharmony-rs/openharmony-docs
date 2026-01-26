@@ -675,7 +675,7 @@ export namespace Ns {
 2.当以命名导入的方式导入 so 库的 API时，若同时开启`-enable-toplevel-obfuscation`和`-enable-export-obfuscation`选项，需要手动保留API的名称。
 
   <!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
-
+  
   ``` TypeScript
   // src/main/cpp/types/libentry/Index.d.ts。
   declare function testNapi2(): void;
