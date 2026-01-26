@@ -86,31 +86,14 @@ function foo() {}; // 原函数名为"foo"。
 **特殊情况**
  
 1. 如果匿名函数被赋值给一个变量，该变量名即为函数名。例如：
-<!-- @[special_function_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @[special_function_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
 
-``` TypeScript
-let a = () => {} // 原函数名为"a"。
-```
 2. 如果匿名函数在对象字面量中定义并且被赋值给了一个字面量属性：
 * 如果属性名中不包含`\`和`.`，则其原函数名即为该属性名。
-<!-- @[special_without_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test2.ts) -->  
+   <!-- @[special_without_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test2.ts) -->  
 
-``` TypeScript
-// test2.ts
-let B = {
-  b : () => {} // 原函数名为"b"。
-}
-```
 * 如果属性名包含`\`，`.`，为防止二义性，其原函数名会按照匿名函数命名。
-<!-- @[special_with_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test3.ts) -->  
-
-``` TypeScript
-// test3.ts
-let a = {
-  "a.b#c^2": () => {}, // 原函数名为""。
-  "x\\y#": () => {} // 原函数名为"^1"。
-}
-```
+   <!-- @[special_with_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test3.ts) -->  
 
 **开发者应尽量避免使用除字母、数字、下划线以外的字符命名函数，以免出现二义性。**
 ## 示例
