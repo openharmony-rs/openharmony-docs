@@ -1274,7 +1274,6 @@ struct ListExample {
 ### 示例3（设置裁剪区域）
 该示例通过设置clipContent属性，改变组件的内容层裁剪区域。
 
-<!--code_no_check-->
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
