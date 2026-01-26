@@ -48,8 +48,8 @@
          try {
             range = session.getWhiteBalanceRange();
             let whiteBalance: number = 3000;
-            if(whiteBalance > range[0] && whiteBalance < range[1]){
-            session.setWhiteBalance(whiteBalance);
+            if(whiteBalance >= range[0] && whiteBalance <= range[1]) {
+               session.setWhiteBalance(whiteBalance);
             }
             whiteBalance = session.getWhiteBalance();
          } catch (error) {
