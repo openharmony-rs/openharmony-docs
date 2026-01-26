@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 LiveFormExtensionAbility模块提供互动卡片功能，包括创建、销毁互动卡片等，继承自[ExtensionAbility](../apis-ability-kit/js-apis-app-ability-extensionAbility.md)。
@@ -65,7 +65,7 @@ const TAG: string = '[testTag] LiveFormExtAbility';
 
 export default class LiveFormExtAbility extends LiveFormExtensionAbility {
   onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession) {
-    console.info(TAG, `onLiveFormCreate, liveFormInfo: ${JSON.stringify(liveFormInfo)}`);
+    console.info(TAG, `onLiveFormCreate, formId: ${liveFormInfo.formId}`);
   }
 }
 ```
@@ -97,7 +97,7 @@ const TAG: string = '[testTag] LiveFormExtAbility';
 
 export default class LiveFormExtAbility extends LiveFormExtensionAbility {
   onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
-    console.info(TAG, `onLiveFormDestroy, liveFormInfo: ${JSON.stringify(liveFormInfo)}`);
+    console.info(TAG, `onLiveFormDestroy, liveFormInfo: ${liveFormInfo.formId}`);
   }
 }
 ```

@@ -16,9 +16,10 @@
 
 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发router事件拉起UIAbility至前台。
   
-    <!-- @[widget_update_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) -->
+    <!-- @[widget_update_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets
     let storageUpdateRouter = new LocalStorage();
     
     @Entry(storageUpdateRouter)
@@ -76,9 +77,10 @@
   
 - 在UIAbility的onCreate或者onNewWant生命周期中可以通过入参want获取卡片的formID和传递过来的参数信息，然后调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
   
-    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) --> 
+    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) -->
     
     ``` TypeScript
+    // entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -137,22 +139,23 @@
 
 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发call事件拉起UIAbility至后台。
   
-    <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) -->
+    <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets
     let storageUpdateCall = new LocalStorage();
     
     @Entry(storageUpdateCall)
     @Component
     struct WidgetUpdateCallCard {
       @LocalStorageProp('formId') formId: string = '12400633174999288';
-          // $r('app.string.init')需要替换为开发者所需的资源文件
+      // $r('app.string.init')需要替换为开发者所需的资源文件
       @LocalStorageProp('calleeDetail') calleeDetail: ResourceStr = $r('app.string.init');
     
       build() {
         Column() {
           Column() {
-              Text(this.calleeDetail)
+            Text(this.calleeDetail)
               .fontColor('#FFFFFF')
               .opacity(0.9)
               .fontSize(14)
@@ -198,9 +201,10 @@
   
 - 在UIAbility的onCreate生命周期中监听call事件所需的方法，然后在对应方法中调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
   
-    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) -->
+    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -264,7 +268,6 @@
         } catch (error) {
           hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
         }
-        ;
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
