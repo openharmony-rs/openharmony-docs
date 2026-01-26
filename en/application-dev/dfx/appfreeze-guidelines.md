@@ -127,7 +127,7 @@ Since API version 20, the **NOTE** line is displayed when a device resource alar
 
 Since API version 20, the [HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid) information is added to the log when the **THREAD_BLOCK_6S** fault occurs. Provided by HiTraceChain, the **HitraceId** uniquely identifies each service process call chain. You can use it to view the HiLog logs of the faulty process during the fault period, and analyze the logs to check the application execution status.
 
-All the three types of AppFreeze events include the following information.
+The AppFreeze event (**THREAD_BLOCK_6S** and **APP_INPUT_BLOCK**) contains the following information:
 
 | Field| Description|
 | -------- | -------- |
@@ -184,7 +184,7 @@ mainHandler dump is:
  Total event size : 2
 ```
 
-All the three types of AppFreeze events include the following information.
+The AppFreeze event (**THREAD_BLOCK_6S** and **APP_INPUT_BLOCK**) contains the following information:
 
 | Field| Description|
 | -------- | -------- |
@@ -282,7 +282,7 @@ To solve this problem, enhanced AppFreeze logs can be obtained since API version
 >
 > Since API version 21, when the message "Failed to dump normal stacktrace" is displayed, the system uses the lightweight frame pointer backtracing mode. Stack backtracing may be interrupted in libraries that do not enable the frame pointer (when the **-fomit-frame-pointer** option is used during GCC compilation, the compilation product does not enable the frame pointer). In addition, the number of stack layers of a single thread may not exceed 50 due to lightweight restrictions.
 
-Since API version 23, information such as the thread state is added under the thread ID to determine whether the problem is caused by system freeze. **state** indicates the running state of the current thread, **priority** and **nice** indicate the scheduling priority of the current thread, and **stime** and **utime** indicate the running time of the current thread. The stack running time of **THREAD_BLOCK_3S** and **THREAD_BLOCK_6S** events does not change, indicating that the process is  not scheduled. After analyzing the service code, it can be determined that the problem is caused by system scheduling. The format of thread state information in fault logs is as follows:
+Since API version 23, information such as the thread state is added under the thread ID to determine whether the problem is caused by system freeze. **state** indicates the running state of the current thread, **priority** and **nice** indicate the scheduling priority of the current thread, and **stime** and **utime** indicate the running time of the current thread. The stack running time of **THREAD_BLOCK_3S** and **THREAD_BLOCK_6S** events does not change, indicating that the process is not scheduled. After analyzing the service code, it can be determined that the problem is caused by system scheduling. The format of thread state information in fault logs is as follows:
 
 ```text
 state=S, utime=0, priority=0, nice=-20, clk=100
@@ -531,7 +531,7 @@ Equation:  T1 = T2 + T3. T2 = T4 + T5.
 |-------------------------CpuTime----------------------|--------SyncWaitTime----------|.
 |----OptimalCpuTime----|------SupplyAvailableTime------|--------SyncWaitTime----------|.
 
-#Basic Statistical Information  <- Basic CPU statistics.
+#Basic Statistical Infomation  <- Basic CPU statistics.
 ProcessCpuTime: 0 ms  <- Running time of the process in a statistical period.
 DeviceRuntime: 0 ms  <- Running time of all CPUs in a statistical period.
 Tid: 2320  <- ID of the faulty main thread.
@@ -552,7 +552,7 @@ cpu3 Usage 23.5%, 1430MHZ 21.04%
 .......
 end time: 2021-01-01 20:06:00:888  <- End time for calculating the CPU usage.
 #ThreadInfos Tid: 2204, Name: com.example.freeze  <- Faulty thread ID, and thread name.
-SnapshotTime: 2021-01-01-20-05-58.292875  <- Time when the main thread is captured.
+SnapshotTime:2021-01-01-20-05-58.292875  <- Time when the main thread is captured.
 #00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72) <- Main thread call stack
 #01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
 #02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
@@ -662,7 +662,7 @@ In a log file that contains multiple application main thread stacks (for example
 
 ### Clustering Script
 
-This script is used only for [appfreeze enhanced logs](#enhanced-log-specifications). When the log content is too long and the main thread stack is repeated for multiple times, this script is used to extract service stack clustering information (service stack content, total number of occurrences, and typical complete stack) to quickly locate faults.
+This script is used only for [AppFreeze enhanced logs](#enhanced-log-specifications). When the log content is too long and the main thread stack is repeated for multiple times, this script is used to extract service stack clustering information (service stack content, total number of occurrences, and typical complete stack) to quickly locate faults.
 
 1. Script functionalities
 
@@ -718,7 +718,7 @@ This script is used only for [appfreeze enhanced logs](#enhanced-log-specificati
 
    (3) If **output_dir** does not exist, the script will be automatically created. (If the script does not support automatic creation, create the directory in advance.)
     
-   (4) This script cannot be executed in DevEco Studio. Run it in the Python environment.
+   (4) This script cannot be executed in DevEco Studio. Run it in the installed Python environment.
 
 6. Clustering script source code
 
@@ -861,7 +861,7 @@ def get_cluster(input_dir):
                 current_stack = []
             else:
                 current_stack.append(line)
-    output_file = os.path.join(input_dir, 'Service stack clustering .txt')
+    output_file = os.path.join(input_dir, 'Service stack clustering.txt')
     # Output to a .txt file.
     with open(output_file, "w", encoding="utf-8") as f:
         for top_line, total_count in sorted(cluster_count.items(), key=lambda x: x[1], reverse=True):
@@ -881,7 +881,7 @@ def get_cluster(input_dir):
             "Total occurrences": count,
             "Representative complete stack": cluster_sample[key]
         })
-    output_excel = os.path.join(input_dir, 'Service stack clustering .xlsx')
+    output_excel = os.path.join(input_dir, 'Service stack clustering.xlsx')
     df = pd.DataFrame(rows)
     df.to_excel(output_excel, index=False)
     print(f"Service stack clustering has been exported to {output_excel}.")
