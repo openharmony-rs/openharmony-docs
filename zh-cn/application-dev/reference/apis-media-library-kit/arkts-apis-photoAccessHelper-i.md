@@ -238,11 +238,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | albumChangeDatas   | [AlbumChangeData](#albumchangedata20)[] \| null | 否 | 否 | 变更的相册数组。如果需要重新查询所有相册，albumChangeDatas为null。  |
 | isForRecheck          | boolean  | 否 | 否 | 应用是否应该重新查询所有相册信息。true表示需要重新查询所有相册，false表示无需查询所有相册。<br>**注意：**<br>在大量相册操作或者异常通知的场景下，应用收到的isForRecheck为true，表示重新查询所有相册信息。  |
 
- 
 ## GridPinchMode<sup>23+</sup>
-        
+ 	  	 
 picker内宫格的捏合模式。
-    
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
