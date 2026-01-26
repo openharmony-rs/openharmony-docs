@@ -36,6 +36,17 @@ Defines the profile connection status of the Bluetooth device.
 | ------------------- | ------------------- |
 | [constant.ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Profile connection status of the Bluetooth device.|
 
+## BluetoothAddress<sup>23+</sup>
+
+type BluetoothAddress = common.BluetoothAddress
+
+Defines the address information of a Bluetooth device, including the address and address type.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+| Type                 | Description                 |
+| ------------------- | ------------------- |
+| [common.BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | Address information of the Bluetooth device.|
 
 ## ble.createGattServer
 
@@ -98,11 +109,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let device: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -139,11 +149,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let result: Array<string> = ble.getConnectedBLEDevices();
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -188,11 +197,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let result: Array<string> = ble.getConnectedBLEDevices(ble.BleProfile.GATT_CLIENT);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -235,17 +243,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.ConnectivityKit';
 function onReceiveEvent(data: Array<ble.ScanResult>) {
     console.info('BLE scan device find result = '+ JSON.stringify(data));
 }
 try {
     ble.on("BLEDeviceFind", onReceiveEvent);
+    let addressInfo : common.BluetoothAddress = {
+        address:"XX:XX:XX:XX:XX:XX",
+        addressType:common.BluetoothAddressType.REAL,
+        rawAddressType:common.BluetoothRawAddressType.PUBLIC
+    }
     let scanFilter: ble.ScanFilter = {
-            deviceId:"XX:XX:XX:XX:XX:XX",
-            name:"test",
-            serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"
-        };
+        deviceId:"XX:XX:XX:XX:XX:XX",
+        address:addressInfo, // When address is used, deviceId does not need to be set repeatedly.
+        name:"test",
+        serviceUuid:"00001888-0000-1000-8000-00805f9b34fb"
+    };
     let scanOptions: ble.ScanOptions = {
     interval: 500,
     dutyMode: ble.ScanDuty.SCAN_MODE_LOW_POWER,
@@ -253,7 +267,7 @@ try {
     }
     ble.startBLEScan([scanFilter],scanOptions);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -288,11 +302,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     ble.stopBLEScan();
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -306,7 +319,9 @@ Starts sending BLE advertising packets.
 - This API works in synchronous mode. It cannot be used with [ble.stopAdvertising](#blestopadvertising11) of API version 11.
 
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH or a combination of ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
+
+- When the application uses the **advertiseName** field in [AdvertiseData](#advertisedata), you need to apply for [ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -338,7 +353,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -369,16 +383,18 @@ try {
     let advData: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+ 	    advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     let advResponse: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+ 	    advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     ble.startAdvertising(setting, advData ,advResponse);
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -413,11 +429,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     ble.stopAdvertising();
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -432,7 +447,9 @@ Starts sending BLE advertising packets for the first time. This API uses an asyn
 - Since API version 15, you can call this API multiple times to establish multiple advertising channels, each being identified by a unique ID.
 - Call [ble.stopAdvertising](#blestopadvertising11) (supported since API version 11) if advertising is no longer needed. Do not use this API with [ble.stopAdvertising](#blestopadvertising) (supported since API version 10).
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH or a combination of ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
+
+- When the application uses the **advertiseName** field in [AdvertiseData](#advertisedata), you need to apply for [ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name).
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -461,7 +478,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -492,12 +508,14 @@ try {
     let advData: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+        advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     let advResponse: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+        advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     let advertisingParams: ble.AdvertisingParams = {
         advertisingSettings: setting,
@@ -515,7 +533,7 @@ try {
         }
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -530,7 +548,9 @@ Starts sending BLE advertising packets for the first time. This API uses a promi
 - Since API version 15, you can call this API multiple times to establish multiple advertising channels, each being identified by a unique ID.
 - Call [ble.stopAdvertising](#blestopadvertising11-1) (supported since API version 11) if advertising is no longer needed. Do not use this API with [ble.stopAdvertising](#blestopadvertising) (supported since API version 10).
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH or a combination of ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
+
+- When the application uses the **advertiseName** field in [AdvertiseData](#advertisedata), you need to apply for [ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name).
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -564,7 +584,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -595,12 +614,14 @@ try {
     let advData: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+ 	    advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     let advResponse: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
-        serviceData:[serviceDataUnit]
+        serviceData:[serviceDataUnit],
+ 	    advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     let advertisingParams: ble.AdvertisingParams = {
         advertisingSettings: setting,
@@ -614,7 +635,7 @@ try {
             advHandle = outAdvHandle;
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -657,7 +678,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -723,7 +743,7 @@ try {
         }
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -771,7 +791,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -836,7 +855,7 @@ try {
             console.info("enable success");
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -878,7 +897,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -941,7 +959,7 @@ try {
         }
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -988,7 +1006,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -1050,7 +1067,7 @@ try {
             console.info("enable success");
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1092,7 +1109,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -1152,7 +1168,7 @@ try {
         }
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1200,7 +1216,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 let manufactureValueBuffer = new Uint8Array(4);
 manufactureValueBuffer[0] = 1;
 manufactureValueBuffer[1] = 2;
@@ -1259,7 +1274,7 @@ try {
             console.info("enable success");
     });
 } catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1449,6 +1464,7 @@ try {
 Represents a GATT server.
 - You can use [ble.createGattServer](#blecreategattserver) to create a server instance.
 - You can use this instance to operate the server, for example, call [addService](#addservice) to add a server and use [notifyCharacteristicChanged](#notifycharacteristicchanged) report characteristic changes.
+- You can use [on('connectionStateChange')](#onconnectionstatechange) to subscribe to connection state change events and obtain the address of the client that initiates the connection.
 
 
 ### addService
@@ -2504,6 +2520,198 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+### readPhy<sup>23+</sup>
+
+readPhy(deviceId: string): Promise&lt;PhyValue&gt;
+
+Obtains the physical channel type of the link between the server and a specified device. This API uses a promise to return the result.
+
+- This method can be called only after the client initiates a connection and the connection is successful.
+- **deviceId** indicates the Bluetooth device address on the client, which can be obtained from the [on('connectionStateChange')](#onconnectionstatechange) callback subscribed to on the server.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| deviceId     | string | Yes   | Bluetooth device address on the client that needs to transmit data. Example: XX:XX:XX:XX:XX:XX|
+
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;[PhyValue](#phyvalue23)&gt; | Promise used to return the physical channel type of the link between the server and a specified device.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**Example**
+
+```js
+let gattServer: ble.GattServer = ble.createGattServer();
+let deviceId: string = 'XX:XX:XX:XX:XX:XX';
+try {
+    gattServer.readPhy(deviceId).then((phyValue:ble.PhyValue) => {
+        console.info(`txPhy: ${phyValue.txPhy}, rxPhy: ${phyValue.rxPhy}`);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### setPhy<sup>23+</sup>
+
+setPhy(deviceId: string, phyValue: PhyValue): Promise&lt;void&gt;
+
+Sets the physical channel type of the link between the server and a specified device. This API uses a promise to return the result.
+
+- This method can be called only after the client initiates a connection and the connection is successful.
+- After the server calls **setPhy** to set the physical channel type of the link between the server and a specified device, the underlying layer will perform negotiation and produce the physical channel type supported by both the server and device based on the capabilities of the device. For example, if the server supports and sets [BLE_PHY_2M](#blephy23), but the device supports only [BLE_PHY_1M](#blephy23), the final type remains [BLE_PHY_1M](#blephy23).
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| deviceId     | string | Yes   | Bluetooth device address on the client that needs to transmit data. Example: XX:XX:XX:XX:XX:XX|
+| phyValue     | [PhyValue](#phyvalue23) | Yes   | Physical channel type of the link.|
+
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**Example**
+
+```js
+let gattServer: ble.GattServer = ble.createGattServer();
+let deviceId: string = 'XX:XX:XX:XX:XX:XX';
+try {
+    let phyValue:ble.PhyValue = {
+        txPhy: BLE_PHY_1M,
+        rxPhy: BLE_PHY_1M
+    };
+    gattServer.setPhy(deviceId,phyValue);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### onBlePhyUpdate<sup>23+</sup>
+
+onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
+
+Subscribes to physical channel type change events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback     | Callback&lt;[PhyValue](#phyvalue23)&gt; | Yes   | Callback used to return the latest physical channel type.<br>If such events are subscribed to, after the server calls [setPhy](#setphy23) or the device changes the current physical channel type, the callback containing the latest physical channel type will be received.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**Example**
+
+```js
+function BlePhyCallback(data:ble.PhyValue) {
+    console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
+}
+let gattServer: ble.GattServer = ble.createGattServer();
+try {
+    gattServer.onBlePhyUpdate(BlePhyCallback);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### offBlePhyUpdate<sup>23+</sup>
+
+offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
+
+Unsubscribes from physical channel type change events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback     | Callback&lt;[PhyValue](#phyvalue23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onBlePhyUpdate](#onblephyupdate23).<br>If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**Example**
+
+```js
+function BlePhyCallback(data:ble.PhyValue) {
+    console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
+}
+let gattServer: ble.GattServer = ble.createGattServer();
+try {
+    gattServer.offBlePhyUpdate(BlePhyCallback);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
 
 ## GattClientDevice
 
@@ -4328,6 +4536,187 @@ try {
 }
 ```
 
+### readPhy<sup>23+</sup>
+
+readPhy(): Promise&lt;PhyValue&gt;
+
+Obtains the physical channel type of the link on the client. This API uses a promise to return the result.
+
+- This method can be called only after the [connect](#connect) method is called to initiate a connection and the connection is successful.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;[PhyValue](#phyvalue23)&gt; | Promise used to return the physical channel type of the link on the client.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**Example**
+
+```js
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    gattClient.readPhy().then((phyValue:ble.PhyValue) => {
+        console.info(`txPhy: ${phyValue.txPhy}, rxPhy: ${phyValue.rxPhy}`);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### setPhy<sup>23+</sup>
+
+setPhy(phyValue: PhyValue): Promise&lt;void&gt;
+
+Sets the physical channel type of the link on the client. This API uses a promise to return the result.
+
+- This method can be called only after the [connect](#connect) method is called to initiate a connection and the connection is successful.
+- After the client calls **setPhy** to set the physical channel type, the underlying layer will perform negotiation and produce the physical channel type supported by both the client and device based on the capabilities of the device. For example, if the client supports and sets [BLE_PHY_2M](#blephy23), but the device supports only [BLE_PHY_1M](#blephy23), the final type remains [BLE_PHY_1M](#blephy23).
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| phyValue     | [PhyValue](#phyvalue23) | Yes   | Physical channel type of the link.|
+
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**Example**
+
+```js
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    let phyValue: ble.PhyValue = {
+        txPhy: BLE_PHY_1M,
+        rxPhy: BLE_PHY_1M
+    }
+    gattClient.setPhy(phyValue);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### onBlePhyUpdate<sup>23+</sup>
+
+onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
+
+Subscribes to physical channel type change events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback     | Callback&lt;[PhyValue](#phyvalue23)&gt; | Yes   | Callback used to return the latest physical channel type.<br>If such events are subscribed to, after the client calls [setPhy](#setphy23-1) or the device changes the current physical channel type, the callback containing the latest physical channel type will be received.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**Example**
+
+```js
+function BlePhyCallback(data:ble.PhyValue) {
+    console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
+}
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    gattClient.onBlePhyUpdate(BlePhyCallback);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### offBlePhyUpdate<sup>23+</sup>
+
+offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
+
+Unsubscribes from physical channel type change events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                      | Mandatory  | Description                                      |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback     | Callback&lt;[PhyValue](#phyvalue23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onBlePhyUpdate](#onblephyupdate23-1).<br>If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**Example**
+
+```js
+function BlePhyCallback(data:ble.PhyValue) {
+    console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
+}
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    gattClient.offBlePhyUpdate(BlePhyCallback);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
 ## ble.createBleScanner<sup>15+</sup>
 
 createBleScanner(): BleScanner
@@ -4751,7 +5140,8 @@ Defines the scan result to be reported upon scanning advertising packets that me
 
 | Name      | Type       | Read-Only| Optional  | Description                                |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
-| deviceId | string      | No| No   | Bluetooth device address. Example: XX:XX:XX:XX:XX:XX<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| deviceId | string      | No| No   | Bluetooth device address. Example: XX:XX:XX:XX:XX:XX<br>For information security purposes, if the [actual MAC address type](./js-apis-bluetooth-common.md#bluetoothaddresstype) is not configured in [ScanFilter](#scanfilter) when the application starts scanning, the device address obtained here is the [virtual MAC address](./js-apis-bluetooth-common.md#bluetoothaddresstype).<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | No| Yes| Bluetooth device address information, including the address and address type.|
 | rssi     | number      | No| No   | Signal strength, in dBm.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | data     | ArrayBuffer | No| No   | Raw unresolved broadcast packets sent by the discovered device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | deviceName | string | No| No   | Name of the discovered device, which is parsed from the data field of the raw data. The broadcast data type in the Bluetooth protocol is 0x09.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -4781,7 +5171,9 @@ Defines the BLE advertising parameters.
 
 ## AdvertiseData
 
-Defines the BLE advertising packet data, which can also be used in the response to a scan request. Currently, only traditional advertising is supported. The maximum length of the packet data is 31 bytes. The advertising will fail if the maximum length is exceeded. When all parameters are included (especially the Bluetooth device name), ensure the length of advertising packet data does not exceed 31 bytes.
+Defines the BLE advertising packet data, which can also be used in the response to a scan request. Currently, only traditional advertising is supported. The maximum length of the packet data is 31 bytes. The advertising will fail if the maximum length is exceeded.
+
+- When all parameters are included (especially the advertising name, which is set by **includeDeviceName** or **advertiseName**), pay attention to the length of advertising packets.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -4790,9 +5182,9 @@ Defines the BLE advertising packet data, which can also be used in the response 
 | serviceUuids    | Array&lt;string&gt;                      | No| No   | Service UUID.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | manufactureData | Array&lt;[ManufactureData](#manufacturedata)&gt; | No| No   | Manufacturer data.<br>**Atomic service API**: This API can be used in atomic services since API version 12.          |
 | serviceData     | Array&lt;[ServiceData](#servicedata)&gt; | No| No   | Service data.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
-| includeDeviceName | boolean     | No| Yes   | Whether to include the Bluetooth device name. The value **true** means to include the Bluetooth device name, and the value **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
+| includeDeviceName | boolean     | No| Yes   | Whether to include the device name as the advertising name.<br>The value **true** means to include the Bluetooth device name, and the value **false** means the opposite. The default value is **false**.<br>If the application needs to customize an advertising name, **advertiseName** can be used. This parameter cannot be used with **advertiseName**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
 | includeTxPower<sup>18+</sup> | boolean     | No   | Yes   | Whether to include the transmit power.<br>The value **true** means to include the transmit power, and the value **false** means the opposite. The default value is **false**.<br>This parameter occupies three bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
-
+| advertiseName<sup>23+</sup> | string     | No   | Yes   | Custom advertising name.<br>This parameter cannot be used with **includeDeviceName**.<br>**Required permissions**: [ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_bluetooth_advertiser_name)<br>**Atomic service API**: This API can be used in atomic services since API version 23.     |
 
 ## AdvertisingParams<sup>11+</sup>
 
@@ -4876,10 +5268,11 @@ Defines the scan filters for BLE advertising packet data. Only advertising packe
 | Name                                    | Type   | Read-Only| Optional | Description                                                        |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
 | deviceId                                 | string      | No| Yes   | BLE device address. Example: XX:XX:XX:XX:XX:XX<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | No| Yes| BLE device address and address type.<br>Compared with **deviceId**, this parameter can be used to specify both the BLE device address and address type to filter BLE advertising packets.<br>If both this parameter and **deviceId** are specified, only this parameter takes effect.|
 | name                                     | string      | No| Yes   | BLE device name.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
-| serviceUuid                              | string      | No| Yes   | Service UUID. This parameter is usually carried in the broadcast packets of a peripheral device, indicating the service UUID supported by the peripheral device. for example, 00001888-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceUuid                              | string      | No| Yes   | Service UUID. This parameter is usually carried in the broadcast packets of a peripheral device, indicating the service UUID supported by the peripheral device. Example: 00001888-0000-1000-8000-00805f9b34fb<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | serviceUuidMask             | string      | No| Yes    | Service UUID mask. This parameter can be used with **serviceUuid** to filter specific service UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| serviceSolicitationUuid     | string      | No| Yes    | Service solicitation UUID. This parameter is usually carried in the broadcast packets of a central device, indicating the UUID of the service that the central device wants to search for. for example, 00001888-0000-1000-8000-00805F9B34FB.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceSolicitationUuid     | string      | No| Yes    | Service solicitation UUID. This parameter is usually carried in the broadcast packets of a central device, indicating the UUID of the service that the central device wants to search for. Example: 00001888-0000-1000-8000-00805F9B34FB<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | serviceSolicitationUuidMask | string      | No| Yes    | Service solicitation UUID mask. This parameter can be used with **serviceSolicitationUuid** to filter specific service solicitation UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | serviceData                 | ArrayBuffer | No| Yes    | Service data, for example, [0x90,0x00,0xF1,0xF2].<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | serviceDataMask             | ArrayBuffer | No| Yes    | Service data mask. This parameter can be used with **serviceData** to filter specific service data. Example: [0xFF,0xFF,0xFF,0xFF]<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -4914,7 +5307,7 @@ Describes the properties supported by a GATT characteristic. The properties dete
 | -------- | ------ |---- |---- | ----------- |
 | write    | boolean | No| Yes | Whether the write operation is supported.<br>The value **true** indicates that the write operation is supported and a response is required, and the value **false** indicates that the write operation is not supported. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | writeNoResponse | boolean | No| Yes  | Whether the write operation is supported.<br>The value **true** indicates that the write operation is supported without requiring a response, and the value **false** indicates that the write operation is not supported. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| read | boolean   | No|  Yes   | Whether the read operation is supported.<br>**true** if it has flash, **false** otherwise. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| read | boolean   | No|  Yes   | Whether the read operation is supported.<br>**true** if the read operation is supported, **false** otherwise. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | notify | boolean   | No| Yes   | Whether the notification operation is supported.<br>The value **true** indicates that the notification operation is supported without requiring a confirmation response, and the value **false** indicates the notification operation is not supported. false<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | indicate | boolean   | No| Yes   | Whether the indication operation is supported.<br>The value **true** indicates that the indication operation is supported with requiring a confirmation response, and the value **false** indicates the indication operation is not supported. false<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | broadcast<sup>20+</sup> | boolean   | No| Yes   | Whether the characteristic can be sent by the server in advertising packets.<br>The value **true** indicates that the characteristic can be sent by the server as [ServiceData](#servicedata) in advertising packets, and the value **false** indicates the opposite. false<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -4940,6 +5333,21 @@ Defines the permissions required for GATT characteristic or descriptor read/writ
 | writeEncryptedMitm    | boolean | No| Yes | Whether the characteristic or descriptor to be written needs to be encrypted to prevent MITM attacks.<br>The value **true** means to enable encryption, and the value **false** indicates the opposite. The default value is **false**.|
 | writeSigned    | boolean | No| Yes | Whether the characteristic or descriptor needs to be signed before being written.<br>The value **true** means to enable encryption, and the value **false** indicates the opposite. The default value is **false**.|
 | writeSignedMitm    | boolean | No| Yes | Whether the characteristic or descriptor to be written needs to be signed to prevent MITM attacks.<br>The value **true** means to enable encryption, and the value **false** indicates the opposite. The default value is **false**.|
+
+## PhyValue<sup>23+</sup>
+
+Enumerates the physical channel types of the link.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+| Name      | Type | Read-Only| Optional  | Description         |
+| -------- | ------ |---- |---- | ----------- |
+| txPhy | [BlePhy](#blephy23)| No| No| Type of the physical channel on the sender.|
+| rxPhy | [BlePhy](#blephy23)| No| No| Type of the physical channel on the receiver.|
+| phyMode | [CodedPhyMode](#codedphymode23)| No| Yes| Encoding mode of the physical channel whose type is [BLE_PHY_CODED](#blephy23).<br>The default value is **0**, indicating that no specific encoding mode is specified and the Bluetooth subsystem determines the encoding mode.|
+
 
 
 ## GattWriteType
@@ -5086,3 +5494,30 @@ Enumerates connection parameter types.
 | LOW_POWER  | 1    |  Low-power mode. Data transmission is slow, but the power consumption is low.  |
 | BALANCED   | 2    |  Balanced mode. The delay and power consumption are balanced. If no connection parameter update is requested, this is the default value.|
 | HIGH       | 3    |  High-speed mode. Data transmission is fast, but the power consumption is high.<br>- This connection parameter should be used when a large amount of data needs to be quickly transmitted. After the transmission is complete, the BALANCED connection parameter should be requested to reduce power consumption. |
+
+## BlePhy<sup>23+</sup>
+
+Enumerates the types of the physical channel of the BLE device.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+| Name     | Value   | Description                          |
+| --------  | ---- | ------------------------------ |
+| BLE_PHY_1M  | 1 | 1 Mbit/s physical channel. The theoretical data rate is 1 Mbit/s.|
+| BLE_PHY_2M  | 2 | 2 Mbit/s physical channel. The theoretical data rate is 2 Mbit/s.|
+| BLE_PHY_CODED  | 3 | CODED physical channel. This channel is applicable to low-speed but wide-coverage scenarios.|
+
+## CodedPhyMode<sup>23+</sup>
+
+Enumerates the coding modes for the physical channel whose type is **BLEPHYCODED**.
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model constraint**: This API can be used only in the stage model.
+
+| Name     | Value   | Description                          |
+| --------  | ---- | ------------------------------ |
+| BLE_PHY_CODED_S2 | 1 | Adds 1 bit of redundancy information each time 1 bit of valid data is sent. The transmission speed is fast, and the anti-interference capability is strong. This mode is suitable for medium distances (10 m to 100 m). The theoretical data rate is 500 kbit/s.|
+| BLE_PHY_CODED_S8 | 2 | Adds 7 bits of redundancy information each time 1 bit of valid data is sent. The transmission speed is slow, but the anti-interference capability is stronger. This mode is suitable for long distances (100 m to 300 m). The theoretical data rate is 125 kbit/s.|
