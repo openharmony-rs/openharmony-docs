@@ -99,11 +99,11 @@ ArkTS-Sta示例：
 ```ts
 'use static'
 
-import formInfo from '@kit.FormKit';
+import { formInfo } from '@kit.FormKit';
 import formHost from '@ohos.app.form.formHost';
 import Want from '@ohos.app.ability.Want';
-import RecordData from '@ohos.base';
-import BusinessError from '@kit.BasicServicesKit';
+import { RecordData } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let wantParams: Record<String, RecordData> = {
