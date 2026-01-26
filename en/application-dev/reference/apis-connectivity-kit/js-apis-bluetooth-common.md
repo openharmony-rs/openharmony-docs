@@ -33,7 +33,7 @@ Defines the address information of a Bluetooth device, including the address and
 
 ## BluetoothAddressType
 
-Enumerates the Bluetooth device address types defined by the Bluetooth subsystem. The actual MAC address of a Bluetooth device is private information. During device discovery, the Bluetooth subsystem assigns a virtual MAC address to each Bluetooth device and saves the mapping between the virtual MAC address and the actual MAC address. For details about the address types, see [Bluetooth Device Address Type](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-types).
+Enumerates the Bluetooth device address types defined by the Bluetooth subsystem. The actual MAC address of a Bluetooth device is private information. During device discovery, the Bluetooth subsystem assigns a virtual MAC address to each Bluetooth device and saves the mapping between the virtual MAC address and the actual MAC address. For details about the address types, see [Bluetooth Device Address Type](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type).
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -44,7 +44,7 @@ Enumerates the Bluetooth device address types defined by the Bluetooth subsystem
 
 ## BluetoothRawAddressType<sup>23+</sup>
 
-Enumerates the Bluetooth device address types defined by the Bluetooth protocol. For details about the address types, see [Bluetooth Device Address Type](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-types).
+Enumerates the Bluetooth device address types defined by the Bluetooth protocol. For details about the address types, see [Bluetooth Device Address Type](../../connectivity/bluetooth/bluetooth-overview.md#bluetooth-device-address-type).
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
