@@ -1206,7 +1206,7 @@ file
   ```
 
   <!-- @[optionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->         
-
+  
   ``` TypeScript
   // main.ts
   const moduleName = './file2'; // moduleName对应的路径名file2应该被保留。
