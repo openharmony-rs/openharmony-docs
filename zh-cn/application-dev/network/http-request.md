@@ -885,8 +885,8 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |include-subdomains         | boolean         | 否| 配置为true时，name支持正则匹配。配置为false时，name不支持正则匹配。注意：每增加1000条域名配置，正则匹配的延迟将增加大约10至15毫秒。当域名配置数量超过10000条时，正则匹配会带来较高耗时。 |
 |name         | string         | 否| 配置主域名。 |
 |component-config<sup>20+</sup>                    | array          |  否| 指示每个组件的明文配置。优先级最高。|
-|Request                    | boolean          |否| Request从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能 。true表示支持，false表示不支持，默认为true。|
-|Network Kit                 | boolean          |否| Network Kit从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。 |
+|Request                    | boolean          |否| [Request](../reference/apis-basic-services-kit/js-apis-request.md#ohosrequest-上传下载)从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能 。true表示支持，false表示不支持，默认为true。|
+|Network Kit                 | boolean          |否| [Network Kit](../reference/apis-network-kit)从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。 |
 |ArkWeb                    | boolean          |否| ArkWeb从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
 |Media Kit                    | boolean          |否|Media Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
 |Remote Communication Kit                    | boolean          |否| Remote Communication Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
