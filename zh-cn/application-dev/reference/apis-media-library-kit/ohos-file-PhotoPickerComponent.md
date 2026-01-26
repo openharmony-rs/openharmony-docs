@@ -69,8 +69,8 @@ PhotoPickerComponent({ pickerOptions?: PickerOptions, onSelect?: (uri: string) =
 | onMovingPhotoBadgeStateChanged<sup>22+</sup> | [MovingPhotoBadgeStateChangedCallback](#movingphotobadgestatechangedcallback22) | 否 | - | 用户在Picker组件中打开/关闭动态效果时产生的回调。将图片uri和动态照片状态报给应用。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
 | onScrollStopAtStart<sup>23+</sup> | [ScrollStopAtStartCallback](#scrollstopatstartcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容起始位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | onScrollStopAtEnd<sup>23+</sup> | [ScrollStopAtEndCallback](#scrollstopatendcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容结束位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| onPhotoBrowserChangeStart<sup>23+</sup> | [onPhotoBrowserChangeStartCallback](#onphotobrowserchangestartcallback23) | 否 | - | 宫格试图进入到大图视图、大图浏览切换时产生的回调。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| onError<sup>23+</sup> | [onErrorCallback](#onerrorcallback23) | 否 | - | 使用PhotoPickerComponent组件发生错误时产生的回调。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| onPhotoBrowserChangeStart<sup>23+</sup> | [PhotoBrowserChangeStartCallback](#photobrowserchangestartcallback23) | 否 | - | 宫格试图进入到大图视图、大图浏览切换时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| onError<sup>23+</sup> | [ErrorCallback](#errorcallback23) | 否 | - | 使用PhotoPickerComponent组件发生错误时产生的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## PickerOptions
 
@@ -221,11 +221,13 @@ type ScrollStopAtEndCallback = () => void
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## onPhotoBrowserChangeStartCallback<sup>23+</sup>
+## PhotoBrowserChangeStartCallback<sup>23+</sup>
  	  	 
-type onPhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
+type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
 用户在Picker组件中打开/关闭动态效果时的回调事件。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -237,11 +239,13 @@ type onPhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | targetPhotoInfo  | [baseItemInfo](#baseiteminfo) | 是 | 照片的基本信息。 |
 
-## onErrorCallback<sup>23+</sup>
+## ErrorCallback<sup>23+</sup>
 
-type onErrorCallback = (pickerError: PickerError) => void
+type ErrorCallback = (pickerError: PickerError) => void
 
 PhotoPickerComponent产生错误时的回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -471,6 +475,8 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 
 仅在大图浏览下设置生效，不支持设置NOT_MOVING_PHOTO。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -651,6 +657,8 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 ## PickerError<sup>23+</sup>
       
 使用PhotoPickerComponent组件发生错误时返回的错误的接口名称、错误码和错误描述。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
