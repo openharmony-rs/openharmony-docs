@@ -586,9 +586,8 @@ Represents EAP configuration information.
 
 ## WifiWapiConfig<sup>12+</sup>
 
-Represents WAPI configuration.
-
 Configuration of the WAPI(Wireless LAN Authentication and Privacy Infrastructure) authentication protocol.
+
 When a user connects to the WLAN through the WAPI authentication protocol, the user can configure parameters or certificates in the following ways:
 - Method 1: Configure a certificate for connection. The key fields in WifiDeviceConfig are configured as follows:
   - **preSharedKey** does not need to be transferred.
@@ -1409,7 +1408,7 @@ Obtains the WLAN connection information. This API returns the result synchronous
 
   | Type| Description|
   | -------- | -------- |
-  | [WifiLinkedInfo](#wifilinkedinfo) | return the WLAN connection information.|
+  | [WifiLinkedInfo](#wifilinkedinfo) | WLAN connection information.|
 
 **Error codes**
 
@@ -1614,7 +1613,7 @@ Checks whether the device supports the specified WLAN feature.
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | ID| Error Message|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
@@ -2366,7 +2365,7 @@ Represents P2P group configuration.
 | passphrase | string | No| No| Passphrase of the group.|
 | groupName | string | No| No| Group name.|
 | goBand | [GroupOwnerBand](#groupownerband) | No| No| Frequency band of the group.|
-| goFreq<sup>23+</sup> | number | No| No| Group frequency. If the group frequency and group bandwidth are added at the same time, the frequency is used if it is valid (valid if the frequency is in the range of 2400 MHz to 2500 MHz or 4900 MHz to 5900 MHz); otherwise, the bandwidth is used.|
+| goFreq<sup>23+</sup> | number | No| Yes| Group frequency. If the group frequency and group bandwidth are added at the same time, the frequency is used if it is valid (valid if the frequency is in the range of 2400 MHz to 2500 MHz or 4900 MHz to 5900 MHz); otherwise, the bandwidth is used.|
 
 
 ## GroupOwnerBand

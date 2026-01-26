@@ -37,9 +37,11 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
 
 - Return the result using **await**:
 
-  ```ts
+  <!-- @[use_pbkdf2_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Await.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   async function kdfAwait() {
     let spec: cryptoFramework.PBKDF2Spec = {
       algName: 'PBKDF2',
@@ -50,16 +52,19 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
     };
     let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
     let secret = await kdf.generateSecret(spec);
-    console.info("key derivation output is " + secret.data);
+    console.info('key derivation output: ' + secret.data);
   }
   ```
 
+
 - Return the result using a promise:
 
-  ```ts
+  <!-- @[use_pbkdf2_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Promise.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   function kdfPromise() {
     let spec: cryptoFramework.PBKDF2Spec = {
       algName: 'PBKDF2',
@@ -71,18 +76,20 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
     let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
     let kdfPromise = kdf.generateSecret(spec);
     kdfPromise.then((secret) => {
-      console.info("key derivation output is " + secret.data);
+      console.info('key derivation output: ' + secret.data);
     }).catch((error: BusinessError) => {
-      console.error("key derivation error.");
+      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
 
+
 - Return the result synchronously:
-
-  ```ts
+  <!-- @[use_pbkdf2_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/ets/pages/Sync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function kdfSync() {
     let spec: cryptoFramework.PBKDF2Spec = {
       algName: 'PBKDF2',
@@ -93,6 +100,6 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
     };
     let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
     let secret = kdf.generateSecretSync(spec);
-    console.info("[Sync]key derivation output is " + secret.data);
+    console.info('[Sync]key derivation output: ' + secret.data);
   }
   ```
