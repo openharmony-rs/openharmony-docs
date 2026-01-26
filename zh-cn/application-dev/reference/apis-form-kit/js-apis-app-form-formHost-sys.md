@@ -97,10 +97,12 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
+
 import formInfo from '@kit.FormKit';
 import formHost from '@ohos.app.form.formHost';
-import Want form '@ohos.app.ability.Want';
-import RecordData form '@ohos.base';
+import Want from '@ohos.app.ability.Want';
+import RecordData from '@ohos.base';
 import BusinessError from '@kit.BasicServicesKit';
 
 try {
@@ -117,15 +119,14 @@ try {
     'bundleName': 'com.huawei.hmsapp.thememanager',
     'abilityName': 'ThemeFaCardUIExtAbility',
     'parameters': wantParams
-    }
-  };
+  }
   formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
     console.info(`formHost addForm, formId: ${data.formId}`);
   }).catch((error: Error) => {
     console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error: Error) {
-  console.error(`catch error, ${code: error.code}, message: ${error.message}`);
+  console.error(`catch error, ${error.code}, message: ${error.message}`);
 }
 ```
 
