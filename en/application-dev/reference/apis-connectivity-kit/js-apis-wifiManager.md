@@ -1032,7 +1032,7 @@ This API is used to connect an application to a candidate network added by a use
 - User confirmation is a necessary step in the connection process. The connection operation is not performed before the user confirms the trust.
 - You are advised to trigger a WLAN scan by calling the **startScan** API before initiating a connection, and then connect to the candidate network after the updating of the scan result is detected by using the [wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange) method. This improves the connection success rate.
 
-> **NOTE**
+> **NOTE**<br>
 > If [wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig) is used to connect to a candidate network, no user response is returned.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO

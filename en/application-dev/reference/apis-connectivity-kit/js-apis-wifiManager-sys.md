@@ -1769,7 +1769,7 @@ Unsubscribes from the event of an STA joining a WLAN hotspot. This API uses an a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
-| callback | Callback&lt;StationInfo&gt; | No| Callback used to return the event.|
+| callback | Callback&lt;StationInfo&gt; | No| Callback to unregister.|
 
 **Error codes**
 
@@ -1847,7 +1847,7 @@ Unsubscribes from the event of an STA leaving a WLAN hotspot. This API uses an a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-| callback | Callback&lt;StationInf&gt; | No| Callback used to return the event.|
+| callback | Callback&lt;StationInf&gt; | No| Callback to unregister.|
 
 **Error codes**
 
