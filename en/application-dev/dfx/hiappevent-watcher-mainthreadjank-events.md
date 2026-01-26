@@ -9,7 +9,7 @@
 
 ## Introduction
 
-When an application's main thread executes a time-consuming task, you may detect that the application freezes. However, the freeze time does not reach the threshold specified by [application freeze detection](appfreeze-guidelines.md). Therefore, no fault log is generated. To better locate and analyze problems, you can use [main thread jank event detection principles](apptask-timeout-guidelines.md#detection-principles) and [main thread jank event log specifications](apptask-timeout-guidelines.md#log-specifications) to proactively analyze the task execution status of the main thread.
+When an application's main thread executes a time-consuming task, you may detect that the application freezes. However, the freeze time does not reach the threshold specified by [application freeze detection](appfreeze-guidelines.md). Therefore, no fault log is generated. To better locate and analyze problems, you can utilize the generated [main thread jank event log specifications](apptask-timeout-guidelines.md#log-specifications) to analyze the execution status of the main thread task by referring to the [main thread jank event detection principles](apptask-timeout-guidelines.md#detection-principles).
 
 ## Detection Principles
 
@@ -17,7 +17,7 @@ For details, see [main thread jank event detection principles](apptask-timeout-g
 
 ## Available APIs
 
-You can use the APIs provided by HiAppEvent to subscribe to the main thread jank event **hiAppEvent.event.MAIN_THREAD_JANK**. When the system detects a main thread jank event, it captures maintenance and debugging information and sends the callback to the application process through HiAppEvent.
+You can subscribe to the main thread jank event (**hiAppEvent.event.MAIN_THREAD_JANK**) using the APIs provided by HiAppEvent. After detecting a main thread jank event, the system captures debugging information. You can listen for main thread jank events using **HiAppEvent** and obtain the related information in the callback function.
 
 - [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md)
 
@@ -29,7 +29,7 @@ You can use the APIs provided by HiAppEvent to subscribe to the main thread jank
 
 ## Custom Parameters
 
-The **setEventConfig** API cannot automatically stop the sampling stack when the main thread timeout event ends. Since API Version 22, the **configEventPolicy** API is provided to automatically stop the sampling stack when the main thread timeout event ends.
+The **setEventConfig** API cannot automatically stop the sampling stack when the main thread timeout event ends. Since API version 22, the **configEventPolicy** API is provided to automatically stop the sampling stack when the main thread timeout event ends.
 
 ### setEventConfig
 
@@ -154,9 +154,9 @@ Definition of the main thread timeout event configuration policy.
 | -------- | -------- | -------- | -------- |
 | logType | number | No| Type of logs to collect. Default value: **0**<br>**logType = 0**: The default values of other parameters are used. When the main thread experiences two consecutive timeouts between 150 ms and 450 ms, a call stack capture is triggered. When the timeout exceeds 450 ms, a trace capture is triggered.<br>**logType=1**: Only the call stack is captured, and the threshold for triggering the detection is customized.<br>**logType=2**: Only traces are captured.|
 | sampleInterval | number | No| Interval for the main thread jank event detection and sampling, in milliseconds. The default value is **150**. The value range is [50, 500].|
-| ignoreStartupTime | number | No| Application startup time for the main thread jank event detection to ignore, in seconds. The default value is **10** and the minimum value is 3.|
+| ignoreStartupTime | number | No| Mainthread jank event detection time ignored during application startup, in seconds. The default value is **10**, and the minimum value is **3**.|
 | sampleCount | number | No| Number of samplings for the main thread jank event. The default value is **10**. The minimum value is 1.<br>The maximum value is calculated using the following formula: **sampleCount** ≤ (2500/**sampleInterval** - 4).|
-| reportTimesPerApp | number | No| Number of sampling reporting times for the main thread jank event of the processes with the same PID of an application. This parameter can be set only once for the processes with the same PID.<br>The default value is **1**.<br>When **Developer options** is enabled, the number of reporting times per hour ranges from 1 to 3.<br>When **Developer options** is disabled, the number of reporting times per minute ranges from 1 to 3.|
+| reportTimesPerApp | number | No| Number of sampling reporting times for the main thread jank event of the processes with the same PID of an application. This parameter can be set only once for the processes with the same PID.<br>The default value is **1**.<br>The number of times that the sampling is reported per minute ranges from 1 to 3.|
 | autoStopSampling | boolean | No| Whether to automatically stop sampling the main thread stack when the main thread jank event ends.<br>The value **true** means to stop sampling when the main thread jank event ends or the number of samplings reaches the specified value.<br>The value **false** means to stop sampling when the number of samplings reaches the specified value.<br>The default value is **false**.|
 
 1. **sampleCount**:

@@ -75,7 +75,7 @@ Defines the application event logging functions of the HiAppEvent module. Before
 | [int OH_HiAppEvent_SetWatcherOnTrigger(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnTrigger onTrigger)](#oh_hiappevent_setwatcherontrigger) | - | Sets the **onTrigger** callback.<br> If **OnReceive** is not set or is set to **nullptr**, the application events received by the watcher will be saved. If the saved application events meet the trigger conditions of the **onTrigger** callback, the **onTrigger** callback will be called.|
 | [int OH_HiAppEvent_SetWatcherOnReceive(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnReceive onReceive)](#oh_hiappevent_setwatcheronreceive) | - | Sets the **onReceive** callback. When the listener detects the corresponding event, the onReceive callback is called.|
 | [int OH_HiAppEvent_TakeWatcherData(HiAppEvent_Watcher* watcher, uint32_t eventNum, OH_HiAppEvent_OnTake onTake)](#oh_hiappevent_takewatcherdata) | - | Obtains the event saved by the watcher.|
-| [int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)](#oh_hiappevent_addwatcher) | - | Adds a watcher. Once a watcher is added, it starts to listen for system messages.|
+| [int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)](#oh_hiappevent_addwatcher) | - | Adds a watcher. Once a watcher is added, it starts to listen for system messages.<br>Note: The **OH_HiAppEvent_AddWatcher** API involves I/O operations. In performance-sensitive service scenarios, you need to determine whether to call this API in the main thread or a child thread based on the actual service requirements.<br>To call **OH_HiAppEvent_AddWatcher()** in a child thread, ensure that the child thread is not destroyed in the entire API usage period.<br>The name passed to the **OH_HiAppEvent_AddWatcher** API should be unique. If the same name is passed, the previous subscription will be overwritten.|
 | [int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher* watcher)](#oh_hiappevent_removewatcher) | - | Removes a watcher. Once a watcher is removed, it stops listening for system messages. Note: This API only enables the watcher to stop listening for system messages. It does not destroy the watcher. The watcher still resides in the memory until the OH_HiAppEvent_DestroyWatcher API is called.|
 | [void OH_HiAppEvent_ClearData()](#oh_hiappevent_cleardata) | - | Clears the events saved by all watchers.|
 | [HiAppEvent_Processor* OH_HiAppEvent_CreateProcessor(const char* name)](#oh_hiappevent_createprocessor) | - | Creates a processor for application events.<br>Note: If a created processor is no longer used, destroy it by calling [OH_HiAppEvent_DestroyProcessor](#oh_hiappevent_destroyprocessor).|
@@ -902,6 +902,14 @@ int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)
 **Description**
 
 Adds a watcher. Once a watcher is added, it starts to listen for system messages.
+
+> **NOTE**
+>
+> The **OH_HiAppEvent_AddWatcher** API involves I/O operations. In performance-sensitive service scenarios, you need to determine whether to call this API in the main thread or a child thread based on the actual service requirements.
+>
+> To call **OH_HiAppEvent_AddWatcher()** in a child thread, ensure that the child thread is not destroyed in the entire API usage period.
+>
+> The name passed to the **OH_HiAppEvent_AddWatcher** API should be unique. If the same name is passed, the previous subscription will be overwritten.
 
 **Since**: 12
 
