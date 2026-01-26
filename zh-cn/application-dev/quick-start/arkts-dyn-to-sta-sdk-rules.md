@@ -1208,26 +1208,24 @@ class Person implements People {
 ArkTS-Sta语法关键字列表，API使用时需要避开语言关键词，以免编译报错。
 以下列表中加粗的部分是ArkTS-Sta新增关键字。
 
-| 原有 | 原有 | 原有 | 原有 | 新增              | 新增            |
-|------|------|------|------|-----------------|---------------|
-| else | static | typeof | byte | **abstract**    | **int**       |
-| export | super | bigint | char | **as**          | **long**      |
-| extends | this | Boolean | double | **internal**    | **number**    |
-| break | true | byte | float | **native**      | **short**     |
-| case | throw | char | int | **overload**    | **string**    |
-| class | try | double | long | **override**    | **Byte**      |
-| const | undefined | float | number | **package**     | **Char**      |
-| continue | while | int | Number | **constructor** | **Double**    |
-| default | await | long | Object | **Any**         | **Float**     |
-| do | in | number | object | **declare**     | **Int**       |
-| BigInt | instanceof | Number | short | **boolean**     | **Long**      |
-| enum | void | Object | Short | **byte**        | **namespace** |
-| false | private | object | string | **char**        | **out**       |
-| final | protected | short | String | **double**      | **readonly**  |
-| for | public | Short | async | **float**       | **type**      |
-| function | return | string | let | NA              | NA            |
-| if | switch | String | null | NA              | NA            |
-| implements | new |import   | interface | NA              | NA            |
+| 原有 | 原有 | 原有 | 新增 | 新增 |
+| --- | --- | --- | --- | --- |
+| else | enum | static | **abstract** | **as** |
+| private | export | false | **internal** | **native** |
+| super | protected | extends | **overload** | **override** |
+| final | this | public | **package** | **constructor** |
+| break | for | true | **Any** | **declare** |
+| return | case | function | **bigint** | **boolean** |
+| throw | switch | class | **byte** | **char** |
+| if | try | let | **double** | **float** |
+| const | implements | undefined | **int** | **long** |
+| null | continue | import | **number** | **short** |
+| while | new | default | **string** | **Byte** |
+| interface | await | do | **Char** | **Double** |
+| async | in | instanceof | **Float** | **Int** |
+| void | BigInt | Boolean | **Long** | **namespace** |
+| Number | object | Short | **Object** | **out** |
+| String | typeof | NA | **readonly** | **type** |
 
 **变更原因：**
 
