@@ -253,7 +253,7 @@ let params = obj1['ohos.want.action.home'];
 let count = 0;
 ```
 
-```
+``` TypeScript
 // 混淆后：
 let s = 0;
 ```
@@ -278,7 +278,7 @@ namespace ns {
 }
 ```
 
-```
+``` TypeScript
 // 混淆后：
 namespace ns {
     export type h = string;
@@ -307,7 +307,7 @@ import { foo } from '../test1/test2';
 const module = import('../test1/test2');
 ```
 
-```
+``` TypeScript
 // 混淆后：
 import * as m from '../a/b';
 import { foo } from '../a/b';
@@ -345,7 +345,7 @@ class TestA {
 TestA.prop1;
 ```
 
-```
+``` TypeScript
 // 混淆后：
 class TestA { static prop1: number = 0; } TestA.prop1;
 ```
@@ -367,7 +367,7 @@ if (flag) {
 }
 ```
 
-```
+``` TypeScript
 // 混淆后：
 if (flag) {
 }
@@ -744,7 +744,7 @@ entry
       }
     ]
   }
-```
+  ```
 
 ### -keep-dts
 
