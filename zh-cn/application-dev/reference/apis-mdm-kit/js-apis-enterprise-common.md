@@ -83,3 +83,17 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | 类型 | 说明 |
 | --- | --- |
 | [_EnterpriseAdminExtensionContext.default](js-apis-application-EnterpriseAdminExtensionContext.md) | EnterpriseAdminExtensionAbility组件的上下文。 |
+
+## StartupScene<sup>24+</sup>
+
+开机向导启动场景。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称         | 值 | 说明                            |
+| ----------- | -------- | ------------------------------- |
+| USER_SETUP | 0  | 子用户场景（仅限PC）。|
+| OTA | 1  | OTA场景。|
+| DEVICE_PROVISION | 2  | 首次开机场景。|

@@ -592,6 +592,8 @@ adminManager.disableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
 | MANAGED_EVENT_ACCOUNT_ADDED<sup>18+</sup>    | 5    | 账号新增事件。 |
 | MANAGED_EVENT_ACCOUNT_SWITCHED<sup>18+</sup> | 6    | 账号切换事件。 |
 | MANAGED_EVENT_ACCOUNT_REMOVED<sup>18+</sup>  | 7    | 账号删除事件。 |
+| MANAGED_EVENT_STARTUP_GUIDE_COMPLETED<sup>24+</sup> | 8    | 开机向导完成事件。 |
+| MANAGED_EVENT_BOOT_COMPLETED<sup>24+</sup>  | 9    | 设备启动完成事件。 |
 
 ## AdminType<sup>15+</sup>
 

@@ -718,3 +718,55 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 };
 ```
+
+### onStartupGuideCompleted<sup>24+</sup>
+ 	 
+onStartupGuideCompleted(scene: common.StartupScene): void
+
+开机向导完成事件回调。通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_STARTUP_GUIDE_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅开机向导完成事件，端侧系统在创建子用户完成（仅限PC）、OTA升级完成和首次开箱完成会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                   |
+| ---------- | ------ | ---- | ---------------------- |
+| scene | [common.StartupScene](./js-apis-enterprise-common.md#startupscene24) | 是   | 开机向导完成场景。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onStartupGuideCompleted(scene: common.StartupScene) {
+    console.info(`onStartupGuideCompleted scene is USER_SETUP?: ${scene === common.StartupScene.USER_SETUP}`);
+    console.info(`onStartupGuideCompleted scene is OTA?: ${scene === common.StartupScene.OTA}`);
+    console.info(`onStartupGuideCompleted scene is DEVICE_PROVISION?: ${scene === common.StartupScene.DEVICE_PROVISION}`);
+  }
+};
+```
+ 	 
+### onDeviceBootCompleted<sup>24+</sup>
+
+onDeviceBootCompleted(): void
+
+设备启动完成事件回调。通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_BOOT_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅设备启动完成事件，端侧系统在设备启动完成后会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onDeviceBootCompleted() {
+    console.info("EnterpriseAdminExtensionAbility onDeviceBootCompleted");
+  }
+};
+```
