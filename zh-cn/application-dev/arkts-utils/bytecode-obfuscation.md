@@ -607,12 +607,12 @@ lastName
 示例：
 
   <!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
-
+  
   ``` TypeScript
   function CustomDecorator(target: Object, propertyKey: string) {}
   function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
   function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
-
+  
   class A {
     // 1.成员变量装饰器。
     @CustomDecorator
