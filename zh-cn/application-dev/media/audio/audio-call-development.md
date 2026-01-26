@@ -16,9 +16,7 @@
 
 该过程与[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)过程相似，关键区别在于audioRendererInfo参数和音频数据来源。audioRendererInfo参数中，音频流使用类型usage需设置为VoIP通话：STREAM_USAGE_VOICE_COMMUNICATION。
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -95,7 +93,7 @@ async function init() {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
     }
   });
 }
@@ -176,6 +174,90 @@ async function release() {
     });
   }
 }
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Scroll() {
+      Column() {
+        Row() {
+          Column() {
+            Text('初始化').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            initArguments(context);
+            init();
+          });
+
+          Column() {
+            Text('开始播放').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ bottom: 12 })
+          .onClick(async () => {
+            start();
+          });
+        }
+
+        Row() {
+          Column() {
+            Text('暂停播放').fontSize(16).margin({ top: 12 });
+          }
+          .id('audio_effect_manager_card')
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            pause();
+          });
+
+          Column() {
+            Text('停止播放').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ bottom: 12 })
+          .onClick(async () => {
+            stop();
+          });
+        }
+
+        Row() {
+          Column() {
+            Text('释放资源').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .id('audio_volume_card')
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            release();
+          });
+        }
+        .padding(12)
+      }
+      .height('100%')
+      .width('100%')
+      .backgroundColor('#F1F3F5');
+    }
+  }
+}
 ```
 
 ## 使用AudioCapturer录制本端的通话声音
@@ -184,9 +266,7 @@ async function release() {
 
 所有录制均需要申请麦克风权限：ohos.permission.MICROPHONE，申请方式请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
-<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -307,6 +387,75 @@ async function release() {
         console.info('Capturer release success.');
       }
     });
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Scroll() {
+      Column() {
+        Row() {
+          Column() {
+            Text('初始化').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+            initArguments(context);
+            init();
+          });
+
+          Column() {
+            Text('开始录制').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ bottom: 12 })
+          .onClick(async () => {
+            start();
+          });
+        }
+
+        Row() {
+          Column() {
+            Text('停止录制').fontSize(16).margin({ top: 12 });
+          }
+          .id('audio_effect_manager_card')
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ right: 12, bottom: 12 })
+          .onClick(async () => {
+            stop();
+          });
+
+          Column() {
+            Text('释放资源').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
+          }
+          .backgroundColor(Color.White)
+          .borderRadius(30)
+          .width('45%')
+          .height('25%')
+          .margin({ bottom: 12 })
+          .onClick(async () => {
+            release();
+          });
+        }
+        .padding(12)
+      }
+      .height('100%')
+      .width('100%')
+      .backgroundColor('#F1F3F5');
+    }
   }
 }
 ```
