@@ -80,7 +80,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
 let floatingBallController: floatingBall.FloatingBallController | undefined = undefined;
-//请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
 let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext; 
 let config: floatingBall.FloatingBallConfiguration = {
   context: ctx,
