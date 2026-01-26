@@ -39,5 +39,12 @@
     - [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md)
     - [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)
     - [OH_AVSession](capi-ohavsession-oh-avsession.md)
+    - [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)
+    - [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)
+    - [OH_AVSession_AVQueueItem](capi-ohavsession-oh-avsession-avqueueitem.md)
+    - [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)
+    - [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)
+    - [AVSession_OutputDeviceInfo](capi-ohavsession-avsession-deviceinfo.md)
+    - [AVSession_DeviceInfo](capi-ohavsession-avsession-deviceinfo.md)
 - 错误码<!--avsession-arkts-errcode-->
   - [媒体会话管理错误码](errorcode-avsession.md)
