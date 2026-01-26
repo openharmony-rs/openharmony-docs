@@ -66,7 +66,7 @@ a2.prop1 = 'prop a2';
 test(a2);
 ```
 
-```
+``` TypeScript
 // 混淆后
 // example.ts
 class A1 {
@@ -161,7 +161,7 @@ test(a2);
   TestA.prop1;
   ```
 
-  ```
+  ``` TypeScript
   // 混淆后：
   class TestA {
     static i: number = 0;
@@ -247,7 +247,7 @@ test(a2);
   person["exampleAge"] = 22;
   ```
 
-  ```
+  ``` TypeScript
   // 混淆后：
   // example.ts
   let person = {"a": "abc"};
@@ -292,7 +292,7 @@ test(a2);
   let count = 0;
   ```
 
-  ```
+  ``` TypeScript
   // 混淆后：
   let s = 0;
   ```
@@ -317,7 +317,7 @@ test(a2);
   }
   ```
 
-  ```
+  ``` TypeScript
   // 混淆后：
   namespace ns {
     export type h = string;
@@ -361,7 +361,7 @@ test(a2);
   }
   ```
 
-  ```
+  ``` TypeScript
   // example.ts
   // 混淆后：
   import * as m from "@normalized:N&&&entry/src/main/ets/c/d&";
@@ -404,7 +404,7 @@ test(a2);
   TestA.prop1;
   ```
 
-  ```
+  ``` TypeScript
   // 混淆后：
   class TestA { static prop1: number = 0; } TestA.prop1;
   ```
@@ -428,7 +428,7 @@ test(a2);
   ```
 
 混淆后：
-  ```ts
+  ``` TypeScript
   declare let count: number;
   ```
 
@@ -452,7 +452,7 @@ test(a2);
   }
   ```
 
-  ```
+  ``` TypeScript
   // 混淆后：
   function add(a: number, b: number) {
       return a + b;
