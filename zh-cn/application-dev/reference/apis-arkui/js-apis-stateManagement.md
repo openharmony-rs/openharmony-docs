@@ -267,6 +267,7 @@ const p3: Sample = PersistenceV2.globalConnect({
 当开发者在`globalConnect`中使用`defaultSubCreator`选项时，必须要提供`defaultCreator`。且`defaultSubCreator`函数的返回类型必须与`defaultCreator`返回的集合项类型相同。
 当`globalConnect`持久化`Array<ClassA>`类型的数据时，开发者需要使用`defaultSubCreator`选项去告诉状态管理框架创建`ClassA`类的一个实例。如下是`globalConnect`持久化`Array<ClassA>`类型的数据的示例：
 
+<!--code_no_check-->
 ```typescript
 class ClassA {
   propA: number;
@@ -431,6 +432,7 @@ globalConnect参数类型。
 如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
 
 **示例：**
+<!--code_no_check-->
 ```typescript
 class ClassA {
   propA: number;
