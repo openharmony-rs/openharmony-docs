@@ -167,7 +167,6 @@ PhotoPicker退出界面的上下文信息，可以用于下次使用PhotoPicker�
 | recommendationType    | number   | 否   | 否 | 用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择时未设置推荐时，默认为0。|
 | selectedRecommendationType    | number   | 否   | 否 | 用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>当上次选择未选中推荐项，选中"全部"时，默认为0。|
 | version    | number   | 否   | 否 | 现场数据版本号，用于校验现场信息数据与现场恢复能力的匹配度。<br>版本号必须大于等于1.0。|
-| gridLevel    | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23)   | 否   | 否 | 用户上次退出宫格时的档位。|
 
 ## OperationItem<sup>22+</sup>
 
