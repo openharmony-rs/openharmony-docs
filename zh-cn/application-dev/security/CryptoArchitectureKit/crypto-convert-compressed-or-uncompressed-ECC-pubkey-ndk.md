@@ -1,5 +1,12 @@
 # 使用ECC压缩/非压缩公钥格式转换(C/C++)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 可通过指定ECC公钥数据生成公钥对象（[PubKey](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptopubkey.md)），也可从公钥对象中获取ECC公钥数据。
 当前仅支持满足X509规范的ECC算法的压缩或非压缩格式的完整公钥数据。此处的公钥数据应当是完整的X509公钥，对于仅使用点数据的情况，请参考[使用ECC压缩/非压缩点格式转换](crypto-convert-compressed-or-uncompressed-ECC-point.md)。    
 查看[非对称密钥生成和转换规格：ECC](crypto-asym-key-generation-conversion-spec.md#ecc)。  
@@ -13,11 +20,13 @@
 3. 调用[OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)，传入封装后的[Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md)，生成非对称密钥对象（OH_CryptoKeyPair）。
 4. 调用[OH_CryptoPubKey_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptopubkey_encode)，设置参数为'X509|COMPRESSED'，获取压缩公钥数据的字节流。
 
-```c++
+<!-- @[convert_ecc_uncompressed_pub_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/specifyUncompressedPublicKey.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_asym_key.h"
 
-static OH_Crypto_ErrCode doTestEccDataCovert()
+OH_Crypto_ErrCode doTestEccDataCovert()
 {
     OH_CryptoAsymKeyGenerator *generator = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
@@ -30,10 +39,10 @@ static OH_Crypto_ErrCode doTestEccDataCovert()
     }
     uint8_t pubKeyBlobData[] = {
         48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2,
-        8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 
+        8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178,
         121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215,
         148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85,
-        228,123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 
+        228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11,
         46, 163, 156, 152
     };
     Crypto_DataBlob pubKeyUncompressedBlob = {
@@ -58,3 +67,4 @@ static OH_Crypto_ErrCode doTestEccDataCovert()
     return ret;
 }
 ```
+

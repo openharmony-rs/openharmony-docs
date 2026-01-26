@@ -1,5 +1,12 @@
 # 安全随机数生成(C/C++)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 > **说明：**
 >
 > 从API version 12开始，轻量级智能穿戴设备支持获取随机数相关操作。
@@ -42,11 +49,14 @@
 
 4. 调用[OH_CryptoRand_GetAlgoName](../../reference/apis-crypto-architecture-kit/capi-crypto-rand-h.md#oh_cryptorand_getalgoname)，获取随机数生成器使用的算法名称。
 
-```C++
-#include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
+<!-- @[rand_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureRandomNumberGeneration/entry/src/main/cpp/types/project/rand_test.cpp) -->
 
-static OH_Crypto_ErrCode doTestRandomNumber()
+``` C++
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+#include <cstdio>
+#include "file.h"
+
+OH_Crypto_ErrCode doTestRandomNumber()
 {
     // 创建随机数生成器。
     OH_CryptoRand *rand = nullptr;

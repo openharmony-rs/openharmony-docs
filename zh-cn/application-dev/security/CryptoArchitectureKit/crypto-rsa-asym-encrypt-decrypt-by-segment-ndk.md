@@ -1,5 +1,12 @@
 # 使用RSA非对称密钥分段加解密(C/C++)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 对应的算法规格请查看[非对称密钥加解密算法规格：RSA](crypto-asym-encrypt-decrypt-spec.md#rsa)。
 
 **加密**
@@ -28,12 +35,14 @@
 
 3. 多次调用[OH_CryptoAsymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_final)，传入密文，获取解密后的数据。
 
-- 异步方法示例：
 
-```C++
+<!-- @[rsa_encrypt_decrypt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/rsa/RSAEncryptDecrypt.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 #include <algorithm>
 #include <vector>
+#include <string>
 
 static std::vector<uint8_t> doTestRsaEnc(OH_CryptoKeyPair *keyPair, std::vector<uint8_t> &plainText)
 {
@@ -111,7 +120,7 @@ static std::vector<uint8_t> doTestRsaDec(OH_CryptoKeyPair *keyPair, std::vector<
     return decryptText;
 }
 
-static OH_Crypto_ErrCode doTestRsaEncLongMessage()
+OH_Crypto_ErrCode doTestRsaEncLongMessage()
 {
     OH_CryptoAsymKeyGenerator *keyGen = nullptr;
     OH_Crypto_ErrCode ret = OH_CryptoAsymKeyGenerator_Create("RSA1024", &keyGen);

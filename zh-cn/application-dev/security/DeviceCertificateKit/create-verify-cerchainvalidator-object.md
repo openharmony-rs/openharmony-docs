@@ -1,5 +1,12 @@
 # 证书链校验器对象的创建和校验
 
+<!--Kit: Device Certificate Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 证书链是由一组证书组成的证书集合，以图中样例证书文件为例，即可放在一个证书链中。
 
 样例中可以看到GlobalSign自签名了证书，GlobalSign也签发了GlobalSign RSA OV SSL CA 2018的证书，GlobalSign RSA OV SSL CA 2018又签发了第三级证书。
@@ -19,17 +26,13 @@
 
 3. 基于已有的证书数据，创建证书链数据对象[CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata)。
    
-   证书算法库框架提供了证书链校验器对象可用于校验证书链，以验证信任链根源，但待校验的证书链数据对象应符合如下的数据结构定义。
-
-   | 名称 | 类型 | 可读 | 可写 | 说明 | 
-   | -------- | -------- | -------- | -------- | -------- |
-   | data | Uint8Array | 是 | 是 | 证书数据，按照长度(2字节)-数据的形式传入。如08ABCDEFGH07ABCDEFG：第一本证书前2个字节表示证书的长度为8字节，后面附加8字节的证书数据；第二本证书前2个字节表示证书的长度为7字节，后面附加7字节的证书数据。 | 
-   | count | number | 是 | 是 | 传入的数据中，包含的证书数量。 | 
-   | encodingFormat | [EncodingFormat](../../reference/apis-device-certificate-kit/js-apis-cert.md#encodingformat) | 是 | 是 | 指明证书编码格式。 | 
+   证书算法库框架提供了证书链校验器对象可用于校验证书链，以验证信任链根源，但待校验的证书链数据对象应符合证书链数据对象的数据结构定义[CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata)。
 
 4. 调用[CertChainValidator.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate)校验证书链数据。
 
-```ts
+<!-- @[certificate_chain_validator_object_creation_and_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateVerifyCerchainvalidatorObject.ets) -->
+
+``` TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { util } from '@kit.ArkTS';
 
@@ -95,7 +98,7 @@ function certChainValidatorSample(): void {
   let uint8ArrayOfCaCertDataLen = new Uint8Array(new Uint16Array([uint8ArrayOfCaCertData.byteLength]).buffer);
 
   // 二级CA证书数据。
-  let uint8ArrayOf2ndCaCertData =  textEncoder.encodeInto(secondCaCertData);
+  let uint8ArrayOf2ndCaCertData = textEncoder.encodeInto(secondCaCertData);
 
   // 二级CA证书数据的长度。
   let uint8ArrayOf2ndCaCertDataLen = new Uint8Array(new Uint16Array([uint8ArrayOf2ndCaCertData.byteLength]).buffer);
@@ -110,7 +113,8 @@ function certChainValidatorSample(): void {
     encodingData[uint8ArrayOf2ndCaCertDataLen.length + i] = uint8ArrayOf2ndCaCertData[i];
   }
   for (let i = 0; i < uint8ArrayOfCaCertDataLen.length; i++) {
-    encodingData[uint8ArrayOf2ndCaCertDataLen.length + uint8ArrayOf2ndCaCertData.length + i] = uint8ArrayOfCaCertDataLen[i];
+    encodingData[uint8ArrayOf2ndCaCertDataLen.length + uint8ArrayOf2ndCaCertData.length + i] =
+      uint8ArrayOfCaCertDataLen[i];
   }
   for (let i = 0; i < uint8ArrayOfCaCertData.length; i++) {
     encodingData[uint8ArrayOf2ndCaCertDataLen.length + uint8ArrayOf2ndCaCertData.length +
@@ -133,7 +137,7 @@ function certChainValidatorSample(): void {
       console.error(`validate failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
       // 校验成功。
-      console.log('validate success');
+      console.info('validate result: success.');
     }
   });
 }

@@ -1,5 +1,12 @@
 # Device Certificate Kit简介
 
+<!--Kit: Device Certificate Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 Device Certificate Kit（设备证书服务）面向应用开发者，提供了[证书算法库](#证书算法库)和[证书管理](#证书管理)的能力。
 
 ## 证书算法库
@@ -16,7 +23,7 @@ Device Certificate Kit（设备证书服务）面向应用开发者，提供了[
 
 ### 框架原理
 
-系统提供证书算法库框架，开发者只需要调用API接口层即可实现证书的操作，通过证书算法库框架，可忽视不同三方算法库的差异。
+系统提供证书算法库框架，开发者只需要调用API接口层即可实现证书的操作，证书算法库框架能够屏蔽不同三方算法库的差异。
 
 ![](figures/certificate_framework_architecture.png)
 
@@ -48,4 +55,4 @@ Device Certificate Kit（设备证书服务）面向应用开发者，提供了[
 
 ## 约束与限制
 
-Device Certificate Kit不具备生成或签发证书及证书吊销列表的能力。生成或签发证书及证书吊销列表的能力一般由证书颁发机构（CA）来完成，不由单个应用签发。
+Device Certificate Kit不具备生成或签发证书及证书吊销列表的能力。生成或签发证书及证书吊销列表的能力由证书颁发机构（CA）来完成，不由单个应用签发。

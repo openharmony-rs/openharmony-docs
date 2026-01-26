@@ -1,5 +1,12 @@
 # 使用SM2密文格式转换(C/C++)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 当前支持的SM2密文格式为国密标准的ASN.1格式，其中各参数组合顺序为C1C3C2，具体参数含义请参考[转换SM2密文格式](crypto-asym-encrypt-decrypt-spec.md#转换sm2密文格式)。
 
 开发者可指定SM2密文的参数，将其转换成符合国密标准的ASN.1格式密文。反之，也可以从国密标准的ASN.1格式密文中取出具体的SM2密文参数，便于开发者自行组合成其他格式的SM2密文。
@@ -14,10 +21,12 @@
 
 4. 使用完毕后，调用[OH_CryptoSm2CiphertextSpec_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_destroy)销毁SM2密文规格对象。
 
-```C++
+<!-- @[create_asn1_ciphertext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/sm2/CreateASN1Ciphertext.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 
-static OH_Crypto_ErrCode doTestGenCipherTextBySpec()
+OH_Crypto_ErrCode doTestGenCipherTextBySpec()
 {
     // 准备SM2密文参数。
     uint8_t c1x[] = {45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105, 41, 92, 95, 102, 224,
@@ -77,6 +86,7 @@ static OH_Crypto_ErrCode doTestGenCipherTextBySpec()
 }
 ```
 
+
 **从标准ASN.1密文中获取密文参数**
 
 1. 调用[OH_CryptoSm2CiphertextSpec_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_create)，从ASN.1格式密文创建SM2密文规格对象。
@@ -85,17 +95,24 @@ static OH_Crypto_ErrCode doTestGenCipherTextBySpec()
 
 3. 使用完毕后，调用[OH_CryptoSm2CiphertextSpec_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_destroy)销毁SM2密文规格对象。
 
-```C++
-static OH_Crypto_ErrCode doTestGetCipherTextSpec()
+<!-- @[obtain_cipher_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceCpp/entry/src/main/cpp/types/project/sm2/ObtainCiphertext.cpp) -->
+
+``` C++
+
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+
+OH_Crypto_ErrCode doTestGetCipherTextSpec()
 {
     // 准备标准ASN.1格式密文。
-    uint8_t cipherTextArray[] = {48, 118, 2, 32, 45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105,
-                                41, 92, 95, 102, 224, 216, 149, 85, 236, 110, 6, 64, 188, 149, 70, 70, 183, 2, 32, 107,
-                                93, 198, 247, 119, 18, 40, 110, 90, 156, 193, 158, 205, 113, 170, 128, 146, 109, 75, 17,
-                                181, 109, 110, 91, 149, 5, 110, 233, 209, 78, 229, 96, 4, 32, 87, 167, 167, 247, 88, 146,
-                                203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201, 111, 143, 115, 169, 125, 128,
-                                42, 157, 31, 114, 198, 109, 244, 4, 14, 100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169,
-                                10, 65, 123};
+    uint8_t cipherTextArray[] = {
+        48, 118, 2, 32, 45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105,
+        41, 92, 95, 102, 224, 216, 149, 85, 236, 110, 6, 64, 188, 149, 70, 70, 183, 2, 32, 107,
+        93, 198, 247, 119, 18, 40, 110, 90, 156, 193, 158, 205, 113, 170, 128, 146, 109, 75, 17,
+        181, 109, 110, 91, 149, 5, 110, 233, 209, 78, 229, 96, 4, 32, 87, 167, 167, 247, 88, 146,
+        203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201, 111, 143, 115, 169, 125, 128,
+        42, 157, 31, 114, 198, 109, 244, 4, 14, 100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169,
+        10, 65, 123
+    };
     Crypto_DataBlob cipherText = {cipherTextArray, sizeof(cipherTextArray)};
 
     // 从ASN.1格式密文创建SM2密文规格对象。
@@ -137,3 +154,4 @@ EXIT:
     return ret;
 }
 ```
+

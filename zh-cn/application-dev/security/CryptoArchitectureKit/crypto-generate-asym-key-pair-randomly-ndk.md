@@ -1,5 +1,12 @@
 # 随机生成非对称密钥对(C/C++)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 以RSA和SM2为例，随机生成非对称密钥对（OH_CryptoKeyPair），并获得二进制数据。
 
 非对称密钥对可用于后续加解密等操作，二进制数据可用于存储或运输。
@@ -19,11 +26,14 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 3. 调用[OH_CryptoPubKey_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptopubkey_encode)获取公钥密钥对象的二进制数据。
 
-```c++
+<!-- @[generate_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_asym_key.h"
+#include "file.h"
 
-static OH_Crypto_ErrCode randomGenerateAsymKey()
+OH_Crypto_ErrCode randomGenerateAsymKey()
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
@@ -34,8 +44,7 @@ static OH_Crypto_ErrCode randomGenerateAsymKey()
         OH_CryptoAsymKeyGenerator_Destroy(ctx);
         return ret;
     }
-
-
+    
     ret = OH_CryptoAsymKeyGenerator_Generate(ctx, &keyPair);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoAsymKeyGenerator_Destroy(ctx);
@@ -44,7 +53,7 @@ static OH_Crypto_ErrCode randomGenerateAsymKey()
     }
 
     OH_CryptoPubKey *pubKey = OH_CryptoKeyPair_GetPubKey(keyPair);
-    Crypto_DataBlob retBlob = { .data = nullptr, .len = 0 };
+    Crypto_DataBlob retBlob = {.data = nullptr, .len = 0};
     ret = OH_CryptoPubKey_Encode(pubKey, CRYPTO_PEM, "PKCS1", &retBlob);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoAsymKeyGenerator_Destroy(ctx);
@@ -60,6 +69,7 @@ static OH_Crypto_ErrCode randomGenerateAsymKey()
 }
 ```
 
+
 ## 随机生成SM2密钥对
 
 对应的算法规格请查看[非对称密钥生成和转换规格：SM2](crypto-asym-key-generation-conversion-spec.md#sm2)。
@@ -70,12 +80,14 @@ static OH_Crypto_ErrCode randomGenerateAsymKey()
 
 3. 调用[OH_CryptoPubKey_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptopubkey_encode)获取公钥密钥对象的二进制数据。
 
+<!-- @[generate_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp) -->
 
-```c++
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_asym_key.h"
+#include "file.h"
 
-static OH_Crypto_ErrCode randomGenerateSm2KeyPair()
+OH_Crypto_ErrCode randomGenerateRSA()
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *dupKeyPair = nullptr;
