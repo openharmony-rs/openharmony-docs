@@ -2725,7 +2725,7 @@ ArkTS-Sta: setTouchpadPointerSpeed(speed: int): Promise\<void>
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| speed| ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | speed代表光标移动速度。ArkTS-Dyn起始版本10-19，参数范围为[1, 11], 默认为6; ArkTS-Dyn起始版本20开始，参数范围为[1, 20]，默认为10，传参大于最大值就会被自动设置为最大值，传参小于最小值就会被设置为最小值。    |
+| speed| ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | speed代表光标移动速度。ArkTS-Dyn API version 10到API version 19，参数范围为[1, 11]，默认为6; API version 20开始，参数范围改为[1, 20]，默认为10。传参大于最大值就会被自动设置为最大值，传参小于最小值就会被设置为最小值。    |
 
 **返回值**：
 
