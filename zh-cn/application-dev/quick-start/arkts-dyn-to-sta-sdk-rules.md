@@ -1208,33 +1208,26 @@ class Person implements People {
 ArkTS-Sta语法关键字列表，API使用时需要避开语言关键词，以免编译报错。
 以下列表中加粗的部分是ArkTS-Sta新增关键字。
 
-| 原有 | 原有 | 原有 | 原有 | 新增 |
-|------|------|------|------|-------|
-| else | enum | static | private | **abstract** |
-| export | false | super | protected | **as** |
-| extends | final | this | public | **internal** |
-| break | for | true | return | **native** |
-| case | function | throw | switch | **overload** |
-| class | if | try | let | **override** |
-| const | implements | undefined | null | **package** |
-| continue | import | while | new | **constructor** |
-| default | interface | await | NA | NA |
-| do | async | NA | NA | NA |
-
-| 原有     | 原有       | 新增         | 新增         |
-|----------|------------|--------------|--------------|
-| in       | instanceof | **Any**      | **declare**  |
-| void     | bigint     | **bigint**   | **boolean**  |
-| BigInt   | Boolean    | **byte**     | **char**     |
-| byte     | char       | **double**   | **float**    |
-| double   | float      | **int**      | **long**     |
-| int      | long       | **number**   | **short**    |
-| number   | Number     | **string**   | **Byte**     |
-| Object   | object     | **Char**     | **Double**   |
-| short    | Short      | **Float**    | **Int**      |
-| string   | String     | **Long**     | **namespace**|
-| typeof   | NA         | **Object**   | **out**      |
-| NA       | NA         | **readonly** | **type**     |
+| 原有 | 原有 | 原有 | 原有 | 新增              | 新增            |
+|------|------|------|------|-----------------|---------------|
+| else | static | typeof | byte | **abstract**    | **int**       |
+| export | super | bigint | char | **as**          | **long**      |
+| extends | this | Boolean | double | **internal**    | **number**    |
+| break | true | byte | float | **native**      | **short**     |
+| case | throw | char | int | **overload**    | **string**    |
+| class | try | double | long | **override**    | **Byte**      |
+| const | undefined | float | number | **package**     | **Char**      |
+| continue | while | int | Number | **constructor** | **Double**    |
+| default | await | long | Object | **Any**         | **Float**     |
+| do | in | number | object | **declare**     | **Int**       |
+| BigInt | instanceof | Number | short | **boolean**     | **Long**      |
+| enum | void | Object | Short | **byte**        | **namespace** |
+| false | private | object | string | **char**        | **out**       |
+| final | protected | short | String | **double**      | **readonly**  |
+| for | public | Short | async | **float**       | **type**      |
+| function | return | string | let | NA              | NA            |
+| if | switch | String | null | NA              | NA            |
+| implements | new |import   | interface | NA              | NA            |
 
 **变更原因：**
 
