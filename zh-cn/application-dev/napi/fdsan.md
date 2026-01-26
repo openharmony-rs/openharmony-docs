@@ -277,6 +277,19 @@ Tid:15312, Name:e.myapplication
 ```
 此时，从crash信息中可以看到bad_close存在问题，同时crash中包含所有打开的文件，协助定位问题，提升效率。
 
+OpenFiles列出所有打开的文件
+
+**字段说明：**
+
+`fd->对象描述`：文件描述符`fd`关联的内核对象标识。
+
+`[方括号内容]`：对象内部标识：
+- 对于socket/pipe：内核分配的伪文件系统ID；
+- 对于普通文件：文件系统inode编号（操作系统用于管理该文件元数据及数据块的数据结构）；
+- 对于anon_inode：对象类型名称。
+
+`native object of unknown type 0`：该fd对应的tag标签值为0。
+
 ```txt
 OpenFiles:
 0->/dev/null native object of unknown type 0
