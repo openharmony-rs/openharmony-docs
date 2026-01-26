@@ -1208,8 +1208,8 @@ class Person implements People {
 ArkTS-Sta语法关键字列表，API使用时需要避开语言关键词，以免编译报错。
 以下列表中加粗的部分是ArkTS-Sta新增关键字。
 
-| 原有1 | 原有2 | 原有3 | 原有4 | 新增 |
-|-------|-------|-------|-------|-------|
+| 原有 | 原有 | 原有 | 原有 | 新增 |
+|------|------|------|------|-------|
 | else | enum | static | private | **abstract** |
 | export | false | super | protected | **as** |
 | extends | final | this | public | **internal** |
