@@ -269,11 +269,11 @@ flac封装格式：
    | OH_MD_KEY_BITRATE                  | 码率                  |  可选  |
    | OH_MD_KEY_CODEC_CONFIG             | 编解码器特定数据       |  可选  |
 
-ogg封装格式：
+ogg封装格式（从API version 23开始支持）：
    |                key                 |         描述         | Vorbis |  OPUS  |
    | ---------------------------------- | :------------------: | :----: | :----: |
    | OH_MD_KEY_AUD_SAMPLE_RATE          | 采样率                |  必须  |  必须  |
    | OH_MD_KEY_AUD_CHANNEL_COUNT        | 声道数                |  必须  |  必须  |
    | OH_MD_KEY_CODEC_CONFIG             | 编解码器特定数据       |  必须  |  必须  |
-   
+
 具体开发指导请参考[媒体数据封装](audio-video-muxer.md)。
