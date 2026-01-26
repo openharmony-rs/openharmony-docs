@@ -105,7 +105,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                           |
 | ----------------------- | ------------------- | ---- | ---- | ------------------------------ |
-| mimeTypeArray        | Array&lt;string&gt;    | 否   | 否 | PhotoPicker可供用户选择媒体文件的过滤类型。数组长度最大为十，因此支持最多十种指定类型。<br>过滤类型参考MIME类型定义，例如：“image/jpeg”、“video/mp4”等。 |
+| mimeTypeArray        | Array&lt;string&gt;    | 否   | 否 | PhotoPicker可供用户选择媒体文件的过滤类型。数组长度最大为十，因此支持最多十种指定类型 。<br>过滤类型参考MIME类型定义，例如：“image/jpeg”、“video/mp4”等。 |
 
 ## FileSizeFilter<sup>19+</sup>
 
