@@ -722,7 +722,7 @@ entry
   ```
 
   <!-- @[optionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
-
+  
   ``` TypeScript
   // main.ts
   const moduleName = './file2'         // moduleName对应的路径名file2应该被保留。
