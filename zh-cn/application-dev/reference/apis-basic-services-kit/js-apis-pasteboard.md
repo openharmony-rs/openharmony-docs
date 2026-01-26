@@ -1803,7 +1803,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 systemPasteboard.getData((err: BusinessError | null, pasteData: pasteboard.PasteData | undefined) => {
-  if (err!) {
+  if (err != null) {
     console.error('Failed to get PasteData. Cause: ' + err!.message);
     return;
   }
