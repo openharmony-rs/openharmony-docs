@@ -45,6 +45,7 @@ ArkTS-Sta: setPointerSpeed(speed: int, callback: AsyncCallback&lt;void&gt;): voi
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **示例：**
@@ -144,6 +145,7 @@ ArkTS-Sta: setPointerSpeed(speed: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 
@@ -314,6 +316,7 @@ ArkTS-Sta: getPointerSpeed(callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -398,6 +401,14 @@ getPointerSpeed(): Promise&lt;number&gt;
 | 参数                    | 说明                  |
 | --------------------- | ------------------- |
 | ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int| Promise实例，异步返回鼠标移动速度。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api.  |
 
 **示例：**
 
