@@ -39,7 +39,7 @@
 
 ## 在CMake脚本中链接动态库
 
-```
+``` text
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 target_link_libraries(entry PUBLIC libnative_display_manager.so )
 ```
