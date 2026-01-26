@@ -1194,7 +1194,7 @@ function example18(context: common.UIAbilityContext) { // 需确保 context 由 
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| maxSelectNumber<sup>10+</sup>       | number                                      | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次选择最大文件个数上限为500个，默认值是500。选择目录仅对具有该系统能力的设备开放，且目录选择的最大个数为1。<br>API version 21及之后的版本取消限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：23  |
+| maxSelectNumber<sup>10+</sup>       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                      | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次选择最大文件个数上限为500个，默认值是500。选择目录仅对具有该系统能力的设备开放，且目录选择的最大个数为1。<br>API version 21及之后的版本取消限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：23  |
 | defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定选择的文件或者目录的URI。默认为空（效果为拉起最近打开页）。<br> **ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：23           |
 | fileSuffixFilters<sup>10+</sup>     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：23   |
 | selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection <br> **ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：23  |
@@ -1272,7 +1272,7 @@ function example18(context: common.UIAbilityContext) { // 需确保 context 由 
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| maxSelectNumber<sup>12+</sup>       | number                                   | 否     | 是   | 选择文件最大个数，默认值为1，上限为500个，有效值范围1-500。<br> **ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
+| maxSelectNumber<sup>12+</sup>       |ArkTS-Dyn: number<br>ArkTS-Sta: int                                  | 否     | 是   | 选择文件最大个数，默认值为1，上限为500个，有效值范围1-500。<br> **ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
 
 ## AudioSaveOptions
 
