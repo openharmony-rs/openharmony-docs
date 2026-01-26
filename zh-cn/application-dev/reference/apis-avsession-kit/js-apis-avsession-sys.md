@@ -2234,6 +2234,7 @@ function offActiveSessionChanged(callback?: Callback<Array\<AVSessionDescriptor>
 | 201 | permission denied. |
 | 202 |  Not System App. |
 | 6600101  | Session service exception. |
+
 **示例：**
 
 ```ts
