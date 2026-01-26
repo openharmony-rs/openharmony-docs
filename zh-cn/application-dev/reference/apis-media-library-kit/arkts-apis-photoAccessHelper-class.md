@@ -46,6 +46,8 @@
 | isMovingPhotoBadgeShown<sup>22+</sup> | boolean  | 否   | 是 | 是否在大图浏览模式下展示动态照片图标，true表示展示，false表示不展示，默认为false。<br>若设置为true，[Photoselectresult](#photoselectresult)返回movingPhotoBadgeStates数组，动态照片默认返回状态为[MOVING_PHOTO_ENABLED](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)。<br>**注意：** 必须同时使用isMovingPhotoBadgeShown和MovingPhotoBadgeStateType判断照片是否是动态照片。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | assetFilter<sup>22+</sup>       | Array\<[OperationItem](#operationitem22)\> | 否   | 是 | 媒体资产过滤器，长度限制为50个，超出取前50个。<br>**注意：**<br> 1. 当使用该过滤器时，其他过滤器会失效。<br>2. 当配置多个条件时，过滤条件前后需要配置英文括号，否则可能和内部过滤项冲突。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| globalMovingPhotoState<sup>23+</sup>       | [MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否   | 是 | 设置全局动态照片的效果，当前仅支持MOVING_PHOTO_ENABLED和MOVING_PHOTO_DISABLED。默认为MOVING_PHOTO_ENABLED。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| gridPinchMode<sup>23+</sup>       | [GridPinchMode](arkts-apis-photoAccessHelper-i.md#gridpinchmode23) | 否   | 是 | picker内宫格捏合模式。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoSelectOptions
 
@@ -65,6 +67,7 @@ PhotoSelectOptions extends BaseSelectOptions
 | isDestroyedWithNavigation<sup>23+</sup>       | boolean | 否   | 是 | 是否支持跟随[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation-1)销毁，true表示支持，false表示不支持，默认为false。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 | maxPhotoSelectNumber<sup>23+</sup> | number  | 否  | 是 |支持设置的图片最大的选择数量。单位：个。<br>受到最大选择总数的限制，最大值为500。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。                                     |
 | maxVideoSelectNumber<sup>23+</sup> | number  | 否  | 是 | 支持设置的视频最大的选择数量。单位：个。<br>受到系统中所有媒体文件最大选择总数的限制，最大值为500。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| isReturnToPhotoBrowserEnabled<sup>23+</sup>       | boolean | 否   | 是 | 在单选模式下，拍完照是否能自动跳转到大图预览模式，true表示支持，false表示不支持，默认为false。<br>**注意：** 该参数配置为true时仅在[SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18)为BROWSER_MODE（大图预览模式）或者BROWSER_AND_SELECT_MODE（兼容模式）并且[BaseSelectOptions.isPreviewForSingleSelectionSupported](arkts-apis-photoAccessHelper-class.md#baseselectoptions)参数为true时生效。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
 
 ## PhotoSelectResult
 
@@ -102,7 +105,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                           |
 | ----------------------- | ------------------- | ---- | ---- | ------------------------------ |
-| mimeTypeArray        | Array&lt;string&gt;    | 否   | 否 | PhotoPicker可供用户选择媒体文件的过滤类型。最多支持指定十种媒体文件类型。<br>过滤类型参考MIME类型定义，例如：“image/jpeg”、“video/mp4”等。 |
+| mimeTypeArray        | Array&lt;string&gt;    | 否   | 否 | PhotoPicker可供用户选择媒体文件的过滤类型。数组长度最大为10，因此支持最多十种指定类型。<br>过滤类型参考MIME类型定义，例如：“image/jpeg”、“video/mp4”等。 |
 
 ## FileSizeFilter<sup>19+</sup>
 
@@ -184,6 +187,7 @@ PhotoPicker退出界面的上下文信息，可以用于下次使用PhotoPicker�
 | recommendationType    | number   | 否   | 否 | 用户上次选择时设置的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>上次选择时未设置推荐时，默认为0。|
 | selectedRecommendationType    | number   | 否   | 否 | 用户上次选择时选中的推荐内容枚举值，参考[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)值定义。<br/>当上次选择未选中推荐项，选中"全部"时，默认为0。|
 | version    | number   | 否   | 否 | 现场数据版本号，用于校验现场信息数据与现场恢复能力的匹配度。<br>版本号必须大于等于1.0。|
+| gridLevel    | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23)   | 否   | 否 | 用户上次退出宫格时的档位。|
 
 ## OperationItem<sup>22+</sup>
 
@@ -200,3 +204,18 @@ PhotoPicker退出界面的上下文信息，可以用于下次使用PhotoPicker�
 | operationType    | [OperationType](arkts-apis-photoAccessHelper-e.md#operationtype22)   | 否 | 否   | 各类谓词的枚举。 |
 | field    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | 否 | 是   | 数据表中的列名。<br>当前仅支持如下关键字段：URI、PHOTO_TYPE、DISPLAY_NAME、SIZE、DURATION、WIDTH、HEIGHT、ORIENTATION、FAVORITE、TITLE、POSITION、PHOTO_SUBTYPE、DYNAMIC_RANGE_TYPE、COVER_POSITION、BURST_KEY、LCD_SIZE、THM_SIZE、DETAIL_TIME、MEDIA_SUFFIX、OWNER_ALBUM_ID、ASPECT_RATIO<br>通过[select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)接口配置此参数时，输入非法字段会抛出错误码401；通过[PhotoPickerComponent (PhotoPicker组件)](ohos-file-PhotoPickerComponent.md)配置此参数时，输入非法字段无onPickerControllerReady回调。<br>非条件谓词如and、or、beginWrap、endWrap等不涉及该字段。 |
 | value    | Array<[OperationValueType](arkts-apis-photoAccessHelper-t.md#operationvaluetype22)>   | 否 | 是   |  不同谓词所需匹配的值。<br>非条件谓词如and、or、beginWrap、endWrap等不涉及该字段。<br>限制最大长度为10，超出则取前10个值。 |
+
+## RequestReadPermissionResult<sup>23+</sup>
+    
+包含已授权的uri列表和无效的uri列表。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                    | 类型                | 只读 | 可选 | 说明                          |
+| ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
+| authorizedUris    | Array\<string\>   | 否 | 否   | 返回已创建并授予保存权限的uri列表。 |
+| invalidUris    | Array\<string\>  | 否 | 否   | 返回可能被删除、隐藏或重命名的无效uri列表。 |
