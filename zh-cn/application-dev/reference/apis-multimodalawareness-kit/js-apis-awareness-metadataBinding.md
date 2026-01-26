@@ -63,7 +63,7 @@ on(type: 'operationSubmitMetadata', bundleName: string, callback: Callback&lt;nu
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：**该接口对应的ArkTS-Sta接口是[onOperationSubmitMetadata](#metadatabindingonoperationsubmitmetadata23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onOperationSubmitMetadata](#metadatabindingonoperationsubmitmetadata23)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -164,7 +164,7 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：**该接口对应的ArkTS-Sta接口是[offOperationSubmitMetadata](#metadataBindingoffoperationsubmitmetadata23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offOperationSubmitMetadata](#metadataBindingoffoperationsubmitmetadata23)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
