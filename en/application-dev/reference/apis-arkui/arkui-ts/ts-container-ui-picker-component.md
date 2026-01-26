@@ -1,4 +1,4 @@
-# Picker
+# UIPickerComponent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @luoying_ace_admin-->
@@ -6,100 +6,104 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Picker容器是用于实现用户选择操作的组件。它支持从一组有限的选项中让用户进行单选，可应用于时间选择、日期选择、地区选择、状态选择等多种场景。Picker容器的显示效果为立体滚轮样式，支持选项按需定制，包括文本类型、图片类型和图文组合类型。
+The **UIPickerComponent** container is a component used to implement user selection operations. It supports single selection from a limited set of options and can be applied to various scenarios such as time selection, date selection, region selection, and status selection. The UIPickerComponent container is displayed in a 3D scroll wheel style. The options can be customized as required, including text, image, and image-text combination.
 
->  **说明：**
+>  **NOTE**
 >
-> - 该组件从API version 22开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - This component is supported since API version 22. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - Picker容器的选项行高固定为40vp，最多可显示7个选项。由于显示效果为立体滚轮样式，因此除选中项外的其他选项会进行不同角度的旋转，实际的可视高度会小于40vp。
+> - The height of each option row in the UIPickerComponent container is fixed at 40 vp, and a maximum of seven options can be displayed. Due to the three-dimensional wheel display effect, options other than the selected one will be rotated at different angles, so the actual visible height will be less than 40 vp.
 >
-> - Picker容器的[height](./ts-universal-attributes-size.md#height)建议设置为200vp。当设置的高度大于等于该建议值时，可完全显示7个选项；小于该建议值时，显示范围会从上下边缘向中间裁剪，可显示的选项数量也会相应减少，始终保持选中项垂直居中。
+> - You are advised to set the [height](./ts-universal-attributes-size.md#height) of the UIPickerComponent container to 200 vp. When the set height is greater than or equal to this recommended value, all 7 options can be fully displayed. Otherwise, the display area will be cropped from the top and bottom edges towards the center, and the number of displayed options will be reduced accordingly, always keeping the selected item vertically centered.
 >
-> - 当Picker容器未设置[width](./ts-universal-attributes-size.md#width)时，取当前视图中可见子组件的最大宽度作为容器宽度。建议为Picker容器设置宽度，或为每个子组件设置相同宽度，以避免滑动过程中容器宽度动态发生变化，影响显示效果。
+> - If the [width](./ts-universal-attributes-size.md#width) is not set for the UIPickerComponent container, the maximum width of visible child components in the current view is used as the container width. You are advised to set the width of the UIPickerComponent container or set the same width for each child component to prevent the container width from dynamically changing during sliding, which affects the display effect.
 >
-> - Picker容器的子组件的对齐方式固定为居中对齐，不支持通过[align](ts-universal-attributes-location.md#align)属性改变子组件的对齐方式。
+> - The alignment mode of child components in the UIPickerComponent container is fixed to center alignment. The alignment mode of child components cannot be changed using the [align](ts-universal-attributes-location.md#align) attribute.
 >
-> - Picker容器当前不支持智能手表设备。
+> - The UIPickerComponent container is not supported on smart watches.
 
-## 子组件
+## Child Components
 
-- 支持多个子组件。
+- Multiple child components are supported.
 
-- 支持子组件类型：[Text](./ts-basic-components-text.md)、[Image](./ts-basic-components-image.md)、[Row](./ts-container-row.md)和[SymbolGlyph](./ts-basic-components-symbolGlyph.md)。
+- Supported child component types: [Text](./ts-basic-components-text.md), [Image](./ts-basic-components-image.md), [Row](./ts-container-row.md), and [SymbolGlyph](./ts-basic-components-symbolGlyph.md)
 
-- 支持渲染控制类型：[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)。
+- Supported rendering control types: [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) and [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)
 
->  **说明：**
+>  **NOTE**
 >
-> - 开发者在使用Row容器作为子组件时，Row容器中仅支持包含Text、Image、SymbolGlyph基础组件，包含其他容器组件可能会影响显示效果或滑动功能异常。
+> - When the Row **container** is used as a child component, the **Row** container can contain only the **Text**, **Image**, and **SymbolGlyph** basic components. Including other container components may affect the display effect or cause sliding functionality abnormalities.
 >
-> - 统计子组件的个数时，不包含Row容器内的子组件，Row容器及其子组件共同视为1个子组件。
+> - When counting the number of child components, the **Row** container and its child components are counted as one child component.
 >
-> - 子组件为Text、Image、SymbolGlyph时，[height](./ts-universal-attributes-size.md#height)属性不生效，固定为40vp。
+> - When the child component is **Text**, **Image**, or **SymbolGlyph**, the [height](./ts-universal-attributes-size.md#height) attribute does not take effect and is fixed at 40 vp.
 >
-> - 子组件为Row容器时，Row容器的[height](./ts-universal-attributes-size.md#height)属性不生效，固定为40vp，Row容器内的子组件[height](./ts-universal-attributes-size.md#height)属性能正常生效，最终显示效果由Row容器决定。
+> - When the child component is a **Row** container, its [height](./ts-universal-attributes-size.md#height) attribute does not take effect and is fixed at 40 vp. The [height](./ts-universal-attributes-size.md#height) attribute of the child components in the **Row** container takes effect. The final display effect is determined by the **Row** container.
 >
-> - 图文组合类型选项需要使用Row容器包含图片和文本组件。使用图文组合类型选项时，建议将图片的[height](./ts-universal-attributes-size.md#height)设置为40vp及以下，避免图片较大时被裁剪。
+> - The text-image combination option requires that the **Row** container contain the **Text** and **Image** components. When using the text-image combination option, you are advised to set the image's [height](./ts-universal-attributes-size.md#height) to 40 vp or below to avoid cropping when images are large.
 >
-> - Picker容器内所有文本组件（包括Row容器内的文本组件）的fontSize属性默认为20fp。用户设置将覆盖默认值，设置异常值时以文本组件[fontSize](./ts-basic-components-text.md#fontsize)处理的结果为准。建议统一设置或不设置fontSize以保证良好的显示效果。
+> - The default value of the fontSize attribute of all text components (including the text components in the Row container) in the UIPickerComponent container is 20 fp. User settings will override the default value, and abnormal values will be processed according to the result of handling the text component's [fontSize](./ts-basic-components-text.md#fontsize). You are advised to set the **fontSize** attribute to a unified value or not to set it to ensure a good display effect.
 
 
-## 接口
+## APIs
 
-Picker(options?: PickerOptions)
+UIPickerComponent(options?: UIPickerComponentOptions)
 
-创建Picker容器，其选中项由options参数中的selectedIndex属性值决定。
+Creates a UIPickerComponent container. The selected item is determined by the value of the selectedIndex attribute in the options parameter.
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**Parameters**
 
-| 参数名 | 类型 | 必填 | 说明 |
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options |  [PickerOptions](#pickeroptions对象说明)| 否 | 配置Picker容器的参数。 |
+| options |  [UIPickerComponentOptions](#uipickercomponentoptions)| No| Parameters for configuring the UIPickerComponent container.|
 
-## PickerOptions对象说明
+<<<<<<< HEAD
+## UIPickerComponentOptions
+=======
+## UIPickerComponentOptions
+>>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
-Picker容器的参数说明。
+Parameters of the UIPickerComponent container.
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| selectedIndex | number | 否 | 是 | 选中项的索引值。</br>取值范围：[0, 子组件的个数-1]内的整数。不在取值范围内时，使用默认值；设置小数时，使用向下取整后的整数。</br>默认值：0<br/>**说明：**<br/>统计子组件的个数时，不包含Row容器内的子组件，Row容器及其子组件共同视为1个子组件。 |
+| selectedIndex | number | No| Yes| Index of the selected item.<br>Value range: an integer in the range of [0, Number of child components – 1]. If the value is not within the value range, the default value is used. If a decimal number is set, the integer part after rounding down is used.<br>Default value: **0**<br>**NOTE**<br>When counting the number of child components, the **Row** container and its child components are counted as one child component.|
 
-## 属性
+## Attributes
 
-除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
 
 ### canLoop
 
 canLoop(isLoop: Optional\<boolean>)
 
-设置选项列是否可循环滚动。
+Sets whether the option list can loop scrolling.
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**Parameters**
 
-| 参数名 | 类型    | 必填 | 说明                                                         |
+| Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否可循环滚动。<br/>- true：可循环滚动。<br/>- false：不可循环滚动。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。<br/>如果子组件的个数小于8个，无论isLoop设置为true还是false，都不会循环滚动。 |
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether loop scrolling is enabled.<br>- **true**: Loop scrolling is enabled.<br>- **false**: Loop scrolling is disabled.<br>Default value: **true**<br>If the value of **isLoop** is **undefined**, the default value is used.<br>If the number of child components is less than 8, loop scrolling will not occur regardless of whether isLoop is set to **true** or **false**.|
 
 ### enableHapticFeedback
 
 enableHapticFeedback(enable: Optional\<boolean>)
 
-设置是否开启触控反馈。
+Sets whether to enable haptic feedback.
 
-开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 ``` json
 "requestPermissions": [
    {
@@ -108,138 +112,138 @@ enableHapticFeedback(enable: Optional\<boolean>)
 ]
 ```
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
+**Parameters**
 
-| 参数名 | 类型                                          | 必填  | 说明                                                                                  |
+| Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>当enable的值为undefined时，使用默认值。<br/>开启后，是否存在触控反馈取决于系统硬件支持情况。|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>If the value of **enable** is **undefined**, the default value is used.<br>After this function is enabled, whether haptic feedback is available depends on the hardware support of the system.|
 
 ### selectionIndicator
 
 selectionIndicator(style: Optional\<PickerIndicatorStyle>)
 
-设置选中项指示器的样式。
+Sets the style of the selected item indicator.
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**Parameters**
 
-| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerIndicatorStyle](ts-container-picker.md#pickerindicatorstyle对象说明)> | 是   | 选中项指示器的样式。<br/>默认值：<br/>{<br/>type: PickerIndicatorType.BACKGROUND,<br/>borderRadius: {<br/>value:12,<br/>unit:LengthUnit.vp<br/>},<br/>backgroundColor: 'sys.color.comp_background_tertiary'<br/>}<br/>当style的值为undefined时，使用默认值。|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle)> | Yes  | Style of the selected item indicator.<br>Default value:<br>{<br>type: PickerIndicatorType.BACKGROUND,<br>borderRadius: {<br>value:12,<br>unit:LengthUnit.vp<br>},<br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
-## 事件
+## Events
 
-除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
+In addition to the [universal events](ts-component-general-events.md), the following events are supported.
 
 ### onChange
 
-onChange(callback: Optional\<OnPickerCallback>)
+onChange(callback: Optional\<OnUIPickerComponentCallback>)
 
-滑动选择器选项时，若选中项发生变化，触发该事件。
+Triggered when the selected item changes.
 
->  **说明：**
+>  **NOTE**
 > 
-> 如果某个选项有一半以上的区域进入选中项区域内，则该选项成为选中项。
+> If more than half of an option's area enters the selected item area, the option becomes the selected item.
 > 
-> 选中项区域可通过设置[selectionIndicator](#selectionindicator)进行标识。如果设置选中项指示器为背景，则背景区域即为选中项区域。如果设置选中项指示器为分割线，则上下分割线的中心线内的区域为选中项区域。
+> The selected item area can be identified by setting [selectionIndicator](#selectionindicator). If the selected item indicator is set to the background, the background area is the selected item area. If the selected item indicator is set to the divider, the area between the center lines of the upper and lower dividers is the selected item area.
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**Parameters**
 
-| 参数名 | 类型                                       | 必填 | 说明                                              |
+| Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnPickerCallback](#onpickercallback)> | 是   | 当选中项发生变化时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the selected item changes.<br>If **callback** is set to **undefined**, the callback is not used.|
 
 ### onScrollStop
 
-onScrollStop(callback: Optional\<OnPickerCallback>)
+onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
-选择器滑动停止时，触发该事件。选择器滑动停止指某次行为触发的滑动动画完全结束。如果某次滑动动画还未结束时又触发了新的滑动动画，则不属于滑动停止。
+Triggered when the picker scrolling stops. The picker scrolling stops when the sliding animation triggered by an action is complete. If a new sliding animation is triggered before the previous one finishes, it does not count as scrolling stop.
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**Parameters**
 
-| 参数名 | 类型                                       | 必填 | 说明                                              |
+| Name| Type                                      | Mandatory| Description                                             |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnPickerCallback](#onpickercallback)> | 是   | 当选择器滑动停止时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | Yes  | Callback triggered when the picker scrolling stops.<br>If **callback** is set to **undefined**, the callback is not used.|
 
-## PickerIndicatorStyle对象说明
+## PickerIndicatorStyle
 
-选中项指示器样式的参数说明。
+Sets parameters of the selected item indicator style.
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型   | 只读 | 可选 | 说明                                       |
+| Name | Type  | Read-Only| Optional| Description                                      |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
-| type  | [PickerIndicatorType](#pickerindicatortype枚举说明) | 否   | 否   | 选中项指示器的类型。<br/>默认值：PickerIndicatorType.BACKGROUND<br/>当type的值为小数时，使用向下取整后的整数；当type的值不在PickerIndicatorType枚举范围内时，使用默认值。 |
-| strokeWidth |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)      | 否   | 是   | 分割线的线宽。<br/>默认值：2.0px<br/>单位：与LengthMetrics一致。<br/>取值范围：[0, 选中项高度的一半（即20vp）]。strokeWidth小于0或大于选中项高度的一半时使用默认值。不支持“百分比”类型。<br/>**说明：**<br/>1. 当type为PickerIndicatorType.DIVIDER时生效。<br/>2. 通过LengthMetrics.resource方式设置时，使用非长度属性的值会按照0vp处理。  |
-| dividerColor       | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 分割线的颜色。<br/>默认值：'sys.color.comp_divider'<br/>**说明：**<br/>当type为PickerIndicatorType.DIVIDER时生效。 |
-| startMargin |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)       | 否   | 是   | 分割线与Picker容器侧边起始端的距离。<br/>默认值：0<br/>单位：与LengthMetrics一致。<br/>取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。设置小于0或startMargin与endMargin之和超过Picker容器的宽度时，使用默认值。不支持“百分比”类型。<br/>**说明：**<br/>当type为PickerIndicatorType.DIVIDER时生效。 |
-| endMargin   |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否   | 是   | 分割线与Picker容器侧边结束端的距离。<br/>默认值：0<br/>单位：与LengthMetrics一致。<br/>取值范围：startMargin与endMargin之和不得超过Picker容器的宽度。设置小于0或startMargin与endMargin之和超过Picker容器的宽度时，使用默认值。不支持“百分比”类型。<br/>**说明：**<br/>当type为PickerIndicatorType.DIVIDER时生效。 |
-| backgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | 否  | 是  | 选中项背景的颜色。<br/>默认值：'sys.color.comp_background_tertiary'<br/>**说明：**<br/>当type为PickerIndicatorType.BACKGROUND时生效。   |
-| borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | 否  | 是  | 选中项背景的边框圆角半径。<br/>默认值：{ value:12, unit:LengthUnit.vp }，即四个圆角半径均为12vp。<br/>取值范围：取选中项的宽和高之中较小的边长为x，最大不超过x的一半。当取值小于0时，使用默认值；当取值大于最大值时，使用最大值。<br/>**说明：**<br/>1. 当type为PickerIndicatorType.BACKGROUND时生效。<br/>2. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)：统一设置四个圆角半径的大小和单位。<br/>3. [BorderRadiuses](ts-types.md#borderradiuses9)：单独设置四个圆角半径的大小（单位为vp）。<br/>4. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12)：单独设置四个圆角半径的大小和单位。 |
+| type  | [PickerIndicatorType](#pickerindicatortype)| No  | No  | Type of the selected item indicator.<br>Default value: **PickerIndicatorType.BACKGROUND**<br>If the value of **type** is a decimal number, the integer after rounding down is used. If the value of **type** is not within the value range of **PickerIndicatorType**, the default value is used.|
+| strokeWidth |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)      | No  | Yes  | Stroke width of the divider.<br>Default value: **2.0px**.<br>Unit: same as that of **LengthMetrics**<br>Value range: [0, half the height of the selected item (that is, 20 vp)]. If the value of **strokeWidth** is less than 0 or greater than half the height of the selected item, the default value is used. Percentages are not supported.<br>**NOTE**<br>1. This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.<br>2. If this parameter is set in **LengthMetrics.resource** mode, the value of a non-length attribute will be treated as 0 vp. |
+| dividerColor       | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes  | Color of the divider.<br>Default value: 'sys.color.comp_divider'<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.|
+| startMargin |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)       | No  | Yes  | Distance between the divider and the start end of the UIPickerComponent container.<br>Default value: **0**<br>Unit: same as that of **LengthMetrics**<br>Value range: The sum of startMargin and endMargin cannot exceed the width of the UIPickerComponent container. If the value is less than 0 or the sum of startMargin and endMargin exceeds the width of the UIPickerComponent container, the default value is used. Percentages are not supported.<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.|
+| endMargin   |  [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | No  | Yes  | Distance between the divider and the end of the UIPickerComponent container.<br>Default value: **0**<br>Unit: same as that of **LengthMetrics**<br>Value range: The sum of startMargin and endMargin cannot exceed the width of the UIPickerComponent container. If the value is less than 0 or the sum of startMargin and endMargin exceeds the width of the UIPickerComponent container, the default value is used. Percentages are not supported.<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.DIVIDER**.|
+| backgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the selected item.<br>Default value: **'sys.color.comp_background_tertiary'**<br>**NOTE**<br>This parameter takes effect only when **type** is set to **PickerIndicatorType.BACKGROUND**.  |
+| borderRadius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) &nbsp;\|&nbsp; [BorderRadiuses](ts-types.md#borderradiuses9) &nbsp;\|&nbsp; [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | No | Yes | Background border radius of the selected item.<br>Default value: **{ value:12, unit:LengthUnit.vp }**, meaning 12 vp for all corners<br>Value range: no more than half of the smaller value between the width and height of the selected item. If the value is less than 0, the default value is used. If the value is greater than the maximum value, the maximum value is used.<br>**NOTE**<br>1. This parameter takes effect only when **type** is set to **PickerIndicatorType.BACKGROUND**.<br>2. [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12): Sets the size and unit of the four corner radii in a unified manner.<br>3. [BorderRadiuses](ts-types.md#borderradiuses9): Sets the size (unit: vp) of the four corner radii individually.<br>4. [LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12): Sets the size and unit of the four corner radii individually.|
 
-## PickerIndicatorType枚举说明
+## PickerIndicatorType
 
-设置选中项指示器的类型。
+Enumerates the types of the selected item indicator.
 
-**原子化服务API：** 从API version 22开始，该类型支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 值 | 说明 |
+| Name| Value| Description|
 | -------- | - |-------- |
-| BACKGROUND | 0 | 通过给选中项添加背景，标识选中项。|
-| DIVIDER | 1 | 通过在选中项的上下边缘添加分割线，标识选中项。|
+| BACKGROUND | 0 | Identifies the selected item by adding a background to it.|
+| DIVIDER | 1 | Identifies the selected item by adding dividers above and below its edges.|
 
-## OnPickerCallback
+## OnUIPickerComponentCallback
 
-type OnPickerCallback = (selectedIndex: number) => void
+type OnUIPickerComponentCallback = (selectedIndex: number) => void
 
-定义[onChange](#onchange)和[onScrollStop](#onscrollstop)事件的回调类型。
+Defines the callback types for the [onChange](#onchange) and [onScrollStop](#onscrollstop) events.
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**Parameters**
 
-| 参数名     | 类型                                       | 必填 | 说明                                                         |
+| Name    | Type                                      | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectedIndex | number | 是   | 当前选中项的索引值。</br>取值范围：[0, 子组件的个数-1]内的整数。 |
+| selectedIndex | number | Yes  | Index of the selected item.<br>Value range: an integer in the range of [0, Number of child components – 1].|
 
-## 示例
+## Example
 
-### 示例1（切换循环滚动和开关触控反馈）
+### Example 1: Switching Loop Scrolling and Enabling/Disabling Haptic Feedback
 
-从API version 22开始，该示例通过点击按钮的方式实现切换Picker容器的循环滚动和开启/关闭触控反馈功能。
+Since API version 22, this example shows how to switch between cyclic scrolling and enabling/disabling touch feedback of the UIPickerComponent container by tapping a button.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-struct PickerAttrsExample {
+struct UIPickerComponentAttrsExample {
   private dataArray: string[] = [];
   @State loop: boolean = true;
   @State hapticFeedback: boolean = true;
 
   aboutToAppear(): void {
-    // 构造选项数据
+    // Construct options.
     for (let i = 1; i <= 10; i++) {
       this.dataArray.push(i.toString())
     }
@@ -248,14 +252,14 @@ struct PickerAttrsExample {
   build() {
     Column() {
       Row() {
-        Picker() {
+        UIPickerComponent() {
           ForEach(this.dataArray, (item: string) => {
             Text(item)
           })
         }
-        // 配置选项列表循环
+        // Loop the option list looping.
         .canLoop(this.loop)
-        // 配置触控音振反馈
+        // Configure haptic feedback.
         .enableHapticFeedback(this.hapticFeedback)
         .width('70%')
       }
@@ -288,33 +292,33 @@ struct PickerAttrsExample {
 
 ![containerPicker](./figures/ContainerPickerDemo1.gif)
 
-### 示例2（设置事件回调）
+### Example 2: Setting Event Callbacks
 
-从API version 22开始，该示例基于状态选择，实现了Picker容器的onChange和onScrollStop事件回调。
+In API version 22 and later versions, this example implements the onChange and onScrollStop event callbacks of the UIPickerComponent container based on the status selection.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-struct PickerEventsExample {
-  // 构造状态选项数据
-  private dataArray: string[] = ['待办', '进行中', '已完成'];
+struct UIPickerComponentEventsExample {
+  // Construct status options.
+  private dataArray: string[] = ['To-do', 'In progress', 'Completed'];
   @State onChangeDesc: string = '';
   @State onScrollStopDesc: string = '';
 
   build() {
     Column() {
       Row() {
-        Picker() {
+        UIPickerComponent() {
           ForEach(this.dataArray, (item: string) => {
             Text(item)
           })
         }
-        // 配置onChange事件回调
+        // Configure the onChange callback.
         .onChange((selectedIndex: number) => {
           this.onChangeDesc = 'on change: ' + selectedIndex
         })
-        // 配置onScrollStop事件回调
+        // Configure the onScrollStop callback.
         .onScrollStop((selectedIndex: number) => {
           this.onScrollStopDesc = 'on scroll stop: ' + selectedIndex
         })
@@ -334,20 +338,20 @@ struct PickerEventsExample {
 
 ![containerPicker](./figures/ContainerPickerDemo2.gif)
 
-### 示例3（设置选中项索引值）
+### Example 3: Setting the Selected Item Index
 
-从API version 22开始，该示例实现了设置Picker容器的选中项索引值。
+From API version 22, this example shows how to set the index of the selected item in the UIPickerComponent container.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-struct PickerSelectedIndexExample {
+struct UIPickerComponentSelectedIndexExample {
   private dataArray: string[] = [];
   @State selectedIndex: number = 0;
 
   aboutToAppear(): void {
-    // 构造选项数据
+    // Construct options.
     for (let i = 1; i <= 10; i++) {
       this.dataArray.push(i.toString())
     }
@@ -356,8 +360,8 @@ struct PickerSelectedIndexExample {
   build() {
     Column() {
       Row() {
-        Picker({
-          // 配置选中项索引值
+        UIPickerComponent({
+          // Configure the index of the selected item.
           selectedIndex: this.selectedIndex
         }) {
           ForEach(this.dataArray, (item: string) => {
@@ -385,9 +389,9 @@ struct PickerSelectedIndexExample {
 
 ![containerPicker](./figures/ContainerPickerDemo3.gif)
 
-### 示例4（设置选中项指示器）
+### Example 4: Setting the Selected Item Indicator
 
-从API version 22开始，该示例实现了设置Picker容器的选中项指示器。具体包括：在使用背景指示器时，设置背景颜色、背景圆角；在使用分割线指示器时，设置分割线颜色、分割线宽度、起始侧边距、结束侧边距。
+From API version 22, this example shows how to set the indicator of the selected item in the UIPickerComponent container. Scenarios include the following: When using a background indicator, set the background color and background corner radius. When using a divider indicator, set the divider color, divider width, start side margin, end side margin.
 
 ```ts
 // xxx.ets
@@ -395,7 +399,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct PickerIndicatorExample {
+struct UIPickerComponentIndicatorExample {
   private dataArray: string[] = [];
   @State indicatorType: PickerIndicatorType | undefined = undefined;
   @State bgColor: Color | undefined = undefined;
@@ -425,7 +429,7 @@ struct PickerIndicatorExample {
   dividerBuilder() {
     Column() {
       Row() {
-        Text('分割线线宽')
+        Text ('Divider Stroke Width')
       }.margin(2)
 
       Row() {
@@ -456,7 +460,7 @@ struct PickerIndicatorExample {
       }
 
       Row() {
-        Text('起始侧边距')
+        Text ('Start Side Margin')
       }.margin(2)
 
       Row() {
@@ -487,7 +491,7 @@ struct PickerIndicatorExample {
       }
 
       Row() {
-        Text('结束侧边距')
+        Text ('End Side Margin')
       }.margin(2)
 
       Row() {
@@ -518,11 +522,11 @@ struct PickerIndicatorExample {
       }
 
       Row() {
-        Text('分割线颜色')
+        Text ('Divider Color')
       }
 
       Row() {
-        Button('蓝色')
+        Button ('Blue')
           .onClick(() => {
             this.dividerColor = Color.Blue
           })
@@ -530,7 +534,7 @@ struct PickerIndicatorExample {
           .height(30)
           .width(73)
           .margin(2)
-        Button('黑色')
+        Button ('Black')
           .onClick(() => {
             this.dividerColor = Color.Black
           })
@@ -541,7 +545,7 @@ struct PickerIndicatorExample {
       }
 
       Row() {
-        Button('不使用自定义设置')
+        Button ('Ignore Custom Settings')
           .onClick(() => {
             this.dividerColor = undefined
           })
@@ -557,11 +561,11 @@ struct PickerIndicatorExample {
   backgroundBuilder() {
     Column() {
       Row() {
-        Text('圆角设置')
+        Text ('Corner Radius Settings')
       }.margin(2)
 
       Column() {
-        Button('使用LengthMetrics，实现统一圆角')
+        Button ('Use LengthMetrics to Implement Unified Corner Radius')
           .onClick(() => {
             this.bgBorderRadius = this.bgBorderRadiuses1
           })
@@ -569,7 +573,7 @@ struct PickerIndicatorExample {
           .height(30)
           .width(300)
           .margin(2)
-        Button('使用BorderRadiuses，实现上圆下方')
+        Button ('Use BorderRadiuses to Achieve Top Rounded, Bottom Square')
           .onClick(() => {
             this.bgBorderRadius = this.bgBorderRadiuses2
           })
@@ -577,7 +581,7 @@ struct PickerIndicatorExample {
           .height(30)
           .width(300)
           .margin(2)
-        Button('使用LocalizedBorderRadiuses，实现上方下圆')
+        Button ('Use LocalizedBorderRadiuses to Achieve Top Square, Bottom Rounded')
           .onClick(() => {
             this.bgBorderRadius = this.bgBorderRadiuses3
           })
@@ -588,11 +592,11 @@ struct PickerIndicatorExample {
       }.margin(2)
 
       Row() {
-        Text('背景色设置')
+        Text ('Background Color Settings')
       }.margin(2)
 
       Row() {
-        Button('蓝色')
+        Button ('Blue')
           .onClick(() => {
             this.bgColor = Color.Blue
           })
@@ -600,7 +604,7 @@ struct PickerIndicatorExample {
           .height(30)
           .width(73)
           .margin(2)
-        Button('绿色')
+        Button ('Green')
           .onClick(() => {
             this.bgColor = Color.Green
           })
@@ -611,7 +615,7 @@ struct PickerIndicatorExample {
       }
 
       Row() {
-        Button('不使用自定义设置')
+        Button ('Ignore Custom Settings')
           .onClick(() => {
             this.bgColor = undefined
           })
@@ -624,7 +628,7 @@ struct PickerIndicatorExample {
   }
 
   aboutToAppear(): void {
-    // 构造选项数据
+    // Construct options.
     for (let i = 1; i <= 10; i++) {
       this.dataArray.push(i.toString())
     }
@@ -633,12 +637,12 @@ struct PickerIndicatorExample {
   build() {
     Column() {
       Row() {
-        Picker() {
+        UIPickerComponent() {
           ForEach(this.dataArray, (item: string) => {
             Text(item)
           })
         }
-        // 配置选中项指示器
+        // Configure the selected item indicator.
         .selectionIndicator({
           type: this.indicatorType,
           strokeWidth: this.strokeWidth,
@@ -653,11 +657,11 @@ struct PickerIndicatorExample {
       Tabs({ barPosition: BarPosition.Start, index: this.curTabIndex, controller: this.controller }) {
         TabContent() {
           this.backgroundBuilder()
-        }.tabBar('背景指示器')
+        }.tabBar ('Background Indicator')
 
         TabContent() {
           this.dividerBuilder()
-        }.tabBar('分割线指示器')
+        }.tabBar ('Divider Indicator')
       }
       .vertical(false)
       .barMode(BarMode.Fixed)
@@ -684,28 +688,28 @@ struct PickerIndicatorExample {
 
 ![containerPicker](./figures/ContainerPickerDemo4.gif)
 
-### 示例5（自定义月份选择器）
+### Example 5: Customizing the Month Picker
 
-从API version 22开始，该示例使用Picker容器嵌套文本子组件的方式实现月份选择器。
+In API version 22 and later versions, this example uses the UIPickerComponent container to nest the text child component to implement a month selector.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-struct MonthPickerExample {
+struct MonthUIPickerComponentExample {
   private fontSize: number | string | Resource = '20vp';
   private monthArray: string[] = [];
 
   aboutToAppear(): void {
-    // 构造选项数据
+    // Construct options.
     for (let i = 1; i <= 12; i++) {
-      this.monthArray.push(i + '月')
+      this.monthArray.push (i + 'Month')
     }
   }
 
   build() {
     Column() {
-      Picker() {
+      UIPickerComponent() {
         ForEach(this.monthArray, (item: string) => {
           Text(item)
             .fontSize(this.fontSize)
@@ -714,19 +718,19 @@ struct MonthPickerExample {
         })
       }
       .width('70%')
-      // 配置选项列表循环
+      // Loop the option list looping.
       .canLoop(true)
-      // 配置触控音振反馈为关闭
+      // Disable haptic feedback.
       .enableHapticFeedback(false)
-      // 配置选中项的指示器标识为分割线
+      // Set the indicator of the selected item to a divider.
       .selectionIndicator({ type: PickerIndicatorType.DIVIDER })
-      // 订阅选中项改变事件
+      // Subscribe to the selected item change event.
       .onChange((idx: number) => {
-        console.info('Picker item changed: ' + this.monthArray[idx])
+        console.info('UIPickerComponent item changed: ' + this.monthArray[idx])
       })
-      // 订阅滑动停止事件
+      // Subscribe to the sliding stop event.
       .onScrollStop((idx: number) => {
-        console.info('Picker scroll stopped: ' + this.monthArray[idx])
+        console.info('UIPickerComponent scroll stopped: ' + this.monthArray[idx])
       })
     }
     .width('100%')
@@ -736,33 +740,33 @@ struct MonthPickerExample {
 
 ![containerPicker](./figures/ContainerPickerDemo5.gif)
 
-### 示例6（自定义地区选择器）
+### Example 6: Customizing the Area Picker
 
-从API version 22开始，该示例使用多列Picker容器组合实现地区选择器。
+Starting with API version 22, this example uses a combination of multiple columns of UIPickerComponent containers to implement a locale selector.
 
 ```ts
 // xxx.ets
 
 type RegionDict = Record<string, Record<string, Array<string>>>;
-// 定义地区字典
+// Define a region dictionary.
 let regionData: RegionDict = {
-  '辽宁省': {
-    '沈阳市': ['沈河区', '和平区', '浑南区'],
-    '大连市': ['中山区', '金州区', '长海县']
+  'Liaoning': {
+    'Shenyang': ['Shenhe District', 'Heping District', 'Hunnan District'],
+    'Dalian': ['Zhongshan District', 'Jinzhou District', 'Changhai County'],
   },
-  '吉林省': {
-    '长春市': ['南关区', '宽城区', '朝阳区'],
-    '四平市': ['铁西区', '铁东区', '梨树县']
+  'Jilin': {
+    'Changchun': ['Nanguan District', 'Kuancheng District', 'Chaoyang District'],
+    'Siping': ['Tiexi District', 'Tiedong District', 'Lishu County']
   },
-  '黑龙江省': {
-    '哈尔滨市': ['道里区', '道外区', '南岗区'],
-    '牡丹江市': ['东安区', '西安区', '爱民区']
+  'Heilongjiang': {
+    'Harbin': ['Daoli District', 'Daowai District', 'Nangang District'],
+    'Daqing': ['Honggang District', Longfeng District', Datong District']
   },
 };
 
 @Entry
 @Component
-struct RegionPickerExample {
+struct RegionUIPickerComponentExample {
   @State provinceIndex: number = 0;
   @State cityIndex: number = 0;
   @State countyIndex: number = 0;
@@ -792,8 +796,8 @@ struct RegionPickerExample {
   build() {
     Column() {
       Row() {
-        // 省级
-        Picker({
+        // Province
+        UIPickerComponent({
           selectedIndex: this.provinceIndex
         }) {
           ForEach(this.provinces, (province: string) => {
@@ -811,8 +815,8 @@ struct RegionPickerExample {
         .selectionIndicator({ type: PickerIndicatorType.DIVIDER })
         .width('25%')
 
-        // 地级
-        Picker({
+        // City
+        UIPickerComponent({
           selectedIndex: this.cityIndex
         }) {
           ForEach(this.cities, (city: string) => {
@@ -829,8 +833,8 @@ struct RegionPickerExample {
         .selectionIndicator({ type: PickerIndicatorType.DIVIDER })
         .width('25%')
 
-        // 县级
-        Picker({
+        // County
+        UIPickerComponent({
           selectedIndex: this.countyIndex
         }) {
           ForEach(this.counties, (county: string) => {
@@ -854,24 +858,24 @@ struct RegionPickerExample {
 
 ![containerPicker](./figures/ContainerPickerDemo6.gif)
 
-### 示例7（自定义选项类型）
+### Example 7: Customizing Option Types
 
-从API version 22开始，该示例使用Picker容器实现不同选项类型的选择器，包含文本选择器、图片选择器、图文组合选择器。
+In API version 22 and later versions, the UIPickerComponent container is used to implement the selector of different option types, including the text selector, image selector, and image-text combined selector.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
-struct PickersExample {
+struct UIPickerComponentExample {
   @State textList: string[] =
     ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8'];
-  // 以下$r('sys.media.*')资源文件需要替换为开发者所需的图像资源文件。
+  // Replace $r('sys.media.*') with the image resource file you use.
   @State imageList: Resource[] =
     [$r('sys.media.ohos_ic_normal_white_grid_audio'), $r('sys.media.ohos_ic_normal_white_grid_calendar'),
       $r('sys.media.ohos_ic_normal_white_grid_compress'), $r('sys.media.ohos_ic_normal_white_grid_doc'),
       $r('sys.media.ohos_ic_normal_white_grid_flac'), $r('sys.media.ohos_ic_normal_white_grid_folder'),
       $r('sys.media.ohos_ic_normal_white_grid_html'), $r('sys.media.ohos_ic_normal_white_grid_image')];
-  // 以下$r('sys.symbol.*')资源文件需要替换为开发者所需的图像资源文件。
+  // Replace the $r('sys.symbol.*') file with the image resource file you use.
   @State symbolList: Resource[] =
     [$r('sys.symbol.calendar_01'), $r('sys.symbol.calendar_02'), $r('sys.symbol.calendar_03'),
       $r('sys.symbol.calendar_04'), $r('sys.symbol.calendar_05'), $r('sys.symbol.calendar_06'),
@@ -882,7 +886,7 @@ struct PickersExample {
   @Builder
   ImagePicker() {
     Column() {
-      Picker() {
+      UIPickerComponent() {
         ForEach(this.imageList, (item: Resource) => {
           Image(item)
         })
@@ -895,7 +899,7 @@ struct PickersExample {
   @Builder
   TextPicker() {
     Column() {
-      Picker() {
+      UIPickerComponent() {
         ForEach(this.textList, (item: string) => {
           Text(item)
         })
@@ -908,7 +912,7 @@ struct PickersExample {
   @Builder
   HybridPicker() {
     Column() {
-      Picker() {
+      UIPickerComponent() {
         ForEach(this.symbolList, (item: Resource, index: number) => {
           Row() {
             SymbolGlyph(item)
@@ -927,15 +931,15 @@ struct PickersExample {
       Tabs({ barPosition: BarPosition.Start, index: this.curTabIndex, controller: this.controller }) {
         TabContent() {
           this.TextPicker()
-        }.tabBar('文本选择器')
+        }.tabBar ('Text Picker')
 
         TabContent() {
           this.ImagePicker()
-        }.tabBar('图片选择器')
+        }.tabBar ('Image Picker')
 
         TabContent() {
           this.HybridPicker()
-        }.tabBar('图文组合选择器')
+        }.tabBar ('Text-Image Picker')
       }
       .vertical(true)
       .divider({ strokeWidth: 1 })
@@ -951,35 +955,16 @@ struct PickersExample {
 
 ![containerPicker](./figures/ContainerPickerDemo7.gif)
 
-### 示例8（自定义时间选择器）
+### Example 8: Customizing the Time Picker
 
-从API version 22开始，该示例实现了一个时间选择器，功能包含设置切换是否循环滚动、切换是否显示秒数、切换是否使用24小时制、切换是否显示前导0，还可按照当前系统语言显示对应语言的内容，并根据语言习惯调整各列的显示顺序。
+In API version 22 and later, this example implements a time picker with the following functions: enabling/disabling loop scrolling, showing/hiding seconds, toggling 24-hour format, displaying/hiding leading zeros, adapting to the current system language for content rendering, and adjusting the column display order based on language habits.
 
-> **说明：**
-> - 该示例中，时间选择器的各列内容根据系统语言显示对应语言的内容，例如：英文系统显示AM/PM，中文系统显示上午/下午。
-> - 该示例中，时间选择器的各列根据系统语言调整显示顺序，例如：英文系统显示时/分/秒/AMPM，中文系统显示上下午/时/分/秒。
+> **NOTE**
+> - In this example, the content of each column of the time picker is displayed in the corresponding language based on the system language. For example, AM/PM is displayed in the English system.
+> - In this example, the columns of the time picker are adjusted according to the system language, for example: English system displays hour/minute/second/AMPM.
 
-为实现"上下午"随系统语言切换，需要在工程的resource目录下添加对应语言的翻译，例如：
-- 中文（默认）：在resource目录下创建base目录，在base目录下创建element目录，在element目录添加string.json文件（若文件已存在，请在文件中追加以下"name"-"value"键值对，请勿直接覆盖原文件）。文件内容如下：
-    ```json
-    {
-      "string": [
-        {
-          "name": "app_name",
-          "value": "timePicker"
-        },
-        {
-          "name": "am",
-          "value": "上午"
-        },
-        {
-          "name": "pm",
-          "value": "下午"
-        }
-      ]
-    }
-    ```
-- 英文：在resource目录下创建en目录，在en目录下创建element目录，在element目录添加string.json文件（若文件已存在，请在文件中追加以下"name"-"value"键值对，请勿直接覆盖原文件）。文件内容如下：
+To achieve text switching with system language, you need to add the text for the corresponding languages in the project's resource directory, for example:
+- Chinese (default): Create the base directory in the resource directory, create the element directory in the base directory, and add the string.json file to the element directory. If the file already exists, add the following key-value pairs to the file. Do not overwrite the original file. The following shows the file content:
     ```json
     {
       "string": [
@@ -998,7 +983,26 @@ struct PickersExample {
       ]
     }
     ```
-- 阿拉伯语：在resource目录下创建ar目录，在ar目录下创建element目录，在element目录下添加string.json文件（若文件已存在，请在文件中追加以下"name"-"value"键值对，请勿直接覆盖原文件）。文件内容如下：
+- English: Create the **en** directory in the **resource** directory, create the **element** directory in the **en** directory, and add the **string.json** file to the **element** directory. If the file already exists, add the key-value pair in the name-value format to the file. Do not overwrite the original file. The following shows the file content:
+    ```json
+    {
+      "string": [
+        {
+          "name": "app_name",
+          "value": "timePicker"
+        },
+        {
+          "name": "am",
+          "value": "AM"
+        },
+        {
+          "name": "pm",
+          "value": "PM"
+        }
+      ]
+    }
+    ```
+- Arabic: Create the **ar** directory in the **resource** directory, create the **element** directory in the **ar** directory, and add the **string.json** file to the **element** directory. If the file already exists, add the key-value pair in the name-value format to the file. Do not overwrite the original file. The following shows the file content:
     ```json
     {
       "string": [
@@ -1017,9 +1021,9 @@ struct PickersExample {
       ]
     }
     ```
-- 其他语言依此类推。
+- Other languages are similar.
 
-示例代码如下：
+Sample code:
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1028,7 +1032,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct TimePickerExample {
+struct TimeUIPickerComponentExample {
   @State showSecond: boolean = false;
   @State useMilitary: boolean = false;
   @State zeroPrefix: boolean = true;
@@ -1068,7 +1072,7 @@ struct TimePickerExample {
   sysLanguageChanged: boolean = false
   zero: string = '0'
   systemLanguage: string = i18n.System.getSystemLanguage();
-  // 使用系统当前区域ID创建NumberFormat对象
+  // Create a NumberFormat object using the current system locale ID.
   formatter: intl.NumberFormat = new intl.NumberFormat();
 
   aboutToAppear(): void {
@@ -1082,7 +1086,7 @@ struct TimePickerExample {
     let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
       events: [commonEventManager.Support.COMMON_EVENT_LOCALE_CHANGED]
     };
-    // 创建订阅者，监听系统语言变化
+    // Create a subscriber to listen for the system language changes.
     commonEventManager.createSubscriber(subscribeInfo)
       .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
         console.info("CreateSubscriber");
@@ -1134,7 +1138,7 @@ struct TimePickerExample {
   }
 
   flushAmPmColumn() {
-    // 根据语言习惯设置amPm列是否放在最后
+    // Set whether to display the amPm column at the end based on linguistic habits.
     if (this.systemLanguage.startsWith('en') || this.systemLanguage == 'ug') {
       this.amPmAtLast = true
     } else {
@@ -1159,7 +1163,7 @@ struct TimePickerExample {
   flushBorderStyle() {
     let realStartBorder = this.startBorderStyle
     let realEndBorder = this.endBorderStyle
-    // 根据语言习惯设置镜像语言的时间顺序
+    // Set the time sequence of the RTL language based on linguistic habits.
     if (this.systemLanguage == 'ar' || this.systemLanguage == 'ug') {
       this.isRtl = true
       realStartBorder = this.endBorderStyle
@@ -1203,7 +1207,7 @@ struct TimePickerExample {
 
   @Builder
   buildAmPmColumn() {
-    Picker({ selectedIndex: this.amPmIndex }) {
+    UIPickerComponent({ selectedIndex: this.amPmIndex }) {
       ForEach(this.amPmArr, (amPm: string) => {
         Text(amPm)
       })
@@ -1226,7 +1230,7 @@ struct TimePickerExample {
 
   @Builder
   buildHourColumn() {
-    Picker({ selectedIndex: this.hourIndex }) {
+    UIPickerComponent({ selectedIndex: this.hourIndex }) {
       ForEach(this.hourArr, (hour: string) => {
         Text(hour)
       })
@@ -1249,7 +1253,7 @@ struct TimePickerExample {
 
   @Builder
   buildMinColumn() {
-    Picker({ selectedIndex: this.minIndex }) {
+    UIPickerComponent({ selectedIndex: this.minIndex }) {
       ForEach(this.minSecArr, (min: string) => {
         Text(min)
       })
@@ -1272,7 +1276,7 @@ struct TimePickerExample {
 
   @Builder
   buildSecColumn() {
-    Picker({ selectedIndex: this.secIndex }) {
+    UIPickerComponent({ selectedIndex: this.secIndex }) {
       ForEach(this.minSecArr, (sec: string) => {
         Text(sec)
       })
@@ -1307,7 +1311,7 @@ struct TimePickerExample {
   build() {
     Column() {
       Row() {
-        // 根据镜像语言显示顺序创建column
+        // Create columns according to the display sequence of the RTL language.
         if (!this.isRtl) {
           if (!this.useMilitary && !this.amPmAtLast) {
             this.buildAmPmColumn()

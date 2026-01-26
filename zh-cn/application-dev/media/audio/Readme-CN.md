@@ -9,9 +9,9 @@
 - [Audio Kit简介](audio-kit-intro.md)
 - [使用合适的音频类型](using-right-streamusage-and-sourcetype.md)
 - 音频焦点和音频会话管理<!--audio-session-->
-  - [音频焦点和音频会话介绍](audio-playback-concurrency.md)
-  - [使用AudioSession管理应用音频焦点(ArkTS)](audio-session-management.md)
-  - [使用AudioSession管理应用音频焦点(C/C++)](using-ohaudio-for-session.md)
+  - [音频焦点介绍](audio-playback-concurrency.md)
+  - [音频会话管理](audio-session-management.md)
+  - [使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)
 - 音频播放<!--audio-playback-->
   - [音频播放开发概述](audio-playback-overview.md)
   - [推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)

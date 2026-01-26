@@ -12,9 +12,9 @@ The @AnimatableExtend decorator is used to customize animatable property methods
 
 2. Enabling frame-by-frame property changes to achieve frame-by-frame layout effects.
 
-- Animatable property: a property that triggers an animation effect when its value changes (after being called before the animation property), resulting in a smooth transition effect. Examples include **height**, **width**, **backgroundColor**, **translate**, and **fontSize** (of the **Text** component).
+- Animatable property: a property that triggers an animation effect when its value changes (after being called before the **animation** property), resulting in a smooth transition effect. Examples include **height**, **width**, **backgroundColor**, **translate**, and **fontSize** (of the **Text** component).
 
-- Non-animatable property: a property that does not trigger an animation effect when its value changes (even if called before the **animation** property). Its value changes abruptly without transitions. An example is the **points** property of the **Polyline** component.
+- Non-animatable property: a property that does not trigger an animation effect when its value changes (even if called before the animation property). Its value changes abruptly without transitions. An example is the **points** property of the **Polyline** component.
 
 >  **NOTE**
 >
@@ -34,8 +34,7 @@ The @AnimatableExtend decorator is used to customize animatable property methods
 
 ## AnimatableArithmetic\<T\>
 
-The **AnimatableArithmetic** API defines animation calculation rules for non-number data types. To animate non-number data (such as arrays, structs, and colors), you must implement the **AnimatableArithmetic\<T\>** API, including methods for addition, subtraction, multiplication, and equality checks.
-This enables the data to participate in animation interpolation and allows the system to detect value changes. In other words, the non-number data is defined as types that implement the **AnimatableArithmetic\<T\>** API.
+The **AnimatableArithmetic** API defines animation calculation rules for non-number data types. To animate non-number data (such as arrays, structs, and colors), you need to implement the addition, subtraction, multiplication, and equality checking functions in the **AnimatableArithmetic\<T\>** API. This enables the data to participate in animation interpolation calculations and to detect whether the data has changed. In other words, the non-number data is defined as types that implement the **AnimatableArithmetic\<T\>** API.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

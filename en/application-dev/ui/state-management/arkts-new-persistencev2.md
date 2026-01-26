@@ -1,4 +1,4 @@
-# PersistenceV2: Persisting UI State
+# PersistenceV2: Persisting UI States
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zzq212050299-->
@@ -12,7 +12,7 @@ To enhance the state management framework's capability of persistently storing U
 
 **PersistenceV2** provides the state variable persistence capability. You can bind the same key through **connect** or **globalConnect** to implement the persistence capability during state variable change and application cold start.
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [PersistentV2](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2).
+Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [PersistenceV2-API](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2).
 
 >**NOTE**
 >
@@ -31,9 +31,9 @@ For a [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with
 
 **PersistenceV2** supports state sharing among multiple UIAbility instances in the [main thread](../../application-models/thread-model-stage.md) of an application.
 
-## How to Use
+## About
 
-- connect: creates or obtains the stored data.
+- **connect**: creates or obtains the stored data.
 
 >**NOTE**
 >
@@ -41,15 +41,15 @@ For a [\@ObservedV2](./arkts-new-observedV2-and-trace.md) object associated with
 >
 >2. The data storage path is at the module level. That is, the data copy is stored in the persistent file of the corresponding module when the module calls the **connect** function. If multiple modules use the same key, the data of the module that uses the **connect** function first is used, and the data in **PersistenceV2** is also stored in the module that uses the **connect** function first.
 >
->3. The storage path, determined when the first ability of the application is started, is the module to which the ability belongs. If an ability calls the **connect** function and can be started by different modules, the number of data copies is the same as the number of startup modes of the ability.
+>3. The storage path, determined when the first ability of the application is started, is the module to which the ability belongs. If an ability calls **connect** and can be started by different modules, the number of data copies is the same as the number of startup modes of the ability.
 
-- globalConnect: creates or obtains the stored data.
-- remove: deletes the stored data of a specified key. If a key that does not exist in **PersistenceV2** is deleted, a warning is reported.
-- keys: Returning All Keys Stored in PersistenceV2 Includes all keys in the module-level and application-level storage paths.
-- save: Persisting Stored Data Manually
-- **notifyOnError**: Callback for Responding to a Serialization or Deserialization Failure When data is stored to disks, the data needs to be serialized. If a key fails to be serialized, the error is unpredictable. As a result, this API can be called to capture exceptions.
+- **globalConnect**: creates or obtains the stored data.
+- **remove**: deletes the stored data of a specified key. If a key that does not exist in **PersistenceV2** is deleted, a warning is reported.
+- **keys**: returns all keys stored in persistencev2. All keys in the module-level and application-level storage paths are returned.
+- **save**: manually persists data.
+- **notifyOnError**: callback for responding to a serialization or deserialization failure. When data is stored to disks, the data needs to be serialized. If a key fails to be serialized, the error is unpredictable. As a result, this API can be called to capture exceptions.
 
-For details about the preceding APIs, see [State Management API Guide](../../reference/apis-arkui/js-apis-stateManagement.md).
+For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Management)](../../reference/apis-arkui/js-apis-stateManagement.md).
 
 ## Constraints
 
@@ -61,7 +61,7 @@ For details about the preceding APIs, see [State Management API Guide](../../ref
 
 4. A single key supports a maximum of 8 KB data. If the data is too large, the persistence fails.
 
-5. The data to be persisted must be a class object. Container types (such as Array, Set, and Map), built-in constructed objects (such as Date and Number), and basic types (such as string, number, and boolean) are not supported. If you need to persist non-class objects, you are advised to use [Preferences](../../database/preferences-guidelines.md) for data persistence.
+5. The data to be persisted must be a class object. Container types (such as Array, Set, and Map), built-in constructed objects (such as Date and Number), and basic types (such as string, number, and boolean) are not supported. To persist non-class objects, you need to use [Preferences](../../database/preferences-guidelines.md) for data persistence.
 
 6. Objects that used for loop reference are not supported.
 
@@ -96,39 +96,47 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 11. If you have strong requirements on data persistence, for example, the persistence time, you are advised to use [Preferences](../../database/preferences-guidelines.md) for data persistence. Note: PersistenceV2 and Preferences cannot be used together because the data stored in Preferences does not have state variable information, and the deserialized data cannot trigger automatic storage of PersistenceV2.
 
-## Use Scenarios
+## Use Cases
 
 ### Storing Data Between Two Pages
 
 Data page
-```ts
+<!-- @[persistence_v2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/Sample.ets) -->
+
+``` TypeScript
+
 // Sample.ets
 import { Type } from '@kit.ArkUI';
 
 // Data center
 @ObservedV2
 class SampleChild {
-  @Trace p1: number = 0;
-  p2: number = 10;
+  @Trace public p1: number = 0;
+  public p2: number = 10;
 }
 
 @ObservedV2
 export class Sample {
   // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
-  @Trace f: SampleChild = new SampleChild();
+  @Trace public f: SampleChild = new SampleChild();
 }
 ```
 
 Page 1
-```ts
+<!-- @[Persistence_Use_Case_Data_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/page/Page1.ets) -->
+
+``` TypeScript
 // Page1.ets
 import { PersistenceV2 } from '@kit.ArkUI';
 import { Sample } from '../Sample';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 // Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
 @Entry
@@ -162,7 +170,7 @@ struct Page1 {
 
         Button('Page1 save the key Sample')
           .onClick(() => {
-            // If the sample is in the connect state, persist the KV pair of the Sample.
+            // If the sample is in the connect state, persist the key-value pair of Sample.
             PersistenceV2.save(Sample);
           })
 
@@ -183,13 +191,15 @@ struct Page1 {
         Text(`all keys in PersistenceV2: ${PersistenceV2.keys()}`)
           .fontSize(30)
       }
-      }
+    }
   }
 }
 ```
 
 Page 2
-```ts
+<!-- @[Persistence_Use_Case_Data_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/page/Page2.ets) -->
+
+``` TypeScript
 // Page2.ets
 import { PersistenceV2 } from '@kit.ArkUI';
 import { Sample } from '../Sample';
@@ -258,26 +268,30 @@ When using **Navigation**, create a **route_map.json** file as shown below in th
 
 ### Using globalConnect to Store Data
 
-```ts
+<!-- @[persistence_v2_global_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2GlobalConnect.ets) -->
+
+``` TypeScript
 import { PersistenceV2, Type, ConnectOptions } from '@kit.ArkUI';
 import { contextConstant } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const DOMAIN = 0x0000;
 // Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
 @ObservedV2
 class SampleChild {
-  @Trace childId: number = 0;
-  groupId: number = 1;
+  @Trace public childId: number = 0;
+  public groupId: number = 1;
 }
 
 @ObservedV2
-export class Sample {
+export class SampleGlobalConnect {
   // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
-  @Trace father: SampleChild = new SampleChild();
+  @Trace public father: SampleChild = new SampleChild();
 }
 
 @Entry
@@ -285,42 +299,51 @@ export class Sample {
 struct Page1 {
   @Local refresh: number = 0;
   // If no key is provided, the type name is used as the key. If the encryption level is not specified, the default EL2 level is used.
-  @Local p: Sample = PersistenceV2.globalConnect({type: Sample, defaultCreator:() => new Sample()})!;
-
+  @Local p: SampleGlobalConnect =
+    PersistenceV2.globalConnect({ type: SampleGlobalConnect, defaultCreator: () => new SampleGlobalConnect() })!;
   // Use key:global1 for connection and set the encryption level to EL1.
-  @Local p1: Sample = PersistenceV2.globalConnect({type: Sample, key:'global1', defaultCreator:() => new Sample(), areaMode: contextConstant.AreaMode.EL1})!;
-
+  @Local p1: SampleGlobalConnect = PersistenceV2.globalConnect({
+    type: SampleGlobalConnect,
+    key: 'global1',
+    defaultCreator: () => new SampleGlobalConnect(),
+    areaMode: contextConstant.AreaMode.EL1
+  })!;
   // Use key:global2 for connection and use the constructor function. If no encryption parameter is passed in, EL2 is used by default.
-  options: ConnectOptions<Sample> = {type: Sample, key: 'global2', defaultCreator:() => new Sample()};
-  @Local p2: Sample = PersistenceV2.globalConnect(this.options)!;
-
+  options: ConnectOptions<SampleGlobalConnect> =
+    { type: SampleGlobalConnect, key: 'global2', defaultCreator: () => new SampleGlobalConnect() };
+  @Local p2: SampleGlobalConnect = PersistenceV2.globalConnect(this.options)!;
   // Use key:global3 for connection and set the encryption parameter ranging from 0 to 4; otherwise, a crash occurs. In this case, EL3 is set.
-  @Local p3: Sample = PersistenceV2.globalConnect({type: Sample, key:'global3', defaultCreator:() => new Sample(), areaMode: 3})!;
+  @Local p3: SampleGlobalConnect = PersistenceV2.globalConnect({
+    type: SampleGlobalConnect,
+    key: 'global3',
+    defaultCreator: () => new SampleGlobalConnect(),
+    areaMode: 3
+  })!;
 
   build() {
     Column() {
       /**************************** Display data **************************/
       // Data decorated by @Trace can be automatically persisted to disks.
-      Text('Key Sample: ' + this.p.father.childId.toString())
-        .onClick(()=> {
+      Text('Key SampleGlobalConnect: ' + this.p.father.childId.toString())
+        .onClick(() => {
           this.p.father.childId += 1;
         })
         .fontSize(25)
         .fontColor(Color.Red)
       Text('Key global1: ' + this.p1.father.childId.toString())
-        .onClick(()=> {
+        .onClick(() => {
           this.p1.father.childId += 1;
         })
         .fontSize(25)
         .fontColor(Color.Red)
       Text('Key global2: ' + this.p2.father.childId.toString())
-        .onClick(()=> {
+        .onClick(() => {
           this.p2.father.childId += 1;
         })
         .fontSize(25)
         .fontColor(Color.Red)
       Text('Key global3: ' + this.p3.father.childId.toString())
-        .onClick(()=> {
+        .onClick(() => {
           this.p3.father.childId += 1;
         })
         .fontSize(25)
@@ -334,10 +357,10 @@ struct Page1 {
         .fontSize(25)
 
       /**************************** The remove API **************************/
-      Text('Remove key Sample: ' + 'refresh: ' + this.refresh)
+      Text('Remove key SampleGlobalConnect: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
           // Removing this key will disconnect from PersistenceV2. After that, PersistenceV2 cannot store data even if it is reconnected.
-          PersistenceV2.remove(Sample);
+          PersistenceV2.remove(SampleGlobalConnect);
           this.refresh += 1;
         })
         .fontSize(25)
@@ -373,18 +396,18 @@ struct Page1 {
         .fontSize(25)
 
       /**************************** The save API **************************/
-      Text('not save key Sample: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
+      Text('not save key SampleGlobalConnect: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored.
           this.p.father.groupId += 1;
           this.refresh += 1;
         })
         .fontSize(25)
-      Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
+      Text('save key SampleGlobalConnect: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
           this.p.father.groupId += 1;
-          PersistenceV2.save(Sample);
+          PersistenceV2.save(SampleGlobalConnect);
           this.refresh += 1;
         })
         .fontSize(25)
@@ -404,41 +427,52 @@ Pay attention to the following points when using connect to store data:
 
 Pay attention to the storage path of globalConnect:
 
-Although globalConnect is an application-level path, you can set different encryption partitions. Different encryption partitions indicate different storage paths. The connect does not support the setting of encryption partitions. However, when the encryption level of a module is switched, the storage path of the module is switched to the corresponding encryption partition path.
+Although **globalConnect** is an application-level path, you can set different encryption partitions. Different encryption partitions indicate different storage paths. The **connect** does not support the setting of encryption partitions. However, when the encryption level of a module is switched, the storage path of the module is switched to the corresponding encryption partition path.
 
 Create a module based on the project and redirect to the new module based on the sample code. The sample code is as follows:
 
-```ts
+<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) --> 
+
+``` TypeScript
 module 1
 import { PersistenceV2, Type } from '@kit.ArkUI';
-import { contextConstant, common, Want } from '@kit.AbilityKit';
+import { common, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { contextConstant } from '@kit.AbilityKit';
+
+const DOMAIN = 0x0000;
 
 // Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
 @ObservedV2
 class SampleChild {
-  @Trace childId: number = 0;
-  groupId: number = 1;
+  @Trace public childId: number = 0;
+  public groupId: number = 1;
 }
 
 @ObservedV2
 export class Sample {
   // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
-  @Trace father: SampleChild = new SampleChild();
+  @Trace public father: SampleChild = new SampleChild();
 }
 
 @Entry
 @ComponentV2
 struct Page1 {
   @Local refresh: number = 0;
-  // Use key:global1 for connection and set the encryption level to EL1.
-  @Local p1: Sample = PersistenceV2.globalConnect({type: Sample, key:'globalConnect1', defaultCreator:() => new Sample()})!;
-
-  // Use key:global2 for connection and use the constructor function. If no encryption parameter is passed in, EL2 is used by default.
+  // Use key:globalConnect1 for connection and set the encryption level to EL1.
+  @Local p1: Sample =
+    PersistenceV2.globalConnect({
+      type: Sample,
+      key: 'globalConnect1',
+      defaultCreator: () => new Sample(),
+      areaMode: contextConstant.AreaMode.EL1
+    })!;
+  // Use key:connect2 for connection and use the constructor function. If no encryption parameter is passed in, EL2 is used by default.
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
@@ -446,87 +480,93 @@ struct Page1 {
     Column() {
       /**************************** Display data **************************/
       Text('Key globalConnect1: ' + this.p1.father.childId.toString())
-        .onClick(()=> {
+        .onClick(() => {
           this.p1.father.childId += 1;
         })
         .fontSize(25)
         .fontColor(Color.Red)
       Text('Key connect2: ' + this.p2.father.childId.toString())
-        .onClick(()=> {
+        .onClick(() => {
           this.p2.father.childId += 1;
         })
         .fontSize(25)
         .fontColor(Color.Red)
 
       /**************************** Redirection **************************/
-      Button('Redirection newModule').onClick (() => { // is used between different modules. globalConnect is recommended.
-        let want: Want = {
-          deviceId: '', // If deviceId is empty, the current device is used.
-          bundleName: 'com.example.myPersistenceV2', // View in app.json5.
-          moduleName: 'newModule', // View in module.json5 of the module to be redirected to. This parameter is optional.
-          abilityName: 'NewModuleAbility', // Ability to be redirected to. View in the ability.ets file of the redirected module.
-          uri:'src/main/ets/pages/Index'
-        }
-        // context is the UIAbilityContext of the initiator UIAbility.
-        this.context.startAbility(want).then(() => {
-          console.info('start ability success');
-        }).catch((err: Error) => {
-          console.error(`start ability failed. code is ${err.name}, message is ${err.message}`);
+      Button('Jump to newModule')
+        .onClick (() => { // Used between different modules. You are advised to use globalConnect.
+          let want: Want = {
+            deviceId: '', // If deviceId is empty, the current device is used.
+            bundleName: 'com.samples.paradigmstatemanagement', // View in app.json5.
+            moduleName: 'demo', // View in module.json5 of the module to be redirected to. This parameter is optional.
+            abilityName: 'NewModuleAbility', // Jump startup ability, which can be obtained from the module.json5 file of the target module.
+            uri: 'src/main/ets/pages/Index'
+          };
+          // context is the UIAbilityContext of the initiator UIAbility.
+          this.context.startAbility(want).then(() => {
+            hilog.info(DOMAIN, 'testTag', '%{public}s', 'start ability success');
+          }).catch((err: Error) => {
+            hilog.error(DOMAIN, 'testTag', '%{public}s',
+              `start ability failed. code is ${err.name}, message is ${err.message}`);
+          });
         })
-      })
     }
     .width('100%')
     .borderWidth(3)
     .borderColor(Color.Blue)
-    .margin({top: 5, bottom: 5})
+    .margin({ top: 5, bottom: 5 })
   }
 }
 ```
 
-```ts
+<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Module 2
 import { PersistenceV2, Type } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { contextConstant } from '@kit.AbilityKit';
 
+const DOMAIN = 0x0000;
 // Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
 @ObservedV2
 class SampleChild {
-  @Trace childId: number = 0;
-  groupId: number = 1;
+  @Trace public childId: number = 0;
+  public groupId: number = 1;
 }
 
 @ObservedV2
 export class Sample {
   // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
-  @Trace father: SampleChild = new SampleChild();
+  @Trace public father: SampleChild = new SampleChild();
 }
 
 @Entry
 @ComponentV2
 struct Page1 {
   @Local a: number = 0;
-  // Use key:global1 for connection and set the encryption level to EL1.
-  @Local p1: Sample = PersistenceV2.globalConnect({type: Sample, key:'globalConnect1', defaultCreator:() => new Sample()})!;
-
-  // Use key:global2 for connection and use the constructor function. If no encryption parameter is passed in, EL2 is used by default.
+  // Use key:globalConnect1 for connection and set the encryption level to EL1.
+  @Local p1: Sample =
+    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample(), areaMode: contextConstant.AreaMode.EL1 })!;
+  // Use key:connect2 for connection and use the constructor function. If no encryption parameter is passed in, EL2 is used by default.
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
 
   build() {
     Column() {
       /**************************** Display data **************************/
       Text('Key globalConnect1: ' + this.p1.father.childId.toString())
-        .onClick(()=> {
+        .onClick(() => {
           this.p1.father.childId += 1;
         })
         .fontSize(25)
         .fontColor(Color.Red)
       Text('Key connect2: ' + this.p2.father.childId.toString())
-        .onClick(()=> {
+        .onClick(() => {
           this.p2.father.childId += 1;
         })
         .fontSize(25)
@@ -543,45 +583,50 @@ When you use different startup modes for newModule, the following symptoms may o
 * Exit the application, clear the background, start the module entry, and start **newModule** by pressing the redirection key. The value of **globalConnect1** is **5**, and the value of **connect2** remains **1**.
 * **globalConnect** is an application-level storage path. For a key, the entire application has only one storage path for the corresponding encryption level. **connect** is a module-level storage path. Each encryption level has a different storage path according to the startup mode of the module.
 
-## Suggestions
+## **Usage Suggestion**
 
 You are advised to use the new API **globalConnect** to create and obtain data. The storage specifications and memory specifications of **globalConnect** are the same for an application, and the encryption level can be set without switching the encryption mode of ability. If your application does not involve multiple modules, using **connect** will not affect your application.
 
 ### Migrating from connect to globalConnect
 
-```ts
+<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) --> 
+
+``` TypeScript
 // Use connect to store data.
 import { PersistenceV2, Type } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 // Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
 @ObservedV2
 class SampleChild {
-  @Trace childId: number = 0;
-  groupId: number = 1;
+  @Trace public childId: number = 0;
+  public groupId: number = 1;
 }
 
 @ObservedV2
 export class Sample {
   // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
-  @Trace father: SampleChild = new SampleChild();
+  @Trace public father: SampleChild = new SampleChild();
 }
 
 @Entry
 @ComponentV2
 struct Page1 {
   @Local refresh: number = 0;
-  // Use key:connect2 to store data.
-  @Local p: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
+  // Use key:connect3 for storage.
+  @Local p: Sample = PersistenceV2.connect(Sample, 'connect3', () => new Sample())!;
 
   build() {
-    Column({space: 5}) {
+    Column({ space: 5 }) {
       /**************************** Display data **************************/
-      Text('Key connect2: ' + this.p.father.childId.toString())
+      Text('Key connect3: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
         })
@@ -589,12 +634,12 @@ struct Page1 {
         .fontColor(Color.Red)
 
       /**************************** The save API **************************/
-      // Non-state variables can be refreshed only by using the state variable refresh.
-      Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+      // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
+      Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
           this.p.father.groupId += 1;
-          PersistenceV2.save('connect2');
+          PersistenceV2.save('connect3');
           this.refresh += 1;
         })
         .fontSize(25)
@@ -604,40 +649,45 @@ struct Page1 {
 }
 ```
 
-```ts
+<!-- @[persistence_v2_connect_migration_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration2.ets) -->
+
+``` TypeScript
 // Migrate to globalConnect.
 import { PersistenceV2, Type } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 // Register a callback for serialization failure.
 PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+  hilog.error(DOMAIN, 'testTag', '%{public}s', `error key: ${key}, reason: ${reason}, message: ${msg}`);
 });
 
 @ObservedV2
 class SampleChild {
-  @Trace childId: number = 0;
-  groupId: number = 1;
+  @Trace public childId: number = 0;
+  public groupId: number = 1;
 }
 
 @ObservedV2
 export class Sample {
   // For complex objects, use the @Type decorator to ensure successful serialization.
   @Type(SampleChild)
-  @Trace father: SampleChild = new SampleChild();
+  @Trace public father: SampleChild = new SampleChild();
 }
 
 // Auxiliary data used to determine whether data migration is complete.
 @ObservedV2
 class StorageState {
-  @Trace isCompleteMoving: boolean = false;
+  @Trace public isCompleteMoving: boolean = false;
 }
 
 function move() {
-  let movingState = PersistenceV2.globalConnect({type: StorageState, defaultCreator: () => new StorageState()})!;
+  let movingState = PersistenceV2.globalConnect({ type: StorageState, defaultCreator: () => new StorageState() })!;
   if (!movingState.isCompleteMoving) {
-    let p: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
-    PersistenceV2.remove('connect2');
-    let p1 = PersistenceV2.globalConnect({type: Sample, key: 'connect2', defaultCreator: () = > p})!; // You can use the default constructor.
+    let p: Sample = PersistenceV2.connect(Sample, 'connect3', () => new Sample())!;
+    PersistenceV2.remove('connect3');
+    let p1 = PersistenceV2.globalConnect({ type: Sample, key: 'connect4', defaultCreator: () => p })!; // You can use the default constructor.
     // For assigned value decorated by @Trace, it is automatically saved.
     p1.father = p.father;
     // Set the migration flag to true.
@@ -651,13 +701,14 @@ move();
 @ComponentV2
 struct Page1 {
   @Local refresh: number = 0;
-  // Store data with key: connect2.
-  @Local p: Sample = PersistenceV2.globalConnect({type: Sample, key:'connect2', defaultCreator:() => new Sample()})!;
+  // Store data with key:connect4.
+  @Local p: Sample =
+    PersistenceV2.globalConnect({ type: Sample, key: 'connect4', defaultCreator: () => new Sample() })!;
 
   build() {
-    Column({space: 5}) {
+    Column({ space: 5 }) {
       /**************************** Display data **************************/
-      Text('Key connect2: ' + this.p.father.childId.toString())
+      Text('Key connect4: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
         })
@@ -665,12 +716,12 @@ struct Page1 {
         .fontColor(Color.Red)
 
       /**************************** The save API **************************/
-      // Non-state variables can be refreshed only by using the state variable refresh.
-      Text('save key connect2: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+      // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
+      Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored. You need to call the key for storage.
           this.p.father.groupId += 1;
-          PersistenceV2.save('connect2');
+          PersistenceV2.save('connect4');
           this.refresh += 1;
         })
         .fontSize(25)

@@ -25,7 +25,7 @@ If an application is developed using ArkTS and C++ language, or if its architect
   The native JSBridge APIs are provided to avoid unnecessary switching to the ArkTS environment and allow callback to run in non-UI threads to avoid UI blocking.
 
 ## Using Native APIs to Implement JSBridge Communication (Recommended)
-In the previous version, the return value of native synchronization APIs is fixed to void. However, to meet service requirements, alternative APIs are introduced since API version 18 to support return values of the Boolean, string, and buffer types.
+In the previous version, the return value of native synchronization APIs is fixed to void. However, to meet service requirements, alternative APIs are introduced since API version 18 to support return values of the Boolean and string types.
 
 In addition, the [permission](#invoking-application-functions-on-the-frontend-page) field is added for the synchronous API [registerJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerjavascriptproxyex) and asynchronous API [registerAsyncJavaScriptProxyEx](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#registerasyncjavascriptproxyex) to control the invoking permission.
 

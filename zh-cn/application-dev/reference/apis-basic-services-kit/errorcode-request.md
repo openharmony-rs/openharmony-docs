@@ -1,4 +1,10 @@
 # 上传下载错误码
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Request-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 > **说明：**
 >
@@ -12,11 +18,11 @@ Invalid file or file system error.
 
 **错误描述**
 
-在调用uploadFile或downloadFile接口时，操作相关文件失败。
+在调用create、uploadFile或downloadFile接口时，传入了无效文件或文件系统错误。
 
 **可能原因**
 
-该错误码表示文件操作异常，可能原因是文件权限不足。
+该错误码表示文件操作异常，可能原因是文件权限不足。具体原因可参考[BusinessError](js-apis-base.md#businesserror)中的错误信息message。
 
 **处理步骤**
 
