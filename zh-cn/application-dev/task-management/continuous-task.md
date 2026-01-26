@@ -52,9 +52,9 @@
 
 关于BLUETOOTH_INTERACTION（蓝牙相关业务）说明：
 
-如果应用仅申请了蓝牙长时任务，因设备远离等原因导致蓝牙断连，系统将取消应用的蓝牙长时任务。为确保蓝牙接续使用体验，在断连后的一段时间内（具体时长受系统负载影响，最长可达十分钟），满足如下条件，如果恢复连接，可以重新保活，实现在后台长时间运行。
+如果应用仅申请了蓝牙长时任务，因设备远离等原因导致蓝牙断连，系统将取消应用的蓝牙长时任务。为确保蓝牙接续使用体验，在断连后的一段时间内（具体时长受系统负载影响，最长可达十分钟），系统允许满足如下条件的应用在恢复连接时重新保活，实现在后台长时间运行。
 
-1. 为避免蓝牙断连之后长时任务被系统直接取消，应用需要主动注册长时任务暂停监听的事件，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，注册暂停监听后，蓝牙断连系统不会立即取消长时任务，而是将长时任务标记为暂停态。
+1. 为避免蓝牙断连之后长时任务被系统直接取消，应用需要主动注册长时任务暂停监听的事件，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在蓝牙断连时系统不会立即取消长时任务，而是将其标记为暂停态。
 2. 为保证在蓝牙断连之后能及时恢复连接，应用需要在蓝牙连接之后通过[on('connectionStateChange')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后，通过[startScan](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
 3. 成功扫描到设备之后，应用需要通过[connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)主动恢复蓝牙连接，系统检测到蓝牙恢复连接后，会重新激活暂停的长时任务，实现重新保活。
 
