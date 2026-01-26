@@ -118,23 +118,27 @@ FormComponent (value: FormInfo)
 | abilityName      | string            | 否           | 卡片所属的Ability名称。                             |
 | params      | string            | 否           | 卡片事件携带参数内容。                             |
 
-## FormDimension对象说明
+## FormDimension
+
+定义卡片尺寸枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                       | 描述     |
-| -------------------------- | -------- |
-| Dimension_1_2              | 1*2 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
-| Dimension_2_2              | 2*2 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
-| Dimension_2_4              | 2*4 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
-| Dimension_4_4              | 4*4 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
-| Dimension_2_1<sup>(deprecated)</sup> | 2*1 卡片 <br>**说明:** 该字段从API version 9开始支持，从API version 20开始废弃。|
-| Dimension_1_1<sup>11+</sup> | 1*1 卡片 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23|
-| Dimension_6_4<sup>12+</sup> | 6*4 卡片 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
-| Dimension_2_3<sup>18+</sup> | 2*3 卡片为穿戴设备使用 <br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
-| Dimension_3_3<sup>18+</sup> | 3*3 卡片为穿戴设备使用 <br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
+| 名称                       | 值     | 说明     |
+| -------------------------- | -------- | -------- |
+| Dimension_1_2              | 0 | 1*2 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_2_2              | 1 | 2*2 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_2_4              | 2 | 2*4 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_4_4              | 3 | 4*4 卡片 <br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_2_1<sup>(deprecated)</sup> | 4 | 2*1 卡片 <br>**说明:** 该字段从API version 9开始支持，从API version 20开始废弃。|
+| Dimension_1_1<sup>11+</sup> | 6 | 1*1 卡片 <br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_6_4<sup>12+</sup> | 7 | 6*4 卡片 <br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_2_3<sup>18+</sup> | 8 | 2*3 卡片为穿戴设备使用 <br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
+| Dimension_3_3<sup>18+</sup> | 9 | 3*3 卡片为穿戴设备使用 <br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23|
 
-## FormRenderingMode<sup>11+</sup>对象说明
+## FormRenderingMode<sup>11+</sup>
+
+定义卡片渲染模式枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,10 +146,25 @@ FormComponent (value: FormInfo)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称                       | 描述     |
-| -------------------------- | -------- |
-| FULL_COLOR                 | 全色模式。|
-| SINGLE_COLOR               | 单色模式。|
+| 名称                       | 值     | 说明     |
+| -------------------------- | -------- | -------- |
+| FULL_COLOR                 | 0 | 全色模式。|
+| SINGLE_COLOR               | 1 | 单色模式。|
+
+## FormShape<sup>12+</sup> 
+
+定义卡片形状枚举。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 值   | 说明             |
+| ------ | ---- | --------------- |
+| RECT   | 1    | 方形卡片。 |
+| CIRCLE | 2    | 圆形卡片。 |
 
 ## 属性
 

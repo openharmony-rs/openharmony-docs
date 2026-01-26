@@ -336,3 +336,55 @@ let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
     });
   }
 ```
+
+## GetLiveFormStatusCallback<sup>20+</sup>
+
+type GetLiveFormStatusCallback = () => Record&lt;string, string&gt;
+
+获取互动卡片状态的回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Record&lt;string, string&gt; | 返回卡片的状态信息。key为formID，value为卡片的状态信息。状态信息有"INACTIVE"、"PAUSE"、"ACTIVE"。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                                                  |
+|-------|-----------------------------------------------------------------------------------------------------------|
+| 202   | The application is not a system application.                                                              |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let GetLiveFormStatusCallback: formInfo.GetLiveFormStatusCallback = (): Record<string, string> => {
+  return { '1256444': 'ACTIVE' };
+};
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo } from '@kit.FormKit';
+
+let GetLiveFormStatusCallback: formInfo.GetLiveFormStatusCallback = (): Record<string, string> => {
+  return { '1256444': 'ACTIVE' };
+};
+```
