@@ -72,19 +72,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let want: Want = {
-  'deviceId': '',
-  'bundleName': 'ohos.samples.FormApplication',
-  'abilityName': 'FormAbility',
-  'parameters': {
-    'ohos.extra.param.key.module_name': 'entry',
-    'ohos.extra.param.key.form_name': 'widget',
-    'ohos.extra.param.key.form_dimension': 2
-  }
-};
+    'bundleName': 'com.huawei.hmsapp.thememanager',
+    'abilityName': 'ThemeFaCardUIExtAbility',
+    'parameters': {
+      'ohos.extra.param.key.form_dimension': 4,
+      'ohos.extra.param.key.form_is_theme': true,
+      'ohos.extra.param.key.form_location': 0,
+      'ohos.extra.param.key.module_name': 'entry',
+      'ohos.extra.param.key.form_name': 'widget',
+      'themeFormId': '0',
+      'themeId': '2181824853'
+    }
+  };
   formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
-    console.info('formHost addForm success');
+    console.info(`formHost addForm, formId: ${data.formId}`);
   }).catch((error: BusinessError) => {
-    console.error(`formHost addForm, error: ${JSON.stringify(error)}`);
+    console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -94,27 +97,35 @@ try {
 ArkTS-Sta示例：
 
 ```ts
-import { formHost } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import formInfo from '@kit.FormKit';
+import formHost from '@ohos.app.form.formHost';
+import Want form '@ohos.app.ability.Want';
+import RecordData form '@ohos.base';
+import BusinessError from '@kit.BasicServicesKit';
 
 try {
-  let want: Want = {
-  'deviceId': '',
-  'bundleName': 'ohos.samples.FormApplication',
-  'abilityName': 'FormAbility',
-  'parameters': {
+  let wantParams: Record<String, RecordData> = {
+    'ohos.extra.param.key.form_dimension': 4,
+    'ohos.extra.param.key.form_is_theme': true,
+    'ohos.extra.param.key.form_location': 0,
     'ohos.extra.param.key.module_name': 'entry',
     'ohos.extra.param.key.form_name': 'widget',
-    'ohos.extra.param.key.form_dimension': 2
-  }
-};
+    'themeFormId': '0',
+    'themeId': '2181824853'
+  };
+  let want: Want = {
+    'bundleName': 'com.huawei.hmsapp.thememanager',
+    'abilityName': 'ThemeFaCardUIExtAbility',
+    'parameters': wantParams
+    }
+  };
   formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
-    console.info('formHost addForm success');
-  }).catch((error: BusinessError) => {
-    console.error(`formHost addForm, error: ${JSON.stringify(error)}`);
+    console.info(`formHost addForm, formId: ${data.formId}`);
+  }).catch((error: Error) => {
+    console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
   });
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+} catch (error: Error) {
+  console.error(`catch error, ${code: error.code}, message: ${error.message}`);
 }
 ```
 
