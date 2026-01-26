@@ -942,7 +942,7 @@ async function testGenerateAesKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
   let symKey = await symKeyGenerator.generateSymKey();
   let encodedKey = symKey.getEncoded();
-  console.info('key hex:' + encodedKey.data);
+  console.info('key hex: ' + encodedKey.data);
 }
 ```
 
@@ -1148,19 +1148,19 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let publicPkcs1Str1024: string  =
-  "-----BEGIN RSA PUBLIC KEY-----\n"
-  + "MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n"
-  + "h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n"
-  + "SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n"
-  + "-----END RSA PUBLIC KEY-----\n";
+let publicPkcs1Str1024: string =
+  '-----BEGIN RSA PUBLIC KEY-----\n'
+    + 'MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n'
+    + 'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n'
+    + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
+    + '-----END RSA PUBLIC KEY-----\n';
 
 function TestPubKeyPkcs1ToX509BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
   let pubPemKey = keyPair.pubKey;
   let pubString = pubPemKey.getEncodedPem('X509');
-  console.info("[sync]TestPubKeyPkcs1ToX509BySync1024 pubString output is " + pubString);
+  console.info('[sync]TestPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
 }
 ```
 
@@ -1216,7 +1216,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| itemType  | [AsyKeySpecItem](#asykeyspecitem10) | Yes  | Key parameter to obtain.|
+| itemType  | [AsyKeySpecItem](#asykeyspecitem10) | Yes  | Key parameter type to obtain.|
 
 **Return value**
 
@@ -1361,29 +1361,29 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let priKeyPkcs1Str1024: string  =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-  + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
-  + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
-  + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
-  + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
-  + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
-  + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
-  + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
-  + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
-  + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
-  + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
-  + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
-  + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
-  + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
-  + "-----END RSA PRIVATE KEY-----\n";
+let priKeyPkcs1Str1024: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n'
+    + 'Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n'
+    + 'YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n'
+    + 'AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n'
+    + 'LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n'
+    + '7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n'
+    + 'D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n'
+    + 'e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n'
+    + 'a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n'
+    + 'MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n'
+    + 'DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n'
+    + 'qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n'
+    + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
+    + '-----END RSA PRIVATE KEY-----\n';
 
 function TestPriKeyPkcs1ToPkcs8BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS8');
-  console.info("[sync]TestPriKeyPkcs1ToPkcs8BySync1024 priString output is " + priString);
+  console.info('[sync]TestPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
 }
 ```
 
@@ -1426,33 +1426,33 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let priKeyPkcs1Str1024: string  =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-    + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
-    + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
-    + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
-    + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
-    + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
-    + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
-    + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
-    + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
-    + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
-    + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
-    + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
-    + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
-    + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
-    + "-----END RSA PRIVATE KEY-----\n";
+let priKeyPkcs1Str1024: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n'
+    + 'Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n'
+    + 'YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n'
+    + 'AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n'
+    + 'LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n'
+    + '7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n'
+    + 'D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n'
+    + 'e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n'
+    + 'a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n'
+    + 'MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n'
+    + 'DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n'
+    + 'qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n'
+    + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
+    + '-----END RSA PRIVATE KEY-----\n';
 
 function TestPriKeyPkcs1Encoded() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let options : cryptoFramework.KeyEncodingConfig = {
-    password: "123456",
-    cipherName: "AES-128-CBC"
+  let options: cryptoFramework.KeyEncodingConfig = {
+    password: '123456',
+    cipherName: 'AES-128-CBC'
   }
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS1', options);
-  console.info("[sync]TestPriKeyPkcs1Encoded priString output is " + priString);
+  console.info('[sync]TestPriKeyPkcs1Encoded priString output = ' + priString);
 }
 ```
 
@@ -1583,7 +1583,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   symKeyGenerator.generateSymKey((err, symKey) => {
-    console.info('Generate symKey success, algName: ' + symKey.algName);
+    console.info('Generate symKey result: success, algName: ' + symKey.algName);
   });
 ```
 
@@ -1626,7 +1626,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   symKeyGenerator.generateSymKey()
     .then(symKey => {
-      console.info('Generate symKey success, algName: ' + symKey.algName);
+      console.info('Generate symKey result: success, algName: ' + symKey.algName);
     }).catch((error: BusinessError) => {
       console.error(`Generate symKey failed, ${error.code}, ${error.message}`);
     });
@@ -1730,7 +1730,7 @@ function testConvertKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob, (err, symKey) => {
-    console.info('Convert symKey success, algName: ' + symKey.algName);
+    console.info('Convert symKey result: success, algName: ' + symKey.algName);
   });
 }
 ```
@@ -1790,7 +1790,7 @@ function testConvertKey() {
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob)
     .then(symKey => {
-      console.info('Convert symKey success, algName: ' + symKey.algName);
+      console.info('Convert symKey result: success, algName: ' + symKey.algName);
     }).catch((error: BusinessError) => {
       console.error(`Convert symKey failed, ${error.code}, ${error.message}`);
     });
@@ -1949,10 +1949,10 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 asyKeyGenerator.generateKeyPair((err, keyPair) => {
   if (err) {
-    console.error("generateKeyPair: error.");
+    console.error('generateKeyPair result: fail.');
     return;
   }
-  console.info('generateKeyPair: success.');
+  console.info('generateKeyPair result: success.');
 })
 ```
 
@@ -1993,9 +1993,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 let keyGenPromise = asyKeyGenerator.generateKeyPair();
 keyGenPromise.then(keyPair => {
-  console.info('generateKeyPair success.');
+  console.info('generateKeyPair result: success.');
 }).catch((error: BusinessError) => {
-  console.error("generateKeyPair error.");
+  console.error('generateKeyPair result: fail.');
 });
 ```
 
@@ -2034,12 +2034,12 @@ let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 try {
   let keyPairData = asyKeyGenerator.generateKeyPairSync();
   if (keyPairData != null) {
-    console.info('[Sync]: key pair success');
+    console.info('[Sync]: key pair result: success.');
   } else {
-    console.error("[Sync]: get key pair result fail!");
+    console.error('[Sync]: get key pair result: fail.');
   }
 } catch (e) {
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -2059,8 +2059,8 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type      | Mandatory| Description                          |
 | -------- | ----------- | ---- | ------------------------------ |
-| pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | Yes  | Public key material to convert. If no public key is required, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.       |
-| priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | Yes  | Private key material to convert. If no private key is required, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.       |
+| pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | Yes  | Public key material to convert. If no public key needs to be converted, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.       |
+| priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | Yes  | Private key material to convert. If no private key needs to be converted, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.       |
 | callback | AsyncCallback\<[KeyPair](#keypair)> | Yes  | Callback used to return the asymmetric key pair generated.|
 
 **Error codes**
@@ -2078,17 +2078,23 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
-let priKeyArray = new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
+let pubKeyArray =
+  new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
+    83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
+    105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235,
+    215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+let priKeyArray =
+  new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57,
+    10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
 let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // Binary data of the public key.
 let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // Binary data of the private key.
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
   if (err) {
-    console.error("convertKey: error.");
+    console.error('convertKey result: fail.');
     return;
   }
-  console.info('convertKey: success.');
+  console.info('convertKey result: success.');
 });
 ```
 
@@ -2108,8 +2114,8 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | Yes  | Public key material to convert. If no public key is required, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.|
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | Yes  | Private key material to convert. If no private key is required, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.|
+| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | Yes  | Public key material to convert. If no public key needs to be converted, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.|
+| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | Yes  | Private key material to convert. If no private key needs to be converted, set this parameter to **null**. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.|
 
 **Return value**
 
@@ -2133,16 +2139,22 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
-let priKeyArray = new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
+let pubKeyArray =
+  new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
+    83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
+    105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235,
+    215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+let priKeyArray =
+  new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57,
+    10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
 let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // Binary data of the public key.
 let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // Binary data of the private key.
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 let keyGenPromise = asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob);
 keyGenPromise.then(keyPair => {
-  console.info('convertKey success.');
+  console.info('convertKey result: success.');
 }).catch((error: BusinessError) => {
-  console.error("convertKey error.");
+  console.error(`convertKey failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -2160,8 +2172,8 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | Yes  | Public key material. If the public key does not need to be converted, pass in **null**. Before API version 10, only **DataBlob** is supported. Since API version 10s, **null** can be passed in.|
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | Yes  | Private key material. Before API version 10, only **DataBlob** is supported. Since API version 10s, **null** can be passed in.|
+| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | Yes  | Public key material. If no public key needs to be converted, set this parameter to **null**. Before API version 10, only **DataBlob** is supported. Since API version 10s, **null** can be passed in.|
+| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | Yes  | Private key material. If no private key needs to be converted, set this parameter to **null**. Before API version 10, only **DataBlob** is supported. Since API version 10s, **null** can be passed in.|
 
 **Return value**
 
@@ -2184,20 +2196,26 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
-let priKeyArray = new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
+let pubKeyArray =
+  new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
+    83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
+    105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235,
+    215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+let priKeyArray =
+  new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57,
+    10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
 let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // Binary data of the public key.
 let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // Binary data of the private key.
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 try {
   let keyPairData = asyKeyGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
   if (keyPairData != null) {
-    console.info('[Sync]: key pair success');
+    console.info('[Sync]: key pair result: success.');
   } else {
-    console.error("[Sync]: convert key pair result fail!");
+    console.error('[Sync]: convert key pair result: fail.');
   }
 } catch (e) {
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -2227,8 +2245,8 @@ Converts data into an asymmetric key pair. This API uses a promise to return the
 
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null | Yes | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
+| pubKey | string \| null | Yes | Public key material to convert. If no public key needs to be converted, set this parameter to **null**.|
+| priKey | string \| null | Yes | Private key material to convert. If no private key needs to be converted, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
 
 **Return value**
 
@@ -2252,35 +2270,36 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let priKeyPkcs1Str1024: string  =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-    + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
-    + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
-    + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
-    + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
-    + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
-    + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
-    + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
-    + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
-    + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
-    + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
-    + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
-    + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
-    + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
-    + "-----END RSA PRIVATE KEY-----\n";
-let publicPkcs1Str1024: string  =
-  "-----BEGIN RSA PUBLIC KEY-----\n"
-    + "MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n"
-    + "h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n"
-    + "SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n"
-    + "-----END RSA PUBLIC KEY-----\n";
+let priKeyPkcs1Str1024: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n'
+    + 'Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n'
+    + 'YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n'
+    + 'AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n'
+    + 'LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n'
+    + '7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n'
+    + 'D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n'
+    + 'e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n'
+    + 'a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n'
+    + 'MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n'
+    + 'DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n'
+    + 'qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n'
+    + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
+    + '-----END RSA PRIVATE KEY-----\n';
+let publicPkcs1Str1024: string =
+  '-----BEGIN RSA PUBLIC KEY-----\n'
+    + 'MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n'
+    + 'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n'
+    + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
+    + '-----END RSA PUBLIC KEY-----\n';
+
 async function TestConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024)
     .then(keyPair => {
-    console.info('convertPemKey success.');
-  }).catch((error: BusinessError) => {
-    console.error("convertPemKey error.");
+      console.info('convertPemKey result: success.');
+    }).catch((error: BusinessError) => {
+    console.error(`convertPemKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -2305,8 +2324,8 @@ Converts data into an asymmetric key pair. Encrypted private keys are supported.
 
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null | Yes | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null | Yes | Private key material to convert. If no private key is required, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
+| pubKey | string \| null | Yes | Public key material to convert. If no public key needs to be converted, set this parameter to **null**.|
+| priKey | string \| null | Yes | Private key material to convert. If no private key needs to be converted, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
 | password | string | Yes| Password used to decrypt the private key.|
 
 **Return value**
@@ -2331,32 +2350,32 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let priKeyPkcs1EncodingStr : string =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-    +"Proc-Type: 4,ENCRYPTED\n"
-    +"DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n"
-    +"7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n"
-    +"t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n"
-    +"vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n"
-    +"/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n"
-    +"W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n"
-    +"mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n"
-    +"T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n"
-    +"LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n"
-    +"Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n"
-    +"BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n"
-    +"k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n"
-    +"iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n"
-    +"OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n"
-    +"-----END RSA PRIVATE KEY-----\n"
+let priKeyPkcs1EncodingStr: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'Proc-Type: 4,ENCRYPTED\n'
+    + 'DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n'
+    + '7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n'
+    + 't0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n'
+    + 'vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n'
+    + '/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n'
+    + 'W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n'
+    + 'mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n'
+    + 'T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n'
+    + 'LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n'
+    + 'Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n'
+    + 'BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n'
+    + 'k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n'
+    + 'iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n'
+    + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
+    + '-----END RSA PRIVATE KEY-----\n'
 
 async function TestConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, "123456")
+  asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456')
     .then(keyPair => {
-    console.info('convertPemKey success.');
-  }).catch((error: BusinessError) => {
-    console.error("convertPemKey error.");
+      console.info('convertPemKey result: success.');
+    }).catch((error: BusinessError) => {
+    console.error(`convertPemKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -2378,8 +2397,8 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null| Yes  | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null| Yes  | Private key material. If the private key does not need to be converted, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
+| pubKey | string \| null| Yes  | Public key material to convert. If no public key needs to be converted, set this parameter to **null**.|
+| priKey | string \| null| Yes  | Private key material. If no private key needs to be converted, set this parameter to **null**.<br>Note: The public key and private key materials cannot be both null or empty strings.|
 
 **Return value**
 
@@ -2402,39 +2421,40 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let priKeyPkcs1Str1024: string  =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-  + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
-  + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
-  + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
-  + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
-  + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
-  + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
-  + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
-  + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
-  + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
-  + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
-  + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
-  + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
-  + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
-  + "-----END RSA PRIVATE KEY-----\n";
-  let publicPkcs1Str1024: string  =
-  "-----BEGIN RSA PUBLIC KEY-----\n"
-  + "MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n"
-  + "h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n"
-  + "SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n"
-  + "-----END RSA PUBLIC KEY-----\n";
+let priKeyPkcs1Str1024: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n'
+    + 'Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n'
+    + 'YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n'
+    + 'AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n'
+    + 'LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n'
+    + '7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n'
+    + 'D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n'
+    + 'e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n'
+    + 'a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n'
+    + 'MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n'
+    + 'DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n'
+    + 'qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n'
+    + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
+    + '-----END RSA PRIVATE KEY-----\n';
+let publicPkcs1Str1024: string =
+  '-----BEGIN RSA PUBLIC KEY-----\n'
+    + 'MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n'
+    + 'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n'
+    + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
+    + '-----END RSA PUBLIC KEY-----\n';
+
 function TestConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
     let keyPairData = asyKeyGenerator.convertPemKeySync(publicPkcs1Str1024, priKeyPkcs1Str1024);
     if (keyPairData != null) {
-      console.info('[Sync]: convert pem key pair success');
+      console.info('[Sync]: convert pem key pair result: success.');
     } else {
-      console.error("[Sync]: convert pem key pair result fail!");
+      console.error('[Sync]: convert pem key pair result: fail.');
     }
   } catch (e) {
-    console.error(`Sync error, ${e.code}, ${e.message}`);
+    console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -2456,8 +2476,8 @@ Converts data into an asymmetric key pair. Encrypted private keys are supported.
 
 | Name  | Type   | Mandatory| Description            |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null| Yes  | Public key material to convert. If no public key is required, set this parameter to **null**.|
-| priKey | string \| null| Yes  | Private key material. If the private key does not need to be converted, you can pass in **null**. <br>Note: **pubKey** and **priKey** cannot be **null** at the same time.|
+| pubKey | string \| null| Yes  | Public key material to convert. If no public key needs to be converted, set this parameter to **null**.|
+| priKey | string \| null| Yes  | Private key material. If no private key needs to be converted, set this parameter to **null**. <br>Note: **pubKey** and **priKey** cannot be **null** at the same time.|
 | password | string | Yes| Password used to decrypt the private key.|
 
 **Return value**
@@ -2481,35 +2501,36 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let priKeyPkcs1EncodingStr : string =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-    +"Proc-Type: 4,ENCRYPTED\n"
-    +"DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n"
-    +"7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n"
-    +"t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n"
-    +"vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n"
-    +"/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n"
-    +"W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n"
-    +"mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n"
-    +"T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n"
-    +"LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n"
-    +"Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n"
-    +"BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n"
-    +"k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n"
-    +"iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n"
-    +"OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n"
-    +"-----END RSA PRIVATE KEY-----\n"
+let priKeyPkcs1EncodingStr: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'Proc-Type: 4,ENCRYPTED\n'
+    + 'DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n'
+    + '7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n'
+    + 't0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n'
+    + 'vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n'
+    + '/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n'
+    + 'W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n'
+    + 'mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n'
+    + 'T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n'
+    + 'LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n'
+    + 'Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n'
+    + 'BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n'
+    + 'k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n'
+    + 'iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n'
+    + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
+    + '-----END RSA PRIVATE KEY-----\n'
+
 function TestConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
-    let keyPairData = asyKeyGenerator.convertPemKeySync(null, priKeyPkcs1EncodingStr, "123456");
+    let keyPairData = asyKeyGenerator.convertPemKeySync(null, priKeyPkcs1EncodingStr, '123456');
     if (keyPairData != null) {
-      console.info('[Sync]: convert pem key pair success');
+      console.info('[Sync]: convert pem key pair result: success.');
     } else {
-      console.error("[Sync]: convert pem key pair result fail!");
+      console.error('[Sync]: convert pem key pair result: fail.');
     }
   } catch (e) {
-    console.error(`Sync error, ${e.code}, ${e.message}`);
+    console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -2556,11 +2577,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2569,11 +2590,11 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
@@ -2636,11 +2657,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2649,25 +2670,24 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGenerateKeyPair()
-{
+function testGenerateKeyPair() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
     if (err) {
-      console.error("generateKeyPair: error.");
+      console.error('generateKeyPair result: fail.');
       return;
     }
-    console.info('generateKeyPair: success.');
+    console.info('generateKeyPair result: success.');
   })
 }
 ```
@@ -2707,14 +2727,15 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2723,24 +2744,23 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGenerateKeyPair()
-{
+function testGenerateKeyPair() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generateKeyPair();
   keyGenPromise.then(keyPair => {
-    console.info('generateKeyPair success.');
+    console.info('generateKeyPair result: success.');
   }).catch((error: BusinessError) => {
-    console.error("generateKeyPair error.");
+    console.error(`generateKeyPair failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -2782,11 +2802,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2795,29 +2815,28 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGenerateKeyPairSync()
-{
+function testGenerateKeyPairSync() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let keyPairData = asyKeyGeneratorBySpec.generateKeyPairSync();
     if (keyPairData != null) {
-      console.info('[Sync]: key pair success');
+      console.info('[Sync]: key pair result: success.');
     } else {
-      console.error("[Sync]: get key pair result fail!");
+      console.error('[Sync]: get key pair result: fail.');
     }
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`sync error, ${e.code}, ${e.message}`);
+    console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
@@ -2840,7 +2859,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the private pair generated.|
+| callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the private key generated.|
 
 **Error codes**
 
@@ -2860,11 +2879,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2873,25 +2892,24 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePriKey()
-{
+function testGeneratePriKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
     if (err) {
-      console.error("generatePriKey: error.");
+      console.error('generatePriKey result: fail.');
       return;
     }
-    console.info('generatePriKey: success.');
+    console.info('generatePriKey result: success.');
   })
 }
 ```
@@ -2935,11 +2953,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2948,24 +2966,23 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePriKey()
-{
+function testGeneratePriKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePriKey();
   keyGenPromise.then(priKey => {
-    console.info('generatePriKey success.');
+    console.info('generatePriKey result: success.');
   }).catch((error: BusinessError) => {
-    console.error("generatePriKey error.");
+    console.error(`generatePriKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -3006,11 +3023,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3019,28 +3036,27 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePriKeySync()
-{
+function testGeneratePriKeySync() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let priKeyData = asyKeyGeneratorBySpec.generatePriKeySync();
     if (priKeyData != null) {
-      console.info('[Sync]: pri key success');
+      console.info('[Sync]: pri key result: success.');
     } else {
-      console.error("[Sync]: get pri key result fail!");
+      console.error('[Sync]: get pri key result: fail.');
     }
   } catch (e) {
-    console.error(`sync error, ${e.code}, ${e.message}`);
+    console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3083,11 +3099,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3096,25 +3112,24 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePubKey()
-{
+function testGeneratePubKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
     if (err) {
-      console.error("generatePubKey: error.");
+      console.error('generatePubKey result: fail.');
       return;
     }
-    console.info('generatePubKey: success.');
+    console.info('generatePubKey result: success.');
   })
 }
 ```
@@ -3158,11 +3173,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3171,24 +3186,23 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePubKey()
-{
+function testGeneratePubKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePubKey();
   keyGenPromise.then(pubKey => {
-    console.info('generatePubKey success.');
+    console.info('generatePubKey result: success.');
   }).catch((error: BusinessError) => {
-    console.error("generatePubKey error.");
+    console.error(`generatePubKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -3229,11 +3243,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // Set the common parameters of the DSA1024 public and private keys.
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3242,28 +3256,27 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePubKeySync()
-{
+function testGeneratePubKeySync() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // The input in JS must be a positive number in big-endian format.
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let pubKeyData = asyKeyGeneratorBySpec.generatePubKeySync();
     if (pubKeyData != null) {
-      console.info('[Sync]: pub key success');
+      console.info('[Sync]: pub key result: success.');
     } else {
-      console.error("[Sync]: get pub key result fail!");
+      console.error('[Sync]: get pub key result: fail.');
     }
   } catch (e) {
-    console.error(`sync error, ${e.code}, ${e.message}`);
+    console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3313,10 +3326,10 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let ECCCommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_brainpoolP160r1');
-    console.info('genECCCommonParamsSpec success');
+    console.info('genECCCommonParamsSpec result: success.');
 } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error(`genECCCommonParamsSpec error, ${e.code}, ${e.message}`);
+    console.error(`genECCCommonParamsSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3365,7 +3378,10 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 // Randomly generated uncompressed point data.
-let pkData = new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+let pkData =
+  new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
+    157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242,
+    206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
 let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
 console.info('returnPoint: ' + returnPoint.x.toString(16));
 ```
@@ -3473,10 +3489,10 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let DHCommonParamsSpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(2048);
-    console.info('genDHCommonParamsSpec success');
+    console.info('genDHCommonParamsSpec result: success.');
 } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error(`genDHCommonParamsSpec error, ${e.code}, ${e.message}`);
+    console.error(`genDHCommonParamsSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3522,18 +3538,20 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-  let spec : cryptoFramework.SM2CipherTextSpec = {
+  let spec: cryptoFramework.SM2CipherTextSpec = {
     xCoordinate: BigInt('20625015362595980457695435345498579729138244358573902431560627260141789922999'),
     yCoordinate: BigInt('48563164792857017065725892921053777369510340820930241057309844352421738767712'),
-    cipherTextData: new Uint8Array([100,227,78,195,249,179,43,70,242,69,169,10,65,123]),
-    hashData: new Uint8Array([87,167,167,247,88,146,203,234,83,126,117,129,52,142,82,54,152,226,201,111,143,115,169,125,128,42,157,31,114,198,109,244]),
+    cipherTextData: new Uint8Array([100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169, 10, 65, 123]),
+    hashData: new Uint8Array([87, 167, 167, 247, 88, 146, 203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201,
+      111, 143, 115, 169, 125, 128, 42, 157, 31, 114, 198, 109, 244]),
   }
   let data = cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(spec, 'C1C3C2');
-  console.info('genCipherTextBySpec success');
+  console.info('genCipherTextBySpec result: success.');
 } catch (err) {
   let e: BusinessError = err as BusinessError;
-  console.error(`genCipherTextBySpec error, ${e.code}, ${e.message}`);
+  console.error(`genCipherTextBySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3552,7 +3570,7 @@ Obtains SM2 ciphertext parameters from the SM2 ciphertext in ASN.1 format.
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | cipherText     | [DataBlob](#datablob)                 | Yes  | SM2 ciphertext in ASN.1 format.|
-| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. If this parameter is left empty or set to an empty string, the default value is used.|
+| mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. If this parameter is left empty or is an empty string, the default value is used.|
 
 **Return value**
 
@@ -3573,14 +3591,20 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    let cipherTextArray = new Uint8Array([48,118,2,32,45,153,88,82,104,221,226,43,174,21,122,248,5,232,105,41,92,95,102,224,216,149,85,236,110,6,64,188,149,70,70,183,2,32,107,93,198,247,119,18,40,110,90,156,193,158,205,113,170,128,146,109,75,17,181,109,110,91,149,5,110,233,209,78,229,96,4,32,87,167,167,247,88,146,203,234,83,126,117,129,52,142,82,54,152,226,201,111,143,115,169,125,128,42,157,31,114,198,109,244,4,14,100,227,78,195,249,179,43,70,242,69,169,10,65,123]);
-    let cipherText : cryptoFramework.DataBlob = {data : cipherTextArray};
-    let spec : cryptoFramework.SM2CipherTextSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(cipherText, 'C1C3C2');
-    console.info('getCipherTextSpec success');
+  let cipherTextArray =
+    new Uint8Array([48, 118, 2, 32, 45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105, 41, 92, 95, 102,
+      224, 216, 149, 85, 236, 110, 6, 64, 188, 149, 70, 70, 183, 2, 32, 107, 93, 198, 247, 119, 18, 40, 110, 90, 156,
+      193, 158, 205, 113, 170, 128, 146, 109, 75, 17, 181, 109, 110, 91, 149, 5, 110, 233, 209, 78, 229, 96, 4, 32, 87,
+      167, 167, 247, 88, 146, 203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201, 111, 143, 115, 169, 125, 128,
+      42, 157, 31, 114, 198, 109, 244, 4, 14, 100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169, 10, 65, 123]);
+  let cipherText: cryptoFramework.DataBlob = { data: cipherTextArray };
+  let spec: cryptoFramework.SM2CipherTextSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(cipherText, 'C1C3C2');
+  console.info('getCipherTextSpec result: success.');
 } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error(`getCipherTextSpec error, ${e.code}, ${e.message}`);
+  let e: BusinessError = err as BusinessError;
+  console.error(`getCipherTextSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3636,7 +3660,7 @@ try {
   console.info('cipher algName: ' + cipher.algName);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3683,7 +3707,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode   | [CryptoMode](#cryptomode) | Yes  | Operation (encryption or decryption) to perform.                                          |
 | key      | [Key](#key)               | Yes  | Key for encryption or decryption.                                      |
-| params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), **null** can be passed in. In versions earlier than API version 10, only **ParamsSpec** is supported. Since API version 10, **null** is also supported.|
+| params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), set this parameter to **null**. In versions earlier than API version 10, only **ParamsSpec** is supported. Since API version 10, **null** is also supported.|
 | callback | AsyncCallback\<void>      | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
 
 **Error codes**
@@ -3718,7 +3742,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | ------ | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode | [CryptoMode](#cryptomode) | Yes  | Operation (encryption or decryption) to perform.                                          |
 | key    | [Key](#key)               | Yes  | Key for encryption or decryption.                                      |
-| params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), **null** can be passed in. Before API version 10, only **ParamsSpec** is supported. Since API version 10, **null** is also supported.|
+| params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), set this parameter to **null**. Before API version 10, only **ParamsSpec** is supported. Since API version 10, **null** is also supported.|
 
 **Return value**
 
@@ -3756,7 +3780,7 @@ This API can be used only after a [Cipher](#cipher) instance is created by using
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | opMode | [CryptoMode](#cryptomode)                       | Yes  | Operation (encryption or decryption) to perform.                                          |
 | key    | [Key](#key)                                     | Yes  | Key for encryption or decryption.                                      |
-| params | [ParamsSpec](#paramsspec)  \| null| Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), **null** can be passed in.|
+| params | [ParamsSpec](#paramsspec)  \| null| Yes  | Parameters for encryption or decryption. For algorithm modes without parameters (such as ECB), set this parameter to **null**.|
 
 **Error codes**
 
@@ -3982,7 +4006,7 @@ function genGcmParamsSpec() {
     iv: ivBlob,
     aad: aadBlob,
     authTag: tagBlob,
-    algName: "GcmParamsSpec"
+    algName: 'GcmParamsSpec'
   };
   return gcmParamsSpec;
 }
@@ -3993,7 +4017,7 @@ function cipherByCallback() {
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   symKeyGenerator.generateSymKey((err, symKey) => {
     cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err) => {
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       cipher.update(plainText, (err, encryptUpdate) => {
         cipher.doFinal(null, (err, tag) => {
@@ -4087,7 +4111,7 @@ function genGcmParamsSpec() {
     iv: ivBlob,
     aad: aadBlob,
     authTag: tagBlob,
-    algName: "GcmParamsSpec"
+    algName: 'GcmParamsSpec'
   };
   return gcmParamsSpec;
 }
@@ -4098,7 +4122,7 @@ async function cipherByPromise() {
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   let symKey = await symKeyGenerator.generateSymKey();
   await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = "This is a test";
+  let message = 'This is a test';
   let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
   let encryptUpdate = await cipher.update(plainText);
   gcmParams.authTag = await cipher.doFinal(null);
@@ -4180,7 +4204,7 @@ function genGcmParamsSpec() {
     iv: ivBlob,
     aad: aadBlob,
     authTag: tagBlob,
-    algName: "GcmParamsSpec"
+    algName: 'GcmParamsSpec'
   };
   return gcmParamsSpec;
 }
@@ -4191,13 +4215,12 @@ async function cipherBySync() {
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   let symKey = await symKeyGenerator.generateSymKey();
   await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = "This is a test";
+  let message = 'This is a test';
   let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
   let encryptUpdate = cipher.updateSync(plainText);
   gcmParams.authTag = cipher.doFinalSync(null);
   console.info('encryptUpdate plainText: ' + encryptUpdate.data);
 }
-
 ```
 
 ### setCipherSpec<sup>10+</sup>
@@ -4235,9 +4258,10 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
 function testsetCipherSpec() {
-  let cipher = cryptoFramework.createCipher("RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1");
-  let pSource = new Uint8Array([1,2,3,4]);
+  let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+  let pSource = new Uint8Array([1, 2, 3, 4]);
   cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
 }
 ```
@@ -4284,7 +4308,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testGetCipherSpec() {
-  let cipher = cryptoFramework.createCipher("RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1");
+  let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
   let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
   console.info('getCipherSpec: mdName =' + mdName);
 }
@@ -4700,10 +4724,45 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
 
 function signByCallback() {
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
   let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
@@ -4712,7 +4771,7 @@ function signByCallback() {
     signer.init(keyPair.priKey, err => {
       signer.update(inputUpdate, err => {
         signer.sign(inputVerify, (err, signData) => {
-          console.info('sign output is ' + signData.data);
+          console.info('sign output = ' + signData.data);
         });
       });
     });
@@ -4733,16 +4792,51 @@ async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) 
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = await rsaGenerator.convertKey(pubKeyBlob, priKeyBlob);
-  console.info('convertKey success');
+  console.info('convertKey result: success.');
   return keyPair;
 }
 
 async function signByPromise() {
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputSign: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputSign: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
   await signer.init(keyPair.priKey);
   await signer.update(inputUpdate);
@@ -4764,16 +4858,51 @@ function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
-  console.info('convertKeySync success');
+  console.info('convertKeySync result: success.');
   return keyPair;
 }
 
 function signBySync() {
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
-  let keyPair =  genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputSign: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
+  let keyPair = genKeyPairByData(pkData, skData);
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputSign: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
   signer.initSync(keyPair.priKey);
   signer.updateSync(inputUpdate);
@@ -4823,7 +4952,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testSetSignSpec() {
-  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
+  let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
   signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
 }
@@ -4870,10 +4999,10 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testGetSignSpec() {
-  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
+  let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 32;
   signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
 }
 ```
 
@@ -5282,22 +5411,64 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
 
 function verifyByCallback() {
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   // Key generated based on the key data and input data for signature verification. If the data in verify() is the same as that in sign(), the signature verification is successful.
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
   let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
   // The data is signData.data in Sign().
-  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) }
+  let signMessageBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+  }
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
     verifier.init(keyPair.pubKey, err => {
       verifier.update(inputUpdate, err => {
         verifier.verify(inputVerify, signMessageBlob, (err, res) => {
-          console.info('verify result is ' + res);
+          console.info('verify result = ' + res);
         });
       });
     });
@@ -5318,19 +5489,61 @@ async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) 
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = await rsaGenerator.convertKey(pubKeyBlob, priKeyBlob);
-  console.info('convertKey success');
+  console.info('convertKey result: success.');
   return keyPair;
 }
 
 async function verifyByPromise() {
   // Key generated based on the key data and input data for signature verification. If the data in verify() is the same as that in sign(), the signature verification is successful.
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   // The data is signData.data in Sign().
-  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) };
+  let signMessageBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+  };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   await verifier.init(keyPair.pubKey);
   await verifier.update(inputUpdate);
@@ -5352,19 +5565,61 @@ function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
-  console.info('convertKey success');
+  console.info('convertKey result: success.');
   return keyPair;
 }
 
 function verifyBySync() {
   // Key generated based on the key data and input data for signature verification. If the data in verify() is the same as that in sign(), the signature verification is successful.
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let keyPair = genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   // The data is signData.data in Sign().
-  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) };
+  let signMessageBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+  };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   verifier.initSync(keyPair.pubKey);
   verifier.updateSync(inputUpdate);
@@ -5421,17 +5676,57 @@ async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) 
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = await rsaGenerator.convertKey(pubKeyBlob, priKeyBlob);
-  console.info('convertKey success');
+  console.info('convertKey result: success.');
   return keyPair;
 }
 
 async function recoverByPromise() {
   // Key generated based on the key data and input data for signature verification. If the data in verify() is the same as that in sign(), the signature verification is successful.
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let keyPair = await genKeyPairByData(pkData, skData);
   // The data is signData.data in Sign().
-  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) };
+  let signMessageBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+  };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
   await verifier.init(keyPair.pubKey);
   try {
@@ -5439,11 +5734,11 @@ async function recoverByPromise() {
     if (rawSignData != null) {
       console.info('[Promise]: recover result: ' + rawSignData.data);
     } else {
-      console.error("[Promise]: get verify recover result fail!");
+      console.error('[Promise]: get verify recover result: fail.');
     }
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`promise error, ${e.code}, ${e.message}`);
+    console.error(`promise failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -5527,7 +5822,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testSetVerifySpec() {
-  let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+  let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
   verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
 }
@@ -5575,10 +5870,10 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testGetVerifySpec() {
-  let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+  let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
   verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  let saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
 }
 ```
 
@@ -5751,10 +6046,10 @@ async function testGenerateSecret() {
   let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
   keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
     if (err) {
-      console.error("keyAgreement error.");
+      console.error('keyAgreement result: fail.');
       return;
     }
-    console.info('keyAgreement output is ' + secret.data);
+    console.info('keyAgreement output = ' + secret.data);
   });
 }
 ```
@@ -5771,9 +6066,9 @@ async function testGenerateSecret() {
   let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
   let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
   keyAgreementPromise.then(secret => {
-    console.info('keyAgreement output is ' + secret.data);
+    console.info('keyAgreement output = ' + secret.data);
   }).catch((error: BusinessError) => {
-    console.error("keyAgreement error.");
+    console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -5788,7 +6083,7 @@ async function testGenerateSecretSync() {
   let globalKeyPair = await eccGen.generateKeyPair();
   let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
   let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
-  console.info("[Sync]keyAgreement output is " + secret.data);
+  console.info('[Sync]keyAgreement output = ' + secret.data);
 }
 ```
 
@@ -5838,7 +6133,7 @@ try {
   let md = cryptoFramework.createMd('SHA256');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -6001,7 +6296,7 @@ import { buffer } from '@kit.ArkTS';
 
 function mdByCallback() {
   let md = cryptoFramework.createMd('SHA256');
-  md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) }, (err) => {
+  md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) }, (err) => {
     md.digest((err, digestOutput) => {
       console.info('[Callback]: MD result: ' + digestOutput.data);
       console.info('[Callback]: MD len: ' + md.getMdLength());
@@ -6047,7 +6342,7 @@ import { buffer } from '@kit.ArkTS';
 
 async function mdByPromise() {
   let md = cryptoFramework.createMd('SHA256');
-  await md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) });
+  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
   let mdOutput = await md.digest();
   console.info('[Promise]: MD result: ' + mdOutput.data);
   console.info('[Promise]: MD len: ' + md.getMdLength());
@@ -6089,7 +6384,7 @@ import { buffer } from '@kit.ArkTS';
 
 async function mdBySync() {
   let md = cryptoFramework.createMd('SHA256');
-  md.updateSync({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) });
+  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
   let mdOutput = md.digestSync();
   console.info('[Sync]: MD result: ' + mdOutput.data);
   console.info('[Sync]: MD len: ' + md.getMdLength());
@@ -6179,7 +6474,7 @@ try {
   let mac = cryptoFramework.createMac('SHA256');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -6227,13 +6522,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Set algName based on the algorithm supported.
   let spec: cryptoFramework.HmacSpec = {
-    algName: "HMAC",
-    mdName: "SHA256",
+    algName: 'HMAC',
+    mdName: 'SHA256',
   };
   let mac = cryptoFramework.createMac(spec);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
 }
 ```
 
@@ -6485,11 +6780,11 @@ import { buffer } from '@kit.ArkTS';
 
 function hmacByCallback() {
   let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
+  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   symKeyGenerator.convertKey(keyBlob, (err, symKey) => {
     mac.init(symKey, (err) => {
-      mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) }, (err) => {
+      mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) }, (err) => {
         mac.doFinal((err, output) => {
           console.info('[Callback]: HMAC result: ' + output.data);
           console.info('[Callback]: MAC len: ' + mac.getMacLength());
@@ -6537,11 +6832,11 @@ import { buffer } from '@kit.ArkTS';
 
 async function hmacByPromise() {
   let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
+  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let symKey = await symKeyGenerator.convertKey(keyBlob);
   await mac.init(symKey);
-  await mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) });
+  await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
   let macOutput = await mac.doFinal();
   console.info('[Promise]: HMAC result: ' + macOutput.data);
   console.info('[Promise]: MAC len: ' + mac.getMacLength());
@@ -6585,11 +6880,11 @@ import { buffer } from '@kit.ArkTS';
 
 function hmacBySync() {
   let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
+  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let symKey = symKeyGenerator.convertKeySync(keyBlob);
   mac.initSync(symKey);
-  mac.updateSync({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) });
+  mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
   let macOutput = mac.doFinalSync();
   console.info('[Sync]: HMAC result: ' + macOutput.data);
   console.info('[Sync]: MAC len: ' + mac.getMacLength());
@@ -6638,20 +6933,24 @@ function testGetMacLength() {
   promiseConvertKey.then(symKey => {
     let promiseMacInit = mac.init(symKey);
     return promiseMacInit;
-  }).then(() => {
-    let blob: cryptoFramework.DataBlob = { data : new Uint8Array([83])};
-    let promiseMacUpdate = mac.update(blob);
-    return promiseMacUpdate;
-  }).then(() => {
-    let promiseMacDoFinal = mac.doFinal();
-    return promiseMacDoFinal;
-  }).then(macOutput => {
-    console.info('[Promise]: HMAC result: ' + macOutput.data);
-    let macLen = mac.getMacLength();
-    console.info('MAC len: ' + macLen);
-  }).catch((error: BusinessError) => {
-    console.error("[Promise]: error: " + error.message);
-  });
+  })
+    .then(() => {
+      let blob: cryptoFramework.DataBlob = { data: new Uint8Array([83]) };
+      let promiseMacUpdate = mac.update(blob);
+      return promiseMacUpdate;
+    })
+    .then(() => {
+      let promiseMacDoFinal = mac.doFinal();
+      return promiseMacDoFinal;
+    })
+    .then(macOutput => {
+      console.info('[Promise]: HMAC result: ' + macOutput.data);
+      let macLen = mac.getMacLength();
+      console.info('MAC len: ' + macLen);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`[Promise] failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    });
 }
 ```
 
@@ -6691,7 +6990,7 @@ try {
   let rand = cryptoFramework.createRandom();
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -6750,7 +7049,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 let rand = cryptoFramework.createRandom();
 rand.generateRandom(12, (err, randData) => {
   if (err) {
-    console.error("[Callback] err: " + err.code);
+    console.error(`[Callback] failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
     console.info('[Callback]: generate random result: ' + randData.data);
   }
@@ -6804,7 +7103,7 @@ let promiseGenerateRand = rand.generateRandom(12);
 promiseGenerateRand.then(randData => {
   console.info('[Promise]: rand result: ' + randData.data);
 }).catch((error: BusinessError) => {
-  console.error("[Promise]: error: " + error.message);
+  console.error(`[Promise] failed: errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -6854,11 +7153,11 @@ try {
   if (randData != null) {
     console.info('[Sync]: rand result: ' + randData.data);
   } else {
-    console.error("[Sync]: get rand result fail!");
+    console.error('[Sync]: get rand result: fail.');
   }
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -6893,14 +7192,14 @@ let rand = cryptoFramework.createRandom();
 rand.enableHardwareEntropy();
 rand.generateRandom(12, (err, randData) => {
   if (err) {
-    console.error("[Callback] err: " + err.code);
+    console.error('[Callback] err: ' + err.code);
   } else {
     console.info('[Callback]: generate random result: ' + randData.data);
     try {
       rand.setSeed(randData);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`sync error, ${e.code}, ${e.message}`);
+      console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -6941,14 +7240,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let rand = cryptoFramework.createRandom();
 rand.generateRandom(12, (err, randData) => {
   if (err) {
-    console.error("[Callback] err: " + err.code);
+    console.error('[Callback] err: ' + err.code);
   } else {
     console.info('[Callback]: generate random result: ' + randData.data);
     try {
       rand.setSeed(randData);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`sync error, ${e.code}, ${e.message}`);
+      console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -6970,7 +7269,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                             |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2\|SHA256**,|SHA256", "HKDF\|and **SCRYPT**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
+| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2\|SHA256**, **HKDF\|SHA256**, or **SCRYPT**.|<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
 
 **Return value**
 
@@ -7058,10 +7357,10 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
   kdf.generateSecret(spec, (err, secret) => {
     if (err) {
-      console.error("key derivation error.");
+      console.error('key derivation result: fail.');
       return;
     }
-    console.info('key derivation output is ' + secret.data);
+    console.info('key derivation output = ' + secret.data);
   });
   ```
 
@@ -7079,10 +7378,10 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
   kdf.generateSecret(spec, (err, secret) => {
     if (err) {
-      console.error("key derivation error.");
+      console.error('key derivation result: fail.');
       return;
     }
-    console.info('key derivation output is ' + secret.data);
+    console.info('key derivation output = ' + secret.data);
   });
   ```
 
@@ -7138,9 +7437,9 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
   let kdfPromise = kdf.generateSecret(spec);
   kdfPromise.then(secret => {
-    console.info('key derivation output is ' + secret.data);
+    console.info('key derivation output = ' + secret.data);
   }).catch((error: BusinessError) => {
-    console.error("key derivation error, " + error.message);
+    console.error(`key derivation failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
   ```
 
@@ -7159,9 +7458,9 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
   let kdfPromise = kdf.generateSecret(spec);
   kdfPromise.then(secret => {
-    console.info('key derivation output is ' + secret.data);
+    console.info('key derivation output = ' + secret.data);
   }).catch((error: BusinessError) => {
-    console.error("key derivation error, " + error.message);
+    console.error(`key derivation failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
   ```
 
@@ -7214,7 +7513,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   };
   let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
   let secret = kdf.generateSecretSync(spec);
-  console.info("[Sync]key derivation output is " + secret.data);
+  console.info('[Sync]key derivation output = ' + secret.data);
   ```
 
 - HKDF
@@ -7230,7 +7529,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
   };
   let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
   let secret = kdf.generateSecretSync(spec);
-  console.info("[Sync]key derivation output is " + secret.data);
+  console.info('[Sync]key derivation output = ' + secret.data);
   ```
 
 ## SignatureUtils<sup>20+</sup>
@@ -7283,10 +7582,10 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
           179, 49, 225, 70, 36, 117, 88, 154, 154, 27, 194, 161, 3, 1, 115, 2, 32, 51, 9, 53, 55, 248, 82, 7, 159, 179,
           144, 57, 151, 195, 17, 31, 106, 123, 32, 139, 219, 6, 253, 62, 240, 181, 134, 214, 107, 27, 230, 175, 40])
       let spec: cryptoFramework.EccSignatureSpec = cryptoFramework.SignatureUtils.genEccSignatureSpec(data)
-      console.info('genEccSignatureSpec success');
+      console.info('genEccSignatureSpec result: success.');
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error(`ecc error, ${e.code}, ${e.message}`);
+      console.error(`ecc failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -7339,11 +7638,11 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
       }
 
       let data = cryptoFramework.SignatureUtils.genEccSignature(spec)
-      console.info('genEccSignature success');
-      console.info('data is ' + data)
+      console.info('genEccSignature result: success.');
+      console.info('data = ' + data)
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error(`ecc error, ${e.code}, ${e.message}`);
+      console.error(`ecc failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
