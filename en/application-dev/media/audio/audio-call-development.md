@@ -14,9 +14,11 @@ The sample code below demonstrates the basic process of using the AudioRenderer 
 
 ## Using AudioRenderer to Play the Peer Voice
 
-  This process is similar to the process of [using AudioRenderer to develop audio playback (ArkTs)](using-audiorenderer-for-playback.md). The key differences lie in the **audioRendererInfo** parameter and audio data source. In the **audioRendererInfo** parameter used for audio streams, **usage** must be set to **STREAM_USAGE_VOICE_COMMUNICATION**.
+This process is similar to the process of [using AudioRenderer to develop audio playback (ArkTs)](using-audiorenderer-for-playback.md). The key differences lie in the **audioRendererInfo** parameter and audio data source. In the **audioRendererInfo** parameter used for audio streams, **usage** must be set to **STREAM_USAGE_VOICE_COMMUNICATION**.
 
-```ts
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -83,7 +85,7 @@ async function initArguments(context: common.UIAbilityContext) {
   };
 }
 
-// Create an AudioRenderer instance, and set the events to listen for.
+// Create an instance and set the events to listen for.
 async function init() {
   audio.createAudioRenderer(audioRendererOptions, (err, renderer) => { // Create an AudioRenderer instance.
     if (!err) {
@@ -174,99 +176,17 @@ async function release() {
     });
   }
 }
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Scroll() {
-      Column() {
-        Row() {
-          Column() {
-            Text('Initialize').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            initArguments(context);
-            init();
-          });
-
-          Column() {
-            Text('Start playback').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            start();
-          });
-        }
-
-        Row() {
-          Column() {
-            Text('Pause playback').fontSize(16).margin({ top: 12 });
-          }
-          .id('audio_effect_manager_card')
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            pause();
-          });
-
-          Column() {
-            Text('Stop playback').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            stop();
-          });
-        }
-
-        Row() {
-          Column() {
-            Text('Release resources').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .id('audio_volume_card')
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            release();
-          });
-        }
-        .padding(12)
-      }
-      .height('100%')
-      .width('100%')
-      .backgroundColor('#F1F3F5');
-    }
-  }
-}
 ```
 
 ## Using AudioCapturer to Record the Local Voice
 
-  This process is similar to the process of [using AudioCapturer to develop audio recording (ArkTs)](using-audiocapturer-for-recording.md). The key differences lie in the **audioCapturerInfo** parameter and audio data stream direction. In the **audioCapturerInfo** parameter used for audio streams, **source** must be set to **SOURCE_TYPE_VOICE_COMMUNICATION**.
+This process is similar to the process of [using AudioCapturer to develop audio recording (ArkTs)](using-audiocapturer-for-recording.md). The key differences lie in the **audioCapturerInfo** parameter and audio data stream direction. In the **audioCapturerInfo** parameter used for audio streams, **source** must be set to **SOURCE_TYPE_VOICE_COMMUNICATION**.
 
-  You must request the ohos.permission.MICROPHONE permission for all recording tasks. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
+You must request the ohos.permission.MICROPHONE permission for all recording tasks. For details, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
-```ts
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
@@ -314,7 +234,7 @@ async function initArguments(context: common.UIAbilityContext) {
   };
 }
 
-// Create an AudioCapturer instance, and set the events to listen for.
+// Create an instance and set the events to listen for.
 async function init() {
   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // Create an AudioCapturer instance.
     if (err) {
@@ -387,75 +307,6 @@ async function release() {
         console.info('Capturer release success.');
       }
     });
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Scroll() {
-      Column() {
-        Row() {
-          Column() {
-            Text('Initialize').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            initArguments(context);
-            init();
-          });
-
-          Column() {
-            Text('Start recording').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            start();
-          });
-        }
-
-        Row() {
-          Column() {
-            Text('Stop recording').fontSize(16).margin({ top: 12 });
-          }
-          .id('audio_effect_manager_card')
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            stop();
-          });
-
-          Column() {
-            Text('Release resources').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            release();
-          });
-        }
-        .padding(12)
-      }
-      .height('100%')
-      .width('100%')
-      .backgroundColor('#F1F3F5');
-    }
   }
 }
 ```

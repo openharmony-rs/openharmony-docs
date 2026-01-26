@@ -67,7 +67,7 @@ The table below lists the mappings between the typical audio playback stream typ
 
 The audio stream type plays a key role in audio focus management. Different types of audio streams have different default priorities and processing modes for the audio focus.
 
-When an application starts audio playback or recording, the system automatically applies for focus based on the audio stream type. This may interrupt or duck other audio streams. For details about the audio focus, see [Introduction to Audio Focus and Audio Session](audio-playback-concurrency.md).
+When an application starts audio playback or recording, the system automatically applies for focus based on the audio stream type. This may interrupt or duck other audio streams. For details about the audio focus, see [Introduction to Audio Focus](audio-playback-concurrency.md).
 
 This section describes only how the typical audio stream types affect the audio focus. For details about other types, see [Default Focus Strategies](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-audio-focus-management#section17923135513547).
 

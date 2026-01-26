@@ -12,9 +12,11 @@ An audio playback application must notice audio stream state changes and perform
 
 Create an AudioRenderer by referring to [Using AudioRenderer for Audio Playback (ArkTs)](using-audiorenderer-for-playback.md) or [audio.createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8). Then obtain the audio stream state changes in either of the following ways.
 
-- Check the [state](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#properties) of the AudioRenderer.
-    
-  ```ts
+- Obtain the [property](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#properties) state of the **AudioRenderer**.
+
+  <!-- @[check_renderstate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+
+  ``` TypeScript
   import { audio } from '@kit.AudioKit';
   
   let audioRendererState: audio.AudioState = audioRenderer.state;
@@ -22,8 +24,10 @@ Create an AudioRenderer by referring to [Using AudioRenderer for Audio Playback 
   ```
 
 - Register **stateChange** to listen for state changes of the AudioRenderer.
-    
-  ```ts
+
+  <!-- @[regist_listeningrendererchange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+
+  ``` TypeScript
   import { audio } from '@kit.AudioKit';
   
   audioRenderer.on('stateChange', (rendererState: audio.AudioState) => {
@@ -55,7 +59,9 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 
 1. Create an AudioStreamManager instance.
 
-   ```ts
+   <!-- @[create_streammanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+ 
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
    
    let audioManager = audio.getAudioManager();
@@ -64,7 +70,9 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 
 2. Use [on('audioRendererChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiorendererchange9) to listen for audio playback stream changes. If the application needs to receive a notification when the audio playback stream state or device changes, it can subscribe to this event.
 
-   ```ts
+   <!-- @[regist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
    
    audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: audio.AudioRendererChangeInfoArray) => {
@@ -74,7 +82,9 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 
 3. (Optional) Use [off('audioRendererChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiorendererchange9) to cancel listening for audio playback stream changes.
 
-   ```ts
+   <!-- @[unregist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+ 
+   ``` TypeScript
    audioStreamManager.off('audioRendererChange');
    console.info('Succeeded in using off function.');
    ```
@@ -85,7 +95,9 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
    >
    > Before listening for state changes of all audio streams, the application must [declare the ohos.permission.USE_BLUETOOTH permission](../../security/AccessToken/declare-permissions.md), for the device name and device address (Bluetooth related attributes) to be displayed correctly.
 
-   ```ts
+   <!-- @[get_allstreaminfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+ 
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    

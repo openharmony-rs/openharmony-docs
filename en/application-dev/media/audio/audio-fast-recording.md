@@ -28,6 +28,9 @@ Currently, OHAudio supports two modes: normal mode (**AUDIOSTREAM_LATENCY_MODE_N
 You can specify which mode the audio stream should use by calling [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) to set [OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).
 
 The following is an example of setting the low-latency mode:
+
+<!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
 ```cpp
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
@@ -64,21 +67,24 @@ Audio data to be recorded is read through the callback API. Implement the callba
 For details about the sample code for developing audio recording, please refer to [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md).
 
 The following is an example of setting the data callback function:
+
+<!-- @[SetCapturerReadDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
 ```cpp
-// Customize a function to read data.
-static OH_AudioData_Callback_Result MyOnReadData(
+int32_t MyOnReadData_Legacy(
     OH_AudioCapturer* capturer,
     void* userData,
     void* buffer,
     int32_t length)
 {
     // Obtain captured data of the specified length from the buffer.
-    return AUDIO_DATA_CALLBACK_RESULT_VALID0;
+    return 0;
 }
 // Configure the callback function for reading audio data.
-OH_AudioCapturer_OnReadDataCallback readDataCb = MyOnReadData;
+OH_AudioCapturer_OnReadDataCallback readDataCb = MyOnReadData_NewAPI;
 OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, readDataCb, nullptr);
 ```
+
 - To prevent audio stuttering, do not perform time-consuming operations in the callback function **OH_AudioCapturer_OnReadData**.
 - To maintain independence between data writing logic and stream state control, do not call the audio stream control APIs in the callback function **OH_AudioCapturer_OnReadData**.
   
@@ -92,4 +98,4 @@ OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, readDataCb, nullptr);
 
     > **NOTE**
     >
-    > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioRenderer_Stop** generally takes more than 50 ms). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
+    > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioCapturer_Stop** generally takes more than 50 ms). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
