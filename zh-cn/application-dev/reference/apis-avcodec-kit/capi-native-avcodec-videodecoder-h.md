@@ -26,7 +26,7 @@
 
 ![meaning](figures/meaning.PNG)
 
-![desciption of decode api history](figures/video-decode-api.PNG)
+![description of decode api history](figures/video-decode-api.PNG)
 
 ## 汇总
 
