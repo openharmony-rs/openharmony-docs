@@ -469,6 +469,24 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 | netHandle | [NetHandle](#nethandle) | 是   | 数据网络的句柄。                                             |
 | callback  | AsyncCallback\<void>    | 是   | 回调函数。当成功绑定App到指定网络时，error为undefined，否则为错误对象。|
 
+**说明：**
+
+如需解除App和指定网络的绑定关系，可以调用setAppNet()，并传入一个netId=0的NetHandle对象，参考：
+
+```ts
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+
+```
+
 **错误码：**
 
 以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
@@ -517,6 +535,24 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 | 参数名    | 类型                                                         | 必填 | 说明             |
 | --------- | ------------------------------------------------------------ | ---- | ---------------- |
 | netHandle | [NetHandle](#nethandle)                                      | 是   | 数据网络的句柄。 |
+
+**说明：**
+
+如需解除App和指定网络的绑定关系，可以调用setAppNet()，并传入一个netId=0的NetHandle对象，参考：
+
+```ts
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+
+```
 
 **返回值：**
 
