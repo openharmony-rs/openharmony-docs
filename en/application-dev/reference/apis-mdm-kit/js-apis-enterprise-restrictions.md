@@ -47,17 +47,17 @@ Disallows a feature.
 |--------------|---------------------|
 |bluetooth|Device Bluetooth capability. If a Bluetooth device blocklist or trustlist is configured via [addDisallowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageradddisallowedbluetoothdevices20) or [addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices), disabling Bluetooth via this API takes priority. The blocklist or trustlist will only take effect after Bluetooth is re-enabled.|
 |modifyDateTime|Device capability to modify system time.|
-|printer|Device printing capability, which is supported only on PCs/2-in-1 devices. Disabling printing via this API overrides the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) setting for specific users.|
+|printer|Device printing capability. Currently, this feature is available only for PCs/2-in-1 devices. Disabling printing via this API overrides the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) setting for specific users.|
 |hdc|Capability for other devices to connect to and debug this device via HDC. Disabling this capability prevents external devices from connecting or debugging via HDC.|
 |microphone|Device microphone capability.|
 |fingerprint|Device fingerprint authentication capability. Calling this API will trigger a policy conflict if fingerprint authentication has already been disabled for a user via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14).|
 |usb|Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).<br>A policy conflict occurs in the following scenarios:<br>1. A list of allowed USB devices has been configured via the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br>2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>3. Specific USB device types have been blocked via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br>4. USB storage write access has been disabled for specific users via the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14) API.|
 |wifi|Device Wi-Fi capability.|
 |tethering<sup>14+</sup>|Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).|
-|inactiveUserFreeze<sup>14+</sup>|Inactive user operation capability, currently supported only on PC/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|
+|inactiveUserFreeze<sup>14+</sup>|Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|
 |camera<sup>14+</sup>|Device camera capability.|
-|mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP enables linear access to media files on mobile devices. A policy conflict occurs if this API is used to disable MTP client capability after MTP client write access has been disabled for specific users via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14).|
-|mtpServer<sup>18+</sup>|MTP server capability.|
+|mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. A policy conflict occurs if this API is used to disable MTP client capability after MTP client write access has been disabled for specific users via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14).|
+|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|
 |sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|
 |sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|
 |backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will become unavailable. Currently, this feature is supported only on smartphones and tablets. To completely disable the backup and restore capability, you are advised to call [applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) to disable applications with this feature, such as Backup & Restore, HiSuite, and Cloud.|
@@ -129,22 +129,22 @@ Queries whether a feature is disabled.
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
 | feature | string                                                  | Yes  | For features that can be queried, see Table 2.<br> **NOTE**<br>Since API version 15, applications granted with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and [activated as device administrator applications](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can obtain the following features: **bluetooth**, **hdc**, **microphone**, **usb**, **wifi**, **tethering**, and **camera**<!--RP4--><!--RP4End-->.|
 
-**Table 2 Features that can be queried**
+**Table 2** Features that can be queried
 |Feature|Description|
 |--------------|---------------------|
 |bluetooth|Device Bluetooth capability.|
 |modifyDateTime|Device capability to modify system time.|
-|printer|Device printing capability, which is supported only on PCs/2-in-1 devices.|
+|printer|Device printing capability. Currently, this feature is available only for PCs/2-in-1 devices.|
 |hdc|Capability for other devices to connect to and debug this device via HDC.|
 |microphone|Device microphone capability.|
 |fingerprint|Device fingerprint authentication capability.|
 |usb|Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).|
 |wifi|Device Wi-Fi capability.|
 |tethering<sup>14+</sup>|Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).|
-|inactiveUserFreeze<sup>14+</sup>|Inactive user operation capability, currently supported only on PC/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|
+|inactiveUserFreeze<sup>14+</sup>|Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|
 |camera<sup>14+</sup>|Device camera capability.|
 |mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices.|
-|mtpServer<sup>18+</sup>|MTP server capability.|
+|mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|
 |sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. <br>Server Messages Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN), enabling access to shared file systems, printers, and other resources between devices on the same LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|
 |sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|
 |backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will become unavailable. Currently, this feature is supported only on smartphones and tablets.|

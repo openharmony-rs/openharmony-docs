@@ -208,7 +208,7 @@ Installs a user certificate. This API uses a callback to return the result.
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.           |
-| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in a path that can be accessed by the application, such as the application sandbox path.|
+| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
 | callback | AsyncCallback&lt;string&gt;            | Yes   | Callback invoked to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.     |
 
 **Error codes**
@@ -276,7 +276,7 @@ Installs a user certificate. This API uses a promise to return the result.
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in a path that can be accessed by the application, such as the application sandbox path.|
+| certificate    | [CertBlob](#certblob)     | Yes   | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).|
 
 **Return value**
 
