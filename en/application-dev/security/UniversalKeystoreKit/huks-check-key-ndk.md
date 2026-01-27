@@ -13,6 +13,7 @@ Check whether a key exists.
 ```txt
 target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
+
 ## How to Develop
 
 1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
@@ -99,3 +100,4 @@ static napi_value IsKeyExist(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
+<!--no_check-->

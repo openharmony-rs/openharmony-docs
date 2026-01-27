@@ -67,7 +67,7 @@ The user authentication framework consists of the following:
 
 2. Unified user authentication framework: consists of authentication SAs and drivers, responsible for scheduling various authentication capabilities and the user authentication widget to complete user authentication requests initiated by services through the unified user authentication APIs.
 
-3. User authentication widget: provides interactive authentication interfaces for different authentication modes to ensure consistent user authentication experience.
+3. User authentication widget: provides interactive authentication interfaces for different authentication modes to ensure consistent user authentication experience. This widget can be called by the unified user authentication framework.
 
 4. Authentication capabilities: enable identity verification based on lock screen passwords, facial characteristics, and fingerprints under the scheduling of the unified user authentication framework.
 

@@ -9,7 +9,8 @@
 
 This topic walks you through on how to query key aliases.
 
->**NOTE**<br>
+>**NOTE**
+>
 > <!--RP1-->The mini-system devices<!--RP1End--> do not support query of key aliases.
 
 ## How to Develop
@@ -48,3 +49,4 @@ async function testListAliases() {
   }
 }
 ```
+<!--no_check-->
