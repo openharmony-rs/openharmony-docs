@@ -1122,7 +1122,7 @@ observer.offGetSimActiveState(simActiveState);
 
 ## observer.onCCallStateChange<sup>23+</sup>
 
-onCCallStateChange\(callback: Callback\<CCallStateInfo\>\, options?: ObserverOptions): void
+onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOptions): void
 
 三方应用监听运营商通话状态并获取通话号码，使用callback方式作为异步方法。
 
