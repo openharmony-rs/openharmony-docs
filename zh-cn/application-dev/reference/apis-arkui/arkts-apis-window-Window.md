@@ -7520,8 +7520,6 @@ clearWindowMask(): Promise&lt;void&gt;;
 
 清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
-该接口只在多个线程操作同一个窗口时可能返回错误码1300002。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
