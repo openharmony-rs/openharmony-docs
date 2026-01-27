@@ -416,11 +416,6 @@ struct Second {
   private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params);
   private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params);
 
-  aboutToDisappear(): void {
-    console.info('start do proxy off!');
-    this.proxy?.off('syncReceiverRegister');
-    this.proxy?.off('asyncReceiverRegister');
-  }
 
   build() {
     Row() {
