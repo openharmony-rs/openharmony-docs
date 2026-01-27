@@ -85,10 +85,8 @@ Example of the **config.json** file:
         "name": ".MainAbility_entry",
         "srcLanguage": "ets",
         "icon": "$media:icon",
-        // $string:MainAbility_entry_desc is a resource index.
         "description": "$string:MainAbility_entry_desc",
         "formsEnabled": false,
-        // $string:MainAbility_entry_label is a resource index.
         "label": "$string:MainAbility_entry_label",
         "type": "page",
         "launchType": "multiton"
