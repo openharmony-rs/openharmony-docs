@@ -179,6 +179,7 @@ The number of firewall rules exceeds the maximum.
 **可能原因**
 
 1、单个用户userID的防火墙规则rule的数量超过1000条；
+
 2、所有用户userID的防火墙规则rule的数量超过2000条；
 
 **处理步骤**
@@ -247,11 +248,11 @@ The number of domain rules exceeds the maximum.
 
 **错误描述**
 
-添加/更新域名规则时，所有userid的模糊域名规则数量大于100个。
+domain类型的防火墙规则中，模糊域名规则数量超过最大值。
 
 **可能原因**
 
-domain类型的防火墙规则中，模糊域名规则数量超过最大值。
+添加/更新域名规则时，所有userid的模糊域名规则数量大于100个。
 
 **处理步骤**
 
