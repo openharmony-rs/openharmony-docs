@@ -647,7 +647,7 @@ void (*registerNodeCustomEventReceiver)(void (*eventReceiver)(ArkUI_NodeCustomEv
 
 | 参数项 | 描述 |
 |-----|----|
-| void (*eventReceiver)(ArkUI_NodeCustomEvent* event)  | 事件回调统一入口函数。   |
+| void (*eventReceiver)([ArkUI_NodeCustomEvent](capi-arkui-nativemodule-arkui-nodecustomevent.md)\* event)  | 事件回调统一入口函数。   |
 
 ### unregisterNodeCustomEventReceiver()
 
