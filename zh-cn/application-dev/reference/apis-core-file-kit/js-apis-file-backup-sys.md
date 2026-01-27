@@ -3544,7 +3544,7 @@ async function getLocalCapabilitiesTest() {
       const deviceType: string = jsonsObj.deviceType;
       console.info('deviceType: ' + deviceType);
     }
-  } catch (error) {
+  } catch (error: BusinessError) {
     console.error(`parse failed. Code: ${error.code}, message: ${error.message}`);
   }
 }
@@ -3971,7 +3971,7 @@ let incrementalBackupData: backup.IncrementalBackupData = {
 let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
 incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
   console.info('appendBundles success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
 }); // 添加需要增量备份的应用
 ```
@@ -4222,7 +4222,7 @@ let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBac
 // 添加需要增量备份的应用
 incrementalBackupSession.appendBundles(incrementalBackupDataArray, infos).then(() => {
   console.info('appendBundles success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
 }); 
 ```
@@ -4532,7 +4532,6 @@ let bundleData: backup.IncrementalBackupData = {
 }
 backupBundles.push(bundleData);
 incrementalBackupSession.appendBundles(backupBundles);
-
 ```
 
 ### cleanBundleTempDir<sup>20+</sup>
