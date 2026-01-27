@@ -7504,7 +7504,7 @@ try {
   let array = new Array<number>(windowClass.getWindowProperties().windowRect.width).fill(1);
   let windowMask = new Array<Array<number>>(windowClass.getWindowProperties().windowRect.height).fill(array);
   let promise = windowClass.setWindowMask(windowMask);
-    promise.then(() => {
+  promise.then(() => {
     console.info('Succeeded in setting the window mask.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
@@ -7552,7 +7552,7 @@ try {
   let windowMask = new Array<Array<number>>(windowClass.getWindowProperties().windowRect.height).fill(array);
   windowClass.setWindowMask(windowMask);
   let promise = windowClass.clearWindowMask();
-    promise.then(() => {
+  promise.then(() => {
     console.info('Succeeded in clearing the window mask.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
