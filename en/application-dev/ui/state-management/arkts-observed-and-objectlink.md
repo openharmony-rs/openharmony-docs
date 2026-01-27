@@ -71,7 +71,7 @@ this.objLink= ...
 
   **Figure 1** Initialization rule 
 
-  ![en-us_image_0000001502255261](figures/en-us_image_0000001502255261.png)
+  ![en-us_image_0000001502255261](figures/en-us_image_0000001502255261.PNG)
 
 
 ## Observed Changes and Behavior
@@ -373,7 +373,7 @@ When \@ObjectLink decorates a class that extends **Set**, it enables observation
    ```
 
 
-## When to Use
+## Use Scenarios
 
 ### Object Type
 
