@@ -10,7 +10,7 @@
 
 > **注意**：
 >
-> - [distributedfiles](app-sandbox-directory.md#应用文件目录与应用文件路径)目录为本应用在多设备间共享文件的合集。为避免误删其他设备生成的文件，应用在执行删除操作时，仅对其自身创建的文件进行操作。
+> - [distributedfiles](app-sandbox-directory.md#应用文件目录与应用文件路径)目录为本应用在多设备间共享文件的合集。为避免误删其他设备生成的文件，应用在执行删除操作前，请务必确认操作是否符合预期。
 > - [/data/storage/el2/distributedfiles/.remote_share/](app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)目录由系统自动创建并管理。开发者不得手动删除该目录下的文件。该目录中的文件与应用的base目录直接映射（不占用额外存储空间），任何删除操作可能导致base目录中的原始文件永久丢失。
 
 ## 开发步骤
