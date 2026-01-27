@@ -88,7 +88,7 @@ createComponentObserver(id: string | number): inspector.ComponentObserver
 
 注册组件布局和组件绘制送显完成回调通知。送显指节点的绘制命令发送到图形服务并完成显示。
 
-相比[createComponentObserver](#createComponentObserver)，新增支持传入UniqueID（系统给节点分配的唯一id）。
+相比[createComponentObserver](#createcomponentobserver)，新增支持传入UniqueID（系统给节点分配的唯一id）。
 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
