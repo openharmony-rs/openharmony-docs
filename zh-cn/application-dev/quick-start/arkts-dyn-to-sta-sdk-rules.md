@@ -907,7 +907,7 @@ ArkTS-Dyn
 declare function getValue(): number;
 
 // ArkTS-Dyn应用代码
-let v: number = getValue(key);
+let v: number = getValue();
 ```
 
 示例二：属性
