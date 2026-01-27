@@ -15742,7 +15742,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ButtonList/entry/src/main/cpp/NormalTextListExample.h",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":60,
 						"name":"Cpp_NormalTextListExample",
 						"start_line":15
 					}
