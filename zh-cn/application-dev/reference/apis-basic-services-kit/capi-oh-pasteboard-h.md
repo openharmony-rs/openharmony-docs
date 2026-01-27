@@ -547,7 +547,7 @@ bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回剪贴板数据是否在远端设备上。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为false。 |
+| bool | 返回指示剪贴板数据是否在远端设备上的结果。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为false。 |
 
 ### OH_Pasteboard_GetData()
 
