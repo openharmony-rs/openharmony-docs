@@ -69,7 +69,7 @@ struct Index {
 
 <!-- @[button_modifier_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonModifierFAQ.ets) -->
 
-```ts
+``` TypeScript
 
 // pages/ButtonModifierFAQ.ets
 class MyButtonModifier1 implements AttributeModifier<ButtonAttribute> {
