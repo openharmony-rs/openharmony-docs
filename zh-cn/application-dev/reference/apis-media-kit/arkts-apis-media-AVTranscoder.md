@@ -330,7 +330,7 @@ on(type:'progressUpdate', callback: Callback\<number\>):void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 进度更新事件回调类型，支持的事件：'progressUpdate'，在转码过程中系统会自动触发此事件。 |
-| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 回调函数，返回进度更新事件回调方法，progress: number，表示当前转码进度。 |
+| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | 是   | 回调函数，返回进度更新事件，函数中的参数number，表示当前转码进度。 |
 
 **示例：**
 
@@ -392,7 +392,7 @@ on(type: 'error', callback: ErrorCallback): void
 | 参数名   | 类型          | 必填 | 说明                                                         |
 | -------- | ------------- | ---- | ------------------------------------------------------------ |
 | type     | string        | 是   | 转码错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，返回转码错误事件回调方法。                                       |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 转码错误事件回调方法。                                       |
 
 **错误码：**
 
