@@ -97,7 +97,7 @@ hilog.debug(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP3-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  D     hello World <private>
 ```
 <!--RP3End-->
@@ -132,7 +132,7 @@ hilog.info(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP4-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  I     hello World <private>
 ```
 <!--RP4End-->
@@ -167,7 +167,7 @@ hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP5-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  W     hello World <private>
 ```
 <!--RP5End-->
@@ -202,7 +202,7 @@ hilog.error(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP6-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  E     hello World <private>
 ```
 <!--RP6End-->
@@ -237,7 +237,7 @@ hilog.fatal(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
 <!--RP7-->
-```
+```text
 08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  F     hello World <private>
 ```
 <!--RP7End-->
@@ -286,7 +286,7 @@ hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
 
 <!--RP1-->
 最终打印结果如下所示：
-```
+```text
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
@@ -352,7 +352,7 @@ hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
 
 <!--RP2-->
 最终打印结果如下所示：
-```
+```text
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 2
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
@@ -398,7 +398,7 @@ hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 
 **打印结果：**
 <!--RP8-->
-```
+```text
 08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
 08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
 08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  private flag: <private> <private>, print null: null
