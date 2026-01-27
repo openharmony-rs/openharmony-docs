@@ -156,7 +156,7 @@ import { backup } from '@kit.CoreFileKit';
 
 ## onResultReport<sup>23+</sup>
 
-(bundleName: string, result: string) => void
+type onResultReport = (bundleName: string, result: string) => void
 
 回调函数。当应用备份/恢复结束后，如果成功触发回调，返回应用包名及应用备份/恢复信息（备份/恢复数量或异常信息等）。
 
@@ -192,7 +192,7 @@ onResultReport: (bundleName: string, result: string) => {
 
 ## onProcess<sup>23+</sup>
 
-(bundleName: string, process: string) => void
+type onProcess = (bundleName: string, process: string) => void
 
 回调函数。应用备份/恢复过程中进度信息的回调，返回应用执行业务的进度信息和异常信息等。
 
@@ -691,7 +691,7 @@ onProcess: (bundleName: string, process: string) => {
 
 ### onProcess<sup>23+</sup>
 
-onProcess: OnProcess;
+onProcess: OnProcess
 
 回调函数。应用备份/恢复过程中进度信息的回调，返回应用执行业务的进度信息和异常信息等。
 
