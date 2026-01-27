@@ -881,11 +881,11 @@ that.parseXml(options);
 //note
 ```
 
-## 静态类型null/undefined需要显示声明
+## 静态类型null/undefined需要显式声明
 
 **规则解释：**
 
-在ArkTS-Sta中null/undefined需要显示声明。
+在ArkTS-Sta中null/undefined需要显式声明。
 
 **变更原因：**
 
@@ -943,7 +943,7 @@ ArkTS-Sta
 
 ```
 // ArkTS-Sta API定义
-declare function getValue(): number | null;// 显示声明null
+declare function getValue(): number | null;// 显式声明null
 
 // ArkTS-Sta应用代码
 let tmp: number | null = getValue(); 
@@ -1012,7 +1012,7 @@ let obj: Object = {
 let v: number = getValue(obj);
 ```
 
-示例二：层级有约束，每层的属性数量没有限制。
+示例二：层级有限制，每层的属性数量没有限制。
 
 ```
 // ArkTS-Dyn API定义
@@ -1025,7 +1025,7 @@ let obj: Object = {
 let v: number = getValue(obj);
 ```
 
-示例三：层级有约束，每层的属性数量没有限制。
+示例三：层级有限制，每层的属性数量没有限制。
 
 ```
 // ArkTS-Dyn API定义
@@ -1075,7 +1075,7 @@ let type: MyType = {
 let v: number = getValue(type);  
 ```
 
-示例二：层级有约束，每层的属性数量没有限制。
+示例二：层级有限制，每层的属性数量没有限制。
 
 ```
 // ArkTS-Sta API定义
@@ -1089,7 +1089,7 @@ let type: Record<string, number> = {
 let v: number = getValue(type);  
 ```
 
-示例三：层级有约束，每层的属性数量没有限制。
+示例三：层级有限制，每层的属性数量没有限制。
 
 ```
 // ArkTS-Sta API定义
