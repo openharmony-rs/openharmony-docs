@@ -803,8 +803,8 @@ struct TodoList {
         Button('Setting')
           .onClick(() => {
             let wantInfo: Want = {
-              deviceId: '', // If deviceId is empty, the device is the local device.
-              bundleName: 'com.samples.statemgmtv2mvvm', // Replace it with the value of bundleName in AppScope/app.json5.
+              deviceId: '', // An empty deviceId indicates the local device.
+              bundleName: 'com.samples.statemgmtv2mvvm', // Replace it with the bundle name in AppScope/app.json5.
               abilityName: 'SettingAbility',
             };
             this.context.startAbility(wantInfo);

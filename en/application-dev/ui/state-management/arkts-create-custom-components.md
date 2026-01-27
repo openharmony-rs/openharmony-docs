@@ -72,7 +72,7 @@ To fully understand the preceding example, a knowledge of the following concepts
 
 - [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
 
-- [The build Function](#the-build-function)
+- [build()](#build)
 
 - [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
 
@@ -238,7 +238,7 @@ The @Entry decorator marks a custom component as the entry point of a page. A si
 
 ### \@Reusable
 
-The \@Reusable decorator enables a custom component to be reusable. For details, see [\@Reusable Decorator: Reusing Components](./arkts-reusable.md#use-scenario).
+The \@Reusable decorator enables a custom component to be reusable. For details, see [\@Reusable Decorator: Reusing Components](./arkts-reusable.md#use-scenarios).
 
   > **NOTE**
   >
@@ -535,7 +535,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   
   In ArkUI state management, UI re-render is driven by state.
 
-  ![zh-cn_image_0000001651365257](figures/zh-cn_image_0000001651365257.png)
+  ![en-us_image_0000001651365257](figures/en-us_image_0000001651365257.png)
 
   Therefore, do not change any state variable in the **build()** or \@Builder decorated method of a custom component. Otherwise, loop rendering may result. The impact of **Text('${this.count++}')** varies depending on the update mode:
 
