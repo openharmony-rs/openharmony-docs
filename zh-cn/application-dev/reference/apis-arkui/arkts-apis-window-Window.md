@@ -12191,7 +12191,7 @@ try {
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
-窗口获焦时保留由其他窗口创建的软键盘，仅支持系统窗口与应用子窗口。
+窗口获焦时是否保留由其他窗口创建的软键盘，仅支持系统窗口与应用子窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
