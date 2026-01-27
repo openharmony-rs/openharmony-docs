@@ -607,7 +607,7 @@ onResultReport: OnResultReport
 
 | 返回值     | 类型   | 说明                            |
 | ---------- | ------ | ------------------------------- |
-| OnResultReport | [OnResultReport](#onresultreport23-1) | 返回应用包名及应用备份/恢复信息（备份/恢复数量或异常信息等）。                        |
+| OnResultReport | [OnResultReport](#onresultreport23) | 返回应用包名及应用备份/恢复信息（备份/恢复数量或异常信息等）。                        |
 
 **错误码：**
 
@@ -709,7 +709,7 @@ onProcess: OnProcess
 
 | 返回值     | 类型   | 说明                            |
 | ---------- | ------ |------------------------------- |
-|Onprocess | [Oprocess](#onprocess23-1)   | 返回应用包名及应用备份/恢复信息（备份/恢复数量或异常信息等）。                        |
+|Onprocess | [Oprocess](#onprocess23)   | 返回应用包名及应用备份/恢复信息（备份/恢复数量或异常信息等）。                        |
 
 
 **错误码：**
