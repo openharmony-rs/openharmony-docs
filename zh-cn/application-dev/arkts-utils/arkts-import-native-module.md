@@ -12,34 +12,52 @@
 在Native模块的index.d.ts文件中导出，并在文件内直接导入。
 
 ### 具名导入
-```ts
-// libentry.so对应的index.d.ts
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+// libentry.so对应的index.d.ts。
 export const add: (a: number, b: number) => number;
 ```
-```ts
-// test.ets
+
+<!-- @[name_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImport.ets) -->     
+
+``` TypeScript
+// NameImport.ets
 import { add } from 'libentry.so'
 add(2, 3);
 ```
 
 ### 默认导入
-```ts
-// libentry.so对应的index.d.ts
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
+// libentry.so对应的index.d.ts。
 export const add: (a: number, b: number) => number;
 ```
-```ts
-// test.ets
+
+<!-- @[default_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DefaultImport.ets) -->     
+
+``` TypeScript
+// DefaultImport.ets
 import entry from 'libentry.so'
 entry.add(2, 3);
 ```
 
 ### 命名空间导入
-```ts
-// libentry.so对应的index.d.ts
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
+// libentry.so对应的index.d.ts。
 export const add: (a: number, b: number) => number;
 ```
-```ts
-// test.ets
+
+<!-- @[namespace_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImport.ets) -->    
+
+``` TypeScript
+// NamespaceImport.ets
 import * as entry from 'libentry.so'
 entry.add(2, 3);
 ```
@@ -47,47 +65,66 @@ entry.add(2, 3);
 ## 间接导入
 
 ### 转为具名变量导出再导入
-```ts
-// libentry.so对应的index.d.ts
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
+// libentry.so对应的index.d.ts。
 export const add: (a: number, b: number) => number;
 ```
-```ts
-// test1.ets
+
+<!-- @[name_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameExport.ets) -->    
+
+``` TypeScript
+// NameExport.ets
 // 将libentry.so的API封装后导出
 import { add } from 'libentry.so';
 export { add };
 ```
-```ts
-// test2.ets
+
+<!-- @[nameImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NameImportFromExport.ets) -->    
+
+``` TypeScript
+// NameImportFromExport.ets
 // 从中间模块导入API
-import { add } from './test1';
+import { add } from './NameExport';
 const result = add(2, 3);
 ```
 
 ### 转为命名空间导出再导入
-```ts
-// libentry.so对应的index.d.ts
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->     
+
+``` TypeScript
+// libentry.so对应的index.d.ts。
 export const add: (a: number, b: number) => number;
 ```
-```ts
-// test1.ets
+
+<!-- @[namespace_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceExport.ets) -->    
+
+``` TypeScript
+// NamespaceExport.ets
 export * from 'libentry.so'
 ```
-```ts
-// test2.ets
-import { add } from './test1'
+
+<!-- @[namespaceImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImportFromExport.ets) -->    
+
+``` TypeScript
+// NamespaceImportFromExport.ets
+import { add } from './NamespaceExport'
 add(2, 3);
 ```
+
 > **注意：** 
 > 
 > 不支持Native模块导出和导入同时使用命名空间。
 
 **反例：** 
-```ts
+``` TypeScript
 // test1.ets
 export * from 'libentry.so'
 ```
-```ts
+``` TypeScript
 // test2.ets
 import * as add from './test1'
 // 无法获取add对象
@@ -96,25 +133,37 @@ import * as add from './test1'
 ## 动态导入
 
 ### 直接导入
-```ts
-// libentry.so对应的index.d.ts
+
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+
+``` TypeScript
+// libentry.so对应的index.d.ts。
 export const add: (a: number, b: number) => number;
 ```
-```ts
-// test.ets
+
+<!-- @[dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImport.ets) -->    
+
+``` TypeScript
+// DynamicImport.ets
 import('libentry.so').then((entry:ESObject) => {
-    entry.default.add(2, 3);
+  entry.default.add(2, 3);
 })
 ```
 ### 间接导入
-```ts
-// test1.ets
+<!-- @[dynamic_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicExport.ets) -->    
+
+``` TypeScript
+// DynamicExport.ets
 import entry from 'libentry.so'
 export { entry }
+```
 
-// test2.ets
-import('./test1').then((ns:ESObject) => {
-    ns.entry.add(2, 3);
+<!-- @[dynamicImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/DynamicImportFromExport.ets) -->  
+
+``` TypeScript
+// DynamicImportFromExport.ets
+import('./DynamicExport').then((ns:ESObject) => {
+  ns.entry.add(2, 3);
 })
 ```
 
@@ -123,11 +172,11 @@ import('./test1').then((ns:ESObject) => {
 > 不支持动态加载时，导出文件使用命名空间。
 
 **反例：** 
-```ts
+``` TypeScript
 // test1.ets
 export * from 'libentry.so'
 ```
-```ts
+``` TypeScript
 // test2.ets
 import('./test1').then((ns:ESObject) => {
     // 无法获取ns对象
