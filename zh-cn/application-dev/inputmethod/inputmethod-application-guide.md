@@ -20,23 +20,22 @@
 
   当不再使用服务且准备将该实例销毁时，触发该回调。开发者可以在该回调中清理资源，如注销监听等。
 
-
 ## 开发步骤 
 
 开发者在实现一个输入法应用时，需要在DevEco Studio工程中新建一个InputMethodExtensionAbility，具体步骤如下：
 
 1. 在工程Module对应的ets目录下，右键选择“New > Directory”，新建一个目录，并命名为InputMethodExtensionAbility。
 
-2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ts、InputMethodService.ts、Index.ets以及KeyboardKeyData.ts。目录如下：
+2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ets、InputMethodService.ets、Index.ets以及KeyboardKeyData.ets。目录如下：
 
    ``` TypeScript
    /src/main/
    ├── ets/InputMethodExtensionAbility
-   │       └──model/KeyboardController.ts      # 显示键盘
-   │       └──InputMethodService.ts        # 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
+   │       └──model/KeyboardController.ets      # 显示键盘
+   │       └──InputMethodService.ets        # 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
    │       └──pages
    │         └── Index.ets            # 绘制键盘，添加输入删除功能
-   │         └── KeyboardKeyData.ts          # 键盘属性定义
+   │         └── KeyboardKeyData.ets          # 键盘属性定义
    ├── resources/base/profile/main_pages.json  
    ```
 
