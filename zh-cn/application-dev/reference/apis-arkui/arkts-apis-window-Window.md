@@ -7501,12 +7501,8 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  let windowMask: Array<Array<number>> = [
-      [0, 0, 0, 1, 0, 0, 0],
-      [0, 0, 1, 1, 1, 0, 0],
-      [0, 1, 1, 0, 1, 1, 0],
-      [1, 1, 0, 0, 0, 1, 1]
-    ];
+  let array = new Array<number>(windowClass.getWindowProperties().windowRect.width).fill(1);
+  let windowMask = new Array<Array<number>>(windowClass.getWindowProperties().windowRect.height).fill(array);
   let promise = windowClass.setWindowMask(windowMask);
     promise.then(() => {
     console.info('Succeeded in setting the window mask.');
@@ -7518,7 +7514,7 @@ try {
 }
 ```
 
-## clearWindowMask<sup>23+</sup>
+## clearWindowMask<sup>24+</sup>
 
 clearWindowMask(): Promise&lt;void&gt;;
 
@@ -7526,7 +7522,7 @@ clearWindowMask(): Promise&lt;void&gt;;
 
 该接口只在多个线程操作同一个窗口时可能返回错误码1300002。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -7545,26 +7541,21 @@ clearWindowMask(): Promise&lt;void&gt;;
 | 错误码ID | 错误信息                                      |
 | :------- | :-------------------------------------------- |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                               |
-| 1300002  | This window state is abnormal. Possible casue: 1. The window is not created or destroyed; 2. Internal task error.  |
-| 1300003  | This window manager service works abnormally. Possible casue: 1. The window is not subwindow and floating window.  |
-| 1300004  | Unauthorized operation.                                                                                            |
+| 1300002  | This window state is abnormal. Possible casue: 1. The window is not created or destroyed; 2. Internal task error; 3. The window has not set window mask yet.  |
+| 1300003  | This window manager service works abnormally.                                                                      |
+| 1300004  | Unauthorized operation.  Possible casue: 1. The window is not subwindow and floating window.                       |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  let windowMask: Array<Array<number>> = [
-      [0, 0, 0, 1, 0, 0, 0],
-      [0, 0, 1, 1, 1, 0, 0],
-      [0, 1, 1, 0, 1, 1, 0],
-      [1, 1, 0, 0, 0, 1, 1]
-    ];
-  windowClass.resize(7, 4);
+  let array = new Array<number>(windowClass.getWindowProperties().windowRect.width).fill(1);
+  let windowMask = new Array<Array<number>>(windowClass.getWindowProperties().windowRect.height).fill(array);
   windowClass.setWindowMask(windowMask);
   let promise = windowClass.clearWindowMask();
     promise.then(() => {
-    console.info('Succeeded in clear the window mask.');
+    console.info('Succeeded in clearing the window mask.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
   });
