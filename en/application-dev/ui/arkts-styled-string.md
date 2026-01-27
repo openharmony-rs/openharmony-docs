@@ -1175,7 +1175,6 @@ export struct StyledStringHtml {
 }
 ```
 
-![](figures/styled_string_html.gif)
 
 - Convert HTML tags including \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, and \<sub>, along with the **background-color** attribute in HTML style attributes, to styled strings and convert them back to HTML format.
 
