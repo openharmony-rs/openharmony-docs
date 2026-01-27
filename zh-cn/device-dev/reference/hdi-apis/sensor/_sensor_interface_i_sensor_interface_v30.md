@@ -37,7 +37,7 @@
 
 ### Disable()
 
-```
+```idl
 ISensorInterface::Disable([in] struct DeviceSensorInfo deviceSensorInfo)
 ```
 
@@ -61,7 +61,7 @@ ISensorInterface::Disable([in] struct DeviceSensorInfo deviceSensorInfo)
 
 ### Enable()
 
-```
+```idl
 ISensorInterface::Enable([in] struct DeviceSensorInfo deviceSensorInfo)
 ```
 
@@ -85,7 +85,7 @@ ISensorInterface::Enable([in] struct DeviceSensorInfo deviceSensorInfo)
 
 ### GetAllSensorInfo()
 
-```
+```idl
 ISensorInterface::GetAllSensorInfo([out] struct HdfSensorInformation[] info)
 ```
 
@@ -109,7 +109,7 @@ ISensorInterface::GetAllSensorInfo([out] struct HdfSensorInformation[] info)
 
 ### GetDeviceSensorInfo()
 
-```
+```idl
 ISensorInterface::GetDeviceSensorInfo([in] int deviceId, [out] struct HdfSensorInformation[] info)
 ```
 
@@ -134,7 +134,7 @@ ISensorInterface::GetDeviceSensorInfo([in] int deviceId, [out] struct HdfSensorI
 
 ### GetSdcSensorInfo()
 
-```
+```idl
 ISensorInterface::GetSdcSensorInfo([out] struct SdcSensorInfo[] sdcSensorInfo)
 ```
 
@@ -158,7 +158,7 @@ ISensorInterface::GetSdcSensorInfo([out] struct SdcSensorInfo[] sdcSensorInfo)
 
 ### ReadData()
 
-```
+```idl
 ISensorInterface::ReadData([in] struct DeviceSensorInfo deviceSensorInfo, [out] struct HdfSensorEvents[] event)
 ```
 
@@ -183,7 +183,7 @@ ISensorInterface::ReadData([in] struct DeviceSensorInfo deviceSensorInfo, [out] 
 
 ### Register()
 
-```
+```idl
 ISensorInterface::Register([in] int groupId, [in] ISensorCallback callbackObj)
 ```
 
@@ -210,7 +210,7 @@ sensorId 枚举值范围为 128-160，这意味着已订阅医疗传感器服务
 
 ### RegisterAsync()
 
-```
+```idl
 ISensorInterface::RegisterAsync([in] int groupId, [in] ISensorCallback callbackObj)
 ```
 
@@ -237,7 +237,7 @@ sensorId 枚举值范围为 128-160，这意味着已订阅医疗传感器服务
 
 ### RegSensorPlugCallBack()
 
-```
+```idl
 ISensorInterface::RegSensorPlugCallBack([in] ISensorPlugCallback callbackObj)
 ```
 
@@ -263,7 +263,7 @@ sensorId 枚举值范围为 128-160，这意味着已订阅医疗传感器服务
 
 ### SetBatch()
 
-```
+```idl
 ISensorInterface::SetBatch([in] struct DeviceSensorInfo deviceSensorInfo, [in] long samplingInterval, [in] long reportInterval)
 ```
 
@@ -289,7 +289,7 @@ ISensorInterface::SetBatch([in] struct DeviceSensorInfo deviceSensorInfo, [in] l
 
 ### SetMode()
 
-```
+```idl
 ISensorInterface::SetMode([in] struct DeviceSensorInfo deviceSensorInfo, [in] int mode)
 ```
 
@@ -314,7 +314,7 @@ ISensorInterface::SetMode([in] struct DeviceSensorInfo deviceSensorInfo, [in] in
 
 ### SetOption()
 
-```
+```idl
 ISensorInterface::SetOption([in] struct DeviceSensorInfo deviceSensorInfo, [in] unsigned int option)
 ```
 
@@ -339,7 +339,7 @@ ISensorInterface::SetOption([in] struct DeviceSensorInfo deviceSensorInfo, [in] 
 
 ### SetSdcSensor()
 
-```
+```idl
 ISensorInterface::SetSdcSensor([in] struct DeviceSensorInfo deviceSensorInfo, [in] boolean enabled, [in] int rateLevel)
 ```
 
@@ -365,7 +365,7 @@ ISensorInterface::SetSdcSensor([in] struct DeviceSensorInfo deviceSensorInfo, [i
 
 ### Unregister()
 
-```
+```idl
 ISensorInterface::Unregister([in] int groupId, [in] ISensorCallback callbackObj)
 ```
 
@@ -392,7 +392,7 @@ sensorId 枚举值范围为 128-160，这意味着已订阅医疗传感器服务
 
 ### UnregisterAsync()
 
-```
+```idl
 ISensorInterface::UnregisterAsync([in] int groupId, [in] ISensorCallback callbackObj)
 ```
 
@@ -419,7 +419,7 @@ sensorId 枚举值范围为 128-160，这意味着已订阅医疗传感器服务
 
 ### UnRegSensorPlugCallBack()
 
-```
+```idl
 ISensorInterface::UnRegSensorPlugCallBack([in] ISensorPlugCallback callbackObj)
 ```
 

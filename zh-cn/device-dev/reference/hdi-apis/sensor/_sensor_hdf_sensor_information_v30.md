@@ -33,7 +33,7 @@
 
 ### accuracy
 
-```
+```idl
 float HdfSensorInformation::accuracy
 ```
 
@@ -43,7 +43,7 @@ float HdfSensorInformation::accuracy
 
 ### deviceSensorInfo
 
-```
+```idl
 struct DeviceSensorInfo HdfSensorInformation::deviceSensorInfo
 ```
 
@@ -53,7 +53,7 @@ struct DeviceSensorInfo HdfSensorInformation::deviceSensorInfo
 
 ### fifoMaxEventCount
 
-```
+```idl
 unsigned int HdfSensorInformation::fifoMaxEventCount
 ```
 
@@ -63,7 +63,7 @@ unsigned int HdfSensorInformation::fifoMaxEventCount
 
 ### firmwareVersion
 
-```
+```idl
 String HdfSensorInformation::firmwareVersion
 ```
 
@@ -73,7 +73,7 @@ String HdfSensorInformation::firmwareVersion
 
 ### hardwareVersion
 
-```
+```idl
 String HdfSensorInformation::hardwareVersion
 ```
 
@@ -83,7 +83,7 @@ String HdfSensorInformation::hardwareVersion
 
 ### maxDelay
 
-```
+```idl
 long HdfSensorInformation::maxDelay
 ```
 
@@ -93,7 +93,7 @@ long HdfSensorInformation::maxDelay
 
 ### maxRange
 
-```
+```idl
 float HdfSensorInformation::maxRange
 ```
 
@@ -103,7 +103,7 @@ float HdfSensorInformation::maxRange
 
 ### minDelay
 
-```
+```idl
 long HdfSensorInformation::minDelay
 ```
 
@@ -113,7 +113,7 @@ long HdfSensorInformation::minDelay
 
 ### power
 
-```
+```idl
 float HdfSensorInformation::power
 ```
 
@@ -123,7 +123,7 @@ float HdfSensorInformation::power
 
 ### reserved
 
-```
+```idl
 unsigned int HdfSensorInformation::reserved
 ```
 
@@ -131,10 +131,9 @@ unsigned int HdfSensorInformation::reserved
 
 第一个 uint8 表示 is_mock_sensor，其余的待定。
 
-
 ### sensorName
 
-```
+```idl
 String HdfSensorInformation::sensorName
 ```
 
@@ -144,7 +143,7 @@ String HdfSensorInformation::sensorName
 
 ### vendorName
 
-```
+```idl
 String HdfSensorInformation::vendorName
 ```
 

@@ -25,7 +25,7 @@
 
 ### deviceId
 
-```
+```idl
 int DeviceSensorInfo::deviceId
 ```
 
@@ -35,7 +35,7 @@ int DeviceSensorInfo::deviceId
 
 ### location
 
-```
+```idl
 int DeviceSensorInfo::location
 ```
 
@@ -45,7 +45,7 @@ int DeviceSensorInfo::location
 
 ### sensorId
 
-```
+```idl
 int DeviceSensorInfo::sensorId
 ```
 
@@ -55,7 +55,7 @@ int DeviceSensorInfo::sensorId
 
 ### sensorType
 
-```
+```idl
 int DeviceSensorInfo::sensorType
 ```
 

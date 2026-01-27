@@ -25,7 +25,7 @@
 
 ### deviceName
 
-```
+```idl
 String SensorPlugInfo::deviceName
 ```
 
@@ -35,7 +35,7 @@ String SensorPlugInfo::deviceName
 
 ### deviceSensorInfo
 
-```
+```idl
 struct DeviceSensorInfo SensorPlugInfo::deviceSensorInfo
 ```
 
@@ -45,7 +45,7 @@ struct DeviceSensorInfo SensorPlugInfo::deviceSensorInfo
 
 ### reserved
 
-```
+```idl
 int SensorPlugInfo::reserved
 ```
 
@@ -55,7 +55,7 @@ int SensorPlugInfo::reserved
 
 ### status
 
-```
+```idl
 int SensorPlugInfo::status
 ```
 

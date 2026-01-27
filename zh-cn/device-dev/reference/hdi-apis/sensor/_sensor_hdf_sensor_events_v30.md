@@ -28,7 +28,7 @@
 
 ### data
 
-```
+```idl
 unsigned char [] HdfSensorEvents::data
 ```
 
@@ -38,7 +38,7 @@ unsigned char [] HdfSensorEvents::data
 
 ### dataLen
 
-```
+```idl
 unsigned int HdfSensorEvents::dataLen
 ```
 
@@ -48,7 +48,7 @@ unsigned int HdfSensorEvents::dataLen
 
 ### deviceSensorInfo
 
-```
+```idl
 struct DeviceSensorInfo HdfSensorEvents::deviceSensorInfo
 ```
 
@@ -58,7 +58,7 @@ struct DeviceSensorInfo HdfSensorEvents::deviceSensorInfo
 
 ### mode
 
-```
+```idl
 int HdfSensorEvents::mode
 ```
 
@@ -68,7 +68,7 @@ int HdfSensorEvents::mode
 
 ### option
 
-```
+```idl
 unsigned int HdfSensorEvents::option
 ```
 
@@ -78,7 +78,7 @@ unsigned int HdfSensorEvents::option
 
 ### timestamp
 
-```
+```idl
 long HdfSensorEvents::timestamp
 ```
 
@@ -88,7 +88,7 @@ long HdfSensorEvents::timestamp
 
 ### version
 
-```
+```idl
 int HdfSensorEvents::version
 ```
 

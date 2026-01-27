@@ -48,7 +48,7 @@
 
 ### HdfSensorGroupType
 
-```
+```idl
 enum HdfSensorGroupType
 ```
 
@@ -66,7 +66,7 @@ enum HdfSensorGroupType
 
 ### HdfSensorTypeTag
 
-```
+```idl
 enum HdfSensorTypeTag
 ```
 
@@ -123,7 +123,7 @@ enum HdfSensorTypeTag
 
 ### Location
 
-```
+```idl
 enum Location
 ```
 
