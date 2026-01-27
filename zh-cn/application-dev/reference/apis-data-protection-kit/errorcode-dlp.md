@@ -376,7 +376,7 @@ The application is not authorized.
 
 **处理步骤**
 
-请联系技术支持，接入授信应用名单。
+接入授信应用名单。
 
 <!--Del-->
 ## 19100019 DLP文件已过期
