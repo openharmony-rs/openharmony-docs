@@ -4691,7 +4691,11 @@ Allows an application to install and uninstall fonts.
 
 **Enable via ACL**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Valid since**: 19
+
+**Changelog**: Since API version 23, this permission is also available on phones.
 
 ## ohos.permission.READ_PARENT_CONTROL_DATA
 

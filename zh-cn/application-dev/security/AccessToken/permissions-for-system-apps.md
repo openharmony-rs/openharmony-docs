@@ -4730,7 +4730,11 @@
 
 **ACL使能**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：19
+
+**变更信息**：从API23开始，增加支持在手机上申请。
 
 ## ohos.permission.READ_PARENT_CONTROL_DATA
 
