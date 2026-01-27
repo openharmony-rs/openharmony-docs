@@ -27,7 +27,7 @@ createComponentObserver(id: string): ComponentObserver
 
 > **说明：**
 > 
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver)替代。先使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取[UIInspector](arkts-apis-uicontext-uiinspector.md)实例，再通过此实例调用替代方法createComponentObserver。
+> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取[UIInspector](arkts-apis-uicontext-uiinspector.md)实例，再通过此实例调用替代方法[createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver)。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector)方法获取当前UI上下文关联的[UIInspector](arkts-apis-uicontext-uiinspector.md)对象。
 
@@ -142,7 +142,7 @@ on(type: 'drawChildren',  callback: Callback\<void\>): void
 | type     | string | 是   | 必须填写字符串'drawChildren'。<br>drawChildren: 子组件绘制送显完成。|
 | callback | Callback\<void\>  | 是   | 监听drawChildren的回调。                                     |
 
-### off('drawChildren')<sup>20+<sup>
+### off('drawChildren')<sup>20+</sup>
 
 off(type: 'drawChildren', callback?: Callback\<void\>): void
 
@@ -158,6 +158,46 @@ off(type: 'drawChildren', callback?: Callback\<void\>): void
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | type     | string | 是   | 必须填写字符串'drawChildren'。<br>drawChildren: 子组件绘制送显完成。|
 | callback | Callback\<void\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('drawChildren')20+](#ondrawchildren20)方法中的callback为相同对象时才能取消回调成功。 |
+
+### onLayoutChildren<sup>23+</sup>
+
+onLayoutChildren(callback: Callback\<void\>): void
+
+通过[ComponentObserver](#componentobserver)注册layoutChildren事件回调。使用callback异步回调。
+
+把当前注册监听的节点作为根节点，子树中的节点完成布局时，会触发该回调。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>  | 是   | 监听layoutChildren的回调。                              |
+
+### offLayoutChildren<sup>23+</sup>
+
+offLayoutChildren(callback?: Callback\<void\>): void
+
+取消注册layoutChildren事件回调。使用callback异步回调。
+
+要实现在子组件布局完成后停止触发特定回调，只需通过其句柄，在对应的查询条件上取消注册该回调即可。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<void\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayoutChildren23+](#onlayoutchildren23)方法中的callback为相同对象时才能取消回调成功。 |
 
 ## 示例
 
@@ -213,6 +253,13 @@ struct ImageExample {
     // this.listenerForImage.off('layout', OffFuncLayout)
     // this.listenerForImage.off('draw', OffFuncDraw)
     // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
+    
+    let onLayoutChildrenComplete: () => void = (): void => {
+      // 监听到LayoutChildren事件后，用户可以自定义实现逻辑。
+    }
+    let uniqueId: number = this.getUniqueId();
+    let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
+    this.listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
   }
 }
 ```
