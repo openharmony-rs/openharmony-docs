@@ -720,7 +720,7 @@ if (store != undefined) {
   try {
     const transaction = await store.createTransaction();
     try {
-      let insertNum = transaction.batchInsertSync('EMPLOYEE', valueBuckets2);
+      let insertNum = transaction.batchInsertSync('EMPLOYEE', valueBuckets);
       await transaction.commit();
       console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
     } catch (err) {
