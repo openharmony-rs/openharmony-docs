@@ -147,7 +147,7 @@ getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service.                  |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8300999  | Unknown error code.                               |
 
 **示例：**
 
