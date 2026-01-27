@@ -240,9 +240,13 @@ onProcess: (bundleName: string, process: string) => {
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| onBackupSizeReport<sup>18+</sup>  | [OnBackupSizeReport](#onbackupsizereport18) | 否 | 是 |  框架获取到的待备份的数据量大小的信息。<br> **ArkTS-Dyn起始版本**：18 <br>**ArkTS-Sta起始版本**：23 |
+| onBackupSizeReport<sup>18+</sup>  | [OnBackupSizeReport](#onbackupsizereport18) | 否 | 是 |  框架获取到的待备份的数据量大小的信息。 |
 
 ### onFileReady
 
@@ -1229,7 +1233,6 @@ function updateTimer() {
 }
 ```
 
-
 ## backup.updateSendRate<sup>12+</sup>
 
 ArkTS-Dyn: updateSendRate(bundleName: string, sendRate: number): boolean
@@ -1648,12 +1651,12 @@ interface test { // 用于解析能力文件
 
 interface BundleInfo { // 用于获取单个应用的本地能力信息
   name: string;
-  appIndex: number;
-  versionCode: number;
+  appIndex: int;
+  versionCode: int;
   versionName: string;
-  spaceOccupied: number;
+  spaceOccupied: long;
   allToBackup: boolean;
-  increSpaceOccupied?: number;
+  increSpaceOccupied?: long;
   fullBackupOnly: boolean;
   extensionName: string;
   restoreDeps: string;
@@ -1908,8 +1911,8 @@ interface scannedInfos { //用于解析扫描结果
 
 interface ScannedInfo { //用于解析单个应用的扫描结果
   bundleName: string;
-  dataSize: number;
-  incDataSize: number;
+  dataSize: long;
+  incDataSize: long;
 }
 
 let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
