@@ -6,7 +6,7 @@
 <!--Tester: @jiyong_sd-->
 <!--Adviser: @fang-jinxu-->
 
-This module defines the annotation types of OpenHarmony ArkTS APIs, such as the minimum available version of the lifecycle.
+The **annotation** module defines the annotation types of OpenHarmony ArkTS APIs, such as the minimum available version of the lifecycle.
 
 > **NOTE**
 >
@@ -20,15 +20,15 @@ import { Available } from '@kit.BasicServicesKit';
 
 ## Available
 
-@interface Available {
-  minApiVersion: string = ''
-}
+@interface Available { minApiVersion: string = '' }
 
 Annotates the minimum available version supported by an API. This annotation capability is provided by the system and can be used on classes, APIs, variables, types, modules, and enums. After the annotation is added to the source code, the compilation tool checks for potential compatibility issues. If the value of **minApiVersion** is greater than that of **compatibleSDKVersion** specified in **build-profile.json5**, a compatibility warning is reported.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Base
 

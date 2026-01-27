@@ -65,7 +65,7 @@ Provides data items for setting the display effects.
 | MANUAL_SCREEN_BRIGHTNESS_MODE                       | number | Yes | Value of **AUTO_SCREEN_BRIGHTNESS** when automatic screen brightness adjustment is disabled.                                                                                          |
 | SCREEN_OFF_TIMEOUT                                  | string | Yes | Waiting time for the device to enter the sleep state when not in use (unit: ms).                                                                                               |
 | DEFAULT_SCREEN_ROTATION<sup>(deprecated21)</sup>    | string | Yes | This attribute is invalid when screen auto-rotation is enabled; otherwise, the following options are available:<br>- **0**: The screen rotates by 0 degrees.<br>- **1**: The screen rotates by 90 degrees.<br>- **2**: The screen rotates by 180 degrees.<br>- **3**: The screen rotates by 270 degrees. (This constant is deprecated.)|
-| ANIMATOR_DURATION_SCALE<sup>(deprecated21)</sup>    | string | Yes | Scale factor for the animation duration, which affects the start delay and duration of all such animations.<br>- **0**: The animation ends immediately. - **1**: default value. (This constant is deprecated.)                                                            |
+| ANIMATOR_DURATION_SCALE<sup>(deprecated21)</sup>    | string | Yes | Scale factor for the animation duration, which affects the start delay and duration of all such animations.<br>- **0**: The animation ends immediately.<br> - **1**: default value. (This constant is deprecated.)                                                            |
 | TRANSITION_ANIMATION_SCALE<sup>(deprecated21)</sup> | string | Yes | Scale factor for transition animations.<br>- **0**: Transition animations are disabled. (This constant is deprecated.)                                                                                        |
 | WINDOW_ANIMATION_SCALE<sup>(deprecated21)</sup>     | string | Yes | Scale factor for normal window animations.<br>- **0**: Window animations are disabled (This constant is deprecated.)                                                                                      |
 | DISPLAY_INVERSION_STATUS<sup>(deprecated21)</sup>   | string | Yes | Whether display color inversion is enabled.<br>- **1**: Display color inversion is enabled.<br>- **0**: Display color inversion is disabled. (This constant is deprecated.)                                                                    |
@@ -150,19 +150,19 @@ Provides data items for setting the sound effects.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                                                   | Type  | Read-Only| Description                                                                        |
-|-------------------------------------------------------| ------ |----|----------------------------------------------------------------------------|
-| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | Yes | Whether the device vibrates when it is ringing for an incoming call. This attribute is applicable to the phone and settings applications<br>and affects only the scenario where the device rings for an incoming call. It does not affect any other application or scenario. (This constant is deprecated.)|
-| DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | Yes | Storage area of the system default alarms and alerts. (This constant is deprecated.)                                                              |
-| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | Yes | Type of the dual tone multi-frequency (DTMF) tone played while dialing.<br>- **0**: normal short tone.<br>- **1**: long tone. (This constant is deprecated.)                |
-| DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | Yes | Whether the DTMF tone is played when dialing.<br>- **1**: DTMF tone is played when dialing.<br>- **0**: DTMF tone is not played when dialing. (This constant is deprecated.)                        |
-| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated21)</sup> | string | Yes | Effect on audio streams determined by changes in the ringing mode and Do Not Disturb (DND) mode. If you want a specific audio stream to be affected by changes of the ringing mode and DND mode, set the corresponding bit to **1**. (This constant is deprecated.)           |
-| AFFECTED_MUTE_STREAMS<sup>(deprecated21)</sup>        | string | Yes | Audio streams affected by the mute mode. If you want a specific audio stream to remain muted in mute mode, set the corresponding bit to **1**. (This constant is deprecated.)                                    |
-| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated21)</sup>   | string | Yes | Storage area of the system default notification tone. (This constant is deprecated.)                                                             |
-| DEFAULT_RINGTONE<sup>(deprecated21)</sup>             | string | Yes | Storage area of the system default ringtone. (This constant is deprecated.)                                                              |
-| SOUND_EFFECTS_STATUS<sup>(deprecated21)</sup>         | string | Yes | Whether the sound feature is available.<br>- **0**: The feature is not available.<br>- **1**: The sound feature is available. (This constant is deprecated.)                                |
-| VIBRATE_STATUS<sup>(deprecated21)</sup>               | string | Yes | Whether the device vibrates for an event. This attribute is used inside the system.<br>- **1**: The device vibrates for an event.<br>- **0**: The device does not vibrate for an event. (This constant is deprecated.)       |
-| HAPTIC_FEEDBACK_STATUS<sup>(deprecated21)</sup>       | string | Yes | Whether haptic feedback is enabled.<br>- **true**: Haptic feedback is enabled.<br>- **false**: Haptic feedback is disabled. (This constant is deprecated.)               |
+| Name                                                   | Type  | Read-Only| Description                                                                           |
+|-------------------------------------------------------| ------ |----|-------------------------------------------------------------------------------|
+| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | Yes | Whether the device vibrates when it is ringing for an incoming call. This property is applicable to the phone and settings applications<br>and affects only the scenario where the device rings for an incoming call. It does not affect any other application or scenario. (This constant is deprecated.) |
+| DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | Yes | Storage area of the system default alarms and alerts. (This constant is deprecated.)                                                       |
+| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | Yes | Type of the dual tone multi-frequency (DTMF) tone played while dialing.<br>- **0**: normal short tone.<br>- **1**: long tone. (This constant is deprecated.)         |
+| DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | Yes | Whether the DTMF tone is played when dialing.<br>- **1**: DTMF tone is played when dialing.<br>- **0**: DTMF tone is not played when dialing. (This constant is deprecated.)                 |
+| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated21)</sup> | string | Yes | Effect on audio streams determined by changes in the ringing mode and Do Not Disturb (DND) mode. If you want a specific audio stream to be affected by changes of the ringing mode and DND mode, set the corresponding bit to **1**. (This constant is deprecated.)    |
+| AFFECTED_MUTE_STREAMS<sup>(deprecated21)</sup>        | string | Yes | Audio streams affected by the mute mode. If you want a specific audio stream to remain muted in mute mode, set the corresponding bit to **1**. (This constant is deprecated.)                             |
+| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated21)</sup>   | string | Yes | Storage area of the system default notification tone. (This constant is deprecated.)                                                      |
+| DEFAULT_RINGTONE<sup>(deprecated21)</sup>             | string | Yes | Storage area of the system default ringtone. (This constant is deprecated.)                                                       |
+| SOUND_EFFECTS_STATUS<sup>(deprecated21)</sup>         | string | Yes | Whether the sound feature is available.<br>- **0**: The sound feature is not available.<br>- **1**: The sound feature is available. (This constant is deprecated.)                         |
+| VIBRATE_STATUS<sup>(deprecated21)</sup>               | string | Yes | Whether the device vibrates for an event. This attribute is used inside the system.<br>- **1**: The device vibrates for an event.<br>- **0**: The device does not vibrate for an event. (This constant is deprecated.)|
+| HAPTIC_FEEDBACK_STATUS<sup>(deprecated21)</sup>       | string | Yes | Whether haptic feedback is enabled.<br>- **true**: Haptic feedback is enabled.<br>- **false**: Haptic feedback is disabled. (This constant is deprecated.)        |
 
 ## TTS
 
@@ -743,7 +743,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.openNetworkManagerSettings(context).then((status) => {
-  console.info(`callback:return whether setings is open.`)
+  console.info(`callback:return whether settings is open.`);
 });
 ```
 

@@ -10,6 +10,9 @@
 This topic provides a list of common events defined by the system.
 Common event types are defined in [Support](../js-apis-commonEventManager.md#support) of the **ohos.commonEventManager** module.
 
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Ability Kit
@@ -37,7 +40,7 @@ When the specified user restarts the application and kills all its processes, th
 
 ### COMMON_EVENT_PACKAGE_DATA_CLEARED
 
-Indicates the common event that the user has cleared the application package data.
+Indicates that the user has cleared the application package data.
 
 When the specified user clears the application package data on the device, the event notification service is triggered to publish this event.
 
@@ -109,7 +112,7 @@ When a new application is installed by a specified user on the device, the event
 
 ### COMMON_EVENT_PACKAGE_REMOVED
 
-Indicates the common event that an installed application has been uninstalled from the device with the application data retained.
+Indicates that an installed application has been uninstalled from the device with the application data retained.
 
 When a specified application package is removed by a specified user on the device, the event notification service is triggered to publish this event.
 
@@ -128,7 +131,7 @@ When a specified application package is removed by a specified user on the devic
 
 ### COMMON_EVENT_BUNDLE_REMOVED
 
-Indicates the common event that an installed bundle has been uninstalled from the device.
+Indicates that an installed bundle has been uninstalled from the device.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -139,7 +142,7 @@ Indicates the common event that an installed bundle has been uninstalled from th
 
 ### COMMON_EVENT_PACKAGE_FULLY_REMOVED
 
-Indicates the common event that an installed application has been completely uninstalled from the device.
+Indicates that an installed application has been completely uninstalled from the device.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -188,7 +191,7 @@ When the cache of an application package installed on the device is cleared, the
 
 ### COMMON_EVENT_PACKAGES_SUSPENDED
 
-Indicates the common event that application packages have been suspended.
+Indicates that application packages have been suspended.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -200,7 +203,7 @@ Indicates the common event that application packages have been suspended.
 
 ### COMMON_EVENT_MY_PACKAGE_SUSPENDED
 
-Sent to a package that has been suspended by the system.
+Indicates that application packages have been suspended by the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -211,7 +214,7 @@ Sent to a package that has been suspended by the system.
 
 ### COMMON_EVENT_MY_PACKAGE_UNSUSPENDED
 
-Sent to a package that has been unsuspended by the system.
+Indicates that application packages have been unsuspended by the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -388,7 +391,7 @@ When a USB device is detached, the event notification service is triggered to pu
 
 ### COMMON_EVENT_TIME_CHANGED
 
-Indicates the common event that the system time is set.
+Indicates that the system time is set.
 
 When the system time is set, the event notification service is triggered to publish this event.
 
@@ -401,7 +404,7 @@ When the system time is set, the event notification service is triggered to publ
 
 ### COMMON_EVENT_TIME_TICK
 
-Indicates the common event that the system time has changed.
+Indicates that the system time has changed.
 
 When the system time in the unit of minute changes, the event notification service is triggered to publish this event.
 
@@ -414,7 +417,7 @@ When the system time in the unit of minute changes, the event notification servi
 
 ### COMMON_EVENT_TIMEZONE_CHANGED
 
-Indicates the common event that the system time zone has changed.
+Indicates that the system time zone has changed.
 
 When the system time zone changes, the event notification service is triggered to publish this event.
 
@@ -434,7 +437,7 @@ Indicates that the user information has been updated.
 
 When the distributed account information, system account profile picture, or system account name is changed, the event notification service is triggered to publish this event carrying the system account ID.
 
-APIs related to this event: **setOsAccountName**, **setOsAccountProfilePhoto**, and **setOsAccountDistributedInfon**. The first two are system APIs, and the last is a public API. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md) and [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
+APIs related to this event: **setOsAccountName**, **setOsAccountProfilePhoto**, and **setOsAccountDistributedInfo**. The first two are system APIs, and the last is a public API. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md) and [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -637,7 +640,7 @@ When the device is disconnected from the external power supply, the event notifi
 
 ### COMMON_EVENT_DISCHARGING
 
-Indicates the common event that the system stops charging the battery.
+Indicates that the system stops charging the battery.
 
 When the system stops charging the battery, the event notification service is triggered to publish this event.
 
@@ -650,7 +653,7 @@ When the system stops charging the battery, the event notification service is tr
 
 ### COMMON_EVENT_CHARGING
 
-Indicates the common event that the system starts charging the battery.
+Indicates that the system starts charging the battery.
 
 When the system starts charging the battery, the event notification service is triggered to publish this event.
 
@@ -664,7 +667,7 @@ When the system starts charging the battery, the event notification service is t
 
 ### COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED<sup>10+</sup>
 
-Indicates the common event that the device enters the charging idle mode.
+Indicates that the device enters the charging idle mode.
 
 When the device starts charging in idle mode, and the temperature rise is acceptable, the event notification service is triggered to publish this event.
 
@@ -677,7 +680,7 @@ When the device starts charging in idle mode, and the temperature rise is accept
 
 ### COMMON_EVENT_SHUTDOWN
 
-Indicates the common event that the device is being shut down and the final shutdown will proceed.
+Indicates that the device is being shut down and the final shutdown will proceed.
 
 When the device is being shut down until it is powered off, the event notification service is triggered to publish this event.
 
@@ -690,7 +693,7 @@ When the device is being shut down until it is powered off, the event notificati
 
 ### COMMON_EVENT_SCREEN_OFF
 
-Indicates the common event that a device screen-off initiated by the power service is complete.
+Indicates that a device screen-off initiated by the power service is complete.
 
 When the device screen-off initiated by the power service is complete, the event notification service is triggered to release this event.
 
@@ -703,7 +706,7 @@ When the device screen-off initiated by the power service is complete, the event
 
 ### COMMON_EVENT_SCREEN_ON
 
-Indicates the common event that a device screen-on initiated by the power service is complete.
+Indicates that a device screen-on initiated by the power service is complete.
 
 When the device screen-on initiated by the power service is complete, the event notification service is triggered to release this event.
 
@@ -1140,7 +1143,7 @@ When the browser hosting policy changes, the event notification service is trigg
 
 ### COMMON_EVENT_LOCALE_CHANGED
 
-Indicates the common event that the system language is set.
+Indicates that the system language is set.
 When the system language is set, the event notification service is triggered to publish this event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -1157,7 +1160,7 @@ When the system language is set, the event notification service is triggered to 
 Indicates that the network connection state has changed.
 
 When the (Ethernet, Wi-Fi, or cellular) network connection state changes (disconnected, connecting, or connected), the event notification service is triggered to publish this event.
-The following table lists the enumerated values and their corresponding connection status.
+The following table lists the enum values and their corresponding connection status.
 
 | Value |  Connection State |
 | ------ | ---------- |
@@ -1347,7 +1350,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_CLOSE_SYSTEM_DIALOGS
 
-(Reserved, not supported yet) Indicates the common event that a user closes a temporary system dialog box.
+(Reserved, not supported yet) Indicates that a user closes a temporary system dialog box.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1359,7 +1362,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_UID_REMOVED
 
-(Reserved, not supported yet) Indicates the common event that a user ID has been removed from the system.
+(Reserved, not supported yet) Indicates that a user ID has been removed from the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1370,7 +1373,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_EXTERNAL_APPLICATIONS_AVAILABLE
 
-(Reserved, not supported yet) Indicates the common event that applications installed on the external storage become available for the system.
+(Reserved, not supported yet) Indicates that applications installed on the external storage become available for the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1381,7 +1384,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_EXTERNAL_APPLICATIONS_UNAVAILABLE
 
-(Reserved, not supported yet) Indicates the common event that applications installed on the external storage become unavailable for the system.
+(Reserved, not supported yet) Indicates that applications installed on the external storage become unavailable for the system.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1392,7 +1395,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_CONFIGURATION_CHANGED
 
-(Reserved, not supported yet) Indicates the common event that the device state (for example, orientation and locale) has changed.
+(Reserved, not supported yet) Indicates that the device state (for example, orientation and locale) has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1403,7 +1406,7 @@ Below are reserved common events that are not supported yet.
 
 
 ### COMMON_EVENT_DRIVE_MODE
-(Reserved, not supported yet) Indicates the common event that the system is in driving mode.
+(Reserved, not supported yet) Indicates that the system is in driving mode.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1414,7 +1417,7 @@ Below are reserved common events that are not supported yet.
 
 
 ### COMMON_EVENT_HOME_MODE
-(Reserved, not supported yet) Indicates the common event that the system is in home mode.
+(Reserved, not supported yet) Indicates that the system is in home mode.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1425,7 +1428,7 @@ Below are reserved common events that are not supported yet.
 
 
 ### COMMON_EVENT_OFFICE_MODE
-(Reserved, not supported yet) Indicates the common event that the system is in office mode.
+(Reserved, not supported yet) Indicates that the system is in office mode.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1437,7 +1440,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_USER_STARTED
 
-(Reserved, not supported yet) Indicates the common event that the user has been started.
+(Reserved, not supported yet) Indicates that the user has been started.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1448,7 +1451,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_USER_BACKGROUND
 
-(Reserved, not supported yet) Indicates the common event that the user has been brought to the background.
+(Reserved, not supported yet) Indicates that the user has been brought to the background.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1458,7 +1461,7 @@ Below are reserved common events that are not supported yet.
 
 
 ### COMMON_EVENT_USER_STARTING
-(Reserved, not supported yet) Indicates the common event that the user is going to be started.
+(Reserved, not supported yet) Indicates that the user is going to be started.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1469,7 +1472,7 @@ Below are reserved common events that are not supported yet.
 
 
 ### COMMON_EVENT_USER_STOPPING
-(Reserved, not supported yet) Indicates the common event that the user is going to be stopped.
+(Reserved, not supported yet) Indicates that the user is going to be stopped.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1479,7 +1482,7 @@ Below are reserved common events that are not supported yet.
 
 
 ### COMMON_EVENT_USER_STOPPED
-(Reserved, not supported yet) Indicates the common event that the user has been stopped.
+(Reserved, not supported yet) Indicates that the user has been stopped.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1490,7 +1493,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_DISK_REMOVED
 
-(Reserved, not supported yet) Indicates the common event that an external storage device was removed.
+(Reserved, not supported yet) Indicates that an external storage device was removed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1501,7 +1504,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_DISK_UNMOUNTED
 
-(Reserved, not supported yet) Indicates the common event that an external storage device was unmounted.
+(Reserved, not supported yet) Indicates that an external storage device was unmounted.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1512,7 +1515,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_DISK_MOUNTED
 
-(Reserved, not supported yet) Indicates the common event that an external storage device was mounted.
+(Reserved, not supported yet) Indicates that an external storage device was mounted.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1524,7 +1527,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_DISK_BAD_REMOVAL
 
-(Reserved, not supported yet) Indicates the common event that an external storage device was removed without being unmounted.
+(Reserved, not supported yet) Indicates that an external storage device was removed without being unmounted.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1535,7 +1538,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_DISK_UNMOUNTABLE
 
-(Reserved, not supported yet) Indicates the common event that an external storage device becomes unmountable.
+(Reserved, not supported yet) Indicates that an external storage device becomes unmountable.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1546,7 +1549,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_DISK_EJECT
 
-(Reserved, not supported yet) Indicates the common event that an external storage device was ejected.
+(Reserved, not supported yet) Indicates that an external storage device was ejected.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1557,7 +1560,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_DATE_CHANGED
 
-(Reserved, not supported yet) Indicates the common event that the system time has changed.
+(Reserved, not supported yet) Indicates that the system time has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1567,7 +1570,7 @@ Below are reserved common events that are not supported yet.
 
 ### COMMON_EVENT_USB_ACCESSORY_ATTACHED
 
-Indicates the common event that a USB accessory has been attached.
+Indicates that a USB accessory has been attached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1578,7 +1581,7 @@ Indicates the common event that a USB accessory has been attached.
 
 ### COMMON_EVENT_USB_ACCESSORY_DETACHED
 
-Indicates the common event that a USB accessory has been detached.
+Indicates that a USB accessory has been detached.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1602,7 +1605,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CURRENT_DEVICE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the device connected to the Bluetooth handsfree is active.
+(Reserved, not supported yet) Indicates that the device connected to the Bluetooth handsfree is active.
 
   > **NOTE**
   >
@@ -1616,7 +1619,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the connection state of Bluetooth A2DP has changed.
+(Reserved, not supported yet) Indicates that the connection state of Bluetooth A2DP has changed.
 
   > **NOTE**
   >
@@ -1648,7 +1651,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CURRENT_DEVICE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the device connected using Bluetooth A2DP is active.
+(Reserved, not supported yet) Indicates that the device connected using Bluetooth A2DP is active.
 
   > **NOTE**
   >
@@ -1663,7 +1666,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_AVRCP_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the AVRCP connection state of Bluetooth A2DP has changed.
+(Reserved, not supported yet) Indicates that the AVRCP connection state of Bluetooth A2DP has changed.
 
   > **NOTE**
   >
@@ -1678,7 +1681,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAYING_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the playing state of Bluetooth A2DP has changed.
+(Reserved, not supported yet) Indicates that the playing state of Bluetooth A2DP has changed.
 
   > **NOTE**
   >
@@ -1693,7 +1696,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_CODEC_VALUE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the audio codec state of Bluetooth A2DP has changed.
+(Reserved, not supported yet) Indicates that the audio codec state of Bluetooth A2DP has changed.
 
   > **NOTE**
   >
@@ -1710,7 +1713,7 @@ Indicates the common event that a USB accessory has been detached.
 
 ### COMMON_EVENT_USER_FOREGROUND
 
-(Reserved, not supported yet) Indicates the common event that the user has been brought to the foreground.
+(Reserved, not supported yet) Indicates that the user has been brought to the foreground.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1722,7 +1725,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_DISCOVERED<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that a remote Bluetooth device is discovered.
+(Reserved, not supported yet) Indicates that a remote Bluetooth device is discovered.
 
   > **NOTE**
   >
@@ -1738,7 +1741,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CLASS_VALUE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the Bluetooth class of a remote Bluetooth device has changed.
+(Reserved, not supported yet) Indicates that the Bluetooth class of a remote Bluetooth device has changed.
 
   > **NOTE**
   >
@@ -1752,7 +1755,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_CONNECTED<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that a low-ACL connection has been established with a remote Bluetooth device.
+(Reserved, not supported yet) Indicates that a low-ACL connection has been established with a remote Bluetooth device.
 
   > **NOTE**
   >
@@ -1766,7 +1769,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_DISCONNECTED<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that a low-ACL connection has been disconnected from a remote Bluetooth device.
+(Reserved, not supported yet) Indicates that a low-ACL connection has been disconnected from a remote Bluetooth device.
 
   > **NOTE**
   >
@@ -1781,7 +1784,7 @@ Indicates the common event that a USB accessory has been detached.
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_NAME_UPDATE<sup>(deprecated)</sup>
 
-(Reserved, not supported yet) Indicates the common event that the friendly name of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
+(Reserved, not supported yet) Indicates that the friendly name of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
 
   > **NOTE**
   >
@@ -1795,7 +1798,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIR_STATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the connection state of a remote Bluetooth device has changed.
+(Reserved, not supported yet) Indicates that the connection state of a remote Bluetooth device has changed.
 
   > **NOTE**
   >
@@ -1810,7 +1813,7 @@ Indicates the common event that a USB accessory has been detached.
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_BATTERY_VALUE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the battery level of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
+(Reserved, not supported yet) Indicates that the battery level of a remote Bluetooth device is retrieved for the first time or has changed since the last retrieval.
 
   > **NOTE**
   >
@@ -1866,7 +1869,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that Bluetooth pairing is canceled.
+(Reserved, not supported yet) Indicates that Bluetooth pairing is canceled.
 
   > **NOTE**
   >
@@ -1908,7 +1911,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the connection to a remote Bluetooth device has been canceled.
+(Reserved, not supported yet) Indicates that the connection to a remote Bluetooth device has been canceled.
 
   > **NOTE**
   >
@@ -1922,7 +1925,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the connection state of a Bluetooth handsfree has changed.
+(Reserved, not supported yet) Indicates that the connection state of a Bluetooth handsfree has changed.
 
   > **NOTE**
   >
@@ -1936,7 +1939,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the audio state of a Bluetooth handsfree has changed.
+(Reserved, not supported yet) Indicates that the audio state of a Bluetooth handsfree has changed.
 
   > **NOTE**
   >
@@ -1950,7 +1953,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_COMMON_EVENT<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the audio gateway state of a Bluetooth handsfree has changed.
+(Reserved, not supported yet) Indicates that the audio gateway state of a Bluetooth handsfree has changed.
 
   > **NOTE**
   >
@@ -1964,7 +1967,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREEUNIT_AG_CALL_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the calling state of a Bluetooth handsfree has changed.
+(Reserved, not supported yet) Indicates that the calling state of a Bluetooth handsfree has changed.
 
   > **NOTE**
   >
@@ -1978,7 +1981,7 @@ Indicates the action of a common event about the UUID connection state of a remo
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_STATE_UPDATE<sup>(deprecated)</sup>
-Indicates the common event that the state of a Bluetooth adapter has been changed, for example, Bluetooth has been enabled or disabled.
+Indicates that the state of a Bluetooth adapter has been changed, for example, Bluetooth has been enabled or disabled.
 
   > **NOTE**
   >
@@ -2036,7 +2039,7 @@ Indicates the common event that the state of a Bluetooth adapter has been change
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_SCAN_MODE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the Bluetooth scanning mode of a device has changed.
+(Reserved, not supported yet) Indicates that the Bluetooth scanning mode of a device has changed.
 
   > **NOTE**
   >
@@ -2052,7 +2055,7 @@ Indicates the common event that the state of a Bluetooth adapter has been change
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_STARTED<sup>(deprecated)</sup>
-Indicates the common event that the Bluetooth scanning has been started on the device.
+Indicates that the Bluetooth scanning has been started on the device.
 
   > **NOTE**
   >
@@ -2066,7 +2069,7 @@ Indicates the common event that the Bluetooth scanning has been started on the d
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_DISCOVERY_FINISHED<sup>(deprecated)</sup>
-Indicates the common event that the Bluetooth scanning is finished on the device.
+Indicates that the Bluetooth scanning is finished on the device.
 
   > **NOTE**
   >
@@ -2080,7 +2083,7 @@ Indicates the common event that the Bluetooth scanning is finished on the device
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE<sup>(deprecated)</sup>
-Indicates the common event that the Bluetooth adapter name of the device has changed.
+Indicates that the Bluetooth adapter name of the device has changed.
 
   > **NOTE**
   >
@@ -2094,7 +2097,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSINK_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the connection state of Bluetooth A2DP has changed.
+(Reserved, not supported yet) Indicates that the connection state of Bluetooth A2DP has changed.
 
   > **NOTE**
   >
@@ -2109,7 +2112,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSINK_PLAYING_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the playing state of Bluetooth A2DP has changed.
+(Reserved, not supported yet) Indicates that the playing state of Bluetooth A2DP has changed.
 
   > **NOTE**
   >
@@ -2123,7 +2126,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_BLUETOOTH_A2DPSINK_AUDIO_STATE_UPDATE<sup>(deprecated)</sup>
-(Reserved, not supported yet) Indicates the common event that the audio state of Bluetooth A2DP Sink has changed.
+(Reserved, not supported yet) Indicates that the audio state of Bluetooth A2DP Sink has changed.
 
   > **NOTE**
   >
@@ -2137,7 +2140,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_ABILITY_ADDED
-(Reserved, not supported yet) Indicates the common event that an ability has been added.
+(Reserved, not supported yet) Indicates that an ability has been added.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2147,7 +2150,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_ABILITY_REMOVED
-(Reserved, not supported yet) Indicates the common event that an ability has been removed.
+(Reserved, not supported yet) Indicates that an ability has been removed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2158,7 +2161,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_ABILITY_UPDATED
-(Reserved, not supported yet) Indicates the common event that an ability has been updated.
+(Reserved, not supported yet) Indicates that an ability has been updated.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2168,7 +2171,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_LOCATION_MODE_STATE_CHANGED
-(Reserved, not supported yet) Indicates the common event that the location mode of the system has changed.
+(Reserved, not supported yet) Indicates that the location mode of the system has changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2178,7 +2181,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_SLEEP
-(Reserved, not supported yet) Indicates the common event that the in-vehicle infotainment (IVI) system of a vehicle is sleeping.
+(Reserved, not supported yet) Indicates that the in-vehicle infotainment (IVI) system of a vehicle is sleeping.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2188,7 +2191,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_PAUSE
-(Reserved, not supported yet) Indicates the common event that the IVI system of a vehicle has entered sleep mode and the playing application is instructed to stop playback.
+(Reserved, not supported yet) Indicates that the IVI system of a vehicle has entered sleep mode and the playing application is instructed to stop playback.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -2200,7 +2203,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_STANDBY
-(Reserved, not supported yet) Indicates the common event that a third-party application is instructed to pause the current work.
+(Reserved, not supported yet) Indicates that a third-party application is instructed to pause the current work.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2210,7 +2213,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_LASTMODE_SAVE
-(Reserved, not supported yet) Indicates the common event that a third-party application is instructed to save its last mode.
+(Reserved, not supported yet) Indicates that a third-party application is instructed to save its last mode.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2220,7 +2223,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_VOLTAGE_ABNORMAL
-(Reserved, not supported yet) Indicates the common event that the voltage of the vehicle's power system is abnormal.
+(Reserved, not supported yet) Indicates that the voltage of the vehicle's power system is abnormal.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2231,7 +2234,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 ### COMMON_EVENT_IVI_HIGH_TEMPERATURE
 
-(Reserved, not supported yet) Indicates the common event that the temperature of the IVI system is high.
+(Reserved, not supported yet) Indicates that the temperature of the IVI system is high.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2241,7 +2244,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_EXTREME_TEMPERATURE
-(Reserved, not supported yet) Indicates the common event that the temperature of the IVI system is extremely high.
+(Reserved, not supported yet) Indicates that the temperature of the IVI system is extremely high.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2252,7 +2255,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL
-(Reserved, not supported yet) Indicates the common event that the IVI system has an extreme temperature.
+(Reserved, not supported yet) Indicates that the IVI system has an extreme temperature.
 
 
 **System capability**: SystemCapability.Notification.CommonEvent
@@ -2263,7 +2266,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_VOLTAGE_RECOVERY
-(Reserved, not supported yet) Indicates the common event that the voltage of the vehicle's power system is restored to normal.
+(Reserved, not supported yet) Indicates that the voltage of the vehicle's power system is restored to normal.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2273,7 +2276,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_TEMPERATURE_RECOVERY
-(Reserved, not supported yet) Indicates the common event that the temperature of the IVI system is restored to normal.
+(Reserved, not supported yet) Indicates that the temperature of the IVI system is restored to normal.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2283,7 +2286,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_IVI_ACTIVE
-(Reserved, not supported yet) Indicates the common event that the battery service is active.
+(Reserved, not supported yet) Indicates that the battery service is active.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2294,7 +2297,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED
-(Reserved, not supported yet) Indicates the common event that the account visibility changed.
+(Reserved, not supported yet) Indicates that the account visibility changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2304,7 +2307,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_ACCOUNT_DELETED
-(Reserved, not supported yet) Indicates the common event that the account was deleted.
+(Reserved, not supported yet) Indicates that the account was deleted.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2315,7 +2318,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_FOUNDATION_READY
-(Reserved, not supported yet) Indicates the common event that the foundation is ready.
+(Reserved, not supported yet) Indicates that the foundation is ready.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -2326,7 +2329,7 @@ Indicates the common event that the Bluetooth adapter name of the device has cha
 
 
 ### COMMON_EVENT_SPN_INFO_CHANGED 
-Indicates the common event of that the SPN information had changed.
+Indicates that the SPN information had changed.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 

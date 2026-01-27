@@ -15,7 +15,7 @@ Subscribers can receive sticky common events that have been sent. If the events 
 
 For details, see [API Reference](../../reference/apis-basic-services-kit/js-apis-commonEventManager-sys.md#commoneventmanagerremovestickycommonevent10).
 
-| API| Description|
+| Name| Description|
 | -------- | -------- |
 | removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void | Removes a sticky common event.|
 
@@ -24,7 +24,7 @@ For details, see [API Reference](../../reference/apis-basic-services-kit/js-apis
 
 1. Declare the **ohos.permission.COMMONEVENT_STICKY** permission. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
-2. Import the module.
+2. Import the related modules.
 
    ```ts
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
