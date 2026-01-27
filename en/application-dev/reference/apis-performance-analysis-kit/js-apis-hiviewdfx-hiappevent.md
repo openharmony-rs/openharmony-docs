@@ -66,7 +66,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 > To call **addWatcher** in a child thread, ensure that the child thread is not destroyed in the entire API usage period.
 >
-> For details about how to call an API in a child thread, see [Overview of Multithreaded Concurrency](../../arkts-utils/multi-thread-concurrency-overview.md).
+> For details about how to call the API in a child thread, see [Worker](../../arkts-utils/worker-introduction.md).
 >
 > The name passed to the **addWatcher** API should be unique. If the same name is passed, the previous subscription will be overwritten.
 
