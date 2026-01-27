@@ -57,6 +57,8 @@ getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回801错误码。
+
 **返回值：**
 
 | 类型         |  说明                                       |
@@ -102,6 +104,8 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回801错误码。
 
 **参数：** 
 
@@ -162,6 +166,8 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 取消订阅应用快捷键。使用callback异步回调。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回801错误码。
 
 **参数：** 
 

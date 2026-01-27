@@ -1885,6 +1885,8 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -1940,6 +1942,8 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 设置触控板双指捏合功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
 
 **系统API**: 此接口为系统接口。
 
@@ -2000,6 +2004,8 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值true。
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -2050,6 +2056,8 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 获取触控板双指捏合功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值true。
 
 **系统API**: 此接口为系统接口。
 
@@ -2103,6 +2111,8 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 设置触控板多指滑动功能开关，使用AsyncCallback异步方式返回结果。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
 
 **系统API**: 此接口为系统接口。
 
@@ -2159,6 +2169,8 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 设置触控板多指滑动功能开关，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
 
 **系统API**: 此接口为系统接口。
 
@@ -2219,6 +2231,8 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值true。
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -2269,6 +2283,8 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 获取触控板多指滑动功能开启状态，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值true。
 
 **系统API**: 此接口为系统接口。
 
@@ -2542,6 +2558,8 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -2597,6 +2615,8 @@ setPointerSize(size: number): Promise&lt;void&gt;
 设置鼠标光标大小，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
 
 **系统API**: 此接口为系统接口。
 
@@ -2657,6 +2677,8 @@ setPointerSizeSync(size: number): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -2705,6 +2727,8 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 获取鼠标光标大小，使用AsyncCallback异步方式返回结果。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值1。
 
 **系统API**: 此接口为系统接口。
 
@@ -2756,6 +2780,8 @@ getPointerSize(): Promise&lt;number&gt;
 获取当前鼠标光标大小，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值1。
 
 **系统API**: 此接口为系统接口。
 
@@ -2810,6 +2836,8 @@ getPointerSizeSync(): number
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值1。
+
 **系统API**: 此接口为系统接口。
 
 **返回值**：
@@ -2862,6 +2890,8 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
 
 **系统API**: 此接口为系统接口。
 
@@ -2922,6 +2952,8 @@ setPointerColor(color: number): Promise&lt;void&gt;
 > 设置和调试时，需连接外部设备，如鼠标、蓝牙等。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
 
 **系统API**: 此接口为系统接口。
 
@@ -2986,6 +3018,8 @@ setPointerColorSync(color: number): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上调用不生效。
+
 **系统API**: 此接口为系统接口。
 
 **参数**：
@@ -3034,6 +3068,8 @@ getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 获取鼠标光标颜色，使用AsyncCallback异步方式返回结果。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值0。
 
 **系统API**: 此接口为系统接口。
 
@@ -3085,6 +3121,8 @@ getPointerColor(): Promise&lt;number&gt;
 获取当前鼠标光标颜色，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值0。
 
 **系统API**: 此接口为系统接口。
 
@@ -3138,6 +3176,8 @@ getPointerColorSync(): number
 获取鼠标光标颜色，使用同步方式返回结果。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值0。
 
 **系统API**: 此接口为系统接口。
 
