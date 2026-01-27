@@ -43191,5 +43191,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/worker-postMessage-sendable.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/Sendable/CopyEntry.ets",
+				"functions":[
+					{
+						"end_line":29,
+						"name":"copy_entry_class",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ParentWorker.ets",
+				"functions":[
+					{
+						"end_line":93,
+						"name":"parent_worker",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ChildWorker.ets",
+				"functions":[
+					{
+						"end_line":37,
+						"name":"child_worker",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerPostMessageSendable.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"multi_worker_high_performance_communication",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
