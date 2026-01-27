@@ -41,7 +41,7 @@ Adds the applications that are not allowed to run by the current or specified us
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: In API version 21 and later versions, [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) can be transferred. [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) is recommended. In API version 20 and earlier versions, only [appId](../../quick-start/common_problem_of_application.md#what-is-appid) can be transferred.|
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>Note: From API version 21 onwards, the **appId** and **appIdentifier** of the app can be passed. **appIdentifier** is recommended. In API version 20 and earlier versions, only **appId** can be passed.|
 | accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -96,7 +96,7 @@ Removes the applications that are not allowed to run by the current user or spec
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: Starting from API version 21, elements in the array support the use of both [appId](../../quick-start/common_problem_of_application.md#what-is-appid) and [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier). Only the passed **appId** (or **appIdentifier**) will be removed, and the **appIdentifier** (or **appId**) of the same application will not be removed. In API version 20 and earlier versions, only **appId** can be transferred.|
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>Note: Since API version 21, elements in the array can use **appId** and **appIdentifier**. Only the input **appId** or **appIdentifier** is removed. **appIdentifier** or **appId** of the same app will not be removed. In API version 20 and earlier versions, only **appId** can be transferred.|
 | accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -156,7 +156,7 @@ Obtains applications that are not allowed to run by the current user or specifie
 
 | Type               | Description                            |
 | ------------------- | -------------------------------- |
-| Array&lt;string&gt; | Applications that are not allowed to run by the current user or specified user.<br>**Note**: For API version 20 and earlier versions, the return value is the [appId](../../quick-start/common_problem_of_application.md#what-is-appid) list. In API version 21 and later versions, the return value is the [appId](../../quick-start/common_problem_of_application.md#what-is-appid) or [appIdentifier](../../quick-start/common_problem_of_application.md#what-is-appidentifier) list.|
+| Array&lt;string&gt; | Applications that are not allowed to run by the current user or specified user.<br>Note: For API version 20 and earlier versions, the return value is the **appId** list. In API version 21 and later versions, the return value is the **appId** or **appIdentifier** list.|
 
 **Error codes**
 
@@ -197,11 +197,11 @@ Adds the applications that are allowed to run under specified users.
 
 > **NOTE**
 >
-> 1. Most APIs provided by MDM Kit are available only to MDM applications. When using this API, add the MDM application to the application running trustlist. Otherwise, the MDM application will be prohibited from running, blocking the API call. For details about whether the API is open only to MDM applications, see the module description.
+> - Most APIs provided by MDM Kit are available only to MDM applications. When using this API, add the MDM application to the application running trustlist. Otherwise, the MDM application will be prohibited from running, blocking the API call. For details about whether the API is open only to MDM applications, see the module description.
 >
-> 2. If the application running blocklist is not empty, this API cannot be used to add applications to the running trustlist. Otherwise, the error code 9200010 is reported. APIs related to the application running blocklist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2).
+> - If the application running blocklist is not empty, this API cannot be used to add applications to the running trustlist. Otherwise, the error code 9200010 is reported. APIs related to the application running blocklist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2).
 >
-> 3. This API only takes effect for third-party applications. System applications are not subject to this list and are allowed to run by default.<!--DelEnd-->
+> - This API only takes effect for third-party applications. System applications are not subject to this list and are allowed to run by default.<!--DelEnd-->
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -214,7 +214,7 @@ Adds the applications that are allowed to run under specified users.
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of [unique identifiers](../../quick-start/common_problem_of_application.md#what-is-appidentifier) of an application. You can call [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) to obtain **bundleInfo.signatureInfo.appIdentifier**.<br>Value range:<br> - The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
+| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of app unique identifiers. You can obtain **bundleInfo.signatureInfo.appIdentifier** through the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API.<br>Value range:<br> - The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -268,7 +268,7 @@ Removes the applications that are allowed to run by the specified user.
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of [unique identifiers](../../quick-start/common_problem_of_application.md#what-is-appidentifier) of an application. You can obtain the **bundleInfo.signatureInfo.appIdentifier** by calling the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API. Value range: The array length cannot exceed 200.|
+| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of unique identifiers of an app. You can obtain the **bundleInfo.signatureInfo.appIdentifier** by calling the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API. Value range: The array length cannot exceed 200.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -406,7 +406,7 @@ let autoStartApps: Array<Want> = [
   {
     // Replace it as required.
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -465,7 +465,7 @@ let autoStartApps: Array<Want> = [
   {
     // Replace it as required.
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -524,7 +524,7 @@ let autoStartApps: Array<Want> = [
   // Replace it as required.
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -597,7 +597,7 @@ try {
 
 addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, disallowModify: boolean): void
 
-Adds a list of applications that automatically start upon system startup for a specified user, and sets whether to forbid the user to manually cancel the automatic startup of applications.<br>Applications can be added to the auto-start list via this API and the [addAutoStartApps](#applicationmanageraddautostartapps) API. Settings from both APIs can take effect simultaneously. For a single user, the auto-start list supports a maximum of 10 applications. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for the user via this API.
+Adds a list of applications that automatically start upon system startup for a specified user, and sets whether to forbid the user to manually cancel the automatic startup of applications<!--RP4--><!--RP4End-->.<br>Applications can be added to the auto-start list via this API and the [addAutoStartApps](#applicationmanageraddautostartapps) API. Settings from both APIs can take effect simultaneously. For a single user, the auto-start list supports a maximum of 10 applications. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for the user via this API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -642,7 +642,7 @@ let autoStartApps: Array<Want> = [
   // Replace it as required.
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EnterpriseAdminAbility'
+    abilityName: 'EntryAbility'
   }
 ];
 
@@ -764,7 +764,7 @@ let wantTemp: Want = {
 let autoStartApp: Want = {
   // Replace it as required.
   bundleName: 'com.example.autoStartApplication',
-  abilityName: 'EnterpriseAdminAbility'
+  abilityName: 'EntryAbility'
 };
 
 try {
@@ -1516,7 +1516,7 @@ try {
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
+Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications and becomes invalid after the device is restarted. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
 Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
 <br>Freezing operations include suspending the target application, and managing software resource agents, hardware resource agents, and high-power consumption.
 
