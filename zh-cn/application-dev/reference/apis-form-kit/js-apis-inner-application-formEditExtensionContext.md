@@ -70,10 +70,10 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
         }
 
       }).then(data => {
-        console.info(TAG, `startSecondPage result want: ${JSON.stringify(data)}`)
+        console.info(TAG, `startSecondPage result resultCode: ${data.resultCode}`)
       });
     } catch (e) {
-      console.error(TAG, `startSecondPage failed:${e}`)
+      console.error(TAG, `startSecondPage failed: code: ${e.code} message: ${e.message}`)
       return
     }
   }
@@ -108,7 +108,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
       });
     } catch (e) {
       let err = e as BusinessError;
-      console.error(TAG, `startSecondPage failed: code: ${err.code} message: ${err.message}`)
+      console.error(TAG, `startSecondPage failed: code: ${e.code} message: ${e.message}`)
       return
     }
   }
