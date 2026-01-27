@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **systemTime** module provides system time and time zone features. You can use the APIs of this module to set and obtain the system time and time zone.
 
@@ -27,7 +27,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getCurrentTime](js-apis-date-time.md#systemdatetimegetcurrenttimedeprecated) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -73,7 +73,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getCurrentTime](js-apis-date-time.md#systemdatetimegetcurrenttimedeprecated-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -118,7 +118,7 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getCurrentTime](js-apis-date-time.md#systemdatetimegetcurrenttimedeprecated-2) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -167,7 +167,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getRealActiveTime](js-apis-date-time.md#systemdatetimegetrealactivetimedeprecated) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -213,7 +213,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getRealActiveTime](js-apis-date-time.md#systemdatetimegetrealactivetimedeprecated-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -258,7 +258,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getRealActiveTime](js-apis-date-time.md#systemdatetimegetrealactivetimedeprecated-2) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -307,7 +307,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getRealTime](js-apis-date-time.md#systemdatetimegetrealtimedeprecated) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -353,7 +353,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getRealTime](js-apis-date-time.md#systemdatetimegetrealtimedeprecated-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -398,7 +398,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getRealTime](js-apis-date-time.md#systemdatetimegetrealtimedeprecated-2) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -447,7 +447,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getDate](js-apis-date-time.md#systemdatetimegetdatedeprecated) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](../../faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -492,7 +492,7 @@ Obtains the current system date. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [@systemDateTime.getDate](js-apis-date-time.md#systemdatetimegetdatedeprecated-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](../../faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 

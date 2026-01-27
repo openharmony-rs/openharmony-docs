@@ -73,4 +73,4 @@ The device activity status is frequently refreshed.
 
 **Procedure**
 
-Each refresh must be spaced at least 100 ms apart.
+No more refresh is needed if the device activity status has been refreshed within 100 ms. Try another refresh 100 ms later.
