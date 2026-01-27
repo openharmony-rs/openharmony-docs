@@ -49,7 +49,7 @@ FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* ar
 | 参数项 | 描述 |
 | -- | -- |
 | fiber | 指向要初始化的纤程的指针, 具体可参考[ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md)。 |
-| void(\*func)(void\*) | 纤程切换后所要执行的方法。 |
+| func | 纤程切换后所要执行的方法。 |
 | void\* arg | 纤程切换后所要执行方法的入参。 |
 | void\* stack | 纤程堆栈内存指针。 |
 | size_t stack_size | 纤程堆栈大小, 具体可参考[ffrt_storage_size_t](capi-type-def-h.md#ffrt_storage_size_t)。 |

@@ -401,7 +401,7 @@ FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kin
 ### ffrt_submit_base()
 
 ```c
-FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps,const ffrt_task_attr_t* attr)
+FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 ```
 
 **描述**
@@ -444,7 +444,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| FFRT_C_API ffrt_task_handle_t | 提交任务成功返回非空任务句柄，<br>          提交任务失败返回空指针。 |
+| FFRT_C_API [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | 提交任务成功返回非空任务句柄，<br>          提交任务失败返回空指针。 |
 
 ### ffrt_submit_f()
 
