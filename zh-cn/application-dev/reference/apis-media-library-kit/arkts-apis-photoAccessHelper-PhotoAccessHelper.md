@@ -1104,7 +1104,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 
 接口提供给应用调用，支持首次调用后拉起保存确认弹框。在用户同意保存后返回已创建并授予保存权限的uri，支持应用使用uri写入图片/视频。
 
-在用户"同意"后的5min之内，同一个应用再次调用接口，支持无需弹框确认自动返回已授权的uri给应用，支持应用保存图片/视频。
+在用户"同意"后的5分钟之内，同一个应用再次调用接口，支持无需弹框确认自动返回已授权的uri给应用，支持应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1183,7 +1183,7 @@ createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&
 > **说明：**
 >
 > - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
-> - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。
+> - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1262,6 +1262,64 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
   } catch (err) {
     console.error('requestPhotoUrisReadPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
+}
+```
+
+## requestPhotoUrisReadPermissionEx<sup>23+</sup>
+ 	 
+requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;RequestReadPermissionResult&gt;
+
+应用调用接口为未授权的URI授权。使用promise异步回调。
+
+返回授权结果，其中包含已创建并授予保存权限的URI列表以及无效的URI列表。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+  
+​**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                                                                   | 必填 | 说明                      |
+| -------- |----------------------------------------------------------------------| ---- | ------------------------- |
+| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频uri，且最大数量限制为100个。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;RequestReadPermissionResult&gt; | Promise对象，返回已授权的uri列表和无效的uri列表。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800301 |  Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+console.info('requestPhotoUrisReadPermissionExDemo.');
+
+  try {
+    // 获取需要进行授权的图片/视频uri。
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+    ];
+    let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
+    console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
+  } catch (err) {
+    console.error('requestPhotoUrisReadPermissionEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
   }
 }
 ```

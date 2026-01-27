@@ -2131,7 +2131,7 @@ struct Index {
 
 ## on('metadataChange')<sup>10+</sup>
 
-on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void): void
+on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (data: AVMetadata) => void)
 
 设置元数据变化的监听事件。
 
@@ -2155,7 +2155,7 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2195,7 +2195,7 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2231,7 +2231,7 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 | parameter check failed. 1.Mandatory parameters art left unspecified. 2.Incorrect parameter types.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -2270,7 +2270,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 | parameter check failed. 1.Mandatory parameters are left upspecified. 2.Incorrect parameter types.|
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 

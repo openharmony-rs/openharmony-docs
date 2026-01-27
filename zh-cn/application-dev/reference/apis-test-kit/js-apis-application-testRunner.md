@@ -23,24 +23,15 @@ TestRunner模块提供了框架测试的能力。包括准备单元测试环境�
 import { TestRunner } from '@kit.TestKit';
 ```
 
-## TestRunner
+## TestRunner.onPrepare
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+onPrepare(): void
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| onPrepare | [OnPrepareFn](#onpreparefn23) | 否    | 否    | 为运行测试用例准备单元测试环境。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onPrepare()方法变更为当前属性，调用方式不变。 |
-| onRun | [OnRunFn](#onrunfn23) | 否    | 否    | 运行全部测试用例。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onRun()方法变更为当前属性，调用方式不变。 |
-
-## OnPrepareFn<sup>23+</sup>
-
-type OnPrepareFn = () => void
-
-当单元测试环境准备完成时，会触发该回调。
+为运行测试用例准备单元测试环境。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **示例：**
 
@@ -57,15 +48,15 @@ export default class UserTestRunner implements TestRunner {
 }
 ```
 
-## OnRunFn<sup>23+</sup>
+## TestRunner.onRun
 
-type OnRunFn = () => void
+onRun(): void
 
-当运行测试用例时，会触发该回调。
+运行测试用例。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **示例：**
 

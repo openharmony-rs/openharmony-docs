@@ -14,7 +14,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 1. 组件拖拽设置。
 
-   获取[Node-API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)，创建节点等操作均需通过Node-API完成。
+   通过[OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)接口初始化nodeAPI，创建节点等操作均需通过nodeAPI完成。
 
    <!-- @[get_nodeAPI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/manager.cpp) -->
    
