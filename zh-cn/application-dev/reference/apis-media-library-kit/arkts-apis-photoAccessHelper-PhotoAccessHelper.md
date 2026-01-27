@@ -1005,6 +1005,7 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -1015,7 +1016,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let srcFileUris: Array<string> = [
       'file://fileUriDemo1' // 实际场景请使用真实的uri。
     ];
-    let creationSettings: Array<photoAccessHelper.CreationSetting> = [
+    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [
       {
         title: 'test2', // 可选。
         fileNameExtension: 'jpg',
@@ -1074,6 +1075,7 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -1081,16 +1083,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
   try {
     // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
-    let srcFileUri: string = [
+    let srcFileUris: Array<string> = [
       'file://fileUriDemo1' // 实际场景请使用真实的uri。
     ];
-    let creationSetting: photoAccessHelper.CreationSetting = {
+    let photoCreationConfigs: photoAccessHelper.CreationSetting = {
       title: 'test2', // 可选。
       fileNameExtension: 'jpg',
       photoType: photoAccessHelper.PhotoType.IMAGE
     }
     let isImageFullyDisplayed: boolean = true
-    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUris, photoCreationConfigs, isImageFullyDisplayed);
+    let desFileUris: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUris, photoCreationConfigs, isImageFullyDisplayed);
     console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUris);
   } catch (err) {
     console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
@@ -1137,6 +1139,7 @@ createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Pr
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { fileIo } from '@kit.CoreFileKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
@@ -1248,6 +1251,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
