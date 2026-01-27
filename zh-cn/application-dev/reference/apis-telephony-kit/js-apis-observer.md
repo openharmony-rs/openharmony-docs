@@ -1077,11 +1077,11 @@ SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let sislotId = 0；
+let sislotId = 0;
 let simActiveState: Callback<boolean> = (isSimActive: boolean) => {
     console.info(`simActiveState slotId ${JSON.stringify(isSimActive)}`);
 }
-observer.onGetSimActiveState(slotId, simActiveState);
+observer.onGetSimActiveState(sislotId, simActiveState);
 ```
 
 ## observer.offGetSimActiveState<sup>23+</sup>
