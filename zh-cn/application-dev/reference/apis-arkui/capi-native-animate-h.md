@@ -43,6 +43,7 @@
 
 ### 函数
 
+<!--Table: 40%; 60%-->
 | 名称 | 描述 |
 | -- | -- |
 | [ArkUI_AnimateOption* OH_ArkUI_AnimateOption_Create()](#oh_arkui_animateoption_create) | 创建动画效果参数。 |
