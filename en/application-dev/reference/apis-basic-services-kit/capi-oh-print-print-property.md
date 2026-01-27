@@ -1,4 +1,4 @@
-# Print_PageSize
+# Print_Property
  <!--Kit: Basic Services Kit-->   
  <!--Subsystem: Print-->  
  <!--Owner: @guoshengbang-->  
@@ -7,12 +7,12 @@
  <!--Adviser: @fang-jinxu-->
 
 ```c
-typedef struct {...} Print_PageSize
+typedef struct {...} Print_Property
 ```
 
 ## Overview
 
-Defines a struct for the page size.
+Defines a struct for the printer property.
 
 **Since**: 12
 
@@ -24,9 +24,7 @@ Defines a struct for the page size.
 
 ### Member Variables
 
-| Name           | Description      |
-| --------------- | ---------- |
-| char *id        | Page ID. |
-| char *name      | Page name.|
-| uint32_t width  | Page width.|
-| uint32_t height | Page height.|
+| Name| Description|
+| -- | -- |
+| char *key | Property key.|
+| char *value | Property value.|

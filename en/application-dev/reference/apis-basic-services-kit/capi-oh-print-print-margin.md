@@ -1,10 +1,10 @@
 # Print_Margin
-<!--Kit: Basic Services Kit-->  
-<!--Subsystem: Print--> 
-<!--Owner: @guoshengbang--> 
-<!--Designer: @Q-haosu-->   
-<!--Tester: @Q-haosu--> 
-<!--Adviser: @fang-jinxu-->
+ <!--Kit: Basic Services Kit-->   
+ <!--Subsystem: Print-->  
+ <!--Owner: @guoshengbang-->  
+ <!--Designer: @Q-haosu-->    
+ <!--Tester: @Q-haosu-->  
+ <!--Adviser: @fang-jinxu-->
 
 ```c
 typedef struct {...} Print_Margin
@@ -12,7 +12,7 @@ typedef struct {...} Print_Margin
 
 ## Overview
 
-Defines a struct for the page margin.
+Defines a struct for the print margin.
 
 **Since**: 12
 
@@ -24,9 +24,9 @@ Defines a struct for the page margin.
 
 ### Member Variables
 
-| Name| Description|
-| -- | -- |
-| uint32_t leftMargin | Left margin.|
-| uint32_t topMargin | Top margin.|
-| uint32_t rightMargin | Right margin.|
+| Name                 | Description    |
+| --------------------- | -------- |
+| uint32_t leftMargin   | Left margin.|
+| uint32_t topMargin    | Top margin.|
+| uint32_t rightMargin  | Right margin.|
 | uint32_t bottomMargin | Bottom margin.|

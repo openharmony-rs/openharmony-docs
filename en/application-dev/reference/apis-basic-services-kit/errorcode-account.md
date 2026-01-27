@@ -21,7 +21,6 @@ The system service works abnormally.
 
 **Possible Causes**
 
- 
 1. The account management service cannot start properly.
 2. The IPC object for account management cannot be obtained.
 3. The services on which the account management depends cannot start properly, or the IPC object on which the account management depends cannot be obtained.
@@ -44,7 +43,6 @@ Invalid parameter.
 
 **Possible Causes**
 
- 
 1. The user name is empty.
 2. The user name of the system account exceeds 1024 characters.
 3. The user name of the distributed account exceeds 256 characters.
@@ -82,7 +80,6 @@ The account does not exist.
 
 **Possible Causes**
 
- 
 1. The account to query, activate, or delete is not created.
 2. The account to query, activate, or delete has been deleted.
 3. The constraint, user name, or profile photo is set for an account that has been deleted.
@@ -107,7 +104,6 @@ The account already exists.
 
 **Possible Causes**
 
- 
 The account to create already exists.
 
 **Solution**
@@ -122,7 +118,6 @@ Multi-user is not supported.
 
 **Possible Causes**
 
- 
 The device does not support multiple users.
 
 **Solution**
@@ -165,7 +160,6 @@ The specified account is restricted.
 
 **Possible Causes**
 
- 
 1. The account to delete is a reserved account of the system.
 2. The constraint source type to query belongs to a reserved account.
 3. The ID of the account to create is 0 to 100.
@@ -182,7 +176,6 @@ The account has been activated.
 
 **Possible Causes**
 
- 
 The account to activate is already activated.
 
 **Solution**
@@ -197,7 +190,6 @@ The account service does not respond.
 
 **Possible Causes**
 
- 
 1. Repeated requests, such as the requests for activating an account or applying the same settings, are submitted in a short period of time.
 2. When the number of authentication sessions for application accounts reaches 256, new authentication requests cannot be processed.
 
@@ -213,7 +205,6 @@ The event listener has been registered.
 
 **Possible Causes**
 
- 
 The listener to register has been registered with the system already.
 
 **Solution**
@@ -228,7 +219,6 @@ The event listener has not been registered.
 
 **Possible Causes**
 
- 
 The event listener to unregister has not been registered.
 
 **Solution**
@@ -243,7 +233,6 @@ Network exception.
 
 **Possible Causes**
 
- 
 1. Not connected to the Internet.
 2. The network connection is abnormal.
 3. The application does not have the network access permission.
@@ -308,7 +297,6 @@ The foreground OS account is not found.
 
 **Possible Causes**
 
- 
 1. The foreground system account does not exist on the specified logical display (either it is not activated or it is not switched to the foreground).
 2. The specified **displayId** is invalid or the corresponding logical display does not exist.
 3. The specified **localId** is invalid or the corresponding system account does not exist.
@@ -325,7 +313,6 @@ Display not found.
 
 **Possible Causes**
 
- 
 1. The specified **displayId** is invalid or the corresponding logical display does not exist.
 2. The target logical display is not connected or has been disconnected.
 
@@ -341,7 +328,6 @@ Cross-display activation not supported.
 
 **Possible Causes**
 
- 
 The current system strategy or configuration does not allow cross-display activation.
 
 **Solution**
@@ -394,7 +380,6 @@ The credential is incorrect.
 
 **Possible Causes**
 
- 
 1. An incorrect password is entered.
 2. The biological feature does not match the feature enrolled.
 3. The token is invalid.
@@ -411,7 +396,6 @@ The credential does not exist.
 
 **Possible Causes**
 
- 
 1. The credential to authenticate has not been enrolled.
 2. The credential to query has not been enrolled.
 3. The credential to delete has not been enrolled.
@@ -428,7 +412,6 @@ The credential inputer already exists.
 
 **Possible Causes**
 
- 
 The PIN inputer has been registered and cannot be registered again before deregistration.
 
 **Solution**
@@ -443,7 +426,6 @@ The credential inputer is not found.
 
 **Possible Causes**
 
- 
 No credential inputer is registered when a credential is authenticated, added or modified.
 
 **Solution**
@@ -458,7 +440,6 @@ The trust level is not supported.
 
 **Possible Causes**
 
- 
 The trust level passed in is not supported.
 
 **Solution**
@@ -473,7 +454,6 @@ The authentication type is not supported.
 
 **Possible Causes**
 
- 
 The authentication type passed in is not supported.
 
 **Solution**
@@ -488,7 +468,6 @@ The authentication type does not exist.
 
 **Possible Causes**
 
- 
 The specified authentication type does not exist when a token is queried or deleted.
 
 **Solution**
@@ -502,8 +481,6 @@ Use an existing authentication type.
 The authentication session does not exist.
 
 **Possible Causes**
-
- 
 
 The session callback to query does not exist.
 
@@ -519,10 +496,9 @@ The authentication, enrollment, or update operation is canceled.
 
 **Possible Causes**
 
- 
-The user cancels the authentication.
-The user canceled the credential enrollment.
-The user canceled the update during the credential enrollment process.
+1. The user cancels the authentication.
+2. The user canceled the credential enrollment.
+3. The user canceled the update during the credential enrollment process.
 
 **Solution**
 
@@ -536,7 +512,6 @@ The authentication is locked.
 
 **Possible Causes**
 
- 
 The number of authentication type errors exceeds the limit.
 
 **Solution**
@@ -551,7 +526,6 @@ The authentication time out.
 
 **Possible Causes**
 
- 
 1. The authentication or credential enrollment of a system account takes more than three minutes.
 2. The authentication service does not respond in time due to network problems.
 
@@ -568,9 +542,8 @@ The authentication service is busy.
 
 **Possible Causes**
 
- 
-The total number of system accounts being authenticated exceeds 5.
-The authentication service of the third-party application does not respond.
+1. The total number of system accounts being authenticated exceeds 5.
+2. The authentication service of the third-party application does not respond.
 
 **Solution**
 
@@ -584,7 +557,6 @@ The account authentication service does not exist.
 
 **Possible Causes**
 
- 
 For application accounts:
 1. When an authentication is requested, the application does not support the authentication service.
 2. When an account is added implicitly, the application does not support the authentication service.
@@ -604,7 +576,6 @@ The account authentication service works abnormally.
 
 **Possible Causes**
 
- 
 1. An unknown error occurs in the identity authentication service.
 2. The application authenticator does not comply with specifications.
 
@@ -665,7 +636,7 @@ The application does not exist.
 
 **Possible Causes**
 
- 
+
 1. The target application does not exist when the application permission is set.
 2. The target application does not exist when the application permission is authorized.
 

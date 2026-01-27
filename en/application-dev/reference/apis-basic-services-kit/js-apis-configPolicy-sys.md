@@ -26,6 +26,7 @@ import { configPolicy } from '@kit.BasicServicesKit';
 getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 
 Obtains the path of the configuration file with the highest priority. This API uses an asynchronous callback to return the result.
+
 For example, if the paths of **config.xml** on the device are **/system/etc/config.xml** and **/sys_pod/etc/config.xml** in ascending order of priority, **/sys_pod/etc/config.xml** is returned.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
@@ -113,6 +114,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 Obtains a list of all files with the specified names, in ascending order of priority. This API uses an asynchronous callback to return the result.
+
 For example, if the paths of **config.xml** on the device are **/system/etc/config.xml** and **/sys_pod/etc/config.xml** in ascending order of priority, **/system/etc/config.xml, /sys_pod/etc/config.xml** is returned.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
@@ -268,6 +270,7 @@ Obtains a list of configuration level directories, in ascending order of priorit
 getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;string&gt;)
 
 Obtains the path of the configuration file with the highest priority based on the provided follow mode. This API uses an asynchronous callback to return the result.
+
 For example, if the paths of **config.xml** on the device are **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the default opkey of the device is **46060**, and **followMode** is set to **configPolicy.FollowXMode.SIM_DEFAULT**, the final return value is **/sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
@@ -310,6 +313,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;string&gt;)
 
 Obtains the path of the configuration file with the highest priority based on the provided follow mode. This API uses an asynchronous callback to return the result.
+
 For example, if the paths of **config.xml** on the device are **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the opkey of the device card 1 is **46060**, **followMode** is set to **configPolicy.FollowXMode.USER_DEFINED**, and the custom follow rule is **"etc/carrier/${telephony.sim.opkey0}"**, the final return value is **/sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
@@ -451,6 +455,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 Obtains a list of all files of a specified file name based on the provided follow mode, in ascending order of priority. This API uses an asynchronous callback to return the result.
+
 For example, if the paths of **config.xml** on the device are **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the default opkey of the device is **46060**, and **followMode** is set to **configPolicy.FollowXMode.SIM_DEFAULT**, the return value is **/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy
@@ -492,6 +497,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 Obtains a list of all files of a specified file name based on the provided follow mode, in ascending order of priority. This API uses an asynchronous callback to return the result.
+
 For example, if the paths of **config.xml** on the device are **/system/etc/config.xml**, **/sys_pod/etc/config.xml**, and **/sys_pod/etc/carrier/46060/etc/config.xml** in ascending order of priority, the opkey of the device card 1 is **46060**, **followMode** is set to **configPolicy.FollowXMode.USER_DEFINED**, and the custom follow rule is **"etc/carrier/${telephony.sim.opkey0}"**, the return value is **/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml**.
 
 **System capability**: SystemCapability.Customization.ConfigPolicy

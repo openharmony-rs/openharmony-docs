@@ -1,4 +1,4 @@
-# @ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility) (System API)
+# @ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
@@ -10,9 +10,8 @@
 This module provides ExtensionAbility for word selection, allowing users to search or translate text selected using a mouse or touchpad.
 
 > **NOTE**
->
-> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs provided by this module are system APIs.
+
+The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -27,7 +26,7 @@ import { SelectionExtensionAbility } from '@kit.BasicServicesKit';
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context | [SelectionExtensionContext](./js-apis-selectionInput-selectionExtensionContext-sys.md) | No| No| Context of the SelectionExtensionAbility. This context is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).|
+| context | [SelectionExtensionContext](./js-apis-selectionInput-selectionExtensionContext.md) | No| No| Context of the SelectionExtensionAbility. This context is inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).|
 
 ### onConnect
 
