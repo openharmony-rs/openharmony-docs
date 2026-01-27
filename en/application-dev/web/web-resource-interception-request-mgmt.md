@@ -79,7 +79,7 @@ In the following example, the **Web** component intercepts the web page request 
 
 - Page after being intercepted
 
-  ![Image](figures/web-rescource-interception-request-1.PNG)
+  ![Image](figures/web-resource-interception-request-1.PNG)
 
 Create a **CodeCache** object for a custom JS request response: If the resource of a custom request response is a JavaScript script, you can add the **ResponseDataID** field to the response header. After obtaining this field, the **Web** kernel generates a **CodeCache** object, which accelerates JavaScript execution. If **ResponseData** is updated, the **ResponseDataID** field must be updated. If the **ResponseDataID** field is not added, no **CodeCache** object is created by default.
 
@@ -176,4 +176,4 @@ In the following example, the **Web** component intercepts the web page request 
 
 - Page after being intercepted
 
-  ![Image](figures/web-rescource-intercption-request-2.PNG)
+  ![Image](figures/web-resource-intercption-request-2.PNG)

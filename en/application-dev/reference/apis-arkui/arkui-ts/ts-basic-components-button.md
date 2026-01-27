@@ -77,7 +77,7 @@ Describes the button style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                     | Type                                         | Read Only| Optional| Description                                                      |
+| Name                     | Type                                         | Read-Only| Optional| Description                                                      |
 | ------------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | type                      | [ButtonType](#buttontype)             | No  | Yes | Button display style.<br>Default value: **ButtonType.ROUNDED_RECTANGLE**.<br>API version 18 and later: The default value is **ButtonType.ROUNDED_RECTANGLE**. Versions earlier than API version 18: The default value is **ButtonType.Capsule**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | stateEffect               | boolean                                       | No  | Yes | Whether to enable the pressed state effect when the button is clicked.<br>**true**: Enable the pressed state effect. **false**: Disable the pressed state effect.<br>Default value: **true**.<br>**NOTE**<br>When the pressed state effect is enabled and a custom pressed state style is configured, the resulting color displayed after pressing is a composite blend of the original background color and the newly defined pressed state color.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -373,14 +373,14 @@ Label text and font style of the button.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                | Type                                                        | Read Only| Optional| Description                                                        |
+| Name                | Type                                                        | Read-Only| Optional| Description                                                        |
 | -------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | No  | Yes  | Display mode when the label text is too long. Text is clipped at the transition between words. To clip text in the middle of a word, add zero-width spaces between characters.<br>Default value: **TextOverflow.Ellipsis**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | maxLines             | number                                                       | No  | Yes  | Maximum number of lines in the label text. If this attribute is specified, the text will not exceed the specified number of lines. If there is extra text, you can use **overflow** to specify how it is displayed.<br>Default value: **1**<br>**NOTE**<br>If this parameter is set to a value less than or equal to 0, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Yes  | Minimum font size of the label text. For the setting to take effect, this attribute must be used together with **maxFontSize**, **maxLines**, or layout constraint settings.<br>**NOTE**<br>If the value of **minFontSize** is less than or equal to 0, the adaptive font size does not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | No  | Yes  | Maximum font size of the label text. For the setting to take effect, this attribute must be used together with **minFontSize**, **maxLines**, or layout constraint settings.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | No  | Yes  | How the adaptive height is determined for the label text.<br>Default value: **TextHeightAdaptivePolicy.MAX_LINES_FIRST**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| font                 | [Font](ts-types.md#font)                                     | No  | Yes  | Font of the label text.<br>Default value: See [Font](ts-types.md#font).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| font                 | [Font](ts-types.md#font)                                     | No  | Yes  | Font of the label text.<br>Default value:<br> {<br>size:'16.0fp',<br> weight:FontWeight.Medium,<br> style:FontStyle.Normal,<br>  family:'HarmonyOS Sans'<br>} <br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | No  | Yes  | Horizontal alignment of the label text. This attribute does not take effect when the **Text** component of the child node is used to set the label. The actual text alignment mode is determined by the **textAlign** attribute of the **Text** component of the child node.<br> The default value is **TextAlign.Center** for wearables and **TextAlign.Start** for other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## ButtonStyleMode<sup>11+</sup>
@@ -437,7 +437,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   | Read Only | Optional| Description             |
+| Name | Type   | Read-Only | Optional| Description             |
 | ------ | ------ | ---------------- | ---------------- | ---------------- |
 | label | string | No| No| Text label of the button.<br>Note: If the text is longer than the width of the button, it is truncated.|
 | pressed | boolean | No| No| Whether the button is pressed.<br>**true**: pressed; **false**: not pressed.<br>Default value: **false**.<br>**NOTE**<br>This setting applies to the original button size, not to any new component constructed using the builder.|

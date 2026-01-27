@@ -243,7 +243,7 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-      //引用HAR的ets类和方法
+      // 引用HAR的ets类和方法
       Button($r('app.string.button'))
         .id('button')
         .height(48)
@@ -288,7 +288,7 @@ struct Index {
         .fontSize(32)
 
       // ...
-      //引用HAR的native方法
+      // 引用HAR的native方法
       Button($r('app.string.native_add'))
         .id('nativeAdd')
         .height(48)

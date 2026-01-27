@@ -116,7 +116,7 @@ This error code is reported when the instance object used to call the API has be
 
 **Possible Causes**
 
-The **dispose** API has been previously called using this instance object, for example, **item.dispose()**.
+The [disposeNode](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) API has been previously called using this instance object, for example, **item.dispose()**.
 
 **Solution**
 
@@ -140,6 +140,24 @@ The current node has been adopted as a child node and does not support the reque
 **Solution**
 
 Cancel the adoption of the current node before performing the operation.
+
+## 100028 Current Node Is Not on the Main Node Tree
+
+**Error Message**
+
+The current FrameNode is not on the main tree.
+
+**Description**
+
+The current node is not on the main node tree.
+
+**Possible Causes**
+
+The current node is not on the main node tree.
+
+**Solution**
+
+Mount the current node to the main node tree before performing the operation.
 
 ## 106103 Operation Not Allowed on Nodes Created by ArkTS
 

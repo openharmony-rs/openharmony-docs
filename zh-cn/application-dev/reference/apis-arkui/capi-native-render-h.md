@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供NativeRender接口的类型定义。
+提供NativeRender接口的类型定义。更多详细介绍请参考[构建渲染节点](../../ui/ndk-embed-render-components.md)。
 
 **引用文件：** <arkui/native_render.h>
 
@@ -20,7 +20,7 @@
 
 **相关模块：** [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
 
-**相关示例：** <!--RP1-->[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)<!--RP1End-->
+**相关示例：** <!--RP1-->[NativeRenderNodeSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)<!--RP1End-->
 
 ## 汇总
 
@@ -54,7 +54,7 @@
 | [int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addrendernode) | - | 向父自定义节点添加子渲染节点。|
 | [int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_removerendernode) | - | 移除指定节点的所有子渲染节点。|
 | [int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)](#oh_arkui_rendernodeutils_clearrendernodechildren) | - | 清除父节点内的子渲染节点。|
-| [int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)](#oh_arkui_rendernodeutils_invalidate) | - | 标脏目标自定义节点，使其子渲染节点重新渲染。|
+| [int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)](#oh_arkui_rendernodeutils_invalidate) | - | 标记目标节点，触发其生命周期和子节点的重新渲染。|
 | [ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()](#oh_arkui_rendernodeutils_createnode) | - | 创建渲染节点。|
 | [int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_disposenode) | - | 销毁渲染节点。|
 | [int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addchild) | - | 向目标父渲染节点上添加子节点。|
@@ -273,7 +273,7 @@ int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)
 ```
 
 **描述：**
-标脏目标自定义节点，使其子渲染节点重新渲染。
+标记目标节点，触发其生命周期和子节点的重新渲染。
 
 **起始版本：** 20
 

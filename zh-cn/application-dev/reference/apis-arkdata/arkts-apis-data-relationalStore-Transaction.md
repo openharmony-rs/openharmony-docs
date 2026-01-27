@@ -89,8 +89,8 @@ commit(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -140,8 +140,8 @@ rollback(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -176,6 +176,8 @@ insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Prom
 
 向目标表中插入一行数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -200,8 +202,8 @@ insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Prom
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -249,6 +251,8 @@ insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesB
 
 向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-apis-data-relationalStore-RdbStore.md#query)或[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -273,8 +277,8 @@ insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesB
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
 | 14800023     | SQLite: Access permission denied.                            |
 | 14800024     | SQLite: The database file is locked.                         |
@@ -331,6 +335,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -354,8 +360,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -418,6 +424,8 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -441,8 +449,8 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;): number
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
 | 14800023     | SQLite: Access permission denied.                            |
 | 14800024     | SQLite: The database file is locked.                         |
@@ -509,6 +517,8 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -533,8 +543,8 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
@@ -609,6 +619,8 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -633,8 +645,8 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
@@ -710,6 +722,8 @@ batchInsertWithReturning(table: string, values: Array\<ValuesBucket\>, config: R
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **模型约束：** 此接口仅在Stage模型下可用。
@@ -736,8 +750,8 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -783,6 +797,8 @@ batchInsertWithReturningSync(table: string, values: Array\<ValuesBucket\>, confi
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **模型约束：** 此接口仅在Stage模型下可用。
@@ -809,8 +825,8 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -872,8 +888,8 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResol
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -947,8 +963,8 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
 | 14800023     | SQLite: Access permission denied.                            |
 | 14800024     | SQLite: The database file is locked.                         |
@@ -1017,7 +1033,7 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 
 | 类型                                                    | 说明                                            |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | Promise对象。如果操作成功，返回受影响的数据集。 |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise对象。如果操作成功，返回受影响的数据集。 |
 
 **错误码：**
 
@@ -1026,8 +1042,8 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -1097,8 +1113,8 @@ conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确�
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -1162,9 +1178,9 @@ delete(predicates: RdbPredicates):Promise&lt;number&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800025  | SQLite: A table in the database is locked. |
@@ -1229,9 +1245,9 @@ deleteSync(predicates: RdbPredicates): number
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800025  | SQLite: A table in the database is locked. |
@@ -1288,7 +1304,7 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 
 | 类型                                                    | 说明                                            |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| [Result](arkts-apis-data-relationalStore-i.md#result23) | Promise对象。如果操作成功，返回受影响的数据集。 |
+| Promise\<[Result](arkts-apis-data-relationalStore-i.md#result23)\> | Promise对象。如果操作成功，返回受影响的数据集。 |
 
 **错误码：**
 
@@ -1297,8 +1313,8 @@ deleteWithReturning(predicates: RdbPredicates, config: ReturningConfig): Promise
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -1361,8 +1377,8 @@ deleteWithReturningSync(predicates: RdbPredicates, config: ReturningConfig): Res
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011     | Failed to open the database because it is corrupted.         |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800011     | The current operation failed because the database is corrupted.         |
+| 14800014     | The target instance is already closed.                 |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800024     | SQLite: The database file is locked.                         |
 | 14800025     | SQLite: A table in the database is locked.                   |
@@ -1424,9 +1440,9 @@ query(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;Resu
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800026  | SQLite: The database is out of memory. |
@@ -1498,9 +1514,9 @@ querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): ResultSet
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800025  | SQLite: A table in the database is locked. |
@@ -1572,9 +1588,9 @@ querySql(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&gt;
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800025  | SQLite: A table in the database is locked. |
@@ -1643,9 +1659,9 @@ querySqlSync(sql: string, args?: Array&lt;ValueType&gt;): ResultSet
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
 | 14800025  | SQLite: A table in the database is locked. |
@@ -1714,7 +1730,7 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800014     | The target instance is already closed.                 |
 
 **示例：**
 
@@ -1785,7 +1801,7 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 14800014     | The RdbStore or ResultSet is already closed.                 |
+| 14800014     | The target instance is already closed.                 |
 
 **示例：**
 
@@ -1857,7 +1873,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 
 **示例：**
 
@@ -1927,7 +1943,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
 | 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
-| 14800014     | The RdbStore or ResultSet is already closed. |
+| 14800014     | The target instance is already closed. |
 
 **示例：**
 
@@ -2005,8 +2021,8 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -2081,8 +2097,8 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported the sql(attach,begin,commit,rollback etc.). |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted.                                          |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800011     | The current operation failed because the database is corrupted.                                          |
+| 14800014     | The target instance is already closed.                                              |
 | 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                       |
 | 14800023     | SQLite: Access permission denied.                            |
 | 14800024     | SQLite: The database file is locked.                         |

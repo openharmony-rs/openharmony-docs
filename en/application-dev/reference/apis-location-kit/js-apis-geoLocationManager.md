@@ -274,6 +274,7 @@ Defines a GNSS geofence request.
 | notifications | Array&lt;[NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest)&gt; | No| Yes| List of notifications for geofence transition events.<br>The sequence of **monitorTransitionEvents** must correspond to that of **notifications**. For example, if **monitorTransitionEvents[0]** is **[GeofenceTransitionEvent](#geofencetransitionevent12).GEOFENCE_TRANSITION_EVENT_ENTER**, **notifications[0]** must be set to the notification that needs to be displayed when a user enters the geofence. The default value is an empty array.|
 | geofenceTransitionCallback | AsyncCallback&lt;[GeofenceTransition](#geofencetransition12)&gt; | No| No| Callback used to receive geofence transition events.|
 | loiterTimeMs<sup>23+</sup> | number | No| Yes| Dwell duration, in milliseconds. You need to pay attention to the **GEOFENCE_TRANSITION_DWELL** event. If the time the device takes to dwell in the polygon geofence reaches the value of this parameter, an **GEOFENCE_TRANSITION_DWELL** event is reported. The detection period of the dwell status is 10,000 ms. For example, if this parameter is set to **15000**, the dwell status is reported when the device dwells in the polygon geofence for more than 20,000 ms. If this parameter is set to **5000**, the dwell status is reported when the device dwells in the polygon geofence for more than 10,000 ms.|
+| fenceExtensionAbilityName<sup>23+</sup> | string | No| Yes| Name of **FenceExtensionAbility**. For details, see [@ohos.app.ability.FenceExtensionAbility (FenceExtensionAbility)](js-apis-app-ability-FenceExtensionAbility.md). To start **FenceExtensionAbility** in the background, you need to apply for the background location permission by referring to the [guide of applying for location permissions](../../device/location/location-permission-guidelines.md#how-to-develop). |
 
 
 ## CountryCode
@@ -1073,7 +1074,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
       // Azimuth of the satellite whose ID is ${satelliteId}.
       let azimuth: number = azimuths[i];
       // Carrier frequency of the satellite whose ID is ${satelliteId}.
-      let carrierFrequencie: number = carrierFrequencies[i];
+      let carrierFrequency: number = carrierFrequencies[i];
       if (satelliteConstellations != undefined) {
         // Constellation of the satellite whose ID is ${satelliteId}.
         let satelliteConstellation: geoLocationManager.SatelliteConstellationCategory = satelliteConstellations[i];
@@ -2443,6 +2444,8 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
     notifications: notificationRequestList,
     // Specify the duration during which the device dwells in the geofence. This parameter is optional.
     loiterTimeMs: 10000,
+    // Specify the name of FenceExtensionAbility to be started for the geofence callback. This parameter is optional.
+    fenceExtensionAbilityName: "FenceExtensionAbility",
     // Specify the callback used to receive geofence transition events.
     geofenceTransitionCallback: (err: BusinessError, transition: geoLocationManager.GeofenceTransition) => {
       if (err) {
@@ -3081,9 +3084,9 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   }
   ```
 
-## geoLocationManager.getActiveFences<sup>23+</sup>
+## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
-getActiveFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
+getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 
 Queries the current valid geofence information. This API uses a promise to return the result.
 
@@ -3104,7 +3107,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 |201 | Permission verification failed. The application does not have the permission required to call the API.                 |
-|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveFences} due to limited device capabilities.          |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getActiveGeoFences} due to limited device capabilities.          |
 
 **Example**
 
@@ -3112,7 +3115,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.getActiveFences().then((res) => {
+    geoLocationManager.getActiveGeoFences().then((res) => {
       if (res) {
         console.info("fence num:" + res.size());
         for (const item of res) {
@@ -3121,9 +3124,9 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
       }
     })
       .catch((error: BusinessError) => {
-        console.error('promise, getActiveFences: error=' + JSON.stringify(error));
+        console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
       });
   } catch (error) {
-    console.error("getActiveFences: errCode" + error.code + ", errMessage" + error.message);
+    console.error("getActiveGeoFences: errCode" + error.code + ", errMessage" + error.message);
   }
   ```

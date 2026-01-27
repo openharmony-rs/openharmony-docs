@@ -2688,9 +2688,9 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
         .allowWindowOpenMethod(true)
         .onWindowNewExt((event) => {
           //以event.navigationPolicy请求的方式打开新窗口
-          console.log("navigationAction: ", event.navigationPolicy)
+          console.info("navigationAction: ", event.navigationPolicy)
           //以event.windowFeatures中的大小及位置信息创建新窗口
-          console.log("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          console.info("windowFeatures: ", JSON.stringify(event.windowFeatures))
           if (this.dialogController) {
             this.dialogController.close();
           }
@@ -4759,7 +4759,11 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 网页加载遇到错误时触发，只有主资源出错才会回调该接口，可以使用该接口自定义错误展示页。
 
-此外，该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)接口启用默认错误页后，才会生效。
+> **说明：**
+>
+> 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)接口启用默认错误页后，才会生效。
+>
+> 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

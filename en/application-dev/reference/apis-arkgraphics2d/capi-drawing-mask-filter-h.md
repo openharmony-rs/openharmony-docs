@@ -15,6 +15,8 @@ This file declares the functions related to the mask filter in the drawing modul
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -38,7 +40,7 @@ This file declares the functions related to the mask filter in the drawing modul
 
 ### OH_Drawing_BlurType
 
-```
+```c
 enum OH_Drawing_BlurType
 ```
 
@@ -60,7 +62,7 @@ Defines an enum for the blur types.
 
 ### OH_Drawing_MaskFilterCreateBlur()
 
-```
+```c
 OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurType, float sigma, bool respectCTM)
 ```
 
@@ -89,7 +91,7 @@ Creates an **OH_Drawing_MaskFilter** object with a blur type.
 
 ### OH_Drawing_MaskFilterDestroy()
 
-```
+```c
 void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)
 ```
 

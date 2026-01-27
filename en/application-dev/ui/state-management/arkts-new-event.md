@@ -16,6 +16,8 @@ You can use \@Event, a variable decorator in state management V2, to enable a ch
 > The \@Event decorator is supported in custom components decorated with \@ComponentV2 since API version 12.
 >
 > This decorator can be used in atomic services since API version 12.
+>
+> This decorator can be used in ArkTS widgets since API version 23.
 
 ## Overview
 
@@ -40,7 +42,7 @@ Since the variables decorated with \@Param cannot be changed locally, you can us
 
 ## Constraints
 
-- \@Event can be used only in custom components decorated with [\@ComponentV2](arkts-new-componentV2.md). It does not take effect if the decorated variable is not a function.
+- The \@Event can be used only in custom components decorated with [\@ComponentV2](./arkts-create-custom-components.md#componentv2). It does not take effect if the decorated variable is not a function.
 
   ```ts
   @ComponentV2
@@ -61,7 +63,9 @@ Since the variables decorated with \@Param cannot be changed locally, you can us
 
 You can use \@Event to change a variable in the parent component. When the variable is used as the data source of the \@Param variable in the child component, this change will be synchronized accordingly.
 
-```ts
+<!-- @[EventDecoratorTest1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest1.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -112,9 +116,15 @@ struct Child {
 
 Note that using \@Event to change the value of the parent component takes effect immediately. However, the process of synchronizing the change from the parent component to the child component is asynchronous. That is, after the method of \@Event is called, the value of the child component does not change immediately. This is because \@Event passes the actual change capability of the child component value to the parent component for processing. After the parent component determines how to process the value, the final value is synchronized back to the child component before rendering.
 
-```ts
+<!-- @[EventDecoratorTest2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_EventDecorator]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'EventDecorator_';
 @ComponentV2
-struct Child {
+struct Child2 {
   @Param index: number = 0;
   @Event changeIndex: (val: number) => void;
 
@@ -123,33 +133,33 @@ struct Child {
       Text(`Child index: ${this.index}`)
         .onClick(() => {
           this.changeIndex(20);
-          console.info(`after changeIndex ${this.index}`);
+          hilog.info(DOMAIN, TAG, BUNDLE, `after changeIndex ${this.index}`);
         })
     }
   }
 }
 @Entry
 @ComponentV2
-struct Index {
+struct Index2 {
   @Local index: number = 0;
 
   build() {
-  	Column() {
-  	  Child({
-  	    index: this.index,
-  	    changeIndex: (val: number) => {
-  	      this.index = val;
-          console.info(`in changeIndex ${this.index}`);
-  	    }
-  	  })
-  	}
+    Column() {
+      Child2({
+        index: this.index,
+        changeIndex: (val: number) => {
+          this.index = val;
+          hilog.info(DOMAIN, TAG, BUNDLE, `in changeIndex ${this.index}`);
+        }
+      })
+    }
   }
 }
 ```
 
 In the preceding example, clicking the text triggers the \@Event function event to change the value of the child component. The printed log is as follows:
 
-```
+```text
 in changeIndex 20
 after changeIndex 0
 ```

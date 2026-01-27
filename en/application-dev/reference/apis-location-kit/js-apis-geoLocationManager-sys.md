@@ -70,7 +70,7 @@ Location information.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| isFromMock | Boolean | No| Yes| **true**: The location information is obtained from the mock location switch.<br>**false**: The location information is not obtained from the location simulation function.<br>**System API**: This is a system API.|
+| isFromMock | Boolean | No| Yes| **true**: The location information is obtained from the mock location switch.<br>**false**: The location information is not obtained from the mock location switch.<br>**System API**: This is a system API.|
 
 
 ## ReverseGeocodingMockInfo
@@ -114,6 +114,9 @@ Defines the configuration for obtaining the required data of the location servic
 | needStartScan |  boolean | No| No| **true**: Scanning needs to be initiated.<br>**false**: Scanning does not need to be initiated. **System API**: This is a system API.|
 | scanInterval |  number | No| Yes| Scanning interval, in milliseconds. The specified value must be greater than **0**. The default value is **10000**. **System API**: This is a system API.|
 | scanTimeout |  number | No| Yes| Scanning timeout interval, in milliseconds. The value ranges from **0** to **600000**. The default value is **10000**. **System API**: This is a system API.|
+| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2. **System API**: This is a system API.|
+| arfcn<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Absolute Radio Frequency Channel Number (ARFCN). **System API**: This is a system API.|
+| plmnId<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Public Land Mobile Network Identifier (PLMN ID) of a SIM card. **System API**: This is a system API.|
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
@@ -141,6 +144,9 @@ Defines the required data of the location service, including the Wi-Fi or Blueto
 | -------- | -------- | -------- | -------- | -------- |
 | wifiData | [WifiScanInfo](#wifiscaninfo10) | No| Yes| Wi-Fi scanning result. **System API**: This is a system API.|
 | bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | No| Yes| Bluetooth scanning result. **System API**: This is a system API.|
+| slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2. **System API**: This is a system API.|
+| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Camped cell information. **System API**: This is a system API.|
+| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Neighboring cell information. **System API**: This is a system API.|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -175,6 +181,29 @@ Defines the Bluetooth scanning information.
 | rssi | number | No| No| Signal strength of a Bluetooth device, in dBm. **System API**: This is a system API.|
 | timestamp | number | No| No| Scanning timestamp. **System API**: This is a system API.|
 
+
+## CellInfo<sup>23+</sup>
+
+Defines cellular cell information.
+
+**System capability**: SystemCapability.Location.Location.Core
+
+**System API**: This is a system API.
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| timeSinceBoot | number | No| No| Duration from the time when the device is started to the time when the location is successfully obtained, in nanoseconds. Enabling and then disabling the airplane mode is not considered as a device restart. **System API**: This is a system API.|
+| cellId | number | No| No| Cellular cell ID. **System API**: This is a system API.|
+| lac | number | No| No| Location area code. **System API**: This is a system API.|
+| mcc | number | No| No| Mobile country code (MCC). **System API**: This is a system API.|
+| mnc | number | No| No| Mobile network code (MNC). **System API**: This is a system API.|
+| rat | number | No| No| Radio access technology. **System API**: This is a system API.|
+| signalIntensity | number | No| No| Signal strength. **System API**: This is a system API.|
+| arfcn | number | No| No| Absolute Radio Frequency Channel Number (ARFCN). **System API**: This is a system API.|
+| pci | number | No| No| Physical cell ID. **System API**: This is a system API.|
+| additionsMap | Map&lt;string, string&gt; | No| No| Additional information. **System API**: This is a system API.|
+
+
 ## LocationPrivacyType
 
 Defines the privacy statement type.
@@ -201,6 +230,7 @@ Defines the type of the required data of the location service.
 | -------- | -------- | -------- |
 | WIFI  | 1 | Wi-Fi scanning information. **System API**: This is a system API.|
 | BLUETOOTH | 2 | Bluetooth scanning information. **System API**: This is a system API.|
+| CELLULAR<sup>23+</sup> | 3 | Cellular cell information. **System API**: This is a system API.|
 
 
 ## LocationIconStatus<sup>12+</sup>

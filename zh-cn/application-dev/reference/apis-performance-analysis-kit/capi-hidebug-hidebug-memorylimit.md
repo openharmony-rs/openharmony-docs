@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```c
-typedef struct {...} HiDebug_MemoryLimit
+typedef struct HiDebug_MemoryLimit {...} HiDebug_MemoryLimit
 ```
 
 ## 概述

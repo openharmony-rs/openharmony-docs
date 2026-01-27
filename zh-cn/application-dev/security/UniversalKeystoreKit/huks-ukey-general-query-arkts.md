@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API 22开始，huksExternalCrypto提供通用查询功能接口。该接口可以用于从UKey中调用获取设备标识、App标识以及其他通用属性信息的函数，完成属性查询操作。具体的场景介绍请参考[获取属性介绍及规格](huks-ukey-general-query-overview.md)。
+从API 22开始，huksExternalCrypto提供通用查询功能接口。该接口可以用于从UKey中获取设备标识、App标识以及其他通用属性信息，完成属性查询操作。具体的场景介绍请参考[获取属性介绍及规格](huks-ukey-general-query-overview.md)。
 
 ## 开发步骤
 
@@ -22,7 +22,7 @@
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function getProperty(): Promise<Array<huksExternalCrypto.HuksExternalCryptoParam>> {
   // 1. 获取resourceId, 假设获取的resourceId如下，并已经打开该资源

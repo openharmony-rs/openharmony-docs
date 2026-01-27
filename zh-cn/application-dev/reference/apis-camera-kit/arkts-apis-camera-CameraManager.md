@@ -128,6 +128,10 @@ getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraO
 
 查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。
 
+> **说明：**
+>
+> 使用YUV，HEIF或HDR等能力前，需要先显式调用此方法确保获取完整输出能力。
+ 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -1072,7 +1076,7 @@ getCameraConcurrentInfos(cameras: Array\<CameraDevice\>): Array\<CameraConcurren
 
 | 参数名     | 类型             | 必填 | 说明       |
 | -------- | --------------- | ---- | --------- |
-| cameras | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\>  | 是   | 一组CameraDevice相机设备，并得到与这一组CamraDevice对应的并发信息，推荐设置为由[getCameraDevice](#getcameradevice18)获取的前置与后置两个用于并发的相机设备。 |
+| cameras | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\>  | 是   | 一组CameraDevice相机设备，并得到与这一组CameraDevice对应的并发信息，推荐设置为由[getCameraDevice](#getcameradevice18)获取的前置与后置两个用于并发的相机设备。 |
 
 **返回值：**
 
@@ -1147,7 +1151,9 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 创建拍照输出对象，同步返回结果。
 
 > **说明：**
-> 从 API version 10开始支持，从API version 11开始废弃。建议使用[createPhotoOutput](#createphotooutput11)替代。
+>
+> - 从API version 10开始支持，从API version 11开始废弃。建议使用[createPhotoOutput](#createphotooutput11)替代。
+> - 该接口只支持创建JPEG格式的拍照输出对象。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

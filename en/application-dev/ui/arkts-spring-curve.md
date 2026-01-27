@@ -17,7 +17,7 @@ ArkUI provides four types of damped spring curve APIs:
 
 
 - [curves.springMotion](../reference/apis-arkui/js-apis-curve.md#curvesspringmotion9): creates a spring animation curve. The animation duration is automatically calculated based on the curve parameters, attribute change values, and initial spring velocity. Manually set animation duration values do not take effect.
-    **springMotion** does not provide any API for setting the velocity, as the velocity is obtained through inheritance. For an attribute, if there is already a springMotion or responsiveSpringMotion animation running, a new spring animation will stop the running animation and inherit the attribute values and velocity of that animation as its initial values. This spring curve API provides default parameters, which you can directly use when appropriate.
+    **springMotion** does not provide any API for setting the velocity, as the velocity is obtained through inheritance. For an attribute, if there is already a **springMotion** or [responsiveSpringMotion](../reference/apis-arkui/js-apis-curve.md#curvesresponsivespringmotion9) animation running, a new spring animation will stop the running animation and inherit the attribute values and velocity of that animation as its initial values. This spring curve API provides default parameters, which you can directly use when appropriate.
 
   ```ts
   function springMotion(response?: number, dampingFraction?: number, overlapDuration?: number): ICurve;
@@ -49,7 +49,7 @@ ArkUI provides four types of damped spring curve APIs:
   ```
 
 
-The following shows a complete example and effect of spring curves. For details about how to connect gestures and animations, see [Animation Smoothing](arkts-animation-smoothing.md).
+The following shows a complete example and effect of spring curves. For details about how to connect gestures and animations using **responsiveSpringMotion** and **springMotion**, see [Animation Smoothing](arkts-animation-smoothing.md).
 
 
  
@@ -64,10 +64,10 @@ import { common } from '@kit.AbilityKit';
 
 class Spring {
   public title: string;
-  public subTitle: string;
+  public subTitle: ResourceStr;
   public iCurve: ICurve;
 
-  constructor(title: string, subTitle: string, iCurve: ICurve) {
+  constructor(title: string, subTitle: ResourceStr, iCurve: ICurve) {
     this.title = title;
     this.iCurve = iCurve;
     this.subTitle = subTitle;
@@ -79,7 +79,7 @@ class Spring {
 struct Motion {
   @Prop dRotate: number = 0;
   private title: string = '';
-  private subTitle: string = '';
+  private subTitle: ResourceStr = '';
   private iCurve: ICurve | undefined = undefined;
 
   build() {
@@ -118,15 +118,16 @@ export struct SpringCurve {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State dRotate: number = 0;
   private springs: Spring[] = [
-    new Spring('springMotion', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
-      curves.springMotion(1, 0.25)),
-    new Spring('responsive' + '\n' + 'SpringMotion',
-      this.context.resourceManager.getStringByNameSync('springCurve_text2'),
+    // Replace $r('app.string.springCurve_text1') with the actual resource file. In this example, the value in the resource file is "Cycle 1; damping: 0.25."
+    new Spring('springMotion', $r('app.string.springCurve_text1'), curves.springMotion(1, 0.25)),
+    // Replace $r('app.string.springCurve_text2') with the actual resource file. In this example, the value in the resource file is "Responsive spring curve."
+    new Spring('responsive' + '\n' + 'SpringMotion', $r('app.string.springCurve_text2'),
       curves.responsiveSpringMotion(1, 0.25)),
-    new Spring('interpolating' + '\n' + 'Spring',
-      this.context.resourceManager.getStringByNameSync('springCurve_text3'),
+    // Replace $r('app.string.springCurve_text3') with the actual resource file. In this example, the value in the resource file is "Initial velocity: 10; quality: 1; stiffness: 228; damping: 30."
+    new Spring('interpolating' + '\n' + 'Spring', $r('app.string.springCurve_text3'),
       curves.interpolatingSpring(10, 1, 228, 30)),
-    new Spring('springCurve', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
+    // Replace $r('app.string.springCurve_text1') with the actual resource file. In this example, the value in the resource file is "Cycle 1; damping: 0.25."
+    new Spring('springCurve', $r('app.string.springCurve_text1'),
       curves.springCurve(10, 1, 228, 30))
   ];
 

@@ -29,7 +29,7 @@ The credential does not match the credential enrolled.
 
 Initiate authentication again.
 
-## 12500002 General Operation Error
+## 12500002 Common Error Code of the Identity Authentication System
 
 **Error Message**
 
@@ -37,7 +37,7 @@ General operation error.
 
 **Description**
 
-An operation error occurred.
+The internal error of the identity authentication system cannot be rectified.
 
 **Possible Causes**
 
@@ -99,7 +99,7 @@ The authentication type is not supported.
 
 **Possible Causes**
 
-1. The input authentication type parameter is not supported. For example, if the authentication type passed in **getAvailableStatus** of the **userAuth** module is not **FACE** or **FINGERPRINT**, error code 12500005 is returned.
+1. The input authentication type is not supported. For example, if the parameter input when the [getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9) API of the **userAuth** module is called is not of the FACE or FINGERPRINT type, error code 12500005 is returned.
 2. The device does not support the authentication type. For example, if fingerprint authentication is initiated on a device that has no fingerprint sensor, error code 12500005 is returned.
 
 **Solution**
@@ -118,14 +118,14 @@ The authentication trust level is not supported.
 
 **Possible Causes**
 
-1. The **authTrustLevel** value in **getAvailableStatus** or **getAuthInstance** of the **userAuth** module is not in the range [ATL1, ATL2, ATL3, ATL4].
+1. When the [getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9) or [getUserAuthInstance](js-apis-useriam-userauth.md#userauthgetuserauthinstance10) API of the **userAuth** module is called, the value of **authTrustLevel** is not within the range of [ATL1, ATL2, ATL3, ATL4].
 2. The device does not support the authentication trust level. For example, if facial authentication for payment is initiated on a device that has only 2D cameras, error code 12500006 is returned.
 
 **Solution**
 
 Check that the **authTrustLevel** passed in is within the value range, and the device supports the specified authentication trust level.
 
-## 12500007 Authentication Service Unavailable
+## 12500007 Authentication Service Is Busy
 
 **Error Message**
 
@@ -151,7 +151,7 @@ The parameter is out of range.
 
 **Description**
 
-Parameter verification failed.
+The parameter value is out of the valid range.
 
 **Possible Causes**
 
@@ -191,7 +191,7 @@ No credential of this type is enrolled.
 
 **Possible Causes**
 
-The **authType** parameter set in **getAvailableStatus** of the **userAuth** module is **FACE**, but no facial credential is enrolled in the device. **start()** is called to initiate facial authentication, but no facial credential is enrolled in the device.
+For example, if the [getAvailableStatus](js-apis-useriam-userauth.md#userauthgetavailablestatus9) API of the **userAuth** module is called, the **authType** parameter is set to **FACE**, but no facial credential is enrolled in the device, error code 12500010 is returned. **start()** is called to initiate facial authentication, but no facial credential is enrolled in the device.
 
 **Solution**
 
@@ -274,7 +274,7 @@ Initiate authentication again and issue a valid token.
 
 **Error Message**
 
-Failed to reuse authtication result.
+Failed to reuse authentication result.
 
 **Description**
 

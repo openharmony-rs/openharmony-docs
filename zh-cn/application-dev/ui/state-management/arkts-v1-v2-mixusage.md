@@ -39,6 +39,7 @@
 | \@ObjectLink被非\@Observed装饰的class初始化  | 报错 | 不报错 |
 
 依旧禁止第1条，是因为\@ObservedV2/\@Trace有自己独立的观察能力，不仅可以在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中使用，也可以独立在[\@Component](./arkts-create-custom-components.md#component)中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
+
 依旧禁止第5条，是因为V1中\@Link仅能和V1状态变量建立双向同步关系，而V2中如果想实现双向同步，可以使用[@Param](./arkts-new-param.md)[@Event](./arkts-new-event.md)，具体例子见[\@Link和\@Param\@Event迁移示例](./arkts-v1-v2-migration-inner-component.md#link---paramevent)。
 
 ## 新增接口
@@ -651,6 +652,7 @@ struct ArrayCompV1 {
 **不建议写法**
 
 在下面的例子中，没有调用enableV2Compatibility和makeV1Observed，且对\@ObjectLink非法初始化，使其无法观察属性的变化。
+
 但因为传递给\@ObjectLink是V2的状态变量，所以可以触发V2的刷新。
 
 <!-- @[state_mixed_scene_built_type_v2_v1_not_recommend](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/mixedStateManageV1V2/StateMixedSceneBuiltTypeV2V1NotRecommend.ets) -->
@@ -831,6 +833,7 @@ struct IndexPage {
 **V1->V2**
 
 基于上述基本场景，下面展示一个嵌套场景的示例。
+
 下面的例子的行为可以总结为：
 - \@State仅能观察第一层的变化，如果要深度观察，需要传递给\@ObjectLink。
 - 数据源\@State的第二层的改变，虽然不能带来本层的刷新，但会被\@ObjectLink和\@Param观察到，并触发它们关联组件的刷新。

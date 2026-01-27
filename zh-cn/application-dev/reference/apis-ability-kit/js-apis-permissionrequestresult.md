@@ -38,6 +38,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager = abilityAccessCtrl.createAtManager();
 try {
+  // 请在组件内获取context
   let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   atManager.requestPermissionsFromUser(context, ["ohos.permission.CAMERA"]).then((data) => {
       console.info("data permissions:" + data.permissions);

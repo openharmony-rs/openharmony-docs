@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```c
-typedef struct {...} HiDebug_GraphicsMemorySummary
+typedef struct HiDebug_GraphicsMemorySummary {...} HiDebug_GraphicsMemorySummary
 ```
 
 ## 概述

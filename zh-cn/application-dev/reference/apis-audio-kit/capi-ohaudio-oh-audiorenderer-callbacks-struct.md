@@ -16,7 +16,7 @@ typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callback
 
 为了避免不可预期的行为，在设置音频回调函数时，请确保该结构体的每一个成员变量都被自定义的回调方法或空指针初始化。
 
-可参考[使用OHAudio开发音频播放功能](../../media/audio/using-ohaudio-for-playback.md)。
+可参考[推荐使用OHAudio开发音频播放功能(C/C++)](../../media/audio/using-ohaudio-for-playback.md)。
 
 **起始版本：** 10
 

@@ -14,6 +14,8 @@ This file declares the functions related to the region in the drawing module, in
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -266,8 +268,6 @@ OH_Drawing_ErrorCode OH_Drawing_RegionEmpty(OH_Drawing_Region* region)
 **Description**
 
 Sets the existing region to empty.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 22
 

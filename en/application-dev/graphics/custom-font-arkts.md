@@ -42,7 +42,7 @@ The following table lists the APIs for registering and using theme fonts. For de
    ```ts
    // Register the custom font.
    let fontCollection = text.FontCollection.getGlobalInstance()
-   // Method 1: /system/fonts/myFontFile.ttt is only an example path. You need to enter the actual file path.
+   // Method 1: /system/fonts/myFontFile.ttf is only an example path. You need to enter the actual file path.
    fontCollection.loadFontSync('myFamilyName0', 'file:///system/fonts/myFontFile.ttf')
    
    // Method 2: Ensure that the custom font file myFontFile.ttf is stored in the entry/src/main/resources/rawfile directory of your application project.

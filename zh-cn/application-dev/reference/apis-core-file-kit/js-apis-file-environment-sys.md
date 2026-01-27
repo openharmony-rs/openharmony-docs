@@ -23,7 +23,7 @@ import { Environment } from '@kit.CoreFileKit';
 
 getStorageDataDir():Promise&lt;string&gt;
 
-异步方法获取内存存储根目录，以promise形式返回结果。
+异步方法获取内存存储根目录，使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
 
@@ -59,7 +59,7 @@ getStorageDataDir():Promise&lt;string&gt;
 
 getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
 
-异步方法获取内存存储根目录，以callback形式返回结果。
+异步方法获取内存存储根目录，使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
 
@@ -97,7 +97,7 @@ getStorageDataDir(callback:AsyncCallback&lt;string&gt;):void
 
 getUserDataDir():Promise&lt;string&gt;
 
-异步方法获取公共文件根目录，以promise形式返回结果。
+异步方法获取公共文件根目录，使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
 
@@ -133,7 +133,7 @@ getUserDataDir():Promise&lt;string&gt;
 
 getUserDataDir(callback:AsyncCallback&lt;string&gt;): void
 
-异步方法获取公共文件根目录，以callback形式返回结果。
+异步方法获取公共文件根目录，使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment
 

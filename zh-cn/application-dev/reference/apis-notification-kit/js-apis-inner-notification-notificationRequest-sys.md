@@ -144,7 +144,7 @@
 | latitude | number | 否 | 否 | 地理围栏中心点纬度，取值范围：[-90, 90]。 |
 | radius | number | 否 | 否 | 围栏半径，单位米，取值范围：[200, 2000]。 |
 | delayTime | number | 否 | 是 | 围栏延迟时间，单位秒，进入围栏后触发围栏的延迟时间，取值范围：[0, 300]。默认值为0。 |
-| coordinateSystemType | [coordinatesystemtype](#coordinatesystemtype23) | 否 | 否 | 中心点坐标系类型。  |
+| coordinateSystemType | [CoordinateSystemType](#coordinatesystemtype23) | 否 | 否 | 中心点坐标系类型。  |
 | monitorEvent | [MonitorEvent](#monitorevent23) | 否   | 否 | 围栏触发条件类型。 |
 
 ## Trigger<sup>23+</sup>

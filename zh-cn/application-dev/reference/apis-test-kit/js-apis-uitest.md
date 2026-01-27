@@ -5670,7 +5670,7 @@ moveTo(x: number, y: number): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **参数：**
 
@@ -5717,6 +5717,8 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **参数：**
 
@@ -5765,7 +5767,7 @@ split(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5805,7 +5807,7 @@ maximize(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5845,7 +5847,7 @@ minimize(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5885,7 +5887,7 @@ resume(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5925,7 +5927,7 @@ close(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
-**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+**设备行为差异**：对于API version 22及之前的版本，该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。从API version 23开始，该接口在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 

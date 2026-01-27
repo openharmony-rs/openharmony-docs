@@ -1,4 +1,4 @@
-# \@Reusable Decorator: Reusing Components
+# \@Reusable Decorator: Reusing V1 Components
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
@@ -6,81 +6,88 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-The \@Reusable decorator enables reuse of view nodes, component instances, and state contexts for custom components, eliminating redundant creation and destruction to enhance performance.
-
-## Overview
-
-When applied to a custom component, the \@Reusable decorator marks the component as reusable. Used in conjunction with the [\@Component decorator](arkts-create-custom-components.md#component), components decorated with \@Reusable are moved to a reuse cache (along with its corresponding JS object) when removed from the component tree. Subsequent component creation will reuse cached nodes, significantly reducing instantiation time.
+Custom components decorated with \@Reusable support component reuse. When a custom component is removed from the component tree, it is cached in the cache pool. When new components of the same type are needed, the system reuses cached objects instead of creating new ones. This avoids repeated creation and destruction of components and improves performance.
 
 > **NOTE**
 >
 > The \@Reusable decorator is supported since API version 10 and can be used in ArkTS.
 >
 > For details about the principles, optimization methods, and use scenarios of component reuse, see [Component Reuse](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-reuse).
->
-> When a component is decorated with \@Reusable, the ArkUI framework calls the component's [aboutToReuse](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) and [aboutToRecycle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10) APIs when the component is added to or removed from the tree. Therefore, you should implement most reuse logic within these APIs.
->
-> For components containing multiple reusable child components, use [reuseId](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md) to distinguish between different reusable structures.
->
+
+## Overview
+
+Using @Reusable to decorate the custom components indicates that these components are reusable.
+
+When developing complex UIs, rendering efficiency is a key consideration. For example, during rapid scrolling through long lists, the frequent creation and destruction of numerous list items can cause interface stuttering. Component reuse is an important method for optimizing UI performance. By reusing previously created component objects that have been detached from the tree, the frequency of component creation and destruction is reduced, thereby lowering computational overhead and improving UI rendering efficiency.
+
+> **NOTE**
+> - Custom components decorated with \@Reusable (including view nodes, component instances, and state context), when removed from the component tree, will be placed into their parent custom component's cache pool. Subsequent component creation will prioritize reusing nodes from this cache pool, saving the time required for component re-creation.
+> - \@Reusable provides two lifecycle callbacks: [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10) and [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10). **aboutToRecycle** is called to recycle a component, and **aboutToReuse** is called to reuse a component. You can implement the service logic related to component recycling and reuse in these two lifecycle callbacks.
+> - When a \@Reusable-decorated custom component has child components, the child components' **aboutToRecycle** and **aboutToReuse** will be called recursively during recycling and reuse (regardless of whether the child components are marked with @Reusable), continuing until all child components are traversed.
+> - The component structure should remain unchanged before and after reuse. For scenarios where component structures differ, [reuseId](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md) can be used to distinguish between reusable components with different structures.
 
 ## Constraints
 
 - The \@Reusable decorator only applies to custom components.
 
-```ts
-import { ComponentContent } from "@kit.ArkUI";
+- \@Reusable is not compatible with [\@ComponentV2](./arkts-create-custom-components.md#componentv2). For **\@ComponentV2** reuse, use the [\@ReusableV2decorator](./arkts-new-reusableV2.md) instead.
 
-// Adding @Reusable to @Builder causes a compilation error (not applicable to builders).
-// @Reusable
-@Builder
-function buildCreativeLoadingDialog(closedClick: () => void) {
-  Crash()
-}
-
-@Component
-export struct Crash {
-  build() {
-    Column() {
-      Text("Crash")
-        .fontSize(12)
-        .lineHeight(18)
-        .fontColor(Color.Blue)
-        .margin({
-          left: 6
-        })
-    }.width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-  private uiContext = this.getUIContext();
-
-  build() {
-    RelativeContainer() {
-      Text(this.message)
-        .id('Index')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
-        .onClick(() => {
-          let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
-          });
-          this.uiContext.getPromptAction().openCustomDialog(contentNode);
-        })
+    <!-- @[reusable_for_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForCustomComponents.ets) -->
+    
+    ``` TypeScript
+    import { ComponentContent } from '@kit.ArkUI';
+    
+    // @Builder cannot be used together with @Reusable.
+    // @Reusable
+    @Builder
+    function buildCreativeLoadingDialog(closedClick: () => void) {
+      Crash();
     }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
+    
+    @Component
+    export struct Crash {
+      build() {
+        Column() {
+          Text('Crash')
+            .fontSize(12)
+            .lineHeight(18)
+            .fontColor(Color.Blue)
+            .margin({
+              left: 6
+            })
+        }.width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
+      }
+    }
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      private uiContext = this.getUIContext();
+    
+      build() {
+        RelativeContainer() {
+          Text(this.message)
+            .id('Index')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+            .alignRules({
+              center: { anchor: '__container__', align: VerticalAlign.Center },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .onClick(() => {
+              let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
+              });
+              this.uiContext.getPromptAction().openCustomDialog(contentNode);
+            })
+        }
+        .height('100%')
+        .width('100%')
+      }
+    }
+    ```
 
 - When an @Reusable decorated custom component is reused, the **aboutToReuse** API is invoked recursively for the component and all its child components. Avoid modifying state variables of the parent component in its child component's **aboutToReuse** API. Such modification will not take effect. To update the parent component's state variables, use **setTimeout** to delay execution, moving the task outside the scope of component reuse.
 
@@ -89,63 +96,65 @@ struct Index {
 
   Modifying a parent component's state variable in its child component's **aboutToReuse** API:
 
-  ```ts
-  class BasicDataSource implements IDataSource {
+  <!-- @[reusable_for_incorrect_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableIncorrectSample.ets) -->
+  
+  ``` TypeScript
+  class IncorrectBasicDataSource implements IDataSource {
     private listener: DataChangeListener | undefined = undefined;
     public dataArray: number[] = [];
-
+  
     totalCount(): number {
       return this.dataArray.length;
     }
-
+  
     getData(index: number): number {
       return this.dataArray[index];
     }
-
+  
     registerDataChangeListener(listener: DataChangeListener): void {
       this.listener = listener;
     }
-
+  
     unregisterDataChangeListener(listener: DataChangeListener): void {
       this.listener = undefined;
     }
   }
-
+  
   @Entry
   @Component
-  struct Index {
-    private data: BasicDataSource = new BasicDataSource();
-
+  struct IncorrectIndex {
+    private data: IncorrectBasicDataSource = new IncorrectBasicDataSource();
+  
     aboutToAppear(): void {
       for (let index = 1; index < 20; index++) {
         this.data.dataArray.push(index);
       }
     }
-
+  
     build() {
       List() {
         LazyForEach(this.data, (item: number, index: number) => {
           ListItem() {
-            ReuseComponent({ num: item })
+            IncorrectReuseComponent({ num: item });
           }
         }, (item: number, index: number) => index.toString())
       }.cachedCount(0)
     }
   }
-
+  
   @Reusable
   @Component
-  struct ReuseComponent {
+  struct IncorrectReuseComponent {
     @State num: number = 0;
-
+  
     aboutToReuse(params: ESObject): void {
       this.num = params.num;
     }
-
+  
     build() {
       Column() {
         Text('ReuseComponent num:' + this.num.toString())
-        ReuseComponentChild({ num: this.num })
+        IncorrectReuseComponentChild({ num: this.num })
         Button('plus')
           .onClick(() => {
             this.num += 10;
@@ -154,58 +163,61 @@ struct Index {
       .height(200)
     }
   }
-
+  
   @Component
-  struct ReuseComponentChild {
+  struct IncorrectReuseComponentChild {
     @Link num: number;
-
+  
     aboutToReuse(params: ESObject): void {
       this.num = -1 * params.num;
     }
-
+  
     build() {
       Text('ReuseComponentChild num:' + this.num.toString())
     }
   }
   ```
+
 
   **Correct Usage**
 
   To modify a parent component's state variable in a child component's **aboutToReuse** API, use **setTimeout** to move the modification outside the scope of component reuse:
 
-  ```ts
+  <!-- @[reusable_for_correct_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableCorrectSample.ets) -->
+  
+  ``` TypeScript
   class BasicDataSource implements IDataSource {
     private listener: DataChangeListener | undefined = undefined;
     public dataArray: number[] = [];
-
+  
     totalCount(): number {
       return this.dataArray.length;
     }
-
+  
     getData(index: number): number {
       return this.dataArray[index];
     }
-
+  
     registerDataChangeListener(listener: DataChangeListener): void {
       this.listener = listener;
     }
-
+  
     unregisterDataChangeListener(listener: DataChangeListener): void {
       this.listener = undefined;
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     private data: BasicDataSource = new BasicDataSource();
-
+  
     aboutToAppear(): void {
-      for (let index = 1; index < 20; index++) {
+      for (let index = 1; index < 20; index++) { // Loop 20 times.
         this.data.dataArray.push(index);
       }
     }
-
+  
     build() {
       List() {
         LazyForEach(this.data, (item: number, index: number) => {
@@ -216,102 +228,309 @@ struct Index {
       }.cachedCount(0)
     }
   }
-
+  
   @Reusable
   @Component
   struct ReuseComponent {
     @State num: number = 0;
-
+  
     aboutToReuse(params: ESObject): void {
       this.num = params.num;
     }
-
+  
     build() {
       Column() {
         Text('ReuseComponent num:' + this.num.toString())
         ReuseComponentChild({ num: this.num })
         Button('plus')
           .onClick(() => {
-            this.num += 10;
+            this.num += 10; // Increment the number by 10 on each click.
           })
       }
       .height(200)
     }
   }
-
+  
   @Component
   struct ReuseComponentChild {
     @Link num: number;
-
+  
     aboutToReuse(params: ESObject): void {
       setTimeout(() => {
         this.num = -1 * params.num;
       }, 1)
     }
-
+  
     build() {
-      Text('ReuseComponentChild num:' + this.num.toString())
+      Text('ReuseComponentChild num:' + this.num.toString());
     }
   }
   ```
 
+- Custom components decorated with @Reusable should maintain the same component structure before and after reuse. Otherwise, child components may be created or destroyed during the reuse process, reducing reuse efficiency and performance, and potentially causing abnormal application behavior.<br>
+  For child components created during reuse, the framework will call the **aboutToReuse** method followed by the **aboutToAppear** method after their creation. When **aboutToReuse** is called, since **aboutToAppear** has not yet been executed and internal child components have not been created, unexpected behavior may occur. After calling **aboutToReuse**, the framework will then call **aboutToAppear** to initialize the component.<br>
+  For scenarios where component structures differ, you must differentiate them by setting different **reuseId** values. For details, see [Scenarios Involving Multiple Item Types](#scenarios-involving-multiple-item-types).
+
+  **Incorrect Usage**
+
+  Component structures differ but are not distinguished via **reuseId**.<br>
+  In the following example, first click the **show/hide branch A** button to recycle the component, then click the **show/hide branch B** button to reuse the component. The child component **ReusableChildB** is created during reuse, and both the **aboutToReuse** and **aboutToAppear** methods are called sequentially.
+
+  <!-- @[reusable_for_incorrect_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForIncorrectReuseId.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_ReusableComponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'ReusableComponent_';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State showBranchA: boolean = true;
+    @State showBranchB: boolean = false;
+  
+    build() {
+      Column({ space: 5 }) {
+        Button('show/hide branch A')
+          .onClick(() => {
+            this.showBranchA = !this.showBranchA;
+          })
+        if (this.showBranchA) {
+          ReusableComponent({ flag: true })
+        }
+        Button('show/hide branch B')
+          .onClick(() => {
+            this.showBranchB = !this.showBranchB;
+          })
+        if (this.showBranchB) {
+          ReusableComponent({ flag: false })
+        }
+      }
+    }
+  }
+  
+  @Reusable
+  @Component
+  struct ReusableComponent {
+    @Require @Prop flag: boolean = true;
+  
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
+    }
+  
+    aboutToReuse(params: ESObject) {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+      this.flag = params.flag;
+    }
+  
+    build() {
+      Column({ space: 5 }) {
+        Text('ReusableComponent')
+        if (this.flag) {
+          ReusableChildA()
+        } else {
+          ReusableChildB()
+        }
+      }.border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildA {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildA')
+        .border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildB {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildB')
+        .border({ width: 1 })
+    }
+  }
+  ```
+
+
+  **Correct Usage**
+
+  Component structures differ and are distinguished via **reuseId**.
+
+  <!-- @[reusable_for_reuseid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForReuseId.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_ReusableComponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'ReusableComponent_';
+  
+  @Entry
+  @Component
+  struct Index {
+    @State showBranchA: boolean = true;
+    @State showBranchB: boolean = false;
+  
+    build() {
+      Column({ space: 5 }) {
+        Button('show/hide branch A')
+          .onClick(() => {
+            this.showBranchA = !this.showBranchA;
+          })
+        if (this.showBranchA) {
+          ReusableComponent({ flag: true })
+            .reuseId('ReuseA') // Use reuseId to distinguish between reusable components with different structures.
+        }
+        Button('show/hide branch B')
+          .onClick(() => {
+            this.showBranchB = !this.showBranchB;
+          })
+        if (this.showBranchB) {
+          ReusableComponent({ flag: false })
+            .reuseId('ReuseB') // Use reuseId to distinguish between reusable components with different structures.
+        }
+      }
+    }
+  }
+  
+  @Reusable
+  @Component
+  struct ReusableComponent {
+    @Require @Prop flag: boolean = true;
+  
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToAppear');
+    }
+  
+    aboutToReuse(params: ESObject) {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableComponent aboutToReuse');
+      this.flag = params.flag;
+    }
+  
+    build() {
+      Column({ space: 5 }) {
+        Text('ReusableComponent')
+        if (this.flag) {
+          ReusableChildA()
+        } else {
+          ReusableChildB()
+        }
+      }.border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildA {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildA aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildA')
+        .border({ width: 1 })
+    }
+  }
+  
+  @Component
+  struct ReusableChildB {
+    aboutToAppear() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToAppear');
+    }
+  
+    aboutToReuse() {
+      hilog.info(DOMAIN, TAG, BUNDLE + 'ReusableChildB aboutToReuse');
+    }
+  
+    build() {
+      Text('ReusableChildB')
+        .border({ width: 1 })
+    }
+  }
+  ```
+  
+
 - **ComponentContent** does not support passing \@Reusable decorated custom components.
 
-```ts
-import { ComponentContent } from "@kit.ArkUI";
-
-@Builder
-function buildCreativeLoadingDialog(closedClick: () => void) {
-  Crash()
-}
-
-// The dialog box pops up correctly if @Reusable is commented out; it crashes when @Reusable is added.
-@Reusable
-@Component
-export struct Crash {
-  build() {
-    Column() {
-      Text("Crash")
-        .fontSize(12)
-        .lineHeight(18)
-        .fontColor(Color.Blue)
-        .margin({
-          left: 6
-        })
-    }.width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
+  <!-- @[component_content_not_support_reusable_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ComponentContentNotSupportReusable.ets) -->
+  
+  ``` TypeScript
+  import { ComponentContent } from '@kit.ArkUI';
+  
+  @Builder
+  function buildCreativeLoadingDialog(closedClick: () => void) {
+    Crash();
   }
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-  private uiContext = this.getUIContext();
-
-  build() {
-    RelativeContainer() {
-      Text(this.message)
-        .id('Index')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
-        .onClick(() => {
-          // ComponentContent is based on BuilderNode, which does not support @Reusable decorated custom components.
-          let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
-          });
-          this.uiContext.getPromptAction().openCustomDialog(contentNode);
-        })
+  
+  // The dialog box pops up correctly if @Reusable is commented out; it crashes when @Reusable is added.
+  @Reusable
+  @Component
+  export struct Crash {
+    build() {
+      Column() {
+        Text('Crash')
+          .fontSize(12)
+          .lineHeight(18)
+          .fontColor(Color.Blue)
+          .margin({
+            left: 6
+          })
+      }.width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
     }
-    .height('100%')
-    .width('100%')
   }
-}
-```
+  
+  @Entry
+  @Component
+  struct Index {
+    @State message: string = 'Hello World';
+    private uiContext = this.getUIContext();
+  
+    build() {
+      RelativeContainer() {
+        Text(this.message)
+          .id('Index')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .alignRules({
+            center: { anchor: '__container__', align: VerticalAlign.Center },
+            middle: { anchor: '__container__', align: HorizontalAlign.Center }
+          })
+          .onClick(() => {
+            // ComponentContent is based on BuilderNode, which does not support @Reusable decorated custom components.
+            let contentNode = new ComponentContent(this.uiContext, wrapBuilder(buildCreativeLoadingDialog), () => {
+            });
+            this.uiContext.getPromptAction().openCustomDialog(contentNode);
+          })
+      }
+      .height('100%')
+      .width('100%')
+    }
+  }
+  ```
 
 - Nesting \@Reusable decorators is not recommended, as it increases memory usage, reduces reuse efficiency, and complicates maintenance. Nested usage creates additional cache pools with identical tree structures, leading to low reuse efficiency. In addition, it complicates lifecycle management and makes resource and variable sharing difficult.
 
@@ -321,12 +540,15 @@ struct Index {
 ### Dynamic Layout Update
 
 Repeatedly creating and removing views can trigger frequent layout calculations, which may affect frame rates. Component reuse avoids unnecessary view creation and layout recalculations, improving performance.
+
 In the following example, the **Child** custom component is marked as reusable. Clicking the button updates **Child**, triggering reuse.
 
-```ts
+<!-- @[dynamic_layout_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/DynamicLayoutUpdate.ets) -->
+
+``` TypeScript
 // xxx.ets
 export class Message {
-  value: string | undefined;
+  public value: string | undefined;
 
   constructor(value: string) {
     this.value = value;
@@ -349,10 +571,10 @@ struct Index {
       if (this.switch) {
         // If only one reusable component is used, reuseId is optional.
         Child({ message: new Message('Child') })
-          .reuseId('Child')
+          .reuseId('Child');
       }
     }
-    .height("100%")
+    .height('100%')
     .width('100%')
   }
 }
@@ -363,7 +585,6 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Recycle====Child==");
     this.message = params.message as Message;
   }
 
@@ -384,101 +605,111 @@ struct Child {
 
 - In the following example, the **CardView** custom component is marked as reusable. Scrolling the list up or down triggers reuse of **CardView**.
 
-```ts
-class MyDataSource implements IDataSource {
-  private dataArray: string[] = [];
-  private listener: DataChangeListener | undefined;
-
-  public totalCount(): number {
-    return this.dataArray.length;
-  }
-
-  public getData(index: number): string {
-    return this.dataArray[index];
-  }
-
-  public pushData(data: string): void {
-    this.dataArray.push(data);
-  }
-
-  public reloadListener(): void {
-    this.listener?.onDataReloaded();
-  }
-
-  public registerDataChangeListener(listener: DataChangeListener): void {
-    this.listener = listener;
-  }
-
-  public unregisterDataChangeListener(listener: DataChangeListener): void {
-    this.listener = undefined;
-  }
-}
-
-@Entry
-@Component
-struct ReuseDemo {
-  private data: MyDataSource = new MyDataSource();
-
-  aboutToAppear() {
-    for (let i = 1; i < 1000; i++) {
-      this.data.pushData(i + "");
+  <!-- @[list_scrolling_with_lazy_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithLazyForEach.ets) -->
+  
+  ``` TypeScript
+  class MyDataSource implements IDataSource {
+    private dataArray: string[] = [];
+    private listener: DataChangeListener | undefined;
+  
+    public totalCount(): number {
+      return this.dataArray.length;
+    }
+  
+    public getData(index: number): string {
+      return this.dataArray[index];
+    }
+  
+    public pushData(data: string): void {
+      this.dataArray.push(data);
+    }
+  
+    public reloadListener(): void {
+      this.listener?.onDataReloaded();
+    }
+  
+    public registerDataChangeListener(listener: DataChangeListener): void {
+      this.listener = listener;
+    }
+  
+    public unregisterDataChangeListener(listener: DataChangeListener): void {
+      this.listener = undefined;
     }
   }
-
-  // ...
-  build() {
-    Column() {
-      List() {
-        LazyForEach(this.data, (item: string) => {
-          ListItem() {
-            CardView({ item: item })
-          }
-        }, (item: string) => item)
+  
+  @Entry
+  @Component
+  struct ReuseDemo {
+    private data: MyDataSource = new MyDataSource();
+  
+    aboutToAppear() {
+      for (let i = 1; i < 1000; i++) { // Loop 1000 times.
+        this.data.pushData(i + '');
+      }
+    }
+  
+    // ...
+    build() {
+      Column() {
+        List() {
+          LazyForEach(this.data, (item: string) => {
+            ListItem() {
+              CardView({ item: item });
+            }
+          }, (item: string) => item)
+        }
       }
     }
   }
-}
-
-// Reusable component
-@Reusable
-@Component
-export struct CardView {
-  // Variables decorated with @State will update; others will not.
-  @State item: string = '';
-
-  aboutToReuse(params: Record<string, Object>): void {
-    this.item = params.item as string;
-  }
-
-  build() {
-    Column() {
-      Text(this.item)
-        .fontSize(30)
+  
+  // Reusable component
+  @Reusable
+  @Component
+  export struct CardView {
+    // Only the item variable decorated with@State will be updated.
+    @State item: string = '';
+  
+    aboutToReuse(params: Record<string, Object>): void {
+      this.item = params.item as string;
     }
-    .borderWidth(1)
-    .height(100)
+  
+    build() {
+      Column() {
+        Text(this.item)
+          .fontSize(30)
+      }
+      .borderWidth(1)
+      .height(100)
+    }
   }
-}
-```
+  ```
 
 ### List Scrolling with if Statements
 
 In the following example, the **OneMoment** custom component is marked as reusable. Scrolling the list up or down triggers reuse of **OneMoment**. **reuseId** can be used to assign a reuse group for reusable components. Components with the same **reuseId** are reused within the same reuse group. A single reusable component does not require **reuseId**. Using **reuseId** to identify reusable components avoids repeated deletion and re-creation logic in **if** statements, improving reuse efficiency and performance.
 
-```ts
+<!-- @[list_scrolling_with_if_statements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithIfStatements.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_ReusableComponent]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'ReusableComponent_';
+
 @Entry
 @Component
 struct Index {
   private dataSource = new MyDataSource<FriendMoment>();
 
   aboutToAppear(): void {
-    for (let i = 0; i < 20; i++) {
-      let title = i + 1 + "test_if";
+    for (let i = 0; i < 20; i++) { // Loop 20 times.
+      let title = i + 1 + 'test_if';
       this.dataSource.pushData(new FriendMoment(i.toString(), title, 'app.media.app_icon'));
     }
 
-    for (let i = 0; i < 50; i++) {
-      let title = i + 1 + "test_if";
+    for (let i = 0; i < 50; i++) { // Loop 50 times.
+      let title = i + 1 + 'test_if';
       this.dataSource.pushData(new FriendMoment(i.toString(), title, ''));
     }
   }
@@ -491,7 +722,7 @@ struct Index {
           ListItem() {
             // Use reuseId to control component reuse.
             OneMoment({ moment: moment })
-              .reuseId((moment.image !== '') ? 'withImage' : 'noImage')
+              .reuseId((moment.image !== '') ? 'withImage' : 'noImage');
           }
         }, (moment: FriendMoment) => moment.id)
       }
@@ -501,11 +732,11 @@ struct Index {
 }
 
 class FriendMoment {
-  id: string = '';
-  text: string = '';
-  title: string = '';
-  image: string = '';
-  answers: Array<ResourceStr> = [];
+  public id: string = '';
+  public text: string = '';
+  public title: string = '';
+  public image: string = '';
+  public answers: Array<ResourceStr> = [];
 
   constructor(id: string, title: string, image: string) {
     this.text = id;
@@ -521,7 +752,7 @@ export struct OneMoment {
 
   // Only components with the same reuseId trigger reuse.
   aboutToReuse(params: ESObject): void {
-    console.log("=====aboutToReuse====OneMoment==reused==" + this.moment.text);
+    hilog.info(DOMAIN, TAG, BUNDLE + '=====aboutToReuse====OneMoment==reused==' + this.moment.text);
   }
 
   build() {
@@ -530,10 +761,10 @@ export struct OneMoment {
       // Conditional rendering with if
       if (this.moment.image !== '') {
         Flex({ wrap: FlexWrap.Wrap }) {
-          Image($r(this.moment.image)).height(50).width(50)
-          Image($r(this.moment.image)).height(50).width(50)
-          Image($r(this.moment.image)).height(50).width(50)
-          Image($r(this.moment.image)).height(50).width(50)
+          Image($r(this.moment.image)).height(50).width(50);
+          Image($r(this.moment.image)).height(50).width(50);
+          Image($r(this.moment.image)).height(50).width(50);
+          Image($r(this.moment.image)).height(50).width(50);
         }
       }
     }
@@ -594,8 +825,16 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 
 When the **ForEach** rendering control syntax is used to create reusable custom components, the full-expansion behavior of **ForEach** prevents component reuse. In the example: Clicking **update** successfully refreshes data, but **ListItemView** cannot be reused during list scrolling; clicking **clear** and then **update** allows **ListItemView** to be reused, as this triggers re-creation of multiple destroyed custom components within a single frame.
 
-```ts
+<!-- @[list_scrolling_with_for_each](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ListScrollingWithForEach.ets) -->
+
+``` TypeScript
 // xxx.ets
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_ReusableComponent]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'ReusableComponent_';
+
 class MyDataSource implements IDataSource {
   private dataArray: string[] = [];
 
@@ -627,11 +866,11 @@ struct Index {
   @State dataSource: ListItemObject[] = [];
 
   aboutToAppear() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100; i++) { // Loop 100 times.
       this.data.pushData(i.toString());
     }
 
-    for (let i = 30; i < 80; i++) {
+    for (let i = 30; i < 80; i++) { // Loop 80 times.
       this.data02.pushData(i.toString());
     }
   }
@@ -640,13 +879,13 @@ struct Index {
     Column() {
       Row() {
         Button('clear').onClick(() => {
-          for (let i = 1; i < 50; i++) {
+          for (let i = 1; i < 50; i++) { // Loop 50 times.
             this.dataSource.pop();
           }
         }).height(40)
 
         Button('update').onClick(() => {
-          for (let i = 1; i < 50; i++) {
+          for (let i = 1; i < 50; i++) { // Loop 50 times.
             let obj = new ListItemObject();
             obj.id = i;
             obj.uuid = Math.random().toString();
@@ -682,14 +921,14 @@ struct ListItemView {
 
   aboutToAppear(): void {
     // On first update click, scrolling fails to trigger reuse due to the full-expansion behavior of ForEach.
-    console.log("=====aboutToAppear=====ListItemView==created==" + this.item);
+    hilog.info(DOMAIN, TAG, BUNDLE + '=====aboutToAppear=====ListItemView==created==' + this.item);
   }
 
   aboutToReuse(params: ESObject) {
     this.item = params.item;
     // Reuse succeeds after clear and update are clicked
     // (which recreates destroyed components in one frame).
-    console.log("=====aboutToReuse====ListItemView==reused==" + this.item);
+    hilog.info(DOMAIN, TAG, BUNDLE + '=====aboutToReuse====ListItemView==reused==' + this.item);
   }
 
   build() {
@@ -720,19 +959,23 @@ struct ListItemView {
 
 @Observed
 class ListItemObject {
-  uuid: string = "";
-  id: number = 0;
-  isExpand: boolean = false;
+  public uuid: string = '';
+  public id: number = 0;
+  public isExpand: boolean = false;
 }
 ```
 
 ### Grid
 
 In the following example, the @Reusable decorator is used to decorate the custom component **ReusableChildComponent** in **GridItem**, indicating that the component can be reused.
+
 The **aboutToReuse** API is triggered when the component is obtained from the reuse cache and added to the component tree during grid scrolling. This allows you to update the component's state variables to display correct content.
+
 Note: There is no need to update state variables that automatically synchronize values (such as variables decorated with [\@Link](arkts-link.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@ObjectLink](arkts-observed-and-objectlink.md), or [\@Consume](arkts-provide-and-consume.md)) in **aboutToReuse**, as this may trigger unnecessary component re-renders.
 
-```ts
+<!-- @[reusable_for_grid_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForGridUsageScenario.ets) -->
+
+``` TypeScript
 // Class MyDataSource implements the IDataSource API.
 class MyDataSource implements IDataSource {
   private dataArray: number[] = [];
@@ -765,7 +1008,7 @@ struct MyComponent {
   private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
-    for (let i = 1; i < 1000; i++) {
+    for (let i = 1; i < 1000; i++) { // Loop 1000 times.
       this.data.pushData(i);
     }
   }
@@ -776,7 +1019,7 @@ struct MyComponent {
         LazyForEach(this.data, (item: number) => {
           GridItem() {
             // Use the reusable custom component.
-            ReusableChildComponent({ item: item })
+            ReusableChildComponent({ item: item });
           }
         }, (item: string) => item)
       }
@@ -797,7 +1040,7 @@ struct ReusableChildComponent {
   @State item: number = 0;
 
   // Called before the component is added to the component tree from the reuse cache. The component's state variable can be updated here to display the correct content.
-  // Parameter type: Record<string, number> (explicit type instead of any).
+  // The aboutToReuse parameter no longer supports the any type. Record is used to specify explicit data types, constructing an object type where property keys are strings and property values are numbers.
   aboutToReuse(params: Record<string, number>) {
     this.item = params.item;
   }
@@ -823,479 +1066,488 @@ struct ReusableChildComponent {
 
 - For **WaterFlow** scrolling scenarios where **FlowItem** and its child components are frequently created and destroyed, you can encapsulate components in **FlowItem** into a custom component and decorate it with \@Reusable to implement component reuse.
 
-```ts
-class WaterFlowDataSource implements IDataSource {
-  private dataArray: number[] = [];
-  private listeners: DataChangeListener[] = [];
-
-  constructor() {
-    for (let i = 0; i <= 60; i++) {
-      this.dataArray.push(i);
+  <!-- @[reusable_for_water_flow_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForWaterFlowUsageScenario.ets) -->
+  
+  ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG = '[Sample_ReusableComponent]';
+  const DOMAIN = 0xF811;
+  const BUNDLE = 'ReusableComponent_';
+  
+  class WaterFlowDataSource implements IDataSource {
+    private dataArray: number[] = [];
+    private listeners: DataChangeListener[] = [];
+  
+    constructor() {
+      for (let i = 0; i <= 60; i++) { // Loop 60 times.
+        this.dataArray.push(i);
+      }
+    }
+  
+    // Obtain data at the specified index.
+    public getData(index: number): number {
+      return this.dataArray[index];
+    }
+  
+    // Notify listeners of new data addition.
+    notifyDataAdd(index: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataAdd(index);
+      });
+    }
+  
+    // Obtain the total number of data items.
+    public totalCount(): number {
+      return this.dataArray.length;
+    }
+  
+    // Register a data change listener.
+    registerDataChangeListener(listener: DataChangeListener): void {
+      if (this.listeners.indexOf(listener) < 0) {
+        this.listeners.push(listener);
+      }
+    }
+  
+    // Unregister the data change listener.
+    unregisterDataChangeListener(listener: DataChangeListener): void {
+      const pos = this.listeners.indexOf(listener);
+      if (pos >= 0) {
+        this.listeners.splice(pos, 1);
+      }
+    }
+  
+    // Add an item to the end of the data array.
+    public addLastItem(): void {
+      this.dataArray.splice(this.dataArray.length, 0, this.dataArray.length);
+      this.notifyDataAdd(this.dataArray.length - 1);
     }
   }
-
-  // Obtain data at the specified index.
-  public getData(index: number): number {
-    return this.dataArray[index];
-  }
-
-  // Notify listeners of new data addition.
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  // Obtain the total number of data items.
-  public totalCount(): number {
-    return this.dataArray.length;
-  }
-
-  // Register a data change listener.
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
+  
+  @Reusable
+  @Component
+  struct ReusableFlowItem {
+    @State item: number = 0;
+  
+    // Called before the component is added to the component tree from the reuse cache. The component's state variable can be updated here to display the correct content.
+    aboutToReuse(params: ESObject) {
+      this.item = params.item;
+      hilog.info(DOMAIN, TAG, BUNDLE + '=====aboutToReuse====FlowItem==reused==' + this.item);
+    }
+  
+    aboutToRecycle(): void {
+      hilog.info(DOMAIN, TAG, BUNDLE + '=====aboutToRecycle====FlowItem==recycled==' + this.item);
+    }
+  
+    build() {
+      // Ensure that the app.media.app_icon file is added to src/main/resources/base/media. Missing this file will trigger a runtime error.
+      Column() {
+        Text('N' + this.item).fontSize(24).height('26').margin(10);
+        Image($r('app.media.app_icon'))
+          .objectFit(ImageFit.Cover)
+          .width(50)
+          .height(50);
+      }
     }
   }
-
-  // Unregister the data change listener.
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
+  
+  @Entry
+  @Component
+  struct Index {
+    @State minSize: number = 50; // Minimum value: 50.
+    @State maxSize: number = 80; // Maximum value: 80.
+    @State fontSize: number = 24; // Font size: 24.
+    @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+    scroller: Scroller = new Scroller();
+    dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+    private itemWidthArray: number[] = [];
+    private itemHeightArray: number[] = [];
+  
+    // Calculate random size for flow items.
+    getSize() {
+      let ret = Math.floor(Math.random() * this.maxSize);
+      return (ret > this.minSize ? ret : this.minSize);
     }
-  }
-
-  // Add an item to the end of the data array.
-  public addLastItem(): void {
-    this.dataArray.splice(this.dataArray.length, 0, this.dataArray.length);
-    this.notifyDataAdd(this.dataArray.length - 1);
-  }
-}
-
-@Reusable
-@Component
-struct ReusableFlowItem {
-  @State item: number = 0;
-
-  // Called before the component is added to the component tree from the reuse cache. The component's state variable can be updated here to display the correct content.
-  aboutToReuse(params: ESObject) {
-    this.item = params.item;
-    console.log("=====aboutToReuse====FlowItem==reused==" + this.item);
-  }
-
-  aboutToRecycle(): void {
-    console.log("=====aboutToRecycle====FlowItem==recycled==" + this.item);
-  }
-
-  build() {
-    // Ensure that the app.media.app_icon file is added to src/main/resources/base/media. Missing this file will trigger a runtime error.
-    Column() {
-      Text("N" + this.item).fontSize(24).height('26').margin(10)
-      Image($r('app.media.app_icon'))
-        .objectFit(ImageFit.Cover)
-        .width(50)
-        .height(50)
+  
+    // Generate size arrays for flow items.
+    getItemSizeArray() {
+      for (let i = 0; i < 100; i++) { // Loop 100 times.
+        this.itemWidthArray.push(this.getSize());
+        this.itemHeightArray.push(this.getSize());
+      }
     }
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State minSize: number = 50;
-  @State maxSize: number = 80;
-  @State fontSize: number = 24;
-  @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
-  scroller: Scroller = new Scroller();
-  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
-  private itemWidthArray: number[] = [];
-  private itemHeightArray: number[] = [];
-
-  // Calculate random size for flow items.
-  getSize() {
-    let ret = Math.floor(Math.random() * this.maxSize);
-    return (ret > this.minSize ? ret : this.minSize);
-  }
-
-  // Generate size arrays for flow items.
-  getItemSizeArray() {
-    for (let i = 0; i < 100; i++) {
-      this.itemWidthArray.push(this.getSize());
-      this.itemHeightArray.push(this.getSize());
+  
+    aboutToAppear() {
+      this.getItemSizeArray();
     }
-  }
-
-  aboutToAppear() {
-    this.getItemSizeArray();
-  }
-
-  build() {
-    Stack({ alignContent: Alignment.TopStart }) {
-      Column({ space: 2 }) {
-        Button('back top')
-          .height('5%')
-          .onClick(() => { 
-            
-            // Scroll to top when the component is clicked.
-            this.scroller.scrollEdge(Edge.Top);
-          })
-        WaterFlow({ scroller: this.scroller }) {
-          LazyForEach(this.dataSource, (item: number) => {
-            FlowItem() {
-              ReusableFlowItem({ item: item })
-            }.onAppear(() => {
-              if (item + 20 == this.dataSource.totalCount()) {
-                for (let i = 0; i < 50; i++) {
-                  this.dataSource.addLastItem();
-                }
-              }
+  
+    build() {
+      Stack({ alignContent: Alignment.TopStart }) {
+        Column({ space: 2 }) {
+          Button('back top')
+            .height('5%')
+            .onClick(() => {
+              // Scroll to top when the component is clicked.
+              this.scroller.scrollEdge(Edge.Top);
             })
-
-          })
+          WaterFlow({ scroller: this.scroller }) {
+            LazyForEach(this.dataSource, (item: number) => {
+              FlowItem() {
+                ReusableFlowItem({ item: item })
+              }.onAppear(() => {
+                if (item + 20 == this.dataSource.totalCount()) { // Threshold: 20.
+                  for (let i = 0; i < 50; i++) { // Loop 50 times.
+                    this.dataSource.addLastItem();
+                  }
+                }
+              })
+  
+            })
+          }
         }
       }
     }
   }
-}
-```
+  ```
 
 ### Swiper
 
 - For **Swiper** scrolling scenarios where child components are frequently created and destroyed, you can encapsulate the child components into a custom component and decorate it with \@Reusable to implement component reuse.
 
-```ts
-@Entry
-@Component
-struct Index {
-  private dataSource = new MyDataSource<Question>();
-
-  aboutToAppear(): void {
-    for (let i = 0; i < 1000; i++) {
-      let title = i + 1 + "test_swiper";
-      let answers = ["test1", "test2", "test3",
-        "test4"];
-      // Ensure that the app.media.app_icon file is added to src/main/resources/base/media. Missing this file will trigger a runtime error.
-      this.dataSource.pushData(new Question(i.toString(), title, $r('app.media.app_icon'), answers));
-    }
-  }
-
-  build() {
-    Column({ space: 5 }) {
-      Swiper() {
-        LazyForEach(this.dataSource, (item: Question) => {
-          QuestionSwiperItem({ itemData: item })
-        }, (item: Question) => item.id)
+  <!-- @[reusable_for_swiper_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForSwiperUsageScenario.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct Index {
+    private dataSource = new MyDataSource<Question>();
+  
+    aboutToAppear(): void {
+      for (let i = 0; i < 1000; i++) { // Loop 1000 times.
+        let title = i + 1 + 'test_swiper';
+        let answers = ['test1', 'test2', 'test3', 'test4'];
+        // Ensure that the app.media.app_icon file is added to src/main/resources/base/media. Missing this file will trigger a runtime error.
+        this.dataSource.pushData(new Question(i.toString(), title, $r('app.media.app_icon'), answers));
       }
     }
-    .width('100%')
-    .margin({ top: 5 })
-  }
-}
-
-class Question {
-  id: string = '';
-  title: ResourceStr = '';
-  image: ResourceStr = '';
-  answers: Array<ResourceStr> = [];
-
-  constructor(id: string, title: ResourceStr, image: ResourceStr, answers: Array<ResourceStr>) {
-    this.id = id;
-    this.title = title;
-    this.image = image;
-    this.answers = answers;
-  }
-}
-
-@Reusable
-@Component
-struct QuestionSwiperItem {
-  @State itemData: Question | null = null;
-
-  aboutToReuse(params: Record<string, Object>): void {
-    this.itemData = params.itemData as Question;
-    console.info("===aboutToReuse====QuestionSwiperItem==");
-  }
-
-  build() {
-    Column() {
-      Text(this.itemData?.title)
-        .fontSize(18)
-        .fontColor($r('sys.color.ohos_id_color_primary'))
-        .alignSelf(ItemAlign.Start)
-        .margin({
-          top: 10,
-          bottom: 16
-        })
-      Image(this.itemData?.image)
-        .width('100%')
-        .borderRadius(12)
-        .objectFit(ImageFit.Contain)
-        .margin({
-          bottom: 16
-        })
-        .height(80)
-        .width(80)
-
-      Column({ space: 16 }) {
-        ForEach(this.itemData?.answers, (item: Resource) => {
-          Text(item)
-            .fontSize(16)
-            .fontColor($r('sys.color.ohos_id_color_primary'))
-        }, (item: ResourceStr) => JSON.stringify(item))
+  
+    build() {
+      Column({ space: 5 }) {
+        Swiper() {
+          LazyForEach(this.dataSource, (item: Question) => {
+            QuestionSwiperItem({ itemData: item });
+          }, (item: Question) => item.id)
+        }
       }
       .width('100%')
-      .alignItems(HorizontalAlign.Start)
-    }
-    .width('100%')
-    .padding({
-      left: 16,
-      right: 16
-    })
-  }
-}
-
-class BasicDataSource<T> implements IDataSource {
-  private listeners: DataChangeListener[] = [];
-  private originDataArray: T[] = [];
-
-  public totalCount(): number {
-    return 0;
-  }
-
-  public getData(index: number): T {
-    return this.originDataArray[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
+      .margin({ top: 5 })
     }
   }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
+  
+  class Question {
+    public id: string = '';
+    public title: ResourceStr = '';
+    public image: ResourceStr = '';
+    public answers: Array<ResourceStr> = [];
+  
+    constructor(id: string, title: ResourceStr, image: ResourceStr, answers: Array<ResourceStr>) {
+      this.id = id;
+      this.title = title;
+      this.image = image;
+      this.answers = answers;
     }
   }
-
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
+  
+  @Reusable
+  @Component
+  struct QuestionSwiperItem {
+    @State itemData: Question | null = null;
+  
+    aboutToReuse(params: Record<string, Object>): void {
+      this.itemData = params.itemData as Question;
+    }
+  
+    build() {
+      Column() {
+        Text(this.itemData?.title)
+          .fontSize(18)
+          .fontColor($r('sys.color.ohos_id_color_primary'))
+          .alignSelf(ItemAlign.Start)
+          .margin({
+            top: 10,
+            bottom: 16
+          })
+          
+        Image(this.itemData?.image)
+          .width('100%')
+          .borderRadius(12)
+          .objectFit(ImageFit.Contain)
+          .margin({
+            bottom: 16
+          })
+          .height(80)
+          .width(80)
+  
+        Column({ space: 16 }) {
+          ForEach(this.itemData?.answers, (item: Resource) => {
+            Text(item)
+              .fontSize(16)
+              .fontColor($r('sys.color.ohos_id_color_primary'))
+          }, (item: ResourceStr) => JSON.stringify(item))
+        }
+        .width('100%')
+        .alignItems(HorizontalAlign.Start)
+      }
+      .width('100%')
+      .padding({
+        left: 16,
+        right: 16
+      })
+    }
   }
-}
-
-export class MyDataSource<T> extends BasicDataSource<T> {
-  private dataArray: T[] = [];
-
-  public totalCount(): number {
-    return this.dataArray.length;
+  
+  class BasicDataSource<T> implements IDataSource {
+    private listeners: DataChangeListener[] = [];
+    private originDataArray: T[] = [];
+  
+    public totalCount(): number {
+      return 0;
+    }
+  
+    public getData(index: number): T {
+      return this.originDataArray[index];
+    }
+  
+    registerDataChangeListener(listener: DataChangeListener): void {
+      if (this.listeners.indexOf(listener) < 0) {
+        this.listeners.push(listener);
+      }
+    }
+  
+    unregisterDataChangeListener(listener: DataChangeListener): void {
+      const pos = this.listeners.indexOf(listener);
+      if (pos >= 0) {
+        this.listeners.splice(pos, 1);
+      }
+    }
+  
+    notifyDataAdd(index: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataAdd(index);
+      });
+    }
   }
-
-  public getData(index: number): T {
-    return this.dataArray[index];
+  
+  export class MyDataSource<T> extends BasicDataSource<T> {
+    private dataArray: T[] = [];
+  
+    public totalCount(): number {
+      return this.dataArray.length;
+    }
+  
+    public getData(index: number): T {
+      return this.dataArray[index];
+    }
+  
+    public pushData(data: T): void {
+      this.dataArray.push(data);
+      this.notifyDataAdd(this.dataArray.length - 1);
+    }
   }
-
-  public pushData(data: T): void {
-    this.dataArray.push(data);
-    this.notifyDataAdd(this.dataArray.length - 1);
-  }
-}
-```
+  ```
 
 ### List Scrolling with ListItemGroup
 
 - For list scrolling scenarios where the **ListItemGroup** component is used, you can encapsulate child components in **ListItem** that need to be destroyed and re-created into a custom component and decorate it with \@Reusable to implement component reuse.
 
-```ts
-@Entry
-@Component
-struct ListItemGroupAndReusable {
-  data: DataSrc2 = new DataSrc2();
-
-  @Builder
-  itemHead(text: string) {
-    Text(text)
-      .fontSize(20)
-      .backgroundColor(0xAABBCC)
+  <!-- @[reusable_for_list_item_group_usage_scenario](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForListItemGroupUsageScenario.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct ListItemGroupAndReusable {
+    data: DataSrc2 = new DataSrc2();
+  
+    @Builder
+    itemHead(text: string) {
+      Text(text)
+        .fontSize(20)
+        .backgroundColor(0xAABBCC)
+        .width('100%')
+        .padding(10)
+    }
+  
+    aboutToAppear() {
+      for (let i = 0; i < 10000; i++) { // Loop 10000 times.
+        let data1 = new DataSrc1();
+        for (let j = 0; j < 12; j++) { // Loop 12 times.
+          data1.data.push(`Test item data: ${i} - ${j}`);
+        }
+        this.data.data.push(data1);
+      }
+    }
+  
+    build() {
+      Stack() {
+        List() {
+          LazyForEach(this.data, (item: DataSrc1, index: number) => {
+            ListItemGroup({ header: this.itemHead(index.toString()) }) {
+              LazyForEach(item, (ii: string, index: number) => {
+                ListItem() {
+                  Inner({ str: ii });
+                }
+              })
+            }
+            .width('100%')
+            .height('60vp')
+          })
+        }
+      }
       .width('100%')
-      .padding(10)
+      .height('100%')
+    }
   }
-
-  aboutToAppear() {
-    for (let i = 0; i < 10000; i++) {
-      let data_1 = new DataSrc1();
-      for (let j = 0; j < 12; j++) {
-        data_1.Data.push(`Test item data: ${i} - ${j}`);
+  
+  @Reusable
+  @Component
+  struct Inner {
+    @State str: string = '';
+  
+    aboutToReuse(param: ESObject) {
+      this.str = param.str;
+    }
+  
+    build() {
+      Text(this.str);
+    }
+  }
+  
+  class DataSrc1 implements IDataSource {
+    public listeners: DataChangeListener[] = [];
+    public data: string[] = [];
+  
+    public totalCount(): number {
+      return this.data.length;
+    }
+  
+    public getData(index: number): string {
+      return this.data[index];
+    }
+  
+    // Called by the framework to add a listener to the data source for LazyForEach.
+    registerDataChangeListener(listener: DataChangeListener): void {
+      if (this.listeners.indexOf(listener) < 0) {
+        this.listeners.push(listener);
       }
-      this.data.Data.push(data_1);
     }
-  }
-
-  build() {
-    Stack() {
-      List() {
-        LazyForEach(this.data, (item: DataSrc1, index: number) => {
-          ListItemGroup({ header: this.itemHead(index.toString()) }) {
-            LazyForEach(item, (ii: string, index: number) => {
-              ListItem() {
-                Inner({ str: ii })
-              }
-            })
-          }
-          .width('100%')
-          .height('60vp')
-        })
+  
+    // Called by the framework to remove the listener from the data source for the corresponding LazyForEach component.
+    unregisterDataChangeListener(listener: DataChangeListener): void {
+      const pos = this.listeners.indexOf(listener);
+      if (pos >= 0) {
+        this.listeners.splice(pos, 1);
       }
     }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Reusable
-@Component
-struct Inner {
-  @State str: string = '';
-
-  aboutToReuse(param: ESObject) {
-    this.str = param.str;
-  }
-
-  build() {
-    Text(this.str)
-  }
-}
-
-class DataSrc1 implements IDataSource {
-  listeners: DataChangeListener[] = [];
-  Data: string[] = [];
-
-  public totalCount(): number {
-    return this.Data.length;
-  }
-
-  public getData(index: number): string {
-    return this.Data[index];
-  }
-
-  // Called by the framework to add a listener to the data source for LazyForEach.
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
+  
+    // Notify LazyForEach that all child components need to be reloaded.
+    notifyDataReload(): void {
+      this.listeners.forEach(listener => {
+        listener.onDataReloaded();
+      });
+    }
+  
+    // Notify LazyForEach that a child component needs to be added at the specified index.
+    notifyDataAdd(index: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataAdd(index);
+      });
+    }
+  
+    // Notify LazyForEach that the data item at the specified index has changed and the child component needs to be rebuilt.
+    notifyDataChange(index: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataChange(index);
+      });
+    }
+  
+    // Notify LazyForEach that the child component at the specified index needs to be deleted.
+    notifyDataDelete(index: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataDelete(index);
+      });
+    }
+  
+    // Notify LazyForEach that data needs to be swapped between the from and to positions.
+    notifyDataMove(from: number, to: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataMove(from, to);
+      });
     }
   }
-
-  // Called by the framework to remove the listener from the data source for the corresponding LazyForEach component.
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
+  
+  class DataSrc2 implements IDataSource {
+    public listeners: DataChangeListener[] = [];
+    public data: DataSrc1[] = [];
+  
+    public totalCount(): number {
+      return this.data.length;
+    }
+  
+    public getData(index: number): DataSrc1 {
+      return this.data[index];
+    }
+  
+    // Called by the framework to add a listener to the data source for LazyForEach.
+    registerDataChangeListener(listener: DataChangeListener): void {
+      if (this.listeners.indexOf(listener) < 0) {
+        this.listeners.push(listener);
+      }
+    }
+  
+    // Called by the framework to remove the listener from the data source for the corresponding LazyForEach component.
+    unregisterDataChangeListener(listener: DataChangeListener): void {
+      const pos = this.listeners.indexOf(listener);
+      if (pos >= 0) {
+        this.listeners.splice(pos, 1);
+      }
+    }
+  
+    // Notify LazyForEach that all child components need to be reloaded.
+    notifyDataReload(): void {
+      this.listeners.forEach(listener => {
+        listener.onDataReloaded();
+      });
+    }
+  
+    // Notify LazyForEach that a child component needs to be added at the specified index.
+    notifyDataAdd(index: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataAdd(index);
+      });
+    }
+  
+    // Notify LazyForEach that the data item at the specified index has changed and the child component needs to be rebuilt.
+    notifyDataChange(index: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataChange(index);
+      });
+    }
+  
+    // Notify LazyForEach that the child component at the specified index needs to be deleted.
+    notifyDataDelete(index: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataDelete(index);
+      });
+    }
+  
+    // Notify LazyForEach that data needs to be swapped between the from and to positions.
+    notifyDataMove(from: number, to: number): void {
+      this.listeners.forEach(listener => {
+        listener.onDataMove(from, to);
+      });
     }
   }
-
-  // Notify LazyForEach that all child components need to be reloaded.
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    });
-  }
-
-  // Notify LazyForEach that a child component needs to be added at the specified index.
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  // Notify LazyForEach that the data item at the specified index has changed and the child component needs to be rebuilt.
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    });
-  }
-
-  // Notify LazyForEach that the child component at the specified index needs to be deleted.
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  // Notify LazyForEach that data needs to be swapped between the from and to positions.
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    });
-  }
-}
-
-class DataSrc2 implements IDataSource {
-  listeners: DataChangeListener[] = [];
-  Data: DataSrc1[] = [];
-
-  public totalCount(): number {
-    return this.Data.length;
-  }
-
-  public getData(index: number): DataSrc1 {
-    return this.Data[index];
-  }
-
-  // Called by the framework to add a listener to the data source for LazyForEach.
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
-    }
-  }
-
-  // Called by the framework to remove the listener from the data source for the corresponding LazyForEach component.
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    const pos = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  // Notify LazyForEach that all child components need to be reloaded.
-  notifyDataReload(): void {
-    this.listeners.forEach(listener => {
-      listener.onDataReloaded();
-    });
-  }
-
-  // Notify LazyForEach that a child component needs to be added at the specified index.
-  notifyDataAdd(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  // Notify LazyForEach that the data item at the specified index has changed and the child component needs to be rebuilt.
-  notifyDataChange(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataChange(index);
-    });
-  }
-
-  // Notify LazyForEach that the child component at the specified index needs to be deleted.
-  notifyDataDelete(index: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  // Notify LazyForEach that data needs to be swapped between the from and to positions.
-  notifyDataMove(from: number, to: number): void {
-    this.listeners.forEach(listener => {
-      listener.onDataMove(from, to);
-    });
-  }
-}
-```
-
+  ```
 
 ### Scenarios Involving Multiple Item Types
 
@@ -1307,8 +1559,10 @@ Reusable components have the same layout. For implementation examples, see the d
 
 There are differences between reusable components, but the number of types is limited. For example, reuse can be achieved by explicitly setting two **reuseId** values or using two custom components.
 
-```ts
-class MyDataSource implements IDataSource {
+<!-- @[reusable_for_limited_variation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForLimitedVariation.ets) -->
+
+``` TypeScript
+class LimitedMyDataSource implements IDataSource {
   private dataArray: string[] = [];
   private listener: DataChangeListener | undefined;
 
@@ -1339,12 +1593,12 @@ class MyDataSource implements IDataSource {
 
 @Entry
 @Component
-struct Index {
-  private data: MyDataSource = new MyDataSource();
+struct LimitedIndex {
+  private data: LimitedMyDataSource = new LimitedMyDataSource();
 
   aboutToAppear() {
-    for (let i = 0; i < 1000; i++) {
-      this.data.pushData(i + "");
+    for (let i = 0; i < 1000; i++) { // Loop 1000 times.
+      this.data.pushData(i + '');
     }
   }
 
@@ -1354,7 +1608,7 @@ struct Index {
         LazyForEach(this.data, (item: number) => {
           ListItem() {
             ReusableComponent({ item: item })
-              // Set two reuseId values with limited variations.
+            // Set two reuseId values with limited variations.
               .reuseId(item % 2 === 0 ? 'ReusableComponentOne' : 'ReusableComponentTwo')
           }
           .backgroundColor(Color.Orange)
@@ -1396,7 +1650,17 @@ struct ReusableComponent {
 
 There are multiple differences between reusable components, but they usually share common child components. In the example, after three reusable components are converted into **Builder** functions in a combined manner, the internal shared child components will be uniformly placed under the parent component **MyComponent**. The reuse cache is shared at the parent component level for child component reuse, reducing resource consumption during component creation.
 
-```ts
+<!-- @[reusable_for_composite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/ReusableForComposite.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_ReusableComponent]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'ReusableComponent_';
+const NUMBER3 = 3;
+const NUMBER5 = 5;
+
 class MyDataSource implements IDataSource {
   private dataArray: string[] = [];
   private listener: DataChangeListener | undefined;
@@ -1432,7 +1696,7 @@ struct MyComponent {
   private data: MyDataSource = new MyDataSource();
 
   aboutToAppear() {
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 1000; i++) { // Loop 1000 times.
       this.data.pushData(i.toString());
     }
   }
@@ -1441,9 +1705,9 @@ struct MyComponent {
   @Builder
   itemBuilderOne(item: string) {
     Column() {
-      ChildComponentA({ item: item })
-      ChildComponentB({ item: item })
-      ChildComponentC({ item: item })
+      ChildComponentA({ item: item });
+      ChildComponentB({ item: item });
+      ChildComponentC({ item: item });
     }
   }
 
@@ -1451,9 +1715,9 @@ struct MyComponent {
   @Builder
   itemBuilderTwo(item: string) {
     Column() {
-      ChildComponentA({ item: item })
-      ChildComponentC({ item: item })
-      ChildComponentD({ item: item })
+      ChildComponentA({ item: item });
+      ChildComponentC({ item: item });
+      ChildComponentD({ item: item });
     }
   }
 
@@ -1461,9 +1725,9 @@ struct MyComponent {
   @Builder
   itemBuilderThree(item: string) {
     Column() {
-      ChildComponentA({ item: item })
-      ChildComponentB({ item: item })
-      ChildComponentD({ item: item })
+      ChildComponentA({ item: item });
+      ChildComponentB({ item: item });
+      ChildComponentD({ item: item });
     }
   }
 
@@ -1471,18 +1735,18 @@ struct MyComponent {
     List({ space: 40 }) {
       LazyForEach(this.data, (item: string, index: number) => {
         ListItem() {
-          if (index % 3 === 0) {
-            this.itemBuilderOne(item)
-          } else if (index % 5 === 0) {
-            this.itemBuilderTwo(item)
+          if (index % NUMBER3 === 0) {
+            this.itemBuilderOne(item);
+          } else if (index % NUMBER5 === 0) {
+            this.itemBuilderTwo(item);
           } else {
-            this.itemBuilderThree(item)
+            this.itemBuilderThree(item);
           }
         }
         .backgroundColor('#cccccc')
         .width('100%')
         .onAppear(() => {
-          console.log(`ListItem ${index} onAppear`);
+          hilog.info(DOMAIN, TAG, BUNDLE + `ListItem ${index} onAppear`);
         })
       }, (item: number) => item.toString())
     }
@@ -1498,12 +1762,12 @@ struct ChildComponentA {
   @State item: string = '';
 
   aboutToReuse(params: ESObject) {
-    console.log(`ChildComponentA ${params.item} Reuse ${this.item}`);
+    hilog.info(DOMAIN, TAG, BUNDLE + `ChildComponentA ${params.item} Reuse ${this.item}`);
     this.item = params.item;
   }
 
   aboutToRecycle(): void {
-    console.log(`ChildComponentA ${this.item} Recycle`);
+    hilog.info(DOMAIN, TAG, BUNDLE + `ChildComponentA ${this.item} Recycle`);
   }
 
   build() {

@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **XComponent** provides a [surface](../../../ui/napi-xcomponent-guidelines.md#overview) for graphics rendering and media data input into your view. You can customize the position and size of the surface as needed. For details, see [Native XComponent](../../../ui/napi-xcomponent-guidelines.md).
 
@@ -75,9 +75,9 @@ This API is deprecated since API version 12. You are advised to use [XComponent(
 
 XComponent(value: {id: string, type: string, libraryname?: string, controller?: XComponentController})
 
-**NOTE**
-
-This API is deprecated since API version 12. You are advised to use [XComponent(options: XComponentOptions)](#xcomponent12) instead.
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 12. You are advised to use [XComponent(value: {id: string, type: XComponentType, libraryname?: string, controller?: XComponentController})](#xcomponent10) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +122,7 @@ In addition to universal attributes, the following attributes are supported.
   > 
   > **NOTE**
   >
-  > The **foregroundColor**, **obscured**, and **pixelStretchEffect** attributes are not supported. When **type** is set to **SURFACE**, the following are not supported either: attribute modifier, custom drawing, background options (except **backgroundColor**), image effects (except **shadow**), **maskShape**, and **foregroundEffect** attributes.
+  > The foregroundColor, obscured, and pixelStretchEffect attributes are not supported. In API version 17 and earlier versions, when type is set to SURFACE, the following dynamic attributes are not supported: dynamic attribute setting, custom drawing, background setting (except backgroundColor), image effect (except shadow), maskShape, and foregroundEffect. From API version 18, the dynamic attributes that cannot be set when type is set to SURFACE include background, foregroundColor, animation, gesture, priorityGesture, parallelGesture, useEffect, renderGroup, flexGrow, direction, align, useSizeType, clip, geometryTransition, bindPopup, bindMenu, bindContextMenu, bindContentCover, bindSheet, stateStyles, restoreId, onVisibleAreaChange, accessibilityGroup, obscured, reuseId and accessibilityVirtualNode.
   >
   > For the **XComponent** component of the TEXTURE or SURFACE type, if the [renderFit](./ts-universal-attributes-renderfit.md) attribute is not set, it defaults to **RenderFit.RESIZE_FILL**.
   > 
@@ -135,7 +135,9 @@ In addition to universal attributes, the following attributes are supported.
 enableAnalyzer(enable: boolean)
 
 Sets whether to enable the AI image analyzer, which supports subject recognition, text recognition, and object lookup.
+
 For the settings to take effect, this attribute must be used together with [StartImageAnalyzer](#startimageanalyzer12) and [StopImageAnalyzer](#stopimageanalyzer12) of **XComponentController**.
+
 This feature cannot be used together with the [overlay](ts-universal-attributes-overlay.md) attribute. If both are set, the **CustomBuilder** attribute in **overlay** has no effect. This feature also depends on device capabilities.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -172,7 +174,7 @@ Sets whether to enable the secure surface to protect the content rendered within
   >
   > This attribute is effective only when **type** is set to **SURFACE**.
   >
-  > The **XComponent** created using the [ArkUI NDK APIs](../../../ui/ndk-build-ui-overview.md) is not supported.
+  > It is not supported for **XComponent** components created using the [ArkUI NDK API](../../../ui/ndk-build-ui-overview.md).
 
 ### hdrBrightness<sup>20+</sup>
 
@@ -194,7 +196,7 @@ Sets the brightness of HDR video playback for the component.
   >
   > This attribute is effective only when **type** is set to **SURFACE**.
   >
-  > The **XComponent** created using the [ArkUI NDK APIs](../../../ui/ndk-build-ui-overview.md) is not supported.
+  > It is not supported for **XComponent** components created using the [ArkUI NDK API](../../../ui/ndk-build-ui-overview.md).
 
 ## Events
 
@@ -328,7 +330,9 @@ setXComponentSurfaceSize(value: {surfaceWidth: number, surfaceHeight: number}): 
 
 Sets the width and height of the surface held by the **XComponent**. This API works only when **type** of the **XComponent** is set to **SURFACE("surface")** or **TEXTURE**.
 
-This API is deprecated since API version 12. You are advised to use [setXComponentSurfaceRect](#setxcomponentsurfacerect12) instead.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [setXComponentSurfaceRect](#setxcomponentsurfacerect12) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -605,6 +609,25 @@ Submits the drawn content from a canvas object to the display area of the **XCom
 >
 > 4. This API must be used in conjunction with [lockCanvas](#lockcanvas20). For the implementation example, see [Example 3: Drawing Content on the XComponent Using a Canvas Object](#example-3-drawing-content-on-the-xcomponent-using-a-canvas-object).
 
+### setXComponentSurfaceConfig<sup>22+</sup>
+
+setXComponentSurfaceConfig(config: SurfaceConfig): void
+
+Sets the options of the surface created by the XComponent. This method is used to determine whether the surface held by the XComponent is considered opaque during rendering.
+
+> **NOTE**
+>
+> This API takes effect only when the XComponent component type is TEXTURE or SURFACE.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| config | [SurfaceConfig](#surfaceconfig22)| Yes| Surface option.|
+
 ## SurfaceRotationOptions<sup>12+</sup>
 
 Defines whether the orientation of the surface held by the current **XComponent** is locked when the screen rotates.
@@ -639,6 +662,18 @@ Describes the rectangle of the surface held by the **XComponent**.
 > Make sure the values of **surfaceWidth** and **surfaceHeight** do not exceed 8192 px. Exceeding this limit may lead to rendering issues.
 >
 > In immersive scenarios, the default layout of **SurfaceRect** does not include the safe area. To achieve an immersive effect, you must set the surface display area using the [setXComponentSurfaceRect](ts-basic-components-xcomponent.md#setxcomponentsurfacerect12) API.
+
+## SurfaceConfig<sup>22+</sup>
+
+Describes whether the surface held by the XComponent component is opaque during rendering.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name         | Type  | Read-Only| Optional| Description                                                        |
+| ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
+| isOpaque       | boolean | No| Yes  | Whether the surface held by the XComponent component is considered opaque during rendering. If this attribute is not set, the default value false is used, indicating that the transparency of the pixels in the content drawn on the surface is applied during rendering.<br>true: The surface needs to be considered opaque. false: The surface does not need to be considered opaque.<br>Default value: **false**.|
 
 ## Example
 
@@ -936,4 +971,105 @@ struct Index {
 }
 ```
 ![Example of setXComponentSurfaceRect](./figures/setXComponentSurfaceRect04.jpeg)
-<!--no_check-->
+
+### Example 5 (Setting Whether the Surface Held by XComponent Needs to Be Deemed Opaque During Rendering)
+
+From API version 22, this example calls the [setXComponentSurfaceConfig](#setxcomponentsurfaceconfig22) API to set whether the surface held by the XComponent is considered opaque during rendering.
+
+> **NOTE**
+>
+> For details about the implementation of the drawing logic (related to nativeRender) in this example, see <!--RP2-->[ArkTS XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent).<!--RP2End-->
+
+```ts
+// xxx.ets
+import nativeRender from 'libnativerender.so'; // So file implemented by the developer. For details, see the preceding note.
+
+// Override XComponentController to set lifecycle callbacks.
+class MyXComponentController extends XComponentController{
+  onSurfaceCreated(surfaceId: string): void {
+    console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
+    nativeRender.SetSurfaceId(BigInt(surfaceId));
+  }
+  onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
+    console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+    // Call ChangeSurface to draw content in onSurfaceChanged.
+    nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
+  }
+  onSurfaceDestroyed(surfaceId: string): void {
+    console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
+    nativeRender.DestroySurface(BigInt(surfaceId));
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State currentStatus: string = "index";
+  xComponentController: XComponentController = new MyXComponentController();
+
+  aboutToAppear(): void {
+    //Set the surface held by XComponent to be opaque during rendering.
+    this.xComponentController.setXComponentSurfaceConfig({ isOpaque: true });
+  }
+
+  build() {
+    Column() {
+      Column({ space: 10 }) {
+        XComponent({
+          type: XComponentType.SURFACE,
+          controller: this.xComponentController
+        })
+          .backgroundColor(Color.Transparent)
+        Text(this.currentStatus)
+          .fontSize('24fp')
+          .fontWeight(500)
+      }
+      .onClick(() => {
+        let surfaceId = this.xComponentController.getXComponentSurfaceId();
+        nativeRender.ChangeColor(BigInt(surfaceId));
+        let hasChangeColor: boolean = false;
+        if (nativeRender.GetXComponentStatus(BigInt(surfaceId))) {
+          hasChangeColor = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasChangeColor;
+        }
+        if (hasChangeColor) {
+          this.currentStatus = "change color";
+        }
+      })
+      .margin({
+        top: 27,
+        left: 12,
+        right: 12
+      })
+      .height('40%')
+      .width('90%')
+      Row() {
+        Button('Draw Star')
+          .fontSize('16fp')
+          .fontWeight(500)
+          .margin({ bottom: 24 })
+          .onClick(() => {
+            let surfaceId = this.xComponentController.getXComponentSurfaceId();
+            nativeRender.DrawPattern(BigInt(surfaceId));
+            let hasDraw: boolean = false;
+            if (nativeRender.GetXComponentStatus(BigInt(surfaceId))) {
+              hasDraw = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasDraw;
+            }
+            if (hasDraw) {
+              this.currentStatus = "draw star";
+            }
+          })
+          .width('53.6%')
+          .height(40)
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.Center)
+      .alignItems(VerticalAlign.Bottom)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![Example of setXComponentSurfaceConfig](./figures/surfaceConfig.jpeg)

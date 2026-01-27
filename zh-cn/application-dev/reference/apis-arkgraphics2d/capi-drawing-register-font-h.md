@@ -28,6 +28,10 @@
 | [uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection*, const char* fontFamily, const char* familySrc)](#oh_drawing_registerfont) | 用于在字体管理器中注册自定义字体，支持的字体文件格式包含：ttf、otf。 |
 | [uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection*, const char* fontFamily, uint8_t* fontBuffer,size_t length)](#oh_drawing_registerfontbuffer) | 用于在字体管理器中注册字体缓冲区。 |
 | [uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily)](#oh_drawing_unregisterfont) | 通过字体家族名称取消注册自定义字体。<br> 取消注册当前正在使用的字体可能导致文本渲染异常，包括乱码或字形缺失。<br> 所有使用被取消注册的字体家族名称的排版对象都应该被销毁重建。 |
+| [uint32_t OH_Drawing_RegisterFontByIndex(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, const char* familySrc, uint32_t index)](#oh_drawing_registerfontbyindex) | 使用ttc/otc文件注册自定义字体。 |
+| [uint32_t OH_Drawing_RegisterFontBufferByIndex(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, uint8_t* fontBuffer, size_t length, uint32_t index)](#oh_drawing_registerfontbufferbyindex) | 使用ttc/otc文件字节流注册字体。 |
+| [bool OH_Drawing_IsFontSupportedFromPath(const char* path)](#oh_drawing_isfontsupportedfrompath) | 检查系统是否支持指定路径的字体格式。 |
+| [bool OH_Drawing_IsFontSupportedFromBuffer(uint8_t* data, size_t dataLength)](#oh_drawing_isfontsupportedfrombuffer) | 检查系统是否支持缓冲区中指定的字体格式。 |
 
 ## 函数说明
 
@@ -121,3 +125,107 @@ uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, co
 | 类型 | 说明 |
 | -- | -- |
 | uint32_t | 返回执行结果状态码，0为成功，8为入参不合法，1为取消注册失败。 |
+
+### OH_Drawing_RegisterFontByIndex()
+
+```c
+uint32_t OH_Drawing_RegisterFontByIndex(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, const char* familySrc, uint32_t index)
+```
+
+**描述**
+
+使用ttc/otc文件注册自定义字体。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | 指向[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象的指针。 |
+| const char* fontFamily | 需要注册的字体的字体名称。 |
+| const char* familySrc | 需要注册的字体文件的路径。 |
+| uint32_t index | 字体在ttc/otc文件中的索引，非ttc/otc格式文件需设置为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| uint32_t | 函数执行结果。0为成功，1为文件不存在，2为打开文件失败，3为读取文件失败，4为寻找文件失败，5为获取大小失败，8为fontCollection为空，9为文件损坏。 |
+
+### OH_Drawing_RegisterFontBufferByIndex()
+
+```c
+uint32_t OH_Drawing_RegisterFontBufferByIndex(OH_Drawing_FontCollection* fontCollection, const char* fontFamily, uint8_t* fontBuffer, size_t length, uint32_t index)
+```
+
+**描述**
+
+使用ttc/otc文件字节流注册字体。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* fontCollection | 指向[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象的指针。 |
+| const char* fontFamily | 需要注册的字体的字体名称。 |
+| uint8_t* fontBuffer | 需要注册的字体文件的字节流数据。 |
+| size_t length | 字节流数据长度 |
+| uint32_t index | 字体在ttc/otc文件中的索引，非ttc/otc格式文件需设置为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| uint32_t | 函数执行结果。0为成功，6为字节流指针为空，7为字节流长度为0，8为fontCollection为空，9为文件损坏。 |
+
+### OH_Drawing_IsFontSupportedFromPath()
+
+```c
+bool OH_Drawing_IsFontSupportedFromPath(const char* path)
+```
+
+**描述**
+
+检查系统是否支持指定路径的字体格式。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* path | 字体文件的绝对路径。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 如果支持该字体则返回true；否则返回false。 |
+
+### OH_Drawing_IsFontSupportedFromBuffer()
+
+```c
+bool OH_Drawing_IsFontSupportedFromBuffer(uint8_t* data, size_t dataLength)
+```
+
+**描述**
+
+检查系统是否支持缓冲区中指定的字体格式。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint8_t* data | 包含字体数据的内存缓冲区的指针。 |
+| size_t dataLength | 字体数据的大小（以字节为单位）。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 如果支持该字体则返回true；否则返回false。 |

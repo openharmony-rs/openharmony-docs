@@ -71,7 +71,7 @@ Column() {
 }
 .accessibilityGroup(true)
   .accessibilityLevel('yes')
-  // Replace 'app.string.UniversalAttributesAccessibility_text7' with the text resource file you use.
+  // Replace $r('app.string.UniversalAttributesAccessibility_text7') with the actual resource file. In this example, the value in the resource file is "Group."
   .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
 ```
 
@@ -89,9 +89,10 @@ Column() {
 }
 .accessibilityGroup(true)
   .accessibilityLevel('yes')
-  // Replace 'app.string.UniversalAttributesAccessibility_text7' with the text resource file you use.
+  // Replace $r('app.string.UniversalAttributesAccessibility_text7') with the actual resource file. In this example, the value in the resource file is "Group."
   .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  // Replace 'app.string.UniversalAttributesAccessibility_text8' with the text resource file you use.
+  // Replace $r('app.string.UniversalAttributesAccessibility_text8') with the actual resource file.
+     In this example, the value in the resource file is "The Column component can be selected, and the content to be announced is 'Group'." */
   .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
 ```
 
@@ -106,21 +107,21 @@ The **accessibilityVirtualNode** attribute adds virtual accessibility nodes to s
 @Component
 struct VirtualNodeExample {
   @Builder customAccessibilityNode() {
-    // Replace 'app.string.UniversalAttributesAccessibility_text6' with the text resource file you use.
+    // Replace $r('app.string.UniversalAttributesAccessibility_text6') with the actual resource file. In this example, the value in the resource file is "Text 2."
     Text($r('app.string.UniversalAttributesAccessibility_text6'))
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
   }
   build() {
     Column() {
-      // Replace 'app.string.UniversalAttributesAccessibility_text5' with the text resource file you use.
+      // Replace $r('app.string.UniversalAttributesAccessibility_text5') with the actual resource file. In this example, the value in the resource file is "Text 1."
       Text($r('app.string.UniversalAttributesAccessibility_text5'))
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
     }
     .accessibilityGroup(true)
-      .accessibilityLevel('yes')
-      .accessibilityVirtualNode(this.customAccessibilityNode)
+    .accessibilityLevel('yes')
+    .accessibilityVirtualNode(this.customAccessibilityNode)
   }
 }
 ```
@@ -149,9 +150,10 @@ Column() {
 }
 .accessibilityGroup(true)
   .accessibilityLevel('yes')
-  // Replace 'app.string.UniversalAttributesAccessibility_text7' with the text resource file you use.
+  // Replace $r('app.string.UniversalAttributesAccessibility_text7') with the actual resource file. In this example, the value in the resource file is "Group."
   .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  // Replace 'app.string.UniversalAttributesAccessibility_text8' with the text resource file you use.
+  // Replace $r('app.string.UniversalAttributesAccessibility_text8') with the actual resource file.
+     In this example, the value in the resource file is "The Column component can be selected, and the content to be announced is 'Group'." */
   .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
   .accessibilityChecked(true)
 ```
@@ -176,9 +178,10 @@ Column() {
 }
 .accessibilityGroup(true)
   .accessibilityLevel('yes')
-  // Replace 'app.string.UniversalAttributesAccessibility_text7' with the text resource file you use.
+  // Replace $r('app.string.UniversalAttributesAccessibility_text7') with the actual resource file. In this example, the value in the resource file is "Group."
   .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  // Replace 'app.string.UniversalAttributesAccessibility_text8' with the text resource file you use.
+  // Replace $r('app.string.UniversalAttributesAccessibility_text8') with the actual resource file.
+     In this example, the value in the resource file is "The Column component can be selected, and the content to be announced is 'Group'." */
   .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
   .accessibilitySelected(undefined)
 ```
@@ -233,11 +236,11 @@ export struct AccessibilityText {
       Row() {
         // ...
         Column() {
-          // Replace $r('app.media.UniversalAttributesAccessibility_text5') with the text resource file you use.
+          // Replace $r('app.string.UniversalAttributesAccessibility_text5') with the actual resource file. In this example, the value in the resource file is "Text 1."
           Text($r('app.string.UniversalAttributesAccessibility_text5'))
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-          // Replace $r('app.media.UniversalAttributesAccessibility_text6') with the text resource file you use.
+          // Replace $r('app.string.UniversalAttributesAccessibility_text6') with the actual resource file. In this example, the value in the resource file is "Text 2."
           Text($r('app.string.UniversalAttributesAccessibility_text6'))
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
@@ -245,9 +248,10 @@ export struct AccessibilityText {
         .width('100%')
           .accessibilityGroup(true)
           .accessibilityLevel('yes')
-          // Replace $r('app.media.UniversalAttributesAccessibility_text7') with the text resource file you use.
+          // Replace $r('app.string.UniversalAttributesAccessibility_text7') with the actual resource file. In this example, the value in the resource file is "Group."
           .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-          // Replace $r('app.media.UniversalAttributesAccessibility_text8') with the text resource file you use.
+          // Replace $r('app.string.UniversalAttributesAccessibility_text8') with the actual resource file.
+             In this example, the value in the resource file is "The Column component can be selected, and the content to be announced is 'Group'." */
           .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
           .accessibilityVirtualNode(this.customAccessibilityNode)
           .accessibilityChecked(true)

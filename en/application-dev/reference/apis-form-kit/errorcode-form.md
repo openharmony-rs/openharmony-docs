@@ -250,6 +250,24 @@ The specified widget dimension is not configured, or the transferred widget dime
 
 Check whether the input widget dimension is in the [FormDimension](js-apis-app-form-formInfo.md#formdimension) and [supportDimensions](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file) configuration list.
 
+## 16501013 Operation Not Supported
+
+**Error Message**
+
+The system does not support the current operation.
+
+**Description**
+
+The system does not support the current operation.
+
+**Possible Causes**
+
+Failed to register the callback for listening for template widget information.
+
+**Solution**
+
+Restart the device to allow the system to re-register the callback for listening for template widget information.
+
 ## 2293761 Internal Service Error
 
 **Error Message**

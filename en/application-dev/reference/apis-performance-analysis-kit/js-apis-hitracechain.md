@@ -251,9 +251,9 @@ tracepoint(mode: HiTraceCommunicationMode, type: HiTraceTracepointType, id: HiTr
 
 Adds a trace point for the [HiTraceMeter](./js-apis-hitracemeter.md) logging, which is synchronous.
 
-When type is set to **CS** and **SC**, the HiTraceMeter tracing starts. When type is set to **CC** and **SS**, the HiTraceMeter tracing ends. When type is set to **GENERAL**, the HiTraceMeter tracing does not start.
+When type is set to **CS** and **SR**, the HiTraceMeter tracing starts. When type is set to **CR** and **SS**, the HiTraceMeter tracing ends. When type is set to **GENERAL**, the HiTraceMeter tracing does not start.
 
-The trace points for **CS** and **CC** types must be used as a pair; likewise, trace points for **SC** and **SS** types must also be used together. Otherwise, the start and end trace points of HiTraceMeter cannot match each other.
+The trace points for **CS** and **CR** types must be used as a pair; likewise, trace points for **SR** and **SS** types must also be used together. Otherwise, the start and end trace points of HiTraceMeter cannot match each other.
 
 **System capability**: SystemCapability.HiviewDFX.HiTrace
 

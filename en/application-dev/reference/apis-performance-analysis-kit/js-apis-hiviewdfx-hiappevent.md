@@ -114,8 +114,10 @@ hiAppEvent.addWatcher({
 ```
 
 Method 2: If the **triggerCondition** parameter is not set, use the **holder** object returned by the event subscription to obtain the subscribed event.
-<br>For crash events (**hiAppEvent.event.APP_CRASH**) and freeze events (**hiAppEvent.event.APP_FREEZE**) generated during abnormal exits, the system needs time to capture debug logs. Typically, capture completes within 30 seconds; in extreme cases, it may take up to about 2 minutes.
-<br>When the subscription data holder is used to manually process subscription events, the events may not be generated or the log capture is not complete. Therefore, you are advised to call **takeNext()** to obtain such events again after the process is started.
+
+For crash events (**hiAppEvent.event.APP_CRASH**) and freeze events (**hiAppEvent.event.APP_FREEZE**) generated during abnormal exits, the system needs time to capture debug logs. Typically, capture completes within 30 seconds; in extreme cases, it may take up to about 2 minutes.
+
+When the subscription data holder is used to manually process subscription events, the events may not be generated or the log capture is not complete. Therefore, you are advised to call **takeNext()** to obtain such events again after the process is started.
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -817,7 +819,7 @@ Adds the configuration information of the data processor. The configuration file
 
 | Type   | Description                  |
 | ------ | ---------------------- |
-| Promise&lt;number&gt; | Promise that returns the unique ID of the added event data processor, which can be used to remove the data processor. If the adding fails, error code **11105001** is returned.|
+| Promise&lt;number&gt; |  Promise that returns the unique ID of the added event data processor, which can be used to remove the data processor. If the adding fails, error code **11105001** is returned.|
 
 **Error codes**
 
@@ -1133,7 +1135,7 @@ Defines the system event configuration policy, which is set by calling [configEv
 | Name      | Type   | Read Only| Optional| Description                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
 | mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | No| Yes  | Configuration policy for the main thread jank event.|
-<!--RP5--><!--RP5End-->
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | No| Yes  | Configuration policy for the high CPU usage event.|
 
 
 ## MainThreadJankPolicy<sup>22+</sup>
@@ -1147,13 +1149,31 @@ Defines the configuration policy for the main thread jank event.
 | Name      | Type   | Read Only| Optional| Description                                        |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
 | logType | number | No| Yes  | Type of logs to collect.<br>**logType=0**: When the main thread experiences two consecutive timeouts between 150 ms and 450 ms, a call stack capture is triggered. When the timeout exceeds 450 ms, a trace capture is triggered. This is the default value.<br>**logType=1**: Only the call stack is captured, and the threshold for triggering the detection is customized.<br>**logType=2**: Only traces are captured.|
-| ignoreStartupTime | number | No| Yes  | Application startup time for the main thread jank event detection to ignore, in seconds. The default value is **10** and the minimum value is 3.|
+| ignoreStartupTime | number | No| Yes  | Mainthread jank event detection time ignored during application startup, in seconds. The default value is **10**, and the minimum value is **3**.|
 | sampleInterval | number | No| Yes  | Interval for the main thread jank event detection and sampling, in milliseconds. The default value is **150**. The value range is [50, 500].|
 | sampleCount | number | No| Yes  | Number of samplings for the main thread jank event. The default value is **10**. The minimum value is 1.<br>The maximum value is calculated using the following formula: **sampleCount** ≤ (2500/**sampleInterval** - 4).|
 | reportTimesPerApp | number | No| Yes  | Number of sampling reporting times for the main thread jank event of the processes with the same PID of an application. This parameter can be set only once for the processes with the same PID.<br>The default value is **1**.<br>When **Developer options** is enabled, the number of reporting times per hour ranges from 1 to 3.<br>When **Developer options** is disabled, the number of reporting times per minute ranges from 1 to 3.|
 | autoStopSampling | boolean | No| Yes  | Whether to automatically stop sampling the main thread stack when the main thread jank event ends.<br>The value **true** means to stop sampling when the main thread jank event ends or the number of samplings reaches the specified value.<br>The value **false** means to stop sampling when the number of samplings reaches the specified value.<br>The default value is **false**.|
 
-<!--RP6--><!--RP6End-->
+## CpuUsageHighPolicy<sup>22+</sup>
+ 
+Defines the configuration policy for the high CPU usage event.
+ 
+> **NOTE**
+> 
+> After this API is called, the setting is persisted. If this API is called again and the corresponding parameter is not set, the value used by the system last time is used.
+ 
+**Atomic service API**: This API can be used in applications since API version 22.
+ 
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+ 
+| Name      | Type   | Read Only| Optional| Description    |
+| ---------- | ------- | ---- | ---- | ------------- |
+| foregroundLoadThreshold    | number | No| Yes  | High CPU usage threshold of the application foreground, in percentage. The value range is **[1, 100]**. The default value is **30**. If the value is not within the threshold range, the default value **30** is used.<br>**Note**: It is recommended that the value be less than **30**.|
+| backgroundLoadThreshold | number  | No| Yes  | High CPU usage threshold of the application background, in percentage. The value range is **[1, 100]**. The default value is **10**. If the value is not within the threshold range, the default value **10** is used.<br>**Note**: It is recommended that the value be less than **10**.|
+| threadLoadThreshold | number  | No| Yes  | High CPU usage threshold of the application thread, in percentage. The value range is **[15, 100]**. The default value is **70**. If the value is not within the threshold range, the default value **70** is used.|
+| perfLogCaptureCount | number  | No| Yes  | Number of log collection times per day. Once the system detects that the number of log collection times exceeds the set value, the system still reports the event normally, but the **external_log** field in the exception event is not attached with the log file path information.<br> For debug-type applications, the threshold range is **[-1, 100]**.<br> For release-type applications, the threshold range is **[0, 20]**.<br> Unit: times. Default value: **1**.<br> If the value is not within the threshold range, the default value **1** is used.<br>**NOTE**<br> 1. The value **-1** indicates that log collection times are not limited.<br> 2. The value **0** indicates that logs are not collected.<br> 3. A value greater than **0** indicates the maximum number of daily collection times.|
+| threadLoadInterval | number  | No| Yes  | Interval for detecting high CPU usage of application threads, in seconds. The value range is **[5, 3600]**. The default value is **60**.<br>If the value is not within the threshold range, the default value **60** is used.|
 
 
 ## Processor<sup>11+</sup>

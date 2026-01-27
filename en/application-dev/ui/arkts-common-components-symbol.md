@@ -165,7 +165,7 @@ To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis
   ``` TypeScript
   Row() {
     Column() {
-      // The value in the 'app.string.single_color' resource file is "Single-color mode."
+      // Replace $r('app.string.single_color') with the actual resource file. In this example, the value in the resource file is "Single-color mode."
       Text($r('app.string.single_color'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
@@ -176,7 +176,7 @@ To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis
     }
   
     Column() {
-      // The value in the 'app.string.multi_color'' resource file is "Multi-color mode."
+      // Replace $r('app.string.multi_color') with the actual resource file. In this example, the value in the resource file is "Multi-color mode."
       Text($r('app.string.multi_color'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
@@ -187,7 +187,7 @@ To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis
     }
   
     Column() {
-      // The value in the 'app.string.hierarchical' resource file is "Layered mode."
+      // Replace $r('app.string.hierarchical') with the actual resource file. In this example, the value in the resource file is "Layered mode."
       Text($r('app.string.hierarchical'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
@@ -208,7 +208,7 @@ To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis
   ``` TypeScript
   Row() {
     Column() {
-      // The value in the 'app.string.no_action' resource file is "No effect."
+      // Replace $r('app.string.no_action') with the actual resource file. In this example, the value in the resource file is "No effect."
       Text($r('app.string.no_action'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_wifi'))
@@ -218,7 +218,7 @@ To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis
     }
   
     Column() {
-      // The value in the 'app.string.overall_scaling_animation_effect' resource file is "Overall scale effect."
+      // Replace $r('app.string.overall_scaling_animation_effect') with the actual resource file. In this example, the value in the resource file is "Overall scale effect."
       Text($r('app.string.overall_scaling_animation_effect'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_wifi'))
@@ -228,7 +228,7 @@ To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis
     }
   
     Column() {
-      // The value in the 'app.string.hierarchical_animation' resource file is "Hierarchical effect."
+      // Replace $r('app.string.hierarchical_animation') with the actual resource file. In this example, the value in the resource file is "Hierarchical effect."
       Text($r('app.string.hierarchical_animation'));
       Text() {
         SymbolSpan($r('sys.symbol.ohos_wifi'))
@@ -261,13 +261,13 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
   
   ``` TypeScript
   Column() {
-    // The value in the 'app.string.variable_color_animation' resource file is "Variable color effect."
+    // Replace $r('app.string.variable_color_animation') with the actual resource file. In this example, the value in the resource file is "Variable color effect."
     Text($r('app.string.variable_color_animation'));
     SymbolGlyph($r('sys.symbol.ohos_wifi'))
       .fontSize(96)
       .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
-    // The value in the 'app.string.off' resource file is "Off."
-    // The value in the 'app.string.on' resource file is "Play."
+    // Replace $r('app.string.off') with the actual resource file. In this example, the value in the resource file is "Off."
+    // Replace $r('app.string.on') with the actual resource file. In this example, the value in the resource file is "Play."
     Button(this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
       this.isActive = !this.isActive;
     })
@@ -288,14 +288,14 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
   
   ``` TypeScript
   Column() {
-    // The value in the 'app.string.bounce_animation' resource file is "Bounce effect."
+    // Replace $r('app.string.bounce_animation') with the actual resource file. In this example, the value in the resource file is "Bounce effect."
     Text($r('app.string.bounce_animation'));
     SymbolGlyph($r('sys.symbol.ellipsis_message_1'))
       .fontSize(96)
       .fontColor([Color.Gray])
       .symbolEffect(new BounceSymbolEffect(EffectScope.WHOLE, EffectDirection.UP),
                     this.triggerValueReplace)
-    Button('Trigger').onClick(() => {
+    Button('trigger').onClick(() => {
       this.triggerValueReplace = this.triggerValueReplace + 1;
     })
   }
@@ -317,14 +317,14 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
   
   ``` TypeScript
   Column() {
-    // The value in the 'app.string.disable_animation' resource file is "Slash overlay."
+    // Replace $r('app.string.disable_animation') with the actual resource file. In this example, the value in the resource file is "Slash overlay."
     Text($r('app.string.disable_animation'));
     SymbolGlyph(this.replaceFlag ? $r('sys.symbol.eye_slash') : $r('sys.symbol.eye'))
       .fontSize(96)
       .renderingStrategy(this.renderMode)
       .symbolEffect(new ReplaceSymbolEffect(EffectScope.LAYER, ReplaceEffectType.SLASH_OVERLAY),
                     this.triggerValueReplace)
-    Button('Trigger').onClick(() => {
+    Button('trigger').onClick(() => {
       this.replaceFlag = !this.replaceFlag;
       this.triggerValueReplace = this.triggerValueReplace + 1;
     })
@@ -346,13 +346,13 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
   
   ``` TypeScript
   Column() {
-    // The value in the 'app.string.quick_replacement_animation' resource file is "Cross-fade transition."
+    // Replace $r('app.string.quick_replacement_animation') with the actual resource file. In this example, the value in the resource file is "Cross-fade transition."
     Text($r('app.string.quick_replacement_animation'));
     SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
       .fontSize(96)
       .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE),
                     this.triggerValueReplace)
-    Button('Trigger').onClick(() => {
+    Button('trigger').onClick(() => {
       this.replaceFlag = !this.replaceFlag;
       this.triggerValueReplace = this.triggerValueReplace + 1;
     })
@@ -382,14 +382,14 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
   
   ``` TypeScript
   Column() {
-    // The value in the 'app.string.shadow_ability' resource file is "Shadow effect."
+    // Replace $r('app.string.shadow_ability') with the actual resource file. In this example, the value in the resource file is "Shadow effect."
     Text($r('app.string.shadow_ability'));
     SymbolGlyph($r('sys.symbol.ohos_wifi'))
       .fontSize(96)
       .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), !this.isActive)
       .symbolShadow(this.options)
-    // The value in the 'app.string.off' resource file is "Off."
-    // The value in the 'app.string.on' resource file is "Play."
+    // Replace $r('app.string.off') with the actual resource file. In this example, the value in the resource file is "Off."
+    // Replace $r('app.string.on') with the actual resource file. In this example, the value in the resource file is "Play."
     Button(!this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
       this.isActive = !this.isActive;
     })
@@ -415,7 +415,7 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
   
   ``` TypeScript
   Column() {
-    // The value in the 'app.string.radial_gradient' resource file is "Radial gradient."
+    // Replace $r('app.string.radial_gradient') with the actual resource file. In this example, the value in the resource file is "Radial gradient."
     Text($r('app.string.radial_gradient'))
       .fontSize(18)
       .fontColor(0xCCCCCC)
@@ -470,11 +470,11 @@ struct SymbolMusicDemo {
     [$r('sys.symbol.repeat'), $r('sys.symbol.repeat_1'), $r('sys.symbol.arrow_left_arrow_right')];
   @State symbolSourcesIndex: number = 0;
   @State symbolText: string[] = [
-    // The value in the 'app.string.play_in_order' resource file is "Play in order."
+    // Replace $r('app.string.play_in_order') with the actual resource file. In this example, the value in the resource file is "Play in order."
     resourceGetString.resourceToString($r('app.string.play_in_order')),
-    // The value in the 'app.string.play_in_single_repeat' resource file is "Loop song."
+    // Replace $r('app.string.play_in_single_repeat') with the actual resource file. In this example, the value in the resource file is "Loop song."
     resourceGetString.resourceToString($r('app.string.play_in_single_repeat')),
-    // The value in the 'app.string.shuffle_play' resource file is "Shuffle."
+    // Replace $r('app.string.shuffle_play') with the actual resource file. In this example, the value in the resource file is "Shuffle."
     resourceGetString.resourceToString($r('app.string.shuffle_play')),
   ];
   @State symbolTextIndex: number = 0;
@@ -485,7 +485,7 @@ struct SymbolMusicDemo {
     Column({ space: 10 }) {
       Row() {
         Text() {
-          // The value in the 'app.string.current_playlist' resource file is "Playlist."
+          // Replace $r('app.string.current_playlist') with the actual resource file. In this example, the value in the resource file is "Playlist."
           Span(resourceGetString.resourceToString($r('app.string.current_playlist')))
             .fontSize(20)
             .fontWeight(FontWeight.Bolder)
@@ -541,7 +541,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // The value in the 'app.string.song' resource file is "Song 1."
+          // Replace $r('app.string.song') with the actual resource file. In this example, the value in the resource file is "Song 1."
           Text($r('app.string.song'))
         }.width('82%')
 
@@ -558,7 +558,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // The value in the 'app.string.song_again' resource file is "Song 2."
+          // Replace $r('app.string.song_again') with the actual resource file. In this example, the value in the resource file is "Song 2."
           Text($r('app.string.song_again'))
         }.width('82%')
 
@@ -575,7 +575,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          The value in the // 'app.string.again_song' resource file is "Song 3."
+          // Replace $r('app.string.again_song') with the actual resource file. In this example, the value in the resource file is "Song 3."
           Text($r('app.string.again_song'))
         }.width('82%')
 
@@ -592,7 +592,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // The value in the // 'app.string.song_repeat' resource file is "Song 4."
+          // Replace $r('app.string.song_repeat') with the actual resource file. In this example, the value in the resource file is "Song 4."
           Text($r('app.string.song_repeat'))
         }.width('82%')
 
@@ -609,7 +609,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // The value in the 'app.string.repeat_song' resource file is "Song 5."
+          // Replace $r('app.string.repeat_song') with the actual resource file. In this example, the value in the resource file is "Song 5."
           Text($r('app.string.repeat_song'))
         }.width('82%')
 
@@ -626,7 +626,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // The value in the 'app.string.song_play' resource file is "Song 6."
+          // Replace $r('app.string.song_play') with the actual resource file. In this example, the value in the resource file is "Song 6."
           Text($r('app.string.song_play'))
         }.width('82%')
 
@@ -643,7 +643,7 @@ struct SymbolMusicDemo {
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
-          // The value in the 'app.string.play_song' resource file is "Song 7."
+          // Replace $r('app.string.play_song') with the actual resource file. In this example, the value in the resource file is "Song 7."
           Text($r('app.string.play_song'))
         }.width('82%')
 
@@ -659,7 +659,7 @@ struct SymbolMusicDemo {
 
       Divider().width(5).color(this.fontColorValue1).width('98%')
       Column() {
-        // The value in the 'app.string.off' resource file is "Off."
+        // Replace $r('app.string.off') with the actual resource file. In this example, the value in the resource file is "Close."
         Text($r('app.string.off'))
       }
       .alignItems(HorizontalAlign.Center)

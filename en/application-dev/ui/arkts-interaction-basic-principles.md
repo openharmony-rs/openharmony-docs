@@ -33,12 +33,8 @@ The event interaction pipeline describes the end-to-end process where ArkUI rece
     Components with registered gestures form a gesture response chain. The system combines events to detect gestures, resolves gesture conflicts through competition logic, and triggers the callback of the winning gesture.
 
    (4) Event Interception
-
-    You can intercept events at two levels:
-
-   - Pre-chain: Configure hit test properties to affect the formation of the event response chain.
-
-   - Post-chain:
+   
+    You can intercept events at two levels:<br>Pre-chain: Configure hit test properties to affect the formation of the event response chain.<br>Post-chain:
 
     During event dispatch to the touch event response chain, you can block touch event propagation using touch interceptors.
 
@@ -112,13 +108,14 @@ Applications can intervene in hit test results through the following methods to 
    @Entry
    @Component
    struct FocusOnclickExample {
-     @State text: string = ''
-     @State number:number = 0
+     @State text: string = '';
+     @State number:number = 0;
    
      build() {
        Column() {
          Text(this.text)
            .margin({bottom:20})
+         // Replace $r('app.string.button') with the actual resource file. In this example, the value in the resource file is "Button."
          Button($r('app.string.button'))
            .responseRegion([
              {
@@ -132,11 +129,11 @@ Applications can intervene in hit test results through the following methods to 
                y: 0,
                width: '30%',
                height: '100%'
-             }, // Second response region: right 1/3 of the button
+             },// Second response region: right 1/3 of the button
            ])
            .onClick(() => {
              this.number++;
-             this.text = 'button' + this.number + 'clicked'
+             this.text = 'button' + this.number + 'clicked';
            })
            .width(200)
        }.width('100%').justifyContent(FlexAlign.Center)

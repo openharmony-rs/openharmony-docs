@@ -324,3 +324,16 @@
 | 名称 | 类型    | 只读 | 可选 | 说明           |
 | ---- | ------- | ---- |--| -------------- |
 | iso  | number  | 是   | 是 | ISO值。        |
+
+## CameraOcclusionDetectionResult<sup>23+</sup>
+
+镜头遮挡或脏污检测回调返回的接口实例，表示镜头遮挡或脏污状态信息。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                 | 类型       | 只读 | 可选 | 说明                                |
+|--------------------| ---------- | ---- | ---- |-----------------------------------|
+| isCameraOccluded   | boolean    | 是   | 否   | 镜头是否被遮挡。true表示镜头被遮挡，false表示镜头无遮挡。 |
+| isCameraLensDirty  | boolean    | 是   | 否   | 镜头是否有脏污。true表示镜头有脏污，false表示镜头无脏污。 |

@@ -8,6 +8,7 @@
 
 ArkGraphics 3D（方舟3D图形）基于轻量级的3D引擎以及渲染管线为开发者提供基础3D场景绘制能力，供开发者便捷、高效地构建3D场景并完成渲染。
 
+ArkGraphics 3D以自定义场景模式为核心能力，支持开发者自行构建和管理Scene、Camera、Light等节点，从而对3D场景的渲染效果与交互行为进行完全控制。同时，为了便于快速预览和展示模型，也提供自动场景模式，允许开发者直接加载glTF（.gltf文件和.glb文件）模型，由框架自动创建基础相机、光源及交互控制。
 
 ## 功能介绍
 
@@ -17,7 +18,7 @@ ArkGraphics 3D（方舟3D图形）基于轻量级的3D引擎以及渲染管线�
 - 提供控制3D场景动画状态的能力，支撑开发者控制动画的开始、暂停、结束、播放到指定位置等操作，同时提供动画开始、结束时的回调函数支持开发者进行逻辑控制。具体可见[SceneResource (资源管理)](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md)。
 - 提供基础的3D渲染后处理能力，提供接口支撑开发者进行ToneMapping后处理相关控制。具体可见[ScenePostProcessSettings (后处理管理)](../reference/apis-arkgraphics3d/js-apis-inner-scene-post-process-settings.md)。
 
-综上，ArkGraphics 3D提供基础的3D场景渲染能力，支撑开发者完成3D场景渲染以及逻辑控制开发工作。
+综上，ArkGraphics 3D提供以自定义Scene为核心的3D场景渲染能力，同时通过自动场景模式为模型的快速展示提供便捷入口，满足从简单预览到复杂渲染控制的不同开发需求。
 
 具体接口的使用和参数说明，可见[@ohos.graphics.scene (ArkGraphics 3D模块)](../reference/apis-arkgraphics3d/js-apis-scene.md)。
 

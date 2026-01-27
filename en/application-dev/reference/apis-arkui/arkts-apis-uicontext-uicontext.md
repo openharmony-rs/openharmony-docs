@@ -743,13 +743,13 @@ Obtains the current parameters of [OverlayManagerOptions](arkts-apis-uicontext-i
 
 See the example for [OverlayManager](arkts-apis-uicontext-overlaymanager.md).
 
-## animateToImmediately<sup>22+</sup>
+## animateToImmediately<sup>23+</sup>
 
 animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
 Specifies a clear animation host instance context via the UIContext object and triggers the explicit animation to be dispatched immediately. This avoids issues where animations are not executed or animation end callbacks are not triggered due to inability to locate the instance or using an incorrect instance. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1276,7 +1276,7 @@ Shows an alert dialog box.
 
 >  **NOTE**
 >
->  The showAlertDialog of the subwindow (showInSubwindow is set to true) cannot be used in the input method window. For details, see the [createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1) description of the input method framework.
+>  The **showAlertDialog** with [showInSubWindow](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam) set to **true** cannot be used in the input method window. For details, see the [createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1) description.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1325,6 +1325,7 @@ struct Index {
   }
 }
 ```
+![showAlertDialog](figures/showAlertDialog.gif)
 
 ## showActionSheet
 
@@ -1395,6 +1396,7 @@ struct Index {
   }
 }
 ```
+![showActionSheet](figures/showActionSheet.gif)
 
 ## showDatePickerDialog
 
@@ -2716,7 +2718,7 @@ struct Index {
 
   aboutToAppear() {
     const windowId = this.getUIContext().getWindowId();
-    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId);
   }
 
   build() {
@@ -4077,3 +4079,130 @@ Obtains a [Magnifier](arkts-apis-uicontext-magnifier.md) object, which can be us
 **Example**
 
 See the example of the [bind](arkts-apis-uicontext-magnifier.md#bind) API in [Magnifier](arkts-apis-uicontext-magnifier.md).
+
+## setCustomKeyboardContinueFeature<sup>23+</sup>
+
+setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
+
+Sets whether the input context persists when switching custom keyboards..
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| feature | [CustomKeyboardContinueFeature](arkts-apis-uicontext-e.md#customkeyboardcontinuefeature23) | Yes| Whether the input context persists when switching custom keyboards..<br> Default value: **CustomKeyboardContinueFeature.DISABLED**, indicating that the input context does not persist.|
+
+**Example**
+
+```ts
+// xxx.ets
+import { CustomKeyboardContinueFeature } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct Index {
+  controller: TextInputController = new TextInputController();
+  controller2: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+  @State inputValue2: string = '';
+  @State supportAvoidance: boolean = true;
+  @State isValue: CustomKeyboardContinueFeature = CustomKeyboardContinueFeature.DISABLED;
+  @State str: string = 'No';
+
+  // Customize a keyboard.
+  @Builder
+  CustomKeyboardBuilder() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // Disable the custom keyboard.
+          this.controller.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue = this.inputValue.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(213, 213, 213)').height(300)
+  }
+
+  // Customize a keyboard.
+  @Builder
+  CustomKeyboardBuilder2() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // Disable the custom keyboard.
+          this.controller2.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue2 = this.inputValue2.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue2 += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(227, 248, 249)').height(150)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Button ('Persist Input:' this.str).onClick(() => {
+          if (this.isValue == CustomKeyboardContinueFeature.ENABLED) {
+            this.isValue = CustomKeyboardContinueFeature.DISABLED
+            this.str = 'No'
+          } else {
+            this.isValue = CustomKeyboardContinueFeature.ENABLED
+            this.str = 'Yes'
+          }
+          this.getUIContext().setCustomKeyboardContinueFeature(this.isValue);
+        }).fontSize(20).width('80%').key('button')
+
+        TextInput({
+          placeholder: 'TextInput1 bind CustomKeyboardBuilder',
+          controller: this.controller,
+          text: this.inputValue
+        }) // Bind a custom keyboard.
+          .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+        TextInput({
+          placeholder: 'TextInput2 bind CustomKeyboardBuilder2',
+          controller: this.controller2,
+          text: this.inputValue2
+        }) // Bind a custom keyboard.
+          .customKeyboard(this.CustomKeyboardBuilder2(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+      }
+    }
+  }
+}
+```
+
+![customKeyboardContinueFeature](arkui-ts/figures/customKeyboardContinueFeature.gif)

@@ -66,7 +66,7 @@ function crlSample(): void {
       return;
     }
     // 创建X509CRL实例成功。
-    console.info('createX509CRL success');
+    console.info('createX509CRL result: success.');
 
     // 获取CRL的版本。
     let version = x509Crl.getVersion();
@@ -86,24 +86,24 @@ function crlSample(): void {
     // 公钥的二进制数据需要传入@ohos.security.cryptoFramework的convertKey()方法去获取公钥对象。
     try {
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-      console.info('createAsyKeyGenerator success');
+      console.info('createAsyKeyGenerator result: success.');
       let pubEncodingBlob: cryptoFramework.DataBlob = {
         data: pubKeyData,
       };
       keyGenerator.convertKey(pubEncodingBlob, null, (e, keyPair) => {
         if (e == null) {
-          console.info('convert key success');
+          console.info('convertKey result: success.');
           x509Crl.verify(keyPair.pubKey, (err, data) => {
             if (err == null) {
               // 签名验证成功。
-              console.info('verify success');
+              console.info('verify result: success.');
             } else {
               // 签名验证失败。
               console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
             }
           });
         } else {
-          console.error(`convert key failed, message: ${e.message}, code: ${e.code} `);
+          console.error(`convert key failed, errCode: ${e.code}, errMsg: ${e.message}`);
         }
       })
     } catch (error) {
@@ -132,7 +132,7 @@ function crlSample(): void {
           // 根据序列号来获取被吊销的证书。
           try {
             let crlEntry = x509Crl.getRevokedCert(serial);
-            console.info('get getRevokedCert success');
+            console.info('getRevokedCert result: success.');
             let serialNumber = crlEntry.getSerialNumber();
             console.info(`crlEntry serialNumber is: ${serialNumber}`);
 

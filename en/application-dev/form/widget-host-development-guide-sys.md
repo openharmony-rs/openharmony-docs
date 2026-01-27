@@ -20,7 +20,7 @@ A widget usually appears as a part of the UI of another application (which curre
   
   - Widget Manager: a resident agent that provides widget management features such as periodic widget updates.
   
-   ![formHostMoudle](./figures/widget-host-development-guide-1.png)
+   ![formHostModule](./figures/widget-host-development-guide-1.png)
 
 ## When to Use
 
@@ -285,7 +285,7 @@ struct formHostSample {
             this.getAllBundleFormsInfo();
           })
 
-        // After the user clicks a button, a selection page is displayed. After the user clicks OK, the selected widget of the default size is added.
+        // After a user taps the button, a selection page is displayed. After the user taps OK, the selected widget of the default size is added.
         // Replace $r('app.string.selectAddForm') with the actual resource file. In this example, the value of the resource file is "Add widget".
         Button($r('app.string.selectAddForm'))
           .enabled(this.showFormPicker)

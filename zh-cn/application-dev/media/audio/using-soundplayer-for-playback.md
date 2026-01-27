@@ -18,7 +18,7 @@ SoundPlayer提供系统音效播放功能，适用于拍照或录像提示音，
 | -------- | -------- | -------- |
 | PHOTO_SHUTTER | 0 | 拍照音效。 | 
 | VIDEO_RECORDING_BEGIN | 1 | 视频录制开始音效。 | 
-| SVIDEO_RECORDING_END | 2 | 视频录制结束音效。 |
+| VIDEO_RECORDING_END | 2 | 视频录制结束音效。 |
 
 ## 开发步骤
 

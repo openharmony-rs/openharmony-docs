@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -14,12 +14,12 @@ The **Swiper** component provides a preloading mechanism, which you can use to i
 
 ## Layout and Constraints
 
-The **Swiper** component follows its own size settings if they are configured. If the component does not have its own size settings configured, it follows the size of its parent component when the **prevMargin** or **nextMargin** attribute is set, or adapts its size to its child components otherwise.
+The **Swiper** component follows its own size settings if they are configured. If the component does not have its own size settings configured, it follows the size of its parent component when the [prevMargin](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#prevmargin10) or [nextMargin](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#nextmargin10) attribute is set, or adapts its size to its child components otherwise.
 
 
 ## Loop Playback
 
-The **loop** attribute sets whether to enable loop playback. The default value is **true**.
+The [loop](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#loop) attribute sets whether to enable loop playback. The default value is **true**.
 
 When **loop** is set to **true**, the user can switch to the previous or next page when they are on the first or last page. When **loop** is set to **false**, this behavior is disabled.
 
@@ -73,7 +73,7 @@ When **loop** is set to **true**, the user can switch to the previous or next pa
 
 ## Automatic Playback
 
-The **autoPlay** attribute sets whether to enable automatic playback for child component switching. Its default value is **false**.
+The [autoPlay](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#autoplay) attribute sets whether to enable automatic playback for child component switching. Its default value is **false**.
 
 When **autoPlay** is set to **true**, automatic playback is enabled for child component switching. The playback interval is specified by the **interval** attribute, which is **3000** by default, in milliseconds.
 
@@ -94,7 +94,7 @@ When **autoPlay** is set to **true**, automatic playback is enabled for child co
 
 ## Navigation Indicator
 
-The **Swiper** component comes with default indicator and arrow styles, with the indicators centered at the bottom and arrows hidden.
+The **Swiper** component comes with default indicator and arrow styles, with the indicators centered at the bottom and arrows hidden by default. You can customize the position and style of the indicator using the [indicator](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#indicator) attribute.
 
 With the **indicator** attribute, you can set the position of the indicator relative to the edges of the **Swiper** component, in addition to the size, color, and mask of each indicator as well as the color of the selected indicator.
 
@@ -290,7 +290,7 @@ export struct SwiperPageSwitchMethod {
 
 ## Playback Direction
 
-You can set the playback direction for the Swiper component through its **vertical** attribute.
+The **Swiper** component supports both horizontal and vertical swiping, controlled primarily by the [vertical](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#vertical) attribute.
 
 When **vertical** is set to **true**, vertical swiping is used. When **vertical** is set to **false**, horizontal swiping is used. The default value of **vertical** is **false**.
 
@@ -463,7 +463,7 @@ export struct SwiperCustomAnimation {
 
 ## Synchronizing the Swiper with the Tabs
 
-When the selected item in the **Swiper** changes, the new index is passed to the **onSelected** callback. You can then call **tabsController.changeIndex(index)** to synchronize the **Tabs** component.
+When the selected item in the **Swiper** changes, the new index is passed to the [onSelected](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#onselected18) callback. You can then call [tabsController.changeIndex(index)](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#changeindex) to synchronize the **Tabs** component.
 
 <!-- @[swiper_tabs_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAndTabsLinkage.ets) -->
 
@@ -501,6 +501,7 @@ export struct SwiperAndTabsLinkage {
   private tabsController: TabsController = new TabsController();
   private swiperController: SwiperController = new SwiperController();
   private swiperData: MyDataSource = new MyDataSource([]);
+  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   aboutToAppear(): void {
     for (let i = 0; i <= 9; i++) {
@@ -529,7 +530,9 @@ export struct SwiperAndTabsLinkage {
           Column() {
             Tabs({ barPosition: BarPosition.Start, controller: this.tabsController }) {
               ForEach(this.list, (index: number) =>{
-                TabContent().tabBar(this.tabBuilder(index, 'Tab ' + this.list[index]))
+                // Configure a resource whose name is 'swiper_text1' and value is a non-empty string in the resources\base\element\string.json file.
+                TabContent().tabBar(this.tabBuilder(index,
+                  this.context.resourceManager.getStringByNameSync('swiper_text1') + this.list[index]))
               })
             }
             .onTabBarClick((index: number) => {
@@ -572,7 +575,7 @@ export struct SwiperAndTabsLinkage {
 
 ## Setting the Spacing Between Dots
 
-Use the **space** property of **DotIndicator** to set the spacing between dots.
+Use the [space](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#space19) attribute of **DotIndicator** to set the spacing between dots.
 
 <!-- @[dot_indicator_space](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIgnoreComponentSize.ets) -->
 
@@ -590,7 +593,7 @@ Swiper(
 
 ## Ignoring the Navigation Indicator Component Size
 
-After the bottom of the navigation indicator is set to 0, a gap may still exist between the indicator and the bottom of the **Swiper** component. To remove this gap, apply the **bottom(bottom, ignoreSize)** attribute. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
+After the [bottom](../reference/apis-arkui/arkui-ts/ts-container-swiper.md#bottom) of the navigation point is set to **0**, there is still a certain spacing between the bottom of the navigation point and the bottom of the **Swiper**. To remove this gap, apply the **bottom(bottom, ignoreSize)** attribute. Set **ignoreSize** to **true** to ignore the navigation indicator component size.
 
 - Ignoring the dot navigation indicator component size:
 
@@ -794,9 +797,9 @@ export struct SwiperVisibleContentPosition {
   @State index: number = 3;
 
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
-        // ···
+        // ...
             Swiper() {
               LazyForEach(this.data, (item: string) => {
                 Text(item.toString())
@@ -812,7 +815,7 @@ export struct SwiperVisibleContentPosition {
             })
             .index(3)
             .maintainVisibleContentPosition(true)
-            // ···
+            // ...
 
             Column({ space: 12 }) {
               Text('index:' + this.index).fontSize(20)
@@ -827,13 +830,14 @@ export struct SwiperVisibleContentPosition {
                 })
               }
             }.margin(5)
-            // ···
+            // ...
       }.width('100%')
       .margin({ top: 5 })
-    // ···
+      // ...
   }
 }
 ```
 
 ![control](figures/maintainVisibleContentPosition_true.gif)
 
+<!--RP1--><!--RP1End-->

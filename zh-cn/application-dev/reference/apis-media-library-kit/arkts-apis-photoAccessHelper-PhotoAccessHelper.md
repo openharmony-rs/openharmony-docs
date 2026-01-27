@@ -27,7 +27,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
- 通过picker的方式调用该接口来查询指定uri对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
+ 通过picker的方式调用该接口来查询指定URI对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[指定URI获取图片或视频资源](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
 
 **参数：**
 
@@ -90,7 +90,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
- 通过picker的方式调用该接口来查询指定uri对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
+ 通过picker的方式调用该接口来查询指定URI对应的图片或视频资源，不需要申请'ohos.permission.READ_IMAGEVIDEO'权限，详情请参考[指定URI获取图片或视频资源](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#指定uri获取图片或视频资源)。
 
 **参数：**
 
@@ -217,7 +217,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 指定文件类型、后缀和创建选项，创建图片或视频资源。使用callback方式返回结果。
 
-在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -276,7 +276,7 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 指定文件类型和后缀，创建图片或视频资源，使用callback方式返回结果。
 
-在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -331,7 +331,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 指定文件类型、后缀和创建选项，创建图片或视频资源，以Promise方式返回结果。
 
-在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -384,6 +384,66 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.info('createAsset successfully');
   } catch (err) {
     console.error(`createAsset failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+## createPhotoAsset<sup>23+</sup>
+
+createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promise\<string\>
+
+指定文件类型、后缀和标题，创建图片或视频资源。使用Promise异步回调。
+
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                      |
+| -------- | ------------------------ | ---- | ------------------------- |
+| photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 创建的文件类型。例如：IMAGE或者VIDEO类型。              |
+| extension  | string        | 是   | 文件名后缀参数。例如：'jpg'。              |
+| title | string | 否   | 图片或视频资产的标题。     |
+
+**返回值：**
+
+| 类型                        | 说明           |
+| --------------------------- | -------------- |
+| Promise&lt;string&gt; | Promise对象，返回创建的图片或视频的URL。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 23800151 | The scenario parameter verification fails.Possible causes: 1. The extension format is unsupported. 2. Title contains unsupported character, such as . .. \ / : * ? " ' ` < > \| { } [ ]. 3. The title is an empty string 4. The total length of title and extension is more than 255. |
+| 23800301 | Internal systtem error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2.The fille system is abnormal; 3. The IPC request time out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('createPhotoAssetDemo');
+  try {
+    let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let title: string = 'testPhoto';
+    let uri: string = await phAccessHelper.createPhotoAsset(photoType, extension, title);
+    console.info('createPhotoAsset uri' + uri);
+    console.info('createPhotoAsset successfully');
+  } catch (err) {
+    console.error(`createPhotoAsset failed, error: ${err.code}, ${err.message}`);
   }
 }
 ```
@@ -630,11 +690,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   let onCallback2 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   // 注册onCallback1监听。
   phAccessHelper.registerChange(photoAsset.uri, false, onCallback1);
@@ -715,7 +775,7 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
-在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[开发指南](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -842,7 +902,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 > **说明：**
 >
-> 当传入uri为沙箱路径时，可正常保存图片/视频，但无界面预览。
+> 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -852,14 +912,14 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | 是 | 需保存到媒体库中的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>- 一次弹窗最多保存100张图片。<br>- 仅支持处理图片、视频uri。<br>- 不支持手动拼接的uri，需调用接口获取，获取方式参考[媒体文件uri获取方式](../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。  |
+| srcFileUris | Array&lt;string&gt; | 是 | 需保存到媒体库中的图片/视频文件对应的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>- 一次弹窗最多保存100张图片。<br>- 仅支持处理图片、视频URI。<br>- 不支持手动拼接的URI，需调用接口获取，获取方式参考[媒体文件URI获取方式](../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。  |
 | photoCreationConfigs | Array&lt;[PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt; | 是 | 保存图片或视频到媒体库的配置，包括文件名等，与srcFileUris保持一一对应。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。 |
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给应用的媒体库文件uri列表。uri已对应用授权，支持应用写入数据。如果生成uri异常，则返回批量创建错误码。<br>返回-3006表示不允许出现非法字符；返回-2004表示图片类型和后缀不符；返回-203表示文件操作异常。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给应用的媒体库文件URI列表。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>具体返回值情况如下：<br>- 返回-3006表示不允许出现非法字符。<br>- 返回-2004表示图片类型和后缀不符。<br>- 返回-203表示文件操作异常。 |
 
 **错误码：**
 
@@ -901,13 +961,150 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+## showAssetsCreationDialogEx<sup>23+</sup>
+
+showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: Array&lt;CreationSetting&gt;): Promise&lt;Array&lt;string&gt;&gt;
+
+调用接口显示保存确认弹窗。使用Promise异步回调。
+
+> **说明：**
+>
+> - 用户同意后，返回已创建并授予保存权限的URI列表，该列表永久有效，支持写入图片/视频。用户拒绝时，返回空列表。
+> - 弹框需显示应用名称，名称和图标需在module.json5文件的abilities标签中配置label和icon项。
+> - 当传入URI为沙箱路径时，可正常保存图片或视频，但不显示界面预览。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名           | 类型                                                                                 | 必填 | 说明                      |
+| ---------------- |-------------------------------------------------------------------------------------| ---- | ------------------------- |
+| srcFileUris      | Array&lt;string&gt;                                                                 | 是 | 需保存到媒体库中的图片或视频文件对应的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>- 一次弹窗最多保存100张图片。<br>- 仅支持处理图片和视频URI。<br>- 不支持手动拼接URI，需调用接口获取，具体请参考[媒体文件URI获取方式](../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。  |
+| creationSettings | Array&lt;[CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)&gt; | 是 | 保存图片或视频到媒体库的配置，包括文件名等，与srcFileUris参数中的URI保持一一对应。 |
+
+**返回值**：
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回给应用的媒体库文件URI列表。支持应用使用返回的URI写入数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ----------------------- |
+| 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('ShowAssetsCreationDialogExDemo.');
+
+  try {
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+    ];
+    let creationSettings: Array<photoAccessHelper.CreationSetting> = [
+      {
+        title: 'test2', // 可选。
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE
+      }
+    ];
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
+    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
+  } catch (err) {
+    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
+}
+```
+## showSingleAssetCreationDialogEx<sup>23+</sup>
+
+showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSetting, isImageFullyDisplayed: boolean): Promise&lt;string&gt;
+
+针对单个图片/视频调用接口显示保存确认弹窗。使用Promise异步回调。
+
+> **说明：**
+>
+> - 如果用户同意保存，将返回一个已创建并授予保存权限的URI（此URI永久生效），应用可使用这个URI写入图片或视频。如果用户拒绝保存，将返回一个空字符串。
+> - 弹框需显示应用名称，但无法直接获取。因此，调用此接口时，请确保`module.json5`文件中的`abilities`标签已配置`label`和`icon`项。需要注意的是，图标不受`abilities`标签中的`icon`项影响，不支持修改。
+> - 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                                                                   | 必填 | 说明                      |
+| -------- |----------------------------------------------------------------------| ---- | ------------------------- |
+| srcFileUri | string | 是 | 需要保存到媒体库中的图片/视频文件所对应的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>- 一次弹窗最多保存1张图片。<br>- 仅支持处理图片、视频URI。<br>- 不支持手动拼接的URI，需调用接口获取，具体请参考[媒体文件URI获取方式](../../file-management/user-file-uri-intro.md#媒体文件uri获取方式)。  |
+| creationSetting | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23) | 是 | 保存图片或视频到媒体库的配置（包括文件名等），与srcFileUri保持对应。 |
+| isImageFullyDisplayed | boolean | 是 | 表示是否完整显示图片。true表示完整显示，false表示不完整显示。  |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。URI已对应用授权，支持应用写入数据。如果生成URI异常，则返回批量创建错误码。<br>具体返回值情况如下：<br>- 返回-3006表示不允许出现非法字符。<br>- 返回-2004表示图片类型和后缀不符。<br>- 返回-203表示文件操作异常。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('ShowSingleAssetCreationDialogExDemo.');
+
+  try {
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
+    let srcFileUri: string = [
+      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+    ];
+    let creationSetting: photoAccessHelper.CreationSetting = {
+      title: 'test2', // 可选。
+      fileNameExtension: 'jpg',
+      photoType: photoAccessHelper.PhotoType.IMAGE
+    }
+    let isImageFullyDisplayed: boolean = true
+    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUris, photoCreationConfigs, isImageFullyDisplayed);
+    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUris);
+  } catch (err) {
+    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
+}
+```
+
 ## createAssetWithShortTermPermission<sup>12+</sup>
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
 
 接口提供给应用调用，支持首次调用后拉起保存确认弹框。在用户同意保存后返回已创建并授予保存权限的uri，支持应用使用uri写入图片/视频。
 
-在用户"同意"后的5min之内，同一个应用再次调用接口，支持无需弹框确认自动返回已授权的uri给应用，支持应用保存图片/视频。
+在用户"同意"后的5分钟之内，同一个应用再次调用接口，支持无需弹框确认自动返回已授权的uri给应用，支持应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -977,11 +1174,49 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+## createAssetWithShortTermPermissionEx<sup>23+</sup>
+
+createAssetWithShortTermPermissionEx(creationSetting: CreationSetting): Promise&lt;string&gt;
+
+应用调用该接口后，系统会首次拉起保存确认弹框。使用Promise异步回调。
+
+> **说明：**
+>
+> - 用户同意保存后，接口将返回已创建并授予保存权限的URI，应用可使用该URI写入图片/视频。
+> - 在用户同意后的5分钟内，若同一应用再次调用此接口，系统将无需弹框确认，直接返回已授权的URI，供应用保存图片/视频。退出应用会结束授权，再次进入需要重新弹出弹框进行确认授权。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.SHORT_TERM_WRITE_IMAGEVIDEO
+
+**参数**：
+
+| 参数名   | 类型                                                                   | 必填 | 说明                      |
+| -------- |----------------------------------------------------------------------| ---- | ------------------------- |
+| creationSetting | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23) | 是 | 保存图片或视频到媒体库时的配置项，包括保存的文件名等。|
+
+**返回值**：
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;string&gt; | Promise对象，返回给应用的媒体库文件URI。支持应用使用返回的URI写入数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied |
+| 14000011 |  Internal system error |
+
 ## requestPhotoUrisReadPermission<sup>14+</sup>
 
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
-<!--RP1--><!--RP1End-->调用接口给未授权的uri进行授权，返回已创建并授予保存权限的uri列表。
+<!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -991,13 +1226,13 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频uri，且最大数量限制为100个。|
+| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频URI，且最大数量限制为100个。|
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回已授权的uri列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回已授权的URI列表。 |
 
 **错误码：**
 
@@ -1027,6 +1262,64 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
   } catch (err) {
     console.error('requestPhotoUrisReadPermission failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
+}
+```
+
+## requestPhotoUrisReadPermissionEx<sup>23+</sup>
+ 	 
+requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;RequestReadPermissionResult&gt;
+
+应用调用接口为未授权的URI授权。使用promise异步回调。
+
+返回授权结果，其中包含已创建并授予保存权限的URI列表以及无效的URI列表。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+  
+​**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                                                                   | 必填 | 说明                      |
+| -------- |----------------------------------------------------------------------| ---- | ------------------------- |
+| srcFileUris | Array&lt;string&gt; | 是 | 需进行授权的图片/视频文件对应的[媒体库uri](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**注意：**<br>仅支持处理图片、视频uri，且最大数量限制为100个。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;RequestReadPermissionResult&gt; | Promise对象，返回已授权的uri列表和无效的uri列表。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800301 |  Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+console.info('requestPhotoUrisReadPermissionExDemo.');
+
+  try {
+    // 获取需要进行授权的图片/视频uri。
+    let srcFileUris: Array<string> = [
+      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+    ];
+    let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
+    console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
+  } catch (err) {
+    console.error('requestPhotoUrisReadPermissionEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
   }
 }
 ```
@@ -1517,7 +1810,7 @@ getRecentPhotoInfo(options?: RecentPhotoOptions): Promise\<RecentPhotoInfo>
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | 否   | 最近图片配置选项参数。若无此参数，则按照时间找到最近图片。<br>该参数在配置的情况下，需与RecentPhotoComponent组件中的options配置相同才可以查到一样的图片，否则可能存在接口能查到最近图片，组件没查到最近图片的情况。 |
+| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | 否   | 最近图片配置选项参数。若无此参数，则取按照创建时间排序的最新一张图片。<br>该参数在配置的情况下，需与RecentPhotoComponent组件中的options配置相同才可以查到一样的图片，否则可能存在接口能查到最近图片，组件没查到最近图片的情况。 |
 
 **返回值：**
 
@@ -1695,7 +1988,7 @@ offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChange
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 201 | Permission denied. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is registered repeatedly. 2. Asset has been removed. 3. The uri of the asset invalid.|
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The same callback is unregistered repeatedly. 2. The uri of the asset invalid. |
 | 23800301 | Internal system error. You are advised to retry and check the logs.Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**

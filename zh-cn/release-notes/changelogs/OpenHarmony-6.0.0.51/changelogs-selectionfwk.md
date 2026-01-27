@@ -8,7 +8,7 @@
 
 **变更原因**
 
-划词服务在判断到用户选择文本时，返回的[SelectionInfo](../../../application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md#selectioninfo)中不再包含text属性；同时新增[getSelectionContent](../../../application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md#getselectioncontent)方法，用于获取当前选中的文本内容，从而实现划词通知与获取文本内容的解耦。
+划词服务在判断到用户选择文本时，返回的[SelectionInfo](../../../application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)中不再包含text属性；同时新增[getSelectionContent](../../../application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanagergetselectioncontent)方法，用于获取当前选中的文本内容，从而实现划词通知与获取文本内容的解耦。
 
 **变更影响**
 
@@ -31,7 +31,7 @@
 
 **适配指导**
 
-开发者需要根据新的接口规范，调整现有代码逻辑，在监听到划词事件后，通过新增的[getSelectionContent](../../../application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager-sys.md#getselectioncontent)方法获取当前选中的文本内容。
+开发者需要根据新的接口规范，调整现有代码逻辑，在监听到划词事件后，通过新增的[getSelectionContent](../../../application-dev/reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanagergetselectioncontent)方法获取当前选中的文本内容。
 
 ```ts
 selectionManager.on('selectionCompleted', async (info: selectionManagerSelectionInfo) => {

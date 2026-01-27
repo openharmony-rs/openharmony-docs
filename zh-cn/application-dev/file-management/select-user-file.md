@@ -35,7 +35,7 @@
 
    ```ts
    const documentSelectOptions = new picker.DocumentSelectOptions();
-   // 选择文档的最大数目（可选）。
+   // 选择文件最大个数（可选）。API version 20及之前的版本，单次文件选择的最大数量上限为500个，默认值也为500。目录选择功能仅对具备该系统能力的设备开放，且单次最多可选择1个目录。API version 21及之后的版本取消文件选择数量的限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。API version 23及之后的版本取消目录选择数量的限制。
    documentSelectOptions.maxSelectNumber = 5;
    // 指定选择的文件或者目录的URI（可选）。
    documentSelectOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
@@ -49,7 +49,7 @@
    documentSelectOptions.multiAuthMode = false;
    //需要传入批量授权的uri数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.multiUriArray = ["file://docs/storage/Users/currentUser/test", "file://docs/storage/Users/currentUser/2test"];
-   //开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。API version 22及之后的版本当该参数置为非DEFAULT时，仅fileSuffixFilters参数生效，其他参数不生效。
+   //开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。
    //该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.mergeMode = picker.MergeTypeMode.DEFAULT;
    //是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。（说明：从API version 19开始支持该参数）。
@@ -153,11 +153,11 @@
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-   	//这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
-  		let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      //这里需要注意接口权限参数是fs.OpenMode.READ_ONLY。
+      let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. 通过fd可以使用[基础文件API的fs.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#readsync)接口读取这个文件内的数据。

@@ -1,4 +1,5 @@
 # @ohos.effectKit (Image Effects)
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanamaru-->
@@ -6,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-This module provides basic image processing capabilities, including brightness adjustment, blurring, grayscale adjustment, and color picker. The effectKit module processes images (such as PixelMap, PNG, and JPEG) offline to obtain visual effects. The uiEffect module connects to the rendering service in real time and process the screen frame buffer to obtain dynamic visual effects.
+This module provides basic image processing capabilities, including brightness adjustment, blurring, grayscale adjustment, and color picker. The **effectKit** module processes images (such as PixelMap, PNG, and JPEG) offline to obtain visual effects. The **uiEffect** module connects to the rendering service in real time and process the screen frame buffer to obtain dynamic visual effects.
 
 This module provides the following classes:
 
@@ -142,7 +143,7 @@ Creates a **ColorPicker** instance for the selected region based on a pixel map.
 | Name    | Type        | Mandatory| Description                      |
 | -------- | ----------- | ---- | -------------------------- |
 | source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  |  **PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md).|
-| region   | Array\<number> | Yes  |  Region of the image from which the color is picked.<br>The array consists of four elements, representing the left, top, right, and bottom positions of the image, respectively. The value of each element must be in the range [0, 1]. The leftmost and topmost positions of the image correspond to 0, and the rightmost and bottom positions correspond to 1. In the array, the third element must be greater than the first element, and the fourth element must be greater than the second element.|
+| region   | Array\<number> | Yes  |  Region of the image from which the color is picked.<br>The array consists of four elements, representing the left, top, right, and bottom positions of the image, respectively. The value of each element must be in the range [0, 1]. The leftmost and topmost positions of the image correspond to **0**, and the rightmost and bottom positions correspond to **1**. In the array, the third element must be greater than the first element, and the fourth element must be greater than the second element.|
 
 **Return value**
 
@@ -254,7 +255,7 @@ Creates a **ColorPicker** instance for the selected region based on a pixel map.
 | Name    | Type               | Mandatory| Description                      |
 | -------- | ------------------ | ---- | -------------------------- |
 | source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes |**PixelMap** instance created by the image module. An instance can be obtained by decoding an image or directly created. For details, see [Introduction to Image Kit](../../media/image/image-overview.md). |
-| region   | Array\<number> | Yes  |  Region of the image from which the color is picked.<br>The array consists of four elements, representing the left, top, right, and bottom positions of the image, respectively. The value of each element must be in the range [0, 1]. The leftmost and topmost positions of the image correspond to 0, and the rightmost and bottom positions correspond to 1. In the array, the third element must be greater than the first element, and the fourth element must be greater than the second element.|
+| region   | Array\<number> | Yes  |  Region of the image from which the color is picked.<br>The array consists of four elements, representing the left, top, right, and bottom positions of the image, respectively. The value of each element must be in the range [0, 1]. The leftmost and topmost positions of the image correspond to **0**, and the rightmost and bottom positions correspond to **1**. In the array, the third element must be greater than the first element, and the fourth element must be greater than the second element.|
 | callback | AsyncCallback\<[ColorPicker](#colorpicker)> | Yes | Callback used to return the **ColorPicker** instance created.|
 
 **Error codes**
@@ -482,13 +483,13 @@ Obtains a given number of colors with the top proportions in the image. This API
 **Parameters**
 | Name     | Type  | Mandatory| Description             |
 | ---------- | ------ | ---- | ------------------------------------------- |
-| colorCount | number | Yes  | Number of colors to obtain. The value range is [1, 10]. If a non-integer is passed in, the value will be rounded down.  |
+| colorCount | number | Yes  | Number of colors to be obtained. The value is rounded down.<br>Note: For versions earlier than <!--RP1-->OpenHarmony 6.1<!--RP1End-->, the value range is [1, 10]. If the number of colors to be obtained exceeds 10, only the top 10 colors are retained. Starting from <!--RP1-->OpenHarmony 6.1<!--RP1End-->, the value range is [1, 20]. If the number of colors to be obtained exceeds 20, only the top 20 colors are retained.  |
 
 **Return value**
 
 | Type                                    | Description                                           |
 | :--------------------------------------- | :---------------------------------------------- |
-| Array<[Color](#color) \| null> | Array of colors, sorted by proportion.<br>- If the number of colors obtained is less than the value of **colorCount**, the array size is the actual number obtained.<br>- If the colors fail to be obtained or the number of colors obtained is less than 1, **[null]** is returned.<br>- If the value of **colorCount** is greater than 10, an array holding the first 10 colors with the top proportions is returned.|
+ | Array<[Color](#color) \| null> | Array of colors, sorted by proportion.<br>- If the number of colors obtained is less than the value of **colorCount**, the array size is the actual number obtained.<br>- If the colors fail to be obtained or the number of colors obtained is less than 1, **[null]** is returned.|
 
 **Example**
 
@@ -704,7 +705,7 @@ Adds the blur effect to the filter linked list, and returns the head node of the
 **Example**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
@@ -719,7 +720,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius);
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -793,7 +794,7 @@ Adds the blur effect to the filter linked list, and returns the head node of the
 **Example**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
@@ -808,7 +809,7 @@ function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.blur(radius, effectKit.TileMode.DECAL);
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -871,7 +872,7 @@ Adds the inversion effect to the filter linked list, and returns the head node o
 **Example**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
@@ -885,7 +886,7 @@ function ImageInvert(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.invert();
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -962,7 +963,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
@@ -982,7 +983,7 @@ function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.setColorMatrix(colorMatrix);
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1054,7 +1055,7 @@ Adds the brightness effect to the filter linked list, and returns the head node 
 **Example**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
@@ -1069,7 +1070,7 @@ function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.brightness(bright);
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1136,7 +1137,7 @@ Adds the grayscale effect to the filter linked list, and returns the head node o
 **Example**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // Pass the image data to be read.
@@ -1150,7 +1151,7 @@ function ImageGrayscale(Image: ArrayBuffer): Promise<image.PixelMap> {
         headFilter.grayscale();
       }
       // Process the image based on the added effect flag and return the processed image data.
-      headFilter.getEffectPixelMap(false).then(imageData => {
+      headFilter.getEffectPixelMap().then(imageData => {
         resolve(imageData);
       })
     })
@@ -1292,7 +1293,7 @@ Obtains **image.PixelMap** of the source image to which the filter linked list i
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. You are advised to use [getEffectPixelMap](#geteffectpixelmap11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [getEffectPixelMap](#geteffectpixelmap11) instead.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

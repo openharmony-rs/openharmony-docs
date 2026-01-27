@@ -96,7 +96,7 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 
 | Name| typedef Keyword| Description|
 | ---- | ------------- | ---- |
-| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. Prerequisite is as follows: The current compiler is not a C++ compiler|or| the compiler is a Microsoft Visual C++ compiler and the version is earlier than Visual Studio 2015 (excluded).|
+| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. The prerequisite is as follows: the current compiler is not a C++ compiler, or it is a Microsoft Visual C++ compiler with a version earlier than Visual Studio 2015 (exclusive).|
 
 ## Enum Description
 
@@ -118,7 +118,7 @@ Enumerates the behaviors of controlling JavaScript object properties.
 | JSVM_WRITABLE = 1 << 0                                                                | Writable property.                                           |
 | JSVM_ENUMERABLE = 1 << 1                                                              | Enumerable property.                                          |
 | JSVM_CONFIGURABLE = 1 << 2                                                            | Configurable property.                                          |
-| JSVM_NO_RECEIVER_CHECK = 1 << 3                                                       | Receiver used to mark the local methods does not need to be checked. If **JSVM_NO_RECEIVER_CHECK** is not set, the method accepts only the instance of the defined class as the receiver. Otherwise, an exception "TypeError: illegal call" is thrown to JSVM.                                          |
+| JSVM_NO_RECEIVER_CHECK = 1 << 3                                                       | Receiver used to mark the local methods does not need to be checked. If **JSVM_NO_RECEIVER_CHECK** is not set, the method accepts only the instance of the defined class as the receiver. Otherwise, an exception "TypeError: illegal call" is thrown to the JSVM.                                          |
 | JSVM_STATIC = 1 << 10                                                                 | Static property of the class, instead of the default instance property. Used only by **OH_JSVM_DefineClass**.|
 | JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE                              | Configurable, writable, but not enumerable property, like a method of a JavaScript class.                     |
 | JSVM_METHOD_NO_RECEIVER_CHECK = JSVM_DEFAULT_METHOD \| JSVM_NO_RECEIVER_CHECK         | Class method whose receiver does not need to be checked.                     |
@@ -401,7 +401,7 @@ Enumerates categories of the JSVM internal trace events.
 | JSVM_TRACE_COMPILE | Collects the calls of compilation APIs, for example, background compilation.|
 | JSVM_TRACE_EXECUTE | Collects the calls of APIs related to the running status, for example, task interruption and microtasks.|
 | JSVM_TRACE_RUNTIME | Collects information about the external function calls.|
-| JSVM_TRACE_STACK_TRACE | Collects information about the return stack in JSVM.|
+| JSVM_TRACE_STACK_TRACE | Collects stack trace information from the JSVM.|
 | JSVM_TRACE_WASM | Collects the calls of main WASM APIs, for example, compiling and instantiating WASM modules.|
 | JSVM_TRACE_WASM_DETAILED | Collects detailed WASM API calls, for example, background compilation and jumpboard compilation.|
 
@@ -571,7 +571,7 @@ Defines a pointer to the callback of the ASCII output stream. **data** indicates
 
 | Type| Description|
 | -- | -- |
-| bool | Returns **true** if the stream can continue to receive data; returns **false** if the stream is terminated.|
+| bool | Returns **true** if the stream can continue to receive data; returns **false** if the stream is closed.|
 
 ### JSVM_HandlerForGC()
 

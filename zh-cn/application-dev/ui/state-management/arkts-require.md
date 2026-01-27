@@ -109,14 +109,14 @@ struct ChildPage {
   build() {
     Column() {
       Text(`ChildPage childInfo name :${this.childInfo.name}`)
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
+        .fontSize(15)
+        .height(30)
       Text(`ChildPage childInfo age :${this.childInfo.age}`)
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
+        .fontSize(15)
+        .height(30)
       Text(`ChildPage stateValue age :${this.stateValue}`)
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
+        .fontSize(15)
+        .height(30)
     }
   }
 }
@@ -132,24 +132,16 @@ struct ParentPage {
   build() {
     Column() {
       Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1。
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+        .fontSize(25)
+        .height(30)
       // 父组件ParentPage构造子组件ChildPage时进行了构造赋值。
       // 为ChildPage中被@Require @Param装饰的childInfo和stateValue属性传入了值。
       ChildPage({ childInfo: this.info1, stateValue: this.label1 }) // 创建自定义组件。
-      Line()
-        .width('100%')
-        .height(5)
-        .backgroundColor('#000000').margin(10)
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2。
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
+        .fontSize(25)
+        .height(30)
       // 同上，在父组件创建子组件的过程中进行构造赋值。
       ChildPage({ childInfo: this.info2, stateValue: this.label2 }) // 创建自定义组件。
-      Line()
-        .width('100%')
-        .height(5)
-        .backgroundColor('#000000').margin(10)
       Button('change info1&info2')
         .onClick(() => {
           this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是info1没有装饰器装饰，监听不到值的改变。
@@ -158,9 +150,11 @@ struct ParentPage {
           this.label2 = 'Luck'; // 会刷新，原因是label2有装饰器装饰，可以监听到值的改变。
         })
     }
+    .width('100%')
   }
 }
 ```
+![](figures/arkts-require-1.gif)
 
 从API version 18开始，使用\@Require装饰\@State、\@Prop、\@Provide装饰的状态变量，可以在无本地初始值的情况下直接在组件内使用，不会编译报错。
 

@@ -46,6 +46,7 @@
 | AVERR_SUPER_RESOLUTION_UNSUPPORTED<sup>18+</sup> | 5410003 | 表示不支持超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | AVERR_SUPER_RESOLUTION_NOT_ENABLED<sup>18+</sup> | 5410004 | 表示未使能超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | AVERR_PARAMETER_OUT_OF_RANGE<sup>20+</sup> | 5400108 | 表示参数超过取值范围。 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
+| AVERR_IO_CLEARTEXT_NOT_PERMITTED<sup>23+</sup> | 5411012 | 表示不允许HTTP明文访问。 <br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。        |
 
 ## MediaType<sup>8+</sup>
 
@@ -167,9 +168,9 @@ Codec MIME类型枚举。
 | RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | 表示资源建链时长，单位为毫秒（ms）。       |
 | FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | 表示第一帧的解封装时长，单位为毫秒（ms）。 |
 | TOTAL_PLAYING_TIME                 | 'total_playback_time'                | 表示总的播放时长，单位为毫秒（ms）。       |
-| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'                      | 表示总的请求次数。                         |
+| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'             | 表示总的请求次数。<br> **模型约束：** 此接口仅可在Stage模型下使用。                         |
 | TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | 表示总的加载时长，单位为毫秒（ms）。       |
-| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。             |
+| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。<br> **模型约束：** 此接口仅可在Stage模型下使用。             |
 | STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。                         |
 | TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。       |
 

@@ -611,7 +611,7 @@ Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/h
 
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
-Method 3: If this error code is reported during the installation of the APP file, set **appWithSignedPkg** to **true** in the [project-level build-profile.json5 file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app) to ensure that the HAP/HSP in the APP file is signed.
+Method 3: If this error code is reported during application installation, set **appWithSignedPkg** of [packOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215) to **true** in the [project-level build-profile.json5 file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app) to ensure that the HAP or HSP in the APP is signed.
 
 ### 9568321 Failed to Parse the Signature File
 **Error Message**

@@ -14,7 +14,7 @@ Implements the **FileSelectorParam** object to obtain files. For details about t
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>9+</sup>
 
@@ -126,7 +126,7 @@ Obtains the default path of the file selector, which corresponds to **startIn** 
 
 getDescriptions(): Array\<string\>
 
-Obtains the descriptions of a group of file types, which are descriptions of the allowed file types, corresponding to **description** in HTML's [option](../../web/web-file-upload.md#customizing-the-file-request-initiated-by-the-javascript-api).
+Obtains the descriptions of a group of file types, which are optional descriptions of allowed file types and correspond to **description** in HTML's [option](../../web/web-file-upload.md#customizing-the-file-request-initiated-by-the-javascript-api).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -140,7 +140,7 @@ Obtains the descriptions of a group of file types, which are descriptions of the
 
 isAcceptAllOptionExcluded(): boolean
 
-Checks whether the file selector supports the option (\*\/\*), that is, all files, which corresponds to **excludeAcceptAllOption** in HTML's [option](../../web/web-file-upload.md#customizing-the-file-request-initiated-by-the-javascript-api).
+Checks whether the file selector supports the option (\*\/\*), that is, all files. This API corresponds to **excludeAcceptAllOption** in HTML's [option](../../web/web-file-upload.md#customizing-the-file-request-initiated-by-the-javascript-api).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -154,7 +154,7 @@ Checks whether the file selector supports the option (\*\/\*), that is, all file
 
 getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
 
-Obtains the file types, which corresponds to **types** in HTML's [option](../../web/web-file-upload.md#customizing-the-file-request-initiated-by-the-javascript-api).
+Obtains the file types, which correspond to **types** in HTML's [option](../../web/web-file-upload.md#customizing-the-file-request-initiated-by-the-javascript-api).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
