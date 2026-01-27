@@ -5,7 +5,7 @@
 <!--Owner: @liujiaxing2024-->
 <!--Designer: @junjie_shi-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块提供了应用事件打点能力，包括对打点数据的落盘，以及对打点功能的管理配置。
 

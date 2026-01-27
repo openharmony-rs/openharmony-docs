@@ -5,7 +5,7 @@
 <!--Owner: @BruceZong-->
 <!--Designer: @gcw_qzKyUhyU-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块提供了获取各类系统维测日志的能力。
 
