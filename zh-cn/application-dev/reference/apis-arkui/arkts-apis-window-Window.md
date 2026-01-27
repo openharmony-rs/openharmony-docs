@@ -7541,7 +7541,7 @@ clearWindowMask(): Promise&lt;void&gt;;
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                               |
 | 1300002  | This window state is abnormal. Possible casue: 1. The window is not created or destroyed; 2. Internal task error; 3. The window has not set window mask yet.  |
 | 1300003  | This window manager service works abnormally.                                                                      |
-| 1300004  | Unauthorized operation.  Possible casue: 1. The window is not subwindow and floating window.                       |
+| 1300004  | Unauthorized operation.  Possible casue: 1. The window is not subwindow and float window.                       |
 
 **示例：**
 
@@ -7550,15 +7550,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let array = new Array<number>(windowClass.getWindowProperties().windowRect.width).fill(1);
   let windowMask = new Array<Array<number>>(windowClass.getWindowProperties().windowRect.height).fill(array);
-  windowClass.setWindowMask(windowMask);
-  let promise = windowClass.clearWindowMask();
+  let promise = windowClass.setWindowMask(windowMask);
+  promise.then(() => {
+    console.info('Succeeded in setting the window mask.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+  promise = windowClass.clearWindowMask();
   promise.then(() => {
     console.info('Succeeded in clearing the window mask.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
