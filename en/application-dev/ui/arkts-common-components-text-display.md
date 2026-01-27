@@ -691,7 +691,6 @@ The following examples demonstrate usage of common APIs.
   }
   ```
 
-  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
 - Since API version 20, you can use [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20) to apply gradient color effects to text.
 
@@ -869,7 +868,6 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     }
     ```
 
-    ![text_bindselectionmenu](figures/text_bindselectionmenu.gif)
 
   - Customize menu items by configuring the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) attribute of the **Text** component. You can set the text content, icons, and callbacks for extended menu items.
 
@@ -930,7 +928,6 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     };
     ```
 
-    ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
 ### Closing the Selection Menu
 
@@ -1169,8 +1166,6 @@ Since API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-te
   }
   ```
 
-
-![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
 
 ## Configuring the AI Menu
 
