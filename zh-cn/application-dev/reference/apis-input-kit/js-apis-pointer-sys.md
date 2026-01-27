@@ -4602,7 +4602,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerColor(0xF6C800, (error: Error | null) => {
+            pointer.setPointerColor(0xF6C800, (error: BusinessError | null) => {
               if (error) {
                 console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
