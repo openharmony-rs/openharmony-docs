@@ -2016,7 +2016,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Updates the key operation by segment. The **updateSession** operation is used for user identity authentication and access control. This API uses an asynchronous callback to return the result.
+Updates the key operation. The **updateSession** operation is used for user identity authentication and access control. This API uses an asynchronous callback to return the result.
 
 **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
@@ -2158,7 +2158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 finishSession(handle: number, options: HuksOptions, token: Uint8Array, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Finishes the key operation by segment. The **finishSession** operation is used for user identity authentication and access control. This API uses an asynchronous callback to return the result.
+Finishes the key operation. The **finishSession** operation is used for user identity authentication and access control. This API uses an asynchronous callback to return the result.
 
 **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
@@ -3696,7 +3696,7 @@ Initializes a session for a key operation. This API uses a promise to return the
 
 update(handle: number, token?: Uint8Array, options: HuksOptions, callback: AsyncCallback\<HuksResult>) : void
 
-Updates the key operation data by segment. This API uses an asynchronous callback to return the result.
+Updates the key operation. This API uses an asynchronous callback to return the result.
 
 **huks.init**, **huks.update**, and **huks.finish** must be used together.
 
@@ -3719,7 +3719,7 @@ Updates the key operation data by segment. This API uses an asynchronous callbac
 
 update(handle: number, token?: Uint8Array, options: HuksOptions) : Promise\<HuksResult>
 
-Updates the key operation data by segment. This API uses a promise to return the result.
+Updates the key operation. This API uses a promise to return the result.
 
 **huks.init**, **huks.update**, and **huks.finish** must be used together.
 
