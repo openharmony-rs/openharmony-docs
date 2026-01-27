@@ -97,6 +97,8 @@ insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt
 
 向目标表中插入一行数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -178,6 +180,8 @@ if (store != undefined) {
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
 向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -262,6 +266,8 @@ if (store != undefined) {
 insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
 向目标表中插入一行数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -349,6 +355,8 @@ if (store != undefined) {
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promise&lt;number&gt;
 
 向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -438,6 +446,8 @@ insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):
 
 向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -513,8 +523,8 @@ if (store != undefined) {
   try {
     let rowId: number = (store as relationalStore.RdbStore).insertSync("EMPLOYEE", valueBucket1, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Insert is successful, rowId = ${rowId}`);
-  } catch (error) {
-    console.error(`Insert is failed, code is ${error.code},message is ${error.message}`);
+  } catch (err) {
+    console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -524,6 +534,8 @@ if (store != undefined) {
 insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution):number
 
 传入Sendable数据，向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -585,8 +597,8 @@ if (store != undefined) {
   try {
     let rowId: number = (store as relationalStore.RdbStore).insertSync("EMPLOYEE", sendableValuesBucket, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Insert is successful, rowId = ${rowId}`);
-  } catch (error) {
-    console.error(`Insert is failed, code is ${error.code},message is ${error.message}`);
+  } catch (err) {
+    console.error(`Insert is failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -600,6 +612,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 从API version 20开始，支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)。
 
@@ -696,6 +710,8 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -821,6 +837,8 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 按每批32766个参数，分批以[ConflictResolution.ON_CONFLICT_REPLACE](arkts-apis-data-relationalStore-e.md#conflictresolution10)策略写入，参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小，中途失败则立即返回。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -925,6 +943,8 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -1026,6 +1046,8 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
 
 请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1547,8 +1569,8 @@ if (store != undefined) {
   try {
     let rows: number = (store as relationalStore.RdbStore).updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Updated row count: ${rows}`);
-  } catch (error) {
-    console.error(`Updated failed, code is ${error.code},message is ${error.message}`);
+  } catch (err) {
+    console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -2020,7 +2042,9 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  if (devices != undefined) {
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
     deviceId = devices[0].networkId;
   }
 } catch (err) {
@@ -2105,7 +2129,9 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
-  if (devices != undefined) {
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
     deviceId = devices[0].networkId;
   }
 } catch (err) {
@@ -3022,6 +3048,7 @@ if (store != undefined) {
 beginTransaction():void
 
 在开始执行SQL语句之前，开始事务。
+
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -3211,6 +3238,7 @@ if (store != undefined) {
 commit():void
 
 提交已执行的SQL语句，跟[beginTransaction](#begintransaction)配合使用。
+
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -3339,6 +3367,7 @@ if (store != null) {
 rollBack():void
 
 回滚已经执行的SQL语句。
+
 此接口不允许嵌套事务，且不支持在多进程或多线程中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -3989,7 +4018,11 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  deviceId = devices[0].networkId;
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -4666,11 +4699,13 @@ on(event: 'statistics', observer: Callback&lt;SqlExecutionInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
-  console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
-  console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
-  console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
-  console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
-  console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  if (sqlExecutionInfo.sql.length > 0) {
+    console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
+    console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
+    console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
+    console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
+    console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  }
 };
 
 try {
@@ -4756,9 +4791,9 @@ try {
     'salary': 100.5,
     'codes': value,
   };
-  await store.executeSql(CREATE_TABLE_TEST);
   if (store != undefined) {
-    (store as relationalStore.RdbStore).insert('test', valueBucket);
+    await (store as relationalStore.RdbStore).executeSql(CREATE_TABLE_TEST);
+    await (store as relationalStore.RdbStore).insert('test', valueBucket);
   }
 } catch (err) {
   console.error(`Insert fail, code:${err.code}, message: ${err.message}`);
@@ -4796,11 +4831,13 @@ on(event: 'perfStat', observer: Callback&lt;SqlExecutionInfo&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let sqlExecutionInfo = (sqlExecutionInfo: relationalStore.SqlExecutionInfo) => {
-  console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
-  console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
-  console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
-  console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
-  console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  if (sqlExecutionInfo.sql.length > 0) {
+    console.info(`sql: ${sqlExecutionInfo.sql[0]}`);
+    console.info(`totalTime: ${sqlExecutionInfo.totalTime}`);
+    console.info(`waitTime: ${sqlExecutionInfo.waitTime}`);
+    console.info(`prepareTime: ${sqlExecutionInfo.prepareTime}`);
+    console.info(`executeTime: ${sqlExecutionInfo.executeTime}`);
+  }
 };
 
 try {
@@ -5228,7 +5265,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, cursor: number, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。
+清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5285,7 +5322,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, callback: AsyncCallback&lt;void&gt;): void
 
-清理云端删除的数据同步到本地后，未自动清理的所有数据。
+清理云端删除的数据同步到本地后，未自动清理的所有数据。使用callback异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5658,7 +5695,9 @@ lockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 根据RdbPredicates的指定实例对象从数据库中锁定数据，锁定数据不执行端云同步，使用Promise异步回调。
 
 该接口只支持主键为基本类型的表、不支持共享表、无主键表和复合类型主键表。
+
 该接口不支持依赖关系表之间的锁传递，如果表存在依赖关系，需要根据依赖关系手动调用该接口。
+
 该接口不支持对已删除数据的操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -5725,7 +5764,9 @@ unlockRow(predicates: RdbPredicates):Promise&lt;void&gt;
 根据RdbPredicates的指定实例对象从数据库中解锁数据，使用Promise异步回调。
 
 该接口只支持主键为基本类型的表、不支持共享表、无主键表和复合类型主键表。
+
 该接口不支持依赖关系表之间的锁传递，如果表存在依赖关系，需要根据依赖关系手动调用该接口。
+
 该接口不支持对已删除数据的操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

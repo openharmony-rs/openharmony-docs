@@ -343,7 +343,7 @@ struct DragControllerPage {
       Button('多对象dragAction customBuilder拖拽').onTouch((event?: TouchEvent) => {
         if (event) {
           if (event.type == TouchType.Down) {
-            console.info("muti drag Down by listener");
+            console.info("multi drag Down by listener");
             this.customBuilders.push(() => { this.DraggingBuilder() });
             this.customBuilders.push(() => { this.DraggingBuilder() });
             this.customBuilders.push(() => { this.DraggingBuilder() });
@@ -454,7 +454,7 @@ import { window, UIContext } from '@kit.ArkUI';
 
 cancelDataLoading(key: string): void
 
-当使用[startDataLoading](arkui-ts/ts-universal-events-drag-drop.md#dragevent7)获取拖拽数据时，可调用该接口取消数据传输。仅可在拖拽释放后调用。
+当使用[startDataLoading](arkui-ts/ts-universal-events-drag-drop.md#startdataloading15)获取拖拽数据时，可调用该接口取消数据传输。仅可在拖拽释放后调用。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 

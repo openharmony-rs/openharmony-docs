@@ -129,6 +129,7 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
     ```
 
 4. Obtain and set the surface ID of the window to display the video.
+
    The application obtains the surface ID from the **XComponent**. For details about the process, see [getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9).
 
     ```ts

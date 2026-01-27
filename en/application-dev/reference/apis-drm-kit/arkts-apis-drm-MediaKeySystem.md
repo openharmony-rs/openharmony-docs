@@ -5,11 +5,11 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
+MediaKeySystem manages MediaKeySystem instances, handles device certificate (DRM certificate) requests and processing, creates sessions, manages offline media keys, obtains DRM metrics, and obtain device configurations. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-MediaKeySystem manages MediaKeySystem instances, handles device certificate (DRM certificate) requests and processing, creates sessions, manages offline media keys, obtains DRM metrics, and obtain device configurations. Before calling any API in MediaKeySystem, you must use [createMediaKeySystem](arkts-apis-drm-f.md#drmcreatemediakeysystem) to create a MediaKeySystem instance.
 
 ## Modules to Import
 

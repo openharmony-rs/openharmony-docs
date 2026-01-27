@@ -268,7 +268,7 @@ Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSL
     }
     ```
 
-    ![zh-cn_image_0000001903284256](figures/zh-cn_image_0000001903284256.gif)
+    ![en-us_image_0000001903284256](figures/en-us_image_0000001903284256.gif)
 
 ## Using Keyframe Animations
 

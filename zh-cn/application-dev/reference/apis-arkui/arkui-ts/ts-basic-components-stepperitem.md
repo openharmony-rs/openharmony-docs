@@ -11,9 +11,9 @@
 
 >  **说明：**
 > 
-> 从API version 22开始，该组件不再维护，推荐使用组件[Swiper](ts-container-swiper.md)。
+> - 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](ts-container-swiper.md)替代。
 >
->  该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -27,17 +27,25 @@ StepperItem()
 
 创建[Stepper](ts-basic-components-stepper.md)组件的页面子组件。
 
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](ts-container-swiper.md#属性)替代。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 属性
 
-### prevLabel
+### prevLabel<sup>(deprecated)</sup>
 
 prevLabel(value: string)
 
 设置左侧文本按钮内容，第一页没有左侧文本按钮，当步骤导航器大于一页时，除第一页外默认值都为“返回”。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[showPrevious](ts-container-swiper.md#showprevious)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -49,11 +57,15 @@ prevLabel(value: string)
 | -------- | -------- | -------- | -------- |
 | value | string | 是 | 左侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。 |
 
-### nextLabel
+### nextLabel<sup>(deprecated)</sup>
 
 nextLabel(value: string)
 
 设置右侧文本按钮内容，最后一页默认值为“开始”，其余页默认值为“下一步”。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[showNext](ts-container-swiper.md#shownext)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -65,11 +77,15 @@ nextLabel(value: string)
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | string                          | 是   | 右侧文本按钮内容。字符串超长时，先缩小再换行（2行）最后截断。                        |
 
-### status
+### status<sup>(deprecated)</sup>
 
 status(value?: ItemState)
 
 设置步骤导航器nextLabel的显示状态。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 22开始废弃，建议使用[indicatorInteractive](ts-container-swiper.md#indicatorinteractive12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -96,10 +112,10 @@ status(value?: ItemState)
 
 |   名称    | 值 | 说明 |
 | -------- |-------- |-------- |
-| Normal | 0 |正常状态，右侧文本按钮正常显示，可点击进入下一个StepperItem。 |
-| Disabled | 1 |不可用状态，右侧文本按钮灰度显示，不可点击进入下一个StepperItem。 |
-| Waiting | 2 | 等待状态，右侧文本按钮不显示，显示等待进度条，不可点击进入下一个StepperItem。 |
-| Skip | 3 | 跳过状态，右侧文本按钮默认显示“跳过”，此时可在Stepper的onSkip回调中自定义相关逻辑。 |
+| Normal | 0 |正常状态，右侧文本按钮正常显示，可点击进入下一个StepperItem。<br/>**说明：**<br/>从API version 8开始支持，从API version 22开始废弃，建议使用[index](ts-container-swiper.md#index)替代。 |
+| Disabled | 1 |不可用状态，右侧文本按钮灰度显示，不可点击进入下一个StepperItem。<br/>**说明：**<br/>从API version 8开始支持，从API version 22开始废弃，建议使用[indicatorInteractive](ts-container-swiper.md#indicatorinteractive12)替代。 |
+| Waiting | 2 | 等待状态，右侧文本按钮不显示，显示等待进度条，不可点击进入下一个StepperItem。<br/>**说明：**<br/>从API version 8开始支持，从API version 22开始废弃，建议使用[Swiper](ts-container-swiper.md)替代。 |
+| Skip | 3 | 跳过状态，右侧文本按钮默认显示“跳过”，此时可在Stepper的onSkip回调中自定义相关逻辑。<br/>**说明：**<br/>从API version 8开始支持，从API version 22开始废弃，建议使用[index](ts-container-swiper.md#index)替代。 |
 
 
 ## 示例

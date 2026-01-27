@@ -1,4 +1,4 @@
-# \@Prop Decorator: Implementing One-Way Synchronization from Parent to Child Components
+# \@Prop: Implementing One-Way Synchronization from Parent to Child Components
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
@@ -8,7 +8,7 @@
 
 One-way synchronization is supported between an \@Prop decorated variable a variable of its parent component.
 
-Before reading this topic, you are advised to understand the basic usage of [\@State](./arkts-state.md). For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management).
+Before reading this topic, you are advised to understand the basic usage of [\@State](./arkts-state.md). For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management Development](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -29,7 +29,7 @@ Variables decorated with \@Prop have the following features:
 | \@Prop Decorator| Description                                      |
 | ----------- | ---------------------------------------- |
 | Parameters      | None.                                       |
-| Synchronization type       | One-way synchronization One-way: from the data source provided by the parent component to the \@Prop decorated variable.<br>For details about the scenarios of nested types, see [Observed Changes](#observed-changes).|
+| Synchronization type       | One-way: from the data source provided by the parent component to the @Prop decorated variable.<br>For details about the scenarios of nested types, see [Observed Changes](#observed-changes).|
 | Allowed variable types  |  Object, class, string, number, Boolean, enum, and array of these types.<br>API version 10 and later: [Date type](#decorating-variables-of-the-date-type).<br>API version 11 and later: [Map](#decorating-variables-of-the-map-type), [Set](#decorating-variables-of-the-set-type), undefined, null, union types defined by the ArkUI framework, for example, [Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length), [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr), and [ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor). For details, see [Using Union Types](#using-union-types).<br>For details about the scenarios of supported types, see [Observed Changes](#observed-changes).|
 | Disallowed variable types| Function.     |
 | Number of nested layers       | In component reuse scenarios, it is recommended that @Prop be nested with no more than five layers of data. If @Prop is nested with too many layers of data, garbage collection and increased memory usage caused by deep copy will arise, resulting in performance issues. To avoid such issues, use [\@ObjectLink](arkts-observed-and-objectlink.md) instead.|
@@ -38,15 +38,15 @@ Variables decorated with \@Prop have the following features:
 
 ## Variable Transfer/Access Rules
 
-| Transfer/Access         | Description                                                        |
+| Rules for Using the \@LocalStorageProp Decorator         | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
 | Initialization from the parent component    | If initialization is performed locally, this operation is optional. The initialization behavior is the same as that in [\@State](./arkts-state.md#variable-transferaccess-rules). If local initialization cannot be performed, this operation is mandatory. An @Prop decorated variable can be initialized from a regular variable (whose change does not trigger UI re-render). or an [\@State](arkts-state.md), [\@Link](arkts-link.md), @Prop, [\@Provide](arkts-provide-and-consume.md), [\@Consume](arkts-provide-and-consume.md), [\@ObjectLink](arkts-observed-and-objectlink.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@StorageProp](arkts-appstorage.md#storageprop), [\@LocalStorageLink](arkts-localstorage.md#localstoragelink), or [\@LocalStorageProp](arkts-localstorage.md#localstorageprop) decorated variable in its parent component.|
-|Child component initialization| \@Prop can be used for initialization of a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
+|Initializes subcomponents.| \@Prop can be used for initialization of a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
 | Access from outside the component| Private, accessible only within the component.                |
 
  The following figure shows the initialization rules.
 
-![en-us_image_0000001552972029](figures/en-us_image_0000001552972029.png)
+![prop-initialization](figures/prop-initialization.png)
 
 ## Observed Changes and Behavior
 
@@ -54,7 +54,7 @@ Variables decorated with \@Prop have the following features:
 
 \@Prop decorated variables support observation of the following change types:
 
-- When the decorated variable is of the primitive type, value assignments are observable.
+- When the decorated variable is of the primitive type, value assignments are observable. For details about the complete example of the primitive type, see [Synchronizing from \@State to \@Prop Simple Data Types](synchronizing-from-state-to-prop-simple-data-types).
 
   ```ts
   // Primitive type
@@ -67,47 +67,65 @@ Variables decorated with \@Prop have the following features:
   this.title = new Model('Hi');
   ```
 
-- When the decorated variable is of the Object or class type, object assignments and top-level property changes are observable. Top-level properties include all properties returned by **Object.keys(observedObject)**.
+- When the decorated variable is of the Object or class type, object assignments and top-level property changes are observable. Top-level properties include all properties returned by **Object.keys(observedObject)**. For details about the complete example of the complex type, see [Synchronizing from \@State Class Object Properties to \@Prop Simple Data Types](#synchronizing-from-state-class-object-properties-to-prop-simple-data-types).
 
-```ts
-class Info {
-  public value: string;
-  constructor(value: string) {
-    this.value = value;
+  <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  
+  ``` TypeScript
+  // Define the nested class.
+  class Info {
+    public value: string;
+  
+    constructor(value: string) {
+      this.value = value;
+    }
   }
-}
-class Model {
-  public value: string;
-  public info: Info;
-  constructor(value: string, info: Info) {
-    this.value = value;
-    this.info = info;
+  
+  class Model {
+    public value: string;
+    public info: Info;
+  
+    constructor(value: string, info: Info) {
+      this.value = value;
+      this.info = info;
+    }
   }
-}
+  ```
+  <!-- @[prop_twentyone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  
+  ``` TypeScript
+  @Prop title: Model;
+  ```
+  <!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  
+  ``` TypeScript
+  // Top-level property changes are observable.
+  this.title.value = 'Hi';
+  ```
+  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
+  
+  ``` TypeScript
+  // Nested property changes are observable.
+  this.title.info.value = 'ArkUI';
+  ```
 
-@Prop title: Model;
-// Top-level property changes are observable.
-this.title.value = 'Hi';
-// Nested property changes are observable.
-this.title.info.value = 'ArkUI';
-```
 
-In the scenarios of nested objects, if a class is decorated by \@Observed, the value changes of the class property can be observed. For details, see [Nesting \@Prop](#nesting-prop).
+In the scenarios of nested objects, if a class is decorated by \@Observed, the value changes of the class property can be observed. For details, see [@Prop Nesting Scenario](#prop-nesting-scenario).
 
-- When the decorated variable is of the array type, the value change of the array as well as the addition, deletion, and update of array items can be observed.
+- When the decorated variable is of the array type, the value change of the array as well as the addition, deletion, and update of array items can be observed. For details about the complete example of the array type, see [Synchronizing from \@State Array Items to \@Prop Simple Data Types](#synchronizing-from-state-array-items-to-prop-simple-data-types).
 
-```ts
-// Assume that the object decorated by @Prop is an array.
-@Prop title: string[];
-// The value change of the array itself can be observed.
-this.title = ['1'];
-// The value change of array items can be observed.
-this.title[0] = '2';
-// The deletion of array items can be observed.
-this.title.pop();
-// The addition of array items can be observed.
-this.title.push('3');
-```
+  ```ts
+  // Assume that the object decorated by @Prop is an array.
+  @Prop title: string[];
+  // The value change of the array itself can be observed.
+  this.title = ['1'];
+  // The value change of array items can be observed.
+  this.title[0] = '2';
+  // The deletion of array items can be observed.
+  this.title.pop();
+  // The addition of array items can be observed.
+  this.title.push('3');
+  ```
 
 For synchronization between \@State and \@Prop decorated variables:
 
@@ -132,7 +150,7 @@ To understand \@Prop variable initialization and update mechanisms, consider the
 
 2. Update:
    1. When the \@Prop decorated variable is modified locally, the change does not propagate back to its parent component.
-   2. When the data source of the parent component is updated, the \@Prop decorated variable in the child component is reset, and its local value changes are overwritten.
+   2. When the data source of the parent component is updated, the \@Prop decorated variable in the child component is reset, and its local modification is overwritten.
 
 > **NOTE**
 >
@@ -140,7 +158,9 @@ To understand \@Prop variable initialization and update mechanisms, consider the
 
 In this example, the Parent component is re-rendered when the @State decorated **message** variable changes. The Son component receives this variable via @Prop. The Parent component updates the @Prop value with the latest value of **message**, triggering Son component re-rendering.
 
-```ts
+<!-- @[prop_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageOne.ets) -->
+
+``` TypeScript
 @Component
 struct Son {
   @Prop message: string = 'Hi';
@@ -171,7 +191,7 @@ struct Father {
 
 ## Constraints
 
-- When decorating variables, \@Prop makes a deep copy, during which all types, except primitive types, Map, Set, Date, and Array, will be lost. For example, for complex types provided by N-API, such as [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md), because they are partially implemented in the native code, complete data cannot be obtained through a deep copy in ArkTS.
+When decorating variables, \@Prop makes a deep copy, during which all types, except primitive types, Map, Set, Date, and Array, will be lost. For example, for complex types provided by N-API, such as [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md), because they are partially implemented in the native code, complete data cannot be obtained through a deep copy in ArkTS. Similarly, the original type of the RegExp type is lost during the copy process. As a result, related regular functions cannot be invoked after being decorated by \@Prop.
 
 ## Use Scenarios
 
@@ -181,7 +201,9 @@ In this example, the \@Prop decorated **count** variable in the **CountDownCompo
 
 Updating **countDownStartValue** in the **ParentComponent** will update the value of the @Prop decorated **count**.
 
-```ts
+<!-- @[prop_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwo.ets) -->
+
+``` TypeScript
 @Component
 struct CountDownComponent {
   @Prop count: number = 0;
@@ -218,7 +240,6 @@ struct ParentComponent {
       Button(`-1  - Nuggets in New Game`).onClick(() => {
         this.countDownStartValue -= 1;
       })
-
       CountDownComponent({ count: this.countDownStartValue, costOfOneAttempt: 2 })
     }
   }
@@ -241,7 +262,9 @@ In the preceding example:
 
 If @State in the parent component decorates a variable of the array type, its array item can also initialize @Prop. In the following example, the \@State decorated array **arr** in the parent component **Index** initializes the \@Prop decorated **value** variable in the child component **Child**.
 
-```ts
+<!-- @[prop_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFour.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Prop value: number = 0;
@@ -287,7 +310,8 @@ struct Index {
 }
 ```
 
-Initial render creates six instances of the **Child** component. Each \@Prop decorated variable is initialized with a copy of an array item. The **onclick** event handler of the **Child** component changes the local variable value.
+
+Initial render creates six instances of the **Child** component. Each \@Prop decorated variable is initialized with a copy of an array item. The **onClick** event handler of the **Child** component changes the local variable value.
 
 Click **1** six times, 2 five times, and **3** four times on the page. The local values of all variables are then changed to **7**.
 
@@ -325,9 +349,11 @@ After **replace entire arr** is clicked, the following information is displayed:
 
 In a library with one book and two readers, each reader can mark the book as read, and the marking does not affect the other reader. Technically speaking, local changes to the \@Prop decorated **book** object do not sync back to the @State decorated **book** in the **Library** component.
 
-In this example, the \@Observed decorator can be applied to the **book** class, but it is not mandatory. It is only needed for nested structures. This will be further explained in [Synchronizing from \@State Array Items to \@Prop Class Types](#synchronizing-from-state-array-items-to-prop-class-types).
+In this example, the \@Observed decorator can be applied to the **book** class, but it is not mandatory. It is only needed for nested structures. This will be further explained in [Class Type \@Prop Synced from \@State Array Item in Parent Component](#class-type-prop-synced-from-state-array-item-in-parent-component).
 
-```ts
+<!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) -->
+
+``` TypeScript
 class Book {
   public title: string;
   public pages: number;
@@ -371,7 +397,13 @@ struct Library {
 
 In this example, clicking **"Mark read for everyone"** modifies properties within the \@State decorated **allBooks** array objects, but fails to trigger UI updates. This is because the property is nested at the second layer, and the \@State decorator can observe only top-level property changes. Therefore, the framework does not update **ReaderComp**.
 
-```ts
+<!-- @[prop_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSix.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleProp]';
 let nextId: number = 1;
 
 // @Observed
@@ -460,7 +492,7 @@ struct Library {
           if (this.allBooks.length > 0) {
             this.allBooks.shift();
           } else {
-            console.info('length <= 0');
+            hilog.info(DOMAIN, TAG, 'length <= 0');
           }
         })
       Button('Mark read for everyone')
@@ -508,7 +540,9 @@ The following example includes two @Prop decorated variables in the child compon
 
 - **customCounter2** has local initialization. In this case, specifying a synchronization source in the parent component is allowed but not mandatory.
 
-```ts
+<!-- @[prop_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeven.ets) -->
+
+``` TypeScript
 @Component
 struct MyComponent {
   @Prop customCounter: number;
@@ -571,13 +605,16 @@ struct MainProgram {
 }
 ```
 
+
 ![Video-prop-UsageScenario-two](figures/Video-prop-UsageScenario-two.gif)
 
 ### Nesting \@Prop
 
-In nesting scenario, each layer must be decorated with @Observed, and each layer must be received by @Prop. In this way, changes can be observed.
+In nesting scenario, each layer must be decorated with \@Observed, and each layer must be received by \@Prop. In this way, changes can be observed.
 
-```ts
+<!-- @[prop_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEight.ets) -->
+
+``` TypeScript
 // The following is the data structure of a nested class object.
 @Observed
 class Son {
@@ -602,7 +639,9 @@ class Father {
 
 The following component hierarchy presents a data structure of nested \@Prop.
 
-```ts
+<!-- @[prop_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets) -->
+
+``` TypeScript
 @Entry
 @Component
 struct Person {
@@ -625,6 +664,7 @@ struct Person {
           .margin(12)
           .fontColor('#FFFFFF')
           .onClick(() => {
+            // person is decorated with @State, but @State cannot observe changes in nested objects. When this button is clicked directly, the title changes but cannot be observed.
             this.person.son.title = 'ArkUI';
           })
         Text(this.person.name)
@@ -637,6 +677,7 @@ struct Person {
           .textAlign(TextAlign.Center)
           .fontColor('#e6000000')
           .onClick(() => {
+            // Clicking this button triggers an observable change, and also reveals the effect of the previous "Change Son Title" button click.
             this.person.name = 'Bye';
           })
         Text(this.person.son.title)
@@ -689,7 +730,9 @@ struct Child {
 
 In this example, the **value** variable is of the Map\<number, string\> type. When the button is clicked, the value of **message** changes, and the UI is re-rendered.
 
-```ts
+<!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Prop value: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
@@ -746,7 +789,9 @@ struct MapSample {
 
 In this example, the **message** variable is of the **Set\<number\>** type. When the button is clicked, the value of **message** changes, and the UI is re-rendered.
 
-```ts
+<!-- @[prop_eleven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEleven.ets) -->
+
+``` TypeScript
 @Component
 struct Child {
   @Prop message: Set<number> = new Set([0, 1, 2, 3, 4]);
@@ -794,9 +839,11 @@ struct SetSample {
 
 ### Decorating Variables of the Date Type
 
-In this example, the **selectedDate** variable is of the Date type. After the button is clicked, the value of **selectedDate** changes, and the UI is re-rendered.
+In this example, the **selectedDate** variable is of the Date type. After the button is clicked, the value of **Date** changes, and the UI is re-rendered.
 
-```ts
+<!-- @[prop_twelve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwelve.ets) -->
+
+``` TypeScript
 @Component
 struct DateComponent {
   @Prop selectedDate: Date = new Date('');
@@ -845,7 +892,6 @@ struct ParentComponent {
 
       DateComponent({ selectedDate: this.parentSelectedDate })
     }
-
   }
 }
 ```
@@ -854,7 +900,14 @@ struct ParentComponent {
 
 @Prop supports **undefined**, **null**, and union types. In the following example, the type of **animal** is **Animals | undefined**. If the property or type of **animal** is changed when the button in the parent component **Zoo** is clicked, the change will be synced to the child component.
 
-```ts
+<!-- @[prop_thirteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageThirteen.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG: string = '[SampleProp]';
+
 class Animals {
   public name: string;
 
@@ -896,7 +949,7 @@ struct Zoo {
     Column() {
       Text(`Parents' animals are  ${this.animal instanceof Animals ? this.animal.name : 'undefined'}`).fontSize(30)
 
-      Child({animal: this.animal})
+      Child({ animal: this.animal })
 
       Button('Parents change animals into dogs')
         .onClick(() => {
@@ -904,7 +957,7 @@ struct Zoo {
           if (this.animal instanceof Animals) {
             this.animal.name = 'Dog';
           } else {
-            console.info('num is undefined, cannot change property');
+            hilog.info(DOMAIN, TAG, 'num is undefined, cannot change property');
           }
         })
 
@@ -918,234 +971,4 @@ struct Zoo {
 }
 ```
 
-## FAQs
-
-### \@Prop Decorated State Variable Not Initialized
-
-The \@Prop decorated state variable must be initialized. If not initialized locally, the variable must be initialized from the parent component. If it has been initialized locally, initialization from the parent component is optional.
-
-**Incorrect Usage**
-
-```ts
-@Observed
-class Commodity {
-  public price: number = 0;
-
-  constructor(price: number) {
-    this.price = price;
-  }
-}
-
-@Component
-struct PropChild {
-  @Prop fruit: Commodity; // The state variable is not initialized locally.
-
-  build() {
-    Text(`PropChild fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State fruit: Commodity[] = [new Commodity(1)];
-
-  build() {
-    Column() {
-      Text(`Parent fruit ${this.fruit[0].price}`)
-        .onClick(() => {
-          this.fruit[0].price += 1;
-        })
-
-      // The @Prop state variable is not initialized locally, nor initialized from the parent component.
-      PropChild()
-    }
-  }
-}
-```
-
-**Correct Usage**
-
-```ts
-@Observed
-class Commodity {
-  public price: number = 0;
-
-  constructor(price: number) {
-    this.price = price;
-  }
-}
-
-@Component
-struct PropChild1 {
-  @Prop fruit: Commodity; // The state variable is not initialized locally.
-
-  build() {
-    Text(`PropChild1 fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Component
-struct PropChild2 {
-  @Prop fruit: Commodity = new Commodity(1); // The state variable is initialized locally.
-
-  build() {
-    Text(`PropChild2 fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State fruit: Commodity[] = [new Commodity(1)];
-
-  build() {
-    Column() {
-      Text(`Parent fruit ${this.fruit[0].price}`)
-        .onClick(() => {
-          this.fruit[0].price += 1;
-        })
-
-      // @PropChild1 is not initialized locally and must be initialized from the parent component.
-      PropChild1({ fruit: this.fruit[0] })
-      // @PropChild2 is initialized locally. In this case, initialization from the parent component is optional.
-      PropChild2()
-      PropChild2({ fruit: this.fruit[0] })
-    }
-  }
-}
-```
-
-### Using the a.b(this.object) Pattern Fails to Trigger UI Re-rendering
-
-In the **build** method, when the variable decorated by @Prop is of the object type and is called using the **a.b(this.object)** format, the original object of **this.object** is passed in the b method. If the property of **this.object** is changed, the UI cannot be re-rendered. In the following example, when the static method **Score.changeScore1** or **this.changeScore2** is used to change **this.score.value** in the custom component **Child**, the UI is not re-rendered.
-
-**Incorrect Usage**
-
-```ts
-class Score {
-  value: number;
-  constructor(value: number) {
-    this.value = value;
-  }
-
-  static changeScore1(param1:Score) {
-    param1.value += 1;
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State score: Score = new Score(1);
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Parent is ${this.score.value}.`)
-        .fontSize(30)
-        .fontColor(Color.Red)
-      Child({ score: this.score })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct Child {
-  @Prop score: Score;
-
-  changeScore2(param2:Score) {
-    param2.value += 2;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Child is ${this.score.value}.`)
-        .fontSize(30)
-      Button(`changeScore1`)
-        .onClick(()=>{
-          // Static method calls will not trigger UI re-rendering.
-          Score.changeScore1(this.score);
-        })
-      Button(`changeScore2`)
-        .onClick(()=>{
-          // Internal component method calls using this will not trigger UI re-rendering.
-          this.changeScore2(this.score);
-        })
-    }
-  }
-}
-```
-
-You can add a proxy for **this.score** to re-render the UI by assigning a value to the variable and then calling the variable.
-
-**Correct Usage**
-
-```ts
-class Score {
-  value: number;
-  constructor(value: number) {
-    this.value = value;
-  }
-
-  static changeScore1(score:Score) {
-    score.value += 1;
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State score: Score = new Score(1);
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Parent is ${this.score.value}.`)
-        .fontSize(30)
-        .fontColor(Color.Red)
-      Child({ score: this.score })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct Child {
-  @Prop score: Score;
-
-  changeScore2(score:Score) {
-    score.value += 2;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Child is ${this.score.value}.`)
-        .fontSize(30)
-      Button(`changeScore1`)
-        .onClick(()=>{
-          // Add a proxy by assigning a value.
-          let score1 = this.score;
-          Score.changeScore1(score1);
-        })
-      Button(`changeScore2`)
-        .onClick(()=>{
-          // Add a proxy by assigning a value.
-          let score2 = this.score;
-          this.changeScore2(score2);
-        })
-    }
-  }
-}
-```
 <!--no_check-->

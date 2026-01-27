@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_SwiperDigitIndicator ArkUI_SwiperDigitIndicator
+```
+
 ## Overview
 
 Defines the style of the digit navigation indicator for the **Swiper** component.

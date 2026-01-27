@@ -37,7 +37,6 @@ Before your development, configure the following permissions for your applicatio
 > **NOTE**
 >
 > The AVRecorder only processes video data. To complete video recording, it must work with the video data collection module, which transfers the captured video data to the AVRecorder for data processing through the surface. Currently, the mainstream data collection module is the camera module. For details about the implementation, see [Video Recording](../camera/camera-recording.md).
->
 > For details about how to create and save a file, see [Accessing Application Files](../../file-management/app-file-access.md). By default, files are saved in the sandbox path of the application. To save them to Gallery, use the [security components](../medialibrary/photoAccessHelper-savebutton.md).
 
 
@@ -120,7 +119,7 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    let avConfig: media.AVRecorderConfig = {
      videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV, // Video source type. YUV and ES are supported.
      profile: avProfile,
-     url: 'fd://' + fileFd.toString(), // Create, read, and write a video file by referring to the sample code in Accessing Application Files.
+     url: 'fd://' + fileFd.toString(), // Create, read, and write a video file by referring to the sample code in Application File Access and Management.
      metadata: videoMetaData
    };
 
@@ -137,7 +136,7 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
 
    Call **getInputSurface()**. The returned surface ID is transferred to the video data collection module, which is the camera module in the sample code.
 
-   The video data collection module obtains the surface based on the surface ID and transmits video data to the AVRecorder through the surface. Then the AVRecorder processes the video data.
+     The video data collection module obtains the surface based on the surface ID and transmits video data to the AVRecorder through the surface. Then the AVRecorder processes the video data.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -149,13 +148,9 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    });
    ```
 
-5. Initialize the video data input source.
+5. Initialize the video data input source. This step is performed in the video data collection module. For the camera module, you need to create a Camera instance, obtain the camera list, create a camera input stream, and create a video output stream. For details, see [Video Recording](../camera/camera-recording.md).
 
-   This step is performed in the video data collection module. For the camera module, you need to create a Camera instance, obtain the camera list, create a camera input stream, and create a video output stream. For details, see [Video Recording](../camera/camera-recording.md).
-
-6. Start recording.
-
-   Start the input source to input video data, for example, by calling **camera.VideoOutput.start** of the camera module. Then call **AVRecorder.start()** to switch the AVRecorder to the **started** state.
+6. Start recording. Start the input source to input video data, for example, by calling **camera.VideoOutput.start** of the camera module. Then call **AVRecorder.start()** to switch the AVRecorder to the **started** state.
 
 7. Call **pause()** to pause recording. The AVRecorder enters the **paused** state. In addition, pause data input, for example, by calling **camera.VideoOutput.stop** of the camera module.
 
@@ -222,7 +217,7 @@ async function videoRecording(context: common.Context): Promise<void> {
   let avConfig: media.AVRecorderConfig = {
     videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV, // Video source type. YUV and ES are supported.
     profile: avProfile,
-    url: 'fd://35', // Create, read, and write a file by referring to the sample code in Accessing Application Files.
+    url: 'fd://35', // Create, read, and write a file by referring to the sample code in Application File Access and Management.
     metadata: videoMetaData
   };
 
@@ -257,7 +252,7 @@ async function videoRecording(context: common.Context): Promise<void> {
 
   // Start recording.
   try {
-    if (avRecorder.state === 'prepared') { // start() can be called only when the AVRecorder is in the prepared state .
+    if (avRecorder.state === 'prepared') { // start() can be called only when the AVRecorder is in the prepared state.
       await startCameraOutput(); // Start camera stream output.
       await avRecorder.start();
     }
@@ -268,7 +263,7 @@ async function videoRecording(context: common.Context): Promise<void> {
 
   // Pause recording.
   try {
-    if (avRecorder.state === 'started') { // pause() can be called only when the AVRecorder is in the started state .
+    if (avRecorder.state === 'started') { // pause() can be called only when the AVRecorder is in the started state.
       await avRecorder.pause();
       await stopCameraOutput(); // Stop the camera stream output.
     }
@@ -279,7 +274,7 @@ async function videoRecording(context: common.Context): Promise<void> {
 
   // Resume recording.
   try {
-    if (avRecorder.state === 'paused') { // resume() can be called only when the AVRecorder is in the paused state .
+    if (avRecorder.state === 'paused') { // resume() can be called only when the AVRecorder is in the paused state.
       await startCameraOutput(); // Start camera stream output.
       await avRecorder.resume();
     }

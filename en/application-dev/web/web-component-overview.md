@@ -9,7 +9,7 @@
 ## When to Use
 
 ArkWeb provides **Web** components to display web page content in applications. You can use the components in the following scenarios:
-- Web page integration: Applications can use **Web** components to embed web page content to reduce development costs and improve development and operation efficiency. 
+- Web page integration: Applications can use **Web** components to embed web page content to reduce development costs and improve development and O&M efficiency.
 
 - Web browsing: Browser applications can use **Web** components to open third-party web pages, browse web pages in traceless mode, and set advertisement blocking.
 
@@ -54,7 +54,7 @@ The **ohos.permission.INTERNET** permission is required for accessing online web
 - Web kernel version: ArkWeb is developed based on the Google Chromium kernel. The following table lists the mapping between the system version and the Chromium version.
 
   | OS Version| Chromium Version|
-  |  ---|---|
+  | --- | --- |
   | OpenHarmony 4.0 and earlier| M99 |
   | OpenHarmony 4.1-5.1 | M114 |
   | OpenHarmony 6.0 | M132 (Default value, which is recommended.)<br>M114 (Alternative. If the application needs to use this kernel, see [Adaptation Guide for the M114 Kernel on OpenHarmony 6.0](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md).)|

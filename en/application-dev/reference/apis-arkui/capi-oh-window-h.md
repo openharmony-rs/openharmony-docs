@@ -306,7 +306,7 @@ If the input parameter is **-1**, the window brightness reverts to the system br
 When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API when the window is in the background, as it may cause timing issues.
 
 > **NOTE**
-> - For non-2-in-1 devices, if a window has custom brightness, Control Panel cannot change the overall screen brightness.
+> - For non-2-in-1 devices: if a window has custom brightness, Control Panel cannot change the system brightness.
 > - For 2-in-1 devices:
 >   - Before OpenHarmony 5.0.2, if a window has custom brightness, system brightness controls (Control Panel or shortcut keys) are disabled.
 >   - Starting from OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.

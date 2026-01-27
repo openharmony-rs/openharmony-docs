@@ -70,7 +70,7 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name            | Type|Read-Only|Optional| Description                                                     |
+| Name | Type | Read-Only |Optional| Description |
 | --------------- | ---- | ---- | ---- | ---------------------------------------------------------------- |
 | formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | No| Yes| Service widget data.|
 | callback        | AsyncCallback\<string>                                                                                                | No| Yes | Callback used to return the result. The value **0** means that the service widget is added successfully, and a non-zero value means that the service widget fails to be added. For details about the error codes, see [Form Error Codes](../../apis-form-kit/errorcode-form.md). |
@@ -84,7 +84,7 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name| Type| Read-Only|Optional| Description|
+| Name            | Type           | Read-Only|Optional| Description   
 | --------------- | ----------------- | ---- | ---- | ---- |
 | options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions) | No  | Yes | Information about the menu item.|
 

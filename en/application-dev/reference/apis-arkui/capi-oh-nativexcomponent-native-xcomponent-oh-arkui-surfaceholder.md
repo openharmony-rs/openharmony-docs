@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct OH_ArkUI_SurfaceHolder OH_ArkUI_SurfaceHolder
+```
+
 ## Overview
 
 Provides an encapsulated **OH_ArkUI_SurfaceHolder** instance.

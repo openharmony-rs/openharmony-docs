@@ -34,7 +34,7 @@ Creates a drawing modifier.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  |  [DrawModifier](#drawmodifier-1) \| undefined | Yes  | Custom drawing modifier, which defines the logic of custom drawing.<br> Default value: **undefined**<br>**NOTE**<br> A custom modifier applies only to the [FrameNode](../js-apis-arkui-frameNode.md) of the currently bound component, not to its subnodes.|
+| modifier  | &nbsp;[DrawModifier](#drawmodifier-1)&nbsp;\|&nbsp;undefined | Yes  | Custom drawing modifier, which defines the logic of custom drawing.<br> Default value: **undefined**<br>**NOTE**<br> A custom modifier applies only to the [FrameNode](../js-apis-arkui-frameNode.md) of the currently bound component, not to its subnodes.|
 
 **Return value**
 
@@ -79,6 +79,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 drawContent?(drawContext: DrawContext): void
 
 Draws the content. Override this method to implement custom content drawing, which will replace the component's default content drawing function.
+
 Note: The Canvas provided in the [DrawContext](../js-apis-arkui-graphics.md#drawcontext) parameter is a temporary command-recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -319,6 +320,7 @@ struct DrawModifierExample {
         Button('create')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.create();
@@ -326,6 +328,7 @@ struct DrawModifierExample {
         Button('play')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             if (this.drawAnimator) {
@@ -335,6 +338,7 @@ struct DrawModifierExample {
         Button('changeModifier')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.count += 1;

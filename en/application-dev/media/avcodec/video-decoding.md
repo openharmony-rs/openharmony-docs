@@ -79,6 +79,7 @@ The following figure shows the interaction between states.
 ## How to Develop
 
 Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md).
+
 The figure below shows the call relationship of video decoding.
 
 - The dotted line indicates an optional operation.
@@ -465,6 +466,7 @@ The following walks you through how to implement the entire video decoding proce
     ```
 
 9. (Optional) Call **OH_VideoDecoder_SetParameter()** to set the surface parameters of the decoder.
+
     For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
     ```c++
@@ -553,10 +555,12 @@ The following walks you through how to implement the entire video decoding proce
 11. Call **OH_VideoDecoder_PushInputBuffer()** to push the stream to the input buffer for decoding.
 
     In the code snippet below, the following variables are used:
+
     - **size**, **offset**, **pts**, and **frameData**: size, offset, timestamp, and frame data. For details about how to obtain such information, see step 9 in [Media Data Demultiplexing](./audio-video-demuxer.md).
     - **flags**: type of the buffer flag. For details, see [OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags).
 
     The member variables of **bufferInfo** are as follows:
+
     - **buffer**: parameter passed by the callback function **OnNeedInputBuffer**. You can obtain the virtual address of the input stream by calling [OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr).
     - **index**: parameter passed by the callback function **OnNeedInputBuffer**, which uniquely corresponds to the buffer.
     - **isValid**: whether the buffer instance stored in **bufferInfo** is valid.
@@ -648,8 +652,8 @@ The following walks you through how to implement the entire video decoding proce
 
 13. (Optional) Call **OH_VideoDecoder_Flush()** to refresh the decoder.
 
-    After **OH_VideoDecoder_Flush** is called, the decoder remains in the Running state, but the input and output data and parameter set (such as the H.264 PPS/SPS) buffered in the decoder are cleared.
-    To continue decoding, you must call **OH_VideoDecoder_Start** again.
+    After **OH_VideoDecoder_Flush** is called, the decoder remains in the Running state, but the input and output data and parameter set (such as the H.264 PPS/SPS) buffered in the decoder are cleared. To continue decoding, you must call **OH_VideoDecoder_Start** again.
+
     In the code snippet below, the following variables are used:
 
     - **xpsData** and **xpsSize**: PPS/SPS information. For details about how to obtain such information, see [Media Data Demultiplexing](./audio-video-demuxer.md).
@@ -1008,6 +1012,7 @@ The following walks you through how to implement the entire video decoding proce
     ```
 
 8. (Optional) Call **OH_VideoDecoder_SetParameter()** to set the decoder parameters.
+
     For details about the configurable options, see [Video Dedicated Key-Value Paris](../../reference/apis-avcodec-kit/capi-codecbase.md#media-data-key-value-pairs).
 
     ```c++
@@ -1230,6 +1235,7 @@ The following walks you through how to implement the entire video decoding proce
     ```
 
     When processing buffer data (before releasing data) during hardware decoding, the output callback AVBuffer receives the image data after width and height alignment.
+    
     Generally, copy the image width, height, stride, and pixel format to ensure correct processing of the decoded data.
 
     For details, see step 3 in [Buffer Mode](#buffer-mode).

@@ -164,7 +164,7 @@
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             // 使用可复用自定义组件  
-            ResuableFlowItem({ item: item })
+            ReusableFlowItem({ item: item })
           }
           .onAppear(() => {
             // 即将触底时提前增加数据  
@@ -187,7 +187,7 @@
   }
 @Reusable
 @Component
-struct ResuableFlowItem {
+struct ReusableFlowItem {
   @State item: number = 0;
 
   // 从复用缓存中加入到组件树之前调用，可在此处更新组件的状态变量以展示正确的内容

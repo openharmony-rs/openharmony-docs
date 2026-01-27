@@ -117,11 +117,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ## Fuzzy Listening
 
-You can set **forChildUris** to **true** to enable fuzzy listening.
-
-- If **uri** is an album URI, the value **true** of **forChildUris** enables listening for the changes of the files in the album, and the value **false** enables listening for only the changes of the album itself.
-- If **uri** is **photoAsset**, there is no difference whether **forChildUris** is **true** or **false**.
-- If **uri** is **DefaultChangeUri**, **forChildUris** must be **true**. If **forChildUris** is set to **false**, the URI cannot be found and no message can be received.
+1. You can set **forChildUris** to **true** to enable fuzzy listening.<br>If **uri** is an album URI, the value **true** of **forChildUris** enables listening for the changes of the files in the album, and the value **false** enables listening for only the changes of the album itself.
+2. If **uri** is **photoAsset**, there is no difference whether **forChildUris** is **true** or **false**.
+3. If **uri** is **DefaultChangeUri**, **forChildUris** must be **true**. If **forChildUris** is set to **false**, the URI cannot be found and no message can be received.
 
 ### Listening for All PhotoAssets
 

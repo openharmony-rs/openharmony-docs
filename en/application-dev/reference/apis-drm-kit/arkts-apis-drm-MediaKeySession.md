@@ -5,11 +5,11 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
+MediaKeySession implements media key management. Before calling any API in MediaKeySession, you must use [createMediaKeySession](arkts-apis-drm-MediaKeySystem.md#createmediakeysession) to create a MediaKeySession instance.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
-MediaKeySession implements media key management. Before calling any API in MediaKeySession, you must use [createMediaKeySession](arkts-apis-drm-MediaKeySystem.md#createmediakeysession) to create a MediaKeySession instance.
 
 ## Modules to Import
 

@@ -29,11 +29,10 @@ const domain: number = 0xFF00;
 struct PageInterflowFaAndStage {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -45,14 +44,10 @@ struct PageInterflowFaAndStage {
             }).catch((error: BusinessError) => {
               hilog.error(domain, TAG, `Ability failed, error code: ${error.code}, error msg: ${error.message}.`);
             });
-            //...
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```
@@ -80,11 +75,10 @@ const domain: number = 0xFF00;
 struct PageInterflowFaAndStage {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -98,11 +92,8 @@ struct PageInterflowFaAndStage {
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```

@@ -136,7 +136,7 @@ import wifi from '@ohos.wifi';
 
 wifi.getScanInfos().then(result => {
     let len = result.length;
-    console.log("wifi received scan info: " + len);
+    console.info("wifi received scan info: " + len);
     for (let i = 0; i < len; ++i) {
         console.info("ssid: " + result[i].ssid);
         console.info("bssid: " + result[i].bssid);

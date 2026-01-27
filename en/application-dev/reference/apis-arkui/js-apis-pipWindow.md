@@ -12,7 +12,7 @@ The module provides basic APIs for manipulating Picture in Picture (PiP). For ex
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Before API version 20, PiP is supported only on phones and tablets. Starting from API version 20, PiP is supported on phones, PCs/2-in-1 devices, and tablets, while remaining unavailable on other devices.
+> - Before <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP function was supported only on phones and tablets. Starting from <!--RP2-->OpenHarmony 6.0<!--RP2End-->, the PiP function is supported on phones, PCs/2-in-1 devices, tablets, and is unavailable on all other devices.
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 

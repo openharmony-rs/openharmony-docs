@@ -34,7 +34,7 @@ VPN creation denied, please check the user type.
 
 **错误信息**
 
-VPN exist already, please execute destory first.
+VPN exist already, please execute destroy first.
 
 **错误描述**
 

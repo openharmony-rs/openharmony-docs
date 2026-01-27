@@ -71,7 +71,7 @@ The file declares the APIs for image decoding.
 | [Image_ErrorCode OH_DecodingOptions_Release(OH_DecodingOptions *options)](#oh_decodingoptions_release) | Releases the pointer to an OH_DecodingOptions object.|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromuri) | Creates the pointer to an OH_ImageSourceNative object based on a URI.|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromfd) | Creates the pointer to an OH_ImageSourceNative object based on a file descriptor.|
-| [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> The buffer data must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap).|
+| [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> The buffer data must be undecoded. Do not pass the pixel buffer data such as RGBA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap).|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)](#oh_imagesourcenative_createfromdatawithuserbuffer) | Creates an image source from data buffer. The data buffer is directly accessed by the image source object, and therefore the data buffer must remain accessible within the lifecycle of the image source object.|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromrawfile) | Creates the pointer to an OH_ImageSourceNative object by using the raw file descriptor of an image resource file.|
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmap) | Creates the pointer to an OH_PixelmapNative object based on decoding options.|
@@ -353,7 +353,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, please refer to [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
 
 **Returns**
 
@@ -379,7 +379,7 @@ Sets the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| int32_t pixelFormat | Pixel format. For details about the available options, please refer to [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
+| int32_t pixelFormat | Pixel format. For details about the available options, see [PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format).|
 
 **Returns**
 
@@ -613,7 +613,7 @@ Obtains the desired dynamic range configured during decoding.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| int32_t *desiredDynamicRange | Pointer to the desired dynamic range. For details about the available options, please refer to [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
+| int32_t *desiredDynamicRange | Pointer to the desired dynamic range. For details about the available options, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
 
 **Returns**
 
@@ -639,7 +639,7 @@ Sets the desired dynamic range during decoding.
 | Name| Description|
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to OH_DecodingOptions.|
-| int32_t desiredDynamicRange | Desired dynamic range. For details about the available options, please refer to [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
+| int32_t desiredDynamicRange | Desired dynamic range. For details about the available options, see [IMAGE_DYNAMIC_RANGE](#image_dynamic_range).|
 
 **Returns**
 
@@ -889,7 +889,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSi
 
 **Description**
 
-Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> The buffer data must be undecoded. Do not pass the pixel buffer data such as RBGA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap).
+Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> The buffer data must be undecoded. Do not pass the pixel buffer data such as RGBA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap).
 
 **Since**: 12
 
@@ -1379,7 +1379,7 @@ Sets desired auxiliary pictures in the decoding options.
 
 | Name| Description|
 | -- | -- |
-| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) *options | Double pointer to the created OH_DecodingOptionsForPicture.|
+| [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) *options | Pointer to OH_DecodingOptionsForPicture.|
 | [Image_AuxiliaryPictureType](capi-picture-native-h.md#image_auxiliarypicturetype) *desiredAuxiliaryPictures | Pointer to the desired auxiliary pictures.|
 | size_t length | Length of the desired auxiliary pictures.|
 

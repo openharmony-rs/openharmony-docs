@@ -23,7 +23,7 @@
 
 ## 检测原理
 
-检测原理详见[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
+检测原理详见[Resource Leak（资源泄漏检测）](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
 
 ## 自定义规格设置
 

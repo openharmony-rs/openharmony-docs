@@ -19,7 +19,7 @@ DevEco Studio provides the UI preview function, which allows you to view the UI 
 
 ## Page Preview
 
-Both ArkTS applications and atomic services support page preview. To preview a page, add the @Entry decorator to the custom component in the project's .ets file.
+Both ArkTS applications and atomic services support page preview. Page preview is achieved by adding the [@Entry](./state-management/arkts-create-custom-components.md#entry) decorator to the custom component in the project's .ets file, allowing you to view the current UI page effect.
 
 - To start page preview, select the target .ets page and click the Previewer button in the right sidebar.
 
@@ -39,7 +39,7 @@ When modifying component attributes, you can view changes immediately without pr
 > - Components that are not displayed
 > - Adding or deleting components
 > - Components containing private variables or untyped controllers
-> - Components using decorators such as @Builder, @Style, and @Extend
+> - Components using the decorators such as [@Builder](./state-management/arkts-builder.md), [@Style](./state-management/arkts-style.md), and [@Extend](./state-management/arkts-extend.md).
 > - Components importing external components or modules via **import**
 > - Modifying state variables
 
@@ -80,6 +80,7 @@ During component preview, the default attributes of the @Preview decorator are u
 Example of using the @Preview decorator:
 
 ```ts
+@Entry
 @Preview
 @Component
 struct ComponentPreviewOne {
@@ -95,6 +96,7 @@ struct ComponentPreviewOne {
     }
   }
 }
+
 @Preview
 @Component
 struct ComponentPreviewTwo {

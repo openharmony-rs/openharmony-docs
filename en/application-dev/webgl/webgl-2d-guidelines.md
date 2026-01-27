@@ -74,9 +74,9 @@ A texture is an image that can be applied to the surface of a 3D model. Textures
 | webgl.getAttribLocation(program: WebGLProgram, name: string): GLint | Obtains the address of the **attribute** variable in the shader from the given WebGL program.|
 | webgl.vertexAttribPointer(index GLuint, size: GLint, type: GLenum, normalized: GLboolean, stride: GLsizei, offset: GLintptr): void | Assigns a Buffer object to a variable.                              |
 | webgl.enableVertexAttribArray(index: GLuint): void           | Connects a variable to the Buffer object allocated to it.                      |
-| webgl.clearColor(red: GLclampf, green:GLclampf, blue: GLclampf, alpha: GLclampf): void | Clears the specified color on the canvas.                        |
+| webgl.clearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf): void | Clears the specified color on the canvas.                        |
 | webgl.clear(mask: GLbitfield): void                          | Clears the canvas.                                  |
-| webgl.drawArrays(mode: GLenum, first:;GLint, count: GLsizei): void | Draws data.                                        |
+| webgl.drawArrays(mode: GLenum, first: GLint, count: GLsizei): void | Draws data.                                        |
 | webgl.flush(): void                                          | Flushes data to the GPU and clears the buffer.                           |
 | webgl.createProgram(): WebGLProgram \| null                  | Creates a WebGLProgram object.                                  |
 
@@ -121,6 +121,7 @@ A texture is an image that can be applied to the surface of a 3D model. Textures
    The vertex shader needs to perform the necessary transformation (for example, adjustment or calculation) on the vertex coordinates, saves the new vertices in a special variable provided by GLSL, and returns the variable.
 
    Before performing matrix calculations, you need to import the open-source library gl-matrix. You can download it from the [gl-matrix official website](https://glmatrix.net/) or install it using the following npm command:
+   
    `npm install gl-matrix`
    ```js
    // Import mat4.

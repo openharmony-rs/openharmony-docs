@@ -149,6 +149,8 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 ## DragPreviewOptions<sup>11+</sup>
 
+设置拖拽过程中预览图处理模式及数量角标的显示。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |

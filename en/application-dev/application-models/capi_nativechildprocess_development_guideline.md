@@ -194,7 +194,7 @@ libchild_process.so
     
     void CreateNativeChildProcess()
     {
-        // The first parameter libchildprocesssample.so is the name of the dynamic link library that implements the necessary export functions of the child process.
+        // The first parameter libchildprocesssample.so indicates the name of the dynamic link library that implements the necessary export functions of the child process.
         int32_t ret = OH_Ability_CreateNativeChildProcess("libchildprocesssample.so", OnNativeChildProcessStarted);
         if (ret != NCP_NO_ERROR) {
             // Exception handling when the child process is not started normally.
@@ -306,38 +306,33 @@ libchild_process.so
 
     Call the API to start the native child process. The return value **NCP_NO_ERROR** indicates that the native child process is successfully started.
 
-    <!-- @[main_process_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp) -->
+    <!-- @[main_process_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp) -->  
     
     ``` C++
     #include <AbilityKit/native_child_process.h>
     #include <cstdlib>
     #include <cstring>
     #include <fcntl.h>
-    // ···
-    int32_t g_fdNameMaxLength = 4;
+    // ...
+    int32_t g_fdNameMaxLength = 20;
     
     void StartNativeChildProcess()
     {
         // ...
         NativeChildProcess_Args args;
         // Set entryParams. The maximum amount of data that can be passed is 150 KB.
-        const size_t testParamLen = sizeof("testParam") - 1;
         const size_t entryParamsSize = 10;
         args.entryParams = (char *)malloc(sizeof(char) * entryParamsSize);
         if (args.entryParams != nullptr) {
-            (void)strlcpy(args.entryParams, "testParam", testParamLen);
-            args.entryParams[testParamLen] = '\0';
+            (void)strlcpy(args.entryParams, "testParam", entryParamsSize);
         }
     
         // Insert a node to the head node of the linked list.
         args.fdList.head = (NativeChildProcess_Fd *)malloc(sizeof(NativeChildProcess_Fd));
         // FD keyword, which contains a maximum of 20 characters.
-        const size_t fd1Len = sizeof("fd1") - 1;
-        const size_t fdNameSize = 10;
         args.fdList.head->fdName = (char *)malloc(sizeof(char) * g_fdNameMaxLength);
         if (args.fdList.head->fdName != nullptr) {
-            (void)strlcpy(args.fdList.head->fdName, "fd1", fdNameSize);
-            args.fdList.head->fdName[fd1Len] = '\0';
+            (void)strlcpy(args.fdList.head->fdName, "fd1", g_fdNameMaxLength);
         }
         // Obtain the FD logic.
         int32_t fd = open("/data/storage/el2/base/haps/entry/files/test.txt", O_RDWR | O_CREAT, 0644);
@@ -357,7 +352,7 @@ libchild_process.so
         }
     
         // Other logic
-    // ···
+    // ...
     
         // Release the memory space in NativeChildProcess_Args to prevent memory leakage.
     }

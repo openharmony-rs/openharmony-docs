@@ -586,9 +586,8 @@ WLAN配置信息。
 
 ## WifiWapiConfig<sup>12+</sup>
 
-WAPI身份验证协议配置。
-
 WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议配置。
+
 当用户通过WAPI身份验证协议连接无线网时，可通过以下方式配置参数或者证书进行连接。
 - 方式一:通过配置证书进行连接。WifiDeviceConfig中关键字段的配置如下:
   - preSharedKey无需传参;
@@ -1614,7 +1613,7 @@ isFeatureSupported(featureId: number): boolean
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | 错误码ID | 错误信息 |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | 801 | Capability not supported.          |

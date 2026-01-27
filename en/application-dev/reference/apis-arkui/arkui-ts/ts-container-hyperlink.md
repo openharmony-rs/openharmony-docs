@@ -33,8 +33,8 @@ Hyperlink(address: string | Resource, content?: string | Resource)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| address | string \| [Resource](ts-types.md#resource) | Yes| Web page to which the hyperlink is redirected.|
-| content | string \| [Resource](ts-types.md#resource) | No| Text displayed in the hyperlink.<br>**NOTE**<br>If this component has child components, the hyperlink text is not displayed.|
+| address | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes| Web page to which the hyperlink is redirected.|
+| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Text displayed in the hyperlink.<br>**NOTE**<br>If this component has child components, the hyperlink text is not displayed.|
 
 ## Attributes
 
@@ -54,7 +54,7 @@ Sets the color of the hyperlink text.
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | [Color](ts-appendix-enums.md#color) \| number \| string \| [Resource](ts-types.md#resource) | Yes  | Color of the hyperlink text<br><!--RP1-->Default value: **'#ff007dff'**.<br>Default value on wearable devices: **'ff1f71ff'**.<!--RP1End-->
+| value  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Color of the hyperlink text<br><!--RP1-->Default value: '#ff007dff', indicating blue.<!--RP1End-->|
 
 ## Example
 

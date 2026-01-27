@@ -12,6 +12,8 @@ OpenHarmony JSVM-API基于标准JS引擎提供了一套稳定的API，支持创�
 
 OpenHarmony JSVM-API是C语言接口，遵循C99标准。
 
+OpenHarmony JSVM-API是并发不安全接口，开发者需保障JSVM-API的并发安全性。
+
 通过JSVM-API，可以在应用运行期间直接执行动态加载的JS代码。此外，可以将对性能和底层系统调用有较高要求的核心功能用C/C++实现，并将C++方法注册到JS侧，从而在JS代码中直接调用，提高应用执行效率。
 
 本文中如无特别说明，后续均使用JSVM-API指代OpenHarmony JSVM-API能力。

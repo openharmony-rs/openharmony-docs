@@ -423,7 +423,7 @@ Sets an output surface.
 | Name| Description|
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | Pointer to the image effector.|
-| OHNativeWindow *nativeWindow | Pointer to the **OHNativeWindow** instance.|
+| OHNativeWindow *nativeWindow | Pointer to the OHNativeWindow instance.|
 
 **Returns**
 
@@ -451,7 +451,7 @@ Obtains an input surface.
 | Name| Description|
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | Pointer to the image effector.|
-| OHNativeWindow **nativeWindow | Double pointer to the **OHNativeWindow** instance.|
+| OHNativeWindow **nativeWindow | Double pointer to the OHNativeWindow instance.|
 
 **Returns**
 
@@ -765,7 +765,7 @@ Starts an image effector.
 
 | Type| Description|
 | -- | -- |
-| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | **EFFECT_SUCCESS**: The function is successfully called.<br>         **EFFECT_ERROR_PARAM_INVALID**: A parameter is a null pointer.<br>         **EFFECT_INPUT_OUTPUT_NOT_SUPPORTED**: The data types of the input and output images to be processed are different.<br>         **EFFECT_COLOR_SPACE_NOT_MATCH**: The color spaces of the input and output images are different.<br>         **EFFECT_ALLOCATE_MEMORY_FAILED**: Memory allocation fails.|
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | **EFFECT_SUCCESS**: The function is successfully called.<br>         **EFFECT_ERROR_PARAM_INVALID**: A parameter is a null pointer.<br>         **EFFECT_INPUT_OUTPUT_NOT_SUPPORTED**: The data types of the input and output images to be processed are different.<br>         **EFFECT_COLOR_SPACE_NOT_MATCH**: The color spaces of the input and output images do not match.<br>         **EFFECT_ALLOCATE_MEMORY_FAILED**: Memory allocation fails.|
 
 ### OH_ImageEffect_Stop()
 

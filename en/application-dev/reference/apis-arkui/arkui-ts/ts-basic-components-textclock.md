@@ -138,7 +138,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value for wearables: '#c5ffffff'. Default value for other devices: 'e6182431'|
 
 ### fontSize
 
@@ -174,7 +174,7 @@ Sets the font style.
 
 | Name| Type                                       | Mandatory| Description                                   |
 | ------ | ------------------------------------------- | ---- | --------------------------------------- |
-| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes  | Font style.<br>Default value: **FontStyle.Normal**|
+| value  | [FontStyle](ts-appendix-enums.md#fontstyle) | Yes  | Font style.<br>Default value: FontStyle.Normal, indicating the standard font style (non-italic).|
 
 ### fontWeight
 
@@ -192,7 +192,7 @@ Font weight of the text. If the value is too large, the text in different fonts 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | Yes  | Font width of the text. The value range of the number type is [100, 900]. The value interval is 100. A larger value indicates a wider font. If the value of the number type is not within the value range, the default value is 400. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Font width of the text. The value range of the number type is [100,&nbsp;900]. The value interval is 100. A larger value indicates a wider font. If the value of the number type is not within the value range, the default value is 400. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**|
 
 ### fontFamily
 
@@ -228,7 +228,7 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Text shadow.|
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Font shadow of the text.|
 
 ### fontFeature<sup>11+</sup>
 
@@ -413,13 +413,13 @@ struct Second {
         })
         .margin(20)
         .fontSize(30)
-      Button("start TextClock")
+      Button('start TextClock')
         .margin({ bottom: 10 })
         .onClick(() => {
           // Start the text clock.
           this.controller.start();
         })
-      Button("stop TextClock")
+      Button('stop TextClock')
         .onClick(() => {
           // Stop the text clock.
           this.controller.stop();
@@ -535,14 +535,14 @@ struct TextClockExample {
         .format('aa hh:mm:ss')
         .fontSize(30)
         .contentModifier(new MyTextClockStyle('ContentModifier:'))
-      Button("start TextClock")
+      Button('start TextClock')
         .margin({ top: 20, bottom: 10 })
         .onClick(() => {
           // Start the text clock.
           this.controller1.start();
           this.controller2.start();
         })
-      Button("stop TextClock")
+      Button('stop TextClock')
         .margin({ bottom: 30 })
         .onClick(() => {
           // Stop the text clock.
@@ -567,21 +567,21 @@ struct TextClockExample {
   build() {
     Column({ space: 8 }) {
       Row() {
-        Text("Remove the leading zero in 24-hour format: ")
+        Text('Remove the leading zero in 24-hour format: ')
           .fontSize(20)
         TextClock()
           .fontSize(20)
-          .format("HH:mm:ss")
-          .dateTimeOptions({ hour: "numeric" })
+          .format('HH:mm:ss')
+          .dateTimeOptions({ hour: 'numeric' })
       }
 
       Row() {
-        Text("Add the leading zero in 12-hour format: ")
+        Text('Add the leading zero in 12-hour format: ')
           .fontSize(20)
         TextClock()
           .fontSize(20)
-          .format("aa hh:mm:ss")
-          .dateTimeOptions({ hour: "2-digit" })
+          .format('aa hh:mm:ss')
+          .dateTimeOptions({ hour: '2-digit' })
       }
     }
     .alignItems(HorizontalAlign.Start)

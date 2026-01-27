@@ -1320,9 +1320,9 @@ options: RichEditorOptions = { controller: this.controller };
 
 ### Enabling Automatic Spacing Between Chinese and Western Characters
 
-Use [enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20) to control whether automatic spacing is inserted between Chinese and Western characters.
+Use [enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20) to control whether automatic spacing is inserted between Chinese and western characters.
 
-This API optimizes text layout and improves readability within the component. When automatic spacing is enabled, an appropriate gap is automatically added between Chinese and Western characters, making it easier to distinguish between languages and reducing visual interference.
+This API optimizes text layout and improves readability within the component. When automatic spacing is enabled, an appropriate gap is automatically added between Chinese and western characters, making it easier to distinguish between languages and reducing visual interference.
 
 <!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
@@ -1332,7 +1332,7 @@ options: RichEditorOptions = { controller: this.controller };
 // ...
         RichEditor(this.options)
           .onReady(() => {
-            // Replace $r('app.string.Demo_autoSpacingString') with the actual resource file. In this example, the value in the resource file is "Auto Spacing between Chinese and Western Characters."
+            // Replace $r('app.string.Demo_autoSpacingString') with the actual resource file. In this example, the value in the resource file is "Automatic spacing between Chinese and western characters."
             this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
               {
                 style:

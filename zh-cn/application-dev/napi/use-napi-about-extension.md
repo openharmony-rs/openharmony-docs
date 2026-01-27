@@ -264,6 +264,10 @@ try {
 
 在Node-API模块中运行abc文件。
 
+> **注意**
+>
+> 在信号函数中调用不安全，直接调用可能导致栈溢出。
+
 cpp部分代码
 
 <!-- @[node_api_module_run_script_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
@@ -1384,13 +1388,13 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 
 | 接口 | 描述 |
 | -------- | -------- |
-| napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行，如果异步执行，则回调函数必须是线程安全的。 |
+| napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 |
 
 ### 使用示例
 
 **napi_wrap_enhance**
 
-在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行，如果异步执行，则回调函数必须是线程安全的。
+在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。
 
 cpp部分代码
 

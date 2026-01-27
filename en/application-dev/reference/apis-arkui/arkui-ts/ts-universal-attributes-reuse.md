@@ -13,7 +13,7 @@ This document is solely for API reference. For details about the usage guideline
 
 >  **NOTE**
 >
-> This feature is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 18. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## reuse
 

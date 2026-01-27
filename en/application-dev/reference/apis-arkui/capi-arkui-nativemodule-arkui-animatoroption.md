@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_AnimatorOption ArkUI_AnimatorOption
+```
+
 ## Overview
 
 Defines the animator parameter object.

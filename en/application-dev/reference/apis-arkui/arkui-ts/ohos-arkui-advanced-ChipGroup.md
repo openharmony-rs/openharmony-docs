@@ -48,14 +48,14 @@ ChipGroup({
 
 | Name           | Type                                           | Mandatory| Decorator| Description                                                                                    |
 | --------------- | ----------------------------------------------- | ---- | ------------------------------------------------------------                             | ------------------------------------------------------------                             |
-| items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | Yes  | @Require  @Prop | Specific attributes of each chip. For details, see [ChipGroupItemOptions[]](#chipgroupitemoptions).<br>If the value is **undefined**, the **ChipGroup** component is empty by default. |
+| items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | Yes  | @Require &nbsp;@Prop | Specific attributes of each chip. For details, see [ChipGroupItemOptions[]](#chipgroupitemoptions).<br>If the value is **undefined**, the **ChipGroup** component is empty by default.           |
 | itemStyle       | [ChipItemStyle](#chipitemstyle)                 | No  | @Prop | Style attributes of the chip, such as the color and size. For details, see [ChipItemStyle](#chipitemstyle).<br>Default value:<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>If the value is **undefined**, the default value is used.|
 | selectedIndexes | Array&lt;number&gt;                             | No  | @Prop | Index of the selected chip.<br>Default value: **[0]**.<br>If the value is **undefined**, the default value is used. |
-| multiple        | boolean                                         | No  | @Prop | Whether multiple chips can be selected.<br>**true**: Multiple chips can be selected. **false**: Only one chip can be selected.<br>Default value: **false**.<br>If the value is **undefined**, the default value is used. |
+| multiple        | boolean                                         | No  | @Prop | Whether to select multiple chips.<br>**true**: Multiple chips can be selected. **false**: Only one chip can be selected.<br>Default value: **false**.<br>If the value is **undefined**, the default value is used.|
 | chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | No  | @Prop | Left and right padding and spacing between chips. For details, see [ChipGroupSpaceOptions](#chipgroupspaceoptions).<br>Default value: { itemSpace: 8, startSpace: 16, endSpace: 16 }<br>Unit: vp<br>If the value is **undefined**, the default value is used.|
 | chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | No  | @Prop | Top and bottom padding, used to control the overall height. The type is [ChipGroupPaddingOptions](#chipgrouppaddingoptions).<br>Default value: { top: 14, bottom: 14 }<br>Unit: vp<br>If the value is **undefined**, the default value is used.|
 | onChange        | Callback\<Array\<number>>  | No  | -  | Callback invoked when the chip status changes.<br>If the value is **undefined**, the event is unbound.                                                             |
-| suffix          | Callback\<void\>                                        | No  | @BuilderParam | Suffix, which is a builder customized by the user and requires importing the [IconGroupSuffix](#icongroupsuffix) API when used.<br>By default, if this parameter is not passed, there is no suffix.<br>If the value is **undefined**, there is no suffix.|
+| suffix          | Callback\<void\>                                        | No  | @BuilderParam | Callback used to customize a builder. To display custom content on the far right side of the component, configure the **suffix** property. Use of the **suffix** property requires referencing the [IconGroupSuffix](#icongroupsuffix) API.<br>By default, if this parameter is not passed, there is no suffix.<br>If the value is **undefined**, there is no suffix.|
 
 > **NOTE**
 >
@@ -84,8 +84,8 @@ Defines the specific attributes of individual chips.
 | suffixImageIcon<sup>14+</sup> | [SuffixImageIconOptions](#suffiximageiconoptions14) | No| Yes| Suffix image icon of the chip.<br>Default value: no suffix image icon.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
 | suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsuffixsymbolglyphoptions14) | No| Yes| Suffix symbol icon of the chip.<br>Default value: The suffix symbol icon has no function.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | closeOptions<sup>14+</sup> | [CloseOptions](ohos-arkui-advanced-Chip.md#closeoptions14) | No| Yes| Accessibility options of the default close icon.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
-| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the chip. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the chip's attributes and accessibility text alone. If a chip contains both text information and the accessible description, the text is announced first and then the accessible description, when the chip is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
-| accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the chip. It determines whether the chip can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The chip can be recognized by accessibility services.<br>**"no"**: The chip cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the chip nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
+| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the chip. You can provide comprehensive text explanations of the chip in **ChipGroup** to help users understand the action they are about to perform and its potential consequences. This is particularly important when such outcomes cannot be directly inferred from the chip's own properties or its accessibility text. If a chip contains both text information and the accessible description, the text is announced first and then the accessible description, when the chip is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
+| accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the chip. It determines whether the chip can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The chip can be recognized by accessibility services.<br>**"no"**: The chip cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the chip nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 14.|
 
 
 >**NOTE**
@@ -126,13 +126,13 @@ Defines the left and right padding of the chip group, and the spacing between ch
 
 | Name      | Type           | Read-Only| Optional| Description                                            |
 | ---------- | -------------- | ---- | ------------------------------------------------ | ------------------------------------------------ |
-| itemSpace | string \| number  | No | Yes | Spacing between chips. Percentage values are not supported.<br>Value range:<br>Number type: a value greater than or equal to 0 (for example, **0**, **8**, **16**, or **24.5**)<br>String type: a string with units (fp, vp, px, or lpx) and a numeric part greater than or equal to 0, for example, **"8vp"**, **"16fp"**, **"12px"**, or **"10lpx"**.<br>Not supported: negative values, percentage units, and invalid string formats.<br>Default value: **8**<br>Unit: vp<br>If the value is **undefined**, the default value is used. |
+| itemSpace | string \| number  | No | Yes | Spacing between chips. Percentage values are not supported.<br>Value range:<br>Number type: a value greater than or equal to 0 (for example, **0**, **8**, **16**, or **24.5**)<br>String type: a string with units fp \|vp \|px \|lpx and a numeric part greater than or equal to 0, for example, **"8vp"**, **"16fp"**, **"12px"**, or **"10lpx"**.<br>Not supported: negative values, percentage units, and invalid string formats.<br>Default value: **8**<br>Unit: vp<br>If the value is **undefined**, the default value is used.|
 | startSpace | [Length](ts-types.md#length)         | No | Yes | Left padding. Percentage values are not supported.<br>Default value: **16**<br>Unit: vp<br>If this parameter is set to **undefined**, the default value is used.          |
 | endSpace   | [Length](ts-types.md#length)         | No | Yes | Right padding. Percentage values are not supported.<br>Default value: **16**<br>Unit: vp<br>If the value is **undefined**, the default value is used.|
 
 ## ChipGroupPaddingOptions
 
-Defines the top and bottom padding of a ChipGroup, which is used to control the overall height of the ChipGroup.
+Defines the top and bottom padding of a **ChipGroup** component, which is used to control the overall height of the ChipGroup.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -161,8 +161,8 @@ Inherits from [IconOptions](#iconoptions).
 | ---- | ---- | --- | ---- | ---- |
 | action | [VoidCallback](ts-types.md#voidcallback12) | No| Yes| Action of the suffix icon.<br>If the value is **undefined**, no suffix icon interaction event is triggered.|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessibility label name, of the suffix icon. If an icon does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which icon is selected. To solve this problem, you can set accessibility text for icons without text information. When such an icon is selected, the screen reader announces the specified accessibility text, informing the user which icon is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>|
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the suffix icon. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the chip's attributes and accessibility text alone. If an icon contains both text information and the accessible description, the text is announced first and then the accessible description, when the icon is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
-| accessibilityLevel | string | No| Yes| Accessibility level of the suffix icon. It determines whether the icon can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" when **action** is set for the icon and as "no" otherwise.<br>**"yes"**: The icon can be recognized by accessibility services.<br>**"no"**: The icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the icon nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used.|
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the suffix icon. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If an icon contains both text information and the accessible description, the text is announced first and then the accessible description, when the icon is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
+| accessibilityLevel | string | No| Yes| Accessibility level of the suffix icon. It determines whether the icon can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" when **action** is set for the icon and as "no" otherwise.<br>**"yes"**: The icon can be recognized by accessibility services.<br>**"no"**: The icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the icon nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.|
 
 ## SymbolItemOptions<sup>14+</sup>
 
@@ -179,8 +179,8 @@ Suffix icon option type of ChipGroup.
 | symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| No| Settings of the trailing symbol item.|
 | action | [VoidCallback](ts-types.md#voidcallback12) | No| No| Action of the trailing symbol item.|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the trailing symbol item. If a trailing symbol item does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which item is selected. To solve this problem, you can set accessibility text for trailing symbol items without text information. When such a trailing symbol item is selected, the screen reader announces the specified accessibility text, informing the user which item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the trailing symbol item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the chip's attributes and accessibility text alone. If a trailing symbol item contains both text information and the accessible description, the text is announced first and then the accessible description, when the trailing symbol item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
-| accessibilityLevel | string | No| Yes| Accessibility level of the trailing symbol item. It determines whether the trailing symbol item can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The trailing symbol item can be recognized by accessibility services.<br>**"no"**: The trailing symbol item cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the trailing symbol item nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used.|
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the trailing symbol item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a trailing symbol item contains both text information and the accessible description, the text is announced first and then the accessible description, when the trailing symbol item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
+| accessibilityLevel | string | No| Yes| Accessibility level of the trailing symbol item. It determines whether the trailing symbol item can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The trailing symbol item can be recognized by accessibility services.<br>**"no"**: The trailing symbol item cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the trailing symbol item nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.|
 
 ## IconGroupSuffix
 
@@ -194,7 +194,7 @@ Suffix icon option type of ChipGroup.
 
 | Name    | Type                   | Mandatory| Decorator| Description                                                             |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require  @Prop | Custom builder items.|
+| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| [ SymbolItemOptions](#symbolitemoptions14)> | Yes  | @Require &nbsp;@Prop | Custom builder items.|
 
 > **NOTE**
 >
@@ -214,8 +214,8 @@ Defines the configuration for the trailing builder, with constraints applied to 
 | icon     | [IconOptions](#iconoptions)    | No | No | Custom builder icon.<br>When the chip size is **ChipSize.SMALL**, the suffix is at {width: 16, height: 16} by default.<br>When the chip size is **ChipSize.NORMAL**, the suffix is at {width: 24, height: 24} by default.<br> To dynamically change the size, you must use the [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) type when importing the [IconGroupSuffix](#icongroupsuffix) API.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | action   | Callback\<void>        | No | No | Callback of custom builder items.<br>If the value is **undefined**, the event is unbound.<br> **Atomic service API**: This API can be used in atomic services since API version 12.           |
 | accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the trailing symbol item. If a trailing symbol item does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which item is selected. To solve this problem, you can set accessibility text for trailing symbol items without text information. When such a trailing symbol item is selected, the screen reader announces the specified accessibility text, informing the user which item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the trailing symbol item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the chip's attributes and accessibility text alone. If a trailing symbol item contains both text information and the accessible description, the text is announced first and then the accessible description, when the trailing symbol item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the trailing symbol item. It determines whether the trailing symbol item can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The trailing symbol item can be recognized by accessibility services.<br>**"no"**: The trailing symbol item cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the trailing symbol item nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description of the trailing symbol item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a trailing symbol item contains both text information and the accessible description, the text is announced first and then the accessible description, when the trailing symbol item is selected.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| accessibilityLevel<sup>14+</sup> | string | No| Yes| Accessibility level of the trailing symbol item. It determines whether the trailing symbol item can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The trailing symbol item can be recognized by accessibility services.<br>**"no"**: The trailing symbol item cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the trailing symbol item nor its child components can be recognized by accessibility services.<br>The default value is **"auto"**.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 
 ## IconOptions
 
@@ -507,9 +507,9 @@ struct Index {
 ```
 ![](figures/ChipGroupDemo3.png)
 
-### Example 4: Implementing the Screen Reader Feature for the Single-selection Scenario
+### Example 4: Implementing the Screen Reader Feature for the Single-Selection Scenario
 
-This example implements the screen reader feature for a chip group with and without a suffix area in single-select mode.
+This example demonstrates how to implement the screen reader feature for a chip group with and without a suffix area in single-selection mode. The content to be read is the value of the **accessibilityText** attribute.
 
 ```typescript
 import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -571,8 +571,8 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: 'More',
-          accessibilityDescription: 'Speak usage hints',
+          accessibilityText: 'More', // Read "More, button, usage hints."
+          accessibilityDescription: 'Usage hints',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
               message: 'More icon touched.'
@@ -581,8 +581,8 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: 'More',
-          accessibilityDescription: 'Speak usage hints',
+          accessibilityText: 'More', // Read "More, button, usage hints."
+          accessibilityDescription: 'Usage hints',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
               message: 'More icon touched.'
@@ -591,8 +591,8 @@ export struct ChipGroupExample2 {
         },
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: 'More',
-          accessibilityDescription: 'Speak usage hints',
+          accessibilityText: 'More', // If accessibilityLevel is set to no, accessibilityText and accessibilityDescription do not take effect.
+          accessibilityDescription: 'Usage hints',
           accessibilityLevel: 'no',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -619,7 +619,7 @@ export struct ChipGroupExample2 {
                     label: { text: 'Option 1' },
                     suffixImageIcon: {
                       src: $r('sys.media.save_button_picture'),
-                      accessibilityText: 'Save',
+                      accessibilityText: 'Save', // Read "Save, button."
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
                           message: 'Suffix icon touched.'
@@ -635,7 +635,7 @@ export struct ChipGroupExample2 {
                     },
                     suffixSymbolOptions: {
                       normalAccessibility: {
-                        accessibilityText: 'Save'
+                        accessibilityText: 'Save' // Read "Save, button."
                       },
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
@@ -692,7 +692,7 @@ export struct ChipGroupExample2 {
 
 ### Example 5: Implementing the Screen Reader Feature for the Multi-selection Scenario
 
-This example implements the screen reader feature for a chip group with and without a suffix area in multi-select mode.
+This example demonstrates how to implement the screen reader feature for a chip group with and without a suffix area in multi-selection mode. The content to be read is the value of the **accessibilityText** attribute.
 
 ```typescript
 import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -754,8 +754,8 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: 'More',
-          accessibilityDescription: 'Speak usage hints',
+          accessibilityText: 'More', // Read "More, button, new user notification."
+          accessibilityDescription: 'Usage hints',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
               message: 'More icon touched.'
@@ -764,8 +764,8 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: 'More',
-          accessibilityDescription: 'Speak usage hints',
+          accessibilityText: 'More', // Read "More, button, usage hints."
+          accessibilityDescription: 'Usage hints',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
               message: 'More icon touched.'
@@ -774,8 +774,8 @@ export struct ChipGroupExample2 {
         },
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: 'More',
-          accessibilityDescription: 'Speak usage hints',
+          accessibilityText: 'More', // If accessibilityLevel is set to no, accessibilityText and accessibilityDescription do not take effect.
+          accessibilityDescription: 'Usage hints',
           accessibilityLevel: 'no',
           action: () => {
             this.getUIContext().getPromptAction().showToast({

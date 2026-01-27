@@ -177,28 +177,14 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // Dashed border
+        // Dashed line
         Text('dashed')
-          .borderStyle(BorderStyle.Dashed)
-          .borderWidth(5)
-          .borderColor(0xAFEEEE)
-          .borderRadius(10)
-          .width(120)
-          .height(120)
-          .textAlign(TextAlign.Center)
-          .fontSize(16)
-        // Dotted border
+          .borderStyle(BorderStyle.Dashed).borderWidth(5).borderColor(0xAFEEEE).borderRadius(10)
+          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
+        // Dotted line
         Text('dotted')
-          .border({
-            width: 5,
-            color: 0x317AF7,
-            radius: 10,
-            style: BorderStyle.Dotted
-          })
-          .width(120)
-          .height(120)
-          .textAlign(TextAlign.Center)
-          .fontSize(16)
+          .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
+          .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
       }.width('100%').height(150)
 
       Text('.border')
@@ -206,47 +192,30 @@ struct BorderExample {
         .width(300)
         .height(300)
         .border({
-          width: {
-            left: 3,
-            right: 6,
-            top: 10,
-            bottom: 15
-          },
-          color: {
-            left: '#e3bbbb',
-            right: Color.Blue,
-            top: Color.Red,
-            bottom: Color.Green
-          },
-          radius: {
-            topLeft: 10,
-            topRight: 20,
-            bottomLeft: 40,
-            bottomRight: 80
-          },
+          width: { left: 3, right: 6, top: 10, bottom: 15 },
+          color: { left: '#e3bbbb', right: Color.Blue, top: Color.Red, bottom: Color.Green },
+          radius: { topLeft: 10, topRight: 20, bottomLeft: 40, bottomRight: 80 },
           style: {
             left: BorderStyle.Dotted,
             right: BorderStyle.Dotted,
             top: BorderStyle.Solid,
             bottom: BorderStyle.Dashed
           }
-        })
-        .textAlign(TextAlign.Center)
+        }).textAlign(TextAlign.Center)
     }
   }
 }
 ```
 
-![en-us_image_0000001211898466](figures/en-us_image_0000001211898466.gif)
+![zh-cn_image_0000001219982705](figures/zh-cn_image_0000001219982705.gif)
 
-### Example 2: Setting the Border Width Type and Border Color
+### Example 2: Setting the Width and Color of Borders
 
-In this example, the **width**, **radius**, and **color** properties of the **border** attribute use the **LocalizedEdgeWidths** and **LocalizedEdgeColors** types.
+The **width**, **radius**, and **color** property values for the **border** attribute use the **LocalizedEdgeWidths** and **LocalizedEdgeColors** types.
 
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct BorderExample {
@@ -265,12 +234,7 @@ struct BorderExample {
           .fontSize(16)
         // Dotted border
         Text('dotted')
-          .border({
-            width: 5,
-            color: 0x317AF7,
-            radius: 10,
-            style: BorderStyle.Dotted
-          })
+          .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
           .width(120)
           .height(120)
           .textAlign(TextAlign.Center)
@@ -288,12 +252,7 @@ struct BorderExample {
             top: LengthMetrics.vp(10),
             bottom: LengthMetrics.vp(15)
           },
-          color: {
-            start: '#e3bbbb',
-            end: Color.Blue,
-            top: Color.Red,
-            bottom: Color.Green
-          },
+          color: { start: '#e3bbbb', end: Color.Blue, top: Color.Red, bottom: Color.Green },
           radius: {
             topStart: LengthMetrics.vp(10),
             topEnd: LengthMetrics.vp(20),
@@ -342,9 +301,7 @@ struct RenderStrategyExample {
           Stack() {
             Stack() {
               Scroll(new Scroller()) {
-                Image($r('app.media.startIcon'))
-                  .width('100%')
-                  .height('200%')
+                Image($r('app.media.startIcon')).width('100%').height('200%')
               }
 
               Column()
@@ -370,9 +327,7 @@ struct RenderStrategyExample {
           Stack() {
             Stack() {
               Scroll(new Scroller()) {
-                Image($r('app.media.startIcon'))
-                  .width('100%')
-                  .height('200%')
+                Image($r('app.media.startIcon')).width('100%').height('200%')
               }
 
               Column()

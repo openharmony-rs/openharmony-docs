@@ -32,7 +32,7 @@
 
 ### 链接动态库
 
-调用创建和删除事件拦截前，需链接相关动态库。链接动态库的方法是，在CMakeList.txt文件中新增如下配置：
+调用创建和删除事件监听前，需链接相关动态库。链接动态库的方法是，在CMakeList.txt文件中新增如下配置：
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)

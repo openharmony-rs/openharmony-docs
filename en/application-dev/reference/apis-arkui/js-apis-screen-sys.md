@@ -1438,7 +1438,7 @@ Before calling any API in Screen, you must use [getAllScreens()](#screengetallsc
 | activeModeIndex   | number                                         | Yes  | No  | Index of the active screen mode. The current value and value range of this parameter vary according to the screen resolution, refresh rate, and device hardware. The value is an integer.|
 | orientation       | [Orientation](#orientation)                     | Yes  | No  | Screen orientation.      |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | Yes  | No  | Source mode of the screen.    |
-| serialNumber<sup>15+</sup> | string        | Yes  | Yes  | Serial number of the extended screen. By default, the value is an empty string.<br> **Device behavior differences**: This API can be called on 2-in-1 devices but is unavailable for other devices. |       
+| serialNumber<sup>15+</sup> | string        | Yes  | Yes  | Serial number of the extended screen. By default, the value is an empty string.<br> **Device behavior differences**: This API can be called on 2-in-1 devices but is unavailable for other devices. |
 
 ### setOrientation
 
@@ -1889,7 +1889,7 @@ Defines the screen mode information.
 
 | Name       | Type| Read-Only| Optional| Description                                              |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
-| id          | number   | No  | No  | Mode ID. The supported mode is determined by the device resolution and refresh rate. The value is an integer.| 
+| id          | number   | No  | No  | Mode ID. The supported mode is determined by the device resolution and refresh rate. The value is an integer.|
 | width       | number   | No  | No  | Width of the screen, in px. The value is an integer.                               |
 | height      | number   | No  | No  | Height of the screen, in px. The value is an integer.                               |
 | refreshRate | number   | No  | No  | Refresh rate of the screen, in hz. The value is an integer.                                    |

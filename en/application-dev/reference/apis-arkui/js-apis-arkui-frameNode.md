@@ -1386,7 +1386,6 @@ The following example shows partial values from the query result of a [Button](a
     }
 }
 ```
-The attributes in the **\$attrs** field vary by component type. For detailed mappings, see <!--RP2-->[getInspectorInfo Return Result $attrs Mapping Table.xlsx](./figures/getinspectorinfo-return-result-$attrs-mapping-table.xlsx).<!--RP2End-->
 
 **Example**
 
@@ -1532,7 +1531,6 @@ Obtains the **CommonAttribute** API associated with the FrameNode, which is used
 
 Note that only the attributes of a custom node can be modified.
 
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -1599,6 +1597,7 @@ For details, see [Gesture Event Example](#gesture-event-example).
 onDraw?(context: DrawContext): void
 
 Implements custom drawing for the FrameNode. This API overrides the default drawing behavior and is invoked during FrameNode content rendering.
+
 Note: The Canvas provided in the [DrawContext](./js-apis-arkui-graphics.md#drawcontext) parameter is a temporary command-recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../ui/arkts-user-defined-arktsNode-frameNode.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.

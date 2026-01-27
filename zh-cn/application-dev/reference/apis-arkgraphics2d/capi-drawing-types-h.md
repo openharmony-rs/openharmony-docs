@@ -27,6 +27,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Point2D | 定义一个二维的坐标点。 |
+| [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md) | OH_Drawing_Corner_Radii | 定义一个圆角半径，该圆角半径由x轴方向和y轴方向上的半径组成。 |
 | [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md) | OH_Drawing_Point3D | 定义一个三维的坐标点。 |
 | [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md) | OH_Drawing_Image_Info | 定义图片信息结构体。 |
 | [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md) | OH_Drawing_RectStyle_Info | 定义矩形框样式结构体。 |

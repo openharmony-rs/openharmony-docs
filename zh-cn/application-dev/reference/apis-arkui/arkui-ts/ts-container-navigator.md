@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API version 13开始，该组件不再维护，推荐使用组件[Navigation](ts-basic-components-navigation.md)进行页面路由。
+> 从API version 13开始，该组件不再维护，建议使用[Navigation](ts-basic-components-navigation.md)组件进行页面路由。
 >
 > 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -28,7 +28,7 @@ Navigator(value?: {target: string, type?: NavigationType})
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[NavPathInfo](ts-basic-components-navigation.md#navpathinfo10)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -47,7 +47,7 @@ Navigator()
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[NavigationAttribute](ts-basic-components-navigation.md#属性)替代。NavigationAttribute为Navigation组件的属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -55,9 +55,7 @@ Navigator()
 
 ## NavigationType<sup>(deprecated)</sup>枚举说明
 
-> **说明：**
->
-> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
+路由的跳转方式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -65,9 +63,9 @@ Navigator()
 
 | 名称      | 值  | 说明                       |
 | ------- | ------- | -------------------------- |
-| Push    | 1 | 跳转到应用内的指定页面。               |
-| Replace | 2 | 用应用内的某个页面替换当前页面，并销毁被替换的页面。 |
-| Back    | 3 | 返回到指定的页面。指定的页面不存在栈中时不响应。未传入指定的页面时返回上一页。 |
+| Push    | 1 | 跳转到应用内的指定页面。<br/>**说明：**<br/>从API version 7开始支持，从API version 13开始废弃，建议使用[pushPath](ts-basic-components-navigation.md#pushpath10)替代。  |
+| Replace | 2 | 用应用内的某个页面替换当前页面，并销毁被替换的页面。<br/>**说明：**<br/>从API version 7开始支持，从API version 13开始废弃，建议使用[replacePath](ts-basic-components-navigation.md#replacepath11)替代。 |
+| Back    | 3 | 返回到指定的页面。指定的页面不存在栈中时不响应。未传入指定的页面时返回上一页。<br/>**说明：**<br/>从API version 7开始支持，从API version 13开始废弃，建议使用[pop](ts-basic-components-navigation.md#pop10)替代。 |
 
 ## 属性
 
@@ -79,7 +77,7 @@ active(value: boolean)
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 13开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -99,7 +97,7 @@ params(value: object)
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 13开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[param](ts-basic-components-navigation.md#属性-1)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -119,7 +117,7 @@ target(value: string)
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 13开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -138,7 +136,7 @@ type(value: NavigationType)
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 13开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 13开始废弃，建议使用[Navigation](ts-basic-components-navigation.md)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

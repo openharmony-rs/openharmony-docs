@@ -228,7 +228,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-   
+
    ``` C++
    int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanceId, int64_t elementId,
        ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId,
@@ -286,7 +286,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-   
+
    ``` C++
    int32_t AccessibilityManager::FindAccessibilityNodeInfosByText(const char* instanceId, int64_t elementId,
        const char *text, int32_t requestId, ArkUI_AccessibilityElementInfoList *elementList)
@@ -303,7 +303,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-   
+
    ``` C++
    int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceId, int64_t elementId,
        ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo)
@@ -320,7 +320,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-   
+
    ``` C++
    void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo,
                   ArkUI_AccessibilityEventType eventType, std::string announcedText)
@@ -417,7 +417,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-   
+
    ``` C++
    int32_t AccessibilityManager::ClearFocusedFocusAccessibilityNode(const char* instanceId)
    {
@@ -431,7 +431,7 @@ This example demonstrates accessibility integration. For the complete implementa
 
 
    <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
-   
+
    ``` C++
    int32_t AccessibilityManager::GetAccessibilityNodeCursorPosition(const char* instanceId, int64_t elementId,
        int32_t requestId, int32_t *index)

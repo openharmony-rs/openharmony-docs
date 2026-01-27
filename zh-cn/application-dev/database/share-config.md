@@ -72,7 +72,7 @@ crossAppSharedConfig字段配置说明：
 | ------- | ------- | ------- | ------- |
 | uri | 共享配置项的全局唯一标识。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复。uri最大长度为256字节。 | 字符串 | 是 |
 | value | 共享配置项的值，最大长度为4096字节。 | 字符串 | 是 |
-| allowList | 允许访问该共享配置项的应用程序列表。数组最大长度为256，超过256的部分不生效。数组中每个元素为应用的[appIdentifier](../quick-start/common_problem_of_application.md#什么是appidentifier)，单个appIdentifier为只包含数字的字符串，最大长度为128字节，超过128字节的appIdentifier不会生效。可使用[getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口来获取当前应用的appIdentifier。 | 字符串数组 | 是 |
+| allowList | 允许访问该共享配置项的应用程序列表。数组最大长度为256，超过256的部分不生效。数组中每个元素为应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)，单个appIdentifier为只包含数字的字符串，最大长度为128字节，超过128字节的appIdentifier不会生效。可使用[getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口来获取当前应用的appIdentifier。 | 字符串数组 | 是 |
 
 ```json
 {

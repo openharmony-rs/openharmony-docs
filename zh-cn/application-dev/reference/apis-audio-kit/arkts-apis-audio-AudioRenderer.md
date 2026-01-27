@@ -1719,7 +1719,7 @@ on(type: 'audioInterrupt', callback: Callback\<InterruptEvent>): void
 
 AudioRenderer对象在start事件时获取焦点，在pause、stop等事件时释放焦点，无需开发者主动申请。
 
-调用此方法后，如果AudioRenderer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+调用此方法后，如果AudioRenderer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 

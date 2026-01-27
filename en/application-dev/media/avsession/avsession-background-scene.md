@@ -14,8 +14,7 @@ Before diving in, you should understand the following basic concepts to effectiv
 
 - Continuous task: Refer to [Continuous Tasks (ArkTS)](../../task-management/continuous-task.md).
 
-  Actions such as returning to the home screen, locking the screen, or switching applications can push an application to the background. When an application is pushed to the background and resumes activity, it may cause rapid battery drain and UI lag. To reduce battery consumption and ensure a smooth user experience, the system manages applications pushed to the background, including process suspension and termination.
-
+  Actions such as returning to the home screen, locking the screen, or switching applications can push an application to the background. When an application is pushed to the background and resumes activity, it may cause rapid battery drain and UI lag. To reduce battery consumption and ensure a smooth user experience, the system manages applications pushed to the background, including process suspension and termination.<br>
   If an application has a perceivable task that needs to run in an extended period of time in the background, it can request a continuous task to prevent itself from being suspended. Examples of continuous tasks include music playback and video playback in the background.
 
 - AVSession: Refer to [Introduction to AVSession Kit](../avsession/avsession-overview.md).
@@ -26,7 +25,7 @@ Before diving in, you should understand the following basic concepts to effectiv
 
   AVPlayer is a powerful media player that can play various audio and video formats (such as mp4, mp3, mkv, mpeg-ts) end to end. You only need to provide the media source to start playback without worrying about complex demultiplexing and decoding processes.
 
-- AudioRenderer: Refer to [Using AudioRenderer for Audio Playback](../audio/using-audiorenderer-for-playback.md).
+- AudioRenderer: Refer to [Using AudioRenderer for Audio Playback (ArkTs)](../audio/using-audiorenderer-for-playback.md).
 
   AudioRenderer is an audio renderer used to play Pulse Code Modulation (PCM) audio data. Compared with AVPlayer, AudioRenderer allows data preprocessing before input, making it more suitable for developers with audio development experience to achieve more flexible playback features.
 
@@ -46,22 +45,17 @@ The basic steps for audio and video applications to achieve background playback 
 
 Application playback can be achieved using AudioRenderer, AVPlayer, or other third-party or custom players.
 
-- AudioRenderer: When using AudioRenderer to create an audio stream, pay attention to using the appropriate audio stream type. Different stream types have a decisive impact on volume control, audio focus management, and input/output devices. For details, see [Selecting the Appropriate Audio Stream Types](../audio/using-right-streamusage-and-sourcetype.md).
+- AudioRenderer: When using AudioRenderer to create an audio stream, pay attention to using the appropriate audio stream type. Different stream types have a decisive impact on volume control, audio focus management, and input/output devices. For details, see [Selecting the Appropriate Audio Stream Types](../audio/using-right-streamusage-and-sourcetype.md).<br>
+  Additionally, you must correctly handle audio focus. The system has preset default audio focus strategies that manage all playback and recording audio streams based on the type of audio stream and the order in which they start. During application playback or recording, if another audio stream requests focus, the system will handle the focus according to the focus strategy. If the focus of this audio stream changes, the system automatically performs necessary operations (such as pausing, resuming, lowering volume, and restoring volume) and notifies the application of the change through the audio focus event (InterruptEvent). For details, see [Handling Audio Focus Changes](../audio/audio-playback-concurrency.md#handling-audio-focus-changes).<br>
+  For details about the development, see [Using AudioRenderer for Audio Playback (ArkTs)](../audio/using-audiorenderer-for-playback.md).
 
-  Additionally, you must correctly handle audio focus. The system has preset default audio focus strategies that manage all playback and recording audio streams based on the type of audio stream and the order in which they start. During application playback or recording, if another audio stream requests focus, the system will handle the focus according to the focus strategy. If the focus of this audio stream changes, the system automatically performs necessary operations (such as pausing, resuming, lowering volume, and restoring volume) and notifies the application of the change through the audio focus event (InterruptEvent). For details, see [Handling Audio Focus Changes](../audio/audio-playback-concurrency.md#handling-audio-focus-changes).
-  
-  For details about the development, see [Using AudioRenderer to Develop Audio Playback Functions](../audio/using-audiorenderer-for-playback.md).
-
-- AVPlayer: Using AVPlayer can achieve end-to-end playback of raw media resources. To achieve background playback or playback with the screen off, you need to access AVSession and request continuous tasks to prevent playback from being forcibly interrupted by the system. [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) can set the focus management strategy through the **audioInterruptMode** property, which defaults to **SHARE_MODE**.
-  
+- AVPlayer: Using AVPlayer can achieve end-to-end playback of raw media resources. To achieve background playback or playback with the screen off, you need to access AVSession and request continuous tasks to prevent playback from being forcibly interrupted by the system. [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) can set the focus management strategy through the **audioInterruptMode** property, which defaults to **SHARE_MODE**.<br>
   For details about the development, see [Using AVPlayer to Play Audio (ArkTS)](../media/using-avplayer-for-playback.md).
 
 ### Accessing AVSession
 
-When creating an audio stream of type **STREAM_USAGE_MUSIC**, **STREAM_USAGE_MOVIE**, **STREAM_USAGE_AUDIOBOOK**, or **STREAM_USAGE_GAME**, whether to continue playback in the background or start playback in the background, you must access AVSession.
-
-You are advised to create an AVSession object before the application starts or begins playback, and release it when the application process ends or completely exits playback and no longer plays. This avoids frequent creation and release of AVSession, thereby ensuring the continuity and stability of the application's playback service. When playing in the background, ensure that the AVSession object exists throughout the application's background activity to prevent it from being reclaimed or released by the system, such as not using local variables to save the AVSession object.
-
+When creating an audio stream of type **STREAM_USAGE_MUSIC**, **STREAM_USAGE_MOVIE**, **STREAM_USAGE_AUDIOBOOK**, or **STREAM_USAGE_GAME**, whether to continue playback in the background or start playback in the background, you must access AVSession.<br>
+You are advised to create an AVSession object before the application starts or begins playback, and release it when the application process ends or completely exits playback and no longer plays. This avoids frequent creation and release of AVSession, thereby ensuring the continuity and stability of the application's playback service. When playing in the background, ensure that the AVSession object exists throughout the application's background activity to prevent it from being reclaimed or released by the system, such as not using local variables to save the AVSession object.<br>
 After creating AVSession, to ensure a smooth integration experience, you are required to set the following metadata and register the following control commands.
 
 - Metadata: title, subtitle/artist, and cover image. For details, see [Setting Metadata](avsession-access-scene.md#setting-metadata).

@@ -174,9 +174,9 @@ Enumerates the states that can be set for **ArcButton**.
 
 This example shows the basic usage of the **ArcButton** component, supported since API version 18. The following is an example configuration:
 
-1. **topOptions** defines an upper arc button with the button text "ButtonTop," a font size of 15 fp, and shadow enabled, in the normal state with a light-color emphasized style.
+**topOptions** defines an upper arc button with the button text "ButtonTop," a font size of 15 fp, and shadow enabled, in the normal state with a light-color emphasized style.
 
-2. **bottomOptions** defines a bottom arc button with the button text "ButtonBottom," a font size of 15 fp, shadow enabled, in a light-color emphasized style, with a click event set for the button.
+**bottomOptions** defines a bottom arc button with the button text "ButtonBottom," a font size of 15 fp, shadow enabled, in a light-color emphasized style, with a click event set for the button.
 
 To run this sample code, wearable device support is required. In the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory, configure **wearable** under [devicetypes](../../../quick-start/module-configuration-file.md#devicetypes).
 

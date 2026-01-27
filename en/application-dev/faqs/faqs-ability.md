@@ -7,7 +7,12 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
+
 ## How do I obtain a notification when the device orientation changes? (API version 9)
+
+**Symptom**
+
+When the landscape/portrait orientation of a device changes, how do I obtain the change event notification?
 
 **Solution**
 
@@ -107,7 +112,7 @@ Configure the **startWindowIcon** attribute under **abilities** in the **module.
 
 **Example**
 
-```
+```json5
 {
   "module": {
     // Do something.
@@ -170,7 +175,7 @@ Use **getCurrentTime** of **\@ohos.systemDateTime** to obtain the system time an
 
 Use the **\@ohos.systemDateTime** API as follows:
 
-```
+```ts
 try {
   systemDateTime.getCurrentTime(true, (error, time) => {
     if (error) {
@@ -251,13 +256,17 @@ This is because the **removeMissionAfterTerminate** field under **abilities** in
 
 ## How does an application developed in the stage model start an application developed in the FA model? (API version 9)
 
+**Symptom**
+
+How does an application developed in the stage model start an application developed in the FA model?
+
 **Solution**
 
 Refer to the code snippet below:
 
  
 
-```
+```ts
 let want = {
     deviceId: "", // An empty deviceId indicates the local device.
     bundleName: "com.example.myapplication",
@@ -268,9 +277,9 @@ let want = {
 }
 // context is the AbilityContext of the FA model to be started.
 context.startAbility(want).then(() => {
-    ...
+  // ...
 }).catch((err) => {
-    ...
+  // ...
 })
 ```
 
@@ -283,6 +292,10 @@ Currently, the directory structure of new widgets is css+hml+json. This means th
 
 
 ## Can the lifecycle callback of a released FA widget be triggered when the widget is displayed in the service center so that the user login information can be obtained without opening the FA application? (API version 9)
+
+**Symptom**
+
+ 
 
 **Solution**
 
@@ -299,7 +312,7 @@ The **startAbility** API reports an error during redirection.
 
 Use **startAbility** for implementation as follows:
 
-```
+```ts
 import featureAbility from '@ohos.ability.featureAbility'
 function onStartRemoteAbility() {
 console.info('onStartRemoteAbility begin');
@@ -354,7 +367,7 @@ To create a service widget in the FA model, perform the following steps:
 
 Refer to the following code:
 
-```
+```ts
 this.context.startAbility(
 {
   action: "action.settings.app.info",
@@ -371,7 +384,7 @@ You can use **UIAbility.Context** to obtain the context.
 
 **Example**
 
-```
+```ts
 import common from '@ohos.app.ability.common';
 
 @Entry
@@ -393,7 +406,7 @@ struct AbilityContextTest {
           .fontSize(20)
           .onClick(() => {
             this.UIAbilityInfo = JSON.stringify(this.UIAbilityContext.abilityInfo)
-            console.log(`ContextDemo abilityInfo = ${this.UIAbilityInfo}`)
+            console.info(`ContextDemo abilityInfo = ${this.UIAbilityInfo}`)
           })
       }
       .width('100%')
@@ -414,7 +427,7 @@ A ServiceAbility is started by calling **featureAbility.startAbility()**. When t
 
 To start a continuous task in the background, you must configure the permission **ohos.permission.KEEP_BACKGROUND_RUNNING** in the **module.json5** file and declare the background mode for the ability that needs to use the continuous task.
 
-```
+```json5
 "module": {
     "abilities": [
         {

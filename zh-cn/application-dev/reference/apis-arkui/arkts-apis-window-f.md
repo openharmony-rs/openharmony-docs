@@ -675,7 +675,7 @@ try {
 
 getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
 
-获取指定屏幕上可见的窗口布局信息数组，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。
+获取指定屏幕上可见的窗口布局信息数组，其中返回的每个Rect的宽、高是已经过缩放计算后的值，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 

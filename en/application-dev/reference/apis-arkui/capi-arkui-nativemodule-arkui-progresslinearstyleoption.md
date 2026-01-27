@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_ProgressLinearStyleOption ArkUI_ProgressLinearStyleOption
+```
+
 ## Overview
 
 Defines a struct for the linear progress indicator style.

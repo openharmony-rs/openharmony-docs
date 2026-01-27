@@ -395,7 +395,7 @@ promise.then((resolutionObjects) => {
 
 getDefaultDisplaySync(): Display
 
-Obtains the default Display object.
+Returns the **Display** object of the screen where the application is located. If multiple abilities of an application are on different screens, the **Display** object of the main screen is returned. If multiple abilities of an application are on the same screen, the **Display** object of the screen is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1823,7 +1823,7 @@ try {
 ### on('availableAreaChange')<sup>12+</sup>
 on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
-Subscribes to changes of the available area on the display of the current device. This API uses an asynchronous callback to return the result.
+Enables listening for the available area on the current device screen. This callback function is triggered when the screen rotates, the freeform mode is enabled or disabled, or the visibility of system controls such as the dock bar and status bar changes, and returns the available area information.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

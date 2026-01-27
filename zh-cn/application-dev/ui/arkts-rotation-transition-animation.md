@@ -93,14 +93,15 @@ struct rotation {
 <!-- @[window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
+import { display, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { display, window } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'EntryAbility';
-// ···
+// ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // ···
+    // ...
     hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
     let mainWindow: window.Window;
     try {
@@ -124,7 +125,7 @@ const TAG: string = 'EntryAbility';
       hilog.error(DOMAIN, TAG, '%{public}s', 'error');
       return;
     }
-    // ···
+    // ...
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
@@ -135,7 +136,7 @@ const TAG: string = 'EntryAbility';
     });
   }
 
-// ···
+  // ...
 ```
 
 需要在项目的module.json5文件中的abilities列表里添加"orientation"，指定为"auto_rotation"。

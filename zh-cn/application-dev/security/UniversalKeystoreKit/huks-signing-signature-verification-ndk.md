@@ -9,12 +9,12 @@
 
 当前指导提供以下示例，供开发者参考完成签名、验签开发：
 
-- [密钥算法为ECC256、摘要算法为SHA256](#ecc256sha256)
-- [密钥算法为SM2、摘要算法为SM3](#sm2sm3)
-- [密钥算法为SM2、摘要算法为NoDigest](#sm2nodigest)
-- [密钥算法为RSA、摘要算法为SHA256、填充模式为PSS](#rsasha256pss)
-- [密钥算法为RSA、摘要算法为SHA256、填充模式为PKCS1_V1_5](#rsasha256pkcs1_v1_5)
-- [密钥算法为RSA、摘要算法为SHA384、填充模式为PSS](#rsa2048sha384pss)
+- 密钥算法为ECC256、摘要算法为SHA256，请见开发案例：[ECC256/SHA256](#ecc256sha256)
+- 密钥算法为SM2、摘要算法为SM3，请见开发案例：[SM2/SM3](#sm2sm3)
+- 密钥算法为SM2、摘要算法为NoDigest，请见开发案例：[SM2/NoDigest](#sm2nodigest)
+- 密钥算法为RSA、摘要算法为SHA256、填充模式为PSS，请见开发案例：[RSA/SHA256/PSS](#rsasha256pss)
+- 密钥算法为RSA、摘要算法为SHA256、填充模式为PKCS1_V1_5，请见开发案例：[RSA/SHA256/PKCS1_V1_5](#rsasha256pkcs1_v1_5)
+- 密钥算法为RSA、摘要算法为SHA384、填充模式为PSS，请见开发案例：[RSA2048/SHA384/PSS](#rsa2048sha384pss)
 <!--RP1--><!--RP1End-->
 
 具体的场景介绍及支持的算法规格，请参考[签名/验签支持的算法](huks-signing-signature-verification-overview.md#支持的算法)。
@@ -54,7 +54,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 2. 获取待验证的签名signature。
 
-3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定[算法参数配置](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)。
+3. 调用[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)指定算法参数配置。
 
 4. 调用[OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession)初始化密钥会话，并获取会话的句柄handle。
 

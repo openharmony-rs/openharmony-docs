@@ -27,7 +27,7 @@ Binds to the specified component and returns the corresponding observation handl
 
 > **NOTE**
 > 
-> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver) instead on the obtained [UIInspector](arkts-apis-uicontext-uiinspector.md) object.
+> - This API is supported since API version 10 and deprecated since API version 18. You are advised to use [createComponentObserver](arkts-apis-uicontext-uiinspector.md#createcomponentobserver) instead. Obtain the [UIInspector](arkts-apis-uicontext-uiinspector.md) instance using the [getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector) method in [UIContext](arkts-apis-uicontext-uicontext.md), and then call the createComponentObserver method via this instance.
 >
 > - Since API version 10, you can use the [getUIInspector](arkts-apis-uicontext-uicontext.md#getuiinspector) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [UIInspector](arkts-apis-uicontext-uiinspector.md) object associated with the current UI context.
 

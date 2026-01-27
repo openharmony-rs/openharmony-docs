@@ -13,7 +13,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 3. 在复杂布局场景中，排查渲染模式及组件约束条件的问题。
 4. 处理H5代码兼容性问题。
 5. 从日志中排查生命周期和网络加载相关关键字。
-6. 检查是否开启坚盾守护模式，坚盾守护模式开启后相关限制见：[坚盾守护模式](./web-secure-shield-mode.md#arkweb限制的html5特性)。
+6. 检查是否开启[坚盾守护模式](./web-secure-shield-mode.md)，坚盾守护模式开启后相关限制见：[ArkWeb限制的HTML5特性](./web-secure-shield-mode.md#arkweb限制的html5特性)。
 
 ## 检查权限和网络状态
 如果应用未开启联网或文件访问权限或者设备网络状态不佳，将导致Web组件加载失败或页面元素缺失，进而引起白屏。
@@ -403,7 +403,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 | event_message: commit navigation in main frame, routing_id: 4, url: *** | Commit到子进程。 |
 | RenderFrameImpl::CommitNavigation、<br> event_message: page load start | 子进程收到commit。|
 | NWebHandlerDelegate::OnNavigationEntryCommitted、<br> event_message: Commit source_id xxx | 主进程收到DidCommitNavigation。|
-| event_message: load_timing_info errpr_code:0,...| 主资源加载完成，以及各阶段耗时。|
+| event_message: load_timing_info error_code:0,...| 主资源加载完成，以及各阶段耗时。|
 | event_message: MarkFirstContentfulPaint| 标记解析到有可显示内容的元素。|
 | NWebHandlerDelegate::OnPageVisible| 第一帧展示。|
 | NWebHandlerDelegate::OnFirstContentfulPaint| 第一帧有内容展示。|

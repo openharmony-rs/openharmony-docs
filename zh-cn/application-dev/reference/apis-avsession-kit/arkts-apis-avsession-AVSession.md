@@ -6,12 +6,13 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+调用[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)后，返回会话的实例，可以获得会话ID，完成设置元数据，播放状态信息等操作。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 10开始支持。
 
-调用[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)后，返回会话的实例，可以获得会话ID，完成设置元数据，播放状态信息等操作。
 
 ## 导入模块
 
@@ -307,7 +308,7 @@ class CallManager {
         }
       });
     }catch (syncErr) {
-      console.error('Syncronous operation failed: ${syncErr}');
+      console.error('Synchronous operation failed: ${syncErr}');
     }
   }
 }
@@ -661,7 +662,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | 是   | 需要设置的会话事件的名称。 |
-| args |{[key: string]: Object}| 是   | 需要传递的会话事件内容。<br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
+| args |{[key: string]: Object}| 是   | 需要传递的会话事件内容。<br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 
 **返回值：**
 
@@ -734,7 +735,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | 是   | 需要设置的会话事件的名称。 |
-| args |{[key: string]: Object}| 是   | 需要传递的会话事件内容。<br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
+| args |{[key: string]: Object}| 是   | 需要传递的会话事件内容。<br>**说明：** 参数args支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。当会话事件设置成功，err为undefined，否则返回错误对象 。|
 
 **错误码：**
@@ -1075,7 +1076,7 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | {[key: string]: Object} | 是   | 需要传递的自定义媒体数据包键值对。<br>**说明：** 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。 |
+| extras | {[key: string]: Object} | 是   | 需要传递的自定义媒体数据包键值对。<br>**说明：** 参数extras支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。 |
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。当自定义媒体数据包设置成功，err为undefined，否则返回错误对象。 |
 
 
@@ -1143,7 +1144,7 @@ setExtras(extras:{[key: string]: Object}): Promise\<void>
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | {[key: string]: Object}| 是   | 需要传递的自定义媒体数据包键值对。<br> **说明：** 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
+| extras | {[key: string]: Object}| 是   | 需要传递的自定义媒体数据包键值对。<br> **说明：** 参数extras支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。|
 
 **返回值：**
 
@@ -2532,7 +2533,7 @@ currentAVSession.on('handleKeyEvent', (event: KeyEvent) => {
 
 on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: OutputDeviceInfo) => void): void
 
-设置播放设备变化的监听事件。应用接入[系统投播组件](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
+设置播放设备变化的监听事件。应用接入[multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 

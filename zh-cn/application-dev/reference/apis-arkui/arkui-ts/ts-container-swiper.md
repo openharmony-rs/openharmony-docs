@@ -26,7 +26,7 @@
 >
 >  - Swiper子组件的[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为Visibility.None，且Swiper的displayCount属性设置为'auto'时，对应子组件在视窗内不占位，但不影响导航点个数；visibility属性设置为Visibility.None或者Visibility.Hidden时，对应子组件不显示，但依然会在视窗内占位。
 >
->  - 当Swiper子组件设置了[offset](ts-universal-attributes-location.md#offset)属性时，会按照子组件的层级进行绘制，层级高的子组件会覆盖层级低的子组件。例如，Swiper包含3个子组件，其中第3个子组件设置了offset({ x : 100 })，那么在横向循环滑动中，第3个子组件会覆盖第1个子组件，此时可设置第1个子组件的[zIndex](ts-universal-attributes-z-order.md)属性值大于第3个子组件，使第1个子组件层级高于第3个子组件。
+>  - 当Swiper子组件设置了[offset](ts-universal-attributes-location.md#offset)属性时，会按照子组件的层级进行绘制，层级高的子组件会覆盖层级低的子组件。例如，Swiper包含3个子组件，其中第3个子组件设置了offset({ x : 100 })，那么在横向循环滑动中，第3个子组件会覆盖第1个子组件，此时可设置第1个子组件的[zIndex](ts-universal-attributes-z-order.md#zindex)属性值大于第3个子组件，使第1个子组件层级高于第3个子组件。
 >
 >  - 在走焦到用户定义的子节点时，导航点、箭头会由于[焦点样式](../../../ui/arkts-common-events-focus-event.md#焦点样式)修改zIndex的行为被遮挡。
 >
@@ -57,7 +57,7 @@ Swiper(controller?: SwiperController)
 
 > **说明：**
 >
-> Swiper组件[通用属性clip](ts-universal-attributes-sharp-clipping.md)的默认值为true。
+> Swiper组件通用属性[clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
 
 ### index
 
@@ -614,7 +614,7 @@ indicatorStyle(value?: IndicatorStyle)
 
 > **说明：** 
 >
-> 从API version 8开始支持，从API version 10开始废弃，无替代接口。可以使用[Indicator](#indicator10)、[DigitIndicator](#digitindicator10)和[DotIndicator](#dotindicator10)设置导航点样式。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[indicator](#indicator)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1061,7 +1061,7 @@ DotIndicator的构造函数。
 
 itemWidth(value: Length): DotIndicator
 
-Swiper组件圆点导航指示器的宽，不支持设置百分比。
+Swiper组件圆点导航指示器的宽。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1073,7 +1073,7 @@ Swiper组件圆点导航指示器的宽，不支持设置百分比。
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 设置Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | [Length](ts-types.md#length) | 是   | 设置Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞) |
 
 **返回值：** 
 
@@ -1085,7 +1085,7 @@ Swiper组件圆点导航指示器的宽，不支持设置百分比。
 
 itemHeight(value: Length): DotIndicator
 
-Swiper组件圆点导航指示器的高，不支持设置百分比。
+Swiper组件圆点导航指示器的高。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1097,7 +1097,7 @@ Swiper组件圆点导航指示器的高，不支持设置百分比。
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 设置Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | [Length](ts-types.md#length) | 是   | 设置Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞) |
 
 **返回值：** 
 
@@ -1109,7 +1109,7 @@ Swiper组件圆点导航指示器的高，不支持设置百分比。
 
 selectedItemWidth(value: Length): DotIndicator
 
-选中Swiper组件圆点导航指示器的宽，不支持设置百分比。
+选中Swiper组件圆点导航指示器的宽。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1121,7 +1121,7 @@ selectedItemWidth(value: Length): DotIndicator
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | [Length](ts-types.md#length) | 是   | 设置选中Swiper组件圆点导航指示器的宽，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞) |
 
 **返回值：** 
 
@@ -1133,7 +1133,7 @@ selectedItemWidth(value: Length): DotIndicator
 
 selectedItemHeight(value: Length): DotIndicator
 
-选中Swiper组件圆点导航指示器的高，不支持设置百分比。
+选中Swiper组件圆点导航指示器的高。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -1145,7 +1145,7 @@ selectedItemHeight(value: Length): DotIndicator
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：[0, +∞) |
+| value  | [Length](ts-types.md#length) | 是   | 设置选中Swiper组件圆点导航指示器的高，不支持设置百分比。<br/>默认值：6<br/>单位：vp<br/>取值范围：(0, +∞) |
 
 **返回值：** 
 

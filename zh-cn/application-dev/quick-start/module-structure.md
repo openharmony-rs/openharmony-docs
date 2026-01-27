@@ -167,7 +167,6 @@ metadata对象示例：
   "parameters" : [{
     "name" : "a test for metadata parameter",
     "type" : "Float",
-    // "$string:parameters_description"为文件资源索引值
     "description" : "$string:parameters_description"
   }],
   "results" : [{
@@ -244,9 +243,6 @@ metadata对象示例：
 ```json
 {
   "module":{
-
-    // ...
-
     "abilities": [{
       "icon": "$media:icon",
       "label": "Login",
@@ -256,9 +252,6 @@ metadata对象示例：
         "uris": []
       }]
     }],
-
-    // ...
-
   }
 }
 ```
@@ -306,9 +299,7 @@ abilities示例：
   {
     "name": ".EntryAbility",
     "description": "test main ability",
-    // $media:ic_launcher 为媒体类资源
     "icon": "$media:ic_launcher",
-    // $string:example 为字符串类资源
     "label": "$string:example",
     "launchType": "multiton",
     "orientation": "unspecified",
@@ -516,7 +507,6 @@ shortcuts示例：
 "shortcuts": [
   {
     "shortcutId": "id",
-    // $string:shortcut 为配置的字符串资源值
     "label": "$string:shortcut",
     "intents": [
       {

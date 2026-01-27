@@ -9,7 +9,7 @@
 
 ## 通过DevEco Studio可视化界面查看
 
-使用DevEco Studio Profiler工具可以可视化展示HiTraceMeter日志内容，分析应用或服务的CPU使用率和线程运行状态，查看指定时间段内程序在CPU上的执行耗时。具体使用指导请参考[CPU活动分析：CPU分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-cpu)。
+使用DevEco Studio Profiler工具可以可视化展示HiTraceMeter日志内容，分析应用或服务的CPU使用率和线程运行状态，查看指定时间段内程序在CPU上的执行耗时。具体使用指导请参考[CPU活动分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-cpu)。
 
 
 ## 通过命令行工具查看
@@ -42,8 +42,8 @@
 
       在DevEco Studio Profiler的会话区选择“Open File”，将HiTraceMeter文本日志导入DevEco Studio。
 
-      具体分析可参考[CPU活动分析：CPU分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-cpu)文档。
-   - 通过[Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host)工具进行分析，工具下载链接：[developtools_smartperf_host 发行版](https://gitcode.com/openharmony/developtools_smartperf_host/releases)。
+      具体分析可参考[CPU活动分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-cpu)文档。
+   - 通过[Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/README_zh.md)工具进行分析。
 
 ## 用户态trace格式说明
 
@@ -80,7 +80,7 @@ API version 19及以上版本的用户态trace格式参考[当前版本用户态
 
 > **注意：**
 >
-> 1. 一条有效且完整的同步跟踪trace与异步跟踪trace，均包含一条起始trace和一条结束trace，开发者需要保证接口调用的匹配性，否则会导致性能跟踪异常问题。具体可参考ArkTS接口[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)或C++接口[capi-trace-h](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
+> 1. 一条有效且完整的同步跟踪trace与异步跟踪trace，均包含一条起始trace和一条结束trace，开发者需要保证接口调用的匹配性，否则会导致性能跟踪异常问题。具体可参考ArkTS接口[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)或C++接口[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
 > 2. 用户态trace总长度限制512字符，超过部分将被截断。
 
 
@@ -136,7 +136,7 @@ API version 19及以上版本的用户态trace格式参考[当前版本用户态
   >
   > 1. 对于API version 19及之后接口，支持自定义输出级别；对于API version 18及之前接口，trace打点默认为`COMMERCIAL`级别打点。
   >
-  > 2. 系统侧存在一条用户态trace隶属于多个Tag的情况，ArkTS接口[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)和C++接口[capi-trace-h](../reference/apis-performance-analysis-kit/capi-trace-h.md)提供的应用侧用户态trace打点功能无法指定`所属Tag集合`，对应Tag分类固定为`app`，字段值为`62`。
+  > 2. 系统侧存在一条用户态trace隶属于多个Tag的情况，ArkTS接口[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)和C++接口[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)提供的应用侧用户态trace打点功能无法指定`所属Tag集合`，对应Tag分类固定为`app`，字段值为`62`。
 
 
 - **自定义聚类名称**
@@ -219,7 +219,7 @@ API version 19及后续版本的新增字段，均以**竖线+字段**的方式�
 
 ### HiTraceMeter Tag
 
-以下为HitraceMeter用户态Tag集合，其中Tag值为实际代码层面基于数字1的左移值。用户态Tag可通过[“hitrace -l”命令](hitrace.md#查看hitrace包含的tag)查看其解释，其中`always`和`commercial`分别为系统侧默认常开Tag和商用版本场景定制Tag。
+以下为HitraceMeter用户态Tag集合，其中Tag值为实际代码层面基于数字1的左移值。用户态Tag释义可通过[hitrace](hitrace.md#查看hitrace包含的tag)命令行工具查看，其中`always`和`commercial`分别为系统侧默认常开Tag和商用版本场景定制Tag。
 
 | Tag名称            | 代码层常量值 | Tag值 |
 | ------------------ | ------------ | ----- |

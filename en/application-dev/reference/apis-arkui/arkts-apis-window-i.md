@@ -23,8 +23,8 @@ Describes the parameters for creating a child window or system window.
 | name       | string                     | No| No| Name of the window.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                                              |
 | windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | No| No| Window type.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                       |
 | ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No| Yes| Current application context. If no value is passed, no context is used.<br>In the FA model, do not pass in this parameter when creating a child window. Otherwise, an error is reported.<br>In the stage model, you must pass in this parameter when creating a floating window, modal window, or system window.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| displayId  | number                     | No| Yes| ID of the current physical screen. If no value is passed, the default value **-1** is used. The value must be an integer.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core    |
-| parentId   | number                     | No| Yes| ID of the parent window. If no value is passed, the default value **-1** is used. The value must be an integer.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                                              |
+| displayId  | number                     | No| Yes| ID of the current screen. If no value is passed, the default value **-1** is used, which means to follow the parent window. The value must be an integer.<br>After the setting, the screen ID is verified. If the screen ID is less than 0 or does not exist, error code 401 is returned.<br>In scenarios involving extended screens or heterogeneous virtual screens, a global floating window can be displayed on a specified screen by setting the screen ID.<br>Setting the screen ID is invalid for modal windows and system windows; they default to following the parent window.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core    |
+| parentId   | number                     | No| Yes| ID of the parent window. If this parameter is not set, the default value **-1** is used. The default parent window is the main window corresponding to the current application context. The value must be an integer.<br>In the FA model, the passed parent window ID is verified. If the ID is less than 0 or does not exist, error code 1300009 is returned.<br>This parameter is invalid in the stage model.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                                              |
 | decorEnabled<sup>12+</sup> | boolean | No| Yes| Whether the window decoration is enabled. This parameter is valid only when **windowType** is set to **TYPE_DIALOG**. **true** if enabled, **false** otherwise. The default value is **false**.<br>**System capability**: SystemCapability.Window.SessionManager|
 | title<sup>12+</sup> | string| No| Yes| Title of the window when **decorEnabled** is set to **true**. The title display area should not go past the left side of the three-button area of the system. Any part that goes beyond will show as an ellipsis. If this parameter is not set, an empty string is used.<br>**System capability**: SystemCapability.Window.SessionManager|
 
@@ -212,7 +212,7 @@ Describes the button style of the system decoration bar.
 
 ## WindowLimits<sup>11+</sup>
 
-Describes the parameters for window size limits. Applications can obtain the current window size limits via [getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11).
+Describes the parameters for window size limits. Applications can obtain the current window size limits (in px) via [getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11). Starting from API version 22, they can also be obtained via [getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22) (in vp).
 
 Windows have default system-imposed size limits. Applications can adjust these limits using [setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11) or by configuring the [abilities field in the module.json5 file](../../quick-start/module-configuration-file.md#abilities).
 
@@ -224,10 +224,10 @@ The actual limits applied are determined by the intersection of the default syst
 
 | Name     | Type  | Read-Only| Optional| Description                                                        |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | No  | Yes  | Maximum window width. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the maximum width specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| maxHeight | number | No  | Yes  | Maximum window height. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the maximum height specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| minWidth  | number | No  | Yes  | Minimum window width. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the minimum width specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| minHeight | number | No  | Yes  | Minimum window height. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the minimum height specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| maxWidth  | number | No  | Yes  | Maximum window width. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. if a floating-point number is set, it will be rounded down.<br>The default value is **0**, indicating that the property does not change. Before OpenHarmony 5.0.2, the lower bound of the effective range is 0; from OpenHarmony 5.0.2 onward, the lower bound of the effective range is 1. The upper bound of the effective range is the maximum width limited by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| maxHeight | number | No  | Yes  | Maximum window height. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. if a floating-point number is set, it will be rounded down.<br>The default value is **0**, indicating that the property does not change. Before OpenHarmony 5.0.2, the lower bound of the effective range is 0; from OpenHarmony 5.0.2 onward, the lower bound of the effective range is 1. The upper bound of the effective range is the maximum height limited by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| minWidth  | number | No  | Yes  | Minimum window width. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. if a floating-point number is set, it will be rounded down.<br>The default value is **0**, indicating that the property does not change. Before OpenHarmony 5.0.2, the lower bound of the effective range is 0; from OpenHarmony 5.0.2 onward, the lower bound of the effective range is 1. The upper bound of the effective range is the minimum width limited by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| minHeight | number | No  | Yes  | Minimum window height. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. if a floating-point number is set, it will be rounded down.<br>The default value is **0**, indicating that the property does not change. Before OpenHarmony 5.0.2, the lower bound of the effective range is 0; from OpenHarmony 5.0.2 onward, the lower bound of the effective range is 1. The upper bound of the effective range is the minimum height limited by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | No| Yes| Unit of the window size limits. The default value is **px**. The value can be **px** or **vp**.|
 
 ## TitleButtonRect<sup>11+</sup>
@@ -418,10 +418,7 @@ Describes the window information obtained during window rotation changes.
 
 ## RotationChangeResult<sup>19+</sup>
 
-Describes the information returned by the application during window rotation changes.
-
-The system uses the information to adjust the size of the current window rectangle. If the returned information is about the rotation change of the main window, the system does not change the size of the main window.
-
+Describes the information returned by the application during window rotation changes. The system uses the information to adjust the size of the current window rectangle. If the returned information is about the rotation change of the main window, the system does not change the size of the main window.
 There are limitations on the size of application windows and system windows. For details about specific restrictions and rules, see [resize](arkts-apis-window-Window.md#resize9).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
@@ -432,6 +429,32 @@ There are limitations on the size of application windows and system windows. For
 | ------ | ---- | ----- | ---- | ----------------------- |
 | rectType | [RectType](arkts-apis-window-e.md#recttype19) | No| No| Type of window rectangle coordinate system.|
 | windowRect | [Rect](arkts-apis-window-i.md#rect7) | No| No| Information about the window's rectangle relative to the screen or parent window coordinate system.|
+
+## RotationChangeCallback<sup>19+</sup>
+
+### (info: T)<sup>19+</sup>
+
+(info: T): U
+
+Describes a generic callback function for rotation event notifications.
+
+In this callback function, the parameter type is [RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19), and the return value type is [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void.
+
+**Atomic service API**: This API can be used in atomic services since API version 19.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | -------------------------- |
+| info | T    | Yes  | Parameter of type [RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19) passed by the system when the callback is called.|
+
+**Return value**
+
+| Type| Description|
+| -------------------------------- | ------------------------------------ |
+| U | Value of type [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19)\|void.|Return value of the void type.|
 
 ## SubWindowOptions<sup>11+</sup>
 

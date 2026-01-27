@@ -20,6 +20,8 @@ Not supported
 
 PatternLock(controller?: PatternLockController)
 
+Creates a pattern lock component.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -109,7 +111,7 @@ Sets the fill color of the grid dot in the unselected state.
 
 selectedColor(value: ResourceColor)
 
-Sets the fill color of the grid dot in the selected state.
+Fill color of the grid dot in the selected state.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -167,7 +169,7 @@ Sets the width of the path stroke. If this attribute is set to **0** or a negati
 
 | Name| Type                      | Mandatory| Description                         |
 | ------ | -------------------------- | ---- | ----------------------------- |
-| value  | number \| string | Yes  | Width of the path stroke.<br>Default value: **12vp**<br>Value range: [0, sideLength/3]. If the value exceeds the maximum value, the maximum value is used.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Width of the path stroke.<br>Default value: **12vp**<br>Value range: (0, sideLength/3]. If the value is set to 0 or a negative number, the line is not displayed. If the value exceeds the maximum value, the maximum value is used.|
 
 ### autoReset
 
@@ -183,7 +185,7 @@ Sets whether to allow the user to reset the component status (that is, clear the
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to allow the user to reset the component status (that is, clear the input) by touching the component again after the input is complete.<br>The value **true** means that the user can reset the component status by touching the component again after the input is complete, and **false** means the opposite.<br>Default value: **true**|
+| value  | boolean | Yes  | Whether to allow the user to reset the component status (that is, clear the input) by touching the component again after the input is complete.<br>true: Reset the component status (that is, clear the input) by touching the component again after the input is complete. false: Do not reset the component status (that is, clear the input) by touching the component again after the input is complete.<br>Default value: **true**|
 
 ### activateCircleStyle<sup>12+</sup>
 
@@ -215,7 +217,7 @@ Sets whether unselected dots in the grid are automatically selected when the pas
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| skipped  | boolean | Yes  | Whether unselected dots in the grid are automatically selected when the password path passes over them.<br>Default value: **false**, meaning unselected dots are automatically selected|
+| skipped  | boolean | Yes  | Whether unselected dots in the grid are automatically selected when the password path passes over them.<br>true: Skip the grid dots that the selected password path passes through. false: Automatically select the grid dots that the selected password path passes through. Default value: **false**.|
 
 ## Events
 
@@ -235,7 +237,7 @@ Invoked when the pattern password input is complete.
 
 | Name| Type           | Mandatory| Description                                                        |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| input  | Array\<number\> | Yes  | Array of digits that are the indexes of the connected grid dots and are arranged in the same sequence as the dots are connected. The indexes of the grid dots are as follows: 0, 1, 2 for the dots in the first row from left to right; 3, 4, 5 for the dots in the second row; 6, 7, 8 for the dots in the third row.|
+| input  | Array\<number\> | Yes  | Array of digits representing the indices of the selected grid dots, in the order they were connected. The dot indices are assigned row-wise from top to bottom: The first row contains indices 0, 1, 2 (left to right); the second row 3, 4, 5; and the third row 6, 7, 8.|
 
 ### onDotConnect<sup>11+</sup>
 
@@ -243,7 +245,7 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 Invoked when a grid dot is connected during pattern password input.
 
-The callback parameter is a digit that is the index of the connected grid dot. The indexes of the grid dots are as follows: 0, 1, 2 for the dots in the first row from left to right; 3, 4, 5 for the dots in the second row; 6, 7, 8 for the dots in the third row.
+The callback parameter is an array of digits, where each digit represents the index of a selected grid dot, listed in the order they were connected. Grid dots are indexed row-wise from top to bottom: The first row contains indices 0, 1, 2 (left to right); the second row 3, 4, 5; and the third row 6, 7, 8.
 
 >**NOTE**
 >
@@ -268,14 +270,14 @@ This section describes the parameters of the ring style.
 
 | Name         | Type| Read-Only| Optional| Description|
 | ------------- | ------- | ---- | -------- | -------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the background circle.<br>Default value: same as the value of **pathColor**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Radius of the background circle.<br>Default value: 11/6 of **circleRadius**<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| enableWaveEffect | boolean | No| Yes| Whether to enable the wave effect.<br>Default value: true, indicating that the wave effect switch is enabled and the wave effect is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| enableForeground<sup>15+</sup> | boolean | No| Yes| Whether the background circle is displayed in the foreground.<br>Default value: **false**, meaning the background circle is not displayed in the foreground<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the background circle.<br>Default value: '#33182431'<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| radius  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Radius of the background circle.<br>Default value: 1.833 times (that is, 11/6) of the value of [circleRadius](#circleradius)<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| enableWaveEffect | boolean | No| Yes| Whether to enable the wave effect after the grid dot is selected.<br>true: The wave effect is displayed. false: The wave effect is not displayed.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| enableForeground<sup>15+</sup> | boolean | No| Yes| Whether the background circle is displayed above the grid dot.<br>true: The background ring is displayed above the grid dot and covers the grid dot. false: The background ring is displayed below the grid dot and does not cover the grid dot.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 ## PatternLockController
 
-Implements the controller bound to the **PatternLock** component for resetting the component status.
+Controller of the PatternLock component, which is used to reset the component status.
 
 ### Objects to Import
 
@@ -307,7 +309,7 @@ Resets the component status.
 
 setChallengeResult(result: PatternLockChallengeResult): void
 
-Sets the authentication challenge result for the pattern password.
+Sets the correct or incorrect status of the pattern password.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -317,7 +319,7 @@ Sets the authentication challenge result for the pattern password.
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| result | [PatternLockChallengeResult](#patternlockchallengeresult11) | Yes  | Authentication challenge result of the pattern password.|
+| result | [PatternLockChallengeResult](#patternlockchallengeresult11) | Yes  | Authentication challenge result of the pattern password. The status can be correct or incorrect.|
 
 ## PatternLockChallengeResult<sup>11+</sup>
 
@@ -358,9 +360,11 @@ struct PatternLockExample {
         .selectedColor('#707070')
         .pathColor('#707070')
         .backgroundColor('#F5F5F5')
+        .regularColor(Color.Black)
+        .skipUnselectedPoint(false)
         .autoReset(true)
         .onDotConnect((index: number) => {
-          console.info("onDotConnect index: " + index);
+          console.info('onDotConnect index: ' + index);
         })
     }.width('100%').height('100%')
   }
@@ -371,7 +375,7 @@ struct PatternLockExample {
 
 ### Example 2: Verifying the Password
 
-In this example, the [sideLength](#sidelength) attribute is used to set the size of the nine-grid, the [circleRadius](#circleradius) attribute is used to set the style of the grid dot, and the [onPatternComplete](#onpatterncomplete) attribute is used to set the callback for password input.
+In this example, the [sideLength](#sidelength) attribute is used to set the grid size, the [circleRadius](#circleradius) attribute is used to set the grid dot style, and the [onPatternComplete](#onpatterncomplete) attribute is used. Property to set the callback when the password is entered.
 
 When the user completes the password input, different responses are given based on the input:<br>- If the password length is less than 5, a message is displayed to prompt the user to re-enter the password.<br>- After the first input, a message is displayed to prompt the user to enter the password again.<br>- After the second input, the system checks whether the two inputs match. If they match, a message is displayed to indicate that the password setup is successful; otherwise, the user is prompted to re-enter the password.
 
@@ -406,7 +410,7 @@ struct PatternLockExample {
           enableWaveEffect: true
         })
         .onDotConnect((index: number) => {
-          console.info("onDotConnect index: " + index);
+          console.info('onDotConnect index: ' + index);
         })
         .onPatternComplete((input: Array<number>) => {
           // If the length of the entered password is less than 5, the system prompts the user to enter the password again.
@@ -428,7 +432,7 @@ struct PatternLockExample {
           } else {
             // The system prompts the user to enter the password again.
             this.passwords = input;
-            this.message = "Please enter again.";
+            this.message = 'Please enter again.';
           }
         })
       Button('Reset PatternLock').margin(30).onClick(() => {

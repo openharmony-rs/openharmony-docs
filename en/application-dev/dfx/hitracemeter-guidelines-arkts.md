@@ -100,7 +100,7 @@ The following is an example of an ArkTS application that uses the HiTraceMeter A
 
 2. In the **entry/src/main/ets/pages/index.ets** file, use the HiTraceMeter API in the processing service of the text click event. The sample code is as follows:
 
-   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';

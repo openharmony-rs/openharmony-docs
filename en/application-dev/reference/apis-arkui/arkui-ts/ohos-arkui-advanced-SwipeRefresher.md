@@ -34,17 +34,16 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
 
+Implements the pull-down refresh function. When a user pulls down the page, it triggers a content loading operation, fetching new content from the data source and dynamically displaying it on the page.
+
 **Decorator**: \@Component
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
-
-| Name| Type| Mandatory| Decorator| Description                                                                |
+| Name | Type | Mandatory | Decorator | Description                                                                 |
 | -------- | -------- | -------- | -------- |--------------------------------------------------------------------|
 | content | [ResourceStr](ts-types.md#resourcestr) | No| @Prop | Text displayed when the content is loaded.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated. The Resource type is supported since API version 20.  |
 | isLoading | boolean | Yes| \@Prop | Whether content is being loaded.<br> **true**: Content is being loaded.<br> **false**: Content is not being loaded.|

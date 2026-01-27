@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -19,6 +19,7 @@ accessibilityGroup(value: boolean):T
 Sets whether to enable accessibility grouping. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.
 
 If accessibility grouping is enabled for a component that does not contain a universal text attribute or an [accessibility text](#accessibilitytext) attribute, the system will concatenate the universal text attributes of its child components to generate merged text for the component. Child components without universal text attributes will be ignored during concatenation, and their accessibility text (if any) won't be used in the merged text.
+
 When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"yes"**, it becomes focusable by screen readers when other accessibility criteria are met, bypassing **accessibilityGroup** constraints.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -31,7 +32,7 @@ When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Accessibility grouping. If this parameter is set to true, the component and all its child components are considered as a whole selectable component. The accessibility service does not pay attention to the content of the child components, combines the text and accessibility information of the child components, and sends the information to the accessibility service. If this parameter is set to false, accessibility grouping is disabled.<br>Default value: **false**|
+| value  | boolean | Yes  | Whether to enable accessibility grouping. The value **true** means to enable accessibility grouping, and **false** means the opposite. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components. Text and accessibility information from child components are merged and sent to the accessibility service as a whole.<br>Default value: **false**|
 
 **Return value**
 
@@ -46,11 +47,10 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 Sets whether to enable accessibility grouping. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.
 
 If accessibility grouping is enabled for a component that does not contain a universal text attribute or an [accessibility text](#accessibilitytext) attribute, the system will concatenate the universal text attributes of its child components to generate merged text for the component. Child components without universal text attributes will be ignored during concatenation.
+
 When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"yes"**, it becomes focusable by screen readers when other accessibility criteria are met, bypassing **accessibilityGroup** constraints.
 
-When **accessibilityPreferred** is set to **true**, the system will prioritize concatenating the accessibility text attributes of the child components. If a child component has no accessibility text set, its universal text attribute will be used instead. Components without either attribute will be excluded from concatenation.
-
-Starting from API version 22, you can use the state information and tap events of specific child components as the accessibility capabilities of the current aggregated component through the **stateController** and **actionController** parameters.
+After [accessibilityPreferred](ts-types.md#accessibilityoptions14) is used to enable the function of preferentially concatenating accessibility text for reading, the accessibility text attribute of its subcomponents is preferentially concatenated as the merged text of the component. If a child component has no accessibility text set, its universal text attribute will be used instead. Components without either attribute will be excluded from concatenation.
 
 > **NOTE**
 >
@@ -66,7 +66,7 @@ Starting from API version 22, you can use the state information and tap events o
 
 | Name              | Type                                                   | Mandatory| Description                                                        |
 | -------------------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isGroup              | boolean                                                 | Yes  | Accessibility grouping. If this parameter is set to true, the component and all its child components are considered as a whole selectable component. The accessibility service does not pay attention to the content of the child components, combines the text and accessibility information of the child components, and sends the information to the accessibility service. If this parameter is set to false, accessibility grouping is disabled.<br>Default value: **false**|
+| isGroup              | boolean                                                 | Yes  | Whether to enable accessibility grouping. The value **true** means to enable accessibility grouping, and **false** means the opposite. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components. Text and accessibility information from child components are merged and sent to the accessibility service as a whole.<br>Default value: **false**|
 | accessibilityOptions | [AccessibilityOptions](ts-types.md#accessibilityoptions14) | Yes  | Options for accessibility grouping. When **accessibilityPreferred** is set to **true**, the system will prioritize concatenating accessibility text for screen readers. When **accessibilityPreferred** is set to **false**, accessibility text will not be prioritized.<br>**stateController** and **actionController** enable the current aggregated component to use the state information and tap events of specific child components as its accessibility capabilities.|
 
 **Return value**
@@ -877,52 +877,3 @@ struct Index {
 ```
 
 ![accessibilityFocusDrawLevel](figures/accessibilityFocusDrawLevel.png)
-
-### Example 6: Configuring Child Component State and Action Handlers in Accessibility Aggregation Mode
-
-This example demonstrates how to use the optional parameters **stateControllerRoleType** or **stateControllerId** in **accessibilityGroup** to delegate accessibility state information to specific child components, and **actionControllerRoleType** or **actionControllerId** to delegate accessibility control operations to specific child components.
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State isSelected: boolean = false;
-
-  build() {
-    Column({ space: 20 }) {
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
-        Text("Enable Feature")
-        Toggle({ type: ToggleType.Switch, isOn: false })
-          .selectedColor('#007DFF')
-          .switchPointColor('#FFFFFF')
-          .onChange((isOn: boolean) => {
-            console.info('Component status:' + isOn);
-          })
-      }
-      .accessibilityGroup(true, {stateControllerRoleType : AccessibilityRoleType.TOGGLER,
-                                 actionControllerRoleType : AccessibilityRoleType.TOGGLER})
-      .width('80%')
-      .border({ color : Color.Black, width : 2 })
-
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
-        Text("Enable Feature")
-        Toggle({ type: ToggleType.Switch, isOn: false })
-          .selectedColor('#007DFF')
-          .switchPointColor('#FFFFFF')
-          .onChange((isOn: boolean) => {
-            console.info('Component status:' + isOn);
-          })
-          .id("TestToggle")
-      }
-      .accessibilityGroup(true, {stateControllerId : "TestToggle",
-                                 actionControllerId : "TestToggle"})
-      .width('80%')
-      .border({ color : Color.Black, width : 2 })
-
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```

@@ -40,7 +40,7 @@ OpenSL ES:
 Obtain an Engine object through the global interface, and construct an audio playback object based on the Engine object and the input and output parameters.
 
 ```cpp
-// Generate an Engine object.
+// Generate an Engine Interface object.
 SLEngineItf engine;
 // ...
 

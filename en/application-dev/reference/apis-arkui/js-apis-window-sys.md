@@ -2299,7 +2299,9 @@ try {
 setBackdropBlur(radius: number): void
 
 Blurs the background of this window.
+
 The window background refers to the lower-layer area covered by the window, which is the same as the window size.
+
 To make the blur effect visible, you must set the window background transparent by calling [setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9).
 
 **System API**: This is a system API.
