@@ -424,7 +424,7 @@ static resolveUIContext(): ResolvedUIContext
 
 |类型|说明|
 |----|----|
-| [ResolvedUIContext](#resolveduicontext) | 返回带有解析策略的UIContext实例对象。 |
+| [ResolvedUIContext](#resolveduicontext22) | 返回带有解析策略的UIContext实例对象。 |
 
 **示例：**
 
