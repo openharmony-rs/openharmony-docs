@@ -892,7 +892,6 @@ export function getObject2(value: number): I {
 <!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-// app.ets
 import { getObject2, I } from './lib'
 // ...
 let obj2: I = getObject2(123);
@@ -920,7 +919,6 @@ let y: Array<string> = ['a', 'b', 'c'];
 <!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-// 统一使用T[]语法
-let x: number[] = [1, 2, 3];
-let y: string[] = ['a', 'b', 'c'];
+let x: Array<number> = [1, 2, 3];
+let y: Array<string> = ['a', 'b', 'c'];
 ```
