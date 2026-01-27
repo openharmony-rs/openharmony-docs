@@ -3875,6 +3875,12 @@ type UpdateCallback = () => void
 
 表示剪贴板内容变更的回调
 
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 ### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
 
 onRemoteUpdate(callback: UpdateCallback): void
