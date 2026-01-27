@@ -862,9 +862,9 @@ import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
-let discTech : int[] = [tag.NFC_A, tag.NFC_B]; // 用前台ability时所需要的技术代替
+let discTech : number[] = [tag.NFC_A, tag.NFC_B]; // 用前台ability时所需要的技术代替
 let elementName : bundleManager.ElementName;
-let interval : int = 200;
+let interval : number = 200;
 
 function readerModeCb(err : BusinessError, tagInfo : tag.TagInfo) {
     if (!err) {
