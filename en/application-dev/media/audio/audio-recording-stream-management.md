@@ -12,16 +12,20 @@ An audio recording application must notice audio stream state changes and perfor
 
 Create an AudioCapturer by referring to [Using AudioCapturer for Audio Recording (ArkTs)](using-audiocapturer-for-recording.md) or [audio.createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8). Then obtain the audio stream state changes in either of the following ways.
 
-- Check the [state](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#properties) of the AudioCapturer.
-    
-  ```ts
+- Obtain the [property](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#properties) state of the **AudioCapturer**.
+
+  <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+
+  ``` TypeScript
   let audioCapturerState: audio.AudioState = audioCapturer.state;
   console.info(`Current state is: ${audioCapturerState }`)
   ```
 
 - Register **stateChange** to listen for state changes of the AudioCapturer.
-    
-  ```ts
+
+  <!-- @[listen_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+
+  ``` TypeScript
   audioCapturer.on('stateChange', (capturerState: audio.AudioState) => {
     console.info(`State change to: ${capturerState}`)
   });
@@ -51,7 +55,9 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 
 1. Create an AudioStreamManager instance.
 
-   ```ts
+   <!-- @[get_StreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+
+   ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    
@@ -61,7 +67,9 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 
 2. Use [on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9) to listen for audio recording stream changes. If the application needs to receive a notification when the audio recording stream state or device changes, it can subscribe to this event.
 
-   ```ts
+   <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+
+   ``` TypeScript
    audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
      for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
        console.info(`## CapChange on is called for element ${i} ##`);
@@ -85,7 +93,9 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 
 3. (Optional) Use [off('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiocapturerchange9) to cancel listening for audio recording stream changes.
 
-   ```ts
+   <!-- @[cancel_ListenAudioStreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+
+   ``` TypeScript
    audioStreamManager.off('audioCapturerChange');
    console.info('CapturerChange Off is called');
    ```
@@ -93,10 +103,13 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
 4. (Optional) Use [getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9) to obtain the information about all audio recording streams. This API can be used to obtain the unique ID of the audio recording stream, audio capturer information, and audio capturer device information.
 
    > **NOTE**
+   > 
    > Before listening for state changes of all audio streams, the application must [declare the ohos.permission.USE_BLUETOOTH permission](../../security/AccessToken/declare-permissions.md), for the device name and device address (Bluetooth related attributes) to be displayed correctly.
    > Starting from API version 20, you can call [isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20) before audio recording starts to determine whether the recording can be successfully started based on the audio source type in the input AudioCapturer information.
 
-   ```ts
+   <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+
+   ``` TypeScript
    async function getCurrentAudioCapturerInfoArray(){
      await audioStreamManager.getCurrentAudioCapturerInfoArray().then((AudioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
        console.info('getCurrentAudioCapturerInfoArray  Get Promise Called ');

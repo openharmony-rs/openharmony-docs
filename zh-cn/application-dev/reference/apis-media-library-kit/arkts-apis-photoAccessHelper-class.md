@@ -85,7 +85,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                           |
 | ----------------------- | ------------------- | ---- | ---- | ------------------------------ |
-| mimeTypeArray        | Array&lt;string&gt;    | 否   | 否 | PhotoPicker可供用户选择媒体文件的过滤类型。最多支持指定十种媒体文件类型。<br>过滤类型参考MIME类型定义，例如：“image/jpeg”、“video/mp4”等。 |
+| mimeTypeArray        | Array&lt;string&gt;    | 否   | 否 | PhotoPicker可供用户选择媒体文件的过滤类型。数组长度最大为10，因此支持最多十种指定类型。<br>过滤类型参考MIME类型定义，例如：“image/jpeg”、“video/mp4”等。 |
 
 ## FileSizeFilter<sup>19+</sup>
 
@@ -183,4 +183,3 @@ PhotoPicker退出界面的上下文信息，可以用于下次使用PhotoPicker�
 | operationType    | [OperationType](arkts-apis-photoAccessHelper-e.md#operationtype22)   | 否 | 否   | 各类谓词的枚举。 |
 | field    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | 否 | 是   | 数据表中的列名。<br>当前仅支持如下关键字段：URI、PHOTO_TYPE、DISPLAY_NAME、SIZE、DURATION、WIDTH、HEIGHT、ORIENTATION、FAVORITE、TITLE、POSITION、PHOTO_SUBTYPE、DYNAMIC_RANGE_TYPE、COVER_POSITION、BURST_KEY、LCD_SIZE、THM_SIZE、DETAIL_TIME、MEDIA_SUFFIX、OWNER_ALBUM_ID、ASPECT_RATIO<br>通过[select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)接口配置此参数时，输入非法字段会抛出错误码401；通过[PhotoPickerComponent (PhotoPicker组件)](ohos-file-PhotoPickerComponent.md)配置此参数时，输入非法字段无onPickerControllerReady回调。<br>非条件谓词如and、or、beginWrap、endWrap等不涉及该字段。 |
 | value    | Array<[OperationValueType](arkts-apis-photoAccessHelper-t.md#operationvaluetype22)>   | 否 | 是   |  不同谓词所需匹配的值。<br>非条件谓词如and、or、beginWrap、endWrap等不涉及该字段。<br>限制最大长度为10，超出则取前10个值。 |
-

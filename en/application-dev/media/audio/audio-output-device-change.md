@@ -17,7 +17,8 @@ The audio device change information returned by [on('outputDeviceChangeWithInfo'
 ## Device Change Reason
 
 > **NOTE**
-The system sends [AudioStreamDeviceChangeReason](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostreamdevicechangereason11) to the application in any of the following cases:
+> 
+> The system sends [AudioStreamDeviceChangeReason](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostreamdevicechangereason11) to the application in any of the following cases:
 
 - **REASON_NEW_DEVICE_AVAILABLE**: A new device is available.
 
@@ -52,54 +53,59 @@ The system sends [AudioStreamDeviceChangeReason](../../reference/apis-audio-kit/
 
 ### AudioRenderer Sample
 
-  ```ts
-  import { audio } from '@kit.AudioKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  
-  let audioRenderer: audio.AudioRenderer | undefined = undefined;
-  let audioStreamInfo: audio.AudioStreamInfo = {
+  <!-- @[all_outputDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/OutputDeviceChangePause.ets) -->
+
+  ``` TypeScript	
+  import { audio } from '@kit.AudioKit';	
+  import { BusinessError } from '@kit.BasicServicesKit';	
+  let audioRenderer: audio.AudioRenderer | undefined = undefined;	
+  let audioStreamInfo: audio.AudioStreamInfo = {	
     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
     channels: audio.AudioChannel.CHANNEL_2, // Channel.
     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-  };
-  let audioRendererInfo: audio.AudioRendererInfo = {
+  };	
+  let audioRendererInfo: audio.AudioRendererInfo = {	
     usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
     rendererFlags: 0 // AudioRenderer flag.
+  };	
+  let audioRendererOptions: audio.AudioRendererOptions = {	
+    streamInfo: audioStreamInfo,	
+    rendererInfo: audioRendererInfo	
   };
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  };
-  
-  // Create an AudioRenderer instance.
-  audio.createAudioRenderer(audioRendererOptions).then((data) => {
-    audioRenderer = data;
-    console.info('AudioFrameworkRenderLog: AudioRenderer Created : Success : Stream Type: SUCCESS');
-  }).catch((err: BusinessError) => {
-    console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
-  });
-  
-  if (audioRenderer) {
-    // Subscribe to audio output device changes, carrying the change reason.
-    (audioRenderer as audio.AudioRenderer).on('outputDeviceChangeWithInfo', async (deviceChangeInfo: audio.AudioStreamDeviceChangeInfo) => {
-      switch (deviceChangeInfo.changeReason) {
-        case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
-          // Respond to the device unavailability event. If the application is playing content, pause the playback and update the UX.
-          // await audioRenderer.pause();
-          break;
-        case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
-          // The application responds to the device availability event based on the service status.
-          break;
-        case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
-          // The application responds to the forcible device selection event based on the service status.
-          break;
-        case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
-          // The application responds to the unknown reason event based on the service status.
-          break;
-      }
+  // ...
+
+    // Create an AudioRenderer instance.
+    audio.createAudioRenderer(audioRendererOptions).then((data) => {	
+      audioRenderer = data;	
+      console.info('AudioFrameworkRenderLog: AudioRenderer Created : Success : Stream Type: SUCCESS');	
+      // ...
+    }).catch((err: BusinessError) => {
+      console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+      // ...
     });
-  }
+  
+    if (audioRenderer) {	
+      // Subscribe to audio output device changes, carrying the change reason.
+      (audioRenderer as audio.AudioRenderer).on('outputDeviceChangeWithInfo', async (deviceChangeInfo: audio	
+      .AudioStreamDeviceChangeInfo) => {	
+        switch (deviceChangeInfo.changeReason) {	
+          case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:	
+            // Handle the event where the old device is unavailable. If the application is in the playing state, the playback should be paused and the UX interface should be updated.
+            // await audioRenderer.pause();	
+            break;	
+          case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:	
+            // The application responds to the device availability event based on the service status.
+            break;	
+          case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:	
+            // The application responds to the forcible device selection event based on the service status.
+            break;	
+          case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:	
+            // The application responds to the unknown reason event based on the service status.
+            break;	
+        }
+      });
+    }
   ```
 
 ### AudioSessionManager Sample

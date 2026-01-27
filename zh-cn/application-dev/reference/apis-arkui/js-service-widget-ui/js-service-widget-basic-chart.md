@@ -257,7 +257,7 @@
    }
    ```
 
-![zh-cn_image_0000001185652902](figures/zh-cn_image_0000001185652902.png)
+   ![zh-cn_image_0000001185652902](figures/zh-cn_image_0000001185652902.png)
 
 2. 柱状图
 
@@ -327,10 +327,9 @@
    }
    ```
 
-![barchart](figures/barchart.PNG)
+   ![barchart](figures/barchart.PNG)
 
 3. 量规图
-
 
    ```html
    <!-- xxx.hml -->
@@ -359,4 +358,4 @@
    }
    ```
 
-![gauge](figures/gauge.PNG)
+   ![gauge](figures/gauge.PNG)

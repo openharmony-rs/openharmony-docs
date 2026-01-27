@@ -72,7 +72,7 @@ Enumerates the Ukey PIN authentication states.
 
 registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>): Promise\<void>
 
-Registers a specified external provider. This API uses a promise to return the result.
+Registers a specified external Provider. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.CRYPTO_EXTENSION_REGISTER
 
@@ -137,7 +137,7 @@ huksExternalCrypto.registerProvider(providerName, extProperties)
 
 unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam>): Promise\<void>
 
-Unregister a provider. This API uses a promise to return the result.
+Unregisters a specified external Provider. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.CRYPTO_EXTENSION_REGISTER
 
@@ -166,7 +166,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | api is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000011 | the provider is not found. |
-| 12000012 | Device environment or input parameter abnormal. This may happen for several reasons, such as the model already being unloaded. |
+| 12000012 | Device environment or input parameter is abnormal. This may happen for several reasons, such as the model already being unloaded. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
 
@@ -226,8 +226,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | api is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | the Ukey driver operation failed. |
-| 12000011 | queried entity does not exist. queried entity does not exist. This may happen because the resource ID has not been opened. |
-| 12000012 | Device environment or input parameter abnormal. This error may occur if the process function is not found, or due to other issues. |
+| 12000011 | queried entity does not exist. This may happen because the resource ID has not been opened. |
+| 12000012 | Device environment or input parameter is abnormal. This error may occur if the process function is not found, or due to other issues. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
 | 12000020 | the provider operation failed. |
@@ -258,7 +258,9 @@ huksExternalCrypto.getUkeyPinAuthState(testResourceId, extProperties)
 
 getProperty(resourceId: string, propertyId: string, params?: Array\<HuksExternalCryptoParam>): Promise\<Array\<HuksExternalCryptoParam>>
 
-Obtains a property value. This API uses a promise to return the result. **propertyId** indicates the ID of the property to be queried. Currently, only the SKF API names defined in GMT 0016-2023 can be used as property IDs. The supported IDs are as follows:
+Obtains a property value. This API uses a promise to return the result.
+
+**propertyId** indicates the ID of the property to be queried. Currently, only the SKF API names defined in GMT 0016-2023 can be used as property IDs. The supported IDs are as follows:
 
 - SKF_EnumDev
 - SKF_GetDevInfo
@@ -289,16 +291,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 801 | api is not supported. |
+| 801 | API is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | If the Ukey driver operation failed. Possible causes: 1. Error reported when the provider accesses the SKF interface of Ukey. |
 | 12000011 | If the cached resource ID is not found. |
-| 12000012 | Device environment or input parameter abnormal. This error may occur if the process function is not found, or due to other issues. |
+| 12000012 | Device environment or input parameter is abnormal. This error may occur if the process function is not found, or due to other issues. |
 | 12000014 | If the memory is insufficient. |
-| 12000018 | the input parameter is invalid. Possible causes: 1. The resourceId or propertyId length is invalid. 2. The params contain invalid tags or invalid value types. |
-| 12000020 | If the provider operation failed. Possible causes: 1. The provider occurred internal processing error. |
-| 12000022 | the Ukey PIN is incorrect. |
-| 12000023 | the Ukey PIN not authenticated. |
+| 12000018 | Input parameter is invalid. Possible causes: 1. The resourceId or propertyId length is invalid. 2. The params contains invalid tags or invalid value types. |
+| 12000020 | If the provider operation failed. Possible causes: 1. The provider experienced an internal processing error. |
+| 12000021 | The Ukey PIN is locked. |
+| 12000023 | The Ukey PIN is not authenticated. |
 | 12000024 | If the provider or Ukey is busy. |
 
 **Example**

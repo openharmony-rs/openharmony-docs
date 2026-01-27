@@ -26,6 +26,8 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 Include the <[native_audiostreambuilder.h](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md)> and <[native_audiorenderer.h](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md)> header files so that the application can use the functions related to audio playback.
 
+<!-- @[Render_headFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
 ```cpp
 #include <ohaudio/native_audiorenderer.h>
 #include <ohaudio/native_audiostreambuilder.h>
@@ -46,12 +48,16 @@ OHAudio provides the **OH_AudioStreamBuilder** class, which complies with the bu
 
 The following code snippet shows how to use [OH_AudioStreamBuilder_Create](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create) to create a builder:
 
+<!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
 ```cpp
 OH_AudioStreamBuilder* builder;
 OH_AudioStreamBuilder_Create(&builder, streamType);
 ```
 
 After the audio service is complete, call [OH_AudioStreamBuilder_Destroy](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_destroy) to destroy the builder.
+
+<!-- @[Render_Destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ```cpp
 OH_AudioStreamBuilder_Destroy(builder);
@@ -63,9 +69,12 @@ The following walks you through how to implement simple playback:
 
 1. Create an audio stream builder.
 
-   ```cpp
+   <!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+   ``` cpp
    OH_AudioStreamBuilder* builder;
-   OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER);
+   // ...
+       OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_RENDERER);
    ```
 
 2. Set audio stream parameters.
@@ -73,11 +82,15 @@ The following walks you through how to implement simple playback:
    For details about the audio sampling rate, see [Configuring the Appropriate Audio Sampling Rate](using-audiorenderer-for-playback.md#configuring-the-appropriate-audio-sampling-rate).<br>
    After creating the builder for audio playback, set the parameters required.
 
-   ```cpp
+   <!-- @[Render_ConfigStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+   ``` cpp
    // Set the audio sampling rate.
-   OH_AudioStreamBuilder_SetSamplingRate(builder, 48000);
+   const int SAMPLING_RATE_48K = 48000;
+   OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE_48K);
    // Set the number of audio channels.
-   OH_AudioStreamBuilder_SetChannelCount(builder, 2);
+   const int channelCount = 2;
+   OH_AudioStreamBuilder_SetChannelCount(builder, channelCount);
    // Set the audio sampling format.
    OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
    // Set the encoding type of the audio stream.
@@ -102,11 +115,13 @@ The following walks you through how to implement simple playback:
      > 
      > - Once the callback function finishes its execution, the audio service queues the data in the buffer for playback. Therefore, do not change the buffered data outside the callback. Regarding the last frame, if there is insufficient data to completely fill the buffer, you must concatenate the available data with padding to ensure that the buffer is full. This prevents any residual dirty data in the buffer from adversely affecting the playback effect.
 
-   - Starting from API version 12, you can call [OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback) to set **audioDataSize**.
+    - Starting from API version 12, you can call [OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback) to set **audioDataSize**.
 
-   ```cpp
+   <!-- @[Render_Callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+   ``` cpp
    // Customize a data writing function.
-   OH_AudioData_Callback_Result MyOnWriteData(
+   static OH_AudioData_Callback_Result MyOnWriteData_New(
        OH_AudioRenderer* renderer,
        void* userData,
        void* audioData,
@@ -116,8 +131,9 @@ The following walks you through how to implement simple playback:
        // If you do not want to play a segment of audioData, return AUDIO_DATA_CALLBACK_RESULT_INVALID.
        return AUDIO_DATA_CALLBACK_RESULT_VALID;
    }
+
    // Customize an audio interruption event function.
-   void MyOnInterruptEvent(
+   void MyOnInterruptEvent_New(
        OH_AudioRenderer* renderer,
        void* userData,
        OH_AudioInterrupt_ForceType type,
@@ -125,46 +141,50 @@ The following walks you through how to implement simple playback:
    {
        // Update the player status and UI based on the audio interruption information indicated by type and hint.
    }
+
    // Customize an exception callback function.
-   void MyOnError(
+   void MyOnError_New(
        OH_AudioRenderer* renderer,
        void* userData,
        OH_AudioStream_Result error)
    {
        // Perform operations based on the audio exception information indicated by error.
    }
-
-   // Configure the callback function for interruption events.
-   OH_AudioRenderer_OnInterruptCallback onInterruptCb = MyOnInterruptEvent;
-   OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, onInterruptCb, nullptr);
-
-   // Configure the callback function for audio exceptions.
-   OH_AudioRenderer_OnErrorCallback onErrorCb = MyOnError;
-   OH_AudioStreamBuilder_SetRendererErrorCallback(builder, onErrorCb, nullptr);
-
-   // Configure the callback function for writing audio data.
-   OH_AudioRenderer_OnWriteDataCallback onWriteDataCb = MyOnWriteData;
-   OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, onWriteDataCb, nullptr);
+   // ...
+       // Configure the callback function for interruption events.
+       OH_AudioRenderer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent_New;
+       OH_AudioStreamBuilder_SetRendererInterruptCallback(builder, OnIntereruptCb, nullptr);
+       
+       // Configure the callback function for audio exceptions.
+       OH_AudioRenderer_OnErrorCallback OnErrorCb = MyOnError_New;
+       OH_AudioStreamBuilder_SetRendererErrorCallback(builder, OnErrorCb, nullptr);
+       
+       // Configure the callback function for writing audio data.
+       OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData_New;
+       OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
    ```
 
 4. Create an audio renderer instance.
 
-   ```cpp
+   <!-- @[Render_GenerateRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+   ``` cpp
    OH_AudioRenderer* audioRenderer;
-   OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+   // ...
+       OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
    ```
 
 5. Use the audio renderer.
 
    You can use the APIs listed below to control the audio streams.
-
-   | API                                                        | Description        |
-   | ------------------------------------------------------------ | ------------ |
-   | OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer) | Starts the audio renderer.    |
-   | OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer) | Pauses the audio renderer.    |
-   | OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer) | Stops the audio renderer.    |
-   | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | Flushes obtained audio data.|
-   | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | Releases the audio renderer instance.|
+    
+    | API                                                        | Description        |
+    | ------------------------------------------------------------ | ------------ |
+    | OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer) | Starts the audio renderer.    |
+    | OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer) | Pauses the audio renderer.    |
+    | OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer) | Stops the audio renderer.    |
+    | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | Flushes obtained audio data.|
+    | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | Releases the audio renderer instance.|
 
     > **NOTE**
     >
@@ -176,7 +196,9 @@ The following walks you through how to implement simple playback:
 
    Applications must properly manage builders according to their needs, creating them as needed and releasing them promptly. This prevents excessive consumption of audio resources, which can lead to exceptions.
 
-   ```cpp
+   <!-- @[Render_Destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+   ``` cpp
    OH_AudioStreamBuilder_Destroy(builder);
    ```
 
@@ -184,12 +206,13 @@ The following walks you through how to implement simple playback:
 
 You can use [OH_AudioRenderer_SetVolume](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setvolume) to set the volume for the current audio stream.
 
-```cpp
-// Volume to set. The value range is [0.0, 1.0].
+<!-- @[Render_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+``` cpp
 float volume = 0.5f;
 
 // Set the volume for the audio stream.
-OH_AudioStream_Result OH_AudioRenderer_SetVolume(audioRenderer, volume);
+OH_AudioRenderer_SetVolume(audioRenderer, volume);
 ```
 
 ### Setting the Low Latency Mode
@@ -203,8 +226,9 @@ The development process is similar to that in the common playback scenario (desc
 > - In audio recording scenarios, if [OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage) is set to **AUDIOSTREAM_USAGE_VOICE_COMMUNICATION** or **AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION**, the low-latency mode cannot be set. The system determines the output audio channel based on the device capability.
 > - The low-latency mode requires robust data processing capabilities. If your application generates data slowly, it may lead to lag. Therefore, for typical music and video playback, this mode is not recommended. It is best suited for applications that are sensitive to latency, such as gaming and karaoke.
 
+<!-- @[Render_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-```cpp
+``` cpp
 OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_FAST);
 ```
 
@@ -220,8 +244,9 @@ If you do not know the accurate audio channel layout or you want to use the defa
 
 For audio in Higher Order Ambisonics (HOA) format, to obtain the correct rendering and playback effect, you must specify the audio channel layout.
 
+<!-- @[Render_SetChannelLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
-```cpp
+``` cpp
 OH_AudioStreamBuilder_SetChannelLayout(builder, CH_LAYOUT_STEREO);
 ```
 
@@ -233,9 +258,11 @@ The development process is similar to that in the common playback scenario (desc
 
 When an audio file in Audio Vivid format is played, the frame size is fixed. Therefore, do not call [OH_AudioStreamBuilder_SetFrameSizeInCallback()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback) to set the frame size in the callback. In addition, when setting the number of audio channels and the audio channel layout, use the sum of the number of sound beds written into the audio source and the number of objects.
 
-```cpp
+<!-- @[Render_SetWriteDataWithMetadataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+``` cpp
 // Customize a callback function for simultaneously writing PCM data and metadata.
-int32_t MyOnWriteDataWithMetadata(
+int32_t MyOnWriteDataWithMetadata_New(
     OH_AudioRenderer* renderer,
     void* userData,
     void* audioData,
@@ -246,13 +273,13 @@ int32_t MyOnWriteDataWithMetadata(
     // Write the PCM data and metadata to be played to the buffer by audioDataSize and metadataSize, respectively.
     return 0;
 }
-
-// Set the encoding type.
-OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID);
-// Set the callbacks.
-OH_AudioRenderer_WriteDataWithMetadataCallback metadataCallback = MyOnWriteDataWithMetadata;
-// Set the callback function for writing both PCM data and metadata.
-OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback, nullptr);
+// ...
+    // Set the encoding type.
+    OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_AUDIOVIVID);
+    // Set the callbacks.
+    OH_AudioRenderer_WriteDataWithMetadataCallback metadataCallback = MyOnWriteDataWithMetadata_New;
+    // Set the callback function for writing both PCM data and metadata.
+    OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback, nullptr);
 ```
 
 ### Samples
@@ -264,10 +291,14 @@ For details about the sample related to OHAudio audio playback, see [OHAudio Rec
 Starting from API version 12, the [OH_AudioRenderer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md) API is no longer recommended for setting audio callback functions. If this API must be used, you should ensure that the audio callback function is set properly to avoid unexpected behavior. You can do this in one of two ways:
 
 - Initialize each callback in [OH_AudioRenderer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorenderer-callbacks-struct.md) by a custom callback method or a null pointer.
-   
-  ```cpp
+
+  <!-- @[Render_CustomCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+  ``` cpp
+  OH_AudioRenderer_Callbacks callbacks;
+  // ...
   // Customize a data writing function.
-  int32_t MyOnWriteData(
+  int32_t MyOnWriteData_Legacy(
       OH_AudioRenderer* renderer,
       void* userData,
       void* buffer,
@@ -276,8 +307,9 @@ Starting from API version 12, the [OH_AudioRenderer_Callbacks](../../reference/a
       // Write the data to be played to the buffer by length.
       return 0;
   }
+
   // Customize an audio interruption event function.
-  int32_t MyOnInterruptEvent(
+  int32_t MyOnInterruptEvent_Legacy(
       OH_AudioRenderer* renderer,
       void* userData,
       OH_AudioInterrupt_ForceType type,
@@ -286,24 +318,27 @@ Starting from API version 12, the [OH_AudioRenderer_Callbacks](../../reference/a
       // Update the player status and UI based on the audio interruption information indicated by type and hint.
       return 0;
   }
-
-  OH_AudioRenderer_Callbacks callbacks;
-
-  // Configure a callback function. If listening is required, assign a value.
-  callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
-  callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
-
-  // (Mandatory) For scenarios where no callback is triggered, initialize with a null pointer. Starting from API version 11, if you need to listen for device changes, use OH_AudioRenderer_OutputDeviceChangeCallback instead.
-  callbacks.OH_AudioRenderer_OnStreamEvent = nullptr;
-  // (Mandatory) If listening is not required, use a null pointer for initialization.
-  callbacks.OH_AudioRenderer_OnError = nullptr;
+  // ...
+      // Configure a callback function. If listening is required, assign a value.
+      callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData_Legacy;
+      callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent_Legacy;
+  
+      // (Mandatory) If no callback is triggered, use a null pointer for initialization. From API version 11, if you need to listen to device changes,
+      // you can use OH_AudioRenderer_OutputDeviceChangeCallback instead.
+      callbacks.OH_AudioRenderer_OnStreamEvent = nullptr;
+      // (Mandatory) If listening is not required, use a null pointer for initialization.
+      callbacks.OH_AudioRenderer_OnError = nullptr;
   ```
 
 - Initialize and clear the struct before using it.
 
-  ```cpp
+  <!-- @[Render_callBackInit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+  ``` cpp
+  OH_AudioRenderer_Callbacks callbacks;
+  // ...
   // Customize a data writing function.
-  int32_t MyOnWriteData(
+  int32_t MyOnWriteData_Legacy(
       OH_AudioRenderer* renderer,
       void* userData,
       void* buffer,
@@ -312,8 +347,9 @@ Starting from API version 12, the [OH_AudioRenderer_Callbacks](../../reference/a
       // Write the data to be played to the buffer by length.
       return 0;
   }
+
   // Customize an audio interruption event function.
-  int32_t MyOnInterruptEvent(
+  int32_t MyOnInterruptEvent_Legacy(
       OH_AudioRenderer* renderer,
       void* userData,
       OH_AudioInterrupt_ForceType type,
@@ -322,14 +358,13 @@ Starting from API version 12, the [OH_AudioRenderer_Callbacks](../../reference/a
       // Update the player status and UI based on the audio interruption information indicated by type and hint.
       return 0;
   }
-  OH_AudioRenderer_Callbacks callbacks;
-
-  // Initialize and clear the struct before using it.
-  memset(&callbacks, 0, sizeof(OH_AudioRenderer_Callbacks));
-
-  // Configure the required callback functions.
-  callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
-  callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
+  // ...
+      // Initialize and clear the struct before using it.
+      OH_AudioRenderer_Callbacks callbacks = {0};
+  
+      // Configure the required callback functions.
+      callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData_Legacy;
+      callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent_Legacy;
   ```
 
   <!--RP1-->

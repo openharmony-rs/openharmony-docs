@@ -28,6 +28,9 @@ Currently, OHAudio supports two modes: normal mode (**AUDIOSTREAM_LATENCY_MODE_N
 You can specify which mode the audio stream should use by calling [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) to set [OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).
 
 The following is an example of setting the low-latency mode:
+
+<!-- @[OH_AudioStreamBuilder_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
 ```cpp
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
@@ -68,6 +71,9 @@ Audio data to be played is written through the callback API. Implement the callb
 For details about the sample code for developing audio playback, please refer to [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md).
 
 The following is an example of setting the data callback function:
+
+<!-- @[Render_SetRendererWriteDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
 ```cpp
 // Customize a function to write data.
 static OH_AudioData_Callback_Result MyOnWriteData(
@@ -84,6 +90,7 @@ static OH_AudioData_Callback_Result MyOnWriteData(
 OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData;
 OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
 ```
+
 - To prevent audio stuttering, do not perform time-consuming operations in the callback function **OH_AudioRenderer_OnWriteData**.
 - To maintain independence between data writing logic and stream state control, do not call the audio stream control APIs in the callback function **OH_AudioRenderer_OnWriteData**.
 
