@@ -845,8 +845,8 @@ struct SubHeaderExample {
 ```
 ![子标题8](figures/zh-cn_image_subheader_example08.png)
 
-### 示例9（右侧按钮自定义播报）
-该示例通过设置SubHeaderV2的右侧按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
+### 示例9（右侧按钮设置默认获焦）
+从API version 18开始，该示例通过设置SubHeader的右侧按钮属性defaultFocus使其默认获焦。
 ```ts
 import {
   SubHeaderV2OperationType,
