@@ -31,6 +31,76 @@
 
 除非特别说明，\@ComponentV2装饰的自定义组件将与\@Component装饰的自定义组件保持相同的行为。
 
+## 支持自定义组件扩展
+
+从API version 23开始，开发者可以在自定义组件中重写通用属性的方法，并使用`super`关键字调用基类的通用属性的方法。当使用“.”链式调用自定义组件方法时，需注意以下事项：
+1. 实现链式调用的关键是：每个方法必须返回`this`，以允许连续调用。如果某个方法未返回`this`，则无法作为链式调用的中间步骤，导致后续调用无法解析，从而引发编译错误。
+2. 通过链式调用的方法，其调用时机是在创建自定义组件时，所以在方法内，不能改变关联其他组件或方法的状态变量，否则会有运行时报错。
+
+示例如下。
+
+```typescript
+'use static'
+
+import { Text, Entry, Color, ComponentV2, ResourceColor, Column, ColorMetrics } from '@kit.ArkUI';
+import { Provider, Consumer, Local } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@ComponentV2
+struct ChildComponent {
+  @Consumer() message: string = 'default';
+  @Local info: string = 'default';
+
+  // override关键字可缺省
+  override backgroundColor(value: ResourceColor | ColorMetrics | undefined): this {
+    hilog.info(0X0000, 'testTag', `override backgroundColor`);
+    // this.message = 'Change'; // 运行时报错，禁止在构建组件树的过程中修改有依赖的状态变量
+    this.info = 'Change'; // 正常运行，可以在构建组件树的过程中修改没有依赖的状态变量
+    super.backgroundColor(Color.Pink); // 背景颜色显示为粉色，开发者可以选择不调用基类的backgroundColor方法，即不设置背景颜色
+    return this;
+  }
+
+  // overload
+  backgroundColor(value: Array<number>): this {
+    hilog.info(0X0000, 'testTag', `overload backgroundColor`);
+    return this;
+  }
+
+  // myStyle没有返回this，仅可以在链式调用的最后一项被调用
+  myStyle(): void {
+    hilog.info(0X0000, 'testTag', `myStyle`);
+  }
+
+  build() {
+    Column() {
+      Text(`ChildComponent info ${this.info}`)
+      Text(`ChildComponent message ${this.message}`)
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct MyComponent {
+  @Provider() message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(`MyComponent message ${this.message}`)
+
+      ChildComponent()
+        .width(300)
+        .height(300)
+        .backgroundColor(Color.Red)
+        .backgroundColor([0])
+        .myStyle()
+    }
+    .height(500)
+    .width(300)
+  }
+}
+```
+
 ## 限制
 
 - \@ComponentV2装饰的自定义组件不支持[LocalStorage](./arkts-static-localstorage.md)。
