@@ -28659,7 +28659,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_publish.h",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":35,
 						"name":"event_publisher_import",
 						"start_line":19
 					}
@@ -28699,7 +28699,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.h",
 				"functions":[
 					{
-						"end_line":26,
+						"end_line":24,
 						"name":"event_subscriber_import",
 						"start_line":19
 					}
@@ -28759,7 +28759,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_unsubscribe.h",
 				"functions":[
 					{
-						"end_line":23,
+						"end_line":22,
 						"name":"event_unsubscriber_import",
 						"start_line":19
 					}
