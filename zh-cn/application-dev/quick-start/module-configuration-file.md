@@ -639,7 +639,7 @@ data标签示例：
 该标签用于定义HAP对应的细分设备规格的分发策略，以便在应用市场进行云端分发应用包时做精准匹配。
 
 > **说明：**
-> 该标签从 API verison 10 及以后版本开始生效，API version 9 及以前版本使用 distroFilter 标签。
+> 该标签从API verison 10及以后版本开始生效，API version 9及以前版本使用distroFilter标签。
 
 - **适用场景：** 当一个工程中存在多个Entry，且多个Entry配置的deviceTypes存在交集时，则需要通过该标签进行区分。比如下面的两个Entry都支持tablet类型，就需要通过该标签进行区分。
 
