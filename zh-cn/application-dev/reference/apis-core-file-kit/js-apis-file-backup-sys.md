@@ -1854,7 +1854,7 @@ async function getBackupCompatibilityInfo() {
 ArkTS-Sta示例:
 
 ```ts
-import { fileIo, backup } from '@kit.CoreFileKit';
+import { fileIo as fs, backup } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
