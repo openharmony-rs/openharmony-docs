@@ -108,7 +108,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
       });
     } catch (e) {
       let err = e as BusinessError;
-      console.error(TAG, `startSecondPage failed: code: ${err.code} message: ${err.message}`)
+      console.error(TAG, `startSecondPage failed: code: ${e.code} message: ${e.message}`)
       return
     }
   }
