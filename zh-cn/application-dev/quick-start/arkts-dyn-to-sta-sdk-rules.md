@@ -889,12 +889,12 @@ that.parseXml(options);
 
 **变更原因：**
 
-1. 更严格的类型要求。 
+1. 对类型系统施加更严格的静态类型检查要求。
 2. 提升稳定性：在编译阶段拦截空指针异常，消除运行时的Null Pointer Exception。
 
 **适配建议：**
 
-用户对对象进行null/undefined容错处理。
+开发者应对可能为null或undefined的对象进行容错处理。
 
 **示例**
 
@@ -1012,7 +1012,7 @@ let obj: Object = {
 let v: number = getValue(obj);
 ```
 
-示例二：层级有限制，每层的属性数量没有限制。
+示例二：嵌套层级深度有限制，但每层的属性数量没有限制。
 
 ```
 // ArkTS-Dyn API定义
@@ -1025,7 +1025,7 @@ let obj: Object = {
 let v: number = getValue(obj);
 ```
 
-示例三：层级有限制，每层的属性数量没有限制。
+示例三：嵌套层级深度没有限制，但每层的属性数量没有限制。
 
 ```
 // ArkTS-Dyn API定义
@@ -1075,7 +1075,7 @@ let type: MyType = {
 let v: number = getValue(type);  
 ```
 
-示例二：层级有限制，每层的属性数量没有限制。
+示例二：嵌套层级深度有限制，但每层的属性数量没有限制。
 
 ```
 // ArkTS-Sta API定义
@@ -1089,7 +1089,7 @@ let type: Record<string, number> = {
 let v: number = getValue(type);  
 ```
 
-示例三：层级有限制，每层的属性数量没有限制。
+示例三：嵌套层级深度没有限制，但每层的属性数量没有限制。
 
 ```
 // ArkTS-Sta API定义
@@ -1125,8 +1125,8 @@ let v: number = getValue(type);
 **变更原因：**
 
 1. 在满足使用场景的情况下，建议尽量使用成员方法。
-2. 成员方法优势：对象体积小，方法不可被更改。
-3. 函数属性优势：动态可修改，动态this灵活。
+2. 成员方法优势：对象内存占用小，方法不可被更改。
+3. 函数属性优势：在运行时可以修改函数属性，且可以动态绑定this对象。
 
 **示例：**
 
