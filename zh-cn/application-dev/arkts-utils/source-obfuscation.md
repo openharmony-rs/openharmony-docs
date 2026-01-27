@@ -1253,17 +1253,17 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
   ```
 
   <!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
-
+  
   ``` TypeScript
   import jsonData from './test.json';
   // ...
   let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留。
-
+  
   class jsonTest {
     prop1: string = '';
     prop2: number = 0
   }
-
+  
   let obj = new jsonTest();
   const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留。
   ```
@@ -1271,7 +1271,7 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
 5.使用到的数据库相关的字段，需要手动保留。例如，数据库键值对类型（ValuesBucket）中的属性：
 
   <!-- @[optionExample_keepPropertyName4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
-
+  
   ``` TypeScript
   import { ValuesBucket } from '@kit.ArkData';
   // ...
@@ -1288,12 +1288,12 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
 示例：
 
   <!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
-
+  
   ``` TypeScript
   function CustomDecorator(target: Object, propertyKey: string) {}
   function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
   function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
-
+  
   class A {
     // 1.成员变量装饰器。
     @CustomDecorator
@@ -1309,7 +1309,7 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
 7.使用到的数据请求相关的字段需要手动保留，例如，传递给数据请求方的字段需要手动保留：
 
   <!-- @[etsOptionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->       
-
+  
   ``` TypeScript
   // example.ets。
   import { UIAbility } from '@kit.AbilityKit';
@@ -1408,7 +1408,7 @@ file
 1.在使用`require`引入文件路径时，由于`ArkTS`不支持[CommonJS](../arkts-utils/module-principle.md#commonjs模块)语法，因此这种情况下路径应该被保留。
 
   <!-- @[jsOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.js) -->        
-
+  
   ``` JavaScript
   // example.js
   const module1 = require('./file1'); // file1 应该被保留。
@@ -1417,7 +1417,7 @@ file
 2.对于动态导入的路径名，由于无法识别`import`函数中的参数是否为路径，因此在这种情况下应保留路径。
 
   <!-- @[testOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/file2.ts) -->         
-
+  
   ``` TypeScript
   // file2.ts
   export function foo () {}

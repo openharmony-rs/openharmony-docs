@@ -658,7 +658,7 @@ export namespace Ns {
   示例：
 
   <!-- @[optionExample_keepGlobalName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
-
+  
   ``` TypeScript
   var a = 0;
   console.info(globalThis.a);  // a 应该被保留。
