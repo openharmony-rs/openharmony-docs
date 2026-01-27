@@ -105,12 +105,12 @@
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| rss | number | 进程实际占用内存大小，单位KB。 |
+| rss | number | 进程实际占用内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Process Memory(kB)字段。|
 | vss | number | 进程向系统申请的虚拟内存大小，单位KB。 |
 | pss | number | 进程实际使用的物理内存大小，单位KB。 |
-| sys_free_mem | number | 空闲内存大小，单位KB。 |
-| sys_avail_mem | number | 可用内存大小，单位KB。 |
-| sys_total_mem | number | 总内存大小，单位KB。 |
+| sys_free_mem | number | 空闲内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Free。|
+| sys_avail_mem | number | 可用内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Available。|
+| sys_total_mem | number | 总内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Total。|
 | vm_heap_total_size | number | 主虚拟机总堆内存大小，单位KB。<br>**说明**：从API 22开始支持。 |
 | vm_heap_used_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。<br>**说明**：从API 22开始支持。 |
 
