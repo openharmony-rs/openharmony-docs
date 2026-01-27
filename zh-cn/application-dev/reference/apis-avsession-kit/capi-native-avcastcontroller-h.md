@@ -182,7 +182,7 @@ AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avca
 
 **描述**
 
-获取当前播放器的播放状态。不要单独释放playbackState指针。<br> 当[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)被调用时播控控制器将被销毁。
+获取当前播放器的播放状态。不要单独释放playbackState指针。当[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)被调用时播控控制器将被销毁。
 
 **起始版本：** 23
 

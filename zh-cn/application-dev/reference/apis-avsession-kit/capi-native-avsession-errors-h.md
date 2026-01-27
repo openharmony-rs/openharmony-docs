@@ -150,8 +150,8 @@ enum AVQueueItem_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AVQUEUEITEM_SUCCESS = 0 |  接口执行成功。<br>**起始版本：** 23 |
-| AVQUEUEITEM_ERROR_INVALID_PARAM = 1 |  该函数是使用无效的输入参数执行的。<br>**起始版本：** 23 |
-| AVQUEUEITEM_ERROR_NO_MEMORY = 2 |  内存分配失败。<br>**起始版本：** 23 |
+| AVQUEUEITEM_SUCCESS = 0 |  接口执行成功。 |
+| AVQUEUEITEM_ERROR_INVALID_PARAM = 1 |  该函数是使用无效的输入参数执行的。 |
+| AVQUEUEITEM_ERROR_NO_MEMORY = 2 |  内存分配失败。 |
 
 
