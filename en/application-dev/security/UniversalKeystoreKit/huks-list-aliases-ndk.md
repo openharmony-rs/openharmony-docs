@@ -10,6 +10,7 @@
 This topic walks you through on how to query key aliases.
 
 >**NOTE**<br>
+>
 > <!--RP1-->The mini-system devices<!--RP1End--> do not support query of key aliases.
 
 ## Linking the Dynamic Library in the CMake Script
@@ -84,3 +85,4 @@ static napi_value ListAliases(napi_env env, napi_callback_info info)
    return ret;
 }
 ```
+<!--no_check-->

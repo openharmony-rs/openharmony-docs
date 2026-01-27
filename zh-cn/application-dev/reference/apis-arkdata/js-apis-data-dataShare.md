@@ -274,7 +274,7 @@ results.forEach((result) => {
 
 publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 
-发布共享配置项。发布后，发布者和允许列表中指定的应用可以访问该共享配置项。如果要发布的URI已经存在，则更新对应的共享配置项。如果发布的配置项中存在任一URI的长度超出上限或者格式校验失败，则当前发布操作失败。只有发布者才允许更新共享配置项，每个应用支持最多32个共享配置。
+发布共享配置项。使用Promise异步回调。发布后，发布者和允许列表中指定的应用可以访问该共享配置项。如果要发布的URI已经存在，则更新对应的共享配置项。如果发布的配置项中存在任一URI的长度超出上限或者格式校验失败，则当前发布操作失败。只有发布者才允许更新共享配置项，每个应用支持最多32个共享配置。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -328,7 +328,7 @@ dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProx
 
 delete(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 
-根据URI删除指定的共享配置项，只有配置发布方能删除共享配置项。
+根据URI删除指定的共享配置项。使用Promise异步回调。只有配置发布方能删除共享配置项。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -375,7 +375,7 @@ dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyR
 
 get(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyGetResult[]&gt;
 
-根据URI获取指定的共享配置项。只有发布者和允许列表中指定的应用可以访问该共享配置项。
+根据URI获取指定的共享配置项。使用Promise异步回调。只有发布者和允许列表中指定的应用可以访问该共享配置项。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 

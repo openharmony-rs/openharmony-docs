@@ -422,9 +422,9 @@ Enumerates error codes.
 | OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 | An input parameter is invalid.<br>**Since**: 20|
 | OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 | The entity already exists.<br>**Since**: 22|
 | OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | The provider or Ukey internal execution fails.<br>**Since**: 22|
-| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | PIN locked.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | The PIN is locked.<br>**Since**: 22|
 | OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | Incorrect PIN.<br>**Since**: 22|
-| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | PIN authentication fails.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | The PIN does not pass authentication.<br>**Since**: 22|
 | OH_HUKS_ERR_CODE_BUSY = 12000024 | The provider or Ukey resources are being used.<br>**Since**: 22|
 | OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | The resource limit is exceeded.<br>**Since**: 22|
 

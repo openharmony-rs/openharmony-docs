@@ -22,9 +22,7 @@ Audio Vivid是基于AI技术的音频编解码标准，由世界超高清视频�
 
 应用开发者在使用AudioSpatializationManager的接口前，需要先调用[getSpatializationManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getspatializationmanager18)创建AudioSpatializationManager实例。
 
-<!-- @[get_spacesound](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 let audioManager = audio.getAudioManager();
@@ -35,9 +33,7 @@ let audioSpatializationManager = audioManager.getSpatializationManager();
 
 应用开发者可以使用[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)的spatializationSupported属性获取指定设备是否具有空间音频渲染的能力，需要通过音频框架中其他接口来获取当前已连接设备或当前发声设备的AudioDeviceDescriptor。例如，可以使用[getRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getroutingmanager9)创建的AudioRoutingManager实例的[getDevicesSync](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevicessync10)接口获取。
 
-<!-- @[check_spacesound](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 let audioRoutingManager = audioManager.getRoutingManager();
 let deviceDescriptors = audioRoutingManager.getDevicesSync(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
@@ -51,14 +47,12 @@ console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.strin
 - 该接口返回true表示当前设备空间音频渲染开启，返回false表示当前设备空间音频渲染关闭。
 - 该状态仅为开关状态，实际是否生效还需依赖当前设备是否支持空间音频渲染。
 
-<!-- @[check_isspacesoundon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-  
-``` TypeScript
-import { audio } from '@kit.AudioKit';
+  ```ts
+  import { audio } from '@kit.AudioKit';
 
-let isSpatializationEnabledForCurrentDevice = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
-console.info(`Succeeded in using isSpatializationEnabledForCurrentDevice function, IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
-```
+  let isSpatializationEnabledForCurrentDevice = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
+  console.info(`Succeeded in using isSpatializationEnabledForCurrentDevice function, IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
+  ```
 
 **订阅当前发声设备空间音频渲染效果的开关状态变化事件**
 
@@ -66,9 +60,7 @@ console.info(`Succeeded in using isSpatializationEnabledForCurrentDevice functio
 
 该接口返回true表示空间音频渲染被开启，返回false表示空间音频渲染被关闭。
 
-<!-- @[regist_spacesoundcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', (isSpatializationEnabledForCurrentDevice: boolean) => {
@@ -80,9 +72,7 @@ audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', (is
 
 应用开发者可以通过[off('spatializationEnabledChangeForCurrentDevice')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSpatializationManager.md#offspatializationenabledchangeforcurrentdevice18)接口取消订阅空间音频渲染效果的开关状态变化事件。
 
-<!-- @[unregist_spacesoundcallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice');
 ```

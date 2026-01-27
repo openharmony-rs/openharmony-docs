@@ -39,7 +39,7 @@ The audio workgroup is a set of APIs that help the system identify key audio thr
 
 The goals of the audio working group are to lower audio latency, avoid audio dropouts, reduce audio distortion, and provide a smoother and more reliable audio playback experience.
 
-When developing audio playback applications, you need to create an audio workgroup first and then periodically inform the system of the workgroup's runtime information. After the operation is completed, it is important to clean up the audio workgroup in a timely manner. For details about the usage and examples of the audio workgroup, see [Audio Workgroup Management](audio-workgroup.md).
+When developing audio playback applications, you need to create an audio workgroup first and then periodically inform the system of the workgroup's runtime information. After the operation is completed, it is important to clean up the audio workgroup in a timely manner. For more usage examples of audio workgroups, see [Audio Workgroup Management](audio-workgroup.md).
 
 ### Audio Timestamp and AV Synchronization
 
@@ -61,7 +61,7 @@ The following sections provide specific methods for obtaining performance logs a
 
 DevEco Profiler is a scenario-based tuning tool that helps you analyze performance issues more efficiently. Integrated into DevEco Studio, it can be used directly during application development.
 
-For details about how to use the tool, see [Performance Profiling](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-description).
+For details about how to use the tool, see [Understanding Performance Optimization](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-insight-description).
 
 DevEco Profiler is primarily used for analyzing and optimizing the runtime process of applications. The guide provides detailed steps for analysis, which will not be repeated here.
 
@@ -69,45 +69,29 @@ DevEco Profiler is primarily used for analyzing and optimizing the runtime proce
 
 HiSmartPerf is a standalone performance tuning tool used to collect system, CPU, and GPU performance data during a test period. It presents the data through a visual interface, making it easier for you to analyze the performance of your applications and identify the causes of performance issues, which can then be used as a basis for in-depth performance optimization to make the application run more smoothly.
 
-For details about the HiSmartPerf, see [HiSmartPerf User Guide](https://developer.huawei.com/consumer/en/doc/AppGallery-connect-Guides/smartperf-tool-0000001873208929).
-
 This section describes how to use HiSmartPerf to analyze audio playback scenarios.
 
 1. Enter the CPU trace mode.
-
-   ![CPU trace](figures/his_trace.png)
 
    Open the HiSmartPerf tool and navigate to the **CPU Trace** page for game performance analysis. Although titled for game performance analysis, the tool is not limited to game scenarios.
 
 2. Configure capture.
 
-   ![Configuration Item](figures/his_con.png)
-
    The main configuration items include the data file name, buffer capacity, maximum file size, data items, and capture duration. To capture system audio-related data items, select **zaudio**. The capture duration can be adjusted according to the test scenario. Note that the test duration and the number of selected data items will affect the file size and often need to be adjusted simultaneously.
 
 3. Start capture.
-
-   ![Collection process](figures/his_collection.png)
 
    After the capture is complete, a message is displayed, indicating that the file is sent back. If the file is large, wait patiently.
 
 4. View the trace information.
 
-   ![Trace result](figures/trace_res_all.png)
-
    View the CPU performance analysis results during the capture period.
 
 5. Locate the audio data processing thread.
 
-   ![Audio data](figures/trace_res_audio.png)
-
    For audio playback services, you can search for the location where the test application inputs playback data to the system using **OnWriteData**, and further analyze the performance of the data production source.
 
-   ![Resource Allocation](figures/trace_res_explain.png)
-
     Runnable indicates that the thread is waiting for scheduling. If there are cases where data is not written in time due to prolonged runnable states, including the application's own data production threads, consider integrating the audio workgroup to enhance thread priority and ensure CPU resource allocation.
-
-    ![CPU Usage](figures/trace_cpu_usage.png)
 
     In CPU Usage, you can view the CPU usage of each task.
 

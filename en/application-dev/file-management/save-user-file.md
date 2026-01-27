@@ -17,7 +17,7 @@ When a user needs to download a file from the Internet or save a file to another
 **System Isolation Description**
 
 - The files saved by the Picker are stored in the specified directory. They are isolated from the assets managed by **Gallery** and cannot be viewed in **Gallery**.
-- To save images and videos to Gallery, [use the SaveButton](../media/medialibrary/photoAccessHelper-savebutton.md#creating-a-media-asset-using-savebutton).
+- To save images and videos to Gallery, [use the SaveButton](../media/medialibrary/photoAccessHelper-savebutton.md#saving-media-assets-using-savebutton).
 
 ## Saving Images or Videos
 

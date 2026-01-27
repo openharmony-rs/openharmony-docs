@@ -10969,7 +10969,7 @@ removeCustomRecords(optionCheck: FetchOptions): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 202 | Called by non-system application. |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The fileter criteria or fetchColumns that are not supported by options are transferred |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**

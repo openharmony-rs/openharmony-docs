@@ -1327,7 +1327,7 @@ The system capability is **SystemCapability.Security.Huks.Extension** in API ver
 | Name  | Type                                                | Mandatory| Description                                                        |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | keyAlias | string                                               | Yes  | Key alias, which must be the same as the alias used when the key was generated.                |
-| options  | [HuksOptions](#huksoptions)                          | Yes  | Attribute of the key to be imported. If [HuksAuthStorageLevel](#huksauthstoragelevel11) is used to specify the security level of the key to be imported,<br>this parameter can be left empty. If the API version is 12 or later, the default value **CE** is passed in. If the API version is earlier than 12, the default value **DE** is passed in.    |
+| options  | [HuksOptions](#huksoptions)                          | Yes  | Property of the key to be exported. If [HuksAuthStorageLevel](#huksauthstoragelevel11) is used to specify the security level of the key to be exported,<br>this parameter can be left empty. If the API version is 12 or later, the default value **CE** is passed in. If the API version is earlier than 12, the default value **DE** is passed in.    |
 | callback | AsyncCallback<[HuksReturnResult](#huksreturnresult9)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the obtained **HuksReturnResult**. Otherwise, **err** is an error object. **outData** in **HuksReturnResult** returns the public key exported from HUKS.|
 
 **Error codes**
@@ -1477,7 +1477,7 @@ Unwraps a key. This API uses a promise to return the result.
 | -------- | --------------------------- | ---- | -------------------------------------------- |
 | keyAlias | string                      | Yes  | Alias of the key to be unwrapped.|
 | params  | [HuksOptions](#huksoptions) | Yes  | Encryption type of the key to be imported.                    |
-| wrappedKey | Uint8Array | Yes  | Ciphertext of the key to be imported.                    |
+| wrappedKey | Uint8Array | Yes  | Ciphertext of the key to be exported.                    |
 
 **Return value**
 
@@ -1938,7 +1938,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateSession(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksReturnResult>) : void
 
-Updates the key operation by segment. This API uses an asynchronous callback to return the result.
+Updates the key operation. This API uses an asynchronous callback to return the result.
 
 **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
@@ -2025,7 +2025,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 updateSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promise\<HuksReturnResult>
 
-Updates the key operation by segment. This API uses a promise to return the result.
+Updates the key operation. This API uses a promise to return the result.
 
 **huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
 
@@ -2185,7 +2185,7 @@ Finishes the key operation. This API uses a promise to return the result.
 
 | Type                               | Description                                              |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksReturnResult](#huksreturnresult9)> | Promise that returns the **HuksReturnResult**.|
+| Promise\<[HuksReturnResult](#huksreturnresult9)> | Promise that returns **HuksReturnResult**.|
 
 **Error codes**
 
@@ -3426,7 +3426,7 @@ exportKey(keyAlias: string, options: HuksOptions) : Promise\<HuksResult>
 
 Exports a key. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE**<br>
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [huks.exportKeyItem<sup>9+</sup>](#huksexportkeyitem9-1) instead.
 
@@ -3868,7 +3868,7 @@ abort(handle: number, options: HuksOptions) : Promise\<HuksResult>
 
 Aborts a key operation. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE**<br>
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [huks.abortSession<sup>9+</sup>](#huksabortsession9-1) instead.
 
@@ -3999,7 +3999,7 @@ Defines the struct for a HUKS handle.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
-> **NOTE**
+> **NOTE**<br>
 >
 > This API is deprecated since API version 9. You are advised to use [HuksSessionHandle<sup>9+</sup>](#hukssessionhandle9).
 
@@ -4015,7 +4015,7 @@ Represents the result returned.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
-> **NOTE**
+> **NOTE**<br>
 >
 > - This API is supported since API version 8 and deprecated since API version 9. You are advised to use [HuksReturnResult<sup>9+</sup>](#huksreturnresult9) instead.
 > - For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
@@ -4033,7 +4033,7 @@ Enumerates the error codes.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
-> **NOTE**
+> **NOTE**<br>
 >
 > This API is deprecated since API version 9. You are advised to use [HuksExceptionErrCode<sup>9+</sup>](#huksexceptionerrcode9).
 

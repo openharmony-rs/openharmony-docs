@@ -24,6 +24,8 @@ This feature is commonly used in karaoke applications, where the recorded vocals
 
 Use the **OH_AudioStreamBuilder** function provided by OHAudio to create an audio recording builder, following the builder design pattern. Set [OH_AudioStream_Type](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_type) to **AUDIOSTREAM_TYPE_CAPTURER**.
 
+<!-- @[Create_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
 ```cpp
 OH_AudioStreamBuilder* builder;
 OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_CAPTURER);
@@ -32,6 +34,8 @@ OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_CAPTURER);
 ### Creating an Audio Playback Builder
 
 Use the **OH_AudioStreamBuilder** function provided by **OHAudio** to create an audio playback builder, following the builder design pattern. Set [OH_AudioStream_Type](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_type) to **AUDIOSTREAM_TYPE_RENDERER**.
+
+<!-- @[Create_Renderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ```cpp
 OH_AudioStreamBuilder* builder;
@@ -44,6 +48,8 @@ To achieve better audio monitoring, it is essential to maintain low latency from
 
 When creating the audio recording builder, call [OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode) to set the low latency mode, and apply it to both recording and playback as follows:
 
+<!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
 ```cpp
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
@@ -53,30 +59,28 @@ To implement real-time audio monitoring, create a shared buffer to store the cap
 
 ### Defining the Shared Buffer and Recording/Playback Functions
 
+<!-- @[public_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
 ```cpp
-// Create a shared buffer to store captured data and retrieve playback data.
+int32_t MyOnReadData_Legacy(
+    OH_AudioCapturer* capturer,
+    void* userData,
+    void* buffer,
+    int32_t length)
+{
+    // Obtain captured data of the specified length from the buffer.
+    return 0;
+}
 
-// Customize a function to read captured data.
-    int32_t MyOnReadData(
-        OH_AudioCapturer* capturer,
-        void* userData,
-        void* buffer,
-        int32_t length)
-    {
-        // Extract captured data with the specified length from the buffer and place the data in the shared buffer for the renderer to read.
-        return 0;
-    }
-
-    // Customize a function to write data.
-    int32_t MyOnWriteData(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        void* buffer,
-        int32_t length)
-    {
-        // Read data from the shared buffer and write the data with the specified length into the buffer.
-        return 0;
-    }
+int32_t MyOnWriteData(
+    OH_AudioRenderer* renderer,
+    void* userData,
+    void* buffer,
+    int32_t length)
+{
+    // Read data from the shared buffer and write the data with the specified length into the buffer.
+    return 0;
+}
 ```
 
 > **NOTE**
@@ -87,22 +91,28 @@ To implement real-time audio monitoring, create a shared buffer to store the cap
 
 The following provides an example of setting parameters for the audio recording stream:
 
+<!-- @[Configure_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
 ```cpp
 // Set the audio sampling rate.
-OH_AudioStreamBuilder_SetSamplingRate(builder, 48000);
+const int SAMPLING_RATE_48K = 48000;
+OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE_48K);
 // Set the number of audio channels.
-OH_AudioStreamBuilder_SetChannelCount(builder, 2);
+const int channelCount = 2;
+OH_AudioStreamBuilder_SetChannelCount(builder, channelCount);
 // Set the audio sampling format.
 OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
 // Set the encoding type of the audio stream.
 OH_AudioStreamBuilder_SetEncodingType(builder, AUDIOSTREAM_ENCODING_TYPE_RAW);
-// Set the usage scenario of the audio renderer.
-OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_SOURCE_TYPE_MIC);
+// Set the usage scenario of the audio capturer.
+    OH_AudioStreamBuilder_SetCapturerInfo(builder, AUDIOSTREAM_SOURCE_TYPE_MIC);
 ```
 
 For the playback stream, set the same parameters as the recording stream, except for the working scenario.
 
 Set the working scenario parameter as follows:
+
+<!-- @[SetRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ```cpp
 OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
@@ -110,9 +120,10 @@ OH_AudioStreamBuilder_SetRendererInfo(builder, AUDIOSTREAM_USAGE_MUSIC);
 
 ### Setting Recording Callback Functions
 
+<!-- @[SetCapturerCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
 ```cpp
-// Customize a function to read data.
-int32_t MyOnReadData(
+int32_t MyOnReadData_Legacy(
     OH_AudioCapturer* capturer,
     void* userData,
     void* buffer,
@@ -121,8 +132,7 @@ int32_t MyOnReadData(
     // Obtain captured data of the specified length from the buffer.
     return 0;
 }
-// Customize an audio stream event function.
-int32_t MyOnStreamEvent(
+int32_t MyOnStreamEvent_Legacy(
     OH_AudioCapturer* capturer,
     void* userData,
     OH_AudioStream_Event event)
@@ -130,8 +140,7 @@ int32_t MyOnStreamEvent(
     // Update the capturer status and UI based on the audio stream event information indicated by the event.
     return 0;
 }
-// Customize an audio interruption event function.
-int32_t MyOnInterruptEvent(
+int32_t MyOnInterruptEvent_Legacy(
     OH_AudioCapturer* capturer,
     void* userData,
     OH_AudioInterrupt_ForceType type,
@@ -140,8 +149,7 @@ int32_t MyOnInterruptEvent(
     // Update the capturer status and UI based on the audio interruption information indicated by type and hint.
     return 0;
 }
-// Customize an exception callback function.
-int32_t MyOnError(
+int32_t MyOnError_Legacy(
     OH_AudioCapturer* capturer,
     void* userData,
     OH_AudioStream_Result error)
@@ -151,73 +159,71 @@ int32_t MyOnError(
 }
 
 OH_AudioCapturer_Callbacks callbacks;
-
 // Set the callbacks.
-callbacks.OH_AudioCapturer_OnReadData = MyOnReadData;
-callbacks.OH_AudioCapturer_OnStreamEvent = MyOnStreamEvent;
-callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent;
-callbacks.OH_AudioCapturer_OnError = MyOnError;
+callbacks.OH_AudioCapturer_OnReadData = MyOnReadData_Legacy;
+callbacks.OH_AudioCapturer_OnStreamEvent = MyOnStreamEvent_Legacy;
+callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent_Legacy;
+callbacks.OH_AudioCapturer_OnError = MyOnError_Legacy;
 
-// Set the callbacks for audio input streams.
 OH_AudioStreamBuilder_SetCapturerCallback(builder, callbacks, nullptr);
 ```
 
 ### Setting Playback Callback Functions
 
+<!-- @[SetRendererCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
 ```cpp
-    // Customize a function to write data.
-    int32_t MyOnWriteData(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        void* buffer,
-        int32_t length)
-    {
-        // Read data from the shared buffer and write the data with the specified length into the buffer.
-        return 0;
-    }
-    // Customize an audio stream event function.
-    int32_t MyOnStreamEvent(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioStream_Event event)
-    {
-        // Update the player status and UI based on the audio stream event information indicated by the event.
-        return 0;
-    }
-    // Customize an audio interruption event function.
-    int32_t MyOnInterruptEvent(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioInterrupt_ForceType type,
-        OH_AudioInterrupt_Hint hint)
-    {
-        // Update the player status and UI based on the audio interruption information indicated by type and hint.
-        return 0;
-    }
-    // Customize an exception callback function.
-    int32_t MyOnError(
-        OH_AudioRenderer* renderer,
-        void* userData,
-        OH_AudioStream_Result error)
-    {
-        // Perform operations based on the audio exception information indicated by error.
-        return 0;
-    }
+int32_t MyOnWriteData(
+    OH_AudioRenderer* renderer,
+    void* userData,
+    void* buffer,
+    int32_t length)
+{
+    // Read data from the shared buffer and write the data with the specified length into the buffer.
+    return 0;
+}
+int32_t MyOnStreamEvent_Renderer(
+    OH_AudioRenderer* renderer,
+    void* userData,
+    OH_AudioStream_Event event)
+{
+    // Update the player status and UI based on the audio stream event information indicated by the event.
+    return 0;
+}
+int32_t MyOnInterruptEvent_Renderer(
+    OH_AudioRenderer* renderer,
+    void* userData,
+    OH_AudioInterrupt_ForceType type,
+    OH_AudioInterrupt_Hint hint)
+{
+    // Update the player status and UI based on the audio interruption information indicated by type and hint.
+    return 0;
+}
+int32_t MyOnError_Renderer(
+    OH_AudioRenderer* renderer,
+    void* userData,
+    OH_AudioStream_Result error)
+{
+    // Perform operations based on the audio exception information indicated by error.
+    return 0;
+}
 
-    OH_AudioRenderer_Callbacks callbacks;
+OH_AudioRenderer_Callbacks callbacks;
 
-    // Set the callbacks.
-    callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
-    callbacks.OH_AudioRenderer_OnStreamEvent = MyOnStreamEvent;
-    callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent;
-    callbacks.OH_AudioRenderer_OnError = MyOnError;
+// Set the callbacks.
+callbacks.OH_AudioRenderer_OnWriteData = MyOnWriteData;
+callbacks.OH_AudioRenderer_OnStreamEvent = MyOnStreamEvent_Renderer;
+callbacks.OH_AudioRenderer_OnInterruptEvent = MyOnInterruptEvent_Renderer;
+callbacks.OH_AudioRenderer_OnError = MyOnError_Renderer;
 
-    // Set callbacks for the audio renderer.
-    OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
+// Set callbacks for the audio renderer.
+OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
 
 ```
 
 ### Creating an Audio Capturer
+
+<!-- @[GenerateCapturer_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ```cpp
 OH_AudioCapturer* audioCapturer;
@@ -225,6 +231,8 @@ OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
 ```
 
 ### Creating an Audio Renderer
+
+<!-- @[GenerateRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ```cpp
 OH_AudioRenderer* audioRenderer;
@@ -236,6 +244,7 @@ OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
 The following uses recording as an example. You can use the following APIs to control the start, pause, stop, and release of audio streams.
 
 > **NOTE**
+> 
 > When implementing audio monitoring, you need to control both the recording and playback streams to ensure their synchronization.
 
 | API                                                    | Description        |
@@ -249,6 +258,8 @@ The following uses recording as an example. You can use the following APIs to co
 ### Releasing the Builder
 
 When the builder is no longer required, release the resources as follows:
+
+<!-- @[Destroy_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ```cpp
 OH_AudioStreamBuilder_Destroy(builder);
