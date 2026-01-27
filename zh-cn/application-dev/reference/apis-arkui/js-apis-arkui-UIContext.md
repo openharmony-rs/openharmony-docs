@@ -5915,9 +5915,15 @@ on(type: 'willClick', callback: GestureEventListenerCallback): void
 
 监听点击事件指令下发情况。回调类型为[GestureEventListenerCallback](#gestureeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWillTap](#onwilltap24)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -5944,9 +5950,15 @@ off(type: 'willClick', callback?: GestureEventListenerCallback): void
 
 取消监听点击事件指令下发情况。从API version 20开始支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWillTap](#offwilltap24)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -5973,9 +5985,15 @@ on(type: 'didClick', callback: GestureEventListenerCallback): void
 
 监听点击事件指令下发情况。回调类型为[GestureEventListenerCallback](#gestureeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDidTap](#ondidtap24)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -6002,9 +6020,15 @@ off(type: 'didClick', callback?: GestureEventListenerCallback): void
 
 取消监听点击事件指令下发情况。从API version 20开始，支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDidTap](#offdidtap24)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -6031,9 +6055,15 @@ on(type: 'willClick', callback: ClickEventListenerCallback): void
 
 监听点击事件指令下发情况。回调类型为[ClickEventListenerCallback](#clickeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWillClick](#onwillclick24)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -6060,9 +6090,15 @@ off(type: 'willClick', callback?: ClickEventListenerCallback): void
 
 取消监听点击事件指令下发情况。从API version 20开始，支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWillClick](#offwillclick24)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -6089,9 +6125,15 @@ on(type: 'didClick', callback: ClickEventListenerCallback): void
 
 监听点击事件指令下发情况。回调类型为[ClickEventListenerCallback](#clickeventlistenercallback12)。从API version 20开始支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDidClick](#ondidclick24)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -6118,9 +6160,15 @@ off(type: 'didClick', callback?: ClickEventListenerCallback): void
 
 取消监听点击事件指令下发情况。从API version 20开始支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDidClick](#offdidclick24)。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
@@ -6439,9 +6487,15 @@ on(type: 'beforePanStart', callback: PanListenerCallback): void
 
 监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件，在onActionStart事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+ 	 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onBeforePanStart](#onbeforepanstart24)。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：** 
 
@@ -6553,9 +6607,15 @@ off(type: 'beforePanStart', callback?: PanListenerCallback): void
 
 取消[on('beforePanStart')](#onbeforepanstart19)监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行前的callback回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+ 	 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offBeforePanStart](#offbeforepanstart24)。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：** 
 
@@ -6582,9 +6642,15 @@ on(type: 'afterPanStart', callback: PanListenerCallback): void
 
 监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的指令下发情况，在onActionStart事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+ 	 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAfterPanStart](#onafterpanstart24)。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：** 
 
@@ -6603,9 +6669,15 @@ off(type: 'afterPanStart', callback?: PanListenerCallback): void
 
 取消[on('afterPanStart')](#onafterpanstart19)监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的callback回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+ 	 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAfterPanStart](#offafterpanstart24)。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：** 
 
@@ -6624,9 +6696,15 @@ on(type: 'beforePanEnd', callback: PanListenerCallback): void
 
 监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行前的指令下发情况，在onActionEnd事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+ 	 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onBeforePanEnd](#onbeforepanend24)。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：** 
 
@@ -6645,9 +6723,15 @@ off(type: 'beforePanEnd', callback?: PanListenerCallback): void
 
 取消[on('beforePanEnd')](#onbeforepanend19)监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行前的callback回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+ 	 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offBeforePanEnd](#offbeforepanend24)。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：** 
 
@@ -6666,9 +6750,15 @@ on(type: 'afterPanEnd', callback: PanListenerCallback): void
 
 监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的指令下发情况，在onActionEnd事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+ 	 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAfterPanEnd](#onafterpanend24)。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：** 
 
@@ -6687,9 +6777,15 @@ off(type: 'afterPanEnd', callback?: PanListenerCallback): void
 
 取消[on('afterPanEnd')](#onafterpanend19)监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的callback回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+ 	 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAfterPanEnd](#offafterpanend24)。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：** 
 
@@ -6864,6 +6960,544 @@ off(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback?: NodeRenderSt
 **示例：**
 
 参考[on('nodeRenderState')](#onnoderenderstate20)接口示例。
+
+### onWillTap<sup>24+</sup>
+
+onWillTap(callback: GestureEventListenerCallback): void
+
+监听[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件，在[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件回调之前触发callback回调。回调类型为[GestureEventListenerCallback](#gestureeventlistenercallback12)。支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('willClick')](#onwillclick12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [GestureEventListenerCallback](#gestureeventlistenercallback12) | 是   | 回调函数。可以获得点击手势的GestureEvent和组件的FrameNode。  |
+
+**示例：**
+
+```ts
+import { Button, ClickEvent, Column, Component, Entry, GestureEvent, TapGesture } from '@ohos.arkui.component';
+import { FrameNode } from '@ohos.arkui.node';
+import hilog from '@ohos.hilog';
+
+function willTapCallback(event: GestureEvent, frameNode?: FrameNode) {
+  hilog.info(0x0000, 'UIObserver', 'willTapCallback trigger');
+};
+
+function didTapCallback(event: GestureEvent, frameNode?: FrameNode) {
+  hilog.info(0x0000, 'UIObserver', 'didTapCallback trigger');
+};
+
+function willClickCallback(event: ClickEvent, frameNode?: FrameNode) {
+  hilog.info(0x0000, 'UIObserver', 'willClickCallback trigger');
+};
+
+function didClickCallback(event: ClickEvent, frameNode?: FrameNode) {
+  hilog.info(0x0000, 'UIObserver', 'didClickCallback trigger');
+};
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('注册监听')
+        .margin(5)
+        .onClick((event:ClickEvent) => {
+          this.getUIContext().getUIObserver().onWillTap(willTapCallback);
+          this.getUIContext().getUIObserver().onDidTap(didTapCallback);
+          this.getUIContext().getUIObserver().onWillClick(willClickCallback);
+          this.getUIContext().getUIObserver().onDidClick(didClickCallback);
+        })
+
+      Button('取消监听')
+        .margin(5)
+        .onClick((event:ClickEvent) => {
+          this.getUIContext().getUIObserver().offWillTap(willTapCallback);
+          this.getUIContext().getUIObserver().offDidTap(didTapCallback);
+          this.getUIContext().getUIObserver().offWillClick(willClickCallback);
+          this.getUIContext().getUIObserver().offDidClick(didClickCallback);
+        })
+
+      Button('触发监听')
+        .margin(5)
+        .gesture(TapGesture({ fingers: 1, count: 1, isFingerCountLimited: false })
+          .onAction((event: GestureEvent) => {
+            hilog.info(0x0000, 'TapGesture', 'TapGesture trigger');
+          })
+          .tag('tap')
+        )
+    }
+      .width('100%')
+  }
+}
+```
+
+### offWillTap<sup>24+</sup>
+
+offWillTap(callback?: GestureEventListenerCallback): void
+
+取消监听[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件。支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('willClick')](#offwillclick12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                  |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
+| callback | [GestureEventListenerCallback](#gestureeventlistenercallback12) | 否   | 需要被注销的回调函数。                                |
+
+**示例：**
+
+参考[onWillTap](#onwilltap24)接口示例。
+
+### onDidTap<sup>24+</sup>
+
+onDidTap(callback: GestureEventListenerCallback): void
+
+监听[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件，在[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件回调之后触发callback回调。回调类型为[GestureEventListenerCallback](#gestureeventlistenercallback12)。支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('didClick')](#ondidclick12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [GestureEventListenerCallback](#gestureeventlistenercallback12) | 是   | 回调函数。可以获得点击手势的GestureEvent和组件的FrameNode。  |
+
+**示例：**
+
+参考[onWillTap](#onwilltap24)接口示例。
+
+### offDidTap<sup>24+</sup>
+
+offDidTap(callback?: GestureEventListenerCallback): void
+
+取消监听[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件。支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('didClick')](#offdidclick12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                 |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
+| callback | [GestureEventListenerCallback](#gestureeventlistenercallback12) | 否   | 需要被注销的回调函数。                               |
+
+**示例：**
+
+参考[onWillTap](#onwilltap24)接口示例。
+
+### onWillClick<sup>24+</sup>
+
+onWillClick(callback: ClickEventListenerCallback): void
+
+监听[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件，在[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件回调之前触发callback回调。回调类型为[ClickEventListenerCallback](#clickeventlistenercallback12)。支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('willClick')](#onwillclick12-1)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [ClickEventListenerCallback](#clickeventlistenercallback12) | 是   | 回调函数。可以获得点击事件的ClickEvent和组件的FrameNode。    |
+
+**示例：**
+
+参考[onWillTap](#onwilltap24)接口示例。
+
+### offWillClick<sup>24+</sup>
+
+offWillClick(callback?: ClickEventListenerCallback): void
+
+取消监听[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件。支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('willClick')](#offwillclick12-1)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                  |
+| -------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
+| callback | [ClickEventListenerCallback](#clickeventlistenercallback12) | 否   | 需要被注销的回调函数。                                |
+
+**示例：**
+
+参考[onWillTap](#onwilltap24)接口示例。
+
+### onDidClick<sup>24+</sup>
+
+onDidClick(callback: ClickEventListenerCallback): void
+
+监听[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件，在[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件回调之后触发callback回调。回调类型为[ClickEventListenerCallback](#clickeventlistenercallback12)。支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('didClick')](#ondidclick12-1)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [ClickEventListenerCallback](#clickeventlistenercallback12) | 是   | 回调函数。可以获得点击事件的ClickEvent和组件的FrameNode。    |
+
+**示例：**
+
+参考[onWillTap](#onwilltap24)接口示例。
+
+### offDidClick<sup>24+</sup>
+
+offDidClick(callback?: ClickEventListenerCallback): void
+
+取消监听[onClick](arkui-ts/ts-universal-events-click.md#onClick)和点击手势[onAction](arkui-ts/ts-basic-gestures-tapgesture.md#事件)事件。支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('didClick')](#ondidclick12-1)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                 |
+| -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| callback | [ClickEventListenerCallback](#clickeventlistenercallback12) | 否   | 需要被注销的回调函数。                               |
+
+**示例：**
+
+参考[onWillTap](#onwilltap24)接口示例。
+
+### onBeforePanStart<sup>24+</sup>
+
+onBeforePanStart(callback: PanListenerCallback): void
+
+监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件，在onActionStart事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('beforePanStart')](#onbeforepanstart19)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [PanListenerCallback](#panlistenercallback19) | 是   | 回调函数。可以获得Pan手势事件的GestureEvent，GestureRecognizer和组件的FrameNode。   |
+
+**示例：**
+
+```ts
+import { Button, ClickEvent, Column, Component, Entry, GestureEvent, GestureRecognizer, PanDirection, PanGesture, PanGestureHandlerOption } from '@ohos.arkui.component';
+import { FrameNode } from '@ohos.arkui.node';
+import hilog from '@ohos.hilog';
+
+function beforePanStartCallback(event: GestureEvent, current: GestureRecognizer, frameNode?: FrameNode) {
+  hilog.info(0x0000, 'UIObserver', 'beforePanStartCallback trigger');
+};
+
+function afterPanStartCallback(event: GestureEvent, current: GestureRecognizer, frameNode?: FrameNode) {
+  hilog.info(0x0000, 'UIObserver', 'afterPanStartCallback trigger');
+};
+
+function beforePanEndCallback(event: GestureEvent, current: GestureRecognizer, frameNode?: FrameNode) {
+  hilog.info(0x0000, 'UIObserver', 'beforePanEndCallback trigger');
+};
+
+function afterPanEndCallback(event: GestureEvent, current: GestureRecognizer, frameNode?: FrameNode) {
+  hilog.info(0x0000, 'UIObserver', 'afterPanEndCallback trigger');
+};
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('注册监听')
+        .margin(5)
+        .onClick((event:ClickEvent) => {
+          this.getUIContext().getUIObserver().onBeforePanStart(beforePanStartCallback);
+          this.getUIContext().getUIObserver().onAfterPanStart(afterPanStartCallback);
+          this.getUIContext().getUIObserver().onBeforePanEnd(beforePanEndCallback);
+          this.getUIContext().getUIObserver().onAfterPanEnd(afterPanEndCallback);
+        })
+
+      Button('取消监听')
+        .margin(5)
+        .onClick((event:ClickEvent) => {
+          this.getUIContext().getUIObserver().offBeforePanStart(beforePanStartCallback);
+          this.getUIContext().getUIObserver().offAfterPanStart(afterPanStartCallback);
+          this.getUIContext().getUIObserver().offBeforePanEnd(beforePanEndCallback);
+          this.getUIContext().getUIObserver().offAfterPanEnd(afterPanEndCallback);
+        })
+
+      Button('触发监听')
+        .margin(5)
+        .gesture(PanGesture({ fingers: 1, distance: 1, direction: PanDirection.All, isFingerCountLimited: false } as PanGestureHandlerOptions)
+          .onActionStart((event: GestureEvent) => {
+            hilog.info(0x0000, 'PanGesture', 'PanGesture onActionStart trigger');
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            hilog.info(0x0000, 'PanGesture', 'PanGesture onActionUpdate trigger');
+          })
+          .onActionEnd((event: GestureEvent) => {
+            hilog.info(0x0000, 'PanGesture', 'PanGesture onActionEnd trigger');
+          })
+          .onActionCancel((event: GestureEvent) => {
+            hilog.info(0x0000, 'PanGesture', 'PanGesture onActionCancel trigger');
+          })
+          .tag('pan')
+        )
+    }
+      .width('100%')
+  }
+}
+```
+
+### offBeforePanStart<sup>24+</sup>
+
+offBeforePanStart(callback?: PanListenerCallback): void
+
+取消[onBeforePanStart](#onbeforepanstart24)监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行前的callback回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('beforePanStart')](#offbeforepanstart19)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                 |
+| -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| callback | [PanListenerCallback](#panlistenercallback19) | 否   | 需要被注销的回调函数。                               |
+
+**示例：**
+
+参考[onBeforePanStart](#onbeforepanstart24)接口示例。
+
+### onAfterPanStart<sup>24+</sup>
+
+onAfterPanStart(callback: PanListenerCallback): void
+
+监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的指令下发情况，在onActionStart事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('afterPanStart')](#onafterpanstart19)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [PanListenerCallback](#panlistenercallback19) | 是   | 回调函数。可以获得Pan手势事件的GestureEvent，GestureRecognizer和组件的FrameNode。   |
+
+**示例：**
+
+参考[onBeforePanStart](#onbeforepanstart24)接口示例。
+
+### offAfterPanStart<sup>24+</sup>
+
+offAfterPanStart(callback?: PanListenerCallback): void
+
+取消[onAfterPanStart](#onafterpanstart24)监听Pan手势[onActionStart](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的callback回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('beforePanStart')](#offafterpanstart19)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                 |
+| -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| callback | [PanListenerCallback](#panlistenercallback19) | 否   | 需要被注销的回调函数。                               |
+
+**示例：**
+
+参考[onBeforePanStart](#onbeforepanstart24)接口示例。
+
+### onBeforePanEnd<sup>24+</sup>
+
+onBeforePanEnd(callback: PanListenerCallback): void
+
+监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行前的指令下发情况，在onActionEnd事件执行之前执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('beforePanEnd')](#onbeforepanend19)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [PanListenerCallback](#panlistenercallback19) | 是   | 回调函数。可以获得Pan手势事件的GestureEvent，GestureRecognizer和组件的FrameNode。   |
+
+**示例：**
+
+参考[onBeforePanStart](#onbeforepanstart24)接口示例。
+
+### offBeforePanEnd<sup>24+</sup>
+
+offBeforePanEnd(callback?: PanListenerCallback): void
+
+取消[onBeforePanEnd](#onbeforepanend24)监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行前的callback回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('beforePanEnd')](#offbeforepanend19)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                 |
+| -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| callback | [PanListenerCallback](#panlistenercallback19) | 否   | 需要被注销的回调函数。                               |
+
+**示例：**
+
+参考[onBeforePanStart](#onbeforepanstart24)接口示例。
+
+### onAfterPanEnd<sup>24+</sup>
+
+onAfterPanEnd(callback: PanListenerCallback): void
+
+监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的指令下发情况，在onActionEnd事件执行之后执行callback回调。支持手指滑动、鼠标滑动、鼠标滚轮和触摸板拖动，暂不支持屏幕朗读触控模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('afterPanEnd')](#onafterpanend19)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                         |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | [PanListenerCallback](#panlistenercallback19) | 是   | 回调函数。可以获得Pan手势事件的GestureEvent，GestureRecognizer和组件的FrameNode。   |
+
+**示例：**
+
+参考[onBeforePanStart](#onbeforepanstart24)接口示例。
+
+### offAfterPanEnd<sup>24+</sup>
+
+offAfterPanEnd(callback?: PanListenerCallback): void
+
+取消[onAfterPanEnd](#onafterpanend24)监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#事件)事件执行后的callback回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('afterPanEnd')](#offafterpanend19)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：** 
+
+| 参数名   | 类型                                                        | 必填 | 说明                                                 |
+| -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| callback | [PanListenerCallback](#panlistenercallback19) | 否   | 需要被注销的回调函数。                               |
+
+**示例：**
+
+参考[onBeforePanStart](#onbeforepanstart24)接口示例。
+
 
 ## NodeIdentity<sup>20+</sup>
 
