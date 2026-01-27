@@ -190,7 +190,7 @@ onResultReport: (bundleName: string, result: string) => {
 }
 ```
 
-## onProcess<sup>12+</sup>
+## onProcess<sup>23+</sup>
 
 (bundleName: string, process: string) => void
 
@@ -689,7 +689,7 @@ onProcess: (bundleName: string, process: string) => {
 }
 ```
 
-### onProcess<sup>12+</sup>
+### onProcess<sup>23+</sup>
 
 onProcess: OnProcess;
 
@@ -2185,7 +2185,7 @@ appendBundles(bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
