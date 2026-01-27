@@ -28,7 +28,7 @@
 
 ### ddrSize
 
-```
+```idl
 int SdcSensorInfo::ddrSize
 ```
 
@@ -38,7 +38,7 @@ int SdcSensorInfo::ddrSize
 
 ### deviceSensorInfo
 
-```
+```idl
 struct DeviceSensorInfo SdcSensorInfo::deviceSensorInfo
 ```
 
@@ -48,7 +48,7 @@ struct DeviceSensorInfo SdcSensorInfo::deviceSensorInfo
 
 ### maxRateLevel
 
-```
+```idl
 int SdcSensorInfo::maxRateLevel
 ```
 
@@ -58,7 +58,7 @@ int SdcSensorInfo::maxRateLevel
 
 ### memAddr
 
-```
+```idl
 unsigned long SdcSensorInfo::memAddr
 ```
 
@@ -68,7 +68,7 @@ unsigned long SdcSensorInfo::memAddr
 
 ### minRateLevel
 
-```
+```idl
 int SdcSensorInfo::minRateLevel
 ```
 
@@ -78,7 +78,7 @@ int SdcSensorInfo::minRateLevel
 
 ### offset
 
-```
+```idl
 unsigned long SdcSensorInfo::offset
 ```
 
@@ -88,7 +88,7 @@ unsigned long SdcSensorInfo::offset
 
 ### reserved
 
-```
+```idl
 int SdcSensorInfo::reserved
 ```
 

@@ -24,7 +24,7 @@
 
 ### DisableWithCallbackId()
 
-```
+```idl
 ISensorInterface::DisableWithCallbackId([in] struct DeviceSensorInfo deviceSensorInfo, [in] unsigned int callbackId)
 ```
 
@@ -49,7 +49,7 @@ ISensorInterface::DisableWithCallbackId([in] struct DeviceSensorInfo deviceSenso
 
 ### EnableWithCallbackId()
 
-```
+```idl
 ISensorInterface::EnableWithCallbackId([in] struct DeviceSensorInfo deviceSensorInfo, [in] unsigned int callbackId)
 ```
 
@@ -74,7 +74,7 @@ ISensorInterface::EnableWithCallbackId([in] struct DeviceSensorInfo deviceSensor
 
 ### RegisterWithCallbackId()
 
-```
+```idl
 ISensorInterface::RegisterWithCallbackId([in] int groupId, [in] ISensorCallback callbackObj, [in] unsigned int callbackId)
 ```
 
@@ -102,7 +102,7 @@ sensorId 枚举值范围为 128-160，这意味着已订阅医疗传感器服务
 
 ### SetBatchWithCallbackId()
 
-```
+```idl
 ISensorInterface::SetBatchWithCallbackId([in] struct DeviceSensorInfo deviceSensorInfo, [in] unsigned int callbackId, [in] long samplingInterval, [in] long reportInterval)
 ```
 
@@ -129,7 +129,7 @@ ISensorInterface::SetBatchWithCallbackId([in] struct DeviceSensorInfo deviceSens
 
 ### UnregisterWithCallbackId()
 
-```
+```idl
 ISensorInterface::UnregisterWithCallbackId([in] int groupId, [in] ISensorCallback callbackObj, [in] unsigned int callbackId)
 ```
 

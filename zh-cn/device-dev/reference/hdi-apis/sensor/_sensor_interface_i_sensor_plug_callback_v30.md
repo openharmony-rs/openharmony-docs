@@ -20,7 +20,7 @@
 
 ### OnSensorPlugEvent()
 
-```
+```idl
 ISensorPlugCallback::OnSensorPlugEvent([in] struct SensorPlugInfo sensorPlugInfo)
 ```
 

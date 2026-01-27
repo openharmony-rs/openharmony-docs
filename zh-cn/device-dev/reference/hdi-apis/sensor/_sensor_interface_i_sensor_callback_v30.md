@@ -23,7 +23,7 @@
 
 ### OnDataEvent()
 
-```
+```idl
 ISensorCallback::OnDataEvent([in] struct HdfSensorEvents event)
 ```
 
@@ -47,7 +47,7 @@ ISensorCallback::OnDataEvent([in] struct HdfSensorEvents event)
 
 ### OnDataEventAsync()
 
-```
+```idl
 ISensorCallback::OnDataEventAsync([in] struct HdfSensorEvents[] events)
 ```
 

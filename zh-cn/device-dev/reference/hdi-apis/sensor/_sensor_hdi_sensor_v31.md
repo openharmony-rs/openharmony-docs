@@ -37,7 +37,7 @@
 
 ### CallbackId
 
-```
+```idl
 enum CallbackId
 ```
 
