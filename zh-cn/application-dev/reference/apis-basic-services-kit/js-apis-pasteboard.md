@@ -3869,7 +3869,7 @@ try {
 };
 ```
 
-### UpdateCallback <sup>22+</sup>
+### UpdateCallback<sup>22+</sup>
 
 type UpdateCallback = () => void
 
