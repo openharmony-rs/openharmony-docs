@@ -1184,7 +1184,7 @@ function example18(context: common.UIAbilityContext) { // 需确保 context 由 
 
 文档选择选项。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dya。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1271,7 +1271,7 @@ function example18(context: common.UIAbilityContext) { // 需确保 context 由 
 
 文档保存选项。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dya。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1309,7 +1309,7 @@ function example18(context: common.UIAbilityContext) { // 需确保 context 由 
 
 音频选择选项。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dya。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1343,7 +1343,7 @@ function example18(context: common.UIAbilityContext) { // 需确保 context 由 
 
 音频保存选项。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
