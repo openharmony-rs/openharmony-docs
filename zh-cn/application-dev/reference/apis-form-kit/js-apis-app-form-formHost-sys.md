@@ -2301,7 +2301,7 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
+| 16501000 | An internal functional error occurred, invalid input parameter during form operation. |
 
 **示例：**
 
@@ -2362,7 +2362,7 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
-| 16501000 | An internal functional error occurred. |
+| 16501000 | An internal functional error occurred, invalid input parameter during form operation. |
 
 **示例：**
 
