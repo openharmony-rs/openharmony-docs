@@ -1,5 +1,12 @@
 # 随机生成对称密钥(C/C++)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 以AES和SM4为例，随机生成对称密钥（OH_CryptoSymKey）。
 
 对称密钥对象可用于后续加解密操作，二进制数据可用于存储或运输。
@@ -18,12 +25,14 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 2. 调用[OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate)，随机生成对称密钥对象（OH_CryptoSymKey）。
 
 3. 调用[OH_CryptoSymKey_GetKeyData](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_getkeydata)，获取密钥对象的二进制数据。
+<!-- @[generate_aes_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/aes.cpp) -->
 
-```c++
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_key.h"
+#include "file.h"
 
-static OH_Crypto_ErrCode testGenerateSymKey()
+OH_Crypto_ErrCode testGenerateSymKey()
 {
     OH_CryptoSymKeyGenerator *ctx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
@@ -48,6 +57,7 @@ static OH_Crypto_ErrCode testGenerateSymKey()
 }
 ```
 
+
 ## 随机生成SM4密钥
 
 对应的算法规格请查看[对称密钥生成和转换规格：SM4](crypto-sym-key-generation-conversion-spec.md#sm4)。
@@ -58,25 +68,28 @@ static OH_Crypto_ErrCode testGenerateSymKey()
 
 3. 调用[OH_CryptoSymKey_GetKeyData](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_getkeydata)，获取密钥对象的二进制数据。
 
-```c++
+<!-- @[generate_sm4_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/sm4.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_key.h"
+#include "file.h"
 
-static OH_Crypto_ErrCode testGenerateSM4Key()
+OH_Crypto_ErrCode testGenerateSM4Key()
 {
     OH_CryptoSymKeyGenerator *ctx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
-    Crypto_DataBlob out = {.data = nullptr, .len = 0}; // 对称密钥二进制数据。
-    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &ctx); // 创建对称密钥生成器。
+    Crypto_DataBlob out = {.data = nullptr, .len = 0};
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &ctx);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
-    ret = OH_CryptoSymKeyGenerator_Generate(ctx, &keyCtx); // 随机生成对称密钥对象。
+    ret = OH_CryptoSymKeyGenerator_Generate(ctx, &keyCtx);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoSymKeyGenerator_Destroy(ctx);
         return ret;
     }
-    ret = OH_CryptoSymKey_GetKeyData(keyCtx, &out); // 获取对称密钥对象的二进制数据。
+    ret = OH_CryptoSymKey_GetKeyData(keyCtx, &out);
     OH_CryptoSymKeyGenerator_Destroy(ctx);
     OH_CryptoSymKey_Destroy(keyCtx);
     if (ret != CRYPTO_SUCCESS) {
@@ -86,3 +99,4 @@ static OH_Crypto_ErrCode testGenerateSM4Key()
     return ret;
 }
 ```
+
