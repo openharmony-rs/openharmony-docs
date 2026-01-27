@@ -25,7 +25,7 @@ hmdfs在分布式软总线动态组网的基础上，为网络上各个设备节
 - hmdfs：实现在内核的网络文件系统，包括缓存管理、文件访问、元数据管理和冲突管理等。
   > **注意**：
   >
-  > [/data/storage/el2/distributedfiles/](app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系) 目录下面的文件不能随意删除，详细注意事项请参考[跨设备文件访问](file-access-across-devices.md)。
+  > [/data/storage/el2/distributedfiles/](app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系) 目录下面的文件不能随意删除，详细注意事项请参考[跨设备文件共享和访问](file-access-across-devices.md)。
 
   - 缓存管理
     - 设备分布式组网后，hmdfs提供文件的互访能力，但不会主动进行文件数据传输和拷贝。如果应用需要将数据保存到本地，需主动拷贝。
