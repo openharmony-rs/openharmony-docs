@@ -1335,7 +1335,7 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 
 > **说明：**
 >
-> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。使用该接口可以将明文文件加密生成权限受控文件。
+> 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。使用该接口可以将明文文件加密生成权限受控文件，由企业服务器管控账号是否有权限解密该文件。
 
 **需要权限：** ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
