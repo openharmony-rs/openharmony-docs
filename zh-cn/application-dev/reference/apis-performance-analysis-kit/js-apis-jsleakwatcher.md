@@ -5,7 +5,7 @@
 <!--Owner: @lu-tao-->
 <!--Designer: @martin-duan-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块提供了监控js对象是否发生泄露的能力。
 

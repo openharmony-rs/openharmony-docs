@@ -5,7 +5,7 @@
 <!--Owner: @chenshi51-->
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 从API version 21开始，FaultLogExtensionAbility提供了事件订阅接口，用于应用故障事件（包括[崩溃](./cppcrash-guidelines.md)和[冻屏](./appfreeze-guidelines.md)事件）的延迟通知。当应用无法启动或长时间未启动，可以不依赖应用启动而实现故障的hiAppEvent订阅上报。
 
