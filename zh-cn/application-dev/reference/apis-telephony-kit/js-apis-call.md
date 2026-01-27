@@ -867,7 +867,7 @@ hangUpCall\(callback: AsyncCallback\<void\>\): void
 
 **需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.SET_TELEPHONY_STATE 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
 
-- ohos.permission.ANSWER_CALL、SET_TELEPHONY_STATE权限仅系统应用可申请。
+- ohos.permission.ANSWER_CALL、ohos.permission.SET_TELEPHONY_STATE权限仅系统应用可申请。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
