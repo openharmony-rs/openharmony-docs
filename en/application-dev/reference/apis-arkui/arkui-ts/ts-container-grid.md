@@ -65,7 +65,7 @@ Creates a **Grid** component.
 
 Defines the grid layout options. In this API, **irregularIndexes** and **onGetIrregularSizeByIndex** can be used for grids where either **rowsTemplate** or **columnsTemplate** is set. These properties allow you to specify an index array and set the number of rows and columns to be occupied by a grid item at the specified index. For details about the usage, see [Example 3](#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns). On the other hand, **onGetRectByIndex** can be used for grids where both **rowsTemplate** and **columnsTemplate** are set. It allows you to specify the position and size for the grid item at the specified index. For details about the usage, see [Example 1](#example-1-creating-a-fixed-row-and-column-grid-layout).
 
-To improve the performance of the grid in scenarios such as jump and column quantity change, you are advised to use GridLayoutOptions. Even if the grid does not contain any special cross-row and cross-column nodes, you can use 'Grid(this.scroller, {regularSize: [1, 1]})' to improve the jump performance.
+To improve the performance of the grid in scenarios such as jump and column quantity change, you are advised to use GridLayoutOptions. Even if the grid does not contain any special cross-row and cross-column nodes, you can use 'Grid(this.scroller, {regularSize: [1, 1]})' to improve the jump performance. For details, see <!--RP1-->[Using GridLayoutOptions to Improve Grid Performance](../../../performance/grid_optimization.md#using-gridlayoutoptions-to-improve-grid-performance)<!--RP1End-->.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -438,7 +438,7 @@ When **layoutDirection** is **Column** or **ColumnReverse**, the value indicates
 
 multiSelectable(value: boolean)
 
-Sets whether to enable multiselect. When multiselect is enabled, you can use the **selected** attribute and **onSelect** event to obtain the selected status of grid items; you can also set the [style](./ts-universal-attributes-polymorphic-style.md) for the selected state (by default, no style is set for the selected state).
+Sets whether to enable multiselect. After multiselect is enabled, you can use **GridItem**'s **selected** attribute and **onSelect** event to obtain the selection state of **GridItem**. Additionally, you can set the selected state style of **GridItem** using [Polymorphic Style](./ts-universal-attributes-polymorphic-style.md) (by default, **GridItem** has no selected state style).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1005,7 +1005,7 @@ Callback type of the event indicating that the items in the visible area of the 
 
 ### Example 1: Creating a Fixed Row and Column Grid Layout
 
-You can use the onGetRectByIndex function in the [GridLayoutOptions](#gridlayoutoptions10) to specify the position and size of a GridItem.
+You can use the onGetRectByIndex function in the [GridLayoutOptions](#gridlayoutoptions10 description) to specify the position and size of a GridItem.
 
 ```ts
 // xxx.ets
@@ -2536,6 +2536,7 @@ struct GridExample {
 }
 ```
 
+![gridScrollWithPanGesture](figures/gridScrollWithPanGesture.gif)
 
 ### Example 16: Customizing the Drag Effect of GridItem
 
@@ -3027,6 +3028,7 @@ struct GridExample {
   }
 }
 ```
+![gridContentSize](figures/gridContentSize.gif)
 
 ### Example 20: Setting the Multi-selection Collapsing Animation
 
@@ -3034,13 +3036,35 @@ This example, by enabling the Grid multi-selection gather animation switch, achi
 
 Starting from API version 23, the **Grid** component has added the [edit mode options](#editmodeoptions23) API, which can be used to set the multi-selection gather animation switch.
 
+For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
+
 ```ts
 // xxx.ets
+import { GridDataSource } from './GridDataSource';
+
 @Entry
 @Component
 struct GridExample {
-  numbers1: string[] = ['0', '1', '2'];
-  numbers2: string[] = ['0', '1', '2'];
+  numbers: GridDataSource = new GridDataSource(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
+  @State isSelected: boolean[] = [];
+  selectedCount: number = 0;
+
+  @Styles
+  normalStyles(): void {
+    .opacity(1.0)
+  }
+
+  @Styles
+  selectStyles(): void {
+    .opacity(0.4)
+  }
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 9; i++) {
+      this.isSelected.push(false);
+    }
+  }
 
   @Builder
   MenuBuilder() {
@@ -3059,37 +3083,43 @@ struct GridExample {
     }.width(100)
   }
 
-  @Builder
-  MyPreview() {
-    Column() {
-      Image($r('app.media.startIcon'))
-        .width(200)
-        .height(200)
-    }
-  }
-
   build() {
     Column({ space: 5 }) {
       Text('Grid')
       Grid() {
-        ForEach(this.numbers1, (day: string) => {
-          ForEach(this.numbers1, (day: string) => {
-            GridItem() {
-              Text(day)
-                .fontSize(16)
-                .backgroundColor(0xF9CF93)
-                .width('100%')
-                .height('100%')
-                .textAlign(TextAlign.Center)
+        LazyForEach(this.numbers, (day: string, index: number) => {
+          GridItem() {
+            Text(day)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .selected(this.isSelected[index])
+          // Set the multi-select display effects.
+          .stateStyles({
+            normal: this.normalStyles,
+            selected: this.selectStyles
+          })
+          .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
+            { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
+          .onClick(() => {
+            this.isSelected[index] = !this.isSelected[index];
+            console.info(`item:${index}, this.isSelected[item]:${this.isSelected[index]}`)
+            if (this.isSelected[index]) {
+              ++this.selectedCount;
+            } else {
+              --this.selectedCount;
             }
-            // Set GridItem to the selected state.
-            .selected(true)
-            .bindContextMenu(this.MenuBuilder, ResponseType.LongPress,
-              { preview: MenuPreviewMode.IMAGE, hapticFeedbackMode: HapticFeedbackMode.ENABLED })
-          }, (day: string) => day)
+          })
         }, (day: string) => day)
       }
-      .editModeOptions({ enableGatherSelectedItemsAnimation: true })
+      .editModeOptions({
+        enableGatherSelectedItemsAnimation: true, onGetPreviewBadge: () => {
+          return this.selectedCount;
+        }
+      })
       .columnsTemplate('1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr')
       .columnsGap(10)
@@ -3103,4 +3133,3 @@ struct GridExample {
 ```
 
 ![gridMultiselectAnimation](figures/gridMultiselectAnimation.gif)
-<!--no_check-->

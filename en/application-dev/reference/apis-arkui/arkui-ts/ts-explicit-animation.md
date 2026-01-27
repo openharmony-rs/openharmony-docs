@@ -12,7 +12,7 @@ With **animateTo**, you can build explicit animations for state changes caused b
 >
 >  The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is unclear](../../../ui/arkts-global-interface.md). For details, see [UIContext](../arkts-apis-uicontext-uicontext.md).
+>  The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](../arkts-apis-uicontext-uicontext.md).
 
 ## AnimateParam
 
@@ -109,7 +109,7 @@ Defines an explicit animation. This API is explicitly called to change the state
 > - During [aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear), the component is being destroyed, so animations should not be used.
 > - When a component appears or disappears, you can add animation effects through [Component Transition](./ts-transition-animation-component.md).
 > - For details about the attributes that are not supported by component transition, see [Example 2](#example-2-enabling-a-component-to-disappear-after-the-animation) to use animateTo to implement the effect that the component disappears after the animation ends.
-> - In certain scenarios, using **animateTo** with [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
+> - In certain scenarios, using **animateTo** with [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../../ui/state-management/arkts-new-local.md#using-animateTo-failed-in-state-management-v2).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -129,7 +129,7 @@ Defines an explicit animation. This API is explicitly called to change the state
 
 > **NOTE**
 > 
-> Directly using **animateTo** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call the [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) API through this object.
+> Directly using **animateTo** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call **animateTo** bound to the instance using the [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) API.
 
 This example creates an animation effect when a component appears in the **onAppear** method.
 

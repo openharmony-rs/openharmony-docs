@@ -188,7 +188,7 @@ For scenarios requiring immediate focus changes, it is recommended that you use 
 
 | Type| Description|
 | ------- | ---- |
-| boolean | Returns whether focus transfer is successfully requested for the target component. Returns **true** if the target component exists and can receive focus; returns **false** otherwise.|
+| boolean | Returns whether focus transfer is successfully requested for the target component. If the target component pointed to by the parameter exists, is mounted to the component tree, and is focusable, **true** is returned. Otherwise, **false** is returned.|
 
 >  **NOTE**
 >
