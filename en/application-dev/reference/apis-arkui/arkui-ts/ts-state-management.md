@@ -1706,11 +1706,7 @@ According to the preceding initialization process, if the property exists in App
 **Example**
 
 
-<<<<<<< HEAD
 For details about how to use persistProp, see [Accessing PersistentStorage Initialized Attribute from AppStorage](../../../ui/state-management/arkts-persiststorage.md#accessing-a-persistentstorage-initialized-property-from-appstorage).
-=======
-For details about how to use persistProp, see [Accessing PersistentStorage Initialized Attribute from AppStorage](../../../ui/state-management/arkts-persiststorage.md#accessing-a-persistentstorage-initialized-property-from-appstorage).
->>>>>>> 6e07bcad5bb04fc29f35fc19750850cb8c1611b3
 
 
 ### deleteProp<sup>10+</sup>
