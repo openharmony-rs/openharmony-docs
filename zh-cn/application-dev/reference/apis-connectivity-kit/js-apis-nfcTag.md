@@ -789,25 +789,25 @@ export default class MainAbility extends UIAbility {
 
 ## tag.on<sup>23+</sup>
 
-on(type: 'readerModeWithInterval', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), discTech: number[], callback: AsyncCallback&lt;[TagInfo](#taginfo)&gt;, interval: number): void
+on(type: 'readerModeWithInterval', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), discTech: int[], callback: AsyncCallback&lt;[TagInfo](#taginfo)&gt;, interval: int): void
 
-订阅NFC Tag读卡事件，实现前台应用优先分发，并支持卡在位检测间隔设置。设备会进入读卡器模式，同时关闭卡模拟。通过discTech设置支持的读卡技术类型，通过callback方式获取到Tag的[TagInfo](#taginfo)信息，通过interval设置卡在位检测间隔。需要与取消读卡器模式的[tag.off](#tagoff11)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoff11)。使用callback异步回调。
+订阅NFC Tag读卡事件，实现前台应用优先分发，并支持卡在位检测间隔设置。设备会进入读卡器模式，同时关闭卡模拟。通过discTech设置支持的读卡技术类型，通过callback方式获取到Tag的[TagInfo](#taginfo)信息，通过interval设置卡在位检测间隔。需要与取消读卡器模式的[tag.off](#tagoff23)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoff23)。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名       | 类型     | 必填 | 说明                                                    |
 | ------------ | -------- | ---- | ------------------------------------------------------- |
 | type    | string  | 是   | 要注册的回调类型，固定填"readerModeWithInterval"字符串。 |
-| elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。          |
-| discTech         |  number[]   | 是   | 前台应用指定的NFC读卡技术类型，不可以为空，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量)中的一种或多种）。 |
-| callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 是   | 读卡器模式监听回调函数，返回读到的Tag信息，不可以为空。 |
-| interval | number | 是 | 设置卡在位检测间隔，单位为ms，不可以为空。 |
+| elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值）。          |
+| discTech         |  int[]   | 是   | 前台应用指定的NFC读卡技术类型，至少指定一种读卡技术类型。每个number值表示所支持技术类型的常量值型，根据number值设置NFC读卡轮询的Tag技术类型（仅包含[NFC_A](#常量), [NFC_B](#常量), [NFC_F](#常量), [NFC_V](#常量)中的一种或多种）。 |
+| callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 是   | 读卡器模式监听回调函数，返回读到的Tag信息。 |
+| interval | int | 是 | 设置卡在位检测间隔，单位为ms。 |
 
 **错误码：**
 
@@ -816,33 +816,32 @@ on(type: 'readerModeWithInterval', elementName: [ElementName](../apis-ability-ki
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201  | Permission denied. |
-| 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
 | 3100201 | The tag running state is abnormal in the service. |
 | 3100202  | The element state is invalid. |
 
 **示例：**
 
-示例请参见[tag.off](#tagoff13)接口的示例。
+示例请参见[tag.off](#tagoff23)接口的示例。
 
 ## tag.off<sup>23+</sup>
 
 off(type: 'readerModeWithInterval', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), callback?: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
 
-取消订阅NFC Tag读卡事件。设备退出读卡模式，并恢复卡模拟，同时复位已设置的卡在位检测间隔。如果已通过[tag.on](#tagon13)设置NFC的读卡器模式，需要在页面退出前台或页面销毁时调用off进行取消。
+取消订阅NFC Tag读卡事件。设备退出读卡模式，并恢复卡模拟。如果已通过[tag.on](#tagon23)设置NFC的读卡器模式，需要在页面退出前台或页面销毁时调用off进行取消。
 
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名       | 类型     | 必填 | 说明                                                    |
 | ------------ | -------- | ---- | ------------------------------------------------------- |
-| type    | string  | 是   | 要注销的回调类型，固定填"readerMode"字符串。|
-| elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值），不可以为空。          |
+| type    | string  | 是   | 要注销的回调类型，固定填"readerModeWithInterval"字符串。|
+| elementName   |  [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md)   | 是   | 所属应用读卡的页面信息（至少包含bundleName、abilityName这两项的赋值）。          |
 | callback | AsyncCallback&lt;[TagInfo](#taginfo)&gt; | 否   | 前台读卡监听回调函数，返回读到的Tag信息。 |
 
 **错误码：**
@@ -852,7 +851,6 @@ off(type: 'readerModeWithInterval', elementName: [ElementName](../apis-ability-k
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201  | Permission denied. |
-| 401  | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 | 801  | Capability not supported. |
 | 3100201 | The tag running state is abnormal in the service. |
 | 3100203  | The off() API can be called only when the on() has been called. |
@@ -864,9 +862,9 @@ import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant, UIAbility, Want, bundleManager } from '@kit.AbilityKit';
 
-let discTech : number[] = [tag.NFC_A, tag.NFC_B]; // 用前台ability时所需要的技术代替
+let discTech : int[] = [tag.NFC_A, tag.NFC_B]; // 用前台ability时所需要的技术代替
 let elementName : bundleManager.ElementName;
-let interval : number = 200;
+let interval : int = 200;
 
 function readerModeCb(err : BusinessError, tagInfo : tag.TagInfo) {
     if (!err) {
