@@ -132,3 +132,5 @@
   - [Key Derivation Using Scrypt (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
   - [Key Derivation Using X963KDF (ArkTS)](crypto-key-derivation-using-scrypt.md)
   - [Key Derivation Using X963KDF (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
+- Crypto Architecture Kit FAQs<!--crypto-faqs-->
+  - [AES Decryption Failure Returning 17630001](crypto-aes-decryption-error-faq.md)
