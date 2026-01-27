@@ -110,7 +110,7 @@ class EntryAbility extends UIAbility {
     if (store != undefined) {
       store.executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
-          console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          console.error(`ExecuteSql failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         console.info('create virtual table done.');
@@ -142,7 +142,7 @@ class EntryAbility extends UIAbility {
     if (store != undefined) {
       store.executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
-          console.error(`ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          console.error(`ExecuteSql failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         console.info('create virtual table done.');
@@ -182,7 +182,7 @@ export default class EntryAbility extends UIAbility {
     if (store != undefined) {
       store.executeSql(sqlCreateTable, (err) => {
         if (err) {
-          console.error(`custom tokenizer example: ExecuteSql failed, code is ${err.code},message is ${err.message}`);
+          console.error(`custom tokenizer example: ExecuteSql failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
         console.info('custom tokenizer example: create virtual table done.');

@@ -205,9 +205,9 @@ ArkTS-Sta: getColumnName(columnIndex: int): string
 
 ```ts
 if (resultSet != undefined) {
-  const id = (resultSet as relationalStore.ResultSet).getColumnName(0);
-  const name = (resultSet as relationalStore.ResultSet).getColumnName(1);
-  const age = (resultSet as relationalStore.ResultSet).getColumnName(2);
+  const id = resultSet.getColumnName(0);
+  const name = resultSet.getColumnName(1);
+  const age = resultSet.getColumnName(2);
 }
 ```
 
@@ -269,15 +269,15 @@ ArkTS-Sta: getColumnType(columnIdentifier: int | string): Promise\<ColumnType>
 
 ```ts
 if (resultSet != undefined) {
-  let idType = await (resultSet as relationalStore.ResultSet).getColumnType("ID") as relationalStore.ColumnType;
-  let nameType = await (resultSet as relationalStore.ResultSet).getColumnType("NAME") as relationalStore.ColumnType;
-  let ageType = await (resultSet as relationalStore.ResultSet).getColumnType("AGE") as relationalStore.ColumnType;
-  let salaryType = await (resultSet as relationalStore.ResultSet).getColumnType("SALARY") as relationalStore.ColumnType;
-  let codesType = await (resultSet as relationalStore.ResultSet).getColumnType("CODES") as relationalStore.ColumnType;
-  let identityType = await (resultSet as relationalStore.ResultSet).getColumnType(5) as relationalStore.ColumnType;
-  let assetDataType = await (resultSet as relationalStore.ResultSet).getColumnType(6) as relationalStore.ColumnType;
-  let assetsDataType = await (resultSet as relationalStore.ResultSet).getColumnType(7) as relationalStore.ColumnType;
-  let floatArrayType = await (resultSet as relationalStore.ResultSet).getColumnType(8) as relationalStore.ColumnType;
+  let idType = await resultSet.getColumnType("ID") as relationalStore.ColumnType;
+  let nameType = await resultSet.getColumnType("NAME") as relationalStore.ColumnType;
+  let ageType = await resultSet.getColumnType("AGE") as relationalStore.ColumnType;
+  let salaryType = await resultSet.getColumnType("SALARY") as relationalStore.ColumnType;
+  let codesType = await resultSet.getColumnType("CODES") as relationalStore.ColumnType;
+  let identityType = await resultSet.getColumnType(5) as relationalStore.ColumnType;
+  let assetDataType = await resultSet.getColumnType(6) as relationalStore.ColumnType;
+  let assetsDataType = await resultSet.getColumnType(7) as relationalStore.ColumnType;
+  let floatArrayType = await resultSet.getColumnType(8) as relationalStore.ColumnType;
 }
 ```
 
@@ -339,15 +339,15 @@ ArkTS-Sta: getColumnTypeSync(columnIdentifier: int | string): ColumnType
 
 ```ts
 if (resultSet != undefined) {
-  let idType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("ID") as relationalStore.ColumnType;
-  let nameType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("NAME") as relationalStore.ColumnType;
-  let ageType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("AGE") as relationalStore.ColumnType;
-  let salaryType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("SALARY") as relationalStore.ColumnType;
-  let codesType = (resultSet as relationalStore.ResultSet).getColumnTypeSync("CODES") as relationalStore.ColumnType;
-  let identityType = (resultSet as relationalStore.ResultSet).getColumnTypeSync(5) as relationalStore.ColumnType;
-  let assetDataType = (resultSet as relationalStore.ResultSet).getColumnTypeSync(6) as relationalStore.ColumnType;
-  let assetsDataType = (resultSet as relationalStore.ResultSet).getColumnTypeSync(7) as relationalStore.ColumnType;
-  let floatArrayType = (resultSet as relationalStore.ResultSet).getColumnTypeSync(8) as relationalStore.ColumnType;
+  let idType = resultSet.getColumnTypeSync("ID") as relationalStore.ColumnType;
+  let nameType = resultSet.getColumnTypeSync("NAME") as relationalStore.ColumnType;
+  let ageType = resultSet.getColumnTypeSync("AGE") as relationalStore.ColumnType;
+  let salaryType = resultSet.getColumnTypeSync("SALARY") as relationalStore.ColumnType;
+  let codesType = resultSet.getColumnTypeSync("CODES") as relationalStore.ColumnType;
+  let identityType = resultSet.getColumnTypeSync(5) as relationalStore.ColumnType;
+  let assetDataType = resultSet.getColumnTypeSync(6) as relationalStore.ColumnType;
+  let assetsDataType = resultSet.getColumnTypeSync(7) as relationalStore.ColumnType;
+  let floatArrayType = resultSet.getColumnTypeSync(8) as relationalStore.ColumnType;
 }
 ```
 
@@ -408,7 +408,7 @@ ArkTS-Sta: goTo(offset:int): boolean
 
 ```ts
 if (resultSet != undefined) {
-  (resultSet as relationalStore.ResultSet).goTo(1);
+  resultSet.goTo(1);
 }
 ```
 
@@ -469,7 +469,7 @@ ArkTS-Sta: goToRow(position: int): boolean
 
 ```ts
 if (resultSet != undefined) {
-  (resultSet as relationalStore.ResultSet).goToRow(5);
+  resultSet.goToRow(5);
 }
 ```
 
@@ -522,7 +522,7 @@ goToFirstRow(): boolean
 
 ```ts
 if (resultSet != undefined) {
-  (resultSet as relationalStore.ResultSet).goToFirstRow();
+  resultSet.goToFirstRow();
 }
 ```
 
@@ -574,7 +574,7 @@ goToLastRow(): boolean
 
 ```ts
 if (resultSet != undefined) {
-  (resultSet as relationalStore.ResultSet).goToLastRow();
+  resultSet.goToLastRow();
 }
 ```
 
@@ -626,7 +626,7 @@ goToNextRow(): boolean
 
 ```ts
 if (resultSet != undefined) {
-  (resultSet as relationalStore.ResultSet).goToNextRow();
+  resultSet.goToNextRow();
 }
 ```
 
@@ -678,7 +678,7 @@ goToPreviousRow(): boolean
 
 ```ts
 if (resultSet != undefined) {
-  (resultSet as relationalStore.ResultSet).goToPreviousRow();
+  resultSet.goToPreviousRow();
 }
 ```
 
@@ -807,7 +807,7 @@ ArkTS-Sta: getBlob(columnIndex: int): Uint8Array
 
 ```ts
 if (resultSet != undefined) {
-  const codes = (resultSet as relationalStore.ResultSet).getBlob((resultSet as relationalStore.ResultSet).getColumnIndex("CODES"));
+  const codes = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
 }
 ```
 
@@ -1063,7 +1063,7 @@ ArkTS-Sta: getAsset(columnIndex: int): Asset
 
 ```ts
 if (resultSet != undefined) {
-  const doc = (resultSet as relationalStore.ResultSet).getAsset((resultSet as relationalStore.ResultSet).getColumnIndex("DOC"));
+  const doc = resultSet.getAsset(resultSet.getColumnIndex("DOC"));
 }
 ```
 
@@ -1124,7 +1124,7 @@ ArkTS-Sta: getAssets(columnIndex: int): Assets
 
 ```ts
 if (resultSet != undefined) {
-  const docs = (resultSet as relationalStore.ResultSet).getAssets((resultSet as relationalStore.ResultSet).getColumnIndex("DOCS"));
+  const docs = resultSet.getAssets(resultSet.getColumnIndex("DOCS"));
 }
 ```
 
@@ -1176,7 +1176,7 @@ getRow(): ValuesBucket
 
 ```ts
 if (resultSet != undefined) {
-  const row = (resultSet as relationalStore.ResultSet).getRow();
+  const row = resultSet.getRow();
 }
 ```
 
@@ -1233,35 +1233,6 @@ ArkTS-Sta: getRows(maxCount: int, position?: int): Promise<Array\<ValuesBucket>>
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-// 以查到100条数据为例
-async function processRows(resultSet: relationalStore.ResultSet) {
-  // 示例1：仅指定maxCount
-  if (resultSet != undefined) {
-    let rows: Array<relationalStore.ValuesBucket>;
-    let maxCount: number = 50;
-    // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
-    // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
-    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount)).length != 0) {
-      console.info(JSON.stringify(rows[0]));
-    }
-  }
-
-  // 示例2：指定maxCount和起始的position
-  if (resultSet != undefined) {
-    let rows: Array<relationalStore.ValuesBucket>;
-    let maxCount: number = 50;
-    let position: number = 50;
-    while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position)).length != 0) {
-      console.info(JSON.stringify(rows[0]));
-      position += rows.length;
-    }
-  }
-}
-```
-
-ArkTS-Sta示例：
 ```ts
 // 以查到100条数据为例
 // 示例1：仅指定maxCount
@@ -1270,7 +1241,7 @@ if (resultSet != undefined) {
   let maxCount = 50;
   // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
   // getRows会自动移动结果集当前行到上次getRows获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
-  while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount)).length != 0) {
+  while ((rows = await resultSet.getRows(maxCount)).length != 0) {
     console.info(JSON.stringify(rows[0]));
   }
 }
@@ -1280,7 +1251,7 @@ if (resultSet != undefined) {
   let rows: Array<relationalStore.ValuesBucket>;
   let maxCount = 50;
   let position = 50;
-  while ((rows = await (resultSet as relationalStore.ResultSet).getRows(maxCount, position)).length != 0) {
+  while ((rows = await resultSet.getRows(maxCount, position)).length != 0) {
     console.info(JSON.stringify(rows[0]));
     position += rows.length;
   }
@@ -1387,47 +1358,6 @@ ArkTS-Sta: getRowsData(maxCount: int, position?: int): Promise\<RowsData>
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-try {
-  // 联表查询EMPLOYEE1和EMPLOYEE2，并获取多行包含重名列名的值。store为获取到的RdbStore实例。
-  let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
-  // 以查到50条数据为例
-  // 示例1：仅指定maxCount
-  if (resultSet != undefined) {
-    let rowsData: relationalStore.RowsData;
-    // 从结果集的当前行（默认首次获取数据时为当前结果集的第一行，后续为上次获取数据结束位置的下一行）开始获取数据
-    // getRowsData会自动移动结果集当前行到上次getRowsData获取结束位置的下一行，无需使用goToFirstRow、goToNextRow等接口移动
-    let maxCount: number = 50;
-    let rowCount: number = 0;
-    while ((rowsData = await resultSet.getRowsData(maxCount)).length != 0) {
-      rowsData.forEach((rowData, index) => {
-        // 第rowCount + index + 1行的查询结果
-        console.info(`${rowCount + index + 1}：${rowData}`);
-      });
-      rowCount += rowsData.length;
-    }
-  }
-
-  // 示例2：指定maxCount和起始的position
-  if (resultSet != undefined) {
-    let rowsData: relationalStore.RowsData;
-    let maxCount: number = 50;
-    let position: number = 50;
-    while ((rowsData = await resultSet.getRowsData(maxCount, position)).length != 0) {
-      rowsData.forEach((rowData, index) => {
-        // 第position + index + 1行的查询结果
-        console.info(`${position + index + 1}：${rowData}`);
-      });
-      position += rowsData.length;
-    }
-  }
-} catch (err) {
-  console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
-}
-```
-
-ArkTS-Sta示例：
 ```ts
 try {
   // 联表查询EMPLOYEE1和EMPLOYEE2，并获取多行包含重名列名的值。store为获取到的RdbStore实例。
@@ -1642,7 +1572,7 @@ close(): void
 
 ```ts
 if (resultSet != undefined) {
-  (resultSet as relationalStore.ResultSet).close();
+  resultSet.close();
 }
 ```
 
