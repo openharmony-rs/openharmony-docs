@@ -1,4 +1,4 @@
-# @ohos.selectionInput.SelectionPanel (Word Selection Panel) (System API)
+# @ohos.selectionInput.SelectionPanel (Word Selection Panel)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
@@ -10,9 +10,8 @@
 This module provides the properties and types of the word selection panel.
 
 > **NOTE**
->
-> - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs provided by this module are system APIs.
+
+The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 

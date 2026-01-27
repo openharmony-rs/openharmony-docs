@@ -82,6 +82,7 @@ Provides data structure, enum types, and APIs for accessing the system pasteboar
 | [OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params,int* status)](#oh_pasteboard_getdatawithprogress) | - | Obtains the pasteboard data and paste progress. Folders cannot be copied.|
 | [uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)](#oh_pasteboard_getchangecount) | - | Obtains the number of pasteboard content changes.|
 | [void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode))](#oh_pasteboard_syncdelayeddataasync) | - | Syncs all delayed data from the application to the pasteboard. Use this API together with the [OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata) API. When the application uses the delayed copy feature, only the data types supported by the application are written to the pasteboard. Before the application exits, it should call the [OH_Pasteboard_SetData](#oh_pasteboard_setdata) API to submit all copied data or call the **OH_Pasteboard_SyncDelayedDataAsync** API to notify the pasteboard to obtain all data. The application can exit only after the data sync is complete. Otherwise, other applications may fail to obtain the data.|
+| [bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)](#oh_pasteboard_hasremotedata) | - | Checks whether the pasteboard data is on a remote device.|
 
 ## Macro Description
 
@@ -300,7 +301,7 @@ Destroys the [OH_PasteboardObserver](capi-pasteboard-oh-pasteboardobserver.md) i
 
 | Type| Description                                                                                                                                                                                                                                 |
 | -- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns [ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if the operation is successful.<br> Returns [ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if an invalid parameter is passed in.|
+| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns **ERR_OK** if the operation is successful.<br> Returns **ERR_INVALID_PARAMETER** if an invalid parameter is passed in.|
 
 ### OH_PasteboardObserver_SetData()
 
@@ -328,7 +329,7 @@ Sets a callback for the pasteboard observer.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns [ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if the operation is successful.<br> Returns [ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if an invalid parameter is passed in.|
+| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns **ERR_OK** if the operation is successful.<br> Returns **ERR_INVALID_PARAMETER** if an invalid parameter is passed in.|
 
 ### OH_Pasteboard_Create()
 
@@ -346,7 +347,7 @@ Creates an [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) instance and a poin
 
 | Type| Description|
 | -- | -- |
-| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | Returns a pointer to the [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) instance created if the operation is successful; returns **nullptr** otherwise.|
+| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | Returns a pointer to the [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) instance created if the operation is successful; returns **nullptr** otherwise.<br> If this pointer is no longer required, use [OH_PasteboardObserver_Destroy](#oh_pasteboard_destroy) to destroy it. Otherwise, memory leaks may occur.|
 
 ### OH_Pasteboard_Destroy()
 
@@ -392,7 +393,7 @@ Subscribes to the pasteboard observer.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns [ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if the operation is successful.<br> Returns [ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if an invalid parameter is passed in.|
+| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns **ERR_OK** if the operation is successful.<br> Returns **ERR_INVALID_PARAMETER** if an invalid parameter is passed in.|
 
 ### OH_Pasteboard_Unsubscribe()
 
@@ -419,7 +420,7 @@ Unsubscribes from the pasteboard observer.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns [ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if the operation is successful.<br> Returns [ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if an invalid parameter is passed in.|
+| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns **ERR_OK** if the operation is successful.<br> Returns **ERR_INVALID_PARAMETER** if an invalid parameter is passed in.|
 
 ### OH_Pasteboard_IsRemoteData()
 
@@ -471,7 +472,7 @@ Obtains the pasteboard data source.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns [ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if the operation is successful.<br> Returns [ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if an invalid parameter is passed in.|
+| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns **ERR_OK** if the operation is successful.<br> Returns **ERR_INVALID_PARAMETER** if an invalid parameter is passed in.|
 
 ### OH_Pasteboard_HasType()
 
@@ -491,7 +492,7 @@ Checks whether the pasteboard contains data of the specified type.
 | Name| Description|
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | Pointer to an [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) instance.|
-| const char* type | Data type to be checked, which is classified into basic types and custom types. The basic data types include text/plain, text/html, text/uri, text/want, and pixelMap.|
+| const char* type | Data type to be checked, which includes the basic data types and custom data types. The options of the basic data types are as follows: **"text/plain"**, **"text/html"**, **"text/uri"**, **"text/want"**, and **"pixelMap"**. For details, see [Macros](#macros).|
 
 **Returns**
 
@@ -524,6 +525,30 @@ Checks whether the pasteboard contains data.
 | -- | -- |
 | bool | Returns a Boolean value indicating whether the pasteboard contains data. The value **true** means the pasteboard contains data; the value **false** means the opposite.|
 
+### OH_Pasteboard_HasRemoteData()
+
+```c
+bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
+```
+
+**Description**
+
+Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to perform either of the following operations in the UI thread:<br>1. Check whether the pasteboard data contains custom data types.<br>2. Read the pasteboard data.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | Pointer to an [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) instance.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| bool | Returns a check result indicating whether the pasteboard data is on a remote device. The value **true** indicates that the pasteboard data is on a remote device, and **false** indicates the opposite. The default value can be **true** or **false**.|
+
 ### OH_Pasteboard_GetData()
 
 ```c
@@ -536,7 +561,7 @@ Obtains data from the pasteboard.
 
 **Since**: 13
 
-**Required permissions**: ohos.permission.READ_PASTEBOARD. Applications need to [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), but those that use [security components](../../security/AccessToken/pastebutton.md) can access the pasteboard content without the need to request permissions.
+**Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
 
 **Parameters**
@@ -576,7 +601,7 @@ Sets the unified data object in the OH_Pasteboard instance.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns [ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if the operation is successful.<br> Returns [ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if an invalid parameter is passed in.|
+| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns **ERR_OK** if the operation is successful.<br> Returns **ERR_INVALID_PARAMETER** if an invalid parameter is passed in.|
 
 ### OH_Pasteboard_ClearData()
 
@@ -601,7 +626,7 @@ Clears data from the pasteboard.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns [ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if the operation is successful.<br> Returns [ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode) if an invalid parameter is passed in.|
+| int | Returns an error code. For details about the error codes, see [PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode).<br> Returns **ERR_OK** if the operation is successful.<br> Returns **ERR_INVALID_PARAMETER** if an invalid parameter is passed in.|
 
 ### OH_Pasteboard_GetMimeTypes()
 
@@ -803,7 +828,7 @@ Obtains the pasteboard data and paste progress. Folders cannot be copied.
 
 **Since**: 15
 
-**Required permissions**: ohos.permission.READ_PASTEBOARD. Applications need to [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), but those that use [security components](../../security/AccessToken/pastebutton.md) can access the pasteboard content without the need to request permissions.
+**Required permissions**: ohos.permission.READ_PASTEBOARD. While most applications must [request permissions to access the pasteboard](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
 
 **Parameters**
