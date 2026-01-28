@@ -81,6 +81,8 @@
    import { relationalStore } from '@kit.ArkData'; // 导入模块
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { UIContext } from '@kit.ArkUI';
+   import { common } from '@kit.AbilityKit';
    const DOMAIN = 0x0000;
    
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -112,6 +114,7 @@
        'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, ADDRESS TEXT)';
      if (store === undefined) {
        try {
+         const context = new UIContext().getHostContext() as common.UIAbilityContext;
          store = await relationalStore.getRdbStore(context, STORE_CONFIG);
        } catch (e) {
          const err = e as BusinessError;
@@ -512,6 +515,7 @@
    
    ``` TypeScript
    // 删除数据库
+   const context = new UIContext().getHostContext() as common.UIAbilityContext;
    relationalStore.deleteRdbStore(context, 'RdbTest.db', (err: BusinessError) => {
      if (err) {
        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
