@@ -17,3 +17,4 @@
 <!--Del-->
 - [Word Selection Service](selectionInput/Readme-EN.md)<!--selectioninput-->
 <!--DelEnd-->
+- [Print](print/Readme-EN.md)<!--print-->
