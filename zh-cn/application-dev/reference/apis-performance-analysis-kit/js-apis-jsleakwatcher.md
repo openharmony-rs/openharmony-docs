@@ -53,8 +53,8 @@ watch(obj: object, msg: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| obj | object | 是 | 需要检测的对象名。<br>**说明**： obj可传入任何类型对象，例如：{'obj' => { name: 'test1', num: 1 }, 'settings' => { name: 'test2', num: '2' }}|
-| msg | string | 是 | 自定义对象信息。<br>**说明**：自定义传入对象的描述信息。 |
+| obj | object | 是 | 需要检测的对象名。<br>**说明**：obj可传入任何类型对象，例如：{'obj' => { name: 'test1', num: 1 }, 'settings' => { name: 'test2', num: '2' }}|
+| msg | string | 是 | 自定义对象信息。 |
 
 **示例：**
 
@@ -76,7 +76,7 @@ check(): string
 
 | 类型    | 说明                                                       |
 | ------- | ---------------------------------------------------------- |
-| string | JSON格式的疑似泄漏对象列表。<br>**说明**：check成功，JSON格式疑似泄漏对象列表；check失败，返回''。 |
+| string | JSON格式的泄漏对象列表。<br>**说明**：check成功，返回JSON格式泄漏对象（包含未发生泄漏的对象）列表；check失败，返回''。 |
 
 **示例：**
 ```js
