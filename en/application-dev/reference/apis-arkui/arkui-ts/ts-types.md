@@ -315,8 +315,8 @@ The **ResourceColor** type is used to describe the color types of resources.
 | Type                               | Description                                                        |
 | ----------------------------------- | ------------------------------------------------------------ |
 | [Color](ts-appendix-enums.md#color) | Color enums.                                                |
-| number                              | Color in hexadecimal notation. RGB and ARGB are supported. Examples: **0xffffff** and **0xffff0000**. If the number type is used, the format of the color value depends on the value. For example, 0x00ffffff is parsed as an RGB color value.|
-| string                              | Color in RGB or ARGB notation. Example: **'#ffffff'**, **'#ff000000'**, **'rgb(255, 100, 255)'**, **'rgba(255, 100, 255, 0.5)'**|
+| number                              | Color in hexadecimal notation. RGB and RGBA are supported. Examples: **0xffffff** and **0xffff0000**. If the number type is used, the format of the color value depends on the value. For example, 0x00ffffff is parsed as an RGB color value.|
+| string                              | RGB or RGBA color. Example: **'#ffffff'**, **'#ff000000'**, **'rgb(255, 100, 255)'**, **'rgba(255, 100, 255, 0.5)'**|
 | [Resource](#resource)               | Color referenced from system or application resources.      |
 
 ## LengthConstrain
@@ -341,13 +341,13 @@ The **Font** type is used to set the text style.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability** SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name  | Type                                                        | Read Only |  Optional| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | -------- | ------------------------------------------------------------ |
 | size   | [Length](#length)                                            | No  |  Yes | Font size. If the value is of the number type, the unit fp is used. Percentage strings are not supported.<br>Default value: **16.0**|
 | weight | [FontWeight](ts-appendix-enums.md#fontweight) \| number \| string | No |  Yes| Font weight. For the number type, the value ranges from 100 to 900, at an interval of 100. A larger value indicates a thicker font.<br>Default value: **400** \| **FontWeight.Normal** |
-| family | string \| [Resource](#resource)                              | No  |  Yes | Font family. To specify multiple fonts, separate them with commas (,). For example: **'Arial, HarmonyOS Sans'**. Currently, the HarmonyOS Sans font and registered custom font [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) are supported..|
+| family | string \| [Resource](#resource)                              | No  |  Yes | Font family of the text. Use commas (,) to separate multiple fonts. The priority of the fonts is the sequence in which they are placed. An example value is **'Arial, HarmonyOS Sans'**. Currently, the HarmonyOS Sans font and custom font [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) are supported.|
 | style  | [FontStyle](ts-appendix-enums.md#fontstyle)                  | No  |  Yes | Font style.<br>Default value: **FontStyle.Normal**            |
 
 ## Area<sup>8+</sup>
@@ -364,8 +364,8 @@ Area type, which is used to store the area information of an element.
 | -------------- | ---------------------- | ------------------------------ |
 | width          | [Length](#length)      | Width of the target element.<br>Unit: vp|
 | height         | [Length](#length)      | Height of the target element.<br>Unit: vp|
-| position       | [Position](#position) | Position of the upper left corner of the component relative to that of its parent container.           |
-| globalPosition | [Position](#position) | Position of the upper left corner of the component relative to that of the page where the component resides.            |
+| position       | [Position](#position) | Position of the upper left corner of the target element in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) of the parent element.           |
+| globalPosition | [Position](#position) | Position of the upper left corner of the target element in the current window coordinate system.            |
 
 ## Position
 
@@ -738,8 +738,8 @@ The **ChainWeightOptions** type is used to describe the layout weight of a compo
 
 | Name     | Type  | Read Only| Optional| Description      |
 | --------- | ------ | ---- | ---- | ---------- |
-| horizontal | number | No| Yes| Layout weight of the component in the vertical direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**. |
-| vertical     | number | No| Yes| Layout weight of the component in the horizontal direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**.|
+| horizontal | number | No| Yes| Layout weight of the component in the horizontal direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**. |
+| vertical     | number | No| Yes| Layout weight of the component in the vertical direction. It is effective when set to a value greater than 0.<br> Default value: **0**<br> Invalid values are treated as **0**.|
 
 ## Configuration
 

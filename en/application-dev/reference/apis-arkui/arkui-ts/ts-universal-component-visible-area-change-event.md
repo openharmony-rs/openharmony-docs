@@ -386,7 +386,7 @@ struct OnVisibleAreaChangeSample {
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio1 = currentRatio
@@ -414,7 +414,7 @@ struct OnVisibleAreaChangeSample {
           // If measureFromViewport is not set, the default value false is used. If clip (true) is not set for the parent component, any area of a component that extends beyond its parent component regarded as an invisible area.
           .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 500 },
             (isExpanding: boolean, currentRatio: number) => {
-              console.log(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+              console.info(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
             })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio2 = currentRatio
@@ -445,7 +445,7 @@ struct OnVisibleAreaChangeSample {
             expectedUpdateInterval: 500,
             measureFromViewport: true
           }, (isExpanding: boolean, currentRatio: number) => {
-            console.log(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
+            console.info(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`)
           })
           .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
             this.ratio3 = currentRatio

@@ -438,7 +438,7 @@ When **layoutDirection** is **Column** or **ColumnReverse**, the value indicates
 
 multiSelectable(value: boolean)
 
-Sets whether to enable multiselect. When multiselect is enabled, you can use the **selected** attribute and **onSelect** event to obtain the selected status of grid items; you can also set the [style](./ts-universal-attributes-polymorphic-style.md) for the selected state (by default, no style is set for the selected state).
+Sets whether to enable multiselect. After multiselect is enabled, you can use **GridItem**'s **selected** attribute and **onSelect** event to obtain the selection state of **GridItem**. Additionally, you can set the selected state style of **GridItem** using [Polymorphic Style](./ts-universal-attributes-polymorphic-style.md) (by default, **GridItem** has no selected state style).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -646,7 +646,7 @@ Triggered when the first or last item displayed in the grid changes, that is, wh
 
 onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => (() => any) \| void)
 
-Triggered when a grid item starts to be dragged. If **void** is returned, the item cannot be dragged.
+Triggered when a grid item starts to be dragged. If **void** is returned, the drag operation cannot be performed.
 
 This event is triggered when the user long presses a grid item.
 
@@ -664,8 +664,8 @@ Automatic scrolling is not supported when the grid element is dragged to the edg
 
 | Name   | Type                                 | Mandatory| Description                  |
 | --------- | ------------------------------------- | ---- | ---------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes   | Information about the drag point.         |
-| itemIndex | number                                | Yes   | Index of the dragged item. |
+| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes  | Information about the drag point.        |
+| itemIndex | number                                | Yes  | Index of the dragged item.|
 
 ### onItemDragEnter<sup>8+</sup>
 

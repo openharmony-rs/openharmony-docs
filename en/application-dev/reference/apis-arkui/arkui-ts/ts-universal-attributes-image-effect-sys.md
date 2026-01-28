@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Sets the blend effect of the component with the existing content on the canvas below.
+With image effects, you can define how a component blends with the existing content on the canvas below.
 
 > **NOTE**
 >
@@ -31,7 +31,7 @@ Defines how the component's content (including the content of it child component
 | Name| Type                           | Mandatory| Description                                                        |
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
 | effect  | [BlendMode](ts-universal-attributes-image-effect.md#blendmode11)&nbsp;\|&nbsp;[Blender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#blender13)  | Yes  | Blend mode or blender type, depending on the parameter type.<br>When the parameter type is **BlendMode**, it indicates the blend mode.<br>Default value: **BlendMode.NONE**<br>When the parameter type is **Blender**, it indicates the blender type, used to describe the blending effect.<br>A **Blender** instance must be created using methods, for example, [uiEffect.createBrightnessBlender](../../apis-arkgraphics2d/js-apis-uiEffect-sys.md#uieffectcreatebrightnessblender), from the **uiEffect** module. Using a custom object as a parameter will not take effect. |
-| type   | [BlendApplyType](ts-universal-attributes-image-effect.md#blendapplytype11) |    No   | Whether the blend mode is implemented offscreen.<br>Default value: **BlendApplyType.FAST**<br>**NOTE**<br>1. When this parameter is set to **BlendApplyType.FAST**, the blend mode is not implemented offscreen.<br>2. When this parameter is set to **BlendApplyType.OFFSCREEN**, an offscreen canvas matching the size of the current component is created. The content of the current component (including its child components) is then drawn onto the offscreen canvas, and blended with the existing content on the underlying canvas using the specified blend mode.<br>3. For text components, this API does not apply to emoji expressions when not offscreen.    |
+| type   | [BlendApplyType](ts-universal-attributes-image-effect.md#blendapplytype11)  |    No   | Whether the blend mode is implemented offscreen.<br>Default value: **BlendApplyType.FAST**<br>**NOTE**<br>1. When **BlendApplyType.FAST** is set, the blend mode is not implemented offscreen.<br>2. When **BlendApplyType.OFFSCREEN** is set, an offscreen canvas the size of the current component is created. The content of the current component (including child components) is then drawn onto the offscreen canvas, and blended with the existing content on the canvas below using the specified blend mode.<br>3. For text components, this API does not apply to emoji expressions when not offscreen.    |
 
 **Return value**
 

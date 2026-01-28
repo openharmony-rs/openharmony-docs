@@ -2852,7 +2852,7 @@ struct TabsExample {
 
 This example shows how to use the [animationCurve](#animationcurve20) API to set the animation curve for Tabs and use the animationDuration API to set the duration of the animation.
 
-The animationCurve API is added since API version 20.
+The **animationCurve** API is added since API version 20.
 
 ```ts
 import { curves } from '@kit.ArkUI';

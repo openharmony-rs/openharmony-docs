@@ -24,7 +24,6 @@ The **Marquee** component is used to display a scrolling piece of text. Text scr
 Not supported
 
 
-
 ## APIs
 
 Marquee(options: MarqueeOptions)
@@ -64,7 +63,7 @@ Describes the initialization options of the **Marquee** component.
 | start<sup>8+</sup> | boolean | No| No| Whether to start scrolling.<br>**true**: yes; **false**: no<br>**NOTE**<br>This parameter cannot be used to restart scrolling that has been completed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | step<sup>8+</sup> | number | No| Yes| Step length of the scrolling animation text. If the value is greater than the text width of the marquee, the default value is used.<br>Default value: **6**<br>Unit: [vp](ts-pixel-units.md)<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | loop<sup>8+</sup> | number | No| Yes| Number of times the marquee will scroll. If the value is less than or equal to **0**, the marquee will scroll continuously.<br>Default value: **-1**<br>**NOTE**<br>Regardless of the value, the marquee scrolls only once on an ArkTS widget.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| fromStart<sup>8+</sup> | boolean | No| Yes| Whether the text scrolls from the start.<br>**true**: Scroll from the start. <br>**false**: Scroll from the end.<br>Default value: **true**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| fromStart<sup>8+</sup> | boolean | No| Yes| Whether the text scrolls from the start.<br>**true**: Scroll from the start.<br>**false**: Scroll from the end.<br>Default value: **true**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | src<sup>8+</sup> | string | No| No| Text to scroll.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
@@ -87,7 +86,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value: **'#c5ffffff'** (light blue) on wearables; **'e6182431'** (black) on other devices|
 
 ### fontSize
 
@@ -123,7 +122,7 @@ Sets the font weight. If the value is too large, the text may be clipped dependi
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **"400"**, and the following enumerated values of **FontWeight** are supported: **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**.<br>Default value: **FontWeight.Normal**|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>Default value: **FontWeight.Normal**|
 
 ### fontFamily
 
@@ -159,7 +158,7 @@ Sets whether to allow text to scale.
 
 | Name| Type   | Mandatory| Description                                |
 | ------ | ------- | ---- | ------------------------------------ |
-| value  | boolean | Yes  | Whether to allow text to scale.<br>**true**: yes; **false**: no<br>Default value: **false**<br>**NOTE**<br>This parameter is effective only when **fontSize** is in fp units.|
+| value  | boolean | Yes  | Whether to allow text to scale.<br>**true**: yes; **false**: no<br>Default value: **false**<br>**NOTE**<br>This parameter is effective only when [fontSize](#fontsize) is in fp units.|
 
 ### marqueeUpdateStrategy<sup>12+</sup>
 
@@ -175,7 +174,7 @@ Sets the scrolling strategy for the marquee after its attributes are updated. (T
 
 | Name| Type   | Mandatory| Description                                |
 | ------ | ------- | ---- | ------------------------------------ |
-| value |[MarqueeUpdateStrategy](ts-appendix-enums.md#marqueeupdatestrategy12) | Yes| Scrolling strategy of the marquee after its attributes are updated.<br>Default value: **MarqueeUpdateStrategy.DEFAULT**|
+| value |[MarqueeUpdateStrategy](ts-appendix-enums.md#marqueeupdatestrategy12) | Yes| Scrolling strategy for the marquee after its attributes are updated.<br>Default value: **MarqueeUpdateStrategy.DEFAULT**|
 
 ## Events
 
@@ -233,10 +232,9 @@ Triggered when the marquee has finished the number of scrolling times set by the
 | ------ | ------------------------------------- | ---- | -------------- |
 | event  | &nbsp;()&nbsp;=&gt;&nbsp;void | Yes  | Callback invoked when the marquee has finished the number of scrolling times set by the **loop** attribute.|
 
-
 ## Example
 
-This example shows the dynamic updating of a marquee's content by setting parameters such as **start**, **step**, **loop**, **fromStart**, **src**, and [marqueeUpdateStrategy](#marqueeupdatestrategy12) (since API version 12).
+This example shows the dynamic updating of a marquee's content by setting parameters such as **start**, **step**, **loop**, **fromStart**, **src**, **spacing**, and [marqueeUpdateStrategy](#marqueeupdatestrategy12) of [MarqueeOptions](#marqueeoptions18).
 
 ```ts
 // xxx.ets

@@ -143,6 +143,7 @@ Enumerates the types of axis actions for axis events.
 Enumerates the axis types for focus axis events.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Value  | Description                              |
@@ -700,6 +701,10 @@ Sets the hover effect of the component.
 
 Sets the response logic and node blocking rules for the hit test.
 
+> **NOTE**
+>
+> When multiple nodes in a **Stack** component have overlapping touch areas, if the touch point hits a child component of the topmost node, only the topmost node will undergo hit testing by default. In this case, touch testing for lower-layer nodes can only be triggered by setting the [hitTestBehavior](./ts-universal-attributes-hit-test-behavior.md#hittestbehavior) of the topmost node to **HitTestMode.Transparent**.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Description                                      |
@@ -945,9 +950,9 @@ Sets the action type of a mouse operation.
 
 > **NOTE**
 >
-> When it is used as a return value, values outside the predefined enumeration range may be received, and you do not need to handle them.
+> You may receive values outside the defined enumeration range for this attribute, which you do not need to concern with.
 
-**System capability**:  SystemCapability.ArkUI.ArkUI.Full
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name     |  Value | Description     |
 | ------- | ----- |  ------- |
@@ -1127,7 +1132,7 @@ Enumerates pixel rounding modes.
 
 ## PresetFillType<sup>22+</sup>
 
-Enumerates column count policies for different [responsive breakpoints](../../../ui/arkts-layout-development-grid-layout.md#breakpoints).
+Enumerates column count policies for different [breakpoints](../../../ui/arkts-layout-development-grid-layout.md#breakpoints).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1312,14 +1317,16 @@ Sets the transition type.
 
 Sets the horizontal alignment of the text.
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    |  Value | Description                                      |
-| ------ | ------ | ---------------------------------------- |
-| Start                     |  0  | Aligned with the start.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| Center                    |  1  | Horizontally centered.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| End                       |  2  | Aligned with the end.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| JUSTIFY<sup>10+</sup>     |  3  | Aligned with both margins.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| Name                 | Value| Description                                                        |
+| --------------------- | ------------------ | ------------------------------------------------------------ |
+| Start                 | 0 | Aligned with the start.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| Center                | 1 | Horizontally centered.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| End                   | 2 | Aligned with the end.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| JUSTIFY<sup>10+</sup> | 3 | Aligned with both margins.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
 
 ## TextOverflow
 

@@ -93,7 +93,7 @@ Sets the absolute positioning, which determines the position of a child componen
 > **NOTE**
 > 
 > - This API takes effect after the component's size measurement is complete.
-> - If the parent container is **Row**, **Column**, or **Flex**, the child component for which **position** is set does not take up space in the container.
+> - When the parent container is [Row](./ts-container-row.md), [Column](./ts-container-column.md), or [Flex](./ts-container-flex.md), the child component with **position** set does not occupy any space.
 > - The Position type uses the upper left corner of the parent's content area as the reference point. The Edges type uses all four sides of the parent's content area as reference, where **top**, **left**, **right**, and **bottom** define the margins between the component and corresponding sides of the parent's content area. The LocalizedEdges type provides the same functionality as Edges while supporting layout mirroring.
 > - This attribute is applicable to scenarios where the component's position in the parent container is fixed, for example, where it is pinned to top or floating on the UI.
 > - This attribute is unavailable for a layout container whose width and height are zero.
@@ -342,7 +342,7 @@ Sets the weight of the component in a chain, which is used to re-lay out compone
 
 > **NOTE**
 >
-> This API cannot be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

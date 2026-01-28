@@ -45,9 +45,11 @@ The @Watch decorator is used to listen for state variable changes in state manag
 @Component
 struct Index {
   @State @Watch('onChange') num: number = 0; // The @Watch input parameter is the function name.
+
   onChange() {
     console.info(`num change to ${this.num}`);
   }
+
   build() {
     Column() {
       Text(`num is: ${this.num}`)
@@ -100,21 +102,27 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // Listen for one variable.
-  onNameChange(monitor: IMonitor) {
+
+  // Listen for one variable.
+  @Monitor('name')
+  onNameChange() {
     console.info(`name change to ${this.name}`);
   }
-  @Monitor('age', 'height') // Listen for multiple variables.
+
+  // Listen for multiple variables.
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
       console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
@@ -175,12 +183,16 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // Listen for one variable.
+
+  // Listen for one variable.
+  @Monitor('name')
   onNameChange(monitor: IMonitor) {
     // If no path is specified for value, the first path in the dirty array is used by default.
     console.info(`path: ${monitor.value()?.path} change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
-  @Monitor('age', 'height') // Listen for multiple variables.
+
+  // Listen for multiple variables.
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     // If a path is specified for value, the change information for the specified path is returned.
     monitor.dirty.forEach((path: string) => {
@@ -188,10 +200,12 @@ class Info {
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)

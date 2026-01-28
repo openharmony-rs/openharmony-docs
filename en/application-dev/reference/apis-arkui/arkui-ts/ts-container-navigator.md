@@ -28,7 +28,7 @@ Navigator(value?: {target: string, type?: NavigationType})
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -47,7 +47,7 @@ Navigator()
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [NavigationAttribute](ts-basic-components-navigation.md#attributes) instead. **NavigationAttribute** is an attribute of the **Navigation** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -55,9 +55,7 @@ Navigator()
 
 ## NavigationType<sup>(deprecated)</sup>
 
-> **NOTE**
->
-> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
+Navigation type.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -65,9 +63,9 @@ Navigator()
 
 | Name     | Value | Description                      |
 | ------- | ------- | -------------------------- |
-| Push    | 1 | Navigates to the specified page in the application.              |
-| Replace | 2 | Replaces the current page with another one in the application and destroys the current page.|
-| Back    | 3 | Returns to the specified page. If the specified page does not exist in the stack, no response is returned. If no page is specified, the previous page is returned to.|
+| Push    | 1 | Navigates to the specified page in the application.<br>**NOTE**<br>This API is supported since API version 7 and deprecated since API version 13. You are advised to use [pushPath](ts-basic-components-navigation.md#pushpath10) instead. |
+| Replace | 2 | Replaces the current page with another one in the application and destroys the current page.<br>**NOTE**<br>This API is supported since API version 7 and deprecated since API version 13. You are advised to use [replacePath](ts-basic-components-navigation.md#replacepath11) instead.|
+| Back    | 3 | Returns to the specified page. If the specified page does not exist in the stack, no response is returned. If no page is specified, the previous page is returned to.<br>**NOTE**<br>This API is supported since API version 7 and deprecated since API version 13. You are advised to use [pop](ts-basic-components-navigation.md#pop10) instead.|
 
 ## Attributes
 
@@ -79,7 +77,7 @@ Sets whether the **Navigator** component is activated. If the component is activ
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 13. No substitute is provided.
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -99,7 +97,7 @@ Sets the data that needs to be passed to the target page during redirection.
 
 > **NOTE**
 >
-> This API is supported since API version 11 and deprecated since API version 13. No substitute is provided.
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [param](ts-basic-components-navigation.md#properties-1) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -119,7 +117,7 @@ Sets the path of the target page to be redirected to. The target page must be ad
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 13. No substitute is provided.
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -138,7 +136,7 @@ Sets the navigation type.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 13. No substitute is provided.
+> This API is supported since API version 7 and deprecated since API version 13. You are advised to use [Navigation](ts-basic-components-navigation.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

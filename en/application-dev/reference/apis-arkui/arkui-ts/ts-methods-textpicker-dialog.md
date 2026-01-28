@@ -579,7 +579,7 @@ struct TextPickerExample {
 }
 ```
 
-![TextPickerDialog](figures/TextPickerDialogDemo8.gif)
+
 
 ### Example 9: Customizing the Background Blur Effect
 
