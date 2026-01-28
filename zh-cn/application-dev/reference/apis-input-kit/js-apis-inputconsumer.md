@@ -47,7 +47,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
 |  key       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否      | 否      | 按键键值。<br/>**说明：** ArkTS-Dyn：从API version 21开始，支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键、[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。<br/> ArkTS-Sta：支持以上按键功能。|
-| action    | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否      | 否      |  按键事件类型。支持取值为1或2，其中：1表示按键被按下，2表示按键被按下并释放。ArkTS-Dyn：从API version 16开始， 支持取值为1；从API version 21开始， 支持取值为2。|
+| action    | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否      | 否      |  按键事件类型。支持取值为1和2，其中：1表示按键被按下，2表示按键被按下并释放。ArkTS-Dyn：从API version 16开始，仅支持取值为1；从API version 21开始，支持取值为1和2。|
 | isRepeat  | boolean  | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，默认值为true。 |
 
 ## inputConsumer.getAllSystemHotkeys
