@@ -7516,7 +7516,7 @@ try {
 
 ## clearWindowMask<sup>24+</sup>
 
-clearWindowMask(): Promise&lt;void&gt;;
+clearWindowMask(): Promise&lt;void&gt;
 
 清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
@@ -7528,7 +7528,7 @@ clearWindowMask(): Promise&lt;void&gt;;
 
 | 类型                                         | 说明                                |
 | :------------------------------------------- | :---------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -7537,7 +7537,7 @@ clearWindowMask(): Promise&lt;void&gt;;
 | 错误码ID | 错误信息                                      |
 | :------- | :-------------------------------------------- |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                               |
-| 1300002  | This window state is abnormal. Possible casue: 1. The window is not created or destroyed; 2. Internal task error; 3. The window has not set window mask yet.  |
+| 1300002  | This window state is abnormal. Possible casue: 1. The window is not created or destroyed. 2. Internal task error. 3. The window has not set window mask yet.  |
 | 1300003  | This window manager service works abnormally.                                                                      |
 | 1300004  | Unauthorized operation.  Possible casue: 1. The window is not subwindow and float window.                       |
 
