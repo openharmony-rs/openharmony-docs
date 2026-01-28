@@ -674,7 +674,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallDomainParams
 
-防火墙规则域信息。
+防火墙规则域名参数，目前不支持中文域名。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
