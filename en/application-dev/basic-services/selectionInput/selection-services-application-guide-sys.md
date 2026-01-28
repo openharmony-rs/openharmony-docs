@@ -255,7 +255,7 @@ The preceding APIs are core APIs used in this topic. For details about all APIs 
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager, PanelInfo, BusinessError, PanelType, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import Want from '@ohos.app.ability.Want';
+    import { Want } from '@kit.AbilityKit';
 
     @Entry
     @Component
@@ -349,7 +349,7 @@ The preceding APIs are core APIs used in this topic. For details about all APIs 
     <!--code_no_check-->
     ```ts
     import { SelectionModel } from '../models/SelectionModel';
-    import selectionManager from '@ohos.selectionInput.selectionManager';
+    import { selectionManager } from '@kit.BasicServicesKit';
     @Entry
     @Component
     struct MainPanel {

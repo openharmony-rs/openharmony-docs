@@ -15,7 +15,7 @@
 
 **错误信息**
 
-Memory error.
+Memory malloc failed.
 
 **错误描述**
 

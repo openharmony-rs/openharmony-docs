@@ -11,7 +11,7 @@ This topic describes how to configure the application icon and label. Applicatio
 ## Use Scenarios
 
 <!--RP2-->
-- Display an application on an application screen, for example, application list in the Settings app.
+- Display an application on an application screen, for example, application list in the settings application.
 - Display an application on the home screen, for example, applications displayed on the home screen or in the recent task list.
 <!--RP2End-->
 
@@ -22,13 +22,13 @@ The display effects are as follows.
 
 ## Configuration Priority and Build Policy
 
-* For the HAP file containing UIAbility configuration, the following scenarios are possible:
+* For the HAP file containing **UIAbility** configuration, the following scenarios are possible:
 
   * If the **icon** and **label** fields under **abilities** of the [module.json5](module-configuration-file.md) file are configured, and under **skills** of the corresponding ability, **entities** contains **entity.system.home** and **actions** contains **ohos.want.action.home**, the system returns the **icon** and **label** configured in **module.json5**. If there are multiple abilities that meet the requirements, the system returns the icon and label specified for the ability corresponding to **mainElement** in **module.json5**.
 
   * If the **icon** and **label** fields under **abilities** of the **module.json5** file are not configured, the system returns the **icon** and **label** configured in [app.json5](app-configuration-file.md).
 
-* For the HAP file that does not contain UIAbility configuration, the system returns the **icon** and **label** configured in **app.json5**.
+* For the HAP file that does not contain **UIAbility** configuration, the system returns the **icon** and **label** configured in **app.json5**.
 
 >
 > **NOTE**
@@ -37,70 +37,68 @@ The display effects are as follows.
 >
 > For example, if the labels of the layered icon files configured in **app.json5** and **module.json5** are the same but the icons are different, the resource files in the **AppScope** directory overwrite those in the module. Finally, the icon configured in **app.json5** is used.
 > 
-> If no entry UIAbility is set in the application configuration, the application details page is displayed after you tap the application icon on the home screen. Alternatively, go to **Settings** > **Apps & services**, and tap any application to access the application details page. In other cases, the application main page is displayed after you tap the application icon on the home screen. An application does not have an entry UIAbility in either of the following scenarios:
+> If no entry **UIAbility** is set in the application configuration, the application details page is displayed after you tap the application icon on the home screen. Alternatively, go to **Settings** > **Apps & services**, and tap any application to access the application details page. In other cases, the application main page is displayed after you tap the application icon on the home screen. An application does not have an entry **UIAbility** in either of the following scenarios:
 >
->   1. The application does not have any UIAbility.
->   2. The **entities** under the **skills** tag in all UIAbility configurations are not set or do not contain **entity.system.home**, and the **actions** tag is not set or does not contain **ohos.want.action.home**.
+>   1. The application does not have any **UIAbility**.
+>   2. The **entities** under the **skills** tag in all **UIAbility** configurations are not set or do not contain **entity.system.home**, and the **actions** tag is not set or does not contain **ohos.want.action.home**.
 >
 
 ## Configuring a Single-Layer Icon and Label
 
 - **Method 1: Configuring app.json5**
 
-  This configuration takes effect only when the **module.json5** configuration file does not contain any UIAbility or **icon** and **label** under the **abilities** tag of the UIAbility are not set. (You can manually delete the icon and label configurations).
+  This configuration takes effect only when the **module.json5** configuration file does not contain any **UIAbility** or **icon** and **label** under the **abilities** tag of the **UIAbility** are not set. (You can manually delete the icon and label configurations).
 
   <!-- @[layered_image_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/AppScope/app.json5) -->
-
-``` JSON5
-{
-  "app": {
-	// ···
-    "icon": "$media:app_icon",
-    "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
+  
+  ``` JSON5
+  {
+    "app": {
+      // ...
+      "icon": "$media:app_icon",
+      "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
+    }
   }
-}
-```
-
+  ```
 
 - **Method 2: Configuring module.json5**
 
   In addition to configuring the **icon** and **label** fields, you need to add **entity.system.home** under **entities** and **ohos.want.action.home** under **actions**.
 
   <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-	// ···
-    "abilities": [
-      {
-		// ···
-        "icon": "$media:icon",
-        // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
-        "label": "$string:EntryAbility_label",
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          }
-        ]
-      }
-    ],
-	// ···
+  
+  ``` JSON5
+  {
+    "module": {
+      // ...
+      "abilities": [
+        {
+          // ...
+          "icon": "$media:icon",
+          // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+          "label": "$string:EntryAbility_label",
+          "skills": [
+            {
+              "entities": [
+                "entity.system.home"
+              ],
+              "actions": [
+                "ohos.want.action.home"
+              ]
+            }
+          ]
+        }
+      ],
+      // ...
+    }
   }
-}
-```
-
+  ```
 
 ## Configuring a Layered Icon and Label
 
 - **Method 1: Configuring app.json5**
 
-  This configuration takes effect only when the **module.json5** configuration file does not contain any UIAbility or **icon** and **label** under the **abilities** tag of the UIAbility are not set. (You can manually delete the icon and label configurations).
+  This configuration takes effect only when the **module.json5** configuration file does not contain any **UIAbility** or **icon** and **label** under the **abilities** tag of the **UIAbility** are not set. (You can manually delete the icon and label configurations).
 
   1. Place the foreground and background resource files in **AppScope\resources\base\media**.
 
@@ -118,18 +116,18 @@ The display effects are as follows.
       }
       ```
   3. Reference the layered icon resource file in the [app.json5](app-configuration-file.md) file. Example:
+
       <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5) -->
-
-``` JSON5
-{
-  "app": {
-	// ···
-    "icon": "$media:layered_image",
-    "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
-  }
-}
-```
-
+      
+      ``` JSON5
+      {
+        "app": {
+          // ...
+          "icon": "$media:layered_image",
+          "label": "$string:app_name" // Configure the resource whose name is app_name in AppScope/resources/base/element/string.json. If the resource already exists, skip this step.
+        }
+      }
+      ```
 
 - **Method 2: Configuring module.json5**
 
@@ -149,39 +147,37 @@ The display effects are as follows.
       }
       ```
 
-  3. To display a UIAbility icon on the home screen, you must configure the **icon** and **label** fields, and under the **skills** tag, add **entity.system.home** to **entities** and **ohos.want.action.home** to **actions**.
+  3. To display a **UIAbility** icon on the home screen, you must configure the **icon** and **label** fields, and under the **skills** tag, add **entity.system.home** to **entities** and **ohos.want.action.home** to **actions**.
 
-      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-	// ···
-    "abilities": [
+      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5)  -->
+      
+      ``` JSON5
       {
-		// ···
-        // Set icon to the index of the layered icon resource file.
-        "icon": "$media:layered_image",
-        // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
-        "label": "$string:EntryAbility_label",
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "ohos.want.action.home"
-            ]
-          }
-        ]
+        "module": {
+          // ...
+          "abilities": [
+            {
+              // ...
+              // Set icon to the index of the layered icon resource file.
+              "icon": "$media:layered_image",
+              // Configure the resource whose name is EntryAbility_label in entry/src/main/resources/base/element/string.json. If the resource already exists, skip this step.
+              "label": "$string:EntryAbility_label",
+              "skills": [
+                {
+                  "entities": [
+                    "entity.system.home"
+                  ],
+                  "actions": [
+                    "ohos.want.action.home"
+                  ]
+                }
+              ]
+            }
+          ],
+          // ...
+        }
       }
-    ],
-	// ···
-  }
-}
-```
-
-
+      ```
 
 >
 > **NOTE**

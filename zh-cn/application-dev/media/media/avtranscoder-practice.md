@@ -38,6 +38,8 @@
    ```ts
    // 创建Worker对象。
    private workerInstance?: worker.ThreadWorker;
+   @State currentProgress: number = 0;
+   
    this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
 
    // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，在宿主线程执行。
@@ -219,7 +221,7 @@
 参考以下示例，使用worker线程的方式来实现异步线程进行转码。
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder)，并将示例工程的资源复制到对应目录。
-    ```
+    ```txt
     AsyncTranscoder
     entry/build-profile.json5 (配置字段信息将Worker线程文件打包到应用)
     entry/src/main/ets/

@@ -40,11 +40,11 @@
 | 名称                                                  | typedef关键字 | 描述 |
 |-----------------------------------------------------| -- | -- |
 | [ArkUI_UIInputEvent_Type](#arkui_uiinputevent_type) | ArkUI_UIInputEvent_Type | UI输入事件类型定义。 |
-| [anonymous1](#anonymous1)                       | - | 定义输入事件的Action Code。 |
+| [anonymous1](#anonymous1)                       | - | 定义输入事件的行为类型。 |
 | [anonymous2](#anonymous2)                       | - | 产生输入事件的工具类型定义。 |
 | [anonymous3](#anonymous3)                       | - | 产生输入事件的来源类型定义。 |
 | [HitTestMode](#hittestmode)                         | HitTestMode | 定义触摸测试类型的枚举值。 |
-| [anonymous4](#anonymous4)                       | - | 定义鼠标事件的Action Code。 |
+| [anonymous4](#anonymous4)                       | - | 定义鼠标事件的行为类型。 |
 | [anonymous5](#anonymous5)                       | - | 定义鼠标事件的按键类型。 |
 | [ArkUI_ModifierKeyName](#arkui_modifierkeyname)     | ArkUI_ModifierKeyName | 定义modifier按键。 |
 | [anonymous6](#anonymous6)                       | - | 定义焦点轴事件的轴类型。 |
@@ -193,7 +193,7 @@ enum anonymous1
 **描述：**
 
 
-定义输入事件的Action Code。
+定义输入事件的行为类型。
 
 **起始版本：** 12
 
@@ -278,7 +278,7 @@ enum anonymous4
 **描述：**
 
 
-定义鼠标事件的Action Code。
+定义鼠标事件的行为类型。
 
 **起始版本：** 12
 
@@ -341,7 +341,7 @@ enum anonymous6
 **描述：**
 
 
-定义焦点轴事件的轴类型。
+定义[焦点轴事件](./arkui-ts/ts-universal-events-focus_axis.md)的轴类型。
 
 **起始版本：** 15
 
@@ -384,7 +384,7 @@ enum anonymous7
 **描述：**
 
 
-定义轴事件的操作类型。
+定义[轴事件](./arkui-ts/ts-universal-events-axis.md)的操作类型。
 
 **起始版本：** 15
 
@@ -491,7 +491,7 @@ int32_t OH_ArkUI_UIInputEvent_GetAction(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取输入事件的action类型。action类型为基础事件在不同阶段的类型定义，通常代表了事件的特点，并表征事件的开始与结束，如touch down, touch up。触控事件的action类型为[UI_TOUCH_EVENT_ACTION_XXX](#anonymous1)，鼠标事件的action类型为[UI_MOUSE_EVENT_ACTION_XXX](#anonymous4)。轴事件的action类型获取请使用[OH_ArkUI_AxisEvent_GetAxisAction](#oh_arkui_axisevent_getaxisaction)，返回值类型为[UI_AXIS_EVENT_ACTION_XXX](#anonymous7)，按键事件的action类型获取请使用[OH_ArkUI_KeyEvent_GetType](./capi-native-key-event-h.md#oh_arkui_keyevent_gettype)接口。
+获取输入事件的action类型。action类型为基础事件在不同阶段的类型定义，通常代表了事件的特点，并表征事件的开始与结束，如touch down, touch up。触控事件的action类型为[UI_TOUCH_EVENT_ACTION_XXX](#anonymous1)，鼠标事件的action类型为[UI_MOUSE_EVENT_ACTION_XXX](#anonymous4)。轴事件的action类型获取请使用[OH_ArkUI_AxisEvent_GetAxisAction](#oh_arkui_axisevent_getaxisaction)接口，返回值类型为[UI_AXIS_EVENT_ACTION_XXX](#anonymous7)，按键事件的action类型获取请使用[OH_ArkUI_KeyEvent_GetType](./capi-native-key-event-h.md#oh_arkui_keyevent_gettype)接口，返回值类型为[ArkUI_KeyEventType](./capi-native-key-event-h.md#arkui_keyeventtype)。
 
 **起始版本：** 12
 
@@ -517,7 +517,7 @@ int32_t OH_ArkUI_UIInputEvent_GetSourceType(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取UI输入事件的触发源类型。输入源为产生输入事件的真实物理设备，如触摸屏，鼠标等，由UI_INPUT_EVENT_SOURCE_TYPE_XXX定义，而输入工具为操作输入源设备来产生事件的工具，如手指、触控笔。在某些情况下两者可能容易发生混淆，比如当用户在操作鼠标时，鼠标既是输入源，也是输入工具。对于按键事件，并不支持获取输入源类型，返回unknown。
+获取UI输入事件的触发源类型。输入源为产生输入事件的真实物理设备，如触摸屏，鼠标等，由[UI_INPUT_EVENT_SOURCE_TYPE_XXX](#anonymous3)定义，而输入工具为操作输入源设备来产生事件的工具，如手指、触控笔。在某些情况下两者可能容易发生混淆，比如当用户在操作鼠标时，鼠标既是输入源，也是输入工具。对于按键事件，并不支持获取输入源类型，返回unknown。
 
 **起始版本：** 12
 
@@ -543,7 +543,7 @@ int32_t OH_ArkUI_UIInputEvent_GetToolType(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-获取UI输入事件的工具类型。输入工具为操作输入源设备来产生事件的操作方，如手指、触控笔，他们自身不真实产生事件，但可以驱动输入源设备不断产生事件。返回的类型由UI_INPUT_EVENT_TOOL_TYPE_XXX枚举值定义。对于按键事件，并不支持获取输入工具类型，返回unknown。
+获取UI输入事件的工具类型。输入工具为操作输入源设备来产生事件的操作方，如手指、触控笔，他们自身不真实产生事件，但可以驱动输入源设备不断产生事件。返回的类型由[UI_INPUT_EVENT_TOOL_TYPE_XXX](#anonymous2)枚举值定义。对于按键事件，并不支持获取输入工具类型，返回unknown。
 
 **起始版本：** 12
 
@@ -595,7 +595,7 @@ uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)
 **描述：**
 
 
-从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取多点触控的接触点数量。指向性事件一般是附带有事件发生位置信息的事件，如触摸事件，用户操作时，可以感知事件在什么位置发生。而非指向性事件，如按键事件，一般没有位置信息，没有触点的说法，所以该接口对按键事件无效。对于触摸事件，该接口多用于处理多指触控，判断用户有几根手指在操作当前控件。而对于鼠标和轴事件，可认为触点只有1个，该接口永远返回1。
+从指向性输入事件（如触摸事件、鼠标事件、轴事件）中获取多点触控的接触点数量。指向性事件一般是附带有事件发生位置信息的事件，如触摸事件，用户操作时，可以感知事件在什么位置发生。而非指向性事件，如按键事件，一般没有位置信息，没有触点的说法，该接口永远返回0。对于触摸事件，该接口多用于处理多指触控，判断用户有几根手指在操作当前控件。而对于鼠标和轴事件，可认为触点只有1个，该接口永远返回1。
 
 **起始版本：** 12
 
@@ -2779,7 +2779,7 @@ ArkUI_CoastingAxisEvent* OH_ArkUI_UIInputEvent_GetCoastingAxisEvent(ArkUI_UIInpu
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
+| [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 
 **返回：**
 

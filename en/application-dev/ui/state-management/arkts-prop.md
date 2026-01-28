@@ -54,7 +54,7 @@ Variables decorated with \@Prop have the following features:
 
 \@Prop decorated variables support observation of the following change types:
 
-- When the decorated variable is of the primitive type, value assignments are observable. For details about the complete example of the primitive type, see [Synchronizing from \@State to \@Prop Simple Data Types](synchronizing-from-state-to-prop-simple-data-types).
+- When the decorated variable is of the primitive type, value assignments are observable. For details about the complete example of the primitive type, see [Synchronizing from \@State to \@Prop Simple Data Types](#synchronizing-from-state-to-prop-simple-data-types).
 
   ```ts
   // Primitive type
@@ -110,7 +110,7 @@ Variables decorated with \@Prop have the following features:
   ```
 
 
-In the scenarios of nested objects, if a class is decorated by \@Observed, the value changes of the class property can be observed. For details, see [@Prop Nesting Scenario](#prop-nesting-scenario).
+In the scenarios of nested objects, if a class is decorated by \@Observed, the value changes of the class property can be observed. For details, see [Nesting \@Prop](#nesting-prop).
 
 - When the decorated variable is of the array type, the value change of the array as well as the addition, deletion, and update of array items can be observed. For details about the complete example of the array type, see [Synchronizing from \@State Array Items to \@Prop Simple Data Types](#synchronizing-from-state-array-items-to-prop-simple-data-types).
 
@@ -349,7 +349,7 @@ After **replace entire arr** is clicked, the following information is displayed:
 
 In a library with one book and two readers, each reader can mark the book as read, and the marking does not affect the other reader. Technically speaking, local changes to the \@Prop decorated **book** object do not sync back to the @State decorated **book** in the **Library** component.
 
-In this example, the \@Observed decorator can be applied to the **book** class, but it is not mandatory. It is only needed for nested structures. This will be further explained in [Class Type \@Prop Synced from \@State Array Item in Parent Component](#class-type-prop-synced-from-state-array-item-in-parent-component).
+In this example, the \@Observed decorator can be applied to the **book** class, but it is not mandatory. It is only needed for nested structures. This will be further explained in [Synchronizing from \@State Array Items to \@Prop Class Types](#synchronizing-from-state-array-items-to-prop-class-types).
 
 <!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) -->
 

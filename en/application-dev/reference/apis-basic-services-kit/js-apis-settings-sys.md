@@ -17,7 +17,7 @@ The **settings** module provides APIs for setting data items.
 ## Modules to Import
 
 ```js
-import settings from '@ohos.settings';
+import { settings } from '@kit.BasicServicesKit';
 ```
 
 ## domainName

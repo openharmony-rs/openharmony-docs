@@ -7557,7 +7557,7 @@ try {
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
-窗口获焦时保留由其他窗口创建的软键盘，仅支持系统窗口与应用子窗口。
+窗口获焦时是否保留由其他窗口创建的软键盘，仅支持系统窗口与应用子窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7994,9 +7994,9 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 **设备行为差异：**
 
-API version 18之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从API version 18开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
