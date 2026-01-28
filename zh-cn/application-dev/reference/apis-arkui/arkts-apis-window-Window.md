@@ -7501,8 +7501,16 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  let array = new Array<number>(windowClass.getWindowProperties().windowRect.width).fill(1);
-  let windowMask = new Array<Array<number>>(windowClass.getWindowProperties().windowRect.height).fill(array);
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  // 设置一个缺角异形掩码
+  let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
+    let array = Array<number>(maskWidth);
+    for (let i = 0 ; i < maskWidth; i++) {
+      array[i] = (i + row) > (maskWidth + maskHeight) / 2 ? 1 : 0;
+    }
+    return array;
+  });
   let promise = windowClass.setWindowMask(windowMask);
   promise.then(() => {
     console.info('Succeeded in setting the window mask.');
@@ -7546,8 +7554,16 @@ clearWindowMask(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  let array = new Array<number>(windowClass.getWindowProperties().windowRect.width).fill(1);
-  let windowMask = new Array<Array<number>>(windowClass.getWindowProperties().windowRect.height).fill(array);
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  // 设置一个缺角异形掩码
+  let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
+    let array = Array<number>(maskWidth);
+    for (let i = 0 ; i < maskWidth; i++) {
+      array[i] = (i + row) > (maskWidth + maskHeight) / 2 ? 1 : 0;
+    }
+    return array;
+  });
   let promise = windowClass.setWindowMask(windowMask);
   promise.then(() => {
     console.info('Succeeded in setting the window mask.');
