@@ -789,9 +789,12 @@ export default class MainAbility extends UIAbility {
 
 ## tag.on<sup>23+</sup>
 
-on(type: 'readerModeWithInterval', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), discTech: number[], callback: AsyncCallback&lt;[TagInfo](#taginfo)&gt;, interval: number): void
+on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[], callback: AsyncCallback&lt;TagInfo&gt;, interval: number): void
 
-订阅NFC Tag读卡事件，实现前台应用优先分发，并支持卡在位检测间隔设置。设备会进入读卡器模式，同时关闭卡模拟。通过discTech设置支持的读卡技术类型，通过callback方式获取到Tag的[TagInfo](#taginfo)信息，通过interval设置卡在位检测间隔。需要与取消读卡器模式的[tag.off](#tagoff23)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoff23)。使用callback异步回调。
+订阅NFC Tag读卡事件，实现前台应用优先分发，并支持卡在位检测间隔设置。使用callback异步回调。
+- 设备会进入读卡器模式，同时关闭卡模拟。
+- 通过discTech设置支持的读卡技术类型，通过callback方式获取到Tag的[TagInfo](#taginfo)信息，通过interval设置卡在位检测间隔。
+- 需要与取消读卡器模式的[tag.off](#tagoff23)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoff23)。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -826,7 +829,7 @@ on(type: 'readerModeWithInterval', elementName: [ElementName](../apis-ability-ki
 
 ## tag.off<sup>23+</sup>
 
-off(type: 'readerModeWithInterval', elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), callback?: AsyncCallback&lt;[TagInfo](#taginfo)&gt;): void
+off(type: 'readerModeWithInterval', elementName: ElementName, callback: AsyncCallback&lt;TagInfo&gt;): void
 
 取消订阅NFC Tag读卡事件。设备退出读卡模式，并恢复卡模拟。如果已通过[tag.on](#tagon23)设置NFC的读卡器模式，需要在页面退出前台或页面销毁时调用off进行取消。使用callback异步回调。
 
