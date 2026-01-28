@@ -1786,7 +1786,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo, backup } from '@kit.CoreFileKit';
@@ -1851,7 +1851,7 @@ async function getBackupCompatibilityInfo() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup } from '@kit.CoreFileKit';
@@ -1946,7 +1946,7 @@ constructor(callbacks: GeneralCallbacks)
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -1995,7 +1995,7 @@ let generalCallbacks: backup.GeneralCallbacks = {
 let sessionRestore = new backup.SessionRestore(generalCallbacks); // 创建恢复流程
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -2083,7 +2083,7 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2191,7 +2191,7 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2367,7 +2367,7 @@ ArkTS-Sta: appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], c
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2440,7 +2440,7 @@ async function appendBundles() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2570,7 +2570,7 @@ ArkTS-Sta: appendBundles(remoteCapabilitiesFd: int, bundlesToBackup: string[], i
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2663,7 +2663,7 @@ async function appendBundles() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2802,7 +2802,7 @@ getFileHandle(fileMeta: FileMeta, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -2861,7 +2861,7 @@ sessionRestore.getFileHandle(fileMeta, (err: BusinessError) => {
 });
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -2971,7 +2971,7 @@ getFileHandle(fileMeta: FileMeta): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3033,7 +3033,7 @@ async function getFileHandle() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3139,7 +3139,7 @@ publishFile(fileMeta: FileMeta, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3215,7 +3215,7 @@ function createSessionRestore() {
 g_session = createSessionRestore();
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3340,7 +3340,7 @@ publishFile(fileMeta: FileMeta): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3414,7 +3414,7 @@ function createSessionRestore() {
 g_session = createSessionRestore();
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3528,7 +3528,7 @@ release(): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3606,7 +3606,7 @@ g_session.release();
 console.info('release success');
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3728,7 +3728,7 @@ ArkTS-Sta: cancel(bundleName: string): int
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3788,7 +3788,7 @@ async function cancelTest() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -3889,7 +3889,7 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo, backup} from '@kit.CoreFileKit';
@@ -3955,7 +3955,7 @@ let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程�
 let sessionRestore = new backup.SessionRestore(generalCallbacks); //  创建恢复流程
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup} from '@kit.CoreFileKit';
@@ -4061,7 +4061,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { fileIo, backup } from '@kit.CoreFileKit';
@@ -4126,7 +4126,7 @@ async function getRestoreCompatibilityInfo() {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { fileIo as fs, backup } from '@kit.CoreFileKit';
