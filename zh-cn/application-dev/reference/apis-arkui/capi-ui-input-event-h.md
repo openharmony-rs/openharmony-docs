@@ -52,6 +52,7 @@
 | [anonymous7](#anonymous7)                       | - | 定义轴事件的操作类型。 |
 | [anonymous8](#anonymous8)                       | - | 定义轴事件的轴类型。 |
 | [ArkUI_CoastingAxisEventPhase](#arkui_coastingaxiseventphase) | ArkUI_CoastingAxisEventPhase | 定义惯性滚动轴事件的阶段。 |
+| [ArkUI_TouchTestStrategy](#arkui_touchteststrategy) | ArkUI_TouchTestStrategy | 定义触摸测试策略。 |
 
 ### 函数
 
