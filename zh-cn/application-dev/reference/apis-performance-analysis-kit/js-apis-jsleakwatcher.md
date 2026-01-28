@@ -53,8 +53,8 @@ watch(obj: object, msg: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| obj | object | 是 | 需要检测的对象名。 |
-| msg | string | 是 | 自定义对象信息。 |
+| obj | object | 是 | 需要检测的对象名。<br>**说明**： obj可传入任何类型对象，例如：{'obj' => { name: 'test1', num: 1 }, 'settings' => { name: 'test2', num: '2' }}|
+| msg | string | 是 | 自定义对象信息。<br>**说明**：自定义传入对象的描述信息。 |
 
 **示例：**
 
@@ -76,7 +76,7 @@ check(): string
 
 | 类型    | 说明                                                       |
 | ------- | ---------------------------------------------------------- |
-| string | JSON格式的疑似泄漏对象列表。 |
+| string | JSON格式的疑似泄漏对象列表。<br>**说明**：check成功，JSON格式疑似泄漏对象列表；check失败，返回''。 |
 
 **示例：**
 ```js
@@ -102,7 +102,7 @@ dump(filePath: string): Array&lt;string&gt;
 
 | 类型    | 说明                                                       |
 | ------- | ---------------------------------------------------------- |
-| Array&lt;string&gt; | 导出结果的数组。索引0为泄露列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.heapsnapshot。 |
+| Array&lt;string&gt; | 导出结果的数组。索引0为泄露列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.heapsnapshot。<br>**说明**：dump成功，返回泄露列表文件路径和和虚拟机内存快照路径；dump失败，返回空数组。 |
 
 **错误码：**
 
@@ -137,7 +137,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| isEnabled | boolean | 是| 是否使能js对象内存泄漏检测功能。true：开启该功能；false：关闭该功能。|
+| isEnabled | boolean | 是| 是否使能js对象内存泄漏检测功能。true：开启内存泄漏检测功能；false：关闭内存泄漏检测功能。|
 | configs | Array&lt;string&gt; | 是| 配置项，数组中每个元素为监测具体对象的类型。<br>可配置项包括：XComponent，NodeContainer，Window，CustomComponent和Ability。<br>**说明**：传入空数组代表监测以上全部对象。 |
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口的返回的内存泄漏的对象。<br>回调函数中传入一个数组对象，索引0为泄露列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
@@ -148,9 +148,9 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 | 错误码ID| 错误信息|
 | ------- | ----------------------------------------------------------------- |
-| 10801001 | The parameter isEnabled is invalid.                              |
-| 10801002 | The parameter config is invalid.                                 |
-| 10801003 | The parameter callback is invalid. Input parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 10801001 | 在调用接口函数enableLeakWatcher时，传入无效参数isEnabled。          |
+| 10801002 | 在调用接口函数enableLeakWatcher时，传入无效参数config。             |
+| 10801003 | 在调用接口函数enableLeakWatcher时，传入无效参数callback。可能原因: 1.传入参数callback的类型错误; 2.必填参数未指定; 3.参数校验失败。 |
 
 **示例：**
 
