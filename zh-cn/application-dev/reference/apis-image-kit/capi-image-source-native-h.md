@@ -245,7 +245,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| bool *isHdr | 表示是否为HDR。true表示是HDR，false表示不是HDR。 |
+| bool *isHdr | 表示是否为高动态范围（HDR）的信息。true表示是高动态范围的信息，false表示不是高动态范围的信息。 |
 
 **返回：**
 
