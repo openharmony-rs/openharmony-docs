@@ -7546,7 +7546,7 @@ clearWindowMask(): Promise&lt;void&gt;
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                               |
 | 1300002  | This window state is abnormal. Possible casue: 1. The window is not created or destroyed. 2. Internal task error. 3. The window has not set window mask yet.  |
 | 1300003  | This window manager service works abnormally.                                                                      |
-| 1300004  | Unauthorized operation.  Possible casue: 1. The window is not subwindow and float window.                       |
+| 1300004  | Unauthorized operation. Possible casue: 1. The window is not subwindow and float window.                       |
 
 **示例：**
 
