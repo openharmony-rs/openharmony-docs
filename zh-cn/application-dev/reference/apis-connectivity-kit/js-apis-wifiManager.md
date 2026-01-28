@@ -1026,7 +1026,7 @@ connectToCandidateConfig(networkId: number): void
 
 connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
-该接口用于应用连接到用户添加的候选网络，并在连接时提示用户进行信任确认。使用Promise异步回调用户响应结果。
+该接口用于应用连接到用户添加的候选网络，并在连接时提示用户进行信任确认。使用Promise异步回调。
 
 - 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络，通过Promise异步返回用户响应结果。
 - 用户确认是连接过程中的必要步骤，未获得用户信任确认前，连接操作不会执行。
