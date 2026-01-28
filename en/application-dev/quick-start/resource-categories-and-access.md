@@ -8,6 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 During application development, you may need to use different resources, such as strings, colors, fonts, spacing, and icons. The values of these resources vary with devices or configurations. This topic describes resource types and provides guidance for resource development.
+
 Resources are classified into the following types based on their sources:
 
 - Application resources: resources customized by developers in applications. You can use resource files to manage resources on different devices or configurations.
@@ -17,7 +18,7 @@ Resources are classified into the following types based on their sources:
 
 Resource files used during application development must be stored in specified directories for management. There are two types of resource directories, namely, resource directories and resource group directories. The resource directories are the **base**, qualifiers, **rawfile**, and **resfile** directories. The resource group directories are the **element**, **media**, and **profile** directories.
 
-```
+```text
 resources
 |---base  // Default directory.
 |   |---element
@@ -53,7 +54,7 @@ Table 1 Description of resource directories
 | base directory| The **base** directory is provided by default. Under this directory, the **element** subdirectory stores basic elements such as strings, colors, and Boolean values, and the **media** and **profile** subdirectories store resource files such as media, animations, and layouts.<br>Resource files in the directories are compiled into binary files, and each resource file is assigned an ID. Access resource files in the directories based on the resource type and resource name.|
 | Qualifiers directory| The qualifiers directory needs to be created as required. Under this directory, the **element** subdirectory stores basic elements such as strings, colors, and Boolean values, and the **media** and **profile** subdirectories store resource files such as media, animations, and layouts.<br>Similarly, resource files in the directories are compiled into binary files, and each resource file is assigned an ID. Access resource files in the directories based on the resource type and resource name. For details about the meaning and value range of qualifiers and the naming rules of this directory, see [Qualifiers Directory](#qualifiers-directory).|
 | rawfile directory| You can create multiple levels of subdirectories with custom names to store various resource files.<br>Resource files in the subdirectory are directly packed into the application without being compiled, and no IDs will be assigned to the resource files. Access the directories based on the specified file path and file name.|
-| resfile Directory| You can create multiple levels of subdirectories with custom names to store various resource files.<br>Resource files in the subdirectory are directly packed into the application without being compiled, and no IDs will be assigned to the resource files. After the application is installed, resources in the **resfile** repository are decompressed to the application sandbox path. After the **resfile** directory is obtained through the **Context** attribute [resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties), the resources can be accessed through the file path in read-only mode.|
+| resfile directory| You can create multiple levels of subdirectories with custom names to store various resource files.<br>Resource files in the subdirectory are directly packed into the application without being compiled, and no IDs will be assigned to the resource files. After the application is installed, resources in the **resfile** repository are decompressed to the application sandbox path. After the **resfile** directory is obtained through the **Context** attribute [resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties), the resources can be accessed through the file path in read-only mode.|
 
 ### Resource Group Directories
 
@@ -61,7 +62,7 @@ Table 2 Resource group directories
 
 | Directory   | Description                                    | Resource File                                    |
 | --------- | ---------------------------------------- | ---------------------------------------- |
-| element | Indicates element resources. Each type of data is represented by a JSON file. (Only files are supported in this directory.) The options are as follows:<br>- **boolean**: boolean data<br>- **color**: color data<br>- **float**: floating point number, ranging from -2^128 to 2^128<br>- **intarray**: array of integers<br>- **integer**: integer, ranging from -2^31 to 2^31-1<br>- **plural**: plural form data<br>- **strarray**: array of strings<br>- **string**: string. For details about how to format strings, see [API Reference](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10).<!--Del--><br>- **pattern**: style (for system applications only)<!--DelEnd--><!--Del--><br>- **theme**: theme (for system applications only)<!--DelEnd-->| It is recommended that files in the **element** subdirectory be named the same as the following files, each of which can contain only data of the same type:<br>-&nbsp;boolean.json<br>-&nbsp;color.json<br>-&nbsp;float.json<br>-&nbsp;intarray.json<br>-&nbsp;integer.json<br>-&nbsp;plural.json<br>-&nbsp;strarray.json<br>-&nbsp;string.json<!--Del--><br>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br>-&nbsp;theme.json<!--DelEnd--> |
+| element | Indicates element resources. Each type of data is represented by a JSON file. (Only files are supported in this directory.) The options are as follows.<br>- **boolean**: boolean data<br>- **color**: color data<br>- **float**: floating point number, ranging from -2^128 to 2^128<br>- **intarray**: array of integers<br>- **integer**: integer, ranging from -2^31 to 2^31-1<br>- **plural**: plural form data<br>- **strarray**: array of strings<br>- **string**: string. For details about how to format strings, see [API Reference](../reference/apis-localization-kit/js-apis-resource-manager.md#getstringsync10).<!--Del--><br>- **pattern**: style (for system applications only)<!--DelEnd--><!--Del--><br>- **theme**: theme (for system applications only)<!--DelEnd-->| It is recommended that files in the **element** subdirectory be named the same as the following files, each of which can contain only data of the same type:<br>-&nbsp;boolean.json<br>-&nbsp;color.json<br>-&nbsp;float.json<br>-&nbsp;intarray.json<br>-&nbsp;integer.json<br>-&nbsp;plural.json<br>-&nbsp;strarray.json<br>-&nbsp;string.json<!--Del--><br>-&nbsp;pattern.json<!--DelEnd--><!--Del--><br>-&nbsp;theme.json<!--DelEnd--> |
 | media   | Indicates media resources, including non-text files such as images, audios, and videos. (Only files are supported in this directory.)<br>Table 3 and Table 4 describe the types of images, audios, and videos.             | The file name can be customized, for example, **icon.png**.                    |
 | profile  | Indicates a custom configuration file. You can obtain the file content by using the [getProfileByAbility](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability) API. (Only JSON files are supported in this directory.)      | The file name can be customized, for example, **test_profile.json**.          |
 
@@ -111,7 +112,7 @@ Table 5 Requirements for qualifier values
 
 ### Resource File Examples
 
-The content of the **color.json** file is as follows:
+The content of the **color.json** file is as follows.
 
 The standard hexadecimal color value consists of eight hexadecimal digits. The first two digits indicate the opacity and the last six digits indicate the color value.
 ```json
@@ -129,7 +130,7 @@ The standard hexadecimal color value consists of eight hexadecimal digits. The f
 }
 ```
 
-The content of the **float.json** file is as follows:
+The content of the **float.json** file is as follows.
 
 ```json
 {
@@ -146,7 +147,7 @@ The content of the **float.json** file is as follows:
 }
 ```
 
-The content of the **string.json** file is as follows:
+The content of the **string.json** file is as follows.
 
 ```json
 {
@@ -171,7 +172,7 @@ The content of the **string.json** file is as follows:
 }
 ```
 
-The content of the **plural.json** file is as follows:
+The content of the **plural.json** file is as follows.
 
 ```json
 {
@@ -224,13 +225,14 @@ Right-click a resource group directory (**element**, **media**, or **profile**) 
 The following takes the Chinese and English string resource files as examples to describe how to create resources with different qualifiers.
 
 1. Right-click the **resources** directory and choose **New** > **Resource File** from the shortcut menu. Set **File name** to **string_sample**, **Resource type** to **Element**, **Root Element** to **string**, and **Available qualifiers** to **Locale**. Select **zh** from the language list and **CN** from the country/region list. After all is set, the **zh_CN/element/string_sample.json** file is created in the **resources** directory.
-    ![create-resource-file-4](figures/create-resource-file-4.png)
+
+   ![create-resource-file-4](figures/create-resource-file-4.png)
 
 2. Similarly, select **en** for language and **US** for country/region to create the **en_US/element/string_sample.json** file.
 
-The following figure shows the created resource files. For details about how to access the created resource files, see [Accessing Resources](#accessing-resources).
+   The following figure shows the created resource files. For details about how to access the created resource files, see [Accessing Resources](#accessing-resources).
 
-![create-resource-file-5](figures/create-resource-file-5.png)
+   ![create-resource-file-5](figures/create-resource-file-5.png)
 
 ## Using the attr Attribute for Resource Translation
 
@@ -244,12 +246,12 @@ If the **attr** attribute is not configured, a string is translated by default.
 
 | Name       | Type                   |  Description  |
 | --------- | ----------------------- |  ---- |
-| translatable |  boolean |  Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br>**false**: The string does not need to be translated.|
+| translatable |  boolean |  Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br> **false**: The string does not need to be translated.|
 | priority    | string   |  Translation status of the string.<br>**code**: untranslated<br>**translate**: translated but not verified<br>**LT**: translated and verified<br>**customer**: custom  |
 
 ### Constraints
 The **attr** attribute applies to the string, strarray, and plural resources in the **base** directory.
-```
+```text
 resources
 |---base
 |   |---element
@@ -286,16 +288,16 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
 ### HAP Resources
 
- - Access resources through `$r` or `$rawfile`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. Wherein **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
+ - Access resources through `$r` or `$rawfile`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
 
    > **NOTE**
    >
    > For details about how to use native APIs to access raw files, see [Raw File Development](../napi/rawfile-guidelines.md).
 
-  [Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files.<br>The usage is as follows:
+  [Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files.<br>The usage is as follows.
 
   <!-- @[app_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   // Access the resource through $r('app.type.name').
   // The resource name is an example. Replace it with the actual resource.
@@ -320,7 +322,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
     .width(100)
   
   // For a string in string.json whose name is "message_notification", its value is "Hello, %1$s!,You have %2$d new messages."
-  // Replace the placeholders %1$s and %2$d with 'LiHua' and 2, respectively. Access the resource as follows:
+  // Replace the placeholders %1$s and %2$d with 'LiHua' and 2, respectively. Access the resource as follows.
   // The resource name is an example. Replace it with the actual resource.
   Text($r('app.string.message_notification', 'LiHua', 2)).id('app_string_resource')
   
@@ -354,7 +356,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
   2. Obtain resources using variables or the literal **[*Module name*].*type*.*name***, where ***module name*** indicates the name of the HSP module, ***type*** indicates the resource type, and ***name*** indicates the resource name. The following is an example:
 
    <!-- @[hsp_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Second.ets) -->
-  
+   
    ``` TypeScript
    @Entry
    @Component
@@ -401,12 +403,13 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
   > **NOTE**
   >
-  > The HSP module name must be placed in the brackets ([]). If the **rawfile** directory contains multiple levels of folders, the path must start from the first level, for example, `$rawfile('[hsp].oneDir/twoDir/icon.png')`. When `$r` or `$rawfile` is used for cross-HSP resource access, resource verification is not available at compile time, and you need to manually check that the target resources exist in the corresponding location.
+  > The HSP module name must be placed in the brackets ([]). If the **rawfile** directory contains multiple levels of folders, the path must start from the first level, for example, $rawfile('[hsp].firstDir/secondDir/icon.png'). When **$r** or **$rawfile** is used for cross-HSP resource access, resource verification is not available at compile time, and you need to manually check that the target resources exist in the corresponding location.
 
 
 ### System Resources
 
 You can obtain system icon resources from [HarmonyOS Symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol/) and system color, spacing, and rounded corner resources from the [system resource layer design table](https://gitcode.com/openharmony/docs/blob/master/en/design/ux-design/design-resources.md). In addition, you can obtain system color resources from [full table of basic and semantic tokens](https://developer.huawei.com/consumer/en/doc/design-guides/color-0000001776857164#section17672143841113). The resources in this table do not overlap with those in the system resource layer design table. Both are recommended system color resources.
+
 You can further set the icon colors through [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md).
 
 To access system resources, use the `$r('sys.type.name')` format, where **sys** indicates the system resource, **type** indicates the resource type, such as color, float, string, media, or symbol, and **name** indicates the resource name.
@@ -679,6 +682,9 @@ The **module.json5** file in the cross-application overlay resource package supp
 If the **module.json5** file of a module contains the **targetModuleName** and **targetPriority fields** during project creation on DevEco Studio, the module is identified as a module with the overlay feature in the installation phase. Modules with the overlay feature generally provide an overlay resource file for other modules on the device, so that the module specified by **targetModuleName** can display different colors, labels, themes, and the like by using the overlay resource file in a running phase.
 
 <!--Del-->
-<!--DelEnd-->
+##  
 
- <!--no_check--> 
+ 
+
+-  
+<!--DelEnd-->
