@@ -577,10 +577,6 @@ ArkTS-Dyn: getSelectedIndex(): number
 
 ArkTS-Sta: getSelectedIndex(): int
 
-**ArkTS-Dyn起始版本**：14
-
-**ArkTS-Sta起始版本**：23
-
 获取保存成功后的文件后缀类型的下标。
 
 该方法只在调用 [save()](#save)时使用生效，其他场景下不适用。
@@ -592,6 +588,10 @@ ArkTS-Sta: getSelectedIndex(): int
 **原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
