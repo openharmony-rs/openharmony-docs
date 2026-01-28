@@ -7461,7 +7461,7 @@ try {
 
 ## setWindowMask<sup>12+</sup>
 
-setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;;
+setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
