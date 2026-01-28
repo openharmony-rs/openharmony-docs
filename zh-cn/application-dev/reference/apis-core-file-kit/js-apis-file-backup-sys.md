@@ -5357,6 +5357,10 @@ constructor(callbacks: GeneralCallbacks)
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填 | 说明                     |
@@ -5375,52 +5379,105 @@ constructor(callbacks: GeneralCallbacks)
 
 **示例：**
 
-  ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => {
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fs.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError|null, file: backup.File|undefined) => {
       if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      if (file != undefined) {
+          fs.closeSync(file.fd);
+      }
+  },
+  onBundleBegin: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleBegin success');
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+  },
+  onBundleEnd: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleEnd success');
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
+  },
+  onAllBundlesEnd: (err: BusinessError|null) => {
       if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onAllBundlesEnd success');
-    },
-    onBackupServiceDied: () => {
+  },
+  onBackupServiceDied: () => {
       console.info('service died');
-    },
-    onResultReport: (bundleName: string, result: string) => {
+  },
+  onResultReport: (bundleName: string, result: string) => {
       console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
+  },
+  onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    }
-  };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-  ```
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+```
 
 ### getLocalCapabilities<sup>18+</sup>
 
@@ -5433,6 +5490,10 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 **需要权限**：ohos.permission.BACKUP
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -5455,111 +5516,223 @@ getLocalCapabilities(): Promise&lt;FileData&gt;
 
 **示例：**
 
-  ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  interface test { // 用于解析能力文件
-    bundleInfos: [];
-    deviceType: string;
-    systemFullName: string;
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface test { // 用于解析能力文件
+  bundleInfos: [];
+  deviceType: string;
+  systemFullName: string;
+}
+
+interface BundleInfo { // 用于获取单个应用的本地能力信息
+  name: string;
+  appIndex: number;
+  versionCode: number;
+  versionName: string;
+  spaceOccupied: number;
+  allToBackup: boolean;
+  increSpaceOccupied?: number;
+  fullBackupOnly: boolean;
+  extensionName: string;
+  restoreDeps: string;
+  supportScene: string;
+  extraInfo: object;
+}
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fs.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
   }
-
-  interface BundleInfo { // 用于获取单个应用的本地能力信息
-    name: string;
-    appIndex: number;
-    versionCode: number;
-    versionName: string;
-    spaceOccupied: number;
-    allToBackup: boolean;
-    increSpaceOccupied?: number;
-    fullBackupOnly: boolean;
-    extensionName: string;
-    restoreDeps: string;
-    supportScene: string;
-    extraInfo: object;
+};
+async function getLocalCapabilitiesTest() {
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+  let basePath = '/data/storage/el2/base/backup';
+  let path = basePath + '/localCapabilities.json'; // 本地保存能力文件的路径
+  try {
+    let fileData = await incrementalBackupSession.getLocalCapabilities(); // 获取本地能力文件
+    if (fileData) {
+      console.info('getLocalCapabilities success');
+      console.info('fileData info:' + fileData.fd);
+      if (!fs.accessSync(basePath)) {
+        fs.mkdirSync(basePath);
+        console.info('create success' + basePath);
+      }
+      fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
+      fs.closeSync(fileData.fd);
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
   }
+  let data = fs.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
+  try {
+    const jsonsObj: test | null = JSON.parse(data); // 解析本地的能力文件并打印部分信息
+    if (jsonsObj) {
+      const infos:BundleInfo [] = jsonsObj.bundleInfos;
+      for (let i = 0; i < infos.length; i++) {
+        console.info('name: ' + infos[i].name);
+        console.info('appIndex: ' + infos[i].appIndex);
+        console.info('allToBackup: ' + infos[i].allToBackup);
+      }
+      const systemFullName: string = jsonsObj.systemFullName;
+      console.info('systemFullName: ' + systemFullName);
+      const deviceType: string = jsonsObj.deviceType;
+      console.info('deviceType: ' + deviceType);
+    }
+  } catch (error) {
+    console.error(`parse failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
 
-  let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
-    onFileReady: (err: BusinessError, file: backup.File) => {
+ArkTS-Sta示例：
+
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface test { // 用于解析能力文件
+  bundleInfos: BundleInfo[];
+  deviceType: string;
+  systemFullName: string;
+}
+
+interface BundleInfo { // 用于获取单个应用的本地能力信息
+  name: string;
+  appIndex: number;
+  versionCode: number;
+  versionName: string;
+  spaceOccupied: number;
+  allToBackup: boolean;
+  increSpaceOccupied?: number;
+  fullBackupOnly: boolean;
+  extensionName: string;
+  restoreDeps: string;
+  supportScene: string;
+  extraInfo: object;
+}
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  onFileReady: (err: BusinessError|null, file: backup.File|undefined) => {
       if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      if (file != undefined) {
+          fs.closeSync(file.fd);
+      }
+  },
+  onBundleBegin: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleBegin success');
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+  },
+  onBundleEnd: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleEnd success');
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
+  },
+  onAllBundlesEnd: (err: BusinessError|null) => {
       if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onAllBundlesEnd success');
-    },
-    onBackupServiceDied: () => {
+  },
+  onBackupServiceDied: () => {
       console.info('service died');
-    },
-    onResultReport: (bundleName: string, result: string) => {
+  },
+  onResultReport: (bundleName: string, result: string) => {
       console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
+  },
+  onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    }
-  };
-  async function getLocalCapabilitiesTest() {
-    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-    let basePath = '/data/storage/el2/base/backup';
-    let path = basePath + '/localCapabilities.json'; // 本地保存能力文件的路径
-    try {
-      let fileData = await incrementalBackupSession.getLocalCapabilities(); // 获取本地能力文件
-      if (fileData) {
-        console.info('getLocalCapabilities success');
-        console.info('fileData info:' + fileData.fd);
-        if (!fs.accessSync(basePath)) {
-          fs.mkdirSync(basePath);
-          console.info('create success' + basePath);
-        }
-        fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
-        fs.closeSync(fileData.fd);
-      }
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
-    }
-    let data = fs.readTextSync(path, 'utf8'); // 从本地的能力文件中获取信息
-    try {
-      const jsonsObj: test | null = JSON.parse(data); // 解析本地的能力文件并打印部分信息
-      if (jsonsObj) {
-        const infos:BundleInfo [] = jsonsObj.bundleInfos;
-        for (let i = 0; i < infos.length; i++) {
-          console.info('name: ' + infos[i].name);
-          console.info('appIndex: ' + infos[i].appIndex);
-          console.info('allToBackup: ' + infos[i].allToBackup);
-        }
-        const systemFullName: string = jsonsObj.systemFullName;
-        console.info('systemFullName: ' + systemFullName);
-        const deviceType: string = jsonsObj.deviceType;
-        console.info('deviceType: ' + deviceType);
-      }
-    } catch (error) {
-      console.error(`parse failed. Code: ${error.code}, message: ${error.message}`);
-    }
   }
-  ```
+};
+async function getLocalCapabilitiesTest() {
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+  let basePath = '/data/storage/el2/base/backup';
+  let path = basePath + '/localCapabilities.json'; // 本地保存能力文件的路径
+  try {
+    let fileData = await incrementalBackupSession.getLocalCapabilities(); // 获取本地能力文件
+    if (fileData) {
+      console.info('getLocalCapabilities success');
+      console.info('fileData info:' + fileData.fd);
+      if (!fs.accessSync(basePath)) {
+        fs.mkdirSync(basePath);
+        console.info('creat success' + basePath);
+      }
+      fs.copyFileSync(fileData.fd, path); // 将获取的本地能力文件保存到本地
+      fs.closeSync(fileData.fd);
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getLocalCapabilities failed. Code: ${err.code}, message: ${err.message}`);
+  }
+  let data: string = fs.readTextSync(path, { encoding: 'utf8' }); // 从本地的能力文件中获取信息
+  try {
+    let jsonsObj: test|null|undefined = JSON.parse<test>(data as string,Type.from<test>()) ; // 解析本地的能力文件并打印部分信息
+    if (jsonsObj) {
+      const infos:BundleInfo [] = jsonsObj.bundleInfos;
+      for (let i = 0; i < infos.length; i++) {
+        console.info('name: ' + infos[i].name);
+        console.info('appIndex: ' + infos[i].appIndex);
+        console.info('allToBackup: ' + infos[i].allToBackup);
+      }
+      const systemFullName: string = jsonsObj.systemFullName;
+      console.info('systemFullName: ' + systemFullName);
+      const deviceType: string = jsonsObj.deviceType;
+      console.info('deviceType: ' + deviceType);
+    }
+  } catch (error: BusinessError) {
+    console.error(`parse failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
 
 **能力文件可以通过[@ohos.file.fs](js-apis-file-fs.md)提供的[fs.stat](js-apis-file-fs.md#fsstat-1)等相关接口获取，能力文件内容示例：**
 
@@ -5592,6 +5765,10 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                                                     | 必填 | 说明                                                         |
@@ -5621,89 +5798,179 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 **示例：**
 
-  ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  interface scannedInfos { // 用于解析扫描结果
-    scanned: [];
-    scanning: string;
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface scannedInfos { // 用于解析扫描结果
+  scanned: [];
+  scanning: string;
+}
+
+interface ScannedInfo { // 用于解析单个应用的扫描结果
+  bundleName: string;
+  dataSize: number;
+  incDataSize: number;
+}
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => { // 定义备份/恢复过程中的通用回调
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fs.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  },
+  onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名
+    console.info('dataSizeCallback success');
+    const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
+    if (jsonObj) {
+      const infos: ScannedInfo [] = jsonObj.scanned;
+      for (let i = 0; i < infos.length; i++) {
+        console.info('name: ' + infos[i].bundleName);
+        console.info('dataSize: ' + infos[i].dataSize);
+        console.info('incDataSize: ' + infos[i].incDataSize);
+      }
+      const scanning: string = jsonObj.scanning;
+      console.info('scanning: ' + scanning);
+    }
   }
+};
 
-  interface ScannedInfo { // 用于解析单个应用的扫描结果
-    bundleName: string;
-    dataSize: number;
-    incDataSize: number;
-  }
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
 
-  let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => { // 定义备份/恢复过程中的通用回调
+let backupApps: backup.IncrementalBackupTime[] = [{
+  bundleName: "com.example.hiworld",
+  lastIncrementalTime: 1700107870 // 调用者根据上次记录的增量备份时间
+}];
+try {
+  incrementalBackupSession.getBackupDataSize(true, backupApps); // 获取backupApps中指定应用的待备份的数据量大小，true表示使用精确扫描
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getBackupDataSize failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface scannedInfos { // 用于解析扫描结果
+  scanned: ScannedInfo[];
+  scanning: string;
+}
+
+interface ScannedInfo { // 用于解析单个应用的扫描结果
+  bundleName: string;
+  dataSize: number;
+  incDataSize: number;
+}
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError|null, file: backup.File|undefined) => {
       if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      if (file != undefined) {
+          fs.closeSync(file.fd);
+      }
+  },
+  onBundleBegin: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleBegin success');
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+  },
+  onBundleEnd: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleEnd success');
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
+  },
+  onAllBundlesEnd: (err: BusinessError|null) => {
       if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onAllBundlesEnd success');
-    },
-    onBackupServiceDied: () => {
+  },
+  onBackupServiceDied: () => {
       console.info('service died');
-    },
-    onResultReport: (bundleName: string, result: string) => {
+  },
+  onResultReport: (bundleName: string, result: string) => {
       console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
+  },
+  onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    },
-    onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名
-      console.info('dataSizeCallback success');
-      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
-      if (jsonObj) {
-        const infos: ScannedInfo [] = jsonObj.scanned;
-        for (let i = 0; i < infos.length; i++) {
-          console.info('name: ' + infos[i].bundleName);
-          console.info('dataSize: ' + infos[i].dataSize);
-          console.info('incDataSize: ' + infos[i].incDataSize);
-        }
-        const scanning: string = jsonObj.scanning;
-        console.info('scanning: ' + scanning);
+  },
+  onBackupSizeReport: (data: string) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名
+    console.info('dataSizeCallback success');
+    const jsonObj: scannedInfos | null |undefined= JSON.parse<scannedInfos>(data,Type.from<scannedInfos>()); // 解析返回的信息并打印
+    if (jsonObj) {
+      const infos: ScannedInfo [] = jsonObj.scanned;
+      for (let i = 0; i < infos.length; i++) {
+        console.info('name: ' + infos[i].bundleName);
+        console.info('dataSize: ' + infos[i].dataSize);
+        console.info('incDataSize: ' + infos[i].incDataSize);
       }
+      const scanning: string = jsonObj.scanning;
+      console.info('scanning: ' + scanning);
     }
-  };
-
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-
-  let backupApps: backup.IncrementalBackupTime[] = [{
-    bundleName: "com.example.hiworld",
-    lastIncrementalTime: 1700107870 // 调用者根据上次记录的增量备份时间
-  }];
-  try {
-    incrementalBackupSession.getBackupDataSize(true, backupApps); // 获取backupApps中指定应用的待备份的数据量大小，true表示使用精确扫描
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`getBackupDataSize failed. Code: ${err.code}, message: ${err.message}`);
   }
-  ```
+};
+
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+
+let backupApps: backup.IncrementalBackupTime[] = [{
+  bundleName: "com.example.hiworld",
+  lastIncrementalTime: 1700107870 // 调用者根据上次记录的增量备份时间
+}];
+try {
+  incrementalBackupSession.getBackupDataSize(true, backupApps); // 获取backupApps中指定应用的待备份的数据量大小，true表示使用精确扫描
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getBackupDataSize failed. Code: ${err.code}, message: ${err.message}`);
+}
+```
 
 **异步返回JSON串示例：**
 
@@ -5737,6 +6004,10 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型                                                           | 必填 | 说明                       |
@@ -5767,63 +6038,127 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 
 **示例：**
 
-  ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => {
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fs.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+let incrementalBackupData: backup.IncrementalBackupData = {
+  bundleName: "com.example.hiworld",
+  lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
+  manifestFd:1 // 调用者传递上一次备份的manifest文件句柄
+}
+let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
+incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
+  console.info('appendBundles success');
+}).catch((err: BusinessError) => {
+  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
+}); // 添加需要增量备份的应用
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError|null, file: backup.File|undefined) => {
       if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      if (file != undefined) {
+          fs.closeSync(file.fd);
+      }
+  },
+  onBundleBegin: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleBegin success');
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+  },
+  onBundleEnd: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleEnd success');
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
+  },
+  onAllBundlesEnd: (err: BusinessError|null) => {
       if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onAllBundlesEnd success');
-    },
-    onBackupServiceDied: () => {
+  },
+  onBackupServiceDied: () => {
       console.info('service died');
-    },
-    onResultReport: (bundleName: string, result: string) => {
+  },
+  onResultReport: (bundleName: string, result: string) => {
       console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
+  },
+  onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    }
-  };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-  let incrementalBackupData: backup.IncrementalBackupData = {
-    bundleName: "com.example.hiworld",
-    lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
-    manifestFd:1 // 调用者传递上一次备份的manifest文件句柄
   }
-  let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
-  incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
-    console.info('appendBundles success');
-  }).catch((err: BusinessError) => {
-    console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-  }); // 添加需要增量备份的应用
-  ```
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+let incrementalBackupData: backup.IncrementalBackupData = {
+  bundleName: "com.example.hiworld",
+  lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
+  manifestFd:1 // 调用者传递上一次备份的manifest文件句柄
+}
+let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
+incrementalBackupSession.appendBundles(incrementalBackupDataArray).then(() => {
+  console.info('appendBundles success');
+}).catch((err: BusinessError): void => {
+  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
+}); // 添加需要增量备份的应用
+```
 
 ### appendBundles<sup>12+</sup>
 
@@ -5836,6 +6171,10 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string
 **需要权限**：ohos.permission.BACKUP
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5868,104 +6207,209 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string
 
 **示例：**
 
-  ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => {
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fs.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+let incrementalBackupData: backup.IncrementalBackupData = {
+  bundleName: "com.example.hiworld",
+  lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
+  manifestFd:1 // 调用者传递上一次备份的manifest文件句柄
+}
+    let infos: Array<string> = [
+      `
+      {
+      "infos": [
+          {
+              "details": [
+                  {
+                      "detail": [
+                          {
+                              "key1": "value1",
+                              "key2": "value2"
+                          }
+                      ]
+                  }
+              ],
+              "type": "unicast",
+              "bundleName": "com.example.hiworld"
+          }
+      ]
+  },
+  {
+      "infos": [
+          {
+              "details": [
+                  {
+                      "detail": [
+                          {
+                              "key1": "value1",
+                              "key2": "value2"
+                          }
+                      ]
+                  }
+              ],
+              "type": "unicast",
+              "bundleName": "com.example.myApp"
+          }
+      ]
+  }
+    `
+  ]
+let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
+// 添加需要增量备份的应用
+incrementalBackupSession.appendBundles(incrementalBackupDataArray, infos).then(() => {
+  console.info('appendBundles success');
+}).catch((err: BusinessError) => {
+  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
+}); 
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError|null, file: backup.File|undefined) => {
       if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      if (file != undefined) {
+          fs.closeSync(file.fd);
+      }
+  },
+  onBundleBegin: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleBegin success');
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+  },
+  onBundleEnd: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleEnd success');
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
+  },
+  onAllBundlesEnd: (err: BusinessError|null) => {
       if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onAllBundlesEnd success');
-    },
-    onBackupServiceDied: () => {
+  },
+  onBackupServiceDied: () => {
       console.info('service died');
-    },
-    onResultReport: (bundleName: string, result: string) => {
+  },
+  onResultReport: (bundleName: string, result: string) => {
       console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
+  },
+  onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    }
-  };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-  let incrementalBackupData: backup.IncrementalBackupData = {
-    bundleName: "com.example.hiworld",
-    lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
-    manifestFd:1 // 调用者传递上一次备份的manifest文件句柄
   }
-      let infos: Array<string> = [
-        `
-        {
-        "infos": [
-            {
-                "details": [
-                    {
-                        "detail": [
-                            {
-                                "key1": "value1",
-                                "key2": "value2"
-                            }
-                        ]
-                    }
-                ],
-                "type": "unicast",
-                "bundleName": "com.example.hiworld"
-            }
-        ]
-    },
-    {
-        "infos": [
-            {
-                "details": [
-                    {
-                        "detail": [
-                            {
-                                "key1": "value1",
-                                "key2": "value2"
-                            }
-                        ]
-                    }
-                ],
-                "type": "unicast",
-                "bundleName": "com.example.myApp"
-            }
-        ]
-    }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+let incrementalBackupData: backup.IncrementalBackupData = {
+  bundleName: "com.example.hiworld",
+  lastIncrementalTime: 1700107870, // 调用者传递上一次备份的时间戳
+  manifestFd:1 // 调用者传递上一次备份的manifest文件句柄
+}
+    let infos: Array<string> = [
       `
-    ]
-  let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
-  // 添加需要增量备份的应用
-  incrementalBackupSession.appendBundles(incrementalBackupDataArray, infos).then(() => {
-    console.info('appendBundles success');
-  }).catch((err: BusinessError) => {
-    console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
-  }); 
-  ```
+      {
+      "infos": [
+          {
+              "details": [
+                  {
+                      "detail": [
+                          {
+                              "key1": "value1",
+                              "key2": "value2"
+                          }
+                      ]
+                  }
+              ],
+              "type": "unicast",
+              "bundleName": "com.example.hiworld"
+          }
+      ]
+  },
+  {
+      "infos": [
+          {
+              "details": [
+                  {
+                      "detail": [
+                          {
+                              "key1": "value1",
+                              "key2": "value2"
+                          }
+                      ]
+                  }
+              ],
+              "type": "unicast",
+              "bundleName": "com.example.myApp"
+          }
+      ]
+  }
+    `
+  ]
+let incrementalBackupDataArray: backup.IncrementalBackupData[] = [incrementalBackupData];
+// 添加需要增量备份的应用
+incrementalBackupSession.appendBundles(incrementalBackupDataArray, infos).then(() => {
+  console.info('appendBundles success');
+}).catch((err: BusinessError): void => {
+  console.error(`appendBundles failed. Code: ${err.code}, message: ${err.message}`);
+}); 
+```
 
 ### release<sup>12+</sup>
 
@@ -5978,6 +6422,10 @@ release(): Promise&lt;void&gt;
 **需要权限**：ohos.permission.BACKUP
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6001,58 +6449,115 @@ release(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => {
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fs.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+incrementalBackupSession.release(); // 结束增量备份流程
+console.info('release success');
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError|null, file: backup.File|undefined) => {
       if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onFileReady success');
-      fs.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      if (file != undefined) {
+          fs.closeSync(file.fd);
+      }
+  },
+  onBundleBegin: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleBegin success');
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+  },
+  onBundleEnd: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleEnd success');
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
+  },
+  onAllBundlesEnd: (err: BusinessError|null) => {
       if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onAllBundlesEnd success');
-    },
-    onBackupServiceDied: () => {
+  },
+  onBackupServiceDied: () => {
       console.info('service died');
-    },
-    onResultReport: (bundleName: string, result: string) => {
+  },
+  onResultReport: (bundleName: string, result: string) => {
       console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
+  },
+  onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    }
-  };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-  incrementalBackupSession.release(); // 结束增量备份流程
-  console.info('release success');
-  ```
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+incrementalBackupSession.release(); // 结束增量备份流程
+console.info('release success');
+```
 
 ### cancel<sup>18+</sup>
 
-cancel(bundleName: string): number
+ArkTS-Dyn: cancel(bundleName: string): number
+
+ArkTS-Sta: cancel(bundleName: string): int
 
 增量备份任务过程中，工具应用发现数据异常，需要取消某应用的增量备份时调用此接口，使此应用的增量备份任务终止。
 
@@ -6061,6 +6566,10 @@ cancel(bundleName: string): number
 **需要权限**：ohos.permission.BACKUP
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6072,7 +6581,7 @@ cancel(bundleName: string): number
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| number | 返回取消状态。<br/>0：取消任务下发成功；<br/> 13500011：想要取消的任务未开始；<br/> 13500012：想要取消的任务不存在。|
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回取消状态。<br/>0：取消任务下发成功；<br/> 13500011：想要取消的任务未开始；<br/> 13500012：想要取消的任务不存在。|
 
 **错误码：**
 
@@ -6086,64 +6595,128 @@ cancel(bundleName: string): number
 
 **示例：**
 
-  ```ts
-  import { fileIo as fs, backup} from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => {
-      if (err) {
-        // 文件fd传输失败，调用取消接口，取消此应用的增量备份任务
-        let result = incrementalBackupSession.cancel(err.name);
-        console.info('cancel result:' + result);
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('onFileReady success');
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      // 文件fd传输失败，调用取消接口，取消此应用的增量备份任务
+      let result = incrementalBackupSession.cancel(err.name);
+      console.info('cancel result:' + result);
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    fs.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+    console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+let backupBundles: Array<backup.IncrementalBackupData> = [];
+let bundleData: backup.IncrementalBackupData = {
+  bundleName: "com.example.helloWorld",
+  lastIncrementalTime: 1700107870, //调用者传递上一次备份的时间戳
+  manifestFd: 1 // 调用者传递上一次备份的manifest文件句柄
+}
+backupBundles.push(bundleData);
+incrementalBackupSession.appendBundles(backupBundles);
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { fileIo as fs, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError|null, file: backup.File|undefined) => {
+    if (err) {
+      // 文件fd传输失败，调用取消接口，取消此应用的增量备份任务
+      let result = incrementalBackupSession.cancel(err.name);
+      console.info('cancel result:' + result);
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onFileReady success');
+    if (file != undefined) {
       fs.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    }
+  },
+  onBundleBegin: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleBegin success');
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+  },
+  onBundleEnd: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
       if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onBundleEnd success');
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
+  },
+  onAllBundlesEnd: (err: BusinessError|null) => {
       if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
+          console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
       }
       console.info('onAllBundlesEnd success');
-    },
-    onBackupServiceDied: () => {
+  },
+  onBackupServiceDied: () => {
       console.info('service died');
-    },
-    onResultReport: (bundleName: string, result: string) => {
+  },
+  onResultReport: (bundleName: string, result: string) => {
       console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
+  },
+  onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    }
-  };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
-  let backupBundles: Array<backup.IncrementalBackupData> = [];
-  let bundleData: backup.IncrementalBackupData = {
-    bundleName: "com.example.helloWorld",
-    lastIncrementalTime: 1700107870, //调用者传递上一次备份的时间戳
-    manifestFd: 1 // 调用者传递上一次备份的manifest文件句柄
   }
-  backupBundles.push(bundleData);
-  incrementalBackupSession.appendBundles(backupBundles);
-
-  ```
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); // 创建增量备份流程
+let backupBundles: Array<backup.IncrementalBackupData> = [];
+let bundleData: backup.IncrementalBackupData = {
+  bundleName: "com.example.helloWorld",
+  lastIncrementalTime: 1700107870, //调用者传递上一次备份的时间戳
+  manifestFd: 1 // 调用者传递上一次备份的manifest文件句柄
+}
+backupBundles.push(bundleData);
+incrementalBackupSession.appendBundles(backupBundles);
+```
 
 ### cleanBundleTempDir<sup>20+</sup>
 
@@ -6156,6 +6729,10 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
 **需要权限**：ohos.permission.BACKUP
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6180,69 +6757,137 @@ cleanBundleTempDir(bundleName: string): Promise&lt;boolean&gt;
 
 **示例：**
 
-  ```ts
-  import { fileIo, backup} from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  async function cleanBundleTempDir(bundleName: string) {
-    try {
-      let res = await incrementalBackupSession.cleanBundleTempDir(bundleName);
-      if (res) {
-        console.info(`cleanBundleTempDir succeeded.`);
-      } else {
-        console.info(`cleanBundleTempDir fail.`);
-      }
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`cleanBundleTempDir failed. Code: ${err.code}, message: ${err.message}`);
+```ts
+import { fileIo, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function cleanBundleTempDir(bundleName: string) {
+  try {
+    let res = await incrementalBackupSession.cleanBundleTempDir(bundleName);
+    if (res) {
+      console.info(`cleanBundleTempDir succeeded.`);
+    } else {
+      console.info(`cleanBundleTempDir fail.`);
     }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`cleanBundleTempDir failed. Code: ${err.code}, message: ${err.message}`);
   }
+}
 
-  let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
-    // 文件发送成功回调
-    onFileReady: (err: BusinessError, file: backup.File) => {
-      if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onFileReady succeeded.`);
-      fileIo.closeSync(file.fd);
-    },
-    // 应用备份/恢复开始回调
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onBundleBegin succeeded.`);
-    },
-    // 应用备份/恢复结束回调，在此处调用cleanBundleTempDir进行清理
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      cleanBundleTempDir(bundleName);
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
-      if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onAllBundlesEnd success`);
-    },
-    onBackupServiceDied: () => {
-      console.info(`service died`);
-    },
-    onResultReport: (bundleName: string, result: string) => {
-      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
-      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  // 文件发送成功回调
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
     }
-  };
-  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
-  ```
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  // 应用备份/恢复开始回调
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  // 应用备份/恢复结束回调，在此处调用cleanBundleTempDir进行清理
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    cleanBundleTempDir(bundleName);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd success`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { fileIo, backup} from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function cleanBundleTempDir(bundleName: string) {
+  try {
+    let res = await incrementalBackupSession.cleanBundleTempDir(bundleName);
+    if (res) {
+      console.info(`cleanBundleTempDir succeeded.`);
+    } else {
+      console.info(`cleanBundleTempDir fail.`);
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`cleanBundleTempDir failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  // 文件发送成功回调
+  onFileReady: (err: BusinessError|null, file: backup.File|undefined) => {
+      if (err) {
+          console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+          return;
+      }
+      console.info('onFileReady success');
+      if (file != undefined) {
+          fs.closeSync(file.fd);
+      }
+  },
+  onBundleBegin: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
+      if (err) {
+          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          return;
+      }
+      console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
+      if (err) {
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
+      }
+      console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError|null) => {
+      if (err) {
+          console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
+      }
+      console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+      console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
+```
 
 ### getCompatibilityInfo<sup>20+</sup>
 
@@ -6255,6 +6900,10 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
 **需要权限**：ohos.permission.BACKUP
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6280,65 +6929,134 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
 
 **示例：**
 
-  ```ts
-  import { fileIo, backup } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-  let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
-    onFileReady: (err: BusinessError, file: backup.File) => {
-      if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onFileReady succeeded.`);
-      fileIo.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onBundleBegin succeeded.`);
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onBundleEnd succeeded.`);
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
-      if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onAllBundlesEnd success`);
-    },
-    onBackupServiceDied: () => {
-      console.info(`service died`);
-    },
-    onResultReport: (bundleName: string, result: string) => {
-      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
-      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    }
-  };
+```ts
+import { fileIo, backup } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  async function getIncBackupCompatibilityInfo() {
-    let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
-    let bundleName = "com.example.helloWorld";
-    let extInfo = ""; // 空表示无需给应用传额外信息
-    try {
-      let retInfo = await incrementalBackupSession.getCompatibilityInfo(bundleName, extInfo);
-      if (retInfo) {
-        console.info(`getCompatibilityInfo success ` + retInfo);
-      } else {
-        console.info(`bundle ` + bundleName + ' may not support getCompatibilityInfo');
-      }
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`getCompatibilityInfo failed. Code: ${err.code}, message: ${err.message}`);
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
     }
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleEnd succeeded.`);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd success`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
   }
-  ```
+};
+
+async function getIncBackupCompatibilityInfo() {
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
+  let bundleName = "com.example.helloWorld";
+  let extInfo = ""; // 空表示无需给应用传额外信息
+  try {
+    let retInfo = await incrementalBackupSession.getCompatibilityInfo(bundleName, extInfo);
+    if (retInfo) {
+      console.info(`getCompatibilityInfo success ` + retInfo);
+    } else {
+      console.info(`bundle ` + bundleName + ' may not support getCompatibilityInfo');
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getCompatibilityInfo failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { fileIo, backup } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程中的通用回调
+  onFileReady: (err: BusinessError|null, file: backup.File|undefined) => {
+      if (err) {
+          console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+          return;
+      }
+      console.info('onFileReady success');
+      if (file != undefined) {
+          fs.closeSync(file.fd);
+      }
+  },
+  onBundleBegin: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
+      if (err) {
+          console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+          return;
+      }
+      console.info('onBundleBegin success');
+  },
+  onBundleEnd: (err: BusinessError<string|undefined>|null, bundleName: string|undefined) => {
+      if (err) {
+          console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
+      }
+      console.info('onBundleEnd success');
+  },
+  onAllBundlesEnd: (err: BusinessError|null) => {
+      if (err) {
+          console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+          return;
+      }
+      console.info('onAllBundlesEnd success');
+  },
+  onBackupServiceDied: () => {
+      console.info('service died');
+  },
+  onResultReport: (bundleName: string, result: string) => {
+      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  }
+};
+
+function getIncBackupCompatibilityInfo() {
+  let incrementalBackupSession = new backup.IncrementalBackupSession(generalCallbacks); //  创建增量备份流程
+  let bundleName = "com.example.helloWorld";
+  let extInfo = ""; // 空表示无需给应用传额外信息
+  try {
+    let retInfo = await incrementalBackupSession.getCompatibilityInfo(bundleName, extInfo);
+    if (retInfo) {
+      console.info(`getCompatibilityInfo success ` + retInfo);
+    } else {
+      console.info(`bundle ` + bundleName + ' may not support getCompatibilityInfo');
+    }
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getCompatibilityInfo failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
