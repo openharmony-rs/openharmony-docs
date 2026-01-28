@@ -16,3 +16,4 @@
 - [Compression and Decompression](compress/Readme-EN.md)<!--compress-->
 - [Word Selection Service](selectionInput/Readme-EN.md)<!--selectioninput-->
 - [Power Management](powermgr/Readme-EN.md)<!--powermgr-->
+- [Print](print/Readme-EN.md)<!--print-->
