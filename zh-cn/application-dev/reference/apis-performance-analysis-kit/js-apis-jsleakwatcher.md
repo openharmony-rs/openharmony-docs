@@ -148,9 +148,9 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 | 错误码ID| 错误信息|
 | ------- | ----------------------------------------------------------------- |
-| 10801001 | 在调用接口函数enableLeakWatcher时，传入无效参数isEnabled。          |
-| 10801002 | 在调用接口函数enableLeakWatcher时，传入无效参数config。             |
-| 10801003 | 在调用接口函数enableLeakWatcher时，传入无效参数callback。可能原因: 1.传入参数callback的类型错误; 2.必填参数未指定; 3.参数校验失败。 |
+| 10801001 | The parameter isEnabled is invalid.                              |
+| 10801002 | The parameter config is invalid.                                 |
+| 10801003 | The parameter callback is invalid. Input parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
 **示例：**
 
