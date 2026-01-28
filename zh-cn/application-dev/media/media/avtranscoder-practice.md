@@ -38,7 +38,7 @@
    ```ts
    // 创建Worker对象。
    private workerInstance?: worker.ThreadWorker;
-   @State currentProgress： number = 0;
+   @State currentProgress: number = 0;
    
    this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
 
