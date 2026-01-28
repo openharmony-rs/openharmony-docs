@@ -129,13 +129,7 @@
 
 <!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
 
-1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，取值范围如下：
-
-    |值|说明|
-    |---|---|
-    |Login|指示登录、授权登录等功能。|
-    |Pay|指示支付页面、收银台等功能。|
-    |Share|指示分享功能。|
+1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，登录场景LinkFeature固定为Login。
 
 2. 设置scheme、host、port、path/pathStartWith属性，与want中uri相匹配，以便区分不同功能，linkFeature设置为Login。
 
