@@ -50,7 +50,7 @@ A compile-time error occurs if a new value is assigned to a constant.
 
 You do not need to explicitly specify the type of a declared entity if a variable or a constant declaration contains an initial value, as all cases that allow the type to be inferred automatically are specified in the ArkTS Specification.
 
-Both variable declarations are valid, and both variables are of the string type:
+Both variable declarations are valid, and both variables are of the string type.
 
 ```typescript
 let hi1: string = 'hello';
@@ -117,7 +117,7 @@ console.info('bigInt:' + bigInt.toString());
 
 The Boolean type represents logical values that are either **true** or **false**.
 
-Usually variables of this type are used in conditional statements:
+Usually variables of this type are used in conditional statements.
 
 ```typescript
 let isDone: boolean = false;
@@ -174,7 +174,7 @@ An array is an object comprised of elements of data types assignable to the elem
 
 A value of an array is set by using array composite literal, which is a list of zero or more expressions enclosed in square brackets ([]). Each expression represents an element of the array. The length of the array is set by the number of expressions. Index of the first array element is 0.
 
-The following example creates the array with three elements:
+The following example creates the array with three elements.
 
 ```typescript
 let names: string[] = ['Alice', 'Bob', 'Carol'];
@@ -300,7 +300,7 @@ Compound assignment operators are as follows: **+=**, **-=**, ***=**, **/=**, **
 | `<`      | Returns **true** if the left operand is less than the right.   |
 | `<=`     | Returns **true** if the left operand is less than or equal to the right.|
 
-The differences between **===** and **==** are as follows:
+The differences between **===** and **==** are as follows.
 ```typescript
 // == compares only the values.
 console.info(String(null == undefined)); // true
@@ -313,7 +313,7 @@ console.info(String(null === undefined)); // false
 
 Unary operators are as follows: **-**, **+**, **--**, and **++**.
 
-Binary operators are as follows:
+Binary operators are as follows.
 
 | Operator| Description            |
 | -------- | ------------------------ |
@@ -382,7 +382,7 @@ An **if** statement is used to execute a sequence of statements when a logical c
 
 The **else** part can also contain more **if** statements.
 
-An **if** statement is as follows:
+An **if** statement is as follows.
 
 ```typescript
 if (condition1) {
@@ -394,7 +394,7 @@ if (condition1) {
 }
 ```
 
-All conditional expressions must be of any type. For types other than Boolean, implicit conversion rules are applied:
+All conditional expressions must be of any type. For types other than Boolean, implicit conversion rules are applied.
 
 ```typescript
 let s1 = 'Hello';
@@ -412,7 +412,7 @@ if (s2.length != 0) {
 
 A **switch** statement is used to execute a sequence of statements that match the value of a **switch** expression.
 
-The **switch** statement is as follows:
+A **switch** statement is as follows.
 
 ```typescript
 switch (expression) {
@@ -444,7 +444,7 @@ If there is no **break**, then the next statements in the **switch** are execute
 
 A conditional expression returns the result of one of the other two expressions based on the Boolean value of the first expression.
 
-A conditional expression looks as follows:
+A conditional expression is as follows.
 
 ```typescript
 condition ? expression1 : expression2
@@ -475,7 +475,7 @@ Example:
 
 The **for** statement is executed repeatedly until the specified loop exit condition result is **false**.
 
-The **for** statement is as follows:
+A **for** statement is as follows.
 
 ```typescript
 for ([init]; [condition]; [update]) {
@@ -506,7 +506,7 @@ for (let i = 0; i < 10; i += 2) {
 
 **for-of statement**
 
-You can use the **for-of** statement to iterate over iterable types such as array, Set, Map, and string. A **for-of** statement looks as follows:
+You can use the **for-of** statement to iterate over iterable types such as array, Set, Map, and string. A **for-of** statement is as follows.
 
 ```typescript
 for (forVar of IterableExpression) {
@@ -524,7 +524,7 @@ for (let ch of 'a string object') {
 
 **while statement**
 
-The **while** statement executes **statements** as long as the value of **condition** is **true**. A **while** statement looks as follows:
+The **while** statement executes **statements** as long as the value of **condition** is **true**. A **while** statement is as follows.
 
 ```typescript
 while (condition) {
@@ -545,7 +545,7 @@ while (n < 3) {
 
 **do-while statement**
 
-If the value of **condition** is truthy (a value that is considered **true**), the **statements** is executed repeatedly. A **do-while** statement looks as follows:
+If the value of **condition** is truthy (a value that is considered **true**), the **statements** is executed repeatedly. A **do-while** statement is as follows.
 
 ```typescript
 do {
@@ -566,7 +566,7 @@ do {
 
 A **break** statement is used to terminate any loop statement or the **switch** statement.
 
-A **break** statement looks as follows:
+A **break** statement is as follows.
 
 ```typescript
 let x = 0;
@@ -597,7 +597,7 @@ label: while (true) {
 
 A **continue** statement stops the execution of the current loop iteration and passes control to the next iteration.
 
-A **continue** statement looks as follows:
+A **continue** statement is as follows.
 
 ```typescript
 let sum = 0;
@@ -975,7 +975,7 @@ let jack = new Person();
 jack.getName().length; // Runtime exception: name is undefined.
 ```
 
-In ArkTS, you should write code as follows:
+In ArkTS, you should write code as follows.
 
 ```typescript
 class Person {
@@ -1220,7 +1220,7 @@ An error occurs if two overload signatures have identical names and parameter li
 
 A class declaration may contain a constructor that is used to initialize object state.
 
-A constructor is defined as follows:
+A constructor is defined as follows.
 
 ```typescript
 constructor ([parameters]) {
@@ -1542,7 +1542,7 @@ An extended interface contains all properties and methods of the interface it ex
 
 ### Abstract Class and Interface
 
-Abstract classes and interfaces cannot be instantiated. Abstract classes are abstractions of classes, used to capture the general characteristics of child classes, and interfaces are abstractions of behavior. The differences between abstract classes and interfaces in ArkTS are as follows:
+Abstract classes and interfaces cannot be instantiated. Abstract classes are abstractions of classes, used to capture the general characteristics of child classes, and interfaces are abstractions of behavior. The differences between abstract classes and interfaces in ArkTS are as follows.
 
 * A class can extend only one abstract class, but can implement one or more interfaces.
 ```typescript
@@ -1973,7 +1973,7 @@ The keyword **this** used as a primary expression denotes a value that is a refe
 
 Annotation is a language feature that changes the semantics of application declarations by adding metadata.
 
-The declaration and usage of annotations are as follows:
+The declaration and usage of annotations are as follows.
 
 **Example**
 
@@ -2066,7 +2066,7 @@ The name of an annotation cannot be the same as that of another entity visible i
 Annotations do not support the merging feature in TypeScript. Otherwise, a compile-time error is reported.
 ```typescript
 namespace ns {
-  @interface MataInfo { // Compile-time error: Annotations must be defined in the top-level scope.
+  @interface MetaInfo { // Compile-time error: Annotations must be defined in the top-level scope.
     // ...
   }
 }

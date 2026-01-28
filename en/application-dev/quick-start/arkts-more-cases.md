@@ -811,8 +811,8 @@ Explicitly declare the type of array elements (using **interface** or **class**)
 ```typescript
 let permissionList = [
   {name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.'},
-  {name: 'Microphone', value: 'Used to add voice when reporting an issue.'},
-  {"name: 'Storage', value: 'Used to add local file attachments when reporting an issue.'}
+  {name: 'Microphone', value: 'Used to add voice for issue reporting.'},
+  {"name: 'Storage', value: 'Used to add local file attachments for issue reporting.'}
 ]
 ```
 
@@ -828,8 +828,8 @@ class PermissionItem {
 
 let permissionList: PermissionItem[] = [
   {name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.'},
-  {name: 'Microphone', value: 'Used to add voice when reporting an issue.'},
-  {"name: 'Storage', value: 'Used to add local file attachments when reporting an issue.'}
+  {name: 'Microphone', value: 'Used to add voice for issue reporting.'},
+  {"name: 'Storage', value: 'Used to add local file attachments for issue reporting.'}
 ]
 ```
 
@@ -1304,7 +1304,7 @@ console.info(t.createController()!.value);
 
 ## arkts-no-globalthis
 
-ArkTS does not support **globalThis** for two reasons:<br> - A static type cannot be added to **globalThis**. As a result, the properties of **globalThis** can be accessed only through search, which causes extra performance overhead.<br> - Type annotation is not available for properties of **globalThis**. As a result, the security and performance of operations on these properties cannot be ensured.
+ArkTS does not support **globalThis** for two reasons:<br>- A static type cannot be added for **globalThis**. As a result, the properties of **globalThis** can be accessed only through search, which causes extra performance overhead.<br>- Type annotation is not available for properties of **globalThis**. As a result, the security and performance of operations on these properties cannot be ensured.
 
 > **NOTE**
 >
