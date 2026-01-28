@@ -24,6 +24,8 @@
 
 作为[@ohos.arkui.componentSnapshot](js-apis-arkui-componentSnapshot.md)的错误码时，错误信息为：The builder is not a valid build function.
 
+作为[@ohos.arkui.componentUtils](js-apis-arkui-componentUtils.md)的错误码时，错误信息为：UI execution context not found.
+
 **错误描述**
 
 作为[@ohos.animator](js-apis-animator.md)和[@ohos.promptAction](js-apis-promptAction.md)的错误码时，出现了开发者解决不了的内部异常错误，会报此错误码，并描述具体是哪种内部错误。

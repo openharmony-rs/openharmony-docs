@@ -1475,7 +1475,7 @@ int32_t OH_ArkUI_DragAction_SetPixelMaps(ArkUI_DragAction* dragAction, OH_Pixelm
 | 参数项                                                                                  | 描述 |
 |--------------------------------------------------------------------------------------| -- |
 | [ArkUI_DragAction](capi-arkui-nativemodule-arkui-dragaction.md)* dragAction          | 拖拽行为对象。 |
-| OH_PixelmapNative* pixelmapArray[] | 拖拽跟手图位图数组。 |
+| OH_PixelmapNative* pixelmapArray[] | 拖拽跟手图位图数组。<br>**说明：** 该参数必须为堆上分配对象，请开发者手动管理其生命周期。 |
 | int32_t size                                                                         | 拖拽跟手图数量。 |
 
 **返回：**
