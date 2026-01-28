@@ -60,9 +60,15 @@
     |Navigation|指示导航功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |RoutePlan|指示路线规划功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |PlaceSearch|指示地点搜索功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
+    |Transfer|指示转账汇款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
+    |CreditCardRepayment|指示信用卡还款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
+    |ComposeMail|指示撰写邮件功能。使用场景详见[拉起邮件类应用](./start-email-apps.md)。|
+    |QueryByFlightNo|指示按航班号查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
+    |QueryByLocation|指示按起降地查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
+    |QueryExpress|指示快递查询功能。使用场景详见[拉起类应用](./start-express-apps.md)。|    
     |AppNotificationMgmt|指示应用内通知设置的功能。|
 
-2. 跳转一键返回能力：用户从A应用跳转至B应用的某个功能界面后，B应用调用[一键返回能力](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#backtocallerabilitywithresult12)，可以支持用户直接返回A应用，无问询弹窗。例如：A应用跳转至B应用的支付界面，若B应用已申请了支付的linkFeature，则用户在B应用内完成操作后，可一键返回A应用。
+2. 指定意图跳转豁免系统跳转弹框：如果您的应用有向其他三方应用提供登录/分享/支付的功能，您可在上架的应用包体中声明如下对应的LinkFeature，审核通过的意图在应用跳转时可免弹框体验。
 
     |值|说明|
     |---|---|
@@ -72,21 +78,6 @@
 
 ## 配置示例
 
-
-### 授权登录场景
-
-<!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
-
-``` JSON5
-"uris": [
-  {
-    "scheme": "https",
-    "host": "developer.huawei.com",
-    "path": "consumer",
-    "linkFeature": "Login"
-  }
-]
-```
 
 ### 清理应用沙箱缓存数据场景
 
@@ -131,3 +122,51 @@
 效果图如下：
 
 ![app-uri-config_storage](figures/app_uri_config_storage.png)
+
+
+
+### 指定意图跳转豁免系统跳转弹框以授权登录场景为例景
+
+<!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+
+1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，取值范围如下：
+
+    |值|说明|
+    |---|---|
+    |Login|指示登录、授权登录等功能。|
+    |Pay|指示支付页面、收银台等功能。|
+    |Share|指示分享功能。|
+
+2. 设置scheme、host、port、path/pathStartWith属性，与want中uri相匹配，以便区分不同功能，linkFeature设置为Login。
+
+    ```json
+    {
+        "abilities": [
+            {
+                 "skills": [
+                    {
+                      "uris": [
+                        {
+                          "scheme": "https",
+                          "host": "developer.huawei.com",
+                          "path": "consumer",
+                          "linkFeature": "Login"
+                        }
+                      ]
+                    }
+                  ]
+            }
+        ]
+    }
+    ```
+
+3. 解析参数并做对应处理。
+
+    ```ts
+        UIAbility.onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
+    ```
+    在参数want.uri中会携带目标方配置的linkFeature对应的uri。
+
+    以此方式跳转将豁免应用间跳转弹框：
+
+    ![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)
