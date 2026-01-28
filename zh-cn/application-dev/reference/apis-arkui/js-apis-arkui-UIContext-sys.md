@@ -606,17 +606,26 @@ struct MyStateSample {
 缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的是还是图形变换前的效果。
 
 ### getWithRange<sup>20+</sup>
-getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>;
 
-传入两个组件的ID，获取范围内的组件的截图，并通过Promise返回结果。
+ArkTS-Dyn: getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+
+ArkTS-Sta: getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
+
+传入两个组件的ID，获取范围内的组件的截图。使用Promise异步回调。
 
 > **说明：**
 >
 > start对应的组件和end对应的组件必须为同一棵组件树上的组件，且start对应的组件需要为end对应的组件的祖先组件。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -631,7 +640,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 
 | 类型                            | 说明       |
 | -------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 截图返回的结果。 |
+| ArkTS-Dyn: Promise<image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br/>ArkTS-Sta: Promise<image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> \| null | Promise对象，截图返回结果的回调。 |
 
 **错误码：** 
 

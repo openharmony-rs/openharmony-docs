@@ -11932,9 +11932,15 @@ enableDropDisallowedBadge(enabled: boolean): void
 
 当组件的类型与配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)无交集时可显示禁用角标。当目标进行拖拽时，通过该方法检查是否显示拖拽禁止角标。该接口暂不支持[UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
