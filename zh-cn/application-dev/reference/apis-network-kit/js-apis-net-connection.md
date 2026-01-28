@@ -471,7 +471,7 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 **说明：**
 
-如需解除App和指定网络的绑定关系，可以调用setAppNet()，并传入一个netId=0的NetHandle对象，参考：
+如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId=0的NetHandle对象，参考：
 
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
@@ -484,7 +484,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
 });
-
 ```
 
 **错误码：**
@@ -538,7 +537,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 **说明：**
 
-如需解除App和指定网络的绑定关系，可以调用setAppNet()，并传入一个netId=0的NetHandle对象，参考：
+如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId=0的NetHandle对象，参考：
 
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
@@ -551,7 +550,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
 });
-
 ```
 
 **返回值：**
@@ -857,7 +855,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connectionproperties = connection.getConnectionPropertiesSync(netHandle);
   console.info("Succeeded to get connectionproperties: " + JSON.stringify(connectionproperties));
 });
-
 ```
 
 ## connection.getNetCapabilities
@@ -1023,7 +1020,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
   console.info("Succeeded to get net capabilities sync: " + JSON.stringify(getNetCapabilitiesSync));
 });
-
 ```
 
 ## connection.isDefaultNetMetered<sup>9+</sup>
