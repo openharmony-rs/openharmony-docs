@@ -109,7 +109,7 @@ Defines an explicit animation. This API is explicitly called to change the state
 > - During [aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear), the component is being destroyed, so animations should not be used.
 > - When a component appears or disappears, you can add animation effects through [Component Transition](./ts-transition-animation-component.md).
 > - For details about the attributes that are not supported by component transition, see [Example 2](#example-2-enabling-a-component-to-disappear-after-the-animation) to use animateTo to implement the effect that the component disappears after the animation ends.
-> - In certain scenarios, using **animateTo** with [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../../ui/state-management/arkts-new-local.md#using-animateTo-failed-in-state-management-v2).
+> - In certain scenarios, using **animateTo** with [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

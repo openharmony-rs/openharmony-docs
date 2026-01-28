@@ -4166,7 +4166,7 @@ Creates a linear gradient.
   }
   ```
 
-  ![en-us_image_0000001256858381](figures/en-us_image_0000001256858381.png)
+  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.png)
 
 
 ### createRadialGradient

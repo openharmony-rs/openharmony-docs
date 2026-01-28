@@ -670,7 +670,7 @@ struct CustomDialogUser {
 
 ### Example 6: Using @Link and @Consume to Listen for Data Changes
 
-This example uses @[Link ](../../../ ui/state-management/arkts-link.md) and @[Consume ](../../../ui/state-management/arkts-provide-and-consume.md) to implement bidirectional data binding between the page and the dialog box.
+This example uses @[Link](../../../ui/state-management/arkts-link.md) and @[Consume](../../../ui/state-management/arkts-provide-and-consume.md) to implement bidirectional data binding between the page and the dialog box.
 
 ```ts
 @CustomDialog

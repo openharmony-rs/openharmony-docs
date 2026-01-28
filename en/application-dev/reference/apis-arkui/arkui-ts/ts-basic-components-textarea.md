@@ -1994,7 +1994,7 @@ struct TextAreaExample {
 
 ### Example 10: Setting the Text Line Spacing
 
-This example demonstrates the display effect of text under different line spacing settings through the [lineSpacing](#linespacing12) attribute, available since API version 12. The **onlyBetweenLines** property in [LineSpacingOptions](ts-text-common.md#linespacingoptions20-object-description) (available since API version 20) controls whether line spacing applies only between lines.
+This example demonstrates the display effect of text under different line spacing settings through the [lineSpacing](#linespacing12) attribute, available since API version 12. The **onlyBetweenLines** property in [LineSpacingOptions](ts-text-common.md#linespacingoptions20) (available since API version 20) controls whether line spacing applies only between lines.
 
 ```ts
 // xxx.ets
