@@ -811,6 +811,149 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 });
 ```
 
+
+## call.answerCall<sup>23+</sup>
+ 	 
+answerCall\(callback: AsyncCallback\<void\>\): void
+
+接听来电。使用callback异步回调。
+
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+- ohos.permission.ANSWER_CALL权限仅系统应用可申请。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。返回接听电话成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.answerCall((err: BusinessError) => {
+    if (err) {
+        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`answerCall success.`);
+    }
+});
+```
+
+
+## call.hangUpCall<sup>23+</sup>
+
+hangUpCall\(callback: AsyncCallback\<void\>\): void
+
+挂断电话。使用callback异步回调。
+
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.SET_TELEPHONY_STATE 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+- ohos.permission.ANSWER_CALL、ohos.permission.SET_TELEPHONY_STATE权限仅系统应用可申请。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当挂断电话成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.hangUpCall((err: BusinessError) => {
+    if (err) {
+        console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`hangUpCall success.`);
+    }
+});
+```
+
+
+## call.rejectCall<sup>23+</sup>
+
+rejectCall\(callback: AsyncCallback\<void\>\): void
+
+拒绝来电。使用callback异步回调。
+
+**需要权限**：ohos.permission.ANSWER_CALL 或 ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+- ohos.permission.ANSWER_CALL权限仅系统应用可申请。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当拒接来电成功，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+call.rejectCall((err: BusinessError) => {
+    if (err) {
+        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`rejectCall success.`);
+    }
+});
+```
+
+
 ## DialOptions
 
 拨打电话的可选参数。
@@ -850,6 +993,26 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
 | TEL_CALL_STATE_OFFHOOK | 2    | 表示至少有一个呼叫处于拨号，并且没有新的来电振铃或等待。 |
 | TEL_CALL_STATE_ANSWERED | 3    | 表示来电已经接听。 |
 | TEL_CALL_STATE_CONNECTED | 4    | 表示电话已经接通中或呼叫保持。                                    |
+
+ ## CCallState<sup>23+</sup>
+
+运营商通话状态码。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称               | 值   | 说明                                                         |
+| ------------------ | ---- | ------------------------------------------------------------ |
+| CCALL_STATE_UNKNOWN       | -1   | 无效状态，当获取呼叫状态失败时返回。                         |
+| CCALL_STATE_ACTIVE       | 0    | 表示当前通话已经接通成功。                                     |
+| CCALL_STATE_HOLDING      | 1    | 表示当前通话处于保持状态。                                    |
+| CCALL_STATE_DIALING      | 2    | 表示去电处于拨号过程中，对端还没有收到振铃期间。 |
+| CCALL_STATE_ALERTING     | 3    | 表示去电处于振铃过程中，对端处于响铃阶段。 |
+| CCALL_STATE_INCOMING     | 4    | 表示收到来电。                                    |
+| CCALL_STATE_WAITING      | 5    | 同一个卡槽上已经存在一路通话的情况下，又收到一路来电。       |
+| CCALL_STATE_DISCONNECTED | 6    | 表示通话已经释放完成。                                 |
+| CCALL_STATE_DISCONNECTING| 7    | 表示通话正在释放中，还没有释放完成。                          |
+| CCALL_STATE_IDLE         | 8    | 表示没有正在进行的呼叫。                                 |
+| CCALL_STATE_ANSWERED     | 9    | 表示来电已经接听。                                     |
 
 
 ## EmergencyNumberOptions<sup>7+</sup>
