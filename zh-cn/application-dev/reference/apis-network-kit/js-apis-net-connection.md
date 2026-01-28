@@ -291,7 +291,7 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 
 getDefaultHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
-获取网络的默认代理配置信息。使用callback方式作为异步方法。
+获取网络的默认代理配置信息。使用callback异步回调。
 
 > **说明：**
 >
@@ -334,7 +334,7 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
 
 getDefaultHttpProxy(): Promise\<HttpProxy>
 
-获取网络默认的代理配置信息。使用Promise方式作为异步方法。
+获取网络默认的代理配置信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -375,7 +375,7 @@ connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
 
 getAppNet(callback: AsyncCallback\<NetHandle>): void
 
-获取App绑定的网络句柄。使用callback方式作为异步方法。
+获取App绑定的网络句柄。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -414,7 +414,7 @@ connection.getAppNet((error: BusinessError, data: connection.NetHandle) => {
 
 getAppNet(): Promise\<NetHandle>
 
-获取App绑定的网络信息。使用Promise方式作为异步方法。
+获取App绑定的网络信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -586,7 +586,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 getAllNets(callback: AsyncCallback&lt;Array&lt;NetHandle&gt;&gt;): void
 
-获取所有处于连接状态的网络列表，使用callback方式作为异步方法。
+获取所有处于连接状态的网络列表，使用callback异步回调。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
