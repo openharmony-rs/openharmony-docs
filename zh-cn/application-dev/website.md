@@ -1929,6 +1929,8 @@
           - [复杂文本绘制与显示（C/C++）](graphics/complex-text-c.md)
           - [自定义文本绘制与显示（C/C++）](graphics/text-custom-c.md)
         - [文本开发常见问题](graphics/text-faqs.md)
+      - 离线图像处理<!--offline-image-processing-->
+        - [添加图像效果（C/C++）](graphics/effectkit-filter-c.md)
       - [NativeBuffer开发指导 (C/C++)](graphics/native-buffer-guidelines.md)
       - [NativeImage开发指导 (C/C++)](graphics/native-image-guidelines.md)
       - [NativeVSync开发指导 (C/C++)](graphics/native-vsync-guidelines.md)
