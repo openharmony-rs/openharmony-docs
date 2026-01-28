@@ -236,7 +236,7 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 
 | Name | Type                                             | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enabled | Optional&lt;boolean&gt;                           | Yes  | Whether to enable the edge fading effect. **true** to enable, **false** otherwise.<br>Default value: **false**.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt;                           | Yes  | Whether to enable the edge fading effect. **true** to enable, **false** otherwise.<br>Default value: **false**.|
 | options | [FadingEdgeOptions](#fadingedgeoptions14) | No  | Object defining edge fading effect properties, such as the fading edge length.<br>If the value is less than 0, the default value is used. The default length is 32 vp.<br>If the value exceeds half the height of the container, it is adjusted to exactly half the height of the container.|
 
 **Return value**
@@ -329,7 +329,7 @@ A component must have focus to receive [crown events](ts-universal-events-crown.
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensitivity | [Optional&lt;CrownSensitivity&gt;](ts-appendix-enums.md#crownsensitivity18) | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)&gt; | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
 
 **Return value**
 
@@ -511,7 +511,7 @@ The callback provides the amount of offset that is about to be scrolled in the c
 
 | Name| Type| Mandatory| Description|
 | ------ | ------ | ------ | ------|
-| handler | Optional&lt;[OnWillScrollCallback](#onwillscrollcallback12)&gt; | Yes| Callback triggered when the scrollable component is about to scroll.|
+| handler | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[OnWillScrollCallback](#onwillscrollcallback12)&gt; | Yes| Callback triggered when the scrollable component is about to scroll.|
 
 **Return value**
 
@@ -560,7 +560,7 @@ Triggered when the scrollable component scrolls.
 
 > **NOTE**
 >
-> This parameter is supported since API version 11 and deprecated since API version 12. The onScroll event of the List, Grid, and WaterFlow components is triggered after the layout. You are advised to use [onDidScroll](#ondidscroll12) instead. The onScroll event of the Scroll component is triggered before the layout. You are advised to use [onWillScroll](#onwillscroll12) instead.
+> This API is supported since API version 11 and deprecated since API version 12. The **onScroll** event of the **List**, **Grid**, and **WaterFlow** components is triggered after the layout. You are advised to use [onDidScroll](#ondidscroll12) instead. The **onScroll** event of the **Scroll** component is triggered before the layout. You are advised to use [onWillScroll](#onwillscroll12) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -749,7 +749,9 @@ Implements an object used to configure the [fadingEdge](#fadingedge14) attribute
 
 ## EditModeOptions<sup>23+</sup>
 
-Attribute of the List/Grid component in edit mode.
+Sets attributes of the **List** or **Grid** component in edit mode.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -757,7 +759,8 @@ Attribute of the List/Grid component in edit mode.
 
 | Name          | Type                                                        | Read-Only| Optional| Description                                                        |
 | ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| enableMultiSelectionAnimation | boolean | No  | Yes| Whether to enable the multi-selection animation. If this parameter is set to true, the collapse animation is enabled. If this parameter is set to false, the collapse animation is disabled.<br>The multi-selection collapse animation is displayed only when [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set on GridItem or ListItem, responseType is set to [ResponseType](ts-appendix-enums.md#responsetype8).LongPress, and [preview](ts-universal-attributes-menu.md#contextmenuoptions10) is set to MenuPreviewMode.IMAGE or CustomBuilder.<br>If [Drag Event](ts-universal-events-drag-drop.md) is set on GridItem or ListItem, whether to enable the collapse animation is subject to the [dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11) setting.<br>Default value: **false**.|
+| enableGatherSelectedItemsAnimation | boolean | No  | Yes| Whether to enable the multi-selection animation. If this parameter is set to true, the collapse animation is enabled. If this parameter is set to false, the collapse animation is disabled.<br>The multi-selection collapse animation is displayed only when [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set on GridItem or ListItem, responseType is set to [ResponseType](ts-appendix-enums.md#responsetype8).LongPress, and [preview](ts-universal-attributes-menu.md#contextmenuoptions10) is set to MenuPreviewMode.IMAGE or CustomBuilder.<br>If [Drag Event](ts-universal-events-drag-drop.md) is set on GridItem or ListItem, whether to enable the collapse animation is subject to the [dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11) setting.<br>Default value: **false**.|
+| onGetPreviewBadge | [OnGetPreviewBadgeCallback](#ongetpreviewbadgecallback23) | No  | Yes| Callback triggered to obtain the number of selected items when the multi-select long-press clustering animation is about to start.<br>By default, the number of selected items displayed in the grid or list is used as the badge number of the menu preview image after the multi-select long-press clustering animation is performed.|
 
 ## EffectEdge<sup>18+</sup>
 
@@ -855,6 +858,24 @@ Called when a list or grid element starts to be dragged.
 | Type                         | Description                                 |
 | ----------------------------- | ------------------------------------ |
 | [CustomBuilder](ts-types.md#custombuilder8) |  Returns the CustomBuilder object used to build the drag diagram of the dragged element. If **void** is returned, the drag operation cannot be performed.|
+
+## OnGetPreviewBadgeCallback<sup>23+</sup>
+
+type OnGetPreviewBadgeCallback = () => boolean | number
+
+Called to obtain the number of selected items when the animation for gathering selected items upon long press is about to start.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                         | Description                                 |
+| ----------------------------- | ------------------------------------  |
+| boolean \| number |  Whether to display the number of selected items in the corner badge of the menu preview image after the animation for gathering selected items upon long press is performed, or the number of items to be displayed.<br>If true is returned, the number of selected items in the corner badge is displayed, which corresponds to the number of selected items in the display range of the grid or list. If false is returned, the corner badge is not displayed.<br>If a number is returned, the corner badge is displayed by default, and the number indicates the number of items to be displayed in the corner badge. Value range: [0, 2<sup>31</sup>-1]. If the value is out of the range, true is returned.<br>If a floating-point number is returned, it is rounded down.|
 
 ## ScrollResult<sup>12+</sup>
 
