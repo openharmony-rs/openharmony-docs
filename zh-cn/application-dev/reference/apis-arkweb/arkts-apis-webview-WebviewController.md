@@ -11040,3 +11040,110 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 **示例：**
 
 完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## setUrlTrustList<sup>24+</sup>
+
+setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void
+
+设置当前web的url白名单，只有白名单内的url才能允许加载/跳转，否则将拦截并弹出告警页。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                  |
+| ------- | ------ | ---- | :-------------------- |
+| urlTrustList | string | 是   | url白名单列表，使用json格式配置，最大支持10MB。<br/>白名单设置接口为覆盖方式，多次调用接口时，以最后一次设置为准。<br/>当本参数为空字符串时，表示取消白名单，放行所有url的访问。<br/>json格式示例：<br/>{<br>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
+| allowOpaqueOrigin | boolean | 是 | true表示允许loadUrl直接加载javascript/data等[不透明源url](https://mdn.org.cn/en-US/docs/Web/URI/Reference/Schemes)，false表示不允许加载不透明源url。 |
+| supportWildcard | boolean | 是 | true表示支持对host、path的通配符匹配能力，例如白名单配置了`*.example.com`，则访问`a.example.com`和`b.example.com`都是允许的。false表示不支持。 |
+
+**白名单json格式参数**
+
+| 字段   | 参数类型 | 必填 | 参数描述                  |
+| -------- | -------- | ---- | ------------------------- |
+| scheme | string | 否 | 可选参数，不设置即不匹配该项，支持协议：http、https。 |
+| host | string | 是 | 必选参数。<br/>当supportWildcard为false时，精准匹配，即url的host字段和规则字段完全一致才会放行，可允许同一host多条规则同时生效。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. host以“.”进行分段。<br/>2. 一个通配符\*只能匹配一个段。例如`www.*.com`只能匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>3. 可以使用多个通配符匹配多个段。例如`www.*.*`，可以匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>4. 通配符只能单独使用，不支持连续多个\*或者与其他的字符串一起使用，例如`**.example.com`，或者`*ww.example.com`是不支持的。 |
+| port | number | 否 | 可选字段，不设置即不匹配该项。 |
+| path | string | 否 | 可选字段，不设置即不匹配该项。<br/>当supportWildcard为false时，匹配方式为前缀匹配，以`pathA/pathB/pathC`为例：`pathA/pathB/pathC`三级目录下全部允许访问，其中pathC必须是完整的目录名或者文件名，不允许部分匹配。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. path以“/”进行分段。<br/>2. 如果通配符\*不是最后一段，那只能匹配一个段。例如`pathA/*/pathD`，只能匹配`pathA/pathB/pathD`，不能匹配`pathA/pathB/pathC/pathD`。<br/>3. 如果通配符\*是最后一段，则可以匹配后续的多个段。例如`pathA/*`，可以匹配`pathA/pathB`，也可以匹配`pathA/pathB/pathC`；也可以匹配文件类例如`pathA/xxx.txt`。<br/>4. 通配符只能单独使用，不支持多个\*或者与其他的字符串一起使用，例如`**/pathA/pathB`，或者`path*/pathB/pathC`是不支持的。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. JSON string exceeds 10MB limit.<br/>3.JSON parsing failed (syntax errors, etc.)<br/>4. UrlPermissionList field is missing.<br/>5. URL rule validation failed:<br/>- scheme must be http or https.<br/>- host cannot be empty.<br/>- port must be between 0-65535.<br/>- path length cannot exceed 65536 characters. |
+| 17100001 | Initialization error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  urltrustList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"trust.example.com\", \"path\":\"test\"}]}"
+  urlWildcardList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"*.example.com\", \"path\":\"*\"}]}"
+
+  build() {
+    Column() {
+      Button('Setting the trustlist')
+        .onClick(() => {
+          try {
+            // 设置白名单，只允许访问trust网页
+            this.controller.setUrlTrustList(this.urltrustList);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Setting the wildcardlist')
+        .onClick(() => {
+          try {
+            // 设置通配符白名单，所有url都可以允许访问
+            this.controller.setUrlTrustList(this.urlWildcardList, true, true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Cancel the trustlist.')
+        .onClick(() => {
+          try {
+            // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问
+            this.controller.setUrlTrustList("");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access the trust web')
+        .onClick(() => {
+          try {
+            // 白名单生效，可以访问trust网页
+            this.controller.loadUrl('http://trust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access the untrust web')
+        .onClick(() => {
+          try {
+            // 白名单生效，此时不可以访问untrust网页，并弹出错误页
+            this.controller.loadUrl('http://untrust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
+        try {
+          // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页
+          this.controller.setUrlTrustList(this.urltrustList);
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+    }
+  }
+}
+```
