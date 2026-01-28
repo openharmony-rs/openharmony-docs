@@ -658,7 +658,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
 
    由于使用了日志相关接口，需要在CMakeLists.txt中添加对libhilog_ndk.z.so的引用，如下：
    
-   ```
+   ```text
    add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
    ```
