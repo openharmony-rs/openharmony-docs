@@ -35,7 +35,7 @@ libohinputmethod.so
 
 1. 创建InputMethod_TextEditorProxy实例，示例代码如下所示：
 
-   <!-- @[input_case_input_TextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_TextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 创建InputMethod_TextEditorProxy实例
@@ -45,7 +45,7 @@ libohinputmethod.so
    
 2. 创建InputMethod_AttachOptions实例，设置绑定输入法时的选项。示例代码如下所示：
 
-   <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例
@@ -56,7 +56,7 @@ libohinputmethod.so
 
 3. 调用OH_InputMethodController_Attach发起绑定输入法服务，调用成功后，可以获取到用于和输入法交互的InputMethod_InputMethodProxy。示例代码如下所示：
 
-   <!-- @[input_case_input_OH_InputMethodController_Attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_OH_InputMethodController_Attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 发起绑定请求
@@ -112,7 +112,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
 2. 将实现后的响应函数，设置到[InputMethod_TextEditorProxy](../reference/apis-ime-kit/capi-inputmethod-inputmethod-texteditorproxy.md)中，再通过绑定输入法时调用的[OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)将其设置到输入法框架中，完成监听注册。示例代码如下所示：
 
-   <!-- @[input_case_input_ConstructTextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_ConstructTextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    OH_TextEditorProxy_SetGetTextConfigFunc(textEditorProxy, GetTextConfigFunc);
@@ -138,7 +138,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 当编辑框失焦，需要结束使用输入法，通过接口[OH_InputMethodController_Detach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_detach)与输入法框架解绑。
 
 
-   <!-- @[input_case_input_OH_InputMethodController_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_OH_InputMethodController_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 发起解绑请求
@@ -158,7 +158,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 >
 > 需要在CMakeList.txt中添加libohinputmethod.so libhilog_ndk.z.so依赖。
 
-   <!-- @[input_case_input_CPreview016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_CPreview016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -258,10 +258,10 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    {
        if (status == InputMethod_KeyboardStatus::IME_KEYBOARD_STATUS_HIDE) {
            g_flagShow = false;
-           SetText("键盘已经被被隐藏");
+           SetText("键盘已经被隐藏");
        } else if (status == InputMethod_KeyboardStatus::IME_KEYBOARD_STATUS_SHOW && g_flagShow != true) {
            g_flagShow = true;
-           SetText("键盘已经被被拉起");
+           SetText("键盘已经被拉起");
        }
    }
    
@@ -282,7 +282,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
        } else if (direction == InputMethod_Direction::IME_DIRECTION_RIGHT) {
            SetText("光标正在向 右  移动");
        } else {
-           SetText("光标正在 出现错误");
+           SetText("光标移动 出现错误");
        }
    }
    
@@ -321,7 +321,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    int32_t SetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, size_t length, int32_t start,
        int32_t end)
    {
-       SetText("处处理设置预上屏文本请求");
+       SetText("处理设置预上屏文本请求");
        return 0;
    }
    
@@ -351,7 +351,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    ```
 
 
-   <!-- @[input_case_input_CPreview208](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[input_case_input_CPreview208](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    void InputMethodNdkDemo()

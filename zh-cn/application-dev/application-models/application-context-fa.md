@@ -53,7 +53,6 @@ let context = featureAbility.getContext();
         });
         hilog.info(domain, TAG, 'Application onCreate');
       }
-      //...
     }
     
     export default new MainAbility();
@@ -82,7 +81,6 @@ let context = featureAbility.getContext();
       onDestroy() {
         hilog.info(domain, TAG, 'Application onDestroy');
       }
-      //...  
     }
     
     export default new PageAbilitySingleton();

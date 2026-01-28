@@ -5,7 +5,7 @@
 <!--Owner: @liujiaxing2024-->
 <!--Designer: @junjie_shi-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 查不到已通过HiAppEvent订阅的事件内容
 

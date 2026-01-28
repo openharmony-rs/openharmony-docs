@@ -20,6 +20,8 @@ Provides a unified entry for the native module APIs.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
+**Sample**: <!--RP1-->[NativeNodeInterfaceSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/NativeNodeInterfaceSample)<!--RP1End-->
+
 ## Summary
 
 ### Enums
@@ -91,7 +93,7 @@ Initializes the C API environment and obtains the native module API collection o
 
 | Type| Description|
 | -- | -- |
-| void* | Void pointer to the native API abstraction, which must be cast to the specific type for use.|
+| void* | Pointer to the native API abstraction, which must be cast to the specific type for use.|
 
 ### OH_ArkUI_GetModuleInterface()
 

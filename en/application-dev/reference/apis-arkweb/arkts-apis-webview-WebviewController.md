@@ -980,6 +980,56 @@ struct WebComponent {
 }
 ```
 
+## refresh<sup>24+</sup>
+
+refresh(ignoreCache: boolean): void
+
+Notifies the **Web** component to refresh the web page. You can choose whether to ignore the cache refresh.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type| Mandatory| Description              |
+| ------- | -------- | ---- | ---------------------- |
+| ignoreCache | boolean  | Yes  | Whether to ignore cache refresh when the **Web** component refreshes the web page.<br>The value **true** means to ignore the cache refresh, and **false** means the opposite.<br>**NOTE**<br>If **undefined** or **null** is passed in, the value is **false**.|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component.|
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('refresh')
+        .onClick(() => {
+          try {
+            this.controller.refresh(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## accessStep
 
 accessStep(step: number): boolean
@@ -5379,7 +5429,7 @@ struct WebComponent {
 
 static setConnectionTimeout(timeout: number): void
 
-Sets the network connection timeout. You can use the **onErrorReceive** method in the **Web** component to obtain the timeout error code.
+Sets the network connection timeout interval. You can use the **onErrorReceive** method in the **Web** component to obtain the timeout error code. If this API is not called, the default timeout interval is **30** seconds.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -9427,7 +9477,7 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 | Name             | Type   | Mandatory  |  Description|
 | ------------------ | ------- | ---- | ------------- |
 | webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** indicates that web page debugging is enabled, and **false** indicates the opposite.|
-| port               | number  | Yes  | Specifies the TCP port number of the devtools service. If no port is specified, this API is equivalent to the [setWebDebuggingAccess] (#setwebdebuggingaccess) API.<br>Value range: (1024, 65535]<br>If the value of port is within the range of [0, 1024], the **BusinessError** exception is thrown. The error code is **17100023**.|
+| port               | number  | Yes  | Specifies the TCP port number of the DevTools service. If no port is specified, this API is equivalent to the [setWebDebuggingAccess] (#setwebdebuggingaccess) API.<br>Value range: (1024, 65535]<br>If the value of port is within the range of [0, 1024], the **BusinessError** exception is thrown. The error code is **17100023**.|
 
 
 **Error codes**

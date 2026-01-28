@@ -1555,3 +1555,72 @@ struct FreezeBuildNode {
 点击`change`，改变message的值，当前正在显示的TabContent组件中@Watch注册的方法onMessageUpdated被触发。未显示的TabContent中的BuilderNode节点下组件的@Watch方法onMessageUpdated也被触发，并没有被冻结。
 
 ![builderNode.gif](figures/builderNode.gif)
+
+### 组件冻结与组件复用混用时解冻不会触发Watch
+
+在以下示例中，子组件`ChildComponent`开启了组件冻结且被标记了组件复用，当`if`组件绑定的状态变量`condition`修改为`false`时，子组件`ChildComponent`下树并进入复用池。由于子组件开启了组件冻结，所以进入复用池时，该组件也会被冻结。在复用池内，若修改状态变量`count`，该组件因处于`inactive`状态，即不会刷新也不会触发`Watch`回调。
+当`if`组件绑定的状态变量`condition`修改为`true`时，子组件`ChildComponent`出复用池并被标记为`active`状态，但不会触发状态变量`count`绑定的`Watch`回调。这是因为组件复用的执行逻辑早于组件解冻的执行逻辑。子组件被复用时会将[脏节点刷新](./arkts-state-management-introduce.md#触发更新)（包括在冻结期间需要延迟刷新的[变量绑定的系统组件](./arkts-state-management-introduce.md#收集依赖)），并清空脏节点列表。在子组件被复用后，重新被标记为`active`状态，此时子组件执行解冻逻辑，由于复用时清空了脏节点列表，所以此时判断冻结期间无变量改变，不会触发`Watch`回调。
+
+<!-- @[Freeze_and_Reuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/FreezeReuse.ets) --> 
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'FreezeChild';
+
+@Reusable
+@Component({ freezeWhenInactive: true })
+struct ChildComponent {
+  @Link @Watch('onChange') count: number;
+
+  onChange() {
+    hilog.info(DOMAIN, TAG, `ChildComponent messageChange ${this.count}`);
+  }
+
+  aboutToReuse(params: Record<string, ESObject>): void {
+    // 在aboutToReuse中改值，解冻时同样不会触发Watch回调
+    this.count++;
+    hilog.info(DOMAIN, TAG, `ChildComponent has been reused`);
+  }
+
+  aboutToRecycle(): void {
+    hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
+  }
+
+  build() {
+    Column() {
+      Text(`ChildComponent count: ${this.count}`)
+        .fontSize(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State flag: boolean = true;
+  @State count: number = 0;
+
+  build() {
+    Column() {
+      Button(`change flag`)
+        .onClick(() => {
+          this.flag = !this.flag;
+        })
+        .margin(10)
+        .width('50%')
+      Button(`change count`)
+        .onClick(() => {
+          this.count++;
+        })
+        .margin(10)
+        .width('50%')
+      if (this.flag) {
+        ChildComponent({ count: this.count })
+      }
+    }
+    .height('100%')
+  }
+}
+```

@@ -2688,9 +2688,9 @@ Triggered to notify the user of a new window creation request when [multiWindowA
         .allowWindowOpenMethod(true)
         .onWindowNewExt((event) => {
           // Open a new window using the event.navigationPolicy request.
-          console.log("navigationAction: ", event.navigationPolicy)
+          console.info("navigationAction: ", event.navigationPolicy)
           // Create a new window based on the size and position information in event.windowFeatures.
-          console.log("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          console.info("windowFeatures: ", JSON.stringify(event.windowFeatures))
           if (this.dialogController) {
             this.dialogController.close();
           }

@@ -75,11 +75,12 @@ import { bundleManager } from '@kit.AbilityKit';
 | DISTRIBUTED<sup>20+</sup> | 28 | [DistributedExtensionAbility](../apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)：提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。 |
 | APP_SERVICE<sup>20+</sup> | 29 | [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)：为企业普通应用提供后台服务能力。 |
 | LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| SELECTION<sup>24+</sup> | 31 | [SelectionExtensionAbility](../apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)：为开发者提供划词弹窗能力的ExtensionAbility。|
 | WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)：为开发者提供Web原生消息通信能力的ExtensionAbility。|
 | FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)：提供故障延迟通知的能力。|
 | NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)：提供通知订阅的相关功能。|
 | CRYPTO<sup>22+</sup> | 35 | [CryptoExtensionAbility](../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)：提供外部密钥管理扩展的相关功能。|
-| PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。|
+| PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。 |
 <!--RP2--><!--RP2End-->
 

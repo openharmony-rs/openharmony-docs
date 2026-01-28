@@ -14,7 +14,7 @@ The specific meaning of "internal state" varies by component. For example, for t
 
 ## Usage Rules
 
-- Currently, **$$* supports variables of basic types. When such variables are decorated with state management V1 decorators such as [\@State](arkts-state.md), [\@Link](arkts-link.md), [\@Prop](arkts-prop.md), and [\@Provide](arkts-provide-and-consume.md), or state management V2 decorators such as [\@Local](arkts-new-local.md), changes in variable values will trigger UI updates.
+- Currently, **$$** supports variables of basic types. When such variables are decorated with state management V1 decorators such as [\@State](arkts-state.md), [\@Link](arkts-link.md), [\@Prop](arkts-prop.md), and [\@Provide](arkts-provide-and-consume.md), or state management V2 decorators such as [\@Local](arkts-new-local.md), changes in variable values will trigger UI updates.
 
 - Components supported by **$$** are listed below.
 
@@ -46,21 +46,19 @@ The specific meaning of "internal state" varies by component. For example, for t
   | [GridItem](../../reference/apis-arkui/arkui-ts/ts-container-griditem.md) | selected | 10 |
   | [ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md) | selected | 10 |
 
-- When a variable bound using **$$** changes, it triggers synchronous UI re-rendering.
-
 
 ## Example
 
 This example demonstrates two-way data binding using the **$$** operator with the **text** parameter of the [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) component.
+<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
 
-
-```ts
+``` TypeScript
 // xxx.ets
 @Entry
 @Component
 struct TextInputExample {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
 
   build() {
     Column({ space: 20 }) {
@@ -70,10 +68,12 @@ struct TextInputExample {
         .placeholderFont({ size: 14, weight: 400 })
         .caretColor(Color.Blue)
         .width(300)
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
-
 
 ![TextInputDouble](figures/TextInputDouble.gif)

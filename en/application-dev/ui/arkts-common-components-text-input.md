@@ -714,7 +714,7 @@ struct TextExample {
         })
 
       Blank(50)
-      // Replace $r('app.string.NormalQuestion_AddInput') with the actual resource file. In this example, the value in the resource file is "Add input."
+      // Replace $r('app.string.NormalQuestion_AddInput') with the actual resource file. In this example, the value in the resource file is "Add Input."
       Button($r('app.string.NormalQuestion_AddInput'))
         .onClick(() => {
           this.fullText += this.changeText;

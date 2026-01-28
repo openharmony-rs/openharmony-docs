@@ -32,7 +32,7 @@ Operation not permitted
 
 1.根据当前系统的[访问控制机制](../../security/AccessToken/access-token-overview.md)，应用无法使用分享给其他应用的URI。
 
-2.根据[系统Picker](../../application-models/system-app-startup.md)的运行机制，通过Picker获取到的URI仅有临时权限，无法持久化保存使用。
+2.根据[系统Picker](../../application-models/system-app-startup.md#拉起系统应用的方式)的运行机制，通过Picker获取到的URI仅有临时权限，无法持久化保存使用。
 
 3.URI路径不推荐进行拼接，拼接后的URI默认未授权。
 
@@ -258,7 +258,7 @@ Permission denied
 
 2.排查内核日志中是否有[avc拦截日志](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-security-selinux-develop-intro.md)，如果存在avc拦截告警，<!--RP1-->拦截原因分析请参考[SELinux开发说明](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md)。<!--RP1End-->
 
-3.确认文件的路径是否为应用内的沙箱路径[沙箱路径地址](../../file-management/app-sandbox-directory.md)，文件管理系统禁止操作应用沙箱以外的文档。
+3.确认文件的路径是否为应用内的沙箱路径（[应用沙箱目录与应用沙箱路径](../../file-management/app-sandbox-directory.md#应用沙箱目录与应用沙箱路径)），文件管理系统禁止操作应用沙箱以外的文档。
 
 ### 13900013 错误的地址
 

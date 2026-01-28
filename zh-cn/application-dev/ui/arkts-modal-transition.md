@@ -618,18 +618,18 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct ModalTransitionWithIf {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  // 请将$r('app.string.modal_transition_text29')替换为实际资源文件，在本示例中该资源文件的value值为“蓝牙”
-  private listArr: ResourceStr[] = ['WLAN', $r('app.string.modal_transition_text29'),
-    // 请将$r('app.string.modal_transition_text30')替换为实际资源文件，在本示例中该资源文件的value值为“个人热点”
-    $r('app.string.modal_transition_text30'),
-    // 请将$r('app.string.modal_transition_text31')替换为实际资源文件，在本示例中该资源文件的value值为“连接与共享”
-    $r('app.string.modal_transition_text31')];
-  // 请将$r('app.string.modal_transition_text32')替换为实际资源文件，在本示例中该资源文件的value值为“投屏”
-  private shareArr: ResourceStr[] = [$r('app.string.modal_transition_text32'),
-    // 请将$r('app.string.modal_transition_text33')替换为实际资源文件，在本示例中该资源文件的value值为“打印”
-    $r('app.string.modal_transition_text33'), 'VPN',
-    // 请将$r('app.string.modal_transition_text34')替换为实际资源文件，在本示例中该资源文件的value值为“私人DNS”
-    $r('app.string.modal_transition_text34'), 'NFC'];
+  // 请在resources\base\element\string.json文件中配置name为'modal_transition_text29'，value为非空字符串的资源
+  private listArr: ResourceStr[] = ['WLAN', this.context.resourceManager.getStringByNameSync('modal_transition_text29'),
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text30'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text30'),
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text31'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text31')];
+  // 请在resources\base\element\string.json文件中配置name为'modal_transition_text32'，value为非空字符串的资源
+  private shareArr: ResourceStr[] = [this.context.resourceManager.getStringByNameSync('modal_transition_text32'),
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text33'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text33'), 'VPN',
+    // 请在resources\base\element\string.json文件中配置name为'modal_transition_text34'，value为非空字符串的资源
+    this.context.resourceManager.getStringByNameSync('modal_transition_text34'), 'NFC'];
   // 第一步：定义状态变量控制页面显示
   @State isShowShare: boolean = false;
 

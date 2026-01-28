@@ -72,10 +72,10 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 | API 类型 | DDK类型 | 权限名称 |
 | --------- | --------- | --------- |
 | ArkTs-API | 不涉及 | ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER |
-| C-API     | USB DDK | ohos.permission.ACCESS_DDK_USB |
-| C-API     | HID DDK | ohos.permission.ACCESS_DDK_HID |
-| C-API     | USB Serial DDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
-| C-API     | SCSI Peripheral DDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
+| C-API     | UsbDdk | ohos.permission.ACCESS_DDK_USB |
+| C-API     | HidDdk | ohos.permission.ACCESS_DDK_HID |
+| C-API     | USBSerialDDK | ohos.permission.ACCESS_DDK_USB_SERIAL |
+| C-API     | ScsiPeripheralDDK | ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL |
 
 ## 关联模块
 
@@ -86,7 +86,7 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 | PerformanceAnalysisKit | 引入{[hilog](../../dfx/hilog.md)}用于日志打印。| 
 | BasicServicesKit       | 引入{[BusinessError](../../reference/apis-basic-services-kit/js-apis-base.md#businesserror)}用于捕获错误信息。 |
 | IPCKit                 | 引入{[rpc](../../reference/apis-ipc-kit/js-apis-rpc.md)}用于驱动与客户端IPC（Inter-Process Communication）通信。|
-| AbilityKit             | 引入{[want](../../reference/apis-ability-kit/js-apis-application-want.md)}用于生命周期管理。|
+| AbilityKit             | 引入{[@ohos.application.Want (Want)](../../reference/apis-ability-kit/js-apis-application-want.md)}用于生命周期管理。|
 
 ## 驱动应用规格说明
 1.驱动应用定义
@@ -105,8 +105,8 @@ HDF扩展驱动框架为扩展外设驱动开发，提供稳定统一的外设�
 
 4.在DriverExtensionAbility中API访问安全管控说明
 - 系统支持基于ExtensionAbility构建场景化扩展Ability，DriverExtensionAbility为支持开发用户态扩展驱动的一类Ability。
-- 在DriverExtensionAbility中仅支持访问DDK（[Driver Development Kit](https://gitcode.com/openharmony/docs/tree/master/zh-cn/application-dev/reference/apis-driverdevelopment-kit)）API，实现对非标外设进行访问控制和数据通信。
+- 在DriverExtensionAbility中仅支持访问DDK（[docs/zh-cn/application-dev/reference/apis-driverdevelopment-kit · OpenHarmony/docs - AtomGit | GitCode](https://gitcode.com/openharmony/docs/tree/master/zh-cn/application-dev/reference/apis-driverdevelopment-kit)）API，实现对非标外设进行访问控制和数据通信。
 - 基于驱动开发安全约束及驱动开发业务场景，在DriverExtensionAbility中不支持访问其它ArkTS API，以防止恶意行为和数据泄露。
 - DriverExtensionAbility受限访问ArkTS API方案说明：
   - ArkTS API受限原理：在初始化和创建Extension进程时，会根据Extension配置的受限访问ArkTS API名单加载系统模块。在运行时，如果在DriverExtensionAbility中调用受限ArkTS API，由于初始化和创建阶段未加载相应系统模块，API会调用失败。
-- DriverExtensionAbility具体受限ArkTS API名单，请参考[受限ArkTS API](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json)中DriverExtension配置。
+- DriverExtensionAbility具体受限ArkTS API名单，请参考[frameworks/native/ability/native/etc/extension_blocklist_config.json · OpenHarmony/ability_ability_runtime - AtomGit | GitCode](https://gitcode.com/openharmony/ability_ability_runtime/blob/master/frameworks/native/ability/native/etc/extension_blocklist_config.json)中DriverExtension配置。

@@ -268,7 +268,7 @@ loadUrl(url: string | Resource, headers?: Array\<WebHeader>): void
 | 参数名  | 类型             | 必填 | 说明                  |
 | ------- | ---------------- | ---- | :-------------------- |
 | url     | string \| Resource | 是   | 需要加载的 URL。      |
-| headers | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | URL的附加HTTP请求头。<br>默认值： [] |
+| headers | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | URL的附加HTTP请求头。<br>默认值： []。 <br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 
@@ -471,8 +471,8 @@ data数据必须使用base64编码或将内容中的任何#字符编码为%23。
 | data       | string | 是   | 按照"base64"或者"URL"编码后的一段字符串。                    |
 | mimeType   | string | 是   | 媒体类型（MIME）。                                           |
 | encoding   | string | 是   | 编码类型，具体为"base64"或者"URL"编码。                       |
-| baseUrl    | string | 否   | 指定的一个URL路径（"http"/"https"/"data"协议），并由Web组件赋值给`window.origin`。当加载大量html文件时，需设置为"data"。 |
-| historyUrl | string | 否   | 用作历史记录所使用的URL。非空时，历史记录以此URL进行管理。当baseUrl为空时，此属性无效。 |
+| baseUrl    | string | 否   | 指定的一个URL路径（"http"/"https"/"data"协议），并由Web组件赋值给`window.origin`。当加载大量html文件时，需设置为"data"。<br>传入undefined或null会抛出异常错误码401。 |
+| historyUrl | string | 否   | 用作历史记录所使用的URL。非空时，历史记录以此URL进行管理。当baseUrl为空时，此属性无效。<br>传入undefined或null会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -1159,8 +1159,8 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 | jsObject     | object         | 是   | 参与注册的应用侧JavaScript对象。可以单独声明方法和属性，但无法同时进行注册与使用。对象只包含属性时，H5可以访问对象中的属性。对象只包含方法时，H5可以访问对象中的方法。<br>1. 方法的参数和返回类型可以为string，number，boolean。<br>2. 方法的参数和返回类型支持Dictionary，Array，最多嵌套10层，每层1w个数据。<br>3. 方法的参数和返回类型支持Object，需要在Object里添加属性methodNameListForJsProxy:[fun1, fun2]，fun1和fun2为可被调用的方法。<br>4. 方法的参数支持Function，Promise，它们的Callback不能有返回值。<br>5. 方法的返回类型支持Promise，Promise的Callback不能有返回值。 |
 | name       | string         | 是   | 注册对象的名称，与window中调用的对象名一致。注册后window对象可以通过此名字访问应用侧JavaScript对象。 |
 | methodList | Array\<string> | 是   | 参与注册的应用侧JavaScript对象的同步方法。                       |
-| asyncMethodList<sup>12+</sup> | Array\<string> | 否   | 参与注册的应用侧JavaScript对象的异步方法，默认为空。异步方法无法获取返回值。  |
-| permission<sup>12+</sup> | string | 否   | JSON字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object和method级别的URL白名单。<br>1. scheme（协议）和host（域名）参数不可为空，且host不支持通配符，只能填写完整的host。<br>2. 可以仅配置object级别的白名单，该白名单对所有JSBridge方法生效。<br>3. 若JSBridge方法A设置了method级别的白名单，那么方法A最终的白名单是object级别白名单与method级别白名单的交集。|
+| asyncMethodList<sup>12+</sup> | Array\<string> | 否   | 参与注册的应用侧JavaScript对象的异步方法，默认为空。异步方法无法获取返回值。<br>传入undefined或null会抛出异常错误码401。  |
+| permission<sup>12+</sup> | string | 否   | JSON字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object和method级别的URL白名单。<br>1. scheme（协议）和host（域名）参数不可为空，且host不支持通配符，只能填写完整的host。<br>2. 可以仅配置object级别的白名单，该白名单对所有JSBridge方法生效。<br>3. 若JSBridge方法A设置了method级别的白名单，那么方法A最终的白名单是object级别白名单与method级别白名单的交集。<br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 
@@ -1947,7 +1947,7 @@ function test() {
 
 deleteJavaScriptRegister(name: string): void
 
-删除通过registerJavaScriptProxy注册到window上的指定name的应用侧JavaScript对象。删除后，须调用[refresh](#refresh)接口。
+删除通过[registerJavaScriptProxy](#registerjavascriptproxy)或者[javaScriptProxy](./arkts-basic-components-web-attributes.md#javascriptproxy)注册到window上的指定name的应用侧JavaScript对象。删除操作在页面下次（重新）加载后生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2370,7 +2370,7 @@ createWebMessagePorts(isExtentionType?: boolean): Array\<WebMessagePort>
 
 | 参数名 | 类型                   | 必填 | 说明                             |
 | ------ | ---------------------- | ---- | :------------------------------|
-| isExtentionType<sup>10+</sup>   | boolean     | 否  | 是否使用扩展增强接口。<br>true表示使用扩展增强接口，false表示不使用扩展增强接口。<br>默认值：false。 |
+| isExtentionType<sup>10+</sup>   | boolean     | 否  | 是否使用扩展增强接口。<br>true表示使用扩展增强接口，false表示不使用扩展增强接口。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
 
 **返回值：**
 
@@ -3218,7 +3218,7 @@ scrollTo(x:number, y:number, duration?:number): void
 | ------ | -------- | ---- | ---------------------- |
 | x   | number   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。 |
 | y   | number   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。|
-| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -3302,7 +3302,7 @@ scrollBy(deltaX:number, deltaY:number,duration?:number): void
 | ------ | -------- | ---- | ---------------------- |
 | deltaX | number   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。 |
 | deltaY | number   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。 |
-| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -4955,9 +4955,9 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 | 参数名             | 类型                             |  必填  | 说明                                                              |
 | ------------------| ------------------------------- | ---- | ------------------------------------------------------------------ |
 | request           | [RequestInfo](./arkts-apis-webview-i.md#requestinfo12)   | 是   | 预获取请求的信息。                                                      |
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头。                                             |
-| cacheKey          | string                          | 否   | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。 |
-| cacheValidTime    | number                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。         |
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头。 <br>传入undefined或null会抛出异常错误码401。         |
+| cacheKey          | string                          | 否   | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。<br>传入undefined或null会抛出异常错误码401。 |
+| cacheValidTime    | number                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。    <br>传入undefined或null会抛出异常错误码401。     |
 
 **错误码：**
 
@@ -6458,7 +6458,7 @@ setScrollable(enable: boolean, type?: ScrollType): void
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
 | enable     | boolean   | 是   | 表示是否将网页设置为允许滚动。<br>true表示设置为允许滚动，false表示禁止滚动。<br>默认值：true。 |
-| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。<br/>**说明：**<br/>传入undefined会抛出异常错误码401。|
+| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。<br>传入null或undefined时会抛出异常错误码401。|
 
 **错误码：**
 
@@ -9341,7 +9341,7 @@ off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttach
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 表示注册WebViewController绑定状态事件，固定为"controllerAttachStateChange"。 |
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。 |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **示例：**
 
@@ -10159,7 +10159,7 @@ static clearBlanklessLoadingCache(keys?: Array\<string\>): void
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| keys | Array\<string\> | 否 | 清除Blankless优化方案页面的key值列表，key值为[getBlanklessInfoWithKey](#getblanklessinfowithkey20)中指定过的。<br>默认值：所有Blankless优化方案缓存的页面key列表。<br>合法取值范围：长度不超过2048，key列表长度<=100。key和加载页面时输入给ArkWeb的相同。<br>非法值设置行为：key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
+| keys | Array\<string\> | 否 | 清除Blankless优化方案页面的key值列表，key值为[getBlanklessInfoWithKey](#getblanklessinfowithkey20)中指定过的。<br>默认值：所有Blankless优化方案缓存的页面key列表。<br>合法取值范围：长度不超过2048，key列表长度<=100。key和加载页面时输入给ArkWeb的相同。<br>非法值设置行为：传入undefined/null会抛出异常错误码401；key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
 
 **错误码：**
 
@@ -10860,3 +10860,183 @@ stopMicrophone(): void
 **示例：**
 
 完整示例代码参考[resumeMicrophone](#resumemicrophone23)。
+
+## setUserAgentClientHintsEnabled<sup>24+</sup>
+
+static setUserAgentClientHintsEnabled(enabled: boolean): void
+
+设置是否开启UserAgent Client Hints功能。
+
+> **说明：**
+>
+> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
+>
+> 不使用该方法时，默认不开启UserAgent Client Hints功能。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| enabled | boolean | 是   | 是否开启UserAgent Client Hints功能。<br/>true表示开启，false表示不开启。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State userAgent: string = "";
+
+  build() {
+    Column() {
+      Button('setUserAgentMetadata').fontSize(20)
+        .onClick((e: ClickEvent) => {
+          try {
+            let arrayVersions: Array<webview.UserAgentBrandVersion> = new Array<webview.UserAgentBrandVersion>;
+            let brandVersion:webview.UserAgentBrandVersion = new webview.UserAgentBrandVersion();
+            brandVersion.setBrand("brand OpenHarmony");
+            brandVersion.setMajorVersion("major version 1.0");
+            brandVersion.setFullVersion("blank full version 1.0");
+            arrayVersions.push(brandVersion);
+            let metadata:webview.UserAgentMetadata = new webview.UserAgentMetadata();
+            metadata.setBrandVersionList(arrayVersions);
+            metadata.setFormFactors([webview.UserAgentFormFactor.AUTOMOTIVE]);
+            metadata.setArchitecture("arch OpenHarmony");
+            metadata.setBitness("bitness 64");
+            metadata.setFullVersion("full version OpenHarmony");
+            metadata.setMobile(true);
+            metadata.setModel("model OpenHarmony");
+            metadata.setPlatform("platform OpenHarmony");
+            metadata.setPlatformVersion("platform version OpenHarmony");
+            metadata.setWow64(false);
+            this.controller.setUserAgentMetadata(this.userAgent, metadata);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('getUserAgentMetadata').fontSize(20)
+        .onClick((e: ClickEvent) => {
+          try {
+            this.userAgent = this.controller.getUserAgent();
+            let metadata = this.controller.getUserAgentMetadata(this.userAgent);
+            let versionList = metadata.getBrandVersionList();
+            for(let i = 0; i < versionList.length; i++) {
+              console.info("Brand:" + versionList[i].getBrand());
+              console.info("MajorVersion " + versionList[i].getMajorVersion());
+              console.info("FullVersion " + versionList[i].getFullVersion());
+            }
+            let FormFactors = metadata.getFormFactors();
+            for(let j = 0; j < FormFactors.length; j++) {
+              console.info("FormFactor:" + FormFactors[j]);
+            }
+            console.info("Bitness:" + metadata.getBitness());
+            console.info("FullVersion:" + metadata.getFullVersion());
+            console.info("Mobile:" + metadata.getMobile());
+            console.info("Model:" + metadata.getModel());
+            console.info("Platform:" + metadata.getPlatform());
+            console.info("PlatformVersion:" + metadata.getPlatformVersion());
+            console.info("Wow64:" + metadata.getWow64());
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          try {
+            this.userAgent = this.controller.getUserAgent();
+            let metaData: webview.UserAgentMetadata = new webview.UserAgentMetadata();
+            metaData.setPlatform("OpenHarmony");
+            this.controller.setCustomUserAgent(this.userAgent);
+            let enabled: boolean = webview.WebviewController.getUserAgentClientHintsEnabled();
+            console.info("isUserAgentClientHintsEnabled:", enabled);
+            webview.WebviewController.setUserAgentClientHintsEnabled(true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## getUserAgentClientHintsEnabled<sup>24+</sup>
+
+static getUserAgentClientHintsEnabled(): boolean
+
+查询UserAgent Client Hints功能当前是否开启。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| boolean | 返回UserAgent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## setUserAgentMetadata<sup>24+</sup>
+
+setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
+
+设置与User-Agent相对应的UserAgent Metadata数据。
+
+> **说明：**
+>
+> User-Agent Metadata将用于填充用户代理客户端提示，它们可以提供客户端的品牌和版本信息、底层操作系统的品牌和主要版本，以及底层设备的详细信息。
+>
+> 用户代理可以通过setCustomUserAgent、setAppCustomUserAgent或setUserAgentForHosts来设置。
+>
+> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，且覆盖后的User-Agent包含系统默认的User-Agent，则将使用系统默认值。
+>
+> 如果 UserAgentMetadata 为空，但覆盖后的 User-Agent 不包含系统默认用户代理，则只会生成低级用户代理客户端提示。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
+| metaData | [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md) | 是   | userAgent对应的UserAgentMetadata。可以先使用[getUserAgentMetadata](#getuseragentmetadata24)获取当前默认值，然后用相应方法进行修改。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## getUserAgentMetadata<sup>24+</sup>
+
+getUserAgentMetadata(userAgent: string): UserAgentMetadata
+
+查询userAgent对应的UserAgent Metadata信息。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| metaData | userAgent对应的 [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md)。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。

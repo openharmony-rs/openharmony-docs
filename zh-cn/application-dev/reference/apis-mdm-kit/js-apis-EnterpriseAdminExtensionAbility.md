@@ -709,11 +709,11 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
           };
           systemManager.finishLogCollected(wantTemp);
       } catch (error) {
-          Logger.info("onLogCollected", "error: " + JSON.stringify(error))
+          console.info("onLogCollected", "error: " + JSON.stringify(error))
       }
     }
     if (result === common.Result.FAIL) {
-      Logger.error("onLogCollected", "Failed to collect log.")
+      console.error("onLogCollected", "Failed to collect log.")
     }
   }
 };

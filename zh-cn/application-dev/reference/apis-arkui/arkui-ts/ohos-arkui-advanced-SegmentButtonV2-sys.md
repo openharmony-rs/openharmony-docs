@@ -66,7 +66,7 @@ import uiMaterial from '@ohos.arkui.uiMaterial';
 
 @Entry
 @ComponentV2
-struct TabSegmentButtonV2Example {
+struct SegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
     { text: '手机' },
     { text: '平板' },
@@ -99,7 +99,7 @@ struct TabSegmentButtonV2Example {
             })
           }
 
-          VCard({ title: '纯文本选项' }) {
+          VCard({ title: '纯图标选项' }) {
             CapsuleSegmentButtonV2({
               items: this.imageItems,
               selectedIndex: this.imageSelectedIndex!!,

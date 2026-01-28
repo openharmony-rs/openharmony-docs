@@ -113,8 +113,8 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -211,8 +211,8 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -302,10 +302,10 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates, callb
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -373,10 +373,10 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates):Promi
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -438,7 +438,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, callba
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -499,7 +499,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -565,7 +565,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -629,7 +629,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 | 202       | if permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. 6.The callback must be a function.|
 | 801       | Capability not supported.  |
-| 14800014  | The RdbStore or ResultSet is already closed.      |
+| 14800014  | The target instance is already closed.      |
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
 
@@ -715,7 +715,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 | 202       | if permission verification failed, application which is not a system application uses system API.  |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
 | 801       | Capability not supported.       |
-| 14800014  | The RdbStore or ResultSet is already closed.      |
+| 14800014  | The target instance is already closed.      |
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
 
@@ -794,10 +794,10 @@ querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
 | 801       | Capability not supported.       |
 | 14800000  | Inner error.                      |
-| 14800011  | Failed to open the database because it is corrupted.           |
-| 14800014  | The RdbStore or ResultSet is already closed.                        |
+| 14800011  | The current operation failed because the database is corrupted.           |
+| 14800014  | The target instance is already closed.                        |
 | 14800015  | The database does not respond.          |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.             |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.          |
 | 14800023  | SQLite: Access permission denied.         |
 | 14800024  | SQLite: The database file is locked.         |
@@ -861,10 +861,10 @@ querySharingResource(predicates: RdbPredicates, callback: AsyncCallback&lt;Resul
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. |
 | 801       | Capability not supported.                 |
 | 14800000  | Inner error.          |
-| 14800011  | Failed to open the database because it is corrupted.       |
-| 14800014  | The RdbStore or ResultSet is already closed.      |
+| 14800011  | The current operation failed because the database is corrupted.       |
+| 14800014  | The target instance is already closed.      |
 | 14800015  | The database does not respond.        |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.        |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.         |
 | 14800023  | SQLite: Access permission denied.                    |
 | 14800024  | SQLite: The database file is locked.            |
@@ -930,10 +930,10 @@ querySharingResource(predicates: RdbPredicates, columns: Array&lt;string&gt;, ca
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
 | 801       | Capability not supported.       |
 | 14800000  | Inner error.            |
-| 14800011  | Failed to open the database because it is corrupted.         |
-| 14800014  | The RdbStore or ResultSet is already closed.          |
+| 14800011  | The current operation failed because the database is corrupted.         |
+| 14800014  | The target instance is already closed.          |
 | 14800015  | The database does not respond.          |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.           |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.    |
 | 14800023  | SQLite: Access permission denied.     |
 | 14800024  | SQLite: The database file is locked.     |
@@ -1078,10 +1078,10 @@ restore(): Promise&lt;void&gt;
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1143,10 +1143,10 @@ getFloat32Array(columnIndex: number): Float32Array
 |-----------| ------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | The capability is not supported because the database is not a vector DB. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1203,8 +1203,8 @@ getFloat32Array(columnIndex: number): Float32Array
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**

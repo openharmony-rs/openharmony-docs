@@ -88,8 +88,13 @@ struct Parent {
 
   build() {
     Column() {
-      Child({ customBuilderParam: this.componentBuilder }) // Child组件内调用customBuilderParam显示字符串Child
-      Child({ customBuilderParam: this.componentLocalBuilder }) // Child组件内调用customBuilderParam显示字符串Parent
+      Child({ customBuilderParam: this.componentBuilder }) // Child组件内调用customBuilderParam显示字符串Child。
+      Child({ customBuilderParam: this.componentLocalBuilder }) // Child组件内调用customBuilderParam显示字符串Parent，传递函数本身写法。
+      Child({
+        customBuilderParam: () => {
+          this.componentLocalBuilder()
+        }
+      }) // Child组件内调用customBuilderParam显示字符串Parent，() => { 函数调用 }写法。
     }
   }
 }
@@ -98,10 +103,9 @@ struct Parent {
 ## 限制条件
 
 - \@LocalBuilder只能在所属组件内声明，不允许全局声明。
-
 - \@LocalBuilder不能与内置装饰器或自定义装饰器一起使用。
-
 - 在自定义组件中，\@LocalBuilder不能用来装饰静态函数。
+- 关于\@LocalBuilder函数的传递方式，建议优先传递函数本身，或使用 `() => { 函数调用 }` 的形式，避免直接传递函数的执行结果。 
 
 ## 参数传递规则
 

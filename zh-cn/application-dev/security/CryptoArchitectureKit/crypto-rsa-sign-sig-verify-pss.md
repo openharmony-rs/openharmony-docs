@@ -42,11 +42,11 @@
 - 异步方法示例：
 
   <!-- @[pss_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 根据密钥参数属性构造RSA非对称密钥对密钥参数
   function genRsaKeyPairSpec(nIn: bigint, eIn: bigint, dIn: bigint) {
     let rsaCommSpec: cryptoFramework.RSACommonParamsSpec = {
@@ -63,7 +63,7 @@
     };
     return rsaKeyPairSpec;
   }
-
+  
   // 生成RSA2048密钥对参数
   function genRsa2048KeyPairSpec(): cryptoFramework.RSAKeyPairSpec {
     let nIn =
@@ -81,7 +81,7 @@
         '26b3738695e2dd1a0a98a14247c65d8a7ee79432a092cb0721a12df798e44f7cfce0c498147a9b1');
     return genRsaKeyPairSpec(nIn, eIn, dIn);
   }
-
+  
   async function verifyMessagePSS() {
     // 完整的明文被拆分为input1和input2
     let plan1 = 'This is Sign test plan1';
@@ -127,9 +127,9 @@
     await verifyer.update(input1);
     let verifyResult = await verifyer.verify(input2, signMessageBlob);
     if (verifyResult === true) {
-      console.info('verify success');
+      console.info('verify result: success.');
     } else {
-      console.error('verify failed');
+      console.error('verify result: failed.');
     }
   }
   ```
@@ -138,11 +138,11 @@
 - 同步方法示例：
 
   <!-- @[pss_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // 根据密钥参数属性构造RSA非对称密钥对密钥参数
   function genRsaKeyPairSpec(nIn: bigint, eIn: bigint, dIn: bigint) {
     let rsaCommSpec: cryptoFramework.RSACommonParamsSpec = {
@@ -159,7 +159,7 @@
     };
     return rsaKeyPairSpec;
   }
-
+  
   // 生成RSA2048密钥对参数
   function genRsa2048KeyPairSpec(): cryptoFramework.RSAKeyPairSpec {
     let nIn =
@@ -177,7 +177,7 @@
         'e72126b3738695e2dd1a0a98a14247c65d8a7ee79432a092cb0721a12df798e44f7cfce0c498147a9b1');
     return genRsaKeyPairSpec(nIn, eIn, dIn);
   }
-
+  
   function verifyMessagePSS() {
     // 完整的明文被拆分为input1和input2
     let plan1 = 'This is Sign test plan1';
@@ -223,9 +223,9 @@
     verifyer.updateSync(input1);
     let verifyResult = verifyer.verifySync(input2, signMessageBlob);
     if (verifyResult === true) {
-      console.info('verify success');
+      console.info('verify result: success.');
     } else {
-      console.error('verify failed');
+      console.error('verify result: failed.');
     }
   }
   ```

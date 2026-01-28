@@ -16,7 +16,7 @@
 >  
 >  - 组件主动获取焦点不受窗口焦点的控制。
 >  
->  - 焦点开发参考[焦点开发指南](../../../ui/arkts-common-events-focus-event.md)。
+>  - 焦点开发参考[支持焦点处理](../../../ui/arkts-common-events-focus-event.md)。
 
 ## focusable
 
@@ -188,7 +188,7 @@ requestFocus(value: string): boolean
 
 | 类型 | 说明 |
 | ------- | ---- |
-| boolean | 返回值表示是否成功给目标组件申请到焦点。若参数指向的目标组件存在且可获焦，则返回true，否则返回false。 |
+| boolean | 返回值表示是否成功给目标组件申请到焦点。若参数指向的目标组件存在且已挂载组件树，并具备获焦能力，则返回true，否则返回false。 |
 
 >  **说明：**
 >
@@ -374,7 +374,7 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 
 > **说明：**
 > 
-> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
+> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
 
 ## 示例
 

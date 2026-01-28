@@ -5,7 +5,7 @@
 <!--Owner: @hello_harmony; @yu_haoqiaida-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiDebug可用于获取系统或应用进程的内存、CPU和GPU等数据，以及开启进程Trace采集。
 

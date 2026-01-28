@@ -42,6 +42,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -97,6 +98,7 @@ Removes allowed USB devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -223,6 +225,7 @@ You can disable a USB storage device by calling this API or [addDisallowedUsbDev
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first). The strict priority is as follows: disabled > read-only > read and write.
 
 **Parameters**
 
@@ -336,6 +339,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -393,6 +397,7 @@ Removes the disallowed USB device types.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 

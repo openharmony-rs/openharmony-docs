@@ -44,7 +44,7 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
    const REQUEST_CODE = 99; // Negotiate the request code with the peripheral client.
    ```
 
-5. Open the **DriverExtAbility.ets** file, import the [RPC module](../../reference/apis-ipc-kit/js-apis-rpc.md), and overload the **onRemoteMessageRequest()** method to receive messages from the application and return the processing result to the application. **REQUEST_CODE** is used to verify the service request code sent by the application.
+5. Open the **DriverExtAbility.ets** file, import [@ohos.rpc (RPC)](../../reference/apis-ipc-kit/js-apis-rpc.md), reload the **onRemoteMessageRequest()** method, receive the message sent by the application, and return the processing result to the application. **REQUEST_CODE** is used to verify the service request code sent by the application.
 
    <!-- @[driver_service_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/driverextability/DriverExtAbility.ets) --> 
    
@@ -58,7 +58,7 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
          // When the application calls data.writeString() multiple times to write data, the driver can receive the corresponding data by calling data.readString() for multiple times.
          let optFir: string = data.readString();
          // The driver returns the data processing result to the application.
-         // In the example, Hello is received and Hello World is returned to the application.
+         // In the example, "Hello" is received and "Hello World" is returned to the application.
          reply.writeString(optFir + ` World`);
        }
        return true;
@@ -174,7 +174,7 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
                "value": "true"
              },
              {
-               "name": "ohos.permission.ACCESS_DDK_ALLOWED", // Whether to allow DDK access. This parameter is optional. The value **true** indicates that DDK access is allowed, and the value **false** indicates the opposite. The default value is **false**.
+               "name": "ohos.permission.ACCESS_DDK_ALLOWED," // Whether to allow DDK access. This parameter is optional. The value **true** indicates that DDK access is allowed, and the value **false** indicates the opposite. The default value is **false** if the specified value is incorrect or the value is left unspecified.
                "value": "true"
              }
            ]
@@ -188,7 +188,7 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
 
 ## Driver Development
 
-Currently, **DriverExtensionAbility** provides four capabilities: HID DDK, USB DDK, USB Serial DDK, and SCSI peripheral DDK, which are used to develop dedicated drivers for extended peripherals. Choose either mode depending on your need:
+Currently, **DriverExtensionAbility** provides four capabilities: HidDdk, UsbDdk, USBSerialDDK, and ScsiPeripheralDDK, which are used to develop dedicated drivers for extended peripherals. Choose either mode depending on your need:
 
 * [HID DDK Development](hid-ddk-guidelines.md)
 * [USB DDK Development](usb-ddk-guidelines.md)
@@ -222,5 +222,5 @@ You need to configure a signature file for your application to run on a device. 
       }
       ```
 
-Automatic signing: [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237)
+Automatic signing: For details, see [Signing Your App/Service Automatically](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section18815157237).
 <!--RP1End-->

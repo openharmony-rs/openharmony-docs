@@ -25,6 +25,8 @@ An electronic device touches an NFC tag via the NFC antenna to read and write th
 An application started on a device reads or writes the NFC tag. That is, the user starts the application to read and write the NFC tag. The user starts the application, opens the application page, and taps the device on the NFC tag. In this case, the retrieved tag data can be distributed only to the foreground application.
 - Reading or writing an NFC tag without starting an application<br>
 The user taps the device on an NFC tag without starting any application. Then, the device selects an application based on the type of the NFC tag technology. If multiple applications are matched, an application selector will be displayed, listing all the available applications for the user to choose. After the user selects an application, the NFC tag read/write page of the application is automatically displayed.
+- Reading or writing an NDEF tag to implement common features<br>
+Reading the content of a custom tag in NDEF format starts the AirTouch service to meet users' fragmented requirements through OneHop, such as NFC one-tap ordering, payment, and activity promotion. For details about how to develop and access an application and how to make tags, see the description related to the AirTouch service. For more NDEF tag specifications, visit the NFC forum.
 - Constraints<br>
 No matter whether the foreground mode or background mode is used, the NFC tag can be discovered by the device only when the device screen is unlocked and illuminated.
 

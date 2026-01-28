@@ -17,27 +17,9 @@ Worker的主要作用是为应用程序提供一个多线程的运行环境，�
 
 创建Worker的线程称为宿主线程（不局限于主线程，Worker线程也支持创建Worker子线程）。Worker子线程（或Actor线程、工作线程）是Worker自身运行的线程。每个Worker子线程和宿主线程拥有独立的实例，包含独立执行环境、对象、代码段等。因此，启动每个Worker存在一定的内存开销，需要限制Worker子线程的数量。Worker子线程和宿主线程通过消息传递机制通信，利用序列化、引用传递或转移所有权的机制完成命令和数据的交互。
 
+## 创建Worker的注意事项
 
-## Worker注意事项
-
-- 创建Worker时，提供手动和自动两种创建方式，推荐使用自动创建方式。手动创建Worker线程目录及文件时，需同步进行相关配置，具体要求请参阅[创建Worker的注意事项](#创建worker的注意事项)。
-- 使用Worker能力时，构造函数中传入的Worker线程文件的路径在不同版本有不同的规则，详情请参见[文件路径注意事项](#文件路径注意事项)。
-- Worker创建后需要手动管理生命周期。同时运行的Worker子线程数量最多为64个，并且与[napi_create_ark_runtime](../reference/native-lib/napi.md#napi_create_ark_runtime)创建的runtime总数不超过80。详情请参见[生命周期注意事项](#生命周期注意事项)。
-- 不同线程中上下文对象是不同的，因此Worker线程只能使用线程安全的库，例如UI相关的非线程安全库不能在Worker子线程中使用。
-- 单次序列化传输的数据量大小限制为16MB。
-- 使用Worker模块时，API version 18及之后的版本建议在宿主线程中注册onAllErrors回调，以捕获Worker线程生命周期内的各种异常。API version 18之前的版本应注册onerror回调。如果未注册onAllErrors或onerror回调，当Worker线程出现异常时会发生jscrash问题。注意，onerror接口仅能捕获onmessage回调中的同步异常，捕获异常后，Worker线程将进入销毁流程，无法继续使用。详情请参见[onAllErrors接口与onerror接口之间的行为差异](#onallerrors接口与onerror接口之间的行为差异)。
-- 不支持在多个HAP之间共享使用相同的Worker线程文件。
-- 引用HAR/HSP中的worker前，需要先配置对HAR/HSP的依赖，详见[引用共享包](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import)。
-- 不支持在Worker工作线程中使用[AppStorage](../ui/state-management/arkts-appstorage.md)。
-- 从API version 18开始，可以在构造函数的参数[WorkerOptions](../reference/apis-arkts/js-apis-worker.md#workeroptions)中指定Worker线程的优先级。
-- 在Worker文件中禁止使用export语法导出任何内容，否则会导致jscrash问题。
-- 应用挂起后，该应用的Worker线程会[暂停运行](../task-management/background-task-overview.md)。
-
-除上述注意事项外，使用Worker时还需注意[并发注意事项](multi-thread-concurrency-overview.md#并发注意事项)。
-
-### 创建Worker的注意事项
-
-Worker线程文件需要放在"{moduleName}/src/main/ets/"目录层级之下，否则不会被打包到应用中。有手动和自动两种创建Worker线程目录及文件的方式。
+Worker线程文件需要放在"{moduleName}/src/main/ets/"目录层级之下，否则不会被打包到应用中。有手动和自动两种创建Worker线程目录及文件的方式，推荐使用自动创建方式。手动创建Worker线程目录及文件时，需同步进行相关配置。
 
 - 手动创建：开发者手动创建相关目录及文件，通常是在ets目录下创建一个workers文件夹，用于存放worker.ets文件，需要配置build-profile.json5的相关字段信息，确保Worker线程文件被打包到应用中。
 
@@ -69,7 +51,7 @@ Worker线程文件需要放在"{moduleName}/src/main/ets/"目录层级之下，�
 - 自动创建：DevEco Studio支持一键生成Worker，在对应的{moduleName}目录下任意位置，单击鼠标右键 > New > Worker，即可自动生成Worker的模板文件及配置信息，无需再手动在build-profile.json5中进行相关配置。
 
 
-### 文件路径注意事项
+## 文件路径注意事项
 
   使用Worker模块的具体功能时，需先构造Worker实例对象。构造函数与API版本相关，且需传入Worker线程文件的路径（scriptURL）。
 
@@ -81,64 +63,147 @@ import { worker } from '@kit.ArkTS';
 const worker1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
 ```
 
-**Stage模型下的文件路径规则**
+### Stage模型下的文件路径规则
 
-构造函数中的scriptURL要求如下：
+针对scriptURL的路径有以下三种写法：
 
-- scriptURL的组成包含{moduleName}/ets和相对路径relativePath。
-- relativePath是Worker线程文件相对于"{moduleName}/src/main/ets/"目录的相对路径。
+写法一：以{moduleName}/ets/{relativePath}的方式加载Worker线程文件。relativePath是Worker线程文件相对于"{moduleName}/src/main/ets/"目录的相对路径。
 
-1） 加载Ability中的Worker线程文件：
-
-加载Ability中的worker线程文件。路径规则：{moduleName}/ets/{relativePath}。
+路径规则：{moduleName}/ets/{relativePath}。
 
 ```ts
 import { worker } from '@kit.ArkTS';
-
 // worker线程文件所在路径："entry/src/main/ets/workers/worker.ets"
-const workerStage1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
+const workerInstance1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
 
 // worker线程文件所在路径："testworkers/src/main/ets/ThreadFile/workers/worker.ets"
-const workerStage2: worker.ThreadWorker = new worker.ThreadWorker('testworkers/ets/ThreadFile/workers/worker.ets');
+const workerInstance2: worker.ThreadWorker = new worker.ThreadWorker('testworkers/ets/ThreadFile/workers/worker.ets');
 ```
 
-2） 加载[HSP](../quick-start/in-app-hsp.md)中Worker线程文件
+写法二：以@{moduleName}/ets/{relativePath}的方式加载Worker线程文件。
 
-加载HSP中的worker线程文件。路径规则：{moduleName}/ets/{relativePath}。
+路径规则：@{moduleName}/ets/{relativePath}。
 
 ```ts
 import { worker } from '@kit.ArkTS';
-
-// worker线程文件所在路径： "hsp/src/main/ets/workers/worker.ets"
-const workerStage3: worker.ThreadWorker = new worker.ThreadWorker('hsp/ets/workers/worker.ets');
-```
-
-3） 加载[HAR](../quick-start/har-package.md)中Worker线程文件
-
-加载HAR中worker线程文件存在以下两种情况：
-
-- @标识路径加载形式：所有种类的模块加载本地HAR中的Worker线程文件，加载路径规则：@{moduleName}/ets/{relativePath}。
-
-- 相对路径加载形式：本地HAR加载该包内的Worker线程文件，路径规则为：创建Worker对象所在文件与Worker线程文件的相对路径。
-
->**说明：**
->
->当开启useNormalizedOHMUrl（在工程目录中与entry同级别的应用级build-profile.json5文件中，将strictMode属性下的useNormalizedOHMUrl字段配置为true）或HAR包被打包成三方包使用时，HAR包中使用Worker仅支持通过相对路径的加载形式创建。
-
-```ts
-import { worker } from '@kit.ArkTS';
-
 // @标识路径加载形式：
 // worker线程文件所在路径: "har/src/main/ets/workers/worker.ets"
-const workerStage4: worker.ThreadWorker = new worker.ThreadWorker('@har/ets/workers/worker.ets');
+const workerInstance3: worker.ThreadWorker = new worker.ThreadWorker('@har/ets/workers/worker.ets');
+```
 
+写法三：以相对路径的方式加载Worker线程文件（仅支持包内加载，不支持跨包加载）。
+
+路径规则：../../{relativePath}。
+
+```ts
+import { worker } from '@kit.ArkTS';
 // 相对路径加载形式：
 // worker线程文件所在路径: "har/src/main/ets/workers/worker.ets"
 // 创建Worker对象的文件所在路径："har/src/main/ets/components/mainpage/MainPage.ets"
-const workerStage5: worker.ThreadWorker = new worker.ThreadWorker('../../workers/worker.ets');
+const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../workers/worker.ets');
 ```
 
-**FA模型下的文件路径规则**
+详细文件路径加载规则如下表：
+
+下表第一列各行表示加载Worker线程文件的所在位置，第一行各列表示被加载的Worker线程文件的所在位置。其余表格内容表示是否支持此类加载及对应路径规则的写法。
+
+例如，下表第二行第四列表示entry模块可以通过写法一加载应用内hsp模块内的Worker线程文件。
+
+> **说明：**
+>
+>* 当开发者加载entry、[feature](../quick-start/hap-package.md)及hsp包的Worker线程文件时，不建议采用写法三，推荐使用写法一，此写法无需拼接路径，可实现Worker的快速创建。
+>
+>* Worker线程文件的路径后缀.ets/ts可以省略。
+>
+>* 跨源码HSP/HAR的场景下，需在创建Worker的模块包对应的oh-package.json5文件中，配置所需HSP/HAR包的依赖项，详见[引用共享包](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-har-import)。
+>
+>* 当feature模块需加载其他模块的Worker线程文件时，应先完成对feature模块的调用。
+>
+>* 当开启useNormalizedOHMUrl（在工程目录中与entry同级别的应用级build-profile.json5文件中，将strictMode属性下的useNormalizedOHMUrl字段配置为true）或HAR包被打包成三方包使用时，HAR包中使用Worker仅支持通过相对路径的加载形式创建。
+
+| -    | entry     | feature                 | 应用内hsp                  | 跨工程hsp | 源码har                   | 三方har                                    |
+|:------- | --------- | ----------------------- | ----------------------- | ------ | ----------------------- | ---------------------------------------- |
+| entry   | 支持（写法一、三） | 支持（写法一）                 | 支持（写法一）                 | 不支持    | 支持（写法二）                 | 不支持                                      |
+| feature | 不支持       | 跨包支持（写法一），包内场景支持（写法一、三） | 支持（写法一）                 | 不支持    | 支持（写法二）                 | 不支持                                      |
+| 应用内hsp  | 不支持       | 支持（写法一）                 | 跨包支持（写法一），包内场景支持（写法一、三） | 不支持    | 支持（写法二）                 | 不支持                                      |
+| 跨工程hsp  | 不支持       | 不支持                     | 不支持                     | 不支持    | 不支持                     | 不支持                                      |
+| 源码har   | 不支持       | 支持（写法一）                 | 支持（写法一）                 | 不支持    | 跨包支持（写法二），包内场景支持（写法二、三） | 不支持                                      |
+| 三方har   | 不支持       | 不支持                     | 不支持                     | 不支持    | 不支持                     | 仅支持包内场景（写法三） |
+
+
+以entry模块加载源码har包的Worker线程文件为例，具体步骤如下：
+
+1. 创建HAR详情参考[开发静态共享包](../quick-start/har-package.md)。
+
+2. 在HAR中创建Worker线程文件相关内容。
+
+   <!-- @[create_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/workers/worker.ets) -->
+   
+   ``` TypeScript
+   workerPort.onmessage = (e: MessageEvents) => {
+     console.info('worker thread receive message: ', e.data);
+     workerPort.postMessage('worker thread post message to main thread');
+   }
+   ```
+
+3. 在entry模块的oh-package.json5文件中配置HAR包的依赖。
+
+   <!-- @[config_har_dependency](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5) -->
+   
+   ``` JSON5
+   {
+     "name": "entry",
+     "version": "1.0.0",
+     "description": "Please describe the basic information.",
+     "main": "",
+     "author": "",
+     "license": "",
+     "dependencies": {
+       "har": "file:../har"
+     }
+   }
+   ```
+
+4. 在entry模块中加载HAR包中的Worker线程文件。
+
+   <!-- @[load_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/crosshar.ets) -->
+   
+   ``` TypeScript
+   import { worker } from '@kit.ArkTS';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+   
+     build() {
+       RelativeContainer() {
+         Text(this.message)
+           .id('HelloWorld')
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+           .alignRules({
+             center: { anchor: '__container__', align: VerticalAlign.Center },
+             middle: { anchor: '__container__', align: HorizontalAlign.Center }
+           })
+           .onClick(() => {
+             // 通过@标识路径加载形式，加载har中Worker线程文件
+             let workerInstance = new worker.ThreadWorker('@har/ets/workers/worker.ets');
+             workerInstance.onmessage = () => {
+               console.info('main thread onmessage');
+             };
+             workerInstance.postMessage('hello world');
+             this.message = 'success';
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
+
+
+### FA模型下的文件路径规则
 
   构造函数中的scriptURL为：Worker线程文件与"{moduleName}/src/main/ets/MainAbility"的相对路径。
 
@@ -158,36 +223,21 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
 ```
 
 
-### 生命周期注意事项
+## 生命周期注意事项
 
-- Worker的创建和销毁会消耗较多的系统资源，建议开发者合理管理并重复使用已创建的Worker。Worker空闲时仍会占用资源，当不需要Worker时，可以调用[terminate()](../reference/apis-arkts/js-apis-worker.md#terminate9)接口或[close()](../reference/apis-arkts/js-apis-worker.md#close9)方法主动销毁Worker。若Worker处于已销毁或正在销毁等非运行状态时，调用其功能接口，会抛出相应的错误。
-
-
-- Worker的数量由内存管理策略决定，设定的内存阈值为1.5GB和设备物理内存的60%中的较小值。在内存允许的情况下，系统最多可以同时运行64个Worker。尝试创建的Worker数量超出上限时，系统将抛出错误：“Worker initialization failure, the number of workers exceeds the maximum.”。实际运行的Worker数量会根据当前内存使用情况实时调整。当所有Worker和主线程的累积内存占用超过设定的阈值时，系统将触发内存溢出（OOM）错误，导致应用程序崩溃。
+- Worker创建后需要手动管理生命周期。Worker的创建和销毁会消耗较多的系统资源，建议开发者合理管理并重复使用已创建的Worker。Worker空闲时仍会占用资源，当不需要Worker时，可以调用[terminate()](../reference/apis-arkts/js-apis-worker.md#terminate9)接口或[close()](../reference/apis-arkts/js-apis-worker.md#close9)方法主动销毁Worker。需要注意的是，调用完terminate()接口或close()方法后，worker线程的退出是异步的。若开发者注册[onexit()](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-worker#threadworker9)，则线程真正退出的时机是在onexit()回调完成之后。若Worker处于已销毁或正在销毁等非运行状态时，调用其功能接口，会抛出相应的错误。
 
 
-### onAllErrors接口与onerror接口之间的行为差异
+- Worker的数量由内存管理策略决定，设定的内存阈值为1.5GB和设备物理内存的60%中的较小值。在内存允许的情况下，系统最多可以同时运行64个Worker，并且与[napi_create_ark_runtime](../reference/native-lib/napi.md#napi_create_ark_runtime)创建的runtime总数不超过80。尝试创建的Worker数量超出上限时，系统将抛出错误：“Worker initialization failure, the number of workers exceeds the maximum.”。实际运行的Worker数量会根据当前内存使用情况实时调整。当所有Worker和主线程的累积内存占用超过设定的阈值时，系统将触发内存溢出（OOM）错误，导致应用程序崩溃。
 
-1. 异常捕获范围
+## 其他注意事项
 
-    onAllErrors接口可以捕获Worker线程的onmessage回调、timer回调以及文件执行等流程中产生的全局异常。
-
-    onerror接口仅能捕获Worker线程的onmessage回调中同步方法产生的异常，无法捕获多线程回调和模块化相关异常。
-
-2. 异常捕获后的线程状态
-
-    onAllErrors接口捕获异常后，Worker线程仍然存活并可以继续使用。这使开发者可以在捕获异常后执行其他操作，无需担心线程终止。
-
-    onerror接口捕获异常后，Worker线程会进入销毁流程，无法继续使用。这意味着在onerror触发后，Worker线程将被终止，后续操作将无法进行。
-
-3. 适用场景
-
-    onAllErrors接口适用于捕获Worker线程中所有类型异常的场景，特别是确保异常发生后Worker线程仍能继续运行的复杂场景。
-
-    onerror接口适用于只需要捕获onmessage回调中同步异常的简单场景。由于捕获异常后线程会被销毁，适用于不需要继续使用Worker线程的情况。
-
-    推荐使用onAllErrors接口，因为它提供了更全面的异常捕获能力，并且不会导致线程终止。
-
+- 不同线程中上下文对象是不同的，因此Worker线程只能使用线程安全的库，例如UI相关的非线程安全库不能在Worker子线程中使用。
+- 单次序列化传输的数据量大小限制为16MB。
+- 不支持在Worker工作线程中使用[AppStorage](../ui/state-management/arkts-appstorage.md)。
+- 在Worker文件中禁止使用export语法导出任何内容，否则会导致jscrash问题。
+- 应用挂起后，该应用的Worker线程会[暂停运行](../task-management/background-task-overview.md)。
+- 除上述注意事项外，使用Worker时还需注意[并发注意事项](multi-thread-concurrency-overview.md#并发注意事项)。
 
 ## Worker基本用法示例
 
@@ -286,77 +336,6 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
       }
       ```
       <!-- @[register_callback_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/workers/worker.ets) -->
-
-
-## 跨har包加载Worker
-
-1. 创建HAR详情参考[开发静态共享包](../quick-start/har-package.md)。
-
-2. 在HAR中创建Worker线程文件相关内容。
-
-   ```ts
-   // worker.ets
-   workerPort.onmessage = (e: MessageEvents) => {
-     console.info('worker thread receive message: ', e.data);
-     workerPort.postMessage('worker thread post message to main thread');
-   }
-   ```
-   <!-- @[create_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/workers/worker.ets) -->
-
-3. 在entry模块的oh-package.json5文件中配置HAR包的依赖。
-
-   ```ts
-   // 在entry模块配置har包的依赖
-   {
-     "name": "entry",
-     "version": "1.0.0",
-     "description": "Please describe the basic information.",
-     "main": "",
-     "author": "",
-     "license": "",
-     "dependencies": {
-       "har": "file:../har"
-     }
-   }
-   ```
-   <!-- @[config_har_dependency](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5) -->
-
-4. 在entry模块中加载HAR包中的Worker线程文件。
-
-   ```ts
-   // Index.ets
-   import { worker } from '@kit.ArkTS';
-
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = 'Hello World';
-
-     build() {
-       RelativeContainer() {
-         Text(this.message)
-           .id('HelloWorld')
-           .fontSize(50)
-           .fontWeight(FontWeight.Bold)
-           .alignRules({
-             center: { anchor: '__container__', align: VerticalAlign.Center },
-             middle: { anchor: '__container__', align: HorizontalAlign.Center }
-           })
-           .onClick(() => {
-             // 通过@标识路径加载形式，加载har中Worker线程文件
-             let workerInstance = new worker.ThreadWorker('@har/ets/workers/worker.ets');
-             workerInstance.onmessage = () => {
-               console.info('main thread onmessage');
-             };
-             workerInstance.postMessage('hello world');
-           })
-       }
-       .height('100%')
-       .width('100%')
-     }
-   }
-   ```
-   <!-- @[load_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/crosshar.ets) -->
 
 
 ## 多级Worker生命周期管理

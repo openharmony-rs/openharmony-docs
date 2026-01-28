@@ -466,7 +466,7 @@ try {
 
 ## appControl.deleteDisposedStatusSync<sup>10+</sup>
 
-deleteDisposedStatusSync(appId: string, appIndex:? number) : void
+deleteDisposedStatusSync(appId: string, appIndex?: number) : void
 
 以同步方法删除指定应用或分身应用的处置状态。成功返回null，失败抛出对应异常。
 
@@ -490,7 +490,7 @@ deleteDisposedStatusSync(appId: string, appIndex:? number) : void
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
@@ -515,7 +515,7 @@ try {
 
 ## appControl.getDisposedRule<sup>11+</sup>
 
-getDisposedRule(appId: string, appIndex:? number): DisposedRule
+getDisposedRule(appId: string, appIndex?: number): DisposedRule
 
 获取指定应用或分身应用已设置的拦截规则。
 
@@ -545,7 +545,7 @@ getDisposedRule(appId: string, appIndex:? number): DisposedRule
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
@@ -613,7 +613,7 @@ try {
 
 ## appControl.setDisposedRule<sup>11+</sup>
 
-setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
+setDisposedRule(appId: string, rule: DisposedRule, appIndex?: number): void
 
 设置指定应用或分身应用的拦截规则。
 
@@ -638,7 +638,7 @@ setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
@@ -772,7 +772,7 @@ struct Index {
 
 ## appControl.setUninstallDisposedRule<sup>15+</sup>
 
-setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex:? number): void
+setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, appIndex?: number): void
 
 设置指定应用或分身应用的卸载处置规则。
 
@@ -833,7 +833,7 @@ try {
 
 ## appControl.getUninstallDisposedRule<sup>15+</sup>
 
-getUninstallDisposedRule(appIdentifier: string, appIndex:? number): UninstallDisposedRule
+getUninstallDisposedRule(appIdentifier: string, appIndex?: number): UninstallDisposedRule
 
 获取指定应用或分身应用已设置的卸载处置规则。
 
@@ -888,7 +888,7 @@ try {
 
 ## appControl.deleteUninstallDisposedRule<sup>15+</sup>
 
-deleteUninstallDisposedRule(appIdentifier: string, appIndex:? number): void
+deleteUninstallDisposedRule(appIdentifier: string, appIndex?: number): void
 
 删除指定应用或分身应用的卸载处置规则。
 

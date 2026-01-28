@@ -67,7 +67,11 @@ struct Index {
 
 为避免不同设置方式导致的显示差异，建议在通过AttributeModifier接口设置LabelStyle时，显式指定weight的值，以确保文本样式符合预期，具体示例如下。
 
+<!-- @[button_modifier_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonModifierFAQ.ets) -->
+
 ```ts
+
+// pages/ButtonModifierFAQ.ets
 class MyButtonModifier1 implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.labelStyle({});
@@ -93,14 +97,17 @@ struct Index {
   build() {
     Column() {
       Text('normal')
+      // Button直接设置labelStyle，font属性中的weight默认值为500
       Button('DemoButtonTest')
         .width(100)
         .labelStyle({})
       Divider()
+      // 通过AttributeModifier接口设置labelStyle，font属性中的weight默认值为400
       Text('modifier1')
       Button('DemoButtonTest')
         .width(100)
         .attributeModifier(this.modifier1)
+
       Text('modifier2')
       Button('DemoButtonTest')
         .width(100)

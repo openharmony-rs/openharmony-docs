@@ -63,10 +63,10 @@ getColumnNames(): Array\<string>
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -113,11 +113,11 @@ getColumnIndex(columnName: string): number
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -171,11 +171,11 @@ getColumnName(columnIndex: number): string
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -228,12 +228,12 @@ getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted. |
+| 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
-| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800013     | Column index is out of bounds.                                        |
+| 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
+| 14800021     | SQLite: Generic error. |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
 | 14800023     | SQLite: Access permission denied.                            |
 | 14800024     | SQLite: The database file is locked.                         |
@@ -292,12 +292,12 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 | ------------ | ------------------------------------------------------------ |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000     | Inner error.                                                 |
-| 14800011     | Failed to open the database because it is corrupted. |
+| 14800011     | The current operation failed because the database is corrupted. |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                                           |
-| 14800013     | ResultSet is empty or column index is out of bounds.                                        |
-| 14800014     | The RdbStore or ResultSet is already closed.                                              |
+| 14800013     | Column index is out of bounds.                                        |
+| 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
+| 14800021     | SQLite: Generic error. |
 | 14800022     | SQLite: Callback routine requested an abort.                 |
 | 14800023     | SQLite: Access permission denied.                            |
 | 14800024     | SQLite: The database file is locked.                         |
@@ -356,11 +356,11 @@ goTo(offset:number): boolean
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -411,11 +411,11 @@ goToRow(position: number): boolean
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -460,11 +460,11 @@ goToFirstRow(): boolean
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -508,11 +508,11 @@ goToLastRow(): boolean
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -556,11 +556,11 @@ goToNextRow(): boolean
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -604,11 +604,11 @@ goToPreviousRow(): boolean
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -659,11 +659,11 @@ getValue(columnIndex: number): ValueType
 |-----------|---------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error.      |
-| 14800011  | Failed to open the database because it is corrupted.        |
+| 14800011  | The current operation failed because the database is corrupted.        |
 | 14800012  | ResultSet is empty or pointer index is out of bounds.       |
-| 14800013  | ResultSet is empty or column index is out of bounds.   |
-| 14800014  | The RdbStore or ResultSet is already closed.       |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.    |
+| 14800013  | Column index is out of bounds.   |
+| 14800014  | The target instance is already closed.       |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.     |
 | 14800023  | SQLite: Access permission denied.    |
 | 14800024  | SQLite: The database file is locked.    |
@@ -721,11 +721,11 @@ getBlob(columnIndex: number): Uint8Array
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -776,11 +776,11 @@ getString(columnIndex: number): string
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -831,11 +831,11 @@ getLong(columnIndex: number): number
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -892,11 +892,11 @@ getDouble(columnIndex: number): number
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -953,11 +953,11 @@ getAsset(columnIndex: number): Asset
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1008,11 +1008,11 @@ getAssets(columnIndex: number): Assets
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1056,11 +1056,11 @@ getRow(): ValuesBucket
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1112,11 +1112,11 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 |-----------| ------------------------------------------------------------ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1180,11 +1180,11 @@ getCurrentRowData(): RowData
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -1234,11 +1234,11 @@ getRowsData(maxCount: number, position?: number): Promise\<RowsData>
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -1306,11 +1306,11 @@ getSendableRow(): sendableRelationalStore.ValuesBucket
 | **错误码ID** | **错误信息**                                  |
 | ------------ | --------------------------------------------- |
 | 14800000     | Inner error.                                  |
-| 14800011     | Failed to open the database because it is corrupted.                           |
+| 14800011     | The current operation failed because the database is corrupted.                           |
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                            |
-| 14800013     | ResultSet is empty or column index is out of bounds.                         |
-| 14800014     | The RdbStore or ResultSet is already closed.                               |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                        |
+| 14800013     | Column index is out of bounds.                         |
+| 14800014     | The target instance is already closed.                               |
+| 14800021     | SQLite: Generic error.                        |
 | 14800022     | SQLite: Callback routine requested an abort.  |
 | 14800023     | SQLite: Access permission denied.             |
 | 14800024     | SQLite: The database file is locked.          |
@@ -1335,11 +1335,11 @@ import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 import { relationalStore } from '@kit.ArkData';
 import { taskpool } from '@kit.ArkTS';
-import type ctx from '@ohos.app.ability.common';
+import { common } from '@kit.AbilityKit';
 import { sendableRelationalStore } from '@kit.ArkData';
 
 @Concurrent
-async function getDataByName(name: string, context: ctx.UIAbilityContext) {
+async function getDataByName(name: string, context: common.UIAbilityContext) {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: "RdbTest.db",
     securityLevel: relationalStore.SecurityLevel.S3
@@ -1401,11 +1401,11 @@ isColumnNull(columnIndex: number): boolean
 |-----------| ------------------------------------------------------- |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
+| 14800011  | The current operation failed because the database is corrupted. |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |

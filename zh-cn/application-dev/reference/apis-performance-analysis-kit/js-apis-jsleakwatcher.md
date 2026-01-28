@@ -5,7 +5,7 @@
 <!--Owner: @lu-tao-->
 <!--Designer: @martin-duan-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 本模块提供了监控js对象是否发生泄露的能力。
 
@@ -14,7 +14,7 @@
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
-<!--code_no_check-->
+
 ```js
 import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 ```

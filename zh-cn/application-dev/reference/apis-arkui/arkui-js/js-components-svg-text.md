@@ -25,7 +25,7 @@
 
 ## 子组件
 
-支持[tspan](js-components-svg-tspan.md)、[textpath](js-components-svg-textpath.md)、[animate](js-components-svg-animate.md)、[animateTransform](js-components-svg-animatetransform.md)。
+支持[tspan](js-components-svg-tspan.md)、[textPath](js-components-svg-textpath.md)、[animate](js-components-svg-animate.md)、[animateTransform](js-components-svg-animatetransform.md)。
 
 
 ## 属性

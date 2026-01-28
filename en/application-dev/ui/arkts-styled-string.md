@@ -20,7 +20,7 @@ Styled strings provide a variety of style objects that cover various common text
   > Since API version 15, styled string content can be displayed upon page load when **setStyledString** is called in **aboutToAppear**.
 
   <!-- @[createStyledString_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/CreateApply.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -352,7 +352,7 @@ You can set the paragraph style using [ParagraphStyle](../reference/apis-arkui/a
 The following example shows how to create and apply a paragraph style. The style is applied to the start, end or any position within a paragraph; it does not apply to non-paragraph areas.
 
   <!-- @[styledStringParagraphStyleOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringParagraphStyleOne.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics} from '@kit.ArkUI';
   
@@ -418,11 +418,11 @@ The following example shows how to create and apply a paragraph style. The style
   ```
 
   ![styled_string_paragraph1](figures/styled_string_paragraph1.png)
-
+  
   In addition to presetting styles when creating a styled string, you can also clear the original styles and replace them with new ones later using the [replaceStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#replacestyle) API. After the replacement, you need to proactively trigger an update to the bound styled string on the attached text component's controller.
 
   <!-- @[styledStringReplaceParagraphStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringReplaceParagraphStyle.ets) -->
-
+  
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
   
@@ -581,7 +581,7 @@ You can use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measure
       this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Full_text') as string;
     // Replace $r('app.string.Original_text') with the actual resource file. In this example, the value in the resource file is "Original text."
     @State originalText: ResourceStr = $r('app.string.Original_text');
-    // Replace $r('app.string.After_typesetting') with the actual resource file. In this example, the value of the resource file is "Styled text".
+    // Replace $r('app.string.After_typesetting') with the actual resource file. In this example, the value of the resource file is "Styled text."
     @State afterTypesetting: ResourceStr = $r('app.string.After_typesetting');
     str: string =
       'Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.';
@@ -738,7 +738,7 @@ The following example shows how to attach images and text to the same **MutableS
 > In the [constructor](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#constructor) of styled strings, when input parameters are of ImageAttachment or CustomSpan type, the **styles** parameter does not take effect. To apply styles, use methods such as [setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle) and [insertStyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#insertstyledstring).
 
   <!-- @[styledStringImageAttachment_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringImageAttachment.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   import { image } from '@kit.ImageKit';
@@ -918,7 +918,7 @@ You can use [GestureStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-
 In addition to initializing styled strings with initial style objects, you can also use the [setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle) API to overlay new styles or update existing ones. After making changes, you need to manually trigger an update of the bound styled string on the attached text component's controller. 
 
   <!-- @[styledStringGestureStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringGestureStyle.ets) -->
-
+  
   ``` TypeScript
   import { drawing } from '@kit.ArkGraphics2D';
   
@@ -1172,7 +1172,7 @@ export struct StyledStringHtml {
 ![](figures/styled_string_html.gif)
 
 - Convert HTML tags including \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, and \<sub>, along with the **background-color** attribute in HTML style attributes, to styled strings and convert them back to HTML format.
-
+ 
   <!-- @[styledStringHtmlOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtmlOne.ets) -->
   
   ``` TypeScript

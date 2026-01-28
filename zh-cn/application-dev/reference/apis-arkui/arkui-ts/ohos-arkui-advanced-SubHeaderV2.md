@@ -9,7 +9,7 @@
 
 子标题，用于列表项或内容项顶部，将该列表或内容划分为一个区块，子标题名称用来概括该区块内容。
 
-该组件基于[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理V1](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理V2增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理V2，开发者可以通过该组件更灵活地控制子标题的数据和状态，实现更高效的用户界面刷新。
+该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制子标题的数据和状态，实现更高效的用户界面刷新。
 
 
 
@@ -88,7 +88,7 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 | secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 副标题内容。<br />默认值：undefined<br/>装饰器类型：@Trace  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                     |
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>装饰器类型：@Trace <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 

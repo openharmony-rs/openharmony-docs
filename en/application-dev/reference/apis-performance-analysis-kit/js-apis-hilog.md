@@ -5,7 +5,7 @@
 <!--Owner: @liuyifeifei;@buzhenwang-->
 <!--Designer: @shenchenkai-->
 <!--Tester: @liyang2235-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The HiLog subsystem allows your applications or services to output logs based on the specified type, level, and format string. Such logs help you learn the running status of applications and better debug programs.
 

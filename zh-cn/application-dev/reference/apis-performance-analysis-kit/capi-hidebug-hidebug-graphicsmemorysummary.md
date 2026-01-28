@@ -5,7 +5,7 @@
 <!--Owner: @hello_harmony; @yu_haoqiaida-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ```c
 typedef struct HiDebug_GraphicsMemorySummary {...} HiDebug_GraphicsMemorySummary

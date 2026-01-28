@@ -12,7 +12,7 @@ Navigation组件是路由导航的根视图容器，一般作为Page页面的根
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
+> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性实现安全区避让。
 >
 > - [NavBar](#navbar12)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及[全模态](ts-universal-attributes-modal-transition.md)的生命周期进行联动。
 >
@@ -1900,7 +1900,7 @@ Navigation分割线颜色及上下边距。
 
 > **说明：**
 >
-> 为了简化表示，可以将`组件宽度 - minContentWidth - 分割线宽度 (1vp)`称为calcNavBarWidth。
+> 为了简化表示，可以将`组件宽度 - minContentWidth - 分割线宽度 (1px)`称为calcNavBarWidth。
 
 ## NavigationOperation<sup>11+</sup>枚举说明
 

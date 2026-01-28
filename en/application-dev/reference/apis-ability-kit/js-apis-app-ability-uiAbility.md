@@ -783,8 +783,8 @@ Triggered by the system just before the UIAbility is about to close (for example
 
 > **NOTE**
 >
-> - Starting from API version 15, this callback is not executed when [UIAbility.onPrepareToTerminateAsync](#onpreparetoterminateasync15) is implemented. When [AbilityStage.onPrepareTerminationAsync](js-apis-app-ability-abilityStage.md#onprepareterminationasync15) or [AbilityStage.onPrepareTermination](js-apis-app-ability-abilityStage.md#onpreparetermination15) is implemented, this callback is not executed if the user right-clicks the dock bar or system tray to close the UIAbility.
-> - Additionally, if the application or a third-party framework registers a listener for [window.WindowStage.on('windowStageClose')](../apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14), this callback is not executed.
+> - Starting from API version 15, this callback is not executed when[UIAbility.onPrepareToTerminateAsync](#onpreparetoterminateasync15) is implemented. When [AbilityStage.onPrepareTerminationAsync](js-apis-app-ability-abilityStage.md#onprepareterminationasync15) or [AbilityStage.onPrepareTermination](js-apis-app-ability-abilityStage.md#onpreparetermination15) is implemented, this callback is not executed if the user right-clicks the dock bar or system tray to close the UIAbility.
+> - Additionally, if the application or a third-party framework registers a listener for [window.WindowStage.on('windowStageClose')](../apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14), this callback function is not executed.
 
 **Required permissions**: ohos.permission.PREPARE_APP_TERMINATE
 
@@ -845,7 +845,7 @@ You can return **true** to block the current closure attempt and then manually c
 > **NOTE**
 >
 > - When [AbilityStage.onPrepareTerminationAsync](js-apis-app-ability-abilityStage.md#onprepareterminationasync15) or [AbilityStage.onPrepareTermination](js-apis-app-ability-abilityStage.md#onpreparetermination15) is implemented, this callback is not executed if the user right-clicks the dock bar or system tray to close the UIAbility.
-> - Additionally, if the application or a third-party framework registers a listener for [window.WindowStage.on('windowStageClose')](../apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14), this callback is not executed.
+> - Additionally, if the application or a third-party framework registers a listener for [window.WindowStage.on('windowStageClose')](../apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14), this callback function is not executed.
 >
 > - If an asynchronous callback crashes, it will be handled as a timeout. If the UIAbility does not respond within 10 seconds, it will be terminated forcibly.
 
@@ -952,7 +952,7 @@ export default class MyAbility extends UIAbility {
 
 ## Caller
 
-A Caller UIAbility (which must be a system application) can use [startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall) to start a Callee UIAbility (which can be a third-party application). After the target UIAbility is started successfully, a Caller object is returned to the caller for communication.
+A Caller UIAbility can use the [startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall) API to start the target Callee UIAbility. After the target UIAbility is started successfully, a Caller object is returned to the caller for communication.
 
 ### call
 
@@ -1019,7 +1019,7 @@ class MyMessageAble implements rpc.Parcelable { // Custom parcelable data struct
   }
 }
 
-let method = 'call_Function'; // Notification message string negotiated by the two UIAbility components.
+let method = 'call_Function'; // Agreed notification message string
 
 export default class MainUIAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -1578,7 +1578,9 @@ export default class MainUIAbility extends UIAbility {
 
 ## OnReleaseCallback
 
-type OnReleaseCallback = (msg: string) => void
+### (msg: string)
+
+(msg: string): void
 
 Defines the callback that is invoked when the stub on the target UIAbility is disconnected.
 
@@ -1592,7 +1594,9 @@ Defines the callback that is invoked when the stub on the target UIAbility is di
 
 ## OnRemoteStateChangeCallback<sup>10+</sup>
 
-type OnRemoteStateChangeCallback = (msg: string) => void
+### (msg: string)<sup>10+</sup>
+
+(msg: string): void
 
 Defines the callback that is invoked when the remote UIAbility state changes in the collaboration scenario.
 
@@ -1606,7 +1610,9 @@ Defines the callback that is invoked when the remote UIAbility state changes in 
 
 ## CalleeCallback
 
-type CalleeCallback = (indata: rpc.MessageSequence) => rpc.Parcelable
+### (indata: rpc.MessageSequence)
+
+(indata: rpc.MessageSequence): rpc.Parcelable
 
 Defines the callback of the registration message notification of the UIAbility.
 

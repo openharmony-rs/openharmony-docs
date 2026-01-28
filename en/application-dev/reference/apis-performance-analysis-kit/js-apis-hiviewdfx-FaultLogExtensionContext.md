@@ -4,7 +4,7 @@
 <!--Owner: @hello_harmony-->
 <!--Designer: @StevenLai1994-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 FaultLogExtensionContext is the context of [FaultLogExtensionAbility](js-apis-hiviewdfx-FaultLogExtensionAbility.md) and inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 

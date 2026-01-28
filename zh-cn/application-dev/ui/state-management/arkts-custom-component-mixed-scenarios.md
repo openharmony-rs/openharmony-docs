@@ -56,7 +56,7 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 
 |  装饰器类别  |                            装饰器                            |
 | :----------: | :----------------------------------------------------------: |
-| 组件内装饰器 | [\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)、[\@ObjectLink](./arkts-observed-and-objectlink.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@Consume](./arkts-provide-and-consume.md)、[\@StorageProp](./arkts-appstorage.md)、[\@StorageLink](./arkts-appstorage.md)、[\@LocalStorageProp](./arkts-localstorage.md)、[\@LocalStorageLink](./arkts-localstorage.md)、[\@Watch](./arkts-watch.md) |
+| 组件内装饰器 | [\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)、[\@ObjectLink](./arkts-observed-and-objectlink.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@Consume](./arkts-provide-and-consume.md)、[\@StorageProp](./arkts-appstorage.md#storageprop)、[\@StorageLink](./arkts-appstorage.md#storagelink)、[\@LocalStorageProp](./arkts-localstorage.md#localstorageprop)、[\@LocalStorageLink](./arkts-localstorage.md#localstoragelink)、[\@Watch](./arkts-watch.md) |
 | 类相关装饰器 |                     \@Observed、\@Track                      |
 
 ### 状态管理V2的装饰器

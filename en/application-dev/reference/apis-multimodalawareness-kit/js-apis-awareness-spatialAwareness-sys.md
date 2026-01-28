@@ -20,7 +20,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.TechnologyType
 
-Provides the signal type.
+Provides the type of an input signal. This API executes the corresponding algorithm based on the type of the input signal.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -34,7 +34,7 @@ Provides the signal type.
 
 ## spatialAwareness.ReportingMode
 
-Reporting mode of the returned result after distance measurement.
+Provides the reporting mode of the result after the distance measurement API is executed.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -45,20 +45,20 @@ Reporting mode of the returned result after distance measurement.
 
 ## spatialAwareness.DistanceRank
 
-Distance rank.
+Provides the distance rank of the distance measurement result. Different ranks correspond to different distance ranges.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | Name                                | Value               | Description                  |
 | ------------------------------------ | ------------------| -----------------------|
-| RANK_ULTRA_SHORT_RANGE               | rankUltraShort    | Ultra-short distance.          |
-| RANK_SHORT_RANGE                     | rankShort         | Short distance.            |
-| RANK_SHORT_MEDIUM_RANGE              | rankMediumShort   | Medium-short distance.          |
-| RANK_MEDIUM_RANGE                    | rankMedium        | Medium distance.            |
+| RANK_ULTRA_SHORT_RANGE               | rankUltraShort    | Ultra-short distance, in cm. The value range is [0:5].   |
+| RANK_SHORT_RANGE                     | rankShort         | Short distance, in cm. The value range is (5:100].    |
+| RANK_SHORT_MEDIUM_RANGE              | rankMediumShort   | Medium-short distance, in cm. The value range is (100:500].|
+| RANK_MEDIUM_RANGE                    | rankMedium        | Medium distance, in cm. The value range is (500:1000]. |
 
 ## spatialAwareness.DistanceMeasurementResponse
 
-Distance measurement result.
+Provides the callback result after the distance measurement API is executed.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -71,7 +71,7 @@ Distance measurement result.
 
 ## spatialAwareness.PositionRelativeToDoor
 
-Indicates inside or outside the door.
+Enumerates the inside or outside of the door in the result returned by the door inside-outside recognition API.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -82,7 +82,7 @@ Indicates inside or outside the door.
 
 ## spatialAwareness.DoorPositionResponse
 
-Door location information.
+Provides the callback result after the door inside-outside recognition API is executed.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -94,7 +94,7 @@ Door location information.
 
 ## spatialAwareness.DistanceMeasurementConfigParams
 
-Indicates the configuration parameters of the distance measurement API.
+Provides the input parameter configuration of the distance measurement API. This API executes the corresponding algorithm based on the parameter configuration.
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -103,12 +103,15 @@ Indicates the configuration parameters of the distance measurement API.
 | deviceList         | string[]              | Yes        | No| Indicates the device list.|
 | techType           | TechnologyType        | Yes        | No| Indicates the signal type.|
 | reportMode         | ReportingMode         | Yes        | No | Indicates the result reporting mode.|
+| reportFrequency    | int                   | Yes        | No | Indicates the result reporting frequency.|
 
-## spatialAwareness.onDistanceMeasure
+## spatialAwareness.onDistanceMeasure<sup>23+</sup>
 
 onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-Subscribes to the distance measurement event and returns the result.
+Enables distance measurement. This API triggers the execution of a distance measurement algorithm and returns the distance measurement result.
+
+**Required permissions**: ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -125,7 +128,7 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -135,28 +138,30 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call onDistanceMeasure before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call onDistanceMeasure start');
    try {
       spatialAwareness.onDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('distanceMeasure result' + ${data.distance});
+         console.info('result = ' + ${data.distance});
       });
    } catch (err) {
-      console.error('distanceMeasure:, errCode = ' + err.code);
+      console.error('call onDistanceMeasure failed, errCode = ' + err.code);
    }
 ```
 
-## spatialAwareness.offDistanceMeasure
+## spatialAwareness.offDistanceMeasure<sup>23+</sup>
 
 offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
-Unsubscribes from a distance measurement event. After the distance measurement event is unsubscribed, distance measurement does not occur.
+Disables distance measurement. This API stops the execution of the distance measurement algorithm.
+
+**Required permissions**: ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -165,7 +170,7 @@ Unsubscribes from a distance measurement event. After the distance measurement e
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
-| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | Yes  | Callback function used to return the distance measurement result.                                |
+| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | No  | Callback function used to return the distance measurement result.                                |
 
 **Error codes**
 
@@ -173,7 +178,7 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -183,27 +188,30 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call offDistanceMeasure before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call offDistanceMeasure start');
    try {
       spatialAwareness.offDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('distanceMeasure result' + ${data.distance});
+         console.info('result = ' + ${data.distance});
       });
    } catch (err) {
-      console.error('distanceMeasure:, errCode = ' + err.code);
+      console.error('call offDistanceMeasure failed, errCode = ' + err.code);
    }
 ```
 
-## spatialAwareness.onIndoorOrOutdoorIdentify
+## spatialAwareness.onIndoorOrOutdoorIdentify<sup>23+</sup>
 
 onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DoorPositionResponse&gt;): void;
-Subscribes to inside and outside door recognition events and returns the result. Returns whether the device is inside or outside the door.
+
+Enables door inside-outside recognition. This API triggers the execution of a door inside-outside recognition algorithm and returns whether the device is inside or outside the door.
+
+**Required permissions**: ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -220,7 +228,7 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -230,28 +238,30 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call onIndoorOrOutdoorIdentify before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call onIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.onIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('distanceMeasure result' + ${data.position});
+         console.info('result = ' + ${data.position});
       });
    } catch (err) {
-      console.error('distanceMeasure:, errCode = ' + err.code);
+      console.error('call onIndoorOrOutdoorIdentify failed, errCode = ' + err.code);
    }
 ```
 
-## spatialAwareness.offIndoorOrOutdoorIdentify
+## spatialAwareness.offIndoorOrOutdoorIdentify<sup>23+</sup>
 
 offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DoorPositionResponse&gt;): void;
 
-Unsubscribes from inside and outside door recognition events. No inside and outside door recognition events information is returned.
+Disables door inside-outside recognition. This API stops the execution of the door inside-outside recognition algorithm.
+
+**Required permissions**: ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
 **System capability**: SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -260,7 +270,7 @@ Unsubscribes from inside and outside door recognition events. No inside and outs
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
-| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | Yes  | Callback used to return the information on whether the device is inside or outside the door.                                  |
+| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | No  | Callback used to return the information on whether the device is inside or outside the door.                                  |
 
 **Error codes**
 
@@ -268,7 +278,7 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application. |
+| 201      | Permission denied. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -278,19 +288,19 @@ For details about the error codes, see [Spatial Awareness Error Codes](errorcode
 
 ```ts
 import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
-   console.info('calllOnDistanceMeasure before');
+   console.info('call offIndoorOrOutdoorIdentify before');
    let configParams: spatialAwareness.DistanceMeasurementConfigParams = {
       deviceList: ["123456"],
       techType: 2,
       reportingMode: 0,
       reportFrequency: 340
    };
-   console.info('calllOnDistanceMeasure start');
+   console.info('call offIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.offIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('distanceMeasure result' + ${data.position});
+         console.info('result = ' + ${data.position});
       });
    } catch (err) {
-      console.error('distanceMeasure:, errCode = ' + err.code);
+      console.error('call offIndoorOrOutdoorIdentify failed, errCode = ' + err.code);
    }
 ```

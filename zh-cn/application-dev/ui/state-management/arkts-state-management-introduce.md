@@ -79,7 +79,7 @@ UI渲染的流程主要有以下几个步骤：
 2. 刷新脏节点：刷新标脏的自定义组件和系统组件。
 3. 布局：根据标脏局部刷新组件树，触发子树上节点的尺寸测量和位置确认。
 
-同样以上述示例代码为例，使用DevEco Studio的[Profiler工具](../ui-inspector-profiler.md)，点击`Button1`，抓取状态变量的变化打点，trace如下图所示：
+同样以上述示例代码为例，使用DevEco Studio的[Profiler工具](../ui-inspector-profiler.md#状态管理profiler调优能力)，点击`Button1`，抓取状态变量的变化打点，trace如下图所示：
 
 ![statemanagement-trace](./figures/statemanagement-trace.png)
 

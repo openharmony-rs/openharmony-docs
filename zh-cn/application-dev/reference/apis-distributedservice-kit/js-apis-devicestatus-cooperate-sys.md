@@ -50,16 +50,19 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepareCooperate((error: BusinessError) => {
     if (error) {
-      console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+        [`code`, `message`])}`);
       return;
     }
     console.info(`Keyboard mouse crossing prepareCooperate success.`);
   });
 } catch (error) {
-  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -92,16 +95,18 @@ prepareCooperate(): Promise&lt;void&gt;;
 **示例**：
 
 ```ts
-
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepareCooperate().then(() => {
     console.info(`Keyboard mouse crossing prepareCooperate success.`);
   }, (error: BusinessError) => {
-    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+      [`code`, `message`])}`);
   });
 } catch (error) {
-  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -135,16 +140,19 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepareCooperate((error: BusinessError) => {
     if (error) {
-      console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+        [`code`, `message`])}`);
       return;
     }
     console.info(`Keyboard mouse crossing unprepareCooperate success.`);
   });
 } catch (error) {
-  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -177,14 +185,17 @@ unprepareCooperate(): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepareCooperate().then(() => {
     console.info(`Keyboard mouse crossing unprepareCooperate success.`);
   }, (error: BusinessError) => {
-    console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+    console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+      [`code`, `message`])}`);
   });
 } catch (error) {
-  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error,
+    [`code`, `message`])}`);
 }
 ```
 
@@ -223,6 +234,7 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number, callback: Asyn
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
@@ -276,10 +288,11 @@ activateCooperate(targetNetworkId: string, inputDeviceId: number): Promise&lt;vo
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
- cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
+  cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {
     console.info(`Start Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
     console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -322,6 +335,7 @@ deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivateCooperate(false, (error: BusinessError) => {
     if (error) {
@@ -370,6 +384,7 @@ deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivateCooperate(false).then(() => {
     console.info(`Stop Keyboard mouse crossing success.`);
@@ -414,6 +429,7 @@ getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCooperateSwitchState(deviceDescriptor, (error: BusinessError, data: boolean) => {
@@ -464,6 +480,7 @@ getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCooperateSwitchState(deviceDescriptor).then((data: boolean) => {
@@ -512,6 +529,7 @@ function callback(msg: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
   return false;
 }
+
 try {
   cooperate.on('cooperateMessage', callback);
 } catch (error) {
@@ -556,10 +574,12 @@ function callbackOn(msgOn: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOn)}`);
   return false;
 }
+
 function callbackOff(msgOff: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOff)}`);
   return false;
 }
+
 try {
   cooperate.on('cooperateMessage', callbackOn);
   cooperate.off('cooperateMessage', callbackOff);
@@ -575,6 +595,7 @@ function callbackOn(msg: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
   return false;
 }
+
 try {
   cooperate.on('cooperateMessage', callbackOn);
   cooperate.off('cooperateMessage');
@@ -617,8 +638,9 @@ on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocatio
 ```ts
 function callback(data: cooperate.MouseLocation) {
   console.info('displayX:' + data.displayX + 'displayY:' + data.displayY + 'displayWidth:' +
-    data.displayWidth + 'displayHeight:' + data.displayHeight );
+  data.displayWidth + 'displayHeight:' + data.displayHeight);
 }
+
 try {
   let networkId: string = 'Default';
   cooperate.on('cooperateMouse', networkId, callback);
@@ -665,10 +687,12 @@ function callbackOn(data: cooperate.MouseLocation) {
   console.info('Register mouse location listener');
   return false;
 }
+
 function callbackOff(data: cooperate.MouseLocation) {
   console.info('Unregister mouse location listener');
   return false;
 }
+
 try {
   let networkId: string = 'Default';
   cooperate.on('cooperateMouse', networkId, callbackOn);
@@ -683,6 +707,7 @@ try {
 function callbackOn(data: cooperate.MouseLocation) {
   console.info('Register mouse location listener');
 }
+
 try {
   let networkId: string = 'Default';
   cooperate.on('cooperateMouse', networkId, callbackOn);
@@ -730,10 +755,11 @@ activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number, coo
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
- cooperate.activateCooperateWithOptions(targetNetworkId, inputDeviceId).then(() => {
+  cooperate.activateCooperateWithOptions(targetNetworkId, inputDeviceId).then(() => {
     console.info(`activateCooperateWithOptions success.`);
   }, (error: BusinessError) => {
     console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -829,6 +855,7 @@ prepare(callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepare((error: BusinessError) => {
     if (error) {
@@ -873,6 +900,7 @@ prepare(): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.prepare().then(() => {
     console.info(`Keyboard mouse crossing prepare success.`);
@@ -915,6 +943,7 @@ unprepare(callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepare((error: BusinessError) => {
     if (error) {
@@ -959,6 +988,7 @@ unprepare(): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.unprepare().then(() => {
     console.info(`Keyboard mouse crossing unprepare success.`);
@@ -1006,6 +1036,7 @@ activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
@@ -1062,10 +1093,11 @@ activate(targetNetworkId: string, inputDeviceId: number): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let targetNetworkId = "networkId";
 let inputDeviceId = 0;
 try {
- cooperate.activate(targetNetworkId, inputDeviceId).then(() => {
+  cooperate.activate(targetNetworkId, inputDeviceId).then(() => {
     console.info(`Start Keyboard mouse crossing success.`);
   }, (error: BusinessError) => {
     console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -1109,6 +1141,7 @@ deactivate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivate(false, (error: BusinessError) => {
     if (error) {
@@ -1160,6 +1193,7 @@ deactivate(isUnchained: boolean): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   cooperate.deactivate(false).then(() => {
     console.info(`Stop Keyboard mouse crossing success.`);
@@ -1205,6 +1239,7 @@ getCrossingSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCrossingSwitchState(deviceDescriptor, (error: BusinessError, data: boolean) => {
@@ -1258,6 +1293,7 @@ getCrossingSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let deviceDescriptor = "networkId";
 try {
   cooperate.getCrossingSwitchState(deviceDescriptor).then((data: boolean) => {
@@ -1308,8 +1344,9 @@ class Data {
   networkId: string = "networkId";
   msg: cooperate.CooperateMsg = 0;
 }
+
 try {
-  cooperate.on('cooperate', (data: Data)=>{
+  cooperate.on('cooperate', (data: Data) => {
     console.info(`Keyboard mouse crossing event: ${JSON.stringify(data)}`);
   });
 } catch (error) {
@@ -1355,12 +1392,14 @@ class Data {
   networkId: string = "networkId";
   msg: cooperate.CooperateMsg = 0;
 }
+
 function callbackOff() {
   console.info(`Keyboard mouse crossing event`);
   return false;
 }
+
 try {
-  cooperate.on('cooperate', (data: Data)=>{
+  cooperate.on('cooperate', (data: Data) => {
     console.info(`Keyboard mouse crossing event: ${JSON.stringify(data)}`);
   });
   cooperate.off('cooperate', callbackOff);
@@ -1374,8 +1413,9 @@ class Data {
   networkId: string = "networkId";
   msg: cooperate.CooperateMsg = 0;
 }
+
 try {
-  cooperate.on('cooperate', (data: Data)=>{
+  cooperate.on('cooperate', (data: Data) => {
     console.info(`Keyboard mouse crossing event: ${JSON.stringify(data)}`);
   });
   cooperate.off('cooperate');

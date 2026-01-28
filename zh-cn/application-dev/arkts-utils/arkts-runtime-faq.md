@@ -12,105 +12,129 @@
 
 ### 正则运算对于\b处理与预期不一致
 
-```ts
-let str = "\u2642";
-let res = str.replace(/\b/g, "/");
-console.info("res = " + res);
-// 期望输出: res = ♂
-// 实际输出: res = /♂/
+<!-- @[test_wordBoundaryInArkRegex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+
+``` TypeScript
+let str = '\u2642';
+let res = str.replace(/\b/g, '/');
+console.info('res = ' + res);
+// 期望输出: res = ♂。
+// 实际输出: res = /♂/。
 ```
 
 规避方案：暂无。
+
 > **说明：**
 > 
 > 正则匹配\b（单词边界）遇到某些ASCII编码之外的字符时，会将其当成ASCII字符来处理，从而将不是单词边界匹配识别成单词边界。
 
 ### 正则运算对于先行断言((?=pattern)或(?!pattern)) 嵌套在后行断言((?<=pattern)或(?<!pattern))内部的场景与预期不一致
 
-```ts
-console.info(`res:${"abcdef".match(/(?<=ab(?=c)cd)ef/)}`);
-// 期望输出: res:ef
-// 实际输出: res:null
+<!-- @[test_lookbehindWithNestedLookahead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
+
+``` TypeScript
+console.info(`res:${'abcdef'.match(/(?<=ab(?=c)cd)ef/)}`);
+// 期望输出: res:ef。
+// 实际输出: res:null。
 ```
 
 规避方案：使用/(?<=abcd)ef/代替/(?<=ab(?=c)cd)ef/。
 
 ### 正则运算对于大小写的处理与预期不一致
 
-```ts
-let res = /\u{10400}/ui.test("\u{10428}");
-console.info("res = " + res);
-// 期望输出: res = true
-// 实际输出: res = false
+<!-- @[test_regexIgnoreCaseCaseFolding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+
+``` TypeScript
+let res = /\u{10400}/ui.test('\u{10428}');
+console.info('res = ' + res);
+// 期望输出: res = true。
+// 实际输出: res = false。
 ```
 
 规避方案：暂无。
 
 ### 正则运算/()/ug匹配时lastIndex与预期不一致
 
-```ts
-let L = "\ud800";
-let T = "\udc00";
+<!-- @[test_regexLastIndexWithEmptyGroupInGlobalUnicodeMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+
+``` TypeScript
+let L = '\ud800';
+let T = '\udc00';
 let u = /()/ug;
 u.lastIndex = 1;
 u.exec(L + T + L + T);
-console.info("u.lastIndex = " + u.lastIndex);
-// 期望输出: u.lastIndex = 0
-// 实际输出: u.lastIndex = 1
+console.info('u.lastIndex = ' + u.lastIndex);
+// 期望输出: u.lastIndex = 0。
+// 实际输出: u.lastIndex = 1。
 ```
 
 规避方案：暂无。
 
 ### 正则运算[]内部使用'-'与预期不一致
 
-```ts
-let str =  "a-b";
+<!-- @[test_beforeRegexHyphenInCharacterClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+
+``` TypeScript
+let str = 'a-b';
 let reg = /[+-\s]/;
-console.info("reg.exec(str) = " + reg.exec(str));
-// 期望输出: reg.exec(str) = -
-// 实际输出: reg.exec(str) = null
+console.info('reg.exec(str) = ' + reg.exec(str));
+// 期望输出: reg.exec(str) = -。
+// 实际输出: reg.exec(str) = null。
 ```
 
 规避方案：使用转义后的"-"。
-```ts
-let str =  "a-b";
+
+<!-- @[test_afterRegexHyphenInCharacterClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+
+``` TypeScript
+let str = 'a-b';
 let reg = /[+\-\s]/;
-console.info("reg.exec(str) = " + reg.exec(str));
+console.info('reg.exec(str) = ' + reg.exec(str));
 ```
 
 ### 正则运算具名捕获组获取与预期不一致
 
-```ts
-let reg = new RegExp("(a)(?<b>b)");
-let res = reg.exec("ab");
-console.info("JSON.stringify(res?.groups) = " + JSON.stringify(res?.groups));
-// 期望输出: JSON.stringify(res?.groups) = {"b":"b"}
-// 实际输出: JSON.stringify(res?.groups) = {"b":"a"}
+<!-- @[test_namedCaptureGroupAccess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+
+``` TypeScript
+let reg = new RegExp('(a)(?<b>b)');
+let res = reg.exec('ab');
+console.info('JSON.stringify(res?.groups) = ' + JSON.stringify(res?.groups));
+// 期望输出: JSON.stringify(res?.groups) = {'b':'b'}。
+// 实际输出: JSON.stringify(res?.groups) = {'b':'a'}。
 ```
+
 
 规避方案：计算具名捕获组位置获取具名捕获组匹配的内容。
 
-```ts
-let reg = new RegExp("(a)(?<b>b)");
-let res = reg.exec("ab") as Array<string>;
-console.info("JSON.stringify(res?.groups) = {\"b\":" + JSON.stringify(res[2]) + "}");
+<!-- @[test_getNamedGroupMatchByIndexFallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
+
+``` TypeScript
+let reg = new RegExp('(a)(?<b>b)');
+let res = reg.exec('ab') as Array<string>;
+console.info('JSON.stringify(res?.groups) = {\'b\':' + JSON.stringify(res[2]) + '}');
 ```
 
 ### 正则匹配使用'|'与预期不一致
 
 在使用正则匹配时，如果'|'前是一个空匹配，会导致'|'后的匹配不成功。
 
-```ts
+<!-- @[test_beforeRegexAlternationOperator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+
+``` TypeScript
 let reg = /a(?:|x)$/;
-let res = reg.exec("ax");
-console.info("JSON.stringify(res) = " + JSON.stringify(res));
-// 期望输出: JSON.stringify(res) = ["ax"]
-// 实际输出: JSON.stringify(res) = null
+let res = reg.exec('ax');
+console.info('JSON.stringify(res) = ' + JSON.stringify(res));
+// 期望输出: JSON.stringify(res) = ['ax']。
+// 实际输出: JSON.stringify(res) = null。
 ```
+
 
 规避方案：使用reg2或reg3替换reg1。
 
-```ts
+<!-- @[test_afterRegexAlternationOperator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
+
+``` TypeScript
 let reg1 = /a(?:|x)$/;
 let reg2 = /a(?:x)?$/;
 let reg3 = /a(?:x){0,1}$/;
@@ -118,32 +142,36 @@ let reg3 = /a(?:x){0,1}$/;
 
 ### TypedArray.prototype.map触发内联缓存优化后，在回调中将数值number转为浮点数number与期望不一致
 
-```ts
+<!-- @[test_int32ArrayMapIssue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->   
+
+``` TypeScript
 for(let i = 0; i < 1000; i++) {} // 触发内联缓存优化
 
 let arr = new Int32Array([1, 2, 3, 4, 5]);
 let result = arr.map(val => {
-   let res = (Math.pow(val, 1)) * 100;
-   return res;
+  let res = (Math.pow(val, 1)) * 100;
+  return res;
 })
 
-console.info("result[0]:", result[0]);
+console.info('result[0]:', result[0]);
 // 期望输出: result[0]:100
 // 实际输出: result[0]:104
 ```
 
 规避方案：使用Array.from将TypedArray先转换为普通Array，再处理number。
 
-```ts
+<!-- @[test_int32ArrayMapWorkaround](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
+
+``` TypeScript
 let arr = new Int32Array([1, 2, 3, 4, 5]);
 
 let normalArr = Array.from(arr);
 let result = normalArr.map(val => {
-   let res = (Math.pow(val, 1)) * 100;
-   return res;
+  let res = (Math.pow(val, 1)) * 100;
+  return res;
 });
 
-console.info("result[0]:", result[0]);
+console.info('result[0]:', result[0]);
 // 输出: result[0]:100
 ```
 
@@ -151,8 +179,11 @@ console.info("result[0]:", result[0]);
 
 parseFloat接口不支持对非规格化数进行解析。当输入字符串表示一个浮点数number类型的非规格化数，一律输出0。
 
-```ts
-console.info("testcase: ", parseFloat("5e-324"));
+<!-- @[test_parseFloatTinyNumber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
+
+``` TypeScript
+let result = parseFloat('5e-324');
+console.info('testcase: ', result);
 // 期望输出: testcase: 5e-324
 // 实际输出: testcase: 0
 ```
@@ -161,11 +192,14 @@ console.info("testcase: ", parseFloat("5e-324"));
 
 ### Set constructor入参为多维数组的解析与期望不一致
 
-```ts
+<!-- @[test_setArrayFrom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
+
+``` TypeScript
 const arr1: number[] = [1, 2];
 const arr2: number[] = [3, 4];
 const set = new Set<number[]>([arr1, arr2]);
-console.info("res: ", JSON.stringify(Array.from(set)));
+let result = JSON.stringify(Array.from(set));
+console.info('res: ', result);
 // 期望输出: res: [[1,2],[3,4]]
 // 实际输出: res: [2,4]
 ```
@@ -174,24 +208,30 @@ console.info("res: ", JSON.stringify(Array.from(set)));
 
 ### Object.entries处理Uint8Array与Uint16Array数组结果与期望不一致
 
-```ts
+<!-- @[testOne_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test1.js) -->  
+
+``` JavaScript
 // test1.js
 const typedArr = new Uint8Array([10, 20, 30]);
 try {
    const result = Object.entries(typedArr);
-   console.info("no error throw");
-} catch(e) {
+   console.info('no error throw');
+} catch (e) {
    console.info(e);
 }
 // 期望输出：no error throw
 // 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
+```
 
+<!-- @[testTwo_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test2.js) -->  
+
+``` JavaScript
 // test2.js
 const typedArr = new Uint16Array([10, 20, 30]);
 try {
    const result = Object.entries(typedArr);
-   console.info("no error throw");
-} catch(e) {
+   console.info('no error throw');
+} catch (e) {
    console.info(e);
 }
 // 期望输出：no error throw
@@ -200,15 +240,17 @@ try {
 
 规避方案：使用Array.from将TypedArray先转换为普通Array，再使用Object.entries。
 
-```ts
+<!-- @[testOne_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test1.js) -->  
+
+``` JavaScript
 // test1.js
 const typedArr = new Uint8Array([10, 20, 30]);
 try {
-   const normalArr1 = Array.from(typedArr);
-   const result = Object.entries(normalArr1);
-   console.info("no error throw");
-} catch(e) {
-   console.info(e);
+    const normalArr1 = Array.from(typedArr);
+    const result = Object.entries(normalArr1);
+    console.info('no error throw');
+} catch (e) {
+    console.info(e);
 }
 // 输出：no error throw
 ```
@@ -217,19 +259,23 @@ try {
 
 在使用字符串replace接口时，如果第一个参数是空字符串，则直接返回原始字符串。
 
-```ts
-let str = "dddd"
-let res = str.replace("", "abc");
-console.info("res = " + res);
-// 期望输出: res = abcdddd
-// 实际输出: res = dddd
+<!-- @[test_beforeStringReplaceWithEmptySearchValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
+
+``` TypeScript
+let str = 'dddd';
+let res = str.replace('', 'abc');
+console.info('res = ' + res);
+// 期望输出: res = abcdddd。
+// 实际输出: res = dddd。
 ```
 
 规避方案：使用正则表达式 `/^/` 表示字符串起始符，作为第一个参数。
 
-```ts
-let str = "dddd"
-let res = str.replace(/^/, "abc");
+<!-- @[test_afterStringReplaceWithEmptySearchValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+
+``` TypeScript
+let str = 'dddd';
+let res = str.replace(/^/, 'abc');
 ```
 
 ## Async函数内部异常的处理机制
@@ -419,3 +465,41 @@ let res = arr3.map(x => x).flat();
 >
 > 上述demo中部分语法，如 "3 in px", "delete px[2]", "Reflect.deleteProperty"，在ets文件中不可用。
 
+### JSON.stringify的replacer函数中数组索引的key类型与EcmaScript规范定义不一致
+
+JSON.stringify的replacer函数中，对于数组索引key的类型，ArkTS当前实现是采用保持数字类型不变，但是按照EcmaScript规范，应当转为string类型。
+
+```ts
+// test1.js
+{
+  let arr = [10, 20, 30, 40];
+  function replacer(key, value) {
+    if (key === "2") {
+        return value * 2;
+    }
+    return value;
+  }
+  console.info(JSON.stringify(arr, replacer));
+  // 实际输出：[10,20,30,40]
+}
+```
+
+规避方案：若业务逻辑依赖于key必须为string类型，可在replacer函数内部对数字类型的key进行显式转换。示例如下：
+
+```ts
+// test1.js
+{
+  let arr = [10, 20, 30, 40];
+  function replacer(key, value) {
+    if (typeof key === "number") {
+      key = String(key);
+    }
+    if (key === "2") {
+        return value * 2;
+    }
+    return value;
+  }
+  console.info(JSON.stringify(arr, replacer));
+  // 实际输出：[10,20,60,40]
+}
+```

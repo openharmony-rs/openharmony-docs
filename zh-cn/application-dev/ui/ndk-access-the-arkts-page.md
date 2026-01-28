@@ -327,7 +327,6 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     // NativeEntry.cpp
     
     #include <arkui/native_node_napi.h>
-    #include <hilog/log.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
     #include "NormalTextListExample.h"
@@ -698,7 +697,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         list->SetScrollBarState(true);
         const int itemCount = 30;
         const int fontSizes = 16;
-        const int screenWidth = 300;
+        const float screenWidth = 1;
         const int defaultHeight = 100;
         // 2：创建ListItem子组件并挂载到List上。
         for (int32_t i = 0; i < itemCount; ++i) {
@@ -706,9 +705,9 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             auto textNode = std::make_shared<ArkUITextNode>();
             textNode->SetTextContent(std::to_string(i));
             textNode->SetFontSize(fontSizes);
-            textNode->SetFontColor(0xFFff00ff);
+            textNode->SetFontColor(0xFF000000);
             textNode->SetPercentWidth(1);
-            textNode->SetWidth(screenWidth);
+            textNode->SetPercentWidth(screenWidth);
             textNode->SetHeight(defaultHeight);
             textNode->SetBackgroundColor(0xFFfffacd);
             textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);

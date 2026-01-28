@@ -20,7 +20,7 @@ Currently, only CMS signature data and encapsulated data are supported.
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. Call [CMS encapsulation](../../security/DeviceCertificateKit/create-cms-sign-object.md) to encapsulate CMS data.
+2. Call [CMS encapsulation](../../security/DeviceCertificateKit/create-cms-enveloped-object.md) to encapsulate CMS data.
 
 3. Call [cert.createCmsParser](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecmsparser22) to create a **CmsParser** object.
 
@@ -30,34 +30,37 @@ Currently, only CMS signature data and encapsulated data are supported.
 
 Decapsulation example:
 
-```ts
+<!-- @[create-cms-decapsulation-object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateCmsDecapsulationObject.ets) -->
+
+``` TypeScript
+
 import { cert } from '@kit.DeviceCertificateKit';
 
 let ECC_256_PUBKEY: string =
-  "-----BEGIN CERTIFICATE-----\n"                                      +
-  "MIICGDCCAb6gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMFcxCzAJBgNVBAYTAkNO\n" +
-  "MQ8wDQYDVQQIDAbpmZXopb8xDzANBgNVBAcMBuilv+WuiTEPMA0GA1UECgwG5rWL\n" +
-  "6K+VMRUwEwYDVQQDDAzkuK3mlofmtYvor5UwHhcNMjUwOTE2MDY0MTMwWhcNMzUw\n" +
-  "OTE0MDY0MTMwWjBXMQswCQYDVQQGEwJDTjEPMA0GA1UECAwG6ZmV6KW/MQ8wDQYD\n" +
-  "VQQHDAbopb/lrokxDzANBgNVBAoMBua1i+ivlTEVMBMGA1UEAwwM5Lit5paH5rWL\n" +
-  "6K+VMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEB06h4SzOryi3d7PW9yN2wACC\n" +
-  "VxlduBQjVLWZlDKhFKkdZjve8mUyytSSbBj/rrzR2XmzUzofuNkUbAtje3DDJqN2\n" +
-  "MHQwHQYDVR0OBBYEFNtUldgBESf31bwTnYtApIctaSdtMB8GA1UdIwQYMBaAFNtU\n" +
-  "ldgBESf31bwTnYtApIctaSdtMAsGA1UdDwQEAwIBBjAJBgNVHREEAjAAMAkGA1Ud\n" +
-  "EgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBFAiEAzxzaG2vR\n" +
-  "zUnFFL3X3lRQ0IOJrb6cvkSZuaFd4bW2lgUCIHW6QGGnECDFMbDNz7Og9kjkt+3k\n" +
-  "FmEJWqEMYudBH3Ul\n"                                                 +
-  "-----END CERTIFICATE-----";
+  '-----BEGIN CERTIFICATE-----\n' +
+    'MIICGDCCAb6gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMFcxCzAJBgNVBAYTAkNO\n' +
+    'MQ8wDQYDVQQIDAbpmZXopb8xDzANBgNVBAcMBuilv+WuiTEPMA0GA1UECgwG5rWL\n' +
+    '6K+VMRUwEwYDVQQDDAzkuK3mlofmtYvor5UwHhcNMjUwOTE2MDY0MTMwWhcNMzUw\n' +
+    'OTE0MDY0MTMwWjBXMQswCQYDVQQGEwJDTjEPMA0GA1UECAwG6ZmV6KW/MQ8wDQYD\n' +
+    'VQQHDAbopb/lrokxDzANBgNVBAoMBua1i+ivlTEVMBMGA1UEAwwM5Lit5paH5rWL\n' +
+    '6K+VMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEB06h4SzOryi3d7PW9yN2wACC\n' +
+    'VxlduBQjVLWZlDKhFKkdZjve8mUyytSSbBj/rrzR2XmzUzofuNkUbAtje3DDJqN2\n' +
+    'MHQwHQYDVR0OBBYEFNtUldgBESf31bwTnYtApIctaSdtMB8GA1UdIwQYMBaAFNtU\n' +
+    'ldgBESf31bwTnYtApIctaSdtMAsGA1UdDwQEAwIBBjAJBgNVHREEAjAAMAkGA1Ud\n' +
+    'EgQCMAAwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjOPQQDAgNIADBFAiEAzxzaG2vR\n' +
+    'zUnFFL3X3lRQ0IOJrb6cvkSZuaFd4bW2lgUCIHW6QGGnECDFMbDNz7Og9kjkt+3k\n' +
+    'FmEJWqEMYudBH3Ul\n' +
+    '-----END CERTIFICATE-----';
 let ECC_256_PRIVATE: string =
-  "-----BEGIN PRIVATE KEY-----\n"                                      +
-  "MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgOYwEyIw3ZNIAL4xO\n" +
-  "pP6eVcQYcrL2sfnt6vB0z9tKmMmhRANCAAQHTqHhLM6vKLd3s9b3I3bAAIJXGV24\n" +
-  "FCNUtZmUMqEUqR1mO97yZTLK1JJsGP+uvNHZebNTOh+42RRsC2N7cMMm\n"         +
-  "-----END PRIVATE KEY-----";
+  '-----BEGIN PRIVATE KEY-----\n' +
+    'MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgOYwEyIw3ZNIAL4xO\n' +
+    'pP6eVcQYcrL2sfnt6vB0z9tKmMmhRANCAAQHTqHhLM6vKLd3s9b3I3bAAIJXGV24\n' +
+    'FCNUtZmUMqEUqR1mO97yZTLK1JJsGP+uvNHZebNTOh+42RRsC2N7cMMm\n' +
+    '-----END PRIVATE KEY-----';
 
 // Convert the string into a Uint8Array.
 function stringToUint8Array(str: string): Uint8Array {
-  let arr: Array<number> = [];
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; i++) {
     arr.push(str.charCodeAt(i));
   };
@@ -84,16 +87,16 @@ async function testCmsDecryptTest() {
     cms.setRecipientEncryptionAlgorithm(cert.CmsRecipientEncryptionAlgorithm.AES_128_GCM);
     let recipientInfo: cert.CmsRecipientInfo = {
       keyAgreeInfo: {
-          cert: x509CertEc,
-          digestAlgorithm: cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
-        }
+        cert: x509CertEc,
+        digestAlgorithm: cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
+      }
     };
     await cms.addRecipientInfo(recipientInfo);
-    console.info("add recipient success:" + recipientInfo.keyAgreeInfo?.digestAlgorithm);
+    console.info('add recipient result: success, digestAlgorithm = ' + recipientInfo.keyAgreeInfo?.digestAlgorithm);
     let envelopeData = await cms.doFinal(plainText, option);
-    console.info("doFinal success:" + envelopeData);
+    console.info('doFinal result: success, envelopeData = ' + envelopeData);
     let cipherText = await cms.getEncryptedContentData();
-    console.info("cipherText success:" + cipherText);
+    console.info('getEncryptedContentData result: success, cipherText = ' + cipherText);
     let config: cert.CmsEnvelopedDecryptionConfig = {
       keyInfo: {
         key: ECC_256_PRIVATE
@@ -102,10 +105,10 @@ async function testCmsDecryptTest() {
     let cmsDecrypt: cert.CmsParser = cert.createCmsParser();
     await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
-    console.info("[XTS] Decrypt success:" + decPlainText);
-    console.info("decryptEnvelopedData success");
+    console.info('[XTS] decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
+    console.info('decryptEnvelopedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed, error info is ${error}, error code: ${error.code}`);
+    console.error(`verifySignedData failed: errCode: ${error.code}, message: ${error.message}`);
   }
 }
 ```

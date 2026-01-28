@@ -63,6 +63,7 @@ Since API version 19, the custom dialog box provides lifecycle callbacks to noti
    }
    ```
    
+
 3. Click the component bound to the **onClick** event to display the dialog box.
    
    <!-- @[create_custom_dialog_new_customDialog_controller_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
@@ -562,7 +563,7 @@ Note: Defining dialog 2 within dialog 1 is not recommended, as components cannot
 ## Implementing Physical Back Button Interception
 
 When the **onWillDismiss** callback in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) is registered, the dialog box will not be dismissed immediately after the user touches the mask or the Back button, presses the Esc key, or swipes left or right on the screen. The callback provides the dismissal reason via **reason** in [DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12), allowing conditional dismissal.
-
+ 
 <!-- @[dialog_with_physical_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets) -->
 
 ``` TypeScript
@@ -666,7 +667,7 @@ export struct DialogWithPhysicalBack {
 To maintain dialog box independence, dialog boxes automatically avoid surrounding elements like status bars, navigation bars, and keyboards. When the soft keyboard appears, dialog boxes maintain a default 16 vp distance. Since API version 15, use **keyboardAvoidMode** and **keyboardAvoidDistance** in [CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions) to configure keyboard avoidance behavior.
 
 Note that the value of **keyboardAvoidMode** should be set to **KeyboardAvoidMode.DEFAULT**.
-
+  
 <!-- @[dialog_avoid_soft_key_board](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAvoidSoftKeyboard.ets) -->
 
 ``` TypeScript
@@ -709,7 +710,7 @@ export struct DialogAvoidSoftKeyboard {
     NavDestination() {
       Row() {
         Row({ space: 20 }) {
-          // Replace $r('app.string.open_windows') with the actual resource file. In this example, the value in the resource file is "Open."
+          // Replace $r('app.string.open_windows') with the actual resource file. In this example, the value in the resource file is "Open a dialog box."
           Text($r('app.string.open_windows'))
             .fontSize(30)
             .onClick(() => {

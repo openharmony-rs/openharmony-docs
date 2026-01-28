@@ -139,7 +139,7 @@ export struct CustomDialogComponentWithTransition {
   @Builder
   customDialogComponent() {
     Row({ space: 50 }) {
-      // Replace $r('app.string.this_is_a_window') with the actual resource file. In this example, the value in the resource file is "This is a dialog box."
+      // Replace $r('app.string.this_is_a_window') with the actual resource file. In this example, the value in the resource file is "This Is a Dialog Box."
       Button($r('app.string.this_is_a_window'))
     }.height(200).padding(5)
   }

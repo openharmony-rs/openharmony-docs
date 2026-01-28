@@ -530,7 +530,7 @@ message：string类型，表示询问框的内容。
 
 自定义询问框的方式，可以使用弹窗[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1)或者自定义弹窗实现。这样可以让应用界面与系统默认询问框有所区别，提高应用的用户体验度。本文以弹窗为例，介绍如何实现自定义询问框。
 
-直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
+直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
 
 在事件回调中，调用弹窗的[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1)方法：
 

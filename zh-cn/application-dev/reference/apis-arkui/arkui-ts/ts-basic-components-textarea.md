@@ -457,6 +457,8 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 当设置自定义键盘时，可以通过绑定[onKeyPrelme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
 
+从API version 23开始，自定义键盘可以通过[setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23)开启接续，在切换至其他自定义键盘时，会直接切换，不会触发键盘关闭和拉起动画。
+
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -2362,7 +2364,7 @@ struct TextAreaExample {
         .fontWeight(FontWeight.Bold)
         .fontFamily('HarmonyOS Sans')
         .inputFilter('[a-zA-Z]+', (value) => { // 只允许字母输入
-          console.error(`unsupport char ${value}`);
+          console.error(`unsupported char ${value}`);
         })
         .copyOption(CopyOptions.LocalDevice)
         .enableKeyboardOnFocus(false)
@@ -2551,7 +2553,7 @@ struct TextAreaExample {
 }
 ```
 
-![textAreaSetTextSelection](figures/textAreaSetTextSelection.gif)
+![textAreaSetTextSelection](figures/textAreaSetTextSelection.png)
 
 ### 示例19（设置文本描边）
 

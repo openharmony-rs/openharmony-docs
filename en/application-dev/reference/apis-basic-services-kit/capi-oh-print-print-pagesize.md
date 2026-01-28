@@ -1,10 +1,10 @@
 # Print_PageSize
-<!--Kit: Basic Services Kit-->  
-<!--Subsystem: Print--> 
-<!--Owner: @guoshengbang--> 
-<!--Designer: @Q-haosu-->   
-<!--Tester: @Q-haosu--> 
-<!--Adviser: @fang-jinxu-->
+ <!--Kit: Basic Services Kit-->   
+ <!--Subsystem: Print-->  
+ <!--Owner: @guoshengbang-->  
+ <!--Designer: @Q-haosu-->    
+ <!--Tester: @Q-haosu-->  
+ <!--Adviser: @fang-jinxu-->
 
 ```c
 typedef struct {...} Print_PageSize
@@ -24,9 +24,9 @@ Defines a struct for the page size.
 
 ### Member Variables
 
-| Name| Description|
-| -- | -- |
-| char *id | Page ID.|
-| char *name | Page name.|
-| uint32_t width | Page width.|
+| Name           | Description      |
+| --------------- | ---------- |
+| char *id        | Page ID. |
+| char *name      | Page name.|
+| uint32_t width  | Page width.|
 | uint32_t height | Page height.|
