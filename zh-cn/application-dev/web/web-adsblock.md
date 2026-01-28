@@ -166,7 +166,7 @@ AdsBlockManager中缓存有2组域名列表，分别为DisallowedList和AllowLis
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';    
 
-// 演示addAdsBlockAllowedList和addAdsBlockAllowedList配套使用，设置网页级的广告过滤开关。    
+// 演示addAdsBlockAllowedList和addAdsBlockDisallowedList配套使用，设置网页级的广告过滤开关。    
 @Entry    
 @Component    
 struct WebComponent {    
