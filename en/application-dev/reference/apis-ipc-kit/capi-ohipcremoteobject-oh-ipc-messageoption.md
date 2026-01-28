@@ -26,6 +26,6 @@ Defines an IPC message.
 
 | Name| Description|
 | ---- | ---- |
-| OH_IPC_RequestMode mode | Message request mode.|
+| [OH_IPC_RequestMode](capi-ipc-cremote-object-h.md#oh_ipc_requestmode) mode | Message request mode.|
 | uint32_t timeout | Parameter reserved for RPC. It is invalid for IPC.|
 | void* reserved | Reserved parameter, which must be NULL.|
