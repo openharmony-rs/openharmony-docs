@@ -249,7 +249,7 @@ struct ImageExample {
     this.listenerForImage.on('draw', FuncDraw)
     this.listenerForRow.on('drawChildren', FuncDrawChildren)
 
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
     // this.listenerForImage.off('layout', OffFuncLayout)
     // this.listenerForImage.off('draw', OffFuncDraw)
     // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
@@ -259,7 +259,9 @@ struct ImageExample {
     }
     let uniqueId: number = this.getUniqueId();
     let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
-    this.listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
+    listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
   }
 }
 ```
