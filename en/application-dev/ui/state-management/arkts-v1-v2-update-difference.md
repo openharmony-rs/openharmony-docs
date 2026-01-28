@@ -144,7 +144,7 @@ In the preceding code, the @Monitor function is executed only after the current 
 
 The following figure shows the flowchart of V1 component and V2 state variable update differences. Compared with V1 state management, V2 state management asynchronously marks components dirty when state variables change.
 
-![v1v2updatedifference](figures/v1v2update.PNG)
+![v1v2updatedifference](figures/v1v2update.png)
 
 ### Updating V1 Components
 

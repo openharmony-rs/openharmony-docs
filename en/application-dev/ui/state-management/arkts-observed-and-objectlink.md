@@ -71,7 +71,7 @@ this.objLink= ...
 
   **Figure 1** Initialization rule 
 
-  ![en-us_image_0000001502255261](figures/en-us_image_0000001502255261.PNG)
+  ![en-us_image_0000001502255261](figures/en-us_image_0000001502255261.png)
 
 
 ## Observed Changes and Behavior
