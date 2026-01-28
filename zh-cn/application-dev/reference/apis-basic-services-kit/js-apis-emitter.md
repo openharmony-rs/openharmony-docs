@@ -705,7 +705,7 @@ constructor()
 
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 ```
 
 ### on<sup>22+</sup>
@@ -730,7 +730,7 @@ on(eventId: string, callback:  Callback\<EventData\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
@@ -761,7 +761,7 @@ on<T\>(eventId: string, callback:  Callback\<GenericEventData<T\>\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 @Sendable
 class Sample {
@@ -806,7 +806,7 @@ once(eventId: string, callback: Callback\<EventData\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
@@ -837,7 +837,7 @@ once<T\>(eventId: string, callback: Callback\<GenericEventData<T\>\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 @Sendable
 class Sample {
@@ -881,7 +881,7 @@ off(eventId: string): void
 **示例：**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 emitter1.off("eventId");
 ```
@@ -910,7 +910,7 @@ off(eventId: string, callback: Callback\<EventData\>): void
 ```ts
 import { Callback } from '@kit.BasicServicesKit';
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
@@ -954,7 +954,7 @@ class Sample {
   count: number;
 }
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.GenericEventData<Sample>): void => {
   console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
@@ -990,7 +990,7 @@ emit(eventId: string, data?: EventData): void
 **示例：**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 let eventData: emitter.EventData = {
   data: {
   "content": "content",
@@ -1036,7 +1036,7 @@ class Sample {
   count: number;
 }
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let eventData: emitter.GenericEventData<Sample> = {
   data: new Sample()
@@ -1070,7 +1070,7 @@ emit(eventId: string, options: Options, data?: EventData): void
 **示例：**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let options: emitter.Options = {
   priority: emitter.EventPriority.HIGH
@@ -1121,7 +1121,7 @@ class Sample {
   count: number;
 }
 
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 
 let options: emitter.Options = {
   priority: emitter.EventPriority.HIGH
@@ -1159,6 +1159,6 @@ getListenerCount(eventId: string): number
 **示例：**
 
 ```ts
-let emitter1 = new emitter.Emitter();
+let emitter1: emitter.Emitter = new emitter.Emitter();
 let count = emitter1.getListenerCount("eventId");
 ```
