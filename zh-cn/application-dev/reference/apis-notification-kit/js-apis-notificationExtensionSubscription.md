@@ -73,19 +73,18 @@ ArkTS-Dyn示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 
-const DOMAIN = 0x0000;
 
 try {
   // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
+    console.info(`openSubscriberSettings success`);
   }).catch((e:Error) => {
     let error = e as BusinessError
-    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
   });
 } catch (error) {
-  hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
 }
 ```
 
@@ -263,7 +262,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 ArkTS-Dyn示例：
 ```ts
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[])}`);
 }).catch((err: BusinessError) => {
   console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
@@ -271,7 +270,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 
 ArkTS-Sta示例：
 ```ts
-notificationExtensionSubscription.getSubscribeInfo().then((data) => {
+notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
   console.info(`getSubscribeInfo successfully. Data: ${(data)}`);
 }).catch((error: Error) => {
   let err = error as BusinessError
@@ -372,7 +371,7 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 ArkTS-Dyn示例：
 ```ts
-notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
+notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
@@ -381,7 +380,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => 
 
 ArkTS-Sta示例：
 ```ts
-notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
+notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${(data)}`);
 }).catch((error: Error) => {
   let err = error as BusinessError
