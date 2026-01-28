@@ -58,7 +58,7 @@ try {
     console.info(`SelectionInfo: ${JSON.stringify(info)}`);
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register selectionCompleted callback: ${err.code}, errormessage: ${err.message}`);
 }
 ```
 
@@ -100,7 +100,7 @@ try {
     console.info(`SelectionInfo: ${JSON.stringify(info)}`);
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register selectionCompleted callback: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -136,7 +136,7 @@ selectionManager.on('selectionCompleted', selectionChangeCallback);
 try {
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionCompleted: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister selectionCompleted: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -173,7 +173,7 @@ selectionManager.onSelectionComplete(selectionChangeCallback);
 try {
   selectionManager.offSelectionComplete(selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionComplete: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister selectionComplete: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -218,7 +218,7 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
   try {
     let content = await selectionManager.getSelectionContent();
   } catch (err) {
-    console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
+    console.error(`Failed to get selection content: ${err.code}, errormessage: ${err.message}}`);
   }
 });
 ```
@@ -227,11 +227,11 @@ ArkTS-Sta示例：
 ```ts
 import selectionManager from '@ohos.selectionInput.selectionManager';
 
-selectionManager.onSelectionCompleted(async (info: selectionManager.SelectionInfo) => {
+selectionManager.onSelectionComplete((info: selectionManager.SelectionInfo) => {
   try {
     let content = await selectionManager.getSelectionContent();
   } catch (err) {
-    console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
+    console.error(`Failed to get selection content: ${err.code}, errormessage: ${err.message}}`);
   }
 });
 ```
@@ -309,8 +309,8 @@ class ServiceExtAbility extends SelectionExtensionAbility {
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
         console.info('Succeed in creating panel.');
-      }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      }).catch((err) => {
+      console.error(`Failed to create panel: ${err.code}, errormessage: ${err.message}}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -392,17 +392,17 @@ class ServiceExtAbility extends SelectionExtensionAbility {
         selectionPanel = panel;
         try {
           if (selectionPanel) {
-            selectionManager.destroyPanel(selectionPanel).then(() => {
+            selectionManager.destroyPanel(selectionPanel as selectionManager.Panel).then(() => {
               console.info('Succeed in destroying panel.');
-            }).catch((err: BusinessError) => {
-              console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+            }).catch((err) => {
+              console.error(`Failed to destroy panel: ${err.code}, errormessage: ${err.message}}`);
             });
           }
         } catch (err) {
-          console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+          console.error(`Failed to destroy panel: ${err.code}, errormessage: ${err.message}}`);
         }
-      }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+      }).catch((err) => {
+      console.error(`Failed to create panel: ${err.code}, errormessage: ${err.message}}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -495,11 +495,11 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 try {
   selectionPanel.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+  }).catch((err) => {
+    console.error(`Failed to setUiContent: ${err.code}, errormessage: ${err.message}}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${JSON.stringify(err)}`);
+  console.error(`Failed to setUiContent: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -540,8 +540,8 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: ${JSON.stringify(err)}`);
+}).catch((err) => {
+  console.error(`Failed to show panel: ${err.code}, errormessage: ${err.message}}`);
 });
 ```
 
@@ -580,8 +580,8 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: ${JSON.stringify(err)}`);
+}).catch((err) => {
+  console.error(`Failed to hide panel: ${err.code}, errormessage: ${err.message}}`);
 });
 ```
 
@@ -630,8 +630,8 @@ RelativeContainer() {
     if (selectionPanel !== undefined) {
       selectionPanel.startMoving().then(() => {   // selectionPanel为createPanel创建出的panel实例
         console.info('Succeeded in startMoving the panel.');
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to startMoving panel: ${JSON.stringify(err)}`);
+      }).catch((err) => {
+        console.error(`Failed to startMoving panel: ${err.code}, errormessage: ${err.message}}`);
       });
     }
   }
@@ -685,11 +685,11 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 try {
   selectionPanel.moveToGlobalDisplay(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+  }).catch((err) => {
+    console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${JSON.stringify(err)}`);
+  console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -723,7 +723,7 @@ try {
     console.info('Panel has destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroyed callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register destroyed callback: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -758,7 +758,7 @@ try {
     console.info('Panel has destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroy callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register destroy callback: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -790,7 +790,7 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 try {
   selectionPanel.off('destroyed');
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister destroyed: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -823,7 +823,7 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 try {
   selectionPanel.offDestroy();
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister destroyed: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -857,7 +857,7 @@ try {
     console.info('Panel has hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hidden callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register hidden callback: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -892,7 +892,7 @@ try {
     console.info('Panel has hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hide callback: ${JSON.stringify(err)}`);
+  console.error(`Failed to register hide callback: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -924,7 +924,7 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 try {
   selectionPanel.off('hidden');
 } catch (err) {
-  console.error(`Failed to unregister hidden: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister hidden: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
@@ -957,7 +957,7 @@ import selectionManager from '@ohos.selectionInput.selectionManager';
 try {
   selectionPanel.offHide();
 } catch (err) {
-  console.error(`Failed to unregister hide: ${JSON.stringify(err)}`);
+  console.error(`Failed to unregister hide: ${err.code}, errormessage: ${err.message}}`);
 }
 ```
 
