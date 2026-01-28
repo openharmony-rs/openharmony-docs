@@ -5,7 +5,11 @@
 <!--Designer: @xiexuhui-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
+## 开启DevTools
+启动Chrome浏览器，在需要进行内存分析的页面按下F12或者Shift+Ctrl+I启动DevTools开发者工具。
+
 ## 获取js堆内存快照
+在内存界面下选择堆快照，点击获取快照即可对当前页面进行一次内存快照。
 ![堆快照获取流程](figures/js-memory-analysis-u-0.png)
 ![堆快照结果展示](figures/js-memory-analysis-u-1.png)
 
@@ -16,7 +20,7 @@
 - 距离(Distance):与GCroot的引用链距离。当出现同一类对象距离不同的情况，要注意代码逻辑可能出现问题。
 - 对象计数(Object Count)：跟在构造器后方的灰色数字，表示当前构造器所构造的对象总数。
 - 浅层大小(Shallow Size)：对象自身占用的内存大小。
-- 保留大小(Retained Size)：释放掉该对象后，能释放掉的内存大小，具体来说，其值为在对象本身和删除对象本身后无法从GC root访问的依赖对象的所占用的内存大小之和。
+- 保留大小(Retained Size)：当一个对象被释放后，与该对象所关联的一些对象若无法从GC root直接或间接访问，则会被系统自动释放。保留大小即表示某对象被释放时总共能释放的内存，其值为该对象自身所占内存大小(浅层大小)和释放后一并被释放的对象所占内存大小之和。
 
 ![摘要](figures/js-memory-analysis-u-2.png)
 
@@ -37,7 +41,7 @@
 ![比较界面](figures/js-memory-analysis-u-4.png)
 
 ### 控制(Containment)
- 控制(Containment)提供了一个自上而下的树形界面，该界面允许浏览和探索堆内存中的内容。我们可以用它来分析全部变量的引用情况(如Window)
+控制(Containment)提供了一个自上而下的树形界面，该界面允许浏览和探索堆内存中的内容。我们可以用它来分析任意变量的引用情况。
 ![控制](figures/js-memory-analysis-u-5.png)
 
 ### 统计信息(Statistics)
@@ -45,7 +49,7 @@
 ![统计信息](figures/js-memory-analysis-u-6.png)
 
 ## 内存泄漏分析流程
-1. 打开一个可能存在内存泄漏问题的页面并启用DevTools。下图展示的页面来自GitHub上的memory-leak-simulation项目，该网页通过设置全局数组并不断向其推入'memory leak'字符串来模拟内存泄漏场景。
+1. 打开一个可能存在内存泄漏问题的页面并启用DevTools。下图展示的页面来自GitHub上的[memory-leak-simulation](https://github.com/Buchatech/JavaScript-Memory-Leak-Simulation)项目，该网页通过设置全局数组并不断向其推入'memory leak'字符串来模拟内存泄漏场景。
    ![内存泄漏总览](figures/js-memory-analysis-u-7.png)
 
 2. 在性能界面录制可能导致内存泄漏的用户操作，以识别引起内存泄漏的用户操作或组件。下图显示，网页已加载完毕，但内存仍在持续上升，表明可能存在内存泄漏问题。对于包含大量动态组件和频繁DOM操作的网页，内存曲线可能呈起伏状态。持续观察内存起伏的最低值变化，若最低值逐渐上升，怀疑网页存在内存泄漏问题。
