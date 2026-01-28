@@ -9501,7 +9501,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets",
 				"functions":[
 					{
-						"end_line":114,
+						"end_line":117,
 						"name":"persistence_get_store",
 						"start_line":16
 					},
@@ -9541,9 +9541,9 @@
 						"start_line":309
 					},
 					{
-						"end_line":331,
+						"end_line":334,
 						"name":"persistence_delete_store",
-						"start_line":322
+						"start_line":324
 					}
 				]
 			}
@@ -9585,7 +9585,7 @@
 						"start_line":168
 					},
 					{
-						"end_line":49,
+						"end_line":47,
 						"name":"setDefaultDistributedTables",
 						"start_line":26
 					},
