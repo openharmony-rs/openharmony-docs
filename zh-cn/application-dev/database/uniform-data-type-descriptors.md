@@ -194,6 +194,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
     //  1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
 2. 针对“.mp3”文件扩展名，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型，并打印对应UTD数据类型的具体属性。
@@ -212,7 +213,11 @@ utd.json5文件需要在类型为entry的HAP中配置。
         if (typeIds1.length == 0) {
           return;
         }
-        let typeObj1 = uniformTypeDescriptor.getTypeDescriptor(typeIds1[0]);
+        let typeObj1 : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor(typeIds1[0]);
+        if (!typeObj1) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+          return;
+        }
         hilog.info(0xFF00, '[Sample_Udmf]', `typeId: ${typeObj1.typeId}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `belongingToTypes: ${typeObj1.belongingToTypes}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj1.description}`);
@@ -225,7 +230,11 @@ utd.json5文件需要在类型为entry的HAP中配置。
         if (typeIds2.length == 0) {
           return;
         }
-        let typeObj2 = uniformTypeDescriptor.getTypeDescriptor(typeIds2[0]);
+        let typeObj2 : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor(typeIds2[0]);
+        if (!typeObj2) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+          return;
+        }
         hilog.info(0xFF00, '[Sample_Udmf]', `typeId: ${typeObj2.typeId}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `belongingToTypes: ${typeObj2.belongingToTypes}`);
         hilog.info(0xFF00, '[Sample_Udmf]', `description: ${typeObj2.description}`);
@@ -242,7 +251,11 @@ utd.json5文件需要在类型为entry的HAP中配置。
         if (typeObj1 != null) {
           let ret = typeObj1.belongsTo('general.audio');
           hilog.info(0xFF00, '[Sample_Udmf]', `belongsTo, ret: + ${ret}`);
-          let mediaTypeObj = uniformTypeDescriptor.getTypeDescriptor('general.media');
+          let mediaTypeObj : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.media');
+          if (!mediaTypeObj) {
+            hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+            return;
+          }
           // 确认是否存在归属关系
           ret = mediaTypeObj.isHigherLevelType('general.audio');
           hilog.info(0xFF00, '[Sample_Udmf]', `isHigherLevelType, ret: + ${ret}`);
@@ -265,6 +278,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
     //  1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
 2. 针对“.ts”文件后缀，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型。
@@ -279,7 +293,11 @@ utd.json5文件需要在类型为entry的HAP中配置。
       let typeIds = uniformTypeDescriptor.getUniformDataTypesByFilenameExtension(fileExtension);
       for (let typeId of typeIds) {
         // 3.根据UTD数据类型查询对应的MIMEType列表。
-        let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        let typeObj : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        if (!typeObj) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+          return;
+        }
         let mimeTypes = typeObj.mimeTypes;
         hilog.info(0xFF00, '[Sample_Udmf]', `mimeTypes: ${mimeTypes}`);
       }
@@ -300,6 +318,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
     //  1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
 2. 针对“text/plain”MIMEType，使用getUniformDataTypesByMIMEType()方法获取对应UTD数据类型。
@@ -314,12 +333,17 @@ utd.json5文件需要在类型为entry的HAP中配置。
       let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType(mimeType);
       for (let typeId of typeIds) {
         // 3. 根据UTD数据类型查询对应的文件后缀列表
-        let typeObj = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        let typeObj : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor(typeId);
+        if (!typeObj) {
+          hilog.info(0xFF00, '[Sample_Udmf]', `TypeDescriptor not found`);
+          return;
+        }
         let filenameExtensions = typeObj.filenameExtensions;
         hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${filenameExtensions}`);
       }
     } catch (err) {
-      hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
+      let error: BusinessError = err as BusinessError;
+      hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${error.message}, err code: ${error.code}`);
     }
     ```
 
