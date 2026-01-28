@@ -138,11 +138,11 @@ test(a2);
 
 <!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
 
-```ts
+``` TypeScript
 // test.ts
 // 混淆前：
 class TestA {
-    static prop1: number = 0;
+  static prop1: number = 0;
 }
 TestA.prop1;
 ```
