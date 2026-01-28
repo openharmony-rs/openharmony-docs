@@ -7503,7 +7503,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
-  // 设置一个缺角异形掩码
   let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
     let array = Array<number>(maskWidth);
     for (let i = 0 ; i < maskWidth; i++) {
@@ -7556,7 +7555,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let maskWidth = windowClass.getWindowProperties().windowRect.width;
   let maskHeight = windowClass.getWindowProperties().windowRect.height;
-  // 设置一个缺角异形掩码
   let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
     let array = Array<number>(maskWidth);
     for (let i = 0 ; i < maskWidth; i++) {
