@@ -81,7 +81,7 @@ A PageAbility is a UI-capable application component in the FA model that contain
 
 ### Stage Model
 
-The stage model is the currently recommended application model, providing essential components and runtime mechanisms for applications. This model introduces the AbilityStage component manager and the WindowStage window manager, which act as the stages for application components and windows, respectively—hence the name "stage model."
+The stage model is the currently recommended application model, providing essential components and runtime mechanisms for applications. This model introduces the AbilityStage component manager and the WindowStage window manager, which act as the stages for application components and windows, respectively, hence the name "stage model."
 
 The stage model allows multiple application components to share a single ArkTS engine instance and supports state sharing and object invocation between components. This reduces memory overhead and enhances development efficiency, making it well-suited for complex application development.
 

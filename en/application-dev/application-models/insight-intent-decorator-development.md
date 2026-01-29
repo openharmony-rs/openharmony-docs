@@ -176,7 +176,7 @@ The intent execution process is as follows:
 
 ### (Optional) Passing Complex Parameters by Developing Intent Entities
 
-By default, data passed from the system entry point to the application is of basic types. For more complex data—such as singer information (including name, nationality, and more) when playing music—you need object types. These are defined using the [@InsightIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity) decorator and are known as intent entities.
+By default, data passed from the system entry point to the application is of basic types. For more complex data, such as singer information (including name, nationality, and more) when playing music, you need object types. These are defined using the [@InsightIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity) decorator and are known as intent entities.
 
 Consider a music playback scenario: A user tells the voice assistant Celia the name and singer information of the desired song, and Celia launches the corresponding music screen to play the song based on the information.
 
