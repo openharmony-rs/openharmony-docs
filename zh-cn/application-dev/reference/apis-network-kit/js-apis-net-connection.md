@@ -3334,7 +3334,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | BEARER_VPN<sup>12+</sup>| 4    | VPN网络。   |
 
  ## ConversionProcess<sup>23+</sup>
- 	 
+  
 ASCII/Unicode转码转换流程参数的枚举。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
