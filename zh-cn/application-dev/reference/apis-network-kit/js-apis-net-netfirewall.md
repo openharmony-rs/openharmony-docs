@@ -147,7 +147,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 >（1）当addNetFirewallRule的入参rule.type配置为RULE_IP时：<br>
 >    &emsp;&nbsp;◦  若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；<br>
 >    &emsp;&nbsp;◦  若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。<br>
->（2）当adNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。<br>
+>（2）当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。<br>
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -530,7 +530,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | ------------|-------------------------------------------------------------|----|---|-----------------------------------------------------------  |
 | userId      | number                                                      | 否 |否 |系统用户ID，只能是存在的用户ID。                   |
 | name        | string                                                      | 否 |否 |规则名称，必填，最多128个字符。                                |
-| direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | 否 |否 |规则名称，包含入站和出站。                                         |
+| direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | 否 |否 |规则方向，包含入站和出站。                                         |
 | action      | [FirewallRuleAction](#firewallruleaction)                   | 否 |否 |行为，包含允许和阻止。                                                         |
 | type        | [NetFirewallRuleType](#netfirewallruletype)                 | 否 |否 |规则类型，包含IP、Domain、DNS                                                    |
 | isEnabled   | boolean                                                     | 否 |否 |是否启用规则。true表示启用，false表示不启用。                                                     |
@@ -574,7 +574,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallPolicy
 
-防火墙状态。
+防火墙策略，包含防火墙开关状态，默认的出站入站行为（允许/阻止）。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
