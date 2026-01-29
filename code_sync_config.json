@@ -42657,6 +42657,11 @@
 						"end_line":230,
 						"name":"optionExample_keepFileName",
 						"start_line":226
+					},
+					{
+						"end_line":63,
+						"name":"optionExample_enablePropertyObfuscation1",
+						"start_line":55
 					}
 				]
 			},
