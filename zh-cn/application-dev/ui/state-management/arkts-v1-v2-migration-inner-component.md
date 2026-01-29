@@ -1181,6 +1181,7 @@ V1实现：
 <!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
 
 ``` TypeScript
+// xxx.ets
 @Entry
 @Component
 struct TextInputExample {
