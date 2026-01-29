@@ -6552,7 +6552,7 @@ struct WebComponent {
 
 setPrintBackground(enable: boolean): void
 
-设置是否打印网页背景。
+设置是否打印网页背景，该接口与[PrintAttributes](../apis-basic-services-kit/js-apis-print.md#printattributes11)打印参数配置不一致时，本接口设置优先级高于打印参数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
