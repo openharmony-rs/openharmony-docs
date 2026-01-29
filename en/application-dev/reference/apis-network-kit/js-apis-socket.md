@@ -991,7 +991,7 @@ Defines the parameters for sending data over a UDP socket connection.
 
 ## UDPExtraOptions
 
-Defines other properties of the **UDPSocket** object. This API inherits from [ExtraOptionsBase](#extraoptionsbase7).
+Defines other properties of the **UDPSocket** object. This object is inherited from [ExtraOptionsBase] (#extraoptionsbase).
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1633,7 +1633,7 @@ multicast.getLoopbackMode().then((value: Boolean) => {
 });
 ```
 
-## socket.constructTCPSocketInstance<sup>7+</sup>
+## socket.constructTCPSocketInstance
 
 constructTCPSocketInstance(): TCPSocket
 
@@ -1656,7 +1656,7 @@ let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 
 ## TCPSocket
 
-Defines a TCP socket connection. Before calling TCPSocket APIs, you need to call [socket.constructTCPSocketInstance](#socketconstructtcpsocketinstance7) to create a **TCPSocket** object.
+Defines a TCP socket connection. Before calling TCPSocket APIs, you need to call [socket.constructTCPSocketInstance](#socketconstructtcpsocketinstance) to create a **TCPSocket** object.
 
 ### bind
 
@@ -2881,7 +2881,7 @@ Defines the parameters for sending data over a TCP socket connection.
 
 ## TCPExtraOptions
 
-Defines other properties of the **TCPSocket** object. This API inherits from [ExtraOptionsBase](#extraoptionsbase7).
+Defines other properties of the **TCPSocket** object. This object is inherited from [ExtraOptionsBase](#extraoptionsbase).
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -2923,7 +2923,7 @@ listen(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 Binds the IP address and port number. The port number can be specified or randomly allocated by the system. The server listens to and accepts TCP socket connections established over the socket. Multiple threads are used to process client data concurrently. This API uses an asynchronous callback to return the result.
 
-> **NOTE**<br>
+> **NOTE**
 > The server uses this API to perform the **bind**, **listen**, and **accept** operations. If the **bind** operation fails, the system randomly allocates a port number.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -2978,7 +2978,7 @@ listen(address: NetAddress): Promise\<void\>
 
 Binds the IP address and port number. The port number can be specified or randomly allocated by the system. The server listens to and accepts TCP socket connections established over the socket. Multiple threads are used to process client data concurrently. This API uses a promise to return the result.
 
-> **NOTE**<br>
+> **NOTE**
 > The server uses this API to perform the **bind**, **listen**, and **accept** operations. If the **bind** operation fails, the system randomly allocates a port number.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -4569,7 +4569,7 @@ client.connect(connectOpt).then(() => {
 client.getSocketFd().then((data: number) => {
   console.info("fd: " + data);
 }).catch((err: Object) => {
-  console.error("getSocketFd faile: " + JSON.stringify(err));
+  console.error("getSocketFd failed: " + JSON.stringify(err));
 })
 ```
 
@@ -4588,7 +4588,7 @@ Sets the properties of the **LocalSocket** object. This API uses a promise to re
 
 | Name | Type                                     | Mandatory| Description                                                        |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [ExtraOptionsBase](#extraoptionsbase7) | Yes  | Other properties of the **LocalSocket** object. For details, see [ExtraOptionsBase](#extraoptionsbase7).|
+| options | [ExtraOptionsBase](#extraoptionsbase) | Yes  | Other properties of the LocalSocket connection. For details, see [ExtraOptionsBase](#extraoptionsbase).|
 
 **Return value**
 
@@ -4658,7 +4658,7 @@ Obtains the socket properties of the **LocalSocket** object. This API uses a pro
 
 | Type                        | Description                                     |
 | :-------------------------- | :---------------------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase7)\> | Promise used to return the result.|
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the result.|
 
 **Error codes**
 
@@ -5102,7 +5102,7 @@ Defines the request parameters for the **LocalSocket** object.
 | data    | string \| ArrayBuffer | No  | No  | Data to be transmitted.|
 | encoding | string   | No  | Yes| Encoding format of the string. |
 
-## ExtraOptionsBase<sup>7+</sup>
+## ExtraOptionsBase
 
 Defines base properties of the **LocalSocket** object.
 
@@ -5261,7 +5261,7 @@ Sets the socket properties of the **LocalSocketServer** object. This API uses a 
 
 | Name | Type                                     | Mandatory| Description                           |
 | ------- | --------------------------------------- | ---- | ------------------------------ |
-| options | [ExtraOptionsBase](#extraoptionsbase7) | Yes  | Other properties of the **LocalSocketServer** object.|
+| options | [ExtraOptionsBase](#extraoptionsbase) | Yes  | Other properties of the **LocalSocketServer** object.|
 
 **Return value**
 
@@ -5328,7 +5328,7 @@ Obtains the socket properties of the **LocalSocketServer** object. This API uses
 
 | Type                        | Description                       |
 | :-------------------------- | :-------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase7)\> | Promise used to return the result.|
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the result.|
 
 **Error codes**
 
@@ -6774,7 +6774,7 @@ tls.off('error', callback);
 
 connect(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 
-Sets up a TLS socket connection, and creates and initializes a TLS session after **bind** is successfully called. During this process, a TLS/SSL handshake is performed between the application and the server to implement data transmission. This API uses an asynchronous callback to return the result. Note that **ca** in **secureOptions** of the **options** parameter is mandatory in API version 11 or earlier. You need to enter the CA certificate of the server for certificate authentication. The certificate content starts with "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----". This field is optional since API version 12.
+Sets up a **TLSSocket** connection, and creates and initializes a TLS session after **bind** is successfully called. During this process, a TLS/SSL handshake is performed between the application and the server to implement data transmission. This API uses an asynchronous callback to return the result. Note that **ca** in **secureOptions** of the **options** parameter is mandatory in API version 11 or earlier. You need to enter the CA certificate of the server for certificate authentication. The certificate content starts with "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----". This field is optional since API version 12.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -6969,7 +6969,7 @@ tlsOneWay.connect(tlsOneWayConnectOptions, (err: BusinessError) => {
 
 connect(options: TLSConnectOptions): Promise\<void\>
 
-Sets up a TLS socket connection, and creates and initializes a TLS session after **bind** is successfully called. During this process, a TLS/SSL handshake is performed between the application and the server to implement data transmission. Both two-way and one-way authentication modes are supported. This API uses a promise to return the result. Note that **ca** in **secureOptions** of the **options** parameter is mandatory in API version 11 or earlier. You need to enter the CA certificate of the server for certificate authentication. The certificate content starts with "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----". This field is optional since API version 12.
+Sets up a **TLSSocket** connection, and creates and initializes a TLS session after **bind** is successfully called. During this process, a TLS/SSL handshake is performed between the application and the server to implement data transmission. Both two-way and one-way authentication modes are supported. This API uses a promise to return the result. Note that **ca** in **secureOptions** of the **options** parameter is mandatory in API version 11 or earlier. You need to enter the CA certificate of the server for certificate authentication. The certificate content starts with "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----". This field is optional since API version 12.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7249,7 +7249,7 @@ tls.getRemoteAddress().then(() => {
 
 getCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-Obtains the local digital certificate after a TLS socket connection is established. This API is applicable to two-way authentication. It uses an asynchronous callback to return the result.
+Obtains the local digital certificate after a **TLSSocket** connection is established. This API is applicable to two-way authentication. It uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7287,7 +7287,7 @@ tls.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
 
 getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-Obtains the local digital certificate after a TLS socket connection is established. This API is applicable to two-way authentication. It uses a promise to return the result.
+Obtains the local digital certificate after a **TLSSocket** connection is established. This API is applicable to two-way authentication. It uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7326,7 +7326,7 @@ tls.getCertificate().then((data: socket.X509CertRawData) => {
 
 getRemoteCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-Obtains the digital certificate of the server after a TLS socket connection is established. This API uses an asynchronous callback to return the result.
+Obtains the digital certificate of the server after a **TLSSocket** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7366,7 +7366,7 @@ tls.getRemoteCertificate((err: BusinessError, data: socket.X509CertRawData) => {
 
 getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-Obtains the digital certificate of the server after a TLS socket connection is established. This API uses a promise to return the result.
+Obtains the digital certificate of the server after a **TLSSocket** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7404,7 +7404,7 @@ tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
 
 getProtocol(callback: AsyncCallback\<string\>): void
 
-Obtains the communication protocol version after a TLS socket connection is established. This API uses an asynchronous callback to return the result.
+Obtains the communication protocol version after a **TLSSocket** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7442,7 +7442,7 @@ tls.getProtocol((err: BusinessError, data: string) => {
 
 getProtocol():Promise\<string\>
 
-Obtains the communication protocol version after a TLS socket connection is established. This API uses a promise to return the result.
+Obtains the communication protocol version after a **TLSSocket** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7478,7 +7478,7 @@ tls.getProtocol().then((data: string) => {
 
 getCipherSuite(callback: AsyncCallback\<Array\<string\>\>): void
 
-Obtains the cipher suite negotiated by both communication parties after a TLS socket connection is established. This API uses an asynchronous callback to return the result.
+Obtains the cipher suite negotiated by both communication parties after a **TLSSocket** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7517,7 +7517,7 @@ tls.getCipherSuite((err: BusinessError, data: Array<string>) => {
 
 getCipherSuite(): Promise\<Array\<string\>\>
 
-Obtains the cipher suite negotiated by both communication parties after a TLS socket connection is established. This API uses a promise to return the result.
+Obtains the cipher suite negotiated by both communication parties after a **TLSSocket** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7554,7 +7554,7 @@ tls.getCipherSuite().then((data: Array<string>) => {
 
 getSignatureAlgorithms(callback: AsyncCallback\<Array\<string\>\>): void
 
-Obtains the signing algorithm negotiated by both communication parties after a TLS socket connection is established. This API is applicable to two-way authentication. It uses an asynchronous callback to return the result.
+Obtains the signing algorithm negotiated by both communication parties after a **TLSSocket** connection is established. This API is applicable to two-way authentication. It uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7591,7 +7591,7 @@ tls.getSignatureAlgorithms((err: BusinessError, data: Array<string>) => {
 
 getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
-Obtains the signing algorithm negotiated by both communication parties after a TLS socket connection is established. This API is applicable to two-way authentication. It uses a promise to return the result.
+Obtains the signing algorithm negotiated by both communication parties after a **TLSSocket** connection is established. This API is applicable to two-way authentication. It uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7705,7 +7705,7 @@ tls.getSocketFd().then((data: number) => {
 
 send(data: string \| ArrayBuffer, callback: AsyncCallback\<void\>): void
 
-Sends a message to the server after a TLS socket connection is established. This API uses an asynchronous callback to return the result.
+Sends a message to the server after a **TLSSocket** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7747,7 +7747,7 @@ tls.send("xxxx", (err: BusinessError) => {
 
 send(data: string \| ArrayBuffer): Promise\<void\>
 
-Sends a message to the server after a TLS socket connection is established. This API uses a promise to return the result.
+Sends a message to the server after a **TLSSocket** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7792,7 +7792,7 @@ tls.send("xxxx").then(() => {
 
 close(callback: AsyncCallback\<void\>): void
 
-Closes a TLS socket connection. This API uses an asynchronous callback to return the result.
+Closes a **TLSSocket** connection. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7832,7 +7832,7 @@ tls.close((err: BusinessError) => {
 
 close(): Promise\<void\>
 
-Closes a TLS socket connection. This API uses a promise to return the result.
+Closes a **TLSSocket** connection. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -8023,7 +8023,7 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
 
 listen(options: TLSConnectOptions): Promise\<void\>
 
-Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses a promise to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified. 
+Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses an asynchronous callback to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified. 
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -8390,7 +8390,7 @@ tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
 
 getCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-Obtains the local digital certificate after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Obtains the local digital certificate after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API can be called only after **listen** is successfully called.
@@ -8459,7 +8459,7 @@ tlsServer.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
 
 getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-Obtains the local digital certificate after a TLS socket server connection is established. This API uses a promise to return the result.
+Obtains the local digital certificate after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 > **NOTE**
 > This API can be called only after **listen** is successfully called.
@@ -8525,7 +8525,7 @@ tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
 
 getProtocol(callback: AsyncCallback\<string\>): void
 
-Obtains the communication protocol version after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Obtains the communication protocol version after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API can be called only after **listen** is successfully called.
@@ -8591,7 +8591,7 @@ tlsServer.getProtocol((err: BusinessError, data: string) => {
 
 getProtocol():Promise\<string\>
 
-Obtains the communication protocol version after a TLS socket server connection is established. This API uses a promise to return the result.
+Obtains the communication protocol version after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 > **NOTE**
 > This API can be called only after **listen** is successfully called.
@@ -9027,7 +9027,7 @@ Defines a **TLSSocketConnection** object, that is, the connection between the TL
 
 send(data: string \| ArrayBuffer, callback: AsyncCallback\<void\>): void
 
-Sends a message to the client after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Sends a message to the client after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9096,7 +9096,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 send(data: string \| ArrayBuffer): Promise\<void\>
 
-Sends a message to the server after a TLS socket server connection is established. This API uses a promise to return the result.
+Sends a message to the server after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9168,7 +9168,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 close(callback: AsyncCallback\<void\>): void
 
-Closes a TLS socket server connection. This API uses an asynchronous callback to return the result.
+Closes a **TLSSocketServer** connection. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9235,7 +9235,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 close(): Promise\<void\>
 
-Closes a TLS socket server connection. This API uses a promise to return the result.
+Closes a **TLSSocketServer** connection. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9423,7 +9423,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-Obtains the digital certificate of the peer end after a TLS socket server connection is established. This API uses an asynchronous callback to return the result. It applies only to the scenario where the client sends a certificate to the server. 
+Obtains the digital certificate of the peer end after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result. It applies only to the scenario where the client sends a certificate to the server. 
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9490,7 +9490,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-Obtains the digital certificate of the peer end after a TLS socket server connection is established. This API uses a promise to return the result. It applies only to the scenario where the client sends a certificate to the server. 
+Obtains the digital certificate of the peer end after a **TLSSocketServer** connection is established. This API uses a promise to return the result. It applies only to the scenario where the client sends a certificate to the server. 
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9554,7 +9554,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getCipherSuite(callback: AsyncCallback\<Array\<string\>\>): void
 
-Obtains the cipher suite negotiated by both communication parties after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Obtains the cipher suite negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9620,7 +9620,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getCipherSuite(): Promise\<Array\<string\>\>
 
-Obtains the cipher suite negotiated by both communication parties after a TLS socket server connection is established. This API uses a promise to return the result.
+Obtains the cipher suite negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9683,7 +9683,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getSignatureAlgorithms(callback: AsyncCallback\<Array\<string\>\>): void
 
-Obtains the signing algorithm negotiated by both communication parties after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Obtains the signing algorithm negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9747,7 +9747,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
-Obtains the signing algorithm negotiated by both communication parties after a TLS socket server connection is established. This API uses a promise to return the result.
+Obtains the signing algorithm negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 

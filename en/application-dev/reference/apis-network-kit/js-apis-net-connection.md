@@ -27,7 +27,9 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 
 Creates a **NetConnection** object, where [netSpecifier](#netspecifier) specifies the network, and **timeout** specifies the timeout duration in ms. **timeout** is configurable only when **netSpecifier** is specified. If neither of them is present, the default network is used.
 
-**Note**: **createNetConnection** supports up to 2,000 registered callbacks. Exceeding this limit will result in a registration failure.
+>**NOTE**
+>
+>The number of callback functions registered by **createNetConnection** cannot exceed 2000. Otherwise, network listening cannot be registered.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -66,7 +68,17 @@ let netConnectionCellular = connection.createNetConnection({
 
 getDefaultNet(callback: AsyncCallback\<NetHandle>): void
 
-Obtains the default active data network. This API uses an asynchronous callback to return the result. You can use [getNetCapabilities](#connectiongetnetcapabilities) to obtain information such as the network type and capabilities.
+Obtains the default network ID. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+>- Default network used by the system. The network must have the [NET_CAPABILITY_INTERNET](#netcap) capability and is not a VPN network.
+>
+>- The return value of this interface is determined by the system and is irrelevant to whether the application specifies a network.
+>
+>- Generally, the priority is as follows: Ethernet (PC) | Bluetooth (watch) > Wi-Fi > Cellular. In special cases, the actual returned result prevails.
+>
+>- NetHandle uniquely identifies a network. If no network is available, 0 is returned. This ID can be used by other APIs [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -110,7 +122,17 @@ connection.getDefaultNet((error: BusinessError, data: connection.NetHandle) => {
 
 getDefaultNet(): Promise\<NetHandle>
 
-Obtains the default active data network. This API uses a promise to return the result. You can use [getNetCapabilities](#connectiongetnetcapabilities) to obtain information such as the network type and capabilities.
+Obtains the default network ID. This API uses a promise to return the result.
+
+> **NOTE**
+>
+>- Default network used by the system. The network must have the [NET_CAPABILITY_INTERNET](#netcap) capability and is not a VPN network.
+>
+>- The return value of this interface is determined by the system and is irrelevant to whether the application specifies a network.
+>
+>- Generally, the priority is as follows: Ethernet (PC) | Bluetooth (watch) > Wi-Fi > Cellular. In special cases, the actual returned result prevails.
+>
+>- NetHandle uniquely identifies a network. If no network is available, 0 is returned. This ID can be used by other APIs [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -148,7 +170,17 @@ connection.getDefaultNet().then((data: connection.NetHandle) => {
 
 getDefaultNetSync(): NetHandle
 
-Obtains the default active data network in synchronous mode. You can use [getNetCapabilities](#connectiongetnetcapabilities) to obtain information such as the network type and capabilities.
+Obtains the default network ID used by the system.
+
+> **NOTE**
+>
+>- Default network used by the system. The network must have the [NET_CAPABILITY_INTERNET](#netcap) capability and is not a VPN network.
+>
+>- The return value of this interface is determined by the system and is irrelevant to whether the application specifies a network.
+>
+>- Generally, the priority is as follows: Ethernet (PC) | Bluetooth (watch) > Wi-Fi > Cellular. In special cases, the actual returned result prevails.
+>
+>- NetHandle uniquely identifies a network. If no network is available, 0 is returned. This ID can be used by other APIs [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -538,7 +570,7 @@ Obtains the list of all connected networks. This API uses an asynchronous callba
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Yes| Callback used to return the result. If the list of all connected networks is obtained successfully, **error** is **undefined** and **data** is the list of activated data networks. Otherwise, **error** is an error object.|
+| callback | AsyncCallback&lt;Array&lt;[NetHandle](#nethandle)&gt;&gt; | Yes| Callback used to return the result. If the list of all connected networks is obtained successfully, **error** is **undefined** and **data** is the list of activated data networks. Otherwise, **error** is an error object. If Wi-Fi and cellular data are both enabled, and no application specifies the use of cellular data, only Wi-Fi is activated. In this case, only the NetHandle of Wi-Fi is returned. The NetHandle of Wi-Fi and cellular data can be obtained at the same time only when a specific application enables the cellular network.|
 
 **Error codes**
 
@@ -1726,7 +1758,13 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **http://127.0.0.1:21998/PacProxyScript.pac**. You can obtain the proxy information by parsing the URL.
+Set the URL of the Proxy Auto-Configuration Script (PAC) and enable the PAC proxy capability, for example, http://127.0.0.1:21998/PacProxyScript.pac. You can obtain the proxy information by parsing the URL.
+ 	 
+>**NOTE**
+>
+> 1. Currently, this API can be used to parse scripts and enable the PAC proxy capability only on PCs. For other device types, only the script address is saved and the PAC proxy capability is not enabled.<br>
+> 2. This API does not verify the URL authenticity. After the URL is set on the PC, the PAC proxy is started. If the URL is incorrect, the proxy fails to be started and the error code 2100002 is returned.
+
 
 **Required permissions**: ohos.permission.SET_PAC_URL
 
@@ -1790,7 +1828,13 @@ console.info(pacFileUrl);
 
 findProxyForUrl(url: string): string
 
-Searches for PAC proxy information based on the given URL.
+Parses the specified URL proxy address based on the configured PAC script and returns the corresponding PAC proxy information.
+ 	 
+> **NOTE**
+>
+> 1. You can use [setPacFileUrl](#connectionsetpacfileurl20) or [setPacUrl](#connectionsetpacurl15) to set the PAC script.<br>
+> 2. If no PAC script is set before this interface is called, an empty string is returned.
+> 3. Currently, the [setPacFileUrl](#connectionsetpacfileurl20) interface can be used to parse scripts and enable the PAC proxy capability only for PCs. Therefore, this interface can be used to obtain PAC proxy information only for PCs. If other devices call this API, the function does not take effect and an empty string is returned.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -1821,6 +1865,10 @@ console.info(proxyInfo);
 setPacUrl(pacUrl: string): void
 
 Sets the URL of the system-level Proxy Auto Config (PAC) script.
+
+> **NOTE**
+>
+> Only the script address can be set. The proxy function cannot be parsed or enabled. To set the script and enable the proxy, call the [setPacFileUrl](#connectionsetpacfileurl20) API.
 
 **Required permissions**: ohos.permission.SET_PAC_URL
 
@@ -2083,6 +2131,56 @@ if (netHandle.netId != 0) {
 }
 ```
 
+## connection.getIpNeighTable<sup>22+</sup>
+
+getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
+
+Obtains information about entries in the IP neighbor table of the local device, including IPv4 and IPv6 entries. Each entry contains an IP address, a MAC address, and a network adapter name. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This interface is used to obtain the cached data of the IP neighbor table, not the data of all connections on the LAN.
+>
+> This API is used when you need to check network exceptions and parse the mapping between IP addresses and MAC addresses.
+
+**Required permissions**: ohos.permission.GET_NETWORK_INFO and ohos.permission.GET_IP_MAC_INFO
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ----------------------- |
+| Promise\<Array\<[NetIpMacInfo](#netipmacinfo22)>> | Promise used to return information about entries in the IP neighbor table.|
+
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                         |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error.            |
+
+**Example**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
+  if (data.length !== 0) {
+    console.info(`ipAddress:${data[0].ipAddress}`);
+    console.info(`ifaceName:${data[0].iface}`);
+    console.info(`macAddress:${data[0].macAddress}`);
+  }
+}).catch((error: BusinessError) => {
+  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+});
+```
+
 ## NetConnection
 
 Represents the network connection handle.
@@ -2103,7 +2201,9 @@ register(callback: AsyncCallback\<void>): void
 
 Registers a listener for network status changes. To listen for a specific type of events, call **on** to enable listening and then call **register** to register an event listener.
 
-**Note**: After using this API, you need to call **unregister** to cancel the registration in a timely manner.
+>**NOTE**
+>
+>After using the **register** API, you need to call **unregister** to deregister the listener.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -2635,7 +2735,7 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 
 | Name  | Type                                             | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                            | Yes  | Host name to resolve.                                          |
+| host     | string                                            | Yes  | Host name to resolve. For example, www.example.com.                                          |
 | callback | AsyncCallback\<Array\<[NetAddress](#netaddress)>> | Yes  | Callback used to return the result. If all IP addresses are successfully obtained, **error** is **undefined**, and **data** is the list of all obtained IP addresses. Otherwise, **error** is an error object.|
 
 **Error codes**
@@ -2661,7 +2761,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
     if (error) {
       console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
@@ -2688,7 +2788,7 @@ Obtains all IP addresses by using the network specified by **NetHandle** to reso
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | Yes  | Host name to resolve.|
+| host   | string | Yes  | Host name to resolve. For example, www.example.com.|
 
 **Return value**
 
@@ -2718,7 +2818,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressesByName(host).then((data: connection.NetAddress[]) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2739,7 +2839,7 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 | Name  | Type                                     | Mandatory| Description                                                        |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| host     | string                                    | Yes  | Host name to resolve.                                          |
+| host     | string                                    | Yes  | Host name to resolve. For example, www.example.com.                                          |
 | callback | AsyncCallback\<[NetAddress](#netaddress)> | Yes  | Callback used to return the result. If the first IP address is obtained successfully, **error** is **undefined**, and **data** is the first obtained IP address. Otherwise, **error** is an error object.|
 
 **Error codes**
@@ -2765,7 +2865,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
     if (error) {
       console.error(`Failed to get address. Code:${error.code}, message:${error.message}`);
@@ -2790,7 +2890,7 @@ Obtains the first IP address by using the network specified by **NetHandle** to 
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| host   | string | Yes  | Host name to resolve.|
+| host   | string | Yes  | Host name to resolve. For example, www.example.com.|
 
 **Return value**
 
@@ -2820,7 +2920,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
     return;
   }
-  let host = "xxxx";
+  let host = "www.example.com";
   netHandle.getAddressByName(host).then((data: connection.NetAddress) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   });
@@ -2868,8 +2968,8 @@ Represents the HTTP proxy configuration.
 | host  | string | No | No|Host name of the proxy server.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | port  | number | No |No |Host port. The value range is \[0, 65535].<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | exclusionList  | Array\<string\> | No |No|List of the names of hosts that do not use a proxy. Host names can be domain names, IP addresses, or wildcards. The detailed matching rules are as follows:<br>- Domain name matching:<br>  - Exact match: The host name of the proxy server exactly matches any host name in the list.<br>  - Partial match: The host name of the proxy server contains any host name in the list.<br>For example, if **ample.com** is set in the host name list, **ample.com**, **www.ample.com**, and **ample.com:80** are matched, and **www.example.com** and **ample.com.org** are not matched.<br>- IP address matching: The host name of the proxy server exactly matches any IP address in the list.<br>- Both the domain name and IP address are added to the list for matching.<br>- A single asterisk (*) is the only valid wildcard. If the list contains only wildcards, the wildcards match all host names; that is, the HTTP proxy is disabled. A wildcard can only be added independently. It cannot be added to the list together with other domain names or IP addresses. Otherwise, the wildcard does not take effect.<br>- Host names are case insensitive.<br>- Protocol prefixes such as **http** and **https** are ignored during matching.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| username<sup>12+</sup>  | string | No|Yes |Name of the user who uses the proxy.|
-| password<sup>12+</sup>  | string | No| Yes| Password of the user who uses the proxy.|
+| username<sup>12+</sup>  | string | No|Yes |Name of the user who uses the proxy.<br>Note: This parameter takes effect only when the password parameter is set.|
+| password<sup>12+</sup>  | string | No| Yes| Password of the user who uses the proxy.<br>Note: The setting takes effect only when the username parameter is set.|
 
 ## NetSpecifier
 
@@ -2965,6 +3065,9 @@ Obtains the network block status information.
 ## ConnectionProperties
 
 Defines the network connection properties.
+>**NOTE**
+>
+> The values of linkAddresses, routes, and dnses may be empty.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -2989,7 +3092,7 @@ Defines network route information.
 | destination    | [LinkAddress](#linkaddress) | No| No|Destination address.      |
 | gateway        | [NetAddress](#netaddress)   | No| No|Gateway address.      |
 | hasGateway     | boolean                     | No| No| Whether a gateway is present. Whether a gateway is available. The value **true** indicates that a gateway is available, and the value **false** indicates the opposite.    |
-| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite.|
+| isDefaultRoute | boolean                     | No| No| Whether the route is the default one. Whether the route is the default route. The value **true** indicates that the route is the default route, and the value **false** indicates the opposite. IPv4 default route: The destination address of the route is **0.0.0.0/0**. IPv6 default route: The destination address of the route **is::/0**.|
 | isExcludedRoute<sup>20+</sup>| boolean                     | No| Yes|Whether the route is excluded. The value **true** indicates that the route is excluded, and the value **false** indicates the opposite.|
 
 ## LinkAddress
@@ -3035,7 +3138,7 @@ Defines an HTTP request, which can be created using [http.createHttp](js-apis-ht
 
 type TCPSocket = socket.TCPSocket
 
-Defines a **TCPSocket** object, which can be created using [socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance7).
+Defines a TCPSocket object, which can be created using [socket.constructTCPSocketInstance](js-apis-socket.md#socketconstructtcpsocketinstance).
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -3054,3 +3157,16 @@ Defines a **UDPSocket** object, which can be created using [socket.constructUDPS
 |       Type      |            Description            |
 | ---------------- | --------------------------- |
 | socket.UDPSocket | **UDPSocket** object.    |
+
+
+## NetIpMacInfo<sup>22+</sup>
+
+Information about entries in the IP neighbor table.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| ipAddress | [NetAddress](#netaddress)     | No| No|IP address information.  |
+| iface       | string                              | No| No|NIC name.                                   |
+| macAddress | string | No| No|MAC address.                               |
