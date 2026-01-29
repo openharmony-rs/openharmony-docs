@@ -7,15 +7,17 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 Provides WebSocket clients and servers for third-party applications to implement bidirectional connections between the client and server.
 
 On the WebSocket client: You can use WebSocket to establish a bidirectional connection between the server and client. Before doing this, you need to use the [createWebSocket](#websocketcreatewebsocket) API to create a [WebSocket](#websocket) object and then use the [connect](#connect) API to connect to the server. If the connection is successful, the client will receive a callback of the [open](#onopen) event. Then, the client can communicate with the server using the [send](#send) API. When the server sends a message to the client, the client will receive a callback of the [message](#onmessage) event. If the connection is no longer needed, the client can call the [close](#close) API to close the connection. After successful disconnection, the client will receive a callback of the [close](#onclose) event. If an error occurs in any of the preceding processes, the client will receive a callback of the [error](#onerror) event.
 
 On the WebSocket server: Use the [createWebSocketServer](#websocketcreatewebsocketserver19) method to create a [WebSocketServer](#websocketserver19) object, and then use the [start](#start19) method to start the server and listen to the link setup request message from the client. (The API version 23 and later versions support all devices. In earlier versions, only TV devices are supported.) If the connection is successful, the server receives the callback of the [connect](#onconnect19) event. The server can then communicate with the client by using the [send](#send19) API or obtain information about all connected clients by using the [listAllConnections](#listallconnections19) API. When the client sends a message to the server, the server receives the callback of the [messageReceive](#onmessagereceive19) event. If the connection is no longer needed, the server can call the [close](#close19) API to close the connection. After successful disconnection, the server will receive a callback of the [close](#onclose19) event. To stop the service, the server can use the [stop](#stop19) API. If an error occurs in any of the preceding processes, the server will receive a callback of the [error](#onerror19) event.
+
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
 
 ## Modules to Import
 
@@ -379,7 +381,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 
 close(callback: AsyncCallback\<boolean\>): void
 
-Closes a WebSocket connection. This API uses an asynchronous callback to return the result.
+Closes the WebSocket connection. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -422,7 +424,7 @@ ws.close((err: BusinessError) => {
 
 close(options: WebSocketCloseOptions, callback: AsyncCallback\<boolean\>): void
 
-Closes a WebSocket connection based on the specified **options**. This API uses an asynchronous callback to return the result.
+Closes the WebSocket connection based on the options parameter. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -524,7 +526,7 @@ promise.then((value: boolean) => {
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
-Enables listening for the **open** events of a WebSocket connection. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect) is called to initiate a connection request.
+Subscribes to WebSocket open events. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect) is called to initiate a connection request.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -557,7 +559,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 
 off(type: 'open', callback?: AsyncCallback\<Object\>): void
 
-Disables listening for the **open** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Unsubscribes from WebSocket open events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -597,7 +599,7 @@ ws.off('open', callback1);
 
 on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
 
-Enables listening for the **message** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Subscribes to WebSocket server message receiving events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -630,7 +632,7 @@ ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
 
 off(type: 'message', callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
-Disables listening for the **message** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Unsubscribes from WebSocket server message receiving events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -661,7 +663,7 @@ ws.off('message');
 
 on(type: 'close', callback: AsyncCallback\<CloseResult\>): void
 
-Enables listening for the **close** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Subscribes to WebSocket close events. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -690,7 +692,7 @@ ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
 
 off(type: 'close', callback?: AsyncCallback\<CloseResult\>): void
 
-Disables listening for the **close** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Unsubscribes from WebSocket close events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -720,7 +722,7 @@ ws.off('close');
 
 on(type: 'error', callback: ErrorCallback): void
 
-Enables listening for the **error** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Subscribes to WebSocket error events. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -749,7 +751,7 @@ ws.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-Disables listening for the **error** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Unsubscribes from WebSocket error events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -779,7 +781,7 @@ ws.off('error');
 
 on(type: 'dataEnd', callback: Callback\<void\>): void
 
-Enables listening for the **dataEnd** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Subscribes to the WebSocket data receiving end event. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -805,7 +807,7 @@ ws.on('dataEnd', () => {
 
 off(type: 'dataEnd', callback?: Callback\<void\>): void
 
-Disables listening for the **dataEnd** events of a WebSocket connection. This API uses an asynchronous callback to return the result.
+Unsubscribes from WebSocket data receiving end events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -833,7 +835,7 @@ ws.off('dataEnd');
 
 on(type: 'headerReceive', callback: Callback\<ResponseHeaders\>): void
 
-Registers an observer for HTTP Response Header events. This API uses an asynchronous callback to return the result.
+Subscribes to HTTP response header events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -859,7 +861,7 @@ ws.on('headerReceive', (data) => {
 
 off(type: 'headerReceive', callback?: Callback\<ResponseHeaders\>): void
 
-Unregisters the observer for HTTP Response Header events. This API uses an asynchronous callback to return the result.
+Unsubscribes from HTTP response header events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1059,6 +1061,10 @@ Obtains information about all clients connected to the server.
 
 **System capability**: SystemCapability.Communication.NetStack
 
+>**NOTE**
+>
+>This API is called asynchronously. The **await** keyword needs to be used to wait until the asynchronous operation is complete, ensuring that information about all clients connected to the server can be correctly obtained.
+
 **Return value**
 | Type                                       | Description                        |
 | ------------------------------------------- | ---------------------------- |
@@ -1240,7 +1246,7 @@ localServer.stop().then((success: boolean) => {
 
 on(type: 'connect', callback: Callback\<WebSocketConnection\>): void
 
-Enables listening for WebSocketServer connection events. This API uses an asynchronous callback to return the result.
+Subscribes to the WebSocketServer connection event (the connection between the client and server is successfully established). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1267,7 +1273,7 @@ localServer.on('connect', (connection: webSocket.WebSocketConnection) => {
 
 off(type: 'connect', callback?: Callback\<WebSocketConnection\>): void
 
-Disables listening for WebSocketServer connection events. This API uses an asynchronous callback to return the result.
+Unsubscribes from WebSocketServer connection events (the connection between the client and server is successfully established). This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1296,7 +1302,7 @@ localServer.off('connect');
 
 on(type: 'messageReceive', callback: Callback\<WebSocketMessage\>): void
 
-Enables listening for **messageReceive** events. This API uses an asynchronous callback to return the result.
+Subscribes to the WebSocketServer event of receiving client messages. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1323,7 +1329,7 @@ localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
 
 off(type: 'messageReceive', callback?: Callback\<WebSocketMessage\>): void
 
-Cancels listening for **messageReceive** events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the WebSocketServer event of receiving client messages. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1352,7 +1358,7 @@ localServer.off('messageReceive');
 
 on(type: 'close', callback: ClientConnectionCloseCallback): void
 
-Enables listening for the **close** events of a WebSocketServer connection. This API uses an asynchronous callback to return the result.
+Subscribes to WebSocketServer close events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1379,7 +1385,7 @@ localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeR
 
 off(type: 'close', callback?: ClientConnectionCloseCallback): void
 
-Disables listening for the **close** events of a WebSocketServer connection. This API uses an asynchronous callback to return the result.
+Unsubscribes from WebSocketServer close events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1408,7 +1414,7 @@ localServer.off('close');
 
 on(type: 'error', callback: ErrorCallback): void
 
-Enables listening for the **error** events of a WebSocketServer connection. This API uses an asynchronous callback to return the result.
+Subscribes to WebSocketServer error events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1435,7 +1441,7 @@ wsServer.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-Disables listening for the **error** events of a WebSocketServer connection. This API uses an asynchronous callback to return the result.
+Unsubscribes from WebSocketServer error events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
