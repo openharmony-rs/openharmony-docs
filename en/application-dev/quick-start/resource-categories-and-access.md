@@ -682,9 +682,10 @@ The **module.json5** file in the cross-application overlay resource package supp
 If the **module.json5** file of a module contains the **targetModuleName** and **targetPriority fields** during project creation on DevEco Studio, the module is identified as a module with the overlay feature in the installation phase. Modules with the overlay feature generally provide an overlay resource file for other modules on the device, so that the module specified by **targetModuleName** can display different colors, labels, themes, and the like by using the overlay resource file in a running phase.
 
 <!--Del-->
-##  
+
 
  
 
 -  
 <!--DelEnd-->
+<!--no_check-->

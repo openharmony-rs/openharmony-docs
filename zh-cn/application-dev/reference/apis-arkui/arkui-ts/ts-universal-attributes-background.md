@@ -184,6 +184,7 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 
 **参数：** 
 
+<!--Table: 10%; auto; 10%; auto-->
 | 参数名 | 类型                                            | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | 是   | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
@@ -275,6 +276,7 @@ backgroundImagePosition(value: Position | Alignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: auto; auto; 10%; 10%; auto-->
 | 名称        |   类型   |   只读  |  可选  | 说明                        |
 | ----        |  ----   |   ---- |  ---- | --------------------------  |
 | disableSystemAdaptation   |  boolean   |   否   |  是  |  系统自适应调节参数，推荐不携带该参数。该参数只影响低算力设备，低算力设备的定义由设备厂商决定。在低芯片算力的设备上，会根据算力和负载等条件，自动决策是否使用低算力的近似效果替代原有效果，比如模糊效果会结合接口中携带的模糊相关参数值及其他低算力处理逻辑，进行自适应效果降级处理。如果想关闭该功能，可以将该标志置为true。<br/>默认值：false |
@@ -524,6 +526,7 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: auto; auto; 10%; 10%; auto-->
 | 名称        |   类型         |   只读  |  可选  |  说明                        |
 | ----         |  ----         |   ---- |  ---- | --------------------------  |
 | radius       | number        |   否   |   否   |   模糊半径，取值范围：[0, +∞)，默认为0。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -569,6 +572,7 @@ backgroundImageResizable(value: ResizableOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称 | 类型                                                         | 只读 | 可选 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---- |---------------------------------------------------- |
 | policy<sup>14+</sup>  | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | 否 | 是   | 模糊激活策略。<br/> 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |

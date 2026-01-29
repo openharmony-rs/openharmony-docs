@@ -381,7 +381,7 @@ You need a custom class to implement the **ContentModifier** API.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | timeZoneOffset | number | No| No| Time zone offset of the text clock.<br>The value range is [-14, 12], indicating UTC+12 to UTC-12. A negative value indicates Eastern Standard Time, and a positive value indicates Western Standard Time. For example, **-8** indicates UTC+8. If the value is a floating point number within the value range, it is rounded off, with the decimal portion discarded.|
-| started | boolean | No| No| Whether the text clock is started.<br>The default value is true, indicating that the text clock is started. The value false indicates that the text clock is stopped.|
+| started | boolean | No| No| Whether the text clock is started.<br>**true**: The text clock is started.<br>**false**: The text clock is disabled.<br>Default value: **true**|
 | timeValue | number | No| No| Time zone offset of the text clock in seconds from UTC.|
 
 ## Example
@@ -589,3 +589,54 @@ struct TextClockExample {
 }
 ```
 ![TextClockExample](figures/text_clock_datetimeoptions.png)
+
+### Example 5: Setting the Text Display Style
+This example demonstrates how to use the [fontFeature](#fontfeature11), [fontColor](#fontcolor), [fontStyle](#fontstyle), [fontWeight](#fontweight) and [fontFamily](#fontfamily) attributes to set the text display style of the clock.
+``` ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text('fontFeature').fontColor(0xCCCCCC)
+      // Set text features.
+      TextClock()
+        .fontFeature('\"sinf\" off')
+      TextClock()
+        .fontFeature('\"sinf\" on')
+        .margin('10%')
+
+      // Set the font color.
+      Text('fontColor').fontColor(0xCCCCCC)
+      TextClock()
+        .fontColor(Color.Black)
+      TextClock()
+        .fontColor(Color.Blue)
+        .margin('10%')
+
+      Text('fontStyle').fontColor(0xCCCCCC)
+      // Set the font style.
+      TextClock()
+        .fontStyle(FontStyle.Normal)
+      TextClock()
+        .fontStyle(FontStyle.Italic)
+        .margin('10%')
+
+      Text('fontWeight').fontColor(0xCCCCCC)
+      Sets font weight.
+      TextClock()
+        .fontWeight(FontWeight.Normal)
+      TextClock()
+        .fontWeight(FontWeight.Bold)
+        .margin('10%')
+
+      Text('fontFamily').fontColor(0xCCCCCC)
+      // Set the font.
+      TextClock()
+        .fontFamily('HarmonyOS Sans')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

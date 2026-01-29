@@ -26,7 +26,7 @@ Supported
 >
 >  - If a child component has its [visibility](ts-universal-attributes-visibility.md#visibility) attribute set to **Visibility.None** and the **Swiper** component has its **displayCount** attribute set to **'auto'**, the child component does not take up space in the viewport, but does not affect the number of navigation points. If a child component has its **visibility** attribute set to **Visibility.None** or **Visibility.Hidden**, it takes up space in the viewport, but is not displayed.
 >
->  - Child components of the **Swiper** component are drawn based on their level if they have the [offset](ts-universal-attributes-location.md#offset) attribute set. A child component with a higher level overwrites one with a lower level. For example, if the **Swiper** contains three child components and **offset({ x: 100 })** is set for the third child component, the third child component overwrites the first child component during horizontal loop playback. To prevent the first child component from being overwritten, set its [zIndex](ts-universal-attributes-z-order.md) attribute to a value greater than that of the third child component.
+>  - Child components of the **Swiper** component are drawn based on their level if they have the [offset](ts-universal-attributes-location.md#offset) attribute set. A child component with a higher level overwrites one with a lower level. For example, if the **Swiper** contains three child components and **offset({ x: 100 })** is set for the third child component, the third child component overwrites the first child component during horizontal loop playback. To prevent the first child component from being overwritten, set its [zIndex](ts-universal-attributes-z-order.md#zindex) attribute to a value greater than that of the third child component.
 >
 >  - When focus is moved to a custom child node, navigation indicators and arrows may be obscured by [focus styles](../../../ui/arkts-common-events-focus-event.md#focus-style) modifications that change **zIndex**.
 >
@@ -57,7 +57,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 > **NOTE**
 >
-> The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md) is **true** for the **Swiper** component.
+> The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md#clip12) is **true** for the **Swiper** component.
 
 ### index
 
@@ -117,7 +117,7 @@ If [loop](#loop) is set to **false**, automatic playback stops at the last page 
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------- | ---- | -------------------------------------- |
-| autoPlay  | boolean | Yes  | Whether to enable automatic playback for child components.<br>true: The child component automatically plays. false: The child component does not automatically play.<br>If an invalid value is passed, the value false is used.|
+| autoPlay  | boolean | Yes  | Whether to enable automatic playback for child components.<br>true: automatically play; false: not automatically play.<br>If an invalid value is passed, the value false is used.|
 | options  | [AutoPlayOptions](#autoplayoptions18)&nbsp; | Yes  | Whether child components stop automatic playback when the screen is pressed by fingers, a mouse device, or other input devices. If **stopWhenTouched** is set to **true**, automatic playback resumes after any finger lifts in multi-touch scenarios.<br>Default value: **{ stopWhenTouched: true }**.|
 
 ### indicator
@@ -549,7 +549,7 @@ When using the **nextMargin** or **prevMargin** API, avoid applying [size constr
 
 | Name| Type                        | Mandatory| Description                  |
 | ------ | ---------------------------- | ---- | ---------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Leading margin. Percentage values are not supported.<br>Default value: **0**|
+| value  | [Length](ts-types.md#length) | Yes  | Leading margin. Percentage values are not supported.<br>Default value: **0**.|
 | ignoreBlank<sup>12+</sup>  | boolean | No  | Whether to hide the leading margin for the first page in non-loop scenarios.<br> **true**: Hide the leading margin, in which case, the left edge of the first page is aligned with that of the **Swiper** component's viewable area.<br>**false**: Show the leading margin, in which case, the first page has a **prevMargin**-specified gap from the **Swiper** component's left edge.<br>Default value: **false**.<br>**NOTE**<br>On the first page, the values of **prevMargin** and **nextMargin** are added to create a right margin that allows the next page to be displayed partially.|
 
 ### indicatorInteractive<sup>12+</sup>
@@ -614,7 +614,7 @@ Sets the style of the navigation indicator.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 10. No replacement is available. You can use [Indicator](#indicator10), [DigitIndicator](#digitindicator10), and [DotIndicator](#dotindicator10) to set the indicator style.
+> This API is supported since API version 8 and deprecated since API version 10. You are advised to use [indicator](#indicator) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -985,7 +985,7 @@ Sets the distance between the navigation indicator and the left edge (in right-t
 
 | Name| Type                        | Mandatory | Description                                    |
 | ------ | ---------------------------- | ---- | ---------------------------------------- |
-| value | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes   | Distance between the navigation indicator and the left edge (in right-to-left scripts) or the right edge (in left-to-right scripts) of the **Swiper** component.<br>Default value: **0**<br>Unit: vp<br>The value range is [0, Swiper width – Navigation point area width]. If the value is out of the range, the nearest boundary value is used. |
+| value | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes   | Distance between the navigation indicator and the left edge (in right-to-left scripts) or the right edge (in left-to-right scripts) of the **Swiper** component.<br>Default value: **0**<br>Unit: vp<br>Value range: [0, Swiper width - Navigation point area width]. If the value is out of the range, the nearest boundary value is used. |
 
 **Return value**
 
@@ -1061,7 +1061,7 @@ A constructor used to create a **DotIndicator** object.
 
 itemWidth(value: Length): DotIndicator
 
-Sets the width of the dot-style navigation indicator. This parameter cannot be set in percentage.
+Sets the width of a dot-style navigation indicator of the **Swiper** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1073,7 +1073,7 @@ Sets the width of the dot-style navigation indicator. This parameter cannot be s
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Width of the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: [0, +∞)|
+| value  | [Length](ts-types.md#length) | Yes  | Width of the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: (0, +∞)|
 
 **Return value**
 
@@ -1085,7 +1085,7 @@ Sets the width of the dot-style navigation indicator. This parameter cannot be s
 
 itemHeight(value: Length): DotIndicator
 
-Sets the height of the dot-style navigation indicator. This parameter cannot be set in percentage.
+Sets the height of a dot-style navigation indicator of the **Swiper** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1097,7 +1097,7 @@ Sets the height of the dot-style navigation indicator. This parameter cannot be 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Height of the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: [0, +∞)|
+| value  | [Length](ts-types.md#length) | Yes  | Height of the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: (0, +∞)|
 
 **Return value**
 
@@ -1109,7 +1109,7 @@ Sets the height of the dot-style navigation indicator. This parameter cannot be 
 
 selectedItemWidth(value: Length): DotIndicator
 
-Sets the width of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.
+Sets the width of the selected dot in the dot-style navigation indicator.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1121,7 +1121,7 @@ Sets the width of the selected dot in the dot-style navigation indicator. This p
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Width of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: [0, +∞)|
+| value  | [Length](ts-types.md#length) | Yes  | Width of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: (0, +∞)|
 
 **Return value**
 
@@ -1133,7 +1133,7 @@ Sets the width of the selected dot in the dot-style navigation indicator. This p
 
 selectedItemHeight(value: Length): DotIndicator
 
-Sets the height of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.
+Sets the height of the selected dot in the dot-style navigation indicator.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -1145,7 +1145,7 @@ Sets the height of the selected dot in the dot-style navigation indicator. This 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Height of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: [0, +∞)|
+| value  | [Length](ts-types.md#length) | Yes  | Height of the selected dot in the dot-style navigation indicator. This parameter cannot be set in percentage.<br>Default value: **6**<br>Unit: vp<br>Value range: (0, +∞)|
 
 **Return value**
 

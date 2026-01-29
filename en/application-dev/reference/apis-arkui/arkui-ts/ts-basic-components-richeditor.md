@@ -1236,7 +1236,7 @@ Obtains the preset text style of a user.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [RichEditorTextStyle](#richeditortextstyle) | Preset typing style.|
+| [RichEditorTextStyle](#richeditortextstyle) | Preset typing style.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### setTypingStyle<sup>11+</sup>
 
@@ -1342,7 +1342,7 @@ Obtains a **LayoutManager** object.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [LayoutManager](ts-text-common.md#layoutmanager12) | **LayoutManager** object.|
+| [LayoutManager](ts-text-common.md#layoutmanager12) | **LayoutManager** object.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### getPreviewText<sup>12+</sup>
 
@@ -1358,7 +1358,7 @@ Obtains the preview text.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [PreviewText](ts-text-common.md#previewtext12) | Preview text.|
+| [PreviewText](ts-text-common.md#previewtext12) | Preview text.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### getCaretRect<sup>18+</sup>
 
@@ -1572,7 +1572,7 @@ Obtains span information.
 
 | Type                                      | Description          |
 | ---------------------------------------- | ------------ |
-| Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> | Text and image span information.|
+| Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> | Text and image span information.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### deleteSpans
 
@@ -1610,7 +1610,7 @@ Obtains the paragraph information within a specified range.
 
 | Type                                      | Description      |
 | ---------------------------------------- | -------- |
-| Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> | Information about the selected paragraphs.|
+| Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> | Information about the selected paragraphs.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### getSelection<sup>11+</sup>
 
@@ -1626,7 +1626,7 @@ Obtains the range and span information of the selected content. If no text is se
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [RichEditorSelection](#richeditorselection) | Provides information about the selected content.|
+| [RichEditorSelection](#richeditorselection) | Provides information about the selected content.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### fromStyledString<sup>12+</sup>
 
@@ -1713,7 +1713,7 @@ Obtains the current selection range of the **RichEditor** component.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [RichEditorRange](#richeditorrange) | Selection range.|
+| [RichEditorRange](#richeditorrange) | Selection range.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### setStyledString<sup>12+</sup>
 
@@ -1750,7 +1750,7 @@ Obtains the styled string displayed in the **RichEditor** component.
 
 | Type   | Description                         |
 | ------- | ----------------------------- |
-| [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) | Styled string displayed in the **RichEditor** component.|
+| [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) | Styled string displayed in the rich text component.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### onContentChanged<sup>12+</sup>
 
@@ -1939,7 +1939,7 @@ Provides the text style information.
 | fontFeature<sup>12+</sup> | string | No| Yes| Font feature, for example, monospaced digits. If this parameter is not set, monospaced digits are used as the default value. If invalid characters are set, the default value is retrained.<br>Format: normal \| \<feature-tag-value\><br>Syntax for \<feature-tag-value\>: \<string\> \[ \<integer\> \| on \| off ]<br>There can be multiple **\<feature-tag-value\>** values, which are separated by commas (,).<br>For example, the input format for monospaced clock fonts is "ss01" on.<br>For details about the supported font features, see [Font Feature List](ts-basic-components-text.md#fontfeature12).<br>Font features are advanced typographic features, such as ligatures and monospace, for OpenType fonts. They are typically used in custom fonts and require the support of the font itself.<br>For more information about the font features, see [Low-level font feature settings control: the font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop) and [The Complete CSS Demo for OpenType Features](https://sparanoid.com/lab/opentype-features/).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | halfLeading<sup>18+</sup> | boolean |No| Yes   | Whether half leading is enabled.<br>Whether half leading is enabled. Half leading is the leading split in half and applied equally to the top and bottom edges. The value **true** means that half leading is enabled, and **false** means the opposite.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11) | No| Yes   | Text background style.<br>Default value:<br>{<br>  color: Color.Transparent,<br>  radius: 0<br>} <br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| strokeWidth<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number    | No  | Yes| Text stroke width. If the unit value of LengthMetrics is [PERCENT](../js-apis-arkui-graphics.md#lengthunit12), the current setting does not take effect and is processed as 0.<br>If the value is less than 0, the value is an entity word. If the value is greater than 0, the value is an outline word. If the value is equal to 0, there is no stroke effect.<br>The default value is 0vp.<br>Unit: LengthMetrics is followed by LengthMetrics when the type is LengthMetrics, and vp when the type is number.<br>Value range: (-∞, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| strokeWidth<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number    | No  | Yes| Text stroke width. If the unit value of LengthMetrics is [PERCENT](../js-apis-arkui-graphics.md#lengthunit12), the current setting does not take effect and is processed as 0.<br>If the value is less than 0, the value is an entity word. If the value is greater than 0, the value is an outline word. If the value is equal to 0, there is no stroke effect.<br>The default value is 0vp.<br>Unit: LengthMetrics is followed by LengthMetrics when the type is LengthMetrics, and vp when the type is number.<br>Value range: (-∞, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | No  | Yes| Text stroke color.<br>Default value: Follow the font color.<br>Sets the font color for abnormal values.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## PlaceholderStyle<sup>12+</sup>
@@ -4525,8 +4525,8 @@ struct RichEditorDemo {
         .width("100%")
         .border({ width: 1, radius: 5 })
         .key('RichEditor')
-        .caretColor(this.color)// Caret color
-        .selectedBackgroundColor(this.color)// Background color of the selected content.
+        .caretColor(this.color) // Caret color.
+        .selectedBackgroundColor(this.color) // Background color of the selected content.
         .margin({ top: 50 })
     }
     .width('100%')

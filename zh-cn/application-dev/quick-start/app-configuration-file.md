@@ -96,7 +96,7 @@ app.json5配置文件包含以下标签。
 | wearable | 标识对wearable设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对wearable设备做了特殊配置，则应用在wearable设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时wearable设备使用app.json5公共区域配置的属性值。 |
 | car | 标识对car设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对car设备做了特殊配置，则应用在car设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时car设备使用app.json5公共区域配置的属性值。 |
 | default | 标识对default设备做的特殊配置，可以配置的属性标签有上文提到的：minAPIVersion。<br/>如果使用该属性对default设备做了特殊配置，则应用在default设备中会采用此处配置的属性值，并忽略在app.json5公共区域配置的属性值。 | 对象 | 该标签可缺省，缺省时default设备使用app.json5公共区域配置的属性值。 |
-|targetBundleName|标识当前包所指定的目标应用, 标签值的取值规则和范围与bundleName标签一致。配置该标签的应用为具有overlay特征的应用。|字符串|该标签可缺省，缺省值为空。|
+|targetBundleName|标识当前包所指定的目标应用，标签值的取值规则和范围与bundleName标签一致。配置该标签的应用为具有overlay特征的应用。|字符串|该标签可缺省，缺省值为空。|
 |targetPriority|标识当前应用的优先级，取值范围为1~100。配置targetBundleName标签之后，才支持配置该标签。|数值|该标签可缺省，缺省值为1。|
 |generateBuildHash |标识当前应用的所有HAP和HSP是否由打包工具生成哈希值。<br/>该标签配置为true时，该应用下的所有HAP和HSP都会由打包工具生成对应的哈希值。系统OTA升级时，若应用的versionCode保持不变，可根据哈希值判断应用是否需要升级。<br/>-&nbsp;true：当前应用下所有HAP和HSP都会由打包工具生成对应的哈希值。<br/>-&nbsp;false：当前应用下所有HAP和HSP都不会由打包工具生成对应的哈希值。<br/>**说明：**<br/>该标签仅对预置应用生效。|布尔值|该标签可缺省，缺省值为false。|
 | GWPAsanEnabled | 标识应用程序是否开启[GWP-asan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection#section2735718353)堆内存检测工具，用于对内存越界、内存释放后使用等内存破坏问题进行分析。<br/>-&nbsp;true：应用程序开启GWP-asan检测。<br/>-&nbsp;false：应用程序不开启GWP-asan检测。 | 布尔值 | 该标签可缺省，缺省值为false。 |

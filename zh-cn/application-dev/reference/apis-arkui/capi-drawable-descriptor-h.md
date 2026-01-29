@@ -43,6 +43,7 @@
 
 ### 函数
 
+<!--Table: 30%; 70%-->
 | 名称 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_PixelmapNativeHandle pixelMap)](#oh_arkui_drawabledescriptor_createfrompixelmap) | 使用PixelMap创建DrawableDescriptor对象。 |
