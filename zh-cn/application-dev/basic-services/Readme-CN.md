@@ -9,3 +9,4 @@
 - [上传下载](request/Readme-CN.md)
 - [压缩与解压](compress/Readme-CN.md)
 - [电源管理](powermgr/Readme-CN.md)<!--powermgr-->
+- [划词服务](selectionInput/Readme-CN.md)<!--selectioninput-->
