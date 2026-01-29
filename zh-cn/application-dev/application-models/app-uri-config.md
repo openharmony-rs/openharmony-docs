@@ -89,28 +89,26 @@
 
    其中，linkFeature字段必须配置为AppStorageMgmt，其他字段取值请根据实际情况修改为实际值。
 
-    <!-- @[pulllink_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
-    
-    ``` JSON5
+<!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
+ 
+ ``` JSON5
     {
-      "name": "ClearAbility",
-      "srcEntry": "./ets/clearability/ClearAbility.ets",
-      "description": "$string:ClearAbility_desc",
-      "icon": "$media:layered_image",
-      "label": "$string:ClearAbility_label",
-      // ···
-      "skills": [
-        {
-          "uris": [
+        "abilities": [
             {
-              "scheme": "storage",
-              "host": "developer.huawei.com",
-              "path": "clearcache",
-              "linkFeature": "AppStorageMgmt"
+                 "skills": [
+                    {
+                      "uris": [
+                        {
+                          "scheme": "https",
+                          "host": "developer.huawei.com",
+                          "path": "consumer",
+                          "linkFeature": "Login"
+                        }
+                      ]
+                    }
+                  ]
             }
-          ]
-        }
-      ]
+        ]
     }
     ```
 
@@ -127,13 +125,13 @@
 
 ### 指定意图跳转豁免系统跳转弹框以授权登录场景为例景
 
-<!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
-
 1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，登录场景LinkFeature固定为Login。
 
 2. 设置scheme、host、port、path/pathStartWith属性，与want中uri相匹配，以便区分不同功能，linkFeature设置为Login。
 
-    ```json
+<!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+
+    ``` JSON5
     {
         "abilities": [
             {
