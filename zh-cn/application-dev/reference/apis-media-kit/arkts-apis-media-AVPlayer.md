@@ -1370,7 +1370,10 @@ async function  test(){
 seek(timeMs: number, mode?:SeekMode): void
 
 跳转到指定播放位置，只能在prepared/playing/paused/completed状态调用，可以通过[seekDone事件](#onseekdone9)确认是否生效。
-注：直播场景不支持seek。
+
+> **注意：**
+>
+> 直播场景不支持seek。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1492,7 +1495,10 @@ async function  test(){
 setSpeed(speed: PlaybackSpeed): void
 
 设置倍速模式，只能在prepared/playing/paused/completed状态调用，可以通过[speedDone事件](#onspeeddone9)确认是否生效。
-注：直播场景不支持setSpeed。
+
+> **注意：**
+>
+> 直播场景不支持setSpeed。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2170,7 +2176,10 @@ async function test(){
 on(type: 'durationUpdate', callback: Callback\<number>): void
 
 监听资源播放资源的时长，单位为毫秒（ms），用于刷新进度条长度，默认只在prepared上报一次，同时允许一些特殊码流刷新多次时长。
-注：直播场景不支持durationUpdate上报。
+
+> **注意：**
+>
+> 直播场景不支持durationUpdate上报。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
