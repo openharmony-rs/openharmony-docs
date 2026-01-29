@@ -3016,7 +3016,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: Error) => {
+            pointer.setTouchpadPinchSwitch(true, (error: Error) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -3047,7 +3047,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setTouchpadTapSwitch(true, (error: BusinessError<void> | null, data: undefined) => {
+            pointer.setTouchpadPinchSwitch(true, (error: BusinessError<void> | null, data: undefined) => {
               if (error) {
                 console.error(`setTouchpadPinchSwitch failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -4602,7 +4602,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerColor(0xF6C800, (error: Error | null) => {
+            pointer.setPointerColor(0xF6C800, (error: BusinessError | null) => {
               if (error) {
                 console.error(`setPointerColor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;

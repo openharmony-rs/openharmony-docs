@@ -46,8 +46,8 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
-| key       | ArkTS-Dyn: number <br>ArkTS-Sta: int| 否      | 否      | 按键键值。该属性仅在手机和平板设备上生效。<br>当前仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 |
-| action    | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否      | 否      | 按键事件类型。当前仅支持取值为1，表示按键按下。 |
+|  key       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否      | 否      | 按键键值。<br/>**说明：** ArkTS-Dyn：从API version 21开始，支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键、[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。<br/> ArkTS-Sta：支持以上按键功能。|
+| action    | ArkTS-Dyn: number<br>ArkTS-Sta: int| 否      | 否      |  按键事件类型。支持取值为1和2，其中：1表示按键被按下，2表示按键被按下并释放。ArkTS-Dyn：从API version 16开始，仅支持取值为1；从API version 21开始，支持取值为1和2。|
 | isRepeat  | boolean  | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，默认值为true。 |
 
 ## inputConsumer.getAllSystemHotkeys
@@ -395,6 +395,8 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**设备行为差异：** API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+
 **ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
 
 **相关接口**: 该接口对应的ArkTS-Sta接口是[onKeyPressed](#inputconsumeronkeypressed23)。
@@ -457,6 +459,8 @@ onKeyPressed(options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): voi
 订阅成功后，该按键事件的系统默认行为将被屏蔽，即不会再触发系统级的响应，如音量调节。要恢复系统响应，请使用[off](#inputconsumeroffkeypressed16)方法取消订阅。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**设备行为差异：** API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
 
 **ArkTS模式**: 该接口仅适用于ArkTS-Sta。
 
