@@ -398,7 +398,7 @@ struct Index {
 }
 ```
 
-![image](figures/menu-arrow.gif)
+
 
 ### Example 4: Using the Divider Style
 
