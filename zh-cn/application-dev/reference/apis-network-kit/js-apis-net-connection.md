@@ -2678,7 +2678,7 @@ netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 
-//  注册网络状态变化事件。此接口要在调用on后调用。
+// 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   console.error(JSON.stringify(error));
 });
@@ -3126,7 +3126,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
 | host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
-| QueryOptions | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型。 |
+| option | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型。 |
 
 **返回值：**
 
