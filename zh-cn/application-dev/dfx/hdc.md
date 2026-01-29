@@ -1971,6 +1971,43 @@ Please wait for several seconds and try again.
 
 连接设备后等待大约10秒，待连接建立后进行调试。
 
+### E000006 设备禁止被当前计算机调试
+
+**错误信息**
+
+The current computer has not obtained the permission to debug the control device.
+
+**错误描述**
+
+当前计算机未获取调试管控设备的权限，导致设备端拒绝授权调试。
+
+**可能原因**
+
+该设备禁止被未授权的计算机调试。
+
+**处理步骤**
+
+更换为已获取调试授权的计算机。
+
+### E000010 设备侧鉴权失败
+
+**错误信息**
+
+Auth failed, cannt login the device.
+
+**错误描述**
+
+设备侧公钥校验失败，拒绝当前计算机调试。
+
+**可能原因**
+
+1. 设备侧缺少公钥文件。
+2. 设备侧公钥和计算机侧公钥文件不匹配。
+
+**处理步骤**
+
+设备侧重新获取调试鉴权公钥文件。
+
 ### E001000 tmode不支持设置USB调试
 
 **错误信息**
