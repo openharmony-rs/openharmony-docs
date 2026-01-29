@@ -16,7 +16,7 @@ The **DataShare** module allows an application to manage its own data and share 
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The callback in **on('rdbDataChange')** cannot transfer data larger than 10 M in size.
+> - The callback in **on('rdbDataChange')** cannot transfer data larger than 10 MB in size.
 
 
 ## Modules to Import
@@ -63,7 +63,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.samples.datasharetest.DataShare");
+    let uri = "datashare:///com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -100,7 +100,7 @@ Creates a **DataShareHelper** instance. **DataShareHelperOptions** specifies whe
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context)        | Yes  | Context of the application.                                          |
 | uri      | string                                                   | Yes  | URI of the server application to connect.                              |
-| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes  | Optional configuration of the **DataShareHelper** instance. It specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
+| options | [DataShareHelperOptions](#datasharehelperoptions10)| Yes  | Specifies whether [DataShareHelper](#datasharehelper) is in proxy mode and the waiting time for starting the data provider process in non-silent access mode.<br>If this parameter is not set, [DataShareHelper](#datasharehelper) is not in proxy mode and the waiting time for starting the data provider process in non-silent access mode is 2 seconds.<br>If the URI starts with **datashareproxy**, the **isProxy** parameter in **options** must be set. Otherwise, **DataShareHelper** will fail to be created and an error will be returned.|
 | callback | AsyncCallback&lt;[DataShareHelper](#datasharehelper)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DataShareHelper** instance created. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -121,7 +121,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -185,7 +185,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -248,7 +248,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true");
+    let uri = "datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true";
     let context = this.context;
     dataShare.enableSilentProxy(context, uri).then(() => {
       console.info("enableSilentProxy succeed");
@@ -303,7 +303,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true");
+    let uri = "datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true";
     let context = this.context;
     dataShare.disableSilentProxy(context, uri).then(() => {
       console.info("disableSilentProxy succeed");
@@ -351,7 +351,7 @@ Defines the data to publish.
 
 ## RdbDataChangeNode<sup>10+</sup>
 
-Represents the RDB data change result. The data returned by the callback is not larger than 10 M in size.
+Represents the RDB data change result. The data returned by the callback is not larger than 10 MB in size.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -465,7 +465,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 let onCallback: () => void = (): void => {
   console.info("**** Observer on callback ****");
 }
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper !== undefined) {
   (dataShareHelper as dataShare.DataShareHelper).on("dataChange", uri, onCallback);
 }
@@ -506,7 +506,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.acts.datasharetest");
+let uri = "datashare:///com.acts.datasharetest";
 export function callback(error:BusinessError, ChangeInfo:dataShare.ChangeInfo) {
     console.info(' **** Observer callback **** ChangeInfo:' + JSON.stringify(ChangeInfo));
 }
@@ -547,7 +547,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 let callback: () => void = (): void => {
   console.info("**** Observer on callback ****");
 }
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).on("dataChange", uri, callback);
   (dataShareHelper as dataShare.DataShareHelper).off("dataChange", uri, callback);
@@ -588,7 +588,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.acts.datasharetest");
+let uri = "datashare:///com.acts.datasharetest";
 export function callback(error:BusinessError, ChangeInfo:dataShare.ChangeInfo) {
     console.info(' **** Observer callback **** ChangeInfo:' + JSON.stringify(ChangeInfo));
 }
@@ -630,12 +630,12 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let subscriberId = '11';
 let key1: string = "p1";
-let value1: string = "select cityColumn as city_1, visitedCilumn as visited_1 from citys where like = true";
+let value1: string = "select cityColumn as city_1, visitedColumn as visited_1 from citys where like = true";
 let key2: string = "p2";
-let value2: string = "select cityColumn as city_2, visitedCilumn as visited_2 from citys where like = false";
+let value2: string = "select cityColumn as city_2, visitedColumn as visited_2 from citys where like = false";
 let template: dataShare.Template = {
   predicates : {
     key1 : value1,
@@ -680,12 +680,12 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let subscriberId = '11';
 let key1: string = "p1";
-let value1: string = "select cityColumn as city_1, visitedCilumn as visited_1 from citys where like = true";
+let value1: string = "select cityColumn as city_1, visitedColumn as visited_1 from citys where like = true";
 let key2: string = "p2";
-let value2: string = "select cityColumn as city_2, visitedCilumn as visited_2 from citys where like = false";
+let value2: string = "select cityColumn as city_2, visitedColumn as visited_2 from citys where like = false";
 let template: dataShare.Template = {
   predicates : {
     key1 : value1,
@@ -750,7 +750,7 @@ let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void 
   }
 }
 
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let templateId:dataShare.TemplateId = {subscriberId:"11", bundleNameOfOwner:"com.acts.ohos.data.datasharetest"};
 if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).on("rdbDataChange", [uri], templateId, onCallback);
@@ -793,7 +793,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let templateId:dataShare.TemplateId = {subscriberId:"11", bundleNameOfOwner:"com.acts.ohos.data.datasharetest"};
 if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).off("rdbDataChange", [uri], templateId);
@@ -1149,7 +1149,7 @@ In silent scenarios, the total size of the **uri** and **value** parameters pass
 | Name    | Type                                                     | Mandatory| Description                                                       |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | uri      | string                                                    | Yes  | URI of the data to insert.                                    |
-| value    | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes  | Data to insert. If this parameter is left empty, a blank row will be inserted.          |
+| value    | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes  | Value of the data to insert.          |
 | callback | AsyncCallback&lt;number&gt;                               | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the index of the inserted data record. Otherwise, **err** is an error object.<br>The data index is not returned if the APIs of the database in use, for example, the key-value database (KVDB), do not support the return of indexes.|
 
 **Error codes**
@@ -1168,7 +1168,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let key1: string = "name";
 let value1: string = "rose";
 let key2: string = "age";
@@ -1214,7 +1214,7 @@ In silent scenarios, the total size of the **uri** and **value** parameters pass
 | Name | Type                                                     | Mandatory| Description                                              |
 | ----- | --------------------------------------------------------- | ---- | -------------------------------------------------- |
 | uri   | string                                                    | Yes  | URI of the data to insert.                          |
-| value | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes  | Data to insert. If this parameter is left empty, a blank row will be inserted.|
+| value | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes  | Value of the data to insert.|
 
 **Return value**
 
@@ -1238,7 +1238,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let key1: string = "name";
 let value1: string = "rose1";
 let key2: string = "age";
@@ -1301,7 +1301,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 try {
@@ -1362,7 +1362,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 try {
@@ -1389,6 +1389,8 @@ Queries data in the database. This API uses an asynchronous callback to return t
 In non-silent scenarios, the size of the **predicates** parameter and the total size of the **uri** and **columns** parameters passed in this API cannot exceed 128 MB and 200 KB, respectively. Otherwise, the operation fails or an exception is thrown.
 
 In silent scenarios, the total size of the **uri**, **predicates**, and **columns** parameters passed in this API cannot exceed 200 KB. If the size exceeds the limit, the operation fails or an exception is thrown.
+
+When this API is used to query database data, if the query content exceeds the resource limit, the operation fails and an error is returned. You can retry the operation based on the scenario. For details about the resource limit, see [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](../../database/share-data-by-silent-access-sys.md#constraints) and [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](../../database/share-data-by-datashareextensionability-sys.md#constraints).
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1417,7 +1419,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates, DataShareResultSet } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let columns = ["*"];
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
@@ -1447,6 +1449,8 @@ Queries data in the database. This API uses a promise to return the result.
 In non-silent scenarios, the size of the **predicates** parameter and the total size of the **uri** and **columns** parameters passed in this API cannot exceed 128 MB and 200 KB, respectively. Otherwise, the operation fails or an exception is thrown.
 
 In silent scenarios, the total size of the **uri**, **predicates**, and **columns** parameters passed in this API cannot exceed 200 KB. If the size exceeds the limit, the operation fails or an exception is thrown.
+
+When this API is used to query database data, if the query content exceeds the resource limit, the operation fails and an error is returned. You can retry the operation based on the scenario. For details about the resource limit, see [Silent Access via DatamgrService (ArkTS) (for System Applications Only)](../../database/share-data-by-silent-access-sys.md#constraints) and [Sharing Data Using DataShareExtensionAbility (ArkTS) (for System Applications Only)](../../database/share-data-by-datashareextensionability-sys.md#constraints).
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1480,7 +1484,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates, DataShareResultSet } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let columns = ["*"];
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
@@ -1517,7 +1521,7 @@ In silent scenarios, the total size of the **uri**, **predicates**, and **value*
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to update.                                    |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for updating data.<br>The predicate methods supported by **update()** vary depending on the database in use. For example, only the relational database (RDB) supports predicates. If this parameter is left empty, the entire table will be updated by default.|
-| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Data to be updated, which can be null.                                 |
+| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Value of the data to update.                                 |
 | callback   | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the number of updated data records. Otherwise, **err** is an error object.<br>The number of updated data records is not returned if the APIs of the database in use (for example, KVDB) do not support this return.|
 
 **Error codes**
@@ -1536,7 +1540,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 let key1: string = "name";
@@ -1585,7 +1589,7 @@ In silent scenarios, the total size of the **uri**, **predicates**, and **value*
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | Yes  | URI of the data to update.                                    |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Conditions for updating data.<br>The predicate methods supported by **update()** vary depending on the database in use. For example, only the relational database (RDB) supports predicates. If this parameter is left empty, the entire table will be updated by default.|
-| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Data to be updated, which can be null.                                  |
+| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | Yes  | Value of the data to update.                                  |
 
 **Return value**
 
@@ -1609,7 +1613,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 let key1: string = "name";
@@ -1763,7 +1767,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let vbs: ValuesBucket[] = [
   { "name": "roe11", "age": 21, "salary": 20.5 }
 ]
@@ -1824,7 +1828,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let vbs: ValuesBucket[] = [
   { "name": "roe11", "age": 21, "salary": 20.5 }
 ]
@@ -1905,7 +1909,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
@@ -1952,7 +1956,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri).then((data: string) => {
     console.info("normalizeUri = " + data);
@@ -1992,7 +1996,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
@@ -2039,7 +2043,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri).then((data: string) => {
     console.info("denormalizeUri = " + data);
@@ -2079,7 +2083,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(uri, () => {
     console.info("***** notifyChange *****");
@@ -2122,7 +2126,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 **Example**
 
 ```ts
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(uri);
 }
@@ -2148,7 +2152,7 @@ In non-silent scenarios, the size of the **data** parameter passed in this API c
 
 | Type          | Description                 |
 | -------------- | --------------------- |
-| Promise&lt;void&gt; |  returns no value.|
+| Promise&lt;void&gt; |  Promise that returns no value.|
 
 **Error codes**
 
@@ -2165,7 +2169,7 @@ For details about the error codes, see [DataShare Error Codes](errorcode-datasha
 ```ts
 import { ValuesBucket } from '@kit.ArkData';
 
-let dsUri = ("datashare:///com.acts.datasharetest");
+let dsUri = "datashare:///com.acts.datasharetest";
 let people: ValuesBucket[] = [
   { "name": "LiSi" },
   { "name": "WangWu" },
