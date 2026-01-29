@@ -202,8 +202,8 @@
 | [ArkUI_RenderFit](#arkui_renderfit)                                 | ArkUI_RenderFit   | 定义动画终态内容大小与位置的枚举值。 |
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype)             | ArkUI_SwiperIndicatorType       | 定义 Swiper 组件的导航指示器类型。             |
 | [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | 动画播放模式。                           |
-| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义 Listitem 组件SwipeAction方法的显隐模式。 |
-| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义 Listitem 组件SwipeAction方法的滚动模式。 |
+| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
+| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#listitem10)方法的滚动模式。 |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
 | [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | 定义帧动画的播放状态。                       |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | 定义帧动画组件在动画开始前和结束后的状态。             |
@@ -212,7 +212,7 @@
 | [ArkUI_SafeAreaType](#arkui_safeareatype)                           | ArkUI_SafeAreaType              | 定义扩展安全区域的枚举值。                     |
 | [ArkUI_SafeAreaEdge](#arkui_safeareaedge)                           | ArkUI_SafeAreaEdge              | 定义扩展安全区域的方向的枚举值。                  |
 | [ArkUI_FocusMove](#arkui_focusmove)                                 | ArkUI_FocusMove                 | 定义焦点移动方向的枚举值。                     |
-| [ArkUI_ListItemGroupArea](#arkui_listitemgrouparea)                 | ArkUI_ListItemGroupArea         | 定义 ListItemGroup 组件区域。            |
+| [ArkUI_ListItemGroupArea](#arkui_listitemgrouparea)                 | ArkUI_ListItemGroupArea         | 定义ListItemGroup组件区域。            |
 | [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode)                 | ArkUI_KeyboardAvoidMode         | 键盘避让模式。                           |
 | [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype)                 | ArkUI_HoverModeAreaType         | 悬停态显示区域。                          |
 | [ArkUI_ExpandMode](#arkui_expandmode)                               | ArkUI_ExpandMode                | 定义子节点展开模式枚举值。                     |
@@ -1287,10 +1287,10 @@ enum ArkUI_StickyStyle
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_STICKY_STYLE_NONE = 0 | ListItemGroup的header不吸顶，footer不吸底。 |
+| ARKUI_STICKY_STYLE_NONE = 0 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸底。 |
 | ARKUI_STICKY_STYLE_HEADER = 1 | ListItemGroup的header吸顶，footer不吸底。 |
-| ARKUI_STICKY_STYLE_FOOTER = 2 | ListItemGroup的footer吸底，header不吸顶。 |
-| ARKUI_STICKY_STYLE_BOTH = 3 | ListItemGroup的footer吸底，header吸顶。 |
+| ARKUI_STICKY_STYLE_FOOTER = 2 | ListItemGroup的header不吸顶，footer吸底。 |
+| ARKUI_STICKY_STYLE_BOTH = 3 | ListItemGroup的header吸顶，footer吸底。 |
 
 ### ArkUI_ContentClipMode
 
@@ -2419,13 +2419,13 @@ enum ArkUI_ListItemAlignment
 **描述：**
 
 
-交叉轴方向的布局方式。
+交叉轴方向的布局方式，默认值为ARKUI_LIST_ITEM_ALIGNMENT_START。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | ListItem在List中，交叉轴方向首部对齐。 |
+| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | [ListItem](./arkui-ts/ts-container-listitem.md#listitem10)在List中，交叉轴方向首部对齐。 |
 | ARKUI_LIST_ITEM_ALIGNMENT_CENTER = 1 | ListItem在List中，交叉轴方向居中对齐。 |
 | ARKUI_LIST_ITEM_ALIGNMENT_END = 2 | ListItem在List中，交叉轴方向尾部对齐。 |
 
@@ -2712,7 +2712,7 @@ enum ArkUI_ListItemSwipeActionState
 **描述：**
 
 
-定义 Listitem 组件SwipeAction方法的显隐模式。
+定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式，默认值为ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED。
 
 **起始版本：** 12
 
@@ -2731,7 +2731,7 @@ enum ArkUI_ListItemSwipeEdgeEffect
 **描述：**
 
 
-定义 Listitem 组件SwipeAction方法的滚动模式。
+定义Listitem组件[SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式，默认值为ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。
 
 **起始版本：** 12
 
@@ -2958,14 +2958,14 @@ enum ArkUI_ListItemGroupArea
 **描述：**
 
 
-定义 ListItemGroup 组件区域。
+定义[ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)组件区域，默认值为ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE。
 
 **起始版本：** 15
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | ListItemGroup区域外。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE = 1 | ListItemGroup没有header、footer和ListItem时的区域。 |
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE = 1 | ListItemGroup没有[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)、[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)和[ListItem](./arkui-ts/ts-container-listitem.md#listitem10)时的区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_ITEM = 2 | ListItemGroup的ListItem区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_HEADER = 3 | ListItemGroup的header区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER = 4 | ListItemGroup的footer区域。 |
@@ -7359,7 +7359,7 @@ int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActi
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 滑动效果。默认返回值：ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING。 |
+| int32_t | 滑动效果。默认返回值：[ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING](#arkui_listitemswipeedgeeffect)。 |
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange()
 
