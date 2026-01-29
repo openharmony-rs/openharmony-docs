@@ -42,9 +42,9 @@ The number of firewall rules exceeds the maximum.
 
 **可能原因**
 
-1、单个用户userID的防火墙规则rule的数量超过1000条；
+1.单个用户userid的防火墙规则rule的数量超过1000条；
 
-2、所有用户userID的防火墙规则rule的数量超过2000条；
+2.所有用户userID的防火墙规则rule的数量超过2000条；
 
 **处理步骤**
 
