@@ -95,7 +95,7 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 
 ### 对象持久化缓存机制
 
-分布式对象主要运行在应用程序的进程空间。当调用分布式对象持久化接口时，通过[分布式数据库](https://gitcode.com/openharmony/codelabs/tree/master/Data/JsDistributedData)对对象进行持久化和同步，进程退出后数据也不会丢失。
+分布式对象主要运行在应用程序的进程空间。当调用分布式对象持久化接口时，通过分布式数据库对对象进行持久化和同步，进程退出后数据也不会丢失。分布式数据库会自动实现同步，可调用[on('change')](../reference/apis-arkdata/js-apis-data-distributedobject.md#onchange20)监听数据变更。
 
 该场景是分布式对象的扩展场景，主要用于以下情况：
 
