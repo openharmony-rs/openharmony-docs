@@ -469,9 +469,9 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 | netHandle | [NetHandle](#nethandle) | 是   | 数据网络的句柄。                                             |
 | callback  | AsyncCallback\<void>    | 是   | 回调函数。当成功绑定App到指定网络时，error为undefined，否则为错误对象。|
 
-**说明：**
-
-如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId=0的NetHandle对象，参考：
+>**说明：**
+>
+>如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId=0的NetHandle对象，参考：
 
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
@@ -535,9 +535,9 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 | --------- | ------------------------------------------------------------ | ---- | ---------------- |
 | netHandle | [NetHandle](#nethandle)                                      | 是   | 数据网络的句柄。 |
 
-**说明：**
-
-如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId=0的NetHandle对象，参考：
+>**说明：**
+>
+>如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId=0的NetHandle对象，参考：
 
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
