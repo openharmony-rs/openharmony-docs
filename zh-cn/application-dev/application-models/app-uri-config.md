@@ -68,7 +68,9 @@
     |QueryExpress|指示快递查询功能。使用场景详见[拉起类应用](./start-express-apps.md)。|    
     |AppNotificationMgmt|指示应用内通知设置的功能。|
 
-2. 指定意图跳转豁免系统跳转弹框：如果您的应用有向其他三方应用提供登录/分享/支付的功能，您可在上架的应用包体中声明如下对应的LinkFeature，审核通过的意图在应用跳转时可免弹框体验。
+2. 指定类型的应用被拉起时免跳转弹框：正常情况下，拉起指定类型的应用时，都会弹出确认是否打开应用的弹窗。如果您的应用有向其他应用提供登录/分享/支付的功能，可以在应用中声明对应的LinkFeature（取值参见下表）。应用通过上架审核后，当其他应用拉起您的应用时将不再弹窗提示。
+
+	![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)
 
     |值|说明|
     |---|---|
@@ -125,12 +127,12 @@
 
 
 
-### 指定意图跳转豁免系统跳转弹框以授权登录场景为例景
+### 指定类型的应用被拉起时免跳转弹框
 
 
 
 
-1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，登录场景LinkFeature固定为Login。
+1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，以登录场景为例，登录场景LinkFeature固定为Login。
 
 2. 设置scheme、host、port、path/pathStartWith属性，与want中uri相匹配，以便区分不同功能，linkFeature设置为Login。
 
@@ -153,7 +155,3 @@
         UIAbility.onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
     ```
     在参数want.uri中会携带目标方配置的linkFeature对应的uri。
-
-    以此方式跳转将豁免应用间跳转弹框：
-
-    ![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)
