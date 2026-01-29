@@ -2521,7 +2521,7 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
         .javaScriptAccess(true)
         // 需要使能multiWindowAccess。
         .multiWindowAccess(true)
@@ -4714,15 +4714,23 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
-import { $rawfile, Web, Column, Component, Entry, Image, ImageFit, Builder, State, Menu } from '@kit.ArkUI';
+'use static'
 import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { $rawfile, Web, Column, Component, Entry, Image, ImageFit, Builder, State, Menu, Color, Stack, Text } from '@kit.ArkUI';
 import { UIContext } from '@ohos.arkui.UIContext';
 import { MenuItem, Resource, WebElementType, WebResponseType, MenuType, WebContextMenuResult } from '@kit.ArkUI';
-import { MenuItemOptions, DrawableDescriptor, ImageContent, PixelMap } from '@kit.ArkUI';
-import { OnContextMenuShowEvent } from '@kit.ArkUI';
+import { MenuItemOptions, DrawableDescriptor, ImageContent, PixelMap, HitTestMode } from '@kit.ArkUI';
+import { OnContextMenuShowEvent, $$, TextAlign, CopyOptions, Progress, Alignment, TextOverflow, ProgressType } from '@kit.ArkUI';
+import pasteboard from '@ohos.pasteboard';
 
 interface PreviewBuilderParam {
+  width: number;
+  height: number;
+  url:Resource | string;
+}
+
+interface PreviewBuilderParamForImage {
   previewImage: PixelMap | DrawableDescriptor | ImageContent | String | Resource;
   width: number;
   height: number;
@@ -4730,32 +4738,75 @@ interface PreviewBuilderParam {
 
 @Entry
 @Component
-struct WebComponent {
+struct SelectionMenuLongPress {
   controller: webview.WebviewController = new webview.WebviewController(undefined);
+  previewController: webview.WebviewController = new webview.WebviewController(undefined);
+  @Builder PreviewBuilder($$: PreviewBuilderParam){
+    Column() {
+      Stack(){
+        Text("") // 可选择是否展示url
+          .padding(5)
+          .width('100%')
+          .textAlign(TextAlign.Start)
+          .backgroundColor(Color.White)
+          .copyOption(CopyOptions.LocalDevice)
+          .maxLines(1)
+          .textOverflow({overflow:TextOverflow.Ellipsis})
+          Progress({ value: this.progressValue, total: 100, type: ProgressType.Linear }) // 展示进度条
+          .backgroundColor(Color.White)
+          .opacity(this.progressVisible?1:0)
+          .backgroundColor(Color.White)
+      }.alignContent(Alignment.Bottom)
+      Web({src:$$.url,controller: new webview.WebviewController()})
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .onlineImageAccess(true)
+        .imageAccess(true)
+        .domStorageAccess(true)
+        .onPageBegin(()=>{
+          this.progressValue = 0;
+          this.progressVisible = true;
+        })
+        .onProgressChange((event)=>{
+          this.progressValue = event.newProgress;
+        })
+        .onPageEnd(()=>{
+          this.progressVisible = false;
+        })
+        .hitTestBehavior(HitTestMode.None) // 使预览Web不响应手势
+    }.width($$.width).height($$.height) // 设置预览宽高
+  }
+
   private result: WebContextMenuResult | undefined = undefined;
   @State previewImage: PixelMap | DrawableDescriptor | ImageContent | String | Resource = '';
-  @State previewWidth: number = 0;
-  @State previewHeight: number = 0;
+  @State previewWidth: number = 1;
+  @State previewHeight: number = 1;
+  @State previewWidthImage: number = 1;
+  @State previewHeightImage: number = 1;
+  @State linkURL:string = "";
+  @State progressValue:number = 0;
+  @State progressVisible:boolean = true;
   uiContext: UIContext = this.getUIContext();
 
-  @Builder
-  MenuBuilder() {
-    Menu() {
-      MenuItem({ content: '复制', } as MenuItemOptions)
-        .onClick((): void => {
-          this.result?.copy();
-          this.result?.closeContextMenu();
-        })
-      MenuItem({ content: '全选', } as MenuItemOptions)
-        .onClick((): void => {
-          this.result?.selectAll();
-          this.result?.closeContextMenu();
-        })
+  clearSelection() {
+    try {
+      this.controller.runJavaScript(
+        'clearSelection()',
+        (error, result) => {
+          if (error) {
+            console.error(`run clearSelection JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            return;
+          }
+          if (result) {
+            console.info(`The clearSelection() return value is: ${result}`);
+          }
+        });
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
   }
 
-  @Builder
-  PreviewBuilderGlobal($$: PreviewBuilderParam) {
+  @Builder PreviewBuilderGlobalForImage($$: PreviewBuilderParamForImage) {
     Column() {
       Image($$.previewImage)
         .objectFit(ImageFit.Fill)
@@ -4763,42 +4814,125 @@ struct WebComponent {
     }.width($$.width).height($$.height)
   }
 
+  @Builder
+  LinkMenuBuilder() {
+    Menu() {
+      MenuItem({ content: '复制链接', } as MenuItemOptions)
+        .onClick(() => {
+          const pasteboardData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, this.linkURL);
+          const systemPasteboard = pasteboard.getSystemPasteboard();
+          systemPasteboard.setData(pasteboardData);
+        })
+      MenuItem({content:'打开链接'} as MenuItemOptions)
+        .onClick(()=>{
+          this.controller.loadUrl(this.linkURL);
+        })
+    }
+  }
+  @Builder
+  ImageMenuBuilder() {
+    Menu() {
+      MenuItem({ content: '复制图片', } as MenuItemOptions)
+        .onClick(() => {
+          this.result?.copyImage();
+          this.result?.closeContextMenu();
+        })
+    }
+  }
+  @Builder
+  TextMenuBuilder() {
+    Menu() {
+      MenuItem({ content: '复制', } as MenuItemOptions)
+        .onClick(() => {
+          try {
+            this.controller.runJavaScript(
+              'copySelectedText()',
+              (error, result) => {
+                if (error) {
+                  console.error(`run copySelectedText JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  return;
+                }
+                if (result) {
+                  console.info(`The copySelectedText() return value is: ${result}`);
+                }
+              });
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+          this.clearSelection()
+        }).backgroundColor(Color.Pink)
+    }
+  }
   build() {
     Column() {
       Web({ src: $rawfile("index.html"), controller: this.controller })
-        .bindSelectionMenu(WebElementType.IMAGE, this.MenuBuilder, WebResponseType.LONG_PRESS,
+        .javaScriptAccess(true)
+        .fileAccess(true)
+        .onlineImageAccess(true)
+        .imageAccess(true)
+        .domStorageAccess(true)
+        .bindSelectionMenu(WebElementType.TEXT, this.TextMenuBuilder, WebResponseType.LONG_PRESS,
           {
-            onAppear: () => {
-            },
+            onAppear: () => {},
+            onDisappear: () => {},
+            menuType: MenuType.SELECTION_MENU,
+          })
+        .bindSelectionMenu(WebElementType.LINK, this.LinkMenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
             onDisappear: () => {
               this.result?.closeContextMenu();
             },
             preview: () => {
-              this.PreviewBuilderGlobal({
-                previewImage: this.previewImage,
-                width: this.previewWidth,
-                height: this.previewHeight
+              this.PreviewBuilder({
+                width: 500,
+                height: 400,
+                url: this.linkURL
               })
             },
             menuType: MenuType.PREVIEW_MENU
           })
-        .onContextMenuShow((event: OnContextMenuShowEvent): boolean => {
+        .bindSelectionMenu(WebElementType.IMAGE, this.ImageMenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {
+              this.result?.closeContextMenu();
+            },
+            preview: () => {
+              this.PreviewBuilderGlobalForImage({
+                previewImage: this.previewImage,
+                width: this.previewWidthImage,
+                height: this.previewHeightImage,
+              })
+            },
+            menuType: MenuType.PREVIEW_MENU
+          })
+        .zoomAccess(true)
+        .onContextMenuShow((event) => {
           if (event) {
             this.result = event.result;
-            if (event.param.getLinkUrl()) {
-              return false;
-            }
-            this.previewWidth = this.uiContext!.px2vp(event.param.getPreviewWidth());
-            this.previewHeight = this.uiContext!.px2vp(event.param.getPreviewHeight());
+            this.previewWidthImage = this.uiContext!.px2vp(event.param.getPreviewWidth());
+            this.previewHeightImage = this.uiContext!.px2vp(event.param.getPreviewHeight());
             if (event.param.getSourceUrl().indexOf("resource://rawfile/") == 0) {
-              this.previewImage = $rawfile(event.param.getSourceUrl().substr(19));
+              this.previewImage = $rawfile(event.param.getSourceUrl().substring(19));
             } else {
               this.previewImage = event.param.getSourceUrl();
             }
+            this.linkURL = event.param.getLinkUrl()
             return true;
           }
           return false;
         })
+    }
+
+  }
+  // 侧滑返回
+  onBackPress(): boolean {
+    if (this.controller.accessStep(-1)) {
+      this.controller.backward();
+      return true;
+    } else {
+      return false;
     }
   }
 }
@@ -4808,13 +4942,93 @@ struct WebComponent {
 ```html
 <!--index.html-->
 <!DOCTYPE html>
-<html>
-  <head>
-      <title>测试网页</title>
-  </head>
-  <body>
-    <h1>bindSelectionMenu Demo</h1>
-    <img src="./img.png" >
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长按复制文本</title>
+    <style>
+        .container {
+            background-color: white;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .context {
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .context span {
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        .context a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 12px 24px;
+            border: 2px solid #3498db;
+            border-radius: 30px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .context img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .context:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="context">
+        <!--img.png为html同目录下图片-->
+        <img src="img.png">
+    </div>
+
+    <div class="context">
+        <a  href="https://www.example.com">长按链接唤起菜单</a>
+    </div>
+
+    <div class="context">
+        <span>在这个数字时代，文本复制功能变得日益重要。无论是引用名言、保存重要信息，还是分享有趣的内容，复制文本都是我们日常操作的一部分。</span>
+    </div>
+
+</div>
+<br>
+
+<script>
+    function copySelectedText() {
+        const selectedText = window.getSelection().toString();
+        if (selectedText.length > 0) {
+            // 使用Clipboard API复制文本
+            navigator.clipboard.writeText(selectedText)
+                .then(() => {
+                    showNotification();
+                })
+                .catch(err => {
+                    console.error('复制失败:', err);
+                });
+        }
+    }
+     function clearSelection() {
+        if (window.getSelection) {
+            window.getSelection().removeAllRanges();
+        }
+    }
+</script>
   </body>
 </html>
 ```
