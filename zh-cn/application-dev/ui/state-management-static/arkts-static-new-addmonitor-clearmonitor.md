@@ -156,7 +156,7 @@ class Test {
 
   constructor() {
     this.valueMonitor = UIUtils.addMonitor(() => this.value, this.onChange);
-    this.value2Monitor = UIUtils.addMonitor(() => this.value2, this.onChange, { isSynchronous: true });
+    this.value2Monitor = UIUtils.addMonitor(() => this.value2, this.onSyncChange, { isSynchronous: true });
   }
 
   onChange(m: IMonitor) {
