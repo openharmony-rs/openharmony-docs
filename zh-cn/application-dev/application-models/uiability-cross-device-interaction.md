@@ -1,4 +1,4 @@
-# 通过Call调用实现跨端迁移
+# 通过Call调用实现多端协同
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
