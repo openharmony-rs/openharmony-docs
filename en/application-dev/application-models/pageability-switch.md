@@ -30,14 +30,12 @@ The PageAbility component in the [FA model](ability-terminology.md#fa-model) cor
 
    ![pageability-switch](figures/pageability-switch.png)
 
-3. Adjust the migrated code,
+3. Adjust the migrated code, since the methods of loading pages are different.
 
-    1. since the methods of loading pages are different.
-
-        - In the FA model, page loading is configured by setting page information in **config.json**.
-        - In the stage model, page loading is triggered through **windowStage.loadContent** in the **onWindowStageCreate** callback.
-
-        The following uses the task of displaying the **pages/Index** page after the ability is started as an example. In the FA model, add the following code in the **config.json** file:
+    - In the FA model, page loading is configured by setting page information in **config.json**.
+    - In the stage model, page loading is triggered through **windowStage.loadContent** in the **onWindowStageCreate** callback.
+    
+    The following uses the task of displaying the **pages/Index** page after the ability is started as an example. In the FA model, add the following code in the **config.json** file:
 
 
         ```json
@@ -45,7 +43,7 @@ The PageAbility component in the [FA model](ability-terminology.md#fa-model) cor
             "pages/Index"
         ]
         ```
-
+    
         In the stage model, implement the following API in **MainAbility**:
 
 
@@ -53,7 +51,7 @@ The PageAbility component in the [FA model](ability-terminology.md#fa-model) cor
         import { UIAbility } from '@kit.AbilityKit';
         import { hilog } from '@kit.PerformanceAnalysisKit';
         import { window } from '@kit.ArkUI';
-
+    
         export default class TestAbility extends UIAbility {
           // ...
           onWindowStageCreate(windowStage: window.WindowStage) {
@@ -70,7 +68,7 @@ The PageAbility component in the [FA model](ability-terminology.md#fa-model) cor
           // ...
         }
         ```
-
+    
     2.Configure the page to load in the **resources/base/profile/main_pages.json** file.
         ```json
         {
