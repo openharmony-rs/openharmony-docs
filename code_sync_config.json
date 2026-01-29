@@ -15449,7 +15449,7 @@
 						"start_line":41
 					},
 					{
-						"end_line":60,
+						"end_line":61,
 						"name":"accessibility_text_group_start",
 						"start_line":49
 					},
@@ -15459,17 +15459,17 @@
 						"start_line":61
 					},
 					{
-						"end_line":85,
+						"end_line":86,
 						"name":"accessibility_checked_start",
-						"start_line":72
+						"start_line":76
 					},
 					{
-						"end_line":99,
+						"end_line":98,
 						"name":"accessibility_selected_start",
-						"start_line":86
+						"start_line":87
 					},
 					{
-						"end_line":135,
+						"end_line":126,
 						"name":"accessibility_text_start",
 						"start_line":16
 					}
@@ -15479,7 +15479,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":35,
 						"name":"virtual_node_example_start",
 						"start_line":16
 					}
