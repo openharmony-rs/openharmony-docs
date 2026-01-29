@@ -159,7 +159,6 @@
     ```ts
         UIAbility.onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
     ```
-    
     在参数want.uri中会携带目标方配置的linkFeature对应的uri。
 
     以此方式跳转将豁免应用间跳转弹框：
