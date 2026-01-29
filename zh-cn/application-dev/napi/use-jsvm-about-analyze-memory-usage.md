@@ -6,7 +6,7 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 ## 开启DevTools
-启动Chrome浏览器，在需要进行内存分析的页面按下F12或者Shift+Ctrl+I启动DevTools开发者工具。
+DevTools为Chrome浏览器自带，[下载](https://www.google.com.hk/intl/en_uk/chrome/)并启动Chrome浏览器后，在需要进行内存分析的页面按下F12或者Shift+Ctrl+I启动DevTools开发者工具。
 
 ## 获取js堆内存快照
 在内存界面下选择堆快照，点击获取快照即可对当前页面进行一次内存快照。
