@@ -62,7 +62,7 @@ IP类型的防火墙规则中，IP地址规则数量超过最大值。
 
 **可能原因**
 
-添加/更新的一条IP规则里的本地IP或者远端IP的IP参数NetFirewallIpParams的个数大于10个；
+添加/更新的一条IP规则里的本地IP或者远端IP的IP参数NetFirewallIpParams的个数大于10个。
 
 **处理步骤**
 
