@@ -48,7 +48,7 @@ setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------  | ----------------------------------------------------|
@@ -102,7 +102,7 @@ getNetFirewallPolicy(userId: number): Promise\<NetFirewallPolicy>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------  | ----------------------------------------------------|
@@ -167,7 +167,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 
 | 错误码ID | 错误信息                                                                 |
 | -------  | ------------------------------------------------------------------------ |
@@ -313,7 +313,7 @@ removeNetFirewallRule(userId: number, ruleId: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------  | ------------------------------------------------------------------------------- |
@@ -440,7 +440,7 @@ getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<Firewa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------  | --------------------------------------------------------------------------------|
@@ -495,7 +495,7 @@ getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 
 | 错误码ID | 错误信息                                                                        |
 | -------  | ------------------------------------------------------------------------------- |
