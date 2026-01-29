@@ -27,8 +27,6 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回801错误码。
-
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
@@ -82,8 +80,6 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 设置当前窗口的鼠标光标是否显示，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
-
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回801错误码。
 
 **参数**：
 
@@ -188,8 +184,6 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值false。
-
 **参数**：
 
 | 参数名       | 类型                           | 必填   | 说明             |
@@ -242,8 +236,6 @@ isPointerVisible(): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值false。
-
 **返回值**：
 
 | 类型                     | 说明                  |
@@ -285,8 +277,6 @@ isPointerVisibleSync(): boolean
 获取当前窗口鼠标光标的显示状态，使用同步方式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
-
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回默认值false。
 
 **返回值**：
 

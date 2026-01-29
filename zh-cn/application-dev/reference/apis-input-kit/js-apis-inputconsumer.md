@@ -57,7 +57,7 @@ getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回801错误码。
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **返回值：**
 
@@ -105,7 +105,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回801错误码。
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **参数：** 
 
@@ -167,7 +167,7 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在Wearable设备上返回801错误码。
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **参数：** 
 
