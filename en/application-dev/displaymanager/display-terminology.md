@@ -46,20 +46,20 @@ A physical screen is the display unit to which the operating system outputs a co
 
 A physical screen has its own frame buffer, which stores the complete image to be displayed on that screen.
 
-Physical screens can be divided into two types: physical‑hardware screens and virtual screens.  
+Physical screens can be divided into two types: physical-hardware screens and virtual screens.  
 
-### Physical‑hardware Screen
+### Physical-hardware Screen
 
 A physical screen composed of physical hardware (such as LCD panel or OLED panel). Its image output is associated with a real, physically connected display.
 
-Physical‑hardware screens are further classified into built‑in screens and external screens.
+Physical-hardware screens are further classified into built-in screens and external screens.
 
-- Built‑in screen: a physical‑hardware screen integrated with the device
+- Built-in screen: a physical-hardware screen integrated with the device
 
 - External screen: a physical screen connected via a cable (such as HDMI or DP cable)
 
 ### Virtual Screen
 
-A software‑simulated physical screen that has no corresponding physical display hardware. The image frames it generates are output to other destinations, such as being transmitted over a network (remote desktop sharing) or recorded into a video file (screen‑recording software).
+A software-simulated physical screen that has no corresponding physical display hardware. The image frames it generates are output to other destinations, such as being transmitted over a network (remote desktop sharing) or recorded into a video file (screen-recording software).
 
 As a type of physical screen, a virtual screen can also be associated with a logical screen, for example, associating it with a mirrored screen for recording or projection, or associating it with a heterogeneous screen to run an application separately.
