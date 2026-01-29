@@ -23,7 +23,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
-设置系统用户ID的防火墙策略，包含防火墙开关状态，默认的出战入站行为（允许/阻止）。支持不同的系统用户ID配置不同的防火墙策略。使用Promise异步回调。
+设置系统用户ID的防火墙策略，包含防火墙开关状态，默认的出站入站行为（允许/阻止）。支持不同的系统用户ID配置不同的防火墙策略。使用Promise异步回调。
 
 > **说明：**
 >
@@ -542,7 +542,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | protocol    | number                                                      | 否 | 是|协议，包含TCP：6，UDP：17。当ruleType=RULE_IP时有效。  |
 | localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当ruleType=RULE_IP时有效，否则将被忽略。最多10个。   |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，配置通配符域名规则上限为100条，配置非通配符域名规则上限为1000条。当ruleType=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当ruleType=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当ruleType=RULE_DNS时有效，否则将被忽略。当ruleType=RULE_DNS时，该字段不能为空。                 |
 
 ## RequestParam
@@ -561,7 +561,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## FirewallRulePage
 
-防火墙策略，包含防火墙开关状态，默认的出站入站行为（允许/阻止）。
+防火墙规则页信息结构。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
@@ -610,7 +610,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallRuleType
 
-枚举类型。
+枚举类型，防火墙规则类型，包含IP、Domain、DNS。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
@@ -648,7 +648,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallIpParams
 
-防火墙规则的IP参数，IP类型（IPv4、IPv6），单个IP或IP段。
+防火墙规则的IP参数，IP类型包括IPv4、IPv6，支持单个IP或IP段。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
