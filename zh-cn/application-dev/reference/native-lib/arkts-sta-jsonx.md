@@ -227,6 +227,58 @@ const result = integerElem.asInteger();
 console.info("result = " + result); // result = 42
 ```
 
+### createLong
+
+createLong(value: long): JsonElement
+
+创建一个代表long值的JsonElement对象。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| value | long | 是 | 要存储的long值。 |
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| [JsonElement](#jsonelement) | 返回一个JsonElement。 |
+
+**示例：**
+
+```ts
+const longElem = jsonx.JsonElement.createLong(123456);
+const result = longElem.asLong();
+console.info("result = " + result); // result = 123456
+```
+
+### createBigInt
+
+createBigInt(value: bigint): JsonElement
+
+创建一个代表bigint值的JsonElement对象。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| value | bigint | 是 | 要存储的bigint值。 |
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| [JsonElement](#jsonelement) | 返回一个JsonElement。 |
+
+**示例：**
+
+```ts
+const bigintElem = jsonx.JsonElement.createBigInt(123456789123456789n);
+const result = bigintElem.asBigInt();
+console.info("result = " + result); // result = 123456789123456789
+```
+
 ### createBoolean
 
 createBoolean(value: boolean): JsonElement
@@ -653,6 +705,136 @@ const result = objectElem.tryGetDouble("height");
 console.info("result = " + result); // result = 1.85
 ```
 
+### getLong
+
+getLong(key: string): long
+
+通过key获取long值。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| key | string | 是 | 要查找的key。 |
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| long | 返回找到的long值。 |
+
+**示例：**
+
+```ts
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
+objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
+objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
+objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
+objectElem.setElement("num", jsonx.JsonElement.createLong(3000000000));
+const result = objectElem.getLong("num");
+console.info("result = " + result); // result = 3000000000
+```
+
+### tryGetLong
+
+tryGetLong(key: string, fallback: long = 0): long
+
+尝试通过key获取long值。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| key | string | 是 | 要查找的key。 |
+| fallback | long | 否 | 如果key没有找到时，返回该值。<br>默认值为0。 |
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| long  | 返回找到的long值，如果没找到则返回0。 |
+
+**示例：**
+
+```ts
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
+objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
+objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
+objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
+objectElem.setElement("num", jsonx.JsonElement.createLong(3000000000));
+const result = objectElem.tryGetLong("num");
+console.info("result = " + result); // result = 3000000000
+const result2 = objectElem.tryGetLong("num2", 100);
+console.info("result2 = " + result2); // result2 = 100
+```
+
+### getBigInt
+
+getBigInt(key: string): bigint
+
+通过key获取bigint值。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| key | string | 是 | 要查找的key。 |
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| bigint | 返回找到的bigint值。 |
+
+**示例：**
+
+```ts
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
+objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
+objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
+objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
+objectElem.setElement("num", jsonx.JsonElement.createBigInt(1000000000000000n));
+const result = objectElem.getBigInt("num");
+console.info("result = " + result); // result = 1000000000000000
+```
+
+### tryGetBigInt
+
+tryGetBigInt(key: string, fallback: bigint = 0n): bigint
+
+尝试通过key获取bigint值。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| key | string | 是 | 要查找的key。 |
+| fallback | bigint | 否 | 如果key没有找到，返回该值。<br>默认值为0n。 |
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| bigint  | 返回找到的bigint值，如果没找到则返回0n。 |
+
+**示例：**
+
+```ts
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
+objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
+objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
+objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
+objectElem.setElement("num", jsonx.JsonElement.createLong(1000000000000000n));
+const result = objectElem.tryGetBigInt("num");
+console.info("result = " + result); // result = 1000000000000000
+const result2 = objectElem.tryGetBigInt("num2", 100n);
+console.info("result2 = " + result2); // result2 = 100
+```
+
 ### getInteger
 
 getInteger(key: string): int
@@ -835,6 +1017,70 @@ const result = objectElem.tryGetBoolean("isActive");
 console.info("result = " + result); // result = true
 ```
 
+### getNull
+
+getNull(key: string): null
+
+通过key获取null值。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| key | string | 是 | 要查找的key。 |
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| null | 找到的null值。 |
+
+**示例：**
+
+```ts
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
+objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
+objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
+objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
+objectElem.setElement("isUseful", jsonx.JsonElement.createNull());
+const result = objectElem.getNull("isUseful");
+console.info("result = " + result); // result = null
+```
+
+### tryGetNull
+
+tryGetNull(key: string): null | undefined
+
+尝试通过key获取null值。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| key | string | 是 | 要查找的key。 |
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| null \| undefined | 如果没找到key，返回该值默认为undefined。 |
+
+**示例：**
+
+```ts
+const objectElem = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+objectElem.setElement("name", jsonx.JsonElement.createString("John Doe"));
+objectElem.setElement("age", jsonx.JsonElement.createInteger(30));
+objectElem.setElement("isActive", jsonx.JsonElement.createBoolean(true));
+objectElem.setElement("height", jsonx.JsonElement.createDouble(1.85));
+objectElem.setElement("isUseful", jsonx.JsonElement.createNull());
+const result = objectElem.getNull("isUseful");
+console.info("result = " + result); // result = null
+const result2 = objectElem.getNull("isSet");
+console.info("result2 = " + result2); // result2 = null
+```
+
 ### asDouble
 
 asDouble(): double
@@ -873,6 +1119,88 @@ tryAsDouble(): double | undefined
 const stringElem = new jsonx.JsonElement();
 stringElem.setString("Hello, world!");
 const result = stringElem.tryAsBoolean();
+console.info("result = " + result); // result = undefined
+```
+
+### asLong
+
+asLong(): long
+
+将JsonElement对象转换为long类型。
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| long | 返回一个long值。 |
+
+**示例：**
+
+```ts
+const longElem = jsonx.JsonElement.createLong(123456);
+const result = longElem.asLong();
+console.info("result = " + result); // result = 123456
+```
+
+### tryAsLong
+
+tryAsLong(): long | undefined
+
+尝试将JsonElement对象转换为long类型。
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| long \| undefined | 返回一个long值，如果不能作为long值则返回undefined。 |
+
+**示例：**
+
+```ts
+const stringElem = new jsonx.JsonElement();
+stringElem.setString("Hello, world!");
+const result = stringElem.tryAsLong();
+console.info("result = " + result); // result = undefined
+```
+
+### asBigInt
+
+asBigInt(): bigint 
+
+将JsonElement对象转换为bigint类型。
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| bigint | 返回一个bigint值。 |
+
+**示例：**
+
+```ts
+const bigintElem = jsonx.JsonElement.createBigInt(100000000000000n);
+const result = bigintElem.asBigInt();
+console.info("result = " + result); // result = 100000000000000
+```
+
+### tryAsBigInt
+
+tryAsBigInt(): bigint | undefined
+
+尝试将JsonElement对象转换为bigint类型。
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| bigint \| undefined | 返回一个bigint值，如果不能作为bigint值则返回undefined。 |
+
+**示例：**
+
+```ts
+const stringElem = new jsonx.JsonElement();
+stringElem.setString("Hello, world!");
+const result = stringElem.tryAsBigInt();
 console.info("result = " + result); // result = undefined
 ```
 
@@ -999,6 +1327,47 @@ const result = stringElem.tryAsBoolean();
 console.info("result = " + result); // result = undefined
 ```
 
+### asNull
+
+asNull(): null
+
+将JsonElement对象转换为null类型。
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| null | 返回一个null值。 |
+
+**示例：**
+
+```ts
+const nullElem = jsonx.JsonElement.createNull();
+const result = nullElem.asNull();
+console.info("result = " + result); // result = null
+```
+
+### tryAsNull
+
+tryAsNull(): null | undefined
+
+尝试将JsonElement对象转换为null类型。
+
+**返回值：**
+
+| 类型       | 说明               |
+| ---------- | ------------------ |
+| null \| undefined | 返回一个null值，如果无法作为null值则返回undefined。 |
+
+**示例：**
+
+```ts
+const stringElem = new jsonx.JsonElement();
+stringElem.setString("Hello, world!");
+const result = stringElem.tryASNull();
+console.info("result = " + result); // result = undefined
+```
+
 ### asArray
 
 asArray(): Array\<JsonElement\>
@@ -1064,6 +1433,48 @@ const elem = new jsonx.JsonElement();
 elem.setDouble(3.14);
 const result = elem.asDouble();
 console.info("result = " + result); // result = 3.14
+```
+
+### setLong
+
+setLong(value: long): void
+
+将当前JsonElement设置成long值。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| value | long | 是 | 要设置的long值。 |
+
+**示例：**
+
+```ts
+const elem = new jsonx.JsonElement();
+elem.setLong(123456);
+const result = elem.asLong();
+console.info("result = " + result); // result = 123456
+```
+
+### setBigInt
+
+setBigInt(value: bigint): void
+
+将当前JsonElement设置成bigint值。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | ---- | ---- | ---- |
+| value | bigint | 是 | 要设置的bigint值。 |
+
+**示例：**
+
+```ts
+const elem = new jsonx.JsonElement();
+elem.setBigInt(123456789123456789n);
+const result = elem.asBigInt();
+console.info("result = " + result); // result = 123456789123456789
 ```
 
 ### setInteger
