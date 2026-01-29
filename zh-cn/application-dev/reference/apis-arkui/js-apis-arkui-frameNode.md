@@ -3098,7 +3098,7 @@ getAttribute(node: FrameNode, nodeType: 'Scroll'): ScrollAttribute | undefined
 typeNode.getAttribute(node, 'Scroll');
 ```
 
-### getScrollAttribute<sup>23+</sup>
+### getScrollAttribute<sup>24+</sup>
 
 getScrollAttribute(node: FrameNode): ScrollAttribute | undefined
 
@@ -3108,7 +3108,7 @@ getScrollAttribute(node: FrameNode): ScrollAttribute | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -3164,7 +3164,7 @@ getEvent(node: FrameNode, nodeType: 'Scroll'): UIScrollEvent | undefined
 typeNode.getEvent(node, 'Scroll');
 ```
 
-### getScrollEvent<sup>23+</sup>
+### getScrollEvent<sup>24+</sup>
 
 getScrollEvent(node: FrameNode): UIScrollEvent | undefined
 
@@ -3174,7 +3174,7 @@ getScrollEvent(node: FrameNode): UIScrollEvent | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -3232,7 +3232,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 typeNode.bindController(node, scroller, 'Scroll');
 ```
 
-### bindScrollController<sup>23+</sup>
+### bindScrollController<sup>24+</sup>
 
 bindScrollController(node: FrameNode, controller: Scroller): void
 
@@ -3242,7 +3242,7 @@ bindScrollController(node: FrameNode, controller: Scroller): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -3645,7 +3645,7 @@ getEvent(node: FrameNode, nodeType: 'List'): UIListEvent | undefined
 typeNode.getEvent(node, 'List');
 ```
 
-### getListEvent<sup>23+</sup>
+### getListEvent<sup>24+</sup>
 
 getListEvent(node: FrameNode): UIListEvent | undefined
 
@@ -3655,7 +3655,7 @@ getListEvent(node: FrameNode): UIListEvent | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -3677,7 +3677,7 @@ getListEvent(node: FrameNode): UIListEvent | undefined
 typeNode.getListEvent(node);
 ```
 
-### getListAttribute<sup>23+</sup>
+### getListAttribute<sup>24+</sup>
 
 getListAttribute(node: FrameNode): ListAttribute | undefined
 
@@ -3687,7 +3687,7 @@ getListAttribute(node: FrameNode): ListAttribute | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -3709,7 +3709,7 @@ getListAttribute(node: FrameNode): ListAttribute | undefined
 typeNode.getListAttribute(node);
 ```
 
-### bindListController<sup>23+</sup>
+### bindListController<sup>24+</sup>
 
 bindListController(node: FrameNode, controller: Scroller): void
 
@@ -3721,7 +3721,7 @@ bindListController(node: FrameNode, controller: Scroller): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -3790,7 +3790,7 @@ createNode(context: UIContext, nodeType: 'ListItem'): ListItem
 typeNode.createNode(uiContext, 'ListItem');
 ```
 
-### getListItemAttribute<sup>23+</sup>
+### getListItemAttribute<sup>24+</sup>
 
 getListItemAttribute(node: FrameNode): ListItemAttribute | undefined
 
@@ -3800,7 +3800,7 @@ getListItemAttribute(node: FrameNode): ListItemAttribute | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -4750,7 +4750,7 @@ createNode(context: UIContext, nodeType: 'ListItemGroup'): ListItemGroup
 typeNode.createNode(uiContext, 'ListItemGroup');
 ```
 
-### getListItemGroupAttribute<sup>23+</sup>
+### getListItemGroupAttribute<sup>24+</sup>
 
 getListItemGroupAttribute(node: FrameNode): ListItemGroupAttribute | undefined
 
@@ -4760,7 +4760,7 @@ getListItemGroupAttribute(node: FrameNode): ListItemGroupAttribute | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -4859,7 +4859,7 @@ getEvent(node: FrameNode, nodeType: 'WaterFlow'): UIWaterFlowEvent | undefined
 typeNode.getEvent(node, 'WaterFlow');
 ```
 
-### getWaterFlowEvent<sup>23+</sup>
+### getWaterFlowEvent<sup>24+</sup>
 
 getWaterFlowEvent(node: FrameNode): UIWaterFlowEvent | undefined
 
@@ -4869,7 +4869,7 @@ getWaterFlowEvent(node: FrameNode): UIWaterFlowEvent | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -4891,7 +4891,7 @@ getWaterFlowEvent(node: FrameNode): UIWaterFlowEvent | undefined
 typeNode.getWaterFlowEvent(node);
 ```
 
-### getWaterFlowAttribute<sup>23+</sup>
+### getWaterFlowAttribute<sup>24+</sup>
 
 getWaterFlowAttribute(node: FrameNode): WaterFlowAttribute | undefined
 
@@ -4901,7 +4901,7 @@ getWaterFlowAttribute(node: FrameNode): WaterFlowAttribute | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -4923,7 +4923,7 @@ getWaterFlowAttribute(node: FrameNode): WaterFlowAttribute | undefined
 typeNode.getWaterFlowAttribute(node);
 ```
 
-### bindWaterFlowController<sup>23+</sup>
+### bindWaterFlowController<sup>24+</sup>
 
 bindWaterFlowController(node: FrameNode, controller: Scroller): void
 
@@ -4935,7 +4935,7 @@ bindWaterFlowController(node: FrameNode, controller: Scroller): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -5004,7 +5004,7 @@ createNode(context: UIContext, nodeType: 'FlowItem'): FlowItem
 typeNode.createNode(uiContext, 'FlowItem');
 ```
 
-### getFlowItemAttribute<sup>23+</sup>
+### getFlowItemAttribute<sup>24+</sup>
 
 getFlowItemAttribute(node: FrameNode): FlowItemAttribute | undefined
 
@@ -5014,7 +5014,7 @@ getFlowItemAttribute(node: FrameNode): FlowItemAttribute | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -5312,7 +5312,7 @@ getEvent(node: FrameNode, nodeType: 'Grid'): UIGridEvent | undefined
 typeNode.getEvent(node, 'Grid');
 ```
 
-### getGridEvent<sup>23+</sup>
+### getGridEvent<sup>24+</sup>
 
 getGridEvent(node: FrameNode): UIGridEvent | undefined
 
@@ -5322,7 +5322,7 @@ getGridEvent(node: FrameNode): UIGridEvent | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -5344,7 +5344,7 @@ getGridEvent(node: FrameNode): UIGridEvent | undefined
 typeNode.getGridEvent(node);
 ```
 
-### getGridAttribute<sup>23+</sup>
+### getGridAttribute<sup>24+</sup>
 
 getGridAttribute(node: FrameNode): GridAttribute | undefined
 
@@ -5354,7 +5354,7 @@ getGridAttribute(node: FrameNode): GridAttribute | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -5376,7 +5376,7 @@ getGridAttribute(node: FrameNode): GridAttribute | undefined
 typeNode.getGridAttribute(node);
 ```
 
-### bindGridController<sup>23+</sup>
+### bindGridController<sup>24+</sup>
 
 bindGridController(node: FrameNode, controller: Scroller): void
 
@@ -5388,7 +5388,7 @@ bindGridController(node: FrameNode, controller: Scroller): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -5457,7 +5457,7 @@ createNode(context: UIContext, nodeType: 'GridItem'): GridItem
 typeNode.createNode(uiContext, 'GridItem');
 ```
 
-### getGridItemAttribute<sup>23+</sup>
+### getGridItemAttribute<sup>24+</sup>
 
 getGridItemAttribute(node: FrameNode): GridItemAttribute | undefined
 
@@ -5467,7 +5467,7 @@ getGridItemAttribute(node: FrameNode): GridItemAttribute | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 

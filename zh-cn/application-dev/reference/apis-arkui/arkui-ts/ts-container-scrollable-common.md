@@ -40,29 +40,33 @@ ArkTS-Sta: scrollBar(barState: BarState | undefined): this
 
 ### scrollBarColor<sup>11+</sup>
 
-scrollBarColor(color: Color | number | string): T
+ArkTS-Dyn: scrollBarColor(color: Color | number | string): T
 
-设置滚动条的颜色。未通过该接口设置时，默认颜色为'\#182431'（40%不透明度）。
+ArkTS-Sta: scrollBarColor(color: Color | int | string | undefined): this
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+设置滚动条的颜色。未通过该接口设置时，默认颜色为'\#182431'（显示为40%不透明度的深蓝主题色）。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
+| color  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>number或int为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。<br/>取值为undefined时，滚动条的颜色为'\#182431'（显示为40%不透明度的深蓝主题色）。 |
 
 **返回值：**
 
 | 类型 | 说明           |
 | --- | -------------- |
-| T | 返回当前滚动组件。 |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 ### scrollBarColor<sup>22+</sup>
 
@@ -78,7 +82,7 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined): t
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -364,7 +368,7 @@ ArkTS-Sta: scrollBarMargin(margin: ScrollBarMargin | undefined): this
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -418,7 +422,7 @@ contentStartOffset + contentEndOffset超过滚动组件内容区长度后content
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -448,7 +452,7 @@ contentStartOffset + contentEndOffset超过滚动组件内容区长度后content
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -688,7 +692,7 @@ ArkTS-Sta: onWillStartDragging(handler: VoidCallback | undefined): this
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -718,7 +722,7 @@ ArkTS-Sta: onWillStopDragging(handler: OnWillStopDraggingCallback | undefined): 
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -748,7 +752,7 @@ ArkTS-Sta: onDidStopDragging(handler: OnDidStopDraggingCallback | undefined): th
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -778,7 +782,7 @@ ArkTS-Sta: onWillStartFling(handler: VoidCallback | undefined): this
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -808,7 +812,7 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1163,7 +1167,7 @@ ArkTS-Sta: setOnReachStart(callback: VoidCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1189,7 +1193,7 @@ ArkTS-Sta: setOnReachEnd(callback: VoidCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1216,7 +1220,7 @@ ArkTS-Sta: setOnScrollStart(callback: VoidCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1243,7 +1247,7 @@ ArkTS-Sta: setOnScrollStop(callback: VoidCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1265,7 +1269,7 @@ setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1290,7 +1294,7 @@ ArkTS-Sta: type OnWillStopDraggingCallback = (velocity: double) => void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1312,7 +1316,7 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
