@@ -11,7 +11,7 @@
 
 为电话蜂窝数据定义C接口。
 
-**引用文件：** <telephony/core_service/telephony_data.h>
+**引用文件：** <telephony/cellular_data/telephony_data.h>
 
 **库：** libtelephony_data.so
 

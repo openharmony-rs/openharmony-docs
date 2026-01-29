@@ -180,7 +180,7 @@ Based on the event loop, ArkTS uses a promise/**async**/**await** to process asy
 
 In Java, use **try/catch** to capture exceptions in synchronous code. For asynchronous code, handle exceptions in a special manner (for example, using **Future.get()**).
 
-Uncaptured promise errors in ArkTS may cause silent failures. You need to explicitly use **try/catch** or **.catch**.
+Uncaptured promise errors in ArkTS may cause silent failures. You need to explicitly use **try/catch** or **.catch()**.
 
 ### Binding of this
 

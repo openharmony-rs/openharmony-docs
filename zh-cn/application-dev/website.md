@@ -77,6 +77,7 @@
             - [UIAbility组件基本用法](application-models/uiability-usage.md)
             - [UIAbility组件与UI的数据同步](application-models/uiability-data-sync-with-ui.md)
             - [启动应用内的UIAbility组件](application-models/uiability-intra-device-interaction.md)
+            - [通过Call调用实现跨端迁移](application-models/uiability-cross-device-interaction.md)
             - [UIAbility备份恢复](application-models/ability-recover-guideline.md)
           - [ExtensionAbility组件](application-models/extensionability-overview.md)
             <!--Del-->
@@ -1928,6 +1929,8 @@
           - [复杂文本绘制与显示（C/C++）](graphics/complex-text-c.md)
           - [自定义文本绘制与显示（C/C++）](graphics/text-custom-c.md)
         - [文本开发常见问题](graphics/text-faqs.md)
+      - 离线图像处理<!--offline-image-processing-->
+        - [添加图像效果（C/C++）](graphics/effectkit-filter-c.md)
       - [NativeBuffer开发指导 (C/C++)](graphics/native-buffer-guidelines.md)
       - [NativeImage开发指导 (C/C++)](graphics/native-image-guidelines.md)
       - [NativeVSync开发指导 (C/C++)](graphics/native-vsync-guidelines.md)

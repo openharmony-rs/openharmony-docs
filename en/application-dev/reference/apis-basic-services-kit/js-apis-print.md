@@ -945,7 +945,7 @@ Enumerates the print job substates.
 | -------- | -------- | -------- |
 | PRINT_JOB_COMPLETED_SUCCESS | 0 | The print job is successful.|
 | PRINT_JOB_COMPLETED_FAILED | 1 | The print job is failed.|
-| PRINT_JOB_COMPLETED_CANCELLED | 2 | The print job is canceled.|
+| PRINT_JOB_COMPLETED_CANCELLED | 2 | The print job is canceled by user.|
 | PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | The print file is corrupted.|
 | PRINT_JOB_BLOCK_OFFLINE | 4 | The printer is offline.|
 | PRINT_JOB_BLOCK_BUSY | 5 | The printer is occupied by another process.|

@@ -28,6 +28,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
+| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | ArkUI_Node | 定义ArkUI native组件实例对象。 |
 | [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md) | ArkUI_ContextCallback | 事件回调类型。 |
 | [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) | ArkUI_NumberValue | ArkUI在Native侧的数字类型定义。 |
 | [ARKUI_TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) | ARKUI_TextPickerRangeContent | 定义单列滑动数据选择器支持的图片资源结构体。 |
@@ -50,6 +51,7 @@
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) | ArkUI_WaterFlowSectionOption | 定义FlowItem分组配置信息。 |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | ArkUI_ListItemSwipeActionItem | 定义ListItemSwipeActionOption方法内Item的配置信息。 |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | ArkUI_ListItemSwipeActionOption | 定义ListItemSwipeActionOption方法的配置信息。 |
+| [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | 定义ArkUI native UI的上下文实例对象。 |
 | [ArkUI_Context*](capi-arkui-nativemodule-arkui-context8h.md) | ArkUI_ContextHandle | 定义ArkUI native UI的上下文实例对象指针定义。 |
 | [ArkUI_NodeContent*](capi-arkui-nativemodule-arkui-nodecontent8h.md) | ArkUI_NodeContentHandle | 定义ArkUI NodeContent实例在Native侧的实例对象指针定义。 |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md) | ArkUI_AlignmentRuleOption | 指定设置在相对容器中子组件的对齐规则。 |

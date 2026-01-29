@@ -6,12 +6,12 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-The lifecycle of a custom component is decorated with [@Component](arkts-create-custom-components.md#component) or [@ComponentV2](./arkts-create-custom-components.md#componentv2). The following lifecycle APIs are provided:
+The following lifecycle callbacks are provided for the lifecycle of a custom component, which is one decorated with [@Component](arkts-create-custom-components.md#component) or [@ComponentV2](./arkts-create-custom-components.md#componentv2):
 
 
 - [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear): Invoked when the custom component is about to appear. Specifically, it is invoked after a new instance of the custom component is created and before its **build** function is executed.
 
-- [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12): This API is called back after the build function triggered by the first rendering of the component is executed. This API is not called back when the component is re-rendered. You can report tracing data and implement other functions that do not affect the actual UI in this phase. Do not change state variables or use functions (such as **animateTo**) in **onDidBuild**. Otherwise, unstable UI performance may result.
+- [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12): Invoked after the build function triggered by the first rendering of the component is executed. This API is not invoked when the component is re-rendered. You can use this callback for actions that do not directly affect the UI, such as tracking data reporting.
 
 - [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear): Invoked when the custom component is about to be destroyed. Do not change state variables in the aboutToDisappear function. Modifying the @Link variable may lead to unstable application behavior.
 
@@ -19,13 +19,13 @@ The lifecycle of a custom component is decorated with [@Component](arkts-create-
 >
 > For details about the page lifecycle and related content, see [Page Routing](../arkts-routing.md#lifecycle).
 
-The following figure shows the lifecycle of a custom component.
+The preceding figure shows the lifecycle of a custom component.
 
 
 ![custom-component-lifecycle-demo1](figures/custom-component-lifecycle-demo1.png)
 
 
-The following describes how to create, re-render, and delete a custom component.
+Based on the preceding flowchart, this document describes the initial creation, re-rendering, and deletion of custom components.
 
 
 ## Custom Component Creation and Rendering
@@ -34,15 +34,15 @@ The following describes how to create, re-render, and delete a custom component.
 
 2. Initialization of custom component member variables: The member variables are initialized with locally defined defaults or component constructor parameters. The initialization happens in the document order, which is the order in which the member variables are defined.
 
-3. If aboutToAppear is defined, this method is executed before the build method is executed.
+3. If **aboutToAppear** is defined, this method is executed before the build method is executed.
 
 4. On initial render, the **build** function of the built-in component is executed for rendering. If the child component is a custom component, the rendering creates an instance of the child component. During initial render, the framework records the mapping between state variables and components. When a state variable changes, the framework drives the related components to update.
 
-5. If onDidBuild is defined, this method is executed after the build method is executed.
+5. If **onDidBuild** is defined, this method is executed before the build method is executed.
 
 ## Custom Component Re-rendering
 
-When a state variable changes due to an event (such as a tap) or a property in [LocalStorage](./arkts-localstorage.md) or [AppStorage](./arkts-appstorage.md) changes and the value of the bound state variable changes:
+Re-rending of a custom component is triggered when its state variable is changed by an event (for example, click) or by an update to the associated attribute in [LocalStorage](./arkts-localstorage.md) or [AppStorage](./arkts-appstorage.md).
 
 1. The framework detects the change and starts re-rendering.
 
@@ -54,7 +54,7 @@ For example, if the branch of the if component changes or the number of arrays i
 
 1. Before the component is deleted, the **aboutToDisappear** callback is invoked to mark the component for deletion. The node deletion mechanism of ArkUI is as follows: The backend node is directly removed from the component tree, the backend node is destroyed, and the frontend node is de-referenced. When the frontend node has no reference, the Ark VM garbage collection is performed.
 
-2. The custom component and its variables are deleted. If the component has synchronous variables (such as [@Link](arkts-link.md), [@Prop](arkts-prop.md), and [@StorageLink](arkts-appstorage.md#storagelink)), the registration is canceled on the [synchronization source](arkts-state-management-overview.md#basic-concepts).
+2. The custom component and its variables will be deleted. If the component has synchronous variables (such as [@Link](arkts-link.md), [@Prop](arkts-prop.md), and [@StorageLink](arkts-appstorage.md#storagelink)), the component is deregistered from the [Data Source](arkts-state-management-glossary.md#data-source)
 
 You are not advised to use async await in aboutToDisappear. If asynchronous operations (such as Promise or callback methods) are used in this lifecycle, the custom component will be retained in the Promise closure until the callback method is executed. This will prevent the custom component from being garbage collected.
 
@@ -62,8 +62,11 @@ You are not advised to use async await in aboutToDisappear. If asynchronous oper
 
 The following example details the call sequence of the custom component lifecycle when custom components are nested:
 
-```ts
-// Index.ets
+<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) --> 
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Entry
 @Component
 struct Parent {
@@ -72,22 +75,22 @@ struct Parent {
 
   // Component lifecycle
   aboutToAppear() {
-    console.info('Parent aboutToAppear');
+    hilog.info(0x0000, 'testTag', 'Parent aboutToAppear');
   }
 
   // Component lifecycle
   onDidBuild() {
-    console.info('Parent onDidBuild');
+    hilog.info(0x0000, 'testTag', 'Parent onDidBuild');
   }
 
   // Component lifecycle
   aboutToDisappear() {
-    console.info('Parent aboutToDisappear');
+    hilog.info(0x0000, 'testTag', 'Parent aboutToDisappear');
   }
 
   build() {
     Column() {
-      // When this.showChild is true, create the Child child component and invoke Child aboutToAppear.
+      // When this.showChild is true, create the Child component and invoke Child aboutToAppear and Child onDidBuild.
       if (this.showChild) {
         Child()
       }
@@ -96,7 +99,7 @@ struct Parent {
         .backgroundColor(this.btnColor)
         .onClick(() => {
           // When this.showChild is false, delete the Child child component and invoke Child aboutToDisappear.
-          // this.showChild is set to true. The Child component is added, and Child aboutToAppear is executed.
+          // When this.showChild is true, add the Child component and invoke Child aboutToAppear and Child onDidBuild.
           this.showChild = !this.showChild;
         })
     }
@@ -109,17 +112,17 @@ struct Child {
 
   // Component lifecycle
   aboutToDisappear() {
-    console.info('Child aboutToDisappear');
+    hilog.info(0x0000, 'testTag', 'Child aboutToDisappear');
   }
 
   // Component lifecycle
   onDidBuild() {
-    console.info('Child onDidBuild');
+    hilog.info(0x0000, 'testTag', 'Child onDidBuild');
   }
 
   // Component lifecycle
   aboutToAppear() {
-    console.info('Child aboutToAppear');
+    hilog.info(0x0000, 'testTag', 'Child aboutToAppear');
   }
 
   build() {
@@ -169,6 +172,6 @@ Parent onDidBuild
 Child aboutToAppear
 Child onDidBuild
 ```
-When showchild is set to the default value true, the lifecycle flowchart of the example is as follows.
+When **showChild** is set to the default value **true**, the lifecycle of this example is as follows:
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-demo2.png)

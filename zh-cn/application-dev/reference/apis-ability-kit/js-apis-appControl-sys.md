@@ -490,7 +490,7 @@ deleteDisposedStatusSync(appId: string, appIndex?: number) : void
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
@@ -545,7 +545,7 @@ getDisposedRule(appId: string, appIndex?: number): DisposedRule
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
@@ -595,7 +595,7 @@ setDisposedRule(appId: string, rule: DisposedRule, appIndex?: number): void
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
 | 201 | Permission denied. |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |

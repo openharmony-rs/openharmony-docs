@@ -1,14 +1,4 @@
 # Scan_PictureScanProgress
-<!--Kit: Basic Services Kit-->
-<!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
-<!--Designer: @Q-haosu-->
-<!--Tester: @Q-haosu-->
-<!--Adviser: @fang-jinxu-->
-
-```c
-typedef struct {...} Scan_PictureScanProgress
-```
 
 ## Overview
 

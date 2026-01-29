@@ -36,7 +36,7 @@ class Person {
 }
 
 let buddy = new Person()
-// Let's assume that the developer forgets to call buddy.setName("John").
+// Assume that no value is assigned to name in the code. For example, buddy.setName("John") is not called.
 buddy.getName().length; // Runtime exception: name is undefined.
 ```
 
@@ -57,7 +57,7 @@ class Person {
 }
 
 let buddy = new Person()
-// Let's assume that the developer forgets to call buddy.setName("John").
+// Assume that no value is assigned to name in the code. For example, buddy.setName("John") is not called.
 buddy.getName().length; // 0, no runtime error
 ```
 
@@ -82,9 +82,9 @@ class Person {
 }
 
 let buddy = new Person()
-// Let's assume that the developer forgets to call buddy.setName("John").
+// Assume that no value is assigned to name in the code. For example, buddy.setName("John") is not called.
 
-// Compile-time error: The compiler detects that the next line may access something undefined and will not build the code:
+// Compile-time error: The compiler detects that the next line may access something undefined and throws an error.
 buddy.getName().length;  // The code will not build and run.
 
 buddy.getName()?.length; // Successful build and no runtime error.
@@ -92,7 +92,7 @@ buddy.getName()?.length; // Successful build and no runtime error.
 
 ## Program Performance
 
-To ensure program correctness, dynamically typed languages have to check object types at runtime. In the context of our example, the **undefined** property cannot be read in JS. The only way to check if a value is **undefined** is to perform a runtime check, and all JS engines will perform as follows: If the value is not **undefined**, the property is read, otherwise an exception is thrown. Modern engines can optimize such checks greatly, but these checks cannot be eliminated completely, which slows down the program. Since the standard TS compiles to JS, the code written in TS has the same issues as described above. ArkTS addresses this problem. It enforces a static type check and compiles the program to Ark bytecode instead of JS, thus speeding up the execution and making it easier to optimize the code even further.
+To ensure program correctness, dynamically typed languages have to check object types at runtime. In the context of our example, the **undefined** property cannot be read in JS. However, the only way to check if a value is **undefined** is to perform a runtime check, and all JS engines will perform as follows: If the value is not **undefined**, the property is read, otherwise an exception is thrown. Modern engines can optimize such checks greatly, but these checks cannot be eliminated completely, which slows down the program. Since the standard TS compiles to JS, the code written in TS has the same issues as described above. ArkTS addresses this problem. It enforces a static type check and compiles the program to Ark bytecode instead of JS, thus speeding up the execution and making it easier to optimize the code even further.
 
 
 **Null Safety**
