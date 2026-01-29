@@ -3434,7 +3434,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |网络句柄。|
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连信息。           |
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接信息。           |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
