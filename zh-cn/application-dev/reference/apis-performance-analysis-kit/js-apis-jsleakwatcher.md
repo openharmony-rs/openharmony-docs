@@ -76,7 +76,7 @@ check(): string
 
 | 类型    | 说明                                                       |
 | ------- | ---------------------------------------------------------- |
-| string | JSON格式的泄漏对象列表。<br>**说明**：check成功，返回JSON格式泄漏对象（包含未发生泄漏的对象）列表；check失败，返回''。 |
+| string | 触发GC后未被回收的泄露对象列表。<br>**说明**：check成功，返回JSON格式的泄漏对象列表；check失败，返回''。 |
 
 **示例：**
 ```js
@@ -137,7 +137,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| isEnabled | boolean | 是| 是否使能js对象内存泄漏检测功能。true：开启内存泄漏检测功能；false：关闭内存泄漏检测功能。|
+| isEnabled | boolean | 是| 是否使能js对象内存泄漏检测功能。true：开启js内存泄漏检测功能；false：关闭js内存泄漏检测功能。|
 | configs | Array&lt;string&gt; | 是| 配置项，数组中每个元素为监测具体对象的类型。<br>可配置项包括：XComponent，NodeContainer，Window，CustomComponent和Ability。<br>**说明**：传入空数组代表监测以上全部对象。 |
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口的返回的内存泄漏的对象。<br>回调函数中传入一个数组对象，索引0为泄露列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
