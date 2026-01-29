@@ -2024,7 +2024,7 @@ export default class EntryAbility extends UIAbility {
       let SystemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        //以下两个属性从API Version8开始支持
+        // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -6926,9 +6926,9 @@ export default class EntryAbility extends UIAbility {
       let windowClass = windowStage.getMainWindowSync();
       // 调用minimize, 使主窗最小化
       windowClass.minimize();
-      //设置延时函数延时5秒钟后对主窗进行恢复。
+      // 设置延时函数延时5秒钟后对主窗进行恢复。
       setTimeout(()=>{
-        //调用restore()函数对主窗进行恢复。
+        // 调用restore()函数对主窗进行恢复。
         let promise = windowClass.restore();
         promise.then(() => {
           console.info('Succeeded in restoring the window.');
@@ -7110,6 +7110,7 @@ try {
 setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;;
 
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
 该接口只在多个线程操作同一个窗口时可能返回错误码1300002。窗口被销毁场景下错误码返回401。
@@ -7148,14 +7149,17 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  let windowMask: Array<Array<number>> = [
-      [0, 0, 0, 1, 0, 0, 0],
-      [0, 0, 1, 1, 1, 0, 0],
-      [0, 1, 1, 0, 1, 1, 0],
-      [1, 1, 0, 0, 0, 1, 1]
-    ];
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
+    let array = Array<number>(maskWidth);
+    for (let i = 0 ; i < maskWidth; i++) {
+      array[i] = (i + row) > (maskWidth + maskHeight) / 2 ? 1 : 0;
+    }
+    return array;
+  });
   let promise = windowClass.setWindowMask(windowMask);
-    promise.then(() => {
+  promise.then(() => {
     console.info('Succeeded in setting the window mask.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
@@ -7607,6 +7611,7 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 **设备行为差异：**
 
 在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
@@ -8162,7 +8167,7 @@ struct Index {
         .onClick(() => {
           try {
             windowClass = this.windowStage.getMainWindowSync();
-            //  true:窗口置顶，false:取消窗口置顶
+            // true:窗口置顶，false:取消窗口置顶
             let isWindowTopmost: boolean = true;
             let promiseTopmost = windowClass.setWindowTopmost(isWindowTopmost);
             promiseTopmost.then(() => {
@@ -9752,7 +9757,7 @@ export default class EntryAbility extends UIAbility {
       let SystemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        //以下两个属性从API Version8开始支持
+        // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -9849,7 +9854,9 @@ export default class EntryAbility extends UIAbility {
 setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 设置主窗口或子窗口的布局是否为沉浸式布局，使用callback异步回调。系统窗口调用不生效。
+
 沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+
 非沉浸式布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
@@ -10132,6 +10139,7 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 基于窗口左上角顶点改变当前窗口大小，使用callback异步回调。
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
+
 应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
@@ -10180,6 +10188,7 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 基于窗口左上角顶点改变当前窗口大小，使用Promise异步回调。
 
 应用主窗口与子窗口存在大小限制，默认宽度范围：[320, 1920]，默认高度范围：[240, 1920]，单位为vp。
+
 应用主窗口与子窗口的最小宽度与最小高度可由产品端进行配置，配置后的最小宽度与最小高度以产品段配置值为准，具体尺寸限制范围可以通过[getWindowLimits](#getwindowlimits11)接口进行查询。
 
 系统窗口存在大小限制，宽度范围：(0, 1920]，高度范围：(0, 1920]，单位为vp。
@@ -10384,7 +10393,9 @@ promise.then((data) => {
 setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 设置主窗口或子窗口的布局是否为全屏布局，使用callback异步回调。
+
 全屏布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+
 非全屏布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
@@ -10438,7 +10449,9 @@ export default class EntryAbility extends UIAbility {
 setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 
 设置主窗口或子窗口的布局是否为全屏布局，使用Promise异步回调。
+
 全屏布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+
 非全屏布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
@@ -10495,7 +10508,9 @@ export default class EntryAbility extends UIAbility {
 setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 设置主窗口或子窗口的布局是否为沉浸式布局，使用callback异步回调。
+
 沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+
 非沉浸式布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
@@ -10549,7 +10564,9 @@ export default class EntryAbility extends UIAbility {
 setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 设置主窗口或子窗口的布局是否为沉浸式布局，使用Promise异步回调。
+
 沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+
 非沉浸式布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
@@ -10759,7 +10776,7 @@ export default class EntryAbility extends UIAbility {
       let SystemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        //以下两个属性从API Version8开始支持
+        // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -10824,7 +10841,7 @@ export default class EntryAbility extends UIAbility {
       let SystemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        //以下两个属性从API Version8开始支持
+        // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
