@@ -1895,19 +1895,19 @@ ArkTS-Sta: setTextSelection(selectionStart:&nbsp;int | undefined, selectionEnd:&
 
 Marquee初始化参数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                | 类型                                              | 必填 | 说明                                                                                  |
 |--------------------|-------------------------------------------------|----|-------------------------------------------------------------------------------------|
-| start              | boolean                                         | 是  | 控制跑马灯进入播放状态。<br/>true表示播放，false表示不播放。                           |
-| step               | number                                          | 否  | 滚动动画文本滚动步长。<br/>默认值：4.0vp                                                           |
-| loop               | number                                          | 否  | 设置重复滚动的次数，小于等于零时无限循环。<br/>默认值：-1                                                    |
-| fromStart          | boolean                                         | 否  | 设置文本从头开始滚动或反向滚动。<br/>true表示从头开始滚动，false表示反向滚动。<br/>默认值：true                                                  |
-| delay              | number                                          | 否  | 设置每次滚动的时间间隔。<br/>默认值：0 <br/>单位：毫秒                                                             |
-| fadeout            | boolean                                         | 否  | 设置文字超长时的渐隐效果。<br/>true表示支持渐隐效果，false表示不支持渐隐效果。<br/>当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。若两端均有文字未完全显示，则两端同时应用渐隐效果。在渐隐效果开启状态下，clip属性将自动锁定为true，不允许设置为false。<br/>默认值：false  |
-| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18枚举说明) | 否  | 设置跑马灯启动策略。<br/>默认值：MarqueeStartPolicy.DEFAULT                                       |
+| start              | boolean                                         | 是  | 控制跑马灯进入播放状态。<br/>true表示播放，false表示不播放。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23  |
+| step               | number                                          | 否  | 滚动动画文本滚动步长。<br/>默认值：4.0vp <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23     |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 两轮跑马灯之间的间距。<br/>默认值：48.0vp <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23  |
+| loop               | number                                          | 否  | 设置重复滚动的次数，小于等于零时无限循环。<br/>默认值：-1 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23      |
+| fromStart          | boolean                                         | 否  | 设置文本从头开始滚动或反向滚动。<br/>true表示从头开始滚动，false表示反向滚动。<br/>默认值：true  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                  |
+| delay              | number                                          | 否  | 设置每次滚动的时间间隔。<br/>默认值：0 <br/>单位：毫秒 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                              |
+| fadeout            | boolean                                         | 否  | 设置文字超长时的渐隐效果。<br/>true表示支持渐隐效果，false表示不支持渐隐效果。<br/>当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。若两端均有文字未完全显示，则两端同时应用渐隐效果。在渐隐效果开启状态下，clip属性将自动锁定为true，不允许设置为false。<br/>默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23    |
+| marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18枚举说明) | 否  | 设置跑马灯启动策略。<br/>默认值：MarqueeStartPolicy.DEFAULT  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                       |
+| marqueeUpdatePolicy<sup>23+</sup> | [MarqueeUpdatePolicy](#marqueeupdatepolicy23枚举说明) | 否  | 跑马灯组件属性更新后，跑马灯的滚动策略。<br/>当跑马灯为播放状态，且文本内容宽度超过跑马灯组件宽度时，该属性生效。<br/>默认值：MarqueeUpdatePolicy.DEFAULT <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## MarqueeStartPolicy<sup>18+</sup>枚举说明
 
@@ -1935,6 +1935,23 @@ Marquee状态回调的返回值。
 | START  | 0  | 跑马灯滚动开始。                     |
 | BOUNCE | 1  | 完成一次跑马灯滚动，如果循环次数不是1，将会多次返回。 |
 | FINISH | 2  | 跑马灯全部循环次数完成。              |
+
+## MarqueeUpdatePolicy<sup>23+</sup>枚举说明
+
+跑马灯组件属性更新后，跑马灯的滚动策略。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称       | 值      | 说明                     |
+| ---------- | ------------------------ | ------------------------ |
+| DEFAULT | 0 | 跑马灯组件属性更新后，从开始位置，运行跑马灯效果。     |
+| PRESERVE_POSITION  | 1 | 跑马灯组件属性更新后，保持当前位置，运行跑马灯效果。 |
 
 ## 示例
 
@@ -2146,7 +2163,10 @@ struct TextExample2 {
 
 该示例通过maxLines、textOverflow、ellipsisMode属性展示了文本超长省略以及调整省略位置的效果。
 
+ArkTS-Dyn示例：
 ```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
 @Extend(Text)
 function style() {
   .textAlign(TextAlign.Center)
@@ -2191,10 +2211,12 @@ struct TextExample3 {
           start: true,
           fromStart: true,
           step: 6,
+          spacing: LengthMetrics.vp(48), // 从API version 23开始，新增spacing属性
           loop: -1,
           delay: 0,
           fadeout: false,
-          marqueeStartPolicy: MarqueeStartPolicy.DEFAULT
+          marqueeStartPolicy: MarqueeStartPolicy.DEFAULT,
+          marqueeUpdatePolicy: MarqueeUpdatePolicy.DEFAULT // 从API version 23开始，新增marqueeUpdatePolicy属性
         })
         .onMarqueeStateChange((state: MarqueeState) => {
           if (state == MarqueeState.START) {
@@ -2216,6 +2238,104 @@ struct TextExample3 {
 
       Row() {
         Button('更改省略号位置：' + this.ellipsisModeStr[this.ellipsisModeIndex]).onClick(() => {
+          this.ellipsisModeIndex++;
+          if (this.ellipsisModeIndex > (this.ellipsisModeStr.length - 1)) {
+            this.ellipsisModeIndex = 0;
+          }
+        })
+      }
+    }.height(600).width('100%').padding({ left: 35, right: 35, top: 35 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, ClickEvent, TextOverflow, EllipsisMode, FlexDirection, Flex, ItemAlign, MarqueeStartPolicy,
+  Row, MarqueeUpdatePolicy, LengthMetrics, TextAlign, MarqueeState } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct TextExample3 {
+  @State text: string =
+    'The text component is used to display a piece of textual information.Support universal attributes and universal text attributes.';
+  @State ellipsisModeIndex: int = 0;
+  @State ellipsisMode: EllipsisMode[] = [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END];
+  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END'];
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+      // 文本超长时显示方式
+      Text('TextOverflow+maxLines').fontSize(9).fontColor(0xCCCCCC)
+      // 超出maxLines截断内容展示
+      Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content.')
+        .textOverflow({ overflow: TextOverflow.Clip })
+        .maxLines(1)
+        .textAlign(TextAlign.Center)
+        .fontSize(12)
+        .border({ width: 1 })
+        .padding(10)
+        .width('100%')
+        .margin(5)
+
+      // 超出maxLines展示省略号
+      Text('This is set textOverflow to Ellipsis text content This is set textOverflow to Ellipsis text content.')
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .maxLines(1)
+        .textAlign(TextAlign.Center)
+        .fontSize(12)
+        .border({ width: 1 })
+        .padding(10)
+        .width('100%')
+        .margin(5)
+
+      Text('marquee').fontSize(9).fontColor(0xCCCCCC)
+      // 设置文本超长时以跑马灯的方式展示
+      Text('This is the text with the text overflow set marquee')
+        .textOverflow({ overflow: TextOverflow.MARQUEE })
+        .textAlign(TextAlign.Center)
+        .fontSize(12)
+        .border({ width: 1 })
+        .padding(10)
+        .width('100%')
+        .margin(5)
+        .marqueeOptions({
+          start: true,
+          fromStart: true,
+          step: 6,
+          spacing: LengthMetrics.vp(48), // 从API version 23开始新增
+          loop: -1,
+          delay: 0,
+          fadeout: false,
+          marqueeStartPolicy: MarqueeStartPolicy.DEFAULT,
+          marqueeUpdatePolicy: MarqueeUpdatePolicy.DEFAULT // 从API version 23开始新增
+        })
+        .onMarqueeStateChange((state: MarqueeState) => {
+          if (state == MarqueeState.START) {
+            // "收到状态: START";
+          } else if (state == MarqueeState.BOUNCE) {
+            // "收到状态: BOUNCE";
+          } else if (state == MarqueeState.FINISH) {
+            // "收到状态: FINISH";
+          }
+        })
+
+      Text('ellipsisMode').fontSize(9).fontColor(0xCCCCCC)
+      //设置文本超长时省略号的位置
+      Text(this.text)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex] as EllipsisMode)
+        .maxLines(1)
+        .textAlign(TextAlign.Center)
+        .fontSize(12)
+        .border({ width: 1 })
+        .padding(10)
+        .width('100%')
+        .margin(5)
+
+      Row() {
+        Button('更改省略号位置：' + this.ellipsisModeStr[this.ellipsisModeIndex]).onClick((e: ClickEvent) => {
           this.ellipsisModeIndex++;
           if (this.ellipsisModeIndex > (this.ellipsisModeStr.length - 1)) {
             this.ellipsisModeIndex = 0;

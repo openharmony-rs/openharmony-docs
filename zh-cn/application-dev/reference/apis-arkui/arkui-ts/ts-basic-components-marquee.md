@@ -44,21 +44,17 @@ Marquee初始化参数。
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| start<sup>8+</sup> | boolean | 是 | 控制跑马灯是否进入播放状态。<br/>true表示播放，false表示不播放。<br/>**说明：**<br/>有限的滚动次数播放完毕后，不可以通过改变start重置滚动次数重新开始播放。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| step<sup>8+</sup> | number | 否 | 滚动动画文本滚动步长。当step大于Marquee的文本宽度时，取默认值。<br/>默认值：6 <br/>单位：[vp](ts-pixel-units.md) <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| loop<sup>8+</sup> | number | 否 | 设置重复滚动的次数，小于等于零时无限循环。<br/>默认值：-1<br/>**说明：**<br/>ArkTS卡片上该参数设置任意值都仅在可见时滚动一次。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| fromStart<sup>8+</sup> | boolean | 否 | 设置文本从头开始滚动或反向滚动。<br/>true表示从头开始滚动，false表示反向滚动。<br/>默认值：true<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| src<sup>8+</sup> | string | 是 | 需要滚动的文本。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| start<sup>8+</sup> | boolean | 是 | 控制跑马灯是否进入播放状态。<br/>true表示播放，false表示不播放。<br/>**说明：**<br/>有限的滚动次数播放完毕后，不可以通过改变start重置滚动次数重新开始播放。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
+| step<sup>8+</sup> | number | 否 | 滚动动画文本滚动步长。当step大于Marquee的文本宽度时，取默认值。<br/>默认值：6 <br/>单位：[vp](ts-pixel-units.md) <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
+| loop<sup>8+</sup> | number | 否 | 设置重复滚动的次数，小于等于零时无限循环。<br/>默认值：-1<br/>**说明：**<br/>ArkTS卡片上该参数设置任意值都仅在可见时滚动一次。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
+| fromStart<sup>8+</sup> | boolean | 否 | 设置文本从头开始滚动或反向滚动。<br/>true表示从头开始滚动，false表示反向滚动。<br/>默认值：true<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| src<sup>8+</sup> | string | 是 | 需要滚动的文本。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| spacing<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 两轮跑马灯之间的间距。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br/> 默认值：跑马灯组件宽度。 <br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
+| delay<sup>23+</sup> | ArkTS-Dyn: number <br > ArkTS-Sta: int | 否  | 设置每次滚动的时间间隔。<br/>默认值：0 <br/>取值范围：[0, +∞)，设置的值小于0时等价于设置0。<br/>单位：毫秒<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## 属性
 
@@ -264,9 +260,14 @@ ArkTS-Sta: onFinish(event:&nbsp;(()&nbsp;=&gt;&nbsp;void) | undefined)
 
 ## 示例
 
-该示例通过设置start、step、loop、fromStart、src、marqueeUpdateStrategy展示了跑马灯内容动态更新时运行的效果。  
+该示例通过设置[MarqueeOptions](#marqueeoptions18对象说明)的start、step、loop、fromStart、src、spacing、delay属性和[marqueeUpdateStrategy](#marqueeupdatestrategy12)展示了跑马灯内容动态更新时运行的效果。
 
+从API version 23开始，[MarqueeOptions](#marqueeoptions18对象说明)新增spacing、delay属性。
+
+ArkTS-Dyn示例：
 ```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
 // xxx.ets
 @Entry
 @Component
@@ -294,7 +295,9 @@ struct MarqueeExample {
         step: this.step,
         loop: this.loop,
         fromStart: this.fromStart,
-        src: this.marqueeText + this.src
+        src: this.marqueeText + this.src,
+        spacing: LengthMetrics.vp(300), // 从API version 23开始，新增spacing属性
+        delay: 0, // 从API version 23开始，新增delay属性
       })
         .marqueeUpdateStrategy(MarqueeUpdateStrategy.PRESERVE_POSITION)
         .width('300vp')
@@ -329,6 +332,86 @@ struct MarqueeExample {
       TextClock({ timeZoneOffset: -8, controller: this.controller })
         .format('hms')
         .onDateChange((value: number) => {
+          this.src = this.convert2time(value);
+        })
+        .margin('20vp')
+        .fontSize('30fp')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Column, Component, Button, ClickEvent, TextOverflow, EllipsisMode, FlexDirection, Flex, FlexAlign, ItemAlign, MarqueeStartPolicy,
+  Row, Marquee, TextClock, MarqueeUpdatePolicy, LengthMetrics, TextAlign, MarqueeState, MarqueeUpdateStrategy, TextClockController } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct MarqueeExample {
+  @State start: boolean = false;
+  @State src: string = '';
+  @State marqueeText: string = 'Running Marquee';
+  private fromStart: boolean = true;
+  private step: int = 10;
+  private loop: int = -1;
+  controller: TextClockController = new TextClockController();
+
+  convert2time(value: long): string {
+    let date = new Date();
+    let hours = date.getHours().toString().padStart(2, '0');
+    let minutes = date.getMinutes().toString().padStart(2, '0');
+    let seconds = date.getSeconds().toString().padStart(2, '0');
+    return hours + ":" + minutes + ":" + seconds;
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Marquee({
+        start: this.start,
+        step: this.step,
+        loop: this.loop,
+        fromStart: this.fromStart,
+        src: this.marqueeText + this.src,
+        spacing: LengthMetrics.vp(300), // 从API version 23开始，新增spacing属性
+        delay: 0, // 从API version 23开始，新增delay属性
+      })
+        .marqueeUpdateStrategy(MarqueeUpdateStrategy.PRESERVE_POSITION)
+        .width('300vp')
+        .height('80vp')
+        .fontColor('#FFFFFF')
+        .fontSize('48fp')
+        .allowScale(true) // 当fontSize为‘fp’单位且想要Marquee组件文本跟随系统字体大小缩放，可以设置该属性为true
+        .fontWeight(700)
+        .fontFamily('HarmonyOS Sans') // 不想跟随主题字体可设置该属性为默认字体'HarmonyOS Sans'
+        .backgroundColor('#182431')
+        .margin({ bottom: '40vp' })
+        .onStart(() => {
+          console.info('Succeeded in completing the onStart callback of marquee animation');
+        })
+        .onBounce(() => {
+          console.info('Succeeded in completing the onBounce callback of marquee animation');
+        })
+        .onFinish(() => {
+          console.info('Succeeded in completing the onFinish callback of marquee animation');
+        })
+      Button('Start')
+        .onClick(() => {
+          this.start = true
+          // 启动文本时钟
+          this.controller.start();
+        })
+        .width('120vp')
+        .height('40vp')
+        .fontSize('16fp')
+        .fontWeight(500)
+        .backgroundColor('#007DFF')
+      TextClock({ timeZoneOffset: -8, controller: this.controller })
+        .format('hms')
+        .onDateChange((value: long) => {
           this.src = this.convert2time(value);
         })
         .margin('20vp')
