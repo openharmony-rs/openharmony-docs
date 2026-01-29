@@ -305,7 +305,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialog_HoverMode.gif)
+
 
 ### Example 4: Setting the Dialog Box Position
 
@@ -341,7 +341,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo4.png)
+
 
 ### Example 5: Setting the Mask Area
 
@@ -381,7 +381,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo5.png)
+
 
 ### Example 6: Setting the Background
 
@@ -418,7 +418,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo6.png)
+
 
 ### Example 7: Switching Between Gregorian and Lunar Calendars
 
@@ -469,7 +469,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo7.gif)
+
 
 ### Example 8: Setting Display of Month and Day Columns
 
@@ -504,7 +504,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialogDemo8.gif)
+
 
 ### Example 9: Setting Cyclic Scrolling
 
@@ -548,7 +548,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![TextPickerDialog](figures/DatePickerDialogDemo9.gif)
+
 
 ### Example 10: Customizing the Background Blur Effect
 
@@ -587,7 +587,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialog_BackgroundBlurStyleOptions.png)
+
 
 ### Example 11: Customizing the Background Effect
 
@@ -628,5 +628,3 @@ struct DatePickerDialogExample {
 }
 ```
 
-![DataPickerDialog](figures/DatePickerDialog_BackgroundEffect.png)
-<!--no_check-->

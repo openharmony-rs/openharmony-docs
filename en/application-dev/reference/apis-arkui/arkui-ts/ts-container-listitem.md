@@ -13,7 +13,7 @@ The **ListItem** component displays specific items in the list. It must be used 
 >
 > - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 > - The parent of this component can only be [List](ts-container-list.md) or [ListItemGroup](ts-container-listitemgroup.md).
-> - When this component is used with **LazyForEach**, its child components are created when it is created. When this component is used with **if/else** or **ForEach**, or when the parent component is **List** or **ListItemGroup**, its child components are created when it is laid out.
+> - When this component is used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), its child components are created when it is created. When this component is used with [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) or [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), or when the parent component is **List** or **ListItemGroup**, its child components are created when it is laid out.
 
 ## Child Components
 
@@ -37,7 +37,7 @@ Creates a **ListItem** component.
 
 | Name| Type                                     | Mandatory| Description                                                    |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ListItemOptions](#listitemoptions10) | No  | Value of the list item, containing the **style** parameter of the **ListItemStyle** enum type.<br>Default value: **{ style: ListItemStyle.NONE }**|
+| value  | [ListItemOptions](#listitemoptions10) | No  | Parameters of the list item, containing the **style** parameter of [ListItemStyle](#listitemstyle10).<br>Default value: **{ style: ListItemStyle.NONE }**|
 
 ### ListItem<sup>(deprecated)</sup>
 
@@ -45,7 +45,9 @@ ListItem(value?: string)
 
 Creates a **ListItem** component.
 
-This API is deprecated since API version 10. You are advised to use [ListItem<sup>10+</sup>](#listitem10) instead.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 10. You are advised to use [ListItem<sup>10+</sup>](#listitem10) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -67,7 +69,9 @@ sticky(value: Sticky)
 
 Sets the sticky effect of the list item.
 
-This attribute is deprecated since API version 9. You are advised to use [the sticky attribute of the List component](ts-container-list.md#sticky9) instead.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [sticky](ts-container-list.md#sticky9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,7 +87,9 @@ editable(value: boolean | EditMode)
 
 Sets whether to enable edit mode, where the list item can be deleted or moved.
 
-This API is deprecated since API version 9. There is no substitute API.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +97,7 @@ This API is deprecated since API version 9. There is no substitute API.
 
 | Name| Type                                                        | Mandatory| Description                                      |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| value  | boolean \| [EditMode](#editmodedeprecated) | Yes  | Whether to enable edit mode.<br>Default value: **false**|
+| value  | boolean&nbsp;\|&nbsp;[EditMode](#editmodedeprecated) | Yes  | Whether to enable edit mode.<br>Default value: **false**|
 
 ### selectable<sup>8+</sup>
 
@@ -115,7 +121,7 @@ Sets whether the list item is selectable for multiselect. This attribute takes e
 
 selected(value: boolean)
 
-Sets whether the list item is selected. This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md). This attribute must be used before the [style for the selected state](./ts-universal-attributes-polymorphic-style.md) is set. Otherwise, the style settings will not take effect.
+Sets whether the list item is selected. This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md). This attribute must be used before the [polymorphic style](./ts-universal-attributes-polymorphic-style.md) is set. Otherwise, the style settings will not take effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -149,7 +155,9 @@ Sets the swipe action item displayed when the list item is swiped out from the s
 
 Enumerates the sticky effects for list items.
 
-This API is deprecated since API version 9. You are advised to use [the stickyStyle enum of the List component](ts-container-list.md#stickystyle9) instead.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [stickyStyle of the List component](ts-container-list.md#stickystyle9) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,7 +171,9 @@ This API is deprecated since API version 9. You are advised to use [the stickySt
 
 Enumerates the edit modes of list items.
 
-This API is deprecated since API version 9. There is no substitute API.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,7 +198,7 @@ Enumerates the edge effects.
 
 ## SwipeActionOptions<sup>9+</sup>
 
-The top level of the @builder function corresponding to **start** and **end** must be a single component and cannot be an **if/else**, **ForEach**, or **LazyForEach** statement.
+The top layer of the **@builder** function corresponding to **start** and **end** must be a single component. Otherwise, undefined behavior occurs. If the top layer of the @builder function is a statement such as if/else or ForEach, ensure that these statements can generate a single component.
 
 The swipe gesture works only in the list item area. If a swipe causes a child component to extend beyond the list item area, the portion outside the area does not respond to the swipe. In light of this, avoid setting **swipeAction** to a component too wide in a multi-column list.
 
@@ -196,8 +206,8 @@ The swipe gesture works only in the list item area. If a swipe causes a child co
 
 | Name                        | Type                                                        | Read-Only| Optional| Description                                                        |
 | ---------------------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| start                        | [CustomBuilder](ts-types.md#custombuilder8) \| [SwipeActionItem](#swipeactionitem10) | No  | Yes| Swipe action item displayed on the left of the list item when the item is swiped right (in vertical list layout) or above the list item when the item is swiped down (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| end                          | [CustomBuilder](ts-types.md#custombuilder8) \| [SwipeActionItem](#swipeactionitem10) | No  | Yes| Swipe action item displayed on the right of the list item when the item is swiped left (in vertical list layout) or below the list item when the item is swiped up (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| start                        | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10) | No  | Yes| Swipe action item displayed on the left of the list item when the item is swiped right (in vertical list layout) or above the list item when the item is swiped down (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| end                          | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10) | No  | Yes| Swipe action item displayed on the right of the list item when the item is swiped left (in vertical list layout) or below the list item when the item is swiped up (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | edgeEffect                   | [SwipeEdgeEffect](#swipeedgeeffect9)                 | No  | Yes| Scroll effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                               |
 | onOffsetChange<sup>11+</sup> | (offset: number) => void                                     | No  | Yes| Specifically, this callback is invoked when the location of the list item changes, in vp, when it is swiped left or right (in vertical list layout) or up or down (in horizontal list layout).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
@@ -260,7 +270,7 @@ Enumerates swipe states of list items.
 
 ### onSelect<sup>8+</sup>
 
-onSelect(event: (isSelected: boolean) =&gt; void)
+onSelect(event:&nbsp;(isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 Triggered when the selected state of the list item for multiselect changes.
 
@@ -416,7 +426,8 @@ struct ListItemExample2 {
   @State exitEndDeleteAreaString: string = 'not exitEndDeleteArea';
   private scroller: ListScroller = new ListScroller();
 
-  @Builder itemEnd() {
+  @Builder
+  itemEnd() {
     Row() {
       Button('Delete').margin('4vp')
       Button('Set').margin('4vp').onClick(() => {
@@ -438,10 +449,12 @@ struct ListItemExample2 {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-          .transition({ type: TransitionType.Delete, opacity: 0 })
+          .transition(TransitionEffect.OPACITY)
           .swipeAction({
             end: {
-              builder: () => { this.itemEnd() },
+              builder: () => {
+                this.itemEnd()
+              },
               onAction: () => {
                 this.getUIContext()?.animateTo({ duration: 1000 }, () => {
                   let index = this.arr.indexOf(item);
@@ -461,6 +474,7 @@ struct ListItemExample2 {
           })
         }, (item: number) => item.toString())
       }
+
       Text(this.enterEndDeleteAreaString).fontSize(20)
       Text(this.exitEndDeleteAreaString).fontSize(20)
     }
@@ -515,7 +529,7 @@ struct ListItemExample3 {
 
 ### Example 4: Setting the Swipe Action Item Using ComponentContent
 
-This example demonstrates how to set swipe action items for list items using **ComponentContent**.
+This example demonstrates how to set the action items displayed during swipe operations in **ListItem** using [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) .
 
 ```ts
 // xxx.ets
@@ -524,6 +538,7 @@ import { ComponentContent } from '@kit.ArkUI';
 class BuilderParams {
   text: string | Resource;
   scroller: ListScroller;
+
   constructor(text: string | Resource, scroller: ListScroller) {
     this.text = text;
     this.scroller = scroller;
@@ -539,6 +554,7 @@ function itemBuilder(params: BuilderParams) {
     })
   }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
 }
+
 @Component
 struct MyListItem {
   scroller: ListScroller = new ListScroller();
@@ -546,21 +562,23 @@ struct MyListItem {
   @State project ?: number = 0;
   startBuilder ?: ComponentContent<BuilderParams> = undefined;
   endBuilder ?: ComponentContent<BuilderParams> = undefined;
-
   builderParam = new BuilderParams('delete', this.scroller);
 
   aboutToAppear(): void {
     this.startBuilder = new ComponentContent(this.getUIContext(), wrapBuilder(itemBuilder), this.builderParam);
     this.endBuilder = new ComponentContent(this.getUIContext(), wrapBuilder(itemBuilder), this.builderParam);
   }
+
   GetStartBuilder() {
     this.startBuilder?.update(new BuilderParams('StartDelete', this.scroller));
     return this.startBuilder;
   }
+
   GetEndBuilder() {
     this.endBuilder?.update(new BuilderParams('EndDelete', this.scroller));
     return this.endBuilder;
   }
+
   build() {
     ListItem() {
       Text('item' + this.project)
@@ -571,7 +589,7 @@ struct MyListItem {
         .borderRadius(10)
         .backgroundColor(0xFFFFFF)
     }
-    .transition({ type: TransitionType.Delete, opacity: 0 })
+    .transition(TransitionEffect.OPACITY)
     .swipeAction({
       end: {
         builderComponent: this.GetEndBuilder(),
@@ -609,7 +627,7 @@ struct ListItemExample {
       List({ space: 10, scroller: this.scroller }) {
         ListItemGroup() {
           ForEach(this.arr, (project: number) => {
-            MyListItem({ scroller: this.scroller, project: project, arr:this.arr })
+            MyListItem({ scroller: this.scroller, project: project, arr: this.arr })
           }, (item: string) => item)
         }
       }
@@ -643,31 +661,31 @@ struct ListItemExample5 {
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
       Flex({ wrap: FlexWrap.Wrap, justifyContent: FlexAlign.SpaceBetween }) {
-        Button("expand start")
+        Button('expand start')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.START)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("expand end")
+        Button('expand end')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.expand(node, ListItemSwipeActionDirection.END)
             } catch (error) {
-              console.error("Error expand item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error expand item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
-        Button("collapse")
+        Button('collapse')
           .onClick(() => {
             try {
               let node: FrameNode | null = this.getUIContext().getAttachedFrameNodeById('listItem');
               ListItemSwipeActionManager.collapse(node)
             } catch (error) {
-              console.error("Error collapse item:", (error as BusinessError).code, (error as BusinessError).message);
+              console.error('Error collapse item:', (error as BusinessError).code, (error as BusinessError).message);
             }
           })
       }
@@ -675,7 +693,7 @@ struct ListItemExample5 {
 
       List({ space: 10 }) {
         ListItem() {
-          Text("item")
+          Text('item')
             .width('100%')
             .height(100)
             .fontSize(16)
@@ -684,7 +702,7 @@ struct ListItemExample5 {
             .backgroundColor(0xFFFFFF)
         }
         .id('listItem')
-        .transition({ type: TransitionType.Delete, opacity: 0 })
+        .transition(TransitionEffect.OPACITY)
         .swipeAction({
           start: {
             builder: () => {

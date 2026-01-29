@@ -60,7 +60,7 @@ refToPropA1?.set(48); // Synchronously modify AppStorage: refToPropA1.get() == r
 
 static setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
 
-Similar to the [ref](#ref12) API, returns a reference to the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If **propName** does not exist, this API creates and initializes the property in AppStorage using **defaultValue** and returns its reference. **defaultValue** must be of the **T** type and can be **null** or **undefined**.
+Similar to the [ref](#ref12) API, returns a reference to the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If **propName** does not exist, this API creates and initializes the property in AppStorage using **defaultValue** and returns its reference.
 
 This API is similar to [setAndLink](#setandlink10) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty12) type.
 
@@ -131,7 +131,7 @@ linkToPropA1.set(48); // Two-way synchronization: linkToPropA1.get() == linkToPr
 
 static setAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstractProperty&lt;T&gt;
 
-Similar to the [link](#link10) API, establishes a two-way data binding with the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the given property exists in AppStorage, this API returns the two-way bound data for the property. If the given property does not exist, this API creates and initializes the property in AppStorage using **defaultValue** and returns its two-way bound data. The value of **defaultValue** must be of the **T** type. Since API version 12, it can be **null** or **undefined**.
+Similar to the [link](#link10) API, establishes a two-way data binding with the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the given property exists in AppStorage, this API returns the two-way bound data for the property. If the given property does not exist, this API creates and initializes the property in AppStorage using **defaultValue** and returns its two-way bound data.
 
 > **NOTE**
 >
@@ -196,7 +196,7 @@ prop1.set(1); // One-way synchronization: prop1.get() returns 1, while prop2.get
 
 static setAndProp&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstractProperty&lt;T&gt;
 
-Similar to the [prop](#prop10) API, establishes a one-way data binding with the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the given property exists in AppStorage, this API returns the one-way bound data for the property. If the given property does not exist, this API creates and initializes the property in AppStorage using **defaultValue** and returns its one-way bound data. The value of **defaultValue** must be of the **T** type. Since API version 12, it can be **null** or **undefined**.
+Similar to the [prop](#prop10) API, establishes a one-way data binding with the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the given property exists in AppStorage, this API returns the one-way bound data for the property. If the given property does not exist, this API creates and initializes the property in AppStorage using **defaultValue** and returns its one-way bound data.
 
 > **NOTE**
 >
@@ -217,7 +217,7 @@ Similar to the [prop](#prop10) API, establishes a one-way data binding with the 
 
 | Type                                 | Description                                     |
 | ----------------------------------- | --------------------------------------- |
-| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | Instance of SubscribedAbstractProperty&t;lT&gt;.|
+| [SubscribedAbstractProperty&lt;T&gt;](#subscribedabstractproperty) | Instance of SubscribedAbstractProperty&lt;T&gt;.|
 
 **Example**
 ```ts
@@ -284,7 +284,7 @@ let value: number = AppStorage.get('PropA') as number; // 47
 
 static set&lt;T&gt;(propName: string, newValue: T): boolean
 
-Sets the value of the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the value of **newValue** is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property. Since API version 12, **newValue** can be **null** or **undefined**.
+Sets the value of the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the value of **newValue** is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property.
 
 > **NOTE**
 >
@@ -320,7 +320,7 @@ static setOrCreate&lt;T&gt;(propName: string, newValue: T): void
 
 Sets the value of the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md) to a new value, if the property exists and the new value is different from the current value. If the new value is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property.
 
-If the property does not exist, this API creates it with the value of **newValue**. This **setOrCreate** API can create only one AppStorage key-value pair each time. To create multiple key-value pairs, call this API multiple times. Since API version 12, **newValue** can be **null** or **undefined**.
+If the property does not exist, this API creates it with the value of **newValue**. This **setOrCreate** API can create only one AppStorage key-value pair each time. To create multiple key-value pairs, call this API multiple times.
 
 > **NOTE**
 >
@@ -999,7 +999,7 @@ let value: number = storage.get('PropA') as number; // 47
 
 set&lt;T&gt;(propName: string, newValue: T): boolean
 
-Sets the value of the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the value of **newValue** is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property. Since API version 12, **newValue** can be **null** or **undefined**.
+Sets the value of the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the value of **newValue** is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property.
 
 > **NOTE**
 > 
@@ -1040,8 +1040,7 @@ setOrCreate&lt;T&gt;(propName: string, newValue: T): boolean
 
 Sets the value of the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md) to a new value, if the property exists and the new value is different from the current value. If the new value is the same as the current value of the property, no assignment is performed, and the state variable does not instruct the UI to update the value of the property.
 
-If the property does not exist, this API creates it with the value of **newValue**. The setOrCreate method can be used to create only one LocalStorage key-value pair. To create multiple LocalStorage key-value pairs, call this method for multiple times. Since API version 12, **newValue** can be **null** or **undefined**.
-
+If the property does not exist, this API creates it with the value of **newValue**. The setOrCreate method can be used to create only one LocalStorage key-value pair. To create multiple LocalStorage key-value pairs, call this method for multiple times.
 > **NOTE**
 > 
 > Since API version 12, LocalStorage supports [Map](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-map-type), [Set](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-set-type), [Date](../../../ui/state-management/arkts-localstorage.md#decorating-variables-of-the-date-type), **null**, **undefined**, and [union](../../../ui/state-management/arkts-localstorage.md#using-union-types-in-localstorage) types.
@@ -1113,7 +1112,7 @@ refToPropA1?.set(48); // refToPropA1.get() == refToPropA2.get() == 48
 
 setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
 
-Similar to the [ref](#ref12-1) API, returns a reference to the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If **propName** does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its reference. **defaultValue** must be of the **T** type and can be **null** or **undefined**.
+Similar to the [ref](#ref12-1) API, returns a reference to the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If **propName** does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its reference.
 
 This API is similar to [setAndLink](#setandlink9) but does not require manually releasing the returned variable of the [AbstractProperty](#abstractproperty12) type.
 
@@ -1189,7 +1188,7 @@ linkToPropA1.set(48); // Two-way synchronization: linkToPropA1.get() == linkToPr
 
 setAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstractProperty&lt;T&gt;
 
-Similar to the [link](#link9) API, establishes a two-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property exists in LocalStorage, this API returns the two-way bound data for the property. If the given property does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its two-way bound data. The value of **defaultValue** must be of the **T** type. Since API version 12, it can be **null** or **undefined**.
+Similar to the [link](#link9) API, establishes a two-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property exists in LocalStorage, this API returns the two-way bound data for the property. If the given property does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its two-way bound data.
 
 > **NOTE**
 > 
@@ -1261,7 +1260,7 @@ prop1.set(1); // One-way synchronization: prop1.get() returns 1, while prop2.get
 
 setAndProp&lt;S&gt;(propName: string, defaultValue: S): SubscribedAbstractProperty&lt;S&gt;
 
-Similar to the [prop](#prop9) API, establishes a one-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property exists in LocalStorage, this API returns the one-way bound data for the property. If the given property does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its one-way bound data. The value of **defaultValue** must be of the **S** type. Since API version 12, it can be **null** or **undefined**.
+Similar to the [prop](#prop9) API, establishes a one-way data binding with the property corresponding to **propName** in [LocalStorage](../../../ui/state-management/arkts-localstorage.md). If the given property exists in LocalStorage, this API returns the one-way bound data for the property. If the given property does not exist, this API creates and initializes the property in LocalStorage using **defaultValue** and returns its one-way bound data.
 
 > **NOTE**
 > 
@@ -1653,6 +1652,13 @@ Property name.
 |Type  |Description    |
 |---------|-------------|
 |string    |Property name.   |
+
+**Example**
+```ts
+AppStorage.setOrCreate('PropA', 47); 
+let prop1: SubscribedAbstractProperty<number> = AppStorage.prop('PropA');
+prop1.info(); // prop1.info() = 'PropA'
+```
 
 ## PersistPropsOptions<sup>10+</sup>
 

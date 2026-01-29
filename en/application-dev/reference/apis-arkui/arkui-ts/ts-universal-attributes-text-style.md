@@ -36,7 +36,7 @@ Obtains the position of the edited text area relative to the component and its s
 
 | Type      | Description      |
 | -------------------  | -------- |
-| [RectResult](ts-universal-attributes-on-child-touch-test.md#rectresult) | Position of the edited text area relative to the component and its size.|
+| [RectResult](ts-universal-attributes-on-child-touch-test.md#rectresult) | Position of the edited text area relative to the component and its size.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 > **NOTE**
 >
@@ -59,7 +59,7 @@ Obtains the number of lines of the edited text.
 
 | Type | Description      |
 | ----- | -------- |
-| number| Number of lines of the edited text.|
+| number| Number of lines of the edited text.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### getCaretOffset<sup>11+</sup>
 
@@ -77,7 +77,7 @@ If the caret position cannot be obtained (for example, when the [TextInputContro
 
 | Type                     | Description              |
 | ----------------------- | ---------------- |
-| [CaretOffset](#caretoffset11) | Position of the caret relative to the text box.|
+| [CaretOffset](#caretoffset11) | Position of the caret relative to the text box.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 > **NOTE**
 >
@@ -163,7 +163,7 @@ Obtains the current text selection range.
 
 | Type                     | Description              |
 | ----------------------- | ---------------- |
-| [TextRange](ts-text-common.md#textrange12) | Current text selection range, or cursor position if no text is selected.|
+| [TextRange](ts-text-common.md#textrange12) | Current text selection range, or cursor position if no text is selected.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### clearPreviewText<sup>17+</sup>
 
@@ -184,9 +184,9 @@ Provides configuration options for the character counter.
 | Name  | Type   |     Read-Only   |     Optional   |     Description   |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | thresholdPercentage | number  | No| Yes| Threshold percentage for displaying the character counter. The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by the threshold percentage value. When displayed, the character counter is in the following format: Number of characters that have been entered/Maximum number of characters allowed. It is visible when the number of characters entered is greater than the character limit multiplied by the threshold percentage value. Value range: [1, 100]. If the value is not an integer, it is rounded down to the nearest integer. If the value exceeds the valid value range, the character counter is not displayed. If the value is **undefined**, the character counter is displayed, but this parameter has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| highlightBorder     | boolean | No | Yes| Whether to highlight the text box border and character counter subscript in red. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and **thresholdPercentage** is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. If this parameter is **true**, the red border is displayed. (default) means to highlight the text box border and character counter subscript in red.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| counterTextColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter. When the input character count exceeds the maximum limit multiplied by the specified percentage, the counter displays the current count using this color. If **counterTextColor** is not set, the default gray color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| counterTextOverflowColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter when the maximum limit is exceeded. When the user input exceeds the maximum character count, both the counter text and border switch to this color to indicate overflow. If **counterTextOverflowColor** is not set, the default red color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| highlightBorder     | boolean | No | Yes| Whether to highlight the text box border and character counter subscript in red. If **options** is not set, the text box border and character counter subscript turn red when the number of characters entered reaches the limit. If the character counter is displayed and **thresholdPercentage** is set to a valid value, the text box border and character counter subscript turn red when the number of entered characters exceeds the limit. If this parameter is **true**, the red border is displayed; if **false**, it is not displayed. (default) means to highlight the text box border and character counter subscript in red.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| counterTextColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter. When the input character count exceeds the maximum limit multiplied by the specified percentage, the counter displays the current count text using this color. If **counterTextColor** is not set, the default gray color is used.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| counterTextOverflowColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No| Yes| Text color of the character counter when the maximum limit is exceeded. When the user input exceeds the maximum character count, both the counter text and border switch to this color to indicate overflow. If **counterTextOverflowColor** is not set, the default red color is used.<br>**NOTE**<br>The border color is changed only when the **highlightBorder** attribute of [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11) is set.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## CaretOffset<sup>11+</sup>
 
@@ -199,8 +199,8 @@ Describes the position of the caret relative to the text box.
 | Name  | Type   |     Read-Only   |     Optional   |     Description   |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | index | number | No| No| Index of the caret position.   |
-| x     | number | No| No| X coordinate of the cursor relative to the text box, in px.|
-| y     | number | No| No| Y coordinate of the cursor relative to the text box, in px.|
+| x     | number | No| No| X-coordinate of the caret relative to the text box, in px.|
+| y     | number | No| No| Y-coordinate of the caret relative to the text box, in px.|
 
 ## TextDecorationOptions<sup>12+</sup>
 
