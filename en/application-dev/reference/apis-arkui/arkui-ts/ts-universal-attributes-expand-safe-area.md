@@ -13,12 +13,12 @@ A safe area refers to the display area that is not covered by system-defined non
 > The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.<br>
 > The camera cutout area is not considered part of the non-safe area by default, and pages do not automatically avoid it.<br>
 > You can set the camera cutout area as a non-safe area since API version 12, so that content is not displayed in this area. To do so, add the following to the **module.json5** file:<br>
-  "metadata": [<br />
-    &nbsp;&nbsp;{<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;"name": "avoid_cutout",<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;"value": "true",<br />
-    &nbsp;&nbsp;}<br />
-  ],<br />
+  "metadata": [<br>
+    &nbsp;&nbsp;{<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"name": "avoid_cutout",<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;"value": "true",<br>
+    &nbsp;&nbsp;}<br>
+  ],<br>
   
 
 ## expandSafeArea
@@ -26,6 +26,30 @@ A safe area refers to the display area that is not covered by system-defined non
 expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&gt;): T
 
 Sets the safe area to be expanded to.
+
+>  **NOTE**
+>
+> - When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values are set (including **'auto'**), the edges for expanding the safe area can only be **[SafeAreaEdge.TOP, SafeAreaEdge.START]**, and the size of the component remains unchanged after safe area expansion.
+>
+> - The safe area does not restrict the layout or size of components inside, nor does it clip the components.
+>
+> - If the parent container is a scrollable container, the component does not extend after the **expandSafeArea** attribute is set, but it can still trigger updates to the extension range of its child nodes that have **expandSafeArea** set.
+>
+> - When **expandSafeArea()** is set without parameters, default values are applied. When **expandSafeArea([],[])** is used with empty arrays, the setting has no effect.
+>   
+> - Prerequisites for the **expandSafeArea** attribute to take effect: 
+>  1. When **type** is set to **SafeAreaType.KEYBOARD**, the settings take effect by default. This behaves as the component not avoiding the virtual keyboard.<br>
+>  2. When **type** is set to any other value, the settings take effect only if its boundaries overlap with the safe area. For example, if the height of the status bar is 100, the absolute position of the component on the screen must be 0 <= y <= 100 for the settings to take effect.
+>   
+> - When a component extends into a non-safe area, events in the non-safe area (such as click events) may be intercepted by the system. Built-in components like the status bar will be given priority to respond to these events.
+>  
+> - Avoid setting the **expandSafeArea** attribute for components within scrollable containers. If you do set it, you must apply the **expandSafeArea** attribute to all direct nodes from the current node to the scrollable ancestor container, following the component nesting relationship. Otherwise, the **expandSafeArea** attribute may become ineffective after scrolling. For the correct implementation, see [Example 7](#example-7-expanding-the-safe-area-in-scrollable-containers).
+> 
+> - The **expandSafeArea** attribute only affects the current component and does not propagate to parent or child components. Therefore, all relevant components must be configured individually.
+> 
+> - When both **expandSafeArea** and **position** attributes are set, the **position** attribute takes effect first, followed by the **expandSafeArea** attribute. For components that do not have **position**, **offset**, or other rendering attributes set, such as dialog boxes and sheets, the **expandSafeArea** attribute will not take effect if their boundaries do not overlap with the non-safe area.
+> 
+> - In scenarios where the **expandSafeArea** attribute is ineffective, and you need to place a component in the safe area, you will need to manually adjust the component's coordinates.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -43,30 +67,6 @@ Sets the safe area to be expanded to.
 | Type| Description|
 | --- | --- |
 |  T | Current component.|
-
->  **NOTE**
->
->  When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values are set (including **'auto'**), the edges for expanding the safe area can only be **[SafeAreaEdge.TOP, SafeAreaEdge.START]**, and the size of the component remains unchanged after safe area expansion.
->
->  The safe area does not restrict the layout or size of components inside, nor does it clip the components.
->
->  If the parent container is a scrollable container, the **expandSafeArea** attribute does not take effect.
->
->  When **expandSafeArea()** is set without parameters, default values are applied. When **expandSafeArea([],[])** is used with empty arrays, the setting does not take effect.
->   
->  Prerequisites for the **expandSafeArea** attribute to take effect: 
->  1. When **type** is set to **SafeAreaType.KEYBOARD**, the settings take effect by default. This behaves as the component not avoiding the virtual keyboard.<br>
->  2. When **type** is set to any other value, the settings take effect only if its boundaries overlap with the safe area. For example, if the height of the status bar is 100, the absolute position of the component on the screen must be 0 <= y <= 100 for the settings to take effect.
->   
->  When a component extends into a non-safe area, events in the non-safe area (such as click events) may be intercepted by the system. Built-in components like the status bar will be given priority to respond to these events.
->  
->  Avoid setting the **expandSafeArea** attribute for components within scrollable containers. If you do set it, you must apply the **expandSafeArea** attribute to all direct nodes from the current node to the scrollable ancestor container, following the component nesting relationship. Otherwise, the **expandSafeArea** attribute may become ineffective after scrolling. For the correct implementation, see [Example 7](#example-7-expanding-the-safe-area-in-scrollable-containers).
-> 
->  The **expandSafeArea** attribute only affects the current component and does not propagate to parent or child components. Therefore, all relevant components must be configured individually.
-> 
->  When both **expandSafeArea** and **position** attributes are set, the **position** attribute takes effect first, followed by the **expandSafeArea** attribute. For components that do not have **position**, **offset**, or other rendering attributes set, such as dialog boxes and sheets, the **expandSafeArea** attribute will not take effect if their boundaries do not overlap with the non-safe area.
-> 
->  In scenarios where the **expandSafeArea** attribute is ineffective, and you need to place a component in the safe area, you will need to manually adjust the component's coordinates.
 
 ## SafeAreaType
 
@@ -151,7 +151,7 @@ Ignores the safe area for component layout.
 
 | Name| Type                                              | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[LayoutSafeAreaType](#layoutsafeareatype12)> | No  | Types of layout safe areas to expand.<br>Default value: [LayoutSafeAreaType.SYSTEM] (expands to all safe areas, including the status bar, navigation bar, and [component-level safe area (**safeAreaPadding**)](./ts-universal-attributes-size.md#safeareapadding14).<br>Invalid values are treated as the default value.|
+| types  | Array <[LayoutSafeAreaType](#layoutsafeareatype12)> | No  | Types of layout safe areas to expand.<br>Default value: [LayoutSafeAreaType.SYSTEM] (expands to all safe areas, including the status bar, navigation bar, and component-level safe area ([safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14))).<br>Invalid values are treated as the default value.|
 | edges  | Array <[LayoutSafeAreaEdge](#layoutsafeareaedge12)> | No  | Edges of the layout safe area to expand, with mirroring capability supported.<br>Default value: [LayoutSafeAreaEdge.ALL] (expands all edges of the component).<br>Invalid values are treated as the default value.|
 
 **Return value**
@@ -180,7 +180,7 @@ Enumerates the types for expanding layout safe areas.
 
 | Name   | Value  | Description                              |
 | ------- | ---- | ---------------------------------- |
-| SYSTEM   |  0 |The component's layout range can be expanded to include both [component-level safe areas (safeAreaPadding)](./ts-universal-attributes-size.md#safeareapadding14) and page-level safe areas (status bar, navigation bar, and cutout area).  |
+| SYSTEM   |  0 |The component's layout range can be expanded to include both component-level safe areas ([safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)) and page-level safe areas (status bar, navigation bar, and cutout area).  |
 
 ## LayoutSafeAreaEdge<sup>12+</sup>
 

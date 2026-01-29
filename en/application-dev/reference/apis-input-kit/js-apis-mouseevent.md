@@ -27,7 +27,7 @@ Enumerates mouse event types.
 
 | Name       | Value| Description                |
 | ----------- | -------- | -------------------- |
-| CANCEL      | 0   | Canceled.            |
+| CANCEL      | 0   | Canceled. The down event of the mouse is interrupted unexpectedly and does not close normally. For example, the **CANCEL** event is triggered when the mouse button is pressed but not released, the window transitions to the background, or an abnormal destruction occurs.|
 | MOVE        | 1   | Moving of the mouse pointer.            |
 | BUTTON_DOWN | 2   | Mouse button press.        |
 | BUTTON_UP   | 3   | Mouse button release.        |

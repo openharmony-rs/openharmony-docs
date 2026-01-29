@@ -232,7 +232,7 @@ struct CalendarPickerDialogExample {
 }
 ```
 
-![CalendarPickerDialog](figures/CalendarPickerDialog_HoverMode.gif)
+
 
 ### Example 4: Setting the Background Style for the Selected Date
 
@@ -298,7 +298,7 @@ struct CalendarPickerDialogExample {
 }  
 ```
 
-![CalendarPickerDialog](figures/calendar_picker_dialog_start_end.gif)
+
 
 ### Example 6: Highlighting the Current Date and Configuring Disabled Date Ranges
 
@@ -330,7 +330,7 @@ struct CalendarPickerExample {
 }
 ```
 
-![CalendarPickerDialog](figures/calendar_picker_dialog_mark_disabled.gif)
+
 
 ### Example 7: Customizing the Background Blur Effect
 
@@ -369,7 +369,7 @@ struct CalendarPickerDialogExample {
 }
 ```
 
-![CalendarPickerDialog](figures/calendar_picker_dialog_backgroundBlurStyleOptions.png)
+
 
 ### Example 8: Customizing the Background Effect
 
@@ -409,5 +409,4 @@ struct CalendarPickerDialogExample {
 }
 ```
 
-![CalendarPickerDialog](figures/calendar_picker_dialog_backgroundEffect.png)
-<!--no_check-->
+

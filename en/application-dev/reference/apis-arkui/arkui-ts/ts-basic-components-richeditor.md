@@ -84,8 +84,8 @@ By default, the custom keyboard is closed when the input component loses the foc
 
 | Name               | Type                                       | Mandatory| Description                            |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8) | Yes   | Custom keyboard.                     |
-| options<sup>12+</sup> | [KeyboardOptions](#keyboardoptions12)       | No   | Whether to support keyboard avoidance. |
+| value                 | [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Custom keyboard.                    |
+| options<sup>12+</sup> | [KeyboardOptions](#keyboardoptions12)       | No  | Whether to support keyboard avoidance.|
 
 ### bindSelectionMenu
 
@@ -1140,7 +1140,7 @@ Obtains the preset text style of a user.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [RichEditorTextStyle](#richeditortextstyle) | Preset typing style.|
+| [RichEditorTextStyle](#richeditortextstyle) | Preset typing style.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### setTypingStyle<sup>11+</sup>
 
@@ -1246,7 +1246,7 @@ Obtains a **LayoutManager** object.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [LayoutManager](ts-text-common.md#layoutmanager12) | **LayoutManager** object.|
+| [LayoutManager](ts-text-common.md#layoutmanager12) | **LayoutManager** object.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### getPreviewText<sup>12+</sup>
 
@@ -1262,7 +1262,7 @@ Obtains the preview text.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [PreviewText](ts-text-common.md#previewtext12) | Preview text.|
+| [PreviewText](ts-text-common.md#previewtext12) | Preview text.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### getCaretRect<sup>18+</sup>
 
@@ -1464,7 +1464,7 @@ Obtains span information.
 
 | Type                                      | Description          |
 | ---------------------------------------- | ------------ |
-| Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> | Text and image span information.|
+| Array<[RichEditorImageSpanResult](#richeditorimagespanresult) \| [RichEditorTextSpanResult](#richeditortextspanresult)> | Text and image span information.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### deleteSpans
 
@@ -1502,7 +1502,7 @@ Obtains the paragraph information within a specified range.
 
 | Type                                      | Description      |
 | ---------------------------------------- | -------- |
-| Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> | Information about the selected paragraphs.|
+| Array\<[RichEditorParagraphResult](#richeditorparagraphresult11)> | Information about the selected paragraphs.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### getSelection<sup>11+</sup>
 
@@ -1518,7 +1518,7 @@ Obtains the range and span information of the selected content. If no text is se
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [RichEditorSelection](#richeditorselection) | Provides information about the selected content.|
+| [RichEditorSelection](#richeditorselection) | Provides information about the selected content.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### fromStyledString<sup>12+</sup>
 
@@ -1605,7 +1605,7 @@ Obtains the current selection range of the **RichEditor** component.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| [RichEditorRange](#richeditorrange) | Selection range.|
+| [RichEditorRange](#richeditorrange) | Selection range.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### setStyledString<sup>12+</sup>
 
@@ -1642,7 +1642,7 @@ Obtains the styled string displayed in the **RichEditor** component.
 
 | Type   | Description                         |
 | ------- | ----------------------------- |
-| [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) | Styled string displayed in the **RichEditor** component.|
+| [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) | Styled string displayed in the rich text component.<br>If no component is bound to the controller or the component bound to the controller is released, **undefined** is returned.|
 
 ### onContentChanged<sup>12+</sup>
 
@@ -2893,7 +2893,7 @@ struct SelectionMenu {
 >
 > Icons in bold and italics are not preset in the system. The sample code uses the default icons. You need to replace the icons in **iconArr** with the desired icons.
 
-
+![selectionMenu](figures/richEditorSelectionMenu.png)
 
 ### Example 4: Updating the Image Style
 This example demonstrates how to update the image style using the [updateSpanStyle](#updatespanstyle) API.
@@ -4411,8 +4411,8 @@ struct RichEditorDemo {
         .width("100%")
         .border({ width: 1, radius: 5 })
         .key('RichEditor')
-        .caretColor(this.color)// Caret color
-        .selectedBackgroundColor(this.color)// Background color of the selected content.
+        .caretColor(this.color) // Caret color.
+        .selectedBackgroundColor(this.color) // Background color of the selected content.
         .margin({ top: 50 })
     }
     .width('100%')
@@ -6078,7 +6078,6 @@ struct Demo32 {
   }
 }
 ```
-<!--RP2--><!--RP2End-->
 
 ### Example 33: Setting a Listener for Input Method Binding Events
 From API version 22, this example uses the [onWillAttachIME](#onwillattachime22) event to listen for input method binding events.
@@ -6130,4 +6129,4 @@ struct SetOnWillAttachIME {
   }
 }
 ```
-![OnWillAttachIME](figures/richEditorOnWillAttachIME.gif)
+

@@ -51,6 +51,8 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 
 Creates a UIPickerComponent container. The selected item is determined by the value of the selectedIndex attribute in the options parameter.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -64,6 +66,8 @@ Creates a UIPickerComponent container. The selected item is determined by the va
 ## UIPickerComponentOptions
 
 Parameters of the UIPickerComponent container.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -82,6 +86,8 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 canLoop(isLoop: Optional\<boolean>)
 
 Sets whether the option list can loop scrolling.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -108,6 +114,8 @@ To enable haptic feedback, you must declare the following permission under **req
 ]
 ```
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -123,6 +131,8 @@ To enable haptic feedback, you must declare the following permission under **req
 selectionIndicator(style: Optional\<PickerIndicatorStyle>)
 
 Sets the style of the selected item indicator.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -150,6 +160,8 @@ Triggered when the selected item changes.
 > 
 > The selected item area can be identified by setting [selectionIndicator](#selectionindicator). If the selected item indicator is set to the background, the background area is the selected item area. If the selected item indicator is set to the divider, the area between the center lines of the upper and lower dividers is the selected item area.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -166,6 +178,8 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 Triggered when the picker scrolling stops. The picker scrolling stops when the sliding animation triggered by an action is complete. If a new sliding animation is triggered before the previous one finishes, it does not count as scrolling stop.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -179,6 +193,8 @@ Triggered when the picker scrolling stops. The picker scrolling stops when the s
 ## PickerIndicatorStyle
 
 Sets parameters of the selected item indicator style.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -198,6 +214,8 @@ Sets parameters of the selected item indicator style.
 
 Enumerates the types of the selected item indicator.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -212,6 +230,8 @@ Enumerates the types of the selected item indicator.
 type OnUIPickerComponentCallback = (selectedIndex: number) => void
 
 Defines the callback types for the [onChange](#onchange) and [onScrollStop](#onscrollstop) events.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -682,7 +702,7 @@ struct UIPickerComponentIndicatorExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo4.gif)
+
 
 ### Example 5: Customizing the Month Picker
 
@@ -734,7 +754,7 @@ struct MonthUIPickerComponentExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo5.gif)
+
 
 ### Example 6: Customizing the Area Picker
 
@@ -852,7 +872,7 @@ struct RegionUIPickerComponentExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo6.gif)
+
 
 ### Example 7: Customizing Option Types
 
@@ -949,7 +969,7 @@ struct UIPickerComponentExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo7.gif)
+
 
 ### Example 8: Customizing the Time Picker
 
@@ -1404,4 +1424,4 @@ struct TimeUIPickerComponentExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo8.gif)
+

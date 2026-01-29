@@ -134,7 +134,7 @@ The default font size on wearable devices is 18 fp.
 
 textAlign(value: TextAlign)
 
-Sets the text alignment mode in the search text box. Currently, the following alignment modes are supported: TextAlign.Start, TextAlign.Center, TextAlign.End, TextAlign.LEFT and TextAlign.RIGHT. **TextAlign.JUSTIFY** behaves the same as **TextAlign.Start**.
+Sets the text alignment mode in the search text box. Currently, the following alignment modes are supported: **TextAlign.Start**, **TextAlign.Center**, and **TextAlign.End**. **TextAlign.JUSTIFY** behaves the same as **TextAlign.Start**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -311,8 +311,6 @@ When setting a custom keyboard, you can bind the [onKeyPreIme](ts-universal-even
 type(value: SearchType)
 
 Sets the text box type.
-
-Different **SearchType** values trigger corresponding keyboard types and enforce input restrictions.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -699,7 +697,7 @@ Sets the auto-capitalization text mode. This API provides the capability, but ac
 
 keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
-Sets the keyboard appearance for the text box. This setting takes effect only after input method adaptation. For details, see [Immersive Mode of the Input Method Application](../../../inputmethod/inputmethod-immersive-mode-guide.md).
+Sets the style of the keyboard pulled up by the input box. If the keyboard style is set to immersive mode, it will blend with the background in a semi‑transparent manner. This API provides only the capability, but the specific implementation depends on the input method application.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -1111,7 +1109,7 @@ IMEClient is valid only during the execution of onWillAttachIME and cannot be ca
 
 ## SearchController
 
-The controller for the **Search** component inherits from [TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase). The APIs involved are as follows: [getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect), [getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount), [getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11), [addText](ts-universal-attributes-text-style.md#addtext15), [deleteText](ts-universal-attributes-text-style.md#deletetext15), [getSelection](ts-universal-attributes-text-style.md#getselection15), [clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)<!--Del-->, system API [getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->, and [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22).
+The controller for the **Search** component inherits from [TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase). The APIs involved are as follows: [getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect), [getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount), [getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11), [addText](ts-universal-attributes-text-style.md#addtext15), [deleteText](ts-universal-attributes-text-style.md#deletetext15), [getSelection](ts-universal-attributes-text-style.md#getselection15), [clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17), [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->, system API [getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->.
 
 ### Objects to Import
 ```ts
@@ -2045,9 +2043,9 @@ struct SearchExample {
 }
 ```
 
-![searchSetTextSelection](figures/searchSetTextSelection.gif)
 
-### Example 18: Handling Text Scrolling Events
+
+### Example 18: Handling Text Scrolling Eventsd
 
 In API version 10 and later versions, this sample uses the [onContentScroll](#oncontentscroll10) event to show how to set the callback for a text scrolling event.
 

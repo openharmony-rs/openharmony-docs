@@ -239,7 +239,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 4. 处理NODE_ON_DRAG_START事件。
 
-   在NODE_ON_DRAG_START事件中，应用可以执行起拖阶段所需的操作，通常涉及处理起拖过程的数据。例如，创建OH_UdmfRecord，将用于拖拽图片所需的数据 imageUri以fileUri类型添加到[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中，接着将OH_UdmfRecord设置到[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)中，最后将OH_UdmfData设置到[DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md)中。
+   在NODE_ON_DRAG_START事件中，应用可以执行起拖阶段所需的操作，通常涉及处理起拖过程的数据。例如，创建[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)，将用于拖拽图片所需的数据imageValue以[OH_UdsFileUri](../reference/apis-arkdata/capi-udmf-oh-udsfileuri.md)类型添加到OH_UdmfRecord中，接着将OH_UdmfRecord设置到[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)中，最后将OH_UdmfData设置到[DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md)中。
 
    <!-- @[drag_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
