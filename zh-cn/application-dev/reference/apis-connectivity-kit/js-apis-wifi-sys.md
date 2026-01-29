@@ -268,7 +268,7 @@ try {
 
 connectToNetwork(networkId: number): boolean
 
-连接到指定网络。
+应用使用该接口连接到热点。
 
 **系统接口：** 此接口为系统接口。
 
