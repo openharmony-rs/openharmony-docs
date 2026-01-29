@@ -1236,6 +1236,10 @@ reportNetConnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): v
 
 向网络管理上报网络处于可用状态。使用callback方式异步回调。
 
+>**说明：**
+>
+>该接口用于浏览器连接portal网络，网络认证成功后，向网络管理上报网络连接成功，网络管理会触发网络探测，更新网络状态。
+
 **需要权限**：ohos.permission.GET_NETWORK_INFO 和 ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
