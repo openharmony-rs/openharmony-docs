@@ -3923,7 +3923,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNo
 
 Converts the coordinates of a point from the coordinate system of a specified node to that of the current window. The coordinate system of a node considers the transformation of the node itself. For example, if node A is translated leftward by 100, the coordinates of the points in its coordinate system will also be translated leftward by 100.
 
-![](C:/Users/w00830455/Downloads/arkui-ts/figures/ConvertToWindow.png)
+![](./arkui-ts/figures/ConvertToWindow.png)
 
 As shown in the preceding figure, the coordinates (x0, y0) in the coordinate system of the specified node are converted to the coordinates (x1, y1) in the coordinate system of the window.
 
@@ -3954,7 +3954,7 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 
 Converts the coordinates of a point from the current window coordinate system to the coordinate system of the target node. The node coordinate system considers the transformation of the node itself. For example, if node A is translated 100 pixels to the left, the coordinates of the point in the coordinate system of node A are also translated 100 pixels to the left.
 
-![](C:/Users/w00830455/Downloads/arkui-ts/figures/ConvertFromWindow.png)
+![](./arkui-ts/figures/ConvertFromWindow.png)
 
 As shown in the preceding figure, the coordinates (x1, y1) in the window coordinate system are converted to the coordinates (x0, y0) in the coordinate system of the target node.
 
