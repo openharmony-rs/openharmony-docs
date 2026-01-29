@@ -23,12 +23,16 @@ typedef struct ImageEffect_FilterDelegate {...} ImageEffect_FilterNames
 ## 汇总
 
 ### 成员变量
-
+#### c++
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t size = 0 | 滤镜名个数。 |
 | const char** nameList = nullptr | 滤镜名列表。 |
-
+#### c
+| 名称 | 描述 |
+| -- | -- |
+| uint32_t size| 滤镜名个数。 |
+| const char** nameList | 滤镜名列表。 |
 
 ### 成员函数
 
