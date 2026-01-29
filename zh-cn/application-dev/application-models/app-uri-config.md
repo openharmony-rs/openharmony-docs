@@ -127,42 +127,24 @@
 
 ### 指定意图跳转豁免系统跳转弹框以授权登录场景为例景
 
-<!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
 
-``` JSON5
-"uris": [
-  {
-    "scheme": "https",
-    "host": "developer.huawei.com",
-    "path": "consumer",
-    "linkFeature": "Login"
-  }
-]
-```
+
 
 1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，登录场景LinkFeature固定为Login。
 
 2. 设置scheme、host、port、path/pathStartWith属性，与want中uri相匹配，以便区分不同功能，linkFeature设置为Login。
 
-    ```json
-    {
-        "abilities": [
-            {
-                 "skills": [
-                    {
-                      "uris": [
-                        {
-                          "scheme": "https",
-                          "host": "developer.huawei.com",
-                          "path": "consumer",
-                          "linkFeature": "Login"
-                        }
-                      ]
-                    }
-                  ]
-            }
-        ]
-    }
+    <!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+
+    ``` JSON5
+    "uris": [
+      {
+        "scheme": "https",
+        "host": "developer.huawei.com",
+        "path": "consumer",
+        "linkFeature": "Login"
+      }
+    ]
     ```
 
 3. 解析参数并做对应处理。
