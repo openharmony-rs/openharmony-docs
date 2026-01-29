@@ -471,7 +471,7 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 >**说明：**
 >
-> 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId=0的NetHandle对象，参考：
+> 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId=0的NetHandle对象，参考以下示例。
 
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
