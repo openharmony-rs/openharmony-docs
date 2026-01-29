@@ -406,22 +406,22 @@ struct WebComponent {
 <div id="content"></div>
 
 <script>
-	function loadContent() {
-	  var hash = window.location.hash;
-	  var contentDiv = document.getElementById('content');
+  function loadContent() {
+    var hash = window.location.hash;
+    var contentDiv = document.getElementById('content');
 
-	  if (hash === '#home') {
-		contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
-	  } else {
-		contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
-	  }
-	}
+    if (hash === '#home') {
+      contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+    } else {
+      contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+    }
+  }
 
-	// 加载界面
-	window.addEventListener('load', loadContent);
+  // 加载界面
+  window.addEventListener('load', loadContent);
 
-	// 当hash变化时，更新界面
-	window.addEventListener('hashchange', loadContent);
+  // 当hash变化时，更新界面
+  window.addEventListener('hashchange', loadContent);
 </script>
 </body>
 </html>
@@ -850,7 +850,8 @@ struct WebComponent {
 onActive(): void
 
 调用此接口通知Web组件进入前台激活状态。
-<br />激活状态是应用与用户互动的状态。应用会保持这种状态，直到发生某些事件（例如收到来电或设备屏幕关闭）时将焦点从应用移开。
+
+激活状态是应用与用户互动的状态。应用会保持这种状态，直到发生某些事件（例如收到来电或设备屏幕关闭）时将焦点从应用移开。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1138,7 +1139,8 @@ struct WebComponent {
 registerJavaScriptProxy(jsObject: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
 
 registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的交互能力。注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。
-<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。
+
+示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。
 
 > **说明：**
 >
@@ -2514,7 +2516,7 @@ struct WebComponent {
 
 <!--code_no_check-->
 ```js
-//xxx.js
+// xxx.js
 var h5Port;
 var output = document.querySelector('.output');
 window.addEventListener('message', function (event) {
@@ -3254,7 +3256,7 @@ struct WebComponent {
         Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3342,7 +3344,7 @@ struct WebComponent {
       Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -4309,6 +4311,7 @@ struct WebComponent {
 ```
 
 2.修改EntryAbility.ets。
+
 获取应用缓存文件路径。
 ```ts
 // xxx.ets
@@ -8060,7 +8063,7 @@ struct WebComponent {
               }
               if (result) {
                 console.info(`return value is:${result}`);
-                //开发者可以根据需要处理返回结果
+                // 开发者可以根据需要处理返回结果
               }
             });
           } catch (error) {
@@ -9435,7 +9438,7 @@ struct WebComponent {
   async aboutToAppear() {
     this.controller.waitForAttached(1000).then((state: webview.ControllerAttachState) => {
       if (state == webview.ControllerAttachState.ATTACHED) {
-        //绑定完成或者超时都会触发回调
+        // 绑定完成或者超时都会触发回调
         console.info('Controller is attached.');
       }
     })
