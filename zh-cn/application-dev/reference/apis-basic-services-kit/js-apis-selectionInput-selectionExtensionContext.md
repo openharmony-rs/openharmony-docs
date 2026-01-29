@@ -78,8 +78,7 @@ startAbility(want: Want): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import SelectionExtensionContext from '@ohos.selectionInput.SelectionExtensionContext';
+import SelectionExtensionAbility from '@ohos.selectionInput.SelectionExtensionAbility';
 import rpc from '@ohos.rpc';
 import { Want } from '@kit.AbilityKit';
 
@@ -107,13 +106,11 @@ class SelectionExtAbility extends SelectionExtensionAbility {
       };
       this.context.startAbility(wantAbility).then(() => {
         console.info(`startAbility success`);
-      }).catch((err: BusinessError) => {
-        let error = err as BusinessError;
-        console.error(`startAbility error: ${error.code} ${error.message}`);
+      }).catch((err) => {
+        console.error(`startAbility error: ${err.code} ${err.message}`);
       })
     } catch (err) {
-      let error = err as BusinessError;
-      console.error(`startAbility error: ${error.code} ${error.message}`);
+      console.error(`startAbility error: ${err.code} ${err.message}`);
     }
     return new SelectionAbilityStub('remote');
   }
