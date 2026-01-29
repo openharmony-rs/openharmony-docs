@@ -9,7 +9,7 @@
 
 ## Overview
 
-This section describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to application freezing events. For details about how to use the APIs (such as parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+This topic describes how to subscribe to application freeze events by using the ArkTS APIs provided by HiAppEvent. For details about how to use the APIs (such as parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 ## Available APIs
 
@@ -22,7 +22,7 @@ This section describes how to use the ArkTS APIs provided by HiAppEvent to subsc
 
 ### Adding an Event Watcher
 
-The following describes how to subscribe to application freezing events generated when a user taps a button but the application does not respond.
+The following describes how to subscribe to the application freeze event triggered by button clicking.
 
 1. Create an ArkTS application project. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, import the dependent modules. The sample code is as follows:
 
@@ -38,7 +38,7 @@ The following describes how to subscribe to application freezing events generate
     let params: Record<string, hiAppEvent.ParamType> = {
       "test_data": 100,
     };
-    // Set custom parameters for the app screen freezing event.
+    // Set custom parameters for the application freeze event.
     hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_FREEZE).then(() => {
       hilog.info(0x0000, 'testTag', `HiAppEvent success to set event param`);
     }).catch((err: BusinessError) => {
@@ -52,7 +52,7 @@ The following describes how to subscribe to application freezing events generate
      hiAppEvent.addWatcher({
       // Set the watcher name. The system identifies different watchers based on their names.
       name: "watcher",
-      // You can subscribe to the system events you are interested in. In this example, the app screen freezing event is subscribed to.
+      // You can subscribe to system events that you are interested in. Here, the application freeze event is subscribed to.
       appEventFilters: [
         {
           domain: hiAppEvent.domain.OS,
@@ -70,38 +70,38 @@ The following describes how to subscribe to application freezing events generate
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
-            // Obtain the timestamp when the app screen freezing event occurs.
+            // Obtain the timestamp when the application freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
-            // Obtain the foreground/background status of the app when the app screen freezing event occurs.
+            // Obtain the foreground/background status of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
-            // Obtain the version information of the app when the app screen freezing event occurs.
+            // Obtain the version information of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
-            // Obtain the package name of the app when the app screen freezing event occurs.
+            // Obtain the bundle name of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
-            // Obtain the process name of the app when the app screen freezing event occurs.
+            // Obtain the process name of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
-            // Obtain the process ID of the app when the screen freezing event occurs.
+            // Obtain the process ID of the application when it freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
-            // Obtain the exception type and cause of the screen freezing event.
+            // Obtain the exception type and cause of the application freeze event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
-            // Obtain the log information when the screen freezing event occurs.
+            // Obtain the log information when the application freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
-            // Obtain the messages that are not processed by the main thread when the screen freezing event occurs.
+            // Obtain the messages that are not yet processed by the main thread when the application freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler.size=${eventInfo.params['event_handler'].length}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_3s=${eventInfo.params['event_handler_size_3s']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_6s=${eventInfo.params['event_handler_size_6s']}`);
-            // Obtain the binder call information when the app screen freezing event occurs.
+            // Obtain the synchronous binder call information when the application freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder.size=${eventInfo.params['peer_binder'].length}`);
-            // Obtain the full thread call stack when the app screen freezing event occurs.
+            // Obtain the full thread call stack when the application freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.threads.size=${eventInfo.params['threads'].length}`);
-            // Obtain the memory information when the app screen freezing event occurs.
+            // Obtain the memory information when the application freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
-            // Obtain the fault log file when the app screen freezing event occurs.
+            // Obtain the fault log file when the application freezes.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
-            // Obtain the custom data test_data of the app screen freezing event.
+            // Obtain the custom test_data of the application freeze event.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.test_data=${eventInfo.params['test_data']}`);
           }
         }
@@ -109,11 +109,11 @@ The following describes how to subscribe to application freezing events generate
     });
    ```
 
-4. Edit the entry > src > main > ets > pages > Index.ets file in the project, add a button, and construct an application unresponsive scenario in the onClick function to trigger the application screen freezing event. The sample code is as follows:
+4. In the **entry/src/main/ets/pages/index.ets** file, add a button and construct an application freeze scenario for triggering an application freeze event in **onClick()**. The sample code is as follows:
 
    ```ts
     Button("appFreeze").onClick(()=>{
-      //Construct a freeze scenario in the button click function to trigger the application screen freezing event.
+      // Construct a freeze scenario in onClick() to trigger an application freeze event.
       setTimeout(() => {
         let t = Date.now();
         while (Date.now() - t <= 15000) {}
@@ -121,9 +121,9 @@ The following describes how to subscribe to application freezing events generate
     })
    ```
 
-5. Click the run button on the DevEco Studio page to run the application project. Then, click appFreeze on the application page to trigger an application screen freezing event.
+5. In DevEco Studio, click the **Run** button to run the project. Then, click the **appfreeze** button to trigger an application freeze event.
 
-### Check whether the observer subscribes to the application screen freezing event.
+### Verifying the Subscription
 
 1. The application exits due to the application freeze event. After restarting the application, you can view the following event information in the **Log** window.
 

@@ -10,7 +10,7 @@ Web组件打印html页面时可通过W3C标准协议接口和应用接口两种�
 
 使用打印功能前，请在module.json5中配置相关权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-  ```
+  ```json
   "requestPermissions":[
       {
         "name" : "ohos.permission.PRINT"

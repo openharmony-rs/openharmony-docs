@@ -8,7 +8,7 @@
 
 ## Overview
 
-Extended error information.
+Defines extended error information.
 
 **Since**: 11
 
@@ -22,7 +22,7 @@ Extended error information.
 
 | Name| Description|
 | -- | -- |
-| const char* errorMessage | UTF-8-encoded string, which contains exception information.|
-| void* engineReserved | Detailed error message specific to a VM. This function is not implemented for any VM yet.|
-| uint32_t engineErrorCode | Error code specific to a VM. This function is not implemented for any VM yet.|
+| const char* errorMessage | UTF-8-encoded string, which contains error messages.|
+| void* engineReserved | Detailed error message specific to a VM. This feature is not implemented for any VM yet.|
+| uint32_t engineErrorCode | Error code specific to a VM. This feature is not implemented for any VM yet.|
 | JSVM_Status errorCode | JSVM-API status code derived from the last error.|

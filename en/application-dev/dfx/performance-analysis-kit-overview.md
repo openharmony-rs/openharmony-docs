@@ -24,9 +24,9 @@ Performance Analysis Kit provides a collection of capabilities for improving app
 
 - [Fault detection](fault-detection-overview.md): provides the capability of detecting application stability faults, including the crash, address sanitizer, application freeze, resource leak, and task timeout events.
 
-- Power consumption detection: provides the capability of detecting abnormal application power consumption, such as high CPU load.
+- [Power consumption detection](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/power-detection): provides the capability of detecting abnormal application power consumption, such as high CPU load.
 
-- Performance detection: provides the capability of detecting application performance exceptions, such as time-consuming application launches and scrolling frame loss.
+- [Performance detection](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/perf-detection): provides the capability of detecting application performance exceptions, such as time-consuming application launches and scrolling frame loss.
 
 - [HiLog](hilog-guidelines-arkts.md): provides the capability of recording and obtaining logs.
 
@@ -51,11 +51,11 @@ Performance Analysis Kit provides a collection of capabilities for improving app
 
 - Provides [HiDebug](hidebug-guidelines.md), [HiAppEvent](hiappevent-intro.md) and [HiLog](hilog-guidelines-arkts.md) APIs to build an Application Performance Management (APM) SDK on the device for interconnection with the APM developed by vendors.
 
-- Provides the functionalities of customizing [application events](event-subscription-overview.md#application-events) and subscribing to system events so that you can quickly collect events required for O&M.
+- Provides [HiAppEvent system events](event-subscription-overview.md#system-events) and [application events](event-subscription-overview.md#application-events) for subscribing to events (such as crash and application freeze events) triggered during application running, and quickly records and collects event information required for O&M.
 
 **Powerful Exception Detection and Handling Mechanism**
 
-- Provides a comprehensive application quality detection mechanism, including [fault detection](fault-detection-overview.md), performance detection and power consumption detection.
+- Provides a comprehensive application quality detection mechanism, including [fault detection](fault-detection-overview.md), [performance detection](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/perf-detection) and [power consumption detection](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/power-detection).
 
 - Provides simplified, standard, and complete exception logs to accurately record exception propagation paths.
 

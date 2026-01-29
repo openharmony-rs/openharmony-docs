@@ -74,7 +74,7 @@
 
 1. 获取ECC公钥或私钥二进制数据，封装成DataBlob对象。
 
-   公钥和私钥可只传入其中一个，此处示例以传入公钥、私钥为例。
+   公钥和私钥可以只传入其中一个，此处示例以传入公钥和私钥为例。
 
 2. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
 
@@ -165,7 +165,7 @@
 
 1. 获取SM2公钥或私钥的二进制数据，封装成DataBlob对象。
 
-   公钥和私钥可只传入其中一个，示例以传入公钥、私钥为例。
+   公钥和私钥可以只传入其中一个，示例以传入公钥和私钥为例。
 
 2. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)，指定字符串参数'SM2_256'，创建密钥算法为SM2、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
 

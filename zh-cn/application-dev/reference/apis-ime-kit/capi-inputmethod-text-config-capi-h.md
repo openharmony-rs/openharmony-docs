@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | 输入框配置。输入框的配置信息。 |
+| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | 输入框的配置信息。 |
 
 ### 函数
 
@@ -160,7 +160,7 @@ InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | 指向即将被设置值的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例的指针。 |
-| bool supported | 表示输入框是否支持预上屏。 |
+| bool supported | 表示输入框是否支持预上屏。true - 表示支持预上屏。false - 表示不支持预上屏。 |
 
 **返回：**
 
@@ -345,7 +345,7 @@ InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfi
 | 参数项 | 描述 |
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | 指向即将被获取值的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例的指针。 |
-| bool *supported | 表示输入框是否支持预上屏。 |
+| bool *supported | 表示输入框是否支持预上屏。true - 表示支持预上屏。false - 表示不支持预上屏。 |
 
 **返回：**
 

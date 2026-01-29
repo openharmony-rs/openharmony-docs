@@ -1,4 +1,4 @@
-# Requesting Efficiency Resources (ArkTS) (for Privileged System Applications Only)
+# Efficiency Resource Request (ArkTS) (for Privileged System Applications Only)
 
 ## Overview
 

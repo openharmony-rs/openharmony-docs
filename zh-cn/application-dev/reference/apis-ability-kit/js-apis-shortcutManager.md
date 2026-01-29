@@ -22,7 +22,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
 
-设置当前应用指定的快捷方式是否显示，使用Promise异步回调。
+设置当前应用指定的快捷方式是否显示。使用Promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -66,7 +66,7 @@ shortcutManager.setShortcutVisibleForSelf("shortcut_id", false)
 
 getAllShortcutInfoForSelf(): Promise\<Array\<ShortcutInfo>>
 
-查询当前应用[配置文件](../../quick-start/module-configuration-file.md#shortcuts标签)中定义的所有快捷方式信息，使用Promise异步回调。
+查询当前应用[配置文件](../../quick-start/module-configuration-file.md#shortcuts标签)中定义的所有快捷方式信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
@@ -86,8 +86,8 @@ shortcutManager.getAllShortcutInfoForSelf()
   .then((data: shortcutManager.ShortcutInfo[]) => {
     console.info('getAllShortcutInfoForSelf shortcut data is' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(`getAllShortcutInfoForSelf errData is errCode:${err.code}  message:${err.message}`);
-  });
+  console.error(`getAllShortcutInfoForSelf errData is errCode:${err.code}  message:${err.message}`);
+});
 ```
 ## ShortcutInfo
 

@@ -62,62 +62,62 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
 
     ```ts
 	@Entry
-	@Component
-	struct Index {
-	@State hideAbility: string = 'hideAbility'
+    @Component
+    struct Index {
+      @State hideAbility: string = 'hideAbility'
 
-		build() {
-			Row() {
-				Column() {
-					Text(this.hideAbility)
-						.fontSize(30)
-						.fontWeight(FontWeight.Bold)
-						.onClick(() => {
-							let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-							let wantParam: Record<string, Object> = {
-								'sceneType': 1,
-								'destinationLatitude': 32.060844,
-								'destinationLongitude': 118.78315,
-								'destinationName': 'xx市xx路xx号',
-								'destinationPoiIds': {
-									1: '1001', // key为1代表花瓣地图，value需为花瓣地图POI
-									2: '2002', // key为2代表高德地图，value需为高德地图POI
-									3: '3003'  // key为3代表百度地图，value需为百度地图POI
-								} as Record<number, string>,
-								'originName': 'xx市xx公园',
-								'originLatitude': 31.060844,
-								'originLongitude': 120.78315,
-								'originPoiIds': {
-									1: '1101', // key为1代表花瓣地图，value需为花瓣地图POI
-									2: '2202', // key为2代表高德地图，value需为高德地图POI
-									3: '3303'  // key为3代表百度地图，value需为百度地图POI
-								} as Record<number, string>,
-								'vehicleType': 0
-							};
-							let abilityStartCallback: common.AbilityStartCallback = {
-								onError: (code: number, name: string, message: string) => {
-									console.error(`onError code ${code} name: ${name} message: ${message}`);
-								},
-								onResult: (result) => {
-									console.info(`onResult result: ${JSON.stringify(result)}`);
-								}
-							}
+      build() {
+        Row() {
+          Column() {
+            Text(this.hideAbility)
+              .fontSize(30)
+              .fontWeight(FontWeight.Bold)
+              .onClick(() => {
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                let wantParam: Record<string, Object> = {
+                  'sceneType': 1,
+                  'destinationLatitude': 32.060844,
+                  'destinationLongitude': 118.78315,
+                  'destinationName': 'xx市xx路xx号',
+                  'destinationPoiIds': {
+                    1: '1001', // key为1代表花瓣地图，value需为花瓣地图POI
+                    2: '2002', // key为2代表高德地图，value需为高德地图POI
+                    3: '3003'  // key为3代表百度地图，value需为百度地图POI
+                  } as Record<number, string>,
+                  'originName': 'xx市xx公园',
+                  'originLatitude': 31.060844,
+                  'originLongitude': 120.78315,
+                  'originPoiIds': {
+                    1: '1101', // key为1代表花瓣地图，value需为花瓣地图POI
+                    2: '2202', // key为2代表高德地图，value需为高德地图POI
+                    3: '3303'  // key为3代表百度地图，value需为百度地图POI
+                  } as Record<number, string>,
+                  'vehicleType': 0
+                };
+                let abilityStartCallback: common.AbilityStartCallback = {
+                  onError: (code: number, name: string, message: string) => {
+                    console.error(`onError code ${code} name: ${name} message: ${message}`);
+                  },
+                  onResult: (result) => {
+                    console.info(`onResult result: ${JSON.stringify(result)}`);
+                  }
+                }
 
-							context.startAbilityByType("navigation", wantParam, abilityStartCallback,
-								(err) => {
-									if (err) {
-										console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
-									} else {
-										console.info(`success`);
-									}
-								});
-						});
-				}
-				.width('100%')
-			}
-			.height('100%')
-		}
-	}
+                context.startAbilityByType("navigation", wantParam, abilityStartCallback,
+                  (err) => {
+                    if (err) {
+                      console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
+                    } else {
+                      console.info(`success`);
+                    }
+                  });
+              });
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
     ```
     效果示例图：
 
@@ -129,8 +129,8 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
     1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，取值范围如下：
         | 取值           | 含义                         |
         | -------------- | ---------------------------- |
-        | Navigation     | 声明应用支持导航功能 		|
-        | RoutePlan      | 声明应用支持路线规划功能		|
+        | Navigation     | 声明应用支持导航功能        |
+        | RoutePlan      | 声明应用支持路线规划功能     |
         | PlaceSearch    | 声明应用支持位置搜索功能     |
     2. 设置scheme、host、port、path/pathStartWith属性，与Want中URI相匹配，以便区分不同功能。
     ```json

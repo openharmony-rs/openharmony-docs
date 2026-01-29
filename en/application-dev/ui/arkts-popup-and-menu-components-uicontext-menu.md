@@ -1,10 +1,16 @@
-# Global Menus Independent of UI Components (openMenu)
+# Global Menu Independent of UI Components (openMenu)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Armstrong15-->
+<!--Designer: @zhanghaibo0-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The [Menu](arkts-popup-and-menu-components-menu.md) component is a great option for creating menus, but it relies on a bound UI component to work. Since API version 18, however, the global API [openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18) offers a more flexible solution. This API can be used directly or encapsulated in scenarios where no bound UI components are available, making it ideal for use cases such as event callbacks or when integrating with external systems.
 
 ## Displaying a Menu
 
-To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18) API. Here's a basic example:
+To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18). The following is a basic example:
    
    ```ts
    promptAction.openMenu(contentNode, { id: targetId }, {
@@ -14,7 +20,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
        console.info('openMenu success');
      })
      .catch((err: BusinessError) => {
-       console.info('openMenu error: ' + err.code + ' ' + err.message);
+       console.error('openMenu error: ' + err.code + ' ' + err.message);
      })
    ```
 
@@ -31,7 +37,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
    ```ts
    @Builder
    export function buildText(params: Params) {
-     Menu({
+     Popup({
        // Set the icon for the menu.
        icon: {
          image: $r('app.media.app_icon'),
@@ -39,25 +45,25 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
          height: 32,
          fillColor: Color.White,
          borderRadius: 10
-       } as MenuIconOptions,
+       } as PopupIconOptions,
        // Set the text content.
        title: {
-         text: `This is a Menu title 1`,
+         text: `This is a Popup title 1`,
          fontSize: 20,
          fontColor: Color.Black,
          fontWeight: FontWeight.Normal
-       } as MenuTextOptions,
+       } as PopupTextOptions,
        // Set the text content.
        message: {
-         text: `This is a Menu message 1`,
+         text: `This is a Popup message 1`,
          fontSize: 15,
          fontColor: Color.Black
-       } as MenuTextOptions,
+       } as PopupTextOptions,
        // Set the buttons.
        buttons: [{
          text: 'confirm',
          action: () => {
-           console.info('confirm button click')
+           console.info('confirm button click');
          },
          fontSize: 15,
          fontColor: Color.Black,
@@ -65,15 +71,15 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
          {
            text: 'cancel',
            action: () => {
-             console.info('cancel button click')
+             console.info('cancel button click');
            },
            fontSize: 15,
            fontColor: Color.Black
-         },] as [MenuButtonOptions?, MenuButtonOptions?]
+         },] as [PopupButtonOptions?, PopupButtonOptions?]
      })
    }
    
-   let contentNode: ComponentContent<Object> = new ComponentContent(uiContext, wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
+   private contentNode: ComponentContent<Object> = new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
    ```
 
 
@@ -96,7 +102,7 @@ To display a menu, call the [openMenu](../reference/apis-arkui/arkts-apis-uicont
 
 ## Updating the Menu Style
 
-To update the menu style, use the [updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18) API. You can update the style fully or incrementally. However, certain properties, including **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, and **aboutToDisappear**, cannot be updated.
+To update the menu style, use the [updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18) API. You can update the style fully or incrementally. However, the following properties cannot be updated: **showInSubWindow**, **preview**, **previewAnimationOptions**, **transition**, **onAppear**, **aboutToAppear**, **onDisappear**, **aboutToDisappear**, **onWillAppear**, **onDidAppear**, **onWillDisappear**, and **onDidDisappear**.
    
    ```ts
    promptAction.updateMenu(contentNode, {
@@ -106,7 +112,7 @@ To update the menu style, use the [updateMenu](../reference/apis-arkui/arkts-api
        console.info('updateMenu success');
      })
      .catch((err: BusinessError) => {
-       console.info('updateMenu error: ' + err.code + ' ' + err.message);
+       console.error('updateMenu error: ' + err.code + ' ' + err.message);
      })
    ```
 
@@ -117,10 +123,10 @@ To close the menu, call the [closeMenu](../reference/apis-arkui/arkts-apis-uicon
    ```ts
    promptAction.closeMenu(contentNode)
      .then(() => {
-       console.info('openMenu success');
+       console.info('closeMenu success');
      })
     .catch((err: BusinessError) => {
-      console.info('openMenu error: ' + err.code + ' ' + err.message);
+      console.error('closeMenu error: ' + err.code + ' ' + err.message);
     })
    ```
 

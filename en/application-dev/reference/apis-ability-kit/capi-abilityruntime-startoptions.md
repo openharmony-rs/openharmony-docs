@@ -1,11 +1,5 @@
 # AbilityRuntime_StartOptions
 
-<!--Kit: Ability Kit-->
-<!--Subsystem: Ability-->
-<!--Owner: @zhu-feimo-->
-<!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
 
 ## Overview
 

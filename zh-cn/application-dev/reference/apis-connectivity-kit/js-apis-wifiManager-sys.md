@@ -1577,17 +1577,17 @@ off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
 **示例：**
 ```ts
-import { wifi } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
 let recvStreamChangeFunc = (result:number) => {
     console.info("Receive stream change event: " + result);
 }
 
 // Register event
-wifi.on("streamChange", recvStreamChangeFunc);
+wifiManager.on("streamChange", recvStreamChangeFunc);
 
 // Unregister event
-wifi.off("streamChange", recvStreamChangeFunc);
+wifiManager.off("streamChange", recvStreamChangeFunc);
 
 ```
 ## wifiManager.on('deviceConfigChange')<sup>9+</sup>

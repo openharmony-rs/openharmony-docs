@@ -1,10 +1,11 @@
 # camera_input.h
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -62,7 +63,7 @@ Defines the callback defined in the [CameraInput_Callbacks](capi-oh-camera-camer
 | Name| Description|
 | -- | -- |
 | const [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Pointer to the target Camera_Input instance.|
-|  [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | Error code reported during camera input and defined in the Camera_ErrorCode struct.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | Error code reported during camera input and defined in the Camera_ErrorCode struct.|
 
 **See also**
 

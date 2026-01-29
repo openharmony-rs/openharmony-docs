@@ -8,7 +8,7 @@
 
 ## Overview
 
-Provides pointers and data of native callback functions provided by users. These functions are exposed to JavaScript through JSVM APIs.
+Defines the pointer to the data of the native callbacks provided by the user. These functions are exposed to JavaScript via JSVM-API.
 
 **Since**: 11
 
@@ -22,14 +22,14 @@ Provides pointers and data of native callback functions provided by users. These
 
 | Name| Description|
 | -- | -- |
-| void* data | Data of the native callback function provided by users.|
+| void* data | Data of the native callbacks provided by the user.|
 
 
 ### Member Functions
 
 | Name| Description|
 | -- | -- |
-| [JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)](#callback) | Pointer to the native callback function provided by users.|
+| [JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)](#callback) | Defines a pointer to the native callback provided by users.|
 
 ## Member Function Description
 
@@ -41,4 +41,4 @@ JSVM_Value(JSVM_CDECL* callback)(JSVM_Env env,JSVM_CallbackInfo info)
 
 **Description**
 
-Pointer to the native callback function provided by users.
+Defines a pointer to the native callback provided by users.

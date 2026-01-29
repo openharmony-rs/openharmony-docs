@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
@@ -120,7 +120,7 @@ Canvas(this.context)
 
 在Canvas组件生命周期接口onReady()调用之后，开发者可以直接使用canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义Path2d对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
 
-- 通过CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象直接调用相关API进行绘制。
+- 通过CanvasRenderingContext2D对象直接调用相关API进行绘制。
 
   ```ts
   Canvas(this.context)
@@ -253,7 +253,7 @@ OffscreenCanvasRenderingContext2D对象和CanvasRenderingContext2D对象提供�
 
 - 使用自定义字体绘制文本。
 
-  从API version 20开始，可以通过[getGlobalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglobalinstance)获取应用全局字体管理器的实例，然后使用[loadfontsync](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口从设置的路径中加载自定义字体并通过[font](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#font)（设置文本绘制中的字体样式）接口设置文本绘制中的字体样式，接着通过[fillText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#filltext)（绘制填充类文本）、[strokeText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroketext)（绘制描边类文本）等接口进行文本绘制。
+  从API version 20开始，可以通过[getGlobalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglobalinstance)获取应用全局字体管理器的实例，然后使用[loadFontSync](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync)接口从设置的路径中加载自定义字体并通过[font](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#font)（设置文本绘制中的字体样式）接口设置文本绘制中的字体样式，接着通过[fillText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#filltext)（绘制填充类文本）、[strokeText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#stroketext)（绘制描边类文本）等接口进行文本绘制。
 
   ```ts
   import { text } from '@kit.ArkGraphics2D';
@@ -391,6 +391,143 @@ struct CanvasContentUpdate {
 ```
 
 ![data_drive_update](figures/data_drive_update.gif)
+
+## 控制在画布组件不可见时不进行绘制
+
+可以使用以下两种方式监听Canvas组件可见性，避免不可见时仍在无效绘制。
+
+- 从API version 13开始，使用[setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange)接口监听Canvas组件可见性。
+
+  ```ts
+  import { ColorMetrics } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Page {
+    private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
+    private timerId: number = -1;
+
+    drawRandomCircle(): void {
+      let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
+      let radius: number = Math.random() * 20 + 10
+      let color: ColorMetrics =
+        ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
+          Math.floor(Math.random() * 255))
+
+      // 清空原先内容与画布状态
+      this.canvasContext.reset()
+
+      // 开始绘制
+      this.canvasContext.fillStyle = color.color
+      let path: Path2D = new Path2D()
+      path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
+      this.canvasContext.fill(path)
+    }
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.canvasContext)
+          .width(300)
+          .height(300)
+          .onReady(() => {
+            let frameNode = this.canvasContext.canvas;
+            frameNode.commonEvent.setOnVisibleAreaApproximateChange({ ratios: [0.0] },
+              (isVisible: boolean, currentRatio: number) => {
+              // canvas不可见
+              if (!isVisible && currentRatio <= 0) {
+                clearInterval(this.timerId)
+                this.timerId = -2
+              }
+              // canvas可见
+              if (isVisible) {
+                if (this.timerId == -2) {
+                  this.timerId = setInterval(() => {
+                    this.drawRandomCircle()
+                  }, 500)
+                }
+              }
+            })
+          })
+        Button("draw sth")
+          .onClick(() => {
+            if (this.timerId < 0) {
+              this.timerId = setInterval(() => {
+                this.drawRandomCircle()
+              }, 500)
+            }
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+  ![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
+
+- 从API version 17开始，使用[onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17)接口监听Canvas组件可见性。
+
+  ```ts
+  import { ColorMetrics } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct Page {
+    private canvasContext: CanvasRenderingContext2D = new CanvasRenderingContext2D()
+    private timerId: number = -1;
+
+    drawRandomCircle(): void {
+      let center: [number, number] = [Math.random() * 200 + 50, Math.random() * 200 + 50]
+      let radius: number = Math.random() * 20 + 10
+      let color: ColorMetrics =
+        ColorMetrics.rgba(Math.floor(Math.random() * 255), Math.floor(Math.random() * 255),
+          Math.floor(Math.random() * 255))
+
+      // 清空原先内容与画布状态
+      this.canvasContext.reset()
+
+      // 开始绘制
+      this.canvasContext.fillStyle = color.color
+      let path: Path2D = new Path2D()
+      path.ellipse(center[0], center[1], radius, radius, 0, 0, Math.PI * 2)
+      this.canvasContext.fill(path)
+    }
+
+    build() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+        Canvas(this.canvasContext)
+          .width(300)
+          .height(300)
+          .onVisibleAreaApproximateChange({ ratios: [0.0] },
+              (isVisible: boolean, currentRatio: number) => {
+                // canvas不可见
+                if (!isVisible && currentRatio <= 0) {
+                  clearInterval(this.timerId)
+                  this.timerId = -2
+                }
+                // canvas可见
+                if (isVisible) {
+                  if (this.timerId == -2) {
+                    this.timerId = setInterval(() => {
+                      this.drawRandomCircle()
+                    }, 500)
+                  }
+                }
+              })
+        Button("draw sth")
+          .onClick(() => {
+            if (this.timerId < 0) {
+              this.timerId = setInterval(() => {
+                this.drawRandomCircle()
+              }, 500)
+            }
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+  ![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
 
 ## 场景示例
 

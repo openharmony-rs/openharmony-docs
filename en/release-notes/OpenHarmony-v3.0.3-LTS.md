@@ -27,7 +27,7 @@ OpenHarmony 3.0.3 LTS is a maintenance version of OpenHarmony 3.0 LTS. This vers
 
 
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.3-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.3-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -36,7 +36,7 @@ repo forall -c 'git lfs pull'
 
 
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.3-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.3-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -72,7 +72,7 @@ This version does not involve API updates.
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG_DevBoard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 
 ## Resolved Issues
@@ -81,14 +81,14 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description|
 | -------- | -------- |
-| [I4TUSX](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4TUSX) | When the system camera is used to take a photo in the Hi3516D V300 development board running on a mini-system device, the two edges of the image are truncated.|
-| [I4TYOP](https://gitee.com/openharmony/drivers_peripheral/issues/I4TYOP) | After a USB flash drive is inserted into the Hi3516D V300 development board running on a mini-system device, DMA times out and the USB flash drive is unavailable.|
-| [I4SM0J](https://gitee.com/openharmony/third_party_harfbuzz/issues/I4SM0J) | The **third_party_harfbuzz** repository uses the CC BY-NC-SA-3.0 license, which restricts the commercial use of the content in the repository.|
-| [I4WPQW](https://gitee.com/openharmony/device_hisilicon_hardware/issues/I4WPQW) | The **libdisplay_layer.so** binary file is not updated in the **device_hisilicon_hardware** repository.|
-| [I4WIVF](https://gitee.com/openharmony/third_party_boost/issues/I4WIVF) | Some files in the **third_party_boost** repository are incompatible with open-source protocols.|
+| [I4TUSX](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4TUSX) | When the system camera is used to take a photo in the Hi3516D V300 development board running on a mini-system device, the two edges of the image are truncated.|
+| [I4TYOP](https://gitcode.com/openharmony/drivers_peripheral/issues/I4TYOP) | After a USB flash drive is inserted into the Hi3516D V300 development board running on a mini-system device, DMA times out and the USB flash drive is unavailable.|
+| [I4SM0J](https://gitcode.com/openharmony/third_party_harfbuzz/issues/I4SM0J) | The **third_party_harfbuzz** repository uses the CC BY-NC-SA-3.0 license, which restricts the commercial use of the content in the repository.|
+| [I4WPQW](https://gitcode.com/openharmony/device_hisilicon_hardware/issues/I4WPQW) | The **libdisplay_layer.so** binary file is not updated in the **device_hisilicon_hardware** repository.|
+| [I4WIVF](https://gitcode.com/openharmony/third_party_boost/issues/I4WIVF) | Some files in the **third_party_boost** repository are incompatible with open-source protocols.|
 | I4WRWM | Some TDD test cases are unavailable in the **aafwk_aafwk_lite** repository.|
-| [I4VPVY](https://gitee.com/openharmony/applications_sample_camera/issues/I4VPVY) | In the Hi3516D V300 development board running on a mini-system device, a user searches for Wi-Fi in **Settings** and touches the back button twice to return to the home screen. No application can be started from the home screen.|
-| [I4UTY0](https://gitee.com/openharmony/applications_photos/issues/I4UTY0) | The HP copyright statement exists in the metadata of the **1.jpg** file in **demos**.|
+| [I4VPVY](https://gitcode.com/openharmony/applications_sample_camera/issues/I4VPVY) | In the Hi3516D V300 development board running on a mini-system device, a user searches for Wi-Fi in **Settings** and touches the back button twice to return to the home screen. No application can be started from the home screen.|
+| [I4UTY0](https://gitcode.com/openharmony/applications_photos/issues/I4UTY0) | The HP copyright statement exists in the metadata of the **1.jpg** file in **demos**.|
 | [I4TP6D](https://gitcode.com/openharmony/xts_acts/issues/I4TP6D) | The ActsWorkerJSTest test suite newly added for the Hi3516 development board running on a standard-system device cannot be executed properly.|
 
   **Table 4** Resolved security vulnerabilities
@@ -104,7 +104,7 @@ For details about the adaptation status, see [SIG_DevBoard](https://gitee.com/op
 
 | Issue No.| Description| Impact| To Be Resolved On|
 | -------- | -------- | -------- | -------- |
-| [I4YBB0](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YBB0) | No image is generated and the recorded video cannot be played when the system camera is used to take a photo and record a video. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).| Camera recording does not function.| 2022/04/01 |
-| [I4YB87](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YB87) | No image is generated when the system camera is used to take a photo. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).| Camera photographing does not function.| 2022/04/01 |
-| [I4YAGS](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | A blue screen is displayed when the system camera is accessed. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).| Camera preview does not function.| 2022/04/01 |
+| [I4YBB0](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YBB0) | No image is generated and the recorded video cannot be played when the system camera is used to take a photo and record a video. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).| Camera recording does not function.| 2022/04/01 |
+| [I4YB87](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YB87) | No image is generated when the system camera is used to take a photo. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).| Camera photographing does not function.| 2022/04/01 |
+| [I4YAGS](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | A blue screen is displayed when the system camera is accessed. This issue occurs only for the Hi3516D V300 development board running on a small-system device (Linux).| Camera preview does not function.| 2022/04/01 |
 | I4WLBU | In the Hi3516D V300 development board running on a standard-system device, the device cannot be found after burning during the ACTS test, and the message "Device not founded or connected" is reported.| The HDC tool causes the ACTS test to report this error occasionally. The error does not affect the actual function.| 2022/04/10 |

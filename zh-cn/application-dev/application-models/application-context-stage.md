@@ -27,9 +27,9 @@
   | -------- | -------- | -------- | -------- |
   | [ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md) | 应用的全局上下文，提供应用级别的信息和能力。| - 从API version 14开始，可以直接使用[getApplicationContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationgetapplicationcontext14)获取。<br>- API version 14以前版本，只能使用其他Context实例的[getApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-context.md#getapplicationcontext)方法获取。 | - [获取当前应用的基本信息](#获取基本信息)。<br>- [获取应用级别的文件路径](#获取应用文件路径)。<br>- [获取和修改加密分区](#获取和修改加密分区)。<br>- [监听应用前后台变化](#监听应用前后台变化)。 |
   | [AbilityStageContext](../reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md) | 模块级别的上下文，提供模块级别的信息和能力。| - 如果需要获取当前AbilityStage的Context，可以直接通过AbilityStage实例获取[context](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#属性)属性。<br> - 如果需要获取同一应用中其他Module的Context，可以通过[createModuleContext](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12)方法。 | - 获取当前模块的基本信息。<br>- [获取模块级别的文件路径](#获取应用文件路径)。|
-   | [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | UIAbility组件对应的上下文，提供UIAbility对外的信息和能力。| - 通过UIAbility实例直接获取[context](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#属性)属性。<br>- 在UIAbility的窗口中加载的UI组件实例，需要使用@ohos.arkui.UIContext提供的[getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)方法。 | - 获取当前UIAbility的基本信息。<br>- 启动其他应用或原子化服务、连接/断连系统应用创建的ServiceExtensionAbility等。<br>- 销毁自身的UIAbility。 |
+  | [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | UIAbility组件对应的上下文，提供UIAbility对外的信息和能力。| - 通过UIAbility实例直接获取[context](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#属性)属性。<br>- 在UIAbility的窗口中加载的UI组件实例，需要使用@ohos.arkui.UIContext提供的[getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)方法。 | - 获取当前UIAbility的基本信息。<br>- 启动其他应用或原子化服务、连接/断连系统应用创建的ServiceExtensionAbility等。<br>- 销毁自身的UIAbility。 |
   | [ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md) | ExtensionAbility组件对应的上下文，每种类型的ExtensionContext提供不同的信息和能力。| 通过ExtensionAbility实例直接获取Context属性。 | 不同类型的ExtensionAbility对应的Context提供的能力不同。以输入法上下文[InputMethodExtensionContext](../reference/apis-ime-kit/js-apis-inputmethod-extension-context.md)为例，主要提供如下能力：<br>- 获取InputMethodExtensionAbility的基本信息。<br>- 销毁当前输入法。|
-| [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) | ArkUI的UI实例上下文，提供UI操作相关的能力。与上述其他类型的Context无直接关系。 | - 在UI组件内获取UIContext，直接使用组件内置的[getUIContext](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法。<br>- 在存在Window实例的情况下，使用@ohos.window提供的[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法。 | 主要用于UI实例中UI相关操作，例如：<br>- 获取当前UI实例的字体。<br>- 显示不同类型的弹框。<br>- 设置软键盘弹出时UI避让模式。 |
+  | [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) | ArkUI的UI实例上下文，提供UI操作相关的能力。与上述其他类型的Context无直接关系。 | - 在UI组件内获取UIContext，直接使用组件内置的[getUIContext](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法。<br>- 在存在Window实例的情况下，使用@ohos.window提供的[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法。 | 主要用于UI实例中UI相关操作，例如：<br>- 获取当前UI实例的字体。<br>- 显示不同类型的弹框。<br>- 设置软键盘弹出时UI避让模式。 |
 
 ## Context的获取方式
 
@@ -45,7 +45,7 @@
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
       let applicationContext = this.context.getApplicationContext();
-      //...
+      // ...
     }
   }
   ```
@@ -60,7 +60,7 @@
   export default class MyAbilityStage extends AbilityStage {
     onCreate(): void {
       let abilityStageContext = this.context;
-      //...
+      // ...
     }
   }
   ```
@@ -82,11 +82,10 @@
 
     build() {
       Column() {
-        //...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ...
             }
             .onClick(() => {
               let moduleName2: string = 'entry';
@@ -104,11 +103,8 @@
                 });
             })
           }
-          //...
         }
-        //...
       }
-      //...
     }
   }
   ```
@@ -193,7 +189,7 @@
     // 页面展示
     build() {
       Column() {
-        //...
+        // ...
         Button('FuncAbilityB')
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -270,7 +266,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       let resourceManager = this.context.getApplicationContext().resourceManager;
       // 获取applicationInfo（当前应用信息）
       let applicationInfo = this.context.getApplicationContext().applicationInfo;
-      //...
+      // ...
     }
   }
   ```
@@ -455,12 +451,12 @@ struct Page_Context {
 
   build() {
     Column() {
-      //...
+      // ...
       List({ initialIndex: 0 }) {
-        //...
+        // ...
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             // 存储普通信息前，切换到EL1设备级加密
@@ -473,10 +469,10 @@ struct Page_Context {
             // 存储普通信息
           })
         }
-        //...
+        // ...
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             // 存储敏感信息前，切换到EL2用户级加密
@@ -489,11 +485,11 @@ struct Page_Context {
             // 存储敏感信息
           })
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
-    //...
+    // ...
   }
 }
 ```
@@ -608,7 +604,7 @@ export default class LifecycleAbility extends UIAbility {
 
     hilog.info(DOMAIN_NUMBER, TAG, `register callback number: ${this.lifecycleId}`);
   }
-  //...
+  // ...
   onDestroy(): void {
     // 获取应用上下文
     let applicationContext = this.context.getApplicationContext();

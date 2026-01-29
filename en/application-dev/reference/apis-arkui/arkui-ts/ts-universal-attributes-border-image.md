@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can draw an image around a component.
 
@@ -63,10 +63,10 @@ Sets the border image of the component.
 
 | Name     | Value                             | Description                              |
 | ------- | ----------------------------------- | ----------------------------------- |
-| Repeat  | -        | The cut image is tiled repeatedly on the image border, and the excess part is clipped.         |
-| Stretch | -              | The cut image is stretched to fill the image border.               |
-| Round   | - | The cut image is tiled on the image border by integer times. If the image cannot be tiled by integer times, the image is compressed.|
-| Space   | - | The cut image is tiled on the image border by integer times. If the image cannot be tiled by integer times, the image is filled with blank.  |
+| Repeat  | -        | Tiles the sliced image repeatedly along the border, clipping any overflow.         |
+| Stretch | -              | Stretches the sliced image to fill the entire border.               |
+| Round   | - | Repeats the sliced image in integer multiples. If exact tiling does not fit the border, the image is compressed to achieve full coverage.|
+| Space   | - | Repeats the sliced image in integer multiples. If exact tiling does not fit the border, the remaining gaps are filled with space.  |
 
 ## LinearGradient
 
@@ -76,8 +76,8 @@ Sets the border image of the component.
 
 | Name         | Type  | Read-Only| Optional| Description                     |
 | --------------- | ------ | ---- | ---- | ------------------------- |
-| angle  | number \| string | No  | Yes  |  Start angle of the linear gradient. A positive value indicates a clockwise rotation from the origin, (0, 0).<br>Default value: 180<br>If the angle is a character string, only the 'deg', 'grad', 'rad', and 'turn' types are supported.|
-| direction  | [GradientDirection](ts-appendix-enums.md#gradientdirection) | No  | Yes  | * direction of the linear gradient. It does not take effect when <b>angle</b> is set.<br>Default value: **GradientDirection.Bottom**|
+| angle  | number \| string | No  | Yes  |  Start angle of the linear gradient. A positive value indicates a clockwise rotation from the origin, (0, 0).<br>Default value: **180**.<br>If the angle is specified with a string, only the 'deg', 'grad', 'rad', and 'turn' types are supported.|
+| direction  | [GradientDirection](ts-appendix-enums.md#gradientdirection) | No  | Yes  | Direction of the linear gradient. It does not take effect when **angle** is set.<br>Default value: **GradientDirection.Bottom**.|
 | colors  | Array<[[ResourceColor](ts-types.md#resourcecolor), number]> | No  | No  | Array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
 | repeating  | boolean | No  | Yes  | Whether the colors are repeated.<br>Default value: **false**<br>**true**: The colors are repeated.<br>**false**: The colors are not repeated.|
 
@@ -120,7 +120,7 @@ struct Index {
 
 ### Example 2: Dynamically Adjusting Property Values
 
-This example demonstrates how to dynamically adjust the properties of the [borderImage](#borderimage) API using the [slider](../../apis-arkui/arkui-js/js-components-basic-slider.md) component.
+This example demonstrates how to dynamically adjust the properties of the [borderImage](#borderimage) API using the [\<slider>](../../apis-arkui/arkui-js/js-components-basic-slider.md) component.
 
 ```ts
 // xxx.ets

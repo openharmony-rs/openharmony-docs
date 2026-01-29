@@ -11,7 +11,7 @@
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 11400102 Repeated Trace Collection
+## 11400102 Repeated Trace Capture
 
 **Error Message**
 
@@ -19,15 +19,15 @@ Capture trace already enabled.
 
 **Description**
 
-The trace collection has been enabled for the process.
+The trace capture has been enabled for the process.
 
 **Possible Causes**
 
-The trace collection is in progress.
+The trace capture is in progress.
 
 **Solution**
 
-Wait until the trace collection is complete or call hidebug.stopAppTraceCapture to disable the trace collection.
+Wait until the trace capture is complete or call **hidebug.stopAppTraceCapture** to stop the trace capture.
 
 ## 11400103 Permission Verification Failed
 
@@ -45,7 +45,7 @@ The directory does not exist or is deleted by mistake.
 
 **Solution**
 
-Run the trace collection again to generate a correct trace file in the current directory.
+Run the trace capture again to generate a correct trace file in the current directory.
 
 ## 11400104 Internal Error
 
@@ -55,21 +55,21 @@ Abnormal trace status.
 
 > **NOTE**
 >
-> The error information is subject to the actual content returned by the API.
+> The error message may vary depending on the API.
 
 **Description**
 
-This error code is reported if the current trace encounters an internal error.
+The current trace capture encounters an internal error.
 
 **Possible Causes**
 
-The system kernel breaks down or the application process does not respond.
+The system kernel crashes or the application process does not respond.
 
 **Solution**
 
 Restart the application or device.
 
-## 11400105 Trace Collection Is Not Enabled
+## 11400105 Trace Capture Disabled
 
 **Error Message**
 
@@ -77,17 +77,17 @@ No capture trace running.
 
 **Description**
 
-This error code is reported if no trace is in progress.
+No trace capture is in progress.
 
 **Possible Causes**
 
-Trace collection is not enabled.
+Trace capture is not enabled.
 
 **Solution**
 
-Enable trace collection and then stop it.
+Enable trace capture and then stop it.
 
-## 11400106 The API Call Quota Is Exceeded
+## 11400106 API Call Quota Exceeded
 
 **Error Message**
 

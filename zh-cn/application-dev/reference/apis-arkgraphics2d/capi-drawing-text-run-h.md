@@ -13,6 +13,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -40,7 +42,7 @@
 | [uint32_t OH_Drawing_GetRunGlyphCount(OH_Drawing_Run* run)](#oh_drawing_getrunglyphcount) | 获取渲染单元字形数量。 |
 | [OH_Drawing_Font* OH_Drawing_GetRunFont(OH_Drawing_Run* run)](#oh_drawing_getrunfont) | 获取渲染单元字体对象。 |
 | [OH_Drawing_TextDirection OH_Drawing_GetRunTextDirection(OH_Drawing_Run* run)](#oh_drawing_getruntextdirection) | 获取渲染单元文本方向。 |
-| [OH_Drawing_Array* OH_Drawing_GetRunGlyphAdvances(OH_Drawing_Run* run, uint32_t start, uint32_t length)](#oh_drawing_getrunglyphadvances) | 获取渲染单元字体宽度数组。 |
+| [OH_Drawing_Array* OH_Drawing_GetRunGlyphAdvances(OH_Drawing_Run* run, uint32_t start, uint32_t length)](#oh_drawing_getrunglyphadvances) | 获取渲染单元字形宽度数组。 |
 | [OH_Drawing_Point* OH_Drawing_GetRunGlyphAdvanceByIndex(OH_Drawing_Array* advances, size_t index)](#oh_drawing_getrunglyphadvancebyindex) | 根据索引获取渲染单元中单个字形宽度。 |
 | [void OH_Drawing_DestroyRunGlyphAdvances(OH_Drawing_Array* advances)](#oh_drawing_destroyrunglyphadvances) | 释放渲染单元字形宽度数组对象的指针。 |
 
@@ -492,7 +494,7 @@ OH_Drawing_Array* OH_Drawing_GetRunGlyphAdvances(OH_Drawing_Run* run, uint32_t s
 
 **描述**
 
-获取渲染单元字体宽度数组。
+获取渲染单元字形宽度数组。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -505,13 +507,13 @@ OH_Drawing_Array* OH_Drawing_GetRunGlyphAdvances(OH_Drawing_Run* run, uint32_t s
 | -- | -- |
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md)* run | 指向渲染单元[OH_Drawing_Run](capi-drawing-oh-drawing-run.md)对象的指针。 |
 | uint32_t start | 渲染单元内指定的开始位置，传入负数时该方法返回空指针。 |
-| uint32_t length | 渲染单元内指定的长度，如果length是0表示从start开始获取到渲染块结束，length小于0时该方法返回空指针。 |
+| uint32_t length | 渲染单元内指定的长度，如果length是0表示从start开始获取到渲染单元结束，length小于0时该方法返回空指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* | 返回指向渲染单元字形位置数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)对象的指针，不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用[OH_Drawing_DestroyRunGlyphAdvances](capi-drawing-text-run-h.md#oh_drawing_destroyrunglyphadvances)接口释放该对象的指针。 |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* | 返回指向渲染单元字形宽度数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)对象的指针，不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用[OH_Drawing_DestroyRunGlyphAdvances](capi-drawing-text-run-h.md#oh_drawing_destroyrunglyphadvances)接口释放该对象的指针。 |
 
 
 ### OH_Drawing_GetRunGlyphAdvanceByIndex()

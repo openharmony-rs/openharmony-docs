@@ -55,7 +55,7 @@ ArkTS应用开发过程中，可以选择TaskPool或Worker线程进行多任务�
 
    ```ts
    // Worker.ets
-   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
    import { taskpool } from '@kit.ArkTS';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;

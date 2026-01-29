@@ -692,3 +692,68 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 | LIMITED | 2 | 执行受最大旋转角度限制。 |
 | TIMEOUT | 3 | 执行超时。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
+
+## TargetType<sup>21+<sup>
+
+目标人脸信息的枚举。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+  | 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| HUMAN_FACE | int | 0 | 目标人脸信息。 |
+
+
+  ## SearchDirection<sup>21+<sup>
+
+系统默认的搜索方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+  | 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| DEFAULT | int | 0 | 系统默认方向  |
+  | LEFTWARD | int | 1 | 左向，即顺时针方向。 |
+  | RIGHTWARD | int | 2 | 右向，即逆时针方向。 |
+  
+ ## TargetInfo<sup>21+<sup>
+
+搜索目标的相关信息。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
+  
+  
+ 
+## SearchParams<sup>21+<sup>
+
+指定搜索的方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| direction | [SearchDirection](#searchdirection21) | 否 | 否 | 搜索的方向。 |
+
+  ## SearchResult<sup>21+<sup>
+
+显示搜索命令的执行结果。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| targetCount | number | 否 | 否 | 搜索到的目标数量。 |

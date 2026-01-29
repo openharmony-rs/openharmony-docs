@@ -1,4 +1,10 @@
 # promptAction Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -12,7 +18,7 @@ Internal error.
 
 **Description**
 
-This error code is reported when an internal error that cannot be rectified by developers occurs. The internal error type is included in the error information.
+This error code is reported when an internal system issue that cannot be resolved through application-level changes. The specific internal error type is provided in the error details.
 
 **Possible Causes**
 
@@ -26,7 +32,11 @@ N/A
 
 **Error Message**
 
-Dialog content error.
+The ComponentContent is incorrect.
+
+> **NOTE**
+>
+> When the called API is [openCustomDialog](arkts-apis-uicontext-promptaction.md#opencustomdialog12), [openCustomDialogWithController](arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18), [closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12), or [updateCustomDialog](arkts-apis-uicontext-promptaction.md#updatecustomdialog12), the returned error is "Dialog content error."The ComponentContent is incorrect.
 
 **Description**
 
@@ -44,7 +54,7 @@ N/A
 
 **Error Message**
 
-Dialog content already exists.
+The ComponentContent already exists.
 
 **Description**
 
@@ -62,7 +72,11 @@ N/A
 
 **Error Message**
 
-Dialog content not found.
+The ComponentContent cannot be found.
+
+> **NOTE**
+>
+> When the called API is [closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12) or [updateCustomDialog](arkts-apis-uicontext-promptaction.md#updatecustomdialog12), the returned error is "Dialog content not found."The ComponentContent cannot be found.
 
 **Description**
 
@@ -76,11 +90,47 @@ The custom dialog box associated with the content node is not open.
 
 N/A
 
+## 103304 Target ID Not Found
+
+**Error Message**
+
+The targetId does not exist.
+
+**Description**
+
+This error code is reported when no node can be found based on the provided **targetId**.
+
+**Possible Causes**
+
+The provided **targetId** is invalid, or the node corresponding to the **targetId** has been destroyed.
+
+**Solution**
+
+N/A
+
+## 103305 Node Not Mounted
+
+**Error Message**
+
+The node of targetId is not in the component tree.
+
+**Description**
+
+This error code is reported when the node corresponding to the provided **targetId** is not mounted in the component tree.
+
+**Possible Causes**
+
+The node with the specified **targetId** is not mounted in the component tree.
+
+**Solution**
+
+N/A
+
 ## 103401 Toast Not Found
 
 **Error Message**
 
-Toast not found.
+Cannot find the toast. 
 
 **Description**
 

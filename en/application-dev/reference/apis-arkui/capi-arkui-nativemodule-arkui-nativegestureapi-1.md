@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -29,12 +29,12 @@ Defines the gesture APIs.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GestureRecognizer* (\*createTapGesture)(int32_t countNum, int32_t fingersNum)](#createtapgesture) | Creates a tap gesture.1. This API is used to trigger a tap gesture with one, two, or more taps.<br>        2. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>        3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.<br>        4. If the value is greater than 1, the tap gesture will fail to be recognized when the number of fingers touching the screen within 300 ms of the first finger tap is less than the required number,<br>           or when the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required number.<br>        5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br>|
-| [ArkUI_GestureRecognizer* (\*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum)](#createlongpressgesture) | Creates a long press gesture.1. This API is used to trigger a long press gesture, which requires one or more fingers with a minimum 500 ms hold-down time.<br>        2. In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**,<br>           the long press gesture may conflict with the drag action. If this occurs, the event priority is determined as follows:<br>           If the minimum duration of the long press gesture is less than 500 ms, the long press gesture receives a higher response priority than the drag action.<br>           If the minimum duration of the long press gesture is greater than or equal to 500 ms, the drag action receives a higher response priority than the long press gesture.<br>        3. If a finger moves more than 15 px after being pressed, the gesture recognition fails.<br>|
-| [ArkUI_GestureRecognizer* (\*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)](#createpangesture) | Creates a swipe gesture.1. This API is used to trigger a pan gesture when the movement distance of a finger on the screen exceeds the minimum value.<br>        2. If a pan gesture and a tab swipe occur at the same time, set <b>distanceNum</b> to <b>1</b> so that the gesture can be more easily recognized.<br>|
-| [ArkUI_GestureRecognizer* (\*createPinchGesture)(int32_t fingersNum, double distanceNum)](#createpinchgesture) | Creates a pinch gesture.1. This API is used to trigger a pinch gesture, which requires two to five fingers with a minimum pinch distance of pixels specified by **distanceNum**.<br>        2. While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation.<br>|
-| [ArkUI_GestureRecognizer* (\*createRotationGesture)(int32_t fingersNum, double angleNum)](#createrotationgesture) | Creates a rotation gesture.1. This API is used to trigger a rotation gesture, which requires two to five fingers with a minimum 1-degree rotation angle.<br>        2. While more fingers than the minimum number can be pressed to trigger the gesture, only the first two fingers participate in gesture calculation.<br>|
-| [ArkUI_GestureRecognizer* (\*createSwipeGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum)](#createswipegesture) | Creates a swipe gesture.1. This API is used to implement a swipe gesture, which can be recognized when the swipe speed (px/s) is higher than that specified by **speedNum**.<br>|
+| [ArkUI_GestureRecognizer* (\*createTapGesture)(int32_t countNum, int32_t fingersNum)](#createtapgesture) | Creates a tap gesture.<br>        1. This API is used to trigger a tap gesture with one, two, or more taps.<br>        2. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>        3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.<br>        4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the initial touch is less than the required count, or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count.<br>        5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br> |
+| [ArkUI_GestureRecognizer* (\*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum)](#createlongpressgesture) | Creates a long press gesture.<br>       1. This API is used to trigger a long press gesture, which requires one or more fingers with a minimum 500 ms hold-down time.<br>        2. In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**, the long press gesture may conflict with the drag action. If this occurs, the event priority is determined as follows:<br>           If the minimum duration of the long press gesture is less than 500 ms, the long press gesture receives a higher response priority than the drag action.<br>           If the minimum duration of the long press gesture is greater than or equal to 500 ms, the drag action receives a higher response priority than the long press gesture.<br>        3. If a finger moves more than 15 px after being pressed, the gesture recognition fails.<br> |
+| [ArkUI_GestureRecognizer* (\*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)](#createpangesture) | Creates a swipe gesture.<br>       1. This API is used to trigger a pan gesture when the movement distance of a finger on the screen exceeds the minimum value.<br>        2. If a pan gesture and a tab swipe occur at the same time, set <b>distanceNum</b> to <b>1</b> so that the gesture can be more easily recognized.<br> |
+| [ArkUI_GestureRecognizer* (\*createPinchGesture)(int32_t fingersNum, double distanceNum)](#createpinchgesture) | Creates a pinch gesture.<br>       1. This API is used to trigger a pinch gesture, which requires two to five fingers with a minimum pinch distance of pixels specified by **distanceNum**.<br>        2. While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation.<br> |
+| [ArkUI_GestureRecognizer* (\*createRotationGesture)(int32_t fingersNum, double angleNum)](#createrotationgesture) | Creates a rotation gesture.<br>        1. This API is used to trigger a rotation gesture, which requires two to five fingers with a minimum 1-degree rotation angle.<br>        2. While more fingers than the minimum number can be pressed to trigger the gesture, only the first two fingers participate in gesture calculation.<br> |
+| [ArkUI_GestureRecognizer* (\*createSwipeGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum)](#createswipegesture) | Creates a swipe gesture.<br>This API is used to implement a swipe gesture, which can be recognized when the swipe speed (px/s) is higher than that specified by **speedNum**.<br> |
 | [ArkUI_GestureRecognizer* (\*createGroupGesture)(ArkUI_GroupGestureMode gestureMode)](#creategroupgesture) | Creates a gesture group.|
 | [void (\*dispose)(ArkUI_GestureRecognizer* recognizer)](#dispose) | Disposes of a gesture to release resources.|
 | [int32_t (\*addChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecognizer* child)](#addchildgesture) | Adds a gesture to a gesture group.|
@@ -45,7 +45,7 @@ Defines the gesture APIs.
 | [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | Sets a gesture interruption callback for a node.|
 | [ArkUI_GestureRecognizerType (\*getGestureType)(ArkUI_GestureRecognizer* recognizer)](#getgesturetype) | Obtains the type of a gesture.|
 | [int32_t (\*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (\*parallelInnerGesture)(ArkUI_ParallelInnerGestureEvent* event))](#setinnergestureparallelto) | Sets the callback function for the parallel internal gesture event.|
-| [ArkUI_GestureRecognizer* (\*createTapGestureWithDistanceThreshold)(int32_t countNum, int32_t fingersNum, double distanceThreshold)](#createtapgesturewithdistancethreshold) | Creates a tap gesture that is subject to distance restrictions.1. This API is used to trigger a tap gesture with one, two, or more taps.<br>        2. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>        3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.<br>        4. If the value is greater than 1, the tap gesture will fail to be recognized when the number of fingers touching the screen within 300 ms of the first finger touch is less than the required number,<br>           or when the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required number.<br>        5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br>        6. If the finger moves beyond the preset distance limit, gesture recognition fails.<br>|
+| [ArkUI_GestureRecognizer* (\*createTapGestureWithDistanceThreshold)(int32_t countNum, int32_t fingersNum, double distanceThreshold)](#createtapgesturewithdistancethreshold) | Creates a tap gesture that is subject to distance restrictions.<br>        1. This API is used to trigger a tap gesture with one, two, or more taps.<br>        2. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>        3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.<br>        4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the initial touch is less than the required count, or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count.<br>        5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br>        6. If the finger moves beyond the preset distance limit, gesture recognition fails.<br> |
 
 ## Member Function Description
 
@@ -58,7 +58,7 @@ ArkUI_GestureRecognizer* (*createTapGesture)(int32_t countNum, int32_t fingersNu
 **Description**
 
 
-Creates a tap gesture.1. This API is used to trigger a tap gesture with one, two, or more taps.<br>        2. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>        3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.<br>        4. If the value is greater than 1, the tap gesture will fail to be recognized when the number of fingers touching the screen within 300 ms of the first finger tap is less than the required number,<br>           or when the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required number.<br>        5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br>
+Creates a tap gesture.<br>        1. This API is used to trigger a tap gesture with one, two, or more taps.<br>        2. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>        3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.<br>        4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the initial touch is less than the required count, or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count.<br>        5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br>
 
 **Parameters**
 
@@ -82,7 +82,7 @@ ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repe
 **Description**
 
 
-Creates a long press gesture.1. This API is used to trigger a long press gesture, which requires one or more fingers with a minimum 500 ms hold-down time.<br>        2. In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**,<br>           the long press gesture may conflict with the drag action. If this occurs, the event priority is determined as follows:<br>           If the minimum duration of the long press gesture is less than 500 ms, the long press gesture receives a higher response priority than the drag action.<br>           If the minimum duration of the long press gesture is greater than or equal to 500 ms, the drag action receives a higher response priority than the long press gesture.<br>        3. If a finger moves more than 15 px after being pressed, the gesture recognition fails.<br>
+Creates a long press gesture.<br>        1. This API is used to trigger a long press gesture, which requires one or more fingers with a minimum 500 ms hold-down time.<br>        2. In components that support drag actions by default, such as **Text**, **TextInput**, **TextArea**, **HyperLink**, **Image**, and **RichEditor**, the long press gesture may conflict with the drag action. If this occurs, the event priority is determined as follows:<br>           If the minimum duration of the long press gesture is less than 500 ms, the long press gesture receives a higher response priority than the drag action.<br>           If the minimum duration of the long press gesture is greater than or equal to 500 ms, the drag action receives a higher response priority than the long press gesture.<br>        3. If a finger moves more than 15 px after being pressed, the gesture recognition fails.<br>
 
 **Parameters**
 
@@ -107,7 +107,7 @@ ArkUI_GestureRecognizer* (*createPanGesture)(int32_t fingersNum, ArkUI_GestureDi
 **Description**
 
 
-Creates a pan gesture.1. This API is used to trigger a pan gesture when the movement distance of a finger on the screen exceeds the minimum value.<br>        2. If a pan gesture and a tab swipe occur at the same time, set <b>distanceNum</b> to <b>1</b> so that the gesture can be more easily recognized.<br>
+Creates a swipe gesture.<br>        1. This API is used to trigger a pan gesture when the movement distance of a finger on the screen exceeds the minimum value.<br>        2. If a pan gesture and a tab swipe occur at the same time, set <b>distanceNum</b> to <b>1</b> so that the gesture can be more easily recognized.<br>
 
 **Parameters**
 
@@ -132,7 +132,7 @@ ArkUI_GestureRecognizer* (*createPinchGesture)(int32_t fingersNum, double distan
 **Description**
 
 
-Creates a pinch gesture.1. This API is used to trigger a pinch gesture, which requires two to five fingers with a minimum pinch distance of pixels specified by **distanceNum**.<br>        2. While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation.<br>
+Creates a pinch gesture.<br>        1. This API is used to trigger a pinch gesture, which requires two to five fingers with a minimum pinch distance of pixels specified by **distanceNum**.<br>        2. While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation.<br>
 
 **Parameters**
 
@@ -156,7 +156,7 @@ ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double ang
 **Description**
 
 
-Creates a rotation gesture.1. This API is used to trigger a rotation gesture, which requires two to five fingers with a minimum 1-degree rotation angle.<br>        2. While more fingers than the minimum number can be pressed to trigger the gesture, only the first two fingers participate in gesture calculation.<br>
+Creates a rotation gesture.<br>        1. This API is used to trigger a rotation gesture, which requires two to five fingers with a minimum 1-degree rotation angle.<br>        2. While more fingers than the minimum number can be pressed to trigger the gesture, only the first two fingers participate in gesture calculation.<br>
 
 **Parameters**
 
@@ -180,7 +180,7 @@ ArkUI_GestureRecognizer* (*createSwipeGesture)(int32_t fingersNum, ArkUI_Gesture
 **Description**
 
 
-Creates a swipe gesture.1. This API is used to implement a swipe gesture, which can be recognized when the swipe speed (px/s) is higher than that specified by **speedNum**.<br>
+Creates a swipe gesture.<br>This API is used to implement a swipe gesture, which can be recognized when the swipe speed (px/s) is higher than that specified by **speedNum**.<br>
 
 **Parameters**
 
@@ -441,7 +441,7 @@ ArkUI_GestureRecognizer* (*createTapGestureWithDistanceThreshold)(int32_t countN
 **Description**
 
 
-Creates a tap gesture that is subject to distance restrictions.1. This API is used to trigger a tap gesture with one, two, or more taps.<br>        2. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>        3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.<br>        4. If the value is greater than 1, the tap gesture will fail to be recognized when the number of fingers touching the screen within 300 ms of the first finger touch is less than the required number,<br>           or when the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required number.<br>        5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br>        6. If the finger moves beyond the preset distance limit, gesture recognition fails.<br>
+Creates a tap gesture that is subject to distance restrictions.1. This API is used to trigger a tap gesture with one, two, or more taps.<br>        2. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>        3. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails.<br>        4. When multiple fingers are configured for a gesture, the recognition fails if the number of fingers touching the screen within 300 ms of the initial touch is less than the required count,<br>           or if the number of fingers lifted from the screen within 300 ms of the first finger's being lifted is less than the required count.<br>        5. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br>        6. If the finger moves beyond the preset distance limit, gesture recognition fails.<br>
 
 **Parameters**
 

@@ -28,9 +28,9 @@ DFX提供native崩溃信息采集能力和整机重启故障检测定位能力�
 
 1. 注册码云gitee账号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
      
    ```
    git config --global user.name "yourname"
@@ -41,18 +41,18 @@ DFX提供native崩溃信息采集能力和整机重启故障检测定位能力�
 4. 安装码云repo工具，可以执行如下命令。
      
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
 
 ### 通过repo获取
 
-**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+**方式一（推荐）**：通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
   
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.5-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.5-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -61,7 +61,7 @@ repo forall -c 'git lfs pull'
 
   
 ```
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.5-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v3.0.5-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -100,7 +100,7 @@ repo forall -c 'git lfs pull'
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ## <sup>修复缺陷列表</sup>
@@ -109,16 +109,16 @@ repo forall -c 'git lfs pull'
 
 | ISSUE单号 | 问题描述 | 
 | -------- | -------- |
-| [I4YBB0](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YBB0) | 小型系统3516DV300-Linux在系统相机拍照录像后，无图片生成，录制的视频无法播放。 | 
-| [I4YB87](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YB87) | 小型系统3516DV300-Linux在系统相机拍照录像后，图库中无显示。 | 
-| [I4YAGS](https://gitee.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | 小型系统3516DV300-Linux进入系统相机，画面蓝屏。 | 
-| [I59FZ7](https://gitee.com/openharmony/telephony_core_service/issues/I59FZ7) | 标准系统电话测试用例无法进行测试验证。 | 
+| [I4YBB0](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YBB0) | 小型系统3516DV300-Linux在系统相机拍照录像后，无图片生成，录制的视频无法播放。 | 
+| [I4YB87](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YB87) | 小型系统3516DV300-Linux在系统相机拍照录像后，图库中无显示。 | 
+| [I4YAGS](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I4YAGS?from=project-issue) | 小型系统3516DV300-Linux进入系统相机，画面蓝屏。 | 
+| [I59FZ7](https://gitcode.com/openharmony/telephony_core_service/issues/I59FZ7) | 标准系统电话测试用例无法进行测试验证。 | 
 | [I4Z2MI](https://gitcode.com/openharmony/xts_acts/issues/I4Z2MI) | 标准系统执行acts测试用例异常，actsWifiJSApiTest、ActsHotSpotJSApiTest、ActsP2PJSApiTest模块用例全部失败。 | 
 
 
 ## <sup>修复安全漏洞列表</sup>
 
-如下漏洞为本项目组内上报漏洞，漏洞修复补丁及受影响版本详情请参考社区[安全漏洞披露](https://gitee.com/openharmony/security/tree/master/zh/security-disclosure/2022)。
+如下漏洞为本项目组内上报漏洞，漏洞修复补丁及受影响版本详情请参考社区[安全漏洞披露](https://gitcode.com/openharmony/security/tree/master/zh/security-disclosure/2022)。
 
   **表5** 修复的安全漏洞列表
 

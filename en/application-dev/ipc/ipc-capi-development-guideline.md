@@ -2,12 +2,11 @@
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
-<!--SE: @zhaopeng_gitee-->
-<!--TSE: @maxiaorong2-->
-
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @maxiaorong-->
+<!--Adviser: @zhang_yixin13-->
 
 ## When to Use
-
 
 Inter-process communication (IPC) allows the proxy and stub running in different processes to communicate with each other using C/C++ APIs.  
 The IPC C APIs do not provide the capability of obtaining the communication proxy object. This feature depends on [Ability Kit](../application-models/abilitykit-overview.md).
@@ -29,8 +28,7 @@ For details about how to establish IPC channels between processes, see [Native C
 |OHIPCDeathRecipient\* OH_IPCDeathRecipient_Create<br>(OH_OnDeathRecipientCallback deathRecipientCallback,<br> OH_OnDeathRecipientDestroyCallback destroyCallback,<br>void \*userData);|Creates an **OHIPCRemoteStub** object, which triggers a notification when the **OHIPCDeathRecipient** object dies unexpectedly.|
 |int OH_IPCRemoteProxy_AddDeathRecipient(OHIPCRemoteProxy \*proxy,<br>OHIPCDeathRecipient \*recipient);|Subscribes to the death of an **OHIPCRemoteStub** object for an **OHIPCRemoteProxy** object.|
 
-For details about the APIs, see [IPC Kit](../reference/apis-ipc-kit/capi-ipckit.md).
-
+For details about the APIs, see [IPCKit](../reference/apis-ipc-kit/capi-ipckit.md).
 
 ## How to Develop
 
@@ -57,7 +55,8 @@ libchild_process.so
 ```
 
 ### Implementing IPC
-#### Common Data and Functions
+
+**Common Data and Functions**
 
 ```c++
 #include <string>
@@ -96,7 +95,8 @@ static void* LocalMemoryAllocator(int32_t len) {
     return buffer;
 }
 ```
-#### Server Object IpcCApiStubTest
+
+**Server Object IpcCApiStubTest**
 
 ```c++
 class IpcCApiStubTest {
@@ -230,10 +230,10 @@ int IpcCApiStubTest::RequestExitChildProcess() {
 }
 ```
 
-#### Client Proxy Object IpcCApiProxyTest
+**Client Proxy Object IpcCApiProxyTest**
 
 ```cpp
-// Customize error codes.
+// User-defined error code.
 static constexpr int OH_IPC_CREATE_OBJECT_ERROR = OH_IPC_USER_ERROR_CODE_MIN + 1;
 
 class IpcCApiProxyTest {
@@ -270,7 +270,7 @@ IpcCApiProxyTest::IpcCApiProxyTest(OHIPCRemoteProxy *proxy) {
     replyStub_ = OH_IPCRemoteStub_Create(NATIVE_REMOTE_STUB_ASYNC_CALL_TEST_TOKEN.c_str(), OnRemoteRequest,
         nullptr, this);
     if (replyStub_ == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "crete reply stub failed!");
+        OH_LOG_ERROR(LOG_APP, "create reply stub failed!");
         return;
     }
     // Create a death callback object.
@@ -402,7 +402,8 @@ void IpcCApiProxyTest::OnDeathRecipientCB(void *userData) {
     OH_LOG_INFO(LOG_APP, "the stub is dead!");
 }
 ```
-#### libipcCapiDemo.so for Server Calls
+
+**libipcCapiDemo.so for Server Calls**
 
 ```C++
 IpcCApiStubTest g_ipcStubObj;
@@ -426,7 +427,7 @@ void NativeChildProcess_MainProc() {
 #endif
 ```
 
-#### Client Invocation Entry
+**Client Invocation Entry**
 
 ```c++
 IpcCApiProxyTest *g_ipcProxy = nullptr;

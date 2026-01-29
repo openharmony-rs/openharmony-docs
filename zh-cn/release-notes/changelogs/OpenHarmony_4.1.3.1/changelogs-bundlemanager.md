@@ -18,7 +18,7 @@ MDM应用判断逻辑只根据[签名证书](../../../application-dev/security/a
 * app-distribution-type为enterprise_mdm，则为MDM应用。
 * app-distribution-type不为enterprise_mdm，则为非MDM应用。
 
-MDM权限判断逻辑是根据[权限定义](https://gitee.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json)中definePermissions字段中availableType属性来判断是否为MDM权限，规则如下：
+MDM权限判断逻辑是根据[权限定义](https://gitcode.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json)中definePermissions字段中availableType属性来判断是否为MDM权限，规则如下：
 * availableType为MDM，则为MDM权限。
 * availableType不为MDM，则为非MDM权限。
 

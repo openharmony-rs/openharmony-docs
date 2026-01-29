@@ -194,4 +194,4 @@ Table 1 Description of Plugin APIs
 
 ## Reference
 
-For more information about the source code and usage of HiSysEvent, access the Hiview code repository(https://gitee.com/openharmony/hiviewdfx_hiview).
+For more information about the source code and usage of HiSysEvent, access the Hiview code repository(https://gitcode.com/openharmony/hiviewdfx_hiview).

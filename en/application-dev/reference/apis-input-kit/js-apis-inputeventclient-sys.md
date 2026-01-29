@@ -43,6 +43,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
+| 201  | Permission denied.  |
+| 202  | Permission denied, non-system app called system api.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
@@ -116,6 +118,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
+| 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -285,7 +288,7 @@ struct Index {
 
 injectTouchEvent(touchEvent: TouchEventData): void
 
-Injects a touchscreen event.
+Injects a touch event.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
@@ -295,7 +298,7 @@ Permission required: ohos.permission.INJECT_INPUT_EVENT
 
 | Name      | Type                   | Mandatory  | Description       |
 | -------- | --------------------- | ---- | --------- |
-| touchEvent | [TouchEventData](#toucheventdata11) | Yes   | Touchscreen event data.|
+| touchEvent | [TouchEventData](#toucheventdata11) | Yes   | Touch event data.|
 
 **Error codes**
 
@@ -442,7 +445,7 @@ Defines the key event to inject.
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
 | isPressed       | boolean | No   |  No| Whether the key is pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.  |
-| keyCode         | number  | No   |  No| Key value. Currently, only the **KEYCODE_BACK** key is supported.|
+| keyCode         | number  | No   |  No| Key code. Currently, only the **KEYCODE_BACK** key is supported.|
 | keyDownDuration | number  | No   |  No| Duration for pressing a key, in μs.          |
 | isIntercepted   | boolean | No   |  No| Whether the key event can be intercepted.<br>The value **true** indicates that the key event can be intercepted, and the value **false** indicates the opposite.|
 
@@ -452,9 +455,9 @@ Defines the key event to inject.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
-| Name       | Type  | Mandatory  | Description     |
-| --------- | ------ | ---- |  ------- |
-| keyEvent | [KeyEvent](#keyevent) | Yes   | Key event to inject.  |
+| Name       | Type  | Read-Only  | Optional  | Description     |
+| --------- | ------ | ---- | ---- | ------- |
+| keyEvent       | [KeyEvent](#keyevent) | No   |  No| Key event to inject.  |
 
 ## MouseEventData<sup>11+</sup>
 
@@ -469,11 +472,11 @@ Defines the mouse event data.
 
 ## TouchEventData<sup>11+</sup>
 
-Defines the touchscreen event data.
+Defines the touch event data.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputSimulator
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | No   |  No| Touchscreen event.  |
-| useGlobalCoordinate<sup>20+</sup> | boolean | No   |  Yes| Whether to use global coordinates to calculate the injected touchscreen event. The default value is **false**. If this parameter is set to **false**, the coordinates of the relative coordinate system with the upper left corner of the specified screen as the origin are used to calculate the injected touchscreen event. If this parameter is set to **true**, the coordinates of the global coordinate system with the upper left corner of the primary screen as the origin are used to calculate the injected touchscreen event.  |
+| touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | No   |  No| Touch event.  |
+| useGlobalCoordinate<sup>20+</sup> | boolean | No   |  Yes| Whether to use global coordinates to calculate the injected touch event. The default value is **false**. If this parameter is set to **false**, the coordinates of the relative coordinate system with the upper left corner of the specified screen as the origin are used to calculate the injected touch event. If this parameter is set to **true**, the coordinates of the global coordinate system with the upper left corner of the primary screen as the origin are used to calculate the injected touch event.  |

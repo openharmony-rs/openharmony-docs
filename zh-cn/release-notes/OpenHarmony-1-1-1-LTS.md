@@ -23,7 +23,7 @@
 
 下载命令如下：
 
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.1-LTS  --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.1-LTS  --no-repo-verify
 
 ## 更新说明
 

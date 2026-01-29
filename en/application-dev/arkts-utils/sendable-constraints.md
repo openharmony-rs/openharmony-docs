@@ -199,6 +199,38 @@ class A {
 }
 ```
 
+### Member Variables Cannot Use Type Aliases
+
+Member variables of the Sendable class cannot use type aliases (that is, aliases defined using the `type` keyword).
+
+**Correct Example**
+
+```ts
+@Sendable
+class B {
+  num1: number = 1;
+  num2: number = 2;
+  add(): number {
+    return this.num1 + this.num2;
+  }
+}
+```
+
+**Incorrect Example**
+
+```ts
+type A = number;
+
+@Sendable
+class B {
+  num1: A = 1; // A runtime error is reported. Type aliases are not supported.
+  num2: A = 2; // A runtime error is reported. Type aliases are not supported.
+  add(): number {
+    return this.num1 + this.num2;
+  }
+}
+```
+
 ## Generic Rules
 
 ### Template Types for Sendable Classes, SendableLruCache, collections.Array, collections.Map, and collections.Set Must Be Sendable
@@ -498,7 +530,7 @@ For details about Node-APIs, see [Sendable-related Operations](../napi/use-napi-
 
 ## Rules for Interaction with the UI
 
-To observe data changes in Sendable objects when interacting with UI, Sendable data must be used in conjunction with [makeObserved](../ui/state-management/arkts-new-makeObserved.md). For more information, see [Using makeObserved and @Sendable Decorated Class Together](../ui/state-management/arkts-new-makeObserved.md#using-makeobserved-and-sendable-decorated-class-together).
+To observe data changes in Sendable objects when interacting with UI, Sendable data must be used in conjunction with [makeObserved](../ui/state-management/arkts-new-makeObserved.md). For more information, see [Using makeObserved with @Sendable Decorated Classes](../ui/state-management/arkts-new-makeObserved.md#using-makeobserved-with-sendable-decorated-classes).
 
 
 ## Rules for Using Sendable in HARs

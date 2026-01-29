@@ -332,7 +332,7 @@ struct MyComponent {
           Text("Hello" + item)
             .fontSize(50)
             .onAppear(() => {
-              console.log("appear:" + item);
+              console.info("appear:" + item);
             })
         }
       })
@@ -363,4 +363,4 @@ class MyDataSource implements IDataSource {
 **使用说明：**
 cachedCount的增加会增大UI的cpu、内存开销。使用时需要根据实际情况，综合性能和用户体验进行调整。
 
-更多关于cachedCount的使用指导，请参考文档[列表场景性能提升实践](list-perf-improvment.md#缓存列表项)。
+更多关于cachedCount的使用指导，请参考文档[列表场景性能提升实践](list-perf-improvement.md#缓存列表项)。

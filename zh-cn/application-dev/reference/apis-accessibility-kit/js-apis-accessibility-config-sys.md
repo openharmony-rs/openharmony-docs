@@ -22,7 +22,7 @@ import { config } from '@kit.AccessibilityKit';
 
 ## 属性
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                                 | 类型                                                                                     | 只读 | 可选 | 说明                         |
 |------------------------------------|--------------------------------------------------------------------------------------------| -------- | -------- |-----------------------------------------------------------|
@@ -46,13 +46,11 @@ import { config } from '@kit.AccessibilityKit';
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。                   |
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。                                             |
 
-boolean返回值的含义：True表示开启，False表示关闭。
-[]()
 ## enableAbility
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
 
-启用辅助扩展，使用Promise异步回调。
+启用辅助扩展。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -155,7 +153,7 @@ config.enableAbility(name, capability, (err: BusinessError) => {
 
 disableAbility(name: string): Promise&lt;void&gt;
 
-关闭辅助扩展，使用Promise异步回调。
+关闭辅助扩展。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -452,7 +450,7 @@ try {
 
 set(value: T): Promise&lt;void&gt;
 
-设置属性，使用Promise异步回调。
+设置属性。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -547,7 +545,7 @@ config.highContrastText.set(value, (err: BusinessError) => {
 
 get(): Promise&lt;T&gt;
 
-获取属性，使用Promise异步回调。
+获取属性。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -700,7 +698,9 @@ config.highContrastText.off((data: boolean) => {
 用于不同弱视类型的校正颜色滤镜。  
 颜色滤镜功能开启时（[daltonizationState](#属性)设置为true)，颜色滤镜的配置(即设置的DaltonizationColorFilter的值)生效；颜色滤镜功能关闭时（[daltonizationState](#属性)设置为false)，显示为正常类型<sup>11+</sup>。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称 | 说明 |
 | -------- | -------- |
@@ -713,7 +713,9 @@ config.highContrastText.off((data: boolean) => {
 
 用于不同时间长短的点击重复时间。  
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称          | 说明         |
 |-------------|------------|
@@ -726,7 +728,9 @@ config.highContrastText.off((data: boolean) => {
 用于不同时间间隔的忽略重复点击。  
 忽略重复点击功能开启时（[ignoreRepeatClick](#属性)设置为true)，忽略重复点击的配置(即设置的RepeatClickInterval的值)生效；忽略重复点击功能关闭时（[ignoreRepeatClick](#属性)设置为false)，显示为正常类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称       | 说明    |
 |----------|-------|

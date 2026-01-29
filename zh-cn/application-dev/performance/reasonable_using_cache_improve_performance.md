@@ -1,5 +1,12 @@
 # 合理使用缓存提升性能
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 简介
 
 随着应用功能的日益丰富与复杂化，数据加载效率成为了衡量应用性能的重要指标。不合理的加载策略往往导致用户面临长时间的等待，这不仅损害了用户体验，还可能引发用户流失。因此，合理运用缓存技术变得尤为重要。  
@@ -41,7 +48,8 @@
 ## 优化示例
 
 ### 场景1缓存网络数据
-#### 使用场景
+**使用场景**
+
 在应用启动过程中，开发者往往会遇到冷启动完成时延长的问题。这是由于大部分应用的首页数据依赖于网络请求或定位服务等方式来获取相应数据。如果网络、位置服务等信号差，就会导致应用请求网络和位置数据耗时变长，从而在页面冷启动过程中出现较长时间的白屏或白块现象。
 因此可以使用本地缓存首页网络数据解决较长时间的白屏或白块问题。
 
@@ -55,7 +63,8 @@
 >
 > 应用需根据自身对于数据的时效性要求，来决定是否使用缓存数据。例如时效性要求为一天时，一天前保存的缓存数据就不适合进行展示，需从网络获取新数据进行展示，并更新本地缓存数据。
 
-#### 场景示例
+**场景示例**
+
 下面是一个缓存网络数据的场景示例。示例中应用首页需展示一张从网站获取的图片信息，在aboutToAppear()中发起网络请求，待数据返回解析后展示在首页上。之后将图片信息缓存至本地应用沙箱内，再次冷启动时首先从沙箱内获取图片信息。若存在，即可解析并展示，在网络请求返回时再次更新图片信息。 以下为关键示例代码。
 
 ```typescript
@@ -176,7 +185,7 @@ struct Index {
 }
 ```
 
-#### 性能分析
+**性能分析**
 
 下面对优化前后启动性能进行对比分析。分析阶段的起点为启动Ability（即H:void OHOS::AppExecFwk::MainThread::HandleLaunchAbility的开始点），阶段终点为应用首次解析Pixelmap（即H:Napi execute, name:CreatePixelMap, traceid:0x0）后的第一个vsync（即H:ReceiveVsync dataCount: 24bytes now:timestamp expectedEnd:timestamp vsyncId:int的开始点）。
 
@@ -188,7 +197,7 @@ struct Index {
 
 图3是优化前未使用本地缓存（从网络端获取数据）的耗时，图4是优化后使用本地缓存的耗时，对比数据如下（性能耗时数据因设备版本环境而异，以实测为准）：
 
-#### 性能对比
+**性能对比**
 
 | 方案           |  阶段时长(毫秒)  |
 |--------------|:----------:|
@@ -199,7 +208,8 @@ struct Index {
 
 ### 场景2缓存地址数据
 
-#### 使用场景
+**使用场景**
+
 如果应用每次冷启动都先通过[getCurrentLocation](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-geolocationmanager-V5#geolocationmanagergetcurrentlocation)获取位置数据，特别是在信号较弱的区域，这可能导致显著的延迟，迫使用户等待较长时间才能获取到所需的位置信息，从而极大地影响了应用的冷启动体验。  
 针对上述问题，下面将通过使用缓存减少首次数据加载展示时间，优化应用启动性能，为开发者优化应用性能提供参考。
 
@@ -217,7 +227,7 @@ struct Index {
 >
 > 为了方便对比性能差异，本例中未做缓存数据是否失效和页面二刷的业务处理。实际业务开发中冷启动时虽然是优先从缓存获取地址数据进行刷新，但是后面还需要再使用getCurrentLocation获取最新地址数据进行页面二刷，以确保地址数据的准确性。
 
-#### 场景示例
+**场景示例**
 
 ```typescript
 import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit'; // 程序访问控制管理模块
@@ -330,7 +340,7 @@ struct Index {
 }
 ```
 
-#### 性能分析
+**性能分析**
 
 下面使用DevEco Studio内置的Profiler中的启动分析工具Launch，对使用getCurrentLocation获取地址数据及使用缓存获取地址数据的冷启动性能进行对比分析。本例中通过在aboutToAppear进行起始位置的[性能打点](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-hitracemeter-V5)，然后在使用本地缓存和使用getCurrentLocation获取到地址数据的位置分别进行结束位置的性能打点来分析两者的性能差异。对比性能前，需要先打开一次应用页面，在弹出位置信息授权弹窗时选择允许授权的选项。
 
@@ -348,7 +358,8 @@ struct Index {
 
 图5是优化前未使用本地缓存（从getCurrentLocation获取地址数据）的耗时，图6是优化后使用本地缓存（从PersistentStorage获取地址数据）的耗时，对比数据如下（性能耗时数据因设备版本环境而异，以实测为准）：
 
-#### 性能对比
+**性能对比**
+
 | 方案                     | 阶段时长 |
 | ------------------------ | :------: |
 | （优化前）未使用本地缓存 |   46ms   |
@@ -357,7 +368,8 @@ struct Index {
 由此可见，在冷启动首页需要加载地址数据的场景中，先采用本地缓存策略获取地址数据相比调用getCurrentLocation接口，能显著缩短地址数据的获取时间，减少用户等待，提升冷启动完成时延性能与用户体验。
 
 ### 场景3预下载图片数据
-#### 原理介绍
+**原理介绍**
+
 在通过Image组件加载网络图片时，通常会经历四个关键阶段：组件创建、图片资源下载、图片解码和刷新。当加载的图片资源过大时，Image组件会在图片数据下载和解码完成后才刷新图片。这一过程中，由于图片下载较耗时，未成功加载的图片常常表现为空白或占位图（一般为白色或淡色），这可能引发“Image 白块”现象。为了提升用户体验并提高性能，应尽量避免这种情况。  
 图1 Image加载网络图片两种方式对比
 ![reasonable_using_cache_improve_performance_use_preRequest](./figures/reasonable_using_cache_improve_performance_use_preRequest.png)
@@ -368,10 +380,12 @@ struct Index {
 > 1. 开发者在使用Image加载较大的网络图片时，网络下载推荐使用HTTP工具提前预下载。
 > 2. 在预下载之后，开发者可根据业务自行选择数据处理方式，如将预下载后得到的ArrayBuffer转成BASE64、使用应用沙箱提前缓存、直接转PixelMap、或是业务上自行处理ArrayBuffer等多种方式灵活处理数据后，传给Image组件。
 
-#### 使用场景
+**使用场景**
+
 当子页面需要加载很大的网络图片时，可以在父页面提前将网络数据预下载到应用沙箱中，子组件加载时从沙箱中读取，减少白块出现时长。
 
-#### 场景示例
+**场景示例**
+
 开发者使用Navigation组件时，通常会在主页引入子页面组件，在按钮中添加方法实现跳转子页面组件。当子页面中需展示一张较大的网络图片时，而Image未设置占位图时，会出现点击按钮后，子组件的Image组件位置出现长时间的Image白块现象。
 
 本文将以应用沙箱提前缓存举例，给出减少Image白块出现时长的一种优化方案。
@@ -554,7 +568,8 @@ export struct PageOne {
   }
 }
 ```
-#### 性能分析
+**性能分析**
+
 下面，使用trace对优化前后性能进行对比分析。
 
 【优化前】
@@ -575,12 +590,14 @@ export struct PageOne {
 >
 > 网络下载耗时实际受到网络波动影响，优化前后的网络下载耗时数据总体差异在1s内，提供的性能数值仅供参考。
 
-#### 效果对比
+**效果对比**
+
 |                                                     （优化前）<br/>直接使用Image加载网络数据，未使用预下载                                                      |                                                                （优化后）使用预下载                                                                 |
 |:-----------------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|
 |  ![reasonable_using_cache_improve_performance_use_preRequest5](./figures/reasonable_using_cache_improve_performance_use_preRequest5.gif)  |  ![reasonable_using_cache_improve_performance_use_preRequest6](./figures/reasonable_using_cache_improve_performance_use_preRequest6.gif)  |
 
-#### 性能对比
+**性能对比**
+
 对比数据如下：
 
 | 方案                          | 白块出现时长(毫秒)       | 白块出现时长        |

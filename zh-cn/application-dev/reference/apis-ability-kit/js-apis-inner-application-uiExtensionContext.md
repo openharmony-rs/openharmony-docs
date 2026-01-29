@@ -1176,7 +1176,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 ### openLink<sup>12+<sup>
 
-openLink(link:string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
+openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
 通过App Linking或Deep Linking方式启动UIAbility。使用Promise异步回调。
 
@@ -1442,9 +1442,8 @@ struct Page_UIServiceExtensionAbility {
 
   build() {
     Column() {
-      //...
       Row() {
-        //...
+        // ...
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         const want: Want = {
@@ -1517,9 +1516,8 @@ struct Page_UIServiceExtensionAbility {
 
   build() {
     Column() {
-      //...
       Row() {
-        //...
+        // ...
       }.onClick(() => {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         // this.uiServiceProxy是连接时保存的proxy对象

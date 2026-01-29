@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The module providers APIs for the Home Screen application to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) and [shortcut information](js-apis-bundleManager-shortcutInfo.md).
+The module providers APIs for launcher applications (applications with icons on the home screen) to obtain the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) and [shortcut information](js-apis-bundleManager-shortcutInfo.md).
 
 > **NOTE**
 >
@@ -58,7 +58,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100,
@@ -118,7 +118,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
@@ -138,7 +138,7 @@ try {
 
 getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
 
-Obtains the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) of all applications of a specified user. This API uses an asynchronous callback to return the result.
+Obtains the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) of all applications based on the given user ID. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -169,7 +169,7 @@ Example
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getAllLauncherAbilityInfo(100,
@@ -190,7 +190,7 @@ try {
 
 getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
 
-Obtains the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) of all applications of a specified user. This API uses a promise to return the result.
+Obtains the [launcher ability information](js-apis-bundleManager-launcherAbilityInfo.md) of all applications based on the given user ID. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -226,7 +226,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getAllLauncherAbilityInfo(100)
@@ -279,7 +279,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getShortcutInfo("com.example.demo",
@@ -339,7 +339,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     launcherBundleManager.getShortcutInfo("com.example.demo")
@@ -397,7 +397,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data = launcherBundleManager.getShortcutInfoSync("com.example.demo");
@@ -453,7 +453,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
@@ -506,7 +506,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let data : Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.demo");

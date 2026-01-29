@@ -1,5 +1,12 @@
 # Implementing a Waterfall Flow Layout
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangyuhao-->
+<!--Designer: @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The ArkUI framework provides a waterfall flow container component through NDK APIs. This component arranges items of different sizes in a waterfall-like manner from top to bottom.
 
 ## Integrating with ArkTS Pages
@@ -203,7 +210,7 @@ struct SectionOption {
     int32_t crossCount;
     float columnsGap;
     float rowsGap;
-    // top right bottom left
+    // {Top margin, right margin, bottom margin, left margin}
     ArkUI_Margin margin{0, 0, 0, 0};
     float (*onGetItemMainSizeByIndex)(int32_t itemIndex);
     void *userData;
@@ -255,10 +262,10 @@ private:
 Implement the **ArkUIWaterflowNode** class to manage **WaterFlow** components. This class supports configuration through **SetLazyAdapter** for assigning a **FlowItemAdapter** and **SetSection** for defining sections.
 
 ```c++
-//Waterflow.h
+//waterflow.h
 
-#ifndef MYAPPLICATION_WATERFLOWE_H
-#define MYAPPLICATION_WATERFLOWE_H
+#ifndef MYAPPLICATION_WATERFLOW_H
+#define MYAPPLICATION_WATERFLOW_H
 
 #include "FlowItemAdapter.h"
 #include "WaterflowSection.h"
@@ -270,7 +277,7 @@ public:
     ArkUIWaterflowNode() {
         
         OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeApi_);
-        // Create a Waterflow component.
+        // Create a Waterflow component instance.
         waterflow_ = nodeApi_->createNode(ARKUI_NODE_WATER_FLOW);
         
     }
@@ -327,7 +334,7 @@ public:
 };
 }// namespace NativeModule
 
-#endif // MYAPPLICATION_WATERFLOWE_H
+#endif // MYAPPLICATION_WATERFLOW_H
 ```
 
 ## Implementing a WaterFlow Component
@@ -352,8 +359,8 @@ std::shared_ptr<ArkUIWaterflowNode> CreateWaterflowExample() {
     
     // Set sections.
     auto sections = std::make_shared<WaterflowSection>();
-    SectionOption MARGIN_GAP_SECTION_1 = {10, 2, 10, 10, margin : {20, 30, 40, 50}, nullptr, nullptr};
-    SectionOption MARGIN_GAP_SECTION_2 = {10, 4, 10, 10, margin : {20, 30, 40, 50}, nullptr, nullptr};
+    SectionOption MARGIN_GAP_SECTION_1 = {10, 2, 10, 10, {20, 30, 40, 50}, nullptr, nullptr};
+    SectionOption MARGIN_GAP_SECTION_2 = {10, 4, 10, 10, {20, 30, 40, 50}, nullptr, nullptr};
     for (int i = 0; i < 10; i++) {
         sections->SetSection(sections->GetSectionOptions(), i, i % 2 ? MARGIN_GAP_SECTION_1 : MARGIN_GAP_SECTION_2);
     }

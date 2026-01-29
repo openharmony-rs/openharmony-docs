@@ -105,7 +105,7 @@
       - [Small System STM32MP1 SoC Porting Case](porting/porting-stm32mp15xx-on-smallsystem.md)
   - Standard System SoC Porting Cases
       - [Standard System Solution – Rockchip RK3568 Porting Case](porting/porting-dayu200-on_standard-demo.md)
-      - [Standard System Solution – Rockchip RK3566 Porting Case](https://gitee.com/openharmony/vendor_kaihong/blob/master/khdvk_3566b/porting-khdvk_3566b-on_standard-demo.md)
+      - [Standard System Solution – Rockchip RK3566 Porting Case](https://gitcode.com/openharmony/vendor_kaihong/blob/master/khdvk_3566b/porting-khdvk_3566b-on_standard-demo.md)
       - [Standard System Solution – Yangfan Porting Case](porting/porting-yangfan-on_standard-demo.md)
 - Subsystem Development
   -  Kernel
@@ -505,7 +505,7 @@
   - [IDE](get-code/gettools-ide.md)
 - Hands-On Tutorials  
   
-  - [Codelabs](https://gitee.com/openharmony/codelabs/blob/master/README.md) 
+  - [Codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md) 
 - References
   - FAQs
     - [FAQs Overview](faqs/faqs-overview.md)

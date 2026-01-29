@@ -12,7 +12,7 @@
 - Setting Basic Attributes and Events<!--web-set-attributes-events-->
   - [Developing User-Agent](web-default-userAgent.md)
   - [Managing Cookies and Data Storage](web-cookie-and-data-storage-mgmt.md)
-  - [Setting the Dark Mode](web-set-dark-mode.md)
+  - [Setting Dark Mode](web-set-dark-mode.md)
   - [Opening Pages in a New Window](web-open-in-new-window.md)
   - [Managing Location Permissions](web-geolocation-permission.md)
   - [Using Incognito Mode](web-incognito-mode.md)
@@ -71,4 +71,4 @@
 - Web Debugging<!--web-debugging-->
   - [Debugging Frontend Pages by Using DevTools](web-debugging-with-devtools.md)
   - [Using Crashpad to Collect Web Component Crash Information](web-crashpad.md)
-  - [Troubleshooting White Screen Issues on Web Pages](web-white-screen.md)
+  - [Troubleshooting White Screen Issues on Web Pages](web-white-screen.md)<!--RP1--><!--RP1End-->

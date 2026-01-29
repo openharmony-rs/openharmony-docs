@@ -172,7 +172,7 @@ export default class EntryAbility extends UIAbility {
   onBackground() {
     // 应用退到后台
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-    // 退出应用程序NFC标签页面时，调用tag模块退出前台优先功能
+    // 应用程序退出前台，停止HCE业务功能
     if (hceElementName != undefined) {
       try {
         hceService.stop(hceElementName);

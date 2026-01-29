@@ -1,12 +1,18 @@
 # @ohos.pluginComponent (PluginComponentManager) (System API)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @HelloCrease-->
 
 The **PluginComponentManager** module provides APIs for the **PluginComponent** user to request components and data and send component templates and data. For details about how to display the **PluginComponent** template, see [PluginComponent](arkui-ts/ts-basic-components-plugincomponent-sys.md).
 
->  **NOTE**
+> **NOTE**
 >
->  - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.pluginComponent (PluginComponentManager)](js-apis-plugincomponent.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.pluginComponent (PluginComponentManager)](js-apis-plugincomponent.md).
 
 ## Modules to Import
 
@@ -24,14 +30,14 @@ Sets the parameters to be passed in the **PluginManager.Push** API in the stage 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                                 | Mandatory  | Description                                      |
-| --------- | ----------------------------------- | ---- | ---------------------------------------- |
-| owner     | [Want](../apis-ability-kit/js-apis-application-want.md) | Yes   | Ability information of the component provider.                         |
-| target    | [Want](../apis-ability-kit/js-apis-application-want.md) | Yes   | Ability information of the component user.                         |
-| name      | string                              | Yes   | Component name.                                   |
-| data      | [KVObject](js-apis-plugincomponent.md#kvobject)               | Yes   | Component data value.                                  |
-| extraData | [KVObject](js-apis-plugincomponent.md#kvobject)               | Yes   | Additional data value.                                  |
-| jsonPath  | string                              | No   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path.|
+| Name       | Type                                 | Read-Only| Optional  | Description                                      |
+| --------- | ----------------------------------- | ---- | ---- | ---------------------------------------- |
+| owner     | [Want](../apis-ability-kit/js-apis-application-want.md) | No| No   | Ability information of the component provider.                         |
+| target    | [Want](../apis-ability-kit/js-apis-application-want.md) | No| No   | Ability information of the component user.                         |
+| name      | string                              | No| No   | Component name.                                   |
+| data      | [KVObject](js-apis-plugincomponent.md#kvobject)      |    No    | No   | Component data.                                  |
+| extraData | [KVObject](js-apis-plugincomponent.md#kvobject)          | No   | No   | Additional data.                                  |
+| jsonPath  | string                         |  No  | Yes   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path.|
 
 ### RequestParameterForStage
 
@@ -43,19 +49,19 @@ Sets the parameters to be passed in the **PluginManager.Request** API in the sta
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type                                 | Mandatory  | Description                                      |
-| -------- | ----------------------------------- | ---- | ---------------------------------------- |
-| owner    | [Want](../apis-ability-kit/js-apis-application-want.md) | Yes   | Ability information of the component user.                         |
-| target   | [Want](../apis-ability-kit/js-apis-application-want.md) | Yes   | Ability information of the component provider.                         |
-| name     | string                              | Yes   | Name of the requested component.                                 |
-| data     | [KVObject](js-apis-plugincomponent.md#kvobject)               | Yes   | Additional data.                                   |
-| jsonPath | string                              | No   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path. Request communication is not triggered when **jsonPath** is not empty or not set.|
+| Name      | Type                          |   Read-Only   | Optional  | Description                                      |
+| -------- | ----------------------------------- | ---- | ---- | ---------------------------------------- |
+| owner    | [Want](../apis-ability-kit/js-apis-application-want.md)| No| No   | Ability information of the component user.                         |
+| target   | [Want](../apis-ability-kit/js-apis-application-want.md) | No| No   | Ability information of the component provider.                         |
+| name     | string                         |  No  | No   | Name of the requested component.                                 |
+| data     | [KVObject](js-apis-plugincomponent.md#kvobject)        |   No   | No   | Additional data.                                   |
+| jsonPath | string                         |  No  | Yes   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path. If the **jsonPath** field is not empty, the Request communication is not triggered.|
 
 ### push
 
 push(param: PushParameterForStage, callback: AsyncCallback&lt;void&gt;): void
 
-Pushes the component and data to the component user.
+Pushes components and data to the component user.
 
 **System API**: This is a system API.
 
@@ -64,7 +70,7 @@ Pushes the component and data to the component user.
 **Parameters**
 | Name     | Type                                      | Mandatory  | Description          |
 | -------- | ---------------------------------------- | ---- | ------------ |
-| param    | [PushParameterForStage](#pushparameterforstage) | Yes   | Information about the component user. |
+| param    | [PushParameterForStage](#pushparameterforstage) | Yes   | Parameters to be sent by the component provider. |
 | callback | AsyncCallback&lt;void&gt;                | Yes   | Asynchronous callback used to return the result.|
 
 **Example**
@@ -92,9 +98,9 @@ pluginComponentManager.push(
     jsonPath: "",
   },
   (err, data) => {
-    console.log("push_callback:err: ", JSON.stringify(err));
-    console.log("push_callback:data: ", JSON.stringify(data));
-    console.log("push_callback: push ok!");
+    console.info("push_callback:err: ", JSON.stringify(err));
+    console.info("push_callback:data: ", JSON.stringify(data));
+    console.info("push_callback: push ok!");
   }
 )
 ```
@@ -137,8 +143,8 @@ pluginComponentManager.request(
     jsonPath: "",
   },
   (err, data) => {
-    console.log("request_callback: componentTemplate.ability=" + data.componentTemplate.ability);
-    console.log("request_callback: componentTemplate.source=" + data.componentTemplate.source);
+    console.info("request_callback: componentTemplate.ability=" + data.componentTemplate.ability);
+    console.info("request_callback: componentTemplate.source=" + data.componentTemplate.source);
   }
 )
 ```

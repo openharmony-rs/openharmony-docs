@@ -88,7 +88,7 @@ struct PagePageAbilitySecond {
   }
 
   build() {
-    //...
+    // ...
   }
 }
 
@@ -139,7 +139,7 @@ struct PagePageAbilitySecond {
   }
 
   build() {
-    //...
+    // ...
   }
 }
 ```
@@ -189,7 +189,7 @@ struct PagePageAbilitySecond {
     hilog.info(domain, TAG, 'onStartRemoteAbility end');
   }
   build() {
-    //...
+    // ...
   }
 }
 

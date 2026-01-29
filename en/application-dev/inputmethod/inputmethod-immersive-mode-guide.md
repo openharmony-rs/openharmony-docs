@@ -41,5 +41,23 @@ To implement consistent immersive experience, a communication mechanism between 
 
    The following sample code shows how to set the immersive mode. You must first use [createPanel](../reference/apis-ime-kit/js-apis-inputmethodengine.md#createpanel10) to obtain a panel instance, and then call the **setImmersiveMode** API using the obtained instance.
    ```ts
-   panel.setImmersiveMode(inputMethodEngine.ImmersiveMode.LIGHT_IMMERSIVE);
+   import { inputMethodEngine } from '@kit.IMEKit';
+   
+   let panelInfo: inputMethodEngine.PanelInfo = {
+     type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
+     flag: inputMethodEngine.PanelFlag.FLG_FIXED
+   };
+   let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
+   // CreatePanel needs to be completed in the Create lifecycle of InputMethodExtensionAbility. this.context is InputMethodExtensionContext in InputMethodExtensionAbility.
+   inputMethodAbility.createPanel(this.context, panelInfo).then(async (panel: inputMethodEngine.Panel) => {
+     let inputPanel: inputMethodEngine.Panel = panel;
+     try {
+       inputPanel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.LIGHT_IMMERSIVE);
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       console.error(`Failed to setImmersiveMode, code: ${error.code}, message: ${error.message}`);
+     }
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
+   });
    ```

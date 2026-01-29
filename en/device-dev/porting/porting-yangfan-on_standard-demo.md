@@ -62,7 +62,7 @@ You are advised to copy the configuration file of Hi3516DV300 and delete the **h
 
 ### Directory Planning
 
-This solution designs the directory structure using the [board and SoC decoupling idea](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md), and plans the SoC adaptation directory as follows:
+This solution designs the directory structure using the [board and SoC decoupling idea](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md), and plans the SoC adaptation directory as follows:
 
 ```
 device
@@ -141,11 +141,11 @@ Add the **make-boot.sh** script for packing the boot image. This script can be c
 genext2fs -B ${blocks} -b ${block_size} -d boot_linux -i 8192 -U boot_linux.img
 ```
 
-For details about modification for calling **make-boot.sh**, see [RK3568 adaptation to secondary boot]( https://gitee.com/openharmony/build/pulls/569/files).
+For details about modification for calling **make-boot.sh**, see [RK3568 adaptation to secondary boot]( https://gitcode.com/openharmony/build/pulls/569/files).
 
 ### INIT Configuration
 
-For details about the init configuration, see [Startup Subsystem](https://gitee.com/openharmony/docs/blob/master/zh-cn/readme/%E5%90%AF%E5%8A%A8%E6%81%A2%E5%A4%8D%E5%AD%90%E7%B3%BB%E7%BB%9F.md).
+For details about the init configuration, see [Startup Subsystem](https://gitcode.com/openharmony/docs/blob/master/zh-cn/readme/%E5%90%AF%E5%8A%A8%E6%81%A2%E5%A4%8D%E5%AD%90%E7%B3%BB%E7%BB%9F.md).
 
 ## **Audio**
 
@@ -549,7 +549,7 @@ This section describes how to develop the audio driver framework based on the Ha
 
                                                                   OpenHarmony HDF camera driver module architecture
 
-![img](https://gitee.com/openharmony/drivers_peripheral/raw/master/camera/figures/logic-view-of-modules-related-to-this-repository_zh.png)
+![img](https://gitcode.com/openharmony/drivers_peripheral/raw/master/camera/figures/logic-view-of-modules-related-to-this-repository_zh.png)
 
 The following uses the camera host as an example:
 
@@ -949,7 +949,7 @@ The memory mapping methods are different: V4L2_MEMORY_MMAP and V4L2_MEMORY_USERP
 
 According to issues of OpenHarmony, memory mapping method V4L2_MEMORY_MMAP is not supported. Next, we still use V4L2_MEMORY_USERPTR of **v4l2_main** for debugging and analysis.
 
-For details, see [Method of Applying for Memory by Adding MMAP on V4L2 Devices](https://gitee.com/openharmony/drivers_peripheral/issues/I4EFWP).
+For details, see [Method of Applying for Memory by Adding MMAP on V4L2 Devices](https://gitcode.com/openharmony/drivers_peripheral/issues/I4EFWP).
 
 
 Now, analyze the **ioctl(fd, VIDIOC_QUERYBUF, &buf)** failure. View the definition of VIDIOC_QUERYBUF: **videodev2.h**
@@ -1203,7 +1203,7 @@ Kernel state: kernel/linux/linux-4.19/include/uapi/linux/videodev2.h +2361
 
 The possible cause is that **VIDIOC_QUERYBUF** inconsistency is caused by header file differences. (Currently, whether the issue can be solved by using linux-4.19 is not verified.) Seek help from the customer and check whether there are similar issues in OpenHarmony.
 
-A similar issue is found: https://gitee.com/openharmony/drivers_peripheral/issues/I4NI4M?from=project-issue
+A similar issue is found: https://gitcode.com/openharmony/drivers_peripheral/issues/I4NI4M?from=project-issue
 
 
 Now, there are two debugging ideas:
@@ -1565,7 +1565,7 @@ The source code directory structure is as follows:
 │   └── unittest      # Unit test code
 ```
 
-For details, see [README](https://gitee.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md) of the input subsystem.
+For details, see [README](https://gitcode.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md) of the input subsystem.
 
 ### TP HDF Driver Adaptation
 

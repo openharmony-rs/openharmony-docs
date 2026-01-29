@@ -1,4 +1,10 @@
 # UIExtension Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @ge-yafang-->
 
 > **NOTE**
 >
@@ -182,12 +188,13 @@ This error code is reported when the UIExtension ability fails to start in a sce
 **Possible Causes**
 
 1. The configuration of the **Want** parameter is incorrect.
-2. There is a type mismatch.
+2. There is a type mismatch. For details, see [EmbeddedComponent](arkui-ts/ts-container-embedded-component.md#apis).
 3. The provider application is not installed.
+4. The device type is not supported.
 
 **Solution**
 
-Verify the configuration of the **Want** parameter and the types, and ensure the application is installed.
+Check the **Want** parameter configuration. Make sure the application is installed, and the current device supports the required features.
 
 ## 100019 Failed to Switch the Ability to the Background (with the onTerminated Callback)
 
@@ -241,4 +248,4 @@ A transparent node is detected in the UIExtension ability, which may cause block
 
 **Solution**
 
-Identify and remove transparent nodes.
+Identify and terminate transparent nodes.

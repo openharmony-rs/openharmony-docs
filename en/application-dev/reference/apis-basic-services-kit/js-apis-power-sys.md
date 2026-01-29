@@ -145,7 +145,7 @@ try {
 
 suspend(isImmediate?: boolean): void
 
-Hibernates a device.
+Enables a device to enter the sleep state.
 
 **System API**: This is a system API.
 
@@ -159,7 +159,7 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| isImmediate<sup>10+</sup> | boolean |  No | Whether to hibernate a device immediately after the screen is turned off. The value **true** indicates that the device is hibernated immediately; **false** indicates that the system controls when the device is hibernated. If this parameter is not set, the default value **false** is used. If you only want to turn off the screen, you are advised not to set this parameter.<br>**NOTE**: This parameter is supported since API version 10.|
+| isImmediate<sup>10+</sup> | boolean |  No | Whether the device enters the sleep state immediately. The value **true** indicates that the device enters the sleep state immediately after the screen is turned off; **false** indicates that the system controls when the device enters the sleep state. If this parameter is not set, the default value **false** is used. If you only want to turn off the screen, you are advised not to set this parameter.<br>**NOTE**: This parameter is supported since API version 10.|
 
 
 **Error codes**

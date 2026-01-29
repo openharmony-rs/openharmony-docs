@@ -327,7 +327,7 @@ static napi_module nativeModule = {
     .nm_version = 1,
     .nm_flags = 0,
     .nm_filename = nullptr,
-    //没有在nm_register_func对应的函数加上static
+    // 没有在nm_register_func对应的函数加上static
     .nm_register_func = Init,
     // 模块实现中.nm_modname字段没有与模块名完全匹配，会导致多线程场景模块加载失败
     .nm_modname = "entry",
@@ -335,7 +335,7 @@ static napi_module nativeModule = {
     .reserved = { 0 },
 };
 
-//模块注册的入口函数名为RegisterModule，容易与其他模块重复。
+// 模块注册的入口函数名为RegisterModule，容易与其他模块重复
 extern "C" __attribute__((constructor)) void RegisterModule()
 {
     napi_module_register(&nativeModule);
@@ -435,7 +435,7 @@ export const createMyExternal: () => Object;
 
 // 应用代码
 import testNapi from 'libentry.so';
-import { worker } from '@kit.Arkts';
+import { worker } from '@kit.ArkTS';
 
 const mWorker = new worker.ThreadWorker('../workers/Worker');
 

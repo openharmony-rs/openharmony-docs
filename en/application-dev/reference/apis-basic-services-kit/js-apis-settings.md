@@ -81,7 +81,7 @@ Provides data items for setting the general information about the device. (Not s
 | Name                            | Type  | Read-Only| Optional| Description                                                                                                                                 |
 | -------------------------------- | ------ |----|----|-------------------------------------------------------------------------------------------------------------------------------------|
 | SETUP_WIZARD_FINISHED            | string | Yes | No | Whether the startup wizard has been run.<br>- **0**: The startup wizard is not run.<br>- Other than **0**: The startup wizard has been run.                                                                              |
-| END_BUTTON_ACTION                | string | Yes | No | Action after the call end button is pressed if the user is not in a call.<br>- **0**: Nothing happens.<br>- **1**: The home screen is displayed.<br>- **2**: The device enters sleep mode and the screen is locked.<br>- **3**: The home screen is displayed. If the focus is already on the home screen, the device will enter sleep mode.|
+| END_BUTTON_ACTION                | string | Yes | No | Action after the call end button is pressed if the user is not in a call.<br>- **0**: Nothing happens.<br>- **1**: The home screen is displayed.<br>- **2**: The device enters the sleep state and the screen is locked.<br>- **3**: The home screen is displayed. If the focus is already on the home screen, the device will enter the sleep state.|
 | ACCELEROMETER_ROTATION_STATUS    | string | Yes | No | Whether the accelerometer is used to change screen orientation, that is, whether to enable auto-rotation.<br>- **1**: The accelerometer is used.<br>- **0**: The accelerometer is not used.                                                                     |
 | DEVICE_PROVISION_STATUS          | string | Yes | No | Whether the device is preconfigured.<br>On a multi-user device with a single system user, the screen may be locked when the value is **true**. In addition, other features cannot be started on the system user unless they are marked to display on the lock screen.                                                     |
 | HDC_STATUS                       | string | Yes | No | Whether the hard disk controller (HDC) on the USB device is enabled.<br>- **true**: HDC is enabled.<br>- **false**: HDC is disabled.                                                                     |
@@ -237,7 +237,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', (status) => {
-  console.log('Callback return whether value is set.');
+  console.info('Callback return whether value is set.');
 });
 ```
 
@@ -278,7 +278,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100').then((status) => {
-  console.log('Callback return whether value is set.');
+  console.info('Callback return whether value is set.');
 });
 ```
 
@@ -330,7 +330,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', settings.domainName.DEVICE_SHARED).then((status) => {
-  console.log(`callback:return whether value is set.`)
+  console.info(`callback:return whether value is set.`)
 });
 ```
 
@@ -366,7 +366,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
     console.error(`Failed to get the setting. ${err.message} `);
     return;
   }
-  console.log(`callback:value -> ${value}`)
+  console.info(`callback:value -> ${value}`)
 });
 ```
 
@@ -403,7 +403,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value) => {
-  console.log(`promise:value -> ${value}`)
+  console.info(`promise:value -> ${value}`)
 });
 ```
 
@@ -445,7 +445,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED).then((value) => {
-  console.log(`Promise:value -> ${value}`);
+  console.info(`Promise:value -> ${value}`);
 });
 ```
 
@@ -453,7 +453,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.d
 
 getValueSync(context: Context, name: string, defValue: string): string
 
-Obtains the value of a data item. Unlike **getValue**, this API returns the result synchronously.
+Obtains the value of a data item in the **DEVICE_SHARED** domain of the database. Unlike **getValue**, this API returns the result synchronously.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -532,7 +532,7 @@ let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_ST
 
 setValueSync(context: Context, name: string, value: string): boolean
 
-Sets the value for a data item. Unlike **setValue**, this API returns the result synchronously.
+Sets the value for a data item in the **DEVICE_SHARED** domain of the database. Unlike **setValue**, this API returns the result synchronously.
 
 - If the specified data item exists in the database, the **setValueSync** method updates the value of the data item.
 - If the data item does not exist in the database, the **setValueSync** method inserts the data item into the database.
@@ -659,7 +659,7 @@ import { common } from '@kit.AbilityKit';
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.registerKeyObserver(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED, () => {
   let value:string = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '10');
-  console.log(`Promise:value -> ${value}`);
+  console.info(`Promise:value -> ${value}`);
 });
 ```
 
@@ -743,7 +743,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.openNetworkManagerSettings(context).then((status) => {
-  console.log(`callback:return whether settings is open.`)
+  console.info(`callback:return whether setings is open.`)
 });
 ```
 
@@ -771,7 +771,7 @@ settings.enableAirplaneMode(isEnabled, (err:Error) => {
         console.error('Failed to enable AirplaneMode.');
         return;
     }
-    console.log('Return true if enable.');
+    console.info('Return true if enable.');
 })
 ```
 
@@ -800,7 +800,7 @@ Enables or disables airplane mode. This API uses a promise to return the result.
 ```js
 let isEnabled :boolean = true;
 settings.enableAirplaneMode(isEnabled).then(() => {
-  console.log('Succeeded in enabling AirplaneMode.');
+  console.info('Succeeded in enabling AirplaneMode.');
 }).catch((err:Error) => {
   console.error(`Failed to enable AirplaneMode. Cause: ${err}`);
 })
@@ -828,7 +828,7 @@ settings.canShowFloating((err:Error, status: boolean) => {
     console.error(`Failed to Checks whether a specified application can show as float window ${err.message} `);
     return;
   }
-  console.log('Checks whether a specified application can show as float window.');
+  console.info('Checks whether a specified application can show as float window.');
 });
 ```
 
@@ -850,7 +850,7 @@ Checks whether the application can be displayed in a floating window. This API u
 
 ```js
 settings.canShowFloating().then((status:boolean) => {
-    console.log('Checks whether a specified application can show as float window.');
+    console.info('Checks whether a specified application can show as float window.');
 });
 ```
 
@@ -904,7 +904,7 @@ Obtains the URI of a data item. This API uses an asynchronous callback to return
 
 ```js
 settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS, (uri:string) => {
-    console.log(`callback:uri -> ${JSON.stringify(uri)}`)
+    console.info(`callback:uri -> ${JSON.stringify(uri)}`)
 })
 ```
 
@@ -936,7 +936,7 @@ Obtains the URI of a data item. This API uses a promise to return the result. (N
 
 ```js
 settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => {
-    console.log(`promise:uri -> ${JSON.stringify(uri)}`)
+    console.info(`promise:uri -> ${JSON.stringify(uri)}`)
 })
 ```
 
@@ -976,7 +976,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
         console.error(`Failed to get the setting. ${err.message} `);
         return;
     }
-    console.log(`callback:value -> ${JSON.stringify(value)}`)
+    console.info(`callback:value -> ${JSON.stringify(value)}`)
 });
 ```
 
@@ -1015,7 +1015,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 let uri:string = settings.getUriSync(settings.display.SCREEN_BRIGHTNESS_STATUS);
 let helper = featureAbility.acquireDataAbilityHelper(uri);
 settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS).then((value:string) => {
-    console.log(`promise:value -> ${JSON.stringify(value)}`)
+    console.info(`promise:value -> ${JSON.stringify(value)}`)
 });
 ```
 

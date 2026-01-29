@@ -140,7 +140,7 @@ On each development board, you need to partition the memory to store the precedi
 
   | Name       | Example                                                        | Description                                                        |
   | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | initrd      | 0x84000000,0x292e00                                          | For details, see the kernel documentation:<br>[ramfs-rootfs-initramfs.rst](https://gitee.com/openharmony/kernel_linux_5.10/blob/master/Documentation/filesystems/ramfs-rootfs-initramfs.rst)<br>[initrd.rst](https://gitee.com/openharmony/kernel_linux_5.10/blob/master/Documentation/admin-guide/initrd.rst) |
+  | initrd      | 0x84000000,0x292e00                                          | For details, see the kernel documentation:<br>[ramfs-rootfs-initramfs.rst](https://gitcode.com/openharmony/kernel_linux_5.10/blob/master/Documentation/filesystems/ramfs-rootfs-initramfs.rst)<br>[initrd.rst](https://gitcode.com/openharmony/kernel_linux_5.10/blob/master/Documentation/admin-guide/initrd.rst) |
   | init        | /init                                                        |                                                              |
   | blkdevparts | mmcblk0:1M(boot),15M(kernel),200M(system),200M(vendor),<br>2M(misc),20M(updater),-(userdata) | Partition table information. The kernel creates physical partitions based on the information.                |
   | hardware    | Hi3516D V300, rk3568, etc.                                                 | (Mandatory information) Hardware platform.|

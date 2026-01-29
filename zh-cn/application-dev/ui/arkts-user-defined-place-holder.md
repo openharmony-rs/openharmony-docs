@@ -73,8 +73,10 @@ export function getOrCreateNode(uiContext: UIContext): BuilderNode<[Params]> | n
 // Index.ets
 import { FrameNode, NodeController, Size, UIContext } from '@kit.ArkUI';
 import { getOrCreateNode } from "./common";
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TEST_TAG: string = "NodeContainer";
+const TAG: string = "NodeContainer";
+const DOMAIN = 0xF811;
 
 class MyNodeController extends NodeController {
   private isShow: boolean = false;
@@ -93,19 +95,19 @@ class MyNodeController extends NodeController {
   }
 
   aboutToResize(size: Size) {
-    console.log(TEST_TAG + " aboutToResize width : " + size.width + " height : " + size.height);
+    hilog.info(DOMAIN, TAG,' aboutToResize width : ' + size.width + ' height : ' + size.height);
   }
 
   aboutToAppear() {
-    console.log(TEST_TAG + " aboutToAppear");
+    hilog.info(DOMAIN, TAG,' aboutToAppear');
   }
 
   aboutToDisappear() {
-    console.log(TEST_TAG + " aboutToDisappear");
+    hilog.info(DOMAIN, TAG,' aboutToDisappear');
   }
 
   onTouchEvent(event: TouchEvent) {
-    console.log(TEST_TAG + " onTouchEvent");
+    hilog.info(DOMAIN, TAG,' onTouchEvent');
   }
 
   toShow() {

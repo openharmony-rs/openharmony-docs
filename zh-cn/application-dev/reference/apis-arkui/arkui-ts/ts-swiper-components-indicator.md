@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 导航点组件，提供圆点导航点以及数字导航点两种导航点样式。
 
@@ -24,6 +24,8 @@
 不包含子组件。
 
 ## 接口
+
+### IndicatorComponent
 
 IndicatorComponent(controller?: IndicatorComponentController)
 
@@ -65,7 +67,7 @@ style(indicatorStyle: DotIndicator | DigitIndicator)
 
 > **说明：**
 >
-> 当indicatorStyle的类型为DotIndicator时，[maxDisplayCount](ts-container-swiper.md#maxdisplaycount12)不生效。
+> 当indicatorStyle类型为DotIndicator且未与Swiper组件绑定时，[maxDisplayCount](ts-container-swiper.md#maxdisplaycount12)不生效。
 
 ### count
 
@@ -231,7 +233,7 @@ changeIndex(index: number, useAnimation?: boolean): void
 ## 示例
 
 ### 示例1（圆点单独导航点与Swiper绑定使用）
-该示例通过Swiper组件的indicator接口与IndicatorComponent的构造函数绑定同一IndicatorComponentController对象，实现了圆点单独导航点与Swiper的交互。
+该示例通过[Swiper](ts-container-swiper.md)组件的[Indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了圆点单独导航点与Swiper的交互。
 ```
 @Entry
 @Component
@@ -294,7 +296,7 @@ struct DotIndicatorDemo {
 
 ### 示例2（数字单独导航点与Swiper绑定使用）
 
-该示例通过Swiper组件的indicator接口与IndicatorComponent的构造函数绑定同一IndicatorComponentController对象，实现了数字单独导航点与Swiper的交互。
+该示例通过[Swiper](ts-container-swiper.md)组件的[Indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了数字单独导航点与Swiper的交互。
 
 ```
 @Entry

@@ -145,17 +145,17 @@ Binding for event bubbling covers the following:
   <!-- xxx.hml -->
   <div>
      <!-- Bind an event callback for event bubbling.5+ -->
-      <div on:touchstart.bubble="touchstartfunc"></div>
-      <div on:touchstart="touchstartfunc"></div>
+      <div on:touchstart.bubble="touchstartfunc" style="background-color: red; width: 10%; height: 100%"></div>
+      <div on:touchstart="touchstartfunc" style="background-color: orange; width: 10%; height: 100%"></div>
       <!-- Bind an event callback, but stop the event from bubbling upwards.5+ -->
-      <div grab:touchstart.bubble="touchstartfunc"></div>
-      <div grab:touchstart="touchstartfunc"></div>
+      <div grab:touchstart.bubble="touchstartfunc" style="background-color: yellow; width: 10%; height: 100%"></div>
+      <div grab:touchstart="touchstartfunc" style="background-color: greenyellow; width: 10%; height: 100%"></div>
       <!-- Bind an event callback for event bubbling.6+ -->
-      <div on:click.bubble="clickfunc"></div>
-      <div on:click="clickfunc"></div>
+      <div on:click.bubble="clickfunc" style="background-color: lightskyblue; width: 10%; height: 100%"></div>
+      <div on:click="clickfunc" style="background-color: cornflowerblue; width: 10%; height: 100%"></div>
       <!-- Bind an event callback, but stop the event from bubbling upwards.6+ -->
-      <div grab:click.bubble="clickfunc"></div>
-      <div grab:click="clickfunc"></div>
+      <div grab:click.bubble="clickfunc" style="background-color: mediumslateblue; width: 10%; height: 100%"></div>
+      <div grab:click="clickfunc" style="background-color: purple; width: 10%; height: 100%"></div>
   </div>
   ```
 
@@ -165,7 +165,7 @@ Binding for event bubbling covers the following:
       clickfunc: function(e) {
           console.log(e);
       },
-      touchstartfuc: function(e) {
+      touchstartfunc: function(e) {
           console.log(e);
       },
   }

@@ -41,7 +41,7 @@ Allows the specified origin to use the geolocation information.
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
 | origin | string | Yes  |Index of the origin.|
-| incognito<sup>11+</sup>    | boolean | No  | Whether to allow the specified origin to use the geolocation information in incognito mode. The value **true** means to allow the specified origin to use the geolocation information in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If null or undefined is passed, the value is false.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to allow the specified origin to use the geolocation information in incognito mode. The value **true** means to allow the specified origin to use the geolocation information in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If **null** or **undefined** is passed in, the value is **false**.|
 
 **Error codes**
 
@@ -94,7 +94,7 @@ Clears the geolocation permission status of a specified origin.
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
 | origin | string | Yes  | Index of the origin.|
-| incognito<sup>11+</sup>   | boolean | No  | Whether to clear the geolocation permission status of a specified origin in incognito mode. The value **true** means to clear the geolocation permission status of a specified origin in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If the value is null or undefined, the default value false is used.|
+| incognito<sup>11+</sup>   | boolean | No  | Whether to clear the geolocation permission status of a specified origin in incognito mode. The value **true** means to clear the geolocation permission status of a specified origin in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If **null** or **undefined** is passed in, the value is **false**.|
 
 **Error codes**
 
@@ -390,7 +390,7 @@ Clears the geolocation permission status of all sources.
 
 | Name  | Type                        | Mandatory| Description                                    |
 | -------- | ---------------------------- | ---- | ---------------------------------------- |
-| incognito<sup>11+</sup>    | boolean | No  | Whether to clear the geolocation permission status of all sources in incognito mode. The value **true** means to clear the geolocation permission status of all sources in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If null or undefined is passed, the value is false.|
+| incognito<sup>11+</sup>    | boolean | No  | Whether to clear the geolocation permission status of all sources in incognito mode. The value **true** means to clear the geolocation permission status of all sources in incognito mode, and **false** means the opposite.<br>Default value: **false**.<br>If **null** or **undefined** is passed in, the value is **false**.|
 
 **Example**
 

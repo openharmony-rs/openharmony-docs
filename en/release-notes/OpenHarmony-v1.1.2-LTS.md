@@ -34,7 +34,7 @@ Method 1 \(recommended\): Use the  **repo**  tool to download the source code ov
 
 
 ```shell
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.2-LTS --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.2-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -42,7 +42,7 @@ repo forall -c 'git lfs pull'
 Method 2: Use the  **repo**  tool to download the source code over HTTPS.
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.2-LTS --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v1.1.2-LTS --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -69,25 +69,25 @@ The following table lists the issues known in OpenHarmony 1.1.1 that have been r
 | Subsystem                | PR No.                                                       | Description                                                  |
 | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Application Framework    | aafwk_aafwk_lite/pulls/35                                    | There is a low probability that the Linux system cannot be shut down. |
-| AI                       | [ai_engine/pulls/50](https://gitee.com/openharmony/ai_engine/pulls/50) | The test case for the client is not released.                |
-| AI                       | [ai_engine/pulls/46](https://gitee.com/openharmony/ai_engine/pulls/46) | Class members are not initialized.                           |
-| IoT Hardware             | [applications_sample_wifi_iot/pulls/12](https://gitee.com/openharmony/applications_sample_wifi_iot/pulls/12) | A build fails.                                               |
-| Compilation and Building | [build_lite/pulls/151](https://gitee.com/openharmony/build_lite/pulls/151) | The test case is not available in the build process.         |
-| Chip Platform            | [third_party_ffmpeg/pulls/9](https://gitee.com/openharmony/device_hisilicon_third_party_ffmpeg/pulls/9) | The CVE-2020-22025 vulnerability is detected.                |
-| Chip Platform            | [third_party_ffmpeg/pulls/6](https://gitee.com/openharmony/device_hisilicon_third_party_ffmpeg/pulls/6) | A build fails due to the dependency on valgrind in some environments. |
-| Chip Platform            | [vendor_hisilicon/pulls/39](https://gitee.com/openharmony/vendor_hisilicon/pulls/39) | Building the release fails.                                  |
+| AI                       | [ai_engine/pulls/50](https://gitcode.com/openharmony/ai_engine/pulls/50) | The test case for the client is not released.                |
+| AI                       | [ai_engine/pulls/46](https://gitcode.com/openharmony/ai_engine/pulls/46) | Class members are not initialized.                           |
+| IoT Hardware             | [applications_sample_wifi_iot/pulls/12](https://gitcode.com/openharmony/applications_sample_wifi_iot/pulls/12) | A build fails.                                               |
+| Compilation and Building | [build_lite/pulls/151](https://gitcode.com/openharmony/build_lite/pulls/151) | The test case is not available in the build process.         |
+| Chip Platform            | [third_party_ffmpeg/pulls/9](https://gitcode.com/openharmony/device_hisilicon_third_party_ffmpeg/pulls/9) | The CVE-2020-22025 vulnerability is detected.                |
+| Chip Platform            | [third_party_ffmpeg/pulls/6](https://gitcode.com/openharmony/device_hisilicon_third_party_ffmpeg/pulls/6) | A build fails due to the dependency on valgrind in some environments. |
+| Chip Platform            | [vendor_hisilicon/pulls/39](https://gitcode.com/openharmony/vendor_hisilicon/pulls/39) | Building the release fails.                                  |
 | Distributed Scheduler    | distributedschedule_dms_fwk_lite/pulls/23                    | The test case name is inappropriate.                         |
 | Distributed Scheduler    | distributedschedule_samgr_lite/pulls/25                      | The CVE-2021-22478 vulnerability is detected.                |
-| Globalization            | [global_i18n_lite/pulls/24](https://gitee.com/openharmony/global_i18n_lite/pulls/24) | Resource loading of **i18n.dat** is defective.               |
-| Globalization            | [third_party_jerryscript/pulls/22](https://gitee.com/openharmony/third_party_jerryscript/pulls/22) | There is a possibility that the breakpoint cannot be stopped during debugging of the macOS version. |
-| Graphics                 | [graphic_ui/pulls/220](https://gitee.com/openharmony/graphic_ui/pulls/220) | The Remove function is provided, but the Add function is not. After the modification, the child nodes are not cleared when the **UIViewGroup** is destructed. |
-| Graphics                 | [graphic_ui/pulls/199](https://gitee.com/openharmony/graphic_ui/pulls/199) | The image is not updated after the image path is updated.    |
-| Lite Kernel              | [kernel_liteos_a/pulls/385](https://gitee.com/openharmony/kernel_liteos_a/pulls/385) | The CVE-2021-22479 vulnerability is detected.                |
-| Lite Kernel              | [kernel_liteos_a/pulls/299](https://gitee.com/openharmony/kernel_liteos_a/pulls/299) | There are unnecessary maintenance and test logs of the PRINTK function. |
-| Lite Kernel              | [third_party_musl/pulls/44](https://gitee.com/openharmony/third_party_musl/pulls/44) | The implementation of the srand function for setting random number seeds is inappropriate. |
-| Startup                  | [startup_syspara_lite/pulls/31](https://gitee.com/openharmony/startup_syspara_lite/pulls/31) | The date of the security patch is incorrect.                 |
-| Driver                   | [drivers_adapter_khdf_linux/pulls/28](https://gitee.com/openharmony/drivers_adapter_khdf_linux/pulls/28) | The CVE-2021-22441 vulnerability is detected.                |
-| Driver                   | [drivers_adapter/pulls/50](https://gitee.com/openharmony/drivers_adapter/pulls/50) | The CVE-2021-22480 vulnerability is detected.                |
+| Globalization            | [global_i18n_lite/pulls/24](https://gitcode.com/openharmony/global_i18n_lite/pulls/24) | Resource loading of **i18n.dat** is defective.               |
+| Globalization            | [third_party_jerryscript/pulls/22](https://gitcode.com/openharmony/third_party_jerryscript/pulls/22) | There is a possibility that the breakpoint cannot be stopped during debugging of the macOS version. |
+| Graphics                 | [graphic_ui/pulls/220](https://gitcode.com/openharmony/graphic_ui/pulls/220) | The Remove function is provided, but the Add function is not. After the modification, the child nodes are not cleared when the **UIViewGroup** is destructed. |
+| Graphics                 | [graphic_ui/pulls/199](https://gitcode.com/openharmony/graphic_ui/pulls/199) | The image is not updated after the image path is updated.    |
+| Lite Kernel              | [kernel_liteos_a/pulls/385](https://gitcode.com/openharmony/kernel_liteos_a/pulls/385) | The CVE-2021-22479 vulnerability is detected.                |
+| Lite Kernel              | [kernel_liteos_a/pulls/299](https://gitcode.com/openharmony/kernel_liteos_a/pulls/299) | There are unnecessary maintenance and test logs of the PRINTK function. |
+| Lite Kernel              | [third_party_musl/pulls/44](https://gitcode.com/openharmony/third_party_musl/pulls/44) | The implementation of the srand function for setting random number seeds is inappropriate. |
+| Startup                  | [startup_syspara_lite/pulls/31](https://gitcode.com/openharmony/startup_syspara_lite/pulls/31) | The date of the security patch is incorrect.                 |
+| Driver                   | [drivers_adapter_khdf_linux/pulls/28](https://gitcode.com/openharmony/drivers_adapter_khdf_linux/pulls/28) | The CVE-2021-22441 vulnerability is detected.                |
+| Driver                   | [drivers_adapter/pulls/50](https://gitcode.com/openharmony/drivers_adapter/pulls/50) | The CVE-2021-22480 vulnerability is detected.                |
 | Testing                  | [xts_acts/pulls/294](https://gitcode.com/openharmony/xts_acts/pulls/294) | Certain test cases of the fs_posix module are unstable.      |
 | Testing                  | [xts_acts/pulls/287](https://gitcode.com/openharmony/xts_acts/pulls/287) | The acts test fails.                                         |
 | Testing                  | [xts_acts/pulls/283](https://gitcode.com/openharmony/xts_acts/pulls/283) | Certain CMSIS test cases fail occasionally.                  |

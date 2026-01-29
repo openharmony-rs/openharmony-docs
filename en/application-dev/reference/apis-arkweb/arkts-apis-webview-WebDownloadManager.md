@@ -30,7 +30,7 @@ Sets the delegate used to receive download progress triggered by **WebDownloadMa
 
 > **NOTE**
 >
->Before calling this API, if the web component has not been created and the initializeWebEngine method has not been called to initialize the web engine, you must call initializeWebEngine to initialize the web engine. Otherwise, the API call is invalid.
+>Before calling this API, you must call the **initializeWebEngine** method to initialize the web kernel. Otherwise, calling this API is invalid.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -137,7 +137,7 @@ Resumes a failed download task.
 
 > **NOTE**
 >
->Before calling this API, if the web component has not been created and the initializeWebEngine method has not been called to initialize the web engine, you must call the initializeWebEngine method to initialize the web engine. Otherwise, the API call is invalid.
+>Before calling this API, you must call the **initializeWebEngine** method to initialize the web kernel. Otherwise, calling this API is invalid.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

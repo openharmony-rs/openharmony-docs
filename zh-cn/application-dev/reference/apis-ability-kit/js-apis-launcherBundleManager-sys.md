@@ -25,7 +25,7 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 
 getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
 
-查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)，使用callback异步回调。
+查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -61,18 +61,18 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100,
-        (errData: BusinessError, data: launcherBundleManager.LauncherAbilityInfo[]) => {
-        if (errData !== null) {
-            console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-        } else {
-            console.info('data is ' + JSON.stringify(data));
-        }
+  launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100,
+    (errData: BusinessError, data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      if (errData !== null) {
+        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+      } else {
+        console.info('data is ' + JSON.stringify(data));
+      }
     })
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -80,7 +80,7 @@ try {
 
 getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
 
-查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)，使用Promise异步回调。
+查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -121,16 +121,16 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
-        .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
-        console.info('data is ' + JSON.stringify(data));
-    }).catch ((errData: BusinessError) => {
-        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-    })
+  launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
+    .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      console.info('data is ' + JSON.stringify(data));
+    }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  })
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -138,7 +138,7 @@ try {
 
 getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
 
-查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)，使用callback异步回调。
+查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -172,25 +172,25 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getAllLauncherAbilityInfo(100,
-        (errData: BusinessError, data: launcherBundleManager.LauncherAbilityInfo[]) => {
-        if (errData !== null) {
-            console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-        } else {
-            console.info('data is ' + JSON.stringify(data));
-        }
+  launcherBundleManager.getAllLauncherAbilityInfo(100,
+    (errData: BusinessError, data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      if (errData !== null) {
+        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+      } else {
+        console.info('data is ' + JSON.stringify(data));
+      }
     });
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 ## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
 
 getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
 
-查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)，使用Promise异步回调。
+查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -229,16 +229,16 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getAllLauncherAbilityInfo(100)
-        .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
-        console.info('data is ' + JSON.stringify(data));
-    }).catch ((errData: BusinessError) => {
-        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-    });
+  launcherBundleManager.getAllLauncherAbilityInfo(100)
+    .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      console.info('data is ' + JSON.stringify(data));
+    }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  });
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -246,7 +246,7 @@ try {
 
 getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>) : void
 
-查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)，使用callback异步回调。
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -274,6 +274,7 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -282,18 +283,18 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getShortcutInfo("com.example.demo",
-        (errData: BusinessError, data: launcherBundleManager.ShortcutInfo[]) => {
-        if (errData !== null) {
-            console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-        } else {
-            console.info('data is ' + JSON.stringify(data));
-        }
+  launcherBundleManager.getShortcutInfo("com.example.demo",
+    (errData: BusinessError, data: launcherBundleManager.ShortcutInfo[]) => {
+      if (errData !== null) {
+        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+      } else {
+        console.info('data is ' + JSON.stringify(data));
+      }
     });
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -301,7 +302,7 @@ try {
 
 getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
-查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)，使用Promise异步回调。
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -334,6 +335,7 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -342,16 +344,16 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    launcherBundleManager.getShortcutInfo("com.example.demo")
-        .then((data: launcherBundleManager.ShortcutInfo[]) => {
-        console.info('data is ' + JSON.stringify(data));
-    }).catch ((errData: BusinessError) => {
-        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-    });
+  launcherBundleManager.getShortcutInfo("com.example.demo")
+    .then((data: launcherBundleManager.ShortcutInfo[]) => {
+      console.info('data is ' + JSON.stringify(data));
+    }).catch((errData: BusinessError) => {
+    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+  });
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -392,6 +394,7 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -400,12 +403,12 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data = launcherBundleManager.getShortcutInfoSync("com.example.demo");
-    console.info('data is ' + JSON.stringify(data));
+  let data = launcherBundleManager.getShortcutInfoSync("com.example.demo");
+  console.info('data is ' + JSON.stringify(data));
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -447,7 +450,8 @@ getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not support. |
 | 17700001 | The specified bundle name is not found.  |
-| 17700004 | The specified user ID is not found.     |
+| 17700004 | The specified user ID is not found.      |
+| 17700026 | The specified bundle is disabled.        |
 
 **示例：**
 
@@ -456,12 +460,12 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
-    console.info('data is ' + JSON.stringify(data));
+  let data = launcherBundleManager.getShortcutInfoSync("com.example.demo", 100);
+  console.info('data is ' + JSON.stringify(data));
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -469,7 +473,7 @@ try {
 
 startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void\>
 
-拉起指定[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)中的ability，使用Promise异步回调。
+拉起指定[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)中的ability。使用Promise异步回调。
 
 **需要权限：** ohos.permission.START_SHORTCUT
 
@@ -509,26 +513,26 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data : Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.demo");
-    console.info('data is ' + JSON.stringify(data));
-    if (data) {
-        try {
-            launcherBundleManager.startShortcut(data[0])
-                .then(() => {
-                console.info('startShortcut success');
-            }).catch ((err: BusinessError) => {
-                console.error(`errData is errCode:${err.code}  message:${err.message}`);
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`error is errCode:${code}  message:${message}`);
-        }
+  let data: Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.demo");
+  console.info('data is ' + JSON.stringify(data));
+  if (data) {
+    try {
+      launcherBundleManager.startShortcut(data[0])
+        .then(() => {
+          console.info('startShortcut success');
+        }).catch((err: BusinessError) => {
+        console.error(`errData is errCode:${err.code}  message:${err.message}`);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`error is errCode:${code}  message:${message}`);
     }
+  }
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -580,27 +584,28 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { AbilityConstant } from '@kit.AbilityKit';
 
 try {
-    let data : Array<launcherBundleManager.ShortcutInfo> = launcherBundleManager.getShortcutInfoSync("com.example.myapplication");
-    console.info('startShortcutWithReason data is ' + JSON.stringify(data));
-    let startReason = AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT;
-    if (data) {
-        try {
-            launcherBundleManager.startShortcutWithReason(data[0], startReason)
-                .then(() => {
-                console.info('startShortcutWithReason success');
-            }).catch ((err: BusinessError) => {
-                console.error(`startShortcutWithReason errData is errCode:${err.code}  message:${err.message}`);
-            });
-        } catch (error) {
-            let code = (error as BusinessError).code;
-            let message = (error as BusinessError).message;
-            console.error(`startShortcutWithReason error is errCode:${code}  message:${message}`);
-        }
+  let data: Array<launcherBundleManager.ShortcutInfo> =
+    launcherBundleManager.getShortcutInfoSync("com.example.myapplication");
+  console.info('startShortcutWithReason data is ' + JSON.stringify(data));
+  let startReason = AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT;
+  if (data) {
+    try {
+      launcherBundleManager.startShortcutWithReason(data[0], startReason)
+        .then(() => {
+          console.info('startShortcutWithReason success');
+        }).catch((err: BusinessError) => {
+        console.error(`startShortcutWithReason errData is errCode:${err.code}  message:${err.message}`);
+      });
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`startShortcutWithReason error is errCode:${code}  message:${message}`);
     }
+  }
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`startShortcutWithReason errData is errCode:${code}  message:${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`startShortcutWithReason errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -650,11 +655,11 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let data = launcherBundleManager.getShortcutInfoByAppIndex("com.example.demo", 1);
-    console.info('getShortcutInfoByAppIndex successfully, data is ' + JSON.stringify(data));
+  let data = launcherBundleManager.getShortcutInfoByAppIndex("com.example.demo", 1);
+  console.info('getShortcutInfoByAppIndex successfully, data is ' + JSON.stringify(data));
 } catch (errData) {
-    let code = (errData as BusinessError).code;
-    let message = (errData as BusinessError).message;
-    console.error(`Failed to getShortcutInfoByAppIndex. Code: ${code}, message: ${message}`);
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`Failed to getShortcutInfoByAppIndex. Code: ${code}, message: ${message}`);
 }
 ```

@@ -4,16 +4,16 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+Flash inherits from [FlashQuery](arkts-apis-camera-FlashQuery.md).
+
+It provides APIs related to the flash.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-Flash inherits from [FlashQuery](arkts-apis-camera-FlashQuery.md).
-
-It provides APIs related to the flash.
 
 ## Modules to Import
 
@@ -80,7 +80,7 @@ Obtains the flash mode in use.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [FlashMode](arkts-apis-camera-e.md#flashmode)    | Flash mode obtained. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [FlashMode](arkts-apis-camera-e.md#flashmode)    | Flash mode obtained. If the operation fails, undefined is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown.|
 
 **Error codes**
 

@@ -41,8 +41,11 @@ DevEco Studio开关：
 ```
 - 如果是入参问题，一般so在崩溃栈上的位置比较浅（不会跑到#10这种离栈顶很远的位置），不过也可以按照这个思路进行排查。  
 - 排查思路参考：  
-a. 排查有没有napi_value未初始化，还没赋值成功，直接作为非法入参传递给接口了  
-b. 排查有没有在这个易错API列表里面找到相应的篇章。[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
+a. 排查有没有napi_value未初始化，还没赋值成功，直接作为非法入参传递给接口了。
+b. 排查有没有在这个易错API列表里面找到相应的篇章。
+
+  可参考文档：  
+  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
 
 ## 线程池中并发调用ArkTS方法如何处理线程安全问题
 
@@ -64,9 +67,9 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。[方舟�
 
 - 排查建议：  
 1. 确认是否napi_value出了scope还在使用，导致use-after-scope问题。  
-可参考文档：   
-[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)  
-2. 保存时建议使用napi_ref，而不是直接保存napi_value  
+可参考文档：  
+[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
+2. 保存时建议使用napi_ref，而不是直接保存napi_value。
 
 ## 是否存在获取最新napi_env的方法
 
@@ -93,9 +96,8 @@ Node-API没有提供直接获取napi_env的能力，只能通过逐层函数调�
 如果有类似逻辑，需使用napi_ref进行存储，napi_ref可以延长生命周期。  
 
 - 可参考文档：  
-[napi_create_reference、napi_delete_reference](use-napi-life-cycle.md)
-
-[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)    
+  [napi_create_reference、napi_delete_reference](use-napi-life-cycle.md)  
+  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615) 
 
 ## napi_add_env_cleanup_hook调用报错该如何处理
 
@@ -133,3 +135,108 @@ static napi_value Test(napi_env env, napi_callback_info info)
 相关参考资料链接：
 [使用Node-API接口注册和使用环境清理钩子](use-napi-about-cleanuphook.md)
 [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
+
+## napi_open_handle_scope与napi_close_handle_scope进行生命周期相关开发典型错误场景
+
+- 具体问题：使用napi_open_handle_scope与napi_close_handle_scope接口管理ArkTS对象时出现稳定性问题，该如何处理？  
+`napi_open_handle_scope` 和 `napi_close_handle_scope` 调用出现稳定性问题，常见原因如下，均为接口使用不当导致。  
+1. 未配对使用`napi_open_handle_scope` 和 `napi_close_handle_scope`，只打开了一个scope而没有关闭，会导致内存泄漏，且可能触发程序崩溃。 
+2. 未按照与打开scope顺序相反的顺序关闭scope，可能引发踩内存问题。在例如open_scope1，open_scope2，close_scope1，close_scope2这种场景下，close_scope1之后指针返回，极有可能覆写scope2中的内存造成踩内存问题。  
+3. 在native方法中创建的scope未在该方法返回之前被关闭，导致函数重入时scope配对混乱，发生稳定性问题。  
+
+常见错误场景示例如下：
+
+```cpp
+#include "napi/native_api.h"
+#include <hilog/log.h>
+
+// 1. 全局Scope
+static napi_handle_scope g_globalScope = nullptr;
+
+static napi_value CallFunction(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value argv[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    
+    napi_valuetype type = napi_undefined;
+    if (argv[0] == nullptr || napi_typeof(env, argv[0], &type) != napi_ok || type != napi_function) {
+        OH_LOG_INFO(LOG_APP, "JS函数参数非法");
+        napi_value errRet = nullptr;
+        napi_create_int32(env, -1, &errRet);
+        return errRet;
+    }
+
+    if (!g_globalScope) {
+        OH_LOG_INFO(LOG_APP, "【首次调用】全局Scope为空，执行open");
+        napi_open_handle_scope(env, &g_globalScope);
+        // 首次调用：执行JS函数
+        napi_value global = nullptr;
+        napi_get_global(env, &global);
+        napi_value result = nullptr;
+        napi_call_function(env, global, argv[0], argc, argv, &result);
+        return result; // 首次调用直接返回，不执行后续close逻辑
+    } else {
+        // 重入调用：直接返回固定值 + 关闭Scope
+        napi_value result = nullptr;
+        napi_create_int32(env, 10, &result);
+        OH_LOG_INFO(LOG_APP, "【重入调用】全局Scope非空，执行close");
+        napi_close_handle_scope(env, g_globalScope);
+        g_globalScope = nullptr;
+        return result;
+    }
+}
+```
+接口声明
+```ts
+// index.d.ts
+export const callFunction : (func : Function) => void;
+```
+ArkTS侧示例代码
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+
+function reenterFunc(count = 1) : void{
+  hilog.info(0x0000, 'testTag', `【JS侧】递归`);
+  if (count <= 0) {
+    return;
+  }
+  testNapi.callFunction(() => reenterFunc(count - 1));
+  hilog.info(0x0000, 'testTag', `【JS侧】重入调用`);
+  return;
+}
+
+try {
+  testNapi.callFunction(reenterFunc);
+  hilog.info(0x0000, 'testTag', '【执行完成】');
+} catch (error) {
+  hilog.error(0x0000, 'testTag', `调用错误：${error.message}`);
+}
+```
+CMakeLists.txt
+```text
+cmake_minimum_required(VERSION 3.5.0)
+project(Test)
+
+set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+if(DEFINED PACKAGE_FIND_FILE)
+    include(${PACKAGE_FIND_FILE})
+endif()
+
+include_directories(${NATIVERENDER_ROOT_PATH}
+                    ${NATIVERENDER_ROOT_PATH}/include)
+
+add_library(entry SHARED napi_init.cpp)
+add_definitions( "-DLOG_DOMAIN=0xd0d0" )
+add_definitions( "-DLOG_TAG=\"testTag\"" )
+target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
+```
+- 修复建议：
+1. `napi_open_handle_scope`和`napi_close_handle_scope`必须配对使用，开发者应当自查。  
+2. 所有的scope必须按照与打开顺序相反的顺序关闭。  
+3. 在native方法中创建的所有scope必须在该方法返回之前被关闭。  
+
+相关参考资料链接：
+[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)

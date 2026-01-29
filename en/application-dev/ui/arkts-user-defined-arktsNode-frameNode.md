@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -1873,7 +1873,7 @@ struct Index {
 }
 ```
 
-## Adjusting the Transformation Matrix of the Custom Canvas
+## Adjusting the Transformation Matrix of the Custom Drawing Canvas
 
 Since API version 12, you can override the default drawing method by overriding the [onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12) method of FrameNode.
 

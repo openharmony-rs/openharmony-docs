@@ -323,16 +323,7 @@ The encoding parameters (format and bit rate) and container format of the source
 <!--RP1--><!--RP1End-->
 - The following source video formats are supported:
 
-   | Container Format | Video Encoding Type  | Audio Encoding Type  |
-   | -------- | :----------------------------| :----------------------------|
-   | mp4      | AVC (H.264)<!--RP2--><!--RP2End-->, MPEG4| AAC, MPEG (MP3)|
-   | mkv      | AVC (H.264)<!--RP3--><!--RP3End--> | AAC, MPEG (MP3), OPUS|
-   | mpeg-ts  | AVC (H.264)<!--RP4--><!--RP4End-->, MPEG2, MPEG4| AAC, MPEG (MP3)<!--RP5--><!--RP5End-->|
-   | flv      | AVC (H.264)<!--RP6--><!--RP6End--> |  AAC  |
-   | mpeg-ps  | AVC (H.264), MPEG2|    MPEG (MP2, MP3)|
-   | avi      | H.263, AVC (H.264), MPEG2, MPEG4 | AAC, MPEG (MP2, MP3), PCM|
-
-   For details about the source video formats supported by transcoding, see [AVCodec Supported Formats](../avcodec/avcodec-support-formats.md#media-data-multiplexing).
+   The source video formats supported by transcoding depend on the formats supported by the system decoder and demuxer. For details, see [AVCodec Supported Formats](../avcodec/avcodec-support-formats.md#media-data-demultiplexing).
 
 - The following target video formats are supported:
 

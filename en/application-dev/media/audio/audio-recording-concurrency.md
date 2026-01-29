@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Audio input sources usually consist of audio data captured by built-in microphones, external devices, or remote distributed devices. They can also be audio data sent by other applications to the system for playback. Depending on the audio source, audio input can be categorized into two types: internal recording and external recording.
 
@@ -35,7 +35,7 @@ The current system version has relaxed some restrictions on concurrent recording
 
 In most cases, the quality of audio data depends on the optimization processing strategy of the system for audio input data.
 
-When an application initiates audio recording, the system identifies the audio scenario based on the audio stream type and other related parameters sent by the application, and selects an appropriate processing strategy to handle the input data. For instance, when an application initiates a VoIP call, the system performs noise reduction and voice enhancement optimizations on the VoIP audio stream.
+When an application initiates audio recording, the system identifies the audio scenario based on the audio stream type and other related parameters sent by the application, and selects an appropriate strategy to handle the input data. For instance, when an application initiates a VoIP call, the system performs noise reduction and voice enhancement optimizations on the VoIP audio stream.
 
 Some audio recording stream types only need to obtain audio input data, whereas others heavily rely on the system's optimization processing. Improper handling may lead to a poor experience. Therefore, for these audio recording stream types, it is necessary to ensure that the system can still configure appropriate optimization processing strategies during concurrent recording. To this end, the system configures priorities for these audio recording stream types and adds a priority adjustment scheme on top of the existing [audio focus strategies](audio-playback-concurrency.md#audio-focus-strategy).
 

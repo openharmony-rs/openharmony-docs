@@ -24,7 +24,7 @@
 ## 概述
 
 组件冻结的工作原理是：
-1. 开发者通过设置freezeWhenInactive属性，即可激活组件冻结机制。
+1. 开发者通过设置[freezeWhenInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)属性，即可激活组件冻结机制。
 2. 启用后，系统将仅对处于激活状态的自定义组件进行更新，这使得UI框架可以尽量缩小更新范围，仅限于用户可见范围内（激活状态）的自定义组件，从而提高复杂UI场景下的刷新效率。
 3. 当之前处于inactive状态的自定义组件重新变为active状态时，状态管理框架会对其执行必要的刷新操作，确保UI的正确展示。
 

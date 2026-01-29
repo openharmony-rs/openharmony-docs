@@ -991,7 +991,7 @@ on(type: 'extInfoChange', callback: (extensionId: string, info: string) => void)
 import { print } from '@kit.BasicServicesKit';
 
 print.on('extInfoChange', (extensionId: string, info: string) => {
-    console.info('onExtInfoChange, entensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
+    console.info('onExtInfoChange, extensionId : ' + JSON.stringify(extensionId) + ', info : ' + JSON.stringify(info));
 })
 ```
 
@@ -1703,9 +1703,9 @@ print.queryAllPrintJobs().then(() => {
 })
 ```
 
-## print.queryAllActivePrintJobList<sup>20+</sup>
+## print.queryAllActivePrintJobs<sup>20+</sup>
 
-queryAllActivePrintJobList(): Promise&lt;[PrintJob](#printjob)[]&gt;
+queryAllActivePrintJobs(): Promise&lt;[PrintJob](#printjob)[]&gt;
 
 查询所有活跃中的打印任务，使用Promise进行异步回调。
 
@@ -1735,10 +1735,10 @@ queryAllActivePrintJobList(): Promise&lt;[PrintJob](#printjob)[]&gt;
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-print.queryAllActivePrintJobList().then((printJobs : print.PrintJob[]) => {
-    console.info('queryPrinqueryAllActivePrintJobListtJobList success, data : ' + JSON.stringify(printJobs));
+print.queryAllActivePrintJobs().then((printJobs : print.PrintJob[]) => {
+    console.info('queryAllActivePrintJobs success, data : ' + JSON.stringify(printJobs));
 }).catch((error: BusinessError) => {
-    console.error('queryAllActivePrintJobList failed, error : ' + JSON.stringify(error));
+    console.error('queryAllActivePrintJobs failed, error : ' + JSON.stringify(error));
 })
 ```
 

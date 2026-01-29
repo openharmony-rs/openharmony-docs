@@ -17,7 +17,7 @@ BackupExtensionAbility模块提供备份恢复服务相关扩展能力，为应�
 ## 导入模块
 
 ```ts
-import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
+import { BackupExtensionAbility } from '@kit.CoreFileKit';
 ```
 
 ### getBackupInfo<sup>12+</sup>

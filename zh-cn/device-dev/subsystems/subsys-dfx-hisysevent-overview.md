@@ -19,4 +19,4 @@ HiSysEvent包括HiSysEvent打点配置、HiSysEvent打点、HiSysEvent订阅、H
 
 ## 参考
 
-如果您想了解更多关于HiSysEvent特性的源码及使用信息，请参考[HiSysEvent代码仓](https://gitee.com/openharmony/hiviewdfx_hisysevent)。
+如果您想了解更多关于HiSysEvent特性的源码及使用信息，请参考[HiSysEvent代码仓](https://gitcode.com/openharmony/hiviewdfx_hisysevent)。

@@ -1,12 +1,16 @@
 # NodeController
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 The **NodeController** module provides APIs for managing custom nodes, such as creating, showing, and updating custom nodes, and APIs for mounting custom nodes to a [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> 
-> **NodeController** is not available in DevEco Studio Previewer.
 
 ## Modules to Import
 
@@ -16,7 +20,7 @@ import {  NodeController  } from '@kit.ArkUI';
 
 ## NodeController
 
-Implements a **NodeController** instance to manage the bound [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component. One **NodeController** instance can be bound to only one [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component.
+Implements a **NodeController** instance to manage the bound [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component. One **NodeController** instance can be bound to only one [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component. For best practices, see [Dynamic Component Creation: Dynamically Adding, Updating, and Deleting Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -37,13 +41,13 @@ This callback can also be invoked through the **rebuild()** method of **NodeCont
 
 | Name   | Type                                     | Mandatory| Description                                                                                                         |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------- |
-| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context of the bound **NodeContainer** component.|
+| uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | Yes  | UI context of the bound [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component.|
 
 **Return value**
 
 | Type            | Description                                                                                                                                                                                                                                                       |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [FrameNode](./js-apis-arkui-frameNode.md)\| null | **FrameNode** object, which will be mounted to the placeholder node of the **NodeContainer** component. If a **null** object is returned, the child nodes of the corresponding **NodeContainer** component are removed.|
+| [FrameNode](./js-apis-arkui-frameNode.md)\| null | **FrameNode** object, which will be mounted to the placeholder node of the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component. If a null object is returned, the child nodes of the corresponding [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component are removed.|
 
 ### aboutToAppear
 
@@ -63,7 +67,7 @@ Called after the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) 
 
 aboutToDisappear?(): void
 
-Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component bound to this **NodeController** instance is detached and about to be hidden.
+Called when the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) component bound to this **NodeController** instance is destroyed.
 
 > **NOTE**
 >
@@ -210,7 +214,7 @@ Instructs the [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) com
 > **NOTE**
 > Since the **rebuild** API is actively called by the application and is tied to the UI, you need to ensure that the UI context is valid at the time of the call, that is, it must be consistent with the UI context of the bound NodeContainer.
 >
-> In cases where the UI context is unclear, for example, during event callbacks, you can use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) method of [UIContext](./arkts-apis-uicontext-uicontext.md) to explicitly define the UI context at the time of the call.
+> In cases where the [UI context is unclear](../../ui/arkts-global-interface.md#ambiguous-ui-context), for example, during event callbacks, you can use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) method of [UIContext](./arkts-apis-uicontext-uicontext.md) to explicitly define the UI context at the time of the call.
 
 ## Example
 
@@ -253,19 +257,19 @@ class MyNodeController extends NodeController {
   }
 
   aboutToResize(size: Size) {
-    console.log("aboutToResize width : " + size.width + " height : " + size.height)
+    console.info("aboutToResize width : " + size.width + " height : " + size.height)
   }
 
   aboutToAppear() {
-    console.log("aboutToAppear")
+    console.info("aboutToAppear")
   }
 
   aboutToDisappear() {
-    console.log("aboutToDisappear");
+    console.info("aboutToDisappear");
   }
 
   onTouchEvent(event:TouchEvent) {
-    console.log("onTouchEvent");
+    console.info("onTouchEvent");
   }
 }
 
@@ -293,7 +297,7 @@ This example demonstrates how to manage the lifecycle of a **NodeContainer** com
 when it is bound or unbound, using **onAttach**, **onDetach**, **onWillBind**, **onWillUnbind**, **onBind**, and **onUnbind**.
 
 ```ts
-import { NodeController, BuilderNode, Size, FrameNode, UIContext } from '@kit.ArkUI';
+import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 class Params {
   text: string = "this is a text"
 }
@@ -322,27 +326,27 @@ class MyNodeController extends NodeController {
   }
 
   onAttach(): void {
-    console.log("myButton on attach");
+    console.info("myButton on attach");
   }
 
   onDetach(): void {
-    console.log("myButton on detach");
+    console.info("myButton on detach");
   }
 
   onWillBind(containerId: number): void{
-    console.log("myButton on WillBind" + containerId);
+    console.info("myButton on WillBind" + containerId);
   }
 
   onWillUnbind(containerId: number): void{
-    console.log("myButton on WillUnbind" + containerId);
+    console.info("myButton on WillUnbind" + containerId);
   }
 
   onBind(containerId: number): void {
-    console.log("myButton on bind: " + containerId);
+    console.info("myButton on bind: " + containerId);
   }
 
   onUnbind(containerId: number): void {
-    console.log("myButton on unbind: " + containerId);
+    console.info("myButton on unbind: " + containerId);
   }
 }
 

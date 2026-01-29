@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Rating** component provides a rating bar.
 
@@ -265,7 +265,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   |    Read Only   |    Optional     |  Description             |
+| Name | Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | rating    | number  | No| No| Value to rate.<br>Default value: **0**<br>Value range: [0, stars]<br>Values less than 0 are treated as **0**, and values greater than the value of [stars](#stars) are treated as the value of **stars**.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
 | indicator | boolean | No| No| Whether the rating bar is used as an indicator.<br>**true**: The rating bar is used as an indicator.<br>**false**: The rating bar is not used as an indicator.<br>Default value: **false**|
@@ -287,7 +287,7 @@ Information about the rating component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                  | Type   | Read Only| Optional| Description                                                        |
+| Name                  | Type   | Read-Only| Optional| Description                                                        |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | rating<sup>7+</sup>    | number  | No  | No  | Value to rate.<br>Default value: **0**<br>Value range: [0, stars]<br>Values less than 0 are treated as **0**, and values greater than the value of [stars](#stars) are treated as the value of **stars**.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | indicator<sup>7+</sup> | boolean | No  | Yes  | Sets the rating component to be used as an indicator. If the value is true, the rating cannot be changed.<br>Default value: **false**<br>**NOTE**<br>When **indicator** is set to **true**, the default component height is 12.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>When **indicator** is set to **false**, the default component height is 28.0 vp, and the component width is calculated as follows: Height x Value of **stars**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -306,7 +306,7 @@ Styles of the selected, unselected, and partially selected stars of the rating c
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                      | Type  | Read Only| Optional| Description                                                        |
+| Name                      | Type  | Read-Only| Optional| Description                                                        |
 | -------------------------- | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the unselected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>This API can be used to set resources since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
 | foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>This API can be used to set resources since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|

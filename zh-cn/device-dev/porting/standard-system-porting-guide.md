@@ -417,4 +417,4 @@ Wi-Fi驱动分为两部分，一部分负责管理WLAN设备，另一个部分�
 
 ### 开发移植示例
 
-开发移植示例请参考[DAYU开发板](https://gitee.com/openharmony-sig/devboard_device_hihope_build/blob/master/DAYU%20%E5%B9%B3%E5%8F%B0OpenHarmony%20%E9%80%82%E9%85%8D%E6%8C%87%E5%AF%BC%20-202108.pdf)。
+开发移植示例请参考[DAYU开发板](https://gitcode.com/openharmony-sig/devboard_device_hihope_build/blob/master/DAYU%20%E5%B9%B3%E5%8F%B0OpenHarmony%20%E9%80%82%E9%85%8D%E6%8C%87%E5%AF%BC%20-202108.pdf)。

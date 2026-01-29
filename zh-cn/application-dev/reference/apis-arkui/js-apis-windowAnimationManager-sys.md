@@ -22,6 +22,8 @@ setController(controller: WindowAnimationController): void
 
 在使用windowAnimationManager的其他接口前，需要预先调用本接口设置窗口动画控制器。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -35,37 +37,37 @@ setController(controller: WindowAnimationController): void
 ```ts
 let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
+        console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
 	  },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
+        console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onStartAppFromOther(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onStartAppFromOther, the startingWindowTarget is: ' + startingWindowTarget);
+        console.info('onStartAppFromOther, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget, toWindowTarget: WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onAppTransition, the fromWindowTarget is: ' + fromWindowTarget);
-        console.log('onAppTransition, the toWindowTarget is: ' + toWindowTarget);
+        console.info('onAppTransition, the fromWindowTarget is: ' + fromWindowTarget);
+        console.info('onAppTransition, the toWindowTarget is: ' + toWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onMinimizeWindow(minimizingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onMinimizeWindow, the minimizingWindowTarget is: ' + minimizingWindowTarget);
+        console.info('onMinimizeWindow, the minimizingWindowTarget is: ' + minimizingWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onCloseWindow(closingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onCloseWindow, the closingWindowTarget is: ' + closingWindowTarget);
+        console.info('onCloseWindow, the closingWindowTarget is: ' + closingWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onScreenUnlock(finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onScreenUnlock called');
+        console.info('onScreenUnlock called');
         finishCallback.onAnimationFinish();
     },
     onWindowAnimationTargetsUpdate(fullScreenWindowTarget: windowAnimationManager.WindowAnimationTarget, floatingWindowTargets: Array<windowAnimationManager.WindowAnimationTarget>): void {
-        console.log('onWindowAnimationTargetsUpdate, the fullScreenWindowTarget is: ' + fullScreenWindowTarget);
-        console.log('onWindowAnimationTargetsUpdate, the floatingWindowTargets are: ' + floatingWindowTargets);
+        console.info('onWindowAnimationTargetsUpdate, the fullScreenWindowTarget is: ' + fullScreenWindowTarget);
+        console.info('onWindowAnimationTargetsUpdate, the floatingWindowTargets are: ' + floatingWindowTargets);
     }
 }
 
@@ -77,6 +79,8 @@ windowAnimationManager.setController(controller);
 minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget, callback: AsyncCallback&lt;WindowAnimationFinishedCallback&gt;): void
 
 最小化动画目标窗口，并返回动画完成的回调。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -95,43 +99,43 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let target: windowAnimationManager.WindowAnimationTarget | null = null;
 let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
+        console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         target = startingWindowTarget;
         finishCallback.onAnimationFinish();
 	  },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
+        console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         target = startingWindowTarget;
         finishCallback.onAnimationFinish();
     },
     onStartAppFromOther(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onStartAppFromOther, the startingWindowTarget is: ' + startingWindowTarget);
+        console.info('onStartAppFromOther, the startingWindowTarget is: ' + startingWindowTarget);
         target = startingWindowTarget;
         finishCallback.onAnimationFinish();
     },
     onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget, toWindowTarget: WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onAppTransition, the fromWindowTarget is: ' + fromWindowTarget);
-        console.log('onAppTransition, the toWindowTarget is: ' + toWindowTarget);
+        console.info('onAppTransition, the fromWindowTarget is: ' + fromWindowTarget);
+        console.info('onAppTransition, the toWindowTarget is: ' + toWindowTarget);
         target = toWindowTarget;
         finishCallback.onAnimationFinish();
     },
     onMinimizeWindow(minimizingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onMinimizeWindow, the minimizingWindowTarget is: ' + minimizingWindowTarget);
+        console.info('onMinimizeWindow, the minimizingWindowTarget is: ' + minimizingWindowTarget);
         target = minimizingWindowTarget;
         finishCallback.onAnimationFinish();
     },
     onCloseWindow(closingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onCloseWindow, the closingWindowTarget is: ' + closingWindowTarget);
+        console.info('onCloseWindow, the closingWindowTarget is: ' + closingWindowTarget);
         target = closingWindowTarget;
         finishCallback.onAnimationFinish();
     },
     onScreenUnlock(finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onScreenUnlock called');
+        console.info('onScreenUnlock called');
         finishCallback.onAnimationFinish();
     },
     onWindowAnimationTargetsUpdate(fullScreenWindowTarget: windowAnimationManager.WindowAnimationTarget, floatingWindowTargets: Array<windowAnimationManager.WindowAnimationTarget>): void {
-        console.log('onWindowAnimationTargetsUpdate, the fullScreenWindowTarget is: ' + fullScreenWindowTarget);
-        console.log('onWindowAnimationTargetsUpdate, the floatingWindowTargets are: ' + floatingWindowTargets);
+        console.info('onWindowAnimationTargetsUpdate, the fullScreenWindowTarget is: ' + fullScreenWindowTarget);
+        console.info('onWindowAnimationTargetsUpdate, the floatingWindowTargets are: ' + floatingWindowTargets);
         target = fullScreenWindowTarget;
     }
 }
@@ -157,6 +161,8 @@ minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promise&lt;Win
 
 最小化动画目标窗口，并返回动画完成的回调。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **参数：**
@@ -180,37 +186,37 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let target: windowAnimationManager.WindowAnimationTarget | null  = null;
 let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
+        console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
 	  },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
+        console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onStartAppFromOther(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onStartAppFromOther, the startingWindowTarget is: ' + startingWindowTarget);
+        console.info('onStartAppFromOther, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onAppTransition(fromWindowTarget: windowAnimationManager.WindowAnimationTarget, toWindowTarget: WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onAppTransition, the fromWindowTarget is: ' + fromWindowTarget);
-        console.log('onAppTransition, the toWindowTarget is: ' + toWindowTarget);
+        console.info('onAppTransition, the fromWindowTarget is: ' + fromWindowTarget);
+        console.info('onAppTransition, the toWindowTarget is: ' + toWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onMinimizeWindow(minimizingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onMinimizeWindow, the minimizingWindowTarget is: ' + minimizingWindowTarget);
+        console.info('onMinimizeWindow, the minimizingWindowTarget is: ' + minimizingWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onCloseWindow(closingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onCloseWindow, the closingWindowTarget is: ' + closingWindowTarget);
+        console.info('onCloseWindow, the closingWindowTarget is: ' + closingWindowTarget);
         finishCallback.onAnimationFinish();
     },
     onScreenUnlock(finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
-        console.log('onScreenUnlock called');
+        console.info('onScreenUnlock called');
         finishCallback.onAnimationFinish();
     },
     onWindowAnimationTargetsUpdate(fullScreenWindowTarget: windowAnimationManager.WindowAnimationTarget, floatingWindowTargets: Array<windowAnimationManager.WindowAnimationTarget>): void {
-        console.log('onWindowAnimationTargetsUpdate, the fullScreenWindowTarget is: ' + fullScreenWindowTarget);
-        console.log('onWindowAnimationTargetsUpdate, the floatingWindowTargets are: ' + floatingWindowTargets);
+        console.info('onWindowAnimationTargetsUpdate, the fullScreenWindowTarget is: ' + fullScreenWindowTarget);
+        console.info('onWindowAnimationTargetsUpdate, the floatingWindowTargets are: ' + floatingWindowTargets);
     }
 }
 
@@ -229,6 +235,8 @@ promise.then((data: windowAnimationManager.WindowAnimationFinishedCallback) => {
 
 窗口动画控制器。在创建一个WindowAnimationController对象时，需要实现其中的所有回调函数。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 ### onStartAppFromLauncher
@@ -237,7 +245,11 @@ onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,finishCallbac
 
 从桌面启动应用时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明               |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------ |
@@ -254,7 +266,11 @@ onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,finishCallback:
 
 从最近任务列表启动应用时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明               |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------ |
@@ -271,7 +287,11 @@ onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,finishCallback: 
 
 从除了桌面和最近任务列表以外其他地方启动应用时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                                                         | 必填 | 说明               |
 | -------------------- | ------------------------------------------------------------ | ---- | ------------------ |
@@ -288,7 +308,11 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 
 应用转场时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
@@ -306,7 +330,11 @@ onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,finishCallback: W
 
 最小化窗口时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
@@ -323,7 +351,11 @@ onCloseWindow(closingWindowTarget: WindowAnimationTarget,finishCallback: WindowA
 
 关闭窗口时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
@@ -340,7 +372,11 @@ onScreenUnlock(finishCallback: [WindowAnimationFinishedCallback](#windowanimatio
 
 屏幕解锁时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名         | 类型                                                         | 必填 | 说明               |
 | -------------- | ------------------------------------------------------------ | ---- | ------------------ |
@@ -356,7 +392,11 @@ onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget, fl
 
 动画目标窗口更新时的回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
 
 | 参数名               | 类型                            | 必填 | 说明             |
 | -------------------- | ------------------------------- | ---- | ---------------- |
@@ -376,6 +416,8 @@ onAnimationFinish():void
 
 结束本次动画。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **示例：**
@@ -385,24 +427,28 @@ onAnimationFinish():void
 ## WindowAnimationTarget
 动画目标窗口，用来实现动画。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-| 名称      | 类型     | 必填 | 说明 |
-| ------- | ------ | ------ | ----------------------- |
-| bundleName  | string | 是 |动画目标窗口所对应的包名。 |
-| abilityName | string | 是 |动画目标窗口所对应的Ability名称。 |
-| windowBounds | [RRect](#rrect) | 是 |动画目标窗口所对应的实际大小。 |
-| missionId  | number | 是 |任务ID，多任务中用于与ability进行匹配。|
+| 名称 | 类型 | 只读  | 可选 | 说明 |
+| ------- | ------ | ------ | ------ | ----------------------- |
+| bundleName   | string          | 是 | 否 | 动画目标窗口所对应的包名。 |
+| abilityName  | string          | 是 | 否 | 动画目标窗口所对应的Ability名称。 |
+| windowBounds | [RRect](#rrect) | 是 | 否 | 动画目标窗口所对应的实际大小。 |
+| missionId    | number          | 是 | 否 | 任务ID，多任务中用于与ability进行匹配。|
 
 ## RRect
 圆角矩形。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-| 名称      | 类型     | 必填 | 说明 |
-| ------- | ------ | ------|----------------------- |
-| left  | number | 是 |动画目标窗口左上角相对于屏幕的横坐标。 |
-| top | number | 是 |动画目标窗口左上角相对于屏幕的纵坐标。 |
-| width | number | 是 |动画目标窗口的宽度大小。 |
-| height | number | 是 |动画目标窗口的高度大小。 |
-| radius | number | 是 |动画目标窗口的圆角大小。 |
+| 名称 | 类型 | 只读  | 可选 | 说明 |
+| ------- | ------ | ------ | ------ | ----------------------- |
+| left   | number | 否 | 否 | 动画目标窗口左上角相对于屏幕的横坐标。 |
+| top    | number | 否 | 否 | 动画目标窗口左上角相对于屏幕的纵坐标。 |
+| width  | number | 否 | 否 | 动画目标窗口的宽度大小。 |
+| height | number | 否 | 否 | 动画目标窗口的高度大小。 |
+| radius | number | 否 | 否 | 动画目标窗口的圆角大小。 |

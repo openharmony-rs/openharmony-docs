@@ -48,7 +48,7 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 **示例**：
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -81,7 +81,7 @@ export default class MigrationAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ## continueManager.off
 
@@ -113,7 +113,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 
 **示例**：
 
-  ```ts
+```ts
 import { AbilityConstant, UIAbility, Want, continueManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -146,7 +146,7 @@ export default class MigrationAbility extends UIAbility {
         }
     }
 }
-  ```
+```
 
 ## ContinueResultInfo
 

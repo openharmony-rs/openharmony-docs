@@ -136,9 +136,9 @@
 
 ## ohos.permission.GET_WIFI_INFO
 
-允许应用获取Wi-Fi信息。
+允许应用获取Wi-Fi信息和使用P2P能力。
 
-该权限允许应用获取Wi-Fi信息，包括Wi-Fi的开启状态、扫描结果、连接信息、连接状态、设备能力、P2P状态等信息。
+获取该权限后，应用可获取Wi-Fi信息，包括Wi-Fi的开启状态、扫描结果、连接信息、连接状态、设备能力、P2P状态等；同时，应用可使用P2P能力。
 
 **权限级别**：normal
 
@@ -272,36 +272,6 @@
 
 **起始版本**：7
 
-## ohos.permission.MODIFY_AUDIO_SETTINGS
-
-允许应用修改音频设置。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：8
-
-## ohos.permission.RUNNING_LOCK
-
-允许应用获取运行锁，保证应用在后台的持续运行。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：7
-
-## ohos.permission.SET_WALLPAPER
-
-允许应用设置壁纸。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：7
-
 ## ohos.permission.ACCESS_CERT_MANAGER
 
 允许应用进行查询证书及私有凭据等操作。
@@ -311,16 +281,6 @@
 **授权方式**：系统授权（system_grant）
 
 **起始版本**：9
-
-## ohos.permission.hsdr.HSDR_ACCESS
-
-允许应用访问安全检测与响应框架。
-
-**权限级别**：normal
-
-**授权方式**：系统授权（system_grant）
-
-**起始版本**：10
 
 ## ohos.permission.RUN_DYN_CODE
 

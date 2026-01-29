@@ -10,6 +10,8 @@
 
 声明ArkWeb NDK接口异常错误码。
 
+**引用文件：** <web/arkweb_error_code.h>
+
 **库：** libohweb.so
 
 **系统能力：** SystemCapability.Web.Webview.Core

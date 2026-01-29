@@ -1,4 +1,10 @@
 # Form Kit<!--form-kit-->
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 - [Introduction to Form Kit](formkit-overview.md)
 - ArkTS Widget Development (Recommended)<!--arkts-ui-->
   - [ArkTS Widget Overview](arkts-form-overview.md)
@@ -11,12 +17,13 @@
       - [Overview of ArkTS Widget UI Development](arkts-ui-widget-page-overview.md)
       - [Using Animations in ArkTS Widgets](arkts-ui-widget-page-animation.md)
       - [Using Canvas in ArkTS Widgets](arkts-ui-widget-page-custom-drawing.md)
+      - [Dark and Light Mode Adaptation for ArkTS Widget UI](arkts-ui-widget-dark-light-color-adapt.md)
     - ArkTS Widget Update<!--arkts-ui-widget-interaction-->
       - [Overview of ArkTS Widget Update](arkts-ui-widget-interaction-overview.md)
       - [Active Update of ArkTS Widgets](arkts-ui-widget-active-refresh.md)
       - [Passive Update of ArkTS Widgets](arkts-ui-widget-passive-refresh.md)
       <!--Del-->
-      - [Updating Widget Content Through a Proxy](arkts-ui-widget-update-by-proxy-sys.md)
+      - [Updating Widget Content Through a Proxy (for System Applications Only)](arkts-ui-widget-update-by-proxy-sys.md)
       <!--DelEnd-->
       - [Updating Local and Online Images in the Widget](arkts-ui-widget-image-update.md)
       - [Updating Widget Content by State](arkts-ui-widget-update-by-status.md)
@@ -30,7 +37,7 @@
       - [Overview of ArkTS Widget Editing](arkts-ui-widget-event-formeditextensionability-overview.md)
       - [Widget Editing Development](arkts-ui-widget-event-formeditextensionability.md)
     - Widget Addition to Home Screen<!--arkts-ui-widget-add-->
-      - [Adding Widgets to the Home Screen](arkts-ui-widget-open-formmanager.md)
+      - [Adding Widgets to the Home Screen](arkts-ui-widget-open-formmanager.md)<!--RP1--><!--RP1End-->
   <!--Del--> 
   - [ArkTS Widget Host Development (for System Applications Only)](widget-host-development-guide-sys.md)
   <!--DelEnd-->

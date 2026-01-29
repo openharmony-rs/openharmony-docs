@@ -85,7 +85,7 @@ let listenerId = missionManager.registerMissionListener({
 
 unregisterMissionListener(listenerId: number, callback: AsyncCallback&lt;void&gt;): void
 
-Deregisters a mission status listener. This API uses an asynchronous callback to return the result.
+Unregisters a mission status listener. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MISSIONS
 
@@ -97,7 +97,7 @@ Deregisters a mission status listener. This API uses an asynchronous callback to
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | listenerId | number | Yes| Index of the mission status listener to deregister. It is returned by **registerMissionListener()**.|
+  | listenerId | number | Yes| Index of the mission status listener to unregister. It is returned by **registerMissionListener()**.|
   | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Example**
@@ -152,7 +152,7 @@ Unregisters a mission status listener. This API uses a promise to return the res
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | listenerId | number | Yes| Index of the mission status listener to deregister. It is returned by **registerMissionListener()**.|
+  | listenerId | number | Yes| Index of the mission status listener to unregister. It is returned by **registerMissionListener()**.|
 
 **Return value**
 

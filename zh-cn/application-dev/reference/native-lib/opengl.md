@@ -1,10 +1,15 @@
 # OpenGL
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @samhu1989-->
+<!--Designer: @shi-yang-2012-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 [OpenGL](https://www.khronos.org/opengl/)是一种跨平台的图形API，用于为3D图形处理硬件指定标准的软件接口。OpenHarmony现已支持OpenGL 3.0。
 
-## 支持的能力
+## 支持的能力及设备
 
-从API version 20开始，支持使用OpenGL 3.0。
+从API version 20开始，支持使用OpenGL 3.0。支持在PC设备上使用OpenGL能力。
 
 ## 标准库中导出的符号列表
 
@@ -42,8 +47,8 @@ libEGL.so
 #include <GL/glcorearb.h>
 ```
 **修改app.json5配置文件**
-```c++
-“appEnvironments”: [
+```json
+"appEnvironments": [
  {
    "name":"NEED_OPENGL",
    "value": "1"

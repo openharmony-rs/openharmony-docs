@@ -25,7 +25,8 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 | warn(domain: number, tag: string, format: string, ...args: any[]) | Outputs WARN logs, which indicate issues that have little impact on the system.| 
 | error(domain: number, tag: string, format: string, ...args: any[]) | Outputs ERROR logs, which indicate program or functional errors.| 
 | fatal(domain: number, tag: string, format: string, ...args: any[]) | Outputs FATAL logs, which indicate program or functionality crashes that cannot be rectified.| 
-| setMinLogLevel(level: LogLevel) | Sets the minimum log level.<br>Note: This API is supported since API version 15.| 
+| setMinLogLevel(level: LogLevel) | Sets the minimum log level.<br>If the set log level is lower than the [global log level](hilog.md#displaying-and-setting-log-levels), the setting does not take effect.<br>Note: This API is supported since API version 15.| 
+
 
 ### Parameters
 
@@ -51,7 +52,7 @@ HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides
 
   You can set multiple parameters in the **format** string, for example, **%{public}s World**, where **%{public}s** indicates a variable of the string type and its value is defined by **args**. 
 
-  The debug application does not have a privacy control mechanism. Parameters can be displayed in plaintext when any of the preceding privacy identifiers is used to print logs.
+  The debug application does not have a privacy control mechanism. Parameters can be displayed in plaintext when any of the preceding private flags is used to print logs.
 
 - **args**: parameters of the types specified by **specifier** in **format**. This parameter can be left blank. The number and type of parameters must match **specifier**.
 
@@ -143,7 +144,7 @@ Add a click event in a button, which prints a log when the button is clicked.
    '%{public}s World %{public}d'
    ```
 
-   *%{public}s* indicates a string, and *%{public}d* indicates an integer. Both of them are displayed in plaintext.
+   *%{public}s* is a public string and *%{public}d* is a public integer.
 
    To output objects, use the following format string:
 
@@ -157,14 +158,14 @@ Add a click event in a button, which prints a log when the button is clicked.
 
 5. At the bottom of DevEco Studio, switch to the **Log** tab and set the filter criteria.
 
-   Select the current device and process, set the log level to Verbose, and set the search content to testTag. Then, only the logs that meet the filter criteria are displayed.
+   Specifically, select the current device and process, set the log level to **Verbose**, and enter **testTag** in the search box. Then, only the logs that meet the filter criteria are displayed.
 
 <!--RP3-->
    The log result is as follows:
 
    ```txt
-   01-02 08:18:24.947   30988-30988   A0ff00/testTag                  com.example.hilogDemo  I     hello World 3
-   01-02 08:18:24.947   30988-30988   A0ff00/testTag                  com.example.hilogDemo  I     peter is {"name":"peter","age":15}
+   01-02 08:18:24.947   30988-30988   A0FF00/testTag                  com.example.hilogDemo  I     hello World 3
+   01-02 08:18:24.947   30988-30988   A0FF00/testTag                  com.example.hilogDemo  I     peter is {"name":"peter","age":15}
    01-02 08:18:24.947   30988-30988   A00000/testTag                  com.example.hilogDemo  E     this is an error level log
    ```
 <!--RP3End-->

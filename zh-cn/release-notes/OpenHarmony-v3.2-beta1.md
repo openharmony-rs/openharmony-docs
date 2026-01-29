@@ -62,9 +62,9 @@ ArkUI支持AbilityComponent组件将应用界面（Ability）作为控件嵌入�
 
 1. 注册码云gitee账号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
    
    ```
    git config --global user.name "yourname"
@@ -75,7 +75,7 @@ ArkUI支持AbilityComponent组件将应用界面（Ability）作为控件嵌入�
 4. 安装码云repo工具，可以执行如下命令。
    
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -84,18 +84,18 @@ ArkUI支持AbilityComponent组件将应用界面（Ability）作为控件嵌入�
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
   ```
-  repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta1 --no-repo-verify
+  repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta1 --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
 
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
   ```
-  repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta1 --no-repo-verify
+  repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta1 --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
@@ -106,13 +106,13 @@ ArkUI支持AbilityComponent组件将应用界面（Ability）作为控件嵌入�
 
 - 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
   ```
-  repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-3.2-Beta1 --no-repo-verify
+  repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-3.2-Beta1 --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
 - 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
   ```
-  repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta1 --no-repo-verify
+  repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta1 --no-repo-verify
   repo sync -c
   repo forall -c 'git lfs pull'
   ```
@@ -177,7 +177,7 @@ _[API差异报告](api-diff/v3.2-beta1/Readme-CN.md)_
 
 ### 芯片及开发板适配
 
-芯片及开发板适配状态请参考[SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
+芯片及开发板适配状态请参考[SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard_cn.md)信息。
 
 
 ### Samples
@@ -186,26 +186,26 @@ _[API差异报告](api-diff/v3.2-beta1/Readme-CN.md)_
 
 | 子系统 | 名称 | 简介 | 开发语言 |
 | -------- | -------- | -------- | -------- |
-| ArkUI | [Vibrator](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Vibrator) | 本示例模拟倒计时场景，展示振动接口的使用方法。 | ArkTS |
-| DFX | [FaultLogger](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DFX/FaultLogger) | 本示例展示了在ArkTS中如何获取应用故障相关信息。 | ArkTS |
-| ArkUI | [ComponentCollection](https://gitee.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/ComponentCollection) | 本示例为ArkUI中组件、通用、动画、全局方法的集合 | ArkTS |
-| ArkUI | [ArkTSClock](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/ArkTSClock) | 本示例使用ArkTS&nbsp;UI能力实现一个简单的时钟应用。 | ArkTS |
-| 网络管理 | [Http](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http) | 本示例仿postman输入API接口地址，获取相应数据，介绍数据请求接口的用法。 | ArkTS |
-| 网络管理 | [Socket](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Socket) | 本示例主要演示了Socket在网络通信方面的应用，展示了Socket在两端设备的连接验证、聊天通信方面的应用。 | ArkTS |
-| 分布式数据管理 | [DistributedRdb](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedRdb) | 本示例展示了在ArkTS中分布式关系型数据库的使用，在增、删、改、查的基本操作外，还包括分布式数据库的数据同步能力。 | ArkTS |
-| 元能力 | [WorkScheduler](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/WorkScheduler) | 本示例模拟下载更新包 、保存更新包、发送通知 、安装更新包实现升级，将下载任务通过后台任务管理进行处理，实现退出应用后任务仍能够执行，直至任务结束。 | ArkTS |
-| 元能力 | [AbilityStartMode](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode) | 本示例展示了在一个Stage模型中，实现standard、singleton、specified多种模式场景。 | ArkTS |
-| 媒体 | [MediaCollections](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/MediaCollections) | 本示例展示了在ArkTS中媒体管理合集，包括网络流播放能力，音视频播控能力以及音量调节能力。 | ArkTS |
-| 元能力 | [ArkTSDistributedCalc](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc) | 本示例使用JS分布式能力实现了一个简单的计算器应用，可以进行简单的数值计算，支持远程拉起另一个计算器FA，两个FA进行协同计算。 | ArkTS |
-| Web | [Browser](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Web/Browser) | 本示例运用OpenHarmony系统提供的Stage模型与相关接口展示了一个简易的浏览器。 | ArkTS |
-| 元能力 | [DeviceUsageStatistics](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceUsageStatistics/DeviceUsageStatistics) | 本示例主要展示了设备使用信息情况。 | ArkTS |
-| ArkUI | [AdaptiveCapabilities](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/AdaptiveCapabilities) | 本示例展示在ArkTS中的多设备自适应能力，包括资源限定词、原子布局和响应式布局。 | ArkTS |
-| ArkUI | [Game2048](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048) | 2048是一款比较流行的数字游戏，此游戏demo是grid组件基础上进行开发完成的。 | ArkTS |
-| 一多设置典型页面 | [Settings](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Settings) | 本示例展示了设置应用的典型页面，其在小窗口和大窗口有不同的显示效果，体现一次开发、多端部署的能力。 | ArkTS |
-| 分布式数据管理 | [Preference](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/Preferences) | 本示例主要展示了首选项在主题切换方面的功能。 | ArkTS |
-| 全球化 | [International](https://gitee.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Internationalnation/International) | 本示例展示了i18n，intl，resourceManager在ArkTS中的使用，使用相关api实现系统语言和地区设置、时间和时区设置，展示了区域格式化示例。 | ArkTS |
+| ArkUI | [Vibrator](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Vibrator) | 本示例模拟倒计时场景，展示振动接口的使用方法。 | ArkTS |
+| DFX | [FaultLogger](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DFX/FaultLogger) | 本示例展示了在ArkTS中如何获取应用故障相关信息。 | ArkTS |
+| ArkUI | [ComponentCollection](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/ComponentCollection) | 本示例为ArkUI中组件、通用、动画、全局方法的集合 | ArkTS |
+| ArkUI | [ArkTSClock](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/ArkTSClock) | 本示例使用ArkTS&nbsp;UI能力实现一个简单的时钟应用。 | ArkTS |
+| 网络管理 | [Http](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http) | 本示例仿postman输入API接口地址，获取相应数据，介绍数据请求接口的用法。 | ArkTS |
+| 网络管理 | [Socket](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Socket) | 本示例主要演示了Socket在网络通信方面的应用，展示了Socket在两端设备的连接验证、聊天通信方面的应用。 | ArkTS |
+| 分布式数据管理 | [DistributedRdb](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedRdb) | 本示例展示了在ArkTS中分布式关系型数据库的使用，在增、删、改、查的基本操作外，还包括分布式数据库的数据同步能力。 | ArkTS |
+| 元能力 | [WorkScheduler](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/WorkScheduler) | 本示例模拟下载更新包 、保存更新包、发送通知 、安装更新包实现升级，将下载任务通过后台任务管理进行处理，实现退出应用后任务仍能够执行，直至任务结束。 | ArkTS |
+| 元能力 | [AbilityStartMode](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode) | 本示例展示了在一个Stage模型中，实现standard、singleton、specified多种模式场景。 | ArkTS |
+| 媒体 | [MediaCollections](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/FileManagement/MediaCollections) | 本示例展示了在ArkTS中媒体管理合集，包括网络流播放能力，音视频播控能力以及音量调节能力。 | ArkTS |
+| 元能力 | [ArkTSDistributedCalc](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc) | 本示例使用JS分布式能力实现了一个简单的计算器应用，可以进行简单的数值计算，支持远程拉起另一个计算器FA，两个FA进行协同计算。 | ArkTS |
+| Web | [Browser](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Web/Browser) | 本示例运用OpenHarmony系统提供的Stage模型与相关接口展示了一个简易的浏览器。 | ArkTS |
+| 元能力 | [DeviceUsageStatistics](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceUsageStatistics/DeviceUsageStatistics) | 本示例主要展示了设备使用信息情况。 | ArkTS |
+| ArkUI | [AdaptiveCapabilities](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/AdaptiveCapabilities) | 本示例展示在ArkTS中的多设备自适应能力，包括资源限定词、原子布局和响应式布局。 | ArkTS |
+| ArkUI | [Game2048](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048) | 2048是一款比较流行的数字游戏，此游戏demo是grid组件基础上进行开发完成的。 | ArkTS |
+| 一多设置典型页面 | [Settings](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Settings) | 本示例展示了设置应用的典型页面，其在小窗口和大窗口有不同的显示效果，体现一次开发、多端部署的能力。 | ArkTS |
+| 分布式数据管理 | [Preference](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/Preferences) | 本示例主要展示了首选项在主题切换方面的功能。 | ArkTS |
+| 全球化 | [International](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Internationalnation/International) | 本示例展示了i18n，intl，resourceManager在ArkTS中的使用，使用相关api实现系统语言和地区设置、时间和时区设置，展示了区域格式化示例。 | ArkTS |
 
-请访问[Samples](https://gitee.com/openharmony/applications_app_samples)仓了解更多信息。
+请访问[Samples](https://gitcode.com/openharmony/applications_app_samples)仓了解更多信息。
 
 ## 修复缺陷列表
 
@@ -213,7 +213,7 @@ _[API差异报告](api-diff/v3.2-beta1/Readme-CN.md)_
 
 | ISSUE单                                                      | 问题描述                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I4NRS5](https://gitee.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | 【内核子系统】存在cve漏洞                                    |
+| [I4NRS5](https://gitcode.com/openharmony/kernel_linux_5.10/issues/I4NRS5) | 【内核子系统】存在cve漏洞                                    |
 
 
 ## 遗留缺陷列表
@@ -222,5 +222,5 @@ _[API差异报告](api-diff/v3.2-beta1/Readme-CN.md)_
 
 | ISSUE                                                        | 问题描述                                                   | 影响                                                         | 计划解决日期 |
 | ------------------------------------------------------------ | ---------------------------------------------------------- | ------------------------------------------------------------ | ------------ |
-| [I4Z3G9](https://gitee.com/openharmony/graphic_graphic_2d/issues/I4Z3G9) | 【RK3568】打开沉浸式主窗口和在主窗口上打开辅助窗口出现闪屏 | 影响开发者体验                                               | 2022-06-15   |
-| [I59M4Q](https://gitee.com/openharmony/developtools_hdc/issues/I59M4Q) | 使用API 9的hdc_std连接设备小概率断连                       | 存在低概率断连（几率小于1/30）。可通过重启IDE或者hdc_std恢复。 | 2022-06-30   |
+| [I4Z3G9](https://gitcode.com/openharmony/graphic_graphic_2d/issues/I4Z3G9) | 【RK3568】打开沉浸式主窗口和在主窗口上打开辅助窗口出现闪屏 | 影响开发者体验                                               | 2022-06-15   |
+| [I59M4Q](https://gitcode.com/openharmony/developtools_hdc/issues/I59M4Q) | 使用API 9的hdc_std连接设备小概率断连                       | 存在低概率断连（几率小于1/30）。可通过重启IDE或者hdc_std恢复。 | 2022-06-30   |

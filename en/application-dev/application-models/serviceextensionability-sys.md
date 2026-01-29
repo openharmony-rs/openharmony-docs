@@ -552,7 +552,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
       data.writeInt(99);
       // You can send data to the target application for corresponding operations.
       // @param code Indicates the service request code sent by the client.
-      // @param data Indicates the {@link MessageSequence} object sent by the client.
+      // @param data Indicates the MessageSequence object sent by the client.
       // @param reply Indicates the response message object sent by the remote service.
       // @param options Specifies whether the operation is synchronous or asynchronous.
       // @return Returns {@code true} if the operation is successful; returns {@code false} otherwise.

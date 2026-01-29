@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 > **NOTE**
 >
@@ -72,7 +72,9 @@ getAlbum(): Album
 
 Obtains the album in the current album change request.
 
-**NOTE**: For the change request for creating an album, this API returns **null** before [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called to apply the changes.
+> **NOTE**
+>
+> For the change request for creating an album, this API returns **null** before [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called to apply the changes.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

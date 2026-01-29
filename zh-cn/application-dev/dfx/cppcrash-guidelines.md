@@ -195,7 +195,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Timestamp | 故障发生时间戳 | 8 | 是 | - |
 | Pid | 进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
-| HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 进程开启HiTraceChain功能，详见[HiTraceId](../reference/apis-performance-analysis-kit/capi-trace-h.md)。 |
+| HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 进程开启HiTraceChain功能，详见[HiTraceId](../reference/apis-performance-analysis-kit/capi-hitrace-hitraceid.md)。 |
 | Process name | 故障进程名 | 8 | 是 | - |
 | Process life time | 故障进程存活时间 | 8 | 是 | - |
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
@@ -400,7 +400,7 @@ HiLog: <- 故障之前进程打印的流水日志
 
 HiTraceId：HiTraceChain提供的唯一跟踪标识，参考[HiTraceId](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
 
-**栈帧内容说明**
+**调用栈帧内容说明**
 
 以三层调用栈为例，详细解释调用栈帧内容：
 
@@ -424,6 +424,8 @@ HiTraceId：HiTraceChain提供的唯一跟踪标识，参考[HiTraceId](../refer
 >   1. 二进制文件中没有保存该函数名信息。
 >
 >   2. 二进制文件中保存的函数名长度超过256字节。
+>
+> - 函数名是通过解析二进制符号表和[MiniDebugInfo](https://sourceware.org/gdb/current/onlinedocs/gdb.html/MiniDebugInfo.html)得来，**可能会随版本函数名变更、编译优化等原因而改变**。
 >
 > - 如果没打印BuildID，可以通过readelf -n xxx.so确认二进制是否有BuildID。如果没有则尝试在编译选项里增加编译参数--enable-linker-build-id，同时注意编译选项中不要加编译参数--build-id=none。
 

@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 marquee为跑马灯组件，用于展示一段单行滚动的文字。具体用法请参考[marquee](../reference/apis-arkui/arkui-js/js-components-basic-marquee.md)。
@@ -224,13 +224,13 @@ export default {
   onInit(){
   },
   setfinish(e) {
-    this.loopval=  this.loopval + 1,
+    this.loopval = this.loopval + 1,
     this.r = Math.floor(Math.random()*255),
     this.g = Math.floor(Math.random()*255),
     this.b = Math.floor(Math.random()*255),
     this.color1 = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)',
     this.$element('testmarquee').start(),
-    this.loopval=  this.loopval - 1
+    this.loopval = this.loopval - 1
   },
   makestart(e) {
     this.$element('testmarquee').start()

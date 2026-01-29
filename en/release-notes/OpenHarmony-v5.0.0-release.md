@@ -63,7 +63,7 @@ A more detailed description of the enhancements is as follows:
 
 - Component customization is further enhanced with the introduction of **Modifier**, **ContentModifier**, and **DrawModifier**. Attributes can be added to existing components, component content can be customized, and fully custom rendering is supported.
 
-- Custom nodes and native rendering nodes are opened up. [Custom nodes](https://gitee.com/OpenHarmony/docs/blob/master/en/application-dev/ui/arkts-user-defined.md) are node objects with some basic capabilities of underlying entity nodes. They can be mixed and displayed with built-in components through custom placeholder nodes. They have customization capabilities for individual nodes, such as measurement and layout, setting basic attributes, setting event listeners, and custom drawing and rendering content. There are three types of custom objects: FrameNode, RenderNode, and BuilderNode.  
+- Custom nodes and native rendering nodes are opened up. [Custom nodes](https://gitcode.com/OpenHarmony/docs/blob/master/en/application-dev/ui/arkts-user-defined.md) are node objects with some basic capabilities of underlying entity nodes. They can be mixed and displayed with built-in components through custom placeholder nodes. They have customization capabilities for individual nodes, such as measurement and layout, setting basic attributes, setting event listeners, and custom drawing and rendering content. There are three types of custom objects: FrameNode, RenderNode, and BuilderNode.  
   - **BuilderNode**: provides APIs for a BuilderNode – a custom node that can be used to mount native components.
   - **FrameNode**: provides APIs for a FrameNode, which represents an entity node in the component tree. It can be used by a NodeController to mount a BuilderNode (that holds the FrameNode) to a NodeContainer or mount a RenderNode to another FrameNode.
   - **RenderNode**: provides APIs for creating a RenderNode in custom drawing settings at the native side.
@@ -1222,7 +1222,7 @@ The version of CMake version used for building is upgraded from 3.16.5 to 3.28.2
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -1231,7 +1231,7 @@ The version of CMake version used for building is upgraded from 3.16.5 to 3.28.2
 
 4. Run the following commands to install the **repo** tool:
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -1244,14 +1244,14 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-5.0.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-5.0.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v5.0.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v5.0.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -1262,14 +1262,14 @@ Use the **repo** tool to download the source code over HTTPS.
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-5.0.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-5.0.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v5.0.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v5.0.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```

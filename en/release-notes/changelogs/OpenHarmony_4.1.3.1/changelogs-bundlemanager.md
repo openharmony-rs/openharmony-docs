@@ -18,7 +18,7 @@ The **app-distribution-type** field in the [signing certificate](../../../applic
 * If **app-distribution-type** is **enterprise_mdm**, the application is an MDM application.
 * If **app-distribution-type** is not **enterprise_mdm**, the application is a non-MDM application.
 
-The **availableType** attribute in the **definePermissions** field in the [config.jso file](https://gitee.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json) is used to determine whether the MDM permission is granted.
+The **availableType** attribute in the **definePermissions** field in the [config.jso file](https://gitcode.com/openharmony/utils_system_resources/blob/master/systemres/main/config.json) is used to determine whether the MDM permission is granted.
 * If **availableType** is **MDM**, the MDM permission is granted.
 * If **availableType** is not **MDM**, the MDM permission is not granted.
 
@@ -33,3 +33,4 @@ To grant the permission to an application, declare the permission in the [module
 **Adaptation Guide**
 
 Check whether your application is an MDM application. If not, do not request the MDM permission.
+<!--no_check-->

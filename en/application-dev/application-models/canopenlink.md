@@ -43,6 +43,7 @@ For details about the matching rules, see [Matching Rules of Explicit Want and I
     import { bundleManager } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
+
     try {
       let link = 'app1Scheme://test.example.com/home';
       let canOpen = bundleManager.canOpenLink(link);
@@ -66,7 +67,9 @@ Configure the [uris](../quick-start/module-configuration-file.md#skills) field i
         "skills": [
           {
             // actions cannot be empty. Otherwise, matching the target application fails.
-            "actions": ["ohos.want.action.home"],
+            "actions": [
+              "ohos.want.action.home"
+            ],
             "uris": [
               {
                 "scheme": "app1Scheme",

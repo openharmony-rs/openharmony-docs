@@ -10,17 +10,17 @@ The live view notification provides real-time progress of long-duration tasks, i
 
 ## Available APIs
 
-The following table describes the APIs for notification publishing. You can specify the notification information – content, ID, slot type, and delivery time – by setting the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) parameter in the APIs.  
+The following table describes the APIs for notification publishing. You can specify the notification information – content, ID, slot type, and delivery time – by setting the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) parameter in the APIs. The information can include the notification content, notification ID, notification channel type, and notification sending time.
 
 | **API**| **Description**|
 | -------- | -------- |
 | [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish)(request:&nbsp;NotificationRequest,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Publishes a notification.                |
-| [cancel](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagercancel)(id:&nbsp;number,&nbsp;label:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Cancels a specified notification.     |
+| [cancel](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagercancel)(id:&nbsp;number,&nbsp;label:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Cancels a notification.     |
 
 
 ## How to Develop
 
-1. Import the modules.
+1. Import the related modules.
    
    ```ts
    import { notificationManager } from '@kit.NotificationKit';

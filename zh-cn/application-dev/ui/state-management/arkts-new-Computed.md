@@ -296,7 +296,7 @@ struct MyView {
 
   @Monitor('kelvin')
   onKelvinMonitor(mon: IMonitor) {
-    console.log('kelvin changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
+    console.info('kelvin changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {

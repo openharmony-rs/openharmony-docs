@@ -4,7 +4,7 @@
 <!--Owner: @kangshihui-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 单行文本输入框组件。
 
@@ -15,6 +15,8 @@
 >  当前页面仅包含本模块的系统接口，其他公开接口参见[TextInput](ts-basic-components-textinput.md)。
 
 ## InputType枚举说明
+
+单行文本输入框类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

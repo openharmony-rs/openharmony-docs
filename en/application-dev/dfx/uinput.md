@@ -48,7 +48,7 @@ uinput --help
 
 **Example**
 ```bash
-# Displays the help information.
+# Display the help information.
 uinput -? 
 
 # Execution result.
@@ -68,7 +68,7 @@ commands for keyboard:
 
 ## Mouse Events
 
-Simulates mouse events, such as moving and clicking.
+Simulates mouse move and click events.
 
 ### Mouse Move Event
 Simulates a mouse movement to the coordinates (dx, dy) in a relative coordinate system whose origin is the upper left corner of the specified screen.
@@ -78,12 +78,12 @@ Simulates a mouse movement to the coordinates (dx, dy) in a relative coordinate 
 uinput -M -m <dx> <dy>
 uinput --mouse --move <dx> <dy>
 
-# <dx> <dy> Position coordinates in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx> and <dy> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
 ```
 
 **Example**
 ```bash
-# Simulates a mouse movement to the coordinates (100, 100) in a relative coordinate system whose origin is the upper left corner of the specified screen.
+# Simulate a mouse movement to the coordinates (100, 100) in a relative coordinate system whose origin is the upper left corner of the specified screen.
 uinput -M -m 100 100
 ```
 
@@ -92,10 +92,10 @@ uinput -M -m 100 100
 uinput -M -m <dx1> <dy1> <dx2> <dy2> [smooth time] --trace
 uinput --mouse --move <dx1> <dy1> <dx2> <dy2> [smooth time] --trace
 
-# <dx1> <dy1> Position coordinates of the mouse move start point in the relative coordinate system with the upper left corner of the screen as the origin.
-# <dx2> <dy2> Position coordinates of the mouse move end point in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx1> and <dy1> are coordinates of the start point in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
 # The --trace option can be used to simulate the movement position and trace of the mouse to the coordinates in a relative coordinate system whose origin is the upper left corner of the specified screen.
-# [smooth time]: movement time, in milliseconds. The default value is 1000. The value range is [1,15000]. Only an integer is supported.
+# [smooth time] specifies the moving time, in milliseconds. The default value is 1000. The value range is [1,15000]. The value must be an integer.
 ```
 
 **Example**
@@ -105,7 +105,7 @@ uinput -M -m 100 100 200 200 1500 --trace
 ```
 
 ### Mouse Down Event
-Simulates the pressing of the mouse button. It is recommended that this event be used together with the mouse button release event to ensure that the event is closed. buttonId: [Mouse Buttons](#mouse-buttons).
+Simulates a mouse button press. You are advised to use this event together with the mouse up event to close the event. For details about values of **buttonId**, see [Mouse Buttons](#mouse-buttons).
 
 **Command**
 ```bash
@@ -114,7 +114,7 @@ uinput --mouse --down <buttonId>
 ```
 
 ### Mouse Up Event
-Simulates the release of the mouse button. It is recommended that this event be used together with the mouse button press event to ensure that the event is closed. buttonId: [Mouse Buttons](#mouse-buttons).
+Simulates a mouse button release. You are advised to use this event together with the mouse down event to close the event. For details about values of **buttonId**, see [Mouse Buttons](#mouse-buttons).
 
 **Command**
 ```bash
@@ -124,12 +124,12 @@ uinput --mouse --up <buttonId>
 
 **Example**
 ```bash
-# Simulates the pressing and releasing of the left mouse button.
+# Simulate pressing and releasing the left mouse button.
 uinput -M -d 0 -u 0
 ```
 
 ### Click Event
-Simulates a mouse click. buttonId: [Mouse Buttons](#mouse-buttons).
+Simulates a mouse click. For details about values of **buttonId**, see [Mouse Buttons](#mouse-buttons).
 
 **Command**
 ```bash
@@ -139,44 +139,44 @@ uinput --mouse --click <buttonId>
 
 **Example**
 ```bash
-# Simulates the clicking of the left mouse button.
+# Simulate clicking the left mouse button.
 uinput -M -c 0
 ```
 
 ### Double-Click Event
-Simulates a double-click on the mouse button. buttonId: [Mouse Buttons](#mouse-buttons).
+Simulates a double-click on the mouse button. For details about values of **buttonId**, see [Mouse Buttons](#mouse-buttons).
 
 **Command**
 ```bash
 uinput -M -b <dx> <dy> <buttonId> [press time] [click interval time]
 uinput --mouse --double_click <dx> <dy> <buttonId> [press time] [click interval time]
 
-# <dx> <dy>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
-# [press time]: first pressing time, which is optional. The unit is ms. The default value is 50. The value range is [1,300]. Only an integer is supported.
-# [click interval time]: click interval, which is optional. The unit is ms. The default value is 300. The value range is [1,450]. Only an integer is supported.
+# <dx> and <dy> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
+# [press time] specifies the initial press time, in milliseconds. The default value is 50. The value is an integer between 1 and 300. This parameter is optional.
+# [click interval time] specifies the click interval, in milliseconds. The default value is 300. The value is an integer between 1 and 450. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulates a left mouse button double-click at (100, 150).
+# Simulate a double-click on the left mouse button at (100, 150).
 uinput -M -b 100 150 0 10 10
 ```
 
 ### Mouse Scroll Event
-Simulates the forward or backward scrolling of the mouse wheel. This command must be used together with the mouse movement event.
+Simulates a forward or backward scrolling of the mouse wheel. This event must be used together with the mouse move event.
 
 **Command**
 ```bash
 uinput -M -m <dx1> <dy1> -s <number>
 uinput --mouse --move <dx1> <dy1> --scroll <number>
 
-# <dx1> <dy1>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
-# <number>: number of mouse wheel scrolling scales. A positive number indicates backward scrolling, and a negative number indicates forward scrolling. One scale is 15. The value must be an integer.
+# <dx1> and <dy1> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
+# <number> specifies the number of scrolling notches. A positive value indicates scrolling backward, and a negative value indicates scrolling forward. One notch is 15.
 ```
 
 **Example**
 ```bash
-# Simulates the mouse moving to the position (100, 200) of the relative coordinate system with the upper left corner of the specified screen as the origin, and the mouse wheel scrolling backward by three scales.
+# Simulate a mouse movement to the coordinates (100, 200) in a relative coordinate system with the upper-left corner of the specified screen as the origin. Then, scroll the mouse wheel backward for three notches.
 uinput -M -m 100 200 -s 45
 ```
 
@@ -188,31 +188,31 @@ Simulates a mouse dragging.
 uinput -M -g <dx1> <dy1> <dx2> <dy2> [total time]
 uinput --mouse --drag <dx1> <dy1> <dx2> <dy2> [total time]
 
-# <dx1> <dy1>: position coordinates of the mouse dragging start point of the relative coordinate system with the upper left corner of the screen as the origin.
-# <dx2> <dy2>: position coordinates of the mouse dragging end point of the relative coordinate system with the upper left corner of the screen as the origin.
-# [total time]: total dragging duration, in ms. This parameter is optional. The value is an integer ranging from 1 to 15000. The default value is 1000.
+# <dx1> and <dy1> are coordinates of the start point in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
+# [total time] specifies the total drag time, in milliseconds. The default value is 1000. The value must be an integer between 1 and 15000. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulates the left mouse button pressing, dragging from (200, 650) to (500, 300) in 15000 ms, and then releasing the left mouse button.
+# Simulate clicking the left mouse button and dragging from (200, 650) to (500, 300) over 15000 ms, and then releasing the button.
 uinput -M -g 200 650 500 300 15000
 ```
 
 ### Mouse Event Interval
-Sets the interval between mouse events, in ms. This command must be used together with other mouse event commands. Otherwise, this command is invalid.
+Sets the interval between mouse events, in milliseconds. This command must be used with other mouse event commands. Otherwise, this command is invalid.
 
 **Command**
 ```bash
 uinput -M -i <time>
 uinput --mouse --interval <time>
 
-# <time> Interval between mouse events, in milliseconds. The value is an integer ranging from 1 to 15000.
+# <time> specifies the mouse event interval, in milliseconds. The value must be an integer between 1 and 15000.
 ```
 
 **Example**
 ```bash
-# Simulate the left mouse button click at an interval of 500 ms.
+# Set the interval between two simulated click events to 500 ms.
 uinput -M -c 0 -i 500 -c 0
 ```
 
@@ -230,10 +230,10 @@ uinput -M -c 0 -i 500 -c 0
 
 ## Keyboard Events
 
-Simulate keyboard input.
+Simulates a keyboard input event.
 
 ### Key Down Event
-Simulate the pressing of a key on the keyboard. It is recommended that this event be used together with the keyboard key release event to ensure that the event is closed. keyCode: [Key value definition](../reference/apis-input-kit/js-apis-keycode.md).
+Simulates a key press. You are advised to use this event together with the key up event to close the event. For details about **keyCode**, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
 **Command**
 ```bash
@@ -242,7 +242,7 @@ uinput --keyboard --down <keyCode>
 ```
 
 ### Key Up Event
-Simulate the release of a key on the keyboard. This event must be used together with the keyboard key press event to ensure that the event is closed. keyCode: [Key value definition](../reference/apis-input-kit/js-apis-keycode.md).
+Simulates a key release. You are advised to use this event together with the key down event to close the event. For details about **keyCode**, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
 **Command**
 ```bash
@@ -252,58 +252,58 @@ uinput --keyboard --up <keyCode>
 
 **Example**
 ```bash
-# Simulate the pressing and releasing of the A key.
+# Simulate pressing and releasing the A key.
 uinput -K -d 2017 -u 2017
 ```
 
 ### Long-Press Key Event
-Simulate the pressing and holding of a key on the keyboard for a specified period of time. You do not need to inject the keyboard key release event again. No key press event is injected during the long press. keyCode: [Key value definition](../reference/apis-input-kit/js-apis-keycode.md).
+Simulates a long press on the key for a specified duration. You do not need to inject the key release event. No key press event is injected during the long press. For details about **keyCode**, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
 **Command**
 ```bash
 uinput -K -l <keyCode> [long press time]
 uinput --keyboard --long_press <keyCode> [long press time]
 
-# [long press time] Long press time, in milliseconds. This parameter is optional. The default value is 3000. The value is an integer ranging from 3000 to 15000.
+# [long press time] specifies the long press duration, in milliseconds. The default value is 3000. The value must be an integer between 3000 and 15000. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulates the scenario where the A key is pressed and held for 6000 ms and then released.
+# Simulate pressing and holding the A key for 6000 ms, and then releasing the key.
 uinput -K -l 2017 6000
 ```
 
 ### Repeat Key Event
-Simulates the scenario where a key is pressed and held for a specified period of time and then released. You do not need to inject the key release event again. Key press events are repeatedly injected during the long press. keyCode: [Key value definition](../reference/apis-input-kit/js-apis-keycode.md).
+Simulates pressing a key and repeating the pressing for a specified time. You do not need to inject the key up event. Key press events are repeatedly injected during the long press. For details about **keyCode**, see [@ohos.multimodalInput.keyCode (Keycode)](../reference/apis-input-kit/js-apis-keycode.md).
 
 **Command**
 ```bash
 uinput -K -r <keyCode> [repeat output time]
 uinput --keyboard --repeat <keyCode> [repeat output time]
 
-# [repeat output time]: duration for repeatedly reporting key press events, in ms. This parameter is optional. The default value is 3000. The value range is [3000,15000]. Only an integer is supported.
+# [repeat output time] specifies the duration during which key press events are repeatedly reported, in milliseconds. The value must be an integer between 3000 to 15000. The default value is 3000. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulates the scenario where the A key is pressed and repeatedly input within 4000 ms.
+# Simulate pressing the A key and repeating the press within 4000 ms.
 uinput -K -r 2017 4000
 ```
 
 ### Keyboard Event Interval
-Sets the program interval of keyboard events, in ms. This command must be used together with other keyboard event commands. Otherwise, this command is invalid.
+Sets the interval between keyboard events, in milliseconds. This command must be used with other keyboard event commands. Otherwise, this command is invalid.
 
 **Command**
 ```bash
 uinput -K -i <time>
 uinput --keyboard --interval <time>
 
-# <time>: interval of keyboard events, in ms. The value range is [1,15000]. Only an integer is supported.
+# <time> specifies the keyboard event interval, in milliseconds. The value must be an integer between 1 and 15000.
 ```
 
 **Example**
 ```bash
-# Simulates the scenario where the A key is pressed and released at an interval of 500 ms.
+# Simulate pressing and holding the A key for 500 ms and then releasing the key.
 uinput -K -d 2017 -i 500 -u 2017
 ```
 
@@ -318,59 +318,59 @@ uinput --keyboard --text <text>
 
 **Example**
 ```bash
-# Simulates the scenario where a piece of text "Hello,World!" is entered.
+# Simulate inputting a text "Hello, World!".
 uinput -K -t Hello,World!
 ```
 
 ## Stylus Events
 
-Simulates the scenario where a stylus is tapped or swiped. The actual injection effect is the same as that of the [touch events](#touch-events). You are advised to use the touch event command first.
+Simulates stylus click and move events. The actual event injection effect is the same as that of [touch events](#touch-events). You are advised to use the touch event command.
 
 ### Stylus Down Event
-Simulates the action of pressing the stylus at (dx, dy). It is recommended that this command be used together with the stylus lift event to ensure that the event is closed.
+Simulates a stylus press at (dx, dy). You are advised to use this event together with the stylus up event to close the event.
 
 **Command**
 ```bash
 uinput -S -d <dx> <dy>
 uinput --stylus --down <dx> <dy>
 
-# <dx> <dy>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx> and <dy> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
 ```
 
 ### Stylus Up Event
-Simulates the action of lifting the stylus at (dx, dy). It is recommended that this command be used together with the stylus press event to ensure that the event is closed.
+Simulates a stylus up at (dx, dy). You are advised to use this event together with the stylus down event to close the event.
 
 **Command**
 ```bash
 uinput -S -u <dx> <dy>
 uinput --stylus --up <dx> <dy>
 
-# <dx> <dy>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx> and <dy> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
 ```
 
 **Example**
 ```bash
-# Simulates the action of pressing and lifting the stylus at (100, 100).
+# Simulate pressing and releasing the stylus at (100, 100).
 uinput -S -d 100 100 -u 100 100
 ```
 
 ### Stylus Move Event
-Simulates the action of pressing the stylus at (dx1, dy1), moving the stylus to (dx2, dy2) within a specified period of time, and lifting the stylus.
+Simulates moving a stylus from coordinates (dx1, dy1) to coordinates (dx2, dy2) within a specified time and then releasing the stylus.
 
 **Command**
 ```bash
 uinput -S -m <dx1> <dy1> <dx2> <dy2> [smooth time] [-k keep time]
 uinput --stylus --move <dx1> <dy1> <dx2> <dy2> [smooth time] [-k keep time]
 
-# <dx1> <dy1>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin, where the stylus is pressed.
-# <dx2> <dy2>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin, where the stylus is lifted.
-# [smooth time]: movement time. This parameter is optional. The unit is ms. The default value is 1000. The value range is [1,15000]. Only an integer is supported.
-# [-k keep time]: dwell time before the stylus is lifted after it is moved to the target position. This parameter is optional. The unit is ms. The default value is 0. The value range is [0,60000]. Only an integer is supported.
+# <dx1> and <dy1> are coordinates of the start point in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
+# [smooth time] specifies the moving time, in milliseconds. The value must be an integer between 1 and 15000. The default value is 1000. This parameter is optional.
+# [-k keep time] specifies the duration before releasing after the stylus moves to the target position, in milliseconds. The value must be an integer between 0 and 60000. The default value is 0. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulates the action of pressing the stylus at (100, 1000), moving the stylus to (100, 2000) within 1000 ms, holding the stylus for 1000 ms, and lifting the stylus.
+# Simulate pressing the stylus at (100, 1000), moving to (100, 2000) over 1000 ms, holding for 1000 ms and then releasing it.
 uinput -S -m 100 1000 100 2000 1000 -k 1000
 ```
 
@@ -382,105 +382,105 @@ Simulates a stylus click at (dx, dy).
 uinput -S -c <dx> <dy> [click interval]
 uinput --stylus --click <dx> <dy> [click interval]
 
-# <dx> <dy>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
-# [click interval]: click interval, in milliseconds. The value is an integer ranging from 1 to 450. The default value is 100. This parameter is optional.
+# <dx> and <dy> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
+# [click interval time] specifies the click interval, in milliseconds. The value is an integer between 1 and 450. The default value is 100. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulate a touch pen click at the (100, 100) position.
+# Simulate a stylus click at (100, 100).
 uinput -S -c 100 100
 ```
 
 ### Stylus Drag Event
-Simulates a touch pen drag.
+Simulates a stylus drag event.
 
 **Command**
 ```bash
 uinput -S -g <dx1> <dy1> <dx2> <dy2> [press time] [total time] 
 uinput --stylus --drag <dx1> <dy1> <dx2> <dy2> [press time] [total time] 
 
-# <dx1> <dy1>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
-# <dx2> <dy2>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
-# [press time]: press time, in milliseconds. This parameter is optional and must be used together with total time. If either of them is not specified, the command does not take effect. If both of them are not specified, the command takes effect. The value is an integer ranging from 500 to 14500. The default value is 500.
-# [total time]: drag time, in milliseconds. This parameter is optional and must be used together with press time. If either of them is not specified, the command does not take effect. If both of them are not specified, the command takes effect. The value is an integer ranging from 1000 to 15000. The default value is 1000. [total time] - [press time] cannot be less than 500. Otherwise, the error message "total time input is error" is displayed.
+# <dx1> and <dy1> are coordinates of the start point in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
+# [press time] specifies the press time, in milliseconds. The value is an integer between 500 and 14500. The default value is 500. This parameter is optional and must be used together with the total time parameter. If either of the parameters is not specified, the command does not take effect. If both parameters are not specified, the command takes effect.
+# [total time] specifies the drag time, in milliseconds. The value is an integer between 1000 and 15000. The default value is 1000. This parameter is optional and must be used together with the press time parameter. If either of the two parameters is not specified, the command does not take effect. If both parameters are not specified, the command takes effect. The value of [total time] minus [press time] must be greater than or equal to 500.
 ```
 
 **Example**
 ```bash
-# Simulates a stylus touch and drag event. The stylus touches down at (100, 150) for 500 ms, drags to (500, 300) for 1100 ms, and then releases.
+# Simulate pressing the stylus at (100, 150) for 500 ms and dragging it to (100, 150) after 1100 ms.
 uinput -S -g 100 150 500 300 500 1100
 ```
 
 ### Interval of Stylus Events
-Sets the interval between stylus touch events, in milliseconds. This command must be used together with other stylus touch event commands. Otherwise, this command is invalid.
+Sets the interval between stylus events, in milliseconds. This command must be used with other stylus event commands. Otherwise, this command is invalid.
 
 **Command**
 ```bash
 uinput -S -i <time>
 uinput --stylus --interval <time>
 
-# <time>: interval, in milliseconds. The value is an integer ranging from 1 to 15000.
+# <time> specifies the interval, in milliseconds. The value must be an integer between 1 and 15000.
 ```
 
 **Example**
 ```bash
-# Simulates a stylus touch event. The stylus touches down at (100, 100) and then lifts up at (100, 100) after 500 ms.
+# Simulate pressing the stylus at (100, 100) and releasing it after 500 ms.
 uinput -S -d 100 100 -i 500 -u 100 100
 ```
 
 ## Touch Events
 
-Simulates a finger touch event, such as touch down and touch up.
+Simulates touch events such as finger click and move events.
 
 ### Touch Down Event
-Simulates a finger touch down event at (dx, dy). It is recommended that this command be used together with the touch up event to ensure that the event is closed.
+Simulates touching at (dx, dy). You are advised to use this event together with the touch up event to close the event.
 
 **Command**
 ```bash
 uinput -T -d <dx> <dy>
 uinput --touch --down <dx> <dy>
 
-# <dx> <dy>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx> and <dy> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
 ```
 
 ### Touch Up Event
-Simulates a finger touch up event at (dx, dy). It is recommended that this command be used together with the touch down event to ensure that the event is closed.
+Simulates lifting the finger at (dx, dy). You are advised to use this event together with the touch down event to close the event.
 
 **Command**
 ```bash
 uinput -T -u <dx> <dy>
 uinput --touch --up <dx> <dy>
 
-# <dx> <dy>: position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx> and <dy> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
 ```
 
 **Example**
 ```bash
-# Simulates a finger touch down and touch up event at (100, 100).
+# Simulate touching at (100, 100) and then lifting the finger.
 uinput -T -d 100 100 -u 100 100
 ```
 
 ### Touch Move Event
-Simulates a finger touch move event. The finger touches down at (dx1, dy1), moves to (dx2, dy2) within a specified period, and then lifts up. A maximum of three fingers can move at the same time.
+Simulate touching at (dx1, dy1), moving the finger to (dx2, dy2) within a specified time, and then lifting the finger. Up to three fingers can be used at the same time.
 
 **Command**
 ```bash
 uinput -T -m <dx1> <dy1> <dx2> <dy2> [-k keep time] [smooth time]
 uinput --touch --move <dx1> <dy1> <dx2> <dy2> [-k keep time] [smooth time]
 
-# <dx1> <dy1> Position coordinates of the touch start point in the relative coordinate system with the upper left corner of the screen as the origin.
-# <dx2> <dy2> Position coordinates of the touch end point in the relative coordinate system with the upper left corner of the screen as the origin.
-# [-k keep time] Touch hold time. This parameter is optional. The unit is ms. The default value is 0. The value range is [0,60000]. Only integers are supported.
-# [smooth time] Touch move time. This parameter is optional. The unit is ms. The default value is 1000. The value range is [1,15000]. Only integers are supported.
+# <dx1> and <dy1> are coordinates of the start point in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
+# [-k keep time] specifies the hold time, in milliseconds. The value must be an integer between 0 and 60000. The default value is 0. This parameter is optional.
+# [smooth time] specifies the moving time, in milliseconds. The value must be an integer between 1 and 15000. The default value is 1000. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulate a finger to touch and hold at (100, 1000), move to (100, 2000) in 1000 ms, hold for 1000 ms, and then lift.
+# Simulate touching at (100, 1000), moving to (100, 2000) over 1000 ms, holding for 1000 ms and then lifting the finger.
 uinput -T -m 100 1000 100 2000 -k 1000 1000
 
-# Simulate three-finger swipe. The first finger touches and moves from (300, 900) to (300, 2000), the second finger touches and moves from (600, 900) to (600, 2000), and the third finger touches and moves from (900, 900) to (900, 2000). The total move duration is 200 ms. After the move is complete, the finger stays on the screen for 1000 ms and then lifts.
+# Simulate moving three fingers for 200 ms, with the first one from (300, 900) to (300,2000), the second one from (600, 900) to (600, 2000), and the third one from (900, 900) to (900, 2000). After the movement, hold the screen for 1000 ms and then lift the fingers.
 uinput -T -m 300 900 300 2000 600 900 600 2000 900 900 900 2000 -k 1000 200
 ```
 
@@ -492,28 +492,28 @@ Simulates a finger click at coordinates (dx, dy).
 uinput -T -c <dx> <dy> [click interval]
 uinput --touch --click <dx> <dy> [click interval]
 
-# <dx> <dy> Position coordinates in the relative coordinate system with the upper left corner of the screen as the origin.
-# [click interval] Click interval. This parameter is optional. The unit is ms. The default value is 100. The value range is [1,450]. Only integers are supported.
+# <dx> and <dy> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
+# [click interval time] specifies the click interval, in milliseconds. The value is an integer between 1 and 450. The default value is 100. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulate a finger to touch and click at (100, 100).
+# Simulate a finger click at (100, 100).
 uinput -T -c 100 100
 ```
 
 ### Touch Drag Event
-Simulate a finger to touch and drag.
+Simulates a finger drag.
 
 **Command**
 ```bash
 uinput -T -g <dx1> <dy1> <dx2> <dy2> [press time] [total time] 
 uinput --touch --drag <dx1> <dy1> <dx2> <dy2> [press time] [total time] 
 
-# <dx1> <dy1>: coordinates of the touch drag start point in the relative coordinate system with the upper left corner of the screen as the origin.
-# <dx2> <dy2>: coordinates of the touch drag end point in the relative coordinate system with the upper left corner of the screen as the origin.
-# [press time]: press time. This parameter is optional. It must be used together with total time. If either of them is not specified, the command does not take effect. If both of them are not specified, the command takes effect. The unit is ms. The default value is 500. The value range is [500,14500]. Only an integer is supported.
-# [total time]: drag time. This parameter is optional. It must be used together with press time. If either of them is not specified, the command does not take effect. If both of them are not specified, the command takes effect. The unit is ms. The default value is 1000. The value range is [1000,15000]. Only an integer is supported. [total time] - [press time] cannot be less than 500. Otherwise, the error message "total time input is error" is displayed.
+# <dx1> and <dy1> are coordinates of the start point in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx2> and <dy2> are coordinates of the end point in the relative coordinate system with the upper left corner of the screen as the origin.
+# [press time] specifies the press time, in milliseconds. The value is an integer between 500 and 14500. The default value is 500. This parameter is optional and must be used together with the total time parameter. If either of the parameters is not specified, the command does not take effect. If both parameters are not specified, the command takes effect.
+# [total time] specifies the drag time, in milliseconds. The value is an integer between 1000 and 15000. The default value is 1000. This parameter is optional and must be used together with the press time parameter. If either of the two parameters is not specified, the command does not take effect. If both parameters are not specified, the command takes effect. The value of [total time] minus [press time] must be greater than or equal to 500.
 ```
 
 **Example**
@@ -523,57 +523,57 @@ uinput -T -g 100 150 500 300 500 1100
 ```
 
 ### Interval of Touch Events
-Set the interval between touch events in ms. This command must be used together with other touch event commands. Otherwise, this command does not take effect.
+Sets the interval between touch events, in milliseconds. This command must be used with other touch event commands. Otherwise, this command is invalid.
 
 **Command**
 ```bash
 uinput -T -i <time>
 uinput --touch --interval <time>
 
-# <time>: interval, in ms. The value range is [1,15000]. Only an integer is supported.
+# <time> specifies the interval, in milliseconds. The value must be an integer between 1 and 15000.
 ```
 
 **Example**
 ```bash
-# Simulate a finger to press (100, 100), wait for 500 ms, and lift (100, 100).
+# Simulate touching at (100, 100) and releasing the finger after 500 ms.
 uinput -T -d 100 100 -i 500 -u 100 100
 ```
 
-### Single-Finger Double-Knuckle Tap
-Simulates a single-finger double-knuckle tap on the touchscreen.
+### Single-Knuckle Double-Tap
+Simulates a single-knuckle double-tap on the touchscreen.
 
 **Command**
 ```bash
 uinput -T -k -s <dx1> <dy1> <dx2> <dy2> [interval time]
 uinput --touch --knuckle --single <dx1> <dy1> <dx2> <dy2> [interval time]
 
-# <dx1> <dy1> The first tap of a single knuckle in the relative coordinate system with the upper left corner of the screen as the origin.
-# <dx2> <dy2> The second tap of a single knuckle in the relative coordinate system with the upper left corner of the screen as the origin.
-# [interval time] Interval, in milliseconds. This parameter is optional. The default value is 200. The value range is [1,250]. Only integers are supported.
+# <dx1> and <dy1> are coordinates of the first tap in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx2> and <dy2> are coordinates of the second tap in the relative coordinate system with the upper left corner of the screen as the origin.
+# [interval time] specifies the interval, in milliseconds. The value must be an integer between 1 and 250. The default value is 200. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulate a single knuckle to tap at (100, 100) and (100, 130) at an interval of 200 ms.
+# Simulate a single-finger knuckle tap at (100, 100) and (100, 130) at an interval of 200 ms.
 uinput -T -k -s 100 100 100 130
 ```
 
-### Two-Finger Double-Knuckle Tap
-Simulates a two-finger double-knuckle tap on the touchscreen.
+### Two-Knuckle Double-Tap
+Simulates a two-knuckle double-tap on the touchscreen.
 
 **Command**
 ```bash
 uinput -T -k -d <dx1> <dy1> <dx2> <dy2> [interval time]
 uinput --touch --knuckle --double <dx1> <dy1> <dx2> <dy2> [interval time]
 
-# <dx1> <dy1> Position coordinates of the first knuckle in the relative coordinate system with the upper left corner of the screen as the origin.
-# <dx2> <dy2> Position coordinates of the second knuckle in the relative coordinate system with the upper left corner of the screen as the origin.
-# [interval time] Interval, in milliseconds. This parameter is optional. The default value is 200. The value range is [1,250]. Only integers are supported.
+# <dx1> and <dy1> are coordinates of the first knuckle in the relative coordinate system with the upper left corner of the screen as the origin.
+# <dx2> and <dy2> are coordinates of the second knuckle in the relative coordinate system with the upper left corner of the screen as the origin.
+# [interval time] specifies the interval, in milliseconds. The value must be an integer between 1 and 250. The default value is 200. This parameter is optional.
 ```
 
 **Example**
 ```bash
-# Simulate two knuckles to tap at (100, 100) and (100, 130) at an interval of 200 ms twice.
+# Simulate a two-knuckle double-tap at (100, 100) and (100, 130) at an interval of 200 ms.
 uinput -T -k -d 100 100 100 130
 ```
 
@@ -587,13 +587,13 @@ Simulates a finger pinch on the touchpad.
 uinput -P -p <dx> <dy> scalePercent
 uinput --touchpad --pinch <dx> <dy> scalePercent
 
-# <dx> <dy> Position coordinates of the relative coordinate system with the upper left corner of the screen as the origin.
-# scalePercent Scale percentage. The value range is [1,500]. If the value is less than 100, the image is zoomed out. If the value is greater than 100, the image is zoomed in. The value of dx must be greater than 0, and the value of dy must be greater than or equal to 200. In this scenario, only image zooming is supported. Ensure that an image is on the desktop when this command is called.
+# <dx> and <dy> are coordinates in the relative coordinate system with the upper-left corner of the screen as the origin.
+# scalePercent specifies the scale percent. The value range is [1, 500]. If the value is less than 100, the image is zoomed out. If the value is greater than 100, the image is zoomed in. The value of dx must be greater than 0, and the value of dy must be greater than or equal to 200. In this scenario, only image zooming is supported. Ensure that there is an image on the screen when this command is executed.
 ```
 
 **Example**
 ```bash
-# Simulates a finger pinch on the touchpad.
+# Simulate a finger pinch on the touchpad.
 uinput -P -p 100 300 89
 ```
 
@@ -605,31 +605,31 @@ Simulates a swipe on the touchpad.
 uinput -P -s <startX> <startY> <endX> <endY>
 uinput --touchpad --swipe <startX> <startY> <endX> <endY>
 
-# <startX> <startY> Position coordinates of the start point of the swipe gesture reported by the touchpad in the relative coordinate system with the upper left corner of the screen as the origin.
-# <endX> <endY> Position coordinates of the end point of the swipe gesture reported by the touchpad in the relative coordinate system with the upper left corner of the screen as the origin.
+# <startX> and <startY> are coordinates of the start point of the touchpad swipe event in the relative coordinate system with the upper left corner of the screen as the origin.
+# <endX> and <endY> are coordinates of the end point of the touchpad swipe event in the relative coordinate system with the upper left corner of the screen as the origin.
 ```
 
 **Example**
 ```bash
-# Simulate three-finger swipe gestures on the touchpad.
+# Simulate the three-finger swipe gesture on the touchpad.
 uinput -P -s 100 1100 100 300
 ```
 
 ### Touchpad Rotate Event
 Simulates a rotation on the touchpad.
 
-Currently, the touchpad rotation event does not take effect.
+Currently, the touchpad rotate event does not take effect.
 
 **Command**
 ```bash
 uinput -P -r <rotateValue>
 uinput --touchpad --rotate <rotateValue>
 
-# <rotateValue> Rotation value, in degrees. The value range is [–359,359]. Only an integer is supported. A positive rotation angle indicates clockwise rotation, and a negative rotation angle indicates counterclockwise rotation.
+# <rotateValue> specifies the rotation value, in degrees. The value must be an integer between –359 and 359. A positive value indicates clockwise rotation, and a negative value indicates counterclockwise rotation.
 ```
 
 **Example**
 ```bash
-# Simulate two-finger rotation gestures (180°).
+# Simulate a two-finger rotation of 180 degrees on the touchpad.
 uinput -P -r 180
 ```

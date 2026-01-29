@@ -1,5 +1,12 @@
 # HiCollie Error Codes
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 > **Note:**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -36,6 +43,10 @@ The API fails to be called for the remote service.
 
 The service is not started or crashes.
 
+**Solution**
+
+Call the API again.
+
 ## 29800003 Invalid Timer Name
 
 **Error Message**
@@ -48,7 +59,11 @@ The timer name is invalid.
 
 **Possible Causes**
 
-The timer name is a null pointer or empty.
+The **name** is **nullptr** or points to an empty string.
+
+**Solution**
+
+Check the **name** parameter and ensure that it is neither a **nullptr** nor a pointer to an empty string.
 
 ## 29800004 Invalid Timeout Value
 
@@ -64,6 +79,10 @@ The **timeout** value is invalid.
 
 The **timeout** value is **0**.
 
+**Solution**
+
+Check the **timeout** value and ensure that it is greater than 0.
+
 ## 29800005 Incorrect Process Context
 
 **Error Message**
@@ -78,6 +97,10 @@ The process context is incorrect.
 
 The **appspawn** or **nativespawn** process is used to access the timer.
 
+**Solution**
+
+Do not access HiCollie in the **appspawn** and **nativespawn** processes.
+
 ## 29800006 Incorrect Timer ID
 
 **Error Message**
@@ -90,5 +113,10 @@ The timer task ID is incorrect.
 
 **Possible Causes**
 
-- The pointer to the timer ID is null.
+- The integer pointer ID is **nullptr**.
 - The number of concurrent tasks in the process that accesses the HiCollie timer reaches the maximum value 128.
+
+**Solution**
+
+- Check the ID and ensure that it is a non-null integer pointer.
+- Retry the operation or reduce the number of HiCollie timer tasks in the process.

@@ -4,13 +4,17 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
 Metadata is the description and context of image information returned by the camera application. It provides detailed data for the image information, such as the coordinates of a viewfinder frame for identifying a portrait in a photo or video.
 
 Metadata uses a tag (key) to find the corresponding data during parameter transfers and configurations, reducing memory copy operations.
+
+## When to Use
+
+Detect faces in images and return high-precision face bounding box coordinates. Applications can integrate post-processing algorithms based on face detection results, making them suitable for a variety of scenarios.
 
 ## How to Develop
 

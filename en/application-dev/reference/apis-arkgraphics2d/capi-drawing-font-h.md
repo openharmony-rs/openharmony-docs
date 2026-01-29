@@ -643,6 +643,12 @@ Obtains the number of glyphs represented by text.<br>This API may return an erro
 | size_t byteLength | Text length, in bytes.|
 | [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | Text encoding type [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding).|
 
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int | Number of glyphs represented by the text. The value is an integer.|
+
 ### OH_Drawing_FontTextToGlyphs()
 
 ```

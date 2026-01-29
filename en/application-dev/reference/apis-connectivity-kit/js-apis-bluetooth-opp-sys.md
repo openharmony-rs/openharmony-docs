@@ -66,7 +66,7 @@ Represents the **OppServerProfile** class. Before using APIs of this class, you 
 
 sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&gt;
 
-Send files over Bluetooth.
+Send files over Bluetooth. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -135,7 +135,7 @@ try {
 
 setIncomingFileConfirmation(accept: boolean, fileFd: number): Promise&lt;void&gt;
 
-Receives files over Bluetooth.
+Receives files over Bluetooth. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -400,7 +400,7 @@ try {
 
 cancelTransfer(): Promise&lt;void&gt;
 
-Cancels Bluetooth file transfer.
+Cancels Bluetooth file transfer. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -443,7 +443,7 @@ try {
 
 getCurrentTransferInformation(): Promise&lt;[OppTransferInformation](#opptransferinformation)&gt;
 
-Obtains the information about the file that is being transferred.
+Obtains the information about the file that is being transferred. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -486,7 +486,7 @@ try {
 
 setLastReceivedFileUri(uri: string): Promise&lt;void&gt;
 
-Sets the URI of the last received file.
+Sets the URI of the last received file. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

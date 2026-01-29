@@ -8,7 +8,7 @@
 
 ## Overview
 
-A special type of handle scope, which is used to return the value created in a specific handle scope to the parent scope.
+Defines a special type of handle scope, which is used to return the value created in a specific handle scope to the parent scope.
 
 **Since**: 11
 

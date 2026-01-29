@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **Path2D** allows you to describe a path through an existing path. This path can be drawn through the **stroke** or **fill** API of **Canvas**.
 
@@ -394,7 +394,7 @@ Draws a cubic Bezier curve on the canvas.
 
 quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
-Draws a quadratic curve on the canvas.
+Creates a quadratic Bezier curve path.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

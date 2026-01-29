@@ -1,10 +1,10 @@
 # Hit Test Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can configure the [hit test](../../../ui/arkts-interaction-basic-principles.md#hit-testing) behavior for components. In the ArkUI framework, before processing touchscreen events and mouse events, the system performs hit testing between the touch point and the component's response area to identify components that should respond to events. Then ArkUI dispatches the event based on the test result. The **hitTestBehavior** attribute sets different hit test response modes, which affects both the hit test results and subsequent event dispatch. For details about the impact, see [HitTestMode](./ts-appendix-enums.md#hittestmode9). This affects the dispatch of [click](ts-universal-events-click.md), [touch](ts-universal-events-touch.md), [drag](ts-universal-events-drag-drop.md), [mouse](ts-universal-mouse-key.md), [axis](ts-universal-events-axis.md), [hover](ts-universal-events-hover.md), [accessibility hover](ts-universal-accessibility-hover-event.md), and [gesture](ts-gesture-settings.md) events.
 
@@ -38,7 +38,7 @@ Sets how the component behaves during hit testing. If **hitTestBehavior** is not
 
 ### Example 1: Understanding Hit Test Effects for Block and Transparent Modes
 
-This example demonstrates the hit test effects of **Block** and **Transparent** hit test modes by setting different **HitTestMode** values.
+This example demonstrates the hit test effects of **Block** and **Transparent** hit test modes by setting different [HitTestMode](./ts-appendix-enums.md#hittestmode9) values.
 
 ```ts
 // xxx.ets
@@ -78,7 +78,7 @@ struct HitTestBehaviorExample {
 
 ### Example 2: Understanding the Hit Test Effect When the Hit Test Type is BLOCK_HIERARCHY
 
-This example demonstrates the hit test effect when the hit test type is set to **BLOCK_HIERARCHY**.
+This example demonstrates the hit test effect when the hit test type is set to **BLOCK_HIERARCHY**, supported since API version 20.
 
 ```ts
 // xxx.ets
@@ -155,7 +155,7 @@ struct BlockHierarchy {
 
 ### Example 3: Understanding the Hit Test Effect When the Hit Test Type is BLOCK_DESCENDANTS
 
-This example demonstrates the hit test effect when the hit test type is set to **BLOCK_DESCENDANTS**.
+This example demonstrates the hit test effect when the hit test type is set to **BLOCK_DESCENDANTS**, supported since API version 20.
 
 ```ts
 // xxx.ets

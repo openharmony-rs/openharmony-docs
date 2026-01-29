@@ -206,7 +206,7 @@ Enumerates the IP address types.
 | -------- | -------- | -------- |
 | STATIC | 0 | Static IP address.|
 | DHCP | 1 | IP address allocated by DHCP.|
-| UNKNOWN | 2 | Unknown.|
+| UNKNOWN | 2 | Unspecified.|
 
 
 ## IpConfig<sup>9+</sup>
@@ -454,13 +454,13 @@ Enumerates Wi-Fi states.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| UNKNOWN | -1 | Unknown.|
+| UNKNOWN | -1 | Unspecified.|
 | INACTIVE | 0 | Inactive.|
 | ACTIVATED | 1 | Activated.|
 | ACTIVATING | 2 | Activating.|
 | DEACTIVATING | 3 | Deactivating|
 | SEMI_ACTIVATING | 4 | Partially activating.|
-| SEMI_ACTIVE | 5 | partially activated.|
+| SEMI_ACTIVE | 5 | Partially activated.|
 
 
 ## wifiManager.reassociate<sup>9+</sup>
@@ -813,7 +813,7 @@ Enables or disables HiLink.
 | -------- | -------- | -------- | -------- |
 | isHiLinkEnable | boolean | Yes| Whether to enable hiLink. The value **true** means to enable HiLink, and the value **false** means the opposite.|
 | bssid | string | Yes| MAC address of the hotspot, for example, **00:11:22:33:44:55**.|
-| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. The value of **config.bssid** must be the same as that of the second parameter **bssid**. The default **bssidType** is random device address.|
+| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration information. The value of **config.bssid** must be the same as that of the second parameter **bssid**. The default **bssidType** is random device address.|
 
 **Error codes**
 
@@ -1577,17 +1577,17 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-import { wifi } from '@kit.ConnectivityKit';
+import { wifiManager } from '@kit.ConnectivityKit';
 
 let recvStreamChangeFunc = (result:number) => {
     console.info("Receive stream change event: " + result);
 }
 
 // Register an event.
-wifi.on("streamChange", recvStreamChangeFunc);
+wifiManager.on("streamChange", recvStreamChangeFunc);
 
 // Unregister an event.
-wifi.off("streamChange", recvStreamChangeFunc);
+wifiManager.off("streamChange", recvStreamChangeFunc);
 
 ```
 ## wifiManager.on('deviceConfigChange')<sup>9+</sup>

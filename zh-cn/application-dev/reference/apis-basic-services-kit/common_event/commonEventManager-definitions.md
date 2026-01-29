@@ -3,6 +3,9 @@
 本文档提供了系统定义的公共事件清单。
 公共事件类型定义在[ohos.commonEventManager模块的Support枚举](../js-apis-commonEventManager.md#support)中。
 
+> **说明：**
+>
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## Ability Kit
@@ -1490,7 +1493,7 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
-**取值：** "usual.event.data.DISK_BAD_REMOVAL"
+**取值：** "usual.event.data.DISK_REMOVED"
 
 
 ### COMMON_EVENT_DISK_UNMOUNTED
@@ -1501,7 +1504,7 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
-**取值：** "usual.event.data.DISK_UNMOUNTABLE"
+**取值：** "usual.event.data.DISK_UNMOUNTED"
 
 
 ### COMMON_EVENT_DISK_MOUNTED
@@ -1512,7 +1515,7 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
-**取值：** "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
+**取值：** "usual.event.data.DISK_MOUNTED"
 
 
 
@@ -1524,7 +1527,7 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
-**取值：** "usual.event.data.DISK_REMOVED"
+**取值：** "usual.event.data.DISK_BAD_REMOVAL"
 
 
 ### COMMON_EVENT_DISK_UNMOUNTABLE
@@ -1535,7 +1538,7 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
 
-**取值：** "usual.event.data.DISK_UNMOUNTED"
+**取值：** "usual.event.data.DISK_UNMOUNTABLE"
 
 
 ### COMMON_EVENT_DISK_EJECT
@@ -1561,7 +1564,7 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 ### COMMON_EVENT_USB_ACCESSORY_ATTACHED
 
-（预留事件，暂未支持）表示已连接USB附件的公共事件的动作。
+表示已连接USB配件的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1572,13 +1575,13 @@ AppGallery Kit面向应用发布如下系统公共事件。
 
 ### COMMON_EVENT_USB_ACCESSORY_DETACHED
 
-（预留事件，暂未支持）表示USB附件被卸载的公共事件的动作。
+表示USB配件被卸载的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.data.DISK_MOUNTED"
+**取值：** "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
 （预留事件，暂未支持）蓝牙免提通信连接状态公共事件的动作。

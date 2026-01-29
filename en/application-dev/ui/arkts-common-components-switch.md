@@ -1,4 +1,10 @@
 # Toggle
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **Toggle** component provides a clickable element in the check box, button, or switch type, typically used to switch between two states. For details, see [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md).
@@ -6,7 +12,7 @@ The **Toggle** component provides a clickable element in the check box, button, 
 
 ## Creating a Toggle
 
-You can create a toggle by calling the following API:
+A toggle is created using [ToggleOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#toggleoptions18). The syntax is as follows:
 
 ```ts
 Toggle(options: { type: ToggleType, isOn?: boolean })
@@ -38,6 +44,7 @@ The API can be called in either of the following ways:
     ![en-us_image_0000001511421228](figures/en-us_image_0000001511421228.png)
   
 - Create a toggle that contains a child component.
+
   When **ToggleType** is set to **Button**, only one child component is allowed. If the child component has text set, the text content is displayed on the button.
 
   ```ts
@@ -88,7 +95,7 @@ The API can be called in either of the following ways:
 
 ## Adding Events
 
-The **Toggle** component supports the [universal events](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md). In addition, it can be bound to the **onChange** event so that it responds with custom behavior after being turned on or off.
+The **Toggle** component supports the [universal events](../reference/apis-arkui/arkui-ts/ts-component-general-events.md). In addition, it can be bound to the **onChange** event so that it responds with custom behavior after being turned on or off.
 
 
 ```ts
@@ -108,11 +115,13 @@ In this example, the **Toggle** component is used to enable or disable Bluetooth
 ```ts
 // xxx.ets
 import { promptAction } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct ToggleExample {
-  @State BOnSt:promptAction.ShowToastOptions = {'message': 'Bluetooth is on.'}
-  @State BOffSt:promptAction.ShowToastOptions = {'message': 'Bluetooth is off.'}
+  @State bOnSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is on.' };
+  @State bOffSt: promptAction.ShowToastOptions = { 'message': 'Bluetooth is off.' };
+
   build() {
     Column() {
       Row() {
@@ -120,20 +129,21 @@ struct ToggleExample {
           .height(50)
           .fontSize(16)
       }
+
       Row() {
         Text("Bluetooth")
           .height(50)
-          .padding({left: 10})
+          .padding({ left: 10 })
           .fontSize(16)
           .textAlign(TextAlign.Start)
           .backgroundColor(0xFFFFFF)
         Toggle({ type: ToggleType.Switch })
-          .margin({left: 200, right: 10})
+          .margin({ left: 200, right: 10 })
           .onChange((isOn: boolean) => {
-            if(isOn) {
-              promptAction.showToast(this.BOnSt)
+            if (isOn) {
+              this.getUIContext().getPromptAction().showToast(this.bOnSt);
             } else {
-              promptAction.showToast(this.BOffSt)
+              this.getUIContext().getPromptAction().showToast(this.bOffSt);
             }
           })
       }

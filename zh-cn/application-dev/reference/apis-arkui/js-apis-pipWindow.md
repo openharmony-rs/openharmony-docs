@@ -12,7 +12,7 @@
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 在API version 20之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从API version 20开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。
+> - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。
 
 ## 导入模块
 
@@ -79,7 +79,6 @@ create(config: PiPConfiguration): Promise&lt;PiPController&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 class Params {
   text: string = '';
@@ -118,7 +117,7 @@ class TextNodeController extends NodeController {
 
   // 开发者可自定义该方法实现布局更新
   update(message: string) {
-    console.log(`update message: ${message}`);
+    console.info(`update message: ${message}`);
     if (this.textNode !== null) {
       this.textNode.update(new Params(message));
     }
@@ -211,7 +210,6 @@ create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;P
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { PiPWindow, typeNode, UIContext } from '@kit.ArkUI';
-import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
@@ -759,7 +757,7 @@ updateContentNode(contentNode: typeNode.XComponent): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
@@ -1166,7 +1164,7 @@ off(type: 'pipWindowSizeChange', callback?: Callback&lt;PiPWindowSize&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |

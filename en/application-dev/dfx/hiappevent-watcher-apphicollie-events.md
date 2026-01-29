@@ -14,7 +14,7 @@ You can subscribe to task execution timeout events **EVENT_APP_HICOLLIE** using 
 
 - [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md)
 
-## Field Description
+## Event Fields
 
 ### params
 

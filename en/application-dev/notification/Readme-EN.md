@@ -1,5 +1,12 @@
 # Notification Kit (User Notification Service)<!--notification-kit-->
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 - [Introduction to Notification Kit](notification-overview.md)
 - [Requesting Notification Authorization](notification-enable.md)
 - [Managing the Notification Badge](notification-badge.md)
@@ -21,5 +28,4 @@
     <!--Del-->
   - [Cross-Device Notification Management (for System Applications Only)](notification-distributed-notdistributed-sys.md)
   <!--DelEnd-->
-  - [Enabling Quick Reply for Cross-device Notifications](notification-quickreply.md)
   - [Clearing Repeated Notifications Across Devices](notification-distributed-messageid.md)

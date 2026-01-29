@@ -10,7 +10,7 @@
 
 地址越界问题是指访问了不合法的地址，导致程序运行出现异常，通常表现为应用崩溃。
 
-开发者可通过HiAppEvent接口订阅地址越界事件，请参考以下文档。目前提供ArkTs和C/C++两种接口，按需选择。
+开发者可通过HiAppEvent接口订阅地址越界事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
 - [订阅踩内存事件（ArkTS）](hiappevent-watcher-address-sanitizer-events-arkts.md)
 

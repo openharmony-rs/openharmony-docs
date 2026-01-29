@@ -14,7 +14,7 @@
 
 **Error Message**
 
-The FrameNode is not custom node.
+The node type is not custom node.
 
 **Description**
 
@@ -32,7 +32,7 @@ When integrating a render node, ensure that you create an NDK node of type ARKUI
 
 **Error Message**
 
-The FrameNode has children.
+Node already has children.
 
 **Description**
 
@@ -50,7 +50,7 @@ When integrating a render node, verify whether the custom node being used alread
 
 **Error Message**
 
-The RenderNode has a parent.
+RenderNode parent is existed.
 
 **Description**
 
@@ -68,7 +68,7 @@ When integrating a render node, verify whether the render node designated as the
 
 **Error Message**
 
-The render child node is not exist.
+RenderNode child is not exist.
 
 **Description**
 
@@ -86,7 +86,7 @@ Verify whether the provided index exceeds the node's range, or whether the rende
 
 **Error Message**
 
-The param is out of range.
+Param is out of range.
 
 **Description**
 

@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-Concurrency refers to the situation where multiple tasks are executed at the same time. On a multi-core device, tasks can be executed concurrently on different CPUs. On single-core devices, while multiple tasks cannot run in parallel at the exact same moment, the CPU can switch between tasks when one is idle or performing I/O operations, thereby optimizing CPU resource utilization.
+Concurrency refers to the situation where multiple tasks are executed at the same time. On a multi-core device, tasks can be executed concurrently on different CPUs. On single-core devices, while multiple tasks are not executed at the same time, the CPU can switch between tasks when one is idle or performing I/O operations, thereby optimizing CPU resource utilization.
 
 To improve the response speed and frame rate of applications and mitigate the impact of time-consuming tasks on the UI main thread, ArkTS provides two concurrency strategies: asynchronous concurrency and multithreaded concurrency.
 

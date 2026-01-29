@@ -4,12 +4,12 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @yangfan229-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-动画效果可以丰富界面的细节，提升UI界面的真实感和品质感。例如，模糊和阴影效果可以让物体看起来更加立体，使得动画更加生动。ArkUI提供了丰富的效果接口，开发者可快速打造出精致、个性化的效果。本章中主要对常用的模糊、阴影和色彩效果等接口进行了介绍。
+动画效果可以丰富界面的细节，提升UI界面的真实感和品质感。例如，模糊和阴影效果可以让物体看起来更加立体，使得动画更加生动。ArkUI提供了丰富的效果接口，开发者可快速打造出精致、个性化的效果。本章主要介绍常用的模糊、阴影和色彩效果等接口。
 
 
-模糊可以用来体现界面空间的纵深感，区分前后元素的层级关系。
+模糊效果可以体现界面空间的纵深感，区分前后元素的层级关系。
 
 
 | 接口                                                         | 说明                                         |
@@ -660,43 +660,38 @@ import { curves } from '@kit.ArkUI';
 @Entry
 @Component
 struct motionBlurTest {
-  @State widthSize: number = 400;
-  @State heightSize: number = 320;
+  @State widthSize: number = 300;
+  @State heightSize: number = 240;
   @State flag: boolean = true;
   @State radius: number = 0;
-  @State x: number = 0;
-  @State y: number = 0;
+  @State x: number = 0.5;
+  @State y: number = 0.5;
 
   build() {
     Column() {
       Column() {
-        // $r('app.media.testImg')需要替换为开发者所需的图像资源文件
+        // $r('app.media.testImg')需要替换为开发者所需要的资源文件
         Image($r('app.media.testImg'))
           .width(this.widthSize)
           .height(this.heightSize)
+          .scale({ x: this.flag ? 1 : 0.8,y: this.flag ? 1 : 0.8 ,centerX: '50%', centerY: '50%' })
           .onClick(() => {
-            this.radius = 5;
+            this.radius = 50;
             this.x = 0.5;
             this.y = 0.5;
-            if (this.flag) {
-              this.widthSize = 100;
-              this.heightSize = 80;
-            } else {
-              this.widthSize = 400;
-              this.heightSize = 320;
-            }
             this.flag = !this.flag;
           })
           .animation({
             duration: 2000,
-            curve: curves.springCurve(10, 1, 228, 30),
+            iterations:1,
+            playMode:PlayMode.Alternate,
             onFinish: () => {
               this.radius = 0;
             }
           })
           .motionBlur({ radius: this.radius, anchor: { x: this.x, y: this.y } })
       }
-    }.width('100%').margin({ top: 5 })
+    }.width('100%').margin({ top: 50 })
   }
 }
 ```

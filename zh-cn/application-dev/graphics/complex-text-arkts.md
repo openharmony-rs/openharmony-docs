@@ -86,10 +86,7 @@
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -295,10 +292,7 @@ struct Font08 {
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -565,10 +559,7 @@ let superScriptStyle: text.TextStyle = {
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -726,7 +717,6 @@ import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 import { common2D } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
@@ -897,8 +887,7 @@ struct Font08 {
 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+import { text } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {
@@ -1037,8 +1026,7 @@ struct Font08 {
 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+import { text } from '@kit.ArkGraphics2D'
 
 // 创建一个MyRenderNode类，并绘制文本。
 class MyRenderNode extends RenderNode {

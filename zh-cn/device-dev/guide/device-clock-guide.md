@@ -3,22 +3,24 @@
 
 ## 概述<a name="section11522349121115"></a>
 
-本文将介绍如何快速搭建基于OpenHarmony标准系统（Hi3516DV300开发板）的应用开发环境，并基于一个时钟APP示例逐步展示应用的创建、开发、调试和安装等流程。示例代码可以通过[本链接](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/JsClock)获取。
+本文将介绍如何快速搭建基于OpenHarmony标准系统（Hi3516DV300开发板）的应用开发环境，并基于一个时钟APP示例逐步展示应用的创建、开发、调试和安装等流程。示例代码可以通过[本链接](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/JsClock)获取。
 
 时钟App是一款显示实时时间的应用，显示效果如下图所示：
+
+## 显示效果图
 
 **图 1**  时钟应用显示效果图<a name="fig176772511186"></a>  
 ![](figures/时钟应用显示效果图.png "时钟应用显示效果图")
 
 ## 开发准备<a name="section6592121861218"></a>
 
-首先需要下载和配置DevEco Studio，具体操作请参考[DevEco Studio 使用指南](../../application-dev/quick-start/deveco-studio-user-guide-for-openharmony.md)。
+首先需要下载和配置DevEco Studio，具体操作请参考DevEco Studio 使用指南。
 
 ## 开发步骤<a name="section19901741111312"></a>
 
 应用的功能是通过表盘和数字显示实时时间。
 
-从[显示效果图](#fig176772511186)分析可知，页面由两个部分组成：
+从[显示效果图](#显示效果图)分析可知，页面由两个部分组成：
 
 -   表盘栏：主要展示一个动态的钟表，且钟表指针能准确转动。
 -   数字时间栏：主要以数字形式显示当前时间。

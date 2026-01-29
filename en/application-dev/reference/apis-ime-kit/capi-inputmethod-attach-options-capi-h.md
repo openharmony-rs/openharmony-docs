@@ -36,7 +36,7 @@ Provides methods for creating, destroying, reading, and writing the option objec
 | [InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)](#oh_attachoptions_createwithrequestkeyboardreason) | Creates an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance.    |
 | [void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)](#oh_attachoptions_destroy) | Destroys an [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance.   |
 | [InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)](#oh_attachoptions_isshowkeyboard) | Obtains the value that indicates whether to display the keyboard from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).|
-| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | Obtains the value that indicates whether to display the keyboard from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).|
+| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | Obtains the reason for requesting soft keyboard from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).|
 
 ## Function Description
 
@@ -154,7 +154,7 @@ Obtains the value that indicates whether to display the keyboard from [InputMeth
 | Name| Description|
 | -- | -- |
 | [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) *options | Pointer to the [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance whose value is to be read.|
-| int *requestKeyboardReason |  Pointer to the [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md) instance. It indicates the reason for requesting the keyboard.|
+| int *requestKeyboardReason |  Pointer to the reason for requesting the keyboard.|
 
 **Returns**
 

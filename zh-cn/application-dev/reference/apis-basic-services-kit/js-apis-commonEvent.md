@@ -35,7 +35,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 | 参数名     | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | event    | string               | 是   | 表示要发送的公共事件。 |
-| callback | AsyncCallback\<void> | 是   | 表示被指定的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 表示指定的回调方法。 |
 
 **示例：**
 
@@ -72,7 +72,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 | -------- | ---------------------- | ---- | ---------------------- |
 | event    | string                 | 是   | 表示要发布的公共事件。  |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
-| callback | AsyncCallback\<void>   | 是   | 表示被指定的回调方法。  |
+| callback | AsyncCallback\<void>   | 是   | 表示指定的回调方法。  |
 
 **示例：**
 
@@ -254,7 +254,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 以回调形式取消订阅公共事件。
 
 > **说明：** 
->从 API version 7开始支持，从API version 9开始废弃。建议使用[commonEventManager.subscribe](js-apis-commonEventManager.md#commoneventmanagerunsubscribe)替代。
+>从 API version 7开始支持，从API version 9开始废弃。建议使用[commonEventManager.unsubscribe](js-apis-commonEventManager.md#commoneventmanagerunsubscribe)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 

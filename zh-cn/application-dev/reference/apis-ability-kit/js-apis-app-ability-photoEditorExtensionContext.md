@@ -105,7 +105,7 @@ struct Index {
 
 saveEditedContentWithImage(pixeMap: image.PixelMap, option: image.PackingOption): Promise\<AbilityResult\>
 
-传入编辑过的图片的PixMap对象并保存。使用Promise异步回调。
+传入编辑过的图片的PixelMap对象并保存。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -674,7 +674,7 @@ getUIExtensionWindowProxy(): uiExtension.WindowProxy
 ```ts
 // Index.ets
 import { UIExtensionContentSession } from '@kit.AbilityKit';
-import uiExtension from '@ohos.arkui.uiExtension';
+import { uiExtension } from '@kit.ArkUI';
 
 @Entry()
 @Component

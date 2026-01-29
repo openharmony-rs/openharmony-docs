@@ -116,7 +116,7 @@ Shadow byte legend (one shadow byte represents 8 application bytes):
 
 ### HWASan日志规格
 
-HWASan日志与ASan格式差不多，也会在标题中展示设备信息、故障发生时间、故障进程及触发原因等关键信息。日志中会详细记录越界访问的地址（如0x0002013c0100）、访问大小（如WRITE of size 4）、发生时的线程和进程信息，并通过完整的调用栈展示触发越界的函数执行路径，列出各层地址、所属模块及偏移，便于开发者快速定位代码位置。不同于ASan，HWASan还会输出指针与内存块的标签（tags），并通过对比标签来辅助判断是否存在非法访问。
+HWASan日志在格式上与ASan相近，也会在标题中展示设备信息、故障发生时间、故障进程及触发原因等关键信息。日志会详细记录越界访问的地址（如0x0002013c0100）和访问大小（如WRITE of size 4）。同时会记录发生时的线程和进程信息。完整的调用栈会展示触发越界的函数执行路径，列出各层地址、所属模块及偏移，便于开发者快速定位代码位置。不同于ASan的是，HWASan还会输出指针与内存块的标签（tags），并通过对比标签来辅助判断是否存在非法访问。
 
 ```text
 Device info:XXX <- 设备信息
@@ -335,9 +335,9 @@ SUMMARY: HWAddressSanitizer: invalid-free (/system/lib64/xxxxxx.xxxxx.so+0xxxxxx
         ...
 ```
 
-对于User-After-Free（Write）类问题，日志在问题概述部分会有所不同。示例输出如下：
+对于Use-After-Free（Write）类问题，日志在问题概述部分会有所不同。示例输出如下：
 
-```
+```text
 ptrBeg was re-written after free 0x000100946540[1], 0x000100946548 5555555500000009:5555555555555555
 ```
 

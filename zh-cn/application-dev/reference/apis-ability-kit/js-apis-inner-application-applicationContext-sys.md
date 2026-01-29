@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-ApplicationContext模块继承自[Context](js-apis-inner-application-context.md)，提供开发者应用级别的的上下文的能力，包括提供注册及取消注册应用内组件生命周期的监听接口。
+ApplicationContext模块继承自[Context](js-apis-inner-application-context.md)，提供开发者应用级别的上下文的能力，包括提供注册及取消注册应用内组件生命周期的监听接口。
 
 > **说明：**
 >
@@ -75,7 +75,7 @@ export default class EntryAbility extends UIAbility {
       abilityName: 'UIExtensionProvider',
       moduleName: 'entry',
       parameters: {
-        //与UIExtensionAbility在module.json5中"type"字段配置一致
+        // 与UIExtensionAbility在module.json5中"type"字段配置一致
         'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     };

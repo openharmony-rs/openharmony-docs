@@ -2,13 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
-无障碍事件信息，无障碍服务或辅助应用要求控件执行操作后，需要发送执行成功事件。
+无障碍事件信息。当无障碍服务或辅助应用要求控件执行操作后，需要发送执行成功事件。
 
 **起始版本：** 13
 

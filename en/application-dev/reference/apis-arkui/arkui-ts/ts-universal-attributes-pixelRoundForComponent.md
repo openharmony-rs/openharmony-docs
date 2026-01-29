@@ -4,7 +4,7 @@
 <!--Owner: @Lichtschein-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Component-level pixel rounding allows you to enable or disable system pixel rounding for individual components by simply setting the **pixelRound** attribute.
 
@@ -20,7 +20,9 @@ Sets the pixel rounding policy for the current component in the specified direct
 
 > **NOTE**
 > 
-> In API version 11, this API uses half-pixel alignment (that is, 0\-0.25 rounds to 0, 0.25\-0.75 rounds to 0.5, 0.75\-1.0 rounds to 1). Since API version 12, this API rounds pixels to the nearest integers and allows you to disable pixel rounding for individual components.
+> - In API version 11, this API uses half-pixel alignment (that is, 0\-0.25 rounds to 0, 0.25\-0.75 rounds to 0.5, 0.75\-1.0 rounds to 1). Since API version 12, this API rounds pixels to the nearest integers and allows you to disable pixel rounding for individual components.
+>
+> - This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 In normal calculations, the vertical direction (top and bottom) correspond to the component height, and the horizontal direction (the starting direction of mirroring is considered "left") correspond to the component width. For ease of description, these two sets of directions are referred to as top-left and bottom-right.
 
@@ -68,7 +70,7 @@ Enumerates the directions of pixel rounding at the component level.
 | Issue                                                    | Solution                                                    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | When a child component is intended to fully fill its parent container, a 1px gap appears due to inconsistent rounding behaviors (the parent container rounds up, while the child component rounds down) of offset and size values.| 1. Use the ceil rounding method for the child component in the direction where the gap appears.<br>2. Disable pixel rounding for both parent and child components.|
-| When a **List** component is used with dividers set, the dividers disappear under specific cases.          | 1. Set a 2 px space on the **List** component.<br>2. Disable pixel rounding on the corresponding components.|
+| When a **List** component is configured with dividers set, the dividers may disappear under specific cases.          | 1. Set a 2 px space on the **List** component.<br>2. Disable pixel rounding on the corresponding components.|
 | Overlapping occurs on specific devices.                                        | 1. Set a 2 px space on the **List** component.<br>2. Disable pixel rounding on the component.<br>3. Obtain the DPI value of the device through media query APIs and implement customized adaptation.|
 | When a component rendered with an animation, there is a slight flicker.                            | Disable pixel rounding on the corresponding components.                                  |
 | The layout within a container is compact, and the sizes of child components are inconsistent.                          | Disable pixel rounding on the corresponding components.                                  |

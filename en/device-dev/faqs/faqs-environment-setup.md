@@ -241,7 +241,7 @@
 
      In the command, *branch* indicates the branch name, for example, **master** or **OpenHarmony-3.2-Beta3**.
      ```shell
-     repo init -u https://gitee.com/openharmony/manifest -b branch --no-repo-verify
+     repo init -u https://gitcode.com/openharmony/manifest -b branch --no-repo-verify
      ```
  
   3. Download and update the source code file.

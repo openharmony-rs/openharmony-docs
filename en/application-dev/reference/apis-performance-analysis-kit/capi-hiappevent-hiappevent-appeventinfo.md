@@ -9,13 +9,13 @@
 
 ## Overview
 
-Defines a struct for the information about a single event, including the event domain, event name, event type, and custom parameter list in JSON string format.
+Defines a struct for the information about a single event, including the domain, name, type, and custom parameter list in JSON string format.
 
 **Since**: 12
 
-**Related Module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-hiappevent.md)
 
-**Header File**: [hiappevent.h](capi-hiappevent-h.md)
+**Header file**: [hiappevent.h](capi-hiappevent-h.md)
 
 ## Summary
 

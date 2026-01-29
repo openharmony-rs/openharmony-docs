@@ -88,9 +88,9 @@ PageIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-Insight
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- |-------- |
 | uiAbility | string | Yes| No| Ability name.|
-| pageRouterName | string | Yes| No| Page name.|
+| pagePath | string | Yes| No| Page name.|
 | navigationId | string | Yes| No|  ID of the [Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md) component bound to the intent.|
-| navDestination | string | Yes| No| Name of the [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) component bound to the intent.|
+| navDestinationName | string | Yes| No| Name of the [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) component bound to the intent.|
 
 ## FunctionIntentInfo<sup>20+<sup>
 
@@ -176,6 +176,7 @@ Defines the intent information, which is the specific parameter configuration of
 | intentType | [InsightIntentType](#insightintenttype20) | Yes| No| Type of intent defined by the intent decorator.|
 | subIntentInfo | [LinkIntentInfo](#linkintentinfo20) \| [PageIntentInfo](#pageintentinfo20) \| [FunctionIntentInfo](#functionintentinfo20) \| [FormIntentInfo](#formintentinfo20) \| [EntryIntentInfo](#entryintentinfo20) | Yes| No| Intent information for specific intent decorators.|
 | parameters | Record<string, Object> | Yes| No| Data format of intent parameters, which is used to define the input data format during intent calls.|
+| result | Record<string, Object> | Yes| No| Execution result returned.|
 | entities | Array&lt;[EntityInfo](#entityinfo20)&gt; | Yes| No| Entity information contained in the intent.|
 
 ## GetInsightIntentFlag<sup>20+<sup>
@@ -409,7 +410,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **Example**
 
@@ -467,7 +468,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
 
 **Example**
 
@@ -528,7 +529,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201      | Permission denied. |
 | 202      | Not system application. |
-| 16000050 | Internal error. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.  |
 
 **Example**
 

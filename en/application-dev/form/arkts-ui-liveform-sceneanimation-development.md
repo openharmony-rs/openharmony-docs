@@ -1,5 +1,10 @@
 # Developing a Scene-based Widget
-
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 This document outlines the development of scene-based widgets, covering UI designs for both inactive and active states, as well as related configuration files.
 
 ## Available APIs
@@ -12,6 +17,7 @@ The following table lists the key APIs for a scene-based widget.
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | [onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformcreate)                  | Called when a widget UI object is created.  |
 | [onLiveFormDestroy(liveFormInfo: LiveFormInfo): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformdestroy)                                                    | Called when a widget UI object is destroyed and related resources are cleared. |
+| [startAbilityByLiveForm(want: Want): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md#startabilitybyliveform)| Called to start the widget provider (application) page.|
 | [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) | Called by the widget provider to request interactive widget animations.  |
 | [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)                                        | Called by the widget provider to cancel interactive widget animations.|
 | [formProvider.getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)                                        | Called by the widget provider to query the widget position and dimensions.|
@@ -32,6 +38,7 @@ The following table lists the key APIs for a scene-based widget.
     export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility {
       onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession) {
         let storage: LocalStorage = new LocalStorage();
+        storage.setOrCreate('context', this.context);
         storage.setOrCreate('session', session);
         let formId: string = liveFormInfo.formId;
         storage.setOrCreate('formId', formId);
@@ -61,6 +68,8 @@ The following table lists the key APIs for a scene-based widget.
     ```ts
     // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
     import { formInfo, formProvider } from '@kit.FormKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
     import { Constants } from '../../common/Constants';
     
     const ANIMATION_RECT_SIZE: number = 100;
@@ -78,7 +87,8 @@ The following table lists the key APIs for a scene-based widget.
       private formId: string | undefined = undefined;
       private formRect: formInfo.Rect | undefined = undefined;
       private formBorderRadius: number | undefined = undefined;
-    
+      private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+
       aboutToAppear(): void {
         this.uiContext = this.getUIContext();
         if (!this.uiContext) {
@@ -93,6 +103,7 @@ The following table lists the key APIs for a scene-based widget.
         this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
         this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
         this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
+        this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
       }
     
       // Execute the animation.
@@ -105,7 +116,25 @@ The following table lists the key APIs for a scene-based widget.
           this.columnTranslate = END_TRANSLATE;
         });
       }
-    
+
+       private startAbilityByLiveForm(): void {
+        try {
+          // Replace the Want information with the actual one.
+          this.liveFormContext?.startAbilityByLiveForm({
+            bundleName: 'com.example.liveformdemo',
+            abilityName: 'EntryAbility',
+          })
+            .then(() => {
+              console.info('startAbilityByLiveForm succeed');
+            })
+            .catch((err: BusinessError) => {
+              console.error(`startAbilityByLiveForm failed, code is ${err?.code}, message is ${err?.message}`);
+            });
+        } catch (e) {
+          console.error(`startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
+        }
+      }
+
       build() {
         Stack({alignContent: Alignment.TopStart}) {
           // Background component, whose size is the same as that of a common widget.
@@ -126,6 +155,14 @@ The following table lists the key APIs for a scene-based widget.
         }
         .width('100%')
         .height('100%')
+        .onClick(() => {
+          console.info('MyLiveFormPage click to start ability');
+          if (!this.liveFormContext) {
+            console.info('MyLiveFormPage liveFormContext is empty');
+            return;
+          }
+          this.startAbilityByLiveForm();
+        })
       }
     
       @Builder
@@ -150,10 +187,10 @@ The following table lists the key APIs for a scene-based widget.
           .backgroundColor(Color.Grey)
           .onClick(() => {
             if (!this.formId) {
-              console.log('MyLiveFormPage formId is empty, cancel overflow failed');
+              console.info('MyLiveFormPage formId is empty, cancel overflow failed');
               return;
             }
-            console.log('MyLiveFormPage cancel overflow animation');
+            console.info('MyLiveFormPage cancel overflow animation');
             formProvider.cancelOverflow(this.formId);
           })
       }
@@ -207,6 +244,7 @@ The following table lists the key APIs for a scene-based widget.
             Text('Tap to trigger interactive widget animation')
               .fontSize($r('app.float.font_size'))
               .fontWeight(FontWeight.Medium)
+              // Replace $r('sys.color.font_primary') with the actual resource or value.
               .fontColor($r('sys.color.font_primary'))
           }
           .width('100%')
@@ -349,7 +387,6 @@ The following table lists the key APIs for a scene-based widget.
       public static readonly OVERFLOW_DURATION: number = 3500;
     }
     ```
-
 ## Effect
 The following is a demo developed based on the code examples in this document. When the demo is executed, the [formProvider.cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) API is called to interrupt the current overflow animation and the widget is switched to the inactive state.
 

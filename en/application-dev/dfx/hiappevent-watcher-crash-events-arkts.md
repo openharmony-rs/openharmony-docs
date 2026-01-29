@@ -32,7 +32,7 @@ The following describes how to subscribe to the crash event triggered by a butto
 1. Create a native C++ project in DevEco Studio. In the **entry/src/main/ets/entryability/EntryAbility.ets** file, import the dependent modules. The sample code is as follows:
 
    ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    import testNapi from 'libentry.so';
    ```
@@ -42,7 +42,7 @@ The following describes how to subscribe to the crash event triggered by a butto
    ```ts
     // Build custom parameters for the crash event.
     let params: Record<string, hiAppEvent.ParamType> = {
-      "test_data": 100, //test_data is the custom data. You can customize the params parameter as required.
+      "test_data": 100, // test_data is the custom data. You can customize the params parameter as required.
     };
     // Set custom parameters for the crash event.
     hiAppEvent.setEventParam(params, hiAppEvent.domain.OS, hiAppEvent.event.APP_CRASH).then(() => {
@@ -51,22 +51,23 @@ The following describes how to subscribe to the crash event triggered by a butto
       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
     });
    
-    // Build custom parameters for crash log specifications.
-    let configParams: Record<string, hiAppEvent.ParamType> = {
-      "extend_pc_lr_printing": true, // Enable the functionality of printing the memory values near the PC and LR.
-      "log_file_cutoff_sz_bytes": 102400, // Truncate the crash log to 100 KB.
-      "simplify_vma_printing": true // Enable simplified printing of maps.
-    };
-   
-    // Set the crash log configuration parameters.
-    hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, configParams).then(() => {
-      hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
-    });
+    if (deviceInfo.sdkApiVersion >= 20) {  // Since API Version 20, you can set crash log configuration parameters.
+      // Build custom parameters for crash log specifications.
+      let crashConfigParams: Record<string, hiAppEvent.ParamType> = {
+        "extend_pc_lr_printing": true, // Enable the functionality of printing the memory values near the PC and LR.
+        "log_file_cutoff_sz_bytes": 1024000, // Truncate the crash log to 1000 KB.
+        "simplify_vma_printing": true // Enable simplified printing of maps.
+      };
+      // Set the crash log configuration parameters.
+      hiAppEvent.setEventConfig(hiAppEvent.event.APP_CRASH, crashConfigParams).then(() => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent success to set event config.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+      });
+    }
    ```
 
-3. Edit the entry > src > main > ets > entryability > EntryAbility.ets file in the project and subscribe to system events in the `onCreate` function. The sample code is as follows:
+3. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in **onCreate()** to subscribe to system events. The sample code is as follows:
 
    ```ts
     let watcher: hiAppEvent.Watcher = {

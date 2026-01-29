@@ -1,14 +1,14 @@
-# Global Audio Output Device Management
+# Querying and Listening for Audio Output Devices
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 Applications can manage global audio output devices in either of the following ways:
-- Typically, applications can [manage global audio output devices using AudioRoutingManager](#managing-global-audio-output-devices-with-audioroutingmanager).
-- Starting from API version 20, AudioSessionManager offers certain APIs for managing output devices. Applications can now [manage global audio output devices using AudioSession](#managing-global-audio-output-devices-with-audiosession). This is useful for simultaneously managing audio focus and output.
-## Managing Global Audio Output Devices with AudioRoutingManager
+- Generally, applications can [query and listen for audio output devices using AudioRoutingManager](#querying-and-listening-for-audio-output-devices-using-audioroutingmanager).
+- Starting from API version 20, AudioSessionManager offers certain APIs for managing output devices. Applications can now [query and listen for audio output devices using AudioSession](#querying-and-listening-for-audio-output-devices-using-audiosession). This is useful for simultaneously managing audio focus and output.
+## Querying and Listening for Audio Output Devices Using AudioRoutingManager
 
 You can use APIs to manage audio output devices, including querying audio device information and listening for connection status changes. For details about the APIs, see [AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md).
 
@@ -28,15 +28,15 @@ let audioRoutingManager = audioManager.getRoutingManager();  // Call an API of A
 
 The table below lists the supported output devices.
 
-| Name| Value| Description|
+| Name| Value| Description| 
 | -------- | -------- | -------- |
-| EARPIECE | 1 | Earpiece.|
-| SPEAKER | 2 | Speaker.|
-| WIRED_HEADSET | 3 | Wired headset with a microphone.|
-| WIRED_HEADPHONES | 4 | Wired headset without microphone.|
-| BLUETOOTH_SCO | 7 | Bluetooth device using Synchronous Connection Oriented (SCO) links.|
-| BLUETOOTH_A2DP | 8 | Bluetooth device using Advanced Audio Distribution Profile (A2DP) links.|
-| USB_HEADSET | 22 | USB Type-C headset.|
+| EARPIECE | 1 | Earpiece.| 
+| SPEAKER | 2 | Speaker.| 
+| WIRED_HEADSET | 3 | Wired headset with a microphone.| 
+| WIRED_HEADPHONES | 4 | Wired headset without microphone.| 
+| BLUETOOTH_SCO | 7 | Bluetooth device using Synchronous Connection Oriented (SCO) links.| 
+| BLUETOOTH_A2DP | 8 | Bluetooth device using Advanced Audio Distribution Profile (A2DP) links.| 
+| USB_HEADSET | 22 | USB Type-C headset.| 
 
 ### Obtaining Output Device Information
 
@@ -56,7 +56,7 @@ Set a listener to listen for changes of the device connection state. When a devi
 
 > **NOTE**
 >
-> The listener captures all changes in device connections. It is not recommended that the changes be used as a basis for handling automatic pausing in applications. If an application needs to manage services related to automatic pause, it should consider the [reasons behind changes in the audio stream output device](audio-output-device-change.md).
+> The listener captures all changes in device connections. It is not recommended that the changes be used as a basis for handling automatic pausing in applications. If an application needs to manage services related to automatic pause, it should consider the [reasons behind changes in the audio stream output device](audio-output-device-change.md#device-change-reason).
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -157,9 +157,9 @@ audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, 
 audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo');
 ```
 
-## Managing Global Audio Output Devices with AudioSession
+## Querying and Listening for Audio Output Devices Using AudioSession
 Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For more information, refer to the following documentation:
-- ArkTS APIs: [AudiSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
+- ArkTS APIs: [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
 - C APIs: [OH_AudioSessionManager](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
 
 ### Creating an AudioSession Instance
@@ -177,7 +177,7 @@ let audioSessionManager = audioManager.getSessionManager();  // Call an API of A
 Call [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20) to set the default output device.
 > **NOTE**
 >- As AudioSession is an application-level setting, calling this API to set the default audio output device will override the audio output device information set by the **setDefaultOutputDevice** API of AudioRenderer.
->- To cancel the default output device set by calling **setDefaultOutputDevice**, you can set the parameter to **audio.DeviceType.DEFAULT**, which returns the device selection to the system. Otherwise, each time **activateAudioSession** is called, the default output device selected by the application takes effect.
+> - To cancel the default output device set by calling **setDefaultOutputDevice**, you can set the parameter to **audio.DeviceType.DEFAULT**, which returns the device selection to the system. Otherwise, each time **activateAudioSession** is called, the default output device selected by the application takes effect.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

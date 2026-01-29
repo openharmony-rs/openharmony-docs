@@ -1,5 +1,12 @@
 # 使用同层渲染在Web上渲染原生组件
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 在使用Web组件加载H5页面时，经常会有长列表、视频等场景。由于Web目前最高只有60帧，想要更加流畅的体验，必须要将原生组件放到Web上。
 
 在什么场景下应该在Web上使用原生组件：
@@ -38,7 +45,6 @@
 
 ```html
 <!-- nativeembed_view.html -->
-...
   <body>
     <div>
       <div id="bodyId">
@@ -47,7 +53,6 @@
       </div>
     </div>
   </body>
-...
 ```
 
 上图中，搜索框+下方列表的原生商城组件如下：
@@ -372,9 +377,7 @@ export struct SearchComponent {
       .zoomAccess(false)// 不允许执行缩放
       .enableNativeEmbedMode(true) // 开启同层渲染模式
       .onNativeEmbedLifecycleChange((embed) => {
-        ...
         // 此处进行下一步
-        ...
       })
       .onNativeEmbedGestureEvent((touch) => { 
         // 获取同层渲染组件触摸事件信息
@@ -436,14 +439,14 @@ H5的分析：
 
 下表为各种方法完成原生组件加载（蓝线）前后几帧render_service侧的耗时对比（-1为完成前一帧，1为完成后一帧，以此类推）：
 
-|          | 非同层渲染         | 同层渲染        |
-| ----     | ----              |  ----          |
-| -2       | 3ms 682μs 292ns   | 3ms 561μs 979ns|
-| -1       | 3ms 796μs 355ns   | 3ms 866μs 145ns|
-| 1        | 6ms 741μs 146ns   | 4ms 192μs 187ns|
-| 2        | 7ms 974μs 479ns   | 3ms 439μs 584ns|
-| 3        | 10ms 543μs 750ns  | 3ms 350μs 1ns  |
-| 4        | 4ms 706μs 250ns   | 3ms 573μs 958ns|
+| 所在帧    | 非同层渲染         | 同层渲染        |
+|--------| ----              |  ----          |
+| -2     | 3ms 682μs 292ns   | 3ms 561μs 979ns|
+| -1     | 3ms 796μs 355ns   | 3ms 866μs 145ns|
+| 1      | 6ms 741μs 146ns   | 4ms 192μs 187ns|
+| 2      | 7ms 974μs 479ns   | 3ms 439μs 584ns|
+| 3      | 10ms 543μs 750ns  | 3ms 350μs 1ns  |
+| 4      | 4ms 706μs 250ns   | 3ms 573μs 958ns|
 | **平均** | 6ms 240μs 712ns   | 3ms 663μs 975ns|
 
 
@@ -468,10 +471,14 @@ H5的分析：
 
 通过上述的分析，可以得出下表的结论。
 
-|      | H5  | 非同层渲染  | 同层渲染  |
-| ----     | ----   |  ----  | ----  |
-| 体验  | 低于原生 | 原生体验 | 原生体验   |
-| 性能  | 低   | 中 | 高   |
-| 功能  | 低于原生  | 完整原生功能 | 完整原生功能  |
+| 渲染方式 | H5  | 非同层渲染  | 同层渲染  |
+|------| ----   |  ----  | ----  |
+| 体验   | 低于原生 | 原生体验 | 原生体验   |
+| 性能   | 低   | 中 | 高   |
+| 功能   | 低于原生  | 完整原生功能 | 完整原生功能  |
 
 在Web中渲染原生组件时，采用同层渲染方式比起非同层渲染可以降低绘制任务，提升了性能。同时使用同层渲染可以实现更多功能，比如根据尺寸调整组件大小等功能，从而避免繁琐操作。
+
+## 示例代码
+
+[基于ArkWeb实现系统原生组件渲染至H5页面上](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/ArkWebSameLevelRendering)

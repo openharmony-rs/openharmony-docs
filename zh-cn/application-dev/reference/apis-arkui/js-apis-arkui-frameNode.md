@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
 
@@ -1327,7 +1327,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 
@@ -1421,9 +1421,9 @@ dispose(): void
 
 > **说明：**
 >
-> FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](#getmeasuredsize12)、[getLayoutPosition](#getlayoutposition12))的时候会导致应用出现jscrash。
+> - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](#getmeasuredsize12)、[getLayoutPosition](#getlayoutposition12))的时候会导致应用出现jscrash。
 >
-> 通过[getUniqueId](#getuniqueid12)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体FrameNode节点。
+> - 通过[getUniqueId](#getuniqueid12)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体FrameNode节点。
 
 **示例：**
 
@@ -1469,7 +1469,7 @@ class MyNodeController extends NodeController {
     const rootRenderNode = this.rootNode.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.size = { width: 200, height: 200 };
-      rootRenderNode.backgroundColor = 0xff00ff00;
+      rootRenderNode.backgroundColor = 0xffd5d5d5;
       rootRenderNode.appendChild(this.builderNode!.getFrameNode()!.getRenderNode());
     }
 
@@ -1513,6 +1513,8 @@ struct Index {
 }
 ```
 
+![zh-cn_image_dispose](figures/zh-cn_image_dispose.gif)
+
 ### commonAttribute<sup>12+</sup>
 
 get commonAttribute(): CommonAttribute
@@ -1520,6 +1522,12 @@ get commonAttribute(): CommonAttribute
 获取FrameNode中持有的CommonAttribute接口，用于设置[通用属性](./arkui-ts/ts-component-general-attributes.md)和[通用事件](./arkui-ts/ts-component-general-events.md)。
 
 仅可以修改自定义节点的属性。
+
+> **说明：**
+>
+> FrameNode的效果参考对齐方式为顶部起始端的[Stack](./arkui-ts/ts-container-stack.md)容器组件。
+>
+> FrameNode的属性支持范围，参考[属性或事件对attributeModifier的支持情况](../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)中组件通用信息为CommonAttribute的内容。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1531,11 +1539,6 @@ get commonAttribute(): CommonAttribute
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | CommonAttribute | 获取FrameNode中持有的CommonAttribute接口，用于设置通用属性和通用事件。|
 
-> **说明：**
->
-> FrameNode的效果参考对齐方式为顶部起始端的[Stack](./arkui-ts/ts-container-stack.md)容器组件。
->
-> FrameNode的属性支持范围参考[CommonModifier](./arkui-ts/ts-universal-attributes-attribute-modifier.md#attribute支持范围)。
 
 **示例：**
 
@@ -1831,6 +1834,8 @@ disposeTree(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**示例：**
+
 ```ts
 import { FrameNode, NodeController, BuilderNode } from '@kit.ArkUI';
 
@@ -2008,9 +2013,7 @@ struct Index {
 }
 ```
 
-**示例：**
-
-请参考[节点自定义示例](#节点自定义示例)。
+![zh-cn_image_disposeTree](figures/zh-cn_image_disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 
@@ -3481,7 +3484,7 @@ Scroll类型的FrameNode节点类型。允许添加一个子组件。
 
 | 类型                                                   | 说明                                                         |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| TypedFrameNode&lt;[ScrollInterface](./arkui-ts/ts-container-scroll.md#接口), [ScrollAttribute](./arkui-ts/ts-container-scroll.md)&gt; | 提供Scroll类型FrameNode节点。<br/> ScrollInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Scroll组件的构造函数类型。 <br/> ScrollAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Scroll组件的属性设置对象。 |
+| TypedFrameNode&lt;[ScrollInterface](./arkui-ts/ts-container-scroll.md#接口), [ScrollAttribute](./arkui-ts/ts-container-scroll.md#属性)&gt; | 提供Scroll类型FrameNode节点。<br/> ScrollInterface用于[TypedFrameNode](#typedframenode12)的[initialize](#属性)接口的入参，入参为Scroll组件的构造函数类型。 <br/> ScrollAttribute用于TypedFrameNode的[attribute](#属性)接口的返回值，返回Scroll组件的属性设置对象。 |
 
 ### createNode('Scroll')<sup>12+</sup>
 
@@ -7353,7 +7356,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 
@@ -7426,16 +7429,21 @@ class MyNodeController extends NodeController {
     this.addCommonEvent(this.frameNode)
     this.rootNode.appendChild(this.frameNode);
     this.childrenCount = this.childrenCount + 1;
+
+    // 批量创建10个子节点并挂载到主节点
     for (let i = 0; i < 10; i++) {
       let childNode = new FrameNode(uiContext);
       this.childList.push(childNode);
       this.frameNode.appendChild(childNode);
     }
+
+    // 创建Stack容器节点
     let stackNode = typeNode.createNode(uiContext, "Stack");
     this.frameNode.appendChild(stackNode);
     return this.rootNode;
   }
 
+  // 为节点添加点击事件
   addCommonEvent(frameNode: FrameNode) {
     frameNode.commonEvent.setOnClick((event: ClickEvent) => {
       console.info(`Click FrameNode: ${JSON.stringify(event)}`)
@@ -7451,12 +7459,14 @@ class MyNodeController extends NodeController {
     return frameNode;
   }
 
+  // 追加子节点到根节点的末尾
   appendChild() {
     const childNode = this.createFrameNode();
     this.rootNode!.appendChild(childNode);
     this.childrenCount = this.childrenCount + 1;
   }
 
+  // 在指定索引节点后插入新节点
   insertChildAfter(index: number) {
     let insertNode = this.createFrameNode();
     let childNode = this.rootNode!.getChild(index);
@@ -7464,6 +7474,7 @@ class MyNodeController extends NodeController {
     this.childrenCount = this.childrenCount + 1;
   }
 
+  // 移除指定索引的子节点
   removeChild(index: number) {
     let childNode = this.rootNode!.getChild(index);
     if (childNode == null) {
@@ -7474,15 +7485,18 @@ class MyNodeController extends NodeController {
     this.childrenCount = this.childrenCount - 1;
   }
 
+  // 打印节点计数
   getChildNumber() {
     console.info(TEST_TAG + " getChildNumber " + this.rootNode!.getChildrenCount())
     console.info(TEST_TAG + " children count is " + this.childrenCount);
   }
 
+  // 清空所有子节点
   clearChildren() {
     this.rootNode!.clearChildren();
   }
 
+  // 节点关系校验
   searchFrameNode() {
     if (this.rootNode!.getFirstChild() === null) {
       console.info(TEST_TAG + " the rootNode does not have child node.")
@@ -7518,6 +7532,7 @@ class MyNodeController extends NodeController {
     }
   }
 
+  // 将指定节点移动到根节点的第一个位置
   moveFrameNode() {
     const currentNode = this.frameNode!.getChild(10);
     try {
@@ -7638,6 +7653,7 @@ class MyNodeController extends NodeController {
     console.info(TEST_TAG + JSON.stringify(inspectorInfo));
   }
 
+  // 设置跨语言交互选项
   setCrossLanguageOptions() {
     console.info(TEST_TAG + " getCrossLanguageOptions " + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
     try {
@@ -7702,6 +7718,7 @@ struct Index {
               })
           }
 
+          // 显示当前索引值
           Text("Current index is " + this.index)
             .textAlign(TextAlign.Center)
             .borderRadius(10)
@@ -7717,6 +7734,8 @@ struct Index {
             .backgroundColor(0xFFFFFF)
             .width('100%')
             .fontSize(16)
+
+          // 自定义节点容器
           NodeContainer(this.myNodeController)
             .borderWidth(1)
             .width(300)
@@ -7868,6 +7887,7 @@ struct Index {
           .onClick(() => {
             const uiContext: UIContext = this.getUIContext();
             if (uiContext) {
+              // 通过组件ID获取对应的FrameNode节点
               const node: FrameNode | null = uiContext.getFrameNodeById("Test_Button") || null;
               if (node) {
                 for (let i = 1; i < 4; i++) {
@@ -8192,36 +8212,57 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
+  // 为FrameNode绑定交互事件
   addCommonEvent(frameNode: FrameNode) {
+
+    // 悬浮事件
     frameNode.commonEvent.setOnHover(((isHover: boolean, event: HoverEvent): void => {
       console.info(`isHover FrameNode: ${isHover}`);
       console.info(`isHover FrameNode: ${JSON.stringify(event)}`);
       event.stopPropagation();
     }))
+
+    // 点击事件
     frameNode.commonEvent.setOnClick((event: ClickEvent) => {
       console.info(`Click FrameNode: ${JSON.stringify(event)}`)
     })
+
+    // 触摸事件
     frameNode.commonEvent.setOnTouch((event: TouchEvent) => {
       console.info(`touch FrameNode: ${JSON.stringify(event)}`)
     })
+
+    // 显示事件
     frameNode.commonEvent.setOnAppear(() => {
       console.info(`on Appear FrameNode`)
     })
+
+    // 消失事件
     frameNode.commonEvent.setOnDisappear(() => {
       console.info(`onDisAppear FrameNode`)
     })
+
+    // 获焦事件
     frameNode.commonEvent.setOnFocus(() => {
       console.info(`onFocus FrameNode`)
     })
+
+    // 失焦事件
     frameNode.commonEvent.setOnBlur(() => {
       console.info(`onBlur FrameNode`)
     })
+
+    // 键盘事件
     frameNode.commonEvent.setOnKeyEvent((event: KeyEvent) => {
       console.info(`Key FrameNode: ${JSON.stringify(event)}`)
     })
+
+    // 鼠标事件
     frameNode.commonEvent.setOnMouse((event: MouseEvent) => {
       console.info(`Mouse FrameNode: ${JSON.stringify(event)}`)
     })
+
+    // 组件区域变化事件
     frameNode.commonEvent.setOnSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
       console.info(`onSizeChange FrameNode: oldValue is ${JSON.stringify(oldValue)} value is ${JSON.stringify(newValue)}`)
     })
@@ -8231,7 +8272,6 @@ class MyNodeController extends NodeController {
 @Entry
 @Component
 struct Index {
-  @State index: number = 0;
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
@@ -8246,7 +8286,7 @@ struct Index {
         .onHover(((isHover: boolean, event: HoverEvent): void => {
           console.info(`isHover Text: ${isHover}`);
           console.info(`isHover Text: ${JSON.stringify(event)}`);
-          event.stopPropagation();
+          event.stopPropagation();  // 阻止事件冒泡
         }))
         .onClick((event: ClickEvent) => {
           console.info(`Click Text    : ${JSON.stringify(event)}`)

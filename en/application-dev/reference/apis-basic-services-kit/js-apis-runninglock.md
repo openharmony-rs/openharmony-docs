@@ -7,7 +7,7 @@
 <!--Tester: @alien0208-->
 <!--Adviser: @w_Machine_cc-->
 
-The **runningLock** module provides APIs for creating, querying, holding, and releasing running locks.
+The **runningLock** module provides APIs for creating, querying, holding, and releasing running locks. A running lock enables the proximity sensor to turn on or off the screen, or prevents the device from entering sleep mode when the screen is off. For details about the running lock types, see [RunningLockType](#runninglocktype).
 
 > **NOTE**
 >
@@ -23,7 +23,7 @@ import {runningLock} from '@kit.BasicServicesKit';
 
 isSupported(type: RunningLockType): boolean
 
-Checks whether a specified type of **RunningLock** is supported.
+**API description**: Checks whether the system supports the running lock of a specified type.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -33,7 +33,7 @@ Checks whether a specified type of **RunningLock** is supported.
 | ------ | ----------------------------------- | ---- | -------------------- |
 | type   | [RunningLockType](#runninglocktype) | Yes  | Type of the running lock. The value must be an enum.|
 
-**Returns**
+**Return value**
 
 | Type   | Description                                   |
 | ------- | --------------------------------------- |
@@ -62,7 +62,7 @@ try {
 
 create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-Creates a **RunningLock** object.
+**API description**: Creates a running lock. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -102,7 +102,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-Creates a **RunningLock** object.
+**API description**: Creates a running lock. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -115,7 +115,7 @@ Creates a **RunningLock** object.
 | name   | string                              | Yes  | Name of the **RunningLock** object. The value must be a string.|
 | type   | [RunningLockType](#runninglocktype) | Yes  | Type of the **RunningLock** object. The value must be an enum.|
 
-**Returns**
+**Return value**
 
 | Type                                      | Description                                |
 | ------------------------------------------ | ------------------------------------ |
@@ -149,7 +149,7 @@ isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boo
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9).
 
-Checks whether a specified type of **RunningLock** is supported. This API uses an asynchronous callback to return the result.
+**API description**: Checks whether the system supports the running lock of a specified type. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -167,7 +167,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
     if (typeof err === 'undefined') {
         console.info('BACKGROUND lock support status: ' + data);
     } else {
-        console.log('check BACKGROUND lock support status failed, err: ' + err);
+        console.error('check BACKGROUND lock support status failed, err: ' + err);
     }
 });
 ```
@@ -178,7 +178,7 @@ isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9).
 
-Checks whether a specified type of **RunningLock** is supported. This API uses a promise to return the result.
+**API description**: Checks whether the system supports the running lock of a specified type. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -188,7 +188,7 @@ Checks whether a specified type of **RunningLock** is supported. This API uses a
 | ------ | ----------------------------------- | ---- | -------------------- |
 | type   | [RunningLockType](#runninglocktype) | Yes  | Type of the running lock.|
 
-**Returns**
+**Return value**
 
 | Type                  | Description                                                |
 | ---------------------- | ---------------------------------------------------- |
@@ -202,7 +202,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
     console.info('BACKGROUND lock support status: ' + data);
 })
 .catch((err: Error) => {
-    console.log('check BACKGROUND lock support status failed, err: ' + err);
+    console.error('check BACKGROUND lock support status failed, err: ' + err);
 });
 ```
 
@@ -212,7 +212,7 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9).
 
-Creates a **RunningLock** object.
+**API description**: Creates a running lock. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -244,7 +244,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9).
 
-Creates a **RunningLock** object.
+**API description**: Creates a running lock. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -257,7 +257,7 @@ Creates a **RunningLock** object.
 | name   | string                              | Yes  | Name of the **RunningLock** object.        |
 | type   | [RunningLockType](#runninglocktype) | Yes  | Type of the **RunningLock** object to be created.|
 
-**Returns**
+**Return value**
 
 | Type                                      | Description                                |
 | ------------------------------------------ | ------------------------------------ |
@@ -271,7 +271,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     console.info('created running lock: ' + lock);
 })
 .catch((err: Error) => {
-    console.log('create running lock failed, err: ' + err);
+    console.error('create running lock failed, err: ' + err);
 });
 ```
 
@@ -283,7 +283,7 @@ Defines a **RunningLock** object.
 
 hold(timeout: number): void
 
-Locks and holds a **RunningLock** object.
+**API description**: Holds a running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -339,11 +339,13 @@ class RunningLockTest {
 
 unhold(): void
 
-Releases a **RunningLock** object.
+**API description**: Releases this running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
 **Required permission**: ohos.permission.RUNNING_LOCK
+
+**Parameters**: none
 
 **Error codes**
 
@@ -389,11 +391,13 @@ class RunningLockTest {
 
 isHolding(): boolean
 
-Checks the hold status of the **RunningLock** object.
+**API description**: Checks whether this running lock is held.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
-**Returns**
+**Parameters**: none
+
+**Return value**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
@@ -432,7 +436,7 @@ lock(timeout: number): void
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.hold](#hold9).
 
-Locks and holds a **RunningLock** object.
+**API description**: Locks a running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -463,9 +467,11 @@ unlock(): void
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.unhold](#unhold9).
 
-Releases a **RunningLock** object.
+**API description**: Unlocks this running lock.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**: none
 
 **Required permission**: ohos.permission.RUNNING_LOCK
 
@@ -488,11 +494,13 @@ isUsed(): boolean
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [RunningLock.isHolding](#isholding9).
 
-Checks the hold status of the **RunningLock** object.
+**API description**: Checks whether this running lock is used.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
-**Returns**
+**Parameters**: none
+
+**Return value**
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
 | boolean | The value **true** indicates that the **RunningLock** object is held; and the value **false** indicates that the **RunningLock** object is released.|
@@ -518,5 +526,5 @@ Enumerates the types of **RunningLock** objects.
 
 | Name                             | Value  | Description                                                        |
 | --------------------------------- | ---- | ------------------------------------------------------------ |
-| BACKGROUND<sup>(deprecated)</sup> | 1    | A lock that prevents the system from hibernating when the screen is off.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10.|
+| BACKGROUND<sup>(deprecated)</sup> | 1    | A lock that prevents the system from entering sleep mode when the screen is off.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10.|
 | PROXIMITY_SCREEN_CONTROL          | 2    | A lock that enables the proximity sensor and turns on or off the screen based on the distance between the sensor and the obstacle. |

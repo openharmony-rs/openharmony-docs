@@ -34,7 +34,6 @@ HAR allows you to export APIs or ArkUI components from a module and share the mo
     }
     ```
 
-
 2. Delete the **main_pages.json** file from the **src\main\resource\base\profile** folder of the HAP module.
 
 3. Replace the content in the **hvigorfile.ts** file of the HAP module with the following:

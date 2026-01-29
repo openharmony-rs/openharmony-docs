@@ -26,7 +26,7 @@
 
 | 名称                                                      | typedef关键字 | 描述                                                                      |
 |---------------------------------------------------------| -- |-------------------------------------------------------------------------|
-| [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)              | - | 管理关系数据库配置。                                                              |
+| [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)              | OH_Rdb_Config | 管理关系数据库配置。                                                              |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md)                | OH_Rdb_Store | 表示数据库类型。                                                                |
 | [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | Rdb_DistributedConfig | 记录表的分布式配置信息。                                                            |
 | [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md)                      | Rdb_KeyInfo | 描述发生变化的行的主键或者行号。                                                        |
@@ -126,7 +126,15 @@
 | [int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char *attachName, int64_t waitTime,size_t *attachedNumber)](#oh_rdb_attach) | - | 将数据库文件附加到当前连接的数据库。 |
 | [int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime, size_t *attachedNumber)](#oh_rdb_detach) | - | 从当前数据库中分离指定的数据库。 |
 | [int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)](#oh_rdb_setlocale) | - | 支持不同语言的排序规则。 |
-| [int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)](#oh_rdb_setsemanticindex) | - | 开启或关闭基于语义索引的知识加工。 |
+| [int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)](#oh_rdb_setsemanticindex) | - | 开启或关闭基于语义索引的知识加工。 |
+
+### 宏定义
+
+| 名称                            | 描述                             |
+| ------------------------------ | --------------------------------- |
+| DISTRIBUTED_CONFIG_VERSION 1  | 描述[Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md)的版本。<br>**起始版本：** 11 |
+| DISTRIBUTED_CHANGE_INFO_VERSION 1  | 描述[Rdb_ChangeInfo](capi-rdb-rdb-changeinfo.md)的版本。<br>**起始版本：** 11 |
+| DISTRIBUTED_PROGRESS_DETAIL_VERSION 1  | 描述[Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)的版本。<br>**起始版本：** 11 |
 
 ## 枚举类型说明
 
@@ -203,7 +211,7 @@ enum Rdb_Tokenizer
 | -- | -- |
 | RDB_NONE_TOKENIZER = 1 | 表示不使用分词器。 |
 | RDB_ICU_TOKENIZER = 2 | 表示使用ICU分词器。 |
-| RDB_CUSTOM_TOKENIZER = 3 | 表示使用CUSTOM分词器。	<br>**起始版本：** 18 |
+| RDB_CUSTOM_TOKENIZER = 3 | 表示使用CUSTOM分词器。<br>**起始版本：** 18 |
 
 ### Rdb_DistributedType
 
@@ -254,7 +262,7 @@ enum Rdb_SubscribeType
 | -- | -- |
 | RDB_SUBSCRIBE_TYPE_CLOUD | 订阅云端数据更改。 |
 | RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS | 订阅云端数据更改详情。 |
-| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | 订阅本地数据更改详情。 |
+| RDB_SUBSCRIBE_TYPE_LOCAL_DETAILS | 订阅本地数据更改详情。<br>**起始版本：** 12 |
 
 ### Rdb_SyncMode
 
@@ -264,7 +272,7 @@ enum Rdb_SyncMode
 
 **描述**
 
-表示数据库的同步模式
+表示数据库的同步模式。
 
 **起始版本：** 11
 
@@ -282,6 +290,10 @@ enum Rdb_Progress
 
 **描述**
 
+描述端云同步过程。
+
+**起始版本：** 11
+
 | 枚举项 | 描述 |
 | -- | -- |
 | RDB_SYNC_BEGIN | 表示端云同步过程开始。 |
@@ -295,6 +307,10 @@ enum Rdb_ProgressCode
 ```
 
 **描述**
+
+表示端云同步过程的状态。
+
+**起始版本：** 11
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -312,7 +328,7 @@ enum Rdb_ProgressCode
 ### OH_Rdb_SetSemanticIndex()
 
 ```
-int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)
+int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)
 ```
 
 **描述**
@@ -326,7 +342,7 @@ int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enabled)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | 表示指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。 |
-| bool enabled | 开启或关闭基于语义索引的知识加工能力标志。<br>true表示开启。false表示关闭。 |
+| bool enableSemanticIndex | 开启或关闭基于语义索引的知识加工能力标志。<br>true表示开启。false表示关闭。 |
 
 **返回：**
 
@@ -350,7 +366,7 @@ OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。 |
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | 返回一个指向[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例的指针。<br>使用完成后，必须通过[OH_Rdb_DestroyConfig](#oh_rdb_destroyconfig)接口释放内存。 |
 
 **参考：**
 
@@ -521,6 +537,8 @@ int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库安全级别[OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)。
 
+创建数据库时必须调用该方法，否则数据库文件无法创建成功，调用[OH_Rdb_CreateOrOpen](#oh_rdb_createoropen)接口时将返回错误码RDB_E_INVALID_ARGS。
+
 **起始版本：** 14
 
 
@@ -546,6 +564,8 @@ int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)
 **描述**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库安全区域等级[Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea)。
+
+创建数据库时必须调用该方法，否则数据库文件无法创建成功，调用[OH_Rdb_CreateOrOpen](#oh_rdb_createoropen)接口时将返回错误码RDB_E_INVALID_ARGS。
 
 **起始版本：** 14
 
@@ -1063,6 +1083,12 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuc
 
 将一批数据插入到目标表中。
 
+单次插入参数的最大数量限制为32766，超出上限会返回RDB_E_INVALID_ARGS错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
+
 **起始版本：** 18
 
 
@@ -1232,6 +1258,8 @@ int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values 
 
 执行有返回值的SQL语句，支持向量数据库。
 
+不支持开头包含注释的语句。
+
 **起始版本：** 18
 
 
@@ -1263,6 +1291,8 @@ int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql)
 **描述**
 
 使用指定的事务ID执行无返回值的SQL语句，仅支持向量数据库。
+
+不支持开头包含注释的语句。
 
 **起始版本：** 14
 
@@ -1789,7 +1819,7 @@ Rdb_TableDetails *OH_Rdb_GetTableDetails(Rdb_ProgressDetails *progress, int32_t 
 
 | 参数项 | 描述                                                         |
 | -- |------------------------------------------------------------|
-| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progress | 表示指向[OH_ProgressDetails](capi-rdb-rdb-progressdetails.md)实例的指针。                           |
+| [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progress | 指向[Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)实例的指针。                           |
 | int32_t version | 表示当前[Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md)的版本。 |
 
 **返回：**
@@ -1819,7 +1849,7 @@ typedef void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progres
 
 | 参数项               | 描述           |
 |-------------------|--------------|
-| void *context     |              |
+| void *context     | 回调数据的上下文。 |
 | [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progressDetails | 端云同步进度的详细信息。 |
 
 ### Rdb_SyncCallback()

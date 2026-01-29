@@ -138,8 +138,8 @@ If a memory leak occurs, the leaked file is returned through the callback.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | isEnabled | boolean | Yes| Whether to enable the detection for JS object memory leaks. The value **true** means to enable the detection for JS object memory leaks, and **false** means the opposite.|
-| configs | Array&lt;string&gt; | Yes| Configuration item. Each element in the array indicates a specific monitored object type.<br>Configurable items: **XComponent**, **NodeContainer**, **Window**, Custom Component, and **Ability**.|
-| callback | Callback&lt;Array&lt;string&gt;&gt; | Yes| Callback used to receive the memory-leaked object returned by the **jsLeakWatcher.enableLeakWatcher** API.<br>You need to input an array object in the callback. Index 0 is the name of the leak list file, whose suffix is **.jsleaklist**. Index 1 is the name of the VM memory snapshot file, whose suffix is **.rawheap**.|
+| configs | Array&lt;string&gt; | Yes| Configuration item. Each element in the array indicates a specific object type to monitor.<br>Options: **XComponent**, **NodeContainer**, **Window**, **CustomComponent**, and **Ability**.<br>**Note**: An empty array indicates that all the preceding objects are monitored.|
+| callback | Callback&lt;Array&lt;string&gt;&gt; | Yes| Callback used to receive the memory-leaked object returned by the **jsLeakWatcher.enableLeakWatcher** API.<br>You need to input an array object in the callback. Index **0** is the name of the leak list file, whose extension is **.jsleaklist**. Index **1** is the name of the VM memory snapshot file, whose extension is **.rawheap**.|
 
 
 **Error codes**
@@ -158,6 +158,7 @@ For details, see [JsLeakWatcher Error Codes](./errorcode-jsleakwatcher.md).
 ```ts
 let config: Array<string> = ['XComponent'];
 // Monitor the memory leak of the JS object XComponent.
+// If an empty array is passed, all objects are monitored.
 jsLeakWatcher.enableLeakWatcher(true, config, (filePath: Array<string>) => {
     console.info('JsLeakWatcher leaklistFileName:' + filePath[0]);
     console.info('JsLeakWatcher heapDumpFileName:' + filePath[1]);

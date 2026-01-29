@@ -99,14 +99,14 @@ HTML file to be loaded:
 
 **How to Implement**
 
-1. Swipe up with your finger.
+1. Scrolling up:
 
     (1) If the web page does not scroll to the bottom, the **Scroll** component sends the scrolling offset to the **Web** component, and the **Scroll** component does not scroll.
 
     (2) If the web page scrolls to the bottom but the **Scroll** component does not scroll to the bottom, only the **Scroll** component scrolls and it does not send the scrolling offset to the **Web** and **List** components.
 
     (3) If the **Scroll** component scrolls to the bottom, the scrolling offset is sent to the **List** component, and the **Scroll** component does not scroll.
-2. Swipe down with your finger.
+2. Scrolling down:
 
     (1) If the **List** component does not scroll to the top, the **Scroll** component sends the scrolling offset to the **List** component, and the **Scroll** component does not scroll.
 
@@ -151,7 +151,7 @@ HTML file to be loaded:
 	
 	(4) Height of the **Web** component: **webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight)**;
 	
-	(5) Obtain the height of the Web component window: webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window..innerHeight');
+	(5) Height of the **Web** component window: **webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window. innerHeight')**;
 	
 	(6) Scrolling offset of the **Web** component: **webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20)**;
 5. Disable the scrolling feature of the **Scroll** component.

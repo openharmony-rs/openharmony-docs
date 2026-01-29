@@ -602,7 +602,7 @@ URL的无参构造函数。parseURL调用后返回一个URL对象，不单独使
 
 static parseURL(url: string, base?: string | URL): URL
 
-URL静态成员函数。
+解析URL。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 

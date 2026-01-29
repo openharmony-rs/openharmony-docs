@@ -31,6 +31,7 @@ The thread that creates a Worker is referred to as the host thread (not limited 
 - [AppStorage](../ui/state-management/arkts-appstorage.md) cannot be used in Worker threads.
 - Starting from API version 18, the priority of the Worker thread can be specified in the [WorkerOptions](../reference/apis-arkts/js-apis-worker.md#workeroptions) parameter of the constructor.
 - Do not use the **export** syntax to export any content in the Worker file. Otherwise, a JS crash may occur.
+- After the application is suspended, its Worker thread will also be [suspended](../task-management/background-task-overview.md).
 
 In addition to the preceding precautions, pay attention to [concurrency precautions](multi-thread-concurrency-overview.md#concurrency-precautions).
 
@@ -369,26 +370,26 @@ Multi-level Workers can be created. That is, a hierarchical thread relationship 
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 
 // Create a parent Worker object in the host thread.
-const parentworker = new worker.ThreadWorker('entry/ets/workers/parentworker.ets');
+const parentWorker = new worker.ThreadWorker('entry/ets/workers/ParentWorker.ets');
 
-parentworker.onmessage = (e: MessageEvents) => {
+parentWorker.onmessage = (e: MessageEvents) => {
   console.info('The host thread receives a message from the parent Worker' + e.data);
 }
 
-parentworker.onexit = () => {
+parentWorker.onexit = () => {
   console.info('The parent Worker exits');
 }
 
-parentworker.onAllErrors = (err: ErrorEvent) => {
+parentWorker.onAllErrors = (err: ErrorEvent) => {
   console.error('The host thread receives an error from the parent Worker' + err.message);
 }
 
-parentworker.postMessage('The host thread sends a message to the parent Worker - recommended example');
+parentWorker.postMessage('The host thread sends a message to the parent Worker - recommended example');
 ```
 <!-- @[recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/recommend.ets) -->
 
 ```ts
-// parentworker.ets
+// ParentWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
 // Create an object in the parent Worker for communicating with the host thread.
@@ -396,33 +397,33 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e : MessageEvents) => {
   if (e.data == 'The host thread sends a message to the parent Worker - recommended example') {
-    let childworker = new worker.ThreadWorker('entry/ets/workers/childworker.ets');
+    let childWorker = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
 
-    childworker.onmessage = (e: MessageEvents) => {
+    childWorker.onmessage = (e: MessageEvents) => {
       console.info('The parent Worker receives a message from the child Worker' + e.data);
       if (e.data == 'The child Worker sends information to the parent Worker') {
         workerPort.postMessage('The parent Worker sends a message to the host thread');
       }
     }
 
-    childworker.onexit = () => {
+    childWorker.onexit = () => {
       console.info('The child Worker exits');
       // Destroy the parent Worker after the child Worker exits.
       workerPort.close();
     }
 
-    childworker.onAllErrors = (err: ErrorEvent) => {
+    childWorker.onAllErrors = (err: ErrorEvent) => {
       console.error('An error occurred on the child Worker' + err.message);
     }
 
-    childworker.postMessage('The parent Worker sends a message to the child Worker - recommended example');
+    childWorker.postMessage('The parent Worker sends a message to the child Worker - recommended example');
   }
 }
 ```
 <!-- @[recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/recommendworkers/parentworker.ets) -->
 
 ```ts
-// childworker.ets
+// ChildWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
 // Create an object in the child Worker for communicating with the parent Worker.
@@ -446,26 +447,26 @@ It is not recommended that a child Worker send messages to the parent Worker aft
 ```ts
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 
-const parentworker = new worker.ThreadWorker('entry/ets/workers/parentworker.ets');
+const parentWorker = new worker.ThreadWorker('entry/ets/workers/ParentWorker.ets');
 
-parentworker.onmessage = (e: MessageEvents) => {
+parentWorker.onmessage = (e: MessageEvents) => {
   console.info('The host thread receives a message from the parent Worker' + e.data);
 }
 
-parentworker.onexit = () => {
+parentWorker.onexit = () => {
   console.info('The parent Worker exits');
 }
 
-parentworker.onAllErrors = (err: ErrorEvent) => {
+parentWorker.onAllErrors = (err: ErrorEvent) => {
   console.error('The host thread receives an error from the parent Worker' + err.message);
 }
 
-parentworker.postMessage('The host thread sends a message to the parent Worker');
+parentWorker.postMessage('The host thread sends a message to the parent Worker');
 ```
 <!-- @[not_recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/notrecommendedone.ets) -->
 
 ```ts
-// parentworker.ets
+// ParentWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
@@ -473,22 +474,22 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 workerPort.onmessage = (e : MessageEvents) => {
   console.info('The parent Worker receives a message from the host thread' + e.data);
 
-  let childworker = new worker.ThreadWorker('entry/ets/workers/childworker.ets')
+  let childWorker = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets')
 
-  childworker.onmessage = (e: MessageEvents) => {
+  childWorker.onmessage = (e: MessageEvents) => {
     console.info('The parent Worker receives a message from the child Worker' + e.data);
   }
 
-  childworker.onexit = () => {
+  childWorker.onexit = () => {
     console.info('The child Worker exits');
     workerPort.postMessage('The parent Worker sends a message to the host thread');
   }
 
-  childworker.onAllErrors = (err: ErrorEvent) => {
+  childWorker.onAllErrors = (err: ErrorEvent) => {
     console.error('An error occurred on the child Worker' + err.message);
   }
 
-  childworker.postMessage('The parent Worker sends a message to the child Worker');
+  childWorker.postMessage('The parent Worker sends a message to the child Worker');
 
   // Destroy the parent Worker after the child Worker is created.
   workerPort.close();
@@ -497,7 +498,7 @@ workerPort.onmessage = (e : MessageEvents) => {
 <!-- @[not_recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/notrecommendedoneworker/parentworker.ets) -->
 
 ```ts
-// childworker.ets
+// ChildWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
@@ -519,26 +520,26 @@ You are not advised to create a child Worker in the parent Worker when the paren
 ```ts
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 
-const parentworker = new worker.ThreadWorker('entry/ets/workers/parentworker.ets');
+const parentWorker = new worker.ThreadWorker('entry/ets/workers/ParentWorker.ets');
 
-parentworker.onmessage = (e: MessageEvents) => {
+parentWorker.onmessage = (e: MessageEvents) => {
   console.info('The host thread receives a message from the parent Worker' + e.data);
 }
 
-parentworker.onexit = () => {
+parentWorker.onexit = () => {
   console.info('The parent Worker exits');
 }
 
-parentworker.onAllErrors = (err: ErrorEvent) => {
+parentWorker.onAllErrors = (err: ErrorEvent) => {
   console.error('The host thread receives an error from the parent Worker' + err.message);
 }
 
-parentworker.postMessage('The host thread sends a message to the parent Worker');
+parentWorker.postMessage('The host thread sends a message to the parent Worker');
 ```
 <!-- @[not_recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/notrecommendedtwo.ets) -->
 
 ```ts
-// parentworker.ets
+// ParentWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
@@ -548,32 +549,32 @@ workerPort.onmessage = (e : MessageEvents) => {
 
   // Create a child Worker after the parent Worker is destroyed. The behavior is unpredictable.
   workerPort.close();
-  let childworker = new worker.ThreadWorker('entry/ets/workers/childworker.ets');
+  let childWorker = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
 
   // Destroy the parent Worker before it is confirmed that the child Worker is successfully created. The behavior is unpredictable.
-  // let childworker = new worker.ThreadWorker('entry/ets/workers/childworker.ets');
+  // let childWorker = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
   // workerPort.close();
 
-  childworker.onmessage = (e: MessageEvents) => {
+  childWorker.onmessage = (e: MessageEvents) => {
     console.info('The parent Worker receives a message from the child Worker' + e.data);
   }
 
-  childworker.onexit = () => {
+  childWorker.onexit = () => {
     console.info('The child Worker exits');
     workerPort.postMessage('The parent Worker sends a message to the host thread');
   }
 
-  childworker.onAllErrors = (err: ErrorEvent) => {
+  childWorker.onAllErrors = (err: ErrorEvent) => {
     console.error('An error occurred on the child Worker' + err.message);
   }
 
-  childworker.postMessage('The parent Worker sends a message to the child Worker');
+  childWorker.postMessage('The parent Worker sends a message to the child Worker');
 }
 ```
 <!-- @[not_recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/notrecommendedtwoworker/parentworker.ets) -->
 
 ```ts
-// childworker.ets
+// ChildWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;

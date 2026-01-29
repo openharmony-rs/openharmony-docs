@@ -56,7 +56,7 @@ Obtains the Y coordinate of the context menu.
 
 getLinkUrl(): string
 
-Obtains the URL of the link.
+Obtains the URL that has passed the security check.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -70,7 +70,7 @@ Obtains the URL of the link.
 
 getUnfilteredLinkUrl(): string
 
-Obtains the URL of the unfiltered link.
+Obtains the original URL.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -92,7 +92,7 @@ Obtains the source URL.
 
 | Type    | Description                      |
 | ------ | ------------------------ |
-| string | If the selected element has the **src** attribute, the URL in the **src** is returned.|
+| string | If the selected element has the **src** attribute, the URL in the **src** is returned. The maximum size of the returned URL is 2 MB. If the size exceeds the upper limit, an empty string is returned.|
 
 ## existsImageContents<sup>9+</sup>
 
@@ -112,7 +112,7 @@ Checks whether image content exists.
 
 getMediaType(): ContextMenuMediaType
 
-Obtains the media type of this web page element.
+Obtains the media types.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

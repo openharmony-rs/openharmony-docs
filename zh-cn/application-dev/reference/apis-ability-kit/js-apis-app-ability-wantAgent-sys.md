@@ -55,9 +55,9 @@ getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentData: _WantAgent;
-//WantAgentInfo对象
+// WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -85,14 +85,14 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
     wantAgentData = data;
   }
-  //getWant回调
+  // getWant回调
   let getWantCallback = (err: BusinessError, data: Want) => {
     if(err.code) {
       console.error(`getWant failed, code: ${err.code}, message: ${err.message}.`);
@@ -161,9 +161,9 @@ getWant(agent: WantAgent): Promise\<Want\>
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentData: _WantAgent;
-//WantAgentInfo对象
+// WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -191,7 +191,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
@@ -335,7 +335,7 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
-| 201       | Permission verification failed. The application does not have the permission required to call the API. |
+| 201       | The application does not have permission to call the interface. |
 | 202       | The application is not system-app, can not use system-api. |
 | 16000020   | The context is not ability context. |
 | 16000151   | Invalid wantAgent object.|

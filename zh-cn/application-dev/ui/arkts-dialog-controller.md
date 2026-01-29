@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作能力，当前支持关闭功能。可以将控制器传入弹出框内容区域后进行操作。
 
 从API version 18开始，可设置controller参数以绑定[DialogController](../reference/apis-arkui/js-apis-promptAction.md#dialogcontroller18)控制器，通过控制器能够操作弹出框。
@@ -211,7 +211,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
 ## 使用控制器获取弹出框的状态
 
-在自定义弹出框场景中，可以通过控制器调用getState接口获取弹出框状态。
+在自定义弹出框场景中，从API version 20 开始，可以通过控制器调用[getState](../reference/apis-arkui/js-apis-promptAction.md#getstate20)接口获取弹出框状态。
 
 > **说明：**
 > 

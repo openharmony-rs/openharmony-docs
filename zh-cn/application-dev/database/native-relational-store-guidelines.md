@@ -34,14 +34,14 @@ RelationalStore提供了一套完整的对本地数据库进行管理的机制�
 
 | 接口名称 | 描述 |
 | -------- | -------- |
- OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | 创建一个OH_Rdb_ConfigV2实例，并返回指向该实例的指针。 |
- int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库文件路径。 |
- int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库名称。 |
- int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用包名。 |
- int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用模块名。 |
- int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全级别OH_Rdb_SecurityLevel。 |
- int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库是否加密。 |
- int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全区域等级Rdb_SecurityArea。 |
+| OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | 创建一个OH_Rdb_ConfigV2实例，并返回指向该实例的指针。使用完毕后需要调用OH_Rdb_DestroyConfig释放内存。 |
+| int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库文件路径。 |
+| int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库名称。 |
+| int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用包名。 |
+| int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用模块名。 |
+| int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全级别OH_Rdb_SecurityLevel。 |
+| int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库是否加密。 |
+| int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全区域等级Rdb_SecurityArea。 |
 | OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode) | 使用数据库配置OH_Rdb_ConfigV2，获得一个对应的OH_Rdb_Store实例，用来操作关系型数据库。 |
 | OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql) | 执行包含指定参数但不返回值的SQL语句。 |
 | OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBucket) | 向目标表中插入一行数据。 |
@@ -57,9 +57,9 @@ RelationalStore提供了一套完整的对本地数据库进行管理的机制�
 | OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Rdb_Asset *value) | 把Rdb_Asset类型的数据放到指定的OH_VBucket对象中。 |
 | OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Rdb_Asset *value, uint32_t count) | 把Rdb_Asset数组类型的数据放到指定的OH_VBucket对象中。 |
 | OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, const char *columnName, OH_VObject *values) | 获取数据库指定表中指定列的数据的最后修改时间。 |
-| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | 创建一个OH_RDB_TransOptions实例，配置事务对象。 |
+| OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void) | 创建一个OH_RDB_TransOptions实例，配置事务对象。使用完毕后需要调用OH_RdbTrans_DestroyOptions释放内存。 |
 | OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[], int len) | 根据指定的条件查询数据库中的数据。 |
-| OH_Data_Values *OH_Values_Create(void) | 创建OH_Data_Values实例。 |
+| OH_Data_Values *OH_Values_Create(void) | 创建OH_Data_Values实例。使用完毕后需要调用OH_Values_Destroy释放内存。 |
 | int OH_Data_Asset_SetName(Data_Asset *asset, const char *name) | 为资产类型数据设置名称。 |
 | int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri) | 为资产类型数据设置绝对路径。 |
 | int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path) | 为资产类型数据设置应用沙箱里的相对路径。 |
@@ -275,38 +275,38 @@ libnative_rdb_ndk.z.so
 
    调用OH_Rdb_Query方法查找数据，返回一个OH_Cursor结果集。示例代码如下所示：
 
-   ```c
-   OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
-   if (predicates == NULL) {
-      OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
-      return;
-   }
-   const char *columnNames[] = {"NAME", "AGE"};
-   int len = sizeof(columnNames) / sizeof(columnNames[0]);
-   OH_Cursor *cursor = OH_Rdb_Query(store_, predicates, columnNames, len);
-   if (cursor == NULL) {
-      OH_LOG_ERROR(LOG_APP, "Query failed.");
-      predicates->destroy(predicates);
-      return;
-   }
-   int columnCount = 0;
-   cursor->getColumnCount(cursor, &columnCount);
-   
-   // OH_Cursor是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始
-   int64_t age;
-   while (cursor->goToNextRow(cursor) == OH_Rdb_ErrCode::RDB_OK) {
-       int32_t ageColumnIndex = -1;
-	   cursor->getColumnIndex(cursor, "AGE", &ageColumnIndex);
-       if (ageColumnIndex != -1) {
-           cursor->getInt64(cursor, ageColumnIndex, &age);
-       }
-   }
-   
-   // 释放谓词实例
-   predicates->destroy(predicates);
-   // 释放结果集
-   cursor->destroy(cursor);
-   ```
+    ```c
+    OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
+    if (predicates == NULL) {
+        OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
+        return;
+    }
+    const char *columnNames[] = {"NAME", "AGE"};
+    int len = sizeof(columnNames) / sizeof(columnNames[0]);
+    OH_Cursor *cursor = OH_Rdb_Query(store_, predicates, columnNames, len);
+    if (cursor == NULL) {
+        OH_LOG_ERROR(LOG_APP, "Query failed.");
+        predicates->destroy(predicates);
+        return;
+    }
+    int columnCount = 0;
+    cursor->getColumnCount(cursor, &columnCount);
+
+    // OH_Cursor是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始
+    int64_t age;
+    while (cursor->goToNextRow(cursor) == OH_Rdb_ErrCode::RDB_OK) {
+        int32_t ageColumnIndex = -1;
+        cursor->getColumnIndex(cursor, "AGE", &ageColumnIndex);
+        if (ageColumnIndex != -1) {
+            cursor->getInt64(cursor, ageColumnIndex, &age);
+        }
+    }
+
+    // 释放谓词实例
+    predicates->destroy(predicates);
+    // 释放结果集
+    cursor->destroy(cursor);
+    ```
    
    配置谓词以LIKE模式或NOT LIKE模式匹配进行数据查询。示例代码如下：
 

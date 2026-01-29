@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiAppEvent](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 | 接口名                                              | 描述                                         |
 | --------------------------------------------------- | -------------------------------------------- |

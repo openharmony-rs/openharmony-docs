@@ -33,20 +33,21 @@ The **type_def.h** file declares the common types.
 
 ### Structs
 
-| Name| typedef Keyword                                           | Description          |
-| -- |-------------------------------------------------------|--------------|
-| [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md) | ffrt_function_header_t                                | Describes a task execution function.      |
-| [ffrt_dependence_t](capi-ffrt-ffrt-dependence-t.md) | ffrt_dependence_t                                     | Describes dependency data.     |
-| [ffrt_deps_t](capi-ffrt-ffrt-deps-t.md) | ffrt_deps_t                                           | Describes dependencies.     |
-| [ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md) | ffrt_task_attr_t                                      | Describes a task attribute.   |
-| [ffrt_queue_attr_t](capi-ffrt-ffrt-queue-attr-t.md) | ffrt_queue_attr_t                                     | Describes a serial queue attribute.   |
-| [ffrt_condattr_t](capi-ffrt-ffrt-condattr-t.md) | ffrt_condattr_t                                       | Describes a condition variable attribute.|
-| [ffrt_mutexattr_t](capi-ffrt-ffrt-mutexattr-t.md) | ffrt_mutexattr_t                                      | Describes a mutex attribute.  |
-| [ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md) | ffrt_rwlockattr_t                                     | Describes a read-write lock attribute.|
-| [ffrt_mutex_t](capi-ffrt-ffrt-mutex-t.md) | ffrt_mutex_t                                          | Describes a mutex.  |
-| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md) | ffrt_rwlock_t                                         | Describes a read-write lock.  |
-| [ffrt_cond_t](capi-ffrt-ffrt-cond-t.md) | ffrt_cond_t                                           | Describes a condition variable. |
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [ffrt_function_header_t](capi-ffrt-ffrt-function-header-t.md) | ffrt_function_header_t | Describes a task execution function.|
+| [ffrt_dependence_t](capi-ffrt-ffrt-dependence-t.md) | ffrt_dependence_t | Describes dependency data.|
+| [ffrt_deps_t](capi-ffrt-ffrt-deps-t.md) | ffrt_deps_t | Describes dependencies.|
+| [ffrt_task_attr_t](capi-ffrt-ffrt-task-attr-t.md) | ffrt_task_attr_t | Describes a task attribute.|
+| [ffrt_queue_attr_t](capi-ffrt-ffrt-queue-attr-t.md) | ffrt_queue_attr_t | Describes a serial queue attribute.|
+| [ffrt_condattr_t](capi-ffrt-ffrt-condattr-t.md) | ffrt_condattr_t | Describes a condition variable attribute.|
+| [ffrt_mutexattr_t](capi-ffrt-ffrt-mutexattr-t.md) | ffrt_mutexattr_t | Describes a mutex attribute.|
+| [ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md) | ffrt_rwlockattr_t | Describes a read-write lock attribute.|
+| [ffrt_mutex_t](capi-ffrt-ffrt-mutex-t.md) | ffrt_mutex_t | Describes a mutex.|
+| [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md) | ffrt_rwlock_t | Describes a read-write lock.|
+| [ffrt_cond_t](capi-ffrt-ffrt-cond-t.md) | ffrt_cond_t | Describes a condition variable.|
 | void* | [ffrt_task_handle_t](capi-ffrt-ffrt-task-handle-t.md) | Defines the handle to a task.|
+| [ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md) | ffrt_fiber_t | Fiber structure.|
 
 ### Enums
 
@@ -122,13 +123,13 @@ Enumerates the storage sizes available for different types of structs.
 
 **Since**: 10
 
-| Enum Item| Description                 |
-| -- |---------------------|
-| ffrt_task_attr_storage_size = 128 | Storage size for the task attribute struct.               |
-| ffrt_auto_managed_function_storage_size = 64 + sizeof(ffrt_function_header_t) | Storage size for the task execution function struct.              |
-| ffrt_mutex_storage_size = 64 | Storage size for the mutex struct.                |
-| ffrt_cond_storage_size = 64 | Storage size for the condition variable struct.               |
-| ffrt_queue_attr_storage_size = 128 | Storage size for the queue attribute struct.               |
+| Enum Item| Description|
+| -- | -- |
+| ffrt_task_attr_storage_size = 128 | Storage size for the task attribute struct.|
+| ffrt_auto_managed_function_storage_size = 64 + sizeof(ffrt_function_header_t) | Storage size for the task execution function struct.|
+| ffrt_mutex_storage_size = 64 | Storage size for the mutex struct.|
+| ffrt_cond_storage_size = 64 | Storage size for the condition variable struct.|
+| ffrt_queue_attr_storage_size = 128 | Storage size for the queue attribute struct.|
 | ffrt_rwlock_storage_size = 64 | Read-write lock.<br>**Since**: 18|
 | ffrt_fiber_storage_size| Fiber size across different platforms (in bytes). AArch64 architecture: 22 bytes; Arm architecture: 64 bytes; x86_64 architecture: 8 bytes; other platforms: not supported.<br>**Since**: 20 |
 

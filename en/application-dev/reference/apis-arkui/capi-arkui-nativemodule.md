@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -12,9 +12,9 @@ Provides drag and drop APIs of ArkUI on the native side. For details, see [Imple
 
 Provides the general key event APIs of ArkUI on the native side.
 
-Provides the APIs of ArkUI to register gesture callbacks on the native side. For details, see [Binding Gesture Events](../../ui/ndk-bind-gesture-events.md).
+Provides ArkUI APIs for registering gesture callbacks on the native side. For details, see [Binding Gesture Events](../../ui/ndk-bind-gesture-events.md).
 
-Provides animation callbacks of ArkUI on the native side. For more details, see [Using Animations](../../ui/ndk-use-animation.md).
+Provides ArkUI animation callbacks for native-side implementations. For more details, see [Using Animations](../../ui/ndk-use-animation.md).
 
 Provides UI capabilities of ArkUI on the native side, such as UI component creation and destruction, tree node operations, attribute setting, and event listening. For details, see [Integrating with ArkTS Pages](../../ui/ndk-access-the-arkts-page.md).
 

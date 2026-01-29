@@ -15,14 +15,14 @@
 
 | 原接口（废弃）       |       新接口（新增） |
 | ------              |           ------ |
-|   @ohos.bundle.d.ts   |   [@ohos.bundle.bundleManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts)     |
-|   @ohos.bundle.d.ts   |   [@ohos.bundle.freeInstall.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.freeInstall.d.ts)     |
-|   @ohos.bundle.d.ts   |   [@ohos.bundle.installer.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.installer.d.ts)     |
-|   @ohos.bundle.innerBundleManager.d.ts   |   [@ohos.bundle.launcherBundleManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.launcherBundleManager.d.ts)      |
-|  @ohos.bundle.innerBundleManager.d.ts |  [@ohos.bundle.bundleMonitor.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleMonitor.d.ts) |
-|   @ohos.bundle.defaultAppManager.d.ts   |   [@ohos.bundle.defaultAppManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.defaultAppManager.d.ts)     |
-|   @ohos.distributedBundle.d.ts   |   [@ohos.bundle.distributedBundleManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.distributedBundleManager.d.ts)     |
-|  无  |  [@ohos.bundle.appControl.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.appControl.d.ts)  |
+|   @ohos.bundle.d.ts   |   [@ohos.bundle.bundleManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts)     |
+|   @ohos.bundle.d.ts   |   [@ohos.bundle.freeInstall.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.freeInstall.d.ts)     |
+|   @ohos.bundle.d.ts   |   [@ohos.bundle.installer.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.installer.d.ts)     |
+|   @ohos.bundle.innerBundleManager.d.ts   |   [@ohos.bundle.launcherBundleManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.launcherBundleManager.d.ts)      |
+|  @ohos.bundle.innerBundleManager.d.ts |  [@ohos.bundle.bundleMonitor.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleMonitor.d.ts) |
+|   @ohos.bundle.defaultAppManager.d.ts   |   [@ohos.bundle.defaultAppManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.defaultAppManager.d.ts)     |
+|   @ohos.distributedBundle.d.ts   |   [@ohos.bundle.distributedBundleManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.distributedBundleManager.d.ts)     |
+|  无  |  [@ohos.bundle.appControl.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.appControl.d.ts)  |
 |  @system.package.d.ts |  无 |
 
 **适配指导**<br>
@@ -65,22 +65,22 @@ import distributedBundle form '@ohos.bundle.distributedBundle'
 新增结构体对原有的API8及之前的结构体进行梳理，将原有API8及之前的结构体全部废弃，新增新的API9结构体，变更前后的对比如下表所示，部分结构体进行了合并，例如moduleInfo.d.ts替换为hapModuleInfo.d.ts，customizeData.d.ts替换为metadata.d.ts。结构体功能上与原结构体保持一致。部分功能有变更或者新增的结构体属性会单独列出。
 | 原结构体（废弃）       |       新结构体（新增） |
 | ------              |         ------ |
-| bundle/abilityInfo.d.ts          | [bundleManager/abilityInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts) |
-| bundle/applicationInfo.d.ts      | [bundleManager/applicationInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) |
-| bundle/bundleInfo.d.ts           | [bundleManager/bundleInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts) |
-| bundle/bundleInstaller.d.ts      | [@ohos.bundle.installer.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.installer.d.ts) |
-| bundle/bundleStatusCallback.d.ts | [@ohos.bundle.bundleMonitor.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleMonitor.d.ts) |
-| bundle/customizeData.d.ts        | [bundleManager/metadata.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/Metadata.d.ts) |
-| bundle/dispatchInfo.d.ts         | [bundleManager/dispatchInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/DispatchInfo.d.ts) |
-| bundle/elementName.d.ts          | [bundleManager/elementName.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ElementName.d.ts) |
-| bundle/extensionAbilityInfo.d.ts | [bundleManager/extensionAbilityInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ExtensionAbilityInfo.d.ts) |
-| bundle/hapModuleInfo.d.ts        | [bundleManager/hapModuleInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) |
-| bundle/launcherAbilityInfo.d.ts  | [bundleManager/launcherAbilityInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/LauncherAbilityInfo.d.ts) |
-| bundle/metadata.d.ts             | [bundleManager/metadata.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/Metadata.d.ts) |
-| bundle/moduleInfo.d.ts           | [bundleManager/hapModuleInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) |
-| bundle/PermissionDef.d.ts        | [bundleManager/permissionDef.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/PermissionDef.d.ts) |
-| bundle/remoteAbilityInfo.d.ts    | [bundleManager/remoteAbilityInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/RemoteAbilityInfo.d.ts) |
-| bundle/shortcutInfo.d.ts         | [bundleManager/shortcutInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ShortcutInfo.d.ts) |
+| bundle/abilityInfo.d.ts          | [bundleManager/abilityInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts) |
+| bundle/applicationInfo.d.ts      | [bundleManager/applicationInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts) |
+| bundle/bundleInfo.d.ts           | [bundleManager/bundleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts) |
+| bundle/bundleInstaller.d.ts      | [@ohos.bundle.installer.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.installer.d.ts) |
+| bundle/bundleStatusCallback.d.ts | [@ohos.bundle.bundleMonitor.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleMonitor.d.ts) |
+| bundle/customizeData.d.ts        | [bundleManager/metadata.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/Metadata.d.ts) |
+| bundle/dispatchInfo.d.ts         | [bundleManager/dispatchInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/DispatchInfo.d.ts) |
+| bundle/elementName.d.ts          | [bundleManager/elementName.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ElementName.d.ts) |
+| bundle/extensionAbilityInfo.d.ts | [bundleManager/extensionAbilityInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ExtensionAbilityInfo.d.ts) |
+| bundle/hapModuleInfo.d.ts        | [bundleManager/hapModuleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) |
+| bundle/launcherAbilityInfo.d.ts  | [bundleManager/launcherAbilityInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/LauncherAbilityInfo.d.ts) |
+| bundle/metadata.d.ts             | [bundleManager/metadata.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/Metadata.d.ts) |
+| bundle/moduleInfo.d.ts           | [bundleManager/hapModuleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts) |
+| bundle/PermissionDef.d.ts        | [bundleManager/permissionDef.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/PermissionDef.d.ts) |
+| bundle/remoteAbilityInfo.d.ts    | [bundleManager/remoteAbilityInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/RemoteAbilityInfo.d.ts) |
+| bundle/shortcutInfo.d.ts         | [bundleManager/shortcutInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ShortcutInfo.d.ts) |
 
 **适配指导**<br>
 1. 使用原有结构体的代码需要修改为新结构体。
@@ -167,7 +167,7 @@ import appControl form '@ohos.bundle.appControl'
 
 ## cl.bundlemanager.4 BundleInfo结构体变更，包管理原有bundle/bundleInfo.d.ts字段全部废弃变更为bundleManager/bundleInfo.d.ts，涉及字段属性变化。
 
-包管理原有bundle/bundleInfo.d.ts字段全部废弃。由老的[bundle/bundleInfo.d.ts]((https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundle/bundleInfo.d.ts))变更为[bundleManager/bundleInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts)，涉及字段属性变化。
+包管理原有bundle/bundleInfo.d.ts字段全部废弃。由老的[bundle/bundleInfo.d.ts]((https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundle/bundleInfo.d.ts))变更为[bundleManager/bundleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts)，涉及字段属性变化。
 
 
 **变更影响**<br>
@@ -175,7 +175,7 @@ import appControl form '@ohos.bundle.appControl'
 
 **关键的接口/组件变更**<br>
 
-BundleInfo结构体发生变化的字段内容如下表所示。其余字段在bundle/bundleInfo.d.ts中废弃后，在新的[bundleManager/bundleInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts)中均有对应值。没有对应字段，则表明该字段已经在API9上废弃。
+BundleInfo结构体发生变化的字段内容如下表所示。其余字段在bundle/bundleInfo.d.ts中废弃后，在新的[bundleManager/bundleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/BundleInfo.d.ts)中均有对应值。没有对应字段，则表明该字段已经在API9上废弃。
 
 | 已废弃 | API9新增或变更 | 类型 |
 | --- | --- | --- |
@@ -216,7 +216,7 @@ ApplicationInfo结构体变更，包管理原有bundle/applicationInfo.d.ts字�
 对原有使用API version 9之前的应用无影响，使用API version 9的应用需要适配新模块和新接口。使用二级模块导出ApplicationInfo时，需要导入@ohos.bundle.bundleManager模块。
 
 **关键的接口/组件变更**<br>
-ApplicationInfo结构体发生变化的字段内容如下表所示。其余字段在bundle/applicationInfo.d.ts中废弃后，在新的[bundleManager/applicationInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)中均有对应值。没有对应字段，则表明该字段已经在API9上废弃。
+ApplicationInfo结构体发生变化的字段内容如下表所示。其余字段在bundle/applicationInfo.d.ts中废弃后，在新的[bundleManager/applicationInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)中均有对应值。没有对应字段，则表明该字段已经在API9上废弃。
 
 | 废弃 | API9新增或变更 | 类型 |
 | --- | --- | --- |
@@ -239,7 +239,7 @@ ApplicationInfo结构体发生变化的字段内容如下表所示。其余字�
 
 ## cl.bundlemanager.6 HapModuleInfo结构体字段变更，包管理原有bundle/hapModuleInfo.d.ts 和 moduleInfo.d.ts字段全部废弃，变更为bundleManager/hapModuleInfo.d.ts，涉及字段属性变化。
 
-HapModuleInfo结构体字段变更，包管理原有bundle/hapModuleInfo.d.ts 和 moduleInfo.d.ts字段全部废弃，变更为[bundleManager/hapModuleInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)，涉及字段属性变化。
+HapModuleInfo结构体字段变更，包管理原有bundle/hapModuleInfo.d.ts 和 moduleInfo.d.ts字段全部废弃，变更为[bundleManager/hapModuleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)，涉及字段属性变化。
 
 **变更影响**<br>
 对原有使用API version 9之前的应用无影响，使用API version 9的应用需要适配新模块和新接口。使用二级模块导出HapModuleInfo时，需要导入@ohos.bundle.bundleManager模块。
@@ -262,8 +262,8 @@ HapModuleInfo结构体发生变化的字段内容如下表所示。其余字段�
 
 ## cl.bundlemanager.7 ModuleInfo结构体废弃，使用bundleManager/hapModuleInfo.d.ts中的HapModuleInfo代替。
 
-包管理原有bundle/hapModuleInfo.d.ts 和 moduleInfo.d.ts字段全部废弃，变更为[bundleManager/hapModuleInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)，涉及字段属性变化。
-ModuleInfo结构体废弃，使用[bundleManager/hapModuleInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)中的HapModuleInfo代替。
+包管理原有bundle/hapModuleInfo.d.ts 和 moduleInfo.d.ts字段全部废弃，变更为[bundleManager/hapModuleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)，涉及字段属性变化。
+ModuleInfo结构体废弃，使用[bundleManager/hapModuleInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/HapModuleInfo.d.ts)中的HapModuleInfo代替。
 
 **变更影响**<br>
 对原有使用API version 9之前的应用无影响，使用API version 9的应用需要适配新模块和新接口。ModuleInfo被废弃，使用HapModuleInfo代替。
@@ -393,7 +393,7 @@ import defaultApp form '@ohos.bundle.defaultAppManager'
 ```
 
 ## cl.bundlemanager.11 分布式包管理模块变更，原@ohos.distributedBundle.d.ts接口全部废弃，变更为@ohos.bundle.distributedBundle.d.ts，涉及接口变更。
-API异常错误整改，分布式包管理模块变更，原@ohos.distributedBundle.d.ts接口全部废弃，变更为[@ohos.bundle.distributedBundleManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.distributedBundleManager.d.ts)。涉及接口getRemoteAbilityInfos，变更为getRemoteAbilityInfo。相关结构体RemoteAbilityInfo的二级模块导出功能也需要导入新模块才可以继续使用。
+API异常错误整改，分布式包管理模块变更，原@ohos.distributedBundle.d.ts接口全部废弃，变更为[@ohos.bundle.distributedBundleManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.distributedBundleManager.d.ts)。涉及接口getRemoteAbilityInfos，变更为getRemoteAbilityInfo。相关结构体RemoteAbilityInfo的二级模块导出功能也需要导入新模块才可以继续使用。
 
 **变更影响**<br>
 对API version 9之前的应用无影响。分布式模块和getRemoteAbilityInfos名称变更，会导致原有API version 9应用使用新的sdk编译失败。
@@ -436,7 +436,7 @@ import freeInstall from '@ohos.bundle.freeInstall'
 
 ## cl.bundlemanager.13 免安装相关结构体DisPatchInfo、AbilityFormInfo、ModuleDistroInfo和ModuleConfigInfo发生字段变更
 免安装相关结构体DisPatchInfo、AbilityFormInfo、ModuleDistroInfo和ModuleConfigInfo发生字段变更：
-1. DispatchInfo中字段dispatchAPI名称修改为[dispatchAPIVersion](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/DispatchInfo.d.ts)，属性不变，为string。表示免安装接口的版本信息，含义不变。
+1. DispatchInfo中字段dispatchAPI名称修改为[dispatchAPIVersion](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/DispatchInfo.d.ts)，属性不变，为string。表示免安装接口的版本信息，含义不变。
 2. AbilityFormInfo结构体字段属性变更，原有字段supportDimensions属性由Array\<number>修改为Array\<string>;
 3. AbilityFormInfo结构体字段属性变更，原有字段defaultDimension属性由number修改为string。
 4. ModuleDistroInfo结构体废弃mainAbility字段，移至ModuleConfigInfo结构体中。
@@ -497,7 +497,7 @@ import freeInstall from '@ohos.bundle.freeInstall'
 import bundle form '@ohos.bundle.bundleManager'
 ```
 ## cl.bundlemanager.15 包管理ShortcutInfo结构体字段变更
-包管理ShortcutInfo结构体字段变更，原有bundle/shortcutInfo.d.ts字段全部废弃，变更为[bundleManager/shortcutInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ShortcutInfo.d.ts)。ShortcutInfo和ShortWant结构体全部为systemapi。
+包管理ShortcutInfo结构体字段变更，原有bundle/shortcutInfo.d.ts字段全部废弃，变更为[bundleManager/shortcutInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ShortcutInfo.d.ts)。ShortcutInfo和ShortWant结构体全部为systemapi。
 
 **变更影响**<br>
 对API version 9之前的应用无影响。结构体名称字段属性变更，会导致原有API9应用使用新的sdk编译失败。
@@ -525,7 +525,7 @@ import launcherBundleManager form '@ohos.bundle.launcherBundleManager'
 ```
 
 ## cl.bundlemanager.16 包管理getBundleInstaller接口变更，从@ohos.bundle.d.ts移至@ohos.bundle.installer.d.ts
-包管理getBundleInstaller接口变更，从@ohos.bundle.d.ts移至[@ohos.bundle.installer.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.installer.d.ts)
+包管理getBundleInstaller接口变更，从@ohos.bundle.d.ts移至[@ohos.bundle.installer.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.installer.d.ts)
 .，系统能力为SystemCapability.BundleManager.BundleFramework.Core。
 
 **变更影响**<br>
@@ -541,7 +541,7 @@ import installer form '@ohos.bundle.installer'
 ```
 
 ## cl.bundlemanager.17 包管理安装接口变更，从bundle/bundleInstaller.d.ts移至@ohos.bundle.installer.d.ts
-包管理安装接口变更，从bundle/bundleInstaller.d.ts移至[@ohos.bundle.installer.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.installer.d.ts),系统能力为SystemCapability.BundleManager.BundleFramework.Core。
+包管理安装接口变更，从bundle/bundleInstaller.d.ts移至[@ohos.bundle.installer.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.installer.d.ts),系统能力为SystemCapability.BundleManager.BundleFramework.Core。
 
 **变更影响**<br>
 对API version 9之前的应用无影响。使用API9的应用需要适配新模块和新接口。
@@ -599,7 +599,7 @@ import installer form '@ohos.bundle.installer'
     }
 ```
 ## cl.bundlemanager.19 包管理innerBundleManger模块接口变更，@ohos.bundle.innerBundleManger.d.ts接口全部废弃，移至@ohos.bundle.launcherBundleManager.d.ts。
-innerBundleManager相关接口功能未发生变化，使用方式有变化。需要导入[@ohos.bundle.launcherBundleManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.launcherBundleManager.d.ts)模块来使用innerBundleManager相关的接口，系统能力为SystemCapability.BundleManager.BundleFramework.Core。
+innerBundleManager相关接口功能未发生变化，使用方式有变化。需要导入[@ohos.bundle.launcherBundleManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.launcherBundleManager.d.ts)模块来使用innerBundleManager相关的接口，系统能力为SystemCapability.BundleManager.BundleFramework.Core。
 
 **变更影响**<br>
 相关接口版本为API version 9，对api9之前的应用无影响。使用了innerBundleManager接口能力的应用需要适配新的模块和接口。
@@ -617,7 +617,7 @@ import launcherBundleManager form '@ohos.bundle.launcherBundleManage'
 ```
 
 ## cl.bundlemanager.20 innerBundleManagr模块变更，on, off接口从@ohos.bundle.innerBundleManager模块移到@ohos.bundle.bundleMonitor.d.ts模块
-innerBundleManager相关接口功能未发生变化，使用方式有变化。需要导入[@ohos.bundle.bundleMonitor.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleMonitor.d.ts)模块来使用innerBundleManager相关的接口，均为systemapi。系统能力为SystemCapability.BundleManager.BundleFramework.Core。
+innerBundleManager相关接口功能未发生变化，使用方式有变化。需要导入[@ohos.bundle.bundleMonitor.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleMonitor.d.ts)模块来使用innerBundleManager相关的接口，均为systemapi。系统能力为SystemCapability.BundleManager.BundleFramework.Core。
 
 **变更影响**<br>
 相关接口版本为API version 9，对API9之前的应用无影响。使用了innerBundleManager接口能力的应用需要适配新的模块和接口。
@@ -648,7 +648,7 @@ import bundleMonitor form '@ohos.bundle.bundleMonitor'
 ``` 
 
 ## cl.bundlemanager.21 包管理bundleStatusCallback.d.ts接口全部废弃，移至@ohos.bundle.bundleMonitor.d.ts中。
-包管理bundleStatusCallback.d.ts接口全部废弃，移至[@ohos.bundle.bundleMonitor.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleMonitor.d.ts)中。原有BundleStatusCallback中的add、update和remove全部废弃，变更为BundleChangedEvent，为systemapi。系统能力为SystemCapability.BundleManager.BundleFramework.Core。
+包管理bundleStatusCallback.d.ts接口全部废弃，移至[@ohos.bundle.bundleMonitor.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleMonitor.d.ts)中。原有BundleStatusCallback中的add、update和remove全部废弃，变更为BundleChangedEvent，为systemapi。系统能力为SystemCapability.BundleManager.BundleFramework.Core。
 
 **变更影响**<br>
 相关接口版本为API version 9，对API9之前的应用无影响。使用了BundleStatusCallback接口能力的应用需要适配新的模块和接口。
@@ -666,7 +666,7 @@ import bundleMonitor form '@ohos.bundle.bundleMonitor'
 ``` 
 
 ## cl.bundlemanager.22 包管理Zlib模块接口变更，@ohos.zlib.d.ts中接口涉及废弃和变更。
-包管理Zlib模块接口变更，[@ohos.zlib.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.zlib.d.ts)中接口涉及废弃和变更。系统能力为SystemCapability.BundleManager.Zlib。
+包管理Zlib模块接口变更，[@ohos.zlib.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.zlib.d.ts)中接口涉及废弃和变更。系统能力为SystemCapability.BundleManager.Zlib。
 
 **变更影响**<br>
 相关接口版本为API version 9，对API9之前的应用无影响。使用了API9的应用需要适配新的模块和接口。

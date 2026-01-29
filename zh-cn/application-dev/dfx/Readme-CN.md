@@ -84,9 +84,7 @@
 - 命令行工具<!--perform-command-line-utilities-->
   - [hdc](hdc.md)
   - [hilog](hilog.md)
-  - hidumper<!--hidumper-tool-->
-    - [hidumper](hidumper.md)
-    - [PrivacyManagerService](hidumper-PrivacyManagerService.md)
+  - [hidumper](hidumper.md)
   - [hitrace](hitrace.md)
   - [hiperf](hiperf.md)
   - [hiprofiler](hiprofiler.md)

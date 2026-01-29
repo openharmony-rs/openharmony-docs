@@ -16,7 +16,7 @@ Web组件获取控制台信息对象。示例代码参考[onConsole事件](./ark
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
-## constructor
+## constructor<sup>(deprecated)</sup>
 
 constructor(message: string, sourceId: string, lineNumber: number, messageLevel: MessageLevel)
 

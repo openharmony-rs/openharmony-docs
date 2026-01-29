@@ -194,7 +194,7 @@ Describes a historical page record.
 ## MediaInfo<sup>12+<sup>
 
 Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback.
-The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page .
+The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

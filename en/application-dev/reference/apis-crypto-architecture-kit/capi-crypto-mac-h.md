@@ -19,7 +19,7 @@ Define message authentication code (MAC) APIs.
 
 **Since**: 20
 
-**Related Module**: [CryptoMacApi](capi-cryptomacapi.md)
+**Related module**: [CryptoMacApi](capi-cryptomacapi.md)
 
 ## Summary
 

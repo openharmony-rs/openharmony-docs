@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 该组件从API Version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -32,13 +32,13 @@ ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormT
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
+| 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | 否 | 否 | 内容卡片数据。 |
-| formType | [FormType](#formtype) | 否 | 否 | 内容卡片类型，影响内容卡片的大小。<br />**装饰器类型：**@Prop |
-| formWidth | double | 否 | 是 | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。<br />**装饰器类型：**@Prop |
-| formHeight | double | 否 | 是 | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。<br />**装饰器类型：**@Prop |
-| handleOnClick | Function | 否 | 是 | 点击事件回调函数。 |
+| contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | 是 | - | 内容卡片数据。 |
+| formType | [FormType](#formtype) | 是 | @Prop | 内容卡片类型，影响内容卡片的大小。 |
+| formWidth | number | 否 | @Prop | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
+| formHeight | number | 否 | @Prop | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
+| handleOnClick | Function | 否 | - | 点击事件回调函数。 |
 
 ## FormType
 

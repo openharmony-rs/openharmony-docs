@@ -118,8 +118,7 @@ Worker传输信息序列化异常。
 
 **处理步骤**
 
-确保传输信息属于Worker支持的合法序列化对象，支持的序列化类型详查[ArkTS线程间通信概述](../../arkts-utils/interthread-communication-overview.md
-)。
+确保传输信息属于Worker支持的合法序列化对象，支持的序列化类型详查[ArkTS线程间通信概述](../../arkts-utils/interthread-communication-overview.md)。
 
 ## 10200007 Worker文件路径异常
 
@@ -184,7 +183,7 @@ The {methodName} method cannot be bound.
 
 **错误描述**
 
-调用语言容器类的方法时，传入的this.object不是容器类的实例语言，容器类的方法不支持bind。
+调用语言容器类的方法时，传入的this.object不是容器类的实例，容器类的方法不支持bind。
 
 **可能原因**
 
@@ -525,11 +524,11 @@ An ArrayBuffer cannot be set as both a transfer list and a clone list.
 
 The lock does not exist.
 
-**描述**
+**错误描述**
 
 请求的锁不存在。
 
-**可能的原因**
+**可能原因**
 
 某个异步锁函数使用了一个不正确的锁名称作为参数。
 
@@ -543,11 +542,11 @@ The lock does not exist.
 
 Timeout exceeded.
 
-**描述**
+**错误描述**
 
 [lockAsync](arkts-apis-arkts-utils-locks.md#lockasync)函数在指定时间内无法获取锁。
 
-**可能的原因**
+**可能原因**
 
 某处存在死锁。
 

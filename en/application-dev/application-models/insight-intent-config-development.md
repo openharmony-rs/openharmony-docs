@@ -34,7 +34,7 @@ You can create intents in a visualized manner using DevEco Studio. The procedure
 2. Choose the intent vertical domain, the file name for the InsightIntent framework entry code, and the intent configuration, which includes the intent name and the bound application component.
 3. When you have finished, click **Finish**.
 
-    An **insight_intent.json** file is generated in **module > src > main > resource > base > profile**. You can view the current InsightIntent framework configuration details in this file.
+    An **insight_intent.json** file is generated in **module > src > main > resources > base > profile**. You can view the current InsightIntent framework configuration details in this file.
 
     ```json
     {

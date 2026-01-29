@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于播放视频文件并控制其播放状态的组件。 
 
@@ -63,13 +63,13 @@ Video(value: VideoOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 说明           |
-| -------------------- | -------------- |
-| Speed_Forward_0_75_X | 0.75倍速播放。 |
-| Speed_Forward_1_00_X | 1倍速播放。    |
-| Speed_Forward_1_25_X | 1.25倍速播放。 |
-| Speed_Forward_1_75_X | 1.75倍速播放。 |
-| Speed_Forward_2_00_X | 2倍速播放。    |
+| 名称                  | 值         | 说明           |
+| -------------------- | ---------- | -------------- |
+| Speed_Forward_0_75_X | 0.75 | 0.75倍速播放。 |
+| Speed_Forward_1_00_X | 1 | 1倍速播放。 |
+| Speed_Forward_1_25_X | 1.25 | 1.25倍速播放。 |
+| Speed_Forward_1_75_X | 1.75 | 1.75倍速播放。 |
+| Speed_Forward_2_00_X | 2 | 2倍速播放。 |
 
 ## 属性
 
@@ -175,6 +175,10 @@ enableAnalyzer(enable: boolean)
 使能后，视频播放暂停时自动进入分析状态，开始分析当前画面帧，视频继续播放后自动退出分析状态。
 不能和[overlay](ts-universal-attributes-overlay.md)属性同时使用，两者同时设置时[overlay](ts-universal-attributes-overlay.md)中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -195,6 +199,10 @@ enableAnalyzer(enable: boolean)
 analyzerConfig(config: ImageAnalyzerConfig)
 
 设置AI分析识别类型，包括主体识别、文字识别和对象查找等功能，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -281,6 +289,10 @@ onFinish(event:&nbsp;VoidCallback)
 onError(event: VoidCallback | ErrorCallback)
 
 播放失败时触发该事件，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -4,11 +4,11 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **OffscreenCanvas** component is used to draw custom graphics.
 
-When the [Canvas](ts-components-canvas-canvas.md) component or [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) is used, rendering, animation, and user interaction usually occur on the main thread of the application. Calculations related to canvas animation and rendering may affect application performance. **OffscreenCanvas** allows for rendering off the screen. This means that some tasks can be run in a separate thread to reduce the load on the main thread.
+When the [Canvas](ts-components-canvas-canvas.md) component or CanvasRenderingContext2D object is used, rendering, animation, and user interaction usually occur on the main thread of the application. Calculations related to canvas animation and rendering may affect application performance. **OffscreenCanvas** allows for rendering off the screen. This means that some tasks can be run in a separate thread to reduce the load on the main thread.
 
 > **NOTE**
 >
@@ -386,4 +386,3 @@ workerPort.onmessage = (e: MessageEvents) => {
 ```
 
 ![offscreenCanvasPostMessage](figures/offscreen_canvas_postMessage.png)
-<!--no_check-->

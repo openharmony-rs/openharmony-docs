@@ -95,7 +95,7 @@ idl_service_ext_impl.ts实现如下：
 
 ```ts
 import IdlServiceExtStub from './idl_service_ext_stub';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import type { insertDataToMapCallback } from './i_idl_service_ext';
 import type { processDataCallback } from './i_idl_service_ext';
 
@@ -180,7 +180,7 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
 
 4. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册ServiceExtensionAbility，type标签需要设置为“service”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -220,11 +220,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -244,11 +244,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -268,11 +268,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -291,11 +291,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -315,11 +315,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -334,11 +334,11 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -403,11 +403,11 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
   struct Page_ServiceExtensionAbility {
     build() {
       Column() {
-        //...
+        // ...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ...
             }
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -421,11 +421,11 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
               hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
             })
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
   }
   ```
@@ -446,11 +446,11 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
   struct Page_ServiceExtensionAbility {
     build() {
       Column() {
-        //...
+        // ...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ...
             }
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -466,11 +466,11 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
               });
             })
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
   }
   ```
@@ -541,7 +541,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       data.writeInt(99);
       // 开发者可发送data到目标端应用进行相应操作
       // @param code 表示客户端发送的服务请求代码。
-      // @param data 表示客户端发送的{@link MessageSequence}对象。
+      // @param data 表示客户端发送的MessageSequence对象。
       // @param reply 表示远程服务发送的响应消息对象。
       // @param options 指示操作是同步的还是异步的。
       // @return 如果操作成功返回{@code true}； 否则返回 {@code false}。
@@ -565,7 +565,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
     }
   };
-  //...
+  // ...
   ```
 
 ## 服务端对客户端身份校验
@@ -607,7 +607,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       }).catch((err: BusinessError) => {
         hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
       });
-      //...
+      // ...
     };
   
     insertDataToMap(key: string, val: number, callback: InsertDataToMapCallback): void {

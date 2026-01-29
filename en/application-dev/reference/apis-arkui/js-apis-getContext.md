@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @HelloCrease-->
 
-The **getContext** API enables you to obtain the context of the ability (either [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) or [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)) on the current page.
+To obtain the current Ability's Context within a page, call the **getContext** API to obtain the [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) or [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md) associated with the current page.
 
 > **NOTE**
 > - This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12) in [UIContext](arkts-apis-uicontext-uicontext.md) instead.

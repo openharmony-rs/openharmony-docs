@@ -26,7 +26,7 @@ Provides methods for creating, destroying, reading, and writing the text box con
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | Represents the text box configuration information.  |
+| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) | InputMethod_TextConfig | Text box configuration. |
 
 ### Function
 

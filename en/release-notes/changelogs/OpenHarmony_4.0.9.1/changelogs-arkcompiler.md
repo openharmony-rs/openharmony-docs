@@ -14,7 +14,7 @@ The ts2abc related components are removed from the SDK.
 
 **Adaptation Guide**
 1. If you are using DevEco Studio for application development, the removal of the ts2abc compiler has no influence.
-2. If you are writing scripts to use the ts2abc compiler, you'll need switch to the es2abc compiler. For details about how to use the es2abc compiler and its comparison with the ts2abc compiler, see [Usage Guidelines](https://gitee.com/openharmony/arkcompiler_ets_frontend/blob/master/README.md#usage-guidelines). Assume that **a.js** is the target .js file for compilation. For ABC file generation, which is the most frequently encountered scenario, the compilation commands are as follows:
+2. If you are writing scripts to use the ts2abc compiler, you'll need switch to the es2abc compiler. For details about how to use the es2abc compiler and its comparison with the ts2abc compiler, see [Usage Guidelines](https://gitcode.com/openharmony/arkcompiler_ets_frontend/blob/master/README.md#usage-guidelines). Assume that **a.js** is the target .js file for compilation. For ABC file generation, which is the most frequently encountered scenario, the compilation commands are as follows:
     - Compilation in script mode
         1. es2abc: es2abc a.js --output a.abc
         2. ts2abc: node --expose-gc pathToIndex/index.js a.js --output a.abc

@@ -101,7 +101,7 @@ ResultSet is empty or pointer index is out of bounds.
 
 **可能原因**
 
-结果集为空或结果集指定行号超出位置范围[0, m - 1]，m = resultsetV9.rowCount。
+结果集为空或结果集指定行号超出位置范围[0, m - 1]，m = ResultSet.rowCount。
 
 **处理步骤**
 
@@ -120,8 +120,8 @@ ResultSet is empty or column index is out of bounds.
 **可能原因**
 
 1. 结果集为空。
-2. 结果集当前行号超出范围[0, m - 1]，m = resultsetV9.rowCount。
-3. 当前列号超出范围[0, n - 1]，n = resultsetV9.columnCount。
+2. 结果集当前行号超出范围[0, m - 1]，m = ResultSet.rowCount。
+3. 当前列号超出范围[0, n - 1]，n = ResultSet.columnCount。
 4. 当前列数据类型接口不支持。
 
 **处理步骤**
@@ -334,7 +334,7 @@ SQLite数据库文件已锁定。
 
 **可能原因**
 
-1. 同一应用两个进程，例如UIability和datashareability同时打开了同一个数据库，进行增删改操作，或者不同应用的同一个group组内的进程通过group组打开同一个数据库，进行增删改操作。
+1. 同一应用两个进程，例如UIAbility和DataShareExtensionAbility同时打开了同一个数据库，进行增删改操作，或者不同应用的同一个group组内的进程通过group组打开同一个数据库，进行增删改操作。
 2. 参见SQLITE_BUSY的相关错误场景。
 
 **处理步骤**

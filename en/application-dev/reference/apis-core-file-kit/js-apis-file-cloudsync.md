@@ -168,7 +168,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
-Unregisters all listeners for the device-cloud sync progress.
+Removes the specified callback from the device-cloud sync progress.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -206,7 +206,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 start(): Promise&lt;void&gt;
 
-Starts device-cloud sync of a file in the Drive Kit. This API uses a promise to return the result.
+Starts device-cloud sync of a file. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -251,7 +251,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
-Starts device-cloud sync of a file in the Drive Kit. This API uses an asynchronous callback to return the result.
+Starts device-cloud sync of a file. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -292,7 +292,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 stop(): Promise&lt;void&gt;
 
-Stops device-cloud sync of the file in the Drive Kit. This API uses a promise to return the result.
+Stops device-cloud sync of a file. This API uses a promise to return the result.
 
 Calling **stop** will stop the sync process. To resume the sync, call [start](#start12).
 
@@ -330,7 +330,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 stop(callback: AsyncCallback&lt;void&gt;): void
 
-Stops device-cloud sync of the file in the Drive Kit. This API uses an asynchronous callback to return the result.
+Stops device-cloud sync of a file. This API uses an asynchronous callback to return the result.
 
 Calling **stop** will stop the sync process. To resume the sync, call [start](#start12).
 
@@ -563,7 +563,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
-Unregisters a listener for the download progress of a file from the Drive Kit.
+Removes the specified callback from the device-cloud file cache progress.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -606,7 +606,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): void
 
-Unregisters a listener enabled by [on](#on20) for the batch download of a file from the Drive Kit.
+Removes the listener added via the [on](#on20) API for file batch downloads.
 
 **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

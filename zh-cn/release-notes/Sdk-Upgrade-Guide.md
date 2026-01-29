@@ -55,7 +55,7 @@ IDE下载地址：[IDE集成开发环境 (openharmony.cn)](https://docs.openharm
 
 Suap工具获取：IDE插件市场搜索 OpenHarmony SDK Upgrade Assistant
 
-Suap工具使用指导：[SDK Upgrade Assistant-使用指导](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/tools/openharmony_sdk_upgrade_assistant.md)
+Suap工具使用指导：[SDK Upgrade Assistant-使用指导](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/tools/openharmony_sdk_upgrade_assistant.md)
 
 ### 测试
 

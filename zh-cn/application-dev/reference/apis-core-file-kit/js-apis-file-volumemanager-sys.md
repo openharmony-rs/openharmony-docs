@@ -52,7 +52,7 @@ getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
     // do something with volumes, which is an array
   }).catch((error: BusinessError) => {
@@ -93,7 +93,7 @@ getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   volumeManager.getAllVolumes((error: BusinessError, volumes: Array<volumeManager.Volume>) => {
     // do something
   });
@@ -142,7 +142,7 @@ mount(volumeId: string): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.mount(volumeId).then(() => {
     // do something
@@ -189,7 +189,7 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.mount(volumeId, (error: BusinessError) => {
     // do something
@@ -239,7 +239,7 @@ unmount(volumeId: string): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.unmount(volumeId).then(() => {
     // do something
@@ -286,7 +286,7 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.unmount(volumeId, (error: BusinessError) => {
     // do something
@@ -333,7 +333,7 @@ getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid).then((volume: volumeManager.Volume) => {
     console.info("getVolumeByUuid successfully:" + JSON.stringify(volume));
@@ -377,7 +377,7 @@ getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid, (error: BusinessError, volume: volumeManager.Volume) => {
     // do something    
@@ -424,7 +424,7 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId).then((volume: volumeManager.Volume) => {
     console.info("getVolumeById successfully:" + JSON.stringify(volume));
@@ -468,7 +468,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId, (error: BusinessError, volume: volumeManager.Volume) => {
     // do something    
@@ -518,7 +518,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description).then(() => {
@@ -566,7 +566,7 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description, (error: BusinessError) => {
@@ -617,7 +617,7 @@ format(volumeId: string, fsType: string): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType).then(() => {
@@ -665,7 +665,7 @@ format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): v
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType, (error: BusinessError) => {
@@ -714,7 +714,7 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let diskId: string = "";
   let type: number = 0;
   volumeManager.partition(diskId, type).then(() => {
@@ -760,7 +760,7 @@ partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): vo
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let diskId: string = "";
   let type: number = 0;
   volumeManager.partition(diskId, type, (error: BusinessError) => {

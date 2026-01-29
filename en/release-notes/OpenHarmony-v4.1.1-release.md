@@ -26,7 +26,7 @@ OpenHarmony 4.1.1 Release provides enhanced system stability over OpenHarmony 4.
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -35,7 +35,7 @@ OpenHarmony 4.1.1 Release provides enhanced system stability over OpenHarmony 4.
 
 4. Run the following commands to install the **repo** tool:
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -49,7 +49,7 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 Obtain the source code from the version tag, which is the same as that released with the version.
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.1.1-Release --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.1.1-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -60,7 +60,7 @@ Use the **repo** tool to download the source code over HTTPS.
 
 Obtain the source code from the version tag, which is the same as that released with the version.
 ```
-repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.1.1-Release --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.1.1-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```

@@ -125,7 +125,7 @@ The distributed file system provides applications the capability for accessing f
    }
    ```
 
-3. Disconnect the link for device B.
+4. Disconnect the link for device B.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';

@@ -4,7 +4,7 @@
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 绘制组件用于在页面绘制图形，Shape组件是绘制组件的父组件，父组件中会描述所有绘制组件均支持的通用属性。具体用法请参考[Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md)。
@@ -189,6 +189,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 ## 自定义样式
 
+> **说明：**
+>
+> 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+
 绘制组件支持通过各种属性更改组件样式。
 
 - 通过[fill](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill)可以设置组件填充区域颜色。
@@ -305,165 +309,173 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[mesh](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8)设置网格效果，实现图像局部扭曲。
 
-```ts
-import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-import { drawing } from '@kit.ArkGraphics2D';
+  > **说明：**
+  >
+  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
 
-let offCanvas: OffscreenCanvas = new OffscreenCanvas(150, 150);
-let ctx = offCanvas.getContext("2d")
+  ```ts
+  import { FrameNode, NodeController, RenderNode } from '@kit.ArkUI';
+  import { image } from '@kit.ImageKit';
+  import { drawing } from '@kit.ArkGraphics2D';
 
-class DrawingRenderNode extends RenderNode {
-  verts_: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
+  let offCanvas: OffscreenCanvas = new OffscreenCanvas(150, 150);
+  let ctx = offCanvas.getContext("2d")
 
-  setVerts(verts: Array<number>): void {
-    this.verts_ = verts
-  }
+  class DrawingRenderNode extends RenderNode {
+    verts_: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
 
-  async draw(context: DrawContext) {
-    const canvas = context.canvas;
-    let pixelMap = ctx.getPixelMap(0, 0, 150, 150)
-    const brush = new drawing.Brush(); // 只支持brush，使用pen没有绘制效果。
-    canvas.attachBrush(brush);
-    let verts: Array<number> = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
-    ; // 18
-    canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, null, 0);
-    canvas.detachBrush();
-  }
-}
-
-const renderNode = new DrawingRenderNode();
-renderNode.frame = {
-  x: 0,
-  y: 0,
-  width: 150,
-  height: 150
-};
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.rootNode = new FrameNode(uiContext);
-
-    const rootRenderNode = this.rootNode.getRenderNode();
-    if (rootRenderNode !== null) {
-      rootRenderNode.appendChild(renderNode);
+    setVerts(verts: Array<number>): void {
+      this.verts_ = verts
     }
-    return this.rootNode;
-  }
-}
 
-@Entry
-@Component
-struct Index {
-  private myNodeController: MyNodeController = new MyNodeController();
-  @State showShape: boolean = false;
-  @State pixelMap: image.PixelMap | undefined = undefined
-  @State shapeWidth: number = 150
-  @State strokeWidth: number = 1
-  @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
-
-  aboutToAppear(): void {
-    // "common/image/tree.png"需要替换为开发者所需的图像资源文件
-    let img: ImageBitmap = new ImageBitmap("common/image/tree.png")
-    ctx.drawImage(img, 0, 0, 100, 100)
-    this.pixelMap = ctx.getPixelMap(0, 0, 150, 150)
+    async draw(context: DrawContext) {
+      const canvas = context.canvas;
+      let pixelMap = ctx.getPixelMap(0, 0, 150, 150)
+      const brush = new drawing.Brush(); // 只支持brush，使用pen没有绘制效果。
+      canvas.attachBrush(brush);
+      let verts: Array<number> = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
+      ; // 18
+      canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, null, 0);
+      canvas.detachBrush();
+    }
   }
 
-  build() {
-    Column() {
-      Image(this.pixelMap)
-        .backgroundColor(Color.Red)
-        .width(150)
-        .height(150)
-        .onClick(() => {
-          // "common/image/foreground.png"需要替换为开发者所需的图像资源文件
-          let img: ImageBitmap = new ImageBitmap("common/image/foreground.png")
-          ctx.drawImage(img, 0, 0, 100, 100)
-          this.pixelMap = ctx.getPixelMap(1, 1, 150, 150)
-          this.myNodeController.rebuild()
-          this.strokeWidth += 1
-        })
+  const renderNode = new DrawingRenderNode();
+  renderNode.frame = {
+    x: 0,
+    y: 0,
+    width: 150,
+    height: 150
+  };
 
-      NodeContainer(this.myNodeController)
-        .width(150)
-        .height(150)
-        .backgroundColor(Color.Grey)
-        .onClick(() => {
-          this.meshArray = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360, 0]
-        })
-      Button("change mesh")
-        .margin(5)
-        .onClick(() => {
-          this.meshArray = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
-        })
-      Button("Show Shape")
-        .margin(5)
-        .onClick(() => {
-          this.showShape = !this.showShape
-        })
+  class MyNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
 
-      if (this.showShape) {
-        Shape(this.pixelMap) {
-          Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new FrameNode(uiContext);
+
+      const rootRenderNode = this.rootNode.getRenderNode();
+      if (rootRenderNode !== null) {
+        rootRenderNode.appendChild(renderNode);
+      }
+      return this.rootNode;
+    }
+  }
+
+  @Entry
+  @Component
+  struct Index {
+    private myNodeController: MyNodeController = new MyNodeController();
+    @State showShape: boolean = false;
+    @State pixelMap: image.PixelMap | undefined = undefined
+    @State shapeWidth: number = 150
+    @State strokeWidth: number = 1
+    @State meshArray: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360]
+
+    aboutToAppear(): void {
+      // "common/image/tree.png"需要替换为开发者所需的图像资源文件
+      let img: ImageBitmap = new ImageBitmap("common/image/tree.png")
+      ctx.drawImage(img, 0, 0, 100, 100)
+      this.pixelMap = ctx.getPixelMap(0, 0, 150, 150)
+    }
+
+    build() {
+      Column() {
+        Image(this.pixelMap)
+          .backgroundColor(Color.Red)
+          .width(150)
+          .height(150)
+          .onClick(() => {
+            // "common/image/foreground.png"需要替换为开发者所需的图像资源文件
+            let img: ImageBitmap = new ImageBitmap("common/image/foreground.png")
+            ctx.drawImage(img, 0, 0, 100, 100)
+            this.pixelMap = ctx.getPixelMap(1, 1, 150, 150)
+            this.myNodeController.rebuild()
+            this.strokeWidth += 1
+          })
+
+        NodeContainer(this.myNodeController)
+          .width(150)
+          .height(150)
+          .backgroundColor(Color.Grey)
+          .onClick(() => {
+            this.meshArray = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360, 0]
+          })
+        Button("change mesh")
+          .margin(5)
+          .onClick(() => {
+            this.meshArray = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
+          })
+        Button("Show Shape")
+          .margin(5)
+          .onClick(() => {
+            this.showShape = !this.showShape
+          })
+
+        if (this.showShape) {
+          Shape(this.pixelMap) {
+            Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+          }
+          .fillOpacity(0.2)
+          .backgroundColor(Color.Grey)
+          .width(this.shapeWidth)
+          .height(150)
+          .mesh(this.meshArray, 2, 2)
+          .fill(0x317AF7)
+          .stroke(0xEE8443)
+          .strokeWidth(this.strokeWidth)
+          .strokeLineJoin(LineJoinStyle.Miter)
+          .strokeMiterLimit(5)
+
+          Shape(this.pixelMap) {
+            Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+          }
+          .fillOpacity(0.2)
+          .backgroundColor(Color.Grey)
+          .width(this.shapeWidth)
+          .height(150)
+          .fill(0x317AF7)
+          .stroke(0xEE8443)
+          .strokeWidth(this.strokeWidth)
+          .strokeLineJoin(LineJoinStyle.Miter)
+          .strokeMiterLimit(5)
+          .onDragStart(() => {
+          })
+
+          // mesh只对shape传入pixelMap时生效，此处不生效
+          Shape() {
+            Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+          }
+          .fillOpacity(0.2)
+          .backgroundColor(Color.Grey)
+          .width(this.shapeWidth)
+          .height(150)
+          .mesh(this.meshArray, 2, 2)
+          .fill(0x317AF7)
+          .stroke(0xEE8443)
+          .strokeWidth(this.strokeWidth)
+          .strokeLineJoin(LineJoinStyle.Miter)
+          .strokeMiterLimit(5)
+          .onClick(() => {
+            this.pixelMap = undefined;
+          })
         }
-        .fillOpacity(0.2)
-        .backgroundColor(Color.Grey)
-        .width(this.shapeWidth)
-        .height(150)
-        .mesh(this.meshArray, 2, 2)
-        .fill(0x317AF7)
-        .stroke(0xEE8443)
-        .strokeWidth(this.strokeWidth)
-        .strokeLineJoin(LineJoinStyle.Miter)
-        .strokeMiterLimit(5)
-
-        Shape(this.pixelMap) {
-          Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
-        }
-        .fillOpacity(0.2)
-        .backgroundColor(Color.Grey)
-        .width(this.shapeWidth)
-        .height(150)
-        .fill(0x317AF7)
-        .stroke(0xEE8443)
-        .strokeWidth(this.strokeWidth)
-        .strokeLineJoin(LineJoinStyle.Miter)
-        .strokeMiterLimit(5)
-        .onDragStart(() => {
-        })
-
-        // mesh只对shape传入pixelMap时生效，此处不生效
-        Shape() {
-          Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
-        }
-        .fillOpacity(0.2)
-        .backgroundColor(Color.Grey)
-        .width(this.shapeWidth)
-        .height(150)
-        .mesh(this.meshArray, 2, 2)
-        .fill(0x317AF7)
-        .stroke(0xEE8443)
-        .strokeWidth(this.strokeWidth)
-        .strokeLineJoin(LineJoinStyle.Miter)
-        .strokeMiterLimit(5)
-        .onClick(() => {
-          this.pixelMap = undefined;
-        })
       }
     }
   }
-}
 
-```
-![ShapeMeshDemo](figures/ShapeMeshDemo.png)
+  ```
+  ![ShapeMeshDemo](figures/ShapeMeshDemo.png)
 
 ## 场景示例
 
 ### 绘制封闭路径
 
   在Shape的(-80, -5)点绘制一个封闭路径，填充颜色0x317AF7，线条宽度3，边框颜色红色，拐角样式锐角（默认值）。
+
+  > **说明：**
+  >
+  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
 
   ```ts
   @Entry
@@ -490,6 +502,10 @@ struct Index {
 ### 绘制圆和圆环
 
   绘制一个直径为150的圆，和一个直径为150、线条为红色虚线的圆环（宽高设置不一致时以短边为直径）。
+
+  > **说明：**
+  >
+  > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。
 
   ```ts
   @Entry

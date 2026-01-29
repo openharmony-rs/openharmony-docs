@@ -1,4 +1,10 @@
 # ExceptionPrompt
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The exception prompt component is used to show an error message when an error arises.
@@ -6,10 +12,9 @@ The exception prompt component is used to show an error message when an error ar
 
 > **NOTE**
 >
-> This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This component is not supported on wearables.
-
+> - If the **ExceptionPrompt** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ExceptionPrompt** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ExceptionPrompt** component.
 
 ## Modules to Import
 
@@ -22,10 +27,6 @@ import { ExceptionPrompt, PromptOptions, MarginType } from '@kit.ArkUI';
 
 Not supported
 
-## Attributes
-
-The [universal attributes](ts-component-general-attributes.md) are not supported.
-
 ## ExceptionPrompt
 
 ExceptionPrompt({ options: PromptOptions, onTipClick?: ()=>void, onActionTextClick?: ()=>void })
@@ -35,6 +36,8 @@ ExceptionPrompt({ options: PromptOptions, onTipClick?: ()=>void, onActionTextCli
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
@@ -51,15 +54,17 @@ Defines the exception prompt options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description                                                                                                                                                                                                                                                                                            |
-| -------- | -------- | -------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| icon | [ResourceStr](ts-types.md#resourcestr) | No| Icon style of the exception prompt.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                         |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Symbol icon style of the exception prompt, which has higher priority than **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                          |
-| tip | [ResourceStr](ts-types.md#resourcestr) | No| Text content of the exception prompt.<br>By default, the following text resources are provided:<br>1. **ohos_network_not_connected**: displayed when no Internet connection.<br>2. **ohos_network_connected_unstable**: displayed when the Internet connection is unstable.<br>3. **ohos_unstable_connect_server**: displayed when the server fails to be connected.<br>4. **ohos_custom_network_tips_left**: displayed when an Internet connection is available but the location fails to be obtained.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| marginType | [MarginType](#margintype) | Yes| Margin type of the exception prompt.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                |
-| actionText | [ResourceStr](ts-types.md#resourcestr) | No| Text of the icon on the right of the exception prompt.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                         |
-| marginTop | [Dimension](ts-types.md#dimension10) | Yes| Top margin of the exception prompt.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                             |
-| isShown | boolean | No| Whether the exception prompt is displayed.<br>**true**: The exception prompt is displayed.<br>**false**: The exception prompt is hidden.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type                                                                              | Read-Only| Optional| Description                                                                                                                                                                                                                                                                                                                                                                     |
+| -------- |----------------------------------------------------------------------------------|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| icon | [ResourceStr](ts-types.md#resourcestr)                                           | No| Yes| Icon style of the exception prompt.<br>If this parameter is not set or is set to **undefined**, the icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                   |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon style of the exception prompt, which has higher priority than **icon**.<br>If this parameter is not set or is set to **undefined**, the symbol icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                          |
+| tip | [ResourceStr](ts-types.md#resourcestr)                                           | No| Yes| Text content of the exception prompt.<br>By default, the following text resources are provided:<br>1. **ohos_network_not_connected**: displayed when no Internet connection.<br>2. **ohos_network_connected_unstable**: displayed when the Internet connection is unstable.<br>3. **ohos_unstable_connect_server**: displayed when the server fails to be connected.<br>4. **ohos_custom_network_tips_left**: displayed when an Internet connection is available but the location fails to be obtained.<br>If this parameter is not set or is set to **undefined**, the text content is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| marginType | [MarginType](#margintype)                                                        | No| No| Margin type of the exception prompt.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                    |
+| actionText | [ResourceStr](ts-types.md#resourcestr)                                           | No| Yes| Text of the icon on the right of the exception prompt.<br>If this parameter is not set or is set to **undefined**, the text is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                    |
+| marginTop | [Dimension](ts-types.md#dimension10)                                             | No| No| Top margin of the exception prompt.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                 |
+| isShown | boolean                                                                          | No| Yes| Whether the exception prompt is displayed.<br>**true**: The exception prompt is displayed.<br>**false**: The exception prompt is hidden.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                     |
 
 ## MarginType
 
@@ -68,6 +73,8 @@ Defines the margin type.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |

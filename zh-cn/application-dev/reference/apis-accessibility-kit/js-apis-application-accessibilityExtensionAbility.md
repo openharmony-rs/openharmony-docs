@@ -35,9 +35,9 @@ AccessibilityExtensionAbility基于ExtensionAbility框架，提供辅助功能�
 
 辅助事件信息。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
-
 ### 属性
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称      | 类型              | 只读             | 可选                      | 说明                       |
 | --------- |----------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------| ------------------------------------------------------------ |
@@ -219,7 +219,7 @@ type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' | 'r
 
 手势事件类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型            | 说明                  |
 |------------- | ------------------- |
@@ -269,7 +269,7 @@ type PageUpdateType = 'pageContentUpdate' | 'pageStateUpdate'
 
 页面刷新类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型                | 说明            |
 | ----------------- | ---------------- |
@@ -282,7 +282,7 @@ type TouchGuideType = 'touchBegin' | 'touchEnd'
 
 触摸浏览事件类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型                | 说明                  |
 | ---------- | ------------------- |

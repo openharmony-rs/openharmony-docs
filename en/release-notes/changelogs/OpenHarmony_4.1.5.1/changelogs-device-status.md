@@ -46,4 +46,4 @@ OpenHarmony SDK 4.1.5.1
 
 **Adaptation Guide**
 
-You are advised to use [@ohos.cooperate](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-devicestatus-cooperate.md#cooperateprepare).
+You are advised to use [@ohos.cooperate](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-devicestatus-cooperate.md#cooperateprepare).

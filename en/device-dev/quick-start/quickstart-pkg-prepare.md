@@ -8,7 +8,7 @@ Set up the Windows and Ubuntu development environments that meet the [Windows Re
 
 > ![icon-note.gif](public_sys-resources/icon-note.gif) **NOTE**
 >
-> OpenHarmony also provides the [Docker environment](https://gitee.com/openharmony/docs/blob/master/en/device-dev/get-code/gettools-acquire.md), which can significantly simplify the environment configuration before compilation. You can build your source code in the Docker environment if you are more accustomed to using the command line.
+> OpenHarmony also provides the [Docker environment](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/get-code/gettools-acquire.md), which can significantly simplify the environment configuration before compilation. You can build your source code in the Docker environment if you are more accustomed to using the command line.
 
 
 

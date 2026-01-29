@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 使用DrawingRenderingContext在Canvas组件上进行绘制，绘制对象可以是矩形、文本、图片等。
 
@@ -42,7 +42,7 @@ get size(): Size
 
 | 类型          | 说明                                       |
 | ----------- | ---------------------------------------- |
-| [Size](#size) | DrawingRenderingContext的尺寸信息。 |
+| [Size](#size-1) | DrawingRenderingContext的尺寸信息。 |
 
 ## canvas
 

@@ -40,7 +40,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 
 isDefaultApplication(type: string): Promise\<boolean>
 
-根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用，使用Promise异步回调。
+根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -75,15 +75,15 @@ defaultAppManager.isDefaultApplication(defaultAppManager.ApplicationType.BROWSER
   .then((data) => {
     console.info('Operation successful. IsDefaultApplication ? ' + JSON.stringify(data));
   }).catch((error: BusinessError) => {
-    console.error('Operation failed. Cause: ' + JSON.stringify(error));
-  });
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+});
 ```
 
 ## defaultAppManager.isDefaultApplication
 
 isDefaultApplication(type: string, callback: AsyncCallback\<boolean>): void
 
-根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型判断当前应用是否是该类型的默认应用。使用callback异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -155,7 +155,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 try {
   let data = defaultAppManager.isDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER)
   console.info('Operation successful. IsDefaultApplicationSync ? ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
-};
+}
 ```

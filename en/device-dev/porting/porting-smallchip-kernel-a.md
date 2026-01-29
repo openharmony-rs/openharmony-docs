@@ -8,7 +8,7 @@ LiteOS Cortex-A supports the ARMv7-a instruction set architecture. If you are po
 
 ### Directory Specifications
 
-For details about the LiteOS Cortex-A directory specifications, see  [LiteOS Cortex-A Overview](https://gitee.com/openharmony/kernel_liteos_a).
+For details about the LiteOS Cortex-A directory specifications, see  [LiteOS Cortex-A Overview](https://gitcode.com/openharmony/kernel_liteos_a).
 
 ## Adaptation Process
 

@@ -99,7 +99,7 @@ Creates an **OH_NativeImage** instance to be associated with the specified OpenG
 | Name| Description|
 | -- | -- |
 | uint32_t textureId | OpenGL ES texture ID.|
-| uint32_t textureTarget | OpenGL ES texture target.|
+| uint32_t textureTarget | OpenGL ES texture target. The value can be **GL_TEXTURE_2D** or **GL_TEXTURE_EXTERNAL_OES**. For details, see [How do I choose between the texture types GL_TEXTURE_2D and GL_TEXTURE_EXTERNAL_OES?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-arkgraphics-2d-12).|
 
 **Returns**
 

@@ -25,7 +25,7 @@
 
 在自定义列表组件中一次性加载全部数据，可参考[组件堆叠场景](https://gitcode.com/harmonyos-cases/cases/tree/master/CommonAppDevelopment/feature/componentstack)中的具体实现。
 
-```
+```typescript
 // CommonAppDevelopment/feature/componentstack/src/main/ets/view/ProductList.ets
 @Component
 export struct ProductList {
@@ -43,7 +43,6 @@ export struct ProductList {
         }
       }, (item: ProductDataModel) => item.id.toString())
     }
-    ...
   }
 }
 ```
@@ -58,7 +57,7 @@ export struct ProductList {
 
 在aboutToAppear()接口中添加DisplaySync的帧回调，并将数据拆分进行加载。
 
-```
+```typescript
 @Component
 export struct ProductList {
   private productData: ProductDataSource = new ProductDataSource();
@@ -146,20 +145,19 @@ export struct ProductList {
 @Entry
 @Component
 struct Direct {
-  ...
+ 
   // 初始化日历中一年的数据
   initCalenderData() {
-    ...
+    // ...
   }
 
   aboutToAppear() {
-	...
+	// ...
     this.initCalenderData();
   }
 
   build() {
     Column() {
-      ...
       List() {
         LazyForEach(this.contentData, (monthItem: Month) => {
           // 每个月的日期
@@ -174,14 +172,12 @@ struct Direct {
           }
         })
       }
-      ...
   }
 }
 @Reusable
 @Component
 struct ItemView {
   @State monthItem: Month = { month: '', num: 0, days: [], lunarDays: [] };
-  ...
 
   aboutToReuse(params: Record<string, Object>): void {
     hiTraceMeter.startTrace("reuse_" + (params.monthItem as Month).month, 1);
@@ -191,13 +187,11 @@ struct ItemView {
 
   build() {
     Flex({ wrap: FlexWrap.Wrap }) {
-      ...
       // 日期信息
       ForEach(this.monthItem.days, (day: number, index: number) => {
-        ...
+        // ...
       }, (index: number): string => index.toString())
     }
-    ...
   }
 }
 ```
@@ -214,7 +208,7 @@ struct ItemView {
 
 ![image-20240507183126622](figures/highly_loaded_component_render_2.png)
 
-将其中一部分继续放大后可以得到图5。选中Actual Timeline（render_service）标签中的146272后，可以通过箭头看到它所关联到的位置是Actual Timeline（example.display）标签中的209136和209137，即RenderService层出现的异常情况是由应用层中前面两帧里面的操作引起的。结合代码和箭头2的标签可以看到，在209135中调用了aboutToReuse接口，此时系统开始了组件复用的绘制操作。通过代码可以看到，在aboutToReuse接口将一个月的所有数据全部放入了当前被复用的组件中，并更新了所有的用于显示日期的Text组件中的数据（箭头3，diffIndexArray.lenght：35，表示有35个不同的元素），这就导致209136需要计算35个子组件的尺寸（箭头1），从而引起146272的绘制时间延长。在列表数据量较少时，其实并不会引起掉帧现象，因为每次延长帧的时间都很短，对帧率的影响较小，但是在列表数据较多时，就会因为延长帧过多，发生掉帧现象。
+将其中一部分继续放大后可以得到图5。选中Actual Timeline（render_service）标签中的146272后，可以通过箭头看到它所关联到的位置是Actual Timeline（example.display）标签中的209136和209137，即RenderService层出现的异常情况是由应用层中前面两帧里面的操作引起的。结合代码和箭头2的标签可以看到，在209135中调用了aboutToReuse接口，此时系统开始了组件复用的绘制操作。通过代码可以看到，在aboutToReuse接口将一个月的所有数据全部放入了当前被复用的组件中，并更新了所有的用于显示日期的Text组件中的数据（箭头3，diffIndexArray.length：35，表示有35个不同的元素），这就导致209136需要计算35个子组件的尺寸（箭头1），从而引起146272的绘制时间延长。在列表数据量较少时，其实并不会引起掉帧现象，因为每次延长帧的时间都很短，对帧率的影响较小，但是在列表数据较多时，就会因为延长帧过多，发生掉帧现象。
 
 图5 详细耗时
 
@@ -230,7 +224,6 @@ struct ItemView {
 @Reusable
 @Component
 struct ItemView {
-  ...
   aboutToAppear(): void {
     // 创建DisplaySync对象
     this.displaySync = displaySync.create();
@@ -244,22 +237,20 @@ struct ItemView {
     this.displaySync.setExpectedFrameRateRange(range);
     // 设置帧回调监听
     this.displaySync.on("frame", () => {
-      ...
+      // ...
     });
     // 开启监听帧回调
-    this.displaySync.start();
-    ...  
+    this.displaySync.start(); 
   }
-  ...
 }
 ```
 
 然后，在监听中添加更新数据的代码。这里将每个月的数据更新拆分开来，第一步用来更新月份数据和计算总的执行步骤，最后一步将计数数据初始化，其余需要执行步骤的多少根据每次加载数据量会有所改变。
 
 ```ts
-...
+
 private temp: Month[] = [];
-...
+
 this.displaySync.on("frame", () => {
   // 数组中有数据时才开始执行
   if (this.temp.length > 0) {
@@ -294,7 +285,7 @@ this.displaySync.on("frame", () => {
     }
   }
 });
-...
+
 ```
 
 最后，在aboutToReuse接口中将数据放入数组中，用于帧回调中开始执行数据更新。

@@ -10,7 +10,7 @@
 
 An address sanitizer error refers to an invalid memory access that causes application exceptions or crashes.
 
-You can subscribe to address out-of-bounds events through the HiAppEvent API. For details, see the following documents. Currently, ArkTS and C/C++ APIs are provided. You can select the APIs as required.
+You can subscribe to address sanitizer events using the ArkTs and C/C++ APIs provided by HiAppEvent. For details, see the following documents:
 
 - [Subscribing to Address Sanitizer Events (ArkTS)](hiappevent-watcher-address-sanitizer-events-arkts.md)
 
@@ -46,8 +46,8 @@ For details, see [Address Sanitizer Detection](address-sanitizer-guidelines.md).
 | GWP-ASAN | Error triggered by GWP-ASan.|
 | UBSAN | Error triggered by UBSan.|
 | TSAN | Error triggered by TSan.|
-| FDSAN | From API version 20, errors triggered by [fdsan](../napi/fdsan.md) can be subscribed to.|
-| stack tag-mismatch | HWASan detected that the stack tag does not match, which may be because the stack is used after returning, the stack is used beyond the range, or the stack is out of bounds.|
+| FDSAN | Error triggered by [fdsan](../napi/fdsan.md). This type is supported since API version 20.|
+| stack tag-mismatch | Stack tag mismatch detected by HWASan, possibly due to stack use-after-return, out-of-scope access, or out-of-bounds access.|
 | alloc-dealloc-mismatch | The memory allocation and release modes do not match.|
 | allocation-size-too-big | The heap memory is too large.|
 | calloc-overflow | **calloc()** fails to allocate memory.|

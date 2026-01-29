@@ -50,6 +50,7 @@ target_link_libraries(entry PUBLIC
 
 ```ts
 import { Context } from '@kit.AbilityKit';
+import testNapi from 'libentry.so';
 
 @Entry
 @Component
@@ -62,7 +63,7 @@ struct Index {
                     console.error('get fileUri or context failed');
                     return;
                 }
-                getContext(ctx);                                 // Pass the context to the C++ side.
+                testNapi.SetContext(ctx);                                 // Pass the context to the C++ side.
             });
     }
 }
@@ -70,20 +71,20 @@ struct Index {
 
 ```c++
 // Send the print task to the printer through system.
-static void* context;
-static char* currentJobId;
+static void* g_context;
+static char* g_currentJobId;
 
 // Initialize the print service.
 Print_ErrorCode ret = OH_Print_Init();
 
-static napi_value getContext(napi_env env, napi_callback_info info)
+static napi_value SetContext(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value argv[1] = {nullptr};
     // Assume that napi_get_cb_info is returned properly.
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     // Save the context for future use.
-    napi_status ret = napi_unwrap(env, argv[0], &context);
+    napi_status ret = napi_unwrap(env, argv[0], &g_context);
     return nullptr;
 }
 
@@ -95,7 +96,7 @@ static void StartLayoutWriteCb(const char *jobId,
                                 Print_WriteResultCallback writeCallback)
 {
     // Cache the unique task ID.
-    currentJobId = jobId;
+    g_currentJobId = jobId;
     // Implement WriteFile() to obtain the print parameters before and after modification, render the file to be printed, and write data using a fd, for example, color mode or page number.
     uint32_t retCode = WriteFile(fd, oldAttrs, newAttrs);
     // Notify the system that the file has been written.
@@ -112,7 +113,7 @@ static void JobStateChangedCb(const char *jobId, uint32_t state)
 // Call the print API to display the print preview page.
 char printJobName[] = "fileName";
 Print_PrintDocCallback printDocCallback = { StartLayoutWriteCb, JobStateChangedCb };
-Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback, context);
+Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback, g_context);
 
 // Release resources when the print service is no longer used.
 OH_Print_Release()

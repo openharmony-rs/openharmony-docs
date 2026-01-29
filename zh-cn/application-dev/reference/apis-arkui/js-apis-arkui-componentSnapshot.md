@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供获取组件截图的能力，包括已加载的组件的截图和没有加载的组件的截图。组件截图只能够截取组件大小的区域，如果组件的绘制超出了它的区域，或子组件的绘制超出了父组件的区域，这些在组件区域外绘制的内容不会在截图中呈现。兄弟节点堆叠在组件区域内，截图不会显示兄弟组件。
 
@@ -38,11 +38,11 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptio
 
 > **说明：** 
 >
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)实例，再通过此实例调用替代方法[get](arkts-apis-uicontext-componentsnapshot.md#get12)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[get](arkts-apis-uicontext-componentsnapshot.md#get12)替代。get需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
 >
-> 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
-> 
-> 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
+> - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
+>
+> - 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -84,8 +84,14 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           // 建议使用this.getUIContext().getComponentSnapshot().get()
@@ -95,7 +101,7 @@ struct SnapshotExample {
               return;
             }
             this.pixmap = pixmap
-          }, {scale : 2, waitUntilRenderFinished : true})
+          }, { scale: 2, waitUntilRenderFinished: true })
         }).margin(10)
     }
     .width('100%')
@@ -115,7 +121,7 @@ get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
 > **说明：**
 >
-> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)实例，再通过此实例调用替代方法[get](arkts-apis-uicontext-componentsnapshot.md#get12-1)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[get](arkts-apis-uicontext-componentsnapshot.md#get12-1)替代。get需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
 > 
@@ -166,15 +172,21 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           // 建议使用this.getUIContext().getComponentSnapshot().get()
-          componentSnapshot.get("root", {scale : 2, waitUntilRenderFinished : true})
+          componentSnapshot.get("root", { scale: 2, waitUntilRenderFinished: true })
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
-            }).catch((err:Error) => {
+            }).catch((err: Error) => {
             console.error("error: " + err)
           })
         }).margin(10)
@@ -196,7 +208,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 
 > **说明：** 
 >
-> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)实例，再通过此实例调用替代方法[createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12)替代。createFromBuilder需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
 >
@@ -269,9 +281,11 @@ struct OffscreenSnapshotExample {
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
           // 建议使用this.getUIContext().getComponentSnapshot().createFromBuilder()
-          componentSnapshot.createFromBuilder(()=>{this.RandomBuilder()},
+          componentSnapshot.createFromBuilder(() => {
+            this.RandomBuilder()
+          },
             (error: Error, pixmap: image.PixelMap) => {
-              if(error){
+              if (error) {
                 console.error("error: " + JSON.stringify(error))
                 return;
               }
@@ -280,8 +294,9 @@ struct OffscreenSnapshotExample {
               // ....
               // 获取组件大小和位置
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' + info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
-            }, 320, true, {scale : 2, waitUntilRenderFinished : true})
+              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
+              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+            }, 320, true, { scale: 2, waitUntilRenderFinished: true })
         })
       Image(this.pixmap)
         .margin(10)
@@ -303,15 +318,15 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 
 > **说明：** 
 >
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)实例，再通过此实例调用替代方法[createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1)。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[createFromBuilder](arkts-apis-uicontext-componentsnapshot.md#createfrombuilder12-1)替代。createFromBuilder需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
 >
-> 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
+> - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取当前UI上下文关联的[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象。
 > 
-> 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟。
+> - 由于需要等待组件构建、渲染成功，离屏截图的回调有500ms以内的延迟。
 >
-> builder中的组件不支持设置动画相关的属性，如[transition](arkui-ts/ts-transition-animation-component.md)。
+> - builder中的组件不支持设置动画相关的属性，如[transition](arkui-ts/ts-transition-animation-component.md)。
 >
-> 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
+> - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -380,15 +395,18 @@ struct OffscreenSnapshotExample {
       Button("click to generate offscreen UI snapshot")
         .onClick(() => {
           // 建议使用this.getUIContext().getComponentSnapshot().createFromBuilder()
-          componentSnapshot.createFromBuilder(()=>{this.RandomBuilder()}, 320, true, {scale : 2, waitUntilRenderFinished : true})
+          componentSnapshot.createFromBuilder(() => {
+            this.RandomBuilder()
+          }, 320, true, { scale: 2, waitUntilRenderFinished: true })
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
               // 保存pixmap到文件中
               // ....
               // 获取组件大小和位置
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' + info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
-            }).catch((err:Error) => {
+              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
+              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+            }).catch((err: Error) => {
             console.error("error: " + err)
           })
         })
@@ -460,13 +478,19 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.img')).autoResize(true).width(200).height(200).margin(5).id("root")
+        Image($r('app.media.img'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
+
       Button("click to generate UI snapshot")
         .onClick(() => {
           try {
-          // 建议使用this.getUIContext().getComponentSnapshot().getSync()
-            let pixelmap = componentSnapshot.getSync("root", {scale : 2, waitUntilRenderFinished : true})
+            // 建议使用this.getUIContext().getComponentSnapshot().getSync()
+            let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true })
             this.pixmap = pixelmap
           } catch (error) {
             console.error("getSync errorCode: " + error.code + " message: " + error.message)
@@ -545,14 +569,16 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 ```ts
 import { image } from '@kit.ImageKit';
+
 @Entry
 @Component
 struct SnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined
+
   build() {
     Column() {
       Row() {
-        Column(){
+        Column() {
           TextClock()
           Button("Button ABCDE").type(ButtonType.Normal)
           Row() {
@@ -562,6 +588,7 @@ struct SnapshotExample {
             Checkbox()
             Text("×")
           }.align(Alignment.Start)
+
           TextInput()
         }
         .align(Alignment.Start)
@@ -573,11 +600,21 @@ struct SnapshotExample {
         .borderColor(Color.Green)
 
       }
+
       Button("get capture")
-      .onClick(() => {
+        .onClick(() => {
           try {
             let pixelmap = this.getUIContext().getComponentSnapshot().getSync("component1",
-              {scale : 2, waitUntilRenderFinished : true,region: {start:20,top:20, end:200,bottom:240}})
+              {
+                scale: 2,
+                waitUntilRenderFinished: true,
+                region: {
+                  start: 20,
+                  top: 20,
+                  end: 200,
+                  bottom: 240
+                }
+              })
             this.pixmap = pixelmap
           } catch (error) {
             console.error("getSync errorCode: " + error.code + " message: " + error.message)

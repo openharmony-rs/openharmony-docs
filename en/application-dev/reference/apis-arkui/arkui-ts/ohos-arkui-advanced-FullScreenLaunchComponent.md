@@ -4,7 +4,7 @@
 <!--Owner: @dutie123-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **FullScreenLaunchComponent** is a component designed for launching atomic services in full screen. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
 
@@ -152,6 +152,7 @@ import { window } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
+@Entry
 @Component
 struct Index {
   private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
@@ -195,7 +196,7 @@ struct Index {
   }
 
   testSetSystemBarEnable() {
-    let window: window.Window | undefined = this.storage.get("window");
+    let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setWindowSystemBarEnable(["status"])
     p?.then(() => {
       console.info('setWindowSystemBarEnable success');
@@ -205,7 +206,7 @@ struct Index {
   }
 
   testSetGestureBackEnable() {
-    let window: window.Window | undefined = this.storage.get("window");
+    let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setGestureBackEnabled(true)
     p?.then(() => {
       console.info('setGestureBackEnabled success');
@@ -215,7 +216,7 @@ struct Index {
   }
 
   testSetImmersiveEnable() {
-    let window: window.Window | undefined = this.storage.get("window");
+    let window: window.Window | undefined = this.storage?.get("window");
     try {
       window?.setImmersiveModeEnabledState(true)
     } catch (err) {
@@ -224,7 +225,7 @@ struct Index {
   }
 
   testSetSpecificSystemBarEnabled() {
-    let window: window.Window | undefined = this.storage.get("window");
+    let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setSpecificSystemBarEnabled('navigationIndicator', false, false)
     p?.then(() => {
       console.info('setSpecificSystemBarEnabled success');

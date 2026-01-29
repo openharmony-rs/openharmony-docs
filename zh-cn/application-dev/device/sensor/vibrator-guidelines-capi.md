@@ -42,12 +42,12 @@
 
 2. 控制设备上的振动器，需要申请权限ohos.permission.VIBRATE。具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-   ```json
+   ``` JSON5
    "requestPermissions": [
-         {
-           "name": "ohos.permission.VIBRATE",
-         },
-       ]
+     {
+       "name": "ohos.permission.VIBRATE"
+     }
+   ]
    ```
 
 3. CMakeLists.txt文件中引入动态依赖库。
@@ -102,7 +102,7 @@
    }
    ```
 
-8. 播放自定义振动序列。
+7. 播放自定义振动序列。
 
    ```c
    static napi_value VibrationCustom_Test(napi_env env, napi_callback_info info)
@@ -140,7 +140,7 @@
        return result;
    }
    ```
-   
+
 8. 在types/libentry路径下index.d.ts文件中引入Napi接口。
 
    ```c

@@ -136,7 +136,7 @@ Obtains the **WebHttpBodyStream** instance in this resource request.
 
 | Type    | Description           |
 | ------ | ------------- |
-| [WebHttpBodyStream](./arkts-apis-webview-WebSchemeHandler.md) \| null | **WebHttpBodyStream** instance in the resource request. If there is no **WebHttpBodyStream** instance, **null** is returned.|
+| [WebHttpBodyStream](./arkts-apis-webview-WebHttpBodyStream.md) \| null | **WebHttpBodyStream** instance in the resource request. If there is no **WebHttpBodyStream** instance, **null** is returned.|
 
 **Example**
 

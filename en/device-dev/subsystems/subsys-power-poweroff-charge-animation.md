@@ -9,7 +9,7 @@ By default, the OpenHarmony provides the animation that displays information suc
 ### Constraints
 
  
-The configuration path for battery level customization is subject to the [configuration policy](https://gitee.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
+The configuration path for battery level customization is subject to the [configuration policy](https://gitcode.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
 
 ## How to Develop
 
@@ -25,11 +25,11 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate power-off charging animation customization.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate power-off charging animation customization.
 
-1. Create the `animation` folder in the product directory [/vendor/hihope/rk3568](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568).
+1. Create the `animation` folder in the product directory [/vendor/hihope/rk3568](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568).
 
-2. Create a target folder by referring to the [default folder of power-off charging animation configuration](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/charger/sa_profile), and install it in `//vendor/hihope/rk3568/animation`. The content is as follows:
+2. Create a target folder by referring to the [default folder of power-off charging animation configuration](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/charger/sa_profile), and install it in `//vendor/hihope/rk3568/animation`. The content is as follows:
 
     ```text
     profile
@@ -37,7 +37,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ├── animation.json
     ```
 
-3. Create the `resources` folder by referring to [default folder of power-off charging animation image resources](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/charger/resources) to store the images that form the animation, and install the folder in `//vendor/hihope/rk3568/animation`. The content is as follows:
+3. Create the `resources` folder by referring to [default folder of power-off charging animation image resources](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/charger/resources) to store the images that form the animation, and install the folder in `//vendor/hihope/rk3568/animation`. The content is as follows:
 
     ```text
     animation
@@ -45,7 +45,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ├── profile
     ```
 
-4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/charger/resources/BUILD.gn) in the default folder of power-off charging animation configuration, and put it to the `//vendor/hihope/rk3568/animation/resource` directory. The configuration is as follows:
+4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/charger/resources/BUILD.gn) in the default folder of power-off charging animation configuration, and put it to the `//vendor/hihope/rk3568/animation/resource` directory. The configuration is as follows:
     ```gn
     import("//build/ohos.gni")
 
@@ -57,7 +57,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-5. Write the custom **animation.json** file by referring to the [animation.json](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/animation.json) file in the default folder of power-off charging animation image resources.  The configuration is as follows:
+5. Write the custom **animation.json** file by referring to the [animation.json](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/animation.json) file in the default folder of power-off charging animation image resources.  The configuration is as follows:
 
     ```json
     {
@@ -151,7 +151,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
 
 
 
-6. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/BUILD.gn) file in the default folder of power-off charging animation configuration to pack the `animation_config.json` file to the `//vendor/etc/charger` directory. The configuration is as follows:
+6. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/BUILD.gn) file in the default folder of power-off charging animation configuration to pack the `animation_config.json` file to the `//vendor/etc/charger` directory. The configuration is as follows:
 
     ```gn
     import("//build/ohos.gni")
@@ -164,7 +164,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-7. Add the build target to `module_list` in [ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
+7. Add the build target to `module_list` in [ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
 
     ```json
     {
@@ -319,7 +319,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
 
 
 ## Reference
-During development, you can refer to the [default power-off animation configuration](https://gitee.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/animation.json), as shown below:
+During development, you can refer to the [default power-off animation configuration](https://gitcode.com/openharmony/powermgr_battery_manager/blob/master/charger/sa_profile/animation.json), as shown below:
 
  
 ```json

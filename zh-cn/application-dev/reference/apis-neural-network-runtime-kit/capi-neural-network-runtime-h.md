@@ -16,7 +16,7 @@ Neural Network Runtime的接口目前均不支持多线程并发调用。
 
 **库：** libneural_network_runtime.so
 
-**系统能力：** SystemCapability.Ai.NeuralNetworkRuntime
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
 **起始版本：** 9
 

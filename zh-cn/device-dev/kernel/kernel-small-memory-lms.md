@@ -34,7 +34,7 @@ LMS使用影子内存映射标记系统内存的状态，一共可标记为三�
 
 ### 内核态
 
-OpenHarmony LiteOS-A内核的LMS模块提供下面几种功能，接口详细信息可以查看[API](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_lms.h)参考。
+OpenHarmony LiteOS-A内核的LMS模块提供下面几种功能，接口详细信息可以查看[API](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_lms.h)参考。
 
   **表1** LMS模块接口说明
 
@@ -259,7 +259,7 @@ str[ 0]=0x 0
 
 ### 用户态开发流程
 
-在待检测的app编译脚本中，添加如下参数即可， 完整示例可参见 [/kernel/liteos_a/apps/lms/BUILD.gn](https://gitee.com/openharmony/kernel_liteos_a/blob/master/apps/lms/BUILD.gn)。
+在待检测的app编译脚本中，添加如下参数即可， 完整示例可参见 [/kernel/liteos_a/apps/lms/BUILD.gn](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/apps/lms/BUILD.gn)。
 
 
 ```

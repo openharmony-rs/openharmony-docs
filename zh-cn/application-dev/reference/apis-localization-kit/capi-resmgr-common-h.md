@@ -43,7 +43,7 @@
 
 ### ResourceManager_ErrorCode
 
-```
+```c
 enum ResourceManager_ErrorCode
 ```
 
@@ -71,7 +71,7 @@ enum ResourceManager_ErrorCode
 
 ### ScreenDensity
 
-```
+```c
 enum ScreenDensity
 ```
 
@@ -92,7 +92,7 @@ enum ScreenDensity
 
 ### ResourceManager_Direction
 
-```
+```c
 enum ResourceManager_Direction
 ```
 
@@ -109,7 +109,7 @@ enum ResourceManager_Direction
 
 ### ResourceManager_ColorMode
 
-```
+```c
 enum ResourceManager_ColorMode
 ```
 
@@ -126,7 +126,7 @@ enum ResourceManager_ColorMode
 
 ### ResourceManager_DeviceType
 
-```
+```c
 enum ResourceManager_DeviceType
 ```
 

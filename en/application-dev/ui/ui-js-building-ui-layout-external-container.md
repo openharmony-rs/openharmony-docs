@@ -4,14 +4,14 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 To assemble the basic elements of a page, you need a container component. The &lt;div&gt;, &lt;list&gt;, and &lt;tabs&gt; components are commonly used for laying out page elements. You can use &lt;div&gt; as the container in a page with simple layout. &lt;div&gt; supports a variety of child components required to build the page.
 
 
 ## &lt;List&gt;
 
-If you use &lt;div&gt; repeatedly to render a complex page, frame freezing may occur. In this case, use the &lt;list&gt; component instead of &lt;div&gt; to lay out list items, which provides a smooth list scrolling. **NOTE** that &lt;list&gt; supports only &lt;list-item&gt; as it child components. The following is an example:
+If you use &lt;div&gt; repeatedly to render a complex page, frame freezing may occur. In this case, use the &lt;list&gt; component instead of &lt;div&gt; to lay out list items, which provides a smooth list scrolling. Note that &lt;list&gt; supports only &lt;list-item&gt; as it child components. The following is an example:
 
 ```html
 <!-- xxx.hml -->

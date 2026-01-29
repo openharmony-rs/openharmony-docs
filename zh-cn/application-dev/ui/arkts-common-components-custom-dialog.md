@@ -1,10 +1,10 @@
-# 基础自定义弹出框 (CustomDialog)(不推荐)
+# 基础自定义弹出框 (CustomDialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件更新等与用户交互响应操作。开发者可以通过CustomDialogController类显示自定义弹出框。具体用法请参考[自定义弹出框](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)。
 
 > **说明：**
@@ -33,7 +33,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    ```ts
    @CustomDialog
    struct CustomDialogExample {
-     controller: CustomDialogController
+     controller?: CustomDialogController
    
      build() {
        Column() {
@@ -43,7 +43,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
      }
    }
    ```
-2. 创建构造器，与装饰器呼应相连。
+2. 创建构造器，与装饰器相互连接。
    
    ```ts
     @Entry
@@ -90,7 +90,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
      }
      confirm: () => void = () => {
      }
-     controller: CustomDialogController;
+     controller?: CustomDialogController;
    
      build() {
        Column() {
@@ -98,14 +98,14 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
          Flex({ justifyContent: FlexAlign.SpaceAround }) {
            Button('cancel')
              .onClick(() => {
-               this.controller.close();
+               this.controller?.close();
                if (this.cancel) {
                  this.cancel();
                }
              }).backgroundColor(0xffffff).fontColor(Color.Black)
            Button('confirm')
              .onClick(() => {
-               this.controller.close();
+               this.controller?.close();
                if (this.confirm) {
                  this.confirm();
                }
@@ -277,7 +277,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 ## 弹出框的动画
 
-弹出框通过定义openAnimation控制弹出框出现动画的持续时间，速度等参数。
+弹出框通过定义openAnimation控制出现动画的持续时间，速度等参数。
 
 ```ts
 @CustomDialog
@@ -369,9 +369,14 @@ struct CustomDialogUser {
     width: '80%',
     height: '100px',
     borderWidth: 1,
-    borderStyle: BorderStyle.Dashed,//使用borderStyle属性，需要和borderWidth属性一起使用
-    borderColor: Color.Blue,//使用borderColor属性，需要和borderWidth属性一起使用
-    shadow: ({ radius: 20, color: Color.Grey, offsetX: 50, offsetY: 0}),
+    borderStyle: BorderStyle.Dashed, //使用borderStyle属性，需要和borderWidth属性一起使用
+    borderColor: Color.Blue, //使用borderColor属性，需要和borderWidth属性一起使用
+    shadow: ({
+      radius: 20,
+      color: Color.Grey,
+      offsetX: 50,
+      offsetY: 0
+    }),
   });
 
   // 在自定义组件即将析构销毁时将dialogController置空
@@ -615,6 +620,7 @@ import { LengthMetrics } from '@kit.ArkUI'
 @CustomDialog
 struct CustomDialogExample {
   controller?: CustomDialogController;
+
   build() {
     Column() {
       Column() {
@@ -631,15 +637,14 @@ struct CustomDialogExample {
 @Component
 struct Index {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-    }),
+    builder: CustomDialogExample({}),
     autoCancel: true,
     gridCount: 4,
     showInSubWindow: true,
     isModal: true,
     customStyle: false,
     cornerRadius: 30,
-    alignment:DialogAlignment.Bottom,
+    alignment: DialogAlignment.Bottom,
     keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
     keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
   })

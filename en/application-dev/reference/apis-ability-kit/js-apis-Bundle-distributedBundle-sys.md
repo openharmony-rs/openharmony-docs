@@ -18,7 +18,7 @@ The distributedBundle module manages distributed bundles.
 
 ## Modules to Import
 
-```
+```ts
 import distributedBundle from '@ohos.distributedBundle';
 ```
 

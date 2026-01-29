@@ -43,6 +43,8 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 201  | Permission denied.  |
+| 202  | Permission denied, non-system app called system api.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -116,6 +118,7 @@ injectKeyEvent(keyEvent: KeyEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
+| 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -452,9 +455,9 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
-| 名称        | 类型   | 必填   | 说明      |
-| --------- | ------ | ---- |  ------- |
-| keyEvent | [KeyEvent](#keyevent) | 是    | 按键注入描述信息。   |
+| 名称        | 类型   | 只读   | 可选   | 说明      |
+| --------- | ------ | ---- | ---- | ------- |
+| keyEvent       | [KeyEvent](#keyevent) | 否    |  否 | 按键注入描述信息。   |
 
 ## MouseEventData<sup>11+</sup>
 

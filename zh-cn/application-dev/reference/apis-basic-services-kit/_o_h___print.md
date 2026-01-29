@@ -184,7 +184,7 @@
 | supportedResolutionsCount | 支持的分辨率个数。   |
 | supportedOrientations | 支持的打印方向列表。   |
 | supportedOrientationsCount | 支持的打印方向个数。   |
-| advancedCapability | 高级能力(JSON格式)。   |
+| advancedCapability | 高级选项(JSON格式)。<br>支持的键值包括：<br>- **isReverse**：bool类型，表示是否逆序打印。<br>- **isCollate**：bool类型，表示是否逐份打印。 |
 
 ### Print_DefaultValue
 

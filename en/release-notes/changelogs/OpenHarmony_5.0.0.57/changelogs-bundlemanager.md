@@ -2,7 +2,7 @@
 
 ## cl.bundlemanager.1 Added Mandatory Property orientationId in AbilityInfo.d.ts
 
-The mandatory property **orientationId** is added to [AbilityInfo.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts).
+The mandatory property **orientationId** is added to [AbilityInfo.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/AbilityInfo.d.ts).
 
 **Access Level**
 Public API

@@ -28,12 +28,12 @@ OpenHarmony 5.0.0.54
 
 **Key API/Component Changes**
 
-Installation command provided by the [bm Tool](https://gitee.com/openharmony/docs/blob/master/en/application-dev/tools/bm-tool.md#installation-command)
+Installation command provided by the [bm Tool](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/tools/bm-tool.md#installation-command)
 
 **Adaptation Guide**
 
 1. Re-sign the application to ensure that either the (https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) or [APP ID](https://developer.huawei.com/consumer/en/doc/app/agc-help-createharmonyapp-0000001945392297) in the application's signature information matches that of the preset application.
-2. Modify the [bundleName](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/app-configuration-file.md) of the application to make it different from that of the preset application.
+2. Modify the [bundleName](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/quick-start/app-configuration-file.md) of the application to make it different from that of the preset application.
 
 ## cl.bundlemanager.2 Command bm uninstall Cannot Directly Uninstall Applications with App Lock
 
@@ -71,4 +71,4 @@ bm uninstall command
 
 **Adaptation Guide**
 
-Before using the **bm uninstall** command to uninstall an application with an app lock, use [deleteUninstallDisposedRule](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis-ability-kit/js-apis-appControl-sys.md#appcontroldeleteuninstalldisposedrule15) to disable the app lock. For a terminal device, you can also disable the app lock on the **Settings > Privacy & security > App lock** screen of the device. Alternatively, enter the password to unlock the app lock when prompted after executing the uninstall command.
+Before using the **bm uninstall** command to uninstall an application with an app lock, use [deleteUninstallDisposedRule](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-ability-kit/js-apis-appControl-sys.md#appcontroldeleteuninstalldisposedrule15) to disable the app lock. For a terminal device, you can also disable the app lock on the **Settings > Privacy & security > App lock** screen of the device. Alternatively, enter the password to unlock the app lock when prompted after executing the uninstall command.

@@ -11,7 +11,7 @@ The **infraredEmitter** module generates IR signals of the specified frequency a
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 15. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 
 ## Modules to Import
@@ -20,7 +20,7 @@ The **infraredEmitter** module generates IR signals of the specified frequency a
 import { infraredEmitter } from '@kit.InputKit';
 ```
 
-## infraredEmitter.transmitInfrared<sup>15+</sup>
+## infraredEmitter.transmitInfrared
 
 transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
@@ -69,7 +69,7 @@ struct Index {
 }
 ```
 
-## infraredEmitter.getInfraredFrequencies<sup>15+</sup>
+## infraredEmitter.getInfraredFrequencies
 
 getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
@@ -83,7 +83,7 @@ Queries the frequency range of IR signals supported by the device.
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency15)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.|
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | Frequency range of IR signals, including multiple groups of maximum and minimum frequencies.|
 
 **Error codes**
 
@@ -117,7 +117,7 @@ struct Index {
 }
 ```
 
-##  InfraredFrequency<sup>15+</sup>
+##  InfraredFrequency
 
 Defines the frequency range of IR signals.
 

@@ -8,7 +8,7 @@
 
 ExtensionContext provides the context environment for an [ExtensionAbility](js-apis-app-ability-extensionAbility.md). It inherits from [Context](js-apis-inner-application-context.md#context).
 
-This module provides APIs for accessing resources of a specific [ExtensionAbility](js-apis-app-ability-extensionAbility.md). An ExtensionAbility can use the context directly provided by ExtensionContext or that extended from ExtensionContext.
+This module provides APIs for accessing resources of a specific [ExtensionAbility](js-apis-app-ability-extensionAbility.md).
 
 > **NOTE**
 >

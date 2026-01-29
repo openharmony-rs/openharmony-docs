@@ -44,6 +44,7 @@ The following example registers the **test()** function with the frontend page. 
           .onClick(() => {
             try {
               this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.refresh();
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
@@ -84,7 +85,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(): void {
-      console.log('Web Component toString');
+      console.info('Web Component toString');
     }
   }
 
@@ -137,7 +138,7 @@ The following example registers the **test()** function with the frontend page. 
 
   > **NOTE**
   >
-  > - You need to call the [refresh()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#refresh) method for the registration to take effect after using the [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) method.
+  > - The registration performed by [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) takes effect after the next loading or reloading.
 
 - The optional parameter permission is a JSON string. The following is an example:
   ```json
@@ -235,7 +236,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -317,7 +318,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: ESObject): void {
-      console.log('Web Component toString' + param["name"]);
+      console.info('Web Component toString' + param["name"]);
     }
   }
 
@@ -391,7 +392,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: String): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -465,7 +466,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -579,7 +580,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: string): void {
-      console.log('Web Component toString' + param);
+      console.info('Web Component toString' + param);
     }
   }
 
@@ -652,7 +653,7 @@ The following example registers the **test()** function with the frontend page. 
     test(): Promise<string> {
       let p: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.log('Execution completed');
+          console.info('Execution completed');
           reject('fail');
         }, 10000);
       });
@@ -660,7 +661,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param: string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 
@@ -732,7 +733,7 @@ The following example registers the **test()** function with the frontend page. 
     }
 
     toString(param:string): void {
-      console.log(" " + param);
+      console.info(" " + param);
     }
   }
 

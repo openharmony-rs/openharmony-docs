@@ -26,15 +26,15 @@ Defines a struct for the types of the key and value in a KV pair.
 
 ### Member Functions
 
-| Name                                                        | Description                                               |
-| ------------------------------------------------------------ | --------------------------------------------------- |
-| [int (*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | Puts a char * value into the **OH_VBucket** object in the given column.          |
-| [int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)](#putint64) | Puts an int64_t value into the **OH_VBucket** object in the given column.        |
-| [int (*putReal)(OH_VBucket *bucket, const char *field, double value)](#putreal) | Puts a double value into the **OH_VBucket** object in the given column.         |
-| [int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)](#putblob) | Puts a const uint8_t * value into the **OH_VBucket** object in the given column.|
-| [int (*putNull)(OH_VBucket *bucket, const char *field)](#putnull) | Puts a null value into the **OH_VBucket** object in the given column.           |
-| [int (*clear)(OH_VBucket *bucket)](#clear)                   | Clears an **OH_VBucket** object.                               |
-| [int (*destroy)(OH_VBucket *bucket)](#destroy)               | Destroys an **OH_VBucket** object and reclaims the memory occupied.       |
+| Name                                                         | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [int (*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | Puts a char* value into the **OH_VBucket** object in the given column. |
+| [int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)](#putint64) | Puts an int64_t value into the **OH_VBucket** object in the given column. |
+| [int (*putReal)(OH_VBucket *bucket, const char *field, double value)](#putreal) | Puts a double value into the **OH_VBucket** object in the given column. |
+| [int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)](#putblob) | Puts a const uint8_t * value into the **OH_VBucket** object in the given column. |
+| [int (*putNull)(OH_VBucket *bucket, const char *field)](#putnull) | Puts a null value into the **OH_VBucket** object in the given column. |
+| [int (*clear)(OH_VBucket *bucket)](#clear)                   | Clears an **OH_VBucket** object.                             |
+| [int (*destroy)(OH_VBucket *bucket)](#destroy)               | Destroys an **OH_VBucket** object and reclaims the memory occupied. |
 
 
 ### Member Function Description

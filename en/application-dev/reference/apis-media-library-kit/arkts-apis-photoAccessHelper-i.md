@@ -4,7 +4,7 @@
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zengyawen-->
 
 > **NOTE**
 >
@@ -165,7 +165,7 @@ Describes the notification information about the change of a media asset.
 | ---- | ------- | ---- |  ---- | ----- |
 | type       | [NotifyChangeType](arkts-apis-photoAccessHelper-e.md#notifychangetype20)  | No| No| Type of the media asset change.|
 | assetChangeDatas | [PhotoAssetChangeData](#photoassetchangedata20)[] \| null | No|  No| Array of changed media assets. If all media assets need to be queried again, **assetChangeDatas** is null. |
-| isForRecheck    | boolean  | No| No| Whether the application should query all media assets again. **true** if the application should query all assets again, **false** otherwise.<br>**NOTE**: In special cases or abnormal notification scenarios, **isForRecheck** will be **true**. In this case, the application should query all assets again. |
+| isForRecheck    | boolean  | No| No| Whether the application should query all media assets again. **true** if the application should query all assets again, **false** otherwise.<br>**NOTE**<br>In scenarios involving bulk asset operations or abnormal notifications, **isForRecheck** will be **true**. In this case, the application should query all assets again. |
 
 ## AlbumChangeInfo<sup>20+</sup>
 
@@ -205,4 +205,4 @@ Describes the notification information about the change of an album.
 | ---- | ------- | ---- |  ---- | ----- |
 | type       | [NotifyChangeType](arkts-apis-photoAccessHelper-e.md#notifychangetype20)  | No| No| Type of the album change.|
 | albumChangeDatas   | [AlbumChangeData](#albumchangedata20)[] \| null | No| No| Array of changed albums. If all albums need to be queried again, **albumChangeDatas** is null. |
-| isForRecheck          | boolean  | No| No| Whether the application should query all albums again. **true** if the application should query all albums again, **false** otherwise.<br>**NOTE**: In special cases or abnormal notification scenarios, **isForRecheck** will be **true**. In this case, the application should query all albums again. |
+| isForRecheck          | boolean  | No| No| Whether the application should query all albums again. **true** if the application should query all albums again, **false** otherwise.<br>**NOTE**<br>In scenarios involving bulk album operations or abnormal notifications, **isForRecheck** will be **true**. In this case, the application should query all albums again. |

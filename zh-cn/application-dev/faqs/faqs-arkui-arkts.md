@@ -35,7 +35,7 @@ ForEach(this.nums,(item) => {
 
 **解决措施**
 
-\@Builder装饰的方法中使用了自定义组件，那么该方法每次被调用时，对应的自定义组件均会重新创建，普通方法中不使用\@builder装饰，无法容纳自定义组件。
+\@Builder装饰的方法中使用了自定义组件，那么该方法每次被调用时，对应的自定义组件均会重新创建，普通方法中不使用\@Builder装饰，无法容纳自定义组件。
 
 **参考链接**
 
@@ -115,7 +115,7 @@ ForEach(this.nums,(item) => {
 
 **解决措施**
 
-子组件使用\@Link接受父组件的值时，需要使用'$'建立变量之间的引用关系。才能实现同步。
+子组件使用\@Link接受父组件的值时，需要使用'$'建立变量之间的引用关系，才能实现同步。
 
 **代码示例**
 
@@ -421,7 +421,7 @@ new Date("2020-11-03");
 new Date("11-02-2021");
 ```
 
-其他格式字符串可使用new Date(year:number,month:number,day?:number,hour?:number,mintue?:number,second?:number,ms?:number)方法来获取Date对象。
+其他格式字符串可使用new Date(year:number,month:number,day?:number,hour?:number,minute?:number,second?:number,ms?:number)方法来获取Date对象。
 
 ```
 // 根据参数创建日期的语法：

@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 显示图标小符号的组件。<!--RP1--><!--RP1End-->
 
@@ -46,6 +46,10 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 设置SymbolGlyph组件颜色。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -65,6 +69,10 @@ fontSize(value: number | string | Resource)
 设置SymbolGlyph组件大小。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
 组件的图标显示大小由fontSize控制，设置width或height后，其他通用属性仅对组件的占位大小生效。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -86,6 +94,10 @@ fontWeight(value: number | FontWeight | string)
 
 sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -103,6 +115,10 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 renderingStrategy(value: SymbolRenderingStrategy)
 
 设置SymbolGlyph组件渲染策略。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -125,6 +141,10 @@ renderingStrategy(value: SymbolRenderingStrategy)
 effectStrategy(value: SymbolEffectStrategy)
 
 设置SymbolGlyph组件动效策略。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -463,7 +483,7 @@ ReplaceSymbolEffect的构造函数，替换动效。
 
 constructor(scope?: EffectScope, replaceType?: ReplaceEffectType)
 
-ReplaceSymbolEffect的构造函数，替换动效。
+ReplaceSymbolEffect的构造函数，替换动效。支持指定具体的替换动效类型。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 

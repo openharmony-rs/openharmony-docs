@@ -53,7 +53,7 @@ onFailure(): void
 
 **示例：**
 
-  ```ts
+```ts
 // Index.ets, 含有账号、密码框等组件的页面
 import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
@@ -84,7 +84,7 @@ struct Index {
       })
   }
 }
-  ```
+```
 
 > **说明：**
 >
@@ -118,7 +118,7 @@ requestAutoSave(context: UIContext, callback?: AutoSaveCallback): void
 
 **示例：**
 
-  ```ts
+```ts
 // EntryAbility.ets
 import { UIAbility, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -155,10 +155,10 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
-  ```
+```
 
-  ```ts
-  // Index.ets
+```ts
+// Index.ets
 import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -197,4 +197,4 @@ struct Index {
     .height('100%')
   }
 }
-  ```
+```

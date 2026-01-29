@@ -7,11 +7,11 @@
 <!--Tester: @guoshengbang-->
 <!--Adviser: @RayShih-->
 
-OS提供了两种打印方式：
+OpenHarmony提供了两种打印方式：
 
-[方式一](#3-方式一通过接口拉起系统打印预览界面下发任务)：应用通过接口拉起系统打印预览界面，传输渲染好的PDF文件进行打印任务下发。该方式适合有打印需求的应用使用系统能力快捷进行文件打印。
+[方式一](#步骤3-通过接口拉起系统打印预览界面下发任务)：应用通过接口拉起系统打印预览界面，传输渲染好的PDF文件进行打印任务下发。此方式适用于需要打印功能但不想自行开发预览界面的应用。
 
-[方式二](#4-方式二通过打印接口自主进行打印设备的发现连接和打印任务的下发)：应用通过打印接口自主发现、连接打印设备并下发任务。该方式适合具有自己的打印预览界面的应用，可以通过接口打开打印设备发现、获取打印设备能力，构建打印预览界面需要的信息。
+[方式二](#步骤4-通过打印接口自主进行打印设备的发现连接和打印任务的下发)：应用通过打印接口自主发现、连接打印设备并下发任务。此方式适合已开发完成打印预览界面的应用，使用接口发现打印设备、获取设备能力，构建预览界面信息。
 
 > **说明：**
 >
@@ -23,7 +23,7 @@ OS提供了两种打印方式：
 
 ## 开发步骤
 
-### 1. 引用头文件
+### 步骤1. 引用头文件
 
 ```c++
 #include <cstdint>
@@ -36,7 +36,7 @@ OS提供了两种打印方式：
 #include "BasicServicesKit/ohprint.h"
 ```
 
-### 2. 在CMake脚本中添加动态链接库
+### 步骤2. 在CMake脚本中添加动态链接库
 
 ```txt
 target_link_libraries(entry PUBLIC
@@ -46,10 +46,11 @@ target_link_libraries(entry PUBLIC
 )
 ```
 
-### 3. 方式一：通过接口拉起系统打印预览界面下发任务
+### 步骤3. 通过接口拉起系统打印预览界面下发任务
 
 ```ts
 import { Context } from '@kit.AbilityKit';
+import testNapi from 'libentry.so';
 
 @Entry
 @Component
@@ -62,7 +63,7 @@ struct Index {
                     console.error('get fileUri or context failed');
                     return;
                 }
-                getContext(ctx);                                 // 传给 C++ 侧
+                testNapi.SetContext(ctx);                                 // 传给 C++ 侧
             });
     }
 }
@@ -70,20 +71,20 @@ struct Index {
 
 ```c++
 // 使用系统打印下发打印任务
-static void* context;
-static char* currentJobId;
+static void* g_context;
+static char* g_currentJobId;
 
 // 初始化打印服务
 Print_ErrorCode ret = OH_Print_Init();
 
-static napi_value getContext(napi_env env, napi_callback_info info)
+static napi_value SetContext(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
     napi_value argv[1] = {nullptr};
     // 假设 napi_get_cb_info 正常返回
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     // 保存 context 于后续使用
-    napi_status ret = napi_unwrap(env, argv[0], &context);
+    napi_status ret = napi_unwrap(env, argv[0], &g_context);
     return nullptr;
 }
 
@@ -95,7 +96,7 @@ static void StartLayoutWriteCb(const char *jobId,
                                 Print_WriteResultCallback writeCallback)
 {
     // 缓存任务Id，任务Id唯一
-    currentJobId = jobId;
+    g_currentJobId = jobId;
     // WriteFile 由开发者实现，获取当前用户修改前后的打印参数，渲染对应的打印文件写入fd。如黑白彩色，指定页码等。
     uint32_t retCode = WriteFile(fd, oldAttrs, newAttrs);
     // 通知打印系统文件写入完成
@@ -112,13 +113,13 @@ static void JobStateChangedCb(const char *jobId, uint32_t state)
 // 调用打印接口以拉起系统打印预览界面。
 char printJobName[] = "fileName";
 Print_PrintDocCallback printDocCallback = { StartLayoutWriteCb, JobStateChangedCb };
-Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback, context);
+Print_ErrorCode ret = OH_Print_StartPrintByNative(printJobName, printDocCallback, g_context);
 
 // 不再使用打印服务时释放资源
 OH_Print_Release()
 ```
 
-### 4. 方式二：通过打印接口自主进行打印设备的发现、连接和打印任务的下发
+### 步骤4. 通过打印接口自主进行打印设备的发现、连接和打印任务的下发
 
 ```c++
 // 初始化打印服务

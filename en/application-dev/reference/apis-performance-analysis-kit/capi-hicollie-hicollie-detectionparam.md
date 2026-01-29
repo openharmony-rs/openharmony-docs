@@ -18,3 +18,5 @@ Defines the parameters of the jank event detection. Note that this struct is sup
 | -- | -- |
 | int sampleStackTriggerTime | Extended parameter for future use.|
 | int reserved | Extended parameter for future use.|
+
+

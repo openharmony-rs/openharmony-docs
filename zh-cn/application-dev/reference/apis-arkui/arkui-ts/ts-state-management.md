@@ -1431,7 +1431,7 @@ static GetShared(): LocalStorage
 
 > **说明：** 
 > 
-> 从API version 10开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[getSharedLocalStorage](../arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1792,7 +1792,7 @@ static PersistProp&lt;T&gt;(key: string, defaultValue: T): void
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[persistProp](#persistprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[persistProp](#persistprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1821,7 +1821,7 @@ static DeleteProp(key: string): void
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[deleteProp](#deleteprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[deleteProp](#deleteprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1845,7 +1845,7 @@ static PersistProps(properties: {key: string; defaultValue: any;}[]): void
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[persistProps](#persistprops10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[persistProps](#persistprops10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1869,7 +1869,7 @@ static Keys(): Array&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[keys](#keys10-1)替代。
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[keys](#keys10-1)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1996,7 +1996,7 @@ static EnvProp&lt;S&gt;(key: string, value: S): boolean
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[envProp](#envprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[envProp](#envprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2029,7 +2029,7 @@ static EnvProps(props: {key: string; defaultValue: any;}[]): void
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[envProps](#envprops10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[envProps](#envprops10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2056,7 +2056,7 @@ static Keys(): Array&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 10开始废弃，推荐使用[keys](#keys10-2)替代。
+> 从API version 7开始支持，从API version 10开始废弃，推荐使用[keys](#keys10-2)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

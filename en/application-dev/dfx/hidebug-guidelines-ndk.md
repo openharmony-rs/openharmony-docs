@@ -362,7 +362,7 @@ Step 1: Create a project
        std::thread([]{
            std::this_thread::sleep_for(std::chrono::seconds(1));
            BacktraceFrames();
-       }).detach (); // Start the second thread to capture the stack of the main thread.
+       }).detach(); // Start the second thread to capture the stack of the main thread.
        TestNativeFrames(1); 
        return nullptr;
    }

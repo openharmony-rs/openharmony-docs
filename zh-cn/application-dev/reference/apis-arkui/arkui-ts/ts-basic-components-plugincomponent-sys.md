@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供外部应用组件嵌入式显示功能，即外部应用提供的UI可在本应用内显示。如需通过跨进程通信实现更新，请参考[@ohos.pluginComponent](../js-apis-plugincomponent.md)。
 
@@ -48,10 +48,10 @@ PluginComponent(options: PluginComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数       | 类型   | 描述                        |
-| ---------- | ------ | --------------------------- |
-| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9类型说明) | 组件模板，用于跟提供方定义的组件绑定。                |
-| data<sup>9+</sup>       | any    | 传给插件组件提供方使用的数据。 |
+| 名称       | 类型   | 只读 |可选 | 说明                        |
+| ---------- | ------ | ------ | ------ |--------------------------- |
+| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9类型说明) | 否 | 否 | 组件模板，用于跟提供方定义的组件绑定。                |
+| data<sup>9+</sup>       | any | 否 | 否  | 传给插件组件提供方使用的数据。 |
 
 ## PluginComponentTemplate<sup>9+</sup>类型说明
 
@@ -59,26 +59,28 @@ PluginComponent(options: PluginComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数       | 类型   | 描述                        |
-| ---------- | ------ | --------------------------- |
-| source     | string | 组件模板名。                |
-| bundleName | string | 提供方Ability的bundleName。 |
+| 名称       | 类型  | 只读 | 可选 | 说明                        |
+| ---------- | ------ | ------ | ------ | --------------------------- |
+| source     | string | 否 | 否 | 组件模板名。                |
+| bundleName | string | 否 | 否 | 提供方Ability的bundleName。 |
 
 ## 属性
 
 必须显式设置组件宽高为非0有效值。
 
-**说明：**
-
-  模板支持两种提供方式：
-* 1.使用绝对路径进行资源提供：source字段填写模板绝对路径，bundleName不需要填写。仅适用于不需要加载资源的单独模板页面，不建议使用。
-* 2.通过应用包进行资源提供：bundleName字段需要填写应用包名；source字段填写相对hap包的模板相对路径，对于多hap场景，通过“相对路径&模块名称”的方式进行hap包的确认。
-
-  例如：{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}
-
-  仅对FA模型支持source字段填写AbilityName、bundleName字段填写应用包名的方式进行资源提供。
-
-  例如：{source: 'plugin', bundleName: 'com.example.provider'}
+> **说明：**
+>
+> 模板支持两种提供方式：
+>
+> 1.使用绝对路径进行资源提供：source字段填写模板绝对路径，bundleName不需要填写。仅适用于不需要加载资源的单独模板页面，不建议使用。
+>
+> 2.通过应用包进行资源提供：bundleName字段需要填写应用包名；source字段填写相对hap包的模板相对路径，对于多hap场景，通过“相对路径&模块名称”的方式进行hap包的确认。
+>
+>  例如：{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}
+>
+>  仅对FA模型支持source字段填写AbilityName、bundleName字段填写应用包名的方式进行资源提供。
+>
+>  例如：{source: 'plugin', bundleName: 'com.example.provider'}
 
 
 ## 事件
@@ -143,10 +145,10 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数       | 类型   | 描述                        |
-| ---------- | ------ | -------------------------- |
-| errcode<sup>9+</sup>    | number | 错误码。                    |
-| msg<sup>9+</sup>        | string | 错误信息。                  |
+| 名称       | 类型  | 只读 | 可选 | 说明                        |
+| ---------- | ------ | ------ | ------ |-------------------------- |
+| errcode<sup>9+</sup>    | number | 否 | 否 |错误码。                    |
+| msg<sup>9+</sup>        | string | 否 | 否 |错误信息。                  |
 
 错误码1为默认错误码，错误信息和处理建议详见下表：
 

@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 UIExtensionComponent用于支持在本页面内嵌入其他应用提供的UI。展示的内容在另外一个进程中运行，本应用并不参与其中的布局和渲染。
 
@@ -416,6 +416,11 @@ struct Second {
   private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params);
   private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params);
 
+  aboutToDisappear(): void {
+    console.info('start do proxy off!');
+    this.proxy?.off('syncReceiverRegister');
+    this.proxy?.off('asyncReceiverRegister');
+  }
 
   build() {
     Row() {
@@ -651,7 +656,9 @@ function func1(data: Record<string, Object>): Record<string, Object> {
 本示例展示了当UIExtensionComponent组件使用方和扩展的Ability同时使用[Scroll](ts-container-scroll.md)容器的场景，通过对UIExtensionComponent设置手势拦截处理，实现当UIExtensionComponent内部滚动时，外部组件不响应滚动。
 
 手势使用方式：
+
 组件内部滚动：手指在组件内部进行滚动操作；
+
 组件外部滚动：拖动外部滚动条进行滚动。
 
 实际运行时需先在设备中安装bundleName为"com.example.newdemo"，abilityName为"UIExtensionProvider"的Ability扩展。

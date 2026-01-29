@@ -8,7 +8,7 @@
 
 ## Overview
 
-JavaScript VM information.
+Defines the JavaScript VM information.
 
 **Since**: 11
 

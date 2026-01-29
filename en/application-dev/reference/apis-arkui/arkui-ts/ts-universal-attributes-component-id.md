@@ -4,7 +4,7 @@
 <!--Owner: @pengzhiwen3-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **id** identifies a component uniquely within an application. With the provided APIs, you can obtain the attributes of or sending events to the component with the specified ID.
 
@@ -55,7 +55,7 @@ This API is used only for test purposes. When this attribute is used in conjunct
 
 | Name  | Type     | Mandatory| Description                      |
 | ------ | -------- | -----|---------------------- |
-| value   | string   | Yes| Unique identifier for the component, with uniqueness guaranteed by the user.<br>Default value: **''**<br>|
+| value   | string   | Yes| Unique ID you assigned to the component.<br>Default value: **''**<br>|
 
 **Return value**
 
@@ -65,7 +65,7 @@ This API is used only for test purposes. When this attribute is used in conjunct
 
 ## Component ID–Based Extended Capabilities
 
-The component ID–based extended capabilities are designed specifically for application testing purposes. The following API examples require debugging within the application project's **ohosTest/ets/test** directory. For detailed implementation guidance, see <!--RP1-->arkXtest User Guide<!--RP1End-->.
+The component ID–based extended capabilities are designed specifically for application testing purposes. The following API examples require debugging within the application project's **ohosTest/ets/test** directory. For detailed implementation guidance, see <!--RP1-->[JsUnit User Guide](../../../../application-dev/application-test/unittest-guidelines.md)<!--RP1End-->.
 
 ### getInspectorByKey<sup>9+</sup>
 
@@ -73,7 +73,7 @@ getInspectorByKey(id: string): string
 
 Obtains all attributes of the component with the specified ID, excluding the information about child components.
 
-This API is used only to test an app. You are advised to call this API after the app is started and the layout is complete. It takes a long time. Therefore, you are advised not to use this function in other scenarios.
+This API is intended for application testing purposes only. It is recommended that you call this API after application startup and layout completion. The API requires significant processing time. Avoid using it in other scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -87,9 +87,9 @@ This API is used only to test an app. You are advised to call this API after the
 
 | Type       | Description            |
 | -------| -------------- |
-| string | JSON string of the component attribute list.<br>**NOTE**<br> The string includes the tag, ID, location (relative to the coordinates in the upper left corner of the window), and other information of the component used for testing. For details about the meaning of each field in the component, see the return value description of [getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12).|
+| string | JSON string of the component attribute list.<br>**NOTE**<br> The string includes the tag, ID, location (relative to the coordinates in the upper left corner of the window), and other information of the component used for testing. For details about each field in the component, see the return value description of [getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12).|
 
-**Example**:
+**Example**
 ```ts
 @Entry
 @Component
@@ -127,7 +127,7 @@ This API is used only for test purposes. It is time consuming and not recommende
 
 | Type    | Description                           |
 | ------ | --------------------------- |
-| Object | JSON object of the component tree and component attribute list. For details about the meaning of each field in the component, see the return value description of [getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12).|
+| Object | JSON object of the component tree and component attribute list. For details about each field in the component, see the return value description of [getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12).|
 
 **Example**
 ```ts
@@ -214,7 +214,7 @@ This API is used only for test purposes. It is time consuming and not recommende
 
 | Name     | Type           | Mandatory | Description                                                        |
 | ----- | ----------- | ---- | ------------------------------------------------------------ |
-| event | [TouchObject](ts-universal-events-touch.md#touchobject) | Yes   | Location where the touch event is triggered. For details about the event parameters, see the description of [TouchObject](ts-universal-events-touch.md#touchobject).|
+| event | [TouchObject](ts-universal-events-touch.md#touchobject) | Yes   | Location where the touch event is triggered. For details about the **event** parameters, see [TouchObject](ts-universal-events-touch.md#touchobject).|
 
 **Return value**
 

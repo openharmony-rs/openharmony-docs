@@ -48,12 +48,12 @@ NFC部分API6到API8部分JS接口不支持抛出错误码，需要删除废弃�
 **适配指导**
 
 查看API开发指南：
-[cardEmulation-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cardEmulation.md)
+[cardEmulation-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cardEmulation.md)
 
-[nfcController-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-nfcController.md)
+[nfcController-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-nfcController.md)
 
-[tag-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-nfcTag.md)
+[tag-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-nfcTag.md)
 
-[TagSession-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-tagSession.md)
+[TagSession-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-tagSession.md)
 ```
 

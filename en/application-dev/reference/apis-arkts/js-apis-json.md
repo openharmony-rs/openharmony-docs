@@ -10,7 +10,7 @@ The JSON module provides a series of APIs for converting JSON text into JSON obj
 
 >**NOTE**
 >
->The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -67,9 +67,9 @@ Describes the parsing options, which can define the mode for processing BigInt.
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory|Description           |
-| ------ | ------ | ---- | --------------- |
-| bigIntMode   | [BigIntMode](#bigintmode) | Yes|Mode for processing BigInt.|
+| Name| Type| Read-Only| Optional|Description           |
+| ------ | ------ | ---- | ---- | --------------- |
+| bigIntMode   | [BigIntMode](#bigintmode) | No| No| Mode for processing BigInt.|
 
 ## JSON.parse
 

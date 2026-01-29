@@ -63,7 +63,7 @@ The **Worker** instance fails to be initialized when the API is called.
 
 **Solution**
 
-1. Check whether the number of **Worker** instances exceeds 8. If yes, destroy idle **Worker** instances.
+1. Check whether the number of workers exceeds 64. If yes, destroy idle workers in a timely manner.
 2. If **WorkerOptions** is set, check the parameter type and validity.
 
 ## 10200004 Worker Instance Is Not Running
@@ -118,8 +118,7 @@ The type of data to transfer does not support serialization or is imported exter
 
 **Solution**
 
-Ensure that the data to transfer is a valid serialized object supported by Worker. For details, see [ArkTS Inter-Thread Communication Overview](../../arkts-utils/interthread-communication-overview.md
-).
+Ensure that the data to transfer is a valid serialized object supported by Worker. For details, see [Overview of ArkTS Inter-Thread Communication](../../arkts-utils/interthread-communication-overview.md).
 
 ## 10200007 Abnormal Worker File Path
 
@@ -133,7 +132,7 @@ The file path is invalid, and the **Worker** instance cannot be loaded.
 
 **Possible Causes**
 
-The worker file path is invalid. As a result, a valid **worker.abc** file cannot be generated during the build.
+The worker file path is invalid.
 
 **Solution**
 

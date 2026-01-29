@@ -138,7 +138,7 @@ setMicMute(mute: boolean): Promise&lt;void&gt;;
 
 **废弃原因**
 
-SDK10时OpenHarmony已全面使用内置焦点模式，见开发指南中的[多音频播放的并发策略](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/media/audio-playback-concurrency.md)
+SDK10时OpenHarmony已全面使用内置焦点模式，见开发指南中的[多音频播放的并发策略](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/media/audio-playback-concurrency.md)
 本接口为历史遗留的外置焦点接口，与内置焦点独立，已经无法起到焦点抢占的作用，因此废弃，避免误导开发者。
 
 **废弃影响**
@@ -159,7 +159,7 @@ off(type: 'interrupt', interrupt: AudioInterrupt, callback?: Callback&lt;Interru
 
 **适配指导**
 
-根据内置焦点模式实现多音频并发策略控制，参考[多音频播放的并发策略](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/media/audio-playback-concurrency.md)
+根据内置焦点模式实现多音频并发策略控制，参考[多音频播放的并发策略](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/media/audio-playback-concurrency.md)
 
 ## c1.multimedia.5 ohos.multimedia.audio AudioRenderer接口write/AudioCapturer接口read废弃
 

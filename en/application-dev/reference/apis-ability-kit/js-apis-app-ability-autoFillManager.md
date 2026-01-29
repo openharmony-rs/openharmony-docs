@@ -53,7 +53,7 @@ Called when auto-save fails.
 
 **Example**
 
-  ```ts
+```ts
 // Index.ets, a page containing components such as the account and password text boxes.
 import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
@@ -84,7 +84,7 @@ struct Index {
       })
   }
 }
-  ```
+```
 
 > **NOTE**
 >
@@ -119,7 +119,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-  ```ts
+```ts
 // EntryAbility.ets
 import { UIAbility, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -156,10 +156,10 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
-  ```
+```
 
-  ```ts
-  // Index.ets
+```ts
+// Index.ets
 import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -198,4 +198,4 @@ struct Index {
     .height('100%')
   }
 }
-  ```
+```

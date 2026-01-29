@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines a native controller API. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM.
+Defines a native controller API. Before calling this API, you are advised to use [ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#macros) to check whether the function struct has the corresponding pointer to avoid crash caused by mismatch between the SDK and the device ROM. The controller APIs must be called on the UI thread through **OH_ArkWeb_GetNativeAPI**.
 
 **Since**: 12
 

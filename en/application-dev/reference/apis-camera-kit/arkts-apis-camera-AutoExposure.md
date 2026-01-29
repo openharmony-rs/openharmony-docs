@@ -4,16 +4,16 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
+
+AutoExposure inherits from [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md).
+
+It provides APIs related to auto exposure.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-AutoExposure inherits from [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md).
-
-It provides APIs related to auto exposure.
 
 ## Modules to Import
 
@@ -39,7 +39,7 @@ Obtains the exposure mode in use.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [ExposureMode](arkts-apis-camera-e.md#exposuremode)    | Exposure mode obtained. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [ExposureMode](arkts-apis-camera-e.md#exposuremode)    | Exposure mode obtained. If the operation fails, undefined is returned and an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is thrown.|
 
 **Error codes**
 

@@ -29,7 +29,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 2. 使用签名工具对[HarmonyAppProvision文件](../../application-dev/security/app-provision-structure.md)重新签名，生成p7b文件。
 3. 使用p7b文件签名HAP。
 
-参考：[应用签名](https://gitee.com/openharmony/developtools_hapsigner#hap%E5%8C%85%E7%AD%BE%E5%90%8D%E5%B7%A5%E5%85%B7 )。
+参考：[应用签名](https://gitcode.com/openharmony/developtools_hapsigner#hap%E5%8C%85%E7%AD%BE%E5%90%8D%E5%B7%A5%E5%85%B7 )。
 
 ### 示例
 
@@ -72,7 +72,7 @@ OpenHarmony提供通用的应用特权和可由设备厂商针对不同设备单
 
 ### 配置方式
 
-按需在[产品配置文件](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568/preinstall-config)中配置。
+按需在[产品配置文件](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568/preinstall-config)中配置。
 
 ### 示例
 

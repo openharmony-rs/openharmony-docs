@@ -32,7 +32,7 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-1. In the target directory, create a target folder by referring to the [default brightness value configuration folder](https://gitee.com/openharmony/powermgr_display_manager/tree/master/service/etc). The content is as follows:
+1. In the target directory, create a target folder by referring to the [default brightness value configuration folder](https://gitcode.com/openharmony/powermgr_display_manager/tree/master/service/etc). The content is as follows:
      
     ```text
     etc
@@ -41,7 +41,7 @@ For details about the requirements on the Linux environment, see [Quick Start](.
     ├── display.para.dac
     ```
 
-2. Write the customized **display.para** file by referring to the [**display.para** file](https://gitee.com/openharmony/powermgr_display_manager/blob/master/service/etc/display.para) in the default brightness range configuration folder. Include the customized brightness thresholds, for example, **max=150**, **default=75**, and **min=50**, into the file:
+2. Write the customized **display.para** file by referring to the [**display.para** file](https://gitcode.com/openharmony/powermgr_display_manager/blob/master/service/etc/display.para) in the default brightness range configuration folder. Include the customized brightness thresholds, for example, **max=150**, **default=75**, and **min=50**, into the file:
 
     ```shell
     # Brightness limits is 0-255.
@@ -50,13 +50,13 @@ For details about the requirements on the Linux environment, see [Quick Start](.
     const.display.brightness.max=150
     ``` 
 
-3. Write the customized **display.para.dac** file by referring to the [**display.para.dac** file](https://gitee.com/openharmony/powermgr_display_manager/blob/master/service/etc/display.para.dac) in the default brightness range configuration folder, so as to grant the permission required to access the customized configuration.
+3. Write the customized **display.para.dac** file by referring to the [**display.para.dac** file](https://gitcode.com/openharmony/powermgr_display_manager/blob/master/service/etc/display.para.dac) in the default brightness range configuration folder, so as to grant the permission required to access the customized configuration.
 
     ```shell
     const.display.brightness.="foundation:foundation:444"
     ``` 
 
-4. Write the customized **BUILD.gn** file by referring to the [**BUILD.gn** file](https://gitee.com/openharmony/powermgr_display_manager/blob/master/service/etc/BUILD.gn) in the default brightness range configuration folder. Then, put the **display.para** and **display.para.dac** files to the **/vendor/etc/param** directory. For example:
+4. Write the customized **BUILD.gn** file by referring to the [**BUILD.gn** file](https://gitcode.com/openharmony/powermgr_display_manager/blob/master/service/etc/BUILD.gn) in the default brightness range configuration folder. Then, put the **display.para** and **display.para.dac** files to the **/vendor/etc/param** directory. For example:
 
     ```shell
     import("//base/powermgr/display_manager/displaymgr.gni")
@@ -87,7 +87,7 @@ For details about the requirements on the Linux environment, see [Quick Start](.
     }
     ```
 
-5. Write the customized **bundle.json** file by referring to the [**bundle.json** file](https://gitee.com/openharmony/powermgr_display_manager/blob/master/bundle.json) in the default brightness range configuration folder, so as to compile the **BUILD.gn** file.
+5. Write the customized **bundle.json** file by referring to the [**bundle.json** file](https://gitcode.com/openharmony/powermgr_display_manager/blob/master/bundle.json) in the default brightness range configuration folder, so as to compile the **BUILD.gn** file.
  
     ```shell
     "service_group": [ "//base/powermgr/display_manager/service/etc:param_files" ]
@@ -177,7 +177,7 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ## Reference
 
-For details about how to write the configuration file during system brightness customization, refer to the [default brightness range configuration file](https://gitee.com/openharmony/powermgr_display_manager/tree/master/service/etc).
+For details about how to write the configuration file during system brightness customization, refer to the [default brightness range configuration file](https://gitcode.com/openharmony/powermgr_display_manager/tree/master/service/etc).
 
 Default configuration:
 

@@ -145,14 +145,14 @@
     EXTERN_C_END
     ```
 
-6. 在types/libentry路径下index.d.ts文件中引入Napi接口。
+7. 在types/libentry路径下index.d.ts文件中引入Napi接口。
     ```c
      export const ohLocationIsEnabled: () => boolean;
      export const ohLocationStartLocating: () => number;
      export const ohLocationStopLocating: () => number;
     ```
 
-7. 删除Index.ets中的已废弃函数。
+8. 删除Index.ets中的已废弃函数。
 
     ```js
     .onClick(() => {

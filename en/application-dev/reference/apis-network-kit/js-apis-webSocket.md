@@ -565,7 +565,7 @@ Disables listening for the **open** events of a WebSocket connection. This API u
 
 | Name  | Type                   | Mandatory| Description                         |
 | -------- | ----------------------- | ---- | ----------------------------- |
-| type     | string                  | Yes  | Type of the event to unsubscribe from. Event type. <br />**open**: event indicating that a WebSocket connection has been opened.|
+| type     | string                  | Yes  | Event type.<br /> **open**: event indicating that a WebSocket connection has been opened.|
 | callback | AsyncCallback\<Object\> | No  | Callback used to return the result.                   |
 
 **Example**
@@ -639,7 +639,7 @@ Disables listening for the **message** events of a WebSocket connection. This AP
 
 | Name  | Type                                               | Mandatory| Description                                        |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------------- |
-| type     | string                                              | Yes  | Type of the event to unsubscribe from. **message**: event indicating that a message has been received from the server.|
+| type     | string                                              | Yes  | Event type.<br /> **message**: event indicating that a message has been received from the server.|
 | callback | AsyncCallback\<string \|ArrayBuffer <sup>8+</sup>\> | No  | Callback used to return the result.                                  |
 
 **Example**
@@ -698,7 +698,7 @@ Disables listening for the **close** events of a WebSocket connection. This API 
 
 | Name  | Type                                           | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ------------------------------ |
-| type     | string                                          | Yes  | Type of the event to unsubscribe from. Event type. <br />**close**: event indicating that a WebSocket connection has been closed.|
+| type     | string                                          | Yes  | Event type.<br /> **close**: event indicating that a WebSocket connection has been closed.|
 | callback | AsyncCallback\<CloseResult\> | No  | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively.|
 
 **Example**
@@ -757,7 +757,7 @@ Disables listening for the **error** events of a WebSocket connection. This API 
 
 | Name  | Type         | Mandatory| Description                           |
 | -------- | ------------- | ---- | ------------------------------- |
-| type     | string        | Yes  | Type of the event to unsubscribe from. **error**: event indicating the WebSocket connection has encountered an error.|
+| type     | string        | Yes  | Event type.<br /> **error**: event indicating the WebSocket connection has encountered an error.|
 | callback | ErrorCallback | No  | Callback used to return the result.                     |
 
 **Example**
@@ -811,7 +811,7 @@ Disables listening for the **dataEnd** events of a WebSocket connection. This AP
 
 | Name  |        Type      | Mandatory|                Description                   |
 | -------- | ---------------- | ---- | -------------------------------------- |
-| type     | string           | Yes  | Type of the event to unsubscribe from. **dataEnd**: event indicating the data receiving over the WebSocket connection has ended.|
+| type     | string           | Yes  | Event type.<br /> **dataEnd**: event indicating the data receiving over the WebSocket connection has ended.|
 | callback | Callback\<void\> | No  | Callback used to return the result.                            |
 
 **Example**
@@ -865,7 +865,7 @@ Unregisters the observer for HTTP Response Header events. This API uses an async
 
 | Name  |        Type      | Mandatory|                Description                   |
 | -------- | ---------------- | ---- | -------------------------------------- |
-| type     | string           | Yes  | Type of the event to unsubscribe from. Event type. The value is **headerReceive**.|
+| type     | string           | Yes  | Event type.<br /> Event type. The value is **headerReceive**.|
 | callback | Callback\<ResponseHeaders\> | No  | Callback used to return the result.                          |
 
 **Example**
@@ -1476,7 +1476,7 @@ Defines the client certificate type.
 | Name| Type  | Read Only|Optional| Description               |
 | ------ | ------ | ---- |---|----------------|
 | certPath   | string  | No  |No|Path of the certificate file.            |
-| keyPath | string | Yes  |No| Path of the certificate key file.         |
+| keyPath | string | No  |No| Path of the certificate key file.         |
 | keyPassword | string | No  |Yes| Password of the certificate key file. The default value is an empty string.|
 
 ## ProxyConfiguration<sup>12+</sup>
@@ -1529,7 +1529,7 @@ Enumerates the response headers sent by the server.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-|  [k:string]  | string \| string[] \| undefined | Yes  | Key-value pairs. The key can be any character string and the value can be any character string, character array, or **undefined**.|
+|  [k:string]  | string \| string[] \| undefined | No  | Key-value pairs. The key can be any character string and the value can be any character string, character array, or **undefined**.|
 
 ## Result Codes for Connection Closing
 

@@ -1,4 +1,10 @@
 # Interaction Event Error Codes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
 > **NOTE**
 >
@@ -21,6 +27,24 @@ The target component does not support the **preventDefault()** functionality.
 **Solution**
 
 N/A
+
+## 106102 Unsupported Component Attributes or Events
+
+**Error Message**
+
+The component does not support specific properties or events.
+
+**Description**
+
+This error code is reported when an attempt is made to use attributes or events that are not supported by the component.
+
+**Possible Causes**
+
+The component does not support the currently set attribute or event.
+
+**Solution**
+
+Use alternative components that support the required attribute or event.
 
 ## 180001 Component Is Not a Scrollable Container
 
@@ -67,6 +91,20 @@ The input event pointer is not a cloned event pointer.
 **Description**
 
 This error code is reported when the input event is not a cloned event.
+
+**Solution**
+
+N/A
+
+## 180004 Abnormal Component Status
+
+**Error Message**
+
+The component status is abnormal.
+
+**Description**
+
+This error code is reported when the component status is abnormal.
 
 **Solution**
 

@@ -155,7 +155,7 @@ try {
 
 get(key: string, def?: string): Promise&lt;string&gt;
 
-获取系统参数Key对应的值。
+获取系统参数Key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -242,7 +242,7 @@ try {
 
 set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 
-设置系统参数Key对应的值。
+设置系统参数Key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
@@ -286,7 +286,7 @@ try {
 
 set(key: string, value: string): Promise&lt;void&gt;
 
-设置系统参数Key对应的值。
+设置系统参数Key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 

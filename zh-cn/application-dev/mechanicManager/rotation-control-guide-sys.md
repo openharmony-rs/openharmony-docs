@@ -87,17 +87,14 @@
 
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
-    if (info.state === mechanicManager.AttachState.ATTACHED) {
-        console.info('Device attached:', info.mechInfo);
-        // 处理设备连接逻辑
-        handleDeviceAttached(info.mechInfo);
-    } else if (info.state === mechanicManager.AttachState.DETACHED) {
-        console.info('Device detached:', info.mechInfo);
-        // 处理设备断开逻辑
-        handleDeviceDetached(info.mechInfo);
-    }
+        if (info.state === mechanicManager.AttachState.ATTACHED) {
+            console.info('Device attached:', info.mechInfo);
+            // 处理设备连接逻辑
+        } else if (info.state === mechanicManager.AttachState.DETACHED) {
+            console.info('Device detached:', info.mechInfo);
+            // 处理设备断开逻辑
+        }
     };
-
     // 注册监听
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
@@ -105,24 +102,37 @@
 4. 处理设备连接与断开的事件。
 
     ```ts
+    const savedMechanicIds: number[] = [];
+    const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
+        if (info.state === mechanicManager.AttachState.ATTACHED) {
+            console.info('Device attached:', info.mechInfo);
+            savedMechanicIds.push(info.mechInfo.mechId);
+            // To do sth.
+        } else if (info.state === mechanicManager.AttachState.DETACHED) {
+            console.info('Device detached:', info.mechInfo);
+            savedMechanicIds.filter(id => id !== info.mechInfo.mechId);
+            // To do sth.
+        }
+    };
+    // 注册监听
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
-
-    function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
-    console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.push(mechInfo.mechId);
-    // To do sth.
-    }
-
-    function handleDeviceDetached(mechInfo:  mechanicManager.MechInfo) {
-    console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.filter(id => id !== mechInfo.mechId);
-    // To do sth.
-    }
     ```
 
 5. 取消监听操作。
 
     ```ts
+    const savedMechanicIds: number[] = [];
+    const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
+        if (info.state === mechanicManager.AttachState.ATTACHED) {
+            console.info('Device attached:', info.mechInfo);
+            savedMechanicIds.push(info.mechInfo.mechId);
+            // To do sth.
+        } else if (info.state === mechanicManager.AttachState.DETACHED) {
+            console.info('Device detached:', info.mechInfo);
+            savedMechanicIds.filter(id => id !== info.mechInfo.mechId);
+            // To do sth.
+        }
+    };
     // 取消特定回调的监听
     mechanicManager.off('attachStateChange', attachStateChangeCallback);
     ```
@@ -135,109 +145,127 @@
 
     ```ts
     try {
-    // 初始化设备功能，例如获取设备状态
-    const devices = mechanicManager.getAttachedMechDevices();
-    console.info('Connected devices:', devices);
-
-    devices.forEach(device => {
-        console.info(`Device ID: ${device.mechId}`);
-        console.info(`Device Name: ${device.mechName}`);
-        console.info(`Device Type: ${device.mechDeviceType}`);
-    });
-
-    // 注册设备连接状态监听
-    const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
-        if (info.state === mechanicManager.AttachState.ATTACHED) {
-        console.info('Device attached:', info.mechInfo);
-        } else if (info.state === mechanicManager.AttachState.DETACHED) {
-        console.info('Device detached:', info.mechInfo);
-        }
-    };
-    mechanicManager.on('attachStateChange', attachStateChangeCallback);
-    // 获取当前角度
-    const currentAngles = mechanicManager.getCurrentAngles(savedMechanicIds[0]);
-    console.info('current angle:', currentAngles);
-
-    // 获取旋转限制
-    const rotationLimits = mechanicManager.getRotationLimits(savedMechanicIds[0]);
-    console.info('Rotation limit:', rotationLimits);
-
-    // 获取最大旋转速度
-    const maxSpeed = mechanicManager.getMaxRotationSpeed(savedMechanicIds[0]);
-    console.info('Maximum rotation speed:', maxSpeed);
-
-    // 获取速度控制最大持续时间
-    const maxTime = mechanicManager.getMaxRotationTime(savedMechanicIds[0]);
-    console.info('Maximum spin time:', maxTime);
+        const savedMechanicIds: number[] = [];
+        // 初始化设备功能，例如获取设备状态
+        const devices = mechanicManager.getAttachedMechDevices();
+        console.info('Connected devices:', devices);
+   
+        devices.forEach(device => {
+            console.info(`Device ID: ${device.mechId}`);
+            console.info(`Device Name: ${device.mechName}`);
+            console.info(`Device Type: ${device.mechDeviceType}`);
+            savedMechanicIds.push(device.mechId);
+        });
+   
+        // 注册设备连接状态监听
+        const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
+            if (info.state === mechanicManager.AttachState.ATTACHED) {
+                console.info('Device attached:', info.mechInfo);
+            } else if (info.state === mechanicManager.AttachState.DETACHED) {
+                console.info('Device detached:', info.mechInfo);
+            }
+        };
+        mechanicManager.on('attachStateChange', attachStateChangeCallback);
+        // 获取当前角度
+        const currentAngles = mechanicManager.getCurrentAngles(savedMechanicIds[0]);
+        console.info('current angle:', currentAngles);
+   
+        // 获取旋转限制
+        const rotationLimits = mechanicManager.getRotationLimits(savedMechanicIds[0]);
+        console.info('Rotation limit:', rotationLimits);
+   
+        // 获取最大旋转速度
+        const maxSpeed = mechanicManager.getMaxRotationSpeed(savedMechanicIds[0]);
+        console.info('Maximum rotation speed:', maxSpeed);
+   
+        // 获取速度控制最大持续时间
+        const maxTime = mechanicManager.getMaxRotationTime(savedMechanicIds[0]);
+        console.info('Maximum spin time:', maxTime);
     } catch (err) {
-    console.error('Failed to query device status:', err);
+        console.error('Failed to query device status:', err);
     }
     ```
 
 2. 执行相对角度的旋转控制，以调整设备的位置。
 
     ```ts
+    const savedMechanicIds: number[] = [];
+    // 初始化设备功能，例如获取设备状态
+    const devices = mechanicManager.getAttachedMechDevices();
+    console.info('Connected devices:', devices);
+
+    devices.forEach(device => {
+        savedMechanicIds.push(device.mechId);
+    });
     //在执行转动控制之前，需要先关闭跟踪拍摄功能。
     mechanicManager.setCameraTrackingEnabled(false);
 
-    async function rotateByRelativeAngles() {
     try {
         const mechId = savedMechanicIds[0]; // 设备ID
 
         // 查询当前角度
         const currentAngles = mechanicManager.getCurrentAngles(mechId);
         if (!currentAngles || currentAngles.yaw === undefined || currentAngles.pitch === undefined ||
-        currentAngles.roll === undefined) {
-        console.error('Failed to retrieve current angles or angles are undefined.');
-        return;
+            currentAngles.roll === undefined) {
+            console.error('Failed to retrieve current angles or angles are undefined.');
+            return;
         }
 
         // 获取旋转限制
         const rotationLimits = mechanicManager.getRotationLimits(mechId);
-        if (!rotationLimits || rotationLimits.negativeYawMax === undefined || rotationLimits.positiveYawMax === undefined ||
-        rotationLimits.negativePitchMax === undefined || rotationLimits.positivePitchMax === undefined ||
-        rotationLimits.negativeRollMax === undefined || rotationLimits.positiveRollMax === undefined) {
-        console.error('Failed to retrieve rotation limits or limits are undefined.');
-        return;
+        if (!rotationLimits || rotationLimits.negativeYawMax === undefined ||
+            rotationLimits.positiveYawMax === undefined ||
+            rotationLimits.negativePitchMax === undefined || rotationLimits.positivePitchMax === undefined ||
+            rotationLimits.negativeRollMax === undefined || rotationLimits.positiveRollMax === undefined) {
+            console.error('Failed to retrieve rotation limits or limits are undefined.');
+            return;
         }
         console.info('Rotation limits:', rotationLimits);
 
         // 定义目标角度并确保类型正确
         const angles: mechanicManager.RotationAngles = {
-        yaw: Math.PI / 4, // 偏航角：45度
-        pitch: Math.PI / 6, // 俯仰角：30度
-        roll: 0            // 横滚角：0度
+            yaw: Math.PI / 4, // 偏航角：45度
+            pitch: Math.PI / 6, // 俯仰角：30度
+            roll: 0            // 横滚角：0度
         };
 
         // 检查目标角度是否超出限位
-        if (
-        currentAngles.yaw + (angles.yaw ?? 0) > rotationLimits.negativeYawMax ||
+        if (currentAngles.yaw + (angles.yaw ?? 0) > rotationLimits.negativeYawMax ||
             currentAngles.yaw + (angles.yaw ?? 0) < rotationLimits.positiveYawMax ||
             currentAngles.pitch + (angles.pitch ?? 0) > rotationLimits.negativePitchMax ||
             currentAngles.pitch + (angles.pitch ?? 0) < rotationLimits.positivePitchMax ||
             currentAngles.roll + (angles.roll ?? 0) > rotationLimits.negativeRollMax ||
             currentAngles.roll + (angles.roll ?? 0) < rotationLimits.positiveRollMax
         ) {
-        console.error('Target angles exceed rotation limits.');
-        return;
+            console.error('Target angles exceed rotation limits.');
+            return;
         }
 
         const duration = 2000; // 旋转持续时间：2秒
 
         // 执行旋转
-        const result = await mechanicManager.rotate(mechId, angles, duration);
-        console.info(`Rotation Result: ${result}`);
+        mechanicManager.rotate(mechId, angles, duration)
+            .then((result) => {
+                console.info(`Rotation Result: ${result}`);
+            });
     } catch (err) {
         console.error('Failed to rotate relative angle:', err);
-    }
     }
     ```
 
 3. 以指定速度持续转动，直至任务完成。
 
     ```ts
-    async function rotateBySpeed() {
     try {
+        const savedMechanicIds: number[] = [];
+        // 初始化设备功能，例如获取设备状态
+        const devices = mechanicManager.getAttachedMechDevices();
+        console.info('Connected devices:', devices);
+
+        devices.forEach(device => {
+            savedMechanicIds.push(device.mechId);
+        });
+
         const mechId = savedMechanicIds[0]; // 假设使用第一个设备
 
         // 获取速度控制最大持续时间
@@ -246,25 +274,27 @@
 
         // 获取最大旋转速度
         const maxSpeed = mechanicManager.getMaxRotationSpeed(mechId);
-        if (!maxSpeed || maxSpeed.yawSpeed === undefined || maxSpeed.pitchSpeed === undefined || maxSpeed.rollSpeed === undefined) {
-        console.error('Failed to retrieve maximum rotation speed or speed values are undefined.');
-        return;
+        if (!maxSpeed || maxSpeed.yawSpeed === undefined || maxSpeed.pitchSpeed === undefined ||
+            maxSpeed.rollSpeed === undefined) {
+            console.error('Failed to retrieve maximum rotation speed or speed values are undefined.');
+            return;
         }
         console.info('Maximum rotation speed:', maxSpeed);
         // 定义旋转速度和持续时间
-        const speed : mechanicManager.RotationSpeed = {
-        yawSpeed: maxSpeed.yawSpeed / 2,    // 偏航速度：最大速度的一半
-        pitchSpeed: maxSpeed.pitchSpeed / 2, // 俯仰速度：最大速度的一半
-        rollSpeed: maxSpeed.rollSpeed / 2    // 横滚速度：最大速度的一半
+        const speed: mechanicManager.RotationSpeed = {
+            yawSpeed: maxSpeed.yawSpeed / 2, // 偏航速度：最大速度的一半
+            pitchSpeed: maxSpeed.pitchSpeed / 2, // 俯仰速度：最大速度的一半
+            rollSpeed: maxSpeed.rollSpeed / 2    // 横滚速度：最大速度的一半
         };
         const duration = Math.min(maxTime, 5000); // 持续时间：最多5秒
 
         // 执行旋转
-        const result = await mechanicManager.rotateBySpeed(mechId, speed, duration);
-        console.info(`Rotation by speed result: ${result}`);
+        mechanicManager.rotateBySpeed(mechId, speed, duration)
+            .then((result) => {
+                console.info(`Rotation Result: ${result}`);
+            });
     } catch (err) {
-        console.error('Failed to rotate by speed:', err);
-    }
+         console.error('Failed to rotate by speed:', err);
     }
     ```
 
@@ -293,14 +323,20 @@
 5. 停止设备运动。
 
     ```ts
-    async function stopDeviceMoving() {
     try {
+        const savedMechanicIds: number[] = [];
+        // 初始化设备功能，例如获取设备状态
+        const devices = mechanicManager.getAttachedMechDevices();
+        console.info('Connected devices:', devices);
+
+        devices.forEach(device => {
+            savedMechanicIds.push(device.mechId);
+        });
         const mechId = savedMechanicIds[0];
-        await mechanicManager.stopMoving(mechId);
+        mechanicManager.stopMoving(mechId);
         console.info('The device has ceased moving.');
     } catch (err) {
         console.error('Failed to stop device movement:', err);
-    }
     }
     ```
 

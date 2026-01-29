@@ -6,16 +6,16 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-You can call [getPageHeight](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight) to obtain the actual height of the current web page content. You can select a proper method based on the site requirements.
+The [getPageHeight](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight) API can obtain the actual height of the current web page content. You can select a proper method as required.
 
-## Use Cases
+## When to Use
 
-The height obtained during web page loading may be inaccurate, especially when the web page is not rendered. This is because the value will be updated after dynamic content is loaded. Web page content may take a long time to load. Nowadays, to optimize the first loading speed, websites use dynamic web page loading technologies. When users see the first frame of a web page, the web page background is still dynamically loading the page, especially the page that contains images and dynamic content.
-It is not recommended that you obtain the height of a non-static web page in the lifecycle callback of web components such as [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend), [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9), [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10) and [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) or web performance indicator callback. You need to obtain the actual height of the current web page content in a specific callback notification on the frontend based on the characteristics of the current web page through JSBridge or delay.
+Since the height is updated after dynamic content is loaded, the value obtained during web page loading may be inaccurate, especially when the web page rendering is not complete. The web page content may take a long time to load. To speed up the initial loading, many websites use dynamic loading. When the first frame of a web page is displayed, remaining images and content continue to load.
+You are advised to not obtain the height of a non-static web page during the [onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend), [onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9), [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10) and [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) callbacks. You need to obtain the actual height of the current web page content through JSBridge or delay in a specific callback notification on the frontend based on the characteristics of the current web page.
 
-## Common Static Display Page
+## Common Static Page
 
-For a common static web page, you can obtain the web page height by calling getPageHeight in the lifecycle callback (such as onPageEnd) and web performance indicator callback.
+For a common static web page, you can obtain the page content height through **getPageHeight()** in the **Web** component lifecycle callback (such as **onPageEnd**) and web performance metric callback.
 
 Code on the application side:
 ```ts
@@ -45,7 +45,7 @@ struct Index {
 
 ## Using JSBridge to Transfer Specific Callbacks for Complex Dynamic Web Pages
 
-Dynamic web pages can transfer specific callbacks through JSBridge to notify the app side of the call.
+The dynamic web page can pass a specific callback through JSBridge to notify the application side to call it.
 
 Code on the application side:
 ```ts
@@ -92,9 +92,9 @@ struct Index {
 
 ### Loading a Common Web Page
 
-The load event can be triggered when all resources of a common web page are loaded.
+For a common web page, you can trigger height measurement via the load event once all resources have finished loading.
 
-Frontend Code
+Frontend code:
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -117,11 +117,11 @@ Frontend Code
 </html>
 ```
 
-### Loading a Web Page with a Large Image
+### Loading a Web Page with Large Images
 
-When a web page contains a large image, the image loading completion callback can be used to trigger the loading.
+When a web page contains large images, use the image loading completion callback to trigger the height measurement.
 
-Replace the image in the frontend code with the actual image.
+Replace the image in the frontend code with a real image.
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -147,11 +147,11 @@ Replace the image in the frontend code with the actual image.
 </html>
 ```
 
-### Web Page with a Large Number of Images
+### Loading a Web Page with a Large Number of Images
 
-This event is triggered when all images on an image-intensive web page are loaded.
+When a web page contains a large number of images, trigger the height measurement after all images are loaded.
 
-Replace the images in the frontend code with actual images.
+Replace the image in the frontend code with a real image.
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -187,9 +187,9 @@ Replace the images in the frontend code with actual images.
 </html>
 ```
 
-## JSBridge Unavailable
+## Scenarios Where JSBridge Cannot Be Used
 
-If JSBridge is unavailable, you can add functions such as setTimeout to delay the obtaining of the height of the current page. The delay time can be determined based on the complexity of the web page.
+If JSBridge is unavailable, you can add functions such as **setTimeout** to delay the height measurement of the current page. You can determine the specific delay time based on the complexity of the web page.
 
 Code on the application side:
 ```ts

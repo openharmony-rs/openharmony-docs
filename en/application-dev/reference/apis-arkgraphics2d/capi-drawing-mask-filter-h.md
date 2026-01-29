@@ -79,7 +79,7 @@ Creates an **OH_Drawing_MaskFilter** object with a blur type.
 | -- | -- |
 | [OH_Drawing_BlurType](#oh_drawing_blurtype) blurType | Blur type.|
 | float sigma | Standard deviation of the Gaussian blur to apply. The value must be greater than 0.|
-| bool respectCTM | Whether the blur's sigma is modified by the CTM. The default value is **true**.|
+| bool respectCTM | Whether the blur standard deviation is modified by the current transformation matrix (CTM). The default value is **true**. **true**: The blur standard deviation is affected by the CTM. **false**: The blur standard deviation is fixed and not affected by the CTM.|
 
 **Returns**
 

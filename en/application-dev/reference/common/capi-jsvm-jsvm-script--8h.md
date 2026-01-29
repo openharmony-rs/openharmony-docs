@@ -8,7 +8,7 @@
 
 ## Overview
 
-JavaScript code.
+Defines the JavaScript code.
 
 **Since**: 11
 

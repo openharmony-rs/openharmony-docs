@@ -46,7 +46,7 @@
 
  初始化规则图示：
 
-![zh-cn_image_0000001552972029](figures/zh-cn_image_0000001552972029.png)
+![prop-initialization](figures/prop-initialization.png)
 
 ## 观察变化和行为表现
 

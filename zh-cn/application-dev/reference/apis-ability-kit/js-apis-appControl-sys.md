@@ -55,7 +55,7 @@ setDisposedStatus(appId: string, disposedWant: Want): Promise\<void>
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
@@ -65,19 +65,19 @@ import { Want } from '@kit.AbilityKit';
 import { appControl } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
-let want:Want = {bundleName: 'com.example.myapplication'};
+let want: Want = { bundleName: 'com.example.myapplication' };
 
 try {
-    appControl.setDisposedStatus(appId, want)
-        .then(() => {
-            console.info('setDisposedStatus success');
-        }).catch((error: BusinessError) => {
-            let message = (error as BusinessError).message;
-            console.error('setDisposedStatus failed ' + message);
-        });
-} catch (error) {
+  appControl.setDisposedStatus(appId, want)
+    .then(() => {
+      console.info('setDisposedStatus success');
+    }).catch((error: BusinessError) => {
     let message = (error as BusinessError).message;
     console.error('setDisposedStatus failed ' + message);
+  });
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('setDisposedStatus failed ' + message);
 }
 ```
 
@@ -111,7 +111,7 @@ setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback\<vo
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
@@ -121,7 +121,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
-let want: Want = {bundleName: 'com.example.myapplication'};
+let want: Want = { bundleName: 'com.example.myapplication' };
 
 try {
   appControl.setDisposedStatus(appId, want, (error: BusinessError, data) => {
@@ -133,8 +133,8 @@ try {
     console.info('setDisposedStatus success');
   });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('setDisposedStatus failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('setDisposedStatus failed ' + message);
 }
 ```
 
@@ -168,7 +168,7 @@ setDisposedStatusSync(appId: string, disposedWant: Want): void;
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
@@ -178,7 +178,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
-let want: Want = {bundleName: 'com.example.myapplication'};
+let want: Want = { bundleName: 'com.example.myapplication' };
 
 try {
   appControl.setDisposedStatusSync(appId, want);
@@ -222,7 +222,7 @@ getDisposedStatus(appId: string): Promise\<Want>;
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
@@ -241,8 +241,8 @@ try {
     console.error('getDisposedStatus failed ' + message);
   });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getDisposedStatus failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('getDisposedStatus failed ' + message);
 }
 ```
 
@@ -275,7 +275,7 @@ getDisposedStatus(appId: string, callback: AsyncCallback\<Want>): void;
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
@@ -295,8 +295,8 @@ try {
     console.info('getDisposedStatus success. DisposedStatus: ' + JSON.stringify(data));
   });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getDisposedStatus failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('getDisposedStatus failed ' + message);
 }
 ```
 
@@ -334,7 +334,7 @@ getDisposedStatusSync(appId: string): Want;
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
@@ -347,10 +347,10 @@ let appId: string = "com.example.myapplication_xxxxx";
 let want: Want;
 
 try {
-    want = appControl.getDisposedStatusSync(appId);
+  want = appControl.getDisposedStatusSync(appId);
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('getDisposedStatusSync failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('getDisposedStatusSync failed ' + message);
 }
 ```
 
@@ -388,7 +388,7 @@ deleteDisposedStatus(appId: string): Promise\<void>
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
@@ -403,8 +403,8 @@ try {
     .then(() => {
       console.info('deleteDisposedStatus success');
     }).catch((error: BusinessError) => {
-      let message = (error as BusinessError).message;
-      console.error('deleteDisposedStatus failed ' + message);
+    let message = (error as BusinessError).message;
+    console.error('deleteDisposedStatus failed ' + message);
   });
 } catch (error) {
   let message = (error as BusinessError).message;
@@ -441,7 +441,7 @@ deleteDisposedStatus(appId: string, callback: AsyncCallback\<void>) : void
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
@@ -459,8 +459,8 @@ try {
     console.info('deleteDisposedStatus success');
   });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('deleteDisposedStatus failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('deleteDisposedStatus failed ' + message);
 }
 ```
 
@@ -493,7 +493,7 @@ deleteDisposedStatusSync(appId: string, appIndex:? number) : void
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **示例：**
@@ -505,10 +505,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let appId: string = "com.example.myapplication_xxxxx";
 
 try {
-    appControl.deleteDisposedStatusSync(appId, 1);
+  appControl.deleteDisposedStatusSync(appId, 1);
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('deleteDisposedStatusSync failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('deleteDisposedStatusSync failed ' + message);
 }
 ```
 
@@ -548,7 +548,7 @@ getDisposedRule(appId: string, appIndex:? number): DisposedRule
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **示例：**
@@ -556,7 +556,6 @@ getDisposedRule(appId: string, appIndex:? number): DisposedRule
 ```ts
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -599,7 +598,7 @@ setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **示例：**
@@ -705,6 +704,7 @@ let disposedRuleConfiguration: appControl.DisposedRuleConfiguration = {
 
 let disposedRuleConfigurations: Array<appControl.DisposedRuleConfiguration> = [];
 disposedRuleConfigurations.push(disposedRuleConfiguration);
+
 @Entry
 @Component
 struct Index {
@@ -958,7 +958,7 @@ try {
 
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
-| want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的页面。 |
+| want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的组件。 |
 | UninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | 否   | 否   | 拦截时将拉起能力的类型。 |
 | priority | number | 否 | 否 | 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，排序越靠前。 |
 
@@ -972,7 +972,7 @@ try {
 
 | 名称    | 值   | 说明                 |
 | ------- | ---- | -------------------- |
-| EXTENSION | 1    | 服务扩展能力类型。 |
+| EXTENSION | 1    | 服务扩展能力类型。仅支持service类型的[ExtensionAbility](../../quick-start/module-configuration-file.md#extensionabilities标签)。<br/>被拉起的ExtensionAbility通过want中bundleName、moduleName、abilityName字段共同确定。 |
 
 ## DisposedRuleConfiguration<sup>20+</sup>
 

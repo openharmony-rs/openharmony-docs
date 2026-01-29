@@ -1,10 +1,10 @@
-# &lt;canvas&gt; Development
+# Canvas
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **&lt;canvas&gt;** component provides a canvas for drawing customized graphics. For details, see [canvas](../reference/apis-arkui/arkui-js/js-components-canvas-canvas.md).

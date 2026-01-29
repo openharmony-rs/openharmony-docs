@@ -1,13 +1,14 @@
-# Development References
-- [Development Description](development-intro-api.md)
-- [SystemCapability](syscap.md)
+# API References<!--api-reference-->
+- API Reference Overview<!--ref-overview-api-->
+  - [Development Description](development-intro-api.md)
+  - [SystemCapability](syscap.md)
 <!--Del-->
 - SystemCapability List<!--syscap-list-->
-    - [Phone](phone-syscap-list.md)
-    - [Tablet](tablet-syscap-list.md)
-    - [LiteWearable](litewearable-syscap-list.md)
-    - [TV](tv-syscap-list.md)
-    - [Wearable](wearable-syscap-list.md)
+  - [Phone](phone-syscap-list.md)
+  - [Tablet](tablet-syscap-list.md)
+  - [LiteWearable](litewearable-syscap-list.md)
+  - [TV](tv-syscap-list.md)
+  - [Wearable](wearable-syscap-list.md)
 <!--DelEnd-->
 - [Universal Error Codes](errorcode-universal.md)
 - [Ability Kit API Reference](apis-ability-kit/Readme-EN.md)

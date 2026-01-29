@@ -8,7 +8,7 @@
 
 ## Overview
 
-Promise deferred object.
+Defines the deferred object.
 
 **Since**: 11
 

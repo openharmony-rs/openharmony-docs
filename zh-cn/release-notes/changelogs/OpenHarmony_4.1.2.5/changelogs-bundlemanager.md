@@ -18,13 +18,13 @@
 
 ## c2.bundlemanager.2 包管理ApplicationInfo结构体中新增dataUnclearable字段。
 
-包管理[ApplicationInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)结构体中新增dataUnclearable字段，参考：[API文档链接](../../../application-dev/reference/apis/js-apis-bundle-ApplicationInfo.md)。
+包管理[ApplicationInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)结构体中新增dataUnclearable字段，参考：[API文档链接](../../../application-dev/reference/apis/js-apis-bundle-ApplicationInfo.md)。
 
 **变更影响**<br>
 对之前接口使用无影响。
 
 **关键的接口/组件变更**<br>
-包管理[ApplicationInfo](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)结构体中新增dataUnclearable字段，参考：[API文档链接](../../../application-dev/reference/apis/js-apis-bundle-ApplicationInfo.md)。
+包管理[ApplicationInfo](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/bundleManager/ApplicationInfo.d.ts)结构体中新增dataUnclearable字段，参考：[API文档链接](../../../application-dev/reference/apis/js-apis-bundle-ApplicationInfo.md)。
 
 **适配指导**<br>
 无

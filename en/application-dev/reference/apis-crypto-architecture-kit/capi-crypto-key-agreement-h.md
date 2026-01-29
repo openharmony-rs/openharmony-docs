@@ -19,7 +19,7 @@ Defines key agreement APIs.
 
 **Since**: 20
 
-**Related Module**: [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)
+**Related module**: [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)
 
 ## Summary
 

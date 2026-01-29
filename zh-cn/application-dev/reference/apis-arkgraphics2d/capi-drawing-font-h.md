@@ -15,6 +15,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -642,6 +644,12 @@ int OH_Drawing_FontCountText(OH_Drawing_Font* font, const void* text, size_t byt
 | const void* text | 文本存储首地址。 |
 | size_t byteLength | 文本长度，单位为字节。 |
 | [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | 文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回文本所表示的字符数量，整数。 |
 
 ### OH_Drawing_FontTextToGlyphs()
 

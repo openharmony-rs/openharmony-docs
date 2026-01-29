@@ -9,9 +9,12 @@
 A Harmony Shared Package (HSP) is a dynamic shared package that can contain code, C++ libraries, resource files, and configuration files (also called profiles) and allows for code and resource sharing. An HSP is released with the Application Package (App Pack) of the host application, shares a process with the host application, and has the same bundle name and lifecycle as the host application.
 > **NOTE**
 > 
-> In-app HSP: a type of HSP that is closely coupled with an application bundle name (**bundleName**) during compilation and can be used only by the specified application. This topic mainly describes in-app HSP.
+> * In-app HSP: a type of HSP that is closely coupled with an application bundle name (**bundleName**) during compilation and can be used only by the specified application.
 > 
-> [Integrated HSP](integrated-hsp.md): a type of HSP that is not coupled with specific application bundle names during building and publishing. The toolchain can automatically replace the bundle name of the integrated HSP with that of the host application and generate a new HSP as the installation package of the host application. The new HSP also belongs to the in-app HSP of the host application.
+> * [Integrated HSP](integrated-hsp.md): a type of HSP that is not coupled with specific application bundle names during building and publishing. The toolchain can automatically replace the bundle name of the integrated HSP with that of the host application and generate a new HSP as the installation package of the host application. The new HSP also belongs to the in-app HSP of the host application's HAP.
+>
+> * Unless otherwise specified, all HSPs in the guide and API reference documents are in-app HSPs by default.
+>
 
 ## Use Scenarios
 - By storing code and resource files shared by multiple HAPs/HSPs in one place, the HSP significantly improves the reusability and maintainability of the code and resource files. Better yet, because only one copy of the HSP code and resource files is retained during building and packaging, the size of the application package is effectively controlled.
@@ -36,13 +39,13 @@ A Harmony Shared Package (HSP) is a dynamic shared package that can contain code
 
 ## Creating an HSP
 Create an HSP module for calling C++ code on DevEco Studio and turn on **Enable native** on the **Configure New Module** page. For details, see [Creating an HSP Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hsp#section7717162312546). The following uses the **library** module as an example. The basic project directory structure is as follows:
-```
+```txt
 MyApplication
 ├── library
 │   ├── src
 │   │   └── main
 |   |       ├── cpp
-|   |       |   ├── CMakeLists.txt    // Configuration file for compiling native C++ code
+|   |       |   ├── CMakeLists.txt    // Configuration file for compiling C++ code
 |   |       |   └── napi_init.cpp     // C++ file for initializing the NAPI module
 │   │       ├── ets
 │   │       │   └── pages
@@ -191,6 +194,7 @@ export { ResManager } from './src/main/ets/ResManager';
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
 The APIs can be used as follows in the code of the invoking module:
+<!--deprecated_code_no_check-->
 ```ts
 // entry/src/main/ets/pages/index.ets
 import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';
@@ -404,7 +408,7 @@ export struct Library_Menu {
 ```
 
 Add the **route_map.json** file (**library/src/main/resources/base/profile/route_map.json**) to the **library** module.
-```
+```json
 {
   "routerMap": [
     {

@@ -86,10 +86,7 @@ In this example, the text to be drawn is simplified Chinese. Set the language pr
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // Create a MyRenderNode class and draw the text.
 class MyRenderNode extends RenderNode {
@@ -295,10 +292,7 @@ Multi-line text is more complex than single-line text. Multi-line text requires 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // Create a MyRenderNode class and draw the text.
 class MyRenderNode extends RenderNode {
@@ -565,10 +559,7 @@ The following uses the decoration line and font feature in the text style as an 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
 // Create a MyRenderNode class and draw the text.
 class MyRenderNode extends RenderNode {
@@ -726,7 +717,6 @@ import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
 import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
 import { common2D } from '@kit.ArkGraphics2D'
 
 // Create a MyRenderNode class and draw the text.
@@ -897,8 +887,7 @@ The following uses the vertical alignment - center alignment feature as an examp
 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+import { text } from '@kit.ArkGraphics2D'
 
 // Create a MyRenderNode class and draw the text.
 class MyRenderNode extends RenderNode {
@@ -1037,8 +1026,7 @@ This example demonstrates how to format subscript and superscript text.
 
 ```ts
 import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
-import { drawing, text, common2D } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
+import { text } from '@kit.ArkGraphics2D'
 
 // Create a MyRenderNode class and draw the text.
 class MyRenderNode extends RenderNode {

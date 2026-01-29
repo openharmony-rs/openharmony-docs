@@ -23,7 +23,7 @@ This error code is reported when the entered bundle name or ability name is inva
 
 **Possible Causes**
 
- 
+
 1. The bundle name does not exist.
 2. The bundle does not contain the target ability.
 
@@ -78,17 +78,17 @@ This property does not exist.
 
 **Description**
 
-This error code is reported when the entered property of the accessibility element does not exist.
+This error code is reported when the entered property of the accessibility node element does not exist.
 
 **Possible Causes**
 
-The property does not exist in the accessibility element.
+The property does not exist in the accessibility node element.
 
 **Solution**
 
-Make sure the accessibility element has the target property.
+Make sure the accessibility node element has the target property.
 
-## 9300005 Operation Not Supported
+## 9300005 Action Not Supported
 
 **Error Message**
 
@@ -96,15 +96,15 @@ This action is not supported.
 
 **Description**
 
-This error code is reported when the application performs an operation that is not supported by the accessibility element.
+This error code is reported when the application performs an action that is not supported by the accessibility node element.
 
 **Possible Causes**
 
-The accessibility element does not support the target operation.
+An action that is not supported by the accessibility node element is performed.
 
 **Solution**
 
-Make sure the operation is included in the list of operations supported by the accessibility element.
+Make sure the action to perform is included in the list of actions supported by the accessibility node element.
 
 ## 9300006 Failed to Connect the Target Application and Accessibility Services
 

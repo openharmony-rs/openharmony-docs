@@ -1,4 +1,10 @@
 # Common UI Application Freezing Issues
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @caoruihong-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This document summarizes common ArkUI API misuse scenarios that may cause application freezes, and provides guidance to help you avoid similar issues during development.
 

@@ -23,20 +23,20 @@ Before using this tool, you must obtain the <!--Del-->[<!--DelEnd-->hdc tool<!--
 ## help
 
 
-  ```bash
+```bash
 # Display the help information.
 edm help
-  ```
+```
 
 ## enable-admin
 
 
-  ```bash
+```bash
 # Display the help information.
 edm enable-admin -h
 # Enable the extended enterprise device management capabilities.
 edm enable-admin -n <bundleName> -a <abilityName> [-t <adminType>]
-  ```
+```
 
 **Parameters**
 
@@ -59,12 +59,12 @@ enable-admin success.
 
 ## disable-admin
 
-  ```bash
+```bash
 # Display the help information.
 edm disable-admin -h
 # Disable the extended enterprise device management capabilities.
 edm disable-admin -n <bundleName>
-  ```
+```
 
 **Parameters**
 
@@ -76,12 +76,12 @@ edm disable-admin -n <bundleName>
   **Example**
 
 
-  ```bash
+```bash
 # Disable the EnterpriseAdminExtensionAbility whose bundle name is com.example.mdmsample.
 edm disable-admin -n com.example.mdmsample
 # Execution result.
 disable-admin success.
-  ```
+```
 
 ## Error Messages
 

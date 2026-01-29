@@ -597,7 +597,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // Check whether the input device whose ID is 1 supports keys 17, 22, and 2055.
+          // Check whether the input device whose ID is 1 supports keycodes 17, 22, and 2055.
           try {
             inputDevice.supportKeys(1, [17, 22, 2055], (error: Error, supportResult: Array<Boolean>) => {
               console.info(`Query result: ${JSON.stringify(supportResult)}`);
@@ -630,7 +630,7 @@ Checks whether the input device supports the specified keys. This API uses a pro
 
 | Type                               | Description                           |
 | ----------------------------------- | ------------------------------- |
-| Promise&lt;Array&lt;boolean&gt;&gt; | Promise used to return the result. The value **true** indicates that the keys are supported, and the value **false** indicates the opposite.|
+| Promise&lt;Array&lt;boolean&gt;&gt; | Promise used to return the result. The value **true** indicates that the keycodes are supported, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -652,7 +652,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // Check whether the input device whose ID is 1 supports keys 17, 22, and 2055.
+          // Check whether the input device whose ID is 1 supports keycodes 17, 22, and 2055.
           try {
             inputDevice.supportKeys(1, [17, 22, 2055]).then((supportResult: Array<Boolean>) => {
               console.info(`Query result: ${JSON.stringify(supportResult)}`);
@@ -685,7 +685,7 @@ Checks whether the input device supports the specified keys.
 
 | Type                               | Description                           |
 | ----------------------------------- | ------------------------------- |
-| Array&lt;boolean&gt; | Result indicating whether the input device supports the specified keys. The value **true** indicates that the input device supports the specified keys, and the value **false** indicates no.|
+| Array&lt;boolean&gt; | Result indicating whether the input device supports the keycode value. The value **true** indicates yes, and the value **false** indicates no.|
 
 **Error codes**
 
@@ -707,7 +707,7 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          // Check whether the input device whose ID is 1 supports keys 17, 22, and 2055.
+          // Check whether the input device whose ID is 1 supports keycodes 17, 22, and 2055.
           try {
             let supportResult: Array<Boolean> = inputDevice.supportKeysSync(1, [17, 22, 2055])
             console.info(`Query result: ${JSON.stringify(supportResult)}`)
@@ -815,7 +815,7 @@ struct Index {
         .onClick(() => {
           // Query the keyboard type of the input device whose ID is 1.
           try {
-            inputDevice.getKeyboardType(1).then((type: Number) => {
+            inputDevice.getKeyboardType(1).then((type: number) => {
               console.info(`Keyboard type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
@@ -1090,7 +1090,7 @@ Defines the axis range of an input device.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| source                  | [SourceType](#sourcetype9) | No| No| Input sources supported by the input device. including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.|
+| source                  | [SourceType](#sourcetype9) | No| No| Input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.|
 | axis                    | [AxisType](#axistype9)    | No| No| Defines the axis type of an input device.   |
 | max                     | number                    | No| No| Maximum value of the axis.  |
 | min                     | number                    | No| No| Minimum value of the axis.  |
@@ -1102,18 +1102,18 @@ Defines the axis range of an input device.
 
 type SourceType = 'keyboard' | 'mouse' | 'touchpad' | 'touchscreen' | 'joystick' | 'trackball'
 
-Enumerates the input sources supported by the input device.  
+Enumerates the input sources supported by the input device, including the keyboard, mouse, touchscreen, trackball, touchpad, and joystick.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputDevice
 
 | Type      |Description     |
 | --------- |  ------- |
-| 'keyboard'    | Keyboard. |
-| 'touchscreen' | Touchscreen.|
-| 'mouse'       | Mouse. |
-| 'trackball'   | Trackball.|
+| 'keyboard'    | The input device is a keyboard. |
+| 'touchscreen' | The input device is a touchscreen.|
+| 'mouse'       | The input device is a mouse. |
+| 'trackball'   | The input device is a trackball.|
 | 'touchpad'    | Touchpad.|
-| 'joystick'   | Joystick.|
+| 'joystick'   | The input device is a joystick.|
 
 ## ChangedType<sup>9+</sup>
 

@@ -8,7 +8,7 @@
 
 ## Overview
 
-Input box configuration information.  
+Represents the text box configuration information.
 
 **Since**: 12
 

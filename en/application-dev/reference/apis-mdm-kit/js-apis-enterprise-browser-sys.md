@@ -68,7 +68,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace the value of appId with the specified application ID of the browser.
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -132,7 +132,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace the value of appId with the specified application ID of the browser.
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -183,7 +183,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace the value of appId with the specified application ID of the browser.
 let appId: string = 'com.example.******_******/******5t5CoBM=';
@@ -241,7 +241,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let wantTemp: Want = {
   // Replace with actual values.
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // Replace the value of appId with the specified application ID of the browser.
 let appId: string = 'com.example.******_******/******5t5CoBM=';

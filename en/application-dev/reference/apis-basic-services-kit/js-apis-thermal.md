@@ -23,7 +23,7 @@ import {thermal} from '@kit.BasicServicesKit';
 
 registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
-Subscribes to thermal level changes.
+**API description**: Registers a callback triggered when the thermal level changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -58,7 +58,7 @@ try {
 
 unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
-Unsubscribes from thermal level changes.
+**API description**: Unregisters a callback triggered when the thermal level changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -93,9 +93,11 @@ try {
 
 getLevel(): ThermalLevel
 
-Obtains the current thermal level.
+**API description**: Obtains this thermal level.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
+
+**Parameters**: none
 
 **Return value**
 
@@ -116,7 +118,7 @@ subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9).
 
-Subscribes to thermal level changes.
+**API description**: Subscribes to the thermal level changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -140,7 +142,7 @@ unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9).
 
-Unsubscribes from thermal level changes.
+**API description**: Unsubscribes from the thermal level changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -164,9 +166,11 @@ getThermalLevel(): ThermalLevel
 
 > **NOTE**<br>This API is deprecated since API version 9. You are advised to use [thermal.getLevel](#thermalgetlevel9).
 
-Obtains the current thermal level.
+**API description**: Obtains this thermal level.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
+
+**Parameters**: none
 
 **Return value**
 

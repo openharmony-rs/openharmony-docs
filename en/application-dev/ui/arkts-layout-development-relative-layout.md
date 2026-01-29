@@ -1,11 +1,17 @@
 # Relative Layout (RelativeContainer)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fenglinbailu-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## Overview
 
-During application development, nesting components – same or different – is common in page layout, especially when the target page is complicated. Yet, nesting components too deeply, or nesting too many components, can be especially expensive. Naturally, optimizing the layout hierarchies can effectively lead to better performance and less time overhead. <!--Del-->For details about how the relative container is more performance-efficient than the list, see [Improving Layout Performance](../performance/reduce-view-nesting-levels.md).<!--DelEnd-->
+During application development, nesting components – same or different – is common in page layout, especially when the target page is complicated. Yet, nesting components too deeply, or nesting too many components, can be especially expensive. Naturally, optimizing the layout hierarchies can effectively lead to better performance and less time overhead. <!--Del-->For details about how the relative container is more performance-efficient than the list, see **Improving Layout Performance**.<!--DelEnd-->
 
-The relative layout, implemented using the **RelativeContainer** container component, is used to lay out child elements in relative positions. It is applicable to element alignment in complex scenarios. A child element can use the container or another child element as the anchor, based on which its relative position is determined. Below shows a relative layout. The dotted lines in the figure indicate the position dependency.
+The relative layout, implemented using the **RelativeContainer** container component, is used to lay out child elements in relative positions. It is applicable to element alignment in complex scenarios. A child element can use either the container itself or another child element as an anchor to determine its relative position. When using anchors, pay attention to the relative positions of child elements to prevent misplacement or overlapping. The following figure illustrates the concept of **RelativeContainer**, where the dotted lines indicate positional dependencies.
 
 
   **Figure 1** Relative layout 
@@ -18,24 +24,41 @@ A child element does not necessarily adopt the dependency shown above to determi
 
 ## Basic Concepts
 
+- Reference boundary: boundary of the current component used for alignment with the anchor.
+
 - Anchor: element relative to which an element's position is specified.
 
 - Alignment mode: how the current element is aligned with the anchor, which can be top-, center-, or bottom-aligned in the vertical direction or left-, center-, and right-aligned in the horizontal direction.
 
+- Chain: a series of components aligned sequentially. The chain mode specifies the arrangement pattern for elements within the chain.
 
-## Setting the Dependency
+- Guideline: virtual horizontal or vertical anchors created within a container to facilitate even alignment of elements along a specified offset.
+
+- Barrier: the outermost boundary of a group of specified components in a particular direction within a container. For example, the barrier below a group of components corresponds to the bottom boundary of those components.
 
 
-### Setting the Anchor
+## Setting Dependencies
 
-By setting the anchor, you set a position dependency relationship between a child element and its parent element or sibling elements. In the horizontal direction, you can set the left, middle, and right anchors. In the vertical direction, you can set the top, center, and bottom anchors.
-To specify anchors, you must set IDs for the **RelativeContainer** component and its child elements. The default ID is **\_\_container\_\_**, and the IDs for the remaining child elements are set through the **id** attribute.  Components without **id** set can be displayed but cannot be used as anchors by other child components; the relative layout container will generate an ID for them, and the pattern of this ID is not predictable by the application logic. When a mutual or circular dependency occurs, none of the child components in the container are drawn. If anchors are set for more than two positions in a single direction but the anchor positions are reversed, the size of the child component is 0, which means that the child component is not drawn. 
+### Setting Reference Boundaries
 
->**NOTE**
+Specify which boundary of the current component aligns with the anchor. Child components within the container can have both horizontal and vertical reference boundaries.
+* In the horizontal direction, component boundaries can align with the anchor using start (**left**), center (**middle**), or end (**right**) boundaries. When all three boundaries are specified, only the start (**left**) and center (**middle**) boundaries take effect.
+![relative-layout-alignrules01](figures/relative-layout-alignrules01.png)
+* In the vertical direction, component boundaries can align with the anchor using top, center, or bottom boundaries. When all three boundaries are specified, only the top and center boundaries take effect.
+![relative-layout-alignrules02](figures/relative-layout-alignrules02.png)
+
+### Setting Anchors
+
+Anchor configuration defines the positional relationship of a child element relative to its parent container or sibling elements. Specifically, a child element can anchor its position to the relative layout container (**RelativeContainer**), a guideline, a barrier, or another child element.
+
+To properly define an anchor, each child element in **RelativeContainer** must have a unique component ID, which is used to specify anchor relationships. The parent **RelativeContainer** element has a default ID of \_\_container\_\_. Other child element IDs are set using the [id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id) attribute.
+
+> **NOTE**
 >
->When using anchors, pay attention to the relative positions of child elements to avoid misplacement or blocking.
+> * Components without an ID can be displayed but cannot be referenced as anchors by other components. The relative layout container automatically assigns component IDs, but these generated IDs are not accessible to the application. Guideline and barrier IDs must be unique to avoid conflicts with component IDs. In case of duplicates, the following priority rules apply: component > guideline > barrier.
+> * When setting anchors between components, avoid creating dependency loops (except when establishing chains between components). Dependency loops prevent child components from obtaining positioning references and will cause rendering failures.
 
-- The ID of the **RelativeContainer** parent component is **__container__**.
+- The parent **RelativeContainer** component serves as an anchor, with __container__ representing the parent container's component ID.
 
   ```ts
   let AlignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
@@ -46,7 +69,7 @@ To specify anchors, you must set IDs for the **RelativeContainer** component and
     'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
     'right': { 'anchor': '__container__', 'align': HorizontalAlign.End }
   }
-  let Mleft: Record<string, number> = { 'left': 20 }
+  let marginLeft: Record<string, number> = { 'left': 20 }
   let BWC: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
@@ -74,7 +97,7 @@ To specify anchors, you must set IDs for the **RelativeContainer** component and
         .alignRules(AlignRue)
         .id("row2")
       }.width(300).height(300)
-      .margin(Mleft)
+      .margin(marginLeft)
       .border(BWC)
     }
   }
@@ -93,7 +116,7 @@ To specify anchors, you must set IDs for the **RelativeContainer** component and
     'top': { 'anchor': 'row1', 'align': VerticalAlign.Bottom },
     'left': { 'anchor': 'row1', 'align': HorizontalAlign.Start }
   }
-  let Mleft: Record<string, number> = { 'left': 20 }
+  let marginLeft: Record<string, number> = { 'left': 20 }
   let BWC: Record<string, number | string> = { 'width': 2, 'color': '#6699FF' }
   
   @Entry
@@ -121,7 +144,7 @@ To specify anchors, you must set IDs for the **RelativeContainer** component and
         .alignRules(RelConB)
         .id("row2")
       }.width(300).height(300)
-      .margin(Mleft)
+      .margin(marginLeft)
       .border(BWC)
     }
   }
@@ -186,19 +209,19 @@ To specify anchors, you must set IDs for the **RelativeContainer** component and
 
 ### Setting Alignment Relative to the Anchor
 
-After an anchor is set, you can use **align** to set the alignment mode relative to the anchor.
+After setting the anchor, you can use the **align** property of [alignRules](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#alignrules9) to configure the alignment position relative to the anchor.
 
-Alignment modes in the horizontal direction can be left, center, or right, achieved by the **HorizontalAlign.Start**, **HorizontalAlign.Center**, and **HorizontalAlign.End** attributes, respectively.
+Horizontal alignment modes include left, center, and right, implemented using **HorizontalAlign.Start**, **HorizontalAlign.Center**, and **HorizontalAlign.End**, respectively.
 
 ![alignment-relative-anchor-horizontal](figures/alignment-relative-anchor-horizontal.png)
 
-Alignment modes in the vertical direction can be top, center, or bottom, achieved by the **VerticalAlign.Top**, **VerticalAlign.Center**, and **VerticalAlign.Bottom** attributes, respectively.
+Vertical alignment modes include top, center, and bottom, implemented using **VerticalAlign.Top**, **VerticalAlign.Center**, and **VerticalAlign.Bottom**, respectively.
 
 ![alignment-relative-anchor-vertical](figures/alignment-relative-anchor-vertical.png)
 
-### Setting Offset
+### Setting the Offset
 
-After being aligned relative to the anchor, a child component may be still not at its target position. In this case, you can set the offset.
+After relative position alignment, the child component may not reach the desired target position. You can set an offset as needed. When using an offset component as the anchor, the alignment position refers to the position before the offset is applied. Since API version 11, the [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias) object has been added. For API version 11 and later, it is recommended that you use **bias** to set additional offsets. For details about how to use **bias**, see [Example 4: Applying Vertical Offsets](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md#example-4-applying-vertical-offsets).
 
   ```ts
 @Entry
@@ -319,7 +342,7 @@ struct Index {
 
 ## Aligning Components in Multiple Layouts
 
-You can set components in multiple layout components, such as **Row**, **Column**, **Flex**, and **Stack**, to be aligned based on the relative layout rules.
+You can set components in multiple layout components, such as **Row**, **Column**, **Flex**, and **Stack**, to be aligned based on the **RelativeContainer** rules.
 
   ```ts
 @Entry
@@ -391,11 +414,15 @@ struct Index {
   ```
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image3.png)
 
-## Component Size
+## Setting the Component Size
 
-The size of a child component is not affected by the relative layout rules. If two or more **alignRule** values are set for a child component in one direction, avoid setting the size in this direction. Otherwise, the component size determined by **alignRule** may conflict with the size you set.
+When both the child component size and relative layout rules are specified in the frontend page, the final rendering size of the child component is determined by constraint rules. Since API version 11, the size explicitly set for the child component takes precedence over the alignment anchor size in relative layout rules. Therefore, to ensure precise alignment of child components with anchors, use only **alignRules** instead of explicit [size settings](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md).
 
-  ```ts
+> **NOTE**
+>
+> * If the child component size cannot be determined based on constraints and the component's **size** attribute, the component will not be rendered.
+> * When two or more anchors are set in the same direction, if the positional sequence of these anchors is incorrect, the child component will be treated as having a zero size and will not be rendered.
+```ts
 @Entry
 @Component
 struct Index {
@@ -487,5 +514,275 @@ struct Index {
     .height('100%')
   }
 }
-  ```
+```
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image4.png)
+
+
+## Creating a Component Chain
+
+Chain formation relies on associations between components. Consider a basic horizontal chain comprising components A and B. The dependency relationship is as follows: Anchor 1 <-- Component A <---> Component B --> Anchor 2, where A has a left anchor, B has a right anchor, A's right anchor aligns with B's HorizontalAlign.Start, and B's left anchor aligns with A's HorizontalAlign.End.
+* The chain direction and format are declared in the [chainMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainmode12) API of the chain header component. The **bias** attribute for all elements within the chain is ignored, with only the chain header element's **bias** attribute taking effect as the bias for the entire chain. The chain header is the first component that satisfies chain formation rules. It starts from the left in horizontal layouts (or from the right in mirrored language layouts), and from the top in vertical layouts.
+* When the combined size of all chain elements exceeds the chain's anchor constraints, the excess space is evenly distributed to both ends of the chain. In [PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12) chains, you can use [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias) to control how the excess space is distributed.
+
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row() {
+          Text('row1')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#a3cf62')
+        .alignRules({
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          right: { anchor: "row2", align: HorizontalAlign.Start },
+          top: { anchor: "__container__", align: VerticalAlign.Top }
+        })
+        .id("row1")
+        .chainMode(Axis.Horizontal, ChainStyle.SPREAD)
+
+        Row() {
+          Text('row2')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          left: { anchor: "row1", align: HorizontalAlign.End },
+          right: { anchor: "row3", align: HorizontalAlign.Start },
+          top: { anchor: "row1", align: VerticalAlign.Top }
+        })
+        .id("row2")
+
+        Row() {
+          Text('row3')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          left: { anchor: "row2", align: HorizontalAlign.End },
+          right: { anchor: "__container__", align: HorizontalAlign.End },
+          top: { anchor: "row1", align: VerticalAlign.Top }
+        })
+        .id("row3")
+
+        Row() {
+          Text('row4')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#a3cf62')
+        .alignRules({
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          right: { anchor: "row5", align: HorizontalAlign.Start },
+          center: { anchor: "__container__", align: VerticalAlign.Center }
+        })
+        .id("row4")
+        .chainMode(Axis.Horizontal, ChainStyle.SPREAD_INSIDE)
+
+        Row() {
+          Text('row5')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          left: { anchor: "row4", align: HorizontalAlign.End },
+          right: { anchor: "row6", align: HorizontalAlign.Start },
+          top: { anchor: "row4", align: VerticalAlign.Top }
+        })
+        .id("row5")
+
+        Row() {
+          Text('row6')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          left: { anchor: "row5", align: HorizontalAlign.End },
+          right: { anchor: "__container__", align: HorizontalAlign.End },
+          top: { anchor: "row4", align: VerticalAlign.Top }
+        })
+        .id("row6")
+
+        Row() {
+          Text('row7')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#a3cf62')
+        .alignRules({
+          left: { anchor: "__container__", align: HorizontalAlign.Start },
+          right: { anchor: "row8", align: HorizontalAlign.Start },
+          bottom: { anchor: "__container__", align: VerticalAlign.Bottom }
+        })
+        .id("row7")
+        .chainMode(Axis.Horizontal, ChainStyle.PACKED)
+
+        Row() {
+          Text('row8')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          left: { anchor: "row7", align: HorizontalAlign.End },
+          right: { anchor: "row9", align: HorizontalAlign.Start },
+          top: { anchor: "row7", align: VerticalAlign.Top }
+        })
+        .id("row8")
+
+        Row() {
+          Text('row9')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(80)
+        .height(80)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          left: { anchor: "row8", align: HorizontalAlign.End },
+          right: { anchor: "__container__", align: HorizontalAlign.End },
+          top: { anchor: "row7", align: VerticalAlign.Top }
+        })
+        .id("row9")
+      }
+      .width(300).height(300)
+      .margin({ left: 50 })
+      .border({ width: 2, color: "#6699FF" })
+    }
+    .height('100%')
+  }
+}
+```
+![relative container](figures/relativecontainer6.png)
+
+## Positioning Child Components Using Guidelines
+
+Guidelines are virtual horizontal or vertical anchors within a container, designed to align components at specific offset positions.
+
+Guidelines are categorized into vertical and horizontal types. For vertical guidelines, the **start** and **end** attributes define the distances from the container's left and right sides, respectively. For horizontal guidelines, these attributes specify distances from the container's top and bottom sides, respectively.
+* If both **start** and **end** attributes are set, the **start** attribute takes precedence when the two rules conflict.
+* If the container size in a particular direction is set to **"auto"**, the guideline position in that direction must be specified using the **start** attribute, and the value cannot be a percentage.
+
+In the following example code, a vertical guideline named **guideline1** is positioned 50 vp from the container's left side, and a horizontal guideline named **guideline2** is positioned 50 vp from the container's top. Row1 is aligned using these two guidelines, requiring no additional bias configuration.
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row()
+          .width(100)
+          .height(100)
+          .backgroundColor('#a3cf62')
+          .alignRules({
+            left: { anchor: "guideline1", align: HorizontalAlign.End },
+            top: { anchor: "guideline2", align: VerticalAlign.Top }
+          })
+          .id("row1")
+      }
+      .width(300)
+      .height(300)
+      .margin({ left: 50 })
+      .border({ width: 2, color: "#6699FF" })
+      .guideLine([{ id: "guideline1", direction: Axis.Vertical, position: { start: 50 } },
+        { id: "guideline2", direction: Axis.Horizontal, position: { start: 50 } }])
+    }
+    .height('100%')
+  }
+}
+```
+![relative container](figures/relativecontainer4.png)
+
+## Setting Barriers for Multiple Components
+
+A barrier represents the outermost shared boundary of a specified group of components in a particular direction within the container. For example, the barrier below a group of components corresponds to the lowest position among their bottom boundaries, which can be understood as the minimum or maximum coordinate value. Barriers help ensure that a component does not overlap with any component in a reference group.
+
+Barriers can be positioned in four directions: top, bottom, left, or right. Vertical barriers (including **TOP** and **BOTTOM**) can only serve as horizontal anchors for components. If they are used as vertical anchors, their value default to **0**. Horizontal barriers (including **LEFT** and **RIGHT**) can only serve as vertical anchors for components. If they are used as horizontal anchors, their value default to **0**.
+
+The following code defines two barriers representing the right and bottom boundaries of row1 and row2, respectively. These barriers can be used as anchors for row3 and row4 to prevent unnecessary component overlap.
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      RelativeContainer() {
+        Row() {
+          Text('row1')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#a3cf62')
+        .id("row1")
+
+        Row() {
+          Text('row2')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#00ae9d')
+        .alignRules({
+          middle: { anchor: "row1", align: HorizontalAlign.End },
+          top: { anchor: "row1", align: VerticalAlign.Bottom }
+        })
+        .id("row2")
+
+        Row() {
+          Text('row3')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(100)
+        .height(100)
+        .backgroundColor('#0a59f7')
+        .alignRules({
+          left: { anchor: "barrier1", align: HorizontalAlign.End },
+          top: { anchor: "row1", align: VerticalAlign.Top }
+        })
+        .id("row3")
+
+        Row() {
+          Text('row4')
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(50)
+        .height(50)
+        .backgroundColor('#2ca9e0')
+        .alignRules({
+          left: { anchor: "row1", align: HorizontalAlign.Start },
+          top: { anchor: "barrier2", align: VerticalAlign.Bottom }
+        })
+        .id("row4")
+      }
+      .width(300)
+      .height(300)
+      .margin({ left: 50 })
+      .border({ width: 2, color: "#6699FF" })
+      .barrier([{ id: "barrier1", direction: BarrierDirection.RIGHT, referencedId: ["row1", "row2"] },
+        { id: "barrier2", direction: BarrierDirection.BOTTOM, referencedId: ["row1", "row2"] }])
+    }
+    .height('100%')
+  }
+}
+```
+![relative container](figures/relativecontainer5.png)

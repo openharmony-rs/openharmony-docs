@@ -8,7 +8,7 @@
 
 ## Overview
 
-JavaScript value.
+Defines the JavaScript value.
 
 **Since**: 11
 

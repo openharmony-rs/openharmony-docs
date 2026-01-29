@@ -93,11 +93,11 @@ export default class EntryAbility extends UIAbility {
       return;
     }
 
-    // Select an SE (eSE or SIM card) for access based on the service requirements.
+    // Select an SE (eSE, SIM, or SIM2 card) for access based on the service requirements.
     let reader: (omapi.Reader | undefined);
     for (let i = 0; i < seReaders.length; ++i) {
       let r = seReaders[i];
-      // Distinguish the SE by name, for example, eSE or SIM.
+      // Distinguish the SE by name, for example, eSE, SIM, or SIM2.
       if (r.getName().includes("SIM")) {
         reader = r;
         break;

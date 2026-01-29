@@ -1,10 +1,16 @@
 # @ohos.pluginComponent (PluginComponentManager)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @HelloCrease-->
 
 The **PluginComponentManager** module provides APIs for the **PluginComponent** user to request components and data and send component templates and data.
 
->  **NOTE**
+> **NOTE**
 >
->  - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -20,10 +26,10 @@ Describes the **PluginComponent** template parameters.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Mandatory| Description                       |
-| ------- | ------ | ---- | --------------------------- |
-| source  | string | Yes  | Component template name.               |
-| ability | string | Yes  | Bundle name of the provider ability.|
+| Name   | Type  | Read-Only| Optional| Description                       |
+| ------- | ------ | ---- | ---- | --------------------------- |
+| source  | string | No| No| Component template name.               |
+| ability | string | No| No| Bundle name of the provider ability.|
 
 ## pluginComponentManager
 
@@ -52,13 +58,13 @@ Defines the parameters required when using the **PluginManager.Push** API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                                 | Mandatory  | Description                                      |
-| --------- | ----------------------------------- | ---- | ---------------------------------------- |
-| want      | [Want](../apis-ability-kit/js-apis-application-want.md) | Yes   | Ability information of the component user.                         |
-| name      | string                              | Yes   | Component name.                                   |
-| data      | [KVObject](#kvobject)               | Yes   | Component data value.                                  |
-| extraData | [KVObject](#kvobject)               | Yes   | Additional data value.                                  |
-| jsonPath  | string                              | No   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path.|
+| Name       | Type                              | Read-Only| Optional  | Description                                      |
+| --------- | ----------------------------------- | ---- | ---- | ---------------------------------------- |
+| want      | [Want](../apis-ability-kit/js-apis-application-want.md) | No| No   | Ability information of the component user.                         |
+| name      | string                              | No| No   | Component name.                                   |
+| data      | [KVObject](#kvobject)               | No| No   | Component data.                                  |
+| extraData | [KVObject](#kvobject)               | No| No   | Additional data.                                  |
+| jsonPath  | string                              | No| Yes   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path.|
 
 ### RequestParameters
 
@@ -68,12 +74,12 @@ Defines the parameters required when using the **PluginManager.Request** API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type                                 | Mandatory  | Description                                      |
-| -------- | ----------------------------------- | ---- | ---------------------------------------- |
-| want     | [Want](../apis-ability-kit/js-apis-application-want.md) | Yes   | Ability information of the component provider.                         |
-| name     | string                              | Yes   | Name of the requested component.                                 |
-| data     | [KVObject](#kvobject)               | Yes   | Additional data.                                   |
-| jsonPath | string                              | No   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path. Request communication is not triggered when **jsonPath** is not empty or not set.|
+| Name      | Type                              | Read-Only| Optional| Description                                      |
+| -------- | ----------------------------------- | ---- | ---- |---------------------------------------- |
+| want     | [Want](../apis-ability-kit/js-apis-application-want.md) | No| No   | Ability information of the component provider.                         |
+| name     | string                              | No| No   | Name of the requested component.                                 |
+| data     | [KVObject](#kvobject)               | No| No   | Component data.                                   |
+| jsonPath | string                              | No| Yes   | Path to the [external.json](#about-the-externaljson-file) file that stores the template path. If the **jsonPath** field is not empty, the Request communication is not triggered.|
 
 ### RequestCallbackParameters
 
@@ -83,11 +89,11 @@ Provides the result returned after the **PluginManager.Request** API is called.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name               | Type                                      | Mandatory  | Description   |
-| ----------------- | ---------------------------------------- | ---- | ----- |
-| componentTemplate | [PluginComponentTemplate](#plugincomponenttemplate) | Yes   | Component template.|
-| data              | [KVObject](#kvobject)                    | Yes   | Component data.|
-| extraData         | [KVObject](#kvobject)                    | Yes   | Additional data.|
+| Name             | Type                                     | Read-Only| Optional| Description |
+| ----------------- | ---------------------------------------- | ---- | ---- | ----- |
+| componentTemplate | [PluginComponentTemplate](#plugincomponenttemplate) | No| No   | Component template.|
+| data              | [KVObject](#kvobject)                    | No| No   | Component data.|
+| extraData         | [KVObject](#kvobject)                    | No| No   | Additional data.|
 
 ### RequestEventResult
 
@@ -97,11 +103,11 @@ Provides the result returned after the request listener is registered and the re
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type                   | Mandatory  | Description   |
-| --------- | --------------------- | ---- | ----- |
-| template  | string                | No   | Component template.|
-| data      | [KVObject](#kvobject) | No   | Component data.|
-| extraData | [KVObject](#kvobject) | No   | Additional data.|
+| Name      | Type                 | Read-Only| Optional | Description   |
+| --------- | --------------------- | ---- | ---- | ----- |
+| template  | string                | No| Yes   | Component template.|
+| data      | [KVObject](#kvobject) | No| Yes   | Component data.|
+| extraData | [KVObject](#kvobject) | No| Yes   | Additional data.|
 
 ### OnPushEventCallback
 
@@ -130,11 +136,11 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 import { Want } from '@kit.AbilityKit';
 
 function onPushListener(source: Want, template: PluginComponentTemplate, data: pluginComponentManager.KVObject, extraData: pluginComponentManager.KVObject) {
-  console.log("onPushListener template.source=" + template.source);
-  console.log("onPushListener source=" + JSON.stringify(source));
-  console.log("onPushListener template=" + JSON.stringify(template));
-  console.log("onPushListener data=" + JSON.stringify(data));
-  console.log("onPushListener extraData=" + JSON.stringify(extraData));
+  console.info("onPushListener template.source=" + template.source);
+  console.info("onPushListener source=" + JSON.stringify(source));
+  console.info("onPushListener template=" + JSON.stringify(template));
+  console.info("onPushListener data=" + JSON.stringify(data));
+  console.info("onPushListener extraData=" + JSON.stringify(extraData));
 }
 ```
 
@@ -155,7 +161,7 @@ Registers the listener for the request event.
 | --------- | ----------------------------------- | ---- | ----------------- |
 | source    | [Want](../apis-ability-kit/js-apis-application-want.md) | Yes   | Information about the request sender.|
 | name      | string                              | Yes   | Template name.            |
-| data | [KVObject](#kvobject)               | Yes   | Additional data.            |
+| data | [KVObject](#kvobject)               | Yes   | Data.            |
 
 **Return value**
 
@@ -170,10 +176,10 @@ import { pluginComponentManager } from '@kit.ArkUI';
 import { Want } from '@kit.AbilityKit';
 
 function onRequestListener(source: Want, name: string, data: pluginComponentManager.KVObject) {
-  console.error("onRequestListener");
-  console.log("onRequestListener source=" + JSON.stringify(source));
-  console.log("onRequestListener name=" + name);
-  console.log("onRequestListener data=" + JSON.stringify(data));
+  console.info("onRequestListener");
+  console.info("onRequestListener source=" + JSON.stringify(source));
+  console.info("onRequestListener name=" + name);
+  console.info("onRequestListener data=" + JSON.stringify(data));
   let RtnData: Record<string, string | pluginComponentManager.KVObject> = {
     'template': "ets/pages/plugin.js",
     'data': data,
@@ -202,6 +208,7 @@ Pushes the component and data to the component user.
 
 ```ts
 import { pluginComponentManager } from '@kit.ArkUI';
+
 pluginComponentManager.push(
   {
     want: {
@@ -218,8 +225,8 @@ pluginComponentManager.push(
     },
     jsonPath: "",
   },
-  (err, data) => {
-    console.log("push_callback: push ok!");
+  (err) => {
+    console.info("push_callback: push ok!");
   }
 )
 ```
@@ -246,6 +253,7 @@ Requests the component from the component provider.
 
 ```ts
 import { pluginComponentManager } from '@kit.ArkUI';
+
 pluginComponentManager.request(
   {
     want: {
@@ -260,10 +268,10 @@ pluginComponentManager.request(
     jsonPath: "",
   },
   (err, data) => {
-    console.log("request_callback: componentTemplate.ability=" + data.componentTemplate.ability);
-    console.log("request_callback: componentTemplate.source=" + data.componentTemplate.source);
-    console.log("request_callback: data=" + JSON.stringify(data.data));
-    console.log("request_callback: extraData=" + JSON.stringify(data.extraData));
+    console.info("request_callback: componentTemplate.ability=" + data.componentTemplate.ability);
+    console.info("request_callback: componentTemplate.source=" + data.componentTemplate.source);
+    console.info("request_callback: data=" + JSON.stringify(data.data));
+    console.info("request_callback: extraData=" + JSON.stringify(data.extraData));
   }
 )
 ```
@@ -290,18 +298,19 @@ Listens for events of the request type and returns the requested data, or listen
 ```ts
 import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 import { Want } from '@kit.AbilityKit';
+
 function onPushListener(source:Want, template:PluginComponentTemplate, data:pluginComponentManager.KVObject, extraData:pluginComponentManager.KVObject) {
-  console.log("onPushListener template.source=" + template.source);
-  console.log("onPushListener source=" + JSON.stringify(source));
-  console.log("onPushListener template=" + JSON.stringify(template));
-  console.log("onPushListener data=" + JSON.stringify(data));
-  console.log("onPushListener extraData=" + JSON.stringify(extraData));
+  console.info("onPushListener template.source=" + template.source);
+  console.info("onPushListener source=" + JSON.stringify(source));
+  console.info("onPushListener template=" + JSON.stringify(template));
+  console.info("onPushListener data=" + JSON.stringify(data));
+  console.info("onPushListener extraData=" + JSON.stringify(extraData));
 }
 function onRequestListener(source:Want, name:string, data:pluginComponentManager.KVObject) {
-  console.error("onRequestListener");
-  console.log("onRequestListener source=" + JSON.stringify(source));
-  console.log("onRequestListener name=" + name);
-  console.log("onRequestListener data=" + JSON.stringify(data));
+  console.info("onRequestListener");
+  console.info("onRequestListener source=" + JSON.stringify(source));
+  console.info("onRequestListener name=" + name);
+  console.info("onRequestListener data=" + JSON.stringify(data));
   let RtnData:Record<string,string|pluginComponentManager.KVObject> = { 'template': "ets/pages/plugin.js", 'data': data };
   return RtnData;
 }

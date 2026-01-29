@@ -22,7 +22,7 @@ Defines methods for the web controller.
 
 | Type    | Description      |
 | ------ | ---------- |
-| [WebviewController](./arkts-apis-webview-WebviewController.md)  | A **WebviewController** used to control the behavior of the **Web** component. A **WebviewController** object can control only one **Web** component. Methods (except static methods) on the **WebviewController** can be called only after the **Web** component is bound to the **WebviewController**.|
+| [WebviewController](./arkts-apis-webview-WebviewController.md)  | Used to control the behavior of the **Web** component. A **WebviewController** object can control only one **Web** component. Methods (except static methods) on the **WebviewController** can be called only after the **Web** component is bound to the **WebviewController**.|
 
 ## OnAdsBlockedCallback<sup>12+</sup>
 

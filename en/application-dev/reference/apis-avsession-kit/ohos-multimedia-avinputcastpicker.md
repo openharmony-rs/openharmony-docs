@@ -46,9 +46,9 @@ This component is a custom component. Some basic knowledge of [@Component](../..
 
 **Parameters**
 
-| Name| Type| Mandatory| Decorator| Description|	
-| -------- | -------- | -------- | -------- | -------- |	
-| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| @Prop | Custom style. You are advised to customize a component style so that the component can be displayed quickly.|	
+| Name| Type| Mandatory| Decorator| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| @Prop | Custom style. You are advised to customize a component style for higher component rendering performance.|
 | onStateChange | [OnPickerStateCallback](#onpickerstatecallback) | No| - | Callback invoked when the device list state changes.|
 
 ## OnPickerStateCallback

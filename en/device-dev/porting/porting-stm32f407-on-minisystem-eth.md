@@ -1,11 +1,11 @@
 # Mini System STM32F407 SoC Porting Case
 
-This document describes how to port the OpenHarmony LiteOS-M mini system on the Talkweb [Niobe407](https://gitee.com/openharmony-sig/device_board_talkweb) development board based on the `STM32F407IGT6` chip, to provide development board solutions for transportation and industrial fields. The porting architecture uses the `Board` and `SoC` separation solution and the `Newlib C` library of the `arm gcc` toolchain to implement adaptation of subsystems and components such as `lwip`, `littlefs`, and `hdf`. The matching application sample code is developed to support graphical configuration of compilation options through KConfig.
+This document describes how to port the OpenHarmony LiteOS-M mini system on the Talkweb [Niobe407](https://gitcode.com/openharmony-sig/device_board_talkweb) development board based on the `STM32F407IGT6` chip, to provide development board solutions for transportation and industrial fields. The porting architecture uses the `Board` and `SoC` separation solution and the `Newlib C` library of the `arm gcc` toolchain to implement adaptation of subsystems and components such as `lwip`, `littlefs`, and `hdf`. The matching application sample code is developed to support graphical configuration of compilation options through KConfig.
 
 ## Preparing for Adaptation
 
 - Download the graphic tool [stm32cubemx](https://www.st.com/en/development-tools/stm32cubemx.html).
-- Prepare the Ubuntu 20.04 system environment and install the [arm-none-eabi-gcc](https://gitee.com/openharmony/device_board_talkweb/blob/master/niobe407/docs/software/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91.md#6%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE) cross compilation toolchain.
+- Prepare the Ubuntu 20.04 system environment and install the [arm-none-eabi-gcc](https://gitcode.com/openharmony/device_board_talkweb/blob/master/niobe407/docs/software/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%9B%BA%E4%BB%B6%E7%BC%96%E8%AF%91.md#6%E5%AE%89%E8%A3%85%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7%E9%93%BE) cross compilation toolchain.
 ### Generating an Available Project
 
 Generate the Makefile project of the `STM32F407IGT6` chip by using the STM32CubeMX tool. You are advised to complete configurations as follows:
@@ -1179,7 +1179,7 @@ The `devmgr_service_start.h` header file is stored in `//drivers/framework/core/
 
 #### Product Compatibility Specifications
 
-For details about the product compatibility specifications, see [Introduction to Product Compatibility](https://gitee.com/openharmony-sig/compatibility/tree/master).
+For details about the product compatibility specifications, see [Introduction to Product Compatibility](https://gitcode.com/openharmony-sig/compatibility/tree/master).
 
 #### Adding an XTS Subsystem
 

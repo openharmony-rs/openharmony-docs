@@ -61,7 +61,7 @@ particleAbility.startAbility(
     if (error && error.code !== 0) {
       console.error(`startAbility fail, error: ${JSON.stringify(error)}`);
     } else {
-      console.log(`startAbility success, data: ${JSON.stringify(data)}`);
+      console.info(`startAbility success, data: ${JSON.stringify(data)}`);
     }
   },
 );
@@ -220,7 +220,7 @@ startBackgroundRunning(id: number, request: NotificationRequest, callback: Async
 
 > **说明：**
 >
-> 从API version 9开始不再维护，建议使用[backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning)替代。
 
 **参数：**
 
@@ -287,7 +287,7 @@ startBackgroundRunning(id: number, request: NotificationRequest): Promise&lt;voi
 
 > **说明：**
 >
-> 从API version 9开始不再维护，建议使用[backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1)替代。
 
 **参数：**
 
@@ -353,7 +353,7 @@ cancelBackgroundRunning(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始不再维护，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning)替代。
 
 **参数：**
 
@@ -389,7 +389,7 @@ cancelBackgroundRunning(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始不再维护，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1)替代。
 
 **返回值：**
 
@@ -453,10 +453,10 @@ let connId = particleAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`particleAbilityTest ConnectAbility onFailed errCode: ${code}`);
@@ -465,7 +465,7 @@ let connId = particleAbility.connectAbility(
 );
 
 particleAbility.disconnectAbility(connId).then((data) => {
-  console.log(`data: ${data}`);
+  console.info(`data: ${data}`);
 }).catch((error: BusinessError) => {
   console.error(`particleAbilityTest result errCode: ${error.code}`);
 });
@@ -500,10 +500,10 @@ let connId = particleAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`particleAbilityTest ConnectAbility onFailed errCode: ${code}`);
@@ -552,10 +552,10 @@ let connId = particleAbility.connectAbility(
   },
   {
     onConnect: (element, remote) => {
-      console.log(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
+      console.info(`ConnectAbility onConnect remote is proxy: ${(remote instanceof rpc.RemoteProxy)}`);
     },
     onDisconnect: (element) => {
-      console.log(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
+      console.info(`ConnectAbility onDisconnect element.deviceId: ${element.deviceId}`);
     },
     onFailed: (code) => {
       console.error(`particleAbilityTest ConnectAbility onFailed errCode: ${code}`);
@@ -564,7 +564,7 @@ let connId = particleAbility.connectAbility(
 );
 
 particleAbility.disconnectAbility(connId).then(() => {
-  console.log('disconnectAbility success');
+  console.info('disconnectAbility success');
 }).catch((error: BusinessError) => {
   console.error(`particleAbilityTest result errCode : ${error.code}`);
 });

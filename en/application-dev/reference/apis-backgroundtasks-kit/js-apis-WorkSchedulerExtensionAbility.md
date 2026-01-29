@@ -52,10 +52,12 @@ Called when the system starts scheduling the deferred task.
 
   ```ts
   import { workScheduler } from '@kit.BackgroundTasksKit';
+  import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
   export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
     onWorkStart(workInfo: workScheduler.WorkInfo) {
-        console.log('MyWorkSchedulerExtensionAbility onWorkStart' + JSON.stringify(workInfo));
+        console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${workInfo.workId},
+            bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
     }
   }
   ```
@@ -79,10 +81,12 @@ Called when the system stops scheduling the deferred task. This callback is trig
 
   ```ts
   import { workScheduler } from '@kit.BackgroundTasksKit';
+  import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
   export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
     onWorkStop(workInfo: workScheduler.WorkInfo) {
-        console.log('MyWorkSchedulerExtensionAbility onWorkStop' + JSON.stringify(workInfo));
+        console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${workInfo.workId},
+            bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
     }
   }
   ```

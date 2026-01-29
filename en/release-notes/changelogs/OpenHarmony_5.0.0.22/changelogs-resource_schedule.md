@@ -35,4 +35,4 @@ Change plan: In this version, the log "Audio cannot be used after being frozen. 
 To use audio resources in the background, an application must request a continuous task. When it no longer requires the audio resources, it should release the continuous task and audio resources in a timely manner.
 
 For details about how to request a continuous task, refer to the following guide:
-https://gitee.com/openharmony/docs/blob/master/en/application-dev/task-management/continuous-task.md
+https://gitcode.com/openharmony/docs/blob/master/en/application-dev/task-management/continuous-task.md

@@ -25,7 +25,7 @@
 
 **适配指导**
 
-参考使用MeidaKit的[AVScreenCapture接口](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/_a_v_screen_capture.md#oh_audiocapturesourcetype-1)。
+参考使用MeidaKit的[AVScreenCapture接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/_a_v_screen_capture.md#oh_audiocapturesourcetype-1)。
 
 
 ## c1.multimedia.2 native_audiostream_base.h 音频内录接口废弃
@@ -51,4 +51,4 @@ OH_AudioStream_SourceType的AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE枚举值。
 
 **适配指导**
 
-参考使用MeidaKit的[AVScreenCapture接口](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/_a_v_screen_capture.md#oh_audiocapturesourcetype-1)。
+参考使用MeidaKit的[AVScreenCapture接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-media-kit/_a_v_screen_capture.md#oh_audiocapturesourcetype-1)。

@@ -63,7 +63,7 @@ finishTrace(name: string, taskId: number): void
 
 Stops an asynchronous trace.
 
-To stop a trace, the values of name and task ID in finishTrace must be the same as those in [startTrace()](#hitracemeterstarttrace).
+To stop a trace, the values of name and task ID in **finishTrace** must be the same as those in [startTrace()](#hitracemeterstarttrace).
 
 Since API version 19, you are advised to use [finishAsyncTrace()](#hitracemeterfinishasynctrace19), which must be used together with [startAsyncTrace()](#hitracemeterstartasynctrace19).
 
@@ -196,7 +196,7 @@ finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number): void
 
 Stops an asynchronous trace with the trace output level specified.
 
-The **level**, **name**, and **taskId** used in **finishAsyncTrace** must be the same as those of [startAsyncTrace()](#hitracemeterstartasynctrace19).
+The **level**, **name**, and **taskId** used in **finishAsyncTrace()** must be the same as those of [startAsyncTrace()](#hitracemeterstartasynctrace19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -253,7 +253,7 @@ hiTraceMeter.finishAsyncTrace(COMMERCIAL, "myTestFunc", 1);
 
 startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): void
 
-Starts a synchronous trace with the trace output level specified. For details, see the example in [finishSyncTrace()](#hitracemeterfinishsynctrace19).
+Starts a synchronous trace with the trace output level specified. For details, see [finishSyncTrace()](#hitracemeterfinishsynctrace19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -285,7 +285,7 @@ finishSyncTrace(level: HiTraceOutputLevel): void
 
 Stops a synchronous trace with the trace output level specified.
 
-The level of finishSyncTrace must be the same as that of <b>[startSyncTrace()](#hitracemeterstartsynctrace19)</b>.
+The **level** used in **finishSyncTrace** must be the same as that of [startSyncTrace()](#hitracemeterstartsynctrace19).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -363,7 +363,7 @@ Checks whether application trace capture is enabled.
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| boolean | Returns true if trace collection is enabled using the [hitrace](../../dfx/hitrace.md) command line tool. If collection is disabled or stopped, false is returned. In this case, the HiTraceMeter performance tracing dotting API is invalid.|
+| boolean | **true** is returned when the trace capture is enabled using [hitrace](../../dfx/hitrace.md). **false** is returned when it is disabled or stopped. In this case, calling the HiTraceMeter API does not take effect.|
 
 **Example**
 

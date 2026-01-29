@@ -30,7 +30,9 @@ setCookie()
 
 设置cookie，该方法为同步方法。设置成功返回true，否则返回false。
 
-从API version 9开始不再维护，建议使用[setCookie<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#setcookiedeprecated)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setCookie<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#setcookiedeprecated)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -40,6 +42,8 @@ saveCookie()
 
 将当前存在内存中的cookie同步到磁盘中，该方法为同步方法。
 
-从API version 9开始不再维护，建议使用[saveCookieAsync<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#savecookieasync)代替。
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[saveCookieAsync<sup>9+</sup>](./arkts-apis-webview-WebCookieManager.md#savecookieasync)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core

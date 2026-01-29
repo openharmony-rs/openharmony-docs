@@ -1490,7 +1490,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_BAD_REMOVAL"
+**Value**: "usual.event.data.DISK_REMOVED"
 
 
 ### COMMON_EVENT_DISK_UNMOUNTED
@@ -1501,7 +1501,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_UNMOUNTABLE"
+**Value**: "usual.event.data.DISK_UNMOUNTED"
 
 
 ### COMMON_EVENT_DISK_MOUNTED
@@ -1512,7 +1512,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
+**Value**: "usual.event.data.DISK_MOUNTED"
 
 
 
@@ -1524,7 +1524,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_REMOVED"
+**Value**: "usual.event.data.DISK_BAD_REMOVAL"
 
 
 ### COMMON_EVENT_DISK_UNMOUNTABLE
@@ -1535,7 +1535,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_UNMOUNTED"
+**Value**: "usual.event.data.DISK_UNMOUNTABLE"
 
 
 ### COMMON_EVENT_DISK_EJECT
@@ -1578,7 +1578,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: "usual.event.data.DISK_MOUNTED"
+**Value**: "usual.event.hardware.usb.action.USB_ACCESSORY_DETACHED"
 
 ### COMMON_EVENT_BLUETOOTH_HANDSFREE_AG_CONNECT_STATE_UPDATE<sup>(deprecated)</sup>
 (Reserved, not supported yet) Indicates the common event about the connection state of Bluetooth handsfree communication.

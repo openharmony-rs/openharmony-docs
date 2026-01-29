@@ -1,4 +1,10 @@
-# 屏幕管理
+# 屏幕管理<!--display-manager-->
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 - [屏幕管理简介](displayManager-overview.md)
 - [使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)](native-display-manager.md)
@@ -6,3 +12,4 @@
 <!--Del-->
 - [虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](virtualScreen-guideline-sys.md)
 <!--DelEnd-->
+- [屏幕管理开发术语](display-terminology.md)

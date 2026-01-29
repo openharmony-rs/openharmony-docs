@@ -44,7 +44,7 @@ Declares the APIs of **NativeDrag**.
 | [ArkUI_DragPreviewScaleMode](#arkui_dragpreviewscalemode) | ArkUI_DragPreviewScaleMode | Defines an enum for drag preview scale modes.|
 | [ArkUI_DragStatus](#arkui_dragstatus) | ArkUI_DragStatus | Enumerates dragging states.|
 
-### Callback
+### Functions
 
 | Name| Description|
 | -- | -- |

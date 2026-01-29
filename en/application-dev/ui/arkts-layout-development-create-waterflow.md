@@ -1,7 +1,18 @@
 # Creating a Waterfall Flow (WaterFlow)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fangyuhao-->
+<!--Designer: @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 You can use the [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) component in ArkUI to create a waterfall flow layout, which is commonly used to display image collections, especially in e-commerce and news applications.
-The WaterFlow component supports conditional rendering, loop rendering (rendering of repeated content), and lazy loading to generate child components.
+ArkUI provides the WaterFlow container component for building a waterfall layout. The WaterFlow component supports conditional rendering, cyclic rendering, and lazy loading to generate subcomponents.
+
+> **NOTE**
+>
+> This topic presents key code excerpts. For complete executable code, see the [WaterFlow example](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#example).
 
 ## Layout and Constraints
 
@@ -304,6 +315,7 @@ struct WaterFlowDemo {
 
 >**NOTE**
 >
->Footers are not supported with **WaterFlowSections**; use the last section as a footer instead.
+>Footers are not supported in mixed section layouts. Use the last section as a footer instead.
 >
->Always update the corresponding **itemsCount** when adding or removing data to maintain layout consistency.
+>Always update the corresponding **itemCount** when adding or removing data to maintain layout consistency.
+

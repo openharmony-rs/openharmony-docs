@@ -81,36 +81,36 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
+  import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
 
-let want: Want = {
-  bundleName: "com.example.myapp",
-  abilityName: "MyAbility"
-};
+  let want: Want = {
+    bundleName: "com.example.myapp",
+    abilityName: "MyAbility"
+  };
 
-class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
-  onReceiveEvent(event: commonEventManager.CommonEventData) {
-    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
 
-    try {
-      this.context.startAbility(want, (error: BusinessError) => {
-        if (error) {
-          // Process service logic errors.
-          console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
-          return;
-        }
-        // Carry out normal service processing.
-        console.info('startAbility succeed');
-      });
-    } catch (paramError) {
-      // Process input parameter errors.
-      let code = (paramError as BusinessError).code;
-      let message = (paramError as BusinessError).message;
-      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      try {
+        this.context.startAbility(want, (error: BusinessError) => {
+          if (error) {
+            // Process service logic errors.
+            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+            return;
+          }
+          // Carry out normal service processing.
+          console.info('startAbility succeed');
+        });
+      } catch (paramError) {
+        // Process input parameter errors.
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      }
     }
   }
-}
   ```
 
 ## StaticSubscriberExtensionContext.startAbility
@@ -167,33 +167,33 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
+  import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
 
-let want: Want = {
-  bundleName: "com.example.myapp",
-  abilityName: "MyAbility"
-};
+  let want: Want = {
+    bundleName: "com.example.myapp",
+    abilityName: "MyAbility"
+  };
 
-class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
-  onReceiveEvent(event: commonEventManager.CommonEventData) {
-    console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
-    try {
-      this.context.startAbility(want)
-        .then(() => {
-          // Carry out normal service processing.
-          console.info('startAbility succeed');
-        })
-        .catch((error: BusinessError) => {
-          // Process service logic errors.
-          console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
-        });
-    } catch (paramError) {
-      // Process input parameter errors.
-      let code = (paramError as BusinessError).code;
-      let message = (paramError as BusinessError).message;
-      console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+      try {
+        this.context.startAbility(want)
+          .then(() => {
+            // Carry out normal service processing.
+            console.info('startAbility succeed');
+          })
+          .catch((error: BusinessError) => {
+            // Process service logic errors.
+            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+          });
+      } catch (paramError) {
+        // Process input parameter errors.
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error(`startAbility failed, error.code: ${JSON.stringify(code)}, error.message: ${JSON.stringify(message)}.`);
+      }
     }
   }
-}
   ```

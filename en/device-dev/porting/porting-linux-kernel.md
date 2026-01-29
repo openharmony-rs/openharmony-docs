@@ -123,7 +123,7 @@ obj-$(CONFIG_HIEVENT)           += hievent/
 
 Enable the CONFIG macros **CONFIG\_HILOG** and **CONFIG\_HIEVENT** in the kernel **config** section.
 
-For details about how to use the logs, see [Hilog\_lite](https://gitee.com/openharmony/hiviewdfx_hilog_lite/blob/master/README.md).
+For details about how to use the logs, see [Hilog\_lite](https://gitcode.com/openharmony/hiviewdfx_hilog_lite/blob/master/README.md).
 
 ### Porting the HDF Feature
 

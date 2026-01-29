@@ -20,7 +20,7 @@ The application exits after the crash or freeze event occurs.
 You can restart the application and view the event content.
 
 
-## What should I do if the external_log log file cannot be obtained?
+## What should I do if the external_log file cannot be obtained?
 
 **Symptom**
 
@@ -76,7 +76,7 @@ Obtain other logs of the system event to check whether the system event is trigg
 
 **Scenario 5**
 
-The **external_log** log file is deleted after being generated.
+The **external_log** file is deleted after being generated.
 
 For example, the system event C is subscribed to by modules A and B in an application. After processing the callback of system event C, module A deletes the **external_log** file. When module B accesses the **external_log** file in the callback of system event C, a message is displayed, indicating that the log file does not exist.
 
@@ -103,35 +103,63 @@ The directory containing the **external_log** files reaches its space limit, but
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
 
-if (eventInfo.params['external_log'] != undefined) {
-  for (let index = 0; index < eventInfo.params['external_log'].length; ++index) {
-    let externalLog: string = eventInfo.params['external_log'][index];
-    hilog.info(0x0000, 'testTag', `externalLog=${externalLog}`);
-    // Verify the access permission.
-    let res = fs.accessSync(externalLog);
-    if (res) {
-      hilog.info(0x0000, 'testTag', `HiAppEvent file exists`);
-    } else {
-      hilog.error(0x0000, 'testTag', `HiAppEvent file does not exist`);
+  hiAppEvent.addWatcher({
+    // Set the watcher name. The system identifies different watchers based on their names.
+    name: "AppCrashWatcher",
+    // Set the subscription filters. For example, subscribe to the crash event of the system event.
+    appEventFilters: [
+      {
+        domain: hiAppEvent.domain.OS,
+        names: [hiAppEvent.event.APP_CRASH]
+      }
+    ],
+    // Implement the onReceive callback, which is called in real time after an event is detected.
+    onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+      hilog.info(0x0000, 'testTag', `domain=${domain}`);
+      for (const eventGroup of appEventGroups) {
+        hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
+        for (const eventInfo of eventGroup.appEventInfos) {
+          // Obtain the timestamp of the crash event.
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${JSON.stringify(eventInfo.params['time'])}`);
+          // Obtain the bundle name of the crashed application.
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${JSON.stringify(eventInfo.params['bundle_name'])}`);
+          // Obtain the error log file about the crash event.
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
+
+          if (eventInfo.params['external_log'] != undefined) {
+            for (let index = 0; index < eventInfo.params['external_log'].length; ++index) {
+              let externalLog: string = eventInfo.params['external_log'][index];
+              hilog.info(0x0000, 'testTag', `externalLog=${externalLog}`);
+              // Verify the access permission.
+              let res = fs.accessSync(externalLog);
+              if (res) {
+                hilog.info(0x0000, 'testTag', `HiAppEvent file exists`);
+              } else {
+                hilog.error(0x0000, 'testTag', `HiAppEvent file does not exist`);
+              }
+              // Verify the read and write permissions.
+              fs.open(externalLog, fs.OpenMode.READ_WRITE).then((file: fs.File) => {
+              hilog.info(0x0000, 'testTag', `HiAppEvent file=${externalLog} fd=${file.fd}`);
+              fs.closeSync(file);
+              }).catch((err: BusinessError) => {
+                hilog.info(0x0000, 'testTag',
+                `HiAppEvent open file=${externalLog} failed with error message=${err.message}, error code=${err.code}`);
+              });
+              // Delete the external_log file.
+              fs.unlink(externalLog).then(() => {
+                console.info("HiAppEvent remove file:" + externalLog + " succeed");
+              }).catch((err: BusinessError) => {
+                console.error("HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
+                ", error code: " + err.code);
+              });
+            }
+          }
+        }
+      }
     }
-    // Verify the read and write permissions.
-    fs.open(externalLog, fs.OpenMode.READ_WRITE).then((file: fs.File) => {
-      hilog.info(0x0000, 'testTag', `HiAppEvent file=${externalLog} fd=${file.fd}`);
-      fs.closeSync(file);
-    }).catch((err: BusinessError) => {
-      hilog.info(0x0000, 'testTag',
-        `HiAppEvent open file=${externalLog} failed with error message=${err.message}, error code=${err.code}`);
-    });
-    // Delete the external_log file.
-    fs.unlink(externalLog).then(() => {
-      console.info("HiAppEvent remove file:" + externalLog + " succeed");
-    }).catch((err: BusinessError) => {
-      console.error("HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +
-        ", error code: " + err.code);
-    });
-  }
-}
+  });
 ```
 
 Log about accessing and deleting the **external_log** file:

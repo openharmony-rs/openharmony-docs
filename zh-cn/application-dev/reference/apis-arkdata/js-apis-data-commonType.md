@@ -46,7 +46,7 @@ import { commonType } from '@kit.ArkData';
 | path       | string                      | 否   | 否   | 资产在应用沙箱里的路径。           |
 | createTime | string                      | 否   | 否   | 资产被创建出来的时间。             |
 | modifyTime | string                      | 否   | 否   | 资产最后一次被修改的时间。         |
-| size       | string                      | 否   | 否   | 资产占用空间的大小。               |
+| size       | string                      | 否   | 否   | 资产占用空间的大小。确保在全链路中保持统一、一致的存储格式与取值逻辑。建议所有系统节点均采用标准化处理方式（单位为字节（Byte），取值为非负整数）。 |
 | status     | [AssetStatus](#assetstatus) | 否   | 是   | 资产的状态，默认值为ASSET_NORMAL。 |
 
 ## Assets

@@ -16,4 +16,4 @@
 
 | 名称                                     | 描述 |
 |----------------------------------------| -- |
-| struct [NativeChildProcess_Fd](capi-nativechildprocess-fd.md)* head | 子进程文件描述记录链表中的第一个记录。 |
+| struct [NativeChildProcess_Fd](capi-nativechildprocess-fd.md)* head | 子进程文件描述符记录链表中的第一个记录。 |

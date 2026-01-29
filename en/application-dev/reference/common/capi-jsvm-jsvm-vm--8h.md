@@ -8,7 +8,7 @@
 
 ## Overview
 
-JavaScript VM instance.
+Defines the JavaScript VM instance.
 
 **Since**: 11
 

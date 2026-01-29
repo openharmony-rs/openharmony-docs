@@ -16,7 +16,7 @@ The **&lt;svg&gt;** component is used as the root node of the SVG canvas and can
 
 ## Creating an &lt;svg&gt; Component
 
-Create a **&lt;svg&gt;** component in the .hml file under **pages/index**.
+Create an **&lt;svg&gt;** component in the .hml file under **pages/index**.
 
 
 ```html

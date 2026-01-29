@@ -1,5 +1,10 @@
 # Launching UIAbility to the Background (call Event)
-
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 
 There may be cases you want to provide in a widget access to features available in your application running in the foreground, for example, the play, pause, and stop buttons in a music application widget. This is where the **call** capability of the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API comes in handy. This capability, when used in a widget, can start the specified UIAbility of the widget provider in the background. It also allows the widget to call the specified method of the application and transfer data so that the application, while in the background, can behave accordingly in response to touching of the buttons on the widget.
 
@@ -88,7 +93,7 @@ There may be cases you want to provide in a widget access to features available 
     const CONST_NUMBER_1: number = 1;
     const CONST_NUMBER_2: number = 2;
     
-    // Implementation of the RPC return type, which is used for RPC data serialization and deserialization.
+    // Implementation of the IPC return type, which is used for data serialization and deserialization.
     class MyParcelable implements rpc.Parcelable {
       num: number;
       str: string;

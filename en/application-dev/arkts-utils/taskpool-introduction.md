@@ -24,7 +24,7 @@ With TaskPool, you can submit tasks in the host thread to the task queue. The sy
 
 - A task function (except [LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)) must finish the execution in a TaskPool's worker thread within 3 minutes. Otherwise, it is forcibly terminated. Note that the 3-minute limit only applies to the synchronous running duration of the TaskPool thread, excluding the waiting duration of asynchronous operations (such as Promise or async/await calls). For example, when database insert, delete, and update operations are asynchronous, only the actual CPU processing time (such as SQL parsing) is counted, excluding network transmission or disk I/O waiting time. For synchronous database insert, delete, and update operations, the entire operation duration (including I/O blocking time) is counted. You can obtain the asynchronous I/O duration and CPU duration of the current task through the **ioDuration** and **cpuDuration** properties of [Task](../reference/apis-arkts/js-apis-taskpool.md#task).
 
-- Parameters of functions implementing tasks must be of types supported by serialization. For details, see [Inter-Thread Communication](interthread-communication-overview.md). Currently, complex types decorated with [@State](../ui/state-management/arkts-state.md), [@Prop](../ui/state-management/arkts-prop.md), and [@Link](../ui/state-management/arkts-link.md) are not supported.
+- Parameters of functions implementing tasks must be of types supported by serialization. For details, see [Overview of Inter-Thread Communication Objects](serializable-overview.md). Currently, complex types decorated with [@State](../ui/state-management/arkts-state.md), [@Prop](../ui/state-management/arkts-prop.md), and [@Link](../ui/state-management/arkts-link.md) are not supported.
 
 - Parameters of the ArrayBuffer type are transferred in TaskPool by default. You can set the transfer list by calling [setTransferList()](../reference/apis-arkts/js-apis-taskpool.md#settransferlist10). If you need to call a task that uses ArrayBuffer as a parameter multiple times, call [setCloneList()](../reference/apis-arkts/js-apis-taskpool.md#setclonelist11) to change the transfer behavior of ArrayBuffer in the thread to pass-by-copy, avoiding affecting the original object.
 
@@ -55,7 +55,7 @@ In addition to the preceding precautions, pay attention to [concurrency precauti
   }
   ```
 
-- The context objects in different threads are different. Therefore, TaskPool worker threads can use only thread-safe libraries. For example, non-thread-safe UI-related libraries cannot be used.
+- Context objects vary across different threads. TaskPool worker threads can only use thread-safe modules, and non-thread-safe UI-related modules are not allowed. Worker threads (such as those in TaskPool and Worker) do not support UI operation modules, non-thread-safe modules, or modules restricted to the main thread. UI modules are unsupported because worker threads do not support UI operations. Non-thread-safe modules are unsupported because using these modules in multiple threads may cause multi-thread problems. Modules that can be used only in the main thread are specified in the documentation, such as [ApplicationContext](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md). Thread-safe modules are those that can be used by multiple threads at the same time without introducing multithreading problems, such as TaskPool, [Worker](./worker-introduction.md), and [hilog](../dfx/hilog.md).
 
 - A maximum of 16 MB data can be serialized.
 
@@ -83,7 +83,7 @@ To pass function verification, concurrent functions executed in a [TaskPool](../
 | Use scenario| Used only in projects of the stage model and only in .ets files.|
 | Decorated function types| Used for async functions or regular functions. It cannot be used for generators, arrow functions, or class methods. It does not support class member functions or anonymous functions.|
 | Variable types in decorated functions| Local variables, parameters, and variables imported through **import** are allowed. Closure variables cannot be used.|
-| Return value types in decorated functions| Supported types are listed in [Inter-Thread Communication](interthread-communication-overview.md).|
+| Return value types in decorated functions| Supported types are listed in [Overview of Inter-Thread Communication Objects](serializable-overview.md).|
 
 > **NOTE**
 >

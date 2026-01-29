@@ -52,12 +52,12 @@
 
 2. 配置加速度传感器权限，具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-   ```json
+   ``` JSON5
    "requestPermissions": [
-         {
-           "name": "ohos.permission.ACCELEROMETER"
-         },
-       ]
+     {
+       "name": "ohos.permission.ACCELEROMETER"
+     }
+   ]
    ```
 
 3. CMakeLists.txt文件中引入动态依赖库。
@@ -241,7 +241,7 @@
        return result;
    }
    ```
-   
+
 9. 在Init函数中补充接口。
 
    ```c

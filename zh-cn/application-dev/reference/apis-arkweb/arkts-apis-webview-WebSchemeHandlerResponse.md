@@ -34,9 +34,8 @@ Response的构造函数。
 
 ```ts
 // xxx.ets
-import { webview } from '@kit.ArkWeb';
+import { webview, WebNetErrorList } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { WebNetErrorList } from '@ohos.web.netErrorList';
 
 @Entry
 @Component
@@ -372,7 +371,7 @@ getEncoding(): string
 
 getHeaderByName(name: string): string
 
-获取Response的字符集。
+按名称获取Response头部字段值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

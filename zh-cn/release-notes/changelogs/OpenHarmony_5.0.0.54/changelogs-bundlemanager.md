@@ -28,12 +28,12 @@ API 7
 
 **变更的接口/组件**
 
-[bm工具](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/tools/bm-tool.md#%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4)安装命令。
+[bm工具](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/tools/bm-tool.md#%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4)安装命令。
 
 **适配指导**
 
 1. 重新签名，保证应用签名信息中的[密钥](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326)和[APP ID](https://developer.huawei.com/consumer/cn/doc/app/agc-help-createharmonyapp-0000001945392297)任意一个与预置应用的一致。
-2. 修改安装应用的[bundleName](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/quick-start/app-configuration-file.md)，确保与预置应用的不一致。
+2. 修改安装应用的[bundleName](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/quick-start/app-configuration-file.md)，确保与预置应用的不一致。
 
 ## cl.bundlemanager.2 bm uninstall命令无法直接卸载已设置应用锁的应用
 
@@ -69,4 +69,4 @@ bm工具的uninstall命令
 
 **适配指导**
 
-bm uninstall命令卸载已设置应用锁的应用前，通过[deleteUninstallDisposedRule](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-appControl-sys.md#appcontroldeleteuninstalldisposedrule15)接口关闭应用锁。若为终端设备，也可在设备的"设置"->"隐私和安全"->"应用锁"界面关闭应用锁，或在运行卸载命令后设备会弹出解锁页面，输入密码解锁即可。
+bm uninstall命令卸载已设置应用锁的应用前，通过[deleteUninstallDisposedRule](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-appControl-sys.md#appcontroldeleteuninstalldisposedrule15)接口关闭应用锁。若为终端设备，也可在设备的"设置"->"隐私和安全"->"应用锁"界面关闭应用锁，或在运行卸载命令后设备会弹出解锁页面，输入密码解锁即可。

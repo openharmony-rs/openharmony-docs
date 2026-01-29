@@ -1,4 +1,10 @@
-# Basic Services Kit（基础服务）
+# Basic Services Kit（基础服务）<!--basic-services-kit-->
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 - [Basic Services Kit简介](basic-services-kit-overview.md)
 - [进程线程通信](common-event/Readme-CN.md)<!--app-events-->
@@ -11,3 +17,4 @@
 <!--Del-->
 - [划词服务](selectionInput/Readme-CN.md)<!--selectioninput-->
 <!--DelEnd-->
+- [打印](print/Readme-CN.md)<!--print-->

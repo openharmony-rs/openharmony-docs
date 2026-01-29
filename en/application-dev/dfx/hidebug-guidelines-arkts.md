@@ -15,7 +15,7 @@ This topic describes how to call the HiDebug ArkTS API to obtain the system CPU 
 
 1. Use DevEco Studio to create a project and select **Empty Ability**.
 
-2. In the **Project** window, click **entry** > **src** > **main** > **ets** > **pages** to open and edit the **Index.ets** file.
+2. In the **Project** window, click **entry** > **src** > **main** > **ets** > **pages** to open the **Index.ets** file.
 
    ```typescript
    import { hidebug } from '@kit.PerformanceAnalysisKit';

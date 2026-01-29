@@ -6,13 +6,13 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供查询默认应用的能力，支持查询当前应用是否是默认应用。
+本模块提供查询，设置和重置默认应用的能力，支持查询当前应用是否是默认应用。
 
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[`@ohos.bundle.defaultAppManager`](js-apis-defaultAppManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bundle.defaultAppManager](js-apis-defaultAppManager.md)。
 
 ## 导入模块
 
@@ -24,7 +24,7 @@ import { defaultAppManager } from '@kit.AbilityKit';
 
 getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用Promise异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -95,7 +95,7 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<BundleInfo>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -162,7 +162,7 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型获取默认应用信息。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -270,21 +270,21 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 try {
   let data = defaultAppManager.getDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER)
   console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   let data = defaultAppManager.getDefaultApplicationSync("image/png")
   console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   let data = defaultAppManager.getDefaultApplicationSync(uniformTypeDescriptor.UniformDataType.AVI)
   console.info('Operation successful. bundleInfo: ' + JSON.stringify(data));
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```
@@ -293,7 +293,7 @@ try {
 
 setDefaultApplication(type: string, elementName: ElementName, userId?: number): Promise\<void>
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用，使用Promise异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -382,7 +382,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -462,7 +462,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型设置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -577,46 +577,46 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 
 try {
   defaultAppManager.setDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER, {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-});
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  });
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 let userId = 100;
 try {
   defaultAppManager.setDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER, {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-}, userId);
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.setDefaultApplicationSync("image/png", {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-}, userId);
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.setDefaultApplicationSync(uniformTypeDescriptor.UniformDataType.AVI, {
-  bundleName: "com.example.myapplication",
-  moduleName: "module01",
-  abilityName: "EntryAbility"
-}, userId);
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```
@@ -625,7 +625,7 @@ try {
 
 resetDefaultApplication(type: string, userId?: number): Promise\<void>
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用，使用Promise异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -696,7 +696,7 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -733,13 +733,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { uniformTypeDescriptor } from '@kit.ArkData';
 
 let userId = 100;
-defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful.');
-});
+defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId,
+  (err: BusinessError, data) => {
+    if (err) {
+      console.error('Operation failed. Cause: ' + JSON.stringify(err));
+      return;
+    }
+    console.info('Operation successful.');
+  });
 
 defaultAppManager.resetDefaultApplication("image/png", userId, (err: BusinessError, data) => {
   if (err) {
@@ -749,20 +750,21 @@ defaultAppManager.resetDefaultApplication("image/png", userId, (err: BusinessErr
   console.info('Operation successful.');
 });
 
-defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId, (err: BusinessError, data) => {
-  if (err) {
-    console.error('Operation failed. Cause: ' + JSON.stringify(err));
-    return;
-  }
-  console.info('Operation successful.');
-});
+defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId,
+  (err: BusinessError, data) => {
+    if (err) {
+      console.error('Operation failed. Cause: ' + JSON.stringify(err));
+      return;
+    }
+    console.info('Operation successful.');
+  });
 ```
 
 ## defaultAppManager.resetDefaultApplication
 
 resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
-根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用，使用callback异步回调。
+根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md)类型重置默认应用。使用callback异步回调。
 
 **需要权限：** ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -863,21 +865,21 @@ let userId = 100;
 try {
   defaultAppManager.resetDefaultApplicationSync(defaultAppManager.ApplicationType.BROWSER, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.resetDefaultApplicationSync("image/png", userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 
 try {
   defaultAppManager.resetDefaultApplicationSync(uniformTypeDescriptor.UniformDataType.AVI, userId);
   console.info('Operation successful.');
-} catch(error) {
+} catch (error) {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```

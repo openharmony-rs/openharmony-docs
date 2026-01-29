@@ -120,7 +120,7 @@ startAbility(want: Want): Promise&lt;void&gt;;
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 用于指定目标应用的Want类型信息，包括ability名称、bundle名称等。 |
 
 **返回值：**
 

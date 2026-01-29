@@ -47,6 +47,7 @@ CPP code:
 
 ```cpp
 #include "napi/native_api.h"
+#include "hilog/log.h"
 static napi_value GetLastErrorInfo(napi_env env, napi_callback_info info)
 {
     // Obtain the input parameter, that is the message string in this example.
@@ -90,6 +91,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_last_error_info: %{public}s', testNapi.getLastErrorInfo('message'));
 } catch (error) {
@@ -135,6 +137,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   throw testNapi.createTypeError();
 } catch (error) {
@@ -180,6 +183,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   throw testNapi.createRangeError();
 } catch (error) {
@@ -233,6 +237,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.napiThrow();
 } catch (error) {
@@ -290,6 +295,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.napiThrowErrorMessage();
 } catch (error) {
@@ -352,6 +358,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.throwTypeErrorMessage();
 } catch (error) {
@@ -420,6 +427,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.throwRangeErrorMessage();
 } catch (error) {
@@ -474,6 +482,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   throw new Error("throwing an error");
 } catch (error) {
@@ -522,6 +531,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // Obtain the last unprocessed exception.
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_and_clear_last_exception, error.message: %{public}s',
            testNapi.getAndClearLastException());
@@ -576,6 +586,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 interface MyObject {
   code: string;
   message: string;
@@ -626,6 +637,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   testNapi.fatalError();
 } catch (error) {
@@ -673,7 +685,6 @@ export const fatalException: (err: Error) => void;
 ArkTS code:
 
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
 const err = new Error("a fatal exception occurred");

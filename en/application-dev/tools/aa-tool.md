@@ -22,7 +22,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 |--------|--------|
 | -h/help |  Displays the help information of the aa tool.|
 | start |  Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.|
-| stop-service |  Stops a ServiceAbility.|
+| stop-service | Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.|
 | dump<sup>(deprecated)</sup> |  Prints information about an application component.|
 | force-stop |  Forcibly stops a process based on the bundle name.|
 | test |  Starts the test framework based on the carried parameters.|
@@ -44,11 +44,12 @@ aa help
 Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.
 
 ```bash
-# Display the ability started.
-aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <integer-value>] [--pb <key> <bool-value: true/false/t/f is case-insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+# Start an ability explicitly.
+# To enable an application clone, use [--pi ohos.extra.param.key.appCloneIndex <unsigned integer-value>] to specify the index of the application clone.
+aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case-insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 
 # Implicitly start an ability. If none of the parameters in the command is set, the startup fails.
-aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c] [-D] [-E] [-R] [--pi <key> <integer-value>] [--pb <key> <bool-value: true/false/t/f is case insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 ```
 
   **Parameters**
@@ -60,13 +61,13 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -a | Ability name. This parameter is optional.|
   | -b | Bundle name. This parameter is optional. |
   | -m | Module name. This parameter is optional. |
-  | -U | URI. This parameter is optional.        |
+  | -U | URI. This parameter is optional.<br>Note: Only strings can be passed.|
   | -A | Action. This parameter is optional.     |
   | -e | Entity. This parameter is optional.     |
   | -t | Type. This parameter is optional.       |
-  | --pi  | Key-value pair of the integer type. This parameter is optional.    |
+  | --pi  | Key-value pair of the integer type. This parameter is optional.<br>Note: Only unsigned integer values are supported.    |
   | --pb  | Key-value pair of the Boolean type. This parameter is optional.    |
-  | --ps  | Key-value pair of the string type. This parameter is optional.   |
+  | --ps  | Key-value pair of the string type. This parameter is optional.<br>Note: The string value cannot start with a hyphen (-).   |
   | --psn | Keyword of an empty string. This parameter is optional.    |
   | --wl | Left margin of the window, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
   | --wt | Top margin of the window, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
@@ -185,7 +186,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
 
 ## stop-service
 
-Stops a ServiceAbility.
+Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.
 
 ```bash
 aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName>]
@@ -202,7 +203,7 @@ aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName
 
   **Return value**
 
-  Returns "stop service ability successfully." if the ServiceAbility is stopped; returns "error: failed to stop service ability." otherwise.
+  "stop service ability successfully." is returned if the ServiceAbility or ExtensionAbility is stopped; "error: failed to stop service ability." is returned otherwise.
 
   **Error codes**
 
@@ -323,7 +324,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
 > **NOTE**
 > 
-> For details about parameters such as **class**, **level**, **size**, and **testType**, see <!--RP2-->[Parameters in the aa test Commands](../application-test/unittest-guidelines.md) <!--RP2End-->.
+> For details about parameters such as **class**, **level**, **size**, and **testType**, see <!--RP2-->[Parameters in the aa test Commands](../application-test/unittest-guidelines.md#running-test-scripts-in-the-cli)<!--RP2End-->.
 
   **Parameters**
   | Name| Description|
@@ -951,7 +952,7 @@ An internal error occurs while attempting to launch the ability.
 
 **Symptom**
 
-An error occurs during internal processing, such as memory application or multi-thread processing.
+An error occurs during internal processing, such as memory allocation or multithreaded processing.
 
 **Possible Causes**
 
@@ -1055,7 +1056,7 @@ An internal error occurs during the execution of the aa test command.
 
 **Symptom**
 
-An error occurs during internal processing, such as memory application or multi-thread processing.
+An error occurs during internal processing, such as memory allocation or multithreaded processing.
 
 **Possible Causes**
 
@@ -1073,7 +1074,7 @@ An internal error occurs while attempting to enter/exit debug mode.
 
 **Symptom**
 
-An error occurs during internal processing, such as memory application or multi-thread processing.
+An error occurs during internal processing, such as memory allocation or multithreaded processing.
 
 **Possible Causes**
 

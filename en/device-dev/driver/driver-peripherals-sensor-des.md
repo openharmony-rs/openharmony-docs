@@ -64,7 +64,7 @@ The sensor driver model provides APIs for the hardware service to make sensor se
 
 **Table 1** APIs of the sensor driver model
 
-**NOTE**<br>The following APIs are C interfaces. For details about the interface declaration, see [/drivers/peripheral/sensor/interfaces/include](https://gitee.com/openharmony/drivers_peripheral/tree/master/sensor/interfaces/include).
+**NOTE**<br>The following APIs are C interfaces. For details about the interface declaration, see [/drivers/peripheral/sensor/interfaces/include](https://gitcode.com/openharmony/drivers_peripheral/tree/master/sensor/interfaces/include).
 
 | API| Description|
 | ----- | -------- |

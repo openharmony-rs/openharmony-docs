@@ -14,6 +14,8 @@ Declares the enums used to access native XComponent key events.
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
 
+**Sample**: <!--RP1-->[NativeXComponentSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP1End-->
+
 ## Summary
 
 ### Enums

@@ -71,4 +71,4 @@ setSurfaceId接口的实现中增加系统应用鉴权处理，非系统应用�
 
 **适配指导**
 
-需要修改[应用签名](https://gitee.com/openharmony/developtools_hapsigner/tree/master/dist)相关文件UnsgnedReleasedProfileTemplate.json，其中的app-feature字段要改为"hos_system_app"，才可保证签名所得到的应用是系统应用。
+需要修改[应用签名](https://gitcode.com/openharmony/developtools_hapsigner/tree/master/dist)相关文件UnsgnedReleasedProfileTemplate.json，其中的app-feature字段要改为"hos_system_app"，才可保证签名所得到的应用是系统应用。

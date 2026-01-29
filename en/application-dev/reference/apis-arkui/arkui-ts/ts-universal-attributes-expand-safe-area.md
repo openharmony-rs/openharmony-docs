@@ -4,7 +4,7 @@
 <!--Owner: @WendongPang-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A safe area refers to the display area that is not covered by system-defined non-safe area components such as the status bar, navigation bar, or other system UI elements. By default, all content you develop is placed within the safe area. If necessary, you can expand a component's safe area through the [expandSafeArea](#expandsafearea) attribute. This allows the component to extend its rendering area beyond the safe area without altering the layout. In addition, you can specify how to make space for the virtual keyboard through the [setKeyboardAvoidMode](#setkeyboardavoidmode11) attribute. To prevent text elements, such as a title bar, from overlapping with non-safe areas, you are advised to set the **expandSafeArea** attribute for the component to achieve an immersive effect. Alternatively, you can use the [setWindowLayoutFullScreen](../arkts-apis-window-Window.md#setwindowlayoutfullscreen9) API directly to set an immersive layout.
 
@@ -50,9 +50,9 @@ Sets the safe area to be expanded to.
 >
 >  The safe area does not restrict the layout or size of components inside, nor does it clip the components.
 >
->  If the parent container is a scrollable container, the **expandSafeArea** attribute does not take effect.
+>  If the parent container is a scrollable container, the **expandSafeArea** attribute has no effect.
 >
->  When **expandSafeArea()** is set, no parameter is passed in, and the default value is used. When **expandSafeArea([],[])** is set, an empty array is passed in, and the settings do not take effect.
+>  When **expandSafeArea()** is set without parameters, default values are applied. When **expandSafeArea([],[])** is used with empty arrays, the setting has no effect.
 >   
 >  Prerequisites for the **expandSafeArea** attribute to take effect: 
 >  1. When **type** is set to **SafeAreaType.KEYBOARD**, the settings take effect by default. This behaves as the component not avoiding the virtual keyboard.<br>
@@ -78,9 +78,9 @@ Enumerates the types for expanding layout safe areas.
 
 | Name   | Value  | Description                              |
 | ------- | ---- | ---------------------------------- |
-| SYSTEM   |-| Default non-safe area of the system, including the status bar and navigation bar.  |
-| CUTOUT   |- | Device-specific non-safe area, such as the notch area or camera cutout area.|
-| KEYBOARD |- |Soft keyboard area.                              |
+| SYSTEM   |0| Default non-safe area of the system, including the status bar and navigation bar.  |
+| CUTOUT   |1 | Device-specific non-safe area, such as the notch area or camera cutout area.|
+| KEYBOARD |2 |Soft keyboard area.                              |
 
 ## SafeAreaEdge
 
@@ -92,10 +92,10 @@ Enumerates the edges for expanding the safe area.
 
 | Name   | Value  | Description                              |
 | ------- | ---- | ---------------------------------- |
-| TOP    |-| Top edge.|
-| BOTTOM |-| Bottom edge.|
-| START  |-| Start edge.|
-| END    |-| End edge.|
+| TOP    |0| Top edge.|
+| BOTTOM |1| Bottom edge.|
+| START  |2| Start edge.|
+| END    |3| End edge.|
 
 ## setKeyboardAvoidMode<sup>11+</sup>
 
@@ -253,7 +253,7 @@ struct SafeAreaExample2 {
 }
 ```
 
-As shown in the figure below, the **Column** component expands to the top status bar ([SafeAreaEdge.TOP]) but does not expand to the bottom navigation bar ([SafeAreaEdge.BOTTOM]). The height of the component after expansion remains consistent with the set height.
+As shown in the figure below, the **Column** component expands to the top status bar ([SafeAreaEdge.TOP]) but does not expand to the bottom navigation bar ([SafeAreaEdge.BOTTOM]). The height of the component after expansion remains consistent with the set value.
 
 ![expandSafeArea2](figures/expandSafeArea2.png)
 
@@ -294,7 +294,7 @@ struct SafeAreaExample3 {
 }
 ```
 
-![expandSafeArea3](figures/expandSafeArea3.png)
+![expandSafeArea3](figures/expandSafeArea3.gif)
 
 ### Example 4: Setting the Keyboard Avoidance Mode to Resize
 
@@ -338,7 +338,7 @@ struct KeyboardAvoidExample1 {
 }
 ```
 
-![keyboardAvoidMode1](figures/keyboardAvoidMode1.jpg)
+![keyboardAvoidMode1](figures/keyboardAvoidMode1.gif)
 
 ### Example 5: Setting Keyboard Avoidance Mode to Offset
 
@@ -382,7 +382,7 @@ struct KeyboardAvoidExample2 {
 }
 ```
 
-![keyboardAvoidMode1](figures/keyboardAvoidMode2.jpg)
+![keyboardAvoidMode1](figures/keyboardAvoidMode2.gif)
 
 ### Example 6: Switching Avoidance Modes
 
@@ -440,17 +440,7 @@ struct KeyboardAvoidExample3 {
   }
 }
 ```
-OFFSET mode
-
-![keyboardAvoidMode3-1](figures/keyboardAvoidMode3-1.jpg)
-
-RESIZE mode
-
-![keyboardAvoidMode3-2](figures/keyboardAvoidMode3-2.jpg)
-
-NONE mode
-
-![keyboardAvoidMode3-3](figures/keyboardAvoidMode3-3.jpg)
+![keyboardAvoidMode3](figures/keyboardAvoidMode3.gif)
 
 ### Example 7: Expanding the Safe Area in Scrollable Containers
 

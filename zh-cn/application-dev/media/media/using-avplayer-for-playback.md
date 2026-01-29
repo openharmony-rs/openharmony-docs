@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @zengyawen-->
 
-使用[AVPlayer](media-kit-intro.md#avplayer)可以实现端到端播放原始媒体资源，本开发指导将以完整地播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。如需播放PCM音频数据，请使用[AudioRenderer](../audio/using-audiorenderer-for-playback.md)。
+使用[AVPlayer](media-kit-intro.md#avplayer)可以实现端到端播放原始媒体资源，本开发指导将以完整播放一首音乐作为示例，向开发者讲解AVPlayer音频播放相关功能。如需播放PCM音频数据，请使用[AudioRenderer](../audio/using-audiorenderer-for-playback.md)。
 
 播放的全流程包含：创建AVPlayer，设置播放资源，设置播放参数（音量/倍速/焦点模式），播放控制（播放/暂停/跳转/停止），重置，销毁资源。
 
@@ -101,8 +101,6 @@
    > - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
    > 
    > - 需要使用[支持的播放格式与协议](media-kit-intro.md#支持的格式与协议)。
-   > 
-   > 此外，如果需要设置音频渲染信息，则只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频选择恰当的流类型[usage](../../media/audio/using-right-streamusage-and-sourcetype.md)。
 
     ```ts
     let url = 'https://xxx.xxx.xxx.mp3';
@@ -111,8 +109,19 @@
     }
     avPlayer.url = url;
     ```
+4. （可选）设置音频渲染：只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。
+    为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频选择恰当的流类型[usage](../../media/audio/using-right-streamusage-and-sourcetype.md)。
+    
+    ```ts
+    import { audio } from '@kit.AudioKit';
 
-4. 准备播放：调用prepare()，AVPlayer进入prepared状态，此时可以获取duration，设置音量。
+    avPlayer.audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MOVIE,
+        rendererFlags: 0
+    }
+    ```
+
+5. 准备播放：调用 prepare()方法进入准备播放阶段，AVPlayer 将切换至 prepared 状态，此时可获取视频时长（duration）并调整音量参数。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -126,7 +135,7 @@
     });
     ```
 
-5. 音频播控：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
+6. 音频播控：播放play()、暂停pause()、跳转seek()、停止stop() 等操作。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -158,7 +167,7 @@
     });
     ```
 
-6. （可选）更换资源：调用reset()重置资源，AVPlayer重新进入idle状态，允许更换资源url。
+7. （可选）更换资源：调用reset()方法重置播放资源，AVPlayer重新进入idle状态，此时可重新设置资源url。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -179,7 +188,7 @@
     avPlayer.url = url;
     ```
 
-7. 退出播放：调用release()销毁实例，AVPlayer进入released状态，退出播放。
+8. 退出播放：调用release()销毁实例，AVPlayer进入released状态，退出播放。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -198,7 +207,7 @@
 参考以下示例，完整地播放一首音乐，实现起播后3s暂停，暂停3s重新播放的效果。
 
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSAudio)，并将示例工程的以下资源复制到对应目录。
-    ```
+    ```text
     AVPlayerArkTSAudio
     entry/src/main/ets/
     └── pages

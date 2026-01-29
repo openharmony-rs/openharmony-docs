@@ -47,57 +47,57 @@ To detect time-consuming function calls and record them in logs, perform the fol
 1. Create an ArkTS application project. In the **Project** window, click **entry > src > main > ets > entryability** to open the **EntryAbility.ets** file. After the page is loaded, call the HiChecker to add check rules. The sample code is as follows:
 
    ```ts
-   import { window } from '@kit.ArkUI';
-   import { image } from '@kit.ImageKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
    import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
    import { hichecker, hilog } from '@kit.PerformanceAnalysisKit';
-   
-   export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       // Add a check rule. For details about the rule, see HiChecker.
-       hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
-       let filePath: string = this.context.cacheDir + '/test.JPG';
-       const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
-       const imagePackerApi = image.createImagePacker();
-       let packOpts: image.PackingOption = { format:"image/jpeg", quality:98 };
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+     // Add a check rule. For details about the rule, see HiChecker.
+    hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+    let filePath: string = this.context.cacheDir + '/test.JPG';
+    const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
+    const imagePackerApi = image.createImagePacker();
+    let packOpts: image.PackingOption = { format:"image/jpeg", quality:98 };
        imagePackerApi.packToData(imageSourceApi, packOpts);
-       // The preceding codes trigger the check rule through the image subsystem.
+    // The preceding codes trigger the check rule through the image subsystem.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreateend');
-     }
-   
+  }
+
      onDestroy() {
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-     }
-   
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
+
      onWindowStageCreate(windowStage: window.WindowStage) {
-       // Main window is created, set main page for this ability
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-   
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
        windowStage.loadContent('pages/Index', (err, data) => {
-         if (err.code) {
-           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-           return;
-         }
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
          hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-       });
-     }
-   
+    });
+  }
+
      onWindowStageDestroy() {
-       // Main window is destroyed, and UI related resources are released.
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
-     }
-   
+       // Main window is destroyed, release UI related resources
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
      onForeground() {
-       // Ability is brought to foreground.
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
-     }
-   
+    // Ability is brought to foreground.
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
      onBackground() {
-       // Ability is back to background.
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
-     }
+    // Ability is back to background.
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
    }
-   ```
+```
 
 2. Install and run the HAP. Use the Log plug-in of DevEco Studio to filter logs containing the keyword **HICHECKER** or run the **hdc shell "hilog | grep HICHECKER"** command. If the following call stack information is displayed, the check is successful (the call stack is the one that triggers the check rule).
 

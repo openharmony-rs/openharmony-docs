@@ -1,4 +1,4 @@
-# Encryption and Decryption with a 3DES Asymmetric Key Pair (C/C++)
+# Encryption and Decryption with a 3DES Symmetric Key Pair (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

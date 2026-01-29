@@ -328,7 +328,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type   |    Read Only   |    Optional     |  Description             |
+| Name| Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | name | string | No| No|Name of the check box.|
 | selected | boolean| No| No| Whether the check box is selected.<br>**true**: The check box is selected. <br>**false**: The check box is not selected.<br>If the **select** attribute is not set, the default value **false** is used.<br>If the **select** attribute is set, the attribute value is used here.|

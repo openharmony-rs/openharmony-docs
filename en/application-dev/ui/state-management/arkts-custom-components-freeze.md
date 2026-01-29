@@ -6,35 +6,38 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-Freezing a custom component is designed to optimize the performance of complex UI pages, especially for scenarios where multiple page stacks, long lists, or grid layouts are involved. When a state variable is bound to multiple UI components, its changes can easily trigger a large number of component refreshes, causing UI freezing and response delays. To improve the refresh performance of such high-load UI pages, you are advised to use the freezing function of custom components.
+Custom component freezing is designed to optimize the performance of complex UI pages, particularly in scenarios involving multiple page stacks, long lists, or grid layouts. When a state variable is bound to multiple UI components, its changes can easily trigger extensive component refreshes, causing UI freezing and response delays. To enhance refresh performance in such high-load UI scenarios, it is recommended to utilize the freezing capability of custom components.
 
-The freezing function is a performance optimization mechanism that freezes the refresh capability of inactive components. When a component is inactive, even if the state variable bound to the component changes, the UI of the component will not be re-rendered. This reduces the refresh load in complex UI scenarios.
+The freezing capability is a performance optimization mechanism that suspends the refresh capability of inactive components. When frozen, components will not trigger UI re-rendering even if bound state variables change, thereby reducing refresh load in complex UI scenarios.
 
-Before reading this topic, you are advised to read [Creating a Custom Component](./arkts-create-custom-components.md) to learn about the basic syntax.
+Before reading this topic, it is recommended to familiarize yourself with [Creating Custom Components](./arkts-create-custom-components.md) to understand the basic syntax.
 
 > **NOTE**
 >
 > Custom component freezing is supported since API version 11.
 >
-> The freezing function of custom components can be used together since API version 18.
+> Custom component freezing across mixed scenarios is supported since API version 18.
+> 
+> Since API version 20, the [inheritFreezeOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) API of [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) can be set to true to implement the freezing capability of BuilderNode. For details, see [BuilderNode Inherits Component Freezing](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20).
+
 
 ## Overview
 
-Principles of freezing a component are as follows:
-1. Setting the **freezeWhenInactive** attribute to activate the component freezing mechanism.
-2. After this function is enabled, the system re-renders only the activated custom components. In this way, the UI framework can narrow down the re-render scope to the (activated) custom components that are visible to users, improving the re-render efficiency in complex UI scenarios.
-3. When an inactive custom component turns into the active state, the state management framework performs necessary re-render operations on the custom component to ensure that the UI is correctly displayed.
+The principles of component freezing are as follows:
+1. Set the **freezeWhenInactive** attribute to activate the component freezing mechanism.
+2. After enabling this function, the system re-renders only the active custom components. This allows the UI framework to narrow the re-render scope to the (active) custom components visible to users, improving re-render efficiency in complex UI scenarios.
+3. When an inactive custom component becomes active, the state management framework performs necessary re-render operations to ensure correct UI display.
 
-In short, component freezing aims to optimize UI re-render performance on complex UIs. When there are multiple invisible custom components, such as multiple page stacks, long lists, or grids, you can freeze the components to re-render visible custom components as required, and the re-render of the invisible custom components is delayed until they become visible.
+In summary, component freezing aims to optimize UI re-render performance on complex UIs. When multiple invisible custom components exist, such as in multiple page stacks, long lists, or grids, you can freeze these components to re-render only visible custom components as needed. The re-render of invisible custom components is delayed until they become visible.
 
 Note that the active or inactive state of a component is not equivalent to its visibility. Component freezing applies only to the following scenarios:
 
-1. [Page routing](../../reference/apis-arkui/js-apis-router.md): The top page in the stack is in the active state, and the pages that are not on the top are in the inactive state.
-2. [TabContent](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md): Only the custom components in the currently displayed TabContent are in the active state, and the others are in the inactive state.
-3. [LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md): Only the custom components in the currently displayed LazyForEach are in the active state, and the components of the cache nodes are in the inactive state.
-4. [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md): The custom components in the currently displayed NavDestination are in the active state, and the components of other NavDestination that are not displayed are in the inactive state.
-5. Component reuse: The component that enters the reuse pool is in the inactive state, and the node attached from the reuse pool is in the active state.
-6. Mixed use: For example, if **LazyForEach** is used under **TabContent**, all nodes in **LazyForEach** of API version 17 or earlier are set to the active state since when switching tabs. Since API version 18, only the on-screen nodes of **LazyForEach** are set to the active state, and other nodes are set to the inactive state.
+1. [Page routing](../../reference/apis-arkui/js-apis-router.md): The top page in the stack is active, while pages not on top are inactive.
+2. [TabContent](../../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md): Only custom components in the currently displayed TabContent are active; others are inactive.
+3. [LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md): Only custom components in the currently displayed LazyForEach are active; components of cached nodes are inactive.
+4. [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md): Custom components in the currently displayed NavDestination are active; components of other non-displayed NavDestinations are inactive. Note: "active/inactive" in this document refers to the frozen active/inactive state of a component, which differs from [onActive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17) and [onInactive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17) in the [NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) component.
+5. Component reuse: Components entering the reuse pool are inactive, while nodes attached from the reuse pool are active.
+6. Mixed use: For example, when **LazyForEach** is used under **TabContent**, all nodes in **LazyForEach** of API version 17 or earlier are set to active when switching tabs. Since API version 18, only on-screen nodes of **LazyForEach** are set to active, while other nodes are set to inactive.
 
 ## Use Scenarios
 
@@ -42,7 +45,7 @@ Note that the active or inactive state of a component is not equivalent to its v
 
 > **NOTE**
 >
-> While this example demonstrates page navigation and routing using **router** APIs, you are advised to use the **Navigation** component instead, which offers enhanced functionality and greater customization flexibility. For details, see the use cases of [Navigation](#navigation).
+> While this example demonstrates page navigation and routing using **router** APIs, it is recommended to use the **Navigation** component instead, which offers enhanced functionality and greater customization flexibility. For details, see the use cases of [Navigation](#navigation).
 
 When page 1 navigates to page 2 using **router.pushUrl**, it enters the hidden state, where updating its state variables will not trigger UI re-rendering.
 For details, see the following.
@@ -110,20 +113,20 @@ struct Page2 {
 
 In the preceding example:
 
-1. Click first page storageLink + 1 on page 1. The storageLink state variable changes, and the method first registered by [@Watch](./arkts-watch.md) is called.
+1. Click **first page storageLink + 1** on page 1. The **storageLink** state variable changes, and the method **first** registered by [@Watch](./arkts-watch.md) is called.
 
-2. Click go to next page on page 1. Page 2 is displayed, page 1 is hidden, and the state changes from active to inactive.
+2. Click **go to next page** on page 1. Page 2 is displayed, page 1 is hidden, and its state changes from active to inactive.
 
-3. Click this.storageLink2 += 2 on page 2. Only the method second registered by @Watch on page 2 is called back because the state variable of page 1 has been frozen.
+3. Click **this.storageLink2 += 2** on page 2. Only the @Watch decorated **second** method of page 2 is called, because page 1 has been frozen when inactive.
 
-4. Click back on page 2. Page 2 is destroyed, the state of page 1 changes from inactive to active, and the state variable frozen when inactive is refreshed. The method first registered by @Watch on page 1 is called again.
+4. Click **back** on page 2. Page 2 is destroyed, and page 1 changes from inactive to active. If the state variable of page 1 is updated at this point, the @Watch decorated **first** method of page 1 is called again.
 
 
 ### TabContent
 
-Freezes the currently invisible TabContent in Tabs. Modifying the state variable does not trigger the update of the frozen component.
+Freezes the currently invisible TabContent in Tabs. Modifying state variables does not trigger updates of frozen components.
 
-During initial rendering, only the **TabContent** component that is being displayed is created. The remaining **TabContent** components are created only when the corresponding tab is switched to.
+During initial rendering, only the displayed **TabContent** component is created. Remaining **TabContent** components are created only when their corresponding tabs are switched to.
 
 For details, see the following.
 ![freezeWithTab](./figures/freezewithTabs.png)
@@ -179,21 +182,21 @@ struct FreezeChild {
 
 In the preceding example:
 
-1. When **change message** is clicked, the value of **message** changes, and the @Watch decorated **onMessageUpdated** method of the **TabContent** component being displayed is called.
+1. Click **change message**. The value of **message** changes, and the @Watch decorated **onMessageUpdated** method of the displayed **TabContent** component is called.
 
-2. Click tab1 to switch to another TabContent. The status of the TabContent changes from inactive to active, and the corresponding @Watch-registered method onMessageUpdated is triggered.
+2. Click **tab1** to switch to another **TabContent** component. It switches from inactive to active, and the corresponding @Watch decorated **onMessageUpdated** method is called.
 
-3. When **change message** is clicked again, the value of **message** changes, and only the @Watch decorated **onMessageUpdated** method of the **TabContent** component being displayed is called.
+3. Click **change message** again. The value of **message** changes, and only the @Watch decorated **onMessageUpdated** method of the displayed **TabContent** component is called.
 
 ![TabContent.gif](figures/TabContent.gif)
 
 
 ### LazyForEach
 
-Freeze the cached custom components in LazyForEach. Modifying the state variable does not trigger the update of the cached components.
+You can freeze custom component instances cached in LazyForEach. Modifying state variables does not trigger updates of cached component instances.
 
 ```ts
-// Basic implementation of IDataSource used to listening for data.
+// Basic implementation of IDataSource used to listen for data changes.
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
   private originDataArray: string[] = [];
@@ -334,19 +337,19 @@ struct FreezeChild {
 
 In the preceding example:
 
-1. When **change message** is clicked, the value of **message** changes, the @Watch decorated **onMessageUpdated** method of the list items being displayed is called, The method registered by @Watch in the cache node is not triggered. (If the component is not frozen, the onMessageUpdated method registered by @Watch in the currently displayed ListItem and cachecount cache node is triggered.)
+1. Click **change message**. The value of **message** changes, and the @Watch decorated **onMessageUpdated** method of displayed list items is called, while that of cached list items is not called. (If the component is not frozen, the @Watch decorated **onMessageUpdated** method of both displayed and cached list items is called.)
 
 2. When a list item moves from outside the list content area into the list content area, it switches from inactive to active, and the corresponding @Watch decorated **onMessageUpdated** method is called.
 
-3. When **change message** is clicked again, the value of **message** changes, and only the @Watch decorated **onMessageUpdated** method of the list items being displayed is called.
+3. Click **change message** again. The value of **message** changes, and only the @Watch decorated **onMessageUpdated** method of displayed list items is called.
 
 ![FrezzeLazyforEach.gif](figures/FrezzeLazyforEach.gif)
 
 ### Navigation
 
-When NavDestination is invisible, its child custom components are set to the inactive state. Modifying the state variable does not trigger the refresh of the frozen component. When return to this page, its child custom components are restored to the active state and the @Watch callback is triggered to re-render the page.
+When a **NavDestination** component becomes invisible, its child custom components are set to inactive, where modifying state variables does not trigger re-rendering. When returning to this page, its child custom components are restored to active state and the @Watch callback is triggered to re-render the page.
 
-In the following example, **NavigationContentMsgStack** is set to the inactive state, which does not respond to the change of the state variables, and does not trigger component re-rendering.
+In the following example, **NavigationContentMsgStack** is set to inactive state, which does not respond to state variable changes and does not trigger component re-rendering.
 
 ```ts
 @Entry
@@ -532,35 +535,35 @@ struct NavigationContentMsgStack {
 
 In the preceding example:
 
-1. When **change message** is clicked, the value of **message** changes, and the @Watch decorated **info** method of the **MyNavigationTestStack** component being displayed is called.
+1. Click **change message**. The value of **message** changes, and the @Watch decorated **info** method of the displayed **MyNavigationTestStack** component is called.
 
-2. When **Next Page** is clicked, the page is switched to **PageOne** and the **PageOneStack** node is created.
+2. Click **Next Page**. The page switches to **PageOne** and the **PageOneStack** node is created.
 
-3. Click change message again to change the value of message. Only the info method registered by @Watch in the NavigationContentMsgStack child component of PageOneStack is triggered.
+3. Click **change message** again. The value of **message** changes, and only the @Watch decorated **info** method of the **NavigationContentMsgStack** child component in **PageOneStack** is called.
 
-4. When **Next Page** is clicked, the page is switched to **PageTwo** and the **PageTwoStack** node is created.
+4. Click **Next Page**. The page switches to **PageTwo** and the **PageTwoStack** node is created.
 
-5. Click change message again to change the value of message. Only the info method registered by @Watch in the NavigationContentMsgStack child component of PageTwoStack is triggered.
+5. Click **change message** again. The value of **message** changes, triggering only the @Watch decorated **info** method of the **NavigationContentMsgStack** child component in **PageTwoStack**.
 
-6. When **Next Page** is clicked, the page is switched to **PageThree** and the **PageThreeStack** node is created.
+6. Click **Next Page**. The page switches to **PageThree** and the **PageThreeStack** node is created.
 
-7. Click change message again to change the value of message. Only the info method registered by @Watch in the NavigationContentMsgStack child component of PageThreeStack is triggered.
+7. Click **change message** again. The value of **message** changes, triggering only the @Watch decorated **info** method of the **NavigationContentMsgStack** child component in **PageThreeStack**.
 
-8. Click Back Page to return to PageTwo. In this case, only the method info registered by @Watch in the NavigationContentMsgStack child component of PageTwoStack is triggered.
+8. Click **Back Page**. **PageTwo** is displayed, and only the @Watch decorated **info** method of the **NavigationContentMsgStack** child component in **PageTwoStack** is called.
 
-9. Click Back Page again to return to PageOne. In this case, only the method info registered by @Watch in the NavigationContentMsgStack child component of PageOneStack is triggered.
+9. Click **Back Page** again. **PageOne** is displayed, and only the @Watch decorated **info** method of the **NavigationContentMsgStack** child component in **PageOneStack** is called.
 
-10. When **Back Page** is clicked again, the initial page is displayed, and no method is called.
+10. Click **Back Page** again. The initial page is displayed, and no method is called.
 
 ![navigation-freeze.gif](figures/navigation-freeze.gif)
 
 ### Component Reuse
 
-[Components reuse](./arkts-reusable.md) existing nodes in the cache pool instead of creating new nodes to optimize UI performance and improve application smoothness. Although the nodes in the reuse pool are not displayed in the UI component tree, the change of the state variable still triggers the UI re-render. To solve the problem that components in the reuse pool are re-rendered abnormally, you can perform component freezing.
+[Component reuse](./arkts-reusable.md) utilizes existing nodes from the cache pool instead of creating new nodes to optimize UI performance and improve application smoothness. Although nodes in the reuse pool are not displayed in the UI component tree, state variable changes still trigger UI re-rendering. To prevent abnormal re-rendering of components in the reuse pool, component freezing can be applied.
 
-Mixed Use of Component Reuse, if, and Component Freezing
+**Mixed Use of Component Reuse, if, and Component Freezing**
 
-The following example shows that when the state variable bound to the **if** component changes to **false**, the detach of **ChildComponent** is triggered. Because **ChildComponent** is marked as component reuse, it is not destroyed but enters the reuse pool, in this case, if the component freezing is enabled at the same time, the component will not be re-rendered in the reuse pool.
+The following example shows that when the state variable bound to the **if** component changes to **false**, the detach of **ChildComponent** is triggered. Because **ChildComponent** is marked for component reuse, it is not destroyed but enters the reuse pool. If component freezing is enabled simultaneously, the component will not be re-rendered in the reuse pool.
 
 ```ts
 @Reusable
@@ -619,23 +622,23 @@ struct Page {
 In the preceding example:
 
 1. Click **change flag** and change the value of **flag** to **false**.
-    -  When **ChildComponent** marked with \@Reusable is detached, it is not destroyed. Instead, it enters the reuse pool, triggers the **aboutToRecycle** lifecycle, and sets the component state to inactive.
-    - **ChildComponent** also enables component freezing. When **ChildComponent** is in the inactive state, it does not respond to any UI re-render caused by state variable changes.
-2. Click **change desc** to trigger the change of the member variable **desc** of **Page**.
-    - The desc is decorated by \@State. Its change will be notified to the desc decorated by the child component \@Link(./arkts-link.md).
-    - However, **ChildComponent** is in the inactive state and the component freezing is enabled. Therefore, the change does not trigger the callback of @Watch('descChange') and the re-render of the ChildComponent UI. If component freezing is not enabled, the current @Watch('descChange') callback is returned immediately, and **ChildComponent** in the reuse pool is re-rendered accordingly.
+    - When **ChildComponent** marked with \@Reusable is detached, it is not destroyed. Instead, it enters the reuse pool, triggers the **aboutToRecycle** lifecycle, and sets the component state to inactive.
+    - **ChildComponent** also enables component freezing. When **ChildComponent** is inactive, it does not respond to any UI re-rendering caused by state variable changes.
+2. Click **change desc** to trigger changes to the member variable **desc** of **Page**.
+    - Changes to \@State decorated **desc** will be notified to [\@Link](./arkts-link.md) decorated **desc** of **ChildComponent**.
+    - However, **ChildComponent** is inactive and component freezing is enabled. Therefore, changes do not trigger the @Watch('descChange') callback or re-render the ChildComponent UI. If component freezing is not enabled, the current @Watch('descChange') callback is returned immediately, and **ChildComponent** in the reuse pool is re-rendered accordingly.
 3. Click **change flag** again and change the value of **flag** to **true**.
     - **ChildComponent** is attached to the component tree from the reuse pool.
-    - Return the **aboutToReuse** lifecycle callback and synchronize the latest **count** value to **ChildComponent**. desc is synchronized through @[State](./arkts-state.md) to @Link. Therefore, you do not need to manually assign a value in aboutToReuse.
-    - Set **ChildComponent** to the active state and re-render the component that is not re-rendered when **ChildComponent** is inactive, for example, **Text (ChildComponent desc: ${this.desc})**.
+    - The **aboutToReuse** lifecycle callback returns and synchronizes the latest **count** value to **ChildComponent**. The value of **desc** is synchronized from [@State](./arkts-state.md) to @Link, so manual assignment in **aboutToReuse** is unnecessary.
+    - Set **ChildComponent** to active state and re-render components that were not re-rendered when **ChildComponent** was inactive, such as **Text (ChildComponent desc: ${this.desc})**.
 
-Mixed Use of LazyForEach, Component Reuse, and Component Freezing
+**Mixed Use of LazyForEach, Component Reuse, and Component Freezing**
 
-In the scrolling scenario of a long list with a large amount of data, you can use **LazyForEach** to create components as required. In addition, you can reuse components to reduce the overhead caused by component creation and destruction during scrolling. However, if you set [reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid) based on the reuse type or set a large value for cacheCount to ensure the scrolling performance, the reuse pool or LazyForEach may cache a large number of nodes. In this case, if you trigger the re-render of all subnodes in **List**, the number of re-renders is too large. In this case, you can freeze the component.
+In scrolling scenarios with long lists containing large amounts of data, **LazyForEach** can be used to create components on demand. Additionally, component reuse can reduce overhead caused by component creation and destruction during scrolling. However, if [reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid) is set based on reuse type or a large value is set for cacheCount to ensure scrolling performance, the reuse pool or LazyForEach may cache numerous nodes. In such cases, triggering re-renders of all subnodes in **List** results in excessive re-render counts. Component freezing can address this issue.
 
 ```ts
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
-// Basic implementation of IDataSource used to listening for data.
+// Basic implementation of IDataSource used to listen for data changes.
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
   private originDataArray: string[] = [];
@@ -785,25 +788,25 @@ struct Page {
 
 In the preceding example:
 
-1. Swipe the list to the position whose index is 14. There are 15 **ChildComponent** in the visible area on the current page.
+1. Swipe the list to position index 14. There are 15 **ChildComponent** instances in the current page's visible area.
 2. During swiping:
-    - **ChildComponent** in the upper part of the list is swiped out of the visible area. In this case, **ChildComponent** enters the cache area of LazyForEach and is set to inactive. After the component slides out of the **LazyForEach** cache area, the component is not destructed and enters the reuse pool because the component is marked for reuse. In this case, the component is set to inactive again.
-    - The cache node of **LazyForEach** at the bottom of the list enters the list. In this case, the system attempts to create a node to enter the cache of **LazyForEach**. If a node that can be reused is found, the system takes out the existing node from the reuse pool and triggers the **aboutToReuse** lifecycle callback, in this case, the node enters the cache area of **LazyForEach** and the state of the node is still inactive.
-3. Click **change desc** to trigger the change of the member variable **desc** of **Page**.
-    - The change of \@State decorated **desc** will be notified to \@Link decorated **desc** of **ChildComponent**.
-    - **ChildComponent** in the invisible area is in the inactive state, and the component freezing is enabled. Therefore, this change triggers the @Watch('descChange') callback of the 15 nodes in the visible area and re-renders these nodes. Nodes cached in **LazyForEach** and the reuse pool are not re-rendered, and the \@Watch callback is not triggered.
+    - **ChildComponent** instances in the upper part of the list are swiped out of the visible area. In this case, **ChildComponent** enters the LazyForEach cache area and is set to inactive. After components slide out of the **LazyForEach** cache area, they are not destroyed but enter the reuse pool because they are marked for reuse. In this case, components are set to inactive again.
+    - Cache nodes of **LazyForEach** at the bottom of the list enter the list. In this case, the system attempts to create nodes to enter the **LazyForEach** cache. If reusable nodes are found, the system retrieves existing nodes from the reuse pool and triggers the **aboutToReuse** lifecycle callback. In this case, nodes enter the **LazyForEach** cache area and their state remains inactive.
+3. Click **change desc** to trigger changes to the member variable **desc** of **Page**.
+    - Changes to \@State decorated **desc** will be notified to \@Link decorated **desc** of **ChildComponent**.
+    - **ChildComponent** instances in the invisible area are inactive, and component freezing is enabled. Therefore, this change triggers the @Watch('descChange') callback of the 15 nodes in the visible area and re-renders these nodes. Nodes cached in **LazyForEach** and the reuse pool are not re-rendered, and the \@Watch callback is not triggered.
     
 
 For details, see the following.
 ![freeze](./figures/freezeResuable.png)
-You can listen for the changes by \@Trace, only 15 **ChildComponent** nodes are re-rendered.
+You can observe changes via \@Trace; only 15 **ChildComponent** nodes are re-rendered.
 ![freeze](./figures/traceWithFreeze.png)
 
-Mixed Use of LazyForEach, if, Component Reuse, and Component Freezing
+**Mixed Use of LazyForEach, if, Component Reuse, and Component Freezing**
 
-The following scenario shows the mixed use of LazyForEach, if, component reuse, and component freezing. Under the same parent custom component, reusable nodes may enter the reuse pool in different ways. For example:
-- Detaching from the cache area of LazyForEach by swiping.
-- Notifying the subnodes to detach by switching the if condition.
+The following scenario demonstrates mixed use of **LazyForEach**, **if**, component reuse, and component freezing. Under the same parent custom component, reusable nodes may enter the reuse pool in different ways. For example:
+- Detaching from the LazyForEach cache area by swiping.
+- Notifying subnodes to detach by switching the if condition.
 
 ```ts
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
@@ -970,12 +973,12 @@ struct Page {
 
 In the preceding example:
 
-1. When you swipe the list to the position whose index is 14, there are 10 **ChildComponent**s in the visible area on the page, among which nine are subnodes of **LazyForEach** and one is a subnode of **if**.
-2. Click **change flag**. The **if** condition is changed to **false**, and its subnode **ChildComponent** enters the reuse pool. Nine nodes are displayed on the page.
-3. In this case, the nodes detached through **LazyForEach** or **if** all enter the reuse pool under the **Page** node.
+1. Swipe the list to position index 14. There are 10 **ChildComponent** instances on the page, among which nine are subnodes of **LazyForEach** and one is a subnode of **if**.
+2. Click **change flag**. The **if** condition changes to **false**, and its subnode **ChildComponent** enters the reuse pool. Nine nodes are displayed on the page.
+3. In this case, nodes detached through **LazyForEach** or **if** all enter the reuse pool under the **Page** node.
 4. Click **change desc** to update only the nine **ChildComponent** nodes on the page. For details, see figures below.
 5. Click **change flag** again. The **if** condition changes to **true**, and **ChildComponent** is attached from the reuse pool to the component tree again. The state of **ChildComponent** changes to active.
-6. Click **change desc** again. The nodes attached through **if** and **LazyForEach** from the reuse pool can be re-rendered.
+6. Click **change desc** again. Nodes attached through **if** and **LazyForEach** from the reuse pool can be re-rendered.
 
 Trace for component freezing enabled
 
@@ -985,13 +988,13 @@ Trace for component freezing disabled
 
 ![traceWithFreezeLazyForeachAndIf](./figures/traceWithLazyForeachAndIf.png)
 
-### Mixing the Use of Components
+### Mixed Component Usage
 
-When components that support freezing are used together, the freezing behavior varies according to the API version. Set the component freezing flag for the parent component. In API version 17 or earlier, when the parent component is unfrozen, all nodes of its child components are unfrozen. Since API version 18, when the parent component is unfrozen, only the on-screen nodes of the child component are unfrozen. 
+When components that support freezing are used together, freezing behavior varies according to the API version. Set the component freezing flag for the parent component. In API version 17 or earlier, when the parent component is unfrozen, all nodes of its child components are unfrozen. Since API version 18, when the parent component is unfrozen, only on-screen nodes of child components are unfrozen.
 
 **Mixed Use of Navigation and TabContent**
 
-The sample code is as follows:
+Sample code:
 
 ```ts
 // index.ets
@@ -1169,35 +1172,35 @@ Final effect
 
 ![freeze](figures/freeze_tabcontent.gif)
 
-Click the **Next Page** button to enter the **pageOne** page. There are two tabs on the page and the **Update** tab is displayed by default. Enable component freezing. If the **Tabcontent** tab is not selected, the state variable is not refreshed.
+Click **Next Page** to enter the **pageOne** page. There are two tabs on the page and the **Update** tab is displayed by default. Enable component freezing. If the **Tabcontent** tab is not selected, the state variable is not refreshed.
 
-Click the **Incr state** button to query **Appmonitor** in the log. Three records are displayed.
+Click **Incr state** and search for **Appmonitor** in the log. Three records are displayed.
 
 ![freeze](figures/freeze_tabcontent_update.png)
 
-Switch to the **DelayUpdate** tab and click the **Incr state** button to query **Appmonitor** in the log. Two records are displayed. The state variable in the **DelayUpdate** tab does not refresh the state variable related to the **Update** tab.
+Switch to the **DelayUpdate** tab and click **Incr state**. Search for **Appmonitor** in the log. Two records are displayed. The state variable in the **DelayUpdate** tab does not refresh the state variable related to the **Update** tab.
 
 ![freeze](figures/freeze_tabcontent_delayupdate.png)
 
 For API version 17 or earlier:
 
-Click **Next page** to enter the next page and then return. The tab is **DelayUpdate** by default. Click **Incr state** to query **Appmonitor** in the log and four records are displayed. When the page route is returned, all tabs of **Tabcontent** are unfrozen.
+Click **Next page** to enter the next page and then return. The tab defaults to **DelayUpdate**. Click **Incr state** and search for **Appmonitor** in the log. Four records are displayed. When the page route returns, all tabs of **Tabcontent** are unfrozen.
 
 ![freeze](figures/freeze_tabcontent_back_api15.png)
 
 For API version 18 or later:
 
-Click **Next page** to enter the next page and then return. The tab is **DelayUpdate** by default. Click **Incr state** to query **Appmonitor** in the log and two records are displayed. When the page route is returned, only the nodes with the corresponding tabs are unfrozen.
+Click **Next page** to enter the next page and then return. The tab defaults to **DelayUpdate**. Click **Incr state** and search for **Appmonitor** in the log. Two records are displayed. When the page route returns, only nodes with corresponding tabs are unfrozen.
 
 ![freeze](figures/freeze_tabcontent_back_api16.png)
 
-Page and LazyForEach
+**Page and LazyForEach**
 
-When **Navigation** and **TabContent** are used together, the child nodes of **TabContent** are unlocked because the child component is recursively unfrozen from the parent component when the previous page is displayed. In addition, the page lifecycle **OnPageShow** shows a similar behavior. **OnPageShow** sets the root node of the current page to the active state. As a subnode of the page, **TabContent** is also set to the active state. When the screen is turned off or on, the page lifecycles **OnPageHide** and **OnPageShow** are triggered respectively. Therefore, when **LazyForEach** is used on the page, manual screen-off and screen-on can also implement the page routing effect. The sample code is as follows:
+When **Navigation** and **TabContent** are used together, child nodes of **TabContent** are unlocked because child components are recursively unfrozen from the parent component when the previous page is displayed. Additionally, the page lifecycle **OnPageShow** exhibits similar behavior. **OnPageShow** sets the root node of the current page to active state. As a subnode of the page, **TabContent** is also set to active state. When the screen turns off or on, page lifecycles **OnPageHide** and **OnPageShow** are triggered respectively. Therefore, when **LazyForEach** is used on the page, manual screen-off and screen-on can also achieve the page routing effect. Sample code:
 
 ```ts
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
-// Basic implementation of IDataSource used to listening for data.
+// Basic implementation of IDataSource used to listen for data changes.
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
   private originDataArray: string[] = [];
@@ -1307,7 +1310,7 @@ struct ChildComponent {
     Column() {
       Divider()
         .color('#ff11acb8')
-      Text('Child component:' + this.desc)
+      Text(`Child component: ${this.desc}`)
         .fontSize(30)
         .fontWeight(30)
       Text(`${this.sum}`)
@@ -1353,29 +1356,33 @@ struct Page {
 }
 ```
 
-As described in the mixed use scenario, the nodes of **LazyForEach** include the on-screen node and **cachedCount** node.
+As described in the mixed use scenario, **LazyForEach** nodes include on-screen nodes and **cachedCount** nodes.
 
 ![freeze](figures/freeze_lazyforeach.png)
 
-Swipe down **LazyForEach** to add nodes to **cachedCount**. Click the **add sum** button to search for the log "sum: Change." and eight records are displayed.
+Swipe down **LazyForEach** to add nodes to **cachedCount**. Click the **add sum** button and search for the log "sum: Change." Eight records are displayed.
 
 ![freeze](figures/freeze_lazyforeach_add.png)
 
 For API version 17 or earlier:
 
-When the screen is turned on after being turned off, OnPageShow is triggered. Click add sum. The number of printed logs is the sum of the number of on-screen nodes and the number of cachedCount nodes.
+When the screen turns on after being turned off, OnPageShow is triggered. Click add sum. The number of printed logs equals the sum of on-screen nodes and cachedCount nodes.
 
 ![freeze](figures/freeze_lazyforeach_api15.png)
 
 Since API version 18:
 
-When the screen is turned on after being turned off, OnPageShow is triggered. Click add sum. Only the number of on-screen nodes is printed, and the nodes in cachedCount are not unfrozen.
+When the screen turns on after being turned off, OnPageShow is triggered. Click add sum. Only the number of on-screen nodes is printed, and nodes in cachedCount remain frozen.
 
 ![freeze](figures/freeze_lazyforeach_api16.png)
 
 ## Constraints
 
-The **FreezeBuildNode** example below demonstrates the constraint for using a [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) with component freezing. When a BuilderNode is used within a frozen component hierarchy, its imperative mounting mechanism conflicts with the functionality of component freezing, which relies on parent-child relationships. As a result, the child components of the BuilderNode remain active, regardless of their parent's frozen state.
+### BuilderNode Cannot Inherit Parent Component Freezing
+
+In versions earlier than API version 20, BuilderNode cannot inherit parent component freezing. The **FreezeBuildNode** example below demonstrates the constraint for using a [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) with component freezing. When a BuilderNode is used within a frozen component hierarchy, its imperative mounting mechanism conflicts with component freezing functionality, which relies on parent-child relationships. As a result, child components of the BuilderNode remain active, regardless of their parent's frozen state.
+
+In API version 20 and later, you can set inheritFreezeOptions of BuilderNode to true to enable BuilderNode to inherit freezing capability. For details, see [BuilderNode Inherits Component Freezing](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20).
 
 ```ts
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -1413,7 +1420,7 @@ function buildText(params: Params) {
   }
 }
 
-// Define a TextNodeController class that is inherited from NodeController.
+// Define a TextNodeController class that inherits from NodeController.
 class TextNodeController extends NodeController {
   private textNode: BuilderNode<[Params]> | null = null;
   private index: number = 0;
@@ -1483,6 +1490,6 @@ struct FreezeBuildNode {
 
 In the preceding example:
 
-Click change to change the value of message. The method @Watch registered in the TabContent component that is being displayed is triggered. Unexpected: For **TabContent** components that are not being displayed, the @Watch decorated **onMessageUpdated** callbacks of child components under the BuilderNode are also triggered, indicating that these components are not frozen.
+Click **change** to change the value of message. The @Watch registered method in the displayed TabContent component is triggered. Unexpectedly: For **TabContent** components that are not displayed, the @Watch decorated **onMessageUpdated** callbacks of child components under the BuilderNode are also triggered, indicating these components are not frozen.
 
 ![builderNode.gif](figures/builderNode.gif)

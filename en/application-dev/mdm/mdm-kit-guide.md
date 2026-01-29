@@ -53,7 +53,7 @@ Before declaring the required permissions, ensure that the [basic principles for
 
 ### Developing MDM Functionalities
 
-1. Import modules. MDM Kit provides a wide variety of APIs for application management, communication management, security management, feature restriction management, intra-system management, device settings and query, device control, and more. Import related modules based on service requirements. In this example, **adminManager** and **restrictions** are imported.
+1. Import modules. MDM Kit provides a wide variety of APIs for application management, communication management, security management, feature restriction management, system management, device settings and query, device control, and more. Import related modules based on service requirements. In this example, **adminManager** and **restrictions** are imported.
 
    ```ts
    import { adminManager, restrictions } from '@kit.MDMKit';

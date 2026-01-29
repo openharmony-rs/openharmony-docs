@@ -70,6 +70,14 @@ createHdrBrightnessBlender(param: BrightnessBlenderParam): HdrBrightnessBlender
 | ---------------------------------------- | ----------------------- |
 | [HdrBrightnessBlender](#hdrbrightnessblender20) | 返回具有提亮效果的混合器（支持HDR）。 |
 
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+
 **示例：**
 
 ```ts
@@ -319,8 +327,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
-import { common2D } from '@kit.ArkGraphics2D'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -333,7 +340,7 @@ struct BezierWarpExample {
 
   build() {
     Column() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
         .foregroundFilter(uiEffect.createFilter().bezierWarp(this.valueBezier))
     }
   }
@@ -612,9 +619,9 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 **示例：**
 
 ```ts
-import {image} from '@kit.ImageKit'
-import {common2D, uiEffect} from '@kit.ArkGraphics2D'
-import {common} from '@kit.AbilityKit'
+import { image } from '@kit.ImageKit'
+import { common2D, uiEffect } from '@kit.ArkGraphics2D'
+import { common } from '@kit.AbilityKit'
 
 @Entry
 @Component
@@ -826,7 +833,7 @@ struct Index {
               uiEffect.Mask.createRippleMask(this.rippleMaskCenter, this.rippleMaskRadius, this.rippleMaskWidth, 0.0)
               ))
           .onClick(() => {
-            animateTo({duration: 1000}, () => {
+            this.getUIContext().animateTo({duration: 1000}, () => {
               this.rippleMaskWidth = 1.0;
             })
           })
@@ -1299,7 +1306,7 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **示例：**
 
 ```ts
-import uiEffect from '@ohos.graphics.uiEffect'
+import { uiEffect } from '@kit.ArkGraphics2D'
 // values: [[1.0, 0.5], [1.0, 1.0]] => color0: 1.0; color1: 1.0; position0: 0.5; position1: 1.0
 let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[1.0, 0.5], [1.0, 1.0]]);
 @Entry
@@ -1307,7 +1314,7 @@ let mask = uiEffect.Mask.createRadialGradientMask({x: 0.0, y: 0.0}, 0.5, 0.5, [[
 struct RadialGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')
@@ -1360,7 +1367,7 @@ let mask = uiEffect.Mask.createWaveGradientMask({x: 0.5, y: 0.5}, 0.01, 0.5, 0.1
 struct WaveGradientMaskExample {
   build() {
     Stack() {
-      Image('test.jpg')
+      Image($rawfile('test.jpg'))
       Column()
         .width('100%')
         .height('100%')

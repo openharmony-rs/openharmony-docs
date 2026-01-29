@@ -1,5 +1,12 @@
 # AtomicServiceNavigation
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @qq_36417014-->
+<!--Designer: @zhangbeilei-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @zengyawen-->
+
 **AtomicServiceNavigation** is a component that serves as the root container of a page. By default, it includes a title bar, content area, and toolbar. The content area switches between the home page content (child components of [NavDestination](ts-basic-components-navdestination.md)) and non-home page content through routing.
 
 > **NOTE**
@@ -39,8 +46,6 @@ AtomicServiceNavigation({
 })
 ```
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **Decorator**: @Component
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -49,37 +54,35 @@ AtomicServiceNavigation({
 
 | Name| Type| Mandatory| Decorator|Description|
 | --------------- | ------ | ---- | ----|----------|
-| navPathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | No| @State | Information about the navigation stack.|
-| navigationContent | Callback\<void\> | No| @BuilderParam | Content of the navigation container.|
-| title | [ResourceStr](ts-types.md#resourcestr) | No|@Prop | Page title. The default value is an empty string. Title text will be hidden when the **titleBarType** field of **titleOption** is set to **[TitleBarType](#titlebartype18).ROUND_ICON** or **[TitleBarType](#titlebartype18).SQUARED_ICON** and **titleIcon** is configured.|
-| titleOptions | [TitleOptions](#titleoptions) | No| @Prop | Title bar options. Title text will be hidden when the **titleBarType** field of **titleBarType** is set to **[TitleBarType](#titlebartype18).ROUND_ICON** or **[TitleBarType](#titlebartype18).SQUARED_ICON** and **titleIcon** is configured.|
-| gradientBackground<sup>18+</sup> | [GradientBackground](#gradientbackground18) | No| @Prop | Background color options.|
-| hideTitleBar | boolean | No| @Prop | Whether to hide the title bar. The default value is **false**.<br>The value **true** means to hide the title bar, and **false** means the opposite.|
-| navBarWidth | [Length](ts-types.md#length)| No| @Prop | Width of the navigation bar. The default value is **240vp**.<br>This attribute takes effect only when the component is split.|
-| mode| [NavigationMode](ts-basic-components-navigation.md#navigationmode9)| No| @Prop |Display mode of the navigation bar.<br>Available options are **Stack**, **Split**, and **Auto**.|
-| navDestinationBuilder | [NavDestinationBuilder](#navdestinationbuilder) | No| @BuilderParam | Builder data required for creating the [NavDestination](ts-basic-components-navdestination.md) component.|
-| navBarWidthRange | [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] | No| @Prop |Minimum and maximum widths of the navigation bar (effective in dual-column mode). Default value: **240vp** for the minimum value; 40% of the component width (not greater than 432 vp) for the maximum value; if either of the widths is not set, the default value is used for that width. Unit: vp.|
-| minContentWidth | [Dimension](ts-types.md#dimension10) | No| @Prop | Minimum width of the navigation bar content area (effective in dual-column mode).|
-| sideBarOptions<sup>18+</sup> | [SideBarOptions](#sidebaroptions18) | No| @Prop | Sidebar options.|
-| sideBarContent<sup>18+</sup> | Callback\<void\> | No| @BuilderParam | Content of the sidebar.|
-| menus<sup>18+</sup> | [CustomBuilder](ts-types.md#custombuilder8) \| Array\<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)\> | No| @BuilderParam | Custom layout styles for wide-screen scenarios. The default value is empty, with no styles displayed. Wide-screen scenarios refer to scenarios where the screen width is greater than or equal to 600 vp.|
-| stateChangeCallback | Callback\<boolean\> | No| - | Callback invoked when the navigation bar visibility status changes.|
-| modeChangeCallback | Callback\<[NavigationMode](ts-basic-components-navigation.md#navigationmode9)\>| No| - | Callback invoked when the component is displayed for the first time or its display mode switches between single-column and dual-column.|
+| navPathStack | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | No| @State | Information about the navigation stack.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| navigationContent | Callback\<void\> | No| @BuilderParam | Content of the navigation container.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| title | [ResourceStr](ts-types.md#resourcestr) | No|@Prop | Page title. The default value is an empty string. Title text will be hidden when the **titleBarType** field of **titleOptions** is set to **[TitleBarType](#titlebartype18).ROUND_ICON** or **[TitleBarType](#titlebartype18).SQUARED_ICON** and **titleIcon** is configured.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| titleOptions | [TitleOptions](#titleoptions) | No| @Prop | Title bar options. Title text will be hidden when the **titleBarType** field of **titleBarType** is set to **[TitleBarType](#titlebartype18).ROUND_ICON** or **[TitleBarType](#titlebartype18).SQUARED_ICON** and **titleIcon** is configured.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| gradientBackground<sup>18+</sup> | [GradientBackground](#gradientbackground18) | No| @Prop | Background color options.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| hideTitleBar | boolean | No| @Prop | Whether to hide the title bar. The default value is **false**.<br>The value **true** means to hide the title bar, and **false** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| navBarWidth | [Length](ts-types.md#length)| No| @Prop | Width of the navigation bar. The default value is **240vp**.<br>This property takes effect only when the component is in split-column mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| mode| [NavigationMode](ts-basic-components-navigation.md#navigationmode9)| No| @Prop |Display mode of the navigation bar.<br>Available options are **Stack**, **Split**, and **Auto**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| navDestinationBuilder | [NavDestinationBuilder](#navdestinationbuilder) | No| @BuilderParam | Builder data required for creating the [NavDestination](ts-basic-components-navdestination.md) component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| navBarWidthRange | [[Dimension](ts-types.md#dimension10), [Dimension](ts-types.md#dimension10)] | No| @Prop |Minimum and maximum widths of the navigation bar (effective in dual-column mode). Default value: **240vp** for the minimum value; 40% of the component width (not greater than 432 vp) for the maximum value; if either of the widths is not set, the default value is used for that width. Unit: vp.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| minContentWidth | [Dimension](ts-types.md#dimension10) | No| @Prop | Minimum width of the navigation bar content area (effective in dual-column mode).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| sideBarOptions<sup>18+</sup> | [SideBarOptions](#sidebaroptions18) | No| @Prop | Sidebar options.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| sideBarContent<sup>18+</sup> | Callback\<void\> | No| @BuilderParam | Content of the sidebar.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| menus<sup>18+</sup> | [CustomBuilder](ts-types.md#custombuilder8) \| Array\<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)\> | No| @BuilderParam | Custom layout styles for wide-screen scenarios. The default value is empty, with no styles displayed. Wide-screen scenarios refer to scenarios where the screen width is greater than or equal to 600 vp.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| stateChangeCallback | Callback\<boolean\> | No| - | Callback invoked when the navigation bar visibility status changes. **true** means that the navigation bar visibility status changes.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| modeChangeCallback | Callback\<[NavigationMode](ts-basic-components-navigation.md#navigationmode9)\>| No| - | Callback invoked when the component is displayed for the first time or its display mode switches between single-column and dual-column.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## TitleOptions
 Title bar options.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| --------------- | ------ | ---- | ---------- |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No| Background color of the title bar.|
-| isBlurEnabled | boolean | No| Whether the title bar is blurred.<br>**true** (default): The title bar is blurred.<br>**false**: The title bar is not blurred.|
-| barStyle | [BarStyle](ts-basic-components-navigation.md#barstyle12)  | No| Style options of the title bar.|
-| titleBarType<sup>18+</sup> | [TitleBarType](#titlebartype18) | No| Type of the title bar. <br>Default value: **TitleBarType.ROUND_ICON**|
-| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Icon of the title bar. Default value: **$r('sys.color.ohos_id_color_titlebar_icon')**|
+| Name| Type| Read-Only| Optional| Description|
+| --------------- | ------ | ---- | -- | ---------- |
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of the title bar.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| isBlurEnabled | boolean | No| Yes| Whether the title bar is blurred. Default value: **true**, meaning the title bar is blurred.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| barStyle | [BarStyle](ts-basic-components-navigation.md#barstyle12)  | No| Yes| Style options of the title bar.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| titleBarType<sup>18+</sup> | [TitleBarType](#titlebartype18) | No| Yes| Type of the title bar. <br>Default value: **TitleBarType.ROUND_ICON**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| titleIcon<sup>18+</sup> | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Yes| Icon of the title bar. Default value: **$r('sys.color.ohos_id_color_titlebar_icon')**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## GradientBackground<sup>18+</sup>
 Provides options for setting gradient colors for branding.
@@ -88,22 +91,26 @@ Provides options for setting gradient colors for branding.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| --------------- | ------ | ---- | ---------- |
-| primaryColor | [ResourceColor](ts-types.md#resourcecolor)  | Yes| Color value for single-color gradients and the first color in dual-color gradients.<br> No default value.|
-| secondaryColor |[ResourceColor](ts-types.md#resourcecolor)  | No|Second color in dual-color gradients.<br> No default value.|
-| backgroundTheme |[BackgroundTheme<sup>18+</sup>](#backgroundtheme18)  | No|Background theme of the navigation bar. <br>Default value: **DEFAULT**|
-| mixMode | [MixMode<sup>18+</sup>](#mixmode18)  | No|How the two colors blend in dual-color gradients. It is effective only when both **primaryColor** and **secondaryColor** are set. <br>Default value: **TOWARDS**|
-| alpha | [GradientAlpha<sup>18+</sup>](#gradientalpha18)  | No|Transparency level for the gradient display area. <br>Default value: **OPACITY_20**|
+| Name| Type| Read-Only| Optional| Description|
+| --------------- | ------ | ---- | -- | ---------- |
+| primaryColor | [ResourceColor](ts-types.md#resourcecolor)  | No| No| Color value for single-color gradients and the first color in dual-color gradients.<br> No default value.|
+| secondaryColor |[ResourceColor](ts-types.md#resourcecolor)  | No| Yes|Second color in dual-color gradients.<br> No default value.|
+| backgroundTheme |[BackgroundTheme](#backgroundtheme18)  | No| Yes|Background theme of the navigation bar. <br>Default value: **DEFAULT**|
+| mixMode | [MixMode](#mixmode18)  | No| Yes|How the two colors blend in dual-color gradients. It is effective only when both **primaryColor** and **secondaryColor** are set. <br>Default value: **TOWARDS**.|
+| alpha | [GradientAlpha](#gradientalpha18)  | No| Yes|Transparency level for the gradient display area. <br>Default value: **OPACITY_20**|
 
 ## NavDestinationBuilder
 
 type NavDestinationBuilder = (name: string, param?: Object) => void
 
+Defines the content of the **NavDestination** component.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-    
+
+**Parameters**
+
 | Name| Type| Mandatory| Description|
 | --------------- | ------ | ---- | ---------- |
 | name | string | Yes| Name of the [NavDestination](ts-basic-components-navdestination.md) page.|
@@ -136,7 +143,7 @@ Enumerates the title bar types. The default type is **ROUND_ICON**.
 | DRAWER | 3 | Drawer style.|
 
 ## GradientAlpha<sup>18+</sup>
-Enumerates the transparency levels of the navigation bar background.
+Enumerates the opacity levels of the navigation bar background.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -144,10 +151,10 @@ Enumerates the transparency levels of the navigation bar background.
 
 | Name| Value| Description|
 | --------------- | ------ |-----|
-| OPACITY_20| 1 | Transparency level of 0.2.|
-| OPACITY_60| 2 | Transparency level of 0.6.|
-| OPACITY_80| 3 | Transparency level of 0.8.|
-| OPACITY_100| 4 | Transparency level of 1.0.|
+| OPACITY_20| 1 | 0.2 opacity.|
+| OPACITY_60| 2 | 0.6 opacity.|
+| OPACITY_80| 3 | 0.8 opacity.|
+| OPACITY_100| 4 | 1.0 opacity.|
 
 ## BackgroundTheme<sup>18+</sup>
 Enumerates the navigation bar background themes.
@@ -169,11 +176,11 @@ Provides sidebar options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| --------------- | ------ | ---- | ---------- |
-| sideBarBackground | [ResourceColor](ts-types.md#resourcecolor) | No| Background color of the sidebar. <br>Default value: **$r('sys.color.ohos_id_color_sub_background')**|
-| onChange | Callback\<boolean\> | No| Callback triggered when the sidebar is shown or hidden.|
-| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Icon of the sidebar. Default value: **$r('sys.symbol.open_sidebar')**|
+| Name| Type| Read-Only| Optional| Description|
+| --------------- | ------ | ---- | -- | ---------- |
+| sideBarBackground | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of the sidebar. <br>Default value: **$r('sys.color.ohos_id_color_sub_background')**|
+| onChange | Callback\<boolean\> | No| Yes| Callback triggered when the sidebar is shown or hidden. **true**: The sidebar is shown. **false**: The sidebar is hidden.|
+| sideBarIcon | [Resource](ts-types.md#resource) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Yes| Icon of the sidebar. Default value: **$r('sys.symbol.open_sidebar')**|
 
 ## Example
 

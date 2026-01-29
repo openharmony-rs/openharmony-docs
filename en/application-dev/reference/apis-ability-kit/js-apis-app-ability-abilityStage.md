@@ -159,6 +159,10 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 Called when the system global configuration (such as the system language and dark/light color mode) changes. All the configuration items are defined in the [Configuration](../../../application-dev/reference/apis-ability-kit/js-apis-app-ability-configuration.md) class. This API returns the result synchronously and does not support asynchronous callbacks.
 
+> **NOTE**
+>
+> There are certain restrictions when this callback is actually triggered. For example, if you set the application language by calling [setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11), the system does not trigger the **onConfigurationUpdate** callback even if the system language changes. For details, see [When to Use](../../application-models/subscribe-system-environment-variable-changes.md#when-to-use).
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core

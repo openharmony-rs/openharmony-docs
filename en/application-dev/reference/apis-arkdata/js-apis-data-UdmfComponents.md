@@ -32,13 +32,13 @@ Defines the information of a content card component that displayed in an applica
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | No| No| Content card data.|
-| formType | [FormType](#formtype) | No| No| Content card type, which affects the size of the content card.<br>**Decorator**: @Prop|
-| formWidth | double | No| Yes| Card width. The value ranges from 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value ranges from 0.4 to 1.2 times the default width of the content card type.<br>**Decorator**: @Prop|
-| formHeight | double | No| Yes| Card height. If title in **contentFormData** is an empty string, the card height is the passed value. Otherwise, the value ranges from 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value ranges from 0.4 to 1.2 times the default width of the content card type.<br>**Decorator**: @Prop|
-| handleOnClick | Function | No| Yes| Callback for the click event.|
+| contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | Yes| - | Content card data.|
+| formType | [FormType](#formtype) | Yes| @Prop | Content card type, which affects the size of the content card.|
+| formWidth | number | No| @Prop | Card width. The value ranges from 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value ranges from 0.4 to 1.2 times the default width of the content card type.|
+| formHeight | number | No| @Prop | Card height. If title in **contentFormData** is an empty string, the card height is the passed value. Otherwise, the value ranges from 0.8 to 1.2 times the default width of the content card type. If **formType** is set to **TYPE_SMALL**, the value ranges from 0.4 to 1.2 times the default width of the content card type.|
+| handleOnClick | Function | No| - | Callback for the click event.|
 
 ## FormType
 

@@ -2427,7 +2427,7 @@ getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
 
 getCurrentWifiBssidForLocating(): string
 
-获取连接的Wi-Fi AP（Access Point）的Bssid（Basic Service Set Identifier）信息
+获取连接的Wi-Fi AP（Access Point）的Bssid（Basic Service Set Identifier）信息。如果当前设备未连接Wi-Fi，调用该接口将抛出错误码3301900。建议参考示例代码，通过try-catch结构捕获异常。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2593,7 +2593,7 @@ isPoiServiceSupported(): boolean
 
 getPoiInfo(): Promise&lt;PoiInfo&gt;
 
-获取当前位置附近的POI信息。
+获取当前位置附近的POI信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

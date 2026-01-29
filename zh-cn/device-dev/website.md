@@ -106,7 +106,7 @@
     - [小型设备STM32MP1芯片移植案例](porting/porting-stm32mp15xx-on-smallsystem.md)
   - 标准系统芯片移植案例
     - [标准系统方案之瑞芯微RK3568移植案例](porting/porting-dayu200-on_standard-demo.md)
-    - [标准系统方案之瑞芯微RK3566移植案例](https://gitee.com/openharmony/vendor_kaihong/blob/master/khdvk_3566b/porting-khdvk_3566b-on_standard-demo.md)
+    - [标准系统方案之瑞芯微RK3566移植案例](https://gitcode.com/openharmony/vendor_kaihong/blob/master/khdvk_3566b/porting-khdvk_3566b-on_standard-demo.md)
     - [标准系统方案之扬帆移植案例](porting/porting-yangfan-on_standard-demo.md)
 - 子系统开发
   -  内核
@@ -507,7 +507,7 @@
   - [IDE集成开发环境](get-code/gettools-ide.md)
 - 示例教程
   - [Demo示例](https://growing.openharmony.cn/mainPlay/sample)
-  - [Codelabs](https://gitee.com/openharmony/codelabs/blob/master/README.md) 
+  - [Codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md) 
 - 参考
   - 常见问题
     - [常见问题概述](faqs/faqs-overview.md)

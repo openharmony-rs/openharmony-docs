@@ -8,7 +8,7 @@
 
 ## Overview
 
-Environment scope of the current VM instance. This environment is available to the VM instance of the thread only after the thread enters the JSVM_EnvScope through OH_JSVM_OpenEnvScope.
+Defines the environment scope of the current VM instance. The environment is available to the VM instance of the thread only after the thread enters **JSVM_EnvScope** of the environment through **OH_JSVM_OpenEnvScope**.
 
 **Since**: 11
 

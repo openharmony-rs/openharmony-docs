@@ -36,7 +36,7 @@ Only the [ArcListItem](ts-container-arclistitem.md) component is supported.
 >
 > - If the values of [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md),[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) change, the indexes of subnodes are updated. 
 >
-> - Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility-1) attribute is set to **Hidden** or **None** are still included in the index calculation. 
+> - Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility) attribute is set to **Hidden** or **None** are still included in the index calculation. 
 
 
 ## APIs
@@ -89,7 +89,7 @@ Sets the spacing between list items.
 
 | Name| Type                                                        | Mandatory| Description                              |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| space  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Spacing between list items.<br>Default value: **LengthMetrics.vp(0)**.<br>Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility-1) attribute is set to **None** are not displayed, but the spacing above and below them still takes effect.|
+| space  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes  | Spacing between list items.<br>Default value: **LengthMetrics.vp(0)**.<br>Child components of **ArcList** whose [visibility](ts-universal-attributes-visibility.md#visibility) attribute is set to **None** are not displayed, but the spacing above and below them still takes effect.|
 
 ### scrollBar
 

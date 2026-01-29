@@ -118,7 +118,7 @@ libnative_window.so
         OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback);
         ```
 
-2. Set the attributes of an **OHNativeWindowBuffer** by using **OH_NativeWindow_NativeWindowHandleOpt**.
+2. Set the attributes of an **OHNativeWindowBuffer** by using **OH_NativeWindow_NativeWindowHandleOpt**. By default, the **usage** parameter of **NATIVEBUFFER_USAGE_CPU_READ** is carried. If the CPU is not used to read and write data, you are advised to remove this parameter. For details, see [How do I proactively disable CPU access to window buffers to reduce power consumption?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-arkgraphics-2d-14).
 
     ```c++
     // Set the width and height of the OHNativeWindowBuffer.

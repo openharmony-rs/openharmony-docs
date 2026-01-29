@@ -16,6 +16,7 @@ To begin with, it is important to understand the following basic concepts:
 
 - Class: a template used to create an object. It provides a way to define object properties and methods in a structured manner. Classes in ArkTS are based on prototypes and added with unique syntax and semantics.
 - Instance: an object created from a class. A class defines the structure and behavior of an object, and an instance is a specific representation of a class. Instantiating a class allows access to the properties and methods defined in the class. Each instance has its own property values.
+- Prototype: ArkTS also employs classes to implement inheritance across types. Defined in the early EcmaScript specifications, the prototype concept is used to achieve object inheritance via prototype chains. For details about the prototype concept, see [EcmaScript Language Specification](https://262.ecma-international.org/#sec-terms-and-definitions-prototype).
 
 ## Available APIs
 
@@ -44,6 +45,8 @@ Call **napi_new_instance** to create an ArkTS instance with the given constructo
 CPP code:
 
 ```cpp
+#include "napi/native_api.h"
+
 static napi_value NewInstance(napi_env env, napi_callback_info info)
 {
     // Pass in and parse parameters. The first parameter is the constructor, and the second parameter is the parameters of the constructor.
@@ -71,6 +74,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Fruit {
   name: string;
   constructor(name: string) {
@@ -110,7 +114,7 @@ Call **napi_wrap** to wrap a native instance in an ArkTS object.
 
 ### napi_unwrap
 
-Call **napi_unwrap** to unwrap a native instance from an ArkTS object and obtain the pointer to the data.
+Call **napi_unwrap** to obtain the data pointer wrapped in an object.
 
 > **NOTE**
 >
@@ -219,6 +223,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
     class Obj {}
     let obj: Obj = {};

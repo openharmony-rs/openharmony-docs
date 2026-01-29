@@ -55,7 +55,7 @@ Defines additional options for selecting media files from Gallery. It inherits f
 | Name                   | Type               | Read-Only| Optional| Description                         |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
 | isEditSupported<sup>11+</sup>       | boolean | No  | Yes| Whether the image can be edited. **true** if editable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
-| isOriginalSupported<sup>12+</sup>       | boolean | No  | Yes| Whether to display the button for selecting the original image. **true** to display, **false** otherwise. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
+| isOriginalSupported<sup>12+</sup>       | boolean | No  | Yes| Whether to display the button for selecting the original image. **true** to display, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | subWindowName<sup>12+</sup>       | string | No  | Yes| Name of the child window.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | No  | Yes| Text displayed on the complete button.<br>The complete button is located in the lower-right corner of the page. It is used by users to signify that they have finished selecting images.<br>**Atomic service API**: This API can be used in atomic services since API version 14.    |
 

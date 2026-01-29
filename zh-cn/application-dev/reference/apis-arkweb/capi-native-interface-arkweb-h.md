@@ -10,6 +10,8 @@
 
 声明API接口供开发者使用注入对象和执行JavaScript代码等功能。
 
+**引用文件：** <web/native_interface_arkweb.h>
+
 **库：** libohweb.so
 
 **系统能力：** SystemCapability.Web.Webview.Core

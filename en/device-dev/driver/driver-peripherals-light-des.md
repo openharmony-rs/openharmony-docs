@@ -42,7 +42,7 @@ The light driver model provides APIs for obtaining information about all the lig
 
 **Table 1** APIs of the light driver model
 
-**NOTE**<br>The following APIs are C interfaces. For details about the interface declaration, see [/drivers/peripheral/light/interfaces/include](https://gitee.com/openharmony/drivers_peripheral/tree/master/light/interfaces/include).
+**NOTE**<br>The following APIs are C interfaces. For details about the interface declaration, see [/drivers/peripheral/light/interfaces/include](https://gitcode.com/openharmony/drivers_peripheral/tree/master/light/interfaces/include).
 
 | API                                                      | Description                                                    |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

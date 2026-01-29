@@ -4,11 +4,11 @@
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
-Provides additional parameters for the action to be executed.
+Sets the parameters of accessibility actions.
 
 **Since**: 13
 

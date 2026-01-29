@@ -8,9 +8,9 @@
 
 ## 概述
 
-在开发应用时，要实现高效的客户端跟服务器之间数据交换，文件传输的性能是至关重要的。一个数据交换性能较低的应用会导致其在加载过程中耗费较长时间，在很多的场景造成页面卡顿，极大的影响了用户体验。相反，一个数据交换高效的应用，则会让应用变得更加流畅。
+在开发应用时，要实现高效的客户端和服务器之间数据交换，文件传输的性能是至关重要的。一个数据交换性能较低的应用会导致其在加载过程中耗费较长时间，在很多场景造成页面卡顿，极大的影响了用户体验。相反，一个数据交换高效的应用，则会让应用变得更加流畅。
 
-本文将介绍两种常见的上传下载传输和网络请求的关键技术：数据压缩和断点续传，可提升上传下载的性能、减少带宽占用，从而提高数据传输效率。
+本文将介绍两种提升上传下载性能的关键技术：数据压缩和断点续传，它们能够减少带宽占用，从而提高数据传输效率。
 
 ## 上传下载接口
 
@@ -28,7 +28,7 @@
   
 5. 日志：包括调试模式和发布模式。调试模式可打印所有内存修改、磁盘、网络读写、逻辑分支等日志。发布模式下除了导致任务失败、服务异常的日志，其余日志都会关闭。
   
-6. 任务失败重试：对于不可恢复的原因，直接失败；对于可恢复的原因，网络断开、网络类型不匹配等，不现场重试，任务到等待网络恢复队列；网络超时则就地重试1次，仍网络超时，则立即失败。
+6. 任务失败重试：对于不可恢复的原因，直接失败；对于可恢复的原因，网络断开、网络类型不匹配等，不现场重试，任务进入等待网络恢复队列；网络超时则就地重试1次，仍网络超时，则立即失败。
   
 7. 服务按需启停：上传下载服务不随系统自启。应用主动调用任意接口，上传下载服务自动启动。网络连接事件会触发上传下载服务启动。在任务队列中，没有正在处理的任务，或者等待网络恢复的任务，延迟10秒钟，再check一次，仍旧没有的，则通知系统服务框架（SAMGR）可以停止并卸载上传下载服务。在服务退出过程中，新的接口请求可能失败，在客户端检查服务状态、通过重试按需启动。
   
@@ -55,7 +55,7 @@
 
 ### 数据压缩
 
-数据压缩是指在应用中对数据进行压缩，以减少存储空间和数据传输量、节省带宽，提高加载速度。数据压缩通常在网络传输和存储方面发挥着重要作用，特别是在处理大量数据或需要频繁传输数据的场景下。
+数据压缩是指在应用中对数据进行压缩，以减少存储空间和数据传输量，提高加载速度。数据压缩通常在网络传输和存储方面发挥着重要作用，特别是在处理大量数据或需要频繁传输数据的场景下。
 
 在应用开发中，常见的数据压缩技术分类如下：
 
@@ -85,59 +85,62 @@
 
 ![上传数量和耗时对比图表](./figures/file-upload-and-download-pic3.png)
 
-由于上传耗时收到网络状态影响偏差较大，结果取的几次测量结果的最小值。但是仍然可以从数据中看出，优化前的耗时基本为线性增长，压缩优化后的耗时在上传文件数量较低时并不明显，还会因为多余的压缩处理影响耗时。不过随着上传的照片数量增多，优化后的耗时和优化之前的耗时差距越来越明显，优化效果越好。
+由于上传耗时受网络状态影响偏差较大，结果取的是几次测量结果的最小值。从数据上可以看出，优化前的耗时基本为线性增长，压缩优化后的耗时在上传文件数量较低时效果不明显，还会因为额外压缩处理增加耗时。但随着上传照片数量增多，优化后的耗时和优化之前的耗时差距越来越明显，优化效果逐步提升。
 
 **数据压缩的相关示例代码如下：**
 
 1. 导入相关模块：
 
-```ts
-import { common } from '@kit.AbilityKit';
-import { fileIo } from '@kit.CoreFileKit';
-import { zlib } from '@kit.BasicServicesKit';
-```
+    ```ts
+    import { common } from '@kit.AbilityKit';
+    import { fileIo } from '@kit.CoreFileKit';
+    import { zlib } from '@kit.BasicServicesKit';
+    ```
+   
 2. 创建压缩上传相关类：
 
-```ts
-class ZipUpload {
-  // 创建任务前存放的uri
-  private waitList: Array<string> = [];
-  // 需要上传的文件uri
-  private fileUris: Array<string> = [];
-  // ...
-}
-```
+    ```ts
+    class ZipUpload {
+      // 创建任务前存放的uri
+      private waitList: Array<string> = [];
+      // 需要上传的文件uri
+      private fileUris: Array<string> = [];
+      // ...
+    }
+    ```
+   
 3. 建立用于接收图库图片的临时文件夹，并将整个临时文件夹打包添加到待上传list内：
 
-```ts
-// 文件压缩处理
-async zipUploadFiles(fileUris: Array<string>): Promise<void> {
-  this.context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let cacheDir = this.context?.cacheDir;
-  let tempDir = fileIo.mkdtempSync(`${cacheDir}/XXXXXX`);
-  // 将图库图片获取的uri放入fileUris中，遍历复制到临时文件夹
-  for (let i = 0; i < fileUris.length; i++) {
-    let fileName = fileUris[i].split('/').pop();
-    let resourceFile: fileIo.File = fileIo.openSync(fileUris[i], fileIo.OpenMode.READ_ONLY);
-    fileIo.copyFileSync(resourceFile.fd, `${tempDir}/${fileName}`, 0);
-    fileIo.closeSync(resourceFile);
-  }
-  // 文件压缩，将之前生成的临时文件夹内打包到test.zip内
-  let options: zlib.Options = {
-    level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
-    memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
-    strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY
-  };
-  let data = await zlib.compressFile(tempDir, `${cacheDir}/test.zip`, options);
-  // 删除临时文件夹
-  fileIo.rmdirSync(tempDir);
-  // 将生成的zip包放到传输队列
-  this.waitList.push(`${cacheDir}/test.zip`);
-}
-```
+    ```ts
+    // 文件压缩处理
+    async zipUploadFiles(fileUris: Array<string>): Promise<void> {
+      this.context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      let cacheDir = this.context?.cacheDir;
+      let tempDir = fileIo.mkdtempSync(`${cacheDir}/XXXXXX`);
+      // 将图库图片获取的uri放入fileUris中，遍历复制到临时文件夹
+      for (let i = 0; i < fileUris.length; i++) {
+        let fileName = fileUris[i].split('/').pop();
+        let resourceFile: fileIo.File = fileIo.openSync(fileUris[i], fileIo.OpenMode.READ_ONLY);
+        fileIo.copyFileSync(resourceFile.fd, `${tempDir}/${fileName}`, 0);
+        fileIo.closeSync(resourceFile);
+      }
+      // 文件压缩，将之前生成的临时文件夹内打包到test.zip内
+      let options: zlib.Options = {
+        level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
+        memLevel: zlib.MemLevel.MEM_LEVEL_DEFAULT,
+        strategy: zlib.CompressStrategy.COMPRESS_STRATEGY_DEFAULT_STRATEGY
+      };
+      let data = await zlib.compressFile(tempDir, `${cacheDir}/test.zip`, options);
+      // 删除临时文件夹
+      fileIo.rmdirSync(tempDir);
+      // 将生成的zip包放到传输队列
+      this.waitList.push(`${cacheDir}/test.zip`);
+    }
+    ```
+   
 ### 断点续传
 
-断点续传功能的实现，不管是应用端还是服务器端都需要用到合理的技术来互相协同。在实际开发中，开发者无需亲自实现断点续传功能，只需对SDK进行合理配置。
+断点续传功能的实现，不管是应用端还是服务器端都需要用到合理的技术来互相配合。在实际开发中，开发者无需亲自实现断点续传功能，只需对SDK进行合理配置。
 
 在应用端需要用到的技术和API：
 
@@ -169,218 +172,243 @@ async zipUploadFiles(fileUris: Array<string>): Promise<void> {
 具体可以参考[RequestUpload.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Connectivity/UploadAndDownLoad/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)
 
 1. 导入相关模块：
-```ts
-import { common } from '@kit.AbilityKit';
-import { request } from '@kit.BasicServicesKit';
-```
+
+    ```ts
+    import { common } from '@kit.AbilityKit';
+    import { request } from '@kit.BasicServicesKit';
+    import { http } from '@kit.NetworkKit';
+    import { hash } from '@kit.CoreFileKit';
+    ```
 
 2. 创建相关上传类：
-```ts
-class Upload {
-  // 后台任务
-  private backgroundTask: request.agent.Task | undefined = undefined;
-  // 创建任务前存放的uri
-  private waitList: Array<string> = [];
-  // ...
-}
-```
+
+    ```ts
+    class Upload {
+      // 后台任务
+      private backgroundTask: request.agent.Task | undefined = undefined;
+      // 创建任务前存放的uri
+      private waitList: Array<string> = [];
+      // ...
+    }
+    ```
+   
 3. 生成MD5码，上传到服务器进行校验：
-```ts
-async checkFileExist(fileUri: string): Promise<boolean> {
-  let httpRequest = http.createHttp();
-  // 生成md5码
-  let md5 = await hash.hash(fileUri, 'md5');
-  let requestOption: http.HttpRequestOptions = {
-    method: http.RequestMethod.POST,
-    extraData: {
-      'MD5': md5
+
+    ```ts
+    async checkFileExist(fileUri: string): Promise<boolean> {
+      let httpRequest = http.createHttp();
+      // 生成md5码
+      let md5 = await hash.hash(fileUri, 'md5');
+      let requestOption: http.HttpRequestOptions = {
+        method: http.RequestMethod.POST,
+        extraData: {
+          'MD5': md5
+        }
+      }
+      let response = await httpRequest.request('http://XXX.XXX.XXX.XXX/XXXX', requestOption);
+      let result = response.result;
+      let flag = false;
+      // ... 
+      // 根据服务器返回对应数据判断是否存在
+      if (flag) {
+        return true;
+      } else {
+        return false;
+      }
     }
-  }
-  let response = await httpRequest.request('http://XXX.XXX.XXX.XXX/XXXX', requestOption);
-  let result = response.result;
-  let flag = false;
-  // ... 
-  // 根据服务器返回对应数据判断是否存在
-  if (flag) {
-    return true;
-  } else {
-    return false;
-  }
-}
-```
+    ```
+   
 4. 配置Config，创建后台上传任务：
-```ts
-private config: request.agent.Config = {
-  action: request.agent.Action.UPLOAD,
-  headers: HEADER,
-  url: '',
-  mode: request.agent.Mode.BACKGROUND,
-  method: 'POST',
-  title: 'upload',
-  network: request.agent.Network.ANY,
-  data: [],
-  token: 'UPLOAD_TOKEN'
-}
-// ...
-// 转换uri
-private async getFilesAndData(cacheDir: string, fileUris: Array<string>): Promise<Array<request.agent.FormItem>> {
-// ...
-}
-// 创建文件上传后台任务
-async createBackgroundTask(fileUris: Array<string>) {
- // 获取上传url
-  this.config.url = 'http://XXX.XXX.XXX.XXX';
-  this.config.mode = request.agent.Mode.BACKGROUND;
-  let tempData = await this.getFilesAndData(this.context.cacheDir, fileUris);
-  // 判断每个文件是否为空
-  for (let i = 0; i < tempData.length; i++) {
-    let flag = await this.checkFileExist(`${this.context.cacheDir}/${tempData[i].name}`);
-    if (!flag) {
-      this.config.data.push(tempData[i])
+
+    ```ts
+    private config: request.agent.Config = {
+      action: request.agent.Action.UPLOAD,
+      headers: HEADER,
+      url: '',
+      mode: request.agent.Mode.BACKGROUND,
+      method: 'POST',
+      title: 'upload',
+      network: request.agent.Network.ANY,
+      data: [],
+      token: 'UPLOAD_TOKEN'
     }
-  }
-  let isFileExist = await this.checkFileExist(`${this.context.cacheDir}/${this.config.data[0].name}`);
-  if (this.config.data.length === 0) {
-    return;
-  }
-  this.backgroundTask = await request.agent.create(this.context, this.config);
-}
-```
+    // ...
+    // 转换uri
+    private async getFilesAndData(cacheDir: string, fileUris: Array<string>): Promise<Array<request.agent.FormItem>> {
+    // ...
+    }
+    // 创建文件上传后台任务
+    async createBackgroundTask(fileUris: Array<string>) {
+     // 获取上传url
+      this.config.url = 'http://XXX.XXX.XXX.XXX';
+      this.config.mode = request.agent.Mode.BACKGROUND;
+      let tempData = await this.getFilesAndData(this.context.cacheDir, fileUris);
+      // 判断每个文件是否为空
+      for (let i = 0; i < tempData.length; i++) {
+        let flag = await this.checkFileExist(`${this.context.cacheDir}/${tempData[i].name}`);
+        if (!flag) {
+          this.config.data.push(tempData[i])
+        }
+      }
+      let isFileExist = await this.checkFileExist(`${this.context.cacheDir}/${this.config.data[0].name}`);
+      if (this.config.data.length === 0) {
+        return;
+      }
+      this.backgroundTask = await request.agent.create(this.context, this.config);
+    }
+    ```
+   
 5. 任务开始：
-```ts
-await this.backgroundTask.start();
-```
+
+    ```ts
+    await this.backgroundTask.start();
+    ```
+   
 6. 任务暂停：
-```ts
-async pause() {
-  if (this.backgroundTask === undefined) {
-    return;
-  }
-  await this.backgroundTask.pause();
-}
-```
+
+    ```ts
+    async pause() {
+      if (this.backgroundTask === undefined) {
+        return;
+      }
+      await this.backgroundTask.pause();
+    }
+    ```
+   
 7. 任务继续：
-```ts
-async resume() {
-  if (this.backgroundTask === undefined) {
-    return;
-  }
-  await this.backgroundTask.resume();
-}
-```
+
+    ```ts
+    async resume() {
+      if (this.backgroundTask === undefined) {
+        return;
+      }
+      await this.backgroundTask.resume();
+    }
+    ```
+   
 **文件下载**
 
 对于大文件断点续传下载，也可以直接调用**request.agent**接口，该接口的断点续传是基于HTTP协议Header里的Range字段实现的，在任务暂停重启的时候，会自动设置Header中的Range字段，无需进行额外的配置。
 
-> **Range简介**
-> 
-> HTTP协议里面的Range字段，官方名称为范围请求，它允许服务器只发送 HTTP
-> 消息的一部分到客户端，可以用来请求部分数据而不是整个资源。
-> 
-> Range的格式通常是Range:
-> `<unit>=<start>-<end>`，其中`<unit>`表示范围所采用的单位，通常是字节（bytes），`<start>` 和 `<end>` 表示请求的起始字节和结束字节的位置。
-> 
-> Range语法如下：
-> ```ts
-> // 表示从range-start到文件末尾
-> Range: <unit>=<range-start>-
-> // 表示从range-start到range-end
-> Range: <unit>=<range-start>-<range-end>
-> // 可以同时选择多段，用逗号分隔
-> Range: <unit>=<range-start>-<range-end>, <range-start>-<range-end>
-> 
-> // 示例：表示返回1024btyes之后的文件
-> Range: bytes=1024-
-> ```
-> 服务器收到请求后，正确处理请求会回复206 Partial
-> Content，未正常处理则会回复其他响应码。下表是服务器回复的常见响应码：
-> 
-> | 服务器响应码 | 常见的原因 |
-> | ------------------ | -----------------|
-> | 206 Partial Content | 服务器收到正常Range请求的响应码，返回部分内容的响应。|
-> | 416 Range Not Satisfiable | 所请求的范围不合法，表示服务器错误。|
-> |200 OK | 服务器忽略了 Range 首部，返回整个文件。|
-> 
+**Range简介**
+
+HTTP协议里面的Range字段，官方名称为范围请求，它允许服务器只发送 HTTP 消息的一部分到客户端，可以用来请求部分数据而不是整个资源。
+
+Range的格式通常是Range:
+`<unit>=<start>-<end>`，其中`<unit>`表示范围所采用的单位，通常是字节（bytes），`<start>` 和 `<end>` 表示请求的起始字节和结束字节的位置。
+
+Range语法如下：
+   ```ts
+   // 表示从range-start到文件末尾
+   Range: <unit>=<range-start>-
+   // 表示从range-start到range-end
+   Range: <unit>=<range-start>-<range-end>
+   // 可以同时选择多段，用逗号分隔
+   Range: <unit>=<range-start>-<range-end>, <range-start>-<range-end>
+   // 示例：表示返回1024bytes之后的文件
+   Range: bytes=1024-
+   ```
+服务器收到请求后，正确处理请求会回复206 Partial Content，未正常处理则会回复其他响应码。下表是服务器回复的常见响应码：
+
+| 服务器响应码 | 常见的原因 |
+| ------------------ | -----------------|
+| 206 Partial Content | 服务器收到正常Range请求的响应码，返回部分内容的响应。|
+| 416 Range Not Satisfiable | 所请求的范围不合法，表示服务器错误。|
+|200 OK | 服务器忽略了 Range 首部，返回整个文件。|
+ 
 
 **断点续传下载示例代码如下：**
 
 具体可以参考[RequestDownload.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Connectivity/UploadAndDownLoad/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)
 
 1. 导入模块：
-```ts
-import { common } from '@kit.AbilityKit';
-import { request } from '@kit.BasicServicesKit';
-```
+
+    ```ts
+    import { common } from '@kit.AbilityKit';
+    import { request } from '@kit.BasicServicesKit';
+    ```
+   
 2. 创建下载类：
-```ts
-class Download {
-  // 任务存放前的uri
-  private waitList: Array<string[]> = [];
-  // 下载任务
-  private downloadTask: request.agent.Task | undefined = undefined;
-  // 后台任务下载列表
-  private backgroundDownloadTaskList: Array<request.agent.Task> = [];
-  // ...
-}
-```
+
+    ```ts
+    class Download {
+      // 任务存放前的uri
+      private waitList: Array<string[]> = [];
+      // 下载任务
+      private downloadTask: request.agent.Task | undefined = undefined;
+      // 后台任务下载列表
+      private backgroundDownloadTaskList: Array<request.agent.Task> = [];
+      // ...
+    }
+    ```
+   
 3. 配置Config，创建后台下载任务：
-```ts
-async createBackgroundTask(downloadList: Array<string[]>) {
-  let splitUrl = url.split('//')[1].split('/');
-  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let downloadConfig: request.agent.Config = {
-    action: request.agent.Action.DOWNLOAD,
-    url: url,
-    method: 'POST',
-    title: 'download',
-    mode: request.agent.Mode.FOREGROUND, // 必须是后台任务才能续传
-    network: request.agent.Network.ANY,
-    saveas: `./${folder}/${splitUrl[splitUrl.length-1]}`,
-    overwrite: true
-  }
-  this.downloadTask = await request.agent.create(context, downloadConfig);
-  if (this.backgroundDownloadTaskList.findIndex(task => task.config.url === downTask.config.url) === -1) {
-    this.backgroundDownloadTaskList.push(downTask);
-  }
-}
-```
+
+    ```ts
+    async createBackgroundTask(downloadList: Array<string[]>) {
+      let splitUrl = url.split('//')[1].split('/');
+      let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      let downloadConfig: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: url,
+        method: 'POST',
+        title: 'download',
+        mode: request.agent.Mode.FOREGROUND, // 必须是后台任务才能续传
+        network: request.agent.Network.ANY,
+        saveas: `./${folder}/${splitUrl[splitUrl.length-1]}`,
+        overwrite: true
+      }
+      this.downloadTask = await request.agent.create(context, downloadConfig);
+      if (this.backgroundDownloadTaskList.findIndex(task => task.config.url === downTask.config.url) === -1) {
+        this.backgroundDownloadTaskList.push(downTask);
+      }
+    }
+    ```
+   
 4. 任务开始：
-```ts
-await downTask.start();
-```
+
+    ```ts
+    await downTask.start();
+    ```
+
 5. 任务暂停：
-```ts
-async pause() {
-  if (this.backgroundDownloadTaskList.length === 0) {
-    return;
-  }
-  this.backgroundDownloadTaskList.forEach(async task => {
-    await task.pause();
-  })
-}
-```
+
+    ```ts
+    async pause() {
+      if (this.backgroundDownloadTaskList.length === 0) {
+        return;
+      }
+      this.backgroundDownloadTaskList.forEach(async task => {
+        await task.pause();
+      })
+    }
+    ```
+   
 6. 任务继续：
-```ts
-async resume() {
-  if (this.backgroundDownloadTaskList.length === 0) {
-    return;
-  }
-  this.backgroundDownloadTaskList.forEach(async task => {
-    await task.resume();
-  })
-}
-```
+
+    ```ts
+    async resume() {
+      if (this.backgroundDownloadTaskList.length === 0) {
+        return;
+      }
+      this.backgroundDownloadTaskList.forEach(async task => {
+        await task.resume();
+      })
+    }
+    ```
+   
 7. 任务停止：
-```ts
-async deleteAllBackTasks() {
-  if (this.backgroundDownloadTaskList.length > 0) {
-    this.backgroundDownloadTaskList.forEach(async task => {
-      await request.agent.remove(task.tid);
-    })
-    this.backgroundDownloadTaskList = [];
-  }
-}
-```
+
+    ```ts
+    async deleteAllBackTasks() {
+      if (this.backgroundDownloadTaskList.length > 0) {
+        this.backgroundDownloadTaskList.forEach(async task => {
+          await request.agent.remove(task.tid);
+        })
+        this.backgroundDownloadTaskList = [];
+      }
+    }
+    ```
 
 ## 相关实例
 

@@ -114,7 +114,7 @@ Invalid string length of the event parameter.
 
 **可能原因**
 
-- 调用write接口传入的事件参数值中的字符串长度超过8*1024个字符。
+- 调用write接口传入的事件参数值中的字符串长度超过8*1024。
 - 调用setEventParam接口传入的事件自定义参数值的长度超过1024个字符。
 
 **处理步骤**

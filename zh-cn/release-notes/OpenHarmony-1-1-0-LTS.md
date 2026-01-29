@@ -31,7 +31,7 @@
 下载命令如下：
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony_release_v1.1.0 --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony_release_v1.1.0 --no-repo-verify
 repo sync -c
 ```
 
@@ -203,6 +203,6 @@ repo sync -c
 
 | ISSUE                                                        | 问题描述                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I3EALU](https://gitee.com/openharmony/multimedia_camera_lite/issues/I3EALU) | 【多媒体】cameraActs 用例执行时，找不到相机配置文件，初始失败的问题 |
-| [I3EGUX](https://gitee.com/openharmony/release-management/issues/I3EGUX) | 【可靠性问题】反复reset，出现一次KIdle进程crash，系统挂死无法启动 |
-| [I3DHIL](https://gitee.com/openharmony/community/issues/I3DHIL) | 【系统问题】HI3518开源板剩余空间不足，导致ACTS用例大量失败   |
+| [I3EALU](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I3EALU) | 【多媒体】cameraActs 用例执行时，找不到相机配置文件，初始失败的问题 |
+| [I3EGUX](https://gitcode.com/openharmony/release-management/issues/I3EGUX) | 【可靠性问题】反复reset，出现一次KIdle进程crash，系统挂死无法启动 |
+| [I3DHIL](https://gitcode.com/openharmony/community/issues/I3DHIL) | 【系统问题】HI3518开源板剩余空间不足，导致ACTS用例大量失败   |

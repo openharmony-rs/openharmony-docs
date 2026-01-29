@@ -123,7 +123,7 @@ Output example
 
 The rawheap-file size and generation time are strongly and positively correlated with the current ArkTS heap size and the number of live objects. When the ArkTS heap memory usage is high and the number of live objects is large, the generated rawheap file is larger and the generation takes longer. You can subscribe to the [resource leak events](../dfx/hiappevent-watcher-resourceleak-events.md) and customize the event processing logic.
 
-Since API version 20, the VM supports two specifications of heap dump.
+Since API version 20, the VM supports two specifications of heap dump. For details about how to switch between the specifications, see [hidebug.setJsRawHeapTrimLevel](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20)
 | Specifications| Features|
 | :--- | :--- |
 | TRIM_LEVEL_1 | The dump speed is fast, and the generated rawheap file is large.<br>Before API version 20, the VM uses **TRIM_LEVEL_1** by default.|

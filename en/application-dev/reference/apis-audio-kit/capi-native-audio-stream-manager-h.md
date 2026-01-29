@@ -4,7 +4,7 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -28,7 +28,7 @@ You can call the functions to create an audio stream manager and set and manage 
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | Describes an audio stream manager, which is used to manage audio streams.|
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | Describes an audio stream manager, which is used for audio stream management.|
 
 ### Functions
 
@@ -54,7 +54,6 @@ Obtains the handle to the audio stream manager.
 
 **Since**: 19
 
-
 **Parameters**
 
 | Name| Description|
@@ -78,7 +77,6 @@ OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStr
 Obtains the direct playback mode supported by an audio stream.
 
 **Since**: 19
-
 
 **Parameters**
 
@@ -107,7 +105,6 @@ Checks whether the audio stream of the specified source type supports acoustic e
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -133,7 +130,6 @@ bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *stream
 Checks whether the current device supports low-latency playback for the specified audio stream information and usage scenario.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -161,7 +157,6 @@ Checks whether the current device supports low-latency recording for the specifi
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -175,3 +170,4 @@ Checks whether the current device supports low-latency recording for the specifi
 | Type| Description|
 | -- | -- |
 | bool | Check result for the support of low-latency recording. **true** if supported, **false** otherwise.|
+

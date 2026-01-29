@@ -10,9 +10,9 @@ A utility class used to parse JSON strings into [sendable data](../../arkts-util
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 ## Modules to Import
 
@@ -76,6 +76,8 @@ Enumerates the modes for processing BigInt.
 
 Enumerates the return types of the parsing result.
 
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
 **System capability**: SystemCapability.Utils.Lang
 
 | Name| Value| Description           |
@@ -91,10 +93,10 @@ Describes the parsing options, which define the BigInt processing mode and the r
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name| Type| Mandatory| Description           |
-| ------ | ------ | ---- | --------------- |
-| bigIntMode   | [BigIntMode](#bigintmode) | Yes|Mode for processing BigInt.|
-| parseReturnType   | [ParseReturnType](#parsereturntype) | Yes|Return type of the parsing result.|
+| Name| Type| Read-Only| Optional| Description           |
+| ------ | ------ | ---- | ---- |--------------- |
+| bigIntMode   | [BigIntMode](#bigintmode) | No | No|Mode for processing BigInt.|
+| parseReturnType   | [ParseReturnType](#parsereturntype) | No | No|Return type of the parsing result.|
 
 ## parse
 
@@ -131,8 +133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { lang } from '@kit.ArkTS';
-import { collections } from '@kit.ArkTS';
+import { ArkTSUtils, collections, lang} from '@kit.ArkTS';
 
 type ISendable = lang.ISendable;
 let jsonText = '{"name": "John", "age": 30, "city": "ChongQing"}';

@@ -329,20 +329,20 @@ inum = CONTAINER_IDEX_BASE + (unsigned int)i;
 
 The LiteOS-A smoke test cases contain the examples of the corresponding interfaces. You need to compile and verify the test cases. The recommended test cases are as follows:
 
-[Creating a UTS Container](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_001.cpp)
+[Creating a UTS Container](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_001.cpp)
 
-[Moving a Process to a New UTS Container Using unshare()](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_004.cpp)
+[Moving a Process to a New UTS Container Using unshare()](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_004.cpp)
 
-[Moving a Process to the UTS Container of the Child Process Using setns()](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_005.cpp)
+[Moving a Process to the UTS Container of the Child Process Using setns()](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_uts_container_005.cpp)
 
-[Creating a Network Container](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_net_container_001.cpp)
+[Creating a Network Container](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_net_container_001.cpp)
 
-[Creating a User Container](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_user_container_001.cpp)
+[Creating a User Container](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_user_container_001.cpp)
 
-[Creating a PID Container](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_pid_container_023.cpp)
+[Creating a PID Container](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_pid_container_023.cpp)
 
-[Creating a Mount Container](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_mnt_container_001.cpp)
+[Creating a Mount Container](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_mnt_container_001.cpp)
 
-[Creating an IPC Container](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_ipc_container_001.cpp)
+[Creating an IPC Container](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_ipc_container_001.cpp)
 
-[Creating a Time Container](https://gitee.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_time_container_001.cpp)
+[Creating a Time Container](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/testsuites/unittest/container/smoke/It_time_container_001.cpp)

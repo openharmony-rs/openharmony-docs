@@ -225,7 +225,7 @@ Checks whether all data in this **WebHttpBodyStream** instance has been read.
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| boolean | Whether all data in the **WebHttpBodyStream** instance has been read.<br>This API returns **true** if all data in the **httpBodyStream** instance is read. It returns **false** before the first read attempt is made for the **WebHttpBodyStream** instance that uses chunked transfer.|
+| boolean | Whether all data in the **WebHttpBodyStream** instance has been read.<br>This API returns **true** if all data in the **WebHttpBodyStream** instance is read. It returns **false** before the first read attempt is made for the **WebHttpBodyStream** instance that uses chunked transfer.|
 
 **Example**
 

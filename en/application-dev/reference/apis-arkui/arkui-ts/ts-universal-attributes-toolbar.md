@@ -1,10 +1,10 @@
-# Toolbar
+# Toolbar Configuration
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can configure the toolbar for a component.
 
@@ -19,6 +19,10 @@ You can configure the toolbar for a component.
 toolbar(value: CustomBuilder): T
 
 Creates a toolbar bound to the component in the window's title bar section. The toolbar position corresponds to the component's position in the layout. The [CustomBuilder](ts-types.md#custombuilder8) must consist of [ToolBarItem](ts-basic-components-toolbaritem.md) components to take effect.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,7 +50,7 @@ Creates a toolbar bound to the component in the window's title bar section. The 
 >  5. The title bar height dynamically adjusts based on the [ToolBarItem](ts-basic-components-toolbaritem.md) components in the toolbar:
 >     * There is a default 4 vp margin between the [ToolBarItem](ts-basic-components-toolbaritem.md) components and the title bar.
 >     * If the tallest [ToolBarItem](ts-basic-components-toolbaritem.md) component is less than or equal to 48 vp, the title bar height will adjust to 56 vp. This setting is suitable for universal components such as title bars, toolbars, and search bars.
->     The title bar height dynamically adjusts based on the [ToolBarItem](ts-basic-components-toolbaritem.md) components in the toolbar:
+>     * If the tallest [ToolBarItem](ts-basic-components-toolbaritem.md) component is between 48 vp and 56 vp, the title bar height will adjust to 64 vp. This setting is suitable for toolbars that display both icons and text.
 >     * If the tallest [ToolBarItem](ts-basic-components-toolbaritem.md) component exceeds 56 vp, the title bar height will adjust to 72 vp. If it exceeds 64 vp, the title bar height will remain at 72 vp, and any excess area will be clipped.
 
 ## Example

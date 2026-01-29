@@ -23,8 +23,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| VkStructureType sType | 结构体类型。 |
-| void* pNext | 下一级结构体指针。 |
+| VkStructureType sType | 结构体类型，值必须为VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_OHOS。 |
+| void* pNext | pNext为空或者下一级结构体指针。 |
 | uint64_t externalFormat | 外部定义的格式标识符。 |
 
 

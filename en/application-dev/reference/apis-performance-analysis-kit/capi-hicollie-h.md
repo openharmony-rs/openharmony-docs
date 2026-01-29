@@ -34,12 +34,12 @@ HiCollie provides APIs for checking service thread stuck and jank events and rep
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*OH_HiCollie_Task)(void)](#oh_hicollie_task) | OH_HiCollie_Task | Defines a function used to check whether a service thread is stuck.<br> This function is called by HiCollie every 3 seconds in an independent thread.<br> For example, this function can be used to send a message to a service thread and set a flag after the service thread receives the message. Then the flag is checked to determine whether the service thread is stuck.|
-| [typedef void (\*OH_HiCollie_BeginFunc)(const char* eventName)](#oh_hicollie_beginfunc) | OH_HiCollie_BeginFunc | Defines a function used to record the begin time when a service thread processes an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted before each event is processed.|
-| [typedef void (\*OH_HiCollie_EndFunc)(const char* eventName)](#oh_hicollie_endfunc) | OH_HiCollie_EndFunc | Defines a function used to check whether a service thread is janky when processing an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted after each event is processed.|
+| [typedef void (\*OH_HiCollie_Task)(void)](#oh_hicollie_task) | OH_HiCollie_Task | Checks whether a service thread is stuck.<br> This function is called by HiCollie every 3 seconds in an independent thread.<br> For example, this function can be used to send a message to a service thread and set a flag after the service thread receives the message. Then the flag is checked to determine whether the service thread is stuck.|
+| [typedef void (\*OH_HiCollie_BeginFunc)(const char* eventName)](#oh_hicollie_beginfunc) | OH_HiCollie_BeginFunc | Records the begin time when a service thread processes an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted before each event is processed.|
+| [typedef void (\*OH_HiCollie_EndFunc)(const char* eventName)](#oh_hicollie_endfunc) | OH_HiCollie_EndFunc | Checks whether a service thread is janky when processing an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted after each event is processed.|
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)](#oh_hicollie_init_stuckdetection) | - | Registers a callback used to periodically detect service thread stuck events.  <br> By default, the **BUSSINESS_THREAD_BLOCK_3S** event is reported when the thread is blocked for 3s and the **BUSSINESS_THREAD_BLOCK_6S** event is reported when the thread is blocked for 6s.|
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task task, uint32_t stuckTimeout)](#oh_hicollie_init_stuckdetectionwithtimeout) | - | Registers a callback used to periodically detect service thread stuck events.  <br> You can set the interval for the stuck event detection. The value range is [3, 15], in seconds.|
-| [HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc,OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)](#oh_hicollie_init_jankdetection) | - | Registers a callback used to detect service thread jank events.<br> To monitor service thread jank events, you can implement two callbacks as instrumentation functions, placing them before and after the service thread event.  |
+| [HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc, OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)](#oh_hicollie_init_jankdetection) | - | Registers a callback used to detect service thread jank events.<br> To monitor service thread jank events, you can implement two callbacks as instrumentation functions, placing them before and after the service thread event.  |
 | [HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)](#oh_hicollie_report) | - | Reports a service thread stuck event and generates logs to help locate application stuck issues.<br> Call **OH_HiCollie_Init_StuckDetection()** or **OH_HiCollie_Init_StuckDetectionWithTimeout()** to initialize the detection task.<br> If the task times out, call **OH_HiCollie_Report()** to report the stuck event based on the service logic.|
 | [typedef void (\*OH_HiCollie_Callback)(void*)](#oh_hicollie_callback) | OH_HiCollie_Callback | Triggered when [OH_HiCollie_CancelTimer](capi-hicollie-h.md#oh_hicollie_canceltimer) is not called within the custom task timeout period after [OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer) is called.|
 | [HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)](#oh_hicollie_settimer) | - | Registers a timer to check whether the execution time of a function or code block exceeds the custom time.<br> This API is used together with the **OH_HiCollie_CancelTimer** API.|
@@ -84,10 +84,10 @@ Enumerates the actions to be performed when a function times out.
 
 | Enum Item| Description|
 | -- | -- |
-| HICOLLIE_FLAG_DEFAULT = (~0) | Generates logs and recovers the process. This is the default value.|
+| HICOLLIE_FLAG_DEFAULT = (~0) | Generates logs and recovers the function. This is the default action.|
 | HICOLLIE_FLAG_NOOP = (0) | Executes only the callback.|
 | HICOLLIE_FLAG_LOG = (1 << 0) | Generates logs.|
-| HICOLLIE_FLAG_RECOVERY = (1 << 1) | Performs recovery actions.|
+| HICOLLIE_FLAG_RECOVERY = (1 << 1) | Recovers the function.|
 
 
 ## Function Description
@@ -100,7 +100,7 @@ typedef void (*OH_HiCollie_Task)(void)
 
 **Description**
 
-Defines a function used to check whether a service thread is stuck.<br> This function is called by HiCollie every 3 seconds in an independent thread.<br> For example, this function can be used to send a message to a service thread and set a flag after the service thread receives the message. Then the flag is checked to determine whether the service thread is stuck.
+Checks whether a service thread is stuck.<br> This function is called by HiCollie every 3 seconds in an independent thread.<br> For example, this function can be used to send a message to a service thread and set a flag after the service thread receives the message. Then the flag is checked to determine whether the service thread is stuck.
 
 **Since**: 12
 
@@ -112,7 +112,7 @@ typedef void (*OH_HiCollie_BeginFunc)(const char* eventName)
 
 **Description**
 
-Defines a function used to record the begin time when a service thread processes an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted before each event is processed.
+Records the begin time when a service thread processes an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted before each event is processed.
 
 **Since**: 12
 
@@ -131,7 +131,7 @@ typedef void (*OH_HiCollie_EndFunc)(const char* eventName)
 
 **Description**
 
-Defines a function used to check whether a service thread is janky when processing an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted after each event is processed.
+Checks whether a service thread is janky when processing an event. This function is used in the jank event detection.<br> HiCollie checks the duration of each event. If the duration exceeds the preset threshold, a jank event is reported.<br> This function is inserted after each event is processed.
 
 **Since**: 12
 
@@ -165,7 +165,7 @@ Registers a callback used to periodically detect service thread stuck events.  <
 
 | Type| Description|
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>         For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br>[HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
 
 ### OH_HiCollie_Init_StuckDetectionWithTimeout()
 
@@ -185,18 +185,18 @@ Registers a callback used to periodically detect service thread stuck events.  <
 | Name| Description|
 | -- | -- |
 | [OH_HiCollie_Task](capi-hicollie-h.md#oh_hicollie_task) task | Periodic detection task that is executed every **stuckTimeout** time to check whether a service thread is stuck.|
-| uint32_t stuckTimeout | Threshold for reporting a service thread stuck event, in seconds. When the task execution time exceeds the value of **stuckTimeout**, a stuck warning event is reported. When the task execution time exceeds twice the value of **stuckTimeout**, a stuck event is reported.<br>          The maximum value is **15s** and the minimum value is **3s**.|
+| uint32_t stuckTimeout | Threshold for reporting a service thread stuck event, in seconds. When the task execution time exceeds the value of **stuckTimeout**, a stuck warning event is reported. When the task execution time exceeds twice the value of **stuckTimeout**, a stuck event is reported.<br> The maximum value is **15s** and the minimum value is **3s**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - Invalid detection time.<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>         For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - Invalid detection time.<br>[HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
 
 ### OH_HiCollie_Init_JankDetection()
 
 ```
-HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc,OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)
+HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc, OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)
 ```
 
 **Description**
@@ -218,7 +218,7 @@ Registers a callback used to detect service thread jank events.<br> To monitor s
 
 | Type| Description|
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - The begin and end functions are not both set or both unset; they must either both have valid values or both be empty.<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>         For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - The begin and end functions are not both set or both unset; they must either both have valid values or both be empty.<br>[HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
 
 ### OH_HiCollie_Report()
 
@@ -243,7 +243,7 @@ Reports a service thread stuck event and generates logs to help locate applicati
 
 | Type| Description|
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - The begin and end functions are not both set or both unset; they must either both have valid values or both be empty.<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>         [HICOLLIE_REMOTE_FAILED](capi-hicollie-h.md#hicollie_errorcode) 29800002 - Remote call error. The IPC remote service fails to be called.<br>         For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - The begin and end functions are not both set or both unset; they must either both have valid values or both be empty.<br>[HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - Incorrect calling thread. This function should be called in a non-main thread.<br>[HICOLLIE_REMOTE_FAILED](capi-hicollie-h.md#hicollie_errorcode) 29800002 - Remote call error. The IPC remote service fails to be called.<br>For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
 
 ### OH_HiCollie_Callback()
 
@@ -281,7 +281,7 @@ Registers a timer to check whether the execution time of a function or code bloc
 
 | Type| Description|
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br> 		   [HICOLLIE_INVALID_TIMER_NAME](capi-hicollie-h.md#hicollie_errorcode) 29800003 - Invalid timer name. The timer name cannot be NULL or an empty string.<br>         [HICOLLIE_INVALID_TIMEOUT_VALUE](capi-hicollie-h.md#hicollie_errorcode) 29800004 - Invalid timeout value.<br>         [HICOLLIE_WRONG_PROCESS_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800005 - Invalid process context for detection. This function cannot be called in the **appspawn** and **nativespawn** processes.<br>         [HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM](capi-hicollie-h.md#hicollie_errorcode) 29800006 - The pointer used to save the returned timer ID is NULL.<br>         For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - Operation successful.<br> 		   [HICOLLIE_INVALID_TIMER_NAME](capi-hicollie-h.md#hicollie_errorcode) 29800003 - Invalid timer name. The timer name cannot be NULL or an empty string.<br>[HICOLLIE_INVALID_TIMEOUT_VALUE](capi-hicollie-h.md#hicollie_errorcode) 29800004 - Invalid timeout value.<br>[HICOLLIE_WRONG_PROCESS_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800005 - Invalid process context for detection. This function cannot be called in the **appspawn** and **nativespawn** processes.<br>[HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM](capi-hicollie-h.md#hicollie_errorcode) 29800006 - The pointer used to save the returned timer ID is NULL.<br>For details, see [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode).|
 
 ### OH_HiCollie_CancelTimer()
 

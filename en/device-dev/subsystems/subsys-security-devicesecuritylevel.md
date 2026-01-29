@@ -186,11 +186,11 @@ void CheckDestDeviceSecurityLevelAsync(const DeviceIdentify *device, RequestOpti
 
 ### Device Security Level Credential
 
-To ensure its integrity and non-repudiation, the security level information must be encapsulated in a "device security level credential" (credential for short) file for transmission between devices. In addition to the security level information of the device, the credential may include device attributes, such as the device model and version. Moreover, the credential must be signed using the public key infrastructure (PKI) technology. Other basic security capabilities of OpenHarmony, such as [Device Authentication](https://gitee.com/openharmony/security_device_auth) and [HUKS](https://gitee.com/openharmony/security_huks), are used to ensure secure transmission of credentials.
+To ensure its integrity and non-repudiation, the security level information must be encapsulated in a "device security level credential" (credential for short) file for transmission between devices. In addition to the security level information of the device, the credential may include device attributes, such as the device model and version. Moreover, the credential must be signed using the public key infrastructure (PKI) technology. Other basic security capabilities of OpenHarmony, such as [Device Authentication](https://gitcode.com/openharmony/security_device_auth) and [HUKS](https://gitcode.com/openharmony/security_huks), are used to ensure secure transmission of credentials.
 
 ### Default Implementation
 
-The DSLM module provides default implementation of security level information synchronization and verification. It is assumed that the security level of all OpenHarmony devices is SL1, and a loose verification scheme is used. For details, see the [source code](https://gitee.com/openharmony/security_device_security_level/tree/master/oem_property/ohos).
+The DSLM module provides default implementation of security level information synchronization and verification. It is assumed that the security level of all OpenHarmony devices is SL1, and a loose verification scheme is used. For details, see the [source code](https://gitcode.com/openharmony/security_device_security_level/tree/master/oem_property/ohos).
 
 You can change the device security level as required. For details about the OpenHarmony device security levels, see [Basic Concepts](#basic-concepts). You can also use more severe verification schemes, including but are not limited to using device-specific credential, periodically downloading updated credentials from a server and strictly authenticating the issuer and validity period of the credentials, and using Trusted Execution Environment (TEE) or even Secure Element (SE) to sign credential files.
 
@@ -368,7 +368,7 @@ eyJ0eXAiOiAiRFNMIn0=.eyJ0eXBlIjogImRlYnVnIiwgIm1hbnVmYWN0dXJlIjogIm9ob3MiLCAiYnJ
 
 ### Credential Exchange Protocol
 
-When detecting a device goes online, the DSLM module requests the device security level credential from the device through the channel provided by [DSoftBus](https://gitee.com/openharmony/communication_dsoftbus).
+When detecting a device goes online, the DSLM module requests the device security level credential from the device through the channel provided by [DSoftBus](https://gitcode.com/openharmony/communication_dsoftbus).
 
 The packet for requesting the credential is in the following format:
 
@@ -421,7 +421,7 @@ The fields in the response message are described as follows:
 
 ### Tool
 
-The DSLM module provides a [credential tool](https://gitee.com/openharmony/security_device_security_level/blob/master/oem_property/ohos/standard/dslm_cred_tool.py) to help you better understand the issuing and verification of credentials. This tool is a Python script encapsulated with OpenSSL commands.
+The DSLM module provides a [credential tool](https://gitcode.com/openharmony/security_device_security_level/blob/master/oem_property/ohos/standard/dslm_cred_tool.py) to help you better understand the issuing and verification of credentials. This tool is a Python script encapsulated with OpenSSL commands.
 You can use the tool as follows:
 
 1. Initialize the signature key.

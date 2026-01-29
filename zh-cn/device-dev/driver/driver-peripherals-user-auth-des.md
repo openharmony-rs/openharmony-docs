@@ -78,11 +78,11 @@
 
 - IDL接口
 
-  接口定义语言（Interface Definition Language），通过IDL编译器编译后，能够生成与编程语言相关的文件：客户端桩文件，服务器框架文件。本文主要是通过IDL接口生成的客户端和服务端来实现User_auth服务和驱动的通信，详细使用方法可参考[IDL简介](https://gitee.com/openharmony/ability_idl_tool/blob/master/README.md)。
+  接口定义语言（Interface Definition Language），通过IDL编译器编译后，能够生成与编程语言相关的文件：客户端桩文件，服务器框架文件。本文主要是通过IDL接口生成的客户端和服务端来实现User_auth服务和驱动的通信，详细使用方法可参考[IDL简介](https://gitcode.com/openharmony/ability_idl_tool/blob/master/README.md)。
 
 - IPC通信
 
-  IPC（Inter Process Communication），进程间通信是指两个进程的数据之间产生交互，详细原理可参考[IPC通信简介](https://gitee.com/openharmony/communication_ipc/blob/master/README_zh.md)。
+  IPC（Inter Process Communication），进程间通信是指两个进程的数据之间产生交互，详细原理可参考[IPC通信简介](https://gitcode.com/openharmony/communication_ipc/blob/master/README_zh.md)。
 
 - HDI
 
@@ -164,7 +164,7 @@ User_auth驱动的主要工作是为User_auth服务提供稳定的用户凭据�
 
 下面结合DEMO实例介绍驱动开发的具体步骤。
 
-1. 基于HDF驱动框架，按照驱动Driver Entry程序，完成User_auth驱动开发，主要由Bind、Init、Release、Dispatch函数接口实现，详细代码参见[user_auth_interface_driver.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/user_auth/hdi_service/service/user_auth_interface_driver.cpp)文件。
+1. 基于HDF驱动框架，按照驱动Driver Entry程序，完成User_auth驱动开发，主要由Bind、Init、Release、Dispatch函数接口实现，详细代码参见[user_auth_interface_driver.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/user_auth/hdi_service/service/user_auth_interface_driver.cpp)文件。
 
    ```c++
    // 通过自定义的HdfUserAuthInterfaceHost对象包含IoService对象和真正的HDI Service实现IRemoteObject对象
@@ -261,7 +261,7 @@ User_auth驱动的主要工作是为User_auth服务提供稳定的用户凭据�
    #endif
    ```
 
-2. 执行器注册接口举例实现，详细代码参见[user_auth_interface_service.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/user_auth/hdi_service/service/user_auth_interface_service.cpp)文件。
+2. 执行器注册接口举例实现，详细代码参见[user_auth_interface_service.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/user_auth/hdi_service/service/user_auth_interface_service.cpp)文件。
 
    ```c++
    // 添加执行器
@@ -283,7 +283,7 @@ User_auth驱动的主要工作是为User_auth服务提供稳定的用户凭据�
    }
    ```
 
-3. 录入接口举例实现，详细代码参见[user_auth_interface_service.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/user_auth/hdi_service/service/user_auth_interface_service.cpp)文件。
+3. 录入接口举例实现，详细代码参见[user_auth_interface_service.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/user_auth/hdi_service/service/user_auth_interface_service.cpp)文件。
 
    ```c++
    // 开启认证凭据管理会话
@@ -399,7 +399,7 @@ User_auth驱动的主要工作是为User_auth服务提供稳定的用户凭据�
    }
    ```
 
-4. 认证接口举例实现，详细代码参见[user_auth_interface_service.cpp](https://gitee.com/openharmony/drivers_peripheral/blob/master/user_auth/hdi_service/service/user_auth_interface_service.cpp)文件。
+4. 认证接口举例实现，详细代码参见[user_auth_interface_service.cpp](https://gitcode.com/openharmony/drivers_peripheral/blob/master/user_auth/hdi_service/service/user_auth_interface_service.cpp)文件。
 
    ```c++
    // 创建HDI服务对象

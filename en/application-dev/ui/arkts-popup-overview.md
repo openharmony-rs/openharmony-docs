@@ -1,4 +1,10 @@
 # Popup Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Popups are small windows that provide users with additional information or guidance. They are commonly used in scenarios such as screen recording and tooltips.
 
@@ -12,5 +18,5 @@ Popups are small windows that provide users with additional information or guida
 ## Constraints
 
 * Popups can be displayed only after the page is fully built. Setting the [show](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) property to true during page construction may result in issues with the popup's position and shape.
-* When using **openPopup**, you need to provide valid [TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18). Otherwise, the menu won't display correctly.
-* For details about other specifications, see [Popup Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md) and [openPopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18) .
+* When using **openPopup**, you must provide valid [TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18). Otherwise, the popup won't display correctly.
+* For details about other specifications, see [Popup Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md) and [openPopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18).

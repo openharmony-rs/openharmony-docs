@@ -1,5 +1,12 @@
 # AtomicServiceWeb
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @qq_36417014-->
+<!--Designer: @autojuan-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @zengyawen-->
+
 **AtomicServiceWeb** is an advanced web component offering customization to meet specific demands. It shields irrelevant APIs from the native **Web** component and extends functionality through JavaScript capabilities.
 
 > **NOTE**
@@ -62,7 +69,7 @@ AtomicServiceWeb({
 | navPathStack         | [NavPathStack](ts-basic-components-navigation.md#navpathstack10)                                                 | No | -           | Information about the navigation stack. When **NavDestination** serves as the root container of the page, **NavPathStack** corresponding to the **NavDestination** container must be passed to handle page routing.                                          |
 | mixedMode            | [MixedMode](../../apis-arkweb/arkts-basic-components-web-e.md#mixedmode)                                          | No | @Prop       | Whether to enable loading of HTTP and HTTPS mixed content. By default, this feature is disabled.                                                   |
 | darkMode             | [WebDarkMode](../../apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)                                     | No | @Prop       | Web dark mode. By default, web dark mode is disabled.                                                                                                     |
-| forceDarkAccess      | boolean                                                                                                          | No | @Prop       | Whether to enable forcible dark mode for the web page. This feature is disabled by default. This API is effective only when web dark mode is enabled.                                                                         |
+| forceDarkAccess      | boolean                                                                                                          | No | @Prop       | Whether to enable forcible dark mode for the web page. The value **true** means to enable forcible dark mode for the web page, and **false** means the opposite. Default value: **false**. This API is effective only when web dark mode is enabled.                                                                         |
 | nestedScroll<sup>15+</sup>      | [NestedScrollOptions](../../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10) \| [NestedScrollOptionsExt](../../apis-arkweb/arkts-basic-components-web-i.md#nestedscrolloptionsext14) | No | @Prop       | Nested scrolling options.<br>**Atomic service API**: This API can be used in atomic services since API version 15.                                                                             |
 | onMessage            | Callback\<[OnMessageEvent](#onmessageevent)\>                                                                    | No | -           | Callback invoked when the HTML5 page sends a message through the **postMessage()** API of the JS SDK, and the **AtomicServiceWeb** component's corresponding page is returned or destroyed.                                                             |
 | onErrorReceive       | Callback\<[OnErrorReceiveEvent](#onerrorreceiveevent)\>                                                          | No | -           | Callback invoked when an error occurs during web page loading. For performance reasons, simplify the implementation logic in the callback. This callback is invoked when there is no network connection.                                                                |
@@ -344,9 +351,9 @@ Represents the callback invoked when the page is navigated back or destroyed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type      | Mandatory| Description   |
-|------|----------|----|-------|
-| data | object[] | Yes | Message list.|
+| Name  | Type      | Read-Only| Optional| Description   |
+|------|----------|----|--|-------|
+| data | object[] | No| No| Message list.|
 
 ## OnErrorReceiveEvent
 
@@ -356,10 +363,10 @@ Represents the callback invoked when an error occurs during web page loading.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type                                                                                   | Mandatory| Description             |
-|---------|---------------------------------------------------------------------------------------|----|-----------------|
-| request | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | Yes | Encapsulation of a web page request.     |
-| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | Yes | Encapsulation of a web page resource loading error.|
+| Name     | Type                                                                                   | Read-Only| Optional| Description             |
+|---------|---------------------------------------------------------------------------------------|----|--|-----------------|
+| request | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | No| No| Encapsulation of a web page request.     |
+| error   | [WebResourceError](../../apis-arkweb/arkts-basic-components-web-WebResourceError.md)     | No| No| Encapsulation of a web page resource loading error.|
 
 ## OnHttpErrorReceiveEvent
 
@@ -369,10 +376,10 @@ Represents the callback invoked when an HTTP error occurs during web page resour
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type                                                                                     | Mandatory| Description        |
-|----------|-----------------------------------------------------------------------------------------|----|------------|
-| request  | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md)   | Yes | Encapsulation of a web page request.|
-| response | [WebResourceResponse](../../apis-arkweb/arkts-basic-components-web-WebResourceResponse.md) | Yes | Encapsulation of a resource response.|
+| Name      | Type                                                                                     | Read-Only| Optional| Description        |
+|----------|-----------------------------------------------------------------------------------------|----|--|------------|
+| request  | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md)   | No| No| Encapsulation of a web page request.|
+| response | [WebResourceResponse](../../apis-arkweb/arkts-basic-components-web-WebResourceResponse.md) | No| No| Encapsulation of a resource response.|
 
 ## OnPageBeginEvent
 
@@ -381,10 +388,10 @@ Represents the callback invoked when the web page loading begins.
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name | Type    | Mandatory| Description       |
-|-----|--------|----|-----------|
-| url | string | Yes | URL of the page.|
+  
+| Name | Type    | Read-Only| Optional| Description       |
+|-----|--------|----|--|-----------|
+| url | string | No| No| URL of the page.|
 
 ## OnPageEndEvent
 
@@ -394,9 +401,9 @@ Represents the callback invoked when the web page loading ends.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type    | Mandatory| Description       |
-|-----|--------|----|-----------|
-| url | string | Yes | URL of the page.|
+| Name | Type    | Read-Only| Optional| Description       |
+|-----|--------|----|--|-----------|
+| url | string | No| No| URL of the page.|
 
 ## OnLoadInterceptEvent
 
@@ -406,9 +413,9 @@ Represents the event triggered when resource loading is intercepted.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name            | Type     | Mandatory  | Description                                      |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| data | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | Yes| Encapsulation of a web page request.|
+| Name            | Type     | Read-Only| Optional | Description                                      |
+| -------------- | ---- | ---- | -- |-------------------------------------- |
+| data | [WebResourceRequest](../../apis-arkweb/arkts-basic-components-web-WebResourceRequest.md) | No| No| Encapsulation of a web page request.|
 
 ## OnProgressChangeEvent
 
@@ -418,9 +425,9 @@ Represents the callback invoked when the web page loading progress changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name            | Type     | Mandatory  | Description                                      |
-| -------------- | ---- | ---- | ---------------------------------------- |
-| newProgress | number | Yes| New loading progress. The value is an integer ranging from 0 to 100.                      |
+| Name            | Type     | Read-Only| Optional | Description                                      |
+| -------------- | ---- | ---- | -- | -------------------------------------- |
+| newProgress | number | No| No| New loading progress. The value is an integer ranging from 0 to 100.                      |
 
 ## OnLoadInterceptCallback
 
@@ -442,7 +449,7 @@ Represents the callback invoked when resource loading is intercepted.
 
 | Type     | Description       |
 |---------|-----------|
-| boolean | Whether the resource is intercepted.|
+| boolean | Whether resource loading is intercepted. The value **true** indicates that resource loading is intercepted.|
 
 ## Events
 
@@ -814,4 +821,3 @@ struct AtomicServiceNestedScroll {
   }
 }
 ```
-<!--no_check-->

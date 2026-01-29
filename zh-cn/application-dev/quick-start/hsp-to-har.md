@@ -11,6 +11,8 @@ HSP对bundleName和签名有一致性要求，在调试阶段需要先安装HSP�
 >
 > **说明：**
 >
+> 阅读本文前，请开发者完成[HSP](in-app-hsp.md)、[HAR](hap-package.md)、[module.json5](module-configuration-file.md)、[hvigorfile.ts](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-config-ohos-guide)、[oh-package.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-oh-package-json5)、[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)学习。
+>
 > 部分组件和模块在HAP、HSP、HAR中集成使用时存在差异，例如[加载HAR中Worker线程文件相比HSP存在单独的使用约束](../arkts-utils/worker-introduction.md#文件路径注意事项)，因此按照如下步骤完成HSP转HAR后，请关注对应组件和模块介绍并进行适配。
 >
 

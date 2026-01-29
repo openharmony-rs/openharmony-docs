@@ -24,7 +24,7 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 Obtains a PhotoAccessHelper instance for the specified user, letting you access and modify media files in an album.
 
-​**Model restriction**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -73,7 +73,7 @@ struct Index {
   }
 }
 ```
-​
+
 ## PhotoAccessHelper
 
 ### createAsset
@@ -463,9 +463,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 deleteAlbums(albums: Array&lt;Album&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes albums. This API uses an asynchronous callback to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -531,9 +529,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 deleteAlbums(albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
-Deletes albums. This API uses a promise to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -783,7 +779,7 @@ Obtains hidden albums based on the specified display mode and retrieval options.
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | Promise used to return the result.
+| Promise&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -856,7 +852,7 @@ async function getHiddenAlbumsView(phAccessHelper: photoAccessHelper.PhotoAccess
 
 deleteAssets(uriList: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes media assets. This API uses an asynchronous callback to return the result. The deleted assets are moved to the trash.
+Deletes media assets. The deleted assets are moved to the trash. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -928,7 +924,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 deleteAssets(uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Deletes media assets. This API uses a promise to return the result. The deleted assets are moved to the trash.
+Deletes media assets. The deleted assets are moved to the trash. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1822,13 +1818,13 @@ Obtains the asset analysis progress. This API uses a promise to return the resul
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| analysisType | [AnalysisType](#analysistype11) | Yes   | Analysis type. The default value is null. |
+| analysisType | [AnalysisType](#analysistype11) | Yes   | Analysis type. The default value is null.<br>This parameter is mandatory in API versions 12 to 21 and optional from API version 22 onwards.|
 
 **Return value**
 
 | Type                       | Description          |
 | --------------------------- | -------------- |
-| Promise&lt;string&gt; | Promise used to return a string in JSON format. The string indicates the asset analysis progress.|
+| Promise&lt;string&gt; | Promise used to return a string in JSON format. The string indicates the asset analysis progress. |
 
 **Error codes**
 
@@ -1934,7 +1930,7 @@ Starts asset analysis.
 
 | Name   | Type               | Mandatory| Description                                                        |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| type      | [AnalysisType](#analysistype11) | Yes  | Smart analysis type.                                    |
+| type      | [AnalysisType](#analysistype11) | Yes  | Smart analysis type. Only **ANALYSIS_SEARCH_INDEX** is supported.                                    |
 | assetUris | Array&lt;string&gt; | No  | Array of asset URIs.<br>- If this parameter is specified, only the given assets are analyzed.<br>- If this parameter is left blank, full analysis is performed.|
 
 **Return value**
@@ -2078,7 +2074,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201   | Permission denied.       |
 | 202   | Called by non-system application.       |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011   | Internal system error.       
+| 14000011   | Internal system error. |
 
 **Example**
 
@@ -2445,7 +2441,7 @@ Registers a listener for the **'hiddenPhotoChange'** event to monitor hidden med
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'hiddenPhotoChange'**. After the registration is complete, any change to the hidden media assets is returned through the callback.|
-| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the hidden media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('hiddenPhotoChange')](#offhiddenphotochange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the hidden media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('hiddenPhotoChange')](#offhiddenphotochange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -2466,11 +2462,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2505,7 +2501,7 @@ Unregisters a listener for the **'hiddenPhotoChange'** event to stop monitoring 
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'hiddenPhotoChange'**. After the unregistration is complete, any change to the hidden media assets is no longer returned through the callback.|
-| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('hiddenPhotoChange')](#onhiddenphotochange20). If this parameter is left unspecified, all listeners for the **'hiddenPhotoChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when a hidden media asset changes.|
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('hiddenPhotoChange')](#onhiddenphotochange20). If this parameter is left unspecified, all listeners for the **'hiddenPhotoChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when a hidden media asset changes.|
 
 **Error codes**
 
@@ -2526,11 +2522,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2568,7 +2564,7 @@ Registers a listener for the **'trashedPhotoChange'** event to monitor media ass
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'trashedPhotoChange'**. After the registration is complete, any change to the trashed media assets is returned through the callback.|
-| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the trashed media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('trashedPhotoChange')](#offtrashedphotochange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the trashed media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('trashedPhotoChange')](#offtrashedphotochange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -2628,7 +2624,7 @@ Unregisters a listener for the **'trashedPhotoChange'** event to stop monitoring
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'trashedPhotoChange'**. After the unregistration is complete, any change to the trashed media assets is no longer returned through the callback.|
-| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('trashedPhotoChange')](#ontrashedphotochange20). If this parameter is left unspecified, all listeners for the **'trashedPhotoChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when a trashed media asset changes.|
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('trashedPhotoChange')](#ontrashedphotochange20). If this parameter is left unspecified, all listeners for the **'trashedPhotoChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when a trashed media asset changes.|
 
 **Error codes**
 
@@ -2691,7 +2687,7 @@ Registers a listener for the **'hiddenAlbumChange'** event to monitor hidden alb
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'hiddenAlbumChange'**. After the registration is complete, any change to the hidden albums is returned through the callback.|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the hidden album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('hiddenAlbumChange')](#offhiddenalbumchange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the hidden album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('hiddenAlbumChange')](#offhiddenalbumchange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -2712,11 +2708,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2751,7 +2747,7 @@ Unregisters a listener for the **'hiddenAlbumChange'** event to stop monitoring 
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'hiddenAlbumChange'**. After the unregistration is complete, any change to the hidden albums is no longer returned through the callback.|
-| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('hiddenAlbumChange')](#onhiddenalbumchange20). If this parameter is left unspecified, all listeners for the **'hiddenAlbumChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when a hidden album changes.|
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('hiddenAlbumChange')](#onhiddenalbumchange20). If this parameter is left unspecified, all listeners for the **'hiddenAlbumChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when a hidden album changes.|
 
 **Error codes**
 
@@ -2772,11 +2768,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2814,7 +2810,7 @@ Registers a listener for the **'trashedAlbumChange'** event to monitor album cha
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'trashedAlbumChange'**. After the registration is complete, any change to the trashed albums is returned through the callback.|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the trashed album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('trashedAlbumChange')](#offtrashedalbumchange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the trashed album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('trashedAlbumChange')](#offtrashedalbumchange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -2835,11 +2831,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -2874,7 +2870,7 @@ Unregisters a listener for the **'trashedAlbumChange'** event to stop monitoring
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'trashedAlbumChange'**. After the unregistration is complete, any change to the trashed albums is no longer returned through the callback.|
-| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('trashedAlbumChange')](#ontrashedalbumchange20). If this parameter is left unspecified, all listeners for the **'trashedAlbumChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when an album in the trash changes.|
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('trashedAlbumChange')](#ontrashedalbumchange20). If this parameter is left unspecified, all listeners for the **'trashedAlbumChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when an album in the trash changes.|
 
 **Error codes**
 
@@ -2895,11 +2891,11 @@ For details about how to create a phAccessHelper instance, see the example provi
 import { dataSharePredicates } from '@kit.ArkData'
 
 let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
-    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
   // file had changed, do something.
 }
 
@@ -3133,11 +3129,11 @@ open(mode: string, callback: AsyncCallback&lt;number&gt;): void
 
 Opens this file asset. This API uses an asynchronous callback to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
-
-**NOTE**: A file can be opened in only one mode at a time. Use **close()** to close the FD returned when it is not required.
 
 **System API**: This is a system API.
 
@@ -3192,11 +3188,11 @@ open(mode: string): Promise&lt;number&gt;
 
 Opens this file asset. This API uses a promise to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
-
-**NOTE**: A file can be opened in only one mode at a time. Use **close()** to close the FD returned when it is not required.
 
 **System API**: This is a system API.
 
@@ -3257,7 +3253,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setFavorite(favoriteState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Favorites or unfavorites this file. This API uses an asynchronous callback to return the result.
+Favorites or unfavorites this file asset. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -3387,7 +3383,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setHidden(hiddenState: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets this file to hidden state. This API uses an asynchronous callback to return the result.
+Sets this file asset to the hidden state. This API uses an asynchronous callback to return the result.
 
 Private files are stored in the private album. After obtaining private files from the private album, users can set **hiddenState** to **false** to remove them from the private album.
 
@@ -3452,7 +3448,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setHidden(hiddenState: boolean): Promise&lt;void&gt;
 
-Sets this file asset to hidden state. This API uses a promise to return the result.
+Sets this file asset to the hidden state. This API uses a promise to return the result.
 
 Private files are stored in the private album. After obtaining private files from the private album, users can set **hiddenState** to **false** to remove them from the private album.
 
@@ -3524,11 +3520,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getExif(): Promise&lt;string&gt;
 
-Obtains the exchangeable image file format (EXIF) data from a JPG image. This API uses a promise to return the result.
+Obtains the Exif data from a JPG image and returns a JSON string. This API uses a promise to return the result.
 
-The EXIF information obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the EXIF information, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
+The Exif data obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the Exif data, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
 
-**NOTE**: This API returns a JSON string consisting of EXIF tags. The complete EXIF information consists of **all_exif** and [PhotoKeys.USER_COMMENT](#photokeys). These two fields must be passed in via **fetchColumns**.
+> **NOTE**
+>
+> This API returns a JSON string consisting of of Exif tags. The complete Exif data consists of **all_exif** and [PhotoKeys.USER_COMMENT](#photokeys). These two fields must be passed in via [FetchOptions](./arkts-apis-photoAccessHelper-i.md#fetchoptions).fetchColumns.
 
 **System API**: This is a system API.
 
@@ -3540,7 +3538,7 @@ The EXIF information obtained are provided by the [image](../apis-image-kit/arkt
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise used to return the EXIF data, in JSON strings.|
+| Promise&lt;string&gt; | Promise used to return the Exif data, in JSON strings.|
 
 **Error codes**
 
@@ -3588,11 +3586,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getExif(callback: AsyncCallback&lt;string&gt;): void
 
-Obtains the exchangeable image file format (EXIF) data from a JPG image. This API uses an asynchronous callback to return the result.
+Obtains the Exif data from a JPG image and returns a JSON string. This API uses an asynchronous callback to return the result.
 
-The EXIF information obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the EXIF information, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
+The Exif data obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the Exif data, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
 
-**NOTE**: This API returns a JSON string consisting of EXIF tags. The complete EXIF information consists of **all_exif** and [PhotoKeys.USER_COMMENT](#photokeys). These two fields must be passed in via **fetchColumns**.
+> **NOTE**
+>
+> This API returns a JSON string consisting of of Exif tags. The complete Exif data consists of **all_exif** and [PhotoKeys.USER_COMMENT](#photokeys). These two fields must be passed in via [FetchOptions](./arkts-apis-photoAccessHelper-i.md#fetchoptions).fetchColumns.
 
 **System API**: This is a system API.
 
@@ -3604,7 +3604,7 @@ The EXIF information obtained are provided by the [image](../apis-image-kit/arkt
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the EXIF data, in JSON strings.|
+| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the Exif data, in JSON strings.|
 
 **Error codes**
 
@@ -3664,8 +3664,6 @@ Sets user comment information of an image or video. This API uses a promise to r
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAssetChangeRequest.setUserComment](#setusercomment11) instead.
-
-**NOTE**: This API can be used to modify the comment information of only images or videos.
 
 **System API**: This is a system API.
 
@@ -3734,8 +3732,6 @@ Sets user comment information of an image or video. This API uses an asynchronou
 >
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAssetChangeRequest.setUserComment](#setusercomment11) instead.
 
-**NOTE**: This API can be used to modify the comment information of only images or videos.
-
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
@@ -3802,7 +3798,9 @@ Sets the pending state for this image or video asset. This API uses an asynchron
 
 The pending state can be removed only through **setPending(false)**. You can use **photoAsset.get(photoAccessHelper.PhotoKeys.PENDING)** to check whether the asset state is pending. If the asset is in pending state, **true** is returned. Otherwise, **false** is returned.
 
-**NOTE**: **setPending** can be used only during the file creation process. Once the FD is closed, **setPending(true)** cannot be used to set the pending state for the file.
+> **NOTE**
+>
+> **setPending** can be used only during the file creation process. Once the FD is closed, **setPending(true)** cannot be used to set the pending state for the file.
 
 **System API**: This is a system API.
 
@@ -3865,7 +3863,9 @@ Sets the pending state for this image or video asset. This API uses a promise to
 
 The pending state can be removed only through **setPending(false)**. You can use **photoAsset.get(photoAccessHelper.PhotoKeys.PENDING)** to check whether the asset state is pending. If the asset is in pending state, **true** is returned. Otherwise, **false** is returned.
 
-**NOTE**: **setPending** can be used only during the file creation process. Once the FD is closed, **setPending(true)** cannot be used to set the pending state for the file.
+> **NOTE**
+>
+> **setPending** can be used only during the file creation process. Once the FD is closed, **setPending(true)** cannot be used to set the pending state for the file.
 
 **System API**: This is a system API.
 
@@ -4216,7 +4216,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 requestSource(callback: AsyncCallback&lt;number&gt;): void
 
-Opens the source file to obtain the FD. This API uses an asynchronous callback to return the result.
+Opens the source file and returns the FD. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -4275,7 +4275,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 requestSource(): Promise&lt;number&gt;
 
-Opens the source file to obtain the FD. This API uses a promise to return the result.
+Opens the source file and returns the FD. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -4333,7 +4333,9 @@ Commits the edited image or video asset. This API uses an asynchronous callback 
 
 The edited file is transferred to the media library based on the URI, which is **FileUri** of the edited file in the application sandbox directory. For details, see [File URI](../apis-core-file-kit/js-apis-file-fileuri.md).
 
-**NOTE**: The commit operation overwrites the previous edited data.
+> **NOTE**
+>
+> The commit operation overwrites the previous edited data.
 
 **System API**: This is a system API.
 
@@ -4400,7 +4402,9 @@ Commits the edited image or video asset. This API uses a promise to return the r
 
 The edited file is transferred to the media library based on the URI, which is **FileUri** of the edited file in the application sandbox directory. For details, see [File URI](../apis-core-file-kit/js-apis-file-fileuri.md).
 
-**NOTE**: The commit operation overwrites the previous edited data.
+> **NOTE**
+>
+> The commit operation overwrites the previous edited data.
 
 **System API**: This is a system API.
 
@@ -4465,7 +4469,9 @@ revertToOriginal(callback: AsyncCallback&lt;void&gt;)
 
 Reverts to the state of the file before being edited. This API uses an asynchronous callback to return the result.
 
-**NOTE**: This API deletes the edited data and edited image or video asset, and the deleted data cannot be restored. Exercise caution when using this API.
+> **NOTE**
+>
+> This API deletes the edited data and edited image or video asset, and the deleted data cannot be restored. Exercise caution when using this API.
 
 **System API**: This is a system API.
 
@@ -4526,7 +4532,9 @@ revertToOriginal(): Promise&lt;void&gt;
 
 Reverts to the state of the file before being edited. This API uses a promise to return the result.
 
-**NOTE**: This API deletes the edited data and edited image or video asset, and the deleted data cannot be restored. Exercise caution when using this API.
+> **NOTE**
+>
+> This API deletes the edited data and edited image or video asset, and the deleted data cannot be restored. Exercise caution when using this API.
 
 **System API**: This is a system API.
 
@@ -4902,6 +4910,67 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### convertImageFormat<sup>20+</sup>
+
+convertImageFormat(title: string, imageFormat: SupportedImageFormat): Promise&lt;PhotoAsset&gt;
+
+Duplicates an image within the same album (either user-created or application-specific) and converts it to the specified format. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type            | Mandatory  | Description   |
+| ---- | -------------- | ---- | ----- |
+| title | string | Yes   | Title of the new image.|
+| imageFormat | [SupportedImageFormat](#supportedimageformat20) | Yes   | Format of the new image.|
+
+**Return value**
+
+| Type                           | Description                   |
+| ----------------------------- | --------------------- |
+| Promise\<[PhotoAsset](#photoasset)> | Promise used to return the PhotoAsset instance representing the new image file.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | Permission denied.  |
+| 202      | Called by non-system application. |
+| 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
+| 23800301    | Internal system error. It is recommended to retry and check the kogs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**Example**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('convertImageFormatDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let photoAsset = await fetchResult.getFirstObject();
+  try {
+    let newPhotoAsset = await photoAsset.convertImageFormat('test', photoAccessHelper.SupportedImageFormat.AVFILE_FORMAT_JPG);
+    console.error(`convertImageFormat success.`);
+  } catch (err) {
+    console.error(`convertImageFormat failed. error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## SharedPhotoAsset<sup>13+</sup>
 
 Describes the information about a shared media asset.
@@ -5114,9 +5183,9 @@ Deletes image or video assets from the trash. Before the operation, ensure that 
 
 > **NOTE**
 >
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
+>
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAlbumChangeRequest.deleteAssets](#deleteassets11) instead.
-
-**NOTE**: This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **System API**: This is a system API.
 
@@ -5185,9 +5254,9 @@ Deletes image or video assets from the trash. Before the operation, ensure that 
 
 > **NOTE**
 >
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
+>
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAlbumChangeRequest.deleteAssets](#deleteassets11) instead.
-
-**NOTE**: This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **System API**: This is a system API.
 
@@ -5256,13 +5325,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setCoverUri(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the album cover. This API uses an asynchronous callback to return the result.
+Sets the cover of the user album. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAlbumChangeRequest.setCoverUri](#setcoveruri11) instead.
-
-**NOTE**: This API can be used to set the user album cover, but not the system album cover.
 
 **System API**: This is a system API.
 
@@ -5327,13 +5394,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setCoverUri(uri: string): Promise&lt;void&gt;
 
-Sets the album cover. This API uses a promise to return the result.
+Sets the cover of the user album. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAlbumChangeRequest.setCoverUri](#setcoveruri11) instead.
-
-**NOTE**: This API can be used to set the user album cover, but not the system album cover.
 
 **System API**: This is a system API.
 
@@ -5464,11 +5529,11 @@ Represents the edited media asset data.
 
 ### Properties
 
-| Name          | Type   | Readable  | Writable | Description  |
+| Name          | Type   | Read-Only| Optional| Description  |
 | ------------ | ------ | ---- | ---- | ------- |
-| compatibleFormat | string | Yes   | Yes   | Format of the edited data.<br>**System API**: This is a system API.   |
-| formatVersion | string | Yes   | Yes  | Version of the data format.<br>**System API**: This is a system API.   |
-| data | string | Yes   | Yes  | Content edited.<br>**System API**: This is a system API.   |
+| compatibleFormat | string | No  | No   | Format of the edited data.<br>**System API**: This is a system API.   |
+| formatVersion | string | No  | No  | Version of the data format.<br>**System API**: This is a system API.   |
+| data | string | No  | No  | Content edited.<br>**System API**: This is a system API.   |
 
 ### constructor<sup>11+</sup>
 
@@ -5796,7 +5861,9 @@ addResource(type: ResourceType, proxy: PhotoProxy): void
 
 Adds resources using **PhotoProxy** data.
 
-**NOTE**: For the same asset change request, this API cannot be repeatedly called after resources are successfully added.
+> **NOTE**
+>
+> For the same asset change request, this API cannot be repeatedly called after resources are successfully added.
 
 **System API**: This is a system API available only for camera applications.
 
@@ -6051,7 +6118,9 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array\<PhotoAsset>
 
 Permanently deletes images or videos in batches. This API uses a promise to return the result.
 
-**NOTE**: This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
+> **NOTE**
+>
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **System API**: This is a system API.
 
@@ -6234,7 +6303,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setFavorite(favoriteState: boolean): void
 
-Favorites or unfavorites this file.
+Favorites or unfavorites this file asset.
 
 **System API**: This is a system API.
 
@@ -6244,7 +6313,7 @@ Favorites or unfavorites this file.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | Yes   | Whether to favorite the file. **true** to favorite, **false** otherwise.|
+| favoriteState | boolean | Yes       | Whether to favorite the file asset. **true** to favorite, **false** otherwise. |
 
 **Error codes**
 
@@ -6509,9 +6578,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAlbums(context: Context, albums: Array&lt;Album&gt;): Promise&lt;void&gt;
 
-Deletes albums. This API uses a promise to return the result.
-
-Ensure that the albums to be deleted exist. Only user albums can be deleted.
+Deletes user albums. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -6851,7 +6918,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 recoverAssets(assets: Array&lt;PhotoAsset&gt;): void
 
-Recovers assets from the trash.
+Restores the assets corresponding to the specified PhotoAsset object array from the trash.
 
 **System API**: This is a system API.
 
@@ -6908,7 +6975,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 recoverAssetsWithUri(assetUris: Array&lt;String&gt;): void
 
-Recovers assets from the trash.
+Restores the assets corresponding to the specified URI string array from the trash.
 
 **System API**: This is a system API.
 
@@ -6967,7 +7034,9 @@ deleteAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 Permanently deletes assets from the trash.
 
-**NOTE**: This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
+> **NOTE**
+>
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **System API**: This is a system API.
 
@@ -7421,7 +7490,7 @@ A constructor used to create a **Highlights** album instance.
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| album | [Album](#album) | Yes  | **Highlights** album to create.|
+| album | [Album](#album) | Yes  | **Highlights** album.|
 
 **Error codes**
 
@@ -7792,7 +7861,7 @@ A constructor used to create an **Analysis** album instance.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| album | [Album](#album) | Yes  | **Analysis** album to create.|
+| album | [Album](#album) | Yes  | **Analysis** album.|
 
 **Error codes**
 
@@ -7920,9 +7989,9 @@ A constructor used to create a **Highlights** album instance.
 
 **Parameters**
 
-| Name       | Type     | Mandatory  | Description                                |
-| ---------- | ------- | ---- | ---------------------------------- |
-| album | [Album](#album) | Yes  | Provides APIs for managing the **Highlights** album, which is an automatically generated collection of memorable photos or videos.|
+| Name  | Type            | Mandatory | Description           |
+| ----- | --------------- | --------- | --------------------- |
+| album | [Album](#album) | Yes       | **Highlights** album. |
 
 **Error codes**
 
@@ -7975,7 +8044,7 @@ Sets the specified attribute value in the highlights album.
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
 | attribute | [HighlightAlbumChangeAttribute](#highlightalbumchangeattribute21) | Yes  | Attribute to set.|
-| value       | string   | Yes   | Value to set for the attribute.<br>When **attribute** is **IS\_VIEWED** or **IS\_FAVORITE**, the value is **0** or **1**. When **attribute** is **NOTIFICATION\_TIME**, the value must be 8 bytes long.|
+| value       | string   | Yes   | Value to set for the attribute.<br>When **attribute** is **IS\_VIEWED** or **IS\_FAVORITE**, the value is **0** or **1**. When **attribute** is **NOTIFICATION\_TIME**,  the value must be 8 bytes long.|
 
 **Error codes**
 
@@ -8025,7 +8094,7 @@ async function example(context: Context) {
 
 ## AnalysisAlbum<sup>18+</sup> 
 
-**Analysis** album to create.
+Implements an **Analysis** album.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -8043,7 +8112,7 @@ A constructor used to create an **Analysis** album instance.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| album | [Album](#album) | Yes  | **Analysis** album to create.|
+| album | [Album](#album) | Yes  | **Analysis** album.|
 
 **Error codes**
 
@@ -8221,7 +8290,7 @@ async function example(context: Context) {
 
 submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWatermark: boolean): Promise&lt;void&gt;
 
-Submits cloud enhancement tasks.
+Submits cloud enhancement tasks. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -8285,7 +8354,7 @@ async function example(context: Context) {
 
 submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWatermark: boolean, triggerMode?: number): Promise&lt;void&gt;
 
-Submits cloud enhancement tasks.
+Submits cloud enhancement tasks. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -9587,26 +9656,26 @@ Defines the key information about an image or video file.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name         | Value             | Description                                                      |
-| ------------- | ------------------- | ---------------------------------------------------------- |
-| DATE_TRASHED  | 'date_trashed'  | Date when the file was deleted. The value is the number of seconds elapsed since the Epoch time. **System API**: This is a system API.                |
-| HIDDEN  | 'hidden'            | Whether the file is hidden. **System API**: This is a system API.                              |
-| CAMERA_SHOT_KEY  | 'camera_shot_key'  | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) **System API**: This is a system API.           |
-| USER_COMMENT<sup>10+</sup>  | 'user_comment'            | User comment information. **System API**: This is a system API.          |
-| DATE_YEAR<sup>11+</sup>  | 'date_year'            | Year when the file was created. **System API**: This is a system API.          |
-| DATE_MONTH<sup>11+</sup>  | 'date_month'            | Month when the file was created. **System API**: This is a system API.          |
-| DATE_DAY<sup>11+</sup>  | 'date_day'            | Date when the file was created. **System API**: This is a system API.          |
-| PENDING<sup>11+</sup>  | 'pending'            | Pending state. **System API**: This is a system API.          |
-| DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | Date when the file was deleted. The value is the number of milliseconds elapsed since the Epoch time. **System API**: This is a system API.<br>**NOTE**: The photos queried cannot be sorted based on this field.|
-| MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | Effect of the moving photo. **System API**: This is a system API.|
-| CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | Cloud enhancement identifier. **System API**: This is a system API.|
-| THUMBNAIL_READY<sup>13+</sup>  | 'thumbnail_ready' | Whether a thumbnail is generated. **System API**: This is a system API.|
-| THUMBNAIL_VISIBLE<sup>14+</sup>  | 'thumbnail_visible' | Whether a thumbnail is visible. **System API**: This is a system API.|
-| SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | Watermark type to set. **System API**: This is a system API.|
-| IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | Whether automatic cloud enhancement is supported. **System API**: This is a system API.|
-| OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | ID of the album to which the photo belongs. **System API**: This is a system API.|
-| IS_RECENT_SHOW<sup>18+</sup>  | 'is_recent_show' | Whether the asset is displayed in the **Recent** list. **System API**: This is a system API.|
-| SUM_SIZE<sup>19+</sup>  | 'sum(size)' | Total size of files. When **SUM_SIZE** is filled in **fetchColumns**, only the first asset is obtained, and the property includes the total size of all assets. **System API**: This is a system API.|
+| Name                                     | Value                        | Description                                                  |
+| ---------------------------------------- | ---------------------------- | ------------------------------------------------------------ |
+| DATE_TRASHED                             | 'date_trashed'               | Date when the file was deleted. The value is the number of seconds elapsed since the Epoch time. **System API**: This is a system API. |
+| HIDDEN                                   | 'hidden'                     | Whether the file is hidden. **System API**: This is a system API. |
+| CAMERA_SHOT_KEY                          | 'camera_shot_key'            | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) **System API**: This is a system API. |
+| USER_COMMENT<sup>10+</sup>               | 'user_comment'               | User comment information. **System API**: This is a system API. |
+| DATE_YEAR<sup>11+</sup>                  | 'date_year'                  | Year when the file was created. **System API**: This is a system API. |
+| DATE_MONTH<sup>11+</sup>                 | 'date_month'                 | Month when the file was created. **System API**: This is a system API. |
+| DATE_DAY<sup>11+</sup>                   | 'date_day'                   | Date when the file was created. **System API**: This is a system API. |
+| PENDING<sup>11+</sup>                    | 'pending'                    | Pending state. **System API**: This is a system API.         |
+| DATE_TRASHED_MS<sup>12+</sup>            | 'date_trashed_ms'            | Date when the file was deleted. The value is the number of milliseconds elapsed since the Epoch time. **System API**: This is a system API.<br>**NOTE**: The photos queried cannot be sorted based on this field. |
+| MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>   | 'moving_photo_effect_mode'   | Effect of the moving photo. **System API**: This is a system API. |
+| CE_AVAILABLE<sup>13+</sup>               | 'ce_available'               | Cloud enhancement identifier. **System API**: This is a system API. |
+| THUMBNAIL_READY<sup>13+</sup>            | 'thumbnail_ready'            | Whether a thumbnail is generated. **System API**: This is a system API. |
+| THUMBNAIL_VISIBLE<sup>14+</sup>          | 'thumbnail_visible'          | Whether a thumbnail is visible. **System API**: This is a system API. |
+| SUPPORTED_WATERMARK_TYPE<sup>14+</sup>   | 'supported_watermark_type'   | Watermark type to set. **System API**: This is a system API. |
+| IS_CE_AUTO<sup>18+</sup>                 | 'is_auto'                    | Whether automatic cloud enhancement is supported. **System API**: This is a system API. |
+| OWNER_ALBUM_ID<sup>18+</sup>             | 'owner_album_id'             | ID of the album to which the photo belongs. **System API**: This is a system API. |
+| IS_RECENT_SHOW<sup>18+</sup>             | 'is_recent_show'             | Whether the asset is displayed in the **Recent** list. **System API**: This is a system API. |
+| SUM_SIZE<sup>19+</sup>                   | 'sum(size)'                  | Total size of files. When **SUM_SIZE** is filled in **fetchColumns**, only the first asset is obtained, and the property includes the total size of all assets. **System API**: This is a system API. |
 
 ## AlbumKeys
 
@@ -9642,11 +9711,11 @@ Options for creating an image or video asset.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| subtype           | [PhotoSubtype](#photosubtype) | No | Subtype of the image or video. |
-| cameraShotKey           | string | No | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.)  |
-| userId<sup>19+</sup>           | number | No | User ID. |
+| Name                 | Type                          | Read-Only | Optional | Description                                                  |
+| -------------------- | ----------------------------- | --------- | -------- | ------------------------------------------------------------ |
+| subtype              | [PhotoSubtype](#photosubtype) | No        | Yes      | Subtype of the image or video.                               |
+| cameraShotKey        | string                        | No        | Yes      | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) |
+| userId<sup>19+</sup> | number                        | No        | Yes      | User ID.                                                     |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -9656,10 +9725,10 @@ Defines the options for obtaining the thumbnail of an image or video.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No | Size of the thumbnail to obtain. |
-| requestPhotoType    | [RequestPhotoType](#requestphototype11) | No | Operation to perform. |
+| Name             | Type                                                       | Read-Only | Optional | Description                      |
+| ---------------- | ---------------------------------------------------------- | --------- | -------- | -------------------------------- |
+| size             | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No        | Yes      | Size of the thumbnail to obtain. |
+| requestPhotoType | [RequestPhotoType](#requestphototype11)                    | No        | Yes      | Operation to perform.            |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -9669,12 +9738,12 @@ Defines the application information provided to create assets on behalf of the a
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Read-Only| Optional| Description                                             |
-| ---------------------- | ------------------- | ---- | ---- | ------------------------------------------------ |
-| bundleName           | string | Yes | Yes |Bundle name of the target application. |
-| appName    | string | Yes | Yes |Name of the target application. |
-| appId    | string | Yes | Yes |ID of the target application. |
-| tokenId    | number | Yes | Yes |Token ID of the target application. |
+| Name       | Type   | Read-Only | Optional | Description                            |
+| ---------- | ------ | --------- | -------- | -------------------------------------- |
+| bundleName | string | No        | Yes      | Bundle name of the target application. |
+| appName    | string | No        | Yes      | Name of the target application.        |
+| appId      | string | No        | Yes      | ID of the target application.          |
+| tokenId    | number | No        | Yes      | Token ID of the target application.    |
 
 ## RequestOptions<sup>11+</sup>
 
@@ -9682,9 +9751,9 @@ Represents request options.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type                             | Readable| Writable| Description                                             |
-| ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
-| sourceMode           | [SourceMode](#sourcemode11)     | Yes  | Yes  | Type of the asset file requested, which can be the original file or edited file. **System API**: This is a system API.|
+| Name       | Type                        | Read-Only | Optional | Description                                                  |
+| ---------- | --------------------------- | --------- | -------- | ------------------------------------------------------------ |
+| sourceMode | [SourceMode](#sourcemode11) | No        | Yes      | Type of the asset file requested, which can be the original file or edited file.<br>**System API**: This is a system API. |
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -9698,7 +9767,9 @@ Photo proxy object, which is used by the camera application to write image data.
 
 Media change request, which is the parent class of the asset change request and album change request.
 
-**NOTE**: The media change request takes effect only after [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called.
+> **NOTE**
+>
+> The media change request takes effect only after [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -9710,10 +9781,10 @@ Defines the Gallery widget information.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId       |string  |Yes| Widget ID, which is provided when a widget is created in Gallery.|
-|uri          |string  |Yes| URI of the image bound to the widget. When a widget is created, **uri** can be empty or the URI of an image. When a widget is removed, **uri** is not verified and can be empty. |
+| Name   | Type   | Read-Only | Optional | Description                                                  |
+| ------ | ------ | --------- | -------- | ------------------------------------------------------------ |
+| formId | string | No        | No       | Widget ID, which is provided when a widget is created in Gallery. |
+| uri    | string | No        | No       | URI of the image bound to the widget. When a widget is created, **uri** can be empty or the URI of an image. When a widget is removed, **uri** is not verified and can be empty. |
 
 ## GalleryFormInfo<sup>18+</sup>
 
@@ -9723,10 +9794,10 @@ Defines the Gallery widget information.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                  | Type               | Mandatory| Description                                             |
-| ---------------------- | ------------------- | ---- | ------------------------------------------------ |
-|formId             |string               |Yes| Widget ID, which is provided when a widget is created in Gallery.|
-|assetUris          |Array&lt;string&gt;  |Yes| URIs of the images or albums bound to the widget.<br>This parameter cannot be empty when creating or updating a widget.<br>If you attempt to create or update a widget with more than 500 URIs in **assetUris**, only the first 500 URIs are registered for listening. Any URIs beyond the first 500 are not registered. <br>When deleting a widget, this parameter can be omitted. |
+| Name      | Type                | Read-Only | Optional | Description                                                  |
+| --------- | ------------------- | --------- | -------- | ------------------------------------------------------------ |
+| formId    | string              | No        | No       | Widget ID, which is provided when a widget is created in Gallery. |
+| assetUris | Array&lt;string&gt; | No        | Yes      | URIs of the images or albums bound to the widget.<br>This parameter cannot be empty when creating or updating a widget.<br>If you attempt to create or update a widget with more than 500 URIs in **assetUris**, only the first 500 URIs are registered for listening. Any URIs beyond the first 500 are not registered. <br>When deleting a widget, this parameter can be omitted. |
 
 ## ResourceType<sup>11+</sup>
 
@@ -9899,7 +9970,7 @@ For the same media asset and application, the persistent read permission overwri
 
 ## HideSensitiveType<sup>12+</sup>
 
-Enumerates the types of media resource information to be hidden from an application.
+Enumerates the types of data masking applied to media resources when accessed by an application.
 
 **System API**: This is a system API.
 
@@ -9907,10 +9978,10 @@ Enumerates the types of media resource information to be hidden from an applicat
 
 | Name |  Value|  Description|
 | ----- |  ---- |  ---- |
-| HIDE_LOCATION_AND_SHOOTING_PARAM |  0 |  Geographical location and shooting parameters.|
-| HIDE_LOCATION_ONLY |  1 |  Geographical location information.|
-| HIDE_SHOOTING_PARAM_ONLY |  2 |  Shooting parameters.|
-| NO_HIDE_SENSITIVE_TYPE |  3 |  Do not hide any information.|
+| HIDE_LOCATION_AND_SHOOTING_PARAM |  0 |  Masks geographic location and capture parameters.|
+| HIDE_LOCATION_ONLY |  1 |  Masks geographic location information only.|
+| HIDE_SHOOTING_PARAM_ONLY |  2 |  Masks capture parameters only.|
+| NO_HIDE_SENSITIVE_TYPE |  3 |  No data masking is applied.|
 
 ## CloudEnhancementTaskStage<sup>13+</sup>
 
@@ -9987,6 +10058,18 @@ Enumerates thumbnail types.
 | :---------------------------- | :- | :------- |
 | LCD         | 1  | LCD thumbnail.   |
 | THM          | 2 | THM thumbnail.   |
+
+## SupportedImageFormat<sup>20+</sup>
+
+Enumerates the supported image formats.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name              | Value | Description |
+| :---------------- | :---- | :---------- |
+| AVFILE_FORMAT_JPG | 'jpg' | JPG.        |
 
 ## WatermarkType<sup>14+</sup>
 

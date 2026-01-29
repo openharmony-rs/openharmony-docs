@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 日历选择器组件，提供下拉日历弹窗，可以让用户选择日期。
 
@@ -158,6 +158,10 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -249,6 +253,8 @@ struct CalendarPickerExample {
 
 该示例通过start和end设置日历选择器的开始日期和结束日期。
 
+从API version 18开始，[CalendarOptions](#calendaroptions对象说明)中新增了start、end属性。
+
 ```ts
 // xxx.ets
 @Entry
@@ -279,6 +285,8 @@ struct CalendarPickerExample {
 ### 示例3（设置日历选择器在系统当前日期时，保持高亮显示和禁用日期区间）
 
 该示例通过[markToday](#marktoday19)设置日历选择器在系统当前日期时，开启保持高亮显示，同时，通过[disabledDateRange](#calendaroptions对象说明)设置日历选择器的禁用日期区间。
+
+从API version 19开始，新增了markToday接口。
 
 ```ts
 // xxx.ets

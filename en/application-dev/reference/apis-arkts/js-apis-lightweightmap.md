@@ -22,10 +22,25 @@ This topic uses the following to identify the use of generics:
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
+> - Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
 
+## Specifications
+
+If the key stored in **LightWeightMap** is of the number type and the value is greater than **INT32_MAX** or less than **INT32_MIN**, the operation result of **LightWeightMap** may be different from the expected result.
+
+This is because the storage structure changes in such cases.
+
+For example, **1758783600000** is greater than **INT32_MAX** and is stored as **TaggedDouble**; **1758783600** is less than **INT32_MIN** and is stored as **TaggedInt**. Due to these differences in storage modes, the hash algorithm will generate different hash values, leading to inconsistent mapping results and ultimately causing discrepancies from expected outcomes.
+
+```ts
+let mp = new LightWeightMap<number, number>();
+let key = 1758783600000 / 1000;  // 1758783600000 > INT32_MAX
+mp.set(key, 1001);
+console.info("result:", mp.hasKey(1758783600));  // result: false 
+console.info("result:", mp.hasKey(key));  // result: true
+```
 
 ## Modules to Import
 

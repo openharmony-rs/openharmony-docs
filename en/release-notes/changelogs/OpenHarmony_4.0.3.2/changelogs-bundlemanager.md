@@ -2,7 +2,7 @@
 
 ## cl.bundlemanager.1 Deleted getAbilityIcon
 
-The **getAbilityIcon** API in [@ohos.bundle.bundleManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts) is deleted. The **getMediaContent** API in [@ohos.resourceManager.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.resourceManager.d.ts) can be used instead.
+The **getAbilityIcon** API in [@ohos.bundle.bundleManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.bundle.bundleManager.d.ts) is deleted. The **getMediaContent** API in [@ohos.resourceManager.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.resourceManager.d.ts) can be used instead.
 
 **Change Impact**<br>
 The **getAbilityIcon** API does not take effect.
@@ -25,3 +25,4 @@ If a non-system application calls a system API of API version 9 or later provide
 
 **Adaptation Guide**<br>
 No adaptation is required.
+<!--no_check-->

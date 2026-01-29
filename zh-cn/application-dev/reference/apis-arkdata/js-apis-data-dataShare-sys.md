@@ -63,7 +63,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.samples.datasharetest.DataShare");
+    let uri = "datashare:///com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -87,7 +87,7 @@ export default class EntryAbility extends UIAbility {
 ## dataShare.createDataShareHelper<sup>10+</sup>
 createDataShareHelper(context: Context, uri: string, options: DataShareHelperOptions, callback: AsyncCallback&lt;DataShareHelper&gt;): void 
 
-创建DataShareHelper实例。使用callback异步回调。
+创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用callback异步回调。
 
 > **说明：**
 >
@@ -121,7 +121,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -145,7 +145,7 @@ export default class EntryAbility extends UIAbility {
 
 createDataShareHelper(context: Context, uri: string, options?: DataShareHelperOptions): Promise&lt;DataShareHelper&gt;
 
-创建DataShareHelper实例。使用Promise异步回调。
+创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用Promise异步回调。
 
 > **说明：**
 >
@@ -185,7 +185,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+    let uri = "datashareproxy://com.samples.datasharetest.DataShare";
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
     let context = this.context;
     try {
@@ -248,7 +248,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true");
+    let uri = "datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true";
     let context = this.context;
     dataShare.enableSilentProxy(context, uri).then(() => {
       console.info("enableSilentProxy succeed");
@@ -303,7 +303,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    let uri = ("datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true");
+    let uri = "datashare:///com.acts.datasharetest/entry/DB00/TBL00?Proxy=true";
     let context = this.context;
     dataShare.disableSilentProxy(context, uri).then(() => {
       console.info("disableSilentProxy succeed");
@@ -321,10 +321,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| isProxy | boolean | 否 | 默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelper)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在，当数据库不存在时，[createDataShareHelper](#datasharecreatedatasharehelper10)会拉起数据提供者创建数据库。 |
-| waitTime<sup>18+</sup> | number | 否 | 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| isProxy | boolean | 否 | 是 | 默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelper)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在，当数据库不存在时，[createDataShareHelper](#datasharecreatedatasharehelper10)会拉起数据提供者创建数据库。 |
+| waitTime<sup>18+</sup> | number | 否 | 是 | 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。 |
 
 ## TemplateId<sup>10+</sup>
 
@@ -332,10 +332,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| subscriberId | string | 是 | 指定处理回调的订阅者的id，与[addTemplate](#addtemplate10)中的subscriberId相同，每个订阅者的ID是唯一的。 |
-| bundleNameOfOwner | string | 是 | 指定创建模板的模板所有者的bundleName，与[addTemplate](#addtemplate10)中的bundleName相同。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| subscriberId | string | 否 | 否 | 指定处理回调的订阅者的id，与[addTemplate](#addtemplate10)中的subscriberId相同，每个订阅者的ID是唯一的。 |
+| bundleNameOfOwner | string | 否 | 否 | 指定创建模板的模板所有者的bundleName，与[addTemplate](#addtemplate10)中的bundleName相同。 |
 
 ## PublishedItem<sup>10+</sup>
 
@@ -343,11 +343,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| key | string | 是 | 指定发布数据的键。 |
-| data | string \| ArrayBuffer | 是 | 指定发布的数据。如果发布数据大小超过20KB，建议使用ArrayBuffer。 |
-| subscriberId | string | 是 | 指定订阅者id。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| key | string | 否 | 否 | 指定发布数据的键。 |
+| data | string \| ArrayBuffer | 否 | 否 | 指定发布的数据。如果发布数据大小超过20KB，建议使用ArrayBuffer。 |
+| subscriberId | string | 否 | 否 | 指定订阅者id。 |
 
 ## RdbDataChangeNode<sup>10+</sup>
 
@@ -355,11 +355,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| uri | string | 是 | 指定回调的uri。 |
-| templateId | [TemplateId](#templateid10) | 是 | 处理回调的templateId。 |
-| data | Array&lt;string&gt; | 是 | 指定回调的数据。若处理回调数据时发生错误，则回调将不会被触发。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| uri | string | 否 | 否 | 指定回调的uri。 |
+| templateId | [TemplateId](#templateid10) | 否 | 否 | 处理回调的templateId。 |
+| data | Array&lt;string&gt; | 否 | 否 | 指定回调的数据。若处理回调数据时发生错误，则回调将不会被触发。 |
 
 ## PublishedDataChangeNode<sup>10+</sup>
 
@@ -367,10 +367,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 指定回调的bundleName。 |
-| data | Array&lt;[PublishedItem](#publisheditem10)&gt; | 是 | 指定回调的数据。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| bundleName | string | 否 | 否 | 指定回调的bundleName。 |
+| data | Array&lt;[PublishedItem](#publisheditem10)&gt; | 否 | 否 | 指定回调的数据。 |
 
 ## Template<sup>10+</sup>
 
@@ -378,11 +378,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| predicates | Record<string, string> | 是 | 指定模板的谓词。当调用[on](#onrdbdatachange10)的回调时，谓词用于生成数据。仅适用于rdb存储数据。 |
-| scheduler | string | 是 | 指定模板的调度程序sql。其中嵌入自定义函数处理，目前预置自定义函数remindTimer处理。remindTimer在指定场景触发一次订阅刷新。<br/>触发场景：<br/>1. 修改数据时且有订阅的情况下触发对应的调度程序sql语句。<br/>2. 添加对应库第一个订阅的情况下触发对应的调度程序sql语句。 |
-| update<sup>18+<sup> | string | 否 | 指定模板的update sql语句，未定义时默认值为空字符串。当调用[on](#onrdbdatachange10)的回调时，update参数用于更新数据。仅适用于rdb存储数据。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| predicates | Record<string, string> | 否 | 否 | 指定模板的谓词。当调用[on](#onrdbdatachange10)的回调时，谓词用于生成数据。仅适用于rdb存储数据。 |
+| scheduler | string | 否 | 否 | 指定模板的调度程序sql。其中嵌入自定义函数处理，目前预置自定义函数remindTimer处理。remindTimer在指定场景触发一次订阅刷新。<br/>触发场景：<br/>1. 修改数据时且有订阅的情况下触发对应的调度程序sql语句。<br/>2. 添加对应库第一个订阅的情况下触发对应的调度程序sql语句。 |
+| update<sup>18+<sup> | string | 否 | 是 | 指定模板的update sql语句，未定义时默认值为空字符串。当调用[on](#onrdbdatachange10)的回调时，update参数用于更新数据。仅适用于rdb存储数据。 |
 
 ## OperationResult<sup>10+</sup>
 
@@ -390,20 +390,20 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | ----- | -------- |
-| key | string | 是 | 指定运算结果的键。 |
-| result | number | 是 | 指定运算结果。正常情况下返回0，异常情况下返回错误码。  |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ----- | ----- | -------- |
+| key | string | 否 | 否 | 指定运算结果的键。 |
+| result | number | 否 | 否 | 指定运算结果。正常情况下返回0，异常情况下返回错误码。  |
 ## UpdateOperation<sup>12+</sup>
 
 批量更新操作的参数结构。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称       | 类型                                                         | 必填 | 说明           |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| values     | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据。 |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。     |
+| 名称       | 类型                                                         | 只读 | 可选 | 说明           |
+| ---------- | ------------------------------------------------------------ | ---- |  ---- | -------------- |
+| values     | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 否   | 否   | 要更新的数据。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 否   | 否   | 筛选条件。     |
 
 ## SubscriptionType<sup>12+</sup>
 
@@ -421,11 +421,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称       | 类型                                                         | 必填 | 说明           |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| type       | [ChangeType](js-apis-data-dataShare.md#changetype20)      | 是   | 通知变更的类型。 |
-| uri        | string                                                       | 是   | 指定uri。      |
-| values     | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt;| 是   | 更新的数据。   |
+| 名称       | 类型                                                         | 只读 | 可选 | 说明           |
+| ---------- | ------------------------------------------------------------ | ---- | ---- | -------------- |
+| type       | [ChangeType](js-apis-data-dataShare.md#changetype20)      | 否 | 否   | 通知变更的类型。 |
+| uri        | string                                                       | 否 | 否   | 指定uri。      |
+| values     | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt;| 否 | 否   | 更新的数据。   |
 
 ## DataShareHelper
 
@@ -465,7 +465,7 @@ on(type: 'dataChange', uri: string, callback: AsyncCallback&lt;void&gt;): void
 let onCallback: () => void = (): void => {
   console.info("**** Observer on callback ****");
 }
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper !== undefined) {
   (dataShareHelper as dataShare.DataShareHelper).on("dataChange", uri, onCallback);
 }
@@ -506,7 +506,7 @@ on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallb
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.acts.datasharetest");
+let uri = "datashare:///com.acts.datasharetest";
 export function callback(error:BusinessError, ChangeInfo:dataShare.ChangeInfo) {
     console.info(' **** Observer callback **** ChangeInfo:' + JSON.stringify(ChangeInfo));
 }
@@ -519,7 +519,7 @@ if (dataShareHelper !== undefined) {
 
 off(type: 'dataChange', uri: string, callback?: AsyncCallback&lt;void&gt;): void
 
-取消订阅指定URI下指定callback对应的数据资源的变更通知。
+取消订阅指定URI下指定callback对应的数据资源的变更通知。与订阅接口[on](#ondatachange)相对应。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -547,7 +547,7 @@ off(type: 'dataChange', uri: string, callback?: AsyncCallback&lt;void&gt;): void
 let callback: () => void = (): void => {
   console.info("**** Observer on callback ****");
 }
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).on("dataChange", uri, callback);
   (dataShareHelper as dataShare.DataShareHelper).off("dataChange", uri, callback);
@@ -559,7 +559,7 @@ if (dataShareHelper != undefined) {
 
 off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCallback&lt;ChangeInfo&gt;): void
 
-取消订阅指定URI下指定callback对应的数据资源的变更通知。
+取消订阅指定URI下指定callback对应的数据资源的变更通知。与订阅接口[on](#ondatachange12)相对应。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -588,7 +588,7 @@ off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCal
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.acts.datasharetest");
+let uri = "datashare:///com.acts.datasharetest";
 export function callback(error:BusinessError, ChangeInfo:dataShare.ChangeInfo) {
     console.info(' **** Observer callback **** ChangeInfo:' + JSON.stringify(ChangeInfo));
 }
@@ -603,6 +603,8 @@ if (dataShareHelper !== undefined) {
 addTemplate(uri: string, subscriberId: string, template: Template): void
 
 添加一个指定订阅者的数据模板。仅支持静默访问。
+
+静默场景下，调用此接口时，传入的uri、subscriberId和template参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -628,12 +630,12 @@ addTemplate(uri: string, subscriberId: string, template: Template): void
 **示例：**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let subscriberId = '11';
 let key1: string = "p1";
-let value1: string = "select cityColumn as city_1, visitedCilumn as visited_1 from citys where like = true";
+let value1: string = "select cityColumn as city_1, visitedColumn as visited_1 from citys where like = true";
 let key2: string = "p2";
-let value2: string = "select cityColumn as city_2, visitedCilumn as visited_2 from citys where like = false";
+let value2: string = "select cityColumn as city_2, visitedColumn as visited_2 from citys where like = false";
 let template: dataShare.Template = {
   predicates : {
     key1 : value1,
@@ -652,6 +654,8 @@ if (dataShareHelper != undefined) {
 delTemplate(uri: string, subscriberId: string): void
 
 删除一个指定订阅者的数据模板。仅支持静默访问。
+
+静默场景下，调用此接口时，传入的uri和subscriberId参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -676,12 +680,12 @@ delTemplate(uri: string, subscriberId: string): void
 **示例：**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let subscriberId = '11';
 let key1: string = "p1";
-let value1: string = "select cityColumn as city_1, visitedCilumn as visited_1 from citys where like = true";
+let value1: string = "select cityColumn as city_1, visitedColumn as visited_1 from citys where like = true";
 let key2: string = "p2";
-let value2: string = "select cityColumn as city_2, visitedCilumn as visited_2 from citys where like = false";
+let value2: string = "select cityColumn as city_2, visitedColumn as visited_2 from citys where like = false";
 let template: dataShare.Template = {
   predicates : {
     key1 : value1,
@@ -746,7 +750,7 @@ let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void 
   }
 }
 
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let templateId:dataShare.TemplateId = {subscriberId:"11", bundleNameOfOwner:"com.acts.ohos.data.datasharetest"};
 if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).on("rdbDataChange", [uri], templateId, onCallback);
@@ -789,7 +793,7 @@ off(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, ca
 **示例：**
 
 ```ts
-let uri = ("datashareproxy://com.samples.datasharetest.DataShare");
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 let templateId:dataShare.TemplateId = {subscriberId:"11", bundleNameOfOwner:"com.acts.ohos.data.datasharetest"};
 if (dataShareHelper != undefined) {
   let result: Array<dataShare.OperationResult> = (dataShareHelper as dataShare.DataShareHelper).off("rdbDataChange", [uri], templateId);
@@ -906,7 +910,9 @@ if (dataShareHelper != undefined) {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version: number, callback: AsyncCallback&lt;Array&lt;OperationResult&gt;&gt;): void
 
-发布数据，将数据更新至数据库。仅支持静默访问。
+发布数据，将数据更新至数据库。需传入要发布的数据版本，当传入版本号高于当前数据库记录的版本时成功。仅支持静默访问。使用callback异步回调。
+
+静默场景下，调用此接口时，传入的data和bundleName参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -955,7 +961,9 @@ try {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, callback: AsyncCallback&lt;Array&lt;OperationResult&gt;&gt;): void
 
-发布数据，将数据更新至数据库。仅支持静默访问。
+发布数据，将数据更新至数据库。仅支持静默访问。使用callback异步回调。
+
+静默场景下，调用此接口时，传入的data和bundleName参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -999,7 +1007,9 @@ if (dataShareHelper != undefined) {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version?: number): Promise&lt;Array&lt;OperationResult&gt;&gt;
 
-发布数据，将数据更新至数据库。仅支持静默访问。
+发布数据，将数据更新至数据库。可以选择传入要发布的数据版本，当传入版本号高于当前数据库记录的版本时成功。仅支持静默访问。使用Promise异步回调。
+
+静默场景下，调用此接口时，传入的data和bundleName参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1044,7 +1054,9 @@ if (dataShareHelper != undefined) {
 
 getPublishedData(bundleName: string, callback: AsyncCallback&lt;Array&lt;PublishedItem&gt;&gt;): void
 
-获取给定的APP和模板指定的数据。仅支持静默访问。
+获取给定的APP和模板指定的数据。仅支持静默访问。使用callback异步回调。
+
+静默场景下，调用此接口时，传入的bundleName参数的大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1083,7 +1095,9 @@ if (dataShareHelper != undefined) {
 
 getPublishedData(bundleName: string): Promise&lt;Array&lt;PublishedItem&gt;&gt;
 
-获取给定的APP和模板指定的数据。仅支持静默访问。
+获取给定的APP和模板指定的数据。仅支持静默访问。使用Promise异步回调。
+
+静默场景下，调用此接口时，传入的bundleName参数的大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1124,6 +1138,10 @@ insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;):
 
 将单条数据插入数据库。使用callback异步回调。
 
+非静默场景下，调用此接口时，传入的uri和value参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri和value参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1131,7 +1149,7 @@ insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;):
 | 参数名     | 类型                                                      | 必填 | 说明                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | uri      | string                                                    | 是   | 要插入的数据的路径。                                     |
-| value    | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是   | 要插入的数据。如果此参数为空，将插入一个空行。           |
+| value    | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是   | 要插入的数据的值。           |
 | callback | AsyncCallback&lt;number&gt;                               | 是   | 回调函数。当将单条数据插入数据库成功，err为undefined，data为获取到的插入数据记录的索引；否则为错误对象。<br />因部分数据库（如KVDB）的相应接口并不支持返回索引，故若服务端使用了不支持索引的数据库，则此callback也无法返回索引值。 |
 
 **错误码：**
@@ -1150,7 +1168,7 @@ insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;):
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let key1: string = "name";
 let value1: string = "rose";
 let key2: string = "age";
@@ -1185,6 +1203,10 @@ insert(uri: string, value: ValuesBucket): Promise&lt;number&gt;
 
 将单条数据插入数据库。使用Promise异步回调。
 
+非静默场景下，调用此接口时，传入的uri和value参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri和value参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1192,7 +1214,7 @@ insert(uri: string, value: ValuesBucket): Promise&lt;number&gt;
 | 参数名  | 类型                                                      | 必填 | 说明                                               |
 | ----- | --------------------------------------------------------- | ---- | -------------------------------------------------- |
 | uri   | string                                                    | 是   | 要插入的数据的路径。                           |
-| value | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是   | 要插入的数据。如果此参数为空，将插入一个空行。 |
+| value | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是   | 要插入的数据的值。 |
 
 **返回值：**
 
@@ -1216,7 +1238,7 @@ insert(uri: string, value: ValuesBucket): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let key1: string = "name";
 let value1: string = "rose1";
 let key2: string = "age";
@@ -1249,6 +1271,10 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates, callbac
 
 从数据库中删除一条或多条数据记录。使用callback异步回调。
 
+非静默场景下，调用此接口时，传入的uri和predicates参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri和predicates参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1275,7 +1301,7 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates, callbac
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 try {
@@ -1300,6 +1326,10 @@ try {
 delete(uri: string, predicates: dataSharePredicates.DataSharePredicates): Promise&lt;number&gt;
 
 从数据库中删除一条或多条数据记录。使用Promise异步回调。
+
+非静默场景下，调用此接口时，传入的uri和predicates参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri和predicates参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1332,7 +1362,7 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates): Promis
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 try {
@@ -1355,7 +1385,12 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;DataShareResultSet&gt;): void
 
 查询数据库中的数据。使用callback异步回调。
-非静默场景下，调用此接口时，传入的predicates参数的大小不能超过128MB，否则接口返回失败。
+
+非静默场景下，调用此接口时，传入的predicates参数的大小不能超过128MB，传入的uri和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri、predicates和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
+使用此接口查询数据库数据时，如查询内容达到资源上限，操作将失败并返回错误，用户可根据场景考虑重试。有关于资源上限的详细说明，请参见[通过数据管理服务实现数据共享静默访问](../../database/share-data-by-silent-access-sys.md#约束与限制)和[通过DataShareExtensionAbility实现数据共享](../../database/share-data-by-datashareextensionability-sys.md#约束与限制)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1384,7 +1419,7 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 import { dataSharePredicates, DataShareResultSet } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let columns = ["*"];
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
@@ -1410,7 +1445,12 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;): Promise&lt;DataShareResultSet&gt;
 
 查询数据库中的数据。使用Promise异步回调。
-非静默场景下，调用此接口，传入的predicates参数的大小不能超过128MB，否则接口返回失败。
+
+非静默场景下，调用此接口时，传入的predicates参数的大小不能超过128MB，传入的uri和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri、predicates和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
+使用此接口查询数据库数据时，如查询内容达到资源上限，操作将失败并返回错误，用户可根据场景考虑重试。有关于资源上限的详细说明，请参见[通过数据管理服务实现数据共享静默访问](../../database/share-data-by-silent-access-sys.md#约束与限制)和[通过DataShareExtensionAbility实现数据共享](../../database/share-data-by-datashareextensionability-sys.md#约束与限制)。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1444,7 +1484,7 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 import { dataSharePredicates, DataShareResultSet } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let columns = ["*"];
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
@@ -1469,6 +1509,10 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 
 更新数据库中的数据记录。使用callback异步回调。
 
+非静默场景下，调用此接口时，传入的uri、predicates和value参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri、predicates和value参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1477,7 +1521,7 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要更新的数据的路径。                                     |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口是否支持谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。谓词内方法为空时，默认全表更新。 |
-| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据。可以为null。                                  |
+| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据的值。                                  |
 | callback   | AsyncCallback&lt;number&gt;                                  | 是   | 回调函数。当更新数据库中的数据记录成功，err为undefined，data为获取到的更新的数据记录数；否则为错误对象。<br />因部分数据库（如KVDB）的相应接口并不提供相应支持，故若服务端使用此数据库，则此callback也无法返回更新的数据记录数。 |
 
 **错误码：**
@@ -1496,7 +1540,7 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 let key1: string = "name";
@@ -1533,6 +1577,10 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 
 更新数据库中的数据记录。使用Promise异步回调。
 
+非静默场景下，调用此接口时，传入的uri、predicates和value参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri、predicates和value参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1541,7 +1589,7 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uri        | string                                                       | 是   | 要更新的数据的路径。                                     |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。<br />update接口是否支持谓词筛选条件取决于服务端所选用的数据库，如KVDB目前并不支持谓词筛选条件，仅RDB支持。谓词内方法为空时，默认全表更新。 |
-| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据。可以为null。                                   |
+| value      | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据的值。                                   |
 
 **返回值：**
 
@@ -1565,7 +1613,7 @@ update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: 
 import { dataSharePredicates, ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let da = new dataSharePredicates.DataSharePredicates();
 da.equalTo("name", "ZhangSan");
 let key1: string = "name";
@@ -1598,7 +1646,9 @@ try {
 
 batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;
 
-批量更新数据库中的数据记录，Record最多支持900KB的数据，所有操作的总数(即operations对象的键值对)不得超过4000个，超出限制将导致更新失败；该接口的事务性取决于provider（数据提供方）。使用Promise异步回调。暂不支持静默访问。
+批量更新数据库中的数据记录，所有操作的总数(即operations对象的键值对)不得超过4000个，超出限制将导致更新失败；该接口的事务性取决于provider（数据提供方）。使用Promise异步回调。暂不支持静默访问。
+
+非静默场景下，调用此接口时，传入的operations参数的大小不能超过900KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1688,7 +1738,8 @@ try {
 batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;): void
 
 将批量数据插入数据库。使用callback异步回调。暂不支持静默访问。
-非静默场景下，调用此接口时，传入的values参数的大小不能超过128M，否则接口返回失败。
+
+非静默场景下，调用此接口时，传入的values参数的大小不能超过128MB，传入的uri参数大小不能超过900KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1716,7 +1767,7 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallb
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let vbs: ValuesBucket[] = [
   { "name": "roe11", "age": 21, "salary": 20.5 }
 ]
@@ -1743,7 +1794,8 @@ try {
 batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&gt;
 
 将批量数据插入数据库。使用Promise异步回调。暂不支持静默访问。
-非静默场景下，调用此接口时，传入的values参数的大小不能超过128M，否则接口返回失败。
+
+非静默场景下，调用此接口时，传入的values参数的大小不能超过128MB，传入的uri参数大小不能超过900KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1776,7 +1828,7 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&g
 import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 let vbs: ValuesBucket[] = [
   { "name": "roe11", "age": 21, "salary": 20.5 }
 ]
@@ -1857,7 +1909,7 @@ normalizeUri(uri: string, callback: AsyncCallback&lt;string&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
@@ -1904,7 +1956,7 @@ normalizeUri(uri: string): Promise&lt;string&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).normalizeUri(uri).then((data: string) => {
     console.info("normalizeUri = " + data);
@@ -1944,7 +1996,7 @@ denormalizeUri(uri: string, callback: AsyncCallback&lt;string&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri, (err: BusinessError, data: string) => {
     if (err !== undefined) {
@@ -1991,7 +2043,7 @@ denormalizeUri(uri: string): Promise&lt;string&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).denormalizeUri(uri).then((data: string) => {
     console.info("denormalizeUri = " + data);
@@ -2006,6 +2058,8 @@ if (dataShareHelper != undefined) {
 notifyChange(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 通知已注册的观察者指定URI对应的数据资源已发生变更。使用callback异步回调。暂不支持静默访问。
+
+非静默场景下，调用此接口时，传入的uri参数大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2029,7 +2083,7 @@ notifyChange(uri: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(uri, () => {
     console.info("***** notifyChange *****");
@@ -2042,6 +2096,8 @@ if (dataShareHelper != undefined) {
 notifyChange(uri: string): Promise&lt;void&gt;
 
 通知已注册的观察者指定URI对应的数据资源已发生变更。使用Promise异步回调。暂不支持静默访问。
+
+非静默场景下，调用此接口时，传入的uri参数大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2070,7 +2126,7 @@ notifyChange(uri: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-let uri = ("datashare:///com.samples.datasharetest.DataShare");
+let uri = "datashare:///com.samples.datasharetest.DataShare";
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(uri);
 }
@@ -2081,6 +2137,8 @@ if (dataShareHelper != undefined) {
 notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 
 通知已注册的观察者指定URI对应的数据资源已发生变更类型及变更内容。使用Promise异步回调。暂不支持静默访问。
+
+非静默场景下，调用此接口时，传入的data参数大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2111,7 +2169,7 @@ notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 ```ts
 import { ValuesBucket } from '@kit.ArkData';
 
-let dsUri = ("datashare:///com.acts.datasharetest");
+let dsUri = "datashare:///com.acts.datasharetest";
 let people: ValuesBucket[] = [
   { "name": "LiSi" },
   { "name": "WangWu" },

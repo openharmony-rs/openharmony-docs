@@ -33,6 +33,10 @@ on(type: 'systemAutoStartup', callback: AutoStartupCallback): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异**：
+- 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
+- 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
@@ -82,6 +86,10 @@ off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 **需要权限**：ohos.permission.MANAGE_APP_BOOT
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：
+- 从API version 18开始，该接口仅在2in1和Wearable设备中可正常调用，在其他设备上返回16000050错误码。
+- 对于API version 18之前版本，该接口仅在2in1设备中可正常调用，在其他设备上返回16000050错误码。
 
 **参数**：
 

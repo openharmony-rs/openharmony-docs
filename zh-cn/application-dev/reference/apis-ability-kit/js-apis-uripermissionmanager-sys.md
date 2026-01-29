@@ -31,11 +31,14 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 > **说明：**
 >
-> 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
 
 **需要权限**：ohos.permission.PROXY_AUTHORIZATION_URI
 
@@ -99,11 +102,14 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 > **说明：**
 >
-> 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
 
 **需要权限**：ohos.permission.PROXY_AUTHORIZATION_URI
 
@@ -172,10 +178,13 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 > 
 >- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
 >- 该接口支持给分身应用授权，需要指定目标应用的应用包名和分身索引。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
 
 **需要权限**：ohos.permission.PROXY_AUTHORIZATION_URI
 
@@ -265,11 +274,14 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
 > **说明：**
 > 
-> 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
 
 **参数：**
 
@@ -317,11 +329,14 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
 > **说明：**
 > 
-> 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
 
 **参数：**
 
@@ -375,10 +390,13 @@ revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number
 > 
 >- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
 >- 该接口支持撤销授权给分身应用的URI权限，需要指定目标应用的应用包名和分身索引。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备可以调用但是不生效。
 
 **参数：**
 
@@ -462,7 +480,7 @@ grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTokenId: nu
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在Phone、2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -496,8 +514,8 @@ grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTokenId: nu
 **示例：**
 
   ```ts
-  // 接口调用方应用包名为com.exmaple.test
-  // ExntryAbility.ets
+  // 接口调用方应用包名为com.example.test
+  // EntryAbility.ets
   import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -538,7 +556,7 @@ grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, callerTok
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口仅在Phone、2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在Phone、PC/2in1、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

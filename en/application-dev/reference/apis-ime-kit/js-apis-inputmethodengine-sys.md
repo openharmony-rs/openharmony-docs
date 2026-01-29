@@ -28,6 +28,8 @@ Callback triggered when the size of the input method panel changes.
 
 **System API**: This is a system API.
 
+**Parameters**
+
 | Name      | Type                                                | Mandatory| Description                            |
 | ------------ | ---------------------------------------------------- | ---- | -------------------------------- |
 | size         | [window.Size](../apis-arkui/arkts-apis-window-i.md#size7) | Yes  | Panel size.                  |
@@ -63,13 +65,10 @@ Listens for the panel size change. This API uses an asynchronous callback to ret
 ```ts
 import { window } from '@kit.ArkUI';
 
-try {
-  panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, windowSize: ${JSON.stringify(windowSize)}, keyboardArea: ${JSON.stringify(keyboardArea)}`);
-  });
-} catch(err) {
-  console.error(`Failed to subscribe sizeUpdate: ${JSON.stringify(err)}`);
-}
+panel.on('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, windowSize: ${windowSize.width}, ${windowSize.height}, ` +
+    `keyboardArea: ${keyboardArea.top}, ${keyboardArea.bottom}, ${keyboardArea.left}, ${keyboardArea.right}`);
+});
 ```
 
 ### off('sizeUpdate')<sup>14+</sup>
@@ -98,13 +97,9 @@ Disables listening for the panel size change. This API uses an asynchronous call
 ```ts
 import { window } from '@kit.ArkUI';
 
-try {
-  panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
-    console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
-  });
-} catch(err) {
-    console.error(`Failed to subscribe sizeUpdate: ${JSON.stringify(err)}`);
-}
+panel.off('sizeUpdate', (windowSize: window.Size, keyboardArea: inputMethodEngine.KeyboardArea) => {
+  console.info(`panel size changed, width: ${windowSize.width}, height: ${windowSize.height}`);
+});
 ```
 ## FluidLightMode<sup>20+</sup>
 

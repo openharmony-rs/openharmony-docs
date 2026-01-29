@@ -1,6 +1,7 @@
 # Using LPP to Play Audio and Video (C/C++)
 
-The Low Power Player (LPP) offers an end-to-end media pipeline from the source to rendering, while keeping power consumption to a minimum. This guide walks you through playing a local video file using the LPP APIs.
+
+Starting from API version 20, the Low Power Player (LPP) offers an end-to-end media pipeline from the source to rendering, while keeping power consumption to a minimum. This guide walks you through playing a local video file using the LPP APIs.
 
 The full playback process includes creating a demuxer, creating a player, setting callback functions, configuring playback parameters (speed and volume), controlling playback (play, pause, resume, stop, and reset), and releasing the player instance.
 
@@ -23,7 +24,7 @@ This topic describes only how to implement the playback of a media asset. In pra
 
 - Pay attention to the timing of API calls. Make reasonable calls according to the state diagram and detailed API documentation. After the program execution, call the corresponding `OH_***_Destroy` API to release resources.
 
-- When registering a callback, you can configure custom data in the last parameter **void *userData** to perform certain settings (such as state changes) in the callback functions.<br>
+- When registering a callback, you can configure custom data in the last parameter `void *userData` to perform certain settings (such as state changes) in the callback functions.<br>
   Other callback functions:<br>
   [OH_LowPowerAudioSinkCallback_SetPositionUpdateListener](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_setpositionupdatelistener): called when the playback progress updates.<br>[OH_LowPowerAudioSinkCallback_SetEosListener](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosinkcallback_seteoslistener) or [OH_LowPowerVideoSinkCallback_SetEosListener](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosinkcallback_seteoslistener): called when the playback is completed.<br>
   [OH_LowPowerVideoSinkCallback_SetRenderStartListener](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosinkcallback_setrenderstartlistener): called when video rendering starts.<br>
@@ -153,7 +154,7 @@ Include the [lowpower_audio_sink_base.h](../../reference/apis-media-kit/capi-low
 
 ## Running the Sample Project
 
-1. Create a project. Download the [sample project](https://gitee.com/harmonyos_samples/guide-snippets/tree/master/MediaKit/LowPowerAVSInk/lowPowerAVSinkSample), and copy its resources to the corresponding directories.
+1. Create a project. Download the [sample project](https://gitcode.com/HarmonyOS_Samples/guide-snippets/tree/master/MediaKit/LowPowerAVSInk/lowPowerAVSinkSample), and copy its resources to the corresponding directories.
 
    ```
    lpp_demo-sample/entry/src/main/          

@@ -7,7 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 当Web页面加载缓慢时，可以使用预连接、预加载和预获取post请求的能力加速Web页面的访问。
-针对Web页面加载性能优化的详细内容请参考[Web页面加载优化性能指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-web-develop-optimization#section128761465256)
+针对Web页面加载性能优化的详细内容请参考[Web页面加载优化性能指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-web-develop-optimization#section128761465256)。
 
 ## 预解析和预连接
 
@@ -43,9 +43,7 @@ struct WebComponent {
 }
 ```
 
-也可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)来提前初始化内核，然后在初始化内核后调用
-[prepareForPageLoad()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10)对即将要加载的页面进行预解析、预连接。这种方式适合提前对首页进行
-预解析、预连接。
+也可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)来提前初始化内核，然后在初始化内核后调用[prepareForPageLoad()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10)对即将要加载的页面进行预解析、预连接。这种方式适合提前对首页进行预解析、预连接。
 
   在下面的示例中，Ability的onCreate中提前初始化Web内核并对首页进行预连接。
 
@@ -328,7 +326,7 @@ export default class EntryAbility extends UIAbility {
    }
    ```
 
-JavaScript资源的获取方式也可通过[网络请求](../reference/apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
+   JavaScript资源的获取方式也可通过[网络请求](../reference/apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的http响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
 4. 编写业务用组件代码。
 

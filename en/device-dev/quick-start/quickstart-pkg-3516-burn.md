@@ -22,7 +22,7 @@ The following exemplifies how to burn an image to Hi3516DV300 using HiTool. You 
 1. Prepare the files to be burnt.
    1. On the client platform, create a folder for storing the files to be burnt, for example, **D:\liteos** or **D:\linux**.
    2. Save the burning configuration file and boot file to the new folder.
-       - For the small system with the LiteOS kernel, the burning configuration file is **L1_3516_liteos.xml**, and the boot file is **[u-boot-hi3516dv300.bin](https://gitee.com/openharmony/device_board_hisilicon/tree/master/hispark_taurus/uboot/out/boot)**.
+       - For the small system with the LiteOS kernel, the burning configuration file is **L1_3516_liteos.xml**, and the boot file is **[u-boot-hi3516dv300.bin](https://gitcode.com/openharmony/device_board_hisilicon/tree/master/hispark_taurus/uboot/out/boot)**.
           You need to prepare the **L1_3516_liteos.xml** file on your own by applying the template below:
 
           
@@ -35,7 +35,7 @@ The following exemplifies how to burn an image to Hi3516DV300 using HiTool. You 
           <Part Sel="1" PartitionName="" FlashType="emmc" FileSystem="none" Start="60M" Length="50M" SelectFile="D:\liteos\userfs_vfat.img"/>
           </Partition_Info>
           ```
-       - For the small system with the Linux kernel, the burning configuration file is **L1_3516_linux.xml**, and the boot file is **[u-boot-hi3516dv300.bin](https://gitee.com/openharmony/device_board_hisilicon/tree/master/hispark_taurus/uboot/out/boot)**.
+       - For the small system with the Linux kernel, the burning configuration file is **L1_3516_linux.xml**, and the boot file is **[u-boot-hi3516dv300.bin](https://gitcode.com/openharmony/device_board_hisilicon/tree/master/hispark_taurus/uboot/out/boot)**.
           You need to prepare the **L1_3516_linux.xml** file on your own by applying the template below:
 
           

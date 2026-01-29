@@ -1,4 +1,4 @@
-# System Window Development (Stage Model Only)
+# System Window Development (Stage Model Only) (for System Applications Only)
 
 ## Overview
 
@@ -6,7 +6,7 @@ In the stage model, system applications are allowed to create and manage system 
 
 When a window is displayed, hidden, or switched, an animation is usually used to smooth the interaction process.
 
-The animation is the default behavior for application windows. You do not need to set or modify the code.
+In OpenHarmony, the animation is the default behavior for application windows. You do not need to set or modify the code.
 
 However, you can customize an animation to be played during the display or hiding of a system window.
 
@@ -144,7 +144,7 @@ export default class ServiceExtensionAbility1 extends ServiceExtensionAbility {
 
 ## Customizing an Animation to Be Played During the Display or Hiding of a System Window
 
-You can determine whether to play an animation when a system window is showing or hiding.  
+You can determine whether to play an animation when a system window is showing or hiding.
 
 ### How to Develop
 
@@ -309,7 +309,7 @@ struct Index {
 
   private CreateTransferSubWindow(){
     let context = AppStorage.get<common.UIAbilityContext>("currentContext");
-    console.log('LOCAL-TEST try to CreateTransferSubWindow');
+    console.info('LOCAL-TEST try to CreateTransferSubWindow');
     let windowConfig:window.Configuration = {
       name : "systemTypeWindow",
       windowType : window.WindowType.TYPE_FLOAT,
@@ -323,17 +323,17 @@ struct Index {
       await subWin.moveWindowTo(100,100);
       await subWin.resize(200,200);
     }).catch((err:Error)=>{
-      console.log('LOCAL-TEST createSubWindow err:' + JSON.stringify(err));
+      console.error('LOCAL-TEST createSubWindow err:' + JSON.stringify(err));
     })
   }
   private ShowSUBWindow(){
     if(!this.subWindow_){
-      console.log('LOCAL-TEST this.subWindow_is null');
+      console.info('LOCAL-TEST this.subWindow_is null');
       return ;
     }
     let animationConfig = new AnimationConfig();
     let systemTypeWindow = window.findWindow("systemTypeWindow");
-    console.log("LOCAL-TEST try to ShowWindowWithCustomAnimation");
+    console.info("LOCAL-TEST try to ShowWindowWithCustomAnimation");
     animationConfig.ShowWindowWithCustomAnimation(systemTypeWindow, (context:window.TransitionContext) => {
       console.info('LOCAL-TEST start show window animation');
       let toWindow = context.toWindow;
@@ -343,7 +343,7 @@ struct Index {
         curve: Curve.EaseInOut, // Animation curve.
         delay: 0, // Animation delay.
         iterations: 1, // Number of playback times.
-        playMode: PlayMode.Normal // Animation playback mode.
+        playMode: PlayMode.Normal, // Animation playback mode.
         onFinish: () => {
           console.info('LOCAL-TEST onFinish in show animation');
           context.completeTransition(true);
@@ -366,12 +366,12 @@ struct Index {
 
   private HideSUBWindow(){
     if(!this.subWindow_){
-      console.log('LOCAL-TEST this.subWindow_is null');
+      console.info('LOCAL-TEST this.subWindow_is null');
       return ;
     }
     let animationConfig = new AnimationConfig();
     let systemTypeWindow = window.findWindow("systemTypeWindow");
-    console.log("LOCAL-TEST try to HideWindowWithCustomAnimation");
+    console.info("LOCAL-TEST try to HideWindowWithCustomAnimation");
     animationConfig.HideWindowWithCustomAnimation(systemTypeWindow, (context:window.TransitionContext) => {
       console.info('LOCAL-TEST start hide window animation');
       let toWindow = context.toWindow;
@@ -381,7 +381,7 @@ struct Index {
         curve: Curve.EaseInOut, // Animation curve.
         delay: 0, // Animation delay.
         iterations: 1, // Number of playback times.
-        playMode: PlayMode.Normal // Animation playback mode.
+        playMode: PlayMode.Normal, // Animation playback mode.
         onFinish: () => {
           console.info('LOCAL-TEST onFinish in hide animation');
           context.completeTransition(true);

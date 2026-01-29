@@ -1,7 +1,7 @@
 # Interface (AtomicServiceBar)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @HelloCrease-->
@@ -10,7 +10,7 @@ Provides attributes for configuring the menu bar of an atomic service.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The initial APIs of this interface are supported since API version 11.
 >
@@ -23,6 +23,7 @@ Provides attributes for configuring the menu bar of an atomic service.
 setVisible(visible: boolean): void
 
 Sets whether the atomic service menu bar is visible.
+
 > **NOTE**
 >
 > The atomic service menu bar is hidden by default and replaced with a floating button since API version 12; it cannot be changed to visible using this API.
@@ -68,6 +69,7 @@ export default class EntryAbility extends UIAbility {
 setBackgroundColor(color:Nullable<Color | number | string>): void
 
 Sets the background color of the atomic service menu bar.
+
 > **NOTE**
 >
 > The background of the atomic service menu bar is hidden by default since API version 12; its color cannot be set using this API.
@@ -100,7 +102,7 @@ export default class EntryAbility extends UIAbility {
         hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
         atomicServiceBar.setBackgroundColor(0x88888888);
       } else {
-        hilog.error(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
       }
     });
   }
@@ -112,6 +114,7 @@ export default class EntryAbility extends UIAbility {
 setTitleContent(content:string): void
 
 Sets the title content of the atomic service menu bar.
+
 > **NOTE**
 >
 > The title of the atomic service menu bar is hidden by default since API version 12; its content cannot be set using this API.
@@ -132,6 +135,7 @@ Sets the title content of the atomic service menu bar.
 import { UIAbility } from '@kit.AbilityKit';
 import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
@@ -155,6 +159,7 @@ export default class EntryAbility extends UIAbility {
 setTitleFontStyle(font:FontStyle):void
 
 Sets the font style of the atomic service menu bar.
+
 > **NOTE**
 >
 > The title of the atomic service menu bar is hidden by default since API version 12; its font style cannot be set using this API.
@@ -175,6 +180,7 @@ Sets the font style of the atomic service menu bar.
 import { UIAbility } from '@kit.AbilityKit';
 import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
@@ -198,6 +204,7 @@ export default class EntryAbility extends UIAbility {
 setIconColor(color:Nullable<Color | number | string>): void
 
 Sets the color of the atomic service icon.
+
 > **NOTE**
 >
 > The atomic service menu bar is hidden by default and replaced with a floating button since API version 12; the icon color cannot be changed using this API.
@@ -219,6 +226,7 @@ Sets the color of the atomic service icon.
 import { UIAbility } from '@kit.AbilityKit';
 import { UIContext, AtomicServiceBar, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
@@ -242,6 +250,7 @@ export default class EntryAbility extends UIAbility {
 getBarRect(): Frame
 
 Obtains the layout information of the atomic service menu bar relative to the window.
+
 > **NOTE**
 >
 > The layout information includes the left and right margins of the atomic service menu bar.
@@ -261,6 +270,7 @@ Obtains the layout information of the atomic service menu bar relative to the wi
 ```ts
 import { AtomicServiceBar } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 @Entry
 @Component
 struct Index {
@@ -271,8 +281,8 @@ struct Index {
         let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
         if (currentBar != undefined) {
           let rect = currentBar.getBarRect();
-          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully. x:' +
-            rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
+          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully. x:'
+            + rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
         } else {
           hilog.info(0x0000, 'testTag', 'Get AtomServiceBar failed.');
         }

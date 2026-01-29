@@ -58,7 +58,7 @@
   - [Docker Environment](get-code/gettools-acquire.md)
   - [IDE](get-code/gettools-ide.md)
 - Hands-On Tutorials	
-  - [Codelabs](https://gitee.com/openharmony/codelabs/blob/master/README.md) 
+  - [Codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md) 
 - References
   - [FAQs](faqs/Readme-EN.md)
 - [Disclaimer Notice](disclaimer.md)

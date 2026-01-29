@@ -37,7 +37,7 @@ The interface call failed due to a remote exception.
 
 > **NOTE**
 >
-> The error information in the actual API response prevails.
+> The error message may vary depending on the API.
 
 **Description**
 
@@ -45,13 +45,13 @@ The remote service is abnormal.
 
 **Possible Causes**
 
-The remote service process breaks down or is suspended.
+The remote service process crashes.
 
 **Solution**
 
-Restart the device and try again. If the fault persists, [export logs](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog#section2114542680)<!--RP1--> and send them to the official website.<!--RP1End-->
+Restart the device and try again. If the fault persists, [export logs](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog#section2114542680)<!--RP1--> and send feedback to the official website.<!--RP1End-->
 
-## 11400107 Failed to Fork The Child Dump Process
+## 11400107 Failed to Fork the Child Dump Process
 
 **Error Message**
 
@@ -67,7 +67,7 @@ The system resources are insufficient. You are advised to check the system load.
 
 **Solution**
 
-Fork the child dump process again. If the fault persists, filter error logs through [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog) to locate the fault. If the problem persists, <!--RP1-->contact us.<!--RP1End-->
+Fork the child dump process again. If the fault persists, filter error logs to locate the fault by referring to [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog). If the problem persists, <!--RP1-->contact us.<!--RP1End-->
 
 ## 11400108 Failed to Wait for the Child Dump Process to Finish
 
@@ -85,7 +85,7 @@ The system resources are insufficient. You are advised to check the system load.
 
 **Solution**
 
-Fork the child dump process again. If the fault persists, filter error logs through [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog) to locate the fault. If the problem persists, <!--RP1-->contact us.<!--RP1End-->
+Fork the child dump process again. If the fault persists, filter error logs to locate the fault by referring to [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog). If the problem persists, <!--RP1-->contact us.<!--RP1End-->
 
 ## 11400109 Waiting for the Child Dump Process Times Out
 
@@ -103,7 +103,7 @@ The dump process takes a long time. You are advised to check the system load.
 
 **Solution**
 
-Fork the child dump process again. If the fault persists, filter error logs through [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog) to locate the fault. If the problem persists, <!--RP1-->contact us.<!--RP1End-->
+Fork the child dump process again. If the fault persists, filter error logs to locate the fault by referring to [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog). If the problem persists, <!--RP1-->contact us.<!--RP1End-->
 
 ## 11400110 Insufficient Disk Space
 
@@ -139,7 +139,7 @@ The VM is abnormal.
 
 **Solution**
 
-Fork the child dump process again. If it still fails, filter **Error** logs to locate the fault. For details, see [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog). If the problem persists, <!--RP1-->contact us.<!--RP1End-->
+Fork the child dump process again. If the fault persists, filter error logs to locate the fault by referring to [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog). If the problem persists, <!--RP1-->contact us.<!--RP1End-->
 
 ## 11400112 Repeated Data Dump
 
@@ -177,9 +177,9 @@ Failed to create the dump file.
 
 **Solution**
 
-Fork the child dump process again. If it still fails, filter **Error** logs to locate the fault. For details, see [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog). If the problem persists, <!--RP1-->contact us.<!--RP1End-->
+Fork the child dump process again. If the fault persists, filter error logs to locate the fault by referring to [Log Analysis](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog). If the problem persists, <!--RP1-->contact us.<!--RP1End-->
 
-## 11400114 GWP-ASan enabling failed.
+## 11400114 Failed to Enable GWP-ASan
 
 **Error Message**
 
@@ -187,11 +187,11 @@ The number of GWP-ASAN applications of this device overflowed after last boot.
 
 **Description**
 
-The number of applications enabled with GWP-ASan exceeds the system limit after the device is started.
+After the device is restarted, the number of applications for which GWP-ASan is enabled exceeds the system limit.
 
 **Possible Causes**
 
-The quota for dynamically enabling GWP-ASan has been used up during the running of a single device.
+During the device running, the quota of applications enabled with GWP-ASan is used up.
 
 **Solution**
 

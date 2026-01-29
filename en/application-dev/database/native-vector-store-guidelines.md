@@ -154,7 +154,7 @@ libnative_rdb_ndk.z.so
 
    > **NOTE**
    >
-   > Use **destroy()** to destroy the **ResultSet** that is no longer used in a timely manner so that the memory allocated can be released.
+   > Use **destroy()** to destroy the result set (**OH_Cursor**) that is no longer used in a timely manner so that the memory allocated can be released.
 
    The sample code is as follows:
 
@@ -310,13 +310,13 @@ libnative_rdb_ndk.z.so
 
    | Unit| Value in Seconds|
    | ------ | -------- |
-   | year | 365 * 24 * 60 * 60 |
-   | month | 30 * 24 * 60 * 60 |
-   | day | 24 * 60 * 60 |
-   | hour | 60 * 60 |
+   | year | 365 × 24 × 60 × 60|
+   | month | 30 × 24 × 60 × 60|
+   | day | 24 × 60 × 60|
+   | hour | 60 × 60|
    | minute | 60 |
 
-   For example, if **ttl** is set to **3 months**, the value will be converted into 7,776,000 seconds (3 x (30 * 24 * 60 * 60)).
+   For example, if **ttl** is set to **3 months**, the value will be converted into 7,776,000 seconds (3 × (30 × 24 × 60 × 60)).
 
    The sample code is as follows:
 

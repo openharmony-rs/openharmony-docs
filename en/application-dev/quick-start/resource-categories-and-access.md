@@ -17,7 +17,7 @@ Resources are classified into the following types based on their sources:
 
 Resource files used during application development must be stored in specified directories for management. There are two types of resource directories, namely, resource directories and resource group directories. The resource directories are the **base**, qualifiers, **rawfile**, and **resfile** directories. The resource group directories are the **element**, **media**, and **profile** directories.
 
-```
+```text
 resources
 |---base  // Default directory.
 |   |---element
@@ -249,7 +249,7 @@ If the **attr** attribute is not configured, a string is translated by default.
 
 ### Constraints
 The **attr** attribute applies to the string, strarray, and plural resources in the **base** directory.
-```
+```text
 resources
 |---base
 |   |---element
@@ -286,7 +286,7 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
 ### HAP Resources
 
- - Access resources through `$r()` or `$rawfile()`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. Wherein **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
+ - Access resources through `$r` or `$rawfile`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. Wherein **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
 
    > **NOTE**
    >
@@ -496,14 +496,13 @@ The following example demonstrates how to obtain the specified resources for lan
 In **Index.ets**, add code to obtain the resources of the three languages and display them in the text box. The current system language is Chinese. The following is sample code in **entry/src/main/ets/pages/Index.ets**:
 
 ```ts
-import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct Index {
   @State englishString: string = "";
-  @State germanString: string = "";
+  @State japaneseString: string = "";
 
   getString(): string {
     let resMgr = this.getUIContext().getHostContext()?.resourceManager;
@@ -526,7 +525,7 @@ struct Index {
       // Obtain resources that match the current system configuration, including the color mode and resolution, for the Japanese language.
       overrideConfig.locale = "ja_JP"; // Set the language to Japanese and locale to ja_JP.
       overrideResMgr.updateOverrideConfiguration(overrideConfig); // Equivalent to resMgr.updateOverrideConfiguration(overrideConfig).
-      this.germanString = overrideResMgr.getStringSync(resId);
+      this.japaneseString = overrideResMgr.getStringSync(resId);
     } catch (err) {
       const code = (err as BusinessError).code;
       const message = (err as BusinessError).message;
@@ -544,7 +543,7 @@ struct Index {
         Text(this.englishString)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Text(this.germanString)
+        Text(this.japaneseString)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
       }
