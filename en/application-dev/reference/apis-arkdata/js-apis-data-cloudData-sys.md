@@ -66,17 +66,9 @@ Represents the transparently transmitted data, which contains information requir
 // databaseScopes: type of the cloud database.
 // recordTypes: names of the tables in the cloud database.
 
-interface ExtraData {
+let extraData: cloudData.ExtraData = {
   eventId: "cloud_data_change",
-  extraData: '{
-    "data": "{
-     "accountId": "aaa",
-     "bundleName": "com.bbb.xxx",
-     "containerName": "alias",
-     "databaseScopes": ["private", "shared"],
-     "recordTypes": ["xxx", "yyy", "zzz"]
-    }"
-  }'
+  extraData: '{"data": "{"accountId": "aaa", "bundleName": "com.bbb.xxx", "containerName": "alias", "databaseScopes": ["private", "shared"], "recordTypes": ["xxx", "yyy", "zzz"]}"}',
 }
 
 ```
@@ -1001,6 +993,78 @@ let appActions: dataType = {
 };
 try {
   cloudData.Config.clear(account, appActions).then(() => {
+    console.info('Succeeding in clearing cloud data');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### clear<sup>23+</sup>
+
+static clear(accountId: string, appActions: Record<string, ClearAction>, config?: Record<string, ClearConfig>): Promise&lt;void&gt;
+
+Clears the cloud data locally. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.CLOUDDATA_CONFIG
+
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Config
+
+**Parameters**
+
+| Name    | Type                                               | Mandatory| Description                            |
+| ---------- | --------------------------------------------------- | ---- | -------------------------------- |
+| accountId  | string                                              | Yes  | ID of the cloud account.            |
+| appActions | Record<string, [ClearAction](#clearaction)>         | Yes  | Information about the application whose data is to be cleared and the operation to perform.|
+| config | Record<string, [ClearConfig](#clearconfig23)>         | No  | Clearance information of a device-cloud synergy database. The key is the application name, and the value is the database clearance rules of the application. Clearance priority: table > database > application. If this parameter is not set, the application-level data clearance mode is used by default.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let account: string = "test_id";
+let appActions: Record<string, cloudData.ClearAction> = {
+  'test_bundleName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
+  'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
+  'test_bundleName3': cloudData.ClearAction.CLEAR_CLOUD_NONE,
+};
+let config: Record<stringm, cloudData.ClearConfig> = {
+  'test_bundleName': {
+    dbInfo: {
+      'test_storeName': {
+        action: cloudData.ClearAction.CLEAR_CLOUD_INFO,
+        tableInfo: {
+          'test_tableName1': cloudData.ClearAction.CLEAR_CLOUD_INFO,
+          'test_tableName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO,
+        }
+      }
+    }
+  }
+}
+try {
+  cloudData.Config.clear(account, appActions, config).then(() => {
     console.info('Succeeding in clearing cloud data');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
