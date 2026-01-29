@@ -28,7 +28,7 @@ The specified user does not exist.
 
 **处理步骤**
 
-检查系统是否创建该用户id。
+检查系统是否创建该用户ID。
 
 ## 29400001 防火墙规则数量超过最大值
 
