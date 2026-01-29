@@ -14,7 +14,7 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 该组件从API Version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -52,7 +52,7 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 | formWidth | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否 | @Prop | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
 | formHeight | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否 | @Prop | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
 | handleOnClick | Function | 否 | - | 点击事件回调函数。 |
-| build | void | 是 | @Builder | 构建函数，用于绘制组件。 |
+| build | void | 是 | @Builder | 构建函数，用于绘制组件。<br>**ArkTS模式：**  该接口仅适用于ArkTS-Sta。|
 
 ## FormType
 
