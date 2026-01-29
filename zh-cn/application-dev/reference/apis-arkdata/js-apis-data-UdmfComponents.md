@@ -10,7 +10,11 @@
 
 > **说明：**
 >
-> 该组件从API Version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API Version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -37,7 +41,7 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+**ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
 
@@ -56,7 +60,7 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+**ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
 
@@ -67,6 +71,8 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 | TYPE_SMALL | 2 | 表示 2 x 1 的尺寸。默认卡片宽度为137， 默认高度为83。 |
 
 ## 示例
+
+ArkTS-Dyn示例：
 
 ```ts
 import { uniformDataStruct } from '@kit.ArkData'
