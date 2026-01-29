@@ -2711,7 +2711,7 @@ netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 
-//  注册网络状态变化事件。此接口要在调用on后调用。
+// 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   console.error(JSON.stringify(error));
 });
