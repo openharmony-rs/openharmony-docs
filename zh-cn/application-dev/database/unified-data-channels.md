@@ -189,55 +189,14 @@ ArkTS-Sta示例：
 
     <!-- @[unified_data_channels_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
-ArkTS-Dyn示例：
-
     ``` TypeScript
-    let plainTextUpdate: uniformDataStruct.PlainText = {
-      uniformDataType: 'general.plain-text',
-      textContent: 'How are you',
-      abstract: 'This is abstract'
-    }
+    let fileUri : uniformDataStruct.FileUri = {
+        uniformDataType: "general.file-uri",
+        oriUri: "oriUri",
+        fileType: "",
+        };
     let recordUpdate =
-      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
-    let htmlUpdate: uniformDataStruct.HTML = {
-      uniformDataType: 'general.html',
-      htmlContent: '<div><p>How are you</p></div>',
-      plainContent: 'How are you'
-    }
-    recordUpdate.addEntry(uniformTypeDescriptor.UniformDataType.HTML, htmlUpdate);
-    let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(recordUpdate);
-
-    // 指定要更新的统一数据对象的URI
-    let optionsUpdate: unifiedDataChannel.Options = {
-      // 此处的key值仅为示例，不可直接使用，其值与insertData接口回调函数中key保持一致
-      key: 'udmf://DataHub/com.ohos.test/0123456789'
-    };
-
-    try {
-      unifiedDataChannel.updateData(optionsUpdate, unifiedDataUpdate, (err) => {
-        if (err === undefined) {
-          hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in updating data.`);
-        } else {
-          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to update data. code is ${err.code},message is ${err.message}`);
-        }
-      });
-    } catch (e) {
-      let error: BusinessError = e as BusinessError;
-      hilog.error(0xFF00, '[Sample_Udmf]',
-        `Update data throws an exception. code is ${error.code},message is ${error.message}`);
-    }
-    ```
-
-ArkTS-Sta示例：
-
-    ``` TypeScript
-    let plainTextUpdate: uniformDataStruct.PlainText = {
-      uniformDataType: 'general.plain-text',
-      textContent: 'How are you',
-      textAbstract: 'This is textAbstract'
-    }
-    let recordUpdate =
-      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.FILE_URI, fileUri);
     let htmlUpdate: uniformDataStruct.HTML = {
       uniformDataType: 'general.html',
       htmlContent: '<div><p>How are you</p></div>',
@@ -271,47 +230,6 @@ ArkTS-Sta示例：
 4. 删除存储在UDMF公共数据通路中的统一数据对象。
 
     <!-- @[unified_data_channels_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
-ArkTS-Dyn示例：
-
-    ``` TypeScript
-    // 指定要删除数据的数据通路枚举类型
-    let optionsDelete: unifiedDataChannel.Options = {
-      intention: unifiedDataChannel.Intention.DATA_HUB
-    };
-
-    try {
-      unifiedDataChannel.deleteData(optionsDelete, (err, data) => {
-        if (err === undefined) {
-          hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in deleting data. size = ${data.length}`);
-          for (let i = 0; i < data.length; i++) {
-            let records = data[i].getRecords();
-            for (let j = 0; j < records.length; j++) {
-              let types = records[j].getTypes();
-              // 根据业务需要从记录中获取样式数据
-              if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-                let text =
-                  records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-                hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${text.textContent}`);
-              }
-              if (types.includes(uniformTypeDescriptor.UniformDataType.HTML)) {
-                let html =
-                  records[j].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
-                hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${html.htmlContent}`);
-              }
-            }
-          }
-        } else {
-          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to delete data. code is ${err.code},message is ${err.message}`);
-        }
-      });
-    } catch (e) {
-      let error: BusinessError = e as BusinessError;
-      hilog.error(0xFF00, '[Sample_Udmf]',
-        `Delete data throws an exception. code is ${error.code},message is ${error.message}`);
-    }
-    ```
-ArkTS-Sta示例：
 
     ``` TypeScript
     // 指定要删除数据的数据通路枚举类型
@@ -368,46 +286,6 @@ ArkTS-Sta示例：
     <!-- @[unified_data_channels_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
 ArkTS-Dyn示例：
-
-    ``` TypeScript
-    // 指定要查询数据的数据通路枚举类型
-    let options: unifiedDataChannel.Options = {
-      intention: unifiedDataChannel.Intention.DATA_HUB
-    };
-
-    try {
-      unifiedDataChannel.queryData(options, (err, data) => {
-        if (err === undefined) {
-          hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in querying data. size = ${data.length}`);
-          for (let i = 0; i < data.length; i++) {
-            let records = data[i].getRecords();
-            for (let j = 0; j < records.length; j++) {
-              let types = records[j].getTypes();
-              // 根据业务需要从记录中获取样式数据
-              if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-                let text =
-                  records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
-                hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${text.textContent}`);
-              }
-              if (types.includes(uniformTypeDescriptor.UniformDataType.HTML)) {
-                let html =
-                  records[j].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
-                hilog.info(0xFF00, '[Sample_Udmf]', `${i + 1}.${html.htmlContent}`);
-              }
-            }
-          }
-        } else {
-          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to query data. code is ${err.code},message is ${err.message}`);
-        }
-      });
-    } catch (e) {
-      let error: BusinessError = e as BusinessError;
-      hilog.error(0xFF00, '[Sample_Udmf]',
-        `Query data throws an exception. code is ${error.code},message is ${error.message}`);
-    }
-    ```
-
-ArkTS-Sta示例：
 
     ``` TypeScript
     // 指定要查询数据的数据通路枚举类型
