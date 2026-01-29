@@ -79,9 +79,9 @@ import { Entry, Component, State, UIContext, Column, $rawfile, Flex, Row, Text, 
 
 @Entry
 @Component
-struct Normal {
+struct Index {
   @State contentForms: Array<uniformDataStruct.ContentForm> = new Array<uniformDataStruct.ContentForm>();
-  @State formWidth: double = 200;
+  @State formWidth = 200;
   @State formType: FormType = FormType.TYPE_SMALL;
 
   aboutToAppear(): void {
@@ -95,10 +95,10 @@ struct Normal {
       let thumb2 = await context.resourceManager.getMediaContent($r('app.media.thumb2').id);
       this.contentForms.push({
         uniformDataType: 'general.content-form',
-        title: '为什么微博微博微博微博微博',
+        title: 'Content form title',
         thumbData: thumb2,
-        description: '是不是很多人好奇，是不是很多人好奇是不是很多人好奇',
-        appName: '今日头条',
+        description: 'Content form description',
+        appName: 'com.test.demo',
         linkUri: 'https://appgallery.huawei.com/app/detail?id=com.huawei.hmos.wallet',
         appIcon: appIcon
       })
