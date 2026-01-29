@@ -8812,7 +8812,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **ArkTS-Dyn起始版本：** 19
 
-**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -8969,7 +8969,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **ArkTS-Dyn起始版本：** 19
 
-**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -14874,7 +14874,11 @@ ArkTS-Sta: setWindowShadowRadius(radius: double): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+
+在OpenHarmony 5.1.0之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+从OpenHarmony 5.1.0开始，该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -14921,12 +14925,13 @@ ArkTS-Sta: setWindowCornerRadius(cornerRadius: double): Promise&lt;void&gt;
 
 在调用此接口之前调用[getWindowCornerRadius()](#getwindowcornerradius17)接口可以获得窗口默认圆角半径值。
 
-> **说明：**
->
-> - 在API version 20之前，<!--RP6-->此接口仅可在2in1设备下使用。<!--RP6End-->
-> - 从API version 20开始，此接口支持在手机设备、2in1设备和平板设备下使用。
-
 **系统能力**：SystemCapability.Window.SessionManager
+
+**设备行为差异：**
+ 	 
+在OpenHarmony 6.0之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+ 	 
+从OpenHarmony 6.0开始，该接口在Phone设备、Tablet设备和2in1设备下可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
