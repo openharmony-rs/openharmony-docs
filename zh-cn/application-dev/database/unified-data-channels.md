@@ -285,8 +285,6 @@ ArkTS-Sta示例：
 
     <!-- @[unified_data_channels_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
-ArkTS-Dyn示例：
-
     ``` TypeScript
     // 指定要查询数据的数据通路枚举类型
     let options: unifiedDataChannel.Options = {
