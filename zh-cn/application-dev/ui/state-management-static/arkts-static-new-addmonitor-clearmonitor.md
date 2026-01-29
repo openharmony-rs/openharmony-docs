@@ -1,6 +1,6 @@
 # addMonitor/clearMonitor接口：动态添加/取消监听
 
-从API version 23开始，开发者可以使用addMonitor与clearMonitor方法，在应用程序运行过程中动态地为状态变量添加或删除监听函数。
+从API version 23开始，开发者可以使用[addMonitor](../../reference/apis-arkui/js-apis-stateManagement-static.md#addmonitor23)与[clearMonitor](../../reference/apis-arkui/js-apis-stateManagement-static.md#clearmonitor23)方法，在应用程序运行过程中动态地为状态变量添加或删除监听函数。
 
 在阅读本文档前，建议提前阅读：[@ObservedV2/@Trace](./arkts-static-new-observedV2-and-trace.md)、[@ComponentV2](./arkts-static-componentv2.md)、[@Local](./arkts-static-new-local.md)，[@Monitor](./arkts-static-new-monitor.md)。
 
