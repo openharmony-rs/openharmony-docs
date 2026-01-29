@@ -35,7 +35,6 @@ This section uses the development of standard intents and custom intents with @I
 The following uses the standard intent [ViewLogistics](./insight-intent-access-specifications.md#viewing-logistics) as an example to describe how to develop a standard intent with the @InsightIntentEntry decorator.
 
 1. Declare the intent execution file in the **insightIntentsSrcEntry** field of the **insight_intent.json** file.
-
     ```json
     {
       "insightIntentsSrcEntry": [
@@ -48,7 +47,7 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
 
 2. Implement the intent executor.
 
-    When developing a standard intent, you do not need to define the large language model description, intent parameters, or intent execution results. Standard intents are matched from the [Appendix: Standard Intent Access Specifications](insight-intent-access-specifications.md) based on the **schema** and **intentVersion** fields. The intent executor must inherit from the **InsightIntentEntryExector\<T>** class and implement the **onExecute()** API.
+    When developing a standard intent, you do not need to define the large language model description, intent parameters, or intent execution results. Standard intents are matched from the [Appendix: Standard Intent Access Specifications](insight-intent-access-specifications.md) based on the **schema** and **intentVersion** fields. The intent executor must inherit from the **InsightIntentEntryExecutor\<T>** class and implement the **onExecute()** API.
 
     <!-- @[insight_intent_view_logistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ViewLogisticsImpl.ets) -->
     
@@ -66,7 +65,7 @@ The following uses the standard intent [ViewLogistics](./insight-intent-access-s
       displayName: 'Query Logistics',
       displayDescription: 'Query logistics with tracking number',
       schema: 'ViewLogistics',
-      icon: $r('app.media.viewLogistics'), // $r indicates a local icon, which must be defined in the resource catalog.
+      icon: $r('app.media.viewLogistics'), // Replace $r('app.media.viewLogistics') with the actual resource file.
       abilityName: 'EntryAbility',
       executeMode: [insightIntent.ExecuteMode.UI_ABILITY_BACKGROUND]
     })
@@ -110,7 +109,7 @@ The following uses the development of a custom intent "Play Music" as an example
 
 2. Implement the intent executor.
 
-    When developing custom intents, you are required to define the large language model description, intent search keywords, intent parameters, and intent execution results. The intent executor must inherit from the **InsightIntentEntryExector\<T>** class and implement the **onExecute()** API.
+    When developing custom intents, you are required to define the large language model description, intent search keywords, intent parameters, and intent execution results. The intent executor must inherit from the **InsightIntentEntryExecutor\<T>** class and implement the **onExecute()** API.
 
     <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
     
@@ -130,7 +129,7 @@ The following uses the development of a custom intent "Play Music" as an example
       intentVersion: '1.0.1',
       displayName: 'Play Music',
       displayDescription: 'Intent to play music',
-      icon: $r('app.media.playMusic'), // $r indicates a local icon, which must be defined in the resource catalog.
+      icon: $r('app.media.playMusic'), // Replace $r('app.media.playMusic') with the actual resource file.
       llmDescription: 'Supports passing song names to play music',
       keywords: ['music playback', 'play music', 'PlayMusic'],
       abilityName: 'EntryAbility',
@@ -255,7 +254,7 @@ To implement this, you can define singer information as an intent entity and dev
       intentVersion: '1.0.1',
       displayName: 'Play Music',
       displayDescription: 'Intent to play music',
-      icon: $r('app.media.app_icon'), // $r indicates a local icon, which must be defined in the resource catalog.
+      icon: $r('app.media.app_icon'), // Replace $r('app.media.app_icon') with the actual resource file.
       llmDescription: 'Supports passing song names to play music',
       keywords: ['music playback', 'play music', 'PlayMusic'],
       abilityName: 'EntryAbility',
@@ -323,4 +322,3 @@ To implement this, you can define singer information as an intent entity and dev
       }
     }
     ```
-<!--no_check-->
