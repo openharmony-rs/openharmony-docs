@@ -20,8 +20,6 @@ import { SelectionExtensionAbility } from '@kit.BasicServicesKit';
 ```
 ## SelectionExtensionAbility
 
-### 属性
-
 **系统能力：** SystemCapability.SelectionInput.Selection
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
