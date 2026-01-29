@@ -9916,10 +9916,10 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): boolean | Promise<boolean> {
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): boolean | Promise<boolean> {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: sync onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
+      let pid = callingInfo?.callerPid;
       return true;
     } else {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
@@ -9941,10 +9941,10 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
 
   async onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): Promise<boolean> {
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): Promise<boolean> {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
+      let pid = callingInfo?.callerPid;
     } else {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
       return false;
@@ -9979,10 +9979,10 @@ class TestRemoteObject extends rpc.RemoteObject {
   }
     // 同时调用仅会执行onRemoteMessageRequest
   onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
-    option: rpc.MessageOption, callingInfo?: CallingInfo): boolean | Promise<boolean> {
+    option: rpc.MessageOption, callingInfo?: rpc.CallingInfo): boolean | Promise<boolean> {
     if (code === 1) {
       hilog.info(0x0000, 'testTag', 'RpcServer: async onRemoteMessageRequest is called');
-      let pid = callingInfo.callerPid;
+      let pid = callingInfo?.callerPid;
     } else {
       hilog.error(0x0000, 'testTag', 'RpcServer: unknown code: ' + code);
       return false;
@@ -9996,12 +9996,12 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 onRemoteMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): boolean | Promise\<boolean>
 
+sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果。
+
 > **说明：**
 >
 > 开发者应优先选择重载onRemoteMessageRequest方法，其中可以自由实现同步和异步的消息处理。
 > 开发者同时重载onRemoteRequest和onRemoteMessageRequest方法时，仅onRemoteMessageRequest方法生效。
-
-sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 

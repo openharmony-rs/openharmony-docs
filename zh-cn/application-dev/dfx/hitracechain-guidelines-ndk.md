@@ -9,7 +9,7 @@
 
 ## 接口说明
 
-分布式跟踪接口由HiTraceChain模块提供，详细API请参考[分布式跟踪C API](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
+分布式跟踪接口由HiTraceChain模块提供，详细API请参考[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
 
 下表所示的接口提供基本的分布式跟踪功能，ArkTS中也有相应的接口。
 

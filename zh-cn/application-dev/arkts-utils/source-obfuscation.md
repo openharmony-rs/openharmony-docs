@@ -130,6 +130,8 @@ test(a2);
 | 保留声明文件参数 | [`-keep-parameter-names`](#-keep-parameter-names) |
 | 合并依赖模块选项 | [`-enable-lib-obfuscation-options`](#-enable-lib-obfuscation-options) |
 | 通过注释在源码中标记白名单 | [`-use-keep-in-source`](#-use-keep-in-source) |
+| 保留对象字面量属性名称 | [`-keep-object-props`](#-keep-object-props) |
+| 删除指定的方法调用语句 | [`-remove-nosideeffects-calls`](#-remove-nosideeffects-calls) |
 
 ### 默认混淆
 
@@ -591,34 +593,41 @@ test(a2);
 
 在混淆配置文件中添加`-extra-options`前缀和选项，且前缀与选项之间不能包含其他内容。支持开启单个选项或同时开启多个选项。例如：
 
-单个选项：
+- 使用-extra-options前缀开启单个选项，有如下2种使用方式：
 
-```text
--extra-options
-strip-language-default
+  ```text
+  # 方式一
+  -extra-options
+  strip-language-default
 
--extra-options strip-language-default
-```
+  # 方式二
+  -extra-options strip-language-default
+  ```
 
-同时开启多个选项：
+- 使用-extra-options前缀同时开启多个选项，有如下5种使用方式：
 
-```text
--extra-options strip-language-default, strip-system-api-args, strip-not-compiled-module-name
+  ```text
+  # 方式一
+  -extra-options strip-language-default, strip-system-api-args, strip-not-compiled-module-name
 
--extra-options strip-language-default strip-system-api-args strip-not-compiled-module-name
+  # 方式二
+  -extra-options strip-language-default strip-system-api-args strip-not-compiled-module-name
 
--extra-options
-strip-language-default strip-system-api-args strip-not-compiled-module-name
+  # 方式三
+  -extra-options
+  strip-language-default strip-system-api-args strip-not-compiled-module-name
 
--extra-options
-strip-language-default
-strip-system-api-args
-strip-not-compiled-module-name
+  # 方式四
+  -extra-options
+  strip-language-default
+  strip-system-api-args
+  strip-not-compiled-module-name
 
--extra-options strip-language-default
--extra-options strip-system-api-args
--extra-options strip-not-compiled-module-name
-```
+  # 方式五
+  -extra-options strip-language-default
+  -extra-options strip-system-api-args
+  -extra-options strip-not-compiled-module-name
+  ```
 
 ### -keep-parameter-names
 从API version 18开始，支持保留声明文件中对外接口的参数名称。开启此选项后，有如下效果：
@@ -854,6 +863,215 @@ enum MyEnum {
   BLUE
 }
 ```
+
+### -keep-object-props
+
+从API version 23开始，支持使用-keep-object-props配置选项保留对象字面量中的属性名称和字符串属性名称。使用方法如下：
+
+- 仅开启属性混淆（-enable-property-obfuscation）时，配置保留对象字面量（-keep-object-props）选项后，对象字面量中的属性名称会被收集到白名单中，不会被混淆。
+
+- 同时开启属性混淆（-enable-property-obfuscation）和字符串属性混淆（-enable-string-property-obfuscation）时，配置保留对象字面量（-keep-object-props）选项后，对象字面量中的属性名称和字符串属性名称会被收集到白名单中，不会被混淆。  
+
+>**注意**
+>
+> 1. 当在开启属性混淆选项或者同时开启属性混淆和字符串属性混淆前提下，使用-keep-object-props选项才生效，否则不生效。
+
+**支持的场景**
+
+支持保留对象字面量的属性名称以及字符串属性名称。
+
+**示例**
+
+```typescript
+// example.ts
+const propertyObj = {
+    propertyKey1: 'value',
+    propertyKey2: {
+        propertyKey3: 'value'
+    }
+};
+const stringPropertyObj = {
+    'stringPropertyKey1': 'Alice',
+    'stringPropertyKey2': {
+        'stringPropertyKey3': 'additional data'
+    }
+};
+```
+
+1. 开启属性混淆时，如果配置了-keep-object-props选项，对于对象字面量中的属性名称，将不会被混淆。
+
+   混淆配置选项文件obfuscation-rules.txt如下：
+   ```text
+   -keep-object-props
+   -enable-property-obfuscation
+   ```
+
+   开启上述obfuscation-rules.txt配置文件的混淆选项后，示例代码中的属性名称propertyKey1、propertyKey2、propertyKey3将被收集到白名单中，不会被混淆。
+
+2. 开启属性混淆和字符串属性混淆时，如果配置了-keep-object-props选项，对于对象字面量中的属性名称和字符串属性名称，将不会被混淆。
+
+   混淆配置选项文件obfuscation-rules.txt如下：
+   ```text
+   -keep-object-props
+   -enable-property-obfuscation
+   -enable-string-property-obfuscation
+   ```
+
+   开启上述obfuscation-rules.txt配置文件的混淆选项后，示例代码中的属性名称propertyKey1、propertyKey2、propertyKey3以及字符串属性名称stringPropertyKey1、stringPropertyKey2、stringPropertyKey3将被收集到白名单中，不会被混淆。
+
+**不支持的场景**
+
+不支持非对象字面量的属性名场景。
+
+**示例**
+
+```typescript
+// example.ts
+// -keep-object-props不生效场景：typeLiteral1、typeLiteral2、typeLiteral3、typeLiteral4、typeLiteral5均不为对象字面量中的属性，开启属性混淆或者同时开启属性混淆和字符串属性混淆的前提下，即使开启-keep-object-props选项也会被混淆。
+interface TypeLiteralDemo {
+  typeLiteral1: {
+    typeLiteral2: number,
+    'typeLiteral3': string
+  },
+  typeLiteral4: string,
+  'typeLiteral5': string
+}
+
+// -keep-object-props不生效场景：Symbol.iterator、dynamic、Property均为复杂的计算属性，在开启属性混淆或者开启属性混淆和字符串属性混淆的前提下，开启-keep-object-props选项前后均不会被混淆。
+const complexComputedPropertyObj = {
+  [Symbol.iterator]: 'value',
+  ["dynamic" + "Property"]: 'value'
+}
+```
+
+### -remove-nosideeffects-calls
+从API version 23开始，支持删除指定名称的方法调用，要求方法调用的返回值未被使用。该功能适用于删除自定义日志方法调用等场景。  
+
+支持的方法调用方式有如下几种：  
+
+1. 直接调用：method，匹配method()。
+2. 点号调用：A.B，匹配A.B()。
+3. 方括号调用：A["B"]，匹配A["B"]\(\)。
+4. 嵌套调用：A.B["method"]，匹配A.B["method"]\(\)。
+5. 通配符匹配：通过名称类通配符进行模式匹配，如*.log，匹配任意对象的log()。  
+
+**使用该选项时，需要注意以下事项：**
+
+1. 使用该选项在删除方法调用时不会分析其内部的副作用，需确保删除的方法调用不影响应用功能。
+
+2. 配置项需与源码中实际调用处的完整名称一致，而非声明处的名称。
+
+   例如，下面例子中的配置项`MyLog.debug`不是调用处的名称，`Log.debug()`不会被删除：  
+
+   ```text
+   // obfuscation-rules.txt或consumer-rules.txt：
+   -remove-nosideeffects-calls
+   MyLog.debug
+   ```
+
+   ```ts
+   // a.ts
+   export class MyLog {
+     public static debug(message: string) {
+       console.info(message);
+     }
+   }
+
+   // b.ts
+   import { MyLog as Log } from './a'
+
+   Log.debug("this is alias"); 
+   ```
+
+3. 配置项间可用逗号、空格或换行的方式分隔。
+
+**示例** 
+
+在混淆配置文件obfuscation-rules.txt或consumer-rules.txt:
+
+```text
+-remove-nosideeffects-calls
+logger
+Log.debug*
+example["log"].info
+```
+
+根据上述配置，在以下场景中的方法调用语句将被删除:  
+
+1. 文件顶层的调用。
+
+   例如：  
+   ```ts
+   function logger(msg: string) {
+     console.info(msg);
+   }
+
+   logger("in top level"); // 经过混淆，该方法调用会被删除
+   ```
+
+2. 代码块的调用。
+
+   例如：  
+   ```ts
+   class Log {
+     public static debugBlock(msg: string) {
+       console.info(msg);
+     }
+   }
+
+   function foo() {
+     Log.debugBlock("in block"); // 经过混淆，该方法调用会被删除
+   }
+   ```
+
+3. module或namespace中的调用。
+
+   例如：  
+   ```ts
+   // example.ts
+   class Log {
+     public static debugNamespace(msg: string) {
+       console.info(msg);
+     }
+   }
+
+   namespace ns {
+     Log.debugNamespace("in namespace"); // 经过混淆，该方法调用会被删除
+   }
+   ```
+
+4. switch语句中的调用。
+
+   例如：  
+   ```ts
+   interface Logger {
+     info: (msg: string, res?: number) => void;
+   }
+
+   const logFunc: Logger = {
+     info: (msg: string, res?: number): void => {
+       console.info(msg, res);
+     }
+   }
+
+   const example: Record<string, Logger> = {
+     ["log"]: logFunc
+   }
+
+   function getDayName(day: number): string {
+     switch (day) {
+       case 1:
+         example["log"].info("Matched case 1: 星期一"); // 经过混淆，该方法调用会被删除
+         return "星期一";
+       case 2:
+         example["log"].info("Matched case 2: 星期二"); // 经过混淆，该方法调用会被删除
+         return "星期二";
+       default:
+         example["log"].info("No matching case for day:", day); // 经过混淆，该方法调用会被删除
+         return "无效的日期";
+     }
+   }
+   ```
 
 ## 保留选项
 
@@ -1470,3 +1688,5 @@ a*
 | -keep-parameter-names | 保留声明文件参数 | 18 |
 | -enable-lib-obfuscation-options | 合并依赖模块选项 | 18 |
 | -use-keep-in-source          | 通过注释在源码中标记白名单 | 19 |
+| -keep-object-props          | 保留对象字面量属性名称 | 23 |
+| -remove-nosideeffects-calls   | 删除特定场景中指定的方法调用   | 23 |

@@ -41,8 +41,8 @@
 
 | 名称  | 描述 |
 | --  | -- |
-| [TELEPHONY_MAX_OPERATOR_LEN](capi-telephony-radio-type-h.md)  | 定义运营商名称的最大长度。<br>**起始版本：** 13 |
-| [TELEPHONY_MAX_PLMN_NUMERIC_LEN](capi-telephony-radio-type-h.md)  | 定义PLMN的最大长度。<br>**起始版本：** 13  |
+| [TELEPHONY_MAX_OPERATOR_LEN 64](capi-telephony-radio-type-h.md)  | 定义运营商名称的最大长度。<br>**起始版本：** 13 |
+| [TELEPHONY_MAX_PLMN_NUMERIC_LEN 6](capi-telephony-radio-type-h.md)  | 定义PLMN的最大长度。<br>**起始版本：** 13  |
 
 ## 枚举类型说明
 

@@ -60,6 +60,7 @@ import { common } from '@kit.AbilityKit';
 const DOMAIN = 0x0000;
 
 try {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);

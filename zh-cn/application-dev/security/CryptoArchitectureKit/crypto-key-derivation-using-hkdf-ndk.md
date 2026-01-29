@@ -22,30 +22,24 @@
 
 4. 调用[OH_CryptoKdf_Derive](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive)，指定目标密钥的字节长度，进行密钥派生。
 
-```C++
+<!-- @[hkdf_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/cpp/types/project/hkdf_test.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestHkdf()
+static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
 {
-    // 创建HKDF参数对象。
-    OH_CryptoKdfParams *params = nullptr;
-    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_Create("HKDF", &params);
-    if (ret != CRYPTO_SUCCESS) {
-        return ret;
-    }
-
-    // 设置原始密钥材料。
     const char *keyData = "012345678901234567890123456789";
     Crypto_DataBlob key = {
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(keyData)),
         .len = strlen(keyData)
     };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_KEY_DATABLOB, &key);
+    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &key);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
+        goto end;
     }
 
     // 设置盐值。
@@ -54,10 +48,9 @@ static OH_Crypto_ErrCode doTestHkdf()
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(saltData)),
         .len = strlen(saltData)
     };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_SALT_DATABLOB, &salt);
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &salt);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
+        goto end;
     }
 
     // 设置应用程序特定信息（可选）。
@@ -66,9 +59,27 @@ static OH_Crypto_ErrCode doTestHkdf()
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(infoData)),
         .len = strlen(infoData)
     };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_INFO_DATABLOB, &info);
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_INFO_DATABLOB, &info);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
+        goto end;
+    }
+end:
+    OH_CryptoKdfParams_Destroy(*params);
+    *params = nullptr;
+    return ret;
+}
+
+OH_Crypto_ErrCode doTestHkdf()
+{
+    // 创建HKDF参数对象。
+    OH_CryptoKdfParams *params = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_Create("HKDF", &params);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+
+    ret = setParams(&params);
+    if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
 

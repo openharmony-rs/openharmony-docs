@@ -555,7 +555,7 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | the parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2380,7 +2380,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | enableRoaming | boolean | 否 | 是 | 表示设置是否允许在漫游网络中下载任务的配置信息。true表示允许，false表示不允许。默认值为false。|
 | description | string | 否 | 是 | 设置下载会话的描述。默认值为空字符串。 |
 | filePath<sup>7+</sup> | string | 否 | 是 | 设置下载路径。默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>-&nbsp;FA模型下使用[Context.getCacheDir](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir)方法获取应用存储路径。<br/>-&nbsp;Stage模型下使用[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)中AbilityContext的类获取文件路径。|
-| networkType | number | 否 | 是 | 设置允许下载的网络类型。默认值为NETWORK_MOBILE&NETWORK_WIFI。<br/>-&nbsp;NETWORK_MOBILE：0x00000001<br/>-&nbsp;NETWORK_WIFI：0x00010000|
+| networkType | number | 否 | 是 | 设置允许下载的网络类型，通过[网络类型常量](#常量)的位运算方式决定允许的网络类型，支持如下几种设置方式: <br/>- 仅支持蜂窝网络下载，参数为NETWORK_MOBILE或0x00000001 <br/>- 仅支持WLAN网络下载，参数为NETWORK_WIFI或0x00010000<br/>- 参数默认值，支持蜂窝/WLAN网络下载，参数为NETWORK_MOBILE \| NETWORK_WIFI或0x00010001。<br/>当参数为NETWORK_MOBILE \| NETWORK_WIFI时，enableMetered和enableRoaming参数不生效。|
 | title | string | 否 | 是 | 设置下载任务名称。 |
 | background<sup>9+</sup> | boolean | 否 | 是 | 后台任务通知开关，启用后可在通知中显示下载状态。true表示启用，false表示禁用。默认值为false。 |
 

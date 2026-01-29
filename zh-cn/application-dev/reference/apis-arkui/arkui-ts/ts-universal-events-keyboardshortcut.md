@@ -56,7 +56,7 @@ keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?
 | keyboardShortcut接口中的value单个字符            | 不区分大小写都响应                          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br />Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
 | 快捷键的响应                                   | `keys`键处于按下状态且`value`键触发down事件（长按会连续响应）              | 无                                        |
 | 隐藏组件<br />                               | 响应快捷键                              | 无                                        |
-| 不可交互（[enable](ts-universal-attributes-enable.md)）状态的组件                              | 不响应快捷键                             | 无                                        |
+| 不可交互（[enabled](ts-universal-attributes-enable.md#enabled)设置为false）状态的组件                              | 不响应快捷键                             | 无                                        |
 | 1. 组件的组合键(包括系统预定义快捷键)相同时<br />2. 接口参数value有多个字符时<br />3. 接口参数keys有重复的控制键时 | 这几种情况不绑定组合键，先前绑定的组合键仍然有效          | Button('button1').keyboardShortcut(FunctionKey.F4,[ModifierKey.ALT])<br />Button('button2').keyboardShortcut('ab',[ModifierKey.CTRL])<br />Button('button3').keyboardShortcut('ab',[ModifierKey.CTRL,ModifierKey.CTRL]) |
 
 ### 禁止绑定的系统快捷键

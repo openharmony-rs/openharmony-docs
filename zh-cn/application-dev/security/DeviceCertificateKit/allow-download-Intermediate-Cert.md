@@ -113,7 +113,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
   }
   return x509Cert;
 }
@@ -132,7 +132,7 @@ async function buildX509CertChain() {
       }
     }
     let data = await cert.buildX509CertChain(param);
-    console.info('buildX509CertChain success: certChainLength = ' + data.certChain.getCertList().length);
+    console.info('buildX509CertChain result: success, certChainLength = ' + data.certChain.getCertList().length);
   } catch (err) {
     console.error(`buildX509CertChain failed: errCode: ${err.code}, message: ${err.message}`);
   }

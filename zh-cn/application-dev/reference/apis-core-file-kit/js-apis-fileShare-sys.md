@@ -138,7 +138,7 @@ grantUriPermission(uri: string, bundleName: string, flag: wantConstant.Flags): P
 
 checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, policyType: PolicyType): Promise&lt;Array&lt;boolean&gt;&gt;
 
-异步方法校验所选择的多个文件或目录是否有临时或持久化授权，以promise形式返回结果。
+异步方法校验所选择的多个文件或目录是否有临时或持久化授权，使用Promise异步回调。
 
 **需要权限：** ohos.permission.CHECK_SANDBOX_POLICY
 
@@ -170,6 +170,7 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 | 202      | The caller is not a system application.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
+| 13900042 | Out of memory.|
 
 **示例：**
 

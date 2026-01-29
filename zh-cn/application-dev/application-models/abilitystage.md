@@ -95,11 +95,11 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
       let envCallback: EnvironmentCallback = {
         onConfigurationUpdated(config) {
           console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
-          let language = config.language; //应用程序的当前语言
-          let colorMode = config.colorMode; //深浅色模式
-          let direction = config.direction; //屏幕方向
-          let fontSizeScale = config.fontSizeScale; //字体大小缩放比例
-          let fontWeightScale = config.fontWeightScale; //字体粗细缩放比例
+          let language = config.language; // 应用程序的当前语言
+          let colorMode = config.colorMode; // 深浅色模式
+          let direction = config.direction; // 屏幕方向
+          let fontSizeScale = config.fontSizeScale; // 字体大小缩放比例
+          let fontWeightScale = config.fontWeightScale; // 字体粗细缩放比例
         },
         onMemoryLevel(level) {
           console.info(`onMemoryLevel level: ${level}`);

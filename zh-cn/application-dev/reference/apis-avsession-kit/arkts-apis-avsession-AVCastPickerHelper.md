@@ -123,7 +123,7 @@ class MyPage {
 
     this.avCastPicker.select(avCastPickerOptions).then(() => {
       console.info('select successfully');
-    }).catch((err: BusinerssError) => {
+    }).catch((err: BusinessError) => {
       console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
     });
   }

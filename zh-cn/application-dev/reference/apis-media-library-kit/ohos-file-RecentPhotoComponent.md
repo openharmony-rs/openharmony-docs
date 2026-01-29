@@ -152,7 +152,7 @@ import {
    RecentPhotoInfo, 
    RecentPhotoCheckResultCallback, 
    RecentPhotoClickCallback, 
-   RecentPhotoCheckInfoCallback，
+   RecentPhotoCheckInfoCallback,
    BaseItemInfo
 } from '@kit.MediaLibraryKit';
 

@@ -23,6 +23,15 @@
 | H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| AV1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_AV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| VP9<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP9](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| VP8<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP8](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| RV30<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV30](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| RV40<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV40](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| WVC1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WVC1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| DVVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| RAWVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| MPEG1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP14--> <!--RP14End-->
 
 通过MIME类型创建解码器时，如果系统平台支持硬件解码，系统平台会优先创建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统平台会创建软件解码器实例；如果系统平台无对应解码能力，会创建解码器实例失败。
@@ -135,6 +144,7 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
 | wav      | -                     | G711mu(pcm-mulaw) 、raw(pcm)| -             |
 | aac      | -                     | AAC               | -             |
 | flac     | -                     | Flac              | jpeg、png、bmp |
+| ogg<sup>23+</sup>      | -                     | Vorbis、OPUS      | -              |
 
 > **说明：**
 >
@@ -258,5 +268,12 @@ flac封装格式：
    | OH_MD_KEY_CHANNEL_LAYOUT           | 通道布局              |  可选  |
    | OH_MD_KEY_BITRATE                  | 码率                  |  可选  |
    | OH_MD_KEY_CODEC_CONFIG             | 编解码器特定数据       |  可选  |
-   
+
+ogg封装格式（从API version 23开始支持）：
+   |                key                 |         描述         | Vorbis |  OPUS  |
+   | ---------------------------------- | :------------------: | :----: | :----: |
+   | OH_MD_KEY_AUD_SAMPLE_RATE          | 采样率                |  必须  |  必须  |
+   | OH_MD_KEY_AUD_CHANNEL_COUNT        | 声道数                |  必须  |  必须  |
+   | OH_MD_KEY_CODEC_CONFIG             | 编解码器特定数据       |  必须  |  必须  |
+
 具体开发指导请参考[媒体数据封装](audio-video-muxer.md)。

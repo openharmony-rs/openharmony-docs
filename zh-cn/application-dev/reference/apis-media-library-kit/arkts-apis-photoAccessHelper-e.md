@@ -359,6 +359,35 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | MOVING_PHOTO_ENABLED | 1    | 打开动态照片效果。 |
 | MOVING_PHOTO_DISABLED | 2   | 关闭动态照片效果。 |
 
+## SceneType<sup>23+</sup>
+
+枚举，动态照片播放的场景。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| GRID_TO_PHOTO_BROWSER   | 0      | 从宫格点击进入大图。 |
+| PHOTO_BROWSER_SWIPE | 1    | 在大图场景左右滑动。 |
+
+## PlayMode<sup>23+</sup>
+
+枚举，是否支持动态照片自动播放。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| DEFAULT   | 0      | 不支持动态照片自动播放。 |
+| AUTO_PLAY | 1    | 支持动态照片自动播放。 |
 
 ## VideoMode<sup>22+</sup>
 
@@ -397,3 +426,33 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | END_WRAP    | 12   | 用于向谓词添加英文右括号，相当于数据库查询语句的")"，必须和英文左括号一起使用。无需传入field和value。 |
 | BETWEEN    | 13   | 匹配指定范围内的字段。<br>包含两端边界值，为左闭右闭区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |
 | NOT_BETWEEN    | 14   | 匹配超出指定范围内的字段。<br>不包含两端边界值，为左开右开区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |
+
+## GridLevel<sup>23+</sup>
+        
+枚举类型，用于设置拉起picker后的宫格列数档位。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+    
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| SPACIOUS |  0 |  宽松宫格档位。该挡位为标准宫格的列数减1。|
+| STANDARD |  1 |  标准宫格档位。不同设备尺寸对应的标准宫格列数各不相同，当未配置标准宫格列数时，系统将使用默认列数。|
+| COMPACT |  2 |  紧密宫格档位。该挡位为标准宫格的列数加1。 |
+
+## GridPinchModeType<sup>23+</sup>
+    
+枚举，宫格捏合模式类型。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+    
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+    
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| FULL_FUNCTION_GRID | 0 | 宫格支持捏合，捏合后支持选中、点击进大图操纵。|

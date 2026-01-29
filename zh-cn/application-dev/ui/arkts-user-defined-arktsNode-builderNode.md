@@ -2449,13 +2449,13 @@ struct FreezeBuildNode {
 
 3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
 
-## 设置BuilderNode支持内部@Consume接收外部的@Provide数据
+## 设置BuilderNode支持内部@Consume接收外部的@Provide数据（状态管理V1）
 
 从API version 20开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的[@Consume](./state-management/arkts-provide-and-consume.md)支持接收所在页面的[@Provide](./state-management/arkts-provide-and-consume.md)数据。
 
 参见[示例代码](../reference/apis-arkui/js-apis-arkui-builderNode.md#示例5buildernode支持内部consume接收外部的provide数据)。
 
-## 设置BuilderNode支持内部@Consumer接收外部的@Provider数据
+## 设置BuilderNode支持内部@Consumer接收外部的@Provider数据（状态管理V2）
 
 从API version 22开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的[@Consumer](./state-management/arkts-new-provider-and-consumer.md)支持接收所在页面的[@Provider](./state-management/arkts-new-provider-and-consumer.md)数据。
     

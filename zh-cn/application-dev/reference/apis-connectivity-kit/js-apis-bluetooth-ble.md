@@ -1464,6 +1464,7 @@ try {
 GATT通信中的服务端类。
 - 通过[ble.createGattServer](#blecreategattserver)方法可以构造server实例。
 - 通过该实例可以操作server端的行为，如添加服务[addService](#addservice)、通知特征值变化[notifyCharacteristicChanged](#notifycharacteristicchanged)等。
+- 可通过订阅[on('connectionStateChange')](#onconnectionstatechange)事件来感知连接状态，以及发起连接的client端设备地址。
 
 
 ### addService
@@ -2519,6 +2520,198 @@ try {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
+### readPhy<sup>23+</sup>
+
+readPhy(deviceId: string): Promise&lt;PhyValue&gt;
+
+获取server端和指定设备连接链路的物理通道类型。使用Promise异步回调。
+
+- 需先由client端发起连接，并等待连接成功后，再调用该方法。
+- deviceId为对端client的蓝牙设备地址，可从server端订阅的[on('connectionStateChange')](#onconnectionstatechange)回调中获取。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| deviceId     | string | 是    | 需要传输数据的client端蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;[PhyValue](#phyvalue23)&gt; | Promise对象，返回server端和指定设备连接链路的物理通道类型。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**示例：**
+
+```js
+let gattServer: ble.GattServer = ble.createGattServer();
+let deviceId: string = 'XX:XX:XX:XX:XX:XX';
+try {
+    gattServer.readPhy(deviceId).then((phyValue:ble.PhyValue) => {
+        console.info(`txPhy: ${phyValue.txPhy}, rxPhy: ${phyValue.rxPhy}`);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### setPhy<sup>23+</sup>
+
+setPhy(deviceId: string, phyValue: PhyValue): Promise&lt;void&gt;
+
+server端设置和指定设备连接链路的物理通道类型。使用Promise异步回调。
+
+- 需先由client端发起连接，并等待连接成功后，再调用该方法。
+- 本端server调用setPhy设置和指定设备连接链路的物理通道类型后，底层会根据对端设备能力，协商出本端和对端设备均支持的物理通道类型作为最终结果。例如本端支持并设置[BLE_PHY_2M](#blephy23)，但对端设备仅支持[BLE_PHY_1M](#blephy23)，则最终设置的结果仍为[BLE_PHY_1M](#blephy23)。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| deviceId     | string | 是    | 需要传输数据的client端蓝牙设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
+| phyValue     | [PhyValue](#phyvalue23) | 是    | 连接链路的物理通道类型配置参数。 |
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**示例：**
+
+```js
+let gattServer: ble.GattServer = ble.createGattServer();
+let deviceId: string = 'XX:XX:XX:XX:XX:XX';
+try {
+    let phyValue:ble.PhyValue = {
+        txPhy: ble.BlePhy.BLE_PHY_1M,
+        rxPhy: ble.BlePhy.BLE_PHY_1M
+    };
+    gattServer.setPhy(deviceId,phyValue);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### onBlePhyUpdate<sup>23+</sup>
+
+onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
+
+订阅物理通道类型变更事件。使用Callback异步回调。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback     | Callback&lt;[PhyValue](#phyvalue23)&gt; | 是    | 指定订阅的回调函数，会携带变更后最新的物理通道类型。<br>当本端server调用[setPhy](#setphy23)或对端变更当前物理通道类型后，如订阅此事件，均会收到携带最新物理通道类型的回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**示例：**
+
+```js
+function BlePhyCallback(data:ble.PhyValue) {
+    console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
+}
+let gattServer: ble.GattServer = ble.createGattServer();
+try {
+    gattServer.onBlePhyUpdate(BlePhyCallback);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### offBlePhyUpdate<sup>23+</sup>
+
+offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
+
+取消订阅物理通道类型变更事件。使用Callback异步回调。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback     | Callback&lt;[PhyValue](#phyvalue23)&gt; | 否  | 指定取消订阅的回调函数。若传参，则需与[onBlePhyUpdate](#onblephyupdate23)中的回调函数一致，<br>若无传参，则取消订阅所有物理通道类型变更的回调函数通知。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**示例：**
+
+```js
+function BlePhyCallback(data:ble.PhyValue) {
+    console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
+}
+let gattServer: ble.GattServer = ble.createGattServer();
+try {
+    gattServer.offBlePhyUpdate(BlePhyCallback);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
 
 ## GattClientDevice
 
@@ -4343,6 +4536,187 @@ try {
 }
 ```
 
+### readPhy<sup>23+</sup>
+
+readPhy(): Promise&lt;PhyValue&gt;
+
+获取client端连接链路的物理通道类型。使用Promise异步回调。
+
+- 需先调用[connect](#connect)方法发起连接，并等待连接成功后，再调用该方法。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;[PhyValue](#phyvalue23)&gt; | Promise对象，返回client端连接链路的物理通道类型。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**示例：**
+
+```js
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    gattClient.readPhy().then((phyValue:ble.PhyValue) => {
+        console.info(`txPhy: ${phyValue.txPhy}, rxPhy: ${phyValue.rxPhy}`);
+    });
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### setPhy<sup>23+</sup>
+
+setPhy(phyValue: PhyValue): Promise&lt;void&gt;
+
+client端设置连接链路的物理通道类型。使用Promise异步回调。
+
+- 需先调用[connect](#connect)方法发起连接，并等待连接成功后，再调用该方法。
+- 本端client调用setPhy设置物理通道类型后，底层会根据对端设备能力，协商出本端和对端设备均支持的物理通道类型作为最终结果。例如本端支持并设置[BLE_PHY_2M](#blephy23)，但对端设备仅支持[BLE_PHY_1M](#blephy23)，则最终设置的结果仍为[BLE_PHY_1M](#blephy23)。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| phyValue     | [PhyValue](#phyvalue23) | 是    | 连接链路的物理通道类型配置参数。 |
+
+**返回值：**
+
+| 类型                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900003 | Bluetooth disabled.            |
+|2900099 | Operation failed.              |
+|2901003 | The connection is not established. |
+
+**示例：**
+
+```js
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    let phyValue: ble.PhyValue = {
+        txPhy: ble.BlePhy.BLE_PHY_1M,
+        rxPhy: ble.BlePhy.BLE_PHY_1M
+    }
+    gattClient.setPhy(phyValue);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### onBlePhyUpdate<sup>23+</sup>
+
+onBlePhyUpdate(callback: Callback&lt;PhyValue&gt;): void
+
+订阅物理通道类型变更事件。使用Callback异步回调。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback     | Callback&lt;[PhyValue](#phyvalue23)&gt; | 是    | 指定订阅的回调函数，会携带变更后最新的物理通道类型。<br>当本端client调用[setPhy](#setphy23-1)或对端变更当前物理通道类型后，如订阅此事件，均会收到携带最新物理通道类型的回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**示例：**
+
+```js
+function BlePhyCallback(data:ble.PhyValue) {
+    console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
+}
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    gattClient.onBlePhyUpdate(BlePhyCallback);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+### offBlePhyUpdate<sup>23+</sup>
+
+offBlePhyUpdate(callback?: Callback&lt;PhyValue&gt;): void
+
+取消订阅物理通道类型变更事件。使用Callback异步回调。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback     | Callback&lt;[PhyValue](#phyvalue23)&gt; | 否  | 指定取消订阅的回调函数。若传参，则需与[onBlePhyUpdate](#onblephyupdate23-1)中的回调函数一致。<br>若无传参，则取消订阅所有物理通道类型变更的回调函数通知。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+
+**示例：**
+
+```js
+function BlePhyCallback(data:ble.PhyValue) {
+    console.info(`txPhy: ${data.txPhy}, rxPhy: ${data.rxPhy}`);
+}
+let gattClient: ble.GattClientDevice = ble.createGattClientDevice('XX:XX:XX:XX:XX:XX');
+try {
+    gattClient.offBlePhyUpdate(BlePhyCallback);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
 ## ble.createBleScanner<sup>15+</sup>
 
 createBleScanner(): BleScanner
@@ -4960,6 +5334,21 @@ BLE扫描的配置参数。
 | writeSigned    | boolean | 否 | 是  | 写入该特征值或描述符内容是否需要经过签名处理。<br>true表示内容需要签名处理后方可写入，false表示不需要签名处理。默认值为false。 |
 | writeSignedMitm    | boolean | 否 | 是  | 写入该特征值或描述符内容是否需要经过防中间人攻击方式的签名处理。<br>true表示需要防中间人攻击方式的签名处理后方可写入，false表示不需要以防中间人攻击方式签名处理。默认值为false。 |
 
+## PhyValue<sup>23+</sup>
+
+连接链路的物理通道类型配置参数。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称       | 类型  | 只读 | 可选   | 说明          |
+| -------- | ------ |---- |---- | ----------- |
+| txPhy | [BlePhy](#blephy23)| 否 | 否 | 发送端物理通道类型。 |
+| rxPhy | [BlePhy](#blephy23)| 否 | 否 | 接受端物理通道类型。 |
+| phyMode | [CodedPhyMode](#codedphymode23)| 否 | 是 | 用于指定物理通道类型为[BLE_PHY_CODED](#blephy23)的编码方式。<br>默认值为0，表示不指定明确的编码方式，由蓝牙子系统决定。 |
+
+
 
 ## GattWriteType
 
@@ -5105,3 +5494,30 @@ BLE扫描的配置参数。
 | LOW_POWER  | 1    |  低功耗模式，传输数据速度慢，但功耗少。   |
 | BALANCED   | 2    |  均衡模式，平衡延迟和功耗，如果没有请求连接参数更新，这是默认值。 |
 | HIGH       | 3    |  高速率模式，传输数据速度快，但功耗多。<br>- 当需要快速传输大量数据时应采用该连接参数，传输完成后，应请求BALANCED连接参数，以减少功耗。  |
+
+## BlePhy<sup>23+</sup>
+
+枚举，连接与广播的物理通道类型。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称      | 值    | 说明                           |
+| --------  | ---- | ------------------------------ |
+| BLE_PHY_1M  | 1 | 1M物理通道类型，理论数据速率为1Mbit/s。 |
+| BLE_PHY_2M  | 2 | 2M物理通道类型，理论数据速率为2Mbit/s。 |
+| BLE_PHY_CODED  | 3 | CODED物理通道类型，适用于低速但覆盖范围广的场景。 |
+
+## CodedPhyMode<sup>23+</sup>
+
+枚举，BLE_PHY_CODED类型下的编码方式。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称      | 值    | 说明                           |
+| --------  | ---- | ------------------------------ |
+| BLE_PHY_CODED_S2 | 1 | 每发送1位有效数据，会添加1位冗余信息。传输速度较快，抗干扰较强，适合中等距离（10 - 100m），理论数据速率为500Kbit/s。|
+| BLE_PHY_CODED_S8 | 2 | 每发送1位有效数据，会添加7位冗余信息。传输速度较慢，抗干扰更强，适合远距离（100 - 300m），理论数据速率为125Kbit/s。|

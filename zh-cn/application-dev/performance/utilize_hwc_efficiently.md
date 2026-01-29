@@ -61,7 +61,7 @@ struct ArkUISample {
 ### 图形渲染系统工作流程
 下图简要介绍了图形渲染系统当前从应用界面内容至最终屏幕显示的工作流程。
 
-![](./figures/utilize_hwc_effiently_1.png)
+![](./figures/utilize_hwc_efficiently_1.png)
 
 **RenderService (RS)** ：系统渲染服务进程，接收来自于其他系统服务进程（如桌面进程）及用户进程（如应用）的自渲染图层及ArkUI控件绘制指令，进行统一的组合以及渲染控制，其渲染动作会调用CPU/GPU等通用计算器件进行，能力灵活，兼容性强，相对HWC而言，功耗及性能开销较大。
 
@@ -118,7 +118,7 @@ RS进程会将ArkUI控件统一绘制至UI图层，其UI内容来源于应用定
 
 **效果图**
 
-![](./figures/utilize_hwc_effiently_2.png)
+![](./figures/utilize_hwc_efficiently_2.png)
 
 如上图，视频区域左上角的返回按钮控件带有模糊效果，需要进行视频图层的采样动作，无法使用HWC叠加能力。对此可以通过控件去除模糊效果或者移动控件至非视频相交区域来完成对HWC的使能。
 
@@ -220,13 +220,13 @@ struct NormalVideo {
 ```
 去除模糊后的效果图如下所示。
 
-![](./figures/utilize_hwc_effiently_3.png)
+![](./figures/utilize_hwc_efficiently_3.png)
 
 **功耗对比**
 
 同一界面下，测试视频区域上方控件去除模糊效果前后的CPU模块、GPU模块的功耗，以及设备总功耗。测试方式为视频播放30s，以3s为一个节点，取设备从6s运行到21s5个节点的平均功耗。最终，使用DevEco Studio的Profiler工具检测得到的数据如下图所示：
 
-![](./figures/utilize_hwc_effiently_4.png)
+![](./figures/utilize_hwc_efficiently_4.png)
 
 从测试数据可以看出：
 
@@ -239,7 +239,7 @@ struct NormalVideo {
 
 **效果图**
 
-![](./figures/utilize_hwc_effiently_5.png)
+![](./figures/utilize_hwc_efficiently_5.png)
 
 在该场景下，底部TabBar区域使用模糊，且背景区域使用Web类组件或者Native Xcomponent组件导入自渲染内容，同样导致UI图层与自渲染内容无法使用HWC叠加。对此开发者可以通过去除TabBar区域的模糊视效或者裁剪组件区域避免Web内容与模糊控件相交两种方式进行修改，以达到使用HWC降低功耗的目的。
 
@@ -316,13 +316,13 @@ struct NormalWeb {
 ```
 去除模糊后的效果图如下所示。
 
-![](./figures/utilize_hwc_effiently_6.png)
+![](./figures/utilize_hwc_efficiently_6.png)
 
 **功耗对比**
 
 同一界面下，测试Web组件上方控件去除模糊效果前后的CPU模块、GPU模块的功耗，以及设备总功耗。测试方式为同样频率滑动界面30s，以3s为一个节点，取设备从6s运行到21s5个节点的平均功耗。最终，使用DevEco Studio的Profiler工具检测得到的数据如下图所示：
 
-![](./figures/utilize_hwc_effiently_7.png)
+![](./figures/utilize_hwc_efficiently_7.png)
 
 从测试数据可以看出：
 
@@ -335,7 +335,7 @@ struct NormalWeb {
 
 **效果图**
 
-![](./figures/utilize_hwc_effiently_8.png)
+![](./figures/utilize_hwc_efficiently_8.png)
 
 该场景UI控件上方的视频图层设置有一定透明度，可以一定程度上透视底部UI控件，此时需要使用GPU进行额外的透明度处理，无法使用HWC叠加。对此建议开发者评估视频图层设置透明度的必要性，是否可以调整视频图层为不透明。如果必须设置透明度，也可以通过调整UI控件位置至视频图层上方或者使用自绘制方式实现UI控件来使能HWC。
 
@@ -413,13 +413,13 @@ struct OpaqueVideo {
 ```
 设置视频不透明后的效果图如下所示：
 
-![](./figures/utilize_hwc_effiently_9.png)
+![](./figures/utilize_hwc_efficiently_9.png)
 
 **功耗对比**
 
 同一界面下，测试视频图层设置不透明前后的CPU模块、GPU模块的功耗，以及设备总功耗。测试方式为视频播放30s，以3s为一个节点，取设备从6s运行到21s5个节点的平均功耗。最终，使用DevEco Studio的Profiler工具检测得到的数据如下图所示：
 
-![](./figures/utilize_hwc_effiently_10.png)
+![](./figures/utilize_hwc_efficiently_10.png)
 
 从测试数据可以看出：
 

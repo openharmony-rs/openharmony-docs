@@ -363,6 +363,8 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**模型约束：** 此接口仅可在Stage模型下可用。
+
 | 名称                | 值   | 说明                                    |
 | ------------------ | --- | ---------------------------------------- |
 | DEVICE_COLLABORATION | 0  | 多设备协同表，各设备的数据将被隔离存储在独立的分布式表中，而非写入本地表，分布式表名为在原来表名前拼接对端设备的DeviceID标识符。|

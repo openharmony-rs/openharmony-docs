@@ -39,7 +39,7 @@
 
 ## 在CMake脚本中链接动态库
 
-```
+``` text
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 target_link_libraries(entry PUBLIC libnative_display_manager.so )
 ```
@@ -341,7 +341,7 @@ private callGetCutoutInfo(): void {
 }
 
 private callDealListenCallback(): void {
-  this.promptAction.openToast({ message: '调用regiseter change方法' }).catch((error: Error) => {
+  this.promptAction.openToast({ message: '调用register change方法' }).catch((error: Error) => {
     console.error(`callDealListenCallback error ${JSON.stringify(error)}`);
   }).then(() => {
     let registerIndex = displayNapi.registerDisplayChange();

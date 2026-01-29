@@ -21,6 +21,18 @@ MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHe
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
+## 属性
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)类型校验。<br>如果类（如MediaAssetChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
+
 ## constructor<sup>11+</sup>
 
 constructor(asset: PhotoAsset)
@@ -72,7 +84,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 创建图片资产变更请求。
 
-指定待创建资产的数据来源，可参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md)。
+指定待创建资产的数据来源，可参考[@ohos.file.fileuri (文件URI)](../apis-core-file-kit/js-apis-file-fileuri.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -126,7 +138,7 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 创建视频资产变更请求。
 
-指定待创建资产的数据来源，可参考[FileUri](../apis-core-file-kit/js-apis-file-fileuri.md)。
+指定待创建资产的数据来源，可参考[@ohos.file.fileuri (文件URI)](../apis-core-file-kit/js-apis-file-fileuri.md)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -514,7 +526,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 addResource(type: ResourceType, fileUri: string): void
 
-通过[fileUri](../apis-core-file-kit/js-apis-file-fileuri.md)从应用沙箱添加资源。
+通过文件URI从应用沙箱添加资源，待添加资源的数据来源可参考[@ohos.file.fileuri (文件URI)](../apis-core-file-kit/js-apis-file-fileuri.md)。
 
 > **注意：**
 >
