@@ -23,14 +23,15 @@ typedef struct ImageEffect_Any {...} ImageEffect_Any
 ## 汇总
 
 ### 成员变量
-#### c++
+**c++成员变量呈现如下**
 | 名称 | 描述 |
 | -- | -- |
 | [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype) dataType = [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype)::EFFECT_DATA_TYPE_UNKNOWN | 参数类型，默认为未定义类型。 |
 | [ImageEffect_DataValue](capi-imageeffect-imageeffect-datavalue.md) dataValue = { 0 } | 参数值，默认为空。 |
-#### c
+
+**c成员变量呈现如下**
 | 名称 | 描述 |
 | -- | -- |
-| [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype) dataType  | 参数类型|
-| [ImageEffect_DataValue](capi-imageeffect-imageeffect-datavalue.md) dataValue  | 参数值 |
+| [ImageEffect_DataType](capi-image-effect-filter-h.md#imageeffect_datatype) dataType  | 参数类型。|
+| [ImageEffect_DataValue](capi-imageeffect-imageeffect-datavalue.md) dataValue  | 参数值。|
 
