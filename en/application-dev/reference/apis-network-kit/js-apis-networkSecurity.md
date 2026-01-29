@@ -279,7 +279,7 @@ try {
 
 isCleartextPermittedByHostName(hostName: string): boolean
 
-Checks whether host name–based plaintext HTTP access is allowed from the preset **network_config.json** file of the application. By default, plaintext HTTP access is allowed.
+Checks whether plaintext HTTP access by domain name is allowed from the preset **network_config.json** file of the application. By default, plaintext HTTP access is allowed.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -295,7 +295,7 @@ Checks whether host name–based plaintext HTTP access is allowed from the prese
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| boolean | Boolean value indicating whether host name–based plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite. The default value is **true**.|
+| boolean | Boolean value indicating whether host name-based plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite. The default value is **true**.|
 
 **Error codes**
 

@@ -262,7 +262,7 @@ Sends data through a WebSocket connection. This API uses an asynchronous callbac
 
 | Name  | Type                    | Mandatory| Description        |
 | -------- | ------------------------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 – 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
+| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 - 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
 | callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.  |
 
 **Error codes**
@@ -325,7 +325,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 | Name| Type  | Mandatory| Description        |
 | ------ | ------ | ---- | ------------ |
-| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 – 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
+| data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 - 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
 
 **Return value**
 
@@ -994,7 +994,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 | Name | Type                   | Mandatory| Description                                                    |
 | ---------- | ---------------------- | --------------------- | ------------------------------------------------ |
-| data       | string \| ArrayBuffer                       | Yes | Data to send, which can be of the string or ArrayBuffer type. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 – 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
+| data       | string \| ArrayBuffer                       | Yes | Data to send, which can be of the string or ArrayBuffer type. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 - 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
 | connection | [WebSocketConnection](#websocketconnection19) | Yes | Client information.                             |
 
 **Return value**
