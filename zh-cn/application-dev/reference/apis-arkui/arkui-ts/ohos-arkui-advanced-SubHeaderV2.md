@@ -846,7 +846,9 @@ struct SubHeaderExample {
 ![子标题8](figures/zh-cn_image_subheader_example08.png)
 
 ### 示例9（右侧按钮设置默认获焦）
-从API version 18开始，在获焦状态下该示例通过设置SubHeaderV2的右侧按钮属性defaultFocus使其默认获焦。
+在获焦状态下，该示例通过设置SubHeaderV2的右侧按钮属性defaultFocus使其默认获焦。
+
+从API version 18开始，新增defaultFocus接口。
 ```ts
 import {
   SubHeaderV2OperationType,
