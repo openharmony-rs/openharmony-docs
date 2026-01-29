@@ -1,4 +1,4 @@
-# 通过Call调用实现跨端迁移
+# 通过Call调用实现多端协同
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -174,7 +174,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
         }
       }
 
-      //...
+      // ...
       releaseCall(): void {
         try {
           if (this.caller) {
@@ -187,7 +187,7 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
         }
       }
 
-      //...
+      // ...
       onDestroy(): void {
         try {
           this.callee.off(MSG_SEND_METHOD);
@@ -250,9 +250,9 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
       build() {
         Row() {
           Column() {
-            //...
+            // ...
             List({ initialIndex: 0 }) {
-              //...
+              // ...
               ListItem() {
                 Button('test').onClick(() => {
                   let caller: Caller | undefined;
@@ -288,11 +288,11 @@ Call功能主要接口如下表所示。具体的API详见[接口文档](../refe
                   });
                 })
               }
-              //...
+              // ...
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
       }
     }
