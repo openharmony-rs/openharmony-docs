@@ -479,7 +479,7 @@ getString(columnIndex: number): string
 Obtains the value in the specified column in the current row as a string.
 
 If the data type of the current column is INTEGER, DOUBLE, TEXT, or BLOB type, the value is returned as a string. If the content of the column is null/empty, an empty string **""** is returned.<br>
-If the data type of the current column is DOUBLE, precision loss may occur. You are advised to use [getDouble](#getdouble) API to obtain the value.<br>
+If the data type of the current column is DOUBLE, precision loss may occur. You are advised to use [getDouble](#getdouble23) API to obtain the value.<br>
 If the data type of the current column is ASSET, ASSETS, FLOATVECTOR, or BIGINT, 14800041 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
