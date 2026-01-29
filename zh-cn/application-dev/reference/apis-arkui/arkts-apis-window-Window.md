@@ -4102,7 +4102,11 @@ try {
 
 on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 
-开启本窗口可见状态变化事件的监听。
+开启本窗口可见状态变化事件的监听。如下场景中，本接口返回的可见性与肉眼所见的可见是可能存在区别的：
+
+- 窗口的阴影区域部分被挡住也算遮挡。
+- 上层窗口设置了透明时不会遮挡下层窗口。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4188,7 +4192,11 @@ try {
 
 on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): void
 
-开启窗口可见性状态变化事件的监听。对于非主窗，其阴影区域部分也会参与到可见性遮挡计算中。
+开启窗口可见性状态变化事件的监听。如下场景中，本接口返回的可见性与肉眼所见的可见是可能存在区别的：
+
+- 窗口的阴影区域部分被挡住也算遮挡。
+- 上层窗口设置了透明时不会遮挡下层窗口。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
