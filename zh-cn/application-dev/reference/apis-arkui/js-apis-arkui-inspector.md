@@ -201,7 +201,7 @@ offLayoutChildren(callback?: Callback\<void\>): void
 
 ## 示例
 
-以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。
+以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，从API version 23开始新增[onLayoutChildren](#onlayoutchildren23)接口，用于监听子树中的节点完成布局时的回调事件。
 
 ```ts
 import { inspector } from '@kit.ArkUI';
