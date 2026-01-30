@@ -6,15 +6,15 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+Represents a window instance, which is the basic unit managed by the window manager.
+
+In the following API examples, you must use [getLastWindow()](arkts-apis-window-f.md#windowgetlastwindow9), [createWindow()](arkts-apis-window-f.md#windowcreatewindow9), or [findWindow()](arkts-apis-window-f.md#windowfindwindow9) to obtain a Window instance (named windowClass in this example) and then call a method in this instance.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
-
-Represents a window instance, which is the basic unit managed by the window manager.
-
-In the following API examples, you must use [getLastWindow()](arkts-apis-window-f.md#windowgetlastwindow9), [createWindow()](arkts-apis-window-f.md#windowcreatewindow9), or [findWindow()](arkts-apis-window-f.md#windowfindwindow9) to obtain a Window instance (named windowClass in this example) and then call a method in this instance.
 
 ## Modules to Import
 
@@ -180,7 +180,7 @@ export default class EntryAbility extends UIAbility {
 
 showWindow(options: ShowWindowOptions): Promise&lt;void&gt;
 
-Shows this window or moves an already visible application main window to the top of the stack.. This API uses a promise to return the result. This API takes effect only for a system window or an application child window. You can pass options to control the window display behavior.
+Shows this window. This API uses a promise to return the result. This API takes effect only for a system window or an application child window. For the main window of an application, this API moves it at the top when the main window is already displayed. You can pass parameters to control the window display behavior.
 
 > **NOTE**
 >
@@ -462,9 +462,7 @@ try {
 
 moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 
-Moves this window. This API uses a promise to return the result.
-
-A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
+Moves this window. This API uses a promise to return the result. A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
 
 > **NOTE**
 >
@@ -526,9 +524,7 @@ try {
 
 moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): Promise&lt;void&gt;
 
-Moves this window to the specified position. This API uses a promise to return the result. You can use the **moveConfiguration** parameter to specify the target display ID for the window movement.
-
-A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
+Moves this window to the specified position. This API uses a promise to return the result. You can use the **moveConfiguration** parameter to specify the target display ID for the window movement. A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
 
 > **NOTE**
 >
@@ -656,9 +652,7 @@ try {
 
 moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration): Promise&lt;void&gt;
 
-Moves this window to the specified position based on the coordinates. This API uses a promise to return the result. You can use the **moveConfiguration** parameter to specify the target display ID for the window movement.
-
-A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
+Moves this window to the specified position based on the coordinates. This API uses a promise to return the result. You can use the **moveConfiguration** parameter to specify the target display ID for the window movement. A value is returned once the call takes effect. You can use [getWindowProperties()](#getwindowproperties9) in the callback (see the code snippet below) to obtain the final effect immediately.
 
 > **NOTE**
 >
@@ -723,7 +717,7 @@ try {
 
 moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 
-Moves this window based on the global coordinate system. (In extended screen scenarios, the top-left corner of the primary screen is used as the origin.) This API uses a promise to return the result.
+Moves the window based on the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system). This API uses a promise to return the result asynchronously.
 
 > **NOTE**
 >
@@ -877,9 +871,9 @@ The window size is restricted by [WindowLimits](arkts-apis-window-i.md#windowlim
 
 The new window width and height you set must meet the following limits:
 
-- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect. However, the system window and global floating window settings are not subject to these minimum width or height restrictions.
+If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect. However, the system window and global floating window settings are not subject to these minimum width or height restrictions.
 
-- If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
+If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
 
 > **NOTE**
 >
@@ -940,9 +934,9 @@ The window size is restricted by [WindowLimits](arkts-apis-window-i.md#windowlim
 
 The new window width and height you set must meet the following limits:
 
-- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect. However, the system window and global floating window settings are not subject to these minimum width or height restrictions.
+If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect. However, the system window and global floating window settings are not subject to these minimum width or height restrictions.
 
-- If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
+If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
 
 > **NOTE**
 >
@@ -1006,9 +1000,9 @@ The window size is restricted by [WindowLimits](arkts-apis-window-i.md#windowlim
 
 The new window width and height you set must meet the following limits:
 
-- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect. However, the system window and global floating window settings are not subject to these minimum width or height restrictions.
+If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect. However, the system window and global floating window settings are not subject to these minimum width or height restrictions.
 
-- If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
+If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
 
 > **NOTE**
 >
@@ -1249,14 +1243,18 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 
 Obtains the avoid area of this window.
 
-In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, calling this API obtains an empty avoid area.
+Main window/Subwindow:
+- In the free-floating window mode under the [freeform window](../../windowmanager/window-terminology.md#freeform-window) state (the window mode is **window.WindowStatusType.FLOATING**), only the avoidance area of the fixed soft keyboard type ([AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_KEYBOARD**) is available.
+- In the free-floating window mode of the main window in the non-free window state, only the avoidance area of the system bar ([AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_SYSTEM**) is available.
+- In other scenarios, the main window can obtain the calculated avoidance area only when the window is not in the free-floating window mode or the device type is Phone or Tablet. Otherwise, the obtained avoidance area is empty.
+- For a subwindow in the non-free window state or non-free-floating window mode, the calculated avoidance area can be obtained only when the position and size of the subwindow are the same as those of the main window. Otherwise, the obtained avoidance area is empty.
 
-In non-freeform window mode, a child window calling this API obtains the accurate avoid area only if its position and size match the main window; otherwise, it obtains an empty avoid area. Other window types can obtain the accurate avoid area.
+Global floating window, modal window, or system window:
+- This API can be used to obtain the avoidance area only after the [setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18) method is called to enable the avoidance area. Otherwise, the obtained avoidance area is empty.
 
-This API is typically used in three situations:
+This API is generally applicable to the following scenarios:
 - In the [onWindowStageCreate()](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate) callback, this API is used to obtain the initial layout avoid area when the application starts.
 - This API is used when a child window needs to temporarily display content and requires layout adjustments to avoid certain areas.
-- For global floating windows, modal windows, or system windows, this API can be called to obtain the correct avoid area only after [setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18) is called.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -1300,9 +1298,13 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 
 Obtains the avoid area of this application window, even if the avoid area is invisible.
 
-In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API obtains an empty avoid area.
+Main window/Subwindow:
+- When the main window is in the free-floating window mode under a non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) state (the window mode is **window.WindowStatusType.FLOATING**), only the avoidance area of the system type ([AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_SYSTEM**) is available.
+- In other scenarios, the avoidance area can be obtained only when the main window is not in the free-floating window mode or the device type is Phone or Tablet. Otherwise, the obtained avoidance area is empty.
+- For a subwindow in the non-free window state or non-free-floating window mode, the calculated avoidance area can be obtained only when the position and size of the subwindow are the same as those of the main window. Otherwise, the obtained avoidance area is empty.
 
-In non-freeform window mode, this API can calculate and return the avoid area only when the position and size of the child window are the same as those of the main window. Otherwise, this API returns an empty avoid area.
+Global floating window, modal window, or system window:
+- The avoidance area can be obtained only after the [setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18) method is called to enable the avoidance area. Otherwise, the obtained avoidance area is empty.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -1563,8 +1565,10 @@ export default class EntryAbility extends UIAbility {
 setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 Sets whether the application main window layout or the application child window layout is immersive. This API uses a promise to return the result. It does not work when called by other windows, and no error is reported.
-- An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
-- A non-immersive layout means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
+
+An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
+
+A non-immersive layout means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -1572,9 +1576,9 @@ Sets whether the application main window layout or the application child window 
 
 **Device behavior differences**
 
-For versions earlier than API version 14, this API can be properly called on all devices.
+In versions earlier than OpenHarmony 5.0.2, this API can be called on all devices.
 
-Starting from API version 14, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state, but takes effect when the device exits that state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
+Starting from OpenHarmony 5.0.2, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state, but takes effect when the device exits that state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -1645,9 +1649,9 @@ Sets whether to enable the immersive layout for the main window. This API does n
 
 **Device behavior differences**
 
-For versions earlier than API version 14, this API can be properly called on all devices.
+In versions earlier than OpenHarmony 5.0.2, this API can be called on all devices.
 
-Starting from API version 14, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
+Starting from OpenHarmony 5.0.2, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -1874,9 +1878,9 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **Device behavior differences**
 
-For versions earlier than API version 12, this API can be properly called on all devices.
+For versions earlier than OpenHarmony 5.0.0, this API can be properly called on all devices.
 
-Starting from API version 12, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
+Starting from OpenHarmony 5.0.0, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -1950,9 +1954,9 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **Device behavior differences**
 
-For versions earlier than API version 12, this API can be properly called on all devices.
+For versions earlier than OpenHarmony 5.0.0, this API can be properly called on all devices.
 
-Starting from API version 12, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
+Starting from OpenHarmony 5.0.0, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
 
 **Parameters**
 
@@ -2031,7 +2035,7 @@ This API does not take effect when it is called by a child window. The setting d
 
 | Name             | Type                                       | Mandatory| Description                  |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | Yes  | Properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar.|
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | Yes  | <!--Del-->Properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar.|
 
 **Return value**
 
@@ -2287,7 +2291,7 @@ Sets the preferred orientation for the main window. This API uses an asynchronou
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Device behavior differences**: This API can be called and takes effect on devices that support sensor rotation but do not support [freeform windows](../../windowmanager/window-terminology.md#freeform-window). It can be called on devices that support sensor rotation and freeform windows but are currently not in the freeform window state, and the setting takes effect when the window switches to a non-freeform window state. If this API is called on other devices, it has no effect and does not report errors.
+**Device behavior differences**: This API can be called and takes effect immediately on devices that support sensor rotation and is not in [freeform windows](../../windowmanager/window-terminology.md#freeform-window) state regardless of whether they support freeform windows. This API can be called on devices that support sensor rotation and are in the free window state, but the call does not take effect or report an error. It takes effect only when the device is switched to a state other than the free window state. In other cases, the call does not take effect or report an error.
 
 **Parameters**
 
@@ -2352,7 +2356,7 @@ Sets the preferred orientation for the main window. This API uses a promise to r
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Device behavior differences**: This API can be called and takes effect on devices that support sensor rotation but do not support [freeform windows](../../windowmanager/window-terminology.md#freeform-window). It can be called on devices that support sensor rotation and freeform windows but are currently not in the freeform window state, and the setting takes effect when the window switches to a non-freeform window state. If this API is called on other devices, it has no effect and does not report errors.
+**Device behavior differences**: This API can be called and takes effect immediately on devices that support sensor rotation and is not in [freeform windows](../../windowmanager/window-terminology.md#freeform-window) state regardless of whether they support freeform windows. This API can be called on devices that support sensor rotation and are in the free window state, but the call does not take effect or report an error. It takes effect only when the device is switched to a state other than the free window state. In other cases, the call does not take effect or report an error.
 
 **Parameters**
 
@@ -3068,9 +3072,15 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 Subscribes to the event indicating changes to the area where this window cannot be displayed.
 
-In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, upon triggering the avoid area callback, this API directly returns an empty avoid area.
+Main window/Subwindow:
+- When a callback is triggered for devices that support [freeform windows](../../windowmanager/window-terminology.md#freeform-window) in **window.WindowStatusType.FLOATING** mode, only the avoidance area of the fixed soft keyboard type ([AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_KEYBOARD**) is available.
+- When the callback is triggered in the free-floating window mode of the main window in the non-free window state, only the avoidance area of the system bar ([AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_SYSTEM**) is available.
+- When the callback is triggered in the main window in other scenarios, the calculated avoidance area is returned only when the window is not in the free-floating window mode or the device type is Phone or Tablet. Otherwise, an empty avoidance area is returned.
+- When the callback is triggered in the subwindow in the non-free window state or non-free-floating window mode, the calculated avoidance area of the subwindow is returned only when the position and size of the subwindow are the same as those of the main window. Otherwise, an empty avoidance area is returned.
 
-In non-freeform window mode, upon triggering the avoid area callback, this API can calculate and return the avoid area only when the position and size of the child window are the same as those of the main window. Otherwise, this API returns an empty avoid area.
+Global floating window, modal window, or system window:
+- The calculated avoidance area is returned only when the callback is triggered after the [setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18) method is called to enable the function. Otherwise, an empty avoidance area is returned.
+
 <!--RP7-->Common scenarios for triggering this event are as follows: transitions between full-screen mode, floating mode, and split-screen mode of the application window; rotation of the application window; transitions between folded and unfolded states of a foldable device; transfer of the application window between multiple devices.<!--RP7End-->
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
@@ -3155,11 +3165,7 @@ try {
 
 on(type: 'keyboardHeightChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to the event indicating soft keyboard height changes in the fixed state.
-
-The system notifies the keyboard height change when the soft keyboard is invoked by the window and overlaps with the window.
-
-Starting from API version 10, the soft keyboard can be set to the fixed or floating state. For details, see [Input Method Service](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10).
+Subscribes to the event indicating soft keyboard height changes in the fixed state. The system notifies the keyboard height change when the soft keyboard is invoked by the window and overlaps with the window. Starting from API version 10, the soft keyboard can be set to the fixed or floating state. For details, see [Input Method Service](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3198,9 +3204,7 @@ try {
 
 off(type: 'keyboardHeightChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from the event indicating soft keyboard height changes in the fixed state so that the application does not receive notifications of soft keyboard height changes.
-
-Starting from API version 10, the soft keyboard can be set to the fixed or floating state. For details, see [Input Method Service](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10).
+Unsubscribes from the event indicating soft keyboard height changes in the fixed state so that the application does not receive notifications of soft keyboard height changes. Starting from API version 10, the soft keyboard can be set to the fixed or floating state. For details, see [Input Method Service](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4410,9 +4414,7 @@ try {
 
 on(type: 'noInteractionDetected', timeout: number, callback: Callback&lt;void&gt;): void
 
-Subscribes to non-interaction events in a window within the specified period.
-
-Interaction events include physical keyboard input events and screen touch/click events, but not soft keyboard input events.
+Subscribes to non-interaction events in a window within the specified period. Interaction events include physical keyboard input events and screen touch/click events, but not soft keyboard input events.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4453,9 +4455,7 @@ try {
 
 off(type: 'noInteractionDetected', callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from non-interaction events in a window within the specified period.
-
-Interaction events include physical keyboard input events and screen touch/click events, but not soft keyboard input events.
+Unsubscribes from non-interaction events in a window within the specified period. Interaction events include physical keyboard input events and screen touch/click events, but not soft keyboard input events.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4499,7 +4499,9 @@ try {
 
 on(type:  'windowStatusChange', callback: Callback&lt;WindowStatusType&gt;): void
 
-Subscribes to the window status change event. A notification is sent when the window status changes (the window properties may not be updated).
+Enables the listening of window status changes. When the window status changes, a notification is sent. (In this case, the window attributes may not be updated yet. If you need to obtain the changed window size and position immediately after receiving the window status change notification, you are advised to use [on('windowStatusDidChange')](arkts-apis-window-Window.md#onwindowstatusdidchange20).)
+
+After the listening is enabled using this API, multiple callbacks will be received when the **maximize** or **recover** method is called. To obtain the deduplicated callback, you can use **[on('windowStatusDidChange')](#onwindowstatusdidchange20)**.
 
 > **NOTE**
 >
@@ -4787,9 +4789,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 windowClass.setUIContent('pages/WindowPage').then(() => {
-	const callback = (titleButtonRect: window.TitleButtonRect) => {
-		// ...
-	}
+    const callback = (titleButtonRect: window.TitleButtonRect) => {
+        // ...
+    }
   try {
     // Enable listening through the on API.
     windowClass?.on('windowTitleButtonRectChange', callback);
@@ -4892,7 +4894,7 @@ try {
 
 on(type: 'rectChangeInGlobalDisplay', callback: Callback&lt;RectChangeOptions&gt;): void
 
-Subscribes to window rectangle (position and size) change events in the global coordinate system. (In extended screen scenarios, the top-left corner of the primary screen is used as the origin.)
+Enables the listening event for changes in the window rectangle (window position and size) in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system).
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -4931,7 +4933,7 @@ try {
 
 off(type: 'rectChangeInGlobalDisplay', callback?: Callback&lt;RectChangeOptions&gt;): void
 
-Unsubscribes from window rectangle (position and size) change events in the global coordinate system. (In extended screen scenarios, the top-left corner of the primary screen is used as the origin.)
+Disables the listening event for changes in the window rectangle (window position and size) in the [global coordinate system](../../windowmanager/window-terminology.md#global-coordinate-system).
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -5283,7 +5285,7 @@ This API can be registered only on the main thread. If a window registers multip
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called and takes effect immediately on devices that support sensor rotation but do not support [freeform windows](../../windowmanager/window-terminology.md#freeform-window). It can be called on devices that support sensor rotation and freeform windows but are currently not in the freeform window state, and the setting takes effect when the window switches to a non-freeform window state. If this API is called on other devices, it has no effect and does not report errors.
+**Device behavior differences**: Calling this API on 2-in-1 devices will return error code 801. For other devices: (1) This API can be called and takes effect immediately on devices that support sensor rotation and is not in [freeform windows](../../windowmanager/window-terminology.md#freeform-window) state regardless of whether they support freeform windows. (2) This API can be called on devices that support sensor rotation and are in the free window state, but the call does not take effect or report an error. It takes effect only when the device is switched to a state other than the free window state. In other cases, the call does not take effect or report an error.
 
 **Parameters**
 
@@ -5353,7 +5355,7 @@ Unsubscribes from the window rotation change event.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called and takes effect immediately on devices that support sensor rotation but do not support [freeform windows](../../windowmanager/window-terminology.md#freeform-window). It can be called on devices that support sensor rotation and freeform windows but are currently not in the freeform window state, and the setting takes effect when the window switches to a non-freeform window state. If this API is called on other devices, it has no effect and does not report errors.
+**Device behavior differences**: Calling this API on 2-in-1 devices will return error code 801. For other devices: (1) This API can be called and takes effect immediately on devices that support sensor rotation and is not in [freeform windows](../../windowmanager/window-terminology.md#freeform-window) state regardless of whether they support freeform windows. (2) This API can be called on devices that support sensor rotation and are in the free window state, but the call does not take effect or report an error. It takes effect only when the device is switched to a state other than the free window state. In other cases, the call does not take effect or report an error.
 
 **Parameters**
 
@@ -5484,18 +5486,17 @@ Checks whether this window supports the wide-gamut color space. This API uses an
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | ---------------------------- | -- | -------------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. **true** if the wide-gamut color space is supported, **false** otherwise.|
+| Name     | Type                         | Mandatory | Description                                                  |
+| -------- | ---------------------------- | --------- | ------------------------------------------------------------ |
+| callback | AsyncCallback&lt;boolean&gt; | Yes       | Callback used to return the result. **true** if the wide-gamut color space is supported, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
+| ID      | Error Message                  |
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. |
-
 
 **Example**
 
@@ -5524,15 +5525,15 @@ Checks whether this window supports the wide-gamut color space. This API uses a 
 
 **Return value**
 
-| Type| Description|
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. **true** if the wide-gamut color space is supported, **false** otherwise.|
+| Type                   | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| Promise&lt;boolean&gt; | Promise used to return the result. **true** if the wide-gamut color space is supported, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
+| ID      | Error Message                  |
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. |
 
@@ -5561,20 +5562,19 @@ Sets a color space for this window. This API uses an asynchronous callback to re
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ---------- | ------------------------- | -- | ----------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space to set.|
-| callback   | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.  |
+| Name       | Type                                             | Mandatory | Description                         |
+| ---------- | ------------------------------------------------ | --------- | ----------------------------------- |
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes       | Color space to set.                 |
+| callback   | AsyncCallback&lt;void&gt;                        | Yes       | Callback used to return the result. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
-
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -5607,25 +5607,24 @@ Sets a color space for this window. This API uses a promise to return the result
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ---------- | ------------------------- | -- | ------------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space to set.|
+| Name       | Type                                             | Mandatory | Description         |
+| ---------- | ------------------------------------------------ | --------- | ------------------- |
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes       | Color space to set. |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 1300002 | This window state is abnormal. |
-
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -5656,18 +5655,17 @@ Obtains the color space of this window.
 
 **Return value**
 
-| Type| Description|
-| ------------------------- | ------------- |
-| [ColorSpace](arkts-apis-window-e.md#colorspace8) | Color space obtained.|
+| Type                                             | Description           |
+| ------------------------------------------------ | --------------------- |
+| [ColorSpace](arkts-apis-window-e.md#colorspace8) | Color space obtained. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
+| ID      | Error Message                  |
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. |
-
 
 **Example**
 
@@ -5698,19 +5696,17 @@ In the stage model, this API must be used after the call of [loadContent](#loadc
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ----- | ------ | -- | ----------------------------------------------------------------------- |
-| color | string \| [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12)<sup>18+</sup> | Yes| Background color to set. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**.<br>Starting from API version 18, this parameter supports the ColorMetrics type.|
+| Name  | Type                                                         | Mandatory | Description                                                  |
+| ----- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| color | string \| [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12)<sup>18+</sup> | Yes       | Background color to set. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**.<br>Starting from API version 18, this parameter supports the ColorMetrics type. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
+| ID      | Error Message                  |
 | ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
-
 
 **Example**
 
@@ -5752,27 +5748,27 @@ Sets whether the main window displays a shadow. This API uses a promise to retur
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ----- | ------ | -- | ----------------------------------------------------------------------- |
-| enable  | boolean | Yes| Whether the main window displays a shadow. **true** if the main window displays a shadow, **false** otherwise.|
+| Name   | Type    | Mandatory | Description                                                  |
+| ------ | ------- | --------- | ------------------------------------------------------------ |
+| enable | boolean | Yes       | Whether the main window displays a shadow. **true** if the main window displays a shadow, **false** otherwise. |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                      |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -5822,10 +5818,11 @@ When the setting is valid, it affects only the physical screen where the window 
 
 If the input parameter is **-1**, the window brightness reverts to the system brightness (which can be adjusted through Control Panel or shortcut keys).
 
-When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API when the window is in the background, as it may cause timing issues.
+When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API consecutively or when the window is moved to the background. Otherwise, timing issues may occur.
 
 > **NOTE**
-> For non-2-in-1 devices, when the window's brightness setting is active, Control Panel cannot change the overall screen brightness.
+>
+> - For non-2-in-1 devices: When the window's brightness setting is active, system brightness controls (Control Panel or shortcut keys) are disabled.
 > - For 2-in-1 devices:
 >   - Before OpenHarmony 5.0.2, if a window has custom brightness, system brightness controls (Control Panel or shortcut keys) are disabled.
 >   - Starting from OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
@@ -5836,20 +5833,20 @@ When the window moves to the background, the setting becomes invalid, and bright
 
 **Parameters**
 
-| Name| Type| Mandatory| Description                                       |
-| ---------- | ------------------------- | -- |-------------------------------------------|
-| brightness | number                    | Yes| Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
-| callback   | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.                                    |
+| Name       | Type                      | Mandatory | Description                                                  |
+| ---------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| brightness | number                    | Yes       | Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel. |
+| callback   | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -5862,27 +5859,33 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
         return;
       }
-      windowClass = data;
-      let brightness: number = 1.0;
-      try {
-        windowClass.setWindowBrightness(brightness, (err: BusinessError) => {
-          const errCode: number = err.code;
-          if (errCode) {
-            console.error(`Failed to set the brightness. Cause code: ${err.code}, message: ${err.message}`);
-            return;
-          }
-          console.info('Succeeded in setting the brightness.');
-        });
-      } catch (exception) {
-        console.error(`Failed to set the brightness. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
+      let windowClass: window.Window | undefined = undefined;
+      windowStage.getMainWindow((err: BusinessError, data) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        let brightness: number = 1.0;
+        try {
+          windowClass.setWindowBrightness(brightness, (err: BusinessError) => {
+            const errCode: number = err.code;
+            if (errCode) {
+              console.error(`Failed to set the brightness. Cause code: ${err.code}, message: ${err.message}`);
+              return;
+            }
+            console.info('Succeeded in setting the brightness.');
+          });
+        } catch (exception) {
+          console.error(`Failed to set the brightness. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+      });
     });
   }
 }
@@ -5898,10 +5901,11 @@ When the setting is valid, it affects only the physical screen where the window 
 
 If the input parameter is **-1**, the window brightness reverts to the system brightness (which can be adjusted through Control Panel or shortcut keys).
 
-When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API when the window is in the background, as it may cause timing issues.
+When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API consecutively or when the window is moved to the background. Otherwise, timing issues may occur.
 
 > **NOTE**
-> - For non-2-in-1 devices, For non-2-in-1 devices, when the window's brightness setting is active, Control Panel cannot change the overall screen brightness.
+>
+> - For non-2-in-1 devices: When the window's brightness setting is active, system brightness controls (Control Panel or shortcut keys) are disabled.
 > - For 2-in-1 devices:
 >   - Before OpenHarmony 5.0.2, if a window has custom brightness, system brightness controls (Control Panel or shortcut keys) are disabled.
 >   - Starting from OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
@@ -5912,25 +5916,25 @@ When the window moves to the background, the setting becomes invalid, and bright
 
 **Parameters**
 
-| Name| Type| Mandatory| Description                                    |
-| ---------- | ------ | -- |----------------------------------------|
-| brightness | number | Yes| Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
+| Name       | Type   | Mandatory | Description                                                  |
+| ---------- | ------ | --------- | ------------------------------------------------------------ |
+| brightness | number | Yes       | Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel. |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -5943,28 +5947,35 @@ export default class EntryAbility extends UIAbility {
   // ...
   onWindowStageCreate(windowStage: window.WindowStage): void {
     console.info('onWindowStageCreate');
-    let windowClass: window.Window | undefined = undefined;
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      const errCode: number = err.code;
-      if (errCode) {
-        console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
         return;
       }
-      windowClass = data;
-      let brightness: number = 1.0;
-      try {
-        let promise = windowClass.setWindowBrightness(brightness);
-        promise.then(() => {
-          console.info('Succeeded in setting the brightness.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to set the brightness. Cause code: ${err.code}, message: ${err.message}`);
-        });
-      } catch (exception) {
-        console.error(`Failed to set the brightness. Cause code: ${exception.code}, message: ${exception.message}`);
-      }
+      let windowClass: window.Window | undefined = undefined;
+      windowStage.getMainWindow((err: BusinessError, data) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        let brightness: number = 1.0;
+        try {
+          let promise = windowClass.setWindowBrightness(brightness);
+          promise.then(() => {
+            console.info('Succeeded in setting the brightness.');
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set the brightness. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        } catch (exception) {
+          console.error(`Failed to set the brightness. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+      });
     });
   }
 }
+
 ```
 
 ## setWindowFocusable<sup>9+</sup>
@@ -5981,20 +5992,20 @@ Starting from API version 22, if a virtual screen is created by calling [createV
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ----------- | ------------------------- | -- | ------------------------------------------------------- |
-| isFocusable | boolean                   | Yes| Whether the window is focusable. **true** if focusable, **false** otherwise. If this parameter is set to **false**, the window does not support binding to an input method or receiving keyboard events. If input logic needs to be processed, follow the instructions provided in [Input Box and Input Method Interaction in Non-Focus Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).|
-| callback    | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.                                              |
+| Name        | Type                      | Mandatory | Description                                                  |
+| ----------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| isFocusable | boolean                   | Yes       | Whether the window is focusable. **true** if focusable, **false** otherwise. If this parameter is set to **false**, the window does not support binding to an input method or receiving keyboard events. If input logic needs to be processed, follow the instructions provided in [Input Box and Input Method Interaction in Non-Focus Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md). |
+| callback    | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -6014,6 +6025,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the window to be focusable. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowFocusable<sup>9+</sup>
@@ -6030,25 +6042,25 @@ Starting from API version 22, if a virtual screen is created by calling [createV
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ----------- | ------- | -- | -------------------------------------------------------- |
-| isFocusable | boolean | Yes| Whether the window is focusable. **true** if focusable, **false** otherwise. If this parameter is set to **false**, the window does not support binding to an input method or receiving keyboard events. If input logic needs to be processed, follow the instructions provided in [Input Box and Input Method Interaction in Non-Focus Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).|
+| Name        | Type    | Mandatory | Description                                                  |
+| ----------- | ------- | --------- | ------------------------------------------------------------ |
+| isFocusable | boolean | Yes       | Whether the window is focusable. **true** if focusable, **false** otherwise. If this parameter is set to **false**, the window does not support binding to an input method or receiving keyboard events. If input logic needs to be processed, follow the instructions provided in [Input Box and Input Method Interaction in Non-Focus Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md). |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -6066,6 +6078,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the window to be focusable. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowKeepScreenOn<sup>9+</sup>
@@ -6082,20 +6095,20 @@ Set **isKeepScreenOn** to **true** only in necessary scenarios (such as navigati
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------------- | ------------------------- | -- | ---------------------------------------------------- |
-| isKeepScreenOn | boolean                   | Yes| Whether to keep the screen always on. **true** to keep the screen always on, **false** otherwise. |
-| callback       | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.                                           |
+| Name           | Type                      | Mandatory | Description                                                  |
+| -------------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| isKeepScreenOn | boolean                   | Yes       | Whether to keep the screen always on. **true** to keep the screen always on, **false** otherwise. |
+| callback       | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -6115,6 +6128,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the screen to be always on. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowKeepScreenOn<sup>9+</sup>
@@ -6131,25 +6145,25 @@ Set **isKeepScreenOn** to **true** only in necessary scenarios (such as navigati
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------------- | ------- | -- | --------------------------------------------------- |
-| isKeepScreenOn | boolean | Yes| Whether to keep the screen always on. **true** to keep the screen always on, **false** otherwise.|
+| Name           | Type    | Mandatory | Description                                                  |
+| -------------- | ------- | --------- | ------------------------------------------------------------ |
+| isKeepScreenOn | boolean | Yes       | Whether to keep the screen always on. **true** to keep the screen always on, **false** otherwise. |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -6187,21 +6201,19 @@ If this API is not called, the privacy mode is disabled by default, and the wind
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ------------- | ------------------------- | -- | ------------------------------------------------------ |
-| isPrivacyMode | boolean                   | Yes| Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. |
-| callback      | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.                                             |
+| Name          | Type                      | Mandatory | Description                                                  |
+| ------------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| isPrivacyMode | boolean                   | Yes       | Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. |
+| callback      | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
-
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -6229,7 +6241,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
 Sets whether this window is in privacy mode. This API uses a promise to return the result.
 
-A window in privacy mode cannot be captured or recorded.
+A window in privacy mode cannot be captured or recorded. This API can be used in scenarios where screen capture or recording is disabled.
 
 If this API is not called, the privacy mode is disabled by default, and the window can be captured or recorded.
 
@@ -6241,26 +6253,24 @@ If this API is not called, the privacy mode is disabled by default, and the wind
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ------------- | ------- | -- | ----------------------------------------------------- |
-| isPrivacyMode | boolean | Yes| Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise.|
+| Name          | Type    | Mandatory | Description                                                  |
+| ------------- | ------- | --------- | ------------------------------------------------------------ |
+| isPrivacyMode | boolean | Yes       | Whether the window is in privacy mode. **true** if the window is in privacy mode, **false** otherwise. |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. |
-
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -6278,6 +6288,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the window to privacy mode. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowTouchable<sup>9+</sup>
@@ -6292,20 +6303,20 @@ Sets whether this window is touchable. This API uses an asynchronous callback to
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ----------- | ------------------------- | -- | ----------------------------------------------- |
-| isTouchable | boolean                   | Yes| Whether the window is touchable. **true** if touchable, **false** otherwise.|
-| callback    | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.                                       |
+| Name        | Type                      | Mandatory | Description                                                  |
+| ----------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| isTouchable | boolean                   | Yes       | Whether the window is touchable. **true** if touchable, **false** otherwise. |
+| callback    | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -6339,25 +6350,25 @@ Sets whether this window is touchable. This API uses a promise to return the res
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ----------- | ------- | -- | ----------------------------------------------- |
-| isTouchable | boolean | Yes| Whether the window is touchable. **true** if touchable, **false** otherwise.|
+| Name        | Type    | Mandatory | Description                                                  |
+| ----------- | ------- | --------- | ------------------------------------------------------------ |
+| isTouchable | boolean | Yes       | Whether the window is touchable. **true** if touchable, **false** otherwise. |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal.               |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -6375,6 +6386,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the window to be touchable. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## snapshot<sup>9+</sup>
@@ -6389,18 +6401,17 @@ Captures this window. This API uses an asynchronous callback to return the resul
 
 **Parameters**
 
-| Name     | Type                     | Mandatory| Description                |
-| ----------- | ------------------------- | ---- | -------------------- |
-| callback    | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes  | Callback used to return the result. |
+| Name     | Type                                                         | Mandatory | Description                         |
+| -------- | ------------------------------------------------------------ | --------- | ----------------------------------- |
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes       | Callback used to return the result. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
+| ID      | Error Message                  |
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. |
-
 
 **Example**
 
@@ -6417,6 +6428,7 @@ windowClass.snapshot((err: BusinessError, pixelMap: image.PixelMap) => {
   console.info('Succeeded in snapshotting window. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
   pixelMap.release(); // Release the memory in time after the PixelMap is used.
 });
+
 ```
 
 ## snapshot<sup>9+</sup>
@@ -6431,18 +6443,17 @@ Captures this window. If privacy mode is enabled for the current window (using [
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the window screenshot.|
+| Type                                                         | Description                                   |
+| ------------------------------------------------------------ | --------------------------------------------- |
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the window screenshot. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
+| ID      | Error Message                  |
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. |
-
 
 **Example**
 
@@ -6457,6 +6468,7 @@ promise.then((pixelMap: image.PixelMap) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to snapshot window. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## snapshotSync<sup>20+</sup>
@@ -6471,19 +6483,19 @@ In the stage model, this API must be used after the call of [loadContent](#loadc
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Window screenshot.|
+| Type                                                         | Description        |
+| ------------------------------------------------------------ | ------------------ |
+| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Window screenshot. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300018 | Timeout. |
+| 1300002 | This window state is abnormal.                               |
+| 1300018 | Timeout.                                                     |
 
 **Example**
 
@@ -6512,19 +6524,18 @@ Captures this window. This API can be called to obtain the screenshot of the cur
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the window screenshot.|
+| Type                                                         | Description                                   |
+| ------------------------------------------------------------ | --------------------------------------------- |
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the window screenshot. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Function snapshotIgnorePrivacy can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -6539,6 +6550,7 @@ promise.then((pixelMap: image.PixelMap) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to snapshot window. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setAspectRatio<sup>10+</sup>
@@ -6561,28 +6573,29 @@ Sets the aspect ratio of the window content layout (excluding decorations like b
 
 **Parameters**
 
-| Name            | Type   | Mandatory| Description                                       |
-| ------------------ | ------- | ---- |-------------------------------------------|
-| ratio | number | Yes  | Aspect ratio of the window content layout (excluding decorations like borders and title bars). The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**.|
+| Name  | Type   | Mandatory | Description                                                  |
+| ----- | ------ | --------- | ------------------------------------------------------------ |
+| ratio | number | Yes       | Aspect ratio of the window content layout (excluding decorations like borders and title bars). The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: Invalid parameter range. |
-| 1300002 | This window state is abnormal.               |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: Invalid parameter range.    |
+| 1300002 | This window state is abnormal.                               |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **Example**
 <!--code_no_check-->
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -6610,6 +6623,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## setAspectRatio<sup>10+</sup>
@@ -6632,23 +6646,24 @@ Sets the aspect ratio of the window content layout (excluding decorations like b
 
 **Parameters**
 
-| Name            | Type   | Mandatory| Description                                        |
-| ------------------ | ------- | ---- |--------------------------------------------|
-| ratio | number | Yes  | Aspect ratio of the window content layout (excluding decorations like borders and title bars). The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**.|
-| callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                     |
+| Name     | Type                      | Mandatory | Description                                                  |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| ratio    | number                    | Yes       | Aspect ratio of the window content layout (excluding decorations like borders and title bars). The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**. |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: Invalid parameter range. |
-| 1300002 | This window state is abnormal.               |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: Invalid parameter range.    |
+| 1300002 | This window state is abnormal.                               |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **Example**
 <!--code_no_check-->
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -6679,6 +6694,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 
+
 ```
 
 ## setContentAspectRatio<sup>21+</sup>
@@ -6701,27 +6717,27 @@ Sets the aspect ratio of the window content layout (excluding decorations like b
 
 **Parameters**
 
-| Name| Type| Mandatory| Description                                       |
-| --- | ------- | ---- |-------------------------------------------|
-| ratio | number | Yes  | Aspect ratio of the window content layout (excluding decorations like borders and title bars). The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**.|
-| isPersistent | boolean | No| Whether the aspect ratio should be saved persistently.<br>If this parameter is set to **true**, the aspect ratio is saved persistently. This means that the setting is valid in floating window mode even after the window is destroyed, the application is closed, or the device is restarted. You can call [resetAspectRatio](#resetaspectratio10) to clear the persistently saved aspect ratio.<br>If this parameter is set to **false**, the aspect ratio applies only to the current window and is cleared once the window is destroyed.<br>The default value is **true**.|
-| needUpdateRect | boolean | No| Whether the window size should be immediately updated based on the current aspect ratio.<br>If this parameter is set to **true**, the window size is updated immediately based on the current aspect ratio.<br>If this parameter is set to **false**, the window size is updated based on the current aspect ratio when the window is dragged and resized. You can manually trigger an update by calling [resize](#resize9) or [resizeAsync](#resizeasync12).<br>The default value is **true**.|
+| Name           | Type    | Mandatory | Description                                                  |
+| -------------- | ------- | --------- | ------------------------------------------------------------ |
+| ratio          | number  | Yes       | Aspect ratio of the window content layout (excluding decorations like borders and title bars). The value is a floating-point number and is restricted by the maximum and minimum sizes of the window. The minimum ratio is the value of minimum width divided by the maximum height, and the maximum ratio is the maximum width divided by the minimum height. The maximum and minimum sizes of the window are determined by the intersection of the setting of [WindowLimits](arkts-apis-window-i.md#windowlimits11) and the system limit. The system limit takes precedence over [WindowLimits](arkts-apis-window-i.md#windowlimits11). The valid range of **ratio** varies with [WindowLimits](arkts-apis-window-i.md#windowlimits11). If [WindowLimits](arkts-apis-window-i.md#windowlimits11) is set prior to **ratio**, any conflict will result in an error code when setting **ratio**. Conversely, if **ratio** is set before and then conflicts arise with the subsequently configured [WindowLimits](arkts-apis-window-i.md#windowlimits11), the window's aspect ratio may not adhere to the initially configured value of **ratio**. |
+| isPersistent   | boolean | No        | Whether the aspect ratio should be saved persistently.<br>If this parameter is set to **true**, the aspect ratio is saved persistently. This means that the setting is valid in floating window mode even after the window is destroyed, the application is closed, or the device is restarted. You can call [resetAspectRatio](#resetaspectratio10) to clear the persistently saved aspect ratio.<br>If this parameter is set to **false**, the aspect ratio applies only to the current window and is cleared once the window is destroyed.<br>The default value is **true**. |
+| needUpdateRect | boolean | No        | Whether the window size should be immediately updated based on the current aspect ratio.<br>If this parameter is set to **true**, the window size is updated immediately based on the current aspect ratio.<br>If this parameter is set to **false**, the window size is updated based on the current aspect ratio when the window is dragged and resized. You can manually trigger an update by calling [resize](#resize9) or [resizeAsync](#resizeasync12).<br>The default value is **true**. |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
@@ -6749,6 +6765,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## resetAspectRatio<sup>10+</sup>
@@ -6765,21 +6782,22 @@ This API is valid only for the main window. After it is called, the persistently
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300004 | Unauthorized operation.                      |
+| ID      | Error Message                  |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation.        |
 
 **Example**
 <!--code_no_check-->
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -6806,6 +6824,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## resetAspectRatio<sup>10+</sup>
@@ -6822,21 +6841,22 @@ This API is valid only for the main window. After it is called, the persistently
 
 **Parameters**
 
-| Name            | Type   | Mandatory| Description                                                        |
-| ------------------ | ------- | ---- | ------------------------------------------------------------ |
-| callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
+| Name     | Type                      | Mandatory | Description                         |
+| -------- | ------------------------- | --------- | ----------------------------------- |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
-| 1300004 | Unauthorized operation.                      |
+| ID      | Error Message                  |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. |
+| 1300004 | Unauthorized operation.        |
 
 **Example**
 <!--code_no_check-->
+
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
@@ -6865,6 +6885,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## minimize<sup>11+</sup>
@@ -6885,19 +6906,19 @@ This API can be called only by the main window, child window, or global floating
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| Name     | Type                      | Mandatory | Description                         |
+| -------- | ------------------------- | --------- | ----------------------------------- |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -6912,6 +6933,7 @@ windowClass.minimize((err: BusinessError) => {
   }
   console.info('Succeeded in minimizing the window.');
 });
+
 ```
 
 ## minimize<sup>11+</sup>
@@ -6932,19 +6954,19 @@ This API can be called only by the main window, child window, or global floating
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -6957,9 +6979,11 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to minimize the window. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## maximize<sup>12+</sup>
+
 maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 
 Maximizes the window. The main window can use this API to maximize. For child windows, you need to set **maximizeSupported** to **true** when creating the window and then call this API to maximize. This API uses a promise to return the result.
@@ -6972,26 +6996,26 @@ Maximizes the window. The main window can use this API to maximize. For child wi
 
 **Parameters**
 
-| Name| Type | Mandatory| Description|
-| ----- | ---------------------------- | -- | --------------------------------- |
-| presentation  | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | No| Layout of the main window or child window when maximized. The default value is **window.MaximizePresentation.ENTER_IMMERSIVE**, indicating that the window enters the full-screen mode when maximized.|
+| Name         | Type                                                         | Mandatory | Description                                                  |
+| ------------ | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | No        | Layout of the main window or child window when maximized. The default value is **window.MaximizePresentation.ENTER_IMMERSIVE**, indicating that the window enters the full-screen mode when maximized. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported.       |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported. |
 
 **Example**
 
@@ -7022,6 +7046,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 };
+
 ```
 
 ## maximize<sup>22+</sup>
@@ -7036,27 +7061,27 @@ Maximizes the window. The main window can use this API to maximize itself. For c
 
 **Parameters**
 
-| Name| Type | Mandatory| Description|
-| ----- | ---------------------------- | -- | --------------------------------- |
-| presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | No| Layout of the main window or child window when maximized. The default value is **window.MaximizePresentation.ENTER_IMMERSIVE**, indicating that the window enters the full-screen mode when maximized.|
-| acrossDisplay | boolean | No| Behavior of the main window in waterfall mode when maximized in the hover state. This parameter can be set only for the main window. Calling it on non-main windows results in error code 1300004.<br>When this parameter is set to **true**:<br>- In the hover state, the window enters waterfall mode directly.<br>- In the unfolded state, the window maximizes and retains waterfall mode when in the hover state.<br>When this parameter is set to **false**:<br>- In the hover state, the window exits waterfall mode and maximizes on one half of the screen (single-sided maximization).<br>- In the unfolded state, the window maximizes and exits waterfall mode when in the hover state.<br>When this parameter is set to **undefined** or not provided, the waterfall mode of the window remains unchanged.<br>- In the hover state, the window maximizes on one half of the screen.<br>- In the unfolded state, the window maximizes and defaults to maintaining waterfall mode when in the hover state.<br>**Device behavior differences**: This API can be properly called only on 2-in-1 devices with folding capabilities. If it is called on other device types, it has no effect.|
+| Name          | Type                                                         | Mandatory | Description                                                  |
+| ------------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| presentation  | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | No        | Layout of the main window or child window when maximized. The default value is **window.MaximizePresentation.ENTER_IMMERSIVE**, indicating that the window enters the full-screen mode when maximized. |
+| acrossDisplay | boolean                                                      | No        | Behavior of the main window in waterfall mode when maximized in the hover state. This parameter can be set only for the main window. Calling it on non-main windows results in error code 1300004.<br>When this parameter is set to **true**:<br>- In the hover state, the window enters waterfall mode directly.<br>- In the unfolded state, the window maximizes and retains waterfall mode when in the hover state.<br>When this parameter is set to **false**:<br>- In the hover state, the window exits waterfall mode and maximizes on one half of the screen (single-sided maximization).<br>- In the unfolded state, the window maximizes and exits waterfall mode when in the hover state.<br>When this parameter is set to **undefined** or not provided, the waterfall mode of the window remains unchanged.<br>- In the hover state, the window maximizes on one half of the screen.<br>- In the unfolded state, the window maximizes and defaults to maintaining waterfall mode when in the hover state.<br>**Device behavior differences**: This API can be properly called only on 2-in-1 devices with folding capabilities. If it is called on other device types, it has no effect. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported.       |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported. |
 
 **Example**
 
@@ -7083,9 +7108,11 @@ export default class EntryAbility extends UIAbility {
     });
   }
 };
+
 ```
 
 ## setResizeByDragEnabled<sup>14+</sup>
+
 setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Sets whether to enable the main window or child window with decorations to resize itself by dragging. This API uses an asynchronous callback to return the result.
@@ -7096,21 +7123,21 @@ Sets whether to enable the main window or child window with decorations to resiz
 
 **Parameters**
 
-| Name| Type | Mandatory| Description|
-| ----- | ---------------------------- | -- | --------------------------------- |
-| enable  | boolean | Yes| Whether to enable the window to resize itself by dragging. **true** to enable, **false** otherwise.|
-| callback  | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| Name     | Type                      | Mandatory | Description                                                  |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| enable   | boolean                   | Yes       | Whether to enable the window to resize itself by dragging. **true** to enable, **false** otherwise. |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -7127,9 +7154,11 @@ try {
 } catch (exception) {
   console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setResizeByDragEnabled<sup>14+</sup>
+
 setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 
 Sets whether to enable the main window or child window with decorations to resize itself by dragging. This API uses a promise to return the result.
@@ -7140,26 +7169,26 @@ Sets whether to enable the main window or child window with decorations to resiz
 
 **Parameters**
 
-| Name| Type | Mandatory| Description|
-| ----- | ---------------------------- | -- | --------------------------------- |
-| enable  | boolean | Yes| Whether to enable the window to resize itself by dragging. **true** to enable, **false** otherwise.|
+| Name   | Type    | Mandatory | Description                                                  |
+| ------ | ------- | --------- | ------------------------------------------------------------ |
+| enable | boolean | Yes       | Whether to enable the window to resize itself by dragging. **true** to enable, **false** otherwise. |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -7177,6 +7206,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the function of disabling the resize by drag window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## recover<sup>11+</sup>
@@ -7193,19 +7223,19 @@ Restores the main window from the full-screen, maximized, or split-screen mode t
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal. |
+| 1300001 | Repeated operation.                                          |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -7235,6 +7265,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## restore<sup>14+</sup>
@@ -7251,21 +7282,20 @@ Restores the main window from minimization to the foreground, returning it to it
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| **ID**| **Error Message**                                                |
-| ------------ | ------------------------------------------------------------ |
-| 801          | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002      | This window state is abnormal.                               |
-| 1300003      | This window manager service works abnormally.                |
-| 1300004      | Unauthorized operation.                                      |
-
+| **ID**  | **Error Message**                                            |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -7295,6 +7325,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## getWindowLimits<sup>11+</sup>
@@ -7309,18 +7340,18 @@ Obtains the size limits of this application window, in px.
 
 **Return value**
 
-| Type                         | Description          |
-| ----------------------------- | ------------------ |
-| [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Window size limits.|
+| Type                                                  | Description         |
+| ----------------------------------------------------- | ------------------- |
+| [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Window size limits. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| :------- | :----------------------------- |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| ID      | Error Message                                                |
+| :------ | :----------------------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -7330,6 +7361,7 @@ try {
 } catch (exception) {
   console.error(`Failed to obtain the window limits of window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## getWindowLimitsVP<sup>22+</sup>
@@ -7344,18 +7376,18 @@ For system windows and global floating windows, the default minimum width and he
 
 **Return value**
 
-| Type                         | Description          |
-| ----------------------------- | ------------------ |
-| [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Window size limits.|
+| Type                                                  | Description         |
+| ----------------------------------------------------- | ------------------- |
+| [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Window size limits. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| :------- | :----------------------------- |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| ID      | Error Message                                                |
+| :------ | :----------------------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -7365,13 +7397,14 @@ try {
 } catch (exception) {
   console.error(`Failed to obtain the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowLimits<sup>11+</sup>
 
 setWindowLimits(windowLimits: WindowLimits): Promise&lt;WindowLimits&gt;
 
-Sets the size limits for this application window. This API uses a promise to return the result.
+Sets the size limits for this window. This API uses a promise to return the result.
 
 By default, system size limits are provided. They are determined by the product configuration and cannot be modified.
 
@@ -7383,27 +7416,27 @@ If **setWindowLimits** has not been called, you can call [getWindowLimits](#getw
 
 **Parameters**
 
-| Name      | Type                         | Mandatory| Description                          |
-| :----------- | :---------------------------- | :--- | :----------------------------- |
-| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Yes  | Target size limits, in px or vp.|
+| Name         | Type                                                  | Mandatory | Description                      |
+| :----------- | :---------------------------------------------------- | :-------- | :------------------------------- |
+| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Yes       | Target size limits, in px or vp. |
 
 **Return value**
 
-| Type                                        | Description                               |
-| :------------------------------------------- | :---------------------------------- |
-| Promise&lt;[WindowLimits](arkts-apis-window-i.md#windowlimits11)&gt; | Promise used to return the final size limits, which are the intersection between the passed-in size limits and the system size limits.|
+| Type                                                         | Description                                                  |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Promise&lt;[WindowLimits](arkts-apis-window-i.md#windowlimits11)&gt; | Promise used to return the final size limits, which are the intersection between the passed-in size limits and the system size limits. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                     |
-| :------- | :-------------------------------------------- |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
-| 1300003  | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| ID      | Error Message                                                |
+| :------ | :----------------------------------------------------------- |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -7425,13 +7458,14 @@ try {
 } catch (exception) {
   console.error(`Failed to change the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowLimits<sup>15+</sup>
 
 setWindowLimits(windowLimits: WindowLimits, isForcible: boolean): Promise&lt;WindowLimits&gt;
 
-Sets the size limits for this application window. This API uses a promise to return the result.
+Sets the size limits for this window. This API uses a promise to return the result.
 
 By default, system size limits are provided. They are determined by the product configuration and cannot be modified.
 
@@ -7443,34 +7477,34 @@ If **setWindowLimits** has not been called, you can call [getWindowLimits](#getw
 
 **Device behavior differences**
 
-Before API version 19, this API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+In versions earlier than <!--RP2-->OpenHarmony 6.0<!--RP2End-->, this API can be called on 2-in-1 devices, and error code 801 is returned on other devices.
 
-Starting from API version 19, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+Since <!--RP2-->OpenHarmony 6.0<!--RP2End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
-| Name      | Type                         | Mandatory| Description                          |
-| :----------- | :---------------------------- | :--- | :----------------------------- |
-| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Yes  | Target size limits, in px or vp.|
-| isForcible | boolean | Yes  | Whether to forcibly set the window size limits.<br>When the unit of [windowLimits](arkts-apis-window-i.md#windowlimits11) is vp, both **true** and **false** are treated as **false**, and the minimum and maximum values for window width and height are determined by system constraints.<br>When the unit of [windowLimits](arkts-apis-window-i.md#windowlimits11) is px, if this parameter is set to **true**, the minimum window width and height are the smaller value between the system constraints and 40 vp, and the maximum window width and height are subject to system constraints. If this parameter is set to **false**, both the minimum and maximum values for window width and height are subject to system constraints.|
+| Name         | Type                                                  | Mandatory | Description                                                  |
+| :----------- | :---------------------------------------------------- | :-------- | :----------------------------------------------------------- |
+| windowLimits | [WindowLimits](arkts-apis-window-i.md#windowlimits11) | Yes       | Target size limits, in px or vp.                             |
+| isForcible   | boolean                                               | Yes       | Whether to forcibly set the window size limits.<br>When the unit of the input parameter [windowLimits](arkts-apis-window-i.md#windowlimits11) is vp, the value is processed as false regardless of whether it is set to true or false. The minimum and maximum values of the window width and height depend on the system restrictions.<br>If the unit of the input parameter [windowLimits](arkts-apis-window-i.md#windowlimits11) is px, set this parameter to true, indicating that the minimum width and height of the window are subject to the smaller value between the system limit and 40 vp, and the maximum width and height of the window are subject to the system limit. If this parameter is set to false, the minimum and maximum widths and heights of the window are subject to the system limit. |
 
 **Return value**
 
-| Type                                        | Description                               |
-| :------------------------------------------- | :---------------------------------- |
-| Promise&lt;[WindowLimits](arkts-apis-window-i.md#windowlimits11)&gt; | Promise used to return the new window size limits. Depending on the value of **isForcible**, the return value represents the intersection between the value passed and the system size limits.|
+| Type                                                         | Description                                                  |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Promise&lt;[WindowLimits](arkts-apis-window-i.md#windowlimits11)&gt; | Promise used to return the new window size limits.<br>If the unit of the input parameter [windowLimits](arkts-apis-window-i.md#windowlimits11) is vp, the intersection of the input parameter and the default window size limit of the system is returned.<br>If the unit of the input parameter [windowLimits](arkts-apis-window-i.md#windowlimits11) is px, the intersection of the input parameter and the default window size limit of the system is returned when isForcible is set to false. The intersection of the input parameter and the smaller value between the system limit and 40 vp, and the maximum value of the system limit is returned when isForcible is set to true. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                     |
-| :------- | :-------------------------------------------- |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
-| 1300003  | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| ID      | Error Message                                                |
+| :------ | :----------------------------------------------------------- |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -7492,6 +7526,7 @@ try {
 } catch (exception) {
   console.error(`Failed to change the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowMask<sup>12+</sup>
@@ -7509,27 +7544,27 @@ Error code 1300002 may be returned only when multiple threads operate the same w
 
 **Parameters**
 
-| Name      | Type                         | Mandatory| Description                          |
-| :----------- | :---------------------------- | :--- | :----------------------------- |
-| windowMask | Array&lt;Array&lt;number&gt;&gt; | Yes  | Mask. The value can only be a two-dimensional array containing the window size in pixels, with each element in the array set to either **0** or **1**. The value **0** indicates that the pixel is transparent, and **1** indicates that the pixel is opaque. If the passed-in pixel array does not match the window size or the value of any element in the array is not **0** or **1**, the value is invalid.|
+| Name       | Type                             | Mandatory | Description                                                  |
+| :--------- | :------------------------------- | :-------- | :----------------------------------------------------------- |
+| windowMask | Array&lt;Array&lt;number&gt;&gt; | Yes       | Mask. The value can only be a two-dimensional array containing the window size in pixels, with each element in the array set to either **0** or **1**. The value **0** indicates that the pixel is transparent, and **1** indicates that the pixel is opaque. If the passed-in pixel array does not match the window size or the value of any element in the array is not **0** or **1**, the value is invalid. |
 
 **Return value**
 
-| Type                                        | Description                               |
-| :------------------------------------------- | :---------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| :------------------ | :----------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                     |
-| :------- | :-------------------------------------------- |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
-| 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.                       |
+| ID      | Error Message                                                |
+| :------ | :----------------------------------------------------------- |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -7551,13 +7586,14 @@ try {
 } catch (exception) {
   console.error(`Failed to set the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## keepKeyboardOnFocus<sup>11+</sup>
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
-Sets whether to keep the soft keyboard created by others when a window has focus. This API can be called only by a system window or an application child window.
+Determines whether to retain the soft keyboard created by another window when the current window gains focus. This API is only supported by system windows and application sub-windows.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -7565,20 +7601,20 @@ Sets whether to keep the soft keyboard created by others when a window has focus
 
 **Parameters**
 
-| Name          | Type   | Mandatory| Description                                                        |
-| ---------------- | ------- | ---- | ------------------------------------------------------------ |
-| keepKeyboardFlag | boolean | Yes  | Whether to keep the soft keyboard created by others. **true** to keep, **false** otherwise.|
+| Name             | Type    | Mandatory | Description                                                  |
+| ---------------- | ------- | --------- | ------------------------------------------------------------ |
+| keepKeyboardFlag | boolean | Yes       | Whether to keep the soft keyboard created by others. **true** to keep, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ---------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.           |
-| 1300004 | Unauthorized operation.                  |
+| 1300002 | This window state is abnormal.                               |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -7588,6 +7624,7 @@ try {
 } catch (exception) {
   console.error(`Failed to keep keyboard onFocus. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowDecorVisible<sup>11+</sup>
@@ -7604,20 +7641,19 @@ When the window title bar is hidden and the main window transitions into full-sc
 
 **Parameters**
 
-| Name   | Type   | Mandatory| Description                                         |
-| --------- | ------- | ---- | --------------------------------------------- |
-| isVisible | boolean | Yes  | Whether the title bar is visible. **true** if visible, **false** otherwise.|
+| Name      | Type    | Mandatory | Description                                                  |
+| --------- | ------- | --------- | ------------------------------------------------------------ |
+| isVisible | boolean | Yes       | Whether the title bar is visible. **true** if visible, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -7640,6 +7676,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
       console.error(`Failed to set the visibility of window decor. Cause code: ${exception.code}, message: ${exception.message}`);
   }
 });
+
 ```
 
 ## getWindowDecorVisible<sup>18+</sup>
@@ -7656,19 +7693,18 @@ Checks whether the title bar of this window is visible. In the stage model, this
 
 **Return value**
 
-| Type  | Description                                                        |
-| ------ | ------------------------------------------------------------ |
-| boolean | Check result for whether the title bar is visible. **true** if visible, **false** otherwise.|
+| Type    | Description                                                  |
+| ------- | ------------------------------------------------------------ |
+| boolean | Check result for whether the title bar is visible. **true** if visible, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -7681,6 +7717,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
     console.error(`Failed to get the window decor visibility. Cause code: ${exception.code}, message: ${exception.message}`);
   }
 })
+
 ```
 
 ## setWindowTitle<sup>15+</sup>
@@ -7697,26 +7734,25 @@ Sets the window title. This API uses a promise to return the result. The setting
 
 **Parameters**
 
-| Name   | Type    | Mandatory| Description                                         |
-| --------- | ------- | ---- | --------------------------------------------- |
-| titleName | string  | Yes  | Window title. The title display area should not go past the left side of the three-button area of the system. Any part that goes beyond will show as an ellipsis.|
+| Name      | Type   | Mandatory | Description                                                  |
+| --------- | ------ | --------- | ------------------------------------------------------------ |
+| titleName | string | Yes       | Window title. The title display area should not go past the left side of the three-button area of the system. Any part that goes beyond will show as an ellipsis. |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -7733,6 +7769,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the window title. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowTitleMoveEnabled<sup>14+</sup>
@@ -7749,20 +7786,20 @@ Enables or disables the capability to move the window (either main window or chi
 
 **Parameters**
 
-| Name   | Type    | Mandatory| Description                                         |
-| --------- | ------- | ---- | --------------------------------------------- |
-| enabled    | boolean | Yes  | Whether to enable the capability to move the window by dragging the title bar and to maximize the window with a double-click. **true** to enable, **false** otherwise.|
+| Name    | Type    | Mandatory | Description                                                  |
+| ------- | ------- | --------- | ------------------------------------------------------------ |
+| enabled | boolean | Yes       | Whether to enable the capability to move the window by dragging the title bar and to maximize the window with a double-click. **true** to enable, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300004  | Unauthorized operation.        |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -7784,6 +7821,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## setSubWindowModal<sup>12+</sup>
@@ -7792,9 +7830,7 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 Enables the modal property of the child window. This API uses a promise to return the result.
 
-This API must be called by a child window and the setting takes effect for the child window.
-
-After the modal property is enabled, the parent window does not respond to user interactions until the child window is closed or the child window's modal property is disabled.
+This API must be called by a child window and the setting takes effect for the child window. After the modal property is enabled, the parent window does not respond to user interactions until the child window is closed or the child window's modal property is disabled.
 
 If this API is called by a main window, an error is reported.
 
@@ -7804,28 +7840,28 @@ If this API is called by a main window, an error is reported.
 
 **Parameters**
 
-| Name   | Type   | Mandatory| Description                                         |
-| --------- | ------- | ---- | --------------------------------------------- |
-| isModal | boolean | Yes  | Whether to enable the modal property of the child window. **true** to enable, **false** otherwise.|
+| Name    | Type    | Mandatory | Description                                                  |
+| ------- | ------- | --------- | ------------------------------------------------------------ |
+| isModal | boolean | Yes       | Whether to enable the modal property of the child window. **true** to enable, **false** otherwise. |
 
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.        |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -7860,6 +7896,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## setSubWindowModal<sup>14+</sup>
@@ -7882,28 +7919,28 @@ If this API is called by a main window, an error is reported.
 
 **Parameters**
 
-| Name   | Type   | Mandatory| Description                                         |
-| --------- | ------- | ---- | --------------------------------------------- |
-| isModal | boolean | Yes  | Whether to enable the modal property of the child window. **true** to enable, **false** otherwise. Currently, this parameter can only be set to **true**.|
-| modalityType | [ModalityType](arkts-apis-window-e.md#modalitytype14) | Yes  | Modality type of the child window.|
+| Name         | Type                                                  | Mandatory | Description                                                  |
+| ------------ | ----------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| isModal      | boolean                                               | Yes       | Whether to enable the modal property of the child window. **true** to enable, **false** otherwise. Currently, this parameter can only be set to **true**. |
+| modalityType | [ModalityType](arkts-apis-window-e.md#modalitytype14) | Yes       | Modality type of the child window.                           |
 
 **Return value**
 
-| Type| Description|
-| ------------------- | ------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.        |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -7939,6 +7976,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## setWindowDecorHeight<sup>11+</sup>
@@ -7959,20 +7997,19 @@ When the main window transitions into full-screen mode, hovering the mouse over 
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| height | number | Yes  |Height of the title bar. It takes effect only for the window with the title bar. The value is an integer in the range [37,112]. The unit is vp. If a floating-point number is passed in, the value is rounded down. A value outside the range is invalid.|
+| Name   | Type   | Mandatory | Description                                                  |
+| ------ | ------ | --------- | ------------------------------------------------------------ |
+| height | number | Yes       | Height of the title bar. It takes effect only for the window with the title bar. The value is an integer in the range [37,112]. The unit is vp. If a floating-point number is passed in, the value is rounded down. A value outside the range is invalid. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -7986,6 +8023,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
     console.error(`Failed to set the height of window decor. Cause code: ${exception.code}, message: ${exception.message}`);
   }
 })
+
 ```
 
 ## setDecorButtonStyle<sup>14+</sup>
@@ -8000,27 +8038,26 @@ Sets the button style of the decoration bar. The setting takes effect only for t
 
 **Device behavior differences**
 
-Before API version 18, this API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+In versions earlier than OpenHarmony 5.1.0, this API can be called on 2-in-1 devices, and error code 801 is returned on other devices.
 
-Starting from API version 18, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+In OpenHarmony 5.1.0 and later versions, this API can be called on devices that support the free window state and are in the free window state. On devices that support the free window state but are not in the free window state, or on devices that do not support the free window state, calling this API will return error code 801.
 
 **Parameters**
 
-| Name   | Type   | Mandatory| Description                                         |
-| --------- | ------- | ---- | --------------------------------------------- |
-| dectorStyle | [DecorButtonStyle](arkts-apis-window-i.md#decorbuttonstyle14)  | Yes  | Button style of the decoration bar.|
+| Name        | Type                                                         | Mandatory | Description                         |
+| ----------- | ------------------------------------------------------------ | --------- | ----------------------------------- |
+| dectorStyle | [DecorButtonStyle](arkts-apis-window-i.md#decorbuttonstyle14) | Yes       | Button style of the decoration bar. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300004  | Unauthorized operation. |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -8051,6 +8088,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## getDecorButtonStyle<sup>14+</sup>
@@ -8065,26 +8103,26 @@ Obtains the button style of the decoration bar. The setting takes effect only fo
 
 **Device behavior differences**
 
-Before API version 18, this API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+In versions earlier than OpenHarmony 5.1.0, this API can be called on 2-in-1 devices, and error code 801 is returned on other devices.
 
-Starting from API version 18, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+In OpenHarmony 5.1.0 and later versions, this API can be called on devices that support the free window state and are in the free window state. On devices that support the free window state but are not in the free window state, or on devices that do not support the free window state, calling this API will return error code 801.
 
 **Return value**
 
-| Type                                 | Description                                                        |
-| ------------------------------------- | ------------------------------------------------------------ |
-| [DecorButtonStyle](arkts-apis-window-i.md#decorbuttonstyle14) | Button style on the decoration bar of the current window. The decoration button area is located in the top-right corner of the window.|
+| Type                                                         | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [DecorButtonStyle](arkts-apis-window-i.md#decorbuttonstyle14) | Button style on the decoration bar of the current window. The decoration button area is located in the top-right corner of the window. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -8095,6 +8133,7 @@ try {
 } catch (exception) {
   console.error(`Failed to get the style of button. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## getWindowDecorHeight<sup>11+</sup>
@@ -8111,19 +8150,18 @@ Obtains the height of the title bar of this window. This API takes effect for th
 
 **Return value**
 
-| Type  | Description                                                        |
+| Type   | Description                                                  |
 | ------ | ------------------------------------------------------------ |
-| number | Height of the title bar. The value is an integer in the range [37,112]. The unit is vp.|
+| number | Height of the title bar. The value is an integer in the range [37,112]. The unit is vp. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -8136,6 +8174,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
     console.error(`Failed to get the height of window decor. Cause code: ${exception.code}, message: ${exception.message}`);
   }
 })
+
 ```
 
 ## getTitleButtonRect<sup>11+</sup>
@@ -8150,19 +8189,18 @@ Obtains the rectangle that holds the minimize, maximize, and close buttons on th
 
 **Return value**
 
-| Type                                 | Description                                                        |
-| ------------------------------------- | ------------------------------------------------------------ |
-| [TitleButtonRect](arkts-apis-window-i.md#titlebuttonrect11) | Rectangle obtained, which is located in the top-right corner of the window.|
+| Type                                                        | Description                                                  |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| [TitleButtonRect](arkts-apis-window-i.md#titlebuttonrect11) | Rectangle obtained, which is located in the top-right corner of the window. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -8192,6 +8230,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## getWindowStatus<sup>12+</sup>
@@ -8210,18 +8249,18 @@ Obtains the mode of this window.
 
 **Return value**
 
-| Type                          | Description                                  |
-| ------------------------------ | ----------------------------------------|
-| [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | Window mode.                             |
+| Type                                                         | Description  |
+| ------------------------------------------------------------ | ------------ |
+| [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | Window mode. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -8231,6 +8270,7 @@ try {
 } catch (exception) {
   console.error(`Failed to obtain the window status of window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## isFocused<sup>12+</sup>
@@ -8245,18 +8285,17 @@ Checks whether this window is focused.
 
 **Return value**
 
-| Type| Description|
-| ------- | ------------------------------------------------------------------ |
-| boolean | Check result for whether the window is focused. **true** if focused, **false** otherwise.|
+| Type    | Description                                                  |
+| ------- | ------------------------------------------------------------ |
+| boolean | Check result for whether the window is focused. **true** if focused, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
+| ID      | Error Message                  |
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. |
-
 
 **Example**
 
@@ -8267,6 +8306,7 @@ try {
 } catch (exception) {
   console.error(`Failed to check whether the window is focused. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## createSubWindowWithOptions<sup>12+</sup>
@@ -8285,29 +8325,28 @@ Creates a child window under the main window, another child window, or floating 
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| name   | string | Yes  | Name of the child window.|
-| options  | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | Yes  | Parameters used for creating the child window. If **decorEnabled** is set to true, the child window does not use an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). If **decorEnabled** is set to **false**, the child window uses an immersive layout.|
+| Name    | Type                                                         | Mandatory | Description                                                  |
+| ------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| name    | string                                                       | Yes       | Name of the child window.                                    |
+| options | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | Yes       | Parameters used for creating the child window. If **decorEnabled** is set to true, the child window does not use an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). If **decorEnabled** is set to **false**, the child window uses an immersive layout. |
 
 **Return value**
 
-| Type                            | Description                                            |
-| -------------------------------- | ------------------------------------------------ |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to used to return the child window created.|
+| Type                                                 | Description                                              |
+| ---------------------------------------------------- | -------------------------------------------------------- |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to used to return the child window created. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
-| 401     | Parameter error. Possible cause: Incorrect parameter types. |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: Incorrect parameter types.  |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -8329,6 +8368,7 @@ try {
 } catch (exception) {
   console.error(`Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setParentWindow<sup>19+</sup>
@@ -8349,27 +8389,27 @@ If the child window is focused and the new parent window has a modal child windo
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description          |
-| ------ | ------ | ---- | -------------- |
-| windowId  | number | Yes  | Parent window ID, which must be an integer. You are advised to call [getWindowProperties()](#getwindowproperties9) to obtain the parent window ID.|
+| Name     | Type   | Mandatory | Description                                                  |
+| -------- | ------ | --------- | ------------------------------------------------------------ |
+| windowId | number | Yes       | Parent window ID, which must be an integer. You are advised to call [getWindowProperties()](#getwindowproperties9) to obtain the parent window ID. |
 
 **Return value**
 
-| Type               | Description                    |
-| ------------------- | ------------------------|
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invalid. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
+| 1300009 | The parent window is invalid.                                |
 
 **Example**
 
@@ -8389,6 +8429,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the new parent window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## getParentWindow<sup>19+</sup>
@@ -8405,20 +8446,20 @@ Obtains the parent window of this child window.
 
 **Return value**
 
-| Type| Description|
-| ----------------- | ------------------- |
-| [Window](arkts-apis-window-Window.md) | Parent window.|
+| Type                                  | Description    |
+| ------------------------------------- | -------------- |
+| [Window](arkts-apis-window-Window.md) | Parent window. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invalid. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300004 | Unauthorized operation.                                      |
+| 1300009 | The parent window is invalid.                                |
 
 **Example**
 
@@ -8431,6 +8472,7 @@ try {
 } catch (exception) {
   console.error(`Failed to get the parent window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowTitleButtonVisible<sup>14+</sup>
@@ -8447,22 +8489,22 @@ Shows or hides the maximize, minimize, and close buttons on the title bar of the
 
 **Parameters**
 
-| Name   | Type   | Mandatory| Description                                         |
-| --------- | ------- | ---- | --------------------------------------------- |
-| isMaximizeButtonVisible | boolean | Yes  | Whether to show the maximize button. **true** to show, **false** otherwise. If the maximize button is hidden, the corresponding restore button is also hidden in the maximize scenario.|
-| isMinimizeButtonVisible | boolean | Yes  | Whether to show the minimize button. **true** to show, **false** otherwise.|
-| isCloseButtonVisible | boolean | No  | Whether to show the close button. **true** to show, **false** otherwise.|
+| Name                    | Type    | Mandatory | Description                                                  |
+| ----------------------- | ------- | --------- | ------------------------------------------------------------ |
+| isMaximizeButtonVisible | boolean | Yes       | Whether to show the maximize button. **true** to show, **false** otherwise. If the maximize button is hidden, the corresponding restore button is also hidden in the maximize scenario. |
+| isMinimizeButtonVisible | boolean | Yes       | Whether to show the minimize button. **true** to show, **false** otherwise. |
+| isCloseButtonVisible    | boolean | No        | Whether to show the close button. **true** to show, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300004  | Unauthorized operation. |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -8497,6 +8539,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setWindowTopmost<sup>14+</sup>
@@ -8517,28 +8560,27 @@ Applications use custom shortcut keys to pin or unpin the main window.
 
 **Parameters**
 
-| Name   | Type   | Mandatory| Description                                         |
-| --------- | ------- | ---- | --------------------------------------------- |
-| isWindowTopmost | boolean | Yes  | Whether to pin the main window on top. **true** to pin, **false** otherwise.|
+| Name            | Type    | Mandatory | Description                                                  |
+| --------------- | ------- | --------- | ------------------------------------------------------------ |
+| isWindowTopmost | boolean | Yes       | Whether to pin the main window on top. **true** to pin, **false** otherwise. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                      |
-| -------- | ------------------------------ |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300004  | Unauthorized operation. |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -8595,6 +8637,7 @@ struct Index {
     })
   }
 }
+
 ```
 
 ## raiseToAppTop<sup>14+</sup>
@@ -8609,20 +8652,20 @@ Before calling this API, ensure that the child window has been created and [show
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| ID      | Error Message                                 |
+| ------- | --------------------------------------------- |
+| 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invalid. |
+| 1300004 | Unauthorized operation.                       |
+| 1300009 | The parent window is invalid.                 |
 
 **Example**
 
@@ -8652,6 +8695,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setRaiseByClickEnabled<sup>14+</sup>
@@ -8668,28 +8712,28 @@ Before calling this API, ensure that the child window has been created and [show
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| enable   | boolean                   | Yes  | Whether a child window can be raised by clicking. **true** if the child window can be raised by clicking, **false** otherwise.|
+| Name   | Type    | Mandatory | Description                                                  |
+| ------ | ------- | --------- | ------------------------------------------------------------ |
+| enable | boolean | Yes       | Whether a child window can be raised by clicking. **true** if the child window can be raised by clicking, **false** otherwise. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | ------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invalid. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
+| 1300009 | The parent window is invalid.                                |
 
 **Example**
 
@@ -8724,6 +8768,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## enableLandscapeMultiWindow<sup>12+</sup>
@@ -8740,17 +8785,17 @@ This API takes effect only for the main window of the application. In addition, 
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
+| ID      | Error Message                                 |
+| ------- | --------------------------------------------- |
+| 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -8782,6 +8827,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## disableLandscapeMultiWindow<sup>12+</sup>
@@ -8798,17 +8844,17 @@ This API takes effect only for the main window of the application. In addition, 
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal.               |
+| ID      | Error Message                                 |
+| ------- | --------------------------------------------- |
+| 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
 
 **Example**
@@ -8840,6 +8886,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setDialogBackGestureEnabled<sup>12+</sup>
@@ -8854,27 +8901,27 @@ Sets whether the modal window responds to the back gesture event. An error code 
 
 **Parameters**
 
-| Name     | Type   | Mandatory| Description                                                        |
-| ---------- | ------- | ---- | ------------------------------------------------------------ |
-| enabled    | boolean | Yes  | Whether to respond to the back gesture event.<br>**true** means to respond to the back gesture event and trigger the **onBackPress** callback, **false** otherwise.<br>|
+| Name    | Type    | Mandatory | Description                                                  |
+| ------- | ------- | --------- | ------------------------------------------------------------ |
+| enabled | boolean | Yes       | Whether to respond to the back gesture event.<br>**true** means to respond to the back gesture event and trigger the **onBackPress** callback, **false** otherwise.<br> |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -8914,6 +8961,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ```ts
@@ -8938,6 +8986,7 @@ struct Index {
     return true;
   }
 }
+
 ```
 
 ## enableDrag<sup>20+</sup>
@@ -8954,26 +9003,26 @@ After window dragging is enabled, the window can be resized using the mouse or t
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | ---------------------------- | -- | --------- |
-| enable| boolean | Yes| Whether to enable dragging.<br>**true** to enable, **false** otherwise.<br>|
+| Name   | Type    | Mandatory | Description                                                  |
+| ------ | ------- | --------- | ------------------------------------------------------------ |
+| enable | boolean | Yes       | Whether to enable dragging.<br>**true** to enable, **false** otherwise.<br> |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| -------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -8995,9 +9044,7 @@ try {
 
 startMoving(): Promise&lt;void&gt;
 
-Starts moving this window. This API uses a promise to return the result.
-
-In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect for system windows, application main windows, application child windows, global floating windows, and modal windows. In non-freeform window mode, this API takes effect only for system windows, application child windows, global floating windows, and modal windows.
+In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API takes effect for system windows, application main windows, application child windows, global floating windows, and modal windows. In non-freeform window mode, this API takes effect only for system windows, application child windows, global floating windows, and modal windows. Starts moving this window. This API uses a promise to return the result.
 
 The window moves along with the cursor or touch point only when this API is called in the callback function of [onTouch](./arkui-ts/ts-universal-events-touch.md#touchevent), where the event type is **TouchType.Down**.
 
@@ -9011,27 +9058,28 @@ In click-and-drag scenarios, if you do not want the drag to start as soon as you
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| -------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300001 | Repeated operation.                                          |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
 ```ts
-// ets/pages/Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -9040,26 +9088,6 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Blank('160')
-          .color(Color.Blue)
-          .onTouch((event: TouchEvent) => {
-            if (event.type === TouchType.Down) {
-              try {
-                let windowClass: window.Window = window.findWindow("subWindow");
-                if (!windowClass) {
-                  console.error('Failed to find window.');
-                  return;
-                }
-                windowClass.startMoving().then(() => {
-                  console.info('Succeeded in starting moving window.')
-                }).catch((err: BusinessError) => {
-                  console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
-                });
-              } catch (exception) {
-                console.error(`Failed to start moving window. Cause code: ${exception.code}, message: ${exception.message}`);
-              }
-            }
-          })
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
@@ -9095,6 +9123,7 @@ struct Index {
     }.height('100%').width('100%')
   }
 }
+
 ```
 
 ## startMoving<sup>15+</sup>
@@ -9117,35 +9146,36 @@ In click-and-drag scenarios, if you do not want the drag to start as soon as you
 
 **Parameters**
 
-| Name    | Type      | Mandatory    | Description                                                |
-| --------- | --------- | ------- |----------------------------------------------------|
-| offsetX | number | Yes| X-axis offset of the cursor position relative to the top-left corner of the window during movement, measured in px. This parameter only accepts integer values; any floating-point input will be rounded down. Negative values or values exceeding the window width are invalid. The window width can be obtained from [WindowProperties](arkts-apis-window-i.md#windowproperties).|
-| offsetY | number | Yes| Y-axis offset of the cursor position relative to the top-left corner of the window during movement, measured in px. This parameter only accepts integer values; any floating-point input will be rounded down. Negative values or values exceeding the window height are invalid. The window height can be obtained from [WindowProperties](arkts-apis-window-i.md#windowproperties).|
+| Name    | Type   | Mandatory | Description                                                  |
+| ------- | ------ | --------- | ------------------------------------------------------------ |
+| offsetX | number | Yes       | X-axis offset of the cursor position relative to the top-left corner of the window during movement, measured in px. This parameter only accepts integer values; any floating-point input will be rounded down. Negative values or values exceeding the window width are invalid. The window width can be obtained from [WindowProperties](arkts-apis-window-i.md#windowproperties). |
+| offsetY | number | Yes       | Y-axis offset of the cursor position relative to the top-left corner of the window during movement, measured in px. This parameter only accepts integer values; any floating-point input will be rounded down. Negative values or values exceeding the window height are invalid. The window height can be obtained from [WindowProperties](arkts-apis-window-i.md#windowproperties). |
 
 **Return value**
 
-| Type               | Description                        |
-| ------------------- |----------------------------|
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ---- | -------------------------------------------- |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300001 | Repeated operation.                                          |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
 ```ts
-// ets/pages/Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -9154,26 +9184,6 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Blank('160')
-          .color(Color.Blue)
-          .onTouch((event: TouchEvent) => {
-            if (event.type === TouchType.Down) {
-              try {
-                let windowClass: window.Window = window.findWindow("subWindow");
-                if (!windowClass) {
-                  console.error('Failed to find window.');
-                  return;
-                }
-                windowClass.startMoving(100, 50).then(() => {
-                  console.info('Succeeded in starting moving window.')
-                }).catch((err: BusinessError) => {
-                  console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
-                });
-              } catch (exception) {
-                console.error(`Failed to start moving window. Cause code: ${exception.code}, message: ${exception.message}`);
-              }
-            }
-          })
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
@@ -9221,20 +9231,20 @@ Stops window movement when a window is being dragged. This API uses a promise to
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | -------------------------|
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| -------- | -------------------------------------------- |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9263,15 +9273,18 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## setGestureBackEnabled<sup>13+<sup>
 
 setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
-Sets whether to enable the back gesture feature in this window. This API takes effect only in full-screen mode of the main window.
-When the back gesture feature is disabled, the application does not recognize the gesture hot zone for back redirection, causing the side-swipe gesture non-functional. However, after you switch to another application or return to the home screen, the gesture hot zone functions normally and the side-swipe gesture works properly.
-When the back gesture feature is enabled, the application recognizes the gesture hot zone for back redirection, allowing the side-swipe gesture to function as expected.
+Sets whether to enable the gesture-based swipe-to-return function for the current window. This API can be successfully called only for the main window. If it is called for other types of windows, the error code 1300004 will be returned.
+
+After this function is enabled, it takes effect only when the window is in full-screen mode and in the foreground with the focus.
+
+After this function is disabled, the gesture hot zone of the current application is disabled, and the swipe-to-return function becomes invalid. After the user switches to another application or returns to the home screen, the gesture hot zone is restored, and the swipe-to-return function becomes normal.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -9281,27 +9294,27 @@ When the back gesture feature is enabled, the application recognizes the gesture
 
 **Parameters**
 
-| Name    | Type      | Mandatory    | Description                                          |
-| ---------- | --------- | -------- | --------------------------------------------- |
-| enabled    | boolean   | Yes      | Whether to enable the back gesture feature. **true** to enable, **false** otherwise.|
+| Name    | Type    | Mandatory | Description                                                  |
+| ------- | ------- | --------- | ------------------------------------------------------------ |
+| enabled | boolean | Yes       | Whether to enable the back gesture feature. **true** to enable, **false** otherwise. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9339,35 +9352,37 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## isGestureBackEnabled<sup>13+<sup>
 
 isGestureBackEnabled(): boolean
 
-Checks whether the back gesture feature is enabled in this window. This API takes effect only in full-screen mode of the main window and cannot be used on 2-in-1 devices.
+Obtains whether the back gesture function is enabled for the current window. This API can be successfully called only for the main window. If it is called for other types of windows, error code 1300004 is returned.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: When this API is called on 2-in-1 devices, error code 801 is returned. However, it can be called properly on other devices.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
 **Return value**
 
-| Type               | Description                                          |
-| ------------------- | --------------------------------------------- |
-| boolean             | Whether the back gesture feature is enabled. **true** if enabled, **false** otherwise.|
+| Type    | Description                                                  |
+| ------- | ------------------------------------------------------------ |
+| boolean | Whether the back gesture feature is enabled. **true** if enabled, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9400,6 +9415,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setWindowShadowRadius<sup>17+</sup>
@@ -9410,27 +9426,30 @@ Sets the blur radius of the shadow on the edges of a child window or floating wi
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+In versions earlier than OpenHarmony 5.1.0, this API can be called on 2-in-1 devices and tablets, and error code 801 will be returned on other devices.
+
+In OpenHarmony 5.1.0 and later versions, this API can be called on phones, tablets, and 2-in-1 devices. For other devices, error code 801 is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
 **Parameters**
 
-| Name | Type  | Mandatory| Description                                                         |
-| ------- | ------ | ---- |-------------------------------------------------------------|
-| radius  | number | Yes  | Radius of the shadow, measured in px. The value is a floating-point number greater than or equal to 0.0, and the value **0.0** means that the shadow is disabled for the window borders.    |
+| Name   | Type   | Mandatory | Description                                                  |
+| ------ | ------ | --------- | ------------------------------------------------------------ |
+| radius | number | Yes       | Radius of the shadow, measured in px. The value is a floating-point number greater than or equal to 0.0, and the value **0.0** means that the shadow is disabled for the window borders. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID  | Error Message                                                                                                              |
-|---------|--------------------------------------------------------------------------------------------------------------------|
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation.  |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported.      |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9440,6 +9459,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set shadow. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowCornerRadius<sup>17+</sup>
@@ -9458,33 +9478,33 @@ Before calling this API, you can call [getWindowCornerRadius()](#getwindowcorner
 
 Before <!--RP16-->OpenHarmony 6.0<!--RP16End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
-Starting from <!--RP16-->OpenHarmony 6.0<!--RP16End-->, this API can be called on phones, tablets, and 2-in-1 devices.
+In <!--RP16-->OpenHarmony 6.0<!--RP16End--> and later versions, this API can be called on phones, tablets, and 2-in-1 devices. On other devices, this API returns error code 801.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
 **Parameters**
 
-| Name     | Type   | Mandatory| Description                                                |
-| ----------- | ------- | ---- |----------------------------------------------------|
-| cornerRadius | number | Yes  | Radius of the rounded corners, measured in vp. The value is a floating-point number greater than or equal to 0.0. The value **0.0** means that the window does not use rounded corners.|
+| Name         | Type   | Mandatory | Description                                                  |
+| ------------ | ------ | --------- | ------------------------------------------------------------ |
+| cornerRadius | number | Yes       | Radius of the rounded corners, measured in vp. The value is a floating-point number greater than or equal to 0.0. The value **0.0** means that the window does not use rounded corners. |
 
 **Return value**
 
-| Type| Description|
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID  | Error Message                                                                                                             |
-|---------|-------------------------------------------------------------------------------------------------------------------|
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.  |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9502,6 +9522,7 @@ try {
   console.error(`Failed to set corner radius. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 
+
 ```
 
 ## getWindowCornerRadius<sup>17+</sup>
@@ -9518,20 +9539,19 @@ Obtains the radius of rounded corners of a child window or floating window. If [
 
 **Return value**
 
-| Type| Description|
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| number | Radius of the rounded corner of the child window or floating window, measured in vp.|
+| Type   | Description                                                  |
+| ------ | ------------------------------------------------------------ |
+| number | Radius of the rounded corner of the child window or floating window, measured in vp. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID  | Error Message                                                                                                             |
-|---------|-------------------------------------------------------------------------------------------------------------------|
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300004 | Unauthorized operation.  |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9541,6 +9561,7 @@ try {
 } catch (exception) {
   console.error(`Failed to get corner radius. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setExclusivelyHighlighted<sup>15+<sup>
@@ -9557,27 +9578,27 @@ This API does not take effect for the main window or modal window.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ----------- | ------- | -- | -------------------------------------------------------- |
-| exclusivelyHighlighted | boolean | Yes| Whether to set exclusive highlight for the window. **true** to set exclusive highlight, **false** otherwise. |
+| Name                   | Type    | Mandatory | Description                                                  |
+| ---------------------- | ------- | --------- | ------------------------------------------------------------ |
+| exclusivelyHighlighted | boolean | Yes       | Whether to set exclusive highlight for the window. **true** to set exclusive highlight, **false** otherwise. |
 
 **Return value**
 
-| Type| Description|
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9595,6 +9616,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the window to be exclusively highlight. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## isWindowHighlighted<sup>18+<sup>
@@ -9611,19 +9633,18 @@ You can use [on('windowHighlightChange')](#onwindowhighlightchange15) to listen 
 
 **Return value**
 
-| Type               | Description                                          |
-| ------------------- | --------------------------------------------- |
-| boolean             | Check result for whether the window is active. **true** if active, **false** otherwise.|
+| Type    | Description                                                  |
+| ------- | ------------------------------------------------------------ |
+| boolean | Check result for whether the window is active. **true** if active, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
-
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
 
 **Example**
 
@@ -9636,6 +9657,7 @@ try {
 } catch (exception) {
   console.error(`Failed to get the window highlight status.. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setFollowParentMultiScreenPolicy<sup>17+<sup>
@@ -9656,27 +9678,27 @@ However, calling this API on the child window enables it to span multiple screen
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ----------- | ------- | -- | -------------------------------------------------------- |
-| enabled | boolean | Yes| Whether the child window can span multiple screens and be simultaneously displayed while its parent window is being dragged or resized. **true** if supported, **false** otherwise. |
+| Name    | Type    | Mandatory | Description                                                  |
+| ------- | ------- | --------- | ------------------------------------------------------------ |
+| enabled | boolean | Yes       | Whether the child window can span multiple screens and be simultaneously displayed while its parent window is being dragged or resized. **true** if supported, **false** otherwise. |
 
 **Return value**
 
-| Type| Description|
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported.Function setFollowParentMultiScreenPolicy can not work correctly due to limited device capabilities.|
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| 801     | Capability not supported.Function setFollowParentMultiScreenPolicy can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9695,6 +9717,7 @@ try {
 } catch (exception) {
   console.error(`Failed to set the sub window supports multi-screen simultaneous display. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setFollowParentWindowLayoutEnabled<sup>17+</sup>
@@ -9721,27 +9744,27 @@ Once this API is successfully called, the [setRelativePositionToParentWindowEnab
 
 **Parameters**
 
-| Name| Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| enabled | boolean | Yes  | Whether to follow the layout of the main window. **true** to follow, **false** otherwise.|
+| Name    | Type    | Mandatory | Description                                                  |
+| ------- | ------- | --------- | ------------------------------------------------------------ |
+| enabled | boolean | Yes       | Whether to follow the layout of the main window. **true** to follow, **false** otherwise. |
 
 **Return value**
 
-| Type | Description |
-| --- | --- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| --- | --- |
-| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9775,6 +9798,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setRelativePositionToParentWindowEnabled<sup>20+<sup>
@@ -9799,29 +9823,29 @@ Once this API is successfully called, the [setFollowParentWindowLayoutEnabled()]
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| ----------- | ------- | -- | -------------------------------------------------------- |
-| enabled | boolean | Yes| Whether to maintain a fixed relative position to the main window. **true** to maintain, **false** otherwise. |
-| anchor | [WindowAnchor](arkts-apis-window-e.md#windowanchor20) | No| Type of anchor point used to maintain the relative position. This parameter takes effect only when **enabled** is set to **true**. The default value is **window.WindowAnchor.TopStart**, indicating that the default anchor point is the top-left corner of the window. |
-| offsetX | number | No| X-axis offset between the anchor points of the child window and the main window, in px. This parameter takes effect only when **enabled** is set to **true**. Only integer values are supported, and Non-integer values are rounded down. The default value is **0**. |
-| offsetY | number | No| Y-axis offset between the anchor points of the child window and the main window, in px. This parameter takes effect only when **enabled** is set to **true**. Only integer values are supported, and Non-integer values are rounded down. The default value is **0**. |
+| Name    | Type                                                  | Mandatory | Description                                                  |
+| ------- | ----------------------------------------------------- | --------- | ------------------------------------------------------------ |
+| enabled | boolean                                               | Yes       | Whether to maintain a fixed relative position to the main window. **true** to maintain, **false** otherwise. |
+| anchor  | [WindowAnchor](arkts-apis-window-e.md#windowanchor20) | No        | Type of anchor point used to maintain the relative position. This parameter takes effect only when **enabled** is set to **true**. The default value is **window.WindowAnchor.TopStart**, indicating that the default anchor point is the top-left corner of the window. |
+| offsetX | number                                                | No        | X-axis offset between the anchor points of the child window and the main window, in px. This parameter takes effect only when **enabled** is set to **true**. Only integer values are supported, and Non-integer values are rounded down. The default value is **0**. |
+| offsetY | number                                                | No        | Y-axis offset between the anchor points of the child window and the main window, in px. This parameter takes effect only when **enabled** is set to **true**. Only integer values are supported, and Non-integer values are rounded down. The default value is **0**. |
 
 **Return value**
 
-| Type| Description|
-| ---------------------- | ------------------------------------------------ |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| 801      | Capability not supported.Function setRelativePositionToParentWindowEnabled can not work correctly due to limited device capabilities.|
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.                                                                |
-| 1300004  | Unauthorized operation.                                                                                |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported.Function setRelativePositionToParentWindowEnabled can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -9860,7 +9884,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowTransitionAnimation(transitionType: WindowTransitionType, animation: TransitionAnimation): Promise&lt;void&gt;
 
-Adds a transition animation to windows in specific scenarios. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Adds a transition animation to windows in specific scenarios.
 
 Currently, this API can be used only on the main window of an application.
 
@@ -9870,32 +9894,32 @@ Currently, this API can be used only on the main window of an application.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+Device behavior differences: This API can be called on devices that support and are in the free window state. If this API is called on devices that support but are not in the free window state or devices that do not support the free window state, error code 801 will be returned.
 
 **Parameters**
 
-| Name        | Type                                           | Mandatory| Description                                  |
-| -------------- | ----------------------------------------------- | ---- | -------------------------------------- |
-| transitionType | [WindowTransitionType](arkts-apis-window-e.md#windowtransitiontype20) | Yes  | Scene of the transition animation. Currently, only the destruction scene is supported.|
-| animation      | [TransitionAnimation](arkts-apis-window-i.md#transitionanimation20)   | Yes  | Configuration of the transition animation.                    |
+| Name           | Type                                                         | Mandatory | Description                                                  |
+| -------------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| transitionType | [WindowTransitionType](arkts-apis-window-e.md#windowtransitiontype20) | Yes       | Scene of the transition animation. Currently, only the destruction scene is supported. |
+| animation      | [TransitionAnimation](arkts-apis-window-i.md#transitionanimation20) | Yes       | Configuration of the transition animation.                   |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID  | Error Message                                                                                                             |
-|---------|-------------------------------------------------------------------------------------------------------------------|
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                               |
-| 1300003  | This window manager service works abnormally.                |
-| 1300004  | Unauthorized operation.                                      |
-| 1300016  | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter length. |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. Invalid parameter length. |
 
 **Example**
 
@@ -9938,13 +9962,14 @@ export default class EntryAbility extends UIAbility {
     })
   }
 }
+
 ```
 
 ## getWindowTransitionAnimation<sup>20+</sup>
 
 getWindowTransitionAnimation(transitionType: WindowTransitionType): TransitionAnimation | undefined
 
-Obtains the window transition animation configuration in specific scenarios. This API works only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.
+Obtains the window transition animation configuration in a specific scenario.
 
 Currently, this API can be used only on the main window of an application.
 
@@ -9954,31 +9979,31 @@ Currently, this API can be used only on the main window of an application.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned.
+Device behavior differences: This API can be called on devices that support and are in the free window state. If this API is called on devices that support but are not in the free window state or devices that do not support the free window state, error code 801 will be returned.
 
 **Parameters**
 
-| Name        | Type                                           | Mandatory| Description                                  |
-| -------------- | ----------------------------------------------- | ---- | -------------------------------------- |
-| transitionType | [WindowTransitionType](arkts-apis-window-e.md#windowtransitiontype20) | Yes  | Scene of the transition animation. Currently, only the destruction scene is supported.|
+| Name           | Type                                                         | Mandatory | Description                                                  |
+| -------------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| transitionType | [WindowTransitionType](arkts-apis-window-e.md#windowtransitiontype20) | Yes       | Scene of the transition animation. Currently, only the destruction scene is supported. |
 
 **Return value**
 
-| Type                                         | Description                      |
-| --------------------------------------------- | -------------------------- |
-| [TransitionAnimation](arkts-apis-window-i.md#transitionanimation20) \| undefined | Transition animation configuration in the corresponding scene. If the [setWindowTransitionAnimation](#setwindowtransitionanimation20) API is not used, undefined is returned.|
+| Type                                                         | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [TransitionAnimation](arkts-apis-window-i.md#transitionanimation20) \| undefined | Transition animation configuration in the corresponding scene. If the [setWindowTransitionAnimation](#setwindowtransitionanimation20) API is not used, undefined is returned. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID  | Error Message                                                                                                               |
-|---------|---------------------------------------------------------------------------------------------------------------------|
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                               |
-| 1300003  | This window manager service works abnormally.                |
-| 1300004  | Unauthorized operation.                                      |
-| 1300016  | Parameter error. Possible cause: 1. Invalid parameter range. |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **Example**
 
@@ -10023,30 +10048,32 @@ Changing the z-level of a child window using this API will not cause a focus swi
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+Device behavior difference: This API can be properly called on phones, tablets, and PCs/2-in-1 devices, and returns error code 801 on other devices.
+
 **Parameters**
 
-| Name      | Type                         | Mandatory| Description                          |
-| :----------- | :---------------------------- | :--- | :----------------------------- |
-| zLevel | number | Yes  | Z-level of the child window. The default value is 0, and the value range is [-10000, 10000]. Only integers are supported, and floating-point numbers will be rounded down.|
+| Name   | Type   | Mandatory | Description                                                  |
+| :----- | :----- | :-------- | :----------------------------------------------------------- |
+| zLevel | number | Yes       | Z-level of the child window. The default value is **0**, and the value range is [-10000, 10000]. Only integers are supported, and floating-point numbers will be rounded down. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                     |
-| ------- | --------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Function setSubWindowZLevel can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                       |
-| 1300009 | The parent window is invalid.                 |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
+| 1300004 | Unauthorized operation.                                      |
+| 1300009 | The parent window is invalid.                                |
 
 **Example**
 
@@ -10079,6 +10106,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 }
+
 ```
 
 ## getSubWindowZLevel<sup>18+</sup>
@@ -10091,21 +10119,23 @@ Obtains the z-level of the current child window. This API cannot be called by th
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+Device behavior difference: This API can be called properly on phones, tablets, and PCs/2-in-1 devices, and returns error code 801 on other devices.
+
 **Return value**
 
-| Type               | Description                                          |
-| ------------------- | --------------------------------------------- |
-| number             | Z-level of the child window.|
+| Type   | Description                  |
+| ------ | ---------------------------- |
+| number | Z-level of the child window. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| 801      | Capability not supported. Function getSubWindowZLevel can not work correctly due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300004  | Unauthorized operation.                                                                                |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 801     | Capability not supported. Function getSubWindowZLevel can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300004 | Unauthorized operation.                                      |
 
 **Example**
 
@@ -10134,6 +10164,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## isInFreeWindowMode<sup>22+</sup>
@@ -10148,24 +10179,25 @@ Checks whether this window is in [freeform window](../../windowmanager/window-te
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| boolean | Check result for whether the window is in freeform window mode. **true** if the window is in freeform window mode, **false** otherwise.|
+| Type    | Description                                                  |
+| ------- | ------------------------------------------------------------ |
+| boolean | Check result for whether the window is in freeform window mode. **true** if the window is in freeform window mode, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
-| 1300003  | This window manager service works abnormally.        |
+| ID      | Error Message                                 |
+| ------- | --------------------------------------------- |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
 
 **Example**
 
 ```ts
 let isInFreeWindowMode: boolean = windowClass.isInFreeWindowMode();
 console.info(`isInFreeWindowMode: ${isInFreeWindowMode}`);
+
 ```
 
 ## on('freeWindowModeChange')<sup>22+</sup>
@@ -10180,19 +10212,19 @@ Subscribes to the freeform window mode change event.
 
 **Parameters**
 
-| Name  | Type                          | Mandatory| Description                                                    |
-| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | Yes  | Event type. The value is fixed at **'freeWindowModeChange'**, indicating the freeform window mode change event.|
-| callback | Callback&lt;boolean&gt; | Yes  | Callback used to return the result, indicating whether the window is in freeform window mode. **true** if the window is in freeform window mode, **false** otherwise.                          |
+| Name     | Type                    | Mandatory | Description                                                  |
+| -------- | ----------------------- | --------- | ------------------------------------------------------------ |
+| type     | string                  | Yes       | Event type. The value is fixed at **'freeWindowModeChange'**, indicating the freeform window mode change event. |
+| callback | Callback&lt;boolean&gt; | Yes       | Callback used to return the result, indicating whether the window is in freeform window mode. **true** if the window is in freeform window mode, **false** otherwise. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
-| 1300003  | This window manager service works abnormally.        |
+| ID      | Error Message                                 |
+| ------- | --------------------------------------------- |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
 
 **Example**
 
@@ -10204,6 +10236,7 @@ try {
 } catch (exception) {
   console.error(`Failed to enable the listener for free window mode changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## off('freeWindowModeChange')<sup>22+</sup>
@@ -10218,19 +10251,19 @@ Unsubscribes from the freeform window mode change event.
 
 **Parameters**
 
-| Name  | Type                         | Mandatory| Description                                                    |
-| -------- | ----------------------------- | ---- | -------------------------------------------------------- |
-| type     | string                        | Yes  | Event type. The value is fixed at **'freeWindowModeChange'**, indicating the freeform window mode change event.|
-| callback | Callback&lt;boolean&gt; | No  | Callback used to return the result, indicating whether the window is in freeform window mode. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.                          |
+| Name     | Type                    | Mandatory | Description                                                  |
+| -------- | ----------------------- | --------- | ------------------------------------------------------------ |
+| type     | string                  | Yes       | Event type. The value is fixed at **'freeWindowModeChange'**, indicating the freeform window mode change event. |
+| callback | Callback&lt;boolean&gt; | No        | Callback used to return the result, indicating whether the window is in freeform window mode. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled. |
 
 **Error codes**
 
 For details about the error codes, see [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message|
-| ------- | -------------------------------------------- |
-| 1300002  | This window state is abnormal.                       |
-| 1300003  | This window manager service works abnormally.        |
+| ID      | Error Message                                 |
+| ------- | --------------------------------------------- |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
 
 **Example**
 
@@ -10248,6 +10281,7 @@ try {
 } catch (exception) {
   console.error(`Failed to disable the listener for free window mode change. Cause code: ${exception.code}, message: ${exception.message}`);
 }
+
 ```
 
 ## setWindowSystemBarProperties<sup>(deprecated)</sup>
@@ -10268,21 +10302,21 @@ This API does not take effect when it is called by a child window.
 
 **Parameters**
 
-| Name             | Type                                       | Mandatory| Description                  |
-| ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | Yes  | <!--Del-->Properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar.|
-| callback            | AsyncCallback&lt;void&gt;                   | Yes  | Callback used to return the result.            |
+| Name                | Type                                                         | Mandatory | Description                                                  |
+| ------------------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | Yes       | <!--Del-->Properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar. |
+| callback            | AsyncCallback&lt;void&gt;                                    | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.                                                                |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -10325,6 +10359,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setWindowSystemBarEnable<sup>(deprecated)</sup>
@@ -10345,20 +10380,20 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **Parameters**
 
-| Name  | Type                         | Mandatory| Description                                                                                                                                         |
-| -------- | ----------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| names    | Array<'status'\|'navigation'> | Yes  | Whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status',&nbsp;'navigation']**. If this parameter is set to [], they are hidden.|
-| callback | AsyncCallback&lt;void&gt;     | Yes  | Callback used to return the result.                                                                                                                                   |
+| Name     | Type                          | Mandatory | Description                                                  |
+| -------- | ----------------------------- | --------- | ------------------------------------------------------------ |
+| names    | Array<'status'\|'navigation'> | Yes       | Whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status',&nbsp;'navigation']**. If this parameter is set to [], they are hidden. |
+| callback | AsyncCallback&lt;void&gt;     | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.                                                                |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -10403,8 +10438,10 @@ export default class EntryAbility extends UIAbility {
 setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Sets whether the main window layout or the child window layout is immersive. This API uses an asynchronous callback to return the result. It does not work when called by a system window.
-- An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
-- A non-immersive layout means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
+
+An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
+
+A non-immersive layout means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
 
 > **NOTE**
 >
@@ -10416,26 +10453,26 @@ Sets whether the main window layout or the child window layout is immersive. Thi
 
 **Device behavior differences**
 
-For versions earlier than API version 14, this API can be properly called on all devices.
+In versions earlier than OpenHarmony 5.0.2, this API can be called properly on all devices.
 
-Starting from API version 14, this API has no effect and does not report errors for a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. It can be properly called on a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows.
+In OpenHarmony 5.0.2 and later versions, this API is not called on devices that support the free window mode and are in the free window state, and no error is reported. This API can be called on devices that support the free window mode but are not in the free window state, and devices that do not support the free window mode.
 
 **Parameters**
 
-| Name            | Type                     | Mandatory| Description                                                                                                         |
-| ------------------ | ------------------------- | ---- | ------------------------------------------------------------------------------------------------------------- |
-| isLayoutFullScreen | boolean                   | Yes  | Whether the layout of the window is immersive. (In immersive layout mode, the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> remain visible.) **true** if immersive, **false** otherwise.|
-| callback           | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                                                                                   |
+| Name               | Type                      | Mandatory | Description                                                  |
+| ------------------ | ------------------------- | --------- | ------------------------------------------------------------ |
+| isLayoutFullScreen | boolean                   | Yes       | Whether the layout of the window is immersive. (In immersive layout mode, the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> remain visible.) **true** if immersive, **false** otherwise. |
+| callback           | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
 
-| ID| Error Message                                                                                                    |
-| -------- | ------------------------------------------------------------------------------------------------------------ |
-| 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002  | This window state is abnormal.                                                                               |
-| 1300003  | This window manager service works abnormally.                                                                |
+| ID      | Error Message                                                |
+| ------- | ------------------------------------------------------------ |
+| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 1300002 | This window state is abnormal.                               |
+| 1300003 | This window manager service works abnormally.                |
 
 **Example**
 
@@ -10472,6 +10509,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## show<sup>(deprecated)</sup>
@@ -10488,9 +10526,9 @@ Shows this window. This API uses an asynchronous callback to return the result.
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| Name     | Type                      | Mandatory | Description                         |
+| -------- | ------------------------- | --------- | ----------------------------------- |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result. |
 
 **Example**
 
@@ -10505,6 +10543,7 @@ windowClass.show((err: BusinessError) => {
   }
   console.info('Succeeded in showing the window.');
 });
+
 ```
 
 ## show<sup>(deprecated)</sup>
@@ -10521,9 +10560,9 @@ Shows this window. This API uses a promise to return the result.
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -10536,6 +10575,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to show the window. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## destroy<sup>(deprecated)</sup>
@@ -10546,15 +10586,15 @@ Destroys this window. This API uses an asynchronous callback to return the resul
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [destroyWindow()](#destroywindow9) instead.
+> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [destroyWindow()](#destroywindow9) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| Name     | Type                      | Mandatory | Description                         |
+| -------- | ------------------------- | --------- | ----------------------------------- |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result. |
 
 **Example**
 
@@ -10569,6 +10609,7 @@ windowClass.destroy((err: BusinessError) => {
   }
   console.info('Succeeded in destroying the window.');
 });
+
 ```
 
 ## destroy<sup>(deprecated)</sup>
@@ -10579,15 +10620,15 @@ Destroys this window. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [destroyWindow()](#destroywindow9-1) instead.
+> This method is supported since API version 7 and deprecated since API version 9. You are advised to use [destroyWindow()](#destroywindow9-1) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -10600,6 +10641,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## moveTo<sup>(deprecated)</sup>
@@ -10618,11 +10660,11 @@ This operation is not supported in a window in full-screen mode.
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                                             |
-| -------- | ------------------------- | ---- | ------------------------------------------------- |
-| x        | number                    | Yes  | Coordinate position along the x-axis to which the window is moved, measured in px. A positive value means the position is to the right of the x-axis origin; a negative value means it is to the left; the value **0** means it is at the x-axis origin. The value must be an integer. Non-integer values are rounded down.|
-| y        | number                    | Yes  | Coordinate position along the y-axis to which the window is moved, measured in px. A positive value means the position is below the y-axis origin; a negative value means it is above; the value **0** means it is at the y-axis origin. The value must be an integer. Non-integer values are rounded down.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                       |
+| Name     | Type                      | Mandatory | Description                                                  |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| x        | number                    | Yes       | Coordinate position along the x-axis to which the window is moved, measured in px. A positive value means the position is to the right of the x-axis origin; a negative value means it is to the left; the value **0** means it is at the x-axis origin. The value must be an integer. Non-integer values are rounded down. |
+| y        | number                    | Yes       | Position of the window moved on the y axis, in px. A positive value indicates that the window is moved to the lower side of the y axis. A negative value indicates that the window is moved to the upper side of the y axis. A value of 0 indicates that the window is moved to the origin of the x axis. The value must be an integer. Non-integer values are rounded down. |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Example**
 
@@ -10637,6 +10679,7 @@ windowClass.moveTo(300, 300, (err: BusinessError) => {
   }
   console.info('Succeeded in moving the window.');
 });
+
 ```
 
 ## moveTo<sup>(deprecated)</sup>
@@ -10655,16 +10698,16 @@ This operation is not supported in a window in full-screen mode.
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                             |
-| ------ | ------ | ---- | ------------------------------------------------- |
-| x      | number | Yes  | Coordinate position along the x-axis to which the window is moved, measured in px. A positive value means the position is to the right of the x-axis origin; a negative value means it is to the left; the value **0** means it is at the x-axis origin. The value must be an integer. Non-integer values are rounded down.|
-| y      | number | Yes  | Coordinate position along the y-axis to which the window is moved, measured in px. A positive value means the position is below the y-axis origin; a negative value means it is above; the value **0** means it is at the y-axis origin. The value must be an integer. Non-integer values are rounded down.|
+| Name | Type   | Mandatory | Description                                                  |
+| ---- | ------ | --------- | ------------------------------------------------------------ |
+| x    | number | Yes       | Coordinate position along the x-axis to which the window is moved, measured in px. A positive value means the position is to the right of the x-axis origin; a negative value means it is to the left; the value **0** means it is at the x-axis origin. The value must be an integer. Non-integer values are rounded down. |
+| y    | number | Yes       | Coordinate position along the y-axis to which the window is moved, measured in px. A positive value means the position is below the y-axis origin; a negative value means it is above; the value **0** means it is at the y-axis origin. The value must be an integer. Non-integer values are rounded down. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -10677,6 +10720,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## resetSize<sup>(deprecated)</sup>
@@ -10685,14 +10729,17 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 
 Changes the size of this window based on the top-left vertex of the window. This API uses an asynchronous callback to return the result.
 
-- The main window and child window have the following default size limits: [320, 1920] in width and [240, 1920] in height, both in units of vp.
-- The minimum width and height of the main window and child window of the application depends on the configuration on the product side. You can call [getWindowLimits](#getwindowlimits11) to obtain size limits.
+The main window and child window have the following default size limits: [320, 1920] in width and [240, 1920] in height, both in units of vp.
+
+The minimum width and height of the main window and child window of the application depends on the configuration on the product side. You can call [getWindowLimits](#getwindowlimits11) to obtain size limits.
 
 The system window has the following size limits: (0, 1920] in width and (0, 1920] in height, both in units of vp.
 
 The new window width and height you set must meet the following limits:
-- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect.
-- If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
+
+If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect.
+
+If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
 
 This operation is not supported in a window in full-screen mode.
 
@@ -10704,11 +10751,11 @@ This operation is not supported in a window in full-screen mode.
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                      |
-| -------- | ------------------------- | ---- | -------------------------- |
-| width    | number                    | Yes  | New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown.|
-| height   | number                    | Yes  | New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                |
+| Name     | Type                      | Mandatory | Description                                                  |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| width    | number                    | Yes       | New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. |
+| height   | number                    | Yes       | New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Example**
 
@@ -10723,6 +10770,7 @@ windowClass.resetSize(500, 1000, (err: BusinessError) => {
   }
   console.info('Succeeded in changing the window size.');
 });
+
 ```
 
 ## resetSize<sup>(deprecated)</sup>
@@ -10731,14 +10779,17 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 
 Changes the size of this window based on the top-left vertex of the window. This API uses a promise to return the result.
 
-- The main window and child window have the following default size limits: [320, 1920] in width and [240, 1920] in height, both in units of vp.
-- The minimum width and height of the main window and child window of the application depends on the configuration on the product side. You can call [getWindowLimits](#getwindowlimits11) to obtain size limits.
+The main window and child window have the following default size limits: [320, 1920] in width and [240, 1920] in height, both in units of vp.
+
+The minimum width and height of the main window and child window of the application depends on the configuration on the product side. You can call [getWindowLimits](#getwindowlimits11) to obtain size limits.
 
 The system window has the following size limits: (0, 1920] in width and (0, 1920] in height, both in units of vp.
 
 The new window width and height you set must meet the following limits:
-- If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect.
-- If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
+
+If the window width or height is less than the minimum width or height limit, then the minimum width or height limit takes effect.
+
+If the window width or height is greater than the maximum width or height limit, then the maximum width or height limit takes effect.
 
 This operation is not supported in a window in full-screen mode.
 
@@ -10750,16 +10801,16 @@ This operation is not supported in a window in full-screen mode.
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                      |
-| ------ | ------ | ---- | -------------------------- |
-| width  | number | Yes  | New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown.|
-| height | number | Yes  | New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown.|
+| Name   | Type   | Mandatory | Description                                                  |
+| ------ | ------ | --------- | ------------------------------------------------------------ |
+| width  | number | Yes       | New width of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. |
+| height | number | Yes       | New height of the window, in px. The value must be an integer. If a floating-point number is passed in, the value is rounded down. A negative value is invalid, and error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -10772,6 +10823,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to change the window size. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## getProperties<sup>(deprecated)</sup>
@@ -10788,9 +10840,9 @@ Obtains the properties of this window. This API uses an asynchronous callback to
 
 **Parameters**
 
-| Name  | Type                                                      | Mandatory| Description                        |
-| -------- | ---------------------------------------------------------- | ---- | ---------------------------- |
-| callback | AsyncCallback&lt;[WindowProperties](arkts-apis-window-i.md#windowproperties)&gt; | Yes  | Callback used to return the window properties.|
+| Name     | Type                                                         | Mandatory | Description                                    |
+| -------- | ------------------------------------------------------------ | --------- | ---------------------------------------------- |
+| callback | AsyncCallback&lt;[WindowProperties](arkts-apis-window-i.md#windowproperties)&gt; | Yes       | Callback used to return the window properties. |
 
 **Example**
 
@@ -10805,6 +10857,7 @@ windowClass.getProperties((err: BusinessError, data) => {
   }
   console.info('Succeeded in obtaining the window properties. Data: ' + JSON.stringify(data));
 });
+
 ```
 
 ## getProperties<sup>(deprecated)</sup>
@@ -10821,9 +10874,9 @@ Obtains the properties of this window. This API uses a promise to return the res
 
 **Return value**
 
-| Type                                                | Description                           |
-| ---------------------------------------------------- | ------------------------------- |
-| Promise&lt;[WindowProperties](arkts-apis-window-i.md#windowproperties)&gt; | Promise used to return the window properties.|
+| Type                                                         | Description                                   |
+| ------------------------------------------------------------ | --------------------------------------------- |
+| Promise&lt;[WindowProperties](arkts-apis-window-i.md#windowproperties)&gt; | Promise used to return the window properties. |
 
 **Example**
 
@@ -10836,6 +10889,7 @@ promise.then((data) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to obtain the window properties. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## getAvoidArea<sup>(deprecated)</sup>
@@ -10844,9 +10898,16 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), callb
 
 Obtains the area where this window cannot be displayed, for example, the system bar area, notch, gesture area, and soft keyboard area. This API uses an asynchronous callback to return the result.
 
-In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API obtains an empty avoid area.
+Main window/Subwindow:
 
-In non-freeform window mode, this API can calculate and return the avoid area only when the position and size of the child window are the same as those of the main window. Otherwise, this API returns an empty avoid area.
+- In the free-floating window mode of the <b>free window</b> state (that is, the window mode is window.WindowStatusType.FLOATING), only the avoidance area of the fixed soft keyboard ([AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is TYPE_KEYBOARD) exists.
+- In the free-floating window mode of the <b>main window</b> state, only the avoidance area of the system bar ([AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is TYPE_SYSTEM) exists.
+- In other scenarios, the main window can obtain the calculated avoidance area only when it is not in the free-floating window mode or the device type is Phone or Tablet. Otherwise, the obtained avoidance area is empty.
+- In the non-free window state or non-free-floating window mode, the child window can obtain the calculated avoidance area only when the position and size of the child window are the same as those of the main window. Otherwise, the obtained avoidance area is empty.
+
+Global floating window, modal window, or system window:
+
+- The calculated avoidance area can be obtained only after the [setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18) method is called to enable the avoidance area. Otherwise, the obtained avoidance area is empty.
 
 > **NOTE**
 >
@@ -10856,10 +10917,10 @@ In non-freeform window mode, this API can calculate and return the avoid area on
 
 **Parameters**
 
-| Name  | Type                                           | Mandatory| Description                                                        |
-| -------- |-----------------------------------------------| ---- | ------------------------------------------------------------ |
-| type     | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)              | Yes  | Type of the area.|
-| callback | AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Yes  | Callback used to return the area.                            |
+| Name     | Type                                                         | Mandatory | Description                       |
+| -------- | ------------------------------------------------------------ | --------- | --------------------------------- |
+| type     | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)       | Yes       | Type of the area.                 |
+| callback | AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Yes       | Callback used to return the area. |
 
 **Example**
 
@@ -10875,6 +10936,7 @@ windowClass.getAvoidArea(type, (err: BusinessError, data) => {
   }
   console.info('Succeeded in obtaining the area. Data:' + JSON.stringify(data));
 });
+
 ```
 
 ## getAvoidArea<sup>(deprecated)</sup>
@@ -10883,9 +10945,16 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)): Prom
 
 Obtains the area where this window cannot be displayed, for example, the system bar area, notch, gesture area, and soft keyboard area. This API uses an asynchronous callback to return the result.
 
-In [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, this API obtains an empty avoid area.
+Main window/Subwindow:
 
-In non-freeform window mode, this API can calculate and return the avoid area only when the position and size of the child window are the same as those of the main window. Otherwise, this API returns an empty avoid area.
+- In the free-floating window mode of the <b>free window</b> state (that is, the window mode is window.WindowStatusType.FLOATING), only the avoidance area of the fixed soft keyboard ([AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is TYPE_KEYBOARD) exists.
+- In the free-floating window mode of the <b>main window</b> state, only the avoidance area of the system bar ([AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is TYPE_SYSTEM) exists.
+- In other scenarios, the main window can obtain the calculated avoidance area only when it is not in the free-floating window mode or the device type is Phone or Tablet. Otherwise, the obtained avoidance area is empty.
+- In the non-free window state or non-free-floating window mode, the child window can obtain the calculated avoidance area only when the position and size of the child window are the same as those of the main window. Otherwise, the obtained avoidance area is empty.
+
+Global floating window, modal window, or system window:
+
+- The calculated avoidance area can be obtained only after the [setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18) method is called to enable the avoidance area. Otherwise, the obtained avoidance area is empty.
 
 > **NOTE**
 >
@@ -10895,15 +10964,15 @@ In non-freeform window mode, this API can calculate and return the avoid area on
 
 **Parameters**
 
-| Name| Type                              | Mandatory| Description                                                        |
-| ------ |----------------------------------| ---- | ------------------------------------------------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes  | Type of the area.|
+| Name | Type                                                   | Mandatory | Description       |
+| ---- | ------------------------------------------------------ | --------- | ----------------- |
+| type | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | Yes       | Type of the area. |
 
 **Return value**
 
-| Type                                     | Description                               |
-|-----------------------------------------| ----------------------------------- |
-| Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Promise used to return the area.|
+| Type                                                         | Description                      |
+| ------------------------------------------------------------ | -------------------------------- |
+| Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Promise used to return the area. |
 
 **Example**
 
@@ -10917,6 +10986,7 @@ promise.then((data) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to obtain the area. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setFullScreen<sup>(deprecated)</sup>
@@ -10924,8 +10994,10 @@ promise.then((data) => {
 setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Sets whether the main window or the child window is in full-screen mode. This API uses an asynchronous callback to return the result.
-- Full-screen mode means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
-- Non-full-screen mode means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
+
+Full-screen mode means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
+
+Non-full-screen mode means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
 
 > **NOTE**
 >
@@ -10935,10 +11007,10 @@ Sets whether the main window or the child window is in full-screen mode. This AP
 
 **Parameters**
 
-| Name      | Type                     | Mandatory| Description                                          |
-| ------------ | ------------------------- | ---- | ---------------------------------------------- |
-| isFullScreen | boolean                   | Yes  | Whether to set full-screen mode (full-screen mode affects the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->). **true** to set full-screen mode, **false** otherwise.|
-| callback     | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                    |
+| Name         | Type                      | Mandatory | Description                                                  |
+| ------------ | ------------------------- | --------- | ------------------------------------------------------------ |
+| isFullScreen | boolean                   | Yes       | Whether to set full-screen mode (full-screen mode affects the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->). **true** to set full-screen mode, **false** otherwise. |
+| callback     | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Example**
 
@@ -10971,6 +11043,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setFullScreen<sup>(deprecated)</sup>
@@ -10978,8 +11051,10 @@ export default class EntryAbility extends UIAbility {
 setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 
 Sets whether the main window or the child window is in full-screen mode. This API uses a promise to return the result.
-- Full-screen mode means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
-- Non-full-screen mode means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
+
+Full-screen mode means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
+
+Non-full-screen mode means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
 
 > **NOTE**
 >
@@ -10989,15 +11064,15 @@ Sets whether the main window or the child window is in full-screen mode. This AP
 
 **Parameters**
 
-| Name      | Type   | Mandatory| Description                                          |
-| ------------ | ------- | ---- | ---------------------------------------------- |
-| isFullScreen | boolean | Yes  | Whether to set full-screen mode (full-screen mode affects the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->). **true** to set full-screen mode, **false** otherwise.|
+| Name         | Type    | Mandatory | Description                                                  |
+| ------------ | ------- | --------- | ------------------------------------------------------------ |
+| isFullScreen | boolean | Yes       | Whether to set full-screen mode (full-screen mode affects the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->). **true** to set full-screen mode, **false** otherwise. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -11028,6 +11103,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setLayoutFullScreen<sup>(deprecated)</sup>
@@ -11035,8 +11111,10 @@ export default class EntryAbility extends UIAbility {
 setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Sets whether the main window layout or the child window layout is immersive. This API uses an asynchronous callback to return the result.
-- An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
-- A non-immersive layout means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
+
+An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
+
+A non-immersive layout means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
 
 > **NOTE**
 >
@@ -11046,10 +11124,10 @@ Sets whether the main window layout or the child window layout is immersive. Thi
 
 **Parameters**
 
-| Name            | Type                     | Mandatory| Description                                                        |
-| ------------------ | ------------------------- | ---- | ------------------------------------------------------------ |
-| isLayoutFullScreen | boolean                   | Yes  | Whether the layout of the window is immersive. (Immersive layout mode does not affect the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->.) **true** if immersive, **false** otherwise.|
-| callback           | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                                  |
+| Name               | Type                      | Mandatory | Description                                                  |
+| ------------------ | ------------------------- | --------- | ------------------------------------------------------------ |
+| isLayoutFullScreen | boolean                   | Yes       | Whether the layout of the window is immersive. (Immersive layout mode does not affect the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->.) **true** if immersive, **false** otherwise. |
+| callback           | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Example**
 
@@ -11082,6 +11160,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setLayoutFullScreen<sup>(deprecated)</sup>
@@ -11089,8 +11168,10 @@ export default class EntryAbility extends UIAbility {
 setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 Sets whether the main window layout or the child window layout is immersive. This API uses a promise to return the result.
-- An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
-- A non-immersive layout means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
+
+An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
+
+A non-immersive layout means that the layout avoids the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->, and components do not overlap with them.
 
 > **NOTE**
 >
@@ -11100,15 +11181,15 @@ Sets whether the main window layout or the child window layout is immersive. Thi
 
 **Parameters**
 
-| Name            | Type   | Mandatory| Description                                                        |
-| ------------------ | ------- | ---- | ------------------------------------------------------------ |
-| isLayoutFullScreen | boolean | Yes  | Whether the layout of the window is immersive. (Immersive layout mode does not affect the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->.) **true** if immersive, **false** otherwise.|
+| Name               | Type    | Mandatory | Description                                                  |
+| ------------------ | ------- | --------- | ------------------------------------------------------------ |
+| isLayoutFullScreen | boolean | Yes       | Whether the layout of the window is immersive. (Immersive layout mode does not affect the display of the status bar and <!--RP15-->three-button navigation bar<!--RP15End-->.) **true** if immersive, **false** otherwise. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -11139,6 +11220,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setSystemBarEnable<sup>(deprecated)</sup>
@@ -11157,10 +11239,10 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                                                        |
-| -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| names    | Array<'status'\|'navigation'> | Yes  | Whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status',&nbsp;'navigation']**. If this parameter is set to [], they are hidden.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                                  |
+| Name     | Type                          | Mandatory | Description                                                  |
+| -------- | ----------------------------- | --------- | ------------------------------------------------------------ |
+| names    | Array<'status'\|'navigation'> | Yes       | Whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status',&nbsp;'navigation']**. If this parameter is set to [], they are hidden. |
+| callback | AsyncCallback&lt;void&gt;     | Yes       | Callback used to return the result.                          |
 
 
 **Example**
@@ -11195,6 +11277,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setSystemBarEnable<sup>(deprecated)</sup>
@@ -11213,15 +11296,15 @@ The return value does not indicate that the status bar and <!--RP15-->three-butt
 
 **Parameters**
 
-| Name| Type | Mandatory| Description                                                        |
-| ------ | ---------------------------- | ---- | ------------------------ |
-| names  | Array<'status'\|'navigation'> | Yes  | Whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status',&nbsp;'navigation']**. If this parameter is set to [], they are hidden.|
+| Name  | Type                          | Mandatory | Description                                                  |
+| ----- | ----------------------------- | --------- | ------------------------------------------------------------ |
+| names | Array<'status'\|'navigation'> | Yes       | Whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> in full-screen mode.<br>For example, to show all of them, set this parameter to **['status',&nbsp;'navigation']**. If this parameter is set to [], they are hidden. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 
 **Example**
@@ -11254,6 +11337,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setSystemBarProperties<sup>(deprecated)</sup>
@@ -11272,10 +11356,10 @@ This API does not take effect when it is called by a child window. The configura
 
 **Parameters**
 
-| Name             | Type                                       | Mandatory| Description                  |
-| ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | Yes  | <!--Del-->Properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar.|
-| callback            | AsyncCallback&lt;void&gt;                   | Yes  | Callback used to return the result.            |
+| Name                | Type                                                         | Mandatory | Description                                                  |
+| ------------------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | Yes       | <!--Del-->Properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar. |
+| callback            | AsyncCallback&lt;void&gt;                                    | Yes       | Callback used to return the result.                          |
 
 **Example**
 
@@ -11314,6 +11398,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## setSystemBarProperties<sup>(deprecated)</sup>
@@ -11332,15 +11417,15 @@ This API does not take effect when it is called by a child window.
 
 **Parameters**
 
-| Name             | Type                                       | Mandatory| Description                  |
-| ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | Yes  | <!--Del-->Properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar.|
+| Name                | Type                                                         | Mandatory | Description                                                  |
+| ------------------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | Yes       | <!--Del-->Properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -11377,6 +11462,7 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+
 ```
 
 ## loadContent<sup>(deprecated)</sup>
@@ -11393,10 +11479,10 @@ Loads content from a page to this window. This API uses an asynchronous callback
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                |
-| -------- | ------------------------- | ---- | -------------------- |
-| path     | string                    | Yes  | Path of the page from which the content will be loaded. In the stage model, the path is configured in the **main_pages.json** file of the project. In the FA model, the path is configured in the **config.json** file of the project.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
+| Name     | Type                      | Mandatory | Description                                                  |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| path     | string                    | Yes       | Path of the page from which the content will be loaded. In the stage model, the path is configured in the **main_pages.json** file of the project. In the FA model, the path is configured in the **config.json** file of the project. |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Example**
 
@@ -11411,6 +11497,7 @@ windowClass.loadContent('pages/page2/page3', (err: BusinessError) => {
   }
   console.info('Succeeded in loading the content.');
 });
+
 ```
 
 ## loadContent<sup>(deprecated)</sup>
@@ -11427,15 +11514,15 @@ Loads content from a page to this window. This API uses a promise to return the 
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                |
-| ------ | ------ | ---- | -------------------- |
-| path   | string | Yes  | Path of the page from which the content will be loaded. In the stage model, the path is configured in the **main_pages.json** file of the project. In the FA model, the path is configured in the **config.json** file of the project.|
+| Name | Type   | Mandatory | Description                                                  |
+| ---- | ------ | --------- | ------------------------------------------------------------ |
+| path | string | Yes       | Path of the page from which the content will be loaded. In the stage model, the path is configured in the **main_pages.json** file of the project. In the FA model, the path is configured in the **config.json** file of the project. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -11448,6 +11535,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## isShowing<sup>(deprecated)</sup>
@@ -11458,15 +11546,15 @@ Checks whether this window is displayed. This API uses an asynchronous callback 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [isWindowShowing()](#iswindowshowing9) instead.
+> This method is supported since API version 7 and deprecated since API version 9. You are advised to use [isWindowShowing()](#iswindowshowing9) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters**
 
-| Name  | Type                        | Mandatory| Description                                                        |
-| -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. **true** if the window is displayed, **false** otherwise.|
+| Name     | Type                         | Mandatory | Description                                                  |
+| -------- | ---------------------------- | --------- | ------------------------------------------------------------ |
+| callback | AsyncCallback&lt;boolean&gt; | Yes       | Callback used to return the result. **true** if the window is displayed, **false** otherwise. |
 
 **Example**
 
@@ -11481,6 +11569,7 @@ windowClass.isShowing((err: BusinessError, data) => {
   }
   console.info('Succeeded in checking whether the window is showing. Data: ' + JSON.stringify(data));
 });
+
 ```
 
 ## isShowing<sup>(deprecated)</sup>
@@ -11491,15 +11580,15 @@ Checks whether this window is displayed. This API uses a promise to return the r
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [isWindowShowing()](#iswindowshowing9) instead.
+> This method is supported since API version 7 and deprecated since API version 9. You are advised to use [isWindowShowing()](#iswindowshowing9) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Return value**
 
-| Type                  | Description                                                        |
+| Type                   | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. **true** if the window is displayed, **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result. **true** if the window is displayed, **false** otherwise. |
 
 **Example**
 
@@ -11512,6 +11601,7 @@ promise.then((data) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to check whether the window is showing. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## on('systemAvoidAreaChange')<sup>(deprecated)</sup>
@@ -11528,10 +11618,10 @@ Subscribes to the event indicating changes to the area where this window cannot 
 
 **Parameters**
 
-| Name  | Type                                      | Mandatory| Description                                                   |
-| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes  | Event type. The value is fixed at **'systemAvoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed.|
-| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Yes  | Callback used to return the area.                            |
+| Name     | Type                                                         | Mandatory | Description                                                  |
+| -------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes       | Event type. The value is fixed at **'systemAvoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed. |
+| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Yes       | Callback used to return the area.                            |
 
 
 **Example**
@@ -11540,6 +11630,7 @@ Subscribes to the event indicating changes to the area where this window cannot 
 windowClass.on('systemAvoidAreaChange', (data) => {
   console.info('Succeeded in enabling the listener for system avoid area changes. Data: ' + JSON.stringify(data));
 });
+
 ```
 
 ## off('systemAvoidAreaChange')<sup>(deprecated)</sup>
@@ -11556,10 +11647,10 @@ Unsubscribes from the event indicating changes to the area where this window can
 
 **Parameters**
 
-| Name  | Type                                      | Mandatory| Description                                                   |
-| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes  | Event type. The value is fixed at **'systemAvoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed.|
-| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | No  | Callback used to return the area. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled.          |
+| Name     | Type                                                         | Mandatory | Description                                                  |
+| -------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes       | Event type. The value is fixed at **'systemAvoidAreaChange'**, indicating the event of changes to the area where the window cannot be displayed. |
+| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | No        | Callback used to return the area. If a value is passed in, the corresponding subscription is canceled. If no value is passed in, all subscriptions to the specified event are canceled. |
 
 **Example**
 
@@ -11571,6 +11662,7 @@ windowClass.on('systemAvoidAreaChange', callback);
 windowClass.off('systemAvoidAreaChange', callback);
 // Unregister all the callbacks that have been registered through on().
 windowClass.off('systemAvoidAreaChange');
+
 ```
 
 ## isSupportWideGamut<sup>(deprecated)</sup>
@@ -11587,9 +11679,9 @@ Checks whether this window supports the wide-gamut color space. This API uses an
 
 **Parameters**
 
-| Name  | Type                        | Mandatory| Description                                                        |
-| -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. **true** if the wide-gamut color space is supported, **false** otherwise.|
+| Name     | Type                         | Mandatory | Description                                                  |
+| -------- | ---------------------------- | --------- | ------------------------------------------------------------ |
+| callback | AsyncCallback&lt;boolean&gt; | Yes       | Callback used to return the result. **true** if the wide-gamut color space is supported, **false** otherwise. |
 
 **Example**
 
@@ -11604,6 +11696,7 @@ windowClass.isSupportWideGamut((err: BusinessError, data) => {
   }
   console.info('Succeeded in checking whether the window support WideGamut Data: ' + JSON.stringify(data));
 });
+
 ```
 
 ## isSupportWideGamut<sup>(deprecated)</sup>
@@ -11620,9 +11713,9 @@ Checks whether this window supports the wide-gamut color space. This API uses a 
 
 **Return value**
 
-| Type                  | Description                                                        |
+| Type                   | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. **true** if the wide-gamut color space is supported, **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result. **true** if the wide-gamut color space is supported, **false** otherwise. |
 
 **Example**
 
@@ -11635,6 +11728,7 @@ promise.then((data) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to check whether the window support WideGamut. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setColorSpace<sup>(deprecated)</sup>
@@ -11651,10 +11745,10 @@ Sets a color space for this window. This API uses an asynchronous callback to re
 
 **Parameters**
 
-| Name    | Type                     | Mandatory| Description        |
-| ---------- | ------------------------- | ---- | ------------ |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space to set.|
-| callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.  |
+| Name       | Type                                             | Mandatory | Description                         |
+| ---------- | ------------------------------------------------ | --------- | ----------------------------------- |
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes       | Color space to set.                 |
+| callback   | AsyncCallback&lt;void&gt;                        | Yes       | Callback used to return the result. |
 
 
 **Example**
@@ -11686,15 +11780,15 @@ Sets a color space for this window. This API uses a promise to return the result
 
 **Parameters**
 
-| Name    | Type                     | Mandatory| Description          |
-| ---------- | ------------------------- | ---- | -------------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space to set.|
+| Name       | Type                                             | Mandatory | Description         |
+| ---------- | ------------------------------------------------ | --------- | ------------------- |
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes       | Color space to set. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 
 **Example**
@@ -11708,6 +11802,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to set window colorspace. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## getColorSpace<sup>(deprecated)</sup>
@@ -11724,9 +11819,9 @@ Obtains the color space of this window. This API uses an asynchronous callback t
 
 **Parameters**
 
-| Name  | Type                                          | Mandatory| Description                                                      |
-| -------- | ---------------------------------------------- | ---- | ---------------------------------------------------------- |
-| callback | AsyncCallback&lt;[ColorSpace](arkts-apis-window-e.md#colorspace8)&gt; | Yes  | Callback used to return the result. When the color space is obtained successfully, **err** is **undefined**, and **data** is the current color space.|
+| Name     | Type                                                         | Mandatory | Description                                                  |
+| -------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
+| callback | AsyncCallback&lt;[ColorSpace](arkts-apis-window-e.md#colorspace8)&gt; | Yes       | Callback used to return the result. When the color space is obtained successfully, **err** is **undefined**, and **data** is the current color space. |
 
 **Example**
 
@@ -11741,6 +11836,7 @@ windowClass.getColorSpace((err: BusinessError, data) => {
   }
   console.info('Succeeded in getting window colorspace. Cause:' + JSON.stringify(data));
 });
+
 ```
 
 ## getColorSpace<sup>(deprecated)</sup>
@@ -11757,9 +11853,9 @@ Obtains the color space of this window. This API uses a promise to return the re
 
 **Return value**
 
-| Type                                    | Description                           |
-| ---------------------------------------- | ------------------------------- |
-| Promise&lt;[ColorSpace](arkts-apis-window-e.md#colorspace8)&gt; | Promise used to return the current color space.|
+| Type                                                         | Description                                     |
+| ------------------------------------------------------------ | ----------------------------------------------- |
+| Promise&lt;[ColorSpace](arkts-apis-window-e.md#colorspace8)&gt; | Promise used to return the current color space. |
 
 **Example**
 
@@ -11772,6 +11868,7 @@ promise.then((data) => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to get window colorspace. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setBackgroundColor<sup>(deprecated)</sup>
@@ -11788,10 +11885,10 @@ Sets the background color for this window. This API uses an asynchronous callbac
 
 **Parameters**
 
-| Name  | Type                     | Mandatory| Description                                                        |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| color    | string                    | Yes  | Background color to set. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                                  |
+| Name     | Type                      | Mandatory | Description                                                  |
+| -------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| color    | string                    | Yes       | Background color to set. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**. |
+| callback | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 
 **Example**
@@ -11808,6 +11905,7 @@ windowClass.setBackgroundColor(color, (err: BusinessError) => {
   }
   console.info('Succeeded in setting the background color.');
 });
+
 ```
 
 ## setBackgroundColor<sup>(deprecated)</sup>
@@ -11824,15 +11922,15 @@ Sets the background color for this window. This API uses a promise to return the
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                                                        |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| color  | string | Yes  | Background color to set. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**.|
+| Name  | Type   | Mandatory | Description                                                  |
+| ----- | ------ | --------- | ------------------------------------------------------------ |
+| color | string | Yes       | Background color to set. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **'#00FF00'** or **'#FF00FF00'**. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 
 **Example**
@@ -11847,6 +11945,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to set the background color. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setBrightness<sup>(deprecated)</sup>
@@ -11865,10 +11964,10 @@ When the screen brightness setting for the window takes effect, Control Panel ca
 
 **Parameters**
 
-| Name    | Type                     | Mandatory| Description                                   |
-| ---------- | ------------------------- | ---- |---------------------------------------|
-| brightness | number                    | Yes  | Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
-| callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                |
+| Name       | Type                      | Mandatory | Description                                                  |
+| ---------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| brightness | number                    | Yes       | Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel. |
+| callback   | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 
 **Example**
@@ -11903,15 +12002,15 @@ When the screen brightness setting for the window takes effect, Control Panel ca
 
 **Parameters**
 
-| Name    | Type  | Mandatory| Description                                      |
-| ---------- | ------ | ---- |------------------------------------------|
-| brightness | number | Yes  | Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel.|
+| Name       | Type   | Mandatory | Description                                                  |
+| ---------- | ------ | --------- | ------------------------------------------------------------ |
+| brightness | number | Yes       | Brightness to set. The value is a floating-point number in the range [0.0, 1.0] or is set to **-1.0**. The value **1.0** means the brightest, and **-1.0** means that the window brightness resets to the original brightness set through Control Panel. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 
 **Example**
@@ -11926,6 +12025,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to set the brightness. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setDimBehind<sup>(deprecated)</sup>
@@ -11942,10 +12042,10 @@ Sets the dimness of the window that is not on top. This API uses an asynchronous
 
 **Parameters**
 
-| Name        | Type                     | Mandatory| Description                                    |
-| -------------- | ------------------------- | ---- |----------------------------------------|
-| dimBehindValue | number                    | Yes  | Dimness of the window to set. The value range is [0.0, 1.0], and the value **1.0** means the dimmest.|
-| callback       | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                                 |
+| Name           | Type                      | Mandatory | Description                                                  |
+| -------------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| dimBehindValue | number                    | Yes       | Dimness of the window to set. The value range is [0.0, 1.0], and the value **1.0** means the dimmest. |
+| callback       | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Example**
 
@@ -11960,6 +12060,7 @@ windowClass.setDimBehind(0.5, (err: BusinessError) => {
   }
   console.info('Succeeded in setting the dimness.');
 });
+
 ```
 
 ## setDimBehind<sup>(deprecated)</sup>
@@ -11976,15 +12077,15 @@ Sets the dimness of the window that is not on top. This API uses a promise to re
 
 **Parameters**
 
-| Name        | Type  | Mandatory| Description                                              |
-| -------------- | ------ | ---- | -------------------------------------------------- |
-| dimBehindValue | number | Yes  | Dimness of the window to set. The value ranges from 0 to 1. The value **1** indicates the dimmest.|
+| Name           | Type   | Mandatory | Description                                                  |
+| -------------- | ------ | --------- | ------------------------------------------------------------ |
+| dimBehindValue | number | Yes       | Dimness of the window to set. The value ranges from 0 to 1. The value **1** indicates the dimmest. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -11997,6 +12098,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to set the dimness. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setFocusable<sup>(deprecated)</sup>
@@ -12013,10 +12115,10 @@ Sets whether this window is focusable, that is, whether the window can gain focu
 
 **Parameters**
 
-| Name     | Type                     | Mandatory| Description                        |
-| ----------- | ------------------------- | ---- | ---------------------------- |
-| isFocusable | boolean                   | Yes  | Whether the window is focusable. **true** if focusable, **false** otherwise. If this parameter is set to **false**, the window does not support binding to an input method or receiving keyboard events. If input logic needs to be processed, follow the instructions provided in [Input Box and Input Method Interaction in Non-Focus Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).|
-| callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                  |
+| Name        | Type                      | Mandatory | Description                                                  |
+| ----------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| isFocusable | boolean                   | Yes       | Whether the window is focusable. **true** if focusable, **false** otherwise. If this parameter is set to **false**, the window does not support binding to an input method or receiving keyboard events. If input logic needs to be processed, follow the instructions provided in [Input Box and Input Method Interaction in Non-Focus Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md). |
+| callback    | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 
 **Example**
@@ -12033,6 +12135,7 @@ windowClass.setFocusable(isFocusable, (err: BusinessError) => {
   }
   console.info('Succeeded in setting the window to be focusable.');
 });
+
 ```
 
 ## setFocusable<sup>(deprecated)</sup>
@@ -12049,15 +12152,15 @@ Sets whether this window is focusable, that is, whether the window can gain focu
 
 **Parameters**
 
-| Name     | Type   | Mandatory| Description                        |
-| ----------- | ------- | ---- | ---------------------------- |
-| isFocusable | boolean | Yes  | Whether the window is focusable. **true** if focusable, **false** otherwise. If this parameter is set to **false**, the window does not support binding to an input method or receiving keyboard events. If input logic needs to be processed, follow the instructions provided in [Input Box and Input Method Interaction in Non-Focus Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md).|
+| Name        | Type    | Mandatory | Description                                                  |
+| ----------- | ------- | --------- | ------------------------------------------------------------ |
+| isFocusable | boolean | Yes       | Whether the window is focusable. **true** if focusable, **false** otherwise. If this parameter is set to **false**, the window does not support binding to an input method or receiving keyboard events. If input logic needs to be processed, follow the instructions provided in [Input Box and Input Method Interaction in Non-Focus Windows](../../inputmethod/use-inputmethod-in-not-focusable-window.md). |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 
 **Example**
@@ -12072,6 +12175,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to set the window to be focusable. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setKeepScreenOn<sup>(deprecated)</sup>
@@ -12088,10 +12192,10 @@ Sets whether to keep the screen always on. This API uses an asynchronous callbac
 
 **Parameters**
 
-| Name        | Type                     | Mandatory| Description                    |
-| -------------- | ------------------------- | ---- | ------------------------ |
-| isKeepScreenOn | boolean                   | Yes  | Whether to keep the screen always on. **true** to keep the screen always on, **false** otherwise.|
-| callback       | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.              |
+| Name           | Type                      | Mandatory | Description                                                  |
+| -------------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| isKeepScreenOn | boolean                   | Yes       | Whether to keep the screen always on. **true** to keep the screen always on, **false** otherwise. |
+| callback       | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 
 **Example**
@@ -12108,6 +12212,7 @@ windowClass.setKeepScreenOn(isKeepScreenOn, (err: BusinessError) => {
   }
   console.info('Succeeded in setting the screen to be always on.');
 });
+
 ```
 
 ## setKeepScreenOn<sup>(deprecated)</sup>
@@ -12124,15 +12229,15 @@ Sets whether to keep the screen always on. This API uses a promise to return the
 
 **Parameters**
 
-| Name        | Type   | Mandatory| Description                    |
-| -------------- | ------- | ---- | ------------------------ |
-| isKeepScreenOn | boolean | Yes  | Whether to keep the screen always on. **true** to keep the screen always on, **false** otherwise.|
+| Name           | Type    | Mandatory | Description                                                  |
+| -------------- | ------- | --------- | ------------------------------------------------------------ |
+| isKeepScreenOn | boolean | Yes       | Whether to keep the screen always on. **true** to keep the screen always on, **false** otherwise. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -12146,6 +12251,7 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.info(`Failed to set the screen to be always on. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setOutsideTouchable<sup>(deprecated)</sup>
@@ -12164,10 +12270,10 @@ Sets whether the area outside the child window is touchable. This API uses an as
 
 **Parameters**
 
-| Name   | Type                     | Mandatory| Description            |
-| --------- | ------------------------- | ---- | ---------------- |
-| touchable | boolean                   | Yes  | Whether the area outside the child window is touchable. **true** if touchable, **false** otherwise.|
-| callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.      |
+| Name      | Type                      | Mandatory | Description                                                  |
+| --------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| touchable | boolean                   | Yes       | Whether the area outside the child window is touchable. **true** if touchable, **false** otherwise. |
+| callback  | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Example**
 
@@ -12182,6 +12288,7 @@ windowClass.setOutsideTouchable(true, (err: BusinessError) => {
   }
   console.info('Succeeded in setting the area to be touchable.');
 });
+
 ```
 
 ## setOutsideTouchable<sup>(deprecated)</sup>
@@ -12200,15 +12307,15 @@ Sets whether the area outside the child window is touchable. This API uses a pro
 
 **Parameters**
 
-| Name   | Type   | Mandatory| Description            |
-| --------- | ------- | ---- | ---------------- |
-| touchable | boolean | Yes  | Whether the area outside the child window is touchable. **true** if touchable, **false** otherwise.|
+| Name      | Type    | Mandatory | Description                                                  |
+| --------- | ------- | --------- | ------------------------------------------------------------ |
+| touchable | boolean | Yes       | Whether the area outside the child window is touchable. **true** if touchable, **false** otherwise. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -12221,15 +12328,14 @@ promise.then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to set the area to be touchable. Cause code: ${err.code}, message: ${err.message}`);
 });
+
 ```
 
 ## setPrivacyMode<sup>(deprecated)</sup>
 
 setPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets whether this window is in privacy mode. This API uses an asynchronous callback to return the result.
-
-A window in privacy mode cannot be captured or recorded. This API can be used in scenarios where screen capture or recording is disabled.
+Sets whether this window is in privacy mode. This API uses an asynchronous callback to return the result. A window in privacy mode cannot be captured or recorded. This API can be used in scenarios where screen capture or recording is disabled.
 
 > **NOTE**
 >
@@ -12239,10 +12345,10 @@ A window in privacy mode cannot be captured or recorded. This API can be used in
 
 **Parameters**
 
-| Name       | Type                     | Mandatory| Description                |
-| ------------- | ------------------------- | ---- | -------------------- |
-| isPrivacyMode | boolean                   | Yes  | Whether the window is in privacy mode. **true** if in privacy mode, **false** otherwise.|
-| callback      | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
+| Name          | Type                      | Mandatory | Description                                                  |
+| ------------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| isPrivacyMode | boolean                   | Yes       | Whether the window is in privacy mode. **true** if in privacy mode, **false** otherwise. |
+| callback      | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 **Example**
 
@@ -12258,15 +12364,14 @@ windowClass.setPrivacyMode(isPrivacyMode, (err: BusinessError) => {
   }
   console.info('Succeeded in setting the window to privacy mode.');
 });
+
 ```
 
 ## setPrivacyMode<sup>(deprecated)</sup>
 
 setPrivacyMode(isPrivacyMode: boolean): Promise&lt;void&gt;
 
-Sets whether this window is in privacy mode. This API uses a promise to return the result.
-
-A window in privacy mode cannot be captured or recorded. This API can be used in scenarios where screen capture or recording is disabled.
+Sets whether this window is in privacy mode. This API uses a promise to return the result. A window in privacy mode cannot be captured or recorded. This API can be used in scenarios where screen capture or recording is disabled.
 
 > **NOTE**
 >
@@ -12276,15 +12381,15 @@ A window in privacy mode cannot be captured or recorded. This API can be used in
 
 **Parameters**
 
-| Name       | Type   | Mandatory| Description                |
-| ------------- | ------- | ---- | -------------------- |
-| isPrivacyMode | boolean | Yes  | Whether the window is in privacy mode. **true** if in privacy mode, **false** otherwise.|
+| Name          | Type    | Mandatory | Description                                                  |
+| ------------- | ------- | --------- | ------------------------------------------------------------ |
+| isPrivacyMode | boolean | Yes       | Whether the window is in privacy mode. **true** if in privacy mode, **false** otherwise. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
@@ -12314,10 +12419,10 @@ Sets whether this window is touchable. This API uses an asynchronous callback to
 
 **Parameters**
 
-| Name     | Type                     | Mandatory| Description                |
-| ----------- | ------------------------- | ---- | -------------------- |
-| isTouchable | boolean                   | Yes  | Whether the window is touchable. **true** if touchable, **false** otherwise.|
-| callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
+| Name        | Type                      | Mandatory | Description                                                  |
+| ----------- | ------------------------- | --------- | ------------------------------------------------------------ |
+| isTouchable | boolean                   | Yes       | Whether the window is touchable. **true** if touchable, **false** otherwise. |
+| callback    | AsyncCallback&lt;void&gt; | Yes       | Callback used to return the result.                          |
 
 
 **Example**
@@ -12344,22 +12449,21 @@ Sets whether this window is touchable. This API uses a promise to return the res
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setWindowTouchable()](#setwindowtouchable9-1) instead.
+> This method is supported since API version 7 and deprecated since API version 9. You are advised to use [setWindowTouchable()](#setwindowtouchable9-1) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Parameters**
 
-| Name     | Type   | Mandatory| Description                |
-| ----------- | ------- | ---- | -------------------- |
-| isTouchable | boolean | Yes  | Whether the window is touchable. **true** if touchable, **false** otherwise.|
+| Name        | Type    | Mandatory | Description                                                  |
+| ----------- | ------- | --------- | ------------------------------------------------------------ |
+| isTouchable | boolean | Yes       | Whether the window is touchable. **true** if touchable, **false** otherwise. |
 
 **Return value**
 
-| Type               | Description                     |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
-
+| Type                | Description                    |
+| ------------------- | ------------------------------ |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
