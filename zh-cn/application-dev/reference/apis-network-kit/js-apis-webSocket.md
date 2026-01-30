@@ -922,6 +922,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 > **说明：**
 >
 > 可通过监听error事件获得该接口的执行结果，错误码说明参见[webSocket错误码](errorcode-net-webSocket.md)。
+多次调用该接口时，避免监听同一端口。
 
 **需要权限**: ohos.permission.INTERNET
 
