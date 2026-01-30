@@ -99,7 +99,6 @@ struct Index {
         thumbData: thumb2,
         description: 'Content form description',
         appName: 'com.test.demo',
-        linkUri: 'https://appgallery.huawei.com/app/detail?id=com.huawei.hmos.wallet',
         appIcon: appIcon
       })
     } catch (err) {
