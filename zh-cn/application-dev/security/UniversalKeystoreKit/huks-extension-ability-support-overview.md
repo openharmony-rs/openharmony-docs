@@ -15,7 +15,7 @@ CryptoExtensionAbility可以隔离底层硬件（Ukey驱动）厂商实现差异
 
 三方驱动HAP应用如需定义自身外部密钥管理扩展能力：
 
-首先，需继承CryptoExtensionAbility并完成相关的接口实现。其次，通过Provider注册接口完成能力注册。最后，由HUKS和证书管理将对应的密钥管理扩展能力开放给应用。
+首先，需继承CryptoExtensionAbility并完成相关的接口实现。其次，通过Provider注册接口[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)完成能力注册。最后，由HUKS和证书管理将对应的密钥管理扩展能力开放给应用。
 
 ## 核心能力实现
 
@@ -35,5 +35,7 @@ CryptoExtensionAbility主要实现以下能力：
    - init操作，初始化密钥会话，并返回会话句柄信息。
    - update操作，传入分组数据，对分组数据进行密码操作，更新密钥会话信息后，将中间数据（如果有）返回。
    - finish操作，对传入最后一段分组数据，进行密钥返回操作，并结束密钥会话，将最终结果返回。
-4. 认证状态管理，支持应用维度的认证状态管理。针对同一个Ukey中的应用A，OpenHarmony应用1验证Ukey应用A的PIN码后，OpenHarmony应用2如果要访问Ukey应用A，也需要进行PIN码认证操作。
+4. 认证状态管理，支持应用维度的认证状态管理（认证/查询/重置）。针对同一个Ukey中的应用A，OpenHarmony应用1验证Ukey应用A的PIN码后，OpenHarmony应用2如果要访问Ukey应用A，也需要进行PIN码认证操作。
 5. 证书查询，支持根据证书类型，枚举所有证书或查询单个容器中的证书。
+6. 通用查询，支持通用查询操作，为上层业务应用提供Ukey设备信息、PIN码信息、公钥信息等查询能力。
+   - 接口的属性ID采用定义在 GMT 0016-2023 标准中的SKF函数名称，长度必须介于 1-100 字节。调用端和ExtensionAbility实现需约定使用的函数名集合及其参数/返回格式。
