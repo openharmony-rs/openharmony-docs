@@ -1156,10 +1156,10 @@ ArkTS-Sta
 
 ```typescript
 let p = new Promise<number>((resolve) => {
-  async() => {
+  (async() => {
     await new Promise<void>((resolveInner) => {setTimeout(()=>{resolveInner(undefined)}, 50)});
     resolve(1);
-  }
+  })();
 });
 ```
 
