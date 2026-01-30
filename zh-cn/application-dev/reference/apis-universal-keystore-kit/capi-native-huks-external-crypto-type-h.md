@@ -83,5 +83,3 @@ enum OH_Huks_ExternalPinAuthState
 | OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN码未认证。 |
 | OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN码认证成功。 |
 | OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN码被锁。 |
-
-
