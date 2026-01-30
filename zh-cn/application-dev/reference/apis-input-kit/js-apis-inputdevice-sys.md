@@ -39,7 +39,7 @@ ArkTS-Sta:  setKeyboardRepeatDelay(delay: int, callback: AsyncCallback&lt;void&g
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| delay    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 当输入小于范围的最小值，使用最小值;当大于最大值，使用最大值。 |
+| delay    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 当输入小于范围的最小值，自动设置为最小值；当大于最大值，自动设置为最大值。|
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码**：
@@ -134,7 +134,7 @@ ArkTS-Sta: setKeyboardRepeatDelay(delay: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| delay | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 当输入小于范围的最小值，使用最小值;当大于最大值，使用最大值。 |
+| delay | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。当输入小于范围的最小值，自动设置为最小值；当大于最大值，自动设置为最大值。|
 
 **返回值**：
 
@@ -405,7 +405,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int, callback: AsyncCallback&lt;void&gt;)
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| rate    | ArkTS-Dyn: number <br> ArkTS-Sta: int| 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 当输入小于范围的最小值，使用最小值;当大于最大值，使用最大值。 |
+| rate    | ArkTS-Dyn: number <br> ArkTS-Sta: int| 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。当输入小于范围的最小值，自动设置为最小值；当大于最大值，自动设置为最大值。|
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
 
 **错误码**：
@@ -499,7 +499,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rate | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 当输入小于范围的最小值，使用最小值;当大于最大值，使用最大值。 |
+| rate | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。当输入小于范围的最小值，自动设置为最小值；当大于最大值，自动设置为最大值。|
 
 **返回值**：
 
