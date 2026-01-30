@@ -213,7 +213,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 
 on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 
-注册监听全质量图上报。使用callback异步回调。
+注册监听拍照回图上报。使用callback异步回调。
 
 > **说明：**
 >
