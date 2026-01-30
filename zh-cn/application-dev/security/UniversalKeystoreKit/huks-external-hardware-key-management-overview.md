@@ -29,24 +29,24 @@ Ukey：USB key，基于USB接口的硬件设备，可用于存储用户私钥、
 
   3.1：通过IPC调用从Ukey硬件中读取证书信息。
 
-  标注4：应用层向HUKS发起查询，获取证书详细信息.
+- 标注4：应用层向HUKS发起查询，获取证书详细信息.
 
   4.1：通过IPC调用从Ukey硬件中读取证书信息。
 
-  标注5：用户选择具体证书后，应用将获取到证书索引标识KeyUri（即资源ID resourceId），用于打开资源、查询PIN码认证状态。
+- 标注5：用户选择具体证书后，应用将获取到证书索引标识KeyUri（即资源ID resourceId），用于打开资源、查询PIN码认证状态。
 
   HUKS提供PIN码认证能力和认证状态查询能力。应用PIN码认证之前，可以先查询认证状态。具体参考[Ukey PIN码认证](huks-ukey-pin-authentication-management-overview.md)。
 
   5.1：如果资源未认证，即PIN码未认证，应用需要调用证书管理能力，拉起PIN码认证弹窗，由用户输入PIN码完成认证。完成认证后，进入5的流程，调用HUKS统一接口，执行对应操作。
 
-  标注6：应用通过调用HUKS提供的统一接口，执行资源管理、签名验签等操作。如：
+- 标注6：应用通过调用HUKS提供的统一接口，执行资源管理、签名验签等操作。如：
 
   - 打开与关闭资源：[资源管理](huks-resource-management-overview.md)。
   - 验证消息内容以及消息发送者身份的真实性：[签名验签](huks-ukey-signing-signature-verification-overview.md)。
   
   除此以外，HUKS支持应用查询Ukey的密钥相关属性，具体参考[通用查询](huks-ukey-general-query-overview.md)。
 
-  标注7：在HUKS SA层执行证书查询、资源管理、PIN码认证及签名等核心操作。
+- 标注7：在HUKS SA层执行证书查询、资源管理、PIN码认证及签名等核心操作。
 
 在应用基于Ukey发起身份认证前，三方驱动HAP需完成：
 
