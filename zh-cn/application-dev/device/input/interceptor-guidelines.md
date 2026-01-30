@@ -57,11 +57,11 @@ struct KeyEvent {
     int64_t actionTime { -1 };
 };
 
-//定义按键事件回调函数
+// 定义按键事件回调函数
 void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
 {
     KeyEvent event;
-    //Input_KeyEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
+    // Input_KeyEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
@@ -115,11 +115,11 @@ struct AxisEvent {
     int32_t axisEventType { -1 };
 };
 
-//定义鼠标事件回调函数
+// 定义鼠标事件回调函数
 void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
 {
     MouseEvent event;
-    //Input_MouseEvent的生命周期仅在回调函数内，出了回调函数会被销毁
+    // Input_MouseEvent的生命周期仅在回调函数内，出了回调函数会被销毁
     event.action = OH_Input_GetMouseEventAction(mouseEvent);
     event.displayX = OH_Input_GetMouseEventDisplayX(mouseEvent);
     event.displayY = OH_Input_GetMouseEventDisplayY(mouseEvent);
@@ -130,11 +130,11 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
 	// ···
 }
 
-//定义触摸事件回调函数
+// 定义触摸事件回调函数
 void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
 {
     TouchEvent event;
-    //Input_TouchEvent的生命周期仅在回调函数内，出了回调函数会被销毁
+    // Input_TouchEvent的生命周期仅在回调函数内，出了回调函数会被销毁
     event.action = OH_Input_GetTouchEventAction(touchEvent);
     event.id = OH_Input_GetTouchEventFingerId(touchEvent);
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
@@ -143,12 +143,12 @@ void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
 	// ···
 }
 
-//定义轴事件回调函数
+// 定义轴事件回调函数
 void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
     
-    //Input_AxisEvent的生命周期仅在回调函数内，出了回调函数会被销毁
+    // Input_AxisEvent的生命周期仅在回调函数内，出了回调函数会被销毁
     InputEvent_AxisAction action;
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;
@@ -177,16 +177,16 @@ void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
 	// ···
 }
 
-//输入事件回调函数结构体
+// 输入事件回调函数结构体
 Input_InterceptorEventCallback g_eventCallback;
 
 static napi_value AddEventInterceptor(napi_env env, napi_callback_info info)
 {
-    //设置鼠标事件回调函数
+    // 设置鼠标事件回调函数
     g_eventCallback.mouseCallback = OnMouseEventCallback;
-    //设置触摸事件回调函数
+    // 设置触摸事件回调函数
     g_eventCallback.touchCallback = OnTouchEventCallback;
-    //设置轴事件回调函数
+    // 设置轴事件回调函数
     g_eventCallback.axisCallback = OnAxisEventCallback;
     Input_Result ret = OH_Input_AddInputEventInterceptor(&g_eventCallback, nullptr);
 	// ···
