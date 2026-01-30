@@ -656,6 +656,11 @@
     - [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md)
     - [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)
     - [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md)
+    - [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)
+    - [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)
+    - [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)
+    - [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)
+    - [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md)
     - [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md)
     - [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md)
     - [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md)
@@ -700,7 +705,7 @@
     - [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
     - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
-    - [ArkUI_TextMarqueeOption](capi-arkui-nativemodule-arkui-textmarqueeoption.md)
+    - [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
     - [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
     - [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)
@@ -753,6 +758,7 @@
     - [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)
     - [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)
     - [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)
+    - [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)

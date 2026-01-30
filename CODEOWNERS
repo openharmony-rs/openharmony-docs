@@ -707,9 +707,9 @@ zh-cn/application-dev/dfx/hiappevent-watcher-resourceleak-events.md @xuxinao @pe
 zh-cn/application-dev/dfx/hichecker-guidelines-arkts.md @lu-tao @martin-duan @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/hicollie-guidelines-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/hicollie-settimer-guidelines-ndk.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/dfx/hidebug-guidelines-arkts.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/dfx/hidebug-guidelines-ndk.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/dfx/hidebug-guidelines.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hidebug-guidelines-arkts.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hidebug-guidelines-ndk.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/dfx/hidebug-guidelines.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/hidumper.md @m0_55013956 @milkbread123 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/dfx/hilog-guidelines-arkts.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
 zh-cn/application-dev/dfx/hilog-guidelines-ndk.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
@@ -2128,39 +2128,39 @@ zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-h.md
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-hicollie-detectionparam.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie-hicollie-settimerparam.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hicollie.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-h.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-backtrace-object--8h.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-jsstackframe.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-mallocdispatch.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-memorylimit.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-nativememinfo.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-nativestackframe.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-stackframe.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-systemmeminfo.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-threadcpuusage.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-type-h.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-h.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-backtrace-object--8h.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-jsstackframe.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-mallocdispatch.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-memorylimit.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-nativememinfo.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-nativestackframe.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-stackframe.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-systemmeminfo.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-threadcpuusage.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-type-h.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hitrace-hitraceid.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hitrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-log-h.md @liuyifeifei @buzhenwang @shenchenkai @liyang2235 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-trace-h.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-graphicsmemorysummary.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-processsamplerconfig.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-graphicsmemorysummary.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-hidebug-processsamplerconfig.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-faultlogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hicollie.md @rr_cn @peterhuangyu @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-cpuusage.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-cpuusage.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-jsleakwatcher.md @lu-tao @martin-duan @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-loglibrary-sys.md @BruceZong @gcw_qzKyUhyU @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-trace.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hidebug-trace.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-bytrace.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-faultLogger.md @chenshi51 @Maplestory @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hiappevent.md @liujiaxing2024 @junjie_shi @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hichecker.md @lu-tao @martin-duan @gcw_KuLfPSbe @jinqiuheng
-zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md @hello_harmony @yu_haoqiaida @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
+zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md @hello_harmony @leiguangyu @kutcherzhou1 @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hilog.md @liuyifeifei@buzhenwang @shenchenkai @liyang2235 @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hisysevent-sys.md @lyj_love_code @tangyyan @gcw_KuLfPSbe @jinqiuheng
 zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hitracechain.md @qq_437963121 @MontSaintMichel @gcw_KuLfPSbe @jinqiuheng

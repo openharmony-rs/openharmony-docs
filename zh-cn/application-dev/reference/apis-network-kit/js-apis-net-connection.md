@@ -469,6 +469,23 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 | netHandle | [NetHandle](#nethandle) | 是   | 数据网络的句柄。                                             |
 | callback  | AsyncCallback\<void>    | 是   | 回调函数。当成功绑定App到指定网络时，error为undefined，否则为错误对象。|
 
+>**说明：**
+>
+> 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
+
+```ts
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+```
+
 **错误码：**
 
 以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
@@ -517,6 +534,22 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 | 参数名    | 类型                                                         | 必填 | 说明             |
 | --------- | ------------------------------------------------------------ | ---- | ---------------- |
 | netHandle | [NetHandle](#nethandle)                                      | 是   | 数据网络的句柄。 |
+
+>**说明：**
+>
+> 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
+```ts
+connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to get data: " + JSON.stringify(data));
+  });
+});
+```
 
 **返回值：**
 
@@ -2262,7 +2295,9 @@ getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress
 
 > **说明：**
 >
-> 该接口仅限在VPN应用中调用。
+> - 该接口仅限在VPN应用中调用。
+> - 调用接口时请设置local和remote参数的端口号。若未设置端口号或将端口号设置为0，接口会基于其他参数筛选出符合条件的UID的集合，并从中返回一个匹配的UID。
+> - protocol参数为PROTO_TYPE_UDP时，若通过local，remote参数未筛选出符合条件的UID，则仅基于local参数筛选并返回匹配的UID。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -2273,14 +2308,14 @@ getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress
 | 参数名   | 类型                             | 必填 | 说明            |
 | -------- | ------------------------------- | ---- | -------------- |
 | protocol | [ProtocolType](#protocoltype23) | 是   | 网络协议的类型。 |
-| local    | [NetAddress](#netaddress)       | 是   | 源IP地址和端口号。      |
-| remote   | [NetAddress](#netaddress)       | 是   | 目标IP地址和端口号。 |
+| local    | [NetAddress](#netaddress)       | 是   | 源网络地址。     |
+| remote   | [NetAddress](#netaddress)       | 是   | 目标网络地址。   |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ----------------------- |
-| Promise\<number> | Promise对象。以Promise形式返回的应用程序的UID，如果不存在匹配的UID则返回-1。 |
+| Promise\<number> | Promise对象，返回应用程序的UID。如果不存在匹配的UID则返回-1。 |
 
 **错误码：**
 
@@ -2318,7 +2353,9 @@ getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAdd
 
 > **说明：**
 >
-> 该接口仅限在VPN应用中调用。
+> - 该接口仅限在VPN应用中调用。
+> - 调用接口时请设置local和remote参数的端口号。若未设置端口号或将端口号设置为0，接口会基于其他参数筛选出符合条件的UID的集合，并从中返回一个匹配的UID。
+> - protocol参数为PROTO_TYPE_UDP时，若通过local，remote参数未筛选出符合条件的UID，则仅基于local参数筛选并返回匹配的UID。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -2331,14 +2368,14 @@ getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAdd
 | 参数名   | 类型                             | 必填 | 说明            |
 | -------- | ------------------------------- | ---- | -------------- |
 | protocol | [ProtocolType](#protocoltype23) | 是   | 网络协议的类型。 |
-| local    | [NetAddress](#netaddress)       | 是   | 源IP地址和端口号。      |
-| remote   | [NetAddress](#netaddress)       | 是   | 目标IP地址和端口号。 |
+| local    | [NetAddress](#netaddress)       | 是   | 源网络地址。     |
+| remote   | [NetAddress](#netaddress)       | 是   | 目标网络地址。   |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ----------------------- |
-| number | 应用程序的UID，如果不存在匹配的UID则返回-1。 |
+| number | 返回应用程序的UID。如果不存在匹配的UID则返回-1。|
 
 **错误码：**
 
@@ -2361,8 +2398,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
 let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
 let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
-let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
-console.info(`uid: ${uid}`);
+try {
+  let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
+  console.info(`uid: ${uid}`);
+} catch (e) {
+  let err = e as BusinessError;
+  console.error(`getConnectOwnerUid failed. errorCode: ${err.code} message:${err.message}`);
+}
 ```
 
 ## connection.getDnsAscii<sup>23+</sup>
@@ -2669,7 +2711,7 @@ netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 
-//  注册网络状态变化事件。此接口要在调用on后调用。
+// 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   console.error(JSON.stringify(error));
 });

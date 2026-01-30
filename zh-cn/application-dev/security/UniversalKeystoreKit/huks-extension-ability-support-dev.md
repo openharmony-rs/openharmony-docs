@@ -9,7 +9,7 @@
 
 ## 适配指导
 
-本指导是提供给驱动厂商继承实现[CryptoExtensionAbility](../../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)需要的接口能力，此处给出实现参考，其他实现依照业务需要依次调用driver封装的底层驱动函数。
+本文档旨在指导驱动厂商如何继承实现[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)需要的接口能力，此处给出实现参考，其他实现依照业务需要依次调用driver封装的底层驱动函数。
 
 在DevEco Studio工程中手动新建一个CryptoExtensionAbility组件，具体步骤如下：
 

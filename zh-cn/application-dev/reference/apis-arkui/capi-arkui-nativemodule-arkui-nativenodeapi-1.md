@@ -128,7 +128,7 @@ int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 **描述：**
 
 
-将组件挂载到某个父节点之下。
+将组件挂载到某个父节点之下。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -154,7 +154,7 @@ int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 **描述：**
 
 
-将组件从父节点中移除。
+将组件从父节点中移除。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -180,7 +180,7 @@ int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ark
 **描述：**
 
 
-将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之后。
+将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之后。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -207,7 +207,7 @@ int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ar
 **描述：**
 
 
-将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之前。
+将组件挂载到某个父节点之下，挂载位置在<b>sibling</b>节点之前。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -234,7 +234,7 @@ int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_
 **描述：**
 
 
-将组件挂载到某个父节点之下，挂载位置由<b>position</b>指定。
+将组件挂载到某个父节点之下，挂载位置由<b>position</b>指定。本接口属于节点操作接口，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -261,7 +261,7 @@ int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute
 **描述：**
 
 
-属性设置函数。在非主线程调用时需要注意待销毁组件对象的生命周期，生命周期管理不当有可能导致应用崩溃，因此不建议在非主线程上调用本接口。
+属性设置函数，不建议在非主线程上调用。
 
 **起始版本：** 12
 
@@ -314,7 +314,7 @@ int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribu
 **描述：**
 
 
-重置属性函数。
+重置属性函数，不建议在非主线程上调用。
 
 **起始版本：** 12
 

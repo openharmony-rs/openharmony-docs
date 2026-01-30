@@ -42,8 +42,6 @@ This component can contain a single child component.
 
 ## APIs
 
-### ArcListItem
-
 ArcListItem()
 
 Creates an item for the **ArcList** component.
@@ -70,7 +68,7 @@ Sets whether to enable auto-scaling for the **ArcListItem** component.
 
 | Name| Type              | Mandatory| Description                                       |
 | ------ | ------------------ | ---- | ------------------------------------------- |
-| enable | Optional\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable auto-scaling.<br>**true**: Enable auto-scaling.<br>**false**: Disable auto-scaling.<br>Default value: **true**.|
 
 ### swipeAction
 
@@ -86,7 +84,7 @@ Sets the swipe action item displayed when the **ArcListItem** component is swipe
 
 | Name | Type                                                        | Mandatory| Description                   |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
-| options | [Optional\<SwipeActionOptions>](ts-container-listitem.md#swipeactionoptions9) | Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9)&gt; | Yes  | Swipe action item displayed when the **ArcListItem** component is swiped out from the screen edge.|
 
 ## Example
 
@@ -102,7 +100,7 @@ import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@k
 @Component
 struct ArcListItemExample {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  private watchSize: string = '466px'; // Default watch size: 466*466
+  private watchSize: string = '466px'; // Default watch size: 466 x 466
   private itemSize: string = '414px' // Item width
 
   @Builder

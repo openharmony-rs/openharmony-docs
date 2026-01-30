@@ -851,7 +851,7 @@ This configuration item is used to control whether HTTP requests can be transmit
 {
   "network-security-config": {
     "base-config": {
-      "cleartextTrafficPermitted": true // Optional, supported since API 20.
+      "cleartextTrafficPermitted": true // Optional, supported since API version 20.
     },
     "domain-config": [
       {
@@ -861,12 +861,15 @@ This configuration item is used to control whether HTTP requests can be transmit
             "name": "example.com"
           }
         ],
-        "cleartextTrafficPermitted": false // Optional, supported since API 20.
+        "cleartextTrafficPermitted": false // Optional, supported since API version 20.
       }
     ],
     "component-config": {
-    	"Network Kit": true, // Optional, supported since API 20.
-    	"ArkWeb": false // Optional, supported since API 20.
+        "Request": true // Optional. Supported since API version 20. The default value true indicates that plaintext transmission can be disabled. The value false indicates the opposite.
+    	"Network Kit": true, // Optional, supported since API version 20.
+    	"ArkWeb": false // Optional, supported since API version 20.
+        "Media Kit": false // Optional, supported since API version 23.
+        "Remote Communication Kit": false // Optional, supported since API version 23.
     }
   }
 }
@@ -877,13 +880,16 @@ This configuration item is used to control whether HTTP requests can be transmit
 | Field                     | Type           | Mandatory| Description                                  |
 | --------------------------| --------------- |--------- |-------------------------------------- |
 |base-config                     | array          | No| Indicates the plaintext configuration of the application scope. This field has the lowest priority.|
-|cleartextTrafficPermitted  | boolean          |No| Whether plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite.|
+|cleartextTrafficPermitted<sup>18+</sup>  | boolean          |No| Whether plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite.|
 |domain-config                     | array          | No|  Indicates the plaintext configuration of each domain. The value can contain any number of items. Each item must contain one **domains**. If rules conflict in the same domain, the first matched rule is used. The priority is lower than that of **component-config**.|
-|include-subdomains         | boolean         | No| Whether a rule applies to subdomains. The value **true** indicates that the rule applies to subdomains, and the value **false** indicates the opposite. The default value is **false**.|
+|include-subdomains         | boolean         | No| If this parameter is set to **true**, **name** supports regular expression matching. If this parameter is set to **false**, **name** does not support regular expression matching. Note: The regular expression matching delay increases by about 10 to 15 milliseconds for every 1000 domain name configurations. When the number of domain name configurations exceeds 10,000, regular expression matching takes a long time.|
 |name         | string         | No| Main domain name.|
-|component-config                    | array          |  No| Indicates the plaintext configuration of each component. This field has the highest priority.|
-|Network Kit                 | boolean          |No| Whether plaintext transmission is disabled in Network Kit. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **true**.|
-|ArkWeb                    | boolean          |No| Whether plaintext transmission is disabled in ArkWeb. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **false**.|
+|component-config<sup>20+</sup>                    | array          |  No| Indicates the plaintext configuration of each component. This field has the highest priority.|
+|Request                    | boolean          |No| [Request](../reference/apis-basic-services-kit/js-apis-request.md) supports plaintext HTTP by default since API version 18. The plaintext HTTP feature cannot be configured. Plaintext HTTP can be enabled or disabled since API version 20. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **true**.|
+|Network Kit                 | boolean          |No| Network Kit supports plaintext HTTP by default since API version 18. The plaintext HTTP feature cannot be configured. Plaintext HTTP can be enabled or disabled since API version 20. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **true**.|
+|ArkWeb                    | boolean          |No| Plaintext HTTP can be enabled or disabled since API version 20. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **false**.|
+|Media Kit                    | boolean          |No|Plaintext HTTP can be enabled or disabled since API version 23. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **false**.|
+|Remote Communication Kit                    | boolean          |No| Plaintext HTTP can be enabled or disabled since API version 23. The value **true** indicates that plaintext transmission is disabled, and the value **false** indicates the opposite. The default value is **false**.|
 
 ## HTTP Interceptor
 
@@ -940,19 +946,11 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
     <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
-    enum InterceptorType {
-      INITIAL_REQUEST = 'INITIAL_REQUEST',
-      REDIRECTION = 'REDIRECTION',
-      CACHE_CHECKED = 'READ_CACHE',
-      NETWORK_CONNECT = 'CONNECT_NETWORK',
-      FINAL_RESPONSE = 'FINAL_RESPONSE'
-    }
-    
     class InitialHttpInterceptor implements http.HttpInterceptor {
-      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
       result: boolean = false;
     
-      constructor(interceptorType: InterceptorType, result: boolean) {
+      constructor(interceptorType: http.InterceptorType, result: boolean) {
         this.interceptorType = interceptorType;
         this.result = result;
       }
@@ -978,10 +976,10 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
     }
     
     class NetworkHttpInterceptor implements http.HttpInterceptor {
-      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
       result: boolean = false;
     
-      constructor(interceptorType: InterceptorType, result: boolean) {
+      constructor(interceptorType: http.InterceptorType, result: boolean) {
         this.interceptorType = interceptorType;
         this.result = result;
       }
@@ -1007,10 +1005,10 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
     }
     
     class FinalHttpInterceptor implements http.HttpInterceptor {
-      interceptorType: InterceptorType = InterceptorType.INITIAL_REQUEST;
+      interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
       result: boolean = false;
     
-      constructor(interceptorType: InterceptorType, result: boolean) {
+      constructor(interceptorType: http.InterceptorType, result: boolean) {
         this.interceptorType = interceptorType;
         this.result = result;
       }
@@ -1043,9 +1041,9 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
     ``` TypeScript
     // Create the required interceptor object and add it to the interceptor chain.
     chain.addChain([
-      new InitialHttpInterceptor(InterceptorType.INITIAL_REQUEST, true),
-      new NetworkHttpInterceptor(InterceptorType.NETWORK_CONNECT, true),
-      new FinalHttpInterceptor(InterceptorType.FINAL_RESPONSE, true)
+      new InitialHttpInterceptor(http.InterceptorType.INITIAL_REQUEST, true),
+      new NetworkHttpInterceptor(http.InterceptorType.NETWORK_CONNECT, true),
+      new FinalHttpInterceptor(http.InterceptorType.FINAL_RESPONSE, true)
     ]);
     ```
 
