@@ -33,10 +33,10 @@
 | [ArkUI_NativeAnimateAPI_1](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md) | ArkUI_NativeAnimateAPI_1 | ArkUI提供的Native侧动画接口集合。 |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md) | ArkUI_AnimateOption | 设置动画效果相关参数。 |
 | [ArkUI_Curve](capi-arkui-nativemodule-arkui-curve.md) | ArkUI_Curve | 提供曲线的插值对象定义。 |
-| [sssArkUI_CurveHandle](capi-arkui-nativemodule-arkui-curve8h.md) | ArkUI_Curve* | 定义曲线的插值对象指针定义。 |
+| [ArkUI_Curve*](capi-arkui-nativemodule-arkui-curve8h.md) | ArkUI_CurveHandle | 定义曲线的插值对象指针定义。 |
 | [ArkUI_KeyframeAnimateOption](capi-arkui-nativemodule-arkui-keyframeanimateoption.md) | ArkUI_KeyframeAnimateOption | 定义关键帧动画参数对象。 |
 | [ArkUI_AnimatorOption](capi-arkui-nativemodule-arkui-animatoroption.md) | ArkUI_AnimatorOption | 定义animator动画参数对象。 |
-| [ArkUI_AnimatorHandle](capi-arkui-nativemodule-arkui-animator8h.md) | ArkUI_Animator* | 定义animator动画对象指针。 |
+| [ArkUI_Animator*](capi-arkui-nativemodule-arkui-animator8h.md) | ArkUI_AnimatorHandle | 定义animator动画对象指针。 |
 | [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md) | ArkUI_AnimatorEvent | 定义animator回调事件对象。 |
 | [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md) | ArkUI_AnimatorOnFrameEvent | 定义animator接收到帧时回调对象。 |
 | [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md) | ArkUI_TransitionEffect | 定义transition属性配置转场参数对象。 |
