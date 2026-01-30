@@ -388,6 +388,8 @@
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
     - [使用文本常见问题](arkts-text-faq.md)
+    - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
+    - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)
