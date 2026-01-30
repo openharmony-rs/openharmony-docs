@@ -927,15 +927,15 @@ type Nullable\<T> = T | undefined
 
 ## EllipsisMode<sup>11+</sup>
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                   |
 | ----- | --- | -------------------------------------- |
-| START  | 0 | 省略行首内容。|
-| CENTER | 1 | 省略行中内容。|
-| END | 2 | 省略行末内容。|
+| START  | 0 | 省略行首内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| CENTER | 1 | 省略行中内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| END | 2 | 省略行末内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23|
+| MULTILINE_START<sup>24+</sup> | 3 | 省略行首内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24 <br>**ArkTS-Sta起始版本：** 24 |
+| MULTILINE_CENTER<sup>24+</sup> | 4 | 省略行中内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24 <br>**ArkTS-Sta起始版本：** 24 |
 
 ## ArrowPointPosition<sup>11+</sup>
 
