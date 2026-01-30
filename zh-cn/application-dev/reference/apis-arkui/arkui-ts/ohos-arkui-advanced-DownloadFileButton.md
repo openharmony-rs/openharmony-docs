@@ -33,6 +33,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -50,6 +52,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -66,6 +70,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 下载文件按钮中图标和文字的样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,6 +97,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -109,6 +117,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 下载按钮中文字的内容。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,6 +144,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 下载文件按钮中图标和文字的排列方式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
