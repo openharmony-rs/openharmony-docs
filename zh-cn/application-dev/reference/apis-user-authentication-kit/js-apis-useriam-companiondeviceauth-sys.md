@@ -1,7 +1,7 @@
 # @ohos.userIAM.companionDeviceAuth (伴随设备认证)(系统接口)
 面向系统应用提供伴随设备的查询、订阅以及业务范围管理等能力。
 
-伴随设备是指与主设备相连接的设备。例如智能手机的辅助设备，用于增强功能和用户体验，通常通过蓝牙或Wi-Fi进行连接。
+伴随设备是用户在主设备上添加的身份认证凭据，在满足条件的情况下能够与主设备交互进行用户身份鉴权。伴随设备应用场景，例如：手表作为伴随设备解锁手机、 耳机作为伴随设备让语音指令在手机上可以免解锁执行等。
 
 > **说明：**
 >
@@ -17,11 +17,11 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 
 ## BusinessId
 
-业务ID是伴随设备模块为每个使用伴随设备的业务定义的唯一标识。接入伴随设备模块的不同业务，即使场景相同，使用的业务ID也是不同的。使用相同业务ID的业务，共享伴随设备凭据。
+业务ID是伴随设备支持的某个业务场景的唯一标识。不同的伴随设备由于认证安全性差异，支持的业务场景范围也不同，例如智能手表作为伴随设备可以解锁锁屏、解锁应用锁、支持语音指令在锁屏上执行，而耳机作为伴随设备只能支持语音指令在锁屏之上执行。
 
 不同业务ID的伴随设备关系是独立的，互不干扰，可以独立添加、删除、认证。
 
-当前伴随设备模块的业务有：OH默认业务、跨设备锁屏解锁、跨设备解锁应用锁以及语音指令在锁屏执行前的身份鉴权等。
+当前伴随设备模块的业务有：OH默认业务、锁屏解锁、解锁应用锁以及语音指令在锁屏执行前的身份鉴权等。
 
 业务的添加对于服务端设备支持的场景有要求，如多屏协同业务，要求服务端设备支持委托认证场景。
 
@@ -119,7 +119,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 | deviceUserName | string | 否 | 否 | 设备用户名。 |
 | deviceModelInfo | string | 否 | 否 | 设备模型信息。 |
 | deviceName | string | 否 | 否 | 设备名。 |
-| isOnline | boolean | 否 | 否 | 设备在线状态，true: 设备处于在线状态； false: 设备处于离线状态。 |
+| isOnline | boolean | 否 | 否 | 设备在线状态，true：设备处于在线状态； false：设备处于离线状态。 |
 | supportedBusinessIds | ArkTS-Dyn: number[]<br />ArkTS-Sta: int[] | 否 | 否 | 设备支持的业务ID列表。 |
 
 ## TemplateStatus
@@ -209,9 +209,9 @@ type AvailableDeviceStatusCallback = (deviceStatusList: DeviceStatus[]) => void
 
 **参数：**
 
-| 参数名 | 类型 | 说明 |
-| ---------------- | --------------------------------- | -------------- |
-| deviceStatusList | [DeviceStatus](#devicestatus)[] | 设备状态列表。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ---------------- | --------------------------------- | -------------- | -------------- |
+| deviceStatusList | [DeviceStatus](#devicestatus)[] | 是 | 设备状态列表。 |
 
 ## ContinuousAuthParam
 
@@ -261,7 +261,7 @@ getTemplateStatus(): Promise&lt;TemplateStatus[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -279,7 +279,7 @@ statusMonitor.getTemplateStatus()
     console.info(`templateStatus: ${JSON.stringify(templateStatus)}`);
   })
   .catch((error: BusinessError) => {
-    console.error(`error code:${error?.code}`);
+    console.error(`error has been captured: message:${error?.message}`);
   })
 ```
 
@@ -309,7 +309,7 @@ onTemplateChange(callback: TemplateStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -324,12 +324,12 @@ try {
   const localUserId = 100;
   const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
   const handler = (templates: companionDeviceAuth.TemplateStatus[]): void => {
-    console.info('template status updated', templates);
+    console.info('template status updated');
   };
   statusMonitor.onTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -359,7 +359,7 @@ offTemplateChange(callback?: TemplateStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -374,13 +374,13 @@ try {
   const localUserId = 100;
   const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
   const handler = (templates: companionDeviceAuth.TemplateStatus[]): void => {
-    console.info('template status updated', templates);
+    console.info('template status updated');
   };
   statusMonitor.onTemplateChange(handler);
   statusMonitor.offTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -410,7 +410,7 @@ onAvailableDeviceChange(callback: AvailableDeviceStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -425,12 +425,12 @@ try {
   const localUserId = 100;
   const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
   const handler = (deviceStatusList: companionDeviceAuth.DeviceStatus[]): void => {
-    console.info('available device changed', deviceStatusList);
+    console.info('available device changed');
   };
   statusMonitor.onAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -460,7 +460,7 @@ offAvailableDeviceChange(callback?: AvailableDeviceStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -475,13 +475,13 @@ try {
   const localUserId = 100;
   const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
   const handler = (deviceStatusList: companionDeviceAuth.DeviceStatus[]): void => {
-    console.info('available device changed', deviceStatusList);
+    console.info('available device changed');
   };
   statusMonitor.onAvailableDeviceChange(handler);
   statusMonitor.offAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -512,7 +512,7 @@ onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -541,7 +541,7 @@ try {
   statusMonitor.onContinuousAuthChange(continuousAuthParam, handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -571,7 +571,7 @@ offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -600,7 +600,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -670,7 +670,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -764,27 +764,30 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   companionDeviceAuth.registerDeviceSelectCallback((purpose) => {
+    const addDeviceId = 'addDeviceId';
+    const otherDeviceId = 'otherDeviceId';
+    const addDeviceUserId = 100;
+    const otherDeviceUserId = 100;
     if (purpose === companionDeviceAuth.SelectPurpose.SELECT_ADD_DEVICE) {
       return {
         deviceKeys: [{
           deviceIdType: companionDeviceAuth.DeviceIdType.UNIFIED_DEVICE_ID,
-          deviceId: 'device_udid_xxx',
-          deviceUserId: 100
-        }],
-        selectionContext: new Uint8Array([1, 2, 3])
+          deviceId: addDeviceId,
+          deviceUserId: addDeviceUserId
+        }]
       };
     }
     return {
       deviceKeys: [{
         deviceIdType: companionDeviceAuth.DeviceIdType.UNIFIED_DEVICE_ID,
-        deviceId: 'device_udid_xxx',
-        deviceUserId: 100
+        deviceId: otherDeviceId,
+        deviceUserId: otherDeviceUserId
       }]
     };
   })
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`registerDeviceSelectCallback failed: ${err.code} ${err.message}`);
+  console.error(`error has been captured: ${err.code} ${err.message}`);
 }
 ```
 
@@ -826,7 +829,7 @@ try {
   companionDeviceAuth.unregisterDeviceSelectCallback();
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`unregisterDeviceSelectCallback failed: ${err.code} ${err.message}`);
+  console.error(`error has been captured: ${err.code} ${err.message}`);
 }
 ```
 
@@ -859,9 +862,9 @@ ArkTS-Sta: updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: 
 
 **返回值：**
 
-| 类型 | 说明 |
-| ------------------------------------------- | -------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| 类型                | 说明            |
+| ------------------- | --------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -886,6 +889,6 @@ companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.Bu
     console.info('business scope updated');
   })
   .catch((err: BusinessError) => {
-    console.error(`updateEnabledBusinessIds failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`error has been captured: code: ${err.code}, message: ${err.message}`);
   })
 ```
