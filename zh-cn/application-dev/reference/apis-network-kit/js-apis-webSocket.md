@@ -1531,8 +1531,9 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 | reason | string | 否   |否 |原因值，订阅close事件得到的关闭连接的错误原因。 |
 
 ## ResponseHeaders<sup>12+</sup>
+
 type ResponseHeaders = {
-  [k: string]: string | string[] | undefined
+  [k: string]: string | string[] | undefined;
 }
 
 服务器发送的响应头。
