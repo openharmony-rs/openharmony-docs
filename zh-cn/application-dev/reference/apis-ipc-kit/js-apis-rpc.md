@@ -8134,7 +8134,7 @@ sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: Me
 
 ### getLocalInterface<sup>9+</sup>
 
-getLocalInterface(interface: string): IRemoteBroker
+getLocalInterface(interfaceDes: string): IRemoteBroker
 
 查询并获取当前接口描述符对应的本地接口对象。
 
@@ -8144,7 +8144,7 @@ getLocalInterface(interface: string): IRemoteBroker
 
   | 参数名    | 类型   | 必填 | 说明                   |
   | --------- | ------ | ---- | ---------------------- |
-  | interface | string | 是   | 需要查询的接口描述符。 |
+  | interfaceDes | string | 是   | 需要查询的接口描述符。 |
 
 **返回值：**
 
