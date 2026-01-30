@@ -63,12 +63,12 @@ let netConnectionCellular = connection.createNetConnection({
     bearerTypes: [connection.NetBearType.BEARER_CELLULAR]
   }
 }, timeout);
- 	 
- // 示例3：关注蜂窝或Wi-Fi网络，需要指定网络类型为蜂窝网络和Wi-Fi网络。
+
+// 示例3：关注蜂窝或Wi-Fi网络，需要指定网络类型为蜂窝网络和Wi-Fi网络。
  let netConnectionCellularAndWifi = connection.createNetConnection({
- 	netCapabilities: {
- 	     bearerTypes: [connection.NetBearType.BEARER_CELLULAR,
- 	          connection.NetBearType.BEARER_WIFI]
+    netCapabilities: {
+          bearerTypes: [connection.NetBearType.BEARER_CELLULAR,
+                connection.NetBearType.BEARER_WIFI]
    }
 });
 ```
@@ -286,7 +286,7 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 getDefaultHttpProxy(callback: AsyncCallback\<HttpProxy>): void
 
 获取网络的默认代理配置信息。使用callback异步回调。
- 	 
+
 >  **说明：**
 >
 >- 如果设置了全局代理，则返回全局代理配置信息。
@@ -329,7 +329,7 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
 getDefaultHttpProxy(): Promise\<HttpProxy>
 
 获取网络默认的代理配置信息。使用Promise异步回调。
- 	 
+
 >  **说明：**
 >
 >- 如果设置了全局代理，则返回全局代理配置信息。
@@ -1268,7 +1268,7 @@ let hasDefaultNet = connection.hasDefaultNetSync();
 reportNetConnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): void
 
 向网络管理上报网络处于可用状态。使用callback方式异步回调。
- 	 
+
 > **说明：**
 >
 >该接口用于浏览器连接portal网络，网络认证成功后，向网络管理上报网络连接成功，网络管理会触发网络探测，更新网络状态。
@@ -1616,7 +1616,7 @@ connection.getAddressesByNameWithOptions("www.example.com", option).then((data: 
 addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<void\>): void
 
 为当前应用程序添加自定义host和对应的IP地址的映射。使用callback异步回调。
- 	 
+
 > **说明：**
 >
 > 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
@@ -1667,7 +1667,7 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"], (error: Busin
 addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 为当前应用程序添加自定义host和对应的IP地址的映射。使用Promise异步回调。
- 	 
+
 > **说明：**
 >
 > 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
@@ -1721,7 +1721,7 @@ connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
 removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 删除当前应用程序中对应host的自定义DNS规则。使用callback异步回调。
- 	 
+
 > **说明：**
 >
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
@@ -1771,7 +1771,7 @@ connection.removeCustomDnsRule("xxxx", (error: BusinessError, data: void) => {
 removeCustomDnsRule(host: string): Promise\<void\>
 
 删除当前应用程序中对应host的自定义DNS规则。使用Promise异步回调。
- 	 
+
 > **说明：**
 >
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
@@ -2890,7 +2890,7 @@ netCon.unregister((error: BusinessError) => {
 ## NetHandle
 
 网络句柄。
- 	 
+
 在调用NetHandle的方法之前，需要先获取NetHandle对象。例如可通过[getDefaultNet](#connectiongetdefaultnet)获取系统当前默认网络的网络句柄。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
