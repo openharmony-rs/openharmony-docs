@@ -3452,6 +3452,7 @@ writeRawData(rawData: number[], size: number): void
 > 从API version 9 开始支持，API version 11 开始废弃，建议使用[writeRawDataBuffer](#writerawdatabuffer11)替代。
 >
 > 该接口是一次性接口，不允许在一次parcel通信中多次调用该接口。
+>
 > 该接口在传输数据时，当数据量较大时（超过32KB），会使用共享内存传输数据，此时需注意selinux配置。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
