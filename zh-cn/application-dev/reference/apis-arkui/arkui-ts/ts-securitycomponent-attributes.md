@@ -1031,7 +1031,7 @@ struct Index {
                   Text('无需自适应调节')
                 }.width('90%')
 
-                // 前布局无需调整即可完整显示文本，文本无需自适应调节。
+                // 当前布局无需调整即可完整显示文本，文本无需自适应调节。
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1126,7 +1126,7 @@ struct Index {
                   Text('无需自适应调节')
                 }.width('90%')
 
-                // 前布局无需调整即可完整显示文本，文本无需自适应调节。
+                // 当前布局无需调整即可完整显示文本，文本无需自适应调节。
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1223,7 +1223,7 @@ struct Index {
                   Text('无需自适应调节')
                 }.width('90%')
 
-                // 前布局无需调整即可完整显示文本，文本无需自适应调节。
+                // 当前布局无需调整即可完整显示文本，文本无需自适应调节。
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
