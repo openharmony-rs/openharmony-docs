@@ -340,9 +340,9 @@ struct Index1 {
 ![zh-cn_image_editabletitlebar_example03](figures/zh-cn_image_editabletitlebar_example03.png)
 
 ### 示例4（左侧图标设置为默认焦点）
-在获焦状态下，该示例通过设置标题栏属性[leftIconDefaultFocus](#editabletitlebar-1)使左侧图标默认获焦。
+在获焦状态下，该示例通过设置标题栏属性leftIconDefaultFocus使左侧图标默认获焦。
 
-从API version 18开始，在EditableTitleBar中新增[leftIconDefaultFocus](#editabletitlebar-1)接口。
+从API version 18开始，在[EditableTitleBar](#editabletitlebar-1)中新增leftIconDefaultFocus接口。
 ```ts
 
 import { Prompt, EditableLeftIconType, EditableTitleBar } from '@kit.ArkUI';
