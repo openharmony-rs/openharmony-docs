@@ -43,8 +43,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 | 名称           | 类型                                              | 必填 | 装饰器类型 | 说明                             |
 | -------------- | ------------------------------------------------- | ---- | ---------- | -------------------------------- |
-| contentOptions | [DownloadContentOptions](#downloadcontentoptions) | 是   | ArkTS-Dyn: @State   <br>ArkTS-Sta: 无| 创建包含指定元素内容的下载按钮。|
-| styleOptions   | [DownloadStyleOptions](#downloadstyleoptions)     | 是   | ArkTS-Dyn: @State   <br>ArkTS-Sta:  无| 创建包含指定元素样式的下载按钮。|
+| contentOptions | [DownloadContentOptions](#downloadcontentoptions) | 是   | ArkTS-Dyn:@State   <br>ArkTS-Sta:无| 创建包含指定元素内容的下载按钮。|
+| styleOptions   | [DownloadStyleOptions](#downloadstyleoptions)     | 是   | ArkTS-Dyn:@State  <br>ArkTS-Sta:无| 创建包含指定元素样式的下载按钮。|
 
 ## DownloadContentOptions
 
