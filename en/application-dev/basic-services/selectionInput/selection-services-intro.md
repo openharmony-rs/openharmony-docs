@@ -45,7 +45,7 @@ The workflow of the word selection service depends on the collaboration of modul
 
 - Managing applications:
 
-  Word selection extension ability can be implemented to multiple applications, but only one application can communicate with the word selection service at a time. You can change the word selection application on **Settings** > **System **> **Smart text selection**.
+  Word selection extension ability can be implemented to multiple applications, but only one application can communicate with the word selection service at a time. You can change the word selection application on **Settings** > **System** > **Smart text selection**.
 
 ## Constraints
 
