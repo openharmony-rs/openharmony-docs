@@ -103,7 +103,7 @@ struct Index {
         appIcon: appIcon
       })
     } catch (err) {
-      console.info(`failed getMediaContent.`);
+      console.error(`failed getMediaContent.`);
     }
   }
 
