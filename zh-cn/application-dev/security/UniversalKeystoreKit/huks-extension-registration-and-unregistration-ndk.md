@@ -207,11 +207,6 @@ OH_Huks_Result InitParamSet(
     return ret;
 }
 
-static struct OH_Huks_Blob g_abilityName = {
-    (uint32_t)strlen("testAbility"),
-    (uint8_t *)"testAbility"
-};
-
 struct OH_Huks_Blob g_providerName = {
     (uint32_t)strlen("testProviderName"),
     (uint8_t *)"testProviderName"
