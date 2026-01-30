@@ -708,9 +708,13 @@ ArkTS-Sta示例：
 
 ```ts
 function parseSummary(summary: unifiedDataChannel.Summary) {
-  let summaryRecord = summary.summary as Record<string, long>;
-  let overviewRecord = summary.overview as Record<string, long>;
-  let totalSize = summary.totalSize;
+  let summary: unifiedDataChannel.Summary = new unifiedDataChannel.Summary;
+  let test: Record<String, Long> = {
+    "bb1": 123,
+  }
+  summary.summary = test;
+  console.info(`summary: ${summary.summary}`);
+  console.info(`overview: ${summary.overview}`);
 }
 ```
 

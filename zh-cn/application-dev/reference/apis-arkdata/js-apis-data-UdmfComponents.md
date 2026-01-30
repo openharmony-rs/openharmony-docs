@@ -21,8 +21,6 @@
 ```js
 import { ContentFormCard, FormType } from '@kit.ArkData';
 import uniformDataStruct from '@ohos.data.uniformDataStruct';
-import { PropRef } from '@ohos.arkui.stateManagement';
-import { Component, Builder } from '@ohos.arkui.component';
 ```
 
 ## 子组件
@@ -33,7 +31,7 @@ import { Component, Builder } from '@ohos.arkui.component';
 
 ArkTS-Dyn: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: number, formHeight?: number, handleOnClick?: Function})
 
-ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: double, formHeight?: double, handleOnClick?: Function, build(): void})
+ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: double, formHeight?: double, handleOnClick?: Function})
 
 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。
 
@@ -48,11 +46,10 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | 是 | - | 内容卡片数据。 |
-| formType | [FormType](#formtype) | 是 | @Prop | 内容卡片类型，影响内容卡片的大小。 |
-| formWidth | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否 | @Prop | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
-| formHeight | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否 | @Prop | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
+| formType | [FormType](#formtype) | 是 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 内容卡片类型，影响内容卡片的大小。 |
+| formWidth | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
+| formHeight | ArkTS-Dyn: number  <br/>ArkTS-Sta: double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
 | handleOnClick | Function | 否 | - | 点击事件回调函数。 |
-| build | void | 是 | @Builder | 构建函数，用于绘制组件。<br>**ArkTS模式：**  该接口仅适用于ArkTS-Sta。|
 
 ## FormType
 
@@ -70,8 +67,74 @@ ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, form
 | TYPE_MID | 1 | 表示 4 x 2 的尺寸。默认卡片宽度为200，默认高度为100。 |
 | TYPE_SMALL | 2 | 表示 2 x 1 的尺寸。默认卡片宽度为137， 默认高度为83。 |
 
+## 示例
+
+ArkTS-Dyn示例：
+
 ```ts
-import { State, Prop, Watch } from '@ohos.arkui.stateManagement'
+import { uniformDataStruct } from '@kit.ArkData'
+
+@Entry
+@Component
+struct Index {
+  @State contentForm: uniformDataStruct.ContentForm = {
+    uniformDataType: 'general.content-form',
+    title: ''
+  };
+  @State startToShow: boolean = false;
+
+  aboutToAppear(): void {
+    this.initData();
+  }
+
+  async initData() {
+    let context = this.getUIContext().getHostContext();
+    if (!context) {
+      return;
+    }
+    try {
+      let appIcon = await context.resourceManager.getMediaContent($r('app.media.startIcon').id);
+      let thumbImage = await context.resourceManager.getMediaContent($r('app.media.foreground').id);
+      this.contentForm = {
+        uniformDataType: 'general.content-form',
+        title: "Content form title",
+        thumbData: appIcon,
+        description: "Content form description",
+        appIcon: thumbImage,
+        appName: "com.test.demo"
+      };
+    } catch (err) {
+      console.error("Init data error");
+    }
+  }
+
+  build() {
+    Column() {
+      Button('show card')
+        .onClick(() => {
+          this.startToShow = true;
+        })
+      if (this.startToShow) {
+        ContentFormCard({
+          contentFormData: this.contentForm,
+          formType: FormType.TYPE_SMALL,
+          formWidth: 110,
+          formHeight: 50,
+          handleOnClick: () => {
+            console.info("Clicked card");
+          }
+        })
+      }
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { State, PropRef, Watch } from '@ohos.arkui.stateManagement'
+import { Component, Builder } from '@ohos.arkui.component';
 import { FormType, ContentFormCard } from '@ohos.data.UdmfComponents';
 import common from '@ohos.app.ability.common';
 import { uniformDataStruct } from '@kit.ArkData';
