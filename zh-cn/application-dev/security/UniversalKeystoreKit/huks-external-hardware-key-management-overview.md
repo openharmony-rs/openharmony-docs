@@ -47,8 +47,8 @@ Ukey：USB key，基于USB接口的硬件设备，可用于存储用户私钥、
 
   4.1：如果资源已认证，即PIN码已认证，应用将调用HUKS统一接口，执行资源管理、签名验签等操作。如：
 
-  - 打开与关闭资源：[资源管理](huks-resource-management-overview.md)
-  - 验证消息内容以及消息发送者身份的真实性：[签名验签](huks-ukey-signing-signature-verification-overview.md)
+  - 打开与关闭资源：[资源管理](huks-resource-management-overview.md)。
+  - 验证消息内容以及消息发送者身份的真实性：[签名验签](huks-ukey-signing-signature-verification-overview.md)。
   
   除此以外，HUKS支持应用查询Ukey的密钥相关属性，具体参考[通用查询](huks-ukey-general-query-overview.md)。
 
