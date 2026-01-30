@@ -616,7 +616,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 |---------|------------|----|------------------|
 | portId  | number     | 是  | 端口号。      |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：ms），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不等待直接返回。 |
+| timeout | number     | 否  | 超时时间（单位：ms），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不等待直接返回。|
 
 **返回值：**
 
