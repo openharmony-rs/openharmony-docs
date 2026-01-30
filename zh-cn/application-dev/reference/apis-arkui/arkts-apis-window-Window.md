@@ -4102,10 +4102,10 @@ try {
 
 on(type: 'windowVisibilityChange', callback: Callback&lt;boolean&gt;): void
 
-开启本窗口可见状态变化事件的监听。如下场景中，本接口返回的可见性与肉眼所见的可见是可能存在区别的：
-- 窗口的阴影区域部分被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
-- 上层窗口设置了透明时不会遮挡下层窗口，比如PC上设置应用侧边栏因为设置了透明模糊效果，所以这部分是不会遮挡下层窗口的。
-- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如手机悬浮窗拖动时返回的下层窗口依然是全可见状态。
+开启本窗口可见状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
+- 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
+- 上层窗口带有透明时（包括不完全透明）不会遮挡下层窗口，此时下层窗口是可见的。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是全可见状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4191,10 +4191,10 @@ try {
 
 on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): void
 
-开启窗口可见性状态变化事件的监听。如下场景中，本接口返回的可见性与肉眼所见的可见是可能存在区别的：
-- 窗口的阴影区域部分被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
-- 上层窗口设置了透明时不会遮挡下层窗口，比如PC上设置应用侧边栏因为设置了透明模糊效果，所以这部分是不会遮挡下层窗口的。
-- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如手机悬浮窗拖动时返回的下层窗口依然是全可见状态。
+开启窗口可见性状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
+- 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
+- 上层窗口带有透明时（包括不完全透明）不会遮挡下层窗口，此时下层窗口是可见的。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是全可见状态。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
