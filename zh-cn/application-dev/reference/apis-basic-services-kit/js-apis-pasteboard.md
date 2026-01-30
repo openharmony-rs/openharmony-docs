@@ -3909,7 +3909,7 @@ let listener = () => {
 systemPasteboard.onRemoteUpdate(listener);
 ```
 
-### offRemoteUpdate(callback?: UpdateCallback)<sup>22+</sup>
+### offRemoteUpdate<sup>22+</sup>
 
 offRemoteUpdate(callback?: UpdateCallback): void
 
