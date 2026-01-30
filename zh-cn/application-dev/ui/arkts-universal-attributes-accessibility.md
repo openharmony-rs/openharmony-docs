@@ -18,7 +18,7 @@ ArkUI提供了丰富的无障碍能力，使开发者能够创建可访问的应
 
 - 覆盖所有用户交互场景（如按钮点击、文本浏览、图表交互、动态内容更新）。
 
-- 适用于Phone、Tablet、Wearable设备。
+- 适用于Phone、Tablet设备。
 
 ## 亮点特征
 
@@ -40,6 +40,118 @@ ArkUI提供了丰富的无障碍能力，使开发者能够创建可访问的应
 
 <!--RP1--><!--RP1End-->
 
+## 设置无障碍文本
+
+[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)属性用于为无文本内容的组件提供朗读文本，为纯视觉元素提供无障碍场景下的信息。建议设置的文本内容简洁达意，传递本组件的关键信息。例如为无文本的播放按钮提供“播放”功能描述。如果组件已有文本内容，同时又设置了accessibilityText属性，此时仅播报accessibilityText的内容。
+
+accessibilityText主要用于组件的功能简述，而不是具体的操作和提示信息。不建议在accessibilityText中添加冗长的信息，例如添加“单指双击即可播放”这种操作引导、“当前场景不支持”等状态信息。
+
+accessibilityText支持字符串或资源引用。
+
+以下给出2个示例，对比介绍如何在无默认文本的图标按钮中，补充无障碍文本accessibilityText。
+
+示例1：仅有图片且未设置无障碍文本时，播报“图片，单指双击可执行”，用户无法通过语音播报感知此图片按钮的功能。
+
+<!-- @[accessibility_text_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase01.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityTextCase01 {
+  build() {
+    // ...
+      Column() {
+        // 需确保resource/base/media目录下图标存在，可用其他图标替换演示。
+        Image($r('app.media.play'))
+          .width(60)
+          .height(60)
+          .onClick(() => {
+            // 播放音频、视频的核心逻辑
+          })
+      }
+      .backgroundColor('#f1f2f3')
+      // ...
+  }
+}
+```
+
+示例2：在示例1的基础上，增加accessibilityText属性，设置“播放，图片，单指双击即可执行”，用户通过语音播报可以感知此图片按钮的功能。
+
+<!-- @[accessibility_text_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase02.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityTextCase02 {
+  build() {
+    // ...
+      Column() {
+        // 需确保resource/base/media目录下图标存在，可用其他图标替换演示。
+        Image($r('app.media.play'))
+          .width(60)
+          .height(60)
+          .onClick(() => {
+            // 播放音频、视频的核心逻辑
+          })
+          .accessibilityText('播放')
+      }
+      .backgroundColor('#f1f2f3')
+      // ...
+  }
+}
+```
+
+## 设置无障碍提醒
+
+[accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription)属性用于提供更详细的组件说明，帮助用户理解将要执行的操作以及可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本accessibilityText中了解到时。例如组件状态当前不可使用的原因，系统默认的新手提醒不能表达的含义等场景。该信息在文本内容之后播报，并且如果当前控件有默认的新手提醒（如支持点击的组件，默认新手提醒为：单指双击即可执行）时，accessibilityDescription会替代系统的新手提醒，即仅播报accessibilityDescription。
+
+关闭辅助工具的新手提醒开关后，accessibilityDescription内容也不会播报。
+
+以下给出2个示例，对比介绍在Button组件中，如何设置无障碍提醒。
+
+示例1：使用Button作为视频播放全屏按钮，聚焦Column时播报“按钮，单指双击可**执行**”，用户难以理解具体执行内容。
+
+<!-- @[accessibility_description_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase01.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityDescriptionCase01 {
+  build() {
+    // ...
+      Button()
+        .background(Color.Blue)
+        .onClick(() => {
+          // 全屏逻辑
+        })
+      // ...
+  }
+}
+```
+
+示例2：在示例1的基础上设置accessibilityDescription后播报“按钮，单指双击即可**全屏**”，用户可以明确是全屏操作。
+
+<!-- @[accessibility_description_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase02.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityDescriptionCase02 {
+  build() {
+    // ...
+      Button()
+        .background(Color.Blue)
+        .onClick(() => {
+          // 全屏逻辑
+        })
+        // 业务自定义提示信息
+        .accessibilityDescription('单指双击即可全屏')
+      // ...
+  }
+}
+```
+
+
 ## 设置无障碍分组
 
 [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup)属性，用于设置是否启用无障碍分组。若启用，则该组件及其所有子组件将作为一个整体处理，无障碍服务不再单独处理各子组件。accessibilityGroup属性支持以下值：
@@ -48,16 +160,31 @@ ArkUI提供了丰富的无障碍能力，使开发者能够创建可访问的应
 
 - true：启用无障碍分组。
 
-这里以Column组件为例，启用无障碍分组：
+以下给出两个示例，对比介绍在Column组件中使用无障碍分组的作用。
 
-<!-- @[accessibility_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) --> 
+示例1：此场景下有3个可单独聚焦的Text节点，用户难以有效感知完整的时间信息。
+
+<!-- @[accessibility_group_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase01.ets) --> 
 
 ``` TypeScript
-Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
+@Entry
+@Component
+export struct AccessibilityGroupCase01 {
+  build() {
+    // ...
+      Column() {
+        Text('2026年')
+        Text('1月27日')
+        Text('星期二')
+      }
+      // ...
+  }
 }
-.accessibilityGroup(true)
 ```
+
+示例2：在示例1的基础上增加accessibilityGroup后，Column组件可被聚焦，并且将Column组件下的所有Text文本拼接成文本“2026年1月27日星期二”，同时禁止单个Text节点聚焦。
+
+<!-- @[accessibility_group_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase02.ets) --> 
 
 ## 设置无障碍重要性
 
@@ -71,90 +198,23 @@ Column() {
 
 - "no-hide-descendants"：当前组件及其所有子组件均不可被无障碍辅助服务所识别。
 
-这里以Column组件为例，设置其无障碍重要性为可被无障碍辅助服务所识别：
+本示例以Text组件为例，设置Text.accessibilityLevel("yes")可被辅助工具识别，若无此设置，“文本1”不可被单独聚焦。
 
-<!-- @[accessibility_level_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
-
-``` TypeScript
-Column() {
-  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
-}
-.accessibilityGroup(true)
-  .accessibilityLevel('yes')
-```
-
-## 设置无障碍文本
-
-[accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext)属性用于为无文本内容的组件提供朗读文本，为纯视觉元素提供无障碍场景下的信息。建议设置的文本内容简洁达意，传递本组件的关键信息。例如为无文本的播放按钮提供“播放”功能描述。如果组件已有文本内容，同时又设置了accessibilityText属性，此时仅播报accessibilityText的内容。
-
-accessibilityText主要用于组件的功能简述，而不是具体的操作和提示信息。不建议在accessibilityText中添加冗长的信息，例如添加“单指双击即可播放”这种操作引导、“当前场景不支持”等状态信息。
-
-accessibilityText支持字符串或资源引用。
-
-本示例以播放图标为例，设置其无障碍文本为“播放”。
-
-<!-- @[accessibility_text_group_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
-
-``` TypeScript
-Column() {
-  Image($r('app.media.play')) // 仅图标，无默认文本
-  .width(60)
-  .height(60)
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text12'))
-  .onClick(() => {
-      // 播放音频、视频的核心逻辑
-  })
-}
-```
-
-## 设置无障碍说明
-
-[accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription)属性用于提供更详细的组件说明，帮助用户理解将要执行的操作及结果。例如组件状态当前不可使用的原因，系统默认的新手提醒不能表达的含义等场景。文本内容播报完成之后，会播报该信息。如果当前控件有默认的新手提醒（如支持点击的组件，默认新手提醒为：单指双击即可执行），accessibilityDescription会替代系统的新手提醒，即仅播报accessibilityDescription的内容。
-
-本示例以Button组件的播放场景为例，设置其无障碍说明为“单指双击即可播放”。
-
-<!-- @[accessibility_description_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
-
-``` TypeScript
-Column() {
-  Button()
-  .width(120)
-  .height(40)
-  .accessibilityLevel('yes')
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text12'))
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text13'))
-  .onClick(() => {
-      // 播放音频、视频的核心逻辑
-  })
-}
-```
-
-## 设置无障碍虚拟子节点
-
-[accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11)属性，用于为自绘制组件添加虚拟无障碍节点，辅助工具会读取这些节点的信息而非实际显示内容。
-
-<!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
+<!-- @[accessibility_level_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityLevelCase01.ets) -->
 
 ``` TypeScript
 @Entry
 @Component
-struct VirtualNodeExample {
-  @Builder customAccessibilityNode() {
-    // 请将$r('app.string.UniversalAttributesAccessibility_text6')替换为实际资源文件，在本示例中该资源文件的value值为"文本2"
-    Text($r('app.string.UniversalAttributesAccessibility_text6'))
-      .fontSize(50)
-      .fontWeight(FontWeight.Bold)
-  }
+export struct AccessibilityLevelCase01 {
   build() {
-    Column() {
-      // 请将$r('app.string.UniversalAttributesAccessibility_text5')替换为实际资源文件，在本示例中该资源文件的value值为"文本1"
-      Text($r('app.string.UniversalAttributesAccessibility_text5'))
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-    }
-    .accessibilityGroup(true)
-    .accessibilityLevel('yes')
-    .accessibilityVirtualNode(this.customAccessibilityNode)
+    // ...
+        Column() {
+          Text('HelloWorld')
+          Text('文本1')
+            .accessibilityLevel('yes')
+      }
+      .accessibilityGroup(true)
+      // ...
   }
 }
 ```
@@ -183,11 +243,8 @@ Column() {
 }
 .accessibilityGroup(true)
   .accessibilityLevel('yes')
-  // 请将$r('app.string.UniversalAttributesAccessibility_text7')替换为实际资源文件，在本示例中该资源文件的value值为"分组"
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  /* 请将$r('app.string.UniversalAttributesAccessibility_text8')替换为实际资源文件，
-     在本示例中该资源文件的value值为"Column组件可以被选中，播报的内容是“分组”" */
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+  .accessibilityText('分组')
+  .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
   .accessibilityChecked(true)
 ```
 
@@ -212,10 +269,8 @@ Column() {
 .accessibilityGroup(true)
   .accessibilityLevel('yes')
   // 请将$r('app.string.UniversalAttributesAccessibility_text7')替换为实际资源文件，在本示例中该资源文件的value值为"分组"
-  .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-  /* 请将$r('app.string.UniversalAttributesAccessibility_text8')替换为实际资源文件，
-     在本示例中该资源文件的value值为"Column组件可以被选中，播报的内容是“分组”" */
-  .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+  .accessibilityText('分组')
+  .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
   .accessibilitySelected(undefined)
 ```
 
@@ -229,6 +284,35 @@ Column() {
 | 语义目标 | 控件物理状态（如开关是否打开）。 | 导航焦点项（如列表当前选中项）。 |
 | 状态持久性 | 通常需显式保存（如表单提交）。 | 临时性（随焦点移动变化）。 |
 | 典型组件 | Checkbox，Toggle。         | List，Tabs。        |
+
+## 设置无障碍虚拟子节点
+
+[accessibilityVirtualNode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityvirtualnode11)属性，用于为自绘制组件添加虚拟无障碍节点，辅助工具会读取这些节点的信息而非实际显示内容。
+
+本示例以Text组件为例，设置accessibilityVirtualNode后，“文本2”在无障碍模式下可被辅助工具识别聚焦并播报，UI仍然显示为“文本1”。
+
+<!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct VirtualNodeExample {
+  @Builder customAccessibilityNode() {
+    Text('文本2')
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+
+  build() {
+    Column() {
+      Text('文本1')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .accessibilityVirtualNode(this.customAccessibilityNode)
+  }
+}
+```
 
 ## 使用建议
 
@@ -269,23 +353,18 @@ export struct AccessibilityText {
       Row() {
         // ···
         Column() {
-          // 请将$r('app.string.UniversalAttributesAccessibility_text5')替换为实际资源文件，在本示例中该资源文件的value值为"文本1"
-          Text($r('app.string.UniversalAttributesAccessibility_text5'))
+          Text('文本1')
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-          // 请将$r('app.string.UniversalAttributesAccessibility_text6')替换为实际资源文件，在本示例中该资源文件的value值为"文本2"
-          Text($r('app.string.UniversalAttributesAccessibility_text6'))
+          Text('文本2')
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
         }
         .width('100%')
           .accessibilityGroup(true)
           .accessibilityLevel('yes')
-          // 请将$r('app.string.UniversalAttributesAccessibility_text7')替换为实际资源文件，在本示例中该资源文件的value值为"分组"
-          .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-          /* 请将$r('app.string.UniversalAttributesAccessibility_text8')替换为实际资源文件，
-             在本示例中该资源文件的value值为"Column组件可以被选中，播报的内容是“分组”" */
-          .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
+          .accessibilityText('分组')
+          .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
           .accessibilityVirtualNode(this.customAccessibilityNode)
           .accessibilityChecked(true)
           .accessibilitySelected(undefined)
