@@ -102,3 +102,18 @@ Swiper子组件的信息。
 | --------- | ---- | ----- | ---- | -----------------------|
 | uniqueId  | number | 否 | 否 | Swiper子组件的唯一标识符。   |
 | index     | number | 否 | 否 | Swiper子组件在Swiper中的索引。 |
+
+## BackgroundLuminanceSamplerOptions<sup>24+</sup>
+
+背景亮度采样的信息。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称      | 类型 | 只读  | 可选 | 说明                    |
+| --------- | ---- | ----- | ---- | -----------------------|
+| interval  | number | 否 | 是 | 采样间隔，单位为毫秒，最小值180ms。   |
+| brightThreshold     | number | 否 | 是 | 浅色亮度阈值。 |
+| darkThreshold     | number | 否 | 是 | 深色亮度阈值。 |
+| rect     | Edges\<LengthMetrics\> | 否 | 是 | 相对窗口的采样偏移。 |
