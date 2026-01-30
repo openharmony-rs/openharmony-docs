@@ -546,3 +546,55 @@ struct ImageRecycleSample {
   }
 }
 ```
+
+### getLuminanceSampler<sup>24+</sup>
+
+getLuminanceSampler(): LuminanceSampler;
+
+获取LuminanceSampler对象，通过该对象设置某节点的背景亮度采样。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                                              | 说明                                                         |
+| ------------------------------------------------- | ------------------------------------------------------------ |
+| LuminanceSampler | 返回背景亮度采样器。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct UIInspectorExample {
+  @State luminanceSampler: LuminanceSampler | undefined;
+
+  build() {
+    Column() {
+      Button('Get Luminance Sampler')
+        .onClick(() => {
+          let uiContext = this.getUIContext();
+          let uniqueId = this.getUniqueId();
+          let frameNode: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
+          let targetId = frameNode?.getFirstChild()?.getUniqueId();
+          // 获取采样器
+          this.luminanceSampler = this.getUIContext().getLuminanceSampler({ id: targetId });
+          // 设置采样配置
+          this.luminanceSampler.setBackgroundLuminanceSamplingOptions({
+            samplingInterval: 180,
+            brightThreshold: 150,
+            darkThreshold: 220
+          })
+          // 注册回调
+          this.luminanceSampler.onBackgroundLuminanceChange((luminance: number) => {
+            console.log("Luminance: " + luminance);
+          })
+          // 解注册回调
+          this.luminanceSampler.offBackgroundLuminanceChange()
+        })
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+}
+```
