@@ -3210,14 +3210,3 @@ IP邻居表条目信息。
 | ipAddress | [NetAddress](#netaddress)     | 否 | 否 |IP地址相关信息。   |
 | iface       | string                              | 否 | 否 |网卡名。                                    |
 | macAddress | string | 否 | 否 |MAC地址。                                |
-
-## ProtocolType<sup>23+</sup>
-
-网络协议类型的枚举。
-
-**系统能力**：SystemCapability.Communication.NetManager.Core
-
-| 名称            | 值   | 说明          |
-| --------------- | ---- | ------------ |
-| PROTO_TYPE_TCP  | 6    | TCP网络协议。 |
-| PROTO_TYPE_UDP  | 17   | UDP网络协议。 |
