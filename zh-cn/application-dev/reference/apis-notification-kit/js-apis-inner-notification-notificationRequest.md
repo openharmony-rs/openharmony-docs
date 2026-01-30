@@ -51,7 +51,7 @@
 | appMessageId<sup>12+</sup>       | string                                                   |   否  | 是  | 应用发送通知携带的唯一标识字段, 用于通知去重。如果同一应用通过本地和云端等不同途径发布携带相同appMessageId的通知，设备只展示一条消息，之后收到的重复通知会被静默去重，不展示、不提醒。去重标识仅在通知发布的24小时内有效，超过24小时或者设备重启失效。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20|
 | sound<sup>12+</sup>            | string                                                   |   否  | 是  | 应用通知自定义铃声文件名。该文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。<!--RP1-->该字段需要由具有[ohos.permission.NOTIFICATION_AGENT_CONTROLLER](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionnotification_agent_controller)权限的系统应用调用接口[notificationManager.setAdditionalConfig](./js-apis-notificationManager-sys.md#notificationmanagersetadditionalconfig12)进行配置权益后，方可生效。<!--RP1End--> <br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：20                                                       |
 | overlayIcon<sup>23+</sup>      | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知重叠图标。图像像素的总字节数不超过192KB。<br>此接口只在[notificationSlotType](#notificationrequest-1)类型设置为SOCIAL_COMMUNICATION时生效。 |
-| priorityNotificationType<sup>23+</sup>  | [notificationManager.PriorityNotificationType](js-apis-notificationManager.md#prioritynotificationtype23) | 否 | 是 | 通知优先级类型，用于判断此通知是否需要优先显示。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
+| priorityNotificationType<sup>23+</sup>  | [notificationManager.PriorityNotificationType](js-apis-notificationManager.md#prioritynotificationtype23) | 否 | 是 | 通知优先级类型，用于判断此通知是否需要优先显示。<!--RP2--><!--RP2End--><br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
 
 ## DistributedOptions<sup>8+</sup>
 

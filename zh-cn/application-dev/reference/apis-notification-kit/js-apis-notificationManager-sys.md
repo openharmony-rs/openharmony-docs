@@ -8208,7 +8208,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 notificationManager.isPriorityEnabled().then((result : boolean) => {
     console.info(`isPriorityEnabled result is ${result}`);
 }).catch((err: BusinessError) => {
-    console.info(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8220,7 +8220,7 @@ notificationManager.isPriorityEnabled().then((result : boolean) => {
     console.info(`isPriorityEnabled result is ${result}`);
 }).catch((e: Error) => {
   let err = e as BusinessError
-  console.info(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8273,7 +8273,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 notificationManager.setPriorityEnabled(false).then(() => {
     console.info(`setPriorityEnabled success`);
 }).catch((err: BusinessError) => {
-    console.info(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8285,7 +8285,7 @@ notificationManager.setPriorityEnabled(false).then(() => {
     console.info(`setPriorityEnabled success`);
 }).catch((e: Error) => {
   let err = e as BusinessError
-    console.info(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8340,7 +8340,7 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
   console.info(`isPriorityEnabledByBundle result is ${result}`);
 }).catch((err: BusinessError) => {
-  console.info(`isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8353,7 +8353,7 @@ notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notif
   console.info(`isPriorityEnabledByBundle result is ${result}`);
 }).catch((e: Error) => {
   let err = e as BusinessError
-  console.info(`isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8406,10 +8406,10 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
   console.info(`setPriorityEnabledByBundle success`);
 }).catch((err: BusinessError) => {
-  console.info(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8419,11 +8419,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 try {
-  notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+  notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
       console.info(`setPriorityEnabledByBundle success`);
     }).catch((e: Error) => {
       let err = e as BusinessError
-      console.info(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+      console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
     });
 } catch (err: Error) {
   console.error(`setPriorityEnabledByBundle failed, err is ${err}`);
@@ -8481,7 +8481,7 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
   console.info(`getBundlePriorityConfig value is ${value}`);
 }).catch((err: BusinessError) => {
-  console.info(`getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8494,7 +8494,7 @@ notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) =
   console.info(`getBundlePriorityConfig value is ${value}`);
 }).catch((e: Error) => {
   let err = e as BusinessError
-  console.info(`getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8550,7 +8550,7 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
   console.info(`setBundlePriorityConfig success`);
 }).catch((err: BusinessError) => {
-  console.info(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8564,7 +8564,7 @@ try {
       console.info(`setBundlePriorityConfig success`);
     }).catch((e: Error) => {
       let err = e as BusinessError
-      console.info(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+      console.error(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
     });
 } catch (err: Error) {
   console.error(`setBundlePriorityConfig failed, err is ${err}`);
