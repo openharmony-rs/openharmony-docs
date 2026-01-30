@@ -908,7 +908,7 @@ struct Index {
             })
         }
         .margin({ right: 20 } as Margin)
-      }
+      }.margin({ bottom: 20 } as Margin)
 
       Row() {
         Column() {
