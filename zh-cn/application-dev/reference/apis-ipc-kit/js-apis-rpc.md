@@ -7124,11 +7124,11 @@ try {
 
 在进程间通信（IPC）期间，将类的对象写入MessageParcel并从MessageParcel中恢复它们。
 
-**系统能力：** SystemCapability.Communication.IPC.Core
-
 > **说明：**
 >
 > 从API version 7 开始支持，API version 9 开始废弃，建议使用[Parcelable](#parcelable9)替代。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 ### marshalling<sup>(deprecated)</sup>
 
