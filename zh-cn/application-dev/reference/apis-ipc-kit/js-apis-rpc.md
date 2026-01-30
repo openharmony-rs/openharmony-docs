@@ -11939,7 +11939,7 @@ static create(ashmem: Ashmem): Ashmem
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The passed parameter is not an Ahmem object; <br/> 3.The ashmem instance for obtaining packaging is empty. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The passed parameter is not an Ashmem object; <br/> 3.The ashmem instance for obtaining packaging is empty. |
 
 **示例：**
 
