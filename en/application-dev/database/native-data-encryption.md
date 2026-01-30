@@ -9,6 +9,7 @@
 ## When to Use
 
 The database encryption capability is provided to effectively protect the data stored in a database.
+
 Database encryption allows data to be stored and used in ciphertext, ensuring data confidentiality and integrity.
 
 The encrypted database can be accessed only using an API, and the database file cannot be opened in other ways. Whether a database is encrypted is set when the database is created, and the setting cannot be changed.
@@ -20,6 +21,10 @@ Currently, only RDB stores (C/C++) support database encryption.
 Call **OH_Rdb_SetEncrypted** to set whether to encrypt an RDB store. If **isEncrypted** is set to **true**, the database is encrypted; otherwise, the database is not encrypted. This parameter is set to **false** by default.
 
 When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set custom keys and algorithms for encryption or decryption.
+
+
+
+
 
 1. Add the following library to **CMakeLists.txt**.
 
@@ -68,7 +73,7 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
     * Scenario 2: Call **OH_Rdb_SetCryptoParam** to configure encryption parameters. The database is encrypted and decrypted using the custom key and algorithm parameters.
     
       If custom configuration is not required, you can use the default encryption configuration.
-    
+
     <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
@@ -119,6 +124,7 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
     ```
 
 4. Since API version 22, you can use **OH_Rdb_RekeyEx** to change the key or encryption parameters of an encrypted database as required.
+
    The database key and encryption parameters can be changed in the following scenarios:
     > **NOTE**
     >

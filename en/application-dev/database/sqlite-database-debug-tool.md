@@ -1,7 +1,7 @@
 # SQLite Debugging Tool
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @MyLinChi-->
+<!--Owner: @linzhuobin1-->
 <!--Designer: @csuxsh-->
 <!--Tester: @zhujieliang-->
 <!--Adviser: @ge-yafang-->
@@ -136,7 +136,7 @@ sqlite>.help
 
   ```SQLite
   sqlite3                                                        # Access to the SQLite shell.
-  .open /data/app/el1/100/base/com.test.myapplication/newdb.db    # Open an existing database in the shell.
+  .open /data/app/el1/100/base/com.test.myapplication/newdb.db    # Create and open a database in the shell.
   ```
 
   Alternatively, create a database directly through a command.
