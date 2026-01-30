@@ -668,7 +668,7 @@ let audioPlayer: media.AudioPlayer = media.createAudioPlayer();
 
 createVideoPlayer(callback: AsyncCallback\<VideoPlayer>): void
 
-异步方式创建视频播放实例，通过注册回调函数获取返回值。
+异步方式创建视频播放实例，使用callback异步回调。
 
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[createAVPlayer](#mediacreateavplayer9)替代。
@@ -688,7 +688,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let videoPlayer: media.VideoPlayer;
 media.createVideoPlayer((error: BusinessError, video: media.VideoPlayer) => {
-  if (video != null) {
+  if (video) {
     videoPlayer = video;
     console.info('Succeeded in creating VideoPlayer');
   } else {
@@ -721,7 +721,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let videoPlayer: media.VideoPlayer;
 media.createVideoPlayer().then((video: media.VideoPlayer) => {
-  if (video != null) {
+  if (video) {
     videoPlayer = video;
     console.info('Succeeded in creating VideoPlayer');
   } else {
