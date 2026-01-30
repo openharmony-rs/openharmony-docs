@@ -439,7 +439,7 @@ struct SubHeaderExample {
       })
       Divider().color('grey').width('100%').height('2vp')
       SubHeader({
-        //左侧select 右侧是icon_(依次获焦)
+        // 左侧select 右侧是icon_(依次获焦)
         select: {
           options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
           value: 'selectDemo',
