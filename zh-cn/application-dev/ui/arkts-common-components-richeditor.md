@@ -289,7 +289,10 @@ build() {
           })
         })
       Row() {
-        // 请将$r('app.string.AddBuilderDecoratorContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addBuilderSpan"
+        /**
+         * 请将$r('app.string.AddBuilderDecoratorContent_Button_1')替换为实际资源文件，
+         * 在本示例中该资源文件的value值为"addBuilderSpan"
+         */
         Button($r('app.string.AddBuilderDecoratorContent_Button_1'), {
           buttonStyle: ButtonStyleMode.NORMAL
         })
