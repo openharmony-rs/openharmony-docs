@@ -1532,9 +1532,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 ## ResponseHeaders<sup>12+</sup>
 
-type ResponseHeaders = {
-  [k: string]: string | string[] | undefined;
-}
+type ResponseHeaders = { [k: string]: string | string[] | undefined; }
 
 服务器发送的响应头。
 
