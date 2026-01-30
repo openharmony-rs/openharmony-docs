@@ -1303,8 +1303,10 @@ options: RichEditorOptions = { controller: this.controller };
 build() {
   Column() {
     // ...
-    /* 请将$r('app.string.SetAttributes_Text_7')替换为实际资源文件，在本示例中该资源文件的
-     value值为"组件设置了最大行数\n超出内容将会以滚动显示\n超出1行\n超出2行\n超出3行\n超出4行" */
+    /*
+     * 请将$r('app.string.SetAttributes_Text_7')替换为实际资源文件，在本示例中该资源文件的
+     * value值为"组件设置了最大行数\n超出内容将会以滚动显示\n超出1行\n超出2行\n超出3行\n超出4行"
+     */
     RichEditor(this.options)
       .onReady(() => {
         this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
