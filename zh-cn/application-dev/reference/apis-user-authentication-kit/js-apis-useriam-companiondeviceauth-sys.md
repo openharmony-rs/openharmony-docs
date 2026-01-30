@@ -240,7 +240,7 @@ statusMonitor.getTemplateStatus()
     console.info(`templateStatus: ${JSON.stringify(templateStatus)}`);
   })
   .catch((error: BusinessError) => {
-    console.error(`error code:${error?.code}`);
+    console.error(`error has been captured: message:${error?.message}`);
   })
 ```
 
@@ -286,7 +286,7 @@ try {
   statusMonitor.onTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -333,7 +333,7 @@ try {
   statusMonitor.offTemplateChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -379,7 +379,7 @@ try {
   statusMonitor.onAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -426,7 +426,7 @@ try {
   statusMonitor.offAvailableDeviceChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -482,7 +482,7 @@ try {
   statusMonitor.onContinuousAuthChange(continuousAuthParam, handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -537,7 +537,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -601,7 +601,7 @@ try {
   statusMonitor.offContinuousAuthChange(handler);
 } catch (error) {
   const message = (error as BusinessError).message;
-  console.error(`some error occurred, message:${message}`);
+  console.error(`error has been captured: message:${message}`);
 }
 ```
 
@@ -681,27 +681,30 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   companionDeviceAuth.registerDeviceSelectCallback((purpose) => {
+    const addDeviceId = 'addDeviceId';
+    const otherDeviceId = 'otherDeviceId';
+    const addDeviceUserId = 100;
+    const otherDeviceUserId = 100;
     if (purpose === companionDeviceAuth.SelectPurpose.SELECT_ADD_DEVICE) {
       return {
         deviceKeys: [{
           deviceIdType: companionDeviceAuth.DeviceIdType.UNIFIED_DEVICE_ID,
-          deviceId: 'device_udid_xxx',
-          deviceUserId: 100
-        }],
-        selectionContext: new Uint8Array([1, 2, 3])
+          deviceId: addDeviceId,
+          deviceUserId: addDeviceUserId
+        }]
       };
     }
     return {
       deviceKeys: [{
         deviceIdType: companionDeviceAuth.DeviceIdType.UNIFIED_DEVICE_ID,
-        deviceId: 'device_udid_xxx',
-        deviceUserId: 100
+        deviceId: otherDeviceId,
+        deviceUserId: otherDeviceUserId
       }]
     };
   })
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`registerDeviceSelectCallback failed: ${err.code} ${err.message}`);
+  console.error(`error has been captured: ${err.code} ${err.message}`);
 }
 ```
 
@@ -739,7 +742,7 @@ try {
   companionDeviceAuth.unregisterDeviceSelectCallback();
 } catch (error) {
   const err = error as BusinessError;
-  console.error(`unregisterDeviceSelectCallback failed: ${err.code} ${err.message}`);
+  console.error(`error has been captured: ${err.code} ${err.message}`);
 }
 ```
 
@@ -793,6 +796,6 @@ companionDeviceAuth.updateEnabledBusinessIds(templateId, [companionDeviceAuth.Bu
     console.info('business scope updated');
   })
   .catch((err: BusinessError) => {
-    console.error(`updateEnabledBusinessIds failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`error has been captured: code: ${err.code}, message: ${err.message}`);
   })
 ```
