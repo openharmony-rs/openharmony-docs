@@ -917,7 +917,7 @@ getData(type: string): Promise&lt;ValueType&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -940,7 +940,7 @@ record.getData(pasteboard.MIMETYPE_TEXT_URI).then((value: pasteboard.ValueType) 
 });
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1779,7 +1779,7 @@ pasteComplete(): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2916,7 +2916,7 @@ isRemoteData(): boolean
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
@@ -2928,7 +2928,7 @@ try {
 };
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3136,7 +3136,7 @@ setDataSync(data: PasteData): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
@@ -3149,7 +3149,7 @@ try {
 };  
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3236,7 +3236,7 @@ getUnifiedData(): Promise&lt;unifiedDataChannel.UnifiedData&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3256,7 +3256,7 @@ systemPasteboard.getUnifiedData().then((data) => {
 });
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3359,7 +3359,7 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3611,7 +3611,7 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { pasteboard } from '@kit.BasicServicesKit'
@@ -3634,7 +3634,7 @@ systemPasteboard.detectPatterns(patterns).then((data: Array<pasteboard.Pattern>)
 });
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { pasteboard } from '@kit.BasicServicesKit'
@@ -3735,7 +3735,7 @@ getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
@@ -3774,7 +3774,7 @@ struct PasteboardTest {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
@@ -3873,7 +3873,7 @@ try {
 
 type UpdateCallback = () => void
 
-表示剪贴板内容变更的回调
+表示剪贴板内容变更的回调。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -3881,7 +3881,7 @@ type UpdateCallback = () => void
 
 **ArkTS-Sta起始版本：** 23
 
-### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
+### onRemoteUpdate<sup>22+</sup>
 
 onRemoteUpdate(callback: UpdateCallback): void
 
