@@ -6278,7 +6278,7 @@ struct Index {
   }
 }
 ```
-## offWindowSizeLayoutBreakpointChange<sup>23+</sup>
+### offWindowSizeLayoutBreakpointChange<sup>23+</sup>
 
 offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayoutBreakpointInfo>): void
 
