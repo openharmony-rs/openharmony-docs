@@ -611,9 +611,9 @@ try {
 }
 ```
 
-## appControl.getAllDisposedRulesBySetter<sup>23+</sup>
+## appControl.getDisposedRulesBySetter<sup>23+</sup>
 
-getAllDisposedRulesBySetter(bundleName: string, appIndex?: number): Array\<DisposedRuleConfiguration>
+getDisposedRulesBySetter(setterBundleName: string): Array\<DisposedRuleConfiguration>
 
 获取指定设置者设置的所有拦截规则。
 
@@ -629,8 +629,7 @@ getAllDisposedRulesBySetter(bundleName: string, appIndex?: number): Array\<Dispo
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| bundleName  | string | 是    | 表示设置拦截规则的设置者的bundleName。               |
-| appIndex   | number  | 否   | 表示设置拦截规则的设置者的分身应用索引，默认值为0。<br> appIndex为0时，表示查询主应用设置的拦截规则。appIndex大于0时，表示查询指定分身应用设置的拦截规则。  |
+| setterBundleName  | string | 是    | 表示设置拦截规则的设置者的bundleName。               |
 
 **返回值：**
 
@@ -654,14 +653,14 @@ getAllDisposedRulesBySetter(bundleName: string, appIndex?: number): Array\<Dispo
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "com.example.myapplication";
+let setterBundleName = "com.example.myapplication";
 
 try {
-  let data = appControl.getAllDisposedRulesBySetter(bundleName, 1);
-  console.info('getAllDisposedRulesBySetter successfully. Data: ' + JSON.stringify(data));
+  let data = appControl.getDisposedRulesBySetter(setterBundleName);
+  console.info('getDisposedRulesBySetter successfully. Data: ' + JSON.stringify(data));
 } catch (error) {
   let message = (error as BusinessError).message;
-  console.error('getAllDisposedRulesBySetter failed ' + message);
+  console.error('getDisposedRulesBySetter failed ' + message);
 }
 ```
 
