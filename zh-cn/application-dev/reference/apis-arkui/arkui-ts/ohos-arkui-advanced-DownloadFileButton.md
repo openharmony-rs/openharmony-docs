@@ -4,10 +4,12 @@
 
 
 > **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 该组件不支持在Wearable设备上使用。
+> - 该组件不支持在Wearable设备上使用。
 
 ##  导入模块
 
@@ -31,12 +33,16 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                                              | 必填 | 装饰器类型 | 说明                             |
 | -------------- | ------------------------------------------------- | ---- | ---------- | -------------------------------- |
-| contentOptions | [DownloadContentOptions](#downloadcontentoptions) | 是   | @State     | 创建包含指定元素内容的下载按钮。 |
-| styleOptions   | [DownloadStyleOptions](#downloadstyleoptions)     | 是   | @State     | 创建包含指定元素样式的下载按钮。 |
+| contentOptions | [DownloadContentOptions](#downloadcontentoptions) | 是   | ArkTS-Dyn:  @State   <br>ArkTS-Sta: 无   | 创建包含指定元素内容的下载按钮。 |
+| styleOptions   | [DownloadStyleOptions](#downloadstyleoptions)     | 是   | ArkTS-Dyn:  @State   <br>ArkTS-Sta:  无    | 创建包含指定元素样式的下载按钮。 |
 
 ## DownloadContentOptions
 
@@ -44,7 +50,11 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.ArkUI.ArkUI.Full
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                                                         | 必填 | 说明                                                         |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -57,7 +67,11 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.ArkUI.ArkUI.Full
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                                                         | 必填 | 说明                                                         |
 | --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -65,7 +79,7 @@ import { DownloadFileButton } from '@kit.ArkUI';
 | layoutDirection | [DownloadLayoutDirection](#downloadlayoutdirection) | 否   | 下载控件上图标和文字分布的方向。<br/>默认值：DownloadLayoutDirection.HORIZONTAL |
 | fontSize        | Dimension                                                    | 否   | 下载控件上文字的尺寸，不支持百分比。<br/>默认值：16fp                      |
 | fontStyle       | FontStyle                                                    | 否   | 下载控件上文字的样式。<br/>默认值：FontStyle.Normal          |
-| fontWeight      | number \| FontWeight \| string                               | 否   | 下载控件上文字粗细，number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Medium           |
+| fontWeight      |	ArkTS-Dyn: number \| FontWeight \| string     <br/>     ArkTS-Sta:         int \| FontWeight \| string                | 否   | 下载控件上文字粗细，number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Medium           |
 | fontFamily      | string \| Resource                                           | 否   | 下载控件上文字的字体。<br/>默认字体：'HarmonyOS Sans'        |
 | fontColor       | ResourceColor                                                | 否   | 下载控件上文字的颜色。<br/>默认值：#ffffffff                 |
 | iconColor       | ResourceColor                                                | 否   | 下载控件上图标的颜色。<br/>默认值：#ffffffff                 |
@@ -77,7 +91,11 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.ArkUI.ArkUI.Full
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值   | 说明                       |
 | ----------- | ---- | -------------------------- |
@@ -92,7 +110,11 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.ArkUI.ArkUI.Full
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值   | 说明                             |
 | ------------------- | ---- | -------------------------------- |
@@ -113,7 +135,11 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.ArkUI.ArkUI.Full
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+ 	 
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值   | 说明                                       |
 | ---------- | ---- | ------------------------------------------ |
@@ -125,10 +151,9 @@ import { DownloadFileButton } from '@kit.ArkUI';
 支持[通用事件](ts-component-general-events.md)。
 
 ##  示例
+ ArkTS-Dyn示例：
 
 ```ts
-// xxx.ets
-
 import { picker } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { DownloadFileButton, DownloadLayoutDirection, DownloadIconStyle, DownloadDescription } from '@kit.ArkUI';
@@ -191,4 +216,61 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0000001643320073](figures/zh-cn_image_0000001643320073.png)
+ArkTS-Sta示例：
+```ts
+import {  Entry,  Column, Component,  FontStyle,  FontWeight,  BorderStyle } from '@ohos.arkui.component';
+
+import {
+  DownloadFileButton,
+  DownloadIconStyle,
+  DownloadDescription,
+  DownloadLayoutDirection
+} from '@ohos.arkui.advanced.DownloadFileButton';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      DownloadFileButton(
+        {
+          contentOptions: {
+            icon: DownloadIconStyle.FULL_FILLED,
+            text: DownloadDescription.DOWNLOAD
+          },
+          styleOptions: {
+            iconSize: '16vp',
+            layoutDirection: DownloadLayoutDirection.HORIZONTAL,
+            fontSize: '16vp',
+            fontStyle: FontStyle.Normal,
+            fontWeight: FontWeight.Medium,
+            fontFamily: 'HarmonyOS Sans',
+            fontColor: '#ffffffff',
+            iconColor: '#ffffffff',
+            textIconSpace: '4vp'
+          }
+        })
+    }
+    .backgroundColor('#007dff')
+    .borderStyle(BorderStyle.Dotted)
+    .borderWidth(0)
+    .borderRadius('24vp')
+    .position({ x: 0, y: 0 })
+    .markAnchor({ x: 0, y: 0 })
+    .offset({ x: 0, y: 0 })
+    .constraintSize({})
+    .padding({
+      top: '12vp',
+      bottom: '12vp',
+      left: '24vp',
+      right: '24vp'
+    })
+    .onClick(() => {
+    })
+  }
+}
+```
+
+
+
+![zh-cn_image_0000001643320073](figures/zh-cn_image_0000001643329999.png)
