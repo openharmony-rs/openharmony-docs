@@ -486,12 +486,12 @@ class PersistClass {
  <!-- @[top_level_array_classa_apis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistenceV2/entry/src/main/ets/pages/TopLevelArrayClassAAPIs.ets) -->
  
  ``` TypeScript
- import { PersistenceV2,  UIUtils } from '@kit.ArkUI';
+ import { PersistenceV2, UIUtils } from '@kit.ArkUI';
  
  class ClassA {
    public propA: number = 0;
    public classAToString() : string {
-     return this.propA.toString()
+     return this.propA?.toString()
    }
  }
  
@@ -513,10 +513,10 @@ class PersistClass {
            .each(ri => {
              Row() {
                Text(`Item: `)
-               Text(ri.item.classAToString ? ri.item.classAToString(): `classAToString() missing from object, propA: ${ri.item.propA}`)
+               Text(ri.item?.classAToString ? ri.item?.classAToString(): `classAToString() missing from object, propA: ${ri.item?.propA}`)
              }
            })
-           .key((item: ClassA, index: number) => `${index} - ${item.propA}`)
+           .key((item: ClassA, index: number) => `${index} - ${item?.propA}`)
        }
  
        Divider().width('100%')
@@ -562,7 +562,7 @@ class PersistClass {
        // 点击'array.sort', 对数组项升序排列，重启应用，Repeat组件展示升序数组
        Button('array.sort')
          .onClick(() => {
-           this.arr.sort((tempA, tempB)=> tempA.propA - tempB.propA);
+           this.arr.sort((tempA, tempB)=> tempA?.propA - tempB?.propA);
          })
          .fontSize(24)
        // 点击'array.reverse', 对数组项降序排列，重启应用，Repeat组件展示降序数组
