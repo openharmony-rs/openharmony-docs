@@ -63,7 +63,7 @@
         console.info(`Device Name: ${device.mechName}`);
         console.info(`Device Type: ${device.mechDeviceType}`);
         
-    //保存设备类型为GIMBAL_DEVICE的设备的MechId
+        // 保存设备类型为GIMBAL_DEVICE的设备的MechId
         if (device.mechDeviceType === mechanicManager.MechDeviceType.GIMBAL_DEVICE) {
         savedMechanicIds.push(device.mechId);
         console.info(`GIMBAL_TYPE device saved ID: ${device.mechId}`);
@@ -132,7 +132,7 @@
    
     ```ts
     try {
-    //检查前判断savedMechIds不为空
+    // 检查前判断savedMechIds不为空
     // 检查跟踪状态
     const isEnabled = mechanicManager.getCameraTrackingEnabled();
    
