@@ -203,6 +203,23 @@ export struct AccessibilityGroupCase02 {
 }
 ```
 
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityGroupCase02 {
+  build() {
+    // ...
+      Column() {
+        Text('2026年')
+        Text('1月27日')
+        Text('星期二')
+      }
+      .accessibilityGroup(true)
+      // ...
+  }
+}
+```
+
 ## 设置无障碍重要性
 
 [accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)属性表示组件的无障碍重要性，用于控制组件是否能被无障碍服务识别，支持以下值：
