@@ -358,7 +358,7 @@ struct Index {
     Column() {
       EditableTitleBar({
         leftIconStyle: EditableLeftIconType.Back,
-        leftIconDefaultFocus: true, //设置左侧图标默认获焦。
+        leftIconDefaultFocus: true, // 设置左侧图标默认获焦。
         title: '编辑页面',
         menuItems: [],
         onSave: () => {
