@@ -436,15 +436,15 @@
 
 省略的位置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                   |
 | ----- | --- | -------------------------------------- |
-| START  | 0 | 省略行首内容。|
-| CENTER | 1 | 省略行中内容。|
-| END | 2 | 省略行末内容。|
+| START  | 0 | 省略行首内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CENTER | 1 | 省略行中内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| END | 2 | 省略行末内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| MULTILINE_START<sup>24+</sup> | 3 | 省略行首内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| MULTILINE_CENTER<sup>24+</sup> | 4 | 省略行中内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## EmbeddedType<sup>12+</sup>
 枚举类型，用于指定EmbeddedComponent可拉起的提供方类型。
