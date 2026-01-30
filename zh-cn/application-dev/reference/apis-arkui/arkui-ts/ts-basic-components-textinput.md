@@ -961,7 +961,7 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 当设置为TextHeightAdaptivePolicy.MAX_LINES_FIRST时，优先使用[maxLines](#maxlines10)属性来调整文本高度。如果使用maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize12)和[maxFontSize](#maxfontsize12)的范围内缩小字体以显示更多文本。
 
-当设置为TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST时，优先使用minFontSize属性来调整文本高度。如果使用minFontSize属性可以将文本布局在一行中，则尝试在minFontSize和maxFontSize的范围内增大字体并使用最大可能的字体大小。
+当设置为TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST时，优先使用minFontSize属性来调整文本高度。如果使用minFontSize属性可以将文本布局在一行中，则尝试在minFontSize和maxFontSize的范围内增大字体并使用最大限度的字体大小。
 
 当设置为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST时，与TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST效果一样。
 
@@ -2228,8 +2228,8 @@ struct TextInputExample {
         .showUnderline(true)
         .showCounter(true,
           { thresholdPercentage: 50, highlightBorder: true })//计数器显示效果为用户当前输入字符数/最大字符限制数。最大字符限制数通过maxLength()接口设置。
-          //如果用户当前输入字符数达到最大字符限制乘50%（thresholdPercentage）。字符计数器显示。
-          //用户设置highlightBorder为false时，配置取消红色边框。不设置此参数时，默认为true。
+          // 如果用户当前输入字符数达到最大字符限制乘50%（thresholdPercentage）。字符计数器显示。
+          // 用户设置highlightBorder为false时，配置取消红色边框。不设置此参数时，默认为true。
         .onChange((value: string) => {
           this.text = value;
         })
@@ -2669,8 +2669,8 @@ struct TextInputExample {
   @State lineBreakStrategyStr: string[] = ['GREEDY', 'HIGH_QUALITY', 'BALANCED'];
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-      Text('lineBreakStrategy').fontSize(9).fontColor(0xCCCCCC)
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+      Text('lineBreakStrategy').fontSize(16).fontColor(Color.Black)
       TextInput({ text: this.message1 })
         .fontSize(12)
         .border({ width: 1 })
@@ -2686,7 +2686,7 @@ struct TextInputExample {
             this.lineBreakStrategyIndex = 0;
           }
         })
-      }
+      }.margin({ top: 20 })
     }.height(700).width(370).padding({ left: 35, right: 35, top: 35 })
   }
 }
@@ -3047,7 +3047,7 @@ struct TextInputExample {
 
 从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围<!--Del-->（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）<!--DelEnd-->。
 <!--code_no_check-->
-```json
+```json5
 // 开启应用缩放跟随系统
 // AppScope/resources/base，新建文件夹profile。
 // AppScope/resources/base/profile，新建文件configuration.json。
@@ -3060,7 +3060,7 @@ struct TextInputExample {
 }
 ```
 <!--code_no_check-->
-```json
+```json5
 // AppScope/app.json5，修改如下代码。
 {
   "app": {
