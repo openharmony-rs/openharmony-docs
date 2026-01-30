@@ -186,6 +186,23 @@ export struct AccessibilityGroupCase01 {
 
 <!-- @[accessibility_group_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase02.ets) --> 
 
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityGroupCase02 {
+  build() {
+    // ...
+      Column() {
+        Text('2026年')
+        Text('1月27日')
+        Text('星期二')
+      }
+      .accessibilityGroup(true)
+      // ...
+  }
+}
+```
+
 ## 设置无障碍重要性
 
 [accessibilityLevel](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)属性表示组件的无障碍重要性，用于控制组件是否能被无障碍服务识别，支持以下值：
