@@ -104,7 +104,7 @@ import { companionDeviceAuth } from '@kit.UserAuthenticationKit';
 | deviceUserName | string | 否 | 否 | 设备用户名。 |
 | deviceModelInfo | string | 否 | 否 | 设备模型信息。 |
 | deviceName | string | 否 | 否 | 设备名。 |
-| isOnline | boolean | 否 | 否 | 设备在线状态，true: 设备处于在线状态； false: 设备处于离线状态。 |
+| isOnline | boolean | 否 | 否 | 设备在线状态，true：设备处于在线状态； false：设备处于离线状态。 |
 | supportedBusinessIds | number[] | 否 | 否 | 设备支持的业务ID列表。 |
 
 ## TemplateStatus
@@ -222,7 +222,7 @@ getTemplateStatus(): Promise&lt;TemplateStatus[]&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -266,7 +266,7 @@ onTemplateChange(callback: TemplateStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -281,7 +281,7 @@ try {
   const localUserId = 100;
   const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
   const handler = (templates: companionDeviceAuth.TemplateStatus[]): void => {
-    console.info('template status updated', templates);
+    console.info('template status updated');
   };
   statusMonitor.onTemplateChange(handler);
 } catch (error) {
@@ -312,7 +312,7 @@ offTemplateChange(callback?: TemplateStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -327,7 +327,7 @@ try {
   const localUserId = 100;
   const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
   const handler = (templates: companionDeviceAuth.TemplateStatus[]): void => {
-    console.info('template status updated', templates);
+    console.info('template status updated');
   };
   statusMonitor.onTemplateChange(handler);
   statusMonitor.offTemplateChange(handler);
@@ -359,7 +359,7 @@ onAvailableDeviceChange(callback: AvailableDeviceStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -374,7 +374,7 @@ try {
   const localUserId = 100;
   const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
   const handler = (deviceStatusList: companionDeviceAuth.DeviceStatus[]): void => {
-    console.info('available device changed', deviceStatusList);
+    console.info('available device changed');
   };
   statusMonitor.onAvailableDeviceChange(handler);
 } catch (error) {
@@ -405,7 +405,7 @@ offAvailableDeviceChange(callback?: AvailableDeviceStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -420,7 +420,7 @@ try {
   const localUserId = 100;
   const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
   const handler = (deviceStatusList: companionDeviceAuth.DeviceStatus[]): void => {
-    console.info('available device changed', deviceStatusList);
+    console.info('available device changed');
   };
   statusMonitor.onAvailableDeviceChange(handler);
   statusMonitor.offAvailableDeviceChange(handler);
@@ -453,7 +453,7 @@ onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatu
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -508,7 +508,7 @@ offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
@@ -768,7 +768,7 @@ updateEnabledBusinessIds(templateId: Uint8Array, enabledBusinessIds: number[]): 
 
 | 类型                | 说明            |
 | ------------------- | --------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
