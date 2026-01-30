@@ -611,11 +611,11 @@ try {
 }
 ```
 
-## appControl.getDisposedRulesBySetter<sup>23+</sup>
+## appControl.getDisposedRulesByBundle<sup>23+</sup>
 
-getDisposedRulesBySetter(setterBundleName: string): Array\<DisposedRuleConfiguration>
+getDisposedRulesByBundle(bundleName: string): Array\<DisposedRuleConfiguration>
 
-获取指定设置者设置的所有拦截规则。
+获取指定应用程序包设置的所有拦截规则。
 
 **系统接口：** 此接口为系统接口。
 
@@ -623,19 +623,19 @@ getDisposedRulesBySetter(setterBundleName: string): Array\<DisposedRuleConfigura
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
-**模型限制：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| setterBundleName  | string | 是    | 表示设置拦截规则的设置者的bundleName。               |
+| bundleName  | string | 是    | 表示设置拦截规则的应用程序包的包名。               |
 
 **返回值：**
 
 | 类型                                                      | 说明                   |
 | --------------------------------------------------------- | ---------------------- |
-|Array\<[DisposedRuleConfiguration](#disposedruleconfiguration20)> | 指定设置者已设置的拦截规则。 |
+|Array\<[DisposedRuleConfiguration](#disposedruleconfiguration20)> | 指定应用程序包已设置的拦截规则。 |
 
 **错误码：**
 
@@ -653,14 +653,14 @@ getDisposedRulesBySetter(setterBundleName: string): Array\<DisposedRuleConfigura
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let setterBundleName = "com.example.myapplication";
+let bundleName = 'com.example.myapplication';
 
 try {
-  let data = appControl.getDisposedRulesBySetter(setterBundleName);
-  console.info('getDisposedRulesBySetter successfully. Data: ' + JSON.stringify(data));
+  let data = appControl.getDisposedRulesByBundle(bundleName);
+  console.info('getDisposedRulesByBundle successfully. Data: ' + JSON.stringify(data));
 } catch (error) {
   let message = (error as BusinessError).message;
-  console.error('getDisposedRulesBySetter failed ' + message);
+  console.error('getDisposedRulesByBundle failed ' + message);
 }
 ```
 
