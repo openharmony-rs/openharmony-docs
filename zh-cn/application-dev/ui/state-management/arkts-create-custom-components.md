@@ -544,7 +544,7 @@ struct Son {
   
   build函数中更改应用状态的行为可能比上面的示例更加隐蔽，例如：
 
-  - 在\@Builder，\@Extend或\@Styles方法内改变状态变量 。
+  - 在\@Builder，[\@Extend](arkts-extend.md)或[\@Styles](arkts-style.md)方法内改变状态变量 。
 
   - 在计算参数时调用函数中改变应用状态变量，例如 Text('${this.calcLabel()}')。
 
