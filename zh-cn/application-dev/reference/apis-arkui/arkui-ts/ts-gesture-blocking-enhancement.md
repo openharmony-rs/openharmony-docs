@@ -74,7 +74,13 @@ getEventTargetInfo(): EventTargetInfo
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -90,7 +96,13 @@ cancelTouch(): void
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 ## GestureRecognizer
 
@@ -272,6 +284,10 @@ preventBegin(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 ## GestureRecognizerState
 
 定义手势识别器状态。
@@ -373,7 +389,13 @@ getDirection(): PanDirection
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -391,11 +413,13 @@ ArkTS-Sta: getDistance(): double
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -405,7 +429,9 @@ ArkTS-Sta: getDistance(): double
 
 ### getDistanceMap<sup>19+</sup>
 
-getDistanceMap(): Map\<SourceTool, number\>
+ArkTS-Dyn: getDistanceMap(): Map\<SourceTool, number\>
+
+ArkTS-Sta: getDistanceMap(): Map\<SourceTool, double\>
 
 返回不同输入源的拖动手势识别器触发的最小滑动距离。
 
@@ -415,13 +441,19 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number> | 不同输入源的拖动手势识别器触发的最小滑动距离。滑动距离的单位：vp |
+| ArkTS-Dyn: Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number><br/>ArkTS-Sta: Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), double> | 不同输入源的拖动手势识别器触发的最小滑动距离。滑动距离的单位：vp |
 
 ## TapRecognizer<sup>18+</sup>
 
@@ -661,7 +693,9 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 ## onTouchTestDone<sup>20+</sup>
 
-onTouchTestDone(callback: TouchTestDoneCallback): T
+ArkTS-Dyn: onTouchTestDone(callback: TouchTestDoneCallback): T
+
+ArkTS-Sta: onTouchTestDone(callback: TouchTestDoneCallback | undefined): this;
 
 提供在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，指定手势识别器是否参与后续处理的能力。
 
@@ -669,17 +703,21 @@ onTouchTestDone(callback: TouchTestDoneCallback): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [TouchTestDoneCallback](#touchtestdonecallback20) | 是   |  回调函数，用于指定手势识别器是否参与后续处理。在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，开始识别用户手势之前，会触发该回调来动态指定手势识别器是否参与后续处理。 |
+| callback      | ArkTS-Dyn: [TouchTestDoneCallback](#touchtestdonecallback20)<br/>ArkTS-Sta: [TouchTestDoneCallback](#touchtestdonecallback20) \| undefined | 是   |  回调函数，用于指定手势识别器是否参与后续处理。在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，开始识别用户手势之前，会触发该回调来动态指定手势识别器是否参与后续处理。<br/>参数设置undefined时不设置回调。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## TouchTestDoneCallback<sup>20+</sup>
 
@@ -690,6 +728,10 @@ type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array\<Gestu
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

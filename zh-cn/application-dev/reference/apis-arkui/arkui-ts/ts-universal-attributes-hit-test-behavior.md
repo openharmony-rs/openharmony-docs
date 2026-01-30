@@ -37,17 +37,20 @@ ArkTS-Sta: hitTestBehavior(value: HitTestMode | undefined): this
 
 ## HitTestMode枚举说明
 
-| 名称          | 枚举值    | 描述                                       |
+| 名称          | 值    | 说明                                       |
 | ------------| ---------|----------------------------------- |
-| Default     | 0 | 默认触摸测试效果：自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。 |
-| Block       | 1 |自身响应触摸测试，阻塞子节点和兄弟节点的触摸测试，同时阻塞祖先节点的触摸测试。 |
-| Transparent | 2 |自身和子节点都响应触摸测试，不会阻塞兄弟节点的触摸测试，不会影响祖先节点的触摸测试。 |
-| None        | 3 |自身不响应触摸测试，不会阻塞子节点和兄弟节点的触摸测试，不会影响祖先节点的触摸测试。 |
-
+| Default     | 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| Block       | 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| Transparent | 2 |自身和子节点都响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| None        | 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。      <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| BLOCK_HIERARCHY<sup>20+</sup>   | 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| BLOCK_DESCENDANTS<sup>20+</sup> | 5 |自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
 
-该示例通过设置不同的HitTestMode值演示了Block和Transparent的触摸测试效果。
+### 示例1（触摸测试类型为Block和Transparent的触摸测试效果）
+
+该示例通过设置不同的[HitTestMode](./ts-appendix-enums.md#hittestmode9)值演示了Block和Transparent的触摸测试效果。
 
 ```ts
 // xxx.ets
@@ -81,6 +84,140 @@ struct HitTestBehaviorExample {
           console.info('text touched type: ' + (event as TouchEvent).type)
         })
     }.width(300).height(300)
+  }
+}
+```
+### 示例2（触摸测试类型为BLOCK_HIERARCHY时的触摸测试效果）
+
+该示例演示了设置触摸测试类型为BLOCK_HIERARCHY时的触摸测试效果。
+
+从API version 20开始，[HitTestMode](./ts-appendix-enums.md#hittestmode9)新增了BLOCK_HIERARCHY。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct BlockHierarchy {
+  build() {
+    Stack() {
+      Stack() {
+        Button('outer button')
+          .onTouch((event) => {
+            console.info('HitTestMode outer button touched type: ' + (event as TouchEvent).type);
+          })
+          .width(200)
+          .height(200)
+          .backgroundColor('#D5D5D5')
+        Stack() {
+          Button()
+            .id('button150')
+            .backgroundColor('#F7F7F7')
+            .width(150)
+            .height(150)
+            .onTouch((event) => {
+              console.info('HitTestMode button150 touched type: ' + (event as TouchEvent).type);
+            })
+            .hitTestBehavior(HitTestMode.Transparent) // 从API version 20开始，新增BLOCK_HIERARCHY
+          Button()
+            .id('button100')
+            .backgroundColor('#707070')
+            .width(100)
+            .height(100)
+            .onTouch((event) => {
+              console.info('HitTestMode button100 touched type: ' + (event as TouchEvent).type);
+            })
+            .hitTestBehavior(HitTestMode.Transparent)
+          Button()
+            .id('button050')
+            .backgroundColor('#D5D5D5')
+            .width(50)
+            .height(50)
+            .onTouch((event) => {
+              console.info('HitTestMode button050 touched type: ' + (event as TouchEvent).type);
+            })
+            .hitTestBehavior(HitTestMode.Transparent)
+        }
+        .width("100%").height("100%")
+        // 设置触摸测试模式，自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试
+        .hitTestBehavior(HitTestMode.BLOCK_HIERARCHY)
+        .onTouch((event) => {
+          console.info('HitTestMode stack touched type: ' + (event as TouchEvent).type);
+        })
+
+        Text('Transparent')
+          .hitTestBehavior(HitTestMode.Transparent)
+          .width("100%").height("100%")
+          .onTouch((event) => {
+            console.info('HitTestMode text touched type: ' + (event as TouchEvent).type);
+          })
+      }.width(300).height(300)
+      .borderWidth(2)
+      .onTouch((event) => {
+        console.info('HitTestMode father stack touched type: ' + (event as TouchEvent).type);
+      })
+    }.width(500).height(500)
+    .borderWidth(2)
+    .onTouch((event) => {
+      console.info('HitTestMode grandfather stack touched type: ' + (event as TouchEvent).type);
+    })
+  }
+}
+```
+
+### 示例3（触摸测试类型为BLOCK_DESCENDANTS时的触摸测试效果）
+
+该示例演示了设置触摸测试类型为BLOCK_DESCENDANTS时的触摸测试效果。
+
+从API version 20开始，[HitTestMode](./ts-appendix-enums.md#hittestmode9)新增了BLOCK_DESCENDANTS。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct BlockDescendants {
+  build() {
+    // outer stack
+    Stack() {
+      Stack() {
+        Button('outer button')
+          .onTouch((event) => {
+            console.info('HitTestMode outer button touched type: ' + (event as TouchEvent).type);
+          })
+          .width(200)
+          .height(200)
+          .backgroundColor('#D5D5D5')
+        // inner stack
+        Stack() {
+          Button('inner button')
+            .width(100)
+            .height(100)
+            .onTouch((event) => {
+              console.info('HitTestMode inner button touched type: ' + (event as TouchEvent).type);
+            })
+        }
+        .width("100%").height("100%")
+        // 设置触摸测试模式，自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试
+        .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
+        .onTouch((event) => {
+          console.info('HitTestMode stack touched type: ' + (event as TouchEvent).type);
+        })
+
+        Text('Transparent')
+          .hitTestBehavior(HitTestMode.Transparent) // 从API version 20开始，新增BLOCK_DESCENDANTS
+          .width("100%").height("100%")
+          .onTouch((event) => {
+            console.info('HitTestMode text touched type: ' + (event as TouchEvent).type);
+          })
+      }.width(300).height(300)
+      .borderWidth(2)
+      .onTouch((event) => {
+        console.info('HitTestMode father stack touched type: ' + (event as TouchEvent).type);
+      })
+    }.width(500).height(500)
+    .borderWidth(2)
+    .onTouch((event) => {
+      console.info('HitTestMode grandfather stack touched type: ' + (event as TouchEvent).type);
+    })
   }
 }
 ```

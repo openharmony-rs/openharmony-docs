@@ -50,7 +50,13 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
@@ -65,7 +71,13 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -77,18 +89,26 @@ import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "
 
 ## UIStatesChangeHandler<sup>20+</sup>
 
-type UIStatesChangeHandler = (node: FrameNode, currentUIStates: number) => void
+ArkTS-Dyn: type UIStatesChangeHandler = (node: FrameNode, currentUIStates: number) => void
+ 	 
+ArkTS-Sta: type UIStatesChangeHandler = (node: FrameNode, currentUIStates: int) => void
 
 当UI状态发生变化时触发的回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 参数名   | 类型                      | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
 | node    | [FrameNode](#framenode) | 是   | 触发UI状态变化的节点。                                            |
-| currentUIStates    | number         | 是   | 回调触发时当前的UI状态。<br>可以通过位与运算判断当前包含哪些[UIState](#uistate20)状态。<br>位与运算方法：if (currentState & UIState.PRESSED == UIState.PRESSED)。                                            |
+| currentUIStates    | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 回调触发时当前的UI状态。<br>可以通过位与运算判断当前包含哪些[UIState](#uistate20)状态。<br>位与运算方法：if (currentState & UIState.PRESSED == UIState.PRESSED)。                                            |
 
 
 ## FrameNode
@@ -780,6 +800,32 @@ struct Index {
 
 请参考[节点操作示例](#节点操作示例)。
 
+### getGlobalPositionOnDisplay<sup>20+</sup> 
+
+ArkTS-Dyn: getGlobalPositionOnDisplay(): position
+
+ArkTS-Sta: getGlobalPositionOnDisplay(): NodePosition
+
+
+获取FrameNode相对于全局屏幕的位置偏移，单位为VP。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型     | 说明                            |
+| -------- | ------------------------------- |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position) <br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition20) | 节点相对于全局屏幕的位置偏移，单位为VP。 |
+
+**示例：**
+
+请参考[节点操作示例](#节点操作示例)。
 
 ### getPositionToParentWithTransform<sup>12+</sup>
 
@@ -2188,7 +2234,13 @@ getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindi
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 24
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
@@ -2234,17 +2286,25 @@ reuse(): void
 
 ### addSupportedUIStates<sup>20+</sup>
 
-addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandler, excludeInner?: boolean): void
+ArkTS-Dyn: addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandler, excludeInner?: boolean): void
+ 	 
+ArkTS-Sta: addSupportedUIStates(uiStates: int, statesChangeHandler: UIStatesChangeHandler, excludeInner?: boolean): void
 
 设置组件支持的多态样式状态。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 参数名   | 类型                      | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| uiStates    | number | 是   | 需要处理目标节点的UI状态。<br>可以通过位或计算同时指定设置多个状态，如：targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED。                                       |
+| uiStates    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 需要处理目标节点的UI状态。<br>可以通过位或计算同时指定设置多个状态，如：targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED。                                       |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | 是   | 状态变化时的回调函数。                                           |
 | excludeInner  | boolean | 否   | 禁止内部默认状态样式处理的标志，默认值为false。<br> true表示禁止内部默认状态样式处理，false不禁止内部默认状态样式处理。 |
 
@@ -2254,17 +2314,25 @@ addSupportedUIStates(uiStates: number, statesChangeHandler: UIStatesChangeHandle
 
 ### removeSupportedUIStates<sup>20+</sup>
 
-removeSupportedUIStates(uiStates: number): void
+ArkTS-Dyn: removeSupportedUIStates(uiStates: number): void
+ 	 
+ArkTS-Sta: removeSupportedUIStates(uiStates: int): void
 
 删除组件当前注册的状态处理。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| uiStates  | number  | 是   | 需要删除的UI状态。<br>可以通过位或计算同时指定删除多个状态，如：removeUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED。                          |
+| uiStates  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 需要删除的UI状态。<br>可以通过位或计算同时指定删除多个状态，如：removeUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED。                          |
 
 **示例：**
 
@@ -7146,7 +7214,7 @@ class MyNodeController extends NodeController {
 
   addCommonEvent(frameNode: FrameNode) {
     frameNode.commonEvent.setOnClick((event: ClickEvent) => {
-      console.log(`Click FrameNode: ${JSON.stringify(event)}`)
+      console.info(`Click FrameNode: ${JSON.stringify(event)}`)
     })
   }
 
@@ -7175,7 +7243,7 @@ class MyNodeController extends NodeController {
   removeChild(index: number) {
     let childNode = this.rootNode!.getChild(index);
     if (childNode == null) {
-      console.log(`${TEST_TAG} getchild at index {${index}} : fail`);
+      console.info(`${TEST_TAG} getchild at index {${index}} : fail`);
       return;
     }
     this.rootNode!.removeChild(childNode);
@@ -7183,8 +7251,8 @@ class MyNodeController extends NodeController {
   }
 
   getChildNumber() {
-    console.log(TEST_TAG + " getChildNumber " + this.rootNode!.getChildrenCount())
-    console.log(TEST_TAG + " children count is " + this.childrenCount);
+    console.info(TEST_TAG + " getChildNumber " + this.rootNode!.getChildrenCount())
+    console.info(TEST_TAG + " children count is " + this.childrenCount);
   }
 
   clearChildren() {
@@ -7193,36 +7261,36 @@ class MyNodeController extends NodeController {
 
   searchFrameNode() {
     if (this.rootNode!.getFirstChild() === null) {
-      console.log(TEST_TAG + " the rootNode does not have child node.")
+      console.info(TEST_TAG + " the rootNode does not have child node.")
     }
     if (this.rootNode!.getFirstChild() === this.frameNode) {
-      console.log(TEST_TAG +
+      console.info(TEST_TAG +
         " getFirstChild  result: success. The first child of the rootNode is equals to frameNode.");
     } else {
-      console.log(TEST_TAG +
+      console.info(TEST_TAG +
         " getFirstChild  result: fail. The first child of the rootNode is not equals to frameNode.");
     }
     if (this.frameNode!.getChild(5) === this.frameNode!.getChild(4)!.getNextSibling()) {
-      console.log(TEST_TAG + " getNextSibling  result: success.");
+      console.info(TEST_TAG + " getNextSibling  result: success.");
     } else {
-      console.log(TEST_TAG + " getNextSibling  result: fail.");
+      console.info(TEST_TAG + " getNextSibling  result: fail.");
     }
     if (this.frameNode!.getChild(3) === this.frameNode!.getChild(4)!.getPreviousSibling()) {
-      console.log(TEST_TAG + " getPreviousSibling  result: success.");
+      console.info(TEST_TAG + " getPreviousSibling  result: success.");
     } else {
-      console.log(TEST_TAG + " getPreviousSibling  result: fail.");
+      console.info(TEST_TAG + " getPreviousSibling  result: fail.");
     }
     if (this.rootNode!.getFirstChild() !== null && this.rootNode!.getFirstChild()!.getParent() === this.rootNode) {
-      console.log(TEST_TAG + " getParent  result: success.");
+      console.info(TEST_TAG + " getParent  result: success.");
     } else {
-      console.log(TEST_TAG + " getParent  result: fail.");
+      console.info(TEST_TAG + " getParent  result: fail.");
     }
     if (this.rootNode!.getParent() !== undefined || this.rootNode!.getParent() !== null) {
-      console.log(TEST_TAG + " get ArkTsNode success.")
-      console.log(TEST_TAG + " check rootNode whether is modifiable " + this.rootNode!.isModifiable())
-      console.log(TEST_TAG + " check getParent whether is modifiable " + this.rootNode!.getParent()!.isModifiable())
+      console.info(TEST_TAG + " get ArkTsNode success.")
+      console.info(TEST_TAG + " check rootNode whether is modifiable " + this.rootNode!.isModifiable())
+      console.info(TEST_TAG + " check getParent whether is modifiable " + this.rootNode!.getParent()!.isModifiable())
     } else {
-      console.log(TEST_TAG + " get ArkTsNode fail.");
+      console.info(TEST_TAG + " get ArkTsNode fail.");
     }
   }
 
@@ -7231,154 +7299,159 @@ class MyNodeController extends NodeController {
     try {
       currentNode!.moveTo(this.rootNode, 0);
       if (this.rootNode!.getChild(0) === currentNode) {
-        console.log(TEST_TAG + " moveTo  result: success.");
+        console.info(TEST_TAG + " moveTo  result: success.");
       } else {
-        console.log(TEST_TAG + " moveTo  result: fail.");
+        console.info(TEST_TAG + " moveTo  result: fail.");
       }
     } catch (err) {
-      console.log(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
-      console.log(TEST_TAG + " moveTo  result: fail.");
+      console.info(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
+      console.info(TEST_TAG + " moveTo  result: fail.");
     }
   }
 
   getPositionToWindow() {
     let positionToWindow = this.rootNode?.getPositionToWindow();
-    console.log(TEST_TAG + JSON.stringify(positionToWindow));
+    console.info(TEST_TAG + JSON.stringify(positionToWindow));
   }
 
   getPositionToParent() {
     let positionToParent = this.rootNode?.getPositionToParent();
-    console.log(TEST_TAG + JSON.stringify(positionToParent));
+    console.info(TEST_TAG + JSON.stringify(positionToParent));
+  }
+
+  getGlobalPositionOnDisplay() {
+    let positionOnGlobalDisplay = this.rootNode?.getGlobalPositionOnDisplay();
+    console.info(TEST_TAG + JSON.stringify(positionOnGlobalDisplay));
   }
 
   getPositionToScreen() {
     let positionToScreen = this.rootNode?.getPositionToScreen();
-    console.log(TEST_TAG + JSON.stringify(positionToScreen));
+    console.info(TEST_TAG + JSON.stringify(positionToScreen));
   }
 
   getPositionToWindowWithTransform() {
     let positionToWindowWithTransform = this.rootNode?.getPositionToWindowWithTransform();
-    console.log(TEST_TAG + JSON.stringify(positionToWindowWithTransform));
+    console.info(TEST_TAG + JSON.stringify(positionToWindowWithTransform));
   }
 
   getPositionToParentWithTransform() {
     let positionToParentWithTransform = this.rootNode?.getPositionToParentWithTransform();
-    console.log(TEST_TAG + JSON.stringify(positionToParentWithTransform));
+    console.info(TEST_TAG + JSON.stringify(positionToParentWithTransform));
   }
 
   getPositionToScreenWithTransform() {
     let positionToScreenWithTransform = this.rootNode?.getPositionToScreenWithTransform();
-    console.log(TEST_TAG + JSON.stringify(positionToScreenWithTransform));
+    console.info(TEST_TAG + JSON.stringify(positionToScreenWithTransform));
   }
 
   getMeasuredSize() {
     let measuredSize = this.frameNode?.getMeasuredSize();
-    console.log(TEST_TAG + JSON.stringify(measuredSize));
+    console.info(TEST_TAG + JSON.stringify(measuredSize));
   }
 
   getLayoutPosition() {
     let layoutPosition = this.frameNode?.getLayoutPosition();
-    console.log(TEST_TAG + JSON.stringify(layoutPosition));
+    console.info(TEST_TAG + JSON.stringify(layoutPosition));
   }
 
   getUserConfigBorderWidth() {
     let userConfigBorderWidth = this.frameNode?.getUserConfigBorderWidth();
-    console.log(TEST_TAG + JSON.stringify(userConfigBorderWidth));
+    console.info(TEST_TAG + JSON.stringify(userConfigBorderWidth));
   }
 
   getUserConfigPadding() {
     let userConfigPadding = this.frameNode?.getUserConfigPadding();
-    console.log(TEST_TAG + JSON.stringify(userConfigPadding));
+    console.info(TEST_TAG + JSON.stringify(userConfigPadding));
   }
 
   getUserConfigMargin() {
     let userConfigMargin = this.frameNode?.getUserConfigMargin();
-    console.log(TEST_TAG + JSON.stringify(userConfigMargin));
+    console.info(TEST_TAG + JSON.stringify(userConfigMargin));
   }
 
   getUserConfigSize() {
     let userConfigSize = this.frameNode?.getUserConfigSize();
-    console.log(TEST_TAG + JSON.stringify(userConfigSize));
+    console.info(TEST_TAG + JSON.stringify(userConfigSize));
   }
 
   getId() {
     let id = this.frameNode?.getId();
-    console.log(TEST_TAG + id);
+    console.info(TEST_TAG + id);
   }
 
   getUniqueId() {
     let uniqueId = this.frameNode?.getUniqueId();
-    console.log(TEST_TAG + uniqueId);
+    console.info(TEST_TAG + uniqueId);
   }
 
   getNodeType() {
     let nodeType = this.frameNode?.getNodeType();
-    console.log(TEST_TAG + nodeType);
+    console.info(TEST_TAG + nodeType);
   }
 
   getOpacity() {
     let opacity = this.frameNode?.getOpacity();
-    console.log(TEST_TAG + JSON.stringify(opacity));
+    console.info(TEST_TAG + JSON.stringify(opacity));
   }
 
   isVisible() {
     let visible = this.frameNode?.isVisible();
-    console.log(TEST_TAG + JSON.stringify(visible));
+    console.info(TEST_TAG + JSON.stringify(visible));
   }
 
   isClipToFrame() {
     let clipToFrame = this.frameNode?.isClipToFrame();
-    console.log(TEST_TAG + JSON.stringify(clipToFrame));
+    console.info(TEST_TAG + JSON.stringify(clipToFrame));
   }
 
   isAttached() {
     let attached = this.frameNode?.isAttached();
-    console.log(TEST_TAG + JSON.stringify(attached));
+    console.info(TEST_TAG + JSON.stringify(attached));
   }
 
   getInspectorInfo() {
     let inspectorInfo = this.frameNode?.getInspectorInfo();
-    console.log(TEST_TAG + JSON.stringify(inspectorInfo));
+    console.info(TEST_TAG + JSON.stringify(inspectorInfo));
   }
 
   setCrossLanguageOptions() {
-    console.log(TEST_TAG + " getCrossLanguageOptions " + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
+    console.info(TEST_TAG + " getCrossLanguageOptions " + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
     try {
       this.frameNode?.setCrossLanguageOptions({
         attributeSetting: true
       });
-      console.log(TEST_TAG + " setCrossLanguageOptions success.");
+      console.info(TEST_TAG + " setCrossLanguageOptions success.");
     } catch (err) {
-      console.log(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
-      console.log(TEST_TAG + " setCrossLanguageOptions fail.");
+      console.info(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
+      console.info(TEST_TAG + " setCrossLanguageOptions fail.");
     }
-    console.log(TEST_TAG + " getCrossLanguageOptions " + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
+    console.info(TEST_TAG + " getCrossLanguageOptions " + JSON.stringify(this.frameNode?.getCrossLanguageOptions()));
   }
 
   getInteractionEventBindingInfo() {
     let bindingInfo = this.frameNode?.getInteractionEventBindingInfo(EventQueryType.ON_CLICK);
-    console.log(TEST_TAG + bindingInfo?.baseEventRegistered);
-    console.log(TEST_TAG + bindingInfo?.nodeEventRegistered);
-    console.log(TEST_TAG + bindingInfo?.nativeEventRegistered);
-    console.log(TEST_TAG + bindingInfo?.builtInEventRegistered);
-    console.log(TEST_TAG + JSON.stringify(bindingInfo));
+    console.info(TEST_TAG + bindingInfo?.baseEventRegistered);
+    console.info(TEST_TAG + bindingInfo?.nodeEventRegistered);
+    console.info(TEST_TAG + bindingInfo?.nativeEventRegistered);
+    console.info(TEST_TAG + bindingInfo?.builtInEventRegistered);
+    console.info(TEST_TAG + JSON.stringify(bindingInfo));
   }
 
   throwError() {
     try {
       this.rootNode!.getParent()!.clearChildren();
     } catch (err) {
-      console.log(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
+      console.info(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
     }
     try {
       this.rootNode!.getParent()!.appendChild(new FrameNode(this.uiContext));
     } catch (err) {
-      console.log(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
+      console.info(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
     }
     try {
       this.rootNode!.getParent()!.removeChild(this.rootNode!.getParent()!.getChild(0));
     } catch (err) {
-      console.log(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
+      console.info(TEST_TAG + " " + (err as BusinessError).code + " : " + (err as BusinessError).message);
     }
   }
 }
@@ -7476,6 +7549,11 @@ struct Index {
           .onClick(() => {
             this.myNodeController.getPositionToScreen();
           })
+        Button('getGlobalPositionOnDisplay')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getGlobalPositionOnDisplay();
+          })
         Button("getPositionToParentWithTransform")
           .width(300)
           .onClick(() => {
@@ -7571,7 +7649,7 @@ struct Index {
                 for (let i = 1; i < 4; i++) {
                   const key = 'customProperty' + i;
                   const property = node.getCustomProperty(key);
-                  console.log(TEST_TAG + key, JSON.stringify(property));
+                  console.info(TEST_TAG + key, JSON.stringify(property));
                 }
               }
             }

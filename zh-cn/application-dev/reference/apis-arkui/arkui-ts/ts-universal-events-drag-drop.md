@@ -633,19 +633,27 @@ startDataLoading(options: DataSyncOptions): string
 
 ### getDisplayId<sup>20+</sup>
 
-getDisplayId(): number
+ArkTS-Dyn: getDisplayId(): number
+
+ArkTS-Sta: getDisplayId(): int
 
 获取当前拖拽事件发生时所在的屏幕ID，不支持当eventType为NODE_ON_DRAG_END时获取。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：** 
 
 | 类型   | 说明                             |
 | ------ | -------------------------------- |
-| number | 当前拖拽事件发生时所在的屏幕ID。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 当前拖拽事件发生时所在的屏幕ID。 |
 
 ### getDragSource<sup>20+</sup>
 
@@ -724,6 +732,54 @@ getX(): number
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
 | number | 返回当前拖拽点相对于屏幕左上角的y轴坐标，单位为vp。 |
+
+### getGlobalDisplayX<sup>20+</sup>
+
+ArkTS-Dyn: getGlobalDisplayX(): number
+
+ArkTS-Sta: getGlobalDisplayX(): double
+
+当前拖拽点相对于全局屏幕的左上角的X坐标。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：** 
+
+| 类型   | 说明                                                |
+| ------ | --------------------------------------------------- |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞) |
+
+### getGlobalDisplayY<sup>20+</sup>
+
+ArkTS-Dyn: getGlobalDisplayY(): number
+
+ArkTS-Sta: getGlobalDisplayY(): double
+
+当前拖拽点相对于全局屏幕的左上角的Y坐标。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：** 
+
+| 类型   | 说明                                                |
+| ------ | --------------------------------------------------- |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ### getY<sup>(deprecated)</sup>
 

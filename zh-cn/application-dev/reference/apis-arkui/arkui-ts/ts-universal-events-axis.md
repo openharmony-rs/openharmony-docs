@@ -42,27 +42,23 @@ ArkTS-Sta: onAxisEvent(event: Callback<AxisEvent> | undefined): this
 
 轴事件的对象说明，继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent对象说明8)。
 
-**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+### 属性
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 17
-
-**ArkTS-Sta起始版本：** 22
-
-### 属性
-
 | 名称            | 类型  | 只读|可选                              | 说明                                                    |
 | ------------------- | -----------------------|------|----- | -------------------------------------------------------- |
-| action              | [AxisAction](ts-appendix-enums.md#axisaction17)         | 否   | 否   | 轴事件的动作类型                   |
-| x                   | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于被点击元素左边缘的X坐标。<br/>单位：vp  |
-| y                   | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于被点击元素上边缘的Y坐标。<br/>单位：vp  |
-| windowX             | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前窗口左上角的X坐标。<br/>单位：vp |
-| windowY             | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前窗口左上角的Y坐标。<br/>单位：vp |
-| displayX            | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前屏幕左上角的X坐标。<br/>单位：vp |
-| displayY            | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前屏幕左上角的Y坐标。<br/>单位：vp |
-| scrollStep          | ArkTs-Dyn: number<br/>ArkTs-Sta: int                 | 否   | 是   | 鼠标轴滚动步长配置。<br/> **说明：**&nbsp;仅支持鼠标滚轮，取值范围0~65535。|
-| propagation         | Callback\<void>        | 否   | 否   | 激活事件冒泡。   |
+| action              | [AxisAction](ts-appendix-enums.md#axisaction17)         | 否   | 否   | 轴事件的动作类型。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。                    <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| x                   | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于被点击元素左边缘的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| y                   | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于被点击元素上边缘的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| windowX             | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前窗口左上角的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| windowY             | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前窗口左上角的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX            | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前屏幕左上角的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY            | ArkTs-Dyn: number<br/>ArkTs-Sta: double                 | 否   | 否   | 鼠标光标相对于当前屏幕左上角的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| scrollStep          | ArkTs-Dyn: number<br/>ArkTs-Sta: int                 | 否   | 是   | 鼠标轴滚动步长配置。<br/> **说明：**&nbsp;仅支持鼠标滚轮，取值范围0~65535。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| propagation         | Callback\<void>        | 否   | 否   | 激活事件冒泡。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 鼠标光标相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>24+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 鼠标光标相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 
 ### getHorizontalAxisValue
 
