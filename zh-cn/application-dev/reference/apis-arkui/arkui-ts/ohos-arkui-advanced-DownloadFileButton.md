@@ -43,8 +43,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 | 名称           | 类型                                              | 必填 | 装饰器类型 | 说明                             |
 | -------------- | ------------------------------------------------- | ---- | ---------- | -------------------------------- |
-| contentOptions | [DownloadContentOptions](#downloadcontentoptions) | 是   | ArkTS-Dyn:  @State   <br>ArkTS-Sta: 无   | 创建包含指定元素内容的下载按钮。 |
-| styleOptions   | [DownloadStyleOptions](#downloadstyleoptions)     | 是   | ArkTS-Dyn:  @State   <br>ArkTS-Sta:  无    | 创建包含指定元素样式的下载按钮。 |
+| contentOptions | [DownloadContentOptions](#downloadcontentoptions) | 是   | ArkTS-Dyn: @State   <br>ArkTS-Sta: 无| 创建包含指定元素内容的下载按钮。|
+| styleOptions   | [DownloadStyleOptions](#downloadstyleoptions)     | 是   | ArkTS-Dyn: @State   <br>ArkTS-Sta:  无| 创建包含指定元素样式的下载按钮。|
 
 ## DownloadContentOptions
 
@@ -62,8 +62,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 | 名称 | 类型                                                         | 必填 | 说明                                                         |
 | ---- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| icon | [DownloadIconStyle](#downloadiconstyle) | 否   | 设置下载按钮的图标风格<br/>不传入该参数表示没有图标，icon和text至少存在一个。 |
-| text | [DownloadDescription](#downloaddescription) | 否   | 设置下载按钮的文本描述<br/>不传入该参数表示没有文字描述，icon和text至少存在一个。 |
+| icon | [DownloadIconStyle](#downloadiconstyle) |否| 设置下载按钮的图标风格<br/>不传入该参数表示没有图标，icon和text至少存在一个。|
+| text | [DownloadDescription](#downloaddescription) |否| 设置下载按钮的文本描述<br/>不传入该参数表示没有文字描述，icon和text至少存在一个。|
 
 ## DownloadStyleOptions
 
@@ -81,11 +81,11 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 | 名称            | 类型                                                         | 必填 | 说明                                                         |
 | --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| iconSize        | Dimension                                                    | 否   | 下载控件上图标的尺寸，不支持百分比。<br/>默认值：16vp                      |
+| iconSize        | Dimension  |否| 下载控件上图标的尺寸，不支持百分比。<br/>默认值：16vp                      |
 | layoutDirection | [DownloadLayoutDirection](#downloadlayoutdirection) | 否   | 下载控件上图标和文字分布的方向。<br/>默认值：DownloadLayoutDirection.HORIZONTAL |
 | fontSize        | Dimension                                                    | 否   | 下载控件上文字的尺寸，不支持百分比。<br/>默认值：16fp                      |
 | fontStyle       | FontStyle                                                    | 否   | 下载控件上文字的样式。<br/>默认值：FontStyle.Normal          |
-| fontWeight      |	ArkTS-Dyn: number \| FontWeight \| string     <br/>     ArkTS-Sta:         int \| FontWeight \| string                | 否   | 下载控件上文字粗细，number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Medium           |
+| fontWeight      |ArkTS-Dyn: number\| FontWeight \| string<br/> ArkTS-Sta:int\|FontWeight\|string| 否| 下载控件上文字粗细，number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Medium  |
 | fontFamily      | string \| Resource                                           | 否   | 下载控件上文字的字体。<br/>默认字体：'HarmonyOS Sans'        |
 | fontColor       | ResourceColor                                                | 否   | 下载控件上文字的颜色。<br/>默认值：#ffffffff                 |
 | iconColor       | ResourceColor                                                | 否   | 下载控件上图标的颜色。<br/>默认值：#ffffffff                 |
@@ -120,7 +120,7 @@ import { DownloadFileButton } from '@kit.ArkUI';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
  	 
@@ -233,12 +233,7 @@ ArkTS-Sta示例：
 ```ts
 import {  Entry,  Column, Component,  FontStyle,  FontWeight,  BorderStyle } from '@ohos.arkui.component';
 
-import {
-  DownloadFileButton,
-  DownloadIconStyle,
-  DownloadDescription,
-  DownloadLayoutDirection
-} from '@ohos.arkui.advanced.DownloadFileButton';
+import {  DownloadFileButton, DownloadIconStyle,  DownloadDescription,  DownloadLayoutDirection } from '@ohos.arkui.advanced.DownloadFileButton';
 
 @Entry
 @Component
