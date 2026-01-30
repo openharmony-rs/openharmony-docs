@@ -7,5 +7,5 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-- [Overview of Word Selection Service Subsystem](selection-services-intro-sys.md)
+- [Overview of Word Selection Service](selection-services-intro.md)
 - [Developing a Word Selection Extension Ability](selection-services-application-guide-sys.md)

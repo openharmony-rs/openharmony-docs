@@ -14,7 +14,7 @@ You can configure the component transition animations through the **transition**
 >
 >  There are two ways to trigger a component's transition:
 >  1. When a component is inserted or removed (for example, when there are changes in **if** conditions, or when components are added or removed in a **ForEach** loop), the transition effects of all newly inserted/removed components are triggered recursively.
->  2. When the **Visibility** attribute of a component changes between visible and invisible, only the transition effect of that component is triggered.
+>  2. When the [visibility](ts-universal-attributes-visibility.md#visibility) attribute of a component changes between visible and invisible, only the transition effect of that component is triggered.
 
 
 ## transition
@@ -113,7 +113,7 @@ Defines the transition effect by using the provided APIs, as listed below.
 >  3. If **animateTo** is not used and **TransitionEffect** does not have the **animation** parameter specified, the component will appear or disappear without any transition animation.
 >  4. If the value of an attribute specified in **TransitionEffect** is the same as the default value, no transition animation will be applied to the attribute. For example, with **TransitionEffect.opacity(1).animation({duration:1000})**, because the default value of **opacity** is also **1**, no opacity animation will be applied, and the component appears or disappears without any transition animation.
 >  5. For details about the scale and rotate effects, see [Transformation](ts-universal-attributes-transformation.md).
->  6. If a component's attach or detach in the component tree or visibility ([Visibility](ts-universal-attributes-visibility.md)) change is triggered within the animation scope ([animateTo](../arkts-apis-uicontext-uicontext.md#animateto) or [animation](ts-animatorproperty.md)), and the root component does not have a transition configured, a default opacity transition, namely **TransitionEffect.OPACITY**, will be applied to the component. The animation parameters will follow the parameters of the surrounding animation environment. If this default behavior is not desired, it can be disabled by configuring **TransitionEffect.IDENTITY**, which causes the component to appear or disappear instantly without any transition effect.
+>  6. If a component's attach or detach in the component tree or [visibility](ts-universal-attributes-visibility.md#visibility) change is triggered within the animation scope ([animateTo](../arkts-apis-uicontext-uicontext.md#animateto) or [animation](ts-animatorproperty.md)), and the root component does not have a transition configured, a default opacity transition, namely **TransitionEffect.OPACITY**, will be applied to the component. The animation parameters will follow the parameters of the surrounding animation environment. If this default behavior is not desired, it can be disabled by configuring **TransitionEffect.IDENTITY**, which causes the component to appear or disappear instantly without any transition effect.
 >  7. To ensure that the complete disappearance transition process is visible when triggering it by deleting an entire subtree, it is necessary to guarantee that the root component of the subtree being deleted has ample time to complete its disappearance transition, as demonstrated in Example 3.
 
 ### translate<sup>10+</sup>

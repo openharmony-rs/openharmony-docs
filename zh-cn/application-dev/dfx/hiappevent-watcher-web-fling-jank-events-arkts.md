@@ -5,7 +5,7 @@
 <!--Owner: @pxlstrong-->
 <!--Designer: @pxlstrong-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 

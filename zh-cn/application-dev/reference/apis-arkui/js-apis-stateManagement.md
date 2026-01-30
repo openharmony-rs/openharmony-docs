@@ -245,9 +245,10 @@ const p3: Sample = PersistenceV2.globalConnect({
 
 ```
 ### globalConnect<sup>23+</sup>
- static globalConnect\<T extends CollectionType<S\>, S extends object\>(
-  type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\>
-  ): T | undefined
+
+static globalConnect\<T extends CollectionType<S\>, S extends object\>( </br >
+  &nbsp;&nbsp;&nbsp;&nbsp;type: ConnectOptionsCollections\<T, S\> | ConnectOptions\<T\> </br >
+): T | undefined
 
 将键值对数据储存在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`Date`，`collections.Array`, `collections.Map`, `collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
 
@@ -262,10 +263,9 @@ const p3: Sample = PersistenceV2.globalConnect({
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18)|  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。 当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。|
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18) |  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。<br/>当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。|  
 
-当开发者在`globalConnect`中使用`defaultSubCreator`选项时，必须要提供`defaultCreator`。且`defaultSubCreator`函数的返回类型必须与`defaultCreator`返回的集合项类型相同。
-当`globalConnect`持久化`Array<ClassA>`类型的数据时，开发者需要使用`defaultSubCreator`选项去告诉状态管理框架创建`ClassA`类的一个实例。如下是`globalConnect`持久化`Array<ClassA>`类型的数据的示例：
+当开发者在`globalConnect`中使用`defaultSubCreator`选项时，必须要提供`defaultCreator`。且`defaultSubCreator`函数的返回类型必须与`defaultCreator`返回的集合项类型相同。<br/>当`globalConnect`持久化`Array<ClassA>`类型的数据时，开发者需要使用`defaultSubCreator`选项去告诉状态管理框架创建`ClassA`类的一个实例。如下是`globalConnect`持久化`Array<ClassA>`类型的数据的示例：
 
 <!--code_no_check-->
 ```typescript
@@ -454,8 +454,7 @@ struct Page {
 }
 ```
 
-当`StorageDefaultCreator<S>`返回值为`undefined`或`null`时，持久化会失败。当`StorageDefaultCreator<S>`直接设置为`undefined`或`null`时,
-状态管理框架会按照原始的类型（如`Object`类型）进行持久化，但是会丢失`class`对象中的方法。在如下示例中，`StorageDefaultCreator<S>`直接被设置为`undefined`或`null`时，持久化过程中`ClassA`对象中的`report`方法将被丢失。
+当`StorageDefaultCreator<S>`返回值为`undefined`或`null`时，持久化会失败。当`StorageDefaultCreator<S>`直接设置为`undefined`或`null`时,状态管理框架会按照原始的类型（如`Object`类型）进行持久化，但是会丢失`class`对象中的方法。在如下示例中，`StorageDefaultCreator<S>`直接被设置为`undefined`或`null`时，持久化过程中`ClassA`对象中的`report`方法将被丢失。
 
 ```typescript
 import { PersistenceV2, UIUtils } from '@kit.ArkUI';
@@ -874,7 +873,7 @@ struct Index {
 
 static enableV2Compatibility\<T extends object\>(source: T): T
 
-使V1的状态变量能够在\@ComponentV2中观察，主要应用于状态管理V1、V2混用场景。详见[状态管理V1V2混用文档](../../ui/state-management/arkts-v1-v2-mixusage.md)。
+使V1的状态变量能够在\@ComponentV2中观察，主要应用于状态管理V1、V2混用场景。详见[状态管理V1和V2混用指导（API version 19及之后）](../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -939,7 +938,7 @@ static makeV1Observed\<T extends object\>(source: T): T
 
 将不可观察的对象包装成状态管理V1可观察的对象，其能力等同于@Observed，可初始化@ObjectLink。
 
-该接口可搭配[enableV2Compatibility](#enablev2compatibility19)应用于状态管理V1和V2混用场景，详见[状态管理V1V2混用文档](../../ui/state-management/arkts-v1-v2-mixusage.md)。
+该接口可搭配[enableV2Compatibility](#enablev2compatibility19)应用于状态管理V1和V2混用场景，详见[状态管理V1和V2混用指导（API version 19及之后）](../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 

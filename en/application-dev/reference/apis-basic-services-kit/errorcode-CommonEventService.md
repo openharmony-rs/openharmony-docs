@@ -1,5 +1,12 @@
 # Event Error Codes
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -179,7 +186,7 @@ This error code is reported when the number of subscribers exceeds the upper lim
 
 **Possible Causes**
 
-The subscriber is not unregistered in a timely manner when it is no longer used.
+The subscriber is not unregistered in a timely manner when it is no longer used. A maximum of 200 subscribers can be subscribed to in each process of the common event. All services in a process share the number of subscribers.
 
 **Solution**
 

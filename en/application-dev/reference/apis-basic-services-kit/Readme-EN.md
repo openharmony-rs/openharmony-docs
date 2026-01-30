@@ -45,15 +45,15 @@
     - [@ohos.request (Upload and Download)](js-apis-request.md)
     - [@ohos.request.cacheDownload (Download and Cache)](js-apis-request-cacheDownload.md)
     - [@ohos.zlib (Zip)](js-apis-zlib.md)
+    - [@ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility)](js-apis-selectionInput-selectionExtensionAbility.md)
+    - [@ohos.selectionInput.SelectionExtensionContext (Word Selection Extension Context)](js-apis-selectionInput-selectionExtensionContext.md)
+    - [@ohos.selectionInput.selectionManager (Word Selection Management)](js-apis-selectionInput-selectionManager.md)
+    - [@ohos.selectionInput.SelectionPanel (Word Selection Panel)](js-apis-selectionInput-selectionPanel.md)
     <!--Del-->
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (System API)](js-apis-app-ability-PrintExtensionAbility-sys.md)
     - [@ohos.print (Print) (System API)](js-apis-print-sys.md)
     - [@ohos.scan (Scan) (System API)](js-apis-scan-sys.md)
     - [@ohos.request (Upload and Download) (System API)](js-apis-request-sys.md)
-    - [@ohos.selectionInput.SelectionExtensionAbility (SelectionExtensionAbility) (System API)](js-apis-selectionInput-selectionExtensionAbility-sys.md)
-    - [@ohos.selectionInput.SelectionExtensionContext (SelectionExtensionContext) (System API)](js-apis-selectionInput-selectionExtensionContext-sys.md)
-    - [@ohos.selectionInput.selectionManager (Word Selection Management) (System API)](js-apis-selectionInput-selectionManager-sys.md)
-    - [@ohos.selectionInput.SelectionPanel (Word Selection Panel) (System API)](js-apis-selectionInput-selectionPanel-sys.md)
     <!--DelEnd-->
   - Process and Thread Communication<!--process-thread-communi-arkts-->
     - [System Common Events](common_event/commonEventManager-definitions.md)
@@ -91,6 +91,7 @@
     - [@ohos.wallpaper (Wallpaper) (System API)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System API)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (System Timer) (System API)](js-apis-system-timer-sys.md)
+    - [@ohos.intelligentScene (Intelligent Scene)](js-apis-intelligentScene.md)
     <!--DelEnd-->
   - APIs No Longer Maintained<!--basic-services-arkts-dep-->
     - [System Common Events](common_event/commonEvent-definitions.md)
@@ -140,6 +141,14 @@
     - [Print_Margin](capi-oh-print-print-margin.md)
     - [Print_PageSize](capi-oh-print-print-pagesize.md)
     - [Print_Range](capi-oh-print-print-range.md)
+    - [Print_DefaultValue](capi-oh-print-print-defaultvalue.md)
+    - [Print_PrinterCapability](capi-oh-print-print-printercapability.md)
+    - [Print_PrinterInfo](capi-oh-print-print-printerinfo.md)
+    - [Print_PrintJob](capi-oh-print-print-printjob.md)
+    - [Print_Property](capi-oh-print-print-property.md)
+    - [Print_PropertyList](capi-oh-print-print-propertylist.md)
+    - [Print_Resolution](capi-oh-print-print-resolution.md)
+    - [Print_StringList](capi-oh-print-print-stringlist.md)
     - [Print_PrintAttributes](capi-oh-print-print-printattributes.md)
     - [Print_PrintDocCallback](capi-oh-print-print-printdoccallback.md)
     - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
@@ -171,9 +180,10 @@
   <!--DelEnd-->
   - [Print Service Error Codes](errorcode-print.md)
   - [Settings Error Codes](errorcode-settings.md)
+  - [Word Selection Service Error Codes](errorcode-selection.md)
   <!--Del-->
   - [Screen Lock Management Error Codes](errorcode-screenlock.md)
   - [Device Attestation Error Codes](errorcode-deviceAttest.md)
   - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
-  - [Word Selection Service Error Codes](errorcode-selection.md)
+  - [Intelligent Scene Error Codes](errorcode-intelligentScene.md)
   <!--DelEnd-->

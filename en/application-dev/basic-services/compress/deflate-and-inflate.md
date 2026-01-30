@@ -42,7 +42,7 @@ Create a test file **data.txt** in the application sandbox directory and write d
       Row() {
         Column() {
           // Create the data.txt file and write test data.
-          Button('Create a test file data.txt').onClick(() => {
+          Button('Create the data.txt File').onClick(() => {
             let path = this.getUIContext()?.getHostContext()?.filesDir;
             // Create the data.txt file.
             let inFile = fs.openSync(path + '/data.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -124,7 +124,7 @@ For data in a buffer with a known size, use [compress()](../../reference/apis-ba
   @Entry
   @Component
   struct Index {
-    @State dataSize: number = 0; // Size of the original data.
+    @State dataSize: number = 0;  // Size of the original data.
   
     build() {
       Row() {

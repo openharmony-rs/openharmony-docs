@@ -16,11 +16,7 @@
 
 ComponentInit: MethodDecorator
 
-\@ComponentInit装饰的函数在自定义组件初始化即将完成时执行。开发者可以在此时注册监听。
-
-> **说明：**
->
-> 在@Component装饰的struct中，\@ComponentInit装饰的函数内不可以更改状态变量，否则会导致运行时crash。
+\@ComponentInit装饰的函数在自定义组件初始化即将完成时执行。开发者可以在此时注册监听和修改变量。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 

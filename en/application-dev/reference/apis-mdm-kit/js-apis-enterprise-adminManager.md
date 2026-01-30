@@ -26,10 +26,10 @@ disableAdmin(admin: Want, userId?: number): Promise\<void>
 
 Disables a device administrator application for the specified user. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN (available only for system applications), ohos.permission.START_PROVISIONING_MESSAGE, or ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
-<br>- ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN is supported since API version 23. This permission can be requested only when the SDA or DA application is disabled.
-<br>- ohos.permission.START_PROVISIONING_MESSAGE is supported since API version 20. This permission can be requested only when the BYOD device administrator application is disabled.
-<br>- ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN is required for API version 19 and earlier. (This permission can be requested only by system applications.)
+**Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN (available only for system applications), ohos.permission.START_PROVISIONING_MESSAGE, or ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
+<br>- **ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN** is supported since API version 23. This permission can be requested only when the SDA or DA application is disabled.
+<br>- **ohos.permission.START_PROVISIONING_MESSAGE** is supported since API version 20. This permission can be requested only when the BYOD device administrator application is disabled.
+<br>- **ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN** is required for API version 19 and earlier. (This permission can be requested only by system applications.)
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -422,7 +422,7 @@ Enables the device administrator application to open a page for the BYOD adminis
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | type  | [AdminType](#admintype15)             | Yes   | Type of the activated device administrator application. Only the **ADMIN_TYPE_BYOD** type is supported. |
 | context  | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | Yes| Context information of the administrator application.|
-| parameters  | Record\<string, string> | Yes| Custom parameters. The key value must contain **activateId** and may optionally include **customizedInfo** and **localDeactivationPolicy**.<br>- **activatedId**: project activation ID.<br>- **customizedInfo**: enterprise-defined information.<br>- **localDeactivationPolicy**: local deactivation delay (unit: hour). This parameter is supported since API version 22<!--RP1--><!--RP1End-->.|
+| parameters  | Record\<string, string> | Yes| Custom parameters. The key value must contain **activateId** and may optionally include **customizedInfo** and **localDeactivationPolicy**.<br>- **activateId**: project activation ID.<br>- **customizedInfo**: enterprise-defined information.<br>- **localDeactivationPolicy**: local deactivation delay (unit: hour). This parameter is supported since API version 22<!--RP1--><!--RP1End-->.|
 
 **Error codes**
 

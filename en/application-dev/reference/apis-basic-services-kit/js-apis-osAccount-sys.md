@@ -140,6 +140,7 @@ Activates a system account. This API uses a promise to return the result.
 activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 
 Activates (Starts on the foreground or switches to) the target system account on the specified logical display. This API uses a promise to return the result.
+
 Currently, cross-logical-display activation is not supported. That is, you cannot activate a system account that is already running on the foreground of another logical display on the specified logical display.
 
 **System API**: This is a system API.
@@ -2615,7 +2616,7 @@ A constructor used to create an instance for user authentication.
 
 getVersion(): number
 
-Obtains a version number.
+Obtains this version number.
 
 **System API**: This is a system API.
 
@@ -2719,7 +2720,6 @@ Obtains the executor property based on the request. This API uses an asynchronou
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
@@ -2784,7 +2784,6 @@ Obtains the executor property based on the request. This API uses a promise to r
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
@@ -5633,7 +5632,7 @@ try {
   console.info('Subscribe to the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
 
@@ -5686,7 +5685,7 @@ try {
   console.info('Subscribe to the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 
 try {
@@ -5694,7 +5693,7 @@ try {
   console.info('Unsubscribe from the credential changes successfully');
 } catch (e) {
   const err = e as BusinessError;
-  console.error(`Failed to unsubscribe from the credetial changes, code is ${err.code}, message is ${err.message}`)
+  console.error(`Failed to unsubscribe from the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
 

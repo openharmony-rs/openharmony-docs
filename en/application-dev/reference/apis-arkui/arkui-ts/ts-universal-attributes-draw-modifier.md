@@ -140,7 +140,7 @@ See [Example 2: Implementing Custom Foreground Drawing for a Container Through D
 
 drawOverlay(drawContext: DrawContext): void
 
-Draws the overlay. Override this method to implement custom overlay drawing operations in this component. Unlike [drawForeground](#drawforeground20), **drawOverlay** can implement drawing outside the component boundary.
+Draws the overlay. Override this method to implement custom overlay drawing operations in this component.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 

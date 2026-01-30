@@ -5,7 +5,7 @@
 <!--Owner: @hello_harmony; @yu_haoqiaida-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiDebug C/C++接口功能独立，需要获取调试信息时直接调用。具体调用示例请参考下文。
 

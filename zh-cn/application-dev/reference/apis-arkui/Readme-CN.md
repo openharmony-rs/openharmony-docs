@@ -203,6 +203,9 @@
       - [Popup控制](arkui-ts/ts-universal-attributes-popup.md)
       - [Tips控制](arkui-ts/ts-universal-attributes-tips.md)
       - [菜单控制](arkui-ts/ts-universal-attributes-menu.md)
+      <!--Del-->
+      - [菜单控制（系统接口）](arkui-ts/ts-universal-attributes-menu-sys.md)
+      <!--DelEnd-->
     - [无障碍属性](arkui-ts/ts-universal-attributes-accessibility.md)
     - 模态转场设置<!--transition-->
       - [全屏模态转场](arkui-ts/ts-universal-attributes-modal-transition.md)
@@ -298,6 +301,9 @@
     - [Radio](arkui-ts/ts-basic-components-radio.md)
     - [Rating](arkui-ts/ts-basic-components-rating.md)
     - [Select](arkui-ts/ts-basic-components-select.md)
+    <!--Del-->    
+    - [Select（系统接口）](arkui-ts/ts-basic-components-select-sys.md)
+    <!--DelEnd-->
     - [Slider](arkui-ts/ts-basic-components-slider.md)
     - [ArcButton](arkui-ts/ohos-arkui-advanced-ArcButton.md)
     - [ArcSlider](arkui-ts/ohos-arkui-advanced-ArcSlider.md)
@@ -650,6 +656,11 @@
     - [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md)
     - [ArkUI_IntOffset](capi-arkui-nativemodule-arkui-intoffset.md)
     - [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md)
+    - [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)
+    - [ArkUI_Matrix4RotationOptions](capi-arkui-nativemodule-arkui-matrix4rotationoptions.md)
+    - [ArkUI_Matrix4ScaleOptions](capi-arkui-nativemodule-arkui-matrix4scaleoptions.md)
+    - [ArkUI_Matrix4TranslationOptions](capi-arkui-nativemodule-arkui-matrix4translationoptions.md)
+    - [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md)
     - [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md)
     - [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md)
     - [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md)
@@ -694,7 +705,7 @@
     - [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
     - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
-    - [ArkUI_TextMarqueeOption](capi-arkui-nativemodule-arkui-textmarqueeoption.md)
+    - [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
     - [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
     - [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)

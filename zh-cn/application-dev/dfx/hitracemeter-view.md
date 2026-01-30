@@ -5,7 +5,7 @@
 <!--Owner: @qq_437963121-->
 <!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 通过DevEco Studio可视化界面查看
 

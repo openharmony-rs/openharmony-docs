@@ -34,6 +34,8 @@ Sets the device policy.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                                                        |
@@ -141,6 +143,8 @@ Sets the home screen wallpaper. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name| Type                                                   | Mandatory| Description                                                        |
@@ -203,6 +207,8 @@ Sets the lock screen wallpaper. This API uses a promise to return the result.
 **Required permissions**: ohos.permission.ENTERPRISE_SET_WALLPAPER
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
