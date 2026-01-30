@@ -228,7 +228,7 @@ on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 | 参数名     | 类型      | 必填 | 说明                                  |
 | -------- | ---------- | --- | ------------------------------------ |
 | type     | string     | 是   | 监听事件，固定为'photoAvailable'，photoOutput创建成功后可监听。 |
-| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | 是   | 回调函数，用于监听全质量图上报。 |
+| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | 是   | 回调函数，用于监听拍照回图上报。 |
 
 **示例：**
 
@@ -254,7 +254,7 @@ function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): voi
 
 off(type: 'photoAvailable', callback?: AsyncCallback\<Photo\>): void
 
-注销监听全质量图上报。
+注销监听拍照回图上报。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
