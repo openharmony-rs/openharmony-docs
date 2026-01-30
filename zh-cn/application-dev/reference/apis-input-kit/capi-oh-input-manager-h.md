@@ -3198,6 +3198,8 @@ Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
 **起始版本：** 14
 
 
@@ -3246,6 +3248,8 @@ Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)
 获取设置的所有快捷键。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 14
 
@@ -3324,6 +3328,8 @@ Input_Result OH_Input_AddHotkeyMonitor(const Input_Hotkey* hotkey, Input_HotkeyC
 订阅快捷键事件。此接口在智能穿戴、轻量级智能穿戴设备不生效。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **起始版本：** 14
 
@@ -3805,6 +3811,8 @@ int32_t OH_Input_InjectTouchEvent(const struct Input_TouchEvent* touchEvent)
 
 从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。
 
+**设备行为差异**：该接口在PC/2in1设备中可正常调用，在其他设备上调用无效果。
+
 **起始版本：** 12
 
 
@@ -4238,6 +4246,8 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 获取当前屏幕上鼠标的坐标点。
 
+**设备行为差异**：该接口在Wearable设备上返回3900010错误码，在其他设备上可正常调用。
+
 **起始版本：** 20
 
 **参数：**
@@ -4297,6 +4307,8 @@ Input_Result OH_Input_AddKeyEventHook(Input_KeyEventCallback callback)
 
 **需要权限：** ohos.permission.HOOK_KEY_EVENT
 
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
+
 **起始版本：** 21
 
 **参数：**
@@ -4325,6 +4337,8 @@ Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)
 通常与[OH_Input_AddKeyEventHook](#oh_input_addkeyeventhook)接口配合使用。
 
 **起始版本：** 21
+
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **参数：**
 
@@ -4355,6 +4369,8 @@ Input_Result OH_Input_DispatchToNextHandler(int32_t eventId)
 如果仅分发[KEY_ACTION_UP](#input_keyeventaction)或[KEY_ACTION_CANCEL](#input_keyeventaction)按键事件，接口可以调用成功，但不会执行实际的分发动作。<br>
 如果分发的事件未被钩子拦截，函数调用会成功，但不会执行实际的分发动作。
 
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
+
 **起始版本：** 21
 
 **参数：**
@@ -4379,6 +4395,8 @@ Input_Result OH_Input_SetPointerVisible(bool visible)
 **描述**
 
 设置当前窗口的鼠标光标的显示或隐藏状态。
+
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
 
 **起始版本：** 22
 
@@ -4405,6 +4423,8 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 
 获取指定窗口的鼠标光标样式。
 
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+
 **起始版本：** 22
 
 **参数：**
@@ -4430,6 +4450,8 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 **描述**
 
 设置指定窗口的鼠标光标样式。
+
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 22
 
@@ -4627,6 +4649,8 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
+**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
+
 **起始版本：** 22
 
 **参数：**
@@ -4653,8 +4677,6 @@ struct Input_CursorInfo* OH_Input_CursorInfo_Create()
 
 创建鼠标光标信息对象。通过调用[OH_Input_CursorInfo_Destroy](#oh_input_cursorinfo_destroy)销毁鼠标光标信息对象。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
 **起始版本：** 22
 
 **返回：**
@@ -4673,8 +4695,6 @@ void OH_Input_CursorInfo_Destroy(Input_CursorInfo** cursorInfo)
 
 销毁鼠标光标信息对象。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
 **起始版本：** 22
 
 **参数：**
@@ -4692,8 +4712,6 @@ Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* v
 **描述**
 
 获取指定鼠标光标信息对象对应的光标显示状态。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
 **起始版本：** 22
 
@@ -4720,8 +4738,6 @@ Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_Po
 
 获取指定鼠标光标信息对象对应的光标样式。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
 **起始版本：** 22
 
 **参数：**
@@ -4746,8 +4762,6 @@ Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int3
 **描述**
 
 获取指定鼠标光标信息对象对应的光标大小档位。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
 **起始版本：** 22
 
@@ -4774,8 +4788,6 @@ Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t
 
 获取指定鼠标光标信息对象对应的光标颜色, 使用32位ARGB整数表示。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
-
 **起始版本：** 22
 
 **参数：**
@@ -4800,8 +4812,6 @@ Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mou
 **描述**
 
 获取鼠标事件的鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
 **起始版本：** 22
 
@@ -4828,7 +4838,7 @@ Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNat
 
 查询当前鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。如果pixelmap参数非空，且光标样式为[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)，则会同时返回光标的PixelMap位图对象。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Pointer
+**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 22
 
