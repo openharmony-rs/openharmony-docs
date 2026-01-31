@@ -457,7 +457,7 @@ async function test() {
 
 on(type: 'complete', callback: Callback\<void>): void
 
-Subscribes to the event indicating that transcoding is complete. An application can subscribe to only one transcoding progress update event. When the application initiates multiple subscriptions to this event, the last subscription is applied. This API uses an asynchronous callback to return the result.
+Subscribes to the event indicating that transcoding is complete. An application can subscribe to only one such event. When the application initiates multiple subscriptions to this event, the last subscription is applied. This API uses an asynchronous callback to return the result.
 
 When this event is reported, the current transcoding operation is complete. You need to call [release()](#release12) to exit the transcoding.
 
