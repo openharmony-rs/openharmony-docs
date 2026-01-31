@@ -916,7 +916,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 > **说明：**
 >
-> 多次调用该接口时，避免监听同一端口。
+> 在多次调用该接口时，应避免监听同一端口。
 
 **需要权限**: ohos.permission.INTERNET
 
