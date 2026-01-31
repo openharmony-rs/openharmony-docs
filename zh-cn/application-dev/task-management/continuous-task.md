@@ -96,9 +96,10 @@
 1. 需要申请ohos.permission.KEEP_BACKGROUND_RUNNING权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
 
 2. 声明后台模式类型。
+
    在[module.json5配置文件](../quick-start/module-configuration-file.md)中abilities下的backgroundModes字段里，为需要使用长时任务的UIAbility声明相应的长时任务类型，配置文件中填写长时任务类型的[配置项](continuous-task.md#使用场景)。
    
-   ```json
+   ```json5
     "module": {
         "abilities": [
             {
@@ -397,7 +398,7 @@
    ```
    <!--Del-->
 
-   **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[Call调用开发指南（同设备）](../application-models/uiability-intra-device-interaction.md#通过call调用实现uiability交互仅对系统应用开放)和[Call调用开发指南（跨设备）](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
+   **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[通过跨设备call调用实现多端协同](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
    
    ```ts
     const MSG_SEND_METHOD: string = 'CallSendMsg'
@@ -537,7 +538,7 @@
 
    在config.json文件中配置长时任务权限ohos.permission.KEEP_BACKGROUND_RUNNING，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。同时，为需要使用长时任务的ServiceAbility声明相应的长时任务类型。
    
-   ```json
+   ```json5
    "module": {
        "package": "com.example.myapplication",
        "abilities": [
