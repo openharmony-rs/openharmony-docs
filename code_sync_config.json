@@ -15439,26 +15439,6 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets",
 				"functions":[
 					{
-						"end_line":40,
-						"name":"accessibility_group_start",
-						"start_line":34
-					},
-					{
-						"end_line":48,
-						"name":"accessibility_level_start",
-						"start_line":41
-					},
-					{
-						"end_line":61,
-						"name":"accessibility_text_group_start",
-						"start_line":49
-					},
-					{
-						"end_line":74,
-						"name":"accessibility_description_start",
-						"start_line":61
-					},
-					{
 						"end_line":86,
 						"name":"accessibility_checked_start",
 						"start_line":76
@@ -15481,6 +15461,76 @@
 					{
 						"end_line":35,
 						"name":"virtual_node_example_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase01.ets",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"accessibility_text_start01",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase02.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"accessibility_text_start02",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase01.ets",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"accessibility_description_start01",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase02.ets",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"accessibility_description_start02",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase01.ets",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"accessibility_group_start01",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase02.ets",
+				"functions":[
+					{
+						"end_line":35,
+						"name":"accessibility_group_start02",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityLevelCase01.ets",
+				"functions":[
+					{
+						"end_line":35,
+						"name":"accessibility_level_start01",
 						"start_line":16
 					}
 				]
