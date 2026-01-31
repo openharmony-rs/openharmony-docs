@@ -710,7 +710,7 @@ ArkTS-Sta示例：
 function parseSummary(summary: unifiedDataChannel.Summary) {
   let summary: unifiedDataChannel.Summary = new unifiedDataChannel.Summary;
   let test: Record<String, Long> = {
-    "bb1": 123,
+    "summary_test": 123,
   }
   summary.summary = test;
   console.info(`summary: ${summary.summary}`);

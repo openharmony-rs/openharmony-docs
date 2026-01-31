@@ -29,9 +29,7 @@ import uniformDataStruct from '@ohos.data.uniformDataStruct';
 
 ## ContentFormCard
 
-ArkTS-Dyn: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: number, formHeight?: number, handleOnClick?: Function})
-
-ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: double, formHeight?: double, handleOnClick?: Function})
+ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: double, formHeight?: double, handleOnClick?: Function})
 
 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。
 
@@ -133,18 +131,17 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { State, PropRef, Watch } from '@ohos.arkui.stateManagement'
-import { Component, Builder } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement'
 import { FormType, ContentFormCard } from '@ohos.data.UdmfComponents';
 import common from '@ohos.app.ability.common';
 import { uniformDataStruct } from '@kit.ArkData';
-import { Entry, Component, State, UIContext, Column, $rawfile, Flex, Row, Text, List, BusinessError, Button, UniformDataType, Image, $r, HorizontalAlign, ColumnOptions } from '@kit.ArkUI';
+import { Entry, Component, State, Column, BusinessError, $r, ColumnOptions, HorizontalAlign } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
   @State contentForms: Array<uniformDataStruct.ContentForm> = new Array<uniformDataStruct.ContentForm>();
-  @State formWidth = 200;
+  @State formWidth: double = 200;
   @State formType: FormType = FormType.TYPE_SMALL;
 
   aboutToAppear(): void {
