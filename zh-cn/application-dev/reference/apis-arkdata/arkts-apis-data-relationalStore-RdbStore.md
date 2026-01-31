@@ -7272,7 +7272,7 @@ try {
 
 off(event: string, interProcess: boolean, observer?: Callback\<void>): void
 
-取消数据变更的事件监听。
+取消数据库的进程内或者进程间事件监听。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
