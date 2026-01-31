@@ -5397,15 +5397,15 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 Allows a system application to access media sharing resources within the camera framework directory.
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
-**Supported devices**：General
+**Supported devices**: General
 
-**Since**：23
+**Since**: 23
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 Allows an application that has accessed Cloud to manage cloud data.
@@ -5505,3 +5505,31 @@ Allows an application to add the WiseCard of other applications.
 **Supported devices**: general devices
 
 **Since**: 23
+
+## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+
+Allows a system application to manage the education space.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 24
+
+## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
+
+Allows a system application to query the education space properties.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: tablets
+
+**Since**: 24
