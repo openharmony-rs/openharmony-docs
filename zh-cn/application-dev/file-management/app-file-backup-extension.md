@@ -10,7 +10,6 @@
 
 BackupExtensionAbility，是[Stage模型](../application-models/stage-model-development-overview.md)中扩展组件[ExtensionAbility](../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件定制备份恢复框架的行为，包括是否允许备份恢复，备份哪些文件等。  
 <!--RP1-->
-应用接入后用户可在[云备份](https://cloud.huawei.com/help/backup/brief)、[数据克隆](https://consumer.huawei.com/cn/emui/clone/)、[华为助手](https://consumer.huawei.com/cn/support/hisuite/)等工具中实现应用数据的备份和恢复。
 <!--RP1End-->
 
 ## 接口说明
@@ -205,7 +204,7 @@ BackupExtensionAbility，是[Stage模型](../application-models/stage-model-deve
 | fullBackupOnly       | 布尔值     | 否   | 是否使用应用默认恢复目录，默认值为false。当值为true时，恢复数据时会通过临时路径进行缓存，临时路径可通过[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md#属性)获取。当值为false或者不配置该字段时，恢复数据会以'/'为根目录解压数据。 |
 | restoreDeps          | 字符串     | 否   | **不推荐使用**，应用恢复时依赖其他应用数据，默认值为""，需要配置依赖应用名称。当前仅支持最多一个依赖项。配置的依赖仅在一次恢复任务上下文生效，如果一次恢复任务中没有检测到依赖应用，则忽略该依赖描述继续执行恢复任务。**依赖应用未恢复或者恢复失败都会导致本应用恢复失败**。 |
 | extraInfo            | json串     | 否   | 额外信息可通过该字段传递。             |
-| compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）。<br> **说明**：从API version 23开始，<!--RP2-->仅应用克隆场景<!--RP1End-->支持该字段。             |  
+| compatibleDirMapping            | 对象数组     | 否   | 该字段可以实现备份时按A路径进行备份，恢复时按B路径进行恢复。数组子项为对象，包含2个key，backupDir（待备份路径）和restoreDir（待恢复路径）。<br> **说明**：从API version 23开始，<!--RP2--><!--RP2End-->支持该字段。             |  
 
 **字段说明：**
 1. **有关fullBackupOnly字段的说明**
