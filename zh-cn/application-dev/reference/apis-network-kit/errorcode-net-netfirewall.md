@@ -80,7 +80,7 @@ IP类型的防火墙规则中，port规则数量超过最大值。
 
 **可能原因**
 
-添加/更新的一条IP规则里的本地port或者远端port的port参数NetFirewallPortParams的个数大于10个。
+添加/更新的一条IP规则中，本地端口或远端端口的NetFirewallPortParams参数数量超过10个。
 
 **处理步骤**
 
