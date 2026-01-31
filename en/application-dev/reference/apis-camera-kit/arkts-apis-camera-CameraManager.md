@@ -986,7 +986,7 @@ Obtains the concurrency information of the specified cameras. If the return valu
 
 | Name    | Type            | Mandatory| Description      |
 | -------- | --------------- | ---- | --------- |
-| cameras | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\>  | Yes  | Array of CameraDevice objects. You are advised to use the front and rear cameras obtained by calling [getCameraDevice](#getcameradevice18).|
+| cameras | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\>  | Yes  | Array of **CameraDevice** objects. You are advised to use the front and rear cameras obtained by calling [getCameraDevice](#getcameradevice18).|
 
 **Return value**
 
@@ -1029,7 +1029,6 @@ getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability
 Obtains the output capability supported by a camera device. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getSupportedOutputCapability](#getsupportedoutputcapability11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -1062,7 +1061,6 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 Creates a PhotoOutput instance. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createPhotoOutput](#createphotooutput11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
@@ -1112,8 +1110,7 @@ createCaptureSession(): CaptureSession
 Creates a CaptureSession instance. This API returns the result synchronously.
 
 > **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createSession](#createsession11) instead.
+>This API is supported since API version 10 and deprecated since API version 11. You are advised to use [createSession](#createsession11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

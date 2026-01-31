@@ -14,7 +14,7 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 
 The struct defines a pointer to the callback functions related to an audio capturer.
 
-To avoid unexpected behavior, ensure that every member variable of the struct is initialized by a custom callback method or a null pointer when setting the audio callback functions. For details, see [Using OHAudio for Audio Recording](../../media/audio/using-ohaudio-for-recording.md).
+To avoid unexpected behavior, ensure that every member variable of the struct is initialized by a custom callback method or a null pointer when setting the audio callback functions. For details, see [Using OHAudio for Audio Recording (C/C++)](../../media/audio/using-ohaudio-for-recording.md).
 
 **Since**: 10
 
@@ -44,7 +44,6 @@ Use the following callback types for substitute:
 ## Member Function Description
 
 > **NOTE**
->
 > No enumerated values are defined as the return values of the following callbacks. In the current version, no processing specific to the return value is provided. To support expansion in later versions, the default value **0** is used.
 
 ### OH_AudioCapturer_OnReadData()
