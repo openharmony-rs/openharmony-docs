@@ -2903,7 +2903,7 @@ enum ArkUI_SafeAreaType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | 系统默认的安全区域，包括状态栏、导航栏，该值为默认值。 |
+| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | 系统默认非安全区域，包括状态栏、导航栏，该值为默认值。 |
 | ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | 设备的非安全区域，例如刘海屏或挖孔屏区域。 |
 | ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | 软键盘区域。 |
 
