@@ -18,7 +18,7 @@
     - "entities"列表中包含"entity.system.browsable"。
     - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考[uri匹配](explicit-implicit-want-mappings.md#uri匹配规则)，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -50,7 +50,7 @@
 
 2. 调用方通过[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口执行跳转，需要传入link和[options](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md)，不再需要传入bundleName、moduleName和abilityName。系统会根据传入的link匹配到符合skills配置的应用。
     - 当options中的appLinkingOnly为true时，匹配到的应用会经过应用市场域名检查（需联网）返回域名校验检查的唯一匹配项或未匹配结果。
-    - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则改为使用Deep Linking的方式拉起目标应用。
+    - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则跳转默认浏览器打开网页。
 
     ```ts
     import { common, OpenLinkOptions } from '@kit.AbilityKit';
@@ -70,22 +70,25 @@
           .margin({ bottom: '12vp' })
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            // 通过startAbility接口显式启动其他UIAbility，推荐使用openLink接口。
-            // let want: Want = {
-            //   bundleName: "com.test.example",
-            //   moduleName: "entry",
-            //   abilityName: "EntryAbility"
-            // };
-            // try {
-            //   context.startAbility(want)
-            //     .then(() => {
-            //       hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success.');
-            //     }).catch((err: BusinessError) => {
-            //       hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
-            //     })
-            // } catch (paramError) {
-            //   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code}, message is ${paramError.message}`);
-            // }
+            /*
+             * 通过startAbility接口显式启动其他UIAbility，推荐使用openLink接口。
+             * let want: Want = {
+             *   bundleName: "com.test.example",
+             *   moduleName: "entry",
+             *   abilityName: "EntryAbility"
+             * };
+             * try {
+             *   context.startAbility(want)
+             *     .then(() => {
+             *       hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success.');
+             *     }).catch((err: BusinessError) => {
+             *       hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
+             *     })
+             * } catch (paramError) {
+             *   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code},\
+             *   message is ${paramError.message}`);
+             * }
+             */
             let link: string = "https://www.example.com";
             let openLinkOptions: OpenLinkOptions = {
               // 匹配的abilities选项是否需要通过App Linking域名校验，匹配到唯一配置过的应用ability
@@ -117,7 +120,7 @@
     - "entities"列表中包含"entity.system.browsable"。
     - "uris"列表中包含"scheme"为"https"且"domainVerify"为true的元素。uri的匹配规则参考[uri匹配](explicit-implicit-want-mappings.md#uri匹配规则)，domainVerify为true代表开启域名检查，通过App Linking匹配该应用时需经过配置的域名校验后才能匹配到。
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -149,7 +152,7 @@
 
 2. 调用方通过[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口执行跳转，需要传入link和[options](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md)，不再需要传入bundleName、moduleName和abilityName。系统会根据传入的link匹配到符合skills配置的应用。AbilityResult回调结果通过入参传入回调函数，在被启动的UIAbility停止自身后返回给调用方。启动成功和失败结果仍通过Promise返回。<br>
     - 当options中的appLinkingOnly为true时，匹配到的应用会经过应用市场域名检查（需联网）返回域名校验检查的唯一匹配项或未匹配结果。
-    - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则改为使用Deep Linking的方式拉起目标应用。
+    - 当options中的appLinkingOnly为false时，会优先尝试以App Linking的方式拉起，如果没有匹配的应用则跳转默认浏览器打开网页。
 
     ```ts
     import { common, OpenLinkOptions } from '@kit.AbilityKit';
@@ -169,22 +172,25 @@
           .margin({ bottom: '12vp' })
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            // 通过startAbility接口显式启动其他UIAbility，推荐使用openLink接口。
-            // let want: Want = {
-            //   bundleName: "com.test.example",
-            //   moduleName: "entry",
-            //   abilityName: "EntryAbility"
-            // };
-            // try {
-            //   context.startAbilityForResult(want)
-            //     .then((data) => {
-            //       hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success. data:' + JSON.stringify(data));
-            //     }).catch((err: BusinessError) => {
-            //       hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
-            //     })
-            // } catch (paramError) {
-            //   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code}, message is ${paramError.message}`);
-            // }
+            /*
+             * 通过startAbility接口显式启动其他UIAbility，推荐使用openLink接口。
+             * let want: Want = {
+             *   bundleName: "com.test.example",
+             *   moduleName: "entry",
+             *   abilityName: "EntryAbility"
+             * };
+             * try {
+             *   context.startAbilityForResult(want)
+             *     .then((data) => {
+             *       hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success. data: ' + JSON.stringify(data));
+             *     }).catch((err: BusinessError) => {
+             *       hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
+             *     })
+             * } catch (paramError) {
+             *   hilog.error(DOMAIN_NUMBER, TAG, `Failed to startAbility. Code is ${paramError.code}, \
+             *   message is ${paramError.message}`);
+             * }
+             */
             let link: string = "https://www.example.com";
             let openLinkOptions: OpenLinkOptions = {
               // 匹配的abilities选项是否需要通过App Linking域名校验，匹配到唯一配置过的应用ability
