@@ -103,7 +103,7 @@ export struct AccessibilityTextCase02 {
 
 ## 设置无障碍提醒
 
-[accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription)属性用于提供更详细的组件说明，帮助用户理解将要执行的操作以及可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本accessibilityText中了解到时。例如组件状态当前不可使用的原因，系统默认的新手提醒不能表达的含义等场景。该信息在文本内容之后播报，并且如果当前控件有默认的新手提醒（如支持点击的组件，默认新手提醒为：单指双击即可执行）时，accessibilityDescription会替代系统的新手提醒，即仅播报accessibilityDescription。
+[accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription)属性用于提供更详细的组件说明，帮助用户理解将要执行的操作以及可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本accessibilityText中了解到。例如组件状态当前不可使用的原因，系统默认的新手提醒不能表达的含义等场景。该信息在文本内容之后播报，并且如果当前控件有默认的新手提醒（如支持点击的组件，默认新手提醒为：单指双击即可执行）时，accessibilityDescription会替代系统的新手提醒，即仅播报accessibilityDescription。
 
 关闭辅助工具的新手提醒开关后，accessibilityDescription内容也不会播报。
 
