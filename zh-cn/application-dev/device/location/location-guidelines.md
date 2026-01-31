@@ -1,4 +1,10 @@
 # 获取设备的位置信息开发指导(ArkTS)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
 
 ## 场景概述
 

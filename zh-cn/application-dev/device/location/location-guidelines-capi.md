@@ -1,9 +1,9 @@
 # 获取设备的位置信息开发指导(C/C++)
 <!--Kit: Location Kit-->
 <!--Subsystem: Location-->
-<!--Owner: @liu-binjun-->
+<!--Owner: @xxthadsl-->
 <!--Designer: @liu-binjun-->
-<!--Tester: @mhy123456789-->
+<!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
 
 

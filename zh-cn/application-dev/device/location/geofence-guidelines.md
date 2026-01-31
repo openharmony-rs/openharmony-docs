@@ -1,4 +1,10 @@
-# 地理围栏开发指导(ArkTS)
+# 基于设备自身定位的地理围栏开发指导
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
 
 ## 场景概述
 
