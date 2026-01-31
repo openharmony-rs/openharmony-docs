@@ -709,17 +709,6 @@ ArkTS-Sta示例：
 ```ts
 function parseSummary(summary: unifiedDataChannel.Summary) {
   let summary: unifiedDataChannel.Summary = new unifiedDataChannel.Summary;
-  let test: Record<String, Long> = {
-    'general.hyperlink': 256,
-    'general.file-uri':  128,
-  }
-  summary.summary = test;
-
-  let total: long = 0;
-  total += test['general.hyperlink']!;
-  total += test['general.file-uri']!;
-  summary.totalSize = total;
-
   console.info(`summary : ${JSON.stringify(summary.summary)}`);
   console.info(`totalSize: ${summary.totalSize}`);
   console.info(`overview : ${JSON.stringify(summary.overview)}`);
