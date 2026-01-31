@@ -667,6 +667,7 @@
     - [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md)
     - [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md)
     - [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md)
+    - [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md)
     - [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)
     - [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)
     - [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md)
