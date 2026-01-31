@@ -1583,7 +1583,7 @@ type HttpProxy = connection.HttpProxy
 | serverIP   | string | 否   | 是   |  服务端监听特定ip地址，默认是"0.0.0.0"。 |
 | serverPort | number | 否   | 否   | 服务端监听的端口号。                   |
 | serverCert | [ServerCert](#servercert19) | 否  | 是   | 指定服务端证书的信息，包括服务端证书文件路径和服务端证书的私钥文件路径。 |
-| protocol   | string | 否   | 是   | 目前暂不支持自定义协议类型，默认为空字符串。 |
+| protocol   | string | 否   | 是   | 自定义协议。 |
 | maxConcurrentClientsNumber | number | 否 | 否   | 最大并发客户端数量，当到达最大数时，服务端拒绝新连接。默认最大数量为10。 |
 | maxConnectionsForOneClient | number | 否 | 否   | 单个客户端的最大连接数。默认最大数量为10。 |
 
