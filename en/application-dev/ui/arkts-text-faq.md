@@ -64,12 +64,13 @@ The sample code is as follows:
   }
   ```
 
+![](figures/text_faq_Word_Break.gif)
 
 ### How Do I Implement Text Expansion at the End of the Line?
 
 **Solution**
 
-Calculate the truncated characters and append an expansion indicator (such as "…") at the end of the line as part of the component content. For details about the implementation, see [the API for converting a styled string to a paragraph array](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP1--><!--RP1End-->.
+Calculate the truncated characters and append an expansion indicator (such as "...") at the end of the line as part of the component content. For details about the implementation, see [the API for converting a styled string to a paragraph array](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP1--><!--RP1End-->.
 
 ### How Do I Implement Automatic Ellipsis for Overflowing Text?
 
@@ -125,12 +126,13 @@ The sample code is as follows:
   }
   ```
 
+![](figures/EllipsisDemo2.gif)
 
 ### How Do I Add Custom Tags Before and After Text?
 
 **Question**
 
-How do I add tags (for example, "Topic" or "Top1") before or after text and customize their [background styles](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) and [sizes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)?
+How do I add tags (for example, "Topic" or "Top1") before or after text and customize their [backgrounds](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) and [sizes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)?
 
 **Solution 1**
 
@@ -453,6 +455,7 @@ Solution 1 truncates content. To display all text, place the **Text** component 
   }
   ```
 
+![](figures/text_too_long_scroll.gif)
 
 ### How Do I Trigger a Custom Menu via selection and Set Its Font Size?
 

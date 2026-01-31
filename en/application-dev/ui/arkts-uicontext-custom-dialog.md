@@ -139,7 +139,7 @@ export struct CustomDialogComponentWithTransition {
   @Builder
   customDialogComponent() {
     Row({ space: 50 }) {
-      // Replace $r('app.string.this_is_a_window') with the actual resource file. In this example, the value in the resource file is "This is a dialog box."
+      // Replace $r('app.string.this_is_a_window') with the actual resource file. In this example, the value in the resource file is "This Is a Dialog Box."
       Button($r('app.string.this_is_a_window'))
     }.height(200).padding(5)
   }
@@ -193,6 +193,8 @@ export struct CustomDialogComponentWithTransition {
   }
 }
 ```
+
+ ![UIContextPromptAction](figures/UIContextPromptActionDialogMask.gif)
 
 ## Setting the Distance Between the Dialog Box and the Soft Keyboard
 
@@ -251,6 +253,7 @@ export struct CustomDialogWithKeyboardAvoidDistance {
 }
 ```
 
+ ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
 
 
 ## Sample Code
@@ -281,6 +284,7 @@ export class PromptActionClassNew {
     PromptActionClassNew.options = options;
   }
 
+  // Open a dialog box.
   static openDialog() {
     if (PromptActionClassNew.contentNode !== null) {
       PromptActionClassNew.ctx.getPromptAction().openCustomDialog(PromptActionClassNew.contentNode, PromptActionClassNew.options)
@@ -295,6 +299,7 @@ export class PromptActionClassNew {
     }
   }
 
+  // Close the dialog box.
   static closeDialog() {
     if (PromptActionClassNew.contentNode !== null) {
       PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
@@ -309,8 +314,9 @@ export class PromptActionClassNew {
     }
   }
 
-  // ···
+  // ...
 
+  // Update the dialog box.
   static updateDialog(options: promptAction.BaseDialogOptions) {
     if (PromptActionClassNew.contentNode !== null) {
       PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassNew.contentNode, options)

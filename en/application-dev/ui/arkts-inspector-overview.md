@@ -113,13 +113,11 @@ struct ImageExample {
             .border({ width: 1 })
             .id('IMAGE_ID')
         }
-        .id('ROW_ID')
       }
     }.height(320).width(360).padding({ right: 10, top: 10 })
   }
 
-  listenerForImage: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
-  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID');
+  listener: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('IMAGE_ID');
 
   aboutToAppear() {
     let onLayoutComplete: () => void = (): void => {
@@ -138,14 +136,14 @@ struct ImageExample {
     let offFuncDraw = onDrawComplete; // Bind to the current JS object.
     let offFuncDrawChildren = onDrawChildrenComplete; // Bind to the current JS object.
 
-    this.listenerForImage.on('layout', funcLayout);
-    this.listenerForImage.on('draw', funcDraw);
-    this.listenerForRow.on('drawChildren', funcDrawChildren);
+    this.listener.on('layout', funcLayout);
+    this.listener.on('draw', funcDraw);
+    this.listener.on('drawChildren', funcDrawChildren);
 
     // Unregister callbacks through the handle. You should decide when to call these APIs.
-    // this.listenerForImage.off('layout', offFuncLayout)
-    // this.listenerForImage.off('draw', offFuncDraw)
-    // this.listenerForRow.off('drawChildren', offFuncDrawChildren)
+    // this.listener.off('layout', OffFuncLayout)
+    // this.listener.off('draw', OffFuncDraw)
+    // this.listener.off('drawChildren', OffFuncDrawChildren)
   }
 }
 ```
