@@ -373,7 +373,7 @@ Enumerates the types of force that causes audio interruption.
 
 The force type is obtained when an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received.
 
-This type specifies whether audio interruption is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [InterruptHint](#interrupthint). For details about the audio interruption strategy, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+This type specifies whether audio interruption is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [InterruptHint](#interrupthint). For details about the audio interruption policy, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -392,7 +392,7 @@ The hint is obtained when an [InterruptEvent](arkts-apis-audio-i.md#interrupteve
 
 The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.
 
-You can determine whether the operation is forcibly performed by the system based on [InterruptForceType](#interruptforcetype9) in **InterruptEvent**. For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+You can determine whether the operation is forcibly performed by the system based on [InterruptForceType](#interruptforcetype9) in **InterruptEvent**. For details, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -564,7 +564,7 @@ The hint is obtained when an [AudioSessionStateChangedEvent](arkts-apis-audio-i.
 
 The hint specifies the action (such as audio pause or volume adjustment) to take on the audio session based on the focus strategy.
 
-For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+For details, see [Audio Session Management](../../media/audio/audio-session-management.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
