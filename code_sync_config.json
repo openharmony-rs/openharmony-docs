@@ -41299,9 +41299,9 @@
 						"start_line":409
 					},
 					{
-						"end_line":25,
+						"end_line":26,
 						"name":"ts_limited_throw",
-						"start_line":19
+						"start_line":20
 					},
 					{
 						"end_line":428,
