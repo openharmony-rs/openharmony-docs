@@ -77,7 +77,6 @@
     - [Game Controller Kit](game-controller/Readme-EN.md)
   - [IDL Specifications and User Guide](IDL/idl-guidelines.md)
   - [Native APIs](napi/Readme-EN.md)
-  - [Performance](performance/Readme-EN.md)
 - Tools
   - [DevEco Studio (OpenHarmony) User Guide](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-tools-overview)
   - [Debugging Tools](tools/Readme-EN.md)
