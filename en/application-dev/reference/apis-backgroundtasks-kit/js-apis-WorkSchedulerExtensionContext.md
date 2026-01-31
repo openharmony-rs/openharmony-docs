@@ -7,18 +7,18 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides a context environment for the WorkSchedulerExtensionAbility.
+The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides a context environment for the **WorkSchedulerExtensionAbility**.
 
-This module provides APIs for accessing the resources of a WorkSchedulerExtensionAbility.
+This module provides APIs for accessing the resources of a **WorkSchedulerExtensionAbility**.
 
 > **NOTE**
 > 
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
 > - The APIs of this module can be used only in the stage model.
 
-## Usage
+## How to Use
 
-The context is obtained through a WorkSchedulerExtensionAbility child class instance.
+Obtain the context through a **WorkSchedulerExtensionAbility** child class instance.
 
 ```ts
 import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
@@ -32,7 +32,7 @@ class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
 
 ## WorkSchedulerExtensionContext
 
-Provides a context environment for the WorkSchedulerExtensionAbility.
+Provides a context environment for the **WorkSchedulerExtensionAbility**.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
