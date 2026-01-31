@@ -229,9 +229,9 @@ class EntryAbility extends UIAbility {
 
 ## relationalStore.getRdbStoreSync
 
-getRdbStoreSync(context: Context, config: StoreConfig): RdbStore&gt;
+getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
 
-创建或打开已有的关系型数据库，开发者可以根据自己的需求配置config参数，然后通过RdbStore调用相关接口执行数据操作。使用同步回调。
+创建或打开已有的关系型数据库。开发者可以根据自己的需求配置config参数，然后通过RdbStore调用相关接口执行数据操作。这是一个同步方法，会阻塞线程直到获取到RdbStore。
 
 对应沙箱路径下无数据库文件时，将创建数据库文件，文件创建位置详见[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)。对应路径下已有数据库文件时，将打开已有数据库文件。
 
@@ -246,6 +246,10 @@ getRdbStoreSync目前不支持多线程并发操作。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**系统版本：** API 24
+
+**跨平台支持：** 支持
+
 **参数：**
 
 | 参数名  | 类型                             | 必填 | 说明                                                         |
@@ -257,7 +261,7 @@ getRdbStoreSync目前不支持多线程并发操作。
 
 | 类型                                      | 说明                              |
 | ----------------------------------------- | --------------------------------- |
-| Promise&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | 返回RdbStore对象。 |
+| [RdbStore](arkts-apis-data-relationalStore-RdbStore.md) | 返回RdbStore对象。 |
 
 **错误码：**
 
