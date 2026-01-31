@@ -84,7 +84,7 @@ IP类型的防火墙规则中，port规则数量超过最大值。
 
 **处理步骤**
 
-检查添加的一条IP规则里的port参数NetFirewallPortParams的个数是否大于10个。
+检查添加的一条IP规则中的NetFirewallPortParams参数个数是否超过10个。
 
 ## 29400004 防火墙规则中的域名规则数量超过最大值
 
