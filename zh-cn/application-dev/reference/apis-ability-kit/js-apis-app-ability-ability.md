@@ -78,7 +78,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存变化到的级别。<br>**说明：**<br>不同产品的触发条件可能存在差异。以12G内存的标准设备为例：<br>- 当整机可用内存下降至1700M~1800M时，会触发MEMORY_LEVEL_MODERATE类型(整机可用内存适中)的onMemoryLevel回调。<br>- 当整机可用内存下降至1600M~1700M时，会触发MEMORY_LEVEL_LOW类型(整机可用内存低)的onMemoryLevel回调。<br>- 当整机可用内存下降至1600M以下时，会触发MEMORY_LEVEL_CRITICAL类型(整机可用内存极低)的onMemoryLevel回调。|
+| level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存变化到的级别。<br>**说明：**<br>不同产品的触发条件可能存在差异。以12G内存的标准设备为例：<br>- 当整机可用内存下降至1700MB~1800MB时，会触发MEMORY_LEVEL_MODERATE类型(整机可用内存适中)的onMemoryLevel回调。<br>- 当整机可用内存下降至1600MB~1700MB时，会触发MEMORY_LEVEL_LOW类型(整机可用内存低)的onMemoryLevel回调。<br>- 当整机可用内存下降至1600MB以下时，会触发MEMORY_LEVEL_CRITICAL类型(整机可用内存极低)的onMemoryLevel回调。|
 
 **示例：**
 

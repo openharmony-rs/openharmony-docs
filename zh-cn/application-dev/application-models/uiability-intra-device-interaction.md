@@ -422,7 +422,7 @@ struct MainPage {
 
 ### 目标UIAbility冷启动
 
-目标[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)冷启动时，在目标UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中，接收调用方传过来的参数。然后在目标UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，解析调用方传递过来的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)方法。
+目标[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)冷启动时，在目标UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期回调中，接收调用方传过来的参数。然后在目标UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，解析调用方传递过来的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数，获取到需要加载的页面信息url，传入[windowStage.loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法。
 
 
 <!-- @[ColdAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/ColdStartAbility.ets) -->
@@ -468,7 +468,7 @@ export default class ColdStartAbility extends UIAbility {
 1. 用户先打开短信应用，短信应用的UIAbility实例启动，显示短信应用的主页。
 2. 用户将设备回到桌面界面，短信应用进入后台运行状态。
 3. 用户打开联系人应用，找到联系人张三。
-4. 用户点击联系人张三的短信按钮，会重新启动短信应用的UIAbility实例。
+4. 用户点击联系人张三的短信按钮，会再次启动短信应用的UIAbility实例。
 5. 由于短信应用的UIAbility实例已经启动过了，此时会触发该UIAbility的onNewWant()回调，而不会再走[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)等初始化逻辑。
 
 图1 目标UIAbility热启动
