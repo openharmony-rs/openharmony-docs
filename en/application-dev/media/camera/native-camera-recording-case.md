@@ -8,7 +8,7 @@
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
-This topic provides sample code that covers the complete video recording process and the API calling sequence. For details about a single process (such as device input, session management, and video recording), see the corresponding C/C++ development guide links provided in [Requesting Camera Development Permissions](camera-preparation.md).
+This topic provides sample code that covers the complete video recording process and the API calling sequence. For details about a single process (such as [device input management](native-camera-device-input.md), [session management](native-camera-session-management.md), [Session Management](native-camera-session-management.md), and [video recording](native-camera-recording.md)), see the corresponding sections.
 
 ## Development Process
 

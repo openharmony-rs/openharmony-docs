@@ -81,7 +81,7 @@ let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
 };
 
 avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
-    console.info('Succeeded in initing avScreenCaptureRecorder');
+    console.info('Succeeded in initializing avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
     console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });

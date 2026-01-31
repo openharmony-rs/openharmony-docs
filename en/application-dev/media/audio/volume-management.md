@@ -41,9 +41,7 @@ The API for managing the system volume is provided by **AudioVolumeManager**. Be
 
 Currently, AudioVolumeManager can be used to obtain volume information and listen for volume changes. It cannot be used to adjust the system volume. If you want to adjust the system volume, follow the instructions provided in [Adjusting the System Volume Using the Volume Panel](#adjusting-the-system-volume-using-the-volume-panel).
 
-<!-- @[get_volumemanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 let audioManager = audio.getAudioManager();
@@ -52,24 +50,11 @@ let audioVolumeManager = audioManager.getVolumeManager();
 
 ### Obtaining Volume Information
 
-The API for managing the system volume is provided by **AudioVolumeManager**. Before using this API, you must call [getVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9) to obtain an **AudioVolumeManager** instance.
-
-<!-- @[get_volumemanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
-import { audio } from '@kit.AudioKit';
-
-let audioManager = audio.getAudioManager();
-let audioVolumeManager = audioManager.getVolumeManager();
-```
-
 Call [AudioVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md) to obtain the volume of a specified audio stream.
 
 The example code is as follows:
 
-<!-- @[get_systemvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -87,9 +72,7 @@ audioVolumeManager.getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
 
 You can set an event to listen for system volume changes.
 
-<!-- @[regist_volumechangecallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC, (streamVolumeEvent: audio.StreamVolumeEvent) => {
@@ -117,9 +100,7 @@ When [volume mode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiovol
 
 ### Adjusting the Application Volume
 
-<!-- @[set_appvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 let audioManager = audio.getAudioManager();
@@ -146,7 +127,7 @@ audioVolumeManager.off('appVolumeChange', appVolumeChangeCallback);
 <!--Del-->
 ### Adjusting the Application Volume Based on the UID (for System Applications Only)
 
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 let uid: number = 20010041; // Application ID.
@@ -187,9 +168,7 @@ audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 
 The **setVolume()** API in both the **AVPlayer** and **AudioRenderer** classes can be used to set the audio stream volume. The code snippet below uses the API in the [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavplayer9) class:
 
-<!-- @[AVPlayerset_streamvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 let volume = 1.0;  // Specified volume. The value range is [0.00-1.00]. The value 1 indicates the maximum volume.
 avPlayer.setVolume(volume);
 ```
@@ -198,9 +177,7 @@ Call [setVolume](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.m
 
 The example code is as follows:
 
-<!-- @[Renderset_streamvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Set the volume for the audio stream.
@@ -225,7 +202,7 @@ try {
 
 You can set an event to listen for active stream changes.
 
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 // Subscribe to the active stream change event. For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
