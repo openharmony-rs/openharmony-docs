@@ -101,7 +101,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
         if (paramSetOut != nullptr && paramSetOut->paramsCnt > 0) {
             for (uint32_t i = 0; i < paramSetOut->paramsCnt; i++) {
                 OH_Huks_ExternalCryptoParam *param = &paramSetOut->params[i];
-                /* 返回数据约定：GetProperty 的结果放在 OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG 中（示例使用 JSON 文本）*/
+                /* 返回数据约定：GetProperty 的结果放在 OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA TAG 中（示例使用 JSON 文本） */
                 if (param->tag == OH_HUKS_EXT_CRYPTO_TAG_EXTRA_DATA) {
                     /* 注意：param->blob.data 可能不是以 '\0' 结尾，需拷贝并手动添加终止符 */
                     char *outStr = (char *)malloc(param->blob.size + 1);
