@@ -194,7 +194,6 @@ utd.json5文件需要在类型为entry的HAP中配置。
     //  1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
 2. 针对“.mp3”文件扩展名，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型，并打印对应UTD数据类型的具体属性。
@@ -278,7 +277,6 @@ utd.json5文件需要在类型为entry的HAP中配置。
     //  1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
 2. 针对“.ts”文件后缀，使用getUniformDataTypesByFilenameExtension()方法获取对应UTD数据类型。
@@ -318,7 +316,6 @@ utd.json5文件需要在类型为entry的HAP中配置。
     //  1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
 2. 针对“text/plain”MIMEType，使用getUniformDataTypesByMIMEType()方法获取对应UTD数据类型。
@@ -342,8 +339,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
         hilog.info(0xFF00, '[Sample_Udmf]', `filenameExtensions: ${filenameExtensions}`);
       }
     } catch (err) {
-      let error: BusinessError = err as BusinessError;
-      hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${error.message}, err code: ${error.code}`);
+      hilog.error(0xFF00, '[Sample_Udmf]', `err message: ${err.message}, err code: ${err.code}`);
     }
     ```
 
