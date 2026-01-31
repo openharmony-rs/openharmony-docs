@@ -39,7 +39,6 @@ The UIServiceExtensionAbility provides the following lifecycle callbacks: [onCre
   This callback is invoked when a UIServiceExtensionAbility is created for the first time. You can perform initialization operations, for example, registering a common event listener, in this callback.
 
   > **NOTE**
-  >
   > If the UIServiceExtensionAbility has been created, starting it again does not trigger the **onCreate()** callback.
 
 - **onRequest**
@@ -172,7 +171,6 @@ To manually create a UIServiceExtensionAbility in a project in DevEco Studio, pe
     ```json
     {
       "module": {
-        // ...
         "extensionAbilities": [
           {
             "name": "UIServiceExtAbility",
@@ -250,9 +248,8 @@ When the client calls [connectUIServiceExtensionAbility()](../reference/apis-abi
 
       build() {
         Column() {
-          //...
           Row() {
-            //...
+            // ...
           }.onClick(() => {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             const want: Want = {
@@ -294,9 +291,8 @@ When the client calls [connectUIServiceExtensionAbility()](../reference/apis-abi
 
       build() {
         Column() {
-          //...
           Row() {
-            //...
+            // ...
           }.onClick(() => {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             // this.uiServiceProxy is the proxy object saved during connection.

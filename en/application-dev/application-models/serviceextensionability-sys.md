@@ -45,7 +45,7 @@ The [ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-
   > **NOTE**
   >
   > If a ServiceExtensionAbility has been created, starting it again does not trigger the **onCreate()** callback.
-
+  
 - **onRequest**
 
   This callback is triggered when another component calls the [startServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) method to start a ServiceExtensionAbility. After being started, the ServiceExtensionAbility runs in the background. This callback is triggered each time the **startServiceExtensionAbility()** method is called.
@@ -185,7 +185,7 @@ To manually create a ServiceExtensionAbility in the DevEco Studio project, perfo
 
 4. Register the ServiceExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **"service"** and **srcEntry** to the code path of the ServiceExtensionAbility component.
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -226,11 +226,11 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -250,11 +250,11 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -274,11 +274,11 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -297,11 +297,11 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -312,20 +312,20 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     const TAG: string = '[Page_ServiceExtensionAbility]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -340,18 +340,18 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
 
 > **NOTE**
 >
-> Background services remain alive in the background for a long time. To minimize resource usage, destroy a background service in time in either of the following ways when it finishes the requested task:
+> Background services remain alive in the background for a long time. To minimize resource usage, destroy a background service in time in either of the following ways when it finishes the requested task:  
 >
 > - The background service calls the [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextterminateself) method to automatically stop itself.
 > - Another component calls the [stopServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#stopserviceextensionability) method to stop the background service.
@@ -410,11 +410,11 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
   struct Page_ServiceExtensionAbility {
     build() {
       Column() {
-        //...
+        // ...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ...
             }
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -428,11 +428,11 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
               hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
             })
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
   }
   ```
@@ -443,21 +443,21 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
   import { common } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   const TAG: string = '[Page_ServiceExtensionAbility]';
   const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   let connectionId: number;
   @Entry
   @Component
   struct Page_ServiceExtensionAbility {
     build() {
       Column() {
-        //...
+        // ...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ...
             }
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -473,11 +473,11 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
               });
             })
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
   }
   ```
@@ -530,7 +530,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   const TAG: string = '[Page_CollaborateAbility]';
   const DOMAIN_NUMBER: number = 0xFF00;
   const REQUEST_CODE = 1;
@@ -544,7 +544,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
       let option = new rpc.MessageOption();
       let data = new rpc.MessageSequence();
       let reply = new rpc.MessageSequence();
-
+  
       data.writeInt(99);
       // You can send data to the target application for corresponding operations.
       // @param code Indicates the service request code sent by the client.
@@ -552,7 +552,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
       // @param reply Indicates the response message object sent by the remote service.
       // @param options Specifies whether the operation is synchronous or asynchronous.
       // @return Returns {@code true} if the operation is successful; returns {@code false} otherwise.
-
+  
       remote.sendMessageRequest(REQUEST_CODE, data, reply, option).then((ret: rpc.RequestResult) => {
         let errCode = reply.readInt(); // Receive the information (100) returned by the target device if the connection is successful.
         let msg: number = 0;
@@ -572,7 +572,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
       hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
     }
   };
-  //...
+  // ...
   ```
 
 ## Client Identity Verification by the Server
@@ -614,7 +614,7 @@ When a ServiceExtensionAbility is used to provide sensitive services, the client
       }).catch((err: BusinessError) => {
         hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
       });
-      //...
+      // ...
     };
   
     insertDataToMap(key: string, val: number, callback: InsertDataToMapCallback): void {
