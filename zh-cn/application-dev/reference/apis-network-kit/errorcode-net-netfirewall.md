@@ -66,7 +66,7 @@ IP类型的防火墙规则中，IP地址规则数量超过最大值。
 
 **处理步骤**
 
-检查添加的一条IP规则里的IP参数NetFirewallIpParams的个数是否大于10个；
+检查添加的一条IP规则里的IP参数NetFirewallIpParams的个数是否大于10个。
 
 ## 29400003 防火墙规则中的port规则数量超过最大值
 
