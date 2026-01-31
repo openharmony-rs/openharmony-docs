@@ -8,6 +8,8 @@
 
 自动切换镜头查询类，用于查询设备是否支持自动切换镜头。
 
+自动切换镜头能力仅支持折叠屏设备使用，如需使能该能力请参见[enableAutoDeviceSwitch](./arkts-apis-camera-AutoDeviceSwitch.md)。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -38,9 +40,18 @@ isAutoDeviceSwitchSupported(): boolean
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 本示例用于查询折叠屏设备是否支持自动切换相机镜头。
 function isAutoDeviceSwitchSupported(session: camera.PhotoSession): boolean {
   let isSupported = false;
-  isSupported = session.isAutoDeviceSwitchSupported();
+  try {
+    isSupported = session.isAutoDeviceSwitchSupported();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`isAutoDeviceSwitchSupported call failed, error code: ${err.code}, error message: ${err.message}.`);
+  }
+  // 返回true时，可继续使用enableAutoDeviceSwitch使能自动切换摄像头能力。
   return isSupported;
 }
 ```
