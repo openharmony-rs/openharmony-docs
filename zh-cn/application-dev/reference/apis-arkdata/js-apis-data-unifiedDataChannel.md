@@ -710,11 +710,19 @@ ArkTS-Sta示例：
 function parseSummary(summary: unifiedDataChannel.Summary) {
   let summary: unifiedDataChannel.Summary = new unifiedDataChannel.Summary;
   let test: Record<String, Long> = {
-    "summary_test": 123,
+    'general.hyperlink': 256,
+    'general.file-uri':  128,
   }
   summary.summary = test;
-  console.info(`summary: ${summary.summary}`);
-  console.info(`overview: ${summary.overview}`);
+
+  let total: long = 0;
+  total += test['general.hyperlink']!;
+  total += test['general.file-uri']!;
+  summary.totalSize = total;
+
+  console.info(`summary : ${JSON.stringify(summary.summary)}`);
+  console.info(`totalSize: ${summary.totalSize}`);
+  console.info(`overview : ${JSON.stringify(summary.overview)}`);
 }
 ```
 
