@@ -57,7 +57,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
     OH_AVMetadataExtractor* mainExtractor = OH_AVMetadataExtractor_Create();
     ```
 
-2. 设置媒体资源的文件描述符：调用[OH_AVMetadataExtractor_SetFDSoucre()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)。
+2. 设置媒体资源的文件描述符：调用[OH_AVMetadataExtractor_SetFDSource()](../../reference/apis-media-kit/capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)。
 
    不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/capi-avimagegenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
     ```c

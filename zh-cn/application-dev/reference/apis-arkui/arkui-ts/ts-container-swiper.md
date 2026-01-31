@@ -1251,7 +1251,7 @@ maxDisplayCount(maxDisplayCount: number): DotIndicator
 
 space(space: LengthMetrics): DotIndicator
 
-设置Swiper圆点导航点间距，不支持设置百分比。
+设置Swiper圆点导航点间距。
 
 **卡片能力：** 从API version 19开始，该接口支持在ArkTS卡片中使用。
 
@@ -1263,7 +1263,7 @@ space(space: LengthMetrics): DotIndicator
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：8<br/>单位：vp<br/>取值范围：[0, +∞) |
+| space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 是   | 设置圆点导航点间距，不支持设置百分比。<br/>默认值：PC/2in1设备上为10，其他设备为8。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 **返回值：** 
 

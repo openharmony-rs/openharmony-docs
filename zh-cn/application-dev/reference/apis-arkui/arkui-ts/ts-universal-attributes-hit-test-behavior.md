@@ -13,6 +13,8 @@
 > - 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当Stack组件中有多个节点触摸区域重叠时，如果最上层节点的子组件命中，则默认只会对显示在最上层的节点做触摸测试。此时只有给显示在最上层的节点设置hitTestBehavior为HitTestMode.Transparent时，才能使显示在下层的节点触发触摸测试。
+>
+> - 存在新增节点时，如需该节点响应触摸测试，需要对其设置[HitTestMode](./ts-appendix-enums.md#hittestmode9)。当新增节点存在多层级节点时，仅需设置根节点的HitTestMode。
 
 ## hitTestBehavior
 
