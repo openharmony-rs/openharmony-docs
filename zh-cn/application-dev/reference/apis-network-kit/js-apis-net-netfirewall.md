@@ -131,7 +131,7 @@ netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolic
 
 addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
- 添加系统用户ID的防火墙规则，目前支持的规则类型有：IP、Domain、DNS。使用Promise异步回调。
+添加系统用户ID的防火墙规则，目前支持的规则类型有：IP、Domain、DNS。使用Promise异步回调。
 
 > **说明**
 > 
@@ -168,7 +168,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 **错误码：**
 
- 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 
 | 错误码ID | 错误信息                                                                 |
 | -------  | ------------------------------------------------------------------------ |
