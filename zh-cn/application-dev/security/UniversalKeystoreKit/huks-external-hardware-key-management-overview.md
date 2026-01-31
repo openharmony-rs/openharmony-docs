@@ -23,7 +23,7 @@ Ukey：USB key，基于USB接口的硬件设备，可用于存储用户私钥、
 
 - 根据业务场景设计并开发应用自身的外部密钥管理扩展能力。
 
-  驱动HAP需继承HUKS提供的CryptoExtensionAbility，并完成能力接口实现。具体参考[CryptoExtensionAbility扩展能力](huks-extension-ability-support-overview.md)。
+  驱动HAP需继承HUKS提供的CryptoExtensionAbility，并完成能力接口实现。具体参考[CryptoExtensionAbility扩展能力](huks-extension-ability-support-dev.md)。
 
   CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../application-models/extensionability-overview.md)的派生类。开发者可以通过继承CryptoExtensionAbility并实现自定义接口，达成定制外部硬件密钥管理的行为，包括：调用外部硬件密钥管理的资源打开与关闭接口、外部硬件密钥管理的PIN认证实现、调用外部硬件密钥管理的通用接口等，可以参考[CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)。
   
@@ -47,8 +47,8 @@ Ukey：USB key，基于USB接口的硬件设备，可用于存储用户私钥、
 
   4.1：如果资源已认证，即PIN码已认证，应用将调用HUKS统一接口，执行资源管理、签名验签等操作。如：
 
-  - 打开与关闭句柄资源：[资源管理](huks-resource-management-overview.md)
-  - 验证消息内容以及消息发送者身份的真实性：[签名验签](huks-ukey-signing-signature-verification-overview.md)
+  - 打开与关闭资源：[资源管理](huks-resource-management-overview.md)。
+  - 验证消息内容以及消息发送者身份的真实性：[签名验签](huks-ukey-signing-signature-verification-overview.md)。
   
   除此以外，HUKS支持应用查询Ukey的密钥相关属性，具体参考[通用查询](huks-ukey-general-query-overview.md)。
 

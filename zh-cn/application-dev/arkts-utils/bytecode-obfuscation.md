@@ -136,11 +136,13 @@ test(a2);
 
 开启属性名称混淆，效果如下：
 
-```ts
+<!-- @[optionExample_enablePropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->
+
+``` TypeScript
 // test.ts
 // 混淆前：
 class TestA {
-    static prop1: number = 0;
+  static prop1: number = 0;
 }
 TestA.prop1;
 ```
@@ -223,6 +225,11 @@ let person = {"firstName": "abc"};
 person["personAge"] = 22;
 ```
 
+```ts
+// 混淆后：
+let person = {"a": "abc"};
+person["b"] = 22;
+```
 
 **使用该选项时，需要注意以下事项：**
 **1.** 如果字符串属性名包含特殊字符（除了`a-z、A-Z、0-9、_`之外的字符），例如`let obj = {"\n": 123, "": 4, " ": 5}`，建议不要开启`-enable-string-property-obfuscation`选项，因为可能无法通过[保留选项](#-keep-property-name)来指定保留这些名字。

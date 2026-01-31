@@ -59,7 +59,7 @@ Binds the IP address and port number. The port number can be customized or rando
 
 | Name  | Type                              | Mandatory| Description                                                  |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address  | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 | callback | AsyncCallback\<void\>              | Yes  | Callback used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.       |
 
 **Error codes**
@@ -105,7 +105,13 @@ Binds the IP address and port number. The port number can be customized or rando
 
 | Name | Type                              | Mandatory| Description                                                  |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
+
+**Return value**
+
+| Type           | Description                                      |
+|  -------------- |  ----------------------------------------- |
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -116,11 +122,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
 
-**Return value**
-
-| Type           | Description                                      |
-|  -------------- |  ----------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
 
 **Example**
 
@@ -275,6 +276,12 @@ Before sending data, call [UDPSocket.bind()](#bind) to bind the IP address and p
 | ------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | options | [UDPSendOptions](#udpsendoptions) | Yes  | Parameters for sending data over a UDP socket connection. For details, see [UDPSendOptions](#udpsendoptions).|
 
+**Return value**
+
+| Type           | Description                                          |
+|  -------------- |  --------------------------------------------- |
+| Promise\<void\> | Promise that returns no value.|
+
 **Error codes**
 
 For details about the error codes, see [Socket Error Codes](errorcode-net-socket.md) and [Universal Error Codes](../errorcode-universal.md).
@@ -292,11 +299,6 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 | 2301212 | Socks5 serialization error.                    |
 | 2301213 | Socks5 deserialization error.                  |
 
-**Return value**
-
-| Type           | Description                                          |
-|  -------------- |  --------------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
 
 **Example**
 
@@ -423,6 +425,12 @@ Closes a UDP socket connection. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
+**Return value**
+
+| Type           | Description                                      |
+|  -------------- |  ----------------------------------------- |
+| Promise\<void\> | Promise that returns no value.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -430,12 +438,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                |
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
-
-**Return value**
-
-| Type           | Description                                      |
-|  -------------- |  ----------------------------------------- |
-| Promise\<void\> | Promise that returns no value.|
 
 **Example**
 
@@ -518,6 +520,12 @@ Obtains the status of the UDP socket connection. This API uses a promise to retu
 
 **System capability**: SystemCapability.Communication.NetStack
 
+**Return value**
+
+| Type                                            | Description                                      |
+|  ----------------------------------------------- |  ----------------------------------------- |
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -527,11 +535,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ----------------------- |
 | 201     | Permission denied.      |
 
-**Return value**
-
-| Type                                            | Description                                      |
-|  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
 
 **Example**
 
@@ -555,6 +558,62 @@ udp.bind(bindAddr, (err: BusinessError) => {
   }).catch((err: BusinessError) => {
     console.error('getState fail' + JSON.stringify(err));
   });
+});
+```
+
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+Obtains the UDPSocket file descriptor. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API can be called only after [bind](#bind) is successfully called.
+> - This API returns **-1** in abnormal cases such as bind exceptions or socket closed (for example, after close is called).
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection, instead of directly operating the file descriptor.
+
+**Required permissions**: ohos.permission.INTERNET
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Return value**
+
+| Type                                            | Description                                      |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise used to return the socket file descriptor.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+
+| ID| Error Message                |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+
+**Example**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
+let bindAddr: socket.NetAddress = {
+    address: '192.168.xx.xxx',
+    port: 8080
+}
+udp.bind(bindAddr)
+  .then(() => {
+    udp.getSocketFd()
+      .then((fd: number) => {
+        console.info(`Socket FD: ${fd}`);
+      }).catch((err: BusinessError) => {
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+    });
+  }).catch((err: BusinessError) => {
+  console.error('bind fail');
 });
 ```
 
@@ -763,11 +822,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
 
-let messageView = '';
 udp.on('message', (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  let uint8Array = new Uint8Array(value.message); 
   for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message) 
-    let messages = uint8Array[i]
+    let messages = uint8Array[i];
     let message = String.fromCharCode(messages);
     messageView += message;
   }
@@ -991,7 +1050,7 @@ Defines the parameters for sending data over a UDP socket connection.
 
 ## UDPExtraOptions
 
-Defines other properties of the **UDPSocket** object. This API inherits from [ExtraOptionsBase](#extraoptionsbase7).
+Defines other properties of the **UDPSocket** object. This object is inherited from [ExtraOptionsBase](#extraoptionsbase).
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1633,7 +1692,65 @@ multicast.getLoopbackMode().then((value: Boolean) => {
 });
 ```
 
-## socket.constructTCPSocketInstance<sup>7+</sup>
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+Obtains the file descriptor of the MulticastSocket. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API can be called only after [bind](#bind) is successfully called.
+> - This API returns **-1** in abnormal cases such as bind exceptions or socket closed (for example, after close is called).
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection, instead of directly operating the file descriptor.
+
+**Required permissions**: ohos.permission.INTERNET
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                                            | Description                                      |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise used to return the socket file descriptor.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+
+| ID| Error Message                |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+
+**Example**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+let bindAddr: socket.NetAddress = {
+    address: '192.168.xx.xxx',
+    port: 8080
+}
+multicast.bind(bindAddr)
+  .then(() => {
+    console.info('bind success');
+    multicast.getSocketFd().then((fd: number) => {
+      console.info(`Socket FD: ${fd}`);
+    }).catch((err: BusinessError) => {
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+    });
+  }).catch((err: BusinessError) => {
+  console.error('bind fail');
+});
+```
+
+## socket.constructTCPSocketInstance
 
 constructTCPSocketInstance(): TCPSocket
 
@@ -1656,7 +1773,7 @@ let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 
 ## TCPSocket
 
-Defines a TCP socket connection. Before calling TCPSocket APIs, you need to call [socket.constructTCPSocketInstance](#socketconstructtcpsocketinstance7) to create a **TCPSocket** object.
+Defines a TCP socket connection. Before calling TCPSocket APIs, you need to call [socket.constructTCPSocketInstance](#socketconstructtcpsocketinstance) to create a **TCPSocket** object.
 
 ### bind
 
@@ -1677,7 +1794,7 @@ Binds an IP address and a port number. The port number can be customized or rand
 
 | Name  | Type                              | Mandatory| Description                                                  |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address  | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 | callback | AsyncCallback\<void\>              | Yes  | Callback used to return the result. If the operation fails, an error message is returned.                  |
 
 **Error codes**
@@ -1728,7 +1845,7 @@ Binds an IP address and a port number. The port number can be customized or rand
 
 | Name | Type                              | Mandatory| Description                                                  |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 
 **Return value**
 
@@ -2380,7 +2497,9 @@ getSocketFd(callback: AsyncCallback\<number\>): void
 Obtains the file descriptor of the **TCPSocket** object. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
-> This API can be called only after **bind** or **connect** is successfully called.
+>
+> - This API can be called only after **bind** or **connect** is successfully called.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close-2) method to close the socket connection, instead of directly operating the file descriptor.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -2398,7 +2517,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0'
+  address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tcp.bind(bindAddr)
 let netAddress: socket.NetAddress = {
@@ -2412,7 +2532,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
 tcp.connect(tcpconnectoptions)
 tcp.getSocketFd((err: BusinessError, data: number) => {
   console.error("getSocketFd failed: " + err);
-  console.info("tunenlfd: " + data);
+  console.info("socketFd: " + data);
 })
 ```
 ### getSocketFd<sup>10+</sup>
@@ -2422,7 +2542,9 @@ getSocketFd(): Promise\<number\>
 Obtains the file descriptor of the **TCPSocket** object. This API uses a promise to return the result.
 
 > **NOTE**
-> This API can be called only after **bind** or **connect** is successfully called.
+>
+> - This API can be called only after **bind** or **connect** is successfully called.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close-2) method to close the socket connection, instead of directly operating the file descriptor.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -2440,7 +2562,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0'
+    address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tcp.bind(bindAddr)
 let netAddress: socket.NetAddress = {
@@ -2453,7 +2576,7 @@ let tcpconnectoptions: socket.TCPConnectOptions = {
 }
 tcp.connect(tcpconnectoptions)
 tcp.getSocketFd().then((data: number) => {
-  console.info("tunenlfd: " + data);
+  console.info("socketFd: " + data);
 })
 ```
 
@@ -2676,11 +2799,11 @@ import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-let messageView = '';
 tcp.on('message', (value: socket.SocketMessageInfo) => {
+  let messageView = '';
+  let uint8Array = new Uint8Array(value.message); 
   for (let i: number = 0; i < value.message.byteLength; i++) {
-    let uint8Array = new Uint8Array(value.message) 
-    let messages = uint8Array[i]
+    let messages = uint8Array[i];
     let message = String.fromCharCode(messages);
     messageView += message;
   }
@@ -2879,7 +3002,7 @@ Defines the parameters for sending data over a TCP socket connection.
 
 ## TCPExtraOptions
 
-Defines other properties of the **TCPSocket** object. This API inherits from [ExtraOptionsBase](#extraoptionsbase7).
+Defines other properties of the **TCPSocket** object. This object is inherited from [ExtraOptionsBase](#extraoptionsbase).
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -2921,7 +3044,7 @@ listen(address: NetAddress, callback: AsyncCallback\<void\>): void
 
 Binds the IP address and port number. The port number can be specified or randomly allocated by the system. The server listens to and accepts TCP socket connections established over the socket. Multiple threads are used to process client data concurrently. This API uses an asynchronous callback to return the result.
 
-> **NOTE**<br>
+> **NOTE**
 > The server uses this API to perform the **bind**, **listen**, and **accept** operations. If the **bind** operation fails, the system randomly allocates a port number.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -2976,7 +3099,7 @@ listen(address: NetAddress): Promise\<void\>
 
 Binds the IP address and port number. The port number can be specified or randomly allocated by the system. The server listens to and accepts TCP socket connections established over the socket. Multiple threads are used to process client data concurrently. This API uses a promise to return the result.
 
-> **NOTE**<br>
+> **NOTE**
 > The server uses this API to perform the **bind**, **listen**, and **accept** operations. If the **bind** operation fails, the system randomly allocates a port number.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -3138,6 +3261,62 @@ tcpServer.getState().then((data: socket.SocketStateBase) => {
   console.info('getState success' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
   console.error('getState fail');
+});
+```
+
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+Obtains the file descriptor bound to the TCPSocketServer listening port. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This method can be called only after the [listen](#listen10) method is successfully called. When listen is called for multiple times, the file descriptor bound to the latest listening port is obtained.
+> - This API returns **-1** in abnormal cases such as listening exceptions or socket closed (for example, after close is called).
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close20) method to close the socket connection, instead of directly operating the file descriptor.
+
+**Required permissions**: ohos.permission.INTERNET
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Return value**
+
+| Type                                            | Description                                      |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise used to return the socket file descriptor.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+
+| ID| Error Message                |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+
+**Example**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+let listenAddr: socket.NetAddress = {
+  address:  '192.168.xx.xxx',
+  port: 8080,
+  family: 1
+}
+tcpServer.listen(listenAddr).then(() => {
+  console.info('listen success');
+  tcpServer.getSocketFd().then((fd: number) => {
+    console.info(`Socket FD: ${fd}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error('listen fail');
 });
 ```
 
@@ -3800,9 +3979,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.close().then(() => {
-  	console.info('close success');
+    console.info('close success');
   }).catch((err: BusinessError) => {
-  	console.error('close fail');
+    console.error('close fail');
   });
 });
 ```
@@ -3963,6 +4142,63 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 })
 ```
 
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+Obtains the file descriptor of a TCPSocketConnection connection. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This API can be called only after a connection with the client is set up.
+> - This API returns **-1** in abnormal cases such as disconnection and socket closed (for example, after the close API is called).
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close10) method to close the socket connection, instead of directly operating the file descriptor.
+
+**Required permissions**: ohos.permission.INTERNET
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Return value**
+
+| Type                                            | Description                                      |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise used to return the socket file descriptor.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+
+| ID| Error Message                |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+
+**Example**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+let listenAddr: socket.NetAddress = {
+  address: "192.168.xx.xx",
+  port: 8080,
+  family: 1
+}
+tcpServer.listen(listenAddr, (err: BusinessError) => {
+  tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
+    client.getSocketFd().then((fd: number) => {
+      console.info(`Socket FD: ${fd}`);
+    }).catch((err: BusinessError) => {
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+    });
+  })
+}).catch((err: BusinessError) => {
+  console.error('listen fail');
+});
+```
+
 ### on('message')<sup>10+</sup>
 
 on(type: 'message', callback: Callback<SocketMessageInfo\>): void
@@ -3997,9 +4233,9 @@ let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance(
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.on('message', (value: socket.SocketMessageInfo) => {
     let messageView = '';
+    let uint8Array = new Uint8Array(value.message); 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
-      let messages = uint8Array[i]
+      let messages = uint8Array[i];
       let message = String.fromCharCode(messages);
       messageView += message;
     }
@@ -4260,7 +4496,7 @@ Binds the address of a local socket file. This API uses a promise to return the 
 
 | Name  | Type                              | Mandatory| Description                                                  |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [LocalAddress](#localaddress11) | Yes  | Destination address. For details, see [LocalAddress](#localaddress11).|
+| address  | [LocalAddress](#localaddress11) | Yes  | Local address. For details, see [LocalAddress](#localaddress11).|
 
 **Return value**
 
@@ -4527,8 +4763,10 @@ getSocketFd(): Promise\<number\>
 Obtains the file descriptor of the **LocalSocket** object. This API uses a promise to return the result.
 
 > **NOTE**
-> This API can be called only after **bind** or **connect** is successfully called.
-> The file descriptor is allocated by the system kernel to uniquely identify the local socket in use.
+>
+> - This API can be called only after **bind** or **connect** is successfully called.
+> - The file descriptor is allocated by the system kernel to uniquely identify the local socket in use.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close11) method to close the socket connection, instead of directly operating the file descriptor.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -4567,7 +4805,7 @@ client.connect(connectOpt).then(() => {
 client.getSocketFd().then((data: number) => {
   console.info("fd: " + data);
 }).catch((err: Object) => {
-  console.error("getSocketFd faile: " + JSON.stringify(err));
+  console.error("getSocketFd failed: " + JSON.stringify(err));
 })
 ```
 
@@ -4586,7 +4824,7 @@ Sets the properties of the **LocalSocket** object. This API uses a promise to re
 
 | Name | Type                                     | Mandatory| Description                                                        |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [ExtraOptionsBase](#extraoptionsbase7) | Yes  | Other properties of the **LocalSocket** object. For details, see [ExtraOptionsBase](#extraoptionsbase7).|
+| options | [ExtraOptionsBase](#extraoptionsbase) | Yes  | Other properties of the LocalSocket connection. For details, see [ExtraOptionsBase](#extraoptionsbase).|
 
 **Return value**
 
@@ -4656,7 +4894,7 @@ Obtains the socket properties of the **LocalSocket** object. This API uses a pro
 
 | Type                        | Description                                     |
 | :-------------------------- | :---------------------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase7)\> | Promise used to return the result.|
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the result.|
 
 **Error codes**
 
@@ -4792,7 +5030,7 @@ client.on('message', (value: socket.LocalSocketMessageInfo) => {
     messageView += String.fromCharCode(uintArray[i]);
   }
   console.info('total: ' + JSON.stringify(value));
-  console.info('message infomation: ' + messageView);
+  console.info('message information: ' + messageView);
 });
 ```
 
@@ -4833,7 +5071,7 @@ let callback = (value: socket.LocalSocketMessageInfo) => {
     messageView += String.fromCharCode(uintArray[i]);
   }
   console.info('total: ' + JSON.stringify(value));
-  console.info('message infomation: ' + messageView);
+  console.info('message information: ' + messageView);
 }
 client.on('message', callback);
 client.off('message');
@@ -5100,7 +5338,7 @@ Defines the request parameters for the **LocalSocket** object.
 | data    | string \| ArrayBuffer | No  | No  | Data to be transmitted.|
 | encoding | string   | No  | Yes| Encoding format of the string. |
 
-## ExtraOptionsBase<sup>7+</sup>
+## ExtraOptionsBase
 
 Defines base properties of the **LocalSocket** object.
 
@@ -5259,7 +5497,7 @@ Sets the socket properties of the **LocalSocketServer** object. This API uses a 
 
 | Name | Type                                     | Mandatory| Description                           |
 | ------- | --------------------------------------- | ---- | ------------------------------ |
-| options | [ExtraOptionsBase](#extraoptionsbase7) | Yes  | Other properties of the **LocalSocketServer** object.|
+| options | [ExtraOptionsBase](#extraoptionsbase) | Yes  | Other properties of the **LocalSocketServer** object.|
 
 **Return value**
 
@@ -5326,7 +5564,7 @@ Obtains the socket properties of the **LocalSocketServer** object. This API uses
 
 | Type                        | Description                       |
 | :-------------------------- | :-------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase7)\> | Promise used to return the result.|
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the result.|
 
 **Error codes**
 
@@ -5421,6 +5659,56 @@ server.listen(listenAddr).then(() => {
   console.error("listen fail: " + JSON.stringify(err));
 })
 
+```
+
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+Obtains the file descriptor bound to the LocalSocketServer listening port. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This method can be called only after the [listen](#listen11) method is successfully called.
+> - This API returns **-1** in abnormal cases such as listening exceptions or socket closed (for example, after close is called).
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close20-1) method to close the socket connection, instead of directly operating the file descriptor.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Return value**
+
+| Type              | Description                             |
+| :---------------- | :-------------------------------- |
+| Promise\<number\> | Promise used to return the socket file descriptor.|
+
+**Example**
+
+>**NOTE**
+>
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+<!--code_no_check-->
+```ts
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let listenAddr : socket.LocalAddress = {
+  address: sandboxPath
+}
+
+server.listen(listenAddr).then(() => {
+  console.info("listen success");
+  server.getSocketFd().then((fd: number) => {
+    console.info(`Socket FD: ${fd}`);
+  }).catch((err: Object) => {
+    console.error(`getSocketFd fail: ${JSON.stringify(err)}`);
+  });
+}).catch((err: Object) => {
+  console.error("listen fail: " + JSON.stringify(err));
+})
 ```
 
 ### on('connect')<sup>11+</sup>
@@ -5797,6 +6085,57 @@ server.listen(localAddr).then(() => {
 });
 ```
 
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+Obtains the file descriptor of a LocalSocketConnection connection. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This method can be called only after a connection is set up.
+> - This API returns **-1** in abnormal cases such as disconnection and socket closed (for example, after the close API is called).
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close11-1) method to close the socket connection, instead of directly operating the file descriptor.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Return value**
+
+| Type              | Description                             |
+| :---------------- | :-------------------------------- |
+| Promise\<number\> | Promise used to return the socket file descriptor.|
+
+**Example**
+
+>**NOTE**
+>
+>In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+<!--code_no_check-->
+```ts
+import { socket } from '@kit.NetworkKit';
+import { common } from '@kit.AbilityKit';
+
+let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let sandboxPath: string = context.filesDir + '/testSocket';
+let listenAddr : socket.LocalAddress = {
+  address: sandboxPath
+}
+server.on('connect', (connection: socket.LocalSocketConnection) => {
+  connection.getSocketFd().then((fd: number) => {
+    console.info(`Socket FD: ${fd}`);
+  }).catch((err: Object) => {
+    console.error(`getSocketFd fail: ${JSON.stringify(err)}`);
+  });
+});
+server.listen(listenAddr).then(() => {
+  console.info("listen success");
+}).catch((err: Object) => {
+  console.error(`listen fail: ${JSON.stringify(err)}`);
+})
+```
+
 ### on('message')<sup>11+</sup>
 
 on(type: 'message', callback: Callback\<LocalSocketMessageInfo\>): void
@@ -5850,7 +6189,7 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
       messageView += String.fromCharCode(uintArray[i]);
     }
     console.info('total: ' + JSON.stringify(value));
-    console.info('message infomation: ' + messageView);
+    console.info('message information: ' + messageView);
   });
 });
 ```
@@ -5891,7 +6230,7 @@ let callback = (value: socket.LocalSocketMessageInfo) => {
     messageView += String.fromCharCode(uintArray[i]);
   }
   console.info('total: ' + JSON.stringify(value));
-  console.info('message infomation: ' + messageView);
+  console.info('message information: ' + messageView);
 }
 server.on('connect', (connection: socket.LocalSocketConnection) => {
   connection.on('message', callback);
@@ -6164,7 +6503,7 @@ Binds the IP address and port number. This API uses an asynchronous callback to 
 
 | Name  | Type                              | Mandatory| Description                                                  |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address  | [NetAddress](#netaddress) | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address  | [NetAddress](#netaddress) | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 | callback | AsyncCallback\<void\>              | Yes  | Callback used to return the result. If the operation is successful, the result of binding the local IP address and port number is returned. If the operation fails, an error message is returned.|
 
 **Error codes**
@@ -6215,7 +6554,7 @@ Binds the IP address and port number. This API uses a promise to return the resu
 
 | Name | Type                              | Mandatory| Description                                                  |
 | ------- | ---------------------------------- | ---- | ------------------------------------------------------ |
-| address | [NetAddress](#netaddress)          | Yes  | Destination address. For details, see [NetAddress](#netaddress).|
+| address | [NetAddress](#netaddress)          | Yes  | Local address. For details, see [NetAddress](#netaddress).|
 
 **Return value**
 
@@ -6523,7 +6862,6 @@ import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let tls: socket.TLSSocket = socket.constructTLSSocketInstance();
-let messageView = '';
 let bindAddr: socket.NetAddress = {
   address: '192.168.xx.xxx',
   port: 8080
@@ -6535,9 +6873,10 @@ tls.bind(bindAddr, (err: BusinessError) => {
   }
   console.info('bind success');
   tls.on('message', (value: socket.SocketMessageInfo) => {
+    let messageView = '';
+    let uint8Array = new Uint8Array(value.message); 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
-      let messages = uint8Array[i]
+      let messages = uint8Array[i];
       let message = String.fromCharCode(messages);
       messageView += message;
     }
@@ -6772,7 +7111,7 @@ tls.off('error', callback);
 
 connect(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 
-Sets up a TLS socket connection, and creates and initializes a TLS session after **bind** is successfully called. During this process, a TLS/SSL handshake is performed between the application and the server to implement data transmission. This API uses an asynchronous callback to return the result. Note that **ca** in **secureOptions** of the **options** parameter is mandatory in API version 11 or earlier. You need to enter the CA certificate of the server for certificate authentication. The certificate content starts with "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----". This field is optional since API version 12.
+Sets up a **TLSSocket** connection, and creates and initializes a TLS session after **bind** is successfully called. During this process, a TLS/SSL handshake is performed between the application and the server to implement data transmission. This API uses an asynchronous callback to return the result. Note that **ca** in **secureOptions** of the **options** parameter is mandatory in API version 11 or earlier. You need to enter the CA certificate of the server for certificate authentication. The certificate content starts with "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----". This field is optional since API version 12.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -6819,7 +7158,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // Two way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+    address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -6885,7 +7225,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance(); // Two-way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -6965,7 +7306,7 @@ tlsOneWay.connect(tlsOneWayConnectOptions, (err: BusinessError) => {
 
 connect(options: TLSConnectOptions): Promise\<void\>
 
-Sets up a TLS socket connection, and creates and initializes a TLS session after **bind** is successfully called. During this process, a TLS/SSL handshake is performed between the application and the server to implement data transmission. Both two-way and one-way authentication modes are supported. This API uses a promise to return the result. Note that **ca** in **secureOptions** of the **options** parameter is mandatory in API version 11 or earlier. You need to enter the CA certificate of the server for certificate authentication. The certificate content starts with "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----". This field is optional since API version 12.
+Sets up a **TLSSocket** connection, and creates and initializes a TLS session after **bind** is successfully called. During this process, a TLS/SSL handshake is performed between the application and the server to implement data transmission. Both two-way and one-way authentication modes are supported. This API uses a promise to return the result. Note that **ca** in **secureOptions** of the **options** parameter is mandatory in API version 11 or earlier. You need to enter the CA certificate of the server for certificate authentication. The certificate content starts with "-----BEGIN CERTIFICATE-----" and ends with "-----END CERTIFICATE-----". This field is optional since API version 12.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7017,7 +7358,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance();  // Two way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -7087,7 +7429,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let tlsTwoWay: socket.TLSSocket = socket.constructTLSSocketInstance(); // Two-way authentication
 let bindAddr: socket.NetAddress = {
-  address: '0.0.0.0',
+   address: '192.168.xx.xxx',
+  // Bind the specified network API.
 }
 tlsTwoWay.bind(bindAddr, (err: BusinessError) => {
   if (err) {
@@ -7243,7 +7586,7 @@ tls.getRemoteAddress().then(() => {
 
 getCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-Obtains the local digital certificate after a TLS socket connection is established. This API is applicable to two-way authentication. It uses an asynchronous callback to return the result.
+Obtains the local digital certificate after a **TLSSocket** connection is established. This API is applicable to two-way authentication. It uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7281,7 +7624,7 @@ tls.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
 
 getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-Obtains the local digital certificate after a TLS socket connection is established. This API is applicable to two-way authentication. It uses a promise to return the result.
+Obtains the local digital certificate after a **TLSSocket** connection is established. This API is applicable to two-way authentication. It uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7320,7 +7663,7 @@ tls.getCertificate().then((data: socket.X509CertRawData) => {
 
 getRemoteCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-Obtains the digital certificate of the server after a TLS socket connection is established. This API uses an asynchronous callback to return the result.
+Obtains the digital certificate of the server after a **TLSSocket** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7360,7 +7703,7 @@ tls.getRemoteCertificate((err: BusinessError, data: socket.X509CertRawData) => {
 
 getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-Obtains the digital certificate of the server after a TLS socket connection is established. This API uses a promise to return the result.
+Obtains the digital certificate of the server after a **TLSSocket** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7398,7 +7741,7 @@ tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
 
 getProtocol(callback: AsyncCallback\<string\>): void
 
-Obtains the communication protocol version after a TLS socket connection is established. This API uses an asynchronous callback to return the result.
+Obtains the communication protocol version after a **TLSSocket** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7436,7 +7779,7 @@ tls.getProtocol((err: BusinessError, data: string) => {
 
 getProtocol():Promise\<string\>
 
-Obtains the communication protocol version after a TLS socket connection is established. This API uses a promise to return the result.
+Obtains the communication protocol version after a **TLSSocket** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7472,7 +7815,7 @@ tls.getProtocol().then((data: string) => {
 
 getCipherSuite(callback: AsyncCallback\<Array\<string\>\>): void
 
-Obtains the cipher suite negotiated by both communication parties after a TLS socket connection is established. This API uses an asynchronous callback to return the result.
+Obtains the cipher suite negotiated by both communication parties after a **TLSSocket** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7511,7 +7854,7 @@ tls.getCipherSuite((err: BusinessError, data: Array<string>) => {
 
 getCipherSuite(): Promise\<Array\<string\>\>
 
-Obtains the cipher suite negotiated by both communication parties after a TLS socket connection is established. This API uses a promise to return the result.
+Obtains the cipher suite negotiated by both communication parties after a **TLSSocket** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7548,7 +7891,7 @@ tls.getCipherSuite().then((data: Array<string>) => {
 
 getSignatureAlgorithms(callback: AsyncCallback\<Array\<string\>\>): void
 
-Obtains the signing algorithm negotiated by both communication parties after a TLS socket connection is established. This API is applicable to two-way authentication. It uses an asynchronous callback to return the result.
+Obtains the signing algorithm negotiated by both communication parties after a **TLSSocket** connection is established. This API is applicable to two-way authentication. It uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7585,7 +7928,7 @@ tls.getSignatureAlgorithms((err: BusinessError, data: Array<string>) => {
 
 getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
-Obtains the signing algorithm negotiated by both communication parties after a TLS socket connection is established. This API is applicable to two-way authentication. It uses a promise to return the result.
+Obtains the signing algorithm negotiated by both communication parties after a **TLSSocket** connection is established. This API is applicable to two-way authentication. It uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7663,7 +8006,8 @@ Obtains the file descriptor of the **TLSSocket** object. This API uses a promise
 
 > **NOTE**
 >
-> This API can be called only after **bind** is successfully called.
+> - This API can be called only after **bind** is successfully called.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close9) method to close the socket connection, instead of directly operating the file descriptor.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7699,7 +8043,7 @@ tls.getSocketFd().then((data: number) => {
 
 send(data: string \| ArrayBuffer, callback: AsyncCallback\<void\>): void
 
-Sends a message to the server after a TLS socket connection is established. This API uses an asynchronous callback to return the result.
+Sends a message to the server after a **TLSSocket** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7741,7 +8085,7 @@ tls.send("xxxx", (err: BusinessError) => {
 
 send(data: string \| ArrayBuffer): Promise\<void\>
 
-Sends a message to the server after a TLS socket connection is established. This API uses a promise to return the result.
+Sends a message to the server after a **TLSSocket** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7750,6 +8094,12 @@ Sends a message to the server after a TLS socket connection is established. This
 | Name   | Type                         | Mandatory| Description           |
 | -------- | -----------------------------| ---- | ---------------|
 |   data   | string \| ArrayBuffer                       | Yes  | Data content of the message to send.  |
+
+**Return value**
+
+| Type          | Description                 |
+| -------------- | -------------------- |
+| Promise\<void\> | Promise used to return the result. If the operation fails, an error message is returned.|
 
 **Error codes**
 
@@ -7762,11 +8112,6 @@ Sends a message to the server after a TLS socket connection is established. This
 | 2303506 | Failed to close the TLS connection.          |
 | 2300002 | System internal error.                       |
 
-**Return value**
-
-| Type          | Description                 |
-| -------------- | -------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation fails, an error message is returned.|
 
 **Example**
 
@@ -7786,7 +8131,7 @@ tls.send("xxxx").then(() => {
 
 close(callback: AsyncCallback\<void\>): void
 
-Closes a TLS socket connection. This API uses an asynchronous callback to return the result.
+Closes a **TLSSocket** connection. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7826,7 +8171,7 @@ tls.close((err: BusinessError) => {
 
 close(): Promise\<void\>
 
-Closes a TLS socket connection. This API uses a promise to return the result.
+Closes a **TLSSocket** connection. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -7873,7 +8218,7 @@ Defines TLS connection options.
 | ALPNProtocols  | Array\<string\>                         | No  | Yes| ALPN protocol. The value range is ["spdy/1", "http/1.1"]. The default value is **[]**.     |
 | skipRemoteValidation<sup>12+</sup>  | boolean                         | No  | Yes| Whether to skip certificate authentication on the server. The default value is **false**. The value **true** means to skip certificate authentication on the server, and the value **false** means the opposite.     |
 | proxy<sup>18+</sup>   | [ProxyOptions](#proxyoptions18) | No  | Yes | Proxy option. By default, no proxy is used.|
-| timeout<sup>22+</sup>   | number | No  | Yes | Timeout duration of the TLS socket connection, in ms.|
+| timeout<sup>22+</sup>   | number | No  | Yes | Connection timeout interval, in milliseconds. The default value is **0**. The input value must be an integer ranging from 0 to 4294967295. The TLS socket connection fails after the timeout interval.|
 
 ## TLSSecureOptions<sup>9+</sup>
 
@@ -7883,8 +8228,8 @@ TLS security options. When **cert** (local certificate) and **key** (private key
 
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| ca                    | string \| Array\<string\> | No  | Yes| CA certificate of the server, which is used to authenticate the digital certificate of the server. The default value is the preset CA certificate<sup>12+</sup>.|
-| cert                  | string                                                  | No  | Yes| Digital certificate of the local client.                |
+| ca                    | string \| Array\<string\> | No  | Yes| CA certificate of the server, which is used to authenticate the digital certificate of the server. The default value is the preset CA certificate<sup>12+</sup>. A maximum of 1000 certificates can be set.|
+| cert                  | string                                                              | No  | Yes| Digital certificate of the local client.                |
 | key                   | string                                                  | No  | Yes| Private key of the local digital certificate.                  |
 | password                | string                                                  | No  | Yes| Password for reading the private key.                     |
 | protocols             | [Protocol](#protocol9) \|Array\<[Protocol](#protocol9)\> | No  | Yes| TLS protocol version. The default value is **TLSv1.2**.                 |
@@ -7949,7 +8294,9 @@ listen(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 
 Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses an asynchronous callback to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified. 
 
-**NOTE**<br>If the IP address is set to **0.0.0.0**, listening works for all IP addresses of the local host.
+>**NOTE**
+>
+>If the IP address is set to 0.0.0.0, all local IP addresses can be listened on.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -8015,7 +8362,7 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
 
 listen(options: TLSConnectOptions): Promise\<void\>
 
-Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses a promise to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified. 
+Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses an asynchronous callback to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified. 
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -8211,6 +8558,76 @@ tlsServer.getState().then(() => {
 });
 ```
 
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+Obtains the file descriptor bound to the TLSSocketServer listening port. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - This method can be called only after the [listen](#listen10-3) method is successfully called. When listen is called for multiple times, the file descriptor bound to the latest listening port is obtained.
+> - This API returns **-1** in abnormal cases such as listening exceptions or socket closed (for example, after close is called).
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close20-2) method to close the socket connection, instead of directly operating the file descriptor.
+
+**Required permissions**: ohos.permission.INTERNET
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Return value**
+
+| Type                                            | Description                                      |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise used to return the socket file descriptor.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+
+| ID| Error Message                |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+
+**Example**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let tlsSecureOptions: socket.TLSSecureOptions = {
+  key: "xxxx",
+  cert: "xxxx",
+  ca: ["xxxx"],
+  password: "xxxx",
+  protocols: socket.Protocol.TLSv12,
+  useRemoteCipherPrefer: true,
+  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+  cipherSuite: "AES256-SHA256"
+}
+let tlsConnectOptions: socket.TLSConnectOptions = {
+  address: netAddress,
+  secureOptions: tlsSecureOptions,
+  ALPNProtocols: ["spdy/1", "http/1.1"]
+}
+tlsServer.listen(tlsConnectOptions).then(() => {
+  console.info("listen success");
+  tlsServer.getSocketFd().then((fd: number) => {
+    console.info(`Socket FD: ${fd}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+  });
+}).catch((err: BusinessError) => {
+  console.error(`listen failed: ${JSON.stringify(err)}`);
+});
+```
+
 ### setExtraOptions<sup>10+</sup>
 
 setExtraOptions(options: TCPExtraOptions, callback: AsyncCallback\<void\>): void
@@ -8382,7 +8799,7 @@ tlsServer.setExtraOptions(tcpExtraOptions).then(() => {
 
 getCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-Obtains the local digital certificate after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Obtains the local digital certificate after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API can be called only after **listen** is successfully called.
@@ -8451,7 +8868,7 @@ tlsServer.getCertificate((err: BusinessError, data: socket.X509CertRawData) => {
 
 getCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-Obtains the local digital certificate after a TLS socket server connection is established. This API uses a promise to return the result.
+Obtains the local digital certificate after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 > **NOTE**
 > This API can be called only after **listen** is successfully called.
@@ -8517,7 +8934,7 @@ tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
 
 getProtocol(callback: AsyncCallback\<string\>): void
 
-Obtains the communication protocol version after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Obtains the communication protocol version after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API can be called only after **listen** is successfully called.
@@ -8583,7 +9000,7 @@ tlsServer.getProtocol((err: BusinessError, data: string) => {
 
 getProtocol():Promise\<string\>
 
-Obtains the communication protocol version after a TLS socket server connection is established. This API uses a promise to return the result.
+Obtains the communication protocol version after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 > **NOTE**
 > This API can be called only after **listen** is successfully called.
@@ -8673,7 +9090,7 @@ Obtains the local socket address of a **TLSSocketServer** connection. This API u
 import { socket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let tlsServer: socket.TLSSocket = socket.constructTLSSocketServerInstance();
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
 tlsServer.getLocalAddress().then((localAddress: socket.NetAddress) => {
   console.info("Get success: " + JSON.stringify(localAddress));
 }).catch((err: BusinessError) => {
@@ -8733,11 +9150,11 @@ let tlsConnectOptions: socket.TLSConnectOptions = {
 }
 tlsServer.listen(tlsConnectOptions).then(() => {
   console.info("listen callback success");
+  tlsServer.on('connect', (data: socket.TLSSocketConnection) => {
+    console.info(JSON.stringify(data));
+  });
 }).catch((err: BusinessError) => {
   console.error("failed: " + JSON.stringify(err));
-});
-tlsServer.on('connect', (data: socket.TLSSocketConnection) => {
-  console.info(JSON.stringify(data))
 });
 ```
 
@@ -9019,7 +9436,7 @@ Defines a **TLSSocketConnection** object, that is, the connection between the TL
 
 send(data: string \| ArrayBuffer, callback: AsyncCallback\<void\>): void
 
-Sends a message to the client after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Sends a message to the client after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9088,7 +9505,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 send(data: string \| ArrayBuffer): Promise\<void\>
 
-Sends a message to the server after a TLS socket server connection is established. This API uses a promise to return the result.
+Sends a message to the server after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9160,7 +9577,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 close(callback: AsyncCallback\<void\>): void
 
-Closes a TLS socket server connection. This API uses an asynchronous callback to return the result.
+Closes a **TLSSocketServer** connection. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9227,7 +9644,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 close(): Promise\<void\>
 
-Closes a TLS socket server connection. This API uses a promise to return the result.
+Closes a **TLSSocketServer** connection. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9415,7 +9832,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteCertificate(callback: AsyncCallback\<[X509CertRawData](#x509certrawdata9)\>): void
 
-Obtains the digital certificate of the peer end after a TLS socket server connection is established. This API uses an asynchronous callback to return the result. It applies only to the scenario where the client sends a certificate to the server. 
+Obtains the digital certificate of the peer end after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result. It applies only to the scenario where the client sends a certificate to the server. 
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9482,7 +9899,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getRemoteCertificate():Promise\<[X509CertRawData](#x509certrawdata9)\>
 
-Obtains the digital certificate of the peer end after a TLS socket server connection is established. This API uses a promise to return the result. It applies only to the scenario where the client sends a certificate to the server. 
+Obtains the digital certificate of the peer end after a **TLSSocketServer** connection is established. This API uses a promise to return the result. It applies only to the scenario where the client sends a certificate to the server. 
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9546,7 +9963,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getCipherSuite(callback: AsyncCallback\<Array\<string\>\>): void
 
-Obtains the cipher suite negotiated by both communication parties after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Obtains the cipher suite negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9612,7 +10029,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getCipherSuite(): Promise\<Array\<string\>\>
 
-Obtains the cipher suite negotiated by both communication parties after a TLS socket server connection is established. This API uses a promise to return the result.
+Obtains the cipher suite negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9675,7 +10092,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getSignatureAlgorithms(callback: AsyncCallback\<Array\<string\>\>): void
 
-Obtains the signing algorithm negotiated by both communication parties after a TLS socket server connection is established. This API uses an asynchronous callback to return the result.
+Obtains the signing algorithm negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9739,7 +10156,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 
 getSignatureAlgorithms(): Promise\<Array\<string\>\>
 
-Obtains the signing algorithm negotiated by both communication parties after a TLS socket server connection is established. This API uses a promise to return the result.
+Obtains the signing algorithm negotiated by both communication parties after a **TLSSocketServer** connection is established. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -9862,6 +10279,78 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
+### getSocketFd<sup>23+</sup>
+
+getSocketFd(): Promise\<number\>
+
+Obtains the file descriptor of a TLSSocketConnection connection. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Call this API only after the **TLSSocketServer** connection is successfully established.
+> - This API returns **-1** in abnormal cases such as disconnection and socket closed (for example, after the close API is called).
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close10-2) method to close the socket connection, instead of directly operating the file descriptor.
+
+**Required permissions**: ohos.permission.INTERNET
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Return value**
+
+| Type                                            | Description                                      |
+| ----------------------------------------------- | ----------------------------------------- |
+| Promise\<number\> | Promise used to return the socket file descriptor.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+
+| ID| Error Message                |
+| ------- | ----------------------- |
+| 201     | Permission denied.      |
+
+
+**Example**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
+let netAddress: socket.NetAddress = {
+  address: '192.168.xx.xxx',
+  port: 8080
+}
+let tlsSecureOptions: socket.TLSSecureOptions = {
+  key: "xxxx",
+  cert: "xxxx",
+  ca: ["xxxx"],
+  password: "xxxx",
+  protocols: socket.Protocol.TLSv12,
+  useRemoteCipherPrefer: true,
+  signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
+  cipherSuite: "AES256-SHA256"
+}
+let tlsConnectOptions: socket.TLSConnectOptions = {
+  address: netAddress,
+  secureOptions: tlsSecureOptions,
+  ALPNProtocols: ["spdy/1", "http/1.1"]
+}
+tlsServer.listen(tlsConnectOptions).then(() => {
+  console.info("listen success");
+  tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
+    client.getSocketFd().then((fd: number) => {
+      console.info(`Socket FD: ${fd}`);
+    }).catch((err: BusinessError) => {
+      console.error(`getSocketFd fail: ${err.message}, errorCode: ${err.code}`);
+    })
+  });
+}).catch((err: BusinessError) => {
+  console.error(`listen failed: ${JSON.stringify(err)}`);
+});
+```
+
 ### on('message')<sup>10+</sup>
 
 on(type: 'message', callback: Callback\<SocketMessageInfo\>): void
@@ -9918,9 +10407,9 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   client.on('message', (value: socket.SocketMessageInfo) => {
     let messageView = '';
+    let uint8Array = new Uint8Array(value.message); 
     for (let i: number = 0; i < value.message.byteLength; i++) {
-      let uint8Array = new Uint8Array(value.message) 
-      let messages = uint8Array[i]
+      let messages = uint8Array[i];
       let message = String.fromCharCode(messages);
       messageView += message;
     }

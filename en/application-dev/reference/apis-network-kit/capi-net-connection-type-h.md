@@ -308,4 +308,4 @@ Callback invoked when the network blocking status changes.
 | Name| Description|
 | -- | -- |
 | [NetConn_NetHandle](capi-netconnection-netconn-nethandle.md) *netHandle | Network handle.|
-|  bool blocked | Whether the network is blocked.|
+|  bool blocked | Whether the network is blocked. The value true indicates that the network is blocked, and the value false indicates the opposite.|
