@@ -22,6 +22,8 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so
 
 2. 调用注册接口[OH_Huks_RegisterProvider](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_registerprovider)。
 
+## 开发案例
+
 ```c++
 #include "napi/native_api.h"
 #include "huks/native_huks_api.h"
