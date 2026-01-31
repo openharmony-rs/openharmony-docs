@@ -875,7 +875,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connectionproperties = connection.getConnectionPropertiesSync(netHandle);
   console.info("Succeeded to get connectionproperties: " + JSON.stringify(connectionproperties));
 });
-
 ```
 
 ## connection.getNetCapabilities
@@ -1041,7 +1040,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
   console.info("Succeeded to get net capabilities sync: " + JSON.stringify(getNetCapabilitiesSync));
 });
-
 ```
 
 ## connection.isDefaultNetMetered<sup>9+</sup>
