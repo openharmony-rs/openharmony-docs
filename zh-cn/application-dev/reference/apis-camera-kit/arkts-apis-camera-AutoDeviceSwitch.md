@@ -63,7 +63,7 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession, isEnable: boolean)
     session.enableAutoDeviceSwitch(isEnable);
   } catch (error) {
     let err = error as BusinessError;
-    console.error(`The enableAutoDeviceSwitch call failed, error code: ${err.code}`);
+    console.error(`The enableAutoDeviceSwitch call failed, error code: ${err.code}, error message: ${err.message}`);
   }
 }
 ```
