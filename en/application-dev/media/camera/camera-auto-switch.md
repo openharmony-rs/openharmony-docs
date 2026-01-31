@@ -74,7 +74,7 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession) {
 }
 ```
 ## Listening for Automatic Camera Switching
-You can use [enableAutoDeviceSwitch](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onautodeviceswitchstatuschange13) to listen for automatic camera switching. A callback is invoked once the switch is complete.
+Use [on('autoDeviceSwitchStatusChange')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onautodeviceswitchstatuschange13) to listen for automatic camera switching. A callback is invoked once the switch is complete.
 
 Do not call any session related APIs during the switching process.
 ```ts

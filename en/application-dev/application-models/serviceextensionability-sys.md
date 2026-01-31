@@ -43,7 +43,6 @@ The [ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-
   This callback is triggered when a ServiceExtensionAbility is created for the first time. You can perform initialization operations, for example, registering a common event listener.
 
   > **NOTE**
-  >
   > If a ServiceExtensionAbility has been created, starting it again does not trigger the **onCreate()** callback.
 
 - **onRequest**
@@ -185,7 +184,7 @@ To manually create a ServiceExtensionAbility in the DevEco Studio project, perfo
 
 4. Register the ServiceExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) of the module in the project. Set **type** to **"service"** and **srcEntry** to the code path of the ServiceExtensionAbility component.
 
-    ```json
+    ```json5
     {
       "module": {
         // ...
@@ -208,7 +207,6 @@ To manually create a ServiceExtensionAbility in the DevEco Studio project, perfo
 A system application uses the [startServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) method to start a background service. The [onRequest()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onrequest) callback is invoked, through which the background service receives the [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) object passed by the caller. After the background service is started, its lifecycle is independent of the client. In other words, even if the client is destroyed, the background service remains alive. Therefore, the background service must be stopped by calling [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextterminateself) when its work is complete. Alternatively, another component can call [stopServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#stopserviceextensionability) to stop the background service.
 
 > **NOTE**
->
 > **startServiceExtensionAbility()**, **stopServiceExtensionAbility()**, and **terminateSelf()** provided by the **ServiceExtensionContext** class are system APIs and cannot be called by third-party applications.
 
 1. Start a new [ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md) in a system application. For details about how to obtain the context, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
@@ -226,11 +224,11 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -250,11 +248,11 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -274,11 +272,11 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -297,11 +295,11 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
@@ -321,11 +319,11 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
     struct Page_ServiceExtensionAbility {
       build() {
         Column() {
-          //...
+          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                //...
+                // ...
               }
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -340,18 +338,17 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
                 });
               })
             }
-            //...
+            // ...
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
     }
     ```
 
 > **NOTE**
->
-> Background services remain alive in the background for a long time. To minimize resource usage, destroy a background service in time in either of the following ways when it finishes the requested task:
+> Background services remain alive in the background for a long time. To minimize resource usage, destroy a background service in time in either of the following ways when it finishes the requested task:  
 >
 > - The background service calls the [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextterminateself) method to automatically stop itself.
 > - Another component calls the [stopServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#stopserviceextensionability) method to stop the background service.
@@ -410,11 +407,11 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
   struct Page_ServiceExtensionAbility {
     build() {
       Column() {
-        //...
+        // ...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ...
             }
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -428,11 +425,11 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
               hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
             })
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
   }
   ```
@@ -453,11 +450,11 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
   struct Page_ServiceExtensionAbility {
     build() {
       Column() {
-        //...
+        // ...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
+              // ...
             }
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
@@ -473,11 +470,11 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
               });
             })
           }
-          //...
+          // ...
         }
-        //...
+        // ...
       }
-      //...
+      // ...
     }
   }
   ```
@@ -572,7 +569,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
       hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
     }
   };
-  //...
+  // ...
   ```
 
 ## Client Identity Verification by the Server
@@ -614,7 +611,7 @@ When a ServiceExtensionAbility is used to provide sensitive services, the client
       }).catch((err: BusinessError) => {
         hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
       });
-      //...
+      // ...
     };
   
     insertDataToMap(key: string, val: number, callback: InsertDataToMapCallback): void {

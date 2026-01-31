@@ -89,7 +89,7 @@ In the **startup_config.json** file, add the configuration for the startup param
 
    The following is an example of the **startup_config.json** file:
 
-   ```json
+   ```json5
    {
      "startupTasks": [
        // A startup task.
@@ -97,7 +97,7 @@ In the **startup_config.json** file, add the configuration for the startup param
      "appPreloadHintStartupTasks": [
        // A .so file preloading task.
      ],
-     "configEntry": "./ets/startup/StartupConfig.ets" // Startup parameter configuration.
+     "configEntry": "./ets/startup/StartupConfig.ets" // Startup parameter configuration
    }
    ```
 
@@ -122,7 +122,7 @@ It is assumed that the application has six startup tasks. The dependencies betwe
 
    The following is an example of the **startup_config.json** file:
 
-   ```json
+   ```json5
    {
      "startupTasks": [
        {
@@ -211,7 +211,7 @@ It is assumed that AppStartup has six .so file preloading tasks. The dependencie
 
    The following is an example of the **startup_config.json** file:
 
-   ```json
+   ```json5
    {
      "startupTasks": [
        // A startup task.
@@ -457,7 +457,7 @@ export default class StartupTask_001 extends StartupTask {
         }
         ```
 
-For details about other steps, see [Setting Startup Parameters](#setting-startup-parameters) and [Adding a Startup Task for Each Component to Be Initialized](#adding-a-startup-task-for-each-component-to-be-initialized).
+  For details about other steps, see [Setting Startup Parameters](#setting-startup-parameters) and [Adding a Startup Task for Each Component to Be Initialized](#adding-a-startup-task-for-each-component-to-be-initialized).
 
 
 ### Changing Startup Mode
@@ -572,7 +572,7 @@ Suppose you want to automatically execute StartupTask_004 and libentry_006 tasks
 
 1. Modify the **startup_config.json** file in [Defining Startup Task Configuration](#defining-startup-task-configuration) to add **matchRules** for StartupTask_004 and libentry_006.
 
-    ```json
+    ```json5
     {
       "startupTasks": [
         {

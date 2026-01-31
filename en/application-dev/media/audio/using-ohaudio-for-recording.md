@@ -18,13 +18,11 @@ To use the recording capability of OHAudio, you must first import the correspond
 
 ### Linking the Dynamic Library in the CMake Script
 
-``` cmake
+```cmake
 target_link_libraries(sample PUBLIC libohaudio.so)
 ```
 ### Adding Header Files
 Include the <[native_audiostreambuilder.h](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md)> and <[native_audiocapturer.h](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md)> header files so that the application can use the functions related to audio recording.
-
-<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ```cpp
 #include <ohaudio/native_audiocapturer.h>
@@ -46,16 +44,12 @@ OHAudio provides the **OH_AudioStreamBuilder** class, which complies with the bu
 
 The following code snippet shows how to use [OH_AudioStreamBuilder_Create](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create) to create a builder:
 
-<!-- @[create_StreamType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
 ```cpp
 OH_AudioStreamBuilder* builder;
 OH_AudioStreamBuilder_Create(&builder, streamType);
 ```
 
 After the audio service is complete, call [OH_AudioStreamBuilder_Destroy](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_destroy) to destroy the builder.
-
-<!-- @[Destroy_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ```cpp
 OH_AudioStreamBuilder_Destroy(builder);
@@ -67,8 +61,6 @@ The following walks you through how to implement simple recording:
 
 1. Create an audio stream builder.
 
-   <!-- @[Create_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ```cpp
    OH_AudioStreamBuilder* builder;
    OH_AudioStreamBuilder_Create(&builder, AUDIOSTREAM_TYPE_CAPTURER);
@@ -78,15 +70,11 @@ The following walks you through how to implement simple recording:
 
    After creating the builder for audio recording, set the parameters required.
 
-   <!-- @[Configure_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ```cpp
    // Set the audio sampling rate.
-   const int SAMPLING_RATE_48K = 48000;
-   OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE_48K);
+   OH_AudioStreamBuilder_SetSamplingRate(builder, 48000);
    // Set the number of audio channels.
-   const int channelCount = 2;
-   OH_AudioStreamBuilder_SetChannelCount(builder, channelCount);
+   OH_AudioStreamBuilder_SetChannelCount(builder, 2);
    // Set the audio sampling format.
    OH_AudioStreamBuilder_SetSampleFormat(builder, AUDIOSTREAM_SAMPLE_S16LE);
    // Set the encoding type of the audio stream.
@@ -100,8 +88,6 @@ The following walks you through how to implement simple recording:
 3. Set the callback functions.
 
    For details about concurrent processing of multiple audio streams, see [Processing Audio Interruption Events](audio-playback-concurrency.md). The procedure is similar, and the only difference is the API programming language in use.
-
-   <!-- @[Set_AudioCallbackFunction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
    ```cpp
    // Customize a data reading function.
@@ -146,8 +132,6 @@ The following walks you through how to implement simple recording:
 
 4. Create an audio capturer instance.
 
-   <!-- @[GenerateCapturer_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
    ```cpp
    OH_AudioCapturer* audioCapturer;
    OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
@@ -157,23 +141,21 @@ The following walks you through how to implement simple recording:
 
    You can use the APIs listed below to control the audio streams.
 
-    | API                                                        | Description        |
-    | ------------------------------------------------------------ | ------------ |
-    | OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer) | Starts the audio capturer.   |
-    | OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer) | Pauses the audio capturer.    |
-    | OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer) | Stops the audio capturer.    |
-    | OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer) | Flushes obtained audio data.|
-    | OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer) | Releases the audio capturer instance.|
+   | API                                                        | Description        |
+   | ------------------------------------------------------------ | ------------ |
+   | OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer) | Starts the audio capturer.   |
+   | OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer) | Pauses the audio capturer.    |
+   | OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer) | Stops the audio capturer.    |
+   | OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer) | Flushes obtained audio data.|
+   | OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer) | Releases the audio capturer instance.|
 
-    > **NOTE**
-    >
-    > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioCapturer_Stop** generally takes more than 50 ms). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
+   > **NOTE**
+   >
+   > The execution of audio stream control APIs is time-consuming (for example, a single execution of **OH_AudioCapturer_Stop** generally takes more than 50 ms). Direct calls to these APIs on the main thread should be avoided to prevent interface display freezes.
 
 6. Destroy the audio stream builder.
 
    When the builder is no longer used, release related resources.
-
-   <!-- @[Destroy_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
    ```cpp
    OH_AudioStreamBuilder_Destroy(builder);
@@ -189,8 +171,6 @@ The development process is similar to that in the common recording scenario (des
 >
 > - In audio recording scenarios, if [OH_AudioStream_SourceType](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) is set to **AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION**, the low-latency mode cannot be set. The system determines the output audio channel based on the device capability.
 > - In some scenarios (for example, incoming calls), the system capability is limited and the audio channel mode falls back to the common audio channel mode, and the buffer size changes accordingly. In this case, you need to obtain all data in the buffer at a time based on the buffer size, which is the same as that in the common audio channel mode. Otherwise, the recorded data will be discontinuous, resulting in noises.
-
-<!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ```cpp
 OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
@@ -215,11 +195,9 @@ Starting from API version 12, the [OH_AudioCapturer_Callbacks](../../reference/a
 
 - Initialize each callback in [OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md) by a custom callback method or a null pointer.
 
-  <!-- @[callback_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
   ```cpp
   // Customize a data reading function.
-  int32_t MyOnReadData_Legacy(
+  int32_t MyOnReadData(
       OH_AudioCapturer* capturer,
       void* userData,
       void* buffer,
@@ -229,7 +207,7 @@ Starting from API version 12, the [OH_AudioCapturer_Callbacks](../../reference/a
       return 0;
   }
   // Customize an audio interruption event function.
-  int32_t MyOnInterruptEvent_Legacy(
+  int32_t MyOnInterruptEvent(
       OH_AudioCapturer* capturer,
       void* userData,
       OH_AudioInterrupt_ForceType type,
@@ -241,8 +219,8 @@ Starting from API version 12, the [OH_AudioCapturer_Callbacks](../../reference/a
   OH_AudioCapturer_Callbacks callbacks;
 
   // Configure a callback function. If listening is required, assign a value.
-  callbacks.OH_AudioCapturer_OnReadData = MyOnReadData_Legacy;
-  callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent_Legacy;
+  callbacks.OH_AudioCapturer_OnReadData = MyOnReadData;
+  callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent;
 
   // (Mandatory) If listening is not required, use a null pointer for initialization.
   callbacks.OH_AudioCapturer_OnStreamEvent = nullptr;
@@ -251,11 +229,9 @@ Starting from API version 12, the [OH_AudioCapturer_Callbacks](../../reference/a
 
 - Initialize and clear the struct before using it.
 
-  <!-- @[callbackNullptr_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
   ```cpp
   // Customize a data reading function.
-  int32_t MyOnReadData_Legacy(
+  int32_t MyOnReadData(
       OH_AudioCapturer* capturer,
       void* userData,
       void* buffer,
@@ -265,7 +241,7 @@ Starting from API version 12, the [OH_AudioCapturer_Callbacks](../../reference/a
       return 0;
   }
   // Customize an audio interruption event function.
-  int32_t MyOnInterruptEvent_Legacy(
+  int32_t MyOnInterruptEvent(
       OH_AudioCapturer* capturer,
       void* userData,
       OH_AudioInterrupt_ForceType type,
@@ -274,8 +250,10 @@ Starting from API version 12, the [OH_AudioCapturer_Callbacks](../../reference/a
       // Update the capturer status and UI based on the audio interruption information indicated by type and hint.
       return 0;
   }
+  OH_AudioCapturer_Callbacks callbacks;
+
   // Initialize and clear the struct before using it.
-  OH_AudioCapturer_Callbacks callbacks = {0};
+  memset(&callbacks, 0, sizeof(OH_AudioCapturer_Callbacks));
 
   // Configure the required callback functions.
   callbacks.OH_AudioCapturer_OnReadData = MyOnReadData;

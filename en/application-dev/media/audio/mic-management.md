@@ -18,9 +18,7 @@ The **AudioVolumeGroupManager** class provides APIs for managing the microphone 
 
 1. Create an audioVolumeGroupManager object.
 
-   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
-
-   ``` TypeScript
+   ```ts
    import { audio } from '@kit.AudioKit';
 
    let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
@@ -37,9 +35,7 @@ The **AudioVolumeGroupManager** class provides APIs for managing the microphone 
 
    Currently, when multiple AudioManager instances are used in a single process, only the subscription of the last instance takes effect, and the subscription of other instances is overwritten (even if the last instance does not initiate a subscription). Therefore, you are advised to use a single AudioManager instance.
 
-   <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
-
-   ``` TypeScript
+   ```ts
    // Listen for microphone state changes.
    async function on() {
      audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChangeEvent) => {
@@ -50,9 +46,7 @@ The **AudioVolumeGroupManager** class provides APIs for managing the microphone 
 
 3. Call [isMicrophoneMute](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9) to check whether the microphone is muted. If the return value is **true**, the microphone is muted; otherwise, the microphone is not muted.
 
-   <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
-
-   ``` TypeScript
+   ```ts
    // Check whether the microphone is muted.
    async function isMicrophoneMute() {
      await audioVolumeGroupManager.isMicrophoneMute().then((value: boolean) => {
@@ -61,10 +55,10 @@ The **AudioVolumeGroupManager** class provides APIs for managing the microphone 
    }
    ```
 
-<!--Del-->
+   <!--Del-->
 4. (Optional; for system applications only) Call [setMicMute](../../reference/apis-audio-kit/js-apis-audio-sys.md#setmicmute11) to mute or unmute the microphone. To mute the microphone, pass in **true**. To unmute the microphone, pass in **false**.
 
-   ``` TypeScript
+   ```ts
    // Mute the microphone, with true passed.
    async function setMicrophoneMuteTrue() {
      await audioVolumeGroupManager.setMicMute(true).then(() => {
@@ -84,7 +78,7 @@ The **AudioVolumeGroupManager** class provides APIs for managing the microphone 
 
 Refer to the sample code below to complete the process of muting and unmuting the microphone.
 
-``` TypeScript
+```ts
 import { audio } from '@kit.AudioKit';
 
 let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
@@ -137,4 +131,4 @@ async function test(){
   await isMicrophoneMute();
 }
 ```
-<!--DelEnd-->
+   <!--DelEnd--> 

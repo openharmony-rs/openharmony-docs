@@ -73,14 +73,17 @@
   - AI<!--ai-->
     - [MindSpore Lite Kit](ai/mindspore/Readme-EN.md)
     - [Neural Network Runtime Kit](ai/nnrt/Readme-EN.md)
+  - Game<!--game-->
+    - [Game Controller Kit](game-controller/Readme-EN.md)
   - [IDL Specifications and User Guide](IDL/idl-guidelines.md)
   - [Native APIs](napi/Readme-EN.md)
+  - [Performance](performance/Readme-EN.md)
 - Tools
   - [DevEco Studio (OpenHarmony) User Guide](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-tools-overview)
   - [Debugging Tools](tools/Readme-EN.md)
 - Hands-On Tutorials
-  - [Samples](https://gitee.com/openharmony/applications_app_samples/blob/master/README.md)
-  - [Codelabs](https://gitee.com/openharmony/codelabs/tree/master)
+  - [Samples](https://gitcode.com/openharmony/applications_app_samples/blob/master/README.md)
+  - [Codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md)
 - [API References](reference/Readme-EN.md)
 - [FAQs](faqs/Readme-EN.md)
 - Contribution
