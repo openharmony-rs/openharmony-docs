@@ -12,7 +12,8 @@
 根据来源差异，可以将资源分为：
 
 - 应用资源：开发者在应用中自定义的资源，可以利用资源文件管理资源在不同的设备或配置中的表现。
-- 系统资源：系统提供的资源，开发者可以通过[主题图标库](https://developer.huawei.com/consumer/cn/design/harmonyos-symbol/)获取系统symbol图标资源信息、通过[系统资源分层设计表](https://gitcode.com/openharmony/docs/blob/master/zh-cn/design/ux-design/design-resources.md)获取系统颜色、间距、圆角等资源信息。此外，系统颜色资源还可以通过[系统色彩全量表](https://developer.huawei.com/consumer/cn/doc/design-guides/color-0000001776857164#section17672143841113)获取，系统色彩全量表与系统资源分层设计表内的资源不重合，均为推荐使用的系统颜色资源。<br>表格中未列出的其他系统资源均为系统组件和底层能力参数，推荐开发者优先使用上述表格中提供的系统资源。
+- 系统资源：系统提供的资源，<!--RP2-->开发者可以在[global_system_resources](https://gitcode.com/openharmony/global_system_resources/tree/master/systemres/main/resources/base/element)中获取系统symbol图标、颜色、间距、字符串等资源信息。<!--RP2End-->
+
 
 ## 资源分类
 
