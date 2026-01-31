@@ -52,15 +52,15 @@ class Person {
     this.name = n;
   }
 
-  // 类型为"string"，不可能为"null"或者"undefined"。
+  // 类型为"string"，不可能为"null"或者"undefined"
   getName(): string {
     return this.name;
   }
 }
-// ...
+  // ...
   let buddy = new Person()
-  // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"。
-  let len = buddy.getName().length; // 0, 没有运行时异常。
+  // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"
+  let len = buddy.getName().length; // 0, 没有运行时异常
 ```
 
 如果`name`可以是`undefined`，其类型应在代码中精确标注。
@@ -69,21 +69,21 @@ class Person {
 
 ``` TypeScript
 class Person1 {
-  name?: string; // 可能为undefined。
+  name?: string; // 可能为undefined
 
   setName(n: string): void {
     this.name = n;
   }
 
-  getName(): string | undefined { // 返回类型匹配name的类型。
+  getName(): string | undefined { // 返回类型匹配name的类型
     return this.name;
   }
 }
-// ...
+  // ...
   let buddy = new Person1()
-  // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"。
+  // 假设代码中没有对name的赋值，例如没有调用"buddy.setName('John')"
 
-  let len = buddy.getName()?.length; // 编译成功，没有运行时错误。
+  let len = buddy.getName()?.length; // 编译成功，没有运行时错误
 ```
 
 ## 程序性能
@@ -100,7 +100,7 @@ function notify(who: string, what: string) {
   console.info(`Dear ${who}, a message for you: ${what}`);
 }
 
-// ...
+  // ...
   notify('Jack', 'You look great today');
 ```
 

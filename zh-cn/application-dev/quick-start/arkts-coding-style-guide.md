@@ -422,7 +422,7 @@ function fight(): void {
 ``` TypeScript
 if (flag) {
   // ...
-}else { // else 与其前面的大括号 } 之间没有加空格。
+}else { // else 与其前面的大括号 } 之间没有加空格
   // ...
 }
 ```
@@ -434,7 +434,7 @@ if (flag) {
 ``` TypeScript
 if (flag) {
   // ...
-} else { // else 与其前面的大括号 } 之间增加空格。
+} else { // else 与其前面的大括号 } 之间增加空格
   // ...
 }
 ```
@@ -447,7 +447,7 @@ if (flag) {
 function foo() { // 函数声明时，左大括号 { 之前加个空格
   // ...
 }
-// ...
+  // ...
   bar('attr', { // 左大括号前加个空格
     age: '1 year',
     sbreed: 'Bernese Mountain Dog',
@@ -892,7 +892,6 @@ export function getObject2(value: number): I {
 <!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-// app.ets
 import { getObject2, I } from './lib'
 // ...
 let obj2: I = getObject2(123);

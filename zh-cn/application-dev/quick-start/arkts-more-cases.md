@@ -72,7 +72,7 @@ function printObj(obj: string) {
   console.info(obj);
   // ...
 }
-// ...
+  // ...
           printObj('abc'); // abc
 ```
 
@@ -173,7 +173,7 @@ type I = (value: string) => void
 function foo(fn: I) {
   fn('abc');
 }
-// ...
+  // ...
   foo((value: string) => {
     console.info(value);
     // ...
@@ -242,7 +242,7 @@ class TestMenu {
     return null;
   }
 }
-// ...
+  // ...
   let t: TestMenu = new TestMenu();
   console.info(t.createController()!.value);
 ```
@@ -1242,7 +1242,6 @@ type OptionsFlags = Record<keyof C, string>
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit'
-
 function ThrowError(error: BusinessError) {
   throw error;
 }
