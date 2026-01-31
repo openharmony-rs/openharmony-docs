@@ -14,7 +14,7 @@
 
 > **注意**
 > 
-> 自动切换镜头功能由系统自动完成输入设备切换，会话配置和参数接续。如系统发现镜头切换时，两颗镜头的变焦范围不一致，则会通过AutoDeviceSwitchStatus中的isDeviceCapabilityChanged字段告知应用，但仍需要应用自己处理UX的变更（如变焦范围的调整，需要重新通过getZoomRatioRange接口获取数据并更新UX），因此复杂场景，如美颜相机等推荐适应[适配不同折叠状态的摄像头变更](./camera-foldable-display.md)。
+> 自动切换镜头功能由系统自动完成输入设备切换，会话配置和参数接续。如系统发现镜头切换时，两颗镜头的变焦范围不一致，则会通过AutoDeviceSwitchStatus中的isDeviceCapabilityChanged字段告知应用，但仍需要应用自己处理UX的变更（如变焦范围的调整，需要重新通过getZoomRatioRange接口获取数据并更新UX），因此复杂场景，如美颜相机等推荐使用[适配不同折叠状态的摄像头变更](./camera-foldable-display.md)。
 
 详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
