@@ -4,7 +4,7 @@
 
 ### 文件导入
 
-在ArkTS-Sta中使用`import`函数导入ArkTS-Dyn模块的对象。
+在ArkTS-Sta中使用`import`导入ArkTS-Dyn模块的函数和类。
 
 ```typescript
 // file1.ets ArkTS-Dyn
@@ -23,7 +23,7 @@ import { foo, A } from "./file1";
 
 ### 类实例化
 
-在ArkTS-Sta中使用从ArkTS-Dyn中导入的类，并用new来创建该类的实例。
+ 在ArkTS-Sta中使用从ArkTS-Dyn中导入的类，并用new来创建该类的实例。
 
 ```typescript
 // file1.ets ArkTS-Dyn
@@ -147,7 +147,7 @@ c.foo(); // Output: D.foo
 
 ### 参数传递
 
-可以将ArkTS-Sta的对象直接作为参数传入到`import`来的ArkTS-Dyn函数。
+可以将ArkTS-Sta的类实例直接传递到通过`import`导入的ArkTS-Dyn函数。
 
 ```typescript
 // file1.ets ArkTS-Dyn
