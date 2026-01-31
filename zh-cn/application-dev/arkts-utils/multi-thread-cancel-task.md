@@ -16,7 +16,7 @@
    // sendable.ets
    @Sendable
    export class SendableTest {
-     // 存储任务ID。
+     // 存储任务ID
      private taskId: number = 0;
    
      constructor(id: number) {
@@ -42,7 +42,7 @@
    
    @Concurrent
    function cancel(send: SendableTest) {
-     // 在多线程中通过任务ID取消任务。
+     // 在多线程中通过任务ID取消任务
      taskpool.cancel(send.getTaskId());
      console.info('cancel task finished');
    }
