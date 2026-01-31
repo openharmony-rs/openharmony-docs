@@ -188,8 +188,6 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
->
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
@@ -917,7 +915,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误码说明参见[webSocket错误码](errorcode-net-webSocket.md)。多次调用该接口时，避免监听同一端口。
+> 多次调用该接口时，避免监听同一端口。
 
 **需要权限**: ohos.permission.INTERNET
 
