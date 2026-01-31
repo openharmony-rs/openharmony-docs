@@ -20,289 +20,6 @@
 import { netFirewall } from '@kit.NetworkKit';
 ```
 
-
-## netFirewall.getNetFirewallPolicy
-
-getNetFirewallPolicy(userId: number): Promise\<NetFirewallPolicy>
-
-查询防火墙状态。使用Promise异步回调。
-
-**需要权限**：ohos.permission.GET_NET_FIREWALL
-
-**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
-
-**参数：**
-
-| 参数名   | 类型                   | 必填 | 说明                                           |
-| -------- | ---------------------- | ---- | ---------------------------------------------- |
-| userId   | number                 | 是   | 系统中的多用户用户ID，只能是存在的用户ID。   |
-
-**返回值：**
-
-| 类型                                              | 说明                                  |
-| ------------------------------------------------- | ------------------------------------- |
-| Promise\<[NetFirewallPolicy](#netfirewallpolicy)> | 以Promise形式返回当前用户防火墙策略。 |
-
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
-
-| 错误码ID | 错误信息                                            |
-| -------  | ----------------------------------------------------|
-| 201      | Permission denied.                                  |
-| 401      | Parameter error.                                    |
-| 2100001  | Invalid parameter value.                            |
-| 2100002  | Operation failed. Cannot connect to service.        |
-| 2100003  | System internal error.                              |
-| 29400000 | The specified user does not exist.                  |
-
-**示例：**
-
-```ts
-import { netFirewall } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolicy) => {
-  console.info('firewall policy: ', JSON.stringify(result));
-}, (reason: BusinessError) => {
-  console.error('get firewall policy failed: ', JSON.stringify(reason));
-});
-```
-
-
-## netFirewall.updateNetFirewallRule
-
-updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
-
-更新防火墙规则。使用Promise异步回调。
-
-**需要权限**：ohos.permission.MANAGE_NET_FIREWALL
-
-**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
-
-**参数：**
-
-| 参数名  | 类型                                   | 必填 | 说明                             |
-| ------- | -------------------------------------- | ---- | -------------------------------- |
-| rule    | [NetFirewallRule](#netfirewallrule)    | 是   | 防火墙规则。                     |
-
-**返回值：**
-
-| 类型                 | 说明                                                                |
-| -------------------  | ------------------------------------------------------------------- |
-| Promise\<void>       | Promise对象。无返回结果的Promise对象。                                |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
-
-| 错误码ID | 错误信息                                                                        |
-| -------  | ------------------------------------------------------------------------------- |
-| 201      | Permission denied.                                                              |
-| 401      | Parameter error.                                                                |
-| 2100001  | Invalid parameter value.                                                        |
-| 2100002  | Operation failed. Cannot connect to service.                                    |
-| 2100003  | System internal error.                                                          |
-| 29400000 | The specified user does not exist.                                              |
-| 29400002 | The number of IP address rules in the firewall rule exceeds the maximum.        |
-| 29400003 | The number of port rules in the firewall rule exceeds the maximum.              |
-| 29400004 | The number of domain rules in the firewall rule exceeds the maximum.            |
-| 29400005 | The number of domain rules exceeds the maximum.                                 |
-| 29400006 | The specified rule does not exist.                                              |
-| 29400007 | The dns rule is duplication.                                                    |
-  
-**示例：**
-
-```ts
-import { netFirewall } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let ipRuleUpd: netFirewall.NetFirewallRule = {
-  id: 1,
-  name: "rule1",
-  description: "rule1 description update",
-  direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
-  action:netFirewall.FirewallRuleAction.RULE_DENY,
-  type: netFirewall.NetFirewallRuleType.RULE_IP,
-  isEnabled: false,
-  appUid: 20001,
-  localIps: [
-    {
-      family: 1,
-      type: 1,
-      address: "10.10.1.1",
-      mask: 32
-    },{
-      family: 1,
-      type: 2,
-      startIp: "10.20.1.1",
-      endIp: "10.20.1.10"
-    }],
-  userId: 100
-};
-netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
-  console.info('update firewall rule success.');
-}, (reason: BusinessError) => {
-  console.error('update firewall rule failed: ', JSON.stringify(reason));
-});
-```
- 
-## netFirewall.removeNetFirewallRule
-
-removeNetFirewallRule(userId: number, ruleId: number): Promise\<void>
-
-删除防火墙规则。使用Promise异步回调。
-
-**需要权限**：ohos.permission.MANAGE_NET_FIREWALL
-
-**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
-
-**参数：**
-
-| 参数名   | 类型                             | 必填 | 说明                                         |
-| -------- | ----------------------------------- | ---- | -------------------------------------------- |
-| userId   | number                              | 是   | 系统中的多用户用户ID，只能是存在的用户ID。     |
-| ruleId   | number                              | 是   | 防火墙规则ID。                               |
-
-**返回值：**
-
-| 类型                | 说明                                                                 |
-| ------------------- | ---------------------------------------------------------------------|
-| Promise\<void>      | Promise对象。无返回结果的Promise对象。                                 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
-
-| 错误码ID | 错误信息                                                                        |
-| -------  | ------------------------------------------------------------------------------- |
-| 201      | Permission denied.                                                              |
-| 401      | Parameter error.                                                                |
-| 2100001  | Invalid parameter value.                                                        |
-| 2100002  | Operation failed. Cannot connect to service.                                    |
-| 2100003  | System internal error.                                                          |
-| 29400000 | The specified user does not exist.                                              |
-| 29400006 | The specified rule does not exist.                                              |
-  
-**示例：**
-
-```ts
-import { netFirewall } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-netFirewall.removeNetFirewallRule(100, 1).then(() => {
-  console.info("delete firewall rule success.");
-}).catch((error : BusinessError) => {
-  console.error("delete firewall rule failed: " + JSON.stringify(error));
-});
-```
-   
-## netFirewall.getNetFirewallRules
-
-getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<FirewallRulePage>
-
-按userId获取防火墙规则，需要指定分页查询参数。使用Promise异步回调。
-
-**需要权限**：ohos.permission.GET_NET_FIREWALL
-
-**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
-
-**参数：**
-
-| 参数名          | 类型                          | 必填 | 说明                                         |
-| --------------- | ----------------------------- | ---- | -------------------------------------------- |
-| userId          | number                        | 是   | 系统中的多用户用户ID，只能是存在的用户ID。     |
-| requestParam    | [RequestParam](#requestparam) | 是   | 分页查询参数，其中orderField字段仅支持根据防火墙规则名排序。                               |
-
-**返回值：**
-
-| 类型                                            | 说明                                     |
-| ----------------------------------------------- | ---------------------------------------- |
-| Promise\<[FirewallRulePage](#firewallrulepage)> | 以Promise形式返回防火墙分页规则列表。    |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
-
-| 错误码ID | 错误信息                                                                        |
-| -------  | --------------------------------------------------------------------------------|
-| 201      | Permission denied.                                                              |
-| 401      | Parameter error.                                                                |
-| 2100001  | Invalid parameter value.                                                        |
-| 2100002  | Operation failed. Cannot connect to service.                                    |
-| 2100003  | System internal error.                                                          |
-| 29400000 | The specified user does not exist.                                              |
-  
-**示例：**
-
-```ts
-import { netFirewall } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let ruleParam: netFirewall.RequestParam = {
-  page: 1,
-  pageSize: 10,
-  orderField: netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME,
-  orderType: netFirewall.NetFirewallOrderType.ORDER_ASC
-};
-netFirewall.getNetFirewallRules(100, ruleParam).then((result: netFirewall.FirewallRulePage) => {
-  console.info("result:", JSON.stringify(result));
-}, (error: BusinessError) => {
-  console.error("get firewall rules failed: " + JSON.stringify(error));
-});
-```
-
-## netFirewall.getNetFirewallRule
-
-getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
-
-通过userId和ruleId获取指定的防火墙规则。使用Promise异步回调。
-
-**需要权限**：ohos.permission.GET_NET_FIREWALL
-
-**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明                                         |
-| -------- | ------------------------- | ---- | -------------------------------------------- |
-| userId   | number                    | 是   | 系统中的多用户用户ID，只能是存在的用户ID。 |
-| ruleId   | number                    | 是   | 防火墙规则ID。                               |
-
-**返回值：**
-
-| 类型                                            | 说明                                     |
-| ----------------------------------------------- | ---------------------------------------- |
-| Promise\<[NetFirewallRule](#netfirewallrule)>   | 以Promise形式返回防火墙规则。            |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
-
-| 错误码ID | 错误信息                                                                        |
-| -------  | ------------------------------------------------------------------------------- |
-| 201      | Permission denied.                                                              |
-| 401      | Parameter error.                                                                |
-| 2100001  | Invalid parameter value.                                                        |
-| 2100002  | Operation failed. Cannot connect to service.                                    |
-| 2100003  | System internal error.                                                          |
-| 29400000 | The specified user does not exist.                                              |
-| 29400006 | The specified rule does not exist.                                              |
-  
-**示例：**
-
-```ts
-import { netFirewall } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) => {
-  console.info("result:", JSON.stringify(rule));
-}).catch((error : BusinessError) => {
-  console.error(" get firewall rules failed: " + JSON.stringify(error));
-});
-```
-
 ## netFirewall.setNetFirewallPolicy
 
 setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
@@ -358,6 +75,55 @@ netFirewall.setNetFirewallPolicy(100, policy).then(() => {
   console.info("set firewall policy success.");
 }).catch((error : BusinessError) => {
   console.error("set firewall policy failed: " + JSON.stringify(error));
+});
+```
+
+## netFirewall.getNetFirewallPolicy
+
+getNetFirewallPolicy(userId: number): Promise\<NetFirewallPolicy>
+
+查询防火墙状态。使用Promise异步回调。
+
+**需要权限**：ohos.permission.GET_NET_FIREWALL
+
+**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                           |
+| -------- | ---------------------- | ---- | ---------------------------------------------- |
+| userId   | number                 | 是   | 系统中的多用户用户ID，只能是存在的用户ID。   |
+
+**返回值：**
+
+| 类型                                              | 说明                                  |
+| ------------------------------------------------- | ------------------------------------- |
+| Promise\<[NetFirewallPolicy](#netfirewallpolicy)> | 以Promise形式返回当前用户防火墙策略。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息                                            |
+| -------  | ----------------------------------------------------|
+| 201      | Permission denied.                                  |
+| 401      | Parameter error.                                    |
+| 2100001  | Invalid parameter value.                            |
+| 2100002  | Operation failed. Cannot connect to service.        |
+| 2100003  | System internal error.                              |
+| 29400000 | The specified user does not exist.                  |
+
+**示例：**
+
+```ts
+import { netFirewall } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolicy) => {
+  console.info('firewall policy: ', JSON.stringify(result));
+}, (reason: BusinessError) => {
+  console.error('get firewall policy failed: ', JSON.stringify(reason));
 });
 ```
 
@@ -521,6 +287,238 @@ netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
   console.info('rule Id: ', result);
 }, (reason: BusinessError) => {
   console.error('add firewall rule failed: ', JSON.stringify(reason));
+});
+```
+
+## netFirewall.removeNetFirewallRule
+
+removeNetFirewallRule(userId: number, ruleId: number): Promise\<void>
+
+删除防火墙规则。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_NET_FIREWALL
+
+**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                         |
+| -------- | ----------------------------------- | ---- | -------------------------------------------- |
+| userId   | number                              | 是   | 系统中的多用户用户ID，只能是存在的用户ID。     |
+| ruleId   | number                              | 是   | 防火墙规则ID。                               |
+
+**返回值：**
+
+| 类型                | 说明                                                                 |
+| ------------------- | ---------------------------------------------------------------------|
+| Promise\<void>      | Promise对象。无返回结果的Promise对象。                                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息                                                                        |
+| -------  | ------------------------------------------------------------------------------- |
+| 201      | Permission denied.                                                              |
+| 401      | Parameter error.                                                                |
+| 2100001  | Invalid parameter value.                                                        |
+| 2100002  | Operation failed. Cannot connect to service.                                    |
+| 2100003  | System internal error.                                                          |
+| 29400000 | The specified user does not exist.                                              |
+| 29400006 | The specified rule does not exist.                                              |
+  
+**示例：**
+
+```ts
+import { netFirewall } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+netFirewall.removeNetFirewallRule(100, 1).then(() => {
+  console.info("delete firewall rule success.");
+}).catch((error : BusinessError) => {
+  console.error("delete firewall rule failed: " + JSON.stringify(error));
+});
+```
+   
+## netFirewall.updateNetFirewallRule
+
+updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
+
+更新防火墙规则。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_NET_FIREWALL
+
+**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
+
+**参数：**
+
+| 参数名  | 类型                                   | 必填 | 说明                             |
+| ------- | -------------------------------------- | ---- | -------------------------------- |
+| rule    | [NetFirewallRule](#netfirewallrule)    | 是   | 防火墙规则。                     |
+
+**返回值：**
+
+| 类型                 | 说明                                                                |
+| -------------------  | ------------------------------------------------------------------- |
+| Promise\<void>       | Promise对象。无返回结果的Promise对象。                                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息                                                                        |
+| -------  | ------------------------------------------------------------------------------- |
+| 201      | Permission denied.                                                              |
+| 401      | Parameter error.                                                                |
+| 2100001  | Invalid parameter value.                                                        |
+| 2100002  | Operation failed. Cannot connect to service.                                    |
+| 2100003  | System internal error.                                                          |
+| 29400000 | The specified user does not exist.                                              |
+| 29400002 | The number of IP address rules in the firewall rule exceeds the maximum.        |
+| 29400003 | The number of port rules in the firewall rule exceeds the maximum.              |
+| 29400004 | The number of domain rules in the firewall rule exceeds the maximum.            |
+| 29400005 | The number of domain rules exceeds the maximum.                                 |
+| 29400006 | The specified rule does not exist.                                              |
+| 29400007 | The dns rule is duplication.                                                    |
+  
+**示例：**
+
+```ts
+import { netFirewall } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ipRuleUpd: netFirewall.NetFirewallRule = {
+  id: 1,
+  name: "rule1",
+  description: "rule1 description update",
+  direction: netFirewall.NetFirewallRuleDirection.RULE_IN,
+  action:netFirewall.FirewallRuleAction.RULE_DENY,
+  type: netFirewall.NetFirewallRuleType.RULE_IP,
+  isEnabled: false,
+  appUid: 20001,
+  localIps: [
+    {
+      family: 1,
+      type: 1,
+      address: "10.10.1.1",
+      mask: 32
+    },{
+      family: 1,
+      type: 2,
+      startIp: "10.20.1.1",
+      endIp: "10.20.1.10"
+    }],
+  userId: 100
+};
+netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
+  console.info('update firewall rule success.');
+}, (reason: BusinessError) => {
+  console.error('update firewall rule failed: ', JSON.stringify(reason));
+});
+```
+ 
+## netFirewall.getNetFirewallRules
+
+getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<FirewallRulePage>
+
+按userId获取防火墙规则，需要指定分页查询参数。使用Promise异步回调。
+
+**需要权限**：ohos.permission.GET_NET_FIREWALL
+
+**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
+
+**参数：**
+
+| 参数名          | 类型                          | 必填 | 说明                                         |
+| --------------- | ----------------------------- | ---- | -------------------------------------------- |
+| userId          | number                        | 是   | 系统中的多用户用户ID，只能是存在的用户ID。     |
+| requestParam    | [RequestParam](#requestparam) | 是   | 分页查询参数，其中orderField字段仅支持根据防火墙规则名排序。                               |
+
+**返回值：**
+
+| 类型                                            | 说明                                     |
+| ----------------------------------------------- | ---------------------------------------- |
+| Promise\<[FirewallRulePage](#firewallrulepage)> | 以Promise形式返回防火墙分页规则列表。    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息                                                                        |
+| -------  | --------------------------------------------------------------------------------|
+| 201      | Permission denied.                                                              |
+| 401      | Parameter error.                                                                |
+| 2100001  | Invalid parameter value.                                                        |
+| 2100002  | Operation failed. Cannot connect to service.                                    |
+| 2100003  | System internal error.                                                          |
+| 29400000 | The specified user does not exist.                                              |
+  
+**示例：**
+
+```ts
+import { netFirewall } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ruleParam: netFirewall.RequestParam = {
+  page: 1,
+  pageSize: 10,
+  orderField: netFirewall.NetFirewallOrderField.ORDER_BY_RULE_NAME,
+  orderType: netFirewall.NetFirewallOrderType.ORDER_ASC
+};
+netFirewall.getNetFirewallRules(100, ruleParam).then((result: netFirewall.FirewallRulePage) => {
+  console.info("result:", JSON.stringify(result));
+}, (error: BusinessError) => {
+  console.error("get firewall rules failed: " + JSON.stringify(error));
+});
+```
+
+## netFirewall.getNetFirewallRule
+
+getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
+
+通过userId和ruleId获取指定的防火墙规则。使用Promise异步回调。
+
+**需要权限**：ohos.permission.GET_NET_FIREWALL
+
+**系统能力**：SystemCapability.Communication.NetManager.NetFirewall
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                         |
+| -------- | ------------------------- | ---- | -------------------------------------------- |
+| userId   | number                    | 是   | 系统中的多用户用户ID，只能是存在的用户ID。 |
+| ruleId   | number                    | 是   | 防火墙规则ID。                               |
+
+**返回值：**
+
+| 类型                                            | 说明                                     |
+| ----------------------------------------------- | ---------------------------------------- |
+| Promise\<[NetFirewallRule](#netfirewallrule)>   | 以Promise形式返回防火墙规则。            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+
+| 错误码ID | 错误信息                                                                        |
+| -------  | ------------------------------------------------------------------------------- |
+| 201      | Permission denied.                                                              |
+| 401      | Parameter error.                                                                |
+| 2100001  | Invalid parameter value.                                                        |
+| 2100002  | Operation failed. Cannot connect to service.                                    |
+| 2100003  | System internal error.                                                          |
+| 29400000 | The specified user does not exist.                                              |
+| 29400006 | The specified rule does not exist.                                              |
+  
+**示例：**
+
+```ts
+import { netFirewall } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) => {
+  console.info("result:", JSON.stringify(rule));
+}).catch((error : BusinessError) => {
+  console.error(" get firewall rules failed: " + JSON.stringify(error));
 });
 ```
 
