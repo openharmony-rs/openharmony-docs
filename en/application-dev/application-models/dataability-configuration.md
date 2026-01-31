@@ -30,6 +30,7 @@ Example URIs:
 - Local device scenario: dataability:///_com.domainname.dataability.persondata_/_person_/_1_
 
 > **NOTE**<br>
+>
 > In the case of local-device communication, **device_id** is empty, and therefore, there are three slashes (/) after **dataability:**.
 
 

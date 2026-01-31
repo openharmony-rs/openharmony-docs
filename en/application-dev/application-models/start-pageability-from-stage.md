@@ -15,6 +15,7 @@ This topic describes how the two application components of the [stage model](abi
   A UIAbility starts a PageAbility in the same way as it starts another UIAbility.
 
 > **NOTE**
+>
 > In the FA model, **abilityName** consists of **bundleName** and **AbilityName**. For details, see the code snippet below.
 
 ```ts

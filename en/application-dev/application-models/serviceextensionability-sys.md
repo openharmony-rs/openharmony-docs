@@ -43,8 +43,9 @@ The [ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-
   This callback is triggered when a ServiceExtensionAbility is created for the first time. You can perform initialization operations, for example, registering a common event listener.
 
   > **NOTE**
+  >
   > If a ServiceExtensionAbility has been created, starting it again does not trigger the **onCreate()** callback.
-
+  
 - **onRequest**
 
   This callback is triggered when another component calls the [startServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) method to start a ServiceExtensionAbility. After being started, the ServiceExtensionAbility runs in the background. This callback is triggered each time the **startServiceExtensionAbility()** method is called.
@@ -207,6 +208,7 @@ To manually create a ServiceExtensionAbility in the DevEco Studio project, perfo
 A system application uses the [startServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability) method to start a background service. The [onRequest()](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onrequest) callback is invoked, through which the background service receives the [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) object passed by the caller. After the background service is started, its lifecycle is independent of the client. In other words, even if the client is destroyed, the background service remains alive. Therefore, the background service must be stopped by calling [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextterminateself) when its work is complete. Alternatively, another component can call [stopServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md#stopserviceextensionability) to stop the background service.
 
 > **NOTE**
+>
 > **startServiceExtensionAbility()**, **stopServiceExtensionAbility()**, and **terminateSelf()** provided by the **ServiceExtensionContext** class are system APIs and cannot be called by third-party applications.
 
 1. Start a new [ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md) in a system application. For details about how to obtain the context, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
@@ -310,10 +312,10 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
     import { common } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     const TAG: string = '[Page_ServiceExtensionAbility]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     @Entry
     @Component
     struct Page_ServiceExtensionAbility {
@@ -348,6 +350,7 @@ A system application uses the [startServiceExtensionAbility()](../reference/apis
     ```
 
 > **NOTE**
+>
 > Background services remain alive in the background for a long time. To minimize resource usage, destroy a background service in time in either of the following ways when it finishes the requested task:  
 >
 > - The background service calls the [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md#serviceextensioncontextterminateself) method to automatically stop itself.
@@ -440,10 +443,10 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
   import { common } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   const TAG: string = '[Page_ServiceExtensionAbility]';
   const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   let connectionId: number;
   @Entry
   @Component
@@ -527,7 +530,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
   import { rpc } from '@kit.IPCKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   const TAG: string = '[Page_CollaborateAbility]';
   const DOMAIN_NUMBER: number = 0xFF00;
   const REQUEST_CODE = 1;
@@ -541,7 +544,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
       let option = new rpc.MessageOption();
       let data = new rpc.MessageSequence();
       let reply = new rpc.MessageSequence();
-
+  
       data.writeInt(99);
       // You can send data to the target application for corresponding operations.
       // @param code Indicates the service request code sent by the client.
@@ -549,7 +552,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
       // @param reply Indicates the response message object sent by the remote service.
       // @param options Specifies whether the operation is synchronous or asynchronous.
       // @return Returns {@code true} if the operation is successful; returns {@code false} otherwise.
-
+  
       remote.sendMessageRequest(REQUEST_CODE, data, reply, option).then((ret: rpc.RequestResult) => {
         let errCode = reply.readInt(); // Receive the information (100) returned by the target device if the connection is successful.
         let msg: number = 0;
