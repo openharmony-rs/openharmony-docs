@@ -6,15 +6,13 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Starting from API version 15, ArkUI supports gamepads as input devices. When a user operates a gamepad, the system recognizes its input actions and reports them as key events or focus axis events. You can receive and handle these events by registering the corresponding callbacks, enabling gamepad interaction logic.
+Since API version 15, ArkUI supports gamepads as input devices. When a user operates a gamepad, the system recognizes its input actions and reports them as key events or focus axis events. You can receive and handle these events by registering the corresponding callbacks, enabling gamepad interaction logic.
 
 Gamepads from different brands and models vary in hardware design and signal output. The reported key codes and axis values may not be uniform. When handling interaction logic, consider compatibility adaptation.
 
-The figure below illustrates the common mapping of keys and joysticks on a typical gamepad.
+The figure below illustrates the common mapping of keys and joysticks on a typical gamepad. Keys are usually mapped to discrete key values (arrow keys can be mapped to axis values sometimes), and joysticks are mapped to axis values. [KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode) provides supported key values for gamepads, and [AxisModel](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axismodel15) provides supported axis values.
 
 ![gamepad_map](figures/gamepad_map.PNG)
-
-Since API version 23, more axis types can be processed. For details about the supported axis types, see [AxisModel](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axismodel15).
 
 ## Handling Key Input
 
