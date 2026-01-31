@@ -310,9 +310,9 @@ struct MyApp {
   }
 }
 ```
-点击Button，可将`textBuilder`动态切换为`buttonBuilder`。点击`buttonBuilder`，`this.message`会自动加`B`，如下图所示：
+点击`Click to change`按钮，可将`textBuilder`动态切换为`buttonBuilder`，`this.message`将自动加`B`，界面会显示`initB`按钮。点击`initB`按钮，`buttonBuilder`中的`p.value`将自动加`b`，如下图所示：
 
 ![arkts-mutableBuilder-dynamic-demo2](figures/mutableBuilder-dynamic-demo2.gif)
 
-点击Button将`textBuilder`动态切换为`buttonBuilder`时，@Monitor会监听到全局@Builder的变化，并打印日志`@Builder change. is buttonBuilder: true`。
+点击`Click to change`按钮将`textBuilder`动态切换为`buttonBuilder`时，@Monitor将监听到全局@Builder的变化，并打印日志`@Builder changed. is buttonBuilder: true`。
 
