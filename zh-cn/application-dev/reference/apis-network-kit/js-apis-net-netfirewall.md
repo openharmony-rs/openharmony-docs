@@ -24,7 +24,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
-设置防火墙状态。使用Promise异步回调。
+设置系统用户ID的防火墙策略，包含防火墙开关状态，默认的出站入站行为（允许/阻止）。支持不同的系统用户ID配置不同的防火墙策略。使用Promise异步回调。
 
 > **说明：**
 >
@@ -38,7 +38,7 @@ setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
 | 参数名 | 类型                                    | 必填 | 说明                                         |
 | ------ | ----------------------------------------| ---- | -------------------------------------------- |
-| userId | number                                  | 是   | 系统中的多用户用户ID，只能是存在的用户ID。 |
+| userId | number                                  | 是   | 系统用户ID，只能是存在的用户ID。 |
 | policy | [NetFirewallPolicy](#netfirewallpolicy) | 是   | 设置的防火墙策略。                           |
 
 **返回值：**
@@ -49,7 +49,7 @@ setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+ 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------  | ----------------------------------------------------|
@@ -131,7 +131,7 @@ netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolic
 
 addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
-添加防火墙规则。使用Promise异步回调。
+ 添加系统用户ID的防火墙规则，目前支持的规则类型有：IP、Domain、DNS。使用Promise异步回调。
 
 > **说明**
 > 
@@ -148,7 +148,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 >（1）当addNetFirewallRule的入参rule.type配置为RULE_IP时：<br>
 >    &emsp;&nbsp;◦  若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；<br>
 >    &emsp;&nbsp;◦  若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。<br>
->（2）当adNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。<br>
+>（2）当addNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。<br>
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
 
@@ -168,7 +168,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[网络连接管理错误码](errorcode-net-connection.md)。
+ 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[网络连接管理错误码](errorcode-net-connection.md)和[防火墙错误码](errorcode-net-netfirewall.md)。
 
 | 错误码ID | 错误信息                                                                 |
 | -------  | ------------------------------------------------------------------------ |
@@ -530,21 +530,21 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 | 名称        | 类型                                                        |只读| 可选|说明                                                           |
 | ------------|-------------------------------------------------------------|----|---|-----------------------------------------------------------  |
-| userId      | number                                                      | 否 |否 |系统中的多用户用户ID，只能是存在的用户ID。                   |
+| userId      | number                                                      | 否 |否 |系统用户ID，只能是存在的用户ID。                   |
 | name        | string                                                      | 否 |否 |规则名称，必填，最多128个字符。                                |
-| direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | 否 |否 |规则方向，入站或出站。                                         |
-| action      | [FirewallRuleAction](#firewallruleaction)                   | 否 |否 |行为。                                                         |
-| type        | [NetFirewallRuleType](#netfirewallruletype)                 | 否 |否 |规则类型。                                                     |
+| direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | 否 |否 |规则方向，包含入站和出站。                                         |
+| action      | [FirewallRuleAction](#firewallruleaction)                   | 否 |否 |行为，包含允许和阻止。                                                         |
+| type        | [NetFirewallRuleType](#netfirewallruletype)                 | 否 |否 |规则类型，包含IP、Domain、DNS                                                    |
 | isEnabled   | boolean                                                     | 否 |否 |是否启用规则。true表示启用，false表示不启用。                                                     |
-| id          | number                                                      | 否 |是| 规则ID。                                                       |
+| id          | number                                                      | 否 |是| 防火墙规则的ID。                                                       |
 | description | string                                                      | 否 |是 |规则描述，可选，最多256个字符。                                |
 | appUid      | number                                                      | 否 |是 |应用程序或服务UID。                                            |
-| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |本地IP地址：ruleType=RULE_IP有效，否则忽略，最多10个。         |
-| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |远端IP地址：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。 |
-| protocol    | number                                                      | 否 | 是|协议，TCP：6，UDP：17，当ruleType=RULE_IP时有效，否则将被忽略。  |
-| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
-| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口：当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
-| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表：当ruleType=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
+| localIps    | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |本地IP地址。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。         |
+| remoteIps   | Array\<[NetFirewallIpParams](#netfirewallipparams)>         | 否 |是 |远端IP地址。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。 |
+| protocol    | number                                                      | 否 | 是|协议，包含TCP：6，UDP：17。当ruleType=RULE_IP时有效。  |
+| localPorts  | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 | 是|本地端口。当ruleType=RULE_IP时有效，否则将被忽略，最多10个。   |
+| remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当ruleType=RULE_IP时有效，否则将被忽略。最多10个。   |
+| domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当ruleType=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当ruleType=RULE_DNS时有效，否则将被忽略。当ruleType=RULE_DNS时，该字段不能为空。                 |
 
 ## RequestParam
@@ -557,7 +557,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 |------------|--------------------------------------------------|------|-----|----------------------- |
 | page       | number                                           | 否   |否 |页码，值范围：[1, 1000]。    |
 | pageSize   | number                                           | 否  |否 |页面大小，值范围：[1, 50]。  |
-| orderField | [NetFirewallOrderField](#netfirewallorderfield)  | 否   |否 |排序字段。                  |
+| orderField | [NetFirewallOrderField](#netfirewallorderfield)  | 否   |否 |排序方法。 该字段仅支持根据防火墙规则名排序。                 |
 | orderType  | [NetFirewallOrderType](#netfirewallordertype)    | 否   |否 |排序顺序。                  |
 
 
@@ -576,7 +576,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallPolicy
 
-防火墙状态。
+防火墙策略，包含防火墙开关状态，默认的出站入站行为（允许/阻止）。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
@@ -589,7 +589,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallRuleDirection
 
-枚举，防火墙规则的拦截方向。
+枚举类型，防火墙规则行为，包含允许网络连接、阻止网络连接。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
@@ -608,11 +608,11 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | 名称           | 值   | 说明   |
 |----------------|------|------- |
 | RULE_ALLOW     | 0    | 允许。 |
-| RULE_DENY      | 1    | 阻断。 |
+| RULE_DENY      | 1    | 阻止。 |
 
 ## NetFirewallRuleType
 
-枚举，防火墙规则类型。
+枚举类型，防火墙规则类型，包含IP、Domain、DNS。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
@@ -624,7 +624,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallOrderField
 
-枚举，防火墙规则排序类型。
+枚举类型，防火墙规则排序方法。
 > **说明**
 > 
 > [getNetFirewallRules](#netfirewallgetnetfirewallrules)接口，仅支持ORDER_BY_RULE_NAME字段。<br>
@@ -638,7 +638,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallOrderType
 
-枚举，防火墙规则排序类型，按名称或时间顺序排序。
+枚举类型，防火墙规则排序顺序，包含升序或降序。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
@@ -649,6 +649,8 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 
 ## NetFirewallIpParams
+
+防火墙规则的IP参数，IP类型包括IPv4、IPv6，支持单个IP或IP段。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
@@ -674,7 +676,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallDomainParams
 
-防火墙规则域信息。
+防火墙规则域名参数，目前不支持中文域名。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
