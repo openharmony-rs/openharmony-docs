@@ -59,7 +59,6 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果。
 >
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
@@ -119,8 +118,6 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 根据URL地址，建立一个WebSocket连接，使用callback异步回调。
 
 > **说明：**
->
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
 >
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
