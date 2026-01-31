@@ -2076,7 +2076,7 @@ export default class EntryAbility extends UIAbility {
       let SystemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        //以下两个属性从API Version8开始支持
+        // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -7286,9 +7286,9 @@ export default class EntryAbility extends UIAbility {
       let windowClass = windowStage.getMainWindowSync();
       // 调用minimize, 使主窗最小化
       windowClass.minimize();
-      //设置延时函数延时5秒钟后对主窗进行恢复。
+      // 设置延时函数延时5秒钟后对主窗进行恢复。
       setTimeout(()=>{
-        //调用restore()函数对主窗进行恢复。
+        // 调用restore()函数对主窗进行恢复。
         let promise = windowClass.restore();
         promise.then(() => {
           console.info('Succeeded in restoring the window.');
@@ -7505,6 +7505,7 @@ try {
 setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;;
 
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+
 当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
 
 该接口只在多个线程操作同一个窗口时可能返回错误码1300002。窗口被销毁场景下错误码返回401。
@@ -8560,7 +8561,7 @@ struct Index {
         .onClick(() => {
           try {
             windowClass = this.windowStage.getMainWindowSync();
-            //  true:窗口置顶，false:取消窗口置顶
+            // true:窗口置顶，false:取消窗口置顶
             let isWindowTopmost: boolean = true;
             let promiseTopmost = windowClass.setWindowTopmost(isWindowTopmost);
             promiseTopmost.then(() => {
@@ -10271,7 +10272,7 @@ export default class EntryAbility extends UIAbility {
       let SystemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        //以下两个属性从API Version8开始支持
+        // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -11290,7 +11291,7 @@ export default class EntryAbility extends UIAbility {
       let SystemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        //以下两个属性从API Version8开始支持
+        // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
@@ -11355,7 +11356,7 @@ export default class EntryAbility extends UIAbility {
       let SystemBarProperties: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
         navigationBarColor: '#00ff00',
-        //以下两个属性从API Version8开始支持
+        // 以下两个属性从API Version8开始支持
         statusBarContentColor: '#ffffff',
         navigationBarContentColor: '#00ffff'
       };
