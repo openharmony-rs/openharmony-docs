@@ -57,6 +57,8 @@ Obtains all system shortcut keys. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
 
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+
 **Return value**
 
 | Type        |  Description                                      |
@@ -102,6 +104,8 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 Subscribes to application shortcut key change events based on the specified options. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
@@ -162,6 +166,8 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 Unsubscribes from application shortcut key change events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MultimodalInput.Input.InputConsumer
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
