@@ -32,5 +32,4 @@
 - ExtensionAbility for Notification Subscription<!--notification-subscriber-extension-->
   - [ExtensionAbility Overview for Notification Subscription](notification-subscriber-extension-ability.md)
   - [Developing the ExtensionAbility for Notification Subscription](notification-subscriber-extension-ability-development-steps.md)
-<!--RP2-->
-<!--RP2End-->
+<!--RP2--><!--RP2End-->
