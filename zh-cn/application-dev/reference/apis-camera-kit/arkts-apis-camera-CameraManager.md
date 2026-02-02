@@ -925,7 +925,7 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 
 ## getCameraDevice<sup>18+</sup>
 
-getCameraDevice(position:CameraPosition, type: CameraType): CameraDevice
+getCameraDevice(position: CameraPosition, type: CameraType): CameraDevice
 
 根据相机位置和相机类型查询对应相机。
 
