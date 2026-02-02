@@ -1231,7 +1231,7 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 Obtains all events in the current calendar. This API uses an asynchronous callback to return the result.
 
-For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime**. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**. If a query field is empty, it will not be returned.
+For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime**. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**. If a query field does not exist, it will not be returned.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
