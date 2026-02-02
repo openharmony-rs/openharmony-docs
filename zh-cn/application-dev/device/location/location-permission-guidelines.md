@@ -8,7 +8,7 @@
 
 ## 场景概述
 
-应用在使用[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)系统能力前，需要检查是否已经获取用户授权访问设备位置信息。如未获得授权，可以向用户申请需要的位置权限。
+应用在使用Location Kit系统能力前，需要检查是否已经获取用户授权访问设备位置信息。如未获得授权，可以向用户申请需要的位置权限。
 
 系统提供的定位权限有：
 
@@ -37,3 +37,4 @@ Location Kit接口对权限的要求参见：[Location Kit API参考](../../refe
 
 长时任务申请可参考：[长时任务介绍](../../task-management/continuous-task.md)<!--Del-->，[长时任务开发示例](../../performance/reasonable-running-backgroundTask.md#长时任务)<!--DelEnd-->。
 
+<!--RP1--><!--RP1End-->
