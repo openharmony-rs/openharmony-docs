@@ -534,3 +534,4 @@ The Ethernet configuration fails. The possible causes are as follows:
 1. Check whether the NIC is enabled.
 2. Check whether the input NIC name is correct.
 3. Check whether the configured parameters are correct.
+<!--no_check-->
