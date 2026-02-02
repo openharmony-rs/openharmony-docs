@@ -82,6 +82,7 @@ The following example shows how to use **ContentModifier** to replace the defaul
  @Entry
  @Component
  struct Index {
+   private resmg: resourceManager.ResourceManager | undefined = this.getUIContext().getHostContext()?.resourceManager
    build() {
      Row() {
        Column() {

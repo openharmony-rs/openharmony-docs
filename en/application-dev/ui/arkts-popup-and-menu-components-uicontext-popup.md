@@ -159,7 +159,7 @@ When calling **openPopup**, you can customize the menu style using [PopupCommonO
 
 ## Updating the Popup Style
 
-To update the popup style, use the [updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18) API, supported since API version 18. You can update the style fully or incrementally. However, certain attributes, including **showInSubWindow** of [PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18), **focusable**, **onStateChange**, **onWillDismiss**, and **transition**, cannot be updated.
+To update the popup style, use the [updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18) API, supported since API version 18. You can update the style fully or incrementally. However, certain properties, including **showInSubWindow** of [PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18), **focusable**, **onStateChange**, **onWillDismiss**, and **transition**, cannot be updated.
 
   <!-- @[update_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
 

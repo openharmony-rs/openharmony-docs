@@ -28,7 +28,7 @@ Starting from API version 12, the [aboutToDisappear](../reference/apis-arkui/ark
 - For root nodes obtained via **OH_ArkUI_GetNodeHandleFromNapiValue** (from **BuilderNode** or **ComponentContent**), call [disposenode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) to decrease the reference count increased by **OH_ArkUI_GetNodeHandleFromNapiValue**.
 - If **dispose** is not called, the frontend BuilderNode object will be reclaimed during [garbage collection (GC)](../arkts-utils/gc-introduction.md), and the reference to the backend root node will be released. For debugging, use the [hidumper](../dfx/hidumper.md) command to trigger GC or [query heap memory](../dfx/hidumper.md#querying-vm-heap-memory) to analyze reference relationships.
 
-**Sample Code**
+**Example**
 
 In the following example, the root node indicates the root node of BuilderNode, and **aboutToDisappear** refers to the callback in the custom component (**BuilderNodePage**) built with BuilderNode.
 

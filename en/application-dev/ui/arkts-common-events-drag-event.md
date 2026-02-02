@@ -21,7 +21,7 @@ Unified drag and drop refers to a data transfer interaction triggered by a mouse
 
 Drag operations support both gesture-based and mouse-based interactions, which affect when callback events are triggered.
 
-### Gesture-based Drag
+### ​Gesture-based Drag
 
 When dragging is initiated by a gesture, ArkUI first verifies that the component supports dragging. For components that are draggable by default ([Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md), [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md), [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)), ArkUI checks whether the [draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable) attribute is set to **true**<!--Del--> (the initial value of this attribute can be configured for these components through [system resources](../quick-start/resource-categories-and-access.md#system-resources))<!--DelEnd-->. For other components, ArkUI checks whether the [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) callback is configured. If the requirement is satisfied, dragging starts after the user has long pressed the component for 500 ms, and a drag preview is displayed after the user has long pressed the component for 800 ms. When combining drag operations with menus controlled by the **isShow** property in [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11), avoid adding an 800 ms delay before showing the menu after a user action, as this may lead to unexpected behavior.
 
@@ -29,7 +29,7 @@ Below you can see the drag process initiated by a gesture (finger or stylus).
 
 ![en-us_image_0000001562820825](figures/en-us_image_0000001562820825.png)
 
-### Mouse-based Drag
+### ​Mouse-based Drag
 
 When a mouse device is used as the pointer, dragging starts as soon as the pointer moves more than 1 vp while the left mouse button is pressed on a draggable component. All other behaviors are identical to gesture-based drag. For details, see [Gesture-Based Drag](#gesture-based-drag).
 
@@ -90,7 +90,7 @@ You can configure opacity, rounded corners, shadow, and blur effects for the dra
 
 **Constraints**:
 
-* For a container component, if the internal content exceeds the bounds of the component due to **position**, **offset**, or other settings, the component snapshot does not capture the excess content. To show the excess content, expand the container scope or use a custom container.
+* For a container component, if the internal content exceeds the bounds of the component due to **position**, **offset**, or other settings, the component snapshot does not capture the excess content. To show the excess content, you can expand the container scope or use a custom container.
 * Regardless of whether you use a custom builder or rely on the default snapshot mechanism, the snapshot process does not support transformation APIs, including [scale](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale) and [rotate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#rotate).
 
 ## Drag and Drop Implementation
@@ -573,6 +573,21 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    @State previewData: DragItemInfo[] = [];
    @State isSelectedGrid: boolean[] = [];
    // ...
+   build() {
+     NavDestination() {
+       Column({ space: 5 }) {
+         // ...
+         Grid() {
+           // ...
+             GridItem() {
+               Column()
+                 .backgroundColor(Color.Blue)
+                 .width(50)
+                 .height(50)
+                 .opacity(1.0)
+                 .id('grid' + idx)
+             }
+             // ...
              .onClick(() => {
                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                if (this.isSelectedGrid[idx]) {
@@ -589,6 +604,13 @@ The following uses **Grid** as an example to describe the basic procedure for mu
                  // ...
                }
              })
+             // ...
+         }
+         // ...
+       }.width('100%').margin({ top: 5 }).height('100%')
+     }
+     // ...
+   }
    ```
 
 3. Set the multi-select display effects.
@@ -609,10 +631,32 @@ The following uses **Grid** as an example to describe the basic procedure for mu
     }
     
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .stateStyles({
                 normal: this.normalStyles,
                 selected: this.selectStyles
               })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
 4. Adapt the number badge.
@@ -624,6 +668,21 @@ The following uses **Grid** as an example to describe the basic procedure for mu
     ``` TypeScript
     @State numberBadge: number = 0;
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .onClick(() => {
                 this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                 if (this.isSelectedGrid[idx]) {
@@ -637,6 +696,13 @@ The following uses **Grid** as an example to describe the basic procedure for mu
               })
               // Set the numberBadge parameter in dragPreviewOptions for the number badge in multi-select scenarios.
               .dragPreviewOptions({ numberBadge: this.numberBadge })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
 **Sample Code**
@@ -777,7 +843,8 @@ When you need to create custom drop animations, you can disable the default syst
        })
      }
    ```
-   
+    
+
 3. Trigger the custom drop animation.
 
    Configure the **onDrop** callback to receive the drag data. Execute your custom drop animation using the [executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18) API. Set [useCustomDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) to **true** to disable the default system animation.
@@ -804,7 +871,7 @@ When you need to create custom drop animations, you can disable the default syst
      dragEvent.executeDropAnimation(this.customDropAnimation)
    })
    ```
-   
+    
 
 **Sample Code**
 
@@ -950,7 +1017,7 @@ When dealing with a large number of items or large data volumes during drag and 
      }
    }
    ```
-   
+    
 2. Add data incrementally when items are selected.
 
    When dealing with large data volumes, you are advised to add data records incrementally using [addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord) as items are selected. This avoids significant performance overhead from processing all data at once during the drag operation.
@@ -1207,6 +1274,8 @@ struct GridEts {
 }
 ```
 
+![patchDataProcess](figures/patchDataProcess.gif)
+
 
 ## Spring Loading (Hover Detection) Support
 Spring loading, also known as drag hover detection or spring-loaded navigation, is an enhanced drag and drop capability that allows users to automatically trigger view transitions by hovering over targets during drag operations. This feature significantly improves operational efficiency and is recommended for implementation in all page transition scenarios.
@@ -1228,7 +1297,7 @@ To implement this feature, register the **onDragSpringLoading** API on a compone
 
 The spring loading process follows three distinct phases: hover detection -> callback notification -> completion. If the user continues dragging before completion, spring loading is automatically canceled, triggering a cancellation notification to the application. However, if dragging is resumed during the hover detection phase before the spring loading state is entered, no cancellation notification is sent.
 
-![drag spring loading pharse](figures/drag_springloading-02.png)
+![drag spring loading phase](figures/drag_springloading-02.png)
 
 Applications receive state updates through callbacks, enabling dynamic UI adjustments.
 
@@ -1252,9 +1321,9 @@ You can customize spring loading detection parameters to dynamically determine w
 1. Trigger parameter customization
 
   The [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20) API includes an optional **configuration** parameter, which allows you to customize settings such as detection duration, trigger intervals, and number of triggers. This enables personalized definition of spring loading trigger conditions. In most cases, however, the system's default configuration is sufficient, and no modifications are required.
-
+  
   The **configuration** parameter must be set before detection begins. Once the system initiates the spring loading detection process, it will no longer read updates from this parameter. Yet, you can still dynamically adjust configurations during detection using the **updateConfiguration** API in the **context** object provided using the callback. These dynamic updates apply only to the current trigger and do not affect the base configurations set through the **configuration** parameter.
-
+  
   It is recommended that you use either the default configuration or fixed parameters through the **configuration** parameter in **onDragSpringLoading**. In most cases, dynamically modifying detection parameters during spring loading is unnecessary. However, this functionality can be useful if you need to provide different user feedback based on the type of dragged data.
 
   >**NOTE**
@@ -1295,11 +1364,11 @@ You can customize spring loading detection parameters to dynamically determine w
   If you no longer need a component to respond to spring loading, you can explicitly disable the feature by passing **null** to **onDragSpringLoading**:
 
   <!-- @[springLoading_onDragSpringLoading_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-
+  
   ``` TypeScript
   .onDragSpringLoading(null)
   ```
-
+  
 
 ### Example
 
@@ -1310,7 +1379,7 @@ The following example demonstrates how to implement the device search functional
   For simplicity, create two core components: a draggable text component and a button component. The button responds to spring loading to activate a view implemented using **bindSheet**, containing a text box for receiving dragged text and a text component for displaying search results.
 
   <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-
+  
   ``` TypeScript
   build() {
     Column() {
@@ -1344,7 +1413,7 @@ The following example demonstrates how to implement the device search functional
   Implement the UI for the sheet.
 
   <!-- @[springLoading_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-
+  
   ``` TypeScript
   @Builder
   SheetBuilder() {
@@ -1371,14 +1440,14 @@ The following example demonstrates how to implement the device search functional
     }.width('100%').height('100%')
   }
   ```
-
+  
 
 3. Add the enter and leave response to the button.
 
   To provide visual feedback, add **onDragEnter** and **onDragLeave** handlers to the target component. When text is dragged over the component, the background color changes to prompt the user.
 
   <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-
+  
   ``` TypeScript
   .onDragEnter(() => {
     // Change the button color when dragged text enters the area.
@@ -1389,14 +1458,14 @@ The following example demonstrates how to implement the device search functional
     this.buttonBackgroundColor = this.normalColor
   })
   ```
-
+  
 
 4. Implement spring loading response.
 
   Implement a spring loading handler to process all states.
 
   <!-- @[springLoading_handleSpringLoading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
-
+  
   ``` TypeScript
   handleSpringLoading(context: SpringLoadingContext) {
     // Check the drag data type during the BEGIN state.
@@ -1580,5 +1649,7 @@ export struct SpringLoadingPage {
 }
 ```
 
+
+![drag spring loading sample gif](figures/spring-loading-record.gif)
 
 <!--RP1--><!--RP1End-->

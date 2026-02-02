@@ -415,7 +415,7 @@ You can customize the component style by setting various style attributes.
     build() {
       Column() {
         Image(this.pixelMap)
-          .backgroundColor(Color.Blue)
+          .backgroundColor('Color.Blue')
           .width(150)
           .height(150)
           .onClick(() => {
