@@ -26,7 +26,7 @@
 - 将需要释放的自定义组件从父节点上移除，排除父节点对自定义组件生命周期的影响。
 - 自定义组件由[BuilderNode](./arkts-user-defined-arktsNode-builderNode.md)创建时，调用[dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12)接口，立即释放前端BuilderNode对象对于后端节点的强引用。
 - 对于使用OH_ArkUI_GetNodeHandleFromNapiValue获取BuilderNode或ComponentContent对象的root节点，
-调用[disposenode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)减少OH_ArkUI_GetNodeHandleFromNapiValue增加的引用计数。
+调用[disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)减少OH_ArkUI_GetNodeHandleFromNapiValue增加的引用计数。
 - 未调用dispose时，当前端的BuilderNode对象在[GC](../arkts-utils/gc-introduction.md)中被回收会释放对后端根节点的引用。调试阶段可使用[hidumper](../dfx/hidumper.md)指令触发GC或[查询堆内存](../dfx/hidumper.md#查询虚拟机堆内存)来分析引用关系。
 
 **示例代码**
@@ -292,6 +292,7 @@ export struct pageThreeTmp {
 **示例代码**
 
 如下示例中，将BuilderNode前端对象作为参数传递给了自定义组件，构造了前后端循环引用的场景。
+
 下文中，[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)表示BuilderNode中构建的自定义组件（即TestComponent）析构时的回调。
 
 - 不调用dispose接口的情况（点击示例中的"Destroy"按钮），由于前后端循环引用，导致自定义组件无法析构，体现为[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)回调未触发。
