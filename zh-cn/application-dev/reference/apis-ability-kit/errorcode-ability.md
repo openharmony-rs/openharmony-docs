@@ -667,15 +667,17 @@ App clone or multi-instance is not supported.
 **可能原因**
 
 调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，如果目标应用不支持应用多开，则返回该错误码。
+
 <!--Del-->
-调用[getRunningMultiAppInfo](./js-apis-inner-application-applicationContext.md#applicationcontextgetrunningmultiappinfo12)查询不支持应用多开的应用多开信息，则返回该错误码。
+调用getRunningMultiAppInfo查询不支持应用多开的应用多开信息，则返回该错误码。
 <!--DelEnd-->
 
 **处理步骤**
 
 调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，确保目标应用支持应用多开，或在app.json5配置文件中配置[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签开启应用分身功能。
+
 <!--Del-->
-调用[getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12)时确保查询的应用支持应用多开。
+调用getRunningMultiAppInfo时确保查询的应用支持应用多开。
 <!--DelEnd-->
 
 ## 16000073 传入的appCloneIndex是一个无效值
