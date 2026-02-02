@@ -242,7 +242,7 @@ import { Sample } from './Sample';
 export function PageTwoBuilder() {
   PageTwo()
 }
-@Entry
+
 @ComponentV2
 struct PageTwo {
   // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中的数据），并且和prop关联
