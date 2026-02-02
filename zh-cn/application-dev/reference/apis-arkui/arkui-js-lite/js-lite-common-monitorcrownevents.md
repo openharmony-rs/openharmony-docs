@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供为当前页面设置旋转表冠事件监听器的能力，支持注册页面级的旋转表冠事件监听器。
+本模块提供为当前页面设置旋转表冠事件监听器的能力，支持注册页面级的旋转表冠事件监听器。仅支持配备旋转表冠的设备。
 
 > **说明：**
 >
@@ -34,7 +34,7 @@ setMonitorForCrownEvents(handler: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| handler | Function | 是 | 旋转表冠事件发生后执行该回调。回调格式为(event)=>{ return false/true; }。<br/>返回true时，旋转表冠事件不再分发给获焦的组件。<br/>返回false时，旋转表冠事件会继续分发给获焦组件。<br/>可通过入参获取旋转表冠事件信息，事件信息请参见**表1 CrownEvent对象属性列表**。 |
+| handler | Function | 是 | 旋转表冠事件发生后执行该回调。回调格式为(event)=>{ return false/true; }。<br/>返回true时，旋转表冠事件不再分发给获焦的组件。<br/>返回false时，旋转表冠事件会继续分发给获焦组件。当回调的返回值异常时，例如返回值为undefined或无返回值，默认取值为false。<br/>可通过入参获取旋转表冠事件信息，事件信息请参见**表1 CrownEvent对象属性列表**。 |
 
 
 **表1** CrownEvent对象属性列表
@@ -42,8 +42,8 @@ setMonitorForCrownEvents(handler: Function): void
 | 名称                   | 类型       | 只读    |  可选   |  说明                                 |
 | --------------------- | -------- | ------- |--------- |-------------------------------------- |
 | timestamp             | number   |  否     | 否    |时间戳。                                  |
-| angularVelocity       | number   |  否     | 否    |旋转角速度，表示每秒转的角度。<br/>单位：度/s      |
-| degree                | number   |  否     | 否    |相对旋转角度。<br/>单位：度。<br/>取值范围：[-360, 360]     |
+| angularVelocity       | number   |  否     | 否    |旋转角速度，表示每秒转的角度。<br/>逆时针旋转表冠时旋转角速度为正数，顺时针旋转表冠时旋转角速度为负数。<br/>单位：度/s      |
+| degree                | number   |  否     | 否    |相对旋转角度。<br/>逆时针旋转表冠时相对旋转角度为正数，顺时针旋转表冠时相对旋转角度为负数。<br/>单位：度。<br/>取值范围：[-360, 360]     |
 
 
 ## clearMonitorForCrownEvents
