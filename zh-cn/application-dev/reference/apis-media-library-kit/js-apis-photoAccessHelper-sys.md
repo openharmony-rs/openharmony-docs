@@ -3811,6 +3811,63 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+### isMediaDataReady<sup>24+</sup>
+isMediaDataReady(mediaDataKey: string): Promise&lt;boolean&gt;
+
+判断指定的媒体数据是否已经准备完成。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| mediaDataKey | string | 是   | 查询的媒体数据类型。<br>当前支持配置的取值为"date_added_year"，表示查询资产的添加时间（年月日）数据是否准备完成。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示媒体数据准备完成；返回false表示媒体数据未准备完成。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails, unsupported media data type. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('isMediaDataReady demo');
+
+  try {
+    let ready: boolean = await phAccessHelper.isMediaDataReady('date_added_year');
+    if (ready) {
+      console.info('date_added_year media data is ready.');
+    } else {
+      console.info('date_added_year media data is not ready.');
+    }
+  } catch (err) {
+    console.error(`isMediaDataReady failed: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
@@ -11582,6 +11639,9 @@ async function example(context: Context) {
 | COMPOSITE_DISPLAY_STATUS<sup>22+</sup> | 'composite_display_status' | 复合图资产显示状态。**系统接口**：此接口为系统接口。 |
 | VIDEO_MODE<sup>22+</sup>  | 'video_mode' | 视频文件的log模式。**系统接口**：此接口为系统接口。 |
 | EDIT_DATA_EXIST<sup>22+</sup>  | 'edit_data_exist' | 资产的编辑数据已存在。**系统接口**：此接口为系统接口。 |
+| DATE_ADDED_YEAR<sup>24+</sup>  | 'date_added_year' | 资产添加时间的年份。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| DATE_ADDED_MONTH<sup>24+</sup> | 'date_added_month'| 资产添加时间的月份。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| DATE_ADDED_DAY<sup>24+</sup>   | 'date_added_day'  | 资产添加时间的日期。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumKeys
 
