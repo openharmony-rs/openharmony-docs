@@ -118,6 +118,10 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 
 **系统能力**： SystemCapability.Resourceschedule.BackgroundProcessManager
 
+**ArkTS-Dyn起始版本**：17
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名      | 类型      | 必填      | 说明      |
@@ -166,6 +170,10 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 **需要权限**： ohos.permission.BACKGROUND_MANAGER_POWER_SAVE_MODE
 
 **系统能力**： SystemCapability.Resourceschedule.BackgroundProcessManager
+
+**ArkTS-Dyn起始版本**：17
+
+**ArkTS-Sta起始版本**：22
 
 **参数**：
 
@@ -221,6 +229,10 @@ try {
 能效模式。
 
 **系统能力**： SystemCapability.Resourceschedule.BackgroundProcessManager
+
+**ArkTS-Dyn起始版本**：17
+
+**ArkTS-Sta起始版本**：22
 
 | 名称 | 值 | 说明 |
 |-----|----|-------|
