@@ -744,7 +744,7 @@ export class WaterFlowDataSource implements IDataSource {
     })
   }
 
-  //通知控制器数据批量修改
+  // 通知控制器数据批量修改
   notifyDatasetChange(operations: DataOperation[]): void {
     this.listeners.forEach(listener => {
       listener.onDatasetChange(operations);
@@ -1057,7 +1057,7 @@ struct WaterFlowDemo {
 ### 示例3（使用分组）
 该示例展示了分组的初始化以及splice、push、update、values、length等接口的不同效果。
 
-如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滚动组件)。
+如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 
@@ -2003,16 +2003,16 @@ struct WaterFlowContentSizeDemo {
       // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
         .onClick(() => {
-            // Scroller未绑定组件时会抛异常，需要加上try catch保护
-          	try {
-              // 通过调用contentSize函数获取内容尺寸的宽度值
-              this.contentWidth = this.scroller.contentSize().width;
-              // 通过调用contentSize函数获取内容尺寸的高度值
-              this.contentHeight = this.scroller.contentSize().height;
-            } catch (error) {
-              let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
-            }
+          // Scroller未绑定组件时会抛异常，需要加上try catch保护
+          try {
+            // 通过调用contentSize函数获取内容尺寸的宽度值
+            this.contentWidth = this.scroller.contentSize().width;
+            // 通过调用contentSize函数获取内容尺寸的高度值
+            this.contentHeight = this.scroller.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+          }
         }).margin(5)
       // 将获取到的内容尺寸信息通过文本进行呈现
       Text('Width:' + this.contentWidth)
