@@ -10,7 +10,11 @@
 
 > **说明：**
 >
-> 该组件从API Version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
@@ -24,7 +28,8 @@ import { ContentFormCard, FormType } from '@kit.ArkData';
 
 ## ContentFormCard
 
-ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: number, formHeight?: number, handleOnClick?: Function})
+ArkTS-Dyn: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: number, formHeight?: number, handleOnClick?: Function})
+ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: double, formHeight?: double, handleOnClick?: Function})
 
 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。
 
@@ -32,12 +37,16 @@ ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormT
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | 是 | - | 内容卡片数据。 |
-| formType | [FormType](#formtype) | 是 | @Prop | 内容卡片类型，影响内容卡片的大小。 |
-| formWidth | number | 否 | @Prop | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
-| formHeight | number | 否 | @Prop | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
+| formType | [FormType](#formtype) | 是 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 内容卡片类型，影响内容卡片的大小。 |
+| formWidth | ArkTS-Dyn: number <br/>ArkTS-Sta: double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
+| formHeight | ArkTS-Dyn: number <br/>ArkTS-Sta: double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
 | handleOnClick | Function | 否 | - | 点击事件回调函数。 |
 
 ## FormType
@@ -46,6 +55,10 @@ ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormT
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 值 | 说明                |
 |-------------|---|-------------------|
 | TYPE_BIG | 0 | 表示 4 x 4 的尺寸。默认卡片宽度为200，默认高度为200。 |
@@ -53,6 +66,8 @@ ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormT
 | TYPE_SMALL | 2 | 表示 2 x 1 的尺寸。默认卡片宽度为137， 默认高度为83。 |
 
 ## 示例
+
+ArkTS-Dyn示例：
 
 ```ts
 import { uniformDataStruct } from '@kit.ArkData'
@@ -113,3 +128,58 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { State } from '@ohos.arkui.stateManagement'
+import { FormType, ContentFormCard } from '@ohos.data.UdmfComponents';
+import common from '@ohos.app.ability.common';
+import { uniformDataStruct } from '@kit.ArkData';
+import { Entry, Component, State, Column, BusinessError, $r, ColumnOptions, HorizontalAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State contentForms: Array<uniformDataStruct.ContentForm> = new Array<uniformDataStruct.ContentForm>();
+  @State formWidth: double = 200;
+  @State formType: FormType = FormType.TYPE_SMALL;
+
+  aboutToAppear(): void {
+    this.initData();
+  }
+
+  async initData() {
+    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    try {
+      let appIcon = await context.resourceManager.getMediaContent($r('sys.media.ohos_app_icon').id);
+      let thumb2 = await context.resourceManager.getMediaContent($r('app.media.thumb2').id);
+      this.contentForms.push({
+        uniformDataType: 'general.content-form',
+        title: 'Content form title',
+        thumbData: thumb2,
+        description: 'Content form description',
+        appName: 'com.test.demo',
+        appIcon: appIcon
+      })
+    } catch (err) {
+      console.error(`failed getMediaContent.`);
+    }
+  }
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      if (this.contentForms.length > 0) {
+        ContentFormCard({
+          contentFormData: this.contentForms[0],
+          formType: FormType.TYPE_SMALL,
+          formWidth: this.formWidth
+        })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#15000000')
+    .alignItems(HorizontalAlign.Start)
+  }
+}
+```
