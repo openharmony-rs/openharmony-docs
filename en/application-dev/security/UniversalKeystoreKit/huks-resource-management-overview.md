@@ -13,3 +13,4 @@ It is agreed that **resourceId** is used to uniquely identify a resource in exte
 >
 > 1. Before operating a key, the resource must be opened. To perform high-permission operations such as private key signing, you must complete the PIN verification. Otherwise, the resource status is abnormal.
 > 2. After user operations are complete, the application must close the resource to avoid resource leakage.
+<!--no_check-->

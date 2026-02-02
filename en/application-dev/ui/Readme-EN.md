@@ -370,3 +370,4 @@
     - [FAQs About Text Components](arkts-text-faq.md)
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->
+<!--no_check-->

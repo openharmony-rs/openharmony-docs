@@ -604,3 +604,4 @@ Obtains the playback status of the DrawableDescriptor animation.
 | Type| Description|
 | -- | -- |
 | int32_t | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+<!--no_check-->

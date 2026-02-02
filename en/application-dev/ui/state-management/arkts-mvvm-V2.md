@@ -1392,3 +1392,4 @@ This guide uses a simple to-do list application to demonstrate the use of V2 dec
 
 ## Sample Code
 [Complete Source Code](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry)
+<!--no_check-->

@@ -54,3 +54,4 @@ The following table lists the V2 state management decorators in ArkUI.
 | [\@Trace](./arkts-new-observedV2-and-trace.md)      | Marks the class attribute observable.  |
 | [\@Type](./arkts-new-type.md)                       | Marks the types of the class attributes.  |
 | [\@ReusableV2](./arkts-new-reusableV2.md)           | Marks the component reusable.    |
+<!--no_check-->

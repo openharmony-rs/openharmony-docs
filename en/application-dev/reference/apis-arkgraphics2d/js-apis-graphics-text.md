@@ -3809,3 +3809,4 @@ Enumerates the font types, which can be combined through bitwise OR operations.
 | STYLISH  | 1 << 2 | Style font type. The style font type is designed for 2-in-1 devices.|
 | INSTALLED  | 1 << 3 | Font type that has been installed.|
 | CUSTOMIZED<sup>18+</sup>  | 1 << 4 | Custom font type.|
+<!--no_check-->

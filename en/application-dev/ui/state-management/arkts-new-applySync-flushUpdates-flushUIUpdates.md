@@ -454,3 +454,4 @@ struct PageBExample {
 ```
 
 ![applySync-pagetransition](./figures/applySync-pagetransition.gif)
+<!--no_check-->

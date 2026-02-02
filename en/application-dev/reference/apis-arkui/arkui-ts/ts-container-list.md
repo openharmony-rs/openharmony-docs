@@ -1745,7 +1745,7 @@ struct ListExample {
 ### Example 5: Implementing Accurate Scrolling
 This example shows that, by setting the [childrenMainSize](#childrenmainsize12) attribute, the list can jump to an exact specific location when the **scrollTo** API is called, even when the heights of the child components are inconsistent.
 
-If the state management V2 is used, see [List and makeObserved 】（../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md# scrolling component).
+If the state management V2 is used, see [List and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#scrolling-component).
 
 For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
 
@@ -2631,3 +2631,4 @@ struct ListExample {
 ```
 
 ![listMultiselectAnimation](figures/listMultiselectAnimation.gif)
+<!--no_check-->

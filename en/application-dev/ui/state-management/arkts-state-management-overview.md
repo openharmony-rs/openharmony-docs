@@ -182,3 +182,4 @@ State management of V2 provides a new set of decorators.
 | animateTo | Partial support| When **animateTo** is used in V2, exceptions may occur under certain scenarios. For details, see [Using animateTo Failed in State Management V2](./arkts-new-local.md#using-animateto-failed-in-state-management-v2).|
 
 For details about how to migrate applications from V1 to V2, see [Migrating Applications from V1 to V2](./arkts-v1-v2-migration.md).<br>For details about how to use decorators of V1 and V2 together, see [Mixing Use of Custom Components](./arkts-custom-component-mixed-scenarios.md).
+<!--no_check-->

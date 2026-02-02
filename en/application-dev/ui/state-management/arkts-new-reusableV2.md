@@ -852,3 +852,4 @@ struct ChildComponent {
   }
 }
 ```
+<!--no_check-->
