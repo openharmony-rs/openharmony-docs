@@ -12742,14 +12742,14 @@
 						"start_line":236
 					},
 					{
-						"end_line":268,
+						"end_line":269,
 						"name":"create_pinch_gesture",
-						"start_line":261
+						"start_line":262
 					},
 					{
-						"end_line":281,
+						"end_line":282,
 						"name":"create_rotation_gesture",
-						"start_line":274
+						"start_line":275
 					},
 					{
 						"end_line":294,
@@ -12777,7 +12777,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndSwipeGesture.h",
 				"functions":[
 					{
-						"end_line":159,
+						"end_line":160,
 						"name":"long_press_and_swipe_gesture",
 						"start_line":18
 					}
@@ -12787,7 +12787,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndFlickGesture.h",
 				"functions":[
 					{
-						"end_line":162,
+						"end_line":163,
 						"name":"long_press_and_flick_gesture",
 						"start_line":18
 					}
@@ -12797,7 +12797,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/SwipeAndPinchExclusiveGesture.h",
 				"functions":[
 					{
-						"end_line":162,
+						"end_line":163,
 						"name":"swipe_and_pinch_exclusive_gesture",
 						"start_line":18
 					}
@@ -12877,7 +12877,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUINode.h",
 				"functions":[
 					{
-						"end_line":221,
+						"end_line":225,
 						"name":"arkui_node",
 						"start_line":16
 					}
@@ -12887,7 +12887,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIListNode.h",
 				"functions":[
 					{
-						"end_line":79,
+						"end_line":78,
 						"name":"arkui_list_node",
 						"start_line":16
 					}
@@ -12897,7 +12897,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalTextListExample.h",
 				"functions":[
 					{
-						"end_line":133,
+						"end_line":139,
 						"name":"normal_text_list_example",
 						"start_line":16
 					}
@@ -19089,7 +19089,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/common.h",
 				"functions":[
 					{
-						"end_line":186,
+						"end_line":195,
 						"name":"set_common",
 						"start_line":91
 					},
