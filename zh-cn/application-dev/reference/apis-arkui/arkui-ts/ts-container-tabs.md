@@ -1859,7 +1859,7 @@ struct TabsCustomAnimationExample {
 本示例通过onContentWillChange实现了自定义页面手势滑动切换拦截。
 
 ```ts
-//xxx.ets
+// xxx.ets
 @Entry
 @Component
 struct TabsExample {
