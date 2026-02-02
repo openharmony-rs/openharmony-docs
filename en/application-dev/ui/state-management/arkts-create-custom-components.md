@@ -137,7 +137,7 @@ To enable the use of [state management V2](./arkts-state-management-overview.md#
 
 Similar to the [\@Component decorator](#component), the @ComponentV2 decorator decorates custom components with the following specifications:
 
-- In custom components decorated with \@ComponentV2, only new state variable decorators can be used, including [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Once](arkts-new-once.md), [\@Event](arkts-new-event.md), [\@Provider](arkts-new-Provider-and-Consumer.md), and [\@Consumer](arkts-new-Provider-and-Consumer.md).
+- In custom components decorated with \@ComponentV2, only new state variable decorators can be used, including [\@Local](arkts-new-local.md), [\@Param](arkts-new-param.md), [\@Once](arkts-new-once.md), [\@Event](arkts-new-event.md), [\@Provider](arkts-new-provider-and-consumer.md), and [\@Consumer](arkts-new-provider-and-consumer.md).
 - Custom components decorated with \@ComponentV2 do not support existing component capabilities such as [LocalStorage](arkts-localstorage.md).
 - \@ComponentV2 and \@Component cannot be used on the same struct.
 - \@ComponentV2 can use an optional parameter **freezeWhenInactive** of the **boolean** type to implement [component freezing](arkts-custom-components-freezeV2.md).

@@ -76,6 +76,8 @@ Before developing an audio feature, especially before implementing audio data pr
 
 ## Introduction to Audio Streams
 
+ 
+
 An audio stream is an independent audio data processing unit that has a specific audio format and audio usage scenario information. The audio stream can be used in playback and recording scenarios, and supports independent volume adjustment and audio device routing.
 
 The basic audio stream information is defined by [AudioStreamInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiostreaminfo8), which includes the sampling, audio channel, bit width, and encoding information. It describes the basic attributes of audio data and is mandatory for creating an audio playback or recording stream. To enable the audio module to correctly process audio data, the configured basic information must match the transmitted audio data.
@@ -105,13 +107,19 @@ The APIs of the audio module support PCM encoding, including AudioRenderer, Audi
 Be familiar with the following about the audio format:
 
 - The following audio sampling rates are supported: 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200<sup>12+</sup>, 96000, 176400<sup>12+</sup>, and 192000<sup>12+</sup>, in units of Hz. For details, see [AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8).
-  
+
   The sampling rate varies according to the device type.
 
 - Mono and stereo are supported. For details, see [AudioChannel](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiochannel8).
 
 - The following sampling formats are supported: U8 (unsigned 8-bit integer), S16LE (signed 16-bit integer, little endian), S24LE (signed 24-bit integer, little endian), S32LE (signed 32-bit integer, little endian), and F32LE (signed 32-bit floating-point number, little endian). For details, see [AudioSampleFormat](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosampleformat8).
-  
+
   Due to system restrictions, only some devices support the sampling formats S24LE, S32LE, and F32LE.
 
   Little endian means that the most significant byte is stored at the largest memory address and the least significant byte of data is stored at the smallest. This storage mode effectively combines the memory address with the bit weight of the data. Specifically, the largest memory address has a high weight, and the smallest memory address has a low weight.
+
+## Samples
+
+The following samples are provided to help you better understand how to develop Audio Kit:
+
+- [Audio Management (ArkTS, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio)

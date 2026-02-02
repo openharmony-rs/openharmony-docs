@@ -65,8 +65,8 @@ Enumerates data panel types.
 
 | Name| Value| Description|
 | -------| - | ------------ |
-| Line   | - | Line data panel.|
-| Circle | - | Circle data panel.|
+| Line   | 0 | Line data panel.|
+| Circle | 4 | Circle data panel.|
 
 
 ## Attributes
@@ -169,7 +169,7 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<DataPanelConfiguration>](#datapanelconfiguration12) | Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)[\<DataPanelConfiguration>](#datapanelconfiguration12)| Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
 
 
 ## DataPanelShadowOptions<sup>10+</sup>
@@ -226,7 +226,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 | Name | Type   |    Read-Only   |    Optional  |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| values | number[] | No| No| Current values of the data panel.<br>Value range: [0, 9]<br>Values less than 0 are adjusted to **0**.|
+| values | number[] | No| No| Current values of the data panel.<br>The length of the array should be within the range of [0, 9].<br>**NOTE**<br>If the array length is greater than 9, the first nine items are used.|
 | maxValue | number | No| No| Maximum value displayed in the data panel.<br>Default value: **100**<br>**NOTE**<br>If the value is less than or equal to 0, **maxValue** is set to the sum of all items in the **values** array and displayed proportionally.|
 
 ## Example

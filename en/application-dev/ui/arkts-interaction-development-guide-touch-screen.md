@@ -42,7 +42,7 @@ struct PreventBubbling {
   build() {
     RelativeContainer() {
       Column() { // Parent component
-        // The value in the app.string.preventEvent resource file is 'If you click me, the parent will not receive touch events.'
+        // Replace $r('app.string.preventEvent') with the actual resource file. In this example, the value in the resource file is "If you tap me, the parent will not receive touch events."
         Text($r('app.string.preventEvent'))
           .fontColor(Color.White)
           .height('40%')

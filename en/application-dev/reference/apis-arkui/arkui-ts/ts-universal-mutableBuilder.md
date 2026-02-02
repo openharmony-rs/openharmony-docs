@@ -116,4 +116,3 @@ function MyBuilder(value: string, size: number) {
 }
 let builderVar: MutableBuilder<[string, number]> = mutableBuilder(MyBuilder); // Declare builderVar as type MutableBuilder.
 ```
-<!--no_check-->

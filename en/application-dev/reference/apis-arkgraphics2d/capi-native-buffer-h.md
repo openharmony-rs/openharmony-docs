@@ -29,7 +29,7 @@ This file declares the functions for obtaining and using **NativeBuffer**.
 | [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md) | OH_NativeBuffer_Plane | Describes the plane information of an image.|
 | [OH_NativeBuffer_Planes](capi-oh-nativebuffer-oh-nativebuffer-planes.md) | OH_NativeBuffer_Planes | Describes the plane information of images in an **OH_NativeBuffer** instance.|
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) | OH_NativeBuffer | Provides the declaration of an **OH_NativeBuffer** struct.|
-| [OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md) | OHIPCParcel | Provides the OHIPCParcel struct declaration for inter-process communication.|
+| [OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md) | OHIPCParcel | Provides the **OHIPCParcel** struct declaration for inter-process communication.|
 
 ### Enums
 
@@ -57,7 +57,7 @@ This file declares the functions for obtaining and using **NativeBuffer**.
 | [int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)](#oh_nativebuffer_getmetadatavalue) | Obtains the metadata value of an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)](#oh_nativebuffer_mapwaitfence) | Maps the ION memory corresponding to [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space, and permanently blocks the input **fenceFd**.<br>If **OK** is returned, the system closes **fenceFd**. For other return values, you need to close **fenceFd** by yourself.<br> This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parcel)](#oh_nativebuffer_writetoparcel) | Writes an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object to an IPC serialization object.<br>This function is not thread-safe.|
-| [int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** buffer)](#oh_nativebuffer_readfromparcel) | Reads an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object from an IPC serialization object.<br>Creates an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object. When it is no longer used, you need to use this API together with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, memory leakage may occur.<br>This function is not thread-safe.|
+| [int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** buffer)](#oh_nativebuffer_readfromparcel) | Reads an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object from an IPC serialization object.<br>Creates an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object. When it is no longer used, you need to use this API together with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, a memory leak may occur.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSupported)](#oh_nativebuffer_issupported) | Checks whether the system supports the input [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) configuration information.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr, OH_NativeBuffer_Config* config)](#oh_nativebuffer_mapandgetconfig) | Maps the multi-channel ION memory corresponding to the [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space and obtains the [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) corresponding to [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md).<br>This function is not thread-safe.|
 
@@ -495,7 +495,7 @@ This function is not thread-safe.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
-**Since**: 22
+**Since**: 23
 
 **Parameters**
 
@@ -550,7 +550,7 @@ int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** bu
 
 Reads an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object from an IPC serialization object.
 
-Creates an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object. When it is no longer used, you need to use this API together with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, memory leakage may occur.
+Creates an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) object. When it is no longer used, you need to use this API together with [OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference). Otherwise, a memory leak may occur.
 
 This function is not thread-safe.
 
@@ -629,4 +629,3 @@ This function is not thread-safe.
 | Type| Description|
 | -- | -- |
 | int32_t | Returns **NATIVE_ERROR_OK** if the operation is successful.<br>Returns **NATIVE_ERROR_INVALID_ARGUMENTS** if **buffer**, **virAddr**, or **config** is a null pointer.<br>Returns **NATIVE_ERROR_UNKNOWN** if the mapping fails.|
-<!--no_check-->

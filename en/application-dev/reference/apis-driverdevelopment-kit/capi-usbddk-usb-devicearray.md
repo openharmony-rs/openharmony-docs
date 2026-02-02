@@ -16,7 +16,7 @@ Defines the device ID list, which is used to store the device IDs and device qua
 
 **Since**: 18
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 **Header file:** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 
