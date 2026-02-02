@@ -17,19 +17,19 @@ For details about the scenarios and supported algorithm specifications, see [Sig
 
 **Signing**
 
-1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** (also as a key alias) by referring to [certificate management for applications](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22), [open the resource](huks-open-close-resource-ndk.md#opening-resources), and complete PIN authentication.
+1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** and the key alias by calling the [certificate selection API](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) provided by the certificate management system, [open the resource](huks-open-close-resource-ndk.md#opening-resources), and complete the PIN authentication.
 
 2. Specify the plaintext to be signed.
 
 3. Obtain the property parameter [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions), which contains the **properties** and **inData** fields. **inData** indicates the plaintext data, and **properties** indicates the algorithm parameter configuration.
 
-4. Call [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) to initialize a key session, and obtain the session handle.
+4. Call [initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9) to initialize a key session and obtain the session handle.
 
 5. Use [finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9) to finish the key session and obtain a signature.
 
 **Signature verification**
 
-1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** (also as a key alias) by referring to [certificate management for applications](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22), and [open the resource](huks-open-close-resource-ndk.md#opening-resources).
+1. Obtain [keyUri](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certreference22) as **resourceId** and the key alias by calling the [certificate selection API](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22) provided by the certificate management system, and [open the resource](huks-open-close-resource-ndk.md#opening-resources).
 
 2. Obtain the signature to be verified.
 
