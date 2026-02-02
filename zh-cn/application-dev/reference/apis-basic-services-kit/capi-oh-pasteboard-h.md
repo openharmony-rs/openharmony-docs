@@ -525,30 +525,6 @@ bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)
 | -- | -- |
 | bool | 返回剪贴板中是否有数据。返回true表示剪贴板中有数据，返回false表示剪贴板中没有数据。 |
 
-### OH_Pasteboard_HasRemoteData()
-
-```c
-bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
-```
-
-**描述：**
-
-判断剪贴板数据是否在远端设备上。由于数据跨端传输耗时较大，如果剪贴板数据在远端设备上，不建议在UI线程执行检查剪贴板数据中是否包含自定义数据类型，或读取剪贴板数据。
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| bool | 返回指示剪贴板数据是否在远端设备上的结果。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为false。 |
-
 ### OH_Pasteboard_GetData()
 
 ```c

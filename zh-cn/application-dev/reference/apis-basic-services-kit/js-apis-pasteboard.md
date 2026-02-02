@@ -2014,32 +2014,6 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
 });
 ```
 
-### hasRemoteData<sup>24+</sup>
-
-hasRemoteData(): boolean
-
-判断剪贴板数据是否在远端设备上。由于数据跨端传输耗时较大，如果剪贴板数据在远端设备上，不建议在UI线程执行检查剪贴板数据中是否包含自定义数据类型，或读取剪贴板数据。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| boolean | 返回指示剪贴板数据是否在远端设备上的结果。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为false。 |
-
-**示例：**
-
-```ts
-const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-
-let result: boolean = systemPasteboard.hasRemoteData();
-console.info(`Succeeded in checking the remote data. Result: ${result}`);
-
-```
-
 ### hasData<sup>9+</sup>
 
 hasData(callback:  AsyncCallback&lt;boolean&gt;): void
