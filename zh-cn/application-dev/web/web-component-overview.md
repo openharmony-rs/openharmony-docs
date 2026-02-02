@@ -58,7 +58,7 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
   | OpenHarmony 4.0及之前 | M99 |
   | OpenHarmony 4.1-5.1 | M114 |
   | OpenHarmony 6.0 | M132（默认，推荐使用）<br>M114（可选，若应用需切换为此内核，请参考[M114内核在OpenHarmony6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)） |
-  | OpenHarmony 6.0 | M132 |
+  | OpenHarmony 6.1 | M132 |
 
 ## 相关实例
 
