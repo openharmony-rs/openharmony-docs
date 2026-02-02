@@ -28,7 +28,8 @@ import { ContentFormCard, FormType } from '@kit.ArkData';
 
 ## ContentFormCard
 
-ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: double, formHeight?: double, handleOnClick?: Function})
+ArkTS-Dyn: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: number, formHeight?: number, handleOnClick?: Function})
+ArkTS-Sta: ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormType, formWidth?: double, formHeight?: double, handleOnClick?: Function})
 
 内容卡片控件，用于在应用内展示标题、描述、内容图片、应用信息等。
 
@@ -44,8 +45,8 @@ ContentFormCard({contentFormData: uniformDataStruct.ContentForm, formType: FormT
 | -------- | -------- | -------- | -------- | -------- |
 | contentFormData | [uniformDataStruct.ContentForm](js-apis-data-uniformDataStruct.md#contentform14) | 是 | - | 内容卡片数据。 |
 | formType | [FormType](#formtype) | 是 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 内容卡片类型，影响内容卡片的大小。 |
-| formWidth | double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
-| formHeight | double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
+| formWidth | ArkTS-Dyn: number <br/>ArkTS-Sta: double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片宽度，其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
+| formHeight | ArkTS-Dyn: number <br/>ArkTS-Sta: double | 否 | ArkTS-Dyn:@Prop <br/>ArkTS-Sta: @PropRef | 卡片高度，当contentFormData中的title为空字符串时，卡片高度为传入的值，否则其范围在设置的内容卡片类型默认宽度的0.8 ~ 1.2倍之间，当formType为TYPE_SMALL时，其范围在设置的内容卡片类型默认宽度的0.4 ~ 1.2倍之间。 |
 | handleOnClick | Function | 否 | - | 点击事件回调函数。 |
 
 ## FormType
