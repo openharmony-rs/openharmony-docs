@@ -707,7 +707,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。 |
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，默认为0时无限等待。 |
+| timeout | number | 否 | 超时时间（单位：ms），可选参数，默认为0时无限等待，用户按需选择。 |
 
 **返回值：**
 
