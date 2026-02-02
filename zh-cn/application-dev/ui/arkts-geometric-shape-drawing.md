@@ -312,7 +312,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
   
   ``` TypeScript
-  //开启抗锯齿
+  // 开启抗锯齿
   Circle()
     .width(150)
     .height(200)
@@ -326,7 +326,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
   
   ``` TypeScript
-  //关闭抗锯齿
+  // 关闭抗锯齿
   Circle()
     .width(150)
     .height(200)
@@ -555,9 +555,9 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   struct CircleExample {
     build() {
       Column({ space: 10 }) {
-        //绘制一个直径为150的圆
+        // 绘制一个直径为150的圆
         Circle({ width: 150, height: 150 })
-        //绘制一个直径为150、线条为红色虚线的圆环
+        // 绘制一个直径为150、线条为红色虚线的圆环
         Circle()
           .width(150)
           .height(200)
@@ -589,7 +589,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column({ space: 10 }) {
         // ...
-        //绘制一个直径为150的圆
+        // 绘制一个直径为150的圆
         Circle()
           .width(150)
           .height(200)

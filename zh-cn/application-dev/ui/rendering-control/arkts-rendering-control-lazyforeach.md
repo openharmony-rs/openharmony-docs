@@ -1810,7 +1810,7 @@ class ScreenFliceringDataSource extends BasicDataSource {
       this.dataArray.push(`Hello ${i}`);
     }
     // 替换 notifyDataReload
-    this.notifyDatasetChange([{ type: DataOperationType.ADD, index: totalCount - 1, count: batch }]);
+    this.notifyDatasetChange([{ type: DataOperationType.ADD, index: totalCount, count: batch }]);
   }
 }
 
