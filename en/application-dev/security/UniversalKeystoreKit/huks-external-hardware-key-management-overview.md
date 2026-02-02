@@ -15,7 +15,7 @@ This guide describes how to implement identity authentication in scenarios such 
 
 ## Working Principles
 
-The following figure shows the process of calling an API to implement identity authentication.
+The following figure shows the process of calling APIs to implement identity authentication.
 
 ![huks_extension](figures/huks_extension.png)
 
@@ -23,7 +23,7 @@ Before the application initiates identity authentication based on the Ukey, the 
 
 - Design and develop the external key management extension capabilities of the application based on service scenarios.
 
-  The driver HAP must inherit **CryptoExtensionAbility** provided by HUKS and implement the capability APIs. For details, see [CryptoExtensionAbility Extension Capability Overview](huks-extension-ability-support-overview.md).
+  The driver HAP must inherit **CryptoExtensionAbility** provided by HUKS and implement the capability APIs. For details, see [CryptoExtensionAbility Adaptation Development Guide](huks-extension-ability-support-dev.md).
 
   **CryptoExtensionAbility** is a derived class of [ExtensionAbility](../../application-models/extensionability-overview.md) in the stage model. You can customize the behavior of external hardware key management by inheriting **CryptoExtensionAbility** and implementing custom APIs, including calling APIs for opening and closing resources of external hardware key management, implementing PIN authentication for external hardware key management, and calling general APIs of external hardware key management. For details, see [CryptoExtensionAbility Adaptation Development Guide](huks-extension-ability-support-dev.md).
   
@@ -47,10 +47,9 @@ In this way, the applications such as the browser can call the APIs provided by 
 
   4.1: If the resource has been authenticated, that is, the PIN passes the authentication, the application calls the unified HUKS APIs to perform operations such as resource management and signing and signature verification. Example:
 
-  - Open and close handle resources: [Resource Management Overview and Specifications](huks-resource-management-overview.md)
-  - Verify the authenticity of the message content and the message sender: [Signing and Signature Verification Overview and Algorithm Specifications](huks-ukey-signing-signature-verification-overview.md)
+  - [Open and close resources](huks-resource-management-overview.md).
+  - [Verify the authenticity of the message content and the message sender](huks-ukey-signing-signature-verification-overview.md)
   
   In addition, HUKS allows the application to query the Ukey key properties. For details, see [General Query](huks-ukey-general-query-overview.md).
 
   4.2: If the resource has not been authenticated, the application needs to call the certificate management capability to display the PIN authentication dialog box. The user enters the PIN to complete the authentication. After the authentication is complete, the process goes to 4.1. The application calls the unified HUKS APIs to perform the corresponding operations.
-<!--no_check-->
