@@ -12,15 +12,15 @@ In API version 9, the **Navigation** component must be used together with the [N
 
 Key concepts related to routing:
 
-- Routing table: defines the mapping between page names and [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) pages. If the page name passed during redirection is not registered in the routing table, the redirection fails. The system provides two implementation modes: [system routing table](./arkts-navigation-cross-package.md#system-routing-table) and [custom routing table](./arkts-navigation-cross-package.md#custom-routing-table).
+- Routing table: defines the mapping between page names and [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) pages. If the page name passed during navigation is not registered in the routing table, the navigation fails. The system provides [system routing table](./arkts-navigation-cross-package.md#system-routing-table) and [custom routing table](./arkts-navigation-cross-package.md#custom-routing-table) to implement navigation.
 - Navigation stack: **NavDestination** pages are managed in a stack structure. Each **Navigation** has its own navigation stack, which cannot be shared. The navigation stack is controlled by **NavPathStack**. You can obtain the complete navigation stack information through [NavPathStack.getPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getpathstack19).
-- Page transition: **Navigation** provides the page transition animation by default. You can also customize the transition animation.
+- Page transition: **Navigation** provides the page transition animations by default. You can customize the transition animations.
 
 > **NOTE**
 >
-> - **NavPathStack** and **Navigation** must correspond to each other and cannot be reused.
+> - **NavPathStack** and **Navigation** must map to each other and cannot be reused.
 >
-> - **NavPathStack** mainly controls [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) page redirection and deletion. It cannot directly operate the [NavBar (navigation bar)](./arkts-navigation-architecture.md#navbar-navigation-bar). If you want to redirect to the **NavBar** page, you can only clear the navigation stack through [clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10).
+> - **NavPathStack** mainly controls [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) page redirection and deletion. It cannot directly operate the [NavBar (navigation bar)](./arkts-navigation-architecture.md#navbar-navigation-bar). If navigation to the **NavBar** page is required, you can only clear the navigation stack using the [clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10) API.
 >
 > - Avoid relying on lifecycle event listeners to manage the navigation stack. Instead, you can query the navigation stack through [NavPathStack.getPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getpathstack19).
 >
@@ -51,7 +51,7 @@ struct Index {
 
 ### Building a Subpage
 
-Declare the instantiation method for each [NavDestination] (../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md), for example, **PageOneBuilder** in the code. Executing this method creates a custom component of **PageOne**, which is a subpage of **Navigation**.
+Declare the instantiation method for each [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md), for example, **PageOneBuilder** in the code. Executing this method creates a custom component of **PageOne**, which is a subpage of **Navigation**.
 
 <!-- @[NavDestinationPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
 
@@ -79,7 +79,7 @@ export struct PageOne {
 
 ### Configuring a Routing Table
 
-The system provides two route table implementation modes: system routing table and custom routing table. The former is used as an example. Register the instantiation method written on the subpage with its name (customized by you) in the routing table configuration file. The configuration file needs to be created in **entry/src/main/resources/base/profile/router_map.json**.
+The system provides system routing table and custom routing table. The former is used as an example. Register the instantiation method written in the subpage with its name (customized) in the routing table configuration file, which should be created in **entry/src/main/resources/base/profile/router_map.json**.
 
 ``` json
 {
@@ -99,7 +99,7 @@ After creating a routing table, register it with the project by configuring **"r
 
 ### Navigation Stack Acquisition
 
-After the [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) root container, subpages, and routing table are configured, you can call the [NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10) API to switch between pages. As mentioned above, there is only one **NavPathStack** object in a **Navigation** container. To perform routing operations on a subpage, you need to obtain the **NavPathStack** object in either of the following ways:
+After the [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) root container, subpages, and routing table are configured, you can call the [NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10) API to navigate between pages. As mentioned above, there is only one **NavPathStack** object in a **Navigation** container. To perform routing operations on a subpage, you need to obtain the **NavPathStack** object in either of the following ways:
 
  - Method 1: Use [AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage) to store and obtain the object.
 
@@ -146,7 +146,7 @@ After the [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navi
     }
     ```
 
- - Method 2: Obtain the navigation controller in the [NavDestination.onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11) lifecycle callback.
+ - Method 2: Use the [NavDestination.onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11) lifecycle callback to obtain the object.
 
     <!-- @[NavDestinationGetStack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
     
@@ -241,26 +241,26 @@ Since API version 12, the navigation controller can be inherited. You can custom
 **NavPathStack** implements the page return feature through [pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)-related APIs. Below shows the examples:
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
-
+   
    ``` TypeScript
    // Navigate back to the previous page.
    this.pathStack.pop();
    ```
    <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-
+   
    ``` TypeScript
    // Navigate back to the previous pageOne page.
    this.pathStack.popToName('temp4-pageOne');
    ```
 
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) --> 
-
+   
    ``` TypeScript
    // Navigate back to the page at index 0.
    this.pathStack.popToIndex(0);
    ```
    <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    // Navigate back to the root home page (clearing all pages in the stack).
    this.pageStack.clear();
@@ -271,7 +271,7 @@ Since API version 12, the navigation controller can be inherited. You can custom
 **NavPathStack** provides replace-related APIs (such as [replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11), [replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11), and [replaceDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacedestination18)) to implement the page replacement functionality.
 
    <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    // Replace the top page of the stack with pageTwo.
    this.pageStack.replacePath({ name: 'pageTwo', param: 'PageTwo Param' });
@@ -279,7 +279,7 @@ Since API version 12, the navigation controller can be inherited. You can custom
    ```
 
    <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    const DOMAIN = 0x0000;
    // Replacement with an error code: Upon failure, an asynchronous callback is triggered to provide the error code information.
@@ -297,19 +297,19 @@ Since API version 12, the navigation controller can be inherited. You can custom
 **NavPathStack** uses the remove-related APIs (such as [removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11), [removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11), and [removeByNavDestinationId](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebynavdestinationid12)) to delete a specific page from the navigation stack. Below shows the examples:
 
    <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    // Remove all pages whose name is pageTwo from the stack.
    this.pageStack.removeByName('pageTwo');
    ```
    <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    // Remove the page with the specified index.
    this.pageStack.removeByIndexes([1]);
    ```
    <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    // Remove the page with the specified ID.
    this.pageStack.removeByNavDestinationId('1');
@@ -320,13 +320,13 @@ Since API version 12, the navigation controller can be inherited. You can custom
 **NavPathStack** provides move-related APIs (such as [moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10) and [moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)) to move a specific page to the top of the navigation stack. Below shows the examples:
 
    <!-- @[moveToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    // Move the page named pageTwo to the top of the stack.
    this.pageStack.moveToTop('pageTwo');
    ```
    <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    // Move the page at index 1 to the top of the stack.
    this.pageStack.moveIndexToTop(1);
@@ -348,7 +348,7 @@ For details about the sample code for singleton navigation, see [Using NavPathSt
 The [onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11) callback is triggered when a **NavDestination** page is first created, allowing you to obtain parameters associated with that page.
 
    <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
-
+   
    ``` TypeScript
    @Component
    struct Page01 {
@@ -370,7 +370,7 @@ The [onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestinatio
 To receive parameters passed when navigating back, you can use the [onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15) API of the **NavDestination** component.
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    class NavParam {
      desc: string = 'navigation-param'
@@ -399,7 +399,7 @@ To receive parameters passed when navigating back, you can use the [onResult](..
 For other service scenarios, you can proactively call the getter APIs of **NavPathStack** (such as [getAllPathName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10), [getParamByIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10), [getParamByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10), and [getIndexByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)) to obtain parameters from specific pages.
 
    <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    // Obtain all page names in the stack.
    this.pageStack.getAllPathName();
@@ -424,7 +424,7 @@ For other service scenarios, you can proactively call the getter APIs of **NavPa
 Take the **willShow** callback as an example. You can modify the navigation stack in the callback to implement route interception and redirection.
 
    <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-
+   
    ``` TypeScript
    const DOMAIN = 0x0000;
    this.pageStack.setInterception({
@@ -452,7 +452,7 @@ The implementation procedure is as follows:
 
 1. Create a navigation home page using the **Navigation** component and create a navigation controller **NavPathStack** to enable transitions between pages.
 
-2. Place a **List** component inside the **Navigation** component to display the first‑level pages available from the home page.
+2. Place a **List** component inside the **Navigation** component to display the first-level pages available from the home page.
 
 3. Attach an **onClick** event to each item in the **List**. Inside the event handler, call the **pushPathByName** method of the **NavPathStack** controller. When the item is clicked, this method navigates from the current page to the page whose name matches the specified parameter in the routing table.
 

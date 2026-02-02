@@ -29,14 +29,6 @@
 | [OH_AVMetadataBuilderStruct](capi-ohavsession-oh-avmetadatabuilderstruct.md) | OH_AVMetadataBuilder | 会话元数据构造器。构造器用于构造会话元数据。 |
 | [OH_AVMetadataStruct](capi-ohavsession-oh-avmetadatastruct.md) | OH_AVMetadata | 会话元数据。资源设置的avmetadata的实例。 |
 
-### 枚举
-
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMetadata_Result | 元数据操作的错误码。 |
-| [AVMetadata_SkipIntervals](capi-native-avsession-base-h.md#avmetadata_skipintervals) | AVMetadata_SkipIntervals | 表示session支持的快进快退时间间隔。 |
-| [AVMetadata_DisplayTag](capi-native-avsession-base-h.md#avmetadata_displaytag) | AVMetadata_DisplayTag | 应用媒体音源的特殊类型标识。 |
-
 ### 函数
 
 | 名称 | 描述 |
@@ -382,6 +374,7 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* buil
 
 **返回：**
 
+| 类型 | 说明 |
 | -- | -- |
 | [AVMetadata_Result](capi-native-avsession-errors-h.md#avmetadata_result) | AVMETADATA_SUCCESS：函数执行成功。<br>         AVMETADATA_ERROR_INVALID_PARAM：<br>                                       1. 参数builder为nullptr。<br>                                       2. 参数description为nullptr。 |
 

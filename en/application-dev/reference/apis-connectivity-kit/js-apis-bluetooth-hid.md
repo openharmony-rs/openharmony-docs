@@ -533,7 +533,7 @@ Unsubscribes from the events for sending [GET_REPORT](../../connectivity/termino
 
 | **Name**     | Type | **Mandatory**  | Description              |
 | -------- | ----------- | ----- | ------------- |
-| callback | Callback&lt;[GetReportData](#getreportdata23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onGetReport](#ongetreport23). If this parameter is not specified, all callback corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[GetReportData](#getreportdata23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onGetReport](#ongetreport23). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -616,7 +616,7 @@ Unsubscribes from the events for sending **SET_REPORT** transmission requests by
 
 | **Name**     | Type | **Mandatory**  | Description              |
 | -------- | ----------- | ----- | ------------- |
-| callback | Callback&lt;[SetReportData](#setreportdata23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onSetReport](#onsetreport23). If this parameter is not specified, all callback corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[SetReportData](#setreportdata23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onSetReport](#onsetreport23). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -698,7 +698,7 @@ Unsubscribes from the events where an HID host sends data through the interrupt 
 
 | **Name**     | Type | **Mandatory**  | Description              |
 | -------- | ----------- | ----- | ------------- |
-| callback | Callback&lt;[InterruptData](#interruptdata23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onInterruptDataReceived](#oninterruptdatareceived23). If this parameter is not specified, all callback corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[InterruptData](#interruptdata23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onInterruptDataReceived](#oninterruptdatareceived23). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -781,7 +781,7 @@ Unsubscribes from the events for sending [SET_PROTOCOL](../../connectivity/termi
 
 | **Name**     | Type | **Mandatory**  | Description              |
 | -------- | ----------- | ----- | ------------- |
-| callback | Callback&lt;[ProtocolData](#protocoldata23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onSetProtocol](#onsetprotocol23). If this parameter is not specified, all callback corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;[ProtocolData](#protocoldata23)&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onSetProtocol](#onsetprotocol23). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
@@ -864,7 +864,7 @@ Unsubscribes from the events where an HID host disconnects the virtual link from
 
 | **Name**     | Type | **Mandatory**  | Description              |
 | -------- | ----------- | ----- | ------------- |
-| callback | Callback&lt;void&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onVirtualCableUnplug](#onvirtualcableunplug23). If this parameter is not specified, all callback corresponding to the event type are unsubscribed.|
+| callback | Callback&lt;void&gt; | No | Callback to unregister. If this parameter is specified, it must be the same as the callback in [onVirtualCableUnplug](#onvirtualcableunplug23). If this parameter is not specified, all callbacks corresponding to the event type are unsubscribed.|
 
 **Error codes**
 
