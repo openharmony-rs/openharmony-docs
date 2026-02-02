@@ -47,7 +47,7 @@ struct PageServiceAbility {
 ```
 
 
-执行上述代码后，Ability将通过[`startAbility()`](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#startability)方法来启动ServiceAbility。
+执行上述代码后，Ability将通过[`startAbility()`](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilitystartability)方法来启动ServiceAbility。
 
 
 - 如果ServiceAbility尚未运行，则系统会先调用onStart()来初始化ServiceAbility，再回调Service的onCommand()方法来启动ServiceAbility。
