@@ -5944,6 +5944,9 @@
         - [Vulkan模块](reference/native-lib/capi-vulkan.md)
         - [vulkan_ohos.h](reference/native-lib/capi-vulkan-ohos-h.md)
         - [VkSurfaceCreateInfoOHOS](reference/native-lib/capi-vulkan-vksurfacecreateinfoohos.md)
+        - [VkNativeBufferOHOS](reference/native-lib/capi-vulkan-vknativebufferohos.md) 
+        - [VkSwapchainImageCreateInfoOHOS](reference/native-lib/capi-vulkan-vkswapchainimagecreateinfoohos.md)
+        - [VkPhysicalDevicePresentationPropertiesOHOS](reference/native-lib/capi-vulkan-vkphysicaldevicepresentationpropertiesohos.md)
         - [VkNativeBufferUsageOHOS](reference/native-lib/capi-vulkan-vknativebufferusageohos.md)
         - [VkNativeBufferPropertiesOHOS](reference/native-lib/capi-vulkan-vknativebufferpropertiesohos.md)
         - [VkNativeBufferFormatPropertiesOHOS](reference/native-lib/capi-vulkan-vknativebufferformatpropertiesohos.md)
@@ -5951,6 +5954,7 @@
         - [VkMemoryGetNativeBufferInfoOHOS](reference/native-lib/capi-vulkan-vkmemorygetnativebufferinfoohos.md)
         - [VkExternalFormatOHOS](reference/native-lib/capi-vulkan-vkexternalformatohos.md)
         - [NativeWindow](reference/native-lib/capi-vulkan-nativewindow.md)
+        - [OHBufferHandle](reference/native-lib/capi-vulkan-ohbufferhandle.md)
         - [OH_NativeBuffer](reference/native-lib/capi-vulkan-oh-nativebuffer.md)
     - 附录<!--appendixes-->
       - [libc中没有导出的符号列表](reference/native-lib/musl-peculiar-symbol.md)
