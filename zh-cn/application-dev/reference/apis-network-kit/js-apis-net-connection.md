@@ -3200,7 +3200,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
 | host   | string | 是   | 需要解析的主机名。例如："www.example.com"。 |
-| QueryOptions | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型。 |
+| option | [QueryOptions](#queryoptions23) | 否   | 需要查询的IP类型。 |
 
 **返回值：**
 
