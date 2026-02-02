@@ -189,7 +189,7 @@ struct AxisEvent {
 void OnAllAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    //Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
+    // Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     InputEvent_AxisAction action = static_cast<InputEvent_AxisAction>(0);
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;
