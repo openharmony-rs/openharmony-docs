@@ -91,7 +91,9 @@ nodeApi->setAttribute(text, NODE_HEIGHT, &textHeightItem);
     OH_ArkUI_StyledString_PopTextStyle(styledString);
     ```
 ## 添加占位
+
 占位保留指定大小的空白区域，此区域不绘制文字，但参与布局测量，影响文字排版。
+
 行高是文字高度与占位高度中的较大值。
 
 以下示例展示在`Hello`与`World!`中间插入占位。
@@ -148,8 +150,6 @@ OH_ArkUI_StyledString_PopTextStyle(styledString);
 ## 销毁对象
 
 Text组件不对本文涉及的任何对象的生命周期进行管理，需由开发者自行负责。字体引擎接口均配有相应的销毁方法。
-
-上述涉及的字体引擎接口都有对应的销毁方法。
 
 `OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle *style)`：销毁文本样式对象。
 
