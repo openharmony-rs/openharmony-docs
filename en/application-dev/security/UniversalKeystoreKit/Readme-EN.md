@@ -106,4 +106,4 @@
     - [General Query (C/C++)](huks-ukey-general-query-ndk.md)
   - Driver HAP ExtensionAbility Adaptation Guide<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility Extension Capability Overview](huks-extension-ability-support-overview.md)
-    - [CryptoExtensionAbility Adaptation Development Guide](huks-extension-ability-support-dev.md)
+    - [CryptoExtensionAbility Adaptation Development Guide](huks-extension-ability-support-dev.md)<!--RP4--><!--RP4End-->

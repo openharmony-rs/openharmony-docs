@@ -1042,20 +1042,22 @@ observer.off('iccAccountInfoChange');
 ```
 
 
-## observer.onGetSimActiveState<sup>10+</sup>
+## observer.onGetSimActiveState<sup>23+</sup>
 
 onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
 
 SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 **参数：**
 
-|     名称            |         类型      | 只读 | 可选 | 说明                                    |
-| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
-| slotId              | number            | 否   | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| slotId   | number            | 否    | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+|callback  | Callback&lt;boolean&gt;|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
 
@@ -1082,19 +1084,21 @@ let simActiveState: Callback<boolean> = (isSimActive: boolean) => {
 observer.onGetSimActiveState(slotId, simActiveState);
 ```
 
-## observer.offGetSimActiveState<sup>10+</sup>
+## observer.offGetSimActiveState<sup>23+</sup>
 
-offGetSimActiveState\(callback: Callback\<boolean\>\): void
+offGetSimActiveState\(callback?: Callback\<boolean\>\): void
 
 取消SIM卡激活状态变化的监听，使用callback方式作为异步方法。
+
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 **参数：**
 
-|     名称            |         类型      | 只读 | 可选 | 说明                                    |
-| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
-|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+|callback  | Callback&lt;boolean&gt;|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
 

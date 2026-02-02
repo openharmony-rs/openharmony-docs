@@ -3038,6 +3038,7 @@ struct GridExample {
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';

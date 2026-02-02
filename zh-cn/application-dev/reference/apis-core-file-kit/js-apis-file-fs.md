@@ -2997,7 +2997,7 @@ listFile(path: string, options?: ListFileOptions): Promise<string[]>
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | Promise&lt;string[]&gt; | Promise对象。返回文件名数组。 |
+  | Promise&lt;string[]&gt; | Promise对象。返回文件名数组，默认以'utf-8'编码。|
 
 **错误码：**
 
@@ -3044,7 +3044,7 @@ listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string
   | ------ | ------ | ---- | --------------------------- |
   | path | string | 是    | 目录的应用沙箱路径。 |
   | options | [ListFileOptions](#listfileoptions11) | 否    | 文件过滤选项。默认不进行过滤。 |
-  | callback | AsyncCallback&lt;string[]&gt; | 是    | 异步列出文件名数组之后的回调。              |
+  | callback | AsyncCallback&lt;string[]&gt; | 是    | 异步列出文件名数组之后的回调，默认以'utf-8'编码。|
 
 
 **错误码：**
@@ -3101,7 +3101,7 @@ listFileSync(path: string, options?: ListFileOptions): string[]
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | string[] | 返回文件名数组。 |
+  | string[] | 返回文件名数组，默认以'utf-8'编码。 |
 
 **错误码：**
 

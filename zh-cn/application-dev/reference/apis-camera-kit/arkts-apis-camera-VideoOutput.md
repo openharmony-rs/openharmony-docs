@@ -553,12 +553,14 @@ function enableMirror(videoOutput: camera.VideoOutput, mirrorMode: boolean, aVRe
 
 ## getVideoRotation<sup>12+</sup>
 
-getVideoRotation(deviceDegree: number): ImageRotation
+getVideoRotation(deviceDegree?: number): ImageRotation
 
 获取录像旋转角度。
 
 - 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -568,7 +570,7 @@ getVideoRotation(deviceDegree: number): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | 是   | 设备旋转角度，单位度，取值范围0-360。 |
+| deviceDegree | number | 否   | 设备旋转角度，单位度，取值范围0-360。<br> 从API version 23开始，入参deviceDegree为可选参数，当不传入参数时，由系统获取deviceDegree进行录像旋转角度计算。 |
 
 **返回值：**
 
@@ -582,7 +584,6 @@ getVideoRotation(deviceDegree: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
-| 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -601,6 +602,19 @@ async function getVideoRotation(videoOutput: camera.VideoOutput): Promise<camera
   } catch (error) {
     let err = error as BusinessError;
     console.error('Failed to get video rotation: ' + JSON.stringify(err));
+  }
+  return videoRotation;
+}
+
+function testGetVideoRotationWithOutParam(videoOutput: camera.VideoOutput): camera.ImageRotation {
+  let videoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
+  try {
+    videoRotation = videoOutput.getVideoRotation();
+    console.info(`Video rotation is: ${videoRotation}`);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The videoOutput.testGetVideoRotationWithOutParam call failed. error code: ${err.code}`);
   }
   return videoRotation;
 }
@@ -636,50 +650,3 @@ function getDeviceDegree(): Promise<number> {
 }
 ```
 
-## getVideoRotation<sup>23+</sup>
-
-getVideoRotation(): ImageRotation
-
-获取录像旋转角度。
-
-- 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
-- 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-|      类型      | 说明        |
-| -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 返回录像旋转角度。若接口调用失败，返回undefined。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID   | 错误信息                         |
-|---------|------------------------------|
-| 7400201 | Camera service fatal error.  |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function testGetVideoRotation(videoOutput: camera.VideoOutput): camera.ImageRotation {
-  let videoRotation: camera.ImageRotation = camera.ImageRotation.ROTATION_0;
-  try {
-    videoRotation = videoOutput.getVideoRotation();
-    console.info(`Video rotation is: ${videoRotation}`);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The videoOutput.getVideoRotation call failed. error code: ${err.code}`);
-  }
-  return videoRotation;
-}
-```

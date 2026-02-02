@@ -5321,7 +5321,7 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -5391,7 +5391,7 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
 
 **参数：**
 
@@ -9252,8 +9252,9 @@ startMoving(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ets/pages/Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -9262,26 +9263,6 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Blank('160')
-          .color(Color.Blue)
-          .onTouch((event: TouchEvent) => {
-            if (event.type === TouchType.Down) {
-              try {
-                let windowClass: window.Window = window.findWindow("subWindow");
-                if (!windowClass) {
-                  console.error('Failed to find window.');
-                  return;
-                }
-                windowClass.startMoving().then(() => {
-                  console.info('Succeeded in starting moving window.')
-                }).catch((err: BusinessError) => {
-                  console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
-                });
-              } catch (exception) {
-                console.error(`Failed to start moving window. Cause code: ${exception.code}, message: ${exception.message}`);
-              }
-            }
-          })
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
@@ -9366,8 +9347,9 @@ startMoving(offsetX: number, offsetY: number): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ets/pages/Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -9376,26 +9358,6 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Blank('160')
-          .color(Color.Blue)
-          .onTouch((event: TouchEvent) => {
-            if (event.type === TouchType.Down) {
-              try {
-                let windowClass: window.Window = window.findWindow("subWindow");
-                if (!windowClass) {
-                  console.error('Failed to find window.');
-                  return;
-                }
-                windowClass.startMoving(100, 50).then(() => {
-                  console.info('Succeeded in starting moving window.')
-                }).catch((err: BusinessError) => {
-                  console.error(`Failed to start moving. Cause code: ${err.code}, message: ${err.message}`);
-                });
-              } catch (exception) {
-                console.error(`Failed to start moving window. Cause code: ${exception.code}, message: ${exception.message}`);
-              }
-            }
-          })
         Blank('160')
           .color(Color.Red)
           .onTouch((event: TouchEvent) => {
@@ -9828,7 +9790,11 @@ setWindowShadowRadius(radius: number): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 
+
+在OpenHarmony 5.1.0之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+从OpenHarmony 5.1.0开始，该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -9875,7 +9841,7 @@ setWindowCornerRadius(cornerRadius: number): Promise&lt;void&gt;
 
 在<!--RP16-->OpenHarmony 6.0<!--RP16End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP16-->OpenHarmony 6.0<!--RP16End-->开始，该接口在Phone设备、Tablet设备和2in1设备下可正常调用。
+从<!--RP16-->OpenHarmony 6.0<!--RP16End-->开始，该接口在Phone设备、Tablet设备和2in1设备下可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -10687,6 +10653,8 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 窗口方向指窗口所在屏幕的方向，以窗口模块对横竖屏的定义方式表示，窗口的方向分别用0、1、2和3表示竖屏、反向横屏、反向竖屏和横屏四个方向，其对横竖屏的定义与[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)和枚举类[Orientation](arkts-apis-window-e.md#orientation9)中对横竖屏的定义一致，如Orientation设置为LANDSCAPE时，窗口方向为横屏。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

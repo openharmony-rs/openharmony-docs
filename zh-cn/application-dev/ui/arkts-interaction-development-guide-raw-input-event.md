@@ -24,7 +24,7 @@
 
 [支持触控板输入事件](./arkts-interaction-development-guide-touchpad.md)：触控板设备及如何处理其产生的事件。
 
-[支持按键输入事件](./arkts-interaction-development-guide-keyboard.md)：键盘类设备及如何处理其产生的事件。
+[支持键盘输入事件](./arkts-interaction-development-guide-keyboard.md)：键盘类设备及如何处理其产生的事件。
 
 [支持游戏手柄输入事件](./arkts-interaction-development-guide-gamepad.md)：游戏手柄设备及如何处理其产生的事件。
 
