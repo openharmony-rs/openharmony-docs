@@ -21,13 +21,11 @@ NotificationSubscriberExtensionAbility是通知订阅者扩展能力的基类，
 
 ArkTS-Dyn示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 ```
 
 ArkTS-Sta示例：
 ```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
 import notificationExtensionSubscription from '@ohos.notificationExtensionSubscription';
 ```
@@ -61,24 +59,22 @@ onDestroy(): void
 
 ArkTS-Dyn示例：
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onDestroy(): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG} onDestroy`);
+    console.info(`${TAG} onDestroy`);
   }
 }
 ```
 
 ArkTS-Sta示例：
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onDestroy(): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG} onDestroy`);
+    console.info(`${TAG} onDestroy`);
   }
 }
 ```
@@ -105,24 +101,22 @@ onReceiveMessage(notificationInfo: NotificationInfo): void
 
 ArkTS-Dyn示例：
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
+    console.info(`${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }
 ```
 
 ArkTS-Sta示例：
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG}  onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
+    console.info(`${TAG}  onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }
 ```
@@ -149,24 +143,22 @@ onCancelMessages(hashCodes: Array\<string>): void
 
 ArkTS-Dyn示例：
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
     onCancelMessages(hashCodes: Array<string>): void {
-      hilog.info(DOMAIN, 'testTag', `${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
+      console.info(`${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
     }
 }
 ```
 
 ArkTS-Sta示例：
 ```ts
-const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
   onCancelMessages(hashCodes: Array<string>): void {
-    hilog.info(DOMAIN, 'testTag', `${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
+    console.info(`${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
   }
 }
 ```

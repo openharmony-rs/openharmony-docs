@@ -68,7 +68,7 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 
 ArkTS-Dyn示例：
 ```ts
-notificationExtensionSubscription.getAllSubscriptionBundles().then((data) => {
+notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getAllSubscriptionBundles fail: ${JSON.stringify(err)}`);
@@ -77,7 +77,7 @@ notificationExtensionSubscription.getAllSubscriptionBundles().then((data) => {
 
 ArkTS-Sta示例：
 ```ts
-notificationExtensionSubscription.getAllSubscriptionBundles().then((data) => {
+notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info('%{public}s', `getAllSubscriptionBundles successfully. Data:${String(data)}`);
 }).catch((error: Error) => {
   console.error(`getAllSubscriptionBundles fail: ${error}`);
@@ -282,7 +282,7 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
   // 应改为开发者需要查询的目标应用信息
   bundle: 'com.example.testnotification',
 };
-notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data) => {
+notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
@@ -296,7 +296,7 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
     // 应改为开发者需要查询的目标应用信息
     bundle: 'com.example.testnotification',
   };
-notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data) => {
+notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((error: Error) => {
   console.error(`getUserGrantedEnabledBundles fail: ${error}`);
