@@ -268,8 +268,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     predicates->destroy(predicates);
     predicates2->destroy(predicates2);
     ```
-    <!--@[rdb_OH_Rdb_Delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
-
+    <!--@[rdb_OH_Rdb_Delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
+    
     ``` C++
     // 删除数据
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
@@ -467,8 +467,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
    调用OH_Rdb_CreateTransaction方法创建事务对象，使用该事务对象执行相应事务操作。
 
-    <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
-
+    <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
+    
     ``` C++
     OH_RDB_TransOptions *options = OH_RdbTrans_CreateOptions();
     // 配置事务类型
