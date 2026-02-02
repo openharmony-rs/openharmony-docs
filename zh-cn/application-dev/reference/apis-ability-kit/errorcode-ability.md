@@ -674,7 +674,7 @@ App clone or multi-instance is not supported.
 
 **处理步骤**
 
-调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，确保目标应用支持应用多开，或在app.json5配置文件中配置[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签开启应用分身功能。
+调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，确保目标应用支持应用多开，并在app.json5配置文件中配置[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签开启应用分身功能。
 
 <!--Del-->
 调用getRunningMultiAppInfo时确保查询的应用支持应用多开。
