@@ -369,7 +369,7 @@ export struct pageOneTmp {
 
    在HAP的oh-package.json5配置文件中配置对HAR与HSP的依赖。
 
-    ``` json
+    ``` json5
     {
       "name": "entry",
       "version": "1.0.0",

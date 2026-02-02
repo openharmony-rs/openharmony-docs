@@ -579,27 +579,54 @@ enableDropDisallowedBadge(enabled: boolean): void
 
 该示例通过enableDropDisallowedBadge接口实现了对目标进行拖拽时显示拖拽禁止角标的功能。
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window, UIContext } from '@kit.ArkUI';
+1. 在EntryAbility.ets中调用enableDropDisallowedBadge接口，设置enabled参数为true。
 
- export default class EntryAbility extends UIAbility {
-   onWindowStageCreate(windowStage: window.WindowStage): void {
-       windowStage.loadContent('pages/Index', (err, data) => {
-         if (err.code) {
-         return;
-       }
-       windowStage.getMainWindow((err, data) => {
-         if (err.code) {
-           return;
-         }
-         let windowClass: window.Window = data;
-         let uiContext: UIContext = windowClass.getUIContext();
-         uiContext.getDragController().enableDropDisallowedBadge(true);
-     });
-   });
- }
-}
-```
+   ```ts
+   import { UIAbility } from '@kit.AbilityKit';
+   import { window, UIContext } from '@kit.ArkUI';
+
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+          windowStage.loadContent('pages/Index', (err, data) => {
+            if (err.code) {
+            return;
+          }
+          windowStage.getMainWindow((err, data) => {
+            if (err.code) {
+              return;
+            }
+            let windowClass: window.Window = data;
+            let uiContext: UIContext = windowClass.getUIContext();
+            uiContext.getDragController().enableDropDisallowedBadge(true);
+        });
+      });
+    }
+   }
+   ```
+
+2. 在Index.ets中拖拽图标icon至下方空白区域，显示拖拽禁止角标。
+
+   ```ts
+   @Entry
+   @Component
+   struct Index {
+     build() {
+       Column({ space: 20 }) {
+         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+         Image($r('app.media.startIcon'))
+           .width(120)
+           .height(120)
+         Text('这里是不能落入区域')
+         Column()
+           .width('100%')
+           .layoutWeight(1)
+           .allowDrop(null)
+           .onDrop(() => {
+           })
+       }.width('100%')
+     }
+   }
+   ```
+
 ![UIContext](figures/UIContext.png)
 

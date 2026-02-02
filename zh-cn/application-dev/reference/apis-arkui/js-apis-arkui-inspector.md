@@ -50,7 +50,7 @@ createComponentObserver(id: string): ComponentObserver
 **示例：** 
 
 ```ts
-let listener:inspector.ComponentObserver = inspector.createComponentObserver('COMPONENT_ID'); //监听id为COMPONENT_ID的组件回调事件
+let listener:inspector.ComponentObserver = inspector.createComponentObserver('COMPONENT_ID'); // 监听id为COMPONENT_ID的组件回调事件
 ```
 
 ## ComponentObserver
@@ -201,7 +201,7 @@ offLayoutChildren(callback?: Callback\<void\>): void
 
 ## 示例
 
-以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。
+以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，从API version 23开始新增[onLayoutChildren](#onlayoutchildren23)接口，用于监听子树中的节点完成布局时的回调事件。
 
 ```ts
 import { inspector } from '@kit.ArkUI';
@@ -249,7 +249,7 @@ struct ImageExample {
     this.listenerForImage.on('draw', FuncDraw)
     this.listenerForRow.on('drawChildren', FuncDrawChildren)
 
-    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
     // this.listenerForImage.off('layout', OffFuncLayout)
     // this.listenerForImage.off('draw', OffFuncDraw)
     // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
@@ -259,7 +259,9 @@ struct ImageExample {
     }
     let uniqueId: number = this.getUniqueId();
     let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
-    this.listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
+    listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
+    // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用。
+    // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
   }
 }
 ```
