@@ -157,7 +157,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 <!--code_no_check-->
 ```ts
 let config: Array<string> = ['XComponent'];
-// 监测js对象XComponent的内存泄漏
+//监测js对象XComponent的内存泄漏
 //传入空数组代表监测全部对象
 jsLeakWatcher.enableLeakWatcher(true, config, (filePath: Array<string>) => {
     console.info('JsLeakWatcher leaklistFileName:' + filePath[0]);
