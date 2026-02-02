@@ -40,7 +40,7 @@ Operation not allowed.
 
 **可能原因**
 
-接口执行顺序错误，比如未beginConfig就开始进行commitConfig操作等。
+接口执行顺序错误，比如未[beginConfig](arkts-apis-camera-Session.md#beginconfig11)就开始进行[commitConfig](arkts-apis-camera-Session.md#commitconfig11)操作等。
 
 **处理步骤**
 
