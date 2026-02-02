@@ -102,6 +102,43 @@ crossAppSharedConfig字段配置说明：
 - 通过调用publish接口发布或修改配置项。
 
   <!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  function publishSharedConfig() {
+    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+      const newConfigData: dataShare.ProxyData[] = [
+        {
+          uri: 'datashareproxy://com.samples.shareconfig/config1',
+          value: 'Value1',
+          allowList: [
+            'appIdentifier1',
+            'appIdentifier2'
+          ]
+        },
+        {
+          uri: 'datashareproxy://com.samples.shareconfig/config2',
+          value: 'Value2',
+          allowList: [
+            'appIdentifier3',
+            'appIdentifier4'
+          ]
+        }
+      ];
+      const config: dataShare.DataProxyConfig = {
+        type: dataShare.DataProxyType.SHARED_CONFIG,
+      };
+      dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+        results.forEach((result) => {
+          console.info(`URI: ${result.uri}, Result: ${result.result}`);
+        });
+      }).catch((error: BusinessError) => {
+        console.error('Error publishing config:', error);
+      });
+    }).catch((error: BusinessError) => {
+      console.error('Error creating DataProxyHandle:', error);
+    });
+  }
+  ```
 
 
 
