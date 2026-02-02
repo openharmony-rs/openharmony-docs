@@ -370,7 +370,9 @@ struct Index {
 ![editabletitlebarDefaultFocus01](figures/editabletitlebarDefaultFocus01.png)
 
 ### 示例5（右侧自定义图标设置为默认焦点）
-从API version 18开始，该示例通过设置标题栏右侧图标属性defaultFocus使右侧图标默认获焦。
+在获焦状态下，该示例通过设置标题栏右侧图标属性defaultFocus使右侧图标默认获焦。
+
+从API version 18开始，在[EditableTitleBarMenuItem](#editabletitlebarmenuitem)中新增defaultFocus接口。
 ```ts
 
 import { Prompt, EditableLeftIconType, EditableTitleBar } from '@kit.ArkUI';
