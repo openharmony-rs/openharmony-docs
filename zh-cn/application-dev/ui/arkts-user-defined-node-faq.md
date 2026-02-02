@@ -291,6 +291,7 @@ export struct pageThreeTmp {
 **示例代码**
 
 如下示例中，将BuilderNode前端对象作为参数传递给了自定义组件，构造了前后端循环引用的场景。
+
 下文中，[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)表示BuilderNode中构建的自定义组件（即TestComponent）析构时的回调。
 
 - 不调用dispose接口的情况（点击示例中的"Destroy"按钮），由于前后端循环引用，导致自定义组件无法析构，体现为[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)回调未触发。
