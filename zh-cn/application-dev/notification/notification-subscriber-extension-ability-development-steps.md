@@ -79,13 +79,15 @@
      }
    ```
 
-## 传统蓝牙连接示例
+7. 示例仅为传统蓝牙连接示例，开发者也可选用低功耗蓝牙连接方式。
 
-1. 示例仅为传统蓝牙连接示例，开发者也可选用低功耗蓝牙连接方式。
-2. 用户收到消息后,假如蓝牙连接是无效的,则建立蓝牙连接。
-3. 假如蓝牙连接已经存在,则直接使用这个连接发送消息。
-4. 如果使用该连接发送消息失败,则重新建立连接,如果连接能建立成功则发送消息。
-5. 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考[声明权限](../security/AccessToken/declare-permissions.md)和[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
+8. 用户收到消息后,假如蓝牙连接是无效的,则建立蓝牙连接。
+ 
+9. 假如蓝牙连接已经存在,则直接使用这个连接发送消息。
+ 
+10. 如果使用该连接发送消息失败,则重新建立连接,如果连接能建立成功则发送消息。/security/AccessToken/
+
+11. 需要申请权限[ohos.permission.ACCESS_BLUETOOTH](../security/AccessToken/permissions-for-all-user.md#ohospermissionaccess_bluetooth)。如何配置和申请权限，具体操作请参考[声明权限](../security/AccessToken/declare-permissions.md)和[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/DocsSample/Notification-Kit/ThirdpartyWerableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
    
    ``` TypeScript
