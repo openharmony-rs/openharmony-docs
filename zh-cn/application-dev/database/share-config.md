@@ -108,6 +108,29 @@ crossAppSharedConfig字段配置说明：
 - 通过调用delete接口删除配置项。
 
   <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  function deleteSharedConfig() {
+    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+      const urisToDelete: string[] = [
+        'datashareproxy://com.samples.shareconfig/config1',
+        'datashareproxy://com.samples.shareconfig/config2'
+      ];
+      const config: dataShare.DataProxyConfig = {
+        type: dataShare.DataProxyType.SHARED_CONFIG,
+      };
+      dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
+        results.forEach((result) => {
+          console.info(`URI: ${result.uri}, Result: ${result.result}`);
+        });
+      }).catch((error: BusinessError) => {
+        console.error('Error deleting config:', error);
+      });
+    }).catch((error: BusinessError) => {
+      console.error('Error creating DataProxyHandle:', error);
+    });
+  }
+  ```
 
 
 
