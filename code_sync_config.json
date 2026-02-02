@@ -42499,14 +42499,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts",
 				"functions":[
 					{
-						"end_line":240,
+						"end_line":241,
 						"name":"example_openObfuscation1",
-						"start_line":232
+						"start_line":233
 					},
 					{
-						"end_line":249,
+						"end_line":250,
 						"name":"example_openObfuscation2",
-						"start_line":242
+						"start_line":243
 					}
 				]
 			}
@@ -42529,12 +42529,12 @@
 						"start_line":66
 					},
 					{
-						"end_line":77,
+						"end_line":78,
 						"name":"optionExample_enablePropertyObfuscation3",
 						"start_line":73
 					},
 					{
-						"end_line":78,
+						"end_line":79,
 						"name":"optionExample_enableStringPropertyObfuscation1",
 						"start_line":74
 					},
@@ -42554,7 +42554,7 @@
 						"start_line":98
 					},
 					{
-						"end_line":107,
+						"end_line":108,
 						"name":"optionExample_enableFilenameObfuscation",
 						"start_line":16
 					},
@@ -42564,14 +42564,14 @@
 						"start_line":56
 					},
 					{
-						"end_line":116,
+						"end_line":117,
 						"name":"optionExample_removeLog1",
-						"start_line":111
+						"start_line":112
 					},
 					{
-						"end_line":120,
+						"end_line":121,
 						"name":"optionExample_removeLog2",
-						"start_line":118
+						"start_line":119
 					},
 					{
 						"end_line":126,
@@ -42584,49 +42584,49 @@
 						"start_line":128
 					},
 					{
-						"end_line":144,
+						"end_line":145,
 						"name":"optionExample_removeLog5",
-						"start_line":136
+						"start_line":137
 					},
 					{
-						"end_line":158,
+						"end_line":159,
 						"name":"optionExample_keepPropertyName1",
-						"start_line":149
+						"start_line":150
 					},
 					{
-						"end_line":165,
+						"end_line":166,
 						"name":"optionExample_keepPropertyName2",
-						"start_line":160
+						"start_line":161
 					},
 					{
-						"end_line":177,
+						"end_line":178,
 						"name":"optionExample_keepPropertyName3",
 						"start_line":22
 					},
 					{
-						"end_line":186,
+						"end_line":187,
 						"name":"optionExample_keepPropertyName4",
-						"start_line":179
+						"start_line":180
 					},
 					{
-						"end_line":203,
+						"end_line":204,
 						"name":"optionExample_keepPropertyName5",
-						"start_line":188
+						"start_line":189
 					},
 					{
-						"end_line":211,
+						"end_line":212,
 						"name":"optionExample_keepGlobalName1",
-						"start_line":205
+						"start_line":206
 					},
 					{
-						"end_line":224,
+						"end_line":225,
 						"name":"optionExample_keepGlobalName2",
-						"start_line":213
+						"start_line":214
 					},
 					{
-						"end_line":230,
+						"end_line":231,
 						"name":"optionExample_keepFileName",
-						"start_line":226
+						"start_line":227
 					},
 					{
 						"end_line":63,
