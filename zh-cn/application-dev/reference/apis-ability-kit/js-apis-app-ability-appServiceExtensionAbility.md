@@ -17,7 +17,7 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
 ## 约束限制
 
 - 当前仅支持2in1设备。
-- 应用集成AppServiceExtensionAbility的组件需要申请ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。该ACL权限当前只对企业普通应用开放申请。
+- 应用集成AppServiceExtensionAbility的组件需要申请ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。该ACL权限当前只对企业普通应用开放申请，申请方式请参见[ACL权限申请](../../../security/AccessToken/declare-permissions-in-acl.md)。
 
 ## 生命周期
 
@@ -152,7 +152,7 @@ onConnect(want: Want): rpc.RemoteObject
 调用方使用[connectAppServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)连接AppServiceExtensionAbility实例时，系统会触发该回调。
 
 
-应用需要在该接口中返回一个RemoteObject对象，用于客户端和服务端进行通信。当AppServiceExtensionAbility实例处于连接状态时，如果调用方发起新的连接，系统会返回缓存的RemoteObject对象，而不会重复回调[onConnect()](#onconnect)接口。
+应用需要在该接口中返回一个RemoteObject对象，用于客户端和服务端进行通信。当AppServiceExtensionAbility实例处于连接状态时，如果调用方发起新的连接，系统会返回缓存的RemoteObject对象，而不会重复回调onConnect()接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
