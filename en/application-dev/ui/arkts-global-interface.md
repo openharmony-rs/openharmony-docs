@@ -195,7 +195,7 @@ export default class EntryAbility extends UIAbility {
       let pxValue = vp2px(20);
       hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
     });
-    // loadContent is asynchronous . The UI instance may not exist here.
+    // loadContent is asynchronous. The UI instance may not exist here.
     pxValue = vp2px(20);
     hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
   }
@@ -252,7 +252,7 @@ export default class EntryAbility extends UIAbility {
       } catch (e) {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
-      // loadContent is asynchronous . The UI instance may not exist here.
+      // loadContent is asynchronous. The UI instance may not exist here.
     });
   }
 
@@ -305,7 +305,7 @@ export default class EntryAbility extends UIAbility {
       let pxValue = vp2px(20);
       hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
     });
-    // loadContent is asynchronous . The UI instance may not exist here.
+    // loadContent is asynchronous. The UI instance may not exist here.
     pxValue = vp2px(20);
     hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
   }
@@ -387,7 +387,7 @@ export default class EntryAbility extends UIAbility {
       let pxValue = resolvedUIContext.vp2px(20);
       hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
     });
-    // loadContent is asynchronous . The UI instance may not exist here.
+    // loadContent is asynchronous. The UI instance may not exist here.
     pxValue = vp2px(20);
     hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
   }
@@ -602,7 +602,7 @@ export default class EntryAbility extends UIAbility {
       } catch (e) {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
-      // loadContent is asynchronous . The UI instance may not exist here.
+      // loadContent is asynchronous. The UI instance may not exist here.
     });
   }
 
@@ -768,7 +768,7 @@ export default class EntryAbility extends UIAbility {
       } catch (e) {
         hilog.error(DOMAIN, 'testTag', `Can't get UIContext, ${e}`);
       }
-      // loadContent is asynchronous . The UI instance may not exist here.
+      // loadContent is asynchronous. The UI instance may not exist here.
     });
   }
 
@@ -982,7 +982,7 @@ The [getContext](../reference/apis-arkui/js-apis-getContext.md) API retrieves th
 | After the main window is created and **loadContent** or **setUIContent** is called, with a custom component object passed| The context of the ability to which the custom component's UI instance belongs is returned.| None                                                          |
 | After **loadContent** or **setUIContent** is called, and in the UI callback function         | The ability context associated with the UI instance identified through UI calling scope tracing.| None                                                          |
 | In a single-ability, single-window application, after **loadContent** or **setUIContent** is called, in a non-UI asynchronous callback, with no custom component object passed| If the specific UI instance cannot be located through UI calling scope tracing, the unique UI instance is determined based on the current singleton scenario, and the context of the ability associated with that UI instance is returned.| None                                                          |
-| In a multi-ability/multi-window application, after **loadContent** or **setUIContent** is called, in an asynchronous callback, with no custom component object passed| The UI context cannot trace the calling scope to find the specific UI instance, and no unique instance exists. The API prioritizes the latest focused, latest foregrounded, or latest created UI instance for calculations. The ability context of the window to which that UI instance belongs is returned.| In multi-instance scenarios, results may mismatch expectations. For example: With two ability instances, the API may return the Context of the second-created ability instead of the first.|
+| In a multi-ability or multi-window application, after **loadContent** or **setUIContent** is called, in an asynchronous callback, with no custom component object passed| The UI context cannot trace the calling scope to find the specific UI instance, and no unique instance exists. The API prioritizes the latest focused, latest foregrounded, or latest created UI instance for calculations. The ability context of the window to which that UI instance belongs is returned.| In multi-instance scenarios, results may mismatch expectations. For example: With two ability instances, the API may return the Context of the second-created ability instead of the first.|
 | After all windows are destroyed and no UI instance is available                                | If no valid UI instance is available, **undefined** is returned.                           | None                                                        |
 
 In single-ability scenarios, it is recommended that you directly retrieve the context property of the ability itself.
@@ -1021,8 +1021,6 @@ struct GetContextPage {
   }
 }
 ```
-
-
 
 Using the UIContext API (recommended):
 
