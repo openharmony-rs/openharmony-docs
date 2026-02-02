@@ -14,9 +14,9 @@
 
 ## 接口说明
 
-获取设备的位置信息所使用的接口如下，详细说明参见：[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+获取设备的位置信息所使用的接口如下，详细说明参见：[Location Kit API参考](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
-本模块能力仅支持WGS-84坐标系。
+本模块能力仅支持WGS-84坐标系。<!--RP2--><!--RP2End-->
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |
