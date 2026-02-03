@@ -16,23 +16,25 @@
 - **推广营销：** 在视频类App、社交类App、浏览器App等广告投放平台中，嵌入需要推广的应用链接（该链接可能以文本、卡片、视频等形式呈现），通过该链接信息可以跳转到目标应用的指定页面；也可以在推送短信、发送邮件时，在正文中携带需要推广的应用链接，通过该链接信息可以跳转到目标应用的指定页面。
 
 
-## 应用跳转的两种类型
+## 应用跳转分类
 
+应用跳转按照目标明确性可分为以下两类：
 
-- [拉起指定应用](app-startup-overview.md)：拉起方应用明确指定跳转的目标应用，来实现应用跳转。指向性跳转可以分为指定应用链接、指定Ability两种方式。
+### 指向性跳转
 
-    > **说明：**
-    >
-    > 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用。关于如何从指定Ability方式切换到指定[应用链接](app-startup-overview.md#应用链接)方式，详见[显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)。
+拉起方应用明确指定跳转的目标应用。根据实现方式的不同，又可分为以下两种方式：
 
-    - 指定应用链接（推荐）：通过[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)或[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口来指定[应用链接](app-startup-overview.md#应用链接)，拉起目标应用页面。
+- **指定应用链接（推荐）**：通过[openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)或[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口来指定[应用链接](app-startup-overview.md#应用链接)，拉起目标应用页面。详见[拉起指定应用](app-startup-overview.md)。
 
+- **指定Ability（不推荐）**：通过[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口指定具体的Ability（即显式Want方式），拉起目标应用页面。
 
-    - 指定Ability（不推荐）：通过[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口指定具体的Ability（即显式Want方式），拉起目标应用页面。
+> **说明：**
+>
+> 从API 12开始，已不再推荐三方应用使用指定Ability方式（即显式Want）拉起其他应用。关于如何从指定Ability方式切换到指定[应用链接](app-startup-overview.md#应用链接)方式，详见[显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)。
 
+### 非指向性跳转
 
-
-- [拉起指定类型的应用](start-intent-panel.md)：拉起方应用通过指定应用类型，拉起垂类应用面板。该面板将展示目标方接入的垂域应用，由用户选择打开指定应用。
+拉起方应用通过指定应用类型，拉起垂类应用面板。该面板将展示目标方接入的垂域应用，由用户选择打开指定应用。详见[拉起指定类型的应用](start-intent-panel.md)。
 
 
 
