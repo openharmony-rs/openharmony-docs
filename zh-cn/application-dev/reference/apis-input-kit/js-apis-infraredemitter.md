@@ -106,6 +106,8 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
+**设备行为差异**：该接口在支持红外发射器的Phone和TV设备上返回红外信号的频率范围，在其他不支持红外发射器的设备上返回一组最大和最小频率，且均为0Hz。建议使用[hasIrEmitter](#infraredemitterhasiremitter23)接口查询设备是否支持红外发射器。
+
 **ArkTS-Dyn起始版本**：15
 
 **ArkTS-Sta起始版本**：23
@@ -114,7 +116,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 | 参数                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency15)&gt; | 频率范围，包含多组最大和最小频率。 |
+| Array&lt;[InfraredFrequency](#infraredfrequency15)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
 **错误码：**
 
@@ -189,3 +191,57 @@ struct Index {
 | -------------------------------- | ---- | ------ | ------ |
 | max                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 最大支持频率，单位：Hz。 |
 | min                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 最小支持频率，单位：Hz。 |
+
+## infraredEmitter.hasIrEmitter<sup>23+</sup>
+
+hasIrEmitter(): Promise&lt;boolean&gt;
+
+查询设备是否配备红外发射器。使用Promise异步回调。
+
+**需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
+
+**系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**返回值**：
+
+| 类型                  | 说明                  |
+| ------------------- | ------------------- |
+| Promise&lt;boolean&gt; | 如果设备具有红外发射器，则返回true；否则返回false。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[全局快捷键管理错误码](errorcode-inputconsumer.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 3800001 | Input service exception. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```js
+import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+            infraredEmitter.hasIrEmitter().then((result: boolean) => {
+              console.info(`hasIrEmitter: ${JSON.stringify(result)}`);
+            }).catch((error: BusinessError)=> {
+              console.error(`hasIrEmitter failed: ${JSON.stringify(error)}`);})
+        })
+    }
+  }
+}
+```
