@@ -75,19 +75,17 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 查询设备支持的红外信号的频率范围。
 
-> **说明：**
->
-> 开发者调用此接口得到的返回值有差异，支持红外的设备返回红外信号的频率范围；不支持红外的设备返回一组最大和最小频率，且均为0Hz。建议开发者先调用[hasIrEmitter](#infraredemitterhasiremitter23)接口查询设备是否支持红外。
-
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
+
+**设备行为差异**：开发者调用此接口得到的返回值有差异，支持红外的设备返回红外信号的频率范围；不支持红外的设备返回一组最大和最小频率，且均为0Hz。建议开发者先调用[hasIrEmitter](#infraredemitterhasiremitter23)接口查询设备是否支持红外。
 
 **返回值**：
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
+| Array&lt;[InfraredFrequency](#infraredfrequency)&gt; | 红外信号的频率范围，包含多组最大和最小频率。<br/>从API version 23开始，当设备不具有红外发射器，返回一组最大和最小频率，且均为0Hz。 |
 
 **错误码：**
 
