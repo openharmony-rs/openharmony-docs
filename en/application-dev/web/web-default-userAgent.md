@@ -238,4 +238,22 @@ In Windows, macOS, and Linux, you can use the **User-Agent** rewriting capabilit
 ### How do I customize the User-Agent in OpenHarmony to implement HTML5 compatibility?
 
 OpenHarmony provides the [setCustomUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) API to customize the **User-Agent**. To adapt to the UA identifier detection (such as Mobile and OpenHarmony) that mobile HTML5 pages usually depend on and ensure that the default UA information is not overwritten, you are advised to perform the following operations: First, obtain the default **User-Agent** string through the [getDefaultUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getdefaultuseragent14) API. Then, append the custom identifier field required for HTML5 compatibility to the end of the string. Finally, call the **setCustomUserAgent** API to set the complete UA string.
+
+### How to solve the UA compatibility problem of HTML5 pages?
+
+Q: Why the web page on a mobile device is displayed in the PC style or the web page on a PC is displayed in the mobile style?
+
+A: The website displays different styles of pages based on different UAs. For mobile devices, set **DeviceCompat** to **Mobile** and **DeviceType** to **Phone**. For PCs, set **DeviceCompat** to **""** and **DeviceType** to **PC**. For tablets, set **DeviceCompat** to **""** and **DeviceType** to **Tablet**.
+
+Q: Why can't I open some web pages or the message "Unsupported browser" is displayed?
+
+A: The web page is not adapted to the OpenHarmony UA. It is necessary for the web page to perform compatibility processing for the **OpenHarmony** identifier.
+
+Q: Why does the page redirect in a loop?
+
+A: The application sets conflicting UA identifiers for the two pages that redirect to each other. As a result, the redirection logic on the server enters an infinite loop. Ensure that the application maintains consistent logic when calling **setUserAgentForHosts** to configure a compatible UA for associated websites, so as to avoid infinite loops in web page redirection logic caused by UA differences.
+
+Q: Why the download link provided by the web page does not match the device platform? For example, the download package for an OpenHarmony device is an APK.
+
+A: The compatibility field in the UA interferes with the server identification. To ensure web page compatibility, some browsers may add non-OpenHarmony operating system names to **User-Agent**. If the parsing logic sequence of the server is improper, the actual device identifier may be ignored. In this case, you are advised to place the OpenHarmony processing logic before the processing logic of other operating systems.
 <!--RP1End-->

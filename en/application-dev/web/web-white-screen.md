@@ -13,7 +13,7 @@ There are many reasons for white screen issues on web pages. This topic describe
 3. In complex layout scenarios, check the rendering mode and component constraints.
 4. Handle the compatibility problem of the HTML5 code.
 5. Check the keywords related to the lifecycle and network loading in the log.
-6. Check whether the Secure Shield mode is enabled. For details about the restrictions after the Secure Shield mode is enabled, see [HTML5 Features Restricted by ArkWeb](./web-secure-shield-mode.md#html5-features-restricted-by-arkweb).
+6. Check whether the [Secure Shield mode](./web-secure-shield-mode.md) is enabled. For details about the restrictions after the Secure Shield mode is enabled, see [HTML5 Features Restricted by ArkWeb](./web-secure-shield-mode.md#html5-features-restricted-by-arkweb)
 
 ## Checking Permissions and Network Status
 If the network or file access permission is not added for the application, or the network status of the device is poor, the **Web** component will fail to be loaded or page elements will be missing, resulting in a white screen.
