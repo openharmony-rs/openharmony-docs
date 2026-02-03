@@ -7433,6 +7433,63 @@ async function example(context: Context, assetUri: string) {
 }
 ```
 
+### deleteAssetsPermanentlyWithUri<sup>24+</sup>
+
+static deleteAssetsPermanentlyWithUri(context: Context, assetUris: string[]): Promise\<void\>
+
+通过资产URI批量彻底删除照片或视频，不经过回收站。使用promise异步回调。
+
+> **说明：**
+>
+> - 对仅存在于本端设备的资产、仅存在于云端的资产、存在于本端设备和云端的资产，均可以彻底删除，不经过回收站。
+> - 此操作不可逆。执行此操作后文件资源将被彻底删除，请谨慎操作。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 传入Ability实例的Context。 |
+| assetUris | string[] | 是    | 待删除的图片或视频URI数组，数组中元素个数不超过500个。 |
+
+**返回值：**
+
+| 类型                  | 说明         |
+| ------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201   | Permission denied.       |
+| 202   | Called by nonsystem application.       |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The context is empty; 2. Asset uri array size is empty or bigger than 500 . |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes:1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. | 
+
+**示例：**
+
+```ts
+async function example(context: Context, assetUri: string) {
+    console.info('deleteAssetsPermanentlyWithUri');
+    try {
+      await photoAccessHelper.MediaAssetChangeRequest.deleteAssetsPermanentlyWithUri(context, [assetUri]);
+      console.info('deleteAssetsPermanentlyWithUri success.');
+    } catch (err) {
+      console.error(`deleteAssetsPermanentlyWithUri failed with error: ${err.code}, ${err.message}`);
+    }
+}
+```
+
 ## MediaAssetsChangeRequest<sup>11+</sup>
 
 批量资产变更请求。
