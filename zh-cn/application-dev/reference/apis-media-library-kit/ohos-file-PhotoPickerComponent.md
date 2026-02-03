@@ -243,7 +243,7 @@ type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
 type PinchGridSwitchedCallback = (gridLevel: photoAccessHelper.GridLevel) => void
 
-用户在宫格捏合时产生的回调事件。
+用户在宫格组件内捏合时产生的回调事件。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
