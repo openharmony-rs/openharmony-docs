@@ -532,7 +532,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | name        | string                                                      | 否 |否 |规则名称，必填，最多128个字符。                                |
 | direction   | [NetFirewallRuleDirection](#netfirewallruledirection)       | 否 |否 |规则方向，包含入站和出站。                                         |
 | action      | [FirewallRuleAction](#firewallruleaction)                   | 否 |否 |行为，包含允许和阻止。                                                         |
-| type        | [NetFirewallRuleType](#netfirewallruletype)                 | 否 |否 |规则类型，包含IP、Domain、DNS                                                    |
+| type        | [NetFirewallRuleType](#netfirewallruletype)                 | 否 |否 |规则类型，包含IP、Domain、DNS。                                                    |
 | isEnabled   | boolean                                                     | 否 |否 |是否启用规则。true表示启用，false表示不启用。                                                     |
 | id          | number                                                      | 否 |是| 防火墙规则的ID。                                                       |
 | description | string                                                      | 否 |是 |规则描述，可选，最多256个字符。                                |
