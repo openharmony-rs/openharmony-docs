@@ -2055,7 +2055,7 @@ Input_AxisEvent* OH_Input_CreateAxisEvent(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| Input_AxisEvent* | 成功返回[Input_AxisEvent](capi-input-input-axisevent.md)对象实例，失败则返回null。 |
+| Input_AxisEvent* | 成功返回[Input_AxisEvent](capi-input-input-axisevent.md)对象实例，失败则返回nullptr。 |
 
 ### OH_Input_DestroyAxisEvent()
 
@@ -2082,7 +2082,7 @@ Input_Result OH_Input_DestroyAxisEvent(Input_AxisEvent** axisEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若销毁成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL或者axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若销毁成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr或者axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetAxisEventAction()
 
@@ -2110,7 +2110,7 @@ Input_Result OH_Input_SetAxisEventAction(Input_AxisEvent* axisEvent, InputEvent_
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若设置轴事件的动作成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若设置轴事件的动作成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_GetAxisEventAction()
 
@@ -2138,7 +2138,7 @@ Input_Result OH_Input_GetAxisEventAction(const Input_AxisEvent* axisEvent, Input
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若获取轴事件的动作成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者action为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若获取轴事件的动作成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者action为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetAxisEventDisplayX()
 
@@ -2166,7 +2166,7 @@ Input_Result OH_Input_SetAxisEventDisplayX(Input_AxisEvent* axisEvent, float dis
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若设置轴事件的X坐标成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若设置轴事件的X坐标成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_GetAxisEventDisplayX()
 
@@ -2194,7 +2194,7 @@ Input_Result OH_Input_GetAxisEventDisplayX(const Input_AxisEvent* axisEvent, flo
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若获取轴事件的X坐标成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者displayX为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若获取轴事件的X坐标成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者displayX为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetAxisEventDisplayY()
 
@@ -2222,7 +2222,7 @@ Input_Result OH_Input_SetAxisEventDisplayY(Input_AxisEvent* axisEvent, float dis
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若设置轴事件的Y坐标成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若设置轴事件的Y坐标成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_GetAxisEventDisplayY()
 
@@ -2250,7 +2250,7 @@ Input_Result OH_Input_GetAxisEventDisplayY(const Input_AxisEvent* axisEvent, flo
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若获取轴事件的Y坐标成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者displayY为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若获取轴事件的Y坐标成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者displayY为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetAxisEventAxisValue()
 
@@ -2279,7 +2279,7 @@ Input_Result OH_Input_SetAxisEventAxisValue(Input_AxisEvent* axisEvent,InputEven
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若设置轴事件指定轴类型的轴值成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若设置轴事件指定轴类型的轴值成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_GetAxisEventAxisValue()
 
@@ -2308,7 +2308,7 @@ Input_Result OH_Input_GetAxisEventAxisValue(const Input_AxisEvent* axisEvent,Inp
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若获取轴事件指定轴类型的轴值成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者axisValue为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若获取轴事件指定轴类型的轴值成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者axisValue为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetAxisEventActionTime()
 
@@ -2336,7 +2336,7 @@ Input_Result OH_Input_SetAxisEventActionTime(Input_AxisEvent* axisEvent, int64_t
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若设置轴事件发生的时间成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若设置轴事件发生的时间成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_GetAxisEventActionTime()
 
@@ -2364,7 +2364,7 @@ Input_Result OH_Input_GetAxisEventActionTime(const Input_AxisEvent* axisEvent, i
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若获取轴事件发生的时间成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者actionTime为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若获取轴事件发生的时间成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者actionTime为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetAxisEventType()
 
@@ -2392,7 +2392,7 @@ Input_Result OH_Input_SetAxisEventType(Input_AxisEvent* axisEvent, InputEvent_Ax
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若设置轴事件类型成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若设置轴事件类型成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_GetAxisEventType()
 
@@ -2420,7 +2420,7 @@ Input_Result OH_Input_GetAxisEventType(const Input_AxisEvent* axisEvent, InputEv
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若获取轴事件类型成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者axisEventType为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若获取轴事件类型成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者axisEventType为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetAxisEventSourceType()
 
@@ -2448,7 +2448,7 @@ Input_Result OH_Input_SetAxisEventSourceType(Input_AxisEvent* axisEvent, InputEv
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若设置轴事件源类型成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若设置轴事件源类型成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_GetAxisEventSourceType()
 
@@ -2476,7 +2476,7 @@ Input_Result OH_Input_GetAxisEventSourceType(const Input_AxisEvent* axisEvent, I
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若获取轴事件源类型成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者sourceType为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若获取轴事件源类型成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者sourceType为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetAxisEventWindowId()
 
@@ -2504,7 +2504,7 @@ Input_Result OH_Input_SetAxisEventWindowId(Input_AxisEvent* axisEvent, int32_t w
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若设置轴事件的窗口ID成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若设置轴事件的窗口ID成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_GetAxisEventWindowId()
 
@@ -2532,7 +2532,7 @@ Input_Result OH_Input_GetAxisEventWindowId(const Input_AxisEvent* axisEvent, int
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若获取轴事件的窗口ID成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者windowId为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若获取轴事件的窗口ID成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者windowId为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_SetAxisEventDisplayId()
 
@@ -2560,7 +2560,7 @@ Input_Result OH_Input_SetAxisEventDisplayId(Input_AxisEvent* axisEvent, int32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若设置轴事件的屏幕ID成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若设置轴事件的屏幕ID成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_GetAxisEventDisplayId()
 
@@ -2588,7 +2588,7 @@ Input_Result OH_Input_GetAxisEventDisplayId(const Input_AxisEvent* axisEvent, in
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 若获取轴事件的屏幕ID成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者displayId为NULL，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
+| [Input_Result](#input_result) | 若获取轴事件的屏幕ID成功，则返回[INPUT_SUCCESS](#input_result)；若axisEvent或者displayId为nullptr，则返回[INPUT_PARAMETER_ERROR](#input_result)。 |
 
 ### OH_Input_AddKeyEventMonitor()
 
@@ -2928,7 +2928,7 @@ Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, In
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_KeyEventCallback](#input_keyeventcallback) callback | 回调函数，用于接收按键事件。 |
-| [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) *option | option 输入事件拦截的可选项，传null则使用默认值。 |
+| [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) *option | option 输入事件拦截的可选项，传nullptr则使用默认值。 |
 
 **返回：**
 
@@ -2960,7 +2960,7 @@ Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *c
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md) *callback | callback 用于回调输入事件的结构体指针，请参考定义[Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md)。 |
-| [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) *option | option 输入事件拦截的可选项，传null则使用默认值。 |
+| [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) *option | option 输入事件拦截的可选项，传nullptr则使用默认值。 |
 
 **返回：**
 
@@ -3258,7 +3258,7 @@ Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md) **hotkey | hotkey 返回[Input_Hotkey](capi-input-input-hotkey.md) 类型实例数组。首次调用可传入NULL，可获取数组长度。 |
+| [Input_Hotkey](capi-input-input-hotkey.md) **hotkey | hotkey 返回[Input_Hotkey](capi-input-input-hotkey.md) 类型实例数组。首次调用可传入nullptr，可获取数组长度。 |
 | int32_t *count | count 返回支持快捷键的个数。 |
 
 **返回：**
@@ -3400,7 +3400,7 @@ Input_Result OH_Input_RegisterDeviceListener(Input_DeviceListener* listener)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_RegisterDeviceListener 的返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注册成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示listener 为NULL。 |
+| [Input_Result](#input_result) | OH_Input_RegisterDeviceListener 的返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注册成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示listener 为nullptr。 |
 
 ### OH_Input_UnregisterDeviceListener()
 
@@ -3427,7 +3427,7 @@ Input_Result OH_Input_UnregisterDeviceListener(Input_DeviceListener* listener)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_UnregisterDeviceListener 的返回值。<br>         [INPUT_SUCCESS](#input_result) 表示取消注册成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示listener 为 NULL 或者 listener 未被注册。<br>         [INPUT_SERVICE_EXCEPTION](#input_result) 表示由于服务异常调用失败。 |
+| [Input_Result](#input_result) | OH_Input_UnregisterDeviceListener 的返回值。<br>         [INPUT_SUCCESS](#input_result) 表示取消注册成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示listener 为 nullptr 或者 listener 未被注册。<br>         [INPUT_SERVICE_EXCEPTION](#input_result) 表示由于服务异常调用失败。 |
 
 ### OH_Input_UnregisterDeviceListeners()
 
@@ -3884,7 +3884,7 @@ int32_t OH_Input_GetMouseEventDisplayId(const struct Input_MouseEvent* mouseEven
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 若获取鼠标事件的屏幕ID成功，则返回鼠标事件的屏幕ID；若mouseEvent为NULL，则返回-1。 |
+| int32_t | 若获取鼠标事件的屏幕ID成功，则返回鼠标事件的屏幕ID；若mouseEvent为nullptr，则返回-1。 |
 
 ### OH_Input_QueryMaxTouchPoints()
 
