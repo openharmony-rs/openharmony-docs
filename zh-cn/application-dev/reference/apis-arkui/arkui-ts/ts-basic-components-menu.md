@@ -36,7 +36,7 @@ Menu()
 >
 > Menu支持设置的最小宽度为64vp。
 >
-> Menu不支持的通用属性：[outline](ts-universal-attributes-outline.md)相关属性、[shadow](ts-univeral-attributes-image-effect.md#shadow)
+> Menu不支持的通用属性：[outline](ts-universal-attributes-outline.md)相关属性、[shadow](ts-universal-attributes-image-effect.md#shadow)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
