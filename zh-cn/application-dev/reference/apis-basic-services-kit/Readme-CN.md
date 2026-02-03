@@ -45,11 +45,11 @@
     - [@ohos.request (上传下载)](js-apis-request.md)
     - [@ohos.request.cacheDownload (缓存下载)](js-apis-request-cacheDownload.md)
     - [@ohos.zlib (Zip模块)](js-apis-zlib.md)
+    <!--Del-->
     - [@ohos.selectionInput.SelectionExtensionAbility (划词扩展能力)](js-apis-selectionInput-selectionExtensionAbility.md)
     - [@ohos.selectionInput.SelectionExtensionContext (划词扩展上下文)](js-apis-selectionInput-selectionExtensionContext.md)
     - [@ohos.selectionInput.selectionManager (划词管理)](js-apis-selectionInput-selectionManager.md)
     - [@ohos.selectionInput.SelectionPanel (划词面板)](js-apis-selectionInput-selectionPanel.md)
-    <!--Del-->
     - [@ohos.app.ability.PrintExtensionAbility (打印扩展能力)(系统接口)](js-apis-app-ability-PrintExtensionAbility-sys.md)
     - [@ohos.print (打印)(系统接口)](js-apis-print-sys.md)
     - [@ohos.scan (扫描)(系统接口)](js-apis-scan-sys.md)
