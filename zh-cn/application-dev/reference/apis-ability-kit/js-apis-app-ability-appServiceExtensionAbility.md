@@ -17,7 +17,7 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
 ## 约束限制
 
 - 当前仅支持2in1设备。
-- 应用需要在该接口中返回一个RemoteObject对象，用于客户端和服务端进行通信。当AppServiceExtensionAbility实例处于连接状态时，如果调用方发起新的连接，系统会返回缓存的RemoteObject对象，而不会重复回调onConnect()接口。
+- 应用集成AppServiceExtensionAbility的组件需要申请ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。该ACL权限当前只对企业普通应用开放申请，申请方式参考[权限申请指导](../../security/AccessToken/declare-permissions.md)。
 
 ## 生命周期
 
