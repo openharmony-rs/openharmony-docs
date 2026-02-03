@@ -5634,7 +5634,7 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ----------- | ------- | ---- | ------------------------------------------------------------ |
-| imgResourceId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 应用自定义图片的资源id，图片资源需放在resources/base/media目录下，通过`$r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`$r("app.media.startIcon").id`。|
+| imgResourceId | number | 是   | 应用自定义图片的资源id，图片资源需放在resources/base/media目录下，通过`$r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`$r("app.media.startIcon").id`。|
 | value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | 是 | 应用自定义图片的填充方式。 |
 
 **返回值：**
@@ -5657,8 +5657,6 @@ setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -5678,33 +5676,6 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (exception) {
       console.error(`Failed to set image for recent.`);
-    }
-  }
-};
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window, $r, ImageFit } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let imgResourceId = $r("app.media.startIcon").id
-    try {
-      let promise = windowStage.setImageForRecent(imgResourceId, ImageFit.Fill);
-      promise.then(() => {
-        console.info(`Succeeded in setting image for recent`);
-      }).catch((err: Error) => {
-        console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (exception) {
-      let err = exception as BusinessError;
-      console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 };
