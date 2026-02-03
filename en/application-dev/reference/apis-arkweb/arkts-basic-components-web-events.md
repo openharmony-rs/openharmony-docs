@@ -673,7 +673,7 @@ Triggered to notify the host application that the page loading starts. This meth
 
 > **NOTE**
 >
-> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. **onPageBegin** will not be simulated.
+> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. <b class="+ topic/ph hi-d/b " id="b145733136532">onPageBegin</b> will not be simulated.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -717,7 +717,7 @@ Triggered to notify the host application that the page has been loaded. This met
 >
 > - Fragment navigation also triggers **onLoadFinished**, but **onPageEnd** is not triggered.
 > - If the main frame is automatically redirected before the page is fully loaded, **onLoadFinished** is triggered only once. **onPageEnd** is triggered each time the main frame is navigated.
-> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. **onPageBegin** will not be simulated.
+> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. <b class="+ topic/ph hi-d/b " id="b145733136532">onPageBegin</b> will not be simulated.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2383,7 +2383,7 @@ Called to notify the user that the geolocation information obtaining request is 
   <html>
   <body>
   <p id="locationInfo">Location information</p>
-  <button onclick="getLocation()">Obtain location</button>
+  <button onclick="getLocation()">Obtain Location</button>
   <script>
   var locationInfo=document.getElementById("locationInfo");
   function getLocation(){
@@ -4651,7 +4651,11 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 Triggered when an error occurs during web page loading of main resources. You can use this API to customize the error display page.
 
-In addition, this feature takes effect only after the default error page is enabled by calling the [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20) API.
+> **NOTE**
+>
+> This feature takes effect only after the default error page is enabled by calling the [setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20) API.
+>
+> If the error code obtained through [errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode) is greater than 0, it indicates an HTTP error. If the error code is less than 0, it indicates a network error.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
