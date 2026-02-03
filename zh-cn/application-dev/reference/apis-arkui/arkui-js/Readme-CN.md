@@ -104,7 +104,5 @@
   - [继承样式](js-components-custom-style.md)
   - [slot插槽](js-components-custom-slot.md)
   - [生命周期定义](js-components-custom-lifecycle.md)
-- 全局接口<!--js-full-global-interface-->
-  - [旋转表冠事件监听](js-components-common-monitorcrownevents.md)
 - [动态创建组件](js-components-create-elements.md)
 - [数据类型说明](js-appendix-types.md)
