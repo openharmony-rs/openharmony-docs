@@ -79,7 +79,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
-**设备行为差异**：开发者调用此接口得到的返回值有差异，支持红外的设备返回红外信号的频率范围；不支持红外的设备返回一组最大和最小频率，且均为0Hz。建议开发者先调用[hasIrEmitter](#infraredemitterhasiremitter23)接口查询设备是否支持红外。
+**设备行为差异**：该接口在支持红外发射器的Phone和TV设备上返回红外信号的频率范围，在其他不支持红外发射器的设备上返回一组最大和最小频率，且均为0Hz。建议使用[hasIrEmitter](#infraredemitterhasiremitter23)接口查询设备是否支持红外发射器。
 
 **返回值**：
 
