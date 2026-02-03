@@ -965,7 +965,7 @@ export struct Index {
 
 releaseUIContent(): Promise&lt;void&gt;
 
-销毁WindowStage的主窗页面内容，使用Promise异步回调。如果应用在前台时调用该接口，页面内容不会立即销毁，会等到应用退后台后再销毁。在主窗没有加载页面内容时调用该接口不生效。
+销毁WindowStage的主窗页面内容，使用Promise异步回调。如果应用在前台时调用该接口，页面内容不会立即销毁，会等到应用退后台后再销毁。在主窗没有加载页面内容时调用该接口不生效不报错。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
