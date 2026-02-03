@@ -52,7 +52,6 @@ ArkTS-Dyn示例：
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { buffer } from '@kit.ArkTS';
-import { WebNetErrorList } from '@ohos.web.netErrorList'
 
 @Entry
 @Component
