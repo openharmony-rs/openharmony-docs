@@ -29,13 +29,9 @@ const domain: number = 0xFF00;
     abilityName: 'com.samples.famodelabilitydevelop.PageAbilitySingleton',
     parameters: { page: 'pages/second' }
   };
-  featureAbility.startAbility({ want: wantInfo })
-    .then((data) => {
-      hilog.debug(domain, TAG, `restartAbility success : ${JSON.stringify(data)}`);
-    })
-    .catch((err: Error) => {
-      hilog.error(domain, TAG, `restartAbility failed: ${err.message}`);
-    });
+  featureAbility.startAbility({ want: wantInfo }).then((data) => {
+    hilog.debug(domain, TAG, `restartAbility success : ${data}`);
+  });
 })()
 ```
 
@@ -77,9 +73,7 @@ class PageAbilitySingleton {
   onNewWant(want: Want) {
     featureAbility.getWant().then((want) => {
       GlobalContext.getContext().setObject('newWant', want);
-    }).catch((err: Error) => {
-      hilog.error(domain, TAG, `getWant failed: ${err.message}`);
-    });
+    })
   }
 }
 
@@ -102,9 +96,7 @@ struct First {
     if (newWant) {
       if (newWant.parameters) {
         if (newWant.parameters.page) {
-          router.pushUrl({ url: newWant.parameters.page as string}).catch((err: Error) => {
-            hilog.error(domain, TAG, `pushUrl failed: ${err.message}`);
-          });
+          router.pushUrl({ url: newWant.parameters.page as string});
           GlobalContext.getContext().setObject("newWant", undefined)
         }
       }
@@ -198,8 +190,6 @@ struct PagePageAbilityFirst {
             };
             featureAbility.startAbility({ want: want }).then((data) => {
               hilog.info(domain, TAG, `startAbility finish:${data}`);
-            }).catch((err: BusinessError) => {
-              hilog.info(domain, TAG, `startAbility failed errcode:${err.code}`);
             })
           })
         }
@@ -227,9 +217,7 @@ class PageAbilityStandard {
           router.pushUrl({ url: want.parameters.page as string });
         }
       }
-    }).catch((err: Error) => {
-      hilog.error(domain, TAG, `getWant failed: ${err.message}`);
-    });
+    })
   }
 }
 
