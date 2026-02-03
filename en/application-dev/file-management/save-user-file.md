@@ -11,6 +11,7 @@ When a user needs to download a file from the Internet or save a file to another
 **Permission Description**
 
 - The read and write permissions on the file URI granted by Picker is temporary by default, and will be automatically invalidated once the application exits.
+- If [autoCreateEmptyFile](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions) is set to **false**, the obtained URI has the temporary read and write permissions as well as the temporary creation and deletion permissions.
 - You can persist the permissions on the URI. For details, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).
 - No permission is required if your application uses Picker to save audio clips, images, videos, and document files.
 
@@ -45,8 +46,10 @@ If the security component cannot be called to save images and videos in your dev
    documentSaveOptions.newFileNames = ["DocumentViewPicker01.txt"];
    // Optional. Specify the path of the file or directory to save.
    documentSaveOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
-   // (Optional) Type of the document to save. The value is in ['Description|File name extensions'] format. To save all files, use 'All files (*.*)|.*'. If there are multiple file name extensions (a maximum of 100 extensions can be filtered), the first one is used by default. If this parameter is not specified, no extension is filtered by default.
+   // File type. The value is in ['Suffix type description|Suffix type'] format. To save all files, use 'All files (*.*)|.*' (optional). If multiple suffixes are selected (a maximum of 100 suffixes can be filtered), the first suffix is selected by default. If this parameter is not transferred, no suffix is filtered by default.
    documentSaveOptions.fileSuffixChoices = ['Document|.txt', '.pdf'];
+   // When saving files, the application determines whether to pre-create empty files. The default value is true, where the Picker pre-creates empty files and returns an array of file URIs. When the value is set to false, no empty files are pre-created, and only an array of file URIs is returned.
+   documentSaveOptions.autoCreateEmptyFile = false; 
    ```
 
 3. Create a [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12) instance, and call [save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save) to start the FilePicker page to save the document.
@@ -66,10 +69,10 @@ If the security component cannot be called to save images and videos in your dev
    });
    ```
 
-
    > **NOTE**
    >
    > - URI storage:
+   > 	- By default, the Picker [pre-creates empty files](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions) and returns a URI array of saved files. After obtaining the URI, the application can use [basic file APIs](../reference/apis-core-file-kit/js-apis-file-fs.md) to read and write files.
    > 	- You should avoid directly using a URI in the Picker callback.
    > 	- You are advised to define a global variable to save the URI for future use.
    >
@@ -80,11 +83,11 @@ If the security component cannot be called to save images and videos in your dev
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-   	// Note that the permission specified by the mode parameter of fs.openSync() is fs.OpenMode.READ_WRITE.
-   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      // Note that the permission specified by the mode parameter of fs.openSync() is fs.OpenMode.READ_WRITE.
+      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. Call [fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync) to modify the document based on the FD, and call **fs.closeSync()** to close the FD.
@@ -111,7 +114,7 @@ If the security component cannot be called to save images and videos in your dev
    ```ts
    const audioSaveOptions = new picker.AudioSaveOptions();
    // (Optional) Name of the document to save.
-   audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3']; 
+   audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3'];
    ```
 
 3. Create an [AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker) instance and call [save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save-5) to start the FilePicker page to save the audio clip.
@@ -131,10 +134,10 @@ If the security component cannot be called to save images and videos in your dev
    });
    ```
 
-
    > **NOTE**
    >
    > - URI storage:
+   > 	- By default, the Picker [pre-creates empty files](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions) and returns a URI array of saved files. After obtaining the URI, the application can use [basic file APIs](../reference/apis-core-file-kit/js-apis-file-fs.md) to read and write files.
    > 	- You should avoid directly using a URI in the Picker callback.
    > 	- You are advised to define a global variable to save the URI for future use.
    >
@@ -145,11 +148,11 @@ If the security component cannot be called to save images and videos in your dev
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-  	 // Note that the permission specified by the mode parameter of fs.openSync() is fileIo.OpenMode.READ_WRITE.
-   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      // Note that the permission specified by the mode parameter of fs.openSync() is fileIo.OpenMode.READ_WRITE.
+      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. Call [fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync) to modify the document based on the FD, and call **fs.closeSync()** to close the FD.
@@ -187,7 +190,7 @@ If the security component cannot be called to save images and videos in your dev
    ```ts
    const documentSaveOptions = new picker.DocumentSaveOptions();
    // Set pickerMode to DOWNLOAD, which takes precedence over the settings in documentSaveOptions.
-   documentSaveOptions.pickerMode = picker.DocumentPickerMode.DOWNLOAD; 
+   documentSaveOptions.pickerMode = picker.DocumentPickerMode.DOWNLOAD;
    ```
 
 3. Save the file to the **Download** directory.
