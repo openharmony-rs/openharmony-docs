@@ -4785,6 +4785,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **示例：**
@@ -4892,6 +4893,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **示例：**
@@ -5007,6 +5009,7 @@ ArkTS-Sta: authUser(userId: int, challenge: Uint8Array, authType: AuthType, auth
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **示例：**
@@ -9557,6 +9560,7 @@ ArkTS-Sta示例：
 | FINGERPRINT<sup>10+</sup>   | 4     | 表示指纹认证类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
 | RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22|
 | PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 22 |
+| COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 22|
 
 ## AuthSubType<sup>8+</sup>
