@@ -353,13 +353,13 @@ test(a2);
   ``` TypeScript
   // example.ts
   // 混淆前：
-  import * as m from '../test1/test2';
-  import { foo } from '../test1/test2';
+  import * as m from '../FilenameObfuscationTest/FilenameObfuscationTest';
+  import { foo } from '../FilenameObfuscationTest/FilenameObfuscationTest';
   // ...
   m.foo();
   foo();
   async function func1() {
-    const modules = await import('../test1/test2');
+    const modules = await import('../FilenameObfuscationTest/FilenameObfuscationTest');
     const result = modules.foo();
   }
   ```
@@ -727,20 +727,20 @@ test(a2);
 <!-- @[optionExample_useKeepInSource1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
 ``` TypeScript
-// 保留类名和所有成员名。
+// 保留类名和所有成员名
 // @KeepSymbol
 class MyClass02 {
-  prop01: string = "prop"; // MyClass02和prop01不会被混淆。
+  prop01: string = "prop"; // MyClass02和prop01不会被混淆
 }
 
-// 通过构造函数保留类名。
+// 通过构造函数保留类名
 class MyClass03 {
   prop02: string = "prop";
   // @KeepSymbol
-  constructor() {}; // MyClass03不会被混淆。
+  constructor() {}; // MyClass03不会被混淆
 }
 
-// 保留类名和指定的字段名和方法，类中MyClass04，prop03_1，method03_2不会被混淆。
+// 保留类名和指定的字段名和方法，类中MyClass04，prop03_1，method03_2不会被混淆
 class MyClass04 {
   // @KeepSymbol
   prop03_1: string = "prop";
@@ -764,14 +764,14 @@ class MyClass04 {
 <!-- @[optionExample_useKeepInSource2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
 ``` TypeScript
-// 保留接口名和所有成员名，MyInterface01，name01，foo01不会被混淆。
+// 保留接口名和所有成员名，MyInterface01，name01，foo01不会被混淆
 // @KeepSymbol
 interface MyInterface01 {
   name01: string;
   foo01(): void;
 }
 
-// 保留接口名和指定的字段和方法名，MyInterface02，name02不会被混淆。
+// 保留接口名和指定的字段和方法名，MyInterface02，name02不会被混淆
 interface MyInterface02 {
   // @KeepSymbol
   name02: string;
@@ -791,18 +791,18 @@ interface MyInterface02 {
 <!-- @[optionExample_useKeepInSource3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
 ``` TypeScript
-// 保留枚举名和所有成员名，Color01，RED01，BLUE01不会被混淆。
+// 保留枚举名和所有成员名，Color01，RED01，BLUE01不会被混淆
 // @KeepSymbol
 enum Color01 {
   RED01,
   BLUE01
 }
 
-// 保留枚举名指定的枚举成员名。
+// 保留枚举名指定的枚举成员名
 enum Color02 {
   RED02,
   // @KeepSymbol
-  BLUE02 // Color02，BLUE02不会被混淆。
+  BLUE02 // Color02，BLUE02不会被混淆
 }
 ```
 
@@ -815,7 +815,7 @@ enum Color02 {
 <!-- @[optionExample_useKeepInSource4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
 ``` TypeScript
-// 保留函数名，MyAdd不会被混淆。
+// 保留函数名，MyAdd不会被混淆
 // @KeepSymbol
 function MyAdd(a: number, b:number): number {
   return a + b;
@@ -831,7 +831,7 @@ function MyAdd(a: number, b:number): number {
 <!-- @[optionExample_useKeepInSource5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
 ``` TypeScript
-// 保留命名空间名以及内部直接导出的成员名称，MyNameSpace以及foo不会被混淆。
+// 保留命名空间名以及内部直接导出的成员名称，MyNameSpace以及foo不会被混淆
 // @KeepSymbol
 namespace MyNameSpace {
   export function foo(){};
@@ -848,7 +848,7 @@ namespace MyNameSpace {
 <!-- @[optionExample_useKeepInSource6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
 
 ``` TypeScript
-// 保留被标记的变量名，myVal不会被混淆。
+// 保留被标记的变量名，myVal不会被混淆
 // @KeepSymbol
 const myVal = 1;
 ```
@@ -864,10 +864,10 @@ const myVal = 1;
 <!-- @[etsOptionExample_useKeepInSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->     
 
 ``` TypeScript
-// 保留被标记的注解声明，MyAnnotation不会被混淆。
+// 保留被标记的注解声明，MyAnnotation不会被混淆
 // @KeepSymbol
 @interface MyAnnotation2 {
-  // 标记注解成员无效，authorName不会被收集到白名单。
+  // 标记注解成员无效，authorName不会被收集到白名单
   // @KeepSymbol
   authorName: string;
   revision: number = 1;
@@ -908,10 +908,10 @@ export class MyClass05 {
 <!-- @[optionExample_useKeepInSource8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
 
 ``` TypeScript
-// example.ts。
+// example.ts
 const myMethodName = "myMethod";
 
-// 11，aa，myMethod不会被收集到白名单中。
+// 11，aa，myMethod不会被收集到白名单中
 class MyClass06 {
   // @KeepSymbol
   11:11;
@@ -921,7 +921,7 @@ class MyClass06 {
   [myMethodName](){}
 }
 
-// RED不会被收集到白名单中。
+// RED不会被收集到白名单中
 enum MyEnum {
   // @KeepSymbol
   'RED',
@@ -1200,16 +1200,16 @@ lastName
 
 ``` TypeScript
 // 混淆配置：
-// -enable-property-obfuscation。
-// -enable-string-property-obfuscation。
+// -enable-property-obfuscation
+// -enable-string-property-obfuscation
 
-// example.ts。
+// example.ts
 var obj2 = {t:'1', m:'2'};
 obj2.t = 'a';
-console.info(obj2['t']); // 此时，'t'会被正确混淆，t可以选择性保留。
+console.info(obj2['t']); // 此时，'t'会被正确混淆，t可以选择性保留
 
 obj2['m'] = 'b';
-console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保留。
+console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保留
 ```
 
 2.对于间接或直接导出的类或对象的属性名的场景，如果混淆后出现问题，可以使用[-keep-property-name](#-keep-property-name)来保留这些属性名。
@@ -1217,14 +1217,14 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
   <!-- @[optionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->     
   
   ``` TypeScript
-  // 间接导出MyClass07。
+  // 间接导出MyClass07
   class MyClass07 {
     greet() {}
   }
   let alias = new MyClass07();
   export { alias };
   
-  // 直接导出MyClass08。
+  // 直接导出MyClass08
   export class MyClass08 {
     exampleName: 'jack'
     exampleAge: 100
@@ -1253,33 +1253,33 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
   ```
 
   <!-- @[optionExample_keepPropertyName3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
-
+  
   ``` TypeScript
-  import jsonData from './test.json';
+  import jsonData from './ImportJson.json';
   // ...
-  let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留。
-
+  let jsonProp = jsonData.jsonProperty; // jsonProperty应该被保留
+  
   class jsonTest {
     prop1: string = '';
     prop2: number = 0
   }
-
+  
   let obj = new jsonTest();
-  const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留。
+  const jsonStr = JSON.stringify(obj); // prop1 和 prop2 会被混淆，应该被保留
   ```
 
 5.使用到的数据库相关的字段，需要手动保留。例如，数据库键值对类型（ValuesBucket）中的属性：
 
   <!-- @[optionExample_keepPropertyName4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
-
+  
   ``` TypeScript
   import { ValuesBucket } from '@kit.ArkData';
   // ...
   const valueBucket: ValuesBucket = {
-    ID1: 'ID1', // ID1应该被保留。
-    NAME1: 'jack', // NAME1应该被保留。
-    AGE1: 20, // AGE1应该被保留。
-    SALARY1: 100 // SALARY1应该被保留。
+    ID1: 'ID1', // ID1应该被保留
+    NAME1: 'jack', // NAME1应该被保留
+    AGE1: 20, // AGE1应该被保留
+    SALARY1: 100 // SALARY1应该被保留
   }
   ```
 
@@ -1288,30 +1288,30 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
 示例：
 
   <!-- @[optionExample_keepPropertyName5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
-
+  
   ``` TypeScript
   function CustomDecorator(target: Object, propertyKey: string) {}
   function MethodDecorator(target: Object, propertyKey: string, descriptor: PropertyDescriptor) {}
   function ParamDecorator(target: Object, propertyKey: string, parameterIndex: number) {}
-
+  
   class A {
-    // 1.成员变量装饰器。
+    // 1.成员变量装饰器
     @CustomDecorator
-    propertyName1: string = ""   // propertyName1 需要被保留。
-    // 2.成员方法装饰器。
+    propertyName1: string = ""   // propertyName1 需要被保留
+    // 2.成员方法装饰器
     @MethodDecorator
-    methodName1() {} // methodName1 需要被保留。
-    // 3.方法参数装饰器。
-    methodName2(@ParamDecorator param: string): void {} // methodName2 需要被保留。
+    methodName1() {} // methodName1 需要被保留
+    // 3.方法参数装饰器
+    methodName2(@ParamDecorator param: string): void {} // methodName2 需要被保留
   }
   ```
 
 7.使用到的数据请求相关的字段需要手动保留，例如，传递给数据请求方的字段需要手动保留：
 
   <!-- @[etsOptionExample_keepPropertyName2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ets) -->       
-
+  
   ``` TypeScript
-  // example.ets。
+  // example.ets
   import { UIAbility } from '@kit.AbilityKit';
   import { http } from '@kit.NetworkKit';
   // ...
@@ -1322,7 +1322,7 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
         {
           method: http.RequestMethod.POST,
           header: { 'Content-Type': 'application/json' },
-          extraData: { usernameTest: 'test1', passwordTest: 'test2'}, // usernameTest 和 passwordTest 需要被保留。
+          extraData: { usernameTest: 'test1', passwordTest: 'test2'}, // usernameTest 和 passwordTest 需要被保留
         })
     }
   }
@@ -1345,8 +1345,8 @@ printPersonName
 ``` TypeScript
 // example.ts
 export namespace Ns {
-  export const myAge = 18 // -keep-global-name myAge 保留变量myAge。
-  export function myFunc() {} // -keep-global-name myFunc 保留函数myFunc。
+  export const myAge = 18 // -keep-global-name myAge 保留变量myAge
+  export function myFunc() {} // -keep-global-name myFunc 保留函数myFunc
 }
 ```
 
@@ -1363,7 +1363,7 @@ export namespace Ns {
 <!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/cpp/types/libentry/Index.d.ts) -->          
 
 ``` TypeScript
-// src/main/cpp/types/libentry/Index.d.ts。
+// src/main/cpp/types/libentry/Index.d.ts
 declare function testNapi2(): void;
 declare function testNapi3(): void;
 ```
@@ -1372,7 +1372,7 @@ declare function testNapi3(): void;
 
 ``` TypeScript
 // example.ets
-import { testNapi2, testNapi3 as myNapi } from 'libentry.so'; // testNapi2 和 testNapi3 应该被保留。
+import { testNapi2, testNapi3 as myNapi } from 'libentry.so'; // testNapi2 和 testNapi3 应该被保留
 // ...
 testNapi2();
 myNapi();
@@ -1408,10 +1408,10 @@ file
 1.在使用`require`引入文件路径时，由于`ArkTS`不支持[CommonJS](../arkts-utils/module-principle.md#commonjs模块)语法，因此这种情况下路径应该被保留。
 
   <!-- @[jsOptionExample_keepFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.js) -->        
-
+  
   ``` JavaScript
   // example.js
-  const module1 = require('./file1'); // file1 应该被保留。
+  const module1 = require('./RequireFile'); // RequireFile 应该被保留
   ```
 
 2.对于动态导入的路径名，由于无法识别`import`函数中的参数是否为路径，因此在这种情况下应保留路径。
@@ -1427,7 +1427,7 @@ file
   
   ``` TypeScript
   // main.ts
-  const moduleName = './file2'; // moduleName对应的路径名file2应该被保留。
+  const moduleName = './DynamicImportFile'; // moduleName对应的路径名DynamicImportFile应该被保留
   async function func2() {
     const modules = await import(moduleName);
     const result = modules.foo();

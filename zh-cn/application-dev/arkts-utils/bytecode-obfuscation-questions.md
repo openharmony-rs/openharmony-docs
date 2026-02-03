@@ -138,7 +138,7 @@ this.__messageStr = new ObservedPropertySimplePU('Hello World', this, "messageSt
 // Sample.ets
 import { Type } from '@kit.ArkUI';
 
-// 数据中心。
+// 数据中心
 @ObservedV2
 class SampleChild {
   @Trace public p123: number = 0;
@@ -147,7 +147,7 @@ class SampleChild {
 
 @ObservedV2
 export class Sample {
-  // 对于复杂对象需要@Type修饰，确保序列化成功。
+  // 对于复杂对象需要@Type修饰，确保序列化成功
   @Type(SampleChild)
   @Trace public f123: SampleChild = new SampleChild();
 }
@@ -320,9 +320,9 @@ parameters的类型为Record<string, Object>，在开启属性混淆后，parame
 <!-- @[import_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
 
 ``` TypeScript
-// 混淆前。
+// 混淆前
 import { Want } from '@kit.AbilityKit';
-// ...
+  // ...
   let petalMapWant: Want = {
     bundleName: 'com.example.myapplication',
     uri: 'maps://',
@@ -450,9 +450,9 @@ export interface MyInfo {
 <!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->
 
 ``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
+// ExportCompositeInterface.ts
+import { MyInfo } from './ExportCompositeInterface';
+  // ...
   const person: MyInfo = {
     age: 20,
     address: {
@@ -584,8 +584,8 @@ export namespace NS {
 
 ``` TypeScript
 // import.ts
-import { NS } from './export';
-// ...
+import { NS } from './ExportNs';
+  // ...
   NS.foo();
 ```
 

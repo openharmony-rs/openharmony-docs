@@ -134,8 +134,8 @@ export namespace NS {
 
 ``` TypeScript
 // import.ts
-import { NS } from './export';
-// ...
+import { NS } from './ExportNs';
+  // ...
   NS.foo();
 ```
 
@@ -197,15 +197,15 @@ export function add(a: number, b: number): number {
 async function loadAndUseAdd() {
   let result: number = 0;
   try {
-    const mathUtils = await import('./utils');
+    const mathUtils = await import('./ExportUtils');
     result = mathUtils.add(2, 3);
     console.info(`result = ${result}`);
   } catch (error) {
     console.error('Failure reason:', error);
   }
 }
-// ...
-          loadAndUseAdd();
+
+loadAndUseAdd();
 ```
 
 ```ts
@@ -259,7 +259,7 @@ addNum
 <!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
-// src/main/cpp/types/libentry/Index.d.ts。
+// src/main/cpp/types/libentry/Index.d.ts
 export const addNum: (a: number, b: number) => number;
 ```
 
@@ -267,9 +267,9 @@ export const addNum: (a: number, b: number) => number;
 
 ``` TypeScript
 // example.ets
-// 混淆前。
+// 混淆前
 import testNapi from 'libentry.so';
-// ...
+  // ...
   let sun = testNapi.addNum(1, 2);
 ```
 
@@ -318,10 +318,10 @@ export { addNum } from '../utils/Calc';
 <!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// entry模块。
+// entry模块
 import { addNum } from 'sharedlibrary';
-// ...
-  let sun = addNum(1, 2);
+
+addNum(1, 2);
 ```
 
 ```ts
@@ -374,9 +374,9 @@ addNum
 <!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// 混淆前。
+// 混淆前
 import { Want } from '@kit.AbilityKit';
-// ...
+  // ...
   let petalMapWant: Want = {
     bundleName: 'com.example.myapplication',
     uri: 'maps://',
@@ -444,9 +444,9 @@ export interface MyInfo {
 <!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// file2.ts
-import { MyInfo } from './file1';
-// ...
+// FileOutside.ts
+import { MyInfo } from './FileInside';
+  // ...
   const person: MyInfo = {
     age: 20,
     address: {
