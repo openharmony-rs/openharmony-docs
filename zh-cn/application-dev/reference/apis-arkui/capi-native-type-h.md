@@ -2351,9 +2351,11 @@ enum ArkUI_EllipsisMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ELLIPSIS_MODE_START = 0 | 省略行首内容。 |
-| ARKUI_ELLIPSIS_MODE_CENTER | 省略行中内容。 |
-| ARKUI_ELLIPSIS_MODE_END | 省略行末内容。 |
+| ARKUI_ELLIPSIS_MODE_START = 0 | 省略行首内容。适用单行文本场景。 |
+| ARKUI_ELLIPSIS_MODE_CENTER = 1 | 省略行中内容。适用单行文本场景。 |
+| ARKUI_ELLIPSIS_MODE_END = 2 | 省略行末内容。适用单行文本和多行文本场景 |
+| ARKUI_ELLIPSIS_MODE_MULTILINE_START = 3 | 省略行首内容。适用单行文本和多行文本场景。<br>**起始版本：** 24 |
+| ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER = 4 | 省略行中内容。适用单行文本和多行文本场景。<br>**起始版本：** 24 |
 
 ### ArkUI_ImageRenderMode
 

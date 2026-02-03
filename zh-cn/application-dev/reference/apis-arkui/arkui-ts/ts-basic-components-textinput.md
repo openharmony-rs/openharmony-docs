@@ -1233,7 +1233,7 @@ ellipsisMode(mode: Optional\<EllipsisMode>)
 
 设置省略位置。ellipsisMode属性仅在[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)下生效，需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
 
-非编辑态时正常生效，编辑态时EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1时生效，EllipsisMode.END正常生效。
+非编辑态时正常生效，编辑态时EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1时生效，EllipsisMode.END、EllipsisMode.MULTILINE_START和EllipsisMode.MULTILINE_CENTER正常生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2877,7 +2877,15 @@ struct TextInputExample {
 
 ### 示例16（文本设置省略模式）
 
-该示例通过[textOverflow](#textoverflow12)（从API version 12开始）、[ellipsisMode](#ellipsismode18)（从API version 18开始）、[style](#style9)（从API version 9开始）属性展示了文本超长省略以及调整省略位置的效果。
+该示例通过[textOverflow](#textoverflow12)、[ellipsisMode](#ellipsismode18)、[style](#style9)属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。
+
+从API version 9开始，通过[style](#style9)设置输入框的风格。
+
+从API version 12开始，通过[textOverflow](#textoverflow12)设置文本超长时的显示方式。
+
+从API version 18开始，通过[ellipsisMode](#ellipsismode18)设置省略号位置。
+
+从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
 ```ts
 // xxx.ets
@@ -2890,8 +2898,9 @@ struct EllipsisModeExample {
     "The air is filled with the sweet scent of blooming flowers, mingling with the earthy aroma of freshly turned soil.";
   @State ellipsisModeIndex: number = 0;
   @State ellipsisMode: (EllipsisMode | undefined | null)[] =
-    [EllipsisMode.END, EllipsisMode.START, EllipsisMode.CENTER];
-  @State ellipsisModeStr: string[] = ['END ', 'START', 'CENTER'];
+    [EllipsisMode.END, EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.MULTILINE_START,
+      EllipsisMode.MULTILINE_CENTER]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER
+  @State ellipsisModeStr: string[] = ['END ', 'START', 'CENTER', 'MULTILINE_START', 'MULTILINE_CENTER'];
   @State textOverflowIndex: number = 0;
   @State textOverflow: TextOverflow[] = [TextOverflow.Ellipsis, TextOverflow.Clip];
   @State textOverflowStr: string[] = ['Ellipsis', 'Clip'];
@@ -2932,7 +2941,7 @@ struct EllipsisModeExample {
 }
 ```
 
-![textInputEllipsisMode](figures/textInputEllipsisMode.png)
+![textInputEllipsisMode](figures/textInputEllipsisMode.gif)
 
 ### 示例17（输入框支持输入状态变化等回调）
 

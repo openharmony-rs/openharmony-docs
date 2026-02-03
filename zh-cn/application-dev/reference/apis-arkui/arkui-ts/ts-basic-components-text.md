@@ -1909,7 +1909,13 @@ struct TextExample2 {
 
 ### 示例3（设置文本超长省略）
 
-该示例通过[maxLines](#maxlines)、[textOverflow](#textoverflow)、[ellipsisMode](#ellipsismode11)（从API version 11开始）属性展示了文本超长省略以及调整省略位置的效果，同时，可以通过[marqueeOptions](#marqueeoptions18)（从API version 18开始）配置跑马灯模式下的配置项以及跑马灯动画进行到特定的阶段时，触发的回调[onMarqueeStateChange](#onmarqueestatechange18)（从API version 18开始）。
+该示例通过[maxLines](#maxlines)、[textOverflow](#textoverflow)、[ellipsisMode](#ellipsismode11)属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。同时，可以通过[marqueeOptions](#marqueeoptions18)配置跑马灯模式下的配置项以及跑马灯动画进行到特定的阶段时，触发的回调[onMarqueeStateChange](#onmarqueestatechange18)。
+
+从API version 11开始，通过[ellipsisMode](#ellipsismode11)属性设置文本超长时的显示方式。
+
+从API version 18开始，新增[marqueeOptions](#marqueeoptions18)属性设置跑马灯模式下的配置项，同时新增回调[onMarqueeStateChange](#onmarqueestatechange18)。
+
+从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
 ```ts
 // xxx.ets
@@ -1918,7 +1924,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Extend(Text)
 function style() {
   .textAlign(TextAlign.Center)
-  .fontSize(12)
+  .fontSize(15)
   .border({ width: 1 })
   .padding(10)
   .width('100%')
@@ -1929,15 +1935,21 @@ function style() {
 @Component
 struct TextExample3 {
   @State text: string =
-    'The text component is used to display a piece of textual information.Support universal attributes and universal text attributes.';
+    'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.' +
+      'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.';
   @State ellipsisModeIndex: number = 0;
-  @State ellipsisMode: EllipsisMode[] = [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END];
-  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END'];
+  @State ellipsisMode: EllipsisMode[] =
+    [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END, EllipsisMode.MULTILINE_START,
+      EllipsisMode.MULTILINE_CENTER]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER
+  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END', 'MULTILINE_START',
+    'MULTILINE_CENTER'];
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
       // 文本超长时显示方式
-      Text('TextOverflow+maxLines').fontSize(9).fontColor(0xCCCCCC)
+      Text('TextOverflow+maxLines').fontSize(12).fontColor(Color.Black)
       // 超出maxLines截断内容展示
       Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content.')
         .textOverflow({ overflow: TextOverflow.Clip })
@@ -1950,7 +1962,7 @@ struct TextExample3 {
         .maxLines(1)
         .style()
 
-      Text('marquee').fontSize(9).fontColor(0xCCCCCC)
+      Text('marquee').fontSize(12).fontColor(Color.Black)
       // 设置文本超长时以跑马灯的方式展示
       Text('This is the text with the text overflow set marquee')
         .textOverflow({ overflow: TextOverflow.MARQUEE })
@@ -1976,12 +1988,18 @@ struct TextExample3 {
           }
         })
 
-      Text('ellipsisMode').fontSize(9).fontColor(0xCCCCCC)
       // 设置文本超长时省略号的位置
+      Text('ellipsisMode(单行文本)').fontSize(12).fontColor(Color.Black)
       Text(this.text)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
         .maxLines(1)
+        .style()
+      Text('ellipsisMode(多行文本)').fontSize(12).fontColor(Color.Black)
+      Text(this.text)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
+        .maxLines(3)
         .style()
 
       Row() {
