@@ -2056,8 +2056,8 @@ struct NavigationExample {
         .width(24)
         .height(24)
         .margin({ left: 24 })
-      // 'common/ic_public_more.svg'需要替换为开发者所需的资源文件
-      Image('common/ic_public_more.svg')
+      // 'resources/base/media/ic_public_more.svg'需要替换为开发者所需的资源文件
+      Image('resources/base/media/ic_public_more.svg')
         .width(24)
         .height(24)
         .margin({ left: 24 })
