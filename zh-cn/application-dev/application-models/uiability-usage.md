@@ -7,12 +7,15 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件的基本用法包括：指定UIAbility的启动页面以及获取UIAbility的上下文[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。
+本文主要介绍[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件的基本用法，包括：
+- 指定UIAbility的启动页面。
+- 获取UIAbility的上下文[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。
+- 获取UIAbility拉起方的信息。
 
 
 ## 指定UIAbility的启动页面
 
-应用中的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)在启动过程中，需要指定启动页面，否则应用启动后会因为没有默认加载页面而导致白屏。可以在UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，通过[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)对象的[loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)方法设置启动页面。
+应用中的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)在启动过程中，需要指定启动页面，否则应用启动后会因为没有默认加载页面而导致白屏。可以在UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，通过[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)对象的[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法设置启动页面。
 
 
 ```ts
@@ -37,10 +40,11 @@ export default class EntryAbility extends UIAbility {
 ## 获取UIAbility的上下文信息
 
 [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)类拥有自身的上下文信息，该信息为[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)类的实例，[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)类拥有abilityInfo、currentHapModuleInfo等属性。通过UIAbilityContext可以获取UIAbility的相关配置信息，如包代码路径、Bundle名称、Ability名称和应用程序需要的环境状态等属性信息，以及可以获取操作UIAbility实例的方法（如[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)等）。
+
 如果需要在页面中获得当前Ability的Context，可调用[getHostContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)接口获取当前页面关联的UIAbilityContext或[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
-  
+
   ```ts
   import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 
@@ -110,11 +114,11 @@ export default class EntryAbility extends UIAbility {
   @Entry
   @Component
   struct Page_UIAbilityComponentsBasicUsage {
-    // 页面展示
-    build() {
-      Column() {
-        //...
-        Button('FuncAbilityB')
+      // 页面展示
+      build() {
+        Column() {
+          // ...
+          Button('FuncAbilityB')
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             try {
@@ -189,7 +193,7 @@ export default class EntryAbility extends UIAbility {
     }
     ```
 
-2. 在UIAbilityB的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，获取并打印UIAbilityA的Pid、BundleName和AbilityName。
+2. 在UIAbilityB的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，获取UIAbilityA的Pid、BundleName和AbilityName，并通过日志输出。
 
     ```ts
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
