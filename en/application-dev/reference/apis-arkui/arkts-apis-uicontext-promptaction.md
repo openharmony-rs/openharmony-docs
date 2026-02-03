@@ -634,7 +634,7 @@ struct Index {
 
 openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options?: promptAction.BaseDialogOptions): Promise&lt;void&gt;
 
-Opens a custom dialog box corresponding to **dialogContent**. This API uses a promise to return the result. The dialog box displayed through this API has its content fully following style settings of **dialogContent**. It is displayed in the same way where **customStyle** is set to **true**. Note that using **[isModal](js-apis-promptAction.md#basedialogoptions11) = true** and **[showInSubWindow](js-apis-promptAction.md#basedialogoptions11) = true** together is not supported. If they are used together, only **showInSubWindow = true** takes effect.
+Opens a custom dialog box corresponding to **dialogContent**. This API uses a promise to return the result. The dialog box displayed through this API has its content fully following style settings of **dialogContent**. It is displayed in the same way where **customStyle** is set to **true**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -645,7 +645,7 @@ Opens a custom dialog box corresponding to **dialogContent**. This API uses a pr
 | Name    | Type                                      | Mandatory  | Description     |
 | ------- | ---------------------------------------- | ---- | ------- |
 | dialogContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content of the custom dialog box.|
-| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | No   |   Dialog box style.|
+| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | No   |   Dialog box style.<br>Note: If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.|
 
 **Return value**
 
@@ -764,7 +764,7 @@ struct Index {
 
 openCustomDialog(options: promptAction.CustomDialogOptions): Promise\<number>
 
-Creates and displays a custom dialog box. This API uses a promise to return the dialog box ID for use with **closeCustomDialog**. **isModal = true** and **showInSubWindow = true** cannot be used at the same time. If they are used together, only **showInSubWindow = true** takes effect.
+Creates and displays a custom dialog box. This API uses a promise to return the dialog box ID for use with **closeCustomDialog**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -774,7 +774,7 @@ Creates and displays a custom dialog box. This API uses a promise to return the 
 
 | Name | Type                                                        | Mandatory| Description              |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | Yes  | Content of the custom dialog box.|
+| options | [promptAction.CustomDialogOptions](js-apis-promptAction.md#customdialogoptions11) | Yes  | Content of the custom dialog box.<br>Note: If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.|
 
 **Return value**
 
@@ -874,8 +874,6 @@ Opens a custom dialog box corresponding to **dialogContent**. This API uses a pr
 
 The dialog box displayed through this API has its content fully following style settings of **dialogContent**. It is displayed in the same way where **customStyle** is set to **true**.
 
-Note that using **[isModal](js-apis-promptAction.md#basedialogoptions11) = true** and **[showInSubWindow](js-apis-promptAction.md#basedialogoptions11) = true** together is not supported. If they are used together, only **showInSubWindow = true** takes effect.
-
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -886,7 +884,7 @@ Note that using **[isModal](js-apis-promptAction.md#basedialogoptions11) = true*
 | ------- | ---------------------------------------- | ---- | ------- |
 | dialogContent | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) | Yes| Content of the custom dialog box.|
 | controller | [promptAction.DialogController](js-apis-promptAction.md#dialogcontroller18) | Yes| Controller of the custom dialog box.|
-| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | No   | Style of the custom dialog box.|
+| options | [promptAction.BaseDialogOptions](js-apis-promptAction.md#basedialogoptions11) | No   | Style of the custom dialog box.<br>Note: If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.|
 
 **Return value**
 
@@ -1259,8 +1257,6 @@ Creates and displays a custom dialog box. This API uses a promise to return the 
 
 The dialog box ID can be included in the dialog box content for related operations. A dialog box controller can be bound to the custom dialog box, allowing for subsequent control of the dialog box through the controller.
 
-**isModal = true** and **showInSubWindow = true** cannot be used at the same time. If they are used together, only **showInSubWindow = true** takes effect.
-
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -1271,7 +1267,7 @@ The dialog box ID can be included in the dialog box content for related operatio
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [CustomBuilderWithId](arkts-apis-uicontext-t.md#custombuilderwithid18) | Yes  | Content of the custom dialog box.|
 | controller | [promptAction.DialogController](js-apis-promptAction.md#dialogcontroller18) | No| Controller of the custom dialog box.|
-| options | [promptAction.DialogOptions](js-apis-promptAction.md#dialogoptions18) | No| Style of the custom dialog box.|
+| options | [promptAction.DialogOptions](js-apis-promptAction.md#dialogoptions18) | No| Style of the custom dialog box.<br>Note: If both [isModal](js-apis-promptAction.md#basedialogoptions11) and [showInSubWindow](js-apis-promptAction.md#basedialogoptions11) in **BaseDialogOptions** are set to **true**, only **showInSubWindow** takes effect. In this case, the non-modal dialog box is displayed without mask in the subwindow.|
 
 **Return value**
 

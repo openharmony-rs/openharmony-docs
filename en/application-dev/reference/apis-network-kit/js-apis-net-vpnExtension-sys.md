@@ -12,6 +12,7 @@ This module implements virtual private network (VPN) management, such as startin
 Third-party VPNs refer to VPN services provided by third parties. They usually support more security and privacy functions and more comprehensive customization options.
 
 > **NOTE**
+>
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.net.vpnExtension (VPN Extension)](js-apis-net-vpnExtension.md).
 

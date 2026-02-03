@@ -97,6 +97,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -150,6 +151,7 @@ Removes allowed Bluetooth devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -262,6 +264,8 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                               |
@@ -312,6 +316,8 @@ Removes disallowed Bluetooth devices. If some Bluetooth devices are removed from
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -430,6 +436,7 @@ Enables Bluetooth. After Bluetooth is enabled, the user can manually disable it.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -479,6 +486,7 @@ Disables Bluetooth. After Bluetooth is disabled, the user can manually enable it
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -527,6 +535,8 @@ Adds disallowed Bluetooth protocols. Specified users cannot use the disallowed B
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -579,6 +589,8 @@ Removes disallowed Bluetooth protocols. After removing some protocols, the user 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 

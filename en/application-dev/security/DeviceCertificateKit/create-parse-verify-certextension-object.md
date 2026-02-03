@@ -22,7 +22,10 @@ This topic walks you through on how to create a certificate extension (**CertExt
 
 4. Use [CertExtension.checkCA](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkca10) to check whether the certificate is a CA certificate.
 
-```ts
+<!-- @[create_parse_validate_certificate_extension_info_objects](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCertextensionObject.ets) -->
+
+``` TypeScript
+
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
@@ -53,11 +56,11 @@ function certExtensionSample(): void {
   cert.createCertExtension(encodingBlob, (err, certExtension) => {
     if (err != null) {
       // The CertExtension object fails to be created.
-      console.error(`createCertExtension failed, errCode:${err.code}, errMsg:${err.message} `);
+      console.error(`createCertExtension failed, errCode:${err.code}, errMsg:${err.message}`);
       return;
     }
     // The CertExtension object is created.
-    console.info('createCertExtension success');
+    console.info('createCertExtension result: success.');
 
     try {
       // Obtain the certificate extension information based on an OID.
@@ -69,10 +72,10 @@ function certExtensionSample(): void {
 
       // Check whether the certificate is a CA certificate.
       let pathLen = certExtension.checkCA();
-      console.info('test cert extension success');
+      console.info('checkCA result: success.');
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error(`operation failed, message:${e.message} ,code:${e.code} `);
+      console.error(`operation failed, errCode:${e.code}, errMsg:${e.message}`);
     }
   });
 }

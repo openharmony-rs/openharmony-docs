@@ -13,7 +13,9 @@ Misc devices refer to LED lights and vibrators on devices. LED lights are mainly
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 8. You are advised to use [@ohos.vibrator](js-apis-vibrator.md) instead.
+> - Module maintenance policy:
+ >   - For lite wearables, this module is constantly maintained and available.
+ >   - For other device types, this module is no longer maintained since API version 8, and you are advised to use the new [@ohos.vibrator](js-apis-vibrator.md) module.
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - This module requires hardware support and can only be debugged on real devices.
 
@@ -31,11 +33,11 @@ import { Vibrator } from '@kit.SensorServiceKit';
 
 Triggers device vibration.
 
+Except for lite wearables, you are advised to use [vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9) since API version 8.
+
 **Required permissions**: ohos.permission.VIBRATE
 
 **System capability**: SystemCapability.Sensors.MiscDevice.Lite
-
-**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 **Parameters**
 
@@ -70,8 +72,6 @@ Defines the vibration options.
 **Required permissions**: ohos.permission.VIBRATE
 
 **System capability**: SystemCapability.Sensors.MiscDevice.Lite
-
-**Device behavior differences**: This API has no effect on lite wearables, but works properly on other devices.
 
 | Name    | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |

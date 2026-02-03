@@ -37,6 +37,7 @@ Be aware of the component's usage constraints and lifecycle management to maximi
   The **EmbeddedComponent** supports [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md), with default and minimum width and height values set to 10 vp.
   
   The following width- and height-related attributes are not supported:
+  
   **constraintSize**, **aspectRatio**, **layoutWeight**, **flexBasis**, **flexGrow**, and **flexShrink**.
 
 - Event handling
@@ -186,13 +187,12 @@ The following is an implementation of the entry component of the provider applic
 ``` TypeScript
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-let storage = LocalStorage.getShared();
-
-@Entry(storage)
+@Entry()
 @Component
 struct Extension {
   @State message: string = 'EmbeddedUIExtensionAbility Index';
-  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+  private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  private session: UIExtensionContentSession | undefined = this.storage?.get<UIExtensionContentSession>('session');
 
   build() {
     Column() {

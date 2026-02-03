@@ -1,4 +1,4 @@
-# Using AudioCapturer for Audio Recording
+# Using AudioCapturer for Audio Recording (ArkTs)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -18,9 +18,11 @@ The figure below shows the state changes of the AudioCapturer. After an AudioCap
 
 ![AudioCapturer state change](figures/audiocapturer-status-change.png)
 
-You can call **on('stateChange')** to listen for state changes of the AudioCapturer. For details about each state, see [AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8).
+You can call **on('stateChange')** to listen for state changes of the AudioCapturer. For details about each state, please refer to [AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8).
 
 ### How to Develop
+
+The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS).
 
 1. Set audio recording parameters and create an AudioCapturer instance. For details about the parameters, see [AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8).
 
@@ -28,126 +30,147 @@ You can call **on('stateChange')** to listen for state changes of the AudioCaptu
    >
    > When the microphone audio source is set ([SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8) is set to **SOURCE_TYPE_MIC**, **SOURCE_TYPE_VOICE_RECOGNITION**, **SOURCE_TYPE_VOICE_COMMUNICATION**, **SOURCE_TYPE_VOICE_MESSAGE**, or **SOURCE_TYPE_LIVE**), the permission ohos.permission.MICROPHONE is required. Note that **SOURCE_TYPE_LIVE** is supported since API version 20. For details about how to apply for the permission, see [Requesting User Authorization](../../security/AccessToken/request-user-authorization.md).
 
-   ```ts
-    import { audio } from '@kit.AudioKit';
-    
-    let audioStreamInfo: audio.AudioStreamInfo = {
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
-      channels: audio.AudioChannel.CHANNEL_2, // Channel.
-      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
-      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
-    };
-    
-    let audioCapturerInfo: audio.AudioCapturerInfo = {
-      source: audio.SourceType.SOURCE_TYPE_MIC, // Audio source type: microphone. Set this parameter based on the service scenario.
-      capturerFlags: 0 // Flag indicating an AudioCapturer.
-    };
-    
-    let audioCapturerOptions: audio.AudioCapturerOptions = {
-      streamInfo: audioStreamInfo,
-      capturerInfo: audioCapturerInfo
-    };
-    
-    audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
-      if (err) {
-        console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Invoke createAudioCapturer succeeded.');
-        let audioCapturer = data;
-      }
-    });
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   // ...
+   let audioStreamInfo: audio.AudioStreamInfo = {
+     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
+     channels: audio.AudioChannel.CHANNEL_2, // Channel.
+     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // Sampling format.
+     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // Encoding format.
+   };
+   let audioCapturerInfo: audio.AudioCapturerInfo = {
+     source: audio.SourceType.SOURCE_TYPE_MIC, // Audio source type: microphone. Set this parameter based on the service scenario.
+     capturerFlags: 0 // Flag indicating an AudioCapturer.
+   };
+   let audioCapturerOptions: audio.AudioCapturerOptions = {
+     streamInfo: audioStreamInfo,
+     capturerInfo: audioCapturerInfo
+   };
+   // ...
+     audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // Create an AudioCapturer instance.
+       if (err) {
+         console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
+         // ...
+         return;
+       }
+       console.info(`${TAG}: create AudioCapturer success`);
+       // ...
+       audioCapturer = capturer;
+       if (audioCapturer !== undefined) {
+         audioCapturer.on('readData', readDataCallback);
+         // ...
+       }
+     });
    ```
 
 2. Call **on('readData')** to subscribe to the audio data read callback.
-    > **NOTE**
-    > - **Thread management**: You are advised not to use multiple threads for data reading. If multithreading is necessary for data reading, ensure proper thread management.
-    > - **Thread performance**: Do not execute time-consuming tasks in the thread where the **readData** API resides. Failing to do so may delay the data processing thread's response to callbacks, potentially causing issues like missing audio data, lag, and noise.
+   > **NOTE**
+   > 
+   > - **Thread management**: You are advised not to use multiple threads for data reading. If multithreading is necessary for data reading, ensure proper thread management.
+   > - **Thread performance**: Do not execute time-consuming tasks in the thread where the **readData** API resides. Failing to do so may delay the data processing thread's response to callbacks, potentially causing issues like missing audio data, lag, and noise.
+   > - **Callback registration**: You should avoid registering callbacks on the main thread, as this may cause delayed callback responses and freezes due to blocking by other service processes. You are advised to use an independent asynchronous thread pool to handle callbacks.
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { fileIo as fs } from '@kit.CoreFileKit';
-    import { common } from '@kit.AbilityKit';
-
-    class Options {
-      offset?: number;
-      length?: number;
-    }
-
-    let bufferSize: number = 0;
-    // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    let path = context.cacheDir;
-    let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-    let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    let readDataCallback = (buffer: ArrayBuffer) => {
-      let options: Options = {
-        offset: bufferSize,
-        length: buffer.byteLength
-      }
-      fs.writeSync(file.fd, buffer, options);
-      bufferSize += buffer.byteLength;
-    };
-
-    audioCapturer.on('readData', readDataCallback);
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
+   // ...
+   class Options {
+     public offset?: number;
+     public length?: number;
+   }
+   // ...
+     let bufferSize: number = 0;
+     let path = context.cacheDir;
+     let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+     file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     readDataCallback = (buffer: ArrayBuffer) => {
+       let options: Options = {
+         offset: bufferSize,
+         length: buffer.byteLength
+       }
+       fs.writeSync(file.fd, buffer, options);
+       bufferSize += buffer.byteLength;
+     };
+     // ...
+         audioCapturer.on('readData', readDataCallback);
    ```
 
 3. Call **start()** to switch the AudioCapturer to the **running** state and start recording.
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioCapturer.start((err: BusinessError) => {
-      if (err) {
-        console.error(`Capturer start failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Capturer start success.');
-      }
-    });
+   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       audioCapturer.start((err: BusinessError) => {
+         if (err) {
+           // ...
+           console.error('Capturer start failed.');
+         } else {
+           // ...
+           console.info('Capturer start success.');
+         }
+       });
    ```
 
 4. Call **stop()** to stop recording.
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioCapturer.stop((err: BusinessError) => {
-      if (err) {
-        console.error(`Capturer stop failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('Capturer stopped.');
-      }
-    });
+   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       audioCapturer.stop((err: BusinessError) => {
+         if (err) {
+           // ...
+           console.error('Capturer stop failed.');
+         } else {
+           // ...
+           console.info('Capturer stop success.');
+         }
+       });
    ```
 
 5. Call **release()** to release the instance.
 
-   ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    audioCapturer.release((err: BusinessError) => {
-      if (err) {
-        console.error(`capturer release failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info('capturer released.');
-      }
-    });
+   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       audioCapturer.release((err: BusinessError) => {
+         if (err) {
+           // ...
+           console.error('Capturer release failed.');
+         } else {
+           fs.closeSync(file);
+           console.info('Capturer release success.');
+           // ...
+         }
+       });
    ```
 
 ### Complete Sample Code
 
 Refer to the sample code below to record audio using AudioCapturer.
 
-```ts
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+
+``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { common } from '@kit.AbilityKit';
-
+import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
 const TAG = 'AudioCapturerDemo';
-
 class Options {
-  offset?: number;
-  length?: number;
+  public offset?: number;
+  public length?: number;
 }
 
 let audioCapturer: audio.AudioCapturer | undefined = undefined;
@@ -168,7 +191,9 @@ let audioCapturerOptions: audio.AudioCapturerOptions = {
 let file: fs.File;
 let readDataCallback: Callback<ArrayBuffer>;
 
-async function initArguments(context: common.UIAbilityContext) {
+// ...
+
+async function initArguments(context: common.UIAbilityContext): Promise<void> {
   let bufferSize: number = 0;
   let path = context.cacheDir;
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
@@ -184,34 +209,43 @@ async function initArguments(context: common.UIAbilityContext) {
 }
 
 // Create an AudioCapturer instance, and set the events to listen for.
-async function init() {
+async function init(updateCallback?: (msg: string, isError: boolean) => void, stateCallback?:
+  (msg: string) => void): Promise<void> {
   audio.createAudioCapturer(audioCapturerOptions, (err, capturer) => { // Create an AudioCapturer instance.
     if (err) {
       console.error(`Invoke createAudioCapturer failed, code is ${err.code}, message is ${err.message}`);
+      // ...
       return;
     }
     console.info(`${TAG}: create AudioCapturer success`);
+    // ...
     audioCapturer = capturer;
     if (audioCapturer !== undefined) {
       audioCapturer.on('readData', readDataCallback);
+      // ...
     }
   });
 }
 
 // Start audio recording.
-async function start() {
+async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioCapturer !== undefined) {
-    let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
-    if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) { // Recording can be started only when the AudioCapturer is in the STATE_PREPARED, STATE_PAUSED, or STATE_STOPPED state.
+    let stateGroup = [audio.AudioState.STATE_PREPARED,
+      audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
+    // Recording can be started only when the AudioCapturer is in the STATE_PREPARED, STATE_PAUSED, or STATE_STOPPED state.
+    if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
       console.error(`${TAG}: start failed`);
+      // ...
       return;
     }
 
     // Start recording.
     audioCapturer.start((err: BusinessError) => {
       if (err) {
+        // ...
         console.error('Capturer start failed.');
       } else {
+        // ...
         console.info('Capturer start success.');
       }
     });
@@ -219,19 +253,23 @@ async function start() {
 }
 
 // Stop recording.
-async function stop() {
+async function stop(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioCapturer !== undefined) {
     // The AudioCapturer can be stopped only when it is in the STATE_RUNNING or STATE_PAUSED state.
-    if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING && audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
+    if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
+      audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
       console.info('Capturer is not running or paused');
+      // ...
       return;
     }
 
     // Stop recording.
     audioCapturer.stop((err: BusinessError) => {
       if (err) {
+        // ...
         console.error('Capturer stop failed.');
       } else {
+        // ...
         console.info('Capturer stop success.');
       }
     });
@@ -239,99 +277,39 @@ async function stop() {
 }
 
 // Release the instance.
-async function release() {
+async function release(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
   if (audioCapturer !== undefined) {
     // The AudioCapturer can be released only when it is not in the STATE_RELEASED or STATE_NEW state.
-    if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED || audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
+    if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
+      audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
       console.info('Capturer already released');
+      // ...
       return;
     }
 
     // Release the resources.
     audioCapturer.release((err: BusinessError) => {
       if (err) {
+        // ...
         console.error('Capturer release failed.');
       } else {
         fs.closeSync(file);
         console.info('Capturer release success.');
+        // ...
       }
     });
   }
 }
 
-@Entry
-@Component
-struct Index {
-  build() {
-    Scroll() {
-      Column() {
-        Row() {
-          Column() {
-            Text('Initialize').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            initArguments(context);
-            init();
-          });
+// ...
 
-          Column() {
-            Text('Start recording').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            start();
-          });
-        }
-
-        Row() {
-          Column() {
-            Text('Stop recording').fontSize(16).margin({ top: 12 });
-          }
-          .id('audio_effect_manager_card')
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ right: 12, bottom: 12 })
-          .onClick(async () => {
-            stop();
-          });
-
-          Column() {
-            Text('Release resources').fontColor(Color.Black).fontSize(16).margin({ top: 12 });
-          }
-          .backgroundColor(Color.White)
-          .borderRadius(30)
-          .width('45%')
-          .height('25%')
-          .margin({ bottom: 12 })
-          .onClick(async () => {
-            release();
-          });
-        }
-        .padding(12)
-      }
-      .height('100%')
-      .width('100%')
-      .backgroundColor('#F1F3F5');
-    }
-  }
-}
+// ...
 ```
 
 ### Setting the Mute Interruption Mode
 
 To ensure that the recording is not interrupted by the system's focus concurrency rules, a feature is introduced to change the interruption strategy from stopping the recording to simply muting it. You can control this behavior by calling [setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20) when creating an AudioCapturer instance. By default, this mode is disabled, and the audio focus strategy manages the order of concurrent audio streams. When enabled, if the recording is interrupted by another application, it will go into a muted state instead of stopping or pausing. In this state, the audio captured is silent.
+
 
 ### Echo Cancellation
 

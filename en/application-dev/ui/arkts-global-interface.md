@@ -37,6 +37,7 @@ The following figure illustrates the execution scenario of asynchronous tasks in
 An ambiguous UI context occurs when the target UI instance cannot be clearly identified at the call site when invoking ArkUI global APIs.
 
 Currently, the system supports two [application models](../application-models/application-models.md): the FA model and the stage model. In the FA model, each UI instance runs on an independent ArkTS engine. Global APIs can be traced to the corresponding UI instance via the engine, ensuring a clear UI context.
+
 In the stage model, multiple UI instances can coexist within a single ArkTS engine. Global APIs determine the current UI context by analyzing context information in the call chain. However, asynchronous APIs and non-UI APIs may fail to trace context correctly.
 
 To ensure the reliable functionality of global APIs in multi-instance scenarios, replace them with UIContext APIs.
@@ -94,7 +95,7 @@ When a global API is invoked within a [custom component](./ui-js-custom-componen
 > 2. This method can only be invoked via **this**. It cannot be called through a custom component object instantiated with the **new** keyword.
 > 3. The UIContext obtained from a custom node created using a [custom declarative node (BuilderNode)](./arkts-user-defined-arktsNode-builderNode.md) points to the same UI instance as the UIContext associated with the BuilderNode itself.
 
-Using the global API:
+Using the global API (deprecated):
 <!--deprecated_code_no_check-->
 
 ```ts
@@ -258,7 +259,6 @@ export default class EntryAbility extends UIAbility {
   // ...
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // Remove the invalid UIContext when the window is destroyed.
     PixelUtil.removeUIContext();
@@ -393,17 +393,14 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
-    // Ability has brought to foreground
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
   }
 
   onBackground(): void {
-    // Ability has back to background
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
   }
 }
@@ -612,7 +609,6 @@ export default class EntryAbility extends UIAbility {
   // ...
 
   onWindowStageDestroy(): void {
-    // Main window is destroyed, release UI related resources
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
     // Remove the invalid UIContext when the window is destroyed.
     PixelUtil.removeUIContext();
@@ -639,7 +635,7 @@ const DOMAIN = 0x0000;
 struct Index {
   build() {
     RelativeContainer() {
-      Text('Caculate 20vp to px')
+      Text('Calculate 20vp to px')
         .fontWeight(FontWeight.Bold)
         .alignRules({
           center: { anchor: '__container__', align: VerticalAlign.Center },
@@ -991,7 +987,7 @@ The [getContext](../reference/apis-arkui/js-apis-getContext.md) API retrieves th
 
 In single-ability scenarios, it is recommended that you directly retrieve the context property of the ability itself.
 
-Using the global API:
+Using the global API (deprecated):
 
 <!--deprecated_code_no_check-->
 
@@ -1124,7 +1120,7 @@ hilog.info(DOMAIN, 'testTag', `The context is ${context}`);
 
 LocalStorage provides page-level UI state storage. Parameters received through the @Entry decorator enable sharing of the same LocalStorage instance across a page. With global APIs, you can use [getShared](../reference/apis-arkui/arkui-ts/ts-state-management.md#getshareddeprecated) to pass the LocalStorage object to @Entry. With UIContext APIs, you cannot directly obtain the UIContext object. Instead, set the **useSharedStorage** parameter of [EntryOptions](../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entryoptions10) to **true** to use the shared LocalStorage object.
 
-Using the global API:
+Using the global API (deprecated):
 
 <!--deprecated_code_no_check-->
 

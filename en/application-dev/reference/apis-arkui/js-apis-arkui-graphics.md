@@ -366,9 +366,9 @@ Enumerates length units.
 
 ## LengthMetrics<sup>12+</sup>
 
-Defines the length properties. When the length unit is PERCENT, the value **1** indicates 100%.
+Defines the length attribute. When the length unit is PERCENT, the value **1** indicates 100%.
 
-### Properties
+### Attributes
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -960,7 +960,7 @@ Describes the command for drawing a path.
 
 Describes the shape mask.
 
-### Properties
+### Attributes
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

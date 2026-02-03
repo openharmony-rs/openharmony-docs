@@ -25,7 +25,10 @@ This topic walks you through on how to create a certificate object, obtain infor
 
 5. Use [X509Cert.checkValidityWithDate](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate) to check the certificate validity period. The input parameter **date** is used to check whether the specified date is within the validity period of the X.509 certificate.
 
-```ts
+<!-- @[certificate_object_creation_resolution_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCertObject.ets) -->
+
+``` TypeScript
+
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
@@ -59,7 +62,7 @@ function certSample(): void {
       return;
     }
     // The X509Cert object is created.
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
 
     // Obtain the certificate version.
     let version = x509Cert.getVersion();
@@ -88,7 +91,7 @@ function certSample(): void {
       x509Cert.verify(pubKey, (err, data) => {
         if (err == null) {
           // Signature verification is successful.
-          console.info('verify success');
+          console.info('verify result: success.');
         } else {
           // Signature verification fails.
           console.error(`verify failed, errCode: ${err.code} , errMsg:${err.message}`);

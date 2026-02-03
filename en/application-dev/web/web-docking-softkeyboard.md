@@ -195,7 +195,7 @@ The **Web** component is re-arranged with ArkUI, as shown in Figure 1 and Figure
 
 ![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
 
-2. When the keyboard avoidance mode of **UIContext** is **Offset**, the application can set the keyboard avoidance mode of the **Web** component through the [WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12) API of the **Web** component. This API is at a higher priority than **virtualKeyboard.overlayContens** on the W3C side.
+2. When the keyboard avoidance mode of **UIContext** is **Offset**, the application can set the keyboard avoidance mode of the **Web** component through the [WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12) API of the **Web** component. This API is at a higher priority than **virtualKeyboard.overlayContent** on the W3C side.
 
 - **RESIZE_VISUAL**: Only the size of the visual viewport is adjusted, and the size of the layout viewport is not adjusted.
 - **RESIZE_CONTENT**: The size of both the visual viewport and the layout viewport is adjusted.

@@ -45,6 +45,7 @@ Data persistence is a time-consuming operation. As such, avoid the following sit
 - Persistence of variables that change frequently
 
 It is recommended that the data stored in PersistentStorage be less than 2 KB. Avoid persisting large amounts of data, as PersistentStorage synchronously writes data to disk on the UI thread. Large-scale local read/write operations may impact UI rendering performance. For storing substantial data, it is recommended that you use [database APIs](../../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
+
 PersistentStorage is associated with UI instances. Data persistence can succeed only when a UI instance has been initialized (that is, when the callback passed in by [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) is called).
 
 ```ts
