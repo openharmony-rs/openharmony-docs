@@ -42034,7 +42034,7 @@
 						"start_line":21
 					},
 					{
-						"end_line":90,
+						"end_line":88,
 						"name":"import_ns",
 						"start_line":25
 					}
@@ -42119,34 +42119,34 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":96,
+						"end_line":113,
 						"name":"ns_import",
-						"start_line":24
+						"start_line":37
 					},
 					{
-						"end_line":233,
+						"end_line":108,
 						"name":"add_call",
-						"start_line":79
+						"start_line":94
 					},
 					{
-						"end_line":102,
+						"end_line":119,
 						"name":"call_addNum",
-						"start_line":28
+						"start_line":41
 					},
 					{
-						"end_line":115,
+						"end_line":51,
 						"name":"call_hsp",
-						"start_line":33
+						"start_line":46
 					},
 					{
-						"end_line":49,
+						"end_line":64,
 						"name":"call_want",
 						"start_line":16
 					},
 					{
-						"end_line":68,
+						"end_line":83,
 						"name":"call_myInfo",
-						"start_line":20
+						"start_line":33
 					}
 				]
 			},
@@ -42959,9 +42959,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/cpp/types/libentry/Index.d.ts",
 				"functions":[
 					{
-						"end_line":24,
+						"end_line":27,
 						"name":"dtsOptionExample_keepGlobalName",
-						"start_line":20
+						"start_line":23
 					}
 				]
 			},
