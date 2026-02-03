@@ -3116,6 +3116,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **示例：**
@@ -3193,6 +3194,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **示例：**
@@ -3273,6 +3275,7 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **示例：**
@@ -6081,6 +6084,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | FINGERPRINT<sup>10+</sup>   | 4     | 表示指纹认证类型。 |
 | RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 |
 | PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。 |
+| COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。 |
 | DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。|
 
 ## AuthSubType<sup>8+</sup>
