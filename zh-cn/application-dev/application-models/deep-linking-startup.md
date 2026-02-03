@@ -245,7 +245,7 @@ struct DeepWebIndex {
 
 前端页面代码：
 ```html
-// index.html
+<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
