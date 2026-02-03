@@ -270,27 +270,7 @@ struct demo_text_1 {
 
 以下示例展示了如何通过[TextInputController](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputcontroller8)收起软键盘。
 
-```ts
-@Entry
-@Component
-struct demo {
-  controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
-
-  build() {
-    Column({ space: 30 }) {
-      Button('关闭键盘').onClick(() => {
-        this.controller.stopEditing()
-      })
-      TextInput({ controller: this.controller, text: this.inputValue })
-    }
-    .width('80%')
-    .height('100%')
-    .margin('10%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
+<!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) --> 
 ![stopEditing](figures/stopEditing.gif)
 
 ### 焦点转移到不需要软键盘的组件
@@ -302,27 +282,8 @@ struct demo {
 与通过输入框的controller退出编辑态方法相比，焦点转移到不需要软键盘的组件方法的优势在于，页面包含多个输入框时，开发者无需为每个输入框设置controller、再通过controller收起软键盘。
 
 以下示例展示了点击按钮时，调用[requestFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#requestfocus9)方法，焦点从输入框转移到按钮上，软键盘收起的场景。
-``` ts
-@Entry
-@Component
-struct TextInputExample {
-  controller: TextInputController = new TextInputController();
-  @State inputValue: string = "";
 
-  build() {
-    Column({ space: 20 }) {
-      Button('change focus').onClick(() => {
-        this.getUIContext().getFocusController().requestFocus("button")
-      }).id("button")
-      TextInput({ controller: this.controller, text: this.inputValue })
-    }
-    .justifyContent(FlexAlign.Center)
-    .height('100%')
-    .width('80%')
-    .margin('10%')
-  }
-}
-```
+<!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
 ![changeFocus](figures/changeFocus.gif)
 

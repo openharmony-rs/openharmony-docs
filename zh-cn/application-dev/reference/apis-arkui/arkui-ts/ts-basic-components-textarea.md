@@ -247,7 +247,7 @@ inputFilter(value: ResourceStr, error?: (value: string) => void)
 | 参数名 | 类型                                   | 必填 | 说明                               |
 | ------ | -------------------------------------- | ---- | ---------------------------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 正则表达式。                       |
-| error  | (value: string) => void                | 否   | 正则匹配失败时，返回被过滤的内容。 |
+| error  | (value: string) => void                | 否   | 正则匹配失败时， 返回被过滤的内容。正则匹配成功时，无返回。 |
 
 ### copyOption<sup>9+</sup>
 
@@ -496,6 +496,8 @@ enableAutoFill(value: boolean)
 
 设置是否启用自动填充。
 
+<!--RP6--><!--RP6End-->
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -632,7 +634,7 @@ Font Feature当前支持的属性见[fontFeature属性列表](ts-basic-component
 
 设置Font Feature属性，Font Feature是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
 
-更多Font Feature能力介绍可参考https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop和https://sparanoid.com/lab/opentype-features/。
+更多Font Feature能力介绍可参考[The font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop)和[The complete CSS demo for opentype features](https://sparanoid.com/lab/opentype-features/)。
 ### wordBreak<sup>12+</sup>
 
 wordBreak(value: WordBreak)
@@ -729,8 +731,9 @@ textOverflow(value: TextOverflow)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 是   | 文本超长时的显示方式。<br/>默认值：TextOverflow.Clip           |
 
->  **说明：**     
->   TextArea组件不支持设置TextOverflow.MARQUEE模式,当设置为TextOverflow.MARQUEE模式时 显示为TextOverflow.Clip
+> **说明：**
+>
+> TextArea组件不支持设置TextOverflow.MARQUEE模式，当设置为TextOverflow.MARQUEE模式时，显示为TextOverflow.Clip。
 
 ### minFontSize<sup>12+</sup>
 
@@ -895,7 +898,7 @@ enableHapticFeedback(isEnabled: boolean)
 
 设置是否开启触控反馈。
 
-开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段以开启振动权限，配置如下：
+开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：
 
 ```json
 "requestPermissions": [
@@ -1102,7 +1105,7 @@ onChange(callback:&nbsp;EditableTextOnChangeCallback)
 
 输入内容发生变化时，触发该回调。
 
-在本回调中，若执行了光标操作，需要开发者在预上屏场景下依据previewText参数调整光标逻辑，以适应预上屏场景。
+在本回调中，若执行了光标操作，需要开发者在预上屏场景下依据[EditableTextOnChangeCallback](ts-text-common.md#editabletextonchangecallback12)的previewText参数调整光标逻辑，以适应预上屏场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1976,7 +1979,7 @@ struct TextAreaExample {
 }
 ```
 
-![CustomTextAreaType](figures/textAreaAutoFillFeature.png)
+<!--RP5--><!--RP5End-->
 
 ### 示例12（设置折行规则）
 
@@ -2404,6 +2407,8 @@ struct TextAreaExample {
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/TextArea_font_scale1.png)  | ![](figures/TextArea_font_scale2.png)  |
 <!--RP1End-->
+![textAreaMinMaxFontScale](figures/textAreaMinMaxFontScale.png)
+
 ### 示例18（设置选中指定区域的文本内容）
 
 从API version 10开始，该示例通过[setTextSelection](#settextselection10)方法展示如何设置选中指定区域的文本内容以及菜单的显隐策略。
@@ -2630,7 +2635,7 @@ struct Index {
   build() {
       Column() {
         TextArea({
-          text: "Hello World TextArea",
+          text: "Hello World TextArea\nHello World TextArea\nHello World TextArea\nHello World TextArea",
           placeholder: 'Type to text area...',
           controller: this.controller
         })
@@ -2643,7 +2648,7 @@ struct Index {
           .barState(BarState.On)
           .scrollBarColor(undefined)
         TextArea({
-          text: "Hello World TextArea",
+          text: "Hello World TextArea\nHello World TextArea\nHello World TextArea\nHello World TextArea",
           placeholder: 'Type to text area...',
           controller: this.controller
         })
@@ -2656,7 +2661,7 @@ struct Index {
           .barState(BarState.On)
           .scrollBarColor(ColorMetrics.resourceColor(Color.Orange))
         TextArea({
-          text: "Hello World TextArea",
+          text: "Hello World TextArea\nHello World TextArea\nHello World TextArea\nHello World TextArea",
           placeholder: 'Type to text area...',
           controller: this.controller
         })
