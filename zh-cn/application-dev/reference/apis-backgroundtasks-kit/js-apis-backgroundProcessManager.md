@@ -168,6 +168,10 @@ isPowerSaveMode(pid: number): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Resourceschedule.BackgroundProcessManager
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型      | 必填      | 说明      |
