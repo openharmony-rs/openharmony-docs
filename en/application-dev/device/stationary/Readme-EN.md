@@ -10,4 +10,4 @@
 - [Stationary Development](stationary-guidelines.md)
 - [Motion Sensing Development](motion-guidelines.md)
 - [Device Status Awareness Development](deviceStatus-guidelines.md)
-- [User Status Awareness Development](userStatus-guidelines.md)
+- [User Status Awareness Development](userStatus-guidelines.md)<!--RP1--><!--RP1End-->
