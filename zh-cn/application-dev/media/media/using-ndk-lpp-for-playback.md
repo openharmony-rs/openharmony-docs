@@ -11,20 +11,20 @@
 
 >**说明**
 >
->LPP（low power player）播放器不支持纯音频播放。纯音频低功耗播放请参考[低功耗音频播放](../audio/power-saving-for-playback.md)。
+>LowPowerPlayer播放器不支持纯音频播放。纯音频低功耗播放请参考[低功耗音频播放](../audio/power-saving-for-playback.md)。
 
 播放流程包含：创建解封装器、创建播放器、设置回调监听函数、配置播放参数、播放控制（播放/暂停/继续/倍速/音量/停止/重置）、销毁播放器实例。
 
 **图1** 播放状态变化示意图  
 ![LPP status change](figures/lpp-status-change-ndk.png)
 
-播放流程包含初始创建（created）、初始化（initialized）、就绪（ready）、解码（decoding）和渲染（rendering）五个阶段。
+播放流程包含：创建（created）、初始化（initialized）、就绪（ready）、解码（decoding）和渲染（rendering）五个阶段。
 
 应用通过调用CreateByMime初始化创建解码器实例。完成解码器参数配置Configure，切换到initialized（已初始化）状态。
 
-在初始化完成的状态下，完成解码器资源预加载（Prepare），视频进入准备就绪状态（ready）。然后启动解码流程（StartDecode），切换到解码（decoding）状态，触发首帧渲染（RenderFirstFrame）；启动渲染（StartRender）流程，切换到渲染（rendering）状态。
+在初始化完成的状态下，完成解码器资源预加载（Prepare），视频进入准备就绪状态（ready）。然后启动解码流程（StartDecode），切换到解码（decoding）状态，触发首帧渲染（RenderFirstFrame）。最后启动渲染（StartRender）流程，切换到渲染（rendering）状态。
 
-在渲染过程中，遇到暂停（Pause）会切换到paused状态，解码与渲染被临时挂起，资源未释放。当恢复渲染（Resume），视频将恢复渲染，回到渲染（rendering）状态。当遇到停止（Stop），会切换到stopped状态，这个状态代表解码器已停止工作，但实例仍存在。若渲染过程中，流结束了（EoS），会切换到eos状态。
+在渲染过程中，遇到暂停（Pause）会切换到paused状态，此时解码与渲染被临时挂起，资源未释放。当恢复渲染（Resume）时，视频将恢复并回到渲染（rendering）状态。当遇到停止（Stop）时，会切换到stopped状态，该状态代表解码器已停止工作，但实例仍存在。当渲染过程中流结束（EoS）时，会切换到eos状态。
 
 在播放过程中，如果遇到错误（OnError），会出现异常，需要重置或进入释放阶段（released）销毁解码器实例，释放所有资源。
 
