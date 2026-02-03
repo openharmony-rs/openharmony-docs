@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-本文介绍如何将一个[FA模型](ability-terminology.md#fa模型)开发的声明式范式应用切换到[Stage模型](ability-terminology.md#stage模型)，开发者需要完成如下动作：
+本文介绍如何将一个[FA模型](ability-terminology.md#fa模型)开发的声明式范式应用切换到[Stage模型](ability-terminology.md#stage模型)，您需要完成如下动作：
 
 
 - 工程切换：新建一个Stage模型的应用工程。
