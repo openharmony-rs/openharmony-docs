@@ -30,7 +30,7 @@
 
 ### constructor
 
-constructor(value: string | ImageAttachment | CustomSpan , styles?: Array\<StyleOptions>)
+constructor(value: string | ImageAttachment | CustomSpan, styles?: Array\<StyleOptions>)
 
 属性字符串的构造函数。
 
@@ -126,7 +126,7 @@ subStyledString(start: number, length?: number): StyledString
 
 ### getStyles
 
-getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<SpanStyle>
+getStyles(start: number , length: number, styledKey?: StyledStringKey): Array\<SpanStyle>
 
 获取指定范围属性字符串的样式集合。不能超出属性字符串的长度。
 
