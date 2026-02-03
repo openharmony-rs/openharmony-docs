@@ -544,6 +544,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 > - 从API版本26.0.0开始，支持读取JFIF元数据。要查询的属性的具体信息请参考[JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey)。
 > - 从API版本26.0.0开始，支持读取TIFF元数据。要查询的属性的具体信息请参考[TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey)。
 > - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+> - 从API版本26.0.0开始，支持读取JPEG、PNG、GIF、DNG、TIFF格式图片的XMP元数据。XMP元数据的操作方法可以参考[XMPMetadata](arkts-apis-image-XMPMetadata.md)。
 > - 从API版本26.0.0开始，支持读取AVIS元数据。要查询的属性的具体信息请参考[AvisPropertyKey](arkts-apis-image-e.md#avispropertykey)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -603,6 +604,7 @@ writeImageMetadata(imageMetadata: ImageMetadata): Promise\<void>
 > - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
 > - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
 > - 支持修改JPEG、PNG和HEIF文件类型的图片属性，图片需要包含Exif信息。修改属性前，先通过supportedFormats属性查询设备是否支持HEIF格式的Exif读写。
+> - 从API版本26.0.0开始，支持修改JPEG、PNG、GIF格式图片的XMP元数据。XMP元数据的操作方法可以参考[XMPMetadata](arkts-apis-image-XMPMetadata.md)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -668,6 +670,7 @@ readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise
 > - 从API版本26.0.0开始，支持读取JFIF元数据。要查询的属性的具体信息请参考[JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey)。
 > - 从API版本26.0.0开始，支持读取TIFF元数据。要查询的属性的具体信息请参考[TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey)。
 > - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+> - 从API版本26.0.0开始，支持读取JPEG、PNG、GIF、DNG、TIFF格式图片的XMP元数据。XMP元数据的操作方法可以参考[XMPMetadata](arkts-apis-image-XMPMetadata.md)。
 > - 从API版本26.0.0开始，支持读取AVIS元数据。要查询的属性的具体信息请参考[AvisPropertyKey](arkts-apis-image-e.md#avispropertykey)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
