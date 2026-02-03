@@ -81,7 +81,7 @@ let avCaptureConfig: media.AVScreenCaptureRecordConfig = {
 };
 
 avScreenCaptureRecorder.init(avCaptureConfig).then(() => {
-    console.info('Succeeded in initing avScreenCaptureRecorder');
+    console.info('Succeeded in initializing avScreenCaptureRecorder');
 }).catch((err: BusinessError) => {
     console.error(`Failed to init avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
 });
@@ -162,6 +162,7 @@ avScreenCaptureRecorder.stopRecording().then(() => {
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 
 录屏时，应用可对本应用的隐私窗口做安全豁免。使用Promise异步回调。
+
 如录屏时，用户在本应用进行输入密码等操作，应用不会进行黑屏处理。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture

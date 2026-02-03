@@ -8,14 +8,14 @@
 
 Styled strings, implemented by **StyledString** or **MutableStyledString** (collectively referred to as **StyledString**, with **MutableStyledString** inheriting from **StyledString**), are powerful markup objects designed to set text styles at the character or paragraph level. By binding a **StyledString** object to a text component, you can modify the text in various ways, including changing the font size, adding font colors, making the text clickable, and customizing the drawing of text, among others. For details, see [Styled String](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md).
 
-Styled strings provide a variety of style objects that cover various common text formatting styles, such as text decorative lines, line height, and text shadows. You can also create **CustomSpan** objects to apply custom styles.
+Styled strings provide a variety of style objects that cover various common text formatting styles, such as text decorative lines, line height, and text shadows. You can also create a [CustomSpan](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#customspan) to apply custom styles.
 
 ## Creating and Applying a StyledString or MutableStyledString Object
 
-  You can call the [setStyledString](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#setstyledstring12) method provided by **TextController** to attach styled strings to text components. It is recommended that you trigger binding in [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) or the [onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear) callback of text components.
+  You can use the [setStyledString](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#setstyledstring12) method provided by [TextController](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcontroller11) to append the styled string to the **Text** component. It is recommended that the binding be triggered in the [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) or [onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear) callback of the **Text** component.
   > **NOTE**
   >
-  > Avoid calling the **setStyledString** API in **aboutToAppear**, as the component may have not yet been mounted to the node tree at the time **aboutToAppear** is executed, preventing the styled string text content from appearing upon page load.
+  > When the **setStyledString** method is called in [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear), the styled string cannot be displayed during page initialization because the component has not been created and mounted to the node tree.
   >
   > Since API version 15, styled string content can be displayed upon page load when **setStyledString** is called in **aboutToAppear**.
 
@@ -25,10 +25,12 @@ Styled strings provide a variety of style objects that cover various common text
   @Entry
   @Component
   struct styled_string_demo1 {
-    // The value in the 'app.string.CreateApply_Text_Forty_Five' resource file is "45-minute workout."
-    styledString1: StyledString = new StyledString(resource.resourceToString($r('app.string.CreateApply_Text_Forty_Five')));
-    // The value in the 'app.string.CreateApply_Text_Third_Five' resource file is "35-minute workout."
-    mutableStyledString1: MutableStyledString = new MutableStyledString(resource.resourceToString($r('app.string.CreateApply_Text_Third_Five')));
+    // Replace $r('app.string.CreateApply_Text_Forty_Five') with the actual resource file. In this sample, the value in the resource file is "45-minute workout."
+    styledString1: StyledString = new StyledString( this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Forty_Five').id));
+    // Replace $r('app.string.CreateApply_Text_Third_Five') with the actual resource file. In this sample, the value in the resource file is "35-minute workout."
+    mutableStyledString1: MutableStyledString = new MutableStyledString( this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five').id));
     controller1: TextController = new TextController();
     controller2: TextController = new TextController();
   
@@ -221,7 +223,7 @@ Styled strings offer multiple style objects, such as [TextStyle](../reference/ap
   }
   ```
 
- 
+  ![StyledString_Decoration](figures/styled_string_decoration.jpg)
 
 - Creating and applying a **Text BaselineOffsetStyle** object
 
@@ -417,6 +419,7 @@ The following example shows how to create and apply a paragraph style. The style
   }
   ```
 
+  ![styled_string_paragraph1](figures/styled_string_paragraph1.png)
   
   In addition to presetting styles when creating a styled string, you can also clear the original styles and replace them with new ones later using the [replaceStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#replacestyle) API. After the replacement, you need to proactively trigger an update to the bound styled string on the attached text component's controller.
 
@@ -430,8 +433,8 @@ The following example shows how to create and apply a paragraph style. The style
   @Component
   struct Index {
     context = this.getUIContext().getHostContext();
-    /* The value in the 'app.string.StyledStringParagraphStyle_Text_2' resource file is "Paragraph Title\nFirst paragraph starts 0123456789 First paragraph ends.
-     Replace the original style with the new style through replaceStyle. */
+    /* Replace $r('app.string.StyledStringParagraphStyle_Text_2') with the actual resource file. In this example, the value in the resource file is
+     "Paragraph Title\nFirst paragraph starts. 0123456789. First paragraph ends. Replace the original style with the new style through replaceStyle." */
     @State message1: string =
       this.context!.resourceManager.getStringSync($r('app.string.StyledStringParagraphStyle_Text_2').id);
     titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
@@ -488,7 +491,7 @@ The following example shows how to create and apply a paragraph style. The style
       Column() {
         // Display the styled string.
         Text(undefined, { controller: this.controller }).width(300)
-        // The value in the 'app.string.Replace_paragraph_style' resource file is "Replace Paragraph Style."
+        // Replace $r('app.string.Replace_paragraph_style') with the actual resource file. In this example, the value in the resource file is "Replace paragraph style."
         Button($r('app.string.Replace_paragraph_style'))
           .onClick(() => {
             this.paragraphStyledString1.replaceStyle({
@@ -505,12 +508,13 @@ The following example shows how to create and apply a paragraph style. The style
   }
   ```
 
+  ![styled_string_paragraph2](figures/styled_string_paragraph2.gif)
 
 ## Converting a Styled String into a Paragraph
 
 You can use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20) to convert styled strings into corresponding [Paragraph](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) arrays based on text layout options.
 
-- The following example demonstrates how to use the **getParagraphs** API from **MeasureUtils** to measure text. When the content exceeds the maximum number of display lines, the text is truncated and displays a "... Full Text" indicator.
+- The following example shows how to use the **getParagraphs** method of [MeasureUtils](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md) to calculate the text. When the content exceeds the maximum number of lines that can be displayed, the text is truncated and the full text is displayed as "...Expand".
 
   <!-- @[styledStringConvertedToParagraph_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringConvertedToParagraph.ets) -->
   
@@ -574,12 +578,13 @@ You can use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measure
   @Entry
   @Component
   struct Index {
+    // Configure the resource whose name is 'Full_text' and value is a non-empty string in the resources\base\element\string.json file.
     @State fullText: string =
       this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Full_text') as string;
-    @State originalText: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Original_text') as string;
-    @State afterTypesetting: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('After_typesetting') as string;
+    // Replace $r('app.string.Original_text') with the actual resource file. In this example, the value in the resource file is "Original text."
+    @State originalText: ResourceStr = $r('app.string.Original_text');
+    // Replace $r('app.string.After_typesetting') with the actual resource file. In this example, the value of the resource file is "Styled text."
+    @State afterTypesetting: ResourceStr = $r('app.string.After_typesetting');
     str: string =
       'Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.';
     mutableStr2 = new MutableStyledString(this.str, [
@@ -721,7 +726,7 @@ You can use [getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measure
   }
   ```
 
-
+  ![StyledString_GetParagraphs](figures/StyledString_GetParagraphs.png)
 
 
 ## Using Images
@@ -783,9 +788,10 @@ The following example shows how to attach images and text to the same **MutableS
     // Bold style
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
     // Create a paragraph style object paragraphStyledString1.
-    // The value in the 'app.string.StyledStringImageAttachment_Text_1' resource file is "\n30 HD prints\nCYN5.15 off Limited offer."
+    // Replace $r('app.string.StyledStringImageAttachment_Text_1') with the actual resource file. In this example, the value in the resource file is "\n30 HD prints\nCYN5.15 off Limited offer."
     paragraphStyledString1: MutableStyledString =
-      new MutableStyledString(resource.resourceToString($r('app.string.StyledStringImageAttachment_Text_1')), [
+      new MutableStyledString(this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringImageAttachment_Text_1').id), [
       {
         start: 0,
         length: 28,
@@ -811,9 +817,10 @@ The following example shows how to attach images and text to the same **MutableS
         styledValue: this.lineHeightStyle1
       }
     ]);
-    // The value in the 'app.string.StyledStringImageAttachment_Text_2' resource file is "\n¥16.21 3000+ reviews."
+    // Replace $r('app.string.StyledStringImageAttachment_Text_2') with the actual resource file. In this example, the value in the resource file is "\n¥16.21 3000+ reviews."
     paragraphStyledString2: MutableStyledString =
-      new MutableStyledString(resource.resourceToString($r('app.string.StyledStringImageAttachment_Text_2')), [
+      new MutableStyledString(this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringImageAttachment_Text_2').id), [
       {
         start: 0,
         length: 5,
@@ -861,8 +868,7 @@ The following example shows how to attach images and text to the same **MutableS
     build() {
       NavDestination() {
         Column({ space: 12 }) {
-          // The value in the 'app.string.StyledStringImageAttachment_title' resource file is "Add Image via ImageAttachment."
-          ComponentCard({ title: $r('app.string.StyledStringImageAttachment_title') }) {
+          // ...
             Row() {
               Column({ space: 10 }) {
                 Text(undefined, { controller: this.controller })
@@ -871,7 +877,7 @@ The following example shows how to attach images and text to the same **MutableS
                   .draggable(true)
                   .backgroundColor('#FFFFFF')
                   .borderRadius(5)
-                // The value in the 'app.string.StyledStringImageAttachment_Button_1' resource file is "View Product Details."
+                // Replace $r('app.string.StyledStringImageAttachment_Button_1') with the actual resource file. In this example, the value in the resource file is "View Product Details."
                 Button($r('app.string.StyledStringImageAttachment_Button_1'))
                   .enabled(this.abled)
                   .onClick(() => {
@@ -894,13 +900,10 @@ The following example shows how to attach images and text to the same **MutableS
             .height('100%')
             .backgroundColor('#F8F8FF')
           }
-        }
-        .width('100%')
-        .height('100%')
-        .padding({ left: 12, right: 12 })
+          // ...
       }
       .backgroundColor('#f1f2f3')
-      // The value in the 'app.string.StyledStringImageAttachment_title' resource file is "Add Image via ImageAttachment."
+      // Replace $r('app.string.StyledStringImageAttachment_title') with the actual resource file. In this example, the value in the resource file is "Add Image via ImageAttachment."
       .title($r('app.string.StyledStringImageAttachment_title'))
     }
   }
@@ -1041,11 +1044,10 @@ In addition to initializing styled strings with initial style objects, you can a
     build() {
       NavDestination() {
         Column({ space: 12 }) {
-          // The value in the 'app.string.TStyledStringGestureStyle_title' resource file is 'Set Event.'
-          ComponentCard({ title: $r('app.string.TStyledStringGestureStyle_title') }) {
+          // ...
             Row() {
               Column() {
-                // The value in the 'app.string.StyledStringGestureStyle_button_content' resource file is 'Change Background Color in Response to Event.'
+                // Replace $r('app.string.StyledStringGestureStyle_button_content') with the actual resource file. In this example, the value in the resource file is "Change Background Color in Response to Event."
                 Button($r('app.string.StyledStringGestureStyle_button_content'))
                   .backgroundColor(this.backgroundColor1)
                   .width('80%')
@@ -1059,19 +1061,16 @@ In addition to initializing styled strings with initial style objects, you can a
             }
             .height('100%')
           }
-        }
-        .width('100%')
-        .height('100%')
-        .padding({ left: 12, right: 12 })
+          // ...
       }
       .backgroundColor('#f1f2f3')
-      // The value in the 'app.string.TStyledStringGestureStyle_title' resource file is 'Set Event.'
+      // Replace $r('app.string.TStyledStringGestureStyle_title') with the actual resource file. In this example, the value in the resource file is "Set Event."
       .title($r('app.string.TStyledStringGestureStyle_title'))
     }
   }
   ```
 
-
+  ![styled_string_event](figures/styled_string_event.gif)
 
 ## Format Conversion
 
@@ -1114,16 +1113,16 @@ export struct StyledStringHtml {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // The value in the 'app.string.StyledStringHtml_title' resource file is "Convet Format."
-        ComponentCard({ title: $r('app.string.StyledStringHtml_title') }) {
+        // ...
           Column() {
             Text(undefined, { controller: this.controller1 }).height(100)
             Row() {
-              // The value in the 'app.string.StyledStringHtml_Button_1' resource file is "Add Styled String."
+              // Replace $r('app.string.StyledStringHtml_Button_1') with the actual resource file. In this example, the value of the resource file is "Add Styled String."
               Button($r('app.string.StyledStringHtml_Button_1')).onClick(() => {
-                // The value in the 'app.string.StyledStringHtml_Text_1' resource file is "Styled string."
+                // Replace $r('app.string.StyledStringHtml_Text_1') with the actual resource file. In this example, the value of the resource file is "Styled string."
                 let mutableStyledString1: MutableStyledString =
-                  new MutableStyledString(resource.resourceToString($r('app.string.StyledStringHtml_Text_1')), [{
+                  new MutableStyledString(this.getUIContext()
+                    .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringHtml_Text_1').id), [{
                   start: 0,
                   length: 6,
                   styledKey: StyledStringKey.FONT,
@@ -1139,11 +1138,11 @@ export struct StyledStringHtml {
                 this.styledString = mutableStyledString1;
                 this.controller1.setStyledString(mutableStyledString1);
               }).margin(5)
-              // The value in the 'app.string.StyledStringHtml_Button_2' resource file is "toHtml."
+              // Replace $r('app.string.StyledStringHtml_Button_2') with the actual resource file. In this example, the value in the resource file is "toHtml."
               Button($r('app.string.StyledStringHtml_Button_2')).onClick(() => {
                 this.html = StyledString.toHtml(this.styledString);
               }).margin(5)
-              // The value in the 'app.string.StyledStringHtml_Button_3' resource file is "fromHtml."
+              // Replace $r('app.string.StyledStringHtml_Button_3') with the actual resource file. In this example, the value in the resource file is "fromHtml."
               Button($r('app.string.StyledStringHtml_Button_3')).onClick(async () => {
                 let styledString = await StyledString.fromHtml(this.html);
                 this.controller2.setStyledString(styledString);
@@ -1154,19 +1153,16 @@ export struct StyledStringHtml {
             Text(this.html)
           }.width('100%')
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+        // ...
     }
     .backgroundColor('#f1f2f3')
-    // The value in the 'app.string.StyledStringHtml_title' resource file is "Convet Format."
+    // Replace $r('app.string.StyledStringHtml_title') with the actual resource file. In this example, the value in the resource file is "Convert Format."
     .title($r('app.string.StyledStringHtml_title'))
   }
 }
 ```
 
-
+![](figures/styled_string_html.gif)
 
 - Convert HTML tags including \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, and \<sub>, along with the **background-color** attribute in HTML style attributes, to styled strings and convert them back to HTML format.
  
@@ -1195,7 +1191,7 @@ export struct StyledStringHtml {
           .margin(5)
   
         // Button 1: Convert HTML to SpanString
-        // The value in the 'app.string.Converted_HTML_to_SpanString' resource file is "Converted HTML to SpanString."
+        // Replace $r('app.string.Converted_HTML_to_SpanString') with the actual resource file. In this example, the value in the resource file is "Convert HTML to SpanString."
         Button($r('app.string.Converted_HTML_to_SpanString')).onClick(async () => {
           this.spanString = await StyledString.fromHtml(this.html);
           this.controller.setStyledString(this.spanString);
@@ -1203,7 +1199,7 @@ export struct StyledStringHtml {
         }).margin(5)
   
         // Button 2: Convert SpanString to HTML
-        // The value in the 'app.string.Converted_SpanString_to_HTML' resource file is "Converted SpanString to HTML."
+        // Replace $r('app.string.Converted_SpanString_to_HTML') with the actual resource file. In this example, the value in the resource file is "Convert SpanString to HTML."
         Button($r('app.string.Converted_SpanString_to_HTML')).onClick(() => {
           if (this.spanString) {
             // Convert spanString to HTML and update state if content changes.
@@ -1218,7 +1214,8 @@ export struct StyledStringHtml {
         }).margin(5)
   
         // Button 3: Convert HTML back to SpanString.
-        // The value in the 'app.string.Converted_HTML_back_to_SpanString' resource file is "Converted HTML back to SpanString."
+        /* Replace $r('app.string.Converted_HTML_back_to_SpanString') with the actual resource file.
+         In this example, the value in the resource file is "Convert HTML back to SpanString." */
         Button($r('app.string.Converted_HTML_back_to_SpanString')).onClick(async () => {
           this.spanString = await StyledString.fromHtml(this.html);
           this.controller.setStyledString(this.spanString);
@@ -1226,7 +1223,7 @@ export struct StyledStringHtml {
         }).margin(5)
   
         // Reset: Restore HTML and SpanString.
-        // The value in the 'app.string.Reset' resource file is "Reset."
+        // Replace $r('app.string.Reset') with the actual resource file. In this example, the value in the resource file is "Reset."
         Button($r('app.string.Reset')).onClick(() => {
           this.html =
             "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span   style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span   style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
@@ -1259,9 +1256,10 @@ export struct StyledStringSceneExample {
   // Bold style
   boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
   // Create a paragraph style object paragraphStyledString1.
-  // The value in the 'app.string.StyledStringSceneExample_Text_1' resource file is "Diamond Membership expired\nRenew to keep your perks."
+  // Replace $r('app.string.StyledStringSceneExample_Text_1') with the actual resource file. In this example, the value in the resource file is "Diamond Membership expired\nRenew to keep your perks."
   paragraphStyledString1: MutableStyledString =
-    new MutableStyledString(resource.resourceToString($r('app.string.StyledStringSceneExample_Text_1')), [
+    new MutableStyledString(this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringSceneExample_Text_1').id), [
       {
         start: 0,
         length: 4,
@@ -1293,9 +1291,10 @@ export struct StyledStringSceneExample {
         styledValue: this.lineHeightStyle1
       }
     ]);
-  // The value in the 'app.string.StyledStringSceneExample_Text_2' resource file is "\n¥4.88¥15."
+  // Replace $r('app.string.StyledStringSceneExample_Text_2') with the actual resource file. In this example, the value in the resource file is "\n¥4.88¥15."
   paragraphStyledString2: MutableStyledString =
-    new MutableStyledString(resource.resourceToString($r('app.string.StyledStringSceneExample_Text_2')), [
+    new MutableStyledString(this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringSceneExample_Text_2').id), [
     {
       start: 0,
       length: 4,
@@ -1339,9 +1338,10 @@ export struct StyledStringSceneExample {
       styledValue: new DecorationStyle({ type: TextDecorationType.LineThrough, color: Color.Grey })
     }
   ]);
-  // The value in the 'app.string.StyledStringSceneExample_Text_3' resource file is "\nOffer ends in 02:06."
+  // Replace $r('app.string.StyledStringSceneExample_Text_3') with the actual resource file. In this example, the value in the resource file is "\nOffer ends in 02:06."
   paragraphStyledString3: MutableStyledString =
-    new MutableStyledString(resource.resourceToString($r('app.string.StyledStringSceneExample_Text_3')), [
+    new MutableStyledString(this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringSceneExample_Text_3').id), [
     {
       start: 0,
       length: 4,
@@ -1372,8 +1372,7 @@ export struct StyledStringSceneExample {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // The value in the 'app.string.StyledStringSceneExample_title' resource file is "Example Scenario."
-        ComponentCard({ title: $r('app.string.StyledStringSceneExample_title') }) {
+        // ...
           Row() {
             Column({ space: 5 }) {
               Text(undefined, { controller: this.controller })
@@ -1386,7 +1385,7 @@ export struct StyledStringSceneExample {
                   this.paragraphStyledString1.appendStyledString(this.paragraphStyledString2);
                   this.controller.setStyledString(this.paragraphStyledString1);
                 })
-              // The value in the 'app.string.StyledStringSceneExample_Button_1' resource file is "Renew."
+              // Replace $r('app.string.StyledStringSceneExample_Button_1') with the actual resource file. In this example, the value in the resource file is "Renew."
               Button($r('app.string.StyledStringSceneExample_Button_1'))
                 .width(200)
                 .fontColor(Color.White)
@@ -1399,13 +1398,10 @@ export struct StyledStringSceneExample {
           }
           .height('60%')
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+        // ...
     }
     .backgroundColor('#f1f2f3')
-    // The value in the 'app.string.StyledStringSceneExample_title' resource file is "Example Scenario."
+    // Replace $r('app.string.StyledStringSceneExample_title') with the actual resource file. In this example, the value in the resource file is "Example Scenario."
     .title($r('app.string.StyledStringSceneExample_title'))
   }
 }

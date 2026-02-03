@@ -20,7 +20,7 @@ PersistentStorage的存储路径为module级别，即哪个module调用了Persis
 
 PersistentStorage的存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了PersistentStorage，并且该ability能被不同的module拉起，那么ability存在多少种启动方式，就会有多少份数据副本。
 
-PersistentStorage功能上耦合了AppStorage，并且数据在不同module中使用也会有问题，因此推荐开发者使用[PersistenceV2](arkts-new-persistencev2.md)的globalConnect接口替换掉PersistentStorage的persistProp接口。PersistentStorage向PersistenceV2迁移的方案见[PersistentStorage->PersistenceV2](arkts-v1-v2-migration-application-and-others.md#persistentstorage-persistencev2)。
+PersistentStorage功能上耦合了AppStorage，并且数据在不同module中使用也会有问题，因此推荐开发者使用[PersistenceV2](arkts-new-persistencev2.md)的globalConnect接口替换掉PersistentStorage的persistProp接口。PersistentStorage向PersistenceV2迁移的方案见[PersistentStorage->PersistenceV2](arkts-v1-v2-migration-application.md#persistentstorage-persistencev2)。
 
 ## 限制条件
 
@@ -45,6 +45,7 @@ PersistentStorage不允许的类型和值有：
 - 持久化经常变化的变量。
 
 PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的数据持久化，因为PersistentStorage写入磁盘是在UI线程同步执行的，大量数据本地读写会影响UI渲染性能。如果开发者需要存储大量的数据，建议使用[数据库api](../../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+
 PersistentStorage和UI实例相关联，持久化操作需要在UI实例初始化成功后（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的回调被调用时）才可以被调用，早于该时机调用会导致持久化失败。
 
 ```ts

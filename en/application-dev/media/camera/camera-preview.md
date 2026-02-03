@@ -38,13 +38,13 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
       imageWidth: number = 1920;
       imageHeight: number = 1080;
       private uiContext: UIContext = this.getUIContext();
+      private mXComponentOptions: XComponentOptions = {
+        type: XComponentType.SURFACE,
+        controller: this.xComponentCtl
+      }
 
       build() {
-        XComponent({
-          id: 'componentId',
-          type: XComponentType.SURFACE,
-          controller: this.xComponentCtl
-        })
+        XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             this.surfaceId = this.xComponentCtl.getXComponentSurfaceId(); // Obtain the surface ID of the component.
@@ -189,7 +189,10 @@ struct Index {
   private context: Context | undefined = this.uiContext.getHostContext();
   private cameraPermission: Permissions = 'ohos.permission.CAMERA'; // For details about how to request permissions, see the instructions provided at the beginning of this topic.
   @State isShow: boolean = false;
-
+  private mXComponentOptions: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.xComponentCtl
+  }
 
   async requestPermissionsFn(): Promise<void> {
     let atManager = abilityAccessCtrl.createAtManager();
@@ -222,11 +225,7 @@ struct Index {
   build() {
     Column() {
       if (this.isShow) {
-        XComponent({
-          id: 'componentId',
-          type: XComponentType.SURFACE,
-          controller: this.xComponentCtl
-        })
+        XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             this.xComponentSurfaceId = this.xComponentCtl.getXComponentSurfaceId(); // Obtain the surface ID of the component.

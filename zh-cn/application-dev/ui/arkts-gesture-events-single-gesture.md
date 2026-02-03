@@ -80,7 +80,7 @@ TapGesture(value?: TapGestureParameters)
 
 点击手势支持单次点击和多次点击，参数定义参考[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)。
 
-<!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->
+<!-- @[catch_click_twice_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/TapGesture.ets) -->   
 
 ``` TypeScript
 @Entry
@@ -103,7 +103,7 @@ export struct Tap {
                 }))
           Text(this.value)
         }
-        .height(200)
+        .height(300)
         .width(250)
         .padding(20)
         .border({ width: 3 })
@@ -193,12 +193,13 @@ PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: numb
 滑动手势用于触发滑动手势事件，滑动达到最小滑动距离（默认值为5vp）时滑动手势识别成功，参数定义参考[PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)。
 
 以下以实现一个简单的音量控制为例，可以通过滑动手势的回调函数处理多种不同的输入情况下的音量值增减的逻辑。
+
 支持以下五种操作方式：
-1、单指上下滑动；
-2、按住鼠标左键上下滑动；
-3、鼠标滚轮滚动；
-4、单指按住触控板上下滑动；
-5、使用触控板双指滑动。
+1. 单指上下滑动；
+2. 按住鼠标左键上下滑动；
+3. 鼠标滚轮滚动；
+4. 单指按住触控板上下滑动；
+5. 使用触控板双指滑动。
 
 <!-- @[sliding_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/PanCombinationGesture.ets) -->
 

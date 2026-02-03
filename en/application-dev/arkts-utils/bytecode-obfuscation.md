@@ -38,6 +38,7 @@ It primarily offers renaming and trustlist configuration for retention.
 Code obfuscation tools vary in type analysis mechanisms, obfuscation strategies, and execution efficiency based on the target language. For example, ProGuard targets strongly-typed languages like Java, where each type has a clear definition source. This feature makes the type relationship tracing and processing in the obfuscation process more accurate, greatly reducing the need for retention rules.
 
 In contrast, ArkGuard targets JS, TS, and ArkTS. Suppose ArkGuard supports configuring a trustlist for specific types. JS supports dynamic modification of objects and functions at runtime, but obfuscation is a static process in the compilation phase. This difference may cause a failure in parsing obfuscated named at runtime, resulting in runtime exceptions. TS and ArkTS use a structural type system, where different named types with the same structure are considered as equivalent types. Therefore, it is difficult to trace the exact source of types.
+
 As such, when using ArkGuard, you need to configure trustlists for more syntax scenarios. Moreover, ArkGuard uses a global property retention mechanism that retains all properties with the same name according to the trustlist. It does not support precise retention settings for specific types.
 
 To illustrate, consider this example:
@@ -48,15 +49,15 @@ Assume that ArkGuard allows the configuration of a trustlist for specific types.
 // example.ts
 // Before obfuscation:
 class A1 {
-	prop1: string = '';
+    prop1: string = '';
 }
 
 class A2 {
-	prop1: string = '';
+    prop1: string = '';
 }
 
 function test(input: A1) {
-	console.info(input.prop1);
+    console.info(input.prop1);
 }
 
 let a2 = new A2();
@@ -67,15 +68,15 @@ test(a2);
 ```typescript
 // After obfuscation:
 class A1 {
-	prop1: string = '';
+    prop1: string = '';
 }
 
 class A2 {
-	a: string = '';
+    a: string = '';
 }
 
 function test(input: A1) {
-	console.info(input.prop1);
+    console.info(input.prop1);
 }
 
 let a2 = new A2();
@@ -137,7 +138,7 @@ Enables property name obfuscation. The effect is as follows:
 // test.ts
 // Before obfuscation:
 class TestA {
-	static prop1: number = 0;
+    static prop1: number = 0;
 }
 TestA.prop1;
 ```
@@ -145,7 +146,7 @@ TestA.prop1;
 ```ts
 // After obfuscation:
 class TestA {
-	static i: number = 0;
+    static i: number = 0;
 }
 TestA.i;
 ```
@@ -261,7 +262,7 @@ Enables obfuscation for imported/exported names. The effect is as follows:
 ```ts
 // Before obfuscation:
 namespace ns {
-	export type customT = string;
+    export type customT = string;
 }
 ```
 
@@ -321,7 +322,7 @@ If this option is configured, all code is compressed to one line. The effect is 
 ```ts
 // Before obfuscation:
 class TestA {
-	static prop1: number = 0;
+    static prop1: number = 0;
 }
 TestA.prop1;
 ```
@@ -342,7 +343,7 @@ Removes calls to console.* statements, provided the return value is not used. Th
 ```ts
 // Before obfuscation:
 if (flag) {
-	console.info("hello");
+    console.info("hello");
 }
 ```
 
@@ -355,6 +356,7 @@ if (flag) {
 If this option is configured, the console.* statements in the following scenarios are removed:
 
 1. Calls at the top layer of a file.
+
     Example:
 
     ```js
@@ -362,6 +364,7 @@ If this option is configured, the console.* statements in the following scenario
     ```
 
 2. Calls within a code block.
+
     Example:
 
     ```ts
@@ -371,6 +374,7 @@ If this option is configured, the console.* statements in the following scenario
     ```
   
 3. Calls with a module or namespace.
+
     Example:
   
     ```ts
@@ -380,7 +384,8 @@ If this option is configured, the console.* statements in the following scenario
     ```
   
 4. Calls within a **switch** statement.
-    For example:
+
+    Example:
   
     ```js
     switch (value) {
@@ -395,6 +400,7 @@ If this option is configured, the console.* statements in the following scenario
 ### -print-namecache
 
 Saves the name cache to the specified file path. The name cache contains the mappings of names before and after obfuscation. The **filepath** parameter is mandatory. It supports relative and absolute paths. For a relative path, the start point is the current directory of the obfuscation configuration file. The file name extension in **filepath** must be .json.
+
 Example:
 
 ```txt
@@ -409,6 +415,7 @@ Example:
 ### -apply-namecache
 
 Reuses a name cache file in the specified file path. The **filepath** parameter is mandatory. It supports relative and absolute paths. For a relative path, the start point is the current directory of the obfuscation configuration file. The file name extension in **filepath** must be .json.
+
 This option should be used in incremental build scenarios. After this option is enabled, the names will be obfuscated according to the cache mappings. If there is no corresponding name, new random names are used.
 
 Example:
@@ -419,14 +426,19 @@ Example:
 ```
 
 By default, DevEco Studio saves cache files in a temporary cache directory and automatically applies the cache files during incremental build.
+
 Default cache directory: **build/default/cache/{...}/release/obfuscation**
 
 ### -enable-lib-obfuscation-options
 
 Merges obfuscation options of dependent modules into the obfuscation configuration of the current module.
+
 Obfuscation configuration includes [obfuscation options](#obfuscation-options) and [retention options](#retention-options).
+
 By default, the effective obfuscation configuration is the merged result of the current module's obfuscation configuration and the dependent modules' retention options.
+
 When this option is configured, the effective obfuscation configuration is the merged result of the current module's obfuscation configuration and the dependent modules' obfuscation configuration.
+
 For details about the merging logic, see [Obfuscation Rule Merging Strategies](#obfuscation-rule-merging-strategies).
 
 ### -enable-bytecode-obfuscation
@@ -436,6 +448,7 @@ Enables or disables bytecode obfuscation. This function is disabled by default.
 ### -enable-bytecode-obfuscation-debugging
 
 Controls whether bytecode obfuscation outputs debugging information. If this option is enabled, obfuscation logs are generated. For details, see [Viewing Obfuscation Effects](bytecode-obfuscation-guide.md#viewing-obfuscation-effects). This option is not enabled by default.
+
 Use this option with **-enable-bytecode-obfuscation**.
 
 ## Retention Options
@@ -559,6 +572,7 @@ const valueBucket: ValuesBucket = {
 ```
 
 6. When custom decorators are used on member variables, member methods, or parameters in the source code, and the intermediate product of source code compilation is a JS file (for example, compiling release-mode source code HAR or source code containing @ts-ignore or @ts-nocheck), the names of these member variables or member methods should be retained. This is because the names of these member variables/methods are hardcoded as string literals during conversion from TS syntax to standard JS syntax.
+
 Example:
 
 ```ts
@@ -665,7 +679,7 @@ const moduleName = './file2'         // The path name file2 corresponding to mod
 const module2 = import(moduleName)
 ```
 
-3. When [cross-package dynamic routing](../ui/arkts-navigation-navigation.md#cross-package-dynamic-routing) is used for navigation, the path passed to the dynamic routing should be retained. Dynamic routing provides two modes: system routing table and custom routing table. If a custom routing table is used for redirection, the way to configure a trustlist is consistent with the second dynamic reference scenario. However, if the system routing table is used for redirection, the path corresponding to the **pageSourceFile** field in the **resources/base/profile/route_map.json** file of the module should be added to the trustlist.
+3. When cross-package dynamic routing is used for navigation, the path passed to the dynamic routing should be retained. Dynamic routing provides two modes: system routing table and custom routing table. If a custom routing table is used for redirection, the way to configure a trustlist is consistent with the second dynamic reference scenario. However, if the system routing table is used for redirection, the path corresponding to the **pageSourceFile** field in the **resources/base/profile/route_map.json** file of the module should be added to the trustlist.
 
 ```json
 {
@@ -689,6 +703,7 @@ Adds names (such as class names, and property names) in the .d.ets file of the s
 ### -keep
 
 Retains all names (such as class names, and property names) in the specified relative file path. **filepath** can be a file or directory. If it is a directory, the files in the directory and subdirectories are not obfuscated.
+
 **filepath** must be a relative path. **./** and **../** are relative to the directory where the obfuscation configuration file is located. [Path wildcards](#path-wildcards) are supported.
 
 ```txt
@@ -795,7 +810,7 @@ Retain all the files in the module.
 
 ```txt
 class A {
-	'*'= 1
+    '*'= 1
 }
 -keep-property-name
 *
@@ -810,15 +825,19 @@ In this example, * indicates any number of characters, and all property names ar
 During module compilation, by default, the effective obfuscation rules are the merged result of the current module's obfuscation rules and the dependent modules' obfuscation rules. The specific rules are as follows:
 
 **Obfuscation rules of the current module**
+
 Content of the obfuscation configuration file specified by the **arkOptions.obfuscation.ruleOptions.files** field in the current module's configuration file **build-profile.json5**.
 
 **Obfuscation rules of dependent modules**
+
 Depending on the type of dependent module, the obfuscation rules come from the following two sources:
 
 - **Local HAR/HSP modules**
+
   Content of the obfuscation configuration file specified by the `arkOptions.obfuscation.consumerFiles` field in the module's configuration file `build-profile.json5`.
 
 - **Remote HAR/HSP packages**
+
   Content of the **obfuscation.txt** file in the remote HAR/HSP package.
 
 If an HAP, HSP, or HAR is built, the final obfuscation rules are the merge of the following files:
@@ -840,6 +859,7 @@ If an HSP is built, the **obfuscation.txt** file in the generated remote HSP onl
 ### Obfuscation Rule Merging Logic
 
 Obfuscation options: The OR operation is used for merging. If a switch option exists in any of the rule files being merged, it will be included in the final merged result.
+
 Retention options: When merging, for trustlist options, their content is the union of all.
 
 - If the current module's obfuscation configuration does not include the **-enable-lib-obfuscation-options** option, the merged result is the current module's obfuscation rules and the [retention options](#retention-options) in the dependent modules' obfuscation rules.

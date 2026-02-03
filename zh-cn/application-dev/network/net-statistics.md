@@ -220,7 +220,7 @@
       }
 
       let callback = (data: Data) => {
-        console.log('on netStatsChange, data:' + JSON.stringify(data));
+        console.info('on netStatsChange, data:' + JSON.stringify(data));
       };
       // 订阅流量改变事件通知。
       statistics.on('netStatsChange', callback);

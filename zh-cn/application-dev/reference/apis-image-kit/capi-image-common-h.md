@@ -31,7 +31,7 @@
 | [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) | Image_PositionArea | 要读取或写入的图像像素区域。 |
 | [Image_Scale](capi-image-nativemodule-image-scale.md) | Image_Scale | 图像缩放倍数。 |
 | [Image_String](capi-image-nativemodule-image-string.md) | Image_String/Image_MimeType | 字符串结构。 |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | - | 声明用于Picture的元数据。 |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | OH_PictureMetadata | 声明用于Picture的元数据。 |
 
 ### 枚举
 
@@ -254,6 +254,7 @@ enum Image_ErrorCode
 | IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE = 7700102 |  图片解码中不支持的MIME类型。<br>**起始版本：** 15 |
 | IMAGE_SOURCE_TOO_LARGE = 7700103 |  图像过大。<br>**起始版本：** 15 |
 | IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE = 7700201 |  不支持的分配器类型。例如，DMA支持HDR元数据，可以使用共享内存解码HDR图像。<br>**起始版本：** 15 |
+| IMAGE_SOURCE_UNSUPPORTED_METADATA = 7700202 |  不支持的元数据类型。如不支持的属性名或属性值非法。<br>**起始版本：** 23 |
 | IMAGE_SOURCE_UNSUPPORTED_OPTIONS = 7700203 |  不支持的选项。例如，无法将图像转换为所需的像素格式。<br>**起始版本：** 15 |
 | IMAGE_SOURCE_INVALID_PARAMETER = 7700204 |  ImageSource的无效参数。<br>**起始版本：** 19 |
 | IMAGE_DECODE_FAILED = 7700301 | 解码失败。 |

@@ -1628,7 +1628,8 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 release(callback: AsyncCallback&lt;void&gt;): void
 
-释放UserFileManager实例，使用callback方式返回结果。
+释放UserFileManager实例。使用callback异步回调。
+
 当后续不需要使用UserFileManager实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
@@ -1661,7 +1662,8 @@ async function example(mgr: userFileManager.UserFileManager) {
 release(): Promise&lt;void&gt;
 
 释放UserFileManager实例。使用Promise异步回调。
-当后续不需要使用UserFileManager 实例中的方法时调用。
+
+当后续不需要使用UserFileManager实例中的方法时调用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
 
@@ -3170,6 +3172,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 getNextObject(callback: AsyncCallback&lt;T&gt;): void
 
 获取文件检索结果中的下一个文件资产。使用callback异步回调。
+
 在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置是否为最后一行。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core
@@ -3213,6 +3216,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 getNextObject(): Promise&lt;T&gt;
 
 获取文件检索结果中的下一个文件资产。使用Promise异步回调。
+
 在调用此方法之前，必须使用[isAfterLast()](#isafterlast)来检查当前位置是否为最后一行。
 
 **系统能力**：SystemCapability.FileManagement.UserFileManager.Core

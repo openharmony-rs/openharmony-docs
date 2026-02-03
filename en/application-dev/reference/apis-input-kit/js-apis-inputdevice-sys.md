@@ -11,9 +11,9 @@ The **inputDevice** module provides APIs for input device management, including 
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimodalInput.inputDevice (Input Device)](js-apis-inputdevice.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimodalInput.inputDevice (Input Device)](js-apis-inputdevice.md).
 
 
 ## Modules to Import
@@ -176,7 +176,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: Number) => {
+            inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: number) => {
               if (error) {
                 console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -231,7 +231,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
+            inputDevice.getKeyboardRepeatDelay().then((delay: number) => {
               console.info(`Get keyboard repeat delay success`);
             }).catch((error: BusinessError) => {
               console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -399,7 +399,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: Number) => {
+            inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: number) => {
               if (error) {
                 console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -454,7 +454,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
+            inputDevice.getKeyboardRepeatRate().then((rate: number) => {
               console.info(`Get keyboard repeat rate success`);
             }).catch((error: BusinessError) => {
               console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -502,7 +502,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. The application does not have the permission required to call the API |
 | 202      | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 
 **Example**

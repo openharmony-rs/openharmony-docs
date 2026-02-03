@@ -56,14 +56,12 @@ The following describes how to add a button in the application and click the but
 
    Import the header files and define **LOG_TAG**.
 
-   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[EventSub_napi_nohiappevent_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
-   #include "json/json.h"
+   // ...
    #include "hilog/log.h"
-   #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
@@ -120,6 +118,7 @@ The following describes how to add a button in the application and click the but
    ```
 
 5. Edit the **Index.ets** file.
+   
    Import the header file for calling the C API.
 
    <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
@@ -153,13 +152,13 @@ The following describes how to add a button in the application and click the but
 
    (1) Click the **TestHiCollieTimerNdk** button to execute the timer, and the task ID is logged.
 
-   ```
+   ```text
    .../testTag ... HiCollieTimer taskId: x
    ```
 
    (2) After 2s, the callback function is executed and logs are displayed.
 
-   ```
+   ```text
    .../testTag ... HiCollieTimerNdk CallBack
    ```
 

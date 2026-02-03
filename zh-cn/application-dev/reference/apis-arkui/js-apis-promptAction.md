@@ -116,7 +116,7 @@ closeToast(toastId: number): void
 
 > **说明：**
 > 
-> 直接使用closeToast可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用UIContext中的getPromptAction方法获取到PromptAction对象，再通过该对象调用[openToast](arkts-apis-uicontext-promptaction.md#closetoast18)实现。
+> 直接使用closeToast可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用UIContext中的getPromptAction方法获取到PromptAction对象，再通过该对象调用[closeToast](arkts-apis-uicontext-promptaction.md#closetoast18)实现。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1200,7 +1200,6 @@ openCustomDialog(options: CustomDialogOptions): Promise&lt;number&gt;
 
 <!--Del-->不支持在ServiceExtension中使用。<!--DelEnd-->
 
-暂不支持isModal = true与showInSubWindow = true同时使用。如果同时设置为true时，则只生效showInSubWindow = true。
 
 弹窗宽度在设备竖屏时默认为 所在窗口宽度 - 左右margin（16vp，设备为2in1时为40vp），最大默认宽度为400vp。
 
@@ -1218,7 +1217,7 @@ openCustomDialog(options: CustomDialogOptions): Promise&lt;number&gt;
 
 | 参数名  | 类型                                          | 必填 | 说明               |
 | ------- | --------------------------------------------- | ---- | ------------------ |
-| options | [CustomDialogOptions](#customdialogoptions11) | 是   | 自定义弹窗的内容。 |
+| options | [CustomDialogOptions](#customdialogoptions11) | 是   | 自定义弹窗的内容。 <br>**说明：** 如果BaseDialogOptions中的[isModal](js-apis-promptAction.md#basedialogoptions11)与[showInSubWindow](js-apis-promptAction.md#basedialogoptions11)同时设置为true，则只生效showInSubWindow = true，此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。|
 
 **返回值：**
 

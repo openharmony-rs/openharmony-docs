@@ -4,7 +4,7 @@
 <!--Owner: @wangchen965-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -91,7 +91,7 @@ globalThis.someGlobalVar = 100; // 改变了全局状态
 
 // sideEffectModule.ets
 export let data2 = "data from side effect module"
-globalThis.someGlobalVar = 200; // 也变了全局状态
+globalThis.someGlobalVar = 200; // 也改变了全局状态
 
 // moduleUseGlobalVar.ets
 import { data1 } from './module' // 此时可能预期全局变量someGlobalVar的值为100

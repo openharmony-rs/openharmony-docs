@@ -1,34 +1,38 @@
-# 组件内状态变量迁移指导
+# 组件内状态变量迁移
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
-本文档主要介绍数据组件内的状态变量的迁移场景，包含以下场景。
+本文档主要介绍组件内的状态变量的迁移场景，包含以下场景：
+
 | V1装饰器名                | V2装饰器名                  |
 |------------------------|--------------------------|
-| [\@State](./arkts-state.md)                 | 无外部初始化：[\@Local](./arkts-new-local.md)<br/>外部初始化一次：[\@Param](./arkts-new-param.md)[\@Once](./arkts-new-once.md) |
+| [\@State](./arkts-state.md)                 | 无外部初始化：[\@Local](./arkts-new-local.md)<br/>外部初始化一次：[\@Param](./arkts-new-param.md)/[\@Once](./arkts-new-once.md) |
 | [\@Prop](./arkts-prop.md)                   | [\@Param](./arkts-new-param.md)                   |
-| [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)    |
-|  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)                   |
+| [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)/[\@Event](./arkts-new-event.md)    |
+|  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)/[\@Event](./arkts-new-event.md)                   |
 |  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-provider-and-consumer.md)                | 
 | [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-provider-and-consumer.md)                |
 | [\@Watch](./arkts-watch.md)               |[\@Monitor](./arkts-new-monitor.md)                |
 | 无计算属性相关能力，需要重复计算 | [\@Computed](./arkts-new-computed.md)                |
 
+
 ## 各装饰器迁移示例
 
-### \@State->\@Local
+### \@State -> \@Local
 
 **迁移规则**
 
 在V1中，\@State装饰器用于装饰组件内部的状态变量，在V2中提供了\@Local作为其替代能力，但两者在观察能力和初始化规则上存在明显差异。针对不同的使用场景，迁移策略如下：
 
 - 简单类型：对于简单类型的变量，可以直接将\@State替换为\@Local。
-- 复杂类型：V1中的@State可以观察复杂对象的第一层属性变化，而V2中的\@Local只能观察对象自身的变化。如果需要追踪对象内部的属性变化，可以结合使用\@ObservedV2和\@Trace。
-- 外部初始化：V1中，\@State支持从外部传递初始值，但在V2中，\@Local禁止外部初始化。若需要从外部传递初始值，可以使用\@Param和\@Once装饰器来实现类似的效果。
+
+- 复杂类型：V1中的\@State可以观察复杂对象的第一层属性变化，而V2中的\@Local只能观察对象自身的变化。如果需要追踪对象内部的属性变化，可以结合使用\@ObservedV2和\@Trace。
+
+- 外部初始化：V1中，\@State支持从外部传递初始值；但在V2中，\@Local禁止外部初始化。若需要从外部传递初始值，可以使用\@Param和\@Once装饰器来实现类似的效果。
 
 **示例**
 
@@ -120,12 +124,12 @@ class Child {
 @ComponentV2
 @Entry
 struct Example {
+  // @Local只能观察自身，需要给Child加上@ObservedV2和@Trace
   @Local child: Child = new Child();
 
   build() {
     Column() {
       Text(this.child.value.toString())
-      // @Local只能观察自身，需要给Child加上@ObservedV2和@Trace
       Button('value+1')
         .onClick(() => {
           this.child.value++;
@@ -190,6 +194,7 @@ struct Parent {
   }
 }
 ```
+
 
 ### \@Link -> \@Param/\@Event
 
@@ -274,14 +279,17 @@ struct Parent {
 }
 ```
 
+
 ### \@Prop -> \@Param
 
 **迁移规则**
 
-在V1中，\@Prop装饰器用于从父组件传递参数给子组件，这些参数在子组件中可以被直接修改。在V2中，\@Param取代了\@Prop的作用，但\@Param是只读的，子组件不能直接修改参数的值。因此，根据场景的不同，有几种迁移策略：
+在V1中，\@Prop装饰器用于从父组件传递参数给子组件，这些参数在子组件中可以被直接修改。在V2中，\@Param取代了\@Prop的作用，但\@Param是只读的，子组件不能直接修改参数的值。因此，根据场景的不同，有3种迁移策略：
 
 - 简单类型：对于简单类型的参数，将\@Prop替换为\@Param。
+
 - 复杂类型：如果传递的是复杂对象且需要严格的单向数据绑定，需要深拷贝对象，防止子组件修改父组件的数据。
+
 - 子组件修改变量：如果子组件需要修改传入的参数，使用\@Once允许子组件在本地修改该变量。但需要注意，使用\@Once修饰符后，当前子组件只会被初始化一次，后续无父组件到子组件的同步能力。
 
 **示例**
@@ -346,7 +354,7 @@ struct Parent {
 
 V1实现：
 
-<!-- @[Parent11_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV1.ets) -->    
+<!-- @[Parent11_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV1.ets) -->
 
 ``` TypeScript
 const APPLE_INITIAL_COUNT = 5;
@@ -395,7 +403,7 @@ struct Parent {
 
 V2迁移策略：使用深拷贝。
 
-<!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) -->    
+<!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) --> 
 
 ``` TypeScript
 const APPLE_INITIAL_COUNT = 5;
@@ -523,8 +531,9 @@ struct Parent {
 在V1中，子组件可以修改\@Prop的变量，且只会在本地更新，不会同步回父组件。父组件数据源更新时，会通知子组件更新，并覆写子组件本地\@Prop的值。
 
 V1：
-- 改变子组件`Child`的`localValue`，不会同步回父组件`Parent`。
-- 父组件更新`value`，通知子组件`Child`更新，并覆写本地子组件`localValue`的值。
+
+- 改变子组件Child的localValue，不会同步回父组件Parent。
+- 父组件更新value，通知子组件Child更新，并覆写本地子组件localValue的值。
 
 <!-- @[Parent15_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets) -->
 
@@ -568,9 +577,10 @@ struct Parent {
 V2中，\@Param本地不可写，与\@Once搭配使用时只同步一次。若要实现子组件本地可写，且父组件后续更新仍能通知子组件，可借助\@Monitor实现。
 
 V2实现：
-- 父组件`Parent`更新通知子组件`value`的刷新，并回调\@Monitor修饰的`onValueChange`回调方法，`onValueChange`将更新后的值赋值给`localValue`。
-- 子组件`Child`改变`localValue`的值，不会同步给父组件`Parent`。
-- 父组件`Parent`中再次改变`value`，将会继续通知给子组件，并覆写子组件本地`localValue`的值。
+
+- 父组件Parent更新通知子组件value的刷新，并回调\@Monitor修饰的onValueChange回调方法，onValueChange将更新后的值赋值给localValue。
+- 子组件Child改变localValue的值，不会同步给父组件Parent。
+- 父组件Parent中再次改变value，将会继续通知给子组件，并覆写子组件本地localValue的值。
 
 <!-- @[Parent16_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV2.ets) -->
 
@@ -622,16 +632,23 @@ struct Parent {
 }
 ```
 
+
 ### \@Provide/\@Consume -> \@Provider/\@Consumer
+
 **迁移规则**
 
 V1的\@Provide和\@Consume与V2的\@Provider和\@Consumer定位和作用类似，基本可以实现丝滑替换，但存在以下细微差异，开发者可根据自己代码实现情况参考是否需要调整：
+
 在V1中，\@Provide和\@Consume用于父子组件之间的数据共享，可以通过alias（别名）或属性名匹配，同时\@Consume依赖父组件的\@Provide，API version 20以前不允许本地初始化。V2中，\@Provider和\@Consumer增强了这些特性，使数据共享更加灵活。根据不同的场景，有以下迁移策略：
 
 - V1中\@Provide和\@Consume在没有指定alias的情况下，可以直接使用。V2中\@Provider和\@Consumer是标准装饰器，且参数可选，所以不管有无指定alias后面需要必须跟随“()”。
+
 - alias和属性名匹配规则：V1中，\@Provide和\@Consume可以通过alias或属性名匹配；V2中，alias是唯一的匹配key，指定alias后只能通过alias匹配。
-- 本地初始化支持：API version 20以前，\@Consume不允许本地初始化，必须依赖父组件；从API version 20开始，\@Consume支持本地初始化，当找不到对应的\@Provide时使用本地默认值，详见[\@Consume装饰的变量支持设置默认值](./arkts-provide-and-consume.md#consume装饰的变量支持设置默认值)；V2中，\@Consumer支持本地初始化，当找不到对应的\@Provider时使用本地默认值。
-- 从父组件初始化：V1中，\@Provide可以直接从父组件初始化；V2中，\@Provider不支持外部初始化，需用\@Param和@Once接受初始值并赋给 \@Provider。
+
+- 本地初始化支持：API version 20以前，\@Consume不允许本地初始化，必须依赖父组件；从API version 20开始，\@Consume支持本地初始化，当找不到对应的\@Provide时使用本地默认值，详见[@Consume装饰的变量支持设置默认值](./arkts-provide-and-consume.md#consume装饰的变量支持设置默认值)；V2中，\@Consumer支持本地初始化，当找不到对应的\@Provider时使用本地默认值。
+
+- 从父组件初始化：V1中，\@Provide可以直接从父组件初始化；V2中，\@Provider不支持外部初始化，需用\@Param和\@Once接受初始值并赋给\@Provider。
+
 - 重载支持：V1中，\@Provide默认不支持重载，需设置 allowOverride；V2中，\@Provider默认支持重载，\@Consumer会向上查找最近的\@Provider。
 
 **示例**
@@ -837,7 +854,7 @@ struct Child {
 
 V1实现：
 
-<!-- @[GrandParent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideNoAllowOverrideV1.ets) -->    
+<!-- @[GrandParent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideNoAllowOverrideV1.ets) --> 
 
 ``` TypeScript
 const GRANDPARENT_REVIEW_VOTES_INITIAL = 40;
@@ -875,7 +892,7 @@ struct Child {
 }
 ```
 
-V2迁移策略：去掉allowOverride。
+V2迁移策略：取消allowOverride设置。
 
 <!-- @[GrandParent2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets) -->
 
@@ -915,12 +932,15 @@ struct Child {
 }
 ```
 
+
 ### \@Watch -> \@Monitor
+
 **迁移规则**
 
 在V1中，\@Watch用于监听状态变量的变化，并在变量变化时触发指定回调函数。在V2中，\@Monitor替代了\@Watch，可以更灵活地监听变量的变化，并获取变量变化前后的值。具体的迁移策略如下：
 
 - 单变量监听：对于简单的场景，可以直接用\@Monitor替换\@Watch，效果一致。
+
 - 多变量监听：V1的\@Watch无法获取变化前的值。在V2中，\@Monitor支持同时监听多个变量，并可以访问变量变化前后的状态。
 
 **示例**
@@ -1036,6 +1056,7 @@ struct WatchExample {
     }
   }
 }
+
 ```
 
 V2迁移策略：同时监听多个变量，以及获取变化前的值。
@@ -1079,14 +1100,16 @@ struct MonitorExample {
 }
 ```
 
-### \@Computed
+
+### 重复计算 -> \@Computed计算属性
+
 **迁移规则**
 
 V1中并没有提供计算属性的概念，所以对于UI中的冗余计算，并没有办法可以减少重复计算。V2针对该场景，提供了\@Computed装饰器，可以帮助开发者减少重复计算。
 
 V1：
 
-在下面的示例中，每次改变`lastName`都会触发Text组件的刷新，每次Text组件的刷新，都需要重复计算`this.lastName + ' ' + this.firstName`。
+在下面的示例中，每次改变lastName都会触发Text组件的刷新，每次Text组件的刷新，都需要重复计算this.lastName + ' ' + this.firstName。
 
 <!-- @[ComputedV1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV1.ets) -->
 
@@ -1112,7 +1135,7 @@ struct Index {
 
 V2:
 
-使用V2中的\@Computed，每次改变`lastName`仅会触发一次计算。
+使用V2中的\@Computed，每次改变lastName仅会触发一次计算。
 
 <!-- @[ComputedV2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ComputedV2.ets) -->
 
@@ -1140,3 +1163,68 @@ struct Index {
 }
 ```
 
+
+### 双向绑定由$$迁移!!
+
+状态管理V1中，推荐使用[$$](./arkts-two-way-sync.md)实现系统组件的双向绑定；在状态管理V2中，推荐使用[!!](./arkts-new-binding.md)语法糖统一处理双向绑定。
+
+> **说明：**
+> 
+> !!语法从API version 12开始支持。
+
+**迁移策略**
+
+对于系统组件参数，V1的$$直接替换为V2的!!。
+
+V1实现：
+
+<!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct TextInputExample {
+  @State text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column({ space: 20 }) {
+      Text(this.text)
+      TextInput({ text: $$this.text, placeholder: 'input your word...', controller: this.controller })
+        .placeholderColor(Color.Grey)
+        .placeholderFont({ size: 14, weight: 400 })
+        .caretColor(Color.Blue)
+        .width(300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+V2迁移策略：装饰器修改为V1的同时，$$直接替换为!!。
+
+``` TypeScript
+@Entry
+@ComponentV2
+struct TextInputExampleV2 {
+  @Local text: string = '';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column({ space: 20 }) {
+      Text(this.text)
+      // V2中直接用!!替换$$
+      TextInput({ text: this.text!!, placeholder: 'input your word...', controller: this.controller })
+        .placeholderColor(Color.Grey)
+        .placeholderFont({ size: 14, weight: 400 })
+        .caretColor(Color.Blue)
+        .width(300)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```

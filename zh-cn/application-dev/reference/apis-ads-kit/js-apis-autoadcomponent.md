@@ -63,7 +63,11 @@ struct Index {
     // 广告位ID
     adId: 'testw6vs28auh3',
     // 广告类型
-    adType: 8
+    adType: 8,
+    // 广告位宽，单位vp
+    adWidth: 360,
+    // 广告位高，单位vp
+    adHeight: 57
   };
   // 广告配置参数
   private adOptions: advertising.AdOptions = {};

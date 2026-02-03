@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 场景介绍
 
@@ -17,7 +17,7 @@
 
 ## 接口说明
 
-接口的详细说明，请参考[API参考](../reference/apis-core-file-kit/capi-oh-environment-h.md)。
+接口的详细说明，请参考[oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |

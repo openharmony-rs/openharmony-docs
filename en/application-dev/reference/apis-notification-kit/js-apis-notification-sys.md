@@ -1,4 +1,10 @@
 # @ohos.notification (Notification) (System API)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **Notification** module provides notification management capabilities, covering notifications, notification slots, notification subscription, notification enabled status, and notification badge status.
 
@@ -32,7 +38,7 @@ Publishes a notification to a specified user. This API uses an asynchronous call
 
 | Name    | Type                                       | Mandatory| Description                                       |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------- |
-| request  | [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest) | Yes  | Content and related configuration of the notification to publish.|
+| request  | [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) | Yes  | Content and related configuration of the notification to publish.|
 | userId   | number                                      | Yes  | User ID.                          |
 | callback | AsyncCallback\<void\>                       | Yes  | Callback used to return the result.                          |
 
@@ -83,7 +89,7 @@ Publishes a notification to a specified user. This API uses a promise to return 
 
 | Name    |  Type                                       | Mandatory| Description                                       |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------- |
-| request  | [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest) | Yes  | Content and related configuration of the notification to publish.|
+| request  | [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) | Yes  | Content and related configuration of the notification to publish.|
 | userId   | number                                      | Yes  | User ID.                          |
 
 **Return value**
@@ -194,7 +200,7 @@ let notificationSlot: NotificationManager.NotificationSlot = {
     type: Notification.SlotType.SOCIAL_COMMUNICATION
 };
 Notification.addSlot(notificationSlot).then(() => {
-	console.info("addSlot success");
+  console.info("addSlot success");
 }).catch((err: Base.BusinessError) => {
   console.error(`addSlot failed, code is ${err}`);
 });
@@ -1231,7 +1237,7 @@ Removes a notification for a specified bundle. This API uses an asynchronous cal
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| hashCode | string                | Yes  | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback.|
+| hashCode | string                | Yes  | Unique notification ID. It is the value of **hashCode** in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) object of [SubscribeCallbackData](js-apis-inner-notification-notificationSubscriber-sys.md#subscribecallbackdata) used in the [onConsume](js-apis-inner-notification-notificationSubscriber-sys.md#onconsume) callback.|
 | reason   | [RemoveReason](#removereason-deprecated) | Yes  | Reason for deleting a notification.        |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
 
@@ -1484,7 +1490,7 @@ Obtains all active notifications. This API uses an asynchronous callback to retu
 
 | Name    | Type                                                        | Mandatory| Description                |
 | -------- | ------------------------------------------------------------ | ---- | -------------------- |
-| callback | AsyncCallback\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest)>> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)>> | Yes  | Callback used to return the result.|
 
 **Example**
 
@@ -1505,7 +1511,7 @@ Notification.getAllActiveNotifications(getAllActiveNotificationsCallback);
 
 ## Notification.getAllActiveNotifications
 
-getAllActiveNotifications(): Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest)>>
+getAllActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 Obtains all active notifications. This API uses a promise to return the result.
 
@@ -1519,7 +1525,7 @@ Obtains all active notifications. This API uses a promise to return the result.
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest)>> | Promise used to return the result.|
+| Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)>> | Promise used to return the result.|
 
 **Example**
 
@@ -1688,7 +1694,7 @@ let doNotDisturbDate: Notification.DoNotDisturbDate = {
     end: new Date(2021, 11, 15, 18, 0)
 };
 Notification.setDoNotDisturbDate(doNotDisturbDate).then(() => {
-	console.info("setDoNotDisturbDate success");
+  console.info("setDoNotDisturbDate success");
 }).catch((err: Base.BusinessError) => {
   console.error(`setDoNotDisturbDate failed, code is ${err}`);
 });

@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
@@ -80,7 +80,7 @@ The builder function for creating the **NavDestination** component is not regist
 
 **Solution**
 
-Make sure the builder function for creating the **NavDestination** component is registered.
+Make sure the **builder** function for creating the **NavDestination** component is registered.
 
 ## 100006 NavDestination Not Found
 
@@ -130,7 +130,7 @@ This error code is reported when the system fails to obtain route navigation inf
 
 **Possible Causes**
 
-The current node may not be within a **Navigation** component.
+The current node is not within a **Navigation** component.
 
 **Solution**
 

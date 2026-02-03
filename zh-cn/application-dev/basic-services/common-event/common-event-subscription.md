@@ -17,7 +17,7 @@
 
 > **说明：**
 >
-> 订阅者对象的生命周期需要接入方管理，不再使用时需主动销毁释放，避免内存泄漏。
+> 订阅者对象的生命周期需要接入方管理，不再使用时需[取消动态订阅公共事件](common-event-unsubscription.md)后主动销毁释放，避免进程内订阅者数量超过200个导致其他业务订阅失败以及内存泄漏。
 > 
 > 动态订阅的公共事件回调受应用状态影响。当应用处于后台时，无法接收到动态订阅公共事件。当应用从后台切换到前台时，最多可以回调切回前30s内监听的公共事件。
 >
@@ -81,7 +81,7 @@
    
    ``` TypeScript
    // 创建订阅者回调
-   commonEventManager.createSubscriber(subscribeInfo,
+   commonEventManager.createSubscriber(subscribeInfoCustom,
      (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
        if (err) {
          hilog.error(DOMAIN_NUMBER, TAG,
@@ -89,7 +89,7 @@
          return;
        }
        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
-       subscriber = data;
+       subscriberCustom = data;
      })
    ```
 
@@ -99,15 +99,16 @@
    
    ``` TypeScript
    // 订阅公共事件回调
-   if (subscriber !== null) {
-     commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
-       if (err) {
-         hilog.error(DOMAIN_NUMBER, TAG,
-           `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
-         return;
-       }
-       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
-     })
+   if (subscriberCustom !== null) {
+     commonEventManager.subscribe(subscriberCustom,
+       (err: BusinessError, data: commonEventManager.CommonEventData) => {
+         if (err) {
+           hilog.error(DOMAIN_NUMBER, TAG,
+             `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+           return;
+         }
+         hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
+       })
    } else {
      hilog.error(DOMAIN_NUMBER, TAG, `Need create subscriber`);
    }

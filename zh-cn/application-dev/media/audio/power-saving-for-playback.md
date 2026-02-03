@@ -16,7 +16,7 @@
 
 ## 开发指导
 
-低功耗音频渲染器与普通音频渲染器接口无差异，但需关注应用数据周期与播放进度。音频渲染器使用请参考[使用AudioRenderer开发音频播放功能](using-audiorenderer-for-playback.md)和[使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
+低功耗音频渲染器与普通音频渲染器接口无差异，但需关注应用数据周期与播放进度。音频渲染器使用请参考[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)和[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
 
 **数据周期示意图**
 
@@ -47,9 +47,9 @@
     >- 先启低功耗渲染器，再启低时延渲染器，则低时延降级普通渲染器。
     >- 先启低时延渲染器，再启低功耗渲染器，则低功耗降级普通渲染器。
 
-4. 应用数据写完不代表已经播完，需调用获取音频时间戳接口[getAudioTimestampInfo()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19)或[OH_AudioRenderer_GetAudioTimestampInfo()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo)，判断实际播放进度。
+4. 应用数据写完不代表已经播完，需调用获取音频时间戳接口[getAudioTimestampInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#getaudiotimestampinfo19)或[OH_AudioRenderer_GetAudioTimestampInfo()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo)，判断实际播放进度。
 
     > - 获取时间戳接口调用频率建议大于200ms一次，以免影响系统性能。
-    > - 应用程序调用接口[flush()](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#flush11)或[OH_AudioRenderer_Flush()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_flush)后，播放的数据量会重置为0。
+    > - 应用程序调用接口[flush](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#flush11)或[OH_AudioRenderer_Flush()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_flush)后，播放的数据量会重置为0。
     > - 播放数据量均会小于写入数据量。由于系统帧长与时延机制，播完的播放数据量不等于写入数据量。
     > - 写完数据后获取时间戳，如果2个周期内时间戳不变，即为播完；或者根据设置的倍速推算剩余播放时长，超过相应时长，即为播完。（如：记总写入数据量p<sub>1</sub>，写完后获取时间戳p<sub>2</sub>，设置倍速α且α>0，音频采样率f<sub>s</sub>且f<sub>s</sub>>0，剩余可播时长t。公式：![formula_not_played_data_length](figures/formula_not_played_data_length.png)）

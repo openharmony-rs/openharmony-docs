@@ -4,21 +4,25 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Bind different types of gesture events to components and set response methods for them.
 
 >  **NOTE**
 >
-> The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> You can use the **gesture**, **priorityGesture**, and **parallelGesture** attributes to bind gesture recognition to a component. When a gesture is recognized, the event callback is invoked to notify the component. A region in which a gesture can be recognized may be specified by the [touch target](ts-universal-attributes-touch-target.md). The **gesture**, **priorityGesture**, and **parallelGesture** APIs currently do not support switching gesture bindings using the ternary operator (condition ? expression1 : expression2).
+> - You can use the **gesture**, **priorityGesture**, and **parallelGesture** attributes to bind gesture recognition to a component. When a gesture is recognized, the event callback is invoked to notify the component. A region in which a gesture can be recognized may be specified by the [touch target](ts-universal-attributes-touch-target.md). The **gesture**, **priorityGesture**, and **parallelGesture** APIs currently do not support switching gesture bindings using the ternary operator (condition ? expression1 : expression2).
 
 ## gesture
 
 gesture(gesture: GestureType, mask?: GestureMask): T
 
 Gesture to bind.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -28,7 +32,7 @@ Gesture to bind.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | Yes  | Type of the gesture to bind.|
+| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype) | Yes  | Type of the gesture to bind.|
 | mask  |  [GestureMask](./ts-gesture-common.md#gesturemask) | No  | Mask for gesture events.<br>Default value: **GestureMask.Normal**.|
 
 **Return value**
@@ -47,6 +51,10 @@ Gesture to preferentially recognize.
 
 2. For long press gestures, the component with the shortest minimum hold-down time responds first, ignoring the **priorityGesture** settings.
 
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -55,7 +63,7 @@ Gesture to preferentially recognize.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | Yes  | Gesture object to bind.|
+| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype) | Yes  | Gesture object to bind.|
 | mask  |  [GestureMask](./ts-gesture-common.md#gesturemask) | No  | Mask for gesture events.<br>Default value: **GestureMask.Normal**.|
 
 **Return value**
@@ -70,6 +78,10 @@ parallelGesture(gesture: GestureType, mask?: GestureMask): T
 
 Gesture that can be recognized at once by the component and its child component. The gesture event is not a bubbling event. When **parallelGesture** is set for a component, both it and its child component can respond to the same gesture events, thereby implementing a quasi-bubbling effect.
 
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -78,7 +90,7 @@ Gesture that can be recognized at once by the component and its child component.
 
 | Name| Type                                      | Mandatory| Description                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype11-1) | Yes  | Gesture object to bind.|
+| gesture  |  [GestureType](./ts-gesture-common.md#gesturetype) | Yes  | Gesture object to bind.|
 | mask  |  [GestureMask](./ts-gesture-common.md#gesturemask) | No  | Mask for gesture events.<br>Default value: **GestureMask.Normal**.|
 
 **Return value**
@@ -89,28 +101,32 @@ Gesture that can be recognized at once by the component and its child component.
 
 ## SourceType<sup>8+</sup>
 
+Enumerates the input source device types.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Value| Description|
 | ---- | --- | -------- |
-| Unknown | - | Unknown device type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Unknown | - | Unknown input source.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | Mouse | - | Mouse.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | TouchScreen | - | Touchscreen.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Key<sup>21+</sup> | 4 | Keyboard.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-| JoyStick<sup>21+</sup> | 5 | Joystick.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| KEY<sup>22+</sup> | 4 | Key.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| JOYSTICK<sup>22+</sup> | 5 | Joystick.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## SourceTool<sup>9+</sup>
+
+Enumerates the input source tool types.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Value| Description|
 | -------- | - | --------- |
-| Unknown | - | Unknown input source.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Finger | - | Finger.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Pen | - | Stylus.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MOUSE<sup>12+</sup> | - | Mouse device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| TOUCHPAD<sup>12+</sup> | - | Touchpad. Single-finger input on the touchpad is treated as a mouse input operation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| JOYSTICK<sup>12+</sup> | - | Joystick.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Unknown | 0 | Unknown input source.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Finger | 1 | Finger.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Pen | 2 | Stylus.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MOUSE<sup>12+</sup> | 7 | Mouse device.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| TOUCHPAD<sup>12+</sup> | 9 | Touchpad. Single-finger input on the touchpad is treated as a mouse input operation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| JOYSTICK<sup>12+</sup> | 10 | Joystick.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## Example
 
@@ -182,14 +198,12 @@ This example demonstrates how to configure **fingerInfos** to monitor the number
 // xxx.ets
 @Entry
 @Component
-
 struct PanGestureWithFingerCount {
   @State offsetX: number = 0
   @State offsetY: number = 0
   @State positionX: number = 0
   @State positionY: number = 0
   @State fingerCount: number = 0 // Used to record the number of touch points involved in the gesture.
-
   private panOption: PanGestureOptions = new PanGestureOptions({
     direction: PanDirection.All,
     fingers: 1
@@ -215,20 +229,20 @@ struct PanGestureWithFingerCount {
         PanGesture(this.panOption)
           .onActionStart((event: GestureEvent) => {
             console.info('Pan start')
-            this.fingerCount = event.fingerInfos?.length || 0  // Record the number of touch points.
+            this.fingerCount = event.fingerInfos?.length || 0 // Record the number of touch points.
           })
           .onActionUpdate((event: GestureEvent) => {
             if (event) {
-              console.info('fingerInfos',JSON.stringify(event.fingerInfos))
+              console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`)
               this.offsetX = this.positionX + event.offsetX
               this.offsetY = this.positionY + event.offsetY
-              this.fingerCount = event.fingerInfos?.length || 0  // Update the number of touch points, recording the effective touch points involved in the current gesture.
+              this.fingerCount = event.fingerInfos?.length || 0 // Update the number of touch points, recording the effective touch points involved in the current gesture.
             }
           })
           .onActionEnd((event: GestureEvent) => {
             this.positionX = this.offsetX
             this.positionY = this.offsetY
-            this.fingerCount = 0  // Reset the value to zero when the touch points leave the touch target.
+            this.fingerCount = 0 // Reset the value to zero when the touch points leave the touch target.
             console.info('Pan end')
           })
           .onActionCancel(() => {

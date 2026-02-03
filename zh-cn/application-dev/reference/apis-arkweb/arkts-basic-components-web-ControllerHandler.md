@@ -16,8 +16,6 @@
 >
 > - 示例效果请以真机运行为准。
 
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## constructor<sup>9+</sup>
 
 constructor()

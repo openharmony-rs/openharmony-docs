@@ -18,7 +18,7 @@
 
 媒体会话提供方使用的关键接口如下表所示。接口返回值有两种返回形式：callback和promise，下表中为callback形式接口，promise和callback只是返回值方式不一样，功能相同。
 
-更多API说明请参见[API文档](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。
+更多API说明请参考文档：[模块描述](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。
 
 | 接口名 | 说明 | 
 | -------- | -------- |
@@ -175,6 +175,7 @@
 
 
 3. 设置用于被媒体会话控制方拉起的UIAbility。当用户操作媒体会话控制方的界面时，例如点击播控中心的卡片，可以拉起此处配置的UIAbility。
+
    设置UIAbility时通过WantAgent接口实现，更多关于WantAgent的信息请参考[WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)。
 
       ```ts
@@ -481,6 +482,7 @@
       ```
 
 8. 音视频应用在退出，并且不需要继续播放时，及时取消监听以及销毁媒体会话释放资源。
+
    取消播控命令监听的示例代码如下所示 ：
 
       ```ts

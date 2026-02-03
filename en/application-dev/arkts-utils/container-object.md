@@ -7,17 +7,20 @@
 <!--Adviser: @ge-yafang-->
 
 Container objects can be serialized to ensure content consistency between threads, enabling inter-thread data transfer.
+
 Currently, the [TreeSet](../reference/apis-arkts/js-apis-treeset.md) object supports serialization.
 
 > **NOTE**
 >
 > - Since API version 22, TreeSet can be used for cross-thread data transfer.
 > 
-> - Container objects can be passed across threads, which means only data is passed, and any class methods are lost. To enable class instances to retain their methods when being passed across threads, you can use the [@Sendable decorator](arkts-sendable.md#sendable-decorator) to mark the class as Sendable.
+> - When passing container objects across threads, only data can be transmitted, and custom methods will be lost. If custom methods are required, you need to mark them as Sendable functions using the [@Sendable decorator](arkts-sendable.md#sendable-decorator), after which the custom methods can be passed across threads.
 
 ## Example
 
-```ts
+<!-- @[example_container_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ContainerObject.ets) -->
+
+``` TypeScript
 import { taskpool, TreeSet } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -49,8 +52,8 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // 1. Create a TreeSet instance.
-          let treeSet : TreeSet<number> = new TreeSet<number>(sendableCompareFunc);
+          // 1. Create a test instance objA.
+          let treeSet: TreeSet<number> = new TreeSet<number>(sendableCompareFunc);
 
           treeSet.add(1);
           treeSet.add(5);
@@ -61,7 +64,7 @@ struct Index {
           // 3. Execute the task.
           taskpool.execute(task).then(() => {
             console.info('taskpool: execute task success!');
-          }).catch((e:BusinessError) => {
+          }).catch((e: BusinessError) => {
             console.error(`taskpool: execute task: Code: ${e.code}, message: ${e.message}`);
           })
           this.message = 'success';
@@ -72,5 +75,3 @@ struct Index {
   }
 }
 ```
-<!-- @[example_container_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/
-ContainerObject.ets) -->

@@ -58,8 +58,8 @@ Creates an [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinf
 
 | Name| Description|
 | -- | -- |
-| double positionY | Y coordinate of the text box.|
-| double height | Height of the text box.|
+| double positionY | Y coordinate of the text box, in px.|
+| double height | Height of the text box, in px.|
 
 **Returns**
 
@@ -104,7 +104,7 @@ Sets the Y coordinate in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmetho
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be set.|
-| double positionY | Absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
+| double positionY | Y coordinate, that is, the absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
 
 **Returns**
 
@@ -130,7 +130,7 @@ Sets the height in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-text
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be set.|
-| double height | Height.|
+| double height | Height, in px.|
 
 **Returns**
 
@@ -156,7 +156,7 @@ Obtains the Y coordinate from [InputMethod_TextAvoidInfo](capi-inputmethod-input
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be obtained.|
-| double *positionY | Absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
+| double *positionY | Y coordinate, that is, the absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
 
 **Returns**
 
@@ -182,7 +182,7 @@ Obtains the height from [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be obtained.|
-| double *height | Height of the text box.|
+| double *height | Height of the text box, in px.|
 
 **Returns**
 

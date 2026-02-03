@@ -12,7 +12,7 @@ The **Row** component lays out child components horizontally.
 >
 >  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  If the width or height of the row is not set, the row adapts to the size of the child component in the main axis or cross axis direction.
+>  If no width or height is set for the **Row** component, the component automatically adapts to the size of its child components in the main axis and cross axis respectively.
 
 
 ## Child Components
@@ -25,11 +25,11 @@ Supported
 
 Row(options?: RowOptions)
 
-Creates a horizontal linear layout container. You can set the spacing between child components, which can be of type number or string.
+Creates a horizontal linear layout container. You can set the spacing between child components.
 
 >  **NOTE**
 >
->  When multiple components are nested on a complex page, extra overheads will be generated if the number of nested layout components is too large or the nesting depth is too deep. You are advised to remove redundant nodes, reduce layout calculation by using layout boundaries, and properly use rendering control syntax and layout component methods to optimize performance. For details about the best practices, see [Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance).
+>  Excessive component nesting (either too deep a hierarchy or too many nested components) incurs significant performance overhead. For performance purposes, you are advised to remove redundant nodes to simplify the component tree, use layout boundaries to reduce redundant layout calculations, properly apply rendering control syntax and layout component methods to minimize unnecessary re-renders and computations. For details about the best practices, see [Layout Optimization](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -41,12 +41,12 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [RowOptions<sup>18+</sup>](#rowoptions18) | No| Spacing between child components.|
+| options<sup>18+</sup> | [RowOptions](#rowoptions18) | No| Spacing between elements in the horizontal layout. The value can be of the number or string type.|
 
 ### Row<sup>18+</sup>
 Row(options?: RowOptions | RowOptionsV2)
 
-Creates a horizontal linear layout container. You can set the spacing between child components, which can be of type number, string, or Resource.
+Creates a horizontal linear layout container. You can set the spacing between child components.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -58,7 +58,7 @@ Creates a horizontal linear layout container. You can set the spacing between ch
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [RowOptions](#rowoptions18)  \| [RowOptionsV2](#rowoptionsv218) | No| Spacing between child components.|
+| options | [RowOptions](#rowoptions18)  \| [RowOptionsV2](#rowoptionsv218) | No| Spacing between elements in a horizontal layout. The value can be of the number, string, or Resource type.|
 
 ## RowOptions<sup>18+</sup>
 
@@ -80,7 +80,7 @@ Sets the spacing between child components of the **Row** component.
 
 ## RowOptionsV2<sup>18+</sup>
 
-Defines the spacing between child components of the **Row** component. The spacing type SpaceType can be number, string, or Resource.
+Sets the spacing between child components of the **Row** component. The spacing type **SpaceType** can be number, string, or Resource.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -90,7 +90,7 @@ Defines the spacing between child components of the **Row** component. The spaci
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space | [SpaceType](ts-container-column.md#spacetype18) | No| Yes| Horizontal spacing between two adjacent child components.<br>This parameter does not take effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp.<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
+| space | [SpaceType](ts-container-column.md#spacetype18) | No| Yes| Spacing between child components.<br>This parameter does not take effect if the value specified is a negative number, or if **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp.<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0, a string that can be converted to a number, or a Resource type that can be converted to a number.|
 
 ## Attributes
 
@@ -134,7 +134,7 @@ Sets the alignment mode of the child components in the horizontal direction.
 
 >  **NOTE**
 >
->  If [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) is not set for child components in the row layout, the child components are not compressed by default. That is, the sum of the main axis sizes of all child components can exceed the main axis size of the container. In this case, FlexAlign.Center and FlexAlign.End do not take effect.
+>  During the row layout, if [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) is not set for a child component, the child component is not compressed by default. This can result in the total main axis size of all child components exceeding the container's main axis size, which makes **FlexAlign.Center** and **FlexAlign.End** ineffective.
 
 ### reverse<sup>12+</sup>
 
@@ -152,7 +152,7 @@ Sets whether to reverse the horizontal arrangement of child components.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | Optional\<boolean\> | Yes  | Whether to reverse the horizontal arrangement of child components.<br>Default value: true. If this parameter is set to true, child components are arranged in reverse order in the horizontal direction. If this parameter is set to false, child components are arranged in normal order in the horizontal direction.|
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean\> | Yes  | Whether to reverse the horizontal arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order horizontally. **false**: Child components are arranged in normal order horizontally.|
 
 >  **NOTE**
 >
@@ -164,7 +164,9 @@ The [universal events](ts-component-general-events.md) are supported.
 
 ## Example
 
-This example demonstrates how to set horizontal layout properties, such as spacing and alignment, using the **Row** component.
+### Example 1: Setting the Layout Attributes of the Row Component
+
+This example demonstrates how to set the layout attributes of the **Row** component, such as the spacing and alignment mode and its effect.
 
 ```json
 // resources/base/element/string.json
@@ -194,7 +196,7 @@ struct RowExample {
 
       // Set the spacing between child components using the Resource type.
       Text('Resource space').width('90%')
-      Row({ space: $r("app.string.stringSpace") }) {
+      Row({ space: $r('app.string.stringSpace') }) {
         Row().width('30%').height(50).backgroundColor(0xAFEEEE)
         Row().width('30%').height(50).backgroundColor(0x00FFFF)
       }.width('90%').height(107).border({ width: 1 })
@@ -230,3 +232,33 @@ struct RowExample {
 ```
 
 ![row](figures/row.png)
+
+### Example 2: Configuring the Reverse Attribute
+
+This example demonstrates how to set the **reverse** attribute of the **Row** component and its effect.
+
+```ts
+@Entry
+@Component
+struct RowReverseSample {
+  build() {
+    Row() {
+      Text("1")
+        .width(100)
+        .height(50)
+        .backgroundColor(0xAFEEEE)
+
+      Text("2")
+        .width(100)
+        .height(50)
+        .backgroundColor(0x00FFFF)
+    }
+    .height(100)
+    .width(300)
+    .border({ width: 1 })
+    .reverse(true)
+  }
+}
+```
+
+![row](figures/row_reverse.png)

@@ -16,7 +16,7 @@
 >  
 >  - 组件主动获取焦点不受窗口焦点的控制。
 >  
->  - 焦点开发参考[焦点开发指南](../../../ui/arkts-common-events-focus-event.md)。
+>  - 焦点开发参考[支持焦点处理](../../../ui/arkts-common-events-focus-event.md)。
 
 ## focusable
 
@@ -171,6 +171,7 @@ focusBox(style: FocusBoxStyle): T
 requestFocus(value: string): boolean
 
 方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。
+
 如果需要指定组件立刻获焦，推荐使用FocusController中的焦点同步转移接口[requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -187,7 +188,7 @@ requestFocus(value: string): boolean
 
 | 类型 | 说明 |
 | ------- | ---- |
-| boolean | 返回值表示是否成功给目标组件申请到焦点。若参数指向的目标组件存在且可获焦，则返回true，否则返回false。 |
+| boolean | 返回值表示是否成功给目标组件申请到焦点。若参数指向的目标组件存在且已挂载组件树，并具备获焦能力，则返回true，否则返回false。 |
 
 >  **说明：**
 >
@@ -373,7 +374,7 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 
 > **说明：**
 > 
-> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
+> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
 
 ## 示例
 
@@ -599,6 +600,7 @@ struct RequestFocusExample {
 示意图：
 
 按下TAB键，激活焦点态显示。
+
 申请不存在的组件获焦：
 
 ![requestFocus1](figures/requestFocus1.png)
@@ -882,6 +884,7 @@ struct TabStop {
 ### 示例6（设置自定义走焦）
 
 从API version 18开始，该示例通过配置[nextFocus](#nextfocus18)实现自定义走焦规则。
+
 如果不配置[nextFocus](#nextfocus18)，默认的点击tab的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B。
 
 ```ts

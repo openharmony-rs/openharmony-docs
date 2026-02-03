@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Owner: @hello_harmony; @leiguangyu-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiDebug可用于获取系统或应用进程的内存、CPU和GPU等数据，以及开启进程Trace采集。
 
@@ -331,6 +331,17 @@ HiDebug提供了启停[GWP-ASan](https://developer.huawei.com/consumer/cn/doc/be
 | hidebug.enableGwpAsanGrayscale | 使能GWP-ASan，用于检测堆内存使用中的非法行为。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.disableGwpAsanGrayscale | 停止使能GWP-ASan。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.getGwpAsanGrayscaleState | 获取当前GWP-ASan剩余使能天数。<br/>**说明**：从API version 20开始，支持该接口。 |
+
+## 添加维测信息到崩溃日志中
+
+HiDebug提供添加维测信息的接口，开发者可根据业务需要将维测信息添加到崩溃日志中，若程序发生崩溃，可在崩溃日志中找到该维测信息。
+
+### 接口说明（C/C++）
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| OH_HiDebug_SetCrashObj | 将维测信息添加到崩溃日志中，与OH_HiDebug_ResetCrashObj配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃，会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。<br/>**说明**：从API version 23开始，支持该接口。 |
+| OH_HiDebug_ResetCrashObj | 将维测信息对象还原到OH_HiDebug_SetCrashObj之前的状态，与OH_HiDebug_SetCrashObj配对使用。<br/>**说明**：从API version 23开始，支持该接口。 |
 
 ## 其他
 

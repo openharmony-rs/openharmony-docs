@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 18开始支持多摄同开，即应用同时开启前置/后置相机进行拍照和录像。
+从API version 18开始支持多摄同开，即应用同时开启前置/后置相机进行预览和录像（前置/后置相机同时拍照功能待开放）。
 
 >**说明：**
 >
@@ -55,7 +55,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    }
    ```
 
-3. 获取对应的并发能力集。通过[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)获取相机的输出并发能力信息数组[CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18)，数组内部包含相机在对应并发模式下支持的模式和输出能力。若[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)接口返回空数组，则表明当前设备不支持并发功能。
+3. 获取对应的并发能力集。通过[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)获取相机的输出并发能力信息数组[CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18)，数组内部包含相机在对应并发模式下支持的模式和输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。若[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)接口返回空数组，则表明当前设备不支持并发功能。
 
    ```ts
    function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)
@@ -105,7 +105,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          height: 1080
        }
      };
-     // 查询对应previewProfile是否存在。
+     // 查询对应previewProfile是否存在，对应的previewProfile必须在getCameraConcurrentInfos获取到的并发能力信息数组范围内。
      let previewProfiles = cameraOutputCapability.previewProfiles;
      if (previewProfiles.length < 1) {
        return;
@@ -140,7 +140,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          height: 1080
        }
      };
-     // 查询对应photoProfile是否存在。
+     // 查询对应photoProfile是否存在，对应的photoProfile必须在getCameraConcurrentInfos获取到的并发能力信息数组范围内。
      let photoProfiles = cameraOutputCapability.photoProfiles;
      if (photoProfiles.length < 1) {
       return;
@@ -208,7 +208,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 
    async function getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, concurrentInfo: Array<camera.CameraConcurrentInfo>, curCameraDeviceFront: camera.CameraDevice, context: common.Context)
    {
-    // 此处创建录像输出流以format：1003，size：1920*1080的videoProfile为例。
+    // 此处创建录像输出流以format：1003，size：1920*1080的videoProfile为例，对应的videoProfile必须在getCameraConcurrentInfos获取到的并发能力信息数组范围内。
      let videoProfileObj: camera.VideoProfile = {
        format: 1003,
        size: {
@@ -383,7 +383,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
    }
    ```
 
-9. 拍照，通过步骤8中配置的photoOutput使用前置或后置相机进行拍照。
+9. 拍照，通过步骤8中配置的photoOutput使用前置或后置相机进行拍照，多摄同开状态下不支持前后相机同时拍照。
 
     ```ts
     async function takePicture(photoOutput: camera.PhotoOutput): Promise<void> {

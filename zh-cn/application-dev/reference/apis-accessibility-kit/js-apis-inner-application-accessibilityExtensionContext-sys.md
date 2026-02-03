@@ -32,8 +32,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 ## Parameter<sup>20+</sup>
 
-无障碍节点元素执行特定操作时，为操作提供具体设置的参数值。
-详见[无障碍节点元素可执行的操作](./js-apis-accessibility-sys.md#accessibilityaction)。
+无障碍节点元素执行特定操作时，为操作提供具体设置的参数值。详见[无障碍节点元素可执行的操作](./js-apis-accessibility-sys.md#accessibilityaction)。
 
 **系统接口**：此接口为系统接口。
 
@@ -56,8 +55,7 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 ## AccessibilityGrid<sup>20+</sup>
 
-辅助功能网格信息。
-详见[AccessibilityElement.currentItem](#accessibilityelement)。
+辅助功能网格信息。详见[AccessibilityElement.currentItem](#accessibilityelement)。
 
 **系统接口**：此接口为系统接口。
 
@@ -71,8 +69,7 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 ## AccessibilitySpan<sup>20+</sup>
 
-辅助功能超链接文本信息。
-详见[AccessibilityElement.spans](#accessibilityelement)。
+辅助功能超链接文本信息。详见[AccessibilityElement.spans](#accessibilityelement)。
 
 **系统接口**：此接口为系统接口。
 

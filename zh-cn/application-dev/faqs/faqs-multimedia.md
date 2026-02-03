@@ -4,7 +4,7 @@
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @zengyawen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 使用XComponent组件显示相机的预览输出流时，如何获取相机的帧数据(API 9)
 
@@ -18,7 +18,7 @@
 
 1. Xcomponent来创建预览流。
 
-   ```
+   ```ts
    // 获取PreviewOutput(预览输出类)实例
    const surfaceId = globalThis.mxXComponentController.getXComponentSurfaceId();
    this.mPreviewOutput = await Camera.createPreviewOutput(surfaceId);
@@ -26,7 +26,7 @@
 
 2. 使用imageReceiver来监听图像信息。
 
-   ```
+   ```ts
    // 添加双路预览
    const fullWidth = this.mFullScreenSize.width;
    const fullHeight = this.mFullScreenSize.height;
@@ -43,7 +43,7 @@
 
 1. 使用系统相机框架\@ohos.multimedia.camera获取物理摄像头信息。
 
-   ```
+   ```ts
    let cameraManager = await camera.getCameraManager(context);
    let camerasInfo = await cameraManager.getSupportedCameras();
    let cameraDevice = camerasInfo[0];
@@ -51,14 +51,14 @@
 
 2. 创建并启动物理摄像头输入流通道。
 
-   ```
+   ```ts
    let cameraInput = await cameraManager.createCameraInput(cameraDevice);
    await this.cameraInput.open();
    ```
 
 3. 拿到物理摄像头信息查询摄像头支持预览流支持的输出格式，结合XComponent提供的surfaceId创建预览输出通道。
 
-   ```
+   ```ts
    let outputCapability = await this.cameraManager.getSupportedOutputCapability(cameraDevice);
    let previewProfile = outputCapability.previewProfiles[0];
    let previewOutput = await cameraManager.createPreviewOutput(previewProfile, previewId);
@@ -66,7 +66,7 @@
 
 4. 创建相机会话，在会话中添加摄像头输入流和预览输出流，然后启动会话，预览画面就会在XComponent组件上送显。
 
-   ```
+   ```ts
    let captureSession = await cameraManager.createCaptureSession();
    await captureSession.beginConfig();
    await captureSession.addInput(cameraInput);
@@ -102,7 +102,7 @@
 
 **解决措施**
 
-```
+```ts
 let want = {
   bundleName: 'com.ohos.photos',
   abilityName: 'com.ohos.photos.MainAbility',
@@ -125,7 +125,7 @@ context.startAbility(want);
 
    示例：
 
-   ```
+   ```ts
    {
      "module" : {
        "requestPermissions":[
@@ -144,15 +144,15 @@ context.startAbility(want);
 
 2. 这两个权限的授权方式均为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。
 
-   ```
+   ```ts
    let context = getContext(this) as common.UIAbilityContext;
    let atManager = abilityAccessCtrl.createAtManager();
-   let permissions: Array<string> = ['ohos.permission.READ_MEDIA','ohos.permission.WRITE_MEDIA']
+   let permissions: Array<Permissions> = ['ohos.permission.READ_MEDIA','ohos.permission.WRITE_MEDIA']
    atManager.requestPermissionsFromUser(context, permissions)
    .then((data) => {
-       console.log("Succeed to request permission from user with data: " + JSON.stringify(data))
-   }).catch((error) => {
-       console.log("Failed to request permission from user with error: " + JSON.stringify(error))
+       console.info("Succeed to request permission from user with data: " + JSON.stringify(data))
+   }).catch((error: BusinessError) => {
+       console.error("Failed to request permission from user with error: " + error.code + " " + error.message)
    })
    ```
 
@@ -165,10 +165,10 @@ context.startAbility(want);
 
 cameraManager通过设置状态回调返回相机状态。
 
-```
+```ts
 cameraManager.on('cameraStatus', (cameraStatusInfo) => {
-  console.log(`camera : ${cameraStatusInfo.camera.cameraId}`);
-  console.log(`status: ${cameraStatusInfo.status}`);
+  console.info(`camera : ${cameraStatusInfo.camera.cameraId}`);
+  console.info(`status: ${cameraStatusInfo.status}`);
 })
 ```
 
@@ -229,7 +229,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 
 **解决措施**
 
-支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：[使用OHAudio开发音频录制功能(C/C++)](../media/audio/using-ohaudio-for-recording.md)。
+支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：[推荐使用OHAudio开发音频录制功能(C/C++)](../media/audio/using-ohaudio-for-recording.md)。
 
 **参考资料**
 
@@ -276,6 +276,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：[�
 **解决措施**
 
 对于有损压缩图片格式，如jpeg格式，质量参数会影响压缩后的图片大小，对于无损压缩图片格式，如png格式，质量参数不会影响压缩后的图片大小。
+
 对于有损压缩图片格式，压缩后的图片大小不仅取决于图片原始大小、图片压缩质量，还与图片中内容有较大关系，因此当前系统不支持设置压缩后的图片大小，如果应用想要指定压缩后图片大小，可以根据压缩结果调整质量参数，或者将pixelmap scale到更小的尺寸后再压缩。
 
 **参考资料**

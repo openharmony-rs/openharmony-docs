@@ -21,7 +21,7 @@ ArkUI comes with two development paradigms: ArkTS-based declarative development 
 | Declarative development paradigm  | ArkTS   | Data-driven  | Applications involving technological sophistication and teamwork| Mobile application and system application developers|
 | Web-like development paradigm   | JavaScript      | Data-driven  | Applications with simple UIs and service widgets    | Frontend web developers                       |
 
-For more details, see [Introduction to ArkUI](../ui/arkui-overview.md).
+For more details, see [About This Kit](../ui/arkui-overview.md).
 
 ### Application Model
 

@@ -862,6 +862,7 @@ Describes the window information of the input method keyboard.
 | top  | number | No| No| Vertical coordinate of the upper left corner of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
 | width  | number | No| No| Width of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
 | height  | number | No| No| Height of the input method keyboard window, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
+| displayId<sup>23+</sup> | number | No| Yes| ID of the display where the soft keyboard window is located.<br>**Model restriction**: This parameter can be used only in the stage model.|
 
 ## EnabledState<sup>15+</sup>
 
@@ -993,6 +994,19 @@ Enumerates the reasons for attachment failure.
 | CALLER_NOT_FOCUSED    | 0 |The caller does not belong to the application of the focused window.|
 | IME_ABNORMAL  | 1 |The input method application is abnormal.|
 | SERVICE_ABNORMAL  | 2 |The input method framework service is abnormal.|
+
+## AttachOptions<sup>23+</sup>
+
+Defines additional options for binding an input method.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+| Name| Type| Read-only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| requestKeyboardReason | [RequestKeyboardReason](#requestkeyboardreason15) | No| Yes|Reason for requesting the keyboard.|
+| showKeyboard | boolean | No| Yes| Whether to start the input method keyboard after the self-drawing component is attached to the input method.<br>- **true** means to start the input method keyboard.<br>- **false** means not to start the input method keyboard.|
 
 ## InputMethodController
 
@@ -1154,6 +1168,63 @@ let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
 let requestKeyboardReason: inputMethod.RequestKeyboardReason = inputMethod.RequestKeyboardReason.MOUSE;
 
 inputMethod.getController().attach(true, textConfig, requestKeyboardReason).then(() => {
+  console.info('Succeeded in attaching inputMethod.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### attachWithUIContext<sup>23+</sup>
+
+attachWithUIContext(uiContext: UIContext, textConfig: TextConfig, attachOptions?: AttachOptions): Promise&lt;void&gt;
+
+Attaches a self-drawing component to the input method. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> An input method can use the following features only when it has a self-drawing component attached to it: showing or hiding the keyboard, updating the cursor information, changing the selection range of the edit box, saving the configuration information, and listening for and processing the information or commands sent by the input method.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters**
+
+|  Name |    Type |   Mandatory  |   Description  |
+| -------- | -------- | -------- | -------- |
+| uiContext | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) | Yes| **UIContext** instance.|
+| textConfig | [TextConfig](#textconfig10) | Yes| Configuration of the edit box.|
+| attachOptions | [AttachOptions](#attachoptions23) | No| Additional options for binding.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                              |
+| -------- | -------------------------------------- |
+| 12800003 | input method client error. Possible causes:1.the edit box is not focused. 2.no edit box is bound to current input method application.3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIContext } from '@kit.ArkUI';
+
+let uiContext: UIContext | undefined = UIContext.getCallingScopeUIContext();
+let inputAttribute: inputMethod.InputAttribute = {
+  textInputType: inputMethod.TextInputType.TEXT,
+  enterKeyType: inputMethod.EnterKeyType.GO
+}
+let textConfig: inputMethod.TextConfig = { inputAttribute: inputAttribute };
+let attachOptions: inputMethod.AttachOptions = { showKeyboard: true };
+inputMethod.getController().attachWithUIContext(uiContext, textConfig, attachOptions).then(() => {
   console.info('Succeeded in attaching inputMethod.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to attach, code: ${err.code}, message: ${err.message}`);

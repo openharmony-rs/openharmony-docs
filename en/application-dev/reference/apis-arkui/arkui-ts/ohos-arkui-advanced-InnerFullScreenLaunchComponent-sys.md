@@ -98,7 +98,7 @@ struct Index {
           let appId1: string = '576****************';
           this.controller.launchAtomicService(appId1, {});
         }).height(30).width('50%').margin({top: 50})
-      Button('Start Recharge')
+      Button('Start Top-up')
         .onClick(()=>{
           let appId2: string = '576****************';
           this.controller.launchAtomicService(appId2, {});

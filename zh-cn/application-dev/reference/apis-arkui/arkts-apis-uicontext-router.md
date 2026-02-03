@@ -52,41 +52,104 @@ pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义传递参数的类
+class innerParams {
+  array: number[];
+
+  constructor(tuple: number[]) {
+    this.array = tuple;
+  }
+}
+
+class RouterParams {
+  data: innerParams;
+
+  constructor(tuple: number[]) {
+    this.data = new innerParams(tuple);
+  }
+}
 
 @Entry
 @Component
 struct Index {
   async routePage() {
-    this.getUIContext().getRouter().pushUrl({
-        url: 'pages/routerpage2',
-        params: {
-          data1: 'message',
-          data2: {
-            data3: [123, 456, 789]
-          }
-        }
-      })
+    let options: router.RouterOptions = {
+      url: 'pages/second',
+      params: new RouterParams([12, 45, 78])
+    }
+    this.getUIContext()
+      .getRouter()
+      .pushUrl(options)
       .then(() => {
-        console.info('succeeded');
+        console.error(`pushUrl finish`);
       })
-      .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+      .catch((err: ESObject) => {
+        console.error(`pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
       })
   }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({ top: 20 })
-      .backgroundColor('#ccc')
-      .onClick(() => {
-        this.routePage();
-      })
+      Text('First Page')
+      Button('Next page')
+        .type(ButtonType.Capsule)
+        .margin({ top: 20 })
+        .onClick(() => {
+          this.routePage()
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+```ts
+// 在second页面中接收传递过来的参数
+class innerParams {
+  array: number[];
+
+  constructor(tuple: number[]) {
+    this.array = tuple;
+  }
+}
+
+class RouterParams {
+  data: innerParams;
+
+  constructor(tuple: number[]) {
+    this.data = new innerParams(tuple);
+  }
+}
+
+@Entry
+@Component
+struct Second {
+  @State data: object = (this.getUIContext().getRouter().getParams() as RouterParams).data;
+  @State secondData: string = '';
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Text('Second Page')
+      Button('Back')
+        .fontSize(30)
+        .onClick(() => {
+          try {
+            this.getUIContext().getRouter().showAlertBeforeBackPage({ message: 'Are you sure to return?' })
+          } catch (error) {
+            // TODO: Implement error handling.
+          }
+          this.getUIContext().getRouter().back()
+        })
+        .margin({ top: 20 })
+      Button(`The value on the first page：${this.secondData}`)
+        .margin({ top: 20 })
+        .onClick(()=> {
+          this.secondData = (this.data['array'][1]).toString();
+        })
     }
     .width('100%')
     .height('100%')
@@ -1336,7 +1399,7 @@ router.back(1);
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
-router.back(1, {info:'来自Home页'}); //携带参数返回
+router.back(1, {info:'来自Home页'}); // 携带参数返回
 ```
 
 ## clear
@@ -1362,11 +1425,15 @@ let router: Router = uiContext.getRouter();
 router.clear();    
 ```
 
-## getLength
+## getLength<sup>(deprecated)</sup>
 
 getLength(): string
 
 获取当前在页面栈内的页面数量。
+
+> **说明：**
+>
+> 从API version 10开始支持，从 API version 23开始废弃，建议使用[getStackSize](#getstacksize23)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1390,6 +1457,50 @@ let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
 let size = router.getLength();        
 console.info('pages stack size = ' + size);    
+```
+
+## getStackSize<sup>23+</sup>
+
+getStackSize(): number
+
+获取当前页面栈内的页面数量。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型     | 说明                 |
+| ------ | ------------------ |
+| number | 页面数量，页面栈支持最大数值是32。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button() {
+        Text('stack size')
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+      }.type(ButtonType.Capsule)
+      .margin({ top: 20 })
+      .backgroundColor('#ccc')
+      .onClick(() => {
+        console.info(`get stack size: ${this.getUIContext().getRouter().getStackSize()}`)
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## getState
@@ -1440,7 +1551,7 @@ getStateByIndex(index: number): router.RouterState | undefined
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index    | number | 是   | 表示要获取的页面索引。 <br/> 取值范围：[0, +∞) |
+| index    | number | 是   | 表示要获取的页面索引。 <br/> 取值范围：[1, +∞) |
 
 **返回值：**
 

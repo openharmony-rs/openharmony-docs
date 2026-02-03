@@ -68,7 +68,7 @@ bm install [-h] [-p filePath] [-r] [-w waitingTime] [-s hspDirPath] [-u userId] 
 | -h | Used to display help information.|
 | -p | Used to specify the path of the HAP or HSP file to be installed. This parameter is optional. If multiple HAPs or HSPs are required, you can specify the folder path of the HAPs or HSPs. Since API version 22, you can specify the path of the APP file to be installed or the folder path of only one APP.|
 | -r | Used to overwrite an existing HAP or HSP file. This parameter is optional. This parameter is not specified by default, indicating that the existing file will be overwritten.|
-| -s | Used to specify the path where the inter-application HSP is to be installed. This parameter is mandatory for installing the inter-application HSP and optional in other scenarios. Each directory can contain only one HSP file.|
+| -s | Used to specify the path where the inter-application HSP is to be installed. This parameter is mandatory for installing the inter-application HSP and optional in other scenarios. Each directory can contain only one HSP file.<br>**NOTE**<br> The inter-application HSP is not available to third-party applications and cannot be installed by third parties.|
 | -w | Used to wait for a specified time before installing a HAP. The minimum waiting time is 180s, and the maximum waiting time is 600s. The default waiting time is 180s. This parameter is optional.|
 | -u | Used to specify the [user](#userid). By default, the bundle is installed for the current active user. This parameter is optional. The bundle can be installed only for the current active user or user 0.<br>**NOTE**<br> If the current active user is 100, the bundle is installed only for user 100 after the **bm install -p /data/local/tmp/ohos.app.hap -u 102** command is executed.|
 | -d | Used to allow an application to be downgraded; that is, an earlier version of the application can overwrite a later version. This parameter is optional. Only third-party applications with the signing certificate distribution type set to **app_gallery** or the signing certificate type set to **debug** can be downgraded. This parameter is supported since API version 23.|
@@ -611,7 +611,7 @@ Method 1: Use [automatic signing](https://developer.huawei.com/consumer/en/doc/h
 
 Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic Service Manually](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section297715173233).
 
-Method 3: If this error code is reported during the installation of the APP file, set **appWithSignedPkg** to **true** in the [project-level build-profile.json5 file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app) to ensure that the HAP/HSP in the APP file is signed.
+Method 3: If this error code is reported during application installation, set **appWithSignedPkg** of [packOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section03812484215) to **true** in the [project-level build-profile.json5 file](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app) to ensure that the HAP or HSP in the APP is signed.
 
 ### 9568321 Failed to Parse the Signature File
 **Error Message**
@@ -2912,7 +2912,7 @@ Reconfigure **pluginDistributionIDs** in the <!--RP5-->[profile](../security/app
 }
 ``` 
 
-### 9568433 ohos.permission.SUPPORT_PLUGIN Not Granted
+### 9568433 ohos.permission.kernel.SUPPORT_PLUGIN Not Granted
 **Error Message**
 
 error: Failed to install the plugin because host application check permission failed.
@@ -2923,7 +2923,7 @@ The bundle permission verification fails during plugin installation.
 
 **Possible Causes**
 
-The bundle does not have the **ohos.permission.SUPPORT_PLUGIN** permission.
+The bundle does not have the **ohos.permission.kernel.SUPPORT_PLUGIN** permission.
 
 **Solution**
 

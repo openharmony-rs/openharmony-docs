@@ -15,7 +15,6 @@
 
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
@@ -47,7 +46,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or Current device is not supported.     |  
+| 201      | Permission denied or current device not supported.     |  
 | 1600001  | Internal error.                     |
 | 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -57,18 +56,17 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 ```ts
 import { common } from '@kit.AbilityKit';
 
-const DOMAIN = 0x0000;
-
 try {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
+    console.info(`openSubscriberSettings success`);
   }).catch((e:Error) => {
     let error = e as BusinessError
-    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
   });
 } catch (error) {
-  hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
 }
 ```
 
@@ -100,7 +98,7 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied or Current device is not supported. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                    |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -108,6 +106,7 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 **示例：**
 
 ```ts
+
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
     addr: '01:23:45:67:89:AB', // 使用动态获取的蓝牙地址
@@ -115,9 +114,9 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  hilog.info(DOMAIN, 'testTag',"subscribe success");
+  console.info("subscribe success");
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe fail: ${JSON.stringify(err)}`);
 });
 
 ```
@@ -144,17 +143,18 @@ unsubscribe(): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or Current device is not supported. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
 **示例：**
 
 ```ts
+
 notificationExtensionSubscription.unsubscribe().then(() => {
-  hilog.info(DOMAIN, 'testTag',"unsubscribe success");
+  console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -180,17 +180,18 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or Current device is not supported. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
 **示例：**
 
 ```ts
-notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  hilog.info(DOMAIN, 'testTag',`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+
+notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -216,21 +217,22 @@ isUserGranted(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied or Current device is not supported. | 
+| 201      | Permission denied or current device not supported. | 
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                           |
 
 **示例：**
 
 ```ts
+
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
-    hilog.info(DOMAIN, 'testTag','isUserGranted true');
+    console.info('isUserGranted true');
   } else {
-    hilog.info(DOMAIN, 'testTag','isUserGranted false');
+    console.info('isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`isUserGranted fail: ${JSON.stringify(err)}`);
+  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -256,17 +258,18 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or Current device is not supported.     |  
+| 201      | Permission denied or current device not supported.     |  
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 
 **示例：**
 
 ```ts
-notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  hilog.info(DOMAIN, 'testTag',`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
+
+notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
 ```
 

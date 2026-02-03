@@ -49,8 +49,8 @@ Defines the options of the **Video** component.
 | Name      | Type   | Read-Only| Optional| Description                        |
 | ------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | src                 | string \| [Resource](ts-types.md#resource)                            | No  | Yes| Video source, which can be either a local or a network video.<br>The Resource type allows cross-package and cross-module access to resource files and is commonly used for accessing local videos.<br>- Only resources in the rawfile folder are supported, which means that you can reference video files only with **$rawfile**.<br>The string type is used for loading local videos and, more frequently, network videos.<br>- Network video URLs are supported.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**NOTE**<br>The supported video formats are MP4, MKV, and TS.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| currentProgressRate | number \| string \| [PlaybackSpeed<sup>8+</sup>](#playbackspeed8) | No  | Yes| Video playback speed.<br>**NOTE**<br>The value of the number type can only be **0.75**, **1.0**, **1.25**, **1.75**, or **2.0**. Values 0.5, 1.5, 3, 0.25, and 0.125 are supported since API version 22.<br>For the string type, numeric string values, for example **0.75**, **1.0**, **1.25**, **1.75**, and **2.0**, are supported. Values "0.5", "1.5", "3", "0.25", and "0.125" are supported since API version 22.<br>Other values, for example, **"abc"** or **"1.5+1.5"**, are considered as invalid values.<br>Default value: 1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| previewUri          | string \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [Resource](ts-types.md#resource)  | No | Yes | Path of the preview image displayed before the video playback starts. By default, no preview image is displayed.<br>The string type can be used to load online images and local images.<br>- URLs are supported for loading online images.<br>- Relative paths are supported for loading local images, for example, **previewUri: "common/test.jpg"**. When using an image referenced using a relative path, the component cannot be called across bundles or modules.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The Resource type allows cross-package and cross-module access to resource files.<br>- Resources in the rawfile folder are supported, which means that you can reference image files with **$rawfile**.<br>- \$r can be used to reference images in system resources or application resources.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
+| currentProgressRate | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[PlaybackSpeed<sup>8+</sup>](#playbackspeed8) | No  | Yes| Video playback speed.<br>**NOTE**<br>The value of the number type can only be **0.75**, **1.0**, **1.25**, **1.75**, or **2.0**. Values **0.5**, **1.5**, **3**, **0.25**, and **0.125** are supported since API version 22.<br>For the string type, numeric string values, for example, **0.75**, **1.0**, **1.25**, **1.75**, and **2.0**, are supported. Values **"0.5"**, **"1.5"**, **"3"**, **"0.25"**, and **"0.125"** are supported since API version 22.<br>Other values, for example, **"abc"** or **"1.5+1.5"**, are considered as invalid values.<br>Default value: 1.0 \| PlaybackSpeed.Speed_Forward_1_00_X<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| previewUri          | string&nbsp;\| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  | No | Yes | Path of the preview image displayed before the video playback starts. By default, no preview image is displayed.<br>The string type can be used to load network images and local images.<br>- URLs are supported for loading online images.<br>- Relative paths are supported for loading local images, for example, **previewUri: "common/test.jpg"**. When using an image referenced using a relative path, the component cannot be called across bundles or modules.<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, are supported. They are used to access resources in the application sandbox path. Ensure that the application has the read permission to the files in the specified path.<br>The Resource type allows cross-package and cross-module access to resource files.<br>- Resources in the **rawfile** folder are supported, which means that you can reference image files with **$rawfile**.<br>- \$r can be used to reference images in system resources or application resources.<br>The default value is an empty string.<br>If an invalid value is passed, the default value will be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                |
 | controller          | [VideoController](#videocontroller)                          | No| Yes  | Video controller to control the video playback status.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                    |
 | imageAIOptions<sup>12+</sup>  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | No| Yes  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | posterOptions<sup>18+</sup>  | [PosterOptions](#posteroptions18) | No| Yes  | Display options for the first frame of the video.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
@@ -175,7 +175,9 @@ Sets whether to repeat the video.. This attribute can be dynamically set using [
 enableAnalyzer(enable: boolean)
 
 Sets whether to enable the AI image analyzer, which supports subject recognition, text recognition, and object lookup. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 After this feature is enabled, the video automatically enters an analysis state to process the current frame when playback is paused, and exits the analysis state when playback is resumed.
+
 Note that if this attribute and the [overlay](ts-universal-attributes-overlay.md) attribute are both set, [CustomBuilder](ts-types.md#custombuilder8) specified in [overlay](ts-universal-attributes-overlay.md) has no effect.
 
 >**NOTE**
@@ -241,7 +243,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onStart
 
-onStart(event: VoidCallback)
+onStart(event:&nbsp;VoidCallback)
 
 Triggered when video playback starts. Dynamic property modification using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
 
@@ -257,7 +259,7 @@ Triggered when video playback starts. Dynamic property modification using [attri
 
 ### onPause
 
-onPause(event: VoidCallback)
+onPause(event:&nbsp;VoidCallback)
 
 Triggered when video playback is paused. Dynamic property modification using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
 
@@ -273,7 +275,7 @@ Triggered when video playback is paused. Dynamic property modification using [at
 
 ### onFinish
 
-onFinish(event: VoidCallback)
+onFinish(event:&nbsp;VoidCallback)
 
 Triggered when video playback is finished. Dynamic property modification using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
 
@@ -337,7 +339,7 @@ Triggered when video preparation is complete. Dynamic property modification usin
 
 | Name  | Type  | Mandatory| Description                      |
 | -------- | ------ | ---- | -------------------------- |
-| callback | Callback\<[PreparedInfo](#preparedinfo18)> | Yes  | Duration of the video.|
+| callback | Callback\<[PreparedInfo](#preparedinfo18)> | Yes  | Callback invoked when video preparation is complete.|
 
 ### onSeeking
 
@@ -353,7 +355,7 @@ Triggered to report the time information while seeking is in progress (the progr
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| callback   | Callback\<[PlaybackInfo](#playbackinfo18)> | Yes  | Callback that provides the current playback progress.|
+| callback   | Callback\<[PlaybackInfo](#playbackinfo18)> | Yes  | Callback for the progress bar operation.|
 
 ### onSeeked
 
@@ -369,7 +371,7 @@ Triggered to report the time information while seeking is completed. Dynamic pro
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| callback   | Callback\<[PlaybackInfo](#playbackinfo18)> | Yes  | Callback that provides the current playback progress.|
+| callback   | Callback\<[PlaybackInfo](#playbackinfo18)> | Yes  | Callback invoked after the progress bar operation is completed.|
 
 ### onUpdate
 
@@ -385,7 +387,7 @@ Triggered when playback progress changes. Dynamic property modification using [a
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| callback   | Callback\<[PlaybackInfo](#playbackinfo18)> | Yes  | Callback that provides the current playback progress.|
+| callback   | Callback\<[PlaybackInfo](#playbackinfo18)> | Yes  | Callback invoked when the playback progress changes.|
 
 ### onFullscreenChange
 
@@ -401,7 +403,7 @@ Triggered when video playback is switched between full-screen mode and non-full-
 
 | Name    | Type   | Mandatory| Description                                                 |
 | ---------- | ------- | ---- | ----------------------------------------------------- |
-| callback | Callback\<[FullscreenInfo](#fullscreeninfo18)> | Yes  | Callback that indicates whether the video playback is in full-screen mode.|
+| callback | Callback\<[FullscreenInfo](#fullscreeninfo18)> | Yes  | Callback invoked when the video playback is switched between full-screen mode and non-full-screen mode.|
 
 ## FullscreenInfo<sup>18+</sup>
 
@@ -460,11 +462,11 @@ Defines display options for the first frame of the video.
 | Name      | Type   | Read-Only| Optional| Description                        |
 | ----------- | ------- | ---- | ---- | ---------------------------- |
 | showFirstFrame   | boolean | No| Yes| Whether to enable first frame display, showing the first frame of the video as a preview. When first frame display is enabled, the previewUri field in [VideoOptions](#videooptions) has no effect.<br>**true**: Enable first frame display.<br>**false**: Disable first frame display.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
-| contentTransitionEffect<sup>21+</sup>   | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | No| Yes| Transition effect when the preview image of the current video changes. This field does not take effect if showFirstFrame is set to true (that is, the first frame display is enabled) or previewUri of the valid [VideoOptions](#videooptions) object is not set.<br>Default value: **ContentTransitionEffect.IDENTITY**.<br>If this parameter is set to undefined or null, the value is ContentTransitionEffect.IDENTITY.<br>**Atomic service API**: This API can be used in atomic services since API version 21.     |
+| contentTransitionEffect<sup>21+</sup>   | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | No| Yes| Transition effect to apply when the video preview image changes. This parameter does not take effect if **showFirstFrame** is **true**, or if a valid **previewUri** in [VideoOptions](#videooptions) is not provided.<br>Default value: **ContentTransitionEffect.IDENTITY**.<br>If this parameter is set to **undefined** or **null**, it defaults to **ContentTransitionEffect.IDENTITY**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.     |
 
 ## VideoController
 
-Defines a **VideoController** object to control one or more **Video** components. For details about available video playback examples, see [@ohos.multimedia.media](../../apis-media-kit/arkts-apis-media.md).
+A **VideoController** object can control one or more **Video** components.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -544,7 +546,7 @@ Sets the video playback position.
 
 | Name  | Type  | Mandatory  | Description          |
 | ----- | ------ | ---- | -------------- |
-| value | number | Yes   | Video playback position.<br>Value range: [0, [duration](ts-media-components-video.md#preparedinfo18)]<br>Unit: second<br>Since API version 8, seek mode configuration is supported. For details, see [setCurrentTime<sup>8+</sup>](#setcurrenttime8).|
+| value | number | Yes   | Video playback position.<br>Value range: [0, [duration](ts-media-components-video.md#preparedinfo18)]<br>When the set value is greater than the duration, the progress will jump to the end; when the set value is less than 0, no progress jump will occur.<br>Unit: second<br>Since API version 8, seek mode configuration is supported. For details, see [setCurrentTime<sup>8+</sup>](#setcurrenttime8).|
 
 ### requestFullscreen
 
@@ -590,7 +592,7 @@ Sets the video playback position with the specified seek mode.
 
 | Name     | Type    | Mandatory  | Description          |
 | -------- | -------- | ---- | -------------- |
-| value    | number   | Yes   | Video playback position.<br>Value range: [0, [duration](ts-media-components-video.md#preparedinfo18)]<br>Unit: second|
+| value    | number   | Yes   | Video playback position.<br>Value range: [0, [duration](ts-media-components-video.md#preparedinfo18)]<br>When the set value is greater than the duration, the progress will jump to the end; when the set value is less than 0, no progress jump will occur.<br>Unit: second|
 | seekMode | [SeekMode](#seekmode8) | Yes   | Seek mode.         |
 
 ## SeekMode<sup>8+</sup>
@@ -612,7 +614,7 @@ Enumerates video seek modes.
 
 ### Example 1: Implementing Basic Video Playback Features
 
-This example covers the basic features of video playback, including how to manage the control bar, use preview images, handle autoplay, adjust the playback speed, respond to keyboard shortcuts (since API version 15, [enableShortcutKey](#enableshortcutkey15) can be used for enabling keyboard shortcut response), and operate the controller for playback control. Additionally, it demonstrates how to implement first frame display (since API version 18, [posterOptions](#posteroptions18) can be used for setting first frame display options). Since API version 21, **posterOptions** supports configuring transition animation effects for video preview image content changes through the **contentTransitionEffect** parameter of [PosterOptions](#posteroptions18), along with related state callback methods.
+This example covers the basic features of video playback, including how to manage the control bar, use preview images, handle autoplay, adjust the playback speed, respond to keyboard shortcuts (since API version 15, [enableShortcutKey](#enableshortcutkey15) can be used for enabling keyboard shortcut response), and operate the controller for playback control. Additionally, it demonstrates how to implement first frame display (since API version 18, [posterOptions](#posteroptions18) can be used for setting first frame display options). Since API version 21, **posterOptions** supports configuring transition animation effects for video preview image content changes through the **contentTransitionEffect** parameter of [PosterOptions](#posteroptions18). along with related state callbacks.
 
 ```ts
 // xxx.ets
@@ -825,7 +827,7 @@ struct Index {
         .width('100%')
         .height(600)
         .onPrepared(() => {
-          // Start playing the video when it is ready.
+          // Execute the controller's start method in the onPrepared callback to ensure the video starts playing immediately after the source is changed.
           this.controller.start();
         })
         .onDrop((e: DragEvent) => {
@@ -858,7 +860,7 @@ struct VideoObject {
 
   build() {
     Column() {
-      Text("ImageFit.Contain").fontSize(12)
+      Text('ImageFit.Contain').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -870,7 +872,7 @@ struct VideoObject {
         .objectFit(ImageFit.Contain) // Set the video fill mode to ImageFit.Contain.
         .margin(5)
 
-      Text("ImageFit.Fill").fontSize(12)
+      Text('ImageFit.Fill').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -882,7 +884,7 @@ struct VideoObject {
         .objectFit(ImageFit.Fill) // Set the video fill mode to ImageFit.Fill.
         .margin(5)
 
-      Text("ImageFit.START").fontSize(12)
+      Text('ImageFit.START').fontSize(12)
       Video({
         src: this.videoSrc,
         previewUri: this.previewUri,
@@ -913,7 +915,7 @@ struct VideoErrorComponent {
   @State showControls: boolean = true;
   @State showFirstFrame: boolean = false;
   controller: VideoController = new VideoController();
-  @State errorMessage: string = "";
+  @State errorMessage: string = '';
 
   build() {
     Column() {
@@ -934,8 +936,8 @@ struct VideoErrorComponent {
       // Pass in an invalid video resource path. Expected result: "code is 103602, message is Not a valid source."
       Text(this.errorMessage)
     }
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
     .backgroundColor('rgb(213,213,213)')
   }
 }

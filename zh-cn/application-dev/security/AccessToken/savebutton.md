@@ -32,7 +32,7 @@
 - 当开发者需要自定义保存控件的图标和文本时，需要向应用市场申请ohos.permission.CUSTOMIZE_SAVE_BUTTON权限。
 
   > **注意：**
-  > ohos.permission.CUSTOMIZE_SAVE_BUTTON受限开放，仅默认样式无法满足业务场景时可申请，申请方式请参考<!--RP1-->[申请使用受限权限](declare-permissions-in-acl.md)<!--RP1End-->。
+  > ohos.permission.CUSTOMIZE_SAVE_BUTTON受限开放，仅默认样式无法满足业务场景时可申请，申请方式请参考[申请使用受限权限](declare-permissions-in-acl.md)。
 
 ## 开发步骤
 

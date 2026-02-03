@@ -32,7 +32,7 @@ To implement theme switching for your application, you must define custom theme 
   export let gAppTheme: CustomTheme = new AppTheme();
   ```
 
-## Applying Custom Theme Colors to Application Components
+## Setting Custom Theme Colors for Application Components
 - When setting custom theme colors at the page entry point, ensure that [ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol).[setDefaultTheme](../reference/apis-arkui/js-apis-arkui-theme.md#setdefaulttheme) is executed before the page is built.
   Use the [onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12) callback to allow custom components to access the currently active **Theme** object.
 

@@ -504,7 +504,7 @@ onBackClick(): void {
   // 调用this.getUIContext().getRouter().showAlertBeforeBackPage方法，设置返回询问框的信息
   try {
     this.getUIContext().getRouter().showAlertBeforeBackPage({
-      // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_context' ，value为非空字符串的资源
+      // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_context'，value为非空字符串的资源
       message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string, // 设置询问框的内容
     });
   } catch (err) {
@@ -521,6 +521,7 @@ onBackClick(): void {
 其中，this.getUIContext().getRouter().showAlertBeforeBackPage方法接收一个对象作为参数，该对象包含以下属性：
 
 message：string类型，表示询问框的内容。
+
 如果调用成功，则会在目标界面开启页面返回询问框；如果调用失败，则会抛出异常，并通过err.code和err.message获取错误码和错误信息。
 
 当用户点击“返回”按钮时，会弹出确认对话框，询问用户是否确认返回。选择“取消”将停留在当前页目标页面；选择“确认”将触发[back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back)方法，并根据参数决定如何执行跳转。
@@ -529,7 +530,7 @@ message：string类型，表示询问框的内容。
 
 自定义询问框的方式，可以使用弹窗[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1)或者自定义弹窗实现。这样可以让应用界面与系统默认询问框有所区别，提高应用的用户体验度。本文以弹窗为例，介绍如何实现自定义询问框。
 
-直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
+直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
 
 在事件回调中，调用弹窗的[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1)方法：
 
@@ -552,15 +553,17 @@ onBackClick() {
   // 弹出自定义的询问框
   this.getUIContext().getPromptAction().showDialog({
     // 您还没有完成支付，确定要返回吗？
-    // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_xxx' ，value为非空字符串的资源
-    message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string,
+    // 请将$r('app.string.pageRouter_dialog_context')替换为实际资源文件，在本示例中该资源文件的value值为"您还没有完成支付，确定要返回吗？"
+    message: $r('app.string.pageRouter_dialog_context'),
     buttons: [
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_canceled') as string,
+        // 请将$r('app.string.pageRouter_dialog_canceled')替换为实际资源文件，在本示例中该资源文件的value值为"取消"
+        text: $r('app.string.pageRouter_dialog_canceled'),
         color: '#FF0000'
       },
       {
-        text: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_confirmed') as string,
+        // 请将$r('app.string.pageRouter_dialog_confirmed')替换为实际资源文件，在本示例中该资源文件的value值为"确认"
+        text: $r('app.string.pageRouter_dialog_confirmed'),
         color: '#0099FF'
       }
     ]

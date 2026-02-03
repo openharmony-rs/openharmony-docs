@@ -366,9 +366,9 @@ Enumerates length units.
 
 ## LengthMetrics<sup>12+</sup>
 
-Defines the length properties. When the length unit is PERCENT, the value **1** indicates 100%.
+Defines the length attribute. When the length unit is PERCENT, the value **1** indicates 100%.
 
-### Properties
+### Attributes
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -393,7 +393,7 @@ A constructor used to create a **LengthMetrics** instance. If the **unit** param
 
 | Name| Type         | Mandatory| Description        |
 | ------ | ------------- | ---- | ------------ |
-| value   | number | Yes  | Value of the length property.<br>Value range: (-∞, +∞).|
+| value   | number | Yes  | Value of the length property.<br>Value range: [0, +∞).|
 | unit   | [LengthUnit](#lengthunit12) | No  | Unit of the length property.|
 
 ### px<sup>12+</sup>
@@ -960,7 +960,7 @@ Describes the command for drawing a path.
 
 Describes the shape mask.
 
-### Properties
+### Attributes
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -968,8 +968,8 @@ Describes the shape mask.
 
 | Name           | Type   | Read-Only| Optional| Description                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
-| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode). |
-| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode).|
+| fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> A color with only the transparency is generated based on the transparency and brightness of **fillColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RednerNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
+| strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br>  A color with only the transparency is generated based on the transparency and brightness of **strokeColor**. The higher the brightness, the more transparent the color. Then, the color is blended with the color of **RednerNode** using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API to generate the final color.|
 | strokeWidth     | number | No  | No  | Sets the stroke width for the mask, in px. The default value is **0**.  |
 
 ### constructor<sup>12+</sup>

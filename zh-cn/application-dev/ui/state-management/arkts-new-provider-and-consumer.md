@@ -7,6 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 \@Provider和\@Consumer用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
+
 \@Provider和\@Consumer属于状态管理V2装饰器，所以只能在\@ComponentV2中才能使用，在\@Component中使用会编译报错。
 
 \@Provider和\@Consumer提供了跨组件层级数据双向同步的能力。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。常见问题请参考[组件内状态变量常见问题](./arkts-state-management-faq-inner-component.md)。
@@ -24,6 +25,7 @@
 ## 概述
 
 \@Provider，即数据提供方，其所有的子组件都可以通过\@Consumer绑定相同的key来获取\@Provider提供的数据。
+
 \@Consumer，即数据消费方，可以通过绑定同样的key获取其最近父节点的\@Provider的数据，当查找不到\@Provider的数据时，使用本地默认值。图示如下。
 
 ![ProviderConsumer_1](./figures/Provider_Consumer_1.png)
@@ -36,6 +38,7 @@
 
 ## \@Provider和\@Consumer vs \@Provide和\@Consume能力对比
 在状态管理V1版本中，提供跨组件层级双向的装饰器为[\@Provide和\@Consume](./arkts-provide-and-consume.md)，当前文档介绍的是状态管理V2装饰器\@Provider和\@Consumer。虽然两者名字和功能类似，但在特性上还存在一些差异。
+
 如果开发者不了解状态管理V1中的\@Provide和\@Consume，可以直接跳过本节。
 
 | 能力 | V2装饰器\@Provider和\@Consumer                                             |V1装饰器\@Provide和\@Consume|
@@ -51,6 +54,7 @@
 
 ### 基本规则
 \@Provider语法：
+
 `@Provider(aliasName?: string) varName : varType = initValue`
 
 | \@Provider属性装饰器 | 说明                                                  |
@@ -62,6 +66,7 @@
 | 观察能力         | 能力等同于\@Trace。变化会同步给对应的\@Consumer。 |
 
 \@Consumer语法：
+
 `@Consumer(aliasName?: string) varName : varType = initValue`
 
 | \@Consumer属性装饰器 | 说明                                                         |
@@ -497,6 +502,7 @@ struct Child {
 ### \@Provider和\@Consumer装饰回调事件用于组件之间完成行为抽象
 
 当需要在父组件中向子组件注册回调函数时，可以使用\@Provider和\@Consumer装饰回调方法来实现。
+
 在拖拽场景中，若需将子组件的拖拽起始位置信息同步给父组件，可参考以下示例。
 
 <!-- @[Drag_Drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets) -->

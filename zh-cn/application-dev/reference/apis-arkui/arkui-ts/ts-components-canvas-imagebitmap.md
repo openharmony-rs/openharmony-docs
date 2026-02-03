@@ -188,7 +188,7 @@ struct Demo {
 
 > **说明：**
 >
-> DevEco Studio的预览器不支持显示在worker线程中绘制的内容。
+> DevEco Studio的预览器不支持显示在Worker线程中绘制的内容。
 
 ```ts
 import { worker } from '@kit.ArkTS';
@@ -198,7 +198,7 @@ import { worker } from '@kit.ArkTS';
 struct imageBitmapExamplePage {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ts');
+  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
   // "common/images/example.jpg"需要替换为开发者所需的图像资源文件
   private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
 

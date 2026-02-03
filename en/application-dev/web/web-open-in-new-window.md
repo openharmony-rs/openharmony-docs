@@ -30,69 +30,70 @@ In the following example, when a user clicks the **Open Page in New Window** but
 
 - Application code:
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+<!-- @[receive_a_web_component_new_window_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/OpenPageNewWin.ets) -->
 
-  // There are two Web components on the same page. When the WebComponent object opens a new window, the NewWebViewComp object is displayed.
-  @CustomDialog
-  struct NewWebViewComp {
-    controller?: CustomDialogController;
-    webviewController1: webview.WebviewController = new webview.WebviewController();
+``` TypeScript
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
 
-    build() {
-      Column() {
-        Web({ src: "", controller: this.webviewController1 })
-          .javaScriptAccess(true)
-          .multiWindowAccess(false)
-          .onWindowExit(() => {
-            console.info("NewWebViewComp onWindowExit");
-            if (this.controller) {
-              this.controller.close();
-            }
-          })
-          .onActivateContent(() => {
-            // To display the web page to the foreground, the application should perform a tab or window switch.
-            console.log("NewWebViewComp onActivateContent")
-          })
-      }
+// There are two Web components on the same page. When the WebComponent object opens a new window, the NewWebViewComp object is displayed.
+@CustomDialog
+struct NewWebViewComp {
+  controller?: CustomDialogController;
+  webviewController1: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: '', controller: this.webviewController1 })
+        .javaScriptAccess(true)
+        .multiWindowAccess(false)
+        .onWindowExit(() => {
+          console.info('NewWebViewComp onWindowExit');
+          if (this.controller) {
+            this.controller.close();
+          }
+        })
+        .onActivateContent(() => {
+          // To display the web page to the foreground, the application should perform a tab or window switch.
+          console.info('NewWebViewComp onActivateContent')
+        })
     }
   }
+}
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    dialogController: CustomDialogController | null = null;
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  dialogController: CustomDialogController | null = null;
 
-    build() {
-      Column() {
-        Web({ src: $rawfile("window.html"), controller: this.controller })
-          .javaScriptAccess(true)
-            // Enable the multi-window permission.
-          .multiWindowAccess(true)
-          .allowWindowOpenMethod(true)
-          .onWindowNew((event) => {
-            if (this.dialogController) {
-              this.dialogController.close()
-            }
-            let popController: webview.WebviewController = new webview.WebviewController();
-            this.dialogController = new CustomDialogController({
-              builder: NewWebViewComp({ webviewController1: popController }),
-              // Set isModal to false to prevent the new window from being destroyed, so that the onActivateContent callback can be triggered.
-              isModal: false
-            })
-            this.dialogController.open();
-            // Return the WebviewController object corresponding to the new window to the <Web> kernel.
-            // If the event.handler.setWebController API is not called, the render process will be blocked.
-            // If no new window is created, set the value of event.handler.setWebController to null to notify the Web component that no new window is created.
-            event.handler.setWebController(popController);
+  build() {
+    Column() {
+      Web({ src: $rawfile('window.html'), controller: this.controller })
+        .javaScriptAccess(true)
+          // Enable the multi-window permission.
+        .multiWindowAccess(true)
+        .allowWindowOpenMethod(true)
+        .onWindowNew((event) => {
+          if (this.dialogController) {
+            this.dialogController.close()
+          }
+          let popController: webview.WebviewController = new webview.WebviewController();
+          this.dialogController = new CustomDialogController({
+            builder: NewWebViewComp({ webviewController1: popController }),
+            // Set isModal to false to prevent the new window from being destroyed, so that the onActivateContent callback can be triggered.
+            isModal: false
           })
-      }
+          this.dialogController.open();
+          // Return the WebviewController object corresponding to the new window to the <Web> kernel.
+          // If the event.handler.setWebController API is not called, the render process will be blocked.
+          // If no new window is created, set the value of event.handler.setWebController to null to notify the Web component that no new window is created.
+          event.handler.setWebController(popController);
+        })
     }
   }
-  ```
-
+}
+```
 
 - Code of the **window.html** page:
 

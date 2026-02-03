@@ -10,9 +10,11 @@ WithTheme组件用于设置应用局部页面自定义主题风格，可设置�
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > WithTheme支持的系统组件如下：[TextInput](./ts-basic-components-textinput.md)、[Search](./ts-basic-components-search.md)、[Button](./ts-basic-components-button.md)、[Badge](./ts-container-badge.md)、[Swiper](./ts-container-swiper.md)、[Text](./ts-basic-components-text.md)、[Select](./ts-basic-components-select.md)、[Menu](./ts-basic-components-menu.md)、[TimePicker](./ts-basic-components-timepicker.md)、[DatePicker](./ts-basic-components-datepicker.md)、[TextPicker](./ts-basic-components-textpicker.md)、[Checkbox](./ts-basic-components-checkbox.md)、[CheckboxGroup](./ts-basic-components-checkboxgroup.md)、[Radio](./ts-basic-components-radio.md)、[Slider](./ts-basic-components-slider.md)、[Progress](./ts-basic-components-progress.md)、[QRCode](./ts-basic-components-qrcode.md)、[Toggle](./ts-basic-components-toggle.md)、[PatternLock](./ts-basic-components-patternlock.md)、[Divider](./ts-basic-components-divider.md)
+>
+> WithTheme相关使用指导请参考[设置应用内主题换肤](../../../ui/theme_skinning.md)。
 
 ## 子组件
 

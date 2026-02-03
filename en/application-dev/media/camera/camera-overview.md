@@ -1,4 +1,4 @@
-# Introduction to Camera Kit
+# About This Kit
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->

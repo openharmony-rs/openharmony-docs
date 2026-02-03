@@ -150,19 +150,19 @@ import { settings } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Applications.Settings.Core
 
-| 名称                                                    | 类型   | 只读 | 说明                                                                         |
-|-------------------------------------------------------| ------ |----|----------------------------------------------------------------------------|
-| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | 是  | 设备在来电响铃时是否振动。此属性由电话和设置应用程序使用。<br/>该值是布尔类型，仅影响设备因来电而响铃的情况，不影响任何其他应用程序或场景（该常量不支持使用）。 |
-| DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | 是  | 系统默认告警的存储区域（该常量不支持使用）。                                                               |
-| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | 是  | 拨号时播放的双音多频（DTMF）音的类型。 <br>- 值为0，表示常规的短音效。<br/>- 值为1，表示长音效（该常量不支持使用）。                 |
-| DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | 是  | 拨号时是否播放DTMF音。<br>- 值为1，表示播放DTMF音。<br/>- 值为0，表示不播放（该常量不支持使用）。                         |
-| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated21)</sup> | string | 是  | 音频流受振铃模式和请勿打扰（DND）模式更改的影响。要求特定的音频流受到振铃模式和DND模式变化的影响，将对应比特位设置为1（该常量不支持使用）。            |
-| AFFECTED_MUTE_STREAMS<sup>(deprecated21)</sup>        | string | 是  | 受静音模式影响的音频流。若需在静音模式下保持特定音频流静音，将相应位设为1（该常量不支持使用）。                                     |
-| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated21)</sup>   | string | 是  | 系统默认通知音的存储区域（该常量不支持使用）。                                                              |
-| DEFAULT_RINGTONE<sup>(deprecated21)</sup>             | string | 是  | 系统默认铃声的存储区域（该常量不支持使用）。                                                               |
-| SOUND_EFFECTS_STATUS<sup>(deprecated21)</sup>         | string | 是  | 声音功能是否可用。<br>- 值为0，表示不可用。 <br/>- 值为1，表示可用（该常量不支持使用）。                                 |
-| VIBRATE_STATUS<sup>(deprecated21)</sup>               | string | 是  | 设备是否为事件振动。该参数在系统内部使用。 <br>- 值为1，表示设备会因事件而振动。 <br/>- 值为0，表示设备不因事件振动（该常量不支持使用）。        |
-| HAPTIC_FEEDBACK_STATUS<sup>(deprecated21)</sup>       | string | 是  | 设备是否启用触觉反馈。<br/>- 值为true，表示启用触觉反馈。<br/>- 值为false，表示不启用触觉反馈（该常量不支持使用）。                |
+| 名称                                                    | 类型   | 只读 | 说明                                                                            |
+|-------------------------------------------------------| ------ |----|-------------------------------------------------------------------------------|
+| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | 是  | 设备在来电响铃时是否振动。此属性由电话和设置应用程序使用。<br/>该值仅影响设备因来电而响铃的情况，不影响任何其他应用程序或场景（该常量不支持使用）。  |
+| DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | 是  | 系统默认告警的存储区域（该常量不支持使用）。                                                        |
+| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | 是  | 拨号时播放的双音多频（DTMF）音的类型。 <br>- 值为0，表示常规的短音效。<br/>- 值为1，表示长音效（该常量不支持使用）。          |
+| DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | 是  | 拨号时是否播放DTMF音。<br>- 值为1，表示播放DTMF音。<br/>- 值为0，表示不播放（该常量不支持使用）。                  |
+| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated21)</sup> | string | 是  | 音频流受振铃模式和请勿打扰（DND）模式更改的影响。要求特定的音频流受到振铃模式和DND模式变化的影响，将对应比特位设置为1（该常量不支持使用）。     |
+| AFFECTED_MUTE_STREAMS<sup>(deprecated21)</sup>        | string | 是  | 受静音模式影响的音频流。若需在静音模式下保持特定音频流静音，将相应位设为1（该常量不支持使用）。                              |
+| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated21)</sup>   | string | 是  | 系统默认通知音的存储区域（该常量不支持使用）。                                                       |
+| DEFAULT_RINGTONE<sup>(deprecated21)</sup>             | string | 是  | 系统默认铃声的存储区域（该常量不支持使用）。                                                        |
+| SOUND_EFFECTS_STATUS<sup>(deprecated21)</sup>         | string | 是  | 声音功能是否可用。<br>- 值为0，表示不可用。 <br/>- 值为1，表示可用（该常量不支持使用）。                          |
+| VIBRATE_STATUS<sup>(deprecated21)</sup>               | string | 是  | 设备是否为事件振动。该参数在系统内部使用。 <br>- 值为1，表示设备会因事件而振动。 <br/>- 值为0，表示设备不因事件振动（该常量不支持使用）。 |
+| HAPTIC_FEEDBACK_STATUS<sup>(deprecated21)</sup>       | string | 是  | 设备是否启用触觉反馈。<br/>- 值为true，表示启用触觉反馈。<br/>- 值为false，表示不启用触觉反馈（该常量不支持使用）。         |
 
 ## TTS
 
@@ -743,7 +743,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.openNetworkManagerSettings(context).then((status) => {
-  console.info(`callback:return whether setings is open.`)
+  console.info(`callback:return whether settings is open.`);
 });
 ```
 
@@ -1108,6 +1108,8 @@ openInputMethodSettings(context: Context): void
 
 打开输入法设置页面。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.Settings.Core
 
 **设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
@@ -1144,6 +1146,8 @@ settings.openInputMethodSettings(context);
 openInputMethodDetail(context: Context, bundleName: string, inputMethodId: string): void
 
 打开输入法详情页面。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 

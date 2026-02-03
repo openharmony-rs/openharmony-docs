@@ -41,7 +41,7 @@ struct BlurEffectsExample {
         .fontColor(Color.White)
         .textAlign(TextAlign.Center)
         .backdropBlur(10)// 对背景进行模糊
-         // $r("app.media.bg")需要替换为开发者所需的图像资源文件
+        // 请将$r('app.media.bg')替换为实际资源文件
         .backgroundImage($r('app.media.bg'))
         .backgroundImageSize({ width: 400, height: 300 })
     }
@@ -69,10 +69,12 @@ struct Index {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State radius: number = 0;
   @State text: string = '';
-  @State y: Resource | string = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);//app.string.animation_blur_text1资源文件中的value值为‘手指不在屏幕上’
+  @State y: Resource | string = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);// 请在resources\base\element\string.json文件中配置name为'animation_blur_text1'，value为非空字符串的资源
 
   aboutToAppear() {
-    // $r('app.string.xxx')需要替换为开发者所需要的资源文件
+    // 请在resources\base\element\string.json文件中配置name为'animation_blur_text2'，value为非空字符串的资源
+    // 请在resources\base\element\string.json文件中配置name为'animation_blur_text3'，value为非空字符串的资源
+    // 请在resources\base\element\string.json文件中配置name为'animation_blur_text4'，value为非空字符串的资源
     this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + 
     "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
       "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
@@ -86,7 +88,7 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontFamily("cursive")
         .fontStyle(FontStyle.Italic)
-      // $r("app.media.bg")需要替换为开发者所需的图像资源文件
+      // 请将$r('app.media.bg')替换为实际资源文件
       Image($r("app.media.bg"))
         .blur(this.radius)// 使用blur接口为照片组件添加内容模糊效果
         .height('100%')
@@ -102,11 +104,13 @@ struct Index {
         }
         if (event.type === TouchType.Up) {
           this.radius = 0;
-          //app.string.animation_blur_text1资源文件中的value值为‘手指不在屏幕上‘
+          // 请在resources\base\element\string.json文件中配置name为'animation_blur_text1'，value为非空字符串的资源
           this.y = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text1').id);
         }
       }
-      // $r('app.string.xxx')需要替换为开发者所需要的资源文件
+      // 请在resources\base\element\string.json文件中配置name为'animation_blur_text2'，value为非空字符串的资源
+      // 请在resources\base\element\string.json文件中配置name为'animation_blur_text3'，value为非空字符串的资源
+      // 请在resources\base\element\string.json文件中配置name为'animation_blur_text4'，value为非空字符串的资源
       this.text = this.context.resourceManager.getStringSync($r('app.string.animation_blur_text2').id) + "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text3').id) + this.y +
         "\n" + this.context.resourceManager.getStringSync($r('app.string.animation_blur_text4').id) + this.radius;
     })
@@ -120,7 +124,7 @@ struct Index {
 
 ## 使用backgroundBlurStyle为组件添加背景模糊效果
 
-<!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) -->
+<!-- @[animationBlur_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template3/BackDropBlurStyleDemo.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -131,7 +135,7 @@ struct BackDropBlurStyleDemo {
       GridItem() {
         Column() {
           Column() {
-            // $r('app.string.originalImage')资源文件中的value值为'原图'
+            // 请将$r('app.string.originalImage')替换为实际资源文件，在本示例中该资源文件的value值为"原图"
             Text($r('app.string.originalImage'))
               .fontSize(20)
               .fontColor(Color.White)
@@ -142,15 +146,16 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
 
-          // $r('app.string.originalImage')资源文件中的value值为'原图'
+          // 请将$r('app.string.originalImage')替换为实际资源文件，在本示例中该资源文件的value值为"原图"
           Text($r('app.string.originalImage'))
             .fontSize(12)
             .fontColor(Color.Black)
         }
         .height('100%')
+        .margin({ top: 20 })
         .justifyContent(FlexAlign.Start)
       }
       .width(200)
@@ -169,7 +174,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           // BlurStyle.Thin: 为组件添加轻薄材质模糊效果
           // ThemeColorMode.LIGHT: 固定使用浅色模式效果
@@ -186,6 +191,7 @@ struct BackDropBlurStyleDemo {
             .fontColor(Color.Black)
         }
         .height('100%')
+        .margin({ top: 20 })
         .justifyContent(FlexAlign.Start)
       }
       .width(200)
@@ -204,7 +210,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
@@ -235,7 +241,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
@@ -266,7 +272,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
@@ -297,7 +303,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
@@ -328,7 +334,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -359,7 +365,7 @@ struct BackDropBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .backgroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -404,7 +410,7 @@ struct ForegroundBlurStyleDemo {
       GridItem() {
         Column() {
           Column() {
-            // $r('app.string.originalImage')资源文件中的value值为'原图'
+            // 请将$r('app.string.originalImage')替换为实际资源文件，在本示例中该资源文件的value值为"原图"
             Text($r('app.string.originalImage'))
               .fontSize(20)
               .fontColor(Color.White)
@@ -415,10 +421,10 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
 
-          // $r('app.string.originalImage')资源文件中的value值为'原图' 
+          // 请将$r('app.string.originalImage')替换为实际资源文件，在本示例中该资源文件的value值为"原图"
           Text($r('app.string.originalImage'))
             .fontSize(12)
             .fontColor(Color.Black)
@@ -442,7 +448,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           // BlurStyle.Thin: 为组件添加轻薄材质模糊效果
           // ThemeColorMode.LIGHT: 固定使用浅色模式效果
@@ -477,7 +483,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.Regular, {
             colorMode: ThemeColorMode.LIGHT,
@@ -508,7 +514,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.Thick, {
             colorMode: ThemeColorMode.LIGHT,
@@ -539,7 +545,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THIN, {
             colorMode: ThemeColorMode.LIGHT,
@@ -570,7 +576,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_REGULAR, {
             colorMode: ThemeColorMode.LIGHT,
@@ -601,7 +607,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -632,7 +638,7 @@ struct ForegroundBlurStyleDemo {
           .height(100)
           .aspectRatio(1)
           .borderRadius(10)
-          // $r('app.media.bg')需要替换为开发者所需要的资源文件
+          // 请将$r('app.media.bg')替换为实际资源文件
           .backgroundImage($r('app.media.bg'))
           .foregroundBlurStyle(BlurStyle.BACKGROUND_ULTRA_THICK, {
             colorMode: ThemeColorMode.LIGHT,
@@ -683,7 +689,7 @@ struct motionBlurTest {
   build() {
     Column() {
       Column() {
-        // $r('app.media.testImg')需要替换为开发者所需要的资源文件
+        // 请将$r('app.media.testImg')替换为实际资源文件
         Image($r('app.media.testImg'))
           .width(this.widthSize)
           .height(this.heightSize)

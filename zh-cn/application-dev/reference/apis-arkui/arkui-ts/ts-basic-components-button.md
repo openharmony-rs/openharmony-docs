@@ -380,7 +380,7 @@ Button组件的label文本及其字体样式。
 | minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最小显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**说明：**  <br/>minFontSize小于或等于0时，自适应字号不生效。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 是   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| font                 | [Font](ts-types.md#font)                                     | 否   | 是   | 设置label文本字体样式。<br>默认值：默认值参考[Font](ts-types.md#font)。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| font                 | [Font](ts-types.md#font)                                     | 否   | 是   | 设置label文本字体样式。<br>默认值：<br/> {<br/>size:'16.0fp',<br/> weight:FontWeight.Medium,<br/> style:FontStyle.Normal,<br/>  family:'HarmonyOS Sans'<br/>} <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | 否   | 是   | 设置label文本在水平方向上的对齐方式。当使用子节点的Text组件设置label时，此属性不生效，实际的文本对齐方式由子节点Text组件的textAlign属性决定。<br> Wearable设备默认值为TextAlign.Center，其他设备默认值为TextAlign.Start。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ButtonStyleMode<sup>11+</sup>枚举说明
@@ -777,6 +777,7 @@ struct ButtonExample {
 
 ### 示例8（设置label文本水平对齐方式）
 该示例通过配置[LabelStyle](#labelstyle10对象说明)的textAlign，设置文本对齐方式。
+
 从API version 23开始，新增textAlign接口。
 ```ts
 @Entry

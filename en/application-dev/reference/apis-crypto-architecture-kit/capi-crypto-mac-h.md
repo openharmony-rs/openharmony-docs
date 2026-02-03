@@ -39,11 +39,11 @@ Define message authentication code (MAC) APIs.
 
 | Name| Description|
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)](#oh_cryptomac_create) | Creates a MAC instance based on the given algorithm name.|
+| [OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)](#oh_cryptomac_create) | Creates a MAC instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoMac_Destroy](capi-crypto-mac-h.md#oh_cryptomac_destroy).|
 | [OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType type, const Crypto_DataBlob *value)](#oh_cryptomac_setparam) | Sets MAC parameters.|
 | [OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *key)](#oh_cryptomac_init) | Initializes a MAC instance using a symmetric key.|
 | [OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *in)](#oh_cryptomac_update) | Updates a MAC instance.|
-| [OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)](#oh_cryptomac_final) | Finalizes a MAC operation.|
+| [OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)](#oh_cryptomac_final) | Finalizes a MAC operation.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).|
 | [OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)](#oh_cryptomac_getlength) | Obtains the MAC length.|
 | [void OH_CryptoMac_Destroy(OH_CryptoMac *ctx)](#oh_cryptomac_destroy) | Destroys a MAC instance.|
 
@@ -64,7 +64,7 @@ Defines the parameter type for the MAC algorithm.
 | Enum Item| Description|
 | -- | -- |
 | CRYPTO_MAC_DIGEST_NAME_STR = 0 | Algorithm name of the digest function used by the HMAC, for example, **SHA256**.|
-| CRYPTO_MAC_CIPHER_NAME_STR = 1 | Name of the symmetric encryption algorithm used by the CMAC, for example, **AES256.**|
+| CRYPTO_MAC_CIPHER_NAME_STR = 1 | Name of the symmetric encryption algorithm used by the CMAC, for example, **AES256**.|
 
 
 ## Function Description
@@ -77,10 +77,9 @@ OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)
 
 **Description**
 
-Creates a MAC instance based on the given algorithm name.
+Creates a MAC instance based on the given algorithm name.<br> Note: The created resource must be destroyed by calling [OH_CryptoMac_Destroy](capi-crypto-mac-h.md#oh_cryptomac_destroy).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -107,13 +106,12 @@ Sets MAC parameters.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_CryptoMac](capi-cryptomacapi-oh-cryptomac.md) *ctx | MAC instance.|
-| [CryptoMac_ParamType](#cryptomac_paramtype) type | MAC parameter type.|
+| [CryptoMac_ParamType](capi-crypto-mac-h.md#cryptomac_paramtype) type | MAC parameter type.|
 | [const Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *value | MAC parameters.|
 
 **Returns**
@@ -134,7 +132,6 @@ Initializes a MAC instance using a symmetric key.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
@@ -150,9 +147,9 @@ Initializes a MAC instance using a symmetric key.
 
 **Reference**
 
-[OH_CryptoMac_Update](#oh_cryptomac_update)
+[OH_CryptoMac_Update](capi-crypto-mac-h.md#oh_cryptomac_update)
 
-[OH_CryptoMac_Final](#oh_cryptomac_final)
+[OH_CryptoMac_Final](capi-crypto-mac-h.md#oh_cryptomac_final)
 
 
 ### OH_CryptoMac_Update()
@@ -166,7 +163,6 @@ OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *
 Updates a MAC instance.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -183,9 +179,9 @@ Updates a MAC instance.
 
 **Reference**
 
-[OH_CryptoMac_Init](#oh_cryptomac_init)
+[OH_CryptoMac_Init](capi-crypto-mac-h.md#oh_cryptomac_init)
 
-[OH_CryptoMac_Final](#oh_cryptomac_final)
+[OH_CryptoMac_Final](capi-crypto-mac-h.md#oh_cryptomac_final)
 
 
 ### OH_CryptoMac_Final()
@@ -196,10 +192,9 @@ OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)
 
 **Description**
 
-Finalizes a MAC operation.
+Finalizes a MAC operation.<br> Note: After the use is complete, the memory for storing the **out** parameter must be released by calling [OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob).
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -216,9 +211,9 @@ Finalizes a MAC operation.
 
 **Reference**
 
-[OH_CryptoMac_Init](#oh_cryptomac_init)
+[OH_CryptoMac_Init](capi-crypto-mac-h.md#oh_cryptomac_init)
 
-[OH_CryptoMac_Update](#oh_cryptomac_update)
+[OH_CryptoMac_Update](capi-crypto-mac-h.md#oh_cryptomac_update)
 
 
 ### OH_CryptoMac_GetLength()
@@ -232,7 +227,6 @@ OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)
 Obtains the MAC length.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -258,7 +252,6 @@ void OH_CryptoMac_Destroy(OH_CryptoMac *ctx)
 Destroys a MAC instance.
 
 **Since**: 20
-
 
 **Parameters**
 

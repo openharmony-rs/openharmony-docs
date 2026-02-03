@@ -45,9 +45,11 @@
 @Component
 struct Index {
   @State @Watch('onChange') num: number = 0; // @Watch入参为函数名
+
   onChange() {
     console.info(`num change to ${this.num}`);
   }
+
   build() {
     Column() {
       Text(`num is: ${this.num}`)
@@ -104,21 +106,27 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // 监听一个变量
-  onNameChange(monitor: IMonitor) {
+
+  // 监听一个变量
+  @Monitor('name')
+  onNameChange() {
     console.info(`name change to ${this.name}`);
   }
-  @Monitor('age', 'height') // 监听多个变量
+
+  // 监听多个变量
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
       console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
@@ -183,12 +191,16 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // 监听一个变量
+
+  // 监听一个变量
+  @Monitor('name')
   onNameChange(monitor: IMonitor) {
     // 未指定value的入参时，默认使用dirty中的第一个路径作为入参
     console.info(`path: ${monitor.value()?.path} change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
-  @Monitor('age', 'height') // 监听多个变量
+
+  // 监听多个变量
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     // 指定value的入参时，将返回入参路径path对应的变量变化值信息
     monitor.dirty.forEach((path: string) => {
@@ -196,10 +208,12 @@ class Info {
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
@@ -271,6 +285,20 @@ SyncMonitor: MonitorDecorator
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称        | 类型             | 说明                           |
+| ----------- | ---------------- | ------------------------------ |
+| SyncMonitor | [MonitorDecorator](#monitordecorator12) | 属性装饰器，监听状态变量的修改。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[状态管理错误码](../errorcode-stateManagement.md#130001-addmonitorclearmonitor非法路径)。
+
+| 错误码ID | 错误信息             |
+| -------- | -------------------- |
+| 130001   | The path is invalid. |
+
 **示例：**
 
 ```ts
@@ -281,11 +309,15 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @SyncMonitor('name') // 监听一个变量
-  onNameChange(monitor: IMonitor) {
+
+  // 监听一个变量
+  @SyncMonitor('name')
+  onNameChange() {
     hilog.info(0xFF00, 'testTag', '%{public}s', `name change to ${this.name}`);
   }
-  @SyncMonitor('age', 'height') // 监听多个变量
+
+  // 监听多个变量
+  @SyncMonitor('age','height')
   onRecordChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
       hilog.info(0xFF00, 'testTag', '%{public}s',
@@ -293,10 +325,12 @@ class Info {
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)

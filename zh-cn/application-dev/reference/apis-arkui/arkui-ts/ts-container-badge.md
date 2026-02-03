@@ -19,10 +19,13 @@
 
 >  **说明：**
 >
->  子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。
->  自定义组件宽高默认为0，需要给其设置宽高，否则标记组件将不显示。
->  
->  不影响子组件布局，即不会主动规避子组件内容。
+> - 子组件类型：系统组件和自定义组件，支持渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)）。
+>
+> - 自定义组件宽高默认为0，需要给其设置宽高，否则标记组件将不显示。
+>
+> - 当存在多个子组件时，只有最后一个子组件会在界面上显示，但其余子组件的状态更新仍会使Badge及其子组件重新布局渲染。
+>
+> - 不影响子组件布局，即不会主动规避子组件内容。
 
 
 ## 接口
@@ -135,7 +138,7 @@ Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
 | 名称                      | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | color                     | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 文本颜色。<br/>默认值：Color.White<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| fontSize                  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | 否   | 是   | 文本大小。string类型仅支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。<br/>默认值：10<br/>单位：fp<br/>取值范围：大于0；取值为0时不显示文本，取值小于0时取默认值。<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| fontSize                  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | 否   | 是   | 文本大小。string类型仅支持number类型取值的字符串形式，可以附带单位，支持的单位有"px"、"vp"、"fp"、"lpx"，例如"10"、"10fp"，不附带单位时默认单位为"fp"。<br/>默认值：10vp<br/>取值范围：大于0；取值为0时不显示文本，取值小于0时取默认值。<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | badgeSize                 | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)   | 否   | 是   | Badge的大小。string类型支持number类型取值的字符串形式，可以附带单位，例如"16"、"16vp"。<br/>默认值：16<br/>单位：vp<br/>取值范围：大于0；取值为0时不显示Badge，取值小于0时取默认值。<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | badgeColor                | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | Badge的颜色。<br/>默认值：Color.Red<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fontWeight<sup>10+</sup>  | number \|[FontWeight](ts-appendix-enums.md#fontweight) \|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 设置文本的字体粗细。number类型取值范围：[100, 900]，取值间隔为100。取值越大，字体越粗。设置number类型在取值范围外时，按默认值400处理。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |

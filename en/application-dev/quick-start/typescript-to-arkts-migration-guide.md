@@ -31,10 +31,10 @@ function addTen(x: number): number {
 
 **Severity levels**
 
-Each recipe is marked with the severity level. Supported values:
+Each recipe is marked with the severity level.
 
-- **Error**: The recipe should be followed, otherwise the program will fail to compile.
-- **Warning**: It is highly recommended to follow the recipe. Although violating the recipe does not currently affect the compilation, in future versions, it will cause compilation to fail.
+- Error: The recipe should be followed, otherwise the program will fail to compile.
+- Warning: It is highly recommended to follow the recipe. Although violating the recipe does not currently affect the compilation, in future versions, it will cause compilation to fail.
 
 **Unsupported Features**
 
@@ -663,6 +663,7 @@ class C {
 **Error code: 10605022**
 
 ArkTS does not support conditional type aliases. Introduce a new type with constraints explicitly, or rewrite logic using **Object**.
+
 The keyword **infer** is not supported.
 
 **TypeScript**
@@ -788,7 +789,9 @@ ArkTS does not support indexed access types. Use the type name instead.
 **Error code: 10605029**
 
 ArkTS does not support dynamic field declaration and access. Access only those class fields that are either declared in the class, or accessible via inheritance. Accessing any other fields is prohibited, and causes compile-time errors.
+
 To access a field, use the **obj.field** syntax. Indexed access (**obj['field']**) is not supported.
+
 An exception is all typed arrays from the standard library (for example, **Int32Array**), which support access to their elements through the **container[index]** syntax.
 
 **TypeScript**
@@ -971,6 +974,7 @@ foo(new Y());
 **Error code: 10605034**
 
 ArkTS allows to omit generic type parameters if it is possible to infer the concrete types from the parameters passed to the function. A compile-time error occurs otherwise. 
+
 In particular, inference of generic type parameters based only on function return types is prohibited.
 
 **TypeScript**
@@ -1362,6 +1366,7 @@ class C1 implements C {
 **Error code: 10605052**
 
 ArkTS does not support reassigning a method for objects. In the statically typed languages, the layout of objects is fixed and all instances of the same object must share the same code of each method.
+
 If you need to add specific behavior for certain objects, you can create separate wrapper functions or use inheritance.
 
 **TypeScript**
@@ -1706,7 +1711,9 @@ for (let i = 1; i < data.length; ++i) {
 **Error code: 10605071**
 
 ArkTS supports the comma operator (,) only in **for** loops. In other cases, the comma operator is useless as it makes the execution order harder to understand.
->**NOTE**<br>This is different from the comma separator used to declare variables and pass function parameters.
+> **NOTE**
+>
+> This is different from the comma separator used to declare variables and pass function parameters.
 
 **TypeScript**
 
@@ -2499,11 +2506,11 @@ function createPerson(Ctor: PersonCtor, n: string, a: number): Person {
   return Ctor(n, a);
 }
 
-let Impersonizer: PersonCtor = (n: string, a: number): Person => {
+let Impersonate: PersonCtor = (n: string, a: number): Person => {
   return new Person(n, a);
 }
 
-const person = createPerson(Impersonizer, 'John', 30);
+const person = createPerson(Impersonate, 'John', 30);
 ```
 
 ### Enumeration Members Can Be Initialized Only with Compile Time Expressions of the Same Type
@@ -3085,9 +3092,13 @@ Properties and functions of the global object: **eval**
 **Error code: 10605999**
 
 During compilation, the TypeScript strict mode is used to check the following types:
+
 **noImplicitReturns**,
+
 **strictFunctionTypes**,
+
 **strictNullChecks**,
+
 **strictPropertyInitialization**.
 
 **TypeScript**
@@ -3271,7 +3282,9 @@ import('module2').then(() => {}).catch(() => {})  // Dynamic import
 **Error Code: 10605151**
 
 ArkTS does not allow using ESObject type in some cases. The most part of limitations are put in place in order to prevent spread of dynamic objects (from an .ts/.js file) in the static codebase (from an .ets file).
+
 Before API version 18, the only scenario where it is allowed to use ESObject as type specifier is in local variable declaration. ESObject type variables can only be assigned by objects that can be called across languages, for example, ESObject, **any**, **unknown**, and anonymous types. It is prohibited to initialize ESObject typed variable with statically typed value defined in the .ets file. ESObject typed variables can only be used for functions that can be called across languages or assigned to another ESObject typed variable.
+
 Since API version 18, the ESObject type prohibits object literal assignment while supporting: type annotations in dynamic imports, property access (using both **.** and **[]** operators), call expressions, and **new** expressions.
 
 **ArkTS**

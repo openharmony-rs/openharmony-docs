@@ -17,6 +17,42 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
+## ohos.permission.RUNNING_LOCK
+
+允许应用获取运行锁，保证应用在后台的持续运行。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：7
+
+## ohos.permission.SET_WALLPAPER
+
+允许应用设置壁纸。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：7
+
+## ohos.permission.MODIFY_AUDIO_SETTINGS
+
+允许应用修改音频设置。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：8
+
 ## ohos.permission.RECEIVER_STARTUP_COMPLETED
 
 允许应用订阅开机广播。
@@ -4036,7 +4072,7 @@
 
 **ACL使能**：true
 
-**起始版本**：12
+**起始版本**：13
 
 ## ohos.permission.START_RESTORE_NOTIFICATION
 
@@ -4061,18 +4097,6 @@
 **ACL使能**：true
 
 **起始版本**：14
-
-## ohos.permission.ACCESS_MCU_LOG_DIR
-
-允许系统应用访问MCU（microcontroller unit）日志目录。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：12
 
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
@@ -4423,6 +4447,7 @@
 允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
 
 支持以下类型的外设扩展驱动开发：
+
 外设以USB总线接入主机，且满足：
 
 1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
@@ -5356,9 +5381,109 @@
 
 **起始版本**：22
 
+## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
+
+允许系统应用使用相机框架目录的媒体共享资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 允许已接入云空间的应用管理云空间云侧数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.MANAGE_RISK_PHOTOS
+
+允许系统应用访问可能存在风险的图片或视频。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.READ_CLOUD_IMAGEVIDEO
+
+允许应用读取用户云存储空间的图片或视频文件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.ACCESS_SECURE_FENCE
+
+允许系统应用访问安全围栏的能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Car
+
+**起始版本**：23
+
+## ohos.permission.ACCESS_MINI_SYSTEM
+ 	 
+允许系统应用接入运行态能力框架。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**： General
+
+**起始版本**：23
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+ 	
+允许系统应用拉起其他应用卡片添加到桌面的预览面板。
+
+获取该权限后，应用可以拉起其他应用卡片加桌预览面板，以引导用户将希望分发的卡片添加到桌面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**起始版本**：20
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
+
+允许添加其他应用的WiseCard卡片。
 
 **权限级别**：system_basic
 

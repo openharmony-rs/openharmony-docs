@@ -9,7 +9,7 @@
 
 The **LazyVGridLayout** component implements a lazy-loading grid layout, with its parent component restricted to [WaterFlow](ts-container-waterflow.md) or [FlowItem](ts-container-flowitem.md). It can also be used within the **WaterFlow** or **FlowItem** component after being wrapped by custom components or [NodeContainer](ts-basic-components-nodecontainer.md).
 
-Lazy loading is supported only when the **WaterFlow** component uses single-column mode or single-column segments in segmented layout and the layout direction is **FlexDirection.Column**. Lazy loading is not supported if the **WaterFlow** component is in multi-column mode or the layout direction is **FlexDirection.Row** or **FlexDirection.RowReverse**. Using this component with **FlexDirection.ColumnReverse** in the **WaterFlow** component causes display anomalies. When lazy loading is enabled, the component only loads child components within the **WaterFlow** visible area, with pre-loading of half-screen content above and below the viewport during frame idle periods.
+Lazy loading is supported only when the **WaterFlow** component uses single-column mode or single-column segments in segmented layout and [FlexDirection](ts-appendix-enums.md#flexdirection) is set to **FlexDirection.Column**. Lazy loading is not supported if the **WaterFlow** component is in multi-column mode or the layout direction is **FlexDirection.Row** or **FlexDirection.RowReverse**. Using this component with **FlexDirection.ColumnReverse** in the **WaterFlow** component causes display anomalies. When lazy loading is enabled, the component only loads child components within the **WaterFlow** visible area, with pre-loading of half-screen content above and below the viewport during frame idle periods.
 
 > **NOTE**
 >
@@ -38,14 +38,14 @@ Sets the number of columns, fixed column width, or minimum column width of the g
 
 For example, **'1fr 1fr 2fr'** indicates three columns, with the first column taking up 1/4 of the parent component's full width, the second column 1/4, and the third column 2/4.
 
-**columnsTemplate('repeat(auto-fit, track-size)')**: The layout automatically calculates the number of columns and the actual column width, while adhering to the minimum column width specified with **track-size**.
+**columnsTemplate('repeat(auto-fit, track-size)')**: The layout automatically calculates the number of columns and their actual widths while respecting the minimum column width specified by **track-size**.
 
-**columnsTemplate('repeat(auto-fill, track-size)')**: The layout automatically calculates the number of columns based on the fixed column width specified with **track-size**.
+**columnsTemplate('repeat(auto-fill, track-size)')**: The layout automatically calculates the number of columns based on the fixed column width specified by **track-size**.
 
-**columnsTemplate('repeat(auto-stretch, track-size)')**: The layout uses **columnsGap** to define the minimum gap between columns and automatically calculates the number of columns and the actual gap size based on the fixed column width specified with **track-size**.
+**columnsTemplate('repeat(auto-stretch, track-size)')**: The layout uses **columnsGap** to define the minimum gap between columns and automatically calculates the number of columns and the actual gap size based on the fixed column width specified by **track-size**.
 
-**repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in the unit of px, vp (default), %, or any valid digit. The value must be greater than or equal to one valid column width.<br>
-In **auto-stretch** mode, **track-size** must be a valid column width value, in the unit of px, vp, or any valid digit; percentage values (%) are not supported.
+**repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in units of px, vp (default), %, or any valid numeric value. The value must be greater than or equal to a valid column width.<br>
+In auto-fit and auto-stretch modes, only a valid column width value is supported for **track-size**. Additionally, in auto-stretch mode, **track-size** only supports units such as px, vp, and valid numbers, but does not support percentage (%). The auto-fill mode supports one or more valid column widths, for example: columnsTemplate('repeat(auto-fill, 20)') or columnsTemplate('repeat(auto-fill, 20 80px)').
 
 If this attribute is set to **'0fr'**, the column width is 0, and child components are not displayed. If this attribute is set to an invalid value, the child components are displayed in a fixed column.
 
@@ -63,7 +63,7 @@ If this attribute is set to **'0fr'**, the column width is 0, and child componen
 
 columnsGap(value: LengthMetrics): T
 
-Sets the gap between columns. A value less than 0 evaluates to the default value.
+Sets the gap between columns. Values less than 0 are treated as the default value.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -79,13 +79,13 @@ Sets the gap between columns. A value less than 0 evaluates to the default value
 
 | Type| Description          |
 | --- | -------------- |
-| T | Current component.|
+| T | Current **LazyVGridLayout** component.|
 
 ### rowsGap
 
 rowsGap(value: LengthMetrics): T
 
-Sets the gap between rows. A value less than 0 evaluates to the default value.
+Sets the gap between rows. Values less than 0 are treated as the default value.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -101,7 +101,7 @@ Sets the gap between rows. A value less than 0 evaluates to the default value.
 
 | Type| Description          |
 | --- | -------------- |
-| T | Current component.|
+| T | Current **LazyVGridLayout** component.|
 
 ## Events
 
@@ -111,7 +111,7 @@ Only the [universal events](ts-component-general-events.md) are supported.
 
 This example demonstrates how to implement a lazy-loading grid layout using the **WaterFlow** and **LazyVGridLayout** components.
 
-MyDataSource implements the [IDataSource](ts-rendering-control-lazyforeach.md#idatasource) data source API of **LazyForEach**, which is used to provide child components for **LazyVGridLayout** through **LazyForEach**.
+**MyDataSource** implements the [IDataSource](ts-rendering-control-lazyforeach.md#idatasource) API for [LazyForEach](ts-rendering-control-lazyforeach.md), which provides child components for **LazyVGridLayout** through **LazyForEach**.
 
 <!--code_no_check-->
 ```ts
@@ -121,32 +121,50 @@ import { MyDataSource } from './MyDataSource'
 @Entry
 @Component
 struct LazyVGridLayoutSample1 {
-  private arr:MyDataSource<number> = new MyDataSource<number>();
+  private arr1:MyDataSource<number> = new MyDataSource<number>();
+  private arr2:MyDataSource<number> = new MyDataSource<number>();
   build() {
     Column() {
       WaterFlow() {
         LazyVGridLayout() {
-          LazyForEach(this.arr, (item:number)=>{
-            Text("item" + item.toString())
+          LazyForEach(this.arr1, (item:number)=>{
+            Text('item' + item.toString())
               .height(64)
-              .width("100%")
+              .width('100%')
               .borderRadius(5)
               .backgroundColor(Color.White)
               .textAlign(TextAlign.Center)
           })
         }
-        .columnsTemplate("1fr 1fr")
+        .columnsTemplate('1fr')
+        .rowsGap(LengthMetrics.vp(10))
+
+        LazyVGridLayout() {
+          LazyForEach(this.arr2, (item:number)=>{
+            Text('item' + item.toString())
+              .height(128)
+              .width('100%')
+              .borderRadius(5)
+              .backgroundColor(Color.White)
+              .textAlign(TextAlign.Center)
+          })
+        }
+        .columnsTemplate('1fr 1fr')
         .rowsGap(LengthMetrics.vp(10))
         .columnsGap(LengthMetrics.vp(10))
       }.padding(10)
+      .rowsGap(10)
     }
     .width('100%').height('100%')
-    .backgroundColor("#DCDCDC")
+    .backgroundColor('#DCDCDC')
   }
 
   aboutToAppear(): void {
+    for (let i = 0; i < 6; i++) {
+      this.arr1.pushData(i);
+    }
     for (let i = 0; i < 100; i++) {
-      this.arr.pushData(i);
+      this.arr2.pushData(i);
     }
   }
 }
@@ -243,4 +261,4 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-![](figures/en-us_image_lazyvgridlayout1.png)
+![](figures/en-us_image_lazyvgridlayout1.gif)

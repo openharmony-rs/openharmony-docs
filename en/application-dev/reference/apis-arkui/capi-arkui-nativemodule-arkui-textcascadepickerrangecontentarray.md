@@ -6,9 +6,13 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_TextCascadePickerRangeContentArray ArkUI_TextCascadePickerRangeContentArray
+```
+
 ## Overview
 
-Defines the cascading data list for a multi-column cascading picker.
+Defines the list for a multi-column cascading picker.
 
 **Since**: 19
 

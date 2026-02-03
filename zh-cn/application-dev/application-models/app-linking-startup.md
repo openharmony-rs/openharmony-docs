@@ -48,7 +48,7 @@
 > skills标签下默认包含一个skill对象，用于标识应用入口。应用跳转链接不能在该skill对象中配置，需要创建独立的skill对象。如果存在多个跳转场景，需要在skills标签下创建不同的skill对象，否则会导致配置无法生效。
 
 
-例如，声明应用关联在域名是www.example.com，则需进行如下配置：
+例如，声明应用关联的域名是www.example.com，则需进行如下配置：
 
 <!-- @[app_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/module.json5) -->
 
@@ -119,7 +119,7 @@
    }
    ```
 
-   `app-identifer`是在应用签名阶段为应用分配的唯一标识，即[HarmonyAppProvision配置文件](../security/app-provision-structure.md)中声明的`app-identifer`字段的值。
+   `app-identifier`是在应用签名阶段为应用分配的唯一标识，即[HarmonyAppProvision配置文件](../security/app-provision-structure.md)中声明的`app-identifier`字段的值。
 
 1. 将配置文件放在域名服务器的固定目录下。
 

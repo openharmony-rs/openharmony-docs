@@ -1,4 +1,4 @@
-# Introduction to MDM Kit
+# About This Kit
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
@@ -8,7 +8,12 @@
 
 ## Introduction
 
-MDM Kit provides APIs for enterprise-level Mobile Device Management (MDM) applications to manage and protect data and applications on enterprise devices. It ensures device and data security and stability through centralized management, remote configuration, and monitoring. It is widely used in enterprises and government agencies to ensure efficient management and secure use of devices and data.
+MDM Kit provides APIs for enterprise-level Mobile Device Management (MDM) applications to manage and protect data and applications on enterprise devices. [MDM applications](./mdm-kit-term.md#mdm-application-device-administrator-application) ensure device and data security and stability through centralized management, remote configuration, and monitoring. They are widely used in enterprises and government agencies to ensure efficient management and secure use of devices and data.
+
+## Scenarios
+- Corporate-Owned, Personally Enabled (COPE): Enterprises centrally purchase and deploy devices such as laptops, tablets, and smartphones for employees. These devices are corporate-owned and subject to unified enterprise management.
+
+- Bring Your Own Device (BYOD): Some enterprises allow employees to bring their own tablets or smartphones to the workplace and connect these devices to the office environment. This strategy applies to enterprise workplace scenarios, including those where external visitors access facilities such as factories and laboratories using their own devices.
 
 ## Working Principles
 

@@ -1,4 +1,4 @@
-# 使用OHAudio开发音频播放功能(C/C++)
+# 推荐使用OHAudio开发音频播放功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -9,6 +9,7 @@
 OHAudio是系统在API version 10中引入的一套C API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输出功能的场景。
 
 OHAudio音频播放状态变化示意图：
+
 ![OHAudioRenderer status change](figures/ohaudiorenderer-status-change.png)
 
 ## 使用入门
@@ -68,6 +69,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 开发者可以通过以下几个步骤来实现一个简单的播放功能。
 
 ### 实现音频播放
+
 1. 创建构造器。
 
    <!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
@@ -187,6 +189,10 @@ OH_AudioStreamBuilder_Destroy(builder);
     | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | 释放缓存数据。 |
     | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | 释放播放实例。 |
 
+    > **注意：**
+    >
+    > 音频流控制接口执行会有耗时（例如OH_AudioRenderer_Stop接口需要播完缓存，单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
+
 6. 释放构造器。
 
    构造器不再使用时，需要释放相关资源。
@@ -220,7 +226,7 @@ OH_AudioRenderer_SetVolume(audioRenderer, volume);
 
 > **注意：**
 >
-> - 当音频录制场景[OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)为`AUDIOSTREAM_USAGE_VOICE_COMMUNICATION`和`AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输出的音频通路。
+> - 当音频播放场景[OH_AudioStream_Usage](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage)为`AUDIOSTREAM_USAGE_VOICE_COMMUNICATION`和`AUDIOSTREAM_USAGE_VIDEO_COMMUNICATION`时，不支持主动设置低时延模式，系统会根据设备的能力，决策输出的音频通路。
 > - 低时延通路对于数据处理性能要求较高，应用数据生成缓慢时容易导致卡顿。普通音乐、视频播放场景下不建议设置该模式，仅推荐游戏、K歌等对时延敏感的应用设置低时延模式。
 
 <!-- @[Render_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->

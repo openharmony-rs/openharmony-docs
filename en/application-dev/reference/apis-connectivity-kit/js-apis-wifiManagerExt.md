@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 The **wifiManagerExt** module provides WLAN extension APIs for non-universal products.
 
-> **NOTE**
+> **NOTE**<br>
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 The APIs described in this document are used only for non-universal products, such as routers.
 
@@ -25,7 +25,7 @@ enableHotspot(): void
 
 Enables the WLAN hotspot.
 
-> **NOTE**
+> **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
@@ -37,7 +37,7 @@ Enables the WLAN hotspot.
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | **ID**| **Error Message**|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -60,7 +60,7 @@ disableHotspot(): void
 
 Disables the WLAN hotspot.
 
-> **NOTE**
+> **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
@@ -72,7 +72,7 @@ Disables the WLAN hotspot.
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | **ID**| **Error Message**|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -110,7 +110,7 @@ Obtains the supported power models. This API uses a promise to return the result
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | **ID**| **Error Message**|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -148,7 +148,7 @@ Obtains the supported power models. This API uses an asynchronous callback to re
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | **ID**| **Error Message**|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -173,7 +173,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 Obtains the power mode. This API uses a promise to return the result.
 
-> **NOTE**
+> **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
@@ -191,7 +191,7 @@ Obtains the power mode. This API uses a promise to return the result.
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | **ID**| **Error Message**|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -230,7 +230,7 @@ Obtains the power mode. This API uses an asynchronous callback to return the res
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | **ID**| **Error Message**|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
@@ -261,7 +261,7 @@ setPowerMode(mode: PowerMode) : void
 
  Sets the power mode.
 
-> **NOTE**
+> **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
@@ -279,7 +279,7 @@ setPowerMode(mode: PowerMode) : void
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 | **ID**| **Error Message**|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |

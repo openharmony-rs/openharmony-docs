@@ -368,7 +368,7 @@ struct Son {
   struct ChildComponent {
     build() {
       // 根节点唯一且必要，可为非容器组件
-      // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon'))
     }
   }
@@ -546,7 +546,7 @@ struct Son {
   
   build函数中更改应用状态的行为可能比上面的示例更加隐蔽，例如：
 
-  - 在\@Builder，\@Extend或\@Styles方法内改变状态变量 。
+  - 在\@Builder，[\@Extend](arkts-extend.md)或[\@Styles](arkts-style.md)方法内改变状态变量 。
 
   - 在计算参数时调用函数中改变应用状态变量，例如 Text('${this.calcLabel()}')。
 
@@ -622,7 +622,7 @@ struct MyComponent {
     static {
       this.a = 'hello world';
     }
-  // ···
+    // ...
   }
   ```
 
@@ -645,6 +645,6 @@ struct MyComponent {
 
 ### \@Component与\@ComponentV2混用
 
-在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，可参考[混用文档](./arkts-custom-component-mixed-scenarios.md)。
+在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，<!--RP1-->可参考[状态管理V1和V2混用场景](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP1End-->。
 
 <!--no_check-->

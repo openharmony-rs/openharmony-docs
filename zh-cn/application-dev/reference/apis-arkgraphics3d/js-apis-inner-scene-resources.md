@@ -571,7 +571,7 @@ function finish(): void {
 | BACKGROUND_NONE | 0 | 无背景。|
 | BACKGROUND_IMAGE | 1 | 图片背景。 |
 | BACKGROUND_CUBEMAP | 2 | 立方体贴图背景。|
-| BACKGROUND_EQUIRECTANGULAR | 3 | 等距矩形背景。 |
+| BACKGROUND_EQUIRECTANGULAR | 3 | 等距柱状投影背景。 |
 
 ## Environment
 环境类型，继承自[SceneResource](#sceneresource-1)。
@@ -601,7 +601,9 @@ function finish(): void {
 
 ## Effect<sup>21+</sup>
 
-特效类型，继承自[SceneResource](#sceneresource-1)。
+特效类型，继承自[SceneResource](#sceneresource-1)。由[createEffect](js-apis-inner-scene.md#createeffect21)接口获得。
+
+### 属性
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -609,3 +611,80 @@ function finish(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | enabled | boolean | 否 | 否 | 特效打开状态。true表示开启特效，false表示关闭特效。 |
 | effectId | string  | 是 | 否 | 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，用于特效的创建，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'。 |
+
+### getPropertyValue<sup>23+</sup>
+getPropertyValue(propertyName: string): Object | null | undefined
+
+获取特定特效属性的值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure':该属性表示图像的曝光度。<br>-'vibrance': 该属性表示图像的自然饱和度。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| Object \| null \| undefined | 特效属性值，如果获取失败则返回null。 |
+
+**示例：**
+``` ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+  
+function getEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.getPropertyValue('exposure');
+  });
+}
+```
+
+### setPropertyValue<sup>23+</sup>
+setPropertyValue(propertyName: string, value: Object | undefined): boolean
+
+设置特定特效属性的值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| propertyName | string | 是 | 特定特效属性的名称。目前支持的字符串为：<br>-'exposure':该属性表示图像的曝光度。<br>-'vibrance': 该属性表示图像的自然饱和度。 |
+| value | Object \| undefined | 是 | 要设置的特效属性值。<br>-'exposure'：value实际类型为number，推荐取值范围[-5, 5]。取值越大，图像越亮。<br>-'vibrance'：value实际类型为number，推荐取值范围 [-1, 1]。取值越大，图像颜色越鲜艳。 |
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 返回设置特效属性值操作是否成功。true表示设置成功，false表示设置失败。 |
+
+**示例：**
+``` ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+ 	 
+function setEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // 特效ID，固定格式为'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'，比如'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.setPropertyValue('exposure', 1);
+  });
+}
+```

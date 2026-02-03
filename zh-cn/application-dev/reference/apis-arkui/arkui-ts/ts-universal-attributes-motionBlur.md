@@ -140,10 +140,10 @@ struct motionBlurTest {
             this.flag = !this.flag;
           })
           .animation({
-            duration: 2000,
-            iterations:1,
-            playMode:PlayMode.Alternate,
-            curve: curves.springCurve(10, 1, 228, 30),
+            duration: 2000, // 动画播放时间
+            iterations:1, // 动画播放次数
+            playMode:PlayMode.Alternate, // 动画播放模式，在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放
+            curve: curves.springCurve(10, 1, 228, 30), // 动画曲线
             onFinish: () => {
               this.radius = 0;
               console.info("onFinish")

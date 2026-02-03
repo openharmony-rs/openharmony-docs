@@ -11,6 +11,8 @@
   - [开发准备](start-overview.md)
   - [构建第一个ArkTS应用（Stage模型）](start-with-ets-stage.md)
 <!--DelEnd-->
+<!--RP1-->
+<!--RP1End-->
 - 开发基础知识<!--development-fundamentals-->
   - 应用程序包基础知识<!--application-package-fundamentals-->
     - [应用程序包概述](application-package-overview.md)
@@ -23,7 +25,7 @@
       - [HSP](in-app-hsp.md)
     - 应用程序包安装卸载与更新<!--application-package-install-->
       - [应用安装卸载与更新开发指导](application-package-install-uninstall.md)
-      - [应用安装与更新一致性校验](multi_module_installation_update_consistency_verification.md)
+      - [应用安装与更新一致性校验](install-and-update-consistency-verification.md)
   - 应用配置文件（Stage模型）<!--application-configuration-file-stage-->
     - [应用配置文件概述（Stage模型）](application-configuration-file-overview-stage.md)
     - [app.json5配置文件](app-configuration-file.md)
@@ -42,7 +44,7 @@
     - [HSP转HAR指导](hsp-to-har.md)
     - [HAP转HAR指导](hap-to-har.md)
     - [集成态HSP](integrated-hsp.md)
-  - [应用程序包常见问题](common_problem_of_application.md)
+  - [应用程序包常见问题](common-problem-of-application.md)
   - [应用程序包术语](application-package-glossary.md)
 - [资源分类与访问](resource-categories-and-access.md)
 - 学习ArkTS语言<!--learning-arkts-->
@@ -57,3 +59,5 @@
   - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
     - [从Java到ArkTS的迁移指导](getting-started-with-arkts-for-java-programmers.md)
     - [从Swift到ArkTS的迁移指导](getting-started-with-arkts-for-swift-programmers.md)
+<!--RP2-->
+<!--RP2End-->

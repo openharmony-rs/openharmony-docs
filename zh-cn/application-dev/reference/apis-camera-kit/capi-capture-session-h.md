@@ -902,7 +902,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureMode(Camera_CaptureSession* sessio
 
 **描述**
 
-获取当前曝光模式。
+获取当前曝光模式。如果未通过[OH_CaptureSession_SetExposureMode](capi-capture-session-h.md#oh_capturesession_setexposuremode)接口进行设置，则直接调用该接口查询当前曝光模式，会返回无效值。
 
 **起始版本：** 11
 

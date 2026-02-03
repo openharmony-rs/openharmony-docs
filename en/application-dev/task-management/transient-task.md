@@ -55,13 +55,15 @@ The table below lists the main APIs used for transient task development. For det
 
 2. Request a transient task and implement the callback. The callback is triggered when the transient task is about to end and is independent of the service of the application. After the request for the transient task is successful, the application normally executes its own service logic.
    
-   ```ts
+   <!-- @[request_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
+
+   ``` TypeScript
    let id: number;         // ID of the transient task.
    let delayTime: number;  // Remaining time of the transient task.
 
    // Request a transient task.
    function requestSuspendDelay() {
-     let myReason = 'test requestSuspendDelay'; // Reason for the request.
+     let myReason = 'test requestSuspendDelay';   // Reason for the request.
      try {
        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
        // Callback function, which is triggered when the transient task is about to time out. The application can carry out data clear and annotation, and cancel the task in the callback.
@@ -69,41 +71,41 @@ The table below lists the main APIs used for transient task development. For det
          try {
            backgroundTaskManager.cancelSuspendDelay(id);
          } catch (error) {
-           console.error(`Operation cancelSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+           console.error(`Operation requestSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
          }
        })
        id = delayInfo.requestId;
        delayTime = delayInfo.actualDelayTime;
+       console.info(`Operation requestSuspendDelay failed. id is ${id} delayTime is ${delayTime}`);
      } catch (error) {
        console.error(`Operation requestSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
      } 
    }
-
-   // Execute the service logic of the application.
    ```
 
 3. Obtain the remaining time of the transient task. Based on the remaining time, the application determines whether to continue to run other services. For example, the application has two small tasks. After the first task is executed, it queries the remaining time of the current transient task to determine whether to execute the second task.
-   
-   ```ts
-   let id: number; // ID of the transient task.
 
+   <!-- @[get_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
+
+   ``` TypeScript
    async function getRemainingDelayTime() {
      backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
-       console.info('Succeeded in getting remaining delay time.');
+       console.info(`Succeeded in getting remaining delay time. time is ${res}`);
      }).catch((err: BusinessError) => {
        console.error(`Failed to get remaining delay time. Code: ${err.code}, message: ${err.message}`);
      })
    }
    ```
 
-4. Cancel the transient task.
+4. Cancels a transient task.
    
-   ```ts
-   let id: number; // ID of the transient task.
-  
+   <!-- @[cancel_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
+
+   ``` TypeScript
    function cancelSuspendDelay() {
      try {
        backgroundTaskManager.cancelSuspendDelay(id);
+       console.info('Operation cancelSuspendDelay Succeeded.');
      } catch (error) {
        console.error(`Operation cancelSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
      }

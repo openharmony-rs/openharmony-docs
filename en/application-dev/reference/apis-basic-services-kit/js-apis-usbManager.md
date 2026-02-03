@@ -71,56 +71,56 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 console.info(`devicesList = ${devicesList}`);
 /*
-The following is a simple example of the data structure for devicesList:
-[
-  {
-    name: "1-1",
-    serial: "",
-    manufacturerName: "",
-    productName: "",
-    version: "",
-    vendorId: 7531,
-    productId: 2,
-    clazz: 9,
-    subClass: 0,
-    protocol: 1,
-    devAddress: 1,
-    busNum: 1,
-    configs: [
-      {
-        id: 1,
-        attributes: 224,
-        isRemoteWakeup: true,
-        isSelfPowered: true,
-        maxPower: 0,
-        name: "1-1",
-        interfaces: [
-          {
-            id: 0,
-            protocol: 0,
-            clazz: 9,
-            subClass: 0,
-            alternateSetting: 0,
-            name: "1-1",
-            endpoints: [
-              {
-                address: 129,
-                attributes: 3,
-                interval: 12,
-                maxPacketSize: 4,
-                direction: 128,
-                number: 1,
-                type: 3,
-                interfaceId: 0,
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-]
-*/
+  The following is a simple example of the data structure for devicesList:
+  [
+    {
+      name: "1-1",
+      serial: "",
+      manufacturerName: "",
+      productName: "",
+      version: "",
+      vendorId: 7531,
+      productId: 2,
+      clazz: 9,
+      subClass: 0,
+      protocol: 1,
+      devAddress: 1,
+      busNum: 1,
+      configs: [
+        {
+          id: 1,
+          attributes: 224,
+          isRemoteWakeup: true,
+          isSelfPowered: true,
+          maxPower: 0,
+          name: "1-1",
+          interfaces: [
+            {
+              id: 0,
+              protocol: 0,
+              clazz: 9,
+              subClass: 0,
+              alternateSetting: 0,
+              name: "1-1",
+              endpoints: [
+                {
+                  address: 129,
+                  attributes: 3,
+                  interval: 12,
+                  maxPacketSize: 4,
+                  direction: 128,
+                  number: 1,
+                  type: 3,
+                  interfaceId: 0,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+ */
 ```
 
 ## usbManager.connectDevice
@@ -936,7 +936,7 @@ Cancels an asynchronous USB data transfer request.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes| Only **USBDevicePipe** and **endpoint** are required for canceling the transfer.|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes| Only the [USBDevicePipe](#usbdevicepipe) and [USBEndpoint](#usbendpoint) parameters should be specified in this API.|
 
 **Error codes**
 
@@ -1200,7 +1200,7 @@ Obtains the list of USB accessories connected to the host.
 
 | Type                         | Description                                              |
 | ----------------------------- | -------------------------------------------------- |
-| Array<Readonly&lt;USBAccessory&gt;> | List of USB accessories (read-only). Currently, only one USB accessory is contained in the list.|
+| Array<Readonly&lt;[USBAccessory](#usbaccessory14)&gt;> | List of USB accessories (read-only). Currently, only one USB accessory is contained in the list.|
 
 **Error codes**
 

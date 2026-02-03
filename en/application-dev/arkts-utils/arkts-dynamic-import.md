@@ -76,7 +76,9 @@ import('harlibrary').then((ns:ESObject) => {
 ```
 
 ## Implementation of Dynamic Import
+
 A dynamic import expression accepts a constant or variable as its argument.
+
 The following table lists the specifications of dynamic import.
 
 | Scenario| Module Specifier            | Description                                                    |
@@ -95,9 +97,9 @@ The following table lists the specifications of dynamic import.
 
 >**NOTE**
 > 
-> 1. Module names used in all imports are the aliases defined under **dependencies** in the **oh-package.json5** file.<br>
-> 2. It is recommended that the alias configured under **dependencies** be the same as the values of **moduleName** and **packageName**, both of which indicate the name of the module to import. **moduleName** is set in the **module.json5** file of the module, and **packageName** is set in the **oh-package.json5** file.<br>
-> 3. Importing a module by name is importing the module's entry file, generally **Index.ets/ts**.
+> - Module names used in all imports are the aliases defined under **dependencies** in the **oh-package.json5** file.<br>
+> - It is recommended that the alias configured under **dependencies** be the same as the values of **moduleName** and **packageName**, both of which indicate the name of the module to import. **moduleName** is set in the **module.json5** file of the module, and **packageName** is set in the **oh-package.json5** file.<br>
+> - Importing a module by name is importing the module's entry file, generally **Index.ets/ts**.
 
 ## Key Points in Dynamic Import Implementation
 
@@ -298,6 +300,7 @@ In the examples, the paths, such as the path to **Index.ets**, are set based on 
 ### Dynamic Imports with Variable Expressions
 
 In DevEco Studio, module dependencies are configured through the **dependencies** field in the **oh-package.json5** file. By default, all modules listed under **dependencies** are installed (for local modules) or downloaded (for remote modules), but are not built. During HAP/HSP compilation, the dependency relationship is searched from the entry file (generally **Index.ets/Index.ts**), and only the dependencies found are added to the compilation.
+
 During compilation, static imports and dynamic imports with constant expressions can be identified and parsed by the packaging tool rollup and its plug-ins. This means that the related dependencies can be added to the dependency tree, participate in the build process, and finally generate Ark bytecode. However, dynamic imports with variable expressions cannot be resolved at compile-time because their values may depend on runtime calculations or external inputs. To add these dependencies to the build process, add **runtimeOnly** under **buildOption** and set it to the actual module name or file path pertaining to the variable.
 
 **Schema configuration format of the runtimeOnly field**
@@ -332,6 +335,7 @@ The corresponding **runtimeOnly** configuration is as follows:
 ```
 
 **packages** of **runtimeOnly**: name of the module to dynamically import. It must be the same as the one specified under **dependencies**.
+
 **sources** of **runtimeOnly**: path of the file to dynamically import. The path is relative to the **build-profile.json5** file of the module.
 
 **Usage Examples**

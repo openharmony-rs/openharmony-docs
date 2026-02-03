@@ -39,4 +39,4 @@ import { bundleManager } from '@kit.AbilityKit';
 | writePermission      | string                                                       | 是   | 否   | 向ExtensionAbility写数据所需的权限。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | extensionAbilityTypeName<sup>11+</sup>      | string                                 | 是   | 否   | ExtensionAbility的类型名称，取值请参考[extensionabilities标签下的type字段](../../quick-start/module-configuration-file.md#extensionabilities标签)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | skills<sup>12+</sup>             | Array\<[Skill](js-apis-bundleManager-skill.md)>                                                 | 是   | 否   | ExtensionAbility的Skills信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。        |
-| appIndex<sup>12+</sup>    | number    | 是   | 否   | 应用包的分身索引标识，仅在分身应用中生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| appIndex<sup>12+</sup>    | number    | 是   | 否   | 应用包的分身索引标识，仅在分身应用中生效。 |

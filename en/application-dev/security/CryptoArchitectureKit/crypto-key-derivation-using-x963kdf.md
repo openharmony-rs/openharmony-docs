@@ -17,8 +17,9 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
 
    **X963KdfSpec** is a child class of [KdfSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#kdfspec11). You need to specify the following:
 
-   - **algName**: algorithm to used, which is **'X963Kdf'**.
+   - **algName**: algorithm to use, which is **'X963Kdf'**.
    - **key**: original key material.
+
       If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
    - **info**: optional context and application information used to extend the short key. This parameter can be empty.
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
@@ -37,13 +38,16 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
 
 - Return the result using **await**:
 
-  ```ts
+  <!-- @[use_x963kdf_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Await.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function kdfAwait() {
-    let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
-    let infoData = new Uint8Array(buffer.from("infostring", "utf-8").buffer);
+    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
     let spec: cryptoFramework.X963KdfSpec = {
       algName: 'X963KDF',
       key: keyData,
@@ -52,20 +56,24 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
     };
     let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
     let secret = await kdf.generateSecret(spec);
-    console.info("key derivation output is " + secret.data);
+    console.info('key derivation output: ' + secret.data);
   }
   ```
 
+
 - Return the result using a promise:
 
-  ```ts
+  <!-- @[use_x963kdf_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Promise.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function kdfPromise() {
-    let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
-    let infoData = new Uint8Array(buffer.from("infostring", "utf-8").buffer);
+    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
     let spec: cryptoFramework.X963KdfSpec = {
       algName: 'X963KDF',
       key: keyData,
@@ -75,22 +83,24 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
     let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
     let kdfPromise = kdf.generateSecret(spec);
     kdfPromise.then((secret) => {
-      console.info("key derivation output is " + secret.data);
+      console.info('key derivation output: ' + secret.data);
     }).catch((error: BusinessError) => {
-      console.error("key derivation error.");
+      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
 
-- Return the result synchronously:
 
-  ```ts
+- Return the result synchronously:
+  <!-- @[use_x963kdf_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Sync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function kdfSync() {
-    let keyData = new Uint8Array(buffer.from("012345678901234567890123456789", "utf-8").buffer);
-    let infoData = new Uint8Array(buffer.from("infostring", "utf-8").buffer);
+    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
     let spec: cryptoFramework.X963KdfSpec = {
       algName: 'X963KDF',
       key: keyData,
@@ -99,6 +109,6 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
     };
     let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
     let secret = kdf.generateSecretSync(spec);
-    console.info("[Sync]key derivation output is " + secret.data);
+    console.info('[Sync]key derivation output: ' + secret.data);
   }
   ```

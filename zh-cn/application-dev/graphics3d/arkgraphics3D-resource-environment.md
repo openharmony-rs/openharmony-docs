@@ -73,7 +73,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
 
   5. 创建环境并绑定图片。
 
-     使用SceneResourceFactory.createEnvironment()创建环境对象，并通过createImage()加载环境贴图。设置backgroundType为等矩形贴图类型，将图片绑定到environmentImage，再调整indirectDiffuseFactor等属性以控制环境光强度。
+     使用SceneResourceFactory.createEnvironment()创建环境对象，并通过createImage()加载环境贴图。设置backgroundType为等距柱状投影背景，将图片绑定到environmentImage，再调整indirectDiffuseFactor等属性以控制环境光强度。
 
      <!-- @[create_environment_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
      

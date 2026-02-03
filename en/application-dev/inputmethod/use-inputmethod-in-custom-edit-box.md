@@ -84,7 +84,7 @@ In the inputmethod framework, use [getController](../reference/apis-ime-kit/js-a
          })
      }
      async attachAndListener() { // Bind and set a listener.
-       focusControl.requestFocus('CustomInput');
+       focusControl.requestFocus('customInput');
        await this.inputController.attach(true, {
          inputAttribute: {
            textInputType: inputMethod.TextInputType.TEXT,

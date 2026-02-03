@@ -4,7 +4,7 @@
 <!--Owner: @zju-wyx-->
 <!--Designer: @xiao-peiyang; @dengxinyu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 不同包类型的用途和构建流程存在差异，对不同包类型使用混淆时，开发者需要注意不同事项。本文针对[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)和[HSP](../quick-start/in-app-hsp.md)三种包类型，分别提供混淆建议，帮助开发者高效使用混淆。
 
@@ -24,7 +24,7 @@
 - 对于新开发的应用，建议直接打开以上选项，在开发迭代过程中增加白名单配置。
 - 对于已开发一定功能的应用，建议按照以上顺序逐步打开各个选项，对比不同选项的混淆产物，熟悉新增选项的具体效果，参考[混淆选项配置指导](source-obfuscation-guide.md#混淆选项配置指导)排查适配。
 
-当应用功能调试正常后，可继续开启代码压缩（`-compact`）与日志删除（`-remove-log`）等功能，以增强代码混淆效果，然后发布release应用包。
+当应用功能调试正常后，可继续开启代码压缩（`-compact`）与日志删除（`-remove-log`、`-remove-nosideeffects-calls`）等功能，以增强代码混淆效果，然后发布release应用包。
 
 ## HAP包混淆建议
 

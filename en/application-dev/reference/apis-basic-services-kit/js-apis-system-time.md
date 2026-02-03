@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **systemTime** module provides system time and time zone features. You can use the APIs of this module to set and obtain the system time and time zone.
 
@@ -25,13 +25,17 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 Obtains the time elapsed since the Unix epoch. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10) instead.
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
 | Name  | Type      | Mandatory| Description                            |
 | -------- | -------------- | ---- | ------------------ |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: in nanoseconds.<br>- **false**: in milliseconds.|
+| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time elapsed since the Unix epoch.        |
 
 **Error codes**
@@ -66,6 +70,10 @@ try {
 getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 Obtains the time elapsed since the Unix epoch. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -108,13 +116,17 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 
 Obtains the time elapsed since the Unix epoch. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10) instead.
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                    |
 | ------ | ------- | ---- | ------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>The default value is false.<br>- **true**: in nanoseconds.<br>- **false**: in milliseconds.|
+| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>The default value is false.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 
 **Return value**
 
@@ -153,13 +165,17 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | ---------- | ---- | -------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: in nanoseconds.<br>- **false**: in milliseconds.|
+| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -194,6 +210,10 @@ try {
 getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -236,13 +256,17 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 
 Obtains the time elapsed since system startup, excluding the deep sleep time. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | ----------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: in nanoseconds.<br>- **false**: in milliseconds.|
+| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 
 **Return value**
 
@@ -281,13 +305,17 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 Obtains the time elapsed since system startup, including the deep sleep time. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | --------------- | ---- | ------------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: in nanoseconds.<br>- **false**: in milliseconds.|
+| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result.  |
 
 **Error codes**
@@ -322,6 +350,10 @@ try {
 getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 Obtains the time elapsed since system startup, including the deep sleep time. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -364,13 +396,17 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 
 Obtains the time elapsed since system startup, including the deep sleep time. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10) instead.
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>The default value is false.<br>- **true**: in nanoseconds.<br>- **false**: in milliseconds.|
+| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>The default value is false.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 
 **Return value**
 
@@ -408,6 +444,10 @@ try {
 getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 Obtains the current system date. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object?](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -450,6 +490,10 @@ getDate(): Promise&lt;Date&gt;
 
 Obtains the current system date. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Return value**
@@ -488,6 +532,10 @@ try {
 getTimezone(callback: AsyncCallback&lt;string&gt;): void
 
 Obtains the system time zone. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getTimezone](js-apis-date-time.md#systemdatetimegettimezone) instead.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -530,6 +578,10 @@ getTimezone(): Promise&lt;string&gt;
 
 Obtains the system time zone. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [systemDateTime.getTimezone](js-apis-date-time.md#systemdatetimegettimezone-1) instead.
+
 **System capability**: SystemCapability.MiscServices.Time
 
 **Return value**
@@ -568,6 +620,10 @@ try {
 setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 Sets the system time. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9.
 
 **Required permissions**: ohos.permission.SET_TIME
 
@@ -614,6 +670,10 @@ try {
 setTime(time : number) : Promise&lt;void&gt;
 
 Sets the system time. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9.
 
 **Required permissions**: ohos.permission.SET_TIME
 
@@ -664,6 +724,10 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 
 Sets the system date. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9.
+
 **Required permissions**: ohos.permission.SET_TIME
 
 **System capability**: SystemCapability.MiscServices.Time
@@ -708,6 +772,10 @@ try {
 setDate(date: Date): Promise&lt;void&gt;
 
 Sets the system date. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9.
 
 **Required permissions**: ohos.permission.SET_TIME
 
@@ -757,6 +825,10 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 Sets the system time zone. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9.
+
 **Required permissions**: ohos.permission.SET_TIME_ZONE
 
 **System capability**: SystemCapability.MiscServices.Time
@@ -800,6 +872,10 @@ try {
 setTimezone(timezone: string): Promise&lt;void&gt;
 
 Sets the system time zone. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9.
 
 **Required permissions**: ohos.permission.SET_TIME_ZONE
 

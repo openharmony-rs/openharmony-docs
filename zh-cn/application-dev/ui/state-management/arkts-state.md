@@ -147,7 +147,8 @@
     ```
 
 2. \@State不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
-从API version 23开始，添加对\@State装饰Function类型变量的校验，编译期会报错。
+
+   从API version 23开始，添加对\@State装饰Function类型变量的校验，编译期会报错。
 
 ## 使用场景
 
@@ -530,7 +531,7 @@ struct DatePickerExample {
 
 ### State支持联合类型实例
 
-\@State支持联合类型和undefined和null，在下面的示例中，count类型为number | undefined，点击Button改变count的属性或者类型，视图会随之刷新。
+\@State支持联合类型和undefined和null，在下面的示例中，count类型为number | undefined，点击Button改变count的值，视图会随之刷新。
 <!-- @[state_scene_joint_type_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets) -->
 
 ``` TypeScript

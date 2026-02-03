@@ -13,9 +13,9 @@ Common event types are defined in [Support enumeration of the ohos.commonEventMa
 
 > **NOTE**
 >
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
 > The current page contains only the system APIs of this module. For details about other public APIs, see [System Common Events](../common_event/commonEventManager-definitions.md).
-
-
 
 
 ## Ability Kit
@@ -131,6 +131,7 @@ Indicates that the kiosk mode is disabled. When this mode is off, the common eve
 Indicates that the exemption list for resource usage restrictions has been updated in idle mode.
 
 When the exemption list for resource usage restrictions is updated, the common event service is triggered to publish this event.
+
 Resources include application network access, Timer usage, and WorkScheduler task usage.
 
 System applications can call JavaScript APIs to apply for removing resource usage restrictions.

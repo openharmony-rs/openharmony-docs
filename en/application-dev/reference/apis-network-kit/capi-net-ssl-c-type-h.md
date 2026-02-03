@@ -44,7 +44,7 @@ Defines data structures for the C APIs of the SSL/TLS certificate chain verifica
 
 ### NetStack_CertType
 
-```
+```c
 enum NetStack_CertType
 ```
 
@@ -62,7 +62,7 @@ Certificate type enums.
 
 ### NetStack_CertificatePinningKind
 
-```
+```c
 enum NetStack_CertificatePinningKind
 ```
 
@@ -78,7 +78,7 @@ Certificate pinning type enums.
 
 ### NetStack_HashAlgorithm
 
-```
+```c
 enum NetStack_HashAlgorithm
 ```
 

@@ -10,7 +10,7 @@ The input method subtypes allow the input method to switch to a specific mode or
 
 ## Configuring and Implementing an Input Method Subtype
 
-1. Implement an **InputMethodExtensionAbility** instance for an input method, which will be shared by all subtypes of the input method. Add **metadata** with the name **ohos_extension.input_method** to the [module.json5](../quick-start/module-configuration-file.md) file to configure resource information for all subtypes.
+1. Implement an **InputMethodExtensionAbility** instance for an input method, which will be shared by all subtypes of the input method. Add **metadata** with the name **ohos.extension.input_method** to the [module.json5](../quick-start/module-configuration-file.md) file to configure resource information for all subtypes.
 
    ``` JSON5
    "extensionAbilities": [
@@ -28,7 +28,7 @@ The input method subtypes allow the input method to switch to a specific mode or
          }
        ]
      }
-   ],
+   ]
    ```
    
 2. Configure the subtype information based on the configuration file format and fields, and place the subtype configuration file `input_method_config.json` in the **profile** folder under the application's resource directory. For details about the fields, see [InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype). For details about how to configure the **locale** field, see [i18n-locale-culture](.././internationalization/i18n-locale-culture.md#how-it-works).

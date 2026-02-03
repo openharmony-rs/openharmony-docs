@@ -45,16 +45,18 @@ Incorrect ability type.
 
 **错误描述**
 
-当接口调用Ability类型错误时，方法将返回该错误码。
+当调用Ability相关接口时，被调用方的Ability类型与接口期望的类型不匹配。
 
 **可能原因**
 
-接口调用所在的Ability类型不支持该接口调用。
+1. 被调用方（服务端）的Ability类型与调用方（客户端）接口期望的类型不匹配。
+2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
 
 **处理步骤**
 
 1. 检查want中的bundleName、moduleName和abilityName是否正确。
-2. 根据Ability类型调用不同接口，如ServiceExtensionAbility应使用<!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动或<!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法连接，并且[module.json5配置文件](../../quick-start/module-configuration-file.md)中`extensionAbilities`的`type`需要是与接口匹配的`service`。
+2. 确认被调用方（服务端）的Ability类型与调用接口是否匹配。对于ServiceExtensionAbility，应使用<!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动或用<!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法连接。同时需要确保[module.json5配置文件](../../quick-start/module-configuration-file.md)中`extensionAbilities`的`type`设置为与接口匹配的`service`。
+3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
 
 ## 16000003 指定的ID不存在
 
@@ -343,18 +345,18 @@ Internal error.
 
 **可能原因**
 
-1. 启动Ability时传入的Want数据过大。
+1. 启动Ability时传入的[Want](./js-apis-app-ability-want.md#约束限制)数据过大。
 2. 设备解锁前拉起非系统应用。
-3. 隐式拉起时未安装应用市场。
+3. 隐式拉起时未安装应用市场App。
 4. 开发者无法处理的系统内部错误。包括但不限于：内部对象为空指针、处理超时、IPC跨进程通信失败、包管理获取应用信息失败、系统服务获取失败、启动的Ability实例已达到上限等。
 
 
 
 **处理步骤**
 
-1. 对于启动Ability失败时，可以检查传入的Want数据是否过大。
+1. 对于启动Ability失败时，可以检查传入的[Want](./js-apis-app-ability-want.md#约束限制)数据是否过大。
 2. 确保在设备解锁前只拉起系统应用，或者延迟拉起非系统应用直到设备解锁。
-3. 确保设备上已安装应用市场应用，或者在拉起应用前检查应用市场是否已安装。
+3. 确保设备上已安装应用市场App，或者在拉起应用前检查应用市场App是否已安装。
 4. 对于开发者无法处理的系统内部错误，请尝试重新调用该接口，或者重启设备。
 
 ## 16000053 非顶层应用

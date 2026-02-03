@@ -56,21 +56,51 @@
 | CONSTRAINT         | 1      | 允许图像内容使用一些扩展范围。|
 | STANDARD            | 2      | 允许图像内容动态单位限制在标准范围内，显示SDR效果，需要使用的解码格式UNKNOWN或者RGBA_8888。|
 
+## MovingPhotoViewAttribute
+
+定义动态照片的属性函数。
+  
+### setPlaybackStrategy<sup>23+</sup>
+
+setPlaybackStrategy(strategy: media.PlaybackStrategy): MovingPhotoViewAttribute
+
+设置动态照片边播边处理策略。
+
+**系统接口：** 此接口为系统接口。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+ 	 
+| 参数名 | 类型                                                                          | 必填 | 说明                             |
+| ------ | ----------------------------------------------------------------------------- | ---- | -------------------------------- |
+| strategy  | [media.PlaybackStrategy](../../../application-dev/reference/apis-media-kit/arkts-apis-media-i.md#playbackstrategy12) | 是   | 设置动态照片边播边处理策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |
+
 **示例：**
 
-系统应用设置动态照片解码格式和HDR效果格式。
+系统应用可以同时设置动态照片解码格式、HDR效果格式和边播边处理策略。
 
 ```ts
-// 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档
+// 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档。
 // API version 21及之前版本导入方式：import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
 // API version 22及之后版本导入方式如下：
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
-import { PixelMapFormat, DynamicRangeMode } from '@ohos.multimedia.movingphotoview';
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController，PixelMapFormat, DynamicRangeMode } from '@kit.MediaLibraryKit';
+import { media } from '@kit.MediaKit';
 
 let data: photoAccessHelper.MovingPhoto
 async function loading(context: Context) {
   try {
-    // 需要确保imageFileUri和videoFileUri对应的资源在应用沙箱存在
+    // 需要确保imageFileUri和videoFileUri对应的资源在应用沙箱存在。
     let imageFileUri = 'file://{bundleName}/data/storage/el2/base/haps/entry/files/xxx.jpg';
     let videoFileUri = 'file://{bundleName}/data/storage/el2/base/haps/entry/files/xxx.mp4';
     data = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
@@ -85,6 +115,7 @@ struct Index {
   controller: MovingPhotoViewController = new MovingPhotoViewController();
   format: undefined | PixelMapFormat = PixelMapFormat.YCBCR_P010;
   mode: undefined | DynamicRangeMode = DynamicRangeMode.HIGH;
+  playbackstrategy: media.PlaybackStrategy = (enableCameraPostprocessing: true);
   private uiContext: UIContext = this.getUIContext()
   aboutToAppear(): void {
     loading(this.uiContext.getHostContext()!)
@@ -101,6 +132,7 @@ struct Index {
             dynamicRangeMode: this.mode,
             playWithMask: false
           })
+          .setPlaybackStrategy(this.playbackstrategy)
         }
       }
     }
@@ -108,7 +140,7 @@ struct Index {
 }
 ```
 
-## MovingPhotoViewController<sup>12+</sup>
+## MovingPhotoViewController
 
 一个MovingPhotoViewController对象可以控制一个MovingPhotoView，可用视频播放实例请参考[媒体业务模块](../apis-media-kit/arkts-apis-media.md)。
 
@@ -236,6 +268,26 @@ enableAutoPlay(enabled: boolean)
 | 参数名  | 类型    | 必填 | 说明                         |
 | ------- | ------- | ---- | ---------------------------- |
 | enabled| boolean| 是   | 是否能够自动播放。true表示能自动播放，false表示不能自动播放。<br></div>默认值：false。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Non-system applications are not allowed to use system APIs. |
+
+### notifyMovingPhotoTransition<sup>23+</sup>
+ 	 
+notifyMovingPhotoTransition(): void
+
+通知组件执行封面图的过渡动效。
+
+**系统接口：** 此接口为系统接口。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **错误码：**
 

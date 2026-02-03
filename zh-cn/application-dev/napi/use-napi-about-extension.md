@@ -264,6 +264,10 @@ try {
 
 在Node-API模块中运行abc文件。
 
+> **注意**
+>
+> 在信号函数中调用不安全，直接调用可能导致栈溢出。
+
 cpp部分代码
 
 <!-- @[node_api_module_run_script_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
@@ -315,7 +319,7 @@ try { // 在此处执行错误返回false，成功就返回true
 }
 ```
 
-test.js代码，将js代码编译为.abc文件，步骤如下：
+test.js代码，将JS代码编译为.abc文件，步骤如下：
 
 1. 在SDK的ets/build-tools/ets-loader/bin/ark/build-win/bin目录下放置test.js文件
 2. 执行命令如es2abc.exe test.js  --output test.abc后便可生成test.abc文件
@@ -508,7 +512,7 @@ private:
     std::mutex numberSetMutex_{};
 };
 
-void FinializerCallback(napi_env env, void *data, void *hint)
+void FinalizerCallback(napi_env env, void *data, void *hint)
 {
     return;
 }
@@ -532,7 +536,7 @@ napi_value AttachCallback(napi_env env, void* value, void* hint)
         {"clear", nullptr, Object::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, object, sizeof(desc) / sizeof(desc[0]), desc);
     // 将JS对象object和native对象value生命周期进行绑定
-    napi_status status = napi_wrap(env, object, value, FinializerCallback, nullptr, nullptr);
+    napi_status status = napi_wrap(env, object, value, FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
         OH_LOG_INFO(LOG_APP, "Node-API attachCallback is failed.");
     }
@@ -552,7 +556,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"clear", nullptr, Object::Clear, nullptr, nullptr, nullptr, napi_default, nullptr}};
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     auto object = Object::GetInstance();
-    napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinializerCallback, nullptr, nullptr);
+    napi_status status = napi_wrap(env, exports, reinterpret_cast<void*>(object), FinalizerCallback, nullptr, nullptr);
     if (status != napi_ok) {
         OH_LOG_INFO(LOG_APP, "Node-API napi_wrap is failed.");
     }
@@ -750,7 +754,7 @@ static napi_value AboutSerialize(napi_env env, napi_callback_info info)
     napi_valuetype valuetype;
     napi_typeof(env, number, &valuetype);
     if (valuetype != napi_number) {
-        napi_throw_error(env, nullptr, "Node-API Wrong type of argment. Expects a number.");
+        napi_throw_error(env, nullptr, "Node-API Wrong type of argument. Expects a number.");
         return nullptr;
     }
     // 调用napi_delete_serialization_data方法删除序列化数据
@@ -1384,13 +1388,13 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 
 | 接口 | 描述 |
 | -------- | -------- |
-| napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行，如果异步执行，则回调函数必须是线程安全的。 |
+| napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 |
 
 ### 使用示例
 
 **napi_wrap_enhance**
 
-在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行，如果异步执行，则回调函数必须是线程安全的。
+在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。
 
 cpp部分代码
 

@@ -41,12 +41,13 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **Example**
 
@@ -122,12 +123,13 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **Example**
 
@@ -208,6 +210,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **Example**
 
@@ -305,6 +309,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **Example**
 
@@ -395,9 +401,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message               |
 | ------ | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **Example**
 
@@ -469,12 +476,13 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [API Call Error Codes](errorcode-internal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **Example**
 
@@ -575,6 +583,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **Example**
 
@@ -582,11 +591,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { UIContext } from '@kit.ArkUI';
-
+// Create a FrameNode node that contains an Image component.
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
   public imageNode: FrameNode | null = null;
-
+  // Build a custom node, create the root node FrameNode, add a child node Image, and configure the Image resource and style.
   makeNode(uiContext: UIContext): FrameNode | null {
     this.node = new FrameNode(uiContext);
     this.node.commonAttribute.width('100%').height('100%');
@@ -617,6 +626,7 @@ struct SnapshotExample {
       Button("UniqueId getSync snapshot")
         .onClick(() => {
           try {
+            // Generate a component snapshot synchronously by node ID, with the zoom ratio of 2. The snapshot is generated after the rendering is complete.
             this.pixmap = this.getUIContext()
               .getComponentSnapshot()
               .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
@@ -667,6 +677,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **Example**
 

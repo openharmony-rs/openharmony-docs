@@ -3,8 +3,8 @@
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @wanghuan2025-->
 <!--Designer: @Maplestory91-->
-<!--Tester: @yufeifei-->
-<!--Adviser: @foryourself-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
@@ -79,6 +79,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | HybridStack | CPP和JS之间跨语言的故障堆栈 | 22 | 否 | ARM 64位系统下，若Stacktrace为JS栈时，则包含此字段，至多显示256层。 |
 | SubmitterStacktrace | 提交者线程栈 | 20 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**[libuv](../reference/native-lib/libuv.md)和[ffrt](../reference/apis-ffrt-kit/capi-ffrt.md)提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | HiLog | 故障之前打印的流水日志，最多1000行 | 20 | 是 | - |
+| AsyncStack | Promise异步栈 | 23 | 否 | ARM 64位系统下，若开启Promise异步栈开关，则包含此字段。 |
 
 以下是JS Crash崩溃日志规格。
 ```text
@@ -306,3 +307,89 @@ at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 CPP代码调用栈详细说明[CPP异常代码调用栈格式规范](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 JS代码调用栈详细说明[JS异常代码调用栈格式规范](#异常代码调用栈格式)。
+
+### Promise异步栈
+
+Promise异步栈功能默认关闭。从API version 23起，在ARM 64位系统下，可通过如下方式开启该功能，开启后整机生效：
+```cmd
+hdc shell param set persist.ark.properties 0x80105c
+hdc shell reboot
+```
+
+关闭Promise异步栈功能：
+```cmd
+hdc shell param set persist.ark.properties 0x105c
+hdc shell reboot
+```
+
+Promise异步任务中抛出的异常默认不会导致JS Crash，但可以通过[ErrorManager unhandledRejection](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获Rejected Promise后，主动将异常抛出，从而触发JS Crash。
+
+在启用Promise异步栈功能的情况下，当Promise任务中抛出异常并导致JS Crash时，JS Crash日志中会展示Promise异步任务创建时的栈信息。
+
+JS Crash日志中的Promise异步栈格式如下：
+
+```text
+...
+Stacktrace:
+    at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)
+HybridStack:
+...
+AsyncStack: <- 功能开启后，展示Promise异步任务创建时的栈信息
+    submitter#00: <- 每次异步任务创建都对应一个submitter，每个submitter中栈的最大回溯层数为48
+    #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #01 pc 000000000020ba3c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #02 pc 0000000000dfd330 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+    #03 pc 00000000004533d8 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis1Imm8V8V8StwCopy+388)
+    #04 at bar entry (entry/src/main/ets/pages/Index.ets:36:29)
+    #05 at foo entry (entry/src/main/ets/pages/Index.ets:33:3)
+    #06 pc 000000000083bf64 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #07 pc 00000000007f42f8 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #08 pc 00000000007e8e88 /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #09 pc 0000000000dfcebc /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+484)
+    #10 pc 0000000000dfcd18 /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+64)
+    ...
+    submitter#01: <- 多个submitter表示存在异步嵌套的场景，submitter的最大支持数量为8
+    #00 pc 0000000000266a0c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #01 pc 0000000000ad9e4c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #02 pc 0000000000dfaa8c /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+44)
+    #03 pc 0000000000518bcc /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+68)
+    #04 at foo entry (entry/src/main/ets/pages/Index.ets:32:3)
+    #05 at anonymous entry (entry/src/main/ets/pages/Index.ets:23:11)
+    #06 pc 0000000000801f5c /system/lib64/platformsdk/libark_jsruntime.so(e0c4624849e028140f5bff13122863b7)
+    #07 pc 0000000000803470 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+548)(e0c4624849e028140f5bff13122863b7)
+    #08 pc 0000000000ad79e8 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    #09 pc 0000000000e98440 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    #10 pc 00000000013208a0 /system/lib64/platformsdk/libace_compatible.z.so(aab90c413ff8b440b9a25a47964950ee)
+    ...
+
+HiLog:
+...
+```
+
+## JsCrash聚类
+
+Js Crash聚类信息以“Stacktrace:”字段开始，包含ARM 64系统的“HybridStack:”的调用栈。
+
+```text
+...
+Stacktrace:
+    at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)
+HybridStack:
+#00 pc 00000000004a814c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#01 pc 00000000004a6460 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#02 pc 00000000006a94e0 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#03 pc 0000000000334d38 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#04 pc 0000000000253da8 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::ObjectFactory::GetJSError(panda::ecmascript::base::ErrorType const&, char const*, panda::ecmascript::StackCheck)+292)(173710293c3751dc676d24264bfac393)
+#05 pc 00000000005c25d4 /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#06 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#07 pc 000000000044843c /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallarg1Imm8V8StwCopy+340)
+#08 at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)
+#09 pc 00000000001e620c /system/lib64/platformsdk/libark_jsruntime.so(173710293c3751dc676d24264bfac393)
+#10 pc 00000000009ad560 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::Call(panda::ecmascript::EcmaVM const*, panda::Local<panda::JSValueRef>, panda::Local<panda::JSValueRef> const*, int)+456)(173710293c3751dc676d24264bfac393)
+#11 pc 0000000000a63f14 /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+#12 pc 0000000000d836bc /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+#13 pc 000000000111f338 /system/lib64/platformsdk/libace_compatible.z.so(e236e26a38ac303814f43a3c8fc9b0a6)
+...
+```
+
+聚类方法同Cpp Crash一致，参考[CppCrash聚类](cppcrash-guidelines.md#cppcrash聚类)。

@@ -494,6 +494,52 @@ struct GetFontPathsByTypeTest {
 }
 ```
 
+## text.isFontSupported<sup>23+</sup>
+
+isFontSupported(fontURL: string | Resource): boolean
+
+检查系统是否支持指定的字体文件。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| fontURL  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要检查的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| boolean | 系统是否支持指定的字体文件。返回true表示支持，返回false表示不支持。 |
+
+**示例：**
+
+``` ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct isFontSupportedTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("is font supported")
+        .onClick(() => {
+          let filePath = "file:///system/fonts/NotoSansCJK-Regular.ttc"
+          let isSupported = text.isFontSupported(filePath)
+          console.info("is font supported: " + isSupported)
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+
 ## TextHighContrast<sup>20+</sup>
 
 文字渲染高对比度配置类型枚举。
@@ -1098,11 +1144,11 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): vo
 
 同步接口，加载自定义字体。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果。支持的字体文件格式包含：ttf、otf、ttc。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1171,11 +1217,11 @@ loadFontWithCheck(name: string, path: string | Resource, index?: number): Promis
 
 加载自定义字体，使用Promise异步回调。其中参数name对应的值需要在[TextStyle](#textstyle)中的fontFamilies属性配置，才能显示自定义字体效果，支持的字体文件格式包含：ttf、otf、ttc。
 
-**卡片能力：** 该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **参数：**
 

@@ -1,4 +1,4 @@
-# 使用OHAudio开发音频录制功能(C/C++)
+# 推荐使用OHAudio开发音频录制功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -9,6 +9,7 @@
 OHAudio是系统在API version 10中引入的一套C API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输入功能的场景。
 
 OHAudio音频录制状态变化示意图：
+
 ![OHAudioCapturer status change](figures/ohaudiocapturer-status-change.png)
 
 ## 使用入门
@@ -164,6 +165,10 @@ OH_AudioStreamBuilder_Destroy(builder);
     | OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer) | 停止录制。     |
     | OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer) | 释放缓存数据。 |
     | OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer) | 释放录制实例。 |
+
+    > **注意：**
+    >
+    > 音频流控制接口执行会有耗时（例如OH_AudioCapturer_Stop接口单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
 
 6. 释放构造器。
 

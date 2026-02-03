@@ -45,7 +45,7 @@ For FAQs about hidumper, see [FAQs](#faqs).
 | [--cpuusage [pid]](#querying-process-cpu-usage)| Obtains the CPU usage by process and category. If a PID is specified, the CPU usage of the specified PID is displayed. The value range is (0, Number of CPU cores].|
 | [--cpufreq](#querying-cpu-frequency)| Obtains the actual CPU frequency of each core, in kHz.|
 | [--mem [--prune]](#querying-device-memory)| Obtains the total memory usage. If **--prune** is specified, only simplified memory usage is exported.<br>Note: The **--prune** parameter is supported since API version 20.|
-| [--mem pid [--show-ashmem] [--show-dmabuf]](#querying-process-memory)| Obtains the memory usage of a specified process.<br>When **--show-ashmem** is specified, the ashmem usage details of the process are printed.<br>When **--show-dmabuf** is specified for an application process, the DMA memory details are printed.<br>Note: The **--show-ashmem** and **--show-dmabuf** parameters are supported since API version 20.|
+| [--mem pid [--show-ashmem] [--show-dmabuf]](#querying-process-memory)| Obtains the memory usage of a specified process.<br>When **--show-ashmem** is specified, the ashmem usage details of the process are printed.<br>When **--show-dmabuf** is specified, the DMA memory usage details are printed.<br>**NOTE**<br>Since API version 20, the **--show-ashmem** parameter and the **--show-dmabuf** parameter of application processes are supported.<br>Since API version 23, the**--show-dmabuf** parameter of system service processes is supported.|
 | [--zip](#compressing-exported-information)| Saves the command output to a compressed file in ZIP format in **/data/log/hidumper**.|
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#obtaining-ipc-information)| Collects IPC information of a process in a specified period. If **-a** is used, IPC information of all processes is collected. **--start-stat** starts the IPC information collection. **--stat** obtains the IPC information. **--stop-stat** stops the IPC information collection.|
 | [--mem-smaps pid [-v]](#querying-process-memory)| Obtains the memory usage of a specified process from **/proc/pid/smaps**. **-v** is used to specify more details about the process. (This command is available only for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).)<br>Note: This parameter is supported since API version 20.|
@@ -62,7 +62,7 @@ Run the **hidumper --mem** command to obtain the device memory usage.
 
 The output is as follows:
 
-```
+```shell
 $ hidumper --mem
 -------------------------------[memory]-------------------------------
 Total Memory Usage by PID:
@@ -653,7 +653,7 @@ $ hidumper -s RenderService -a "h"
 -------------------------------[ability]-------------------------------
 
 ----------------------------------RenderService----------------------------------
------- Graphic2D--RenderSerice ------
+------ Graphic2D--RenderService ------
 Usage:
 gles                          |inquire gpu info
 h                             |help text for the tool
@@ -1475,7 +1475,7 @@ This command outputs the information about the application page route stack, whi
 
 > **NOTE**
 >
-> This command can be used only for applications that implement page routing through the Navigation component.
+> This command can be used only for applications that implement page routing through the [Navigation](../ui/arkts-navigation-architecture.md) component.
 
 The command is as follows:
 

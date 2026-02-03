@@ -10,7 +10,7 @@
 - ArkTS API<!--ipc-arkts-->
   - [@ohos.rpc (RPC通信)](js-apis-rpc.md)
 - C API<!--ipc-c-->
-  - 模块<!--ipc-moudle-->
+  - 模块<!--ipc-module-->
     - [OHIPCParcel](capi-ohipcparcel.md)
     - [OHIPCRemoteObject](capi-ohipcremoteobject.md)
     - [OHIPCSkeleton](capi-ohipcskeleton.md)

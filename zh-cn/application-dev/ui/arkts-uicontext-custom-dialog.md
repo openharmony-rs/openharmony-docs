@@ -12,7 +12,7 @@
 > 
 > 弹出框（openCustomDialog）存在两种入参方式创建自定义弹出框：
 > - openCustomDialog（传参为ComponentContent形式）：通过ComponentContent封装内容可以与UI界面解耦，调用更加灵活，可以满足开发者的封装诉求。具有较高的灵活性，弹出框样式完全自定义，并且在弹出框打开后可以使用updateCustomDialog方法动态更新弹出框的参数。
-> - openCustomDialog（传参为builder形式）：相对于ComponentContent，builder必须要与上下文做绑定，与UI存在一定耦合。此方法有用默认的弹出框样式，适合于开发者想要实现与系统弹窗默认风格一致的效果。
+> - openCustomDialog（传参为builder形式）：相对于ComponentContent，builder必须要与上下文做绑定，与UI存在一定耦合。此方法有默认的弹出框样式，适合于开发者想要实现与系统弹窗默认风格一致的效果。
 > 
 > 本文介绍通过入参形式为ComponentContent创建自定义弹出框，传builder形式的弹出框使用方法可参考[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)。
 
@@ -49,7 +49,7 @@
    ```
 2. 打开自定义弹出框。
    
-   调用openCustomDialog接口打开的弹出框默认customStyle为true，即弹出框的内容样式完全按照contentNode自定义样式显示。
+   调用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口打开的弹出框默认customStyle为true，即弹出框的内容样式完全按照contentNode自定义样式显示。
    
    <!-- @[prompt_action_class_open_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
    
@@ -66,7 +66,7 @@
    ```
 3. 关闭自定义弹出框。
    
-   由于closeCustomDialog接口需要传入待关闭弹出框对应的ComponentContent。因此，如果需要在弹出框中设置关闭方法，则可参考完整示例封装静态方法来实现。
+   由于[closeCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closecustomdialog12)接口需要传入待关闭弹出框对应的ComponentContent。因此，如果需要在弹出框中设置关闭方法，则可参考完整示例封装静态方法来实现。
    
    关闭弹出框之后若需要释放对应的ComponentContent，则需要调用ComponentContent的[dispose](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#dispose)方法。
    
@@ -97,7 +97,7 @@ this.contentNode.update(new Params('update'))
 
 ## 更新自定义弹出框的属性
 
-通过updateCustomDialog可以动态更新弹出框的属性。目前支持更新弹出框的对齐方式、基于对齐方式的偏移量、是否点击蒙层自动关闭以及蒙层颜色，对应的属性分别为alignment、offset、autoCancel、maskColor。
+通过updateCustomDialog可以动态更新弹出框的属性。目前支持更新弹出框的对齐方式、基于对齐方式的偏移量、是否点击蒙层自动关闭以及蒙层颜色，对应的属性分别为[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)中的alignment、offset、autoCancel和maskColor。
 
 更新属性时，未设置的属性会恢复为默认值。例如，初始设置{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }，更新时设置{ alignment: DialogAlignment.Bottom }，则初始设置的offset: { dx: 0, dy: 50 }不会保留，会恢复为默认值。
 
@@ -284,6 +284,7 @@ export class PromptActionClassNew {
     PromptActionClassNew.options = options;
   }
 
+  // 打开弹窗
   static openDialog() {
     if (PromptActionClassNew.contentNode !== null) {
       PromptActionClassNew.ctx.getPromptAction().openCustomDialog(PromptActionClassNew.contentNode, PromptActionClassNew.options)
@@ -298,6 +299,7 @@ export class PromptActionClassNew {
     }
   }
 
+  // 关闭弹窗
   static closeDialog() {
     if (PromptActionClassNew.contentNode !== null) {
       PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
@@ -312,8 +314,9 @@ export class PromptActionClassNew {
     }
   }
 
-  // ···
+  // ...
 
+  // 更新弹窗
   static updateDialog(options: promptAction.BaseDialogOptions) {
     if (PromptActionClassNew.contentNode !== null) {
       PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassNew.contentNode, options)

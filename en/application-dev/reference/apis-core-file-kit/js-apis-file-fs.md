@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **fs** module provides APIs for file operations, including accessing and managing files and directories, obtaining file information statistics, and reading and writing data using a stream.
 
@@ -197,9 +197,9 @@ Checks whether the file or directory is stored locally or has the operation perm
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | Yes  | Application sandbox path of the file or directory.                                  |
-| mode<sup>12+</sup>   | [AccessModeType](#accessmodetype12) | Yes  | Permission on the file or directory to check.|
-| flag<sup>12+</sup>  | [AccessFlagType](#accessflagtype12) | Yes| Position of the file or directory to check.|
+| path | string | Yes  | Application sandbox path of the file or directory.                                  |
+| mode | [AccessModeType](#accessmodetype12) | Yes  | Permission on the file or directory to check.|
+| flag | [AccessFlagType](#accessflagtype12) | Yes| Position of the file or directory to check.|
 
 **Return value**
 
@@ -209,7 +209,7 @@ Checks whether the file or directory is stored locally or has the operation perm
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -324,9 +324,9 @@ Checks whether a file or directory is stored locally or has the operation permis
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | Yes  | Application sandbox path of the file to check.                                  |
-| mode<sup>12+</sup>   | [AccessModeType](#accessmodetype12) | Yes  | Permission on the file or directory to check.|
-| flag<sup>12+</sup>  | [AccessFlagType](#accessflagtype12) | Yes  | Position of the file or directory to check.|
+| path  | string | Yes  | Application sandbox path of the file to check.                                  |
+| mode | [AccessModeType](#accessmodetype12) | Yes  | Permission on the file or directory to check.|
+| flag | [AccessFlagType](#accessflagtype12) | Yes  | Position of the file or directory to check.|
 
 **Return value**
 
@@ -336,7 +336,7 @@ Checks whether a file or directory is stored locally or has the operation permis
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -486,7 +486,7 @@ A maximum of 10 cross-device copy tasks are allowed at the same time, and the nu
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -539,7 +539,7 @@ A maximum of 10 cross-device copy tasks are allowed at the same time, and the nu
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -588,7 +588,7 @@ A maximum of 10 cross-device copy tasks are allowed at the same time, and the nu
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1066,7 +1066,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
-Sets an extended attribute of a file or directory.
+Sets an extended attribute of a file or directory. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1086,7 +1086,7 @@ Sets an extended attribute of a file or directory.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1122,7 +1122,7 @@ Sets an extended attribute of a file or directory.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1146,7 +1146,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 getxattr(path: string, key: string): Promise&lt;string&gt;
 
-Obtains an extended attribute of a file or directory.
+Obtains an extended attribute of a file or directory. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1165,7 +1165,7 @@ Obtains an extended attribute of a file or directory.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1206,7 +1206,7 @@ Obtains an extended attribute of a file. This API returns the result synchronous
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -3809,8 +3809,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 ## fs.createRandomAccessFileSync<sup>12+</sup>
 
-createRandomAccessFileSync(file: string | File, mode?: number,
-  options?: RandomAccessFileOptions): RandomAccessFile
+createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
 
 Creates a **RandomAccessFile** instance based on a file path or file object.
 
@@ -4112,7 +4111,7 @@ Creates a readable stream. This API returns the result synchronously.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -4154,7 +4153,7 @@ Creates a writeable stream. This API returns the result synchronously.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -4608,7 +4607,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { fileUri } from '@kit.CoreFileKit';
-import common from '@ohos.app.ability.common';
+import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -4667,7 +4666,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { TaskSignal } from '@ohos.file.fs';
+import { TaskSignal } from '@kit.CoreFileKit';
 let copySignal: fs.TaskSignal = new TaskSignal();
 copySignal.onCancel();
 ```
@@ -5910,6 +5909,10 @@ Obtains a **ReadStream** instance of this **RandomAccessFile**.
   | ------------------ | --------- |
   | [ReadStream](#readstream12) | **ReadStream** instance obtained.|
 
+**Error codes**
+
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+
 **Example**
 
   ```ts
@@ -5933,6 +5936,10 @@ Obtains a **WriteStream** instance of this **RandomAccessFile**.
   | Type               | Description       |
   | ------------------ | --------- |
   | [WriteStream](#writestream12) | **WriteStream** instance obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -6149,7 +6156,7 @@ Defines the options used in **listFile()**.
 
 ## ReadStream<sup>12+</sup>
 
-Defines a readable stream. You need to use [fs.createReadStream](#fscreatereadstream12) to create a **ReadStream** instance, which is inherited from the [stream base class](../apis-arkts/js-apis-stream.md#readable).
+Defines a readable stream. You need to use [fs.createReadStream](#fscreatereadstream12) to create a **ReadStream** instance, which is inherited from [stream.Readable](../apis-arkts/js-apis-stream.md#readable).
 
 The data obtained by **ReadStream** is a decoded string. Currently, only the UTF-8 format is supported.
 
@@ -6182,7 +6189,7 @@ Adjusts the position of the readable stream offset pointer.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -6216,7 +6223,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 ## WriteStream<sup>12+</sup>
 
-Defines a writeable stream. You need to use [fs.createWriteStream](#fscreatewritestream12) to create a **WriteStream** instance, which is inherited from the [stream base class](../apis-arkts/js-apis-stream.md#writable).
+Defines a writeable stream. You need to use [fs.createWriteStream](#fscreatewritestream12) to create a **WriteStream** instance, which is inherited from [stream.Writable](../apis-arkts/js-apis-stream.md#writable).
 
 ### Properties
 
@@ -6227,7 +6234,7 @@ Defines a writeable stream. You need to use [fs.createWriteStream](#fscreatewrit
 | bytesWritten    | number | Yes   | No   | Number of bytes written to the writable stream.|
 | path    | string | Yes   | No   | Path of the file corresponding to the writeable stream.|
 
-### Seek<sup>12+</sup>
+### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number;
 

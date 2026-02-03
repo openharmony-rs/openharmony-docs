@@ -10,6 +10,10 @@
 
 [Application freeze (AppFreeze)](appfreeze-guidelines.md) means that an application does not respond to user operations (for example, clicking) for a specified period of time. This topic describes the capabilities provided by the HiCollie module for detecting service thread stuck and jank events and reporting stuck events.
 
+> **NOTE**
+>
+> Use related APIs in non-main threads.
+
 ## Availability APIs
 
 | API| Description|
@@ -23,16 +27,17 @@ For details about how to use the APIs (such as parameter usage restrictions and 
 
 ## Detection Principles
 
-1. For details about the fault specifications of service thread jank events detected by **OH_HiCollie_Init_JankDetection**, see [Main Thread Jank Event Detection Principles](hiappevent-watcher-mainthreadjank-events.md#detection-principles)
+1. For details about the fault specifications of service thread jank events detected by **OH_HiCollie_Init_JankDetection**, see [Main Thread Jank Event Detection Principles](hiappevent-watcher-mainthreadjank-events.md#detection-principles).
 
 2. Service thread stuck events:
+   
    (1) Principles of **OH_HiCollie_Init_StuckDetection**: The watchdog thread of the application periodically performs activation detection on service threads. If the activation detection is not executed within 3 seconds, a **BUSSINESS_THREAD_BLOCK_3S** warning event is reported. If the activation detection is not executed within 6 seconds, a **BUSSINESS_THREAD_BLOCK_6S** stuck event is reported. The two events constitute AppFreeze fault logs based on system matching rules.
 
    (2) Principles of **OH_HiCollie_Init_StuckDetectionWithTimeout**: The watchdog thread of the application periodically performs activation detection on service threads. If the activation detection is not executed within the time specified by **stuckTimeout**, the **BUSSINESS_THREAD_BLOCK_3S** warning event is reported. If the activation detection is not executed within the time specified by **stuckTimeout** × 2, the **BUSSINESS_THREAD_BLOCK_6S** stuck event is reported. The two events constitute AppFreeze fault logs.
 
 ## Log Specifications
 
-1. The fault log file of the service thread stuck event starts with **appfreeze-** and is generated in **Device/data/log/faultlog/faultlogger/**. The log files are named in the format of **appfreeze-application bundle name-application UID-time (seconds)**. For details, see [AppFreeze Log Specifications](appfreeze-guidelines.md#log-specifications).
+1. The fault log file of the service thread stuck event starts with **appfreeze-** and is generated in **Device/data/log/faultlog/faultlogger/**. The log files are named in the format of **appfreeze-application bundle name-application UID-time (milliseconds)**. For details, see [AppFreeze Log Specifications](appfreeze-guidelines.md#log-specifications).
 
 2. For details about the log specifications of **OH_HiCollie_Init_StuckDetection**, see [main thread jank event log specifications](apptask-timeout-guidelines.md#log-specifications).
 
@@ -181,7 +186,7 @@ The following describes how to add a button in the application and click the but
    #undef LOG_TAG
    #define LOG_TAG "StruckTest"
    
-   // Simulate a thread stuck event by putting the thread to sleep for a custom time.
+   // Customize the blocking time (unit: s) to simulate a stuck scenario.
    const int64_t BLOCK_TIME = 3; 
    // Set the task execution status flag of the application thread. The value true indicates the thread is normal and the value false indicates the thread is stuck.
    std::shared_ptr<std::atomic<bool>> appThreadIsAlive_ = std::make_shared<std::atomic<bool>>(true);
@@ -373,6 +378,7 @@ The following describes how to add a button in the application and click the but
    ```
 
 4. In the **index.d.ts** file, register **TestHiCollieNdk** as an ArkTS API.
+   
    (1) **OH_HiCollie_Init_JankDetection**:
 
    ```typescript
@@ -458,6 +464,7 @@ The following describes how to add a button in the application and click the but
 6. Click the **Run** button in DevEco Studio to run the project.
 
 7. At the bottom of DevEco Studio, switch to the **Log** tab and filter the custom **LOG_TAG**.
+   
    (1) Click the **testHiCollieJankNdk** button.
 
    The thread timeout information of the sampling stack obtained through **OH_HiCollie_Init_JankDetection()** is displayed. You can obtain the corresponding event by [subscribing to the main thread jank event](hiappevent-watcher-mainthreadjank-events-arkts.md).

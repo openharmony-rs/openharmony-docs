@@ -7,16 +7,18 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-ArkUI通过[自定义组件](../state-management/arkts-create-custom-components.md)的build()函数和[@Builder装饰器](../state-management/arkts-builder.md)中的声明式UI描述语句构建相应的UI。在声明式描述语句中开发者除了使用系统组件外，还可以使用渲染控制语句来辅助UI的构建，这些渲染控制语句包括控制组件是否显示的条件渲染语句，基于数组数据快速生成组件的循环渲染语句，针对大数据量场景的数据懒加载语句，针对混合模式开发的组件渲染语句。
+ArkUI通过[自定义组件](../state-management/arkts-create-custom-components.md)的[build()函数](../state-management/arkts-create-custom-components.md#build函数)和[@Builder装饰器](../state-management/arkts-builder.md)中的声明式UI描述语句构建相应的UI。在声明式描述语句中开发者除了使用系统组件外，还可以使用渲染控制组件来辅助UI的构建，这些渲染控制组件包括控制组件是否显示的条件渲染组件和基于数组数据快速生成组件的循环渲染组件。
 
-## 名词说明
+## 基本概念
 
 | 名词     | 含义          |
 | ---------- | ------------- |
-| 条件渲染组件 | 能够控制UI组件分支切换的语法组件：[if-else](./arkts-rendering-control-ifelse.md) |
-| 循环渲染组件 | 能够循环渲染UI组件的语法组件：[ForEach](./arkts-rendering-control-foreach.md), [LazyForEach](./arkts-rendering-control-lazyforeach.md), [Repeat](./arkts-new-rendering-control-repeat.md) |
-| 滚动容器组件 | [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)、[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md) |
-| 预加载区域 | 紧邻容器组件显示范围的区域。该区域内的子组件会在系统空闲时提前创建并布局。其大小由容器组件的cachedCount属性设定。</br>以List为例，设置[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性后，显示区域外上下各会预加载并布局cachedCount行ListItem。cachedCount默认值等于显示区域中节点的数量。 |
+| 条件渲染 | 根据给定的条件，判断是否渲染指定的UI组件。 |
+| 循环渲染 | 根据给定的数据源，渲染出一系列相似的UI组件。 |
+| 条件渲染组件 | 能够实现条件渲染的语法组件：[if-else](./arkts-rendering-control-ifelse.md)。 |
+| 循环渲染组件 | 能够实现循环渲染的语法组件：[ForEach](./arkts-rendering-control-foreach.md)、[LazyForEach](./arkts-rendering-control-lazyforeach.md)、[Repeat](./arkts-new-rendering-control-repeat.md)。 |
+| 滚动容器组件 | [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)、[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)。 |
+| 预加载区域 | 懒加载模式下紧邻容器组件显示范围的区域。该区域内的子组件会在系统空闲时提前创建并布局。其大小由容器组件的cachedCount属性设定。</br>以List为例，设置[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount)属性后，显示区域外上下各会预加载并布局cachedCount行[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)。cachedCount默认值等于显示区域中节点的数量。 |
 
 ## 全量加载&懒加载介绍
 
@@ -31,6 +33,12 @@ ArkUI通过[自定义组件](../state-management/arkts-create-custom-components.
 应用开发者应该根据实际业务情况选择适合的场景。当明确数据列表长度固定，且长度小于某个值（取决于容器组件区域显示子组件的个数），可以考虑使用全量加载方式。除此之外的其他场景，都推荐使用懒加载方式渲染列表数据。
 
 ArkUI框架为鸿蒙应用开发者提供了[ForEach](./arkts-rendering-control-foreach.md)组件（全量加载）和[LazyForEach](./arkts-rendering-control-lazyforeach.md)组件（懒加载）对列表数据循环渲染。除此之外，[Repeat](./arkts-new-rendering-control-repeat.md)组件同时支持两种开发场景，并且默认具备组件复用能力。
+
+|  组件  | 懒加载能力 | 复用能力 | 推荐使用场景 |
+| ------ | ------ | ------ | ------ |
+| ForEach | × | × | 适用于数据量较少的短列表场景。 |
+| LazyForEach | √ | × | 适用于长列表、网格等需要滚动浏览大量数据的场景。 |
+| Repeat | √ | √ | 适用于长列表、网格等需要滚动浏览大量数据的场景，并且其复用能力有助于优化渲染性能。 |
 
 ## 最佳实践
 

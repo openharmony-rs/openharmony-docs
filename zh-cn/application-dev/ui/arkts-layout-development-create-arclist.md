@@ -50,8 +50,7 @@ export struct ArcListShow {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // $r('app.string.ArcListShow_title')需要替换为开发者所需的资源文件
-        ComponentCard({ title: $r('app.string.ArcListShow_title') }) {
+        // ...
           ArcList({ initialIndex: 2 }) {
             ArcListItem() {
               Row() {
@@ -146,13 +145,10 @@ export struct ArcListShow {
           .borderRadius('233px')
           .backgroundColor(Color.Black)
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+      // ...
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.ArcListShow_title')需要替换为开发者所需的资源文件
+    // 请将$r('app.string.ArcListShow_title')替换为实际资源文件，在本示例中该资源文件的value值为"在弧形列表中显示数据"
     .title($r('app.string.ArcListShow_title'))
   }
 }
@@ -173,15 +169,14 @@ ArkTS通过[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)
 ``` TypeScript
 import { ArcList, ArcListAttribute, ArcListItemAttribute, ArcListItem, LengthMetrics } from '@kit.ArkUI';
 import { util } from '@kit.ArkTS';
-import { ComponentCard } from '../../common/Card';
 import { common } from '@kit.AbilityKit';
 
 class Contact {
   key: string = util.generateRandomUUID(true);
-  name: string;
+  name: ResourceStr;
   icon: Resource;
 
-  constructor(name: string, icon: Resource) {
+  constructor(name: ResourceStr, icon: Resource) {
     this.name = name;
     this.icon = icon;
   }
@@ -191,20 +186,19 @@ class Contact {
 @Component
 export struct ArcListContents {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  private contacts: Array<object> = [
-    // 请在resources\base\element\string.json文件中配置name为'name_xxx' ，value为非空字符串的资源
-    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaohong'), $r('app.media.ic_contact')),
-    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaolan'), $r('app.media.ic_contact')),
-    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaowang'), $r('app.media.ic_contact')),
-    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaoli'), $r('app.media.ic_contact')),
-    new Contact(this.context.resourceManager.getStringByNameSync('name_xiaoming'), $r('app.media.ic_contact'))
+  @State private contacts: Array<object> = [
+    // 请将$r('app.string.xxx')替换为实际资源文件
+    new Contact($r('app.string.name_xiaohong'), $r('app.media.ic_contact')),
+    new Contact($r('app.string.name_xiaolan'), $r('app.media.ic_contact')),
+    new Contact($r('app.string.name_xiaowang'), $r('app.media.ic_contact')),
+    new Contact($r('app.string.name_xiaoli'), $r('app.media.ic_contact')),
+    new Contact($r('app.string.name_xiaoming'), $r('app.media.ic_contact'))
   ];
 
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        // $r('app.string.ArcListContents_title')需要替换为开发者所需的资源文件
-        ComponentCard({ title: $r('app.string.ArcListContents_title') }) {
+        // ...
           ArcList({ initialIndex: 2 }) {
             ForEach(this.contacts, (item: Contact) => {
               ArcListItem() {
@@ -232,13 +226,10 @@ export struct ArcListContents {
           .borderRadius('233px')
           .backgroundColor(Color.Black)
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+        // ...
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.ArcListContents_title')需要替换为开发者所需的资源文件
+    // 请将$r('app.string.ArcListContents_title')替换为实际资源文件，在本示例中该资源文件的value值为"迭代弧形列表内容"
     .title($r('app.string.ArcListContents_title'))
   }
 }

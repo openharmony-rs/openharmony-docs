@@ -16,23 +16,15 @@ animateToImmediately接口用来提供[显式动画](ts-explicit-animation.md)�
 
 > **说明：**
 >
-> 从API version 22开始废弃，推荐使用[animateToImmediately](../arkts-apis-uicontext-uicontext.md#animatetoimmediately22)替代。
->
 > 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->
 
 ## 接口
 
-## animateToImmediately<sup>(deprecated)</sup>
+## animateToImmediately
 
 animateToImmediately(value: AnimateParam , event: () => void): void
 
 提供显式动画立即下发功能。
-
-> **说明：**
->
-> 从API version 12开始支持，从API version 22开始废弃，推荐使用[animateToImmediately](../arkts-apis-uicontext-uicontext.md#animatetoimmediately22)替代。
->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -47,7 +39,7 @@ animateToImmediately(value: AnimateParam , event: () => void): void
 
 ## 示例
 
-该示例主要演示通过[animateToImmediately](#animatetoimmediatelydeprecated)接口来实现显式动画立即下发。
+该示例主要演示通过[animateToImmediately](#animatetoimmediately)接口来实现显式动画立即下发。
 
 ```ts
 // xxx.ets

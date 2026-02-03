@@ -28,10 +28,11 @@ Enumerates the preloading types of the current application process.
 
 | Name                | Value | Description                              |
 | -------------------- | --- | --------------------------------- |
-| UNSPECIFIED    | 0   |    No preloading has taken place, or the preloaded data has been cleared.      |
+| UNSPECIFIED                  | 0   |    No preloading has taken place, or the preloaded data has been cleared.      |
 | TYPE_CREATE_PROCESS          | 1   |    Preloads the process up to the point of process creation completion.     |
-| TYPE_CREATE_ABILITY_STAGE  | 2   |      Preloads the process up to the point of [AbilityStage](./js-apis-app-ability-abilityStage.md) creation completion.  |
-| TYPE_CREATE_WINDOW_STAGE        | 3   |    Preloads the process up to the point of [WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) creation completion.          |
+| TYPE_CREATE_ABILITY_STAGE    | 2   |      Preloads the process up to the point of [AbilityStage](./js-apis-app-ability-abilityStage.md) creation completion.  |
+| TYPE_CREATE_WINDOW_STAGE     | 3   |    Preloads the process up to the point of [WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) creation completion.          |
+| TYPE_CREATE_BACKGROUND_ABILITY <sup>23+</sup>          | 4   |    Preloads the process up to the point of [onBackground](./js-apis-app-ability-uiAbility.md#onbackground) execution completion.     |
 
 ## application.createModuleContext<sup>12+</sup>
 

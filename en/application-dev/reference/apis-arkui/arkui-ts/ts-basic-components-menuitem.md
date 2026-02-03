@@ -28,7 +28,7 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 | Name| Type                                                        | Mandatory| Description                        |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------- |
-| value  | [MenuItemOptions](#menuitemoptions) \| [CustomBuilder](ts-types.md#custombuilder8) | No  | Information about the menu item.|
+| value  | [MenuItemOptions](#menuitemoptions)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | No  | Information about the menu item.|
 
 ## MenuItemOptions
 
@@ -38,13 +38,13 @@ Provides information about the menu item.
 
 | Name     | Type                                       | Read-Only| Optional| Description                            |
 | --------- | ------------------------------------------- | ---- | -------------------------------------- | -------------------------------------- |
-| startIcon | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | Start icon of the menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
+| startIcon | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | Start icon of the menu item. Symbol icons are not supported. If a symbol icon is used, **symbolStartIcon** must be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.     |
 | content   | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | Content of the menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
-| endIcon   | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | End icon of the menu item.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| endIcon   | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | End icon of the menu item. Symbol icons are not supported. If the symbol icon is used, **symbolEndIcon** must be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
 | labelInfo | [ResourceStr](ts-types.md#resourcestr)      | No  | Yes | Label information at the end of the menu item, such as shortcut keys like Ctrl+C.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | builder   | [CustomBuilder](ts-types.md#custombuilder8) | No  | Yes | Builder for a level-2 menu.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
-| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| No  | Yes | HMSymbol icon at the start of the menu item. When this parameter is set, the icon set through **startIcon** is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| No  | Yes | HMSymbol icon at the end of the menu item. When this parameter is set, the icon set through **endIcon** is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| No  | Yes | Symbol icon at the start of a menu item. When this parameter is set, the icon set through **startIcon** is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| No  | Yes | Symbol icon at the end of a menu item. When this parameter is set, the icon set through **endIcon** is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 
 ## Attributes
@@ -57,8 +57,9 @@ selected(value: boolean)
 
 Sets whether the menu item is selected.
 
-Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
-Since API version 18, this attribute supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
+Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
+
+Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -84,7 +85,7 @@ Sets whether to display the selected icon when the menu item is selected.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean \| [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)<sup>12+</sup> | Yes  | Whether to display the selected icon when the menu item is selected.<br>**true**: The check mark icon is displayed. **false**: No icon is displayed.<br>**ResourceStr**: displays the specified icon.<br>**SymbolGlyphModifier**: displays the specified HMSymbol icon.<br>Default value: **false**.|
+| value  | boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)<sup>12+</sup> | Yes  | Whether to display the selected icon when the menu item is selected.<br>**true**: Display the default check mark icon. **false**: Hide the selected state icon.<br>**ResourceStr**: Display the specified custom icon resource.<br>**SymbolGlyphModifier**: Display the specified HMSymbol icon.<br>Default value: **false**.|
 ### contentFont<sup>10+</sup>
 
 contentFont(value: Font)

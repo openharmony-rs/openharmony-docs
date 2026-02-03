@@ -548,7 +548,7 @@ getUploadFiles(maxCount: number): Promise&lt;Array&lt;UploadFile&gt;&gt;
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 22700101 | No memory.                        |
 | 22700102 | Invalid parameter.                            |
 | 22700107 | System error.                            |
@@ -834,6 +834,7 @@ if (wakeupManager != null) {
 ## SensibilityType
 
 枚举，唤醒灵敏度类型。
+
 灵敏度用于调整唤醒的门限，灵敏度越高，门限越低，就越容易唤醒。
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
