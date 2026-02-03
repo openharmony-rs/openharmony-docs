@@ -157,7 +157,7 @@ onConnect(want: Want): rpc.RemoteObject
 调用方使用[connectAppServiceExtensionAbility](js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)连接AppServiceExtensionAbility实例时，系统会触发该回调。
 
 
-应用需要在该接口中返回一个RemoteObject对象，用于客户端和服务端进行通信。当AppServiceExtensionAbility实例处于连接状态时，如果调用方发起新的连接，系统会返回缓存的RemoteObject对象，而不会重复回调[onConnect()](#onconnect)接口。
+应用需要在该接口中返回一个RemoteObject对象，用于客户端和服务端进行通信。当AppServiceExtensionAbility实例处于连接状态时，如果调用方发起新的连接，系统会返回缓存的RemoteObject对象，而不会重复回调onConnect()接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
