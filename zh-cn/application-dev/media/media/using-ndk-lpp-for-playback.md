@@ -1,4 +1,4 @@
-# 使用LPP播放器播放音视频 (C/C++)
+# 使用LPP播放器播放视频 (C/C++)
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
@@ -7,11 +7,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 20开始，使用LPP（low power player）播放器可以实现从媒体源到渲染的音视频通路能力。本指南通过播放本地视频的示例，讲解如何使用LowPowerPlayer播放音视频。
+从API version 20开始，使用LPP（low power player）播放器可以实现从媒体源到渲染的视频通路能力。本指南通过播放本地视频的示例，讲解如何使用LowPowerPlayer播放视频。
 
 > **说明：**
 >
-> LowPowerPlayer播放器不支持纯音频播放。纯音频低功耗播放请参考[低功耗音频播放](../audio/power-saving-for-playback.md)。
+> LowPowerPlayer播放器不支持纯视频和纯音频播放。纯音频低功耗播放请参考[低功耗音频播放](../audio/power-saving-for-playback.md)。
 
 播放流程包含：创建解封装器、创建播放器、设置回调监听函数、配置播放参数、播放控制（播放/暂停/继续/倍速/音量/停止/重置）、销毁播放器实例。
 
