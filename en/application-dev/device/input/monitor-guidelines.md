@@ -40,7 +40,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 ### Applying for Required Permissions
 
-Declare the required permission in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../../security/AccessToken/declare-permissions.md).
+Declare the required permission in the **module.json5** file. For details, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
 ```json
 "requestPermissions": [
