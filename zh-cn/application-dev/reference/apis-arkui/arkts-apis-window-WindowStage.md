@@ -1010,9 +1010,9 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  onBackground()： void {
+  onBackground():  void {
     try {
-      windowStage?.releaseUIContent().then(() => {
+      this.windowStage?.releaseUIContent().then(() => {
         console.info('Succeeded in releasing the content.');
       });
     } catch (exception) {
