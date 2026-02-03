@@ -23,7 +23,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
-设置系统用户ID的防火墙策略，包含防火墙开关状态，默认的出站入站行为（允许/阻止）。支持不同的系统用户ID配置不同的防火墙策略。使用Promise异步回调。
+设置系统用户ID的防火墙策略，包含防火墙开关状态，默认的出站/入站行为（允许/阻止）。支持不同的系统用户ID配置不同的防火墙策略。使用Promise异步回调。
 
 > **说明：**
 >
@@ -574,15 +574,15 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 ## NetFirewallPolicy
 
-防火墙策略，包含防火墙开关状态，默认的出站入站行为（允许/阻止）。
+防火墙策略，包含防火墙开关状态，默认的出站/入站行为（允许/阻止）。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
 
 | 名称       | 类型                                       | 只读 |可选| 说明          |
 | -----------| -------------------------------------------|------|----|---------- |
 | isOpen     | boolean                                    | 否   |否 |是否开启防火墙。true表示开启防火墙，false表示关闭防火墙。 |
-| inAction   | [FirewallRuleAction](#firewallruleaction)  | 否   |否 |入站行动。    |
-| outAction  | [FirewallRuleAction](#firewallruleaction)  | 否  | 否|出站行动。    |
+| inAction   | [FirewallRuleAction](#firewallruleaction)  | 否   |否 |入站行为。    |
+| outAction  | [FirewallRuleAction](#firewallruleaction)  | 否  | 否|出站行为。    |
 
 
 ## NetFirewallRuleDirection
@@ -655,7 +655,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | 名称        | 类型   |只读|可选| 说明                                             |
 | ----------- | -------|----|------|------------------------------------------|
 | type        | number | 否 |否 |1：IP地址或子网，当使用单个IP时，掩码为32。 <br />2：IP段。  |
-| family      | number | 否 | 是|1：表示family设置为IPv4。<br />2：表示family设置为IPv6。  <br />默认IPv4，其他当前不支持。      |
+| family      | number | 否 | 是|1：表示family地址族设置为IPv4。<br />2：表示family地址族设置为IPv6。  <br />默认IPv4，其他当前不支持。      |
 | address     | string | 否 | 是|IP地址。当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。                   |
 | mask        | number | 否 |是 |IPv4：子网掩码。<br />IPv6：前缀。<br />当type等于1时需要设置，并且仅在type等于1时有效，否则将被忽略。       |
 | startIp     | string | 否 |是 |起始IP。当type等于2时需要设置，并且仅在type等于2时有效，范围从0.0.0.1到255.255.255.254，否则将被忽略。                         |
@@ -681,7 +681,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | 名称         | 类型    | 只读 | 可选|说明                                      |
 | ------------ | --------|------|-----|------------------------------------- |
 | isWildcard   | boolean | 否  | 否|是否包含通配符。true表示包含，false表示不包含。                          |
-| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域。 |
+| domain       | string  | 否  |否 |当isWildcard为false时，需要确定的完整域， 例如"www.huawei.com"。 |
 
 ## NetFirewallDnsParams
 
