@@ -11652,7 +11652,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":52,
 						"name":"with_theme",
 						"start_line":16
 					}
