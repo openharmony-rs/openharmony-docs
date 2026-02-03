@@ -121,7 +121,7 @@ The above style works as follows:
 
 ![en-us_image_0000001127125270](figures/en-us_image_0000001127125270.png)
 
-In the preceding example, the .container text sets the title and content to blue, and the .container &gt; text direct descendant selector sets the title to red. The two have the same priority. However, the declaration sequence of the direct descendant selector is later than that of the direct descendant selector, and the style of the former is overwritten. For details about the priority calculation, see [Selector Priority](#selector-priority).
+In the preceding example, the **.container text** sets the title and content to blue, and the **.container > text** direct descendant selector sets the title to red. The two styles have the same priority, but **.container > text** declares the style later and overwrites the former style. For details about the priority calculation, see [Selector Priority](#selector-priority).
 
 ## Selector Priority
 
