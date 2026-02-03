@@ -312,7 +312,7 @@ dark.json数据示例：
     }
   ```
 
-  <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets) -->
+  <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets) --> 
   
   ``` TypeScript
   import { ThemeControl } from '@kit.ArkUI';
