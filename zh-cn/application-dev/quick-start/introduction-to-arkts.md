@@ -107,11 +107,11 @@ function factorial(n: number): number {
   }
   return n * factorial(n - 1);
 }
-// ...
-  factorial(n1) //  7.660344000000002。
-  factorial(n2) //  7.680640444893748。
-  factorial(n3) //  1。
-  factorial(n4) //  9.33262154439441e+157。
+  // ...
+  factorial(n1) //  7.660344000000002
+  factorial(n2) //  7.680640444893748
+  factorial(n3) //  1
+  factorial(n4) //  9.33262154439441e+157
 ```
 
 `number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
@@ -441,12 +441,12 @@ if (condition1) {
 ``` TypeScript
 let s1 = 'Hello';
 if (s1) {
-  console.info(s1); // 打印"Hello"
+  console.info(s1); // 打印“Hello”
 }
 
 let s2 = 'World';
 if (s2.length != 0) {
-  console.info(s2); // 打印"World"
+  console.info(s2); // 打印“World”
 }
 ```
 
@@ -460,13 +460,13 @@ if (s2.length != 0) {
 
 ``` TypeScript
 switch (expression) {
-  case label1: // 如果label1匹配,则执行
+  case label1: // 如果label1匹配，则执行
     // ...
     // 语句1
     // ...
     break; // 可省略
   case label2:
-  case label3: // 如果label2或label3匹配,则执行
+  case label3: // 如果label2或label3匹配，则执行
     // ...
     // 语句23
     // ...
@@ -688,6 +688,7 @@ throw new Error('this error')
 
 ``` TypeScript
 try {
+  // 可能发生异常的语句块
   // ...
 } catch (e) {
   // 异常处理
@@ -793,7 +794,7 @@ function hello(name?: string) {
 function multiply(n: number, coeff: number = 2): number {
   return n * coeff;
 }
-// ...
+  // ...
   multiply(2);  // 返回2*2
   multiply(2, 3); // 返回2*3
 ```
@@ -812,7 +813,7 @@ function sum(...numbers: number[]): number {
   }
   return res;
 }
-// ...
+  // ...
   sum(); // 返回0
   sum(1, 2, 3); // 返回6
 ```
@@ -857,7 +858,7 @@ function func() {
   let outerVar = 'I am inside';
   console.info(outerVar); // 输出: I am inside
 }
-// ...
+  // ...
   func();
 ```
 
@@ -938,7 +939,7 @@ function f(): () => number {
   let g = (): number => { count++; return count; };
   return g;
 }
-// ...
+  // ...
   let z = f();
   z(); // 返回：1
   z(); // 返回：2
@@ -1032,7 +1033,7 @@ class Person1 {
     return this.name;
   }
 }
-// ...
+  // ...
   let p1 = new Person1('Alice', 25);
   p1.name; // Alice
   let p2 = new Person1('Bob', 28);
@@ -1107,7 +1108,7 @@ class Person3 {
 
 let jack = new Person3();
 // 假设代码中没有对name赋值，即没有调用"jack.setName('Jack')"
-jack.getName().length; // 0, 没有运行时异常
+jack.getName().length; // 0，没有运行时异常
 ```
 
 接下来的代码示例展示了当`name`的值可能为`undefined`时，如何正确编写代码。
@@ -1159,7 +1160,7 @@ class Person4 {
     this._age = x;
   }
 }
-// ...
+  // ...
   let p = new Person4();
   p.age; // 输出0
   // ...
@@ -1219,7 +1220,7 @@ class C2 {
     return 'this is a static method.';
   }
 }
-// ...
+  // ...
   console.info(C2.staticMethod());
 ```
 
@@ -1519,7 +1520,7 @@ let map: Record<string, number> = {
   'John': 25,
   'Mary': 21
 };
-// ...
+  // ...
   map['John']; // 25
 ```
 
@@ -1819,7 +1820,7 @@ class MyHashMap<Key extends Hashable, Value> {
 function last(x: number[]): number {
   return x[x.length - 1];
 }
-// ...
+  // ...
   last([1, 2, 3]); // 3
 ```
 
@@ -2039,7 +2040,7 @@ export default new Demo();
 <!-- @[module_import_as](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
 ``` TypeScript
-import * as Utils from './utils';
+import * as Utils from './Utils';
 // ...
 Utils.X // 表示来自Utils的X
 Utils.Y // 表示来自Utils的Y
@@ -2050,10 +2051,10 @@ Utils.Y // 表示来自Utils的Y
 <!-- @[module_import_ident](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ModuleAndKeyword.ets) -->   
 
 ``` TypeScript
-import { X, Y } from './utils';
+import { X, Y } from './Utils';
 // ...
-X // 表示来自utils的X
-Y // 表示来自utils的Y
+X // 表示来自Utils的X
+Y // 表示来自Utils的Y
 ```
 
 如果标识符列表定义了`ident as alias`，则实体`ident`将绑定在名称`alias`下：
@@ -2115,7 +2116,7 @@ export function bye() {
 
 ``` TypeScript
 async function test() {
-  let ns = await import('./say');
+  let ns = await import('./Say');
   let hi = ns.hi;
   let bye = ns.bye;
   hi();
@@ -2444,8 +2445,8 @@ export @interface ClassAuthor2 {}
 
 ``` TypeScript
 // b.ets
-import { MyAnno2 } from './a';
-import * as ns from './a';
+import { MyAnno2 } from './MyAnno';
+import * as ns from './MyAnno';
 // ...
 @MyAnno2
 @ns.ClassAuthor2
@@ -2481,8 +2482,8 @@ console.info('hello');
 
 ``` TypeScript
 // b.ets
-import { MyAnno2 } from './a';
-import * as ns from './a';
+import { MyAnno2 } from './MyAnno';
+import * as ns from './MyAnno';
 // 仅引用了Anno注解，不会导致a.ets的console.info执行
 class X {
   // ...
