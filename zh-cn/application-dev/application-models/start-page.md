@@ -9,10 +9,10 @@
 
 <!--deprecated_code_no_check-->
 
-当PageAbility的启动模式设置为单例时（具体设置方法和典型场景示例见[PageAbility的启动模式](pageability-launch-type.md)，缺省情况下是单实例模式），若PageAbility已被拉起，再次启动PageAbility会触发onNewWant回调（即非首次拉起）。应用开发者可以通过want传递启动参数，例如开发者希望指定页面启动PageAbility，可以通过want中的parameters参数传递pages信息，具体示例代码如下：
+当PageAbility的启动模式设置为单例时（具体设置方法和典型场景示例见[PageAbility的启动模式](pageability-launch-type.md)，缺省情况下是单实例模式），若PageAbility已被拉起，再次启动PageAbility会触发onNewWant回调（即非首次拉起）。开发者可以通过Want传递启动参数，例如开发者希望指定页面启动PageAbility，可以通过Want中的parameters参数传递pages信息，具体示例代码如下：
 
 
-调用方PageAbility的app.ets中或者page中，使用startAbility再次拉起PageAbility，通过want中的uri参数传递页面信息：
+调用方PageAbility的app.ets中或者page中，使用startAbility再次拉起PageAbility，通过Want中的uri参数传递页面信息：
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -29,9 +29,13 @@ const domain: number = 0xFF00;
     abilityName: 'com.samples.famodelabilitydevelop.PageAbilitySingleton',
     parameters: { page: 'pages/second' }
   };
-  featureAbility.startAbility({ want: wantInfo }).then((data) => {
-    hilog.debug(domain, TAG, `restartAbility success : ${data}`);
-  });
+  featureAbility.startAbility({ want: wantInfo })
+    .then((data) => {
+      hilog.debug(domain, TAG, `restartAbility success : ${JSON.stringify(data)}`);
+    })
+    .catch((err: Error) => {
+      hilog.error(domain, TAG, `restartAbility failed: ${err.message}`);
+    });
 })()
 ```
 
@@ -73,7 +77,9 @@ class PageAbilitySingleton {
   onNewWant(want: Want) {
     featureAbility.getWant().then((want) => {
       GlobalContext.getContext().setObject('newWant', want);
-    })
+    }).catch((err: Error) => {
+      hilog.error(domain, TAG, `getWant failed: ${err.message}`);
+    });
   }
 }
 
@@ -96,7 +102,9 @@ struct First {
     if (newWant) {
       if (newWant.parameters) {
         if (newWant.parameters.page) {
-          router.pushUrl({ url: newWant.parameters.page as string});
+          router.pushUrl({ url: newWant.parameters.page as string}).catch((err: Error) => {
+            hilog.error(domain, TAG, `pushUrl failed: ${err.message}`);
+          });
           GlobalContext.getContext().setObject("newWant", undefined)
         }
       }
@@ -135,10 +143,10 @@ struct First {
 ```
 
 
-当PageAbility的启动模式设置为多实例模式或为首次启动单例模式的PageAbility时（具体设置方法和典型场景示例见[PageAbility的启动模式](pageability-launch-type.md)），在调用方PageAbility中，通过want中的parameters参数传递要启动的指定页面的pages信息，调用startAbility()方法启动PageAbility。被调用方可以在onCreate中使用featureAbility的getWant方法获取want，再通过调用router.pushUrl实现启动指定页面。
+当PageAbility的启动模式设置为多实例模式或为首次启动单例模式的PageAbility时（具体设置方法和典型场景示例见[PageAbility的启动模式](pageability-launch-type.md)），在调用方PageAbility中，通过Want中的parameters参数传递要启动的指定页面的pages信息，调用startAbility()方法启动PageAbility。被调用方可以在onCreate中使用featureAbility的getWant方法获取Want，再通过调用router.pushUrl实现启动指定页面。
 
 
-调用方的页面中实现按钮点击触发startAbility方法启动目标端PageAbility，startAbility方法的入参want中携带指定页面信息，示例代码如下：
+调用方的页面中实现按钮点击触发startAbility方法启动目标端PageAbility，startAbility方法的入参Want中携带指定页面信息，示例代码如下：
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -172,8 +180,6 @@ struct PagePageAbilityFirst {
             };
             featureAbility.startAbility({ want: want }).then((data) => {
               hilog.info(domain, TAG, `startAbility finish:${data}`);
-            }).catch((err: BusinessError) => {
-              hilog.info(domain, TAG, `startAbility failed errcode:${err.code}`);
             })
           })
         }
@@ -190,8 +196,6 @@ struct PagePageAbilityFirst {
             };
             featureAbility.startAbility({ want: want }).then((data) => {
               hilog.info(domain, TAG, `startAbility finish:${data}`);
-            }).catch((err: BusinessError) => {
-              hilog.info(domain, TAG, `startAbility failed errcode:${err.code}`);
             })
           })
         }
@@ -205,7 +209,7 @@ struct PagePageAbilityFirst {
 ```
 
 
-目标端PageAbility的onCreate生命周期回调中通过featureAbility的getWant方法获取want，并对参数进行解析，实现指定页面拉起：
+目标端PageAbility的onCreate生命周期回调中通过featureAbility的getWant方法获取Want，并对参数进行解析，实现指定页面拉起：
 
 ```ts
 import featureAbility from '@ohos.ability.featureAbility';
@@ -219,7 +223,9 @@ class PageAbilityStandard {
           router.pushUrl({ url: want.parameters.page as string });
         }
       }
-    })
+    }).catch((err: Error) => {
+      hilog.error(domain, TAG, `getWant failed: ${err.message}`);
+    });
   }
 }
 
