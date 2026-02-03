@@ -2055,7 +2055,7 @@ Input_AxisEvent* OH_Input_CreateAxisEvent(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| Input_AxisEvent* | 成功返回[Input_AxisEvent](capi-input-input-axisevent.md)对象实例，失败则返回NULL。 |
+| Input_AxisEvent* | 成功返回[Input_AxisEvent](capi-input-input-axisevent.md)对象实例，失败则返回null。 |
 
 ### OH_Input_DestroyAxisEvent()
 
@@ -2928,7 +2928,7 @@ Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, In
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_KeyEventCallback](#input_keyeventcallback) callback | 回调函数，用于接收按键事件。 |
-| [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) *option | option 输入事件拦截的可选项，传NULL则使用默认值。 |
+| [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) *option | option 输入事件拦截的可选项，传null则使用默认值。 |
 
 **返回：**
 
@@ -2960,7 +2960,7 @@ Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *c
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md) *callback | callback 用于回调输入事件的结构体指针，请参考定义[Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md)。 |
-| [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) *option | option 输入事件拦截的可选项，传NULL则使用默认值。 |
+| [Input_InterceptorOptions](capi-input-input-interceptoroptions.md) *option | option 输入事件拦截的可选项，传null则使用默认值。 |
 
 **返回：**
 
