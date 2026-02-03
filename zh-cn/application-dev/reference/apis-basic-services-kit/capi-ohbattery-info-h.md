@@ -40,7 +40,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| static const char * COMMON_EVENT_KEY_CAPACITY = "soc" | 标识电池容量变化后发送的常见事件。 |
+| static const char * COMMON_EVENT_KEY_CAPACITY = "soc" | 标识电池容量变化后发送的常见事件。<br>**起始版本：** 13 |
 | static const char * COMMON_EVENT_KEY_CHARGE_STATE = "chargeState" | 标识充电状态更改后发送的常见事件。<br>**起始版本：** 13 |
 | static const char * COMMON_EVENT_KEY_PLUGGED_TYPE = "pluggedType" | 标识插入类型更改后发送的常见事件。<br>**起始版本：** 13 |
 
