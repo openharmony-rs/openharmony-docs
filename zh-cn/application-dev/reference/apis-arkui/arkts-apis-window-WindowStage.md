@@ -978,7 +978,7 @@ releaseUIContent(): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
-
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
