@@ -28,7 +28,7 @@ StartOptions用于指定启动目标UIAbility时的选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| windowMode<sup>12+<sup> | number | 否 | 是 | 启动UIAbility时的窗口模式，详见[WindowMode](./js-apis-app-ability-abilityConstant.md#windowmode12)。 |
+| windowMode<sup>12+</sup> | number | 否 | 是 | 启动UIAbility时的窗口模式，详见[WindowMode](./js-apis-app-ability-abilityConstant.md#windowmode12)。 |
 | displayId | number | 否 | 是 | 屏幕ID，取值为大于等于-1的整数。<br>- 取值为-1，表示当前屏幕。<br>- 取值为0，表示主屏幕。<br>- 取值为正整数，表示指定ID的屏幕。<br>**说明**：<br>从API version 14开始，默认值是-1，即当前屏幕。<br>在API version 14之前版本，默认值为0，即主屏幕。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | withAnimation<sup>11+</sup> | boolean | 否 | 是 | 启动UIAbility时是否具有动画效果。true表示具有动画效果，false表示不具有动画效果。<br>**约束：**<br>1.该功能仅在2in1和Tablet设备上生效。<br>2.调用方与目标方必须为同一应用。 |
 | windowLeft<sup>11+</sup> | number | 否 | 是 | 以指定displayId的屏幕的左顶点为起点，窗口在x轴方向移动的值，单位为px，值为正表示右移，值为负表示左移。该参数为整数，非整数将向下取整。当窗口左顶点超出指定displayId的屏幕区域时，限制窗口在指定displayId的屏幕范围内可见。配置该字段时，建议同时配置windowTop。<br> **约束：**<br>该功能仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。 |
