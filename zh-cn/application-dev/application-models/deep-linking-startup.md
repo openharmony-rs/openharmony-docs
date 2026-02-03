@@ -155,7 +155,7 @@ struct DeepOpenLinkIndex {
 
 ### 使用startAbility实现应用跳转
 
-[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口是将应用链接放入want中，通过调用[隐式want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
+[startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口是将应用链接放入Want中，通过调用[隐式Want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
 
 
 示例代码如下：
