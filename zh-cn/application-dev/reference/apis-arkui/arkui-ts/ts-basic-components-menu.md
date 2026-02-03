@@ -35,6 +35,8 @@ Menu()
 > Menu设置宽度的情况：Menu会对子组件MenuItem、MenuItemGroup设置减去padding后的固定宽度。
 >
 > Menu支持设置的最小宽度为64vp。
+>
+> Menu不支持的通用属性：[outline](ts-universal-attributes-outline.md)相关属性、[shadow](ts-univeral-attributes-image-effect.md#shadow)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
