@@ -1651,7 +1651,6 @@ struct Index {
         .onClientAuthenticationRequest((event) => {
           console.info("onClientAuthenticationRequest ");
           event.handler.confirm(this.uri);
-          return true;
         })
         .onSslErrorEventReceive(e => {
           console.info(`onSslErrorEventReceive->${e.error.toString()}`);
@@ -1799,7 +1798,6 @@ struct Index {
                 console.info(`grantAppPm, URI==========${result}`);
                 event.handler.confirm(result);
               })
-              return true;
             })
             .onSslErrorEventReceive(e => {
               console.info(`onSslErrorEventReceive->${e.error.toString()}`);
@@ -1890,7 +1888,6 @@ struct Index {
           } catch (e) {
             console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(e)}`);
           }
-          return true;
         })
         .onVerifyPin((event) => {
           // 收到PIN码认证请求事件
