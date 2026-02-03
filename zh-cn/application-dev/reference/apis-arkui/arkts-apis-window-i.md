@@ -280,7 +280,9 @@
 
 ## WindowLimits<sup>11+</sup>
 
-窗口尺寸限制参数。应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制（单位为px）；从API version 22开始，还可以通过[getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22)获取（单位为vp）。
+窗口尺寸限制参数。
+
+不同窗口类型系统限定尺寸可能不同，应用可以通过[getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11)获得当前的窗口尺寸限制（单位为px）；从API version 22开始，还可以通过[getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22)获取（单位为vp）。
 
 窗口存在默认系统大小限制，应用可以通过[setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11)设置窗口尺寸限制，或在应用[module.json5配置文件中的abilities标签](../../quick-start/module-configuration-file.md#abilities标签)中配置该属性。
 
@@ -290,22 +292,22 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 > **说明：**
 >
-> - maxWidth、maxHeight、minWidth、minHeight 默认单位为px，从API version 22开始支持通过 pixelUnit 设置单位为px或vp
-> - 参数为整数，浮点数会向下取整
-> - 默认值为0，表示属性不发生变化
-> - 可生效范围下限值：0（OpenHarmony 5.0.2前）或 1（OpenHarmony 5.0.2起）
-> - 可生效范围上限值：系统限定的最大尺寸
+> 针对maxWidth、maxHeight、minWidth、minHeight属性：
+>
+> - 默认单位为px，从API version 22开始支持通过 pixelUnit 设置单位为px或vp。
+> - 参数为整数，浮点数会向下取整。
+> - 默认值为0，表示属性不发生变化。
+> - 可生效范围下限值：系统限定的最小高度/宽度。
+> - 可生效范围上限值：系统限定的最大高度/宽度。
 
 | 名称      | 类型   | 只读 | 可选 |说明                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | 否   | 是   | 窗口的最大宽度。  |
-| maxHeight | number | 否   | 是   | 窗口的最大高度。 |
-| minWidth  | number | 否   | 是   | 窗口的最小宽度。 |
-| minHeight | number | 否   | 是   | 窗口的最小高度。 |
+| maxWidth  | number | 否   | 是   | 窗口的最大宽度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| maxHeight | number | 否   | 是   | 窗口的最大高度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| minWidth  | number | 否   | 是   | 窗口的最小宽度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| minHeight | number | 否   | 是   | 窗口的最小高度。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。|
 
 ## TitleButtonRect<sup>11+</sup>
