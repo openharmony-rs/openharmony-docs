@@ -1892,7 +1892,7 @@ struct TabsCustomAnimationExample {
 本示例通过onContentWillChange实现了自定义页面手势滑动切换拦截。
 
 ```ts
-//xxx.ets
+// xxx.ets
 @Entry
 @Component
 struct TabsExample {
@@ -2745,7 +2745,7 @@ struct TabsExample {
 
 该示例通过设置[cachedMaxCount](#cachedmaxcount19)属性，实现了Tabs子组件的释放。
 
-从API version 18开始，新增了cachedMaxCount接口。
+从API version 19开始，新增了cachedMaxCount接口。
 
 ```ts
 @Entry
