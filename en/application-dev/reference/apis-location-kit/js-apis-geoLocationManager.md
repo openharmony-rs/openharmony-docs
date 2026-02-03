@@ -18,7 +18,7 @@ To use location services, turn on the Location switch on your device. If the swi
 ## Applying for Permissions
 
 <!--RP1-->
-For details, see [Applying for Location Permissions](../../device/location/location-guidelines.md#how-to-develop).
+For details, see [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md#how-to-develop).
 <!--RP1End-->
 
 ## Modules to Import
@@ -39,13 +39,13 @@ Defines a reverse geocoding request.
 | locale | string | No| Yes| Language used for the location description. **zh** indicates Chinese, and **en** indicates English. The default language is obtained from **Language and region** in **Settings**.|
 | country<sup>12+</sup> | string | No| Yes| Country information. The country code complies with the ISO 3166-1 alpha-2 standard. **CN** indicates China. The default language is obtained from **Language and region** in **Settings**.|
 | latitude | number | No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| longitude | number | No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| longitude | number | No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
 | maxItems | number | No| Yes| Maximum number of location records to be returned. The specified value must be greater than or equal to **0**. A value smaller than **10** is recommended. The default value is **1**.|
 
 
 ## GeoCodeRequest
 
-Defines a reverse geocoding request.
+Defines a geocoding request.
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -70,7 +70,7 @@ Geocoding address information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude | number | No| Yes | Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| longitude | number | No| Yes | Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| longitude | number | No| Yes | Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
 | locale | string | No| Yes | Language used for the location description. **zh** indicates Chinese, and **en** indicates English.|
 | placeName | string | No| Yes | Address information.|
 | countryCode | string | No| Yes | Country code.|
@@ -230,7 +230,7 @@ Location information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude | number| No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| longitude | number| No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| longitude | number| No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | altitude | number | No| No| Location altitude, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | accuracy | number | No| No| Location accuracy, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | speed | number | No| No|Speed, in m/s.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -460,7 +460,7 @@ Enumerates error codes in a continuous location request.
 | -------- | -------- | -------- |
 | LOCATING_FAILED_DEFAULT   | -1 |  Default value.|
 | LOCATING_FAILED_LOCATION_PERMISSION_DENIED   | -2 | Failed to verify the **ohos.permission.APPROXIMATELY_LOCATION** or **ohos.permission.LOCATION** permission.|
-| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | Failed to verify the location permission when the application is running in the background. <!--RP3-->For details about how to apply for the location permission, see [Applying for Location Permissions](../../device/location/location-guidelines.md#how-to-develop).<!--RP3End--> |
+| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | Failed to verify the location permission when the application is running in the background. <!--RP3-->For details about how to apply for the location permission, see [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md#how-to-develop).<!--RP3End--> |
 | LOCATING_FAILED_LOCATION_SWITCH_OFF    | -4 | Location switch turned off.|
 | LOCATING_FAILED_INTERNET_ACCESS_FAILURE    | -5 | Network access denied.|
 
@@ -1240,7 +1240,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-Subscribes to status change events of the specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
+Subscribes to status change events of a specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
 **Permission required**: ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1305,7 +1305,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-Unsubscribes from status change events of the specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
+Unsubscribes from status change events of a specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
 **Permission required**: ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2357,7 +2357,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;
 
-Adds a GNSS geofence and subscribes to geofence transition events. This API uses a promise to return the result.
+Adds a GNSS geofence and subscribes to geofence events. This API uses a promise to return the result.
 
 The application can pass a callback to [GnssGeofenceRequest](#gnssgeofencerequest12) to receive geofence transition events. It can also pass [NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest) so that a notification is displayed when a geofence transition event occurs.
 
@@ -2476,7 +2476,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 
-Removes a GNSS geofence and unsubscribes from geofence transition events. This API uses a promise to return the result.
+Removes a GNSS geofence and unsubscribes from geofence events. This API uses a promise to return the result.
 
 This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
@@ -2845,7 +2845,7 @@ Obtains the linear distance between two locations.
 
 addBeaconFence(fenceRequest: BeaconFenceRequest): Promise&lt;number&gt;
 
-Subscribes to status change events of the specified beacon fence. This API uses a promise to return the result.
+Adds a beacon fence and subscribes to beacon fence events. This API uses a promise to return the result.
 
 A beacon fence refers to a virtual fence created through the cooperation of a Bluetooth beacon and a mobile phone application. When a user approaches or leaves a specific beacon, the mobile phone application receives a notification.
 
@@ -2937,7 +2937,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
-Deletes a beacon fence and unsubscribes from beacon fence events. This API uses a promise to return the result.
+Removes a beacon fence and unsubscribes from beacon fence events. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -3117,7 +3117,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
   try {
     geoLocationManager.getActiveGeoFences().then((res) => {
       if (res) {
-        console.info("fence num:" + res.size());
+        console.info("fence num:" + res.size);
         for (const item of res) {
           console.info("data=" + JSON.stringify(item));
         }

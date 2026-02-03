@@ -2155,7 +2155,7 @@ struct SearchExample {
 }
 ```
 
-![searchSetTextSelection](figures/searchSetTextSelection.gif)
+
 
 ### Example 18: Handling Text Scrolling Events
 

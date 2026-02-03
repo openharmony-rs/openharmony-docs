@@ -17,13 +17,13 @@ In multi-device development scenarios, you can use the [\@Env](../reference/apis
 ## Overview
 \@Env is a decorator for environment variables in the reactive system. It provides the following functionalities:
 - Reads the environment variable information based on the input parameter. For details, see [Supported Parameters](#supported-parameters). Currently, the following environment variables are supported:
-  - [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the breakpoint value information corresponding to different width and height thresholds of the window.
-  - [SystemProperties.WINDOW_SIZE<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the size information of the window, in vp.
-  - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the size of a window, in px.
-  - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the avoid area information of a window, in vp.
-  - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): Obtains the avoid area information of a window, in px.
-- When the system environment variable changes, the \@Env decorator notifies the update of the decorated variable and triggers the update of the associated component to synchronize the UI content.
-- The variable decorated by \@Env cannot be initialized by developers. \@Env returns an observable environment variable class (decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md) and [\@Trace](./state-management/arkts-new-observedV2-and-trace.md)) instance to you. If you want to listen for the change of an environment variable, you can use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For details, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
+  - [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the breakpoint value corresponding to different width and height thresholds of a window.
+  - [SystemProperties.WINDOW_SIZE<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the size of a window, in vp.
+  - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the size of a window, in px.
+  - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the avoid area of a window, in vp.
+  - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the avoid area of a window, in px.
+- When the system environment variable changes, the \@Env-decorated variable is updated and the component associated with \@Env is refreshed, implementing synchronous update of the UI content.
+- You are not allowed to initialize the variables decorated by \@Env. @Env returns an instance of an observable environment variable class decorated by @ObservedV2, whose attributes are in turn decorated by @Trace. To listen for the change of an environment variable, use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For details, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
 
 ## Supported Parameters
 
@@ -35,12 +35,12 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
 | Capability| \@Env |Environment|
 | ------------------ | ------------------ | ------------------ |
 |Supported since|API version 22|API version 7|
-|Supported parameters|Enum values of [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)| **languageCode** and so on. For details, see [Environment Built-in Parameters](./state-management/arkts-environment.md#environment-built-in-parameters).|
-|Usage|\@Env is a decorator that can be declared in @Component or @ComponentV2 to obtain the environment variable information of the corresponding parameters.|Obtain the environment variables of the current application through APIs such as [envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10) and save them to [AppStorage](./state-management/arkts-appstorage.md). You can access the values of system environment variables through AppStorage APIs. For details, see [Accessing Environment Parameters from the UI](./state-management/arkts-environment.md#accessing-environment-parameters-from-the-ui).|
+|Supported parameters|Enum values of [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties).| **languageCode** and so on. For details, see [Environment Built-in Parameters](./state-management/arkts-environment.md#environment-built-in-parameters).|
+|Usage|\@Env is a decorator that can be declared in @Component or @ComponentV2 to obtain the environment variables of the corresponding parameters.|Obtains the environment variables of the current application through APIs such as [envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10) and saves them to [AppStorage](./state-management/arkts-appstorage.md). You can access the values of system environment variables through **AppStorage** APIs. For details, see [Accessing Environment Parameters from the UI](./state-management/arkts-environment.md#accessing-environment-parameters-from-the-ui).|
 |Responsive capability supported|Yes. When the system environment variable changes, the environment variable decorated by \@Env is notified of the change and the component associated with \@Env is notified to refresh.|No. When the system environment variable changes, **Environment** is not notified of the change.|
 
 ## Constraints
-- \@Env can be used only in @Component and @ComponentV2. Otherwise, a compilation error is reported. If you bypass the compilation check, a runtime error is reported.
+- \@Env can be used only in @Component and @ComponentV2. Otherwise, a compile-time error is reported. If you bypass the compilation check, a runtime error is thrown.
   ```ts
   import { uiObserver } from '@kit.ArkUI';
 
@@ -57,7 +57,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
     }
   }
   ```
-- The variable decorated by \@Env is read-only and cannot be initialized or assigned a value. Otherwise, an error is reported during compilation. If you bypass the compilation check, an error will be reported during runtime.
+- The variable decorated by \@Env is read-only and cannot be initialized or assigned a value. Otherwise, a compile-time error is reported. If you bypass the compilation check, a runtime error is thrown.
   ```ts
   import { uiObserver } from '@kit.ArkUI';
   
@@ -79,22 +79,22 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
   }
   ```
 
-- \@Env supports the enum values of [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties). If an unsupported parameter is used, an error is reported during compilation.
+- \@Env supports the enum values of [SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties). If an unsupported parameter is used, a compile-time error is reported.
     ```ts
     import { uiObserver } from '@kit.ArkUI';
 
     @Entry
     @Component
     struct Index {
-      @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct syntax.
-      @Env('unsupported_key') breakpoint2: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect syntax. @Env is an invalid input parameter, and an error is reported during compilation.
+      @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct usage.
+      @Env('unsupported_key') breakpoint2: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect usage. @Env is an invalid input parameter, and a compile-time error is reported.
     
       build() {
         Text(`breakpoint2 width: ${this.breakpoint2.widthBreakpoint} height: ${this.breakpoint2.heightBreakpoint}`)
       }
     }
     ```
-- When \@Env uses different key values, the decorated variable types must correspond to each other. Otherwise, an error is reported during compilation.
+- When \@Env uses different key values, the decorated variable types must correspond to each other. Otherwise, a compile-time error is reported.
   - When \@Env uses **SystemProperties.BREAK_POINT**, the decorated variable type must be **uiObserver.WindowSizeLayoutBreakpointInfo**.
   - When \@Env uses **SystemProperties.WINDOW_SIZE**, the decorated variable type must be **window.SizeInVP**.
   - When \@Env uses **SystemProperties.WINDOW_SIZE_PX**, the decorated variable type must be **window.Size**.
@@ -106,45 +106,45 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
   @Entry
   @Component
   struct Index {
-    @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct syntax.
-    @Env(SystemProperties.BREAK_POINT) breakpoint2: string; // Incorrect syntax. When @Env uses SystemProperties.BREAK_POINT, only the WindowSizeLayoutBreakpointInfo type can be decorated.
+    @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct usage.
+    @Env(SystemProperties.BREAK_POINT) breakpoint2: string; // Incorrect usage. When @Env uses SystemProperties.BREAK_POINT, only the WindowSizeLayoutBreakpointInfo type can be decorated.
 
     build() {
     }
   }
   ```
-- \@Env can be used only separately and cannot be used together with other state variable decorators in V1 and V2 or @Require. Otherwise, an error is reported during compilation.
+- Avoid using \@Env together with other V1 and V2 state variable decorators or @Require. Otherwise, a compile-time error occurs.
   ```ts
-  @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct syntax.
-  @State @Env(SystemProperties.BREAK_POINT) breakpoint2: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect syntax. An error is reported during compilation.
-  @Require @Env(SystemProperties.BREAK_POINT) breakpoint3: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect syntax. An error is reported during compilation.
-  @Local @Env(SystemProperties.BREAK_POINT) breakpoint4: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect syntax. An error is reported during compilation.
+  @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct usage.
+  @State @Env(SystemProperties.BREAK_POINT) breakpoint2: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect usage. A compile-time error is reported.
+  @Require @Env(SystemProperties.BREAK_POINT) breakpoint3: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect usage. A compile-time error is reported.
+  @Local @Env(SystemProperties.BREAK_POINT) breakpoint4: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect usage. A compile-time error is reported.
   ```
-- The rules for passing the variables decorated by \@Env between \@Component and \@ComponentV2 are as follows:
-  - The variable decorated by \@Env can only be used to initialize the variable decorated by @Param in \@ComponentV2. Otherwise, a compilation error is reported.
-  - The variable decorated by \@Env can only be used to initialize common variables in \@Component. Otherwise, a compilation error is reported. Note that switching the window through [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md) will cause \@Env to update the environment variable instance based on the new window. In the window switching scenario, you are not advised to use the \@Env variable to initialize the common variables of the child component. Otherwise, the common variables cannot be notified by the \@Env to trigger the associated UI component to refresh. For details, see [Switching Windows Through BuilderNode](#switching-windows-through-buildernode).
+- The rules for passing the \@Env decorated variables between \@Component and \@ComponentV2 are as follows:
+  - The \@Env decorated variables can only be used to initialize the @Param decorated variable in \@ComponentV2. Otherwise, a compile-time error is reported.
+  - The \@Env decorated variables can only be used to initialize common variables in \@Component. Otherwise, a compile-time error is reported. Note that switching the window through [BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md) will cause \@Env to update the environment variable instance based on the new window. In the window switching scenario, you are not advised to use the \@Env variable to initialize the common variables of the child component. Otherwise, \@Env cannot notify the common variables to trigger the associated UI component refresh. For details, see [Switching Windows Through BuilderNode](#switching-windows-through-buildernode).
   ```ts
   import { uiObserver } from '@kit.ArkUI';
   
   @Entry
   @Component
   struct Index {
-    @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct syntax
+    @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct usage.
   
     build() {
       Column() {
-        CompV2({ breakpoint: this.breakpoint }) // Correct syntax
-        Comp({ breakpoint: this.breakpoint }) // Correct syntax
+        CompV2({ breakpoint: this.breakpoint }) // Correct usage.
+        Comp({ breakpoint: this.breakpoint }) // Correct usage.
   
-        CompV2Invalid({ breakpoint: this.breakpoint }) // Incorrect syntax. The variable decorated by @Env can only initialize the @Param variable of V2.
-        CompInvalid({ breakpoint: this.breakpoint }) // Incorrect syntax. The variable decorated by @Env can only initialize common variables of V1.
+        CompV2Invalid({ breakpoint: this.breakpoint }) // Incorrect usage. The variable decorated by @Env can only initialize the @Param variables of V2.
+        CompInvalid({ breakpoint: this.breakpoint }) // Incorrect usage. The variable decorated by @Env can only initialize common variables of V1.
       }
     }
   }
   
   @ComponentV2
   struct CompV2 {
-    @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct syntax
+    @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct usage.
   
     build() {
     }
@@ -152,7 +152,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
   
   @ComponentV2
   struct CompV2Invalid {
-    @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect syntax
+    @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect usage.
   
     build() {
     }
@@ -160,7 +160,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
   
   @Component
   struct Comp {
-    @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct syntax
+    @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Correct usage.
   
     build() {
     }
@@ -168,7 +168,7 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
   
   @Component
   struct CompInvalid {
-    @ObjectLink breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect syntax
+    @ObjectLink breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo; // Incorrect usage.
   
     build() {
     }
@@ -181,8 +181,8 @@ For details about the parameters supported by @Env, see [SystemProperties](../re
 
 1. Search for an existing instance in the parent component.
    - Recursively search for the parent component.
-   - If the \@Env variable with the same key has been initialized in a parent component in the same window, reuse the instance.
-   - If no instance is found, continue to search for the parent component until the parent component is empty. Note that the process of searching for the parent component is interrupted by **BuilderNode**.
+   - If the \@Env variable with the same key has been initialized by a parent component in the same window, reuse the instance.
+   - If no instance is found, continue to search for the parent component until the parent component is empty. Note that the process of searching for the parent component will be interrupted by **BuilderNode**.
 2. Search for the \@Env instance of the current window.
    - If the corresponding instance is not found in the parent component, check whether the current window has an \@Env variable instance with the same key.
    - If yes, reuse the \@Env instance in the window.
@@ -200,13 +200,13 @@ Based on the preceding process, the following example uses **SystemProperties.BR
 
 1. **Child1** initializes **@Env(SystemProperties.BREAK_POINT)**.
    - Recursively search until the parent component is empty. Search for the parent component **Index** upwards. There is no **SystemProperties.BREAK_POINT** instance corresponding to \@Env.
-   - Search for the current window: No **SystemProperties.BREAK_POINT** instance corresponding to \@Env is found.
+   - Search for the current window. No **SystemProperties.BREAK_POINT** instance corresponding to \@Env is found.
    - Create an observable environment variable instance corresponding to **SystemProperties.BREAK_POINT** and bind it to the current window.
 2. Initialize **@Env(SystemProperties.BREAK_POINT)** for **GrandChild1**.
-   - Recursively search for the parent component until the parent component is empty. Search for the parent component **Child1** upwards. The **Child1** has a **SystemProperties.BREAK_POINT** instance corresponding to \@Env.
+   - Recursively search for the parent component until it is empty. Search for the parent component **Child1** upwards. The **Child1** has a **SystemProperties.BREAK_POINT** instance corresponding to \@Env.
    - Reuse the **SystemProperties.BREAK_POINT** instance corresponding to \@Env in **Child1**.
 3. Initialize **@Env(SystemProperties.BREAK_POINT)** for **GrandChild2**.
-   - Recursively search until the parent component is empty. Search for the parent component **Child2** and ancestor node **Index** upwards. Neither of them has a **SystemProperties.BREAK_POINT** instance corresponding to \@Env.
+   - Recursively search for the parent component until it is empty. Search for the parent component **Child2** and ancestor node **Index** upwards. Neither of them has a **SystemProperties.BREAK_POINT** instance corresponding to \@Env.
    - Search for the current window. There is a **SystemProperties.BREAK_POINT** instance corresponding to \@Env.
    - Reuse the environment variable instance corresponding to **SystemProperties.BREAK_POINT** in the window.
 
@@ -280,11 +280,11 @@ struct GrandChild2 {
 ### Using \@Env in \@ComponentV2
 
 In the following example:
-- Declare \@Env in \@ComponentV2 to obtain the breakpoint information of the layout of the window where the current \@ComponentV2 component is created, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the change of the **this.breakpoint** attribute.
-- Declare \@Env in \@ComponentV2 to obtain the size of the window where the current \@ComponentV2 component is created, in vp, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the change of the **this.sizeInVP** attribute.
-- Declare \@Env in \@ComponentV2 to obtain the size of the window where the current \@ComponentV2 component is created, in px, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the change of the **this.sizeInPX** attribute.
-- Pass the variables decorated by \@Env to the variables decorated by [\@Param](./state-management/arkts-new-param.md) in **CompV2** and the common variables in **Comp**.
-- Click **Button('Landscape')** and **Button('Portrait')** to switch between landscape and portrait modes. The **Index**, **CompV2**, and **Comp** associated components are refreshed, and the **orientationChange** listener callback is triggered.
+- Declare \@Env in \@ComponentV2 to obtain the layout breakpoint of the window where the current \@ComponentV2 component is created, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the changes of the **this.breakpoint** attribute.
+- Declare \@Env in \@ComponentV2 to obtain the size (in vp) of the window where the current \@ComponentV2 component is created, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the changes of the **this.sizeInVP** attribute.
+- Declare \@Env in \@ComponentV2 to obtain the size (in px) of the window where the current \@ComponentV2 component is created, and use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md) to listen for the changes of the **this.sizeInPX** attribute.
+- Pass the \@Env decorated variables to the [\@Param](./state-management/arkts-new-param.md) decorated variables in **CompV2** and the common variables in **Comp**.
+- Click **Button('Landscape')** and **Button('Portrait')** to switch between landscape and portrait modes. The **Index**, **CompV2**, and **Comp** associated components are refreshed, and the listener for **orientationChange** is triggered.
 
 ```ts
 import { uiObserver, UIUtils, window } from '@kit.ArkUI';
@@ -311,7 +311,7 @@ struct Index {
   }
 
   aboutToAppear(): void {
-    // The object returned by @Env is actually the object decorated by @ObservedV2 (its attributes are decorated by @Trace). Therefore, the change of its attributes can be listened through addMonitor.
+    // The object returned by @Env is actually an @ObservedV2 decorated object (whose properties are decorated by @Trace). Therefore, the change of its properties can be listened through addMonitor.
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
     UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
     UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
@@ -406,7 +406,7 @@ struct Index {
   }
 
   aboutToAppear(): void {
-    // The object returned by @Env is actually the object decorated by @ObservedV2 (its attributes are decorated by @Trace). Therefore, the change of its attributes can be listened through addMonitor.
+    // The object returned by @Env is actually an @ObservedV2 decorated object (whose properties are decorated by @Trace). Therefore, the change of its properties can be listened through addMonitor.
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
     UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
     UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
@@ -474,15 +474,15 @@ struct Comp {
 
 ### Switching Windows Through BuilderNode
 
-\@Env is used to display the environment variable information of the [window](../reference/apis-arkui/arkts-apis-window-Window.md) where \@Component or \@ComponentV2 is located. When you switch the window instance where @Component or @ComponentV2 is located through **BuilderNode**, \@Env obtains the corresponding environment variable information based on the new window and triggers the associated UI component to refresh. **SystemProperties.BREAK_POINT** is used as an example.
+\@Env is used to display the environment variable information of the [window](../reference/apis-arkui/arkts-apis-window-Window.md) where \@Component or \@ComponentV2 is located. When you switch the window instance where @Component or @ComponentV2 is located through **BuilderNode**, \@Env obtains the corresponding environment variable information based on the new window and triggers refreshes of the associated UI component. **SystemProperties.BREAK_POINT** is used as an example.
 
 In the following example:
-1. Click **Button('add node to tree')** to create a **BuilderNode** node and mount it to **NodeContainer**.
-2. Click **Button('remove node from tree')** to remove the **BuilderNode** node from **NodeContainer**.
-3. Click **Button(`create sub window`)** to create a sub window and display the **SubWindow** window.
-4. Click **Button('add node to tree')** in **SubWindow** to mount the **BuilderNode** node to the **NodeContainer** in the **SubWindow**.
+1. Click **Button('add node to tree')** to create a **BuilderNode** and mount it to **NodeContainer**.
+2. Click **Button('remove node from tree')** to remove the **BuilderNode** from **NodeContainer**.
+3. Click **Button(`create sub window`)** to create a subwindow and display the **SubWindow** window.
+4. Click **Button('add node to tree')** in **SubWindow** to mount the **BuilderNode** to the **NodeContainer** in the **SubWindow**.
    - When **ComponentUnderBuilderNode** is mounted to a new window, \@Env is triggered to obtain new environment variables.
-   - After \@Env obtains new environment variables, the associated component is refreshed. **@Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo** in **ComponentUnderBuilderNode** notifies **@Param breakpoint** in **CompV2** of the refresh, but does not notify **breakpoint** in **Comp** of the refresh. Therefore, in the scenario where \@Env re-obtains environment variables after the window is switched, you are advised not to pass @Env to the common variable to avoid the problem that the common variable cannot be notified of UI refresh.
+   - After \@Env obtains new environment variables, the associated component is refreshed. **@Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo** in **ComponentUnderBuilderNode** notifies **@Param breakpoint** in **CompV2** of the refresh, but does not notify the common variable **breakpoint** in **Comp** of the refresh. Therefore, in the scenario where \@Env re-obtains environment variables after the window is switched, you are advised not to pass @Env to the common variable to avoid the problem that the common variable cannot be notified of UI refresh.
 
 The following example contains the process of creating a subwindow. For details, see [Application Window Development (Stage Model)](../windowmanager/application-window-stage.md).
 
@@ -603,7 +603,7 @@ struct Index {
           }
           hilog.info(DOMAIN, 'testTag', 'Succeeded in changing the window size.');
         });
-         // Load the page content to the subwindow.
+         // Load the target page to the subwindow.
         sub_windowClass.setUIContent('pages/SubWindow', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
@@ -647,15 +647,15 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Text(`Index`)
-      // Step 1: Create a globalBuilderNode and mount the nodes under the globalBuilderNode to the placeholder node of NodeContainer.
+      // Step 1: Create a globalBuilderNode and mount its nodes to the placeholder node of NodeContainer.
       Button('add node to tree').width(200).onClick(() => {
         this.nodeController.addBuilderNode();
       })
-      // Step 2: Remove the nodes under the globalBuilderNode from the placeholder node of NodeContainer.
+      // Step 2: Remove the nodes of globalBuilderNode from the placeholder node of NodeContainer.
       Button('remove node from tree').width(200).onClick(() => {
         this.nodeController.removeBuilderNode();
       })
-      // Destroy nodes under globalBuilderNode.
+      // Destroy nodes of globalBuilderNode.
       Button('dispose node').width(200).onClick(() => {
         this.nodeController.disposeNode();
       })
@@ -726,7 +726,7 @@ struct SubWindow {
   build() {
     Column({ space: 10 }) {
       Text(`SubWindow`)
-      // Step 4: Mount the node under the globalBuilderNode created in step 1 to the placeholder node under the NodeContainer of the subwindow.
+      // Step 4: Mount the nodes of globalBuilderNode created in step 1 to the placeholder node under the NodeContainer of the subwindow.
       Button('add node to tree').width(200).onClick(() => {
         this.nodeController.addBuilderNode();
       })
@@ -749,7 +749,7 @@ The following figure shows the running effect.
 
 ![gif](./figures/env_switch_instance1.gif)
 
-You can use the Lambda closure function to pass \@Env in **ComponentUnderBuilderNode** downwards. In this way, \@Env in **ComponentUnderBuilderNode** can collect the dependencies of the components in the child component **Comp**, and trigger the refresh of the components in **Comp** when the window instance is switched.
+You can use the Lambda closure function to pass \@Env in **ComponentUnderBuilderNode** downwards. In this way, \@Env in **ComponentUnderBuilderNode** can collect the internal dependencies of the child component **Comp**, and trigger the refresh of the components in **Comp** when the window instance is switched.
 
 The following is an example:
 
@@ -845,7 +845,7 @@ struct Index {
           }
           hilog.info(DOMAIN, 'testTag', 'Succeeded in changing the window size.');
         });
-         // Load the page content to the subwindow.
+         // Load the target page to the subwindow.
         sub_windowClass.setUIContent('pages/SubWindow', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
@@ -889,15 +889,15 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Text(`Index`)
-      // Step 1: Create a globalBuilderNode and mount the nodes under the globalBuilderNode to the placeholder node of NodeContainer.
+      // Step 1: Create a globalBuilderNode and mount its nodes to the placeholder node of NodeContainer.
       Button('add node to tree').width(200).onClick(() => {
         this.nodeController.addBuilderNode();
       })
-      // Step 2: Remove the nodes under the globalBuilderNode from the placeholder node of NodeContainer.
+      // Step 2: Remove the nodes of globalBuilderNode from the placeholder node of NodeContainer.
       Button('remove node from tree').width(200).onClick(() => {
         this.nodeController.removeBuilderNode();
       })
-      // Destroy the nodes under the globalBuilderNode.
+      // Destroy nodes of globalBuilderNode.
       Button('dispose node').width(200).onClick(() => {
         this.nodeController.disposeNode();
       })
@@ -926,7 +926,7 @@ struct ComponentUnderBuilderNode {
       Text(`ComponentUnderBuilderNode breakpoint height: ${this.breakpoint.heightBreakpoint}`)
 
       CompV2({ breakpoint: this.breakpoint })
-      // Use the Lambda closure function to associate @Env with the component in the Comp.
+      // Use the Lambda closure function to associate @Env with the components in Comp.
       Comp({ getEnv: () => this.breakpoint })
     }
   }
@@ -961,4 +961,3 @@ struct Comp {
 The following figure shows the running effect.
 
 ![gif](./figures/env_switch_instance2.gif)
-<!--no_check-->

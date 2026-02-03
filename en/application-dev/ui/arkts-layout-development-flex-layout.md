@@ -39,7 +39,7 @@ In the flex layout, the child elements can be arranged in any direction. You can
 
 
   <!-- @[FlexDirectionRow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionRow.ets) -->
-  
+
   ``` TypeScript
   Flex({ direction: FlexDirection.Row }) {
     Text('1').width('33%').height(50).backgroundColor('#F5DEB3')
@@ -58,7 +58,7 @@ In the flex layout, the child elements can be arranged in any direction. You can
 
 
   <!-- @[FlexDirectionRowReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionRowReverse.ets) -->
-  
+
   ``` TypeScript
   Flex({ direction: FlexDirection.RowReverse }) {
     Text('1').width('33%').height(50).backgroundColor('#F5DEB3')
@@ -77,7 +77,7 @@ In the flex layout, the child elements can be arranged in any direction. You can
 
 
   <!-- @[FlexDirectionColumn_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionColumn.ets) -->
-  
+
   ``` TypeScript
   Flex({ direction: FlexDirection.Column }) {
     Text('1').width('100%').height(50).backgroundColor('#F5DEB3')
@@ -96,7 +96,7 @@ In the flex layout, the child elements can be arranged in any direction. You can
 
 
   <!-- @[FlexDirectionColumnReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionColumnReverse.ets) -->
-  
+
   ``` TypeScript
   Flex({ direction: FlexDirection.ColumnReverse }) {
     Text('1').width('100%').height(50).backgroundColor('#F5DEB3')
@@ -120,7 +120,7 @@ In the flex layout, child elements can be laid on a single line or on multiple l
 
 
   <!-- @[FlexWrapNoWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapNoWrap.ets) -->
-  
+
   ``` TypeScript
   Flex({ wrap: FlexWrap.NoWrap }) {
     Text('1').width('50%').height(50).backgroundColor('#F5DEB3')
@@ -138,7 +138,7 @@ In the flex layout, child elements can be laid on a single line or on multiple l
 
 
   <!-- @[FlexWrapWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrap.ets) -->
-  
+
   ``` TypeScript
   Flex({ wrap: FlexWrap.Wrap }) {
     Text('1').width('50%').height(50).backgroundColor('#F5DEB3')
@@ -156,7 +156,7 @@ In the flex layout, child elements can be laid on a single line or on multiple l
 
 
   <!-- @[FlexWrapWrapReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrapReverse.ets) -->
-  
+
   ``` TypeScript
   Flex({ wrap: FlexWrap.WrapReverse}) {
     Text('1').width('50%').height(50).backgroundColor('#F5DEB3')
@@ -182,7 +182,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
 
 
   <!-- @[FlexAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignStart.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.Start }) {
     Text('1').width('20%').height(50).backgroundColor('#F5DEB3')
@@ -200,7 +200,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
 
 
   <!-- @[FlexAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenter.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.Center }) {
     Text('1').width('20%').height(50).backgroundColor('#F5DEB3')
@@ -218,7 +218,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
 
 
   <!-- @[FlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignEnd.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.End }) {
     Text('1').width('20%').height(50).backgroundColor('#F5DEB3')
@@ -236,7 +236,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
 
 
   <!-- @[FlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceBetween.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween }) {
     Text('1').width('20%').height(50).backgroundColor('#F5DEB3')
@@ -254,7 +254,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
 
 
   <!-- @[FlexAlignSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceAround.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceAround }) {
     Text('1').width('20%').height(50).backgroundColor('#F5DEB3')
@@ -272,7 +272,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
 
 
   <!-- @[FlexAlignSpaceEvenly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceEvenly.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceEvenly }) {
     Text('1').width('20%').height(50).backgroundColor('#F5DEB3')
@@ -301,7 +301,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
 
 
   <!-- @[FlexItemAlignAuto_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignAuto.ets) -->
-  
+
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Auto }) {
     Text('1').width('33%').height(30).backgroundColor('#F5DEB3')
@@ -319,7 +319,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
 
 
   <!-- @[FlexItemAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStart.ets) -->
-  
+
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Start }) {
     Text('1').width('33%').height(30).backgroundColor('#F5DEB3')
@@ -337,7 +337,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
 
 
   <!-- @[FlexItemAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignCenter.ets) -->
-  
+
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Center }) {
     Text('1').width('33%').height(30).backgroundColor('#F5DEB3')
@@ -355,7 +355,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
 
 
   <!-- @[FlexItemAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignEnd.ets) -->
-  
+
   ``` TypeScript
   Flex({ alignItems: ItemAlign.End }) {
     Text('1').width('33%').height(30).backgroundColor('#F5DEB3')
@@ -373,7 +373,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
 
 
   <!-- @[FlexItemAlignStretch_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStretch.ets) -->
-  
+
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Stretch }) {
     Text('1').width('33%').backgroundColor('#F5DEB3')
@@ -391,7 +391,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
 
 
   <!-- @[FlexItemAlignBaseline_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignBaseline.ets) -->
-  
+
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Baseline }) {
     Text('1').width('33%').height(30).backgroundColor('#F5DEB3')
@@ -448,7 +448,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
 
 
   <!-- @[FlexAlignCenterFlexAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignStart.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Start }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
@@ -468,7 +468,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
 
 
   <!-- @[FlexAlignCenterFlexAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignCenter.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Center }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
@@ -488,7 +488,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
 
 
   <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
@@ -508,7 +508,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
 
 
   <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
@@ -528,7 +528,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
 
 
   <!-- @[FlexAlignCenterFlexAlignSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceAround.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceAround }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
@@ -548,7 +548,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
 
 
   <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceEvenly.ets) -->
-  
+
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceEvenly }) {
     Text('1').width('30%').height(20).backgroundColor('#F5DEB3')
@@ -573,7 +573,7 @@ When the size of the flex container is not large enough, the following attribute
 
 
   <!-- @[FlexBasis_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexBasis.ets) -->
-  
+
   ``` TypeScript
   Flex() {
     Text('flexBasis("auto")')
@@ -635,7 +635,7 @@ When the size of the flex container is not large enough, the following attribute
 
 
   <!-- @[FlexShrink_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexShrink.ets) -->
-  
+
   ``` TypeScript
   Flex({ direction: FlexDirection.Row }) {
     Text('flexShrink(3)')
@@ -660,7 +660,7 @@ When the size of the flex container is not large enough, the following attribute
   ![en-us_image_0000001562820813](figures/en-us_image_0000001562820813.png)
 
   In this example, the parent container has a width of 400 vp. The three child elements each have an initial width of 200 vp, with left and right padding totaling 20 vp. The available layout space within the parent container is 380 vp, creating an overflow of 220 vp beyond the available space.
-  
+
   The first and third elements are compressed at a 3:2 ratio until they fit within the parent container's layout space: first element: 200 vp – (220 vp/5) x 3 = 68 vp; second element: 200 vp – (220 vp/5) x 2 = 112 vp.
 
 

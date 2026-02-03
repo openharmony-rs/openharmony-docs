@@ -170,6 +170,7 @@ checkPathPermission(tokenID: number, policies: Array&lt;PathPolicyInfo&gt;, poli
 | 202      | The caller is not a system application.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
+| 13900042 | Out of memory.|
 
 **示例：**
 

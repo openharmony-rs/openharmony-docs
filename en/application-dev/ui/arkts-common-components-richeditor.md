@@ -40,29 +40,48 @@ Compared with using controller APIs for content style updates, this approach off
 <!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
 
 ``` TypeScript
-fontStyle: TextStyle = new TextStyle({
-  fontColor: Color.Pink
-})
-// Define a text style object.
+@Entry
+@Component
+export struct CreateRichEditor {
+  // ...
+  fontStyle: TextStyle = new TextStyle({
+    fontColor: Color.Pink
+  })
+  // Define a text style object.
+  mutableStyledString: MutableStyledString =
+    // Replace $r('app.string.CreateRichEditor_Text_1') with the actual resource file. In this example, the value in the resource file is "Create a RichEditor component using a styled string."
+    new MutableStyledString(this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.CreateRichEditor_Text_1').id),
+    [{
+      start: 0,
+      length: 5,
+      styledKey: StyledStringKey.FONT,
+      styledValue: this.fontStyle
+    }])
+  // Create a styled string.
 
-mutableStyledString: MutableStyledString =
-  // Replace $r('app.string.CreateRichEditor_Text_1') with the actual resource file. In this example, the value in the resource file is "Create a RichEditor component using a styled string."
-  new MutableStyledString(resource.resourceToString($r('app.string.CreateRichEditor_Text_1')),
-  [{
-    start: 0,
-    length: 5,
-    styledKey: StyledStringKey.FONT,
-    styledValue: this.fontStyle
-  }])
-// Create a styled string.
-
-controller: RichEditorStyledStringController = new RichEditorStyledStringController();
-options: RichEditorStyledStringOptions = { controller: this.controller };
-// ...
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.setStyledString(this.mutableStyledString);
-          })
+  controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+  options: RichEditorStyledStringOptions = { controller: this.controller };
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column({ space: 3 }) {
+          // ...
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.setStyledString(this.mutableStyledString);
+            })
+        }
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.Create_RichEditor_Component_title') with the actual resource file. In this example, the value in the resource file is "Create a RichEditor component."
+    .title($r('app.string.Create_RichEditor_Component_title'))
+  }
+}
 ```
 
 ![alt text](figures/richeditor_image_stylestringoptions.gif)
@@ -84,18 +103,23 @@ export struct CreateRichEditor {
     NavDestination() {
       Column({ space: 12 }) {
         // ...
+        Column({ space: 3 }) {
+          // ...
           RichEditor(this.optionsNoStyledString)
             .onReady(() => {
               this.controllerNoStyledString.addTextSpan(
-                /* Replace $r('app.string.CreateRichEditor_Text_2') with the actual resource file.
-                 In this example, the value in the resource file is "Create a RichEditor component without using a styled string." */
-                resource.resourceToString($r('app.string.CreateRichEditor_Text_2')), {
+                /**
+                 * Replace $r('app.string.CreateRichEditor_Text_2') with the actual resource file.
+                 * In this example, the value in the resource file is "Create a RichEditor component without using a styled string."
+                 */
+                $r('app.string.CreateRichEditor_Text_2'), {
                 style: {
                   fontColor: Color.Black,
                   fontSize: 15
                 }
               })
             })
+        }
         // ...
       }
       .width('100%')
@@ -708,7 +732,7 @@ For details about all available events, see [RichEditor Events](../reference/api
 
 ## Implementing Component Interaction
 
-You can configure interaction element properties through APIs to respond to changes in those elements.
+You can configure interaction element attributes through APIs to respond to changes in those elements.
 
 ### Setting the Caret and Selection Handle Colors
 
@@ -1235,7 +1259,7 @@ options: RichEditorOptions = { controller: this.controller };
 
 ![RichEditor_decoration](figures/RichEditor_decoration.jpg)
 
-Use the **enableMultiType** property in [DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20) to apply multiple decoration lines simultaneously, such as an underline and a strikethrough.
+Use the **enableMultiType** attribute in [DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20) to apply multiple decoration lines simultaneously, such as an underline and a strikethrough.
 
 This API is useful in complex scenarios that require diverse text decoration. For example, in collaborative document editing, different combinations of decoration lines can be used to distinguish text states contributed by various users, improving collaboration efficiency.
 
@@ -1328,9 +1352,9 @@ options: RichEditorOptions = { controller: this.controller };
 
 ### Enabling Automatic Spacing Between Chinese and Western Characters
 
-Use [enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20) to control whether automatic spacing is inserted between Chinese and Western characters.
+Use [enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20) to control whether automatic spacing is inserted between Chinese and western characters.
 
-This API optimizes text layout and improves readability within the component. When automatic spacing is enabled, an appropriate gap is automatically added between Chinese and Western characters, making it easier to distinguish between languages and reducing visual interference.
+This API optimizes text layout and improves readability within the component. When automatic spacing is enabled, an appropriate gap is automatically added between Chinese and western characters, making it easier to distinguish between languages and reducing visual interference.
 
 <!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
@@ -1340,7 +1364,7 @@ options: RichEditorOptions = { controller: this.controller };
 // ...
         RichEditor(this.options)
           .onReady(() => {
-            // Replace $r('app.string.Demo_autoSpacingString') with the actual resource file. In this example, the value in the resource file is "Auto Spacing between Chinese and Western Characters."
+            // Replace $r('app.string.Demo_autoSpacingString') with the actual resource file. In this example, the value in the resource file is "Automatic spacing between Chinese and western characters."
             this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
               {
                 style:

@@ -22,7 +22,7 @@ Closes the menu bound to this component through [bindContextMenu](./ts-universal
 >
 > This API is deprecated since API version 18. You are advised to use [getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12) in [UIContext](../arkts-apis-uicontext-uicontext.md) to obtain the [ContextMenuController](../arkts-apis-uicontext-contextmenucontroller.md) instance and then use this instance to call the [close](../arkts-apis-uicontext-contextmenucontroller.md#close12) API.
 >
-> Since API version 12, you can use the [getContextMenuController](../arkts-apis-uicontext-contextmenucontroller.md) API in [UIContext](../arkts-apis-uicontext-uicontext.md) to specify the UI execution context.
+> Since API version 12, you can use the [getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12) API in [UIContext](../arkts-apis-uicontext-uicontext.md) to specify the UI execution context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -34,7 +34,7 @@ This example demonstrates how to call the **ContextMenu.close** API to close a c
 
 >  **NOTE**
 >
-> For clarity in UI execution context, you are advised to use the [getContextMenuController](../arkts-apis-uicontext-contextmenucontroller.md) API in [UIContext](../arkts-apis-uicontext-uicontext.md).
+> You are advised to use the [getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12) API in [UIContext](../arkts-apis-uicontext-uicontext.md) to specify the UI execution context.
 
 <!--deprecated_code_no_check-->
 

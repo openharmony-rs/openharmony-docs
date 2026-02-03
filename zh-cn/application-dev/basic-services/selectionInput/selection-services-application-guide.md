@@ -421,7 +421,22 @@
     }
     ```
 
-10. 配置签名。
+10. 在SDK的toolchains\modulecheck\module.json中添加划词扩展"selection"。
+
+    ```json
+    // ...
+    "type": {
+      "description": "Indicates the type of the extension.",
+      "type": "string",
+      "enum": [
+        // ...
+        "selection"   // 添加划词扩展类型
+      ]
+    }
+    // ...
+    ```
+
+11. 配置签名。
 
     点击[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)右上角的"Project Structure"按钮，点击"Signing Configs"按钮，按操作登录华为账号后会自动生成签名。
 

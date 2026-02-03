@@ -439,7 +439,7 @@ struct SubHeaderExample {
       })
       Divider().color('grey').width('100%').height('2vp')
       SubHeader({
-        //左侧select 右侧是icon_(依次获焦)
+        // 左侧select 右侧是icon_(依次获焦)
         select: {
           options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
           value: 'selectDemo',
@@ -471,7 +471,9 @@ struct SubHeaderExample {
 ![figures/zh-cn_image_subheader_example08](figures/zh-cn_image_subheader_example08.png)
 
 ### 示例9（右侧按钮设置默认获焦）
-从API version 18开始，该示例通过设置SubHeader的右侧按钮属性defaultFocus使其默认获焦。
+在获焦状态下，该示例通过设置SubHeader的右侧按钮属性defaultFocus使其默认获焦。
+
+从API version 18开始，在[OperationOption](#operationoption)中新增defaultFocus接口。
 ```ts
 import { Prompt, OperationType, SubHeader } from '@kit.ArkUI';
 

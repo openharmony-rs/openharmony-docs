@@ -1042,20 +1042,22 @@ observer.off('iccAccountInfoChange');
 ```
 
 
-## observer.onGetSimActiveState<sup>10+</sup>
+## observer.onGetSimActiveState<sup>23+</sup>
 
 onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
 
 SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 **参数：**
 
-|     名称            |         类型      | 只读 | 可选 | 说明                                    |
-| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
-| slotId              | number            | 否   | 否   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| slotId   | number            | 否    | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+|callback  | Callback&lt;boolean&gt;|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
 
@@ -1075,26 +1077,28 @@ SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let sislotId = 0；
+let sislotId = 0;
 let simActiveState: Callback<boolean> = (isSimActive: boolean) => {
     console.info(`simActiveState slotId ${JSON.stringify(isSimActive)}`);
 }
-observer.onGetSimActiveState(slotId, simActiveState);
+observer.onGetSimActiveState(sislotId, simActiveState);
 ```
 
-## observer.offGetSimActiveState<sup>10+</sup>
+## observer.offGetSimActiveState<sup>23+</sup>
 
-offGetSimActiveState\(callback: Callback\<boolean\>\): void
+offGetSimActiveState\(callback?: Callback\<boolean\>\): void
 
 取消SIM卡激活状态变化的监听，使用callback方式作为异步方法。
+
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 **参数：**
 
-|     名称            |         类型      | 只读 | 可选 | 说明                                    |
-| ------------------- | ------------------| ---- | ---- | --------------------------------------- |
-|callback  | Callback&lt;boolean&gt;|否|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+|callback  | Callback&lt;boolean&gt;|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
 
@@ -1118,6 +1122,87 @@ let simActiveState: Callback<boolean> = (isSimActive: boolean) => {
     console.info(`simActiveState slotId ${JSON.stringify(isSimActive)}`);
 }
 observer.offGetSimActiveState(simActiveState);
+```
+
+## observer.onCCallStateChange<sup>23+</sup>
+
+onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOptions): void
+
+三方应用监听运营商通话状态并获取通话号码，使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+|     名称            |         类型      | 必填 | 说明                                    |
+| ------------------- | ------------------| ---- | --------------------------------------- |
+| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+| options  | [ObserverOptions](#observeroptions11)                  | 否 | 电话相关事件订阅参数可选项。                |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied                         |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+
+let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+    console.info("onCCallStateChange, data:" + JSON.stringify(data));
+}
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+
+observer.onCCallStateChange(callback, options);
+observer.onCCallStateChange(callback);
+```
+
+## observer.offCCallStateChange<sup>23+</sup>
+
+offCCallStateChange\(callback: Callback\<CCallStateInfo\>\): void
+
+取消三方应用监听运营商通话状态并获取通话号码，使用callback方式作为异步方法。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+|     名称            |         类型      | 必填 | 说明                                    |
+| ------------------- | ------------------| ---- | --------------------------------------- |
+| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied                         |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+
+let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+    console.info("onCCallStateChange, data:" + JSON.stringify(data));
+}
+
+observer.off(callback);
 ```
 
 ## LockReason<sup>8+</sup>

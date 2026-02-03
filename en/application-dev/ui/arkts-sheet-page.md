@@ -210,6 +210,7 @@ struct OnWillDismiss_Dismiss {
 ## Blocking Specific Dismiss Behavior
 
 After the **onWillDismiss** API is declared, it takes control over all dismiss behaviors of the modal sheet. This means that the modal sheet can be dismissed only when you explicitly call the **dismiss** API. You can customize the dismissal logic using **if** statements or other logic.
+
 For example, you might want the modal sheet to be dismissed only when the user swipes down. Here's how you can implement this:
 
 ```ts
@@ -221,6 +222,7 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 ```
 
 To enhance the user experience during the swiping down action, you can use the **onWillSpringBackWhenDismiss** API.
+
 Just like with **onWillDismiss**, after **onWillSpringBackWhenDismiss** is declared, the rebound operation during a swipe-down of the half-modal requires handling with **SpringBackAction.springBack()**; without this logic, no rebound will occur.
 
 Here is the specific code to prevent the rebound effect when the modal sheet is swiped down:
