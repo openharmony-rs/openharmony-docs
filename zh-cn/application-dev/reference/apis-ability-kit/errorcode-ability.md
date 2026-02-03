@@ -654,7 +654,6 @@ App clone is not supported.
 
 参考[应用多实例的配置方法](../../quick-start/multiInstance.md)，在app.json5配置文件中配置multiAppMode标签，开启应用分身功能后，再调用[getCurrentAppCloneIndex](./js-apis-inner-application-applicationContext.md#applicationcontextgetcurrentappcloneindex12)接口。
 
-<!--Del-->
 ## 16000072 不支持应用多开
 
 **错误信息**
@@ -667,11 +666,18 @@ App clone or multi-instance is not supported.
 
 **可能原因**
 
-调用getRunningMultiAppInfo查询不支持应用多开的应用多开信息，则返回该错误码。
+调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，如果目标应用不支持应用多开，则返回该错误码。
+
+<!--Del-->
+调用[getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12)查询不支持应用多开的应用多开信息，则返回该错误码。
+<!--DelEnd-->
 
 **处理步骤**
 
-调用getCurrentAppCloneIndex时确保查询的应用支持应用多开。
+调用[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)、[startAbilityForResult](./js-apis-inner-application-uiAbilityContext.md#startabilityforresult)等启动Ability接口时，确保目标应用支持应用多开，并在app.json5配置文件中配置[multiAppMode](../../quick-start/app-configuration-file.md#multiappmode标签)标签开启应用分身功能。
+
+<!--Del-->
+调用[getRunningMultiAppInfo](./js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12)时确保查询的应用支持应用多开。
 <!--DelEnd-->
 
 ## 16000073 传入的appCloneIndex是一个无效值
@@ -687,6 +693,7 @@ The app clone index is invalid.
 **可能原因**
 
 1.调用startAbility时，使用ohos.extra.param.key.appCloneIndex携带的appCloneIndex是一个无效值，则返回该错误码。
+
 2.调用isAppRunning时，入参appCloneIndex是一个无效值，则返回该错误码。
 
 **处理步骤**
