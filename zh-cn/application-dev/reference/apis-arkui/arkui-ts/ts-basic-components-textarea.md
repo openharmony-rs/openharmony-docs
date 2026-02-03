@@ -2797,7 +2797,11 @@ struct TextAreaExample {
 
 ### 示例15（文本设置省略模式）
 
-该示例通过textOverflow、ellipsisMode、maxlines属性展示了文本超长省略以及调整省略位置的效果。
+该示例通过textOverflow、ellipsisMode、maxlines属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。
+
+从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -2805,14 +2809,16 @@ struct TextAreaExample {
 @Component
 struct EllipsisModeExample {
   @State textIndex: number = 0;
-  @State text: string = "As the sun begins to set, casting a warm golden hue across the sky," +
-    "the world seems to slow down and breathe a sigh of relief. The sky is painted with hues of orange, " +
-    " pink, and lavender, creating a breath taking tapestry that stretches as far as the eye can see." +
-    "The air is filled with the sweet scent of blooming flowers, mingling with the earthy aroma of freshly turned soil.";
+  @State text: string = 'As the sun begins to set, casting a warm golden hue across the sky,' +
+    'the world seems to slow down and breathe a sigh of relief. The sky is painted with hues of orange, ' +
+    ' pink, and lavender, creating a breath taking tapestry that stretches as far as the eye can see.' +
+    'The air is filled with the sweet scent of blooming flowers, mingling with the earthy aroma of freshly turned soil.';
   @State ellipsisModeIndex: number = 0;
   @State ellipsisMode: (EllipsisMode | undefined | null)[] =
-    [EllipsisMode.START, EllipsisMode.END, EllipsisMode.CENTER, undefined, null];
-  @State ellipsisModeStr: string[] = ['START ', 'END', 'CENTER', 'undefined', 'null'];
+    [EllipsisMode.START, EllipsisMode.END, EllipsisMode.CENTER, EllipsisMode.MULTILINE_START,
+      EllipsisMode.MULTILINE_CENTER, undefined, null]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER
+  @State ellipsisModeStr: string[] =
+    ['START ', 'END', 'CENTER', 'MULTILINE_START', 'MULTILINE_CENTER', 'undefined', 'null'];
   @State textOverflowIndex: number = 0;
   @State textOverflow: TextOverflow[] = [TextOverflow.Ellipsis, TextOverflow.Clip];
   @State textOverflowStr: string[] = ['Ellipsis', 'Clip'];
@@ -2862,7 +2868,75 @@ struct EllipsisModeExample {
 }
 ```
 
-![textAreaEllipsisMode](figures/textAreaEllipsisMode.png)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, Component, Button, ClickEvent, EllipsisMode, TextOverflow, Row, TextArea, Margin, TextContentStyle, ColumnOptions, ResourceStr, State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct EllipsisModeExample {
+  @State textIndex: int = 0;
+  @State text: string = 'As the sun begins to set, casting a warm golden hue across the sky,' +
+    'the world seems to slow down and breathe a sigh of relief. The sky is painted with hues of orange, ' +
+    ' pink, and lavender, creating a breath taking tapestry that stretches as far as the eye can see.' +
+    'The air is filled with the sweet scent of blooming flowers, mingling with the earthy aroma of freshly turned soil.';
+  @State ellipsisModeIndex: int = 0;
+  @State ellipsisMode: (EllipsisMode | undefined)[] =
+    [EllipsisMode.START, EllipsisMode.END, EllipsisMode.CENTER, EllipsisMode.MULTILINE_START,
+      EllipsisMode.MULTILINE_CENTER, undefined]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER
+  @State ellipsisModeStr: string[] =
+    ['START ', 'END', 'CENTER', 'MULTILINE_START', 'MULTILINE_CENTER', 'undefined'];
+  @State textOverflowIndex: int = 0;
+  @State textOverflow: TextOverflow[] = [TextOverflow.Ellipsis, TextOverflow.Clip];
+  @State textOverflowStr: string[] = ['Ellipsis', 'Clip'];
+  @State maxLinesIndex: int = 0;
+  @State maxLines: int[] = [1, 2, 3];
+  @State maxLinesStr: string[] = ['1', '2', '3'];
+  @State styleAreaIndex: int = 0;
+  @State styleArea: TextContentStyle[] = [TextContentStyle.INLINE, TextContentStyle.DEFAULT];
+  @State styleAreaStr: string[] = ['INLINE', 'DEFAULT'];
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      TextArea({ text: this.text })
+        .textOverflow(this.textOverflow[this.textOverflowIndex])
+        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
+        .maxLines(this.maxLines[this.maxLinesIndex])
+        .style(this.styleArea[this.styleAreaIndex])
+        .fontSize(30)
+        .margin({ top: 30 ,left: 30 ,bottom: 30 ,right: 30 } as Margin)
+
+      Button('更改ellipsisMode模式：' + this.ellipsisModeStr[this.ellipsisModeIndex] as ResourceStr).onClick((event: ClickEvent) => {
+        this.ellipsisModeIndex++;
+        if (this.ellipsisModeIndex > (this.ellipsisModeStr.length - 1)) {
+          this.ellipsisModeIndex = 0;
+        }
+      }).fontSize(20)
+      Button('更改textOverflow模式：' + this.textOverflowStr[this.textOverflowIndex] as ResourceStr).onClick((event: ClickEvent) => {
+        this.textOverflowIndex++;
+        if (this.textOverflowIndex > (this.textOverflowStr.length - 1)) {
+          this.textOverflowIndex = 0;
+        }
+      }).fontSize(20)
+      Button('更改maxLines大小：' + this.maxLinesStr[this.maxLinesIndex] as ResourceStr).onClick((event: ClickEvent) => {
+        this.maxLinesIndex++;
+        if (this.maxLinesIndex > (this.maxLinesStr.length - 1)) {
+          this.maxLinesIndex = 0;
+        }
+      }).fontSize(20)
+      Button('更改Style大小：' + this.styleAreaStr[this.styleAreaIndex] as ResourceStr).onClick((event: ClickEvent) => {
+        this.styleAreaIndex++;
+        if (this.styleAreaIndex > (this.styleAreaStr.length - 1)) {
+          this.styleAreaIndex = 0;
+        }
+      }).fontSize(20)
+    }.height(600).width('100%')
+  }
+}
+```
+
+![textAreaEllipsisMode](figures/textAreaEllipsisMode.gif)
 
 ### 示例16（自定义复制、剪切、粘贴）
 

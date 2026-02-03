@@ -1542,7 +1542,7 @@ ArkTS-Sta: ellipsisMode(mode: EllipsisMode | undefined)
 
 设置省略位置。ellipsisMode属性仅在内联模式下生效，需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
 
-非编辑态时正常生效，编辑态时EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1时生效，EllipsisMode.END正常生效。
+非编辑态时正常生效，编辑态时EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1时生效，EllipsisMode.END、EllipsisMode.MULTILINE_START和EllipsisMode.MULTILINE_CENTER正常生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -3370,21 +3370,26 @@ struct TextInputExample {
 
 ### 示例16（文本设置省略模式）
 
-该示例通过textOverflow、ellipsisMode、style属性展示了文本超长省略以及调整省略位置的效果。
+该示例通过textOverflow、ellipsisMode、style属性展示了文本超长省略以及调整省略位置的效果通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。
+
+从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct EllipsisModeExample {
-  @State text: string = "As the sun begins to set, casting a warm golden hue across the sky," +
-    "the world seems to slow down and breathe a sigh of relief. The sky is painted with hues of orange, " +
-    " pink, and lavender, creating a breath taking tapestry that stretches as far as the eye can see." +
-    "The air is filled with the sweet scent of blooming flowers, mingling with the earthy aroma of freshly turned soil.";
+  @State text: string = 'As the sun begins to set, casting a warm golden hue across the sky,' +
+    'the world seems to slow down and breathe a sigh of relief. The sky is painted with hues of orange, ' +
+    ' pink, and lavender, creating a breath taking tapestry that stretches as far as the eye can see.' +
+    'The air is filled with the sweet scent of blooming flowers, mingling with the earthy aroma of freshly turned soil.';
   @State ellipsisModeIndex: number = 0;
   @State ellipsisMode: (EllipsisMode | undefined | null)[] =
-    [EllipsisMode.END, EllipsisMode.START, EllipsisMode.CENTER];
-  @State ellipsisModeStr: string[] = ['END ', 'START', 'CENTER'];
+    [EllipsisMode.END, EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.MULTILINE_START,
+      EllipsisMode.MULTILINE_CENTER]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER
+  @State ellipsisModeStr: string[] = ['END ', 'START', 'CENTER', 'MULTILINE_START', 'MULTILINE_CENTER'];
   @State textOverflowIndex: number = 0;
   @State textOverflow: TextOverflow[] = [TextOverflow.Ellipsis, TextOverflow.Clip];
   @State textOverflowStr: string[] = ['Ellipsis', 'Clip'];
@@ -3425,7 +3430,63 @@ struct EllipsisModeExample {
 }
 ```
 
-![textInputEllipsisMode](figures/textInputEllipsisMode.png)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, Component, Button, ClickEvent, EllipsisMode, TextOverflow, Row, TextInput, Margin, TextInputStyle, ColumnOptions, ResourceStr ,State } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct EllipsisModeExample {
+  @State text: string = 'As the sun begins to set, casting a warm golden hue across the sky,' +
+    'the world seems to slow down and breathe a sigh of relief. The sky is painted with hues of orange, ' +
+    ' pink, and lavender, creating a breath taking tapestry that stretches as far as the eye can see.' +
+    'The air is filled with the sweet scent of blooming flowers, mingling with the earthy aroma of freshly turned soil.';
+  @State ellipsisModeIndex: int = 0;
+  @State ellipsisMode: EllipsisMode[] =
+    [EllipsisMode.END, EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.MULTILINE_START, EllipsisMode.MULTILINE_CENTER]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER
+  @State ellipsisModeStr: string[] = ['END ', 'START', 'CENTER', 'MULTILINE_START', 'MULTILINE_CENTER'];
+  @State textOverflowIndex: int = 0;
+  @State textOverflow: TextOverflow[] = [TextOverflow.Ellipsis, TextOverflow.Clip];
+  @State textOverflowStr: string[] = ['Ellipsis', 'Clip'];
+  @State styleInputIndex: int = 0;
+  @State styleInput: TextInputStyle[] = [TextInputStyle.Inline, TextInputStyle.Default];
+  @State styleInputStr: string[] = ['Inline', 'Default'];
+
+  build() {
+    Row() {
+      Column({ space: 20 } as ColumnOptions) {
+        TextInput({ text: this.text })
+          .textOverflow(this.textOverflow[this.textOverflowIndex])
+          .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
+          .style(this.styleInput[this.styleInputIndex])
+          .fontSize(30)
+          .margin({ top: 30 ,left: 30 ,bottom: 30 ,right: 30 } as Margin)
+        Button(('更改ellipsisMode模式：' + this.ellipsisModeStr[this.ellipsisModeIndex]) as ResourceStr).onClick((event: ClickEvent) => {
+          this.ellipsisModeIndex++;
+          if (this.ellipsisModeIndex > (this.ellipsisModeStr.length - 1)) {
+            this.ellipsisModeIndex = 0;
+          }
+        }).fontSize(20)
+        Button(('更改textOverflow模式：' + this.textOverflowStr[this.textOverflowIndex]) as ResourceStr).onClick((event: ClickEvent) => {
+          this.textOverflowIndex++;
+          if (this.textOverflowIndex > (this.textOverflowStr.length - 1)) {
+            this.textOverflowIndex = 0;
+          }
+        }).fontSize(20)
+        Button(('更改Style大小：' + this.styleInputStr[this.styleInputIndex]) as ResourceStr).onClick((event: ClickEvent) => {
+          this.styleInputIndex++;
+          if (this.styleInputIndex > (this.styleInputStr.length - 1)) {
+            this.styleInputIndex = 0;
+          }
+        }).fontSize(20)
+      }
+    }
+  }
+}
+```
+
+![textInputEllipsisMode](figures/textInputEllipsisMode.gif)
 
 ### 示例17（输入框支持输入状态变化等回调）
 

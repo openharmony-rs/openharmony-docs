@@ -2161,7 +2161,9 @@ struct TextExample2 {
 
 ### 示例3（设置文本超长省略）
 
-该示例通过maxLines、textOverflow、ellipsisMode属性展示了文本超长省略以及调整省略位置的效果。
+该示例通过maxLines、textOverflow、ellipsisMode属性展示了文本超长省略以及调整省略位置的效果，通过MULTILINE_START和MULTILINE_CENTER两种类型实现了单行文本和多行文本场景下的省略号在行首和行中的效果。
+
+从API version 24开始，[EllipsisMode](ts-appendix-enums.md#ellipsismode11)新增了MULTILINE_START和MULTILINE_CENTER枚举。
 
 ArkTS-Dyn示例：
 ```ts
@@ -2170,7 +2172,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Extend(Text)
 function style() {
   .textAlign(TextAlign.Center)
-  .fontSize(12)
+  .fontSize(15)
   .border({ width: 1 })
   .padding(10)
   .width('100%')
@@ -2181,15 +2183,19 @@ function style() {
 @Component
 struct TextExample3 {
   @State text: string =
-    'The text component is used to display a piece of textual information.Support universal attributes and universal text attributes.';
+    'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.' +
+      'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.';
   @State ellipsisModeIndex: number = 0;
-  @State ellipsisMode: EllipsisMode[] = [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END];
-  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END'];
+  @State ellipsisMode: EllipsisMode[] =
+    [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END, EllipsisMode.MULTILINE_START, EllipsisMode.MULTILINE_CENTER]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER
+  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END', 'MULTILINE_START', 'MULTILINE_CENTER'];
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
       // 文本超长时显示方式
-      Text('TextOverflow+maxLines').fontSize(9).fontColor(0xCCCCCC)
+      Text('TextOverflow+maxLines').fontSize(12).fontColor(0xCCCCCC)
       // 超出maxLines截断内容展示
       Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content.')
         .textOverflow({ overflow: TextOverflow.Clip })
@@ -2202,7 +2208,7 @@ struct TextExample3 {
         .maxLines(1)
         .style()
 
-      Text('marquee').fontSize(9).fontColor(0xCCCCCC)
+      Text('marquee').fontSize(12).fontColor(0xCCCCCC)
       // 设置文本超长时以跑马灯的方式展示
       Text('This is the text with the text overflow set marquee')
         .textOverflow({ overflow: TextOverflow.MARQUEE })
@@ -2228,12 +2234,18 @@ struct TextExample3 {
           }
         })
 
-      Text('ellipsisMode').fontSize(9).fontColor(0xCCCCCC)
       // 设置文本超长时省略号的位置
+      Text('ellipsisMode(单行文本)').fontSize(12).fontColor(0xCCCCCC)
       Text(this.text)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
         .maxLines(1)
+        .style()
+      Text('ellipsisMode(多行文本)').fontSize(12).fontColor(0xCCCCCC)
+      Text(this.text)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
+        .maxLines(3)
         .style()
 
       Row() {
@@ -2250,56 +2262,56 @@ struct TextExample3 {
 ```
 
 ArkTS-Sta示例：
+
 ```ts
-import { Entry, Text, Column, Component, Button, ClickEvent, TextOverflow, EllipsisMode, FlexDirection, Flex, ItemAlign, MarqueeStartPolicy,
-  Row, MarqueeUpdatePolicy, LengthMetrics, TextAlign, MarqueeState } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, Button, ClickEvent, EllipsisMode, TextOverflow, FlexOptions,Row, TextContentStyle, ColumnOptions, ResourceStr, TextAttribute, TextAlign, Flex, MarqueeState, Margin,ItemAlign, FlexDirection, MarqueeStartPolicy, TextMarqueeOptions, MarqueeUpdatePolicy, LengthMetrics, State} from '@kit.ArkUI';
+
+function style(this: TextAttribute) {
+  this.textAlign(TextAlign.Center);
+  this.fontSize(15);
+  this.border({ width: 1 });
+  this.padding(10);
+  this.width('100%');
+  this.margin({ top: 5 ,left: 5 ,bottom: 5 ,right: 5 } as Margin);
+  return this;
+}
 
 @Entry
 @Component
 struct TextExample3 {
   @State text: string =
-    'The text component is used to display a piece of textual information.Support universal attributes and universal text attributes.';
+    'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.' +
+      'The text component is used to display a piece of textual information.' +
+      'Support universal attributes and universal text attributes.';
   @State ellipsisModeIndex: int = 0;
-  @State ellipsisMode: EllipsisMode[] = [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END];
-  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END'];
+  @State ellipsisMode: EllipsisMode[] =
+    [EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.END, EllipsisMode.MULTILINE_START,
+      EllipsisMode.MULTILINE_CENTER]; // 从API version 24开始新增MULTILINE_START和MULTILINE_CENTER从
+  @State ellipsisModeStr: string[] = ['START', 'CENTER', 'END', 'MULTILINE_START',
+    'MULTILINE_CENTER'];
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center } as FlexOptions) {
       // 文本超长时显示方式
-      Text('TextOverflow+maxLines').fontSize(9).fontColor(0xCCCCCC)
+      Text('TextOverflow+maxLines').fontSize(12).fontColor(0xCCCCCC)
       // 超出maxLines截断内容展示
       Text('This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content. This is the setting of textOverflow to Clip text content This is the setting of textOverflow to None text content.')
         .textOverflow({ overflow: TextOverflow.Clip })
         .maxLines(1)
-        .textAlign(TextAlign.Center)
-        .fontSize(12)
-        .border({ width: 1 })
-        .padding(10)
-        .width('100%')
-        .margin(5)
+        .style()
 
       // 超出maxLines展示省略号
       Text('This is set textOverflow to Ellipsis text content This is set textOverflow to Ellipsis text content.')
         .textOverflow({ overflow: TextOverflow.Ellipsis })
         .maxLines(1)
-        .textAlign(TextAlign.Center)
-        .fontSize(12)
-        .border({ width: 1 })
-        .padding(10)
-        .width('100%')
-        .margin(5)
+        .style()
 
-      Text('marquee').fontSize(9).fontColor(0xCCCCCC)
+      Text('marquee').fontSize(12).fontColor(0xCCCCCC)
       // 设置文本超长时以跑马灯的方式展示
-      Text('This is the text with the text overflow set marquee')
+      Text('This is the text with the text overflow set marquee This is set textOverflow to Ellipsis text content.')
         .textOverflow({ overflow: TextOverflow.MARQUEE })
-        .textAlign(TextAlign.Center)
-        .fontSize(12)
-        .border({ width: 1 })
-        .padding(10)
-        .width('100%')
-        .margin(5)
+        .style()
         .marqueeOptions({
           start: true,
           fromStart: true,
@@ -2321,21 +2333,22 @@ struct TextExample3 {
           }
         })
 
-      Text('ellipsisMode').fontSize(9).fontColor(0xCCCCCC)
-      //设置文本超长时省略号的位置
+      Text('ellipsisMode(单行文本)').fontSize(12).fontColor(0xCCCCCC)
+      // 设置文本超长时省略号的位置
       Text(this.text)
         .textOverflow({ overflow: TextOverflow.Ellipsis })
-        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex] as EllipsisMode)
+        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
         .maxLines(1)
-        .textAlign(TextAlign.Center)
-        .fontSize(12)
-        .border({ width: 1 })
-        .padding(10)
-        .width('100%')
-        .margin(5)
+        .style()
+      Text('ellipsisMode(多行文本)').fontSize(12).fontColor(0xCCCCCC)
+      Text(this.text)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .ellipsisMode(this.ellipsisMode[this.ellipsisModeIndex])
+        .maxLines(3)
+        .style()
 
       Row() {
-        Button('更改省略号位置：' + this.ellipsisModeStr[this.ellipsisModeIndex]).onClick((e: ClickEvent) => {
+        Button('更改省略号位置：' + this.ellipsisModeStr[this.ellipsisModeIndex]).onClick((event: ClickEvent) => {
           this.ellipsisModeIndex++;
           if (this.ellipsisModeIndex > (this.ellipsisModeStr.length - 1)) {
             this.ellipsisModeIndex = 0;
@@ -2432,7 +2445,7 @@ struct TextExample4 {
 }
 ```
 
-![](figures/textExp4.gif)
+![](figures/textExp5.gif)
 
 ### 示例5（设置文本选中和复制）
 
