@@ -110,6 +110,26 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
    <!-- @[pack_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
    
    ``` C++
+   // 获取编码能力范围。
+   Image_ErrorCode GetEncodeSupportedFormats()
+   {
+       Image_MimeType* mimeType = nullptr;
+       size_t length = 0;
+       Image_ErrorCode errCode = OH_ImagePackerNative_GetSupportedFormats(&mimeType, &length);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_ImagePackerNative_GetSupportedFormats failed,"
+                                 "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+       for (size_t count = 0; count < length; count++) {
+           if (mimeType[count].data != nullptr) {
+               g_encodeSupportedFormats.insert(std::string(mimeType[count].data));
+               OH_LOG_INFO(LOG_APP, "Encode supportedFormats: %{public}s", mimeType[count].data);
+           }
+       }
+       return IMAGE_SUCCESS;
+   }
+   
    Image_MimeType GetMimeTypeIfEncodable(const char *format)
    {
        auto it = g_encodeSupportedFormats.find(format);
@@ -121,7 +141,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
    
    Image_ErrorCode packToFileFromImageSourceTest(int fd, OH_ImageSourceNative* imageSource)
    {
-       //创建ImagePacker实例。
+       // 创建ImagePacker实例。
        OH_ImagePackerNative *testPacker = nullptr;
        Image_ErrorCode errCode = OH_ImagePackerNative_Create(&testPacker);
        if (errCode != IMAGE_SUCCESS) {
@@ -131,19 +151,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        }
        
        // 获取编码能力范围。
-       Image_MimeType* mimeType = nullptr;
-       size_t length = 0;
-       errCode = OH_ImagePackerNative_GetSupportedFormats(&mimeType, &length);
+       errCode = GetEncodeSupportedFormats();
        if (errCode != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "packToFileFromImageSourceTest OH_ImagePackerNative_GetSupportedFormats failed,"
-                                 "errCode: %{public}d.", errCode);
+           OH_ImagePackerNative_Release(testPacker);
            return errCode;
-       }
-       for (size_t count = 0; count < length; count++) {
-           OH_LOG_INFO(LOG_APP, "Encode supportedFormats:%{public}s", mimeType[count].data);
-           if (mimeType[count].data != nullptr) {
-               g_encodeSupportedFormats.insert(std::string(mimeType[count].data));
-           }
        }
        
        // 指定编码参数，将ImageSource直接编码进文件。
@@ -158,6 +169,15 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        OH_PackingOptions_SetMimeType(option, &image_MimeType);
        // 当设备支持HDR编码，资源本身为HDR图且图片资源的格式为jpeg时，编码产物才能为HDR内容。
        OH_PackingOptions_SetDesiredDynamicRange(option, IMAGE_PACKER_DYNAMIC_RANGE_AUTO);
+       // 设置编码质量，quality默认为0，建议quality的值不低于80
+       uint32_t quality = 90;
+       OH_PackingOptions_SetQuality(option, quality);
+       errCode = OH_ImagePackerNative_PackToFileFromImageSource(testPacker, option, imageSource, fd);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromImageSourceTest OH_ImagePackerNative_PackToFileFromImageSource failed,"
+                                 "errCode: %{public}d.", errCode);
+           return errCode;
+       }
    
        // 释放ImagePacker实例。
        errCode = OH_ImagePackerNative_Release(testPacker);
@@ -196,6 +216,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        char type[] = "image/jpeg";
        Image_MimeType image_MimeType = {type, strlen(type)};
        OH_PackingOptions_SetMimeType(option, &image_MimeType);
+       // 设置编码质量，quality默认为0，建议quality的值不低于80
+       uint32_t quality = 90;
+       OH_PackingOptions_SetQuality(option, quality);
        errCode = OH_ImagePackerNative_PackToFileFromPixelmap(testPacker, option, pixelmap, fd);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "packToFileFromPixelmapTest OH_ImagePackerNative_PackToFileFromPixelmap failed,"
