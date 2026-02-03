@@ -1,4 +1,4 @@
-# Introduction to Distributed Service Kit
+# About This Kit
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedHardware-->
 <!--Owner: @hwzhangchuang-->

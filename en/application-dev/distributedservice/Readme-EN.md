@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to Distributed Service Kit](distributedservice-kit-intro.md)
+- [About This Kit](distributedservice-kit-intro.md)
 - [Distributed Device Management Development](devicemanager-guidelines.md)
 - Distributed Ability Connection Management<!--abilityconnect-distributed-->
   - [Cross-Device UIAbility Connection Development](abilityconnectmanager-guidelines.md)
