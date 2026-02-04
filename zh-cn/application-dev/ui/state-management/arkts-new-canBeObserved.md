@@ -67,7 +67,7 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法
 
 被[@Observed](./arkts-observed-and-objectlink.md)装饰的对象和使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)包装的对象，如果在组件内没有状态管理V1装饰器装饰，调用canBeObserved接口返回结果如下：
 
-``` json
+``` json5
 {
     // 被@Observed装饰的对象和使用makeV1Observed方法包装的对象，是可被观察的对象
     "isObserved": true,
@@ -137,7 +137,7 @@ struct V1State {
 
 返回结果：
 
-``` json
+``` json5
 {
     // 对象是可被观察的
     "isObserved": true,
@@ -239,7 +239,7 @@ struct TrackChild {
 
 返回结果：
 
-``` json
+``` json5
 {
     // 对象可被观察
     "isObserved": true,
@@ -293,7 +293,7 @@ class TestClass {
   @Trace c?: string;
 }
 ```
-``` json
+``` json5
 // 返回结果分析
 {
     // 对象是可被观察的
@@ -394,7 +394,7 @@ struct V2Local {
 
 返回结果：
 
-``` json
+``` json5
 {
     // 对象是可被观察的
     "isObserved": true,
@@ -500,7 +500,7 @@ export struct V2Child {
 
 返回结果：
 
-``` json
+``` json5
 {
     // 对象是可被观察的
     "isObserved": true,
@@ -586,7 +586,7 @@ reduceVolume(balloon: Balloon) {
 
 两个方法调用canBeObserved接口返回结果一样（如下所示），表示两个方法接收的入参都是不可被观察对象，所以UI无法刷新。
 
-``` json
+``` json5
 {
     // 不可被观察
     "isObserved": false,
@@ -620,7 +620,7 @@ reduceVolume(balloon: Balloon) {
 
 两个方法调用canBeObserved接口返回结果一样（如下所示），表示两个方法接收的入参都是都是可被观察对象，且被UI组件所使用，UI可以正常刷新。
 
-``` json
+``` json5
 {
     "isObserved": true,
     "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
@@ -663,7 +663,7 @@ Button('move')
 
 返回结果：
 
-``` json
+``` json5
 // 反例的获取结果，对象关联5个组件
 {
     "isObserved": true,
@@ -718,7 +718,7 @@ Button('move')
 
 返回结果：
 
-``` json
+``` json5
 // 正例的获取结果，对象关联1个组件
 {
     "isObserved": true,
@@ -762,7 +762,7 @@ Text('Font Size List')
 
 返回结果如下，虽然`this.styleList[i]`（也就是`TextStyles`对象）被[@Observed](./arkts-observed-and-objectlink.md)装饰器装饰，是可被观察的，但没有被UI组件所使用，所以UI组件不刷新。
 
-``` json
+``` json5
 {
     // 对象是可被观察的
     "isObserved": true,
@@ -793,7 +793,7 @@ Text('Font Size List')
 
 返回结果如下，可知`this.styleList[i]`是可被观察对象，且有关联的UI组件，能正常刷新UI组件。
 
-``` json
+``` json5
 {
     "isObserved": true,
     "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
@@ -839,7 +839,7 @@ Button('X')
 
 在点击`Recover`按钮后，再次点击`X`按钮，数组元素不会删除，调用canBeObserved接口返回的结果发现，`Recover`之后的`this.childList`数组已经不是可被观察的了。
 
-``` json
+``` json5
 {
     "isObserved": false,
     "reason": "The object data is not an observable object",
@@ -872,7 +872,7 @@ Button('X')
 
 返回结果中关键信息如下，可知`this.childList`数组是可被观察的，且有关联的UI组件，能正常刷新UI组件。
 
-``` json
+``` json5
 {
     "isObserved": true,
     "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
