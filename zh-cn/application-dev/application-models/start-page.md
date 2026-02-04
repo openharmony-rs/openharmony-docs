@@ -172,8 +172,6 @@ struct PagePageAbilityFirst {
             };
             featureAbility.startAbility({ want: want }).then((data) => {
               hilog.info(domain, TAG, `startAbility finish:${data}`);
-            }).catch((err: BusinessError) => {
-              hilog.info(domain, TAG, `startAbility failed errcode:${err.code}`);
             })
           })
         }
