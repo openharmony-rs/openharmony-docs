@@ -20,11 +20,9 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-## selectionManager
+## selectionManager.on('selectionCompleted')
 
-### selectionManager.on('selectionCompleted')
-
-selectionManager.on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
+on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
 订阅划词完成事件。使用callback异步回调。
 
@@ -59,9 +57,9 @@ try {
 }
 ```
 
-### selectionManager.off('selectionCompleted')
+## selectionManager.off('selectionCompleted')
 
-selectionManager.off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
+off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
 取消订阅划词完成事件。使用callback异步回调。
 
@@ -91,9 +89,9 @@ try {
 }
 ```
 
-### selectionManager.getSelectionContent()
+## getSelectionContent()
 
-selectionManager.getSelectionContent(): Promise\<string>
+getSelectionContent(): Promise\<string>
 
 获取选中文本的内容。使用Promise异步回调。
 
@@ -131,7 +129,7 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
 });
 ```
 
-### selectionManager.createPanel
+## createPanel
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
@@ -151,7 +149,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 **返回值：**
 | 类型   | 说明                                                                 |
 | ------- | ------------------------------------------------------------------ |
-| Promise\<[Panel](#selectionmanagerpanel)> | Promise对象，返回当前创建的划词面板对象。  |
+| Promise\<[Panel](#panel)> | Promise对象，返回当前创建的划词面板对象。  |
 
 **错误码：**
 
@@ -204,9 +202,9 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-### selectionManager.destroyPanel
+## destroyPanel
 
-selectionManager.destroyPanel(panel: Panel): Promise\<void>
+destroyPanel(panel: Panel): Promise\<void>
 
 销毁划词面板。使用Promise异步回调。
 
@@ -216,7 +214,7 @@ selectionManager.destroyPanel(panel: Panel): Promise\<void>
 
 | 参数名   | 类型        | 必填 | 说明                     |
 | ---------| ----------- | ---- | ------------------------ |
-| panel    | [Panel](#selectionmanagerpanel)       | 是   | 要销毁的面板对象。      |
+| panel    | [Panel](#panel)       | 是   | 要销毁的面板对象。      |
 
 **返回值：**
 | 类型    | 说明                                                                 |
@@ -287,7 +285,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-### SelectionInfo
+## SelectionInfo
 
 划词事件信息。
 
@@ -308,9 +306,9 @@ export default ServiceExtAbility;
 | windowID      |number| 否   | 否   | 被划词应用的窗口ID。 |
 | bundleName    |string| 否   | 否   | 被划词应用的bundleName。 |
 
-## selectionManager.Panel
+## Panel
 
-下列API均需使用[createPanel](#selectionmanagercreatepanel)获取到Panel实例后，通过实例调用。
+下列API均需使用[createPanel](#createpanel)获取到Panel实例后，通过实例调用。
 
 ### setUiContent
 
@@ -681,7 +679,7 @@ try {
 }
 ```
 
-### SelectionType
+## SelectionType
 
 定义触发划词的类型枚举。
 
