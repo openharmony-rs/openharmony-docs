@@ -11,20 +11,19 @@
 
 Task execution timeout indicates that the execution duration of the monitored service code logic exceeds the expected duration. To better locate and analyze problems, use the [Task Execution Timeout Detection](apptask-timeout-guidelines.md#task-execution-timeout-detection) mechanism and analyze task execution timeout based on the [log specifications](apptask-timeout-guidelines.md#log-specifications).
 
-## Detection Principles
-
-For details, see [Task Execution Timeout Detection Principles](apptask-timeout-guidelines.md#task-execution-timeout-detection).
-
-## Available APIs
-
-You can subscribe to task execution timeout events **EVENT_APP_HICOLLIE** using the APIs provided by HiAppEvent. When the system detects that a task execution times out, it captures maintenance and debugging information and sends the timeout callback to the application process through HiAppEvent.
+This topic describes the task execution timeout detection principles, fields, and specifications. You can subscribe to task execution timeout events using the ArkTS and C/C++ APIs provided by **HiAppEvent**. For details, see the following documents:
 
 - [Subscribing to Task Execution Timeout Events (ArkTS)](hiappevent-watcher-apphicollie-events-arkts.md)
+
 - [Subscribing to Task Execution Timeout Events (C/C++)](hiappevent-watcher-apphicollie-events-ndk.md)
 
 > **NOTE**
 >
-> Task execution timeout events can be subscribed to via HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone), but not in atomic services. Since API version 22, task execution timeout events can be subscribed to using HiAppEvent in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+> Task execution timeout events can be subscribed to via **HiAppEvent** in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone), but not in atomic services. Since API version 22, task execution timeout events can be subscribed to using **HiAppEvent** in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
+## Detection Principles
+
+For details, see [Task Execution Timeout Detection Principles](apptask-timeout-guidelines.md#task-execution-timeout-detection).
 
 ## Event Fields
 
