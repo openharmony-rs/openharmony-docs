@@ -78,7 +78,7 @@ Sets whether to mute the player.
 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
-| isMuted | boolean | Yes  | Whether to mute the player.<br>The default value is **false**.<br>**true** to mute,<br>**false** otherwise.|
+| isMuted | boolean | Yes  | Whether to mute the player.<br>The default value is **false**.<br>**false**: no<br>**true**: yes|
 
 ### objectFit
 
