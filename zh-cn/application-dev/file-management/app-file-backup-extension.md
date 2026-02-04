@@ -63,9 +63,6 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
                        "resource": "$profile:backup_config"
                    }
                ],
-               // 在BackupExtension.ets文件里自定义继承BackupExtensionAbility，重写其中的onBackup/onBackupEx和
-               // onRestore/onRestoreEx方法，推荐使用onBackupEx/onRestoreEx。
-               // 如果没有特殊要求可以空实现，则备份恢复服务会按照统一的备份恢复数据规则进行备份恢复。
                "srcEntry": "./ets/BackupExtension/BackupExtension.ets"
            }      
        ]
@@ -228,7 +225,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
     - 如果配置了fullBackupOnly为false，数据会被直接解压到：**/data/storage/el2/base/files/A/** 目录下；
     - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
-2. **有关compatibleDirMapping字段的说明**  
+2. **有关compatibleDirMapping字段的说明**
      <!--RP2-->一般情况是备份端和恢复端的应用数据存在兼容性问题时使用，目前只有数据克隆工具备份和恢复是一起进行的，能识别到兼容性问题。系统开发者开发类似数据克隆的系统工具时需要能够识别到这种兼容性场景。<!--RP2END-->
     其内容的数组长度不能超过1000。
     
@@ -237,11 +234,10 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
     子项的backupDir和restoreDir配置内容不能包含\|\|\|\|字符串。
 
     **字段配置示例**：
-
+    
     "compatibleDirMapping": [
     {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
-    {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}
-]    
+    {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}]
 
     另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。
 
