@@ -12,6 +12,7 @@ Due to differences in sources, codec protocols, and device capabilities, the ava
 To ensure that codec behavior meets expectations, use the audio and video codec capability interface to query the codecs supported by the system and their capabilities, select codecs that align with your development requirements, and configure parameters correctly.
 
 ## General Development
+
 1. Link the dynamic libraries in the CMake script.
 
    ``` cmake
@@ -24,7 +25,6 @@ To ensure that codec behavior meets expectations, use the audio and video codec 
    > **NOTE**
    >
    > The word **sample** in the preceding code snippet is only an example. Use the actual project directory name.
-   >
 
 2. Add the header files.
 
@@ -56,6 +56,7 @@ To ensure that codec behavior meets expectations, use the audio and video codec 
 4. Call the query APIs as required. For details, see [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md).
 
 ## Scenario-based Development
+
 This section provides examples to illustrate the use of capability query interfaces in specific scenarios that may be encountered during development.
 
 ### Creating a Codec with the Specified Name
