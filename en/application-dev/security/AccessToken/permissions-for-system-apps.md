@@ -5397,15 +5397,15 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 Allows a system application to access media sharing resources within the camera framework directory.
 
-**Permission level**：system_basic
+**Permission level**: system_basic
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
-**Supported devices**：General
+**Supported devices**: General
 
-**Since**：23
+**Since**: 23
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 Allows an application that has accessed Cloud to manage cloud data.
@@ -5505,3 +5505,19 @@ Allows an application to add the WiseCard of other applications.
 **Supported devices**: general devices
 
 **Since**: 23
+
+## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
+
+Allows an application to acquire the local account authorization.
+
+With this permission, the application can call the API to acquire the local account authorization. Once authorized, the application can handle sensitive tasks like creating or removing local accounts, modifying the local account type, and adjusting time and time zone settings.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: PC/2in1
+
+**Since**: 24
