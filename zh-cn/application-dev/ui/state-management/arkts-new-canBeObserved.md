@@ -70,12 +70,12 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法
 ``` json
 {
     // 被@Observed装饰的对象和使用makeV1Observed方法包装的对象，是可被观察的对象
-	"isObserved": true,
+    "isObserved": true,
     // 如果在组件内没有状态管理V1装饰器装饰，reason会返回：没有被UI组件使用，也就不会刷新UI
     // V1组件刷新依赖的是状态管理V1装饰器
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed, but not used in UI",
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed, but not used in UI",
     // 收集不到状态管理装饰器
-	"decoratorInfo": []
+    "decoratorInfo": []
 }
 ```
 
@@ -140,30 +140,30 @@ struct V1State {
 ``` json
 {
     // 对象是可被观察的
-	"isObserved": true,
+    "isObserved": true,
     // V1组件中被状态管理装饰器装饰的对象是可被观察的
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
     // 收集对象的装饰器信息
-	"decoratorInfo": [{
+    "decoratorInfo": [{
         // 装饰器的名称
-		"decoratorName": "@State",
+        "decoratorName": "@State",
         // 装饰器装饰的属性名称
-		"stateVariableName": "stateUser",
+        "stateVariableName": "stateUser",
         // 装饰器所在的组件名称
-		"owningComponentOrClassName": "V1State",
+        "owningComponentOrClassName": "V1State",
         // 装饰器所在的组件id
-		"owningComponentId": 4,
+        "owningComponentId": 4,
         // 对象关联的组件信息
-		"dependentInfo": [{
+        "dependentInfo": [{
             // 组件名称
-			"elementName": "Text",
+            "elementName": "Text",
             // 组件id
-			"elementId": 6
-		}, {
-			"elementName": "Text",
-			"elementId": 7
-		}]
-	}]
+            "elementId": 6
+        }, {
+            "elementName": "Text",
+            "elementId": 7
+        }]
+    }]
 }
 ```
 
@@ -242,35 +242,35 @@ struct TrackChild {
 ``` json
 {
     // 对象可被观察
-	"isObserved": true,
+    "isObserved": true,
     // 使用@Observed装饰器装饰的对象是可被观察对象
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
     // 对象属性使用了@Track装饰器，装饰器信息收集规格与V2组件的收集规格一致
-	"decoratorInfo": [{
+    "decoratorInfo": [{
         // 对象属性使用了@Track装饰时，装饰器名称固定为@Track
-		"decoratorName": "@Track",
+        "decoratorName": "@Track",
         // 对象属性使用了@Track装饰时，stateVariableName表示被@Track装饰是的属性名称
-		"stateVariableName": "name",
+        "stateVariableName": "name",
         // 对象属性使用了@Track装饰时，owningComponentOrClassName表示类的名称
-		"owningComponentOrClassName": "TrackUser",
+        "owningComponentOrClassName": "TrackUser",
         // owningComponentOrClassName为类名称时，owningComponentId固定返回-1
-		"owningComponentId": -1,
+        "owningComponentId": -1,
         // 对象的name属性关联的组件信息
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 10
-		}]
-	}, {
-		"decoratorName": "@Track",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "TrackUser",
-		"owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 10
+        }]
+    }, {
+        "decoratorName": "@Track",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "TrackUser",
+        "owningComponentId": -1,
         // 对象的age属性关联的组件信息
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 11
-		}]
-	}]
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 11
+        }]
+    }]
 }
 ```
 
@@ -297,43 +297,43 @@ class TestClass {
 // 返回结果分析
 {
     // 对象是可被观察的
-	"isObserved": true,
-	"reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
+    "isObserved": true,
+    "reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
     // 装饰器信息是按照@Trace装饰的属性进行分类收集
-	"decoratorInfo": [{
-		"decoratorName": "@Trace",
+    "decoratorInfo": [{
+        "decoratorName": "@Trace",
         // 对象中@Trace属性的名称
-		"stateVariableName": "a",
+        "stateVariableName": "a",
         // 对象的类名称
-		"owningComponentOrClassName": "TestClass",
+        "owningComponentOrClassName": "TestClass",
         // owningComponentId固定返回-1
-		"owningComponentId": -1,
+        "owningComponentId": -1,
         // 同一个@Trace属性关联的组件信息集合在一起
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 5
-		}]
-	},{
-		"decoratorName": "@Trace",
-		"stateVariableName": "b",
-		"owningComponentOrClassName": "TestClass",
-		"owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 5
+        }]
+    },{
+        "decoratorName": "@Trace",
+        "stateVariableName": "b",
+        "owningComponentOrClassName": "TestClass",
+        "owningComponentId": -1,
         // 同一个@Trace属性关联的组件信息集合在一起
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 6
-		}]
-	},{
-		"decoratorName": "@Trace",
-		"stateVariableName": "c",
-		"owningComponentOrClassName": "TestClass",
-		"owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    },{
+        "decoratorName": "@Trace",
+        "stateVariableName": "c",
+        "owningComponentOrClassName": "TestClass",
+        "owningComponentId": -1,
         // 同一个@Trace属性关联的组件信息集合在一起
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 7
-		}]
-	}]
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 7
+        }]
+    }]
 }
 ```
 
@@ -397,35 +397,35 @@ struct V2Local {
 ``` json
 {
     // 对象是可被观察的
-	"isObserved": true,
+    "isObserved": true,
     // @ObservedV2装饰的对象是可被观察的
-	"reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
+    "reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
     // 对象上装饰器信息，按@Trace装饰的属性分类收集
-	"decoratorInfo": [{
+    "decoratorInfo": [{
         // 装饰器名称固定为@Trace
-		"decoratorName": "@Trace",
+        "decoratorName": "@Trace",
         // @Trace装饰的属性名称
-		"stateVariableName": "name",
+        "stateVariableName": "name",
         // 对象类名称
-		"owningComponentOrClassName": "LocalUser",
+        "owningComponentOrClassName": "LocalUser",
         // owningComponentId固定返回-1
-		"owningComponentId": -1,
+        "owningComponentId": -1,
         // 对象的name属性关联的组件信息
-		"dependentInfo": [{
-			"elementId": 6,
-			"elementName": "Text"
-		}]
-	}, {
-		"decoratorName": "@Trace",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "LocalUser",
-		"owningComponentId": -1,
+        "dependentInfo": [{
+            "elementId": 6,
+            "elementName": "Text"
+        }]
+    }, {
+        "decoratorName": "@Trace",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "LocalUser",
+        "owningComponentId": -1,
         // 对象的age属性关联的组件信息
-		"dependentInfo": [{
-			"elementId": 7,
-			"elementName": "Text"
-		}]
-	}]
+        "dependentInfo": [{
+            "elementId": 7,
+            "elementName": "Text"
+        }]
+    }]
 }
 ```
 
@@ -503,54 +503,54 @@ export struct V2Child {
 ``` json
 {
     // 对象是可被观察的
-	"isObserved": true,
+    "isObserved": true,
     // 通过enableV2Compatibility方法转换的对象也是可被观察的
-	"reason": "The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2",
+    "reason": "The V1 Observed object data is wrapped by enableV2Compatibility and used in @ComponentV2",
     // 装饰器信息，V1组件和V2组件分别收集
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "temp",
-		"owningComponentOrClassName": "V1AndV2Compatibility",
-		"owningComponentId": 4,
-		"dependentInfo": []
-	}, {
-		"decoratorName": "@State",
-		"stateVariableName": "compatibilityUser",
-		"owningComponentOrClassName": "V1AndV2Compatibility",
-		"owningComponentId": 4,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 6
-		}, {
-			"elementName": "Text",
-			"elementId": 7
-		}, {
-			"elementName": "V2Child",
-			"elementId": 8
-		}]
-	}, {
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "temp",
+        "owningComponentOrClassName": "V1AndV2Compatibility",
+        "owningComponentId": 4,
+        "dependentInfo": []
+    }, {
+        "decoratorName": "@State",
+        "stateVariableName": "compatibilityUser",
+        "owningComponentOrClassName": "V1AndV2Compatibility",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }, {
+            "elementName": "Text",
+            "elementId": 7
+        }, {
+            "elementName": "V2Child",
+            "elementId": 8
+        }]
+    }, {
         // V2组件的decoratorName名称固定EnableV2Compatible
-		"decoratorName": "EnableV2Compatible",
+        "decoratorName": "EnableV2Compatible",
         // V2组件按对象属性分类收集
-		"stateVariableName": "name",
-		"owningComponentOrClassName": "CompatibilityUser",
-		"owningComponentId": -1,
+        "stateVariableName": "name",
+        "owningComponentOrClassName": "CompatibilityUser",
+        "owningComponentId": -1,
         // 对象name属性在V2组件中关联的组件信息
-		"dependentInfo": [{
-			"elementId": 12,
-			"elementName": "Text"
-		}]
-	}, {
-		"decoratorName": "EnableV2Compatible",
-		"stateVariableName": "age",
-		"owningComponentOrClassName": "CompatibilityUser",
-		"owningComponentId": -1,
+        "dependentInfo": [{
+            "elementId": 12,
+            "elementName": "Text"
+        }]
+    }, {
+        "decoratorName": "EnableV2Compatible",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "CompatibilityUser",
+        "owningComponentId": -1,
         // 对象age属性在V2组件中关联的组件信息
-		"dependentInfo": [{
-			"elementId": 13,
-			"elementName": "Text"
-		}]
-	}]
+        "dependentInfo": [{
+            "elementId": 13,
+            "elementName": "Text"
+        }]
+    }]
 }
 ```
 
@@ -589,11 +589,11 @@ reduceVolume(balloon: Balloon) {
 ``` json
 {
     // 不可被观察
-	"isObserved": false,
+    "isObserved": false,
     // 原因：不是可被观察对象
-	"reason": "The object data is not an observable object",
+    "reason": "The object data is not an observable object",
     // 装饰器信息为空
-	"decoratorInfo": []
+    "decoratorInfo": []
 }
 ```
 
@@ -622,18 +622,18 @@ reduceVolume(balloon: Balloon) {
 
 ``` json
 {
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "balloon",
-		"owningComponentOrClassName": "Index",
-		"owningComponentId": 4,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 6
-		}]
-	}]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "balloon",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }]
 }
 ```
 
@@ -666,36 +666,36 @@ Button('move')
 ``` json
 // 反例的获取结果，对象关联5个组件
 {
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "translateObj",
-		"owningComponentOrClassName": "Page",
-		"owningComponentId": 4,
-		"dependentInfo": [{
-			"elementName": "Title",
-			"elementId": 6
-		}, {
-			"elementName": "Stack",
-			"elementId": 7
-		}, {
-			"elementName": "Button",
-			"elementId": 8
-		}]
-	}, {
-		"decoratorName": "@ObjectLink",
-		"stateVariableName": "translateObj",
-		"owningComponentOrClassName": "Title",
-		"owningComponentId": 6,
-		"dependentInfo": [{
-			"elementName": "Image",
-			"elementId": 11
-		}, {
-			"elementName": "Text",
-			"elementId": 12
-		}]
-	}]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "translateObj",
+        "owningComponentOrClassName": "Page",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Title",
+            "elementId": 6
+        }, {
+            "elementName": "Stack",
+            "elementId": 7
+        }, {
+            "elementName": "Button",
+            "elementId": 8
+        }]
+    }, {
+        "decoratorName": "@ObjectLink",
+        "stateVariableName": "translateObj",
+        "owningComponentOrClassName": "Title",
+        "owningComponentId": 6,
+        "dependentInfo": [{
+            "elementName": "Image",
+            "elementId": 11
+        }, {
+            "elementName": "Text",
+            "elementId": 12
+        }]
+    }]
 }
 ```
 
@@ -721,18 +721,18 @@ Button('move')
 ``` json
 // 正例的获取结果，对象关联1个组件
 {
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@State",
-		"stateVariableName": "translateObj",
-		"owningComponentOrClassName": "Page1",
-		"owningComponentId": 4,
-		"dependentInfo": [{
-			"elementName": "Column",
-			"elementId": 5
-		}]
-	}]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "translateObj",
+        "owningComponentOrClassName": "Page1",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Column",
+            "elementId": 5
+        }]
+    }]
 }
 ```
 
@@ -765,11 +765,11 @@ Text('Font Size List')
 ``` json
 {
     // 对象是可被观察的
-	"isObserved": true,
+    "isObserved": true,
     // @Observed装饰的对象是可被观察的
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed, but not used in UI",
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed, but not used in UI",
     // 收集的装饰器信息为空
-	"decoratorInfo": []
+    "decoratorInfo": []
 }
 ```
 
@@ -795,18 +795,18 @@ Text('Font Size List')
 
 ``` json
 {
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@ObjectLink",
-		"stateVariableName": "textStyle",
-		"owningComponentOrClassName": "TextComponent",
-		"owningComponentId": 147,
-		"dependentInfo": [{
-			"elementName": "Text",
-			"elementId": 148
-		}]
-	}]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@ObjectLink",
+        "stateVariableName": "textStyle",
+        "owningComponentOrClassName": "TextComponent",
+        "owningComponentId": 147,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 148
+        }]
+    }]
 }
 ```
 
@@ -841,9 +841,9 @@ Button('X')
 
 ``` json
 {
-	"isObserved": false,
-	"reason": "The object data is not an observable object",
-	"decoratorInfo": []
+    "isObserved": false,
+    "reason": "The object data is not an observable object",
+    "decoratorInfo": []
 }
 ```
 
@@ -874,18 +874,18 @@ Button('X')
 
 ``` json
 {
-	"isObserved": true,
-	"reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-	"decoratorInfo": [{
-		"decoratorName": "@ObjectLink",
-		"stateVariableName": "childList",
-		"owningComponentOrClassName": "CompList",
-		"owningComponentId": 8,
-		"dependentInfo": [{
-			"elementName": "ForEach",
-			"elementId": 16
-		}]
-	}, 
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@ObjectLink",
+        "stateVariableName": "childList",
+        "owningComponentOrClassName": "CompList",
+        "owningComponentId": 8,
+        "dependentInfo": [{
+            "elementName": "ForEach",
+            "elementId": 16
+        }]
+    }, 
     ...
     // 以下结果省略
   ]
