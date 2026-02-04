@@ -11,7 +11,7 @@ Page routing refers to the redirection and data transfer between different pages
 
 >**NOTE**
 >
->You are advised to use [Component Navigation (Navigation)](./arkts-navigation-navigation.md), which offers enhanced functionality and customization capabilities, as the routing framework in your application. For details about the differences between **Navigation** and **Router**, see [Transition from Router to Navigation](./arkts-router-to-navigation.md).
+>You are advised to use [component navigation](./arkts-navigation-navigation.md), which offers enhanced functionality and customization capabilities, as the routing framework in your application. For details about the differences between **Navigation** and **Router**, see [Transition from Router to Navigation](./arkts-router-to-navigation.md).
 
 ## Page Redirection
 

@@ -6,15 +6,15 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The ArkUI framework provides a set of drag event APIs to help you implement drag-and-drop functionality.These events include [NODE_ON_PRE_DRAG](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_START](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_ENTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_MOVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_LEAVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), and [NODE_ON_DRAG_END](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype). These events are triggered at different stages of the drag operation, allowing you to perform specific actions and manage the drag interaction as needed.
+The ArkUI framework provides a set of drag event APIs to help you implement drag-and-drop functionality. These events include [NODE_ON_PRE_DRAG](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_START](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DROP](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_ENTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_MOVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), [NODE_ON_DRAG_LEAVE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype), and [NODE_ON_DRAG_END](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype). These events are triggered at different stages of the drag operation, allowing you to perform specific actions and manage the drag interaction as needed.
 
 ## Basic Drag Implementation
 
-In ArkUI, you can implement the drag-and-drop functionality using C and C++ by calling C APIs. The following provides step-by-step instructions using the **Image** component as an example, along with key points to keep in mind during development.
+In ArkUI, you can implement the drag-and-drop functionality using C and C++ by calling C APIs. The following provides step-by-step instructions using the **Image** component as an example, along with key points to keep in mind during development. For the complete example, see <!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->.
 
 1. Set a component draggable.
 
-   Obtain the [Node-API](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface), which you will need for node operations, such as creating a node.
+   Initialize **nodeAPI** using the [OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) API. Node operations, such as creating a node, must be performed through **nodeAPI**.
 
    <!-- @[get_nodeAPI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/manager.cpp) -->
    
@@ -239,7 +239,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
 
 4. Handle the **NODE_ON_DRAG_START** event.
 
-   In the **NODE_ON_DRAG_START** event, perform operations required to initiate the drag operation, typically involving data processing. For example, create an **OH_UdmfRecord** object, add the **imageUri** data required to the [OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md) as the fileUri type, set the **OH_UdmfRecord** to the [OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md) object, and set the **OH_UdmfData** to the [DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md).
+   In the **NODE_ON_DRAG_START** event, perform operations required to initiate the drag operation, typically involving data processing. For example, create an [OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md), add the data **imageValue** required for dragging an image to **OH_UdmfRecord** as the [OH_UdsFileUri](../reference/apis-arkdata/capi-udmf-oh-udsfileuri.md) type, then set **OH_UdmfRecord** to [OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md), and finally set **OH_UdmfData** to [DragEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-dragevent.md).
 
    <!-- @[drag_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
@@ -338,7 +338,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
 
 ## Initiating a Drag Operation
 
-In addition to the basic drag-and-drop functionality, ArkUI allows you to initiate a drag operation using C APIs. The following example demonstrates how to use C APIs to start a drag operation with text data and highlights key points to keep in mind during development.
+In addition to the basic drag-and-drop functionality, ArkUI allows you to initiate a drag operation using C APIs. The following example demonstrates how to use C APIs to start a drag operation with text data and highlights key points to keep in mind during development. For the complete example, see <!--RP1-->[NativeDragDrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop)<!--RP1End-->.
 
 1. Register node events.
 
