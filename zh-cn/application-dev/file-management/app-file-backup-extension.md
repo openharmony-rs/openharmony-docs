@@ -226,7 +226,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
     - 如果配置了fullBackupOnly为true，数据则会被解压到：**临时路径backupDir + /restore/data/storage/el2/base/files/A/** 目录下。
 
 2. **有关compatibleDirMapping字段的说明**
-     <!--RP2-->一般情况是备份端和恢复端的应用数据存在兼容性问题时使用，目前只有数据克隆工具备份和恢复是一起进行的，能识别到兼容性问题。系统开发者开发类似数据克隆的系统工具时需要能够识别到这种兼容性场景。<!--RP2END-->
+     <!--RP2-->该字段是备份端和恢复端的应用数据存在兼容性问题时使用，目前只有数据克隆工具备份和恢复是一起进行的，能识别到兼容性问题，所以目前只有使用数据克隆工具时该字段才生效。系统开发者开发类似数据克隆的系统工具时需要能够识别到这种兼容性场景。<!--RP2END-->
     其内容的数组长度不能超过1000。
 
     子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符。
@@ -241,7 +241,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
     另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。
 
-    路径列表内容需要与backup_config中compatibleDirMapping字段配置的restoreDir内容一致，不用全部包含，可以为其子集，也可以返回空表示不开启路径映射。一般是根据onBackupEx的入参来识别是否存在兼容性问题，如果有兼容性问题返回对应列表，如果没有返回空列表。
+    路径列表内容需要与backup_config中compatibleDirMapping字段配置的restoreDir内容一致，不用全部包含，可以为其子集，也可以返回空表示不开启路径映射。接入的三方应用要根据onBackupEx的入参来识别是否存在兼容性问题，如果有兼容性问题返回对应列表，如果没有则返回空列表。
 
     **onBackupEx返回值示例**：  
     {"compatibleDirMapping" ： ["/data/storage/el2/base/files/restore/nulldir", "/data/storage/el2/base/files/restore/zerofile"] }  
