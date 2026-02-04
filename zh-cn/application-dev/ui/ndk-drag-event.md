@@ -249,14 +249,14 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        int returnValue;
        OH_UdmfRecord *record = OH_UdmfRecord_Create();
        OH_UdsFileUri *imageValue = OH_UdsFileUri_Create();
-       // 图片src/main/ets/resources/seagull.png需要替换为开发者所需的资源文件
-       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/seagull.png");
+       // 图片src/main/resources/base/media/seagull.png需要替换为开发者所需的资源文件
+       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/base/media/seagull.png");
        returnValue = OH_UdmfRecord_AddFileUri(record, imageValue);
        OH_UdmfData *data = OH_UdmfData_Create();
        returnValue = OH_UdmfData_AddRecord(data, record);
        returnValue = OH_ArkUI_DragEvent_SetData(dragEvent, data);
    }
-   // ···
+   // ...
                case NODE_ON_DRAG_START: {
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_START EventReceiver");
                    SetImageData(dragEvent);
