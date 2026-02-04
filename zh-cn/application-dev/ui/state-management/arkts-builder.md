@@ -1606,7 +1606,7 @@ struct ReusableChildTwoPage {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, Reusable } from '@kit.ArkUI';
+import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, Reusable, ReuseObject } from '@kit.ArkUI';
 
 // 引用传递类型是interface才能触发UI刷新。
 interface Tmp {
@@ -1654,6 +1654,11 @@ struct ReusablePage {
 struct ReusableChildPage {
   @State message: string = 'Child';
 
+  aboutToReuse(params: ReuseObject): void {
+    console.info('Recycle ====Child');
+    this.message = params['message'] as string;
+  }
+
   build() {
     Column() {
       Text(`ReusableChildPage ===${this.message}`)
@@ -1673,6 +1678,11 @@ struct ReusableChildPage {
 @Component
 struct ReusableChildTwoPage {
   @State message: string = 'ChildTwo';
+
+  aboutToReuse(params: ReuseObject): void {
+    console.info('Recycle ====ChildTwo');
+    this.message = params['message'] as string;
+  }
 
   build() {
     Column() {
