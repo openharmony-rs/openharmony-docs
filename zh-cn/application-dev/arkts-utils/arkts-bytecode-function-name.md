@@ -89,7 +89,7 @@ function foo() {}; // 原函数名为"foo"
    <!-- @[special_function_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-   let a = () => {} // 原函数名为"a"。
+   let a = () => {} // 原函数名为"a"
    ```
 
 2. 如果匿名函数在对象字面量中定义并且被赋值给了一个字面量属性：
