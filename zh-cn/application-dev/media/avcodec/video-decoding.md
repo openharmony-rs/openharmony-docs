@@ -39,15 +39,15 @@
 
 1. 两者数据的输出方式不同。
 2. 两者的适用场景不同：
-    - surface输出是指用OHNativeWindow来传递输出数据，可以与其他模块对接，例如XComponent。
-    - buffer输出是指经过解码的数据会以共享内存的方式输出。
+   - surface输出是指用OHNativeWindow来传递输出数据，可以与其他模块对接，例如XComponent。
+   - buffer输出是指经过解码的数据会以共享内存的方式输出。
 
 3. 在接口调用的过程中，两种方式的接口调用方式基本一致，但存在以下差异点：
-    - 在Surface模式下，可选择调用OH_VideoDecoder_FreeOutputBuffer接口丢弃输出帧（不送显）；在Buffer模式下，应用必须调用OH_VideoDecoder_FreeOutputBuffer接口释放数据。
-    - Surface模式下，应用在解码器就绪前，必须调用[OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface)接口设置OHNativeWindow。启动后，调用[OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer)接口显示并释放解码帧，或调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口在指定时间点显示并释放解码帧。如需实现音画同步或者控制显示速度，建议优先调用OH_VideoDecoder_RenderOutputBufferAtTime接口送显。
-    - 输出回调传出的buffer，在Buffer模式下，可以获取共享内存的地址和数据信息；在Surface模式下，只能获取buffer的数据信息。
+   - 在Surface模式下，可选择调用OH_VideoDecoder_FreeOutputBuffer接口丢弃输出帧（不送显）；在Buffer模式下，应用必须调用OH_VideoDecoder_FreeOutputBuffer接口释放数据。
+   - Surface模式下，应用在解码器就绪前，必须调用[OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface)接口设置OHNativeWindow。启动后，调用[OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer)接口显示并释放解码帧，或调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口在指定时间点显示并释放解码帧。如需实现音画同步或者控制显示速度，建议优先调用OH_VideoDecoder_RenderOutputBufferAtTime接口送显。
+   - 输出回调传出的buffer，在Buffer模式下，可以获取共享内存的地址和数据信息；在Surface模式下，只能获取buffer的数据信息。
 
-4. Surface模式采用显存压缩技术对buffer进行处理，其数据流转性能优于Buffer模式。
+4. Surface模式读写数据时，支持数据压缩技术的硬件模块会自动对数据进行压缩和解压缩，可以有效降低内存的访问带宽，其性能优于Buffer模式。
 
 两种模式的开发步骤详细说明请参考：[Surface模式](#surface模式)和[Buffer模式](#buffer模式)。
 
