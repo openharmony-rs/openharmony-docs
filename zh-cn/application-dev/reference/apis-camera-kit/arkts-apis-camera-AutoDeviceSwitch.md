@@ -6,9 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-AutoDeviceSwitch 继承自 [AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md)。
-
-自动切换镜头类，继承自[AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md)，用于使能或去使能自动切换镜头。
+自动切换镜头类，继承自[AutoDeviceSwitchQuery](arkts-apis-camera-AutoDeviceSwitchQuery.md)，用于使能或去使能自动切换镜头。自动切换镜头能力仅支持折叠屏设备使用，详细开发指导请参考[自动切换摄像头实践](../../media/camera/camera-auto-switch.md)。
 
 自动切换镜头能力仅支持折叠屏设备使用，详细开发指导请参考[自动切换摄像头实践](../../media/camera/camera-auto-switch.md)。
 

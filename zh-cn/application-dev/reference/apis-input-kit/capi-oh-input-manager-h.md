@@ -2598,7 +2598,7 @@ Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback)
 
 **描述**
 
-添加按键事件监听。
+添加按键事件监听。重复添加只有第一次生效，后续添加请求将被忽略。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2629,7 +2629,7 @@ Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback)
 
 **描述**
 
-添加鼠标事件监听,包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
+添加鼠标事件监听，包含鼠标点击，移动，不包含滚轮事件，滚轮事件归属于轴事件。
 
 该接口处于录屏场景时才允许调用，否则调用该接口不生效。
 
@@ -2912,7 +2912,7 @@ Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, In
 
 **描述**
 
-添加按键事件的拦截，重复添加只有第一次生效。仅在应用获焦时拦截按键事件。
+添加按键事件的拦截，重复添加只有第一次生效，后续添加请求返回错误码[INPUT_REPEAT_INTERCEPTOR](#input_result)。仅在应用获焦时拦截按键事件。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -2944,7 +2944,7 @@ Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *c
 
 **描述**
 
-添加输入事件拦截，包括鼠标、触屏和轴事件，重复添加只有第一次生效。仅命中应用窗口时拦截输入事件。
+添加输入事件拦截，包括鼠标、触屏和轴事件。重复添加只有第一次生效，后续添加请求返回错误码[INPUT_REPEAT_INTERCEPTOR](#input_result)。仅命中应用窗口时拦截输入事件。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
