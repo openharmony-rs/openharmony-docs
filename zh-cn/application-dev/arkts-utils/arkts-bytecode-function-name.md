@@ -77,9 +77,9 @@ namespace A {
 <!-- @[original_function_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-function foo() {}; // 原函数名为"foo"。
-() => { }; // 原函数名为""。
-() => { }; // 原函数名为"^1"。
+function foo() {}; // 原函数名为"foo"
+() => { }; // 原函数名为""
+() => { }; // 原函数名为"^1"
 ```
 
  
