@@ -228,13 +228,13 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 2. **有关compatibleDirMapping字段的说明**
      <!--RP2-->一般情况是备份端和恢复端的应用数据存在兼容性问题时使用，目前只有数据克隆工具备份和恢复是一起进行的，能识别到兼容性问题。系统开发者开发类似数据克隆的系统工具时需要能够识别到这种兼容性场景。<!--RP2END-->
     其内容的数组长度不能超过1000。
-    
+
     子项的restoreDir配置内容必须包含在includes的配置中，否则不生效，且该字段不支持通配符。
-    
+
     子项的backupDir和restoreDir配置内容不能包含\|\|\|\|字符串。
 
     **字段配置示例**：
-    
+
     "compatibleDirMapping": [
     {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
     {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}]
