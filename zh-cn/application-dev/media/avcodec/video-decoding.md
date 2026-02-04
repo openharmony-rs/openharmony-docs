@@ -9,7 +9,7 @@
 
 开发者可以调用本模块的Native API接口，完成视频解码，即将媒体数据解码成YUV文件或送显。
 
-<!--RP3--><!--RP3End-->
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
 当前支持的解码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#视频解码)。
 
@@ -47,7 +47,7 @@
     - Surface模式下，应用在解码器就绪前，必须调用[OH_VideoDecoder_SetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setsurface)接口设置OHNativeWindow。启动后，调用[OH_VideoDecoder_RenderOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbuffer)接口显示并释放解码帧，或调用[OH_VideoDecoder_RenderOutputBufferAtTime](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_renderoutputbufferattime)接口在指定时间点显示并释放解码帧。如需实现音画同步或者控制显示速度，建议优先调用OH_VideoDecoder_RenderOutputBufferAtTime接口送显。
     - 输出回调传出的buffer，在Buffer模式下，可以获取共享内存的地址和数据信息；在Surface模式下，只能获取buffer的数据信息。
 
-4. Surface模式的数据流转性能优于Buffer模式。
+4. Surface模式采用显存压缩技术对buffer进行处理，其数据流转性能优于Buffer模式。
 
 两种模式的开发步骤详细说明请参考：[Surface模式](#surface模式)和[Buffer模式](#buffer模式)。
 

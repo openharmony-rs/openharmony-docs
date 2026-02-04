@@ -9,7 +9,7 @@
 
 开发者可以调用本模块的Native API接口，完成视频编码，即将未压缩的视频数据压缩成视频码流。
 
-<!--RP3--><!--RP3End-->
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
 当前支持的编码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 

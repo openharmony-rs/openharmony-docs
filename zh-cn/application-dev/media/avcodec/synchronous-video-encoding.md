@@ -11,6 +11,8 @@
 
 开发者可以调用本模块的Native API接口，完成同步模式的视频编码。
 
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
+
 当前支持的编码能力，请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 
 视频编码的限制约束、支持的能力、状态机调用关系请参考[视频编码](video-encoding.md)。
