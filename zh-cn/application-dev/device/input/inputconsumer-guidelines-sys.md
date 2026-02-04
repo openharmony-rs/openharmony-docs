@@ -21,7 +21,7 @@ import { inputConsumer } from '@kit.InputKit';
 
 ## 接口说明
 
-全局快捷键管理常用接口如下表所示，接口详细介绍请参考[ohos.multimodalInput.inputConsumer-sys文档](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md)和[ohos.multimodalInput.inputConsumer文档](../../reference/apis-input-kit/js-apis-inputconsumer.md)。
+特定全局快捷键的应用开启时调用[on](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeron)方法订阅全局快捷键，应用关闭时调用[off](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeroff)方法取消订阅全局快捷键。
 
 | 接口名称  | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
