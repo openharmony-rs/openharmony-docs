@@ -597,8 +597,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     }
     ```
 
-12. 调用OH_VideoDecoder_RenderOutputBuffer()/OH_VideoDecoder_RenderOutputBufferAtTime()显示并释放解码帧，
-    或调用OH_VideoDecoder_FreeOutputBuffer()释放解码帧。
+12. 调用OH_VideoDecoder_RenderOutputBuffer()/OH_VideoDecoder_RenderOutputBufferAtTime()显示并释放解码帧，或调用OH_VideoDecoder_FreeOutputBuffer()释放解码帧。
 
     以下示例中，bufferInfo的成员变量：
     - index：回调函数OnNewOutputBuffer传入的参数，与buffer唯一对应的标识；
@@ -1208,7 +1207,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
     // Y 将Y区域的源数据复制到另一个区域的目标数据中。
     for (int32_t i = 0; i < rect.height; ++i) {
-        //将源数据的一行数据复制到目标数据的一行中。
+        // 将源数据的一行数据复制到目标数据的一行中。
         memcpy(dstTemp, srcTemp, rect.width);
         // 更新源数据和目标数据的指针，进行下一行的复制。每更新一次源数据和目标数据的指针都向下移动一个wStride。
         dstTemp += dstRect.wStride;

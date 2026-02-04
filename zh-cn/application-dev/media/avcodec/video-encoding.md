@@ -387,7 +387,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_MATRIX_COEFFICIENTS, matrix);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_I_FRAME_INTERVAL, iFrameInterval);
     OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PROFILE, profile);
-    //只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
+    // 只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
     if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CQ)) {
         OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_QUALITY, quality);
     } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_SQR)) {
@@ -952,7 +952,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     // Y 将Y区域的源数据复制到另一个区域的目标数据中。
     for (int32_t i = 0; i < rect.height; ++i) {
-        //将源数据的一行数据复制到目标数据的一行中。
+        // 将源数据的一行数据复制到目标数据的一行中。
         memcpy(dstTemp, srcTemp, rect.width);
         // 更新源数据和目标数据的指针，进行下一行的复制。每更新一次源数据和目标数据的指针都向下移动一个wStride。
         dstTemp += dstRect.wStride;
