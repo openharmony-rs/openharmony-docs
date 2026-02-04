@@ -5616,11 +5616,11 @@ export default class EntryAbility extends UIAbility {
 
 ### setImageForRecent<sup>19+</sup>
 
-ArkTS-Dyn: setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
-
-ArkTS-Sta: setImageForRecent(imgResourceId: long, value: ImageFit): Promise&lt;void&gt;
+setImageForRecent(imgResourceId: number, value: ImageFit): Promise&lt;void&gt;
 
 设置应用在多任务中显示的图片，使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5630,13 +5630,11 @@ ArkTS-Sta: setImageForRecent(imgResourceId: long, value: ImageFit): Promise&lt;v
 
 **ArkTS-Dyn起始版本：** 19
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ----------- | ------- | ---- | ------------------------------------------------------------ |
-| imgResourceId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 应用自定义图片的资源id，图片资源需放在resources/base/media目录下，通过`$r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`$r("app.media.startIcon").id`。|
+| imgResourceId | number | 是   | 应用自定义图片的资源id，图片资源需放在resources/base/media目录下，通过`$r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`$r("app.media.startIcon").id`。|
 | value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | 是 | 应用自定义图片的填充方式。 |
 
 **返回值：**
@@ -5658,8 +5656,6 @@ ArkTS-Sta: setImageForRecent(imgResourceId: long, value: ImageFit): Promise&lt;v
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. 3. Incorrect parameter format. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -5685,33 +5681,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window, $r, ImageFit } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let imgResourceId = $r("app.media.startIcon").id
-    try {
-      let promise = windowStage.setImageForRecent(imgResourceId, ImageFit.Fill);
-      promise.then(() => {
-        console.info(`Succeeded in setting image for recent`);
-      }).catch((err: Error) => {
-        console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (exception) {
-      let err = exception as BusinessError;
-      console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
-    }
-  }
-};
-```
-
 ### setImageForRecent<sup>22+</sup>
 
 ArkTS-Dyn: setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
@@ -5732,7 +5701,7 @@ ArkTS-Sta: setImageForRecent(imageResource: long | image.PixelMap, value: ImageF
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
