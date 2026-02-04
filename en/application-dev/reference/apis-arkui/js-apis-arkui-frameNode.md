@@ -276,6 +276,8 @@ Deletes the specified child node from this FrameNode. If this FrameNode is not m
 
 **Error codes**
 
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
@@ -295,6 +297,8 @@ Clears all child nodes of this FrameNode. If this FrameNode is not modifiable, a
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -2192,7 +2196,7 @@ Creates a property animation for the FrameNode.
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
+| boolean | Whether the animation is created successfully.<br>Returns **true** if the animation is created successfully. If an end callback is specified in the animation parameters, it will be invoked upon animation completion.<br>Returns **false** if the animation creation fails. The end callback will not be invoked even if specified.<br>Possible failure reasons:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>&nbsp;2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>&nbsp;3. There is an invalid property enumeration or length mismatch between the property type and **startValue** or **endValue** arrays.<br>&nbsp;4. No start value is available (**startValue** is **undefined** for the first animation of a property) or the start and end values are identical.|
 
 **Example**
 
@@ -2218,7 +2222,7 @@ Cancels all animations for specified properties on the FrameNode. This API execu
 
 | Type              | Description              |
 | ------------------ | ------------------ |
-| boolean | Animation cancellation status.<br>**true**: successful.<br>**false**: failed.<br>The possible causes are as follows:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>3. The property array contains invalid enumerated values.<br>4. System error. Example: system IPC communication error.<br>Additional notes:<br> 1. This API returns **true** for properties without active animations, if there are no system errors.<br>2. Valid parameters with normal node returning **false** indicate a system exception. In this case, you can retry cancellation later or use [createAnimation](#createanimation20) with a zero duration as an alternative.|
+| boolean | Animation cancellation status.<br>**true**: successful.<br>**false**: failed.<br>The possible causes are as follows:<br>Additional notes:<br> 1. The node has been released (the [dispose](#dispose12) API has been called).<br>&nbsp;2. The node is a built-in component proxy (where [isModifiable](#ismodifiable12) returns **false**).<br>&nbsp;3. The property array contains invalid enumerated values.<br>&nbsp;4. System error. Example: system IPC communication error.<br>Additional notes:<br> 1. This API returns **true** for properties without active animations, if there are no system errors.<br>&nbsp;2. Valid parameters with normal node returning **false** indicate a system exception. In this case, you can retry cancellation later or use [createAnimation](#createanimation20) with a zero duration as an alternative.|
 
 **Example**
 
@@ -2626,6 +2630,14 @@ Queries whether a node is mounted to the main node tree.
 | Type                                                          | Description                                                                 |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
 | boolean | Whether the node is mounted to the main node tree.<br>The value **true** means that the node is mounted to the main node tree, and **false** means the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 100026   | The current FrameNode has been disposed. |
 
 **Example**
 
@@ -3237,7 +3249,7 @@ Extends [FrameNode](#framenode-1) to define a FrameNode with specific type const
 
 > **NOTE**
 >
-> The [commonAttribute](#commonattribute12) API is only effective on **CustomFrameNode**. For **TypedFrameNode**, the behavior of** commonAttribute** is undefined. For setting universal attributes, it is recommended that you use the [attribute](#properties) API, such as **node.attribute.backgroundColor(Color.Pink)**, rather than [commonAttribute](#commonattribute12).
+> The [commonAttribute](#commonattribute12) API is only effective on **CustomFrameNode**. For **TypedFrameNode**, the behavior of **commonAttribute** is undefined. For setting universal attributes, it is recommended that you use the [attribute](#properties) API, such as **node.attribute.backgroundColor(Color.Pink)**, rather than [commonAttribute](#commonattribute12).
 
 ## typeNode<sup>12+</sup>
 
@@ -4612,6 +4624,8 @@ Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#
 | nodeType | 'Scroll' | Yes| Node type, which is **Scroll** in this API.|
 
 **Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
