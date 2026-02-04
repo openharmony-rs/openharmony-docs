@@ -415,8 +415,6 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
-
 import {
   Entry,
   Text,
@@ -443,7 +441,7 @@ import Context from 'application.Context'
 @Component
 struct Index {
   handleSaveButtonClick: SaveButtonCallback =
-    (event: ClickEvent, result: SaveButtonOnClickResult, error?: BusinessError<void>) => {
+    async (event: ClickEvent, result: SaveButtonOnClickResult, error?: BusinessError<void>): void => {
       if (result === SaveButtonOnClickResult.SUCCESS) {
         try {
           const context = this.getUIContext().getHostContext() as Context;
