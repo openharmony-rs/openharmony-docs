@@ -46,13 +46,13 @@
  
 源代码中定义作用域时所使用的名称。匿名则为空字符串。为了降低字节码体积，方舟编译器会对较长的作用域名称进行优化，此时作用域名称以`@十六进制数字`的形式体现。这个数字代表作用域名称的字符串在一个字符串数组中的索引：在字节码文件中源代码对应的[Class](arkts-bytecode-file-format.md#class)中有一个名为`scopeNames`的[field](arkts-bytecode-file-format.md#field), 这个field的值是指向一个[LiteralArray](arkts-bytecode-file-format.md#literalarray)的偏移，这个LiteralArray存储的是一个字符串数组。十六进制数字就是代表作用域名称在这个数组中的索引。原函数名不会转换为索引。
 例子：
-<!-- @[scope_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test1.ts) -->    
+<!-- @[scope_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ScopeName.ts) -->    
 
 ``` TypeScript
-// test1.ts
-function longFuncName() { // longFuncName的函数名为"#*#longFuncName"，其中"longFuncName"是原函数名，不会转换为索引。
-  function A() { } // A的函数名"#*@0*#A"，其中"@0"表示在其对应LiteralArray中，索引为0的字符串，此时这个字符串是"longFuncName"。即这个函数原本的名称为"#*longFuncName*#A"。
-  function B() { } // B的函数名"#*@0*#B"。
+// ScopeName.ts
+function longFuncName() { // longFuncName的函数名为"#*#longFuncName"，其中"longFuncName"是原函数名，不会转换为索引
+  function A() { } // A的函数名"#*@0*#A"，其中"@0"表示在其对应LiteralArray中，索引为0的字符串，此时这个字符串是"longFuncName"。即这个函数原本的名称为"#*longFuncName*#A"
+  function B() { } // B的函数名"#*@0*#B"
 }
 ```
 **重名序号**
@@ -94,23 +94,23 @@ function foo() {}; // 原函数名为"foo"。
 
 2. 如果匿名函数在对象字面量中定义并且被赋值给了一个字面量属性：
 * 如果属性名中不包含`\`和`.`，则其原函数名即为该属性名。
-   <!-- @[special_without_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test2.ts) -->  
+   <!-- @[special_without_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/DuplicateName.ts) -->  
    
    ``` TypeScript
-   // test2.ts
+   // DuplicateName.ts
    let B = {
-     b : () => {} // 原函数名为"b"。
+     b : () => {} // 原函数名为"b"
    }
    ```
 
 * 如果属性名包含`\`，`.`，为防止二义性，其原函数名会按照匿名函数命名。
-   <!-- @[special_with_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/test3.ts) -->  
-   
+   <!-- @[special_with_slash_period](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/OriginalFuncName.ts) -->  
+
    ``` TypeScript
-   // test3.ts
+   // OriginalFuncName.ts
    let a = {
-     "a.b#c^2": () => {}, // 原函数名为""。
-     "x\\y#": () => {} // 原函数名为"^1"。
+     "a.b#c^2": () => {}, // 原函数名为""
+     "x\\y#": () => {} // 原函数名为"^1"
    }
    ```
 
