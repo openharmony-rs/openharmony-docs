@@ -622,7 +622,7 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UIContext对象，用以绑定实例。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [UIContext](arkui-ts/ts-custom-component-api.md#uicontext)对象指针，用以绑定实例。 |
 | void* userData | 自定义事件参数，当事件触发时在回调参数中携带回来。 |
 | callback | 自定义回调函数。 |
 | uint64_t nanoTimestamp | 帧信号的时间戳。 |
@@ -643,7 +643,7 @@ int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,
 **描述：**
 
 
-注册一个回调函数，在下一帧渲染结束后如果距离下一个Vsync信号到来剩余时间大于1ms时，该回调函数将被执行；如果剩余时间小于1ms时，回调函数将被顺延至当某个下一帧的剩余时间大于1ms时再执行。如果当前没有下一帧，将自动请求下一帧。
+注册一个回调函数，在下一帧渲染结束后如果距离下一帧到来剩余时间大于1ms时，该回调函数将被执行；如果剩余时间小于1ms时，回调函数将被顺延至当某个下一帧的剩余时间大于1ms时再执行。如果当前没有下一帧，将自动请求下一帧。
 
 **起始版本：** 20
 
