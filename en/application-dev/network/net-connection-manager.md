@@ -6,7 +6,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-## Introduction
+## Description
 
 The Network Connection Management module provides basic network management capabilities, including management of Wi-Fi/cellular/Ethernet connection priorities, network quality evaluation, subscription to network connection status changes, query of network connection information, and DNS resolution.
 
@@ -20,7 +20,8 @@ The Network Connection Management module provides basic network management capab
 - Consumer: a user of data networks, for example, an application or a system service.
 - Network probe: a mechanism used to detect the network availability to prevent the switch from an available network to an unavailable network. The probe type can be binding network detection, DNS detection, HTTP detection, or HTTPS detection.
 - Network selection: a mechanism used to select the optimal network when multiple networks coexist. It is triggered when the network status, network information, or network quality evaluation score changes.
-- Default network: network where the default route is located.
+- Default network: the network used by the system by default, which is determined by the system and is irrelevant to whether the application specifies a network. Generally, the network is Wi-Fi, cellular, Ethernet, or Bluetooth.
+- Network handle: unique identifier of the network.
 
 ## When to Use
 
@@ -252,7 +253,7 @@ Close the original socket and re-establish a socket connection when the default 
 
    This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-2. Obtain the list of all connected networks.
+2. Sample Code
 
    <!-- @[get_all_registered_networks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/GetAllNets.ets) -->
    
@@ -386,15 +387,15 @@ Close the original socket and re-establish a socket connection when the default 
       }
     ```
 
-## Checking Whether the Default Network Supports Internet Access
+## Checking Whether the Default Network Supports network access
 
-If an application needs to check whether the current network supports Internet access, perform the following steps:
+If an application needs to check whether the current network supports network access, perform the following steps:
 
 1. Declare the required permission: **ohos.permission.GET_NETWORK_INFO**.
 
    This permission is of the **normal** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Declare the permissions required by your application. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-2. Check whether the default network supports Internet access.
+2. Use the default network to resolve the host name to obtain the list of all IP addresses.
    
    Call [getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9) to obtain **netHandle** of the default network. If **netHandle** is valid, call [getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10) to obtain the capability information of the corresponding network via **networkCap** and determine whether Internet access is supported.
 
@@ -436,7 +437,7 @@ If an application needs to check whether the current network supports Internet a
         }
     ```
 
-## Resolving the Domain Name of the Default Network to Obtain All IP Addresses
+## Obtains all IP addresses of the default network by resolving the domain name.
 
 1. Declare the required permission: **ohos.permission.GET_NETWORK_INFO**.
 
