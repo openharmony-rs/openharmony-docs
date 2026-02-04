@@ -20,9 +20,9 @@ The procedure for switching a DataAbility for a system application is similar to
 1. Create a DataShareExtensionAbility in the stage model.
 
 2. Migrate the DataAbility code to the DataShareExtensionAbility.
-     
-     The table below describes the lifecycle comparison of the DataAbility and DataShareExtensionAbility.
-     | DataAbility| DataShareExtensionAbility| Comparison Description|
+
+   The table below describes the lifecycle comparison of the DataAbility and DataShareExtensionAbility.
+   | DataAbility| DataShareExtensionAbility| Comparison Description|
    | -------- | -------- | -------- |
    | onInitialized?(info: AbilityInfo): void | onCreate?(want: Want, callback: AsyncCallback&lt;void&gt;): void<br> | The two methods have the same invoking time but different input parameters. In the stage model, the **want** parameter is added so that you can obtain parameters during creation.|
    | update?(uri: string, valueBucket: rdb.ValuesBucket, predicates: dataAbility.DataAbilityPredicates, callback: AsyncCallback&lt;number&gt;): void | update?(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void | The two methods have the same meaning and invoking time, but slightly different parameter sequence and parameter type. A simple reconstruction is required.|

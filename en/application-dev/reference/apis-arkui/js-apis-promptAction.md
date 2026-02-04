@@ -116,7 +116,7 @@ Closes the specified toast.
 
 > **NOTE**
 > 
-> Directly using **closeToast** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the **PromptAction** object using the **getPromptAction** API in **UIContext** and then call the [openToast](arkts-apis-uicontext-promptaction.md#closetoast18) API through this object.
+> Directly using **closeToast** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the **PromptAction** object using the **getPromptAction** API in **UIContext** and then call the [closeToast](arkts-apis-uicontext-promptaction.md#closetoast18) API through this object.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

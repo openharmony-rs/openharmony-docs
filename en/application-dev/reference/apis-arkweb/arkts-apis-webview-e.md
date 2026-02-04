@@ -367,8 +367,8 @@ Enumerates the error codes of the blankless loading.
 | ERR_CONTROLLER_NOT_INITED   | -3 | **WebViewController** is not bound to any component.|
 | ERR_KEY_NOT_MATCH   | -4 | No key value is matched. [setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20) must be used with [getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20) and their key values must be the same. Otherwise, this error code is returned.|
 | ERR_SIGNIFICANT_CHANGE   | -5 | The similarity is low, and the system determines that the scene change is too large. As a result, the [setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20) API does not enable frame interpolation.|
-| ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | The frame interpolation duration set in [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) is out of range.|
-| ERR_EXPIRATION_TIME_OUT_OF_RANGE<sup>23+</sup>   | -7 | The historical frame expiration time set in [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) is out of range.|
+| ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | The frame interpolation duration set in [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) is out of range.<br>**Model restriction**: This API can be used only in the stage model.|
+| ERR_EXPIRATION_TIME_OUT_OF_RANGE<sup>23+</sup>   | -7 | The historical frame expiration time set in [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) is out of range.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## BlanklessFrameInterpolationState <sup>23+</sup>
 
@@ -439,3 +439,21 @@ Enumerates the policies for sending cookies in cross-site requests.
 | NONE | 0 | Cookies can be carried in cross-site requests, but the **secure** attribute must be set.|
 | LAX | 1 | Cookies can be carried in specific cross-site requests, such as navigation scenarios of some GET requests.|
 | STRICT | 2 | Cookies cannot be carried in cross-site requests.|
+
+## UserAgentFormFactor<sup>24+</sup>
+
+Enumerates the user device forms.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name        | Value| Description                             |
+| ------------ | -- |--------------------------------- |
+| AUTOMOTIVE  | 'Automotive' |Telematics device, which is a string.|
+| DESKTOP       | 'Desktop' |PC, which is a string.|
+| MOBILE       | 'Mobile' |Mobile phone, which is a string.|
+| EINK      | 'EInk' |E-ink screen, which is a string.|
+| TABLET | 'Tablet' |Tablet, which is a string.|
+| WATCH        | 'Watch' |Watch, which is a string.|
+| XR        | 'XR' |VR+AR device, which is a string.|

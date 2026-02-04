@@ -143,7 +143,7 @@ export default class AVPlayerDemo {
 
 In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md) to perform inference on the three models in sequence. The inference process is as follows:
 
-1. Include the corresponding header files. You need to download third-party libraries. Wherein, **librosa** is accessible in [LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp), and **libsamplerate** is accessible in [libsamplerate](https://github.com/libsndfile/libsamplerate). Download these libraries and save them to the **entry/src/main/cpp/third_party** directory. Download **AudioFile.h** from [AudioFile](https://github.com/adamstark/AudioFile/blob/1.1.2/AudioFile.h) and **base64.h** and **base64.cc** from [whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src), and save the files to **entry/src/main/cpp/src**.
+1. Include the corresponding header files. You need to download third-party libraries. Wherein, **librosa** is accessible in [LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp), and **libsamplerate** is accessible in [libsamplerate](https://github.com/libsndfile/libsamplerate). Download these libraries and save them to the **entry/src/main/cpp/third_party** directory. Download **AudioFile.h** from [AudioFile](https://github.com/adamstark/AudioFile/blob/1.1.2/AudioFile.h) and **base64.h** and **base64.cpp** from [whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src), and save the files to **entry/src/main/cpp/src**.
 
    <!-- @[napi_asr_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
@@ -709,7 +709,8 @@ In **entry/src/main/cpp/mslite_napi.cpp**, call [MindSpore](../../reference/apis
 
 ### Invoke the encapsulated ArkTS module to perform inference and output the result.
 
-In **entry/src/main/ets/pages/Index.ets**, call the encapsulated ArkTS module to process the inference result.
+In **entry/src/main/ets/pages/Index.ets**, call the encapsulated ArkTS module to process the inference result. If the system displays a message indicating that @nutpi/chinese_transverter does not exist, install @nutpi/chinese_transverter by referring to the guide of the third-party library for the simplified and traditional chinese converter.
+
 
 <!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) -->
 
@@ -855,5 +856,12 @@ After you tap the **Play Audio** button on the device screen, the sample audio f
 |         Initial Page         |  Page with Recognized Content  |
 | :-----------------------: | :-----------------------: |
 | ![asr1](figures/asr1.png) | ![asr2](figures/asr2.png) |
+
+
+## Related Samples
+
+The following sample is provided to help you better understand how to develop speech recognition applications using MindSpore Lite:
+
+- [MindSpore Lite ASR Application Development Based on Native APIs (C/C++) (API 14)] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)
 
 <!--RP1--><!--RP1End-->

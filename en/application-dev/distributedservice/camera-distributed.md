@@ -18,9 +18,9 @@
 ### Basic Concepts
 
   Before started, you are advised to read the following topics to have a basic understanding of related functions:
-  - [UIAbility Connection Development](abilityconnectmanager-guidelines.md)
+  - [Cross-Device UIAbility Connection Development](abilityconnectmanager-guidelines.md)
   - [Camera Device Management (ArkTS)](../media/camera/camera-device-management.md)
-  - [Camera Development Preparations](../media/camera/camera-preparation.md)
+  - [Requesting Camera Development Permissions](../media/camera/camera-preparation.md)
   - [Camera Session Management (ArkTS)](../media/camera/camera-session-management.md)
   - [Photo Capture (ArkTS)](../media/camera/camera-shooting.md)
   - [Video Recording (ArkTS)](../media/camera/camera-recording.md)
@@ -38,7 +38,7 @@
   1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/) 5.0 or later.
   2. Update the public SDK to API version 16 or later.
   3. Connect device A and device B to the PC using USB cables.
-  4. Connect device A and device B to the same Wi-Fi, identify each other, and start networking. For details, see [UIAbility Connection Development](abilityconnectmanager-guidelines.md#how-to-develop).
+  4. Connect device A and device B to the same Wi-Fi, identify each other, and start networking. For details, see [Development Procedure](abilityconnectmanager-guidelines.md#development-procedure).
 
 
 ### Environment Verification

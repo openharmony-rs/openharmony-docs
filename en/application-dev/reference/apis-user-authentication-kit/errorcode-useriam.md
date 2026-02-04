@@ -63,7 +63,8 @@ The authentication operation is canceled.
 
 **Possible Causes**
 
-The authentication operation has been canceled.
+1. The authentication is canceled manually by the user.
+2. The authentication is preempted by the subsequent authentication request.
 
 **Solution**
 
@@ -137,7 +138,7 @@ The authentication service is busy.
 
 **Possible Causes**
 
-Another authentication is initiated when the current authentication has not been finished yet.
+This error code is returned when the user taps the navigation button on the identity authentication control page, indicating that the caller needs to open the custom authentication page.
 
 **Solution**
 
@@ -309,4 +310,60 @@ The facial authentication service is unavailable.
 **Solution**
 
 Call the API again later or restart the device.
+
+## 32600001 System Service Not Working Properly
+
+**Error Message**
+
+The system service is not working properly. Please try again later.
+
+**Description**
+
+The system service is unavailable.
+
+**Possible Causes**
+
+1. The process of the user authentication service is not started.
+2. The proxy client fails to write data over IPC.
+3. The stub server fails to parse data over IPC.
+
+**Solution**
+
+Call the API again later or restart the device.
+
+## 32600002 Template Not Found
+
+**Error Message**
+
+The template is not found.
+
+**Description**
+
+The template is not found.
+
+**Possible Causes**
+
+The template ID is incorrect.
+
+**Solution**
+
+Check whether the template ID is correct.
+
+## 32600003 Invalid Service ID
+
+**Error Message**
+
+The business id is invalid.
+
+**Description**
+
+The service ID is invalid.
+
+**Possible Causes**
+
+The service ID is incorrect.
+
+**Solution**
+
+Check whether the service ID is correct.
 <!--DelEnd-->

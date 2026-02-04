@@ -51,6 +51,7 @@
     - [@ohos.app.appstartup.startupManager (启动框架管理能力)](js-apis-app-appstartup-startupManager.md)
     - [@ohos.app.appstartup.StartupTask (启动框架任务)](js-apis-app-appstartup-startupTask.md)
     - [@ohos.app.ability.autoStartupManager (开机自启管理能力)](js-apis-app-ability-autoStartupManager.md)
+    - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     <!--Del-->
     - [@ohos.app.ability.AbilityConstant (Ability相关常量)(系统接口)](js-apis-app-ability-abilityConstant-sys.md)
     - [@ohos.app.ability.application (Application)(系统接口)](js-apis-app-ability-application-sys.md)
@@ -67,6 +68,17 @@
     - [@ohos.app.ability.verticalPanelManager (垂域面板管理)(系统接口)](js-apis-app-ability-verticalpanelmanager-sys.md)
     - [@ohos.app.ability.UIExtensionContentSession (UIExtensionAbility界面操作类)(系统接口)](js-apis-app-ability-uiExtensionContentSession-sys.md)
     <!--DelEnd-->
+     - continuation<!--stage-model-continuation-->
+       - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
+       - [continuationResult](js-apis-continuation-continuationResult.md)
+       <!--Del-->
+       - [ContinuableInfo(系统接口)](js-apis-inner-application-continuableInfo-sys.md)
+ 	   - [ContinueCallback(系统接口)](js-apis-inner-application-continueCallback-sys.md)
+ 	   - [ContinueMissionInfo(系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
+ 	   - [MissionCallbacks(系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
+ 	   - [MissionDeviceInfo(系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
+ 	   - [MissionParameter(系统接口)](js-apis-inner-application-missionParameter-sys.md)
+       <!--DelEnd-->
   - FA模型能力的接口<!--fa-model-->
     - [@ohos.ability.ability (Ability模块)](js-apis-ability-ability.md)
     - [@ohos.ability.featureAbility (FeatureAbility模块)](js-apis-ability-featureAbility.md)
@@ -176,17 +188,11 @@
       - [AutoStartupCallback(系统接口)](js-apis-inner-application-autoStartupCallback-sys.md)
       - [AutoStartupInfo(系统接口)](js-apis-inner-application-autoStartupInfo-sys.md)
       - [Context(系统接口)](js-apis-inner-application-context-sys.md)
-      - [ContinuableInfo(系统接口)](js-apis-inner-application-continuableInfo-sys.md)
-      - [ContinueCallback(系统接口)](js-apis-inner-application-continueCallback-sys.md)
       - [ContinueDeviceInfo(系统接口)](js-apis-inner-application-continueDeviceInfo-sys.md)
-      - [ContinueMissionInfo(系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
       - [CustomData (系统接口)](js-apis-inner-application-customData-sys.md)
       - [ExtensionRunningInfo(系统接口)](js-apis-inner-application-extensionRunningInfo-sys.md)
-      - [MissionCallbacks(系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
-      - [MissionDeviceInfo(系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
       - [MissionInfo(系统接口)](js-apis-inner-application-missionInfo-sys.md)
       - [MissionListener(系统接口)](js-apis-inner-application-missionListener-sys.md)
-      - [MissionParameter(系统接口)](js-apis-inner-application-missionParameter-sys.md)
       - [MissionSnapshot(系统接口)](js-apis-inner-application-missionSnapshot-sys.md)
       - [MultiAppMode (系统接口)](js-apis-inner-application-multiAppMode-sys.md)
       - [PageNodeInfo(系统接口)](js-apis-inner-application-pageNodeInfo-sys.md)
@@ -245,7 +251,6 @@
     - [@ohos.application.Configuration (Configuration)](js-apis-application-configuration.md)
     - [@ohos.application.ConfigurationConstant (ConfigurationConstant)](js-apis-application-configurationConstant.md)
     - [@ohos.application.Want (Want)](js-apis-application-want.md)
-    - [@ohos.continuation.continuationManager (流转/协同管理)](js-apis-continuation-continuationManager.md)
     - [@ohos.wantAgent (WantAgent模块)](js-apis-wantAgent.md)
     <!--Del-->
     - [@ohos.ability.wantConstant (wantConstant)(系统接口)](js-apis-ability-wantConstant-sys.md)
@@ -264,8 +269,6 @@
     - ability<!--ability-deprecated-->
       - [want](js-apis-inner-ability-want.md)
     - continuation<!--ability--continuation-->
-      - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
-      - [continuationResult](js-apis-continuation-continuationResult.md)
     - bundle<!--bundle-->
       - [abilityInfo](js-apis-bundle-AbilityInfo.md)
       - [applicationInfo](js-apis-bundle-ApplicationInfo.md)

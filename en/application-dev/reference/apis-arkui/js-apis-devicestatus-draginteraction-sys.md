@@ -217,8 +217,8 @@ Sets the drag-and-drop switch for a specific application.
 
 | Name     | Type                              | Mandatory| Description                                                                  |
 | --------   | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
-| enabled    | boolean                            | Yes  | State of the drag-and-drop switch.<br>**false**: disabled; **true**: enabled.                                             |
-| bundleName | string                             | Yes  | Bundle name of the target application.                                              |
+| enabled    | boolean                            | Yes  | State of the drag-and-drop switch.<br>**false**: disabled; **true**: enabled.|
+| bundleName | string                             | Yes  | Bundle name of a specified application. The value range is (0, 128].|
 
 **Error codes**
 
