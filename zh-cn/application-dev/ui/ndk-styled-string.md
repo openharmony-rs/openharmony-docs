@@ -150,8 +150,6 @@ OH_ArkUI_StyledString_PopTextStyle(styledString);
 
 Text组件不对本文涉及的任何对象的生命周期进行管理，需由开发者自行负责。字体引擎接口均配有相应的销毁方法。
 
-上述涉及的字体引擎接口都有对应的销毁方法。
-
 `OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle *style)`：销毁文本样式对象。
 
 `OH_Drawing_DestroyTypographyStyle(OH_Drawing_TypographyStyle *style)`：销毁段落样式对象。
