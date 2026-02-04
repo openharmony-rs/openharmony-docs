@@ -96,17 +96,17 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    下面的示例展示了一个空实现的`BackupExtension.ets`文件：
 
     ```ts
-    //onBackup && onRestore
+    // onBackup && onRestore
     import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
     import {hilog} from '@kit.PerformanceAnalysisKit';
     
     const TAG = `FileBackupExtensionAbility`;
     export default class BackupExtension extends  BackupExtensionAbility {
-      //onBackup
+      // onBackup
       async onBackup ()   {
         hilog.info(0x0000, TAG, `onBackup ok`);
       }
-      //onRestore
+      // onRestore
       async onRestore (bundleVersion : BundleVersion) {
         hilog.info(0x0000, TAG, `onRestore end`);
       }
@@ -129,7 +129,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    // ...
    
    class BackupExt extends BackupExtensionAbility {
-     //onBackupEx
+     // onBackupEx
      async onBackupEx(backupInfo: string): Promise<string> {
        console.info('onBackupEx ok');
        let errorInfo: ErrorInfo = {
@@ -235,9 +235,18 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
     **字段配置示例**：
 
+    ```json
     "compatibleDirMapping": [
-    {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
-    {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}]
+        {
+            "backupDir": "/data/storage/el2/base/files/nulldir",
+            "restoreDir": "/data/storage/el2/base/files/restore/nulldir"
+        }, 
+        {
+            "backupDir": "/data/storage/el2/base/files/zerofile", 
+            "restoreDir": "/data/storage/el2/base/files/restore/zerofile
+        }
+    ]
+    ```
 
     另外增加这个配置项还无法生效，需要在onBackupEx的实现中以json字符串格式返回需要开启的路径列表。
 
