@@ -11,7 +11,6 @@ The **MovingPhotoView** component is used to play moving photos and control the 
 > **NOTE**
 >
 > This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
->
 > Currently, the **MovingPhotoView** component cannot be used in Previewer.
 
 ## Modules to Import
@@ -20,15 +19,15 @@ The **MovingPhotoView** component is used to play moving photos and control the 
 >
 > - **MovingPhotoViewAttribute** is essential for configuring the **MovingPhotoView** component. In API version 21 and earlier, you must manually import **MovingPhotoViewAttribute** after importing the **MovingPhotoView** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **MovingPhotoViewAttribute** when it detects the **MovingPhotoView** component, so manual import is no longer necessary.
 > - If you manually import **MovingPhotoViewAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
-
-API version 21 and earlier:
+ 
+   API version 21 and earlier:
 
    ```ts
    import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
    ```
 
-API version 22 and later:
-
+   API version 22 and later:
+   
    ```ts
    import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
    ```
@@ -79,7 +78,7 @@ Sets whether to mute the player.
 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
-| isMuted | boolean | Yes  | Whether to mute the player.<br>The default value is **false**.<br>**true** to mute, **false** otherwise.|
+| isMuted | boolean | Yes  | Whether to mute the player.<br>The default value is **false**.<br>**true** to mute,<br>**false** otherwise.|
 
 ### objectFit
 
@@ -135,7 +134,7 @@ You can call this API when the moving photo is loaded and ready to play. After p
 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
-| isAutoPlay| boolean| Yes  | Whether to enable autoplay.<br>**true** to enable, **false** otherwise.<br>The default value is **false**.|
+| isAutoPlay| boolean| Yes  | Whether to enable autoplay.<br>**false**: no<br>**true**: yes<br>The default value is **false**.|
 
 ### repeatPlay<sup>13+</sup>
 
@@ -152,7 +151,7 @@ Sets repeat play. **repeatPlay** is mutually exclusive with **autoPlay** and **L
 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
-| isRepeatPlay| boolean| Yes  | Whether to enable repeat play.<br>**true** to enable, **false** otherwise.<br>The default value is **false**.|
+| isRepeatPlay| boolean| Yes  | Whether to enable repeat play.<br>**false**: no<br>**true**: yes<br>The default value is **false**.|
 
 ### enableAnalyzer<sup>18+</sup> 
 
@@ -169,7 +168,7 @@ Sets the AI analyzer. Currently, the AI analyzer supports features, such as subj
 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
-| enabled| boolean| Yes  | Whether to enable the AI analyzer.<br>**true** to enable, **false** otherwise.<br>The default value is **true**.|
+| enabled| boolean| Yes  | Whether to enable the AI analyzer.<br>**false**: no<br>**true**: yes<br>The default value is **true**.|
 
 ## Events
 
@@ -179,7 +178,7 @@ In addition to [universal events](../apis-arkui/arkui-ts/ts-component-general-ev
 
 onComplete(callback: MovingPhotoViewEventCallback)
 
-Called when the image of a moving photo is loaded.
+Called when the image of a moving photo is loaded. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
@@ -196,7 +195,7 @@ Called when the image of a moving photo is loaded.
 
 onStart(callback: MovingPhotoViewEventCallback)
 
-Called when a moving photo starts playing.
+Called when a moving photo starts playing. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -213,7 +212,7 @@ Called when a moving photo starts playing.
 
 onPause(callback: MovingPhotoViewEventCallback)
 
-Called when the playback is paused.
+Called when the playback is paused. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -230,7 +229,7 @@ Called when the playback is paused.
 
 onFinish(callback: MovingPhotoViewEventCallback)
 
-Called when the playback is finished.
+Called when the playback is finished. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -247,7 +246,7 @@ Called when the playback is finished.
 
 onError(callback: MovingPhotoViewEventCallback)
 
-Called when the playback fails.
+Called when the playback fails. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -264,7 +263,7 @@ Called when the playback fails.
 
 onStop(callback: MovingPhotoViewEventCallback)
 
-Called when the playback is stopped by **stop()**.
+Called when the playback is stopped by **stop()**. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -281,7 +280,7 @@ Called when the playback is stopped by **stop()**.
 
 onPrepared(callback: MovingPhotoViewEventCallback)
 
-Called when a moving photo is ready for playback.
+Called when a moving photo is ready for playback. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -589,6 +588,6 @@ struct Index {
   }
 }
 ```
-![AutomicEnergy](figures/AutomicEnergy.gif)
+![AutomaticEnergy](figures/AutomaticEnergy.gif)
 
 <!--RP1--><!--RP1End-->
