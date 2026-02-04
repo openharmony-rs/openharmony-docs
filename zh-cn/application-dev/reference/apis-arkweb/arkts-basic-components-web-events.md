@@ -1626,7 +1626,7 @@ struct Index {
           return;
         }
 
-        //注：badssl.com-client.p12需要替换为实际使用的证书文件
+        // 注：badssl.com-client.p12需要替换为实际使用的证书文件
         let value: Uint8Array = this.context.resourceManager.getRawFileContentSync("badssl.com-client.p12");
         certificateManager.installPrivateCertificate(value, 'badssl.com', "1",
           async (err: BusinessError, data: certificateManager.CMResult) => {
@@ -2684,9 +2684,9 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
         .multiWindowAccess(true)
         .allowWindowOpenMethod(true)
         .onWindowNewExt((event) => {
-          //以event.navigationPolicy请求的方式打开新窗口
+          // 以event.navigationPolicy请求的方式打开新窗口
           console.info("navigationAction: ", event.navigationPolicy)
-          //以event.windowFeatures中的大小及位置信息创建新窗口
+          // 以event.windowFeatures中的大小及位置信息创建新窗口
           console.info("windowFeatures: ", JSON.stringify(event.windowFeatures))
           if (this.dialogController) {
             this.dialogController.close();
@@ -2768,7 +2768,7 @@ onActivateContent(callback: Callback\<void>)
             }
           })
           .onActivateContent(() => {
-            //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
+            // 该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
             console.info("NewWebViewComp onActivateContent")
           })
       }.height("50%")
