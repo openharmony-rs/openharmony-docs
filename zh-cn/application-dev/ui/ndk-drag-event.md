@@ -32,8 +32,8 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    dragImage2 = nodeAPI->createNode(ARKUI_NODE_IMAGE);
    SetId(dragImage2, "dragImage");
    SetCommonAttribute(dragImage2, 140.0f, 140.0f, 0xFFFFFFFF, 5.0f);
-   // 图片src/main/ets/resources/seagull.png需要替换为开发者所需的资源文件
-   SetImageSrc(dragImage2, "/resources/seagull.png");
+   // 图片src/main/resources/base/media/seagull.png需要替换为开发者所需的资源文件
+   SetImageSrc(dragImage2, "/resources/base/media/seagull.png");
    OH_ArkUI_SetNodeDraggable(dragImage2, true);
    nodeAPI->registerNodeEvent(dragImage2, NODE_ON_DRAG_START, 1, nullptr);
    ```
@@ -249,8 +249,8 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        int returnValue;
        OH_UdmfRecord *record = OH_UdmfRecord_Create();
        OH_UdsFileUri *imageValue = OH_UdsFileUri_Create();
-       // 图片src/main/ets/resources/seagull.png需要替换为开发者所需的资源文件
-       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/seagull.png");
+       // 图片src/main/resources/base/media/seagull.png需要替换为开发者所需的资源文件
+       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/base/media/seagull.png");
        returnValue = OH_UdmfRecord_AddFileUri(record, imageValue);
        OH_UdmfData *data = OH_UdmfData_Create();
        returnValue = OH_UdmfData_AddRecord(data, record);
