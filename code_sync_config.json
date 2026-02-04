@@ -13347,7 +13347,20 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets",
 				"functions":[
+					{
+						"end_line":19,
+						"name":"resource_header",
+						"start_line":16
+					},
 					{
 						"end_line":207,
 						"name":"scene_load_init",
@@ -13377,16 +13390,11 @@
 						"end_line":285,
 						"name":"material_button_action",
 						"start_line":222
-					},
-					{
-						"end_line":19,
-						"name":"resource_header",
-						"start_line":16
 					}
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets",
 				"functions":[
 					{
 						"end_line":21,
@@ -13442,6 +13450,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets",
 				"functions":[
 					{
 						"end_line":18,
@@ -13477,6 +13489,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets",
 				"functions":[
 					{
 						"end_line":19,
@@ -13517,6 +13533,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets",
 				"functions":[
 					{
 						"end_line":19,
@@ -13557,6 +13577,18 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets",
 				"functions":[
 					{
 						"end_line":18,
@@ -13581,7 +13613,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets",
 				"functions":[
 					{
 						"end_line":18,
@@ -13611,7 +13643,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets",
 				"functions":[
 					{
 						"end_line":18,
