@@ -276,6 +276,8 @@ Deletes the specified child node from this FrameNode. If this FrameNode is not m
 
 **Error codes**
 
+For details about the error codes, [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
@@ -295,6 +297,8 @@ Clears all child nodes of this FrameNode. If this FrameNode is not modifiable, a
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Error codes**
+
+For details about the error codes, [Custom Node Error Codes](./errorcode-node.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -2266,7 +2270,7 @@ This API ensures rendering synchronization by triggering immediate property upda
 **Example**
 
 Starting from API version 21, when dynamically switching between nodes using **if/else** statements, you can call **invalidateAttributes** during node creation to trigger immediate attribute updates, preventing visual flickering during component switching.
- 
+
 ```ts
 // index.ets
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
@@ -3917,6 +3921,8 @@ Binds the [Scroller](arkui-ts/ts-container-scroll.md#scroller) to the [Scroll](#
 | nodeType | 'Scroll' | Yes| Node type, which is **Scroll** in this API.|
 
 **Error codes**
+
+For details about the error codes, [Custom Node Error Codes](./errorcode-node.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |

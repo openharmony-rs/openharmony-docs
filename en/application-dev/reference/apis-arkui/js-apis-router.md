@@ -651,7 +651,7 @@ router.pushNamedRoute({
   })
 ```
 
-For details, see [UI Development-Named Route](../../ui/arkts-routing.md#named-route).
+For details, see [Named Route](../../ui/arkts-routing.md#named-route).
 
 ## router.pushNamedRoute<sup>(deprecated)</sup>
 

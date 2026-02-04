@@ -41,12 +41,12 @@ The file declares the basic data structure of OHAudio.
 | [OH_AudioStream_Type](#oh_audiostream_type) | OH_AudioStream_Type | Enumerates the audio stream types.|
 | [OH_AudioStream_SampleFormat](#oh_audiostream_sampleformat) | OH_AudioStream_SampleFormat | Enumerates the sampling formats of audio streams.|
 | [OH_AudioStream_EncodingType](#oh_audiostream_encodingtype) | OH_AudioStream_EncodingType | Enumerates the encoding types of audio streams.|
-| [OH_AudioStream_Usage](#oh_audiostream_usage) | OH_AudioStream_Usage | Enumerates the usage scenarios of an audio renderer,<br> that is, usage scenarios of audio output streams.|
+| [OH_AudioStream_Usage](#oh_audiostream_usage) | OH_AudioStream_Usage | Enumerates the usage scenarios of an audio renderer, that is, usage scenarios of audio output streams.|
 | [OH_AudioStream_LatencyMode](#oh_audiostream_latencymode) | OH_AudioStream_LatencyMode | Enumerates the latency modes of audio streams.|
 | [OH_AudioStream_DirectPlaybackMode](#oh_audiostream_directplaybackmode) | OH_AudioStream_DirectPlaybackMode | Enumerates the direct playback modes of audio streams.|
 | [OH_AudioStream_VolumeMode](#oh_audiostream_volumemode) | OH_AudioStream_VolumeMode | Enumerates the volume modes of audio streams.|
 | [OH_AudioStream_State](#oh_audiostream_state) | OH_AudioStream_State | Enumerates the audio stream states.|
-| [OH_AudioStream_SourceType](#oh_audiostream_sourcetype) | OH_AudioStream_SourceType | Enumerates the usage scenarios of an audio capturer,<br> that is, usage scenarios of audio input streams.|
+| [OH_AudioStream_SourceType](#oh_audiostream_sourcetype) | OH_AudioStream_SourceType | Enumerates the usage scenarios of an audio capturer, that is, usage scenarios of audio input streams.|
 | [OH_AudioStream_Event](#oh_audiostream_event) | OH_AudioStream_Event | Enumerates the audio stream events. (It is deprecated in API version 20.)|
 | [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype) | OH_AudioInterrupt_ForceType | Enumerates the types of force that causes audio interruption.<br> The force type is obtained when an audio interruption event is received.<br> This type specifies whether the audio interruption operation is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint).|
 | [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint) | OH_AudioInterrupt_Hint | Enumerates the hints provided along with audio interruption.<br> The hint is obtained when an audio interruption event is received.<br> The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.<br> You can determine whether the operation is forcibly performed by the system based on [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype).|
@@ -263,7 +263,7 @@ Enumerates the usage scenarios of an audio capturer, that is, usage scenarios of
 | AUDIOSTREAM_SOURCE_TYPE_INVALID = -1 | Invalid state.|
 | AUDIOSTREAM_SOURCE_TYPE_MIC = 0 | Audio recording.|
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_RECOGNITION = 1 | Voice recognition.|
-| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | Audio playback.|
+| AUDIOSTREAM_SOURCE_TYPE_PLAYBACK_CAPTURE = 2 | Audio playback. **Deprecated from**: 12<br>**Substitute**: [OH_AVScreenCapture](../apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)|
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_COMMUNICATION = 7 | Voice communication.|
 | AUDIOSTREAM_SOURCE_TYPE_VOICE_MESSAGE = 10 | Voice message.<br>**Since**: 12|
 | AUDIOSTREAM_SOURCE_TYPE_CAMCORDER = 13 | Video recording.<br>**Since**: 13|
@@ -296,11 +296,7 @@ enum OH_AudioInterrupt_ForceType
 
 **Description**
 
-Enumerates the types of force that causes audio interruption.
-
-The force type is obtained when an audio interruption event is received.
-
-This type specifies whether the audio interruption operation is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint).
+Enumerates the types of force that causes audio interruption.<br> The force type is obtained when an audio interruption event is received.<br> This type specifies whether the audio interruption operation is forcibly performed by the system. The operation information (such as audio pause or stop) can be obtained through [OH_AudioInterrupt_Hint](#oh_audiointerrupt_hint).
 
 **Since**: 10
 
@@ -317,13 +313,7 @@ enum OH_AudioInterrupt_Hint
 
 **Description**
 
-Enumerates the hints provided along with audio interruption.
-
-The hint is obtained when an audio interruption event is received.
-
-The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.
-
-You can determine whether the operation is forcibly performed by the system based on [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype).
+Enumerates the hints provided along with audio interruption.<br> The hint is obtained when an audio interruption event is received.<br> The hint specifies the operation (such as audio pause or volume adjustment) to be performed on audio streams based on the focus strategy.<br> You can determine whether the operation is forcibly performed by the system based on [OH_AudioInterrupt_ForceType](#oh_audiointerrupt_forcetype).
 
 **Since**: 10
 
@@ -525,15 +515,7 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 
 **Description**
 
-Defines a function pointer to the callback used to write audio data.
-
-The callback is used only to write audio data. Do not call AudioRenderer APIs in it.
-
-The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.
-
-Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.
-
-The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).
+Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.<br> The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).
 
 **Since**: 12
 

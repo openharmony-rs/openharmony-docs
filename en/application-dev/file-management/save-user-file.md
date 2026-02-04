@@ -45,7 +45,7 @@ If the security component cannot be called to save images and videos in your dev
    documentSaveOptions.newFileNames = ["DocumentViewPicker01.txt"];
    // Optional. Specify the path of the file or directory to save.
    documentSaveOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
-   // (Optional) Type of the document to save. The value is in ['Description|File name extensions'] format. To save all files, use 'All files (*.*)|.*'. If there are multiple file name extensions (a maximum of 100 extensions can be filtered), the first one is used by default. If this parameter is not specified, no extension is filtered by default.
+   // File type. The value is in ['Suffix type description|Suffix type'] format. To save all files, use 'All files (*.*)|.*' (optional). If multiple suffixes are selected (a maximum of 100 suffixes can be filtered), the first suffix is selected by default. If this parameter is not transferred, no suffix is filtered by default.
    documentSaveOptions.fileSuffixChoices = ['Document|.txt', '.pdf'];
    ```
 
@@ -145,11 +145,11 @@ If the security component cannot be called to save images and videos in your dev
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-  	 // Note that the permission specified by the mode parameter of fs.openSync() is fileIo.OpenMode.READ_WRITE.
-   	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      // Note that the permission specified by the mode parameter of fs.openSync() is fileIo.OpenMode.READ_WRITE.
+      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. Call [fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync) to modify the document based on the FD, and call **fs.closeSync()** to close the FD.

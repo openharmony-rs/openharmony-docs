@@ -1158,7 +1158,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 getAudioAssets(options: FetchOptions): Promise&lt;FetchResult&lt;FileAsset&gt;&gt;
 
 
-Obtains audio assets. This API uses a promise to return the result.
+Obtains an audio asset. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
 
@@ -1628,7 +1628,8 @@ async function example(mgr: userFileManager.UserFileManager) {
 
 release(callback: AsyncCallback&lt;void&gt;): void
 
-Releases the **UserFileManager** instance. This API uses an asynchronous callback to return the result.
+Releases this **UserFileManager** instance. This API uses an asynchronous callback to return the result.
+ 
 Call this API when the APIs in the **UserFileManager** instance are no longer used.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
@@ -1661,6 +1662,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 release(): Promise&lt;void&gt;
 
 Releases this **UserFileManager** instance. This API uses a promise to return the result.
+ 
 Call this API when the APIs in the **UserFileManager** instance are no longer used.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
@@ -3170,6 +3172,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 getNextObject(callback: AsyncCallback&lt;T&gt;): void
 
 Obtains the next file asset in the result set. This API uses an asynchronous callback to return the result.
+
 Before using this API, you must use [isAfterLast()](#isafterlast) to check whether the current position is the end of the result set.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
@@ -3213,6 +3216,7 @@ async function example(mgr: userFileManager.UserFileManager) {
 getNextObject(): Promise&lt;T&gt;
 
 Obtains the next file asset in the result set. This API uses a promise to return the result.
+
 Before using this API, you must use [isAfterLast()](#isafterlast) to check whether the current position is the end of the result set.
 
 **System capability**: SystemCapability.FileManagement.UserFileManager.Core
