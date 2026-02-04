@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -15,7 +17,9 @@ import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 ## reminderAgentManager.publishReminder
 
-publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<int>): void
 
 发布后台代理提醒。使用callback异步回调。
 
@@ -29,12 +33,16 @@ publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>):
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | reminderReq | [ReminderRequest](#reminderrequest) | 是 | 需要发布的代理提醒实例。 |
-  | callback | AsyncCallback\<number> | 是 | 回调函数，返回当前发布提醒的id。 |
+  | callback | ArkTS-Dyn: AsyncCallback\<number> <br> ArkTS-Sta: AsyncCallback\<int> | 是 | 回调函数，返回当前发布提醒的id。 |
 
 **错误码：**
 
@@ -47,6 +55,9 @@ publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>):
 | 1700002    | The number of reminders exceeds the limit. |
 
 **示例**：
+
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -64,9 +75,33 @@ reminderAgentManager.publishReminder(timer, (err: BusinessError, reminderId: num
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// publishReminder回调
+let publishCallback = (err: BusinessError | null, reminderId: int | undefined | null): void => {
+  if (err) {
+    console.error(`Failed to publish reminder. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info(`Succeed in publish reminder, id is ${JSON.stringify(reminderId)}.`);
+  }
+}
+
+let timer: reminderAgentManager.ReminderRequestTimer = {
+  reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,
+  triggerTimeInSeconds: 10
+}
+
+reminderAgentManager.publishReminder(timer, publishCallback);
+```
+
 ## reminderAgentManager.publishReminder
 
-publishReminder(reminderReq: ReminderRequest): Promise\<number>
+ArkTS-Dyn: publishReminder(reminderReq: ReminderRequest): Promise\<number>
+
+ArkTS-Sta: publishReminder(reminderReq: ReminderRequest): Promise\<int>
 
 发布后台代理提醒。使用promise异步回调。
 
@@ -80,6 +115,10 @@ publishReminder(reminderReq: ReminderRequest): Promise\<number>
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
@@ -90,7 +129,7 @@ publishReminder(reminderReq: ReminderRequest): Promise\<number>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | Promise对象，返回当前发布提醒的id。 |
+| ArkTS-Dyn: Promise\<number> <br> ArkTS-Sta: Promise\<int> | Promise对象，返回当前发布提醒的id。 |
 
 **错误码：**
 
@@ -103,6 +142,9 @@ publishReminder(reminderReq: ReminderRequest): Promise\<number>
 | 1700002    | The number of reminders exceeds the limit. |
 
 **示例**：
+
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -118,20 +160,42 @@ reminderAgentManager.publishReminder(timer).then((reminderId: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let timer: reminderAgentManager.ReminderRequestTimer = {
+  reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,
+  triggerTimeInSeconds: 10
+}
+
+reminderAgentManager.publishReminder(timer).then((reminderId: int) => {
+  console.info(`Succeed in publish reminder, reminderId is  ${JSON.stringify(reminderId)}.`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to publish reminder. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## reminderAgentManager.cancelReminder
 
-cancelReminder(reminderId: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: cancelReminder(reminderId: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: cancelReminder(reminderId: int, callback: AsyncCallback\<void>): void
 
 取消指定id的代理提醒。使用callback异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| reminderId | number | 是 | 需要取消的代理提醒的id。 |
+| reminderId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 需要取消的代理提醒的id。 |
 | callback | AsyncCallback\<void> | 是 | 回调函数，取消代理提醒成功，err为undefined，否则返回err信息。 |
 
 **错误码：**
@@ -146,6 +210,8 @@ cancelReminder(reminderId: number, callback: AsyncCallback\<void>): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -159,19 +225,42 @@ reminderAgentManager.cancelReminder(reminderId, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let cancelCallback = (err: BusinessError | null): void => {
+  if (err) {
+    console.error(`Failed to cancel reminder. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info(`Succeed in cancel reminder`);
+  }
+}
+
+let reminderId: int = 1;
+reminderAgentManager.cancelReminder(reminderId, cancelCallback);
+```
+
 ## reminderAgentManager.cancelReminder
 
-cancelReminder(reminderId: number): Promise\<void>
+ArkTS-Dyn: cancelReminder(reminderId: number): Promise\<void>
+
+ArkTS-Sta: cancelReminder(reminderId: int): Promise\<void>
 
 取消指定id的代理提醒。使用Promise异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| reminderId | number | 是 | 需要取消的代理提醒的id。 |
+| reminderId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 需要取消的代理提醒的id。 |
 
 **返回值**：
 
@@ -191,6 +280,8 @@ cancelReminder(reminderId: number): Promise\<void>
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -202,6 +293,19 @@ reminderAgentManager.cancelReminder(reminderId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let reminderId: int = 1;
+reminderAgentManager.cancelReminder(reminderId).then(() => {
+  console.info(`Succeed in cancel reminder`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to cancel reminder. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## reminderAgentManager.getValidReminders
 
 getValidReminders(callback: AsyncCallback<Array\<ReminderRequest>>): void
@@ -209,6 +313,10 @@ getValidReminders(callback: AsyncCallback<Array\<ReminderRequest>>): void
 获取当前应用设置的所有[有效（未过期）的代理提醒](../../task-management/agent-powered-reminder.md#约束与限制)。使用callback异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -226,6 +334,8 @@ getValidReminders(callback: AsyncCallback<Array\<ReminderRequest>>): void
 | 1700004    | The bundle name does not exist. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -259,6 +369,22 @@ reminderAgentManager.getValidReminders((err: BusinessError, reminders: Array<rem
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let getCallback = (err: BusinessError | null, reminders: Array<reminderAgentManager.ReminderRequest> | undefined | null) => {
+  if (err) {
+    console.error(`Failed to get reminder. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info(`Succeed in get reminder, info is ${JSON.stringify(reminders)}.`);
+  }
+}
+
+reminderAgentManager.getValidReminders(getCallback);
+```
+
 ## reminderAgentManager.getValidReminders
 
 getValidReminders(): Promise\<Array\<ReminderRequest>>
@@ -266,6 +392,10 @@ getValidReminders(): Promise\<Array\<ReminderRequest>>
 获取当前应用设置的所有[有效（未过期）的代理提醒](../../task-management/agent-powered-reminder.md#约束与限制)。使用promise异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -283,6 +413,8 @@ getValidReminders(): Promise\<Array\<ReminderRequest>>
 | 1700004    | The bundle name does not exist. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -314,6 +446,18 @@ reminderAgentManager.getValidReminders().then((reminders: Array<reminderAgentMan
 }); 
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+reminderAgentManager.getValidReminders().then((reminders: Array<reminderAgentManager.ReminderRequest>) => {
+  console.info(`Succeed in get reminder, info is ${JSON.stringify(reminders)}.`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to get reminder. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## reminderAgentManager.cancelAllReminders
 
 cancelAllReminders(callback: AsyncCallback\<void>): void
@@ -321,6 +465,10 @@ cancelAllReminders(callback: AsyncCallback\<void>): void
 取消当前应用设置的所有代理提醒。使用callback异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -339,6 +487,8 @@ cancelAllReminders(callback: AsyncCallback\<void>): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -351,6 +501,22 @@ reminderAgentManager.cancelAllReminders((err: BusinessError) =>{
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let cancelCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to cancel all reminder. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info(`Succeed in cancel all reminder.`);
+  }
+}
+
+reminderAgentManager.cancelAllReminders(cancelCallback);
+```
+
 ## reminderAgentManager.cancelAllReminders
 
 cancelAllReminders(): Promise\<void>
@@ -358,6 +524,10 @@ cancelAllReminders(): Promise\<void>
 取消当前应用设置的所有代理提醒。使用Promise异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -376,6 +546,8 @@ cancelAllReminders(): Promise\<void>
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -386,6 +558,17 @@ reminderAgentManager.cancelAllReminders().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+reminderAgentManager.cancelAllReminders().then(() => {
+  console.info(`Succeed in cancel all reminder.`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to cancel all reminder. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## reminderAgentManager.addNotificationSlot
 
@@ -394,6 +577,10 @@ addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback\<void>): voi
 添加通知槽。使用callback异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -412,6 +599,8 @@ addNotificationSlot(slot: NotificationSlot, callback: AsyncCallback\<void>): voi
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -429,6 +618,26 @@ reminderAgentManager.addNotificationSlot(mySlot, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let addCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info(`Succeed in add slot.`);
+  }
+}
+
+let mySlot: notificationManager.NotificationSlot = {
+  notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+}
+
+reminderAgentManager.addNotificationSlot(mySlot, addCallback);
+```
 
 ## reminderAgentManager.addNotificationSlot
 
@@ -437,6 +646,10 @@ addNotificationSlot(slot: NotificationSlot): Promise\<void>
 添加通知槽。使用promise异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -460,6 +673,8 @@ addNotificationSlot(slot: NotificationSlot): Promise\<void>
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -474,6 +689,21 @@ reminderAgentManager.addNotificationSlot(mySlot).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let mySlot: notificationManager.NotificationSlot = {
+  notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+}
+reminderAgentManager.addNotificationSlot(mySlot).then(() => {
+  console.info(`Succeed in add slot.`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## reminderAgentManager.removeNotificationSlot
 
@@ -482,6 +712,10 @@ removeNotificationSlot(slotType: notification.SlotType, callback: AsyncCallback\
 删除目标通知槽，使用callback异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -500,6 +734,8 @@ removeNotificationSlot(slotType: notification.SlotType, callback: AsyncCallback\
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -514,6 +750,22 @@ reminderAgentManager.removeNotificationSlot(notificationManager.SlotType.CONTENT
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let removeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`Failed to remove slot. Code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info(`Succeed in remove slot.`);
+  }
+}
+
+reminderAgentManager.removeNotificationSlot(notificationManager.SlotType.CONTENT_INFORMATION, removeCallback);
+```
 
 ## reminderAgentManager.removeNotificationSlot
 
@@ -522,6 +774,10 @@ removeNotificationSlot(slotType: notification.SlotType): Promise\<void>
 删除目标通知槽，使用Promise异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -545,6 +801,8 @@ removeNotificationSlot(slotType: notification.SlotType): Promise\<void>
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { notificationManager } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -556,6 +814,19 @@ reminderAgentManager.removeNotificationSlot(notificationManager.SlotType.CONTENT
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+reminderAgentManager.removeNotificationSlot(notificationManager.SlotType.CONTENT_INFORMATION).then(() => {
+  console.info(`Succeed in remove slot.`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to remove slot. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## reminderAgentManager.getAllValidReminders<sup>12+</sup>
 
 getAllValidReminders(): Promise\<Array\<ReminderInfo>>
@@ -563,6 +834,10 @@ getAllValidReminders(): Promise\<Array\<ReminderInfo>>
 获取当前应用设置的所有[有效（未过期）的代理提醒](../../task-management/agent-powered-reminder.md#约束与限制)。使用promise异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -579,6 +854,8 @@ getAllValidReminders(): Promise\<Array\<ReminderInfo>>
 | 201      | Permission denied. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -610,19 +887,37 @@ reminderAgentManager.getAllValidReminders().then((reminders: Array<reminderAgent
 }); 
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+reminderAgentManager.getAllValidReminders().then((reminders: Array<reminderAgentManager.ReminderInfo>) => {
+  console.info(`Succeed in get reminder, info is ${JSON.stringify(reminders)}.`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to get reminder. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## reminderAgentManager.addExcludeDate<sup>12+</sup>
 
-addExcludeDate(reminderId: number, date: Date): Promise\<void>
+ArkTS-Dyn: addExcludeDate(reminderId: number, date: Date): Promise\<void>
+
+ArkTS-Sta: addExcludeDate(reminderId: int, date: Date): Promise\<void>
 
 为指定id的周期性的日历提醒，添加不提醒日期（如每天提醒的日历，设置周二不提醒）。使用Promise异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | 是   | 需要添加不提醒日期的周期性日历id。 |
+| reminderId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 需要添加不提醒日期的周期性日历id。 |
 | date       | Date   | 是   | 不提醒的日期。                     |
 
 **返回值**：
@@ -643,6 +938,8 @@ addExcludeDate(reminderId: number, date: Date): Promise\<void>
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -655,19 +952,39 @@ reminderAgentManager.addExcludeDate(reminderId, date).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let reminderId: int = 1;
+let date = new Date();
+reminderAgentManager.addExcludeDate(reminderId, date).then(() => {
+  console.info(`Succeed in add exclude date.`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to add exclude date. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## reminderAgentManager.deleteExcludeDates<sup>12+</sup>
 
-deleteExcludeDates(reminderId: number): Promise\<void>
+ArkTS-Dyn: deleteExcludeDates(reminderId: number): Promise\<void>
+
+ArkTS-Sta: deleteExcludeDates(reminderId: int): Promise\<void>
 
 为指定id的周期性的日历提醒，删除设置的所有不提醒日期。使用Promise异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | 是   | 需要删除不提醒日期的周期性日历id。 |
+| reminderId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 需要删除不提醒日期的周期性日历id。 |
 
 **返回值**：
 
@@ -686,6 +1003,8 @@ deleteExcludeDates(reminderId: number): Promise\<void>
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -697,19 +1016,38 @@ reminderAgentManager.deleteExcludeDates(reminderId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let reminderId: int = 1;
+reminderAgentManager.deleteExcludeDates(reminderId).then(() => {
+  console.info(`Succeed in delete exclude dates`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to delete exclude dates. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## reminderAgentManager.getExcludeDates<sup>12+</sup>
 
-getExcludeDates(reminderId: number): Promise\<Array\<Date>>
+ArkTS-Dyn: getExcludeDates(reminderId: number): Promise\<Array\<Date>>
+
+ArkTS-Sta: getExcludeDates(reminderId: int): Promise\<Array\<Date>>
 
 为指定id的周期性的日历提醒，查询设置的所有不提醒日期。使用Promise异步回调。
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | 是   | 需要查询不提醒日期的周期性日历id。 |
+| reminderId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 需要查询不提醒日期的周期性日历id。 |
 
 **返回值**：
 
@@ -728,6 +1066,8 @@ getExcludeDates(reminderId: number): Promise\<Array\<Date>>
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -742,9 +1082,24 @@ reminderAgentManager.getExcludeDates(reminderId).then((dates) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let reminderId: int = 1;
+reminderAgentManager.getExcludeDates(reminderId).then((dates: Array<Date>) => {
+  console.info(`Succeed in get exclude dates, info is ${JSON.stringify(dates)}.`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to get exclude dates. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## reminderAgentManager.updateReminder<sup>20+</sup>
 
-updateReminder(reminderId: number, reminderReq: ReminderRequest): Promise\<void>
+ArkTS-Dyn: updateReminder(reminderId: number, reminderReq: ReminderRequest): Promise\<void>
+
+ArkTS-Sta: updateReminder(reminderId: int, reminderReq: ReminderRequest): Promise\<void>
 
 更新指定id的代理提醒，使用Promise异步回调。仅[有效（未过期）](../../task-management/agent-powered-reminder.md#约束与限制)、未显示在通知中心的代理提醒支持更新。
 
@@ -752,11 +1107,15 @@ updateReminder(reminderId: number, reminderReq: ReminderRequest): Promise\<void>
 
 **系统能力**： SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | 是   | 需要更新的代理提醒的id，id为[publishReminder](#reminderagentmanagerpublishreminder)返回值。 |
+| reminderId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 需要更新的代理提醒的id，id为[publishReminder](#reminderagentmanagerpublishreminder)返回值。 |
 | reminderReq | [ReminderRequest](#reminderrequest) | 是   | 代理提醒对象实例，用于设置提醒类型、响铃时长等具体信息。 |
 
 **返回值**：
@@ -777,6 +1136,8 @@ updateReminder(reminderId: number, reminderReq: ReminderRequest): Promise\<void>
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -794,11 +1155,34 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let timer: reminderAgentManager.ReminderRequestTimer = {
+  reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,
+  triggerTimeInSeconds: 10
+}
+
+let reminderId: int = 1;
+reminderAgentManager.updateReminder(reminderId, timer).then(() => {
+  console.info(`Succeed in update reminder.`);
+}).catch((err: BusinessError): void => {
+  console.error(`Failed to update reminder. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## ActionButtonType
 
 提醒上的按钮的类型。
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -811,6 +1195,10 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | REMINDER_TYPE_TIMER | 0 | 表示提醒类型：倒计时。 |
@@ -822,6 +1210,10 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 自定义提示音的音频播放通道。
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -837,9 +1229,9 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| title | string | 是 | 按钮显示的标题。 |
-| titleResource<sup>11+</sup> | string | 否 | 标题的资源ID，用于切换系统语言后读取对应标题信息。 |
-| type | [ActionButtonType](#actionbuttontype) | 是 | 按钮的类型。 |
+| title | string | 是 | 按钮显示的标题。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| titleResource<sup>11+</sup> | string | 否 | 标题的资源ID，用于切换系统语言后读取对应标题信息。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| type | [ActionButtonType](#actionbuttontype) | 是 | 按钮的类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 
 
 ## WantAgent
@@ -851,10 +1243,10 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pkgName | string | 是 | 指明跳转目标的包名。 |
-| abilityName | string | 是 | 指明跳转目标的ability名称。 |
-| parameters<sup>12+</sup> | Record\<string, Object> | 否 | 需要传递到目标的参数。 |
-| uri<sup>12+</sup> | string | 否 | 指明跳转目标的uri信息。 |
+| pkgName | string | 是 | 指明跳转目标的包名。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| abilityName | string | 是 | 指明跳转目标的ability名称。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| parameters<sup>12+</sup> | ArkTS-Dyn: Record\<string, Object> <br> ArkTS-Sta: RecordData | 否 | 需要传递到目标的参数。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| uri<sup>12+</sup> | string | 否 | 指明跳转目标的uri信息。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 
 ## MaxScreenWantAgent
@@ -862,6 +1254,10 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 通知中心弹出提醒时，全屏显示自动拉起目标的ability信息。该接口为预留接口，暂不支持使用。
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -877,29 +1273,29 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| reminderType | [ReminderType](#remindertype) | 是 | 指明代理提醒类型。 |
-| actionButton | [[ActionButton?, ActionButton?, ActionButton?]](#actionbutton) | 否 | 弹出的提醒通知中显示的按钮。<br>-普通应用：最多支持两个按钮。<br>-系统应用：API9最多支持两个按钮，在API10开始最多支持三个按钮。 |
-| wantAgent | [WantAgent](#wantagent) | 否 | 点击通知后需要跳转的目标ability信息。 |
-| maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagent) | 否 | 提醒到达时，全屏显示自动拉起目标的ability信息。如果设备正在使用中，则弹出一个通知横幅框。 <br> 说明：该接口为预留接口，暂不支持使用。|
-| ringDuration | number | 否 | 指明响铃时长（单位：秒），默认1秒。 |
-| snoozeTimes | number | 否 | 指明延时提醒次数，默认0次(不适用于倒计时提醒类型)。 |
-| timeInterval | number | 否 | 执行延时提醒间隔（单位：秒），最少5分钟(不适用于倒计时提醒类型)。 |
-| title | string | 否 | 指明提醒标题。 |
-| titleResourceId<sup>18+</sup> | number | 否 | 指明提醒标题的资源ID。 |
-| content | string | 否 | 指明提醒内容。 |
-| contentResourceId<sup>18+</sup> | number | 否 | 指明提醒内容的资源ID。 |
-| expiredContent | string | 否 | 指明提醒过期后需要显示的内容。 |
-| expiredContentResourceId<sup>18+</sup> | number | 否 | 指明提醒过期后内容的资源ID。 |
-| snoozeContent | string | 否 | 指明延时提醒时需要显示的内容(不适用于倒计时提醒类型)。 |
-| snoozeContentResourceId<sup>18+</sup> | number | 否 | 指明延时提醒内容的资源ID。 |
-| notificationId | number | 否 | 指明提醒使用的通知的id号，需开发者传入，相同id号的提醒会覆盖。 |
-| groupId<sup>11+</sup> | string | 否 | 指明提醒使用相同的组id。相同组id中，一个提醒被点击不在提醒后，组内其他提醒也会被取消。 |
-| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 指明提醒的通道渠道类型。 |
-| tapDismissed<sup>10+</sup> | boolean | 否 | 通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> - true：点击通知消息或通知按钮后，自动删除当前通知。<br> - false：点击通知消息或通知按钮后，保留当前通知。 |
-| autoDeletedTime<sup>10+</sup> | number | 否 | 自动清除的时间，具体请参考[NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
-| snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 指明延时提醒的通道渠道类型(不适用于倒计时提醒类型)。 |
-| customRingUri<sup>11+</sup> | string | 否 | 指明自定义提示音的uri，提示音文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。 |
-| ringChannel<sup>20+</sup> | [RingChannel](#ringchannel20) | 否 | 指明自定义提示音的音频播放通道，默认为闹钟通道。|
+| reminderType | [ReminderType](#remindertype) | 是 | 指明代理提醒类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| actionButton | ArkTS-Dyn: [[ActionButton?, ActionButton?, ActionButton?]](#actionbutton) <br> ArkTS-Sta: Array\<[ActionButton](#actionbutton)> | 否 | 弹出的提醒通知中显示的按钮。<br>-普通应用：最多支持两个按钮。<br>-系统应用：API9最多支持两个按钮，在API10开始最多支持三个按钮。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| wantAgent | [WantAgent](#wantagent) | 否 | 点击通知后需要跳转的目标ability信息。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagent) | 否 | 提醒到达时，全屏显示自动拉起目标的ability信息。如果设备正在使用中，则弹出一个通知横幅框。 <br> 说明：该接口为预留接口，暂不支持使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| ringDuration | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 指明响铃时长（单位：秒），默认1秒。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| snoozeTimes | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明延时提醒次数，默认0次(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| timeInterval | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 执行延时提醒间隔（单位：秒），最少5分钟(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| title | string | 否 | 指明提醒标题。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| titleResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明提醒标题的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
+| content | string | 否 | 指明提醒内容。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| contentResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明提醒内容的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
+| expiredContent | string | 否 | 指明提醒过期后需要显示的内容。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| expiredContentResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明提醒过期后内容的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
+| snoozeContent | string | 否 | 指明延时提醒时需要显示的内容(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| snoozeContentResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明延时提醒内容的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
+| notificationId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明提醒使用的通知的id号，需开发者传入，相同id号的提醒会覆盖。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| groupId<sup>11+</sup> | string | 否 | 指明提醒使用相同的组id。相同组id中，一个提醒被点击不在提醒后，组内其他提醒也会被取消。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 指明提醒的通道渠道类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| tapDismissed<sup>10+</sup> | boolean | 否 | 通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> - true：点击通知消息或通知按钮后，自动删除当前通知。<br> - false：点击通知消息或通知按钮后，保留当前通知。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| autoDeletedTime<sup>10+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 自动清除的时间，具体请参考[NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 指明延时提醒的通道渠道类型(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| customRingUri<sup>11+</sup> | string | 否 | 指明自定义提示音的uri，提示音文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| ringChannel<sup>20+</sup> | [RingChannel](#ringchannel20) | 否 | 指明自定义提示音的音频播放通道，默认为闹钟通道。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## ReminderRequestCalendar
 
@@ -911,11 +1307,11 @@ ReminderRequestCalendar extends ReminderRequest
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dateTime | [LocalDateTime](#localdatetime) | 是 | 指明提醒的目标时间。 |
-| repeatMonths | Array\<number> | 否 | 指明重复提醒的月份。 |
-| repeatDays | Array\<number> | 否 | 指明重复提醒的日期。 |
-| daysOfWeek<sup>11+</sup> | Array\<number> | 否 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。 |
-| endDateTime<sup>12+</sup> | [LocalDateTime](#localdatetime) | 否 | 指明提醒的结束时间。 |
+| dateTime | [LocalDateTime](#localdatetime) | 是 | 指明提醒的目标时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| repeatMonths | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 指明重复提醒的月份。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| repeatDays | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 指明重复提醒的日期。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| daysOfWeek<sup>11+</sup> | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| endDateTime<sup>12+</sup> | [LocalDateTime](#localdatetime) | 否 | 指明提醒的结束时间。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 
 ## ReminderRequestAlarm
@@ -926,11 +1322,15 @@ ReminderRequestAlarm extends ReminderRequest
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| hour | number | 是 | 指明提醒的目标时刻。 |
-| minute | number | 是 | 指明提醒的目标分钟。 |
-| daysOfWeek | Array\<number> | 否 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。 |
+| hour | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指明提醒的目标时刻。 |
+| minute | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指明提醒的目标分钟。 |
+| daysOfWeek | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。 |
 
 
 ## ReminderRequestTimer
@@ -941,9 +1341,13 @@ ReminderRequestTimer extends ReminderRequest
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | number | 是 | 指明倒计时的秒数。 |
+| triggerTimeInSeconds | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 指明倒计时的秒数。 |
 
 
 ## LocalDateTime
@@ -952,14 +1356,18 @@ ReminderRequestTimer extends ReminderRequest
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| year | number | 是 | 年 |
-| month | number | 是 | 月，取值范围是[1, 12]。 |
-| day | number | 是 | 日，取值范围是[1, 31]。 |
-| hour | number | 是 | 时，取值范围是[0, 23]。 |
-| minute | number | 是 | 分，取值范围是[0, 59]。 |
-| second | number | 否 | 秒，取值范围是[0, 59]。 |
+| year | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 年。 |
+| month | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 月，取值范围是[1, 12]。 |
+| day | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 日，取值范围是[1, 31]。 |
+| hour | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 时，取值范围是[0, 23]。 |
+| minute | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 分，取值范围是[0, 59]。 |
+| second | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 秒，取值范围是[0, 59]。 |
 
 ## ReminderInfo<sup>12+</sup>
 
@@ -967,8 +1375,12 @@ ReminderRequestTimer extends ReminderRequest
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型                                | 只读 | 可选 | 说明                 |
 | ----------- | ----------------------------------- | ---- | ---- | -------------------- |
-| reminderId  | number                              | 否   | 否   | 发布提醒后返回的id。 |
-| reminderReq | [ReminderRequest](#reminderrequest) | 否   | 否   | 代理提醒对象。       |
+| reminderId  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 否   | 发布提醒后返回的id。 |
+| reminderReq | [ReminderRequest](#reminderrequest) | 否   | 否   | 代理提醒对象。 |
 

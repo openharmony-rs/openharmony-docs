@@ -4,9 +4,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口请参见[@ohos.reminderAgentManager (后台代理提醒)](js-apis-reminderAgentManager.md)。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口请参见[@ohos.reminderAgentManager (后台代理提醒)](js-apis-reminderAgentManager.md)。
 
 
 ## 导入模块
@@ -23,7 +25,7 @@ import reminderAgentManager from '@ohos.reminderAgentManager';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| ACTION_BUTTON_TYPE_CUSTOM<sup>10+</sup>  | 2 | 表示自定义的按钮。 |
+| ACTION_BUTTON_TYPE_CUSTOM<sup>10+</sup>  | 2 | 表示自定义的按钮。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## ActionButton
 
@@ -33,8 +35,8 @@ import reminderAgentManager from '@ohos.reminderAgentManager';
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wantAgent<sup>10+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | 否 | 点击按钮跳转的ability信息。 |
-| dataShareUpdate<sup>11+</sup> | [DataShareUpdate](#datashareupdate11) | 否 | 点击按钮将更新应用数据库。 |
+| wantAgent<sup>10+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | 否 | 点击按钮跳转的ability信息。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| dataShareUpdate<sup>11+</sup> | [DataShareUpdate](#datashareupdate11) | 否 | 点击按钮将更新应用数据库。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## DataShareUpdate<sup>11+</sup>
 
@@ -43,11 +45,14 @@ import reminderAgentManager from '@ohos.reminderAgentManager';
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | uri | string | 是 | 数据使用的URI，是跨应用数据访问的唯一标识。 |
-| equalTo | Record<string, number \| string \| boolean> | 是 | 指示筛选条件，当前仅支持通过等于筛选。|
+| equalTo | ArkTS-Dyn: Record<string, number \| string \| boolean> <br> ArkTS-Sta: Record<string, double \| string \| boolean> | 是 | 指示筛选条件，当前仅支持通过等于筛选。 |
 | value | [ValueBucket](../apis-arkdata/js-apis-data-valuesBucket.md#valuesbucket) | 是 | 指示要更新的数据。 |
 
 ## ReminderRequestCalendar
@@ -58,4 +63,4 @@ import reminderAgentManager from '@ohos.reminderAgentManager';
 
 | 名称                         | 类型                                                     | 必填 | 说明                                               |
 | ---------------------------- | -------------------------------------------------------- | ---- | -------------------------------------------------- |
-| rruleWantAgent<sup>12+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | 否   | 自定义重复日程，指明需要拉起的 Service Extension。 |
+| rruleWantAgent<sup>12+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | 否   | 自定义重复日程，指明需要拉起的 Service Extension。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
