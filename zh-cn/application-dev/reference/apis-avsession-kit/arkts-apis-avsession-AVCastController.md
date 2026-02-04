@@ -1386,7 +1386,7 @@ aVCastController.on('validCommandChange', (validCommands: avSession.AVCastContro
 
 ## off('validCommandChange')<sup>11+</sup>
 
-off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>): void
+off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>)
 
 取消会话有效命令变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
