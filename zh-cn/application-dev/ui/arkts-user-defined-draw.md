@@ -206,7 +206,7 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
        {
            // 注册自定义事件监听器。
            nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
-           // 声明自定义事件并传递自身作为自定义数据。
+           // 声明自定义事件并转递自身作为自定义数据。
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW, 0, this);
            nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND, 0, this);
@@ -226,15 +226,18 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
        }
    
    private:
-       // ···
+       int32_t NUM_2 = 2;
+       int32_t NUM_3 = 3;
+       int32_t NUM_4 = 4;
+       int32_t NUM_5 = 5;
        static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event)
        {
            // 获取组件实例对象，调用相关实例方法。
-           // ···
+           // ...
            auto customNode = reinterpret_cast<ArkUICustomNode *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
            auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
            switch (type) {
-               //绘制层级由低到高。
+               // 绘制层级由低到高。
                case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_BEHIND:
                    customNode->OnDrawBehind(event);
                    break;
@@ -244,7 +247,7 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
                case ARKUI_NODE_CUSTOM_EVENT_ON_DRAW_FRONT:
                    customNode->OnDrawFront(event);
                    break;
-               // ···
+               // ...
                default:
                    break;
            }
@@ -322,7 +325,7 @@ ArkUI_NodeHandle test_draw(ArkUI_NativeNodeAPI_1 *nodeAPI)
            OH_Drawing_BrushDestroy(brush);
            OH_Drawing_PathDestroy(path);
        }
-       // ···
+       // ...
    };
    
    } // namespace NativeModule
