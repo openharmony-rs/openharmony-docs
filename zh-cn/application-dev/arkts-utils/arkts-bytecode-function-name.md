@@ -64,11 +64,11 @@ function longFuncName() { // longFuncName的函数名为"#*#longFuncName"，其�
 
 ``` TypeScript
 namespace A {
-  function bar() { } // bar的函数名为"#&A*#bar"。
+  function bar() { } // bar的函数名为"#&A*#bar"
 }
 
 namespace A {
-  function foo() { } // foo的函数名为"#&A^1*#foo"，其中"^1" 为重名序号。
+  function foo() { } // foo的函数名为"#&A^1*#foo"，其中"^1" 为重名序号
 }
 ```
 ### 原函数名
