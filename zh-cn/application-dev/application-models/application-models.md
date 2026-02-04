@@ -35,11 +35,11 @@
 
 4. 应用任务管理模型（仅对系统应用开放）
 
-   应用任务管理模型（仅对系统应用开放）定义任务（Mission）的创建和销毁方式，以及任务与组件间的关系。
+   应用任务管理模型定义任务（Mission）的创建和销毁方式，以及任务与组件间的关系。
 
-   **定义**：任务是用户使用一个应用组件实例的记录。每次用户启动一个新的应用组件实例，都会生成一个新的任务。
+   任务是用户使用一个应用组件实例的记录。每次用户启动一个新的应用组件实例，都会生成一个新的任务。
 
-   **示例**：用户启动一个视频应用，在"最近任务"界面可以看到视频应用这个任务。当用户点击这个任务时，系统会把该任务切换到前台。如果这个视频应用中的视频编辑功能也是通过应用组件编写的，在用户启动视频编辑功能时，会创建视频编辑的应用组件实例，在"最近任务"界面中将会展示视频应用、视频编辑两个任务。
+   例如，用户启动一个视频应用，在"最近任务"界面可以看到视频应用这个任务。当用户点击这个任务时，系统会把该任务切换到前台。如果这个视频应用中的视频编辑功能也是通过应用组件编写的，在用户启动视频编辑功能时，会创建视频编辑的应用组件实例，在"最近任务"界面中将会展示视频应用、视频编辑两个任务。
 
 5. 应用配置文件
 
@@ -66,7 +66,7 @@
 | 项目 | FA模型 | Stage模型 |
 | -------- | -------- | -------- |
 | **应用组件** | 1.&nbsp;组件分类<br/>![fa-model-component](figures/fa-model-component.png)&nbsp;&nbsp;&nbsp;-&nbsp;PageAbility组件：包含UI，提供展示UI的能力。详细介绍请参见[PageAbility组件概述](pageability-overview.md)。<br/>&nbsp;&nbsp;&nbsp;-&nbsp;ServiceAbility组件：提供后台服务的能力，无UI。详细介绍请参见[ServiceAbility组件概述](serviceability-overview.md)。<br/>&nbsp;&nbsp;&nbsp;-&nbsp;DataAbility组件：提供数据分享的能力，无UI。详细介绍请参见[DataAbility组件概述](dataability-overview.md)。<br/>2.&nbsp;开发方式<br/>&nbsp;&nbsp;&nbsp;通过导出匿名对象、固定入口文件的方式指定应用组件。开发者无法进行派生，不利于扩展能力。 | 1.&nbsp;组件分类<br/>![stage-model-component](figures/stage-model-component.png)&nbsp;&nbsp;&nbsp;-&nbsp;UIAbility组件：包含UI，提供展示UI的能力，主要用于和用户交互。详细介绍请参见[UIAbility组件概述](uiability-overview.md)。<br/>&nbsp;&nbsp;&nbsp;-&nbsp;ExtensionAbility组件：提供特定场景（如卡片、输入法）的扩展能力，满足更多的使用场景。详细介绍请参见[ExtensionAbility组件概述](extensionability-overview.md)。<br/>2.&nbsp;开发方式<br/>&nbsp;&nbsp;&nbsp;采用面向对象的方式，将应用组件以类接口的形式开放给开发者，可以进行派生，利于扩展能力。 |
-| **进程模型** | 有两类进程：<br/>1.&nbsp;主进程<br/>2.&nbsp;渲染进程<br/>详细介绍请参见[进程模型](process-model-fa.md)。 | 包含主进程、ExtensionAbility进程、渲染进程等基本进程类型，以及其他进程类型。<br/>详细介绍请参见[进程模型](process-model-stage.md)。 |
+| **进程模型** | 有两类进程：<br/>1.&nbsp;主进程<br/>2.&nbsp;渲染进程<br/>详细介绍请参见[进程模型](process-model-fa.md)。 | 有三类进程：<br/>1.&nbsp;主进程<br/>2.&nbsp;ExtensionAbility进程<br/>3.&nbsp;渲染进程<br/>详细介绍请参见[进程模型](process-model-stage.md)。 |
 | **线程模型** | 1.&nbsp;ArkTS引擎实例的创建<br/>&nbsp;&nbsp;&nbsp;一个进程可以运行多个应用组件实例，每个应用组件实例分别运行在单独的ArkTS引擎实例中。<br/>2.&nbsp;线程模型<br/>&nbsp;&nbsp;&nbsp;每个ArkTS引擎实例都在一个单独线程（非主线程）上创建，主线程没有ArkTS引擎实例。<br/>3.&nbsp;进程内对象共享：不支持。<br/>详细介绍请参见[线程模型](thread-model-fa.md)。 | 1.&nbsp;ArkTS引擎实例的创建<br/>&nbsp;&nbsp;&nbsp;一个进程可以运行多个应用组件实例，所有应用组件实例共享一个ArkTS引擎实例。<br/>2.&nbsp;线程模型<br/>&nbsp;&nbsp;&nbsp;ArkTS引擎实例在主线程上创建。<br/>3.&nbsp;进程内对象共享：支持。<br/>详细介绍请参见[线程模型](thread-model-stage.md)。 |
 |<!--DelRow--> **任务管理模型** | -&nbsp;每个PageAbility组件实例创建一个任务。<br/>-&nbsp;任务会持久化存储，直到超过最大任务个数（根据产品配置自定义）或者用户主动删除任务。<br/>-&nbsp;PageAbility组件之间不会形成栈的结构。 | -&nbsp;每个UIAbility组件实例创建一个任务。<br/>-&nbsp;任务会持久化存储，直到超过最大任务个数（根据产品配置自定义）或者用户主动删除任务。<br/>-&nbsp;UIAbility组件之间不会形成栈的结构。 |
 | **应用配置文件** | 使用config.json描述应用信息、HAP信息和应用组件信息。<br/>详细介绍请参见[应用配置文件概述（FA模型）](../quick-start/application-configuration-file-overview-fa.md)。 | 使用app.json5描述应用信息，module.json5描述HAP信息、应用组件信息。<br/>详细介绍请参见[应用配置文件概述（Stage模型）](../quick-start/application-configuration-file-overview-stage.md)。 |
