@@ -634,6 +634,7 @@ export struct SwiperExample {
 }
 ```
 启动程序后，先按start按钮，此时只有swipe缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
+
 日志输出信息如下：
 
 ```text
