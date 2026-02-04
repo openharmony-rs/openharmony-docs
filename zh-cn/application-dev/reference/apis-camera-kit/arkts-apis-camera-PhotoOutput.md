@@ -112,7 +112,7 @@ capture(setting: PhotoCaptureSetting, callback: AsyncCallback\<void\>): void
 
 | 参数名      | 类型                                         | 必填 | 说明                  |
 | -------- | ------------------------------------------- | ---- | -------------------- |
-| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按默认无参处理。             |
+| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按[无参拍照](arkts-apis-camera-PhotoOutput.md#capture)处理。             |
 | callback | AsyncCallback\<void\>                        | 是   | 回调函数，用于获取结果。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。  |
 
 **错误码：**
@@ -166,7 +166,7 @@ capture(setting: PhotoCaptureSetting): Promise\<void\>
 
 | 参数名     | 类型                                         | 必填 | 说明      |
 | ------- | ------------------------------------------- | ---- | -------- |
-| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按默认无参处理。 |
+| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | 是   | 拍照设置，传入undefined类型数据按[无参拍照](arkts-apis-camera-PhotoOutput.md#capture-1)处理。 |
 
 **返回值：**
 
