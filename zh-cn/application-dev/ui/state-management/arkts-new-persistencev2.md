@@ -475,6 +475,7 @@ class PersistClass {
 ### globalConnect支持集合的类型
 
 集合类型是指`Array<V>`、`Map<K, V>`、`Set<V>`、`collections.Array<V>`、`collections.Map<K, V>`、`collections.Set<V>`。
+
 其中，`Map<K, V>`和`collections.Map<k, V>`中的key值类型（`K`）是指`string`或`number`类型。
 
 `Array<V>`、`Map<K, V>`和 `Set<V>`中，`V`的类型包括：`boolean`、`number`、`string`、`Date`、`Number`、`Boolean`、`String`、interface类型和class类型。
