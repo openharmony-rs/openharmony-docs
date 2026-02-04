@@ -284,7 +284,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 }
 ```
 
-## addMetadataObjectTypes<sup>23</sup> 
+## addMetadataObjectTypes<sup>23+</sup> 
 
 addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
@@ -326,7 +326,7 @@ function addMetadataObjectTypes(metadataOutput: camera.MetadataOutput, types: Ar
 }
 ```
 
-## removeMetadataObjectTypes<sup>23</sup> 
+## removeMetadataObjectTypes<sup>23+</sup> 
 
 removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
