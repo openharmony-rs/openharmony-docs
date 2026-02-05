@@ -16,23 +16,28 @@
 接口具体使用方法和说明请参考[IndexUtil](../reference/apis-localization-kit/js-apis-i18n.md#indexutil8)的API文档。
 
 1. 导入模块。
-   ```ts
-   import { i18n, intl } from '@kit.LocalizationKit';
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/MultilingualSorting.ets) -->
+   
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
    ```
-   <!-- [import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/MultilingualSorting.ets) -->
 
 2. 获取索引列表和索引值。
-   ```ts
+
+   <!-- @[create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/MultilingualSorting.ets) -->
+   
+   ``` TypeScript
    // 创建索引
    let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
    let indexList = indexUtil.getIndexList(); // indexList = ['…', 'A', 'B', 'C', ... 'X', 'Y', 'Z', '…']
-
+   
    // 多语言index混排
    indexUtil.addLocale('ru-RU');
    // indexList = ['…', 'A', 'B', 'C', ... 'X', 'Y', 'Z', '…', 'А', 'Б', 'В', ... 'Э', 'Ю', 'Я', '…']
    indexList = indexUtil.getIndexList();
-
+   
    // 获取字符串的索引值
    let index = indexUtil.getIndex('你好'); // index = 'N'
    ```
-   <!-- [create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/MultilingualSorting.ets) -->
+   

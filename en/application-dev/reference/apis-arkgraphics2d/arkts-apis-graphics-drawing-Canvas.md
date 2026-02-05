@@ -6,6 +6,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+A carrier that carries the drawn content and drawing status.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -13,8 +15,6 @@
 > - This module uses the physical pixel unit, px.
 >
 > - This module operates under a single-threaded model. The caller needs to manage thread safety and context state transitions.
-
-A carrier that carries the drawn content and drawing status.
 
 > **NOTE**
 >
@@ -30,7 +30,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 constructor(pixelmap: image.PixelMap)
 
-Creates a **Canvas** object that uses a PixelMap as the drawing target.
+Creates a **Canvas** object that uses a **PixelMap** as the drawing target.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -40,7 +40,7 @@ Creates a **Canvas** object that uses a PixelMap as the drawing target.
 
 | Name  | Type                                        | Mandatory| Description          |
 | -------- | -------------------------------------------- | ---- | -------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap used to create the object.|
+| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** used to create the object.|
 
 **Error codes**
 
@@ -503,7 +503,7 @@ Draws an image. The coordinates of the upper left corner of the image are (left,
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap.                 |
+| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** of an image.                 |
 | left     | number                                       | Yes  | X coordinate of the upper left corner of the image. The value is a floating point number.|
 | top      | number                                       | Yes  | Y coordinate of the upper left corner of the image. The value is a floating point number.|
 | samplingOptions<sup>12+</sup>  | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)  | No | Sampling options. By default, the **SamplingOptions** object created using the no-argument constructor is used.|
@@ -566,7 +566,7 @@ Draws an image onto a specified area of the canvas.
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap.                |
+| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** of an image.                |
 | dstRect     | [common2D.Rect](js-apis-graphics-common2D.md#rect)                               | Yes  | **Rectangle** object, which specifies the area of the canvas onto which the image will be drawn.|
 | samplingOptions     | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)                           | No  | Sampling options. By default, the **SamplingOptions** object created using the no-argument constructor is used.|
 
@@ -629,7 +629,7 @@ Draws a portion of an image onto a specified area of the canvas.
 
 | Name  | Type                                        | Mandatory| Description                           |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap.                |
+| pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** of an image.                |
 | srcRect     | [common2D.Rect](js-apis-graphics-common2D.md#rect)                               | Yes  | **Rectangle** object, which specifies the portion of the image to draw.|
 | dstRect     | [common2D.Rect](js-apis-graphics-common2D.md#rect)                               | Yes  | **Rectangle** object, which specifies the area of the canvas onto which the image will be drawn.|
 | samplingOptions     | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)                           | No  | Sampling options. By default, the **SamplingOptions** object created using the no-argument constructor is used.|
@@ -803,11 +803,11 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-## drawPixelMapMesh<sup>12+</sup>
+## drawVertices<sup>23+</sup>
 
-drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number, vertices: Array\<number>, vertOffset: number, colors: Array\<number>, colorOffset: number): void
+drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<common2D.Point\>, texs: Array\<common2D.Point\> \| null, colors: Array\<number\> \| null, indexCount: number, indices: Array\<number\> \| null, mode: BlendMode): void
 
-Draws a PixelMap based on a mesh, where mesh vertices are evenly distributed across the PixelMap. (This API works with brushes but not pens.)
+Draws a triangle mesh described by the vertex array.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -815,7 +815,66 @@ Draws a PixelMap based on a mesh, where mesh vertices are evenly distributed acr
 
 | Name     | Type           | Mandatory| Description                           |
 | ----------- | -------------  | ---- | ------------------------------- |
-| pixelmap    | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap to draw.|
+| vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | Yes  | Connection mode of the vertex to be drawn.|
+| vertexCount   | number         | Yes  | Number of elements in the vertex array. The value is an integer greater than or equal to 3.|
+| positions  | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12)        | Yes  | Array that holds the position of every vertex. The array cannot be null and its length must be equal to the value of **vertexCount**.|
+| texs    | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12) \| null  | Yes  | Array of texture space coordinates corresponding to the vertices. This array can be null, which indicates that the texture space is invalid. If not null, the length of the array must be equal to the value of **vertexCount**.|
+| colors      | Array\<number> \| null | Yes  | Array of colors corresponding to the vertices, which is used for interpolation in triangles. This array can be null, which indicates that the color effect is the default color set by the user. If not null, the length of the array must be equal to the value of **vertexCount**.|
+| indexCount  | number         | Yes  | Number of indices. The value can be **0** or a value greater than or equal to 3. If the value is not **0**, the value must be an integer greater than or equal to 3.|
+| indices  | Array\<number> \| null         | Yes  | Array of vertex indices. The value can be null. In this case, the value of **indexCount** is ignored (an integer greater than or equal to 3 or equal to 0). If not null, the value length must be the same as that of **indexCount**.|
+| mode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | Yes  | Color blend mode.|
+
+**Error codes**
+
+For details about the following error code, see [Drawing and Display Error Codes](errorcode-drawing.md).
+
+| ID| Error Message|
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**Example**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext): void {
+    const canvas = context.canvas;
+    let pointsArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    pointsArray.push(point1);
+    pointsArray.push(point2);
+    pointsArray.push(point3);
+    let texsArray = new Array<common2D.Point>();
+    const texs1: common2D.Point = { x: 0.0, y: 0.0 };
+    const texs2: common2D.Point = { x: 1.0, y: 0.0 };
+    const texs3: common2D.Point = { x: 0.5, y: 1.0 };
+    texsArray.push(texs1);
+    texsArray.push(texs2);
+    texsArray.push(texs3);
+    const colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
+    const indices = [0, 1, 2];
+    canvas.drawVertices(drawing.VertexMode.TRIANGLESSTRIP_VERTEXMODE, 3, pointsArray, texsArray, colors, 3, indices,drawing.BlendMode.SRC);
+  }
+}
+```
+
+## drawPixelMapMesh<sup>12+</sup>
+
+drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number, vertices: Array\<number>, vertOffset: number, colors: Array\<number>, colorOffset: number): void
+
+Draws a **PixelMap** based on a mesh, with the mesh vertices evenly distributed across the **PixelMap**. (This API works with brushes but not pens.)
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Parameters**
+
+| Name     | Type           | Mandatory| Description                           |
+| ----------- | -------------  | ---- | ------------------------------- |
+| pixelmap    | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** to draw.|
 | meshWidth   | number         | Yes  | Number of columns in the mesh. The value is an integer greater than 0.|
 | meshHeight  | number         | Yes  | Number of rows in the mesh. The value is an integer greater than 0.|
 | vertices    | Array\<number> | Yes  | Array of vertices, which specify the position to draw. The value is a floating-point array and the size must be ((meshWidth+1) * (meshHeight+1) + vertOffset) * 2.|
@@ -1052,7 +1111,7 @@ Draws an arc on the canvas. with the start angle and sweep angle specified. If t
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | arc   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangular boundary that encapsulates the oval including the arc.|
-| startAngle      | number | Yes  | Start angle, in degrees. The value is a floating point number. When the degree is 0, the start point is located at the right end of the oval. A positive number indicates that the start point is placed clockwise, and a negative number indicates that the start point is placed counterclockwise.|
+| startAngle      | number | Yes  | Start angle, in degrees. The value is a floating point number. When the degree is **0**, the start point is located at the right end of the oval. A positive number indicates that the start point is placed clockwise, and a negative number indicates that the start point is placed counterclockwise.|
 | sweepAngle      | number | Yes  | Angle to sweep, in degrees. The value is a floating point number. A positive number indicates a clockwise sweep, and a negative value indicates a counterclockwise swipe. The valid range is from -360 degrees to 360 degrees. If the absolute value of the sweep angle exceeds 360 degrees, an ellipse is drawn.|
 
 **Error codes**
@@ -1138,7 +1197,7 @@ Draws a group of points, line segments, or polygons on the canvas, with the spec
 
 | Name | Type                                      | Mandatory  | Description       |
 | ---- | ---------------------------------------- | ---- | --------- |
-| points  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes   | Array that holds the points to draw. The length cannot be 0.  |
+| points  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | Yes   | Array that holds the points to draw. The length cannot be **0**.  |
 | mode | [PointMode](arkts-apis-graphics-drawing-e.md#pointmode12)                  | No   | Mode in which the points are drawn. The default value is **drawing.PointMode.POINTS**.|
 
 **Error codes**
@@ -1317,7 +1376,7 @@ Draws a single character. If the typeface of the current font does not support t
 
 | Name| Type               | Mandatory| Description       |
 | ------ | ------------------- | ---- | ----------- |
-| text   | string | Yes  | Single character to draw. The length of the string must be 1. |
+| text   | string | Yes  | Single character to draw. The length of the string must be **1**. |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md) | Yes  | **Font** object. |
 | x      | number | Yes  | X coordinate of the left point (red point in the figure below) of the character baseline (blue line in the figure below). The value is a floating point number.|
 | y      | number | Yes  | Y coordinate of the left point (red point in the figure below) of the character baseline (blue line in the figure below). The value is a floating point number.|
@@ -1346,8 +1405,8 @@ class DrawingRenderNode extends RenderNode {
     const font = new drawing.Font();
     font.setSize(20);
     canvas.attachBrush(brush);
-    canvas.drawSingleCharacter ("Hello", font, 100, 100);
-    canvas.drawSingleCharacter ("drawing", font, 120, 100);
+    canvas.drawSingleCharacter("H", font, 100, 100);
+    canvas.drawSingleCharacter("i", font, 120, 100);
     canvas.detachBrush();
   }
 }
@@ -1365,7 +1424,7 @@ Draws a single character with font features. If the typeface of the current font
 
 | Name| Type               | Mandatory| Description       |
 | ------ | ------------------- | ---- | ----------- |
-| text | string | Yes| Single character to draw. The length of the string must be 1.|
+| text | string | Yes| Single character to draw. The length of the string must be **1**.|
 | font   | [Font](arkts-apis-graphics-drawing-Font.md) | Yes  | **Font** object. |
 | x | number | Yes| X coordinate of the left endpoint of the drawn character baseline. The value is a floating point number.|
 | y | number | Yes| Y coordinate of the left endpoint of the drawn character baseline. The value is a floating point number.|
@@ -1396,7 +1455,7 @@ class DrawingRenderNode extends RenderNode {
     fontFeatures.push({name: 'calt', value: 0});
     canvas.attachBrush(brush);
     canvas.drawSingleCharacterWithFeatures("H", font, 100, 100, fontFeatures);
-    canvas.drawSingleCharacterWithFeatures ("i", font, 180, 100, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures("i", font, 180, 100, fontFeatures);
     canvas.detachBrush();
   }
 }
@@ -1703,7 +1762,7 @@ class DrawingRenderNode extends RenderNode {
 
 saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): number
 
-Saves the matrix and cropping region of the canvas, and allocates a PixelMap for subsequent drawing. If you call [restore](#restore12), changes made to the matrix and clipping region are discarded, and the PixelMap is drawn.
+Saves the matrix and cropping region of the canvas, and allocates a **PixelMap** for subsequent drawing. If you call [restore](#restore12), changes made to the matrix and clipping region are discarded, and the PixelMap is drawn.
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -1712,7 +1771,7 @@ Saves the matrix and cropping region of the canvas, and allocates a PixelMap for
 | Name | Type    | Mandatory  | Description        |
 | ---- | ------ | ---- | ----------------- |
 | rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null | No  | **Rect** object, which is used to limit the size of the graphics layer. The default value is the current canvas size.|
-| brush  | [Brush](arkts-apis-graphics-drawing-Brush.md) \| null | No  | **Brush** object. The alpha value, filter effect, and blend mode of the brush are applied when the PixelMap is drawn. If null is passed in, no effect is applied.|
+| brush  | [Brush](arkts-apis-graphics-drawing-Brush.md) \| null | No  | **Brush** object. The alpha value, filter effect, and blend mode of the brush are applied when the **PixelMap** is drawn. If null is passed in, no effect is applied.|
 
 **Returns**
 
@@ -2355,7 +2414,7 @@ Draws an arc on the canvas. It enables you to define the start angle, sweep angl
 | Name| Type                                              | Mandatory| Description          |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | arc   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Rectangular boundary that encapsulates the oval including the arc.|
-| startAngle      | number | Yes  | Start angle, in degrees. The value is a floating point number. When the degree is 0, the start point is located at the right end of the oval. A positive number indicates that the start point is placed clockwise, and a negative number indicates that the start point is placed counterclockwise.|
+| startAngle      | number | Yes  | Start angle, in degrees. The value is a floating point number. When the degree is **0**, the start point is located at the right end of the oval. A positive number indicates that the start point is placed clockwise, and a negative number indicates that the start point is placed counterclockwise.|
 | sweepAngle      | number | Yes  | Angle to sweep, in degrees. The value is a floating point number. A positive number indicates a clockwise sweep, and a negative value indicates a counterclockwise swipe. The swipe angle can exceed 360 degrees, and a complete ellipse is drawn.|
 | useCenter       | boolean | Yes  | Whether the start point and end point of the arc are connected to its center. The value **true** means that they are connected to the center; the value **false** means the opposite.|
 
@@ -2384,7 +2443,7 @@ class DrawingRenderNode extends RenderNode {
 
 drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D.Rect, filterMode: FilterMode): void
 
-Splits an image into nine sections using two horizontal and two vertical lines: four edge sections, four corner sections, and a central section.<br>
+Splits an image into nine sections using two horizontal and two vertical lines: four edge sections, four corner sections, and a central section. When this API is used, the anti-aliasing enablement setting does not take effect.<br>
 If the four corner sections are smaller than the target rectangle, they will be drawn in the target rectangle without scaling. Otherwise, they will be scaled to fit the target rectangle. Any remaining space will be filled by stretching or compressing the other five sections to cover the entire target rectangle.
 
 **System capability**: SystemCapability.Graphics.Drawing
@@ -2393,7 +2452,7 @@ If the four corner sections are smaller than the target rectangle, they will be 
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| pixelmap   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap to draw.|
+| pixelmap   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** to draw.|
 | center    | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Central rectangle that divides the image into nine sections by extending its four edges.|
 | dstRect  | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Target rectangle drawn on the canvas.|
 | filterMode | [FilterMode](arkts-apis-graphics-drawing-e.md#filtermode12) | Yes  | Filter mode.|
@@ -2465,7 +2524,7 @@ class DrawingRenderNode extends RenderNode {
 
 drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.Rect, filterMode: FilterMode): void
 
-Splits an image into multiple sections based on the lattice object's configuration and draws each section into the specified target rectangle on the canvas.<br>
+Splits an image into multiple sections based on the lattice object's configuration and draws each section into the specified target rectangle on the canvas. When this API is used, the anti-aliasing enablement setting does not take effect.<br>
 The intersections of even-numbered rows and columns (starting from 0) are fixed points. If the fixed lattice area fits within the target rectangle, it will be drawn without scaling. Otherwise, it will be scaled proportionally to fit the target rectangle. Any remaining space will be filled by stretching or compressing the remaining sections to cover the entire target rectangle.
 
 **System capability**: SystemCapability.Graphics.Drawing
@@ -2474,7 +2533,7 @@ The intersections of even-numbered rows and columns (starting from 0) are fixed 
 
 | Name| Type   | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| pixelmap   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | PixelMap to draw.|
+| pixelmap   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | **PixelMap** to draw.|
 | lattice  | [Lattice](arkts-apis-graphics-drawing-Lattice.md) | Yes  | Lattice object.|
 | dstRect    | [common2D.Rect](js-apis-graphics-common2D.md#rect) | Yes  | Target rectangle.|
 | filterMode | [FilterMode](arkts-apis-graphics-drawing-e.md#filtermode12) | Yes  | Filter mode.|

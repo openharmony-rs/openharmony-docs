@@ -51,11 +51,11 @@ ChipGroup({
 | items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | 是   | @Require &nbsp;@Prop | 每个Chip的特定属性，参考[ChipGroupItemOptions[]](#chipgroupitemoptions)类型。<br/>若为undefined时，ChipGroup默认为空。            |
 | itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | @Prop | `Chip`的`style`属性，如颜色，大小等，参考[ChipItemStyle](#chipitemstyle)类型。<br/>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>值为undefined时，按默认值处理。 |
 | selectedIndexes | Array&lt;number&gt;                             | 否   | @Prop | 被选中Chip的索引。<br/>默认值：[0]<br>值为undefined时，按默认值处理。  |
-| multiple        | boolean                                         | 否   | @Prop | 是否选中多个芯片。<br/>`true`：支持多个芯片选中；`false`：仅支持单个芯片选中。<br>默认值：`false`<br>值为undefined时，按默认值处理。 |
+| multiple        | boolean                                         | 否   | @Prop | 是否选中多个`Chip`。<br/>`true`：支持多个`Chip`选中；`false`：仅支持单个`Chip`选中。<br>默认值：`false`<br>值为undefined时，按默认值处理。 |
 | chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | @Prop | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br/>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>单位：vp<br/>值为undefined时，按默认值处理。 |
 | chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | @Prop | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。<br/>默认值：{ top: 14, bottom: 14 }<br>单位：vp<br/>值为undefined时，按默认值处理。 |
 | onChange        | Callback\<Array\<number>>  | 否   | -  | Chip状态改变时的回调方法。<br/>若为undefined，表示解绑事件。                                                              |
-| suffix          | Callback\<void\>                                        | 否   | @BuilderParam | 最右侧的builder由开发者自定义，需引入[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。 |
+| suffix          | Callback\<void\>                                        | 否   | @BuilderParam | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。 |
 
 > **说明：**
 >
@@ -84,7 +84,7 @@ ChipGroupItemOptions定义每个Chip的非通用属性。
 | suffixImageIcon<sup>14+</sup> | [SuffixImageIconOptions](#suffiximageiconoptions14) | 否 | 是 | 后缀Image图标属性。<br>默认值：不显示后缀Image图标。<br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsuffixsymbolglyphoptions14) | 否 | 是 | 后缀Symbol图标属性。<br>默认值：后缀Symbol图标无功能。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | closeOptions<sup>14+</sup> | [CloseOptions](ohos-arkui-advanced-Chip.md#closeoptions14) | 否 | 是 | 默认删除图标的无障碍朗读功能属性。 <br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | ChipGroup中Chip项的无障碍描述。此描述用于向用户详细解释ChipGroup中Chip项，开发人员应为ChipGroup中Chip项的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从ChipGroup中Chip项的属性和无障碍文本中直接获知时。如果ChipGroup中Chip项同时具备文本属性和无障碍说明属性，当ChipGroup中Chip项被选中时，系统将首先播报ChipGroup中Chip项的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | ChipGroup中Chip项的无障碍描述。此描述用于向用户详细解释ChipGroup中Chip项，开发人员应为ChipGroup中Chip项的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从ChipGroup中Chip项的属性和无障碍文本中直接获知时。如果ChipGroup中Chip项同时具备文本属性和无障碍说明属性，当ChipGroup中Chip项被选中时，系统将首先播报ChipGroup中Chip项的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityLevel<sup>14+</sup> | string | 否 | 是 | ChipGroup中Chip项无障碍重要性。用于控制ChipGroup中Chip项是否可被无障碍辅助服务所识别。<br>支持的值为:<br>"auto"：ChipGroup中Chip项会转换为“yes”。<br>"yes"：ChipGroup中Chip项可被无障碍辅助服务所识别。<br>"no"：ChipGroup中Chip项不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：ChipGroup中Chip项及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
 
@@ -176,7 +176,7 @@ ChipGroup的尾部图标选项类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | --- | ---- | ---- |
-| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 否 | 尾部图标属性。|
+| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 否 | 尾部图标属性。|
 | action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 否 | 尾部图标响应事件。|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标的无障碍文本属性。用于为用户进一步说明尾部图标，开发人员可为尾部图标的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从尾部图标本身属性与无障碍文本中了解到时。若尾部图标既拥有文本属性又拥有无障碍说明属性，则尾部图标被选中时，先播报尾部图标的文本属性，再播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标的无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
@@ -194,11 +194,11 @@ ChipGroup的尾部图标选项类型。
 
 | 名称     | 类型                    | 必填 | 装饰器类型 | 说明                                                              |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| [ SymbolItemOptions](#symbolitemoptions14)> | 是   | @Require &nbsp;@Prop | 自定义builder items。|
+| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | 是   | @Require &nbsp;@Prop | 自定义builder items。|
 
 > **说明：**
 >
-> 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和effectStrategy设置动效。
+> 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和[effectStrategy](./ts-basic-components-symbolGlyph.md#effectstrategy)设置动效。
 >
 
 ## IconItemOptions
@@ -211,7 +211,7 @@ ChipGroup的尾部图标选项类型。
 
 | 名称     | 类型                            | 只读 | 可选 | 说明                                    |
 | -------- | --------------                 | ---- | ------------------------------           | ------------------------------           |
-| icon     | [IconOptions](#iconoptions)    | 否  | 否  | 自定义Builder icon。<br/>Chip大小是ChipSize.SMALL时，suffix默认值：{width: 16,height: 16}。<br/>Chip大小是ChipSize.NORMAL时，suffix默认值：{width: 24,height: 24}。</br> 如果想动态修改size，那么必须在引入[IconGroupSuffix](#icongroupsuffix)时，使用[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)类型。<br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| icon     | [IconOptions](#iconoptions)    | 否  | 否  | 自定义Builder icon。<br/>Chip大小是ChipSize.SMALL时，suffix默认值：{width: 16,height: 16}。<br/>Chip大小是ChipSize.NORMAL时，suffix默认值：{width: 24,height: 24}。</br> 如果想动态修改size，那么必须在引入[IconGroupSuffix](#icongroupsuffix)时，使用[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)类型。<br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | action   | Callback\<void>        | 否  | 否  | 自定义Builder items 的Callback<br/>为undefined时，表示解绑事件。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍文本属性。用于为用户进一步说明尾部图标，开发人员可为尾部图标的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从尾部图标本身属性与无障碍文本中了解到时。若尾部图标既拥有文本属性又拥有无障碍说明属性，则尾部图标被选中时，先播报尾部图标的文本属性，再播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -509,7 +509,7 @@ struct Index {
 
 ### 示例4（单选时无障碍朗读）
 
-该示例实现ChipGroup在单选模式下，有后缀区域和无后缀区域的屏幕朗读功能。
+该示例实现ChipGroup在单选模式下，有后缀区域和无后缀区域的屏幕朗读功能，具体播报内容为accessibilityText属性中的内容。
 
 ```typescript
 import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -571,7 +571,7 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -581,7 +581,7 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -591,7 +591,7 @@ export struct ChipGroupExample2 {
         },
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // accessibilityLevel属性设置为“no”时，accessibilityText属性和accessibilityDescription属性无效
           accessibilityDescription: '新手提醒',
           accessibilityLevel: 'no',
           action: () => {
@@ -619,7 +619,7 @@ export struct ChipGroupExample2 {
                     label: { text: '选项1' },
                     suffixImageIcon: {
                       src: $r('sys.media.save_button_picture'),
-                      accessibilityText: '保存',
+                      accessibilityText: '保存', // 播报“保存，按钮”
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
                           message: '后缀图标被点击！'
@@ -635,7 +635,7 @@ export struct ChipGroupExample2 {
                     },
                     suffixSymbolOptions: {
                       normalAccessibility: {
-                        accessibilityText: '保存'
+                        accessibilityText: '保存' // 播报“保存，按钮”
                       },
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
@@ -692,7 +692,7 @@ export struct ChipGroupExample2 {
 
 ### 示例5（多选时无障碍朗读）
 
-该示例实现了ChipGroup在多选模式下，有后缀区域和无后缀区域的屏幕朗读功能。
+该示例实现了ChipGroup在多选模式下，有后缀区域和无后缀区域的屏幕朗读功能，具体播报内容为accessibilityText属性中的内容。
 
 ```typescript
 import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -754,7 +754,7 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -764,7 +764,7 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -774,7 +774,7 @@ export struct ChipGroupExample2 {
         },
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // accessibilityLevel属性设置为“no”时，accessibilityText属性和accessibilityDescription属性无效
           accessibilityDescription: '新手提醒',
           accessibilityLevel: 'no',
           action: () => {

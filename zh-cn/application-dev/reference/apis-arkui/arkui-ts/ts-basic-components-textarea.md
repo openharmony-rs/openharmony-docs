@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -127,6 +127,22 @@ textAlign(value: TextAlign)
 >
 >  textAlign只能调整文本整体的布局，不影响字符的显示顺序。若需要调整字符的显示顺序，请参考[镜像状态字符对齐](../../../ui/arkts-internationalization.md#镜像状态字符对齐)。
 
+### textDirection<sup>23+</sup>
+
+textDirection(direction: TextDirection | undefined)
+
+指定文本排版方向，未通过该接口设置时，默认文本排版方向遵循组件布局方向。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
+
 ### caretColor
 
 caretColor(value: ResourceColor)
@@ -224,7 +240,7 @@ fontFamily(value: ResourceStr)
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。|
+| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。|
 
 > **说明：**
 >
@@ -441,6 +457,8 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 当设置自定义键盘时，可以通过绑定[onKeyPrelme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
 
+从API version 23开始，自定义键盘可以通过[setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23)开启接续，在切换至其他自定义键盘时，会直接切换，不会触发键盘关闭和拉起动画。
+
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -517,6 +535,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
 
 当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
+
 需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -631,9 +650,11 @@ fontFeature(value: string)
 | ------ | ------ | ---- | -------------- |
 | value  | string | 是   | 文字特性效果。 |
 
-Font Feature当前支持的属性见 [fontFeature属性列表](ts-basic-components-text.md#fontfeature12)。
-设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
-更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/opentype-features/
+Font Feature当前支持的属性见[fontFeature属性列表](ts-basic-components-text.md#fontfeature12)。
+
+设置Font Feature属性，Font Feature是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
+
+更多Font Feature能力介绍可参考https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop和https://sparanoid.com/lab/opentype-features/。
 ### wordBreak<sup>12+</sup>
 
 wordBreak(value: WordBreak)
@@ -784,6 +805,7 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 设置文本自适应高度的方式。
 
 当设置为TextHeightAdaptivePolicy.MAX_LINES_FIRST时，优先使用[maxLines](#maxlines10)属性来调整文本高度。如果使用maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize12)和[maxFontSize](#maxfontsize12)的范围内缩小字体以显示更多文本。
+
 组件设置为内联输入风格，编辑态与非编辑态存在字体大小不一致情况。
 
 当设置为TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST时，优先使用minFontSize属性来调整文本高度。如果使用minFontSize属性可以将文本布局在一行中，则尝试在minFontSize和maxFontSize的范围内增大字体并使用最大可能的字体大小。
@@ -1097,7 +1119,13 @@ scrollBarColor(thumbColor: ColorMetrics | undefined)
 
 compressLeadingPunctuation(enabled: Optional\<boolean>)
 
-设置是否启用行首标点符号压缩功能。
+设置是否开启行首标点符号压缩。
+
+> **说明：**
+>
+> - 行首标点符号默认不压缩。
+>
+> - 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1105,15 +1133,15 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 
 **参数：**
 
-| 参数名           | 类型             | 必填 | 说明                                            |
-| ---------------- | ------- | ---- | ----------------------------------------------- |
-| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用。|
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
 
 ### includeFontPadding<sup>23+</sup>
 
 includeFontPadding(include: Optional\<boolean>)
 
-设置是否在首行和尾行增加间距以避免文字截断。
+设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1129,7 +1157,7 @@ includeFontPadding(include: Optional\<boolean>)
 
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
-针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。
+针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。不通过该接口设置，默认行高不基于文字实际高度自适应。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1140,6 +1168,22 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。 |
+
+### selectedDragPreviewStyle<sup>23+</sup>
+
+selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
+
+设置多行文本输入框内文本拖拽时的背板样式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                             | 必填 | 说明                                                       |
+| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
 
 ## 事件
 
@@ -1389,7 +1433,9 @@ onWillAttachIME(callback: Callback\<IMEClient> | undefined)
 <!--Del-->
 在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
 
-调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+从API version 22开始，调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法可以设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
+IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1403,7 +1449,7 @@ onWillAttachIME(callback: Callback\<IMEClient> | undefined)
 
 ## TextAreaController<sup>8+</sup>
 
-TextArea组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
+TextArea组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)、[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2318,7 +2364,7 @@ struct TextAreaExample {
         .fontWeight(FontWeight.Bold)
         .fontFamily('HarmonyOS Sans')
         .inputFilter('[a-zA-Z]+', (value) => { // 只允许字母输入
-          console.error(`unsupport char ${value}`);
+          console.error(`unsupported char ${value}`);
         })
         .copyOption(CopyOptions.LocalDevice)
         .enableKeyboardOnFocus(false)
@@ -2507,7 +2553,7 @@ struct TextAreaExample {
 }
 ```
 
-![textAreaSetTextSelection](figures/textAreaSetTextSelection.gif)
+![textAreaSetTextSelection](figures/textAreaSetTextSelection.png)
 
 ### 示例19（设置文本描边）
 
@@ -2925,3 +2971,145 @@ struct Index {
 ```
 
 ![textAreaIncludeFontPadding](figures/TextArea_IncludeFontPadding.gif)
+
+### 示例29（设置文本拖拽时的背板样式）
+
+该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置文本拖拽时的背板样式。
+
+从API version 23开始，新增selectedDragPreviewStyle接口。
+
+```ts
+@Entry
+@Component
+struct TextAreaTest {
+  build() {
+    Column() {
+      TextArea({ text: 'HelloWorld', placeholder: 'please input words' })
+        .copyOption(CopyOptions.InApp)
+        .width(200)
+        .height(50)
+        .margin(150)
+        .draggable(true)
+        .selectedDragPreviewStyle({color: 'rgba(227, 248, 249, 1)'})
+    }
+    .height('100%')
+  }
+}
+```
+
+![selectedDragPreviewStyle](figures/textAreaSelectedDragPreviewStyle.png)
+
+### 示例30（删除文本框内的最后一个字符）
+
+该示例通过调用[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口删除文本框内最后一个字符。
+
+从API version 23开始，新增[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口。
+
+``` typescript
+@Entry
+@Component
+struct Page {
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({ text: 'TextArea输入框Deletebackward示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
+![textInputDeleteBackward](figures/TextArea_DeleteBackward.gif)
+
+### 示例31（设置文本排版方向）
+
+该示例通过[textDirection](#textdirection23)接口设置文本排版方向。
+
+从API version 23开始，新增textDirection接口。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = 'TextArea文本排版方向示例';
+
+  build() {
+    Column() {
+      Text('TextArea文本排版方向RTL，布局方向default')
+        .fontSize(12).width('90%')
+      TextArea({ text: this.text })
+        .width(336)
+        .height(56)
+        .margin(10)
+        .fontSize(16)
+        .textDirection(TextDirection.RTL)
+        .showCounter(true)
+        .maxLength(50)
+      Text('TextArea文本排版方向RTL，布局方向default，文本水平方向对齐方式LEFT')
+        .fontSize(12).width('90%')
+      TextArea({ text: this.text })
+        .width(336)
+        .height(56)
+        .margin(10)
+        .fontSize(16)
+        .textDirection(TextDirection.RTL)
+        .textAlign(TextAlign.LEFT)
+        .showCounter(true)
+        .maxLength(50)
+      Text('TextArea文本排版方向LTR，布局方向Rtl')
+        .fontSize(12).width('90%')
+      TextArea({ text: this.text })
+        .width(336)
+        .height(56)
+        .margin(10)
+        .fontSize(16)
+        .textDirection(TextDirection.LTR)
+        .direction(Direction.Rtl)
+        .maxLength(50)
+        .showCounter(true)
+    }.width('100%').height('100%')
+  }
+}
+```
+
+![textAreaTextDirection](figures/textAreaTextDirection.PNG)
+
+### 示例32（将指定范围的文字滚动到可视区内）
+
+本示例通过[scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23)将可视区外的文本滚动到可视区内。
+
+从API version 23开始，新增scrollToVisible接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextAreaExample {
+  @State text: string = '123456789134567891234567891234567😁😁😁😁89123456789123456789123456789123456789123456789123';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({ text: this.text, controller: this.controller })
+        .width(336)
+        .height(150)
+      Button("滚动文本到可视区").onClick(() => {
+        this.controller.scrollToVisible({ start: 110, end: 115 })
+      })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.text += this.text
+    }
+  }
+}
+```
+
+![textareascrolltovisible](figures/textarea_scroll_to_visible.gif)

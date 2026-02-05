@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-@ohos.web.webview提供Web控制能力，[Web](arkts-basic-components-web.md)组件提供网页显示的能力。
+本模块提供Web控制能力，网页显示的能力请参考[组件描述](arkts-basic-components-web.md)。
 
 <!--RP1--><!--RP1End-->
 
@@ -14,7 +14,7 @@
 >
 > - 本模块首批接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 >
 > - 静态方法必须在用户界面（UI）线程上使用。
 

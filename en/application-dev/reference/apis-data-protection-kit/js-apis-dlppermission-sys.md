@@ -39,7 +39,7 @@ Obtains the DLP sandbox gathering policy. This API uses a promise to return the 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -84,7 +84,7 @@ Obtains the DLP sandbox gathering policy. This API uses an asynchronous callback
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -142,7 +142,7 @@ Installs a DLP sandbox application for an application. This API uses a promise t
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -195,7 +195,7 @@ Installs a DLP sandbox application for an application. This API uses an asynchro
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -253,7 +253,7 @@ Uninstalls a DLP sandbox application for an application. This API uses a promise
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -304,7 +304,7 @@ Uninstalls a DLP sandbox application for an application. This API uses an asynch
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -359,7 +359,7 @@ Subscribes to a DLP sandbox uninstall event.
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -404,7 +404,7 @@ Unsubscribes from the DLP sandbox uninstall event.
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -469,7 +469,7 @@ Adds a link file to the Filesystem in Userspace (FUSE). The link file is a virtu
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -541,7 +541,7 @@ Adds a link file to the FUSE. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -618,7 +618,7 @@ Stops the read and write on the FUSE. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -688,7 +688,7 @@ Stops the read and write on the FUSE. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -766,7 +766,7 @@ Resumes the read and write on the FUSE. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -837,7 +837,7 @@ Resumes the read and write on the FUSE. This API uses an asynchronous callback t
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -922,7 +922,7 @@ Replaces a link file. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -996,7 +996,7 @@ Replaces a link file. This API uses an asynchronous callback to return the resul
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1082,7 +1082,7 @@ Deletes a link file from the FUSE. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1154,7 +1154,7 @@ Deletes a link file. This API uses an asynchronous callback to return the result
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1238,7 +1238,7 @@ Recovers the plaintext of a DLP file. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1246,7 +1246,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
-| 19100002 | Credential task error. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 | 19100005 | Credential authentication server error. |
@@ -1320,7 +1320,7 @@ Recovers the plaintext of a DLP file. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1328,7 +1328,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 | 202 | Non-system applications use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 19100001 | Invalid parameter value. |
-| 19100002 | Credential task error. |
+| 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
 | 19100005 | Credential authentication server error. |
@@ -1413,7 +1413,7 @@ Closes this **DLPFile** instance. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1485,7 +1485,7 @@ Closes this **DLPFile** instance. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -1885,6 +1885,7 @@ Represents the DLP sandbox information.
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | No| No| Index of the DLP sandbox application.|
 | tokenID | number | No| No| Token ID of the DLP sandbox application.|
+| bindAppIndex<sup>23+</sup> | number | No| Yes| Index of the DLP sandbox application to be bound.|
 
 ## DLPSandboxState
 

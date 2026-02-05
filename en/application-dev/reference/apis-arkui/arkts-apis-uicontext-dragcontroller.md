@@ -119,7 +119,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise&lt;[dragController.DragEventParam](js-apis-arkui-dragController.md#drageventparam12)&gt; | Promise used to return the result.<br>- **event**: drag event information that includes only the drag result.<br>- **extraParams**: extra information about the drag event.|
+| Promise&lt;[dragController.DragEventParam](js-apis-arkui-dragController.md#drageventparam12)&gt; | Callback used to return the result.<br>- **event**: drag event information that includes only the drag result.<br>- **extraParams**: extra information about the drag event.|
 
 **Error codes**
 
@@ -215,7 +215,9 @@ createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragIn
 
 Creates a drag action object for initiating drag and drop operations. You need to explicitly specify one or more drag previews, the drag data, and the drag handle point. If a drag operation initiated by an existing drag action object is not completed, no new object can be created, and calling the API will throw an exception. After the lifecycle of the drag action object ends, the callback functions registered on this object become invalid. Therefore, it is necessary to hold this object within a longer scope and replace the old value with a new object returned by **createDragAction** before each drag initiation.
 
-Note: You are advised to control the number of drag previews. If too many previews are passed in, the drag efficiency may be affected.
+> **NOTE**
+>
+> For optimal drag and drop performance, limit the number of drag previews.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -341,7 +343,7 @@ struct DragControllerPage {
       Button('Drag Multiple Objects').onTouch((event?: TouchEvent) => {
         if (event) {
           if (event.type == TouchType.Down) {
-            console.info("muti drag Down by listener");
+            console.info("multi drag Down by listener");
             this.customBuilders.push(() => { this.DraggingBuilder() });
             this.customBuilders.push(() => { this.DraggingBuilder() });
             this.customBuilders.push(() => { this.DraggingBuilder() });

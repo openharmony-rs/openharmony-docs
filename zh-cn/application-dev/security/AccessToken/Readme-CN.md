@@ -15,7 +15,7 @@
     - [声明权限](declare-permissions.md)
     - [向用户申请授权](request-user-authorization.md)
     - [再次向用户申请授权](request-user-authorization-second.md)
-    - [向用户申请单次授权](one-time-authorization.md)
+    - [向用户申请单次授权](one-time-authorization.md)<!--RP2--><!--RP2End-->
     - [申请受限权限](declare-permissions-in-acl.md)
   - [应用权限列表](app-permissions.md)
     - [开放权限（系统授权）](permissions-for-all.md)

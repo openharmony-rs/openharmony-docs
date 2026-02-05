@@ -34,7 +34,7 @@ Defines APIs for querying the location switch status, and starting and stopping 
 
 ### OH_Location_IsLocatingEnabled()
 
-```
+```c
 Location_ResultCode OH_Location_IsLocatingEnabled(bool* enabled)
 ```
 
@@ -58,7 +58,7 @@ Checks whether the location switch is enabled.
 
 ### OH_Location_StartLocating()
 
-```
+```c
 Location_ResultCode OH_Location_StartLocating(const Location_RequestConfig* requestConfig)
 ```
 
@@ -84,7 +84,7 @@ Starts the location process and subscribes to location changes.
 
 ### OH_Location_StopLocating()
 
-```
+```c
 Location_ResultCode OH_Location_StopLocating(const Location_RequestConfig* requestConfig)
 ```
 

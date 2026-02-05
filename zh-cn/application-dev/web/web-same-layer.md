@@ -1603,6 +1603,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
   ```
 
 - 前端页面示例：
+
   示例代码使用&lt;embed&gt;标签，若使用&lt;object&gt;标签，请在ets侧注册&lt;object&gt;标签及type类型。
   ```html
     <!--HAP's src/main/resources/rawfile/test.html-->

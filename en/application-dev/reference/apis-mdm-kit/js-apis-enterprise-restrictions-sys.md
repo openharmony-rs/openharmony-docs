@@ -42,7 +42,7 @@ Enables or disables the printing capability of the device. This API uses an asyn
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | disabled  | boolean | Yes| Operation to perform. The value **true** means to disable the printer; the value **false** means the opposite.|
 | callback | AsyncCallback\<void> | Yes| Callback invoked to return the result. <br>If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -97,7 +97,7 @@ Enables or disables the printing capability of the device. This API uses a promi
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | disabled  | boolean | Yes| Operation to perform. The value **true** means to disable the printer; the value **false** means the opposite.|
 
 **Return value**
@@ -156,7 +156,7 @@ Queries whether the printing capability of a device is disabled. This API uses a
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | callback | AsyncCallback\<boolean> | Yes| Callback invoked to return the result.<br>The value **true** means that the printer is disabled; the value **false** means the opposite.|
 
 **Error codes**
@@ -210,7 +210,7 @@ Queries whether the printing capability of a device is disabled. This API uses a
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -268,7 +268,7 @@ Enables or disables [HDC](../../../device-dev/subsystems/subsys-toolchain-hdc-gu
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | disabled  | boolean | Yes| Operation to perform. The value **true** means to disable HDC; the value **false** means the opposite.|
 | callback | AsyncCallback\<void> | Yes| Callback invoked to return the result. <br>If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -323,7 +323,7 @@ Enables or disables HDC on a device. This API uses a promise to return the resul
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | disabled  | boolean | Yes| Operation to perform. The value **true** means to disable HDC; the value **false** means the opposite.|
 
 **Return value**
@@ -382,7 +382,7 @@ Queries whether HDC is disabled. This API uses an asynchronous callback to retur
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | callback | AsyncCallback\<boolean> | Yes| Callback invoked to return the result. The value **true** means HDC is disabled; the value **false** means the opposite.|
 
 **Error codes**
@@ -436,7 +436,7 @@ Queries whether HDC is disabled. This API uses a promise to return the result.
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -494,7 +494,7 @@ Queries whether the microphone is disabled.
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -552,7 +552,7 @@ Enables or disables the microphone.
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | disable  | boolean | Yes| Operation to perform. The value **true** means to disable the microphone; the value **false** means the opposite.|
 
 **Error codes**
@@ -572,7 +572,6 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { restrictions } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -606,7 +605,7 @@ Enables or disables fingerprint authentication.
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | disabled  | boolean | Yes| Operation to perform. The value **true** means to disable fingerprint authentication; the value **false** the opposite.|
 
 **Error codes**
@@ -660,7 +659,7 @@ Queries whether fingerprint authentication is disabled.
 
 | Name| Type                                                   | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 

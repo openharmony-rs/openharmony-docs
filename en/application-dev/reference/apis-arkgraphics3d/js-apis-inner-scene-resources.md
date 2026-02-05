@@ -82,11 +82,66 @@ function destroy(): void {
 ## Shader
 Shader resource, which inherits from [SceneResource](#sceneresource-1).
 
+### Properties
+
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes| No| Inputs of the shader.|
+
+### setShaderInputs<sup>23+</sup>
+
+setShaderInputs(inputs: Record<string, number \| Vec2 \| Vec3 \| Vec4 \| Image>): void
+
+Sets the inputs for the shader. This API delivers better performance than directly setting the **inputs** property.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes| A mapping of strings to values for setting shader inputs.|
+
+**Example**
+```ts
+import { Image, MaterialType, Scene, SceneResourceFactory, Shader, ShaderMaterial } from '@kit.ArkGraphics3D';
+
+function setinputs(): void {
+  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  let scene: Promise<Scene> = Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"));
+  scene.then(async (result: Scene) => {
+    if (result) {
+      let rf : SceneResourceFactory | null = await result.getResourceFactory();
+      if (!rf) {
+        return;
+      }
+      // Create the material and shader.
+      let material: ShaderMaterial | null = await rf.createMaterial({name: "CustomMaterial"}, MaterialType.SHADER);
+      let shader : Shader | null = await rf.createShader(
+        {name: "CustomShader", uri: $rawfile("shaders/custom_shader/custom_material_sample.shader")});
+      if (!material || !shader) {
+        return;
+      }
+      // Load the texture resource.
+      let image : Image | null = await rf.createImage({name: "envImg", uri: $rawfile("custom_image.jpg")});
+      if (!image) {
+        return;
+      }
+      // Bind the shader to the texture.
+      material.colorShader = shader;
+      // Set the shader inputs.
+      material.colorShader.setShaderInputs({
+        "uTime": 1.0,
+        "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
+        "uTexture": image
+      })
+    }
+  });
+}
+```
 
 ## MaterialType
 Enumerates the material types in a scene. The material type defines how materials in a scene are rendered.
@@ -97,7 +152,7 @@ Enumerates the material types in a scene. The material type defines how material
 | ---- | ---- | ---- |
 | SHADER | 1 | Shader-defined.|
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | Metallic-Roughness model based on Physically Based Rendering (PBR), simulating realistic material lighting effects through metallicity and roughness parameters.|
-| UNLIT<sup>22+</sup> | 3 | Material that is not affected by lighting.|
+| UNLIT<sup>23+</sup> | 3 | Material that is not affected by lighting.|
 
 ## CullMode<sup>20+</sup>
 Enumerates the culling modes of PBR materials. You can improve rendering performance and visual quality by determining whether the front or back faces of objects are culled.
@@ -129,7 +184,7 @@ Describes the order in which materials are rendered, controlling the sequence of
 | renderSortLayer | number | No| Yes| Rendering layer ID. A smaller value indicates an earlier rendering order. The value range is [0, 63]. The default layer ID is 32.|
 | renderSortLayerOrder | number | No| Yes| Rendering order of different objects within the same rendering layer. A smaller value indicates an earlier rendering order. The value range is [0, 255]. The default value is **0**.|
 
-## PolygonMode<sup>22+</sup>
+## PolygonMode<sup>23+</sup>
 Enumerates the polygon drawing mode.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -153,7 +208,7 @@ Material resource, which inherits from [SceneResource](#sceneresource-1).
 | blend<sup>20+</sup> | [Blend](#blend20) | No| Yes| Whether the material is transparent. The default value is **false**.|
 | alphaCutoff<sup>20+</sup> | number | No| Yes| Threshold of the alpha channel. If the alpha of a pixel is greater than or equal to this threshold, the pixel is rendered; otherwise, the pixel is not rendered. Setting a value less than **1** enables this mode. The value range is [0, 1]. The default value is **1**.|
 | renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | No| Yes| Rendering order, which determines the rendering sequence of materials in the rendering pipeline. The default layer ID is 32, and the default order within the layer is 0.|
-| polygonMode<sup>22+</sup> | [PolygonMode](#polygonmode22) | No| Yes| Polygon drawing mode of the model. The default value is **FILL**.|
+| polygonMode<sup>23+</sup> | [PolygonMode](#polygonmode23) | No| Yes| Polygon drawing mode of the model. The default value is **FILL**.|
 ## MaterialProperty<sup>20+</sup>
 Defines the textures, property factors, and texture samplers used by a material.
 
@@ -192,7 +247,7 @@ Shader material, which inherits from [Material](#material).
 | ---- | ---- | ---- | ---- | ---- |
 | colorShader | [Shader](#shader) | No| Yes| Shader. The default value is undefined.|
 
-## UnlitMaterial<sup>22+</sup>
+## UnlitMaterial<sup>23+</sup>
 
 Material that is not affected by lighting. The shading value of the material is related only to the base color and is irrelevant to lighting conditions. It inherits from [Material](#material).
 
@@ -526,7 +581,7 @@ Environment resource, which inherits from [SceneResource](#sceneresource-1).
 | environmentImage | [Image](#image) \| null | No| Yes| Environment image. The default value is undefined.|
 | radianceImage | [Image](#image) \| null | No| Yes| Radiance image. The default value is undefined.|
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | No| Yes| Irradiance coefficients. The default value is undefined.|
-| environmentRotation<sup>22+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No| Yes| Rotation of the ambient light. The default value is undefined. The parameter must be a normalized quaternion.|
+| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No| Yes| Rotation of the ambient light. The default value is undefined. The parameter must be a normalized quaternion.|
 
 ## Image
 Image resource, which inherits from [SceneResource](#sceneresource-1).

@@ -5,7 +5,7 @@
 <!--Owner: @lu-tao-->
 <!--Designer: @martin-duan-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 This module provides the capability of monitoring whether JS objects are leaked.
 

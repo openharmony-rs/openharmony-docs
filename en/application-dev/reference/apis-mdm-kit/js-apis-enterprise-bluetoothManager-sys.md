@@ -42,7 +42,7 @@ Queries whether Bluetooth is disabled.
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -100,7 +100,7 @@ Sets the policy for disabling Bluetooth.
 
 | Name  | Type                                                   | Mandatory| Description                                     |
 | -------- | ------------------------------------------------------- | ---- | ----------------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                   |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                   |
 | disabled | boolean                                                 | Yes  | Whether to disable Bluetooth. The value **true** means to disable Bluetooth; **false** means the opposite.|
 
 **Error codes**

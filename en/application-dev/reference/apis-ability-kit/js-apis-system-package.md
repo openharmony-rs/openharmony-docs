@@ -9,7 +9,7 @@
 
 > **NOTE**
 >
-> - This module is deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager.md) instead.
+> - The APIs of this module have been deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager.md) instead.
 >
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
@@ -17,13 +17,16 @@
 ## Modules to Import
 
 
-```
+```ts
 import Package from '@system.package';
 ```
 
 
 ## package.hasInstalled<sup>(deprecated)</sup>
-> This API is deprecated since API version 9. You are advised to use [@ohos.bundle.bundleManager](js-apis-bundleManager.md) instead.
+
+> **NOTE**
+>
+> This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14) instead.
 
 hasInstalled(options: CheckPackageHasInstalledOptions): void
 
@@ -63,7 +66,9 @@ struct MainPage {
 
 ## CheckPackageHasInstalledResponse
 
-> This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API has been supported since API version 3 and deprecated since API version 9.
 
 Checks whether a bundle has been installed.
 
@@ -75,7 +80,9 @@ Checks whether a bundle has been installed.
 
 ## CheckPackageHasInstalledOptions
 
-> This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API has been supported since API version 3 and deprecated since API version 9.
 
 Defines the options used for checking whether a bundle has been installed.
 

@@ -1,10 +1,10 @@
 # 调试工具
 <!--Kit: Common-->
 <!--Subsystem: Common-->
-<!--Owner: @foryourself-->
+<!--Owner: @jinqiuheng-->
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - [SDK命令行工具简介](command-line-tools-overview.md)
 - [aa工具](aa-tool.md)
@@ -35,4 +35,5 @@
   - [mediatool工具](mediatool.md)
   - [devicedebug工具](devicedebug-tool.md)
   - [rawheap-translator工具](rawheap-translator.md)
+  <!--RP1--><!--RP1End-->
 - [二进制签名工具](binary-sign-tool.md)

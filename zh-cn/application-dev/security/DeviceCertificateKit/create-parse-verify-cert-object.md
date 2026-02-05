@@ -25,7 +25,10 @@
 
 5. 调用[X509Cert.checkValidityWithDate](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate)校验证书有效期。入参date用于确认此日期是否在X509证书有效期内。
 
-```ts
+<!-- @[certificate_object_creation_resolution_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCertObject.ets) -->
+
+``` TypeScript
+
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
@@ -59,7 +62,7 @@ function certSample(): void {
       return;
     }
     // X509Cert实例创建成功。
-    console.info('createX509Cert success');
+    console.info('createX509Cert result: success.');
 
     // 获取证书版本。
     let version = x509Cert.getVersion();
@@ -88,7 +91,7 @@ function certSample(): void {
       x509Cert.verify(pubKey, (err, data) => {
         if (err == null) {
           // 签名验证成功。
-          console.info('verify success');
+          console.info('verify result: success.');
         } else {
           // 签名验证失败。
           console.error(`verify failed, errCode: ${err.code} , errMsg:${err.message}`);

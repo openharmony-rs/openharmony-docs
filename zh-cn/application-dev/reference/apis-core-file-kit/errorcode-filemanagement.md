@@ -4,7 +4,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **说明：**
 >
@@ -32,7 +32,7 @@ Operation not permitted
 
 1.根据当前系统的[访问控制机制](../../security/AccessToken/access-token-overview.md)，应用无法使用分享给其他应用的URI。
 
-2.根据[系统Picker](../../application-models/system-app-startup.md)的运行机制，通过Picker获取到的URI仅有临时权限，无法持久化保存使用。
+2.根据[系统Picker](../../application-models/system-app-startup.md#拉起系统应用的方式)的运行机制，通过Picker获取到的URI仅有临时权限，无法持久化保存使用。
 
 3.URI路径不推荐进行拼接，拼接后的URI默认未授权。
 
@@ -258,7 +258,7 @@ Permission denied
 
 2.排查内核日志中是否有[avc拦截日志](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-security-selinux-develop-intro.md)，如果存在avc拦截告警，<!--RP1-->拦截原因分析请参考[SELinux开发说明](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md)。<!--RP1End-->
 
-3.确认文件的路径是否为应用内的沙箱路径[沙箱路径地址](../../file-management/app-sandbox-directory.md)，文件管理系统禁止操作应用沙箱以外的文档。
+3.确认文件的路径是否为应用内的沙箱路径（[应用沙箱目录与应用沙箱路径](../../file-management/app-sandbox-directory.md#应用沙箱目录与应用沙箱路径)），文件管理系统禁止操作应用沙箱以外的文档。
 
 ### 13900013 错误的地址
 
@@ -1134,6 +1134,95 @@ User ID out of range
 
 检查输入的用户id是否处于正常范围。
 
+### 13600010 输入参数非法
+
+**错误信息**
+
+The input parameter is invalid.
+
+**错误描述**
+
+用户输入参数非法。
+
+**可能原因**
+
+输入错误的参数。
+
+**处理步骤**
+
+检查输入的参数是否处于正常范围。
+
+### 13600011 上报指定业务空间占用失败
+
+**错误信息**
+
+Failed to report the specified business space usage.
+
+**错误描述**
+
+上报指定业务空间占用失败。
+
+**可能原因**
+
+与数据库交互异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600012 查询指定业务空间占用失败
+
+**错误信息**
+
+Failed to query the specified business space usage.
+
+**错误描述**
+
+查询指定业务空间占用失败。
+
+**可能原因**
+
+与数据库交互异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600013 查询所有业务空间占用情况失败
+
+**错误信息**
+
+Failed to query all business space usage.
+
+**错误描述**
+
+查询所有业务空间占用情况失败。
+
+**可能原因**
+
+与数据库交互异常。
+
+**处理步骤**
+
+重启设备后重试。
+
+### 13600015 获取磁盘空间占用信息失败
+
+**错误信息**
+
+Failed to traverse the query data partition directory.
+
+**错误描述**
+
+获取磁盘空间占用信息失败。
+
+**可能原因**
+
+底层文件系统异常。
+
+**处理步骤**
+
+重启设备后重试。
 ## 公共文件访问错误码
 
 ### 14300001 IPC通信失败

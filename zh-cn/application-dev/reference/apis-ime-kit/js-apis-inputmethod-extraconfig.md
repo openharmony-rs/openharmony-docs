@@ -39,4 +39,4 @@ type CustomValueType = number | string | boolean
 
 | 名称   |类型    |只读    |可选    |说明    |
 |---------|----------|----------|--------|--------|
-| customSettings    |Record\<string, [CustomValueType](#customvaluetype)\>    | 否   | 否    |输入法扩展信息。|
+| customSettings    |Record\<string, [CustomValueType](#customvaluetype)\>    | 否   | 否    |输入法扩展信息，用于储存自定义的键值对，这些键值对可以是任何与输入法相关的配置信息。例如用户的输入习惯、快捷键设置、主题颜色等。这些设置信息将在输入法应用绑定时加载，以提供个性化的用户体验。信息的总长度不超过32KB。|

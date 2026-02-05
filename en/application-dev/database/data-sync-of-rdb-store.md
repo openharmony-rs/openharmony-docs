@@ -88,12 +88,11 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
    2. Display a dialog box to ask for authorization from the user when the application is started for the first time. For details, see [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
 
 3. Create an RDB store and a data table, and set the data table that requires cross-device data sync as a distributed table.
-   <!--@[setDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   <!--@[setDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
    
    ``` TypeScript
-   let context = getContext();
    let store: relationalStore.RdbStore | undefined = undefined;
-   // ···
+   // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
        name: 'RdbTest.db', // Database file name.
        securityLevel: relationalStore.SecurityLevel.S3 // Database security level.

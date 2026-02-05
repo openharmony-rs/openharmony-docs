@@ -64,7 +64,7 @@ context.getOrCreateLocalDir((error, data)=>{
     if (error && error.code !== 0) {
         console.error(`getOrCreateLocalDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getOrCreateLocalDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getOrCreateLocalDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -129,7 +129,7 @@ bundle.getBundleInfo('com.context.test', 1, (err: BusinessError, datainfo: bundl
         if (error && error.code !== 0) {
             console.error(`verifyPermission fail, error: ${JSON.stringify(error)}`);
         } else {
-            console.log(`verifyPermission success, data: ${JSON.stringify(data)}`);
+            console.info(`verifyPermission success, data: ${JSON.stringify(data)}`);
         }
     });
 });
@@ -164,7 +164,7 @@ context.verifyPermission('com.example.permission', (error, data) =>{
     if (error && error.code !== 0) {
         console.error(`verifyPermission fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`verifyPermission success, data: ${JSON.stringify(data)}`);
+        console.info(`verifyPermission success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -238,7 +238,7 @@ context.requestPermissionsFromUser(
         if (error && error.code !== 0) {
             console.error(`requestPermissionsFromUser fail, error: ${JSON.stringify(error)}`);
         } else {
-            console.log(`requestPermissionsFromUser success, data: ${JSON.stringify(data)}`);
+            console.info(`requestPermissionsFromUser success, data: ${JSON.stringify(data)}`);
         }
     }
 );
@@ -312,7 +312,7 @@ context.getApplicationInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getApplicationInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getApplicationInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getApplicationInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -372,7 +372,7 @@ context.getBundleName((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getBundleName fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getBundleName success, data: ${JSON.stringify(data)}`);
+        console.info(`getBundleName success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -430,7 +430,7 @@ context.getDisplayOrientation((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getDisplayOrientation fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getDisplayOrientation success, data: ${JSON.stringify(data)}`);
+        console.info(`getDisplayOrientation success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -490,7 +490,7 @@ context.getExternalCacheDir((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getExternalCacheDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getExternalCacheDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getExternalCacheDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -596,6 +596,8 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
+> 该接口功能仅对系统应用生效。
+> 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用window.setShowOnLockScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -628,6 +630,8 @@ setShowOnLockScreen(show: boolean): Promise\<void>
 
 > **说明：**
 >
+> 该接口功能仅对系统应用生效。
+> 
 > 从API version 7开始支持，从API version 9开始废弃。建议使用window.setShowOnLockScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -665,7 +669,9 @@ setWakeUpScreen(wakeUp: boolean, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 12开始废弃，替代接口window.setWakeUpScreen仅面向系统应用开放。
+> 该接口功能仅对系统应用生效。
+>
+> 从API version 7开始支持，从API version 12开始废弃。替代接口window.setWakeUpScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -697,7 +703,9 @@ setWakeUpScreen(wakeUp: boolean): Promise\<void>
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 12开始废弃，替代接口window.setWakeUpScreen仅面向系统应用开放。
+> 该接口功能仅对系统应用生效。
+>
+> 从API version 7开始支持，从API version 12开始废弃。替代接口window.setWakeUpScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -754,7 +762,7 @@ context.getProcessInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getProcessInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getProcessInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getProcessInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -816,7 +824,7 @@ context.getElementName((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getElementName fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getElementName success, data: ${JSON.stringify(data)}`);
+        console.info(`getElementName success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -876,7 +884,7 @@ context.getProcessName((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getProcessName fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getProcessName success, data: ${JSON.stringify(data)}`);
+        console.info(`getProcessName success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -936,7 +944,7 @@ context.getCallingBundle((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getCallingBundle fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getCallingBundle success, data: ${JSON.stringify(data)}`);
+        console.info(`getCallingBundle success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -994,7 +1002,7 @@ context.getCacheDir((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getCacheDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getCacheDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getCacheDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1050,7 +1058,7 @@ context.getFilesDir((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getFilesDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getFilesDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getFilesDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1108,7 +1116,7 @@ context.getOrCreateDistributedDir((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getOrCreateDistributedDir fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getOrCreateDistributedDir success, data: ${JSON.stringify(data)}`);
+        console.info(`getOrCreateDistributedDir success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1166,7 +1174,7 @@ context.getAppType((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getAppType fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getAppType success, data: ${JSON.stringify(data)}`);
+        console.info(`getAppType success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1222,7 +1230,7 @@ context.getHapModuleInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getHapModuleInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getHapModuleInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getHapModuleInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1278,7 +1286,7 @@ context.getAppVersionInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getAppVersionInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getAppVersionInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getAppVersionInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1334,7 +1342,7 @@ context.getAbilityInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getAbilityInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getAbilityInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getAbilityInfo success, data: ${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1413,7 +1421,7 @@ context.isUpdatingConfigurations((error, data) => {
     if (error && error.code !== 0) {
         console.error(`isUpdatingConfigurations fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`isUpdatingConfigurations success, data: ${JSON.stringify(data)}`);
+        console.info(`isUpdatingConfigurations success, data: ${JSON.stringify(data)}`);
     }
 });
 ```

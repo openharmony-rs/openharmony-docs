@@ -215,7 +215,7 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
   <!-- @[Main_WrappedBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/WrappedBuilder.ets) -->
   
   ``` TypeScript
-  import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
+  import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI'; 
   
   class Params {
     public text: string = '';
@@ -234,9 +234,9 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
       Row() {
         Column() {
           Text(this.message)
-            .fontSize(50)
+            .fontSize(40)
             .fontWeight(FontWeight.Bold)
-            .margin({ bottom: 36 })
+            .margin({ bottom: 10 })
             .backgroundColor(Color.Gray)
         }
       }
@@ -247,11 +247,15 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
   function buildText(params: Params) {
     Column() {
       Text(params.text)
-        .fontSize(50)
+        .fontSize(40)
         .fontWeight(FontWeight.Bold)
-        .margin({ bottom: 36 })
+        .margin({ bottom: 10 })
       TextBuilder({ message: params.text }) // 自定义组件
     }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+    .justifyContent(FlexAlign.Center)
+  
   }
   
   class TextNodeController extends NodeController {
@@ -286,10 +290,10 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
   
     build() {
       Row() {
-        Column() {
+        Column({ space: 25}) {
           NodeContainer(this.textNodeController)
             .width('100%')
-            .height(200)
+            .height(110)
             .backgroundColor('#FFF0F0F0')
           Button('Update')
             .onClick(() => {
@@ -297,6 +301,8 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[selfId
               const message = 'Update' + this.count.toString();
               this.textNodeController.update(message);
             })
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
         }
         .width('100%')
         .height('100%')
@@ -356,16 +362,18 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
     .backgroundColor(Color.Gray)
   }
   
+  // 创建并初始化BuilderNode
   class MyNodeController extends NodeController {
     private rootNode: BuilderNode<[Params]> | null = null;
     private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(buttonBuilder);
   
     makeNode(uiContext: UIContext): FrameNode | null {
       this.rootNode = new BuilderNode(uiContext);
-      this.rootNode.build(this.wrapBuilder, { text: 'this is a string' })
+      this.rootNode.build(this.wrapBuilder, { text: 'this is a string' });
       return this.rootNode.getFrameNode();
     }
   
+    // 转发触摸事件到BuilderNode
     postTouchEvent(touchEvent: TouchEvent): void {
       if (this.rootNode == null) {
         return;
@@ -392,6 +400,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
           .height(300)
           .backgroundColor(this.bgColor)
           .onTouch((event) => {
+            // 事件非空时，将触摸事件转发给节点控制器
             if (event != undefined) {
               this.nodeController.postTouchEvent(event);
               this.bgColor = Color.Blue;
@@ -665,7 +674,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
 
 调用[reuse](../reference/apis-arkui/js-apis-arkui-builderNode.md#reuse12)接口和[recycle](../reference/apis-arkui/js-apis-arkui-builderNode.md#recycle12)接口，将复用和回收事件传递至BuilderNode中的自定义组件，以实现BuilderNode节点内部的自定义组件的复用。
 
-以下面的Demo为例，被复用的自定义组件ReusableChildComponent可以传递复用和回收事件到其下的自定义组件ChildComponent3，但无法传递给自定义组件ChildComponent2，因为被BuilderNode所隔断。因此需要主动调用BuilderNode的reuse和recycle接口，将复用和回收事件传递给自定义组件ChildComponent2，以达成复用效果。
+以下面的Demo为例，被复用的自定义组件ReusableChildComponent可以传递复用和回收事件到其下的自定义组件ChildComponent3，但无法传递给自定义组件ChildComponent2，因为被BuilderNode所隔断。因此需要主动调用BuilderNode的reuse和recycle接口，将复用和回收事件传递给自定义组件ChildComponent2，以实现复用效果。
 
 ![zh-cn_image_reuse-recycle](figures/reuse-recycle.png)
 
@@ -976,10 +985,10 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 自定义组件。
+  // 自定义组件
   @Component
   struct TextBuilder {
-    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop。
+    // 作为自定义组件中需要更新的属性，数据类型为基础属性，定义为@Prop
     @Prop message: string = 'TextBuilder';
   
     build() {
@@ -989,7 +998,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
             .margin({ bottom: 36 })
-            .fontColor($r(`app.color.text_color`))
+            .fontColor($r(`app.color.text_color`)) // 开发者可在资源目录下的color.json文件中自定义颜色
             .backgroundColor($r(`app.color.start_window_background`))
         }
       }
@@ -1004,7 +1013,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
         .fontWeight(FontWeight.Bold)
         .margin({ bottom: 36 })
         .fontColor($r(`app.color.text_color`))
-      TextBuilder({ message: params.text }) // 自定义组件。
+      TextBuilder({ message: params.text }) // 自定义组件
     }.backgroundColor($r(`app.color.start_window_background`))
   }
   
@@ -1040,14 +1049,14 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
     }
   }
   
-  // 记录创建的自定义节点对象。
+  // 记录创建的自定义节点对象
   const builderNodeMap: BuilderNode<[Params]>[] = [];
   
   function updateColorMode() {
     builderNodeMap.forEach((value, index) => {
-      // 通知BuilderNode环境变量改变。
+      // 通知BuilderNode环境变量改变
       value.updateConfiguration();
-    })
+    });
   }
   
   @Entry
@@ -1066,15 +1075,15 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
           hilog.info(0xF811,'testTag','%{public}s','onConfigurationUpdated ' + JSON.stringify(config));
           updateColorMode();
         }
-      }
-      // 注册监听回调。
+      };
+      // 注册监听回调
       this.getUIContext().getHostContext()?.getApplicationContext().on('environment', environmentCallback);
-      //创建自定义节点并添加至map。
+      //创建自定义节点并添加至map
       this.textNodeController.createNode(this.getUIContext());
     }
   
     aboutToDisappear(): void {
-      //移除map中的引用，并将自定义节点释放。
+      //移除map中的引用，并将自定义节点释放
       this.textNodeController.deleteNode();
     }
   
@@ -1223,7 +1232,7 @@ PageTwo的实现如下：
 
 ![BuilderNode Reuse Example](./figures/builder_node_reuse.gif)
 
-在API version 16之前，解决该问题的方法是在页面销毁时，将页面上的BuilderNode从缓存中移除。以上述例子为例，可以在页面跳转前，通过点击事件将BuilderNode从AppStorage中移除，以此达到预期效果。
+在API version 16之前，解决该问题的方法是在页面销毁时，将页面上的BuilderNode从缓存中移除。以上述例子为例，可以在页面跳转前，通过点击事件将BuilderNode从[AppStorage](../ui/state-management/arkts-appstorage.md)中移除，以此达到预期效果。
 
 API version 16及之后版本，BuilderNode在新页面被复用时，会自动刷新自身内容，无需在页面销毁时将BuilderNode从缓存中移除。
 
@@ -1497,7 +1506,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
 | [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md) | [addFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#addframenode12)、[removeFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode12) |
 | [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md) | [makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode) |
 | [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) | [appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)、[insertChildAfter](../reference/apis-arkui/js-apis-arkui-renderNode.md#insertchildafter)、[removeChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#removechild)、[clearChildren](../reference/apis-arkui/js-apis-arkui-renderNode.md#clearchildren) |
-| [NodeAdaper](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) | 节点通过[懒加载](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)方式上下树时 |
+| [NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) | 节点通过[懒加载](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)方式上下树时 |
 
 > **说明：**
 >
@@ -1514,6 +1523,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   ``` TypeScript
   import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { common } from '@kit.AbilityKit';
   
   const PAGE_ONE_INDEX = 1;
   const PAGE_TWO_INDEX = 2;
@@ -1645,7 +1655,8 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
       NavDestination() {
         Column() {
           NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
-          Text('BuilderNode处于冻结')
+          // 请将$r('app.string.text1')替换为实际资源文件，在本示例中该资源文件的value值为"BuilderNode处于冻结"
+          Text($r('app.string.text1'))
             .fontWeight(FontWeight.Bold)
             .margin({ top: 48, bottom: 48 })
           Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
@@ -1684,6 +1695,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
     // 设置冻结策略为不活跃冻结
   struct TextBuilder {
     @Prop @Watch('info') message: number = 0;
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   
     info(): void {
       hilog.info(0xF811, 'testTag', '%{public}s',
@@ -1693,7 +1705,8 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
     build() {
       Row() {
         Column() {
-          Text(`文本更新次数： ${this.message}`)
+          // 请在resources\base\element\string.json文件中配置name为'text2' ，value为非空字符串的资源
+          Text(this.context.resourceManager.getStringByNameSync('text2') + `${this.message}`)
             .fontWeight(FontWeight.Bold)
             .margin({ top: 48, bottom: 48 })
         }
@@ -2436,13 +2449,13 @@ struct FreezeBuildNode {
 
 3.再次点击`change`更改message的值，仅当前显示的TabContent子组件中@Monitor注册的方法onMessageUpdated被触发。其他inactive的TabContent组件不会触发@Monitor。
 
-## 设置BuilderNode支持内部@Consume接收外部的@Provide数据
+## 设置BuilderNode支持内部@Consume接收外部的@Provide数据（状态管理V1）
 
 从API version 20开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的[@Consume](./state-management/arkts-provide-and-consume.md)支持接收所在页面的[@Provide](./state-management/arkts-provide-and-consume.md)数据。
 
 参见[示例代码](../reference/apis-arkui/js-apis-arkui-builderNode.md#示例5buildernode支持内部consume接收外部的provide数据)。
 
-## 设置BuilderNode支持内部@Consumer接收外部的@Provider数据
+## 设置BuilderNode支持内部@Consumer接收外部的@Provider数据（状态管理V2）
 
 从API version 22开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的[@Consumer](./state-management/arkts-new-provider-and-consumer.md)支持接收所在页面的[@Provider](./state-management/arkts-new-provider-and-consumer.md)数据。
     
@@ -2530,7 +2543,7 @@ struct FreezeBuildNode {
     // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用。
     export class MyNodeController2 extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
-      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContaine中。
+      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中。
       // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
       makeNode(uiContext: UIContext): FrameNode | null {
         hilog.info(0xF811,'testTag','%{public}s',' uicontext is undefined :' + (uiContext === undefined));

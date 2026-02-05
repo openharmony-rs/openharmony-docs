@@ -42,7 +42,7 @@ struct PreventBubbling {
   build() {
     RelativeContainer() {
       Column() { // 父组件
-        // app.string.preventEvent资源文件中的value值为'如果点中了我，就阻止父组件收到触摸事件'
+        // 请将$r('app.string.preventEvent')替换为实际资源文件，在本示例中该资源文件的value值为"如果点中了我，就阻止父组件收到触摸事件"
         Text($r('app.string.preventEvent'))
           .fontColor(Color.White)
           .height('40%')
@@ -188,7 +188,7 @@ struct MultipleFingerInformation {
 
 按下手指① -> 按下手指② -> 按下手指③ -> 抬起手指② -> 抬起手指③ -> 按下手指② -> 抬起手指① -> 抬起手指③
 
-```
+```text
   fingers start to press down   // 按下手指①
   current all fingers: 0
   ... ...

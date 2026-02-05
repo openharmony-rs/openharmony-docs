@@ -5,11 +5,11 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
-Provides the APIs for detecting service thread jank and stuck events. Note that these APIs must be called in non-main threads. The following capabilities are supported:<br>(1) Register a periodic detection task for application service thread stuck events.<br>(2) Register a callback for the detection of application service thread jank events.<br>(3) Report application service thread stuck events.
+Provides the APIs for detecting service thread jank and stuck events. The following capabilities are supported:<br>(1) Register a periodic detection task for application service thread stuck events.<br>(2) Register a callback for the detection of application service thread jank events.<br>(3) Report application service thread stuck events.
 
 **Since**: 12
 ## Files

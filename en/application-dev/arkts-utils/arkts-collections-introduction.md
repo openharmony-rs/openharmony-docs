@@ -72,9 +72,9 @@ ArkTS provides shared containers for Sendable data, with some behavior differenc
 
 > **NOTE**
 >
-> ArkTS shared containers have different types from native ECMAScript 262 containers. Therefore, if the native **isArray()** method is used on a **collections.Array instance** object, **false** is returned.
+> - ArkTS shared containers have different types from native ECMAScript 262 containers. Therefore, if the native **isArray()** method is used on a **collections.Array instance** object, **false** is returned.
 >
-> ArkTS shared containers are passed by reference across threads, which is more efficient than native containers. If a large amount of data needs to be transferred across threads, you are advised to use ArkTS shared containers.
+> - ArkTS shared containers are passed by reference across threads, which is more efficient than native containers. If a large amount of data needs to be transferred across threads, you are advised to use ArkTS shared containers.
 
 ### Array
 

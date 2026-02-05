@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -142,7 +142,7 @@ import promptAction from '@ohos.promptAction';
 export default {
   search(e){
     promptAction.showToast({
-      message:  e.value,
+      message: e.value,
       duration: 3000,
     });
   },

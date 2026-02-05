@@ -27,8 +27,8 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) | OH_ImagePackerNative | ImagePacker结构体类型，用于执行ImagePacker相关操作。 |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | OH_PackingOptions | OH_PackingOptions是native层封装的图像编码选项结构体，OH_PackingOptions结构体不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。 |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) | OH_PackingOptionsForSequence | 图像序列编码选项。 |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | OH_PackingOptions | OH_PackingOptions是native层封装的图像编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。 |
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) | OH_PackingOptionsForSequence | OH_PackingOptionsForSequence是native层封装的图像序列编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。 |
 
 ### 枚举
 
@@ -41,8 +41,8 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | 创建PackingOptions结构体的指针。 |
-| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | 获取MIME类型。 |
-| [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | 获取编解码参数中的MIME类型。输出的format.data以字符串结束符结尾。 |
+| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | 获取MIME类型。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。|
+| [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | 获取编解码参数中的MIME类型。输出的format.data以字符串结束符'\0'结尾。 |
 | [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | 设置MIME类型。 |
 | [Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_t *quality)](#oh_packingoptions_getquality) | 获取编码质量。 |
 | [Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_t quality)](#oh_packingoptions_setquality) | 设置编码质量。 |
@@ -128,7 +128,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_M
 
 **描述**
 
-获取MIME类型。
+获取MIME类型。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。
 
 **起始版本：** 12
 
@@ -154,7 +154,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options
 
 **描述**
 
-获取编解码参数中的MIME类型。输出的format.data以字符串结束符结尾。
+获取编解码参数中的MIME类型。输出的format.data以字符串结束符'\0'结尾。
 
 **起始版本：** 19
 
@@ -268,7 +268,7 @@ Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options,uint32_t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| bool *needsPackProperties | 是否需要编码图片属性信息，例如EXIF。 |
+| bool *needsPackProperties | 是否需要编码图片属性信息（例如Exif）。true表示需要，false表示不需要。 |
 
 **返回：**
 
@@ -294,7 +294,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| bool needsPackProperties | 是否需要编码图片属性信息，例如EXIF。 |
+| bool needsPackProperties | 是否需要编码图片属性信息（例如Exif）。true表示需要，false表示不需要。 |
 
 **返回：**
 

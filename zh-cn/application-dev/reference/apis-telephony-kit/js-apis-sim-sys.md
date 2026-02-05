@@ -3366,7 +3366,7 @@ getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): vo
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.|
 | 202 | Non-system applications use system APIs.         |
-| 8300001 | Invalid parameter value.                 |                    |
+| 8300001 | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service.                      |
 | 8300003 | System internal error.                               |
 | 8300004  |Do not have sim card.|
@@ -3378,13 +3378,9 @@ getAllSimAccountInfoList(callback: AsyncCallback\<Array\<IccAccountInfo\>\>): vo
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-async function getAllSimAccountInfoList((err, accountInfoList) => {
-    if (err) {
-      console.error('获取SIM卡账户信息失败:', err);
-    } else {
-      console.info('获取到的SIM卡账户信息:', accountInfoList);
-    }
-  });
+sim.getAllSimAccountInfoList((err: BusinessError) => {
+    console.info(`callback: err->${JSON.stringify(err)}`);
+});
 ```
 
 ## sim.getAllSimAccountInfoList<sup>20+</sup>

@@ -36,6 +36,19 @@ Enumerates the states of the cast display.
 | STATE_OFF      | 1    | The device is disconnected, and the extended screen does not display any content.   |
 | STATE_ON      | 2    | The device is connected, and the extended screen is available.|
 
+## CallerType<sup>22+</sup>
+
+Enumerates the types of sources for the caller.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
+| Name            | Value          | Description                                  |
+|----------------|-------------|--------------------------------------|
+| TYPE_CAST      | "cast"      | The caller comes from casting.                            |
+| TYPE_BLUETOOTH | "bluetooth" | The caller comes from Bluetooth.                               |
+| TYPE_APP       | "app"       | The caller comes from an application.                               |
+| TYPE_NEARLINK  | "nearlink"  | The caller comes from NearLink.<br>**Model restriction**: This API can be used only in the stage model.|
+
 ## ConnectionState<sup>10+</sup>
 
 Enumerates the connection states.

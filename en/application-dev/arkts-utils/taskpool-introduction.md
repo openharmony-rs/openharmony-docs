@@ -85,19 +85,17 @@ To pass function verification, concurrent functions executed in a [TaskPool](../
 | Variable types in decorated functions| Local variables, parameters, and variables imported through **import** are allowed. Closure variables cannot be used.|
 | Return value types in decorated functions| Supported types are listed in [Overview of Inter-Thread Communication Objects](serializable-overview.md).|
 
-> **NOTE**
->
-> Functions decorated with \@Concurrent cannot access closures. Therefore, they cannot call other functions within the same file. The following provides an example.
->
-> ```ts
-> function bar() {
-> }
-> 
-> @Concurrent
-> function foo() {
->   bar(); // This violates the closure principle. An error is reported.
-> }
-> ```
+Functions decorated with \@Concurrent cannot access closures. Therefore, they cannot call other functions within the same file. The following provides an example.
+
+```ts
+function bar() {
+}
+
+@Concurrent
+function foo() {
+  bar(); // This violates the closure principle. An error is reported.
+}
+```
 
 ## Decorator Usage Examples
 

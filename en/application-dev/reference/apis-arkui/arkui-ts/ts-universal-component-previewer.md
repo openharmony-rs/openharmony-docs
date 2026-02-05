@@ -11,7 +11,7 @@ Component preview enables you to preview the UI effect of individual custom comp
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 >  For details about usage, see [Component Preview](../../../ui/ui-ide-previewer.md#component-preview).
 

@@ -10,6 +10,8 @@
 
 提供IPC序列化/反序列化C接口。
 
+**引用文件：** <IPCKit/ipc_cparcel.h>
+
 **库：** libipc_capi.so
 
 **系统能力：** SystemCapability.Communication.IPC.Core
@@ -172,7 +174,7 @@ int OH_IPCParcel_GetWritableBytes(const OHIPCParcel *parcel)
 
 获取OHIPCParcel对象可以写入的字节数。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -198,7 +200,7 @@ int OH_IPCParcel_GetReadableBytes(const OHIPCParcel *parcel)
 
 获取OHIPCParcel对象还可以读取的字节数。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -246,7 +248,7 @@ int OH_IPCParcel_GetWritePosition(const OHIPCParcel *parcel)
 
 获取OHIPCParcel对象当前写入位置。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -353,7 +355,7 @@ int OH_IPCParcel_ReadInt8(const OHIPCParcel *parcel, int8_t *value)
 
 从OHIPCParcel对象中读取int8_t值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -380,7 +382,7 @@ int OH_IPCParcel_WriteInt16(OHIPCParcel *parcel, int16_t value)
 
 向OHIPCParcel对象写入int16_t值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -407,7 +409,7 @@ int OH_IPCParcel_ReadInt16(const OHIPCParcel *parcel, int16_t *value)
 
 从OHIPCParcel对象读取int16_t值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -434,7 +436,7 @@ int OH_IPCParcel_WriteInt32(OHIPCParcel *parcel, int32_t value)
 
 向OHIPCParcel对象写入int32_t值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -461,7 +463,7 @@ int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)
 
 从OHIPCParcel对象读取int32_t值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -488,7 +490,7 @@ int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)
 
 向OHIPCParcel对象写入int64_t值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -515,7 +517,7 @@ int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)
 
 从OHIPCParcel对象读取int64_t值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -542,7 +544,7 @@ int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)
 
 向OHIPCParcel对象写入float值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -569,7 +571,7 @@ int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)
 
 从OHIPCParcel对象读取float值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -596,7 +598,7 @@ int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)
 
 向OHIPCParcel对象写入double值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -623,7 +625,7 @@ int OH_IPCParcel_ReadDouble(const OHIPCParcel *parcel, double *value)
 
 从OHIPCParcel对象读取double值。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -650,7 +652,7 @@ int OH_IPCParcel_WriteString(OHIPCParcel *parcel, const char *str)
 
 向OHIPCParcel对象写入字符串，包括字符串结束符。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -677,7 +679,7 @@ const char* OH_IPCParcel_ReadString(const OHIPCParcel *parcel)
 
 从OHIPCParcel对象读取字符串，用户可通过strlen获取字符串长度。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -703,7 +705,7 @@ int OH_IPCParcel_WriteBuffer(OHIPCParcel *parcel, const uint8_t *buffer, int32_t
 
 向OHIPCParcel对象写入指定长度的内存信息。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -731,7 +733,7 @@ const uint8_t* OH_IPCParcel_ReadBuffer(const OHIPCParcel *parcel, int32_t len)
 
 从OHIPCParcel对象读取指定长度内存信息。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -758,7 +760,7 @@ int OH_IPCParcel_WriteRemoteStub(OHIPCParcel *parcel, const OHIPCRemoteStub *stu
 
 向OHIPCParcel对象写入OHIPCRemoteStub对象。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -785,7 +787,7 @@ OHIPCRemoteStub* OH_IPCParcel_ReadRemoteStub(const OHIPCParcel *parcel)
 
 从OHIPCParcel对象读取OHIPCRemoteStub对象。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -811,7 +813,7 @@ int OH_IPCParcel_WriteRemoteProxy(OHIPCParcel *parcel, const OHIPCRemoteProxy *p
 
 向OHIPCParcel对象写入OHIPCRemoteProxy对象。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -838,7 +840,7 @@ OHIPCRemoteProxy* OH_IPCParcel_ReadRemoteProxy(const OHIPCParcel *parcel)
 
 从OHIPCParcel对象读取OHIPCRemoteProxy对象。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -864,7 +866,7 @@ int OH_IPCParcel_WriteFileDescriptor(OHIPCParcel *parcel, int32_t fd)
 
 向OHIPCParcel对象写入文件描述符。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -891,7 +893,7 @@ int OH_IPCParcel_ReadFileDescriptor(const OHIPCParcel *parcel, int32_t *fd)
 
 从OHIPCParcel对象读取文件描述符。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -918,7 +920,7 @@ int OH_IPCParcel_Append(OHIPCParcel *parcel, const OHIPCParcel *data)
 
 OHIPCParcel对象数据拼接。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -945,7 +947,7 @@ int OH_IPCParcel_WriteInterfaceToken(OHIPCParcel *parcel, const char *token)
 
 向OHIPCParcel对象写入接口描述符，用于接口身份校验。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 
@@ -972,7 +974,7 @@ int OH_IPCParcel_ReadInterfaceToken(const OHIPCParcel *parcel, char **token, int
 
 从OHIPCParcel对象读取接口描述符信息，用于接口身份校验。
 
-**系统能力：** SystemCapability.Communication.IPC
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 

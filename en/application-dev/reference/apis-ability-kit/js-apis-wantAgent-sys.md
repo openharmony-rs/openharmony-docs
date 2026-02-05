@@ -52,9 +52,9 @@ let wantAgent: _WantAgent;
 
 // getWantAgent callback
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgent = data;
+        wantAgent = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
@@ -152,7 +152,7 @@ WantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgent = data;
     if (wantAgent) {        
         WantAgent.getWant(wantAgent).then((data) => {

@@ -34,11 +34,13 @@ Sets the NTP server.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | server | string | Yes| NTP server addresses separated by a comma (,). For example, **ntpserver1.com,ntpserver2.com**. The value can contain a maximum of 96 bytes (including the end character).|
 
 **Error codes**
@@ -89,7 +91,7 @@ Obtains the NTP server information.
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -113,7 +115,6 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { systemManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -140,11 +141,13 @@ Sets the update policy. In intranet updates, call [systemManager.notifyUpdatePac
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | policy | [OtaUpdatePolicy](#otaupdatepolicy) | Yes| OTA update policy to set.|
 
 **Error codes**
@@ -258,7 +261,7 @@ Checks the update policy.
 
 | Name| Type                                                   | Mandatory| Description              |
 | ------ | ------------------------------------------------------- | ---- | ------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -301,6 +304,9 @@ try {
 notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;void&gt;
 
 Notifies the system of the update packages. In intranet updates, call this API to notify the system of the update packages, and then call [systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy) to set the update policy.
+> **NOTE**
+> 
+> This API is time-consuming. Subsequent calls to other synchronous APIs in the application main thread must wait for the asynchronous return of this API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -312,7 +318,7 @@ Notifies the system of the update packages. In intranet updates, call this API t
 
 | Name| Type                               | Mandatory| Description          |
 | ------ | ----------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | packageInfo  | [UpdatePackageInfo](#updatepackageinfo) | Yes  | Information about the system update packages.<br>**Note**: The input **UpdatePackageInfo.packages.path** must be a .zip package starting with update. If a file in other formats is input, error code 9201004 will be reported.|
 
 **Return value**
@@ -414,7 +420,7 @@ Obtains the system update result.
 
 | Name| Type                               | Mandatory| Description          |
 | ------ | ----------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | version  | string | Yes  | Version of the update package.|
 
 **Return value**
@@ -468,7 +474,7 @@ Obtains the authentication data for system update verification. This API uses a 
 
 | Name| Type                               | Mandatory| Description          |
 | ------ | ----------------------------------- | ---- | -------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -519,11 +525,13 @@ Adds a list of NearLink protocols that are not allowed to be used for a specifie
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | protocols  | Array&lt;[NearLinkProtocol](#nearlinkprotocol20)&gt;               | Yes  | NearLink protocol list.|
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
 
@@ -584,11 +592,13 @@ Removes the list of disallowed NearLink protocols for a specified user.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | protocols  | Array&lt;[NearLinkProtocol](#nearlinkprotocol20)&gt;               | Yes  | NearLink protocol list.|
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
 
@@ -648,7 +658,7 @@ Obtains the list of disallowed NearLink protocols for a specified user.
 
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.                                  |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>You can call APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
 
 **Return value**
@@ -705,11 +715,13 @@ Sets whether local installation of enterprise applications is supported. When it
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) If any MDM app supports local installation of enterprise apps, the comprehensive policy is to support local installation of enterprise apps.
+
 **Parameters**
 
 | Name  | Type                                 | Mandatory | Description|
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | isEnable | boolean | Yes| Whether local installation of enterprise applications is supported. The value **true** indicates that the local installation of enterprise applications is supported, and the value **false** indicates the opposite.|
 
 **Error codes**
@@ -763,7 +775,7 @@ Checks whether local installation of enterprise applications is supported.
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -816,11 +828,13 @@ Sets automatic unlocking upon device reboot. This setting takes effect only on d
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first). If any MDM app sets automatic unlocking upon device restart, the comprehensive policy is automatic unlocking upon device restart.
+
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | isAllowed | boolean | Yes| The value **true** indicates that the device is automatically unlocked after reboot, and the value **false** indicates the opposite.|
 
 **Error codes**
@@ -872,7 +886,7 @@ Checks whether the device is automatically unlocked upon reboot.
 
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.|
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 
 **Return value**
 
@@ -907,6 +921,307 @@ try {
   console.info('Succeeded in getting auto unlock after reboot.');
 } catch (err) {
   console.error(`Failed to get auto unlock after reboot. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.addKeyEventPolicies<sup>23+</sup>
+
+addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
+
+Adds a key event handling policy. When the system triggers a key event, if the event matches the delivered key event policy, the MDM app will be notified via the [EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23) callback, with the key event information of the matched policy carried in the callback.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | Yes  | Key policy. Physical keys (power key, volume up, and volume down) and navigation keys (back, home, and recently opened) are supported. Physical keys can be combined into a combination key, but navigation keys cannot. For details about the combination key event response, see [Key Event Callback](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23).|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let keypolicy: Array<systemManager.KeyEventPolicy> = [
+  {
+    "keyCode": systemManager.KeyCode.POWER,
+    "keyPolicy": systemManager.KeyPolicy.CUSTOM
+  },
+  {
+    "keyCode": systemManager.KeyCode.VOLUME_UP,
+    "keyPolicy": systemManager.KeyPolicy.CUSTOM
+  }
+];
+
+try {
+  systemManager.addKeyEventPolicies(wantTemp, keypolicy);
+  console.info('Succeeded in adding key event policies.');
+} catch (err) {
+  console.error(`Failed to add key event policies. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.removeKeyEventPolicies<sup>23+</sup>
+
+removeKeyEventPolicies(admin: Want, keyCodes: Array&lt;KeyCode&gt;): void
+
+Removes a key event handling policy.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| keyCodes    | Array&lt;[KeyCode](#keycode23)&gt; | Yes  | Key code. You can remove multiple key policies at a time. Removing an unsupported key will report error code 9200012.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let keyCodes: Array<systemManager.KeyCode> = [
+  systemManager.KeyCode.POWER, systemManager.KeyCode.VOLUME_UP,
+];
+
+try {
+  systemManager.removeKeyEventPolicies(wantTemp, keyCodes);
+  console.info('Succeeded in removing key event policies.');
+} catch (err) {
+  console.error(`Failed to remove key event policies. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.getKeyEventPolicies<sup>23+</sup>
+
+getKeyEventPolicies(admin: Want): Array&lt;KeyEventPolicy&gt;
+
+Obtains the key event handling policy.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Return value**
+
+| Type  | Description                               |
+| ------ | ----------------------------------- |
+| Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | List of currently configured key event policies.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let result = Array<systemManager.KeyEventPolicy>;
+try {
+  result = systemManager.getKeyEventPolicies(wantTemp);
+  console.info('Succeeded in getting key event policies.');
+} catch (err) {
+  console.error(`Failed to get key event policies. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## systemManager.startCollectLog<sup>23+</sup>
+
+startCollectLog(admin: Want): Promise&lt;void&gt;
+
+Starts to collect the [fault logs](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) that have been generated and stored on the device. The fault logs, app service logs, and system run logs that are not stored on the hard disk cannot be collected.
+
+- After the API is called, the system starts a log collection task. The API returns a response immediately after the task is started. The task may fail due to system performance constraints.
+- This API can be called by multiple MDM apps. Logs collected by different MDM apps under different users are saved separately and do not affect each other. Only one MDM app can start a log collection task at a time. If this API is called before the task is complete, the error code 9201009 is returned, and other MDM apps may call the API only after the task finishes.
+- Upon task completion, the MDM app is notified via the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23) callback. The system mounts the collected log files to the MDM app sandbox path, enabling the MDM app to read the logs within the callback.
+- If the log collection task takes more than 5 minutes, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23) callback returns a failure message.
+- After the app obtains the logs, you are advised to call [systemManager.finishLogCollected](#systemmanagerfinishlogcollected23) to remove the collected logs.
+
+**Required permissions**: ohos.permission.ENTERPRISE_READ_LOG
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: This API can be called by multiple MDM apps. Logs collected by different MDM apps under different users are stored separately and do not affect each other. Only one MDM app can start a log collection task at a time. If this API is called before the task is complete, the error code 9201009 is returned, and other MDM apps may call the API only after the task finishes.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Return value**
+
+| Type  | Description                               |
+| ------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. When a log collection task fails to be created, an error object is thrown.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9201009  | Collecting logs, please try again later. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+systemManager.startCollectLog(wantTemp).then(() => {
+  console.info('Succeeded in starting collect log');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start collect log. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.finishLogCollected<sup>23+</sup>
+
+finishLogCollected(admin: Want): void
+
+Deletes the device logs collected by the current MDM app under the current user.
+
+> **NOTE**
+> 
+> - After the app calls [startCollectLog](#systemmanagerstartcollectlog23) to initiate log collection and receives the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23) callback, you are advised to immediately copy or process the logs, then call this API to delete the collected logs.
+> 
+> - If this API is not called, device logs will occupy the system storage space, which does not affect the next call of [startCollectLog](#systemmanagerstartcollectlog23) to start a log collection task.
+
+**Required permissions**: ohos.permission.ENTERPRISE_READ_LOG
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type                                                   | Mandatory| Description                  |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { systemManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  systemManager.finishLogCollected(wantTemp);
+  console.info('Succeeded in finishing log collected.');
+} catch (err) {
+  console.error(`Failed to finish log collected. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -1057,3 +1372,89 @@ Enumerates NearLink protocols.
 | -----------------  | ---- | ----- |
 | SSAP   | 0 |  SparkLink Service Access Protocol (SSAP).<!--RP1--><!--RP1End--> |
 | DATA_TRANSFER      | 1 | Data transfer protocol.<!--RP2--><!--RP2End--> |
+
+## KeyEventPolicy<sup>23+</sup>
+
+Enumerates key event handling policies. When a key event occurs, only the keys for which the key event handling policy has been delivered are intercepted. For key events where no handling policy has been delivered, the system executes its original response logic.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name               | Type    | Read-Only | Optional| Description           |
+| ----------------- | ------ | ------ | ------ | ------------- |
+| keyCode       | [KeyCode](#keycode23) | No| No| Key code.  |
+| keyPolicy       | [KeyPolicy](#keypolicy23) | No| No| Key policy.  |
+
+## KeyCode<sup>23+</sup>
+
+Enumerates key codes. Key codes are used to map to the actual physical keys on a device in the following scenarios: [adding a key event policy](#systemmanageraddkeyeventpolicies23), [removing a key event policy](#systemmanagerremovekeyeventpolicies23), [querying a key event policy](#systemmanagergetkeyeventpolicies23), and [invoking the key event callback API](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23).
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name              | Value | Description   |
+| -----------------  | ---- | ----- |
+| POWER    | 0 |  Power key|
+| VOLUME_UP       | 1 | Volume up|
+| VOLUME_DOWN       | 2 | Volume down|
+| BACK       | 3 | Navigation key - back|
+| HOME       | 4 | Navigation key - home|
+| RECENT       | 5 | Navigation key - recently opened|
+
+## KeyPolicy<sup>23+</sup>
+
+Enumerates key policies. This refers to the system behavior triggered after the key code delivered by the MDM app matches the system key event.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name              | Value | Description   |
+| -----------------  | ---- | ----- |
+| INTERCEPTION     | 0 |  Intercepts messages. After this parameter is set, only the current key event is intercepted. The system does not process the event, and the key callback API does not respond to the key event. For example, after the power key interception policy is delivered, pressing the power key does not respond, the device cannot be powered off or locked, and only the power key event in the power-on state is affected. When the device is powered off, the power key can be used to power on the device.|
+| CUSTOM        | 1 | Intercepts and forwards messages. When this policy is configured, the system intercepts the current key event and does not process the event. In addition, the [EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23) callback API notifies the MDM app of the key event. The notification does not block the processing of other events.|
+
+## KeyEvent<sup>23+</sup>
+
+Enumerates key events. When the [EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23) key event callback is triggered, the current key event information is transferred.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name               | Type    | Read-Only | Optional| Description           |
+| ----------------- | ------ | ------ | ------ | ------------- |
+| keyCode       | [KeyCode](#keycode23) | No| No| Key code.  |
+| keyAction       | [KeyAction](#keyaction23) | No| No| Key action.  |
+| actionTime       | number | No| No| Time when the key action occurs. The value is a microsecond-level timestamp after the system is powered on. For long-press key events, this parameter remains unchanged in subsequent key events. Apps can use this timestamp to determine whether the event is a long-press event and execute the corresponding long-press event logic accordingly.  |
+| keyItems       | Array&lt;[KeyItem](#keyitem23)&gt; | No| No| Information about other keys that are being pressed when the current key event occurs.  |
+
+## KeyAction<sup>23+</sup>
+
+Enumerates key actions.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name              | Value | Description   |
+| -----------------  | ---- | ----- |
+| UNKNOWN      | -1 |  Any key action other than press and release.|
+| DOWN         | 0 | Key press.|
+| UP          | 1 | Key release.|
+
+## KeyItem<sup>23+</sup>
+
+Enumerates other key information. This refers to the information of other keys that have been pressed when the current [KeyCode](#keycode23) event occurs.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name               | Type    | Read-Only | Optional| Description           |
+| ----------------- | ------ | ------ | ------ | ------------- |
+| keyCode       | [KeyCode](#keycode23) | No| No| Key code.  |
+| pressed       | boolean  | No| No| Key action. It indicates whether the key is pressed: **true** for pressed; **false** for released. |
+| downTime      | number | No| No| Time when the key action occurs. The value is a microsecond-level timestamp after the system is powered on. Navigation keys do not support combination expansion, so their occurrence time is displayed as 0.|

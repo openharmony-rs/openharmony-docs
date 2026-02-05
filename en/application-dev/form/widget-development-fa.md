@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 The FA model is supported since API version 7, and no longer recommended. Application components are specified by exporting anonymous objects and fixed entry files. You cannot perform derivation for capability expansion. Now, the stage model is recommended for application development.
 
@@ -61,7 +61,7 @@ The widget provider development based on the [FA model](../application-models/fa
 
 ### Implementing Widget Lifecycle Callbacks
 
-To create a widget in the FA model, implement the widget lifecycle callbacks. For details about how to generate a service widget template, see <!--RP1-->[Creating a Service Widget](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-service-widget-V5)<!--RP1End-->.
+To create a widget in the FA model, implement the widget lifecycle callbacks. Before that, generate a widget template by referring to <!--RP1-->[Creating an ArkTS Widget](./arkts-ui-widget-creation.md)<!--RP1End-->.
 
 1. Import related modules to **form.ts**.
    

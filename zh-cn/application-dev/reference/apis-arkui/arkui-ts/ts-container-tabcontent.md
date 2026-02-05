@@ -3,14 +3,16 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
 仅在Tabs中使用，对应一个切换页签的内容视图。
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件默认设置了[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性的值为true，若需要扩展内容区到组件外显示，需先关闭clip属性。
 
 
 ## 子组件
@@ -439,10 +441,10 @@ type DrawableDescriptor = DrawableDescriptor
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明               |
-| ---------- | ------------------------ |
-| INDICATOR | 使用下划线模式。     |
-| BOARD   | 使用背板模式。     |
+| 名称       | 值 | 说明               |
+| ---------- | ----- | ------------------------ |
+| INDICATOR | 0 | 使用下划线模式。     |
+| BOARD   | 1 | 使用背板模式。     |
 
 ## BoardStyle<sup>10+</sup>对象说明
 
@@ -681,8 +683,8 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
 | 名称 | 类型         | 只读 | 可选 | 说明 |
 | -------- | -------- | --- | ----- | -------- |
-| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 否 | 页签内symbol图标普通态样式。<br/>默认值：<br/>fontColor：#66182431 <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
-| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 是 | 页签内symbol图标选中态样式。<br/>默认值：<br/>fontColor：#ff007dff <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
+| normal | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 否 | 页签内symbol图标普通态样式。<br/>默认值：<br/>fontColor：#66182431 <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
+| selected | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 页签内symbol图标选中态样式。<br/>默认值：<br/>fontColor：#ff007dff <br/>renderingStrategy：SymbolRenderingStrategy.MULTIPLE_OPACITY <br/>fontSize：24vp |
 
 ## LayoutMode<sup>10+</sup>枚举说明
 
@@ -1598,6 +1600,7 @@ struct TabContentExample6 {
 ### 示例7（设置子页签/底部页签文本颜色）
 
 本示例通过labelStyle中的unselectedColor和selectedColor改变底部页签以及子页签的文本颜色。
+
 通过iconStyle中的unselectedColor和selectedColor改变底部页签的图标颜色。
 
 ```ts

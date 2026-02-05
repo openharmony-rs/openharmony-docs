@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -51,7 +51,6 @@ FFRT_C_API int ffrt_mutexattr_init(ffrt_mutexattr_t* attr)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -75,7 +74,6 @@ FFRT_C_API int ffrt_mutexattr_settype(ffrt_mutexattr_t* attr, int type)
 设置mutex属性类型。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -102,7 +100,6 @@ FFRT_C_API int ffrt_mutexattr_gettype(ffrt_mutexattr_t* attr, int* type)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -128,7 +125,6 @@ FFRT_C_API int ffrt_mutexattr_destroy(ffrt_mutexattr_t* attr)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -152,7 +148,6 @@ FFRT_C_API int ffrt_mutex_init(ffrt_mutex_t* mutex, const ffrt_mutexattr_t* attr
 初始化mutex。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -179,7 +174,6 @@ FFRT_C_API int ffrt_mutex_lock(ffrt_mutex_t* mutex)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -203,7 +197,6 @@ FFRT_C_API int ffrt_mutex_unlock(ffrt_mutex_t* mutex)
 释放mutex。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -229,7 +222,6 @@ FFRT_C_API int ffrt_mutex_trylock(ffrt_mutex_t* mutex)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -253,7 +245,6 @@ FFRT_C_API int ffrt_mutex_destroy(ffrt_mutex_t* mutex)
 销毁mutex。
 
 **起始版本：** 10
-
 
 **参数：**
 

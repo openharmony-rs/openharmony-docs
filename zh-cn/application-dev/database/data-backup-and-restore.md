@@ -280,6 +280,8 @@ import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit'
+import { UIContext } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 ```
 
 
@@ -287,8 +289,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit'
 <!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
 const STORE_CONFIG: relationalStore.StoreConfig = {
   name: 'RdbTest.db',
   securityLevel: relationalStore.SecurityLevel.S3
@@ -370,7 +373,8 @@ export default class EntryAbility extends UIAbility {
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
-let context = getContext();
+/* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+const context = new UIContext().getHostContext() as common.UIAbilityContext;
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -415,7 +419,7 @@ try {
             /* ...
                业务的增删改逻辑
                ...
-            */
+             */
             // 抛出异常
             if (resultSet?.rowCount == -1) {
               resultSet?.isColumnNull(0);
@@ -464,7 +468,8 @@ try {
     
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
-    let context = getContext();
+    /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
+    const context = new UIContext().getHostContext() as common.UIAbilityContext;
     let STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       securityLevel: relationalStore.SecurityLevel.S3,

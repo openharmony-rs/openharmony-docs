@@ -14,7 +14,7 @@ Web组件返回的SSL错误通知事件的处理对象。示例代码参考[onSs
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## constructor<sup>9+</sup>
 

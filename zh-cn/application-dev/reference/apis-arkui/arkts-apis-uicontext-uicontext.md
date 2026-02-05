@@ -152,7 +152,7 @@ static getCallingScopeUIContext(): UIContext | undefined
 >
 > 返回的UIContext对象可能指向一个已销毁的UI实例，通常在由已销毁的实例抛出异步任务时出现。建议通过[isAvailable](#isavailable20)接口判断其有效性。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,7 +199,7 @@ static getLastFocusedUIContext(): UIContext | undefined
 
 获取最近一次切换到获焦状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,7 +246,7 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 获取最近一次切换到前台状态的UI实例的UIContext。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -293,7 +293,7 @@ static getAllUIContexts(): UIContext[]
 
 获取所有当前有效的UIContext实例。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -352,7 +352,7 @@ static resolveUIContext(): ResolvedUIContext
 > 5. 如果存在多个UI实例，则返回实例唯一标识的ID最大的UIContext。
 > 6. 如果以上条件均不满足，则返回一个无效的UIContext实例。
 
-**原子化服务API:：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -498,7 +498,7 @@ getComponentUtils(): ComponentUtils
 
 **示例：** 
 
-完整示例请参考[getComponentUtils](js-apis-arkui-componentUtils.md)中的示例。
+完整示例请参考[示例1（获取ComponentUtils对象）](js-apis-arkui-componentUtils.md#示例1获取componentutils对象)。
 
 ## getUIInspector
 
@@ -588,7 +588,7 @@ struct Index {
 
 getId(): number
 
-获取后端实例唯一标识的ID。
+获取UI实例对象唯一标识，多实例场景下，开发者可使用此唯一标识区分多个UI实例对象，便于管理。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -598,7 +598,7 @@ getId(): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回后端实例唯一标识的ID，取值范围：(0, +∞) |
+| number | 返回后端实例唯一标识的ID，取值范围：[-1, +∞) |
 
 **示例：**
 
@@ -611,7 +611,7 @@ struct Index{
       .width("100%")
       .height("100%")
       .onClick(()=>{
-      console.log(`id:${this.getUIContext()?.getId()}`);
+      console.info(`id:${this.getUIContext()?.getId()}`);
     })
   }
 }
@@ -743,13 +743,13 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 完整示例请参考[OverlayManager](arkts-apis-uicontext-overlaymanager.md)中的示例。
 
-## animateToImmediately<sup>22+</sup>
+## animateToImmediately<sup>23+</sup>
 
 animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
 通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1276,7 +1276,7 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 
 >  **说明：**
 >
->  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showAlertDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>  不支持在输入法类型窗口中使用子窗（[showInSubWindow](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明) 为true）的showAlertDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1325,6 +1325,7 @@ struct Index {
   }
 }
 ```
+![showAlertDialog](figures/showAlertDialog.gif)
 
 ## showActionSheet
 
@@ -1395,6 +1396,7 @@ struct Index {
   }
 }
 ```
+![showActionSheet](figures/showActionSheet.gif)
 
 ## showDatePickerDialog
 
@@ -1428,46 +1430,49 @@ struct DatePickerDialogExample {
   selectedDate: Date = new Date("2010-1-1");
 
   build() {
-    Column() {
-      Button("DatePickerDialog")
-        .margin(20)
-        .onClick(() => {
-          this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
-            selected: this.selectedDate,
-            showTime: true,
-            useMilitaryTime: false,
-            dateTimeOptions: { hour: "numeric", minute: "2-digit" },
-            onDateAccept: (value: Date) => {
-              // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
-              this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
-            },
-            onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
-            },
-            onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
-            },
-            onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
-            },
-            onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
-            },
-            onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
-            },
-            onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
-            }
+    Row(){
+      Column() {
+        Button("DatePickerDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showDatePickerDialog({
+              start: new Date("2000-1-1"),
+              end: new Date("2100-12-31"),
+              selected: this.selectedDate,
+              showTime: true,
+              useMilitaryTime: false,
+              dateTimeOptions: { hour: "numeric", minute: "2-digit" },
+              onDateAccept: (value: Date) => {
+                // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
+                this.selectedDate = value;
+                console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              },
+              onCancel: () => {
+                console.info("DatePickerDialog:onCancel()");
+              },
+              onDateChange: (value: Date) => {
+                console.info("DatePickerDialog:onDateChange()" + value.toString());
+              },
+              onDidAppear: () => {
+                console.info("DatePickerDialog:onDidAppear()");
+              },
+              onDidDisappear: () => {
+                console.info("DatePickerDialog:onDidDisappear()");
+              },
+              onWillAppear: () => {
+                console.info("DatePickerDialog:onWillAppear()");
+              },
+              onWillDisappear: () => {
+                console.info("DatePickerDialog:onWillDisappear()");
+              }
+            })
           })
-        })
-    }.width('100%')
+      }.width('100%')
+    }.height('100%')
   }
 }
 ```
+![showDatePickerDialog](figures/showDatePickerDialog.gif)
 
 ## showTimePickerDialog
 
@@ -1582,34 +1587,37 @@ struct TextPickerDialogExample {
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   private select: number  = 0;
   build() {
-    Column() {
-      Button('showTextPickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showTextPickerDialog({
-            range: this.fruits,
-            selected: this.select,
-            onAccept: (value: TextPickerResult) => {
-              // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-              let selectedVal = new SelectedValue();
-              let selectedArr = new SelectedArray();
-              if (value.index){
-                value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+    Row(){
+      Column() {
+        Button('showTextPickerDialog')
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              onAccept: (value: TextPickerResult) => {
+                // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
+                let selectedVal = new SelectedValue();
+                let selectedArr = new SelectedArray();
+                if (value.index){
+                  value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+                }
+                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+              },
+              onCancel: () => {
+                console.info("TextPickerDialog:onCancel()");
+              },
+              onChange: (value: TextPickerResult) => {
+                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
               }
-              console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
-            },
-            onCancel: () => {
-              console.info("TextPickerDialog:onCancel()");
-            },
-            onChange: (value: TextPickerResult) => {
-              console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
-            }
-          });
-        })
-    }.width('100%').margin({ top: 5 })
+            });
+          })
+      }.width('100%').margin({ top: 5 })
+    }.height('100%')
   }
 }
 ```
+![showTextPickerDialog](figures/showTextPickerDialog.gif)
 
 ## showTextPickerDialog<sup>20+</sup>
 
@@ -1870,7 +1878,7 @@ export default class EntryAbility extends UIAbility{
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
         let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-        console.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+        console.info("KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
       });
     }
 }
@@ -1929,7 +1937,7 @@ getDragController(): DragController
 
 |类型|说明|
 |----|----|
-|[DragController](js-apis-arkui-dragController.md)| 获取DragController对象。|
+|[DragController](arkts-apis-uicontext-dragcontroller.md)| 获取DragController对象。|
 
 **示例：**
 
@@ -2230,7 +2238,7 @@ getCursorController(): CursorController
 
 **示例：**
 
-完整示例请参考[CursorController](arkts-apis-uicontext-contextmenucontroller.md)中的示例。
+完整示例请参考[CursorController](arkts-apis-uicontext-cursorcontroller.md)中的示例。
 
 ## getContextMenuController<sup>12+</sup>
 
@@ -2298,11 +2306,11 @@ vp2px(value : number) : number
 
 转换公式为：px值 = vp值 × 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
-> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 >
 > 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的vp2px接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -2356,11 +2364,11 @@ px2vp(value : number) : number
 
 转换公式为：vp值 = px值 ÷ 像素密度
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 > **说明：**
 >
-> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> 1. getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 >
 > 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
@@ -2414,13 +2422,13 @@ fp2px(value : number) : number
 
 转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2472,13 +2480,13 @@ px2fp(value : number) : number
 
 转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例
 
-像素密度：当前窗口生效的像素密度值，通常就是屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+像素密度：当前窗口生效的像素密度值，通常就是屏幕物理像素密度[VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density。
 
 字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2532,7 +2540,7 @@ lpx2px(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2586,7 +2594,7 @@ px2lpx(value : number) : number
 
 > **说明：**
 >
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+> getUIContext需在windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2679,7 +2687,7 @@ struct Index {
 ```
 ## getWindowId<sup>23+</sup>
 
-getWindowId(): number | undefiend
+getWindowId(): number | undefined
 
 获取当前应用实例所属的窗口ID。
 
@@ -2710,7 +2718,7 @@ struct Index {
 
   aboutToAppear() {
     const windowId = this.getUIContext().getWindowId();
-    hilog.info(0x0000, 'testTag', 'current window id: %{public}s', windowId);
+    hilog.info(0x0000, 'testTag', 'current window id: %{public}d', windowId);
   }
 
   build() {
@@ -3641,7 +3649,7 @@ enableSwipeBack(enabled: Optional\<boolean\>): void
 
 设置是否支持应用内横向滑动返回上一级。
 
-**原子化服务API:：** 从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -3678,7 +3686,7 @@ getTextMenuController(): TextMenuController
 
 获取[TextMenuController](arkts-apis-uicontext-textmenucontroller.md)对象，可通过该对象控制文本选择菜单。
 
-**原子化服务API:：** 从API version 16 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 16 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3702,7 +3710,7 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 >
 > 返回的UI上下文只可用于创建[自定义节点](../../ui/arkts-user-defined-node.md)，不能执行其他UI操作。
 
-**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3752,7 +3760,7 @@ static destroyUIContextWithoutWindow(): void
 
 销毁[createUIContextWithoutWindow](#createuicontextwithoutwindow17)创建的UI实例。
 
-**原子化服务API:：** 从API version 17 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3933,9 +3941,9 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 | 错误码ID  | 错误信息                               |
 | ------ | ---------------------------------- |
-| 100101 | The parameter value cannot be less than 0. |
-| 100102 | The parameter value cannot be a floating-point number. |
-| 100103 | The function cannot be called from a non-main thread. |
+| 100101 | The parameter is less than 0. |
+| 100102 | The parameter value cannot be a floating point number. |
+| 100103 | The function cannot be called from a non main thread. |
 
 **示例：**
 
@@ -3962,7 +3970,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## setImageCacheCount<sup>22+</sup>
+## setImageCacheCount<sup>23+</sup>
 
 setImageCacheCount(value: number): void
 
@@ -3972,7 +3980,7 @@ setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-ar
 
 setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4008,7 +4016,7 @@ struct Index {
 }
 ```
 
-## setImageRawDataCacheSize<sup>22+</sup>
+## setImageRawDataCacheSize<sup>23+</sup>
 
 setImageRawDataCacheSize(value: number): void
 
@@ -4016,7 +4024,7 @@ setImageRawDataCacheSize(value: number): void
 
 setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4071,3 +4079,130 @@ getMagnifier(): Magnifier
 **示例：**
 
 参考[Magnifier](arkts-apis-uicontext-magnifier.md)的[bind](arkts-apis-uicontext-magnifier.md#bind)接口示例。
+
+## setCustomKeyboardContinueFeature<sup>23+</sup>
+
+setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
+
+设置自定义键盘之间切换时，是否接续。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| feature | [CustomKeyboardContinueFeature](arkts-apis-uicontext-e.md#customkeyboardcontinuefeature23) | 是 | 自定义键盘之间切换时是否接续。<br/> 默认值：CustomKeyboardContinueFeature.DISABLED，即不接续。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { CustomKeyboardContinueFeature } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct Index {
+  controller: TextInputController = new TextInputController();
+  controller2: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+  @State inputValue2: string = '';
+  @State supportAvoidance: boolean = true;
+  @State isValue: CustomKeyboardContinueFeature = CustomKeyboardContinueFeature.DISABLED;
+  @State str: string = '否';
+
+  // 自定义键盘组件
+  @Builder
+  CustomKeyboardBuilder() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue = this.inputValue.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(213, 213, 213)').height(300)
+  }
+
+  // 自定义键盘组件
+  @Builder
+  CustomKeyboardBuilder2() {
+    Column() {
+      Row() {
+        Button('x').onClick(() => {
+          // 关闭自定义键盘
+          this.controller2.stopEditing();
+        }).margin(10)
+        Button('delete').onClick(() => {
+          this.inputValue2 = this.inputValue2.slice(0, -1);
+        }).margin(10)
+      }
+
+      Grid() {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+          GridItem() {
+            Button(item + '')
+              .width(110).onClick(() => {
+              this.inputValue2 += item;
+            })
+          }
+        })
+      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+    }.backgroundColor('rgb(227, 248, 249)').height(150)
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        Button('是否接续：' + this.str).onClick(() => {
+          if (this.isValue == CustomKeyboardContinueFeature.ENABLED) {
+            this.isValue = CustomKeyboardContinueFeature.DISABLED
+            this.str = '否'
+          } else {
+            this.isValue = CustomKeyboardContinueFeature.ENABLED
+            this.str = '是'
+          }
+          this.getUIContext().setCustomKeyboardContinueFeature(this.isValue);
+        }).fontSize(20).width('80%').key('button')
+
+        TextInput({
+          placeholder: 'TextInput1 bind CustomKeyboardBuilder',
+          controller: this.controller,
+          text: this.inputValue
+        })// 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+        TextInput({
+          placeholder: 'TextInput2 bind CustomKeyboardBuilder2',
+          controller: this.controller2,
+          text: this.inputValue2
+        })// 绑定自定义键盘
+          .customKeyboard(this.CustomKeyboardBuilder2(), { supportAvoidance: this.supportAvoidance })
+          .margin(10)
+          .border({ width: 1 })
+      }
+    }
+  }
+}
+```
+
+![customKeyboardContinueFeature](arkui-ts/figures/customKeyboardContinueFeature.gif)

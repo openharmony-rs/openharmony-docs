@@ -30,7 +30,7 @@ Once an agent-powered reminder is published, the notification center will displa
 
 > **NOTE**
 >
-> This API can be called only after the [NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) permission is obtained.
+> This API can be called only after the [notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) permission is obtained.
 >
 > <!--RP1--><!--RP1End-->
 
@@ -84,7 +84,7 @@ If the value of [ReminderRequest.ringDuration](#reminderrequest) is greater than
 
 > **NOTE**
 >
-> This API can be called only after the [NotificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) permission is obtained.
+> This API can be called only after the [notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) permission is obtained.
 >
 > <!--RP1--><!--RP1End-->
 
@@ -762,7 +762,7 @@ let reminderId: number = 1;
 reminderAgentManager.getExcludeDates(reminderId).then((dates) => {
   console.info("getExcludeDates promise length: " + dates.length);
   for (let i = 0; i < dates.length; i++) {
-	console.info("getExcludeDates promise date is: " + dates[i].toString());
+    console.info("getExcludeDates promise date is: " + dates[i].toString());
   }
 }).catch((err: BusinessError) => {
   console.error("promise err code:" + err.code + " message:" + err.message);
@@ -821,6 +821,146 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 });
 ```
 
+## reminderAgentManager.cancelReminderOnDisplay<sup>23+</sup>
+
+cancelReminderOnDisplay(reminderId: number): Promise\<void>
+
+Cancels the notification card displayed in the notification center with the agent reminder data retained. For example, for a daily repeating reminder, calling this API removes the card from the notification center, but the reminder will be triggered again the next day according to its schedule.
+
+**System capability**: SystemCapability.Notification.ReminderAgent
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                              |
+| ---------- | ------ | ---- | ---------------------------------- |
+| reminderId | number | Yes  | ID of the agent-powered reminder to be canceled. The reminder ID is returned when the [publishReminder](#reminderagentmanagerpublishreminder) API is called.|
+
+**Return value**
+
+| Type                  | Description                             |
+| ---------------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md).
+
+| ID| Error Message                    |
+| -------- | ---------------------------- |
+| 1700003  | The reminder does not exist. |
+| 1700007  | If the input parameter is not valid parameter. |
+
+**Example**
+
+```ts
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let reminderId: number = 1;
+reminderAgentManager.cancelReminderOnDisplay(reminderId).then(() => {
+  console.info("cancel display reminder  succeed");
+}).catch((err: BusinessError) => {
+  console.error("promise err code:" + err.code + " message:" + err.message);
+});
+```
+
+## reminderAgentManager.subscribeReminderState<sup>23+</sup>
+
+subscribeReminderState(callback: Callback\<Array\<ReminderState>>): Promise\<void>
+
+Subscribes to agent-powered reminder state changes. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.PUBLISH_AGENT_REMINDER
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.ReminderAgent
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                              |
+| ---------- | ------ | ---- | ---------------------------------- |
+| callback | Callback\<Array\<[ReminderState](#reminderstate23)>> | Yes  | Callback used to return the agent-powered reminder state.|
+
+**Return value**
+
+| Type                  | Description                             |
+| ---------------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md).
+
+| ID| Error Message                    |
+| -------- | ---------------------------- |
+| 201      | Permission denied.           |
+| 1700007  | If the input parameter is not valid parameter. |
+
+**Example**
+
+``` ts
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
+  console.info('length is : ' + states.length);
+}
+
+reminderAgentManager.subscribeReminderState(reminderStateCallback).then(() => {
+  console.info('subscribe succeed');
+}).catch((err: BusinessError) => {
+  console.error('promise err code:' + err.code + ' message:' + err.message);
+});
+```
+
+## reminderAgentManager.unsubscribeReminderState<sup>23+</sup>
+
+unsubscribeReminderState(callback?: Callback\<Array\<ReminderState>>): Promise\<void>
+
+Unsubscribes from agent-powered reminder state changes. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.ReminderAgent
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                              |
+| ---------- | ------ | ---- | ---------------------------------- |
+| callback | Callback\<Array\<[ReminderState](#reminderstate23)>> | No  | Callback used to return the result. If the **callback** parameter is not passed, all subscriptions are canceled.|
+
+**Return value**
+
+| Type                  | Description                             |
+| ---------------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md).
+
+| ID| Error Message                    |
+| -------- | ---------------------------- |
+| 1700007  | If the input parameter is not valid parameter. |
+
+**Example**
+
+``` ts
+import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function reminderStateCallback(states: Array<reminderAgentManager.ReminderState>) {
+  console.info('length is : ' + states.length);
+}
+
+reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => {
+  console.info('unsubscribe succeed');
+}).catch((err: BusinessError) => {
+  console.error('promise err code:' + err.code + ' message:' + err.message);
+});
+```
+
 ## ActionButtonType
 
 Enumerates the types of buttons displayed for a reminder.
@@ -854,6 +994,7 @@ Enumerates the audio playback channels for the custom prompt tone.
 | -------- | -------- | -------- |
 | RING_CHANNEL_ALARM | 0 | Alarm channel.|
 | RING_CHANNEL_MEDIA | 1 | Media channel.|
+| RING_CHANNEL_NOTIFICATION<sup>23+</sup> | 2 | Notification slot.|
 
 
 ## ActionButton
@@ -998,3 +1139,19 @@ Defines the reminder information.
 | ----------- | ----------------------------------- | ---- | ---- | -------------------- |
 | reminderId  | number                              | No  | No  | ID of the reminder.|
 | reminderReq | [ReminderRequest](#reminderrequest) | No  | No  | Request used for publishing the reminder.      |
+
+## ReminderState<sup>23+</sup>
+
+Defines the agent-powered reminder state information, for which notifications are triggered in the following scenarios:<br>
+1. When a user taps a button on an agent-powered reminder notification, a notification specifying the tapped button type is sent to the application if it is running. If the application is not running, the notification will not be received.
+2. Since the above scenario cannot guarantee that the application receives the notification, all callbacks associated with user-tapped button types under the application are returned to the application when it registers a new callback function. State information is retained for a maximum of 30 days. Cached state information is cleared when the application registers a new callback function or has not registered any callback function for more than 30 days. 
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.ReminderAgent
+
+| Name       | Type                                 | Read Only| Optional| Description                |
+| ----------- | ------------------------------------- | ---- | ---- | -------------------- |
+| reminderId  | number                                | No  | No  | Reminder ID.|
+| buttonType  | [ActionButtonType](#actionbuttontype) | No  | No  | Button type.|
+| isMessageResent | boolean | No  | No  | Whether a message is sent repeatedly.<br> - **false**: The message is sent for the first time. Applicable scenarios: The application is running when the user taps a button on the agent-powered reminder notification; the application is not running when the user taps the button, and the application registers a new callback function afterward.<br> - **true**: The message is sent repeatedly. Applicable scenario: The application is running and registers a new callback function after the user taps a button on the agent-powered reminder notification.|

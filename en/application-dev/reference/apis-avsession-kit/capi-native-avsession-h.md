@@ -77,7 +77,7 @@ The file declares the AVSession definition, which can be used to set metadata, p
 
 ### AVSession_Type
 
-```
+```c
 enum AVSession_Type
 ```
 
@@ -96,7 +96,7 @@ Enumerates the session types.
 
 ### AVSession_PlaybackState
 
-```
+```c
 enum AVSession_PlaybackState
 ```
 
@@ -124,7 +124,7 @@ Enumerates the media playback states.
 
 ### AVSession_LoopMode
 
-```
+```c
 enum AVSession_LoopMode
 ```
 
@@ -144,7 +144,7 @@ Enumerates the loop modes of media playback.
 
 ### AVSession_ControlCommand
 
-```
+```c
 enum AVSession_ControlCommand
 ```
 
@@ -165,7 +165,7 @@ Enumerates the playback control commands.
 
 ### AVSessionCallback_Result
 
-```
+```c
 enum AVSessionCallback_Result
 ```
 
@@ -185,7 +185,7 @@ Enumerates the callback execution results.
 
 ### OH_AVSessionCallback_OnCommand()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session,AVSession_ControlCommand command, void* userData)
 ```
 
@@ -197,7 +197,7 @@ Defines a callback for a common playback control command.
 
 ### OH_AVSessionCallback_OnFastForward()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session,uint32_t seekTime, void* userData)
 ```
 
@@ -209,7 +209,7 @@ Defines a callback for the fast-forward operation.
 
 ### OH_AVSessionCallback_OnRewind()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session,uint32_t seekTime, void* userData)
 ```
 
@@ -221,7 +221,7 @@ Defines a callback for the rewind operation.
 
 ### OH_AVSessionCallback_OnSeek()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session,uint64_t seekTime, void* userData)
 ```
 
@@ -233,7 +233,7 @@ Defines a callback for the seek operation.
 
 ### OH_AVSessionCallback_OnSetLoopMode()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session,AVSession_LoopMode curLoopMode, void* userData)
 ```
 
@@ -245,7 +245,7 @@ Defines a callback for the operation of setting the loop mode.
 
 ### OH_AVSessionCallback_OnToggleFavorite()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session,const char* assetId, void* userData)
 ```
 
@@ -257,7 +257,7 @@ Defines a callback for the operation of favoriting a media asset.
 
 ### OH_AVSession_Create()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* sessionTag,const char* bundleName, const char* abilityName, OH_AVSession** avsession)
 ```
 
@@ -286,7 +286,7 @@ Creates a session object.
 
 ### OH_AVSession_Destroy()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)
 ```
 
@@ -311,7 +311,7 @@ Destroys a session object.
 
 ### OH_AVSession_Activate()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)
 ```
 
@@ -336,7 +336,7 @@ Activates a session.
 
 ### OH_AVSession_Deactivate()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)
 ```
 
@@ -361,7 +361,7 @@ Deactivates a session.
 
 ### OH_AVSession_GetSessionType()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession_Type* sessionType)
 ```
 
@@ -387,7 +387,7 @@ Obtains the session type.
 
 ### OH_AVSession_GetSessionId()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char** sessionId)
 ```
 
@@ -413,7 +413,7 @@ Obtains the session ID.
 
 ### OH_AVSession_SetAVMetadata()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetadata* avmetadata)
 ```
 
@@ -439,7 +439,7 @@ Sets media metadata.
 
 ### OH_AVSession_SetPlaybackState()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession,AVSession_PlaybackState playbackState)
 ```
 
@@ -465,7 +465,7 @@ Sets the playback state.
 
 ### OH_AVSession_SetPlaybackPosition()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession,AVSession_PlaybackPosition* playbackPosition)
 ```
 
@@ -491,7 +491,7 @@ Sets the playback position.
 
 ### OH_AVSession_SetFavorite()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorite)
 ```
 
@@ -517,7 +517,7 @@ Favorites or unfavorites the media asset.
 
 ### OH_AVSession_SetLoopMode()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_LoopMode loopMode)
 ```
 
@@ -543,7 +543,7 @@ Sets a loop mode.
 
 ### OH_AVSession_RegisterCommandCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession,AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback, void* userData)
 ```
 
@@ -571,7 +571,7 @@ Registers a callback for a common playback control command.
 
 ### OH_AVSession_UnregisterCommandCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession,AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback)
 ```
 
@@ -598,7 +598,7 @@ Unregisters the callback for a common playback control command.
 
 ### OH_AVSession_RegisterForwardCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnFastForward callback, void* userData)
 ```
 
@@ -625,7 +625,7 @@ Registers a callback for the fast-forward operation.
 
 ### OH_AVSession_UnregisterForwardCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnFastForward callback)
 ```
 
@@ -651,7 +651,7 @@ Unregisters the callback for the fast-forward operation.
 
 ### OH_AVSession_RegisterRewindCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnRewind callback, void* userData)
 ```
 
@@ -678,7 +678,7 @@ Registers a callback for the rewind operation.
 
 ### OH_AVSession_UnregisterRewindCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnRewind callback)
 ```
 
@@ -704,7 +704,7 @@ Unregisters the callback for the rewind operation.
 
 ### OH_AVSession_RegisterSeekCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSeek callback, void* userData)
 ```
 
@@ -731,7 +731,7 @@ Registers a callback for the seek operation.
 
 ### OH_AVSession_UnregisterSeekCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSeek callback)
 ```
 
@@ -757,7 +757,7 @@ Unregisters the callback for the seek operation.
 
 ### OH_AVSession_RegisterSetLoopModeCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSetLoopMode callback, void* userData)
 ```
 
@@ -784,7 +784,7 @@ Registers a callback for the operation of setting the loop mode.
 
 ### OH_AVSession_UnregisterSetLoopModeCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSetLoopMode callback)
 ```
 
@@ -810,7 +810,7 @@ Unregisters the callback for the operation of setting the loop mode.
 
 ### OH_AVSession_RegisterToggleFavoriteCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnToggleFavorite callback, void* userData)
 ```
 
@@ -837,7 +837,7 @@ Registers a callback for the operation of favoriting a media asset.
 
 ### OH_AVSession_UnregisterToggleFavoriteCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnToggleFavorite callback)
 ```
 

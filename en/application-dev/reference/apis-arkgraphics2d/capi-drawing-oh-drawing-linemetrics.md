@@ -6,8 +6,8 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
-typedef struct {...} OH_Drawing_LineMetrics
+```c
+typedef struct OH_Drawing_LineMetrics {...} OH_Drawing_LineMetrics
 ```
 
 ## Overview
@@ -26,8 +26,8 @@ This struct describes the measurement information about a line of text.
 
 | Name                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| double ascender                                              | Part of a lowercase letter that extends beyond the meanline.                                  |
-| double descender                                             | Part of a lowercase letter that extends below the baseline.                                  |
+| double ascender                                              | Height of a character above the baseline, after taking the absolute value.                                  |
+| double descender                                             | Height of a character below the baseline, after taking the absolute value.                                  |
 | double capHeight                                             | Height of an uppercase letter above the baseline.                                            |
 | double xHeight                                               | Height of a lowercase letter, specifically the lowercase x, not including ascenders and descenders.                                            |
 | double width                                                 | Horizontal space taken up by a character.                                                  |

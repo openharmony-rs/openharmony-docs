@@ -1,4 +1,10 @@
 # UI Stability Issue Analysis Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @caoruihong-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This topic explains the concepts and classification of stability issues, and provides guidance for locating stability issues using system debugging capabilities and tools.
 
@@ -39,7 +45,7 @@ Reference materials:
 
 ## Application Freeze
 
-Application freezes, also known as application unresponsiveness , occur when an application becomes unresponsive to user interactions. The following materials provide guidance for analyzing application freeze issues:
+Application freezes, also known as application unresponsiveness, occur when an application becomes unresponsive to user interactions. The following materials provide guidance for analyzing application freeze issues:
 
 - [Application Freeze Detection](../dfx/appfreeze-guidelines.md)
 - [Task Timeout Detection](../dfx/apptask-timeout-guidelines.md)

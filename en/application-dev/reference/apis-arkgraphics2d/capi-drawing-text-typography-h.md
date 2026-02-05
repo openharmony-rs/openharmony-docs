@@ -13,6 +13,8 @@ This file declares the functions related to typography in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -96,7 +98,7 @@ This file declares the functions related to typography in the drawing module.
 | [void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)](#oh_drawing_textstylegetbackgroundbrush) | Obtains the background brush of a text style.|
 | [void OH_Drawing_SetTextStyleBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_settextstylebackgroundpen) | Sets the background pen for a text style.|
 | [void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_textstylegetbackgroundpen) | Obtains the background pen of a text style.|
-| [OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_TypographyStyle* style,OH_Drawing_FontCollection* fontCollection)](#oh_drawing_createtypographyhandler) | Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calling [OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler) when this object is no longer needed.|
+| [OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_TypographyStyle* style,OH_Drawing_FontCollection* fontCollection)](#oh_drawing_createtypographyhandler) | Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calling [OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler) when this object is no longer needed. You are advised to use the [OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection) function to create an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.|
 | [void OH_Drawing_DestroyTypographyHandler(OH_Drawing_TypographyCreate* handler)](#oh_drawing_destroytypographyhandler) | Reclaims the memory occupied by an **OH_Drawing_TypographyCreate** object.|
 | [void OH_Drawing_TypographyHandlerPushTextStyle(OH_Drawing_TypographyCreate* handler, OH_Drawing_TextStyle* style)](#oh_drawing_typographyhandlerpushtextstyle) | Pushes a text style into the text style stack. Any text added afterward will use the style currently on top of the stack.|
 | [void OH_Drawing_TypographyHandlerAddText(OH_Drawing_TypographyCreate* handler, const char* text)](#oh_drawing_typographyhandleraddtext) | Adds text.|
@@ -283,18 +285,23 @@ This file declares the functions related to typography in the drawing module.
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* value)](#oh_drawing_gettypographystyleattributedouble) | Obtains the typography style attribute of the **double** type.|
 | [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int value)](#oh_drawing_settypographystyleattributeint) | Sets the typography style attribute of the **int** type.|
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | Obtains the typography style attribute of the **int** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool value)](#oh_drawing_settypographystyleattributebool) | Sets the typography style attribute of the **bool** type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool* value)](#oh_drawing_gettypographystyleattributebool) | Obtains the typography style attribute of the **bool** type.|
+| [void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)](#oh_drawing_destroypositionandaffinity) | Destroys an [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) object and reclaims the memory occupied by the object.|
 
 ## Enum Description
 
 ### OH_Drawing_TextDirection
 
-```
+```c
 enum OH_Drawing_TextDirection
 ```
 
 **Description**
 
 Enumerates the text directions.
+
+**Since**: 8
 
 | Value| Description|
 | -- | -- |
@@ -303,13 +310,15 @@ Enumerates the text directions.
 
 ### OH_Drawing_TextAlign
 
-```
+```c
 enum OH_Drawing_TextAlign
 ```
 
 **Description**
 
 Enumerates the text alignment modes.
+
+**Since**: 8
 
 | Value| Description|
 | -- | -- |
@@ -322,13 +331,15 @@ Enumerates the text alignment modes.
 
 ### OH_Drawing_FontWeight
 
-```
+```c
 enum OH_Drawing_FontWeight
 ```
 
 **Description**
 
 Enumerates the font weights.
+
+**Since**: 8
 
 | Value| Description|
 | -- | -- |
@@ -344,13 +355,15 @@ Enumerates the font weights.
 
 ### OH_Drawing_TextBaseline
 
-```
+```c
 enum OH_Drawing_TextBaseline
 ```
 
 **Description**
 
 Enumerates the text baselines.
+
+**Since**: 8
 
 | Value| Description|
 | -- | -- |
@@ -359,13 +372,15 @@ Enumerates the text baselines.
 
 ### OH_Drawing_TextDecoration
 
-```
+```c
 enum OH_Drawing_TextDecoration
 ```
 
 **Description**
 
 Enumerates the text decorations.
+
+**Since**: 8
 
 | Value| Description|
 | -- | -- |
@@ -376,7 +391,7 @@ Enumerates the text decorations.
 
 ### OH_Drawing_FontStyle
 
-```
+```c
 enum OH_Drawing_FontStyle
 ```
 
@@ -384,15 +399,17 @@ enum OH_Drawing_FontStyle
 
 Enumerates the font styles.
 
+**Since**: 8
+
 | Value| Description|
 | -- | -- |
 | FONT_STYLE_NORMAL | Normal style.|
 | FONT_STYLE_ITALIC | Italic.|
-| FONT_STYLE_OBLIQUE | Oblique.<br>**Since**: 12|
+| FONT_STYLE_OBLIQUE | Oblique.|
 
 ### OH_Drawing_PlaceholderVerticalAlignment
 
-```
+```c
 enum OH_Drawing_PlaceholderVerticalAlignment
 ```
 
@@ -414,7 +431,7 @@ Enumerates the vertical alignment modes of placeholders.
 
 ### OH_Drawing_TextVerticalAlignment
 
-```
+```c
 enum OH_Drawing_TextVerticalAlignment
 ```
 
@@ -433,7 +450,7 @@ Enumerates the vertical alignment modes.
 
 ### OH_Drawing_TextDecorationStyle
 
-```
+```c
 enum OH_Drawing_TextDecorationStyle
 ```
 
@@ -453,7 +470,7 @@ Enumerates the text decoration styles.
 
 ### OH_Drawing_EllipsisModal
 
-```
+```c
 enum OH_Drawing_EllipsisModal
 ```
 
@@ -471,7 +488,7 @@ Enumerates the ellipsis styles.
 
 ### OH_Drawing_BreakStrategy
 
-```
+```c
 enum OH_Drawing_BreakStrategy
 ```
 
@@ -489,7 +506,7 @@ Enumerates the text break strategies.
 
 ### OH_Drawing_WordBreakType
 
-```
+```c
 enum OH_Drawing_WordBreakType
 ```
 
@@ -508,7 +525,7 @@ Enumerates the word break types.
 
 ### OH_Drawing_RectHeightStyle
 
-```
+```c
 enum OH_Drawing_RectHeightStyle
 ```
 
@@ -529,7 +546,7 @@ Enumerates the rectangle height styles.
 
 ### OH_Drawing_RectWidthStyle
 
-```
+```c
 enum OH_Drawing_RectWidthStyle
 ```
 
@@ -546,7 +563,7 @@ Enumerates the rectangle width styles.
 
 ### OH_Drawing_TextBadgeType
 
-```
+```c
 enum OH_Drawing_TextBadgeType
 ```
 
@@ -564,7 +581,7 @@ Enumerates the text badge styles.
 
 ### OH_Drawing_FontConfigInfoErrorCode
 
-```
+```c
 enum OH_Drawing_FontConfigInfoErrorCode
 ```
 
@@ -584,7 +601,7 @@ Enumerates the error codes that may be used during the obtaining of system font 
 
 ### OH_Drawing_FontWidth
 
-```
+```c
 enum OH_Drawing_FontWidth
 ```
 
@@ -608,7 +625,7 @@ Enumerates the font widths.
 
 ### OH_Drawing_TextHeightBehavior
 
-```
+```c
 enum OH_Drawing_TextHeightBehavior
 ```
 
@@ -627,7 +644,7 @@ Enumerates the text height modifier patterns.
 
 ### OH_Drawing_TextStyleType
 
-```
+```c
 enum OH_Drawing_TextStyleType
 ```
 
@@ -651,7 +668,7 @@ Enumerates the text style types.
 
 ### OH_Drawing_LineHeightStyle
 
-```
+```c
 enum OH_Drawing_LineHeightStyle
 ```
 
@@ -663,12 +680,12 @@ Enumerates the scaling base styles of the line height. The default style is **TE
 
 | Value| Description|
 | -- | -- |
-| TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0 | Uses the font size as the scaling base.<br>Formula for calculating the line height: FontSize x FontHeight.<br>**FontSize** can be obtained from the [OH_Drawing_TextStyleGetFontSize](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontsize) API.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
-| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1 | Uses the font height as the scaling base.<br>Formula for calculating the line height: FontHeight x FontHeight.<br>The font height is obtained after the text is shaped using the font file.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
+| TEXT_LINE_HEIGHT_BY_FONT_SIZE = 0 | Uses the font size as the scaling base.<br>Formula for calculating the line height: **FontSize** x **FontHeight**.<br>**FontSize** can be obtained from the [OH_Drawing_TextStyleGetFontSize](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontsize) API.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
+| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT = 1 | Uses the font height as the scaling base.<br>Formula for calculating the line height: font height x **FontHeight**.<br>The font height is obtained after the text is shaped using the font file.<br>**FontHeight** can be obtained from the [OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight) API.|
 
 ### OH_Drawing_TextStyleAttributeId
 
-```
+```c
 enum OH_Drawing_TextStyleAttributeId
 ```
 
@@ -687,7 +704,7 @@ Enumerates the text style attributes.
 
 ### OH_Drawing_TypographyStyleAttributeId
 
-```
+```c
 enum OH_Drawing_TypographyStyleAttributeId
 ```
 
@@ -704,13 +721,15 @@ Enumerates the typography style attributes.<br>For the common attributes of the 
 | TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING = 2 | Interline spacing.<br>**lineSpacing** is not restricted by the maximum and minimum line heights.<br>By default, line spacing is added to the last line.<br>You can set **textHeightBehavior** to **DISABLE_LAST_ASCENT** in [OH_Drawing_TypographyTextSetHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_typographytextsetheightbehavior) to disable the line spacing of the last line.<br>The default value is **0**.|
 | TYPOGRAPHY_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 3 | Scaling base style of the line height. For details, see [OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle).|
 | TYPOGRAPHY_STYLE_ATTR_I_FONT_WIDTH = 4 | Font width.|
-
+| TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | Sets whether to use punctuation compression at the beginning of a line in text layout.<br>**NOTE**<br>1. The font file must support the ss08 feature in [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md). Otherwise, compression cannot be performed.<br>2. Only the punctuations within the punctuation compression range at the beginning of a line are in the scope of this feature.<br>**Since**: 23|
+| TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | Sets whether to enable the built-in padding of the font during text typography.<br>**Since**: 23|
+| TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | Sets whether to enable the line spacing rollback mechanism during text typography.<br>**Since**: 23|
 
 ## Function Description
 
 ### OH_Drawing_CreateTypographyStyle()
 
-```
+```c
 OH_Drawing_TypographyStyle* OH_Drawing_CreateTypographyStyle(void)
 ```
 
@@ -730,7 +749,7 @@ Creates an **OH_Drawing_TypographyStyle** object. Release this pointer by callin
 
 ### OH_Drawing_DestroyTypographyStyle()
 
-```
+```c
 void OH_Drawing_DestroyTypographyStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -751,7 +770,7 @@ Destroys an **OH_Drawing_TypographyStyle** object and reclaims the memory occupi
 
 ### OH_Drawing_SetTypographyTextDirection()
 
-```
+```c
 void OH_Drawing_SetTypographyTextDirection(OH_Drawing_TypographyStyle* style, int direction)
 ```
 
@@ -773,7 +792,7 @@ Sets the text direction in a typography style.
 
 ### OH_Drawing_SetTypographyTextAlign()
 
-```
+```c
 void OH_Drawing_SetTypographyTextAlign(OH_Drawing_TypographyStyle* style, int align)
 ```
 
@@ -795,7 +814,7 @@ Text alignment mode.
 
 ### OH_Drawing_TypographyGetEffectiveAlignment()
 
-```
+```c
 int OH_Drawing_TypographyGetEffectiveAlignment(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -807,6 +826,9 @@ Obtains the text alignment mode.
 
 **Since**: 12
 
+**Deprecated from**: 18
+
+**Replaced by**: [OH_Drawing_TypographyStyleGetEffectiveAlignment](capi-drawing-text-typography-h.md#oh_drawing_typographystylegeteffectivealignment)
 
 **Parameters**
 
@@ -822,7 +844,7 @@ Obtains the text alignment mode.
 
 ### OH_Drawing_SetTypographyTextMaxLines()
 
-```
+```c
 void OH_Drawing_SetTypographyTextMaxLines(OH_Drawing_TypographyStyle* style, int lineNumber)
 ```
 
@@ -844,7 +866,7 @@ Sets the maximum number of lines in the text.
 
 ### OH_Drawing_CreateTextStyle()
 
-```
+```c
 OH_Drawing_TextStyle* OH_Drawing_CreateTextStyle(void)
 ```
 
@@ -864,7 +886,7 @@ Creates an **OH_Drawing_TextStyle** object.
 
 ### OH_Drawing_TypographyGetTextStyle()
 
-```
+```c
 OH_Drawing_TextStyle* OH_Drawing_TypographyGetTextStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -891,7 +913,7 @@ Obtains the default text style of a typography style.
 
 ### OH_Drawing_DestroyTextStyle()
 
-```
+```c
 void OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle* style)
 ```
 
@@ -912,7 +934,7 @@ Destroys an **OH_Drawing_TextStyle** object and reclaims the memory occupied by 
 
 ### OH_Drawing_SetTextStyleColor()
 
-```
+```c
 void OH_Drawing_SetTextStyleColor(OH_Drawing_TextStyle* style, uint32_t color)
 ```
 
@@ -934,7 +956,7 @@ Sets the color for a text style.
 
 ### OH_Drawing_SetTextStyleFontSize()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontSize(OH_Drawing_TextStyle* style, double fontSize)
 ```
 
@@ -956,7 +978,7 @@ Sets the font size for a text style.
 
 ### OH_Drawing_SetTextStyleFontWeight()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontWeight(OH_Drawing_TextStyle* style, int fontWeight)
 ```
 
@@ -978,7 +1000,7 @@ Sets the font weight for a text style. Currently, only the default system font s
 
 ### OH_Drawing_SetTextStyleBaseLine()
 
-```
+```c
 void OH_Drawing_SetTextStyleBaseLine(OH_Drawing_TextStyle* style, int baseline)
 ```
 
@@ -1000,7 +1022,7 @@ Sets the baseline for a text style.
 
 ### OH_Drawing_SetTextStyleDecoration()
 
-```
+```c
 void OH_Drawing_SetTextStyleDecoration(OH_Drawing_TextStyle* style, int decoration)
 ```
 
@@ -1022,7 +1044,7 @@ Sets the decoration for a text style. Only one decoration can be set. To add mul
 
 ### OH_Drawing_AddTextStyleDecoration()
 
-```
+```c
 void OH_Drawing_AddTextStyleDecoration(OH_Drawing_TextStyle* style, int decoration)
 ```
 
@@ -1040,11 +1062,11 @@ Adds the decoration for a text style. Multiple decoration lines can be displayed
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
-| int decoration | Decoration to add. The value **1** means to add an underline, **2** means to add an overline, and 4 means to add a strikethrough. You can add multiple decoration lines at a time via bitwise OR operations.<br>If a decoration style that is not in the [OH_Drawing_TextDecoration](capi-drawing-text-typography-h.md#oh_drawing_textdecoration) enumeration is set, the original decoration is retained.|
+| int decoration | Decoration to add. The value **1** means to add an underline, **2** means to add an overline, and **4** means to add a strikethrough. You can add various decoration lines at a time via bitwise OR operations.<br>If a decoration style that is not in the [OH_Drawing_TextDecoration](capi-drawing-text-typography-h.md#oh_drawing_textdecoration) enumeration is set, the original decoration is retained.|
 
 ### OH_Drawing_RemoveTextStyleDecoration()
 
-```
+```c
 void OH_Drawing_RemoveTextStyleDecoration(OH_Drawing_TextStyle* style, int decoration)
 ```
 
@@ -1062,11 +1084,11 @@ Removes the decoration for a text style.
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
-| int decoration | Decoration to remove. The value **1** means to remove an underline, **2** means to remove an overline, and 4 means to remove a strikethrough. You can remove various text decorations in a single operation using bitwise OR. <br>If a decoration style that is not in the [OH_Drawing_TextDecoration](capi-drawing-text-typography-h.md#oh_drawing_textdecoration) enumeration is set, the original decoration is retained.|
+| int decoration | Decoration to remove. The value **1** means to remove an underline, **2** means to remove an overline, and **4** means to remove a strikethrough. You can remove various text decorations at a time via bitwise OR operations.<br>If a decoration style that is not in the [OH_Drawing_TextDecoration](capi-drawing-text-typography-h.md#oh_drawing_textdecoration) enumeration is set, the original decoration is retained.|
 
 ### OH_Drawing_SetTextStyleDecorationColor()
 
-```
+```c
 void OH_Drawing_SetTextStyleDecorationColor(OH_Drawing_TextStyle* style, uint32_t color)
 ```
 
@@ -1088,7 +1110,7 @@ Sets the decoration color for a text style. If this API is not called or **color
 
 ### OH_Drawing_SetTextStyleFontHeight()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight)
 ```
 
@@ -1110,7 +1132,7 @@ Sets the line height based on the multiple of the font size.
 
 ### OH_Drawing_SetTextStyleFontFamilies()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontFamilies(OH_Drawing_TextStyle* style,int fontFamiliesNumber, const char* fontFamilies[])
 ```
 
@@ -1133,7 +1155,7 @@ Sets the font families for a text style.
 
 ### OH_Drawing_SetTextStyleFontStyle()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontStyle(OH_Drawing_TextStyle* style, int fontStyle)
 ```
 
@@ -1155,7 +1177,7 @@ Sets the font style for a text style.
 
 ### OH_Drawing_SetTextStyleLocale()
 
-```
+```c
 void OH_Drawing_SetTextStyleLocale(OH_Drawing_TextStyle* style, const char* locale)
 ```
 
@@ -1177,7 +1199,7 @@ Sets the locale for a text style.
 
 ### OH_Drawing_SetTextStyleForegroundBrush()
 
-```
+```c
 void OH_Drawing_SetTextStyleForegroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundBrush)
 ```
 
@@ -1199,7 +1221,7 @@ Sets the foreground brush for a text style.
 
 ### OH_Drawing_TextStyleGetForegroundBrush()
 
-```
+```c
 void OH_Drawing_TextStyleGetForegroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundBrush)
 ```
 
@@ -1221,7 +1243,7 @@ Obtains the foreground brush of a text style.
 
 ### OH_Drawing_SetTextStyleForegroundPen()
 
-```
+```c
 void OH_Drawing_SetTextStyleForegroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* foregroundPen)
 ```
 
@@ -1243,7 +1265,7 @@ Sets the foreground pen for a text style.
 
 ### OH_Drawing_TextStyleGetForegroundPen()
 
-```
+```c
 void OH_Drawing_TextStyleGetForegroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* foregroundPen)
 ```
 
@@ -1265,7 +1287,7 @@ Obtains the foreground pen of a text style.
 
 ### OH_Drawing_SetTextStyleBackgroundBrush()
 
-```
+```c
 void OH_Drawing_SetTextStyleBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)
 ```
 
@@ -1287,7 +1309,7 @@ Sets the background brush for a text style.
 
 ### OH_Drawing_TextStyleGetBackgroundBrush()
 
-```
+```c
 void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)
 ```
 
@@ -1309,7 +1331,7 @@ Obtains the background brush of a text style.
 
 ### OH_Drawing_SetTextStyleBackgroundPen()
 
-```
+```c
 void OH_Drawing_SetTextStyleBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)
 ```
 
@@ -1331,7 +1353,7 @@ Sets the background pen for a text style.
 
 ### OH_Drawing_TextStyleGetBackgroundPen()
 
-```
+```c
 void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)
 ```
 
@@ -1353,13 +1375,13 @@ Obtains the background pen of a text style.
 
 ### OH_Drawing_CreateTypographyHandler()
 
-```
+```c
 OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_TypographyStyle* style,OH_Drawing_FontCollection* fontCollection)
 ```
 
 **Description**
 
-Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calling [OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler) when this object is no longer needed.
+Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calling [OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler) when this object is no longer needed. You are advised to use the [OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection) function to create an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1381,7 +1403,7 @@ Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calli
 
 ### OH_Drawing_DestroyTypographyHandler()
 
-```
+```c
 void OH_Drawing_DestroyTypographyHandler(OH_Drawing_TypographyCreate* handler)
 ```
 
@@ -1402,7 +1424,7 @@ Destroys an **OH_Drawing_TypographyCreate** object and reclaims the memory occup
 
 ### OH_Drawing_TypographyHandlerPushTextStyle()
 
-```
+```c
 void OH_Drawing_TypographyHandlerPushTextStyle(OH_Drawing_TypographyCreate* handler, OH_Drawing_TextStyle* style)
 ```
 
@@ -1424,7 +1446,7 @@ Pushes a text style into the text style stack. Any text added afterward will use
 
 ### OH_Drawing_TypographyHandlerAddText()
 
-```
+```c
 void OH_Drawing_TypographyHandlerAddText(OH_Drawing_TypographyCreate* handler, const char* text)
 ```
 
@@ -1446,7 +1468,7 @@ Adds text.
 
 ### OH_Drawing_TypographyHandlerPopTextStyle()
 
-```
+```c
 void OH_Drawing_TypographyHandlerPopTextStyle(OH_Drawing_TypographyCreate* handler)
 ```
 
@@ -1467,7 +1489,7 @@ Pops the top text style out of the text style stack.
 
 ### OH_Drawing_CreateTypography()
 
-```
+```c
 OH_Drawing_Typography* OH_Drawing_CreateTypography(OH_Drawing_TypographyCreate* handler)
 ```
 
@@ -1494,7 +1516,7 @@ Creates an **OH_Drawing_Typography** object. Release this pointer by calling [OH
 
 ### OH_Drawing_DestroyTypography()
 
-```
+```c
 void OH_Drawing_DestroyTypography(OH_Drawing_Typography* typography)
 ```
 
@@ -1515,7 +1537,7 @@ Destroys an **OH_Drawing_Typography** object and reclaims the memory occupied by
 
 ### OH_Drawing_TypographyLayout()
 
-```
+```c
 void OH_Drawing_TypographyLayout(OH_Drawing_Typography* typography, double maxWidth)
 ```
 
@@ -1537,7 +1559,7 @@ Lays out the typography.
 
 ### OH_Drawing_TypographyPaint()
 
-```
+```c
 void OH_Drawing_TypographyPaint(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,double positionX, double positionY)
 ```
 
@@ -1561,7 +1583,7 @@ Draws text from the upper left corner at a specified position. This function mus
 
 ### OH_Drawing_TypographyPaintOnPath()
 
-```
+```c
 void OH_Drawing_TypographyPaintOnPath(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,OH_Drawing_Path* path, double hOffset, double vOffset)
 ```
 
@@ -1585,7 +1607,7 @@ Draws text along a path. To prevent text overlap caused by the text width exceed
 
 ### OH_Drawing_TypographyGetMaxWidth()
 
-```
+```c
 double OH_Drawing_TypographyGetMaxWidth(OH_Drawing_Typography* typography)
 ```
 
@@ -1612,7 +1634,7 @@ Obtains the typography width set by the user. This function must be called after
 
 ### OH_Drawing_TypographyGetHeight()
 
-```
+```c
 double OH_Drawing_TypographyGetHeight(OH_Drawing_Typography* typography)
 ```
 
@@ -1639,7 +1661,7 @@ Obtains the overall height of a typography object. This function must be called 
 
 ### OH_Drawing_TypographyGetLongestLine()
 
-```
+```c
 double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography* typography)
 ```
 
@@ -1666,7 +1688,7 @@ Obtains the width of the longest line in a typography object. This function must
 
 ### OH_Drawing_TypographyGetLongestLineWithIndent()
 
-```
+```c
 double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography* typography)
 ```
 
@@ -1693,7 +1715,7 @@ Obtains the width of the longest line of a typography object, including its inde
 
 ### OH_Drawing_TypographyGetMinIntrinsicWidth()
 
-```
+```c
 double OH_Drawing_TypographyGetMinIntrinsicWidth(OH_Drawing_Typography* typography)
 ```
 
@@ -1720,7 +1742,7 @@ Obtains the minimum intrinsic width in a typography object. This function must b
 
 ### OH_Drawing_TypographyGetMaxIntrinsicWidth()
 
-```
+```c
 double OH_Drawing_TypographyGetMaxIntrinsicWidth(OH_Drawing_Typography* typography)
 ```
 
@@ -1747,7 +1769,7 @@ Obtains the maximum intrinsic width in a typography object. This function must b
 
 ### OH_Drawing_TypographyGetAlphabeticBaseline()
 
-```
+```c
 double OH_Drawing_TypographyGetAlphabeticBaseline(OH_Drawing_Typography* typography)
 ```
 
@@ -1774,7 +1796,7 @@ Obtains the alphabetic baseline in a typography object.
 
 ### OH_Drawing_TypographyGetIdeographicBaseline()
 
-```
+```c
 double OH_Drawing_TypographyGetIdeographicBaseline(OH_Drawing_Typography* typography)
 ```
 
@@ -1801,7 +1823,7 @@ Obtains the ideographic baseline in a typography object.
 
 ### OH_Drawing_TypographyHandlerAddPlaceholder()
 
-```
+```c
 void OH_Drawing_TypographyHandlerAddPlaceholder(OH_Drawing_TypographyCreate* handler,OH_Drawing_PlaceholderSpan* span)
 ```
 
@@ -1823,7 +1845,7 @@ Adds a placeholder.
 
 ### OH_Drawing_TypographyDidExceedMaxLines()
 
-```
+```c
 bool OH_Drawing_TypographyDidExceedMaxLines(OH_Drawing_Typography* typography)
 ```
 
@@ -1850,7 +1872,7 @@ Checks whether the text in the typography object exceeds the line limit. This fu
 
 ### OH_Drawing_TypographyGetRectsForRange()
 
-```
+```c
 OH_Drawing_TextBox* OH_Drawing_TypographyGetRectsForRange(OH_Drawing_Typography* typography,size_t start, size_t end, OH_Drawing_RectHeightStyle heightStyle, OH_Drawing_RectWidthStyle widthStyle)
 ```
 
@@ -1881,7 +1903,7 @@ Obtains text boxes in a given range of a typography object. This function must b
 
 ### OH_Drawing_TypographyGetRectsForPlaceholders()
 
-```
+```c
 OH_Drawing_TextBox* OH_Drawing_TypographyGetRectsForPlaceholders(OH_Drawing_Typography* typography)
 ```
 
@@ -1908,7 +1930,7 @@ Obtains text boxes for placeholders in a typography object. This function must b
 
 ### OH_Drawing_GetLeftFromTextBox()
 
-```
+```c
 float OH_Drawing_GetLeftFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -1936,7 +1958,7 @@ Obtains the left position of a text box.
 
 ### OH_Drawing_GetRightFromTextBox()
 
-```
+```c
 float OH_Drawing_GetRightFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -1964,7 +1986,7 @@ Obtains the right position of a text box.
 
 ### OH_Drawing_GetTopFromTextBox()
 
-```
+```c
 float OH_Drawing_GetTopFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -1992,7 +2014,7 @@ Obtains the top position of a text box.
 
 ### OH_Drawing_GetBottomFromTextBox()
 
-```
+```c
 float OH_Drawing_GetBottomFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -2020,7 +2042,7 @@ Obtains the bottom position of a text box.
 
 ### OH_Drawing_GetTextDirectionFromTextBox()
 
-```
+```c
 int OH_Drawing_GetTextDirectionFromTextBox(OH_Drawing_TextBox* textbox, int index)
 ```
 
@@ -2048,7 +2070,7 @@ Obtains the text direction of a text box.
 
 ### OH_Drawing_GetSizeOfTextBox()
 
-```
+```c
 size_t OH_Drawing_GetSizeOfTextBox(OH_Drawing_TextBox* textBox)
 ```
 
@@ -2075,7 +2097,7 @@ Obtains the number of text boxes.
 
 ### OH_Drawing_TypographyGetGlyphPositionAtCoordinate()
 
-```
+```c
 OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinate(OH_Drawing_Typography* typography,double dx, double dy)
 ```
 
@@ -2087,6 +2109,9 @@ Obtains the position and affinity of the glyph at the given coordinates.
 
 **Since**: 11
 
+**Deprecated from**: 18
+
+**Replaced by**: [OH_Drawing_TypographyGetGlyphPositionAtCoordinateWithCluster](capi-drawing-text-typography-h.md#oh_drawing_typographygetglyphpositionatcoordinatewithcluster)
 
 **Parameters**
 
@@ -2104,7 +2129,7 @@ Obtains the position and affinity of the glyph at the given coordinates.
 
 ### OH_Drawing_TypographyGetGlyphPositionAtCoordinateWithCluster()
 
-```
+```c
 OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinateWithCluster(OH_Drawing_Typography* typography, double dx, double dy)
 ```
 
@@ -2133,7 +2158,7 @@ Obtains the position and affinity of the glyph cluster to which the glyph at the
 
 ### OH_Drawing_GetPositionFromPositionAndAffinity()
 
-```
+```c
 size_t OH_Drawing_GetPositionFromPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)
 ```
 
@@ -2160,7 +2185,7 @@ Obtains the position attribute of an **OH_Drawing_PositionAndAffinity** object.
 
 ### OH_Drawing_GetAffinityFromPositionAndAffinity()
 
-```
+```c
 int OH_Drawing_GetAffinityFromPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)
 ```
 
@@ -2187,7 +2212,7 @@ Obtains the affinity attribute of an **OH_Drawing_PositionAndAffinity** object. 
 
 ### OH_Drawing_TypographyGetWordBoundary()
 
-```
+```c
 OH_Drawing_Range* OH_Drawing_TypographyGetWordBoundary(OH_Drawing_Typography* typography, size_t offset)
 ```
 
@@ -2215,7 +2240,7 @@ Obtains the word boundary in a typography object.
 
 ### OH_Drawing_GetStartFromRange()
 
-```
+```c
 size_t OH_Drawing_GetStartFromRange(OH_Drawing_Range* range)
 ```
 
@@ -2242,7 +2267,7 @@ Obtains the start position of an **OH_Drawing_Range** object.
 
 ### OH_Drawing_GetEndFromRange()
 
-```
+```c
 size_t OH_Drawing_GetEndFromRange(OH_Drawing_Range* range)
 ```
 
@@ -2269,7 +2294,7 @@ Obtains the end position of an **OH_Drawing_Range** object.
 
 ### OH_Drawing_TypographyGetLineCount()
 
-```
+```c
 size_t OH_Drawing_TypographyGetLineCount(OH_Drawing_Typography* typography)
 ```
 
@@ -2296,7 +2321,7 @@ Obtains the number of lines in a typography object. This function must be called
 
 ### OH_Drawing_SetTextStyleDecorationStyle()
 
-```
+```c
 void OH_Drawing_SetTextStyleDecorationStyle(OH_Drawing_TextStyle* style, int decorationStyle)
 ```
 
@@ -2318,7 +2343,7 @@ Sets the decoration style for a text style.
 
 ### OH_Drawing_SetTextStyleDecorationThicknessScale()
 
-```
+```c
 void OH_Drawing_SetTextStyleDecorationThicknessScale(OH_Drawing_TextStyle* style, double decorationThicknessScale)
 ```
 
@@ -2336,11 +2361,11 @@ Sets the thickness scale factor for the decoration style of a text style.
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the **OH_Drawing_TextStyle** object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
-| double decorationThicknessScale | Thickness scaling ratio. The default value is 1. If the value is less than or equal to 0, no decoration line is drawn.|
+| double decorationThicknessScale | Thickness scaling ratio. The default value is **1**. If the value is less than or equal to 0, no decoration line is drawn.|
 
 ### OH_Drawing_SetTextStyleLetterSpacing()
 
-```
+```c
 void OH_Drawing_SetTextStyleLetterSpacing(OH_Drawing_TextStyle* style, double letterSpacing)
 ```
 
@@ -2362,7 +2387,7 @@ Sets the letter spacing for a text style.
 
 ### OH_Drawing_SetTextStyleWordSpacing()
 
-```
+```c
 void OH_Drawing_SetTextStyleWordSpacing(OH_Drawing_TextStyle* style, double wordSpacing)
 ```
 
@@ -2384,7 +2409,7 @@ Sets the word spacing for a text style.
 
 ### OH_Drawing_SetTextStyleHalfLeading()
 
-```
+```c
 void OH_Drawing_SetTextStyleHalfLeading(OH_Drawing_TextStyle* style, bool halfLeading)
 ```
 
@@ -2406,7 +2431,7 @@ Sets whether to enable half leading for a text style.
 
 ### OH_Drawing_SetTextStyleEllipsis()
 
-```
+```c
 void OH_Drawing_SetTextStyleEllipsis(OH_Drawing_TextStyle* style, const char* ellipsis)
 ```
 
@@ -2418,6 +2443,9 @@ Sets the ellipsis content for a text style.
 
 **Since**: 11
 
+**Deprecated from**: 18
+
+**Replaced by**: [OH_Drawing_SetTypographyTextEllipsis](capi-drawing-text-typography-h.md#oh_drawing_settypographytextellipsis)
 
 **Parameters**
 
@@ -2428,7 +2456,7 @@ Sets the ellipsis content for a text style.
 
 ### OH_Drawing_SetTextStyleEllipsisModal()
 
-```
+```c
 void OH_Drawing_SetTextStyleEllipsisModal(OH_Drawing_TextStyle* style, int ellipsisModal)
 ```
 
@@ -2440,6 +2468,9 @@ Sets the ellipsis style for a text style.
 
 **Since**: 11
 
+**Deprecated from**: 18
+
+**Replaced by**: [OH_Drawing_SetTypographyTextEllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_settypographytextellipsismodal)
 
 **Parameters**
 
@@ -2450,7 +2481,7 @@ Sets the ellipsis style for a text style.
 
 ### OH_Drawing_SetTypographyTextBreakStrategy()
 
-```
+```c
 void OH_Drawing_SetTypographyTextBreakStrategy(OH_Drawing_TypographyStyle* style, int breakStrategy)
 ```
 
@@ -2472,7 +2503,7 @@ Sets the text break strategy.
 
 ### OH_Drawing_SetTypographyTextWordBreakType()
 
-```
+```c
 void OH_Drawing_SetTypographyTextWordBreakType(OH_Drawing_TypographyStyle* style, int wordBreakType)
 ```
 
@@ -2494,7 +2525,7 @@ Sets the word break type.
 
 ### OH_Drawing_SetTypographyTextEllipsisModal()
 
-```
+```c
 void OH_Drawing_SetTypographyTextEllipsisModal(OH_Drawing_TypographyStyle* style, int ellipsisModal)
 ```
 
@@ -2516,7 +2547,7 @@ Sets the ellipsis style for a text style.
 
 ### OH_Drawing_SetTypographyTextEllipsis()
 
-```
+```c
 void OH_Drawing_SetTypographyTextEllipsis(OH_Drawing_TypographyStyle* style, const char* ellipsis)
 ```
 
@@ -2538,7 +2569,7 @@ Sets the ellipsis text for a typography style.
 
 ### OH_Drawing_TypographyGetLineHeight()
 
-```
+```c
 double OH_Drawing_TypographyGetLineHeight(OH_Drawing_Typography* typography, int lineNumber)
 ```
 
@@ -2566,7 +2597,7 @@ Obtains the line height in a typography object. This function must be called aft
 
 ### OH_Drawing_TypographyGetLineWidth()
 
-```
+```c
 double OH_Drawing_TypographyGetLineWidth(OH_Drawing_Typography* typography, int lineNumber)
 ```
 
@@ -2594,7 +2625,7 @@ Obtains the line width of a specified line. This function must be called after [
 
 ### OH_Drawing_SetTypographyTextSplitRatio()
 
-```
+```c
 void OH_Drawing_SetTypographyTextSplitRatio(OH_Drawing_TypographyStyle* style, float textSplitRatio)
 ```
 
@@ -2616,7 +2647,7 @@ Sets the text split ratio.
 
 ### OH_Drawing_TypographyIsLineUnlimited()
 
-```
+```c
 bool OH_Drawing_TypographyIsLineUnlimited(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -2643,7 +2674,7 @@ Checks whether the maximum number of lines is limited for text.
 
 ### OH_Drawing_TypographyIsEllipsized()
 
-```
+```c
 bool OH_Drawing_TypographyIsEllipsized(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -2670,7 +2701,7 @@ Checks whether an ellipsis is configured for a typography style.
 
 ### OH_Drawing_SetTypographyTextLocale()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLocale(OH_Drawing_TypographyStyle* style, const char* locale)
 ```
 
@@ -2692,7 +2723,7 @@ Sets the locale for a typography style.
 
 ### OH_Drawing_TextStyleGetFontMetrics()
 
-```
+```c
 bool OH_Drawing_TextStyleGetFontMetrics(OH_Drawing_Typography* typography,OH_Drawing_TextStyle* style, OH_Drawing_Font_Metrics* fontmetrics)
 ```
 
@@ -2721,7 +2752,7 @@ Obtains the font metrics of a text style.
 
 ### OH_Drawing_SetTypographyTextStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyTextStyle(OH_Drawing_TypographyStyle* handler, OH_Drawing_TextStyle* style)
 ```
 
@@ -2743,7 +2774,7 @@ Sets a text style.
 
 ### OH_Drawing_CreateFontDescriptor()
 
-```
+```c
 OH_Drawing_FontDescriptor* OH_Drawing_CreateFontDescriptor(void)
 ```
 
@@ -2763,7 +2794,7 @@ Creates an **OH_Drawing_FontDescriptor** object to describe the detailed informa
 
 ### OH_Drawing_DestroyFontDescriptor()
 
-```
+```c
 void OH_Drawing_DestroyFontDescriptor(OH_Drawing_FontDescriptor* descriptor)
 ```
 
@@ -2784,7 +2815,7 @@ Destroys an **OH_Drawing_FontDescriptor** object and reclaims the memory occupie
 
 ### OH_Drawing_CreateFontParser()
 
-```
+```c
 OH_Drawing_FontParser* OH_Drawing_CreateFontParser(void)
 ```
 
@@ -2804,7 +2835,7 @@ Creates an **OH_Drawing_FontParser** object to parse a system font.
 
 ### OH_Drawing_DestroyFontParser()
 
-```
+```c
 void OH_Drawing_DestroyFontParser(OH_Drawing_FontParser* parser)
 ```
 
@@ -2825,7 +2856,7 @@ Destroys an **OH_Drawing_FontParser** object and reclaims the memory occupied by
 
 ### OH_Drawing_FontParserGetSystemFontList()
 
-```
+```c
 char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser, size_t* num)
 ```
 
@@ -2853,7 +2884,7 @@ Obtains the list of system fonts. This function can be used only on 2-in-1 devic
 
 ### OH_Drawing_DestroySystemFontList()
 
-```
+```c
 void OH_Drawing_DestroySystemFontList(char** fontList, size_t num)
 ```
 
@@ -2875,7 +2906,7 @@ Reclaims the memory occupied by the system font list.
 
 ### OH_Drawing_FontParserGetFontByName()
 
-```
+```c
 OH_Drawing_FontDescriptor* OH_Drawing_FontParserGetFontByName(OH_Drawing_FontParser* fontParser, const char* name)
 ```
 
@@ -2903,7 +2934,7 @@ Obtains the descriptor of a system font based on the font name.
 
 ### OH_Drawing_TypographyGetLineMetrics()
 
-```
+```c
 OH_Drawing_LineMetrics* OH_Drawing_TypographyGetLineMetrics(OH_Drawing_Typography* typography)
 ```
 
@@ -2930,7 +2961,7 @@ Obtains the line metrics in a typography object. This function must be called af
 
 ### OH_Drawing_LineMetricsGetSize()
 
-```
+```c
 size_t OH_Drawing_LineMetricsGetSize(OH_Drawing_LineMetrics* lineMetrics)
 ```
 
@@ -2957,7 +2988,7 @@ Obtains the number of lines.
 
 ### OH_Drawing_DestroyLineMetrics()
 
-```
+```c
 void OH_Drawing_DestroyLineMetrics(OH_Drawing_LineMetrics* lineMetrics)
 ```
 
@@ -2978,7 +3009,7 @@ Destroys an **OH_Drawing_LineMetrics** object and reclaims the memory occupied b
 
 ### OH_Drawing_TypographyGetLineMetricsAt()
 
-```
+```c
 bool OH_Drawing_TypographyGetLineMetricsAt(OH_Drawing_Typography* typography,int lineNumber, OH_Drawing_LineMetrics* lineMetric)
 ```
 
@@ -3007,7 +3038,7 @@ Obtains the metrics of the given line in a typography object. For details, see t
 
 ### OH_Drawing_TypographyGetLineInfo()
 
-```
+```c
 bool OH_Drawing_TypographyGetLineInfo(OH_Drawing_Typography* typography, int lineNumber, bool oneLine,bool includeWhitespace, OH_Drawing_LineMetrics* drawingLineMetrics)
 ```
 
@@ -3038,7 +3069,7 @@ Obtains the metrics of a given line or the metrics of the first character in a g
 
 ### OH_Drawing_SetTypographyTextFontWeight()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontWeight(OH_Drawing_TypographyStyle* style, int weight)
 ```
 
@@ -3060,7 +3091,7 @@ Sets the default font weight for a typography style. Currently, only the default
 
 ### OH_Drawing_SetTypographyTextFontStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontStyle(OH_Drawing_TypographyStyle* style, int fontStyle)
 ```
 
@@ -3082,7 +3113,7 @@ Sets the default font style for a typography style.
 
 ### OH_Drawing_SetTypographyTextFontFamily()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontFamily(OH_Drawing_TypographyStyle* style, const char* fontFamily)
 ```
 
@@ -3104,7 +3135,7 @@ Sets the font family name for text.
 
 ### OH_Drawing_SetTypographyTextFontSize()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontSize(OH_Drawing_TypographyStyle* style, double fontSize)
 ```
 
@@ -3126,7 +3157,7 @@ Sets the font size for text.
 
 ### OH_Drawing_SetTypographyTextFontHeight()
 
-```
+```c
 void OH_Drawing_SetTypographyTextFontHeight(OH_Drawing_TypographyStyle* style, double fontHeight)
 ```
 
@@ -3148,7 +3179,7 @@ Sets the font height for text.
 
 ### OH_Drawing_SetTypographyTextHalfLeading()
 
-```
+```c
 void OH_Drawing_SetTypographyTextHalfLeading(OH_Drawing_TypographyStyle* style, bool halfLeading)
 ```
 
@@ -3170,7 +3201,7 @@ Sets whether to enable half leading for text.
 
 ### OH_Drawing_SetTypographyTextUseLineStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyTextUseLineStyle(OH_Drawing_TypographyStyle* style, bool useLineStyle)
 ```
 
@@ -3192,7 +3223,7 @@ Sets whether to enable the text line style.
 
 ### OH_Drawing_SetTypographyTextLineStyleFontWeight()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontWeight(OH_Drawing_TypographyStyle* style, int weight)
 ```
 
@@ -3214,7 +3245,7 @@ Sets the text font weight of the strut style in a typography style. Currently, o
 
 ### OH_Drawing_SetTypographyTextLineStyleFontStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontStyle(OH_Drawing_TypographyStyle* style, int fontStyle)
 ```
 
@@ -3236,7 +3267,7 @@ Sets the font style of the strut style in a typography style.
 
 ### OH_Drawing_SetTypographyTextLineStyleFontFamilies()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontFamilies(OH_Drawing_TypographyStyle* style,int fontFamiliesNumber, const char* fontFamilies[])
 ```
 
@@ -3259,7 +3290,7 @@ Sets the font families for a text line style.
 
 ### OH_Drawing_SetTypographyTextLineStyleFontSize()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontSize(OH_Drawing_TypographyStyle* style, double lineStyleFontSize)
 ```
 
@@ -3281,7 +3312,7 @@ Sets the font size for a text line style.
 
 ### OH_Drawing_SetTypographyTextLineStyleFontHeight()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleFontHeight(OH_Drawing_TypographyStyle* style, double lineStyleFontHeight)
 ```
 
@@ -3303,7 +3334,7 @@ Sets the font height for a text line style.
 
 ### OH_Drawing_SetTypographyTextLineStyleHalfLeading()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleHalfLeading(OH_Drawing_TypographyStyle* style, bool lineStyleHalfLeading)
 ```
 
@@ -3325,7 +3356,7 @@ Sets whether to enable half leading for a text line style.
 
 ### OH_Drawing_SetTypographyTextLineStyleSpacingScale()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleSpacingScale(OH_Drawing_TypographyStyle* style, double spacingScale)
 ```
 
@@ -3347,7 +3378,7 @@ Sets the spacing scale factor for a text line style.
 
 ### OH_Drawing_SetTypographyTextLineStyleOnly()
 
-```
+```c
 void OH_Drawing_SetTypographyTextLineStyleOnly(OH_Drawing_TypographyStyle* style, bool lineStyleOnly)
 ```
 
@@ -3369,7 +3400,7 @@ Sets whether to enable the text line style only.
 
 ### OH_Drawing_CreateTextShadow()
 
-```
+```c
 OH_Drawing_TextShadow* OH_Drawing_CreateTextShadow(void)
 ```
 
@@ -3389,7 +3420,7 @@ Creates an **OH_Drawing_TextShadow** object. Release this pointer by calling [OH
 
 ### OH_Drawing_DestroyTextShadow()
 
-```
+```c
 void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow* shadow)
 ```
 
@@ -3410,7 +3441,7 @@ Destroys an **OH_Drawing_TextShadow** object and reclaims the memory occupied by
 
 ### OH_Drawing_TextStyleGetShadows()
 
-```
+```c
 OH_Drawing_TextShadow* OH_Drawing_TextStyleGetShadows(OH_Drawing_TextStyle* style)
 ```
 
@@ -3437,7 +3468,7 @@ Obtains a text shadow container. Release this pointer by calling [OH_Drawing_Des
 
 ### OH_Drawing_TextStyleGetShadowCount()
 
-```
+```c
 int OH_Drawing_TextStyleGetShadowCount(OH_Drawing_TextStyle* style)
 ```
 
@@ -3464,7 +3495,7 @@ Obtains the size of a text shadow container.
 
 ### OH_Drawing_TextStyleAddShadow()
 
-```
+```c
 void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle* style, const OH_Drawing_TextShadow* shadow)
 ```
 
@@ -3486,7 +3517,7 @@ Adds a shadow to a text shadow container.
 
 ### OH_Drawing_TextStyleClearShadows()
 
-```
+```c
 void OH_Drawing_TextStyleClearShadows(OH_Drawing_TextStyle* style)
 ```
 
@@ -3507,7 +3538,7 @@ Clears all shadows in a text shadow container.
 
 ### OH_Drawing_TextStyleGetShadowWithIndex()
 
-```
+```c
 OH_Drawing_TextShadow* OH_Drawing_TextStyleGetShadowWithIndex(OH_Drawing_TextStyle* style, int index)
 ```
 
@@ -3535,7 +3566,7 @@ Obtains a shadow with a given index in a text shadow container.
 
 ### OH_Drawing_TypographySetIndents()
 
-```
+```c
 void OH_Drawing_TypographySetIndents(OH_Drawing_Typography* typography, int indentsNumber, const float indents[])
 ```
 
@@ -3558,7 +3589,7 @@ Sets indents for typography. If this function is not called, texts will have no 
 
 ### OH_Drawing_TypographyGetIndentsWithIndex()
 
-```
+```c
 float OH_Drawing_TypographyGetIndentsWithIndex(OH_Drawing_Typography* typography, int index)
 ```
 
@@ -3586,13 +3617,13 @@ Obtains indents with a given index in a typography object. The line index starts
 
 ### OH_Drawing_TypographyGetLineTextRange()
 
-```
+```c
 OH_Drawing_Range* OH_Drawing_TypographyGetLineTextRange(OH_Drawing_Typography* typography,int lineNumber, bool includeSpaces)
 ```
 
 **Description**
 
-Obtains the line bounds in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. This function can only be used to obtain the bounds of existing lines. That is, the line index must start from 0, and the maximum index is [OH_Drawing_TypographyGetLineCount](capi-drawing-text-typography-h.md#oh_drawing_typographygetlinecount) - 1.
+Obtains the line bounds in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. This function can only be used to obtain the bounds of existing lines. That is, the line index must start from 0, and the maximum index is [OH_Drawing_TypographyGetLineCount](capi-drawing-text-typography-h.md#oh_drawing_typographygetlinecount) – 1.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -3615,7 +3646,7 @@ Obtains the line bounds in a typography object. This function must be called aft
 
 ### OH_Drawing_DestroyTextShadows()
 
-```
+```c
 void OH_Drawing_DestroyTextShadows(OH_Drawing_TextShadow* shadow)
 ```
 
@@ -3636,7 +3667,7 @@ Reclaims the memory occupied by the vector consisting of the **OH_Drawing_TextSh
 
 ### OH_Drawing_GetSystemFontConfigInfo()
 
-```
+```c
 OH_Drawing_FontConfigInfo* OH_Drawing_GetSystemFontConfigInfo(OH_Drawing_FontConfigInfoErrorCode* errorCode)
 ```
 
@@ -3663,7 +3694,7 @@ Obtains the system font configuration.
 
 ### OH_Drawing_DestroySystemFontConfigInfo()
 
-```
+```c
 void OH_Drawing_DestroySystemFontConfigInfo(OH_Drawing_FontConfigInfo* drawFontCfgInfo)
 ```
 
@@ -3684,7 +3715,7 @@ Reclaims the memory occupied by the system font configuration.
 
 ### OH_Drawing_SetTextStyleFontStyleStruct()
 
-```
+```c
 void OH_Drawing_SetTextStyleFontStyleStruct(OH_Drawing_TextStyle* drawingTextStyle,OH_Drawing_FontStyleStruct fontStyle)
 ```
 
@@ -3706,7 +3737,7 @@ Sets the font style, including the font weight, width, and slant, for a text sty
 
 ### OH_Drawing_SetTextStyleBadgeType()
 
-```
+```c
 void OH_Drawing_SetTextStyleBadgeType(OH_Drawing_TextStyle* style, OH_Drawing_TextBadgeType textBadgeType)
 ```
 
@@ -3728,7 +3759,7 @@ Sets whether to use superscript or subscript in text layout. If this API is not 
 
 ### OH_Drawing_TextStyleGetFontStyleStruct()
 
-```
+```c
 OH_Drawing_FontStyleStruct OH_Drawing_TextStyleGetFontStyleStruct(OH_Drawing_TextStyle* drawingTextStyle)
 ```
 
@@ -3755,7 +3786,7 @@ Obtains the font style, including the font weight, width, and slant, of a text s
 
 ### OH_Drawing_SetTypographyStyleFontStyleStruct()
 
-```
+```c
 void OH_Drawing_SetTypographyStyleFontStyleStruct(OH_Drawing_TypographyStyle* drawingStyle,OH_Drawing_FontStyleStruct fontStyle)
 ```
 
@@ -3777,7 +3808,7 @@ Sets the font style, including the font weight, width, and slant, for the defaul
 
 ### OH_Drawing_TypographyStyleGetFontStyleStruct()
 
-```
+```c
 OH_Drawing_FontStyleStruct OH_Drawing_TypographyStyleGetFontStyleStruct(OH_Drawing_TypographyStyle* drawingStyle)
 ```
 
@@ -3804,7 +3835,7 @@ Obtains the font style, including the font weight, width, and slant, of the defa
 
 ### OH_Drawing_TextStyleSetBackgroundRect()
 
-```
+```c
 void OH_Drawing_TextStyleSetBackgroundRect(OH_Drawing_TextStyle* style,const OH_Drawing_RectStyle_Info* rectStyleInfo, int styleId)
 ```
 
@@ -3823,11 +3854,11 @@ Sets a background rectangle and style ID for a text style. The style ID is valid
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | Pointer to the **OH_Drawing_TextStyle** object, which is obtained from [OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle).|
 | const [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md)* rectStyleInfo | Pointer to the [OH_Drawing_RectStyle_Info](capi-drawing-oh-drawing-rectstyle-info.md) object.|
-| int styleId | Style ID. The style ID is valid only when the background box is a rounded rectangle. Text processing is divided into multiple segments. Each segment has its own text style. **id** indicates the sequence number of the background box in which the segment is drawn.<br>If the ID of each segment in a row is 0, all segments are drawn in the same background box. If the IDs in a row are 0 and 1, the segment whose ID is 0 is drawn in a background box, the segment whose ID is 1 is drawn in another background box. Other cases can be deduced in the same way.|
+| int styleId | Style ID. The style ID is valid only when the background box is a rounded rectangle. Text processing is divided into multiple segments. Each segment has its own text style. **id** indicates the sequence number of the background box in which the segment is drawn.<br>If the ID of each segment in a row is **0**, all segments are drawn in the same background box. If a row contains segments with IDs **0** and **1**, the segment with ID **0** is drawn in a background box, and the segment with ID **1** is drawn in another background box. Other cases can be deduced in the same way.|
 
 ### OH_Drawing_TypographyHandlerAddSymbol()
 
-```
+```c
 void OH_Drawing_TypographyHandlerAddSymbol(OH_Drawing_TypographyCreate* handler, uint32_t symbol)
 ```
 
@@ -3849,7 +3880,7 @@ Adds the symbol to use in the typography creation process.
 
 ### OH_Drawing_TextStyleAddFontFeature()
 
-```
+```c
 void OH_Drawing_TextStyleAddFontFeature(OH_Drawing_TextStyle* style, const char* tag, int value)
 ```
 
@@ -3872,7 +3903,7 @@ Adds a font feature for a text style.
 
 ### OH_Drawing_TextStyleAddFontVariation()
 
-```
+```c
 void OH_Drawing_TextStyleAddFontVariation(OH_Drawing_TextStyle* style, const char* axis, const float value)
 ```
 
@@ -3895,7 +3926,7 @@ Adds a font variation. This function takes effect only when the corresponding fo
 
 ### OH_Drawing_TextStyleGetFontFeatures()
 
-```
+```c
 OH_Drawing_FontFeature* OH_Drawing_TextStyleGetFontFeatures(OH_Drawing_TextStyle* style)
 ```
 
@@ -3922,7 +3953,7 @@ Obtains all the contents in a font feature map container of a text style.
 
 ### OH_Drawing_TextStyleDestroyFontFeatures()
 
-```
+```c
 void OH_Drawing_TextStyleDestroyFontFeatures(OH_Drawing_FontFeature* fontFeature, size_t fontFeatureSize)
 ```
 
@@ -3944,7 +3975,7 @@ Reclaims the memory occupied by the struct array that holds all the font feature
 
 ### OH_Drawing_TextStyleGetFontFeatureSize()
 
-```
+```c
 size_t OH_Drawing_TextStyleGetFontFeatureSize(OH_Drawing_TextStyle* style)
 ```
 
@@ -3971,7 +4002,7 @@ Obtains the size of a font feature map container in a text style.
 
 ### OH_Drawing_TextStyleClearFontFeature()
 
-```
+```c
 void OH_Drawing_TextStyleClearFontFeature(OH_Drawing_TextStyle* style)
 ```
 
@@ -3992,7 +4023,7 @@ Clears all the contents in a font feature map container of a text style.
 
 ### OH_Drawing_TextStyleGetBaselineShift()
 
-```
+```c
 double OH_Drawing_TextStyleGetBaselineShift(OH_Drawing_TextStyle* style)
 ```
 
@@ -4019,7 +4050,7 @@ Obtains the baseline drift of a text style.
 
 ### OH_Drawing_TextStyleSetBaselineShift()
 
-```
+```c
 void OH_Drawing_TextStyleSetBaselineShift(OH_Drawing_TextStyle* style, double lineShift)
 ```
 
@@ -4041,7 +4072,7 @@ Sets a baseline drift for a text style.
 
 ### OH_Drawing_TypographyTextSetHeightBehavior()
 
-```
+```c
 void OH_Drawing_TypographyTextSetHeightBehavior(OH_Drawing_TypographyStyle* style,OH_Drawing_TextHeightBehavior heightMode)
 ```
 
@@ -4063,7 +4094,7 @@ Sets a text height modifier pattern.
 
 ### OH_Drawing_TypographyTextGetHeightBehavior()
 
-```
+```c
 OH_Drawing_TextHeightBehavior OH_Drawing_TypographyTextGetHeightBehavior(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4090,7 +4121,7 @@ Obtains the text height modifier pattern.
 
 ### OH_Drawing_TypographyGetLineFontMetrics()
 
-```
+```c
 OH_Drawing_Font_Metrics* OH_Drawing_TypographyGetLineFontMetrics(OH_Drawing_Typography* typography,size_t lineNumber, size_t* fontMetricsSize)
 ```
 
@@ -4119,7 +4150,7 @@ Obtains all font metrics from a given line in a typography object. This function
 
 ### OH_Drawing_TypographyDestroyLineFontMetrics()
 
-```
+```c
 void OH_Drawing_TypographyDestroyLineFontMetrics(OH_Drawing_Font_Metrics* lineFontMetric)
 ```
 
@@ -4140,7 +4171,7 @@ Reclaims the memory occupied by the struct array that holds all the font metrics
 
 ### OH_Drawing_TextStyleIsEqual()
 
-```
+```c
 bool OH_Drawing_TextStyleIsEqual(const OH_Drawing_TextStyle* style, const OH_Drawing_TextStyle* comparedStyle)
 ```
 
@@ -4168,7 +4199,7 @@ Checks whether two text styles are equal. The word width property is not involve
 
 ### OH_Drawing_TextStyleIsEqualByFont()
 
-```
+```c
 bool OH_Drawing_TextStyleIsEqualByFont(const OH_Drawing_TextStyle* style, const OH_Drawing_TextStyle* comparedStyle)
 ```
 
@@ -4196,7 +4227,7 @@ Checks whether the font style properties of two text styles are equal.
 
 ### OH_Drawing_TextStyleIsAttributeMatched()
 
-```
+```c
 bool OH_Drawing_TextStyleIsAttributeMatched(const OH_Drawing_TextStyle* style,const OH_Drawing_TextStyle* comparedStyle, OH_Drawing_TextStyleType textStyleType)
 ```
 
@@ -4225,7 +4256,7 @@ Checks whether two text styles have the same font style type.
 
 ### OH_Drawing_TextStyleSetPlaceholder()
 
-```
+```c
 void OH_Drawing_TextStyleSetPlaceholder(OH_Drawing_TextStyle* style)
 ```
 
@@ -4246,7 +4277,7 @@ Adds a placeholder.
 
 ### OH_Drawing_TextStyleIsPlaceholder()
 
-```
+```c
 bool OH_Drawing_TextStyleIsPlaceholder(OH_Drawing_TextStyle* style)
 ```
 
@@ -4273,7 +4304,7 @@ Checks whether a placeholder is set for a text style.
 
 ### OH_Drawing_TypographyStyleGetEffectiveAlignment()
 
-```
+```c
 OH_Drawing_TextAlign OH_Drawing_TypographyStyleGetEffectiveAlignment(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4300,7 +4331,7 @@ Obtains the text alignment mode.
 
 ### OH_Drawing_TypographyStyleIsHintEnabled()
 
-```
+```c
 bool OH_Drawing_TypographyStyleIsHintEnabled(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4327,7 +4358,7 @@ Checks whether font hinting is enabled for a typography style. Font hinting is u
 
 ### OH_Drawing_SetTypographyStyleTextStrutStyle()
 
-```
+```c
 void OH_Drawing_SetTypographyStyleTextStrutStyle(OH_Drawing_TypographyStyle* style, OH_Drawing_StrutStyle* strutstyle)
 ```
 
@@ -4349,7 +4380,7 @@ Sets the strut style for a typography style.
 
 ### OH_Drawing_TypographyStyleGetStrutStyle()
 
-```
+```c
 OH_Drawing_StrutStyle* OH_Drawing_TypographyStyleGetStrutStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4376,7 +4407,7 @@ Obtains the strut style of a typography style.
 
 ### OH_Drawing_TypographyStyleDestroyStrutStyle()
 
-```
+```c
 void OH_Drawing_TypographyStyleDestroyStrutStyle(OH_Drawing_StrutStyle* strutstyle)
 ```
 
@@ -4397,7 +4428,7 @@ Reclaims the memory occupied by a strut style.
 
 ### OH_Drawing_TypographyStyleStrutStyleEquals()
 
-```
+```c
 bool OH_Drawing_TypographyStyleStrutStyleEquals(OH_Drawing_StrutStyle* from, OH_Drawing_StrutStyle* to)
 ```
 
@@ -4419,7 +4450,7 @@ Checks whether two strut styles are equal.
 
 ### OH_Drawing_TypographyStyleSetHintsEnabled()
 
-```
+```c
 void OH_Drawing_TypographyStyleSetHintsEnabled(OH_Drawing_TypographyStyle* style, bool hintsEnabled)
 ```
 
@@ -4441,7 +4472,7 @@ Sets whether to enable font hinting for a typography style. Font hinting is used
 
 ### OH_Drawing_TypographyMarkDirty()
 
-```
+```c
 void  OH_Drawing_TypographyMarkDirty(OH_Drawing_Typography* typography)
 ```
 
@@ -4462,7 +4493,7 @@ Marks a typography object as dirty data. This function is used to initialize the
 
 ### OH_Drawing_TypographyGetUnresolvedGlyphsCount()
 
-```
+```c
 int32_t OH_Drawing_TypographyGetUnresolvedGlyphsCount(OH_Drawing_Typography* typography)
 ```
 
@@ -4489,7 +4520,7 @@ Obtains the number of unresolved glyphs in a typography object. This function ca
 
 ### OH_Drawing_TypographyUpdateFontSize()
 
-```
+```c
 void OH_Drawing_TypographyUpdateFontSize(OH_Drawing_Typography* typography, size_t from, size_t to, float fontSize)
 ```
 
@@ -4513,7 +4544,7 @@ Updates the font size in a typography object.
 
 ### OH_Drawing_TypographyUpdateFontColor()
 
-```
+```c
 void OH_Drawing_TypographyUpdateFontColor(OH_Drawing_Typography* typography, uint32_t color)
 ```
 
@@ -4535,7 +4566,7 @@ Updates the font color in a typography object. This API call also updates the de
 
 ### OH_Drawing_TypographyUpdateDecoration()
 
-```
+```c
 void OH_Drawing_TypographyUpdateDecoration(OH_Drawing_Typography* typography, OH_Drawing_TextDecoration decoration)
 ```
 
@@ -4557,7 +4588,7 @@ Updates the decoration type of a typography object. The updated decoration type 
 
 ### OH_Drawing_TypographyUpdateDecorationThicknessScale()
 
-```
+```c
 void OH_Drawing_TypographyUpdateDecorationThicknessScale(OH_Drawing_Typography* typography,double decorationThicknessScale)
 ```
 
@@ -4579,7 +4610,7 @@ Updates the decoration thickness scale of a typography object. The updated decor
 
 ### OH_Drawing_TypographyUpdateDecorationStyle()
 
-```
+```c
 void OH_Drawing_TypographyUpdateDecorationStyle(OH_Drawing_Typography* typography,OH_Drawing_TextDecorationStyle decorationStyle)
 ```
 
@@ -4601,7 +4632,7 @@ Updates the decoration style of a typography object. The updated decoration styl
 
 ### OH_Drawing_TypographyTextGetLineStyle()
 
-```
+```c
 bool OH_Drawing_TypographyTextGetLineStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4628,7 +4659,7 @@ Checks whether the text line style is enabled for a typography style.
 
 ### OH_Drawing_TypographyTextlineStyleGetFontWeight()
 
-```
+```c
 OH_Drawing_FontWeight OH_Drawing_TypographyTextlineStyleGetFontWeight(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4655,7 +4686,7 @@ Obtains the font weight of a text line style.
 
 ### OH_Drawing_TypographyTextlineStyleGetFontStyle()
 
-```
+```c
 OH_Drawing_FontStyle OH_Drawing_TypographyTextlineStyleGetFontStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4682,7 +4713,7 @@ Obtains the font style of the strut style in a typography style.
 
 ### OH_Drawing_TypographyTextlineStyleGetFontFamilies()
 
-```
+```c
 char** OH_Drawing_TypographyTextlineStyleGetFontFamilies(OH_Drawing_TypographyStyle* style, size_t* num)
 ```
 
@@ -4710,7 +4741,7 @@ Obtains the font families of a text line style.
 
 ### OH_Drawing_TypographyTextlineStyleDestroyFontFamilies()
 
-```
+```c
 void OH_Drawing_TypographyTextlineStyleDestroyFontFamilies(char** fontFamilies, size_t fontFamiliesNum)
 ```
 
@@ -4732,7 +4763,7 @@ Reclaims the memory occupied by the font families.
 
 ### OH_Drawing_TypographyTextlineStyleGetFontSize()
 
-```
+```c
 double OH_Drawing_TypographyTextlineStyleGetFontSize(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4759,7 +4790,7 @@ Obtains the font size of a text line style.
 
 ### OH_Drawing_TypographyTextlineStyleGetHeightScale()
 
-```
+```c
 double OH_Drawing_TypographyTextlineStyleGetHeightScale(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4786,7 +4817,7 @@ Obtains the height scale factor of a text line style.
 
 ### OH_Drawing_TypographyTextlineStyleGetHeightOnly()
 
-```
+```c
 bool OH_Drawing_TypographyTextlineStyleGetHeightOnly(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4813,7 +4844,7 @@ Checks whether only the font height is used for a text line style.
 
 ### OH_Drawing_TypographyTextlineStyleGetHalfLeading()
 
-```
+```c
 bool OH_Drawing_TypographyTextlineStyleGetHalfLeading(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4840,7 +4871,7 @@ Checks whether half leading is enabled for a text line style.
 
 ### OH_Drawing_TypographyTextlineStyleGetSpacingScale()
 
-```
+```c
 double OH_Drawing_TypographyTextlineStyleGetSpacingScale(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4867,7 +4898,7 @@ Obtains the spacing scale factor of a text line style.
 
 ### OH_Drawing_TypographyTextlineGetStyleOnly()
 
-```
+```c
 bool OH_Drawing_TypographyTextlineGetStyleOnly(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4894,7 +4925,7 @@ Checks whether only the text line style is enabled for a typography style.
 
 ### OH_Drawing_TypographyGetTextAlign()
 
-```
+```c
 OH_Drawing_TextAlign OH_Drawing_TypographyGetTextAlign(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4921,7 +4952,7 @@ Obtains the text alignment mode.
 
 ### OH_Drawing_TypographyGetTextDirection()
 
-```
+```c
 OH_Drawing_TextDirection OH_Drawing_TypographyGetTextDirection(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4948,7 +4979,7 @@ Obtains the text direction of a typography style.
 
 ### OH_Drawing_TypographyGetTextMaxLines()
 
-```
+```c
 size_t OH_Drawing_TypographyGetTextMaxLines(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -4975,7 +5006,7 @@ Obtains the maximum number of lines.
 
 ### OH_Drawing_TypographyGetTextEllipsis()
 
-```
+```c
 char* OH_Drawing_TypographyGetTextEllipsis(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -5002,7 +5033,7 @@ Obtains the text ellipsis content of a typography style.
 
 ### OH_Drawing_TypographyDestroyEllipsis()
 
-```
+```c
 void OH_Drawing_TypographyDestroyEllipsis(char* ellipsis)
 ```
 
@@ -5023,7 +5054,7 @@ Reclaims the memory occupied by the text ellipsis names.
 
 ### OH_Drawing_TypographyStyleEquals()
 
-```
+```c
 bool OH_Drawing_TypographyStyleEquals(OH_Drawing_TypographyStyle* from, OH_Drawing_TypographyStyle* to)
 ```
 
@@ -5051,7 +5082,7 @@ Checks whether two typography styles are the same. The text height modifier mode
 
 ### OH_Drawing_TextStyleGetColor()
 
-```
+```c
 uint32_t OH_Drawing_TextStyleGetColor(OH_Drawing_TextStyle* style)
 ```
 
@@ -5078,7 +5109,7 @@ Obtains the color of a text style.
 
 ### OH_Drawing_TextStyleGetDecorationStyle()
 
-```
+```c
 OH_Drawing_TextDecorationStyle OH_Drawing_TextStyleGetDecorationStyle(OH_Drawing_TextStyle* style)
 ```
 
@@ -5105,7 +5136,7 @@ Obtains the decoration style of a text style.
 
 ### OH_Drawing_TextStyleGetFontWeight()
 
-```
+```c
 OH_Drawing_FontWeight OH_Drawing_TextStyleGetFontWeight(OH_Drawing_TextStyle* style)
 ```
 
@@ -5132,7 +5163,7 @@ Obtains the font weight of a text style.
 
 ### OH_Drawing_TextStyleGetFontStyle()
 
-```
+```c
 OH_Drawing_FontStyle OH_Drawing_TextStyleGetFontStyle(OH_Drawing_TextStyle* style)
 ```
 
@@ -5159,7 +5190,7 @@ Obtains the font style of a text style.
 
 ### OH_Drawing_TextStyleGetBaseline()
 
-```
+```c
 OH_Drawing_TextBaseline OH_Drawing_TextStyleGetBaseline(OH_Drawing_TextStyle* style)
 ```
 
@@ -5186,7 +5217,7 @@ Obtains the baseline of a text style.
 
 ### OH_Drawing_TextStyleGetFontFamilies()
 
-```
+```c
 char** OH_Drawing_TextStyleGetFontFamilies(OH_Drawing_TextStyle* style, size_t* num)
 ```
 
@@ -5214,7 +5245,7 @@ Obtains the font families of a text style.
 
 ### OH_Drawing_TextStyleDestroyFontFamilies()
 
-```
+```c
 void OH_Drawing_TextStyleDestroyFontFamilies(char** fontFamilies, size_t num)
 ```
 
@@ -5236,7 +5267,7 @@ Reclaims the memory occupied by the font families, where **num** specifies the n
 
 ### OH_Drawing_TextStyleGetFontSize()
 
-```
+```c
 double OH_Drawing_TextStyleGetFontSize(OH_Drawing_TextStyle* style)
 ```
 
@@ -5263,7 +5294,7 @@ Obtains the font size of a text style.
 
 ### OH_Drawing_TextStyleGetLetterSpacing()
 
-```
+```c
 double OH_Drawing_TextStyleGetLetterSpacing(OH_Drawing_TextStyle* style)
 ```
 
@@ -5290,7 +5321,7 @@ Obtains the letter spacing of a text style.
 
 ### OH_Drawing_TextStyleGetWordSpacing()
 
-```
+```c
 double OH_Drawing_TextStyleGetWordSpacing(OH_Drawing_TextStyle* style)
 ```
 
@@ -5317,7 +5348,7 @@ Obtains the word spacing of a text style.
 
 ### OH_Drawing_TextStyleGetFontHeight()
 
-```
+```c
 double OH_Drawing_TextStyleGetFontHeight(OH_Drawing_TextStyle* style)
 ```
 
@@ -5344,7 +5375,7 @@ Obtains the font height of a text style.
 
 ### OH_Drawing_TextStyleGetHalfLeading()
 
-```
+```c
 bool OH_Drawing_TextStyleGetHalfLeading(OH_Drawing_TextStyle* style)
 ```
 
@@ -5371,7 +5402,7 @@ Checks whether half leading is enabled for a text style.
 
 ### OH_Drawing_TextStyleGetLocale()
 
-```
+```c
 const char* OH_Drawing_TextStyleGetLocale(OH_Drawing_TextStyle* style)
 ```
 
@@ -5398,7 +5429,7 @@ Obtains the locale of a text style.
 
 ### OH_Drawing_TypographyDestroyTextBox()
 
-```
+```c
 void OH_Drawing_TypographyDestroyTextBox(OH_Drawing_TextBox* textBox)
 ```
 
@@ -5419,7 +5450,7 @@ Releases the memory occupied by a text box.
 
 ### OH_Drawing_SetTextShadow()
 
-```
+```c
 void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow* shadow, uint32_t color, OH_Drawing_Point* offset,double blurRadius)
 ```
 
@@ -5443,7 +5474,7 @@ Sets a text shadow.
 
 ### OH_Drawing_CreateTextTab()
 
-```
+```c
 OH_Drawing_TextTab* OH_Drawing_CreateTextTab(OH_Drawing_TextAlign alignment, float location)
 ```
 
@@ -5460,8 +5491,8 @@ Creates a text tab object.
 
 | Name| Description|
 | -- | -- |
-| [OH_Drawing_TextAlign](#oh_drawing_textalign) alignment | Alignment mode of the text following the tab character. The value 1 means right alignment, 2 means center alignment, and 0 or other values mean left alignment.|
-| float location | Alignment position of the text following the tab character. The unit is px. The minimum value is 1.0.|
+| [OH_Drawing_TextAlign](#oh_drawing_textalign) alignment | Alignment mode of the text following the tab character. The value **1** means right alignment, **2** means center alignment, and **0** or other values mean left alignment.|
+| float location | Alignment position of the text following the tab character. The unit is px. The minimum value is **1.0**.|
 
 **Returns**
 
@@ -5471,7 +5502,7 @@ Creates a text tab object.
 
 ### OH_Drawing_DestroyTextTab()
 
-```
+```c
 void OH_Drawing_DestroyTextTab(OH_Drawing_TextTab* tab)
 ```
 
@@ -5492,7 +5523,7 @@ Releases the memory occupied by a text tab object.
 
 ### OH_Drawing_GetTextTabAlignment()
 
-```
+```c
 OH_Drawing_TextAlign OH_Drawing_GetTextTabAlignment(OH_Drawing_TextTab* tab)
 ```
 
@@ -5515,11 +5546,11 @@ Obtains the alignment mode of a text tab.
 
 | Type| Description|
 | -- | -- |
-| [OH_Drawing_TextAlign](#oh_drawing_textalign) | Alignment mode. The value 1 means right alignment, 2 means center alignment, and 0 or other values mean left alignment.|
+| [OH_Drawing_TextAlign](#oh_drawing_textalign) | Alignment mode. The value **1** means right alignment, **2** means center alignment, and **0** or other values mean left alignment.|
 
 ### OH_Drawing_GetTextTabLocation()
 
-```
+```c
 float OH_Drawing_GetTextTabLocation(OH_Drawing_TextTab* tab)
 ```
 
@@ -5546,7 +5577,7 @@ Obtains the location of a text tab.
 
 ### OH_Drawing_SetTypographyTextTab()
 
-```
+```c
 void OH_Drawing_SetTypographyTextTab(OH_Drawing_TypographyStyle* style, OH_Drawing_TextTab* tab)
 ```
 
@@ -5568,7 +5599,7 @@ Sets the alignment mode and location of a text tab. When the text alignment mode
 
 ### OH_Drawing_GetDrawingArraySize()
 
-```
+```c
 size_t OH_Drawing_GetDrawingArraySize(OH_Drawing_Array* drawingArray)
 ```
 
@@ -5595,7 +5626,7 @@ Obtains the number of objects in the input object array [OH_Drawing_Array](capi-
 
 ### OH_Drawing_SetTypographyTextTrailingSpaceOptimized()
 
-```
+```c
 void OH_Drawing_SetTypographyTextTrailingSpaceOptimized(OH_Drawing_TypographyStyle* style, bool trailingSpaceOptimized)
 ```
 
@@ -5617,7 +5648,7 @@ Sets whether to include the trailing spaces in alignment calculations during tex
 
 ### OH_Drawing_TypographyHandlerAddEncodedText()
 
-```
+```c
 void OH_Drawing_TypographyHandlerAddEncodedText(OH_Drawing_TypographyCreate* handler, const void* text,size_t byteLength, OH_Drawing_TextEncoding textEncodingType)
 ```
 
@@ -5641,7 +5672,7 @@ Adds text encoded in a specified format.
 
 ### OH_Drawing_SetTypographyTextAutoSpace()
 
-```
+```c
 void OH_Drawing_SetTypographyTextAutoSpace(OH_Drawing_TypographyStyle *style, bool enableAutoSpace)
 ```
 
@@ -5663,7 +5694,7 @@ Sets whether to enable automatic spacing during text typography.<br>This feature
 
 ### OH_Drawing_TypographyUpdateDecorationColor()
 
-```
+```c
 void OH_Drawing_TypographyUpdateDecorationColor(OH_Drawing_Typography* typography, uint32_t color)
 ```
 
@@ -5684,7 +5715,7 @@ Updates the decoration color of a typography object.<br> The updated decoration 
 
 ### OH_Drawing_SetTypographyVerticalAlignment()
 
-```
+```c
 void OH_Drawing_SetTypographyVerticalAlignment(OH_Drawing_TypographyStyle* style,OH_Drawing_TextVerticalAlignment align)
 ```
 
@@ -5706,7 +5737,7 @@ Vertical alignment mode of the text.
 
 ### OH_Drawing_CopyTypographyStyle()
 
-```
+```c
 OH_Drawing_TypographyStyle* OH_Drawing_CopyTypographyStyle(OH_Drawing_TypographyStyle* style)
 ```
 
@@ -5733,7 +5764,7 @@ Creates a copy of an existing paragraph style object.
 
 ### OH_Drawing_CopyTextStyle()
 
-```
+```c
 OH_Drawing_TextStyle* OH_Drawing_CopyTextStyle(OH_Drawing_TextStyle* style)
 ```
 
@@ -5760,7 +5791,7 @@ Creates a copy of an existing text style object.
 
 ### OH_Drawing_CopyTextShadow()
 
-```
+```c
 OH_Drawing_TextShadow* OH_Drawing_CopyTextShadow(OH_Drawing_TextShadow* shadow)
 ```
 
@@ -5786,7 +5817,7 @@ Creates a copy of an existing text shadow object.
 
 ### OH_Drawing_SetTextStyleAttributeDouble()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)
 ```
 
@@ -5814,7 +5845,7 @@ Sets the text style attribute of the **double** type.
 
 ### OH_Drawing_GetTextStyleAttributeDouble()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double* value)
 ```
 
@@ -5842,7 +5873,7 @@ Obtains the text style attribute of the **double** type.
 
 ### OH_Drawing_SetTextStyleAttributeInt()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)
 ```
 
@@ -5870,7 +5901,7 @@ Sets the text style attribute of the **int** type.
 
 ### OH_Drawing_GetTextStyleAttributeInt()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int* value)
 ```
 
@@ -5898,7 +5929,7 @@ Obtains the text style attribute of the **int** type.
 
 ### OH_Drawing_SetTypographyStyleAttributeDouble()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)
 ```
 
@@ -5926,7 +5957,7 @@ Sets the typography style attribute of the **double** type.
 
 ### OH_Drawing_GetTypographyStyleAttributeDouble()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* value)
 ```
 
@@ -5954,7 +5985,7 @@ Obtains the typography style attribute of the **double** type.
 
 ### OH_Drawing_SetTypographyStyleAttributeInt()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int value)
 ```
 
@@ -5982,7 +6013,7 @@ Sets the typography style attribute of the **int** type.
 
 ### OH_Drawing_GetTypographyStyleAttributeInt()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)
 ```
 
@@ -6007,3 +6038,77 @@ Obtains the typography style attribute of the **int** type.
 | Type| Description|
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INVALID_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_SetTypographyStyleAttributeBool()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool value)
+```
+
+**Description**
+
+Sets the typography style attribute of the **bool** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | Pointer to an [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md) object.|
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | Attribute ID of the text style.|
+| bool value | Attribute value to set.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **style** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_GetTypographyStyleAttributeBool()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool* value)
+```
+
+**Description**
+
+Obtains the typography style attribute of the **bool** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | Pointer to an [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md) object.|
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | Attribute ID of the text style.|
+| bool* value | Pointer to the bool attribute. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if **style** or **value** is NULL.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_DestroyPositionAndAffinity()
+
+```c
+void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)
+```
+
+**Description**
+
+Destroys an [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) object and reclaims the memory occupied by the object.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)* positionAndAffinity | Pointer to the [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) object.|

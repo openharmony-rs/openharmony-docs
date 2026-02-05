@@ -22,6 +22,7 @@ ArkWeb为应用提供广告过滤功能，支持通过云端推送默认的easyl
 | 元素隐藏例外规则 | 不隐藏sdf-event.sakura.ne.jp网站中id="ad_1"的元素。 | sdf-event.sakura.ne.jp#@##ad_1   |
 
 例外规则，通常是与普通规则配合使用的，在某些特定场景下使普通规则不适用，单独应用例外规则是没有意义的。
+
 例如先配置了一条过滤所有网站的拦截规则：||abc.com/js/123.js，如果某些网站出现误拦截或不能拦截的情况，可以针对这些网站配置新的例外规则。
 
 ## 约束与限制
@@ -216,6 +217,7 @@ struct WebComponent {
 ```
 
 需要注意的是，AdsBlockManager的DisallowedList和AllowedList列表不会持久化，因此重启应用后会重置为空。
+
 如果Web组件未通过[enableAdsBlock()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enableadsblock12)接口开启广告过滤功能，上述接口设置在此Web组件中将不起作用。
 
 ### 收集广告过滤的信息

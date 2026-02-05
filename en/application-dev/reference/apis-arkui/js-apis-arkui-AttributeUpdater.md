@@ -79,7 +79,7 @@ Defines the function for updating attributes in normal state.
 ### initializeModifier
 initializeModifier(instance: T): void
 
-Initialize the attributes to the values initially set by **AttributeUpdater** for the component.
+Initializes the component's attributes to the default values defined in this **AttributeUpdater**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -107,7 +107,7 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
       .width('80%')
   }
 
-  // Triggered when the AttributeUpdater object is used or updated.
+  // Triggered when the AttributeUpdater object is applied or updated.
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.borderWidth(1);
   }
@@ -125,8 +125,8 @@ struct Index {
         Button(this.flushTheButton)
           .attributeModifier(this.modifier)
           .onClick(() => {
-            // Modify the attribute by using attribute of AttributeUpdater.
-            // Note that you need to use the attributeModifier attribute method of the component to establish the binding relationship between the component and AttributeUpdater.
+            // Update component attributes via AttributeUpdater's attribute property.
+            // Note: The component must be bound to the AttributeUpdater via its attributeModifier attribute method.
             this.modifier.attribute?.backgroundColor('#ff2787d9').labelStyle({ maxLines: 5 });
           })
           .margin('10%')
@@ -207,7 +207,7 @@ struct updaterDemo2 {
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No| No| Modifies component constructor parameters. **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. |
+| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No| No| Modifies component constructor parameters. **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component.|
 
 **Example**
 

@@ -45,8 +45,7 @@ Enumerates the network sync options.
 ## cloudData.setCloudStrategy
 setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
-<!--RP1-->
-Sets the device-cloud sync strategy for the application. If no strategy is set, the global strategy set by [setGlobalCloudStrategy](js-apis-data-cloudData-sys.md#setglobalcloudstrategy12) is used. If the global strategy is not set, the application data is synced over Wi-Fi and the cellular network by default. This API uses a promise to return the result.<!--RP1End-->
+Sets the cloud sync strategy of an application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -55,7 +54,7 @@ Sets the device-cloud sync strategy for the application. If no strategy is set, 
 | Name    | Type                                                                         | Mandatory| Description                            |
 | ---------- |-----------------------------------------------------------------------------| ---- | -------------------------------- |
 | strategy  | [StrategyType](#strategytype)                                               | Yes  | Type of the strategy to set.            |
-| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | No  | Strategy parameters to set. If this parameter is not specified, all the configuration is canceled.|
+| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | No  | Strategy parameters to set. Currently, only network strategies can be set. By default, Wi-Fi and cellular network are supported.|
 
 **Return value**
 

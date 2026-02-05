@@ -10,7 +10,7 @@
 
 > **说明：** 
 >
-> - 从API Version 8 开始，该接口不再维护，推荐使用新接口[@ohos.promptAction (弹窗)](js-apis-promptAction.md)。
+> - 从API version 8 开始，该接口不再维护，推荐使用新接口[@ohos.promptAction (弹窗)](js-apis-promptAction.md)。
 >
 >
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -84,10 +84,10 @@ class B{
         },
       ],
       success: (data)=> {
-        console.log('dialog success callback，click button : ' + data.index);
+        console.info('dialog success callback，click button : ' + data.index);
       },
       cancel: ()=> {
-        console.log('dialog cancel callback');
+        console.info('dialog cancel callback');
       },
     });
   }
@@ -129,10 +129,10 @@ class C{
         },
       ],
       success: (tapIndex)=> {
-        console.log('dialog success callback，click button : ' + tapIndex);
+        console.info('dialog success callback，click button : ' + tapIndex);
       },
       fail: (errMsg)=> {
-        console.log('dialog fail callback' + errMsg);
+        console.info('dialog fail callback' + errMsg);
       },
     });
   }

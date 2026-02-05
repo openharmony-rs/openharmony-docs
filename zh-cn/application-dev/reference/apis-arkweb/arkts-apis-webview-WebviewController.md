@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## 导入模块
 
@@ -268,7 +268,7 @@ loadUrl(url: string | Resource, headers?: Array\<WebHeader>): void
 | 参数名  | 类型             | 必填 | 说明                  |
 | ------- | ---------------- | ---- | :-------------------- |
 | url     | string \| Resource | 是   | 需要加载的 URL。      |
-| headers | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | URL的附加HTTP请求头。<br>默认值： [] |
+| headers | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | URL的附加HTTP请求头。<br>默认值： []。 <br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 
@@ -277,7 +277,7 @@ loadUrl(url: string | Resource, headers?: Array\<WebHeader>): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid.                |
 | 17100003 | Invalid resource path or file type.                          |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
@@ -406,22 +406,22 @@ struct WebComponent {
 <div id="content"></div>
 
 <script>
-	function loadContent() {
-	  var hash = window.location.hash;
-	  var contentDiv = document.getElementById('content');
+  function loadContent() {
+    var hash = window.location.hash;
+    var contentDiv = document.getElementById('content');
 
-	  if (hash === '#home') {
-		contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
-	  } else {
-		contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
-	  }
-	}
+    if (hash === '#home') {
+      contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+    } else {
+      contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+    }
+  }
 
-	// 加载界面
-	window.addEventListener('load', loadContent);
+  // 加载界面
+  window.addEventListener('load', loadContent);
 
-	// 当hash变化时，更新界面
-	window.addEventListener('hashchange', loadContent);
+  // 当hash变化时，更新界面
+  window.addEventListener('hashchange', loadContent);
 </script>
 </body>
 </html>
@@ -471,8 +471,8 @@ data数据必须使用base64编码或将内容中的任何#字符编码为%23。
 | data       | string | 是   | 按照"base64"或者"URL"编码后的一段字符串。                    |
 | mimeType   | string | 是   | 媒体类型（MIME）。                                           |
 | encoding   | string | 是   | 编码类型，具体为"base64"或者"URL"编码。                       |
-| baseUrl    | string | 否   | 指定的一个URL路径（"http"/"https"/"data"协议），并由Web组件赋值给`window.origin`。当加载大量html文件时，需设置为"data"。 |
-| historyUrl | string | 否   | 用作历史记录所使用的URL。非空时，历史记录以此URL进行管理。当baseUrl为空时，此属性无效。 |
+| baseUrl    | string | 否   | 指定的一个URL路径（"http"/"https"/"data"协议），并由Web组件赋值给`window.origin`。当加载大量html文件时，需设置为"data"。<br>传入undefined或null会抛出异常错误码401。 |
+| historyUrl | string | 否   | 用作历史记录所使用的URL。非空时，历史记录以此URL进行管理。当baseUrl为空时，此属性无效。<br>传入undefined或null会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -850,7 +850,8 @@ struct WebComponent {
 onActive(): void
 
 调用此接口通知Web组件进入前台激活状态。
-<br />激活状态是应用与用户互动的状态。应用会保持这种状态，直到发生某些事件（例如收到来电或设备屏幕关闭）时将焦点从应用移开。
+
+激活状态是应用与用户互动的状态。应用会保持这种状态，直到发生某些事件（例如收到来电或设备屏幕关闭）时将焦点从应用移开。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1088,7 +1089,8 @@ struct WebComponent {
 registerJavaScriptProxy(jsObject: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
 
 registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的交互能力。注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。
-<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。
+
+示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。
 
 > **说明：**
 >
@@ -1109,8 +1111,8 @@ registerJavaScriptProxy提供了应用与Web组件加载的网页之间强大的
 | jsObject     | object         | 是   | 参与注册的应用侧JavaScript对象。可以单独声明方法和属性，但无法同时进行注册与使用。对象只包含属性时，H5可以访问对象中的属性。对象只包含方法时，H5可以访问对象中的方法。<br>1. 方法的参数和返回类型可以为string，number，boolean。<br>2. 方法的参数和返回类型支持Dictionary，Array，最多嵌套10层，每层1w个数据。<br>3. 方法的参数和返回类型支持Object，需要在Object里添加属性methodNameListForJsProxy:[fun1, fun2]，fun1和fun2为可被调用的方法。<br>4. 方法的参数支持Function，Promise，它们的Callback不能有返回值。<br>5. 方法的返回类型支持Promise，Promise的Callback不能有返回值。 |
 | name       | string         | 是   | 注册对象的名称，与window中调用的对象名一致。注册后window对象可以通过此名字访问应用侧JavaScript对象。 |
 | methodList | Array\<string> | 是   | 参与注册的应用侧JavaScript对象的同步方法。                       |
-| asyncMethodList<sup>12+</sup> | Array\<string> | 否   | 参与注册的应用侧JavaScript对象的异步方法，默认为空。异步方法无法获取返回值。  |
-| permission<sup>12+</sup> | string | 否   | JSON字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object和method级别的URL白名单。<br>1. scheme（协议）和host（域名）参数不可为空，且host不支持通配符，只能填写完整的host。<br>2. 可以仅配置object级别的白名单，该白名单对所有JSBridge方法生效。<br>3. 若JSBridge方法A设置了method级别的白名单，那么方法A最终的白名单是object级别白名单与method级别白名单的交集。|
+| asyncMethodList<sup>12+</sup> | Array\<string> | 否   | 参与注册的应用侧JavaScript对象的异步方法，默认为空。异步方法无法获取返回值。<br>传入undefined或null会抛出异常错误码401。  |
+| permission<sup>12+</sup> | string | 否   | JSON字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object和method级别的URL白名单。<br>1. scheme（协议）和host（域名）参数不可为空，且host不支持通配符，只能填写完整的host。<br>2. 可以仅配置object级别的白名单，该白名单对所有JSBridge方法生效。<br>3. 若JSBridge方法A设置了method级别的白名单，那么方法A最终的白名单是object级别白名单与method级别白名单的交集。<br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
 
@@ -1897,7 +1899,7 @@ function test() {
 
 deleteJavaScriptRegister(name: string): void
 
-删除通过registerJavaScriptProxy注册到window上的指定name的应用侧JavaScript对象。删除后，须调用[refresh](#refresh)接口。
+删除通过[registerJavaScriptProxy](#registerjavascriptproxy)或者[javaScriptProxy](./arkts-basic-components-web-attributes.md#javascriptproxy)注册到window上的指定name的应用侧JavaScript对象。删除操作在页面下次（重新）加载后生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2320,7 +2322,7 @@ createWebMessagePorts(isExtentionType?: boolean): Array\<WebMessagePort>
 
 | 参数名 | 类型                   | 必填 | 说明                             |
 | ------ | ---------------------- | ---- | :------------------------------|
-| isExtentionType<sup>10+</sup>   | boolean     | 否  | 是否使用扩展增强接口。<br>true表示使用扩展增强接口，false表示不使用扩展增强接口。<br>默认值：false。 |
+| isExtentionType<sup>10+</sup>   | boolean     | 否  | 是否使用扩展增强接口。<br>true表示使用扩展增强接口，false表示不使用扩展增强接口。<br>默认值：false。<br>传入undefined或null会抛出异常错误码401。 |
 
 **返回值：**
 
@@ -2464,7 +2466,7 @@ struct WebComponent {
 
 <!--code_no_check-->
 ```js
-//xxx.js
+// xxx.js
 var h5Port;
 var output = document.querySelector('.output');
 window.addEventListener('message', function (event) {
@@ -3168,7 +3170,7 @@ scrollTo(x:number, y:number, duration?:number): void
 | ------ | -------- | ---- | ---------------------- |
 | x   | number   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。 |
 | y   | number   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。|
-| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -3204,7 +3206,7 @@ struct WebComponent {
         Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3252,7 +3254,7 @@ scrollBy(deltaX:number, deltaY:number,duration?:number): void
 | ------ | -------- | ---- | ---------------------- |
 | deltaX | number   | 是   | 水平偏移量，其中水平向右为正方向。<br>单位：vp。 |
 | deltaY | number   | 是   | 垂直偏移量，其中垂直向下为正方向。<br>单位：vp。 |
-| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。 |
+| duration<sup>14+</sup> | number | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **错误码：**
 
@@ -3292,7 +3294,7 @@ struct WebComponent {
       Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -3493,6 +3495,7 @@ Scroll Test
 getOriginalUrl(): string
 
 获取当前页面的原始url地址。
+
 风险提示：如果想获取url来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](#getlastjavascriptproxycallingframeurl12)
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -4171,6 +4174,7 @@ struct WebComponent {
 ```
 
 2.修改EntryAbility.ets。
+
 获取应用缓存文件路径。
 ```ts
 // xxx.ets
@@ -4257,6 +4261,7 @@ struct WebComponent {
 ```
 
 2.修改EntryAbility.ets。
+
 获取应用缓存文件路径。
 ```ts
 // xxx.ets
@@ -4903,13 +4908,13 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 | 参数名             | 类型                             |  必填  | 说明                                                              |
 | ------------------| ------------------------------- | ---- | ------------------------------------------------------------------ |
 | request           | [RequestInfo](./arkts-apis-webview-i.md#requestinfo12)   | 是   | 预获取请求的信息。                                                      |
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头。                                             |
-| cacheKey          | string                          | 否   | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。 |
-| cacheValidTime    | number                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。         |
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头。 <br>传入undefined或null会抛出异常错误码401。         |
+| cacheKey          | string                          | 否   | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。<br>传入undefined或null会抛出异常错误码401。 |
+| cacheValidTime    | number                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。    <br>传入undefined或null会抛出异常错误码401。     |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
@@ -5377,7 +5382,7 @@ struct WebComponent {
 
 static setConnectionTimeout(timeout: number): void
 
-设置网络连接超时时间，使用者可通过Web组件中的onErrorReceive方法获取超时错误码。
+设置网络连接超时时间，使用者可通过Web组件中的onErrorReceive方法获取超时错误码。若未调用该接口则默认超时时间为30秒。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5476,6 +5481,7 @@ export default class EntryAbility extends UIAbility {
 enableSafeBrowsing(enable: boolean): void
 
 启用检查网站安全风险的功能，非法和欺诈网站是强制启用的，不能通过此功能禁用。
+
 本功能默认不生效，OpenHarmony只提供恶意网址拦截页WebUI，网址风险检测以及显示WebUI的功能由Vendor实现。推荐在WebContentsObserver中监听跳转[DidStartNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h)、[DidRedirectNavigation](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/content/public/browser/web_contents_observer.h)进行检测。
 
 > **说明：**
@@ -5979,6 +5985,7 @@ struct WebComponent {
 isAdsBlockEnabledForCurPage() : boolean
 
 查询当前网页是否开启广告过滤功能。
+
 当Web组件使能广告过滤功能后，默认所有页面都是开启广告过滤的，支持通过[addAdsBlockDisallowedList](./arkts-apis-webview-AdsBlockManager.md#addadsblockdisallowedlist12)指定域名禁用广告过滤。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -6188,7 +6195,7 @@ postUrl(url: string, postData: ArrayBuffer): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid.                |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
@@ -6404,7 +6411,7 @@ setScrollable(enable: boolean, type?: ScrollType): void
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
 | enable     | boolean   | 是   | 表示是否将网页设置为允许滚动。<br>true表示设置为允许滚动，false表示禁止滚动。<br>默认值：true。 |
-| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。<br/>**说明：**<br/>传入undefined会抛出异常错误码401。|
+| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。<br>传入null或undefined时会抛出异常错误码401。|
 
 **错误码：**
 
@@ -6498,7 +6505,7 @@ struct WebComponent {
 
 setPrintBackground(enable: boolean): void
 
-设置是否打印网页背景。
+设置是否打印网页背景，该接口与[PrintAttributes](../apis-basic-services-kit/js-apis-print.md#printattributes11)打印参数配置不一致时，本接口设置优先级高于打印参数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7457,6 +7464,7 @@ closeCamera(): void
 precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: CacheOptions): Promise\<number\>
 
 预编译JavaScript生成字节码缓存或根据提供的参数更新已有的字节码缓存。
+
 接口通过提供的文件信息、E-Tag响应头和Last-Modified响应头判断是否需要更新已有的字节码缓存。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -7705,6 +7713,7 @@ precompileJavaScript(url: string, script: string | Uint8Array, cacheOptions: Cac
 onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
 注册回调函数，开启[应用接管网页媒体播放功能](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)后，当网页中有播放媒体时，触发注册的回调函数。
+
 如果应用接管网页媒体播放功能未开启，则注册的回调函数不会被触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -8004,7 +8013,7 @@ struct WebComponent {
               }
               if (result) {
                 console.info(`return value is:${result}`);
-                //开发者可以根据需要处理返回结果
+                // 开发者可以根据需要处理返回结果
               }
             });
           } catch (error) {
@@ -8022,10 +8031,15 @@ struct WebComponent {
 injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-webview-i.md#offlineresourcemap12)\>): void
 
 将本地离线资源注入到内存缓存中，以提升页面首次启动速度。
+
 内存缓存中的资源由内核自动管理，当注入的资源过多导致内存压力过大，内核自动释放未使用的资源，应避免注入大量资源到内存缓存中。
+
 正常情况下，资源的有效期由提供的Cache-Control或Expires响应头控制其有效期，默认的有效期为86400秒，即1天。
+
 资源的MIMEType通过提供的Content-Type响应头配置，Content-Type需符合标准，否则无法正常使用，MODULE_JS必须提供有效的MIMEType，其他类型可不提供。
+
 以此方式注入的资源，仅支持通过HTML中的标签加载。如果业务网页中的script标签使用了crossorigin属性，则必须在接口的responseHeaders参数中设置Cross-Origin响应头的值为anonymous或use-credentials。
+
 当调用`webview.WebviewController.SetRenderProcessMode(webview.RenderProcessMode.MULTIPLE)`接口后，应用会启动多渲染进程模式，此接口在此场景下不会生效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -9280,7 +9294,7 @@ off(type: 'controllerAttachStateChange', callback?: Callback&lt;ControllerAttach
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 表示注册WebViewController绑定状态事件，固定为"controllerAttachStateChange"。 |
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。 |
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | 否 | WebViewController绑定状态发生改变时的回调函数，默认情况下不填写回调函数。如果填写了Callback，将仅取消注册该特定的回调。如果不填写Callback，将取消注册所有回调。<br>传入null或undefined时会抛出异常错误码401。 |
 
 **示例：**
 
@@ -9374,7 +9388,7 @@ struct WebComponent {
   async aboutToAppear() {
     this.controller.waitForAttached(1000).then((state: webview.ControllerAttachState) => {
       if (state == webview.ControllerAttachState.ATTACHED) {
-        //绑定完成或者超时都会触发回调
+        // 绑定完成或者超时都会触发回调
         console.info('Controller is attached.');
       }
     })
@@ -9416,7 +9430,7 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
 | webDebuggingAccess | boolean | 是   | 设置是否启用网页调试功能。<br/>true表示开启网页调试功能，false表示关闭网页调试功能。 |
-| port               | number  | 是   | 指定devtools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
+| port               | number  | 是   | 指定DevTools服务的tcp端口号。如果没有指定port，那么该接口等同于[setWebDebuggingAccess](#setwebdebuggingaccess)接口。<br/>取值范围: (1024, 65535]<br/>如果port的值在区间[0, 1024]内，则会抛出BusinessError异常，错误码为17100023。 |
 
 
 **错误码：**
@@ -10000,6 +10014,86 @@ struct WebComponent {
 }
 ```
 
+## setBlanklessLoadingWithParams<sup>23+</sup>
+
+setBlanklessLoadingWithParams(key: string, param: BlanklessLoadingParam): WebBlanklessErrorCode
+
+设置白屏插帧的配置参数，本接口必须与[getBlanklessInfoWithKey](#getblanklessinfowithkey20)接口配套使用。相比于[setBlanklessLoadingWithKey](#setblanklessloadingwithkey20)，本接口支持白屏插帧更多的参数设置，包括插帧持续时间，缓存数据有效时间，插帧完成后的自定义回调。
+
+> **说明：**
+>
+> - 需在触发页面加载的接口之后调用，其他约束同[getBlanklessInfoWithKey](#getblanklessinfowithkey20)。
+> - 页面加载必须在调用本接口的组件中进行。
+> - 当相似度较低时，系统将判定为跳变过大，启用插帧会失败。
+> - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET_NETWORK_INFO，具体权限的添加方法请参考[在配置文件中声明权限](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| key | string | 是 | 唯一标识本页面的key值。必须与getBlanklessInfoWithKey接口的key值相同。<br>合法取值范围：非空，长度不超过2048个字符。<br>非法值设置行为：返回错误码WebBlanklessErrorCode，方案不生效。 |
+| param | [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) | 是 | 白屏插帧加载的各项参数设置。 |
+
+**返回值：**
+
+| 类型                 | 说明                      |
+| -------------------- | ------------------------- |
+| [WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20) | 返回接口调用结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+|  801     | Capability not supported. |
+
+**示例：**
+
+```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+       .javaScriptAccess(true)
+       .onLoadIntercept((event) => {
+            try {
+              let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
+              if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
+                let data = new Date(2026, 5, 10, 0, 0, 0, 0);
+                let param: webview.BlanklessLoadingParam = {
+                  enable: info.similarity > 0.4 && info.similarity < 2000,
+                  duration: info.loadingTime,
+                  expirationTime: data.getTime(),
+                  callback: (info: webview.BlanklessFrameInterpolationInfo)=>{
+                    // 数据监控
+                  },
+                };
+                this.controller.setBlanklessLoadingWithParams('http://www.example.com/page1', param);
+              } else {
+                console.info('getBlankless info err');
+              }
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},
+                Message: ${(error as BusinessError).message}`);
+            }
+            return false;
+        })
+    }
+  }
+}
+```
+
 ## clearBlanklessLoadingCache<sup>20+</sup>
 
 static clearBlanklessLoadingCache(keys?: Array\<string\>): void
@@ -10018,7 +10112,7 @@ static clearBlanklessLoadingCache(keys?: Array\<string\>): void
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
-| keys | Array\<string\> | 否 | 清除Blankless优化方案页面的key值列表，key值为[getBlanklessInfoWithKey](#getblanklessinfowithkey20)中指定过的。<br>默认值：所有Blankless优化方案缓存的页面key列表。<br>合法取值范围：长度不超过2048，key列表长度<=100。key和加载页面时输入给ArkWeb的相同。<br>非法值设置行为：key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
+| keys | Array\<string\> | 否 | 清除Blankless优化方案页面的key值列表，key值为[getBlanklessInfoWithKey](#getblanklessinfowithkey20)中指定过的。<br>默认值：所有Blankless优化方案缓存的页面key列表。<br>合法取值范围：长度不超过2048，key列表长度<=100。key和加载页面时输入给ArkWeb的相同。<br>非法值设置行为：传入undefined/null会抛出异常错误码401；key长度超过2048时该key不生效；长度超过100时，取前100个；当为空时，使用默认值。 |
 
 **错误码：**
 
@@ -10146,7 +10240,7 @@ export default class EntryAbility extends UIAbility {
 
 ## setScrollbarMode<sup>23+</sup>
 
-setScrollbarMode(scrollbarMode: ScrollbarMode): void
+static setScrollbarMode(scrollbarMode: ScrollbarMode): void
 
 在Web页面场景，设置全局滚动条模式。不显式调用时，默认为[ScrollbarMode.OVERLAY_LAYOUT_SCROLLBAR ](./arkts-apis-webview-e.md#scrollbarmode23)（非常驻滚动条）。
 
@@ -10519,6 +10613,14 @@ setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | -------------------------------------- |
 | mode | [WebSoftKeyboardBehaviorMode](./arkts-apis-webview-e.md#websoftkeyboardbehaviormode22) | 是 | Web软键盘自动控制模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
 
 **示例：**
 

@@ -1,5 +1,12 @@
 # AutoStartupCallback (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The module defines the callback to be invoked when auto-startup is set or canceled for an application component.
 
 > **NOTE**

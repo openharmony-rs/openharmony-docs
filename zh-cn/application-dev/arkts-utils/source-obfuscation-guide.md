@@ -4,7 +4,7 @@
 <!--Owner: @zju-wyx-->
 <!--Designer: @xiao-peiyang; @dengxinyu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 开启源码混淆
 
@@ -13,22 +13,25 @@
 
 * 开启混淆开关  
     在本模块`build-profile.json5`配置文件中的`arkOptions.obfuscation.ruleOptions`字段中，通过`enable`字段配置是否开启混淆。
-    ```
+    <!-- @[set_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/build-profile.json5) -->   
+    
+    ``` JSON5
     "arkOptions": {
       "obfuscation": {
         "ruleOptions": {
-          "enable": true,
-          "files": ["./obfuscation-rules.txt"],
-        }
+          "enable": true, // 开启混淆开关。
+          "files": ["./obfuscation-rules.txt"] // 指定配置混淆规则文件, 在编译本模块时生效。
+        },
+        // ...
       }
-    }
+    },
     ```
 
 * 配置混淆规则  
     打开混淆开关，仅开启默认混淆功能，默认混淆范围为局部变量和参数。如需开启更多混淆功能，请在`files`字段指定的混淆配置文件`obfuscation-rules.txt`中进行选项配置。需要注意的是，不同版本的DevEco Studio，`obfuscation-rules.txt`文件中的默认值可能会有所不同。
 
     以DevEco Studio5.0.3.600及更高版本为例，混淆配置文件如下所示，该配置内容表示开启属性名称混淆、顶层作用域名称混淆、文件名混淆及导入导出名称混淆功能：
-    ```
+    ```text
     -enable-property-obfuscation
     -enable-toplevel-obfuscation
     -enable-filename-obfuscation
@@ -36,7 +39,7 @@
     ```
 
     开发者可以使用`#`在混淆规则文件中添加注释，每行以`#`开头的文本将被视为注释。使用方法如下：
-    ```
+    ```text
     # options:
     -enable-property-obfuscation
     -enable-toplevel-obfuscation
@@ -63,7 +66,7 @@
 
     > **注意：**
     >
-    > release编译与debug编译的区别不仅限于混淆。若要明确应用行为差异是否由混淆引起，应通过开启或关闭混淆开关进行排查，而不是仅通过切换编译模式。
+    > release编译与debug编译的区别包含但不仅限于是否开启了混淆功能。若要明确应用行为差异是否由混淆引起，应通过开启或关闭混淆开关进行排查，而不是仅通过切换编译模式。
 
 ### 三种混淆配置文件
 * `obfuscation-rules.txt`  
@@ -73,16 +76,18 @@
     对于HAR和HSP模块，在`build-profile.json5`中额外有一个`arkOptions.obfuscation.consumerFiles`字段，用于指定当本包被依赖时，期望在当前编译流程生效的混淆规则，新建HAR或HSP模块时会创建默认文件`consumer-rules.txt`。它与`obfuscation-rules.txt`的区别是：**`obfuscation-rules.txt`在编译本模块时生效，`consumer-rules.txt`在编译依赖本模块的其他模块时生效**。
 
 	build-profile.json5配置示例：
-    ```json
+    <!-- @[set_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/build-profile.json5) -->    
+    
+    ``` JSON5
     "arkOptions": {
       "obfuscation": {
         "ruleOptions": {
-          "enable": true, // 开启混淆开关
-          "files": ["./obfuscation-rules.txt"] // 指定配置混淆规则文件, 在编译本模块时生效。 
+          "enable": true, // 开启混淆开关。
+          "files": ["./obfuscation-rules.txt"] // 指定配置混淆规则文件, 在编译本模块时生效。
         },
         "consumerFiles": ["./consumer-rules.txt"] // 指定配置混淆规则文件, 在编译依赖本模块的其他模块时生效。
       }
-    }
+    },
     ```
 
   > **说明**：
@@ -108,29 +113,34 @@
 1. 开启`-enable-toplevel-obfuscation`选项时，如果代码中使用`globalThis`访问全局变量，可能会导致访问失败。此时，需要使用`-keep-global-name`选项来保留该全局变量的名称。
 2. 待上述选项应用适配成功后，开启`-enable-property-obfuscation`选项。此选项开启后，以下场景需要适配：
     1. 若代码中存在静态定义、动态访问的情况，或动态定义、静态访问的情况，需要使用`-keep-property-name`保留属性名称。示例如下：
-        ```ts
-        // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问
-        // example.ts
-        const obj = {
-          staticName: 'value'  // 静态定义属性
-        };
-        const fieldName = 'static' + 'Name';  // 动态构建属性名，需使用-keep-property-name staticName来保留该属性名
-        console.info(obj[fieldName]);  // 使用方括号语法动态访问属性
-        ```
-        ```ts
-        // 动态定义，静态访问：属性名通过动态表达式在对象定义时确定，但访问时直接使用点语法（假设你知道属性名的结果）
-        // example.ts
-        const dynamicExpression = 'dynamicPropertyName';
-        const obj = {
-          [dynamicExpression]: 'value'  // 动态定义属性
-        };
-        console.info(obj.dynamicPropertyName);  // 使用点语法静态访问属性，需使用-keep-property-name dynamicPropertyName来保留该属性名
-        ```
+       <!-- @[example_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->    
+       
+       ``` TypeScript
+       // 静态定义，动态访问：属性名在对象定义时是静态的，但访问时通过动态构建属性名（通常使用字符串拼接）来访问。
+       // example.ts
+       const obj001 = {
+         staticName: 'value'  // 静态定义属性。
+       };
+       const fieldName = 'static' + 'Name';  // 动态构建属性名，需使用-keep-property-name staticName来保留该属性名。
+       console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性。
+       ```
+
+       <!-- @[example_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
+       
+       ``` TypeScript
+       // 动态定义，静态访问：属性名通过动态表达式在对象定义时确定，但访问时直接使用点语法（假设你知道属性名的结果）。
+       // example.ts
+       const dynamicExpression = 'dynamicPropertyName';
+       const obj002 = {
+         [dynamicExpression]: 'value'  // 动态定义属性。
+       };
+       console.info(obj002.dynamicPropertyName);//使用点语法静态访问属性，需使用-keep-property-name dynamicPropertyName来保留该属性名。
+       ```
     2. 若代码中使用点语法访问未在ArkTS/TS/JS代码中定义的字段，比如访问native实现的so库，字段固定的json文件与数据库等场景：
         1. 若在代码中引用so库的api，如```import testNapi from 'library.so';testNapi.foo();```需要使用`-keep-property-name` foo保留属性名称。
         2. 若在代码中使用json文件中的字段，需要使用`-keep-property-name`保留json文件中的字段名称。
         3. 若在代码中使用数据库相关的字段，需要使用`-keep-property-name`保留数据库中的字段名称。
-    3. 若构建HAR模块并发布给其他模块使用的场景，要在HAR模块中的consumer-rules.txt文件中将不能被二次混淆的属性使用`-keep-property-name`保留。consumer-rules.txt文件在构建HAR时会生成obfuscation.txt文件。此HAR被其它模块依赖时，Deveco Studio会解析obfuscation.txt文件，读取文件中的白名单。
+    3. 若构建HAR模块并发布给其他模块使用的场景，要在HAR模块中的consumer-rules.txt文件中将不能被二次混淆的属性使用`-keep-property-name`保留。consumer-rules.txt文件在构建HAR时会生成obfuscation.txt文件。此HAR被其它模块依赖时，DevEco Studio会解析obfuscation.txt文件，读取文件中的白名单。
     4. 验证应用功能，排查遗漏的场景。若应用出现功能异常，依据混淆后的报错栈从对应的[中间产物](#查看混淆效果)中找到报错行的代码，排查需要配置的白名单并使用`-keep-property-name`进行保留。
 3. 待上述选项应用适配成功后，开启`-enable-export-obfuscation`选项。此选项开启后，以下场景需要适配：
     1. 若构建HSP模块，它会提供接口及其属性给其它模块调用，因此需要将对外接口使用`-keep-global-name`来保留、将对外暴露的class/interface等语法中的属性使用`-keep-property-name`保留。
@@ -162,6 +172,8 @@
 
 经过混淆的应用程序，代码名称会更改，导致crash时打印的报错栈难以理解。可使用DevEco Studio命令工具Command Line Tools中的[hstack插件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)还原源码堆栈，进而分析问题。
 请备份应用编译过程中生成的`sourceMaps.map`文件和混淆名称映射文件nameCache.json，反混淆工具需要这些文件。
+
+如果使用自建在线平台或流水线构建应用，则会获取不到编译过程中生成的sourceMaps.map文件和混淆名称映射文件namecache.json，可以使用本地编译生成的对应文件进行代替。
 * 源代码映射信息文件：sourceMaps.map，该文件记录了压缩/转换后的代码到原始源代码之间的映射关系。
 
 ![obfuscation-product](figures/obfuscation-product.png)

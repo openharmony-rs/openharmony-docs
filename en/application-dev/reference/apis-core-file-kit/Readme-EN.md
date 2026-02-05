@@ -5,7 +5,7 @@
 <!--Owner: @wangke25-->
 <!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 - ArkTS APIs<!--core-file-arkts-->
   - [@ohos.application.BackupExtensionAbility (Backup and Restore Extension Capability)](js-apis-application-backupExtensionAbility.md)
@@ -44,7 +44,7 @@
     - [@ohos.fileio (File Management)](js-apis-fileio.md)
     - [@ohos.statfs (statfs)](js-apis-statfs.md)
     - [@system.file (File Storage)](js-apis-system-file.md)
-- C API<!--core-file-c-->
+- C APIs<!--core-file-c-->
   - Modules<!--core-file-module-->
     - [Environment](capi-environment.md)
     - [FileIO](capi-fileio.md)

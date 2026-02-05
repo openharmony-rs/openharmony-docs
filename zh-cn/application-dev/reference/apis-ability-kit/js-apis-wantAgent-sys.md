@@ -47,20 +47,20 @@ import WantAgent, { WantAgent as _WantAgent} from '@ohos.wantAgent';
 import Want from '@ohos.app.ability.Want';
 import { BusinessError } from '@ohos.base';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgent: _WantAgent;
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     if (err.code == 0) {
-    	wantAgent = data;
+        wantAgent = data;
     } else {
         console.error('getWantAgent failed, error: ' + JSON.stringify(err));
         return;
     }
 
-    //getWant回调
+    // getWant回调
     let getWantCallback = (err: BusinessError, data: Want) => {
         console.info('==========================>getWantCallback=======================>');
     }
@@ -123,7 +123,7 @@ getWant(agent: WantAgent): Promise\<Want\>
 import WantAgent, { WantAgent as _WantAgent} from '@ohos.wantAgent';
 import { BusinessError } from '@ohos.base';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgent: _WantAgent;
 
 WantAgent.getWantAgent({
@@ -152,7 +152,7 @@ WantAgent.getWantAgent({
     requestCode: 0,
     wantAgentFlags:[WantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 }).then((data) => {
-	console.info('==========================>getWantAgentCallback=======================>');
+    console.info('==========================>getWantAgentCallback=======================>');
     wantAgent = data;
     if (wantAgent) {        
         WantAgent.getWant(wantAgent).then((data) => {

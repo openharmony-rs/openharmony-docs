@@ -7,9 +7,9 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
-- [Introduction to Input Kit](input-overview.md)
+- [About This Kit](input-overview.md)
 - [Input Device Development](inputdevice-guidelines.md)
-- [Key Press Event Listening Development](keypressed-guidelines.md)
+- [Preferential Response of System Function Keys](keypressed-guidelines.md)
 - [Mouse Pointer Development](pointerstyle-guidelines.md)<!--Del-->
 - [Input Monitor Development (for System Applications Only)](inputmonitor-guidelines-sys.md)
 - [Event Injection Development (for System Applications Only)](inputeventclient-guidelines-sys.md)

@@ -33,10 +33,12 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
 
 2. Include header files.
 
-    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
     
     ``` C++
+    #include <cstring>
     #include "database/rdb/relational_store.h"
+    #include "hilog/log.h"
     ```
 
 

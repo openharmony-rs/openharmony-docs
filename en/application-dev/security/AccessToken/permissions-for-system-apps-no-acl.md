@@ -17,6 +17,18 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting the permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
+## ohos.permission.hsdr.HSDR_ACCESS
+
+Allows an application to access OpenHarmony Security Detection and Response Framework.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: false
+
+**Valid since**: 10
+
 ## ohos.permission.SYSTEM_LIGHT_CONTROL
 
 Allows an application to control lights, including turning on and off lights.
@@ -172,15 +184,3 @@ Allows a system service to enable distributed hardware resources.
 **Enable via ACL**: false
 
 **Valid since**: 11
-
-## ohos.permission.ACCESS_USER_ACCOUNT_INFO
-
-Allows a system application to access user account information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: false
-
-**Valid since**: 18

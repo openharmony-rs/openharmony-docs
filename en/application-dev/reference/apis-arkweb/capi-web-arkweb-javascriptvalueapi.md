@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-```
+```c
 typedef struct {...} ArkWeb_JavaScriptValueAPI
 ```
 
@@ -38,7 +38,7 @@ Defines the JavaScriptValue API of ArkWeb. Before calling this API, you are advi
 
 ### createJavaScriptValue()
 
-```
+```c
 ArkWeb_JavaScriptValuePtr (*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)
 ```
 

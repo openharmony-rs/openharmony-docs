@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -249,7 +249,7 @@ fontFamily(value: ResourceStr)
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和自定义字体。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和自定义字体。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 > **说明：**
 >
@@ -355,6 +355,22 @@ textAlign(value: TextAlign)
 >  **说明：**  
 >
 >  textAlign只能调整文本整体的布局，不影响字符的显示顺序。若需要调整字符的显示顺序，请参考[镜像状态字符对齐](../../../ui/arkts-internationalization.md#镜像状态字符对齐)。
+
+### textDirection<sup>23+</sup>
+
+textDirection(direction: TextDirection | undefined)
+
+指定文本排版方向，未通过该接口设置时，默认文本排版方向遵循组件布局方向。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
 
 ### selectedBackgroundColor<sup>10+</sup>
 
@@ -566,6 +582,8 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 当设置自定义键盘时，可以通过绑定[onKeyPrelme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
 
+从API version 23开始，自定义键盘可以通过[setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23)开启接续，在切换至其他自定义键盘时，会直接切换，不会触发键盘关闭和拉起动画。
+
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -604,6 +622,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
 
 当enableSelectedDataDetector设置为true时，默认识别所有类型的实体。
+
 需要[CopyOptions](ts-appendix-enums.md#copyoptions9)为CopyOptions.LocalDevice或CopyOptions.CROSS_DEVICE时，本功能生效。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
@@ -735,6 +754,12 @@ lineHeight(value: number | string | Resource)
 
 设置值不大于0时，不限制文本行高，自适应字体大小，number类型时单位为fp。string类型支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
+> **说明：**
+>  
+> - 特殊字符字体高度远超出同行的其他字符高度时，文本框出现截断、遮挡、内容相对位置发生变化等不符合预期的显示异常，需要开发者调整组件高度、行高等属性，修改对应的页面布局。
+> 
+> - 设置[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)时，通过该接口设置行高[lineHeight](#lineheight12)不生效。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -745,9 +770,6 @@ lineHeight(value: number | string | Resource)
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
 | value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本的文本行高。 |
 
->  **说明：**
->  
->  特殊字符字体高度远超出同行的其他字符高度时，文本框出现截断、遮挡、内容相对位置发生变化等不符合预期的显示异常，需要开发者调整组件高度、行高等属性，修改对应的页面布局。
 ### decoration<sup>12+</sup>
 
 decoration(value: TextDecorationOptions)
@@ -816,9 +838,11 @@ fontFeature(value: string)
 | ------ | ------ | ---- | -------------- |
 | value  | string | 是   | 文字特性效果。 |
 
-Font Feature当前支持的属性见 [fontFeature属性列表](ts-basic-components-text.md#fontfeature12)。
-设置 Font Feature 属性，Font Feature 是 OpenType 字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
-更多 Font Feature 能力介绍可参考 https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop 和 https://sparanoid.com/lab/opentype-features/
+Font Feature当前支持的属性见[fontFeature属性列表](ts-basic-components-text.md#fontfeature12)。
+
+设置Font Feature属性，Font Feature是OpenType字体的高级排版能力，如支持连字、数字等宽等特性，一般用在自定义字体中，其能力需要字体本身支持。
+
+更多Font Feature能力介绍可参考https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop和https://sparanoid.com/lab/opentype-features/。
 
 >  **说明：**
 >
@@ -937,7 +961,7 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 当设置为TextHeightAdaptivePolicy.MAX_LINES_FIRST时，优先使用[maxLines](#maxlines10)属性来调整文本高度。如果使用maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize12)和[maxFontSize](#maxfontsize12)的范围内缩小字体以显示更多文本。
 
-当设置为TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST时，优先使用minFontSize属性来调整文本高度。如果使用minFontSize属性可以将文本布局在一行中，则尝试在minFontSize和maxFontSize的范围内增大字体并使用最大可能的字体大小。
+当设置为TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST时，优先使用minFontSize属性来调整文本高度。如果使用minFontSize属性可以将文本布局在一行中，则尝试在minFontSize和maxFontSize的范围内增大字体并使用最大限度的字体大小。
 
 当设置为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST时，与TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST效果一样。
 
@@ -1039,7 +1063,7 @@ enableHapticFeedback(isEnabled: boolean)
 
 设置是否开启触控反馈。
 
-开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段以开启振动权限，配置如下：
+开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：
 
 ```json
 "requestPermissions": [
@@ -1169,7 +1193,7 @@ minFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br/>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例18设置最小字体范围与最大字体范围](#示例18设置最小字体范围与最大字体范围)。 |
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br/>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例18设置最小字体范围与最大字体范围](#示例18设置最小字体范围与最大字体范围)。 |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -1185,7 +1209,7 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理。异常值默认不生效。<br/>当设置maxFontScale属性后，showError最多放大到2倍。<br/>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例18设置最小字体范围与最大字体范围](#示例18设置最小字体范围与最大字体范围)。 |
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理。异常值默认不生效。<br/>当设置maxFontScale属性后，showError最多放大到2倍。<br/>使用前需在工程中配置[configuration.json](../../../quick-start/app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start/app-configuration-file.md)文件，具体详见[示例18设置最小字体范围与最大字体范围](#示例18设置最小字体范围与最大字体范围)。 |
 
 ### cancelButton<sup>18+</sup>
 
@@ -1257,7 +1281,13 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 compressLeadingPunctuation(enabled: Optional\<boolean>)
 
-设置是否启用行首标点符号压缩功能。
+设置是否开启行首标点符号压缩。
+
+> **说明：**
+>
+> - 行首标点符号默认不压缩。
+>
+> - 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1265,15 +1295,15 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 
 **参数：**
 
-| 参数名           | 类型             | 必填 | 说明                                            |
-| ---------------- | ------- | ---- | ----------------------------------------------- |
-| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用。|
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
 
 ### includeFontPadding<sup>23+</sup>
 
 includeFontPadding(include: Optional\<boolean>)
 
-设置是否在首行和尾行增加间距以避免文字截断。
+设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1289,7 +1319,7 @@ includeFontPadding(include: Optional\<boolean>)
 
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
-针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。
+针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。不通过该接口设置，默认行高不基于文字实际高度自适应。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1300,6 +1330,22 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。 |
+
+### selectedDragPreviewStyle<sup>23+</sup>
+
+selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
+
+设置文本输入框内文本拖拽时的背板样式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                             | 必填 | 说明                                                       |
+| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
 
 ## InputType枚举说明
 
@@ -1313,7 +1359,7 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 | Number                        | 2 | 纯数字输入模式。<br/>不支持负数、小数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | PhoneNumber<sup>9+</sup>      | 3 | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Email                         | 5 | 邮箱地址输入模式。<br/>支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Password                      | 7 | 密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式中，[decoration](#decoration12)、[showUnderline](#showunderline10)不生效。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Password                      | 7 | 密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式中，[decoration](#decoration12)、[showUnderline](#showunderline10)、[lineHeight](#lineheight12)不生效。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | NUMBER_PASSWORD<sup>11+</sup> | 8 | 纯数字密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式不支持下划线样式。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | USER_NAME<sup>11+</sup>       | 10 | 用户名输入模式，无特殊限制。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | NEW_PASSWORD<sup>11+</sup>    | 11 | 新密码输入模式，无特殊限制。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>在已启用密码保险箱的情况下，支持自动生成新密码。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -1447,7 +1493,9 @@ onEditChanged(callback:&nbsp;(isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 输入状态变化时，触发该回调。
 
-从API 8开始废弃，建议使用onEditChange。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃，建议使用[onEditChange](#oneditchange8)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1455,7 +1503,7 @@ onEditChanged(callback:&nbsp;(isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 | 参数名    | 类型    | 必填 | 说明                 |
 | --------- | ------- | ---- | -------------------- |
-| isEditing | boolean | 是   | 为true表示正在输入。 |
+| isEditing | boolean | 是   | 当前是否正在输入中。<br/>true表示正在输入；false表示当前没有输入。 |
 
 ### onEditChange<sup>8+</sup>
 
@@ -1570,7 +1618,7 @@ onSecurityStateChange(callback: Callback\<boolean>)
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | Callback\<boolean> | 是   | 回调函数。|
+| callback | Callback\<boolean> | 是   | 回调函数。<br/>true表示状态切换；false表示状态未切换。|
 
 ### onWillInsert<sup>12+</sup>
 
@@ -1667,7 +1715,9 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 <!--Del-->
 在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
 
-调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+从API version 22开始，调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法可以设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
+
+IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 
 > **说明：**
 >
@@ -1685,7 +1735,7 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 
 ## TextInputController<sup>8+</sup>
 
-TextInput组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
+TextInput组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)、[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2178,8 +2228,8 @@ struct TextInputExample {
         .showUnderline(true)
         .showCounter(true,
           { thresholdPercentage: 50, highlightBorder: true })//计数器显示效果为用户当前输入字符数/最大字符限制数。最大字符限制数通过maxLength()接口设置。
-          //如果用户当前输入字符数达到最大字符限制乘50%（thresholdPercentage）。字符计数器显示。
-          //用户设置highlightBorder为false时，配置取消红色边框。不设置此参数时，默认为true。
+          // 如果用户当前输入字符数达到最大字符限制乘50%（thresholdPercentage）。字符计数器显示。
+          // 用户设置highlightBorder为false时，配置取消红色边框。不设置此参数时，默认为true。
         .onChange((value: string) => {
           this.text = value;
         })
@@ -2611,7 +2661,7 @@ struct TextInputExample {
 struct TextInputExample {
   @State message1: string =
     "They can be classified as built-in components–those directly provided by the ArkUI framework and custom components – those defined by developers" +
-      "The built-in components include buttons radio buttonsprogress indicators and text You can set the rendering effectof thesecomponents in method chaining mode," +
+      "The built-in components include buttons radio progress indicators and text You can set the rendering effect of these components in method chaining mode," +
       "page components are divided into independent UI units to implementindependent creation development and reuse of different units on pages making pages more engineering-oriented.";
   @State lineBreakStrategyIndex: number = 0;
   @State lineBreakStrategy: LineBreakStrategy[] =
@@ -2619,8 +2669,8 @@ struct TextInputExample {
   @State lineBreakStrategyStr: string[] = ['GREEDY', 'HIGH_QUALITY', 'BALANCED'];
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-      Text('lineBreakStrategy').fontSize(9).fontColor(0xCCCCCC)
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+      Text('lineBreakStrategy').fontSize(16).fontColor(Color.Black)
       TextInput({ text: this.message1 })
         .fontSize(12)
         .border({ width: 1 })
@@ -2636,7 +2686,7 @@ struct TextInputExample {
             this.lineBreakStrategyIndex = 0;
           }
         })
-      }
+      }.margin({ top: 20 })
     }.height(700).width(370).padding({ left: 35, right: 35, top: 35 })
   }
 }
@@ -2997,7 +3047,7 @@ struct TextInputExample {
 
 从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围<!--Del-->（该示例使用系统接口，应用类型需调整为系统应用，可参考HarmonyAppProvision的[系统接口说明](../../../reference/development-intro-api.md#系统接口说明)）<!--DelEnd-->。
 <!--code_no_check-->
-```json
+```json5
 // 开启应用缩放跟随系统
 // AppScope/resources/base，新建文件夹profile。
 // AppScope/resources/base/profile，新建文件configuration.json。
@@ -3010,7 +3060,7 @@ struct TextInputExample {
 }
 ```
 <!--code_no_check-->
-```json
+```json5
 // AppScope/app.json5，修改如下代码。
 {
   "app": {
@@ -3091,10 +3141,12 @@ struct TextInputExample {
   }
 }
 ```
+<!--RP3End-->
+
 | 系统字体缩放倍数为2倍 | 系统字体缩放倍数为3.2倍 |
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/TextInput_font_scale1.png)  | ![](figures/TextInput_font_scale2.png)  |
-<!--RP3End-->
+
 ### 示例19（设置选中指定区域的文本内容）
 
 从API version 10开始，该示例通过[setTextSelection](#settextselection10)方法展示如何设置选中指定区域的文本内容以及菜单的显隐策略。
@@ -3133,7 +3185,7 @@ struct TextInputExample {
 }
 ```
 
-![textInputSetTextSelection](figures/textInputSetTextSelection.gif)
+![textInputSetTextSelection](figures/textInputSetTextSelection.png)
 
 ### 示例20（设置文本描边）
 
@@ -3461,3 +3513,133 @@ struct Index {
 ```
 
 ![textInputIncludeFontPadding](figures/TextInput_IncludeFontPadding.gif)
+
+### 示例28（设置文本拖拽时的背板样式）
+
+该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置文本拖拽时的背板样式。
+
+从API version 23开始，新增selectedDragPreviewStyle接口。
+
+```ts
+@Entry
+@Component
+struct TextInputTest {
+  build() {
+    Column() {
+      TextInput({ text: 'HelloWorld', placeholder: 'please input words' })
+        .copyOption(CopyOptions.InApp)
+        .width(200)
+        .height(50)
+        .margin(150)
+        .draggable(true)
+        .selectedDragPreviewStyle({color: 'rgba(227, 248, 249, 1)'})
+    }
+    .height('100%')
+  }
+}
+```
+
+![selectedDragPreviewStyle](figures/textInputSelectedDragPreviewStyle.png)
+
+### 示例29（删除文本框内的最后一个字符）
+
+该示例通过调用[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口删除文本框内最后一个字符。
+
+从API version 23开始，新增[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口。
+
+``` typescript
+@Entry
+@Component
+struct Page {
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column() {
+      TextInput({ text: 'TextInput输入框Deletebackward示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
+![textInputDeleteBackward](figures/TextInput_DeleteBackward.gif)
+
+### 示例30（设置文本排版方向）
+
+该示例通过[textDirection](#textdirection23)接口设置文本排版方向。
+
+从API version 23开始，新增textDirection接口。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct TextInputExample {
+  @State text: string = 'TextInput文本排版方向示例';
+
+  build() {
+    Column() {
+      Text('TextInput文本排版方向RTL，布局方向default')
+        .fontSize(12).width('90%').margin(5)
+      TextInput({ text: this.text })
+        .width(336)
+        .fontSize(16)
+        .textDirection(TextDirection.RTL)
+        .showCounter(true)
+        .maxLength(50)
+      Text('TextInput文本排版方向RTL，布局方向default，文本水平方向对齐方式LEFT')
+        .fontSize(12).width('90%').margin(5)
+      TextInput({ text: this.text })
+        .width(336)
+        .fontSize(16)
+        .textDirection(TextDirection.RTL)
+        .showCounter(true)
+        .maxLength(50)
+        .textAlign(TextAlign.LEFT)
+      Text('TextInput文本排版方向LTR，布局方向Rtl')
+        .fontSize(12).width('90%').margin(5)
+      TextInput({ text: this.text })
+        .width(336)
+        .fontSize(16)
+        .textDirection(TextDirection.LTR)
+        .direction(Direction.Rtl)
+        .maxLength(50)
+        .showCounter(true)
+    }.width('100%').height('100%')
+  }
+}
+```
+
+![textTextInputDirection](figures/textTextInputDirection.PNG)
+
+### 示例31（将指定范围的文字滚动到可视区内）
+
+本示例通过[scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23)将可视区外的文本滚动到可视区内。
+
+从API version 23开始，新增scrollToVisible接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TextInputExample {
+  @State text: string = '1234567891234567891234😁😁😁6789123456789123456789012121214521';
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column() {
+      TextInput({ text: this.text, controller: this.controller })
+        .width(336)
+        .height(56)
+      Button("滚动文本到可视区").onClick(()=> {
+        this.controller.scrollToVisible({ start: 22, end: 30})
+      })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+![textinputscrolltovisible](figures/textinput_scroll_to_visible.gif)

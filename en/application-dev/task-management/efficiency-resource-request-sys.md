@@ -45,6 +45,7 @@ The table below lists the main APIs used for efficient resources. For details ab
 | isPersist | boolean | No| Whether the resource is permanently held. The default value is **false**.<br>- **true**: The resource is permanently held.<br>- **false**: The resource is held for a limited period of time.|
 | isProcess | boolean | No| Whether the request is initiated by a process. The default value is **false**.<br>- **true**: The request is initiated by a process.<br>- **false**: The request is initiated by an application.|
 | reason | string | Yes| Reason for requesting the resource.|
+| cpuLevel | [EfficiencyResourcesCpuLevel](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | No| CPU level. If **resourceTypes** is set to **CPU**, this parameter specifies the CPU resource size. The system allocates the specified CPU resources to the application during the idle time of load (for example, when the screen is off). This parameter is supported since API version 23.|
 
 **Table 3** Efficiency resource types
 | Name| Value| Description|
@@ -79,6 +80,7 @@ The table below lists the main APIs used for efficient resources. For details ab
      reason: "apply", // Reason for the request.
      isPersist: true, // The resources are permanently held.
      isProcess: false, // The request is initiated by an application.
+     cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU, // The application's background task runs on the small CPU core. This parameter is supported since API version 23.
    };
    try {
      backgroundTaskManager.applyEfficiencyResources(request);
@@ -106,6 +108,7 @@ The table below lists the main APIs used for efficient resources. For details ab
      reason: "apply",
      isPersist: true,
      isProcess: false, // The request is initiated by an application.
+     cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU, // The application's background task runs on the small CPU core. This parameter is supported since API version 23.
    };
    try {
      backgroundTaskManager.applyEfficiencyResources(request);

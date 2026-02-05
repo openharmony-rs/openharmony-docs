@@ -1,5 +1,12 @@
 # 安全
 
+<!--Kit: Common-->
+<!--Subsystem: Security-->
+<!--Owner: @zengyawen-->
+<!--Designer: @linshuqing; @lanming; @HighLowWorld-->
+<!--Tester: @wwrongs; @leiyuqian; @PAFT-->
+<!--Adviser: @zengyawen-->
+
 - [程序访问控制](AccessToken/Readme-CN.md)
 - [Asset Store Kit（关键资产存储服务）](AssetStoreKit/Readme-CN.md)
 - [Crypto Architecture Kit（加解密算法框架服务）](CryptoArchitectureKit/Readme-CN.md)
@@ -13,4 +20,5 @@
   - [应用包签名工具概述](hapsigntool-overview.md)
   - [应用包签名工具指导](hapsigntool-guidelines.md)
   - [HarmonyAppProvision配置文件](app-provision-structure.md)
+  - [签名工具错误码](hapsigntool-errorcode.md)
 <!--DelEnd-->

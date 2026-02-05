@@ -23,7 +23,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 getEid\(slotId: number\): Promise\<string\>
 
-Obtains the EID of the embedded universal integrated circuit card (eUICC) in the specified slot.
+Obtains the equipment identifier (EID) of the eUICC hardware in a specified card slot.
 
 **System API**: This is a system API.
 
@@ -51,7 +51,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -61,12 +61,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { eSIM } from '@kit.TelephonyKit';
 
-try {
-    let eid: string = await eSIM.getEid(1);
+eSIM.getEid(1).then((eid) => {
     console.info(`the EID is:` + eid);
-} catch (err) {
-    console.err(`getEid, promise: err->${JSON.stringfy(err)}`)
-}
+}).catch((err:BusinessError<void>) => {
+    console.error(`getEid, promise: err->${JSON.stringify(err)}`)
+});
 ```
 
 ## eSIM.getOsuStatus
@@ -101,7 +100,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -151,7 +150,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -204,7 +203,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -235,8 +234,7 @@ eSIM.getDownloadableProfileMetadata(1, 0, profile, true).then((data: eSIM.GetDow
 
 ## eSIM.getDownloadableProfiles
 
-getDownloadableProfiles\(slotId: number, portIndex: number,
-forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
+getDownloadableProfiles\(slotId: number, portIndex: number, forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
 
 Obtains the list of downloadable profiles. This API uses a promise to return the result.
 
@@ -268,7 +266,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -288,8 +286,7 @@ eSIM.getDownloadableProfiles(1, 0, true).then((data: eSIM.GetDownloadableProfile
 
 ## eSIM.downloadProfile
 
-downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile,
-configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
+downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile, configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
 
 Downloads a profile. This API uses a promise to return the result.
 
@@ -322,7 +319,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -389,7 +386,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -439,7 +436,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -490,7 +487,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -510,8 +507,7 @@ eSIM.deleteProfile(1, 'testId').then(() => {
 
 ## eSIM.switchToProfile
 
-switchToProfile\(slotId: number, portIndex: number, iccid: string,
-forceDisableProfile: boolean\): Promise\<ResultCode\>
+switchToProfile\(slotId: number, portIndex: number, iccid: string, forceDisableProfile: boolean\): Promise\<ResultCode\>
 
 Switches to the specified profile. This API uses a promise to return the result.
 
@@ -544,7 +540,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -596,7 +592,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -647,7 +643,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -697,7 +693,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -748,7 +744,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -798,7 +794,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
-| 401 | Invalid parameter value.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801 | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -850,7 +846,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | --------------------- | ---------------------------------- |
 | 201   | Permission denied. |
 | 202   | Non-system applications use system APIs. |
-| 401   | Invalid parameter value.|
+| 401   | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 | 801   | Capability not supported. |
 |3120001| Service connection failed. |
 |3120002| System internal error. |
@@ -869,6 +865,109 @@ eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_RE
   .catch((err: BusinessError<void>) => {
     console.error(`cancelSession execution failed: err->${JSON.stringify(err)}`);
   });
+```
+
+## eSIM.getSupportedPkids<sup>20+</sup>
+ 	 
+getSupportedPkids\(slotId: number\): Promise\<string\>
+
+Obtains the public key ID information supported by the phone.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.GET_TELEPHONY_ESIM_STATE
+
+**System capability**: SystemCapability.Telephony.CoreService.Esim
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                    |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2  |
+
+**Returns**
+
+| Type                 | Description                               |
+| --------------------- | ---------------------------------- |
+| Promise\<string\> |Promise used to return the public key ID information supported by the mobile phone in the Tag-Length-Value (TLV) format.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID                | Error Message                        |
+| --------------------- | ---------------------------------- |
+| 201 | Permission denied. |
+| 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported. |
+|3120001| Service connection failed. |
+|3120002| System internal error. |
+
+**Example**
+
+```ts
+import { eSIM } from '@kit.TelephonyKit';
+
+try {
+    let supportedPkids: string = await eSIM.getSupportedPkids(1);
+    console.info(`supported pkids is:` + supportedPkids);
+} catch (err) {
+    console.error(`getSupportedPkids, promise: err->${JSON.stringify(err)}`)
+}
+```
+
+## eSIM.getContractInfo<sup>20+</sup>
+
+getContractInfo\(slotId: number, requestData: ContractRequestData\): Promise\<string\>
+
+Obtains the encrypted eSIM ID and other information required for enabling eSIM.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.GET_TELEPHONY_ESIM_STATE
+
+**System capability**: SystemCapability.Telephony.CoreService.Esim
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                    |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2  |
+| requestData | [ContractRequestData](./js-apis-esim-sys.md#contractrequestdata20)| Yes  | Information to be encrypted.  |
+
+**Returns**
+
+| Type                 | Description                               |
+| --------------------- | ---------------------------------- |
+| Promise\<string\> | Promise used to return the encrypted information in the Tag-Length-Value (TLV) format.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID                | Error Message                        |
+| --------------------- | ---------------------------------- |
+| 201 | Permission denied. |
+| 202 | Non-system applications use system APIs. |
+| 801 | Capability not supported. |
+|3120001| Service connection failed. |
+|3120002| System internal error. |
+
+**Example**
+
+```ts
+import { eSIM } from '@kit.TelephonyKit';
+try {
+    let request: eSIM.ContractRequestData = {
+        publicKey: "",
+        nonce: "",
+        pkid: ""
+    }
+    let contractInfo: string = await eSIM.getContractInfo(1, request);
+    console.info(`contract info is:` + contractInfo);
+} catch (err) {
+    console.error(`getContractInfo, promise: err->${JSON.stringify(err)}`)
+}
 ```
 
 ## GetDownloadableProfileMetadataResult
@@ -1141,3 +1240,17 @@ Defines the download configuration.
 |switchAfterDownload | boolean | No | No| Whether to enable the profile after successful download. The value **true** means to enable the default profile, and the value **false** means the opposite.|
 |forceDisableProfile | boolean | No | No| Whether to forcibly deactivate the current profile during profile switching.<br> **true**: The current profile is forcibly deactivated, and profile switching can be directly performed.<br> **false**: An error is returned, and profile switching can be performed only after the user authorization is obtained.|
 |isPprAllowed        | boolean | No | No| Whether user authorization is obtained to implement the profile policy rule. The value **true** indicates that user authorization is obtained, and the value **false** indicates the opposite.|
+
+## ContractRequestData<sup>20+</sup>
+    
+Information required for encryption.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Telephony.CoreService.Esim
+
+| Name| Type| Read-Only| Optional| Description|
+| ----- | ----- |----|----| -----|
+| publicKey | string  | No | No | Public key.|
+| nonce           | string  | No | No | Random number.|
+| pkid            | string  | No | No | Selected public key ID.|

@@ -73,7 +73,7 @@ The following figures show the APIs supported by each version and the APIs that 
 
 ### OH_VideoEncodeBitrateMode
 
-```
+```c
 enum OH_VideoEncodeBitrateMode
 ```
 
@@ -100,7 +100,7 @@ Enumerates the bit rate modes of a video encoder.
 
 ### OH_VideoEncoder_OnNeedInputParameter()
 
-```
+```c
 typedef void (*OH_VideoEncoder_OnNeedInputParameter)(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
 ```
 
@@ -127,7 +127,7 @@ In buffer mode, OH_AVBuffer can directly carry the encoding parameter associated
 
 ### OH_VideoEncoder_CreateByMime()
 
-```
+```c
 OH_AVCodec *OH_VideoEncoder_CreateByMime(const char *mime)
 ```
 
@@ -153,7 +153,7 @@ Creates a video encoder instance based on a MIME type. This function is recommen
 
 ### OH_VideoEncoder_CreateByName()
 
-```
+```c
 OH_AVCodec *OH_VideoEncoder_CreateByName(const char *name)
 ```
 
@@ -181,7 +181,7 @@ To use this function, you must know the exact name of the encoder. The encoder n
 
 ### OH_VideoEncoder_Destroy()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_Destroy(OH_AVCodec *codec)
 ```
 
@@ -207,7 +207,7 @@ Clears the internal resources of a video encoder and destroys the encoder instan
 
 ### OH_VideoEncoder_SetCallback()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)
 ```
 
@@ -239,7 +239,7 @@ Sets an OH_AVCodecCallback callback so that your application can respond to even
 
 ### OH_VideoEncoder_RegisterCallback()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)
 ```
 
@@ -267,7 +267,7 @@ Registers an OH_AVCodecCallback callback so that your application can respond to
 
 ### OH_VideoEncoder_RegisterParameterCallback()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_VideoEncoder_OnNeedInputParameter onInputParameter, void *userData)
 ```
 
@@ -295,7 +295,7 @@ Registers an OH_AVCodecCallback input parameter callback so that your applicatio
 
 ### OH_VideoEncoder_Configure()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -352,7 +352,7 @@ Parameter verification rules are as follows:
 
 ### OH_VideoEncoder_Prepare()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_Prepare(OH_AVCodec *codec)
 ```
 
@@ -378,7 +378,7 @@ Prepares internal resources for a video encoder. This function must be called af
 
 ### OH_VideoEncoder_Start()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_Start(OH_AVCodec *codec)
 ```
 
@@ -408,7 +408,7 @@ In buffer mode, the encoder immediately triggers the input callback. Each time t
 
 ### OH_VideoEncoder_Stop()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_Stop(OH_AVCodec *codec)
 ```
 
@@ -434,7 +434,7 @@ Stops a video encoder and releases the input and output buffers. After the video
 
 ### OH_VideoEncoder_Flush()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_Flush(OH_AVCodec *codec)
 ```
 
@@ -462,7 +462,7 @@ This function invalidates the indexes of all buffers previously reported through
 
 ### OH_VideoEncoder_Reset()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_Reset(OH_AVCodec *codec)
 ```
 
@@ -488,7 +488,7 @@ Resets a video encoder. The encoder returns to the initial state. To continue en
 
 ### OH_VideoEncoder_GetOutputDescription()
 
-```
+```c
 OH_AVFormat *OH_VideoEncoder_GetOutputDescription(OH_AVCodec *codec)
 ```
 
@@ -516,7 +516,7 @@ You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destro
 
 ### OH_VideoEncoder_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format)
 ```
 
@@ -545,7 +545,7 @@ This function can be called only after the encoder is started. Incorrect paramet
 
 ### OH_VideoEncoder_GetSurface()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_GetSurface(OH_AVCodec *codec, OHNativeWindow **window)
 ```
 
@@ -572,7 +572,7 @@ Obtains the input surface from a video encoder. This function must be called aft
 
 ### OH_VideoEncoder_FreeOutputData()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -603,7 +603,7 @@ Frees an output buffer of a video encoder.
 
 ### OH_VideoEncoder_NotifyEndOfStream()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_NotifyEndOfStream(OH_AVCodec *codec)
 ```
 
@@ -629,7 +629,7 @@ Notifies a video encoder that input streams end. You are advised to use this fun
 
 ### OH_VideoEncoder_PushInputData()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH_AVCodecBufferAttr attr)
 ```
 
@@ -661,7 +661,7 @@ Pushes the input buffer filled with data to a video encoder.
 
 ### OH_VideoEncoder_PushInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -688,7 +688,7 @@ Pushes the OH_AVBuffer corresponding to the index to a video encoder in buffer m
 
 ### OH_VideoEncoder_PushInputParameter()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_PushInputParameter(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -715,7 +715,7 @@ Pushes the parameter configured for a frame with the given index to a video enco
 
 ### OH_VideoEncoder_FreeOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -744,7 +744,7 @@ You need to call this function to release the output buffer in a timely manner. 
 
 ### OH_VideoEncoder_GetInputDescription()
 
-```
+```c
 OH_AVFormat *OH_VideoEncoder_GetInputDescription(OH_AVCodec *codec)
 ```
 
@@ -772,7 +772,7 @@ You must call [OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destro
 
 ### OH_VideoEncoder_IsValid()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_IsValid(OH_AVCodec *codec, bool *isValid)
 ```
 
@@ -799,7 +799,7 @@ Checks whether the encoder service is valid when an encoder instance exists.
 
 ### OH_VideoEncoder_QueryInputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -831,7 +831,7 @@ Note that the preceding operations are supported only in synchronous mode.
 
 ### OH_VideoEncoder_GetInputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_VideoEncoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 
@@ -860,7 +860,7 @@ Note that this function works only in synchronous mode.
 
 ### OH_VideoEncoder_QueryOutputBuffer()
 
-```
+```c
 OH_AVErrCode OH_VideoEncoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_t *index, int64_t timeoutUs)
 ```
 
@@ -892,7 +892,7 @@ Note that the preceding operations are supported only in synchronous mode.
 
 ### OH_VideoEncoder_GetOutputBuffer()
 
-```
+```c
 OH_AVBuffer *OH_VideoEncoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t index)
 ```
 

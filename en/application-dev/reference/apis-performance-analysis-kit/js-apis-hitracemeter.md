@@ -5,10 +5,11 @@
 <!--Owner: @qq_437963121-->
 <!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 The **HiTraceMeter** module provides the functions of tracing service processes and monitoring the system performance. It provides the data needed for HiTraceMeter to carry out performance analysis.
-For details about the development process, see [Using HiTraceMeter](../../dfx/hitracemeter-guidelines-arkts.md).
+
+For details about the development process, see [Using HiTraceMeter (ArkTS)](../../dfx/hitracemeter-guidelines-arkts.md).
 
 > **NOTE**
 >
@@ -99,9 +100,9 @@ hiTraceMeter.finishTrace("myTestFunc", 2);
 // Start trace tasks with the same name in serial mode.
 hiTraceMeter.startTrace("myTestFunc", 1);
 // Service flow...
-hiTraceMeter.finishTrace("myTestFunc", 1);  // End the first trace.
+hiTraceMeter.finishTrace("myTestFunc", 1);  // End the first trace task.
 // Service flow...
-hiTraceMeter.startTrace("myTestFunc", 1);   // Start the second trace with the same name in serial mode.
+hiTraceMeter.startTrace("myTestFunc", 1);   // Start the second trace task with the same name in serial mode.
 // Service flow...
 hiTraceMeter.finishTrace("myTestFunc", 1);
 ```

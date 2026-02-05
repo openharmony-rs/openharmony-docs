@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -27,6 +27,7 @@ You can obtain the current cross-language options using [getCrossLanguageOptions
 The following example demonstrates how to set and obtain cross-language options for ArkTS imperative nodes.
 
 ```ts
+// Index.ets
 import { NodeController, UIContext, FrameNode, typeNode, BuilderNode } from '@kit.ArkUI';
 
 @Builder
@@ -113,6 +114,7 @@ The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-
 
 1. Create an imperative node of type Scroll on the ArkTS side.
     ```ts
+    // Index.ets
     import nativeNode from 'libentry.so';
     import { NodeController, UIContext, FrameNode, typeNode, BuilderNode, NodeContent } from '@kit.ArkUI';
 
@@ -206,6 +208,7 @@ The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-
 
 2. Create **CrossLanguageExample.h** to obtain the target node (created in ArkTS) and set its properties.
     ```c
+    // CrossLanguageExample.h
     #ifndef MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
     #define MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
 
@@ -374,7 +377,27 @@ The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-
     } // namespace NativeModule
     ```
 
-4. Run the program. On the ArkTS side, click the button to set **attributeSetting** to **true**. On the native side, click the buttons to set the **Scroll** component's scrollbar color and width.
+4. Update the **CMakeLists.txt** file and add the required link libraries.
+   ```c
+   // CMakeLists.txt
+   # the minimum version of CMake.
+   cmake_minimum_required(VERSION 3.5.0)
+   project(CAPI_DEMO)
+ 
+   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+ 
+   if(DEFINED PACKAGE_FIND_FILE)
+       include(${PACKAGE_FIND_FILE})
+   endif()
+ 
+   include_directories(${NATIVERENDER_ROOT_PATH}
+                     ${NATIVERENDER_ROOT_PATH}/include)
+ 
+   add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
+   target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so hilog_ndk.z.so)
+   ```
+
+5. Run the program. On the ArkTS side, click the button to set **attributeSetting** to **true**. On the native side, click the buttons to set the **Scroll** component's scrollbar color and width.
 
 ![crossLanguageDemo](figures/crossLanguageDemo.gif)
 

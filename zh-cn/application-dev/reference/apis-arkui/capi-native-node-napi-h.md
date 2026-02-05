@@ -35,7 +35,7 @@
 | [int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_value value, ArkUI_DrawableDescriptor** drawableDescriptor)](#oh_arkui_getdrawabledescriptorfromresourcenapivalue) | 将ArkTS侧创建的$r资源对象映射到Native侧的ArkUI_DrawableDescriptor。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavigationid) | 获取当前节点所在的Navigation组件的ID。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationname) | 获取当前节点所在的NavDestination组件的名称。 |
-| [ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)](#oh_arkui_getnavstacklength) | 根据给定索引值，获取当前节点所在的Navigation栈的长度。 |
+| [ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* length)](#oh_arkui_getnavstacklength) | 获取当前节点所在的Navigation栈的长度。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int32_t index, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationnamebyindex) | 根据给定索引值，获取当前节点所在的Navigation栈中对应位置的页面名称。索引值从0开始计数，0为栈底。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_getnavdestinationid) | 获取当前节点所在的NavDestination组件的ID。 |
 | [ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_NavDestinationState* state)](#oh_arkui_getnavdestinationstate) | 获取当前节点所在的NavDestination组件的状态。 |
@@ -260,7 +260,7 @@ ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* lengt
 **描述：**
 
 
-根据给定索引值，获取当前节点所在的Navigation栈的长度。
+获取当前节点所在的Navigation栈的长度。
 
 **起始版本：** 12
 
@@ -622,7 +622,7 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | UIContext对象，用以绑定实例。 |
+| [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md) uiContext | [UIContext](arkui-ts/ts-custom-component-api.md#uicontext)对象指针，用以绑定实例。 |
 | void* userData | 自定义事件参数，当事件触发时在回调参数中携带回来。 |
 | callback | 自定义回调函数。 |
 | uint64_t nanoTimestamp | 帧信号的时间戳。 |
@@ -643,7 +643,7 @@ int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,
 **描述：**
 
 
-注册一个回调函数，在下一帧渲染结束后如果距离下一个Vsync信号到来剩余时间大于1ms时，该回调函数将被执行；如果剩余时间小于1ms时，回调函数将被顺延至当某个下一帧的剩余时间大于1ms时再执行。如果当前没有下一帧，将自动请求下一帧。
+注册一个回调函数，在下一帧渲染结束后如果距离下一帧到来剩余时间大于1ms时，该回调函数将被执行；如果剩余时间小于1ms时，回调函数将被顺延至当某个下一帧的剩余时间大于1ms时再执行。如果当前没有下一帧，将自动请求下一帧。
 
 **起始版本：** 20
 

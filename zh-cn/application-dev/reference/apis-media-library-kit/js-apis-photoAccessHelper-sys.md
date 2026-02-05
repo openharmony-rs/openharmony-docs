@@ -45,11 +45,13 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 |  Permission denied.         |
+| 202 |  Called by non-system application.         |
+| 13900020 | Invalid argument.         |
 
 **示例：**
 
@@ -1153,7 +1155,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 saveFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
-将图库卡片相关信息保存到数据库中。使用callback异步回调。
+将绑定单个图片的图库卡片信息保存到数据库中。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1199,7 +1201,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
 
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
+    // formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
     formId : "20230116123",
     uri: photoAsset.uri,
   }
@@ -1218,7 +1220,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 saveFormInfo(info:FormInfo):Promise&lt;void&gt;
 
-将图库卡片相关信息保存到数据库中。使用Promise异步回调。
+将绑定单个图片的图库卡片信息保存到数据库中。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1268,7 +1270,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
 
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
+    // formId是一个由纯数字组成的字符串，uri为图库中存在的图片的uri信息，图库中无图片创建卡片时uri需为空字符串。
     formId: "20230116123",
     uri: photoAsset.uri,
   }
@@ -1285,7 +1287,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeFormInfo(info:FormInfo, callback: AsyncCallback&lt;void&gt;):void
 
-从数据库中删除图库卡片信息。使用callback异步回调。
+从数据库中删除绑定单个图片的图库卡片信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1321,7 +1323,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeFormInfoDemo');
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
+    // formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
     formId: "20230116123",
     uri: "",
   }
@@ -1340,7 +1342,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeFormInfo(info:FormInfo):Promise&lt;void&gt;
 
-从数据库中删除图库卡片信息。使用Promise异步回调。
+从数据库中删除绑定单个图片的图库卡片信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1381,7 +1383,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('removeFormInfoDemo');
   let info: photoAccessHelper.FormInfo = {
-    //formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
+    // formId是一个由纯数字组成的字符串，移除卡片的时候uri填空即可。
     formId: "20230116123",
     uri: "",
   }
@@ -1429,7 +1431,7 @@ createAssetsForApp(bundleName: string, appName: string, tokenId: number, photoCr
 | -------- | ---------------------------------------- |
 | 201 |  Permission denied.         |
 | 202 |  Called by non-system application.         |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 13900020 | Invalid argument. Possible causes: 1. The photoCreationConfigs is empty; 2. Incorrect photoCreationConfigs format. |
 | 14000011       | Internal system error.         |
 
 **示例：**
@@ -1694,6 +1696,73 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     console.info('startThumbnailCreationTask test start');
     phAccessHelper.startThumbnailCreationTask(predicates, testCallBack);
+  } catch (err) {
+    console.error(`startThumbnailCreationTask failed, error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### startThumbnailCreationTask<sup>23+</sup>
+
+startThumbnailCreationTask(predicate: dataSharePredicates.DataSharePredicates, callback: AsyncCallback\<void\>, response: AsyncCallback\<number\>): number
+
+根据指定规则生成缩略图。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------  | --------------------------------------- | ---- | --------------- |
+| predicate | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 用于生成缩略图的查询条件。  |
+| callback   | AsyncCallback&lt;void&gt;               | 是   | 回调函数。当操作成功完成时通知任务结束。|
+| response   | AsyncCallback&lt;number&gt;               | 是   | 回调函数。返回是否有未生成的缩略图，返回1表示所有缩略图已生成完成，返回0表示未生成完成。|
+
+**返回值：**
+
+| 类型                  | 说明                  |
+| --------------------- | -------------------- |
+| number | 返回缩略图生成任务id。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 |  Permission denied.         |
+| 202 |  Called by non-system application.         |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: The predicates invalid. |
+| 23800301     | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+function testCallBack() {
+  console.info(`startThumbnailCreationTask: 第一个回调`);
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+
+  try {
+    console.info('startThumbnailCreationTask test start');
+    phAccessHelper.startThumbnailCreationTask(predicates, testCallBack, (err, state) =>{
+        if(err) {
+          console.error("error message: " + err?.message)
+          console.error("error code: " + err?.code)
+          return
+        }
+        console.info(`startThumbnailCreationTask: response state ${state}`);
+      });
   } catch (err) {
     console.error(`startThumbnailCreationTask failed, error: ${err.code}, ${err.message}`);
   }
@@ -1971,7 +2040,7 @@ async function example(context: Context) {
 
 ### createAssetsForAppWithMode<sup>12+</sup>
 
-createAssetsForAppWithMode(boundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
+createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
 
 提供给应用保存短时授权。使用Promise异步回调。
 
@@ -1985,7 +2054,7 @@ createAssetsForAppWithMode(boundleName: string, appName: string, appId: string, 
 
 | 参数名   | 类型                                                                   | 必填 | 说明                      |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| boundleName| string | 是 | 需要保存图片/视频文件的应用boundleName。 |
+| bundleName| string | 是 | 需要保存图片/视频文件的应用bundleName。 |
 | appName| string | 是 | 需要保存图片/视频文件的应用appName。|
 | appId| string | 是 | 需要保存图片/视频文件的应用app id。 |
 | tokenId| number| 是 | 需要短时授权应用的唯一标识。 |
@@ -2109,7 +2178,7 @@ async function example(context: Context) {
 
 saveGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
-将图库卡片相关信息保存到数据库中。使用Promise异步回调。
+将绑定一组图片的图库卡片信息保存到数据库中。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2253,7 +2322,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeGalleryFormInfo(info:GalleryFormInfo):Promise&lt;void&gt;
 
-从数据库中删除图库卡片信息。使用Promise异步回调。
+从数据库中删除绑定一组图片的图库卡片信息。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -2678,6 +2747,127 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
+### onAnalysisPhotoChange<sup>23+</sup> 
+
+onAnalysisPhotoChange(callback: Callback&lt;PhotoAssetChangeInfos&gt;): void
+
+监听与智慧分析相册相关的媒体资产的变更情况，该变更携带智慧分析相册变更信息，当且仅当资产变更涉及智慧分析相册信息变更时，才会发送该资产变更通知，通过callback返回资产变化结果，可以注册多个callback。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.MANAGE_PRIVATE_PHOTOS
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                                                                                |
+|-----------|-------------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 是   | 回调函数，返回含对应智慧分析相册变更的媒体资产信息[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[offAnalysisPhotoChange](#offanalysisphotochange23)既可以关闭所有监听，也可以关闭指定callback监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151  | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[@ohos.file.photoAccessHelper (相册管理模块)](arkts-apis-photoAccessHelper-f.md)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('onAnalysisPhotoChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.onAnalysisPhotoChange(onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onAnalysisPhotoChange(onCallback2);
+  } catch (error) {
+    console.error('onAnalysisPhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+### offAnalysisPhotoChange<sup>23+</sup> 
+
+offAnalysisPhotoChange(callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void
+
+取消对与智慧分析相册相关的媒体资产变更的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.MANAGE_PRIVATE_PHOTOS
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                                       |
+|-----------|-------------------------|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | 否   | 回调函数，返回含对应智慧分析相册变更的媒体资产信息，填入时取消[onAnalysisPhotoChange](#onanalysisphotochange23)注册时指定的callback监听；不填时，则取消对[onAnalysisPhotoChange](#onanalysisphotochange23)的所有监听。<br>**注意：**<br>取消注册的callback后，智慧分析相册的资产变更时，不再进入此回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'trashedPhotoChange'; 2. The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[@ohos.file.photoAccessHelper (相册管理模块)](arkts-apis-photoAccessHelper-f.md)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.PhotoAssetChangeInfos) => {
+    console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context){
+  console.info('offAnalysisPhotoChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.offAnalysisPhotoChange(onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.offAnalysisPhotoChange(onCallback2);
+
+    // 关闭onCallback1监听，onCallback2继续监听。
+    phAccessHelper.offAnalysisPhotoChange(onCallback1);
+  } catch (error) {
+    console.error('offAnalysisPhotoChangeDemo failed, errCode is', error);
+  }
+}
+```
+
 ### on('hiddenAlbumChange')<sup>20+</sup> 
 
 on(type: 'hiddenAlbumChange', callback: Callback&lt;AlbumChangeInfos&gt;): void
@@ -2920,6 +3110,127 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     phAccessHelper.off('trashedAlbumChange', onCallback1);
   } catch (error) {
     console.error('onTrashedAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+### onAnalysisAlbumChange<sup>23+</sup> 
+
+onAnalysisAlbumChange(callback: Callback&lt;AlbumChangeInfos&gt;): void
+
+监听智慧分析相册，并通过callback方式返回相册变化结果，可以注册多个callback。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.MANAGE_PRIVATE_PHOTOS
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                                                        |
+|-----------|-------------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 是   | 回调函数，返回变更的智慧分析相册信息[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)。<br>**注意：**<br>该接口可以注册多个不同的callback监听，[offAnalysisAlbumChange](#offanalysisalbumchange23)既可以关闭所有监听，也可以关闭指定callback监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is registered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[@ohos.file.photoAccessHelper (相册管理模块)](arkts-apis-photoAccessHelper-f.md)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
+  console.info('onAnalysisAlbumChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.onAnalysisAlbumChange(onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onAnalysisAlbumChange(onCallback2);
+  } catch (error) {
+    console.error('onAnalysisAlbumChangeDemo failed, errCode is', error);
+  }
+}
+```
+
+### offAnalysisAlbumChange<sup>23+</sup> 
+
+offAnalysisAlbumChange(callback?: Callback&lt;AlbumChangeInfos&gt;): void
+
+取消对智慧分析相册的监听。存在多个callback监听时，可以取消指定注册的callback监听；不指定callback时取消所有监听。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.MANAGE_PRIVATE_PHOTOS
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                                                                    |
+|-----------|-------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | 否   | 回调函数，返回变更的智慧分析相册信息，填入时取消[onAnalysisAlbumChange](#onanalysisalbumchange23)注册时指定的callback监听；不填时，则取消[onAnalysisAlbumChange](#onanalysisalbumchange23)注册的所有监听。<br>**注意：**<br>取消注册的callback后，有智慧相册发生变化时，不会进入此回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails.<br>Possible causes: 1. The type is not fixed at 'hiddenAlbumChange'; 2. The same callback is unregistered repeatedly. |
+| 23800301 | Internal system error. You are advised to retry and check the logs.<br>Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[@ohos.file.photoAccessHelper (相册管理模块)](arkts-apis-photoAccessHelper-f.md)的示例使用。
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData'
+
+let onCallback1 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback1 success, changeData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+let onCallback2 = (changeData: photoAccessHelper.AlbumChangeInfos) => {
+    console.info('onCallback2 success, changeData: ' + JSON.stringify(changeData));
+  // file had changed, do something.
+}
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper){
+  console.info('offAnalysisAlbumChangeDemo.');
+
+  try {
+    // 注册onCallback1监听。
+    phAccessHelper.onAnalysisAlbumChange(onCallback1);
+    // 注册onCallback2监听。
+    phAccessHelper.onAnalysisAlbumChange(onCallback2);
+
+    // 关闭onCallback1监听，onCallback2继续监听。
+    phAccessHelper.offAnalysisAlbumChange(onCallback1);
+  } catch (error) {
+    console.error('offAnalysisAlbumChangeDemo failed, errCode is', error);
   }
 }
 ```
@@ -3444,69 +3755,59 @@ async function example(context: Context) {
 }
 ```
 
-### getRangeObjects<sup>21+</sup>
+### addResourceForPicker<sup>22+</sup>
+addResourceForPicker(type: ResourceType, fileUri: string): void
 
-getRangeObjects(index: number, offset: number): Promise\<T[]\>
+通过[fileUri](../apis-core-file-kit/js-apis-file-fileuri.md)从应用沙箱添加资源。
 
-获取从指定的索引开始一定数量的文件资产。使用Promise异步回调。
+> **说明：**
+>
+> - 对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。
+> - 对于动态照片，需要调用两次该接口分别添加图片和视频资源。
 
-**系统接口**：此接口为系统接口。
+**系统接口**：此接口为系统接口，仅提供给图库PhotoPicker使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+**需要权限**：ohos.permission.ACCESS_MEDIALIB_THUMB_DB
+
 **参数：**
 
-| 参数名       | 类型                                       | 必填   | 说明                 |
-| -------- | ---------------------------------------- | ---- | ------------------ |
-| index    | number                                   | 是    | 要获取的文件索引起点，大于等于0，小于检索结果中对象数量。     |
-| offset    | number                                   | 是    | 要获取的文件数量，大于0。<br>index和offset之和需要小于检索结果中的对象数量，否则抛出23800151错误码。     |
-
-**返回值：**
-
-| 类型                                    | 说明              |
-| --------------------------------------- | ----------------- |
-| Promise\<T[]\>| Promise异步回调数组。 |
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| type | [ResourceType](arkts-apis-photoAccessHelper-e.md#resourcetype11) | 是   | 待添加资源的类型，仅支持图片和视频资源。 |
+| fileUri | string | 是   | 待添加资源的数据来源，在应用沙箱下的uri。<br>例如，fileUri：'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg'。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 202     | Called by non-system application.         |
-| 23800151       | The scenario parameter verification fails. Possible causes: 'index' or 'offset' validity check failed.          |
-| 23800301       | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal.         |
-
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The file corresponding to the URI is not in the app sandbox. 2. ResourceType must be image or video. |
+| 23800301 | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
 
 **示例：**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper} from '@kit.MediaLibraryKit';
-
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('getRangeObjectsDemo');
-  type PhotoAsset = photoAccessHelper.PhotoAsset;
-  let testNum: string = "getRangeObjects_test_002";
-  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-  let fetchOptions: photoAccessHelper.FetchOptions = {
-      fetchColumns: [],
-      predicates: predicates
-  };
-  let fetchResult1: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
-      await phAccessHelper.getAssets(fetchOptions);
-  let fetchResult2: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
-      await phAccessHelper.getAssets(fetchOptions);
-  let count: number = fetchResult1.getCount();
-  const half: number = Math.ceil(count / 2);
-  let promises: Promise<PhotoAsset[]>[] = [];
-  promises[0] = fetchResult1.getRangeObjects(0, half);
-  promises[1] = fetchResult2.getRangeObjects(half, count - half);
-  let photoAssetsArray: PhotoAsset[][] = await Promise.all(promises);
-  let photoAssets: PhotoAsset[] = photoAssetsArray[0].concat(photoAssetsArray[1]);
-  console.info('photoAssets length: ', photoAssets.length);
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('addResourceForPickerByFileUriDemo');
+  try {
+    let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoType, extension);
+    // 需要确保fileUri对应的资源存在。
+    let fileUri = 'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.jpg';
+    assetChangeRequest.addResourceForPicker(photoAccessHelper.ResourceType.IMAGE_RESOURCE, fileUri);
+    await phAccessHelper.applyChanges(assetChangeRequest);
+    console.info('addResourceForPickerByFileUri successfully');
+  } catch (err) {
+    console.error(`addResourceForPickerByFileUriDemo failed with error: ${err.code}, ${err.message}`);
+  }
 }
 ```
 
@@ -4519,7 +4820,7 @@ requestEditData(callback: AsyncCallback&lt;string&gt;): void
 | 201   | Permission denied.        |
 | 202   | Called by non-system application.         |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011   | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.       |
+| 14000011   | System inner fail.        |
 
 **示例：**
 
@@ -4691,7 +4992,7 @@ createTemporaryCompatibleDuplicate(): Promise&lt;void&gt;
 | -------- | ---------------------------------------- |
 | 201   | Permission denied.        |
 | 202   | Called by non-system application.         |
-| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being editted.|
+| 23800151    | Scene parameters validate failed, possible causes:<br>1. The original file does not exist locally in PhotoAsset;<br>2. The original file format is not within the supported range<br>3. The original file is a temporary file or is being edited.|
 | 23800301   |Internal system error.It is recommended to retry and check the logs.Possible causes:<br> 1. Database corrupted.2. The file system is abnormal.3. The IPC request timed out.   |
 
 **示例：**
@@ -5391,15 +5692,12 @@ getThumbnailData(type: ThumbnailType): Promise&lt;ArrayBuffer&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-错误码13900012，请参考[开发准备](../../media/medialibrary/photoAccessHelper-preparation.md)。
-
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
-| 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. | 
+| 14000011       | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
@@ -5547,6 +5845,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | dateModified<sup>18+</sup>    | number | 是    | 是   | 相册修改时间。<br>**系统接口**：此接口为系统接口。|
 | coverUriSource<sup>20+</sup>    | number | 是    | 是   | 相册封面来源。<br>**系统接口**：此接口为系统接口。|
 | uploadStatus<sup>22+</sup>    | boolean | 是    | 否   | 表示是否允许相册同步到云空间或家庭存储。true表示允许，false表示不允许。<br>**系统接口**：此接口为系统接口。|
+| HIDDEN<sup>23+</sup>    | boolean | 是    | 是   | 相册是否为隐藏状态。true表示相册为隐藏状态，false表示相册不为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ### recoverAssets<sup>(deprecated)</sup>
 
@@ -6062,7 +6361,7 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchRes
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | optionCheck | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 是 | 检索选项，限制返回资产数量。 |
-| filter | string | 否 | 过滤选项，要求Json字符串。<br>目前只支持传递currentFileId，表示当前精选人像卡片展示图片的file_id。比如:'{"currentFileId":"123"}'。<br>不填时默认从头返回资产，填写则返回currentFileId之后的资产。 |
+| filter | string | 否 | 过滤选项，必须是一个Json字符串。<br>当前仅支持传递currentFileId，表示当前精选人像卡片展示图片的file_id。例如:'{"currentFileId":"123"}'。<br>如果不填写，则从头开始返回资产。<br>如果填写了currentFileId，则根据该currentFileId内部计算评分，返回评分小于或等于该评分的资产。 |
 
 **返回值：**
 
@@ -6083,8 +6382,7 @@ getSelectedAssets(optionCheck: FetchOptions, filter?: string): Promise\<FetchRes
 
 **示例：**
 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper
-](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -6133,7 +6431,7 @@ async function example1(phAccessHelper: photoAccessHelper.PhotoAccessHelper) : P
       return;
     }
     let photoAssetList = fetchResult.getAllObjects();
-    console.info('get selected assets in album sucess');
+    console.info('get selected assets in album success');
   } catch (err) {
     console.error(`get selected assets in album fail, error: ${err?.code}, ${err?.message}`);
   }
@@ -7139,9 +7437,17 @@ async function example(context: Context, assetUri: string) {
 
 批量资产变更请求。
 
+### 属性
+
 **系统接口**：此接口为系统接口。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称           | 类型    | 只读   | 可选  | 说明   |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | 是    | 否   | 用于[MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)类型校验。<br>如果类（如MediaAssetsChangeRequest）对象可以访问，就说明该类是MediaChangeRequest的实现类。 |
 
 ### constructor<sup>11+</sup>
 
@@ -9029,6 +9335,66 @@ async function SetRelationshipExample(context: Context, relationship: string) {
 }
 ```
 
+### createAnalysisAlbumRequest<sup>23+</sup>
+
+static createAnalysisAlbumRequest(context: Context, name: string, subtype: AlbumSubtype): MediaAnalysisAlbumChangeRequest
+
+创建智慧相册的变更请求。
+
+> **说明**
+>
+> 相册名的参数规格如下：
+> - 相册名字符串长度为[1, 255]。
+> - 不允许出现非法英文字符，包括：. .. \ / : * ? " ' ` < > | { } [ ]
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 传入Ability实例的Context。 |
+| name | string | 是   | 待创建相册的名称。|
+| subtype |  [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 是   | 待创建智慧相册的子类型。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| [MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18) | 返回创建智慧相册的变更请求。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202   |  Called by non-system application.         |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. | 
+| 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+photoAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('createAlbumRequestDemo');
+  try {
+    let albumName: string = 'newAlbumName' + new Date().getTime();
+    let albumChangeRequest: photoAccessHelper.MediaAnalysisAlbumChangeRequest = photoAccessHelper.MediaAnalysisAlbumChangeRequest.createAnalysisAlbumRequest(context, albumName, photoAccessHelper.AlbumSubtype.PORTRAIT);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('apply createAlbumRequest successfully');
+  } catch (err) {
+    console.error(`createAlbumRequestDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## MediaHighlightAlbumChangeRequest<sup>21+</sup> 
 
 时刻相册变更请求，MediaHighlightAlbumChangeRequest继承自[MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18)。
@@ -9469,7 +9835,7 @@ async function example(context: Context) {
 
 submitCloudEnhancementTasks(photoAssets: Array&lt;PhotoAsset&gt;, hasCloudWatermark: boolean, triggerMode?: number): Promise&lt;void&gt;
 
-提交云增强任务。使用Promise异步回调。
+提交云增强任务，支持选择云增强任务触发类型。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -10594,7 +10960,7 @@ onDownloadProgressChange(callback: Callback\<CloudAssetDownloadProgressInfo\>): 
 
 ```ts
 let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
-  console.info('jsbatchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+  console.info('batchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
 }
 async function example(context: Context) {
   console.info('OnDownloadProgressChangeDemo');
@@ -10863,7 +11229,7 @@ getCustomRecords(optionCheck: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsse
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 202 | Called by non-system application. |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The fileter criteria or fetchColumns that are not supported by options are transferred. |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -10971,7 +11337,7 @@ removeCustomRecords(optionCheck: FetchOptions): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 202 | Called by non-system application. |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The fileter criteria or fetchColumns that are not supported by options are transferred |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -11099,7 +11465,7 @@ async function example(context: Context) {
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| userId<sup>18+</sup> | number  | 否   | 指定访问空间的Id。默认值为-1。<br>当需要作为[PhotoViewPicker.select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)的选择参数时，请申请ohos.permission.INTERACTA_CROSS_LOCAL_ACCOUNTS。<br>**系统接口**：此接口为系统接口。 |
+| userId<sup>18+</sup> | number  | 否   | 指定访问空间的Id。默认值为-1。<br>当需要作为[PhotoViewPicker.select](arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)的选择参数时，请申请ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。<br>**系统接口**：此接口为系统接口。 |
 
 **示例：**
 
@@ -11133,10 +11499,12 @@ async function example(context: Context) {
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
 | NOTIFY_CHANGE_YUV_READY<sup>23+</sup>         | 3    | 分段式拍照场景下高质量图已准备完成。<br>图像的清晰度、色彩准确度等质量指标可在请求图像的回调中判断：[OnDataPrepared](arkts-apis-photoAccessHelper-QuickImageDataHandler.md#ondataprepared13)。<br>**系统接口**：此接口为系统接口。 |
+| NOTIFY_CHANGE_ADD_ANALYSIS<sup>23+</sup>    | 4 | 智慧分析相册内媒体资产（图片/视频）已经创建。<br>**系统接口**：此接口为系统接口。 |
+| NOTIFY_CHANGE_REMOVE_ANALYSIS<sup>23+</sup> | 5 | 智慧分析相册内媒体资产（图片/视频）已经删除。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumType
 
-枚举，相册类型，表示是用户相册还是系统预置相册。
+枚举，相册类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -11191,7 +11559,7 @@ async function example(context: Context) {
 | DATE_TRASHED  | 'date_trashed'  | 删除日期（删除文件时间距1970年1月1日的秒数值）。**系统接口**：此接口为系统接口。                 |
 | HIDDEN  | 'hidden'            | 文件的隐藏状态。**系统接口**：此接口为系统接口。                               |
 | CAMERA_SHOT_KEY  | 'camera_shot_key'  | 锁屏相机拍照或录像的标记字段（仅开放给系统相机,其key值由系统相机定义）。**系统接口**：此接口为系统接口。            |
-| USER_COMMENT<sup>10+</sup>  | 'user_comment'            | 用户注释信息。**系统接口**：此接口为系统接口。           |
+| USER_COMMENT  | 'user_comment'            | 用户注释信息。**系统接口**：此接口为系统接口。           |
 | DATE_YEAR<sup>11+</sup>  | 'date_year'            | 创建文件的年份。**系统接口**：此接口为系统接口。           |
 | DATE_MONTH<sup>11+</sup>  | 'date_month'            | 创建文件的月份。**系统接口**：此接口为系统接口。           |
 | DATE_DAY<sup>11+</sup>  | 'date_day'            | 创建文件的日期。**系统接口**：此接口为系统接口。           |
@@ -11227,6 +11595,7 @@ async function example(context: Context) {
 | DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | 相册修改的时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。            |
 | COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | 相册封面的来源。<br>**系统接口**：此接口为系统接口。            |
 | UPLOAD_STATUS<sup>22+</sup>     | 'upload_status'      | 相册同步状态。<br>**系统接口**：此接口为系统接口。            |
+| HIDDEN<sup>23+</sup>     | 'hidden'      | 相册为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -11520,7 +11889,7 @@ async function example(context: Context) {
 | HIDE_LOCATION_ONLY |  1 |  脱敏地理位置信息。 |
 | HIDE_SHOOTING_PARAM_ONLY |  2 |  脱敏拍摄参数。 |
 | NO_HIDE_SENSITIVE_TYPE |  3 |  不脱敏。 |
-| DEFAULT<sup>22+</sup> |  4 |  根据[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限进行脱敏。规格为：<br>- 有ohos.permission.MEDIA_LOCATION权限：不脱敏。<br>- 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置和拍摄参数。 |
+| DEFAULT<sup>23+</sup> |  4 |  根据[ohos.permission.MEDIA_LOCATION](../../security/AccessToken/permissions-for-all-user.md#ohospermissionmedia_location)权限进行脱敏。规格为：<br>- 有ohos.permission.MEDIA_LOCATION权限：不脱敏。<br>- 无ohos.permission.MEDIA_LOCATION权限：脱敏地理位置信息。 |
 
 ## CloudEnhancementTaskStage<sup>13+</sup>
 
@@ -11708,7 +12077,22 @@ async function example(context: Context) {
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| COLOR_STYLE_PHOTO<sup>18+</sup> |  12 | 推荐风格 **系统接口**：此接口为系统接口。|
+| COLOR_STYLE_PHOTO<sup>18+</sup> |  12 | 推荐风格。<br>**系统接口**：此接口为系统接口。|
+| CAT<sup>23+</sup> |  13 | CAT表示猫咪照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| DOG<sup>23+</sup> |  14 | DOG表示狗照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| ARCHITECTURE<sup>23+</sup> |  15 | ARCHITECTURE表示建筑照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| LANDSCAPE<sup>23+</sup> |  16 | LANDSCAPE表示风景照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+
+## RecommendationOptions<sup>11+</sup>
+
+图片推荐选项（基于图片数据分析结果，依赖设备适配）。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                    | 类型                | 只读 | 可选 | 说明                          |
+| ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
+| recommendationTypeList<sup>23+</sup> | Array\<[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)>   | 否   | 是 | 如果需要根据枚举值同时推荐多个分类的图片，则配置此参数。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+
 
 ## ThumbnailChangeStatus<sup>20+</sup>
 
@@ -11771,6 +12155,7 @@ async function example(context: Context) {
 | position | [PositionType](arkts-apis-photoAccessHelper-e.md#positiontype16)  | 否 | 是 | 媒体资产（图片/视频）的所在位置。<br>**系统接口**：此接口为系统接口。  |
 | displayName | string  | 否 | 是 | 媒体资产（图片/视频）的显示名称。<br>**系统接口**：此接口为系统接口。  |
 | size | number  | 否 | 是 | 媒体资产（图片/视频）的文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**系统接口**：此接口为系统接口。  |
+| albumChangeInfos | [AlbumChangeInfo](#albumchangeinfo20)[]  | 否 | 是 | 智慧相册的相册变更信息。<br>**系统接口**：此接口为系统接口。  |
 
 ## PhotoAssetChangeData<sup>20+</sup>
 
@@ -11799,6 +12184,7 @@ async function example(context: Context) {
 | hiddenCoverInfo | [PhotoAssetChangeInfo](#photoassetchangeinfo20)  | 否 | 是 | 相册隐藏封面资产的信息。<br>**系统接口**：此接口为系统接口。 |
 | orderSection | number  | 否 | 是 | 相册的排序区域，用于确认相册在图库中的展示区域。<br>**系统接口**：此接口为系统接口。 |
 | albumOrder | number  | 否 | 是 | 相册的排序值。<br>**系统接口**：此接口为系统接口。 |
+| HIDDEN<sup>23+</sup>    | boolean  | 否 | 是 | 相册是否为隐藏状态。true表示相册为隐藏状态，false表示相册不为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## AlbumChangeData<sup>20+</sup>
 
@@ -12227,3 +12613,20 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | HDR_CUVA |  3 |  历史产品拍摄的HDR图片。  |
 | HDR_VIVID_SINGLE |  4 |  符合HDR Vivid标准的单层图片。  |
 | HDR_VIVID_DUAL |  5 |  符合HDR Vivid标准的双层图片。  |
+
+## PhotoRiskStatus<sup>23+</sup>
+
+枚举，用于标识图片是否存在风险的类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| UNIDENTIFIED |  0 |  默认类型。|
+| APPROVED |  1 |  无风险图片。  |
+| SUSPICIOUS |  2 |  疑似风险图片。  |
+| REJECTED |  3 |  确认风险图片。  |

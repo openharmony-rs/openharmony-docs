@@ -12,7 +12,7 @@
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## onAlert
 
@@ -672,6 +672,10 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 通知宿主应用页面开始加载。此方法在每次主frame加载时调用一次，因此对于包含iframes或frameset的页面，onLoadStarted仅针对主frame调用一次。这意味着当嵌入式frame的内容发生变化时，如点击iframe中的链接或Fragment跳转（即跳转到#fragment_id的导航）等，不会调用onLoadStarted。
 
+> **说明：**
+>
+> - 当弹出窗口的文档在加载之前被JavaScript修改时，它将模拟触发onLoadStarted，并将URL设置为空，因为显示当前正在加载的URL可能不安全。onPageBegin将不会被模拟。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -709,6 +713,12 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 通知宿主应用页面已加载完成。此方法仅在主frame加载完成时被调用。对于片段跳转（即导航至#fragment_id），onLoadFinished同样会被触发。
+
+> **说明：**
+>
+> - 片段导航也会触发onLoadFinished，但onPageEnd不会被触发。
+> - 如果主框架在页面完全加载之前被自动重定向，onLoadFinished只会触发一次。onPageEnd会在每次主框架导航时触发。
+> - 当弹出窗口的文档在加载之前被JavaScript修改时，它将模拟触发onLoadStarted，并将URL设置为空，因为显示当前正在加载的URL可能不安全。onPageBegin将不会被模拟。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1354,6 +1364,7 @@ onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
 onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
 通知用户加载资源时发生SSL错误，只支持主资源。
+
 如果需要支持子资源，请使用[OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)接口。
 
 > **说明：**
@@ -1615,7 +1626,7 @@ struct Index {
           return;
         }
 
-        //注：badssl.com-client.p12需要替换为实际使用的证书文件
+        // 注：badssl.com-client.p12需要替换为实际使用的证书文件
         let value: Uint8Array = this.context.resourceManager.getRawFileContentSync("badssl.com-client.p12");
         certificateManager.installPrivateCertificate(value, 'badssl.com', "1",
           async (err: BusinessError, data: certificateManager.CMResult) => {
@@ -1640,7 +1651,6 @@ struct Index {
         .onClientAuthenticationRequest((event) => {
           console.info("onClientAuthenticationRequest ");
           event.handler.confirm(this.uri);
-          return true;
         })
         .onSslErrorEventReceive(e => {
           console.info(`onSslErrorEventReceive->${e.error.toString()}`);
@@ -1788,7 +1798,6 @@ struct Index {
                 console.info(`grantAppPm, URI==========${result}`);
                 event.handler.confirm(result);
               })
-              return true;
             })
             .onSslErrorEventReceive(e => {
               console.info(`onSslErrorEventReceive->${e.error.toString()}`);
@@ -1832,7 +1841,7 @@ onVerifyPin(callback: OnVerifyPinCallback)
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
-import certMgrDialog from '@ohos.security.certManagerDialog';
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1864,12 +1873,12 @@ struct Index {
           // 收到客户端证书请求事件
           console.info(`onClientAuthenticationRequest`);
           try {
-            let certTypes: Array<certMgrDialog.CertificateType> = [
-              certMgrDialog.CertificateType.CREDENTIAL_UKEY
+            let certTypes: Array<certificateManagerDialog.CertificateType> = [
+              certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
             ];
             // 调用证书管理，打开证书选择框
-            certMgrDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
-              .then((data: certMgrDialog.CertReference) => {
+            certificateManagerDialog.openAuthorizeDialog(this.context, { certTypes: certTypes })
+              .then((data: certificateManagerDialog.CertReference) => {
                 console.info(`openAuthorizeDialog request cred auth success`)
                 // 通知web选择的为ukey证书
                 event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
@@ -1879,13 +1888,12 @@ struct Index {
           } catch (e) {
             console.error(`openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(e)}`);
           }
-          return true;
         })
         .onVerifyPin((event) => {
           // 收到PIN码认证请求事件
           console.info(`onVerifyPin`);
           // 调用证书管理，打开PIN码输入框
-          certMgrDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
+          certificateManagerDialog.openUkeyAuthDialog(this.context, {keyUri: event.identity})
             .then(() => {
               // 通知webPIN码认证成功
               console.info(`onVerifyPin success`);
@@ -2515,10 +2523,13 @@ onFullScreenExit(callback: () => void)
 onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 使能multiWindowAccess情况下，通知用户新建窗口请求。
+
 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+
 如果没有创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口时设置成null，通知Web没有创建新窗口。
 
 新窗口需避免直接覆盖在原Web组件上，且应与主页面以相同形式明确显示其URL（如地址栏）以防止用户混淆。若无法实现可信的URL可视化管理，则需考虑禁止创建新窗口。
+
 需注意：新窗口请求来源无法可靠追溯，可能由第三方iframe发起，应用需默认采取沙箱隔离、限制权限等防御性措施以确保安全。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -2673,10 +2684,10 @@ onWindowNewExt(callback: Callback\<OnWindowNewExtEvent\>)
         .multiWindowAccess(true)
         .allowWindowOpenMethod(true)
         .onWindowNewExt((event) => {
-          //以event.navigationPolicy请求的方式打开新窗口
-          console.log("navigationAction: ", event.navigationPolicy)
-          //以event.windowFeatures中的大小及位置信息创建新窗口
-          console.log("windowFeatures: ", JSON.stringify(event.windowFeatures))
+          // 以event.navigationPolicy请求的方式打开新窗口
+          console.info("navigationAction: ", event.navigationPolicy)
+          // 以event.windowFeatures中的大小及位置信息创建新窗口
+          console.info("windowFeatures: ", JSON.stringify(event.windowFeatures))
           if (this.dialogController) {
             this.dialogController.close();
           }
@@ -2757,7 +2768,7 @@ onActivateContent(callback: Callback\<void>)
             }
           })
           .onActivateContent(() => {
-            //该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
+            // 该Web需要展示到前面，建议应用在这里进行tab或window切换的动作展示此web
             console.info("NewWebViewComp onActivateContent")
           })
       }.height("50%")
@@ -3437,6 +3448,7 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 onControllerAttached(callback: () => void)
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
+
 因该回调调用时网页还未加载，无法在回调中使用有关操作网页的接口，例如[zoomIn](./arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](./arkts-apis-webview-WebviewController.md#zoomout)等，可以使用[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)、[getWebId](./arkts-apis-webview-WebviewController.md#getwebid)等操作网页不相关的接口。
 
 组件生命周期详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
@@ -4744,7 +4756,11 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 
 网页加载遇到错误时触发，只有主资源出错才会回调该接口，可以使用该接口自定义错误展示页。
 
-此外，该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)接口启用默认错误页后，才会生效。
+> **说明：**
+>
+> 该功能需通过调用[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled20)接口启用默认错误页后，才会生效。
+>
+> 通过[errorPageEvent.error.getErrorCode()](./arkts-basic-components-web-WebResourceError.md#geterrorcode)获取的错误码大于0代表http协议错误，小于0代表网络错误。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4825,7 +4841,10 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => boolean)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
-从API version 10开始不再维护，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+
+> **说明：**
+>
+> API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4938,7 +4957,7 @@ onPdfScrollAtBottom(callback: Callback\<OnPdfScrollEvent\>)
 
 onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
-设置Web组件的检测到白屏时的回调函数。
+Web组件检测到白屏时触发此回调。
 
 > **说明：**
 >
@@ -4950,7 +4969,7 @@ onDetectedBlankScreen(callback: OnDetectBlankScreenCallback)
 
 | 参数名        | 类型    | 必填   | 说明          |
 | ---------- | ------- | ---- | ------------- |
-| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | 设置Web组件的检测到白屏时的回调函数。 |
+| callback | [OnDetectBlankScreenCallback](./arkts-basic-components-web-t.md#ondetectblankscreencallback22) | 是    | Web组件检测到白屏时的回调函数。 |
 
 **示例：**
 
@@ -5355,6 +5374,8 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 > - 接口在首屏绘制完成后，需要等待一定时间没有新的渲染信息需要处理后，才会上报回调。接口回调时刻和首屏渲染完成时刻不同。
 >
 > - 渲染未完成时，若用户输入或滚动页面，将会立即上报回调函数。
+>
+> - 该接口适用于在即时加载场景下获取首屏渲染时间，在预加载或预渲染场景下使用无法达到预期。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

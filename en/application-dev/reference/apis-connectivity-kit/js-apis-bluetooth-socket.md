@@ -284,7 +284,7 @@ try {
 }
 
 // The client obtains the address of the server.
-// clientSocket is obtained from the sppAccept callback. Before calling getDeviceId, update the clientSocket.
+// clientSocket is obtained from the sppConnect callback. Before calling getDeviceId, update the clientSocket.
 try {
     let deviceAddr: string = socket.getDeviceId(clientSocket);
 } catch (err) {
@@ -386,6 +386,8 @@ Sends data to the peer end. This API can be used on both the client and server.
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
 - If you need to detect errors such as abnormal disconnection during data transmission, you are advised to use [socket.sppWriteAsync](#socketsppwriteasync18).
+- According to the Bluetooth protocol, the data channel needs to enter the sleep mode when it is idle to reduce power consumption. During the Bluetooth subsystem implementation, the data channel enters the sleep mode when no data is exchanged within 5s to 7s. As a result, it takes about 500 ms to exit the sleep mode before data is sent using this API.
+- To reduce the time taken for the data channel to exit the sleep mode before data is sent, you are advised to send heartbeat data of any size to the data channel every 3s to keep the data channel alive. This prevents the data channel from entering the sleep mode, but increases the device power consumption.
 <!--RP1--><!--RP1End-->
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
@@ -428,11 +430,12 @@ try {
 ## socket.on('sppRead')
 
 on(type: 'sppRead', clientSocket: number, callback: Callback&lt;ArrayBuffer&gt;): void
+
 Subscribes to socket read request events. This API can be used on both the client and server. After this API is called, the subscribed callback is invoked when data sent by the peer end is received.
 
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
-- This API cannot be used with [socket.sppReadAsync](#socketsppreadasync18), which is supported since API version 18. For the same socket connection, only the socket.on('sppRead') or [socket.sppReadAsync](#socketsppreadasync18) API can be used.
+- This API cannot be used with [socket.sppReadAsync](#socketsppreadasync18), which is supported since API version 18. For the same socket connection, only the **socket.on('sppRead')** or [socket.sppReadAsync](#socketsppreadasync18) API can be used.
 - If you need to detect errors such as abnormal disconnection during data transmission, you are advised to use [socket.sppReadAsync](#socketsppreadasync18).
 <!--RP2--><!--RP2End-->
 
@@ -522,6 +525,8 @@ Sends data to the peer end. This API can be used on both the client and server. 
 - This API is valid only after the connection between the client and server is successfully established.
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
+- According to the Bluetooth protocol, the data channel needs to enter the sleep mode when it is idle to reduce power consumption. During the Bluetooth subsystem implementation, the data channel enters the sleep mode when no data is exchanged within 5s to 7s. As a result, it takes about 500 ms to exit the sleep mode before data is sent using this API.
+- To reduce the time taken for the data channel to exit the sleep mode before data is sent, you are advised to send heartbeat data of any size to the data channel every 3s to keep the data channel alive. This prevents the data channel from entering the sleep mode, but increases the device power consumption.
 <!--RP3--><!--RP3End-->
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
@@ -575,7 +580,7 @@ Reads data sent by the peer end. This API can be used on both the client and ser
 
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
-- This API cannot be used with the [socket.on('sppRead')](#socketonsppread) API supported since API version 10. For the same socket, only the [socket.on('sppRead')](#socketonsppread) or **socket.sppReadAsync** API can be used.
+- This API cannot be used with [socket.on('sppRead')](#socketonsppread), which is supported since API version 10. For the same socket, only the [socket.on('sppRead')](#socketonsppread) or **socket.sppReadAsync** API can be used.
 - This API returns the read data using a promise. You are advised to call this API cyclically after successful connection to obtain the received data. If this API is not called in a timely manner, the received data will be lost.
 - This API works in asynchronous mode. The next call is allowed only after the asynchronous callback is returned.
 <!--RP4--><!--RP4End-->

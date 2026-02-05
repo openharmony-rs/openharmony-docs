@@ -79,6 +79,7 @@
 ## 开发指导
 
 详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md)。
+
 如下为视频解码调用关系图：
 
 - 虚线表示可选。
@@ -271,7 +272,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
         bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
         if (!ret) {
-         	// 异常处理。
+            // 异常处理。
         }
     }
 
@@ -292,6 +293,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
         (void)userData;
         outQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
     }
+
     // 配置异步回调，调用 OH_VideoDecoder_RegisterCallback 接口。
     OH_AVCodecCallback cb = {&OnError, &OnStreamChanged, &OnNeedInputBuffer, &OnNewOutputBuffer};
     // 配置异步回调。
@@ -463,6 +465,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ```
 
 9. （可选）OH_VideoDecoder_SetParameter()动态配置解码器surface参数。
+
     详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
     ```c++
@@ -551,12 +554,14 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 11. 调用OH_VideoDecoder_PushInputBuffer()写入解码码流。
 
     送入输入队列进行解码，以下示例中：
-    - size、offset、pts、frameData：输入尺寸、偏移量、时间戳、帧数据等字段信息，获取方式可以参考[音视频解封装](./audio-video-demuxer.md)“步骤-9：开始解封装，循环获取sample”；
+
+    - size、offset、pts、frameData：输入尺寸、偏移量、时间戳、帧数据等字段信息，获取方式可以参考[音视频解封装](./audio-video-demuxer.md)“步骤-9：开始解封装，循环获取sample”。
     - flags：缓冲区标记的类别，请参考[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)。
 
     bufferInfo的成员变量：
-    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取输入码流虚拟地址；
-    - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
+
+    - buffer：回调函数OnNeedInputBuffer传入的参数，可以通过[OH_AVBuffer_GetAddr](../../reference/apis-avcodec-kit/capi-native-avbuffer-h.md#oh_avbuffer_getaddr)接口获取输入码流虚拟地址。
+    - index：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识。
     - isValid：bufferInfo中存储的buffer实例是否有效。
 
     ```c++
@@ -646,8 +651,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 13. （可选）调用OH_VideoDecoder_Flush()刷新解码器。
 
-    调用OH_VideoDecoder_Flush接口后，解码器仍处于运行态，但会清除解码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。
-    此时需要调用OH_VideoDecoder_Start接口重新开始解码。
+    调用OH_VideoDecoder_Flush接口后，解码器仍处于运行态，但会清除解码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。此时需要调用OH_VideoDecoder_Start接口重新开始解码。
+
     以下示例中：
 
     - xpsData、xpsSize：PPS/SPS信息，获取方式可以参考[音视频解封装](./audio-video-demuxer.md)。
@@ -857,7 +862,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
         if (!ret) {
-         	// 异常处理。
+            // 异常处理。
         }
     }
     
@@ -890,7 +895,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                        OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
                        OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
             if (!ret) {
-             	// 异常处理。
+                // 异常处理。
             }
             isFirstFrame = false;
         }
@@ -1006,6 +1011,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ```
 
 8. （可选）OH_VideoDecoder_SetParameter()动态配置解码器参数。
+
     详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
     ```c++
@@ -1228,6 +1234,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ```
 
     硬件解码在处理buffer数据时（释放数据前），输出回调开发者收到的AVbuffer是宽、高对齐后的图像数据。
+
     一般需要获取数据的宽、高、跨距、像素格式来保证解码输出数据被正确的处理。
 
     具体实现请参考：[Buffer模式](#buffer模式)的步骤3-调用OH_VideoDecoder_RegisterCallback()设置回调函数来获取数据的宽、高、跨距、像素格式。

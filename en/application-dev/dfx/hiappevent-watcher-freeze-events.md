@@ -36,7 +36,7 @@ The **params** attribute in the event information is described as follows.
 | -------- | -------- | -------- |
 | time | number | Event triggering time, in ms.|
 | foreground | boolean | Whether the application is running in the foreground. The value **true** indicates that the application is in the foreground, and the value **false** indicates the opposite.|
-| release_type | string | Release type of the SDK used for application packing. For details, see **releaseType** in [ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).<br>Note: This field is supported since API version 23.|
+| release_type | string | Application version type. The value **release** indicates that the application is a [release-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916), and the value **debug** indicates that the application is a [debug-type application](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916).<br>Note: This field is supported since API version 23.|
 | cpu_abi | string | ABI type.<br>Note: This field is supported since API version 23.|
 | bundle_version | string | Application version.|
 | bundle_name | string | Application name.|
@@ -70,6 +70,12 @@ The **params** attribute in the event information is described as follows.
 | thread_name | string | Thread name.|
 | tid | number | Thread ID.|
 | frames | object[] | Thread call stack. For details, see **frame**.|
+| state | string | Thread running state, which is read from the value of **state** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| utime | number | Number of CPU ticks consumed by the thread in user mode, which is read from the value of **utime** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| stime | number | Number of CPU ticks consumed by the thread in kernel mode, which is read from the value of **stime** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| priority | number | Real-time priority, which is read from the value of **priority** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| nice | number | Static priority, which is read from the value of **nice** in **/proc/pid/stat**.<br>Note: This field is supported since API version 23.|
+| clk | number | Number of clock ticks per second, which is obtained through **sysconf(_SC_CLK_TCK)**. If the value fails to be obtained, the default value **100** is used. The running time (unit: second) can be calculated by dividing the number of clock ticks by this value.<br>Note: This field is supported since API version 23.|
 
 ### frame
 

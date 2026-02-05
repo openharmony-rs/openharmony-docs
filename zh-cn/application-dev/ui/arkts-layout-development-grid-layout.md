@@ -27,7 +27,7 @@
 
 ### 栅格容器断点
 
-栅格容器以设备的水平宽度（[屏幕密度像素值](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)，单位vp）作为断点依据，定义设备的宽度类型，形成了一套断点规则。开发者可根据需求在不同的断点区间实现不同的页面布局效果。
+栅格容器以设备的水平宽度（[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)，单位vp）作为断点依据，定义设备的宽度类型，形成了一套断点规则。开发者可根据需求在不同的断点区间实现不同的页面布局效果。
 
 栅格容器默认断点将设备宽度分为xs、sm、md、lg四类，尺寸范围如下：
 
@@ -498,18 +498,22 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
-    
+
       build() {
-        GridRow() {
-          ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
-            GridCol({ offset: 2, span: 1 }) {
-              Row() {
-                Text('' + index)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
-          })
-        }
+        Column() {
+          GridRow({ columns: 12 }) {
+            ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+              GridCol({ offset: 2, span: 1 }) {
+                Row() {
+                  Text('' + index)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+
+          Blank().width('100%').height(150)
+        }.border({ color: 'rgb(39,135,217)', width: 2 })
       }
     }
     ```

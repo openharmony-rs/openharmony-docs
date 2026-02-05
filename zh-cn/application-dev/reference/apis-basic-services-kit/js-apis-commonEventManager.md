@@ -142,7 +142,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 | 参数名          | 类型                                                         | 必填 | 说明                       |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)        | 是   | 表示订阅信息。             |
-| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)> | 是   | 回调函数。当公共事件订阅者创建成功时，err为undefined，否则为错误对象。 |
+| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | 是   | 回调函数。当公共事件订阅者创建成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -158,7 +158,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -200,7 +200,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 **返回值：**
 | 类型                                                      | 说明             |
 | --------------------------------------------------------- | ---------------- |
-| Promise\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)> | 以Promise形式返回订阅者对象。 |
+| Promise\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | Promise对象，返回创建成功的订阅者对象。 |
 
 **错误码：**
 
@@ -216,7 +216,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -249,7 +249,7 @@ createSubscriber的同步接口。
 **返回值：**
 | 类型                                                      | 说明             |
 | --------------------------------------------------------- | ---------------- |
-| [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md) | 返回订阅者对象。 |
+| [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | 返回订阅者对象。 |
 
 **错误码：**
 
@@ -265,7 +265,7 @@ createSubscriber的同步接口。
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -293,7 +293,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 
 | 参数名       | 类型                                                | 必填 | 说明                             |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)     | 是   | 表示订阅者对象。                 |
+| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | 是   | 表示订阅者对象。                 |
 | callback   | AsyncCallback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 回调函数。当公共事件订阅成功后，事件触发时执行的回调函数；否则订阅失败时，err为错误对象。 |
 
 **错误码：**
@@ -313,7 +313,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -363,7 +363,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 
 | 参数名       | 类型                                             | 必填 | 说明                     |
 | ---------- | ----------------------------------------------- | ---- | ------------------------ |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md) | 是   | 表示订阅者对象。         |
+| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | 是   | 表示订阅者对象。         |
 | callback   | AsyncCallback\<void>                            | 否   | 回调函数。当取消公共事件订阅成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -383,7 +383,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-let subscriber: commonEventManager.CommonEventSubscriber | undefined; 
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -452,13 +452,13 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 
 | 参数名       | 类型                                                | 必填 | 说明                             |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)     | 是   | 表示订阅者对象。                 |
+| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | 是   | 表示订阅者对象。                 |
 | callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 表示接收公共事件数据的回调函数。 |
 
 **返回值：**
 | 类型                                                      | 说明             |
 | --------------------------------------------------------- | ---------------- |
-| Promise\<void>   | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void>   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -477,7 +477,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-let subscriber: commonEventManager.CommonEventSubscriber; 
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ["event"]
@@ -539,7 +539,7 @@ type CommonEventSubscriber = _CommonEventSubscriber
 
 | 类型 | 说明 |
 | --- | --- |
-| [_CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md) | 描述公共事件的订阅者。 |
+| [_CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | 描述公共事件的订阅者。 |
 
 ## CommonEventSubscribeInfo<sup>10+</sup>
 

@@ -64,7 +64,7 @@ Profile类，使用opp方法之前需要创建该类的实例进行操作，通�
 
 ### sendFile
 
-sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&lt;): Promise&lt;void&gt;
+sendFile(deviceId: string, fileHolds: Array&lt;FileHolder&gt;): Promise&lt;void&gt;
 
 使用蓝牙发送文件。使用Promise异步回调。
 

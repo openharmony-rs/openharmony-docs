@@ -414,7 +414,7 @@ struct Child {
 
 - \@Param装饰的变量表示组件外部输入，需要初始化。支持使用本地初始值或外部传入值进行初始化。当存在外部传入值时，优先使用外部传入值。不允许既不使用本地初始值，也不使用外部传入值。
 
-  ```ts	
+  ```ts
   @ComponentV2
   struct ChildComponent {
     @Param param1: string = 'Initialize local';

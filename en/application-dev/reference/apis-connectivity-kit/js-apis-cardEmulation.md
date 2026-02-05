@@ -121,13 +121,13 @@ Before developing an application related to HCE, you must declare NFC-related at
 
 ## Modules to Import
 
-```
+```js
 // Applicable to devices other than lite wearables
 import { cardEmulation } from '@kit.ConnectivityKit';
 ```
 
 <!--code_no_check_fa-->
-```
+```js
 // Applicable to lite wearables
 import cardEmulation from '@ohos.nfc.cardEmulation';
 ```
@@ -276,6 +276,12 @@ Checks whether an application is the default application of the specified servic
 | elementName | [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | Yes   | Information about the page, on which the application declares the NFC card emulation capability. It must contain at least **bundleName** and **abilityName** and cannot be empty.|
 | type        | [CardType](#cardtype9)                   | Yes   | Card emulation service type. Currently, only the default payment application can be queried.  |
 
+**Return value**
+
+| **Type** | **Description**                              |
+| ------- | ------------------------------------ |
+| boolean | Returns **true** if the application is the default payment application; returns **false** otherwise.|
+
 **Error codes**
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
@@ -285,13 +291,6 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
-
-**Return value**
-
-| **Type** | **Description**                              |
-| ------- | ------------------------------------ |
-| boolean | Returns **true** if the application is the default payment application; returns **false** otherwise.|
-
 
 **Example**
 ```js

@@ -1,4 +1,10 @@
 # Upload and Download Error Codes
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Request-->
+<!--Owner: @huaxin05-->
+<!--Designer: @hu-kai45-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >
@@ -12,11 +18,11 @@ Invalid file or file system error.
 
 **Description**
 
-This error code is reported when the **uploadFile** or **downloadFile** API fails to be invoked to upload or download a file.
+This error code is reported when the **create**, **uploadFile**, or **downloadFile** API passes an invalid file or the file system error occurs.
 
 **Possible Causes**
 
-The file permission is insufficient.
+The file permission is insufficient. For details, see the error message in [BusinessError](js-apis-base.md#businesserror).
 
 **Solution**
 

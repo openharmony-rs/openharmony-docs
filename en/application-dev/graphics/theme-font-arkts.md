@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-Theme fonts are a special type of custom fonts that can be used in **theme apps**. You can call related APIs to enable theme fonts in theme apps.
+Theme fonts are specialized custom fonts available for use in theme applications. You can enable them using specific APIs.
 
 ## Implementation Mechanism
 
@@ -15,40 +15,40 @@ Theme fonts are a special type of custom fonts that can be used in **theme apps*
 
 ![themeText_native](figures/themeText_native.jpg)
 
-To switch theme fonts, your app must subscribe to the theme font change event. After receiving the font change event, your app must call the page refresh API to switch the theme font. Otherwise, the theme font takes effect only after the app is restarted.
+When switching and using theme fonts, the application must subscribe to theme font change events. After receiving such an event, it must call the page refresh API to switch the theme font. Without this step, the new theme font will apply only after the application is restarted.
 
 
 ## Available APIs
 
-The following table lists the APIs commonly used for registering and using theme fonts. For details about the APIs, see @ohos.graphics.text (../reference/apis-arkgraphics2d/js-apis-graphics-text.md).
+The following table lists the APIs for registering and using theme fonts. For details, see [@ohos.graphics.text (Text)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md).
 
-| API| Description| 
+| Name| Description| 
 | -------- | -------- |
-| getGlobalInstance(): FontCollection | Obtains the instance of the global font set of an app.| 
+| getGlobalInstance(): FontCollection | Obtains a global font collection instance.| 
 
 
 ## How to Develop
 
-1. Ensure that a theme font can be successfully applied in the **theme app** of the device system.
+1. Make sure that you can apply a theme font in the theme applications on your device.
 
-2. Import the required modules.
+2. Import the required module.
 
    ```ts
    import { text } from '@kit.ArkGraphics2D';
    ```
 
-3. Use the getGlobalInstance() API to obtain the global font set object. During theme font registration, the system framework transfers only the theme font information to the global font set object.
+3. Call the **getGlobalInstance()** API to obtain the global font collection object. The system framework only passes theme font information to the global font collection object during theme font registration.
 
    ```ts
    let fontCollection = text.FontCollection.getGlobalInstance();
    ```
 
-4. Create a paragraph style and use the font manager instance to construct a paragraph generator ParagraphBuilder instance for generating paragraphs.
+4. Create a paragraph style and use the font manager instance to construct a **ParagraphBuilder** instance for generating paragraphs.
    > **NOTE**
    >
-   > When setting the input parameters for the paragraph style during paragraph object generation, do not specify the fontFamilies attribute. Otherwise, the specified font is preferentially used instead of the theme font.
+   > When setting the input parameters of the paragraph style for generating a paragraph object, do not specify the **fontFamilies** attribute. Otherwise, the specified font instead of the theme font is used.
    > 
-   > If no theme font is set in the **theme application**, the default font of the system is used.
+   > If no theme font is set in the theme applications, the default system font is used.
 
    ```ts
    // Set the text style.
@@ -57,7 +57,7 @@ The following table lists the APIs commonly used for registering and using theme
        fontSize: 100,
        // fontFamilies:['Test Font'] // Do not specify fontFamilies. Otherwise, the specified font is used preferentially.
    };
-   // Create a paragraph style object to set the typesetting style.
+   // Create a paragraph style object to set the typography style.
    let myParagraphStyle: text.ParagraphStyle = {textStyle: myTextStyle}
    // Create a paragraph generator.
    let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
@@ -70,14 +70,14 @@ The following table lists the APIs commonly used for registering and using theme
    paragraphBuilder.pushStyle(myTextStyle);
    // Set the text content in the paragraph generator.
    paragraphBuilder.addText("Hello World. \nThis is the theme font.");
-   // Generate a paragraph through the paragraph generator.
+   // Generate a paragraph using the paragraph generator.
    let paragraph = paragraphBuilder.build();
    ```
 
-6. Create a rendering node and save it to an array. (The sample code here is simplified. An array is used as the container. In actual development, select a proper container based on the application scenario to ensure that nodes can be added and deleted accordingly.)
+6. Create a render node and save it to an array. (This sample code is simplified and uses an array as the container. During development, you should choose a proper container based on your use case to ensure that the addition and deletion of nodes correspond to each other.)
 
    ```ts
-   // Create a rendering node array.
+   // Create a render node array.
    const renderNodeMap: Array<RenderNode> = new Array();
    // Create a node controller.
    class MyNodeController extends NodeController {
@@ -101,7 +101,7 @@ The following table lists the APIs commonly used for registering and using theme
        const renderNode = this.rootNode.getRenderNode()
        if (renderNode != null) {
          renderNode.appendChild(node)
-         // Add the node to the rendering node array.
+         // Add the node to the render node array.
          renderNodeMap.push(node)
        }
      }
@@ -112,7 +112,7 @@ The following table lists the APIs commonly used for registering and using theme
        const renderNode = this.rootNode.getRenderNode()
        if (renderNode != null) {
          renderNode.clearChildren()
-         // Remove the node from the rendering node array.
+         // Remove the node from the render node array.
          renderNodeMap.pop()
        }
      }
@@ -120,10 +120,10 @@ The following table lists the APIs commonly used for registering and using theme
    let paragraph = paragraphBuilder.build();
    ```
 
-7. Create a rendering node update function and export the function for other files (such as EntryAbility.ets) to use. The purpose of redrawing the node is to update the font information in the layout. If the font information is not updated, the residual result may be used, which may cause garbled characters.
+7. Create and export the render node update function for files (such as EntryAbility.ets) to use. The purpose of redrawing the node is to update the font information in the typography. If the font information is not updated, the residual result may be used, causing garbled characters.
 
    ```ts
-   // Export the rendering node update function.
+   // Export the render node update function.
    export function updateRenderNodeData() {
      renderNodeMap.forEach((node) => {
        // Trigger node redrawing.
@@ -132,7 +132,7 @@ The following table lists the APIs commonly used for registering and using theme
    }
    ```
 
-8. Receive the theme change event in EntryAbility.ets and call the rendering node update function.
+8. Receive the theme font change event in EntryAbility.ets and call the render node update function.
 
    ```ts
    // entry/src/main/ets/entryability/EntryAbility.ets
@@ -151,9 +151,9 @@ The following table lists the APIs commonly used for registering and using theme
    ```
 
 
-## Complete Sample Code
+## Sample Code
 
-The following uses the theme font to draw the text "Hello World. \nThis is the theme font." as an example to provide a complete example and effect diagram.
+This section uses the theme font to draw "Hello World. \nThis is the theme font." as an illustration.
 
 <!-- @[arkts_theme_font_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
 
@@ -163,7 +163,7 @@ import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
 import { UIContext } from '@kit.ArkUI';
 import { text } from '@kit.ArkGraphics2D';
 
-// Create a custom rendering node class to draw text.
+// Create a custom render node class to draw text.
 class MyRenderNode extends RenderNode {
   async draw(context: DrawContext) {
     // Obtain the canvas object.
@@ -173,30 +173,30 @@ class MyRenderNode extends RenderNode {
       color: { alpha: 255, red: 255, green: 0, blue: 0 },
       fontSize: 33
     };
-    // Create a paragraph style object to set the typesetting style.
+    // Create a paragraph style object to set the typography style.
     let myParagraphStyle: text.ParagraphStyle = {
       textStyle: myTextStyle,
       align: 3,
       wordBreak:text.WordBreak.NORMAL
     };
     // Obtain the global FontCollection instance of the font manager.
-    let fontCollection = text.FontCollection.getGlobalInstance(); // Obtain the global FC of ArkUI.
+    let fontCollection = text.FontCollection.getGlobalInstance(); // Obtain the ArkUI global FC.
     // Create a paragraph generator.
     let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
     // Set the text style in the paragraph generator.
     paragraphGraphBuilder.pushStyle(myTextStyle);
     // Set the text content in the paragraph generator.
     paragraphGraphBuilder.addText("Hello World. \nThis is the theme font.");
-    // Generate a paragraph through the paragraph generator.
+    // Generate a paragraph using the paragraph generator.
     let paragraph = paragraphGraphBuilder.build();
     // Layout
     paragraph.layoutSync(2500);
     paragraph.paint(canvas, 0, 400);
   }
 }
-// Create a rendering node array.
+// Create a render node array.
 const renderNodeMap: Array<RenderNode> = new Array();
-// Export the rendering node update function.
+// Export the render node update function.
 export function updateRenderNodeData() {
   renderNodeMap.forEach((node) => {
     // Trigger node redrawing.
@@ -225,7 +225,7 @@ class MyNodeController extends NodeController {
     const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       renderNode.appendChild(node);
-      // Add the node to the rendering node array.
+      // Add the node to the render node array.
       renderNodeMap.push(node);
     }
   }
@@ -236,7 +236,7 @@ class MyNodeController extends NodeController {
     const renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       renderNode.clearChildren();
-      // Remove the node from the rendering node array.
+      // Remove the node from the render node array.
       renderNodeMap.pop();
     }
   }
@@ -280,10 +280,10 @@ struct RenderTest {
           .shadow(ShadowStyle.OUTER_DEFAULT_LG)
       }
       .width('100%')
-      .justifyContent(FlexAlign.Center) // Center the child elements in the current row container along the main axis.
-      .shadow(ShadowStyle.OUTER_DEFAULT_SM) // Set the outer shadow effect of the row container.
-      .alignItems(VerticalAlign.Bottom) // Align the child elements in the current row container at the bottom along the cross axis (vertical direction).
-      .layoutWeight(1) // Set the layout weight of the current row in the parent column container to 1.
+      .justifyContent(FlexAlign.Center) // Align the child elements in the current Row container to the center of the main axis.
+      .shadow(ShadowStyle.OUTER_DEFAULT_SM) // Set the shadow effect outside the Row container.
+      .alignItems(VerticalAlign.Bottom) // Align the child elements in the current Row container to the bottom of the cross axis (vertical direction).
+      .layoutWeight(1) // Set the layout weight of the current Row in the parent Column container to 1.
     }
   }
 }
@@ -316,14 +316,14 @@ export default class EntryAbility extends UIAbility {
 
 ## Effect
 
-The following figures show the text rendering effect after different theme fonts are used in the **theme app**.
+The following figures show how text is rendered with different theme fonts in a theme application.
 
-The display effect varies according to the theme font.
+The following figures are for reference only.
 
-**Figure 2** Theme font 1
+**Figure 2** Effect of theme font 1
 
 ![themeFont_ts_01](figures/themeFont.PNG)
 
-**Figure 3** Theme font 2
+**Figure 3** Effect of theme font 2
 
 ![themeFont_ts_02](figures/themeFont_ts_02.png)

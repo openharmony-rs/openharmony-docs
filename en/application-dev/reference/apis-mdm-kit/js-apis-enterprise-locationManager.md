@@ -35,11 +35,13 @@ Sets a location service policy.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy exclusivity](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity).
+
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility.|
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | policy | [LocationPolicy](#locationpolicy) | Yes   | Location service policy to set. The value can be any of the following:<br>- **0**: The default policy is used.<br>- **1**: The location service is disabled.<br>- **2**: The location service is forcibly enabled.|
 
 **Error codes**
@@ -88,7 +90,7 @@ Queries the location service policy.
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility.       |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.       |
 
 **Return value**
 

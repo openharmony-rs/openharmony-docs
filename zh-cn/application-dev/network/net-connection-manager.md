@@ -20,7 +20,8 @@
 - 网络消费者：数据网络的使用方。例如应用或系统服务。
 - 网络探测：检测网络有效性，避免将网络从可用网络切换到不可用网络。包括绑定网络探测、DNS探测、HTTP探测及HTTPS探测。
 - 网络优选：处理多网络共存时选择最优网络。在网络状态、网络信息及评分发生变化时被触发。
-- 默认网络：默认路由所在的网络。
+- 默认网络：系统默认使用的网络。由系统决定，与应用是否指定网络无关，通常为WIFI /蜂窝/以太网/蓝牙其中之一。
+- 网络句柄：网络的唯一标识。
 
 ## 场景介绍
 
@@ -36,7 +37,8 @@
 ## 接收指定网络的状态变化通知
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO。
-此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
+
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 
 2. 从@kit.NetworkKit中导入connection命名空间。
 
@@ -79,15 +81,32 @@
      hilog.info(0x0000, 'testTag', 'Network available, NetId is ' + data.netId);
      // ...
    });
-   
+     
    // 订阅事件，如果当前指定网络不可用，通过on_netUnavailable通知用户
    conn.on('netUnavailable', (data: void) => {
      hilog.info(0x0000, 'testTag', 'Network unavailable, data is ' + JSON.stringify(data));
      // ...
    });
+   // 订阅网络能力变化事件，如果当前指定网络的能力发生变化，通过on_netCapabilitiesChange通知用户
+   conn.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netCapabilitiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // 订阅网络连接信息变化事件，如果当前指定网络的连接信息发生变化，通过on_netConnectionPropertiesChange通知用户
+   conn.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netConnectionPropertiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // 订阅网络丢失事件，如果当前处于连接状态的指定网络断开，通过on_netLost通知用户
+   conn.on('netLost', (data: connection.NetHandle) => {
+     hilog.info(0x0000, 'testTag', 'Network netLost, data is ' + JSON.stringify(data));
+     // ...
+   });
    ```
 
-5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会收到netAvailable事件的回调；当网络不可用时，会收到netUnavailable事件的回调。
+5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会触发netAvailable事件的回调；当网络从连接到断开时，会触发netLost事件的回调；当网络连接信息变化时（例如linkAddresses增加V6地址），会触发netConnectionPropertiesChange事件回调；当网络能力发生变化时（例如网络的连通性发生变化），会触发netCapabilitiesChange回调。
 
    <!-- @[notification_network_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    
@@ -231,7 +250,8 @@ function socketTest() {
 ## 获取所有注册的网络
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO。
-此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
+
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 
 2. 示例代码
 
@@ -255,7 +275,8 @@ function socketTest() {
 ## 查询默认网络或者指定网络的连接信息
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO。
-此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
+
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 2. 查询默认网络或指定网络连接信息代码示例
    
    通过调用[getDefaultNet](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnet)方法，获取默认的数据网络(NetHandle)；调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息。能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
@@ -371,11 +392,13 @@ function socketTest() {
 如果应用需要检查当前连接的网络是否可以访问互联网，可参考以下步骤进行判断：
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO
-此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
+
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 
 2. 代码示例
    
    调用[getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9)方法，获取当前默认网络的netHandle，netHandle有效的情况下，调用[getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10)方法，获取NetHandle对应网络的能力信息，根据获取到的能力信息，判断networkCap数组中的值判断网络是否可用。
+   
    NET_CAPABILITY_CHECKING_CONNECTIVITY表示在进行连通性判断的过程中，当不处于连通性判断过程中，且networkCap数组中包含NET_CAPABILITY_VALIDATED表示网络连通性校验通过，可以访问互联网。
 
     <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
@@ -417,7 +440,8 @@ function socketTest() {
 ## 使用默认网络解析域名，获取所有IP
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO
-此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
+
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 
 2. 代码示例
    

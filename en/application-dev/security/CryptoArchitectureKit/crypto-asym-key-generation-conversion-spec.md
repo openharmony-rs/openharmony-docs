@@ -71,7 +71,7 @@ When you create an asymmetric key generator, the RSA key can be generated based 
 
 - x indicates that the property that cannot be used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | n | × | √ | × | √ | 
 | pk | N/A | √ | N/A | √ | 
@@ -145,7 +145,7 @@ When you create an asymmetric key generator, the ECC key can be generated based 
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | fieldType | √ | √ | √ | √ | 
 | p | √ | √ | √ | √ | 
@@ -223,7 +223,7 @@ When you create an asymmetric key generator, the DSA key can be generated based 
 
 - x indicates that the property that cannot be used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | p | √ | √ | × | √ | 
 | q | √ | √ | × | √ | 
@@ -274,7 +274,7 @@ When you create an asymmetric key generator, the SM2 key can be generated based 
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | fieldType | √ | √ | √ | √ | 
 | p | √ | √ | √ | √ | 
@@ -328,7 +328,7 @@ When you create an asymmetric key generator, the Ed25519 key can be generated ba
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- |
 | pk | √ | N/A | √ | 
 | sk | N/A | √ | √ | 
@@ -365,7 +365,7 @@ The following table illustrates the composition of the X25519 key parameters.
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- |
 | pk | √ | N/A | √ | 
 | sk | N/A | √ | √ | 
@@ -422,7 +422,7 @@ The following table illustrates the composition of the DH key parameters.
 
 - √ indicates the property used to construct a key parameter.
 
-|  | Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
+| Parameter| Common Parameter| Public Key Parameter| Private Key Parameter| Key Pair Parameter| 
 | -------- | -------- | -------- | -------- | -------- |
 | p | √ | √ | √ | √ | 
 | g | √ | √ | √ | √ | 

@@ -29,14 +29,14 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ------------------------------------- | -------- | ---------------------------- |
 | INVALID_PARAMS                        | 401      | 非法入参。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
 | NOT_SUPPORT                           | 801      | 操作不支持。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
-| ERR_OUT_OF_MEMORY                     | 17620001 | 内存错误。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                   |
-| ERR_RUNTIME_ERROR                     | 17620002 | 运行时外部错误。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| ERR_OUT_OF_MEMORY                     | 17620001 | 内存操作失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                   |
+| ERR_RUNTIME_ERROR                     | 17620002 | 表示在ArkTS和C之间转换参数失败。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | 表示参数检查失败。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
 | ERR_CRYPTO_OPERATION                  | 17630001 | 调用三方算法库API出错。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
 
 ## DataBlob
 
-buffer数组，提供blob数据类型。
+二进制数据的封装接口，核心字段data为Uint8Array类型。
 
  **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -55,6 +55,10 @@ buffer数组，提供blob数据类型。
 加解密参数，在进行对称加解密时需要构造其子类对象，并将子类对象传入[init()](#init-1)方法。
 
 适用于需要iv等参数的对称加解密模式（对于无iv等参数的模式如ECB模式，无需构造，在[init()](#init-1)中传入null即可）。
+
+> **说明：**
+>
+> iv（Initialization Vector，初始化向量）是用于对称加密模式（如 CBC/CTR/OFB/CFB/GCM/CCM/Poly1305）中引入随机性或唯一性的字节序列，保证相同明文在相同密钥下产生不同密文。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -128,8 +132,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为7字节。                              |
-| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为8字节。                             |
+| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，仅支持7字节。若传入iv长度超过7字节，超出范围将被截断。                              |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad。aad最小长度为1字节，最大为2048字节。                            |
 | authTag | [DataBlob](#datablob) | 否   | 否   | 指定加解密参数authTag，长度为12字节。<br/>在CCM模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)末尾提取12字节，作为[init()](#init-1)或[initSync()](#initsync12)方法的参数[CcmParamsSpec](#ccmparamsspec)中的authTag。 |
 
 > **说明：**
@@ -731,7 +735,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 >
 > key指的是用户输入的最初的密钥材料。info与salt是可选参数，根据模式的不同可以传空，但是不可不传。
 >
-> 例如：EXTRACT_AND_EXPAND模式需要输入全部的值，EXTRACT_ONLY模式info可以为空，在构建HKDFspec的时候，info传入null值。
+> 例如：EXTRACT_AND_EXPAND模式需要输入全部的值，EXTRACT_ONLY模式info可以为空，在构建HKDFSpec的时候，info传入null值。
 >
 > 默认的模式为EXTRACT_AND_EXPAND，"HKDF|SHA256|EXTRACT_AND_EXPAND"等价于"HKDF|SHA256"。
 
@@ -814,7 +818,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 >
 > - password是必选参数，表示编码用到的密码。
 >
-> - cipherName是必选参数，可以指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
+> - cipherName是必选参数，指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
 
 ## MacSpec<sup>18+</sup>
 消息认证码参数，计算HMAC、CMAC消息认证码时，需要构建子类对象并作为输入参数。
@@ -882,7 +886,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 密钥（父类），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](#cipher)实例的[init()](#init-1)方法。
 
-密钥可以通过密钥生成器来生成。
+密钥通过子类密钥生成器来生成，详见子类描述。具体子类有：[SymKey](#symkey)、[PubKey](#pubkey)、[PriKey](#prikey)。
 
 ### 属性
 
@@ -938,7 +942,7 @@ async function testGenerateAesKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
   let symKey = await symKeyGenerator.generateSymKey();
   let encodedKey = symKey.getEncoded();
-  console.info('key hex:' + encodedKey.data);
+  console.info('key hex: ' + encodedKey.data);
 }
 ```
 
@@ -946,7 +950,7 @@ async function testGenerateAesKey() {
 
 对称密钥，是[Key](#key)的子类，在对称加解密时需要将其对象传入[Cipher](#cipher)实例的[init()](#init-1)方法使用。
 
-对称密钥可以通过对称密钥生成器[SymKeyGenerator](#symkeygenerator)来生成。
+对称密钥通过对称密钥生成器[SymKeyGenerator](#symkeygenerator)来生成。
 
 ### clearMem
 
@@ -1144,19 +1148,19 @@ getEncodedPem(format: string): string
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let publicPkcs1Str1024: string  =
-  "-----BEGIN RSA PUBLIC KEY-----\n"
-  + "MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n"
-  + "h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n"
-  + "SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n"
-  + "-----END RSA PUBLIC KEY-----\n";
+let publicPkcs1Str1024: string =
+  '-----BEGIN RSA PUBLIC KEY-----\n'
+    + 'MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n'
+    + 'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n'
+    + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
+    + '-----END RSA PUBLIC KEY-----\n';
 
 function TestPubKeyPkcs1ToX509BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
   let pubPemKey = keyPair.pubKey;
   let pubString = pubPemKey.getEncodedPem('X509');
-  console.info("[sync]TestPubKeyPkcs1ToX509BySync1024 pubString output is " + pubString);
+  console.info('[sync]TestPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
 }
 ```
 
@@ -1357,29 +1361,29 @@ getEncodedPem(format: string): string
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let priKeyPkcs1Str1024: string  =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-  + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
-  + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
-  + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
-  + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
-  + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
-  + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
-  + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
-  + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
-  + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
-  + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
-  + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
-  + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
-  + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
-  + "-----END RSA PRIVATE KEY-----\n";
+let priKeyPkcs1Str1024: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n'
+    + 'Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n'
+    + 'YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n'
+    + 'AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n'
+    + 'LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n'
+    + '7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n'
+    + 'D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n'
+    + 'e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n'
+    + 'a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n'
+    + 'MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n'
+    + 'DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n'
+    + 'qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n'
+    + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
+    + '-----END RSA PRIVATE KEY-----\n';
 
 function TestPriKeyPkcs1ToPkcs8BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS8');
-  console.info("[sync]TestPriKeyPkcs1ToPkcs8BySync1024 priString output is " + priString);
+  console.info('[sync]TestPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
 }
 ```
 
@@ -1422,33 +1426,33 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let priKeyPkcs1Str1024: string  =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-    + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
-    + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
-    + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
-    + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
-    + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
-    + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
-    + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
-    + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
-    + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
-    + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
-    + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
-    + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
-    + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
-    + "-----END RSA PRIVATE KEY-----\n";
+let priKeyPkcs1Str1024: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n'
+    + 'Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n'
+    + 'YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n'
+    + 'AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n'
+    + 'LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n'
+    + '7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n'
+    + 'D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n'
+    + 'e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n'
+    + 'a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n'
+    + 'MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n'
+    + 'DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n'
+    + 'qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n'
+    + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
+    + '-----END RSA PRIVATE KEY-----\n';
 
 function TestPriKeyPkcs1Encoded() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let options : cryptoFramework.KeyEncodingConfig = {
-    password: "123456",
-    cipherName: "AES-128-CBC"
+  let options: cryptoFramework.KeyEncodingConfig = {
+    password: '123456',
+    cipherName: 'AES-128-CBC'
   }
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS1', options);
-  console.info("[sync]TestPriKeyPkcs1Encoded priString output is " + priString);
+  console.info('[sync]TestPriKeyPkcs1Encoded priString output = ' + priString);
 }
 ```
 
@@ -1539,9 +1543,9 @@ async function generateAsyKey() {
     let priKey = keyPair.priKey;
     let pubkey = await priKey.getPubKey();
     let pkBlob = pubkey.getEncoded();
-    console.info('pk1 bin data' + pkBlob.data);
+    console.info('pk1 bin data ' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
-    console.info('result is ' + ret);
+    console.info('result = ' + ret);
   } catch (e) {
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
@@ -1618,7 +1622,7 @@ function generateAsyKey() {
       169, 167, 97, 161, 33, 86, 178, 77, 140, 12, 114, 78, 129, 47, 103, 87, 217, 177, 80, 156, 91, 240, 149, 254, 90,
       69, 232, 10, 56, 232, 63, 59, 148, 254, 101, 63, 146, 66, 96, 25, 31, 37, 154, 77, 145, 201, 213, 122, 245, 90,
       251, 219, 42, 131, 248, 148, 151
-  ])
+    ])
   let expectPkdata =
     new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
       2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22, 80, 100, 197, 243,
@@ -1627,7 +1631,7 @@ function generateAsyKey() {
       34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30, 248, 9, 181, 150,
       243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131, 171, 22, 15, 7, 12,
       172, 135, 196, 30, 93, 2, 3, 1, 0, 1
-  ])
+    ])
   let skDataBlob: cryptoFramework.DataBlob = { data: skData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
@@ -1637,7 +1641,7 @@ function generateAsyKey() {
     let pkBlob = pubkey.getEncoded();
     console.info('pk1 bin data' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
-    console.info('result is ' + ret);
+    console.info('result = ' + ret);
   } catch (e) {
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
@@ -1734,7 +1738,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateSymKey(callback: AsyncCallback\<SymKey>): void
 
-异步获取对称密钥生成器随机生成的密钥，通过注册回调函数获取结果。
+获取对称密钥生成器随机生成的密钥。使用callback异步回调。
 
 必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
@@ -1771,7 +1775,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   symKeyGenerator.generateSymKey((err, symKey) => {
-    console.info('Generate symKey success, algName：' + symKey.algName);
+    console.info('Generate symKey result: success, algName：' + symKey.algName);
   });
 ```
 
@@ -1779,7 +1783,7 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
 
 generateSymKey(): Promise\<SymKey>
 
-异步获取该对称密钥生成器随机生成的密钥，通过Promise获取结果。
+获取该对称密钥生成器随机生成的密钥。使用Promise异步回调。
 
 必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
@@ -1814,7 +1818,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   symKeyGenerator.generateSymKey()
     .then(symKey => {
-      console.info('Generate symKey success, algName: ' + symKey.algName);
+      console.info('Generate symKey result: success, algName: ' + symKey.algName);
     }).catch((error: BusinessError) => {
       console.error(`Generate symKey failed, ${error.code}, ${error.message}`);
     });
@@ -1871,7 +1875,7 @@ function testGenerateSymKeySync() {
 
 convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
-异步根据指定数据生成对称密钥，通过注册回调函数获取结果。
+根据指定数据生成对称密钥。使用callback异步回调。
 
 必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
@@ -1918,7 +1922,7 @@ function testConvertKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob, (err, symKey) => {
-    console.info('Convert symKey success, algName: ' + symKey.algName);
+    console.info('Convert symKey result: success, algName: ' + symKey.algName);
   });
 }
 ```
@@ -1927,7 +1931,7 @@ function testConvertKey() {
 
 convertKey(key: DataBlob): Promise\<SymKey>
 
-异步根据指定数据生成对称密钥，通过Promise获取结果。
+根据指定数据生成对称密钥。使用Promise异步回调。
 
 在使用本函数前，需先通过[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器。
 
@@ -1978,7 +1982,7 @@ function testConvertKey() {
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob)
     .then(symKey => {
-      console.info('Convert symKey success, algName：' + symKey.algName);
+      console.info('Convert symKey result: success, algName：' + symKey.algName);
     }).catch((error: BusinessError) => {
       console.error(`Convert symKey failed, ${error.code}, ${error.message}`);
     });
@@ -1989,7 +1993,7 @@ function testConvertKey() {
 
 convertKeySync(key: DataBlob): SymKey
 
-同步根据指定数据生成对称密钥。
+根据指定数据生成对称密钥。
 
 必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
 
@@ -2105,7 +2109,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
-异步获取非对称密钥生成器随机生成的密钥，通过注册回调函数获取结果。
+获取非对称密钥生成器随机生成的密钥。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2137,10 +2141,10 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 asyKeyGenerator.generateKeyPair((err, keyPair) => {
   if (err) {
-    console.error("generateKeyPair: error.");
+    console.error('generateKeyPair result: fail.');
     return;
   }
-  console.info('generateKeyPair: success.');
+  console.info('generateKeyPair result: success.');
 })
 ```
 
@@ -2148,7 +2152,7 @@ asyKeyGenerator.generateKeyPair((err, keyPair) => {
 
 generateKeyPair(): Promise\<KeyPair>
 
-异步获取非对称密钥生成器随机生成的密钥，通过Promise获取结果。
+获取非对称密钥生成器随机生成的密钥。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2181,9 +2185,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 let keyGenPromise = asyKeyGenerator.generateKeyPair();
 keyGenPromise.then(keyPair => {
-  console.info('generateKeyPair success.');
+  console.info('generateKeyPair result: success.');
 }).catch((error: BusinessError) => {
-  console.error("generateKeyPair error.");
+  console.error('generateKeyPair result: fail.');
 });
 ```
 
@@ -2222,12 +2226,12 @@ let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 try {
   let keyPairData = asyKeyGenerator.generateKeyPairSync();
   if (keyPairData != null) {
-    console.info('[Sync]: key pair success');
+    console.info('[Sync]: key pair result: success.');
   } else {
-    console.error("[Sync]: get key pair result fail!");
+    console.error('[Sync]: get key pair result: fail.');
   }
 } catch (e) {
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -2235,7 +2239,7 @@ try {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCallback\<KeyPair\>): void
 
-异步获取指定数据生成非对称密钥，通过注册回调函数获取结果。详情请看下方**密钥转换说明**。
+获取指定数据生成非对称密钥。使用callback异步回调。详情请看下方**密钥转换说明**。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2247,8 +2251,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名     | 类型       | 必填 | 说明                           |
 | -------- | ----------- | ---- | ------------------------------ |
-| pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | 是   | 指定的公钥材料。如果公钥不需要转换，可直接传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
-| priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | 是   | 指定的私钥材料。如果私钥不需要转换，可直接传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
 | callback | AsyncCallback\<[KeyPair](#keypair)> | 是   | 回调函数，用于获取非对称密钥。 |
 
 **错误码：**
@@ -2266,17 +2270,23 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
-let priKeyArray = new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
+let pubKeyArray =
+  new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
+    83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
+    105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235,
+    215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+let priKeyArray =
+  new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57,
+    10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
 let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // 公钥二进制数据。
 let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // 私钥二进制数据。
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
   if (err) {
-    console.error("convertKey: error.");
+    console.error('convertKey result: fail.');
     return;
   }
-  console.info('convertKey: success.');
+  console.info('convertKey result: success.');
 });
 ```
 
@@ -2284,7 +2294,7 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
-异步获取指定数据生成非对称密钥，通过Promise获取结果。详情请看下方**密钥转换说明**。
+获取指定数据生成非对称密钥。使用Promise异步回调。详情请看下方**密钥转换说明**。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2296,8 +2306,8 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的公钥材料。如果公钥不需要转换，可直接传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的私钥材料。如果私钥不需要转换，可直接传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 
 **返回值：**
 
@@ -2321,16 +2331,22 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
-let priKeyArray = new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
+let pubKeyArray =
+  new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
+    83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
+    105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235,
+    215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+let priKeyArray =
+  new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57,
+    10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
 let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // 公钥二进制数据。
 let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // 私钥二进制数据。
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 let keyGenPromise = asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob);
 keyGenPromise.then(keyPair => {
-  console.info('convertKey success.');
+  console.info('convertKey result: success.');
 }).catch((error: BusinessError) => {
-  console.error("convertKey error.");
+  console.error(`convertKey failed, errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -2348,8 +2364,8 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定公钥材料。如果公钥无需转换，传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定私钥材料。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
 
 **返回值：**
 
@@ -2372,20 +2388,26 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let pubKeyArray = new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
-let priKeyArray = new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
+let pubKeyArray =
+  new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
+    83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
+    105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92, 235,
+    215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+let priKeyArray =
+  new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171, 57,
+    10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
 let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // 公钥二进制数据。
 let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // 私钥二进制数据。
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 try {
   let keyPairData = asyKeyGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
   if (keyPairData != null) {
-    console.info('[Sync]: key pair success');
+    console.info('[Sync]: key pair result: success.');
   } else {
-    console.error("[Sync]: convert key pair result fail!");
+    console.error('[Sync]: convert key pair result: fail.');
   }
 } catch (e) {
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -2400,7 +2422,7 @@ try {
 
 convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
-异步获取指定数据生成非对称密钥，通过Promise获取结果。
+获取指定数据生成非对称密钥。使用Promise异步回调。
 
 > **说明：**
 > 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
@@ -2415,8 +2437,8 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。注：公钥和私钥材料不能同时为null。|
+| pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，请传入null。|
+| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，请传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 
 **返回值：**
 
@@ -2440,35 +2462,36 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let priKeyPkcs1Str1024: string  =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-    + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
-    + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
-    + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
-    + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
-    + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
-    + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
-    + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
-    + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
-    + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
-    + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
-    + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
-    + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
-    + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
-    + "-----END RSA PRIVATE KEY-----\n";
-let publicPkcs1Str1024: string  =
-  "-----BEGIN RSA PUBLIC KEY-----\n"
-    + "MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n"
-    + "h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n"
-    + "SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n"
-    + "-----END RSA PUBLIC KEY-----\n";
+let priKeyPkcs1Str1024: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n'
+    + 'Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n'
+    + 'YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n'
+    + 'AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n'
+    + 'LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n'
+    + '7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n'
+    + 'D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n'
+    + 'e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n'
+    + 'a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n'
+    + 'MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n'
+    + 'DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n'
+    + 'qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n'
+    + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
+    + '-----END RSA PRIVATE KEY-----\n';
+let publicPkcs1Str1024: string =
+  '-----BEGIN RSA PUBLIC KEY-----\n'
+    + 'MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n'
+    + 'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n'
+    + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
+    + '-----END RSA PUBLIC KEY-----\n';
+
 async function TestConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024)
     .then(keyPair => {
-    console.info('convertPemKey success.');
-  }).catch((error: BusinessError) => {
-    console.error("convertPemKey error.");
+      console.info('convertPemKey result: success.');
+    }).catch((error: BusinessError) => {
+    console.error(`convertPemKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -2493,8 +2516,8 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，可直接传入null。注：公钥和私钥材料不能同时为null。|
+| pubKey | string \| null | 是  | 指定的公钥材料。如果公钥不需要转换，请传入null。|
+| priKey | string \| null | 是  | 指定的私钥材料。如果私钥不需要转换，请传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 | password | string | 是 | 指定口令，用于解密私钥。|
 
 **返回值：**
@@ -2519,32 +2542,32 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let priKeyPkcs1EncodingStr : string =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-    +"Proc-Type: 4,ENCRYPTED\n"
-    +"DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n"
-    +"7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n"
-    +"t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n"
-    +"vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n"
-    +"/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n"
-    +"W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n"
-    +"mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n"
-    +"T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n"
-    +"LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n"
-    +"Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n"
-    +"BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n"
-    +"k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n"
-    +"iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n"
-    +"OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n"
-    +"-----END RSA PRIVATE KEY-----\n"
+let priKeyPkcs1EncodingStr: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'Proc-Type: 4,ENCRYPTED\n'
+    + 'DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n'
+    + '7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n'
+    + 't0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n'
+    + 'vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n'
+    + '/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n'
+    + 'W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n'
+    + 'mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n'
+    + 'T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n'
+    + 'LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n'
+    + 'Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n'
+    + 'BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n'
+    + 'k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n'
+    + 'iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n'
+    + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
+    + '-----END RSA PRIVATE KEY-----\n'
 
 async function TestConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, "123456")
+  asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456')
     .then(keyPair => {
-    console.info('convertPemKey success.');
-  }).catch((error: BusinessError) => {
-    console.error("convertPemKey error.");
+      console.info('convertPemKey result: success.');
+    }).catch((error: BusinessError) => {
+    console.error(`convertPemKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -2566,8 +2589,8 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，可直接传入null。|
-| priKey | string \| null| 是   | 指定私钥材料。私钥无需转换时，可传入null。注意：公钥和私钥材料不能同时为null。|
+| pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。|
+| priKey | string \| null| 是   | 指定私钥材料。私钥无需转换时，请传入null。<br>**说明**：公钥和私钥材料不能同时为null或空字符串。|
 
 **返回值：**
 
@@ -2590,39 +2613,40 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let priKeyPkcs1Str1024: string  =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-  + "MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n"
-  + "Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n"
-  + "YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n"
-  + "AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n"
-  + "LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n"
-  + "7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n"
-  + "D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n"
-  + "e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n"
-  + "a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n"
-  + "MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n"
-  + "DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n"
-  + "qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n"
-  + "akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n"
-  + "-----END RSA PRIVATE KEY-----\n";
-  let publicPkcs1Str1024: string  =
-  "-----BEGIN RSA PUBLIC KEY-----\n"
-  + "MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n"
-  + "h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n"
-  + "SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n"
-  + "-----END RSA PUBLIC KEY-----\n";
+let priKeyPkcs1Str1024: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n'
+    + 'Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n'
+    + 'YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n'
+    + 'AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n'
+    + 'LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n'
+    + '7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n'
+    + 'D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n'
+    + 'e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n'
+    + 'a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n'
+    + 'MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n'
+    + 'DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n'
+    + 'qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n'
+    + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
+    + '-----END RSA PRIVATE KEY-----\n';
+let publicPkcs1Str1024: string =
+  '-----BEGIN RSA PUBLIC KEY-----\n'
+    + 'MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n'
+    + 'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n'
+    + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
+    + '-----END RSA PUBLIC KEY-----\n';
+
 function TestConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
     let keyPairData = asyKeyGenerator.convertPemKeySync(publicPkcs1Str1024, priKeyPkcs1Str1024);
     if (keyPairData != null) {
-      console.info('[Sync]: convert pem key pair success');
+      console.info('[Sync]: convert pem key pair result: success.');
     } else {
-      console.error("[Sync]: convert pem key pair result fail!");
+      console.error('[Sync]: convert pem key pair result: fail.');
     }
   } catch (e) {
-    console.error(`Sync error, ${e.code}, ${e.message}`);
+    console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -2644,8 +2668,8 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，可传入null。|
-| priKey | string \| null| 是   | 指定私钥材料。若无需转换，传入 null。注意：公钥与私钥材料不可同时为 null。|
+| pubKey | string \| null| 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。|
+| priKey | string \| null| 是   | 指定私钥材料。若无需转换，请传入 null。注意：公钥与私钥材料不可同时为 null。|
 | password | string | 是 | 指定口令，用于解密私钥。|
 
 **返回值：**
@@ -2669,35 +2693,36 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-let priKeyPkcs1EncodingStr : string =
-  "-----BEGIN RSA PRIVATE KEY-----\n"
-    +"Proc-Type: 4,ENCRYPTED\n"
-    +"DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n"
-    +"7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n"
-    +"t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n"
-    +"vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n"
-    +"/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n"
-    +"W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n"
-    +"mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n"
-    +"T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n"
-    +"LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n"
-    +"Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n"
-    +"BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n"
-    +"k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n"
-    +"iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n"
-    +"OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n"
-    +"-----END RSA PRIVATE KEY-----\n"
+let priKeyPkcs1EncodingStr: string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'Proc-Type: 4,ENCRYPTED\n'
+    + 'DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n'
+    + '7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n'
+    + 't0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n'
+    + 'vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n'
+    + '/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n'
+    + 'W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n'
+    + 'mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n'
+    + 'T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n'
+    + 'LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n'
+    + 'Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n'
+    + 'BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n'
+    + 'k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n'
+    + 'iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n'
+    + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
+    + '-----END RSA PRIVATE KEY-----\n'
+
 function TestConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
-    let keyPairData = asyKeyGenerator.convertPemKeySync(null, priKeyPkcs1EncodingStr, "123456");
+    let keyPairData = asyKeyGenerator.convertPemKeySync(null, priKeyPkcs1EncodingStr, '123456');
     if (keyPairData != null) {
-      console.info('[Sync]: convert pem key pair success');
+      console.info('[Sync]: convert pem key pair result: success.');
     } else {
-      console.error("[Sync]: convert pem key pair result fail!");
+      console.error('[Sync]: convert pem key pair result: fail.');
     }
   } catch (e) {
-    console.error(`Sync error, ${e.code}, ${e.message}`);
+    console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -2707,8 +2732,6 @@ function TestConvertPemKeyBySync() {
 createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
 指定密钥参数，获取非对称密钥生成器实例。
-
-支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2720,7 +2743,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 参数名  | 类型   | 必填 | 说明                             |
 | ------- | ------ | ---- | -------------------------------- |
-| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。 |
+| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。<br>支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。|
 
 **返回值：**
 
@@ -2746,11 +2769,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2759,11 +2782,11 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
@@ -2792,7 +2815,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
-异步获取非对称密钥生成器生成的密钥，通过注册回调函数获取结果。
+获取非对称密钥生成器生成的密钥。使用callback异步回调。
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
@@ -2826,11 +2849,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2839,25 +2862,24 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGenerateKeyPair()
-{
+function testGenerateKeyPair() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
     if (err) {
-      console.error("generateKeyPair: error.");
+      console.error('generateKeyPair result: fail.');
       return;
     }
-    console.info('generateKeyPair: success.');
+    console.info('generateKeyPair result: success.');
   })
 }
 ```
@@ -2866,7 +2888,7 @@ function testGenerateKeyPair()
 
 generateKeyPair(): Promise\<KeyPair>
 
-异步获取该非对称密钥生成器生成的密钥，通过Promise获取结果。
+获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
@@ -2897,14 +2919,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2913,24 +2936,23 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGenerateKeyPair()
-{
+function testGenerateKeyPair() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generateKeyPair();
   keyGenPromise.then(keyPair => {
-    console.info('generateKeyPair success.');
+    console.info('generateKeyPair result: success.');
   }).catch((error: BusinessError) => {
-    console.error("generateKeyPair error.");
+    console.error(`generateKeyPair failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -2972,11 +2994,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -2985,29 +3007,28 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGenerateKeyPairSync()
-{
+function testGenerateKeyPairSync() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let keyPairData = asyKeyGeneratorBySpec.generateKeyPairSync();
     if (keyPairData != null) {
-      console.info('[Sync]: key pair success');
+      console.info('[Sync]: key pair result: success.');
     } else {
-      console.error("[Sync]: get key pair result fail!");
+      console.error('[Sync]: get key pair result: fail.');
     }
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`sync error, ${e.code}, ${e.message}`);
+    console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
@@ -3016,7 +3037,7 @@ function testGenerateKeyPairSync()
 
 generatePriKey(callback: AsyncCallback\<PriKey>): void
 
-异步获取非对称密钥生成器生成的密钥，通过注册回调函数获取结果。
+获取非对称密钥生成器生成的密钥。使用callback异步回调。
 
 使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型密钥参数创建密钥生成器，生成指定私钥。使用[KEY_PAIR_SPEC](#asykeyspectype10)类型密钥参数创建密钥生成器，从生成的密钥对中获取指定私钥。
 
@@ -3050,11 +3071,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3063,25 +3084,24 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePriKey()
-{
+function testGeneratePriKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
     if (err) {
-      console.error("generatePriKey: error.");
+      console.error('generatePriKey result: fail.');
       return;
     }
-    console.info('generatePriKey: success.');
+    console.info('generatePriKey result: success.');
   })
 }
 ```
@@ -3090,7 +3110,7 @@ function testGeneratePriKey()
 
 generatePriKey(): Promise\<PriKey>
 
-异步获取该非对称密钥生成器生成的密钥，通过Promise获取结果。
+获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
 
 当使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的私钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的私钥。
 
@@ -3125,11 +3145,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3138,24 +3158,23 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePriKey()
-{
+function testGeneratePriKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePriKey();
   keyGenPromise.then(priKey => {
-    console.info('generatePriKey success.');
+    console.info('generatePriKey result: success.');
   }).catch((error: BusinessError) => {
-    console.error("generatePriKey error.");
+    console.error(`generatePriKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -3196,11 +3215,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3209,28 +3228,27 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePriKeySync()
-{
+function testGeneratePriKeySync() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let priKeyData = asyKeyGeneratorBySpec.generatePriKeySync();
     if (priKeyData != null) {
-      console.info('[Sync]: pri key success');
+      console.info('[Sync]: pri key result: success.');
     } else {
-      console.error("[Sync]: get pri key result fail!");
+      console.error('[Sync]: get pri key result: fail.');
     }
   } catch (e) {
-    console.error(`sync error, ${e.code}, ${e.message}`);
+    console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -3239,7 +3257,7 @@ function testGeneratePriKeySync()
 
 generatePubKey(callback: AsyncCallback\<PubKey>): void
 
-异步获取非对称密钥生成器生成的密钥，通过注册回调函数获取结果。
+获取非对称密钥生成器生成的密钥。使用callback异步回调。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
@@ -3273,11 +3291,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3286,25 +3304,24 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePubKey()
-{
+function testGeneratePubKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
     if (err) {
-      console.error("generatePubKey: error.");
+      console.error('generatePubKey result: fail.');
       return;
     }
-    console.info('generatePubKey: success.');
+    console.info('generatePubKey result: success.');
   })
 }
 ```
@@ -3313,7 +3330,7 @@ function testGeneratePubKey()
 
 generatePubKey(): Promise\<PubKey>
 
-异步获取该非对称密钥生成器生成的密钥，通过Promise获取结果。
+获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
@@ -3348,11 +3365,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3361,24 +3378,23 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePubKey()
-{
+function testGeneratePubKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   let keyGenPromise = asyKeyGeneratorBySpec.generatePubKey();
   keyGenPromise.then(pubKey => {
-    console.info('generatePubKey success.');
+    console.info('generatePubKey result: success.');
   }).catch((error: BusinessError) => {
-    console.error("generatePubKey error.");
+    console.error(`generatePubKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -3419,11 +3435,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
   let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
-    p: BigInt("0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729"),
-    q: BigInt("0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b"),
-    g: BigInt("0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd"),
+    p: BigInt('0xed1501551b8ab3547f6355ffdc2913856ddeca198833dbd04f020e5f25e47c50e0b3894f7690a0d2ea5ed3a7be25c54292a698e1f086eb3a97deb4dbf04fcad2dafd94a9f35c3ae338ab35477e16981ded6a5b13d5ff20bf55f1b262303ad3a80af71aa6aa2354d20e9c82647664bdb6b333b7bea0a5f49d55ca40bc312a1729'),
+    q: BigInt('0xd23304044019d5d382cfeabf351636c7ab219694ac845051f60b047b'),
+    g: BigInt('0x2cc266d8bd33c3009bd67f285a257ba74f0c3a7e12b722864632a0ac3f2c17c91c2f3f67eb2d57071ef47aaa8f8e17a21ad2c1072ee1ce281362aad01dcbcd3876455cd17e1dd55d4ed36fa011db40f0bbb8cba01d066f392b5eaa9404bfcb775f2196a6bc20eeec3db32d54e94d87ecdb7a0310a5a017c5cdb8ac78597778bd'),
   }
   return dsaCommonSpec;
 }
@@ -3432,41 +3448,40 @@ function genDsa1024CommonSpecBigE() {
 function genDsa1024KeyPairSpecBigE() {
   let dsaCommonSpec = genDsa1024CommonSpecBigE();
   let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
-    algName: "DSA",
+    algName: 'DSA',
     specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
     params: dsaCommonSpec,
-    sk: BigInt("0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9"),
-    pk: BigInt("0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b"),
+    sk: BigInt('0xa2dd2adb2d11392c2541930f61f1165c370aabd2d78d00342e0a2fd9'),
+    pk: BigInt('0xae6b5d5042e758f3fc9a02d009d896df115811a75b5f7b382d8526270dbb3c029403fafb8573ba4ef0314ea86f09d01e82a14d1ebb67b0c331f41049bd6b1842658b0592e706a5e4d20c14b67977e17df7bdd464cce14b5f13bae6607760fcdf394e0b73ac70aaf141fa4dafd736bd0364b1d6e6c0d7683a5de6b9221e7f2d6b'),
   }
   return dsaKeyPairSpec;
 }
 
-function testGeneratePubKeySync()
-{
+function testGeneratePubKeySync() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
   try {
     let pubKeyData = asyKeyGeneratorBySpec.generatePubKeySync();
     if (pubKeyData != null) {
-      console.info('[Sync]: pub key success');
+      console.info('[Sync]: pub key result: success.');
     } else {
-      console.error("[Sync]: get pub key result fail!");
+      console.error('[Sync]: get pub key result: fail.');
     }
   } catch (e) {
-    console.error(`sync error, ${e.code}, ${e.message}`);
+    console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
 
 ## ECCKeyUtil<sup>11+</sup>
 
-根据椭圆曲线名生成相应的非对称公共密钥参数。
+用于根据椭圆曲线名称为非对称密钥对生成公共参数。
 
 ### genECCCommonParamsSpec<sup>11+</sup>
 
 static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 
-根据椭圆曲线相应的NID（Name IDentifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
+根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3478,7 +3493,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 | 参数名  | 类型   | 必填 | 说明                                           |
 | ------- | ------ | ---- | ---------------------------------------------- |
-| curveName | string | 是   | 椭圆曲线相应的NID（Name IDentifier）字符串名称。 |
+| curveName | string | 是   | 椭圆曲线相应的NID（Name Identifier）字符串名称。 |
 
 **返回值：**
 
@@ -3503,10 +3518,10 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let ECCCommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_brainpoolP160r1');
-    console.info('genECCCommonParamsSpec success');
+    console.info('genECCCommonParamsSpec result: success.');
 } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error(`genECCCommonParamsSpec error, ${e.code}, ${e.message}`);
+    console.error(`genECCCommonParamsSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3514,7 +3529,7 @@ try {
 
 static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
-根据椭圆曲线的曲线名，即相应的NID（Name IDentifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。  
+根据椭圆曲线的曲线名，即相应的NID（Name Identifier），将指定的点数据转换为Point对象。当前支持压缩/非压缩格式的点数据。  
 
 > **说明：**
 >
@@ -3530,7 +3545,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
 | 参数名       | 类型        | 必填 | 说明                                           |
 | ------------ | ---------- | ---- | ---------------------------------------------- |
-| curveName    | string     | 是   | 椭圆曲线的曲线名，即相应的NID（Name IDentifier）。 |
+| curveName    | string     | 是   | 椭圆曲线的曲线名，即相应的NID（Name Identifier）。 |
 | encodedPoint | Uint8Array | 是   | 指定的ECC椭圆曲线上的点的数据。 |
 
 **返回值：**
@@ -3555,7 +3570,10 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 // 随机生成的非压缩点数据。
-let pkData = new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+let pkData =
+  new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
+    157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242,
+    206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
 let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
 console.info('returnPoint: ' + returnPoint.x.toString(16));
 ```
@@ -3564,7 +3582,7 @@ console.info('returnPoint: ' + returnPoint.x.toString(16));
 
 static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Array
 
-根据椭圆曲线的曲线名，即相应的NID（Name IDentifier），按照指定的点数据格式，将Point对象转换为点数据。当前支持压缩/非压缩格式的点数据。
+根据椭圆曲线的曲线名，即相应的NID（Name Identifier），按照指定的点数据格式，将Point对象转换为点数据。当前支持压缩/非压缩格式的点数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3574,7 +3592,7 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 | 参数名       | 类型               | 必填 | 说明                                           |
 | ------------ | ----------------- | ---- | ---------------------------------------------- |
-| curveName    | string            | 是   | 椭圆曲线的曲线名，即相应的NID（Name IDentifier）。 |
+| curveName    | string            | 是   | 椭圆曲线的曲线名，即相应的NID（Name Identifier）。 |
 | point        | [Point](#point10) | 是   | 椭圆曲线上的Point点对象。 |
 | format       | string            | 是   | 需要获取的点数据格式，当前支持"COMPRESSED"或"UNCOMPRESSED"。 |
 
@@ -3663,10 +3681,10 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let DHCommonParamsSpec = cryptoFramework.DHKeyUtil.genDHCommonParamsSpec(2048);
-    console.info('genDHCommonParamsSpec success');
+    console.info('genDHCommonParamsSpec result: success.');
 } catch (err) {
     let e: BusinessError = err as BusinessError;
-    console.error(`genDHCommonParamsSpec error, ${e.code}, ${e.message}`);
+    console.error(`genDHCommonParamsSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3689,7 +3707,7 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | spec   | [SM2CipherTextSpec](#sm2ciphertextspec12) | 是   | 指定的SM2密文参数。 |
-| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。  |
+| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。为空或空字符串时使用默认值。 |
 
 **返回值：**
 
@@ -3712,18 +3730,20 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-  let spec : cryptoFramework.SM2CipherTextSpec = {
+  let spec: cryptoFramework.SM2CipherTextSpec = {
     xCoordinate: BigInt('20625015362595980457695435345498579729138244358573902431560627260141789922999'),
     yCoordinate: BigInt('48563164792857017065725892921053777369510340820930241057309844352421738767712'),
-    cipherTextData: new Uint8Array([100,227,78,195,249,179,43,70,242,69,169,10,65,123]),
-    hashData: new Uint8Array([87,167,167,247,88,146,203,234,83,126,117,129,52,142,82,54,152,226,201,111,143,115,169,125,128,42,157,31,114,198,109,244]),
+    cipherTextData: new Uint8Array([100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169, 10, 65, 123]),
+    hashData: new Uint8Array([87, 167, 167, 247, 88, 146, 203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201,
+      111, 143, 115, 169, 125, 128, 42, 157, 31, 114, 198, 109, 244]),
   }
   let data = cryptoFramework.SM2CryptoUtil.genCipherTextBySpec(spec, 'C1C3C2');
-  console.info('genCipherTextBySpec success');
+  console.info('genCipherTextBySpec result: success.');
 } catch (err) {
   let e: BusinessError = err as BusinessError;
-  console.error(`genCipherTextBySpec error, ${e.code}, ${e.message}`);
+  console.error(`genCipherTextBySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3742,7 +3762,7 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | cipherText     | [DataBlob](#datablob)                 | 是   | 符合国密标准的ASN.1格式的SM2密文。 |
-| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。  |
+| mode  | string | 否   | 可选的密文转换模式，可用于指定密文参数的拼接顺序，当前仅支持默认值"C1C3C2"。为空或空字符串时使用默认值。 |
 
 **返回值：**
 
@@ -3763,14 +3783,20 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    let cipherTextArray = new Uint8Array([48,118,2,32,45,153,88,82,104,221,226,43,174,21,122,248,5,232,105,41,92,95,102,224,216,149,85,236,110,6,64,188,149,70,70,183,2,32,107,93,198,247,119,18,40,110,90,156,193,158,205,113,170,128,146,109,75,17,181,109,110,91,149,5,110,233,209,78,229,96,4,32,87,167,167,247,88,146,203,234,83,126,117,129,52,142,82,54,152,226,201,111,143,115,169,125,128,42,157,31,114,198,109,244,4,14,100,227,78,195,249,179,43,70,242,69,169,10,65,123]);
-    let cipherText : cryptoFramework.DataBlob = {data : cipherTextArray};
-    let spec : cryptoFramework.SM2CipherTextSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(cipherText, 'C1C3C2');
-    console.info('getCipherTextSpec success');
+  let cipherTextArray =
+    new Uint8Array([48, 118, 2, 32, 45, 153, 88, 82, 104, 221, 226, 43, 174, 21, 122, 248, 5, 232, 105, 41, 92, 95, 102,
+      224, 216, 149, 85, 236, 110, 6, 64, 188, 149, 70, 70, 183, 2, 32, 107, 93, 198, 247, 119, 18, 40, 110, 90, 156,
+      193, 158, 205, 113, 170, 128, 146, 109, 75, 17, 181, 109, 110, 91, 149, 5, 110, 233, 209, 78, 229, 96, 4, 32, 87,
+      167, 167, 247, 88, 146, 203, 234, 83, 126, 117, 129, 52, 142, 82, 54, 152, 226, 201, 111, 143, 115, 169, 125, 128,
+      42, 157, 31, 114, 198, 109, 244, 4, 14, 100, 227, 78, 195, 249, 179, 43, 70, 242, 69, 169, 10, 65, 123]);
+  let cipherText: cryptoFramework.DataBlob = { data: cipherTextArray };
+  let spec: cryptoFramework.SM2CipherTextSpec = cryptoFramework.SM2CryptoUtil.getCipherTextSpec(cipherText, 'C1C3C2');
+  console.info('getCipherTextSpec result: success.');
 } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error(`getCipherTextSpec error, ${e.code}, ${e.message}`);
+  let e: BusinessError = err as BusinessError;
+  console.error(`getCipherTextSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3779,8 +3805,6 @@ try {
 createCipher(transformation: string): Cipher
 
 通过指定算法名称，获取相应的[Cipher](#cipher)实例。
-
-支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3792,7 +3816,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名         | 类型   | 必填 | 说明                                                         |
 | -------------- | ------ | ---- | ------------------------------------------------------------ |
-| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。 |
+| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。<br>支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。 |
 
 > **说明：**
 >
@@ -3828,7 +3852,7 @@ try {
   console.info('cipher algName：' + cipher.algName);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -3859,7 +3883,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback\<void>): void
 
-初始化加解密的[cipher](#cipher)对象，通过注册回调函数获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+初始化加解密的[cipher](#cipher)对象，使用callback异步回调获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
@@ -3875,7 +3899,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode   | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
 | key      | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
-| params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
+| params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
 | callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
@@ -3887,13 +3911,14 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                            |
 | 17620002 | failed to convert parameters between arkts and c.                                          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
 | 17630001 | crypto operation error.|
 
 ### init
 
 init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
 
-初始化加解密的cipher对象，通过Promise获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+初始化加解密的cipher对象。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
@@ -3909,7 +3934,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | ------ | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
 | key    | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
-| params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
+| params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
 
 **返回值：**
 
@@ -3926,6 +3951,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                     |
 | 17620002 | failed to convert parameters between arkts and c.                                    |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
 | 17630001 | crypto operation error.|
 
 ### initSync<sup>12+</sup>
@@ -3946,7 +3972,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | opMode | [CryptoMode](#cryptomode)                       | 是   | 加密或者解密模式。                                           |
 | key    | [Key](#key)                                     | 是   | 指定加密或解密的密钥。                                       |
-| params | [ParamsSpec](#paramsspec)  \| null| 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，可以传入null。 |
+| params | [ParamsSpec](#paramsspec)  \| null| 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。 |
 
 **错误码：**
 
@@ -3957,13 +3983,14 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
 | 17630001 | crypto operation error. |
 
 ### update
 
 update(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 
-分段更新加密或者解密数据操作，通过注册回调函数获取加/解密数据。
+分段更新加密或者解密数据操作。使用callback异步回调。
 
 必须在对[Cipher](#cipher)实例使用[init()](#init-1)初始化后，才能使用本函数。
 
@@ -4009,13 +4036,14 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                               |
 | 17620002 | failed to convert parameters between arkts and c.                            |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                     |
 
 ### update
 
 update(data: DataBlob): Promise\<DataBlob>
 
-分段更新加密或者解密数据操作，通过Promise获取加/解密数据。
+分段更新加密或者解密数据操作。使用Promise异步回调。
 
 必须在对[Cipher](#cipher)实例使用[init()](#init-1)初始化后，才能使用本函数。
 
@@ -4056,6 +4084,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
 | 17620002 | failed to convert parameters between arkts and c.                               |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                      |
 
 ### updateSync<sup>12+</sup>
@@ -4093,19 +4122,20 @@ updateSync(data: DataBlob): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
 ### doFinal
 
 doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
-（1）在对称加解密中doFinal用于处理剩余数据和本次传入的数据，并最终结束加密或解密操作，通过注册回调函数获取加密或解密后的数据。如果数据量较小，可以在 `doFinal` 中一次性传入数据，而不使用update；如果在本次加解密流程中已经使用[update](#update)传入过数据，可以在doFinal的data参数处传入null。根据对称加解密的模式不同，doFinal的输出有以下区别：
+（1）在对称加解密中doFinal用于处理剩余数据和本次传入的数据，并最终结束加密或解密操作，使用callback异步回调函数获取加密或解密后的数据。如果数据量较小，可以在 `doFinal` 中一次性传入数据，而不使用update；如果在本次加解密流程中已经使用[update](#update)传入过数据，可以在doFinal的data参数处传入null。根据对称加解密的模式不同，doFinal的输出有以下区别：
 
 - 在GCM和CCM模式的对称加密中，一次加密流程中，将每次update和doFinal的结果拼接起来，会得到“密文 + authTag”。GCM模式下，authTag为末尾的16字节；CCM模式下，authTag为末尾的12字节。其余部分均为密文。如果doFinal的data参数传入null，则doFinal的结果就是authTag。解密时，authTag需要填入[GcmParamsSpec](#gcmparamsspec)或[CcmParamsSpec](#ccmparamsspec)，密文作为解密时的data参数。
 - 对于其他模式的对称加解密及GCM和CCM模式的对称解密：每次加/解密流程中，update和doFinal的结果拼接起来，得到完整的明文或密文。
 
 
-（2）在RSA、SM2非对称加解密中，doFinal加/解密本次传入的数据，通过注册回调函数获取加密或者解密数据。如果数据量较大，可以多次调用doFinal，拼接结果得到完整的明文/密文。
+（2）在RSA、SM2非对称加解密中，doFinal加/解密本次传入的数据，使用callback异步回调函数获取加密或者解密数据。如果数据量较大，可以多次调用doFinal，拼接结果得到完整的明文/密文。
 
 > **说明：**
 >
@@ -4137,6 +4167,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
 **以AES GCM模式加密为例：**
@@ -4167,7 +4198,7 @@ function genGcmParamsSpec() {
     iv: ivBlob,
     aad: aadBlob,
     authTag: tagBlob,
-    algName: "GcmParamsSpec"
+    algName: 'GcmParamsSpec'
   };
   return gcmParamsSpec;
 }
@@ -4178,7 +4209,7 @@ function cipherByCallback() {
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   symKeyGenerator.generateSymKey((err, symKey) => {
     cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err) => {
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       cipher.update(plainText, (err, encryptUpdate) => {
         cipher.doFinal(null, (err, tag) => {
@@ -4195,12 +4226,12 @@ function cipherByCallback() {
 
 doFinal(data: DataBlob | null): Promise\<DataBlob>
 
-（1）在对称加解密中，doFinal加/解密（分组模式产生的）剩余数据和本次传入的数据，最后结束加密或者解密数据操作，通过Promise获取加密或者解密数据。<br/>如果数据量较小，可以在doFinal中一次性传入数据，而不使用update；如果在本次加解密流程中，已经使用update传入过数据，可以在doFinal的data参数处传入null。<br/>根据对称加解密的模式不同，doFinal的输出有如下区别：
+（1）在对称加解密中，doFinal加/解密（分组模式产生的）剩余数据和本次传入的数据，最后结束加密或者解密数据操作，使用Promise异步回调获取加密或者解密数据。<br/>如果数据量较小，可以在doFinal中一次性传入数据，而不使用update；如果在本次加解密流程中，已经使用update传入过数据，可以在doFinal的data参数处传入null。<br/>根据对称加解密的模式不同，doFinal的输出有如下区别：
 
 - 对于GCM和CCM模式的对称加密：一次加密流程中，如果将每一次update和doFinal的结果拼接起来，会得到“密文+authTag”，即末尾的16字节（GCM模式）或12字节（CCM模式）是authTag，而其余部分均为密文。（也就是说，如果doFinal的data参数传入null，则doFinal的结果就是authTag）<br/>authTag需要填入解密时的[GcmParamsSpec](#gcmparamsspec)或[CcmParamsSpec](#ccmparamsspec)；密文则作为解密时的入参data。
 - 对于其他模式的对称加解密及GCM和CCM模式的对称解密：一次加解密流程中，每次update和doFinal的结果拼接起来，得到完整的明文或密文。
 
-（2）在RSA和SM2非对称加解密中，使用doFinal方法加解密传入的数据，并通过Promise获取加密或解密结果。如果数据量较大，可以多次调用doFinal，拼接结果以获得完整的明文或密文。
+（2）在RSA和SM2非对称加解密中，使用doFinal方法加解密传入的数据，并使用Promise异步回调获取加密或解密结果。如果数据量较大，可以多次调用doFinal，拼接结果以获得完整的明文或密文。
 
 > **说明：**
 >
@@ -4241,6 +4272,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
 | 17620002 | failed to convert parameters between arkts and c.                               |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error.                      |
 
 **以AES GCM模式加密为例：**
@@ -4271,7 +4303,7 @@ function genGcmParamsSpec() {
     iv: ivBlob,
     aad: aadBlob,
     authTag: tagBlob,
-    algName: "GcmParamsSpec"
+    algName: 'GcmParamsSpec'
   };
   return gcmParamsSpec;
 }
@@ -4282,7 +4314,7 @@ async function cipherByPromise() {
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   let symKey = await symKeyGenerator.generateSymKey();
   await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = "This is a test";
+  let message = 'This is a test';
   let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
   let encryptUpdate = await cipher.update(plainText);
   gcmParams.authTag = await cipher.doFinal(null);
@@ -4333,6 +4365,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
 | 17620002 | failed to convert parameters between arkts and c.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
 | 17630001 | crypto operation error. |
 
 **以AES GCM模式加密为例：**
@@ -4363,7 +4396,7 @@ function genGcmParamsSpec() {
     iv: ivBlob,
     aad: aadBlob,
     authTag: tagBlob,
-    algName: "GcmParamsSpec"
+    algName: 'GcmParamsSpec'
   };
   return gcmParamsSpec;
 }
@@ -4374,20 +4407,19 @@ async function cipherBySync() {
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   let symKey = await symKeyGenerator.generateSymKey();
   await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = "This is a test";
+  let message = 'This is a test';
   let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
   let encryptUpdate = cipher.updateSync(plainText);
   gcmParams.authTag = cipher.doFinalSync(null);
   console.info('encryptUpdate plainText: ' + encryptUpdate.data);
 }
-
 ```
 
 ### setCipherSpec<sup>10+</sup>
 
 setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
-设置加解密参数。常用的加解密参数可以直接通过[createCipher](#cryptoframeworkcreatecipher) 来指定，剩余参数可以通过本接口指定。当前只支持RSA算法。
+设置加解密参数。常用的加解密参数直接通过[createCipher](#cryptoframeworkcreatecipher) 来指定，剩余参数通过本接口指定。当前只支持RSA算法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4411,15 +4443,17 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Unsupported itemType.|
 | 17630001 | crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+
 function testsetCipherSpec() {
-  let cipher = cryptoFramework.createCipher("RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1");
-  let pSource = new Uint8Array([1,2,3,4]);
+  let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+  let pSource = new Uint8Array([1, 2, 3, 4]);
   cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
 }
 ```
@@ -4457,6 +4491,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Unsupported itemType.|
 | 17630001 | crypto operation error. |
 
 **示例：**
@@ -4465,7 +4500,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testGetCipherSpec() {
-  let cipher = cryptoFramework.createCipher("RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1");
+  let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
   let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
   console.info('getCipherSpec: mdName =' + mdName);
 }
@@ -4477,8 +4512,6 @@ createSign(algName: string): Sign
 
 生成Sign实例。
 
-支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
@@ -4489,7 +4522,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。签名时，通过设置OnlySign参数可传入数据摘要仅作签名。 |
+| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。签名时，通过设置OnlySign参数可传入数据摘要仅作签名。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值**：
 
@@ -4554,7 +4587,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(priKey: PriKey, callback: AsyncCallback\<void>): void
 
-使用私钥初始化Sign对象，通过注册回调函数获取结果。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
+使用私钥初始化Sign对象。使用callback异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
 Sign类不支持重复初始化。
 
@@ -4586,7 +4619,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(priKey: PriKey): Promise\<void>
 
-使用私钥初始化Sign对象，通过Promise获取结果。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
+使用私钥初始化Sign对象。使用Promise异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
 Sign类不支持重复初始化。
 
@@ -4652,7 +4685,7 @@ Sign类不支持重复调用initSync。
 
 update(data: DataBlob, callback: AsyncCallback\<void>): void
 
-追加待签名数据，通过注册回调函数完成更新。
+追加待签名数据，使用callback异步回调完成更新。
 
 必须在对[Sign](#sign)实例使用[init()](#init-2)初始化后，才能使用本函数。
 
@@ -4692,7 +4725,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(data: DataBlob): Promise\<void>
 
-追加待签名数据，通过Promise方式完成更新。
+追加待签名数据，使用Promise异步回调方式完成更新。
 
 在使用本函数前，必须先使用[Sign](#sign)方法对[init()](#init-3)实例进行初始化。
 
@@ -4780,7 +4813,7 @@ updateSync(data: DataBlob): void
 
 sign(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
-对数据进行签名，通过注册回调函数获取签名结果。
+对数据进行签名。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4810,7 +4843,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 sign(data: DataBlob | null): Promise\<DataBlob>
 
-对数据进行签名，通过Promise方式返回签名结果。
+对数据进行签名。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4883,10 +4916,45 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
 
 function signByCallback() {
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
   let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
@@ -4895,7 +4963,7 @@ function signByCallback() {
     signer.init(keyPair.priKey, err => {
       signer.update(inputUpdate, err => {
         signer.sign(inputVerify, (err, signData) => {
-          console.info('sign output is ' + signData.data);
+          console.info('sign output = ' + signData.data);
         });
       });
     });
@@ -4916,16 +4984,51 @@ async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) 
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = await rsaGenerator.convertKey(pubKeyBlob, priKeyBlob);
-  console.info('convertKey success');
+  console.info('convertKey result: success.');
   return keyPair;
 }
 
 async function signByPromise() {
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputSign: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputSign: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
   await signer.init(keyPair.priKey);
   await signer.update(inputUpdate);
@@ -4947,16 +5050,51 @@ function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
-  console.info('convertKeySync success');
+  console.info('convertKeySync result: success.');
   return keyPair;
 }
 
 function signBySync() {
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
-  let keyPair =  genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputSign: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
+  let keyPair = genKeyPairByData(pkData, skData);
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputSign: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
   signer.initSync(keyPair.priKey);
   signer.updateSync(inputUpdate);
@@ -5006,7 +5144,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testSetSignSpec() {
-  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
+  let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
   signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
 }
@@ -5053,10 +5191,10 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testGetSignSpec() {
-  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
+  let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 32;
   signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  let saltLen = signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
 }
 ```
 
@@ -5065,8 +5203,6 @@ function testGetSignSpec() {
 createVerify(algName: string): Verify
 
 生成Verify实例。
-
-支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5078,7 +5214,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。 |
+| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值**：
 
@@ -5138,7 +5274,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(pubKey: PubKey, callback: AsyncCallback\<void>): void
 
-传入公钥初始化Verify对象，通过注册回调函数获取结果。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
+传入公钥初始化Verify对象。使用callback异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5168,7 +5304,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(pubKey: PubKey): Promise\<void>
 
-传入公钥初始化Verify对象，通过Promise获取结果。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
+传入公钥初始化Verify对象。使用Promise异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5236,7 +5372,7 @@ initSync(pubKey: PubKey): void
 
 update(data: DataBlob, callback: AsyncCallback\<void>): void
 
-追加待验签数据，通过注册回调函数完成更新。
+追加待验签数据，使用callback异步回调完成更新。
 
 必须在对[Verify](#verify)实例使用[init](#init-4)初始化后，才能使用本函数。
 
@@ -5275,7 +5411,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(data: DataBlob): Promise\<void>
 
-追加待验签数据，通过Promise方式完成更新。
+追加待验签数据，使用Promise异步回调完成更新。
 
 必须在对[Verify](#verify)实例使用[init()](#init-5)初始化后，才能使用本函数。
 
@@ -5361,7 +5497,7 @@ updateSync(data: DataBlob): void
 
 verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback\<boolean>): void
 
-对数据进行验签，通过注册回调函数返回验签结果。
+对数据进行验签。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5392,7 +5528,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 verify(data: DataBlob | null, signatureData: DataBlob): Promise\<boolean>
 
-对数据进行验签，通过Promise返回验签结果。
+对数据进行验签。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5467,22 +5603,64 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
 
 function verifyByCallback() {
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   // 根据密钥数据生成的密钥和输入的验签数据，这部分代码Verify与Sign中保持一致，保证验签通过。
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
   let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
   // 该数据取自Sign中的signData.data。
-  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) }
+  let signMessageBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+  }
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
     verifier.init(keyPair.pubKey, err => {
       verifier.update(inputUpdate, err => {
         verifier.verify(inputVerify, signMessageBlob, (err, res) => {
-          console.info('verify result is ' + res);
+          console.info('verify result = ' + res);
         });
       });
     });
@@ -5503,19 +5681,61 @@ async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) 
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = await rsaGenerator.convertKey(pubKeyBlob, priKeyBlob);
-  console.info('convertKey success');
+  console.info('convertKey result: success.');
   return keyPair;
 }
 
 async function verifyByPromise() {
   // 根据密钥数据生成的密钥和输入的验签数据，这部分代码Verify与Sign中保持一致，保证验签通过。
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   // 该数据取自Sign中的signData.data。
-  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) };
+  let signMessageBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+  };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   await verifier.init(keyPair.pubKey);
   await verifier.update(inputUpdate);
@@ -5537,19 +5757,61 @@ function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
-  console.info('convertKey success');
+  console.info('convertKey result: success.');
   return keyPair;
 }
 
 function verifyBySync() {
   // 根据密钥数据生成的密钥和输入的验签数据，这部分代码Verify与Sign中保持一致，保证验签通过。
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let keyPair = genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let inputVerify: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   // 该数据取自Sign中的signData.data。
-  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) };
+  let signMessageBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+  };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   verifier.initSync(keyPair.pubKey);
   verifier.updateSync(inputUpdate);
@@ -5562,7 +5824,7 @@ function verifyBySync() {
 
 recover(signatureData: DataBlob): Promise\<DataBlob | null>
 
-对数据进行签名恢复原始数据，通过Promise返回恢复结果。
+对数据进行签名恢复原始数据。使用Promise异步回调。
 
 > **说明：**
 >
@@ -5606,17 +5868,57 @@ async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) 
   let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = await rsaGenerator.convertKey(pubKeyBlob, priKeyBlob);
-  console.info('convertKey success');
+  console.info('convertKey result: success.');
   return keyPair;
 }
 
 async function recoverByPromise() {
   // 根据密钥数据生成的密钥和输入的验签数据，这部分代码Verify与Sign中保持一致，保证验签通过。
-  let pkData = new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
-  let skData = new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48, 130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10, 88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5, 176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224, 40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48, 18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23, 5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0, 255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200, 32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198, 202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224, 170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133, 151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71, 113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144, 57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30, 62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2, 65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222, 66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191, 239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246, 243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55, 232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182, 207, 254, 61, 71, 184, 167, 184]);
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
   let keyPair = await genKeyPairByData(pkData, skData);
   // 该数据取自Sign中的signData.data。
-  let signMessageBlob: cryptoFramework.DataBlob = { data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173, 50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119, 130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202, 87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223, 173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74, 232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209]) };
+  let signMessageBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+  };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
   await verifier.init(keyPair.pubKey);
   try {
@@ -5624,11 +5926,11 @@ async function recoverByPromise() {
     if (rawSignData != null) {
       console.info('[Promise]: recover result: ' + rawSignData.data);
     } else {
-      console.error("[Promise]: get verify recover result fail!");
+      console.error('[Promise]: get verify recover result: fail.');
     }
   } catch (error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`promise error, ${e.code}, ${e.message}`);
+    console.error(`promise failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -5676,7 +5978,7 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
-设置验签参数。常用的签名参数可以直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数可以通过本接口指定。
+设置验签参数。常用的签名参数直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数通过本接口指定。
 
 支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
 
@@ -5712,7 +6014,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testSetVerifySpec() {
-  let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+  let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
   verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
 }
@@ -5760,10 +6062,10 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 function testGetVerifySpec() {
-  let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+  let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
   verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  let saltLen = verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
 }
 ```
 
@@ -5772,8 +6074,6 @@ function testGetVerifySpec() {
 createKeyAgreement(algName: string): KeyAgreement
 
 生成KeyAgreement实例。
-
-支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5785,7 +6085,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定密钥协商算法：目前仅支持ECC，从API version 11开始，增加支持X25519和DH。 |
+| algName | string | 是   | 指定密钥协商算法：目前仅支持ECC，从API version 11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
 
 **返回值**：
 
@@ -5831,7 +6131,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateSecret(priKey: PriKey, pubKey: PubKey, callback: AsyncCallback\<DataBlob>): void
 
-基于传入的私钥与公钥进行密钥协商，通过注册回调函数返回共享密钥。
+基于传入的私钥与公钥进行密钥协商。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5862,7 +6162,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateSecret(priKey: PriKey, pubKey: PubKey): Promise\<DataBlob>
 
-基于传入的私钥与公钥进行密钥协商，通过Promise返回共享密钥。
+基于传入的私钥与公钥进行密钥协商。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5938,10 +6238,10 @@ async function testGenerateSecret() {
   let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
   keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
     if (err) {
-      console.error("keyAgreement error.");
+      console.error('keyAgreement result: fail.');
       return;
     }
-    console.info('keyAgreement output is ' + secret.data);
+    console.info('keyAgreement output = ' + secret.data);
   });
 }
 ```
@@ -5958,9 +6258,9 @@ async function testGenerateSecret() {
   let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
   let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
   keyAgreementPromise.then(secret => {
-    console.info('keyAgreement output is ' + secret.data);
+    console.info('keyAgreement output = ' + secret.data);
   }).catch((error: BusinessError) => {
-    console.error("keyAgreement error.");
+    console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
 }
 ```
@@ -5975,7 +6275,7 @@ async function testGenerateSecretSync() {
   let globalKeyPair = await eccGen.generateKeyPair();
   let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
   let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
-  console.info("[Sync]keyAgreement output is " + secret.data);
+  console.info('[Sync]keyAgreement output = ' + secret.data);
 }
 ```
 
@@ -6025,13 +6325,13 @@ try {
   let md = cryptoFramework.createMd('SHA256');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
 ## Md
 
-Md类，调用Md方法可以进行MD（Message Digest）摘要计算。调用前，需要通过[createMd](#cryptoframeworkcreatemd)构造Md实例。
+Md类，调用Md方法进行消息摘要（Message Digest）计算。调用前，需要通过[createMd](#cryptoframeworkcreatemd)构造Md实例。
 
 ### 属性
 
@@ -6049,7 +6349,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(input: DataBlob, callback: AsyncCallback\<void>): void
 
-传入消息进行Md更新摘要状态，通过注册回调函数更新。update和digest为两段式接口，需要成组使用。其中digest必选，update可选。
+传入消息进行Md更新摘要状态。使用callback异步回调。update和digest为两段式接口，需要成组使用。其中digest必选，update可选。
 
 > **说明：**
 >
@@ -6084,7 +6384,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(input: DataBlob): Promise\<void>
 
-传入消息进行Md更新摘要状态，通过Promise更新。update和digest为两段式接口，需要成组使用。其中digest必选，update可选。
+传入消息进行Md更新摘要状态。使用Promise异步回调。update和digest为两段式接口，需要成组使用。其中digest必选，update可选。
 
 > **说明：**
 >
@@ -6154,7 +6454,7 @@ updateSync(input: DataBlob): void
 
 digest(callback: AsyncCallback\<DataBlob>): void
 
-通过注册回调函数返回Md的计算结果。
+返回Md的计算结果。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6188,7 +6488,7 @@ import { buffer } from '@kit.ArkTS';
 
 function mdByCallback() {
   let md = cryptoFramework.createMd('SHA256');
-  md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) }, (err) => {
+  md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) }, (err) => {
     md.digest((err, digestOutput) => {
       console.info('[Callback]: MD result: ' + digestOutput.data);
       console.info('[Callback]: MD len: ' + md.getMdLength());
@@ -6201,7 +6501,7 @@ function mdByCallback() {
 
 digest(): Promise\<DataBlob>
 
-通过Promise返回Md的计算结果。
+返回Md的计算结果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6234,7 +6534,7 @@ import { buffer } from '@kit.ArkTS';
 
 async function mdByPromise() {
   let md = cryptoFramework.createMd('SHA256');
-  await md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) });
+  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
   let mdOutput = await md.digest();
   console.info('[Promise]: MD result: ' + mdOutput.data);
   console.info('[Promise]: MD len: ' + md.getMdLength());
@@ -6276,7 +6576,7 @@ import { buffer } from '@kit.ArkTS';
 
 async function mdBySync() {
   let md = cryptoFramework.createMd('SHA256');
-  md.updateSync({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) });
+  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
   let mdOutput = md.digestSync();
   console.info('[Sync]: MD result: ' + mdOutput.data);
   console.info('[Sync]: MD len: ' + md.getMdLength());
@@ -6366,7 +6666,7 @@ try {
   let mac = cryptoFramework.createMac('SHA256');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -6414,19 +6714,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   // Set algName based on the algorithm supported.
   let spec: cryptoFramework.HmacSpec = {
-    algName: "HMAC",
-    mdName: "SHA256",
+    algName: 'HMAC',
+    mdName: 'SHA256',
   };
   let mac = cryptoFramework.createMac(spec);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
 }
 ```
 
 ## Mac
 
-Mac类，调用Mac方法可以进行MAC（Message Authentication Code）加密计算。调用前，需要通过[createMac](#cryptoframeworkcreatemac)构造Mac实例。
+Mac类，调用Mac方法进行消息认证码（Message Authentication Code）计算。调用前，需要通过[createMac](#cryptoframeworkcreatemac)构造Mac实例。
 
 ### 属性
 
@@ -6444,7 +6744,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(key: SymKey, callback: AsyncCallback\<void>): void
 
-使用对称密钥初始化Mac计算，通过注册回调函数获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+使用对称密钥初始化Mac计算。使用callback异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
   > **说明：**
   >
@@ -6477,7 +6777,7 @@ API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从A
 
 init(key: SymKey): Promise\<void>
 
-使用对称密钥初始化Mac计算，通过Promise获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+使用对称密钥初始化Mac计算。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6537,7 +6837,7 @@ initSync(key: SymKey): void
 
 update(input: DataBlob, callback: AsyncCallback\<void>): void
 
-传入消息进行Mac更新消息认证码状态，通过注册回调函数获取结果。
+传入消息进行Mac更新消息认证码状态。使用callback异步回调。
 
 > **说明：**
 >
@@ -6570,7 +6870,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 update(input: DataBlob): Promise\<void>
 
-传入消息进行Mac更新消息认证码状态，通过Promise获取结果。
+传入消息进行Mac更新消息认证码状态。使用Promise异步回调。
 
 > **说明：**
 >
@@ -6639,7 +6939,7 @@ updateSync(input: DataBlob): void
 
 doFinal(callback: AsyncCallback\<DataBlob>): void
 
-通过注册回调函数返回Mac的计算结果。
+返回Mac的计算结果。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6672,11 +6972,11 @@ import { buffer } from '@kit.ArkTS';
 
 function hmacByCallback() {
   let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
+  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   symKeyGenerator.convertKey(keyBlob, (err, symKey) => {
     mac.init(symKey, (err) => {
-      mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) }, (err) => {
+      mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) }, (err) => {
         mac.doFinal((err, output) => {
           console.info('[Callback]: HMAC result: ' + output.data);
           console.info('[Callback]: MAC len: ' + mac.getMacLength());
@@ -6691,7 +6991,7 @@ function hmacByCallback() {
 
 doFinal(): Promise\<DataBlob>
 
-通过Promise返回Mac的计算结果。
+返回Mac的计算结果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6724,11 +7024,11 @@ import { buffer } from '@kit.ArkTS';
 
 async function hmacByPromise() {
   let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
+  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let symKey = await symKeyGenerator.convertKey(keyBlob);
   await mac.init(symKey);
-  await mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) });
+  await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
   let macOutput = await mac.doFinal();
   console.info('[Promise]: HMAC result: ' + macOutput.data);
   console.info('[Promise]: MAC len: ' + mac.getMacLength());
@@ -6772,11 +7072,11 @@ import { buffer } from '@kit.ArkTS';
 
 function hmacBySync() {
   let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
+  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let symKey = symKeyGenerator.convertKeySync(keyBlob);
   mac.initSync(symKey);
-  mac.updateSync({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) });
+  mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
   let macOutput = mac.doFinalSync();
   console.info('[Sync]: HMAC result: ' + macOutput.data);
   console.info('[Sync]: MAC len: ' + mac.getMacLength());
@@ -6825,20 +7125,24 @@ function testGetMacLength() {
   promiseConvertKey.then(symKey => {
     let promiseMacInit = mac.init(symKey);
     return promiseMacInit;
-  }).then(() => {
-    let blob: cryptoFramework.DataBlob = { data : new Uint8Array([83])};
-    let promiseMacUpdate = mac.update(blob);
-    return promiseMacUpdate;
-  }).then(() => {
-    let promiseMacDoFinal = mac.doFinal();
-    return promiseMacDoFinal;
-  }).then(macOutput => {
-    console.info('[Promise]: HMAC result: ' + macOutput.data);
-    let macLen = mac.getMacLength();
-    console.info('MAC len: ' + macLen);
-  }).catch((error: BusinessError) => {
-    console.error("[Promise]: error: " + error.message);
-  });
+  })
+    .then(() => {
+      let blob: cryptoFramework.DataBlob = { data: new Uint8Array([83]) };
+      let promiseMacUpdate = mac.update(blob);
+      return promiseMacUpdate;
+    })
+    .then(() => {
+      let promiseMacDoFinal = mac.doFinal();
+      return promiseMacDoFinal;
+    })
+    .then(macOutput => {
+      console.info('[Promise]: HMAC result: ' + macOutput.data);
+      let macLen = mac.getMacLength();
+      console.info('MAC len: ' + macLen);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`[Promise] failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    });
 }
 ```
 
@@ -6847,8 +7151,6 @@ function testGetMacLength() {
 createRandom(): Random
 
 生成Random实例，用于进行随机数的计算与设置种子。
-
-支持的规格详见框架概述[随机数算法规格](../../security/CryptoArchitectureKit/crypto-generate-random-number.md#支持的算法与规格)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6860,7 +7162,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| [Random](#random) | 返回由输入算法指定生成的[Random](#random)对象。 |
+| [Random](#random) | 返回由输入算法指定生成的[Random](#random)对象。<br>支持的规格详见框架概述[随机数算法规格](../../security/CryptoArchitectureKit/crypto-generate-random-number.md#支持的算法与规格)。 |
 
 **错误码：**
 
@@ -6880,13 +7182,13 @@ try {
   let rand = cryptoFramework.createRandom();
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
 ## Random
 
-Random类，调用Random方法可以进行随机数计算。调用前，需要通过[createRandom](#cryptoframeworkcreaterandom)构造Random实例。
+Random类，调用Random方法生成随机数。调用前，需要通过[createRandom](#cryptoframeworkcreaterandom)构造Random实例。
 
 ### 属性
 
@@ -6904,7 +7206,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 generateRandom(len: number, callback: AsyncCallback\<DataBlob>): void
 
-异步生成指定长度的随机数，通过注册回调函数返回。
+生成指定长度的随机数。使用callback异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6939,7 +7241,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 let rand = cryptoFramework.createRandom();
 rand.generateRandom(12, (err, randData) => {
   if (err) {
-    console.error("[Callback] err: " + err.code);
+    console.error(`[Callback] failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
     console.info('[Callback]: generate random result: ' + randData.data);
   }
@@ -6950,7 +7252,7 @@ rand.generateRandom(12, (err, randData) => {
 
 generateRandom(len: number): Promise\<DataBlob>
 
-异步生成指定长度的随机数，通过Promise返回。
+生成指定长度的随机数。使用promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -6993,7 +7295,7 @@ let promiseGenerateRand = rand.generateRandom(12);
 promiseGenerateRand.then(randData => {
   console.info('[Promise]: rand result: ' + randData.data);
 }).catch((error: BusinessError) => {
-  console.error("[Promise]: error: " + error.message);
+  console.error(`[Promise] failed: errCode: ${error.code}, errMsg: ${error.message}`);
 });
 ```
 
@@ -7043,11 +7345,11 @@ try {
   if (randData != null) {
     console.info('[Sync]: rand result: ' + randData.data);
   } else {
-    console.error("[Sync]: get rand result fail!");
+    console.error('[Sync]: get rand result: fail.');
   }
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync error, ${e.code}, ${e.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
@@ -7082,14 +7384,14 @@ let rand = cryptoFramework.createRandom();
 rand.enableHardwareEntropy();
 rand.generateRandom(12, (err, randData) => {
   if (err) {
-    console.error("[Callback] err: " + err.code);
+    console.error('[Callback] err: ' + err.code);
   } else {
     console.info('[Callback]: generate random result: ' + randData.data);
     try {
       rand.setSeed(randData);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`sync error, ${e.code}, ${e.message}`);
+      console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -7130,14 +7432,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let rand = cryptoFramework.createRandom();
 rand.generateRandom(12, (err, randData) => {
   if (err) {
-    console.error("[Callback] err: " + err.code);
+    console.error('[Callback] err: ' + err.code);
   } else {
     console.info('[Callback]: generate random result: ' + randData.data);
     try {
       rand.setSeed(randData);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`sync error, ${e.code}, ${e.message}`);
+      console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
 });
@@ -7147,7 +7449,7 @@ rand.generateRandom(12, (err, randData) => {
 
 createKdf(algName: string): Kdf
 
-密钥派生函数（key derivation function）实例生成。<br/>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。
+密钥派生函数（key derivation function）实例生成。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7159,7 +7461,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 | 参数名  | 类型   | 必填 | 说明                              |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256", "HKDF\|SHA256", "SCRYPT"。 |
+| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256", "HKDF\|SHA256", "SCRYPT"。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
 
 **返回值**：
 
@@ -7205,7 +7507,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 generateSecret(params: KdfSpec, callback: AsyncCallback\<DataBlob>): void
 
-基于传入的密钥派生参数进行密钥派生，通过注册回调函数返回派生得到的密钥。
+基于传入的密钥派生参数进行密钥派生。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7247,10 +7549,10 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
   let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
   kdf.generateSecret(spec, (err, secret) => {
     if (err) {
-      console.error("key derivation error.");
+      console.error('key derivation result: fail.');
       return;
     }
-    console.info('key derivation output is ' + secret.data);
+    console.info('key derivation output = ' + secret.data);
   });
   ```
 
@@ -7268,10 +7570,10 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
   let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
   kdf.generateSecret(spec, (err, secret) => {
     if (err) {
-      console.error("key derivation error.");
+      console.error('key derivation result: fail.');
       return;
     }
-    console.info('key derivation output is ' + secret.data);
+    console.info('key derivation output = ' + secret.data);
   });
   ```
 
@@ -7279,7 +7581,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 generateSecret(params: KdfSpec): Promise\<DataBlob>
 
-基于传入的密钥派生参数进行密钥派生，通过Promise形式返回派生得到的密钥。
+基于传入的密钥派生参数进行密钥派生。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7327,9 +7629,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
   let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
   let kdfPromise = kdf.generateSecret(spec);
   kdfPromise.then(secret => {
-    console.info('key derivation output is ' + secret.data);
+    console.info('key derivation output = ' + secret.data);
   }).catch((error: BusinessError) => {
-    console.error("key derivation error, " + error.message);
+    console.error(`key derivation failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
   ```
 
@@ -7348,9 +7650,9 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
   let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
   let kdfPromise = kdf.generateSecret(spec);
   kdfPromise.then(secret => {
-    console.info('key derivation output is ' + secret.data);
+    console.info('key derivation output = ' + secret.data);
   }).catch((error: BusinessError) => {
-    console.error("key derivation error, " + error.message);
+    console.error(`key derivation failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
   ```
 
@@ -7403,7 +7705,7 @@ generateSecretSync(params: KdfSpec): DataBlob
   };
   let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
   let secret = kdf.generateSecretSync(spec);
-  console.info("[Sync]key derivation output is " + secret.data);
+  console.info('[Sync]key derivation output = ' + secret.data);
   ```
 
 - HKDF算法
@@ -7419,7 +7721,7 @@ generateSecretSync(params: KdfSpec): DataBlob
   };
   let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
   let secret = kdf.generateSecretSync(spec);
-  console.info("[Sync]key derivation output is " + secret.data);
+  console.info('[Sync]key derivation output = ' + secret.data);
   ```
 
 ## SignatureUtils<sup>20+</sup>
@@ -7472,10 +7774,10 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
           179, 49, 225, 70, 36, 117, 88, 154, 154, 27, 194, 161, 3, 1, 115, 2, 32, 51, 9, 53, 55, 248, 82, 7, 159, 179,
           144, 57, 151, 195, 17, 31, 106, 123, 32, 139, 219, 6, 253, 62, 240, 181, 134, 214, 107, 27, 230, 175, 40])
       let spec: cryptoFramework.EccSignatureSpec = cryptoFramework.SignatureUtils.genEccSignatureSpec(data)
-      console.info('genEccSignatureSpec success');
+      console.info('genEccSignatureSpec result: success.');
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error(`ecc error, ${e.code}, ${e.message}`);
+      console.error(`ecc failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -7528,11 +7830,11 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array;
       }
 
       let data = cryptoFramework.SignatureUtils.genEccSignature(spec)
-      console.info('genEccSignature success');
-      console.info('data is ' + data)
+      console.info('genEccSignature result: success.');
+      console.info('data = ' + data)
     } catch (err) {
       let e: BusinessError = err as BusinessError;
-      console.error(`ecc error, ${e.code}, ${e.message}`);
+      console.error(`ecc failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```

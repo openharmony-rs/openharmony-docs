@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_AnimatorOnFrameEvent ArkUI_AnimatorOnFrameEvent
+```
+
 ## Overview
 
 Defines the callback object when the animator receives a frame.

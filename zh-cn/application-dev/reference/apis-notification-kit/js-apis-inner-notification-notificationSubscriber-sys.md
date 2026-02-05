@@ -276,7 +276,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDoNotDisturbDateChange<sup>8+</sup>(deprecated)
+## onDoNotDisturbDateChange<sup>(deprecated)</sup>
 
 onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 
@@ -545,7 +545,6 @@ onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackDat
 **示例：**
 
 ```ts
-import { notificationSubscribe } from '@kit.NotificationKit';
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationCallbackData) => {
     console.info(`onEnabledPriorityChanged: ${JSON.stringify(callbackData)}`);
@@ -577,10 +576,43 @@ onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByB
 **示例：**
 
 ```ts
-import { notificationSubscribe } from '@kit.NotificationKit';
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityByBundleChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationByBundleCallbackData) => {
     console.info(`onEnabledPriorityByBundleChanged: ${JSON.stringify(callbackData)}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
+## onSystemUpdate<sup>23+</sup>
+
+onSystemUpdate?: SystemUpdateCallback
+
+通知系统属性值变化的回调函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------------ | ------------------------ | ---- | -------------------------- |
+| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 返回携带系统属性值的通知信息。 |
+
+**示例：**
+
+```ts
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
+    let req = data.request;
+    console.info(`onSystemUpdate callback req.priorityType:: ${req.priorityNotificationType}`);
   }
 };
 try {
@@ -672,3 +704,19 @@ try {
 | bundle      | string | 是   | 否   | 应用的包名。 |
 | uid         | number | 是   | 否   | 应用的uid。  |
 | enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | 是  | 否  | 应用通知的优先使能状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
+
+## SystemUpdateCallback<sup>23+</sup>
+
+SystemUpdateCallback = (data: SubscribeCallbackData) => void
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**参数**：
+
+| 名称        | 类型   | 只读 | 可选 | 说明         |
+| ----------- | ------ | ---- | ---- | ------------ |
+| data | [SubscribeCallbackData](#subscribecallbackdata) | 是 | 是 | 返回携带系统属性值的通知信息。 |

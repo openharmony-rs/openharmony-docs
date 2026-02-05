@@ -27,11 +27,15 @@ ArkWeb支持通过SchemeHandler拦截Web组件或者ServiceWorker发出的HTTP(s
 当Web内核发出相应scheme请求时，会触发为该scheme设置的SchemeHandler的回调。SchemeHandler包含请求开始与请求结束两个回调，应用需要在请求开始的回调中告知Web内核是否进行拦截，在请求结束后清理相关的资源，避免内存泄漏。
 
 请求开始的回调：  
+
 NDK：[ArkWeb_OnRequestStart](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart)  
+
 ArkTS：[onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)  
 
 请求结束的回调：  
+
 NDK：[ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop)  
+
 ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12)  
 
 > **注意：**
@@ -207,7 +211,9 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 网络拦截支持在worker线程以流方式为被拦截的请求提供自定义的响应信息。也可用特定的网络错误码结束当前被拦截的请求。
 
 错误码定义：  
+
 NDK：[网络错误码(arkweb_net_error_list.h)](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md)。  
+
 ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/arkts-apis-netErrorList.md)。  
 
 > **注意：**
@@ -274,8 +280,8 @@ ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     return true;
-  })
-  ```
+   })
+   ```
 
 当希望通过[OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror)或者[didFail(code: WebNetErrorList)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12)结束当前请求时，需要在调用该接口之前通过[OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)或者[didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12)返回给Web内核一个响应头，否则无法结束请求。
 

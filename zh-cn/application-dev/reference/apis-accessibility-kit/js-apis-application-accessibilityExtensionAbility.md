@@ -297,7 +297,7 @@ onConnect(): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -321,7 +321,7 @@ onDisconnect(): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -345,7 +345,7 @@ onAccessibilityEvent(event: AccessibilityEvent): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -378,7 +378,7 @@ onKeyEvent(keyEvent: KeyEvent): boolean;
 
 > **说明：**
 >
-> 从API version 12开始废弃。替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -391,7 +391,7 @@ onKeyEvent(keyEvent: KeyEvent): boolean;
 **返回值：**
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 返回true表示此事件被消费，不会继续传递。<br>返回false表示些事件未被消费，会继续传递。|
+| boolean | 返回true表示此事件被消费，不会继续传递。<br>返回false表示此事件未被消费，会继续传递。|
 
 **示例：**
 

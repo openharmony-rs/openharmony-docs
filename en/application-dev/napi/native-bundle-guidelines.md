@@ -452,7 +452,7 @@ After the project is created, the **cpp** directory is created in the project di
 
 **5. Call APIs on the JavaScript side.
 
-1. Open the **src\main\ets\pages\index.ets** file, and import **libentry.so**.
+1. Open the **src/main/ets/pages/index.ets** file, and import **libentry.so**.
 
 
 2. Call the native APIs to print the obtained information. An example is as follows:

@@ -28,7 +28,7 @@
 
 ### 创建ComponentContent
    
-   通过调用openPopup接口弹出其气泡，需要提供用于定义自定义弹出框的内容[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)。其中，wrapBuilder(buildText)封装自定义组件，new Params(this.message)是自定义组件的入参，可以缺省，也可以传入基础数据类型。
+   通过调用openPopup接口弹出气泡，需要定义ComponentContent，以提供自定义弹出框的内容。详细规格可参考[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)说明。
    
   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
   
@@ -37,7 +37,7 @@
     new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message);
   ```
    
-   如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#componentcontent-1)应采用带有四个参数的构造函数constructor，其中options参数应传递{ nestingBuilderSupported: true }。
+   如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)属性为true。
    
   <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   
@@ -47,7 +47,7 @@
     Popup({
       // 类型设置图标内容。
       icon: {
-        // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+        // 请将$r('app.media.app_icon')替换为实际资源文件
         image: $r('app.media.app_icon'),
         width: 32,
         height: 32,
@@ -94,14 +94,58 @@
 
 ### 绑定组件信息
    
-   通过调用openPopup接口弹出气泡，需要提供绑定组件的信息[TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18)。若未传入有效的target，则无法弹出气泡。
+   通过调用openPopup接口弹出气泡，需要提供绑定组件的信息[TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18)。若未传入有效的target，气泡将无法弹出。
    
-  <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
-  
-  ``` TypeScript
-  let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
-  let targetId = frameNode?.getChild(0)?.getUniqueId();
-  ```
+   目前有两种设置target的方式。
+   
+- target的id属性设置为number类型，此时需要将id设置为对应组件的UniqueID，组件的UniqueID由系统保证唯一性。
+   
+   <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+   
+   ``` TypeScript
+   let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
+   let targetId = frameNode?.getChild(0)?.getUniqueId();
+   ```
+   
+- target的id属性设置为string类型，此时需要将id设置为对应组件的通用属性[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)值。当无法保证id的唯一性时，如多团队开发或者复用自定义组件，可以通过设置componentId属性明确指定此id的范围来精确指定target，此时componentId属性可以设置为对应组件的父组件或者所在自定义组件的UniqueID。
+   
+   <!-- @[openPopupWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopupWithTargetIdString.ets) -->
+   
+   ``` TypeScript
+   build() {
+     NavDestination() {
+       Column() {
+         Row() {
+           Button('button1')
+             .id(this.targetIdString)
+         }
+   
+         Row() {
+           Button('button2')
+             .id(this.targetIdString)
+         }
+   
+         Button('openPopup')
+           .onClick(() => {
+             let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
+             let componentId = frameNode?.getChild(1)?.getChild(0)?.getChild(1)?.getUniqueId();
+             if (componentId == undefined) {
+               this.componentId = 0;
+             } else {
+               this.componentId = componentId;
+             }
+             this.promptActionClass.setPromptAction(this.promptAction);
+             this.promptActionClass.setContentNode(this.contentNode);
+             this.promptActionClass.setOptions(this.options);
+             this.promptActionClass.setIsPartialUpdate(false);
+             this.promptActionClass.setTarget({ id: this.targetIdString, componentId: this.componentId });
+             this.promptActionClass.openPopup();
+           })
+       }
+     }
+   }
+   ```
+   
 
 ### 设置弹出气泡样式
    
@@ -115,7 +159,7 @@
 
 ## 更新气泡样式
 
-从API version 18开始，通过[updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)可以更新气泡的样式。支持全量更新和增量更新其气泡样式，不支持更新showInSubWindow、focusable、onStateChange、onWillDismiss和transition。
+从API version 18开始，通过[updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)可以更新气泡的样式。支持全量更新和增量更新其气泡样式，不支持更新[PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18类型说明)中的showInSubWindow、focusable、onStateChange、onWillDismiss和transition属性。
    
   <!-- @[update_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   

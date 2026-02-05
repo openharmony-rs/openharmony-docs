@@ -6,10 +6,6 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
-> **说明：**
->
-> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本Interface首批接口从API version 9开始支持。
 
 音视频录制管理类，用于音视频媒体录制。在调用AVRecorder的方法前，需要先通过[createAVRecorder()](arkts-apis-media-f.md#mediacreateavrecorder9)构建一个AVRecorder实例。
 
@@ -17,6 +13,8 @@
 
 > **说明：**
 >
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Interface首批接口从API version 9开始支持。
 > 使用相机进行视频录制时，需要与相机模块配合，相机模块接口的使用详情见[相机管理](../apis-camera-kit/arkts-apis-camera.md)。
 
 ## 导入模块
@@ -186,6 +184,7 @@ avRecorder.prepare(avRecorderConfig).then(() => {
 getInputSurface(callback: AsyncCallback\<string>): void
 
 获得录制需要的surface。使用callback异步回调。
+
 开发者从此surface中获取surfaceBuffer，填入相应的视频数据。
 
 应当注意，填入的视频数据需要携带时间戳（单位ns）和buffersize。时间戳的起始时间请以系统启动时间为基准。
@@ -232,6 +231,7 @@ avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise\<string>
 
 获得录制需要的surface。使用Promise异步回调。
+
 开发者从此surface中获取surfaceBuffer，填入相应的视频数据。
 
 应当注意，填入的视频数据需要携带时间戳（单位ns）和buffersize。时间戳的起始时间请以系统启动时间为基准。
@@ -1405,22 +1405,13 @@ on(type: 'photoAssetAvailable', callback: Callback\<photoAccessHelper.PhotoAsset
 <!--code_no_check-->
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
-import { common } from '@kit.AbilityKit'
 let photoAsset: photoAccessHelper.PhotoAsset;
-let context: Context | undefined;
-constructor(context: Context) {
-  this.context = context; // this.getUIContext().getHostContext();
-}
 
 // 例：处理photoAsset回调，保存video。
-async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
+async function saveVideo(context: Context, asset: photoAccessHelper.PhotoAsset) {
   console.info("saveVideo called");
-  if (!this.context) {
-    console.error('context is undefined');
-    return;
-  }
   try {
-    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(this.context);
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
     assetChangeRequest.saveCameraPhoto();
     await phAccessHelper.applyChanges(assetChangeRequest);
@@ -1430,12 +1421,12 @@ async function saveVideo(asset: photoAccessHelper.PhotoAsset) {
   }
 }
 // 注册photoAsset监听。
-avRecorder.on('photoAssetAvailable',  (asset: photoAccessHelper.PhotoAsset) => {
+avRecorder.on('photoAssetAvailable', (asset: photoAccessHelper.PhotoAsset) => {
   console.info('photoAssetAvailable called');
   if (asset != undefined) {
     photoAsset = asset;
     // 处理photoAsset回调。
-    // 例：this.saveVideo(asset);
+    // 例：this.saveVideo(context, asset);
   } else {
     console.error('photoAsset is undefined');
   }

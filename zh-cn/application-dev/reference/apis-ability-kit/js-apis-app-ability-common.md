@@ -119,7 +119,7 @@ type ExtensionContext = _ExtensionContext.default
 
 type FormExtensionContext = _FormExtensionContext.default
 
-[FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)组件上下文，继承自Context。
+[FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)组件上下文，继承自[ExtensionContext](./js-apis-inner-application-extensionContext.md)。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -311,6 +311,38 @@ type AppServiceExtensionContext = _AppServiceExtensionContext.default
 | --- | --- |
 | [_AppServiceExtensionContext.default](js-apis-inner-application-appServiceExtensionContext.md) | AppServiceExtensionAbility组件上下文。 |
 
+## FormEditExtensionContext<sup>22+</sup>
+
+type FormEditExtensionContext = _FormEditExtensionContext.default
+
+[FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)组件上下文，继承自[UIExtensionContext](./js-apis-inner-application-uiExtensionContext.md)。
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.Form
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_FormEditExtensionContext.default](../apis-form-kit/js-apis-inner-application-formEditExtensionContext.md) | FormEditExtensionAbility组件上下文。 |
+
+## LiveFormExtensionContext<sup>22+</sup>
+
+type LiveFormExtensionContext = _LiveFormExtensionContext.default
+
+[LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)组件上下文，继承自[ExtensionContext](./js-apis-inner-application-extensionContext.md)。
+
+**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.Form
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_LiveFormExtensionContext.default](../apis-form-kit/js-apis-application-LiveFormExtensionContext.md) | LiveFormExtensionAbility组件上下文。 |
+
 **示例：**
 
 ```ts
@@ -335,4 +367,6 @@ let photoEditorExtensionContext: common.PhotoEditorExtensionContext;
 let uiServiceProxy : common.UIServiceProxy;
 let uiServiceExtensionConnectCallback : common.UIServiceExtensionConnectCallback;
 let appServiceExtensionContext : common.AppServiceExtensionContext;
+let formEditExtensionContext : common.FormEditExtensionContext;
+let liveFormExtensionContext : common.LiveFormExtensionContext;
 ```

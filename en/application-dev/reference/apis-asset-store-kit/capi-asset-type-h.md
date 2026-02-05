@@ -59,7 +59,7 @@ Defines the enums, structs, and error codes used in the asset store service.
 
 ### Asset_TagType
 
-```
+```c
 enum Asset_TagType
 ```
 
@@ -77,7 +77,7 @@ Enumerates the types of the keys of asset attributes.
 
 ### Asset_Tag
 
-```
+```c
 enum Asset_Tag
 ```
 
@@ -124,7 +124,7 @@ Enumerates the keys of asset attributes.
 
 ### Asset_ResultCode
 
-```
+```c
 enum Asset_ResultCode
 ```
 
@@ -160,7 +160,7 @@ Enumerates the result codes used in the ASSET APIs.
 
 ### Asset_Accessibility
 
-```
+```c
 enum Asset_Accessibility
 ```
 
@@ -178,7 +178,7 @@ Enumerates the types of the access control based on the lock screen status.
 
 ### Asset_AuthType
 
-```
+```c
 enum Asset_AuthType
 ```
 
@@ -195,7 +195,7 @@ Enumerates the user authentication types supported by assets.
 
 ### Asset_SyncType
 
-```
+```c
 enum Asset_SyncType
 ```
 
@@ -214,7 +214,7 @@ Asset sync type.
 
 ### Asset_WrapType
 
-```
+```c
 enum Asset_WrapType
 ```
 
@@ -231,7 +231,7 @@ Encrypted import/export type supported by the asset.
 
 ### Asset_ConflictResolution
 
-```
+```c
 enum Asset_ConflictResolution
 ```
 
@@ -248,7 +248,7 @@ Policy for resolving the conflict (for example, a duplicate alias).
 
 ### Asset_ReturnType
 
-```
+```c
 enum Asset_ReturnType
 ```
 
@@ -265,7 +265,7 @@ Type of the asset query result to return.
 
 ### Asset_OperationType
 
-```
+```c
 enum Asset_OperationType
 ```
 

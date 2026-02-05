@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 该组件从API Version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > 如果需要在该组件中实现一个可嵌入式运行的原子化服务时，原子化服务必须继承自[EmbeddableUIAbility](../../apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md)。若不继承自EmbeddableUIAbility，系统无法保证原子化服务功能正常。
 
@@ -30,13 +30,7 @@ import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 
 ## HalfScreenLaunchComponent
 
-HalfScreenLaunchComponent({  
-&emsp;content: Callback\<void>,  
-&emsp;appId: string,  
-&emsp;options?: AtomicServiceOptions,  
-&emsp;onError?: ErrorCallback,  
-&emsp;onTerminated?: Callback&lt;TerminationInfo&gt;   
-  })
+HalfScreenLaunchComponent({&emsp;content: Callback\<void>,&emsp;appId: string,&emsp;options?: AtomicServiceOptions,&emsp;onError?: ErrorCallback,&emsp;onTerminated?: Callback&lt;TerminationInfo&gt; })
 
 **装饰器类型：**\@Component
 

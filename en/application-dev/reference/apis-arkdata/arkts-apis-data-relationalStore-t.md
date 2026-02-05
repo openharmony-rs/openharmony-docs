@@ -90,3 +90,31 @@ Represents the data type of the primary key and modification time of a database 
 | Type                                                   | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | Map<[PRIKeyType](#prikeytype10), [UTCTime](#utctime10)> | The key is the primary key of a row in the database table, and the value is the last modification time of the row in UTC format.|
+
+## RowData<sup>23+</sup>
+
+type RowData = Array\<ValueType>
+
+Defines a row of data in a database table.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| Type             | Description                          |
+| ---------------- | ---------------------------- |
+| Array<[ValueType](#valuetype)> | Array of the types of [ValueType](#valuetype).|
+
+## RowsData<sup>23+</sup>
+
+type RowsData = Array\<RowData>
+
+Defines multiple rows of data in a database table.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| Type             | Description                          |
+| ---------------- | ---------------------------- |
+| Array<[RowData](#rowdata23)> | Array of the [RowData](#rowdata23) types.|

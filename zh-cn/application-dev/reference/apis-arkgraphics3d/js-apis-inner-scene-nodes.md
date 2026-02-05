@@ -443,7 +443,7 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | 是 | 使用UI坐标系定义的屏幕归一化坐标，取值范围为[0, 1]。其中(0,0)表示Component3D控件的左上角，(1,1)表示Component3D控件的右下角。|
+| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | 是 | 使用屏幕归一化坐标，取值范围为[0, 1]。其中(0,0)表示Component3D控件的左上角，(1,1)表示Component3D控件的右下角。|
 | params | [RaycastParameters](js-apis-inner-scene.md#raycastparameters20) | 是 | 射线检测的配置参数（如检测范围、过滤节点等）。|
 
 **返回值：**
@@ -555,5 +555,73 @@ function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
   }
   node.position = eye;
   node.rotation = Mul(q, 0.5 / Math.sqrt(t));
+}
+```
+
+### getViewMatrix<sup>23+</sup>
+getViewMatrix(): Mat4x4
+
+获取相机的视图矩阵。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | 返回相机的视图矩阵。 |
+
+**示例：**
+```ts
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
+
+function GetViewMatrix(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+    .then(async (result: Scene) => {
+      if (!result.root) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
+      // 创建相机
+      let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      camera.enabled = true;
+      // 获取相机的视图矩阵
+      let viewMatrix: Mat4x4 = camera.getViewMatrix();
+    });
+}
+```
+
+### getProjectionMatrix<sup>23+</sup>
+getProjectionMatrix(): Mat4x4
+
+获取相机的投影矩阵。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | 返回相机的投影矩阵。 |
+
+**示例：**
+```ts
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
+
+function GetProjectionMatrix(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+    .then(async (result: Scene) => {
+      if (!result.root) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
+      // 创建相机
+      let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      camera.enabled = true;
+      // 获取相机的投影矩阵
+      let projectionMatrix: Mat4x4 = camera.getProjectionMatrix();
+    });
 }
 ```

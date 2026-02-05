@@ -38,27 +38,11 @@
 
 1. 请确保在设备系统**主题应用**中，能成功应用一项主题字体。
 
-2. 在应用入口文件（默认工程中为EntryAbility.ets）中复写onConfigurationUpdate函数，以响应fontId变更，适配主题字体的切换和页面刷新。
+2. 在应用入口文件（默认工程中为EntryAbility.ets）中重写onConfigurationUpdate函数，以响应fontId变更，适配主题字体的切换和页面刷新，重写方式可参考[主题字变更事件](./theme-font-arkts.md#开发步骤)。
 
-   ```c++
-   // entry/src/main/ets/entryability/EntryAbility.ets
-   export default class EntryAbility extends UIAbility {
-       // ...  
-       preFontId ="";
-       onConfigurationUpdate(newConfig: Configuration):void{
-           let fontId = newConfig.fontId;
-           if(fontId && fontId !=this.preFontId){
-               this.preFontId = fontId;
-               // 调用C++代码
-           }
-       }
-       // ...
-   };
-   ```
+   系统配置信息（即示例中的newConfig）变化时，会自动触发onConfigurationUpdate函数。应用可从系统发送的配置信息获取fontId，通过判断是否与应用本地保存的fontId一致来识别主题字的切换。若不一致则刷新本地fontId，并调用C++代码刷新排版结果。从ArkTS到C++的调用通路需应用根据实际情况选取调用方式，本示例不作推荐。跨语言调用可参考[Node-API简介](../napi/napi-introduction.md)。
 
-   系统配置信息（即示例中的newConfig）变化时，会自动触发onConfigurationUpdate函数。应用可从系统发送的配置信息获取fontId，通过判断是否与应用本地保存的fontId一致来识别主题字的切换。若不一致则刷新本地fontId，并调用C++代码刷新排版结果。
-
-3. 本步骤及之后均为主题字体在C++侧的使用，从ArkTS到C++的调用通路需应用根据实际情况选取调用方式，本示例不作推荐。跨语言调用可参考[Node-API简介](../napi/napi-introduction.md)。
+3. 导入C++侧依赖，本步骤及之后均为主题字体在C++侧的使用
 
    在工程的`src/main/cpp/CMakeLists.txt`文件中添加以下lib。
    ```c++
@@ -67,13 +51,14 @@
 
    导入头文件。
 
-   <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
-   ```C++
+   <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
    #include <native_drawing/drawing_font_collection.h>
    #include <native_drawing/drawing_text_typography.h>
    #include <native_drawing/drawing_register_font.h>
    ```
+
 
 4. 创建字体管理器。
 
@@ -81,15 +66,16 @@
    >
    > 注册主题字体作用于字体管理集全局对象，故必须使用OH_Drawing_GetFontCollectionGlobalInstance获取全局字体集对象进行绘制。如若使用OH_Drawing_CreateSharedFontCollection或OH_Drawing_CreateFontCollection创建字体集对象，无法使用主题字体。OH_Drawing_GetFontCollectionGlobalInstance获取的全局字体集不允许释放，释放会造成字体绘制紊乱问题。
 
-   <!-- @[theme_font_c_draw_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[theme_font_c_draw_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_GetFontCollectionGlobalInstance();
    ```
 
+
 5. OH_Drawing_SetTextStyleFontFamilies()接口可以用来指定字体家族名，从而实现使用指定字体。但使用主题字体，不需要使用OH_Drawing_SetTextStyleFontFamilies()接口指定字体，否则行为变更为优先使用指定字体，而不是主题字体。
 
-   <!-- @[theme_font_c_draw_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[theme_font_c_draw_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_TextStyle *myTextStyle = OH_Drawing_CreateTextStyle();
@@ -98,9 +84,10 @@
    // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
    ```
 
+
 6. 设置段落文本内容为"Hello World. \nThis is the theme font."，此时该段落文本将应用主题字体。
 
-   <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    // 设置其他文本样式
@@ -120,6 +107,7 @@
    // 通过段落生成器生成段落
    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
    ```
+
 
 ## 效果展示
 

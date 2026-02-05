@@ -51,7 +51,7 @@ You can use the functions to create an audio routing manager, register and dereg
 
 ### OH_AudioRoutingManager_OnDeviceChangedCallback()
 
-```
+```c
 typedef int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray
 )
 ```
@@ -72,7 +72,7 @@ Defines a pointer to the callback that returns the changed audio device descript
 
 ### OH_AudioManager_GetAudioRoutingManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioRoutingManager(OH_AudioRoutingManager **audioRoutingManager)
 ```
 
@@ -97,7 +97,7 @@ Obtains the handle to an audio routing manager. The handle should be set as the 
 
 ### OH_AudioRoutingManager_GetDevices()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioRoutingManager_GetDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Flag deviceFlag, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)
 ```
 
@@ -124,7 +124,7 @@ Obtains available devices based on the device flag.
 
 ### OH_AudioRoutingManager_GetAvailableDevices()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioRoutingManager_GetAvailableDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)
 ```
 
@@ -151,7 +151,7 @@ Obtains the available audio devices.
 
 ### OH_AudioRoutingManager_GetPreferredOutputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredOutputDevice(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_Usage streamUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)
 ```
 
@@ -178,7 +178,7 @@ Obtains the output device with the highest priority based on the usage scenario 
 
 ### OH_AudioRoutingManager_GetPreferredInputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredInputDevice(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_SourceType sourceType, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)
 ```
 
@@ -205,7 +205,7 @@ Obtains the input device with the highest priority based on the usage scenario o
 
 ### OH_AudioRoutingManager_RegisterDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioRoutingManager_RegisterDeviceChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Flag deviceFlag, OH_AudioRoutingManager_OnDeviceChangedCallback callback)
 ```
 
@@ -232,7 +232,7 @@ Registers a callback to listen for device changes of an audio routing manager.
 
 ### OH_AudioRoutingManager_UnregisterDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterDeviceChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnDeviceChangedCallback callback)
 ```
 
@@ -258,7 +258,7 @@ Unregisters the callback used to listen for device changes of an audio routing m
 
 ### OH_AudioRoutingManager_ReleaseDevices()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioRoutingManager_ReleaseDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
 ```
 
@@ -284,7 +284,7 @@ Releases audio devices available for an audio routing manager.
 
 ### OH_AudioRoutingManager_OnDeviceBlockStatusCallback()
 
-```
+```c
 typedef void (*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray, OH_AudioDevice_BlockStatus status, void *userData)
 ```
 
@@ -305,7 +305,7 @@ Defines a pointer to the callback that returns the blocked status of one or more
 
 ### OH_AudioRoutingManager_IsMicBlockDetectionSupported()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioRoutingManager_IsMicBlockDetectionSupported(OH_AudioRoutingManager *audioRoutingManager, bool *supported)
 ```
 
@@ -331,7 +331,7 @@ Checks whether the current device supports microphone blocking detection.
 
 ### OH_AudioRoutingManager_SetMicBlockStatusCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnDeviceBlockStatusCallback callback, void *userData)
 ```
 

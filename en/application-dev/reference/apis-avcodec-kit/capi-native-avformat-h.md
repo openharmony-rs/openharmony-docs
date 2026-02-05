@@ -64,7 +64,7 @@ The file declares the functions and enums related to OH_AVFormat.
 
 ### OH_AVPixelFormat
 
-```
+```c
 enum OH_AVPixelFormat
 ```
 
@@ -90,7 +90,7 @@ Enumerates the video pixel formats.
 
 ### OH_AVFormat_Create()
 
-```
+```c
 struct OH_AVFormat *OH_AVFormat_Create(void)
 ```
 
@@ -110,7 +110,7 @@ Create an OH_AVFormat instance for reading data.
 
 ### OH_AVFormat_CreateAudioFormat()
 
-```
+```c
 struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t sampleRate, int32_t channelCount)
 ```
 
@@ -139,7 +139,7 @@ Creates an audio OH_AVFormat instance with specified parameters for reading and 
 
 ### OH_AVFormat_CreateVideoFormat()
 
-```
+```c
 struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t width, int32_t height)
 ```
 
@@ -166,7 +166,7 @@ Creates a video OH_AVFormat instance with specified parameters for reading and w
 
 ### OH_AVFormat_Destroy()
 
-```
+```c
 void OH_AVFormat_Destroy(struct OH_AVFormat *format)
 ```
 
@@ -187,7 +187,7 @@ Destroys an OH_AVFormat instance. The instance cannot be destroyed repeatedly.
 
 ### OH_AVFormat_Copy()
 
-```
+```c
 bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)
 ```
 
@@ -215,7 +215,7 @@ Copies an OH_AVFormat instance.
 
 ### OH_AVFormat_SetIntValue()
 
-```
+```c
 bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_t value)
 ```
 
@@ -244,7 +244,7 @@ Assigns a value of the int type to a [key](capi-codecbase.md#media-data-key-valu
 
 ### OH_AVFormat_SetLongValue()
 
-```
+```c
 bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64_t value)
 ```
 
@@ -273,7 +273,7 @@ Assigns a value of the long type to a [key](capi-codecbase.md#media-data-key-val
 
 ### OH_AVFormat_SetFloatValue()
 
-```
+```c
 bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, float value)
 ```
 
@@ -302,7 +302,7 @@ Assigns a value of the float type to a [key](capi-codecbase.md#media-data-key-va
 
 ### OH_AVFormat_SetDoubleValue()
 
-```
+```c
 bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, double value)
 ```
 
@@ -331,7 +331,7 @@ Assigns a value of the double type to a [key](capi-codecbase.md#media-data-key-v
 
 ### OH_AVFormat_SetStringValue()
 
-```
+```c
 bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, const char *value)
 ```
 
@@ -360,7 +360,7 @@ Assigns a value of the string type to a [key](capi-codecbase.md#media-data-key-v
 
 ### OH_AVFormat_SetBuffer()
 
-```
+```c
 bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const uint8_t *addr, size_t size)
 ```
 
@@ -390,7 +390,7 @@ Writes data blocks of a specified length to an OH_AVFormat instance. This functi
 
 ### OH_AVFormat_GetIntValue()
 
-```
+```c
 bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_t *out)
 ```
 
@@ -419,7 +419,7 @@ Obtains the value of the int type of a [key](capi-codecbase.md#media-data-key-va
 
 ### OH_AVFormat_GetLongValue()
 
-```
+```c
 bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64_t *out)
 ```
 
@@ -448,7 +448,7 @@ Obtains the value of the long type of a [key](capi-codecbase.md#media-data-key-v
 
 ### OH_AVFormat_GetFloatValue()
 
-```
+```c
 bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, float *out)
 ```
 
@@ -477,7 +477,7 @@ Obtains the value of the float type of a [key](capi-codecbase.md#media-data-key-
 
 ### OH_AVFormat_GetDoubleValue()
 
-```
+```c
 bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, double *out)
 ```
 
@@ -506,7 +506,7 @@ Obtains the value of the double type of a [key](capi-codecbase.md#media-data-key
 
 ### OH_AVFormat_GetStringValue()
 
-```
+```c
 bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, const char **out)
 ```
 
@@ -535,7 +535,7 @@ Obtains the value of the string type of a [key](capi-codecbase.md#media-data-key
 
 ### OH_AVFormat_GetBuffer()
 
-```
+```c
 bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t **addr, size_t *size)
 ```
 
@@ -565,7 +565,7 @@ Reads data blocks of a specified length from an OH_AVFormat instance.
 
 ### OH_AVFormat_GetIntBuffer()
 
-```
+```c
 bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)
 ```
 
@@ -599,7 +599,7 @@ To keep the data for an extended period, explicitly copy the data to newly alloc
 
 ### OH_AVFormat_DumpInfo()
 
-```
+```c
 const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)
 ```
 
@@ -626,7 +626,7 @@ Returns a string consisting of key-value pairs in an OH_AVFormat instance. A str
 
 ### OH_AVFormat_SetIntBuffer()
 
-```
+```c
 bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const int32_t *addr, size_t size)
 ```
 

@@ -2,20 +2,20 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-属性字符串StyledString/MutableStyledString（其中MutableStyledString继承自StyledString，下文统称为StyledString），可用于在字符或段落级别上设置文本样式。将StyledString应用到文本组件上，可以采用多种方式修改文本，包括调整字号、添加字体颜色、使文本具备可点击性，以及通过自定义方式绘制文本等。具体使用方法请参考[属性字符串](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md)的文档。
+属性字符串StyledString/MutableStyledString（其中MutableStyledString继承自StyledString，下文统称为StyledString），可用于在字符或段落级别上设置文本样式。将StyledString应用到文本组件上，可以采用多种方式修改文本，包括调整字号、添加字体颜色、使文本具备可点击性，以及通过自定义方式绘制文本等。具体使用方法请参考[属性字符串](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md)的API文档。
 
-属性字符串提供多种类型样式对象，涵盖各种常见的文本样式格式，例如文本装饰线样式、文本行高样式、文本阴影样式等。也可以自行创建CustomSpan，以应用自定义样式。 
+属性字符串提供多种类型样式对象，涵盖各种常见的文本样式格式，例如文本装饰线样式、文本行高样式、文本阴影样式等。也可以自行创建[CustomSpan](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#customspan)，以应用自定义样式。 
 
 ## 创建并应用StyledString和MutableStyledString
 
-  可以通过TextController提供的[setStyledString](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#setstyledstring12)方法，将属性字符串附加到文本组件，并推荐在[onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或者文本组件的[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)回调中触发绑定。
+  可以通过[TextController](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcontroller11)提供的[setStyledString](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#setstyledstring12)方法，将属性字符串附加到文本组件，并推荐在[onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或者文本组件的[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)回调中触发绑定。
   > **说明：**
   >
-  > 在aboutToAppear中调用setStyledString方法时，由于该方法运行阶段组件尚未完成创建并成功挂载节点树，因此无法在页面初始化时显示属性字符串。
+  > 在[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#abouttoappear)中调用setStyledString方法时，由于该方法运行阶段组件尚未完成创建并成功挂载节点树，因此无法在页面初始化时显示属性字符串。
   >
   > 从API version 15开始，在aboutToAppear中调用setStyledString方法，页面初始化时可以显示属性字符串。
 
@@ -25,10 +25,12 @@
   @Entry
   @Component
   struct styled_string_demo1 {
-    //'app.string.CreateApply_Text_Forty_Five'资源文件中的value值为"运动45分钟"
-    styledString1: StyledString = new StyledString(resource.resourceToString($r('app.string.CreateApply_Text_Forty_Five')));
-    //'app.string.CreateApply_Text_Third_Five'资源文件中的value值为"运动35分钟"
-    mutableStyledString1: MutableStyledString = new MutableStyledString(resource.resourceToString($r('app.string.CreateApply_Text_Third_Five')));
+    // 请将$r('app.string.CreateApply_Text_Forty_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动45分钟"
+    styledString1: StyledString = new StyledString( this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Forty_Five').id));
+    // 请将$r('app.string.CreateApply_Text_Third_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动35分钟"
+    mutableStyledString1: MutableStyledString = new MutableStyledString( this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five').id));
     controller1: TextController = new TextController();
     controller2: TextController = new TextController();
   
@@ -431,8 +433,8 @@
   @Component
   struct Index {
     context = this.getUIContext().getHostContext();
-    /*'app.string.StyledStringParagraphStyle_Text_2'资源文件中的value值为"段落标题\n正文第一段落开始0123456789正文第一段落结束，
-     通过replaceStyle清空原样式替换新样式。"*/
+    /* 请将$r('app.string.StyledStringParagraphStyle_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为
+     "段落标题\n正文第一段落开始0123456789正文第一段落结束，通过replaceStyle清空原样式替换新样式。"*/
     @State message1: string =
       this.context!.resourceManager.getStringSync($r('app.string.StyledStringParagraphStyle_Text_2').id);
     titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
@@ -489,7 +491,7 @@
       Column() {
         // 显示属性字符串
         Text(undefined, { controller: this.controller }).width(300)
-        //'app.string.Replace_paragraph_style'资源文件中的value值为"替换段落样式"
+        // 请将$r('app.string.Replace_paragraph_style')替换为实际资源文件，在本示例中该资源文件的value值为"替换段落样式"
         Button($r('app.string.Replace_paragraph_style'))
           .onClick(() => {
             this.paragraphStyledString1.replaceStyle({
@@ -512,7 +514,7 @@
 
 可通过[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)将属性字符串根据文本布局选项转换成对应的[Paragraph](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)数组。
 
-- 以下示例展示了通过MeasureUtils的getParagraphs方法测算文本，当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
+- 以下示例展示了通过[MeasureUtils](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md)的getParagraphs方法测算文本，当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
 
   <!-- @[styledStringConvertedToParagraph_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringConvertedToParagraph.ets) -->
   
@@ -576,12 +578,13 @@
   @Entry
   @Component
   struct Index {
+    // 请在resources\base\element\string.json文件中配置name为'Full_text'，value为非空字符串的资源
     @State fullText: string =
       this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Full_text') as string;
-    @State originalText: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Original_text') as string;
-    @State afterTypesetting: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('After_typesetting') as string;
+    // 请将$r('app.string.Original_text')替换为实际资源文件，在本示例中该资源文件的value值为"原文"
+    @State originalText: ResourceStr = $r('app.string.Original_text');
+    // 请将$r('app.string.After_typesetting')替换为实际资源文件，在本示例中该资源文件的value值为"排版后"
+    @State afterTypesetting: ResourceStr = $r('app.string.After_typesetting');
     str: string =
       'Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.';
     mutableStr2 = new MutableStyledString(this.str, [
@@ -785,9 +788,10 @@
     //Bold样式
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
     //创建含段落样式的对象paragraphStyledString1
-    //'app.string.StyledStringImageAttachment_Text_1'资源文件中的value值为"\n品牌相纸 高清冲印30张\n限时直降5.15元 限量赠送"
+    // 请将$r('app.string.StyledStringImageAttachment_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"\n品牌相纸 高清冲印30张\n限时直降5.15元 限量赠送"
     paragraphStyledString1: MutableStyledString =
-      new MutableStyledString(resource.resourceToString($r('app.string.StyledStringImageAttachment_Text_1')), [
+      new MutableStyledString(this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringImageAttachment_Text_1').id), [
       {
         start: 0,
         length: 28,
@@ -813,9 +817,10 @@
         styledValue: this.lineHeightStyle1
       }
     ]);
-    //'app.string.StyledStringImageAttachment_Text_2'资源文件中的value值为"\n￥16.21 3000+人好评"
+    // 请将$r('app.string.StyledStringImageAttachment_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为"\n￥16.21 3000+人好评"
     paragraphStyledString2: MutableStyledString =
-      new MutableStyledString(resource.resourceToString($r('app.string.StyledStringImageAttachment_Text_2')), [
+      new MutableStyledString(this.getUIContext()
+        .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringImageAttachment_Text_2').id), [
       {
         start: 0,
         length: 5,
@@ -863,8 +868,7 @@
     build() {
       NavDestination() {
         Column({ space: 12 }) {
-          //'app.string.StyledStringImageAttachment_title'资源文件中的value值为"通过ImageAttachment来添加图片"
-          ComponentCard({ title: $r('app.string.StyledStringImageAttachment_title') }) {
+          // ...
             Row() {
               Column({ space: 10 }) {
                 Text(undefined, { controller: this.controller })
@@ -873,7 +877,7 @@
                   .draggable(true)
                   .backgroundColor('#FFFFFF')
                   .borderRadius(5)
-                //'app.string.StyledStringImageAttachment_Button_1'资源文件中的value值为"点击查看商品卡片"
+                // 请将$r('app.string.StyledStringImageAttachment_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击查看商品卡片"
                 Button($r('app.string.StyledStringImageAttachment_Button_1'))
                   .enabled(this.abled)
                   .onClick(() => {
@@ -896,13 +900,10 @@
             .height('100%')
             .backgroundColor('#F8F8FF')
           }
-        }
-        .width('100%')
-        .height('100%')
-        .padding({ left: 12, right: 12 })
+          // ...
       }
       .backgroundColor('#f1f2f3')
-      //'app.string.StyledStringImageAttachment_title'资源文件中的value值为"通过ImageAttachment来添加图片"
+      // 请将$r('app.string.StyledStringImageAttachment_title')替换为实际资源文件，在本示例中该资源文件的value值为"通过ImageAttachment来添加图片"
       .title($r('app.string.StyledStringImageAttachment_title'))
     }
   }
@@ -1043,11 +1044,10 @@
     build() {
       NavDestination() {
         Column({ space: 12 }) {
-          //'app.string.TStyledStringGestureStyle_title'资源文件中的value值为"设置事件"
-          ComponentCard({ title: $r('app.string.TStyledStringGestureStyle_title') }) {
+          // ...
             Row() {
               Column() {
-                //'app.string.StyledStringGestureStyle_button_content'资源文件中的value值为"响应属性字符串事件改变背景色"
+                // 请将$r('app.string.StyledStringGestureStyle_button_content')替换为实际资源文件，在本示例中该资源文件的value值为"响应属性字符串事件改变背景色"
                 Button($r('app.string.StyledStringGestureStyle_button_content'))
                   .backgroundColor(this.backgroundColor1)
                   .width('80%')
@@ -1061,13 +1061,10 @@
             }
             .height('100%')
           }
-        }
-        .width('100%')
-        .height('100%')
-        .padding({ left: 12, right: 12 })
+          // ...
       }
       .backgroundColor('#f1f2f3')
-      //'app.string.TStyledStringGestureStyle_title'资源文件中的value值为"设置事件"
+      // 请将$r('app.string.TStyledStringGestureStyle_title')替换为实际资源文件，在本示例中该资源文件的value值为"设置事件"
       .title($r('app.string.TStyledStringGestureStyle_title'))
     }
   }
@@ -1116,16 +1113,16 @@ export struct StyledStringHtml {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        //'app.string.StyledStringHtml_title'资源文件中的value值为"格式转换"
-        ComponentCard({ title: $r('app.string.StyledStringHtml_title') }) {
+        // ...
           Column() {
             Text(undefined, { controller: this.controller1 }).height(100)
             Row() {
-              //'app.string.StyledStringHtml_Button_1'资源文件中的value值为"添加属性字符串"
+              // 请将$r('app.string.StyledStringHtml_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"添加属性字符串"
               Button($r('app.string.StyledStringHtml_Button_1')).onClick(() => {
-                //'app.string.StyledStringHtml_Text_1'资源文件中的value值为"属性字符串"
+                // 请将$r('app.string.StyledStringHtml_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"属性字符串"
                 let mutableStyledString1: MutableStyledString =
-                  new MutableStyledString(resource.resourceToString($r('app.string.StyledStringHtml_Text_1')), [{
+                  new MutableStyledString(this.getUIContext()
+                    .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringHtml_Text_1').id), [{
                   start: 0,
                   length: 6,
                   styledKey: StyledStringKey.FONT,
@@ -1141,11 +1138,11 @@ export struct StyledStringHtml {
                 this.styledString = mutableStyledString1;
                 this.controller1.setStyledString(mutableStyledString1);
               }).margin(5)
-              //'app.string.StyledStringHtml_Button_2'资源文件中的value值为"toHtml"
+              // 请将$r('app.string.StyledStringHtml_Button_2')替换为实际资源文件，在本示例中该资源文件的value值为"toHtml"
               Button($r('app.string.StyledStringHtml_Button_2')).onClick(() => {
                 this.html = StyledString.toHtml(this.styledString);
               }).margin(5)
-              //'app.string.StyledStringHtml_Button_3'资源文件中的value值为"fromHtml"
+              // 请将$r('app.string.StyledStringHtml_Button_3')替换为实际资源文件，在本示例中该资源文件的value值为"fromHtml"
               Button($r('app.string.StyledStringHtml_Button_3')).onClick(async () => {
                 let styledString = await StyledString.fromHtml(this.html);
                 this.controller2.setStyledString(styledString);
@@ -1156,13 +1153,10 @@ export struct StyledStringHtml {
             Text(this.html)
           }.width('100%')
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+        // ...
     }
     .backgroundColor('#f1f2f3')
-    //'app.string.StyledStringHtml_title'资源文件中的value值为"格式转换"
+    // 请将$r('app.string.StyledStringHtml_title')替换为实际资源文件，在本示例中该资源文件的value值为"格式转换"
     .title($r('app.string.StyledStringHtml_title'))
   }
 }
@@ -1197,7 +1191,7 @@ export struct StyledStringHtml {
           .margin(5)
   
         // 按钮1:将HTML转换为SpanString
-        //'app.string.Converted_HTML_to_SpanString'资源文件中的value值为"Converted HTML to SpanString"
+        // 请将$r('app.string.Converted_HTML_to_SpanString')替换为实际资源文件，在本示例中该资源文件的value值为"Converted HTML to SpanString"
         Button($r('app.string.Converted_HTML_to_SpanString')).onClick(async () => {
           this.spanString = await StyledString.fromHtml(this.html);
           this.controller.setStyledString(this.spanString);
@@ -1205,7 +1199,7 @@ export struct StyledStringHtml {
         }).margin(5)
   
         // 按钮2:将SpanString转换为HTML
-        //'app.string.Converted_SpanString_to_HTML'资源文件中的value值为"Converted SpanString to HTML"
+        // 请将$r('app.string.Converted_SpanString_to_HTML')替换为实际资源文件，在本示例中该资源文件的value值为"Converted SpanString to HTML"
         Button($r('app.string.Converted_SpanString_to_HTML')).onClick(() => {
           if (this.spanString) {
             // 将spanString转换为HTML并替换当前的HTML状态
@@ -1220,7 +1214,8 @@ export struct StyledStringHtml {
         }).margin(5)
   
         // 按钮3:将HTML转换回SpanString
-        //'app.string.Converted_HTML_back_to_SpanString'资源文件中的value值为"Converted HTML back to SpanString"
+        /* 请将$r('app.string.Converted_HTML_back_to_SpanString')替换为实际资源文件，在本示例中该资源文件的
+         value值为"Converted HTML back to SpanString" */
         Button($r('app.string.Converted_HTML_back_to_SpanString')).onClick(async () => {
           this.spanString = await StyledString.fromHtml(this.html);
           this.controller.setStyledString(this.spanString);
@@ -1228,7 +1223,7 @@ export struct StyledStringHtml {
         }).margin(5)
   
         // 重置：重置HTML和SpanString
-        //'app.string.Reset'资源文件中的value值为"Reset"
+        // 请将$r('app.string.Reset')替换为实际资源文件，在本示例中该资源文件的value值为"Reset"
         Button($r('app.string.Reset')).onClick(() => {
           this.html =
             "<p>This is <b>b</b> <strong>strong</strong> <em>em</em> <i>i</i> <u>u</u> <del>del</del> <s>s</s> <span   style = \"foreground-color:blue\"> <a href='https://www.example.com'>www.example</a> </span> <span   style=\"background-color: red;\">red span</span> <sup>superscript</sup> and <sub>subscript</sub></p>";
@@ -1261,9 +1256,10 @@ export struct StyledStringSceneExample {
   //Bold样式
   boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
   //创建含段落样式的对象paragraphStyledString1
-  //'app.string.StyledStringSceneExample_Text_1'资源文件中的value值为"您的豪华钻石已过期1天\n续费可继续享受会员专属权益"
+  // 请将$r('app.string.StyledStringSceneExample_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"您的豪华钻石已过期1天\n续费可继续享受会员专属权益"
   paragraphStyledString1: MutableStyledString =
-    new MutableStyledString(resource.resourceToString($r('app.string.StyledStringSceneExample_Text_1')), [
+    new MutableStyledString(this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringSceneExample_Text_1').id), [
       {
         start: 0,
         length: 4,
@@ -1295,9 +1291,10 @@ export struct StyledStringSceneExample {
         styledValue: this.lineHeightStyle1
       }
     ]);
-  //'app.string.StyledStringSceneExample_Text_2'资源文件中的value值为"\n￥4.88￥15"
+  // 请将$r('app.string.StyledStringSceneExample_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为"\n￥4.88￥15"
   paragraphStyledString2: MutableStyledString =
-    new MutableStyledString(resource.resourceToString($r('app.string.StyledStringSceneExample_Text_2')), [
+    new MutableStyledString(this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringSceneExample_Text_2').id), [
     {
       start: 0,
       length: 4,
@@ -1341,9 +1338,10 @@ export struct StyledStringSceneExample {
       styledValue: new DecorationStyle({ type: TextDecorationType.LineThrough, color: Color.Grey })
     }
   ]);
-  //'app.string.StyledStringSceneExample_Text_3'资源文件中的value值为"\n02时06分后将失去该优惠"
+  // 请将$r('app.string.StyledStringSceneExample_Text_3')替换为实际资源文件，在本示例中该资源文件的value值为"\n02时06分后将失去该优惠"
   paragraphStyledString3: MutableStyledString =
-    new MutableStyledString(resource.resourceToString($r('app.string.StyledStringSceneExample_Text_3')), [
+    new MutableStyledString(this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringSceneExample_Text_3').id), [
     {
       start: 0,
       length: 4,
@@ -1374,8 +1372,7 @@ export struct StyledStringSceneExample {
   build() {
     NavDestination() {
       Column({ space: 12 }) {
-        //'app.string.StyledStringSceneExample_title'资源文件中的value值为"场景示例"
-        ComponentCard({ title: $r('app.string.StyledStringSceneExample_title') }) {
+        // ...
           Row() {
             Column({ space: 5 }) {
               Text(undefined, { controller: this.controller })
@@ -1388,7 +1385,7 @@ export struct StyledStringSceneExample {
                   this.paragraphStyledString1.appendStyledString(this.paragraphStyledString2);
                   this.controller.setStyledString(this.paragraphStyledString1);
                 })
-              //'app.string.StyledStringSceneExample_Button_1'资源文件中的value值为"限时4.88元 立即续费"
+              // 请将$r('app.string.StyledStringSceneExample_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"限时4.88元 立即续费"
               Button($r('app.string.StyledStringSceneExample_Button_1'))
                 .width(200)
                 .fontColor(Color.White)
@@ -1401,13 +1398,10 @@ export struct StyledStringSceneExample {
           }
           .height('60%')
         }
-      }
-      .width('100%')
-      .height('100%')
-      .padding({ left: 12, right: 12 })
+        // ...
     }
     .backgroundColor('#f1f2f3')
-    //'app.string.StyledStringSceneExample_title'资源文件中的value值为"场景示例"
+    // 请将$r('app.string.StyledStringSceneExample_title')替换为实际资源文件，在本示例中该资源文件的value值为"场景示例"
     .title($r('app.string.StyledStringSceneExample_title'))
   }
 }

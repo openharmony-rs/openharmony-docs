@@ -97,7 +97,7 @@ installUserCertificate(admin: Want, certificate: CertBlob): Promise&lt;string&gt
 | 参数名      | 类型                                                    | 必填 | 说明           |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。     |
+| certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。     |
 
 **返回值：**
 
@@ -166,7 +166,7 @@ installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): s
 | 参数名      | 类型                                                    | 必填 | 说明           |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。     |
+| certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径下。     |
 | accountId   | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
@@ -338,6 +338,8 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
@@ -448,6 +450,8 @@ setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): vo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
@@ -556,6 +560,8 @@ setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
 
 **参数：**
 
@@ -671,13 +677,15 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占), 同一个用户下的同一个应用的水印独占。不同用户、不同应用的水印[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | bundleName | string    | 是   | 被设置水印的应用包名。                                                       |
-| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径等应用有权限访问的路径。<br>image.PixelMap表示图像对象，图像像素占用大小不得超过500KB。<br>图像像素占用大小计算公式：图像宽度(像素)×图像高度 (像素)×每个像素占用的字节数（通常为4）。例如：一张 100x100 的图片，图像像素占用大小为100×100×4=40000字节。                                                       |
+| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径(应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系))等应用有权限访问的路径。<br>image.PixelMap表示图像对象，图像像素占用大小不得超过500KB。<br>图像像素占用大小计算公式：图像宽度(像素)×图像高度 (像素)×每个像素占用的字节数（通常为4）。例如：一张 100x100 的图片，图像像素占用大小为100×100×4=40000字节。                                                       |
 | accountId     | number     | 是   | 用户ID。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -778,6 +786,8 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** 同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 
@@ -894,13 +904,18 @@ try {
 setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): void
 
 设置外部来源扩展程序的管控策略。
+
 - DEFAULT：
-默认，表示无管控策略，用户可以通过“设置-隐私与安全-高级”中的“运行外部来源的扩展程序”开关来设置是否允许扩展程序运行。
+
+  默认，表示无管控策略，用户可以通过“设置-隐私与安全-高级”中的“运行外部来源的扩展程序”开关来设置是否允许扩展程序运行。
+
 - DISALLOW：
-禁用。设置此策略后，禁止运行外部来源的扩展程序，运行中的扩展程序可继续运行，扩展程序关闭后无法启动运行。用户无法开启
-“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
+
+  禁用。设置此策略后，禁止运行外部来源的扩展程序，运行中的扩展程序可继续运行，扩展程序关闭后无法启动运行。用户无法开启“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
+
 - FORCE_OPEN：
-强制开启。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
+
+  强制开启。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -909,6 +924,8 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): vo
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)。
 
 **参数：**
 

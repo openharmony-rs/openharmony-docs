@@ -459,14 +459,14 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
     }
 
     // Exposure.
-    function hasExposureFn(ExposeureMode: camera.ExposureMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
+    function hasExposureFn(ExposureMode: camera.ExposureMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
 
       // Check whether an exposure mode is supported.
-      let hasFlash = session?.isExposureModeSupported(ExposeureMode);
+      let hasFlash = session?.isExposureModeSupported(ExposureMode);
   
       // Set the exposure mode.
       if (hasFlash) {
-        session?.setExposureMode(ExposeureMode);
+        session?.setExposureMode(ExposureMode);
       }
     }
 

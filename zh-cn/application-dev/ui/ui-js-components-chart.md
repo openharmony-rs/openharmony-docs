@@ -1,9 +1,9 @@
 # chart开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 chart为图表组件，用于呈现线形图、柱状图和量规图界面。具体用法请参考[chart](../reference/apis-arkui/arkui-js/js-components-basic-chart.md)。

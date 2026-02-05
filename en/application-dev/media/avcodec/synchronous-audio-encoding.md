@@ -309,7 +309,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 7. (Optional) Call **OH_AudioCodec_Reset()** to reset the encoder.
 
-    After **OH_AudioCodec_Reset()** is called, the encoder returns to the initialized state. To continue encoding, you must call **OH_AudioCodec_Configure()** and then **OH_AudioCodec_Start()**.
+   After **OH_AudioCodec_Reset()** is called, the encoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the encoder and then call **OH_AudioCodec_Start()** to start encoding again. Obtain the input and output buffers again after the decoder is started.
 
     ```c++
     // Reset the encoder.
@@ -326,7 +326,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 8. (Optional) Call **OH_AudioCodec_Stop()** to stop the encoder.
 
-    After the encoder is stopped, you can call **Start** to start it again. If you have passed specific data in the previous **Start** for the encoder, you must pass it again.
+   After the encoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. The input and output buffers obtained before the decoder is stopped cannot be reused. You must obtain them again after the decoder is started.
 
     ```c++
     // Stop the encoder.
@@ -338,9 +338,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 9. Call **OH_AudioCodec_Destroy()** to destroy the encoder instance and release resources.
 
-    > **NOTE**
-    >
-    > You only need to call this API once.
+   > **NOTE**
+   >
+   > You only need to call this API once.
 
     ```c++
     // Call OH_AudioCodec_Destroy to destroy the encoder.

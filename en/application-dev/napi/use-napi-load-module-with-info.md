@@ -42,10 +42,13 @@ napi_status napi_load_module_with_info(napi_env env, const char* path, const cha
 > 1. The module name to be loaded is the entry file, generally **index.ets/ts**, of the module.
 > 2. To load a HAR to another HAR, ensure that **module_info** is correct. The value of **moduleName** must be that of the HAP or HSP.
 > 3. If a third-party package is directly or indirectly used in a HAP/HSP and the third-party package has loaded another module, for example, module A, using **napi_load_module_with_info**, you must add module A in the dependencies of the HAP/HSP.
+> 4. Calling this API in the signal function is insecure. Direct calling may cause stack overflow.
 
 ## Exception Scenarios
 1. When no file is found in the package or the **build-profile.json5** configuration is incorrect during module loading, the error code **napi_generic_failure** is returned and an error log is printed.
-![napi_load_module_with_info](figures/napi_load_module_with_info.png)
+
+   ![napi_load_module_with_info](figures/napi_load_module_with_info.png)
+
 2. The module loading fails due to unexpected behavior on the system side, and **cppcrash** is thrown.
 
 ## How to Use

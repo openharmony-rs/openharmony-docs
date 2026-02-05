@@ -3,8 +3,8 @@
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The request module provides applications with basic upload, download, and background transmission agent capabilities.
 
@@ -45,8 +45,8 @@ import { request } from '@kit.BasicServicesKit';
 | EXCEPTION_FILEPATH<sup>9+</sup> | number |   13400002   | (Specific error codes) Abnormal file path.|
 | EXCEPTION_SERVICE<sup>9+</sup> | number |   13400003   | (Specific error codes) Abnormal service.|
 | EXCEPTION_OTHERS<sup>9+</sup> | number |   13499999   | (Specific error codes) Other errors.|
-| NETWORK_MOBILE<sup>6+</sup> | number | 0x00000001 | (Network type) Bit flag download allowed on a mobile network.|
-| NETWORK_WIFI<sup>6+</sup> | number | 0x00010000 | (Network type) Bit flag download allowed on a WLAN.|
+| NETWORK_MOBILE | number | 0x00000001 | (Network type) Bit flag download allowed on a mobile network.|
+| NETWORK_WIFI | number | 0x00010000 | (Network type) Bit flag download allowed on a WLAN.|
 | ERROR_CANNOT_RESUME<sup>7+</sup> | number |   0   | (Download error codes) Failure to resume the download due to network errors.|
 | ERROR_DEVICE_NOT_FOUND<sup>7+</sup> | number |   1   | (Download error codes) Failure to find a storage device such as a memory card.|
 | ERROR_FILE_ALREADY_EXISTS<sup>7+</sup> | number |   2   | (Download error codes) Failure to download the file because it already exists.|
@@ -89,7 +89,7 @@ Uploads a file. This API uses a promise to return the result. HTTP is supported.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-  | config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+  | config | [UploadConfig](#uploadconfig) | Yes| Upload configurations.|
 
 
 **Return value**
@@ -131,7 +131,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
       console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
     });
   } catch (err) {
-    console.error(`Failed to request the upload. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -155,7 +155,7 @@ Uploads a file. This API uses an asynchronous callback to return the result. HTT
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-  | config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+  | config | [UploadConfig](#uploadconfig) | Yes| Upload configurations.|
   | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | Yes| Callback used to return the **UploadTask** object. If the operation is successful, **err** is **undefined**, and **data** is the **UploadTask** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -193,7 +193,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
       uploadTask = data;
     });
   } catch (err) {
-    console.error(`Failed to request the upload. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -217,7 +217,7 @@ Uploads files. This API uses a promise to return the result.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+  | config | [UploadConfig](#uploadconfig) | Yes| Upload configurations.|
 
 **Return value**
 
@@ -272,7 +272,7 @@ Uploads files. This API uses an asynchronous callback to return the result.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+  | config | [UploadConfig](#uploadconfig) | Yes| Upload configurations.|
   | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | Yes| Callback used to return the **UploadTask** object. If the operation is successful, **err** is **undefined**, and **data** is the **UploadTask** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -406,7 +406,7 @@ Subscribes to upload completion or failure events. This API uses an asynchronous
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | type | string | Yes| Type of the event to subscribe to. The options are as follows:<br>\- **'complete'**: upload task completion.<br>\- **'fail'**: upload task failure.|
+  | type | string | Yes| Type of the event to subscribe to.|The options are as follows:<br>\- **'complete'**: upload task completion.<br>\- **'fail'**: upload task failure.| 
   | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | Yes| Callback used to return the result.  |
 
 
@@ -555,7 +555,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   | ID| Error Message|
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | the parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
 
@@ -693,7 +693,7 @@ Removes this upload task. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [delete](#delete9) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [delete](#delete9) instead.
 
 **Return value**
 
@@ -732,7 +732,7 @@ Removes an upload task. This API uses an asynchronous callback to return the res
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [delete](#delete9-1) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [delete](#delete9-1) instead.
 
 **Parameters**
 
@@ -762,7 +762,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
   });
   ```
 
-## UploadConfig<sup>6+</sup>
+## UploadConfig
 Describes the configuration of an upload task.
 
 **System capability**: SystemCapability.MiscServices.Upload
@@ -808,7 +808,7 @@ The following table describes the enum values of **responseCode**.
 | 20  | Other errors. Verify the parameter configuration or the network connection, or try again.       |
 
 ## File
-Defines the list of files in [UploadConfig](#uploadconfig6).
+Describes the list of files in [UploadConfig](#uploadconfig).
 
 **System capability**: SystemCapability.MiscServices.Download
 
@@ -821,7 +821,7 @@ Defines the list of files in [UploadConfig](#uploadconfig6).
 
 
 ## RequestData
-Defines the form data in [UploadConfig](#uploadconfig6).
+Describes the form data in [UploadConfig](#uploadconfig).
 
 **System capability**: SystemCapability.MiscServices.Download
 
@@ -885,7 +885,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -944,7 +944,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
       }
     });
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1102,7 +1102,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1166,7 +1166,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1224,7 +1224,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1306,7 +1306,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }  
   ```
 
@@ -1360,7 +1360,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1422,7 +1422,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1474,7 +1474,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1530,7 +1530,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1584,7 +1584,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   } 
   ```
 
@@ -1639,7 +1639,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1692,7 +1692,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1747,7 +1747,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1800,7 +1800,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1855,7 +1855,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1908,7 +1908,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1963,7 +1963,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
     })
   } catch (err) {
-    console.error(`Failed to request the download. err: ${JSON.stringify(err)}`);
+    console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
   }
   ```
 
@@ -1979,7 +1979,7 @@ Removes this download task. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [delete](#delete9-2) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [delete](#delete9-2) instead.
 
 **Return value**
 
@@ -2018,7 +2018,7 @@ Removes a download task. This API uses an asynchronous callback to return the re
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [delete](#delete9-3) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [delete](#delete9-3) instead.
 
 **Parameters**
 
@@ -2059,7 +2059,7 @@ Queries this download task. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [getTaskInfo](#gettaskinfo9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getTaskInfo](#gettaskinfo9) instead.
 
 **Return value**
 
@@ -2139,7 +2139,7 @@ Queries the MIME type of this download task. This API uses a promise to return t
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [getTaskMimeType](#gettaskmimetype9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getTaskMimeType](#gettaskmimetype9) instead.
 
 **Return value**
 
@@ -2238,7 +2238,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 **Example**
 
   ```js
-  downloadTask.pause().then((result: boolean) => {    
+  downloadTask.pause().then(() => {    
     console.info('Succeeded in pausing the download task.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
@@ -2277,7 +2277,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 **Example**
 
   ```js
-  downloadTask.pause((err: BusinessError, result: boolean)=>{
+  downloadTask.pause((err: BusinessError) => {
     if(err) {
       console.error(`Failed to pause the download task. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -2299,7 +2299,7 @@ Resumes this download task. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [restore](#restore9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [restore](#restore9) instead.
 
 **Return value**
 
@@ -2318,7 +2318,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 **Example**
 
   ```js
-  downloadTask.resume().then((result: boolean) => {
+  downloadTask.resume().then(() => {
     console.info('Succeeded in resuming the download task.')
   }).catch((err: BusinessError) => {
     console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
@@ -2357,7 +2357,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 **Example**
 
   ```js
-  downloadTask.resume((err: BusinessError, result: boolean)=>{
+  downloadTask.resume((err: BusinessError) => {
     if (err) {
       console.error(`Failed to resume the download task. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -2379,7 +2379,7 @@ Defines the download task configuration.
 | enableMetered | boolean | No| Yes| Whether download is allowed on a metered connection. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.<br>**NOTE**<br> In general cases, a mobile data connection is metered, while a Wi-Fi connection is not.|
 | enableRoaming | boolean | No| Yes| Whether download is allowed on a roaming network. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.|
 | description | string | No| Yes| Description of the download session. The default value is an empty string.|
-| filePath<sup>7+</sup> | string | No| Yes| Path where the downloaded file is stored. The default value is the cache directory of the caller (that is, the input **context**). The default file name is the part truncated from the last slash (/) in the URL.<br>- In the FA model, use [context](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir) to obtain the application storage path.<br>- In the stage model, use [AbilityContext](../apis-ability-kit/js-apis-inner-application-context.md) to obtain the application storage path.|
+| filePath<sup>7+</sup> | string | No| Yes| Path where the downloaded file is stored. The default value is the cache directory of the caller (that is, the input **context**). The default file name is the part truncated from the last slash (/) in the URL.<br>- In the FA model, use the [Context.getCacheDir](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir) method to obtain the application storage path.<br>- In the Stage model, use the **AbilityContext** class in [Context (Context Base Class of the Stage Model)](../apis-ability-kit/js-apis-inner-application-context.md) to obtain the file path.|
 | networkType | number | No| Yes| Network type allowed for download. The default value can be **NETWORK_MOBILE** or **NETWORK_WIFI**.<br>- **NETWORK_MOBILE**: 0x00000001<br>- **NETWORK_WIFI**: 0x00010000|
 | title | string | No| Yes| Download task name.|
 | background<sup>9+</sup> | boolean | No| Yes| Whether to enable the background task notification. When this parameter is enabled, the download status is displayed in the notification panel. The value **true** means the parameter is enabled, and **false** means the opposite. The default value is **false**.|
@@ -2404,7 +2404,7 @@ Defines the download task information, which is the callback parameter of the [g
 | description | string | No| No| Description of the download task.|
 | downloadedBytes | number | No| No| Real-time download size, in bytes.|
 
-## request.agent
+## request.agent<sup>10+</sup>
 
 ### Constants
 
@@ -2461,6 +2461,7 @@ If the network does not meet the preset conditions, the tasks that have not been
 ## request.agent.BroadcastEvent<sup>11+</sup>
 
 Defines a custom system event. You can use a common event API to obtain the event.
+
 The upload and download SA has the ohos.permission.SEND_TASK_COMPLETE_EVENT permission. You can configure the level-2 configuration file to which the metadata of an event points to intercept other event senders.
 
 Use the **CommonEventData** type to transmit data related to common events. The members in **CommonEventData** are different from those described in [CommonEventData](js-apis-inner-commonEvent-commonEventData.md). Specifically, **CommonEventData.code** indicates the task status, which is **0x40 COMPLETE** or **0x41 FAILED**, and **CommonEventData.data** indicates the task ID.
@@ -2523,10 +2524,10 @@ Provides the configuration information of an upload or download task.
 | roaming | boolean | No| Yes| Whether the task is allowed on a roaming network. The default value is **true**.<br>- **true**: The task is allowed on a roaming network.<br>- **false**: The task is not allowed on a roaming network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | retry | boolean | No| Yes| Whether automatic retry is enabled for the task. This parameter is only applicable to background tasks. The default value is **true**.<br>- **true**: The automatic retry is enabled.<br>- **false**: The automatic retry is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | redirect | boolean | No| Yes| Whether redirection is allowed. The default value is **true**.<br>- **true**: The redirection is allowed.<br>- **false**: The redirection is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| proxy<sup>12+</sup> | string | No| Yes| Proxy address. The value contains a maximum of 512 characters.<br>It is in the format of http://\<domain or address\>:\<port\>. By default, this parameter is left blank.|
+| proxy<sup>12+</sup> | string | No| Yes| Proxy address. The value contains a maximum of 512 characters.<br>It is in the format of **http://\<*domain or address*\>:\<port\>**. By default, this parameter is left blank.|
 | index | number | No| Yes| Path index of the task. It is usually used for resumable transfers. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| begins | number | No| Yes| File start point of the task. It is usually used for resumable transfers. The default value is **0**. The value is a closed interval.<br>- For the download task, the value is obtained by sending an HTTP range request to read the start position when the server starts to download files.<br>- For the upload task, the value is obtained at the beginning of the upload.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| ends | number | No| Yes| File end point of the task. It is usually used for resumable transfers. The default value is **-1**. The value is a closed interval.<br>- For the download task, the value is obtained by sending an HTTP range request to read the end position when the server starts to download files.<br>- For the upload task, the value is obtained at the end of the upload.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| begins | number | No| Yes| File start point of the task. It is usually used for resumable transfers. The default value is **0**. The value is a closed interval.<br>- For the download task, the value is obtained by sending an HTTP range request to read the start position when the server starts to download files.<br>- For the upload task, the value is obtained at the start position of the upload.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| ends | number | No| Yes| File end point of the task. It is usually used for resumable transfers. The default value is **-1**. The value is a closed interval.<br>- For the download task, the value is obtained by sending an HTTP range request to read the end position when the server starts to download files.<br>- For the upload task, the value is obtained at the end position of the upload.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | gauge | boolean | No| Yes| Whether to send progress notifications. This parameter applies only to background tasks. The default value is **false**.<br>- **false**: Progress notifications are not sent. This means that a notification is sent only to indicate the result of the total task.<br>- **true**: Progress notifications are sent to indicate the result of each file.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | precise | boolean | No| Yes| - If this parameter is set to **true**, the task fails when the file size cannot be obtained.<br>- If this parameter is set to **false**, the task continues when the file size is set to **-1**.<br>The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | token | string | No| Yes| Task token. To query a task with a token, you need to provide the token and use [request.agent.touch](#requestagenttouch10). Otherwise, the specified task cannot be queried. The value contains 8 to 2048 bytes. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -2630,7 +2631,7 @@ Defines the data structure of the task information for query. The fields availab
 | mimeType | string | Yes| No| MIME type in the task configuration.|
 | progress | [Progress](#requestagentprogress10) | Yes| No| Task progress.|
 | gauge | boolean | Yes| No| Whether to send progress notifications. This parameter applies only to background tasks.<br>- **false**: Progress notifications are not sent. This means that a notification is sent only to indicate the result of the total task.<br>- **true**: Progress notifications are sent to indicate the result of each file.|
-| ctime | number | Yes| No| Unix timestamp when the task is created, in milliseconds. The value is generated by the system of the current device.<br>**NOTE**<br>When [request.agent.search](#requestagentsearch10-1) is used for query, this value must be within the range of [after,before] for the task ID to be obtained. For details about **before** and **after**, see [Filter](#requestagentfilter10).|
+| ctime | number | Yes| No| Unix timestamp when the task is created, in milliseconds. The value is generated by the system of the current device.<br>Note: When [request.agent.search](#requestagentsearch10-1) is used for query, this value must be within the range of [after,before] for the task ID to be obtained. For details about **before** and **after**, see [Filter](#requestagentfilter10).|
 | mtime | number | Yes| No| Unix timestamp when the task state changes, in milliseconds. The value is generated by the system of the current device.|
 | retry | boolean | Yes| No| Whether automatic retry is enabled for the task. This parameter applies only to background tasks.<br>- **true**: The automatic retry is enabled.<br>- **false**: The automatic retry is disabled.|
 | tries | number | Yes| No| Number of retries of the task.|
@@ -2670,8 +2671,7 @@ Describes the custom information of the notification bar.
   <!--code_no_check-->
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { common } from '@kit.AbilityKit';
-  import wantAgent, { WantAgent } from '@ohos.app.ability.wantAgent';
+  import { common, wantAgent, WantAgent } from '@kit.AbilityKit';
 
   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -3892,7 +3892,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     task.on('pause', createOffCallback2);
     // Unsubscribe from createOffCallback1.
     task.off('pause', createOffCallback1);
-    // Unsubscribe from all callbacks of the foreground task pause event.
+    // Unsubscribe from all callbacks of the task pause event.
     task.off('pause');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -3982,7 +3982,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     task.on('resume', createOffCallback2);
     // Unsubscribe from createOffCallback1.
     task.off('resume', createOffCallback1);
-    // Unsubscribe from all callbacks of the foreground task resume event.
+    // Unsubscribe from all callbacks of the task resume event.
     task.off('resume');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -4072,7 +4072,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     task.on('remove', createOffCallback2);
     // Unsubscribe from createOffCallback1.
     task.off('remove', createOffCallback1);
-    // Unsubscribe from all callbacks of the task removal event.
+    // Unsubscribe from all callbacks of the task failure event.
     task.off('remove');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -4158,7 +4158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     task.on('response', createOffCallback2);
     // Unsubscribe from createOffCallback1.
     task.off('response', createOffCallback1);
-    // Unsubscribe from all callbacks of the task response event.
+    // Unsubscribe from all callbacks of the task failure event.
     task.off('response');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -4328,7 +4328,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
     task.on('wait', waitOffCallback2);
     // Unsubscribe from waitOffCallback1.
     task.off('wait', waitOffCallback1);
-    // Unsubscribe from all callbacks of the task waiting event.
+    // Unsubscribe from all callbacks of the task failure event.
     task.off('wait');
     console.info(`Succeeded in creating a upload task. result: ${task.tid}`);
     task.start();
@@ -4343,6 +4343,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 Starts a task. This API uses an asynchronous callback to return the result.<br>
 Tasks in the following states can be started:
+
 1. Task created by **request.agent.create**.
 2. Download tasks that are created by **request.agent.create** but have failed or paused.
 
@@ -4420,8 +4421,9 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 start(): Promise&lt;void&gt;
 
-Starts a task. This API uses a promise to return the result.<br>
+Starts this task. This API uses a promise to return the result.<br>
 Tasks in the following states can be started:
+
 1. Task created by **request.agent.create**.
 2. Download tasks that are created by **request.agent.create** but have failed or paused.
 
@@ -5709,7 +5711,7 @@ When all tasks in a group are succeeded, failed, or removed and the group is del
 
 | Name | Type      | Mandatory| Description     |
 |------|----------|----|---------|
-| gid  | string   | Yes | Target group ID.|
+| gid  | string   | Yes | Target group ID. The value must be the same as the ID of the created task group, that is, the return value of the task group created using the [request.agent.createGroup](#requestagentcreategroup15) API.|
 
 **Return value**
 

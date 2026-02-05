@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 The stage model is supported since API version 9. It is the mainstream model with a long evolution plan. This model is object-oriented and provides open application components as classes. You can derive application components for capability expansion.
 
@@ -56,11 +56,11 @@ The widget provider development based on the [stage model](../application-models
 
 ### Creating a FormExtensionAbility Instance
 
-To create a widget in the stage model, you need to implement the lifecycle callbacks of FormExtensionAbility. For details about how to generate a service widget template, see <!--RP1-->[Developing a Service Widget](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-service-widget-V5)<!--RP1End-->.
+To create a widget in the stage model, you need to implement the lifecycle callbacks of FormExtensionAbility. Before that, generate a widget template by referring to <!--RP1-->[Creating an ArkTS Widget](./arkts-ui-widget-creation.md)<!--RP1End-->.
 
 1. Import related modules in **JsCardFormAbility.ets**.
 
-    <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+    <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -74,7 +74,7 @@ To create a widget in the stage model, you need to implement the lifecycle callb
 
 2. Implement FormExtension lifecycle callbacks in **JsCardFormAbility.ets**.
 
-    <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+    <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -110,8 +110,9 @@ To create a widget in the stage model, you need to implement the lifecycle callb
       } catch (err) {
         hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo,
           err: ${JSON.stringify(err as BusinessError)}`);
-      };
+      }
     };
+    
     
     export default class JsCardFormAbility extends FormExtensionAbility {
       onAddForm(want: Want): formBindingData.FormBindingData {
@@ -132,12 +133,14 @@ To create a widget in the stage model, you need to implement the lifecycle callb
         let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
         return formData;
       }
+    
       onRemoveForm(formId: string): void {
         // Delete widget data.
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
         // Delete the persistent widget instance data.
         deleteFormInfo(formId, this.context);
       }
+    
       onUpdateForm(formId: string): void {
         // Override this method to support interval-based updates, time-specific updates, or updates requested by the widget host.
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
@@ -150,6 +153,7 @@ To create a widget in the stage model, you need to implement the lifecycle callb
           hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
         });
       }
+    
       onFormEvent(formId: string, message: string): void {
         // If the widget supports event triggering, override this method and implement the trigger.
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
@@ -160,7 +164,9 @@ To create a widget in the stage model, you need to implement the lifecycle callb
           hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
         }
       }
+    
     }
+    
     ```
 
 
@@ -173,12 +179,12 @@ To create a widget in the stage model, you need to implement the lifecycle callb
 1. Configure ExtensionAbility information under **extensionAbilities** in the [module.json5 file](../quick-start/module-configuration-file.md). For a FormExtensionAbility, you must specify **metadata**. Specifically, set **name** to **ohos.extension.form** (fixed), and set **resource** to the index of the widget configuration information.
    Example configuration:
 
-    <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) -->
+    <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) --> 
     
     ``` JSON5
     {
       "module": {
-        // ···
+        // ...
         "extensionAbilities": [
           {
             "name": "JsCardFormAbility",
@@ -254,7 +260,7 @@ To create a widget in the stage model, you need to implement the lifecycle callb
 A widget provider is usually started when it is needed to provide information about a widget. The Widget Manager supports multi-instance management and uses the widget ID to identify an instance. If the widget provider supports widget data modification, it must persistently store the data based on the widget ID, so that it can access the data of the target widget when obtaining, updating, or starting a widget.
 
 For details about how to import the code, see [Creating a FormExtensionAbility Instance](#creating-a-formextensionability-instance).
-<!-- @[JSForm_JsCardFormAbility_onAddForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+<!-- @[JSForm_JsCardFormAbility_onAddForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -280,7 +286,7 @@ let storeFormInfo =
       err: ${JSON.stringify(err as BusinessError)}`);
     }
   }
-// ···
+// ...
 
 export default class JsCardFormAbility extends FormExtensionAbility {
   onAddForm(want: Want): formBindingData.FormBindingData {
@@ -301,22 +307,24 @@ export default class JsCardFormAbility extends FormExtensionAbility {
     let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
     return formData;
   }
-// ···
+
+  // ...
 }
+
 ```
 
 
 
 You should override **onRemoveForm** to implement widget data deletion.
 
-<!-- @[JSForm_JsCardFormAbility_onRemoveForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+<!-- @[JSForm_JsCardFormAbility_onRemoveForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
 const TAG: string = 'JsCardFormAbility';
 const DATA_STORAGE_PATH: string = '/data/storage/el2/base/haps/form_store';
 const DOMAIN_NUMBER: number = 0xFF00;
-// ···
+// ...
 let deleteFormInfo = async (formId: string, context: common.FormExtensionContext): Promise<void> => {
   try {
     const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
@@ -327,19 +335,22 @@ let deleteFormInfo = async (formId: string, context: common.FormExtensionContext
   } catch (err) {
     hilog.error(DOMAIN_NUMBER, TAG, `[EntryFormAbility] failed to deleteFormInfo,
       err: ${JSON.stringify(err as BusinessError)}`);
-  };
+  }
 };
 
+
 export default class JsCardFormAbility extends FormExtensionAbility {
-// ···
+  // ...
   onRemoveForm(formId: string): void {
     // Delete widget data.
     hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
     // Delete the persistent widget instance data.
     deleteFormInfo(formId, this.context);
   }
-// ···
+
+  // ...
 }
+
 ```
 
 
@@ -359,17 +370,17 @@ Data of a temporary widget will be deleted on the Widget Manager if the widget f
 When an application initiates a scheduled or periodic update, the application obtains the latest data and calls **updateForm()** to update the widget.
 
 For details about how to import the code, see [Creating a FormExtensionAbility Instance](#creating-a-formextensionability-instance).
-<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
 const TAG: string = 'JsCardFormAbility';
-// ···
+// ...
 const DOMAIN_NUMBER: number = 0xFF00;
-// ···
+// ...
 
 export default class JsCardFormAbility extends FormExtensionAbility {
-// ···
+  // ...
   onUpdateForm(formId: string): void {
     // Override this method to support interval-based updates, time-specific updates, or updates requested by the widget host.
     hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
@@ -382,8 +393,10 @@ export default class JsCardFormAbility extends FormExtensionAbility {
       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
     });
   }
-// ···
+
+  // ...
 }
+
 ```
 
 
@@ -627,7 +640,7 @@ To update the widget content to the course information of Mr. Li on July 18, you
 
 - Receive the router event in UIAbility and obtain parameters.
 
-    <!-- @[JSForm_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @[JSForm_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/entryability/EntryAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryability/EntryAbility.ets
@@ -637,7 +650,7 @@ To update the widget content to the course information of Mr. Li on July 18, you
     
     const TAG: string = 'EntryAbility';
     const DOMAIN_NUMBER: number = 0xFF00;
-    // ···
+    // ...
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         if (want?.parameters?.params) {
@@ -654,24 +667,25 @@ To update the widget content to the course information of Mr. Li on July 18, you
           }
         }
       }
-    // ···
+    
+      // ...
     }
     ```
 
 
 - Receive the **message** event in FormExtensionAbility and obtain the parameters. For details about how to import the code, see [Creating a FormExtensionAbility Instance](#creating-a-formextensionability-instance).
 
-    <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+    <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
     const TAG: string = 'JsCardFormAbility';
-    // ···
+    // ...
     const DOMAIN_NUMBER: number = 0xFF00;
-    // ···
+    // ...
     
     export default class JsCardFormAbility extends FormExtensionAbility {
-    // ···
+      // ...
       onFormEvent(formId: string, message: string): void {
         // If the widget supports event triggering, override this method and implement the trigger.
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onFormEvent');
@@ -682,6 +696,7 @@ To update the widget content to the course information of Mr. Li on July 18, you
           hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
         }
       }
+    
     }
     ```
 

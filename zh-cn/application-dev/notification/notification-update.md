@@ -28,7 +28,7 @@
 
 1. 导入模块。
 
-   <!-- @[update_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/UpdateNotification.ets) -->
+   <!-- @[update_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -41,7 +41,7 @@
 
 2. 发布进度条通知。
 
-   <!-- @[pub_progress_bar_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/UpdateNotification.ets) -->
+   <!-- @[pub_progress_bar_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
    
    ``` TypeScript
    let notificationRequest: notificationManager.NotificationRequest = {
@@ -74,7 +74,7 @@
 
 3. 通过[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)接口携带updateOnly字段更新进度条通知。
 
-   <!-- @[update_prog_only_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/UpdateNotification.ets) -->
+   <!-- @[update_prog_only_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets) -->
    
    ``` TypeScript
    let notificationRequest: notificationManager.NotificationRequest = {

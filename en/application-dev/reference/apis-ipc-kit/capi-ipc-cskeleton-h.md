@@ -10,6 +10,8 @@
 
 Provides C APIs for managing the token IDs, credentials, process IDs (PIDs), user IDs (UIDs), and thread pool in the IPC framework.
 
+**File to include**: <IPCKit/ipc_cskeleton.h>
+
 **Library**: libipc_capi.so
 
 **System capability**: SystemCapability.Communication.IPC.Core

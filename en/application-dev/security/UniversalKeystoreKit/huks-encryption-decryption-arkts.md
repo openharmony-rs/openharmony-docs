@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-This topic walks you through on how to perform encryption and decryption using AES128, RSA2048, and SM2. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
+This topic uses AES-128, RSA-2048, SM2, and DES64 as examples to describe the encryption and decryption workflows. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
 
 ## How to Develop
 
@@ -31,7 +31,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
    The parameters to be configured vary with the algorithm used.
    - If the AES algorithm is used for encryption, the block mode is CBC, and the padding mode is PKCS7, the **IV** parameter is mandatory. For details, see [AES/CBC/PKCS7](#aescbcpkcs7).
-   - If the AES algorithm is used for encryption and the block mode is GCM, the **NONCE** and**AAD** parameters are optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
+   - If the AES algorithm is used for encryption and the block mode is GCM, the **NONCE** and **AAD** parameters are optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
    - If the AES algorithm is used for encryption and the block mode is CCM, the **NONCE** and **AAD** parameters are optional. For details, see [AES/CCM/NoPadding](#aesccmnopadding).
    - If the RSA algorithm is used for encryption, you need to select the corresponding block mode, padding mode, and digest algorithm. For details, see [RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5) and [RSA/ECB/OAEP/SHA256](#rsaecboaepsha256).
    - If the SM2 algorithm is used for encryption, the digest algorithm must be SM3. For details, see [SM2](#sm2).
@@ -70,14 +70,15 @@ Use [deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#
 ## Development Cases
 
 ### AES/CBC/PKCS7
+<!-- @[encrypt_and_decrypt_AESCBCPKCS7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/AESCBCPKCS7.ets) -->
 
-```ts
+``` TypeScript
 /*
  * The following uses AES/CBC/PKCS7 with promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let aesKeyAlias = 'test_aesKeyAlias';
 let handle: number;
@@ -85,15 +86,15 @@ let plainText = '123456';
 let IV = cryptoFramework.createRandom().generateRandomSync(12).data;
 let cipherData: Uint8Array;
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
+function uint8ArrayToString(fileData: Uint8Array) {
   let dataString = '';
   for (let i = 0; i < fileData.length; i++) {
     dataString += String.fromCharCode(fileData[i]);
@@ -101,8 +102,8 @@ function Uint8ArrayToString(fileData: Uint8Array) {
   return dataString;
 }
 
-function GetAesGenerateProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getAesGenerateProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES
   }, {
@@ -116,8 +117,8 @@ function GetAesGenerateProperties() {
   return properties;
 }
 
-function GetAesEncryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getAesEncryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES
   }, {
@@ -139,8 +140,8 @@ function GetAesEncryptProperties() {
   return properties;
 }
 
-function GetAesDecryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getAesDecryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES
   }, {
@@ -162,20 +163,19 @@ function GetAesDecryptProperties() {
   return properties;
 }
 
-async function GenerateAesKey() {
+async function generateAesKey() {
   /*
    * Simulate the key generation scenario.
-   * 1. Set the key alias.
    */
   /*
-   * 2. Obtain the parameters for key generation.
+   * 1. Obtain the parameters for key generation.
    */
-  let genProperties = GetAesGenerateProperties();
+  let genProperties = getAesGenerateProperties();
   let options: huks.HuksOptions = {
     properties: genProperties
   }
   /*
-   * 3. Call generateKeyItem.
+   * 2. Call generateKeyItem.
    */
   await huks.generateKeyItem(aesKeyAlias, options)
     .then(() => {
@@ -185,24 +185,20 @@ async function GenerateAesKey() {
     })
 }
 
-async function EncryptData() {
+async function encryptData() {
   /*
    * Simulate the encryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the data to be encrypted.
+   * 1. Obtain the algorithm parameters for encryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for encryption.
-   */
-  let encryptProperties = GetAesEncryptProperties();
+  let encryptProperties = getAesEncryptProperties();
   let options: huks.HuksOptions = {
     properties: encryptProperties,
-    inData: StringToUint8Array(plainText)
+    inData: stringToUint8Array(plainText)
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(aesKeyAlias, options)
     .then((data) => {
@@ -211,35 +207,32 @@ async function EncryptData() {
       console.error(`promise: init EncryptData failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the ciphertext.
+   * 3. Call finishSession to obtain the ciphertext.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: encrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: encrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       cipherData = data.outData as Uint8Array;
     }).catch((error: BusinessError) => {
       console.error(`promise: encrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DecryptData() {
+async function decryptData() {
   /*
    * Simulate the decryption scenario.
    * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the ciphertext to be decrypted.
+   * 1. Obtain the algorithm parameters for decryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for decryption.
-   */
-  let decryptOptions = GetAesDecryptProperties()
+  let decryptOptions = getAesDecryptProperties()
   let options: huks.HuksOptions = {
     properties: decryptOptions,
     inData: cipherData
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(aesKeyAlias, options)
     .then((data) => {
@@ -248,26 +241,25 @@ async function DecryptData() {
       console.error(`promise: init DecryptData failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the decrypted data.
+   * 3. Call finishSession to obtain the decrypted data.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: decrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
     }).catch((error: BusinessError) => {
       console.error(`promise: decrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DeleteKey() {
+async function deleteKey() {
   /*
    * Simulate the key deletion scenario.
-   * 1. Obtain the key alias.
    */
   let emptyOptions: huks.HuksOptions = {
     properties: []
   }
   /*
-   * 2. Call deleteKeyItem to delete the key.
+   * 1. Call deleteKeyItem to delete the key.
    */
   await huks.deleteKeyItem(aesKeyAlias, emptyOptions)
     .then(() => {
@@ -276,24 +268,19 @@ async function DeleteKey() {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
-
-async function TestEncryptDecrypt() {
-  await GenerateAesKey();
-  await EncryptData();
-  await DecryptData();
-  await DeleteKey();
-}
 ```
+<!-- -->
 
 ### AES/GCM/NoPadding
+<!-- @[encrypt_and_decrypt_AESGCMNoPadding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/AESGCMNoPadding.ets) -->
 
-```ts
+``` TypeScript
 /*
  * The following uses AES/GCM/NoPadding with promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let aesKeyAlias = 'test_aesKeyAlias';
 let handle: number;
@@ -302,15 +289,15 @@ let cipherData: Uint8Array;
 let AAD = '1234567890123456';
 let NONCE = cryptoFramework.createRandom().generateRandomSync(12).data;
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
+function uint8ArrayToString(fileData: Uint8Array) {
   let dataString = '';
   for (let i = 0; i < fileData.length; i++) {
     dataString += String.fromCharCode(fileData[i]);
@@ -318,8 +305,8 @@ function Uint8ArrayToString(fileData: Uint8Array) {
   return dataString;
 }
 
-function GetAesGenerateProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getAesGenerateProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES
   }, {
@@ -333,8 +320,8 @@ function GetAesGenerateProperties() {
   return properties;
 }
 
-function GetAesGcmEncryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getAesGcmEncryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES
   }, {
@@ -354,13 +341,13 @@ function GetAesGcmEncryptProperties() {
     value: NONCE
   }, {
     tag: huks.HuksTag.HUKS_TAG_ASSOCIATED_DATA,
-    value: StringToUint8Array(AAD)
+    value: stringToUint8Array(AAD)
   }];
   return properties;
 }
 
-function GetAesGcmDecryptProperties(cipherData: Uint8Array) {
-  let properties: Array<huks.HuksParam> = [{
+function getAesGcmDecryptProperties(cipherData: Uint8Array) {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES
   }, {
@@ -380,7 +367,7 @@ function GetAesGcmDecryptProperties(cipherData: Uint8Array) {
     value: NONCE
   }, {
     tag: huks.HuksTag.HUKS_TAG_ASSOCIATED_DATA,
-    value: StringToUint8Array(AAD)
+    value: stringToUint8Array(AAD)
   }, {
     tag: huks.HuksTag.HUKS_TAG_AE_TAG,
     value: cipherData.slice(cipherData.length - 16)
@@ -388,20 +375,19 @@ function GetAesGcmDecryptProperties(cipherData: Uint8Array) {
   return properties;
 }
 
-async function GenerateAesKey() {
+async function generateAesKey() {
   /*
    * Simulate the key generation scenario.
-   * 1. Set the key alias.
    */
   /*
-   * 2. Obtain the parameters for key generation.
+   * 1. Obtain the parameters for key generation.
    */
-  let genProperties = GetAesGenerateProperties();
+  let genProperties = getAesGenerateProperties();
   let options: huks.HuksOptions = {
     properties: genProperties
   }
   /*
-   * 3. Call generateKeyItem.
+   * 2. Call generateKeyItem.
    */
   await huks.generateKeyItem(aesKeyAlias, options)
     .then(() => {
@@ -411,24 +397,20 @@ async function GenerateAesKey() {
     })
 }
 
-async function EncryptData() {
+async function encryptData() {
   /*
    * Simulate the encryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the data to be encrypted.
+   * 1. Obtain the algorithm parameters for encryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for encryption.
-   */
-  let encryptProperties = GetAesGcmEncryptProperties();
+  let encryptProperties = getAesGcmEncryptProperties();
   let options: huks.HuksOptions = {
     properties: encryptProperties,
-    inData: StringToUint8Array(plainText)
+    inData: stringToUint8Array(plainText)
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(aesKeyAlias, options)
     .then((data) => {
@@ -437,35 +419,31 @@ async function EncryptData() {
       console.error(`promise: init EncryptDataGcm failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the ciphertext.
+   * 3. Call finishSession to obtain the ciphertext.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: encrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: encrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       cipherData = data.outData as Uint8Array;
     }).catch((error: BusinessError) => {
       console.error(`promise: encrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DecryptData() {
+async function decryptData() {
   /*
    * Simulate the decryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the ciphertext to be decrypted.
+   * 1. Obtain the algorithm parameters for decryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for decryption.
-   */
-  let decryptOptions = GetAesGcmDecryptProperties(cipherData)
+  let decryptOptions = getAesGcmDecryptProperties(cipherData)
   let options: huks.HuksOptions = {
     properties: decryptOptions,
     inData: cipherData.slice(0, cipherData.length - 16)
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(aesKeyAlias, options)
     .then((data) => {
@@ -474,26 +452,25 @@ async function DecryptData() {
       console.error(`promise: init DecryptDataGcm failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the decrypted data.
+   * 3. Call finishSession to obtain the decrypted data.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: decrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
     }).catch((error: BusinessError) => {
       console.error(`promise: decrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DeleteKey() {
+async function deleteKey() {
   /*
    * Simulate the key deletion scenario.
-   * 1. Obtain the key alias.
    */
   let emptyOptions: huks.HuksOptions = {
     properties: []
   }
   /*
-   * 2. Call deleteKeyItem to delete the key.
+   * 1. Call deleteKeyItem to delete the key.
    */
   await huks.deleteKeyItem(aesKeyAlias, emptyOptions)
     .then(() => {
@@ -502,14 +479,8 @@ async function DeleteKey() {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
-
-async function TestEncryptDecrypt() {
-  await GenerateAesKey();
-  await EncryptData();
-  await DecryptData();
-  await DeleteKey();
-}
 ```
+<!-- -->
 
 ### AES/CCM/NoPadding
 
@@ -745,28 +716,29 @@ async function TestEncryptDecrypt() {
 ```
 
 ### RSA/ECB/PKCS1_V1_5
+<!-- @[encrypt_and_decrypt_RSAECBPKCS1_V1_5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/RSAECBPKCS1_V1_5.ets) -->
 
-```ts
+``` TypeScript
 /*
  * The following uses RSA/ECB/PKCS1_V1_5 with promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let rsaKeyAlias = 'test_rsaKeyAlias';
 let handle: number;
 let plainText = '123456';
 let cipherData: Uint8Array;
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
+function uint8ArrayToString(fileData: Uint8Array) {
   let dataString = '';
   for (let i = 0; i < fileData.length; i++) {
     dataString += String.fromCharCode(fileData[i]);
@@ -774,8 +746,8 @@ function Uint8ArrayToString(fileData: Uint8Array) {
   return dataString;
 }
 
-function GetRsaGenerateProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getRsaGenerateProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
   }, {
@@ -789,8 +761,8 @@ function GetRsaGenerateProperties() {
   return properties;
 }
 
-function GetRsaEncryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getRsaEncryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
   }, {
@@ -812,8 +784,8 @@ function GetRsaEncryptProperties() {
   return properties;
 }
 
-function GetRsaDecryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getRsaDecryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
   }, {
@@ -835,20 +807,19 @@ function GetRsaDecryptProperties() {
   return properties;
 }
 
-async function GenerateRsaKey() {
+async function generateRsaKey() {
   /*
    * Simulate the key generation scenario.
-   * 1. Set the key alias.
    */
   /*
-   * 2. Obtain the parameters for key generation.
+   * 1. Obtain the parameters for key generation.
    */
-  let genProperties = GetRsaGenerateProperties();
+  let genProperties = getRsaGenerateProperties();
   let options: huks.HuksOptions = {
     properties: genProperties
   }
   /*
-   * 3. Call generateKeyItem.
+   * 2. Call generateKeyItem.
    */
   await huks.generateKeyItem(rsaKeyAlias, options)
     .then(() => {
@@ -858,24 +829,20 @@ async function GenerateRsaKey() {
     })
 }
 
-async function EncryptData() {
+async function encryptData() {
   /*
    * Simulate the encryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the data to be encrypted.
+   * 1. Obtain the algorithm parameters for encryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for encryption.
-   */
-  let encryptProperties = GetRsaEncryptProperties();
+  let encryptProperties = getRsaEncryptProperties();
   let options: huks.HuksOptions = {
     properties: encryptProperties,
-    inData: StringToUint8Array(plainText)
+    inData: stringToUint8Array(plainText)
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(rsaKeyAlias, options)
     .then((data) => {
@@ -884,35 +851,31 @@ async function EncryptData() {
       console.error(`promise: init EncryptDataRsa failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the ciphertext.
+   * 3. Call finishSession to obtain the ciphertext.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: encrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: encrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       cipherData = data.outData as Uint8Array;
     }).catch((error: BusinessError) => {
       console.error(`promise: encrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DecryptData() {
+async function decryptData() {
   /*
    * Simulate the decryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the ciphertext to be decrypted.
+   * 1. Obtain the algorithm parameters for decryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for decryption.
-   */
-  let decryptOptions = GetRsaDecryptProperties()
+  let decryptOptions = getRsaDecryptProperties()
   let options: huks.HuksOptions = {
     properties: decryptOptions,
     inData: cipherData
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(rsaKeyAlias, options)
     .then((data) => {
@@ -921,26 +884,25 @@ async function DecryptData() {
       console.error(`promise: init DecryptDataRsa failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the decrypted data.
+   * 3. Call finishSession to obtain the decrypted data.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: decrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
     }).catch((error: BusinessError) => {
       console.error(`promise: decrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DeleteKey() {
+async function deleteKey() {
   /*
    * Simulate the key deletion scenario.
-   * 1. Obtain the key alias.
    */
   let emptyOptions: huks.HuksOptions = {
     properties: []
   }
   /*
-   * 2. Call deleteKeyItem to delete the key.
+   * 1. Call deleteKeyItem to delete the key.
    */
   await huks.deleteKeyItem(rsaKeyAlias, emptyOptions)
     .then(() => {
@@ -949,39 +911,33 @@ async function DeleteKey() {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
-
-async function TestEncryptDecrypt()
-{
-  await GenerateRsaKey();
-  await EncryptData();
-  await DecryptData();
-  await DeleteKey();
-}
 ```
+<!-- -->
 
 ### RSA/ECB/OAEP/SHA256
+<!-- @[encrypt_and_decrypt_RSAECBOAEPSHA256](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/RSAECBOAEPSHA256.ets) -->
 
-```ts
+``` TypeScript
 /*
- * The following uses RSA/ECB/OAEP/SHA256 with promise-based APIs.
+ * The following uses RSA/ECB/OAEP/SHA-256 with promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let rsaKeyAlias = 'test_rsaKeyAlias';
 let handle: number;
 let plainText = '123456';
 let cipherData: Uint8Array;
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
+function uint8ArrayToString(fileData: Uint8Array) {
   let dataString = '';
   for (let i = 0; i < fileData.length; i++) {
     dataString += String.fromCharCode(fileData[i]);
@@ -989,8 +945,8 @@ function Uint8ArrayToString(fileData: Uint8Array) {
   return dataString;
 }
 
-function GetRsaGenerateProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getRsaGenerateProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
   }, {
@@ -1004,8 +960,8 @@ function GetRsaGenerateProperties() {
   return properties;
 }
 
-function GetRsaEncryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getRsaEncryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
   }, {
@@ -1027,8 +983,8 @@ function GetRsaEncryptProperties() {
   return properties;
 }
 
-function GetRsaDecryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getRsaDecryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_RSA
   }, {
@@ -1050,20 +1006,19 @@ function GetRsaDecryptProperties() {
   return properties;
 }
 
-async function GenerateRsaKey() {
+async function generateRsaKey() {
   /*
    * Simulate the key generation scenario.
-   * 1. Set the key alias.
    */
   /*
-   * 2. Obtain the parameters for key generation.
+   * 1. Obtain the parameters for key generation.
    */
-  let genProperties = GetRsaGenerateProperties();
+  let genProperties = getRsaGenerateProperties();
   let options: huks.HuksOptions = {
     properties: genProperties
   }
   /*
-   * 3. Call generateKeyItem.
+   * 2. Call generateKeyItem.
    */
   await huks.generateKeyItem(rsaKeyAlias, options)
     .then(() => {
@@ -1073,24 +1028,20 @@ async function GenerateRsaKey() {
     })
 }
 
-async function EncryptData() {
+async function encryptData() {
   /*
    * Simulate the encryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the data to be encrypted.
+   * 1. Obtain the algorithm parameters for encryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for encryption.
-   */
-  let encryptProperties = GetRsaEncryptProperties();
+  let encryptProperties = getRsaEncryptProperties();
   let options: huks.HuksOptions = {
     properties: encryptProperties,
-    inData: StringToUint8Array(plainText)
+    inData: stringToUint8Array(plainText)
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(rsaKeyAlias, options)
     .then((data) => {
@@ -1099,35 +1050,31 @@ async function EncryptData() {
       console.error(`promise: init EncryptDataRsa failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the ciphertext.
+   * 3. Call finishSession to obtain the ciphertext.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: encrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: encrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       cipherData = data.outData as Uint8Array;
     }).catch((error: BusinessError) => {
       console.error(`promise: encrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DecryptData() {
+async function decryptData() {
   /*
    * Simulate the decryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the ciphertext to be decrypted.
+   * 1. Obtain the algorithm parameters for decryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for decryption.
-   */
-  let decryptOptions = GetRsaDecryptProperties()
+  let decryptOptions = getRsaDecryptProperties()
   let options: huks.HuksOptions = {
     properties: decryptOptions,
     inData: cipherData
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(rsaKeyAlias, options)
     .then((data) => {
@@ -1136,26 +1083,25 @@ async function DecryptData() {
       console.error(`promise: init DecryptDataRsa failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the decrypted data.
+   * 3. Call finishSession to obtain the decrypted data.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: decrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
     }).catch((error: BusinessError) => {
       console.error(`promise: decrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DeleteKey() {
+async function deleteKey() {
   /*
    * Simulate the key deletion scenario.
-   * 1. Obtain the key alias.
    */
   let emptyOptions: huks.HuksOptions = {
     properties: []
   }
   /*
-   * 2. Call deleteKeyItem to delete the key.
+   * 1. Call deleteKeyItem to delete the key.
    */
   await huks.deleteKeyItem(rsaKeyAlias, emptyOptions)
     .then((data) => {
@@ -1164,38 +1110,33 @@ async function DeleteKey() {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
-
-async function TestEncryptDecrypt() {
-  await GenerateRsaKey();
-  await EncryptData();
-  await DecryptData();
-  await DeleteKey();
-}
 ```
+<!-- -->
 
 ### SM2
+<!-- @[encrypt_and_decrypt_SM2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/SM2.ets) -->
 
-```ts
+``` TypeScript
 /*
  * The following uses SM2 with promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let sm2KeyAlias = 'test_sm2KeyAlias';
 let handle: number;
 let plainText = '123456';
 let cipherData: Uint8Array;
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
+function uint8ArrayToString(fileData: Uint8Array) {
   let dataString = '';
   for (let i = 0; i < fileData.length; i++) {
     dataString += String.fromCharCode(fileData[i]);
@@ -1203,8 +1144,8 @@ function Uint8ArrayToString(fileData: Uint8Array) {
   return dataString;
 }
 
-function GetSm2GenerateProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getSm2GenerateProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_SM2
   }, {
@@ -1218,8 +1159,8 @@ function GetSm2GenerateProperties() {
   return properties;
 }
 
-function GetSm2EncryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getSm2EncryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_SM2
   }, {
@@ -1235,8 +1176,8 @@ function GetSm2EncryptProperties() {
   return properties;
 }
 
-function GetSm2DecryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getSm2DecryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_SM2
   }, {
@@ -1252,20 +1193,19 @@ function GetSm2DecryptProperties() {
   return properties;
 }
 
-async function GenerateSm2Key() {
+async function generateSm2Key() {
   /*
    * Simulate the key generation scenario.
-   * 1. Set the key alias.
    */
   /*
-   * 2. Obtain the parameters for key generation.
+   * 1. Obtain the parameters for key generation.
    */
-  let genProperties = GetSm2GenerateProperties();
+  let genProperties = getSm2GenerateProperties();
   let options: huks.HuksOptions = {
     properties: genProperties
   }
   /*
-   * 3. Call generateKeyItem.
+   * 2. Call generateKeyItem.
    */
   await huks.generateKeyItem(sm2KeyAlias, options)
     .then(() => {
@@ -1275,24 +1215,20 @@ async function GenerateSm2Key() {
     })
 }
 
-async function EncryptDataSm2() {
+async function encryptDataSm2() {
   /*
    * Simulate the encryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the data to be encrypted.
+   * 1. Obtain the algorithm parameters for encryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for encryption.
-   */
-  let encryptProperties = GetSm2EncryptProperties();
+  let encryptProperties = getSm2EncryptProperties();
   let options: huks.HuksOptions = {
     properties: encryptProperties,
-    inData: StringToUint8Array(plainText)
+    inData: stringToUint8Array(plainText)
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(sm2KeyAlias, options)
     .then((data) => {
@@ -1301,35 +1237,31 @@ async function EncryptDataSm2() {
       console.error(`promise: init EncryptDataSm2 failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the ciphertext.
+   * 3. Call finishSession to obtain the ciphertext.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: encrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: encrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       cipherData = data.outData as Uint8Array;
     }).catch((error: BusinessError) => {
       console.error(`promise: encrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DecryptDataSm2() {
+async function decryptDataSm2() {
   /*
    * Simulate the decryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the ciphertext to be decrypted.
+   * 1. Obtain the algorithm parameters for decryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for decryption.
-   */
-  let decryptOptions = GetSm2DecryptProperties()
+  let decryptOptions = getSm2DecryptProperties()
   let options: huks.HuksOptions = {
     properties: decryptOptions,
     inData: cipherData
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(sm2KeyAlias, options)
     .then((data) => {
@@ -1338,26 +1270,25 @@ async function DecryptDataSm2() {
       console.error(`promise: init DecryptDataSm2 failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the decrypted data.
+   * 3. Call finishSession to obtain the decrypted data.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: decrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
     }).catch((error: BusinessError) => {
       console.error(`promise: decrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DeleteKey() {
+async function deleteKey() {
   /*
    * Simulate the key deletion scenario.
-   * 1. Obtain the key alias.
    */
   let emptyOptions: huks.HuksOptions = {
     properties: []
   }
   /*
-   * 2. Call deleteKeyItem to delete the key.
+   * 1. Call deleteKeyItem to delete the key.
    */
   await huks.deleteKeyItem(sm2KeyAlias, emptyOptions)
     .then(() => {
@@ -1366,25 +1297,20 @@ async function DeleteKey() {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
-
-async function TestEncryptDecrypt() {
-  await GenerateSm2Key();
-  await EncryptDataSm2();
-  await DecryptDataSm2();
-  await DeleteKey();
-}
 ```
+
 
 <!--Del-->
 ### DES/CBC/NoPadding
+<!-- @[encrypt_and_decrypt_DESCBCNoPadding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/ets/pages/DESCBCNoPadding.ets) -->
 
-```ts
+``` TypeScript
 /*
  * The following uses DES/CBC/NoPadding with promise-based APIs as an example.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { BusinessError } from "@kit.BasicServicesKit";
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let desKeyAlias = 'test_desKeyAlias';
 let handle: number;
@@ -1392,15 +1318,15 @@ let plainText = '12345678';
 let IV = cryptoFramework.createRandom().generateRandomSync(8).data
 let cipherData: Uint8Array;
 
-function StringToUint8Array(str: string) {
-  let arr: number[] = new Array();
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
+function uint8ArrayToString(fileData: Uint8Array) {
   let dataString = '';
   for (let i = 0; i < fileData.length; i++) {
     dataString += String.fromCharCode(fileData[i]);
@@ -1408,8 +1334,8 @@ function Uint8ArrayToString(fileData: Uint8Array) {
   return dataString;
 }
 
-function GetDesGenerateProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getDesGenerateProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_DES
   }, {
@@ -1423,8 +1349,8 @@ function GetDesGenerateProperties() {
   return properties;
 }
 
-function GetDesEncryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getDesEncryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_DES
   }, {
@@ -1446,8 +1372,8 @@ function GetDesEncryptProperties() {
   return properties;
 }
 
-function GetDesDecryptProperties() {
-  let properties: Array<huks.HuksParam> = [{
+function getDesDecryptProperties() {
+  let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_DES
   }, {
@@ -1469,20 +1395,19 @@ function GetDesDecryptProperties() {
   return properties;
 }
 
-async function GenerateDesKey() {
+async function generateDesKey() {
   /*
    * Simulate the key generation scenario.
-   * 1. Set the key alias.
    */
   /*
-   * 2. Obtain the parameters for key generation.
+   * 1. Obtain the parameters for key generation.
    */
-  let genProperties = GetDesGenerateProperties();
+  let genProperties = getDesGenerateProperties();
   let options: huks.HuksOptions = {
     properties: genProperties
   }
   /*
-   * 3. Call generateKeyItem.
+   * 2. Call generateKeyItem.
    */
   await huks.generateKeyItem(desKeyAlias, options)
     .then(() => {
@@ -1492,24 +1417,20 @@ async function GenerateDesKey() {
     })
 }
 
-async function EncryptData() {
+async function encryptData() {
   /*
    * Simulate the encryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the data to be encrypted.
+   * 1. Obtain the algorithm parameters for encryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for encryption.
-   */
-  let encryptProperties = GetDesEncryptProperties();
+  let encryptProperties = getDesEncryptProperties();
   let options: huks.HuksOptions = {
     properties: encryptProperties,
-    inData: StringToUint8Array(plainText)
+    inData: stringToUint8Array(plainText)
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(desKeyAlias, options)
     .then((data) => {
@@ -1518,35 +1439,31 @@ async function EncryptData() {
       console.error(`promise: init EncryptData failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the ciphertext.
+   * 3. Call finishSession to obtain the ciphertext.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: encrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: encrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
       cipherData = data.outData as Uint8Array;
     }).catch((error: BusinessError) => {
       console.error(`promise: encrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DecryptData() {
+async function decryptData() {
   /*
    * Simulate the decryption scenario.
-   * 1. Obtain the key alias.
    */
   /*
-   * 2. Obtain the ciphertext to be decrypted.
+   * 1. Obtain the algorithm parameters for decryption.
    */
-  /*
-   * 3. Obtain the algorithm parameters for decryption.
-   */
-  let decryptOptions = GetDesDecryptProperties()
+  let decryptOptions = getDesDecryptProperties()
   let options: huks.HuksOptions = {
     properties: decryptOptions,
     inData: cipherData
   }
   /*
-   * 4. Call initSession to obtain a session handle.
+   * 2. Call initSession to obtain a session handle.
    */
   await huks.initSession(desKeyAlias, options)
     .then((data) => {
@@ -1555,26 +1472,25 @@ async function DecryptData() {
       console.error(`promise: init DecryptData failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
   /*
-   * 5. Call finishSession to obtain the decrypted data.
+   * 3. Call finishSession to obtain the decrypted data.
    */
   await huks.finishSession(handle, options)
     .then((data) => {
-      console.info(`promise: decrypt data success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
+      console.info(`promise: decrypt data success, data is ` + uint8ArrayToString(data.outData as Uint8Array));
     }).catch((error: BusinessError) => {
       console.error(`promise: decrypt data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
 
-async function DeleteKey() {
+async function deleteKey() {
   /*
    * Simulate the key deletion scenario.
-   * 1. Obtain the key alias.
    */
   let emptyOptions: huks.HuksOptions = {
     properties: []
   }
   /*
-   * 2. Call deleteKeyItem to delete the key.
+   * 1. Call deleteKeyItem to delete the key.
    */
   await huks.deleteKeyItem(desKeyAlias, emptyOptions)
     .then(() => {
@@ -1583,12 +1499,6 @@ async function DeleteKey() {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
     })
 }
-
-async function TestEncryptDecrypt() {
-  await GenerateDesKey();
-  await EncryptData();
-  await DecryptData();
-  await DeleteKey();
-}
 ```
+
 <!--DelEnd-->

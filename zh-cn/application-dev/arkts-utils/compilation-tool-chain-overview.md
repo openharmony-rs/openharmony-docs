@@ -4,7 +4,7 @@
 <!--Owner: @chenmudan; @hufeng20; @ctw-ian-->
 <!--Designer: @hufeng20; @ctw-ian-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ArkTS SDK提供了一套完整的编译工具链，以支持ArkTS的应用编译，通过集成至[Hvigor](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor)编译任务的编排工具上，实现将应用的ArkTS/TS/JS源码编译生成方舟字节码文件（\*.abc）。
 
@@ -24,7 +24,7 @@ ArkTS编译工具链目前主要包含以下功能：
 
 6. 反汇编：使用Disassembler反汇编工具将字节数据反汇编成可阅读的汇编指令。
 
-ArkTS编译工具链在构建hap流程如下图所示：
+ArkTS编译工具链在构建HAP流程如下图所示：
 
 ![compilation-tool-overview](figures/compilation-tool-overview.png)
 

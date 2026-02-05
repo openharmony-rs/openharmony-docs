@@ -8,7 +8,7 @@
 
 ## Overview
 
-On a simple user interface, only a few lines of static text may need to be displayed, such as text on labels, buttons, menu items, or status bars. In this case, you only need to select a proper font, size, and color to complete rendering.
+In a simple user interface, only a few lines of static text need to be displayed, such as the text on a label, button, menu item, or status bar. In this case, you only need to select a proper font, size, and color to complete the rendering.
 
 
 ## Available APIs
@@ -22,12 +22,12 @@ On a simple user interface, only a few lines of static text may need to be displ
 
 ## How to Develop
 
-For details about the canvas object, see canvas-get-result-draw-c.md.
+For details about the **Canvas** object, see [Obtaining a Canvas and Displaying Drawing Results](canvas-get-result-draw-c.md).
 
 <!-- @[ndk_drawing_simple_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
 ``` C++
-// Create a TypographyStyle object.
+// Create a TypographyStyle object, which is required for creating Typography.
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // Set the text alignment mode to center.
 OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
@@ -38,14 +38,14 @@ OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00,
 OH_Drawing_SetTextStyleFontSize(txtStyle, 60);
 OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
 
-// Create a FontCollection object. FontCollection is used to manage the font matching logic.
+// Create a FontCollection object to manage the font matching logic.
 OH_Drawing_FontCollection *fc = OH_Drawing_CreateFontCollection();
-// Use FontCollection and TypographyStyle to create TypographyCreate. TypographyCreate is used to create Typography.
+// Use the FontCollection object and the created TypographyStyle object to create a TypographyCreate object, which is used to create a Typography object.
 OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
 
-// Add the created TextStyle to the handler.
+// Add the created TextStyle object to handler.
 OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-// Set the text content and add the text to the handler.
+// Add text to handler.
 const char *text = "Hello World Drawing\n";
 OH_Drawing_TypographyHandlerAddText(handler, text);
 

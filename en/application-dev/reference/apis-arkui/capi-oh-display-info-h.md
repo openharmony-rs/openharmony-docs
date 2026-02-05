@@ -55,7 +55,7 @@ The file declares the common enums and definitions of the display.
 
 ### OH_DISPLAY_NAME_LENGTH
 
-```
+```c
 #define OH_DISPLAY_NAME_LENGTH 32
 ```
 
@@ -69,7 +69,7 @@ Maximum length of a display name.
 
 ### NativeDisplayManager_Rotation
 
-```
+```c
 enum NativeDisplayManager_Rotation
 ```
 
@@ -88,7 +88,7 @@ Enumerates the clockwise rotation angles of a display.
 
 ### NativeDisplayManager_Orientation
 
-```
+```c
 enum NativeDisplayManager_Orientation
 ```
 
@@ -108,7 +108,7 @@ Enumerates the orientations of a display.
 
 ### NativeDisplayManager_ErrorCode
 
-```
+```c
 enum NativeDisplayManager_ErrorCode
 ```
 
@@ -132,7 +132,7 @@ Enumerates the status codes returned by the display manager interface.
 
 ### NativeDisplayManager_FoldDisplayMode
 
-```
+```c
 enum NativeDisplayManager_FoldDisplayMode
 ```
 
@@ -152,7 +152,7 @@ Enumerates the display modes of a foldable device.
 
 ### NativeDisplayManager_DisplayState
 
-```
+```c
 enum NativeDisplayManager_DisplayState
 ```
 
@@ -174,7 +174,7 @@ Enumerates the states of a display.
 
 ### NativeDisplayManager_SourceMode
 
-```
+```c
 enum NativeDisplayManager_SourceMode
 ```
 

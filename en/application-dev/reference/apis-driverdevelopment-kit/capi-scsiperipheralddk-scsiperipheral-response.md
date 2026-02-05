@@ -6,13 +6,17 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_Response {...} ScsiPeripheral_Response
+```
+
 ## Overview
 
 Defines the response structure.
 
 **Since**: 18
 
-**Related module**: [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

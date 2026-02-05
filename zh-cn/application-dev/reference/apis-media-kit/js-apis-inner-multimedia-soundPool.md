@@ -78,7 +78,10 @@ import { audio } from '@kit.AudioKit';
 
 load(uri: string, callback: AsyncCallback\<number>): void
 
-加载音频资源。使用callback方式异步获取资源ID，入参uri通过获取文件fd生成以"fd://"开头的文件描述字符串。
+加载音频资源。使用callback异步回调。
+
+通过callback异步回调获取资源ID，入参URL通过获取文件fd生成以"fd://"开头的文件描述字符串。
+
 该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](#load-3)实现。
 
 >**说明：**
@@ -149,7 +152,10 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 load(uri: string): Promise\<number>
 
-加载音频资源。使用Promise方式异步获取资源ID，入参uri通过获取文件fd生成以"fd://"开头的文件描述字符串。
+加载音频资源。使用Promise异步回调。
+
+通过Promise异步回调获取资源ID，入参URL通过获取文件fd生成以"fd://"开头的文件描述字符串。
+
 该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](#load-3)实现。
 
 >**说明：**
@@ -225,7 +231,9 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void
 
-加载音频资源。使用callback方式异步获取资源ID，入参可手动传入资源信息或通过读取应用内置资源自动获取。
+加载音频资源。使用callback异步回调。
+
+通过callback异步回调获取资源ID，入参可手动传入资源信息或通过读取应用内置资源自动获取。
 
 >**说明：**
 >
@@ -337,7 +345,9 @@ function create(context: Context) {
 
 load(fd: number, offset: number, length: number): Promise\<number>
 
-加载音频资源。使用Promise方式异步获取资源ID，入参可手动传入资源信息或通过读取应用内置资源自动获取。
+加载音频资源。使用Promise异步回调。
+
+通过Promise异步回调获取资源ID，入参可手动传入资源信息或通过读取应用内置资源自动获取。
 
 >**说明：**
 >
@@ -657,7 +667,7 @@ stop(streamID: number, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池stop的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池stop回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -721,7 +731,7 @@ stop(streamID: number): Promise\<void>
 
 | 类型             | 说明                             |
 | ---------------- | -------------------------------- |
-| Promise\<void> | Promise方式返回，无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -778,7 +788,7 @@ setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
 | loop | number | 是   | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。 |
-| callback | AsyncCallback\<void> | 是   | 异步setLoop的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当setLoop的回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -817,7 +827,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to setLoop soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succeeded in setLoopping soundpool, streamID:' + streamID);
+        console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
       }
     });
   }
@@ -880,7 +890,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     // 先通过调用play方法获取到对应的streamID。
     // 设置循环1次。
     soundPool.setLoop(streamID, 1).then(() => {
-      console.info('Succeeded in setLoopping soundpool, streamID:' + streamID);
+      console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
     }).catch((err: BusinessError) => {
       console.error('Failed to setLoop soundPool and catch error is ' + err.message);
     });
@@ -902,7 +912,7 @@ setPriority(streamID: number, priority: number, callback: AsyncCallback\<void>):
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
 | priority | number | 是   | 优先级，0表示最低优先级。设置范围为大于等于0的整数。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池setPriority方法的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池setPriority方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1026,7 +1036,7 @@ setRate(streamID: number, rate: audio.AudioRendererRate, callback: AsyncCallback
 | -------- | ---------------------- | ---- | --------------------------- |
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
 | rate | [audio.AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8) | 是   | 音频rate相关参数。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池setRate方法的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池setRate方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1151,7 +1161,7 @@ setVolume(streamID: number, leftVolume: number, rightVolume: number, callback: A
 | streamID | number | 是   | 音频流ID，通过play方法获取。 |
 | leftVolume | number | 是   | 左声道音量，设置范围为0.0-1.0之间。 |
 | rightVolume | number | 是   | 右声道音量，设置范围为0.0-1.0之间，当前右声道设置无效，以左声道为准。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池setVolume方法的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池setVolume方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1261,6 +1271,48 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 });
 ```
 
+### setInterruptMode<sup>23+</sup>
+
+setInterruptMode(interruptMode: media.SoundInterruptMode): void
+
+设置同一ID音频在播放时的打断模式。创建soundPool之后，该接口仅在首次调用soundPool的Play函数之前设置有效，期间可多次设置，否则将默认使用[SAME_SOUND_INTERRUPT](arkts-apis-media-e.md#soundinterruptmode23)，即对同一ID的音频，如果前者尚未播放完成，后者在播放前会先打断前者的播放。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                        |
+| -------- | ---------------------- | ---- | --------------------------- |
+| interruptMode | [media.SoundInterruptMode](arkts-apis-media-e.md#soundinterruptmode23) | 是   | 同一ID音频在播放时的打断模式，通过media.SoundInterruptMode枚举获取。 |
+
+**示例：**
+
+```js
+import { media } from '@kit.MediaKit';
+
+// 创建soundPool实例。
+let soundPool: media.SoundPool;
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 1
+}
+media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
+  if (error) {
+    console.error(`Failed to createSoundPool`);
+    return;
+  } else {
+    soundPool = soundPool_;
+    console.info(`Succeeded in createSoundPool`);
+    // 选择模式1：同ID音频并行播放模式。
+    soundPool.setInterruptMode(media.SoundInterruptMode.NO_INTERRUPT);
+    // 选择模式2：同ID音频截断模式。
+    soundPool.setInterruptMode(media.SoundInterruptMode.SAME_SOUND_INTERRUPT);
+  }
+});
+```
+
 ### unload
 
 unload(soundID: number, callback: AsyncCallback\<void>): void
@@ -1274,7 +1326,7 @@ unload(soundID: number, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | soundID | number | 是   | 资源ID，通过load方法获取。 |
-| callback | AsyncCallback\<void> | 是   | 异步音频池unload方法的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池unload方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1312,7 +1364,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       if (error) {
         console.error(`Failed to unload soundPool: errCode is ${error.code}, errMessage is ${error.message}`);
       } else {
-        console.info('Succceeded in unload soundPool');
+        console.info('Succeeded in unload soundPool');
       }
     })
   }
@@ -1373,7 +1425,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     // 先调用load方法获取到对应资源的soundID。
 
     soundPool.unload(soundID).then(() => {
-      console.info('Succceeded in unload soundPool');
+      console.info('Succeeded in unload soundPool');
     }, (err: BusinessError) => {
       console.error('Failed to unload soundPool and catch error is ' + err.message);
     });
@@ -1393,7 +1445,7 @@ release(callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| callback | AsyncCallback\<void> | 是   | 异步音频池release方法的回调方法。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当音频池release方法回调成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1490,7 +1542,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'loadComplete', callback: Callback\<number>): void
 
-音频池资源加载完成监听。
+音频池资源加载完成监听。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1499,7 +1551,7 @@ on(type: 'loadComplete', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 支持的事件：'loadComplete'，对应的ID加载完成会触发此回调。 |
-| callback | Callback\<number> | 是   | 对应资源加载完成的资源ID。                               |
+| callback | Callback\<number> | 是   | 回调函数，返回对应资源加载完成的资源ID。                               |
 
 **示例：**
 
@@ -1573,7 +1625,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 
-音频池资源播放完成监听，同时返回播放结束的音频的streamId。
+音频池资源播放完成监听，同时返回播放结束的音频的streamId。使用callback异步回调。
 
 当仅单独注册[on('playFinished')](#onplayfinished)事件回调或者[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，都会触发注册的回调。
 
@@ -1586,7 +1638,7 @@ on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 支持的事件：'playFinishedWithStreamId'，音频流播放完成会触发此回调，并返回播放完成的音频的streamId。 |
-| callback | Callback\<number> | 是   |  异步'playFinishedWithStreamId'的回调方法。返回播放完成的音频的streamId。   |
+| callback | Callback\<number> | 是   |  回调函数，返回播放完成的音频的streamId。   |
 
 **示例：**
 
@@ -1658,7 +1710,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool: me
 
 on(type: 'playFinished', callback: Callback\<void>): void
 
-音频池资源播放完成监听。
+音频池资源播放完成监听。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1741,7 +1793,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'error', callback: ErrorCallback): void
 
-监听[SoundPool](#soundpool)的错误事件，该事件仅用于错误提示。
+监听[SoundPool](#soundpool)的错误事件，该事件仅用于错误提示。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1823,7 +1875,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 
-监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。
+监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1832,7 +1884,7 @@ on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件回调类型，支持的事件为'errorOccurred'，当用户或系统操作导致错误，触发该事件。 |
-| callback | Callback\<[ErrorInfo](#errorinfo20)> | 是   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
+| callback | Callback\<[ErrorInfo](#errorinfo20)> | 是   | 回调函数，返回错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
 
 **示例：**
 

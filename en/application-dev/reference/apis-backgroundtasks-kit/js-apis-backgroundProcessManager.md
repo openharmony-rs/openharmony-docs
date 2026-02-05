@@ -203,7 +203,7 @@ try {
 }
 ```
 
-## backgroundProcessManager.getPowerSaveMode<sup>22+</sup>
+## backgroundProcessManager.getPowerSaveMode<sup>23+</sup>
 
 getPowerSaveMode(pid: number): Promise&lt;PowerSaveMode&gt;
 
@@ -245,7 +245,7 @@ import { backgroundProcessManager } from '@kit.BackgroundTasksKit';
 // Replace the process ID with the actual one.
 let pid = 33333;
 try {
-    backgroundProcessManager.getPowerSaveMode(pid).then((result: PowerSaveMode) => {
+    backgroundProcessManager.getPowerSaveMode(pid).then((result: backgroundProcessManager.PowerSaveMode) => {
         console.info("getPowerSaveMode: " + result.toString());
     });
 } catch (error) {

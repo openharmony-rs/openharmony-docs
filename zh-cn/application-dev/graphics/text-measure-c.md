@@ -42,40 +42,49 @@
 
 2. 导入依赖的相关头文件。
 
-   ```c++
+   <!-- @[c_text_metrics_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
    #include <native_drawing/drawing_font_collection.h>
-   #include <native_drawing/drawing_text_declaration.h>
    #include <native_drawing/drawing_text_typography.h>
+   #include <native_drawing/drawing_text_declaration.h>
    ```
 
 3. 创建段落生成器ParagraphBuilder，并设置段落样式。
 
-   ```c++
-   // 创建段落样式
-   OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-   // 创建段落生成器
-   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, OH_Drawing_CreateFontCollection());
+   <!-- @[c_text_metrics_create_paragraph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
    // 创建文本样式，并设置字体大小为50
-   OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-   OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-   OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-   // 向构造器中添加文本
+   OH_Drawing_SetTextStyleColor(myTextStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+   OH_Drawing_SetTextStyleFontSize(myTextStyle, 50.0);
+   // 创建一个段落样式对象，以设置排版风格
+   OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
+   // 设置段落样式的对齐方式为左对齐
+   OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT);
+   // 创建一个段落生成器
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   // 在段落生成器中设置文本样式
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, myTextStyle);
+   // 在段落生成器中添加文本内容
    const char *text = "排版测量的文字度量信息";
    OH_Drawing_TypographyHandlerAddText(handler, text);
-   // 通过生成器构造段落
+   // 通过段落生成器生成段落
    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
    ```
 
 4. 调用排版接口并设置段落排版宽度，对段落进行塑型排版。
 
-   ```c++
-   // 对段落进行塑形排版，设置排版宽度1000
-   OH_Drawing_TypographyLayout(typography, 1000);
+   <!-- @[c_text_metrics_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 对段落进行塑形排版，设置排版宽度为maxWidth
+   OH_Drawing_TypographyLayout(typography, maxWidth);
    ```
 
 5. 调用段落测量信息获取接口，获取指定数据。
 
-   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    // case1: 获取排版后最长行行宽
@@ -91,7 +100,7 @@
    int lineMetricsSize = OH_Drawing_LineMetricsGetSize(lineMetrics);
    for (int i = 0; i < lineMetricsSize; ++i) {
    // lineMetrics为经过排版测量的文字度量信息
-   double curLineAscender = lineMetrics[i].ascender;
+   double curLineAscender = -lineMetrics[i].ascender;
    double curLineWidth = lineMetrics[i].width;
        DRAWING_LOGI("第%{public}d行 lineMetrics ascender: %{public}f", i + 1, curLineAscender);
        DRAWING_LOGI("第%{public}d行 lineMetrics width: %{public}f", i + 1, curLineWidth);
@@ -108,5 +117,5 @@
    // 获取排版对象的指定行位置信息，该接口需要在OH_Drawing_TypographyLayout接口调用之后调用
    OH_Drawing_LineMetrics lineMetric;
    OH_Drawing_TypographyGetLineMetricsAt(typography, 0, &lineMetric);
-   DRAWING_LOGI("第1行 lineMetrics ascender: %{public}f" ,lineMetric.ascender);
+   DRAWING_LOGI("第1行 lineMetrics ascender: %{public}f", -lineMetric.ascender);
    ```

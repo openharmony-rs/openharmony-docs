@@ -5,7 +5,7 @@
 <!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
 <!--Designer: @gsl_1234; @wangke25-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -43,8 +43,6 @@ FileManagement_ErrCode OH_Environment_GetUserDownloadDir(char **result)
 
 获取Download根目录沙箱路径。
 
-**需要权限：** ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY。
-
 **起始版本：** 12
 
 
@@ -70,8 +68,6 @@ FileManagement_ErrCode OH_Environment_GetUserDesktopDir(char **result)
 
 获取Desktop根目录沙箱路径。
 
-**需要权限：** ohos.permission.READ_WRITE_DESKTOP_DIRECTORY。
-
 **起始版本：** 12
 
 
@@ -96,8 +92,6 @@ FileManagement_ErrCode OH_Environment_GetUserDocumentDir(char **result)
 **描述**
 
 获取Document根目录沙箱路径。
-
-**需要权限：** ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY
 
 **起始版本：** 12
 

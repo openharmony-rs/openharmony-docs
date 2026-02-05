@@ -12,7 +12,7 @@ When you use native APIs to develop an application based on the [XComponent](../
 
 | Name | Description    |
 |-----|--------|
-| OH_NativeXComponent_SetExpectedFrameRateRange (OH_NativeXComponent *component, OH_NativeXComponent_ExpectedRateRange *range) |Sets the expected frame rate range.
+| OH_NativeXComponent_SetExpectedFrameRateRange (OH_NativeXComponent *component, OH_NativeXComponent_ExpectedRateRange *range) | Sets the expected frame rate range.|
 | OH_NativeXComponent_RegisterOnFrameCallback (OH_NativeXComponent *component, OH_NativeXComponent_OnFrameCallback *callback) | Registers the display update callback and enables the callback for each frame.|
 | OH_NativeXComponent_UnRegisterOnFrameCallback (OH_NativeXComponent *component) | Deregisters the display update callback and disables the callback for each frame.|
 
@@ -24,7 +24,7 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
    >
    > This section draws a graphic through the native Drawing module and presents it using the native Window module. For details, see [Using Drawing to Draw and Display Graphics](graphic-drawing-overview.md).
 
-1. Add development dependencies.
+1. Add dependencies.
 
    Add the following library to **CMakeLists.txt**.
 
@@ -35,7 +35,7 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
    libnative_drawing.so
    ```
 
-   Import the header files of the dependencies.
+   Import the required header files.
 
    ```c++
    #include <ace/xcomponent/native_interface_xcomponent.h>
@@ -120,9 +120,9 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
    > **NOTE**
    >
    > - The callback function runs in the UI main thread. To avoid adverse impact on the performance, time-consuming operations related to the UI thread should not run in the callback function.
-   > - After calling OH_NativeXComponent_RegisterOnFrameCallback, the instance should call OH_NativeXComponent_UnregisterOnFrameCallback when frame rate control is not required, to avoid memory leakage and the impact on performance and power consumption.
-   > - Before API version 18, if the application calls OH_NativeXComponent_RegisterOnFrameCallback to set the callback function and does not deregister the callback function, the application can receive the expected callback when the XComponent instance exists.
-   > - From API version 18 onwards, if the application calls OH_NativeXComponent_RegisterOnFrameCallback to set the callback function and does not deregister the callback function, the expected callback can be received only when the XComponent is added to the tree.
+   > - After the instance calls **OH_NativeXComponent_RegisterOnFrameCallback**, it must call **OH_NativeXComponent_UnregisterOnFrameCallback** when it no longer needs to control the frame rate, so as to avoid memory leakage and impact on performance and power consumption.
+   > - Before API version 18, if the application calls **OH_NativeXComponent_RegisterOnFrameCallback** to set the callback function and does not unregister the callback function, the application can receive the expected callback when the XComponent instance exists.
+   > - From API version 18 onwards, if the application calls **OH_NativeXComponent_RegisterOnFrameCallback** to set the callback function and does not unregister the callback function, the application can receive the expected callback only when the XComponent is on the tree.
 
    ```ts
    void SampleXComponent::RegisterOnFrameCallback(OH_NativeXComponent *nativeXComponent) 
@@ -188,5 +188,5 @@ For details about the APIs, see [OH_NativeXComponent Native XComponent](../refer
 <!--RP1-->
 ## Samples
 
-- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/DisplaySync)
+- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/DisplaySync)
 <!--RP1End-->

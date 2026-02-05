@@ -82,7 +82,7 @@ You can call the functions to create an audio session manager, activate or deact
 
 ### OH_AudioSession_ConcurrencyMode
 
-```
+```c
 enum OH_AudioSession_ConcurrencyMode
 ```
 
@@ -101,7 +101,7 @@ Enumerates the audio concurrency modes.
 
 ### OH_AudioSession_Scene
 
-```
+```c
 enum OH_AudioSession_Scene
 ```
 
@@ -119,7 +119,7 @@ Enumerates the audio session scenes.
 
 ### OH_AudioSession_StateChangeHint
 
-```
+```c
 enum OH_AudioSession_StateChangeHint
 ```
 
@@ -140,7 +140,7 @@ Enumerates the hints for audio session state changes.
 
 ### OH_AudioSession_OutputDeviceChangeRecommendedAction
 
-```
+```c
 enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 ```
 
@@ -157,7 +157,7 @@ Enumerates the recommended actions to take after an output device changes.
 
 ### OH_AudioSession_DeactivatedReason
 
-```
+```c
 enum OH_AudioSession_DeactivatedReason
 ```
 
@@ -174,7 +174,7 @@ Enumerates the reasons for deactivating an audio session.
 
 ### OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
-```
+```c
 enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 ```
 
@@ -196,7 +196,7 @@ Enumerates the preferred device categories available for recording with Bluetoot
 
 ### OH_AudioSession_StateChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChangedEvent event)
 ```
 
@@ -214,7 +214,7 @@ Defines a function pointer to the callback used to listen for audio session stat
 
 ### OH_AudioSession_AvailableDeviceChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
 ```
 
@@ -233,7 +233,7 @@ Defines a pointer to the callback that returns the changed audio device descript
 
 ### OH_AudioSession_CurrentInputDeviceChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason)
 ```
 
@@ -252,7 +252,7 @@ Defines a function pointer to the callback used to listen for the current input 
 
 ### OH_AudioSession_CurrentOutputDeviceChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason, OH_AudioSession_OutputDeviceChangeRecommendedAction recommendedAction)
 ```
 
@@ -272,7 +272,7 @@ Defines a function pointer to the callback used to listen for the current output
 
 ### OH_AudioSession_DeactivatedCallback()
 
-```
+```c
 typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_DeactivatedEvent event)
 ```
 
@@ -290,7 +290,7 @@ Defines a function pointer to the callback used to listen for audio session deac
 
 ### OH_AudioManager_GetAudioSessionManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionManager **audioSessionManager)
 ```
 
@@ -316,7 +316,7 @@ Before using the features related to the audio session manager, you must obtain 
 
 ### OH_AudioSessionManager_ActivateAudioSession()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_ActivateAudioSession(OH_AudioSessionManager *audioSessionManager, const OH_AudioSession_Strategy *strategy)
 ```
 
@@ -341,7 +341,7 @@ Activates an audio session.
 
 ### OH_AudioSessionManager_DeactivateAudioSession()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSessionManager *audioSessionManager)
 ```
 
@@ -365,7 +365,7 @@ Deactivates an audio session.
 
 ### OH_AudioSessionManager_IsAudioSessionActivated()
 
-```
+```c
 bool OH_AudioSessionManager_IsAudioSessionActivated(OH_AudioSessionManager *audioSessionManager)
 ```
 
@@ -389,7 +389,7 @@ Checks whether an audio session is activated.
 
 ### OH_AudioSessionManager_RegisterSessionDeactivatedCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)
 ```
 
@@ -414,7 +414,7 @@ Registers a callback to listen for audio session deactivation events.
 
 ### OH_AudioSessionManager_UnregisterSessionDeactivatedCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)
 ```
 
@@ -439,7 +439,7 @@ Unregisters the callback used to listen for audio session deactivation events.
 
 ### OH_AudioSessionManager_SetScene()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_Scene scene)
 ```
 
@@ -464,7 +464,7 @@ Sets an audio session scene.
 
 ### OH_AudioSessionManager_RegisterStateChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)
 ```
 
@@ -489,7 +489,7 @@ Registers a callback to listen for audio session state change events.
 
 ### OH_AudioSessionManager_UnregisterStateChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)
 ```
 
@@ -514,7 +514,7 @@ Unregisters the callback used to listen for audio session state change events.
 
 ### OH_AudioSessionManager_SetDefaultOutputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type deviceType)
 ```
 
@@ -547,7 +547,7 @@ Sets the default audio output device.
 
 ### OH_AudioSessionManager_GetDefaultOutputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type *deviceType)
 ```
 
@@ -572,7 +572,7 @@ Obtains the default audio output device set by [OH_AudioSessionManager_SetDefaul
 
 ### OH_AudioSessionManager_ReleaseDevices()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
 ```
 
@@ -597,7 +597,7 @@ Releases audio devices available for an audio routing manager.
 
 ### OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)
 ```
 
@@ -622,7 +622,7 @@ Registers a callback to listen for the current output device change events.
 
 ### OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)
 ```
 
@@ -647,7 +647,7 @@ Unregisters the callback used to listen for the current output device change eve
 
 ### OH_AudioSessionManager_GetAvailableDevices()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)
 ```
 
@@ -673,7 +673,7 @@ Obtains the available audio devices.
 
 ### OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioSession_AvailableDeviceChangedCallback callback)
 ```
 
@@ -699,7 +699,7 @@ Registers a callback to listen for available device change events.
 
 ### OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_AvailableDeviceChangedCallback callback)
 ```
 
@@ -724,7 +724,7 @@ Unregisters the callback used to listen for available device change events.
 
 ### OH_AudioSessionManager_SelectMediaInputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)
 ```
 
@@ -755,7 +755,7 @@ Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCa
 
 ### OH_AudioSessionManager_GetSelectedMediaInputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor **audioDeviceDescriptor)
 ```
 
@@ -780,7 +780,7 @@ Obtains the media input device set by calling [OH_AudioSessionManager_SelectMedi
 
 ### OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)
 ```
 
@@ -811,7 +811,7 @@ Applications can call [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCa
 
 ### OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory *category)
 ```
 
@@ -836,7 +836,7 @@ Obtains the preferred device category for recording with Bluetooth or NearLink.
 
 ### OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)
 ```
 
@@ -861,7 +861,7 @@ Registers a callback to listen for input device changes of an audio session mana
 
 ### OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)
 ```
 
@@ -886,7 +886,7 @@ Unregisters the callback used to listen for input device changes of an audio ses
 
 ### OH_AudioSessionManager_ReleaseDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)
 ```
 

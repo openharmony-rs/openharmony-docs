@@ -291,6 +291,10 @@ The user does not have the permission.
 
 The user has no permission.
 
+**Possible Causes**
+
+The current login account does not have the permission on the file.
+
 **Solution**
 
 Check the user permissions.
@@ -306,6 +310,10 @@ Account not logged in.
 **Description**
 
 You have not logged in with an account.
+
+**Possible Causes**
+
+You have not logged in with the account of the corresponding type.
 
 **Solution**
 
@@ -323,6 +331,10 @@ The system needs to be upgraded.
 
 The system needs to be upgraded.
 
+**Possible Causes**
+
+The current system version needs to be upgraded.
+
 **Solution**
 
 Upgrade the system.
@@ -338,6 +350,10 @@ The uri field is missing in the want parameter.
 
 The **want** parameter does not contain the URI.
 
+**Possible Causes**
+
+The **want** parameter does not contain the URI.
+
 **Solution**
 
 Set parameters correctly.
@@ -349,6 +365,10 @@ Set parameters correctly.
 The displayName field is missing in the want parameter.
 
 **Description**
+
+The **want** parameter does not contain **displayName**.
+
+**Possible Causes**
 
 The **want** parameter does not contain **displayName**.
 
@@ -385,6 +405,10 @@ The DLP file has expired.
 
 The DLP file has expired.
 
+**Possible Causes**
+
+The current time is beyond the authorization period.
+
 **Solution**
 
 Contact the file owner to authorize the file.
@@ -401,6 +425,10 @@ No network connection.
 
 The device is not connected to Wi-Fi.
 
+**Possible Causes**
+
+The network is disconnected or not authenticated.
+
 **Solution**
 
 Connect the device to Wi-Fi.
@@ -415,6 +443,10 @@ Failed to set the enterprise policy.
 **Description**
 
 Failed to set the policy for an enterprise application.
+
+**Possible Causes**
+
+The input policy format is invalid.
 
 **Solution**
 

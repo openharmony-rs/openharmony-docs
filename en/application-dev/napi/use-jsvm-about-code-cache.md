@@ -28,6 +28,7 @@ The compilation using the code cache greatly reduces the compilation time becaus
 The following pseudocode demonstrates a typical use case. During the second compilation, if the value of **cacheRejected** is **true**, the code cache is rejected and cannot take effect, and the compilation time is not affected. If the value of **cacheRejected** is **false**, the compilation is greatly accelerated.
 
 For details about how to use the JSVM-API, see [JSVM-API Data Types and APIs](./jsvm-data-types-interfaces.md). The following example only demonstrates the call procedure.
+
 For details about the cross-language interaction, see [JSVM-API Development Process](./use-jsvm-process.md).
 
 ```c++
@@ -114,7 +115,7 @@ const char* srcCallNative = R"JS(globalThis.UseCodeCache())JS";
 <!-- @[jsvm_code_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/aboutcodecache/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 first run result: 98304
 second run result: 98304
 cache rejected: 0
@@ -123,9 +124,11 @@ cache rejected: 0
 ## Precautions
 
 In the preceding code, a code cache is used for compilation. In **OH_JSVM_CompileScript(env, jsSrc, dataPtr, length, true, &cacheRejected, &script)**,
+
 the **cacheRejected** parameter is passed in to obtain whether the code cache is rejected in the compilation process. This status includes several situations:
 
 -Code cache verification failed
+
 -Code cache verification successful
 - The code cache is not verified because there is a compilation cache in the memory
 

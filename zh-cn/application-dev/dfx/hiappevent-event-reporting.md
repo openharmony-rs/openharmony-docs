@@ -5,7 +5,7 @@
 <!--Owner: @liujiaxing2024-->
 <!--Designer: @junjie_shi-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 HiAppEvent提供接口用于处理上报事件。
 

@@ -17,13 +17,10 @@ NotificationSubscriberExtensionAbility is the base class for notification subscr
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import NotificationSubscriberExtensionAbility from '@ohos.application.NotificationSubscriberExtensionAbility'
-import extensionSubscription from '@ohos.notificationExtensionSubscription';
+import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
 ```
 
 ## NotificationSubscriberExtensionAbility
-
-### Properties
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -58,7 +55,7 @@ export default class NotificationSubscriberExtAbility extends NotificationSubscr
 
 onReceiveMessage(notificationInfo: NotificationInfo): void
 
-Called when the system receives a notification.
+Called when a notification is received.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -66,7 +63,7 @@ Called when the system receives a notification.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes| Ability name, bundle name, and so on.|
+| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes| Notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
 
 **Example**:
 
@@ -75,7 +72,7 @@ const DOMAIN = 0x0000;
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-  onReceiveMessage(notificationInfo: extensionSubscription.NotificationInfo): void {
+  onReceiveMessage(notificationInfo: notificationExtensionSubscription.NotificationInfo): void {
     hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. notificationInfo: ${JSON.stringify(notificationInfo)}`);
   }
 }
@@ -103,7 +100,7 @@ const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
     onCancelMessages(hashCodes: Array<string>): void {
-        hilog.info(DOMAIN, 'testTag', `${TAG} onReceiveMessage. hashCodes: ${JSON.stringify(hashCodes)}`);
+        hilog.info(DOMAIN, 'testTag', `${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
     }
 }
 ```

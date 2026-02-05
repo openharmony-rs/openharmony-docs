@@ -363,21 +363,14 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute  | [backgroundImage](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundimage18) | - | - |
   | CommonAttribute  | [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick12) | - | - |
   | CommonAttribute  | [toolbar](../reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md#toolbar) | - | - |
-  | CommonAttribute  | [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) | - | - |
   | CommonAttribute  | [accessibilityGroup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitygroup14) | - | - |
   | CommonAttribute  | [reuse](../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md#reuse) | - | - |
   | CommonAttribute  | [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13) | - | - |
   | EmbeddedComponent  | [onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror) | - | - |
   | EmbeddedComponent  | [onTerminated](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated) | - | - |
-  | NavDestination | [onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15) | - | - |
   | NavDestination | [backButtonIcon<sup>19+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#backbuttonicon19) | - | - |
   | NavDestination | [menus<sup>19+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#menus19) | - | - |
-  | NavDestination | [bindToScrollable](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#bindtoscrollable14) | - | - |
-  | NavDestination | [bindToNestedScrollable](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#bindtonestedscrollable14) | - | - |
-  | NavDestination | [onActive](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17) | - | - |
-  | NavDestination | [onInactive](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17) | - | - |
   | NavDestination | [customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15) | - | - |
-  | NavDestination | [onNewParam](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onnewparam19) | - | - |
   | Navigation | [backButtonIcon](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#backbuttonicon19) | - | - |
   | Navigation | [menus](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#menus19) | - | - |
   | Repeat | [each](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each) | - | - |
@@ -385,7 +378,6 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | Repeat | [virtualScroll](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll) | - | - |
   | Repeat | [template](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template) | - | - |
   | Repeat | [templateId](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid) | - | - |
-  | RichEditor | [customKeyboard](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#customkeyboard) | - | - |
   | Search | [customKeyboard](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#customkeyboard10) | - | - |
   | Search | [onWillAttachIME](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#onwillattachime20) | - | - |
   | Select | [menuItemContentModifier<sup>12+</sup>](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#menuitemcontentmodifier12) | - | - |
@@ -421,6 +413,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute | [background](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#background10) | 10 | 20|
   | CommonAttribute  | [visualEffect](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#visualeffect) | 12 | 20 |
   | CommonAttribute | [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | 8 | 13 |
+  | CommonAttribute  | [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) | 17     | 23     |
   | CommonAttribute  | [onVisibleAreaChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange) | 9     | 20     |
   | CommonAttribute  | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | 12       | 20    |
   | CommonAttribute  | [onPreDrag](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#onpredrag12)    | 12                  | 20             |
@@ -459,6 +452,12 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | NavDestination | [onWillShow](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillshow12) | 12 | 20 |
   | NavDestination | [onWillHide](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillhide12) | 12 | 20 |
   | NavDestination | [systemBarStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#systembarstyle12) | 12 | 20 |
+  | NavDestination | [onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15) | 15 | 22 |
+  | NavDestination | [bindToScrollable](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#bindtoscrollable14) | 14 | 22 |
+  | NavDestination | [bindToNestedScrollable](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#bindtonestedscrollable14) | 14 | 22 |
+  | NavDestination | [onActive](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17) | 17 | 22 |
+  | NavDestination | [onInactive](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17) | 17 | 22 |
+  | NavDestination | [onNewParam](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onnewparam19) | 19 | 22 |
   | Navigation | [title](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title) | 8 | 12 |
   | Navigation | [toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10) | 10 | 20 |
   | Navigation | [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) | 11 | 20 |
@@ -467,6 +466,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | PatternLock | [onDotConnect](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md#ondotconnect11) | 11 | 20 |
   | Progress | [privacySensitive](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#privacysensitive12) | 12 | 20 |
   | Refresh | [onOffsetChange](../reference/apis-arkui/arkui-ts/ts-container-refresh.md#onoffsetchange12) | 12 | 20 |
+  | RichEditor | [customKeyboard](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#customkeyboard) | 10 | 23 |
   | RichEditor | [onDidIMEInput](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#ondidimeinput12) | 12 | 20 |
   | RichEditor | [enablePreviewText](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enablepreviewtext12) | 12 | 18 |
   | RichEditor | [placeholder](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#placeholder12) | 12 | 18 |

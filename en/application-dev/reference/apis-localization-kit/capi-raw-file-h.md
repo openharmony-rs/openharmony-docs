@@ -34,31 +34,33 @@ Provides functions related to rawfiles, including searching for, reading, and cl
 
 ### Functions
 
-| Name| Description                                                                           |
-| -- |-------------------------------------------------------------------------------|
-| [int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length)](#oh_resourcemanager_readrawfile) | Reads data of the specified length from the current position in a rawfile.                                                  |
-| [int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int whence)](#oh_resourcemanager_seekrawfile) | Searches for the data read/write position in a rawfile based on the specified offset.                                               |
-| [long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)](#oh_resourcemanager_getrawfilesize) | Obtains the length of the rawfile, in long.                                                         |
-| [long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)](#oh_resourcemanager_getrawfileremaininglength) | Obtains the remaining length of the rawfile, in long.                                                      |
-| [void OH_ResourceManager_CloseRawFile(RawFile *rawFile)](#oh_resourcemanager_closerawfile) | Closes a [RawFile](capi-rawfile-rawfile.md) and releases all associated resources.                       |
-| [long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)](#oh_resourcemanager_getrawfileoffset) | Obtains the current offset of a rawfile, in long. Current offset of the rawfile.                                       |
-| [bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor)](#oh_resourcemanager_getrawfiledescriptor) | Opens a rawfile based on the specified offset (in long) and file length (in long) and obtains the file descriptor. The file descriptor obtained can be used to read the file.  |
-| [bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)](#oh_resourcemanager_releaserawfiledescriptor) | Releases the file descriptor of a rawfile. To prevent file descriptor leakage, you are advised to release a rawfile descriptor immediately after use.                                |
-| [bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *descriptor)](#oh_resourcemanager_releaserawfiledescriptordata) | Releases the file descriptor of a rawfile. To prevent file descriptor leakage, you are advised to release a rawfile descriptor immediately after use.                                |
-| [int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, int64_t length)](#oh_resourcemanager_readrawfile64) | Reads data of the specified length from the current position in a large rawfile.                                             |
-| [int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, int whence)](#oh_resourcemanager_seekrawfile64) | Searches for the data read/write position in a large rawfile based on the specified offset.                                            |
-| [int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)](#oh_resourcemanager_getrawfilesize64) | Obtains the length of a large rawfile, in int64_t.                                                 |
-| [int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)](#oh_resourcemanager_getrawfileremaininglength64) | Obtains the remaining length of a large rawfile, in int64_t.                                                 |
-| [void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)](#oh_resourcemanager_closerawfile64) | Closes an opened [RawFile64](capi-rawfile-rawfile64.md) and releases all associated resources.                                     |
-| [int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)](#oh_resourcemanager_getrawfileoffset64) | Obtains the offset of a large rawfile, in int64_t.                                                |
+| Name| Description|
+| -- | -- |
+| [int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length)](#oh_resourcemanager_readrawfile) | Reads data of the specified length from the current position in a rawfile.|
+| [int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int whence)](#oh_resourcemanager_seekrawfile) | Searches for the data read/write position in a rawfile based on the specified offset.|
+| [long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)](#oh_resourcemanager_getrawfilesize) | Obtains the length of the rawfile, in long.|
+| [long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)](#oh_resourcemanager_getrawfileremaininglength) | Obtains the remaining length of the rawfile, in long.|
+| [void OH_ResourceManager_CloseRawFile(RawFile *rawFile)](#oh_resourcemanager_closerawfile) | Closes a [RawFile](capi-rawfile-rawfile.md) and releases all associated resources.|
+| [long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)](#oh_resourcemanager_getrawfileoffset) | Obtains the current offset of a rawfile, in long. Current offset of the rawfile.|
+| [bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor)](#oh_resourcemanager_getrawfiledescriptor) | Opens a rawfile based on the specified offset (in long) and file length (in long) and obtains the file descriptor. The file descriptor obtained can be used to read the file. (It is deprecated in API version 12.)|
+| [bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFileDescriptor *descriptor)](#oh_resourcemanager_getrawfiledescriptordata) | Opens a rawfile based on the specified offset (in long) and file length (in long) and obtains the file descriptor. The file descriptor obtained can be used to read the file.|
+| [bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)](#oh_resourcemanager_releaserawfiledescriptor) | Releases the file descriptor of a rawfile. To prevent file descriptor leakage, you are advised to release a rawfile descriptor immediately after use. (It is deprecated in API version 12.)|
+| [bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *descriptor)](#oh_resourcemanager_releaserawfiledescriptordata) | Releases the file descriptor of a rawfile. To prevent file descriptor leakage, you are advised to release a rawfile descriptor immediately after use.|
+| [int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, int64_t length)](#oh_resourcemanager_readrawfile64) | Reads data of the specified length from the current position in a large rawfile.|
+| [int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, int whence)](#oh_resourcemanager_seekrawfile64) | Searches for the data read/write position in a large rawfile based on the specified offset.|
+| [int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)](#oh_resourcemanager_getrawfilesize64) | Obtains the length of a large rawfile, in int64_t.|
+| [int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)](#oh_resourcemanager_getrawfileremaininglength64) | Obtains the remaining length of a large rawfile, in int64_t.|
+| [void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)](#oh_resourcemanager_closerawfile64) | Closes an opened [RawFile64](capi-rawfile-rawfile64.md) and releases all associated resources.|
+| [int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)](#oh_resourcemanager_getrawfileoffset64) | Obtains the offset of a large rawfile, in int64_t.|
 | [bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFileDescriptor64 *descriptor)](#oh_resourcemanager_getrawfiledescriptor64) | Opens a large rawfile based on the specified offset (in int64_t) and file length (in int64_t) and obtains the file descriptor. The file descriptor obtained can be used to read the file.|
-| [bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *descriptor)](#oh_resourcemanager_releaserawfiledescriptor64) | Releases the file descriptor of a rawfile. To prevent file descriptor leakage, you are advised to release a rawfile descriptor immediately after use.                                |
+| [bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *descriptor)](#oh_resourcemanager_releaserawfiledescriptor64) | Releases the file descriptor of a rawfile. To prevent file descriptor leakage, you are advised to release a rawfile descriptor immediately after use.|
+
 
 ## Function Description
 
 ### OH_ResourceManager_ReadRawFile()
 
-```
+```c
 int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length)
 ```
 
@@ -73,7 +75,7 @@ Reads data of the specified length from the current position in a rawfile.
 
 | Name| Description|
 | -- | -- |
-| const [RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
 | void *buf | Pointer to the buffer for receiving the read data.|
 | size_t length | Length of the data to read.|
 
@@ -85,7 +87,7 @@ Reads data of the specified length from the current position in a rawfile.
 
 ### OH_ResourceManager_SeekRawFile()
 
-```
+```c
 int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int whence)
 ```
 
@@ -100,7 +102,7 @@ Searches for the data read/write position in a rawfile based on the specified of
 
 | Name| Description|
 | -- | -- |
-| const [RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
+|[const RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
 | long offset | Specified offset.|
 | int whence | Read/Write position. The options are as follows:<br> **0**: The read/write position is the start position of the file plus the offset.<br> **1**: The read/write position is the current position plus the offset.<br> **2**: The read/write position is the end position of the file plus the offset.|
 
@@ -112,7 +114,7 @@ Searches for the data read/write position in a rawfile based on the specified of
 
 ### OH_ResourceManager_GetRawFileSize()
 
-```
+```c
 long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)
 ```
 
@@ -137,7 +139,7 @@ Obtains the length of the rawfile, in long.
 
 ### OH_ResourceManager_GetRawFileRemainingLength()
 
-```
+```c
 long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)
 ```
 
@@ -152,7 +154,7 @@ Obtains the remaining length of the rawfile, in long.
 
 | Name| Description|
 | -- | -- |
-| const [RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
 
 **Returns**
 
@@ -162,7 +164,7 @@ Obtains the remaining length of the rawfile, in long.
 
 ### OH_ResourceManager_CloseRawFile()
 
-```
+```c
 void OH_ResourceManager_CloseRawFile(RawFile *rawFile)
 ```
 
@@ -185,7 +187,7 @@ Closes a [RawFile](capi-rawfile-rawfile.md) and releases all associated resource
 
 ### OH_ResourceManager_GetRawFileOffset()
 
-```
+```c
 long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 ```
 
@@ -200,7 +202,7 @@ Obtains the current offset of a rawfile, in long. Current offset of the rawfile.
 
 | Name| Description|
 | -- | -- |
-| const [RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
 
 **Returns**
 
@@ -210,7 +212,7 @@ Obtains the current offset of a rawfile, in long. Current offset of the rawfile.
 
 ### OH_ResourceManager_GetRawFileDescriptor()
 
-```
+```c
 bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor)
 ```
 
@@ -220,13 +222,16 @@ Opens a rawfile based on the specified offset (in long) and file length (in long
 
 **Since**: 8
 
+**Deprecated from**: 12
+
+**Substitute**: [OH_ResourceManager_GetRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptordata)
 
 **Parameters**
 
 | Name                                              | Description|
 |---------------------------------------------------| -- |
-| const [RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
-| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) &descriptor                 | File descriptor of the rawfile, start position of the rawfile in the HAP, and length of the rawfile.|
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile  | Pointer to [RawFile](capi-rawfile-rawfile.md). |
+|  RawFileDescriptor &descriptor  |  File descriptor of the rawfile, start position of the rawfile in the HAP, and length of the rawfile. |
 
 **Returns**
 
@@ -234,9 +239,36 @@ Opens a rawfile based on the specified offset (in long) and file length (in long
 | -- | -- |
 | bool | <b>true</b> if the file is opened; returns <b>false</b> if the access to the file is rejected.|
 
+### OH_ResourceManager_GetRawFileDescriptorData()
+
+```c
+bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFileDescriptor *descriptor)
+```
+
+**Description**
+
+Opens a rawfile based on the specified offset (in long) and file length (in long) and obtains the file descriptor. The file descriptor obtained can be used to read the file.
+
+**Since**: 12
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | Pointer to [RawFile](capi-rawfile-rawfile.md).|
+| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) *descriptor | File descriptor of the rawfile, start position of the rawfile in the HAP, and length of the rawfile.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| bool | <b>true</b> if the file is opened; returns <b>false</b> if the access to the file is rejected.|
+
+
+
 ### OH_ResourceManager_ReleaseRawFileDescriptor()
 
-```
+```c
 bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)
 ```
 
@@ -246,12 +278,15 @@ Releases the file descriptor of a rawfile. To prevent file descriptor leakage, y
 
 **Since**: 8
 
+**Deprecated from**: 12
+
+**Substitute**: [OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata)
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| const [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) &descriptor | File descriptor of the rawfile. It contains the file descriptor, start position in the HAP, and file length.|
+|[ const RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) &descriptor | File descriptor of the rawfile. It contains the file descriptor, start position in the HAP, and file length.|
 
 **Returns**
 
@@ -261,7 +296,7 @@ Releases the file descriptor of a rawfile. To prevent file descriptor leakage, y
 
 ### OH_ResourceManager_ReleaseRawFileDescriptorData()
 
-```
+```c
 bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *descriptor)
 ```
 
@@ -286,7 +321,7 @@ Releases the file descriptor of a rawfile. To prevent file descriptor leakage, y
 
 ### OH_ResourceManager_ReadRawFile64()
 
-```
+```c
 int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, int64_t length)
 ```
 
@@ -301,7 +336,7 @@ Reads data of the specified length from the current position in a large rawfile.
 
 | Name| Description|
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
 | void *buf | Pointer to the buffer for receiving the read data.|
 | int64_t length | Length of the data to read.|
 
@@ -313,7 +348,7 @@ Reads data of the specified length from the current position in a large rawfile.
 
 ### OH_ResourceManager_SeekRawFile64()
 
-```
+```c
 int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, int whence)
 ```
 
@@ -328,7 +363,7 @@ Searches for the data read/write position in a large rawfile based on the specif
 
 | Name| Description|
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
 | int64_t offset | Specified offset.|
 | int whence | Read/Write position. The options are as follows:<br> **0**: The read/write position is the start position of the file plus the offset.<br> **1**: The read/write position is the current position plus the offset.<br> **2**: The read/write position is the end position of the file plus the offset.|
 
@@ -340,7 +375,7 @@ Searches for the data read/write position in a large rawfile based on the specif
 
 ### OH_ResourceManager_GetRawFileSize64()
 
-```
+```c
 int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)
 ```
 
@@ -365,7 +400,7 @@ Obtains the length of a large rawfile, in int64_t.
 
 ### OH_ResourceManager_GetRawFileRemainingLength64()
 
-```
+```c
 int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)
 ```
 
@@ -380,7 +415,7 @@ Obtains the remaining length of a large rawfile, in int64_t.
 
 | Name| Description|
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
 
 **Returns**
 
@@ -390,7 +425,7 @@ Obtains the remaining length of a large rawfile, in int64_t.
 
 ### OH_ResourceManager_CloseRawFile64()
 
-```
+```c
 void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)
 ```
 
@@ -413,7 +448,7 @@ Closes an opened [RawFile64](capi-rawfile-rawfile64.md) and releases all associa
 
 ### OH_ResourceManager_GetRawFileOffset64()
 
-```
+```c
 int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)
 ```
 
@@ -428,7 +463,7 @@ Obtains the offset of a large rawfile, in int64_t.
 
 | Name| Description|
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
 
 **Returns**
 
@@ -438,7 +473,7 @@ Obtains the offset of a large rawfile, in int64_t.
 
 ### OH_ResourceManager_GetRawFileDescriptor64()
 
-```
+```c
 bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFileDescriptor64 *descriptor)
 ```
 
@@ -453,7 +488,7 @@ Opens a large rawfile based on the specified offset (in int64_t) and file length
 
 | Name| Description|
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Pointer to [RawFile64](capi-rawfile-rawfile64.md).|
 | [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) *descriptor | File descriptor of the rawfile, start position of the rawfile in the HAP, and length of the rawfile.|
 
 **Returns**
@@ -464,7 +499,7 @@ Opens a large rawfile based on the specified offset (in int64_t) and file length
 
 ### OH_ResourceManager_ReleaseRawFileDescriptor64()
 
-```
+```c
 bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *descriptor)
 ```
 

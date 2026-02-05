@@ -11,7 +11,7 @@
 
 不同折叠设备在不同折叠状态下支持的摄像头数量不同。
 
-例如，折叠设备A拥有三颗摄像头：B（后置）、C（前置）、D（前置）。在展开状态下，通过[CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到B（后置）和C（前置）两颗摄像头，而在折叠状态下，仅可获取到D（前置）摄像头。因此，在使用后置摄像头或需要切换摄像头的场景下，需先判断是否存在后置摄像头。
+例如，折叠设备拥有三颗摄像头：后置摄像头A、前置摄像头B和前置摄像头C。在展开状态下，通过[CameraManager.getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口可获取到后置摄像头A和前置摄像头B；在折叠状态下，可获取到后置摄像头A和前置摄像头C。不同的折叠状态获取到的镜头不同，因此，在折叠状态变化时，需要重新获取镜头信息。
 
 详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
@@ -38,7 +38,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
       }
 
       async loadXComponent() {
-        //初始化XComponent。
+        // 初始化XComponent。
       }
 
       build() {
@@ -440,7 +440,7 @@ struct Index {
       return;
     }
 
-    //创建会话。
+    // 创建会话。
     try {
       let session = this.mCameraManager.createSession(camera.SceneMode.NORMAL_PHOTO);
       if (!session) {

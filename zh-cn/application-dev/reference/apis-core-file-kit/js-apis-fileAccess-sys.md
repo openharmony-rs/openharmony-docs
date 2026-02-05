@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhangjun; @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 fileAccess模块是基于[extension](../../application-models/extensionability-overview.md)机制实现的一个对公共文件访问和操作的框架。该模块一方面对接各类文件管理服务，如存储管理服务等；另一方面为系统应用提供一套统一的文件访问管理接口。存储管理服务可以管理内置存储部分目录，以及共享盘、U盘、SD卡等设备上的资源。
 
@@ -13,6 +13,7 @@ fileAccess模块是基于[extension](../../application-models/extensionability-o
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 > - 当前只支持FilePicker、文件管理器调用。
+> - 本模块接口从API version 23开始废弃。不建议使用以下接口，推荐使用[文件管理](js-apis-file-fs.md)接口进行文件访问。
 
 ## 导入模块
 
@@ -615,6 +616,7 @@ FileAccessHelper对象。
 getRoots() : Promise&lt;RootIterator&gt;
 
 以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。
+
 该方法返回迭代器对象RootIterator，然后通过[next](#next-1)方法返回[RootInfo](#rootinfo)。
 
 **系统接口**：此接口为系统接口。
@@ -669,6 +671,7 @@ async function getRoots() {
 getRoots(callback:AsyncCallback&lt;RootIterator&gt;) : void
 
 以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。
+
 callback带回迭代器对象RootIterator，然后通过[next](#next-1)方法返回[RootInfo](#rootinfo)。
 
 **系统接口**：此接口为系统接口。
@@ -1536,7 +1539,6 @@ getFileInfoFromUri(uri: string, callback: AsyncCallback\<FileInfo>) : void
     console.error("getFileInfoFromUri failed, errCode:" + error.code + ", errMessage:" + error.message);
   }
   ```
-
 
 ### getFileInfoFromRelativePath<sup>10+</sup>
 

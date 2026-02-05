@@ -35,67 +35,67 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
 
 1. Import the module.
 
-    ```ts
-    import { xml, util } from '@kit.ArkTS'; // Use the API provided by the util module to encode text.
-    ```
+   ```ts
+   import { xml, util } from '@kit.ArkTS'; // Use the API provided by the util module to encode text.
+   ```
 
 2. Create an XmlPullParser object.
 
    You can create an XmlPullParser object based on ArrayBuffer or DataView. Both methods yield the same results.
 
-    ```ts
-    let strXml: string =
-    '<?xml version="1.0" encoding="utf-8"?>' +
-      '<note importance="high" logged="true">' +
-      '<title>Play</title>' +
-      '<lens>Work</lens>' +
-      '</note>';
-    let textEncoder: util.TextEncoder = new util.TextEncoder();
-    let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
-    // Method 1: Create an XmlPullParser object based on ArrayBuffer.
-    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```ts
+   let strXml: string =
+   '<?xml version="1.0" encoding="utf-8"?>' +
+     '<note importance="high" logged="true">' +
+     '<title>Play</title>' +
+     '<lens>Work</lens>' +
+     '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
+   // Method 1: Create an XmlPullParser object based on ArrayBuffer.
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
    
-    // Method 2: Create an XmlPullParser object based on DataView.
-    // let dataView: DataView = new DataView(arrBuffer.buffer as object as ArrayBuffer);
-    // let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(dataView, 'UTF-8');
-    ```
+   // Method 2: Create an XmlPullParser object based on DataView.
+   // let dataView: DataView = new DataView(arrBuffer.buffer as object as ArrayBuffer);
+   // let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(dataView, 'UTF-8');
+   ```
 
 3. Customize a callback function. In this example, the callback function directly prints the tags and their values.
 
-    ```ts
-    function func(name: string, value: string): boolean {
-      if (name == 'note') {
-        console.info(name);
-      }
-      if (value == 'Play' || value == 'Work') {
-        console.info('    ' + value);
-      }
-      if (name == 'title' || name == 'lens') {
-        console.info('  ' + name);
-      }
-      return true; // The value true means to continue parsing, and false means to stop parsing.
-    }
-    ```
+   ```ts
+   function func(name: string, value: string): boolean {
+     if (name == 'note') {
+       console.info(name);
+     }
+     if (value == 'Play' || value == 'Work') {
+       console.info('    ' + value);
+     }
+     if (name == 'title' || name == 'lens') {
+       console.info('  ' + name);
+     }
+     return true; // The value true means to continue parsing, and false means to stop parsing.
+   }
+   ```
 
 4. Set parsing options and call the **parseXml** function.
 
-    ```ts
-    let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
-    xmlParser.parseXml(options);
-    ```
+   ```ts
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tagValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   ```
 
-	The output is as follows:
+   The output is as follows:
 
-	```
-	note
-	  title
-	    Play
-	  title
-	  lens
-	    Work
-	  lens
-	note
-	```
+   ```txt
+   note
+     title
+       Play
+     title
+     lens
+       Work
+     lens
+   note
+   ```
 
 
 
@@ -104,45 +104,45 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
 
 1. Import the module.
 
-    ```ts
-    import { xml, util } from '@kit.ArkTS'; // Use the util module to encode text.
-    ```
+   ```ts
+   import { xml, util } from '@kit.ArkTS'; // Use the util module to encode text.
+   ```
 
 2. Create an XmlPullParser object.
 
-    ```ts
-    let strXml: string =
-      '<?xml version="1.0" encoding="utf-8"?>' +
-        '<note importance="high" logged="true">' +
-        '    <title>Play</title>' +
-        '    <title>Happy</title>' +
-        '    <lens>Work</lens>' +
-        '</note>';
-    let textEncoder: util.TextEncoder = new util.TextEncoder();
-    let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
-    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-    ```
+   ```ts
+   let strXml: string =
+     '<?xml version="1.0" encoding="utf-8"?>' +
+       '<note importance="high" logged="true">' +
+       '    <title>Play</title>' +
+       '    <title>Happy</title>' +
+       '    <lens>Work</lens>' +
+       '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```
 
 3. Customize a callback function. In this example, the callback function directly prints the attributes and their values.
 
-    ```ts
-    let str: string = '';
-    function func(name: string, value: string): boolean {
-      str += name + ' ' + value + ' ';
-      return true; // The value true means to continue parsing, and false means to stop parsing.
-    }
-    ```
+   ```ts
+   let str: string = '';
+   function func(name: string, value: string): boolean {
+     str += name + ' ' + value + ' ';
+     return true; // The value true means to continue parsing, and false means to stop parsing.
+   }
+   ```
 
 4. Set parsing options and call the **parseXml** function.
 
-    ```ts
-    let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func};
-    xmlParser.parseXml(options);
-    console.info(str); // Print all attributes and their values.
-    ```
-
-   The output is as follows:
+   ```ts
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, attributeValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   console.info(str); // Print all attributes and their values.
    ```
+ 
+   The output is as follows:
+   ```txt
    importance high logged true // Attributes and values of the note node
    ```
 
@@ -151,52 +151,52 @@ The XML module provides the XmlPullParser class to parse XML text. The input is 
 
 1. Import the module.
 
-    ```ts
-    import { xml, util } from '@kit.ArkTS'; // Use the util module to encode text.
-    ```
+   ```ts
+   import { xml, util } from '@kit.ArkTS'; // Use the util module to encode text.
+   ```
 
 2. Create an XmlPullParser object.
 
-    ```ts
-    let strXml: string =
-      '<?xml version="1.0" encoding="utf-8"?>' +
-      '<note importance="high" logged="true">' +
-      '<title>Play</title>' +
-      '</note>';
-    let textEncoder: util.TextEncoder = new util.TextEncoder();
-    let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
-    let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
-    ```
+   ```ts
+   let strXml: string =
+     '<?xml version="1.0" encoding="utf-8"?>' +
+     '<note importance="high" logged="true">' +
+     '<title>Play</title>' +
+     '</note>';
+   let textEncoder: util.TextEncoder = new util.TextEncoder();
+   let arrBuffer: Uint8Array = textEncoder.encodeInto(strXml); // Encode data to prevent garbled Chinese characters.
+   let xmlParser: xml.XmlPullParser = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+   ```
 
 3. Customize a callback function. In this example, the callback function directly prints the event types and element depths.
 
-    ```ts
-    let str: string = '';
-    function func(name: xml.EventType, value: xml.ParseInfo): boolean {
-      str = name + ' ' + value.getDepth(); // Obtain the current depth of an element in the XML document.
-      console.info(str);
-      return true; // The value true means to continue parsing, and false means to stop parsing.
-    }
-    ```
+   ```ts
+   let str: string = '';
+   function func(name: xml.EventType, value: xml.ParseInfo): boolean {
+     str = name + ' ' + value.getDepth(); // Obtain the current depth of an element in the XML document.
+     console.info(str);
+     return true; // The value true means to continue parsing, and false means to stop parsing.
+   }
+   ```
 
 4. Set parsing options and call the **parseXml** function.
 
-     ```ts
-     let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func};
-     xmlParser.parseXml(options);
-     ```
+   ```ts
+   let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func};
+   xmlParser.parseXml(options);
+   ```
 
    The output is as follows:
 
-	```
-	 0 0 // First digit 0: <?xml version="1.0" encoding="utf-8"?> corresponds to event type START_DOCUMENT, which value is 0; second digit 0: The depth is 0.
-	 2 1 // First digit 2: <note importance="high" logged="true"> corresponds to event type START_TAG, which value is 2; second digit 1: The depth is 1.
-	 2 2 // First digit 2: <title> corresponds to event type START_TAG, which value is 2; second digit 2: The depth is 2.
-	 4 2 // First digit 4: "Play" corresponds to event type TEXT, which value is 4; second digit 2: The depth is 2.
-	 3 2 // First digit 3: </title> corresponds to event type END_TAG, which value is 3; second digit 2: The depth is 2.
-	 3 1 // First digit 3: </note> corresponds to event type END_TAG, which value is 3; second digit 1: The depth is 1.
-	 1 0 // First digit 1: corresponds to event type END_DOCUMENT, which value is 1; second digit 0: The depth is 0.
-	```
+   ```txt
+   0 0 // First digit 0: <?xml version="1.0" encoding="utf-8"?> corresponds to event type START_DOCUMENT, which value is 0; second digit 0: The depth is 0.
+   2 1 // First digit 2: <note importance="high" logged="true"> corresponds to event type START_TAG, which value is 2; second digit 1: The depth is 1.
+   2 2 // First digit 2: <title> corresponds to event type START_TAG, which value is 2; second digit 2: The depth is 2.
+   4 2 // First digit 4: "Play" corresponds to event type TEXT, which value is 4; second digit 2: The depth is 2.
+   3 2 // First digit 3: </title> corresponds to event type END_TAG, which value is 3; second digit 2: The depth is 2.
+   3 1 // First digit 3: </note> corresponds to event type END_TAG, which value is 3; second digit 1: The depth is 1.
+   1 0 // First digit 1: corresponds to event type END_DOCUMENT, which value is 1; second digit 0: The depth is 0.
+   ```
 
 
 
@@ -250,7 +250,7 @@ xmlParser.parseXml(options);
 
 The output is as follows:
 
-```
+```txt
 tag-
 token-0 0
 tag-book

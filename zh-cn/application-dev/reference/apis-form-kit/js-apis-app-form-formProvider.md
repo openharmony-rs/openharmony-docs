@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
@@ -129,9 +129,12 @@ try {
 
 ## formProvider.updateForm
 
-updateForm(formId: string, formBindingData: formBindingData.FormBindingData,callback: AsyncCallback&lt;void&gt;): void
+updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
 更新指定的卡片，使用callback异步回调。
+> **说明：**
+>
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -189,6 +192,9 @@ try {
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
 更新指定的卡片，使用Promise异步回调。
+> **说明：**
+>
+> 从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张。API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -460,6 +466,74 @@ struct Page {
 }
 ```
 
+## formProvider.closeFormEditAbility<sup>23+</sup>
+
+closeFormEditAbility(isMainPage?: boolean): void
+
+关闭卡片编辑页。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                 |
+| ------ | ------ |----|----------------------------------------------------|
+| isMainPage | boolean | 否  | 是否关闭一级卡片编辑页，true表示关闭一级编辑页，false表示关闭非一级编辑页。<br/>默认值：true。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md#801-该设备不支持此api)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID    | 错误信息 |
+|----------| -------- |
+| 801      | Capability not supported due to limited device capabilities. |
+| 16500050 | IPC connection error. |
+| 16501015 | Cannot close the widget editing page opened by other apps. |
+
+**示例：**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+
+const TAG: string = 'FormEditDemo-Page] -->';
+
+@Entry
+@Component
+struct Page {
+  @State message: string = 'Hello World';
+
+  aboutToAppear(): void {
+    console.info(`${TAG} aboutToAppear.....`);
+  }
+
+  build() {
+    RelativeContainer() {
+      Text(this.message)
+        .id('PageHelloWorld')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Top },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center }
+        })
+        .onClick(() => {
+          console.info(`${TAG} onClick.....`);
+          try {
+            formProvider.closeFormEditAbility();
+            console.info(`${TAG} close FormEditAbility success.`);
+          } catch (error) {
+            console.error(`${TAG} close FormEditAbility faild, code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## formProvider.openFormManager<sup>18+</sup>
 
 openFormManager(want: Want): void
@@ -618,6 +692,11 @@ try {
 requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;
 
 卡片提供方发起互动卡片动效请求，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。
+> **说明：**
+>
+> 1. 该接口在省电模式场景下不可使用，会报16501000错误码。
+> 2. 当设备热档位进入HOT场景并且没有点击事件的场景下，该接口会报16501000错误码；当热档位进入OVERHEATED时，任何情况下都会报16501000错误码。热档位信息具体可参考[热档位信息](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
+
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -756,7 +835,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息，单位vp。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。 |
 
 **错误码：**
 
@@ -929,8 +1008,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  //请开发者替换为实际请求更新的卡片信息
+  // 请开发者替换为实际请求更新的卡片信息
   let moduleName: string = 'entry';
   let abilityName: string = 'EntryFormAbility';
   let formName: string = 'formName';
@@ -983,6 +1063,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { formProvider } from '@kit.FormKit';
 
 try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
   formProvider.reloadAllForms(context).then((reloadNum: number) => {
     console.info(`reloadAllForms success, reload number: ${reloadNum}`);

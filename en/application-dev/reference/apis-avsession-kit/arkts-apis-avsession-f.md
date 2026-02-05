@@ -153,6 +153,8 @@ Obtains an AVSession object. This API uses a promise to return the result.
 
 This API returns an existing AVSession object that was previously created in the current process. If no AVSession object exists, the call fails and an exception is thrown.
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Parameters**

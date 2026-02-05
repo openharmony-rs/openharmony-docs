@@ -1218,3 +1218,43 @@ function getDefaultRenderContextTest() {
   }
 }
 ```
+
+### cloneNode<sup>23+</sup>
+cloneNode(node: Node, parent: Node, name: string): Node | null
+
+在当前所在场景中克隆结点，不支持跨场景克隆结点。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点。|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点在当前所在场景中的目标父结点。被克隆的结点node和目标父结点parent需要属于同一个场景scene。|
+| name | string | 是 | 克隆结点的名称，由开发者自定义，无特殊要求。|
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | 返回克隆结点。克隆失败则返回null。 |
+
+**示例：**
+```ts
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+function CloneNode() {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.gltf"))
+    .then(async (result: Scene) => {
+      let node = result.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube") as Node;
+      let parent = result.root as Node;
+      let name = "cloneNode_";
+      let clone = result.cloneNode(node, parent, name);
+      if (clone) {
+        console.info("cloneNode success");
+      } else {
+        console.error("cloneNode failed");
+      }
+    });
+}
+```

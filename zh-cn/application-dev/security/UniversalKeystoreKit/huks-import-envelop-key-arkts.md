@@ -9,12 +9,15 @@
 
 从API 23开始支持[数字信封](huks-key-import-overview.md#数字信封导入)特性。
 
-以数字信封导入RSA密钥和AES密钥为例。具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)，其中**数字信封导入密钥不支持DSA算法**。使用数字信封导入密钥需要使用tag，HUKS_TAG_UNWRAP_ALGORITHM_SUITE，该tag值为HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING。数字信封导入密钥时，如果是导入非对称密钥的密钥对，需要添加[OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA标签](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，并将公钥以X.509 DER格式封装填入该标签，且针对非对称密钥仅支持以密钥对形式导入。
+以数字信封导入RSA密钥和AES密钥为例。具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)，其中**数字信封导入密钥不支持DSA算法**。
 
+使用数字信封导入密钥需要使用[HUKS_TAG_UNWRAP_ALGORITHM_SUITE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)标签，该标签值为[HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksunwrapsuite9)。
+
+数字信封导入密钥时，如果是导入非对称密钥的密钥对，需要添加[HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)标签，并将公钥以X.509 DER格式封装填入该标签，且针对非对称密钥仅支持以密钥对形式导入。
 
 ## 开发步骤
 1. 业务方设备（设备A）生成SM4密钥，cipherSm4。
-2. 设备A使用生成的SM4密钥加密将导入密钥importKey，加密使用ECB/NoPadding模式，enImportKey=Encrypt(ciperSm4, importKey)。
+2. 设备A使用生成的SM4密钥加密将导入密钥importKey，加密使用ECB/NoPadding模式，enImportKey=Encrypt(cipherSm4, importKey)。
 3. 密钥导入方（设备B）导出SM2公钥，设备A接收该密钥。
 4. 设备A使用收到的SM2公钥加密生成的SM4密钥，enSm4=Encrypt(Sm2, cipherSm4)。
 5. 设备A将数字信封数据发送给设备B。
@@ -39,8 +42,8 @@ function concatUint8Arrays(arrays: Uint8Array[]): Uint8Array
   const result = new Uint8Array(totalLength);
   let offset = 0;
   for (const arr of arrays) {
-    result.set(arr, offset)
-    offset += arr.length
+    result.set(arr, offset);
+    offset += arr.length;
   }
   return result;
 }
@@ -66,14 +69,14 @@ let wrappingParamSetSm2: Array<huks.HuksParam> = [
     tag: huks.HuksTag.HUKS_TAG_PADDING,
     value: huks.HuksKeyPadding.HUKS_PADDING_NONE
   }
-]
+];
 let option: huks.HuksOptions = { properties: wrappingParamSetSm2 };
 
 let sm4PlainData = new Uint8Array([
   0xb9, 0xef, 0x35, 0x49, 0xb7, 0x00, 0x91, 0x58, 0x0c, 0x6f, 0x43, 0x28, 0xf8, 0x95, 0x1c, 0x02,
-])
+]);
 
-let enParamSetSm2: Array<huks.HuksParam> = [
+let enParamSm2: Array<huks.HuksParam> = [
   {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
@@ -94,12 +97,12 @@ let enParamSetSm2: Array<huks.HuksParam> = [
     tag: huks.HuksTag.HUKS_TAG_PADDING,
     value: huks.HuksKeyPadding.HUKS_PADDING_NONE
   }
-]
+];
 
 let enOption: huks.HuksOptions = {
-  properties: enParamSetSm2,
+  properties: enParamSm2,
   inData: sm4PlainData
-}
+};
 
 let cipherData: Uint8Array;
 let handle: number;
@@ -114,14 +117,14 @@ async function EnvelopRsaTest()
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error('decrypt init fail')
+      console.error('decrypt init fail, errorCode: ${error.code}')
     })
   await huks.finishSession(handle, enOption)
     .then((data) => {
-      console.info('encrypt success01')
+      console.info('encrypt success')
       cipherData = data.outData as Uint8Array
     }).catch((error: BusinessError) => {
-      console.error(`encrypt finish fail,errorCode: ${error.code}`)
+      console.error(`encrypt finish fail, errorCode: ${error.code}`)
     })
 
   let enDataRsa: Uint8Array = new Uint8Array([
@@ -141,7 +144,7 @@ async function EnvelopRsaTest()
     0x17, 0x99, 0x44, 0x69, 0xcd, 0x3d, 0xcb, 0x3c, 0xfe, 0xbe, 0x72, 0xc0, 0x43, 0x29, 0x86, 0x70,
     0x9d, 0xa3, 0xc0, 0x68, 0xf6, 0x7e, 0x48, 0x2c, 0x4e, 0x48, 0xe0, 0xf6, 0xa9, 0xcb, 0x28, 0x63,
     0xe8, 0x33, 0xfc, 0xb4, 0x1a, 0x06, 0xf4, 0x13, 0x20, 0xfd, 0x90, 0x90, 0x1c, 0x25, 0xd7, 0xf8,
-  ])
+  ]);
 
   let publicKey: Uint8Array = new Uint8Array([
     0x30, 0x82, 0x01, 0x22, 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01,
@@ -163,7 +166,7 @@ async function EnvelopRsaTest()
     0x62, 0xe1, 0x25, 0x79, 0xd5, 0x5c, 0xf3, 0x9a, 0xeb, 0x1f, 0x3d, 0x82, 0xa3, 0xaa, 0x79, 0xde,
     0x23, 0xa1, 0x2b, 0x50, 0x6d, 0x68, 0x3e, 0x77, 0x33, 0xe0, 0xc9, 0x18, 0xbc, 0x65, 0x58, 0x63,
     0x7b, 0x02, 0x03, 0x01, 0x00, 0x01,
-  ])
+  ]);
 
   let paramRsa: Array<huks.HuksParam> = [
     {
@@ -197,16 +200,21 @@ async function EnvelopRsaTest()
     {
       tag: huks.HuksTag.HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA,
       value: publicKey
-    }]
+    }];
   let impRsaOption: huks.HuksOptions = {
     properties: paramRsa
   };
 
-  let wrapDataLen = intToUint8Array(enDataRsa.length)
-  let ciLen = intToUint8Array(cipherData.length)
-  impRsaOption.inData = concatUint8Arrays([ciLen, cipherData, wrapDataLen, enDataRsa])
+  let wrapDataLen = intToUint8Array(enDataRsa.length);
+  let ciLen = intToUint8Array(cipherData.length);
+  impRsaOption.inData = concatUint8Arrays([ciLen, cipherData, wrapDataLen, enDataRsa]);
 
   await huks.importWrappedKeyItem("importRsa", wrappingKeyAlias, impRsaOption)
+    .then((data) => {
+      console.info('import success')
+    }).catch((error: BusinessError) => {
+      console.error(`import fail, errorCode: ${error.code}`)
+    });
 }
 ```
 
@@ -229,8 +237,8 @@ function concatUint8Arrays(arrays: Uint8Array[]): Uint8Array
   const result = new Uint8Array(totalLength);
   let offset = 0;
   for (const arr of arrays) {
-    result.set(arr, offset)
-    offset += arr.length
+    result.set(arr, offset);
+    offset += arr.length;
   }
   return result;
 }
@@ -256,14 +264,14 @@ let wrappingParamSetSm2: Array<huks.HuksParam> = [
     tag: huks.HuksTag.HUKS_TAG_PADDING,
     value: huks.HuksKeyPadding.HUKS_PADDING_NONE
   }
-]
+];
 let option: huks.HuksOptions = { properties: wrappingParamSetSm2 };
 
 let sm4PlainData = new Uint8Array([
   0xb9, 0xef, 0x35, 0x49, 0xb7, 0x00, 0x91, 0x58, 0x0c, 0x6f, 0x43, 0x28, 0xf8, 0x95, 0x1c, 0x02,
-])
+]);
 
-let enParamSetSm2: Array<huks.HuksParam> = [
+let enParamSm2: Array<huks.HuksParam> = [
   {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
@@ -284,12 +292,12 @@ let enParamSetSm2: Array<huks.HuksParam> = [
     tag: huks.HuksTag.HUKS_TAG_PADDING,
     value: huks.HuksKeyPadding.HUKS_PADDING_NONE
   }
-]
+];
 
 let enOption: huks.HuksOptions = {
-  properties: enParamSetSm2,
+  properties: enParamSm2,
   inData: sm4PlainData
-}
+};
 
 let cipherData: Uint8Array;
 let handle: number;
@@ -305,13 +313,13 @@ async function EnvelopAesTest()
       handle = data.handle;
     }).catch((error: BusinessError) => {
       console.error('decrypt init fail')
-    })
+    });
   await huks.finishSession(handle, enOption)
     .then((data) => {
       cipherData = data.outData as Uint8Array
     }).catch((error: BusinessError) => {
       console.error(`encrypt finish fail,errorCode: ${error.code}`)
-    })
+    });
 
   let paramSetAes: Array<huks.HuksParam> = [
     {
@@ -337,18 +345,23 @@ async function EnvelopAesTest()
     {
       tag: huks.HuksTag.HUKS_TAG_UNWRAP_ALGORITHM_SUITE,
       value: huks.HuksUnwrapSuite.HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING
-    }]
+    }];
 
   let enDataAes = new Uint8Array([
     0xa5, 0xa4, 0xef, 0x4b, 0x87, 0x69, 0xf1, 0xd0, 0x7c, 0xd0, 0x55, 0x9a, 0xe0, 0xb8, 0x8c, 0x36,
-  ])
+  ]);
 
   let impAesOption: huks.HuksOptions = { properties: paramSetAes }
 
-  let wrapDataLen = intToUint8Array(enDataAes.length)
-  let ciLen = intToUint8Array(cipherData.length)
-  impAesOption.inData = concatUint8Arrays([ciLen, cipherData, wrapDataLen, enDataAes])
+  let wrapDataLen = intToUint8Array(enDataAes.length);
+  let ciLen = intToUint8Array(cipherData.length);
+  impAesOption.inData = concatUint8Arrays([ciLen, cipherData, wrapDataLen, enDataAes]);
 
   await huks.importWrappedKeyItem("importAes", wrappingKeyAlias, impAesOption)
+    .then((data) => {
+      console.info('import success')
+    }).catch((error: BusinessError) => {
+      console.error(`import fail, errorCode: ${error.code}`)
+    });
 }
 ```

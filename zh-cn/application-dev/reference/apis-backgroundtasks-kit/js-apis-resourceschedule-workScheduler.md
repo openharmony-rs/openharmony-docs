@@ -225,7 +225,7 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -367,7 +367,7 @@ stopAndClearWorks(): void
 
 isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[workScheduler.isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10)替代。
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
@@ -548,7 +548,7 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 | ------------------------- | ---- | -------------------- |
 | CHARGING_PLUGGED_ANY      | 0    | 表示这个触发条件是任何类型的充电器连接。 |
 | CHARGING_PLUGGED_AC       | 1    | 表示这个触发条件是直流充电器连接。    |
-| CHARGING_PLUGGED_USB      | 2    | 表示这个触发条件是USB充连接。     |
+| CHARGING_PLUGGED_USB      | 2    | 表示这个触发条件是USB充电连接。     |
 | CHARGING_PLUGGED_WIRELESS | 3    | 表示这个触发条件是无线充电器连接。    |
 
 ## BatteryStatus

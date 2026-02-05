@@ -42,7 +42,7 @@ The file declares the functions related to an audio manager.
 
 ### OH_AudioManager_OnAudioSceneChangeCallback()
 
-```
+```c
 typedef void (*OH_AudioManager_OnAudioSceneChangeCallback) (void *userData, OH_AudioScene scene)
 ```
 
@@ -62,7 +62,7 @@ Defines the prototype of the audio scene change callback function, which is pass
 
 ### OH_GetAudioManager()
 
-```
+```c
 OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)
 ```
 
@@ -87,7 +87,7 @@ Obtains an OH_AudioManager instance.<br> Before using the features related to th
 
 ### OH_GetAudioScene()
 
-```
+```c
 OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *scene)
 ```
 
@@ -113,7 +113,7 @@ Obtains the audio scene.
 
 ### OH_AudioManager_RegisterAudioSceneChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioManager *manager,OH_AudioManager_OnAudioSceneChangeCallback callback, void *userData)
 ```
 
@@ -140,7 +140,7 @@ Registers the audio scene change callback function.
 
 ### OH_AudioManager_UnregisterAudioSceneChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_AudioManager *manager,OH_AudioManager_OnAudioSceneChangeCallback callback)
 ```
 

@@ -48,6 +48,7 @@
 - **onWindowWillCreate**
 
   创建窗口之前回调，开发者传递窗口参数给系统。设置config.windowAttribute属性值为window.ExtensionWindowAttribute.SUB_WINDOW，此时创建的是子窗; 设置config.windowAttribute属性值为window.ExtensionWindowAttribute.SYSTEM_WINDOW，此时创建的是系统窗;
+  
   目前[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)和[UIExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)拉起[UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)创建的窗口支持子窗和系统窗，其他context（[ServiceExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md)）拉起[UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)创建的窗口只支持系统窗。一个UIServiceExtension只能创建一个窗口。
 
 - **onWindowDidCreate**
@@ -90,7 +91,7 @@
 
 2. 在UIServiceExt目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为UIServiceExt.ets。
 
-    ```
+    ``` txt
     ├── ets
     │ ├── UIServiceExt
     │ │   ├── UIServiceExt.ets
@@ -170,7 +171,6 @@
     ```json
     {
       "module": {
-        // ...
         "extensionAbilities": [
           {
             "name": "UIServiceExtAbility",
@@ -248,9 +248,8 @@ struct Index {
 
       build() {
         Column() {
-          //...
           Row() {
-            //...
+            // ...
           }.onClick(() => {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             const want: Want = {
@@ -292,9 +291,8 @@ struct Index {
 
       build() {
         Column() {
-          //...
           Row() {
-            //...
+            // ...
           }.onClick(() => {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             // this.uiServiceProxy是连接时保存的proxy对象

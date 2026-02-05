@@ -9,33 +9,33 @@
 
 ## Overview
 
-A TextBlob is a set of texts. You can draw a single text or a large text block by using text blobs.
+A TextBlob is a set of texts. You can draw both a single text and a paragraph by using TextBlobs.
 
-In addition to basic text blob drawing, you can also add various drawing effects to texts. Common text blob drawing scenarios include text stroke (see #Text Stroke) and text gradient (see #Text Gradient). For more effects, see Drawing Effects (drawing-effect-overview.md).
+In addition to the basic TextBlob drawing, you can add various drawing effects to texts. Common TextBlob drawing scenarios include [text stroke](#text-stroke) and [text gradient](#text-gradient). For more effects, see [Overview of Drawing Effects](drawing-effect-overview.md).
 
-This section does not involve text measurement and layout. For details about how to handle text drawing requirements during development, see Text Development Overview (text-overview.md). This document describes the layout policies and usage guide.
+This topic does not involve text measurement and typography. For details about how to handle text drawing requirements, see [Introduction to Text Development](text-overview.md). This topic describes the typography policies and related usage.
 
-## Basic Text Blob Drawing
+## Basic TextBlob Drawing
 
-Canvas draws text blobs by using drawTextBlob(). The function accepts three parameters: text blob object, and the x and y coordinates of the left end of the text baseline.
+The Canvas component draws TextBlobs using **drawTextBlob()**. This function takes three parameters: **TextBlob** object, and X and Y coordinates of the left end point of the text baseline.
 
-For details about the canvas object, see Obtaining a Canvas and Displaying the Drawing Result (ArkTS) (canvas-get-result-draw-arkts.md).
+For details about the **Canvas** object, see [Obtaining a Canvas and Displaying Drawing Results (ArkTS)](canvas-get-result-draw-arkts.md).
 
-A text blob object can be created in multiple ways. For details about how to create a text blob and use APIs, see [TextBlob](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md).
+A **TextBlob** object can be created in multiple ways. For details about how to create a block and how to use the API, see [TextBlob](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md).
 
-The following uses the makeFromString() API as an example to create a text blob. The API accepts three parameters:
+The following uses the **makeFromString()** API as an example to create a **TextBlob** object. The API takes three parameters:
 
-- text: character string to be displayed.
+- String text to be displayed.
 
-- font: font object. font is used to set and obtain various attributes of a font, such as the font size, text style, font alignment mode, font rendering mode, and font stroke mode. For details about the API, see [Font](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md).
+- **font** object, which is used to set and obtain various font attributes, such as the font size, text style, font alignment mode, font rendering mode, and font stroke mode. For details about the APIs, see [Font](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md).
 
-- textEncoding: text encoding mode. Currently, the following text encoding modes are supported:
-  - TEXT_ENCODING_UTF8: UTF-8 or ASCII is represented by one byte.
-  - TEXT_ENCODING_UTF16: uses two bytes to represent most Unicode characters.
-  - TEXT_ENCODING_UTF32: uses four bytes to represent all Unicode characters.
-  - TEXT_ENCODING_GLYPH_ID: uses two bytes to represent glyph indexes.
+- Text encoding mode. The following modes are supported:
+  - **TEXT_ENCODING_UTF8**: One byte is used to indicate UTF-8 or ASCII characters.
+  - **TEXT_ENCODING_UTF16**: Two bytes are used to indicate most Unicode characters.
+  - **TEXT_ENCODING_UTF32**: Four bytes are used to indicate all Unicode characters.
+  - **TEXT_ENCODING_GLYPH_ID**: Two bytes are used to indicate the glyph index.
 
-The sample code and effect of the basic text drawing are as follows:
+The sample code and effect are as follows:
 
 <!-- @[arkts_graphics_draw_base_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
@@ -44,23 +44,23 @@ The sample code and effect of the basic text drawing are as follows:
 const font = new drawing.Font();
 // Set the font size.
 font.setSize(100);
-// Create a text block object.
+// Create a TextBlob object.
 const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 ```
 
 ![Screenshot_20241225151030139](figures/Screenshot_20241225151030139.jpg)
 
-## Text Outline
+## Text Stroke
 
-You can also use a paint object to draw text outlines. For details about the outline effect, please refer to basic-drawing-effect-arkts.md# Outline Effect.
+Based on the basic TextBlob drawing, you can also use the brush to implement the text stroke effect. For details, see [Stroke Effect](basic-drawing-effect-arkts.md#stroke-effect).
 
-The following provides an example of drawing English and Chinese text outlines.
+The following uses English and Chinese text strokes as examples.
 
-### English Text Outline
+### English Text Stroke
 
-The following figure shows how to draw an English text outline.
+The following shows the sample code and effect of English text strokes.
 
 <!-- @[arkts_graphics_draw_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
@@ -69,19 +69,19 @@ The following figure shows how to draw an English text outline.
 let pen = new drawing.Pen();
 // Set anti-aliasing.
 pen.setAntiAlias(true);
-// Set the outline width.
+// Set the stroke width.
 pen.setStrokeWidth(3.0);
-// Set the outline color.
+// Set the stroke color.
 pen.setColor(0xFF, 0xFF, 0x00, 0x00);
 // Create a font object.
 const font = new drawing.Font();
 // Set the font size.
 font.setSize(100);
-// Add the stroke effect.
+// Add the brush stroke effect.
 canvas.attachPen(pen);
-// Create a text block object.
+// Create a TextBlob object.
 const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 // Remove the stroke effect.
 canvas.detachPen();
@@ -89,11 +89,11 @@ canvas.detachPen();
 
 ![Screenshot_20241225152446749](figures/Screenshot_20241225152446749.jpg)
 
-### Stroke for Chinese Text
+### Chinese Text Stroke
 
-You need to first add the stroke effect using a paint brush, and then call the brush to fill the internal color to remove the impurities and overlapping parts in the middle of the font to implement the stroke effect for Chinese text.
+To achieve the stroke effect for Chinese text, first use a pen to outline the strokes, then apply a brush to fill the inner color and eliminate impurities and overlapping areas in the middle of the font.
 
-The following figure shows a brief example of the stroke effect for Chinese text.
+The following shows the sample code and effect of Chinese text strokes.
 
 <!-- @[arkts_graphics_draw_chinese_stroke_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
@@ -109,20 +109,20 @@ brush.setAntiAlias(true);
 brush.setColor(0xFF, 0xFF, 0xFF, 0xFF);
 
 pen.setAntiAlias(true);
-// Set the outline width.
+// Set the stroke width.
 pen.setStrokeWidth(3.0);
-// Set the outline color.
+// Set the stroke color.
 pen.setColor(0xFF, 0xFF, 0x00, 0x00);
 
 // Create a font object.
 const font = new drawing.Font();
 // Set the font size.
 font.setSize(100);
-// Add the stroke effect.
+// Add the pen stroke effect.
 canvas.attachPen(pen);
-// Create a text block object.
+// Create a TextBlob object.
 const textBlob = drawing.TextBlob.makeFromString(STROKE_SAMPLE, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 canvas.drawTextBlob(textBlob, VALUE_200,  VALUE_300);
 // Remove the stroke effect.
 canvas.detachPen(); 
@@ -136,9 +136,9 @@ canvas.detachBrush();
 
 ## Text Gradient
 
-You can also use a shader to implement the text gradient effect based on basic text blocks. For details about shaders, please refer to complex-drawing-effect-arkts.md# Shader Effects.
+In addition to TextBlob drawing, you can use a shader to implement the gradient effect of text. For more information about shaders, see [Shader Effect](complex-drawing-effect-arkts.md#shader-effect).
 
-The following is a brief example of adding a linear gradient shader effect to text.
+The following shows the sample code and effect of adding a linear gradient shader to text.
 
 <!-- @[arkts_graphics_draw_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
@@ -158,9 +158,9 @@ canvas.attachBrush(brush);
 const font = new drawing.Font();
 // Set the font size.
 font.setSize(VALUE_200);
-// Create a text block.
+// Create a TextBlob.
 const textBlob = drawing.TextBlob.makeFromString('Hello world', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 canvas.drawTextBlob(textBlob, VALUE_100, VALUE_300);
 // Remove the fill effect.
 canvas.detachBrush();
@@ -168,48 +168,48 @@ canvas.detachBrush();
 
 ![Screenshot_20241225155707415](figures/Screenshot_20241225155707415.jpg)
 
-## Theme font
+## Theme Font
 
-Theme fonts are special custom fonts that can be used in **theme applications**. For details about text measurement and layout, see Using Theme Fonts (ArkTS).
+Theme fonts are specialized custom fonts available for use in theme applications. For details about text measurement and typography, see [Using Theme Fonts (ArkTS)](theme-font-arkts.md).
 
-The following shows sample code and the effect of setting theme fonts:
+The following shows the sample code and effect for setting the theme font.
 
 <!-- @[arkts_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 ``` TypeScript
 // Create a linear gradient shader.
 const font = new drawing.Font();
-// Set the font size.
+// Set the text size.
 font.setSize(100);
 // Set the theme font.
 font.setThemeFontFollowed(true);
-// Create a text block object.
+// Create a TextBlob object.
 const textBlob = drawing.TextBlob.makeFromString('Hello World', font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
-// Draw the text block.
+// Draw the TextBlob.
 canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
 ```
 
-| Effect of not following the theme font| Effect of following the theme font (The effect varies according to the theme font.)|
+| Theme Font Not Followed| Theme Font Followed (For Reference)|
 | -------- | -------- |
 | ![Snapshot_setThemeFontFollowed_sys](figures/Snapshot_setThemeFontFollowed_sys.jpg) | ![Snapshot_setThemeFontFollowed](figures/Snapshot_setThemeFontFollowed.jpg) |
 
-> **Description**
+> **NOTE**
 >
-> You need to override the onConfigurationUpdate function in the application entry file (EntryAbility.ets in the default project) to respond to the theme font switching operation. This ensures that the page can be refreshed and take effect in a timely manner after the switching. For details, see Using Theme Fonts (ArkTS).
+> You need to override the **onConfigurationUpdate** function in the application entry file (**EntryAbility.ets** in the default project) to respond to the theme font switching operation, ensuring that the page can be refreshed and take effect in a timely manner after the switching. For details, see [Using Theme Fonts (ArkTS)](theme-font-arkts.md).
 
-## Single Character Drawing
+## Single-Character Drawing
 
-Single character drawing is a refined control technology for text rendering in graphics rendering. Compared with text block drawing, the core advantage of single character drawing is that the font degradation mechanism can be used. When a character cannot be displayed in the current font, the character is automatically degraded to the system font, improving the compatibility with special characters and avoiding character loss. In addition, single character drawing supports character-by-character configuration of font features (such as ligatures and alternative glyphs) to meet complex typesetting requirements and enhance user experience. For details about the APIs, please refer to [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawsinglecharacter12).
+Single-character drawing is a refined technology for controlling text rendering. Compared with TextBlob drawing, single-character drawing has the following advantages: The font degradation mechanism is used. If a character cannot be displayed in the current font, the system automatically uses the system font to draw the character, improving compatibility with special characters and avoiding character loss. In addition, single-character drawing supports character-by-character configuration of font features (such as ligatures and alternates) to meet complex typography requirements for better user experience. For details about the APIs, see [drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#drawsinglecharacter12).
 
-Basic Scenario: Drawing Characters Without Font Features 
-In the scenario where you need to render regular text without font features, you can use drawSingleCharacter to draw a single character and measureSingleCharacter to measure the width of a single character. The sample code and effect are as follows:
+Basic scenario: drawing characters without font features 
+In common text rendering scenarios where font features are not required, you can use **drawSingleCharacter** to draw a single character and use **measureSingleCharacter** to measure the width of a single character. The sample code and effect are as follows:
 
 <!-- @[arkts_graphics_draw_single_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 ``` TypeScript
 // Create a font object.
 const font = new drawing.Font();
-// Set the font size.
+// Set the text size.
 font.setSize(100);
 let startX = 100;
 let startY = 100;
@@ -225,15 +225,15 @@ for (let s of text) {
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacter.jpg)
 
-Advanced Scenario: Drawing Characters with Font Features 
-In the scenario where you need to render text with font features, you can use drawSingleCharacterWithFeatures to draw a single character and measureSingleCharacterWithFeatures to measure the width of a single character. The sample code and effect are as follows:
+Advanced scenario: drawing characters with font features 
+In text rendering scenarios where font features are required, you can use **drawSingleCharacterWithFeatures** to draw a single character and use **measureSingleCharacterWithFeatures** to measure the width of a single character. The sample code and effect are as follows:
 
 <!-- @[arkts_graphics_draw_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 ``` TypeScript
 // Create a font object.
 const font = new drawing.Font();
-// Set the font size.
+// Set the text size.
 font.setSize(100);
 let startX = 100;
 let startY = 100;
@@ -251,14 +251,14 @@ for (let s of text) {
 
 ![Snapshot_drawSingleCharacter](figures/Snapshot_drawSingleCharacterWithFeatures.png)
 
-> **Description**
+> **NOTE**
 >
-> If `drawSingleCharacterWithFeatures` and `measureSingleCharacter` are used together, or `drawSingleCharacter` and `measureSingleCharacterWithFeatures` are used together, the font drawing may overlap.
+> If `drawSingleCharacterWithFeatures` and `measureSingleCharacter` are used together, or `drawSingleCharacter` and `measureSingleCharacterWithFeatures` are used together, font drawing may overlap.
 
 <!--RP1-->
 ## Samples
 
-The following figures show how to develop Drawing (ArkTS).
+The following samples are provided to help you better understand how to use the **Drawing** APIs (ArkTS) for development:
 
 - [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

@@ -31,7 +31,7 @@ uinput <option> <command> <arg> ...
 | -T       | --touch    | 注入触摸事件。  |
 | -P       | --touchpad | 注入触控板事件。|
 | -?       | --help     | 帮助命令。      | 
-| enable_key_status | enable_key_status | [修饰键状态管理](#修饰键状态管理)。| 
+| enable_key_status | enable_key_status | [控制注入的修饰键状态](#控制注入的修饰键状态)。| 
 
 > **说明：**
 >
@@ -345,46 +345,46 @@ uinput --keyboard --text <text>
 uinput -K -t Hello,World!
 ```
 
-## 修饰键状态管理
+## 控制注入的修饰键状态
 
-启动或禁用键盘事件修饰键状态管理，包含以下修饰键：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+从API version 22开始，支持启用或禁用控制注入的修饰键状态能力，支持的修饰键包括：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
 
-### 启动修饰键状态管理
+### 启用控制注入的修饰键状态能力
 
-启动修饰键状态管理并设置维持时间。需要与uinput键盘按键按下事件配合使用，启动后再注入指定修饰键的按下事件，可维持指定时间的按下状态，维持时间结束后自动触发该修饰键抬起事件。
+启用控制注入的修饰键状态能力并设置维持时间。需要与uinput键盘按键按下事件配合使用，启用后再注入指定修饰键的按下事件，可维持指定时间的按下状态，维持时间结束后自动触发该修饰键抬起事件。
 
 **命令**
 ```bash
 uinput enable_key_status <enable> [duration]
 
-# <enabal> 修饰键状态管理启动或禁用状态，取值为1或0，取值为1表示启动修饰键状态管理，0表示禁用修饰键状态管理。
-# [duration] 修饰键状态管理持续时间，可选参数，单位：s，默认值为10，取值范围：[1,10]，仅支持整数。
+# <enable> 控制注入的修饰键状态能力，取值为1或0，取值为1表示启用控制注入的修饰键状态能力，0表示禁用控制注入的修饰键状态能力。
+# [duration] 控制注入的修饰键状态持续时间，可选参数，单位：s，默认值为10，取值范围：[1,10]，仅支持整数。
 ```
 
 **使用示例**
 ```bash
-# 启动修饰键状态管理，未设置修饰键状态维持时间。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持10s按下状态。
+# 启用控制注入的修饰键状态能力，未设置修饰键状态维持时间。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持10s按下状态。
 uinput enable_key_status 1
 uinput -K -d 2047
 
-# 启动修饰键状态管理并设置修饰键状态维持时间为5s。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持5s按下状态。
+# 启用控制注入的修饰键状态能力并设置修饰键状态维持时间为5s。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持5s按下状态。
 uinput enable_key_status 1 5
 uinput -K -d 2047
 ```
 
-### 禁用修饰键状态管理
+### 禁用控制注入的修饰键状态能力
 
-禁用修饰键状态管理功能，直到下次启用恢复该功能。
+禁用控制注入的修饰键状态能力，直到下次启用恢复该能力。
 
 **命令**
 ```bash
-# <enabal> 修饰键状态管理启动或禁用状态，取值为1或0，取值为1表示启动修饰键状态管理，0表示禁用修饰键状态管理。
+# <enable> 控制注入的修饰键状态能力，取值为1或0，取值为1表示启用控制注入的修饰键状态能力，0表示禁用控制注入的修饰键状态能力。
 uinput enable_key_status <enable>
 ```
 
 **使用示例**
 ```bash
-# 禁用修饰键状态管理。
+# 禁用控制注入的修饰键状态能力。
 uinput enable_key_status 0
 ```
 

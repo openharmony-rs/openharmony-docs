@@ -113,6 +113,10 @@ close(): void
 
 通过ImageBitmap加载本地图片。
 
+> **说明：**
+>
+> 从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable 设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+
   ```ts
   // xxx.ets
   @Entry
@@ -188,7 +192,7 @@ struct Demo {
 
 > **说明：**
 >
-> DevEco Studio的预览器不支持显示在worker线程中绘制的内容。
+> DevEco Studio的预览器不支持显示在Worker线程中绘制的内容。
 
 ```ts
 import { worker } from '@kit.ArkTS';
@@ -198,7 +202,7 @@ import { worker } from '@kit.ArkTS';
 struct imageBitmapExamplePage {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ts');
+  private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
   // "common/images/example.jpg"需要替换为开发者所需的图像资源文件
   private img: ImageBitmap = new ImageBitmap("common/images/example.jpg");
 

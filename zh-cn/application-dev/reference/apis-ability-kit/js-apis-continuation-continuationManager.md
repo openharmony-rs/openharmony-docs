@@ -10,7 +10,9 @@ continuationManager模块提供了流转/协同入口管理服务能力，包括
 
 > **说明：**
 > 
-> 本模块首批接口从API version 8开始支持，从API version 22开始不再维护，建议使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)替代。
+> 本模块首批接口从API version 8开始支持，从API version 22开始废弃，建议使用[分布式设备管理](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)替代。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -26,7 +28,9 @@ register(callback: AsyncCallback\<number>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[ondevicestatechange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[ondevicestatechange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -60,7 +64,9 @@ register(options: ContinuationExtraParams, callback: AsyncCallback\<number>): vo
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -99,7 +105,9 @@ register(options?: ContinuationExtraParams): Promise\<number>
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -139,11 +147,13 @@ registerContinuation(callback: AsyncCallback\<number>): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -155,7 +165,7 @@ registerContinuation(callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -192,11 +202,13 @@ registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -209,7 +221,7 @@ registerContinuation(options: ContinuationExtraParams, callback: AsyncCallback\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -250,11 +262,13 @@ registerContinuation(options?: ContinuationExtraParams): Promise\<number>
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -272,7 +286,7 @@ registerContinuation(options?: ContinuationExtraParams): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -312,7 +326,9 @@ on(type: 'deviceConnect', callback: Callback\<ContinuationResult>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -343,7 +359,9 @@ on(type: 'deviceDisconnect', callback: Callback\<string>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -372,7 +390,9 @@ off(type: 'deviceConnect', callback?: Callback\<ContinuationResult>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -403,7 +423,9 @@ off(type: 'deviceDisconnect', callback?: Callback\<string>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -432,11 +454,13 @@ on(type: 'deviceSelected', token: number, callback: Callback\<Array\<Continuatio
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -450,7 +474,7 @@ on(type: 'deviceSelected', token: number, callback: Callback\<Array\<Continuatio
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -488,11 +512,13 @@ on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<Continuat
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -506,7 +532,7 @@ on(type: 'deviceUnselected', token: number, callback: Callback\<Array\<Continuat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -545,11 +571,13 @@ off(type: 'deviceSelected', token: number): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -562,7 +590,7 @@ off(type: 'deviceSelected', token: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -593,11 +621,13 @@ off(type: 'deviceUnselected', token: number): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -610,7 +640,7 @@ off(type: 'deviceUnselected', token: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -641,7 +671,9 @@ startDeviceManager(token: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+> 从API version 9开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -675,7 +707,9 @@ startDeviceManager(token: number, options: ContinuationExtraParams, callback: As
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+> 从API version 9开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -715,7 +749,9 @@ startDeviceManager(token: number, options?: ContinuationExtraParams): Promise\<v
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+> 从API version 9开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -758,11 +794,13 @@ startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): v
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -775,7 +813,7 @@ startContinuationDeviceManager(token: number, callback: AsyncCallback\<void>): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -811,11 +849,13 @@ startContinuationDeviceManager(token: number, options: ContinuationExtraParams, 
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -829,7 +869,7 @@ startContinuationDeviceManager(token: number, options: ContinuationExtraParams, 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -870,11 +910,13 @@ startContinuationDeviceManager(token: number, options?: ContinuationExtraParams)
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -893,7 +935,7 @@ startContinuationDeviceManager(token: number, options?: ContinuationExtraParams)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -932,7 +974,9 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState,
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
+> 从API version 9开始废弃，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -969,7 +1013,9 @@ updateConnectStatus(token: number, deviceId: string, status: DeviceConnectState)
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
+> 从API version 9开始废弃，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1012,11 +1058,13 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1031,7 +1079,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -1068,11 +1116,13 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1092,7 +1142,7 @@ updateContinuationState(token: number, deviceId: string, status: DeviceConnectSt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -1131,7 +1181,9 @@ unregister(token: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1165,7 +1217,9 @@ unregister(token: number): Promise\<void>
 
 > **说明：**
 > 
-> 从API version 9开始不再维护，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1204,11 +1258,13 @@ unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1221,7 +1277,7 @@ unregisterContinuation(token: number, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -1257,11 +1313,13 @@ unregisterContinuation(token: number): Promise\<void>
 
 > **说明：**
 > 
-> 从API version 9开始支持，从API version 22开始不再维护，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
+> 从API version 9开始支持，从API version 22开始废弃，建议使用[offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1279,7 +1337,7 @@ unregisterContinuation(token: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[分布式调度错误码](errorcode-DistributedSchedule.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DistributedSchedule错误码](errorcode-DistributedSchedule.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -1313,9 +1371,11 @@ unregisterContinuation(token: number): Promise\<void>
 
 > **说明：**
 > 
-> 从API version 22开始不再维护，建议使用[DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange)替代。
+> 从API version 22开始废弃，建议使用[DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1332,9 +1392,11 @@ unregisterContinuation(token: number): Promise\<void>
 
 > **说明：**
 > 
-> 从API version 22开始不再维护，建议使用[DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange)替代。
+> 从API version 22开始废弃，建议使用[DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1351,9 +1413,11 @@ type ContinuationResult = _ContinuationResult
 
 > **说明：**
 > 
-> 从API version 10开始支持，从API version 22开始不再维护，建议使用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 
@@ -1369,9 +1433,11 @@ type ContinuationExtraParams = _ContinuationExtraParams
 
 > **说明：**
 > 
-> 从API version 10开始支持，从API version 22开始不再维护，建议使用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)替代。
+> 从API version 10开始支持，从API version 22开始废弃，建议使用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.DistributedAbilityManager
 

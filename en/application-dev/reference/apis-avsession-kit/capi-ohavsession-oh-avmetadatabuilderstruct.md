@@ -6,7 +6,7 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-```
+```c
 typedef struct OH_AVMetadataBuilderStruct OH_AVMetadataBuilder
 ```
 

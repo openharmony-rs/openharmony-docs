@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 Application data, such as the configuration and service data, is generated when an application is used. To prevent user data against loss due to operations such as application updates and hopping, the application data needs to be backed up and restored.
 

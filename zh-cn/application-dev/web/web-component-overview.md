@@ -9,7 +9,7 @@
 ## 使用场景
 
 ArkWeb（方舟Web）提供了Web组件，用于在应用程序中显示Web页面内容。常见使用场景包括：
-- 应用集成Web页面：应用可以在页面中使用Web组件，嵌入Web页面内容，以降低开发成本，提升开发、运营效率。
+- 应用集成Web页面：应用可以在页面中使用Web组件，嵌入Web页面内容，以降低开发成本，提升开发、运维效率。
 
 - 浏览器网页浏览场景：浏览器类应用可以使用Web组件，打开三方网页，使用无痕模式浏览Web页面，设置广告拦截等。
 
@@ -58,7 +58,7 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
   | OpenHarmony 4.0及之前 | M99 |
   | OpenHarmony 4.1-5.1 | M114 |
   | OpenHarmony 6.0 | M132（默认，推荐使用）<br>M114（可选，若应用需切换为此内核，请参考[M114内核在OpenHarmony6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)） |
-  | OpenHarmony 6.0 | M132 |
+  | OpenHarmony 6.1 | M132 |
 
 ## 相关实例
 

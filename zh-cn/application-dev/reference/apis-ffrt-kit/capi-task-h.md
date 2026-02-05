@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 概述
 
@@ -33,7 +33,7 @@
 | [FFRT_C_API void ffrt_task_attr_destroy(ffrt_task_attr_t* attr)](#ffrt_task_attr_destroy) | 销毁任务属性。 |
 | [FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)](#ffrt_task_attr_set_qos) | 设置任务QoS。 |
 | [FFRT_C_API ffrt_qos_t ffrt_task_attr_get_qos(const ffrt_task_attr_t* attr)](#ffrt_task_attr_get_qos) | 获取任务QoS。 |
-| [FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_us)](#ffrt_task_attr_set_delay) | 设置任务延迟时间。 |
+| [FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_us)](#ffrt_task_attr_set_delay) | 设置任务延迟时间。<br> 设置任务的调度延迟后，任务的输入输出依赖关系不再生效。 |
 | [FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr)](#ffrt_task_attr_get_delay) | 获取任务延迟时间。 |
 | [FFRT_C_API void ffrt_task_attr_set_queue_priority(ffrt_task_attr_t* attr, ffrt_queue_priority_t priority)](#ffrt_task_attr_set_queue_priority) | 设置并行队列任务优先级。 |
 | [FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_task_attr_t* attr)](#ffrt_task_attr_get_queue_priority) | 获取并行队列任务优先级。 |
@@ -43,10 +43,10 @@
 | [FFRT_C_API ffrt_qos_t ffrt_this_task_get_qos(void)](#ffrt_this_task_get_qos) | 获取任务QoS。 |
 | [FFRT_C_API uint64_t ffrt_this_task_get_id(void)](#ffrt_this_task_get_id) | 获取任务id。 |
 | [FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kind_t kind)](#ffrt_alloc_auto_managed_function_storage_base) | 申请函数执行结构的内存。 |
-| [FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps,const ffrt_task_attr_t* attr)](#ffrt_submit_base) | 提交任务调度执行。 |
-| [FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps,const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)](#ffrt_submit_h_base) | 提交任务调度执行并返回任务句柄。 |
-| [FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps,const ffrt_task_attr_t* attr)](#ffrt_submit_f) | 提交任务调度执行，是ffrt_submit_base接口的简化包装形式。该接口假定任务不需要销毁回调函数，给定的任务函数和参数被包装为通用任务结构，并将封装后的任务结构和其他参数传递给ffrt_submit_base接口。 |
-| [FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps,const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)](#ffrt_submit_h_f) | 提交任务调度执行并返回任务句柄，是ffrt_submit_h_base接口的简化包装形式。该接口假定任务不需要销毁回调函数，给定的任务函数和参数被包装为通用任务结构，并将封装后的任务结构和其他参数传递给ffrt_submit_h_base接口。 |
+| [FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)](#ffrt_submit_base) | 提交任务调度执行。 |
+| [FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)](#ffrt_submit_h_base) | 提交任务调度执行并返回任务句柄。 |
+| [FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)](#ffrt_submit_f) | 提交任务调度执行，是ffrt_submit_base接口的简化包装形式。该接口假定任务不需要销毁回调函数，给定的任务函数和参数被包装为通用任务结构，并将封装后的任务结构和其他参数传递给ffrt_submit_base接口。 |
+| [FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)](#ffrt_submit_h_f) | 提交任务调度执行并返回任务句柄，是ffrt_submit_h_base接口的简化包装形式。该接口假定任务不需要销毁回调函数，给定的任务函数和参数被包装为通用任务结构，并将封装后的任务结构和其他参数传递给ffrt_submit_h_base接口。 |
 | [FFRT_C_API uint32_t ffrt_task_handle_inc_ref(ffrt_task_handle_t handle)](#ffrt_task_handle_inc_ref) | 增加任务句柄的引用数。 |
 | [FFRT_C_API uint32_t ffrt_task_handle_dec_ref(ffrt_task_handle_t handle)](#ffrt_task_handle_dec_ref) | 减少任务句柄的引用计数。 |
 | [FFRT_C_API void ffrt_task_handle_destroy(ffrt_task_handle_t handle)](#ffrt_task_handle_destroy) | 销毁任务句柄。 |
@@ -66,7 +66,6 @@ FFRT_C_API int ffrt_task_attr_init(ffrt_task_attr_t* attr)
 初始化任务属性。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -92,7 +91,6 @@ FFRT_C_API void ffrt_task_attr_set_name(ffrt_task_attr_t* attr, const char* name
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -111,7 +109,6 @@ FFRT_C_API const char* ffrt_task_attr_get_name(const ffrt_task_attr_t* attr)
 获取任务名字。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -137,7 +134,6 @@ FFRT_C_API void ffrt_task_attr_destroy(ffrt_task_attr_t* attr)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -155,7 +151,6 @@ FFRT_C_API void ffrt_task_attr_set_qos(ffrt_task_attr_t* attr, ffrt_qos_t qos)
 设置任务QoS。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -175,7 +170,6 @@ FFRT_C_API ffrt_qos_t ffrt_task_attr_get_qos(const ffrt_task_attr_t* attr)
 获取任务QoS。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -203,7 +197,6 @@ FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -222,7 +215,6 @@ FFRT_C_API uint64_t ffrt_task_attr_get_delay(const ffrt_task_attr_t* attr)
 获取任务延迟时间。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -248,7 +240,6 @@ FFRT_C_API void ffrt_task_attr_set_queue_priority(ffrt_task_attr_t* attr, ffrt_q
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -267,7 +258,6 @@ FFRT_C_API ffrt_queue_priority_t ffrt_task_attr_get_queue_priority(const ffrt_ta
 获取并行队列任务优先级。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -293,7 +283,6 @@ FFRT_C_API void ffrt_task_attr_set_stack_size(ffrt_task_attr_t* attr, uint64_t s
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -312,7 +301,6 @@ FFRT_C_API uint64_t ffrt_task_attr_get_stack_size(const ffrt_task_attr_t* attr)
 获取任务栈大小。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -337,7 +325,6 @@ FFRT_C_API int ffrt_this_task_update_qos(ffrt_qos_t qos)
 更新任务QoS。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -399,7 +386,6 @@ FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kin
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -415,7 +401,7 @@ FFRT_C_API void *ffrt_alloc_auto_managed_function_storage_base(ffrt_function_kin
 ### ffrt_submit_base()
 
 ```c
-FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps,const ffrt_task_attr_t* attr)
+FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 ```
 
 **描述**
@@ -423,7 +409,6 @@ FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* i
 提交任务调度执行。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -437,7 +422,7 @@ FFRT_C_API void ffrt_submit_base(ffrt_function_header_t* f, const ffrt_deps_t* i
 ### ffrt_submit_h_base()
 
 ```c
-FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps,const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
+FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 ```
 
 **描述**
@@ -445,7 +430,6 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 提交任务调度执行并返回任务句柄。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -465,7 +449,7 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_base(ffrt_function_header_t* f, cons
 ### ffrt_submit_f()
 
 ```c
-FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps,const ffrt_task_attr_t* attr)
+FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 ```
 
 **描述**
@@ -473,7 +457,6 @@ FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t
 提交任务调度执行，是ffrt_submit_base接口的简化包装形式。该接口假定任务不需要销毁回调函数，给定的任务函数和参数被包装为通用任务结构，并将封装后的任务结构和其他参数传递给ffrt_submit_base接口。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -493,7 +476,7 @@ FFRT_C_API void ffrt_submit_f(ffrt_function_t func, void* arg, const ffrt_deps_t
 ### ffrt_submit_h_f()
 
 ```c
-FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps,const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
+FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, const ffrt_deps_t* in_deps, const ffrt_deps_t* out_deps, const ffrt_task_attr_t* attr)
 ```
 
 **描述**
@@ -501,7 +484,6 @@ FFRT_C_API ffrt_task_handle_t ffrt_submit_h_f(ffrt_function_t func, void* arg, c
 提交任务调度执行并返回任务句柄，是ffrt_submit_h_base接口的简化包装形式。该接口假定任务不需要销毁回调函数，给定的任务函数和参数被包装为通用任务结构，并将封装后的任务结构和其他参数传递给ffrt_submit_h_base接口。
 
 **起始版本：** 20
-
 
 **参数：**
 
@@ -536,7 +518,6 @@ FFRT_C_API uint32_t ffrt_task_handle_inc_ref(ffrt_task_handle_t handle)
 
 **起始版本：** 12
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -560,7 +541,6 @@ FFRT_C_API uint32_t ffrt_task_handle_dec_ref(ffrt_task_handle_t handle)
 减少任务句柄的引用计数。
 
 **起始版本：** 12
-
 
 **参数：**
 
@@ -586,7 +566,6 @@ FFRT_C_API void ffrt_task_handle_destroy(ffrt_task_handle_t handle)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -604,7 +583,6 @@ FFRT_C_API void ffrt_wait_deps(const ffrt_deps_t* deps)
 等待依赖的任务完成，当前任务开始执行。
 
 **起始版本：** 10
-
 
 **参数：**
 

@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 [InputMethodExtensionAbility](../reference/apis-ime-kit/js-apis-inputmethod-extension-ability.md)提供了onCreate()和onDestroy()生命周期回调，根据需要重写对应的回调方法。InputMethodExtensionAbility的生命周期如下：
@@ -20,23 +20,22 @@
 
   当不再使用服务且准备将该实例销毁时，触发该回调。开发者可以在该回调中清理资源，如注销监听等。
 
-
 ## 开发步骤 
 
 开发者在实现一个输入法应用时，需要在DevEco Studio工程中新建一个InputMethodExtensionAbility，具体步骤如下：
 
 1. 在工程Module对应的ets目录下，右键选择“New > Directory”，新建一个目录，并命名为InputMethodExtensionAbility。
 
-2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ts、InputMethodService.ts、Index.ets以及KeyboardKeyData.ts。目录如下：
+2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ets、InputMethodService.ets、Index.ets以及KeyboardKeyData.ets。目录如下：
 
-   ``` 
+   ``` TypeScript
    /src/main/
    ├── ets/InputMethodExtensionAbility
-   │       └──model/KeyboardController.ts			# 显示键盘
-   │       └──InputMethodService.ts				# 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
+   │       └──model/KeyboardController.ets      # 显示键盘
+   │       └──InputMethodService.ets        # 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
    │       └──pages
-   │         └── Index.ets						# 绘制键盘，添加输入删除功能
-   │         └── KeyboardKeyData.ts			    # 键盘属性定义
+   │         └── Index.ets            # 绘制键盘，添加输入删除功能
+   │         └── KeyboardKeyData.ets          # 键盘属性定义
    ├── resources/base/profile/main_pages.json  
    ```
 
@@ -46,7 +45,7 @@
 
    在InputMethodService.ts文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
 
-   <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
+   <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
    
    ``` TypeScript
    
@@ -79,7 +78,7 @@
 
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
 
-   <!-- @[input_case_input_KeyboardControler358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   <!-- @[input_case_input_KeyboardController358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
    class KeyboardController {
@@ -163,7 +162,7 @@
          this.panel = panel;
          panel.resize(dWidth, keyHeight).then(() => {
            panel.moveTo(0, this.barPosition).then(() => {
-             panel.setUiContent('pages/Index').then(() => {
+             panel.setUiContent('InputMethodExtensionAbility/pages/Index').then(() => {
                this.inputHandle.addLog('loadContent finished');
              })
            })
@@ -229,9 +228,9 @@
        }
      }
    ```
-
-
-   <!-- @[input_case_input_KeyboardControler507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   
+ 
+   <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
    private registerListener(): void {
@@ -248,10 +247,10 @@
    
      // 设置监听子类型事件，改变输入法应用界面
      inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-       if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+       if (inputMethodSubtype.id === 'InputMethodExtAbility') {
          AppStorage.setOrCreate('subtypeChange', 0);
        }
-       if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+       if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
          AppStorage.setOrCreate('subtypeChange', 1);
        }
      });
@@ -309,9 +308,9 @@
      }
    }
    ```
+ 
 
-
-   <!-- @[input_case_input_KeyboardControler587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   <!-- @[input_case_input_KeyboardController587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
      public isShiftKeyHold(): boolean {
@@ -455,13 +454,14 @@
    export const keyboardController: KeyboardController = new KeyboardController();
    ```
 
+
  
 3. KeyboardKeyData.ts文件。
 
    定义软键盘的按键显示内容。
 
 
-   <!-- @[input_case_input_KeyboardKeyData016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
+   <!-- @[input_case_input_KeyboardKeyData016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
    
    ``` TypeScript
    export interface keySourceListType {
@@ -633,7 +633,7 @@
    ```
 
 
-   <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
+   <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
    
    ``` TypeScript
    export let numberSourceListData: sourceListType[] = [
@@ -812,7 +812,7 @@
 
    <!--Del-->同时在resources/base/profile/main_pages.json文件的src字段中添加此文件路径。<!--DelEnd-->
 
-   <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
    
    ``` TypeScript
    import deviceInfo from '@ohos.deviceInfo';
@@ -936,7 +936,7 @@
 6. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册InputMethodExtensionAbility，type标签需要设置为“inputMethod”，srcEntry标签表示当前InputMethodExtensionAbility组件所对应的代码路径。
 
 
-   <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
+   <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
    
    ``` JSON5
    "extensionAbilities": [
@@ -944,7 +944,7 @@
        "srcEntry": "./ets/InputMethodExtensionAbility/InputMethodService.ets",
        "name": "InputMethodService",
        "label": "$string:MainAbility_label",
-       "description": "$string:extension_ability_descripter",
+       "description": "$string:extension_ability_descriptor",
        "type": "inputMethod",
        "exported": true,
        "metadata": [

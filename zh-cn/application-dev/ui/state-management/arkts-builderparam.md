@@ -6,11 +6,13 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者创建自定义组件并需要为其添加特定功能（例如页面跳转功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了\@BuilderParam装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
+当开发者创建[自定义组件](./arkts-create-custom-components.md)并需要为其添加特定功能（例如[页面跳转](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了\@BuilderParam装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
 
 在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
 
 > **说明：**
+>
+> 从API version 7开始支持。
 >
 > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
 >
@@ -52,7 +54,7 @@
 
 - 使用父组件自定义构建函数初始化子组件\@BuilderParam装饰的方法。
 
-  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->
+  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) --> 
   
   ``` TypeScript
   @Component
@@ -75,7 +77,7 @@
   struct Parent {
     @Builder
     componentBuilder() {
-      Text(`Parent builder `)
+      Text('Parent builder')
     }
   
     build() {
@@ -158,7 +160,7 @@
 
 - 使用\@BuilderParam装饰的变量只能通过\@Builder函数进行初始化。具体参考[@BuilderParam装饰器初始化的值必须为@Builder](#builderparam装饰器初始化的值必须为builder)。
 
-- 当\@Require装饰器和\@BuilderParam装饰器一起使用时，必须初始化\@BuilderParam装饰器。具体参考[@Require装饰器和@BuilderParam装饰器联合使用](#require装饰器和builderparam装饰器联合使用)。
+- 当[\@Require装饰器](./arkts-require.md)和\@BuilderParam装饰器一起使用时，必须初始化\@BuilderParam装饰器。具体参考[@Require装饰器和@BuilderParam装饰器联合使用](#require装饰器和builderparam装饰器联合使用)。
 
 - 在自定义组件尾随闭包的场景下，子组件有且仅有一个\@BuilderParam用来接收此尾随闭包，且此\@BuilderParam装饰的方法不能有参数。具体参考[尾随闭包初始化组件](#尾随闭包初始化组件)。
 
@@ -297,9 +299,9 @@ struct CustomContainerUser {
 ```
 **图4** 示例效果图
 
-![builderparam-demo4](figures/builderparam-demo4.png)
+![builderparam-demo4](figures/builderparam-demo4.gif)
 
-可以使用全局或局部\@Builder通过尾随闭包的形式对\@ComponentV2装饰的自定义组件中的\@BuilderParam装饰的方法进行初始化。
+可以使用全局或局部\@Builder通过尾随闭包的形式对[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中的\@BuilderParam装饰的方法进行初始化。
 
 示例2：
 
@@ -746,7 +748,8 @@ struct ParentPage {
         // 当前写法this指向ChildPage组件内
         customChangeThisBuilderParam: this.componentBuilder
       })
-      Button('点击改变label内容')
+      // 请将$r('app.string.builderOpp_text1')替换为实际资源文件，在本示例中该资源文件的value值为"点击改变label内容"
+      Button($r('app.string.builderOpp_text1'))
         .onClick(() => {
           this.label = 'Hello World';
         })
@@ -800,7 +803,8 @@ struct ParentPage {
           this.componentBuilder()
         }
       })
-      Button('点击改变label内容')
+      // 请将$r('app.string.builderOpp_text1')替换为实际资源文件，在本示例中该资源文件的value值为"点击改变label内容"
+      Button($r('app.string.builderOpp_text1'))
         .onClick(() => {
           this.label = 'Hello World';
         })

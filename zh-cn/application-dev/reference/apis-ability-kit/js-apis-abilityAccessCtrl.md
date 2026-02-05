@@ -268,6 +268,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 **示例：**
 
 下述示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
 关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 <!--code_no_check-->
 ```ts
@@ -275,6 +276,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@ki
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError, data: PermissionRequestResult) => {
   if (err) {
@@ -284,6 +286,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
     console.info('requestPermissionsFromUser data permissions:' + data.permissions);
     console.info('requestPermissionsFromUser data authResults:' + data.authResults);
     console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
+    console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
   }
 });
 ```
@@ -328,6 +331,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 **示例：**
 
 下述示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
 关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 <!--code_no_check-->
 ```ts
@@ -335,12 +339,14 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@ki
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
   console.info(`requestPermissionsFromUser success, result: ${data}`);
   console.info('requestPermissionsFromUser data permissions:' + data.permissions);
   console.info('requestPermissionsFromUser data authResults:' + data.authResults);
   console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
+  console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
 }).catch((err: BusinessError) => {
   console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
 });
@@ -397,6 +403,7 @@ import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
   console.info(`requestPermissionOnSetting success, result: ${data}`);
@@ -455,6 +462,7 @@ import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: Boolean) => {
   console.info(`requestGlobalSwitch success, result: ${data}`);
@@ -551,6 +559,7 @@ import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
   console.info(`openPermissionOnSetting success, result: ${data}`);

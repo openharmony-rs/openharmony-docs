@@ -4,7 +4,7 @@
 <!--Owner: @lvzhenjie-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 用户在使用应用的过程中，会产生对应的应用数据，如配置信息、业务数据等。为了保证用户数据不会因为应用升级、迁移等操作而丢失，应用需要接入数据备份恢复。
 

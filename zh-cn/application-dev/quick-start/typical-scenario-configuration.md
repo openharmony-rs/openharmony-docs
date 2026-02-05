@@ -10,7 +10,9 @@
 
 ## 场景介绍
 
-以导航场景为例，用户使用地图应用导航时，通常先搜索目的地，然后开始导航。为了提升导航效率和操作便捷性，建议在地图应用中添加常去地点的快捷方式，如公司、家等。添加这些快捷方式后，用户长按应用图标，即可打开快捷方式入口，快速启动导航。详情请参考[桌面快捷方式](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-desktop-shortcuts)。
+以导航场景为例，用户使用地图应用导航时，通常先搜索目的地，然后开始导航。为了提升导航效率和操作便捷性，建议在地图应用中添加常去地点的快捷方式，如公司、家等。添加这些快捷方式后，用户长按应用图标，即可打开快捷方式入口，快速启动导航。详情请参见[桌面快捷方式](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-desktop-shortcuts)。
+
+<!--RP1--><!--RP1End-->
 
 ## 配置方法
 
@@ -20,7 +22,6 @@
     ```json
     {
       "string": [
-        // ···
         {
           "name": "share",
           "value": "分享好友"
@@ -42,31 +43,31 @@
     {
       "shortcuts": [
        {
-          "shortcutId": "id_test1",  // 标识快捷方式，在应用有多个快捷方式时，该字段可作为快捷方式的唯一标识符，不支持通过资源索引的方式（$string）配置该字段
-          "label": "$string:add",  // 标识该快捷方式对外显示的名称
-          "icon": "$media:add_icon",  // 标识该快捷方式对外显示的图片，需要在entry/src/main/resources/base/media中添加名称为add_icon的图片
+          "shortcutId": "id_test1",
+          "label": "$string:add",
+          "icon": "$media:add_icon",
           "wants": [
             {
-              "bundleName": "com.ohos.hello",   // 对应该快捷方式对应拉起组件的包名
-              "moduleName": "entry",    // 对应该快捷方式对应拉起组件的模块名
-              "abilityName": "EntryAbility1",   // 对应该快捷方式对应拉起组件的组件名
+              "bundleName": "com.ohos.hello",
+              "moduleName": "entry",
+              "abilityName": "EntryAbility1",
               "parameters": {
-                "testKey": "testValue"   // 表示拉起快捷方式时的自定义数据
+                "testKey": "testValue"
               }
             }
           ]
         },
         {
-          "shortcutId": "id_test2",  // 标识快捷方式，在应用有多个快捷方式时，该字段可作为快捷方式的唯一标识符，不支持通过资源索引的方式（$string）配置该字段
-          "label": "$string:share",  // 标识该快捷方式对外显示的名称
-          "icon": "$media:share_icon",  // 标识该快捷方式对外显示的图片，需要在entry/src/main/resources/base/media中添加名称为share_icon的图片
+          "shortcutId": "id_test2",
+          "label": "$string:share",
+          "icon": "$media:share_icon",
           "wants": [
             {
-              "bundleName": "com.ohos.hello",   // 对应该快捷方式对应拉起组件的包名
-              "moduleName": "entry",    // 对应该快捷方式对应拉起组件的模块名
-              "abilityName": "EntryAbility",   // 对应该快捷方式对应拉起组件的组件名
+              "bundleName": "com.ohos.hello",
+              "moduleName": "entry",
+              "abilityName": "EntryAbility",
               "parameters": {
-                "testKey": "testValue"   // 表示拉起快捷方式时的自定义数据
+                "testKey": "testValue"
               }
             }
           ]

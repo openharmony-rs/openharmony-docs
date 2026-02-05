@@ -16,22 +16,26 @@
 接口具体使用方法和说明请参考[System](../reference/apis-localization-kit/js-apis-i18n.md#system9)的API接口文档。
 
 1. 导入模块。
-   ```ts
+
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   
+   ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    ```
-   <!-- [import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
 
 2. 使用场景。
 - 获取用户偏好。
 
-   ```ts
+   <!-- @[get_user_preference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
+   
+   ``` TypeScript
    // 判断系统当前是否使用本地数字
    let usingLocalDigit: boolean = i18n.System.getUsingLocalDigit();
-
+   
    // 判断系统当前是否使用24小时制
    let is24HourClock: boolean = i18n.System.is24HourClock();
-
+   
    // 通过监听公共事件COMMON_EVENT_TIME_CHANGED可以感知系统时制变化
    let timeSubscriber: commonEventManager.CommonEventSubscriber; // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
    let timeSubscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -57,12 +61,11 @@
        console.error(`CreateSubscriber failed, code is ${err.code}, message is ${err.message}`);
      });
    ```
-   <!-- [get_user_preference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
 
 <!--Del-->
 - 设置使用本地数字。
 
-   ```ts
+   ``` TypeScript
    try {
      i18n.System.setUsingLocalDigit(true); // 使用本地数字
    } catch (error) {
@@ -70,11 +73,10 @@
      console.error(`call System.setUsingLocalDigit failed, error code: ${err.code}, message: ${err.message}.`);
    }
    ```
-   <!-- [set_app_interface_numbers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
 
 - 设置时间显示格式为24小时制。
 
-   ```ts
+   ``` TypeScript
    try {
      i18n.System.set24HourClock(true); // 设置系统时制为24小时制
    } catch (error) {
@@ -82,5 +84,4 @@
      console.error(`call System.set24HourClock failed, error code: ${err.code}, message: ${err.message}.`);
    }
    ```
-   <!-- [set_24_hour_clock_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
 <!--DelEnd-->

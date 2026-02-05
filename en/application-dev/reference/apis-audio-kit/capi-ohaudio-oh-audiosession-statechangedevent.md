@@ -6,8 +6,8 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-```
-typedef struct {...} OH_AudioSession_StateChangedEvent
+```c
+typedef struct OH_AudioSession_StateChangedEvent {...} OH_AudioSession_StateChangedEvent
 ```
 ## Overview
 

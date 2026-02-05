@@ -23,7 +23,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-Opens the settings screen of notification extension subscription in a semi-modal dialog box. On this screen, the user can turn on the **Allow access to notifications on this device** switch and allows notifications of specified applications to be accessed. This API uses a promise to return the result.
+Opens the settings screen of notification extension subscription in a semi-modal dialog box. On this screen, the user can toggle on the **Allow access to notifications on this device** switch and grant access to notifications for specified applications. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -47,9 +47,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied or current device not supported.     |  
 | 1600001  | Internal error.                     |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
 
 **Example**
@@ -100,7 +100,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                    |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -108,6 +108,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+const DOMAIN = 0x0000;
+
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
     addr: '01:23:45:67:89:AB', // Use the dynamically obtained Bluetooth address.
@@ -115,9 +117,9 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  hilog.info(DOMAIN, 'testTag',"subscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`subscribe fail: ${JSON.stringify(err)}`);
 });
 
 ```
@@ -144,17 +146,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
 **Example**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  hilog.info(DOMAIN, 'testTag',"unsubscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -180,17 +184,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
 **Example**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+  hilog.info(DOMAIN, 'testTag',`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -198,7 +204,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 
 isUserGranted(): Promise\<boolean\>
 
-Checks whether the user has granted the permission to access notifications on this device. This API uses a promise to return the result.
+Checks whether the **Allow access to notifications on this device** switch is toggled on. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -208,7 +214,7 @@ Checks whether the user has granted the permission to access notifications on th
 
 | Type    | Description       | 
 | ------- |-----------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that this feature is enabled, and the value **false** indicates the opposite.| 
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that this feature is enabled, and **false** indicates the opposite.| 
 
 **Error codes**
 
@@ -216,21 +222,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied. | 
+| 201      | Permission denied or current device not supported. | 
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                           |
 
 **Example**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
-    console.info('isUserGranted true');
+    hilog.info(DOMAIN, 'testTag','isUserGranted true');
   } else {
-    console.info('isUserGranted false');
+    hilog.info(DOMAIN, 'testTag','isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`isUserGranted fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -238,7 +246,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-Obtains the applications whose notifications can be accessed. This API uses a promise to return the result.
+Obtains the applications that are allowed to access device notifications. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -248,7 +256,7 @@ Obtains the applications whose notifications can be accessed. This API uses a pr
 
 | Type    | Description       | 
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise used to return the applications whose notifications can be accessed.       |
+| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise used to return the applications obtained.       |
 
 **Error codes**
 
@@ -256,17 +264,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied or current device not supported.     |  
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 
 **Example**
 
 ```ts
+const DOMAIN = 0x0000;
+
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
+  hilog.info(DOMAIN, 'testTag',`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  hilog.error(DOMAIN, 'testTag',`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -280,7 +290,19 @@ Describes the information about the notification extension subscription.
 
 | Type| Description|
 | --- | --- |
-| [_NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) | Information about the notification extension subscription.|
+| [_NotificationExtensionSubscriptionInfo](js-apis-inner-notificationExtensionSubscriptionInfo.md) | Describes the information about the notification extension subscription.|
+
+## NotificationInfo
+
+type NotificationInfo = _NotificationInfo
+
+Describes the notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Type| Description|
+| --- | --- |
+| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |Describes the notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
 
 ## SubscribeType
 

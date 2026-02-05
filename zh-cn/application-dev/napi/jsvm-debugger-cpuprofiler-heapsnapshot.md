@@ -7,6 +7,7 @@
 <!--Adviser: @fang-jinxu-->
 
 JSVM，即标准JS引擎，是严格遵守ECMAScript规范的JavaScript代码执行引擎。详情参考：[JSVM](../reference/common/capi-jsvm.md)。
+
 基于JSVM的JS代码调试调优能力包括：Debugger、CPU Profiler、Heap Snapshot、Heap Statistics。涉及以下接口：
 | 接口名  |  接口功能 |
 |---|---|
@@ -177,14 +178,19 @@ static void EnableInspector(JSVM_Env env) {
 ### 使用 Chrome inspect 页面进行调试
 除了使用上述打开"devtoolsFrontendUrl"字段url的方法调试代码之外，也可以直接通过Chrome浏览器的 chrome://inspect/#devices 页面进行调试。方法如下：
 1. Chrome浏览器中打开 chrome://inspect/#devices，勾选以下内容：
+
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_1.png"/></div>
 2. 执行端口转发命令：hdc fport [开发者个人计算机侧端口号] [端侧端口号]  
+
    例如：hdc fport tcp:9227 tcp:9226
 3. 点击Port forwarding按钮，左侧输入开发者个人计算机侧端口，右侧输入端侧端口号，点击done。如下图所示：
+
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_2.png"/></div>
 4. 点击Configure按钮，输入开发者个人计算机侧的端口号，如localhost:9227。如下图所示：
+
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_3.png"/></div>
 5. 稍等片刻，会在target下出现调试的内容，点击inspect即可调试。如下图所示：
+
    <div align=left><img src="figures/jsvm-debugger-cpuprofiler-heapsnapshot_4.png"/></div>
 
 ### 使用 websocket 端口进行调试

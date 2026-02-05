@@ -20,7 +20,7 @@ background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions):
 
 >**说明：**
 >
-> - 不支持[onAppear](./ts-universal-events-show-hide.md#onappear)和[onDisappear](./ts-universal-events-show-hide.md#ondisappear)等和节点挂载/卸载相关的事件。
+> - 不支持[onAppear](./ts-universal-events-show-hide.md#onappear)和[onDisAppear](./ts-universal-events-show-hide.md#ondisappear)等和节点挂载/卸载相关的事件。
 >
 > - 从API version 20开始，该接口仅当content的入参类型为ResourceColor时支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -184,6 +184,7 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 
 **参数：** 
 
+<!--Table: 10%; auto; 10%; auto-->
 | 参数名 | 类型                                            | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
 | src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | 是   | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
@@ -199,7 +200,7 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 
 backgroundImageSize(value: SizeOptions | ImageSize): T
 
-设置组件背景图片的宽度和高度。当未设置backgroundImageSize时，默认组件背景图片宽高效果为ImageSize.Auto。
+设置组件背景图片的宽度和高度。当未设置backgroundImageSize时，默认组件背景图片宽高效果为[ImageSize.Auto](ts-appendix-enums.md#imagesize)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -275,6 +276,7 @@ backgroundImagePosition(value: Position | Alignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: auto; auto; 10%; 10%; auto-->
 | 名称        |   类型   |   只读  |  可选  | 说明                        |
 | ----        |  ----   |   ---- |  ---- | --------------------------  |
 | disableSystemAdaptation   |  boolean   |   否   |  是  |  系统自适应调节参数，推荐不携带该参数。该参数只影响低算力设备，低算力设备的定义由设备厂商决定。在低芯片算力的设备上，会根据算力和负载等条件，自动决策是否使用低算力的近似效果替代原有效果，比如模糊效果会结合接口中携带的模糊相关参数值及其他低算力处理逻辑，进行自适应效果降级处理。如果想关闭该功能，可以将该标志置为true。<br/>默认值：false |
@@ -415,7 +417,7 @@ backdropBlur(radius: Optional\<number>, options?: BlurOptions): T
 
 >  **说明：**
 >
->  blur和backdropBlur是实时模糊接口，会每帧进行实时渲染，性能负载较高。当模糊内容和模糊半径都不需要变化时，建议使用[静态模糊接口](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。
+>  blur和backdropBlur是实时模糊接口，会每帧进行实时渲染，性能负载较高。当模糊内容和模糊半径都不需要变化时，建议使用静态模糊接口[blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur)。
 
 ## backdropBlur<sup>19+</sup>
 
@@ -524,6 +526,7 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: auto; auto; 10%; 10%; auto-->
 | 名称        |   类型         |   只读  |  可选  |  说明                        |
 | ----         |  ----         |   ---- |  ---- | --------------------------  |
 | radius       | number        |   否   |   否   |   模糊半径，取值范围：[0, +∞)，默认为0。 <br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -569,12 +572,15 @@ backgroundImageResizable(value: ResizableOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称 | 类型                                                         | 只读 | 可选 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---- |---------------------------------------------------- |
 | policy<sup>14+</sup>  | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | 否 | 是   | 模糊激活策略。<br/> 默认值：BlurStyleActivePolicy.ALWAYS_ACTIVE <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是    | 模糊不生效时使用的背景色。该参数需配合policy参数使用。当policy使模糊失效时，控件模糊效果会被移除，如果设置了inactiveColor会使用inactiveColor作为控件背景色。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
 ## BlurStyleActivePolicy<sup>14+</sup>
+
+定义背景模糊激活策略。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -942,6 +948,7 @@ struct Index {
                 .fontColor('rgba(255,255,255,1)')
             }
           }
+          // blendMode采用离屏渲染，DST_IN模式下仅显示当前组件与下方画布的重叠区域
           .blendMode(BlendMode.DST_IN, BlendApplyType.OFFSCREEN)
           .pixelRound({
             start: PixelRoundCalcPolicy.FORCE_FLOOR ,
@@ -950,7 +957,9 @@ struct Index {
             bottom: PixelRoundCalcPolicy.FORCE_CEIL
           })
         }
+        // blendMode采用离屏渲染，SRC_OVER模式下会将当前组件内容覆盖显示在下方画布之上
         .blendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN)
+        // backgroundEffect配置组件背景的圆角、饱和度、亮度及动态RGBA颜色
         .backgroundEffect({
           radius: this.rad,
           saturation: this.satVal,

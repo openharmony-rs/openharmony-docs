@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_RawDevInfo {...} Hid_RawDevInfo
+```
+
 ## Overview
 
 Defines the raw device information.

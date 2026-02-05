@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 - [IME Kit简介](ime-kit-intro.md)
@@ -11,6 +11,7 @@
 - [在自绘编辑框中使用输入法](use-inputmethod-in-custom-edit-box.md)
 - [切换输入法应用](switch-inputmethod-guide.md)
 - [输入法子类型开发指南](input-method-subtype-guide.md)
+<!--RP1--><!--RP1End-->
 - [在自绘编辑框中使用输入法(C/C++)](use-inputmethod-in-custom-edit-box-ndk.md)
 - [输入法应用沉浸模式](inputmethod-immersive-mode-guide.md)
 - [通过hdc命令管理输入法](inputmethod-hdc-commands-guide.md)
