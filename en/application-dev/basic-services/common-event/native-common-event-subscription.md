@@ -18,7 +18,7 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
 | API                              | Description                                                            |
 | ------------------------------------ | ---------------------------------------------------------------- |
 |[CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo)|Creates subscriber information.|
-|[void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscribeinfo)|Destroys subscriber information.|
+|[void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscribeinfo)|Destroys the subscriber information.|
 |[CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber)| Creates a subscriber.|
 |[void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscriber)|Destroys a subscriber.|
 |[CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_subscribe)|Subscribes to an event.|
@@ -34,8 +34,6 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    
    ``` C
    #include <cstdint>
-   #include <cstdio>
-   #include <cwchar>
    #include <cstring>
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"
