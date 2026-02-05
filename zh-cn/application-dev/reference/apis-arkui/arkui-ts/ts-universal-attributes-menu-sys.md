@@ -32,6 +32,8 @@
 从API version 23开始，在ContextMenuOptions中新增了systemMaterial属性。
 
 ```ts
+import { uiMaterial } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
@@ -48,7 +50,7 @@ struct Index {
     Column() {
       Button('bindMenu with THICK material')
         .bindMenu(this.MyMenu, {
-          systemMaterial: new uiMaterail.Material({ type: uiMaterail.MaterialType.SEMI_TRANSPARENT })
+          systemMaterial: new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT })
         })
     }
     // $r('app.media.img')需要替换为开发者所需的图像资源文件。
