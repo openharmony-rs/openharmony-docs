@@ -335,7 +335,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     > **注意：**
     >
     > 编码器回到初始化的状态，调用OH_VideoEncoder_Configure接口重新配置编码器参数时，同步模式需要重新配置OH_MD_KEY_ENABLE_SYNC_MODE为1，否则为异步模式。
-    >
 
 11. （可选）调用OH_VideoEncoder_Stop()停止编码器。
 
@@ -411,7 +410,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     >
     > 1. 要使能视频编码同步模式，必须将OH_MD_KEY_ENABLE_SYNC_MODE配置为1。
     > 2. 同步模式在调用OH_VideoEncoder_Configure接口前不能调用OH_VideoEncoder_RegisterCallback或OH_VideoEncoder_RegisterParameterCallback接口，否则为异步模式。
-    >
 
 3. 调用OH_VideoEncoder_Prepare()编码器就绪。
 
